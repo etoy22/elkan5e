@@ -175,17 +175,6 @@
       }
     },
     {
-      "name": "elkan-5e-misc",
-      "label": "Elkan 5e Misc",
-      "path": "packs/elkan-5e-misc",
-      "type": "Item",
-      "system": "dnd5e",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      }
-    },
-    {
       "name": "elkan-5e-creature-features",
       "label": "Elkan 5e Creature Features",
       "path": "packs/elkan-5e-creature-features",
@@ -200,17 +189,43 @@
   "relationships": {
     "recommends": [
       {
-        "id": "dae",
+        "id": "midi-qol",
         "type": "module",
         "compatibility": {}
       },
       {
-        "id": "midi-qol",
+        "id": "ActiveAuras",
         "type": "module",
+        "compatibility": {}
+      },
+      {
+        "id": "condition-lab-triggler",
+        "type": "module",
+        "compatibility": {}
+      },
+      {
+        "id": "ATL",
+        "type": "module"
+      }
+    ],
+    "requires": [
+      {
+        "id": "dae",
+        "type": "module",
+        "compatibility": {}
+      }
+    ],
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system",
         "compatibility": {}
       }
     ]
   },
+  "esmodules": [
+    "scripts/elkan5e.js"
+  ],
   "url": "https://github.com/etoy22/elkan5e",
   "manifest": "https://github.com/etoy22/elkan5e/releases/latest/download/module.json",
   "download": "https://github.com/etoy22/elkan5e/releases/latest/download/module.zip"
