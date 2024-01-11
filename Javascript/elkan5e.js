@@ -3,14 +3,13 @@ import {conditions} from "./scripts/condition.js"
 import {weaponTotal} from "./scripts/weapon.js"
 import {feature} from "./scripts/feature.js"
 import {armor} from "./scripts/armor.js"
-import {language} from "./language.js"
+import {language} from "./scripts/language.js"
 
 
 Hooks.once("init", () => {
-    console.log("Elkan being loaded")
+    tools();
     feature();
     conditions();
-    tools();
     weaponTotal();
     armor();
     language();
