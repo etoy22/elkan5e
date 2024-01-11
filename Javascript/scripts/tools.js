@@ -63,4 +63,7 @@ export function tools(){
     delete CONFIG.DND5E.toolIds.glassblower
     delete CONFIG.DND5E.toolIds.potter
     delete CONFIG.DND5E.toolIds.weaver
+    delete CONFIG.DND5E.toolIds.carpenter
+    delete CONFIG.DND5E.toolIds.cartographer
+    delete CONFIG.DND5E.toolIds.cobbler
 }
