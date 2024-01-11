@@ -15,3 +15,9 @@ Hooks.once("init", () => {
     language();
 });
 
+
+
+//This is part of the siphoned and weakened thing to figure out
+// Hook.once("dnd5e.preRollDamage", (item,config) => {
+
+// })
