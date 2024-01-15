@@ -1,18 +1,15 @@
-/*
-Doing tool configurations
-*/
+/**
+ * Changes Foundry's tools to fit that of Elkan 5e.
+ */
 export function tools(){
     console.log("Elkan 5e  |  Initializing Tools")
 
     //Adding Tool Types
-    // CONFIG.DND5E.toolTypes.art = "Artist's Tools"
     CONFIG.DND5E.toolTypes.craft = "Crafting Tools"
     CONFIG.DND5E.toolTypes.explore = "Exploration Tools"
     
-    // CONFIG.DND5E.toolProficiencies.art = "Artist's Tools"
     CONFIG.DND5E.toolProficiencies.craft = "Crafting Tools"
     CONFIG.DND5E.toolProficiencies.explore = "Exploration Tools"
-    CONFIG.DND5E.toolProficiencies.vehicle = "Vehicles"
     
     //Other Artiist's Tools 
     CONFIG.DND5E.toolIds.painter = "elkan5e.elkan5e-mundane-items.qZe6ua1j3TtX3QGv";

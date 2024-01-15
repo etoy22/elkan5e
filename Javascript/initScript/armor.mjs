@@ -1,7 +1,6 @@
-/*
-Changing Armor
-*/
-
+/**
+ * Changes Foundry's armor tpypes to that of Elkan 5e.
+ */
 export function armor(){
     console.log("Elkan 5e  |  Initializing Armor")
 
