@@ -1,9 +1,9 @@
-import {tools} from "./scripts/tools.js";
-import {conditions} from "./scripts/condition.js"
-import {weaponTotal} from "./scripts/weapon.js"
-import {feature} from "./scripts/feature.js"
-import {armor} from "./scripts/armor.js"
-import {language} from "./scripts/language.js"
+import {tools} from "./startingScripts/tools.js";
+import {conditions} from "./startingScripts/condition.js"
+import {weaponTotal} from "./startingScripts/weapon.js"
+import {feature} from "./startingScripts/feature.js"
+import {armor} from "./startingScripts/armor.js"
+import {language} from "./startingScripts/language.js"
 
 
 Hooks.once("init", () => {
