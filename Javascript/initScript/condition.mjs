@@ -1,8 +1,10 @@
-/*
-Adding the conditions that exist in Elkan 5e
-*/
+/**
+ * Adds the Elkan 5e conditions to Foundry.
+ */
 export function conditions(){
     console.log("Elkan 5e  |  Initializing Conditions")
+
+    //Add conditions
     CONFIG.DND5E.conditionTypes.confused = "Confused";
     CONFIG.DND5E.conditionTypes.dominated = "Dominated";
     CONFIG.DND5E.conditionTypes.drained = "Drained";

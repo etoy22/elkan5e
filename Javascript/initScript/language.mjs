@@ -1,15 +1,22 @@
 
-
+/**
+ * Changes Foundry's languages to fit that of Elkan 5e.
+ */
 export function language(){
     console.log("Elkan 5e  |  Initializing Languages")
-    CONFIG.DND5E.languages.standard.label = "Trade Language"
+
+    //Deleting Languages
     delete CONFIG.DND5E.languages.standard.children.giant
     delete CONFIG.DND5E.languages.standard.children.gnomish 
     delete CONFIG.DND5E.languages.standard.children.orc
-    CONFIG.DND5E.languages.standard.children.under = "Undercommon"
     delete CONFIG.DND5E.languages.exotic
     delete CONFIG.DND5E.languages.druidic;
     delete CONFIG.DND5E.languages.cant;
+
+
+    //Adding Languages
+    CONFIG.DND5E.languages.standard.children.under = "Undercommon"
+
     CONFIG.DND5E.languages.rare = {
         label: "Rare Languages",
         children: {
