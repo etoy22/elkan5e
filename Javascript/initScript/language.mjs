@@ -1,6 +1,7 @@
 
 
 export function language(){
+    console.log("Elkan 5e  |  Initializing Languages")
     CONFIG.DND5E.languages.standard.label = "Trade Language"
     delete CONFIG.DND5E.languages.standard.children.giant
     delete CONFIG.DND5E.languages.standard.children.gnomish 
