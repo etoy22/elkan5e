@@ -11,4 +11,6 @@ export function conditions(){
     CONFIG.DND5E.conditionTypes.slowed = "Slowed";
     CONFIG.DND5E.conditionTypes.surprised = "Surprised";
     CONFIG.DND5E.conditionTypes.weakened = "Weakened";
+    CONFIG.DND5E.conditionTypes.muted = "Muted";
+    CONFIG.DND5E.conditionTypes.dazed = "Dazed";
 }
