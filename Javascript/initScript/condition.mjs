@@ -2,6 +2,7 @@
 Adding the conditions that exist in Elkan 5e
 */
 export function conditions(){
+    console.log("Elkan 5e  |  Initializing Conditions")
     CONFIG.DND5E.conditionTypes.confused = "Confused";
     CONFIG.DND5E.conditionTypes.dominated = "Dominated";
     CONFIG.DND5E.conditionTypes.drained = "Drained";
@@ -14,3 +15,9 @@ export function conditions(){
     CONFIG.DND5E.conditionTypes.muted = "Muted";
     CONFIG.DND5E.conditionTypes.dazed = "Dazed";
 }
+
+
+//This is part of the siphoned and weakened thing to figure out
+// Hook.once("dnd5e.preRollDamage", (item,config) => {
+
+// })
