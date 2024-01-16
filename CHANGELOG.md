@@ -1,22 +1,24 @@
 # Changelog
 
 ## v1.2.8
-- Added Changelog
-- Updated old releases with what we did in them to the best that I could find
-- Dragon Origin added Sorcerer Subclass (elkan5e.com/sorcerer)
-- Improved Blasting Noise (College of Noise) provides temporary immunity to muted condition
-- Updated module.json
-  - Description for what Elkan 5e is
-  - Updated with all possible information
-- Fixed Cold Iron bypass not working 
-- Added lang/en.json
+- Foundry Updates
+  - Dragon Origin added Sorcerer Subclass (elkan5e.com/sorcerer)
+  - Improved Blasting Noise (College of Noise) provides temporary immunity to muted condition
+  - Fixed Cold Iron bypass not working 
   - Moved some of the changing of name hooks here instead
   - Changed all cases of Race appearing and changed it with Ancestry
-- Removed code that didn't really do anything 
-- Added Code to make sure that the Elkan Module was initalizing in Foundry
-- Changed Thunder Damage to Sonic Damage
-- Added Comments to code for readablility
-- Changed js files to mjs
+  - Changed Thunder Damage to Sonic Damage
+- Code Updates
+  - Added Changelog
+  - Updated old releases with what we did in them to the best that I could find
+  - Updated module.json
+    - Added lang/en.json
+    - Description for what Elkan 5e is
+    - Updated with all possible information
+  - Removed code that didn't really do anything 
+  - Added Code to make sure that the Elkan Module was initalizing in Foundry
+  - Added Comments to code for readablility
+  - Changed js files to mjs
 
 ## v1.2.7
 - Added Missing Conditions (Muted and Dazed)
