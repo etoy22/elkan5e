@@ -100,7 +100,7 @@
 - Streamlined the proficiencies granted by backgrounds.
 - Added an extra tool option for rogues and druids.
 - Diamond Soul no longer applies to death saving throws.
-- The druid class is now fully automated in Foundry.
+- Druid class is now fully automated.
 - Updated ancestries to function with the new update. Now you can drag-drop ancestries and they will add their benefits to your characters.
 - Ancestries, Backgrounds, Classes, and Subclasses will now automatically grant or allow you to choose skills, tools and other proficiencies.
 - Default class proficiencies, as well as features that previously granted vision types, speeds, damage resistances, etc. will now be much less cluttered and no longer take up space as passive features in your list.
@@ -122,7 +122,7 @@
 - Silence no longer counts as a ritual spell.
 - The 'Spells by Class' journal entry is now complete with links to each spell's description.
 - Aasimar and Tiefling ancestries are now properly complete.
-- Added the Bulwark fighter subclass to Foundry (so all subclasses on the website are now in Foundry).
+- Added the Bulwark fighter subclass (so all subclasses on the website are now in Foundry).
 - Fixed numerous issues with the Ranger class and its subclasses's features.
 - Fixed the problem where some cantrips were doing half damage on a successful saving throw. 
 ### November 6, 2023
