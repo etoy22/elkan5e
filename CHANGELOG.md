@@ -19,6 +19,7 @@
   - Added Code to make sure that the Elkan Module was initalizing in Foundry
   - Added Comments to code for readablility
   - Changed js files to mjs
+  - Cleaned up Github tags so there are no more 1.1.2-Fixed
 
 ## v1.2.7
 - Added Missing Conditions (Muted and Dazed)
