@@ -55,5 +55,4 @@ export function language(){
             gnoll:"Gnoll"
         }
     }
-
 }
