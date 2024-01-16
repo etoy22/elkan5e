@@ -5,7 +5,9 @@
 - Updated old releases with what we did in them to the best that I could find
 - Dragon Origin added Sorcerer Subclass (elkan5e.com/sorcerer)
 - Improved Blasting Noise (College of Noise) provides temporary immunity to muted condition
-- Updated module.json description for what Elkan 5e is
+- Updated module.json
+  - Description for what Elkan 5e is
+  - Updated with all possible information
 - Fixed Cold Iron bypass not working 
 - Added lang/en.json
   - Moved some of the changing of name hooks here instead
