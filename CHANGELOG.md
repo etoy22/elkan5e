@@ -480,4 +480,7 @@
 - Updated Elkan Ranger
 
 ## v1.0.2
-- Release
+- Released 
+
+## v1.0.1
+- A local file
