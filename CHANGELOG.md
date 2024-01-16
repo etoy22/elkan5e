@@ -105,7 +105,7 @@
 - Updated all class descriptions and progression charts to have current information.
 - Added a table to show spellcasting progression for Mystic Trickster and Spellsword.
 - Automated Signature Spell choices for high level wizards.
-# November 20, 2023
+### November 20, 2023
 - Updated the Character Creation Guide, including ability score generation methods (Elkan 5e standard array, point buy, and rolling for stats)
 - The Distant Spell and Extended Spell metamagics were improved.
 - Eldritch Blast no longer counts as a spell at all, which allowed us to adjust some features to allow better integration with warlock spellcasting.
