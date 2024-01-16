@@ -13,9 +13,10 @@
 - Removed code that didn't really do anything 
 - Added Code to make sure that the Elkan Module was initalizing in Foundry
 - Changed Thunder Damage to Sonic Damage
-- Added Comments to code for readablility 
+- Added Comments to code for readablility
+- Changed js files to mjs
 
-# # v1.2.7
+## v1.2.7
 - Added Missing Conditions (Muted and Dazed)
 - Fixed Merge Error that occured
 - Renamed file paths
@@ -39,7 +40,7 @@
 - Expertise should no longer reference tools
 - Added small shields to starting equipment options for bards, rogues, and warlocks
 
-# # v1.2.6
+## v1.2.6
 - Added New Relationships with Modules
 - Added New Condition Types 
 - Paladin Update
@@ -51,8 +52,8 @@
   - Tools
   - Weapons
 
-# # v1.2.5
-# # # January 8, 2024
+## v1.2.5
+### January 8, 2024
 - Backgrounds now give the correct number of skills in all cases.
 - Superior Armor Training from the Forge-Bound background, as well as the spells Longstrider and Static Charge, now apply the correct automated effect.
 - Fixed automated paladin aura scaling to 30 ft.
@@ -60,7 +61,7 @@
 - Wizards no longer gain all 'magical' languages by mistake
 - Fixed Mystic Trickster spellcasting being listed as an action.
 - Cleaned up redundant Extra Attack features. 
-# # # December 18, 2023
+### December 18, 2023
 - A lot of minor formatting
 - Fighters now get one combat maneuver at levels 2, 7, and 15 instead of two.
 - Updated Fireball and Shield spells
@@ -72,7 +73,7 @@
 - Added Changeling ancestry
 - Updated descriptions for tools
 - Added source urls to all Foundry features etc.
-# # # December 4, 2023
+### December 4, 2023
 - Rebalanced weapons
    - Darts now have a range of 30/90 instead of 20/60
    - Greatclubs now deal 1d10 damage instead of 1d8
@@ -90,7 +91,7 @@
   - Ancestries and Backgrounds Feature went to Elkan 5e Ancestries/Backgrounds Features
 - Fixed the Laborer background giving all vehicle proficiencies.
 - Removed the placeholders for the Artificer and Psion classes, which are in development, from the live version of the module.
-# # # November 27, 2023
+### November 27, 2023
 - Added the Life Domain for clerics: https://www.elkan5e.com/cleric
 - Added the Evoker Tradition for wizards: https://www.elkan5e.com/wizard
 - Added an expanded spell list for the Circle of the Shifter druids.
@@ -111,7 +112,7 @@
 - Mystic Tricksters and Spellswords can now choose warlock as their spellcasting class.
 - Fixed Fiend Patron expanded spell list
 - Fixed dragonborn breath weapons to correctly list '1/long rest'
-# # # November 13, 2023
+### November 13, 2023
 - Added the Circle of the Shifter druid subclass.
 - Added 7 Elkan-exclusive spells.
 - Spells that require a visible target now say 'visible creature' or somesuch in the target field at the top of spell descriptions.
@@ -122,7 +123,7 @@
 - Added the Bulwark fighter subclass to Foundry (so all subclasses on the website are now in Foundry).
 - Fixed numerous issues with the Ranger class and its subclasses's features.
 - Fixed the problem where some cantrips were doing half damage on a successful saving throw. 
-# # # November 6, 2023
+### November 6, 2023
 - Added the College of Jesters subclass to bard
 - Added the College of Lore subclass to bard
 - Revised Sorcerer to get subclass features at levels 1/6/10/14
@@ -131,12 +132,12 @@
 - Improved the Subtle Spell metamagic option
 - Removed unfinished monsters and items from compendiums (until completed)
 - Added the Restore Familiar feature for Pact of the Chain warlocks
-# # # October 30, 2023
+### October 30, 2023
 - Added a comprehensive list of changes to cantrips in the rules compendium.
 - Song of Rest now affects a maximum of 6 creatures.
 - Spells by School of Magic is now fully linked to individual spell descriptions.
 - Updated README
-# # # October 23, 2023
+### October 23, 2023
 - Cleaned up the spells page's design
 - Added Way of the Open Hand subclass for monks
 - Revised monk to get subclass features at levels 3/6/10/14
@@ -153,7 +154,7 @@
 - Added Familiar's Blast and Implant Suggestion warlock invocations
 - Properly automated the surprised condition
 - Made spells that apply the poisoned condition stack
-# # # October 15th, 2023
+### October 15th, 2023
 - Icons for conditions should now be visible
 - New ancestries are available
 - Ancestries have speed abilities attached for ancestries with speeds other than 30
@@ -162,7 +163,7 @@
 - Half-cover and three-quarters cover icons should now function
 - Finished Bard
 - Updated Cleric
-# # # August 27, 2023
+### August 27, 2023
 - Fixed Militant background
 - Added some instructions to automate consumption of Ki and Sorcery Points for certain class features
 - Updated Commander
@@ -170,25 +171,25 @@
 - Added an expanded spell list for Beastmasters
 - Improved the Wild and Maritime Backgrounds.
 - Fixed darts in the weapon chart and added Unarmed Strikes as a simple weapon
-# # # August 13, 2023
+### August 13, 2023
 - Items Update
 
-# # v1.2.4
+## v1.2.4
 - Backgrounds in Foundry with their features
 - Added Misc
 
-# # v1.2.3
+## v1.2.3
 - Cleaned up the code
 - Changed Elkan XXX Class or Elkan XXX Subclass to just be called the class or subclass
   - Ex. Elkan Fighter became Fighter
 
-# # v1.2.2
+## v1.2.2
 - Added discord information for the Authors
 - Removed the old database system that Foundry used to use before V11
 - Fixed bug with the new Foundry Database so it can actually be used with Github
 
-# # v1.2.1
-# # # May 2023
+## v1.2.1
+### May 2023
 - Readded Elkan Spells Compendium
 - Changed Name of Module from Elkan Dev to Elkan 5e
 - Updated Classes
@@ -213,13 +214,13 @@
 - Updated Spell
  - Animate Dead
  - Fireball
-# # # June 2023
+### June 2023
 - Updated to Foundry V11
 - Reorganized module.json alphabetically
 - Created Character Creation Rules
 
 
-# # v1.1.16
+## v1.1.16
 - Updated Classes
   - Elkan Barbarian
   - Elkan Fighter
@@ -231,7 +232,7 @@
 - Added/Updated Roll Tables
   - Wild Surge Table lv. 1-9
 
-# # v1.1.15
+## v1.1.15
 - Added Label to Elkan Background
 - Added Elkan Background Features Compendium
 - Added/Updated Backgrounds
@@ -254,19 +255,19 @@
   - Weapons
 
 
-# # v1.1.14
+## v1.1.14
 - Updated Classes
   - Elkan Warlock
     - Added Missing Invocations
 - Updated Relgion notes
 
 
-# # v1.1.13
+## v1.1.13
 - Added links to features, elkan rules and weapons
 - Also changed the module so that the minumum compatablity with Foundry was v10
 
 
-# # v1.1.12
+## v1.1.12
 - Added Commander a Fighter Subclass
 - Updated Features
   - Adrenaline Surge
@@ -287,7 +288,7 @@
 
 
 
-# # v1.1.11
+## v1.1.11
 - Changed Race Features Compendium to Ancestry Features
 - Added Background Compendium
 - Added Arcanist Background
@@ -300,7 +301,7 @@
 - Updated Ancestry Features
 - Updated Roll Table Wild Surge Cantrip
 
-# # v1.1.10
+## v1.1.10
 - Actually updated to Foundry V10
 - Removed Elkan 5e Scene becuase it wasn't being used
 - Updated Classes
@@ -334,7 +335,7 @@
 - Cleaned Up Compendiums
 
 
-# # v1.1.9
+## v1.1.9
 - Updated Module to Foundry V10
 - Redid module.json with new required information
 - Updated Classes
@@ -345,7 +346,7 @@
   - Elkan Beastmaster
 
 
-# # v1.1.8
+## v1.1.8
 - Updated Classes
   - Elkan Warlock
     - Updated and Added Invocations
@@ -358,13 +359,13 @@
   - Elkan Beastmaster
 
 
-# # v1.1.7
+## v1.1.7
 - Added Elkan Warlock (elkan5e.com/warlock)
 - Added some Invocations
 - Spell slots for Warlock need to be manually done
 
 
-# # v1.1.6
+## v1.1.6
 - Added Elkan Fighter (elkan5e.com/fighter)
 - Gave Elkan Fighter Default Save
 - Updated Features (not Elkan Fighter Based)
@@ -382,7 +383,7 @@
 
 
 
-# # v1.1.5
+## v1.1.5
 - Updated Classes:
   - Elkan Sorcerer (Updated Default Save)
   - Elkan Wizard
@@ -392,7 +393,7 @@
 
 
 
-# # v1.1.4
+## v1.1.4
 - Updated Classes by giving them their default saves. This had separate instances for if it is there original class or if it a multiclass
   - Elkan Barbarian
   - Elkan Monk
@@ -402,7 +403,7 @@
   - Elkan Sorcerer
   - Elkan Wizard
 
-# # v1.1.3
+## v1.1.3
 - Updated module.json info
 - Set system to be dnd5e only
 - Set each compendium to be dnd5e only
@@ -410,13 +411,13 @@
 - Fixed small issues everywhere
 
 
-# # v1.1.2
+## v1.1.2
 - Updated Elkan Classes
 - Updated Elkan Class Features
 - Updated Elkan Race Features
 
 
-# # v1.1.1
+## v1.1.1
 - Added Compendium Elkan5e Race Features
 - Updated Elkan Classes
 - Updated Elkan Class Features Compendium
@@ -430,7 +431,7 @@
   - Silvered Versions of those Weapons (Both Magical and not)
 
 
-# # v1.1.0
+## v1.1.0
 - Updated Elkan 5e in Foundry for DND 1.6.0
 - Updated Unrelenting Focus
 - Added Elkan 5e subclass compendium
@@ -454,7 +455,7 @@
 - New division for languages (Trade Languages, Rare Languages, Magical Languages)
 - Even more links
 
-# # v1.0.9
+## v1.0.9
 - Created Elkan 5e version of Barbarian 
    - Exceptions:
       - Armored Defense
@@ -466,33 +467,33 @@
 - Added a lot of links to other pages  (ex. if an ability mentions grappled there will be a link to the grappled page)
 
 
-# # v1.0.8
+## v1.0.8
 - Added a shell of all the classes to Elkan 5e classes
 - Updated spells
 
-# # v1.0.7
+## v1.0.7
 - Updated broken spells
 
-# # v1.0.6
+## v1.0.6
 - Cleaned up redundant information in the compendium
 - Cleaned up databases to follow the same name trend
 - Replaced an image
 - Added Spells
 
-# # v1.0.5
+## v1.0.5
 - Updated module description
 - Updated Elkan 5e version of Ranger
 - Added  Elkan 5e version of Sorcerer
 
-# # v1.0.4
+## v1.0.4
 - Added Elkan Hunter 
 - Added Elkan Rogue
 - Added the Elkan Religion information
 
-# # v1.0.3
+## v1.0.3
 - Named the compendium after Elkan folders
 - Updated Conditions
 - Updated Elkan Ranger
 
-# # v1.0.2
+## v1.0.2
 - Release
