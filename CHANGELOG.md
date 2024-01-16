@@ -221,7 +221,6 @@
 - Reorganized module.json alphabetically
 - Created Character Creation Rules
 
-
 ## v1.1.16
 - Updated Classes
   - Elkan Barbarian
@@ -256,18 +255,15 @@
   - Tools
   - Weapons
 
-
 ## v1.1.14
 - Updated Classes
   - Elkan Warlock
     - Added Missing Invocations
 - Updated Relgion notes
 
-
 ## v1.1.13
 - Added links to features, elkan rules and weapons
 - Also changed the module so that the minumum compatablity with Foundry was v10
-
 
 ## v1.1.12
 - Added Commander a Fighter Subclass
@@ -286,9 +282,7 @@
   - Uncanny Dodge
 - Fixed some Magical Items
 - Fixed Mundane Item 
-  - Moved Warhammer from Magical Item to Mundane Items
-
-
+  - Notible Error Warhammer was in Magical Item it has been moved to Mundane Items
 
 ## v1.1.11
 - Changed Race Features Compendium to Ancestry Features
@@ -336,7 +330,6 @@
 - Added Wild Surge Table Lv. 1 to Elkan 5e Roll Table
 - Cleaned Up Compendiums
 
-
 ## v1.1.9
 - Updated Module to Foundry V10
 - Redid module.json with new required information
@@ -347,25 +340,20 @@
   - College of Noise
   - Elkan Beastmaster
 
-
 ## v1.1.8
 - Updated Classes
   - Elkan Warlock
     - Updated and Added Invocations
-
 - Created Classes
   - Elkan Bard (elkan5e.com/bard)
-
 - Created Subclasses 
   - College of Noise (Bard Subclass)
   - Elkan Beastmaster
-
 
 ## v1.1.7
 - Added Elkan Warlock (elkan5e.com/warlock)
 - Added some Invocations
 - Spell slots for Warlock need to be manually done
-
 
 ## v1.1.6
 - Added Elkan Fighter (elkan5e.com/fighter)
@@ -383,8 +371,6 @@
     - Updated Elkan Paladin Notes
     - Updated Elkan Rogue Notes
 
-
-
 ## v1.1.5
 - Updated Classes:
   - Elkan Sorcerer (Updated Default Save)
@@ -392,8 +378,6 @@
 - Updated Features
   - Rage
   - Divine Smite
-
-
 
 ## v1.1.4
 - Updated Classes by giving them their default saves. This had separate instances for if it is there original class or if it a multiclass
@@ -412,12 +396,10 @@
 - Added midi-qol and dae as dependencies
 - Fixed small issues everywhere
 
-
 ## v1.1.2
 - Updated Elkan Classes
 - Updated Elkan Class Features
 - Updated Elkan Race Features
-
 
 ## v1.1.1
 - Added Compendium Elkan5e Race Features
@@ -431,7 +413,6 @@
   - Magic Versions of those Weapons
   - Adamantine Versions of those Weapons (Both Magical and not)
   - Silvered Versions of those Weapons (Both Magical and not)
-
 
 ## v1.1.0
 - Updated Elkan 5e in Foundry for DND 1.6.0
@@ -467,7 +448,6 @@
 - Cleaned Up some work 
 - Added the notes that are on the website https://www.elkan5e.com/ for the classes that exists
 - Added a lot of links to other pages  (ex. if an ability mentions grappled there will be a link to the grappled page)
-
 
 ## v1.0.8
 - Added a shell of all the classes to Elkan 5e classes
