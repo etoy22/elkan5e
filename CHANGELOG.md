@@ -191,6 +191,10 @@
 - Fixed bug with the new Foundry Database so it can actually be used with Github
 
 ## v1.2.1
+### June 2023
+- Updated to Foundry V11
+- Reorganized module.json alphabetically
+- Created Character Creation Rules
 ### May 2023
 - Readded Elkan Spells Compendium
 - Changed Name of Module from Elkan Dev to Elkan 5e
@@ -216,10 +220,6 @@
 - Updated Spell
  - Animate Dead
  - Fireball
-### June 2023
-- Updated to Foundry V11
-- Reorganized module.json alphabetically
-- Created Character Creation Rules
 
 ## v1.1.16
 - Updated Classes
