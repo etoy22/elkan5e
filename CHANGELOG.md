@@ -1,6 +1,6 @@
 # Changelog
 
-# # v1.2.8
+## v1.2.8
 - Added Changelog
 - Updated old releases with what we did in them to the best that I could find
 - Dragon Origin added Sorcerer Subclass (elkan5e.com/sorcerer)
