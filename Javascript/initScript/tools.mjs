@@ -7,7 +7,6 @@ export function tools(){
     //Adding Tool Types
     CONFIG.DND5E.toolTypes.craft = "Crafting Tools"
     CONFIG.DND5E.toolTypes.explore = "Exploration Tools"
-    
     CONFIG.DND5E.toolProficiencies.craft = "Crafting Tools"
     CONFIG.DND5E.toolProficiencies.explore = "Exploration Tools"
     

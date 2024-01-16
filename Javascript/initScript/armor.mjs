@@ -16,6 +16,7 @@ export function armor(){
     //Draconic Toughness New Formula
     CONFIG.DND5E.armorClasses.draconic.formula = "14 + @abilities.dex.mod"
     
+
     /*
     Work in progress the goal is to make it so that con is used in replacement for dex
     
