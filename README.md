@@ -1,4 +1,4 @@
-# elkan5e
+# Elkan 5e
 
 Welcome to the Elkan 5e Foundry Package! Here you can download the Elkan 5e module for Foundry's DnD 5e System. The module will add most Elkan 5e content to your Foundry game worlds.
 
