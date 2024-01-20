@@ -1,31 +1,14 @@
-/*
-Doing tool configurations
-*/
+/**
+ * Changes Foundry's tools to fit that of Elkan 5e.
+ */
 export function tools(){
-    
+    console.log("Elkan 5e  |  Initializing Tools")
+
     //Adding Tool Types
-    CONFIG.DND5E.toolTypes.art = "Artist's Tools"
     CONFIG.DND5E.toolTypes.craft = "Crafting Tools"
     CONFIG.DND5E.toolTypes.explore = "Exploration Tools"
-    
-    CONFIG.DND5E.toolProficiencies.art = "Artist's Tools"
     CONFIG.DND5E.toolProficiencies.craft = "Crafting Tools"
     CONFIG.DND5E.toolProficiencies.explore = "Exploration Tools"
-    CONFIG.DND5E.toolProficiencies.vehicle = "Vehicles"
-    
-    //Musical Instruments
-    CONFIG.DND5E.toolIds.bagpipes = "elkan5e.elkan5e-mundane-items.bltntEoiFJvXR939";
-    CONFIG.DND5E.toolIds.drum = "elkan5e.elkan5e-mundane-items.VLTPhQqTAOk2LPHW";
-    CONFIG.DND5E.toolIds.dul = "elkan5e.elkan5e-mundane-items.v72QLYutEG6w5ZRI";
-    CONFIG.DND5E.toolIds.drum = "elkan5e.elkan5e-mundane-items.VLTPhQqTAOk2LPHW";
-    CONFIG.DND5E.toolIds.dulcimer = "elkan5e.elkan5e-mundane-items.v72QLYutEG6w5ZRI";
-    CONFIG.DND5E.toolIds.flute = "elkan5e.elkan5e-mundane-items.uDJgqlZsYrqLrNEX";
-    CONFIG.DND5E.toolIds.horn = "elkan5e.elkan5e-mundane-items.PgP06DVVwXZNPMOW";
-    CONFIG.DND5E.toolIds.lute = "elkan5e.elkan5e-mundane-items.yQy1cBGK6P3eD4GZ";
-    CONFIG.DND5E.toolIds.lyre = "elkan5e.elkan5e-mundane-items.BrCG6C5mCLPahCml";
-    CONFIG.DND5E.toolIds.panflute = "elkan5e.elkan5e-mundane-items.VC36HOskyNfD6DXV";
-    CONFIG.DND5E.toolIds.shawm = "elkan5e.elkan5e-mundane-items.ZN6lVBJAeNqt4EE9";
-    CONFIG.DND5E.toolIds.viol = "elkan5e.elkan5e-mundane-items.rrNz3sZQQdb8ygRW";
     
     //Other Artiist's Tools 
     CONFIG.DND5E.toolIds.painter = "elkan5e.elkan5e-mundane-items.qZe6ua1j3TtX3QGv";
