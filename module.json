@@ -1,8 +1,8 @@
 {
   "id": "elkan5e",
   "title": "Elkan 5e",
-  "description": "A set of compendiums for adding Elkan 5e content to your Foundry VTT games using the DND5E game system. Contains classes, subclasses, a new ancestry and background system, items, and more. ",
-  "version": "1.2.8",
+  "description": "A set of compendiums for adding Elkan 5e content to your Foundry VTT games using the DND5E game system. Contains classes, subclasses, a new ancestry and background system, items, and more.",
+  "version": "1.2.9",
   "compatibility": {
     "minimum": "11",
     "verified": "11.315"
@@ -84,7 +84,7 @@
       "type": "Item",
       "system": "dnd5e",
       "ownership": {
-        "PLAYER": "OBSERVER",
+        "PLAYER": "NONE",
         "ASSISTANT": "OWNER"
       }
     },
@@ -117,7 +117,7 @@
       "type": "Item",
       "system": "dnd5e",
       "ownership": {
-        "PLAYER": "OBSERVER",
+        "PLAYER": "LIMITED",
         "ASSISTANT": "OWNER"
       }
     },
@@ -192,25 +192,54 @@
     {
       "name": "Elkan 5e",
       "sorting": "a",
-      "color": "#af0d0d",
+      "color": "#a13e3e",
       "packs": [
-        "elkan5e-ancestryFeatures",
-        "elkan5e-background",
-        "elkan5e-class",
-        "elkan5e-class-features",
         "elkan5e-journal-entries",
-        "elkan5e-creatures",
-        "elkan5e-macros",
-        "elkan5e-magic-items",
-        "elkan5e-mundane-items",
         "elkan5e-roll-tables",
-        "elkan5e-rules",
-        "elkan5e-spells",
-        "elkan5e-subclass",
-        "elkan-5e-feats",
-        "elkan-5e-creature-features"
+        "elkan5e-rules"
       ],
-      "folders": []
+      "folders": [
+        {
+          "name": "Character Options",
+          "sorting": "a",
+          "color": "#512323",        
+          "packs": [
+            "elkan5e-background",
+            "elkan5e-class",
+            "elkan5e-spells",
+            "elkan5e-subclass",
+            "elkan-5e-feats"
+          ]
+        },
+        {
+          "name": "Features",
+          "sorting": "a",
+          "color": "#512323",        
+          "packs": [
+            "elkan5e-ancestryFeatures",
+            "elkan5e-class-features",
+            "elkan-5e-creature-features"            
+          ]
+        },
+        {
+          "name": "Equiptment",
+          "sorting": "a",
+          "color": "#512323",
+          "packs": [
+            "elkan5e-magic-items",
+            "elkan5e-mundane-items"
+          ]
+        },
+        {
+          "name": "GM Resources",
+          "sorting": "a",
+          "color": "#512323",
+          "packs": [
+            "elkan5e-creatures",
+            "elkan5e-macros"
+          ]
+        }
+      ]
     }
   ],
   "relationships": {
