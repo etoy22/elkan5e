@@ -1,8 +1,29 @@
 # Changelog
 
+## v1.2.9
+- Foundry Updates
+  - Addition/Changes
+    - Berserker subclass is now on Foundry (https://www.elkan5e.com/barbarian)
+    - Fireball radius has been reduced to 15 feet
+  - Updates
+    - Focussed Slaughter is now automated
+    - Weapon Rules Page
+    - Updated some creatures in Elkan 5e Creatures
+      - Gave them the updated weapons
+      - Updated some attacks
+  - Fixing
+    - Ancestry Features are now labelled as such
+    - Draconic Toughness is now being properly applied
+    - Unarmored movement has been fixed and renamed
+  - Sorting
+    - Changed permission levels of Compendiums
+    - Put Elkan Compendiums into Folders
+    - Sorted the Elkan 5e Rules compendium
+- Code Updates
+
 ## v1.2.8
 - Foundry Updates
-  - Dragon Origin added Sorcerer Subclass (elkan5e.com/sorcerer)
+  - Dragon Origin added Sorcerer Subclass (https://www.elkan5e.com/sorcerer)
   - Improved Blasting Noise (College of Noise) provides temporary immunity to muted condition
   - Fixed Cold Iron bypass not working 
   - Moved some of the changing of name hooks here instead
