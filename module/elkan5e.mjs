@@ -29,7 +29,8 @@ Hooks.on("dnd5e.preRollAttack", (item, config) => {
  * On advancement type abilities
  */
 Hooks.on("dnd5e.preAdvancementManagerComplete", (advancementManager,actorUpdates,toCreate,toUpdate,toDelete) => {
+    advance_bard(toCreate,toUpdate)
+    advance_cleric(toCreate,toUpdate)
     advance_monk(toCreate,toUpdate)
     advance_sorcerer(toCreate,toUpdate)
-    advance_cleric(toCreate,toUpdate)
 });
