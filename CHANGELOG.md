@@ -1,8 +1,45 @@
 # Changelog
 
+## v1.2.9
+- Foundry Updates
+  - Addition/Changes
+    - Berserker subclass is now on Foundry (https://www.elkan5e.com/barbarian)
+    - Fireball radius has been reduced to 15 feet
+  - Updates
+    - Barbarian (https://www.elkan5e.com/barbarian)
+      - Level 17 is now just Focused Slaughter
+      - Focussed Slaughter is now automated
+      - Stubborn Will now just gives proficiency in wisdom saving throws (Whether raged or not)
+      - Level 13 is new feature called Mindless Rage
+    - Shifter
+      - Durable Form has been made passive with its ability affecting Wild Shapeshifting Directly
+    - Feats
+      - Supreme Might is now a feat
+    - Journals 
+      - Weapon Rules Page
+      - Class Notes Fighting Style Updated
+    - Updated some creatures in Elkan 5e Creatures
+      - Gave them the updated weapons
+      - Updated some attacks
+      - Elkan 5e Notes 
+    - Evasion Automated
+    - Renamed Dueling to Single Weapon Fighting as to better reflect what our version does
+    - Rangers Feral Instics name has been changed to Blindsight
+  - Fixing
+    - Ancestry Features are now labelled as such
+    - Draconic Toughness is now being properly applied
+    - Unarmored movement has been fixed and renamed
+    - Removed reduant Evasions
+  - Sorting
+    - Changed permission levels of Compendiums
+    - Put Elkan Compendiums into Folders
+    - Sorted the Elkan 5e Rules compendium
+- Code Updates
+  - Foundry Class Features that consume uses of a meta-resource are now automatically linked to do this properly
+
 ## v1.2.8
 - Foundry Updates
-  - Dragon Origin added Sorcerer Subclass (elkan5e.com/sorcerer)
+  - Dragon Origin added Sorcerer Subclass (https://www.elkan5e.com/sorcerer)
   - Improved Blasting Noise (College of Noise) provides temporary immunity to muted condition
   - Fixed Cold Iron bypass not working 
   - Moved some of the changing of name hooks here instead
