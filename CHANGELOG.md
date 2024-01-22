@@ -11,6 +11,8 @@
       - Focussed Slaughter is now automated
       - Stubborn Will now just gives proficiency in wisdom saving throws (Whether raged or not)
       - Level 13 is new feature called Mindless Rage
+    - Shifter
+      - Durable Form has been made passive with its ability affecting Wild Shapeshifting Directly
     - Feats
       - Supreme Might is now a feat
     - Journals 
