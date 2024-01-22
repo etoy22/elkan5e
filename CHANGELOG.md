@@ -1,5 +1,11 @@
 # Changelog
 
+## v1.2.10
+- Foundry
+  - Deflect Missiles [Throw Back] Added 
+  - Patient Defence now gives active effect
+  - Removed reduant text explaining how to automate features
+  - Fixed broken updates
 ## v1.2.9
 - Foundry Updates
   - Addition/Changes
