@@ -20,6 +20,7 @@ export function advance_monk(toCreate,toUpdate){
             "Step of the Wind",
             "Stillness of Mind",
             "Resilience in Motion",
+            "Deflect Missiles [Throw Back]",
             "Empty Body",
             "Astral Projection [Monk]", 
             "Perfect Self",
