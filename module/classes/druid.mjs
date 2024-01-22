@@ -41,3 +41,15 @@ export function advance_druid(toCreate,toUpdate){
         }
     }
 }
+
+
+/**
+ * TODO: This would make it so on transformation all attacks are magical. Probably using dnd5e.transformActor
+ * 
+ * Adds functionality to Magic Fang
+ *   @param 
+ *   @param 
+ */
+export function magicFang(actor,combatants){    
+    console.log("Nothing")
+}
