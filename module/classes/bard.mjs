@@ -8,11 +8,12 @@ export function advance_bard(toCreate,toUpdate){
     const baiID2 = toUpdate.find(e => e.name === "Bardic Inspiration");
     if (baiID1 || baiID2){
         let bardicInspiration = 0
-        if (spID1)
+        if (spID1){
             bardicInspiration = baiID1
-        else
+        }
+        else{
             bardicInspiration = baiID2
-
+        }
         const featureNames = [
             // College of Noise
             "Blasting Volume",
@@ -20,17 +21,31 @@ export function advance_bard(toCreate,toUpdate){
             // College of the Jester
             "Cutting Words"
         ]; 
-
+        
         for (let i = 0; i < featureNames.length;i++){
             let feats = toCreate.find(e => e.name ===  featureNames[i])
             if (feats){
                 feats.system.consume.target = bardicInspiration._id;
             }
-                
+            
         }
     }
 }
 
+
+/**
+ * Makes it so that features use their proper cost (Only works on level up)
+ *   @param {object[]} item - The Item5e.
+ *   @param {object[]} sheet - The ItemSheet5e application.
+ *   @param {object[]} data - The data that has been dropped onto the sheet.
+ */
+export function drop_bard(item,sheet,data){
+    console.log("Elkan 5e Item |",item)
+    console.log("Elkan 5e Sheet |",sheet)
+    console.log("Elkan 5e Data |",data)
+    // const baiID1 = toCreate.find(e => e.name === "Bardic Inspiration");
+    // const baiID2 = toUpdate.find(e => e.name === "Bardic Inspiration");
+}
 
 /**
  * TODO: This will make it so if they have Archdruid a pop up will appear at roll of initative 
