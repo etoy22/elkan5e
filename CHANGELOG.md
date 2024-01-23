@@ -1,5 +1,29 @@
 # Changelog
 
+## v1.11.0
+- Changing style 
+  - Module version of module numbers where vX.Y.Z
+    - X is Elkan version
+      - Most likely not to change
+    - Y is the foundry version
+    - Z is the version number in the Foundry version
+  - Updating module manifest and download going forward with that specific version module
+    - Idea being that people can easily download older versions
+- Foundry
+  - Fixes
+    - Improved Feral Instinct has proper image
+    - Empty Body active feature properly named
+    - Lucky Feature Automation
+  - Updates
+    - Fey Ancestry charmed condition is now tied the journal
+    - Clean up Extra Attacks
+    - Echolocation now has ATL vision attached
+    - Changes to spells school of magic have been updated on the spells
+  - Refrences
+    - Restore Familiar now has the correct refrence
+- Code Updates
+    - Bardic Inspiration Class Features now consume uses of a meta-resource are now automatically linked to do this properly
+
 ## v1.2.10
 - Foundry
   - Deflect Missiles [Throw Back] Added 

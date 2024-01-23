@@ -8,14 +8,17 @@ export function advance_cleric(toCreate,toUpdate){
     const cdID2 = toUpdate.find(e => e.name === "Channel Divinity");
     if (cdID1 || cdID2){
         let channelDivinity = 0
-        if (spID1)
+        if (spID1){
             channelDivinity = cdID1
-        else
+        }
+        else{
             channelDivinity = cdID2
-
+        }
+        
         const featureNames = [
             // Life Domain
-            "Channel Divinity: Preserve Life"
+            "Channel Divinity: Preserve Life",
+            "Turn Undead"
         ]; 
 
         for (let i = 0; i < featureNames.length;i++){
