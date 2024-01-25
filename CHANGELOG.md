@@ -14,6 +14,7 @@
     - Improved Feral Instinct has the proper image
     - Empty Body active feature properly named
     - Lucky Feature Automation
+    - Powerful Attack
   - Updates
     - Fey Ancestry charmed condition is now tied to the journal
     - Clean up Extra Attacks
