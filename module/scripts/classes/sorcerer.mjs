@@ -8,11 +8,13 @@ export function advance_sorcerer(toCreate,toUpdate){
     const spID2 = toUpdate.find(e => e.name === "Sorcery Points");
     if (spID1 || spID2){
         let sorceryPoints = 0
-        if (spID1)
+        if (spID1){
             sorceryPoints = spID1
-        else
+        }
+        else{
             sorceryPoints = spID2
-
+        }
+        
         const featureNames = [
             "Accurate Spell",
             "Careful Spell",
@@ -37,7 +39,4 @@ export function advance_sorcerer(toCreate,toUpdate){
                 
         }
     }
-
-
-
 }

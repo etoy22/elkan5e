@@ -1,7 +1,7 @@
 /**
  * All the changes of Elkan 5e in Foundry.
  */
-export function weaponTotal(){
+export function weapons(){
     console.log("Elkan 5e  |  Initializing Weapons")
     weaponTypes()
     weaponProperties()
