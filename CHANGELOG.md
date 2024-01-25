@@ -24,6 +24,7 @@
 - Code Updates
     - Bardic Inspiration Class Features now consume uses of a meta-resource and are now automatically linked to do this properly
     - Fixed spelling in Chanelog
+    - 
 
 ## v1.2.10
 - Foundry
@@ -31,6 +32,7 @@
   - Patient Defense now gives active effect
   - Removed redundant text explaining how to automate features
   - Fixed broken updates
+  
 ## v1.2.9
 - Foundry Updates
   - Addition/Changes
