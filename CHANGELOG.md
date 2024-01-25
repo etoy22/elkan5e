@@ -9,6 +9,19 @@
     - Z is the version number in the Foundry version
   - Updating module manifest and download going forward with that specific version module
     - The idea is that people can easily download older versions
+- Foundry
+  - Fixes
+    - Improved Feral Instinct has the proper image
+    - Empty Body active feature properly named
+    - Lucky Feature Automation
+    - Powerful Attack
+  - Updates
+    - Fey Ancestry charmed condition is now tied to the journal
+    - Clean up Extra Attacks
+    - Echolocation now has ATL vision attached
+    - Changes to spells School of Magic has been updated on the spells
+  - References
+    - Restore Familiar now has the correct reference
 - Code Updates
     - Bardic Inspiration Class Features now consume uses of a meta-resource and are now automatically linked to do this properly
     - Fixed spelling in Chanelog
