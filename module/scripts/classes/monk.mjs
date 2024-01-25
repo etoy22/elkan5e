@@ -14,7 +14,6 @@ export function advance_monk(toCreate,toUpdate){
         else{
             ki = kiID2
         }
-        
         let featureNames = [
             "Flurry of Blows",
             "Patient Defense",
