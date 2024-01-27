@@ -1,14 +1,6 @@
 # Changelog
 
-## v1.11.0
-- Changing style 
-  - Module version of module numbers where vX.Y.Z
-    - X is the Elkan 5e version
-      - Most likely not to change
-    - Y is the foundry version
-    - Z is the version number in the Foundry version
-  - Updating module manifest and download going forward with that specific version module
-    - The idea is that people can easily download older versions
+## v1.11.1
 - Foundry
   - Fixes
     - Improved Feral Instinct has the proper image
@@ -22,6 +14,16 @@
     - Changes to spells School of Magic has been updated on the spells
   - References
     - Restore Familiar now has the correct reference
+
+## v1.11.0
+- Changing style 
+  - Module version of module numbers where vX.Y.Z
+    - X is the Elkan 5e version
+      - Most likely not to change
+    - Y is the foundry version
+    - Z is the version number in the Foundry version
+  - Updating module manifest and download going forward with that specific version module
+    - The idea is that people can easily download older versions
 - Code Updates
     - Bardic Inspiration Class Features now consume uses of a meta-resource and are now automatically linked to do this properly
     - Fixed spelling in Chanelog
