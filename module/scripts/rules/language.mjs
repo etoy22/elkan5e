@@ -13,7 +13,6 @@ export function language(){
     delete CONFIG.DND5E.languages.druidic;
     delete CONFIG.DND5E.languages.cant;
 
-
     //Adding Languages
     CONFIG.DND5E.languages.standard.children.under = "Undercommon"
 

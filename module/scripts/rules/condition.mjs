@@ -19,7 +19,31 @@ export function conditions(){
 }
 
 
-//This is part of the siphoned and weakened thing to figure out
-// Hook.once("dnd5e.preRollDamage", (item,config) => {
+/**
+ * TODO: Adds functionality to Fey Ancestry to gain advantage on saves against charmed.
+ *   
+ */
+export function feyAncest(){
+}
 
-// })
+/*
+ * TODO: Automate grapple and give conditions according to the size of the attacker grappler and the
+ * size of the grappled. Also roll to see if the creature is actually grappled
+ */
+export function grapple(){
+    console.log("Grapple")
+}
+
+/**
+ * TODO: Adds functionality to Dwarven Resilience to give advantage on saves via poison. Probably need to use midi to automate
+ * maybe with looking at there overtime effects and how to mix that 
+ */
+export function dwarfResil(){
+
+}
+
+/**
+ * Adds functionality to Sturdy to give advantage on saves via prone.   
+ */
+export function sturdy(){
+}
