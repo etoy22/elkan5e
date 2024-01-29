@@ -1,5 +1,6 @@
 /**
- * Changes Foundry's tools to fit that of Elkan 5e.
+ * Changes Foundry's tools to fit that of Elkan 5e. This is the only 
+ * one that we had to do a full replacement
  */
 export function tools(){
     console.log("Elkan 5e  |  Initializing Tools")
