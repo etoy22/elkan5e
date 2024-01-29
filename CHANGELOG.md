@@ -7,6 +7,7 @@
     - Empty Body active feature properly named
     - Lucky Feature Automation
     - Powerful Attack
+    - The weapon descriptions
   - Updates
     - Fey Ancestry charmed condition is now tied to the journal
     - Clean up Extra Attacks
@@ -14,6 +15,9 @@
     - Changes to spells School of Magic has been updated on the spells
   - References
     - Restore Familiar now has the correct reference
+- Code
+  - Added Spell Components as a loot type
+  - Added Maneuvers as a subtype of Feats
 
 ## v1.11.0
 - Changing style 
