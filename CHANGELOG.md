@@ -7,12 +7,22 @@
     - Empty Body active feature properly named
     - Lucky Feature Automation
     - Powerful Attack
-    - The weapon descriptions
+    - Weapon Descriptions
+  - Added
+    - First Level Spells have been updated and reformatted
+    - Rain Spell (New Cantrip) has been created
+    - Floating Disk and Illusary Script have been made into cantrips
+    - Create and Destroy Water has been removed
   - Updates
     - Fey Ancestry charmed condition is now tied to the journal
     - Clean up Extra Attacks
     - Echolocation now has ATL vision attached
     - Changes to spells School of Magic has been updated on the spells
+    - Danger Sense (Feat) now automated to make you immune to suprised condition
+    - Spells
+      - Fire Shield (Now Automated)
+      - Slow (Now only works on 6 creatures)
+
   - References
     - Restore Familiar now has the correct reference
 - Code
