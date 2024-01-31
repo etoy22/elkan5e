@@ -8,12 +8,12 @@ export function advance_monk(toCreate,toUpdate){
     const kiID2 = toUpdate.find(e => e.name === "Ki");
     if (kiID1 || kiID2){
         let ki = 0
-        if (kiID1)
+        if (kiID1){
             ki = kiID1
-        else
+        }
+        else{
             ki = kiID2
-
-        
+        }
         let featureNames = [
             "Flurry of Blows",
             "Patient Defense",
@@ -37,7 +37,4 @@ export function advance_monk(toCreate,toUpdate){
             
         }
     }
-
-
-
 }

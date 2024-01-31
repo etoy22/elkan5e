@@ -16,7 +16,6 @@ export function focus(item,config){
     }
 }
 
-
 /**
  * TODO: This will make it so if they have Feral Instincts a pop up will appear at roll of initative 
  * to remind the player that they can rage. This reminder should only appear if actor also doesn't
