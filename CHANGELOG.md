@@ -1,5 +1,7 @@
 # Changelog
 
+## v1.11.2
+
 ## v1.11.1
 - Foundry
   - Fixes
