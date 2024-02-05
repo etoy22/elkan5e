@@ -13,13 +13,24 @@ export function weapons(){
  */
 export function weaponProperties(){
     //Adding new weapon Properties
-    CONFIG.DND5E.weaponProperties.coldIron = "Cold Iron"
-    CONFIG.DND5E.physicalWeaponProperties.coldIron = "Cold Iron"
-    CONFIG.DND5E.weaponProperties.mou = "Mounted"
-    CONFIG.DND5E.weaponProperties.unw = "Unwieldy"
+    CONFIG.DND5E.itemProperties.coldIron = {
+        label:"Cold Iron",
+        isPhysical: "true"
+    };
 
+    CONFIG.DND5E.itemProperties.mou = {
+        label:"Mounted"
+    };
+    CONFIG.DND5E.itemProperties.unw = {
+        label:"Unwieldy"
+    };
+
+
+    CONFIG.DND5E.validProperties.weapon.add("coldIron")
+    CONFIG.DND5E.validProperties.weapon.add("mou")
+    CONFIG.DND5E.validProperties.weapon.add("unw")
     //Removing Weapon Property
-    delete CONFIG.DND5E.weaponProperties.spc
+    CONFIG.DND5E.validProperties.weapon.delete("spc")
 }
 
 
