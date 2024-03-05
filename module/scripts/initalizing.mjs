@@ -3,6 +3,7 @@ import { conditions } from "./rules/condition.mjs";
 import { subFeatures } from "./rules/feats.mjs";
 import { language } from "./rules/language.mjs";
 import { mats } from "./rules/material.mjs";
+import { ruleType } from "./rules/ruleTypes.mjs";
 import { skills } from "./rules/skill.mjs";
 import { speed } from "./rules/speed.mjs";
 import { tools } from "./rules/tools.mjs";
@@ -19,6 +20,7 @@ export function init(){
     subFeatures()
     mats()
     skills()
+    ruleType()
     // TODO: the following below
     // speed()
 } 
