@@ -24,9 +24,9 @@ The SRD 5.1 is licensed under the Creative Commons Attribution 4.0 International
 <br>
 /icons/incapacitated.svg - Back pain icon
 <br>
-/icons/muted.svg - Silenced icon
-<br>
 /icons/obscured-lightly.svg - Fog icon
+<br>
+/icons/silenced.svg - Silenced icon
 <br>
 /icons/slowed.svg - Backward time icon
 <br>

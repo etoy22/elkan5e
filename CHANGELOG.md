@@ -20,12 +20,15 @@
   - Mark for Death:
     - Damage feature is now granted on Mark for Death Uses use
     - Updated Description
+  - Cunning Action now mentions that you cannot use two of the same action
+  - Starting gold
 - Subclass
   - [Assassin](https://elkan5e.com/rogue) is now available
 - Compendium
   - Fixed the folder name to be the proper spelling of Equipment
 - Conditions
   - Have been updated can see the changes reflected our the [website](https://www.elkan5e.com/conditions).
+  - Muted renamed to Silenced
 - Feats 
   - Minor Edit to Volley
   - Fixed Activation of Lay on Hands
