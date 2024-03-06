@@ -1,10 +1,15 @@
 import {focus} from "./scripts/classes/barbarian.mjs"
 import { advance } from "./scripts/advancement.mjs";
-import { init } from "./scripts/initalizing.mjs";
+import { init,ready } from "./scripts/initalizing.mjs";
 
 Hooks.once("init", () => {
     console.log("Elkan 5e  |  Initializing Elkan 5e")
     init()
+});
+
+Hooks.once("ready", () => {
+    console.log("Elkan 5e  |  After ready Elkan 5e")
+    ready()
 });
 
 /**
