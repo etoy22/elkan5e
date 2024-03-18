@@ -29,6 +29,7 @@
 - Conditions
   - Have been updated can see the changes reflected our the [website](https://www.elkan5e.com/conditions).
   - Muted renamed to Silenced
+  - Foundry now uses Elkan 5e conditions and have all been automated
 - Feats 
   - Minor Edit to Volley
   - Fixed Activation of Lay on Hands
@@ -55,12 +56,14 @@
   - Spell Lists:
     - Ranger got [Expeditious Retreat](https://www.elkan5e.com/spells/expeditious-retreat)
     - Sorcerers lose the gained [Protection from Good and Evil](https://www.elkan5e.com/spells/protection-from-evil-and-good)
-    - Wizards losses [Hideous Laughter]()
-  - 1st level spells have enrichers
+    - Wizards losses [Hideous Laughter](https://www.elkan5e.com/spells/hideous-laughter)
+  - 1st level spells now all have enrichers
   - Fixed formatting inconsistencies
   - Fixed [Command](https://www.elkan5e.com/spells/command) saying that it was VSM when it really just V
   - Minor Edits to [Detect Poison and Disease](https://www.elkan5e.com/spells/detect-poison-and-disease)
+  - [Blindness/Deafness](https://www.elkan5e.com/spells/blindness%2Fdeafness) is now automated
   - [Burning Hands](https://www.elkan5e.com/spells/burning-hands) adjustment added an additional 5 feet to the cone
+  - Fire Shield is no longer an attack
   - [Ray of Enfeeblement](https://www.elkan5e.com/spells/ray-of-enfeeblement) now gives weakness condition
   - [Shadow Strike](https://www.elkan5e.com/spells/shadow-strike) can no longer teleport to the air
   - [Shield](https://www.elkan5e.com/spells/shield) Spell now says that it requires a free hand
