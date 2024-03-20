@@ -7,10 +7,10 @@ If you want to join our community, we would be happy to talk in our <a href = "h
 We have included material from other sources, licensed to us under Creative Commons or other license types. To see a full list of credits and external sources, <a href="ttps://github.com/etoy22/elkan5e/blob/main/LICENCE.md">click here </a>
 
 ## Download
-You can find us on the Foundry Launcher otherwise you can do the following:
+You can find us on the Foundry Launcher. Otherwise you can do one of the following:
 
 - You can paste the following link into the 'manifest url' field at the bottom of the 'install module' section of Foundry's Add-On Modules panel: https://github.com/etoy22/elkan5e/releases/latest/download/module.json
-- Otherwise if you want to download it directly and put it in your Foundry modules folder: https://github.com/etoy22/elkan5e/releases/latest/download/module.zip
+- If you want to download it directly and put it in your Foundry modules folder: https://github.com/etoy22/elkan5e/releases/latest/download/module.zip
 
 ## Recomendations
 If you are using Condition Lab & Trigger, which we highly recommend, you can import the following file into Condition Lab to import our automated conditions, including our new conditions: https://github.com/etoy22/elkan5e/blob/main/cub-elkan5e-condition-map.json
