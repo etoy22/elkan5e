@@ -1,5 +1,80 @@
 # Changelog
 
+## v1.11.2
+- Ancestries
+  - Gave Mixed Ancestry a link to its Journal Note
+  - Breath Weapons:
+    - Now have the Magical property
+    - Now have enrichers on them
+  - Fixed formatting inconsistencies
+  - Minor Edit to Labyrinthine Recall
+- Background
+  - Now gives starting gold
+- Backend
+  - Weapon Property is now a type of Rule page
+  - Replaced all icons for conditions
+- Classes
+  - Minor Edit to Beastmaster's One Mind
+  - Unarmed Strike (Monk) now has its light weapon property
+  - Made the full change from Unarmored Movement to Empowered Movement for Monks
+  - Merged Fighter (3 attacks) and Hunter (3 attacks)
+  - Mark for Death:
+    - Damage feature is now granted on Mark for Death Uses use
+    - Updated Description
+  - Cunning Action now mentions that you cannot use two of the same action
+  - Fighters now have a new level 20 feature Endurance of Champions (has not been automated yet)
+- Subclass
+  - [Assassin](https://elkan5e.com/rogue) is now available
+  - Feint a [Duelist](https://elkan5e.com/rogue) feature has been clarified to be able to use with throwing weapons
+- Compendium
+  - Fixed the folder name to be the proper spelling of Equipment
+- Conditions
+  - Have been updated can see the changes reflected our the [website](https://www.elkan5e.com/conditions).
+  - Muted renamed to Silenced
+  - Foundry now uses Elkan 5e conditions and have all been automated
+- Feats 
+  - Minor Edit to Volley
+  - Fixed Activation of Lay on Hands
+- Items
+  - Morning Star now has their versatile property
+  - Set Magical Equipment with the magical property
+  - Fixed Large and Small Shields being counted as a type of light armor
+  - Bugfix: Gave all Cold Iron Weapons their properties back 
+  - +1 Rapier now exists
+  - Links to Weapon Property is now using the new referencing
+  - Pikes now been updated to get there 15 feet range
+  - Pike Icon has changed
+  - +1 Sling and +3 Sling have been put in the right place
+- Journal
+  - Removed Changes to Spells
+  - Weapons Rule page has been split up
+  - Removed footnote on conditions page
+  - Removed notes for weapons and armor and references to those pages
+  - Added Summary of Changes Journal Entry in Elkan 5e Rules (which will be the main place to check what changes have been made)
+  - Weapon Characteristics have now been moved to Weapon Rules Page 
+- References changes:
+  - Using the new system we have flipped over a lot of the referencing in dnd5e to the elkan version
+  - This includes weapon styles and conditions
+- Spells
+  - All 1st level spells now reference their location on the [website](https://www.elkan5e.com/spells).
+  - Spell Lists:
+    - Ranger got [Expeditious Retreat](https://www.elkan5e.com/spells/expeditious-retreat)
+    - Sorcerers lose the gained [Protection from Good and Evil](https://www.elkan5e.com/spells/protection-from-evil-and-good)
+    - Wizards losses [Hideous Laughter](https://www.elkan5e.com/spells/hideous-laughter)
+  - 1st level spells now all have enrichers
+  - Fixed formatting inconsistencies
+  - Fixed [Command](https://www.elkan5e.com/spells/command) saying that it was VSM when it really just V
+  - Minor Edits to [Detect Poison and Disease](https://www.elkan5e.com/spells/detect-poison-and-disease)
+  - [Blindness/Deafness](https://www.elkan5e.com/spells/blindness%2Fdeafness) is now automated
+  - [Burning Hands](https://www.elkan5e.com/spells/burning-hands) adjustment added an additional 5 feet to the cone
+  - Fire Shield is no longer an attack
+  - [Ray of Enfeeblement](https://www.elkan5e.com/spells/ray-of-enfeeblement) now gives weakness condition
+  - [Shadow Strike](https://www.elkan5e.com/spells/shadow-strike) can no longer teleport to the air
+  - [Shield](https://www.elkan5e.com/spells/shield) Spell now says that it requires a free hand
+  - [Resistance](https://www.elkan5e.com/spells/resistance) now lasts for full concentration and no longer disappears after first hit
+  - Bugfix: All spells now have their spell components
+  - Some 2nd level spells have been updated
+
 ## v1.11.1
 - Foundry
   - Fixes
@@ -22,7 +97,6 @@
     - Spells
       - Fire Shield (Now Automated)
       - Slow (Now only works on 6 creatures)
-
   - References
     - Restore Familiar now has the correct reference
 - Code
@@ -52,10 +126,10 @@
 ## v1.2.9
 - Foundry Updates
   - Addition/Changes
-    - Berserker subclass is now on Foundry (https://www.elkan5e.com/barbarian)
+    - [Berserker](https://www.elkan5e.com/barbarian) subclass is now on Foundry
     - Fireball radius has been reduced to 15 feet
   - Updates
-    - Barbarian (https://www.elkan5e.com/barbarian)
+    - [Barbarian](https://www.elkan5e.com/barbarian)
       - Level 17 is now just Focused Slaughter
       - Focused Slaughter is now automated
       - Stubborn Will now gives proficiency in wisdom saving throws (Whether raged or not)
@@ -88,7 +162,7 @@
 
 ## v1.2.8
 - Foundry Updates
-  - Dragon Origin added Sorcerer Subclass (https://www.elkan5e.com/sorcerer)
+  - [Dragon Origin](https://www.elkan5e.com/sorcerer) added Sorcerer Subclass
   - Improved Blasting Noise (College of Noise) provides temporary immunity to muted condition
   - Fixed Cold Iron bypass not working 
   - Moved some of the changing of name hooks here instead
@@ -172,7 +246,7 @@
    - Spears now have a reach of 10 ft. when used as melee weapons
    - Halberds can now deal either piercing or slashing damage (user's choice)
    - Morningstars are now versatile 1d8/1d10 weapons instead of just 1d8 
-   - The flail, trident, and war pick were removed for reasons we outline at the bottom of https://www.elkan5e.com/weapons
+   - The flail, trident, and war pick were removed for reasons we outline at the bottom of this [website](https://www.elkan5e.com/weapons)
 - Ancestry and Background features were updated to our new formatting (with no changes to their function)
 - Added descriptions to each class page, describing what the class is like.
 - The Ranger's natural explorer feature is simplified
@@ -183,8 +257,8 @@
 - Fixed the Laborer background giving all vehicle proficiencies.
 - Removed the placeholders for the Artificer and Psion classes, which are in development, from the live version of the module.
 ### November 27, 2023
-- Added the Life Domain for clerics: https://www.elkan5e.com/cleric
-- Added the Evoker Tradition for wizards: https://www.elkan5e.com/wizard
+- Added the Life Domain for [clerics](https://www.elkan5e.com/cleric)
+- Added the Evoker Tradition for [wizards](https://www.elkan5e.com/wizard)
 - Added an expanded spell list for the Circle of the Shifter druids.
 - Streamlined the proficiencies granted by backgrounds.
 - An extra tool option for rogues and druids was added.
@@ -423,29 +497,29 @@
 - Updated Module to Foundry V10
 - Redid module.json with the new required information
 - Updated Classes
-  - Elkan Bard (https://www.elkan5e.com/bard)
+  - Elkan [Bard](https://www.elkan5e.com/bard)
 - Updated Subclasses
-  - Elkan Hunter (https://www.elkan5e.com/ranger)
-  - College of Noise (https://www.elkan5e.com/bard)
-  - Elkan Beastmaster (https://www.elkan5e.com/ranger)
+  - Elkan [Hunter](https://www.elkan5e.com/ranger)
+  - [College of Noise](https://www.elkan5e.com/bard)
+  - [Elkan Beastmaster](https://www.elkan5e.com/ranger)
 
 ## v1.1.8
 - Updated Classes
   - Elkan Warlock
     - Updated and Added Invocations
 - Created Classes
-  - Elkan Bard (https://www.elkan5e.com/bard)
+  - Elkan [Bard](https://www.elkan5e.com/bard)
 - Created Subclasses 
   - College of Noise (Bard Subclass)
   - Elkan Beastmaster
 
 ## v1.1.7
-- Added Elkan Warlock (https://www.elkan5e.com/warlock)
+- Added Elkan [Warlock](https://www.elkan5e.com/warlock)
 - Added some Invocations
 - Spell slots for Warlock need to be manually done
 
 ## v1.1.6
-- Added Elkan Fighter (https://www.elkan5e.com/fighter)
+- Added Elkan [Fighter](https://www.elkan5e.com/fighter)
 - Gave Elkan Fighter Default Save
 - Updated Features (not Elkan Fighter Based)
   - Barbarian Default Proficiency
@@ -535,7 +609,7 @@
 - Updated Martial Arts
 - Updated Bardic Inspiration
 - Cleaned Up some work 
-- Added the notes that are on the website https://www.elkan5e.com/ for the classes that exist
+- Added the notes that are on the [website](https://www.elkan5e.com/) for the classes that exist
 - Added a lot of links to other pages  (ex., if an ability mentions grappled, there will be a link to the grappled page)
 
 ## v1.0.8
