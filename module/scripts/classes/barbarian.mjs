@@ -9,7 +9,8 @@ export function focus(item,config){
     const hasFocus = effects.some(e => e.name === "Focused Slaughter");
     const hasReckless = effects.some(e => e.name === "Reckless Attack");
 
-    if (hasFocus && hasReckless){
+
+    if (hasReckless){
         if (config.data.item.actionType == "mwak" && config.advantage){
             config.elvenAccuracy = true;
         }
