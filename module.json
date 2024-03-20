@@ -23,7 +23,7 @@
     {
       "name": "elkan5e-background",
       "label": "Elkan 5e Backgrounds",
-      "path": "packs/elkan5e-background",
+      "path": "packs/elkan5e-backgrounds",
       "type": "Item",
       "system": "dnd5e",
       "ownership": {
@@ -78,7 +78,7 @@
     {
       "name": "elkan5e-journal-entries",
       "label": "Elkan 5e Lore",
-      "path": "packs/elkan5e-journal-entries",
+      "path": "packs/elkan5e-lore",
       "type": "JournalEntry",
       "system": "dnd5e",
       "ownership": {
@@ -111,7 +111,7 @@
     {
       "name": "elkan5e-mundane-items",
       "label": "Elkan 5e Equipment",
-      "path": "packs/elkan5e-mundane-items",
+      "path": "packs/elkan5e-equipment",
       "type": "Item",
       "system": "dnd5e",
       "ownership": {
@@ -154,7 +154,7 @@
     },
     {
       "name": "elkan5e-subclass",
-      "label": "Elkan 5e Subclass",
+      "label": "Elkan 5e Subclasses",
       "path": "packs/elkan5e-subclass",
       "type": "Item",
       "system": "dnd5e",
@@ -192,55 +192,51 @@
       "sorting": "a",
       "color": "#a13e3e",
       "packs": [
-        "elkan5e-journal-entries",
-        "elkan5e-roll-tables",
         "elkan5e-rules"
       ],
       "folders": [
         {
-          "name": "Character Options",
+          "name": "Character Features",
           "sorting": "a",
           "color": "#512323",
           "packs": [
             "elkan5e-ancestries",
             "elkan5e-background",
-            "elkan5e-class",
-            "elkan5e-spells",
-            "elkan5e-subclass",
-            "elkan-5e-feats"
-          ],
-          "folders": []
-        },
-        {
-          "name": "Features",
-          "sorting": "a",
-          "color": "#512323",
-          "packs": [
-            "elkan5e-ancestryFeatures",
             "elkan5e-class-features",
-            "elkan-5e-creature-features"
+            "elkan5e-class",
+            "elkan-5e-feats",
+            "elkan5e-subclass"
+          ]
+        },
+        {
+          "name": "Creatures",
+          "sorting": "a",
+          "color": "#512323",
+          "packs": [
+            "elkan-5e-creature-features",
+            "elkan5e-creatures"
           ],
           "folders": []
         },
         {
-          "name": "Equipment",
+          "name": "Items and Spells",
           "sorting": "a",
           "color": "#512323",
           "packs": [
+            "elkan5e-mundane-items",
             "elkan5e-magic-items",
-            "elkan5e-mundane-items"
-          ],
-          "folders": []
+            "elkan5e-spells"
+          ]
         },
         {
-          "name": "GM Resources",
+          "name": "Other",
           "sorting": "a",
           "color": "#512323",
           "packs": [
-            "elkan5e-creatures",
-            "elkan5e-macros"
-          ],
-          "folders": []
+            "elkan5e-macros",
+            "elkan5e-journal-entries",
+            "elkan5e-roll-tables"
+          ]
         }
       ]
     }
@@ -249,11 +245,6 @@
     "recommends": [
       {
         "id": "ActiveAuras",
-        "type": "module",
-        "compatibility": {}
-      },
-      {
-        "id": "condition-lab-triggler",
         "type": "module",
         "compatibility": {}
       },
@@ -282,16 +273,6 @@
         "id": "midi-qol",
         "type": "module",
         "compatibility": {}
-      }
-    ],
-    "systems": [
-      {
-        "id": "dnd5e",
-        "type": "system",
-        "compatibility": {
-          "minimum": "2.0.3",
-          "maximum": "2.4.1"
-        }
       }
     ]
   },
