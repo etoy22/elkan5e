@@ -114,7 +114,7 @@
     - The idea is that people can easily download older versions
 - Code Updates
     - Bardic Inspiration Class Features now consume uses of a meta-resource and are now automatically linked to do this properly
-    - Fixed spelling in Chanelog
+    - Fixed spelling in Changelog
 
 ## v1.2.10
 - Foundry
