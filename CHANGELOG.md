@@ -7,11 +7,12 @@
     - Now have the Magical property
     - Now have enrichers on them
   - Fixed formatting inconsistencies
+  - Minor Edit to Labyrinthine Recall
 - Background
   - Now gives starting gold
 - Backend
   - Weapon Property is now a type of Rule page
-  - Replaced all icons (including ones that were already done by us)
+  - Replaced all icons for conditions
 - Classes
   - Minor Edit to Beastmaster's One Mind
   - Unarmed Strike (Monk) now has its light weapon property
@@ -21,9 +22,10 @@
     - Damage feature is now granted on Mark for Death Uses use
     - Updated Description
   - Cunning Action now mentions that you cannot use two of the same action
-  - Starting gold
+  - Fighters now have a new level 20 feature Endurance of Champions (has not been automated yet)
 - Subclass
   - [Assassin](https://elkan5e.com/rogue) is now available
+  - Feint a [Duelist](https://elkan5e.com/rogue) feature has been clarified to be able to use with throwing weapons
 - Compendium
   - Fixed the folder name to be the proper spelling of Equipment
 - Conditions
@@ -37,20 +39,22 @@
   - Morning Star now has their versatile property
   - Set Magical Equipment with the magical property
   - Fixed Large and Small Shields being counted as a type of light armor
-  - Bugfix: Gave all Cold Iron Weapons there properties back 
+  - Bugfix: Gave all Cold Iron Weapons their properties back 
   - +1 Rapier now exists
   - Links to Weapon Property is now using the new referencing
   - Pikes now been updated to get there 15 feet range
+  - Pike Icon has changed
+  - +1 Sling and +3 Sling have been put in the right place
 - Journal
   - Removed Changes to Spells
   - Weapons Rule page has been split up
   - Removed footnote on conditions page
   - Removed notes for weapons and armor and references to those pages
-  - Added Summary of Changes Journal Entry in Elkan 5e Rules
+  - Added Summary of Changes Journal Entry in Elkan 5e Rules (which will be the main place to check what changes have been made)
   - Weapon Characteristics have now been moved to Weapon Rules Page 
 - References changes:
-  - Skills now reference the Elkan version
-    - This shows up when you hover over the skills
+  - Using the new system we have flipped over a lot of the referencing in dnd5e to the elkan version
+  - This includes weapon styles and conditions
 - Spells
   - All 1st level spells now reference their location on the [website](https://www.elkan5e.com/spells).
   - Spell Lists:

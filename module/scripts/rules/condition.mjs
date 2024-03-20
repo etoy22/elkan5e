@@ -130,6 +130,16 @@ export function conditions(){
         reference:"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.iJT3cWvyTNBv1L5h",
         icon:"modules/elkan5e/icons/weakened.svg",
     };
+
+    CONFIG.DND5E.conditionTypes.concentrating = {
+        label: "Concentrating",
+        icon: "modules/elkan5e/icons/concentrating.svg"
+    }
+
+    CONFIG.DND5E.conditionTypes.surprised = {
+        label: "Surprised",
+        icon: "modules/elkan5e/icons/surprised.svg"
+    }
 }
 
 
@@ -419,8 +429,6 @@ export function icons(){
     }
 
 
-
-
     // Adding New Conditions
     // console.log("Elkan 5e  |  Adding new conditions")
     CONFIG.statusEffects.push({
@@ -443,10 +451,10 @@ export function icons(){
     });
 
     CONFIG.statusEffects.push({
-        "id": "coverthreequarrter",
-        "name": "Three Quarrter Cover",
+        "id": "coverthreequarters",
+        "name": "Three Quarrters Cover",
         "icon": "modules/elkan5e/icons/cover-three-quarters.svg",
-        "reference": "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.82ph4sMqvhxjLbiw",
+        "reference": "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
         "changes": [
             {
               "key": "system.abilities.dex.bonuses.save",
@@ -460,6 +468,7 @@ export function icons(){
             }
           ]
     });
+
 
     CONFIG.statusEffects.push({
         "id": "confused",
