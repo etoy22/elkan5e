@@ -109,7 +109,7 @@ export function conditions(){
         reference:"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.Jq7kMUlHodqSbYDD",
         icon:"modules/elkan5e/icons/obscured-lightly.svg"
     };
-    CONFIG.DND5E.conditionTypes.silence = {
+    CONFIG.DND5E.conditionTypes.silenced = {
         label: "Silenced",
         reference:"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.F51xrE7Mj8VeM3b8",
         icon:"modules/elkan5e/icons/silenced.svg"
@@ -124,20 +124,22 @@ export function conditions(){
         reference:"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.kkbgHooTzrtu4q8T",
         icon:"modules/elkan5e/icons/slowed.svg"
     };
-
+    
     CONFIG.DND5E.conditionTypes.weakened = {
         label: "Weakened",
         reference:"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.iJT3cWvyTNBv1L5h",
         icon:"modules/elkan5e/icons/weakened.svg",
     };
-
+    
     CONFIG.DND5E.conditionTypes.concentrating = {
         label: "Concentrating",
+        reference:"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.4ZOHN6tGvj54J6Kv",
         icon: "modules/elkan5e/icons/concentrating.svg"
     }
-
+    
     CONFIG.DND5E.conditionTypes.surprised = {
         label: "Surprised",
+        reference:"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.QOZeW0m8RCdVg6UE",
         icon: "modules/elkan5e/icons/surprised.svg"
     }
 }
@@ -157,6 +159,8 @@ export function icons(){
     CONFIG.statusEffects.find(effect => effect.id === "deafened").icon = "modules/elkan5e/icons/deafened.svg"
     CONFIG.statusEffects.find(effect => effect.id === "deafened").reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.AHgIwuNdpp0wKF2y"
     CONFIG.statusEffects.find(effect => effect.id === "diseased").icon = "modules/elkan5e/icons/diseased.svg"
+    CONFIG.statusEffects.find(effect => effect.id === "exhaustion").reference ="Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.mPzXN6MW8L6ePFmq"
+    CONFIG.statusEffects.find(effect => effect.id === "exhaustion").reference ="Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.mPzXN6MW8L6ePFmq"
     CONFIG.statusEffects.find(effect => effect.id === "frightened").icon = "modules/elkan5e/icons/frightened.svg"
     CONFIG.statusEffects.find(effect => effect.id === "frightened").reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.ruwpm6lorwoPJsmt"
     CONFIG.statusEffects.find(effect => effect.id === "grappled").icon = "modules/elkan5e/icons/grappled.svg"
@@ -181,21 +185,23 @@ export function icons(){
     CONFIG.statusEffects.find(effect => effect.id === "stunned").reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.JV8kbMo0p5S1YXUR"
     CONFIG.statusEffects.find(effect => effect.id === "unconscious").icon = "modules/elkan5e/icons/unconscious.svg"
     CONFIG.statusEffects.find(effect => effect.id === "unconscious").reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.ZwhWWUPJvpFCz8sK"
-    CONFIG.statusEffects.find(effect => effect.id === "exhaustion").reference ="Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.mPzXN6MW8L6ePFmq"
-    CONFIG.statusEffects.find(effect => effect.id === "silence").icon ="modules/elkan5e/icons/silenced.svg"
-    CONFIG.statusEffects.find(effect => effect.id === "exhaustion").reference ="Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.mPzXN6MW8L6ePFmq"
+    CONFIG.statusEffects.find(effect => effect.id === "silenced").icon ="modules/elkan5e/icons/silenced.svg"
     
-    //Removing Unused Conditions
-    // console.log("Elkan 5e  |  Removing unused conditions")
+    // //Removing Unused Conditions
+    console.log("Elkan 5e  |  Removing unused conditions")
     CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "bleeding");
     CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "burrowing");
     CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "cursed");
+    CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "dodging");
+    CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "ethereal");
     CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "flying");
+    CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "hidden");
+    CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "hiding");
+    CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "hovering");
     CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "marked");
     CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "transformed");
-    CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "dodging");
-    CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "hidden");
     CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "sleeping");
+    CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "stable");
 
 
     //Applying effects
@@ -380,7 +386,7 @@ export function icons(){
         }
     ]
 
-    CONFIG.statusEffects.find(effect => effect.id === "silence").changes = [
+    CONFIG.statusEffects.find(effect => effect.id === "silenced").changes = [
         {
             "key": "flags.midi-qol.fail.spell.verbal",
             "mode": 5,
@@ -430,7 +436,7 @@ export function icons(){
 
 
     // Adding New Conditions
-    // console.log("Elkan 5e  |  Adding new conditions")
+    console.log("Elkan 5e  |  Adding new conditions")
     CONFIG.statusEffects.push({
         "id": "coverhalf",
         "name": "Half Cover",
@@ -510,8 +516,7 @@ export function icons(){
         "id": "dominated",
         "name": "Dominated",
         "icon": "modules/elkan5e/icons/dominated.svg",
-        "reference": "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.0OYaVPznKqYgchW9",
-        "statuses": ["charmed"]
+        "reference": "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.0OYaVPznKqYgchW9"
     });
     CONFIG.statusEffects.push({
         "id":"drained",
@@ -618,6 +623,8 @@ export function icons(){
     });
 
     //CONFIG.DND5E.conditionEffects remove exhausion
+
+    
 
     CONFIG.statusEffects.sort((a, b) => {
         if (a.id === "dead" && b.id !== "dead") {

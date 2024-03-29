@@ -7,7 +7,7 @@ Hooks.once("init", () => {
     init()
 });
 
-Hooks.once("ready", () => {
+Hooks.once("init", () => {
     console.log("Elkan 5e  |  After ready Elkan 5e")
     ready()
 });
