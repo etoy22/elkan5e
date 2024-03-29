@@ -28,6 +28,7 @@
   - Feint a [Duelist](https://elkan5e.com/rogue) feature has been clarified to be able to use with throwing weapons
 - Compendium
   - Fixed the folder name to be the proper spelling of Equipment
+  - Renamed and sorted Compendiums
 - Conditions
   - Have been updated can see the changes reflected our the [website](https://www.elkan5e.com/conditions).
   - Muted renamed to Silenced
