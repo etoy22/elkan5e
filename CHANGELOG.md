@@ -24,7 +24,8 @@
   - Cunning Action now mentions that you cannot use two of the same action
   - Fighters now have a new level 20 feature, Endurance of Champions (has not been automated yet)
   - Fighter chart updated
-  - Class equipment has been put in Starting Equipment (Currently does nothing) 
+  - Class equipment has been put in Starting Equipment (Currently does nothing)
+  - Familiar's Blast is an ability and not a cantrip
 - Subclass
   - [Assassin](https://elkan5e.com/rogue) is now available
   - Feint a [Duelist](https://elkan5e.com/rogue) feature has been clarified to be able to be used with throwing weapons
