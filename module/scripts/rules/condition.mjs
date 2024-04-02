@@ -593,7 +593,7 @@ export function icons(){
         "icon":"modules/elkan5e/icons/obscured-lightly.svg",
         "changes": [
             {
-                "key":"flags.midi-qol.advantage.skill.slt",
+                "key":"flags.midi-qol.advantage.skill.ste",
                 "mode":2,
                 "value":"1"
             },
