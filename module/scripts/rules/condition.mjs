@@ -279,6 +279,11 @@ export function icons(){
             "key": "flags.midi-qol.grants.disadvantage.attack.all",
             "mode": 5,
             "value": "1"
+        },
+        {
+            "key":"flags.midi-qol.advantage.skill.ste",
+            "mode":2,
+            "value":"1"
         }
     ]
 
@@ -560,14 +565,40 @@ export function icons(){
         "id":"obscuredheavily",
         "name": "Heavily Obscured",
         "reference":"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.UC5VK6i6vqWEUfMn",
-        "icon":"modules/elkan5e/icons/obscured-heavily.svg"
+        "icon":"modules/elkan5e/icons/obscured-heavily.svg",
+        "changes": [
+            {
+                "key": "flags.midi-qol.advantage.attack.all",
+                "mode": 5,
+                "value": "1"
+            },
+            {
+                "key": "flags.midi-qol.grants.disadvantage.attack.all",
+                "mode": 5,
+                "value": "1"
+            },
+            {
+                "key":"flags.midi-qol.advantage.skill.ste",
+                "mode":2,
+                "value":"1"
+            }
+
+        ]
     });
     
     CONFIG.statusEffects.push({
         "id":"obscuredlightly",
         "name": "Lightly Obscured",
         "reference":"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.Jq7kMUlHodqSbYDD",
-        "icon":"modules/elkan5e/icons/obscured-lightly.svg"
+        "icon":"modules/elkan5e/icons/obscured-lightly.svg",
+        "changes": [
+            {
+                "key":"flags.midi-qol.advantage.skill.ste",
+                "mode":2,
+                "value":"1"
+            },
+
+        ]
     });
     
     CONFIG.statusEffects.push({
