@@ -2,11 +2,11 @@
 
 ## v1.11.2
 - Ancestries
-  - Gave Mixed Ancestry a link to its Journal Note
   - Breath Weapons:
     - Now have the Magical property
     - Now have enrichers on them
   - Fixed formatting inconsistencies
+  - Gave Mixed Ancestry a link to its Journal Note
   - Minor Edit to Labyrinthine Recall
 - Background
   - Now gives starting gold
@@ -16,45 +16,48 @@
 - Classes
   - Minor Edit to Beastmaster's One Mind
   - Unarmed Strike (Monk) now has its light weapon property
-  - Made the full change from Unarmored Movement to Empowered Movement for Monks
+  - Made the change from Unarmored Movement to Empowered Movement for Monks
   - Merged Fighter (3 attacks) and Hunter (3 attacks)
   - Mark for Death:
     - Damage feature is now granted on Mark for Death Uses use
     - Updated Description
   - Cunning Action now mentions that you cannot use two of the same action
-  - Fighters now have a new level 20 feature Endurance of Champions (has not been automated yet)
+  - Fighters now have a new level 20 feature, Endurance of Champions (has not been automated yet)
+  - Fighter chart updated
+  - Class equipment has been put in Starting Equipment (Currently does nothing) 
 - Subclass
   - [Assassin](https://elkan5e.com/rogue) is now available
-  - Feint a [Duelist](https://elkan5e.com/rogue) feature has been clarified to be able to use with throwing weapons
+  - Feint a [Duelist](https://elkan5e.com/rogue) feature has been clarified to be able to be used with throwing weapons
 - Compendium
   - Fixed the folder name to be the proper spelling of Equipment
   - Renamed and sorted Compendiums
 - Conditions
-  - Have been updated can see the changes reflected our the [website](https://www.elkan5e.com/conditions).
+  - Foundry now uses Elkan 5e conditions and has almost all been automated (exhaustion notwithstanding)
+  - Have been updated. The changes are reflected on the [website](https://www.elkan5e.com/conditions).
   - Muted renamed to Silenced
-  - Foundry now uses Elkan 5e conditions and have all been automated
 - Feats 
-  - Minor Edit to Volley
+  - [Dragon Breath Control](https://www.elkan5e.com/feats) is now avalable to [Draconic Origin](https://www.elkan5e.com/sorcerer) Sorcerer
   - Fixed Activation of Lay on Hands
+  - Minor Edit to Volley
 - Items
-  - Morning Star now has their versatile property
+  - Morning Star now has its versatile property
   - Set Magical Equipment with the magical property
   - Fixed Large and Small Shields being counted as a type of light armor
   - Bugfix: Gave all Cold Iron Weapons their properties back 
   - +1 Rapier now exists
   - Links to Weapon Property is now using the new referencing
-  - Pikes now been updated to get there 15 feet range
+  - Pikes have now been updated to get there 15 feet range
   - Pike Icon has changed
   - +1 Sling and +3 Sling have been put in the right place
 - Journal
   - Removed Changes to Spells
-  - Weapons Rule page has been split up
+  - The Weapons Rule page has been split up
   - Removed footnote on conditions page
   - Removed notes for weapons and armor and references to those pages
   - Added Summary of Changes Journal Entry in Elkan 5e Rules (which will be the main place to check what changes have been made)
   - Weapon Characteristics have now been moved to Weapon Rules Page 
 - References changes:
-  - Using the new system we have flipped over a lot of the referencing in dnd5e to the elkan version
+  - Using the new system, we have flipped over a lot of the referencing in dnd5e to the Elkan version
   - This includes weapon styles and conditions
 - Spells
   - All 1st level spells now reference their location on the [website](https://www.elkan5e.com/spells).
@@ -72,9 +75,10 @@
   - [Ray of Enfeeblement](https://www.elkan5e.com/spells/ray-of-enfeeblement) now gives weakness condition
   - [Shadow Strike](https://www.elkan5e.com/spells/shadow-strike) can no longer teleport to the air
   - [Shield](https://www.elkan5e.com/spells/shield) Spell now says that it requires a free hand
-  - [Resistance](https://www.elkan5e.com/spells/resistance) now lasts for full concentration and no longer disappears after first hit
+  - [Resistance](https://www.elkan5e.com/spells/resistance) now lasts for total concentration and no longer disappears after first hit
   - Bugfix: All spells now have their spell components
   - Some 2nd level spells have been updated
+  - Changed how spells were formatted
 
 ## v1.11.1
 - Foundry
