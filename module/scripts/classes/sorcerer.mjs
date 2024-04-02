@@ -36,7 +36,6 @@ export function advance_sorcerer(toCreate,toUpdate){
             if (feats){
                 feats.system.consume.target = sorceryPoints._id;
             }
-                
         }
     }
 }
