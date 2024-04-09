@@ -1,6 +1,19 @@
 # Changelog
 
 ## v1.11.2
+- Conditions
+  - Fixed conditions added by the module
+  - Automated Exhaustion
+- Creature Features
+  - Created the swarm template
+- Equipment
+  - Staff of Truth has been remade
+  - Projectile weapons descriptions have been changed
+- Spells
+  - Moonbeam has been clarified
+
+
+## v1.11.2
 - Ancestries
   - Breath Weapons:
     - Now have the Magical property
