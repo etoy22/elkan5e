@@ -18,6 +18,7 @@ export function advance_monk(toCreate,toUpdate){
             "Flurry of Blows",
             "Patient Defense",
             "Step of the Wind",
+            "Meditation",
             "Stillness of Mind",
             "Resilience in Motion",
             "Deflect Missiles [Throw Back]",
@@ -26,7 +27,13 @@ export function advance_monk(toCreate,toUpdate){
             "Perfect Self",
             // Way of the Open Hand
             "Wholeness of Body",
-            "Quivering Palm"
+            "Quivering Palm",
+            // Way of the Shadowdancer
+            "Meld with Shadows",
+            "Darkness [Shadow Casting]",
+            "Pass without Trace [Shadow Casting]",
+            "Shadow Strike [Shadow Casting]",
+            "Hijack Shadow"
         ]
         
         for (let i = 0; i < featureNames.length;i++){
