@@ -1,6 +1,18 @@
 # Changelog
 
 ## v1.11.2
+- Actions
+  - Added two new terms for when abilities occur
+    - As Part of a Weapon Attack
+    - During a Short Rest
+- Background
+  - Forge-Bound now gets access to Vehicles
+- Classes
+  - Format update for monk features (to be more in line with other features)
+  - Monks now have the Meditation Feature
+  - Unarmored Defense (Monk) can now be used with shields
+  - Stunning Strike cannot be used more than once per turn
+  - Made Arcane and Natural Recovery features work 1/long rest instead of 1/day
 - Conditions
   - Fixed conditions added by the module
   - Automated Exhaustion
@@ -11,6 +23,9 @@
   - Projectile weapons descriptions have been changed
 - Spells
   - Moonbeam has been clarified
+  - Shadow strike clarification
+- Subclasses
+  - [Shadowdancer](https://www.elkan5e.com/monk) Monk now exists
 
 
 ## v1.11.2
