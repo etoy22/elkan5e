@@ -31,7 +31,8 @@ export function feral(actor,combatants){
     if (improved){
         improvedFeral(actor,combatants)
     }else{
-        console.log("Nothing ")
+        
+        // console.log("Nothing ")
     }
 }
 
@@ -45,5 +46,5 @@ export function feral(actor,combatants){
  *   @param {object[]} combatants - The associated Combatants whose initiative was updated.
  */
 export function improvedFeral(actor,combatants){
-    console.log("Nothing ")
+    // console.log("Nothing ")
 }
