@@ -1,6 +1,6 @@
 # Changelog
 
-## v1.11.3
+## v1.11.2
 - Actions
   - Added two new terms for when abilities occur
     - As Part of a Weapon Attack
