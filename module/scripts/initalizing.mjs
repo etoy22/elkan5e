@@ -20,12 +20,7 @@ export function init(){
     skills()
     ruleType()
     activation()
+    icons()
     // TODO: the following below
     // speed()
 } 
-
-
-export function ready(){
-    console.log("Elkan 5e  |  In Setup Elkan 5e")
-    icons()
-}
