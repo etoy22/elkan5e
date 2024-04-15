@@ -1,5 +1,23 @@
 # Changelog
 
+## v1.11.4
+- Actions
+  - Applied the new terms that were put in last update
+- Classes
+  - Monk
+    - Ki was set to recover on short rest and has been fixed to be long rest
+    - Rewrote deflect missiles to be more clear
+  - Rogue
+    - Brute: Level 3 abilities renamed
+    - Duelist: Feint ability has been reworked to not take a reaction.
+    - Duelist: Reworked Master Duelist
+  - Sorcerer
+    - Draconic Orgin: Fixed getting wings at level 4 and changed it back to level 14
+  - Multiple
+    - Blindsights have all combined into one ability
+    - Move class footnotes text to bottom of abilities in italics
+
+
 ## v1.11.3.1
 - Emegency Update to Fix the program version control issue
 
