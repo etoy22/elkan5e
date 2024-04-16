@@ -13,9 +13,19 @@
     - Duelist: Reworked Master Duelist
   - Sorcerer
     - Draconic Orgin: Fixed getting wings at level 4 and changed it back to level 14
+  - Warlock
+    - Level 1 and Level 3 features have been switched
   - Multiple
     - Blindsights have all combined into one ability
     - Move class footnotes text to bottom of abilities in italics
+- Equipment
+  - SRD Weapons have been removed for now while we figure out what we want to do with them
+- Spells
+  - Added 3 new spells ([Bloodlust](https://www.elkan5e.com/spells/bloodlust), [Ball Lightning](https://www.elkan5e.com/spells/ball-lightning), and [Shockwave](https://www.elkan5e.com/spells/shockwave))
+  - [Moonbeam](https://www.elkan5e.com/spells/moonbeam) is done
+  - Some spells now grant spells to cast at-will while concentrating for automation purposes
+  - Augury now explains why it has an active effect
+
 
 
 ## v1.11.3.1
