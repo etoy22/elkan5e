@@ -1,5 +1,33 @@
 # Changelog
 
+## v1.11.4
+- Actions
+  - Applied the new terms that were put in last update
+- Classes
+  - Monk
+    - Ki was set to recover on short rest and has been fixed to be long rest
+    - Rewrote deflect missiles to be more clear
+  - Rogue
+    - Brute: Level 3 abilities renamed
+    - Duelist: Feint ability has been reworked to not take a reaction.
+    - Duelist: Reworked Master Duelist
+  - Sorcerer
+    - Draconic Orgin: Fixed getting wings at level 4 and changed it back to level 14
+  - Warlock
+    - Level 1 and Level 3 features have been switched
+  - Multiple
+    - Blindsights have all combined into one ability
+    - Move class footnotes text to bottom of abilities in italics
+- Equipment
+  - SRD Weapons have been removed for now while we figure out what we want to do with them
+- Spells
+  - Added 3 new spells ([Bloodlust](https://www.elkan5e.com/spells/bloodlust), [Ball Lightning](https://www.elkan5e.com/spells/ball-lightning), and [Shockwave](https://www.elkan5e.com/spells/shockwave))
+  - [Moonbeam](https://www.elkan5e.com/spells/moonbeam) is done
+  - Some spells now grant spells to cast at-will while concentrating for automation purposes
+  - Augury now explains why it has an active effect
+
+
+
 ## v1.11.3.1
 - Emegency Update to Fix the program version control issue
 
