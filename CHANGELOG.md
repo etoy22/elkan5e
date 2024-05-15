@@ -1,11 +1,14 @@
 # Changelog
 
 ## v1.11.5
+- Character
+  - Characters now get ASI and feats at level 4, 8, 12 and 16
 - Classes:
   - Barbarian
     - Bug Fix removed Stubborn Will getting bonus from Rage
     - Rage Bonus scaling changed
     - Primal Champion changed to +2 to Strength, Dexterity, Constitution
+    - Relentless Rage now resets on a long rest only.
   - Cleric
     - Subclass: Life Domain
       - Reduced life domain's Preserve Life feature to restore hit points equal to 4 times cleric level instead of 5 times.
@@ -21,6 +24,10 @@
   - Rogue
     - Added Poisoner's Tools as an option
     - Rogues now gain their fighting style at level 1, and expertise at level 2, instead of vice versa.
+    - Moved reliable talent to level 13
+    - Move expertise to level 15
+    - Removed Uncanny Dodge from level 15
+    - Rogues now get a new feature called Precision Attack where they can sacrafice damage to gain effects
     - Subclass: Mystic Trickster 
       - Can no longer sneak attack with minor magic missile or magic missile
   - Sorcerer
@@ -48,6 +55,7 @@
   - Fixed Hold Creature do restrained not paralyzed
   - Reduced damage die for Acid Arrow back to a d4
   - Fireball radius dropped to 10 ft
+  - Guidance Duration Fixed
 - Weapon
   - Martial Arts now works with two-handed weapons, but not weapons with the heavy tag (allowing the adjusted quarterstaff and the shortbow and light crossbow)
 
