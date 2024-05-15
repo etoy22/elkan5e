@@ -1,5 +1,58 @@
 # Changelog
 
+## v1.11.5
+- Classes:
+  - Barbarian
+    - Bug Fix removed Stubborn Will getting bonus from Rage
+    - Rage Bonus scaling changed
+    - Primal Champion changed to +2 to Strength, Dexterity, Constitution
+  - Cleric
+    - Subclass: Life Domain
+      - Reduced life domain's Preserve Life feature to restore hit points equal to 4 times cleric level instead of 5 times.
+  - Paladin
+    - Extra options for Divine Smites
+    - Removed spell slot level cap on paladin smites
+  - Fighter
+    - Subclass: Spellsword
+      - Reworked and reformatted Spellstrike to be used after hitting with an attack, and standardized the number of uses to 5/long rest
+      - Swapped the Improved Spellstrike and Rapid Warding features for Spellsword so they get spellstrike with spells earlier
+    - Subclass: Commander
+      - Added a 120 ft. range to Commander's Strike, which didn't have a listed range
+  - Rogue
+    - Added Poisoner's Tools as an option
+    - Rogues now gain their fighting style at level 1, and expertise at level 2, instead of vice versa.
+    - Subclass: Mystic Trickster 
+      - Can no longer sneak attack with minor magic missile or magic missile
+  - Sorcerer
+    - Twinned spell now only works with spells with a casting time of 1 action or bonus action, thereby preventing twinning smites.
+  - Warlock
+    - Split Warlock by there Pacts for now
+    - Repelling blast push distance dropped to 10 ft
+    - Warlock Invocation Page:
+      - Removed leftover footnotes
+  - Wizard
+    - Wizard savant subclass features now explicitly don't allow wizards to take smites
+  - Level 19 ASI Superior Ability Feature
+- Feats
+  - Added a Bunch of Feats to Foundry [check here to see all of them](https://www.elkan5e.com/feats)(no images)
+  - Added the requirement that characters must have Extra Attack to select level 8 combat maneuvers
+  - Reduced War Cry temporary hit points to two times proficiency bonus instead of equal to level.
+  - Removed the part of Stalwart that allowed for rerolling a failed save 1/long rest
+  - Reworked Bodyblock
+  - Moved Brawler to level 4 and added proficiency with unarmed strikes
+  - Improved Fighting Styles made into level 12 fighter feats
+  - Way Cry is now a level 12 feat instead of a level 8 one
+- Features
+  - Label all subclass features as 'Subclassname Feature' in character progression popups
+- Spell
+  - Fixed Hold Creature do restrained not paralyzed
+  - Reduced damage die for Acid Arrow back to a d4
+  - Fireball radius dropped to 10 ft
+- Weapon
+  - Martial Arts now works with two-handed weapons, but not weapons with the heavy tag (allowing the adjusted quarterstaff and the shortbow and light crossbow)
+
+**Note that classes may need to re-added to existing player characters (especially rogue) for new features to work**
+
 ## v1.11.4
 - Actions
   - Applied the new terms that were put in last update
