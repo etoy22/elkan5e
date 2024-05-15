@@ -14,6 +14,8 @@ export function ruleType(){
 export function activation(){
     CONFIG.DND5E.abilityActivationTypes.duringattack = "As Part of a Weapon Attack"
     CONFIG.DND5E.abilityActivationTypes.shortrest = "During a Short Rest"
+    CONFIG.DND5E.abilityActivationTypes.longrest = "During a Long Rest"
+    CONFIG.DND5E.abilityActivationTypes.nocost = "No Action Cost"
 }
 
 /*
