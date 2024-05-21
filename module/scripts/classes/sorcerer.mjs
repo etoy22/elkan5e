@@ -16,6 +16,8 @@ export function advance_sorcerer(toCreate,toUpdate){
         }
         
         const featureNames = [
+            "Magic Coalescence",
+            //Metamagic
             "Accurate Spell",
             "Careful Spell",
             "Distant Spell",
