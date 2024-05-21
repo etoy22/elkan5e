@@ -1,5 +1,8 @@
 # Changelog
 
+## v1.11.6.1
+- Reverted attacks of opportunity to no longer trigger on spellcasting
+
 ## v1.11.6
 - Action
 	- Features now have
