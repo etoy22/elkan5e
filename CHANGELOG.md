@@ -1,63 +1,99 @@
 # Changelog
 
+## v1.11.6
+- Action
+	- Features now have
+		- During a Long Rest
+		- No Action Cost
+	- Standard Actions now exist (With Dash, Hide and Disengage) all being merged into Standard Actions Feature
+- Classes
+	- Classes now give Standard Actions which explains all actions that can be taken with dodge and help seperate because they can be automated
+	- [Druid](https://www.elkan5e.com/druid)
+		- Losses Natural Recovery
+	- [Ranger](https://www.elkan5e.com/ranger)
+		- Primeval Awareness is a bonus action
+	- [Paladin](https://www.elkan5e.com/paladin)
+		- Subclass: Oath of Devotion
+			- Has been created and has some of its abilities changed and added to
+	- [Sorcerer](https://www.elkan5e.com/sorcerer)
+		- Magic Coalescence now allows Sorcerers to regain some metamagics (automated)
+- Feats
+	- Mark of Thorns now hjas a blank active effect to indicate who its affecting
+- Features
+	- Added Feature Type Precision Attack as a subtype of Class Feature
+- Language
+	- Fixed typos where Ancestral was spelled Ancestrial
+- Journals
+	- Standard Actions now appear in the new Combat Journal Entry in Rules
+		- Attacks of Opportunity now trigger on any movement moving away from a creature, rather than just movement that moves outside of a weapon's range. They also trigger on a spellcaster casting a spell with a casting time of 1 action.
+		- Readied Actions no longer require the readying creature to set a specific trigger.
+	- Added guidelines for GMs to set skill check DCs
+	- Updated Summary of Changes to conform with the changes that have been made
+		- It also now has a list of new spell
+- Weapons
+	 * Unarmed Strike has now been added to the weapon list
+- Spell
+	- New [Vine Lash](https://www.elkan5e.com/spells/vine-lash)
+	- Wizards have lost [Misty Step](https://www.elkan5e.com/spells/misty-step) and now requires somatic Components
+
 ## v1.11.5
 - Character
-  - Characters now get ASI and feats at level 4, 8, 12 and 16
+  - Characters now get ASI and feats at level 4, 8, 12 and 16
 - Classes:
-  - Barbarian
-    - Bug Fix removed Stubborn Will getting bonus from Rage
-    - Rage Bonus scaling changed
-    - Primal Champion changed to +2 to Strength, Dexterity, Constitution
-    - Relentless Rage now resets on a long rest only.
-  - Cleric
-    - Subclass: Life Domain
-      - Reduced life domain's Preserve Life feature to restore hit points equal to 4 times cleric level instead of 5 times.
-  - Paladin
-    - Extra options for Divine Smites
-    - Removed spell slot level cap on paladin smites
-  - Fighter
-    - Subclass: Spellsword
-      - Reworked and reformatted Spellstrike to be used after hitting with an attack, and standardized the number of uses to 5/long rest
-      - Swapped the Improved Spellstrike and Rapid Warding features for Spellsword so they get spellstrike with spells earlier
-    - Subclass: Commander
-      - Added a 120 ft. range to Commander's Strike, which didn't have a listed range
-  - Rogue
-    - Added Poisoner's Tools as an option
-    - Rogues now gain their fighting style at level 1, and expertise at level 2, instead of vice versa.
-    - Moved reliable talent to level 13
-    - Move expertise to level 15
-    - Removed Uncanny Dodge from level 15
-    - Rogues now get a new feature called Precision Attack where they can sacrafice damage to gain effects
-    - Subclass: Mystic Trickster 
-      - Can no longer sneak attack with minor magic missile or magic missile
-  - Sorcerer
-    - Twinned spell now only works with spells with a casting time of 1 action or bonus action, thereby preventing twinning smites.
-  - Warlock
-    - Split Warlock by there Pacts for now
-    - Repelling blast push distance dropped to 10 ft
-    - Warlock Invocation Page:
-      - Removed leftover footnotes
-  - Wizard
-    - Wizard savant subclass features now explicitly don't allow wizards to take smites
-  - Level 19 ASI Superior Ability Feature
+  - [Barbarian](https://www.elkan5e.com/barbarian)
+    - Bug Fix removed Stubborn Will getting bonus from Rage
+    - Rage Bonus scaling changed
+    - Primal Champion changed to +2 to Strength, Dexterity, Constitution
+    - Relentless Rage now resets on a long rest only.
+  - [Cleric](https://www.elkan5e.com/cleric)
+    - Subclass: Life Domain
+      - Reduced life domain's Preserve Life feature to restore hit points equal to 4 times cleric level instead of 5 times.
+  - [Paladin](https://www.elkan5e.com/paladin)
+    - Extra options for Divine Smites
+    - Removed spell slot level cap on paladin smites
+  - [Fighter](https://www.elkan5e.com/fighter)
+    - Subclass: Spellsword
+      - Reworked and reformatted Spellstrike to be used after hitting with an attack, and standardized the number of uses to 5/long rest
+      - Swapped the Improved Spellstrike and Rapid Warding features for Spellsword so they get spellstrike with spells earlier
+    - Subclass: Commander
+      - Added a 120 ft. range to Commander's Strike, which didn't have a listed range
+  - [Rogue](https://www.elkan5e.com/rogue)
+    - Added Poisoner's Tools as an option
+    - Rogues now gain their fighting style at level 1, and expertise at level 2, instead of vice versa.
+    - Moved reliable talent to level 13
+    - Move expertise to level 15
+    - Removed Uncanny Dodge from level 15
+    - Rogues now get a new feature called Precision Attack where they can sacrafice damage to gain effects
+    - Subclass: Mystic Trickster
+      - Can no longer sneak attack with minor magic missile or magic missile
+  - [Sorcerer](https://www.elkan5e.com/sorcerer)
+    - Twinned spell now only works with spells with a casting time of 1 action or bonus action, thereby preventing twinning smites.
+  - [Warlock](https://www.elkan5e.com/warlock)
+    - Split Warlock by there Pacts for now
+    - Repelling blast push distance dropped to 10 ft
+    - Warlock Invocation Page:
+      - Removed leftover footnotes
+  - [Wizard](https://www.elkan5e.com/wizard)
+    - Wizard savant subclass features now explicitly don't allow wizards to take smites
+  - Level 19 ASI Superior Ability Feature
 - Feats
-  - Added a Bunch of Feats to Foundry [check here to see all of them](https://www.elkan5e.com/feats)(no images)
-  - Added the requirement that characters must have Extra Attack to select level 8 combat maneuvers
-  - Reduced War Cry temporary hit points to two times proficiency bonus instead of equal to level.
-  - Removed the part of Stalwart that allowed for rerolling a failed save 1/long rest
-  - Reworked Bodyblock
-  - Moved Brawler to level 4 and added proficiency with unarmed strikes
-  - Improved Fighting Styles made into level 12 fighter feats
-  - Way Cry is now a level 12 feat instead of a level 8 one
+  - Added a Bunch of Feats to Foundry [check here to see all of them](https://www.elkan5e.com/feats)
+  - Added the requirement that characters must have Extra Attack to select level 8 combat maneuvers
+  - Reduced War Cry temporary hit points to two times proficiency bonus instead of equal to level.
+  - Removed the part of Stalwart that allowed for rerolling a failed save 1/long rest
+  - Reworked Bodyblock
+  - Moved Brawler to level 4 and added proficiency with unarmed strikes
+  - Improved Fighting Styles made into level 12 fighter feats
+  - Way Cry is now a level 12 feat instead of a level 8 one
 - Features
-  - Label all subclass features as 'Subclassname Feature' in character progression popups
+  - Label all subclass features as 'Subclassname Feature' in character progression popups
 - Spell
-  - Fixed Hold Creature do restrained not paralyzed
-  - Reduced damage die for Acid Arrow back to a d4
-  - Fireball radius dropped to 10 ft
-  - Guidance Duration Fixed
+  - Fixed Hold Creature do restrained not paralyzed
+  - Reduced damage die for Acid Arrow back to a d4
+  - Fireball radius dropped to 10 ft
+  - Guidance Duration Fixed
 - Weapon
-  - Martial Arts now works with two-handed weapons, but not weapons with the heavy tag (allowing the adjusted quarterstaff and the shortbow and light crossbow)
+  - Martial Arts now works with two-handed weapons, but not weapons with the heavy tag (allowing the adjusted quarterstaff and the shortbow and light crossbow)
 
 **Note that classes may need to re-added to existing player characters (especially rogue) for new features to work**
 
