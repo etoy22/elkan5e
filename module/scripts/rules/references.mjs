@@ -42,3 +42,15 @@ export function skills(){
     CONFIG.DND5E.enrichmentLookup.skills.sur.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.rv19GFzEa0nMTuAF.JournalEntryPage.6KIdxNMhOuvZUMxc"
 
 }
+
+export function combat(){
+    CONFIG.DND5E.rules.attack = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.IauYsEM9MxyZCIdc"
+    CONFIG.DND5E.rules.opportunity = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.5zEWVU1yw2Sv3hSI"
+    CONFIG.DND5E.rules.dodge = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.2Fxm6ATuDUyDIrt7"
+    CONFIG.DND5E.rules.dash = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.6UWCRY83phLnc7cF"
+    CONFIG.DND5E.rules.disengage = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.bYoY0gZQArDraXRs"
+    CONFIG.DND5E.rules.help = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.ZdoIWQgcoqcHlZSf"
+    CONFIG.DND5E.rules.hide = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.57VIppmrOewNVKF5"
+    CONFIG.DND5E.rules.ready = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.Uo0qriXzk4YInJrl"
+    CONFIG.DND5E.rules.search = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.bRo3ci56JJiuxYk8"
+}

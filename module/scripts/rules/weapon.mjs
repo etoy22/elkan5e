@@ -4,7 +4,7 @@
 export function weapons(){
     console.log("Elkan 5e  |  Initializing Weapons")
     weaponTypes()
-    weaponProperties()
+    weaponRules()
 }
 
 
@@ -25,13 +25,14 @@ export function weaponTypes(){
         label:"Unwieldy"
     };
 
-
+    
     CONFIG.DND5E.validProperties.weapon.add("coldIron")
     CONFIG.DND5E.validProperties.weapon.add("mou")
     CONFIG.DND5E.validProperties.weapon.add("unw")
     //Removing Weapon Property
     CONFIG.DND5E.validProperties.weapon.delete("spc")
 
+    CONFIG.DND5E.weaponIds.unarmed = "Compendium.elkan5e.elkan5e-class-features.Item.pRDNsHpNLLk1Qq58"
     delete CONFIG.DND5E.weaponIds.flail
     delete CONFIG.DND5E.weaponIds.net
     delete CONFIG.DND5E.weaponIds.trident
@@ -42,7 +43,7 @@ export function weaponTypes(){
 /**
  * Adds the weapons reference
  */
-export function weaponProperties(){
+export function weaponRules(){
     CONFIG.DND5E.rules.adamantine = "Compendium.elkan5e.elkan5e-rules.JournalEntry.nfEDSQG0DMBs7eGp.JournalEntryPage.cUHKJTc6BHyI1gfR"
     CONFIG.DND5E.rules.ammunition = "Compendium.elkan5e.elkan5e-rules.JournalEntry.nfEDSQG0DMBs7eGp.JournalEntryPage.5RUwcK38cpr1fZLe"
     CONFIG.DND5E.rules.coldw = "Compendium.elkan5e.elkan5e-rules.JournalEntry.nfEDSQG0DMBs7eGp.JournalEntryPage.ciqBm30ddE1BsPOg"
