@@ -7,6 +7,7 @@ Hooks.once("init", () => {
     init()
 });
 
+
 /**
  * Things that occur when an attack is declaired
  */
@@ -18,8 +19,6 @@ Hooks.on("dnd5e.preRollAttack", (item, config) => {
 Hooks.on("dnd5e.preAdvancementManagerComplete", (advancementManager,actorUpdates,toCreate,toUpdate,toDelete) => {
     advance(toCreate,toUpdate)
 });
-
-
 
 // TODO: This works with getting midi saves
 // Hooks.on("dnd5e.preRollAbilitySave", (actor,roll,abilityID) => {
