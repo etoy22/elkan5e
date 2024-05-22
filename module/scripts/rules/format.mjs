@@ -32,9 +32,8 @@ export function mats(){
  * Adds Manuevers as a subtype of classes
  */
 export function subFeatures(){
-    CONFIG.DND5E.featureTypes.class.subtypes.push(
-        precision = "Precision Attack"
-    )
+
+    CONFIG.DND5E.featureTypes.class.subtypes.precision = "Precision Attack"
 
     CONFIG.DND5E.featureTypes.feat = {
         label: "Feat",

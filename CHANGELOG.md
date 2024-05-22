@@ -1,5 +1,34 @@
 # Changelog
 
+## v1.11.6.2
+- Emergency Bug Fix
+	- Fixed major error causing things not to load
+		- Did the wrong type of push on Feature Type
+- Background
+	- Devout now gets skills
+- Classes
+	- Druid
+		- Cragged Path has had its details filled out
+	- Fighter
+		- Removed Challenger from combat manuever choice list as its not a combat manuever
+		- Spellsword: Subclass
+			- Now links to Action Surge
+	- Paladin
+		- Oath of Devotion: Subclass
+			- Gives immunity to Dominated condition as well
+	- Rogue
+		- Precision Attacks now added to progression
+		- Thieves tools items is now automatically given.
+	- Warlock
+		- Implant Suggestion now give Suggestion
+		- Sculptor of Flesh now gives Alter Self
+- Feats
+	- Added Shifty Feat
+	- Brawler Feat now gives Unarmed Profiency
+- Spell
+	- Moonbeam damage now has its Damage component
+
+
 ## v1.11.6.1
 - Reverted attacks of opportunity to no longer trigger on spellcasting
 
