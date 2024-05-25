@@ -1,3 +1,47 @@
+/**
+ * Makes it so that features use their proper cost (Only works on level up)
+ *   @param {object[]} toCreate - Items that will be created on the actor.
+ *   @param {object[]} toUpdate - Items that will be updated on the actor.
+ */
+export function advance_druid(toCreate,toUpdate){
+    const wildID1 = toCreate.find(e => e.name === "Wild Shape");
+    const wildID2 = toUpdate.find(e => e.name === "Wild Shape");
+    if (wildID1 || wildID2){
+        let wildShape = 0
+        if (spID1)
+            wildShape = wildID1
+        else
+            wildShape = wildID2
+
+        const featureNames = [
+            "Cragged Path",
+            "Herd's Momentum",
+            "Howling Storm",
+            "Ice Flow",
+            "Lurking Fog",
+            "Lesser Shifting",
+            "Shifting Sands",
+            "Shifting Sands",
+            "Underworld Eyes",
+            "Breath of the Sea",
+            "Crawler's Claws",
+            "Springing Step",
+            "Drifting Tides",
+            "Rising Mud",
+            "Soaring Winds",
+            // Shifter Circle
+            "Wild Shapeshifting"
+        ]; 
+
+        for (let i = 0; i < featureNames.length;i++){
+            let feats = toCreate.find(e => e.name ===  featureNames[i])
+            if (feats){
+                feats.system.consume.target = wildShape._id;
+            }           
+        }
+    }
+}
+
 
 /**
  * TODO: This would make it so on transformation all attacks are magical. Probably using dnd5e.transformActor
@@ -8,18 +52,4 @@
  */
 export function magicFang(actor,combatants){    
     console.log("Nothing")
-}
-
-
-/**
- * TODO: This will make it so if they have Archdruid a pop up will appear at roll of initative 
- * to remind the player that they can use the wild shape. This reminder should only appear if actor also doesn't
- * have suprised condition. Maybe dnd5e.rollInitiative
- * 
- * Adds functionality to Feral Archdruid.
- *   @param {object[]} actor - The Actor that rolled initiative.
- *   @param {object[]} combatants - The associated Combatants whose initiative was updated.
- */
-export function archDruid(actor,combatants){
-    console.log("Nothing ")
 }
