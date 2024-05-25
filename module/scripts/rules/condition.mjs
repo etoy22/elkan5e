@@ -1,14 +1,14 @@
 /**
  * Adds the Elkan 5e conditions to Foundry.
  */
+
 export function conditions(){
     console.log("Elkan 5e  |  Initializing Conditions")
     console.log("Elkan 5e  |  Replacing Icons for Old Conditions")
     //Replace icons
-    CONFIG.DND5E.conditionTypes.blinded.icon = "modules/elkan5e/icons/blinded.svg "
+    CONFIG.DND5E.conditionTypes.blinded.icon = "modules/elkan5e/icons/blinded.svg"
     CONFIG.DND5E.conditionTypes.charmed.icon = "modules/elkan5e/icons/charmed.svg"
     CONFIG.DND5E.conditionTypes.deafened.icon = "modules/elkan5e/icons/deafened.svg"
-    // CONFIG.DND5E.conditionTypes.dead.icon = "modules/elkan5e/icons/dead.svg"
     CONFIG.DND5E.conditionTypes.frightened.icon = "modules/elkan5e/icons/frightened.svg"
     CONFIG.DND5E.conditionTypes.grappled.icon = "modules/elkan5e/icons/grappled.svg"
     CONFIG.DND5E.conditionTypes.incapacitated.icon = "modules/elkan5e/icons/incapacitated.svg"
@@ -20,42 +20,8 @@ export function conditions(){
     CONFIG.DND5E.conditionTypes.prone.icon = "modules/elkan5e/icons/prone.svg"
     CONFIG.DND5E.conditionTypes.stunned.icon = "modules/elkan5e/icons/stunned.svg"
     CONFIG.DND5E.conditionTypes.unconscious.icon = "modules/elkan5e/icons/unconscious.svg"
-    
-    console.log("Elkan 5e  |  Replacing References for Old Conditions")
-    //Replace References
-    CONFIG.DND5E.conditionTypes.blinded.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.SXTqmewRrCwPS8yW"
-    CONFIG.DND5E.conditionTypes.charmed.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.ieDILSkRbu9r8pmZ"
-    CONFIG.DND5E.conditionTypes.deafened.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.AHgIwuNdpp0wKF2y"
-    CONFIG.DND5E.conditionTypes.frightened.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.ruwpm6lorwoPJsmt"
-    CONFIG.DND5E.conditionTypes.grappled.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.zaI1nuc41wANKoFX"
-    CONFIG.DND5E.conditionTypes.incapacitated.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.PXI4uoXj7x6IsDXt"
-    CONFIG.DND5E.conditionTypes.invisible.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.GfTD899cLRZxGG1H"
-    CONFIG.DND5E.conditionTypes.paralyzed.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.w5RoCYZIujGYuiYt"
-    CONFIG.DND5E.conditionTypes.petrified.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.n0BX8pLecgm7E3uH"
-    CONFIG.DND5E.conditionTypes.poisoned.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.fzEf89TZ1WN90bFv"
-    CONFIG.DND5E.conditionTypes.prone.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.y8L5Uq1jMVDsQjaS"
-    CONFIG.DND5E.conditionTypes.restrained.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DiWd3u4HCD7JEw8V"
-    CONFIG.DND5E.conditionTypes.stunned.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.JV8kbMo0p5S1YXUR"
-    CONFIG.DND5E.conditionTypes.unconscious.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.ZwhWWUPJvpFCz8sK"
-    CONFIG.DND5E.conditionTypes.exhaustion.reference ="Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.mPzXN6MW8L6ePFmq"
-    
-    //Concentration
-    CONFIG.DND5E.spellTags.concentration.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.4ZOHN6tGvj54J6Kv"
-    
-    //TODO: Talk about these condition   
-    CONFIG.DND5E.rules.concentrating = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.zY2CHn81NAqSs6gh"
-    CONFIG.DND5E.spellTags.concentration.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.4ZOHN6tGvj54J6Kv"
-    CONFIG.DND5E.rules.surprise = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.QOZeW0m8RCdVg6UE"
-    
-    
-    //Cover
-    CONFIG.DND5E.rules.cover = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.d2hBqe6EYHX2mxKD"
-    CONFIG.DND5E.rules.halfcover = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq"
-    CONFIG.DND5E.rules.threequarterscover = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.82ph4sMqvhxjLbiw"
-    CONFIG.DND5E.rules.totalcover = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.hY5s70xMeG5ISFUA"
-    
+        
     console.log("Elkan 5e  |  Adding New Elkan Conditions")
-    
     //For now this is commented out while we work on effecting icons
     //Add conditions
     CONFIG.DND5E.conditionTypes.confused = {
@@ -150,42 +116,25 @@ export function conditions(){
 */
 export function icons(){
     console.log("Elkan 5e  |  Initializing Icons")
-    CONFIG.statusEffects.find(effect => effect.id === "dead").icon = "modules/elkan5e/icons/dead.svg"
-    CONFIG.statusEffects.find(effect => effect.id === "blinded").icon = "modules/elkan5e/icons/blinded.svg"
-    CONFIG.statusEffects.find(effect => effect.id === "blinded").reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.SXTqmewRrCwPS8yW"
-    CONFIG.statusEffects.find(effect => effect.id === "charmed").icon = "modules/elkan5e/icons/charmed.svg"
-    CONFIG.statusEffects.find(effect => effect.id === "charmed").reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.ieDILSkRbu9r8pmZ"
-    CONFIG.statusEffects.find(effect => effect.id === "concentrating").icon = "modules/elkan5e/icons/concentrating.svg"
-    CONFIG.statusEffects.find(effect => effect.id === "deafened").icon = "modules/elkan5e/icons/deafened.svg"
-    CONFIG.statusEffects.find(effect => effect.id === "deafened").reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.AHgIwuNdpp0wKF2y"
-    CONFIG.statusEffects.find(effect => effect.id === "diseased").icon = "modules/elkan5e/icons/diseased.svg"
-    CONFIG.statusEffects.find(effect => effect.id === "exhaustion").reference ="Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.mPzXN6MW8L6ePFmq"
-    CONFIG.statusEffects.find(effect => effect.id === "exhaustion").reference ="Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.mPzXN6MW8L6ePFmq"
-    CONFIG.statusEffects.find(effect => effect.id === "frightened").icon = "modules/elkan5e/icons/frightened.svg"
-    CONFIG.statusEffects.find(effect => effect.id === "frightened").reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.ruwpm6lorwoPJsmt"
-    CONFIG.statusEffects.find(effect => effect.id === "grappled").icon = "modules/elkan5e/icons/grappled.svg"
-    CONFIG.statusEffects.find(effect => effect.id === "grappled").reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.zaI1nuc41wANKoFX"
-    CONFIG.statusEffects.find(effect => effect.id === "incapacitated").icon = "modules/elkan5e/icons/incapacitated.svg"
-    CONFIG.statusEffects.find(effect => effect.id === "incapacitated").reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.PXI4uoXj7x6IsDXt"
-    CONFIG.statusEffects.find(effect => effect.id === "invisible").icon = "modules/elkan5e/icons/invisible.svg"
-    CONFIG.statusEffects.find(effect => effect.id === "invisible").reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.GfTD899cLRZxGG1H"
-    CONFIG.statusEffects.find(effect => effect.id === "paralyzed").icon = "modules/elkan5e/icons/paralyzed.svg"
-    CONFIG.statusEffects.find(effect => effect.id === "paralyzed").reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.w5RoCYZIujGYuiYt"
-    CONFIG.statusEffects.find(effect => effect.id === "petrified").icon = "modules/elkan5e/icons/petrified.svg"
-    CONFIG.statusEffects.find(effect => effect.id === "petrified").reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.n0BX8pLecgm7E3uH"
-    CONFIG.statusEffects.find(effect => effect.id === "poisoned").icon = "modules/elkan5e/icons/poisoned.svg"
-    CONFIG.statusEffects.find(effect => effect.id === "poisoned").reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.fzEf89TZ1WN90bFv"
-    CONFIG.statusEffects.find(effect => effect.id === "prone").icon = "modules/elkan5e/icons/prone.svg"
-    CONFIG.statusEffects.find(effect => effect.id === "prone").reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.y8L5Uq1jMVDsQjaS"
-    CONFIG.statusEffects.find(effect => effect.id === "restrained").icon = "modules/elkan5e/icons/restrained.svg"
-    CONFIG.statusEffects.find(effect => effect.id === "restrained").reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DiWd3u4HCD7JEw8V"
-    CONFIG.statusEffects.find(effect => effect.id === "surprised").icon = "modules/elkan5e/icons/surprised.svg"
-    CONFIG.statusEffects.find(effect => effect.id === "surprised").reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.QOZeW0m8RCdVg6UE"
-    CONFIG.statusEffects.find(effect => effect.id === "stunned").icon = "modules/elkan5e/icons/stunned.svg"
-    CONFIG.statusEffects.find(effect => effect.id === "stunned").reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.JV8kbMo0p5S1YXUR"
-    CONFIG.statusEffects.find(effect => effect.id === "unconscious").icon = "modules/elkan5e/icons/unconscious.svg"
-    CONFIG.statusEffects.find(effect => effect.id === "unconscious").reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.ZwhWWUPJvpFCz8sK"
-    CONFIG.statusEffects.find(effect => effect.id === "silenced").icon ="modules/elkan5e/icons/silenced.svg"
+    CONFIG.statusEffects.find(effect => effect.id === "dead").img = "modules/elkan5e/icons/dead.svg"
+    CONFIG.statusEffects.find(effect => effect.id === "blinded").img = "modules/elkan5e/icons/blinded.svg"
+    CONFIG.statusEffects.find(effect => effect.id === "charmed").img = "modules/elkan5e/icons/charmed.svg"
+    CONFIG.statusEffects.find(effect => effect.id === "concentrating").img = "modules/elkan5e/icons/concentrating.svg"
+    CONFIG.statusEffects.find(effect => effect.id === "deafened").img = "modules/elkan5e/icons/deafened.svg"
+    CONFIG.statusEffects.find(effect => effect.id === "diseased").img = "modules/elkan5e/icons/diseased.svg"
+    CONFIG.statusEffects.find(effect => effect.id === "frightened").img = "modules/elkan5e/icons/frightened.svg"
+    CONFIG.statusEffects.find(effect => effect.id === "grappled").img = "modules/elkan5e/icons/grappled.svg"
+    CONFIG.statusEffects.find(effect => effect.id === "incapacitated").img = "modules/elkan5e/icons/incapacitated.svg"
+    CONFIG.statusEffects.find(effect => effect.id === "invisible").img = "modules/elkan5e/icons/invisible.svg"
+    CONFIG.statusEffects.find(effect => effect.id === "paralyzed").img = "modules/elkan5e/icons/paralyzed.svg"
+    CONFIG.statusEffects.find(effect => effect.id === "petrified").img = "modules/elkan5e/icons/petrified.svg"
+    CONFIG.statusEffects.find(effect => effect.id === "poisoned").img = "modules/elkan5e/icons/poisoned.svg"
+    CONFIG.statusEffects.find(effect => effect.id === "prone").img = "modules/elkan5e/icons/prone.svg"
+    CONFIG.statusEffects.find(effect => effect.id === "restrained").img = "modules/elkan5e/icons/restrained.svg"
+    CONFIG.statusEffects.find(effect => effect.id === "surprised").img = "modules/elkan5e/icons/surprised.svg"
+    CONFIG.statusEffects.find(effect => effect.id === "stunned").img = "modules/elkan5e/icons/stunned.svg"
+    CONFIG.statusEffects.find(effect => effect.id === "unconscious").img = "modules/elkan5e/icons/unconscious.svg"
+    CONFIG.statusEffects.find(effect => effect.id === "silenced").img ="modules/elkan5e/icons/silenced.svg"
     
     // //Removing Unused Conditions
     console.log("Elkan 5e  |  Removing unused conditions")
@@ -470,7 +419,7 @@ export function icons(){
         "id": "coverhalf",
         "name": "Half Cover",
         "_id": "dnd5ecoverhalf00",
-        "icon": "modules/elkan5e/icons/cover-half.svg",
+        "img": "modules/elkan5e/icons/cover-half.svg",
         "reference": "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
         "changes": [
             {
@@ -490,7 +439,7 @@ export function icons(){
         "id": "coverthreequarters",
         "name": "Three Quarrters Cover",
         "_id": "dnd5ecoverthreec",
-        "icon": "modules/elkan5e/icons/cover-three-quarters.svg",
+        "img": "modules/elkan5e/icons/cover-three-quarters.svg",
         "reference": "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
         "changes": [
             {
@@ -511,7 +460,7 @@ export function icons(){
         "id": "confused",
         "name": "Confused",
         "_id": "dnd5econfused000",
-        "icon": "modules/elkan5e/icons/confused.svg",
+        "img": "modules/elkan5e/icons/confused.svg",
         "reference": "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.WJFtNc5UraHVrV5V",
         "changes": [
             {
@@ -541,7 +490,7 @@ export function icons(){
         "id": "dazed",
         "name": "Dazed",
         "_id": "dnd5edazed000000",
-        "icon": "modules/elkan5e/icons/dazed.svg",
+        "img": "modules/elkan5e/icons/dazed.svg",
         "reference": "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.0BYyVwipnS55gVFq"
     });
     
@@ -549,7 +498,7 @@ export function icons(){
         "id": "dominated",
         "name": "Dominated",
         "_id": "dnd5edominated00",
-        "icon": "modules/elkan5e/icons/dominated.svg",
+        "img": "modules/elkan5e/icons/dominated.svg",
         "reference": "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.0OYaVPznKqYgchW9"
     });
     CONFIG.statusEffects.push({
@@ -557,7 +506,7 @@ export function icons(){
         "name": "Drained",
         "_id": "dnd5edrained0000",
         "reference":"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.ZnhMIMgPZv1QDxzZ",
-        "icon":"modules/elkan5e/icons/drained.svg"
+        "img":"modules/elkan5e/icons/drained.svg"
     });
 
     CONFIG.statusEffects.push({
@@ -565,7 +514,7 @@ export function icons(){
         "name": "Goaded",
         "_id": "dnd5egoaded00000",
         "reference":"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.IVZ318d1P8WBcDxN",
-        "icon":"modules/elkan5e/icons/goaded.svg"
+        "img":"modules/elkan5e/icons/goaded.svg"
     });
 
     CONFIG.statusEffects.push({
@@ -573,7 +522,7 @@ export function icons(){
         "name": "Hasted",
         "_id": "dnd5ehasted00000",
         "reference":"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.8dnyv0szJi7dCz74",
-        "icon":"modules/elkan5e/icons/hasted.svg",
+        "img":"modules/elkan5e/icons/hasted.svg",
         "changes": [
             {
                 "key": "system.attributes.ac.bonus",
@@ -598,7 +547,7 @@ export function icons(){
         "name": "Heavily Obscured",
         "_id": "dnd5eobscuredhea",
         "reference":"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.UC5VK6i6vqWEUfMn",
-        "icon":"modules/elkan5e/icons/obscured-heavily.svg",
+        "img":"modules/elkan5e/icons/obscured-heavily.svg",
         "changes": [
             {
                 "key": "flags.midi-qol.advantage.attack.all",
@@ -624,7 +573,7 @@ export function icons(){
         "name": "Lightly Obscured",
         "_id": "dnd5eobscuredlig",
         "reference":"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.Jq7kMUlHodqSbYDD",
-        "icon":"modules/elkan5e/icons/obscured-lightly.svg",
+        "img":"modules/elkan5e/icons/obscured-lightly.svg",
         "changes": [
             {
                 "key":"flags.midi-qol.advantage.skill.ste",
@@ -640,7 +589,7 @@ export function icons(){
         "name": "Siphoned",
         "_id": "dnd5esiphoned000",
         "reference":"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.SthB8javJuFySiBg",
-        "icon":"modules/elkan5e/icons/siphoned.svg"
+        "img":"modules/elkan5e/icons/siphoned.svg"
     });
     
     CONFIG.statusEffects.push({
@@ -648,7 +597,7 @@ export function icons(){
         "name": "Slowed",
         "_id": "dnd5eslowed00000",
         "reference":"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.kkbgHooTzrtu4q8T",
-        "icon":"modules/elkan5e/icons/slowed.svg",
+        "img":"modules/elkan5e/icons/slowed.svg",
         "changes":[
             {
                 "key": "flags.midi-qol.disadvantage.attack.all",
@@ -675,7 +624,7 @@ export function icons(){
         "name": "Weakened",
         "_id": "dnd5eweakened000",
         "reference":"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.iJT3cWvyTNBv1L5h",
-        "icon":"modules/elkan5e/icons/weakened.svg",
+        "img":"modules/elkan5e/icons/weakened.svg",
         "changes": [
             {
                 "key": "flags.midi-qol.disadvantage.ability.dex",
