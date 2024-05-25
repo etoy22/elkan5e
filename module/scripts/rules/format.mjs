@@ -34,11 +34,6 @@ export function mats(){
 export function subFeatures(){
 
     CONFIG.DND5E.featureTypes.class.subtypes.precision = "Precision Attack"
-    CONFIG.DND5E.featureTypes.class.subtypes.wild = "Wild Shape"
-
-    CONFIG.DND5E.featureTypes.subclass = {
-        label: "Subclass Feature"
-    }
 
     CONFIG.DND5E.featureTypes.feat = {
         label: "Feat",
@@ -48,17 +43,3 @@ export function subFeatures(){
     }
 }
 
-export function sheets(){
-    CONFIG.DND5E.sourcePacks.BACKGROUNDS = "elkan5e.elkan5e-background"
-    CONFIG.DND5E.sourcePacks.CLASSES = "elkan5e.elkan5e-class"
-    CONFIG.DND5E.sourcePacks.RACES = "elkan5e.elkan-5e-ancestries"
-    
-    // Below breaks everything
-    // CONFIG.DND5E.sourcePacks.ITEMS = "elkan5e.elkan5e-mundane-items"
-    // {
-    //     "BACKGROUNDS": "elkan5e.elkan5e-background",
-    //     "CLASSES": "elkan.classes",
-    //     "ITEMS": "dnd5e.items",
-    //     "RACES": "dnd5e.races"
-    // }
-}
