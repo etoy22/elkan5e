@@ -1,5 +1,81 @@
 # Changelog
 
+# v1.12.0
+* **Required Modules**
+	* Times-Up has become a required module
+- Emergency Bug Fix
+	- Temporarily put () around the damage in Dragonbreath, Sneak attack, precision attacks as it resolves a bug in the code
+- Ancestry
+	- Fixed Identifiers
+- Background
+	- Fixed Identifiers
+	- Now has the starting equipment done (for future use)
+- Bug
+	- Fixed Bug with ancestries not going in the right folder
+- Classes
+	- Updated Starting equipment on all Classes
+		- Removed Unarmed Strike as it didn't make sense for it to exist there
+	- Finished Reformatting Ability Descriptions
+	- [Cleric](https://www.elkan5e.com/cleric)
+		- Divine Intervention now has the tag magical ability
+	- [Druid](https://www.elkan5e.com/druid)
+		- Lurking Fog (Heavy) is now added when Lurking Fog is used
+	- [Monk](https://www.elkan5e.com/monk)
+		- Open Hand: Subclass
+			- Quivering Palm (Damage) now gets added after Quivering Palm - previously called Quivering Palm (Vibrations) - is used
+	- [Paladin](https://www.elkan5e.com/paladin)
+		- Oath of Devotion: Subclass
+			- Aura of Devotion says it blocks domination as well
+	- [Ranger](https://www.elkan5e.com/ranger)
+		- Shortened the description for Mark for Death Feature
+		- Fixed broken link in ranger
+	- [Rogue](https://www.elkan5e.com/rogue)
+		- Fixed Rogue Progression Table
+		- Precision Attack
+			- Fixed Damage
+			- Fixed Visual Issue
+		- Thief: Subclass
+			- New Subclass
+	- [Sorcerer](https://www.elkan5e.com/sorcerer)
+		- Draconic Origin: Subclass
+			- Fixed Dragonbreath Choice
+			- Fix Dragonbreath Damage Scaling
+	- [Warlock](https://www.elkan5e.com/warlock)
+		- Implant Suggestion grants suggestion
+		- Invocations Switched to use the new system
+		- Invocations can be switched on advancement
+- Equipment
+	- Set proficiency for all items to Automatic
+- Feats
+	- Remade Fey Step as a Feat Type instead of a Spell
+	- Added a version of Combat Maneuvers with a lower level requirement for Fighters
+	- Removed Supreme Might Feat
+- Features
+	- Clicking Ancestry, Background and Class on character sheet now gives Elkan stuff
+	- Changed how we do resource consumption to work with the new update since its supported by default
+	- Change source not to start with \http://www.
+	- Introduced and Implemented Feature Categories and Subcategories
+		- Class Features (Not New)
+			- Wild Shape
+			- Precision Attack
+		- Subclass Features (New)
+			- Ki Ability
+			- Channel Divinity
+			- Hunter's Prey 
+			- Improved Fighting Style 
+- Format
+	- A lot of features have been reformatted to be more clear
+- Journals
+	- Fix links to summary of changes at top of class items
+	- Fixed linking to the surprised rule
+- Spell
+	- Can be switched on Advancement
+	- Added Healing enrichers to level 1 and 2 spells
+	- Implemented the new Enchant System
+		- Magic Weapon
+		- Pact Weapon
+	- New Spells
+
 ## v1.11.6.2
 - Emergency Bug Fix
 	- Fixed major error causing things not to load
