@@ -37,7 +37,13 @@ export function subFeatures(){
     CONFIG.DND5E.featureTypes.class.subtypes.wild = "Wild Shape"
 
     CONFIG.DND5E.featureTypes.subclass = {
-        label: "Subclass Feature"
+        label: "Subclass Feature",
+        subtypes:{
+            channelDivinity:"Channel Divinity",
+            improvedfightingStyle:"Improved Fighting Style",
+            huntersPrey:"Hunter's Prey",
+            ki:"Ki Ability"
+        }
     }
 
     CONFIG.DND5E.featureTypes.feat = {
@@ -55,10 +61,4 @@ export function sheets(){
     
     // Below breaks everything
     // CONFIG.DND5E.sourcePacks.ITEMS = "elkan5e.elkan5e-mundane-items"
-    // {
-    //     "BACKGROUNDS": "elkan5e.elkan5e-background",
-    //     "CLASSES": "elkan.classes",
-    //     "ITEMS": "dnd5e.items",
-    //     "RACES": "dnd5e.races"
-    // }
 }

@@ -59,6 +59,7 @@ export function combatRef(){
     CONFIG.DND5E.rules.hide = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.57VIppmrOewNVKF5"
     CONFIG.DND5E.rules.ready = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.Uo0qriXzk4YInJrl"
     CONFIG.DND5E.rules.search = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.bRo3ci56JJiuxYk8"
+    CONFIG.DND5E.rules.surprise = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.QOZeW0m8RCdVg6UE"
 }
 
 export function conditionsRef(){
