@@ -1,4 +1,5 @@
 import {focus} from "./scripts/classes/barbarian.mjs"
+import { advance } from "./scripts/advancement.mjs";
 import { init} from "./scripts/initalizing.mjs";
 
 Hooks.once("init", () => {
@@ -14,6 +15,10 @@ Hooks.on("dnd5e.preRollAttack", (item, config) => {
     focus(item,config)
 });
 
+
+Hooks.on("dnd5e.preAdvancementManagerComplete", (advancementManager,actorUpdates,toCreate,toUpdate,toDelete) => {
+    advance(toCreate,toUpdate)
+});
 
 // TODO: This works with getting midi saves
 // Hooks.on("dnd5e.preRollAbilitySave", (actor,roll,abilityID) => {
