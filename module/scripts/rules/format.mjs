@@ -1,3 +1,11 @@
+export function formating(){
+    ruleType()
+    activation()
+    mats()
+    subFeatures()
+    sheets()
+}
+
 
 /*
  * Adds different rule types to Foundry
