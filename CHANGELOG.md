@@ -1,5 +1,41 @@
 # Changelog
 
+# v1.12.1
+- Classes
+	- [Barbarian](https://www.elkan5e.com/barbarian)
+		- Rumination: A new recovery of rage
+	- [Cleric](https://www.elkan5e.com/cleric)
+		- Life Domain: Subclass
+			- Preserve Life feature reverted to its original design
+	- [Fighter](https://www.elkan5e.com/fighter)
+		- Bulwark: Subclass
+			- Iron Retribution now consumes Action Surge as part of using it
+		- Commander: Subclass
+			- Rallying Surge now consumes Action Surge as part of using it
+		- Spellsword: Subclass
+			- Spellsurge now consumes Action Surge as part of using it
+			- Fixed incorrect cantrip lists
+	- [Ranger](https://www.elkan5e.com/ranger)
+		- Fixed glitch were they were getting their fighting style at level 2 instead of 1
+		- Plan for Death: A new recovery of Mark for Death on long rest 
+	- [Rogue](https://www.elkan5e.com/rogue)
+		- Mystic Trickster: Subclass
+			- Fixed incorrect cantrip lists
+- Feats
+	- Cleave has been updated
+	- Find Steed has become a Paladin Feat
+- Features
+	- Standardized text for upcasting
+- Journals
+	- Medicine Journal now has its missing text
+- Spell
+	- Level 2 Spells are Done
+		- Been reformated
+		- Been modified
+	- New summons have been put in
+	- Well of Corruption Drained Update
+	- Alternative words for Save Ends Nomenclature
+
 # v1.12.0
 * **Required Modules**
 	* Times-Up has become a required module
