@@ -16,7 +16,7 @@
 **[Ranger](https://www.elkan5e.com/ranger)**
 - Plan the Hunt now has the right amount of uses
 
-[Rogue](https://www.elkan5e.com/rogue)
+**[Rogue](https://www.elkan5e.com/rogue)**
 - Arcane Tricksters 
   - Now able to use spellcasting ability for Precision Attack DCs\
 
