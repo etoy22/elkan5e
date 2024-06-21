@@ -23,14 +23,9 @@
 **[Sorcerer](https://www.elkan5e.com/sorcerer)**
 - Magic Coalescence now has the right amount of uses
 
-## Equipment
-- Changed Icons for Blowguns and Clubs
-## Feats
-- Clarify you can choose a higher level feat if your total character level is equal to or higher than the level of the feat
 ## Game Rules
 - Clarify Two Weapon Fighting requires the off-hand weapon, and only the off-hand, to be a light weapon.
 ## Spells
-- Replace Upcasting text in 3rd level + spells in Foundry
 - Sleet Storm fixed and now rolls the saving throw
 - Moonbeam \[Damage] now rolls the save
 - [Flaming Sphere](https://www.elkan5e.com/spells/flaming-sphere) fixed health, links and damage
