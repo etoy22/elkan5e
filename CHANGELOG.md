@@ -1,5 +1,18 @@
 # Changelog
 
+# v1.12.2.1
+## Classes
+**[Rogue](https://www.elkan5e.com/rogue)**
+- Arcane Tricksters
+  - Now able to use spellcasting ability for Precision Attack DCs\
+
+## Equipment
+- Changed Icons for Blowguns and Clubs
+## Feats
+- Clarify you can choose a higher level feat if your total character level is equal to or higher than the level of the feat
+## Spells
+- Replace Upcasting text in 3rd level + spells in Foundry
+
 # v1.12.2
 ## Backgrounds
 - Clarified Coordinating Direction
@@ -15,10 +28,6 @@
 
 **[Ranger](https://www.elkan5e.com/ranger)**
 - Plan the Hunt now has the right amount of uses
-
-**[Rogue](https://www.elkan5e.com/rogue)**
-- Arcane Tricksters 
-  - Now able to use spellcasting ability for Precision Attack DCs\
 
 **[Sorcerer](https://www.elkan5e.com/sorcerer)**
 - Magic Coalescence now has the right amount of uses
