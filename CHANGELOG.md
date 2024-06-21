@@ -1,5 +1,44 @@
 # Changelog
 
+# v1.12.2
+## Backgrounds
+- Clarified Coordinating Direction
+## Classes
+- Each class now states their Multiclass Proficiencies with their stat restriction
+- Evasion has been fixed previously was functioning as an active ability even though it wasn't
+
+**[Barbarian](https://www.elkan5e.com/barbarian)**
+- Rumination now has the right amount of uses
+
+**[Monk](https://www.elkan5e.com/monk)**
+- Meditation now has the right amount of uses
+
+**[Ranger](https://www.elkan5e.com/ranger)**
+- Plan the Hunt now has the right amount of uses
+
+[Rogue](https://www.elkan5e.com/rogue)
+- Arcane Tricksters 
+  - Now able to use spellcasting ability for Precision Attack DCs\
+
+**[Sorcerer](https://www.elkan5e.com/sorcerer)**
+- Magic Coalescence now has the right amount of uses
+
+## Equipment
+- Changed Icons for Blowguns and Clubs
+## Feats
+- Clarify you can choose a higher level feat if your total character level is equal to or higher than the level of the feat
+## Game Rules
+- Clarify Two Weapon Fighting requires the off-hand weapon, and only the off-hand, to be a light weapon.
+## Spells
+- Replace Upcasting text in 3rd level + spells in Foundry
+- Sleet Storm fixed and now rolls the saving throw
+- Moonbeam \[Damage] now rolls the save
+- [Flaming Sphere](https://www.elkan5e.com/spells/flaming-sphere) fixed health, links and damage
+- [Spirit Link](https://www.elkan5e.com/spells/spirit-link) fixed
+- Fixed [Spiritual Weapon](https://www.elkan5e.com/spells/spiritual-weapon) not being labeled as concentration
+## Misc
+- Changed the look of the Changelog
+
 # v1.12.1
 - Classes
 	- [Barbarian](https://www.elkan5e.com/barbarian)
