@@ -6,5 +6,5 @@ export function gameSettingRegister(){
         config: false,
         type: Boolean,
         default: false,
-      });
+    });
 }
