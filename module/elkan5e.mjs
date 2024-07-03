@@ -1,5 +1,4 @@
 import { init} from "./scripts/initalizing.mjs";
-import {spells} from "./scripts/spells"
 
 Hooks.once("init", () => {
     console.log("Elkan 5e  |  Initializing Elkan 5e")
