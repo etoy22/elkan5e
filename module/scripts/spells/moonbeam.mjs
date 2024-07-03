@@ -6,51 +6,20 @@
       eventData = eventData.substring(jsonStartIndex);
   }
   let data = JSON.parse(eventData)
-  //console.log("DATA: ", data)
-  //console.log("Actor: ", actor);
-  // console.log("Item: ", item);
-  //console.log("Event: ", event);
-  // console.log("Event Data: ", event.data);
-  // console.log("Event Typeof Data: ", typeof event.data);
-  //console.log("Event Parsing: ", data);
-  if (data[0]["action"] == "create"){
-    let castLevel = data[0]["operation"]["metaData"]["flags"]["midi-qol"]["castData"]["castLevel"]
-    let damage =  castLevel+"d10"
 
+
+  if (data[0]["action"] == "create"){
+
+    //Get Cast Level
+    let castLevel = data[0]["operation"]["metaData"]["flags"]["midi-qol"]["castData"]["castLevel"]
+    //Get Damage (For Moonbeam Specifically)
+    let damage =  castLevel+"d10"
     let spell = {
     "name": "Moonbeam [Damage]",
     "type": "spell",
     "img": "icons/magic/light/beam-rays-blue-large.webp",
     "effects": [],
     "flags": {
-      "dae": {
-        "activeEquipped": false,
-        "alwaysActive": false,
-        "macro": {
-          "name": "Moonbeam [Damage]",
-          "img": "icons/magic/light/beam-rays-blue-large.webp",
-          "type": "script",
-          "scope": "global",
-          "command": "",
-          "author": "vHqSHJMdmEO6Mk2C",
-          "ownership": {
-            "default": 3
-          },
-          "_id": null,
-          "folder": null,
-          "sort": 0,
-          "flags": {},
-          "_stats": {
-            "systemId": null,
-            "systemVersion": null,
-            "coreVersion": null,
-            "createdTime": null,
-            "modifiedTime": null,
-            "lastModifiedBy": null
-          }
-        }
-      },
-      "core": {},
       "midi-qol": {
         "onUseMacroName": "",
         "effectActivation": false,
@@ -63,25 +32,6 @@
         "otherCondition": "",
         "effectCondition": "",
         "rollAttackPerTarget": "default"
-      },
-      "midiProperties": {
-        "nodam": false,
-        "fulldam": false,
-        "halfdam": false,
-        "rollOther": false,
-        "critOther": false,
-        "magicdam": false,
-        "magiceffect": false,
-        "concentration": false,
-        "toggleEffect": false,
-        "autoFailFriendly": false,
-        "autoSaveFriendly": false,
-        "offHandWeapon": false,
-        "ignoreTotalCover": false,
-        "confirmTargets": "default",
-        "noConcentrationCheck": false,
-        "saveDamage": "default",
-        "bonusSaveDamage": "default"
       },
       "dnd5e": {
         "migratedProperties": [
@@ -166,7 +116,7 @@
         "supply": 0
       },
       "preparation": {
-        "mode": "innate",
+        "mode": "atwill",
         "prepared": true
       },
       "scaling": {
@@ -185,7 +135,7 @@
       "summons": null
     }
   };
-    actor.createEmbeddedDocuments("Item", [spell])
+  actor.createEmbeddedDocuments("Item", [spell])
     .then(created => {
       console.log("Item created", created);
     })
