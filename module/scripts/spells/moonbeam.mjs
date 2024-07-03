@@ -6,9 +6,18 @@
       eventData = eventData.substring(jsonStartIndex);
   }
   let data = JSON.parse(eventData)
-  console.log(data[0]["castLevel"])
-  let damage = data[0]["castLevel"] +"d10"
-  let spell = {
+  //console.log("DATA: ", data)
+  //console.log("Actor: ", actor);
+  // console.log("Item: ", item);
+  //console.log("Event: ", event);
+  // console.log("Event Data: ", event.data);
+  // console.log("Event Typeof Data: ", typeof event.data);
+  //console.log("Event Parsing: ", data);
+  if (data[0]["action"] == "create"){
+    let castLevel = data[0]["operation"]["metaData"]["flags"]["midi-qol"]["castData"]["castLevel"]
+    let damage =  castLevel+"d10"
+
+    let spell = {
     "name": "Moonbeam [Damage]",
     "type": "spell",
     "img": "icons/magic/light/beam-rays-blue-large.webp",
@@ -148,7 +157,7 @@
         "dc": null,
         "scaling": "spell"
       },
-      "level": data[0]["castLevel"],
+      "level": castLevel,
       "school": "evo",
       "materials": {
         "value": "",
@@ -176,15 +185,6 @@
       "summons": null
     }
   };
-  
-
-  console.log("Actor: ", actor);
-  // console.log("Item: ", item);
-  console.log("Event: ", event);
-  // console.log("Event Data: ", event.data);
-  // console.log("Event Typeof Data: ", typeof event.data);
-  // console.log("Event Parsing: ", data);
-  if (data[0]["action"] == "create"){
     actor.createEmbeddedDocuments("Item", [spell])
     .then(created => {
       console.log("Item created", created);
