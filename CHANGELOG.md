@@ -1,5 +1,62 @@
 # Changelog
 
+# v1.12.3
+## Backgrounds
+- Forge-bound now grants the option of an armor training feat instead of both light and medium armor training
+## Conditions
+- Fixed Confusion condition ending on a save when not tied to a spell
+## Classes
+
+**[Druid](https://www.elkan5e.com/druid)**
+- Clarified Howling Storm
+- Druids can now end a Wild Shape effect as a bonus action.
+- Shifter
+	- Reduced expanded spell list to one spell per level
+
+**[Monk](https://www.elkan5e.com/monk)**
+- Add a Fighting Style to monks
+
+**[Paladin](https://www.elkan5e.com/paladin)**
+- Fixed that the class was getting two of the same choice for divine smite at Level 9
+
+**[Sorcerer](https://www.elkan5e.com/sorcerer)**
+- Removed [Vicious Mockery](https://www.elkan5e.com/spells/vicious-mockery) from the spell choice (for real this time)
+
+**[Warlock](https://www.elkan5e.com/warlock)**
+- Chain Invocations that use a familiar's action/reaction now say so at the top
+- Eldritch Weapon now works as an enchanment
+## Feats
+- [Shifty](https://www.elkan5e.com/feats/shifty) has been added to Foundry
+- Feats source now link directly to their individual page on the website 
+## Game Rules
+- Made some edits to Summary of Changes
+- Add new subclasses to summary of changes
+## Spells
+- 7 New Spells
+	- [Shout](https://www.elkan5e.com/spells/shout)
+	- [Lapidate](https://www.elkan5e.com/spells/lapidate)
+	- [Rock Blast](https://www.elkan5e.com/spells/rock-blast)
+	- [Crushing Wave](https://www.elkan5e.com/spells/crushing-wave)
+	- [Gentle Current](https://www.elkan5e.com/spells/gentle-current)
+	- [Whirlwind](https://www.elkan5e.com/spells/whirlwind)
+	- [Lashing Wind](https://www.elkan5e.com/spells/lashing-wind)
+- Added Referencing
+- Arcane Eye (summon) now uses the updated invisibility
+- [Burning Beam](https://www.elkan5e.com/spells/burning-beam) is now a 45 ft. line rather than a 30 ft. line
+- Enchanting for Features that replace ability mod for weapons has been implemented (ie [Shillelagh](https://www.elkan5e.com/spells/shillelagh) and [Flame Blade](https://www.elkan5e.com/spells/flame-blade)) 
+- [Animate Dead](https://www.elkan5e.com/spells/animate-dead) now summons zombies and skeletons
+- Removed [Gentle Repose](https://www.elkan5e.com/spells/gentle-repose) from wizard spell list
+- [Fog Cloud](https://www.elkan5e.com/spells/fog-cloud) now has a duration
+- Fixed Call Lightning
+- Spells that only last one round now call that out in foundry description text
+- Fixed Misc Spells' Active Effects
+- [Mage Hand](https://www.elkan5e.com/spells/mage-hand) (Summon) is no longer a Horse Summon
+- Remove ongoing action cost from [Spiritual Weapon](https://www.elkan5e.com/spells/spiritual-weapon)
+- [Minor Illusion](https://www.elkan5e.com/spells/minor-illusion) allows creatures to carry the illusory item
+## UI
+- Pop up with links now appears
+- Changed Compendium Folder from Character Features to Character Options to help with searching
+
 # v1.12.2.1
 ## Classes
 **[Rogue](https://www.elkan5e.com/rogue)**
