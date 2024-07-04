@@ -469,11 +469,6 @@ export function icons(){
               "key": "flags.midi-qol.OverTime",
               "mode": 2,
               "value": "turn=start, label=Confused Effect, macro=Compendium.elkan5e.elkan5e-macros.Macro.HW9jG0cdn6BmhzyE"
-            },
-            {
-              "key": "flags.midi-qol.OverTime",
-              "mode": 2,
-              "value": "turn=end, label=Confused Save, saveAbility=wis, saveDC=10"
             }
         ],
         "macros": [
