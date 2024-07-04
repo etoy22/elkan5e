@@ -7,10 +7,8 @@ export function startDialog(){
                 <h2>Hope you're enjoying the Elkan 5e module!</h2>
                 <p>The latest update changelog can be read <a href="https://github.com/etoy22/elkan5e/blob/main/CHANGELOG.md">here</a>.</p>
 
-                <h3><br>Join us on <a href="https://discord.gg/DNdtcJYGeB" target="_blank">Discord</a>.</h3>
-                <p>Get weekly updates and a detailed <a href="https://discord.com/channels/853741306169524234/1163980331435700274">changelog</a></p>
-                <p>Get help or report bugs.</p>
-                <p>Vote in <a href="https://discord.com/channels/853741306169524234/1255026569886564352">monthly polls</a> to choose what content is added next.</p>
+                <h3><br>Join us on <a href="https://discord.gg/DNdtcJYGeB" target="_blank">Discord</a></h3>
+                <p>Get weekly updates and a detailed <a href="https://discord.com/channels/853741306169524234/1163980331435700274">changelog</a>, get help or report bugs, and vote in <a href="https://discord.com/channels/853741306169524234/1255026569886564352">monthly polls</a> to choose what content is added next.</p>
 
                 <h3><br>Visit our <a href="https://www.elkan5e.com" target="_blank">Website</a></h3>
                 <p>Contains all our module's content, updated every time the module updates.</p>
@@ -33,7 +31,6 @@ export function startDialog(){
                 }
             }
         });
-
         dialog.render(true);
     }
-}   
+}
