@@ -24,6 +24,10 @@ export function activation(){
     CONFIG.DND5E.abilityActivationTypes.shortrest = "During a Short Rest"
     CONFIG.DND5E.abilityActivationTypes.longrest = "During a Long Rest"
     CONFIG.DND5E.abilityActivationTypes.nocost = "No Action Cost"
+    CONFIG.DND5E.staticAbilityActivationTypes.duringattack = "As Part of a Weapon Attack"
+    CONFIG.DND5E.staticAbilityActivationTypes.shortrest = "During a Short Rest"
+    CONFIG.DND5E.staticAbilityActivationTypes.longrest = "During a Long Rest"
+    CONFIG.DND5E.staticAbilityActivationTypes.nocost = "No Action Cost"
 }
 
 /*
