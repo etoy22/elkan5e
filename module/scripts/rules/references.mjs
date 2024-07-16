@@ -1,6 +1,8 @@
 export function references(){
     skillsRef()
     combatRef()
+    // Temporary
+    CONFIG.DND5E.damageTypes.thunder.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.0IIGZuhGxmQWFN9v.JournalEntryPage.QIFxrH15bmRIhPQF"
 }
 
 export function skillsRef(){
