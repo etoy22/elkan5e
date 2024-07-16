@@ -1,5 +1,42 @@
 # Changelog
 
+# v1.12.4
+## Classes
+Made subclass names consistent in formatting
+
+ **[Barbarian](https://www.elkan5e.com/barbarian)**
+- Rumination now works as a single click as it now has a item macro
+- Bloodrager
+	- New Subclasses
+**[Bard](https://www.elkan5e.com/bard)**
+- Lorekeeper
+	- New name for College of Lore
+**[Monk](https://www.elkan5e.com/monk)**
+- Meditation now works as a single click as it now has a item macro
+**[Ranger](https://www.elkan5e.com/ranger)**
+- Plan the Hunt now works as a single click as it now has a item macro
+**[Sorcerer](https://www.elkan5e.com/sorcerer)**
+- Sorcerers now get their first main subclass ability at level 3
+- Magic Coalescence now works as a single click as it now has a item macro
+- Elemental Savant
+	- Four new subclasses based on the elements Air, Earth, Fire, Air Savant
+**[Warlock](https://www.elkan5e.com/warlock)**
+- Eldritch Weapon is now automated using Enchantment System
+## Feats
+- Polygot is now repeatable
+- Create Familiar's for [Find Familiar](https://www.elkan5e.com/feats/find-familiar)
+	- Automated Familiar's Cloack
+## Game Rules
+- Created a temporary rule for Sonic so that referencing works correctly with the proper name
+## Spells
+- [Acid Splash](https://www.elkan5e.com/spells/acid-splash) now has damage scaling
+- [Resistance](https://www.elkan5e.com/spells/resistance) now has a 1 hour duration, up from 1 minute
+## UI
+- Remove numerical value field from 'As Part of a Weapon Attack', 'During a Short Rest', 'During a Long Rest' and 'No Action Cost'
+- Added 'Help' to Elkan 5e Rules Compendium with useful information and links.
+- Added links to changelog in Summary of Changes
+- Fixed folder structure for Ancestries so they now appear in Character Options
+
 # v1.12.3
 ## Backgrounds
 - Forge-bound now grants the option of an armor training feat instead of both light and medium armor training
