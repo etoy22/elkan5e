@@ -25,7 +25,7 @@ export function conditions(){
     //For now this is commented out while we work on effecting icons
     //Add conditions
     const conditions = game.settings.get("elkan5e", "conditions");
-    if (conditions == "a" && conditions == "b" && conditions == "c"){
+    if (conditions == "a" || conditions == "b" || conditions == "c"){
         console.log("Elkan 5e  |  Adding New Elkan Conditions")
         CONFIG.DND5E.conditionTypes.confused = {
             label:"Confused",
@@ -143,7 +143,7 @@ export function icons(){
     CONFIG.statusEffects.find(effect => effect.id === "silenced").img="modules/elkan5e/icons/silenced.svg"
     
     // //Removing Unused Conditions
-    if (conditions == "b" && conditions == "c" && conditions == "e"){
+    if (conditions == "a" || conditions == "c" || conditions == "e"){
         console.log("Elkan 5e  |  Removing unused conditions")
         CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "bleeding");
         CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "burrowing");
@@ -196,7 +196,7 @@ export function icons(){
         }
     ]
     
-    if (conditions == "a" && conditions == "b"){
+    if (conditions == "a" || conditions == "b"){
         CONFIG.statusEffects.find(effect => effect.id === "exhaustion").changes = [
             {
                 "key": "system.bonuses.All-Attacks",
@@ -419,7 +419,7 @@ export function icons(){
         }
     }
 
-    if(conditions == "a" && conditions == "b" && conditions == "c"){
+    if(conditions == "a" || conditions == "b" || conditions == "c"){
         // Adding New Conditions
         console.log("Elkan 5e  |  Adding new conditions")
         CONFIG.statusEffects.push({
