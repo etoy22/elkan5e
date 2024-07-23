@@ -3,6 +3,7 @@
  * one that we had to do a full replacement
  */
 export function tools(){
+    const tool = game.settings.get("elkan5e", "tools");
     console.log("Elkan 5e  |  Initializing Tools")
 
     //Adding Tool Types
@@ -11,7 +12,7 @@ export function tools(){
     CONFIG.DND5E.toolProficiencies.craft = "Crafting Tools"
     CONFIG.DND5E.toolProficiencies.explore = "Exploration Tools"
     
-    //Other Artiist's Tools 
+    //Other Artiist's Tools
     CONFIG.DND5E.toolIds.painter = "elkan5e.elkan5e-mundane-items.qZe6ua1j3TtX3QGv";
     CONFIG.DND5E.toolIds.sculpt = "elkan5e.elkan5e-mundane-items.6x1yyzDnWGRNRwJD";
     
@@ -44,10 +45,12 @@ export function tools(){
     CONFIG.DND5E.toolIds.forg = "elkan5e.elkan5e-mundane-items.dFa31G5pfZ3FGcjk";
     
     //Removing Tools
-    delete CONFIG.DND5E.toolIds.glassblower
-    delete CONFIG.DND5E.toolIds.potter
-    delete CONFIG.DND5E.toolIds.weaver
-    delete CONFIG.DND5E.toolIds.carpenter
-    delete CONFIG.DND5E.toolIds.cartographer
-    delete CONFIG.DND5E.toolIds.cobbler
+    if(!tool){
+        delete CONFIG.DND5E.toolIds.glassblower
+        delete CONFIG.DND5E.toolIds.potter
+        delete CONFIG.DND5E.toolIds.weaver
+        delete CONFIG.DND5E.toolIds.carpenter
+        delete CONFIG.DND5E.toolIds.cartographer
+        delete CONFIG.DND5E.toolIds.cobbler
+    }
 }
