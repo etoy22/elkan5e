@@ -1,5 +1,29 @@
 # Changelog
 
+# v1.12.5
+## Classes
+**[Warlock](https://www.elkan5e.com/warlock)**
+- Clarified switching invocation when you use it as a requirement for a feat
+- Pact of the Warrior now gets a Fighting Style
+## Feats
+- [Weapon Training](https://www.elkan5e.com/feats/weapon-training) is now able to be replaced if you get all the weapons like [Armor Training](https://www.elkan5e.com/feats/armor-training)
+- [Find Familiar](https://www.elkan5e.com/feats/find-familiar) now labeled as Magical
+## Game Rules
+-  Game Master now have the option to turn off or affect parts of the module
+	- **Conditions:** Choose how much of our rules around conditions you want to use
+	- **Armor:** You can now use the removed armor proficiencies that Elkan does not have
+	- **Draconic Toughness:** You can now choose to have AC use 13 + @dex instead of the change to 14 + @dex
+	- **Tools:** You can now use the removed tool proficiencies that Elkan does not have
+	- **Weapon Proficiencies:** You can now use the removed weapon proficiencies that Elkan does not have
+## Spells
+- Cleaned up summoning mechanic around [Animate Dead](https://www.elkan5e.com/spells/animate-dead)
+## UI
+- Updated description on pop up
+## Bug Fixes
+- [Arcanist](https://www.elkan5e.com/ancestrybackground) now receive the common language by default
+- Fixed [Static Charge \[Air Savant\]](https://www.elkan5e.com/sorcerer) to deal 1d8 instead of 1d6
+- [Ray of Enfeeblement](https://www.elkan5e.com/spells/ray-of-frost) is now just be a saving throw
+
 # v1.12.4
 ## Classes
 Made subclass names consistent in formatting
