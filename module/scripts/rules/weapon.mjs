@@ -33,10 +33,13 @@ export function weaponTypes(){
     CONFIG.DND5E.validProperties.weapon.delete("spc")
 
     CONFIG.DND5E.weaponIds.unarmed = "Compendium.elkan5e.elkan5e-class-features.Item.pRDNsHpNLLk1Qq58"
-    delete CONFIG.DND5E.weaponIds.flail
-    delete CONFIG.DND5E.weaponIds.net
-    delete CONFIG.DND5E.weaponIds.trident
-    delete CONFIG.DND5E.weaponIds.warpick
+    const weapons = game.settings.get("elkan5e", "weapons");
+    if (!weapons){
+        delete CONFIG.DND5E.weaponIds.flail
+        delete CONFIG.DND5E.weaponIds.net
+        delete CONFIG.DND5E.weaponIds.trident
+        delete CONFIG.DND5E.weaponIds.warpick
+    }
 }
 
 
@@ -59,5 +62,4 @@ export function weaponRules(){
     CONFIG.DND5E.rules.silver = "Compendium.elkan5e.elkan5e-rules.JournalEntry.nfEDSQG0DMBs7eGp.JournalEntryPage.3ZyL5VG1OqvBjajQ"
     CONFIG.DND5E.rules.unwieldy = "Compendium.elkan5e.elkan5e-rules.JournalEntry.nfEDSQG0DMBs7eGp.JournalEntryPage.sokjqCLGL8GY3O67"
     CONFIG.DND5E.rules.versatile = "Compendium.elkan5e.elkan5e-rules.JournalEntry.nfEDSQG0DMBs7eGp.JournalEntryPage.zrkm2gvW9a0IXpvW"
-
 }
