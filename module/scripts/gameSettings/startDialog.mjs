@@ -15,6 +15,8 @@ export function startDialog(){
 
                 <h3><br>Support us on <a href="https://www.patreon.com/Elkan5e" target="_blank">Patreon</a></h3>
                 <p>If we can reach our $50 USD/Month goal, we will release our Wild Magic Sorcerer origin. More info on <a href="https://www.patreon.com/Elkan5e" target="_blank">Patreon</a>.</b></p>
+
+                <a href='https://ko-fi.com/P5P710UQX0' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
             `,
             buttons: {
                 ok: {

@@ -13,6 +13,7 @@ export function gameSettingRegister(){
         hint: "Makes your game use Elkan 5e Custom Conditions",
         scope: "world",
         config: true,
+        type: String,
         requiresReload: true,
         default: "a",
         choices: {
@@ -54,6 +55,17 @@ export function gameSettingRegister(){
         config: true,
         requiresReload: true,
         default: true,
+        type: Boolean,
+        restricted: true,
+    });
+
+    game.settings.register("elkan5e", "weapons", {
+        name: "Show Old Weapon Profiecencies",
+        hint: "Enable flails, nets, tridents and warpicks as proficiencies again",
+        scope: "world",
+        config: true,
+        requiresReload: true,
+        default: false,
         type: Boolean,
         restricted: true,
     });
