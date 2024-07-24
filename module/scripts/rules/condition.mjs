@@ -25,7 +25,8 @@ export function conditions(){
     //For now this is commented out while we work on effecting icons
     //Add conditions
     const conditions = game.settings.get("elkan5e", "conditions");
-    if (conditions == "a" || conditions == "b" || conditions == "c"){
+    const exhaustion = game.settings.get("elkan5e", "conditions-exhaustion");
+    if (conditions == "a" || conditions == "b"){
         console.log("Elkan 5e  |  Adding New Elkan Conditions")
         CONFIG.DND5E.conditionTypes.confused = {
             label:"Confused",
@@ -105,12 +106,13 @@ export function conditions(){
             reference:"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.4ZOHN6tGvj54J6Kv",
             icon: "modules/elkan5e/icons/concentrating.svg"
         }
-        if (conditions != "c"){
-            CONFIG.DND5E.conditionTypes.surprised = {
-                label: "Surprised",
-                reference:"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.QOZeW0m8RCdVg6UE",
-                icon: "modules/elkan5e/icons/surprised.svg"
-            }
+        CONFIG.DND5E.conditionTypes.surprised = {
+            label: "Surprised",
+            icon: "modules/elkan5e/icons/surprised.svg"
+        }
+
+        if (!exhaustion){
+            CONFIG.DND5E.conditionTypes.surprised.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.QOZeW0m8RCdVg6UE"
         }
     }
 }
@@ -121,6 +123,8 @@ export function conditions(){
 */
 export function icons(){
     const conditions = game.settings.get("elkan5e", "conditions");
+    const exhaustion = game.settings.get("elkan5e", "conditions-exhaustion");
+
     console.log("Elkan 5e  |  Initializing Icons")
     CONFIG.statusEffects.find(effect => effect.id === "dead").img= "modules/elkan5e/icons/dead.svg"
     CONFIG.statusEffects.find(effect => effect.id === "blinded").img= "modules/elkan5e/icons/blinded.svg"
@@ -143,7 +147,7 @@ export function icons(){
     CONFIG.statusEffects.find(effect => effect.id === "silenced").img="modules/elkan5e/icons/silenced.svg"
     
     // //Removing Unused Conditions
-    if (conditions == "a" || conditions == "c" || conditions == "e"){
+    if (conditions == "a" || conditions == "d"){
         console.log("Elkan 5e  |  Removing unused conditions")
         CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "bleeding");
         CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "burrowing");
@@ -160,8 +164,9 @@ export function icons(){
         CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "stable");
     }
 
+
     //Applying effects
-    CONFIG.statusEffects.find(effect => effect.id === "dead").changes = [ //This one doesn't work
+    CONFIG.statusEffects.find(effect => effect.id === "dead").changes = [
         {
             "key": "attributes.hp.value",
             "mode": 5,
@@ -196,7 +201,7 @@ export function icons(){
         }
     ]
     
-    if (conditions == "a" || conditions == "b"){
+    if (!exhaustion){
         CONFIG.statusEffects.find(effect => effect.id === "exhaustion").changes = [
             {
                 "key": "system.bonuses.All-Attacks",
@@ -419,7 +424,7 @@ export function icons(){
         }
     }
 
-    if(conditions == "a" || conditions == "b" || conditions == "c"){
+    if(conditions == "a" || conditions == "b"){
         // Adding New Conditions
         console.log("Elkan 5e  |  Adding new conditions")
         CONFIG.statusEffects.push({
@@ -643,11 +648,12 @@ export function icons(){
     
 
     //Remove the exhaustion effects 
-    // TODO: Add exhaustion 1 and 3 when they are added 
-    CONFIG.DND5E.conditionEffects.halfMovement.delete("exhaustion-2")
-    CONFIG.DND5E.conditionEffects.halfHealth.delete("exhaustion-4")
-    CONFIG.DND5E.conditionEffects.noMovement.delete("exhaustion-5")
-
+    // TODO: Add exhaustion 1 and 3 when they are added
+    if (!exhaustion){
+        CONFIG.DND5E.conditionEffects.halfMovement.delete("exhaustion-2")
+        CONFIG.DND5E.conditionEffects.halfHealth.delete("exhaustion-4")
+        CONFIG.DND5E.conditionEffects.noMovement.delete("exhaustion-5")
+    }
     
 
     CONFIG.statusEffects.sort((a, b) => {
