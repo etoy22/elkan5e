@@ -1,8 +1,8 @@
 export function references(){
     skillsRef()
     combatRef()
-    // Temporary
-    CONFIG.DND5E.damageTypes.thunder.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.0IIGZuhGxmQWFN9v.JournalEntryPage.QIFxrH15bmRIhPQF"
+    conditionsRef()
+    damageRef()
 }
 
 export function skillsRef(){
@@ -53,7 +53,7 @@ export function skillsRef(){
 export function combatRef(){
     console.log("Elkan 5e  |  Initializing Combat References")
     CONFIG.DND5E.rules.attack = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.IauYsEM9MxyZCIdc"
-    CONFIG.DND5E.rules.opportunity = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.5zEWVU1yw2Sv3hSI"
+    CONFIG.DND5E.rules.opportunityattacks = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.5zEWVU1yw2Sv3hSI"
     CONFIG.DND5E.rules.dodge = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.2Fxm6ATuDUyDIrt7"
     CONFIG.DND5E.rules.dash = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.6UWCRY83phLnc7cF"
     CONFIG.DND5E.rules.disengage = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.bYoY0gZQArDraXRs"
@@ -62,6 +62,8 @@ export function combatRef(){
     CONFIG.DND5E.rules.ready = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.Uo0qriXzk4YInJrl"
     CONFIG.DND5E.rules.search = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.bRo3ci56JJiuxYk8"
     CONFIG.DND5E.rules.surprise = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.QOZeW0m8RCdVg6UE"
+    CONFIG.DND5E.rules.unarmedstrike = "Compendium.elkan5e.elkan5e-class-features.Item.pRDNsHpNLLk1Qq58"
+    CONFIG.DND5E.rules.twoweaponfighting = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.XLZbNEhoayCw5bk8"
 }
 
 export function conditionsRef(){
@@ -116,5 +118,21 @@ export function conditionsRef(){
     CONFIG.statusEffects.find(effect => effect.id === "stunned").reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.JV8kbMo0p5S1YXUR"
     CONFIG.statusEffects.find(effect => effect.id === "unconscious").reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.ZwhWWUPJvpFCz8sK"
 
+}
 
+export function damageRef(){
+    console.log("Elkan 5e  |  Initializing New Damage References")
+    CONFIG.DND5E.damageTypes.acid.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.VKYjrEO909FEbScG"
+    CONFIG.DND5E.damageTypes.bludgeoning.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.DLkhjyAJK6R1lPrA"
+    CONFIG.DND5E.damageTypes.cold.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.qnctn4Gcve0px0wU"
+    CONFIG.DND5E.damageTypes.lightning.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.inNJv5hIxFOb0atF" //Renamed to Electric
+    CONFIG.DND5E.damageTypes.fire.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.8ZmYsUdejP3wal1K"
+    CONFIG.DND5E.damageTypes.force.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.hnbcchv13gA0ev8j"
+    CONFIG.DND5E.damageTypes.necrotic.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.3WAI4TbrSC8FS637"
+    CONFIG.DND5E.damageTypes.piercing.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.cEnkMbQascSe6lKU"
+    CONFIG.DND5E.damageTypes.poison.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.Mh0WKYgypPl7hKSo"
+    CONFIG.DND5E.damageTypes.psychic.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.DiUkrQVun34pAK4Z"
+    CONFIG.DND5E.damageTypes.radiant.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.1iv5sIBnKoFJrhMH"
+    CONFIG.DND5E.damageTypes.slashing.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.yxrHRnhVdSzKtzyZ"
+    CONFIG.DND5E.damageTypes.thunder.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.kPmCUWoSWv3lEW3t"
 }
