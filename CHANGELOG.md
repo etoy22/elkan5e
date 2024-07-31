@@ -1,5 +1,56 @@
 # Changelog
 
+# v1.12.6
+## Classes
+**[Bard](https://www.elkan5e.com/bard)**
+- Updated Text on Magical Secrets for Bard to reflect how we implemented it
+
+
+**[Fighter](https://www.elkan5e.com/fighter)**
+- Fighter versions of Manuevers now have "(Fighter)" in their name
+- New Fighter level 20 feature
+- Commander:
+	- Now gain conventional expertise features rather than their old ones.
+- Champion:
+	- Now gain conventional expertise features rather than their old ones.
+	- Now gets expertise at level 3 instead of 6
+	- Gains a new feature at level 6 that allows them to dash as a bonus action.
+
+**[Paladin](https://www.elkan5e.com/paladin)**
+- Divine Strike now deals damage on ranged weapons attacks
+
+
+**[Wizard](https://www.elkan5e.com/)**
+- Now gain Signature Spells at level 18, and must choose spells with a spellcasting time of 1 action.
+- Spell Mastery is a completely new ability for level 20 Wizards that lets them gain an extra action for spellcasting and ignore the normal limits on casting multiple spells in a turn for 1 turn, 1/Short Rest
+## Equipment
+- Chain Shirt has a New Icon
+
+## Game Rules
+- Renamed Lightning damage to Electric Damage
+- Combat Journal has been updated
+	- Move combat info from armor and weapons to combat page
+- Made Exhaustion removal as its own custom choice
+- Lower str requirements on armor to 12/14
+## Spells
+- Removed the attack from Plane Shift
+## UI
+- Added Image to Foundry Module Setup Page
+- Subclass Summary Journal Created (Individualized for each Class)
+- Add a link to the Github issue tracker on the Help journal entry
+- Make a summoned creature compendium (<span style="color:rgb(255, 0, 0)">WARNING</span> THIS MAY BREAK SUMMONING SPELLS)
+- Reference Additions
+	- Damage Types
+	- Unarmed Attack
+	- Opportunity Attack
+	- Dual Wielding (AKA Two-weapon fighting)
+## Bug Fixes
+- Fire Savant now gets Ascended Fire instead of Ascended Water
+- Elkan's Condition References are now actually being used
+- Fixed Elemental Smites Damage
+- Fixed Text on Pact of the Chain
+- Fixed Sunbeam duration
+
 # v1.12.5
 ## Classes
 **[Warlock](https://www.elkan5e.com/warlock)**
