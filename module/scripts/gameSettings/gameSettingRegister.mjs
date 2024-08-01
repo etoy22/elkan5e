@@ -19,12 +19,24 @@ export function gameSettingRegister(){
         choices: {
             "a":"Elkan Conditions",
             "b":"Elkan Conditions + extra condition icons",
-            "c":"Elkan Conditions (but SRD Exhaustion) + extra condition icons",
-            "d":"D&SRD Conditions",
-            "e":"SRD Conditions + extra condition icons"
+            "c":"SRD Conditions",
+            "d":"SRD Conditions + extra condition icons"
         },
         restricted: true,
     });
+
+    game.settings.register("elkan5e", "conditions-exhaustion", {
+        name: "Remove Custom Exhaustion",
+        hint: "Remove Elkan's automation of conditions",
+        scope: "world",
+        config: true,
+        default: false,
+        type: Boolean,
+        restricted: true,
+        requiresReload: true,
+    });
+
+    game
 
     game.settings.register("elkan5e", "tools", {
         name: "Tools List",
