@@ -23,6 +23,8 @@
 **[Wizard](https://www.elkan5e.com/)**
 - Now gain Signature Spells at level 18, and must choose spells with a spellcasting time of 1 action.
 - Spell Mastery is a completely new ability for level 20 Wizards that lets them gain an extra action for spellcasting and ignore the normal limits on casting multiple spells in a turn for 1 turn, 1/Short Rest
+- Necromancer
+	- New Subclass
 ## Equipment
 - Chain Shirt has a New Icon
 
