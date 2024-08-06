@@ -1,0 +1,181 @@
+name: Wall of Ice
+type: spell
+img: icons/magic/water/barrier-ice-wall-snow.webp
+effects: []
+folder: sDaRY0H81UTha6hq
+flags:
+  core: {}
+  betterRolls5e:
+    quickDamage:
+      context:
+        '0': ''
+      value:
+        '0': true
+      altValue:
+        '0': true
+    quickOther:
+      context: ''
+      value: true
+      altValue: true
+    quickDesc:
+      value: true
+      altValue: true
+    quickSave:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickVersatile:
+      value: false
+      altValue: false
+    quickTemplate:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  midi-qol:
+    effectActivation: false
+    AoETargetType: any
+    AoETargetTypeIncludeSelf: true
+    autoTarget: default
+    rollAttackPerTarget: default
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    confirmTargets: default
+    saveDamage: default
+    bonusSaveDamage: default
+    otherSaveDamage: default
+    noConcentrationCheck: false
+system:
+  description:
+    value: >-
+      <p>You create a wall of ice on a solid surface within range. You can form
+      it into a hemispherical dome or a sphere with a radius of up to 10 feet,
+      or you can shape a flat surface made up of ten 10-foot-square panels. Each
+      panel must be contiguous with another panel. In any form, the wall is 1
+      foot thick and lasts for the Duration.</p><p>If the wall cuts through a
+      creature's space when it appears, the creature within its area is pushed
+      to one side of the wall and must make a Dexterity saving throw. On a
+      failed save, the creature takes 10d6 cold damage, or half as much damage
+      on a successful save.</p><p>The wall is an object that can be damaged and
+      thus breached. It has AC 12 and 30 hit points per 10-foot section, and it
+      is vulnerable to fire damage. Reducing a 10-foot section of wall to 0 hit
+      points destroys it and leaves behind a sheet of frigid air in the space
+      the wall occupied. A creature moving through the sheet of frigid air for
+      the first time on a turn must make a Constitution saving throw. That
+      creature takes 5d6 cold damage on a failed save, or half as much damage on
+      a successful one.</p><p></p><div class="rd__b  rd__b--3"><div
+      class="rd__b  rd__b--3"><p><span style="font-family:Signika,
+      sans-serif"><strong
+      style="box-sizing:border-box;user-select:text;color:rgb(25, 24,
+      19);font-family:Signika,
+      sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial">*</strong></span><strong>Upcasting</strong>:
+      Increase damage from the wall appearing by [[/damage 2d6 cold]]{2d6} and
+      the damage from passing through the wall by [[/damage 1d6 cold]]{1d6} for
+      each spell level above 6th.</p></div></div>
+    chat: ''
+    unidentified: ''
+  source: Elkan 5e
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: '10'
+    units: minute
+  cover: null
+  crewed: false
+  target:
+    value: 100
+    width: 10
+    units: ft
+    type: wall
+  range:
+    value: 120
+    long: 0
+    units: ft
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: save
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - 10d6
+        - cold
+    versatile: 5d6
+  formula: ''
+  save:
+    ability: dex
+    dc: 0
+    scaling: spell
+  level: 6
+  school: evo
+  components:
+    vocal: true
+    somatic: true
+    material: true
+    ritual: false
+    concentration: true
+  materials:
+    value: A small piece of quartz
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: level
+    formula: 2d6
+  properties:
+    - vocal
+    - somatic
+    - material
+    - concentration
+ownership:
+  default: 0
+  ymJDAw0PgXIWIHMH: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  coreVersion: '12.327'
+  createdTime: 1685387652111
+  modifiedTime: 1718961240806
+  lastModifiedBy: 9B4LXF0S1sIudaRa
+  compendiumSource: null
+  duplicateSource: null
+_id: G7GXX1A2RFu6M206
+sort: 1100000
+_key: '!items!G7GXX1A2RFu6M206'
+

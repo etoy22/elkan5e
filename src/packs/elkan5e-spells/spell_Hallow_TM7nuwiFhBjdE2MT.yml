@@ -1,0 +1,226 @@
+name: Hallow
+type: spell
+img: icons/magic/light/explosion-star-large-teal.webp
+effects: []
+folder: PnZJTE6T4UQY81Pm
+flags:
+  srd5e:
+    page: spells.html
+    source: PHB
+    hash: hallow_phb
+  betterRolls5e:
+    critRange:
+      type: String
+      value: null
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value: []
+      altValue: []
+      context: []
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  midi-qol:
+    onUseMacroName: ''
+    effectActivation: false
+    AoETargetType: any
+    AoETargetTypeIncludeSelf: true
+    autoTarget: default
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  core: {}
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    confirmTargets: never
+    noConcentrationCheck: false
+system:
+  description:
+    value: >-
+      <div><p>You touch a point and infuse an area around it with holy (or
+      unholy) power. The area can have a radius up to 60 feet, and the spell
+      fails if the radius includes an area already under the effect a hallow
+      spell. The affected area is subject to the following
+      effects.</p><div><p></p></div><p>First, celestials, elementals, fey,
+      fiends, and undead can't enter the area, nor can such creatures charm,
+      frighten, or possess creatures within it. Any creature charmed,
+      frightened, or possessed by such a creature is no longer charmed,
+      frightened, or possessed upon entering the area. You can exclude one or
+      more of those types of creatures from this effect.</p><p>Second, you can
+      bind an extra effect to the area. Choose the effect from the following
+      list, or choose an effect offered by the DM. Some of these effects apply
+      to creatures in the area; you can designate whether the effect applies to
+      all creatures, creatures that follow a specific deity or leader, or
+      creatures of a specific sort, such as orcs or trolls. When a creature that
+      would be affected enters the spell's area for the first time on a turn or
+      starts its turn there, it can make a Charisma saving throw. On a success,
+      the creature ignores the extra effect until it leaves the
+      area.</p><div><p>Courage.</p><p>Affected creatures can't be frightened
+      while in the
+      area.</p><div><p></p></div></div><div><p>Darkness.</p><p>Darkness fills
+      the area. Normal light, as well as magical light created by spells of a
+      lower level than the slot you used to cast this spell, can't illuminate
+      the area.</p><div><p></p></div></div><div><p>Daylight.</p><p>Bright light
+      fills the area. Magical darkness created by spells of a lower level than
+      the slot you used to cast this spell can't extinguish the
+      light.</p><div><p></p></div></div><div><p>Energy
+      Protection.</p><p>Affected creatures in the area have resistance to one
+      damage type of your choice, except for bludgeoning, piercing, or
+      slashing.</p><div><p></p></div></div><div><p>Energy
+      Vulnerability.</p><p>Affected creatures in the area have vulnerability to
+      one damage type of your choice, except for bludgeoning, piercing, or
+      slashing.</p><div><p></p></div></div><div><p>Everlasting Rest.</p><p>Dead
+      bodies interred in the area can't be turned into
+      undead.</p><div><p></p></div></div><div><p>Extradimensional
+      Interference.</p><p>Affected creatures can't move or travel using
+      teleportation or by extradimensional or interplanar
+      means.</p><div><p></p></div></div><div><p>Fear.</p><p>Affected creatures
+      are frightened while in the
+      area.</p><div><p></p></div></div><div><p>Silence.</p><p>No sound can
+      emanate from within the area, and no sound can reach into
+      it.</p><div><p></p></div></div><div><p>Tongues.</p><p>Affected creatures
+      can communicate with any other creature in the area, even if they don't
+      share a common language.</p><div><p></p></div></div></div>
+    chat: ''
+    unidentified: ''
+  source: Elkan 5e
+  activation:
+    type: minute
+    cost: 10
+    condition: ''
+  duration:
+    value: ''
+    units: perm
+  cover: null
+  crewed: false
+  target:
+    value: 60
+    width: null
+    units: ft
+    type: radius
+  range:
+    value: null
+    long: null
+    units: touch
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: save
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: cha
+    dc: null
+    scaling: spell
+  level: 5
+  school: abj
+  components:
+    vocal: true
+    somatic: true
+    material: true
+    ritual: false
+    concentration: false
+  materials:
+    value: herbs, oils, and incense worth at least 1,000 gp, which the spell consumes
+    consumed: true
+    cost: 1000
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: none
+    formula: ''
+  properties:
+    - vocal
+    - somatic
+    - material
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  ymJDAw0PgXIWIHMH: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.0.3
+  coreVersion: '12.327'
+  createdTime: 1685386965004
+  modifiedTime: 1719901073440
+  lastModifiedBy: 3Yi0HjF4PKCA4vX0
+  compendiumSource: null
+  duplicateSource: null
+_id: TM7nuwiFhBjdE2MT
+sort: 3700000
+_key: '!items!TM7nuwiFhBjdE2MT'
+

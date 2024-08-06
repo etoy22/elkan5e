@@ -1,0 +1,201 @@
+folder: hs1kzC3J5ULWhDl5
+name: Breath Weapon (Gold, Constitution)
+type: feat
+img: icons/magic/acid/pouring-gas-smoke-liquid.webp
+system:
+  description:
+    value: "<p><em>You breathe a twisting white gas which cripples enemies.</em></p><p><strong>Action</strong> - 20 ft. cone - 1/Long Rest - Magical</p><p><strong>Constitution</strong> Saving Throw</p><ul><li><p><strong>Failure:</strong>\_[[/damage 2d6 poison]] damage*, and the target is &amp;reference[poisoned] for 1 minute. Target rolls again at end of their turns, ending effect on success.</p><p>If a creature is reduced to 0 hit points with this breath weapon, the creature falls &amp;reference[Unconscious], does not roll death saving throws or die as a result of this damage.</p></li><li><p><strong>Success:</strong> half damage</p></li></ul><p>​</p><p><strong>*At Higher Levels:</strong> This ability's damage increases by 2d6 when you reach a total character or creature level of 5th level ([[/damage 4d6 poison]]), 11th level ([[/damage 6d6 poison]]), and 17th level ([[/damage 8d6 poison]]).</p>"
+    chat: ''
+  source:
+    book: ''
+    page: ''
+    custom: elkan5e.com/ancestrybackground
+    license: ''
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: ''
+    units: inst
+  cover: null
+  crewed: false
+  target:
+    value: 20
+    width: null
+    units: ft
+    type: cone
+    prompt: true
+  range:
+    value: null
+    long: null
+    units: ''
+  uses:
+    value: 1
+    max: '1'
+    per: lr
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: null
+    amount: null
+    scale: false
+  ability: ''
+  actionType: save
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - >-
+          (max(@scale.dragonborn.breath-weapon,(2*@scale.draconic-origin.breath-weapon)d6))
+        - poison
+    versatile: ''
+  formula: ''
+  save:
+    ability: con
+    dc: null
+    scaling: con
+  type:
+    value: race
+    subtype: ''
+  requirements: Gold Dragonborn
+  recharge:
+    value: null
+    charged: false
+  properties:
+    - mgc
+effects:
+  - statuses:
+      - condition-lab-triggler.poisoned
+    changes:
+      - key: flags.midi-qol.disadvantage.attack.all
+        mode: 5
+        value: '1'
+        priority: 50
+      - key: flags.midi-qol.disadvantage.ability.check.all
+        mode: 5
+        value: '1'
+        priority: 50
+      - key: flags.midi-qol.OverTime
+        mode: 2
+        value: |-
+          turn=end,
+          label="Poison Breath",
+          rollType=con,
+          allowIncapacitated = true,
+          saveDC=@abilities.cha.dc,
+          saveMagic=true
+        priority: 20
+    description: ''
+    duration:
+      seconds: 60
+      startTime: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+      combat: null
+    flags:
+      ActiveAuras:
+        isAura: false
+        radius: ''
+        aura: None
+        alignment: ''
+        type: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        hostile: false
+        onlyOnce: false
+        nameOverride: ''
+        customCheck: ''
+        displayTemp: false
+        wallsBlock: system
+      condition-lab-triggler:
+        conditionId: poisoned
+      core:
+        overlay: false
+        sourceId: >-
+          Compendium.elkan5e.elkan5e-ancestryFeatures.Item.No1brs4pyhd68h3Q.ActiveEffect.HYtFS7efvwJsJNU4
+      times-up:
+        isPassive: false
+      dae:
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: none
+        showIcon: true
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+        disableIncapacitated: false
+    name: Poisoned
+    _id: BwvSf18ZMl4u8wk0
+    disabled: false
+    origin: Compendium.elkan5e.elkan5e-ancestryFeatures.Item.OdzRyonbydSzgpcF
+    transfer: false
+    tint: '#ffffff'
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: modules/elkan5e/icons/poisoned.svg
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!ZxnCTreuAJrWYJBm.BwvSf18ZMl4u8wk0'
+ownership:
+  default: 0
+  cwIJ7W3XRXrY0zj2: 3
+  9B4LXF0S1sIudaRa: 3
+flags:
+  midi-qol:
+    effectActivation: false
+    AoETargetType: any
+    AoETargetTypeIncludeSelf: true
+    autoTarget: default
+    removeAttackDamageButtons: default
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: true
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    rollOther: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: true
+    magiceffect: true
+    concentration: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    confirmTargets: never
+    saveDamage: halfdam
+    bonusSaveDamage: default
+  core: {}
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.0
+  coreVersion: '12.325'
+  createdTime: 1700949724903
+  modifiedTime: 1717799675597
+  lastModifiedBy: 3Yi0HjF4PKCA4vX0
+  compendiumSource: null
+  duplicateSource: null
+_id: ZxnCTreuAJrWYJBm
+sort: 1900000
+_key: '!items!ZxnCTreuAJrWYJBm'
+

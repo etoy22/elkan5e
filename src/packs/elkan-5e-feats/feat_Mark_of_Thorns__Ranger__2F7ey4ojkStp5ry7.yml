@@ -1,0 +1,221 @@
+folder: OC0XZyjIvqTz8IUW
+name: Mark of Thorns (Ranger)
+type: feat
+_id: 2F7ey4ojkStp5ry7
+img: icons/magic/nature/beam-hand-leaves-green.webp
+system:
+  description:
+    value: "<p><strong>Bonus Action</strong> - 1 Ally (60 ft.) - 1 Minute - Magical</p><p>Using this ability consumes a use of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.HPrjgPXLsDRBbfsD]{Mark for Death}. You cannot use this ability alongside Mark for Death or any other ranger mark.</p><p><strong>Buff</strong></p><p>You surround your target with magical thorns. Whenever your target is struck by a melee attack, their attacker takes [[/r 1d4 magical piercing]] damage*. This ability ends early if you become\_&amp;reference[incapacitated].</p><p><strong>Note: You'll need to manually deal damage using Mark of Thorns using the ranger who created it.</strong></p><p></p><p>*This extra damage increases as you gain ranger levels. At level 5 it becomes [[/r 1d6]], at level 9 it becomes [[/r 1d8]], at level 13 it becomes [[/r 1d10]], and at level 17 it becomes [[/r 1d12]].​</p>"
+    chat: ''
+  source:
+    custom: elkan5e.com/feats/mark-of-thorns
+  activation:
+    type: bonus
+    cost: 1
+    condition: ''
+  duration:
+    value: '1'
+    units: minute
+  cover: null
+  crewed: false
+  target:
+    value: 1
+    width: null
+    units: null
+    type: creature
+    prompt: true
+  range:
+    value: 60
+    long: null
+    units: self
+  uses:
+    value: null
+    max: ''
+    per: null
+    recovery: ''
+    prompt: true
+  consume:
+    type: charges
+    target: Compendium.elkan5e.elkan5e-class-features.Item.HPrjgPXLsDRBbfsD
+    amount: 1
+    scale: false
+  ability: null
+  actionType: ''
+  attack:
+    bonus: ''
+    flat: false
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  summons: null
+  type:
+    value: feat
+    subtype: ''
+  properties:
+    - mgc
+  requirements: Feat (Ranger Level 4)
+  recharge:
+    value: null
+    charged: false
+  prerequisites:
+    level: 4
+effects:
+  - name: Mark of Thorns (Caster)
+    changes:
+      - key: macro.createItem
+        mode: 0
+        value: Compendium.elkan5e.elkan-5e-feats.Item.QqYO7VBgKOmNk9M8
+        priority: 20
+    transfer: false
+    _id: 5wewm9mUphsdtJWZ
+    disabled: false
+    duration:
+      startTime: null
+      seconds: 60
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    origin: null
+    statuses: []
+    flags:
+      dae:
+        disableIncapacitated: false
+        selfTarget: true
+        selfTargetAlways: true
+        dontApply: false
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    tint: '#ffffff'
+    _stats:
+      coreVersion: '12.328'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: 1720578218031
+      lastModifiedBy: 3Yi0HjF4PKCA4vX0
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/magic/nature/beam-hand-leaves-green.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!2F7ey4ojkStp5ry7.5wewm9mUphsdtJWZ'
+  - origin: Compendium.elkan5e.elkan-5e-feats.Item.2F7ey4ojkStp5ry7
+    duration:
+      rounds: 1
+      startTime: null
+      seconds: 60
+      combat: null
+      turns: null
+      startRound: null
+      startTurn: null
+    disabled: false
+    name: Mark of Thorns (Target)
+    _id: mtC9YRFZeGMdIpXp
+    changes: []
+    description: ''
+    transfer: false
+    statuses: []
+    flags:
+      dae:
+        disableIncapacitated: false
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: true
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    tint: '#ffffff'
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/magic/nature/beam-hand-leaves-green.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!2F7ey4ojkStp5ry7.mtC9YRFZeGMdIpXp'
+sort: 0
+ownership:
+  default: 0
+  3Yi0HjF4PKCA4vX0: 3
+flags:
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  coreVersion: '12.328'
+  createdTime: 1715645578253
+  modifiedTime: 1720578210382
+  lastModifiedBy: 3Yi0HjF4PKCA4vX0
+  compendiumSource: null
+  duplicateSource: null
+_key: '!items!2F7ey4ojkStp5ry7'
+

@@ -1,0 +1,265 @@
+name: Protection from Poison
+type: spell
+img: icons/magic/defensive/shield-barrier-glowing-triangle-green.webp
+effects:
+  - _id: KVURJew2xJb5OH6P
+    flags:
+      dae:
+        transfer: false
+        selfTarget: false
+        selfTargetAlways: false
+        stackable: none
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+        disableIncapacitated: false
+        dontApply: false
+        showIcon: false
+      core:
+        statusId: ''
+      ActiveAuras:
+        isAura: false
+        aura: None
+        radius: ''
+        alignment: ''
+        type: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        nameOverride: ''
+        customCheck: ''
+        wallsBlock: system
+    changes:
+      - key: system.traits.dr.value
+        mode: 0
+        value: poison
+        priority: 0
+    duration:
+      startTime: null
+      seconds: 3600
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    transfer: false
+    disabled: false
+    origin: null
+    tint: '#ffffff'
+    name: Protection from Poison
+    description: ''
+    statuses: []
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/magic/defensive/shield-barrier-glowing-triangle-green.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!TjQaL5lRbogCKUWa.KVURJew2xJb5OH6P'
+folder: 6J3i75lfD1J0xYwA
+flags:
+  dynamiceffects:
+    equipActive: true
+    alwaysActive: false
+    effects:
+      - modSpecKey: data.traits.dr.value
+        value: poison
+        mode: +
+        targetSpecific: false
+        id: 1
+        itemId: RfhTb4CznKyRRdrn
+        active: true
+        _targets: []
+  core: {}
+  betterRolls5e:
+    critRange:
+      type: String
+      value: ''
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value: []
+      altValue: []
+      context: []
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  midi-qol:
+    effectActivation: false
+    itemCondition: ''
+    reactionCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+    rollAttackPerTarget: default
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    confirmTargets: default
+    noConcentrationCheck: false
+system:
+  description:
+    value: >-
+      <p><em>You make a magical proclamation, insisting that poisons will not
+      harm your target as you touch them.</em></p><p
+      style="box-sizing:border-box;user-select:text;margin:0.5em
+      0px;color:rgb(25, 24, 19);font-family:Signika,
+      sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;text-align:start"><span
+      style="font-family:Signika, sans-serif"><strong
+      style="box-sizing:border-box;user-select:text">Buff/Healing</strong></span></p><ul><li><p>If
+      the target is &amp;reference[Poisoned], you neutralize the poison, ending
+      the condition and its secondary effects, if any. If more than one poison
+      afflicts the target, you neutralize one poison that you know is present,
+      or you neutralize one at random.</p></li><li><p>The target has advantage
+      on saving throws against being &amp;reference[Poisoned] and has resistance
+      to poison damage.</p></li></ul>
+    chat: ''
+    unidentified: ''
+  source:
+    custom: elkan5e.com/spells/protection-from-poison
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: '1'
+    units: hour
+  cover: null
+  crewed: false
+  target:
+    value: 1
+    width: null
+    units: ''
+    type: creature
+  range:
+    value: null
+    long: null
+    units: touch
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: util
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  level: 2
+  school: abj
+  components:
+    vocal: true
+    somatic: true
+    material: false
+    ritual: false
+    concentration: false
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: none
+    formula: ''
+  properties:
+    - vocal
+    - somatic
+    - mgc
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.1.1
+  coreVersion: '12.325'
+  createdTime: 1685385221746
+  modifiedTime: 1717471171290
+  lastModifiedBy: 3Yi0HjF4PKCA4vX0
+  compendiumSource: null
+  duplicateSource: null
+_id: TjQaL5lRbogCKUWa
+sort: 2500000
+_key: '!items!TjQaL5lRbogCKUWa'
+

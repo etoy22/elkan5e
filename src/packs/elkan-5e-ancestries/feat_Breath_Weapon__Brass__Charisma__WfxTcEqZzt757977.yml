@@ -1,0 +1,117 @@
+folder: hs1kzC3J5ULWhDl5
+name: Breath Weapon (Brass, Charisma)
+type: feat
+img: icons/magic/control/sleep-bubble-purple.webp
+system:
+  description:
+    value: "<p><em>You breathe a colorful cloud of stars.</em></p><p><strong>Action</strong> - 20 ft. cone -\_1/Long Rest - Magical</p><p>A creature that is already asleep or &amp;reference[Unconscious] has disadvantage on this save</p><p><strong>Wisdom</strong> Saving Throw</p><ul><li><p><strong>Failure:</strong>\_[[/damage 2d6 psychic]] damage*.</p><p>If a creature is reduced to 0 hit points with this breath weapon, the creature falls &amp;reference[Unconscious], does not roll death saving throws or die as a result of this damage, and cannot wake for 1 hour.</p></li><li><p><strong>Success:</strong> half damage</p></li></ul><p>​</p><p><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial\">*At Higher Levels:</strong> This ability's damage increases by 2d6 when you reach a total character or creature level of 5th level (</span>[[/damage 4d6 psychic]] <span style=\"font-family:Signika, sans-serif\">), 11th level (</span>[[/damage 6d6 psychic]] <span style=\"font-family:Signika, sans-serif\">), and 17th level (</span>[[/damage 8d6 psychic]]<span style=\"font-family:Signika, sans-serif\">).</span></p>"
+    chat: ''
+  source:
+    book: ''
+    page: ''
+    custom: elkan5e.com/ancestrybackground
+    license: ''
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: ''
+    units: inst
+  cover: null
+  crewed: false
+  target:
+    value: 20
+    width: null
+    units: ft
+    type: cone
+    prompt: true
+  range:
+    value: null
+    long: null
+    units: ''
+  uses:
+    value: 1
+    max: '1'
+    per: lr
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: null
+    amount: null
+    scale: false
+  ability: ''
+  actionType: save
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - >-
+          (max(@scale.dragonborn.breath-weapon,(2*@scale.draconic-origin.breath-weapon)d6))
+        - psychic
+    versatile: ''
+  formula: ''
+  save:
+    ability: wis
+    dc: null
+    scaling: cha
+  type:
+    value: race
+    subtype: ''
+  requirements: Brass Dragonborn
+  recharge:
+    value: null
+    charged: false
+  properties:
+    - mgc
+effects: []
+ownership:
+  default: 0
+  cwIJ7W3XRXrY0zj2: 3
+  9B4LXF0S1sIudaRa: 3
+flags:
+  midi-qol:
+    effectActivation: false
+    AoETargetType: any
+    AoETargetTypeIncludeSelf: true
+    autoTarget: default
+    removeAttackDamageButtons: default
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: true
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    rollOther: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: true
+    magiceffect: true
+    concentration: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    confirmTargets: never
+    saveDamage: halfdam
+    bonusSaveDamage: default
+  core: {}
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.0
+  coreVersion: '12.324'
+  createdTime: 1700947537714
+  modifiedTime: 1716872151007
+  lastModifiedBy: 9B4LXF0S1sIudaRa
+  compendiumSource: null
+  duplicateSource: null
+_id: WfxTcEqZzt757977
+sort: 900000
+_key: '!items!WfxTcEqZzt757977'
+

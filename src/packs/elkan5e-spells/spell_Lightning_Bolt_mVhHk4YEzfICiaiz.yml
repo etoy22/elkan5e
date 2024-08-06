@@ -1,0 +1,210 @@
+name: Lightning Bolt
+type: spell
+img: icons/magic/lightning/bolt-blue.webp
+effects: []
+folder: Tf2FNuyyu2gEaYOF
+flags:
+  srd5e:
+    page: spells.html
+    source: PHB
+    hash: lightning%20bolt_phb
+  betterRolls5e:
+    critRange:
+      type: String
+      value: ''
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value:
+        '0': true
+      altValue:
+        '0': true
+      context:
+        '0': ''
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  core: {}
+  midi-qol:
+    effectActivation: false
+    AoETargetType: any
+    AoETargetTypeIncludeSelf: true
+    autoTarget: default
+    rollAttackPerTarget: default
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    effectCondition: ''
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    confirmTargets: default
+    saveDamage: default
+    bonusSaveDamage: default
+    noConcentrationCheck: false
+system:
+  description:
+    value: >-
+      <div class="rd__b  rd__b--3"><p>A stroke of lightning forming a line 100
+      feet long and 5 feet wide blasts out from you in a direction you choose.
+      Each creature in the line must make a Dexterity saving throw. A creature
+      takes [[/r 8d6]] lightning damage on a failed save, or half as much damage
+      on a successful one.</p><div
+      class="rd__spc-inline-post"><p></p></div><p>The lightning ignites
+      flammable objects in the area that aren't being worn or
+      carried.</p><p></p></div><div class="rd__b  rd__b--3"><div class="rd__b 
+      rd__b--3"><p><span style="font-family:Signika, sans-serif"><strong
+      style="box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:var(--color-scrollbar)
+      var(--color-scrollbar-track);color:rgb(25, 24, 19);font-family:Signika,
+      sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial">*</strong><strong
+      style="box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:var(--color-scrollbar)
+      var(--color-scrollbar-track);color:rgb(25, 24, 19);font-family:Signika,
+      sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial">Upcasting</strong>:
+      Increase damage by </span><a data-action="roll"
+      style="box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:var(--color-scrollbar)
+      var(--color-scrollbar-track);cursor:pointer;background:rgb(221, 221,
+      221);padding:1px 4px;border:1px solid
+      var(--color-border-dark-tertiary);white-space:nowrap;word-break:break-all;border-radius:3px">1d6</a><span
+      style="font-family:Signika, sans-serif"> for each spell level above
+      3rd.</span></p></div></div>
+    chat: ''
+    unidentified: ''
+  source: Elkan 5e
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: ''
+    units: inst
+  cover: null
+  crewed: false
+  target:
+    value: 100
+    width: null
+    units: ft
+    type: line
+  range:
+    value: 0
+    long: null
+    units: ''
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: save
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - 8d6
+        - lightning
+    versatile: ''
+  formula: ''
+  save:
+    ability: dex
+    dc: null
+    scaling: spell
+  level: 3
+  school: evo
+  components:
+    vocal: true
+    somatic: true
+    material: true
+    ritual: false
+    concentration: false
+  materials:
+    value: a bit of fur and a rod of amber, crystal, or glass
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: level
+    formula: 1d6
+  properties:
+    - vocal
+    - somatic
+    - material
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  coreVersion: '12.327'
+  createdTime: 1685385489426
+  modifiedTime: 1718961839155
+  lastModifiedBy: 9B4LXF0S1sIudaRa
+  compendiumSource: null
+  duplicateSource: null
+_id: mVhHk4YEzfICiaiz
+sort: 2600000
+_key: '!items!mVhHk4YEzfICiaiz'
+

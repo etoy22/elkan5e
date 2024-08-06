@@ -1,0 +1,212 @@
+name: Prayer of Healing
+type: spell
+img: icons/magic/holy/prayer-hands-glowing-yellow.webp
+effects: []
+folder: 6J3i75lfD1J0xYwA
+flags:
+  srd5e:
+    page: spells.html
+    source: PHB
+    hash: prayer%20of%20healing_phb
+  betterRolls5e:
+    critRange:
+      type: String
+      value: ''
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value:
+        '0': true
+      altValue:
+        '0': true
+      context:
+        '0': ''
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  core: {}
+  midi-qol:
+    effectActivation: false
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    reactionCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+    rollAttackPerTarget: default
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    noConcentrationCheck: false
+    confirmTargets: default
+system:
+  description:
+    value: >-
+      <div class="rd__b  rd__b--3"><p><em>You offer a prayer for the recovery of
+      your allies, possibly yourself included. Your prayer is about a minute
+      long, and usually includes some standard prayers to a particular
+      faith.</em></p><p
+      style="box-sizing:border-box;user-select:text;margin:0.5em
+      0px;color:rgb(25, 24, 19);font-family:Signika,
+      sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;text-align:start"><span
+      style="font-family:Signika, sans-serif"><strong
+      style="box-sizing:border-box;user-select:text">Healing</strong></span></p><p><span
+      style="font-family:Signika, sans-serif">This spell has no effect on
+      constructs.</span></p><ul
+      style="box-sizing:border-box;user-select:text;margin:0.5em 0px;padding:0px
+      0px 0px 1.5em;color:rgb(25, 24, 19);font-family:Signika,
+      sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"><li
+      style="box-sizing:border-box;user-select:text"><p><span
+      style="font-family:Signika, sans-serif">Targets gain hit points equal to
+      [[/healing 2d8 + @attributes.spellmod]]{2d8 + your spellcasting ability
+      modifier} .*</span></p></li></ul><div
+      class="rd__spc-inline-post"><p></p></div></div><div class="rd__b 
+      rd__b--3"><div class="rd__b  rd__b--3"><p><span
+      style="font-family:Signika, sans-serif"><strong
+      style="box-sizing:border-box;user-select:text;color:rgb(25, 24,
+      19);font-family:Signika,
+      sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial">*Upcasting:</strong>
+      Increase healing by [[/damage 1d8 healing]]{1d8} for each spell level
+      above 2nd.</span></p></div></div>
+    chat: ''
+    unidentified: ''
+  source:
+    custom: elkan5e.com/spells/prayer-of-healing
+  activation:
+    type: minute
+    cost: 1
+    condition: ''
+  duration:
+    value: ''
+    units: inst
+  cover: null
+  crewed: false
+  target:
+    value: 6
+    width: null
+    units: ''
+    type: creature
+  range:
+    value: 30
+    long: null
+    units: ft
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: heal
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - 2d8 + @mod
+        - healing
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  level: 2
+  school: nec
+  components:
+    vocal: true
+    somatic: false
+    material: false
+    ritual: false
+    concentration: false
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: level
+    formula: 1d8
+  properties:
+    - vocal
+    - mgc
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  ymJDAw0PgXIWIHMH: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.0
+  coreVersion: '12.327'
+  createdTime: 1685385215705
+  modifiedTime: 1717915760636
+  lastModifiedBy: ymGs3J4QpWbCOXON
+  compendiumSource: null
+  duplicateSource: null
+_id: UoEQtWyLpJr5ZbGd
+sort: 2600000
+_key: '!items!UoEQtWyLpJr5ZbGd'
+

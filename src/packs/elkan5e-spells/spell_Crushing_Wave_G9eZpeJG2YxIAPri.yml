@@ -1,0 +1,199 @@
+name: Crushing Wave
+type: spell
+img: icons/magic/water/wave-water-blue.webp
+effects: []
+folder: 6J3i75lfD1J0xYwA
+flags:
+  srd5e:
+    page: spells.html
+    source: PHB
+    hash: shatter_phb
+  betterRolls5e:
+    critRange:
+      type: String
+      value: null
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value:
+        - true
+      altValue:
+        - true
+      context:
+        '0': ''
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  midi-qol:
+    onUseMacroName: ''
+    effectActivation: false
+    AoETargetType: any
+    AoETargetTypeIncludeSelf: true
+    autoTarget: default
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    reactionCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+    rollAttackPerTarget: default
+  core: {}
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    confirmTargets: default
+    noConcentrationCheck: false
+    saveDamage: default
+    bonusSaveDamage: default
+  dnd5e:
+    migratedProperties:
+      - vocal
+      - somatic
+      - material
+system:
+  description:
+    value: "<div class=\"rd__b  rd__b--3\"><p><em>You uncap a waterskin, letting the water flow out in a direction of your choice. As you hold out your hands, a large torrent of waters jets forth, blasting creatures with a jet of freezing water.</em></p><p><strong>Strength Save</strong></p><ul><li><p><strong>Failure</strong>:\_Targets take [[/damage 2d6 bludgeoning]] damage and [[/damage 1d6 cold]] damage* and are pushed 10 ft. away from you.</p></li><li><p><strong>Success</strong>:\_Half damage<span style=\"font-family:Signika, sans-serif\">, no other effect</span>.</p></li></ul><div class=\"rd__spc-inline-post\"><p></p></div></div><div class=\"rd__b  rd__b--3\"><div class=\"rd__b  rd__b--3\"><p><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial\">*</strong></span><strong>Upcasting</strong>: Increase damage by [[/damage 1d6 bludgeoning]] and [[/damage 1d6 cold]] for each spell level above 2nd.</p></div></div>"
+    chat: ''
+  source:
+    custom: elkan5e.com/spells/crushing-wave
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: ''
+    units: inst
+  cover: null
+  crewed: false
+  target:
+    value: '30'
+    width: 10
+    units: ft
+    type: line
+    prompt: true
+  range:
+    value: 60
+    long: null
+    units: touch
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: ''
+    amount: null
+    scale: false
+  ability: ''
+  actionType: save
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - 2d6
+        - bludgeoning
+      - - 1d6
+        - cold
+    versatile: ''
+  formula: ''
+  save:
+    ability: str
+    dc: null
+    scaling: spell
+  level: 2
+  school: con
+  materials:
+    value: A waterskin
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: level
+    formula: 1d6
+  properties:
+    - vocal
+    - somatic
+    - material
+    - mgc
+  attack:
+    bonus: ''
+    flat: false
+  enchantment: null
+  summons: null
+ownership:
+  default: 0
+  ymGs3J4QpWbCOXON: 3
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.328'
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  createdTime: 1719898941067
+  modifiedTime: 1720038557943
+  lastModifiedBy: V019W60xZMZmeqbA
+_id: G9eZpeJG2YxIAPri
+sort: 6200000
+_key: '!items!G9eZpeJG2YxIAPri'
+

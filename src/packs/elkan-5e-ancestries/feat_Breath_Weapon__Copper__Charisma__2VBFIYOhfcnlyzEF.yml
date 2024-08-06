@@ -1,0 +1,200 @@
+folder: hs1kzC3J5ULWhDl5
+name: Breath Weapon (Copper, Charisma)
+type: feat
+_id: 2VBFIYOhfcnlyzEF
+img: icons/magic/acid/projectile-flame-smoke-green.webp
+system:
+  description:
+    value: "<p><em>You spew heavy caustic globs which stick to enemies and hinder them.</em></p><p><strong>Action</strong> - 20 ft. cone -\_1/Long Rest - Magical</p><p><strong>Dexterity</strong> Saving Throw</p><ul><li><p><strong>Failure:</strong>\_[[/damage 2d6 acid]] damage*and the target is &amp;reference[Slowed] until the end of your next turn.</p></li><li><p><strong>Success:</strong> half damage</p></li></ul><p>​</p><p><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial\">*At Higher Levels:</strong> This ability's damage increases by 2d6 when you reach a total character or creature level of 5th level (</span>[[/damage 4d6 acid]]<span style=\"font-family:Signika, sans-serif\">), 11th level (</span>[[/damage 6d6 acid]]<span style=\"font-family:Signika, sans-serif\">), and 17th level (</span>[[/damage 8d6 acid]]<span style=\"font-family:Signika, sans-serif\">).</span></p>"
+    chat: ''
+  source:
+    book: ''
+    page: ''
+    custom: elkan5e.com/ancestrybackground
+    license: ''
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: ''
+    units: inst
+  cover: null
+  crewed: false
+  target:
+    value: 20
+    width: null
+    units: ft
+    type: cone
+    prompt: true
+  range:
+    value: null
+    long: null
+    units: ''
+  uses:
+    value: 1
+    max: '1'
+    per: lr
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: null
+    amount: null
+    scale: false
+  ability: ''
+  actionType: save
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - >-
+          (max(@scale.dragonborn.breath-weapon,(2*@scale.draconic-origin.breath-weapon)d6))
+        - acid
+    versatile: ''
+  formula: ''
+  save:
+    ability: dex
+    dc: null
+    scaling: cha
+  type:
+    value: race
+    subtype: ''
+  requirements: Copper Dragonborn
+  recharge:
+    value: null
+    charged: false
+  properties:
+    - mgc
+effects:
+  - statuses:
+      - condition-lab-triggler.KZ95rIvYYKBARCbe
+    changes:
+      - key: flags.midi-qol.disadvantage.attack.all
+        mode: 5
+        value: '1'
+        priority: 50
+      - key: system.attributes.ac.bonus
+        mode: 2
+        value: '-2'
+        priority: 20
+      - key: system.abilities.dex.bonuses.save
+        mode: 2
+        value: '-2'
+        priority: 20
+      - key: system.attributes.movement.all
+        mode: 0
+        value: /2
+        priority: 0
+    description: ''
+    duration:
+      seconds: null
+      startTime: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+      combat: null
+    flags:
+      ActiveAuras:
+        isAura: false
+        aura: None
+        radius: ''
+        alignment: ''
+        type: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        nameOverride: ''
+        customCheck: ''
+        wallsBlock: system
+      combat-utility-belt:
+        conditionId: KZ95rIvYYKBARCbe
+      condition-lab-triggler:
+        conditionId: KZ95rIvYYKBARCbe
+      core:
+        overlay: false
+        sourceId: >-
+          Compendium.elkan5e.elkan5e-spells.Item.HAvT3aakGxIuH4kH.ActiveEffect.UqK0hcSOMjaiMcXP
+      times-up:
+        isPassive: false
+      dae:
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: true
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration:
+          - turnEndSource
+    name: Slowed
+    _id: 9ZsiuWmELiXXi8W5
+    disabled: false
+    origin: Compendium.elkan5e.elkan5e-ancestryFeatures.Item.2VBFIYOhfcnlyzEF
+    transfer: false
+    tint: '#ffffff'
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/svg/clockwork.svg
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!2VBFIYOhfcnlyzEF.9ZsiuWmELiXXi8W5'
+sort: 1800000
+ownership:
+  default: 0
+  cwIJ7W3XRXrY0zj2: 3
+  9B4LXF0S1sIudaRa: 3
+flags:
+  midi-qol:
+    effectActivation: false
+    AoETargetType: any
+    AoETargetTypeIncludeSelf: true
+    autoTarget: default
+    removeAttackDamageButtons: default
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: true
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    rollOther: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: true
+    magiceffect: true
+    concentration: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    confirmTargets: never
+    saveDamage: halfdam
+    bonusSaveDamage: default
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.0
+  coreVersion: '12.324'
+  createdTime: 1700948702161
+  modifiedTime: 1716872137148
+  lastModifiedBy: 9B4LXF0S1sIudaRa
+  compendiumSource: null
+  duplicateSource: null
+_key: '!items!2VBFIYOhfcnlyzEF'
+

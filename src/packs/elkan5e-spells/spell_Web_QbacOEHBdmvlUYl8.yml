@@ -1,0 +1,280 @@
+name: Web
+type: spell
+img: icons/commodities/materials/material-webbing.webp
+effects:
+  - name: Restrained
+    origin: Compendium.elkan5e.elkan5e-spells.Item.QbacOEHBdmvlUYl8
+    changes:
+      - key: StatusEffect
+        mode: 0
+        value: restrained
+        priority: 0
+      - key: flags.midi-qol.OverTime
+        mode: 2
+        value: |-
+          turn=end,
+          saveAbility=str,
+          saveDC=@attributes.spelldc,
+          saveMagic=true,
+          label=Web
+        priority: 20
+    transfer: false
+    flags:
+      dae:
+        itemName: Web
+        disableIncapacitated: false
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    img: modules/elkan5e/icons/restrained.svg
+    _id: mtqZzXvzGon8D751
+    type: base
+    system: {}
+    disabled: false
+    duration:
+      startTime: null
+      seconds: 3600
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    tint: '#ffffff'
+    statuses: []
+    sort: 0
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '12.327'
+      systemId: dnd5e
+      systemVersion: 3.2.1
+      createdTime: 1719883514292
+      modifiedTime: 1719883555180
+      lastModifiedBy: 3Yi0HjF4PKCA4vX0
+    _key: '!items.effects!QbacOEHBdmvlUYl8.mtqZzXvzGon8D751'
+folder: 6J3i75lfD1J0xYwA
+flags:
+  midi-qol:
+    onUseMacroName: ''
+    effectActivation: false
+    AoETargetType: any
+    AoETargetTypeIncludeSelf: true
+    autoTarget: default
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    reactionCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+    rollAttackPerTarget: default
+  core: {}
+  betterRolls5e:
+    critRange:
+      type: String
+      value: null
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value:
+        - true
+      altValue:
+        - true
+      context:
+        '0': ''
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    confirmTargets: default
+    saveDamage: default
+    noConcentrationCheck: false
+    bonusSaveDamage: default
+system:
+  description:
+    value: >-
+      <p><em>You touch a bit of spiderweb with your fingers, muttering strange
+      spider-like sounds and stretching your fingers slightly as you focus on
+      the area where your magical spiderweb spontaneously appears.</em></p><p>If
+      the webs aren’t anchored between two solid masses (such as walls or trees)
+      or layered across a floor, wall, or ceiling, the conjured web collapses on
+      itself and the spell ends. Webs layered over a flat surface have a height
+      or depth of 5 ft. rather than the full 20 ft.*</p><p><strong>Dexterity
+      Save</strong></p><ul><li><p><strong>Failure:</strong> Target is
+      &amp;reference[restrained]. Target rolls a <strong>[[/save str]]</strong>
+      <strong>Save</strong> at end of their turns, ending effect on
+      success.</p></li><li><p><strong>Success:</strong> No
+      effect.</p></li><li><p><strong>Area Hazard:</strong> Once per turn, when a
+      target moves at least 5 ft. into a webbed square, they<span
+      style="font-family:Signika, sans-serif"> roll a save. </span>The web is
+      &amp;reference[difficultterrain] and &amp;reference[lightlyobscured] the
+      area. The webs are flammable. If the webs or a creature inside the webs
+      takes fire damage, the web will rapidly and harmlessly burn away after 1
+      round.</p></li></ul><p></p><div class="rd__b  rd__b--3"><div class="rd__b 
+      rd__b--3"><p><strong>*Upcasting:</strong> <span
+      style="font-family:Signika, sans-serif">The size of the cube increases by
+      5 ft.</span> for each spell level above 2nd level.</p></div></div>
+    chat: ''
+    unidentified: ''
+  source:
+    custom: elkan5e.com/spells/web
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: '1'
+    units: hour
+  cover: null
+  crewed: false
+  target:
+    value: '20'
+    width: null
+    units: ft
+    type: cube
+  range:
+    value: 60
+    long: 0
+    units: ft
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: save
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: dex
+    dc: null
+    scaling: spell
+  level: 2
+  school: con
+  components:
+    vocal: true
+    somatic: true
+    material: true
+    ritual: false
+    concentration: true
+  materials:
+    value: A bit of spiderweb
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: level
+    formula: ''
+  properties:
+    - vocal
+    - somatic
+    - material
+    - concentration
+    - mgc
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.0
+  coreVersion: '12.327'
+  createdTime: 1685385309160
+  modifiedTime: 1717915911542
+  lastModifiedBy: ymGs3J4QpWbCOXON
+  compendiumSource: null
+  duplicateSource: null
+_id: QbacOEHBdmvlUYl8
+sort: 2400000
+_key: '!items!QbacOEHBdmvlUYl8'
+

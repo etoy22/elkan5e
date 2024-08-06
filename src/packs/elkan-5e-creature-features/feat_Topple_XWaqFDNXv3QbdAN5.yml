@@ -1,0 +1,179 @@
+name: Topple
+type: feat
+system:
+  description:
+    value: >-
+      <p>If the kobold is burrowing underneath a creature of large size or
+      smaller, and the kobold is within 10 ft. of the surface, they can attempt
+      to collapse the ground underneath their target's feet. The target must
+      succeed on a dexterity saving throw or fall prone. The ground the kobold
+      disturbed becomes difficult terrain if it wasn't already.</p><p><span
+      style="font-family:Signika, sans-serif">When the kobold uses Topple, they
+      make themselves vulnerable to attacks from the surface. The kobold
+      benefits from half-cover, but can be struck as if in the 5 ft. cube
+      beneath the kobold's target.</span></p>
+    chat: ''
+    unidentified: ''
+  source:
+    custom: Elkan 5e
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: ''
+    units: inst
+  cover: null
+  crewed: false
+  target:
+    value: 1
+    width: null
+    units: ''
+    type: creature
+  range:
+    value: 10
+    long: null
+    units: ft
+  uses:
+    value: null
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: save
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  type:
+    value: monster
+    subtype: ''
+  requirements: Kobold
+  recharge:
+    value: null
+    charged: false
+img: icons/magic/earth/projectile-stone-landslide.webp
+effects:
+  - flags:
+      ActiveAuras:
+        isAura: false
+        radius: null
+        aura: None
+        alignment: ''
+        type: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        hostile: false
+        onlyOnce: false
+        displayTemp: false
+      combat-utility-belt:
+        conditionId: prone
+        overlay: false
+      core:
+        statusId: combat-utility-belt.prone
+    changes:
+      - key: flags.midi-qol.grants.advantage.attack.mwak
+        mode: 5
+        value: '1'
+        priority: null
+      - key: flags.midi-qol.grants.advantage.attack.msak
+        mode: 5
+        value: '1'
+        priority: null
+      - key: flags.midi-qol.grants.disadvantage.attack.rwak
+        mode: 5
+        value: '1'
+        priority: null
+      - key: flags.midi-qol.grants.disadvantage.attack.rsak
+        mode: 5
+        value: '1'
+        priority: null
+      - key: flags.midi-qol.disadvantage.attack.all
+        mode: 5
+        value: '1'
+        priority: null
+    duration:
+      seconds: null
+      startTime: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+      combat: null
+    _id: DM6X3uYU6m0Rs3V7
+    disabled: false
+    origin: null
+    tint: '#ffffff'
+    transfer: false
+    name: Prone
+    description: ''
+    statuses: []
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: modules/combat-utility-belt/icons/prone.svg
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!XWaqFDNXv3QbdAN5.DM6X3uYU6m0Rs3V7'
+folder: tYfPJpCdZlpfgNlV
+ownership:
+  default: 0
+  WaiirYzq9mhRj9cS: 3
+  3Yi0HjF4PKCA4vX0: 3
+flags:
+  midi-qol:
+    effectActivation: false
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    confirmTargets: never
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    noConcentrationCheck: false
+  core: {}
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.1.1
+  coreVersion: '12.324'
+  createdTime: 1668805434448
+  modifiedTime: 1712087898192
+  lastModifiedBy: WaiirYzq9mhRj9cS
+  compendiumSource: null
+  duplicateSource: null
+_id: XWaqFDNXv3QbdAN5
+sort: 400000
+_key: '!items!XWaqFDNXv3QbdAN5'
+

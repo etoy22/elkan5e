@@ -1,0 +1,139 @@
+name: Continual Flame
+type: spell
+img: icons/magic/fire/flame-burning-campfire-orange.webp
+effects: []
+folder: 6J3i75lfD1J0xYwA
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickVersatile:
+      value: false
+      altValue: false
+    quickOther:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+  core: {}
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    saveDamage: default
+    bonusSaveDamage: default
+  midi-qol:
+    effectActivation: false
+    itemCondition: ''
+    reactionCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+    rollAttackPerTarget: default
+    AoETargetType: any
+    AoETargetTypeIncludeSelf: true
+    autoTarget: default
+    removeAttackDamageButtons: default
+system:
+  description:
+    value: "<div class=\"rd__b  rd__b--2\"><p><em>You scatter red sand by blowing it over a torch or other kindling. A flame, equivalent in brightness to a torch, springs forth. The effect looks and feels like a regular flame but doesn't use oxygen or consume the fire's fuel.</em></p><p><strong>Utility Spell</strong></p><p>You select a space with flammable material. You cannot directly set a creature on fire with this spell.</p><ul><li><p>You light a fire which does not spread and which cannot be smothered or quenched by mundane means. The fire spreads dim light in a 60 ft. radius and bright light in a 30 ft. radius. Undying torches can be made with this spell.</p></li><li><p>A creature that is within the area of effect of the fire when it appears takes damage.</p></li></ul><p><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Dexterity</strong> <strong>Save</strong></span></p><ul style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;padding:0px 0px 0px 1.5em;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial\"><li style=\"box-sizing:border-box;user-select:text\"><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px\"><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Failure:</strong>\_Target takes [[/damage 3d6 fire]] damage.*</span></p></li><li style=\"box-sizing:border-box;user-select:text\"><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px\"><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Success:</strong> Half damage</span></p></li><li><p><span style=\"font-family:Signika, sans-serif\"><strong>Area Hazard:</strong> The fire is permanent. Targets roll a save when they enter or when they end their turn in the well (but only once per turn).</span></p></li></ul><p></p><div class=\"rd__b  rd__b--3\"><div class=\"rd__b  rd__b--3\"><p><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial\">*</strong></span><strong>Upcasting</strong>: Increase damage by [[/damage 1d6 fire]] for each spell level above 2nd.</p></div></div></div><p></p><p><em>Normally, the only way to end a Continual Flame spell is with @UUID[Compendium.elkan5e.elkan5e-spells.Item.oZwKW3I3yzrSdpLE]{Dispel Magic} or a @UUID[Compendium.elkan5e.elkan5e-spells.Item.7dewwmP7KmxvlfKf]{Darkness} spell.</em></p>"
+    chat: ''
+    unidentified: ''
+  source:
+    custom: elkan5e.com/spells/continual-flame
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: ''
+    units: perm
+  cover: null
+  crewed: false
+  target:
+    value: '5'
+    width: null
+    units: ft
+    type: cube
+  range:
+    value: 5
+    long: null
+    units: ft
+  uses:
+    value: null
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: null
+  actionType: save
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - 3d6
+        - fire
+    versatile: ''
+  formula: ''
+  save:
+    ability: dex
+    dc: null
+    scaling: spell
+  level: 2
+  school: evo
+  components:
+    vocal: true
+    somatic: true
+    material: true
+    ritual: false
+    concentration: false
+  materials:
+    value: Red sand and kindling
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: level
+    formula: 1d6
+  properties:
+    - vocal
+    - somatic
+    - material
+ownership:
+  default: 0
+  ymJDAw0PgXIWIHMH: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.0
+  coreVersion: '12.327'
+  createdTime: 1685385016292
+  modifiedTime: 1717915449476
+  lastModifiedBy: ymGs3J4QpWbCOXON
+  compendiumSource: null
+  duplicateSource: null
+_id: AoH7xJLlxEGJRq3u
+sort: 5200000
+_key: '!items!AoH7xJLlxEGJRq3u'
+

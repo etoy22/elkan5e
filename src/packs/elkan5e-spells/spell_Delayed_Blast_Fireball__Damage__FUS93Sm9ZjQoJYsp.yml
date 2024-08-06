@@ -1,0 +1,155 @@
+name: Delayed Blast Fireball [Damage]
+type: spell
+img: icons/magic/fire/orb-vortex.webp
+effects: []
+folder: H799nI2ov6BcHwd6
+flags:
+  core: {}
+  midi-qol:
+    effectActivation: false
+    AoETargetType: any
+    AoETargetTypeIncludeSelf: true
+    autoTarget: default
+    removeAttackDamageButtons: default
+    rollAttackPerTarget: default
+    itemCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    confirmTargets: never
+    noConcentrationCheck: false
+    saveDamage: default
+    bonusSaveDamage: default
+    otherSaveDamage: default
+  dnd5e:
+    migratedProperties:
+      - vocal
+      - somatic
+      - material
+      - concentration
+system:
+  description:
+    value: >-
+      <p>A beam of yellow light flashes from your pointing finger, then
+      condenses to linger at a chosen point within range as a glowing bead for
+      the duration. When the spell ends, either because your concentration is
+      broken or because you decide to end it, the bead blossoms with a low roar
+      into an explosion of flame that spreads around corners. Each creature in a
+      20-foot-radius sphere centered on that point must make a Dexterity saving
+      throw. A creature takes fire damage equal to the total accumulated damage
+      on a failed save, or half as much damage on a successful one.</p><p>The
+      spell's base damage is 12d6. If at the end of your turn the bead has not
+      yet detonated, the damage increases by 1d6.</p><p>If the glowing bead is
+      touched before the interval has expired, the creature touching it must
+      make a Dexterity saving throw. On a failed save, the spell ends
+      immediately, causing the bead to erupt in flame. On a successful save, the
+      creature can throw the bead up to 40 feet. When it strikes a creature or a
+      solid object, the spell ends, and the bead explodes.</p><p>The fire
+      damages objects in the area and ignites flammable objects that aren't
+      being worn or carried.</p><p></p><div class="rd__b  rd__b--3"><div
+      class="rd__b  rd__b--3"><p><span style="font-family:Signika,
+      sans-serif"><strong
+      style="box-sizing:border-box;user-select:text;color:rgb(25, 24,
+      19);font-family:Signika,
+      sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial">*</strong></span><strong>Upcasting</strong>:
+      Increase damage by [[/damage 1d6 fire]]{1d6} for each spell level above
+      7th.</p></div></div>
+    chat: ''
+  source:
+    custom: Elkan 5e
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: '1'
+    units: ''
+  cover: null
+  crewed: false
+  target:
+    value: 20
+    width: null
+    units: ft
+    type: sphere
+    prompt: true
+  range:
+    value: null
+    long: null
+    units: ft
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: ''
+    amount: null
+    scale: false
+  ability: ''
+  actionType: save
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - 12d6
+        - fire
+    versatile: 1d6
+  formula: ''
+  save:
+    ability: dex
+    dc: null
+    scaling: spell
+  level: 7
+  school: evo
+  materials:
+    value: A tiny ball of bat guano and sulfur
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: atwill
+    prepared: true
+  scaling:
+    mode: level
+    formula: 1d6
+  properties:
+    - vocal
+    - somatic
+    - material
+  attack:
+    bonus: ''
+    flat: false
+  summons: null
+ownership:
+  default: 0
+  3Yi0HjF4PKCA4vX0: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  coreVersion: '12.327'
+  createdTime: 1685387700325
+  modifiedTime: 1718960980924
+  lastModifiedBy: 9B4LXF0S1sIudaRa
+  compendiumSource: null
+  duplicateSource: null
+_id: FUS93Sm9ZjQoJYsp
+sort: 0
+_key: '!items!FUS93Sm9ZjQoJYsp'
+

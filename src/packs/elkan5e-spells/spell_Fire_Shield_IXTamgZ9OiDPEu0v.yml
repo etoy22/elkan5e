@@ -1,0 +1,540 @@
+name: Fire Shield
+type: spell
+img: icons/magic/defensive/shield-barrier-flaming-pentagon-red.webp
+effects:
+  - changes:
+      - key: system.traits.dr.value
+        mode: 0
+        value: fire
+        priority: 20
+      - key: macro.createItem
+        mode: 0
+        value: Compendium.elkan5e.elkan5e-spells.Item.MYhYpT9ToJA7ly7V
+        priority: 20
+    transfer: false
+    name: Fire Shield [Cold]
+    _id: lDDFI8gNCEdRT4c5
+    disabled: false
+    duration:
+      startTime: null
+      seconds: 600
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    origin: null
+    statuses: []
+    flags:
+      dae:
+        selfTarget: false
+        selfTargetAlways: false
+        stackable: noneName
+        durationExpression: ''
+        specialDuration: []
+        disableIncapacitated: false
+        dontApply: true
+        showIcon: false
+        macroRepeat: none
+      core:
+        statusId: ''
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    tint: '#ffffff'
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/magic/defensive/shield-barrier-flaming-pentagon-blue.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!IXTamgZ9OiDPEu0v.lDDFI8gNCEdRT4c5'
+  - changes:
+      - key: system.traits.dr.value
+        mode: 0
+        value: cold
+        priority: 20
+      - key: macro.itemMacro
+        mode: 0
+        value: Compendium.elkan5e.elkan5e-spells.Item.B4SNhPQkgrWJ95o7
+        priority: 20
+    transfer: false
+    name: Fire Shield [Hot]
+    _id: tgVvX1WeJRclANpe
+    disabled: false
+    duration:
+      startTime: null
+      seconds: 600
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    origin: null
+    statuses: []
+    flags:
+      dae:
+        selfTarget: false
+        selfTargetAlways: false
+        stackable: noneName
+        durationExpression: ''
+        specialDuration: []
+        disableIncapacitated: false
+        dontApply: true
+        showIcon: false
+        macroRepeat: none
+      core:
+        statusId: ''
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    tint: '#ffffff'
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/magic/defensive/shield-barrier-flaming-pentagon-red.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!IXTamgZ9OiDPEu0v.tgVvX1WeJRclANpe'
+folder: 90eJtrVwLFIxcWJw
+flags:
+  dynamiceffects:
+    equipActive: true
+    alwaysActive: false
+    effects:
+      - modSpecKey: macro.execute
+        value: FireShield @target
+        mode: +
+        targetSpecific: false
+        id: 1
+        itemId: QTP4gLcjbhZ2khVy
+        active: true
+        _targets: []
+  itemacro:
+    macro:
+      _data:
+        name: Fire Shield
+        type: script
+        scope: global
+        command: >-
+          const lastArg = args[args.length - 1];
+
+          let tactor;
+
+          if (lastArg.tokenId) tactor =
+          canvas.tokens.get(lastArg.tokenId).actor;
+
+          else tactor = game.actors.get(lastArg.actorId);
+
+          const target = canvas.tokens.get(lastArg.tokenId)
+
+
+
+          if (args[0] === "on") {  
+                  new Dialog({
+                      title: "Warm or Cold Shield",
+                      buttons: {
+                          one: {
+                              label: "Warm",
+                              callback: () => {
+                                  let resistances = tactor.data.data.traits.dr.value;
+                                  resistances.push("cold");
+                                  tactor.update({ "data.traits.dr.value": resistances });
+                                  DAE.setFlag(tactor, 'FireShield', "cold");
+                                  ChatMessage.create({ content: `${target.name} gains resistnace to cold` });
+                              }
+                          },
+                          two: {
+                              label: "Cold",
+                              callback: () => {
+                                  let resistances = tactor.data.data.traits.dr.value;
+                                  resistances.push("fire");
+                                  tactor.update({ "data.traits.dr.value": resistances });
+                                  DAE.setFlag(tactor, 'FireShield', "fire");
+                                  ChatMessage.create({ content: `${target.name} gains resistnace to fire` });
+                              }
+                          },
+                      }
+                  }).render(true);
+          }
+
+          if (args[0] === "off") {
+              let element = DAE.getFlag(tactor, 'FireShield');
+              let resistances = tactor.data.data.traits.dr.value;
+              const index = resistances.indexOf(element);
+              resistances.splice(index, 1);
+              tactor.update({ "data.traits.dr.value": resistances });
+              ChatMessage.create({ content: "Fire Shield expires on " + target.name});
+              DAE.unsetFlag(tactor, 'FireShield');
+
+          }
+        author: E4BVikjIkVl2lL2j
+      data:
+        name: Fire Shield
+        type: script
+        scope: global
+        command: >-
+          // DAE Macro, no arguments passed
+
+
+          const lastArg = args[args.length - 1];
+
+          let tactor;
+
+          if (lastArg.tokenId) tactor =
+          canvas.tokens.get(lastArg.tokenId).actor;
+
+          else tactor = game.actors.get(lastArg.actorId);
+
+          const target = canvas.tokens.get(lastArg.tokenId)
+
+
+
+          if (args[0] === "on") {  
+                  new Dialog({
+                      title: "Warm or Cold Shield",
+                      buttons: {
+                          one: {
+                              label: "Warm",
+                              callback: async () => {
+                                  let resistances = duplicate(tactor.data.data.traits.dr.value);
+                                  resistances.push("cold");
+                                  await tactor.update({ "data.traits.dr.value": resistances });
+                                  await DAE.setFlag(tactor, 'FireShield', "cold");
+                                  ChatMessage.create({ content: `${target.name} gains resistnace to cold` });
+                                  await tactor.createEmbeddedDocuments("Item", [{
+                                      "name": "Summoned Fire Shield",
+                                      "type": "weapon",
+                                      "img": "systems/dnd5e/icons/spells/protect-red-3.jpg",
+                                      "data": {
+                                        "source": "Fire Shield Spell",
+                                        "activation": {
+                                          "type": "special",
+                                          "cost": 0,
+                                          "condition": "whenever a creature within 5 feet of you hits you with a melee Attack"
+                                        },
+                                        "actionType": "other",
+                                        "damage": {
+                                          "parts": [
+                                            [
+                                              "2d8",
+                                              "fire"
+                                            ]
+                                          ]
+                                        },
+                                        "weaponType": "natural"
+                                      },
+                                      "effects": []
+                                    }])
+                              }
+                          },
+                          two: {
+                              label: "Cold",
+                              callback: async () => {
+                                  let resistances = duplicate(tactor.data.data.traits.dr.value);
+                                  resistances.push("fire");
+                                  await tactor.update({ "data.traits.dr.value": resistances });
+                                  await DAE.setFlag(tactor, 'FireShield', "fire");
+                                  ChatMessage.create({ content: `${target.name} gains resistance to fire` });
+                                  await tactor.createEmbeddedDocuments("Item", [{
+                                      "name": "Summoned Fire Shield",
+                                      "type": "weapon",
+                                      "img": "systems/dnd5e/icons/spells/protect-blue-3.jpg",
+                                      "data": {
+                                        "source": "Fire Shield Spell",
+                                        "activation": {
+                                          "type": "special",
+                                          "cost": 0,
+                                          "condition": "whenever a creature within 5 feet of you hits you with a melee Attack"
+                                        },
+                                        "actionType": "other",
+                                        "damage": {
+                                          "parts": [
+                                            [
+                                              "2d8",
+                                              "cold"
+                                            ]
+                                          ]
+                                        },
+                                        "weaponType": "natural"
+                                      },
+                                      "effects": []
+                                    }])
+                              }
+                          },
+                      }
+                  }).render(true);
+          }
+
+          if (args[0] === "off") {
+              let item = tactor.items.getName("Summoned Fire Shield")
+              let element = DAE.getFlag(tactor, 'FireShield');
+              let resistances = tactor.data.data.traits.dr.value;
+              const index = resistances.indexOf(element);
+              resistances.splice(index, 1);
+              await tactor.update({ "data.traits.dr.value": resistances });
+              ChatMessage.create({ content: "Fire Shield expires on " + target.name});
+              await DAE.unsetFlag(tactor, 'FireShield');
+              await tactor.deleteEmbeddedDocuments("Item", [item.id])
+
+          }
+        author: zrPR3wueYsESSBR3
+        _id: null
+        img: icons/svg/dice-target.svg
+        folder: null
+        sort: 0
+        permission:
+          default: 0
+        flags: {}
+      options: {}
+      apps: {}
+      compendium: null
+  midi-qol:
+    onUseMacroName: '[postActiveEffects]function.MidiQOL.chooseEffect'
+    effectActivation: false
+    itemCondition: ''
+    reactionCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+    rollAttackPerTarget: default
+  core: {}
+  betterRolls5e:
+    critRange:
+      type: String
+      value: null
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value: []
+      altValue: []
+      context: []
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  enhanced-terrain-layer:
+    multiple: 1
+    min: 0
+    max: 0
+    environment: ''
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    confirmTargets: default
+    noConcentrationCheck: false
+  dae:
+    macro:
+      name: Fire Shield
+      img: icons/magic/defensive/shield-barrier-flaming-pentagon-red.webp
+      type: script
+      scope: global
+      command: ''
+      author: 3Yi0HjF4PKCA4vX0
+      ownership:
+        default: 3
+      _id: null
+      folder: null
+      sort: 0
+      flags: {}
+      _stats:
+        systemId: null
+        systemVersion: null
+        coreVersion: null
+        createdTime: null
+        modifiedTime: null
+        lastModifiedBy: null
+system:
+  description:
+    value: >-
+      <p>Thin and wispy flames wreathe your body for the Duration, shedding
+      bright light in a 10-foot radius and dim light for an additional 10 feet.
+      You can end the spell early by using an action to dismiss it.</p><p>The
+      flames provide you with a warm shi⁠eld or a chill sh⁠ield, as you choose.
+      The warm shi⁠eld grants you Resistance to cold damage, and the chill
+      shi⁠eld grants you resist⁠ance to fire damage.</p><p>In addition, whenever
+      a creature within 5 feet of you hits you with a melee Attack, the shiel⁠d
+      erupts with flame. The attacker takes 2d8 fire damage from a warm shie⁠ld,
+      or 2d8 cold damage from a cold sh⁠ield.</p><p>Here are the
+      attacks:</p><p>@UUID[Compendium.elkan5e.elkan5e-spells.Item.B4SNhPQkgrWJ95o7]{Fire
+      Shield
+      [Hot]}</p><p>@UUID[Compendium.elkan5e.elkan5e-spells.Item.MYhYpT9ToJA7ly7V]{Fire
+      Shield [Cold]}</p>
+    chat: ''
+    unidentified: ''
+  source: Elkan 5e
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: '10'
+    units: minute
+  cover: null
+  crewed: false
+  target:
+    value: null
+    width: null
+    units: ''
+    type: self
+  range:
+    value: null
+    long: null
+    units: self
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: util
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: 2d8
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  level: 4
+  school: evo
+  components:
+    vocal: true
+    somatic: true
+    material: true
+    ritual: false
+    concentration: false
+  materials:
+    value: A bit of phosphorus or a firefly
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: none
+    formula: ''
+  properties:
+    - vocal
+    - somatic
+    - material
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.0.3
+  coreVersion: '12.324'
+  createdTime: 1685385791174
+  modifiedTime: 1709610169252
+  lastModifiedBy: 5VT8aO0sUiO4rl0h
+  compendiumSource: null
+  duplicateSource: null
+_id: IXTamgZ9OiDPEu0v
+sort: 500000
+_key: '!items!IXTamgZ9OiDPEu0v'
+

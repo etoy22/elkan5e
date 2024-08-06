@@ -1,0 +1,253 @@
+name: Ray of Sickness
+type: spell
+img: icons/magic/acid/pouring-gas-smoke-liquid.webp
+effects:
+  - name: Poisoned
+    origin: Compendium.elkan5e.elkan5e-spells.Item.hsIq5KDx3cd8taQ8
+    changes:
+      - key: StatusEffect
+        mode: 0
+        value: poisoned
+        priority: 0
+    transfer: false
+    flags:
+      dae:
+        itemName: Ray of Sickness
+        disableIncapacitated: false
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration:
+          - turnEndSource
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    img: modules/elkan5e/icons/poisoned.svg
+    _id: arW8u7ZVD2YaZuUO
+    type: base
+    system: {}
+    disabled: false
+    duration:
+      startTime: null
+      seconds: null
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    tint: '#ffffff'
+    statuses: []
+    sort: 0
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '12.327'
+      systemId: dnd5e
+      systemVersion: 3.2.1
+      createdTime: 1719883069463
+      modifiedTime: 1719883081139
+      lastModifiedBy: 3Yi0HjF4PKCA4vX0
+    _key: '!items.effects!hsIq5KDx3cd8taQ8.arW8u7ZVD2YaZuUO'
+folder: U0k4VGG6bziqf3oH
+flags:
+  srd5e:
+    page: spells.html
+    source: PHB
+    hash: ray%20of%20sickness_phb
+  betterRolls5e:
+    critRange:
+      type: String
+      value: null
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value:
+        '0': true
+      altValue:
+        '0': true
+      context:
+        '0': ''
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  midi-qol:
+    onUseMacroName: ''
+    effectActivation: false
+    fumbleThreshold: null
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    reactionCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+    rollAttackPerTarget: default
+  core: {}
+  midiProperties:
+    nodam: false
+    fulldam: true
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    autoSaveFriendly: false
+    noConcentrationCheck: false
+    confirmTargets: default
+    saveDamage: fulldam
+    bonusSaveDamage: default
+system:
+  description:
+    value: "<div class=\"rd__b  rd__b--3\"><p><em>Calling out a few words of power to afflict your target, you create a ray of sickening greenish energy to lash out toward a creature.</em></p><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;text-align:start\"><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Constitution Save</strong></span></p><ul style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;padding:0px 0px 0px 1.5em;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial\"><li style=\"box-sizing:border-box;user-select:text\"><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;margin-block-end:0px\"><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Failure:</strong> The target takes\_[[/damage 2d8 poison]]\_damage and is &amp;reference[poisoned] for 1 round.</span></p></li><li style=\"box-sizing:border-box;user-select:text\"><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;margin-block-end:0px\"><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Success</strong>: No effect.</span></p></li></ul><p></p><div class=\"rd__spc-inline-post\"><div class=\"rd__b  rd__b--3\"><div class=\"rd__spc-inline-post\"><div class=\"rd__b  rd__b--3\"><div class=\"rd__b  rd__b--3\"><p><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial\">*</strong></span><strong>Upcasting</strong>: Increase damage by [[/damage 1d8 poison]] for each spell level above 1st.</p></div></div></div></div><div class=\"rd__spc-inline-post\"><p>\_</p></div></div><div class=\"rd__spc-inline-post\"><p>\_</p></div></div>"
+    chat: ''
+    unidentified: ''
+  source:
+    custom: elkan5e.com/spells/ray-of-sickness
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: '1'
+    units: round
+  cover: null
+  crewed: false
+  target:
+    value: 0
+    width: null
+    units: null
+    type: ''
+  range:
+    value: 60
+    long: null
+    units: ft
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: save
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - 2d8
+        - poison
+    versatile: ''
+  formula: ''
+  save:
+    ability: con
+    dc: null
+    scaling: spell
+  level: 1
+  school: trs
+  components:
+    vocal: true
+    somatic: true
+    material: false
+    ritual: false
+    concentration: false
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: level
+    formula: 1d8
+  properties:
+    - vocal
+    - somatic
+    - mgc
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  coreVersion: '12.327'
+  createdTime: 1685348155012
+  modifiedTime: 1719896783329
+  lastModifiedBy: ymGs3J4QpWbCOXON
+  compendiumSource: null
+  duplicateSource: null
+_id: hsIq5KDx3cd8taQ8
+sort: 4350000
+_key: '!items!hsIq5KDx3cd8taQ8'
+

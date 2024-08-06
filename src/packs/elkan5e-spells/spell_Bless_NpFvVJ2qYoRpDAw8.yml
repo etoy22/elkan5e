@@ -1,0 +1,298 @@
+name: Bless
+type: spell
+img: icons/magic/holy/prayer-hands-glowing-yellow-green.webp
+effects:
+  - _id: lsEz6wG7eXIutwZI
+    flags:
+      dae:
+        transfer: false
+        stackable: none
+        macroRepeat: none
+        specialDuration: []
+        durationExpression: ''
+        selfTarget: false
+        selfTargetAlways: false
+        disableIncapacitated: false
+        dontApply: false
+        showIcon: false
+      ActiveAuras:
+        isAura: false
+        ignoreSelf: false
+        hidden: false
+        height: false
+        alignment: ''
+        type: ''
+        aura: None
+        radius: ''
+        save: ''
+        savedc: null
+        hostile: false
+        onlyOnce: false
+        time: None
+        displayTemp: false
+        nameOverride: ''
+        customCheck: ''
+        wallsBlock: system
+      core:
+        statusId: ''
+    changes:
+      - key: system.bonuses.abilities.save
+        mode: 2
+        value: +1d4
+        priority: null
+      - key: system.bonuses.mwak.attack
+        mode: 0
+        value: +1d4
+        priority: null
+      - key: macro.tokenMagic
+        mode: 0
+        value: bevel
+        priority: null
+      - key: system.bonuses.rsak.attack
+        mode: 2
+        value: +1d4
+        priority: null
+      - key: system.bonuses.msak.attack
+        mode: 2
+        value: +1d4
+        priority: null
+      - key: system.bonuses.rwak.attack
+        mode: 2
+        value: +1d4
+        priority: null
+    disabled: false
+    duration:
+      startTime: null
+      seconds: 60
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    tint: '#ffffff'
+    transfer: false
+    origin: null
+    name: Bless
+    description: ''
+    statuses: []
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/magic/holy/prayer-hands-glowing-yellow-green.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!NpFvVJ2qYoRpDAw8.lsEz6wG7eXIutwZI'
+folder: U0k4VGG6bziqf3oH
+flags:
+  dynamiceffects:
+    equipActive: true
+    alwaysActive: false
+    effects:
+      - modSpecKey: data.bonuses.abilities.save
+        value: 1d4
+        mode: +
+        targetSpecific: false
+        id: 1
+        itemId: hYWYJJbVMe5U7GbQ
+        active: true
+        _targets: []
+        label: Bonuses Abilities Save
+      - modSpecKey: data.bonuses.All-Attacks
+        value: 1d4
+        mode: +
+        targetSpecific: false
+        id: 2
+        itemId: hYWYJJbVMe5U7GbQ
+        active: true
+        _targets: []
+  midi-qol:
+    onUseMacroName: ''
+    effectActivation: false
+    itemCondition: ''
+    reactionCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+    rollAttackPerTarget: default
+  core: {}
+  betterRolls5e:
+    critRange:
+      type: String
+      value: null
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value: []
+      altValue: []
+      context: []
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  enhanced-terrain-layer:
+    multiple: 1
+    min: 0
+    max: 0
+    environment: ''
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+system:
+  description:
+    value: >-
+      <p
+      style="margin-top:6.0pt;margin-right:0in;margin-bottom:6.0pt;margin-left:0in"><em>Holding
+      out a holy or profane symbol, you call upon its power to empower your
+      allies.</em></p><p class="font8"><strong>Buff</strong></p><ul><li><p
+      class="font8">The targets can roll [[/r 1d4]] and add the number rolled to
+      all attack rolls and saving throws, rolling 1d4 again for every
+      roll.</p></li></ul><p></p><p><strong>Upcasting</strong>: <span
+      style="font-family:Signika, sans-serif">Target one additional creature for
+      each spell level above 1st.</span></p>
+    chat: ''
+    unidentified: ''
+  source:
+    custom: elkan5e.com/spells/bless
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: '1'
+    units: minute
+  cover: null
+  crewed: false
+  target:
+    value: 3
+    width: null
+    units: ''
+    type: creature
+  range:
+    value: 30
+    long: 0
+    units: ft
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: ''
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: 1d4
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  level: 1
+  school: enc
+  components:
+    vocal: true
+    somatic: true
+    material: true
+    ritual: false
+    concentration: true
+  materials:
+    value: A sprinkling of holy water
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: none
+    formula: ''
+  properties:
+    - vocal
+    - somatic
+    - material
+    - concentration
+    - mgc
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  ymJDAw0PgXIWIHMH: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.0
+  coreVersion: '12.327'
+  createdTime: 1685347675669
+  modifiedTime: 1717914510920
+  lastModifiedBy: ymGs3J4QpWbCOXON
+  compendiumSource: null
+  duplicateSource: null
+_id: NpFvVJ2qYoRpDAw8
+sort: 2200000
+_key: '!items!NpFvVJ2qYoRpDAw8'
+

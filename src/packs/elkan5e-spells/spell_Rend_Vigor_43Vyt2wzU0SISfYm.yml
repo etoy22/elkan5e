@@ -1,0 +1,125 @@
+name: Rend Vigor
+type: spell
+img: icons/magic/unholy/hand-light-pink.webp
+system:
+  description:
+    value: "<p><span style=\"font-family:Signika, sans-serif\"><em style=\"box-sizing:border-box;user-select:text\">Holding a small reflective black stone in your palm, you curse your target, who appears in the reflection of the stone. You attempt to strip them of the energy empowering them, whether it be biological, magical, or psychological.</em></span></p><div class=\"rd__b  rd__b--2\" style=\"box-sizing:border-box;user-select:text;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial\"><div class=\"rd__b  rd__b--2\" style=\"box-sizing:border-box;user-select:text\"><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px\"><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Charisma</strong> <strong>Save</strong></span></p><p><span style=\"font-family:Signika, sans-serif\">When you cast this spell, you immediately know what spell level you would need to eliminate all the target's temporary hit points, and you can choose the spell slot accordingly*.</span></p><ul style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;padding:0px 0px 0px 1.5em\"><li style=\"box-sizing:border-box;user-select:text\"><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px\"><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Failure:</strong> Target loses up to 20 &amp;reference[temporary hit points], with an additional 20 temporary hit points removed for every spell slot level above 1st.</span></p></li><li style=\"box-sizing:border-box;user-select:text\"><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px\"><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Success:</strong> No Effect</span></p></li></ul><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;min-height:1rem\"></p></div></div><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;text-align:start\"><span style=\"font-family:Signika, sans-serif\">*eg. you would know you need a level 2 spell slot to remove 26 temporary hit points.\_If the target has no temporary hit points, the black stone shows no reflection, and the spell immediately fails and costs you no spell slot.</span></p><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;text-align:start\"><span style=\"font-family:Signika, sans-serif\"><em style=\"box-sizing:border-box;user-select:text\">This spell counts as a curse, but cannot be reversed unless immediately countered somehow when you cast this spell.</em></span></p>"
+    chat: ''
+    unidentified: ''
+  source:
+    custom: elkan5e.com/spells/rend-vigor
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: ''
+    units: inst
+  cover: null
+  crewed: false
+  target:
+    value: 1
+    width: null
+    units: ''
+    type: creature
+  range:
+    value: 90
+    long: null
+    units: ft
+  uses:
+    value: null
+    max: ''
+    per: ''
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: save
+  attackBonus: ''
+  chatFlavor: Reduce the target's temporary hit points by up to the displayed amount.
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - '20'
+        - ''
+    versatile: ''
+  formula: ''
+  save:
+    ability: cha
+    dc: null
+    scaling: spell
+  level: 1
+  school: nec
+  components:
+    vocal: true
+    somatic: true
+    material: true
+    ritual: false
+    concentration: false
+  materials:
+    value: A small reflective black stone
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: false
+  scaling:
+    mode: level
+    formula: '+10'
+  properties:
+    - vocal
+    - somatic
+    - material
+    - mgc
+effects: []
+ownership:
+  default: 2
+  WaiirYzq9mhRj9cS: 3
+flags:
+  midi-qol:
+    effectActivation: false
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    reactionCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+    rollAttackPerTarget: default
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    rollOther: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    noConcentrationCheck: false
+    confirmTargets: default
+    saveDamage: default
+    bonusSaveDamage: default
+  core:
+    sourceId: Item.jy5ADu5PzR6ElRWf
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  coreVersion: '12.328'
+  createdTime: 1681798032841
+  modifiedTime: 1720031429410
+  lastModifiedBy: 3Yi0HjF4PKCA4vX0
+  compendiumSource: Item.jy5ADu5PzR6ElRWf
+  duplicateSource: null
+folder: U0k4VGG6bziqf3oH
+sort: 5100000
+_id: 43Vyt2wzU0SISfYm
+_key: '!items!43Vyt2wzU0SISfYm'
+

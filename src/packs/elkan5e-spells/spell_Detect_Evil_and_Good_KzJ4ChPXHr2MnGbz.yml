@@ -1,0 +1,263 @@
+name: Detect Evil and Good
+type: spell
+img: icons/magic/unholy/orb-glowing-yellow-purple.webp
+effects:
+  - _id: jzbxpne38fos80hz
+    changes:
+      - key: macro.tokenMagic
+        mode: 0
+        value: outline
+        priority: 20
+    disabled: false
+    duration:
+      startTime: null
+      seconds: 600
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    transfer: false
+    flags:
+      core:
+        statusId: ''
+      dae:
+        stackable: none
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+        transfer: false
+        selfTarget: true
+        selfTargetAlways: false
+        disableIncapacitated: false
+        dontApply: false
+        showIcon: false
+      ActiveAuras:
+        isAura: true
+        aura: All
+        radius: '30'
+        alignment: ''
+        type: aberration; celestial; elemental; fey; fiend; undead
+        ignoreSelf: true
+        height: true
+        hidden: true
+        displayTemp: true
+        hostile: false
+        onlyOnce: false
+        nameOverride: ''
+        customCheck: ''
+        wallsBlock: system
+    tint: '#ffffff'
+    origin: null
+    name: Detect Evil and Good
+    description: ''
+    statuses: []
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/magic/unholy/orb-glowing-yellow-purple.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!KzJ4ChPXHr2MnGbz.jzbxpne38fos80hz'
+folder: U0k4VGG6bziqf3oH
+flags:
+  srd5e:
+    page: spells.html
+    source: PHB
+    hash: detect%20evil%20and%20good_phb
+  betterRolls5e:
+    critRange:
+      type: String
+      value: ''
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value: []
+      altValue: []
+      context: []
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  core: {}
+  midi-qol:
+    effectActivation: false
+    AoETargetType: any
+    AoETargetTypeIncludeSelf: true
+    autoTarget: default
+    itemCondition: ''
+    reactionCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+    rollAttackPerTarget: default
+  midiProperties:
+    nodam: false
+    halfdam: false
+    fulldam: false
+    rollOther: false
+    critOther: false
+    concentration: false
+    magicdam: false
+    magiceffect: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    noConcentrationCheck: false
+    confirmTargets: default
+system:
+  description:
+    value: >-
+      <p><em>You gain a second sort of awareness outside of yourself, seeing
+      certain magical creatures in your mind, even when you aren't looking at
+      them.</em></p><p><strong>Buff</strong></p><ul><li><p>You know if there is
+      an &amp;reference[aberration], &amp;reference[celestial],
+      &amp;reference[elemental], &amp;reference[fey], &amp;reference[fiend], or
+      &amp;reference[undead] within 30 feet of you, as well as where the
+      creature is located. Similarly, you know if there is a place or object
+      within 30 feet of you that has been magically consecrated or desecrated
+      (such as with the
+      <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.TM7nuwiFhBjdE2MT]{Hallow}</em>
+      spell). The spell can penetrate most barriers, but it is blocked by 1 foot
+      of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood
+      or dirt.</p></li></ul><p></p><p><em>This spell does not allow you to
+      accurately see invisible creatures, but you know their location.</em></p>
+    chat: ''
+    unidentified: ''
+  source:
+    custom: elkan5e.com/spells/detect-evil-and-good
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: '10'
+    units: minute
+  cover: null
+  crewed: false
+  target:
+    value: 30
+    width: null
+    units: null
+    type: self
+  range:
+    value: null
+    long: null
+    units: self
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: util
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  level: 1
+  school: div
+  components:
+    vocal: true
+    somatic: true
+    material: false
+    ritual: false
+    concentration: true
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: none
+    formula: ''
+  properties:
+    - vocal
+    - somatic
+    - concentration
+    - mgc
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  ymJDAw0PgXIWIHMH: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  coreVersion: '12.327'
+  createdTime: 1685347743810
+  modifiedTime: 1719882552392
+  lastModifiedBy: 3Yi0HjF4PKCA4vX0
+  compendiumSource: null
+  duplicateSource: null
+_id: KzJ4ChPXHr2MnGbz
+sort: 1900000
+_key: '!items!KzJ4ChPXHr2MnGbz'
+

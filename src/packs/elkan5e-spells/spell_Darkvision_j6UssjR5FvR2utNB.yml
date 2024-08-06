@@ -1,0 +1,372 @@
+name: Darkvision
+type: spell
+img: icons/magic/perception/eye-ringed-glow-angry-red.webp
+effects:
+  - _id: 7WRR5qfCKAAqq2eg
+    flags:
+      dae:
+        stackable: none
+        transfer: false
+        specialDuration:
+          - None
+        macroRepeat: none
+        selfTarget: false
+        selfTargetAlways: false
+        durationExpression: ''
+        disableIncapacitated: false
+        dontApply: false
+        showIcon: false
+      ActiveAuras:
+        isAura: false
+        ignoreSelf: false
+        hidden: false
+        height: false
+        aura: None
+        radius: ''
+        alignment: ''
+        type: ''
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        nameOverride: ''
+        customCheck: ''
+        wallsBlock: system
+      core:
+        statusId: ''
+    changes:
+      - key: system.attributes.senses.darkvision
+        mode: 4
+        value: '60'
+        priority: 20
+      - key: ATL.sight.visionMode
+        mode: 0
+        value: darkvision
+        priority: 20
+      - key: ATL.sight.range
+        mode: 2
+        value: '60'
+        priority: 20
+    disabled: false
+    duration:
+      startTime: null
+      seconds: 60
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    tint: '#ffffff'
+    transfer: false
+    origin: null
+    name: Darkvision
+    description: ''
+    statuses: []
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/magic/perception/eye-ringed-glow-angry-red.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!j6UssjR5FvR2utNB.7WRR5qfCKAAqq2eg'
+folder: 6J3i75lfD1J0xYwA
+flags:
+  dae:
+    activeEquipped: false
+    alwaysActive: false
+    macro:
+      name: Darkvision
+      img: icons/magic/perception/eye-ringed-glow-angry-red.webp
+      type: script
+      scope: global
+      command: ''
+      author: 3Yi0HjF4PKCA4vX0
+      ownership:
+        default: 3
+      _id: null
+      folder: null
+      sort: 0
+      flags: {}
+      _stats:
+        systemId: null
+        systemVersion: null
+        coreVersion: null
+        createdTime: null
+        modifiedTime: null
+        lastModifiedBy: null
+  midi-qol:
+    onUseMacroName: ''
+    effectActivation: false
+    itemCondition: ''
+    reactionCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+    rollAttackPerTarget: default
+  core: {}
+  itemacro:
+    macro:
+      _data:
+        name: Darkvision
+        type: script
+        scope: global
+        command: >-
+          //DAE Macro Execute, Effect Value = "Macro Name" @target
+
+          const lastArg = args[args.length - 1];
+
+          let tactor;
+
+          if (lastArg.tokenId) tactor =
+          canvas.tokens.get(lastArg.tokenId).actor;
+
+          else tactor = game.actors.get(lastArg.actorId);
+
+          const target = canvas.tokens.get(lastArg.tokenId)
+
+
+          let dimVision = target.data.dimSight;
+
+          if (args[0] === "on") {
+              DAE.setFlag(tactor, 'darkvisionSpell', dimVision);
+              let newSight = dimVision < 60 ? 60 : dimVision
+              await target.update({"dimSight" : newSight});
+              await tactor.update({"token.dimSight" : newSight})
+              ChatMessage.create({content: `${target.name}'s vision has been improved`});
+          }
+
+          if(args[0] === "off") {
+              let sight = DAE.getFlag(tactor, 'darkvisionSpell');
+              target.update({"dimSight" : sight });
+              await tactor.update({"token.dimSight" : sight})
+              DAE.unsetFlag(tactor, 'darkvisionSpell');
+              ChatMessage.create({content: `${target.name}'s vision has been returned`});
+          }
+        author: E4BVikjIkVl2lL2j
+      data:
+        name: Darkvision
+        type: script
+        scope: global
+        command: >-
+          //DAE Macro Execute, Effect Value = "Macro Name" @target
+
+          const lastArg = args[args.length - 1];
+
+          let tactor;
+
+          if (lastArg.tokenId) tactor =
+          canvas.tokens.get(lastArg.tokenId).actor;
+
+          else tactor = game.actors.get(lastArg.actorId);
+
+          const target = canvas.tokens.get(lastArg.tokenId)
+
+
+          let dimVision = target.data.dimSight;
+
+          if (args[0] === "on") {
+              DAE.setFlag(tactor, 'darkvisionSpell', dimVision);
+              let newSight = dimVision < 60 ? 60 : dimVision
+              await target.update({"dimSight" : newSight});
+              await tactor.update({"token.dimSight" : newSight})
+              ChatMessage.create({content: `${target.name}'s vision has been improved`});
+          }
+
+          if(args[0] === "off") {
+              let sight = DAE.getFlag(tactor, 'darkvisionSpell');
+              target.update({"dimSight" : sight });
+              await tactor.update({"token.dimSight" : sight})
+              DAE.unsetFlag(tactor, 'darkvisionSpell');
+              ChatMessage.create({content: `${target.name}'s vision has been returned`});
+          }
+        author: E4BVikjIkVl2lL2j
+      options: {}
+      apps: {}
+      compendium: null
+  betterRolls5e:
+    critRange:
+      type: String
+      value: ''
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value: []
+      altValue: []
+      context: []
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    confirmTargets: default
+    noConcentrationCheck: false
+system:
+  description:
+    value: >-
+      <p><em>You touch a small agate, then touch your eye. They eye of every
+      creature you name glows for a moment, after which they can see in the
+      dark.</em></p><p
+      style="box-sizing:border-box;user-select:text;margin:0.5em
+      0px;color:rgb(25, 24, 19);font-family:Signika,
+      sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;text-align:start"><span
+      style="font-family:Signika, sans-serif"><strong
+      style="box-sizing:border-box;user-select:text">Buff</strong></span></p><ul
+      style="box-sizing:border-box;user-select:text;margin:0.5em 0px;padding:0px
+      0px 0px 1.5em;color:rgb(25, 24, 19);font-family:Signika,
+      sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"><li
+      style="box-sizing:border-box;user-select:text"><p
+      style="box-sizing:border-box;user-select:text;margin:0.5em
+      0px;margin-block-end:0px"><span style="font-family:Signika,
+      sans-serif">Each target gains &amp;reference[Darkvision] out to a range of
+      60 feet if they didn't already have
+      it.</span></p></li></ul><p></p><p><strong>Upcasting</strong>: <span
+      style="font-family:Signika, sans-serif">Target two additional creatures
+      for each spell level above 2nd.</span></p>
+    chat: ''
+    unidentified: ''
+  source:
+    custom: elkan5e.com/spells/darkvision
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: '8'
+    units: hour
+  cover: null
+  crewed: false
+  target:
+    value: 6
+    width: null
+    units: ''
+    type: creature
+  range:
+    value: 30
+    long: null
+    units: ft
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: util
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  level: 2
+  school: div
+  components:
+    vocal: true
+    somatic: true
+    material: true
+    ritual: false
+    concentration: false
+  materials:
+    value: A small agate
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: none
+    formula: ''
+  properties:
+    - vocal
+    - somatic
+    - material
+    - mgc
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.0
+  coreVersion: '12.327'
+  createdTime: 1685385030104
+  modifiedTime: 1717915471290
+  lastModifiedBy: ymGs3J4QpWbCOXON
+  compendiumSource: null
+  duplicateSource: null
+_id: j6UssjR5FvR2utNB
+sort: 5400000
+_key: '!items!j6UssjR5FvR2utNB'
+

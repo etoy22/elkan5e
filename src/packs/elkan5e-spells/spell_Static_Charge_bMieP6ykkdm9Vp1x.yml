@@ -1,0 +1,241 @@
+name: Static Charge
+type: spell
+img: icons/magic/lightning/projectile-tendrils-teal.webp
+effects:
+  - origin: Compendium.elkan5e.elkan5e-spells.Item.bMieP6ykkdm9Vp1x
+    duration:
+      rounds: null
+      startTime: null
+      seconds: null
+      combat: null
+      turns: null
+      startRound: null
+      startTurn: null
+    disabled: false
+    _id: IYgFd6lLaZ3A92Xu
+    changes:
+      - key: flags.midi-qol.disadvantage.skill.all
+        mode: 2
+        value: '1'
+        priority: 20
+    tint: '#ffffff'
+    transfer: false
+    flags:
+      times-up:
+        isPassive: false
+      dae:
+        selfTarget: false
+        selfTargetAlways: false
+        stackable: none
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration:
+          - turnEndSource
+        disableIncapacitated: false
+        dontApply: false
+        showIcon: false
+      core:
+        statusId: 'yes'
+        sourceId: >-
+          Actor.ALMTVvK9BZrKHQ9c.Item.jHgSrJCBJMGvlZ1V.ActiveEffect.hJqcI4pphFqaYhv7
+      ActiveAuras:
+        isAura: false
+        aura: None
+        radius: undefined
+        alignment: ''
+        type: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        nameOverride: ''
+        customCheck: ''
+        wallsBlock: system
+    name: Static Charge
+    description: ''
+    statuses: []
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/magic/lightning/projectile-tendrils-teal.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!bMieP6ykkdm9Vp1x.IYgFd6lLaZ3A92Xu'
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickVersatile:
+      value: false
+      altValue: false
+    quickOther:
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      value: true
+      altValue: true
+    quickSave:
+      value: true
+      altValue: true
+    quickDamage:
+      context:
+        '0': ''
+      value:
+        '0': true
+      altValue:
+        '0': true
+  midi-qol:
+    effectActivation: false
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    reactionCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+    rollAttackPerTarget: default
+  midiProperties:
+    nodam: true
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    noConcentrationCheck: false
+    confirmTargets: default
+    saveDamage: nodam
+    bonusSaveDamage: default
+    idr: false
+    idi: false
+    idv: false
+    ida: false
+  core:
+    sourceId: Item.ZGU3pd9pTW9XrXaV
+system:
+  description:
+    value: >-
+      <div class="rd__b  rd__b--2"><div class="rd__b  rd__b--2"><p><em>You hold
+      out a small conductive metal rod , pointing at your target, concentrating
+      static electricity around them.</em></p><p><strong>Constitution</strong>
+      <strong>Save</strong></p><ul><li><p><strong>Failure:</strong> [[/damage
+      1d6 lightning]] damage<strong>*</strong> and target has disadvantage on
+      their next skill check or saving
+      throw.</p></li><li><p><strong>Success:</strong> No
+      Effect</p></li></ul><p></p><p><strong>*At Higher Levels:</strong> The
+      spell's damage increases by <span class="roller render-roller"
+      title="Click to roll. SHIFT/CTRL to roll twice."
+      data-packed-dice="{">1d6</span> when you reach a total character or
+      creature level of 5th level ([[/damage 2d6 lightning]]), 11th level
+      ([[/damage 3d6 lightning]]), and 17th level ([[/damage 4d6
+      lightning]]).</p></div><p><em>Any creature touching your target is
+      harmlessly shocked. At the GM's discretion, the target may not suffer
+      disadvantage on a saving throw against electricity damage (due to
+      lightning taking the path of least resistance).</em></p></div>
+    chat: ''
+    unidentified: ''
+  source: elkan5e.com/spells/static-charge
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: '1'
+    units: round
+  cover: null
+  crewed: false
+  target:
+    value: 1
+    width: null
+    units: ''
+    type: creature
+  range:
+    value: 60
+    long: null
+    units: ft
+  uses:
+    value: null
+    max: ''
+    per: ''
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: save
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - 1d6
+        - lightning
+    versatile: ''
+  formula: ''
+  save:
+    ability: con
+    dc: null
+    scaling: spell
+  level: 0
+  school: evo
+  components:
+    vocal: true
+    somatic: true
+    material: true
+    ritual: false
+    concentration: false
+  materials:
+    value: A conductive thin metal rod
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: always
+    prepared: true
+  scaling:
+    mode: cantrip
+    formula: 1d6
+  properties:
+    - vocal
+    - somatic
+    - material
+    - mgc
+ownership:
+  default: 2
+  ymJDAw0PgXIWIHMH: 3
+  WaiirYzq9mhRj9cS: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.1.2
+  coreVersion: '12.328'
+  createdTime: 1674685513050
+  modifiedTime: 1721876473941
+  lastModifiedBy: ymGs3J4QpWbCOXON
+  compendiumSource: Item.ZGU3pd9pTW9XrXaV
+  duplicateSource: null
+folder: SjVk5lAwzIpqSBbH
+sort: 2500000
+_id: bMieP6ykkdm9Vp1x
+_key: '!items!bMieP6ykkdm9Vp1x'
+

@@ -1,0 +1,146 @@
+folder: wX74aYJoyZutj6z4
+name: Magic Coalescence
+type: feat
+_id: 4jOUDoUbmBgHsB0G
+img: icons/magic/water/projectiles-ice-explosion.webp
+system:
+  description:
+    value: >-
+      <p><em>You pull on magic around you to restore your magical
+      power.</em></p><p><strong>During a Short Rest </strong>- Self - 1/Long
+      Rest - Magical</p><p>You regain a number of
+      @UUID[Compendium.elkan5e.elkan5e-class-features.Item.Ik6ei7V7ryr5XVoe]{sorcery
+      points} equal to half your level (rounded down).</p>
+    chat: ''
+  source:
+    custom: elkan5e.com/sorcerer
+  activation:
+    type: shortrest
+    cost: null
+    condition: ''
+  duration:
+    value: ''
+    units: ''
+  cover: null
+  crewed: false
+  target:
+    value: null
+    width: null
+    units: null
+    type: self
+    prompt: true
+  range:
+    value: null
+    long: null
+    units: ''
+  uses:
+    value: 1
+    max: '1'
+    per: lr
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: Compendium.elkan5e.elkan5e-class-features.Item.IXk7hfrAoVQU3dLJ
+    amount: -1
+    scale: false
+  ability: null
+  actionType: ''
+  attack:
+    bonus: ''
+    flat: false
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  summons: null
+  type:
+    value: class
+    subtype: ''
+  properties:
+    - mgc
+  requirements: Sorcerer 2
+  recharge:
+    value: null
+    charged: false
+effects: []
+sort: 0
+ownership:
+  default: 0
+  ymGs3J4QpWbCOXON: 3
+flags:
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+    onUseMacroName: '[postActiveEffects]ItemMacro'
+  dae:
+    macro:
+      name: Magic Coalescence
+      img: icons/magic/water/projectiles-ice-explosion.webp
+      type: script
+      scope: global
+      command: |-
+        (async () => {
+            const sorceryFeature = actor.items.find(item => item.name == "Sorcery Points");
+            const sorcererLevels = actor.items.find(item => item.name === "Sorcerer")
+
+            if (!sorceryFeature || !sorcererLevels){
+                console.error("Missing Sorcerer Levels or the Sorcery Points Feature")
+                return
+            }
+
+            const currentValue = sorceryFeature.system.uses.value;
+            const maxValue = sorceryFeature.system.uses.max;
+            const calculate = Math.floor(sorcererLevels.system.levels/2)
+            const newValue = (Math.min(currentValue+calculate,maxValue))
+
+            await sorceryFeature.update({"system.uses.value" : newValue});
+        })();
+      author: 3Yi0HjF4PKCA4vX0
+      ownership:
+        default: 3
+      _id: null
+      folder: null
+      sort: 0
+      flags: {}
+      _stats:
+        coreVersion: '12.328'
+        systemId: dnd5e
+        systemVersion: 3.2.1
+        createdTime: null
+        modifiedTime: null
+        lastModifiedBy: null
+        compendiumSource: null
+        duplicateSource: null
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  coreVersion: '12.328'
+  createdTime: 1716260443791
+  modifiedTime: 1720560694284
+  lastModifiedBy: 3Yi0HjF4PKCA4vX0
+  compendiumSource: null
+  duplicateSource: null
+_key: '!items!4jOUDoUbmBgHsB0G'
+

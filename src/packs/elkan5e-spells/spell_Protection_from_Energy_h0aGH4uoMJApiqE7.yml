@@ -1,0 +1,403 @@
+name: Protection from Energy
+type: spell
+img: icons/magic/defensive/shield-barrier-flaming-diamond-purple-orange.webp
+effects: []
+folder: Tf2FNuyyu2gEaYOF
+flags:
+  dynamiceffects:
+    equipActive: true
+    alwaysActive: false
+    effects:
+      - modSpecKey: macro.execute
+        value: 'ProtectionFromEnergy @target '
+        mode: +
+        targetSpecific: false
+        id: 1
+        itemId: KKNq69wypjHpwo1b
+        active: true
+        _targets: []
+        label: Macro Execute
+  dae:
+    activeEquipped: false
+    alwaysActive: false
+    macro:
+      name: Protection from Energy
+      img: icons/magic/defensive/shield-barrier-flaming-diamond-purple-orange.webp
+      type: script
+      scope: global
+      command: ''
+      author: 3Yi0HjF4PKCA4vX0
+      ownership:
+        default: 3
+      _id: null
+      folder: null
+      sort: 0
+      flags: {}
+      _stats:
+        coreVersion: '12.327'
+        systemId: dnd5e
+        systemVersion: 3.2.1
+        createdTime: null
+        modifiedTime: null
+        lastModifiedBy: null
+        compendiumSource: null
+        duplicateSource: null
+  itemacro:
+    macro:
+      _data:
+        name: Protection from Energy
+        type: script
+        scope: global
+        command: >-
+          //DAE Macro Execute, Effect Value = "Macro Name" @target 
+
+
+          const lastArg = args[args.length - 1];
+
+          let tactor;
+
+          if (lastArg.tokenId) tactor =
+          canvas.tokens.get(lastArg.tokenId).actor;
+
+          else tactor = game.actors.get(lastArg.actorId);
+
+            if (args[0] === "on") {
+              new Dialog({
+                title: 'Choose a damage type',
+                content: `
+                    <form class="flexcol">
+                      <div class="form-group">
+                        <select id="element">
+                          <option value="acid">Acid</option>
+                          <option value="cold">Cold</option>
+                          <option value="fire">Fire</option>
+                          <option value="lightning">Lightning</option>
+                          <option value="thunder">Thunder</option>
+                        </select>
+                      </div>
+                    </form>
+                  `,
+                buttons: {
+                  yes: {
+                    icon: '<i class="fas fa-check"></i>',
+                    label: 'Yes',
+                    callback: (html) => {
+                      let element = html.find('#element').val();
+                      let resistances = tactor.data.data.traits.dr.value;
+                      resistances.push(element);
+                      tactor.update({ "data.traits.dr.value": resistances });
+                      DAE.setFlag(tactor, 'ProtectionFromEnergy', element);
+                      ChatMessage.create({ content: `${tactor.name} gains resistance to ${element}` });
+                    }
+                  },
+                },
+              }).render(true);
+            }
+            if (args[0] === "off") {
+              let element = DAE.getFlag(tactor, 'ProtectionFromEnergy');
+              let resistances = tactor.data.data.traits.dr.value;
+              const index = resistances.indexOf(element);
+              resistances.splice(index, 1);
+              tactor.update({ "data.traits.dr.value": resistances });
+              DAE.unsetFlag(tactor, 'ProtectionFromEnergy');
+              ChatMessage.create({ content: `${tactor.name} loses resistance to ${element}`});
+            }
+        author: E4BVikjIkVl2lL2j
+      data:
+        name: Protection from Energy
+        type: script
+        scope: global
+        command: >-
+          //DAE  Macro, no arguments passed
+
+
+          const lastArg = args[args.length - 1];
+
+          let tactor;
+
+          if (lastArg.tokenId) tactor =
+          canvas.tokens.get(lastArg.tokenId).actor;
+
+          else tactor = game.actors.get(lastArg.actorId);
+
+
+          let content = `
+
+          <style>
+              .protEnergy .form-group {
+                  display: flex;
+                  flex-wrap: wrap;
+                  width: 100%;
+                  align-items: flex-start;
+                }
+                
+                .protEnergy .radio-label {
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  text-align: center;
+                  justify-items: center;
+                  flex: 1 0 20%;
+                  line-height: normal;
+                }
+                
+                .protEnergy .radio-label input {
+                  display: none;
+                }
+                
+                .protEnergy img {
+                  border: 0px;
+                  width: 50px;
+                  height: 50px;
+                  flex: 0 0 50px;
+                  cursor: pointer;
+                }
+                    
+                /* CHECKED STYLES */
+                .protEnergy [type=radio]:checked + img {
+                  outline: 2px solid #f00;
+                }
+              </style>
+              <form class="protEnergy">
+                      <div class="form-group" id="types">
+                        <label class="radio-label">
+                          <input type="radio" name="type" value="acid">
+                          <img src="icons/magic/acid/dissolve-bone-white.webp" style="border:0px; width: 50px; height:50px;">
+                            Acid
+                        </label>
+                        <label class="radio-label">
+                          <input type="radio" name="type" value="cold">
+                          <img src="icons/magic/water/barrier-ice-crystal-wall-jagged-blue.webp" style="border:0px; width: 50px; height:50px;">
+                          Cold
+                        </label>
+                        <label class="radio-label">
+                        <input type="radio" name="type" value="fire">
+                        <img src="icons/magic/fire/barrier-wall-flame-ring-yellow.webp" style="border:0px; width: 50px; height:50px;">
+                        Fire
+                      </label>
+                      <label class="radio-label">
+                      <input type="radio" name="type" value="lightning">
+                      <img src="icons/magic/lightning/bolt-strike-blue.webp" style="border:0px; width: 50px; height:50px;">
+                      Lighting
+                    </label>
+                          <label class="radio-label">
+                          <input type="radio" name="type" value="thunder">
+                          <img src="icons/magic/sonic/explosion-shock-wave-teal.webp" style="border:0px; width: 50px; height:50px;">
+                          Thunder
+                        </label>
+                      </div>
+                    </form>
+          `
+
+
+          if (args[0] === "on") {
+            new Dialog({
+              title: 'Choose a damage type',
+              content: content,
+              buttons: {
+                yes: {
+                  icon: '<i class="fas fa-check"></i>',
+                  label: 'Yes',
+                  callback: async (html) => {
+                    let element = $("input[type='radio'][name='type']:checked").val();
+                    let resistances = tactor.data.data.traits.dr.value;
+                    resistances.push(element);
+                    await tactor.update({ "data.traits.dr.value": resistances });
+                    await DAE.setFlag(tactor, 'ProtectionFromEnergy', element);
+                    ChatMessage.create({ content: `${tactor.name} gains resistance to ${element}` });
+                  }
+                },
+              },
+            }).render(true, {width: 400});
+          }
+
+          if (args[0] === "off") {
+            let element = DAE.getFlag(tactor, 'ProtectionFromEnergy');
+            let resistances = tactor.data.data.traits.dr.value;
+            const index = resistances.indexOf(element);
+            resistances.splice(index, 1);
+            await tactor.update({ "data.traits.dr.value": resistances });
+            await DAE.unsetFlag(tactor, 'ProtectionFromEnergy');
+            ChatMessage.create({ content: `${tactor.name} loses resistance to ${element}` });
+          }
+        author: zrPR3wueYsESSBR3
+        _id: null
+        img: icons/svg/dice-target.svg
+        folder: null
+        sort: 0
+        permission:
+          default: 0
+        flags: {}
+      options: {}
+      apps: {}
+      compendium: null
+  midi-qol:
+    onUseMacroName: ''
+    effectActivation: false
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  core: {}
+  betterRolls5e:
+    critRange:
+      type: String
+      value: ''
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value: []
+      altValue: []
+      context: []
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    confirmTargets: default
+    noConcentrationCheck: false
+system:
+  description:
+    value: >-
+      <p>For the duration, the willing creature you touch has resistance to one
+      damage type of your choice: acid, cold, fire, lightning, or thunder.</p>
+    chat: ''
+    unidentified: ''
+  source: Elkan 5e
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: '1'
+    units: hour
+  cover: null
+  crewed: false
+  target:
+    value: 1
+    width: null
+    units: ''
+    type: creature
+  range:
+    value: null
+    long: null
+    units: touch
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: util
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  level: 3
+  school: abj
+  components:
+    vocal: true
+    somatic: true
+    material: false
+    ritual: false
+    concentration: true
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: none
+    formula: ''
+  properties:
+    - vocal
+    - somatic
+    - concentration
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.0.3
+  coreVersion: '12.327'
+  createdTime: 1685385543859
+  modifiedTime: 1719884306842
+  lastModifiedBy: 3Yi0HjF4PKCA4vX0
+  compendiumSource: null
+  duplicateSource: null
+_id: h0aGH4uoMJApiqE7
+sort: 2000000
+_key: '!items!h0aGH4uoMJApiqE7'
+

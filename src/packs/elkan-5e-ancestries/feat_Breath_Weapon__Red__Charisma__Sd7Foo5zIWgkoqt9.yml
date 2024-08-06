@@ -1,0 +1,116 @@
+folder: hs1kzC3J5ULWhDl5
+name: Breath Weapon (Red, Charisma)
+type: feat
+_id: Sd7Foo5zIWgkoqt9
+img: icons/magic/fire/blast-jet-stream-embers-yellow.webp
+system:
+  description:
+    value: "<p><em>You breath a great blast of fire.</em></p><p><strong>Action</strong> - 20 ft. cone - 1/Long Rest - Magical</p><p><strong>Dexterity</strong> Saving Throw</p><ul><li><p><strong>Failure:</strong>\_[[/damage 3d6 fire]] damage*</p></li><li><p><strong>Success:</strong> half damage</p></li></ul><p>​</p><p><strong>*At Higher Levels:</strong> This ability's damage increases by 3d6 when you reach a total character or creature level of 5th level ([[/damage 6d6 fire]]), 11th level ([[/damage 9d6 fire]]), and 17th level ([[/damage 12d6 fire]]).</p>"
+    chat: ''
+  source:
+    book: ''
+    page: ''
+    custom: elkan5e.com/ancestrybackground
+    license: ''
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: ''
+    units: ''
+  cover: null
+  crewed: false
+  target:
+    value: 20
+    width: null
+    units: ft
+    type: cone
+    prompt: true
+  range:
+    value: null
+    long: null
+    units: ft
+  uses:
+    value: 1
+    max: '1'
+    per: lr
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: null
+    amount: null
+    scale: false
+  ability: ''
+  actionType: save
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - >-
+          (max(@scale.dragonborn.breath-weapon,(3*@scale.draconic-origin.breath-weapon)d6))
+        - fire
+    versatile: ''
+  formula: ''
+  save:
+    ability: dex
+    dc: null
+    scaling: cha
+  type:
+    value: race
+    subtype: ''
+  requirements: Red Dragonborn
+  recharge:
+    value: null
+    charged: false
+  properties:
+    - mgc
+effects: []
+sort: 1400000
+ownership:
+  default: 0
+  cwIJ7W3XRXrY0zj2: 3
+  9B4LXF0S1sIudaRa: 3
+flags:
+  midi-qol:
+    effectActivation: false
+    AoETargetType: any
+    AoETargetTypeIncludeSelf: true
+    autoTarget: default
+    removeAttackDamageButtons: default
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: true
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    rollOther: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: true
+    magiceffect: true
+    concentration: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    confirmTargets: never
+    saveDamage: halfdam
+    bonusSaveDamage: default
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.0
+  coreVersion: '12.324'
+  createdTime: 1700872465870
+  modifiedTime: 1716872114557
+  lastModifiedBy: 9B4LXF0S1sIudaRa
+  compendiumSource: null
+  duplicateSource: null
+_key: '!items!Sd7Foo5zIWgkoqt9'
+

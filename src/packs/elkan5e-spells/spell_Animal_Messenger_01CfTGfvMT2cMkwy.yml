@@ -1,0 +1,270 @@
+name: Animal Messenger
+type: spell
+img: icons/creatures/birds/dove-pigeon-flying-white.webp
+effects:
+  - _id: i5ipoeau856qs8pc
+    changes: []
+    disabled: false
+    duration:
+      startTime: null
+      seconds: 86400
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    transfer: false
+    flags:
+      core: {}
+      dae:
+        stackable: none
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+        transfer: false
+        disableIncapacitated: false
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        showIcon: false
+      ActiveAuras:
+        isAura: false
+        aura: None
+        radius: ''
+        alignment: ''
+        type: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        nameOverride: ''
+        customCheck: ''
+        wallsBlock: system
+    tint: '#ffffff'
+    name: Animal Messenger
+    description: ''
+    origin: null
+    statuses: []
+    _stats:
+      coreVersion: '12.327'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: 1719883228522
+      lastModifiedBy: 3Yi0HjF4PKCA4vX0
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/creatures/birds/dove-pigeon-flying-white.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!01CfTGfvMT2cMkwy.i5ipoeau856qs8pc'
+folder: 6J3i75lfD1J0xYwA
+flags:
+  srd5e:
+    page: spells.html
+    source: PHB
+    hash: animal%20messenger_phb
+  betterRolls5e:
+    critRange:
+      type: String
+      value: null
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value: []
+      altValue: []
+      context: []
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  midi-qol:
+    onUseMacroName: ''
+    effectActivation: false
+    itemCondition: ''
+    reactionCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+    rollAttackPerTarget: default
+  core: {}
+  enhanced-terrain-layer:
+    multiple: 1
+    min: 0
+    max: 0
+    environment: ''
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    confirmTargets: default
+    noConcentrationCheck: false
+system:
+  description:
+    value: >-
+      <div class="rd__b  rd__b--3"><p><em>You kneel, holding a morsel of food
+      out towards an animal, tempting it to your service with promises of more
+      food to come.</em></p><p><strong>Utility
+      Spell</strong></p><ul><li><p>Choose a Tiny &amp;reference[beast] you can
+      see within range, such as a squirrel or a bird. You specify a location,
+      which you must have visited, and a recipient who matches a general
+      description, such as a man or woman dressed in the uniform of the town
+      guard.</p></li><li><p>You speak a message of up to 30 seconds in length.
+      The target beast travels for the duration of the spell towards the
+      specified location, covering about 50 miles per 24 hours for a flying
+      messenger or 25 miles for other animals.</p></li><li><p>If the messenger
+      arrives, it delivers your message to the creature that you described,
+      replicating the sound of your voice.</p></li></ul><p></p><div
+      class="rd__b  rd__b--3"><div class="rd__b 
+      rd__b--3"><p><strong>Upcasting:</strong> <span style="font-family:Signika,
+      sans-serif">Enchant an additional beast</span> for each spell level above
+      2nd level. Each beast receives the same message but travels to a different
+      location and recipient you specify when you cast the
+      spell.</p></div></div></div><p></p><p><em>The messenger can only speak to
+      a creature matching the description you gave. If the messenger doesn't
+      reach its destination before the spell ends, the message is lost, and the
+      beast makes its way back to where you cast this spell.</em></p>
+    chat: ''
+    unidentified: ''
+  source:
+    custom: elkan5e.com/spells/speak-with-animals
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: '24'
+    units: hour
+  cover: null
+  crewed: false
+  target:
+    value: 1
+    width: null
+    units: ''
+    type: creature
+  range:
+    value: 30
+    long: null
+    units: ft
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: util
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  level: 2
+  school: enc
+  components:
+    vocal: true
+    somatic: true
+    material: true
+    ritual: true
+    concentration: false
+  materials:
+    value: a morsel of food
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: none
+    formula: ''
+  properties:
+    - vocal
+    - somatic
+    - material
+    - ritual
+    - mgc
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  ymJDAw0PgXIWIHMH: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.0
+  coreVersion: '12.327'
+  createdTime: 1685384929473
+  modifiedTime: 1717988500440
+  lastModifiedBy: WaiirYzq9mhRj9cS
+  compendiumSource: null
+  duplicateSource: null
+_id: 01CfTGfvMT2cMkwy
+sort: 4400000
+_key: '!items!01CfTGfvMT2cMkwy'
+

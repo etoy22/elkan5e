@@ -1,0 +1,186 @@
+folder: PnZJTE6T4UQY81Pm
+name: Rend the Veil [Frighten]
+type: spell
+img: icons/magic/sonic/explosion-impact-shock-wave.webp
+system:
+  description:
+    value: "<p><strong>This ability is meant to be used after casting Rend the Veil to automate the frightened effect it causes.</strong></p><p><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Wisdom</strong>\_<strong>Save</strong></span></p><ul style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;padding:0px 0px 0px 1.5em;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial\"><li style=\"box-sizing:border-box;user-select:text\"><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px\"><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Failure:</strong>\_Target is frightened of the center of this effect for 1 minute. </span>Target rolls again at end of their turns, ending effect on success.</p></li><li style=\"box-sizing:border-box;user-select:text\"><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px\"><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Success:</strong>\_No effect.</span></p></li></ul>"
+    chat: ''
+    unidentified: ''
+  source:
+    custom: elkan5e.com/spells/rend-the-veil
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: '1'
+    units: minute
+  cover: null
+  crewed: false
+  target:
+    value: 60
+    width: null
+    units: ft
+    type: radius
+  range:
+    value: 60
+    long: null
+    units: ft
+  uses:
+    value: null
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: null
+    amount: null
+  ability: ''
+  actionType: save
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: wis
+    dc: null
+    scaling: spell
+  level: 5
+  school: con
+  components:
+    vocal: true
+    somatic: true
+    material: true
+    ritual: false
+    concentration: false
+  materials:
+    value: A warped tuning fork meant for teleportation to another plane
+    consumed: false
+    cost: 50
+    supply: 1
+  preparation:
+    mode: innate
+    prepared: true
+  scaling:
+    mode: none
+    formula: ''
+effects:
+  - name: Frightened
+    origin: Item.NzNj8PEe2lqrzjEC
+    duration:
+      rounds: null
+      startTime: null
+      seconds: 60
+      combat: null
+      turns: null
+      startRound: null
+      startTurn: null
+    transfer: false
+    disabled: false
+    _id: oVgZ9K0cjp3TL672
+    changes:
+      - key: flags.midi-qol.disadvantage.attack.all
+        mode: 5
+        value: '1'
+        priority: 50
+      - key: flags.midi-qol.disadvantage.ability.check.all
+        mode: 5
+        value: '1'
+        priority: 50
+      - key: flags.midi-qol.OverTime
+        mode: 2
+        value: |-
+          turn=end,
+          saveAbility=wis,
+        priority: 20
+    description: ''
+    statuses: []
+    flags:
+      times-up:
+        isPassive: false
+      dae:
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+    tint: '#ffffff'
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: modules/elkan5e/icons/frightened.svg
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!6Hm0eafptNmjhZ4h.oVgZ9K0cjp3TL672'
+ownership:
+  default: 0
+  WaiirYzq9mhRj9cS: 3
+  ymGs3J4QpWbCOXON: 3
+flags:
+  midi-qol:
+    effectActivation: false
+    AoETargetType: any
+    AoETargetTypeIncludeSelf: true
+    autoTarget: default
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    rollOther: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    noConcentrationCheck: false
+    confirmTargets: never
+  core: {}
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.0
+  coreVersion: '12.327'
+  createdTime: 1693816034456
+  modifiedTime: 1719901073440
+  lastModifiedBy: 3Yi0HjF4PKCA4vX0
+  compendiumSource: null
+  duplicateSource: null
+_id: 6Hm0eafptNmjhZ4h
+sort: 100000
+_key: '!items!6Hm0eafptNmjhZ4h'
+

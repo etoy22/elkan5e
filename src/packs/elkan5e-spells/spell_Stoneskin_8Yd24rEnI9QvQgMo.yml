@@ -1,0 +1,267 @@
+name: Stoneskin
+type: spell
+img: icons/magic/defensive/armor-stone-skin.webp
+effects:
+  - _id: fhvmjRblnjrDRxWO
+    flags:
+      dae:
+        transfer: false
+        selfTarget: false
+        selfTargetAlways: false
+        stackable: none
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+        disableIncapacitated: false
+        dontApply: false
+        showIcon: false
+      core: {}
+      ActiveAuras:
+        isAura: false
+        aura: None
+        radius: ''
+        alignment: ''
+        type: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        nameOverride: ''
+        customCheck: ''
+        wallsBlock: system
+    changes:
+      - key: system.traits.dr.bypasses
+        mode: 0
+        value: nonmagic
+        priority: 0
+      - key: system.traits.dr.value
+        mode: 0
+        value: bludgeoning
+        priority: 20
+      - key: system.traits.dr.value
+        mode: 2
+        value: piercing
+        priority: 20
+      - key: system.traits.dr.value
+        mode: 2
+        value: slashing
+        priority: 20
+    duration:
+      startTime: null
+      seconds: 3600
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    transfer: false
+    disabled: false
+    origin: null
+    tint: '#ffffff'
+    name: Stoneskin
+    description: ''
+    statuses: []
+    _stats:
+      coreVersion: '12.327'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: 1719884772414
+      lastModifiedBy: 3Yi0HjF4PKCA4vX0
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/magic/defensive/armor-stone-skin.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!8Yd24rEnI9QvQgMo.fhvmjRblnjrDRxWO'
+folder: 90eJtrVwLFIxcWJw
+flags:
+  dynamiceffects:
+    effects:
+      - modSpecKey: data.traits.dr.value
+        value: physical
+        mode: +
+        targetSpecific: false
+        id: 1
+        itemId: ccUx49HUGslLri7o
+        active: true
+        _targets: []
+    equipActive: false
+    alwaysActive: false
+  dae:
+    activeEquipped: false
+    alwaysActive: false
+  core: {}
+  betterRolls5e:
+    critRange:
+      type: String
+      value: ''
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value: []
+      altValue: []
+      context: []
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  midi-qol:
+    effectActivation: false
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    confirmTargets: never
+    noConcentrationCheck: false
+system:
+  description:
+    value: >-
+      <p>This spell turns the flesh of a willing creature you touch as hard as
+      stone. Until the spell ends, the target has resistance to nonmagical
+      bludgeoning, piercing, and slashing damage.</p>
+    chat: ''
+    unidentified: ''
+  source: Elkan 5e
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: '1'
+    units: hour
+  cover: null
+  crewed: false
+  target:
+    value: 1
+    width: null
+    units: ''
+    type: creature
+  range:
+    value: null
+    long: null
+    units: touch
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: util
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  level: 4
+  school: abj
+  components:
+    vocal: true
+    somatic: true
+    material: true
+    ritual: false
+    concentration: true
+  materials:
+    value: Diamond dust worth 100 gp, which the spell consumes
+    consumed: true
+    cost: 100
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: none
+    formula: ''
+  properties:
+    - vocal
+    - somatic
+    - material
+    - concentration
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.1.1
+  coreVersion: '12.324'
+  createdTime: 1685385987439
+  modifiedTime: 1712188044935
+  lastModifiedBy: 3Yi0HjF4PKCA4vX0
+  compendiumSource: null
+  duplicateSource: null
+_id: 8Yd24rEnI9QvQgMo
+sort: 300000
+_key: '!items!8Yd24rEnI9QvQgMo'
+

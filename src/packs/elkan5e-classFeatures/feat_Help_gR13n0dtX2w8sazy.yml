@@ -1,0 +1,236 @@
+folder: 4ItSfw24annseEaJ
+name: Help
+type: feat
+_id: gR13n0dtX2w8sazy
+img: icons/skills/social/diplomacy-handshake.webp
+system:
+  description:
+    value: >-
+      <p><em>You can lend your aid to another creature in the completion of a
+      task or help them land a devastating blow against an
+      opponent.</em></p><p><strong>Action</strong> - 1 Creature</p><p>When you
+      use the Help action, you choose one of two effects.</p><ul><li><p>The
+      creature you aid gains advantage on the next skill check they make to
+      perform the task you are helping with, provided that they make the check
+      before the start of your next turn.</p></li><li><p>You aid a friendly
+      creature in attacking a creature within 5 feet of you. If your ally
+      attacks the target before your next turn, their first attack roll is made
+      with advantage.</p></li></ul>
+    chat: ''
+  source:
+    custom: Elkan 5e
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: ''
+    units: ''
+  cover: null
+  crewed: false
+  target:
+    value: null
+    width: null
+    units: ''
+    type: ''
+    prompt: true
+  range:
+    value: null
+    long: null
+    units: ''
+  uses:
+    value: null
+    max: ''
+    per: null
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: null
+    amount: null
+    scale: false
+  ability: null
+  actionType: ''
+  attack:
+    bonus: ''
+    flat: false
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  summons: null
+  type:
+    value: ''
+    subtype: ''
+  properties: []
+  requirements: Standard Action
+  recharge:
+    value: null
+    charged: false
+effects:
+  - name: Help (Advantage to Attack)
+    changes:
+      - key: flags.midi-qol.grants.advantage.attack.all
+        mode: 2
+        value: '1'
+        priority: 20
+    transfer: false
+    _id: RtfHAqxapytOhPO7
+    disabled: false
+    duration:
+      startTime: null
+      seconds: 6
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    origin: null
+    statuses: []
+    flags:
+      dae:
+        disableIncapacitated: false
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: true
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration:
+          - turnStartSource
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    tint: '#ffffff'
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/skills/social/diplomacy-handshake.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!gR13n0dtX2w8sazy.RtfHAqxapytOhPO7'
+  - name: Help (Advantage on Next Ability Check)
+    changes:
+      - key: flags.midi-qol.advantage.ability.check.all
+        mode: 2
+        value: '1'
+        priority: 20
+    transfer: false
+    _id: gmcy8fl1b02f84pX
+    disabled: false
+    duration:
+      startTime: null
+      seconds: 6
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    origin: null
+    statuses: []
+    flags:
+      dae:
+        disableIncapacitated: false
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration:
+          - turnStartSource
+          - isCheck
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    tint: '#ffffff'
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/skills/social/diplomacy-handshake.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!gR13n0dtX2w8sazy.gmcy8fl1b02f84pX'
+sort: 0
+ownership:
+  default: 0
+  3Yi0HjF4PKCA4vX0: 3
+flags:
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+    onUseMacroName: '[postActiveEffects]function.MidiQOL.chooseEffect'
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  coreVersion: '12.328'
+  createdTime: 1716255651730
+  modifiedTime: 1720589869777
+  lastModifiedBy: 3Yi0HjF4PKCA4vX0
+  compendiumSource: null
+  duplicateSource: null
+_key: '!items!gR13n0dtX2w8sazy'
+

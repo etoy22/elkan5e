@@ -1,0 +1,211 @@
+name: Hamstring (Charisma)
+type: feat
+img: icons/skills/melee/strike-blade-blood-red.webp
+effects:
+  - origin: Compendium.elkan5e.elkan5e-class-features.Item.c1EHOsBmEepJ1Xyz
+    duration:
+      rounds: null
+      startTime: null
+      seconds: null
+      combat: null
+      turns: null
+      startRound: null
+      startTurn: null
+    disabled: false
+    name: Hamstring
+    _id: uzspA9O1tO57yMzt
+    changes:
+      - key: system.attributes.movement.all
+        mode: 0
+        value: /2
+        priority: 50
+    description: ''
+    transfer: false
+    statuses: []
+    flags:
+      dae:
+        disableIncapacitated: false
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: true
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration:
+          - turnEndSource
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    tint: '#ffffff'
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '12.327'
+      systemId: dnd5e
+      systemVersion: 3.2.1
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+    img: icons/skills/melee/strike-blade-blood-red.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!p1LH0pSeB685EF94.uzspA9O1tO57yMzt'
+folder: sZ2pKaXQAF6IGOY6
+flags:
+  core: {}
+  midi-qol:
+    effectActivation: false
+    onUseMacroName: ''
+    rollAttackPerTarget: default
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    effectCondition: ''
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    confirmTargets: default
+    noConcentrationCheck: false
+    saveDamage: fulldam
+    bonusSaveDamage: fulldam
+  betterRolls5e:
+    quickDamage:
+      context:
+        '0': ''
+        '1': ''
+      value:
+        '0': true
+      altValue:
+        '0': true
+    quickOther:
+      context: ''
+      value: true
+      altValue: true
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+system:
+  description:
+    value: >-
+      <p>Hamstring is a
+      @UUID[Compendium.elkan5e.elkan5e-class-features.Item.hW3DmOPgBpa7lGU8]{Precision
+      Attacks}.</p><p><strong>As Part of a Weapon Attack</strong> - 1 Creature -
+      1 Round</p><p>You can sacrifice 1d6 of your sneak attack damage to briefly
+      hobble your target's movement.</p><p><strong>Dexterity
+      Save</strong></p><ul><li><p><strong>Failure:
+      </strong>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{Sneak
+      Attack} (-1d6) damage. Target's speed is
+      halved.</p></li><li><p><strong>Success:</strong>
+      @UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{Sneak
+      Attack}(-1d6) damage.</p></li></ul>
+    chat: ''
+  source:
+    custom: elkan5e.com/rogue
+  activation:
+    type: duringattack
+    cost: null
+    condition: ''
+  duration:
+    value: '1'
+    units: round
+  cover: null
+  crewed: false
+  target:
+    value: '1'
+    width: null
+    units: ''
+    type: creature
+    prompt: true
+  range:
+    value: null
+    long: null
+    units: ''
+  uses:
+    value: null
+    max: ''
+    per: null
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: ''
+    amount: null
+    scale: false
+  ability: ''
+  actionType: save
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - ((@scale.rogue.sneak-attack - 1)d6)
+        - piercing
+    versatile: ''
+  formula: ''
+  save:
+    ability: con
+    dc: null
+    scaling: cha
+  type:
+    value: class
+    subtype: precision
+  requirements: Rogue 3
+  recharge:
+    value: null
+    charged: false
+  attack:
+    bonus: ''
+    flat: false
+  summons: null
+  properties:
+    - mgc
+  prerequisites:
+    level: 3
+  enchantment: null
+ownership:
+  default: 0
+  9B4LXF0S1sIudaRa: 3
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.327'
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  createdTime: 1718960183584
+  modifiedTime: 1718960646374
+  lastModifiedBy: 9B4LXF0S1sIudaRa
+_id: p1LH0pSeB685EF94
+sort: 0
+_key: '!items!p1LH0pSeB685EF94'
+

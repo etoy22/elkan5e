@@ -1,0 +1,172 @@
+folder: VGAGvD4k9YHm9VSP
+name: Burdening Smite
+type: spell
+_id: JOiApkwpU161ypDh
+img: icons/weapons/clubs/club-spiked-glowing.webp
+system:
+  description:
+    value: "<p>When you hit a creature with a weapon attack, you can expend a spell slot to deal &amp;reference[force] damage and attempt to burden the target, in addition to the weapon's damage.</p><p><strong>Strength Save</strong></p><ul><li><p><strong>Failure</strong>:\_Target takes <span class=\"roll-link\" data-type=\"damage\" data-formula=\"2d6\" data-damage-type=\"force\"><a data-action=\"roll\">2d6</a></span> force damage* and the target's speeds are halved.</p></li><li><p><strong>Success</strong>:\_Target takes <span class=\"roll-link\" data-type=\"damage\" data-formula=\"2d6\" data-damage-type=\"force\"><a data-action=\"roll\">2d6</a></span> force damage.*</p></li></ul><p>​*<strong>Using Higher Level Spell Slots</strong>: Damage increases by 1d6 for each spell level above 1st.</p>"
+    chat: ''
+  source:
+    custom: elkan5e.com/paladin
+  activation:
+    type: duringattack
+    cost: null
+    condition: ''
+  duration:
+    value: '1'
+    units: round
+  cover: null
+  crewed: false
+  target:
+    value: 1
+    width: null
+    units: null
+    type: creature
+    prompt: true
+  range:
+    value: null
+    long: null
+    units: ''
+  uses:
+    value: null
+    max: ''
+    per: null
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: null
+    amount: null
+    scale: false
+  ability: ''
+  actionType: other
+  attack:
+    bonus: ''
+    flat: false
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - 2d6
+        - force
+    versatile: ''
+  formula: ''
+  save:
+    ability: str
+    dc: null
+    scaling: spell
+  summons: null
+  level: 1
+  school: trs
+  properties: []
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: always
+    prepared: true
+  scaling:
+    mode: level
+    formula: 1d6
+effects:
+  - name: Burdening Smite
+    changes:
+      - key: system.attributes.movement.all
+        mode: 0
+        value: /2
+        priority: 20
+    transfer: false
+    _id: EuVx6KjjtnUTkv7Q
+    disabled: false
+    duration:
+      startTime: null
+      seconds: null
+      combat: null
+      rounds: 1
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    origin: null
+    statuses: []
+    flags:
+      dae:
+        disableIncapacitated: false
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    tint: '#ffffff'
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/weapons/clubs/club-spiked-glowing.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!JOiApkwpU161ypDh.EuVx6KjjtnUTkv7Q'
+sort: 300000
+ownership:
+  default: 0
+  3Yi0HjF4PKCA4vX0: 3
+flags:
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: true
+    magiceffect: false
+    concentration: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    saveDamage: fulldam
+    bonusSaveDamage: fulldam
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+    removeAttackDamageButtons: default
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.0
+  coreVersion: '12.324'
+  createdTime: 1715196740466
+  modifiedTime: 1716534133468
+  lastModifiedBy: 9B4LXF0S1sIudaRa
+  compendiumSource: null
+  duplicateSource: null
+_key: '!items!JOiApkwpU161ypDh'
+

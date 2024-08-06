@@ -1,0 +1,235 @@
+name: Control Weather
+type: spell
+img: icons/magic/air/weather-clouds-rainbow.webp
+effects: []
+folder: TOjvTMaQMAMN24MV
+flags:
+  srd5e:
+    page: spells.html
+    source: PHB
+    hash: control%20weather_phb
+  betterRolls5e:
+    critRange:
+      type: String
+      value: null
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value: []
+      altValue: []
+      context: []
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  midi-qol:
+    onUseMacroName: ''
+    effectActivation: false
+    AoETargetType: any
+    AoETargetTypeIncludeSelf: true
+    autoTarget: default
+    rollAttackPerTarget: default
+    itemCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+  core: {}
+  enhanced-terrain-layer:
+    multiple: 1
+    min: 0
+    max: 0
+    environment: ''
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    confirmTargets: never
+    noConcentrationCheck: false
+system:
+  description:
+    value: >-
+      <div class="rd__b  rd__b--3"><p>You take control of the weather within 5
+      miles of you for the duration. You must be outdoors to cast this spell.
+      Moving to a place where you don't have a clear path to the sky ends the
+      spell early.</p><div class="rd__spc-inline-post"></div><p>When you cast
+      the spell, you change the current weather conditions, which are determined
+      by the DM based on the climate and season. You can change precipitation,
+      temperature, and wind. It takes [[/r 1d4 * 10]] (1d4 × 10) minutes for the
+      new conditions to take effect. Once they do so, you can change the
+      conditions again. When the spell ends, the weather gradually returns to
+      normal.</p><p>When you change the weather conditions, find a current
+      condition on the following tables and change its stage by one, up or down.
+      When changing the wind, you can change its direction.</p><table
+      class="rd__table 
+      stripe-odd-table"><caption>Precipitation</caption><thead><tr><th
+      class="col-1 text-center" data-rd-isroller="false">Stage</th><th
+      class="col-11"
+      data-rd-isroller="false">Condition</th></tr></thead><tbody><tr><td
+      class="col-1 text-center">1</td><td class="col-11">Clear</td></tr><tr><td
+      class="col-1 text-center">2</td><td class="col-11">Light
+      clouds</td></tr><tr><td class="col-1 text-center">3</td><td
+      class="col-11">Overcast or ground fog</td></tr><tr><td class="col-1
+      text-center">4</td><td class="col-11">Rain, hail, or snow</td></tr><tr><td
+      class="col-1 text-center">5</td><td class="col-11">Torrential rain,
+      driving hail, or blizzard</td></tr></tbody></table><table
+      class="rd__table 
+      stripe-odd-table"><caption>Temperature</caption><thead><tr><th
+      class="col-1 text-center" data-rd-isroller="false">Stage</th><th
+      class="col-11"
+      data-rd-isroller="false">Condition</th></tr></thead><tbody><tr><td
+      class="col-1 text-center">1</td><td class="col-11">Unbearable
+      heat</td></tr><tr><td class="col-1 text-center">2</td><td
+      class="col-11">Hot</td></tr><tr><td class="col-1 text-center">3</td><td
+      class="col-11">Warm</td></tr><tr><td class="col-1 text-center">4</td><td
+      class="col-11">Cool</td></tr><tr><td class="col-1 text-center">5</td><td
+      class="col-11">Cold</td></tr><tr><td class="col-1 text-center">6</td><td
+      class="col-11">Arctic cold</td></tr></tbody></table><table
+      class="rd__table  stripe-odd-table"><caption>Wind</caption><thead><tr><th
+      class="col-1 text-center" data-rd-isroller="false">Stage</th><th
+      class="col-11"
+      data-rd-isroller="false">Condition</th></tr></thead><tbody><tr><td
+      class="col-1 text-center">1</td><td class="col-11">Calm</td></tr><tr><td
+      class="col-1 text-center">2</td><td class="col-11">Moderate
+      wind</td></tr><tr><td class="col-1 text-center">3</td><td
+      class="col-11">Strong wind</td></tr><tr><td class="col-1
+      text-center">4</td><td class="col-11">Gale</td></tr><tr><td class="col-1
+      text-center">5</td><td
+      class="col-11">Storm</td></tr></tbody></table></div>
+    chat: ''
+    unidentified: ''
+  source: Elkan 5e
+  activation:
+    type: minute
+    cost: 1
+    condition: ''
+  duration:
+    value: '8'
+    units: hour
+  cover: null
+  crewed: false
+  target:
+    value: 5
+    width: null
+    units: mi
+    type: radius
+  range:
+    value: 0
+    long: null
+    units: ''
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: util
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: 1d4 × 10
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  level: 8
+  school: trs
+  components:
+    vocal: true
+    somatic: true
+    material: true
+    ritual: false
+    concentration: true
+  materials:
+    value: burning incense and bits of earth and wood mixed in water
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: none
+    formula: ''
+  properties:
+    - vocal
+    - somatic
+    - material
+    - concentration
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.1.1
+  coreVersion: '12.324'
+  createdTime: 1685387921731
+  modifiedTime: 1712187126920
+  lastModifiedBy: 3Yi0HjF4PKCA4vX0
+  compendiumSource: null
+  duplicateSource: null
+_id: sVZJABiQvYbZZR0b
+sort: 0
+_key: '!items!sVZJABiQvYbZZR0b'
+

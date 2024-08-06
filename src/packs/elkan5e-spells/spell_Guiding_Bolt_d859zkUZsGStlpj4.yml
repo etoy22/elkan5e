@@ -1,0 +1,264 @@
+name: Guiding Bolt
+type: spell
+img: icons/magic/fire/projectile-fireball-smoke-large-blue.webp
+effects:
+  - _id: rj47kgdHd8JD4hSD
+    flags:
+      dae:
+        stackable: none
+        transfer: false
+        specialDuration:
+          - isAttacked
+        macroRepeat: none
+        selfTarget: false
+        selfTargetAlways: false
+        durationExpression: ''
+        dontApply: false
+        showIcon: false
+        disableIncapacitated: false
+      ActiveAuras:
+        isAura: false
+        ignoreSelf: false
+        hidden: false
+        height: false
+        alignment: ''
+        type: ''
+        aura: None
+        radius: ''
+        save: ''
+        savedc: null
+        hostile: false
+        onlyOnce: false
+        displayTemp: false
+        nameOverride: ''
+        customCheck: ''
+        wallsBlock: system
+      core:
+        statusId: ''
+    changes:
+      - key: flags.midi-qol.grants.advantage.attack.all
+        mode: 0
+        value: '1'
+        priority: 20
+    disabled: false
+    duration:
+      startTime: null
+      rounds: 1
+      seconds: null
+      combat: null
+      turns: null
+      startRound: null
+      startTurn: null
+    tint: '#ffffff'
+    transfer: false
+    origin: null
+    name: Guiding Bolt
+    description: ''
+    statuses: []
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/magic/fire/projectile-fireball-smoke-large-blue.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!d859zkUZsGStlpj4.rj47kgdHd8JD4hSD'
+folder: U0k4VGG6bziqf3oH
+flags:
+  srd5e:
+    page: spells.html
+    source: PHB
+    hash: guiding%20bolt_phb
+  core: {}
+  betterRolls5e:
+    critRange:
+      type: String
+      value: null
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value:
+        - true
+      altValue:
+        - true
+      context:
+        '0': ''
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  midi-qol:
+    onUseMacroName: ''
+    effectActivation: false
+    forceCEOff: false
+    fumbleThreshold: null
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    reactionCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+    rollAttackPerTarget: default
+  favtab:
+    isFavorite: false
+  enhanced-terrain-layer:
+    multiple: 1
+    min: 0
+    max: 0
+    environment: ''
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    noConcentrationCheck: false
+    confirmTargets: default
+system:
+  description:
+    value: "<p><em>You command a mote of light to seek your target. Upon contact, the bolt sears flesh and causes the creature's weak spots to glitter.</em></p><p><strong>Spell Attack</strong></p><ul><li><p><strong>Hit</strong>:\_[[/damage 4d6 radiant]]\_damage* and the next attack roll made against this target has advantage.</p><p></p></li></ul><div class=\"rd__b  rd__b--3\"><div class=\"rd__spc-inline-post\"><div class=\"rd__b  rd__b--3\"><div class=\"rd__b  rd__b--3\"><p><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial\">*</strong></span><strong>Upcasting</strong>: Increase damage by [[/damage 1d6 radiant]] for each spell level above 1st.</p></div></div></div></div>"
+    chat: ''
+    unidentified: ''
+  source:
+    custom: elkan5e.com/spells/guiding-bolt
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: '1'
+    units: round
+  cover: null
+  crewed: false
+  target:
+    value: 1
+    width: null
+    units: ''
+    type: creature
+  range:
+    value: 120
+    long: null
+    units: ft
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: rsak
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - 4d6
+        - radiant
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  level: 1
+  school: evo
+  components:
+    vocal: true
+    somatic: true
+    material: false
+    ritual: false
+    concentration: false
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: level
+    formula: 1d6
+  properties:
+    - vocal
+    - somatic
+    - mgc
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  ymJDAw0PgXIWIHMH: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  coreVersion: '12.327'
+  createdTime: 1685347875070
+  modifiedTime: 1719882781125
+  lastModifiedBy: 3Yi0HjF4PKCA4vX0
+  compendiumSource: null
+  duplicateSource: null
+_id: d859zkUZsGStlpj4
+sort: 1250000
+_key: '!items!d859zkUZsGStlpj4'
+

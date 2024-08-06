@@ -1,0 +1,203 @@
+name: Blasting Volume
+type: feat
+img: icons/magic/sonic/explosion-shock-wave-teal.webp
+effects:
+  - name: Deafened
+    origin: Compendium.elkan5e.elkan5e-class-features.Item.MfhfSzLQbJqLCZ6q
+    duration:
+      rounds: null
+      startTime: null
+      seconds: null
+      combat: null
+      turns: null
+      startRound: null
+      startTurn: null
+    transfer: false
+    disabled: false
+    _id: EWrKBMRyzcv270DG
+    changes:
+      - key: flags.midi-qol.disadvantage.ability.check.dex
+        mode: 5
+        value: '1'
+        priority: 1
+      - key: flags.midi-qol.disadvantage.ability.save.dex
+        mode: 5
+        value: '1'
+        priority: 1
+    description: ''
+    statuses: []
+    flags:
+      times-up:
+        isPassive: false
+      dae:
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: true
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration:
+          - turnEndSource
+        disableIncapacitated: false
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    tint: '#ffffff'
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: modules/elkan5e/icons/deafened.svg
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!MfhfSzLQbJqLCZ6q.EWrKBMRyzcv270DG'
+folder: lUVxmfQCDK9zwF5D
+sort: 100000
+flags:
+  betterRolls5e:
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickOther:
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      value: true
+      altValue: true
+    quickTemplate:
+      value: true
+      altValue: true
+    quickSave:
+      value: true
+      altValue: true
+    quickDamage:
+      context:
+        '0': ''
+      value:
+        '0': true
+      altValue:
+        '0': true
+  midi-qol:
+    effectActivation: false
+    AoETargetType: any
+    AoETargetTypeIncludeSelf: true
+    autoTarget: default
+    removeAttackDamageButtons: default
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: true
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: true
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    noConcentrationCheck: false
+    confirmTargets: never
+    saveDamage: halfdam
+    bonusSaveDamage: default
+  core:
+    sourceId: Item.SPFAobN1seTcOswP
+_id: MfhfSzLQbJqLCZ6q
+system:
+  description:
+    value: "<p><span style=\"font-style:italic\"><em>You\_blast nearby creatures with magical and extremely loud noise.</em></span></p><p class=\"font_8\"><span style=\"font-weight:bold\"><strong>Action</strong></span> - 20 ft. Cone - Magical Ability - 1 Round</p><p class=\"font_8\">You expend a @UUID[Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh]{bardic inspiration} die to use this ability.</p><p class=\"font_8\"><span style=\"font-weight:bold\"><strong>Constitution</strong></span>\_Save (DC Equal to Bard Spells)</p><ul class=\"font_8\"><li><p class=\"font_8\"><span style=\"font-weight:bold\"><strong>Failure</strong></span>: sonic damage equal to three rolls of your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh]{bardic inspiration} die and target is &amp;reference[deafened].</p></li><li><p class=\"font_8\"><span style=\"font-weight:bold\"><strong>Success</strong></span>: Half damage.<span style=\"font-family:Signika, sans-serif\"><br /><br /></span></p><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px\"><span style=\"font-family:Signika, sans-serif\"><strong>Note: to automate the uses of this ability, go into details and select Bardic Inspiration from the drop-down menu for 'Item Uses'.</strong></span></p></li></ul>"
+    chat: ''
+    unidentified: ''
+  source: Elkan 5e
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: null
+    units: ''
+  cover: null
+  crewed: false
+  target:
+    value: 20
+    width: null
+    units: ft
+    type: cone
+  range:
+    value: null
+    long: null
+    units: ''
+  uses:
+    value: null
+    max: ''
+    per: ''
+    recovery: ''
+  consume:
+    type: charges
+    target: Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh
+    amount: 1
+  ability: ''
+  actionType: save
+  attackBonus: 0
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - 3@scale.bard.inspiration
+        - thunder
+    versatile: ''
+  formula: ''
+  save:
+    ability: con
+    dc: null
+    scaling: spell
+  type:
+    value: subclass
+    subtype: ''
+  requirements: College of Noise 3
+  recharge:
+    value: null
+    charged: false
+ownership:
+  default: 0
+  ymJDAw0PgXIWIHMH: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.0
+  coreVersion: '12.324'
+  createdTime: 1697019540195
+  modifiedTime: 1716860586678
+  lastModifiedBy: wuSikoJiJPaTUDuY
+  compendiumSource: Item.SPFAobN1seTcOswP
+  duplicateSource: null
+_key: '!items!MfhfSzLQbJqLCZ6q'
+

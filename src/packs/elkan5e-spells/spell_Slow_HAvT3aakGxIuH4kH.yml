@@ -1,0 +1,283 @@
+name: Slow
+type: spell
+img: icons/magic/time/hourglass-brown-orange.webp
+effects:
+  - name: Slowed
+    origin: Compendium.elkan5e.elkan5e-spells.Item.HAvT3aakGxIuH4kH
+    changes:
+      - key: StatusEffect
+        mode: 0
+        value: slowed
+        priority: 0
+    transfer: false
+    flags:
+      dae:
+        itemName: Slow
+        disableIncapacitated: false
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    img: modules/elkan5e/icons/slowed.svg
+    _id: QQszvyLvFF7SBY4D
+    type: base
+    system: {}
+    disabled: false
+    duration:
+      startTime: null
+      seconds: 60
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    tint: '#ffffff'
+    statuses: []
+    sort: 0
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '12.327'
+      systemId: dnd5e
+      systemVersion: 3.2.1
+      createdTime: 1719884358380
+      modifiedTime: 1719884406914
+      lastModifiedBy: 3Yi0HjF4PKCA4vX0
+    _key: '!items.effects!HAvT3aakGxIuH4kH.QQszvyLvFF7SBY4D'
+folder: Tf2FNuyyu2gEaYOF
+flags:
+  dynamiceffects:
+    equipActive: true
+    alwaysActive: false
+    effects:
+      - modSpecKey: macro.execute
+        value: Slow
+        mode: +
+        targetSpecific: false
+        id: 1
+        itemId: FQy3csyQLdC6oQkD
+        active: true
+        _targets: []
+        label: Macro Execute
+      - modSpecKey: data.attributes.ac.value
+        value: '-2'
+        mode: +
+        targetSpecific: false
+        id: 2
+        itemId: FQy3csyQLdC6oQkD
+        active: true
+        _targets: []
+  dae:
+    activeEquipped: false
+    alwaysActive: false
+  core: {}
+  betterRolls5e:
+    critRange:
+      type: String
+      value: ''
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value: []
+      altValue: []
+      context: []
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  midi-qol:
+    effectActivation: false
+    AoETargetType: any
+    AoETargetTypeIncludeSelf: true
+    autoTarget: default
+    itemCondition: workflow.targets.size <= 6
+    reactionCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+    rollAttackPerTarget: default
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    confirmTargets: default
+    otherSaveDamage: default
+    noConcentrationCheck: false
+system:
+  description:
+    value: >-
+      <p>You alter time around up to six creatures of your choice in a 40-foot
+      cube within range. Each target must succeed on a Wisdom saving throw or be
+      affected by this spell for the duration.</p>
+
+      <p>An affected target’s speed is halved, it takes a -2 penalty to AC and
+      Dexterity saving throws, and it can’t use reactions. On its turn, it can
+      use either an action or a bonus action, not both. Regardless of the
+      creature’s abilities or magic items, it can’t make more than one melee or
+      ranged attack during its turn.</p>
+
+      <p>If the creature attempts to cast a spell with a casting time of 1
+      action, roll a d20. On an 11 or higher, the spell doesn’t take effect
+      until the creature’s next turn, and the creature must use its action on
+      that turn to complete the spell. If it can’t, the spell is wasted.</p>
+
+      <p>A creature affected by this spell makes another Wisdom saving throw at
+      the end of its turn. On a successful save, the effect ends for it.</p>
+    chat: ''
+    unidentified: ''
+  source: Elkan 5e
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: '1'
+    units: minute
+  cover: null
+  crewed: false
+  target:
+    value: 40
+    width: null
+    units: ft
+    type: cube
+  range:
+    value: 120
+    long: 0
+    units: ft
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: save
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: 1d20
+  save:
+    ability: wis
+    dc: null
+    scaling: spell
+  level: 3
+  school: trs
+  components:
+    vocal: true
+    somatic: true
+    material: true
+    ritual: false
+    concentration: true
+  materials:
+    value: A drop of molasses.
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: none
+    formula: ''
+  properties:
+    - vocal
+    - somatic
+    - material
+    - concentration
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.0.3
+  coreVersion: '12.324'
+  createdTime: 1685385567917
+  modifiedTime: 1709609782264
+  lastModifiedBy: 5VT8aO0sUiO4rl0h
+  compendiumSource: null
+  duplicateSource: null
+_id: HAvT3aakGxIuH4kH
+sort: 1000000
+_key: '!items!HAvT3aakGxIuH4kH'
+

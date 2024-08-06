@@ -1,0 +1,188 @@
+name: Sleep
+type: spell
+img: icons/magic/control/sleep-bubble-purple.webp
+effects:
+  - name: Unconscious
+    origin: Compendium.elkan5e.elkan5e-spells.Item.BNwxhTFqeEjzFYFQ
+    changes:
+      - key: StatusEffect
+        mode: 0
+        value: unconscious
+        priority: 0
+    transfer: true
+    flags:
+      dae:
+        itemName: Sleep
+        disableIncapacitated: false
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration:
+          - isDamaged
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    img: modules/elkan5e/icons/unconscious.svg
+    _id: giHfRxq3sFqfmVRt
+    type: base
+    system: {}
+    disabled: false
+    duration:
+      startTime: null
+      seconds: 60
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    tint: '#ffffff'
+    statuses: []
+    sort: 0
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '12.327'
+      systemId: dnd5e
+      systemVersion: 3.2.1
+      createdTime: 1719883135008
+      modifiedTime: 1719883159160
+      lastModifiedBy: 3Yi0HjF4PKCA4vX0
+    _key: '!items.effects!BNwxhTFqeEjzFYFQ.giHfRxq3sFqfmVRt'
+folder: U0k4VGG6bziqf3oH
+flags:
+  core: {}
+  midi-qol:
+    effectActivation: false
+    AoETargetType: any
+    AoETargetTypeIncludeSelf: true
+    autoTarget: default
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    reactionCondition: ''
+    otherCondition: ''
+    effectCondition: >-
+      target.failedSave && !["construct", "undead"].includes(raceOrType) &&
+      !target.traits.ci.value.has('charmed')
+    rollAttackPerTarget: default
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    confirmTargets: default
+    noConcentrationCheck: false
+system:
+  description:
+    value: "<p><em>You throw a pinch of fine sand or a handful of rose petals in the direction of your target. They are lulled into a magical slumber, harmlessly lying down in the safest available place to sleep.</em></p><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;text-align:start\"><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Wisdom Save</strong></span></p><p>&amp;Reference[Construct]{Constructs}, &amp;Reference[Undead], and creatures immune to being &amp;Reference[charmed] are immune to this spell.</p><ul style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;padding:0px 0px 0px 1.5em;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial\"><li style=\"box-sizing:border-box;user-select:text\"><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;margin-block-end:0px\"><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Failure:</strong> The target falls\_&amp;reference[unconscious]. They wake up if the spell ends, they take damage, or someone uses an action to shake or slap the sleeper awake.</span></p></li><li style=\"box-sizing:border-box;user-select:text\"><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;margin-block-end:0px\"><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Success</strong>: No effect.</span></p></li></ul><p></p><p><strong>Upcasting</strong>: <span style=\"font-family:Signika, sans-serif\">Target one additional creature for each spell level above 1st.</span></p>"
+    chat: ''
+    unidentified: ''
+  source:
+    custom: elkan5e.com/spells/sleep
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: '1'
+    units: minute
+  cover: null
+  crewed: false
+  target:
+    value: 1
+    width: null
+    units: ''
+    type: creature
+  range:
+    value: 90
+    long: 0
+    units: ft
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: other
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - 5d8
+        - ''
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  level: 1
+  school: enc
+  components:
+    vocal: true
+    somatic: true
+    material: true
+    ritual: false
+    concentration: false
+  materials:
+    value: A pinch of fine sand or rose petals.
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: level
+    formula: 2d8
+  properties:
+    - vocal
+    - somatic
+    - material
+    - mgc
+ownership:
+  default: 0
+  ymJDAw0PgXIWIHMH: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  coreVersion: '12.328'
+  createdTime: 1685348240772
+  modifiedTime: 1720031602369
+  lastModifiedBy: 3Yi0HjF4PKCA4vX0
+  compendiumSource: null
+  duplicateSource: null
+_id: BNwxhTFqeEjzFYFQ
+sort: 900000
+_key: '!items!BNwxhTFqeEjzFYFQ'
+

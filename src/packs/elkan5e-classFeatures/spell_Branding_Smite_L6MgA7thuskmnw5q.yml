@@ -1,0 +1,178 @@
+folder: VGAGvD4k9YHm9VSP
+name: Branding Smite
+type: spell
+_id: L6MgA7thuskmnw5q
+img: icons/weapons/axes/axe-broad-chipped-glow-yellow.webp
+system:
+  description:
+    value: "<p>When you hit a creature with a weapon attack, you can expend a spell slot to deal &amp;reference[radiant] damage to the target, in addition to the weapon's damage.</p><ul><li><p><span style=\"font-weight:bold\"><strong>On Hit:\_</strong></span>Target takes [[/damage 2d8 radiant]] damage.* The target becomes visible if it's &amp;reference[invisible], has its silhouette illuminated to shed dim light in a 5-foot radius, and can't become invisible for 1 minute.</p></li></ul><p>​</p><p>​*<strong>Using Higher Level Spell Slots</strong>: Damage increases by [[/r 1d8]] for each spell level above 1st.​</p>"
+    chat: ''
+  source:
+    custom: elkan5e.com/paladin
+  activation:
+    type: duringattack
+    cost: null
+    condition: ''
+  duration:
+    value: '1'
+    units: minute
+  cover: null
+  crewed: false
+  target:
+    value: 1
+    width: null
+    units: null
+    type: creature
+    prompt: true
+  range:
+    value: null
+    long: null
+    units: ''
+  uses:
+    value: null
+    max: ''
+    per: null
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: null
+    amount: null
+    scale: false
+  ability: ''
+  actionType: other
+  attack:
+    bonus: ''
+    flat: false
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - 2d8
+        - radiant
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  summons: null
+  level: 1
+  school: evo
+  properties: []
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: always
+    prepared: true
+  scaling:
+    mode: none
+    formula: 1d8
+effects:
+  - name: Branding Smite
+    changes:
+      - key: macro.tokenMagic
+        mode: 0
+        value: bevel
+        priority: 20
+      - key: system.traits.ci.value
+        mode: 2
+        value: invisible
+        priority: 20
+      - key: ATL.light.dim
+        mode: 4
+        value: '5'
+        priority: 20
+    transfer: false
+    _id: TXm0TI6R1uKL4SdQ
+    disabled: false
+    duration:
+      startTime: null
+      seconds: 60
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    origin: null
+    statuses: []
+    flags:
+      dae:
+        disableIncapacitated: false
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    tint: '#ffffff'
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/weapons/axes/axe-broad-chipped-glow-yellow.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!L6MgA7thuskmnw5q.TXm0TI6R1uKL4SdQ'
+sort: 100000
+ownership:
+  default: 0
+  3Yi0HjF4PKCA4vX0: 3
+flags:
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+    removeAttackDamageButtons: default
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.0
+  coreVersion: '12.324'
+  createdTime: 1715196420174
+  modifiedTime: 1716506418109
+  lastModifiedBy: 9B4LXF0S1sIudaRa
+  compendiumSource: null
+  duplicateSource: null
+_key: '!items!L6MgA7thuskmnw5q'
+

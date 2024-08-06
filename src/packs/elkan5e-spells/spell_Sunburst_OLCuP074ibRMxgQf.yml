@@ -1,0 +1,261 @@
+name: Sunburst
+type: spell
+img: icons/magic/light/explosion-beam-impact-silhouette.webp
+effects:
+  - name: Blinded
+    origin: Compendium.elkan5e.elkan5e-spells.Item.OLCuP074ibRMxgQf
+    changes:
+      - key: StatusEffect
+        mode: 0
+        value: blinded
+        priority: 0
+      - key: flags.midi-qol.OverTime
+        mode: 2
+        value: |-
+          turn=end,
+          saveAbility=con,
+          saveDC=@attributes.spelldc,
+          saveMagic=true,
+          label=Sunburst
+        priority: 20
+    transfer: false
+    flags:
+      dae:
+        itemName: Sunburst
+        disableIncapacitated: false
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    img: modules/elkan5e/icons/blinded.svg
+    _id: PLSHw2TSzTcXlvtg
+    type: base
+    system: {}
+    disabled: false
+    duration:
+      startTime: null
+      seconds: null
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    tint: '#ffffff'
+    statuses: []
+    sort: 0
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '12.327'
+      systemId: dnd5e
+      systemVersion: 3.2.1
+      createdTime: 1719885389646
+      modifiedTime: 1719885537691
+      lastModifiedBy: 3Yi0HjF4PKCA4vX0
+    _key: '!items.effects!OLCuP074ibRMxgQf.PLSHw2TSzTcXlvtg'
+folder: TOjvTMaQMAMN24MV
+flags:
+  srd5e:
+    page: spells.html
+    source: PHB
+    hash: sunburst_phb
+  betterRolls5e:
+    critRange:
+      type: String
+      value: null
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value:
+        '0': true
+      altValue:
+        '0': true
+      context:
+        '0': ''
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  midi-qol:
+    onUseMacroName: ''
+    effectActivation: false
+    AoETargetType: any
+    AoETargetTypeIncludeSelf: true
+    autoTarget: default
+    rollAttackPerTarget: default
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    effectCondition: ''
+  core: {}
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    confirmTargets: default
+    saveDamage: default
+    bonusSaveDamage: default
+    noConcentrationCheck: false
+system:
+  description:
+    value: "<div class=\"rd__b  rd__b--3\"><p>Brilliant sunlight flashes in a 60-foot radius centered on a point you choose within range. Each creature in that light must make a Constitution saving throw. On a failed save, a creature takes [[/r 12d6]] radiant damage and is Blinded for 1 minute. On a successful save, it takes half as much damage and isn't Blinded\_by this spell. Undead and oozes have disadvantage on this saving throw.</p><div class=\"rd__spc-inline-post\"><p>\_</p></div><p>A creature Blinded by this spell makes another Constitution saving throw at the end of each of its turns. On a successful save, it is no longer Blinded.</p><p>This spell dispels any darkness in its area that was created by a spell.</p></div>"
+    chat: ''
+    unidentified: ''
+  source: Elkan 5e
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: ''
+    units: inst
+  cover: null
+  crewed: false
+  target:
+    value: 60
+    width: null
+    units: ft
+    type: radius
+  range:
+    value: 150
+    long: null
+    units: ft
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: save
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - 12d6
+        - radiant
+    versatile: ''
+  formula: ''
+  save:
+    ability: con
+    dc: null
+    scaling: spell
+  level: 8
+  school: evo
+  components:
+    vocal: true
+    somatic: true
+    material: true
+    ritual: false
+    concentration: false
+  materials:
+    value: fire and a piece of sunstone
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: none
+    formula: ''
+  properties:
+    - vocal
+    - somatic
+    - material
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  ymJDAw0PgXIWIHMH: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.0.3
+  coreVersion: '12.324'
+  createdTime: 1685387990487
+  modifiedTime: 1709608539641
+  lastModifiedBy: 3pkp6OgvLRkAZWcE
+  compendiumSource: null
+  duplicateSource: null
+_id: OLCuP074ibRMxgQf
+sort: 0
+_key: '!items!OLCuP074ibRMxgQf'
+

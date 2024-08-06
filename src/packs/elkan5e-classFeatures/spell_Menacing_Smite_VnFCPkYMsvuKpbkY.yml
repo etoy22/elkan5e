@@ -1,0 +1,173 @@
+folder: VGAGvD4k9YHm9VSP
+name: Menacing Smite
+type: spell
+_id: VnFCPkYMsvuKpbkY
+img: icons/weapons/axes/axe-double-white-red.webp
+system:
+  description:
+    value: "<p>When you hit a creature with a weapon attack, you can expend a spell slot to deal &amp;reference[psychic] damage and attempt to frighten the target, in addition to the weapon's damage.</p><p><strong>Wisdom Save</strong></p><ul><li><p><strong>Failure</strong>:\_Target takes [[/damage 4d6 psychic]] damage* and is &amp;reference[frightened].</p></li><li><p><strong>Success</strong>:\_Target takes [[/damage 4d6 psychic]] damage.*</p></li></ul><p>​</p><p>​*<strong>Using Higher Level Spell Slots</strong>: Damage increases by [[/r 1d6]] for each spell level above 3rd.</p>"
+    chat: ''
+  source:
+    custom: elkan5e.com/paladin
+  activation:
+    type: duringattack
+    cost: null
+    condition: ''
+  duration:
+    value: '1'
+    units: round
+  cover: null
+  crewed: false
+  target:
+    value: 1
+    width: null
+    units: null
+    type: creature
+    prompt: true
+  range:
+    value: null
+    long: null
+    units: ''
+  uses:
+    value: null
+    max: ''
+    per: null
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: null
+    amount: null
+    scale: false
+  ability: ''
+  actionType: other
+  attack:
+    bonus: ''
+    flat: false
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - 4d6
+        - psychic
+    versatile: ''
+  formula: ''
+  save:
+    ability: wis
+    dc: null
+    scaling: spell
+  summons: null
+  level: 3
+  school: enc
+  properties: []
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: always
+    prepared: true
+  scaling:
+    mode: level
+    formula: 1d6
+effects:
+  - name: Frightened
+    origin: Compendium.elkan5e.elkan5e-class-features.Item.VnFCPkYMsvuKpbkY
+    changes:
+      - key: StatusEffect
+        mode: 0
+        value: frightened
+        priority: 0
+    transfer: false
+    flags:
+      dae:
+        itemName: Menacing Smite
+        disableIncapacitated: false
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: none
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    _id: 4XvMjTzjt8Cy8YoW
+    disabled: false
+    duration:
+      startTime: null
+      seconds: 6
+      combat: null
+      rounds: 1
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    statuses: []
+    tint: '#ffffff'
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: modules/elkan5e/icons/frightened.svg
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!VnFCPkYMsvuKpbkY.4XvMjTzjt8Cy8YoW'
+sort: 0
+ownership:
+  default: 0
+  3Yi0HjF4PKCA4vX0: 3
+flags:
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    saveDamage: fulldam
+    bonusSaveDamage: fulldam
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+    removeAttackDamageButtons: default
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.0
+  coreVersion: '12.324'
+  createdTime: 1715199147137
+  modifiedTime: 1716506454628
+  lastModifiedBy: 9B4LXF0S1sIudaRa
+  compendiumSource: null
+  duplicateSource: null
+_key: '!items!VnFCPkYMsvuKpbkY'
+

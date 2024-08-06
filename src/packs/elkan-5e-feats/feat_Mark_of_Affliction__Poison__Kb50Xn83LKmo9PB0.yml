@@ -1,0 +1,172 @@
+folder: OC0XZyjIvqTz8IUW
+name: Mark of Affliction (Poison)
+type: feat
+_id: Kb50Xn83LKmo9PB0
+img: icons/skills/toxins/symbol-poison-drop-skull-green.webp
+system:
+  description:
+    value: "<p>Using this ability consumes a use of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.HPrjgPXLsDRBbfsD]{Mark for Death}. You cannot use this ability alongside Mark for Death or any other ranger mark.</p><p>While you use the Mark of Affliction, once on each of your turns, when you hit a creature with a weapon attack or damage a creature with a ranger spell, you can attempt to poison them with your magic. This ability ends early if you become\_incapacitated.</p><p><strong>Constitution Saving Throw</strong></p><p><strong>Failure</strong>: Target is &amp;reference[poisoned] until this ability ends. Target rolls again at end of their turns, ending effect on success.</p><p><strong>Success</strong>:\_No effect.</p>"
+    chat: ''
+  source:
+    custom: elkan5e.com/feats/mark-of-affliction
+  activation:
+    type: duringattack
+    cost: 1
+    condition: ''
+  duration:
+    value: ''
+    units: spec
+  cover: null
+  crewed: false
+  target:
+    value: null
+    width: null
+    units: ''
+    type: ''
+    prompt: true
+  range:
+    value: null
+    long: null
+    units: ''
+  uses:
+    value: null
+    max: ''
+    per: null
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: null
+    amount: null
+    scale: false
+  ability: ''
+  actionType: save
+  attack:
+    bonus: ''
+    flat: false
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: con
+    dc: null
+    scaling: spell
+  summons: null
+  type:
+    value: feat
+    subtype: ''
+  properties:
+    - mgc
+  requirements: Feat (Ranger Level 4)
+  recharge:
+    value: null
+    charged: false
+effects:
+  - name: Poisoned
+    origin: Compendium.elkan5e.elkan-5e-feats.Item.Kb50Xn83LKmo9PB0
+    changes:
+      - key: StatusEffect
+        mode: 0
+        value: poisoned
+        priority: 0
+      - key: flags.midi-qol.OverTime
+        mode: 2
+        value: |-
+          turn=end,
+          saveAbility=con,
+          saveDC=@attributes.spelldc,
+          saveMagic=true,
+          label=Mark of Affliction
+        priority: 20
+    transfer: false
+    flags:
+      dae:
+        itemName: Mark of Affliction (Poison)
+        disableIncapacitated: false
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    _id: KF2ObcfKkwafyL83
+    disabled: false
+    duration:
+      startTime: null
+      seconds: null
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    statuses: []
+    tint: '#ffffff'
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: modules/elkan5e/icons/poisoned.svg
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!Kb50Xn83LKmo9PB0.KF2ObcfKkwafyL83'
+sort: 0
+ownership:
+  default: 0
+  3Yi0HjF4PKCA4vX0: 3
+flags:
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  coreVersion: '12.328'
+  createdTime: 1715648417105
+  modifiedTime: 1720039714026
+  lastModifiedBy: V019W60xZMZmeqbA
+  compendiumSource: null
+  duplicateSource: null
+_key: '!items!Kb50Xn83LKmo9PB0'
+

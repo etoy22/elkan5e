@@ -1,0 +1,117 @@
+folder: hs1kzC3J5ULWhDl5
+name: Breath Weapon (Blue, Constitution)
+type: feat
+img: icons/magic/lightning/bolt-blue.webp
+system:
+  description:
+    value: "<p><em>You breathe a stream of forking lightning.</em></p><p><strong>Action</strong> - 30 ft. line (5 ft. wide) - 1/Long Rest - Magical</p><p><strong>Dexterity</strong> Saving Throw</p><ul><li><p><strong>Failure:</strong>\_[[/damage 3d6 lightning]] damage*</p></li><li><p><strong>Success:</strong> half damage</p></li></ul><p>​</p><p><strong>*At Higher Levels:</strong> This ability's damage increases by 3d6 when you reach a total character or creature level of 5th level ([[/damage 6d6 lightning]]), 11th level ([[/damage 9d6 lightning]]), and 17th level ([[/damage 12d6 lightning]]).</p>"
+    chat: ''
+  source:
+    book: ''
+    page: ''
+    custom: elkan5e.com/ancestrybackground
+    license: ''
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: ''
+    units: inst
+  cover: null
+  crewed: false
+  target:
+    value: 30
+    width: 5
+    units: ft
+    type: line
+    prompt: true
+  range:
+    value: null
+    long: null
+    units: ''
+  uses:
+    value: 1
+    max: ''
+    per: lr
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: null
+    amount: null
+    scale: false
+  ability: ''
+  actionType: save
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - >-
+          (max(@scale.dragonborn.breath-weapon,(3*@scale.draconic-origin.breath-weapon)d6))
+        - lightning
+    versatile: ''
+  formula: ''
+  save:
+    ability: dex
+    dc: null
+    scaling: con
+  type:
+    value: race
+    subtype: ''
+  requirements: Blue Dragonborn
+  recharge:
+    value: null
+    charged: false
+  properties:
+    - mgc
+effects: []
+ownership:
+  default: 0
+  cwIJ7W3XRXrY0zj2: 3
+  9B4LXF0S1sIudaRa: 3
+flags:
+  midi-qol:
+    effectActivation: false
+    AoETargetType: any
+    AoETargetTypeIncludeSelf: true
+    autoTarget: default
+    removeAttackDamageButtons: default
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: true
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    rollOther: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: true
+    magiceffect: true
+    concentration: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    confirmTargets: default
+    saveDamage: halfdam
+    bonusSaveDamage: default
+  core: {}
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.0
+  coreVersion: '12.324'
+  createdTime: 1700947060320
+  modifiedTime: 1716872154894
+  lastModifiedBy: 9B4LXF0S1sIudaRa
+  compendiumSource: null
+  duplicateSource: null
+_id: ooBGivANlbEMXwdF
+sort: 1100000
+_key: '!items!ooBGivANlbEMXwdF'
+

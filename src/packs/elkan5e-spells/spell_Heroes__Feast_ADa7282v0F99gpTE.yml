@@ -1,0 +1,269 @@
+name: Heroes' Feast
+type: spell
+img: icons/consumables/food/plate-chicken-grilled-mushroom-brown.webp
+effects:
+  - _id: dUhuzikjyBLRoari
+    flags:
+      dae:
+        transfer: false
+        stackable: none
+        specialDuration: []
+        selfTarget: false
+        selfTargetAlways: false
+        durationExpression: ''
+        macroRepeat: none
+      core:
+        statusId: ''
+      ActiveAuras:
+        isAura: false
+        aura: None
+        radius: null
+        alignment: ''
+        type: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+    changes:
+      - key: macro.execute
+        value: HeroesFeast @target
+        mode: 0
+        priority: 0
+      - key: system.traits.di.value
+        value: poison
+        mode: 0
+        priority: 20
+      - key: system.traits.ci.value
+        value: frightened
+        mode: 0
+        priority: 20
+      - key: flags.midi-qol.advantage.ability.save.wis
+        value: '1'
+        mode: 5
+        priority: 20
+    disabled: false
+    duration:
+      startTime: null
+      seconds: 86400
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    tint: '#ffffff'
+    transfer: false
+    origin: null
+    name: Heroes' Feast
+    description: ''
+    statuses: []
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/consumables/food/plate-chicken-grilled-mushroom-brown.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!ADa7282v0F99gpTE.dUhuzikjyBLRoari'
+folder: sDaRY0H81UTha6hq
+flags:
+  dynamiceffects:
+    equipActive: false
+    alwaysActive: false
+    effects:
+      - modSpecKey: macro.execute
+        value: HeroesFeast @target
+        mode: +
+        targetSpecific: false
+        id: 1
+        itemId: nWkh3MEfiaxZEuvs
+        active: true
+        _targets: []
+  dae:
+    activeEquipped: false
+    alwaysActive: false
+  core: {}
+  betterRolls5e:
+    critRange:
+      type: String
+      value: null
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value: []
+      altValue: []
+      context: []
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  midi-qol:
+    onUseMacroName: ''
+    effectActivation: false
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    confirmTargets: default
+    noConcentrationCheck: false
+system:
+  description:
+    value: >-
+      <p>You bring forth a great feast, including magnificent food and drink.
+      The feast takes 1 Hour to consume and disappears at the end of that time,
+      and the beneficial Effects don’t set in until this hour is over. Up to
+      twelve creatures can partake of the feast.</p>
+
+      <p>A creature that partakes of the feast gains several benefits. The
+      creature is cured of all Diseases and poison, becomes immune to poison and
+      being Frightened, and makes all Wisdom Saving Throws with advantage. Its
+      hit point maximum also increases by 2d10, and it gains the same number of
+      Hit Points. These benefits last for 24 hours.</p>
+    chat: ''
+    unidentified: ''
+  source: Elkan 5e
+  activation:
+    type: minute
+    cost: 1
+    condition: ''
+  duration:
+    value: '24'
+    units: hour
+  cover: null
+  crewed: false
+  target:
+    value: 0
+    width: null
+    units: ''
+    type: ''
+  range:
+    value: 30
+    long: 0
+    units: ft
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: util
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  level: 6
+  school: con
+  components:
+    vocal: true
+    somatic: true
+    material: true
+    ritual: false
+    concentration: false
+  materials:
+    value: A gem-encrusted bowl worth at least 1000gp, which the spell consumes
+    consumed: true
+    cost: 1000
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: none
+    formula: ''
+  properties:
+    - vocal
+    - somatic
+    - material
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.1.2
+  coreVersion: '12.324'
+  createdTime: 1685387571511
+  modifiedTime: 1713232811033
+  lastModifiedBy: 3Yi0HjF4PKCA4vX0
+  compendiumSource: null
+  duplicateSource: null
+_id: ADa7282v0F99gpTE
+sort: 900000
+_key: '!items!ADa7282v0F99gpTE'
+

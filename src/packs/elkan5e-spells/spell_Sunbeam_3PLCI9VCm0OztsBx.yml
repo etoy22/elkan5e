@@ -1,0 +1,281 @@
+name: Sunbeam
+type: spell
+img: icons/magic/light/beams-rays-orange-purple-large.webp
+effects:
+  - name: Sunbeam
+    changes:
+      - key: macro.createItem
+        mode: 0
+        value: Compendium.elkan5e.elkan5e-spells.Item.EDbNPAfr8aKX9Y1M
+        priority: 20
+      - key: ATL.light.bright
+        mode: 4
+        value: '30'
+        priority: 20
+      - key: ATL.light.dim
+        mode: 4
+        value: '60'
+        priority: 20
+    transfer: false
+    _id: UipbqM1ltYhrzFnJ
+    disabled: false
+    duration:
+      startTime: null
+      seconds: null
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    origin: null
+    statuses: []
+    flags:
+      dae:
+        disableIncapacitated: false
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    tint: '#ffffff'
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/magic/light/beams-rays-orange-purple-large.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!3PLCI9VCm0OztsBx.UipbqM1ltYhrzFnJ'
+folder: sDaRY0H81UTha6hq
+flags:
+  dynamiceffects:
+    effects:
+      - modSpecKey: flags.dnd5e.conditions
+        value: Blinded
+        mode: +
+        targetSpecific: false
+        id: 1
+        itemId: 36XZH7ErzipKvuY8
+        active: true
+        _targets: []
+    equipActive: false
+    alwaysActive: false
+  dae:
+    activeEquipped: false
+    alwaysActive: false
+  midi-qol:
+    onUseMacroName: ''
+    effectActivation: false
+    AoETargetType: any
+    AoETargetTypeIncludeSelf: true
+    autoTarget: default
+    rollAttackPerTarget: default
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    effectCondition: ''
+  core: {}
+  betterRolls5e:
+    critRange:
+      type: String
+      value: ''
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value:
+        '0': true
+      altValue:
+        '0': true
+      context:
+        '0': ''
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    confirmTargets: default
+    saveDamage: default
+    bonusSaveDamage: default
+    noConcentrationCheck: false
+system:
+  description:
+    value: >-
+      <p>A beam of brilliant light flashes out from your hand in a 5-foot-wide,
+      60-foot-long line. Each creature in the line must make a Constitution
+      saving throw. On a failed save, a creature takes 6d8 radiant damage and is
+      Blinded until your next turn. On a successful save, it takes half as much
+      damage and isn’t b⁠linded by this spell. Undead and oozes have
+      disadvantage on this saving throw.</p>
+
+      <p>You can create a new line of radiance as your action on any turn until
+      the spell ends.</p>
+
+      <p>For the Duration, a mote of brilliant radiance shines in your hand. It
+      sheds bright light in a 30-foot radius and dim light for an additional 30
+      feet. This light is sunlight.</p>
+    chat: ''
+    unidentified: ''
+  source: Elkan 5e
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: '1'
+    units: minute
+  cover: null
+  crewed: false
+  target:
+    value: 60
+    width: null
+    units: null
+    type: self
+  range:
+    value: null
+    long: null
+    units: self
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: save
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: con
+    dc: null
+    scaling: spell
+  level: 6
+  school: evo
+  components:
+    vocal: true
+    somatic: true
+    material: true
+    ritual: false
+    concentration: true
+  materials:
+    value: A magnifying glass
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: none
+    formula: ''
+  properties:
+    - vocal
+    - somatic
+    - material
+    - concentration
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.1.2
+  coreVersion: '12.324'
+  createdTime: 1685387640703
+  modifiedTime: 1713232981462
+  lastModifiedBy: 3Yi0HjF4PKCA4vX0
+  compendiumSource: null
+  duplicateSource: null
+_id: 3PLCI9VCm0OztsBx
+sort: 400000
+_key: '!items!3PLCI9VCm0OztsBx'
+

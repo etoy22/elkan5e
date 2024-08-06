@@ -1,0 +1,223 @@
+name: Antimagic Field
+type: spell
+img: icons/magic/lightning/barrier-shield-crackling-orb-pink.webp
+effects:
+  - _id: q3k8qax0v18ac3uz
+    changes:
+      - key: flags.midi-qol.fail.spell.vocal
+        mode: 2
+        value: '1'
+        priority: 20
+      - key: flags.midi-qol.fail.spell.somatic
+        mode: 2
+        value: '1'
+        priority: 20
+      - key: flags.midi-qol.fail.spell.material
+        mode: 2
+        value: '1'
+        priority: 20
+    disabled: false
+    duration:
+      startTime: null
+      seconds: 3600
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    transfer: false
+    flags:
+      core:
+        statusId: ''
+      dae:
+        stackable: none
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+        transfer: false
+        selfTarget: false
+        selfTargetAlways: false
+      ActiveAuras:
+        isAura: false
+        aura: None
+        radius: null
+        alignment: ''
+        type: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+    tint: '#ffffff'
+    origin: null
+    name: Antimagic Field
+    description: ''
+    statuses: []
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/magic/lightning/barrier-shield-crackling-orb-pink.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!Ay9J4z6Zf9hl6d4w.q3k8qax0v18ac3uz'
+folder: TOjvTMaQMAMN24MV
+flags:
+  core: {}
+  midi-qol:
+    effectActivation: false
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: true
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    confirmTargets: never
+    noConcentrationCheck: false
+system:
+  description:
+    value: >-
+      <p>A 10-foot-radius invisible sphere of antimagic surrounds you. This area
+      is divorced from the magical energy that suffuses the multiverse. Within
+      the sphere, spells can't be cast, summoned creatures disappear, and even
+      magic items become mundane. Until the spell ends, the sphere moves with
+      you, centered on you.</p><p>Spells and other magical effects, except those
+      created by an artifact or a deity, are suppressed in the sphere and can't
+      protrude into it. A slot expended to cast a suppressed spell is consumed.
+      While an effect is suppressed, it doesn't function, but the time it spends
+      suppressed counts against its duration.</p><p><strong>Targeted
+      Effects.</strong> Spells and other magical effects, such as magic missile
+      and charm person, that target a creature or an object in the sphere have
+      no effect on that target.</p><p><strong>Areas of Magic.</strong> The area
+      of another spell or magical effect, such as fireball, can't extend into
+      the sphere. If the sphere overlaps an area of magic, the part of the area
+      that is covered by the sphere is suppressed. For example, the flames
+      created by a wall of fire are suppressed within the sphere, creating a gap
+      in the wall if the overlap is large enough.</p><p><strong>Spells.</strong>
+      Any active spell or other magical effect on a creature or an object in the
+      sphere is suppressed while the creature or object is in
+      it.</p><p><strong>Magic Items.</strong> The properties and powers of magic
+      items are suppressed in the sphere. For example, a +1 longsword in the
+      sphere functions as a nonmagical longsword.</p><p>A magic weapon's
+      properties and powers are suppressed if it is used against a target in the
+      sphere or wielded by an attacker in the sphere. If a magic weapon or a
+      piece of magic ammunition fully leaves the sphere (for example, if you
+      fire a magic arrow or throw a magic spear at a target outside the sphere),
+      the magic of the item ceases to be suppressed as soon as it
+      exits.</p><p><strong>Magical Travel.</strong> Teleportation and planar
+      travel fail to work in the sphere, whether the sphere is the destination
+      or the departure point for such magical travel. A portal to another
+      location, world, or plane of existence, as well as an opening to an
+      extradimensional space such as that created by the rope trick spell,
+      temporarily closes while in the sphere.</p><p><strong>Creatures and
+      Objects.</strong> A creature or object summoned or created by magic
+      temporarily winks out of existence in the sphere. Such a creature
+      instantly reappears once the space the creature occupied is no longer
+      within the sphere.</p><p><strong>Dispel Magic.</strong> Spells and magical
+      effects such as dispel magic have no effect on the sphere. Likewise, the
+      spheres created by different antimagic field spells don't nullify each
+      other.</p>
+    chat: ''
+    unidentified: ''
+  source: Elkan 5e
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: '1'
+    units: hour
+  cover: null
+  crewed: false
+  target:
+    value: null
+    width: null
+    units: ''
+    type: self
+  range:
+    value: null
+    long: null
+    units: self
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: util
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  level: 8
+  school: abj
+  components:
+    vocal: true
+    somatic: true
+    material: true
+    ritual: false
+    concentration: true
+  materials:
+    value: A pinch of powdered iron or iron filings
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: none
+    formula: ''
+  properties:
+    - vocal
+    - somatic
+    - material
+    - concentration
+ownership:
+  default: 0
+  ymJDAw0PgXIWIHMH: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.0.3
+  coreVersion: '12.324'
+  createdTime: 1685387915488
+  modifiedTime: 1709610211432
+  lastModifiedBy: 3pkp6OgvLRkAZWcE
+  compendiumSource: null
+  duplicateSource: null
+_id: Ay9J4z6Zf9hl6d4w
+sort: 0
+_key: '!items!Ay9J4z6Zf9hl6d4w'
+

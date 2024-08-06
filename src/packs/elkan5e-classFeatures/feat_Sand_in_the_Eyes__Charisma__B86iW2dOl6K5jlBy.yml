@@ -1,0 +1,216 @@
+name: Sand in the Eyes (Charisma)
+type: feat
+img: icons/magic/air/air-smoke-casting.webp
+effects:
+  - name: Blinded
+    origin: Compendium.elkan5e.elkan5e-class-features.Item.t2FCXDmUYPHwe0K4
+    changes:
+      - key: StatusEffect
+        mode: 0
+        value: blinded
+        priority: 0
+    transfer: false
+    flags:
+      dae:
+        itemName: Sand in the Eyes (Dexterity)
+        disableIncapacitated: false
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: true
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration:
+          - turnEndSource
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+      core:
+        sourceId: >-
+          Compendium.elkan5e.elkan5e-class-features.Item.ywAWW4ncyWfOIqpB.ActiveEffect.M1ZC2FMhfYl3lTVb
+    _id: LuofHLuLaG2xVnLu
+    disabled: false
+    duration:
+      startTime: null
+      seconds: null
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    statuses: []
+    tint: '#ffffff'
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '12.327'
+      systemId: dnd5e
+      systemVersion: 3.2.1
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+    img: modules/elkan5e/icons/blinded.svg
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!B86iW2dOl6K5jlBy.LuofHLuLaG2xVnLu'
+folder: 5lTfRqllUeSfleEO
+flags:
+  core: {}
+  midi-qol:
+    effectActivation: false
+    onUseMacroName: ''
+    rollAttackPerTarget: default
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    effectCondition: ''
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    confirmTargets: default
+    noConcentrationCheck: false
+    saveDamage: fulldam
+    bonusSaveDamage: fulldam
+  betterRolls5e:
+    quickDamage:
+      context:
+        '0': ''
+        '1': ''
+      value:
+        '0': true
+      altValue:
+        '0': true
+    quickOther:
+      context: ''
+      value: true
+      altValue: true
+    quickDesc:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickFlavor:
+      value: true
+      altValue: true
+system:
+  description:
+    value: >-
+      <p>Sand in the Eyes is a
+      @UUID[Compendium.elkan5e.elkan5e-class-features.Item.hW3DmOPgBpa7lGU8]{Precision
+      Attacks}.</p><p><strong>As Part of a Weapon Attack</strong> - 1 Creature
+      (5 ft.) - 1 Round</p><p>You can sacrifice 4d6 of your sneak attack damage
+      to briefly blind your target with sand, dirt, or something else in your
+      environment.</p><p>Constitution
+      Save</p><ul><li><p><strong>Failure:</strong>
+      @UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{Sneak
+      Attack} (-4d6) damage. Target is
+      &amp;Reference[blinded].</p></li><li><p><strong>Success:</strong>
+      @UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{Sneak
+      Attack} (-4d6) damage. No effect.</p></li></ul>
+    chat: ''
+  source:
+    custom: elkan5e.com/rogue
+  activation:
+    type: duringattack
+    cost: null
+    condition: ''
+  duration:
+    value: '1'
+    units: round
+  cover: null
+  crewed: false
+  target:
+    value: '1'
+    width: null
+    units: ''
+    type: creature
+    prompt: true
+  range:
+    value: 5
+    long: null
+    units: ft
+  uses:
+    value: null
+    max: ''
+    per: null
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: ''
+    amount: null
+    scale: false
+  ability: ''
+  actionType: save
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - ((@scale.rogue.sneak-attack-4)d6)
+        - piercing
+    versatile: ''
+  formula: ''
+  save:
+    ability: con
+    dc: null
+    scaling: cha
+  type:
+    value: class
+    subtype: precision
+  requirements: Rogue 7
+  recharge:
+    value: null
+    charged: false
+  attack:
+    bonus: ''
+    flat: false
+  summons: null
+  properties:
+    - mgc
+  prerequisites:
+    level: 7
+  enchantment: null
+ownership:
+  default: 0
+  9B4LXF0S1sIudaRa: 3
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.327'
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  createdTime: 1718960189534
+  modifiedTime: 1718960663830
+  lastModifiedBy: 9B4LXF0S1sIudaRa
+_id: B86iW2dOl6K5jlBy
+sort: 0
+_key: '!items!B86iW2dOl6K5jlBy'
+

@@ -1,0 +1,147 @@
+folder: 0pkJJHVz20jLFoE1
+name: Meditation
+type: feat
+_id: nVOM41faAUyZsOFk
+img: icons/magic/perception/third-eye-blue-red.webp
+system:
+  description:
+    value: >-
+      <p><strong>During a Short Rest</strong> - Self - 1/Long Rest -
+      Magical</p><p>By meditating, you can draw more energy from your
+      surroundings to restore your abilities. When you finish a short rest, you
+      regain a number of
+      @UUID[Compendium.elkan5e.elkan5e-class-features.Item.IXk7hfrAoVQU3dLJ]{ki}
+      points equal to half your monk level (rounded down).</p>
+    chat: ''
+  source:
+    custom: elkan5e.com/monk
+  activation:
+    type: shortrest
+    cost: null
+    condition: ''
+  duration:
+    value: ''
+    units: inst
+  cover: null
+  crewed: false
+  target:
+    value: null
+    width: null
+    units: ''
+    type: self
+    prompt: true
+  range:
+    value: null
+    long: null
+    units: self
+  uses:
+    value: 1
+    max: '1'
+    per: lr
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: Compendium.elkan5e.elkan5e-class-features.Item.IXk7hfrAoVQU3dLJ
+    amount: -1
+    scale: false
+  ability: null
+  actionType: ''
+  attack:
+    bonus: ''
+    flat: false
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  summons: null
+  type:
+    value: class
+    subtype: ki
+  properties:
+    - mgc
+  requirements: Monk 2
+  recharge:
+    value: null
+    charged: false
+effects: []
+sort: 0
+ownership:
+  default: 0
+  3Yi0HjF4PKCA4vX0: 3
+flags:
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+    onUseMacroName: '[postActiveEffects]ItemMacro'
+  dae:
+    macro:
+      name: Meditation
+      img: icons/magic/perception/third-eye-blue-red.webp
+      type: script
+      scope: global
+      command: |-
+        (async () => {
+            const kiFeature = actor.items.find(item => item.name == "Ki");
+            const monkLevels = actor.items.find(item => item.name === "Monk")
+
+            if (!kiFeature || !monkLevels){
+                console.error("Missing Monk Levels or the Ki Feature")
+                return
+            }
+
+            const currentValue = kiFeature.system.uses.value;
+            const maxValue = kiFeature.system.uses.max;
+            const calculate = Math.floor(monkLevels.system.levels/2)
+            const newValue = (Math.min(currentValue+calculate,maxValue))
+
+            await kiFeature.update({"system.uses.value" : newValue});
+        })();
+      author: 3Yi0HjF4PKCA4vX0
+      ownership:
+        default: 3
+      _id: null
+      folder: null
+      sort: 0
+      flags: {}
+      _stats:
+        coreVersion: '12.328'
+        systemId: dnd5e
+        systemVersion: 3.2.1
+        createdTime: null
+        modifiedTime: null
+        lastModifiedBy: null
+        compendiumSource: null
+        duplicateSource: null
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  coreVersion: '12.328'
+  createdTime: 1712719259326
+  modifiedTime: 1720560712184
+  lastModifiedBy: 3Yi0HjF4PKCA4vX0
+  compendiumSource: null
+  duplicateSource: null
+_key: '!items!nVOM41faAUyZsOFk'
+

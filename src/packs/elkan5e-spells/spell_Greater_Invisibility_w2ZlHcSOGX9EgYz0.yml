@@ -1,0 +1,312 @@
+name: Greater Invisibility
+type: spell
+img: icons/magic/control/silhouette-hold-change-blue.webp
+effects:
+  - name: Invisible
+    origin: Compendium.elkan5e.elkan5e-spells.Item.w2ZlHcSOGX9EgYz0
+    changes:
+      - key: StatusEffect
+        mode: 0
+        value: invisible
+        priority: 0
+    transfer: true
+    flags:
+      dae:
+        itemName: Greater Invisibility
+        disableIncapacitated: false
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    img: modules/elkan5e/icons/invisible.svg
+    _id: pU3OhKLtTEwY81KO
+    type: base
+    system: {}
+    disabled: false
+    duration:
+      startTime: null
+      seconds: 60
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    tint: '#ffffff'
+    statuses: []
+    sort: 0
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '12.327'
+      systemId: dnd5e
+      systemVersion: 3.2.1
+      createdTime: 1719384422862
+      modifiedTime: 1719384429466
+      lastModifiedBy: 3Yi0HjF4PKCA4vX0
+    _key: '!items.effects!w2ZlHcSOGX9EgYz0.pU3OhKLtTEwY81KO'
+folder: 90eJtrVwLFIxcWJw
+flags:
+  dynamiceffects:
+    equipActive: true
+    alwaysActive: false
+    effects:
+      - modSpecKey: macro.execute
+        value: Invisibility @target
+        mode: +
+        targetSpecific: false
+        id: 1
+        itemId: H4h4NNlgyp0rFmjC
+        active: true
+        _targets: []
+  dae:
+    activeEquipped: false
+    alwaysActive: false
+    macro:
+      name: Greater Invisibility
+      img: icons/magic/control/silhouette-hold-change-blue.webp
+      type: script
+      scope: global
+      command: ''
+      author: 3Yi0HjF4PKCA4vX0
+      ownership:
+        default: 3
+      _id: null
+      folder: null
+      sort: 0
+      flags: {}
+      _stats:
+        coreVersion: '12.327'
+        systemId: dnd5e
+        systemVersion: 3.2.1
+        createdTime: null
+        modifiedTime: null
+        lastModifiedBy: null
+        compendiumSource: null
+        duplicateSource: null
+  itemacro:
+    macro:
+      _data:
+        name: Greater Invisibility
+        type: script
+        scope: global
+        command: |-
+          //DAE Macro Execute, Effect Value = "Macro Name" @target
+
+          let target = canvas.tokens.get(args[1])
+          if (args[0] === "on") {
+              ChatMessage.create({ content: `${target.name} turns invisible` });
+              target.update({ "hidden": true });
+          }
+          if (args[0] === "off") {
+              ChatMessage.create({ content: `${target.name} re-appears` });
+              target.update({ "hidden": false });
+          }
+        author: E4BVikjIkVl2lL2j
+      data:
+        name: Greater Invisibility
+        type: script
+        scope: global
+        command: |-
+          //DAE Macro Execute, Effect Value = "Macro Name" @target
+
+          let target = canvas.tokens.get(args[1])
+          if (args[0] === "on") {
+              ChatMessage.create({ content: `${target.name} turns invisible` });
+              target.update({ "hidden": true });
+          }
+          if (args[0] === "off") {
+              ChatMessage.create({ content: `${target.name} re-appears` });
+              target.update({ "hidden": false });
+          }
+        author: E4BVikjIkVl2lL2j
+      options: {}
+      apps: {}
+      compendium: null
+  midi-qol:
+    onUseMacroName: ''
+    effectActivation: false
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+  betterRolls5e:
+    quickOther:
+      context: ''
+      value: true
+      altValue: true
+      type: Boolean
+    critRange:
+      value: null
+      type: String
+    critDamage:
+      value: ''
+      type: String
+    quickDesc:
+      value: true
+      altValue: true
+      type: Boolean
+    quickProperties:
+      value: true
+      altValue: true
+      type: Boolean
+    quickVersatile:
+      value: false
+      altValue: false
+      type: Boolean
+    quickFlavor:
+      value: true
+      altValue: true
+      type: Boolean
+    quickCharges:
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+      type: Boolean
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value: []
+      altValue: []
+      context: []
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  core: {}
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    confirmTargets: never
+    noConcentrationCheck: false
+system:
+  description:
+    value: >-
+      <p>You or a creature you touch becomes Invisible until the spell ends.
+      Anything the target is wearing or carrying is Invisible as long as it is
+      on the target’s person.</p>
+    chat: ''
+    unidentified: ''
+  source: Elkan 5e
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: '1'
+    units: minute
+  cover: null
+  crewed: false
+  target:
+    value: 1
+    width: null
+    units: ''
+    type: creature
+  range:
+    value: null
+    long: null
+    units: touch
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: util
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  level: 4
+  school: ill
+  components:
+    vocal: true
+    somatic: true
+    material: false
+    ritual: false
+    concentration: true
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: none
+    formula: ''
+  properties:
+    - vocal
+    - somatic
+    - concentration
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.0.3
+  coreVersion: '12.327'
+  createdTime: 1685385809160
+  modifiedTime: 1719884658328
+  lastModifiedBy: 3Yi0HjF4PKCA4vX0
+  compendiumSource: null
+  duplicateSource: null
+_id: w2ZlHcSOGX9EgYz0
+sort: 3600000
+_key: '!items!w2ZlHcSOGX9EgYz0'
+

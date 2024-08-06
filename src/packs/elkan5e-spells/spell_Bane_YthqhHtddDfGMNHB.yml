@@ -1,0 +1,285 @@
+name: Bane
+type: spell
+img: icons/magic/unholy/hand-marked-pink.webp
+effects:
+  - _id: O6D0D9RsGQt8GxjP
+    flags:
+      dae:
+        transfer: false
+        stackable: none
+        macroRepeat: none
+        specialDuration: []
+        selfTarget: false
+        selfTargetAlways: false
+        durationExpression: ''
+        disableIncapacitated: false
+        dontApply: false
+        showIcon: false
+      ActiveAuras:
+        isAura: false
+        radius: ''
+        aura: None
+        alignment: ''
+        type: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        hostile: false
+        onlyOnce: false
+        displayTemp: false
+        nameOverride: ''
+        customCheck: ''
+        wallsBlock: system
+      core:
+        statusId: ''
+    changes:
+      - key: system.bonuses.abilities.save
+        mode: 2
+        value: '-1d4'
+        priority: null
+      - key: system.bonuses.mwak.attack
+        mode: 2
+        value: '-1d4'
+        priority: null
+      - key: system.bonuses.msak.attack
+        mode: 2
+        value: '-1d4'
+        priority: null
+      - key: system.bonuses.rsak.attack
+        mode: 2
+        value: '-1d4'
+        priority: null
+      - key: system.bonuses.rwak.attack
+        mode: 2
+        value: '-1d4'
+        priority: null
+    duration:
+      startTime: null
+      seconds: 60
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    transfer: false
+    disabled: false
+    tint: '#ffffff'
+    origin: null
+    name: Bane
+    description: ''
+    statuses: []
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/magic/unholy/hand-marked-pink.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!YthqhHtddDfGMNHB.O6D0D9RsGQt8GxjP'
+folder: U0k4VGG6bziqf3oH
+flags:
+  dynamiceffects:
+    effects:
+      - modSpecKey: data.bonuses.All-Attacks
+        value: '-1d4'
+        mode: +
+        targetSpecific: false
+        id: 1
+        itemId: 9GH7tsdS6JjUJMQX
+        active: true
+        _targets: []
+        label: Bonuses All Attack Bonuses
+      - modSpecKey: data.bonuses.abilities.save
+        value: '-1d4'
+        mode: +
+        targetSpecific: false
+        id: 2
+        itemId: 9GH7tsdS6JjUJMQX
+        active: true
+        _targets: []
+    equipActive: true
+    alwaysActive: false
+  core: {}
+  betterRolls5e:
+    critRange:
+      type: String
+      value: null
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value: []
+      altValue: []
+      context: []
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  enhanced-terrain-layer:
+    multiple: 1
+    min: 0
+    max: 0
+    environment: ''
+  midi-qol:
+    onUseMacroName: ''
+    effectActivation: false
+    itemCondition: ''
+    reactionCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+    rollAttackPerTarget: default
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    autoSaveFriendly: false
+    noConcentrationCheck: false
+    confirmTargets: default
+system:
+  description:
+    value: "<p><em>Holding out a holy or profane symbol, you call upon its power to condemn or weaken your targets.</em></p><p style=\"box-sizing:border-box;user-select:text;font-variant-ligatures:normal;font-variant-caps:normal;orphans:2;widows:2;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;word-spacing:0px;text-align:start\"><strong>Charisma Save</strong></p><ul><li><p style=\"box-sizing:border-box;user-select:text;font-variant-ligatures:normal;font-variant-caps:normal;orphans:2;widows:2;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;word-spacing:0px;text-align:start\"><strong>Failure</strong>:\_The target must subtract [[/r 1d4]] from all attack rolls and saving throws for the duration, rolling 1d4 again for every roll. Target rolls again at end of their turns, ending effect on success.</p></li><li><p style=\"box-sizing:border-box;user-select:text;font-variant-ligatures:normal;font-variant-caps:normal;orphans:2;widows:2;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;word-spacing:0px;text-align:start\"><strong>Success</strong>:\_No effect.</p></li></ul><p></p><p><strong>Upcasting</strong>: <span style=\"font-family:Signika, sans-serif\">Target one additional creature for each spell level above 1st.</span></p>"
+    chat: ''
+    unidentified: ''
+  source:
+    custom: elkan5e.com/spells/bane
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: '1'
+    units: minute
+  cover: null
+  crewed: false
+  target:
+    value: 3
+    width: null
+    units: ''
+    type: creature
+  range:
+    value: 30
+    long: 0
+    units: ft
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: save
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: cha
+    dc: null
+    scaling: spell
+  level: 1
+  school: enc
+  components:
+    vocal: true
+    somatic: true
+    material: true
+    ritual: false
+    concentration: true
+  materials:
+    value: A holy or profane symbol
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: level
+    formula: ''
+  properties:
+    - vocal
+    - somatic
+    - material
+    - concentration
+    - mgc
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  coreVersion: '12.327'
+  createdTime: 1685347668153
+  modifiedTime: 1719900319523
+  lastModifiedBy: ymGs3J4QpWbCOXON
+  compendiumSource: null
+  duplicateSource: null
+_id: YthqhHtddDfGMNHB
+sort: 2900000
+_key: '!items!YthqhHtddDfGMNHB'
+

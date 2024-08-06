@@ -1,0 +1,145 @@
+_id: u7aPgi0U1YedIg3K
+name: Divine Smite
+type: spell
+img: icons/skills/melee/weapons-crossed-swords-yellow-teal.webp
+effects: []
+folder: RoQn7As2fhRPc593
+sort: 700000
+flags:
+  core:
+    sheetClass: ''
+    sourceId: Item.8bRB17L6WePn6S5x
+  midi-qol:
+    effectActivation: false
+    removeAttackDamageButtons: default
+    rollAttackPerTarget: default
+    itemCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: true
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    confirmTargets: never
+    noConcentrationCheck: false
+  betterRolls5e:
+    quickDamage:
+      context:
+        '0': ''
+      value:
+        '0': true
+      altValue:
+        '0': true
+    quickOther:
+      context: ''
+      value: true
+      altValue: true
+    quickDesc:
+      value: true
+      altValue: true
+    quickAttack:
+      value: true
+      altValue: true
+    quickProperties:
+      value: true
+      altValue: true
+    quickVersatile:
+      value: false
+      altValue: false
+    quickFlavor:
+      value: true
+      altValue: true
+system:
+  description:
+    value: "<p><span style=\"font-weight:bold\"><strong>As Part of a Weapon Attack</strong></span>\_- 1 Creature - 1st Level (Evocation)</p><p>When you hit a creature with a weapon attack, you can expend a spell slot to deal radiant damage to the target, in addition to the weapon's damage. This damage counts as part of your weapon's damage, and if you smite on a critical hit, you roll twice as many damage dice for the smite.</p><ul><li><p><strong>On Hit:</strong>\_Target takes 2d8 radiant damage.* The damage increases by another 1d8 if the target is a celestial, fiend, or undead.</p></li></ul><p>​</p><p><strong>​*Using Higher Level Spell Slots:</strong> Damage increases by 1d8 for each spell level above 1st.​</p><p></p><p><em>Divine Smite counts as a spell, and like with other spells, you are limited to expending one spell slot per turn. You also cannot use Divine Smite on an attack that is already getting extra damage from another spell or feature with 'smite' in its name.</em></p>"
+    chat: ''
+    unidentified: ''
+  source: elkan5e.com/paladin
+  activation:
+    type: duringattack
+    cost: null
+    condition: '["fiend", "undead"].includes(raceOrType)'
+  duration:
+    value: null
+    units: ''
+  cover: null
+  crewed: false
+  target:
+    value: 1
+    width: null
+    units: ''
+    type: creature
+  range:
+    value: null
+    long: null
+    units: ''
+  uses:
+    value: null
+    max: ''
+    per: ''
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: other
+  attackBonus: '0'
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - 2d8
+        - radiant
+    versatile: ''
+  formula: 1d8[Radiant]
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  level: 1
+  school: evo
+  components:
+    vocal: false
+    somatic: false
+    material: false
+    ritual: false
+    concentration: false
+    value: ''
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: always
+    prepared: true
+  scaling:
+    mode: level
+    formula: 1d8
+ownership:
+  default: 0
+  ymJDAw0PgXIWIHMH: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.1.2
+  coreVersion: '12.324'
+  createdTime: null
+  modifiedTime: 1715645021205
+  lastModifiedBy: ymGs3J4QpWbCOXON
+  compendiumSource: Item.8bRB17L6WePn6S5x
+  duplicateSource: null
+_key: '!items!u7aPgi0U1YedIg3K'
+

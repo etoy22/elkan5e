@@ -1,0 +1,129 @@
+name: Sacred Flame [Fire Savant]
+type: spell
+img: icons/magic/light/explosion-star-glow-orange.webp
+effects: []
+folder: GAaTOyY6q3hBxDlY
+flags:
+  core: {}
+  midi-qol:
+    effectActivation: false
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    reactionCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+    rollAttackPerTarget: default
+  midiProperties:
+    nodam: true
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    noConcentrationCheck: false
+    confirmTargets: default
+    saveDamage: nodam
+    bonusSaveDamage: default
+  dnd5e:
+    migratedProperties:
+      - vocal
+      - somatic
+system:
+  description:
+    value: "<p><span style=\"font-family:Signika, sans-serif\"><em style=\"box-sizing:border-box;user-select:text\">You invoke the power of the sun, searing your target with light that seeks them out.</em></span></p><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;text-align:start\"><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Dexterity</strong> <strong>Save</strong></span></p><p>Your target cannot benefit from cover against this cantrip.</p><ul style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;padding:0px 0px 0px 1.5em;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial\"><li style=\"box-sizing:border-box;user-select:text\"><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px\"><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Failure:</strong>\_Target takes [[/damage 1d10 radiant]] damage.<strong style=\"box-sizing:border-box;user-select:text\">*</strong></span></p></li><li style=\"box-sizing:border-box;user-select:text\"><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px\"><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Success:</strong>\_No damage.</span></p></li></ul><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;min-height:1rem;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;text-align:start\"></p><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;text-align:start\"><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">*At Higher Levels:</strong> This spell's damage increases by 1d10 when you reach a total character or creature level of 5th level ([[/damage 2d10 radiant]]), 11th level ([[/damage 3d10 radiant]]), and 17th level ([[/damage 4d10 radiant]]).</span></p>"
+    chat: ''
+  source:
+    custom: elkan5e.com/sorcerer
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: ''
+    units: inst
+  cover: null
+  crewed: false
+  target:
+    value: '1'
+    width: null
+    units: ''
+    type: creature
+    prompt: true
+  range:
+    value: 60
+    long: 0
+    units: ft
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: ''
+    amount: null
+    scale: false
+  ability: ''
+  actionType: save
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - 1d10
+        - radiant
+    versatile: ''
+  formula: ''
+  save:
+    ability: dex
+    dc: 0
+    scaling: spell
+  level: 0
+  school: evo
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: always
+    prepared: true
+  scaling:
+    mode: cantrip
+    formula: 1d10
+  properties:
+    - vocal
+    - somatic
+    - mgc
+  attack:
+    bonus: ''
+    flat: false
+  enchantment: null
+  summons: null
+ownership:
+  default: 0
+  ymJDAw0PgXIWIHMH: 3
+  MKYWAnkTJr0gkDqT: 3
+  3Yi0HjF4PKCA4vX0: 3
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.328'
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  createdTime: 1720497157720
+  modifiedTime: 1720497284087
+  lastModifiedBy: 3Yi0HjF4PKCA4vX0
+_id: rEZ77VinfkxuwGtC
+sort: 0
+_key: '!items!rEZ77VinfkxuwGtC'
+

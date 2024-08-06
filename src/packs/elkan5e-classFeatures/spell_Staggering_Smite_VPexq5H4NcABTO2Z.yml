@@ -1,0 +1,172 @@
+folder: VGAGvD4k9YHm9VSP
+name: Staggering Smite
+type: spell
+_id: VPexq5H4NcABTO2Z
+img: icons/skills/melee/strike-hammer-destructive-blue.webp
+system:
+  description:
+    value: "<p>When you hit a creature with a weapon attack, you can expend a spell slot to deal &amp;reference[force] damage and attempt to set your opponent off balance, in addition to the weapon's damage.</p><p><strong>Strength Save</strong></p><ul><li><p><strong>Failure</strong>:\_Target takes [[/damage 3d6 force]] damage* and the next attack against your target has advantage.</p></li><li><p><strong>Success</strong>:\_Target takes [[/damage 3d6 force]] damage.*</p></li></ul><p></p><p>​​*<strong>Using Higher Level Spell Slots</strong>: Damage increases by [[/r 1d6]] for each spell level above 2nd.</p>"
+    chat: ''
+  source:
+    custom: elkan5e.com/paladin
+  activation:
+    type: duringattack
+    cost: null
+    condition: ''
+  duration:
+    value: ''
+    units: disp
+  cover: null
+  crewed: false
+  target:
+    value: 1
+    width: null
+    units: null
+    type: creature
+    prompt: true
+  range:
+    value: null
+    long: null
+    units: ''
+  uses:
+    value: null
+    max: ''
+    per: null
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: null
+    amount: null
+    scale: false
+  ability: ''
+  actionType: other
+  attack:
+    bonus: ''
+    flat: false
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - 3d6
+        - force
+    versatile: ''
+  formula: ''
+  save:
+    ability: str
+    dc: null
+    scaling: spell
+  summons: null
+  level: 2
+  school: evo
+  properties: []
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: always
+    prepared: true
+  scaling:
+    mode: level
+    formula: 1d6
+effects:
+  - name: Staggering Smite
+    changes:
+      - key: flags.midi-qol.grants.advantage.attack.all
+        mode: 0
+        value: '1'
+        priority: 20
+    transfer: false
+    _id: wI9yrtdP9EF327pd
+    disabled: false
+    duration:
+      startTime: null
+      seconds: null
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    origin: null
+    statuses: []
+    flags:
+      dae:
+        disableIncapacitated: false
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    tint: '#ffffff'
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/skills/melee/strike-hammer-destructive-blue.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!VPexq5H4NcABTO2Z.wI9yrtdP9EF327pd'
+sort: 500000
+ownership:
+  default: 0
+  3Yi0HjF4PKCA4vX0: 3
+flags:
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    saveDamage: fulldam
+    bonusSaveDamage: fulldam
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+    removeAttackDamageButtons: default
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.0
+  coreVersion: '12.324'
+  createdTime: 1715197875949
+  modifiedTime: 1716506462033
+  lastModifiedBy: 9B4LXF0S1sIudaRa
+  compendiumSource: null
+  duplicateSource: null
+_key: '!items!VPexq5H4NcABTO2Z'
+

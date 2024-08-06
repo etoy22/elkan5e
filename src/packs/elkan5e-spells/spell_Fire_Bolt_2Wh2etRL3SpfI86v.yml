@@ -1,0 +1,188 @@
+name: Fire Bolt
+type: spell
+img: icons/magic/fire/projectile-fireball-smoke-orange-red.webp
+effects: []
+folder: SjVk5lAwzIpqSBbH
+flags:
+  srd5e:
+    page: spells.html
+    source: PHB
+    hash: fire%20bolt_phb
+  betterRolls5e:
+    critRange:
+      type: String
+      value: null
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value:
+        - true
+      altValue:
+        - true
+      context:
+        '0': ''
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  midi-qol:
+    onUseMacroName: ''
+    effectActivation: false
+    fumbleThreshold: null
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    reactionCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+    rollAttackPerTarget: default
+  core: {}
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    noConcentrationCheck: false
+    confirmTargets: default
+system:
+  description:
+    value: "<div class=\"rd__b  rd__b--3\"><p><em>Muttering a short invocation and pointing at your target, you send a bolt of fire streaking forward.</em></p><p><strong>Spell Attack</strong></p><p>If this spell damages a vehicle or object that is flammable and has hit points, the object is set on fire**.</p><ul style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;padding:0px 0px 0px 1.5em;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial\"><li style=\"box-sizing:border-box;user-select:text\"><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px\"><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Hit:</strong>\_[[/damage 1d10 fire]] damage<strong style=\"box-sizing:border-box;user-select:text\">*</strong></span></p></li></ul></div><p></p><p><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial\">*At Higher Levels:</strong> This spell's damage increases by 1d10 when you reach a total character or creature level of 5th level ([[/damage 2d10 fire]]), 11th level ([[/damage 3d10 fire]]), and 17th level ([[/damage 4d10 fire]]).</span></p><div class=\"rd__b  rd__b--3\"><p>**Some objects may be too large or flammable to be simply extinguished as an action, and will require creative solutions. Additionally, some vehicles or other objects may have a 'damage threshold'. For example, a fire bolt would have to deal at least 5 damage to damage and ignite a wooden catapult. Once ignited, the ignited object takes [[/damage 1d10 fire]] damage at the end of each of the caster's turns, which is dealt regardless of the target's damage threshold.</p></div>"
+    chat: ''
+    unidentified: ''
+  source: elkan5e.com/spells/fire-bolt
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: ''
+    units: inst
+  cover: null
+  crewed: false
+  target:
+    value: 1
+    width: null
+    units: ''
+    type: creature
+  range:
+    value: 120
+    long: null
+    units: ft
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: rsak
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - 1d10
+        - fire
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  level: 0
+  school: evo
+  components:
+    vocal: true
+    somatic: true
+    material: false
+    ritual: false
+    concentration: false
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: always
+    prepared: true
+  scaling:
+    mode: cantrip
+    formula: 1d10
+  properties:
+    - vocal
+    - somatic
+    - mgc
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  ymJDAw0PgXIWIHMH: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.1.2
+  coreVersion: '12.324'
+  createdTime: 1685320572445
+  modifiedTime: 1713219055591
+  lastModifiedBy: WaiirYzq9mhRj9cS
+  compendiumSource: null
+  duplicateSource: null
+_id: 2Wh2etRL3SpfI86v
+sort: 300000
+_key: '!items!2Wh2etRL3SpfI86v'
+

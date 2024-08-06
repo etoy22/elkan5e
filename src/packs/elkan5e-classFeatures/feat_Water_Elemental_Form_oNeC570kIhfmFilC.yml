@@ -1,0 +1,189 @@
+folder: p1GfUmL5Upoo2x6Y
+name: Water Elemental Form
+type: feat
+_id: oNeC570kIhfmFilC
+img: icons/creatures/magical/humanoid-giant-forest-blue.webp
+system:
+  description:
+    value: "<p>You transform into an hybrid humanoid and water elemental form, your flesh transforming into a semisolid flowing form, with ice crystals or bubbles throughout.</p><p><span style=\"font-weight:bold\" class=\"wixui-rich-text__text\"><strong>Bonus Action</strong></span> - Self - 10 Minutes -<span style=\"letter-spacing:normal\" class=\"wixui-rich-text__text\">\_</span>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.Ik6ei7V7ryr5XVoe]{3 Sorcery Points}\_- Magical</p><p>You choose whether your equipment falls to the ground in your space, merges into your new form, or if you continue to visibly wear it.​</p><ul><li><p>You have a swim speed of 90 ft.</p></li><li><p>You are immune to &amp;reference[acid] and resistant to &amp;reference[fire] damage.</p></li><li><p>You are immune to &amp;reference[poison] damage and the &amp;reference[poisoned] condition.</p></li><li><p>You are immune to the &amp;reference[grappled], &amp;reference[petrified], and &amp;reference[restrained] conditions.</p></li><li><p>You can squeeze through gaps as small as 1 inch wide.</p></li><li class=\"wixui-rich-text__text\"><p>​You no longer have normal bodily functions. You don't breathe, can't bleed, be magically aged, or otherwise do anything that relies on your normal biological functions.</p></li></ul><p>You can revert to your normal form using a bonus action. You also revert to your normal form if you are reduced to 0 hit points.</p>"
+    chat: ''
+  source:
+    custom: elkan5e.com/sorcerer
+  activation:
+    type: bonus
+    cost: 1
+    condition: ''
+  duration:
+    value: ''
+    units: ''
+  cover: null
+  crewed: false
+  target:
+    value: ''
+    width: null
+    units: ''
+    type: self
+    prompt: true
+  range:
+    value: null
+    long: null
+    units: self
+  uses:
+    value: null
+    max: ''
+    per: null
+    recovery: ''
+    prompt: true
+  consume:
+    type: charges
+    target: Compendium.elkan5e.elkan5e-class-features.Item.IXk7hfrAoVQU3dLJ
+    amount: 3
+    scale: false
+  ability: ''
+  actionType: util
+  attack:
+    bonus: ''
+    flat: false
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  enchantment: null
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  summons: null
+  type:
+    value: subclass
+    subtype: ''
+  prerequisites:
+    level: null
+  properties:
+    - mgc
+  requirements: Water Savant 14
+  recharge:
+    value: null
+    charged: false
+effects:
+  - name: Water Elemental Form
+    changes:
+      - key: system.attributes.movement.swim
+        mode: 4
+        value: '90'
+        priority: 20
+      - key: system.traits.di.value
+        mode: 2
+        value: acid
+        priority: 20
+      - key: system.traits.dr.value
+        mode: 2
+        value: fire
+        priority: 20
+      - key: system.traits.di.value
+        mode: 2
+        value: poison
+        priority: 20
+      - key: system.traits.ci.value
+        mode: 2
+        value: grappled
+        priority: 20
+      - key: system.traits.ci.value
+        mode: 2
+        value: petrified
+        priority: 20
+      - key: system.traits.ci.value
+        mode: 2
+        value: restrained
+        priority: 20
+    transfer: false
+    img: icons/creatures/magical/humanoid-giant-forest-blue.webp
+    _id: rCYSXrf5ZTBctq13
+    type: base
+    system: {}
+    disabled: false
+    duration:
+      startTime: null
+      seconds: 600
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    origin: null
+    tint: '#ffffff'
+    statuses: []
+    sort: 0
+    flags:
+      dae:
+        disableIncapacitated: false
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration:
+          - zeroHP
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '12.328'
+      systemId: dnd5e
+      systemVersion: 3.2.1
+      createdTime: 1720505459779
+      modifiedTime: 1720505736654
+      lastModifiedBy: cwIJ7W3XRXrY0zj2
+    _key: '!items.effects!oNeC570kIhfmFilC.rCYSXrf5ZTBctq13'
+sort: 0
+ownership:
+  default: 0
+  cwIJ7W3XRXrY0zj2: 3
+flags:
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.328'
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  createdTime: 1720505392780
+  modifiedTime: 1720506138857
+  lastModifiedBy: cwIJ7W3XRXrY0zj2
+_key: '!items!oNeC570kIhfmFilC'
+

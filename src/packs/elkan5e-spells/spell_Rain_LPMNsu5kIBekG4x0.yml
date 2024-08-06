@@ -1,0 +1,207 @@
+name: Rain
+type: spell
+img: icons/magic/air/weather-clouds-rainbow.webp
+effects: []
+folder: SjVk5lAwzIpqSBbH
+flags:
+  srd5e:
+    page: spells.html
+    source: PHB
+    hash: create%20or%20destroy%20water_phb
+  betterRolls5e:
+    critRange:
+      type: String
+      value: ''
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value: []
+      altValue: []
+      context: []
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  core: {}
+  midi-qol:
+    effectActivation: false
+    AoETargetType: any
+    AoETargetTypeIncludeSelf: true
+    autoTarget: default
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    reactionCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+    rollAttackPerTarget: default
+  midiProperties:
+    nodam: false
+    halfdam: false
+    fulldam: false
+    rollOther: false
+    critOther: false
+    concentration: false
+    magicdam: false
+    magiceffect: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    noConcentrationCheck: false
+    confirmTargets: default
+system:
+  description:
+    value: >-
+      <div class="rd__b  rd__b--3"><p><em>You sprinkle a bit of water on one of
+      your hands and hold the hand outstretched, causing rain to appear in an
+      area you choose, extinguishing flames. Alternatively, by sprinkling sand
+      on your hands, you can clear fog in an area you choose, causing the water
+      to disperse into the air, where it joins with the clouds if it
+      can.</em></p><div class="rd__spc-inline-post"><p><strong>Utility
+      Spell</strong></p><p><span style="font-family:Signika, sans-serif">You
+      cause one of the following effects.</span></p></div><div class="rd__b 
+      rd__b--3"><ul><li><p><span class="entry-title-inner">Create Rain:</span>
+      You cause rain to fall from midair in the area you choose, which continues
+      to fall for a minute. Overall, this creates about 10 gallons of water
+      overall, which remains when the spell is finished, but is very difficult
+      to catch much of. This effect also clears light
+      smoke.</p></li><li><p>Condense Fog: Fog in the area clears. If a cloud
+      created by the
+      @UUID[Compendium.elkan5e.elkan5e-spells.Item.KAxrIssIzjSZveQL]{Fog Cloud}
+      spell is in the area, the spell ends
+      immediately.</p></li></ul></div></div>
+    chat: ''
+    unidentified: ''
+  source:
+    custom: elkan5e.com/spells/rain
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: ''
+    units: inst
+  cover: null
+  crewed: false
+  target:
+    value: 30
+    width: null
+    units: ft
+    type: radius
+  range:
+    value: 30
+    long: null
+    units: ft
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: util
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - '0'
+        - cold
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  level: 0
+  school: con
+  components:
+    vocal: true
+    somatic: true
+    material: true
+    ritual: false
+    concentration: false
+  materials:
+    value: a drop of water or a few grains of sand
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: none
+    formula: ''
+  properties:
+    - vocal
+    - somatic
+    - material
+    - concentration
+    - mgc
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  ymJDAw0PgXIWIHMH: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.1.1
+  coreVersion: '12.324'
+  createdTime: 1685347725839
+  modifiedTime: 1712015115558
+  lastModifiedBy: WaiirYzq9mhRj9cS
+  compendiumSource: null
+  duplicateSource: null
+_id: LPMNsu5kIBekG4x0
+sort: 2700000
+_key: '!items!LPMNsu5kIBekG4x0'
+

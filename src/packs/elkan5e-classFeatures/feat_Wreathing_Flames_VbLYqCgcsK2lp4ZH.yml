@@ -1,0 +1,169 @@
+folder: GAaTOyY6q3hBxDlY
+name: Wreathing Flames
+type: feat
+_id: VbLYqCgcsK2lp4ZH
+img: icons/magic/fire/flame-burning-tree-face.webp
+system:
+  description:
+    value: "<p><strong>No Action Cost</strong>\_- 1 Creature - 1/Turn - 1 Round - Magical</p><p>Once on each of your turns, when you deal damage with a spell that deals &amp;reference[fire] or &amp;reference[radiant] damage, you can choose to temporarily wreath one affected creature in flames.</p><p><strong>Debuff</strong></p><ul><li><p>Unless a creature uses their action to put out the fire or the fire is otherwise put out, the target takes [[/damage 1d8 fire]] damage at the end of their next turn (or the end of the initiative round if the target is an object).\_</p></li></ul>"
+    chat: ''
+  source:
+    custom: elkan5e.com/sorcerer
+  activation:
+    type: ''
+    cost: null
+    condition: ''
+  duration:
+    value: ''
+    units: ''
+  cover: null
+  crewed: false
+  target:
+    value: ''
+    width: null
+    units: ''
+    type: ''
+    prompt: true
+  range:
+    value: null
+    long: null
+    units: ''
+  uses:
+    value: null
+    max: ''
+    per: null
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: null
+    amount: null
+    scale: false
+  ability: null
+  actionType: ''
+  attack:
+    bonus: ''
+    flat: false
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  enchantment: null
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  summons: null
+  type:
+    value: subclass
+    subtype: ''
+  prerequisites:
+    level: null
+  properties:
+    - mgc
+  requirements: Fire Savant 3
+  recharge:
+    value: null
+    charged: false
+effects:
+  - name: Wreathing Flames
+    changes:
+      - key: flags.midi-qol.OverTime
+        mode: 2
+        value: |-
+          turn=end,
+          damageType=fire,
+          allowIncapacitated=true,
+          damageRoll=1d8
+          label=Wreathing Flames
+        priority: 20
+    transfer: false
+    img: icons/magic/fire/flame-burning-tree-face.webp
+    _id: fYI0LnpZNuarM2F2
+    type: base
+    system: {}
+    disabled: false
+    duration:
+      startTime: null
+      seconds: null
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    origin: null
+    tint: '#ffffff'
+    statuses: []
+    sort: 0
+    flags:
+      dae:
+        disableIncapacitated: false
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '12.328'
+      systemId: dnd5e
+      systemVersion: 3.2.1
+      createdTime: 1720499063112
+      modifiedTime: 1720506378431
+      lastModifiedBy: Iu69CD0r3ke4BAoP
+    _key: '!items.effects!VbLYqCgcsK2lp4ZH.fYI0LnpZNuarM2F2'
+sort: 0
+ownership:
+  default: 0
+  3Yi0HjF4PKCA4vX0: 3
+flags:
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.328'
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  createdTime: 1720498962838
+  modifiedTime: 1720506177880
+  lastModifiedBy: Iu69CD0r3ke4BAoP
+_key: '!items!VbLYqCgcsK2lp4ZH'
+

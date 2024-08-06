@@ -1,0 +1,505 @@
+name: Eyebite
+type: spell
+img: icons/magic/perception/eye-ringed-glow-angry-teal.webp
+effects:
+  - changes: []
+    transfer: false
+    _id: omqS8IbthU23gRo9
+    disabled: false
+    duration:
+      startTime: null
+      seconds: 60
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    origin: null
+    tint: '#ffffff'
+    flags:
+      dae:
+        selfTarget: false
+        selfTargetAlways: false
+        stackable: none
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+      core:
+        statusId: ''
+      ActiveAuras:
+        isAura: false
+        aura: None
+        radius: null
+        alignment: ''
+        type: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+    name: Eyebite
+    description: ''
+    statuses: []
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/magic/perception/eye-ringed-glow-angry-teal.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!4MRjvM6DSMIgYqKG.omqS8IbthU23gRo9'
+folder: sDaRY0H81UTha6hq
+flags:
+  dynamiceffects:
+    equipActive: false
+    alwaysActive: false
+    effects:
+      - modSpecKey: macro.execute
+        value: 'Eyebite @target @attributes.spelldc '
+        mode: +
+        targetSpecific: false
+        id: 1
+        itemId: XcK0JcIi8L5qpnzF
+        active: true
+        _targets: []
+        label: Macro Execute
+  itemacro:
+    macro:
+      _data:
+        name: Eyebite
+        type: script
+        scope: global
+        command: >-
+          const lastArg = args[args.length - 1];
+
+          let tactor;
+
+          if (lastArg.tokenId) tactor =
+          canvas.tokens.get(lastArg.tokenId).actor;
+
+          else tactor = game.actors.get(lastArg.actorId);
+
+          const DAEItem = lastArg.efData.flags.dae.itemData
+
+          const saveData = DAEItem.data.save
+
+
+          let folder = await game.packs.get("Dynamic-Effects-SRD.DAE SRD
+          Macros").getContent()
+
+          let CUBControl = folder.find(i => i.data.name === "CUB Condition")
+
+
+          /**
+           * Dialog appears on players screen, CondtionControll callback execute on GM end 
+           */
+
+          function EyebiteDialog() {
+              new Dialog({
+                  title: "Eyebite options",
+                  content: "<p>Target a token and select the effect</p>",
+                  buttons: {
+                      one: {
+                          label: "Asleep",
+                          callback: async () => {
+                              for (let target of game.user.targets) {
+                                  const flavor = `${CONFIG.DND5E.abilities[saveData.ability]} DC${saveData.dc} ${DAEItem?.name || ""}`;
+                                  let saveRoll = (await tactor.rollAbilitySave(saveData.ability, { flavor })).total;
+                                  if (saveRoll < saveData.ability) {
+                                      ChatMessage.create({ content: `${target.name} failed the save with a ${saveRoll}` });
+                                      CUBControl.execute("apply", "Unconscious", target);
+                                  }
+                                  else {
+                                      ChatMessage.create({ content: `${target.name} passed the save with a ${saveRoll}` });
+                                  }
+                              }
+                          }
+                      },
+                      two: {
+                          label: "Panicked",
+                          callback: async () => {
+                              for (let target of game.user.targets) {
+                                  const flavor = `${CONFIG.DND5E.abilities[saveData.ability]} DC${saveData.dc} ${DAEItem?.name || ""}`;
+                                  let saveRoll = (await tactor.rollAbilitySave(saveData.ability, { flavor })).total;
+                                  if (saveRoll < saveData.ability) {
+                                      ChatMessage.create({ content: `${target.name} failed the save with a ${saveRoll}` });
+                                      CUBControl.execute("apply", "Frightened", target);
+                                  }
+                                  else {
+                                      ChatMessage.create({ content: `${target.name} passed the save with a ${saveRoll}` });
+                                  }
+                              }
+                          }
+                      },
+                      three: {
+                          label: "Sickened",
+                          callback: async () => {
+                              for (let target of game.user.targets) {
+                                  const flavor = `${CONFIG.DND5E.abilities[saveData.ability]} DC${saveData.dc} ${DAEItem?.name || ""}`;
+                                  let saveRoll = (await tactor.rollAbilitySave(saveData.ability, { flavor })).total;
+                                  if (saveRoll < saveData.ability) {
+                                      ChatMessage.create({ content: `${target.name} failed the save with a ${saveRoll}` });
+                                      CUBControl.execute("apply", "Poisoned", target);
+                                  }
+                                  else {
+                                      ChatMessage.create({ content: `${target.name} passed the save with a ${saveRoll}` });
+                                  }
+                              }
+                          }
+                      },
+                  }
+              }).render(true);
+          }
+
+
+          if (args[0] === "on") {
+              EyebiteDialog();
+              ChatMessage.create({ content: `${target.name} is blessed with Eyebite` });
+
+          }
+
+
+          //Cleanup hooks and flags.
+
+          if (args[0] === "each") {
+              EyebiteDialog();
+          }
+        author: E4BVikjIkVl2lL2j
+      data:
+        name: Eyebite
+        type: script
+        scope: global
+        command: >-
+          // DAE macro, args : @attributes.spelldc
+
+          if(!game.modules.get("advanced-macros")?.active)
+          {ui.notifications.error("Please enable the Advanced Macros module")
+          ;return;}
+
+          if(!game.modules.get("combat-utility-belt")?.active)
+          {ui.notifications.error("Please enable the CUB module"); return;}
+
+
+          const lastArg = args[args.length - 1];
+
+          const DC = args[1]
+
+          let tactor;
+
+          if (lastArg.tokenId) tactor =
+          canvas.tokens.get(lastArg.tokenId).actor;
+
+          else tactor = game.actors.get(lastArg.actorId);
+
+          const DAEItem = lastArg.efData.flags.dae.itemData
+
+          let target = canvas.tokens.get(lastArg.tokenId)
+
+
+          let folder = await game.packs.get("Dynamic-Effects-SRD.DAE SRD
+          Macros").getContent()
+
+          let CUBControl = folder.find(i => i.data.name === "CUB Condition")
+
+
+          /**
+           * Dialog appears on players screen, CondtionControll callback execute on GM end 
+           */
+
+          function EyebiteDialog() {
+              new Dialog({
+                  title: "Eyebite options",
+                  content: "<p>Target a token and select the effect</p>",
+                  buttons: {
+                      one: {
+                          label: "Asleep",
+                          callback: async () => {
+                              for (let t of game.user.targets) {
+                                  const flavor = `${CONFIG.DND5E.abilities["wis"]} DC${DC} ${DAEItem?.name || ""}`;
+                                  let saveRoll = (await tactor.rollAbilitySave("wis", { flavor })).total;
+                                  if (saveRoll < DC) {
+                                      ChatMessage.create({ content: `${t.name} failed the save with a ${saveRoll}` });
+                                      CUBControl.execute("apply", "Unconscious", t);
+                                  }
+                                  else {
+                                      ChatMessage.create({ content: `${t.name} passed the save with a ${saveRoll}` });
+                                  }
+                              }
+                          }
+                      },
+                      two: {
+                          label: "Panicked",
+                          callback: async () => {
+                              for (let t of game.user.targets) {
+                                  const flavor = `${CONFIG.DND5E.abilities["wis"]} DC${DC} ${DAEItem?.name || ""}`;
+                                  let saveRoll = (await tactor.rollAbilitySave("wis", { flavor })).total;
+                                  if (saveRoll < DC) {
+                                      ChatMessage.create({ content: `${t.name} failed the save with a ${saveRoll}` });
+                                      CUBControl.execute("apply", "Frightened", t);
+                                  }
+                                  else {
+                                      ChatMessage.create({ content: `${t.name} passed the save with a ${saveRoll}` });
+                                  }
+                              }
+                          }
+                      },
+                      three: {
+                          label: "Sickened",
+                          callback: async () => {
+                              for (let t of game.user.targets) {
+                                  const flavor = `${CONFIG.DND5E.abilities["wis"]} DC${DC} ${DAEItem?.name || ""}`;
+                                  let saveRoll = (await tactor.rollAbilitySave("wis", { flavor })).total;
+                                  if (saveRoll < DC) {
+                                      ChatMessage.create({ content: `${t.name} failed the save with a ${saveRoll}` });
+                                      CUBControl.execute("apply", "Poisoned", t);
+                                  }
+                                  else {
+                                      ChatMessage.create({ content: `${t.name} passed the save with a ${saveRoll}` });
+                                  }
+                              }
+                          }
+                      },
+                  }
+              }).render(true);
+          }
+
+
+          if (args[0] === "on") {
+              EyebiteDialog();
+              ChatMessage.create({ content: `${target.name} is blessed with Eyebite` });
+
+          }
+
+
+          //Cleanup hooks and flags.
+
+          if (args[0] === "each") {
+              EyebiteDialog();
+          }
+        author: zrPR3wueYsESSBR3
+        _id: null
+        img: icons/svg/dice-target.svg
+        folder: null
+        sort: 0
+        permission:
+          default: 0
+        flags: {}
+      options: {}
+      apps: {}
+      compendium: null
+  core: {}
+  betterRolls5e:
+    critRange:
+      type: String
+      value: ''
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value: []
+      altValue: []
+      context: []
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+  midi-qol:
+    rollAttackPerTarget: default
+    effectActivation: false
+    itemCondition: ''
+    effectCondition: ''
+  dae:
+    macro:
+      name: Eyebite
+      img: icons/magic/perception/eye-ringed-glow-angry-teal.webp
+      type: script
+      scope: global
+      command: ''
+      author: 3Yi0HjF4PKCA4vX0
+      ownership:
+        default: 3
+      _id: null
+      folder: null
+      sort: 0
+      flags: {}
+      _stats:
+        systemId: null
+        systemVersion: null
+        coreVersion: null
+        createdTime: null
+        modifiedTime: null
+        lastModifiedBy: null
+system:
+  description:
+    value: >-
+      <p>For the spell’s Duration, your eyes become an inky void imbued with
+      dread power. One creature of your choice within 60 feet of you that you
+      can see must succeed on a Wisdom saving throw or be affected by one of the
+      following Effects of your choice for the Duration. On each of your turns
+      until the spell ends, you can use your action to target another creature
+      but can’t target a creature again if it has succeeded on a saving throw
+      against this casting of eyebite.</p>
+
+      <ul>
+
+      <li><strong>Asleep</strong>. The target falls Unconscious. It wakes up if
+      it takes any damage or if another creature uses its action to shake the
+      sleeper awake.</li>
+
+      <li><strong>Panicked</strong>. The target is Frightened of you. On each of
+      its turns, the frigh⁠tened creature must take the Dash action and move
+      away from you by the safest and shortest available route, unless there is
+      nowhere to move. If the target moves to a place at least 60 feet away from
+      you where it can no longer see you, this effect ends.</li>
+
+      <li><strong>Sickened</strong>. The target has disadvantage on Attack rolls
+      and Ability Checks. At the end of each of its turns, it can make another
+      Wisdom saving throw. If it succeeds, the effect ends</li>
+
+      </ul>
+    chat: ''
+    unidentified: ''
+  source: Elkan 5e
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: '1'
+    units: minute
+  cover: null
+  crewed: false
+  target:
+    value: null
+    width: null
+    units: ''
+    type: self
+  range:
+    value: null
+    long: null
+    units: ''
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: ''
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: flat
+  level: 6
+  school: enc
+  components:
+    vocal: true
+    somatic: true
+    material: false
+    ritual: false
+    concentration: true
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: none
+    formula: ''
+  properties:
+    - vocal
+    - somatic
+    - concentration
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.1.2
+  coreVersion: '12.324'
+  createdTime: 1685387519765
+  modifiedTime: 1713232811033
+  lastModifiedBy: 3Yi0HjF4PKCA4vX0
+  compendiumSource: null
+  duplicateSource: null
+_id: 4MRjvM6DSMIgYqKG
+sort: 500000
+_key: '!items!4MRjvM6DSMIgYqKG'
+

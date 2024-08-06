@@ -1,0 +1,218 @@
+folder: 90eJtrVwLFIxcWJw
+name: Shockwave
+type: spell
+img: icons/magic/earth/explosion-lava-stone-yellow.webp
+system:
+  description:
+    value: "<p><span style=\"font-family:Signika, sans-serif\"><em style=\"box-sizing:border-box;user-select:text\">Wielding a staff, club, or something else that could be used as a cudgel, you slam the ground, invoking the power of the earth to strike your enemies. Rippling out from out is a wave of sound that shakes the earth and throws creatures off their feet.</em></span></p><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;text-align:start\"><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Dexterity</strong> <strong>Save</strong></span></p><p>This spell's line is 10 ft. wide and originates from the caster.</p><p>This spell cannot affect a creature higher than 10 ft. off the ground.</p><ul style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;padding:0px 0px 0px 1.5em;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial\"><li style=\"box-sizing:border-box;user-select:text\"><p style=\"box-sizing:border-box;user-select:text;margin-block-end:0px;margin:0.5em 0px\"><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Failure:</strong>\_Target takes [[/damage 4d10 thunder]] damage* and is knocked &amp;reference[prone].</span></p></li><li style=\"box-sizing:border-box;user-select:text\"><p style=\"box-sizing:border-box;user-select:text;margin-block-end:0px;margin:0.5em 0px\"><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Success:</strong> Half damage.</span></p></li></ul><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;min-height:1rem;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;text-align:start\"></p><div class=\"rd__b  rd__b--3\"><div class=\"rd__b  rd__b--3\"><p><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial\">*</strong></span><strong>Upcasting</strong>: Increase damage by [[/damage 1d10 thunder]]{1d10} for each spell level above 4th.</p></div></div>"
+    chat: ''
+  source:
+    book: ''
+    page: ''
+    custom: elkan5e.com/spells/shockwave
+    license: ''
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: ''
+    units: inst
+  cover: null
+  crewed: false
+  target:
+    value: 60
+    width: 10
+    units: ft
+    type: line
+    prompt: true
+  range:
+    value: 5
+    long: null
+    units: ft
+  uses:
+    value: null
+    max: ''
+    per: null
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: null
+    amount: null
+    scale: false
+  ability: ''
+  actionType: save
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - 4d10
+        - thunder
+    versatile: ''
+  formula: ''
+  save:
+    ability: dex
+    dc: null
+    scaling: spell
+  level: 4
+  school: evo
+  materials:
+    value: A staff, club, or something else that could be used as a cudgel
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: level
+    formula: 1d10
+  properties:
+    - vocal
+    - somatic
+    - material
+  attack:
+    bonus: ''
+    flat: false
+  summons: null
+effects:
+  - statuses:
+      - condition-lab-triggler.prone
+    name: Prone
+    changes:
+      - key: flags.midi-qol.grants.advantage.attack.mwak
+        mode: 5
+        value: '1'
+        priority: 50
+      - key: flags.midi-qol.grants.advantage.attack.msak
+        mode: 5
+        value: '1'
+        priority: 50
+      - key: flags.midi-qol.grants.disadvantage.attack.rwak
+        mode: 5
+        value: '1'
+        priority: 50
+      - key: flags.midi-qol.grants.disadvantage.attack.rsak
+        mode: 5
+        value: '1'
+        priority: 50
+      - key: flags.midi-qol.disadvantage.attack.all
+        mode: 5
+        value: '1'
+        priority: 50
+    description: ''
+    duration:
+      seconds: null
+      startTime: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+      combat: null
+    flags:
+      ActiveAuras:
+        isAura: false
+        radius: ''
+        aura: None
+        alignment: ''
+        type: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        hostile: false
+        onlyOnce: false
+        displayTemp: false
+        nameOverride: ''
+        customCheck: ''
+        wallsBlock: system
+      combat-utility-belt:
+        conditionId: prone
+      core:
+        overlay: false
+        sourceId: >-
+          Actor.AkXA9xszgaJBcjpI.Item.MuH5aMoKOyZanrFf.ActiveEffect.d6phTu61XPC2wFAQ
+      condition-lab-triggler:
+        conditionId: prone
+      dae:
+        disableIncapacitated: false
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+      times-up:
+        isPassive: false
+    _id: GKmFTdJLLasHSUmk
+    disabled: false
+    origin: Item.VGg39bYDruvAXAWJ
+    transfer: false
+    tint: '#ffffff'
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: modules/elkan5e/icons/prone.svg
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!CaKyglOP54Fd7ibt.GKmFTdJLLasHSUmk'
+ownership:
+  default: 0
+  ymGs3J4QpWbCOXON: 3
+  WaiirYzq9mhRj9cS: 3
+flags:
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    saveDamage: default
+    bonusSaveDamage: default
+  midi-qol:
+    rollAttackPerTarget: default
+    effectActivation: false
+    itemCondition: ''
+    reactionCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+    removeAttackDamageButtons: default
+    AoETargetType: any
+    AoETargetTypeIncludeSelf: true
+    autoTarget: default
+  dnd5e:
+    migratedProperties:
+      - vocal
+      - somatic
+      - material
+  core: {}
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  coreVersion: '12.327'
+  createdTime: 1707217595910
+  modifiedTime: 1718961728889
+  lastModifiedBy: 9B4LXF0S1sIudaRa
+  compendiumSource: null
+  duplicateSource: null
+_id: CaKyglOP54Fd7ibt
+sort: 0
+_key: '!items!CaKyglOP54Fd7ibt'
+

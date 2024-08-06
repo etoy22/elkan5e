@@ -1,0 +1,323 @@
+name: Whirlwind [Ongoing]
+type: spell
+img: icons/magic/air/wind-tornado-funnel-blue-grey.webp
+effects:
+  - name: Whirlwind
+    changes:
+      - key: StatusEffect
+        mode: 0
+        value: restrained
+        priority: 20
+      - key: flags.midi-qol.OverTime
+        mode: 2
+        value: |-
+          turn=end,
+          saveAbility=str,
+          saveDC=@attributes.spelldc,
+          damageType=bludgeoning,
+          saveDamage=halfdamage,
+          damageRoll = 4d6 + ((@spellLevel - 5)*2)d6),
+          saveMagic=true,
+          label=Whirlwind
+        priority: 20
+    transfer: false
+    img: icons/magic/air/wind-tornado-funnel-blue-grey.webp
+    _id: p4VvJpYMpbb4Htk3
+    type: base
+    system: {}
+    disabled: false
+    duration:
+      startTime: null
+      seconds: 600
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    origin: null
+    tint: '#ffffff'
+    statuses: []
+    sort: 0
+    flags:
+      dae:
+        disableIncapacitated: false
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '12.327'
+      systemId: dnd5e
+      systemVersion: 3.2.1
+      createdTime: null
+      modifiedTime: 1719901347581
+      lastModifiedBy: 3Yi0HjF4PKCA4vX0
+    _key: '!items.effects!k0TgpxS9jV39TqdV.p4VvJpYMpbb4Htk3'
+  - name: Prone
+    origin: Compendium.elkan5e.elkan5e-spells.Item.k0TgpxS9jV39TqdV
+    changes:
+      - key: StatusEffect
+        mode: 0
+        value: prone
+        priority: 0
+    transfer: false
+    flags:
+      dae:
+        itemName: Whirlwind [Ongoing]
+        disableIncapacitated: false
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    img: modules/elkan5e/icons/prone.svg
+    _id: XfbfEOt5ngVPZVvR
+    type: base
+    system: {}
+    disabled: false
+    duration:
+      startTime: null
+      seconds: null
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    tint: '#ffffff'
+    statuses: []
+    sort: 0
+    _stats:
+      compendiumSource: null
+      duplicateSource: null
+      coreVersion: '12.327'
+      systemId: dnd5e
+      systemVersion: 3.2.1
+      createdTime: 1719901353411
+      modifiedTime: 1719901358714
+      lastModifiedBy: 3Yi0HjF4PKCA4vX0
+    _key: '!items.effects!k0TgpxS9jV39TqdV.XfbfEOt5ngVPZVvR'
+folder: PnZJTE6T4UQY81Pm
+flags:
+  midi-qol:
+    onUseMacroName: '[postActiveEffects]AA ApplyEffectsToTemplate'
+    effectActivation: false
+    AoETargetType: any
+    AoETargetTypeIncludeSelf: true
+    autoTarget: default
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+    removeAttackDamageButtons: default
+  core: {}
+  betterRolls5e:
+    critRange:
+      type: String
+      value: ''
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value: []
+      altValue: []
+      context: []
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    confirmTargets: default
+    noConcentrationCheck: false
+    saveDamage: default
+    bonusSaveDamage: default
+  dnd5e:
+    migratedProperties:
+      - vocal
+      - somatic
+      - material
+      - concentration
+system:
+  description:
+    value: "<p><em>You hold a handful of dry leaves, grass, or other plant material. You whistle, and the air escaping your lips rips the leaves into tiny pieces as it carries forward and forms a small but powerful dust devil, capable of picking up all but the heaviest of creatures.</em></p><p><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Strength Save</strong></span></p><p>This spell conjures a dust devil 10 ft. across and 30 ft. tall. It can lift up to 1000 pounds of weight, and at your GM's discretion, may rip some objects out of the ground. Creatures of large size or larger may be too heavy to be lifted, restrained, or knocked &amp;reference[prone] by this spell, but they will still take damage.</p><ul style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;padding:0px 0px 0px 1.5em;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial\"><li style=\"box-sizing:border-box;user-select:text\"><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;margin-block-end:0px\"><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Failure:</strong>\_Target takes [[/damage 4d6 bludgeoning]] damage, rises 15 ft. off the ground, and is both &amp;reference[restrained] and &amp;reference[prone].\_Target rolls again at end of their turns. On a success, they take half damage and end the restrained condition, falling to the ground prone without taking falling damage.</span></p></li><li style=\"box-sizing:border-box;user-select:text\"><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;margin-block-end:0px\"><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Success:</strong> Half damage, no other effect.</span></p></li><li><p><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Area Hazard:</strong> The area is &amp;reference[difficultterrain]. Creatures who enter the area must save against the spell.</span></p></li><li><p><span style=\"font-family:Signika, sans-serif\"><strong>Concentration:</strong>\_Once per turn, you can use your bonus action to move the whirlwind up to 15 ft., moving all creatures currently held by the whirlwind and forcing all creatures in its path to roll a save against the spell.</span></p></li></ul><p style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;min-height:1rem;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;text-align:start\"></p><div class=\"rd__b  rd__b--3\"><div class=\"rd__b  rd__b--3\"><p><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial\">*</strong></span><strong>Upcasting</strong>: Increase damage by [[/damage 2d6 bludgeoning]]{2d6} for each spell level above 5th.</p></div></div>"
+    chat: ''
+  source:
+    custom: elkan5e.com/spells/whirlwind
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: '10'
+    units: minute
+  cover: null
+  crewed: false
+  target:
+    value: '10'
+    width: null
+    units: ft
+    type: radius
+    prompt: true
+  range:
+    value: 90
+    long: null
+    units: ft
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: ''
+    amount: null
+    scale: false
+  ability: ''
+  actionType: save
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - 4d6
+        - bludgeoning
+    versatile: ''
+  formula: ''
+  save:
+    ability: str
+    dc: null
+    scaling: spell
+  level: 5
+  school: evo
+  materials:
+    value: A handful of dry leaves, grass, or other plant material
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: innate
+    prepared: true
+  scaling:
+    mode: level
+    formula: 2d6
+  properties:
+    - vocal
+    - somatic
+    - material
+  attack:
+    bonus: ''
+    flat: false
+  enchantment: null
+  summons: null
+ownership:
+  default: 0
+  3Yi0HjF4PKCA4vX0: 3
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.328'
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  createdTime: 1719901072628
+  modifiedTime: 1720038636232
+  lastModifiedBy: V019W60xZMZmeqbA
+_id: k0TgpxS9jV39TqdV
+sort: 200000
+_key: '!items!k0TgpxS9jV39TqdV'
+

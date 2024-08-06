@@ -1,0 +1,238 @@
+name: Lashing Wind
+type: spell
+img: icons/magic/air/air-wave-gust-blue.webp
+effects: []
+folder: 90eJtrVwLFIxcWJw
+flags:
+  srd5e:
+    page: spells.html
+    source: PHB
+    hash: ice%20storm_phb
+  betterRolls5e:
+    critRange:
+      type: String
+      value: null
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value:
+        - true
+        - true
+      altValue:
+        - true
+        - true
+      context:
+        '0': ''
+        '1': ''
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  midi-qol:
+    onUseMacroName: ''
+    effectActivation: false
+    AoETargetType: any
+    AoETargetTypeIncludeSelf: true
+    autoTarget: default
+    rollAttackPerTarget: default
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    effectCondition: ''
+  enhanced-terrain-layer:
+    multiple: 1
+    min: 0
+    max: 0
+    environment: ''
+  core: {}
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    confirmTargets: default
+    saveDamage: default
+    bonusSaveDamage: default
+    noConcentrationCheck: false
+  dnd5e:
+    migratedProperties:
+      - vocal
+      - somatic
+      - material
+system:
+  description:
+    value: >-
+      <div class="rd__b  rd__b--3"><p><em>You snap your hands forward in a
+      sudden motion. A gust of cold air flows through your throat and out into
+      the air as you cry out an old primordial battle cry in the auran dialect.
+      The air before you whips and lashes at all creatures and objects before
+      you as they are thrown around.</em></p><p><span
+      style="font-family:Signika, sans-serif"><strong
+      style="box-sizing:border-box;user-select:text">Strength
+      Save</strong></span></p><ul
+      style="box-sizing:border-box;user-select:text;margin:0.5em 0px;padding:0px
+      0px 0px 1.5em;color:rgb(25, 24, 19);font-family:Signika,
+      sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial"><li
+      style="box-sizing:border-box;user-select:text"><p
+      style="box-sizing:border-box;user-select:text;margin:0.5em
+      0px;margin-block-end:0px"><span style="font-family:Signika,
+      sans-serif"><strong
+      style="box-sizing:border-box;user-select:text">Failure:</strong> [[/damage
+      3d6 bludgeoning]] damage and [[/damage 3d6 slashing]] damage*. Targets are
+      all moved up to 15 ft. either closer or further away from
+      you.</span></p></li><li style="box-sizing:border-box;user-select:text"><p
+      style="box-sizing:border-box;user-select:text;margin:0.5em
+      0px;margin-block-end:0px"><span style="font-family:Signika,
+      sans-serif"><strong
+      style="box-sizing:border-box;user-select:text">Success:</strong> Half
+      damage, no other effect.</span></p></li></ul><p
+      style="box-sizing:border-box;user-select:text;margin:0.5em
+      0px;min-height:1rem;color:rgb(25, 24, 19);font-family:Signika,
+      sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial;text-align:start"></p><div
+      class="rd__b  rd__b--3"><div class="rd__b  rd__b--3"><p><span
+      style="font-family:Signika, sans-serif"><strong
+      style="box-sizing:border-box;user-select:text;color:rgb(25, 24,
+      19);font-family:Signika,
+      sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial">*</strong></span><strong>Upcasting</strong>:
+      Increase damage by [[/damage 1d6 bludgeoning]] <span
+      style="font-family:Signika, sans-serif">and [[/damage 1d6 slashing]]
+      damage</span> for each spell level above 4th.</p></div></div></div>
+    chat: ''
+  source:
+    custom: elkan5e.com/spells/lashing-wind
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: ''
+    units: inst
+  cover: null
+  crewed: false
+  target:
+    value: '40'
+    width: null
+    units: ft
+    type: cone
+    prompt: true
+  range:
+    value: 300
+    long: null
+    units: self
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: ''
+    amount: null
+    scale: false
+  ability: ''
+  actionType: save
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - 3d6
+        - bludgeoning
+      - - 3d6
+        - slashing
+    versatile: ''
+  formula: ''
+  save:
+    ability: str
+    dc: null
+    scaling: spell
+  level: 4
+  school: evo
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: level
+    formula: 1d6
+  properties:
+    - vocal
+    - somatic
+  attack:
+    bonus: ''
+    flat: false
+  enchantment: null
+  summons: null
+ownership:
+  default: 0
+  ymGs3J4QpWbCOXON: 3
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.328'
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  createdTime: 1719899061939
+  modifiedTime: 1720031825637
+  lastModifiedBy: ymGs3J4QpWbCOXON
+_id: OcQuaCu8X1C6TD4D
+sort: 0
+_key: '!items!OcQuaCu8X1C6TD4D'
+

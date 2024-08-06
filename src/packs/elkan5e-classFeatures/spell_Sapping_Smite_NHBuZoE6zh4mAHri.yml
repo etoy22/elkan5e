@@ -1,0 +1,172 @@
+folder: VGAGvD4k9YHm9VSP
+name: Sapping Smite
+type: spell
+_id: NHBuZoE6zh4mAHri
+img: icons/weapons/polearms/spear-flared-silver-pink.webp
+system:
+  description:
+    value: "<p>When you hit a creature with a weapon attack, you can expend a spell slot to deal &amp;reference[necrotic] damage to the target, in addition to the weapon's damage.</p><ul><li><p><span style=\"font-weight:bold\"><strong>On Hit:\_</strong></span>Target takes [[/damage 2d8 necrotic]] damage.* The target is &amp;reference[drained] a number of hit points equal to the necrotic damage taken. The drained effect lasts until the target takes a long rest.</p></li></ul><p>​</p><p>​*<strong>Using Higher Level Spell Slots</strong>: Damage increases by [[/r 1d8]] for each spell level above 1st.​</p>"
+    chat: ''
+  source:
+    custom: elkan5e.com/paladin
+  activation:
+    type: duringattack
+    cost: null
+    condition: ''
+  duration:
+    value: ''
+    units: disp
+  cover: null
+  crewed: false
+  target:
+    value: 1
+    width: null
+    units: null
+    type: creature
+    prompt: true
+  range:
+    value: null
+    long: null
+    units: ''
+  uses:
+    value: null
+    max: ''
+    per: null
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: null
+    amount: null
+    scale: false
+  ability: ''
+  actionType: other
+  attack:
+    bonus: ''
+    flat: false
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - 2d6
+        - necrotic
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  summons: null
+  level: 1
+  school: nec
+  properties: []
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: always
+    prepared: true
+  scaling:
+    mode: level
+    formula: 1d6
+effects:
+  - name: Drained
+    origin: Compendium.elkan5e.elkan5e-class-features.Item.NHBuZoE6zh4mAHri
+    changes:
+      - key: system.attributes.hp.max
+        mode: 0
+        value: '-@damage'
+        priority: 0
+    transfer: false
+    flags:
+      dae:
+        itemName: Sapping Smite
+        disableIncapacitated: false
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: multi
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration:
+          - longRest
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    _id: pzrkC7EHiex1BACP
+    disabled: false
+    duration:
+      startTime: null
+      seconds: null
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    statuses: []
+    tint: '#ffffff'
+    _stats:
+      coreVersion: '12.327'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: 1717887939654
+      lastModifiedBy: 3Yi0HjF4PKCA4vX0
+      compendiumSource: null
+      duplicateSource: null
+    img: modules/elkan5e/icons/drained.svg
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!NHBuZoE6zh4mAHri.pzrkC7EHiex1BACP'
+sort: 400000
+ownership:
+  default: 0
+  3Yi0HjF4PKCA4vX0: 3
+flags:
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+    removeAttackDamageButtons: default
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.0
+  coreVersion: '12.324'
+  createdTime: 1715197201131
+  modifiedTime: 1716506458765
+  lastModifiedBy: 9B4LXF0S1sIudaRa
+  compendiumSource: null
+  duplicateSource: null
+_key: '!items!NHBuZoE6zh4mAHri'
+

@@ -1,0 +1,142 @@
+folder: VGAGvD4k9YHm9VSP
+name: Vampiric Smite
+type: spell
+_id: nFEa6frWkMVxdU5x
+img: icons/weapons/axes/axe-crooked-crystal-pink.webp
+system:
+  description:
+    value: "<p>When you hit a creature with a weapon attack, you can expend a spell slot to deal &amp;reference[necrotic] damage and regain hit points, in addition to the weapon's damage.</p><ul><li><p><span style=\"font-weight:bold\"><strong>On Hit:\_</strong></span>Target takes [[/damage 5d6 necrotic]] damage* and you regain hit points equal to half the necrotic damage dealt.</p></li></ul><p>​</p><p>​*<strong>Using Higher Level Spell Slots</strong>: Damage increases by [[/r 1d6]] for each spell level above 4th.</p>"
+    chat: ''
+  source:
+    custom: elkan5e.com/paladin
+  activation:
+    type: duringattack
+    cost: null
+    condition: ''
+  duration:
+    value: ''
+    units: inst
+  cover: null
+  crewed: false
+  target:
+    value: 1
+    width: null
+    units: null
+    type: creature
+    prompt: true
+  range:
+    value: null
+    long: null
+    units: ''
+  uses:
+    value: null
+    max: ''
+    per: null
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: null
+    amount: null
+    scale: false
+  ability: ''
+  actionType: other
+  attack:
+    bonus: ''
+    flat: false
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - 5d6
+        - necrotic
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  summons: null
+  level: 4
+  school: nec
+  properties: []
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: always
+    prepared: true
+  scaling:
+    mode: level
+    formula: 1d6
+effects: []
+sort: 0
+ownership:
+  default: 0
+  3Yi0HjF4PKCA4vX0: 3
+flags:
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+    removeAttackDamageButtons: default
+  dae:
+    macro:
+      name: Vampiric Smite
+      img: systems/dnd5e/icons/svg/items/spell.svg
+      type: script
+      scope: global
+      command: >-
+        const {damage,damageMultiplier} =
+        workflow.damageItem.damageDetail[0].find(d=>d.type === 'necrotic') ||
+        {};
+
+        if (damage && workflow.hitTargets.size === 1) {
+          const dmgToApply = Math.floor(damage * damageMultiplier /2);
+          await MidiQOL.applyTokenDamage([{
+                damage: dmgToApply,
+                type: 'healing',
+                flavor:'Life Steal'
+            }], dmgToApply, new Set([token]), null, null);
+        }
+      author: 3Yi0HjF4PKCA4vX0
+      ownership:
+        default: 3
+      _id: null
+      folder: null
+      sort: 0
+      flags: {}
+      _stats:
+        systemId: null
+        systemVersion: null
+        coreVersion: null
+        createdTime: null
+        modifiedTime: null
+        lastModifiedBy: null
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.0
+  coreVersion: '12.324'
+  createdTime: 1715199777752
+  modifiedTime: 1716534141837
+  lastModifiedBy: 9B4LXF0S1sIudaRa
+  compendiumSource: null
+  duplicateSource: null
+_key: '!items!nFEa6frWkMVxdU5x'
+

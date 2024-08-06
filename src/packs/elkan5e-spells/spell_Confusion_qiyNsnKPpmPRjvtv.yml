@@ -1,0 +1,326 @@
+name: Confusion
+type: spell
+img: icons/magic/air/wind-tornado-cyclone-purple-pink.webp
+effects:
+  - statuses: []
+    name: Confused
+    changes:
+      - key: flags.midi-qol.OverTime
+        mode: 2
+        value: >-
+          turn=start, label=Confused Effect,
+          macro=Compendium.elkan5e.elkan5e-macros.Macro.HW9jG0cdn6BmhzyE
+        priority: 20
+      - key: flags.midi-qol.OverTime
+        mode: 2
+        value: >-
+          turn=end, label=Confused Save, saveAbility=wis,
+          saveDC=@attributes.spelldc,
+
+          label=Confusion Save
+        priority: 20
+      - key: StatusEffect
+        mode: 0
+        value: confused
+        priority: 20
+    description: ''
+    duration:
+      seconds: null
+      startTime: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+      combat: null
+    flags:
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+      core:
+        overlay: false
+      condition-lab-triggler:
+        conditionId: FwBRO5jcEXdGQTf8
+      times-up: {}
+      dae:
+        disableIncapacitated: false
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+    _id: DyN0npqi5Se0CpOm
+    disabled: false
+    origin: null
+    transfer: false
+    tint: '#ffffff'
+    _stats:
+      coreVersion: '12.327'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: 1719884577330
+      lastModifiedBy: 3Yi0HjF4PKCA4vX0
+      compendiumSource: null
+      duplicateSource: null
+    img: modules/elkan5e/icons/confused.svg
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!qiyNsnKPpmPRjvtv.DyN0npqi5Se0CpOm'
+folder: 90eJtrVwLFIxcWJw
+flags:
+  itemacro:
+    macro:
+      _data:
+        name: Confusion
+        type: script
+        scope: global
+        command: "//DAE Macro Execute, Effect Value = \"Macro Name\" @target @attributes.spelldc\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEItem.data.save\n\nif (args[0] === \"each\") {\n\n        let confusionRoll = new Roll(\"1d10\").roll().total;\n        let content;\n        switch (confusionRoll) {\n            case 1:\n                content = \"The creature uses all its movement to move in a random direction. To determine the direction, roll a  [[d8]] and assign a direction to each die face. The creature doesn't take an action this turn.\";\n                break;\n            case 2:\n                content = \"\tThe creature doesn't move or take actions this turn.\";\n                break;\n            case 3:\n            case 4:\n            case 5:\n            case 6:\n            case 7:\n                content = \"The creature uses its action to make a melee attack against a randomly determined creature within its reach. If there is no creature within its reach, the creature does nothing this turn.\";\n                break;\n            case 8:\n            case 9:\n            case 10:\n                content = \"The creature can act and move normally.\";\n                break;\n        }\n        ChatMessage.create({ content: `Confusion roll for ${tactor.name} is ${confusionRoll}: ` + content });\n\n        const flavor = `${CONFIG.DND5E.abilities[saveData.ability]} DC${saveData.dc} ${DAEItem?.name || \"\"}`;\n        let saveRoll = (await tactor.rollAbilitySave(saveData.ability, { flavor })).total;\n\n    if(saveRoll >= DC) {\n        ChatMessage.create({ content: `Confusion ends for ${tactor.name} at the end of their turn`})\n        tactor.deleteEmbeddedEntity(\"ActiveEffect\", lastArg.effectId); \n    }\n\n}"
+        author: E4BVikjIkVl2lL2j
+      data:
+        name: Confusion
+        type: script
+        scope: global
+        command: "//DAE Macro , Effect Value = @target @attributes.spelldc\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEItem.data.save\n\nif (args[0] === \"each\") {\n\n        let confusionRoll = await new Roll(\"1d10\").evaluate().total;\n        let content;\n        switch (confusionRoll) {\n            case 1:\n                content = \"The creature uses all its movement to move in a random direction. To determine the direction, roll a  [[d8]] and assign a direction to each die face. The creature doesn't take an action this turn.\";\n                break;\n            case 2:\n                content = \"\tThe creature doesn't move or take actions this turn.\";\n                break;\n            case 3:\n            case 4:\n            case 5:\n            case 6:\n            case 7:\n                content = \"The creature uses its action to make a melee attack against a randomly determined creature within its reach. If there is no creature within its reach, the creature does nothing this turn.\";\n                break;\n            case 8:\n            case 9:\n            case 10:\n                content = \"The creature can act and move normally.\";\n                break;\n        }\n        ChatMessage.create({ content: `Confusion roll for ${tactor.name} is ${confusionRoll}:<br> ` + content });\n\n        const flavor = `${CONFIG.DND5E.abilities[saveData.ability]} DC${args[1]} End of turn save for Confusion`;\n        let saveRoll = (await tactor.rollAbilitySave(saveData.ability, { flavor })).total;\n\n    if(saveRoll >= args[1]) {\n        ChatMessage.create({ content: `Confusion ends for ${tactor.name} at the end of their turn`})\n        tactor.deleteEmbeddedEntity(\"ActiveEffect\", lastArg.effectId); \n    }\n\n}"
+        author: zrPR3wueYsESSBR3
+        _id: null
+        img: icons/svg/dice-target.svg
+        folder: null
+        sort: 0
+        permission:
+          default: 0
+        flags: {}
+      options: {}
+      apps: {}
+      compendium: null
+  dae:
+    activeEquipped: false
+    alwaysActive: false
+    macro:
+      name: Confusion
+      img: icons/magic/air/wind-tornado-cyclone-purple-pink.webp
+      type: script
+      scope: global
+      command: ''
+      author: 3Yi0HjF4PKCA4vX0
+      ownership:
+        default: 3
+      _id: null
+      folder: null
+      sort: 0
+      flags: {}
+      _stats:
+        systemId: null
+        systemVersion: null
+        coreVersion: null
+        createdTime: null
+        modifiedTime: null
+        lastModifiedBy: null
+  core: {}
+  midi-qol:
+    onUseMacroName: ''
+    effectActivation: false
+    AoETargetType: any
+    AoETargetTypeIncludeSelf: true
+    autoTarget: default
+    itemCondition: ''
+    reactionCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+    rollAttackPerTarget: default
+  betterRolls5e:
+    critRange:
+      type: String
+      value: null
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value: []
+      altValue: []
+      context: []
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  enhanced-terrain-layer:
+    multiple: 1
+    min: 0
+    max: 0
+    environment: ''
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    confirmTargets: never
+    noConcentrationCheck: false
+    otherSaveDamage: default
+system:
+  description:
+    value: >-
+      <p>This spell assails and distorts the minds of creatures, generating
+      illusions and causing uncontrolled actions. Each creature in a sphere of
+      10-foot-radius centered on a point chosen in the range of the spell must
+      make a Wisdom saving throw otherwise it will be affected by the
+      spell.</p><p>An affected target can react and it must start at the
+      beginning of 1d10 each of his game rounds to determine its behavior for
+      that round.</p><p>At the end of each turn, an affected creature can make a
+      saving throw of Wisdom. If successful, the effect of the spell ends for
+      this target.</p><div class="rd__b  rd__b--3"><div class="rd__b 
+      rd__b--3"><p><strong>Upcasting:</strong> <span style="font-family:Signika,
+      sans-serif">The radius of the spell increases by 5 ft.</span> for each
+      spell level above 4th level.</p></div></div>
+    chat: ''
+    unidentified: ''
+  source: Elkan 5e
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: '1'
+    units: minute
+  cover: null
+  crewed: false
+  target:
+    value: 10
+    width: null
+    units: ft
+    type: sphere
+  range:
+    value: 90
+    long: 0
+    units: ft
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: save
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: 1d10
+  save:
+    ability: wis
+    dc: null
+    scaling: spell
+  level: 4
+  school: enc
+  components:
+    vocal: true
+    somatic: true
+    material: true
+    ritual: false
+    concentration: true
+  materials:
+    value: Three walnut shells.
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: level
+    formula: ''
+  properties:
+    - vocal
+    - somatic
+    - material
+    - concentration
+    - mgc
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  coreVersion: '12.327'
+  createdTime: 1685385686448
+  modifiedTime: 1718961568511
+  lastModifiedBy: 9B4LXF0S1sIudaRa
+  compendiumSource: null
+  duplicateSource: null
+_id: qiyNsnKPpmPRjvtv
+sort: 2500000
+_key: '!items!qiyNsnKPpmPRjvtv'
+

@@ -1,0 +1,183 @@
+folder: U1YUVYP9YMNXFDcv
+name: Frightful Gaze
+type: feat
+_id: 87UBpH3dq0GLt31o
+img: icons/creatures/eyes/humanoid-single-purple-blue.webp
+system:
+  description:
+    value: "<p><em>Your gaze falls upon a lesser creature as you attempt to strike fear into their soul.</em></p><p><strong>Bonus Action</strong>\_- 1 Creature (60 ft.) - 1 Minute - 1 Sorcery Point - Magical</p><p><strong>Wisdom Save</strong></p><ul><li><p><strong>Failure</strong>:\_Target is &amp;reference[frightened]. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success</strong>:\_No effect.</p></li></ul>"
+    chat: ''
+    unidentified: ''
+  source:
+    book: ''
+    page: ''
+    custom: elkan5e.com/sorcerer
+    license: ''
+  activation:
+    type: bonus
+    cost: 1
+    condition: ''
+  duration:
+    value: '1'
+    units: minute
+  cover: null
+  crewed: false
+  target:
+    value: 1
+    width: null
+    units: null
+    type: creature
+    prompt: true
+  range:
+    value: 60
+    long: null
+    units: ft
+  uses:
+    value: null
+    max: ''
+    per: null
+    recovery: ''
+    prompt: true
+  consume:
+    type: charges
+    target: Compendium.elkan5e.elkan5e-class-features.Item.IXk7hfrAoVQU3dLJ
+    amount: 1
+    scale: false
+  ability: ''
+  actionType: save
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: wis
+    dc: null
+    scaling: cha
+  type:
+    value: subclass
+    subtype: ''
+  requirements: Draconic Origin 6
+  recharge:
+    value: null
+    charged: false
+  properties:
+    - mgc
+effects:
+  - statuses:
+      - condition-lab-triggler.frightened
+    name: Frightened
+    changes:
+      - key: flags.midi-qol.disadvantage.attack.all
+        mode: 5
+        value: '1'
+        priority: 50
+      - key: flags.midi-qol.disadvantage.ability.check.all
+        mode: 5
+        value: '1'
+        priority: 50
+      - key: flags.midi-qol.OverTime
+        mode: 2
+        value: |-
+          turn=end,
+          saveAbility=wis,
+          saveDC=@abilities.cha.dc,
+          label=Frightful Gaze
+        priority: 20
+    description: ''
+    duration:
+      seconds: 60
+      startTime: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+      combat: null
+    flags:
+      ActiveAuras:
+        isAura: false
+        radius: ''
+        aura: None
+        alignment: ''
+        type: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        hostile: false
+        onlyOnce: false
+        nameOverride: ''
+        customCheck: ''
+        displayTemp: false
+        wallsBlock: system
+      core:
+        overlay: false
+      condition-lab-triggler:
+        conditionId: frightened
+      times-up: {}
+      dae:
+        disableIncapacitated: false
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: none
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+    _id: HSC28t8Qs182EGKK
+    disabled: false
+    origin: null
+    transfer: false
+    tint: '#ffffff'
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: modules/elkan5e/icons/frightened.svg
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!87UBpH3dq0GLt31o.HSC28t8Qs182EGKK'
+sort: 300000
+ownership:
+  default: 0
+  3Yi0HjF4PKCA4vX0: 3
+flags:
+  midiProperties:
+    confirmTargets: never
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    rollOther: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+  midi-qol:
+    effectActivation: false
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.0
+  coreVersion: '12.325'
+  createdTime: 1705346088552
+  modifiedTime: 1717799489891
+  lastModifiedBy: 3Yi0HjF4PKCA4vX0
+  compendiumSource: null
+  duplicateSource: null
+_key: '!items!87UBpH3dq0GLt31o'
+

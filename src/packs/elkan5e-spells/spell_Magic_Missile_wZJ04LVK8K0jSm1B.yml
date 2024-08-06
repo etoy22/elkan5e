@@ -1,0 +1,202 @@
+name: Magic Missile
+type: spell
+img: icons/magic/fire/projectile-meteor-salvo-light-pink.webp
+effects: []
+folder: U0k4VGG6bziqf3oH
+flags:
+  srd5e:
+    page: spells.html
+    source: PHB
+    hash: magic%20missile_phb
+  betterRolls5e:
+    critRange:
+      type: String
+      value: ''
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value:
+        - true
+      altValue:
+        - true
+      context: []
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  core: {}
+  midi-qol:
+    effectActivation: false
+    removeAttackDamageButtons: default
+    itemCondition: ''
+    reactionCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+    rollAttackPerTarget: default
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    ignoreTotalCover: false
+    noConcentrationCheck: false
+    confirmTargets: default
+system:
+  description:
+    value: >-
+      <div class="rd__b  rd__b--3"><p><em>You create a cluster of glowing darts
+      of magical force. The missiles animate and hurtle through the air,
+      unerringly seeking their target.</em></p><p>This spell is completely
+      negated by the
+      <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.k6lJOHWJa0XF2zCb]{Shield}
+      </em>spell.</p><p><strong>Always Hits</strong></p><p>Hits three times,
+      which can be split between targets when casting: [[/damage 1d4+1 force]]
+      damage<strong>*</strong>. If you strike the same target multiple times and
+      your target needs to make a concentration check, only roll once for the
+      combined damage.</p><p></p><p><span style="font-family:Signika,
+      sans-serif"><strong
+      style="box-sizing:border-box;user-select:text;color:rgb(25, 24,
+      19);font-family:Signika,
+      sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial">*</strong></span><strong>Upcasting</strong>:
+      Add one missile ([[/damage 1d4+1 force]]{1d4+1 force damage}) for each
+      spell level above 1st.</p></div>
+    chat: ''
+    unidentified: ''
+  source:
+    custom: elkan5e.com/spells/magic-missile
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: ''
+    units: inst
+  cover: null
+  crewed: false
+  target:
+    value: 1
+    width: null
+    units: ''
+    type: creature
+  range:
+    value: 120
+    long: null
+    units: ft
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: util
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts:
+      - - (1d4 + 1) * (2 + @item.level)
+        - force
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  level: 1
+  school: evo
+  components:
+    vocal: true
+    somatic: true
+    material: false
+    ritual: false
+    concentration: false
+  materials:
+    value: ''
+    consumed: false
+    cost: 0
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: level
+    formula: (1d4 + 1)
+  properties:
+    - vocal
+    - somatic
+    - mgc
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  ymJDAw0PgXIWIHMH: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  coreVersion: '12.328'
+  createdTime: 1685348010606
+  modifiedTime: 1720031499210
+  lastModifiedBy: 3Yi0HjF4PKCA4vX0
+  compendiumSource: null
+  duplicateSource: null
+_id: wZJ04LVK8K0jSm1B
+sort: 4600000
+_key: '!items!wZJ04LVK8K0jSm1B'
+

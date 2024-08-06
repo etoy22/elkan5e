@@ -1,0 +1,173 @@
+folder: 7fU320pG2Q1j3mSL
+name: Overbearing Challenge
+type: feat
+_id: tYr6YSe9Q6gOlfwF
+img: icons/skills/melee/weapons-crossed-swords-yellow.webp
+system:
+  description:
+    value: "<p><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial\">When You Use Frenzy</strong> - 1 Visible Creature (120 ft.)</span></p><p>When you become &amp;reference[goaded] by a creature as part of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.OlP5CWXKH4mMRMsX]{Frenzy}, you can attempt to goad your target as well. You can use this every time you switch your Frenzy target.</p><p><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Wisdom</strong> <strong style=\"box-sizing:border-box;user-select:text\">Save</strong></span></p><ul style=\"box-sizing:border-box;user-select:text;margin:0.5em 0px;padding:0px 0px 0px 1.5em;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;font-weight:400;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial\"><li style=\"box-sizing:border-box;user-select:text;line-height:1.4\"><p style=\"box-sizing:border-box;user-select:text;line-height:1.4;margin-block-end:0px;margin:0.5em 0px\"><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Failure:</strong>\_Target is &amp;reference[goaded].</span></p></li><li style=\"box-sizing:border-box;user-select:text;line-height:1.4\"><p style=\"box-sizing:border-box;user-select:text;line-height:1.4;margin-block-end:0px;margin:0.5em 0px\"><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text\">Success:</strong>\_No effect.</span></p></li></ul>"
+    chat: ''
+    unidentified: ''
+  source:
+    book: ''
+    page: ''
+    custom: elkan5e.com/barbarian
+    license: ''
+  activation:
+    type: special
+    cost: null
+    condition: ''
+  duration:
+    value: ''
+    units: ''
+  cover: null
+  crewed: false
+  target:
+    value: 1
+    width: null
+    units: null
+    type: creature
+    prompt: true
+  range:
+    value: 120
+    long: null
+    units: ft
+  uses:
+    value: null
+    max: ''
+    per: null
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: null
+    amount: null
+    scale: false
+  ability: ''
+  actionType: save
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: wis
+    dc: null
+    scaling: con
+  type:
+    value: subclass
+    subtype: ''
+  requirements: Berserker 6
+  recharge:
+    value: null
+    charged: false
+effects:
+  - statuses:
+      - condition-lab-triggler.Kq9PYa0G2aHGmUvc
+    name: Goaded
+    changes:
+      - key: flags.midi-qol.OverTime
+        mode: 2
+        value: |-
+          turn=end,
+          saveAbility=wis,
+          saveDC=@abilities.con.dc,
+          label=Overbearing Challenge
+        priority: 20
+    description: ''
+    duration:
+      startTime: null
+      seconds: 60
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    flags:
+      core:
+        overlay: false
+      condition-lab-triggler:
+        conditionId: Kq9PYa0G2aHGmUvc
+      times-up: {}
+      dae:
+        disableIncapacitated: false
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    _id: ebLG2pOcELyoC3ls
+    disabled: false
+    origin: null
+    transfer: false
+    tint: '#ffffff'
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/svg/combat.svg
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!tYr6YSe9Q6gOlfwF.ebLG2pOcELyoC3ls'
+sort: 0
+ownership:
+  default: 0
+  3Yi0HjF4PKCA4vX0: 3
+flags:
+  midiProperties:
+    confirmTargets: never
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    rollOther: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+  midi-qol:
+    effectActivation: false
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.0
+  coreVersion: '12.324'
+  createdTime: 1705364568339
+  modifiedTime: 1716860488692
+  lastModifiedBy: wuSikoJiJPaTUDuY
+  compendiumSource: null
+  duplicateSource: null
+_key: '!items!tYr6YSe9Q6gOlfwF'
+

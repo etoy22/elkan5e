@@ -1,0 +1,168 @@
+folder: iibzWFAaPgRwaEzD
+name: Harrying Blow
+type: feat
+_id: EqA3m6smVsTig8Xo
+img: icons/skills/melee/strikes-sword-triple-gray.webp
+system:
+  description:
+    value: "<p><em>Your assault prevents your target from moving quickly.</em></p><p><strong>Action</strong>\_-\_Melee/Ranged -\_1 Creature - 1 Round\_- Uses Equal to Proficiency Bonus/Long Rest</p><p>You use your normal &amp;reference[attack] action, and the first time you damage a creature of large size or smaller with a weapon attack, you can choose to halve the creature's speed.</p>"
+    chat: ''
+    unidentified: ''
+  source:
+    book: ''
+    page: ''
+    custom: elkan5e.com/feats/harrying-blow
+    license: ''
+  activation:
+    type: action
+    cost: 1
+    condition: '["lg", "med", "sm", "tiny"].includes(target.traits.size)'
+  duration:
+    value: ''
+    units: ''
+  cover: null
+  crewed: false
+  target:
+    value: 1
+    width: null
+    units: null
+    type: creature
+    prompt: true
+  range:
+    value: null
+    long: null
+    units: ''
+  uses:
+    value: 2
+    max: '@attributes.prof'
+    per: lr
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: null
+    amount: null
+    scale: false
+  ability: null
+  actionType: ''
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  type:
+    value: feat
+    subtype: manuevers
+  requirements: Feat (Level 4)
+  recharge:
+    value: null
+    charged: false
+  prerequisites:
+    level: 4
+effects:
+  - name: Harrying Blow
+    changes:
+      - key: system.attributes.movement.all
+        mode: 0
+        value: /2
+        priority: 20
+    transfer: false
+    _id: K66hfGN5qMk9HWOA
+    disabled: false
+    duration:
+      startTime: null
+      seconds: null
+      combat: null
+      rounds: 1
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    origin: null
+    statuses: []
+    flags:
+      times-up:
+        isPassive: false
+      dae:
+        disableIncapacitated: false
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneNameOnly
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    tint: '#ffffff'
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/skills/melee/strikes-sword-triple-gray.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!EqA3m6smVsTig8Xo.K66hfGN5qMk9HWOA'
+sort: 500000
+ownership:
+  default: 0
+  cwIJ7W3XRXrY0zj2: 3
+flags:
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    nodam: false
+    fulldam: false
+    halfdam: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  coreVersion: '12.328'
+  createdTime: 1702850301520
+  modifiedTime: 1720039472257
+  lastModifiedBy: V019W60xZMZmeqbA
+  compendiumSource: null
+  duplicateSource: null
+_key: '!items!EqA3m6smVsTig8Xo'
+

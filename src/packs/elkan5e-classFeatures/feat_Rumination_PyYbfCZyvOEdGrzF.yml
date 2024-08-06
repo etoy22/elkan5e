@@ -1,0 +1,147 @@
+folder: 9nbOVCsoskjugvch
+name: Rumination
+type: feat
+_id: PyYbfCZyvOEdGrzF
+img: icons/magic/control/silhouette-aura-energy.webp
+system:
+  description:
+    value: "<p><span style=\"letter-spacing:normal\"><em>You think for a while about everything happening around you, either stoking your rage or clearing your mind to focus in battles ahead.</em></span></p><p class=\"font_8\"><span style=\"font-weight:bold\"><strong>During a Short Rest</strong></span>\_- Self - 1/Long Rest</p><p class=\"font_8\">You regain a number of uses of your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.W6yKtk7Svvy9dIq9]{Rage} feature equal to half your rage bonus (rounded down).</p>"
+    chat: ''
+  source:
+    custom: elkan5e.com/barbarian
+  activation:
+    type: shortrest
+    cost: null
+    condition: ''
+  duration:
+    value: ''
+    units: ''
+  cover: null
+  crewed: false
+  target:
+    value: ''
+    width: null
+    units: ''
+    type: self
+    prompt: true
+  range:
+    value: null
+    long: null
+    units: self
+  uses:
+    value: 1
+    max: '1'
+    per: lr
+    recovery: ''
+    prompt: true
+  consume:
+    type: ''
+    target: Compendium.elkan5e.elkan5e-class-features.Item.W6yKtk7Svvy9dIq9
+    amount: -1
+    scale: false
+  ability: null
+  actionType: ''
+  attack:
+    bonus: ''
+    flat: false
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  enchantment: null
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  summons: null
+  type:
+    value: class
+    subtype: ''
+  prerequisites:
+    level: null
+  properties: []
+  requirements: Barbarian 1
+  recharge:
+    value: null
+    charged: false
+effects: []
+sort: 0
+ownership:
+  default: 0
+  WaiirYzq9mhRj9cS: 3
+flags:
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+    onUseMacroName: '[postActiveEffects]ItemMacro'
+  dae:
+    macro:
+      name: Rumination
+      img: icons/magic/control/silhouette-aura-energy.webp
+      type: script
+      scope: global
+      command: |-
+        (async () => {
+            const rageFeature = actor.items.find(item => item.name == "Rage");
+            const barbarian = actor.items.find(item => item.name == "Barbarian");
+            if (!rageFeature | !barbarian){
+                console.error("Missing the Barbarian class or Rage Feature")
+                return
+            }
+            const barbarianLevels = barbarian.system.levels
+            console.log(typeof barbarianLevels)
+            let calculate = 1
+            if(barbarianLevels>=17){
+                calculate  = 3
+            }
+            else if (barbarianLevels>=9){
+                calculate = 2
+            }
+            const currentValue = rageFeature.system.uses.value;
+            const maxValue = rageFeature.system.uses.max;
+            const newValue = (Math.min(currentValue+calculate,maxValue))
+            await rageFeature.update({"system.uses.value" : newValue});
+        })();
+      author: 3Yi0HjF4PKCA4vX0
+      ownership:
+        default: 3
+      _id: null
+      folder: null
+      sort: 0
+      flags: {}
+      _stats:
+        coreVersion: '12.328'
+        systemId: dnd5e
+        systemVersion: 3.2.1
+        createdTime: null
+        modifiedTime: null
+        lastModifiedBy: null
+        compendiumSource: null
+        duplicateSource: null
+_stats:
+  compendiumSource: null
+  duplicateSource: null
+  coreVersion: '12.328'
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  createdTime: 1717988097254
+  modifiedTime: 1720560590464
+  lastModifiedBy: 3Yi0HjF4PKCA4vX0
+_key: '!items!PyYbfCZyvOEdGrzF'
+

@@ -1,0 +1,474 @@
+name: Spirit Link
+type: spell
+img: icons/magic/control/energy-stream-link-white.webp
+effects:
+  - _id: uFwBXvesTDbyGT7k
+    flags:
+      dae:
+        transfer: false
+        stackable: none
+        specialDuration: []
+        macroRepeat: none
+        selfTarget: false
+        selfTargetAlways: false
+        durationExpression: ''
+        disableIncapacitated: false
+        dontApply: false
+        showIcon: false
+      ActiveAuras:
+        isAura: false
+        ignoreSelf: false
+        hidden: false
+        height: false
+        aura: None
+        radius: ''
+        alignment: ''
+        type: ''
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        nameOverride: ''
+        customCheck: ''
+        wallsBlock: system
+      core: {}
+    changes:
+      - key: system.traits.dr.all
+        mode: 0
+        value: 'true'
+        priority: 0
+      - key: flags.dae.onUpdateTarget
+        mode: 0
+        value: Warding Bond, ItemMacro, system.attributes.hp.value
+        priority: 20
+    disabled: false
+    duration:
+      startTime: null
+      seconds: 3600
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    tint: '#ffffff'
+    transfer: false
+    origin: null
+    name: Spirit Link
+    description: ''
+    statuses: []
+    _stats:
+      coreVersion: '12.325'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: 1717625973674
+      lastModifiedBy: WaiirYzq9mhRj9cS
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/magic/control/energy-stream-link-white.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!Yp0dI1hIN0FPMGdH.uFwBXvesTDbyGT7k'
+folder: 6J3i75lfD1J0xYwA
+flags:
+  dynamiceffects:
+    equipActive: true
+    alwaysActive: false
+    effects:
+      - modSpecKey: data.attributes.ac.value
+        value: '1'
+        mode: +
+        targetSpecific: false
+        id: 1
+        itemId: IMBPFYUMfvSlvnlM
+        active: true
+        _targets: []
+        label: Attributes Armor Class
+      - modSpecKey: data.traits.dr.all
+        value: '0'
+        mode: +
+        targetSpecific: false
+        id: 2
+        itemId: IMBPFYUMfvSlvnlM
+        active: true
+        _targets: []
+        label: Traits Damage Resistance All
+      - modSpecKey: data.bonuses.abilities.save
+        value: '1'
+        mode: +
+        targetSpecific: false
+        id: 3
+        itemId: IMBPFYUMfvSlvnlM
+        active: true
+        _targets: []
+  dae:
+    activeEquipped: false
+    alwaysActive: false
+  itemacro:
+    macro:
+      _data:
+        name: Warding Bond
+        type: script
+        scope: global
+        command: >-
+          //DAE Macro Execute, Effect Value = "Macro Name" @target @item
+
+          const lastArg = args[args.length - 1];
+
+          let tactor;
+
+          if (lastArg.tokenId) tactor =
+          canvas.tokens.get(lastArg.tokenId).actor;
+
+          else tactor = game.actors.get(lastArg.actorId);
+
+          const target = canvas.tokens.get(lastArg.tokenId)
+
+
+          const DAEItem = lastArg.efData.flags.dae.itemData
+
+
+          let caster = canvas.tokens.placeables.find(token =>
+          token?.actor?.items.get(DAEItem._id) != null)
+
+
+          if (args[0] === "on") {
+              await DAE.setFlag(tactor, "WardingBondIds", {
+                  tokenID: tactor.id,
+                  casterID: caster.actor.id
+              })
+              SetWardingBondHook(target)
+
+          }
+
+
+          async function SetWardingBondHook(target) {
+              const hookId = Hooks.on("preUpdateActor", async (actor, update) => {
+                  let flag = await DAE.getFlag(tactor, "WardingBondIds")
+                  if (flag.tokenID !== actor.id) return
+                  if (!"actorData.data.attributes.hp" in update) return;
+                  let oldHP = actor.data.data.attributes.hp.value;
+                  let newHP = getProperty(update, "data.attributes.hp.value");
+                  let hpChange = oldHP - newHP
+                  if (hpChange > 0 && typeof hpChange === "number") {
+                      let caster = game.actors.get(flag.casterID).getActiveTokens()[0]
+                      caster.actor.applyDamage(hpChange)
+                  }
+              })
+              DAE.setFlag(tactor, "WardingBondHook", hookId)
+              
+          }
+
+
+          async function RemoveHook() {
+              let flag = await DAE.getFlag(tactor, 'WardingBondHook');
+              Hooks.off("preUpdateActor", flag);
+              await DAE.unsetFlag(tactor, "WardingBondHook");
+          }
+
+
+          if (args[0] === "off") {
+              RemoveHook()
+              await DAE.unsetFlag(tactor, "WardingBondIds");
+              console.log("Death Ward removed");
+          }
+
+
+          if (args[0] === "each") {
+              await RemoveHook()
+              await SetWardingBondHook()
+          }
+        author: E4BVikjIkVl2lL2j
+      data:
+        name: Warding Bond
+        type: script
+        scope: global
+        command: >-
+          //DAE Macro Execute, Effect Value = "Macro Name" @target @item
+
+          const lastArg = args[args.length - 1];
+
+          let tactor;
+
+          if (lastArg.tokenId) tactor =
+          canvas.tokens.get(lastArg.tokenId).actor;
+
+          else tactor = game.actors.get(lastArg.actorId);
+
+          const target = canvas.tokens.get(lastArg.tokenId)
+
+
+          const DAEItem = lastArg.efData.flags.dae.itemData
+
+
+          let caster = canvas.tokens.placeables.find(token =>
+          token?.actor?.items.get(DAEItem._id) != null)
+
+
+          if (args[0] === "on") {
+              await DAE.setFlag(tactor, "WardingBondIds", {
+                  tokenID: tactor.id,
+                  casterID: caster.actor.id
+              })
+              SetWardingBondHook(target)
+
+          }
+
+
+          async function SetWardingBondHook(target) {
+              const hookId = Hooks.on("preUpdateActor", async (actor, update) => {
+                  let flag = await DAE.getFlag(tactor, "WardingBondIds")
+                  if (flag.tokenID !== actor.id) return
+                  if (!"actorData.data.attributes.hp" in update) return;
+                  let oldHP = actor.data.data.attributes.hp.value;
+                  let newHP = getProperty(update, "data.attributes.hp.value");
+                  let hpChange = oldHP - newHP
+                  if (hpChange > 0 && typeof hpChange === "number") {
+                      let caster = game.actors.get(flag.casterID).getActiveTokens()[0]
+                      caster.actor.applyDamage(hpChange)
+                  }
+              })
+              DAE.setFlag(tactor, "WardingBondHook", hookId)
+              
+          }
+
+
+          async function RemoveHook() {
+              let flag = await DAE.getFlag(tactor, 'WardingBondHook');
+              Hooks.off("preUpdateActor", flag);
+              await DAE.unsetFlag(tactor, "WardingBondHook");
+          }
+
+
+          if (args[0] === "off") {
+              RemoveHook()
+              await DAE.unsetFlag(tactor, "WardingBondIds");
+              console.log("Death Ward removed");
+          }
+
+
+          if (args[0] === "each") {
+              await RemoveHook()
+              await SetWardingBondHook()
+          }
+        author: E4BVikjIkVl2lL2j
+      options: {}
+      apps: {}
+      compendium: null
+      name: Warding Bond
+      img: icons/magic/control/energy-stream-link-white.webp
+      type: script
+      scope: global
+      command: ''
+      author: 3Yi0HjF4PKCA4vX0
+      _id: null
+      folder: null
+      sort: 0
+      ownership:
+        default: 0
+      flags: {}
+      _stats:
+        systemId: null
+        systemVersion: null
+        coreVersion: null
+        createdTime: null
+        modifiedTime: null
+        lastModifiedBy: null
+  midi-qol:
+    onUseMacroName: ''
+    effectActivation: false
+    itemCondition: ''
+    reactionCondition: ''
+    otherCondition: ''
+    effectCondition: ''
+    rollAttackPerTarget: default
+  core: {}
+  betterRolls5e:
+    critRange:
+      type: String
+      value: null
+    critDamage:
+      type: String
+      value: ''
+    quickDesc:
+      type: Boolean
+      value: true
+      altValue: true
+    quickAttack:
+      type: Boolean
+      value: true
+      altValue: true
+    quickSave:
+      type: Boolean
+      value: true
+      altValue: true
+    quickDamage:
+      type: Array
+      value: []
+      altValue: []
+      context: []
+    quickVersatile:
+      type: Boolean
+      value: false
+      altValue: false
+    quickProperties:
+      type: Boolean
+      value: true
+      altValue: true
+    quickCharges:
+      type: Boolean
+      value:
+        use: false
+        resource: true
+      altValue:
+        use: false
+        resource: true
+    quickTemplate:
+      type: Boolean
+      value: true
+      altValue: true
+    quickOther:
+      type: Boolean
+      value: true
+      altValue: true
+      context: ''
+    quickFlavor:
+      type: Boolean
+      value: true
+      altValue: true
+    quickPrompt:
+      type: Boolean
+      value: false
+      altValue: false
+  midiProperties:
+    nodam: false
+    fulldam: false
+    halfdam: false
+    rollOther: false
+    critOther: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    toggleEffect: false
+    ignoreTotalCover: false
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    offHandWeapon: false
+    confirmTargets: default
+    noConcentrationCheck: false
+system:
+  description:
+    value: >-
+      <p><em>You slip a platinum ring onto two allies or reach out in the
+      direction of the two linked rings. You speak an old chant to bind their
+      souls together for a time. When one of them is injured, the spirit of the
+      other sacrifices their life force to share the
+      burden.</em></p><p><strong>Action</strong> - 2 Allies (30 ft.) - 2nd Level
+      (Abjuration) - VSM - 1 Hour</p><div class="rd__b  rd__b--3"><p><span
+      style="font-family:Signika, sans-serif"><strong
+      style="box-sizing:border-box;user-select:text;color:rgb(25, 24,
+      19);font-family:Signika,
+      sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;white-space:normal;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial">Materials:</strong>
+      You require a pair of
+      @UUID[Compendium.elkan5e.elkan5e-spells.Item.tU3np7ze5Y6YFx0K]{Platinum
+      Rings}, typically valued at 50 gold each.</span></p><p><span
+      style="font-family:Signika, sans-serif">Your targets must be wearing the
+      rings when you cast the spell. Normally this spell has a range of 30 ft.,
+      but if you touch two creatures while casting, you can slip the rings onto
+      them as part of casting this
+      spell.</span></p></div><p><strong>Buff</strong></p><p>A target cannot be
+      targeted by this spell if they are unwilling.</p><ul><li><p>While the two
+      targets chose are within 60 feet of each other they take half damage from
+      all sources, and the other linked creature takes the other half (which
+      cannot be reduced in any way).</p></li><li><p>The spell ends if either of
+      the targets drops to 0 hit points or if the targets become seperated by
+      more than 60 feet. Either of the linked creatures can dismiss the spell at
+      the start of their turn.</p></li></ul>
+    chat: ''
+    unidentified: ''
+  source:
+    custom: elkan5e.com/spells/spirit-link
+  activation:
+    type: action
+    cost: 1
+    condition: ''
+  duration:
+    value: '1'
+    units: hour
+  cover: null
+  crewed: false
+  target:
+    value: '2'
+    width: null
+    units: ''
+    type: ally
+  range:
+    value: 30
+    long: null
+    units: ft
+  uses:
+    value: 0
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: ''
+    amount: null
+  ability: ''
+  actionType: util
+  attackBonus: ''
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  level: 2
+  school: abj
+  components:
+    vocal: true
+    somatic: true
+    material: true
+    ritual: false
+    concentration: false
+  materials:
+    value: >-
+      A pair of platinum rings worth at least 50 gp each, which you and the
+      target must wear for the duration
+    consumed: false
+    cost: 100
+    supply: 0
+  preparation:
+    mode: prepared
+    prepared: true
+  scaling:
+    mode: none
+    formula: ''
+  properties:
+    - vocal
+    - somatic
+    - material
+ownership:
+  default: 0
+  VJURYym0JQByHBQL: 3
+  MKYWAnkTJr0gkDqT: 3
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  coreVersion: '12.327'
+  createdTime: 1685385301086
+  modifiedTime: 1718835889076
+  lastModifiedBy: vHqSHJMdmEO6Mk2C
+  compendiumSource: null
+  duplicateSource: null
+_id: Yp0dI1hIN0FPMGdH
+sort: 4000000
+_key: '!items!Yp0dI1hIN0FPMGdH'
+

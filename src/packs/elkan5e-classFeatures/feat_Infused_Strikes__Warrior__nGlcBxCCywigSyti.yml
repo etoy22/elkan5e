@@ -1,0 +1,162 @@
+name: Infused Strikes (Warrior)
+type: feat
+img: icons/weapons/clubs/club-spiked-glowing.webp
+system:
+  description:
+    value: >-
+      <p>When you hit a creature with a pact weapon, the creature takes extra
+      force damage equal to your charisma modifier (minimum 1). This invocation
+      cannot be taken at the same time as the Lifedrinker invocation from
+      baseline 5e rules.</p>
+    chat: ''
+    unidentified: ''
+  source:
+    custom: elkan5e.com/invocations/infused-strikes
+  activation:
+    type: ''
+    cost: 0
+    condition: ''
+  duration:
+    value: null
+    units: ''
+  cover: null
+  crewed: false
+  target:
+    value: null
+    width: null
+    units: ''
+    type: ''
+  range:
+    value: null
+    long: null
+    units: ''
+  uses:
+    value: null
+    max: ''
+    per: null
+    recovery: ''
+  consume:
+    type: ''
+    target: null
+    amount: null
+  ability: null
+  actionType: ''
+  attackBonus: 0
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  type:
+    value: class
+    subtype: eldritchInvocation
+  requirements: Warlock 12, Pact of the Warrior
+  recharge:
+    value: null
+    charged: false
+  properties:
+    - mgc
+  prerequisites:
+    level: 12
+effects:
+  - changes:
+      - key: system.bonuses.mwak.damage
+        mode: 2
+        value: +max(1,@abilities.cha.mod)[Force]
+        priority: 20
+      - key: system.bonuses.rwak.damage
+        mode: 2
+        value: +max(1,@abilities.cha.mod)[Force]
+        priority: 20
+    transfer: false
+    _id: rmLq9V32XACj432o
+    disabled: false
+    duration:
+      startTime: null
+      seconds: null
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    origin: null
+    tint: '#ffffff'
+    flags:
+      dae:
+        selfTarget: false
+        selfTargetAlways: false
+        stackable: none
+        durationExpression: ''
+        specialDuration: []
+      core:
+        statusId: ''
+      ActiveAuras:
+        isAura: false
+        aura: None
+        radius: null
+        alignment: ''
+        type: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    name: 'Invocation: Infused Strikes'
+    img: icons/weapons/clubs/club-spiked-glowing.webp
+    type: base
+    system: {}
+    description: ''
+    statuses: []
+    sort: 0
+    _key: '!items.effects!nGlcBxCCywigSyti.rmLq9V32XACj432o'
+flags:
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  coreVersion: '12.328'
+  createdTime: 1672777521589
+  modifiedTime: 1720049818666
+  lastModifiedBy: V019W60xZMZmeqbA
+  compendiumSource: null
+  duplicateSource: null
+_id: nGlcBxCCywigSyti
+folder: jI3cppxSTQdaGwta
+sort: 100000
+ownership:
+  default: 0
+  SMzzktN48GxcmwJd: 3
+_key: '!items!nGlcBxCCywigSyti'
+

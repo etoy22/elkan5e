@@ -1,0 +1,164 @@
+folder: OC0XZyjIvqTz8IUW
+name: Mark of Affliction (Ranger)
+type: feat
+_id: v4I2jKOQ4pCIetja
+img: icons/skills/toxins/symbol-poison-drop-skull-green.webp
+system:
+  description:
+    value: "<p><strong>Bonus Action</strong>\_- Self - 1 Minute - Magical</p><p>Using this ability consumes a use of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.HPrjgPXLsDRBbfsD]{Mark for Death}. You cannot use this ability alongside Mark for Death or any other ranger mark.</p><p>While you use the Mark of Affliction, once on each of your turns, when you hit a creature with a weapon attack or damage a creature with a ranger spell, you can attempt to poison them with your magic. This ability ends early if you become\_incapacitated.</p><p><strong>Constitution Saving Throw</strong></p><p><strong>Failure</strong>: Target is &amp;reference[poisoned] until this ability ends. Target rolls again at end of their turns, ending effect on success.</p><p><strong>Success</strong>:\_No effect.</p>"
+    chat: ''
+  source:
+    custom: elkan5e.com/feats/mark-of-affliction
+  activation:
+    type: bonus
+    cost: 1
+    condition: ''
+  duration:
+    value: ''
+    units: ''
+  cover: null
+  crewed: false
+  target:
+    value: null
+    width: null
+    units: null
+    type: self
+    prompt: true
+  range:
+    value: null
+    long: null
+    units: self
+  uses:
+    value: null
+    max: ''
+    per: null
+    recovery: ''
+    prompt: true
+  consume:
+    type: charges
+    target: Compendium.elkan5e.elkan5e-class-features.Item.HPrjgPXLsDRBbfsD
+    amount: 1
+    scale: false
+  ability: null
+  actionType: ''
+  attack:
+    bonus: ''
+    flat: false
+  chatFlavor: ''
+  critical:
+    threshold: null
+    damage: ''
+  damage:
+    parts: []
+    versatile: ''
+  formula: ''
+  save:
+    ability: ''
+    dc: null
+    scaling: spell
+  summons: null
+  type:
+    value: feat
+    subtype: ''
+  properties:
+    - mgc
+  requirements: Feat (Ranger Level 4)
+  recharge:
+    value: null
+    charged: false
+  prerequisites:
+    level: 4
+effects:
+  - name: Mark of Affliction (Grants Poison)
+    changes:
+      - key: macro.createItem
+        mode: 0
+        value: Compendium.elkan5e.elkan-5e-feats.Item.Kb50Xn83LKmo9PB0
+        priority: 20
+    transfer: false
+    _id: 8e1fUpb3psM0UzkV
+    disabled: false
+    duration:
+      startTime: null
+      seconds: 60
+      combat: null
+      rounds: null
+      turns: null
+      startRound: null
+      startTurn: null
+    description: ''
+    origin: null
+    statuses: []
+    flags:
+      dae:
+        disableIncapacitated: true
+        selfTarget: false
+        selfTargetAlways: false
+        dontApply: false
+        stackable: noneName
+        showIcon: false
+        durationExpression: ''
+        macroRepeat: none
+        specialDuration: []
+      ActiveAuras:
+        isAura: false
+        aura: None
+        nameOverride: ''
+        radius: ''
+        alignment: ''
+        type: ''
+        customCheck: ''
+        ignoreSelf: false
+        height: false
+        hidden: false
+        displayTemp: false
+        hostile: false
+        onlyOnce: false
+        wallsBlock: system
+    tint: '#ffffff'
+    _stats:
+      coreVersion: '12.324'
+      systemId: null
+      systemVersion: null
+      createdTime: null
+      modifiedTime: null
+      lastModifiedBy: null
+      compendiumSource: null
+      duplicateSource: null
+    img: icons/skills/toxins/symbol-poison-drop-skull-green.webp
+    type: base
+    system: {}
+    sort: 0
+    _key: '!items.effects!v4I2jKOQ4pCIetja.8e1fUpb3psM0UzkV'
+sort: 0
+ownership:
+  default: 0
+  3Yi0HjF4PKCA4vX0: 3
+flags:
+  midiProperties:
+    confirmTargets: default
+    autoFailFriendly: false
+    autoSaveFriendly: false
+    critOther: false
+    offHandWeapon: false
+    magicdam: false
+    magiceffect: false
+    concentration: false
+    noConcentrationCheck: false
+    toggleEffect: false
+    ignoreTotalCover: false
+  midi-qol:
+    rollAttackPerTarget: default
+    itemCondition: ''
+    effectCondition: ''
+_stats:
+  systemId: dnd5e
+  systemVersion: 3.2.1
+  coreVersion: '12.328'
+  createdTime: 1715648089001
+  modifiedTime: 1720039719854
+  lastModifiedBy: V019W60xZMZmeqbA
+  compendiumSource: null
+  duplicateSource: null
+_key: '!items!v4I2jKOQ4pCIetja'
+
