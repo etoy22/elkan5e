@@ -1,5 +1,8 @@
 # Changelog
 
+# v1.12.7
+
+
 # v1.12.6
 ## Classes
 **[Bard](https://www.elkan5e.com/bard)**
