@@ -2,7 +2,7 @@
 
 # v1.12.7
 ## Classes
- **[Barbarian](https://www.elkan5e.com/barbarian)**
+**[Barbarian](https://www.elkan5e.com/barbarian)**
 - New Level 11 Feature Feral Strike
 - Re-scale rages
 - Remove unlimited rage
@@ -41,7 +41,7 @@
 	- [Haste](https://www.elkan5e.com/spells/haste) from druid spell list
 	- [Slow](https://www.elkan5e.com/spells/slow) from warlock spell list
 ## UI
-- Changed sheets for Spell Lists no longer using Class Spell List and 
+- Changed sheets for Spell Lists no longer using Class Spell List and School List
 
 
 # v1.12.6
