@@ -1,5 +1,49 @@
 # Changelog
 
+# v1.12.7
+## Classes
+**[Barbarian](https://www.elkan5e.com/barbarian)**
+- New Level 11 Feature Feral Strike
+- Re-scale rages
+- Remove unlimited rage
+- Move relentless rage to 15
+ 
+**[Rogue](https://www.elkan5e.com/rogue)**
+- Assasin:
+	- Finishing Blow now works on creatures with 10 hit points or fewer, regardless of rogue level.
+
+**[Warlock](https://www.elkan5e.com/warlock)**
+- Split Eldritch Recovery into its own feature for Pact of the Tome
+- Warlock Level 12 Invocation has been moved to Level 11
+- Added Thirsting Weapon ability to pact of the warrior
+- Fiend Patron:
+	- Redesigned Dark One's Blessing
+- Invocations:
+	- Added Eldritch Arcanum invocation for level 11 Pact of the Tome
+	- Removed Minions of Choas
+	 
+## Conditions
+- Drained condition
+	- The health reduction is now working for features
+## Feats
+- Edited text for Large Frame on small characters with the Laborer background
+- [Spirit Steed](<[Spirit Steed](https://www.elkan5e.com/feats/spirit-steed)>)
+	- Can now be taken as a level 1 paladin feat instead of level 4
+	- Grants some of the benefits of [Mounted Combatant](https://www.elkan5e.com/feats/mounted-combat) for the steed
+## Spells
+- Updated some of 3rd level spells
+- Renamed Vampiric Touch to [Life Drain](https://www.elkan5e.com/spells/life-drain) and updated it
+- New Spell [Sanctify](https://www.elkan5e.com/spells/sanctify)
+- [Daylight](https://www.elkan5e.com/spells/daylight) is now an illusion spell
+- [Invisibility](https://www.elkan5e.com/spells/invisibility) has its proper duration of 1 hour
+- Updated some level 4 and level 5 spells
+- Removed Spells
+	- [Haste](https://www.elkan5e.com/spells/haste) from druid spell list
+	- [Slow](https://www.elkan5e.com/spells/slow) from warlock spell list
+## UI
+- Changed sheets for Spell Lists no longer using Class Spell List and School List
+
+
 # v1.12.6
 ## Classes
 **[Bard](https://www.elkan5e.com/bard)**
