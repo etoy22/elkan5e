@@ -1,5 +1,9 @@
 # Changelog
 
+# v1.12.7.1
+## Bug Fixes
+- Quick bug fix to recomment code
+
 # v1.12.7
 ## Classes
 **[Barbarian](https://www.elkan5e.com/barbarian)**
