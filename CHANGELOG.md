@@ -1,5 +1,9 @@
 # Changelog
 
+# v1.12.7.2
+## Bug Fixes
+- Fixed Long rest not working
+
 # v1.12.7.1
 ## Bug Fixes
 - Quick bug fix to recomment code
