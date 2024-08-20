@@ -4,14 +4,6 @@ export function initWarlockSpellSlot (){
       img: 'icons/consumables/potions/bottle-round-corked-orante-red.webp'
     };
     CONFIG.DND5E.spellProgression.warlock = 'Elkan Warlock';
-    CONFIG.DND5E.spellPreparationModes.warlock = {
-      label: 'Elkan Warlock',
-      upcast: true,
-      order: 1,
-      cantrips: true,
-      prepares: true,
-      divisor:1
-    };
     Hooks.on('elkan5e.computeWarlockProgression', computeProgression);
     Hooks.on('elkan5e.prepareWarlockSlots', prepareSlots);
 }  
@@ -44,5 +36,5 @@ function prepareSlots(spells, actor, progression) {
         18: [2, 2, 2, 2, 2, 1, 1, 1, 1],
         19: [2, 2, 2, 2, 2, 1, 1, 1, 1]
     };
-    CONFIG.Actor.documentClass.prototype.prepareAltSlots.call(actor, spells, actor, progression, 'warlock', WARLOCK_SPELL_SLOT_TABLE);
+    CONFIG.Actor.documentClass.prototype.prepareAltSlots.call(actor, spells, actor, progression, 'Elkan Warlock', WARLOCK_SPELL_SLOT_TABLE);
 }
