@@ -20,6 +20,7 @@ export function ruleType(){
  * Adds new activation types that are used in Elkan 5e
  */
 export function activation(){
+    //TODO: CONFIG.DND5E.activityActivationTypes
     CONFIG.DND5E.abilityActivationTypes.duringattack = "As Part of a Weapon Attack"
     CONFIG.DND5E.abilityActivationTypes.shortrest = "During a Short Rest"
     CONFIG.DND5E.abilityActivationTypes.longrest = "During a Long Rest"
