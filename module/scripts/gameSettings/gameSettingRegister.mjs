@@ -19,8 +19,8 @@ export function gameSettingRegister(){
         choices: {
             "a":"Elkan Conditions",
             "b":"Elkan Conditions + extra condition icons",
-            "c":"SRD Conditions",
-            "d":"SRD Conditions + extra condition icons"
+            "c":"SRD Conditions + extra condition icons",
+            "d":"SRD Conditions"
         },
         restricted: true,
     });
