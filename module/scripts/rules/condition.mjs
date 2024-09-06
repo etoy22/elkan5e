@@ -492,6 +492,7 @@ export function icons(){
             ]
         });
 
+
         CONFIG.statusEffects.push({
             "id": "dazed",
             "name": "Dazed",
@@ -644,7 +645,55 @@ export function icons(){
                 }
             ]
         });
+
+        CONFIG.statusEffects.push({
+            "id":"advantage",
+            "name": "Advantage",
+            "icon":"icons/svg/upgrade.svg",
+            "changes": [
+                {
+                    "key": "flags.midi-qol.advantage.all",
+                    "mode": 5,
+                    "value": "1"
+                }
+            ]
+        });
+
+        CONFIG.statusEffects.push({
+            "id":"disadvantage",
+            "name": "Disdvantage",
+            "icon":"icons/svg/downgrade.svg",
+            "changes": [
+                {
+                    "key": "flags.midi-qol.disadvantage.all",
+                    "mode": 5,
+                    "value": "1"
+                }
+            ]
+        });
     }
+    //TODO: Don't think this does anything
+    // CONFIG.statusEffects.sort((a, b) => {
+    //     if (a.id === "advantage" && b.id === "disadvantage") {
+    //         return -1;
+    //     } 
+    //     else if (a.id === "disadvantage" && b.id === "advantage") {
+    //         return 1;
+    //     } 
+    //     else if (a.id === "advantage" || a.id === "disadvantage") {
+    //         return -1;
+    //     } 
+    //     else if (b.id === "advantage" || b.id === "disadvantage") {
+    //         return 1;
+    //     }
+    //     if (a.id === "dead") {
+    //         return -1;
+    //     }
+    //     if (b.id === "dead") {
+    //         return 1;
+    //     }
+    //     return 0;
+    // });
     
 
     //Remove the exhaustion effects 
@@ -655,18 +704,7 @@ export function icons(){
         CONFIG.DND5E.conditionEffects.noMovement.delete("exhaustion-5")
     }
     
-
-    CONFIG.statusEffects.sort((a, b) => {
-        if (a.id === "dead" && b.id !== "dead") {
-            return -1;
-        }
-        if (a.id !== "dead" && b.id === "dead") {
-            return 1;
-        }
-        return a.id.localeCompare(b.id);
-    });
     
-
     
 }
 
