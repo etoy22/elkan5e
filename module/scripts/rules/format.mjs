@@ -29,6 +29,26 @@ export function activation(){
     CONFIG.DND5E.staticAbilityActivationTypes.shortrest = "During a Short Rest"
     CONFIG.DND5E.staticAbilityActivationTypes.longrest = "During a Long Rest"
     CONFIG.DND5E.staticAbilityActivationTypes.nocost = "No Action Cost"
+    
+    //I think this is for the new version
+    CONFIG.DND5E.activityActivationTypes.duringattack = {
+        "label": "As Part of a Weapon Attack",
+        "group": "DND5E.ACTIVATION.Category.Standard"
+    }
+    CONFIG.DND5E.activityActivationTypes.shortrest = {
+        "label": "During a Short Rest",
+        "group": "DND5E.ACTIVATION.Category.Time",
+        "scalar": true
+    }
+    CONFIG.DND5E.activityActivationTypes.longrest = {
+        "label": "During a Long Rest",
+        "group": "DND5E.ACTIVATION.Category.Time",
+        "scalar": true
+    }
+    CONFIG.DND5E.activityActivationTypes.nocost = {
+        "label": "No Action Cost"
+    }
+
 }
 
 /*

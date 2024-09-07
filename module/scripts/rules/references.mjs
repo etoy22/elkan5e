@@ -3,6 +3,8 @@ export function references(){
     combatRef()
     conditionsRef()
     damageRef()
+    //TODO: Put it back in after merging with the main version
+    // spellSchools() 
 }
 
 export function skillsRef(){
@@ -134,4 +136,15 @@ export function damageRef(){
     CONFIG.DND5E.damageTypes.radiant.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.1iv5sIBnKoFJrhMH"
     CONFIG.DND5E.damageTypes.slashing.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.yxrHRnhVdSzKtzyZ"
     CONFIG.DND5E.damageTypes.thunder.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.kPmCUWoSWv3lEW3t"
+}
+
+export function spellSchools(){
+    CONFIG.DND5E.spellSchools.abj.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.VSLRbhCQjaWPWypa"
+    CONFIG.DND5E.spellSchools.con.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.D2ovyzg8yEFPPFRx"
+    CONFIG.DND5E.spellSchools.div.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.ppulpuqZdX9NWhDW"
+    CONFIG.DND5E.spellSchools.enc.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.HNaA5EPd5oQbjpCS"
+    CONFIG.DND5E.spellSchools.evo.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.59py3wilfbmPlYOp"
+    CONFIG.DND5E.spellSchools.ill.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.FXtdLPYZwF7jbrgX"
+    CONFIG.DND5E.spellSchools.nec.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.NIhSGdIUiNhPd11A"
+    CONFIG.DND5E.spellSchools.trs.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.unhaExaZiVj3FqEl"
 }
