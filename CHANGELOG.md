@@ -30,8 +30,7 @@
 	 
 **[Wizard](https://www.elkan5e.com/)**
 - Now get Calligrapher's Tools in addition to a tool of their choice
-## Equipment
-- 
+
 ## Feats
 - Move level 1 feats on to class instead of background
 - Updated [Scroll Expert](https://www.elkan5e.com/feats/scroll-expert) feat
