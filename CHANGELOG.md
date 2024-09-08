@@ -1,5 +1,72 @@
 # Changelog
 
+# v1.12.8
+## Classes
+ **[Barbarian](https://www.elkan5e.com/barbarian)**
+- Bloodrager
+	- Can now cast their spells when not raging
+	 
+**[Bard](https://www.elkan5e.com/bard)**
+- Lorekeeper
+	- Add the new Master Ritualist ability
+- Noise:
+	- Drown Out the Voices now synergizes with psychic damage
+
+**[Fighter](https://www.elkan5e.com/fighter)**
+- Spellsword
+	- Now granted [Combat Casting](<[Combat Casting](https://www.elkan5e.com/feats/combat-casting)>) Feat
+
+**[Rogue](https://www.elkan5e.com/rogue)**
+- Mystic Trickster
+	- Now granted [Combat Casting](<[Combat Casting](https://www.elkan5e.com/feats/combat-casting)>) Feat
+
+**[Warlock](https://www.elkan5e.com/warlock)**
+- Now back to being only one class to choose instead of three
+- This was done a while ago: Make Pact of the Chain Unique Find Familiar with Unique Creatures
+- Invocation
+	- [Book of Rituals](https://www.elkan5e.com/invocations/book-of-rituals) now allows the warlock to ritually cast scrolls and gives them two scrolls.
+	- [Eyes of the Rune Keeper](https://www.elkan5e.com/invocations/eyes-of-the-rune-keeper) now can see hidden message left by an [_Illusory Script_](https://www.elkan5e.com/spells/illusory-script)
+	- [One with Shadow](https://www.elkan5e.com/invocations/one-with-shadows) now properly synergizes with the hide action
+	 
+**[Wizard](https://www.elkan5e.com/)**
+- Now get Calligrapher's Tools in addition to a tool of their choice
+
+## Feats
+- Move level 1 feats on to class instead of background
+- Updated [Scroll Expert](https://www.elkan5e.com/feats/scroll-expert) feat
+- Adjusted [Combat Casting](https://www.elkan5e.com/feats/combat-casting) Feat
+- Fix [Brawler](https://www.elkan5e.com/feats/brawler) Links to use references
+- Wizard unique feat Ritualist renamed to [Master Ritualist](https://www.elkan5e.com/feats/master-ritualist) and reworked
+## Game Rules
+- New [Scroll Scribing](https://elkan5e.com/spellcasting#spell-scrolls) Rules
+- Readying a bonus action ability now costs a bonus action instead of an action
+- New Spellcasting ability text to reference a separate rules page
+- Update Warlock Invocation Rules Page
+## Spells
+- [Sanctify](https://www.elkan5e.com/spells/sanctify) is now a ritual spell
+- Massively improved [Rend Vigor](https://www.elkan5e.com/spells/rend-vigor) spell.
+- Ritual spells now have their ritual casting time listed in their spell descriptions
+- Revised
+	- [Hypnotic Pattern](https://www.elkan5e.com/spells/hypnotic-pattern)
+	- [Spirit Guardians](https://www.elkan5e.com/spells/spirit-guardians)
+	- [Arcane Lock](https://www.elkan5e.com/spells/arcane-lock)
+- New Phantasmal Spells
+	- [Thundering Omen](https://www.elkan5e.com/spells/thundering-omen)
+	- [Spectral Lance](https://www.elkan5e.com/spells/spectral-lance)
+	- [Spook](https://www.elkan5e.com/spells/spook)
+	- [Silent Cacophony](https://www.elkan5e.com/spells/silent-cacophony)
+	- [Pain Reflection](https://www.elkan5e.com/spells/pain-reflection)
+	- [Shadow Clone](https://www.elkan5e.com/spells/shadow-clone)
+## Bug Fixes
+- Eldrich Weapon now uses Charisma instead of Wisdom
+- Heroes Feast now does its maximum hit point gain
+- Hold Creature is no longer giving the restrained condition on being granted
+- Remove Feral Strike, giving the active effect of Feral Instinct
+- Necromancer now identifies as a Wizard (meaning that it will now actually register as a subclass of wizard)
+- Fixed combat maneuver list not appearing in level up for fighters
+- Inflict Wounds is now a constitution save.
+- Harm now has a range on the spell
+
 # v1.12.7.2
 ## Bug Fixes
 - Fixed Long rest not working
