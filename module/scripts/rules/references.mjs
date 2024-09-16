@@ -3,6 +3,7 @@ export function references(){
     combatRef()
     conditionsRef()
     damageRef()
+    spellCasting()
     //TODO: Put it back in after merging with the main version
     // spellSchools() 
 }
@@ -139,6 +140,7 @@ export function damageRef(){
 }
 
 export function spellSchools(){
+    console.log("Elkan 5e  |  Initializing Spell Schools References")
     CONFIG.DND5E.spellSchools.abj.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.VSLRbhCQjaWPWypa"
     CONFIG.DND5E.spellSchools.con.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.D2ovyzg8yEFPPFRx"
     CONFIG.DND5E.spellSchools.div.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.ppulpuqZdX9NWhDW"
@@ -147,4 +149,40 @@ export function spellSchools(){
     CONFIG.DND5E.spellSchools.ill.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.FXtdLPYZwF7jbrgX"
     CONFIG.DND5E.spellSchools.nec.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.NIhSGdIUiNhPd11A"
     CONFIG.DND5E.spellSchools.trs.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.unhaExaZiVj3FqEl"
+}
+
+
+export function spellCasting(){
+    console.log("Elkan 5e  |  Initializing Spell Casting References")
+    CONFIG.DND5E.rules.spellslots = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.RAatADW6Izlm9yu6"
+    CONFIG.DND5E.rules.spelllevel = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.RAatADW6Izlm9yu6"
+    CONFIG.DND5E.rules.cantrips = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.UnQ8KUMYK3a6BWwu"
+    CONFIG.DND5E.rules.upcasting = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.wvECxDLurbCDec4h"
+    CONFIG.DND5E.rules.castingatahigherlevel = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.wvECxDLurbCDec4h"
+    CONFIG.DND5E.rules.multiplespellsinaturn = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.Rxjj26a4VyVnZYk9"
+    CONFIG.DND5E.rules.duplicatemagicaleffects = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.uWa3L8lGJKgICYHt"
+    CONFIG.DND5E.rules.lineofsight = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.5V7gVZ9fe5AWawwb"
+    CONFIG.DND5E.rules.coverandwalls = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.2QBRvP0XH1PBboSs"
+    CONFIG.DND5E.rules.castinginarmor = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.kwjLwbgZuqdcj17X"
+    CONFIG.DND5E.rules.castingtime = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.1H5OBLq2k7EmNowe"
+    CONFIG.DND5E.rules.spelltargets = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.HHfnotH75EXQ9zsP"
+    CONFIG.DND5E.rules.spellrange = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.rM1U1uAq2GD0ls8a"
+    CONFIG.DND5E.rules.verbal = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.wvyS2GRHioSYrMW0"
+    CONFIG.DND5E.rules.spellduration = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.KywepPZfytUpWKql"
+    CONFIG.DND5E.rules.illusoryimages = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.GtUH7c2Spk6XpU3B"
+    CONFIG.DND5E.rules.knownspells = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.qUZNQFDTomNDA9bv"
+    CONFIG.DND5E.rules.preparedspells = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.tvQAz6EC8cGVKRYi"
+    CONFIG.DND5E.rules.abilityspells = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.arD4KLvgCPbi1Pl7"
+    CONFIG.DND5E.rules.focusspells = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.R25K8TvAPK3c4ywr"
+    CONFIG.DND5E.rules.spellscroll = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.R25K8TvAPK3c4ywr"
+
+
+    // Changing the properies in itemProperties
+    CONFIG.DND5E.itemProperties.concentration.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.4ZOHN6tGvj54J6Kv"
+    CONFIG.DND5E.itemProperties.material.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.gdVkgCiREuukVhLb"
+    CONFIG.DND5E.itemProperties.ritual.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.CMI1OFzBkvjEmlj7"
+    CONFIG.DND5E.itemProperties.vocal.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.wvyS2GRHioSYrMW0"
+    CONFIG.DND5E.itemProperties.somatic.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.ooFAPmKTS7Cd6YXp"
+
+
 }
