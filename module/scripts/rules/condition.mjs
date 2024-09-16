@@ -145,7 +145,38 @@ export function icons(){
     CONFIG.statusEffects.find(effect => effect.id === "stunned").img= "modules/elkan5e/icons/stunned.svg"
     CONFIG.statusEffects.find(effect => effect.id === "unconscious").img= "modules/elkan5e/icons/unconscious.svg"
     CONFIG.statusEffects.find(effect => effect.id === "silenced").img="modules/elkan5e/icons/silenced.svg"
+    CONFIG.statusEffects.find(effect => effect.id === "coverHalf").img= "modules/elkan5e/icons/cover-half.svg"
+    CONFIG.statusEffects.find(effect => effect.id === "coverThreeQuarters").img= "modules/elkan5e/icons/cover-three-quarters.svg"
     
+    
+    
+    CONFIG.statusEffects.find(effect => effect.id === "coverHalf").changes = [
+        {
+            "key": "system.abilities.dex.bonuses.save",
+            "mode": 2,
+            "value": "+2"
+        },
+        {
+            "key": "system.attributes.ac.bonus",
+            "mode": 2,
+            "value": "+2"
+        }
+    ]
+    
+    CONFIG.statusEffects.find(effect => effect.id === "coverThreeQuarters").changes = [
+        {
+            "key": "system.abilities.dex.bonuses.save",
+            "mode": 2,
+            "value": "+5"
+        },
+        {
+            "key": "system.attributes.ac.bonus",
+            "mode": 2,
+            "value": "+5"
+        }
+    ]
+    // CONFIG.statusEffects.find(effect => effect.id === "coverTotal").img= ""
+
     // //Removing Unused Conditions
     if (conditions == "a" || conditions == "d"){
         console.log("Elkan 5e  |  Removing unused conditions")
@@ -424,49 +455,9 @@ export function icons(){
         }
     }
 
+    
     if(conditions == "a" || conditions == "b"){
-        // Adding New Conditions
         console.log("Elkan 5e  |  Adding new conditions")
-        CONFIG.statusEffects.push({
-            "id": "coverhalf",
-            "name": "Half Cover",
-            "_id": "dnd5ecoverhalf00",
-            "icon": "modules/elkan5e/icons/cover-half.svg",
-            "reference": "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
-            "changes": [
-                {
-                    "key": "system.abilities.dex.bonuses.save",
-                    "mode": 2,
-                    "value": "+2"
-                },
-                {
-                    "key": "system.attributes.ac.bonus",
-                    "mode": 2,
-                    "value": "+2"
-                }
-            ]
-        });
-
-        CONFIG.statusEffects.push({
-            "id": "coverthreequarters",
-            "name": "Three Quarrters Cover",
-            "_id": "dnd5ecoverthreec",
-            "icon": "modules/elkan5e/icons/cover-three-quarters.svg",
-            "reference": "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
-            "changes": [
-                {
-                "key": "system.abilities.dex.bonuses.save",
-                "mode": 2,
-                "value": "+5"
-                },
-                {
-                "key": "system.attributes.ac.bonus",
-                "mode": 2,
-                "value": "+5"
-                }
-            ]
-        });
-
         CONFIG.statusEffects.push({
             "id": "confused",
             "name": "Confused",
@@ -699,6 +690,7 @@ export function icons(){
     //Remove the exhaustion effects 
     // TODO: Add exhaustion 1 and 3 when they are added
     if (!exhaustion){
+        console.log("Elkan 5e  |  Removing Exhaustion Effects")
         CONFIG.DND5E.conditionEffects.halfMovement.delete("exhaustion-2")
         CONFIG.DND5E.conditionEffects.halfHealth.delete("exhaustion-4")
         CONFIG.DND5E.conditionEffects.noMovement.delete("exhaustion-5")

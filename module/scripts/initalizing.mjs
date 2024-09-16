@@ -9,7 +9,7 @@ import { references } from "./rules/references.mjs";
 
 
 export function init(){
-    console.log("Elkan 5e | Init")
+    references()
     tools();
     conditions();
     weapons();
@@ -17,7 +17,7 @@ export function init(){
     language();
     icons()
     formating()
-    references()
+    console.log("Elkan 5e  |  Done Initalizing")
     // TODO: the following below
     // speed()
 } 
