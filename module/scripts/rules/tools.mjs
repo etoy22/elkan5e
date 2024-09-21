@@ -14,7 +14,7 @@ export function tools(){
     
     //Artist's Tools
     console.log("Elkan 5e  |  Adding Artist's Tools")
-    CONFIG.DND5E.tools.painter.id =  "Compendium.elkan5e.elkan5e-mundane-items.Item.qZe6ua1j3TtX3QGv"
+    // CONFIG.DND5E.tools.painter.id =  "Compendium.elkan5e.elkan5e-mundane-items.Item.qZe6ua1j3TtX3QGv"
     // CONFIG.DND5E.tools.sculpt = {"ability": "dex", "id": "Compendium.elkan5e.elkan5e-mundane-items.Item.6x1yyzDnWGRNRwJD"}
     
     // //Crafting Supplies
