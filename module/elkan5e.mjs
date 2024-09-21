@@ -26,6 +26,7 @@ import { initWarlockSpellSlot } from "./scripts/classes/warlock.mjs";
 //     [2, 2, 2, 2, 2, 2, 2, 1, 1]
 // ]
 
+
 Hooks.once("init", () => {
     console.log("Elkan 5e  |  Initializing Elkan 5e")
     gameSettingRegister()
