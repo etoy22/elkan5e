@@ -3,23 +3,22 @@ import json
 
 # Define the folder containing the JSON files
 folder_paths = [
-    'src\packs\elkan-5e-ancestries', 
+    'src\packs\elkan5e-ancestries', 
     'src\packs\elkan5e-backgrounds', 
     'src\packs\elkan5e-class', 
-    'src\packs\elkan5e-classFeatures', 
-    'src\packs\elkan-5e-creature-features', 
+    'src\packs\elkan5e-class-features', 
+    'src\packs\elkan5e-creature-features', 
     'src\packs\elkan5e-creatures', 
     'src\packs\elkan5e-equipment', 
-    'src\packs\elkan-5e-feats', 
+    'src\packs\elkan5e-feats', 
     'src\packs\elkan5e-lore', 
     'src\packs\elkan5e-macros', 
     'src\packs\elkan5e-magic-items', 
-    'src\packs\elkan5e-mundane-items', 
     'src\packs\elkan5e-roll-tables', 
     'src\packs\elkan5e-rules', 
     'src\packs\elkan5e-spells', 
     'src\packs\elkan5e-subclass', 
-    'src\packs\elkan-5e-summoned-creatures'   
+    'src\packs\elkan5e-summoned-creatures'   
 ]
 i = 0
 # Loop through every file in the folder

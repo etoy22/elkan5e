@@ -14,8 +14,8 @@ export function armor(){
     }
 
     //Add List
-    CONFIG.DND5E.shieldIds.large = "elkan5e.elkan5e-mundane-items.AENiTUeluTRiFzRz"
-    CONFIG.DND5E.shieldIds.small = "elkan5e.elkan5e-mundane-items.OE836KUoJiAsG0IA"
+    CONFIG.DND5E.shieldIds.large = "elkan5e.elkan5e-equipment.AENiTUeluTRiFzRz"
+    CONFIG.DND5E.shieldIds.small = "elkan5e.elkan5e-equipment.OE836KUoJiAsG0IA"
 
     if (dragon){
         CONFIG.DND5E.armorClasses.draconic.formula = "14 + @abilities.dex.mod"
