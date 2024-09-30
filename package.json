@@ -5,9 +5,14 @@
   "main": "index.js",
   "scripts": {
     "unpack-all": "fvtt package unpack elkan-5e-ancestries && fvtt package unpack elkan5e-backgrounds && fvtt package unpack elkan5e-class && fvtt package unpack elkan5e-classFeatures && fvtt package unpack elkan-5e-creature-features && fvtt package unpack elkan5e-creatures && fvtt package unpack elkan5e-equipment && fvtt package unpack elkan-5e-feats && fvtt package unpack elkan5e-lore && fvtt package unpack elkan5e-macros && fvtt package unpack elkan5e-magic-items && fvtt package unpack elkan5e-mundane-items && fvtt package unpack elkan5e-roll-tables && fvtt package unpack elkan5e-rules && fvtt package unpack elkan5e-spells && fvtt package unpack elkan5e-subclass && fvtt package unpack elkan-5e-summoned-creatures",
-    "pack-all": "fvtt package pack elkan-5e-ancestries && fvtt package pack elkan5e-backgrounds && fvtt package pack elkan5e-class && fvtt package pack elkan5e-classFeatures && fvtt package pack elkan-5e-creature-features && fvtt package pack elkan5e-creatures && fvtt package pack elkan5e-equipment && fvtt package pack elkan-5e-feats && fvtt package pack elkan5e-lore && fvtt package pack elkan5e-macros && fvtt package pack elkan5e-magic-items && fvtt package pack elkan5e-mundane-items && fvtt package pack elkan5e-roll-tables && fvtt package pack elkan5e-rules && fvtt package pack elkan5e-spells && fvtt package pack elkan5e-subclass && fvtt package pack elkan-5e-summoned-creatures"
+    "pack-all": "fvtt package pack elkan-5e-ancestries && fvtt package pack elkan5e-backgrounds && fvtt package pack elkan5e-class && fvtt package pack elkan5e-classFeatures && fvtt package pack elkan-5e-creature-features && fvtt package pack elkan5e-creatures && fvtt package pack elkan5e-equipment && fvtt package pack elkan-5e-feats && fvtt package pack elkan5e-lore && fvtt package pack elkan5e-macros && fvtt package pack elkan5e-magic-items && fvtt package pack elkan5e-mundane-items && fvtt package pack elkan5e-roll-tables && fvtt package pack elkan5e-rules && fvtt package pack elkan5e-spells && fvtt package pack elkan5e-subclass && fvtt package pack elkan-5e-summoned-creatures",
+    "pushLDBtoJSON": "node ./module/pushLDBtoJSON.mjs",
+    "pullJSONtoLDB": "node ./module/pullJSONtoLDB.mjs"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "@foundryvtt/foundryvtt-cli": "^1.0.3"
+  }
 }
