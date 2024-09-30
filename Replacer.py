@@ -2,18 +2,14 @@ import os
 import json
 
 def replace_in_json(obj, target, replacement):
-    # If the object is a dictionary, we need to iterate over its keys and values
-    if isinstance(obj, dict):
-        return {key: replace_in_json(value, target, replacement) for key, value in obj.items()}
-    # If it's a list, iterate over each item
-    elif isinstance(obj, list):
-        return [replace_in_json(item, target, replacement) for item in obj]
-    # If it's a string, perform the specific word replacement
-    elif isinstance(obj, str):
-        return obj.replace(target, replacement)
-    # Otherwise, return the object as is (it might be an int, float, etc.)
-    else:
-        return obj
+    # Convert the object to a JSON string
+    json_str = json.dumps(obj)
+    
+    # Replace the target with the replacement in the string
+    modified_str = json_str.replace(target, replacement)
+    
+    # Convert the modified string back to a JSON object
+    return json.loads(modified_str)
 
 # Define the folder containing the JSON files
 folder_paths = [
@@ -36,20 +32,39 @@ folder_paths = [
 ]
 i = 0
 # Loop through every file in the folder
+
 for folder_path in folder_paths:
+    if not os.path.exists(folder_path):
+        print(f"Folder does not exist: {folder_path}")
+        continue
+    
     for filename in os.listdir(folder_path):
         if filename.endswith('.json'):
             file_path = os.path.join(folder_path, filename)
             
             # Load the JSON file
-            with open(file_path, 'r', encoding='utf-8') as file:
-                data = json.load(file)
-            modified_data = replace_in_json(data, '', '')
+            try:
+                with open(file_path, 'r', encoding='utf-8') as file:
+                    data = json.load(file)
+            except Exception as e:
+                print(f"Error reading {file_path}: {e}")
+                continue
+            
+            # Replace all occurrences in JSON using the modified function
+            mod = replace_in_json(data, 'elkan-5e-ancestries', 'elkan5e-ancestries')
+            mod2 = replace_in_json(mod, 'elkan-5e-creature-features', 'elkan5e-creature-features')
+            mod3 = replace_in_json(mod2, 'elkan-5e-feats', 'elkan5e-feats')
+            mod4 = replace_in_json(mod3, 'elkan-5e-summoned-creatures', 'elkan5e-summoned-creatures')
+            mod5 = replace_in_json(mod4, 'elkan5e-mundane-items', 'elkan5e-equipment')
+            modified_data = mod5
 
-            with open(file_path, 'w') as file:
-                json.dump(data, file, indent=4)
-
-            print(f'Processed file: {filename}')
-            i+= 1
+            # Write the modified data back to the file
+            try:
+                with open(file_path, 'w', encoding='utf-8') as file:
+                    json.dump(modified_data, file, indent=4)
+                print(f'Processed file: {filename}')
+                i += 1
+            except Exception as e:
+                print(f"Error writing to {file_path}: {e}")
 
 print("Gone through", i, "files")
