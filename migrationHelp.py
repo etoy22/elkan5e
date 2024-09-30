@@ -3,23 +3,23 @@ import json
 
 # Define the folder containing the JSON files
 folder_paths = [
-    'packs\elkan-5e-ancestries\_source', 
-    'packs\elkan5e-backgrounds\_source', 
-    'packs\elkan5e-class\_source', 
-    'packs\elkan5e-classFeatures\_source', 
-    'packs\elkan-5e-creature-features\_source', 
-    'packs\elkan5e-creatures\_source', 
-    'packs\elkan5e-equipment\_source', 
-    'packs\elkan-5e-feats\_source', 
-    'packs\elkan5e-lore\_source', 
-    'packs\elkan5e-macros\_source', 
-    'packs\elkan5e-magic-items\_source', 
-    'packs\elkan5e-mundane-items\_source', 
-    'packs\elkan5e-roll-tables\_source', 
-    'packs\elkan5e-rules\_source', 
-    'packs\elkan5e-spells\_source', 
-    'packs\elkan5e-subclass\_source', 
-    'packs\elkan-5e-summoned-creatures\_source'   
+    'src\packs\elkan-5e-ancestries', 
+    'src\packs\elkan5e-backgrounds', 
+    'src\packs\elkan5e-class', 
+    'src\packs\elkan5e-classFeatures', 
+    'src\packs\elkan-5e-creature-features', 
+    'src\packs\elkan5e-creatures', 
+    'src\packs\elkan5e-equipment', 
+    'src\packs\elkan-5e-feats', 
+    'src\packs\elkan5e-lore', 
+    'src\packs\elkan5e-macros', 
+    'src\packs\elkan5e-magic-items', 
+    'src\packs\elkan5e-mundane-items', 
+    'src\packs\elkan5e-roll-tables', 
+    'src\packs\elkan5e-rules', 
+    'src\packs\elkan5e-spells', 
+    'src\packs\elkan5e-subclass', 
+    'src\packs\elkan-5e-summoned-creatures'   
 ]
 i = 0
 # Loop through every file in the folder
