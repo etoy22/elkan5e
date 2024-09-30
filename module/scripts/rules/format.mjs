@@ -93,5 +93,5 @@ export function sheets(){
     CONFIG.DND5E.sourcePacks.RACES = "elkan5e.elkan-5e-ancestries"
     
     // Below breaks everything
-    // CONFIG.DND5E.sourcePacks.ITEMS = "elkan5e.elkan5e-mundane-items"
+    // CONFIG.DND5E.sourcePacks.ITEMS = "elkan5e.elkan5e-equipment"
 }
