@@ -539,7 +539,7 @@ export function icons(){
                 }
             ]
         });
-
+        
         CONFIG.statusEffects.push({
             "id":"obscuredheavily",
             "name": "Heavily Obscured",
@@ -589,7 +589,7 @@ export function icons(){
             "reference":"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.SthB8javJuFySiBg",
             "icon":"modules/elkan5e/icons/siphoned.svg"
         });
-        
+
         CONFIG.statusEffects.push({
             "id":"slowed",
             "name": "Slowed",
@@ -724,6 +724,7 @@ export function dwarfResil(){
 }
 
 /**
+ * TODO: Add Functionality
  * Adds functionality to Sturdy to give advantage on saves via prone.   
  */
 export function sturdy(){
