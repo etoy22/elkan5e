@@ -35,9 +35,7 @@ export function gameSettingRegister(){
         restricted: true,
         requiresReload: true,
     });
-
-    game
-
+    
     game.settings.register("elkan5e", "tools", {
         name: "elkan5e.tools.name",
         hint: "elkan5e.tools.hint",
@@ -81,5 +79,4 @@ export function gameSettingRegister(){
         type: Boolean,
         restricted: true,
     });
-
 }
