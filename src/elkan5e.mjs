@@ -1,7 +1,7 @@
-import { gameSettingRegister } from "./scripts/gameSettings/gameSettingRegister.mjs";
-import { startDialog } from "./scripts/gameSettings/startDialog.mjs";
-import { init } from "./scripts/initalizing.mjs";
-import { initWarlockSpellSlot } from "./scripts/classes/warlock.mjs";
+import { gameSettingRegister } from "./module/scripts/gameSettings/gameSettingRegister.mjs";
+import { startDialog } from "./module/scripts/gameSettings/startDialog.mjs";
+import { init } from "./module/scripts/initalizing.mjs";
+import { initWarlockSpellSlot } from "./module/scripts/classes/warlock.mjs";
 
 // CONFIG.elkan5e.WARLOCK_SPELL_SLOT_TABLE = [
 //     [2],
@@ -30,12 +30,21 @@ Hooks.once("init", () => {
     gameSettingRegister()
     init()
     initWarlockSpellSlot()
+    // const updateData = {
+    //     flags: {
+    //         elkan5e: {
+    //             "wildcast": 0
+    //         }
+    //     }
+    // }
+    // Actor.update(updateData)
     // game.system.config.characterFlags["wildcast"] = {
     //     name: "Wild Cast",
     //     hint: "Wild Cast",
+
     //     type: Boolean
     // };
-  
+    // game.settings.setFlag("elkan5e","")
 });
 
 Hooks.once('ready', async () => {
