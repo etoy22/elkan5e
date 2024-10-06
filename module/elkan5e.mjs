@@ -30,6 +30,12 @@ Hooks.once("init", () => {
     gameSettingRegister()
     init()
     initWarlockSpellSlot()
+    // game.system.config.characterFlags["wildcast"] = {
+    //     name: "Wild Cast",
+    //     hint: "Wild Cast",
+    //     type: Boolean
+    // };
+  
 });
 
 Hooks.once('ready', async () => {
