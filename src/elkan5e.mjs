@@ -1,7 +1,7 @@
-import { gameSettingRegister } from "./module/scripts/gameSettings/gameSettingRegister.mjs";
-import { startDialog } from "./module/scripts/gameSettings/startDialog.mjs";
-import { init } from "./module/scripts/initalizing.mjs";
-import { initWarlockSpellSlot } from "./module/scripts/classes/warlock.mjs";
+import { gameSettingRegister } from "./module/gameSettings/gameSettingRegister.mjs";
+import { startDialog } from "./module/gameSettings/startDialog.mjs";
+import { init } from "./module/initalizing.mjs";
+import { initWarlockSpellSlot } from "./module/classes/warlock.mjs";
 
 // CONFIG.elkan5e.WARLOCK_SPELL_SLOT_TABLE = [
 //     [2],
