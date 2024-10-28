@@ -1,0 +1,384 @@
+{
+    "folder": "OC0XZyjIvqTz8IUW",
+    "name": "Mark of Thorns (Ranger)",
+    "type": "feat",
+    "_id": "2F7ey4ojkStp5ry7",
+    "img": "icons/magic/nature/beam-hand-leaves-green.webp",
+    "system": {
+        "description": {
+            "value": "<p><strong>Bonus Action</strong> - 1 Ally (60 ft.) - 1 Minute - Magical</p><p>Using this ability consumes a use of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.HPrjgPXLsDRBbfsD]{Mark for Death}. You cannot use this ability alongside Mark for Death or any other ranger mark.</p><p><strong>Buff</strong></p><ul><li><p>You surround your target with magical thorns. Whenever your target is struck by a melee attack, their attacker takes [[/r 1d4 magical piercing]] damage*. This ability ends early if you become\u00a0&amp;reference[incapacitated].</p></li></ul><p><strong>Note: You'll need to manually deal damage using Mark of Thorns using the ranger who created it.</strong></p><p></p><p>*This extra damage increases as you gain ranger levels. The damage dealt by this ability is equal to your Mark for Death damage.</p>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "elkan5e.com/feats/mark-of-thorns",
+            "revision": 1,
+            "rules": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "license": ""
+        },
+        "uses": {
+            "max": "",
+            "spent": 0,
+            "recovery": []
+        },
+        "type": {
+            "value": "feat",
+            "subtype": ""
+        },
+        "properties": [
+            "mgc"
+        ],
+        "requirements": "Feat (Ranger Level 4)",
+        "prerequisites": {
+            "level": 4
+        },
+        "activities": {
+            "jFqX0fAy0WzrLTEq": {
+                "type": "utility",
+                "name": "Mark of Thorns (Uses)",
+                "sort": 0,
+                "activation": {
+                    "type": "special",
+                    "value": null,
+                    "override": false,
+                    "condition": ""
+                },
+                "consumption": {
+                    "scaling": {
+                        "allowed": false
+                    },
+                    "spellSlot": true,
+                    "targets": [
+                        {
+                            "type": "itemUses",
+                            "value": "1",
+                            "target": "Compendium.elkan5e.elkan5e-class-features.Item.HPrjgPXLsDRBbfsD",
+                            "scaling": {}
+                        }
+                    ]
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "minute",
+                    "concentration": false,
+                    "override": false,
+                    "value": "1"
+                },
+                "effects": [
+                    {
+                        "_id": "mtC9YRFZeGMdIpXp"
+                    },
+                    {
+                        "_id": "5wewm9mUphsdtJWZ"
+                    }
+                ],
+                "range": {
+                    "override": false,
+                    "units": "ft",
+                    "special": "",
+                    "value": "60"
+                },
+                "target": {
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft",
+                        "type": ""
+                    },
+                    "affects": {
+                        "choice": false,
+                        "count": "1",
+                        "type": "ally",
+                        "special": ""
+                    },
+                    "override": false,
+                    "prompt": true
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "roll": {
+                    "prompt": false,
+                    "visible": false,
+                    "formula": "",
+                    "name": ""
+                },
+                "_id": "jFqX0fAy0WzrLTEq",
+                "img": "",
+                "appliedEffects": [
+                    "5wewm9mUphsdtJWZ",
+                    "mtC9YRFZeGMdIpXp"
+                ]
+            },
+            "mk8Xj3iT4xYBA9Oq": {
+                "type": "damage",
+                "sort": 0,
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false,
+                    "condition": ""
+                },
+                "consumption": {
+                    "scaling": {
+                        "allowed": false
+                    },
+                    "spellSlot": true,
+                    "targets": []
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false,
+                    "units": "spec",
+                    "special": ""
+                },
+                "target": {
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft",
+                        "type": ""
+                    },
+                    "affects": {
+                        "choice": false,
+                        "count": "",
+                        "type": ""
+                    },
+                    "override": false,
+                    "prompt": true
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "damage": {
+                    "critical": {
+                        "allow": false
+                    },
+                    "parts": [
+                        {
+                            "custom": {
+                                "enabled": true,
+                                "formula": "@scale.ranger.mark-for-death"
+                            },
+                            "number": null,
+                            "denomination": 0,
+                            "bonus": "",
+                            "types": [
+                                "piercing"
+                            ],
+                            "scaling": {
+                                "number": 1
+                            }
+                        }
+                    ]
+                },
+                "name": "",
+                "_id": "mk8Xj3iT4xYBA9Oq"
+            }
+        },
+        "identifier": "",
+        "enchant": {}
+    },
+    "effects": [
+        {
+            "name": "Mark of Thorns (Caster)",
+            "changes": [],
+            "transfer": false,
+            "_id": "5wewm9mUphsdtJWZ",
+            "disabled": false,
+            "duration": {
+                "startTime": null,
+                "seconds": 60,
+                "combat": null,
+                "rounds": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null
+            },
+            "description": "",
+            "origin": null,
+            "statuses": [],
+            "flags": {
+                "dae": {
+                    "disableIncapacitated": false,
+                    "selfTarget": true,
+                    "selfTargetAlways": true,
+                    "dontApply": false,
+                    "stackable": "noneName",
+                    "showIcon": false,
+                    "durationExpression": "",
+                    "macroRepeat": "none",
+                    "specialDuration": [],
+                    "enableCondition": "",
+                    "disableCondition": ""
+                },
+                "ActiveAuras": {
+                    "isAura": false,
+                    "aura": "None",
+                    "nameOverride": "",
+                    "radius": "",
+                    "alignment": "",
+                    "type": "",
+                    "customCheck": "",
+                    "ignoreSelf": false,
+                    "height": false,
+                    "hidden": false,
+                    "displayTemp": false,
+                    "hostile": false,
+                    "onlyOnce": false,
+                    "wallsBlock": "system"
+                },
+                "core": {
+                    "overlay": false
+                }
+            },
+            "tint": "#ffffff",
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.0.2",
+                "createdTime": null,
+                "modifiedTime": null,
+                "lastModifiedBy": null
+            },
+            "img": "icons/magic/nature/beam-hand-leaves-green.webp",
+            "type": "base",
+            "system": {},
+            "sort": 0,
+            "_key": "!items.effects!2F7ey4ojkStp5ry7.5wewm9mUphsdtJWZ"
+        },
+        {
+            "origin": "Compendium.elkan5e.elkan5e-feats.Item.2F7ey4ojkStp5ry7",
+            "duration": {
+                "rounds": 1,
+                "startTime": null,
+                "seconds": 60,
+                "combat": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null
+            },
+            "disabled": false,
+            "name": "Mark of Thorns (Target)",
+            "_id": "mtC9YRFZeGMdIpXp",
+            "changes": [],
+            "description": "",
+            "transfer": false,
+            "statuses": [],
+            "flags": {
+                "dae": {
+                    "disableIncapacitated": true,
+                    "selfTarget": false,
+                    "selfTargetAlways": false,
+                    "dontApply": false,
+                    "stackable": "noneName",
+                    "showIcon": true,
+                    "durationExpression": "",
+                    "macroRepeat": "none",
+                    "specialDuration": [],
+                    "enableCondition": "",
+                    "disableCondition": ""
+                },
+                "ActiveAuras": {
+                    "isAura": false,
+                    "aura": "None",
+                    "nameOverride": "",
+                    "radius": "",
+                    "alignment": "",
+                    "type": "",
+                    "customCheck": "",
+                    "ignoreSelf": false,
+                    "height": false,
+                    "hidden": false,
+                    "displayTemp": false,
+                    "hostile": false,
+                    "onlyOnce": false,
+                    "wallsBlock": "system"
+                },
+                "core": {
+                    "overlay": false
+                }
+            },
+            "tint": "#ffffff",
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.0.2",
+                "createdTime": null,
+                "modifiedTime": 1728947364151,
+                "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+            },
+            "img": "icons/magic/nature/beam-hand-leaves-green.webp",
+            "type": "base",
+            "system": {},
+            "sort": 0,
+            "_key": "!items.effects!2F7ey4ojkStp5ry7.mtC9YRFZeGMdIpXp"
+        }
+    ],
+    "sort": 0,
+    "ownership": {
+        "default": 0,
+        "3Yi0HjF4PKCA4vX0": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "flags": {
+        "midiProperties": {
+            "confirmTargets": "default",
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "critOther": false,
+            "offHandWeapon": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "noConcentrationCheck": false,
+            "toggleEffect": false,
+            "ignoreTotalCover": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "midi-qol": {
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "effectCondition": "",
+            "removeAttackDamageButtons": "default",
+            "reactionCondition": ""
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            }
+        }
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.4",
+        "createdTime": 1726952213057,
+        "modifiedTime": 1728947327153,
+        "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+    },
+    "_key": "!items!2F7ey4ojkStp5ry7"
+}

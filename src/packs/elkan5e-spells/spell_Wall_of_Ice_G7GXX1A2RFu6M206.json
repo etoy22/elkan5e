@@ -1,0 +1,290 @@
+{
+    "name": "Wall of Ice",
+    "type": "spell",
+    "img": "icons/magic/water/barrier-ice-wall-snow.webp",
+    "effects": [],
+    "folder": "sDaRY0H81UTha6hq",
+    "flags": {
+        "core": {},
+        "midi-qol": {
+            "effectActivation": false,
+            "AoETargetType": "any",
+            "AoETargetTypeIncludeSelf": true,
+            "autoTarget": "default",
+            "rollAttackPerTarget": "default",
+            "removeAttackDamageButtons": "default",
+            "itemCondition": "",
+            "otherCondition": "",
+            "effectCondition": "",
+            "reactionCondition": ""
+        },
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "confirmTargets": "default",
+            "saveDamage": "default",
+            "bonusSaveDamage": "default",
+            "otherSaveDamage": "default",
+            "noConcentrationCheck": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedProperties": [
+                "vocal",
+                "somatic",
+                "material",
+                "concentration"
+            ]
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<p>You create a wall of ice on a solid surface within range. You can form it into a hemispherical dome or a sphere with a radius of up to 10 feet, or you can shape a flat surface made up of ten 10-foot-square panels. Each panel must be contiguous with another panel. In any form, the wall is 1 foot thick and lasts for the Duration.</p><p>If the wall cuts through a creature's space when it appears, the creature within its area is pushed to one side of the wall and must make a Dexterity saving throw. On a failed save, the creature takes 10d6 cold damage, or half as much damage on a successful save.</p><p>The wall is an object that can be damaged and thus breached. It has AC 12 and 30 hit points per 10-foot section, and it is vulnerable to fire damage. Reducing a 10-foot section of wall to 0 hit points destroys it and leaves behind a sheet of frigid air in the space the wall occupied. A creature moving through the sheet of frigid air for the first time on a turn must make a Constitution saving throw. That creature takes 5d6 cold damage on a failed save, or half as much damage on a successful one.</p><p></p><div class=\"rd__b  rd__b--3\"><div class=\"rd__b  rd__b--3\"><p>*<strong>Upcasting</strong>: Increase damage from the wall appearing by [[/damage 2d6 cold]]{2d6} and the damage from passing through the wall by [[/damage 1d6 cold]]{1d6} for each spell level above 6th.</p></div></div>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "Elkan 5e",
+            "revision": 1,
+            "rules": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "action",
+            "condition": "",
+            "value": 1
+        },
+        "duration": {
+            "value": "10",
+            "units": "minute"
+        },
+        "target": {
+            "affects": {
+                "choice": false,
+                "count": "",
+                "type": ""
+            },
+            "template": {
+                "units": "ft",
+                "width": "1",
+                "type": "wall",
+                "size": "10",
+                "contiguous": true,
+                "height": "10",
+                "count": "10"
+            }
+        },
+        "range": {
+            "value": "120",
+            "units": "ft",
+            "special": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "ability": "",
+        "level": 6,
+        "school": "evo",
+        "materials": {
+            "value": "A small piece of quartz",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": true
+        },
+        "properties": [
+            "vocal",
+            "somatic",
+            "material",
+            "concentration"
+        ],
+        "activities": {
+            "kfEJrfxSHSDZDBZ7": {
+                "type": "save",
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "damage": {
+                    "onSave": "half",
+                    "parts": [
+                        {
+                            "number": 10,
+                            "denomination": 6,
+                            "bonus": "",
+                            "types": [
+                                "cold"
+                            ],
+                            "custom": {
+                                "enabled": false,
+                                "formula": ""
+                            },
+                            "scaling": {
+                                "mode": "whole",
+                                "number": 2,
+                                "formula": ""
+                            }
+                        }
+                    ]
+                },
+                "save": {
+                    "ability": "dex",
+                    "dc": {
+                        "calculation": "spellcasting",
+                        "formula": ""
+                    }
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": []
+                },
+                "sort": 0,
+                "_id": "kfEJrfxSHSDZDBZ7"
+            },
+            "oHPYpYgNGRi2kueQ": {
+                "type": "damage",
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "damage": {
+                    "critical": {
+                        "allow": false,
+                        "bonus": ""
+                    },
+                    "parts": [
+                        {
+                            "number": 5,
+                            "denomination": 6,
+                            "bonus": "",
+                            "types": [],
+                            "custom": {
+                                "enabled": false,
+                                "formula": ""
+                            },
+                            "scaling": {
+                                "mode": "whole",
+                                "number": 2,
+                                "formula": ""
+                            }
+                        }
+                    ]
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": []
+                },
+                "sort": 0,
+                "_id": "oHPYpYgNGRi2kueQ"
+            }
+        },
+        "identifier": ""
+    },
+    "ownership": {
+        "default": 0,
+        "ymJDAw0PgXIWIHMH": 3,
+        "MKYWAnkTJr0gkDqT": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.4",
+        "createdTime": 1726952198973,
+        "modifiedTime": 1729565417567,
+        "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+    },
+    "_id": "G7GXX1A2RFu6M206",
+    "sort": 1100000,
+    "_key": "!items!G7GXX1A2RFu6M206"
+}

@@ -1,0 +1,278 @@
+{
+    "name": "Prismatic Spray",
+    "type": "spell",
+    "img": "icons/magic/sonic/projectile-sound-rings-wave.webp",
+    "effects": [],
+    "folder": "H799nI2ov6BcHwd6",
+    "flags": {
+        "midi-qol": {
+            "effectActivation": false,
+            "AoETargetType": "any",
+            "AoETargetTypeIncludeSelf": true,
+            "autoTarget": "default",
+            "rollAttackPerTarget": "default",
+            "removeAttackDamageButtons": "default",
+            "itemCondition": "",
+            "effectCondition": "",
+            "reactionCondition": "",
+            "otherCondition": ""
+        },
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "confirmTargets": "default",
+            "saveDamage": "default",
+            "bonusSaveDamage": "default",
+            "noConcentrationCheck": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "core": {},
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedProperties": [
+                "vocal",
+                "somatic"
+            ]
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<p>Eight multicolored rays of light flash from your hand. Each ray is a different color and has a different power and purpose. Each creature in a 60-foot cone must make a Dexterity saving throw. For each target, roll a d8 to determine which color ray affects it.</p>\n<ol>\n<li><strong>Red</strong>. The target takes 10d6 fire damage on a failed save, or half as much damage on a successful one.</li>\n<li><strong>Orange</strong>. The target takes 10d6 acid damage on a failed save, or half as much damage on a successful one.</li>\n<li><strong>Yellow</strong>. The target takes 10d6 lightning damage on a failed save, or half as much damage on a successful one.</li>\n<li><strong>Green</strong>. The target takes 10d6 poison damage on a failed save, or half as much damage on a successful one.</li>\n<li><strong>Blue</strong>. The target takes 10d6 cold damage on a failed save, or half as much damage on a successful one.</li>\n<li><strong>Indigo</strong>. On a failed save, the target is Restrained. It must then make a Constitution saving throw at the end of each of its turns. If it successfully saves three times, the spell ends. If it fails its save three times, it permanently turns to stone and is subjected to the Petrified condition. The successes and failures don't need to be consecutive; keep track of both until the target collects three of a kind.</li>\n<li><strong>Violet</strong>. On a failed save, the target is Blinded. It must then make a Wisdom saving throw at the start of your next turn. A successful save ends the blindness. If it fails that save, the creature is transported to another plane of existence of the DM's choosing and is no longer Blinded. (Typically, a creature that is on a plane that isn't its home plane is banished home, while other creatures are usually cast into the Astral or Ethereal planes.)</li>\n<li><strong>Special</strong>. The target is struck by two rays. Roll twice more, rerolling any 8.</li>\n</ol>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "Elkan 5e",
+            "revision": 1,
+            "rules": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "action",
+            "condition": "",
+            "value": 1
+        },
+        "duration": {
+            "value": "",
+            "units": "inst"
+        },
+        "target": {
+            "affects": {
+                "choice": false,
+                "count": "",
+                "type": ""
+            },
+            "template": {
+                "units": "ft",
+                "type": "cone",
+                "size": "60",
+                "contiguous": false,
+                "count": ""
+            }
+        },
+        "range": {
+            "units": "self",
+            "special": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "ability": "",
+        "level": 7,
+        "school": "evo",
+        "materials": {
+            "value": "",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": true
+        },
+        "properties": [
+            "vocal",
+            "somatic"
+        ],
+        "activities": {
+            "jeyjOQVp3TnItzW9": {
+                "type": "save",
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": false
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "damage": {
+                    "onSave": "half",
+                    "parts": [
+                        {
+                            "custom": {
+                                "enabled": false,
+                                "formula": ""
+                            },
+                            "number": 10,
+                            "denomination": 6,
+                            "bonus": "",
+                            "types": [
+                                "acid",
+                                "cold",
+                                "lightning",
+                                "fire",
+                                "poison"
+                            ],
+                            "scaling": {
+                                "mode": "",
+                                "number": 1
+                            }
+                        }
+                    ]
+                },
+                "save": {
+                    "ability": "dex",
+                    "dc": {
+                        "calculation": "spellcasting",
+                        "formula": ""
+                    }
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "sort": 0,
+                "_id": "jeyjOQVp3TnItzW9",
+                "name": "",
+                "img": "",
+                "appliedEffects": []
+            },
+            "HGUdlfcXvGYyz1WQ": {
+                "type": "utility",
+                "_id": "HGUdlfcXvGYyz1WQ",
+                "sort": 0,
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "scaling": {
+                        "allowed": false
+                    },
+                    "spellSlot": true,
+                    "targets": []
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false,
+                    "prompt": true
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "roll": {
+                    "prompt": false,
+                    "visible": true,
+                    "name": "Ray Choice",
+                    "formula": "1d8"
+                },
+                "useConditionText": "",
+                "forceDialog": false,
+                "effectConditionText": "",
+                "name": "Choose Ray",
+                "img": "",
+                "appliedEffects": []
+            }
+        },
+        "identifier": ""
+    },
+    "ownership": {
+        "default": 0,
+        "ymJDAw0PgXIWIHMH": 3,
+        "MKYWAnkTJr0gkDqT": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.4",
+        "createdTime": 1726952200296,
+        "modifiedTime": 1729563585593,
+        "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+    },
+    "_id": "MZIcL4XW7JTm2fjn",
+    "sort": 1200000,
+    "_key": "!items!MZIcL4XW7JTm2fjn"
+}

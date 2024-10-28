@@ -1,0 +1,217 @@
+{
+    "name": "Lightning Bolt",
+    "type": "spell",
+    "img": "icons/magic/lightning/bolt-blue.webp",
+    "effects": [],
+    "folder": "Tf2FNuyyu2gEaYOF",
+    "flags": {
+        "core": {},
+        "midi-qol": {
+            "effectActivation": false,
+            "AoETargetType": "any",
+            "AoETargetTypeIncludeSelf": true,
+            "autoTarget": "default",
+            "rollAttackPerTarget": "default",
+            "removeAttackDamageButtons": "default",
+            "itemCondition": "",
+            "effectCondition": "",
+            "reactionCondition": ""
+        },
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "confirmTargets": "default",
+            "saveDamage": "default",
+            "bonusSaveDamage": "default",
+            "noConcentrationCheck": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedProperties": [
+                "vocal",
+                "somatic",
+                "material"
+            ]
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<div class=\"rd__b  rd__b--3\"><p class=\"MsoBodyText\"><strong>Dexterity Save</strong></p><p class=\"MsoBodyText\">The lightning ignites flammable objects in the area that aren't being worn or carried, which take [[/r 1d10]] fire damage every round until extinguished as an action.</p><ul><li><p class=\"MsoBodyText\"><strong>Failure:</strong> [[/damage 8d6 lightning]] damage.*</p></li><li><p class=\"MsoBodyText\"><strong>Success:</strong> Half damage.</p></li></ul><p></p></div><div class=\"rd__b  rd__b--3\"><div class=\"rd__b  rd__b--3\"><p><span><strong style=\"font-weight:700\">*Upcasting</strong>: Increase damage by [[/damage 1d6 lightning]]{1d6}\u00a0for each spell level above 3rd.</span></p><p class=\"JDT-d xwmtH QGv3S DNLHv\" dir=\"auto\" id=\"viewer-f6jmp9907\"><span><em style=\"font-style:italic\">Some objects may be too large or flammable to be simply extinguished as an action, and will require creative solutions.</em></span></p></div></div>",
+            "chat": "<div class=\"rd__b  rd__b--3\"><p class=\"MsoBodyText\"><strong>Dexterity Save</strong></p><p class=\"MsoBodyText\">The lightning ignites flammable objects in the area that aren't being worn or carried, which take [[/r 1d10]] fire damage every round until extinguished as an action.</p><ul><li><p class=\"MsoBodyText\"><strong>Failure:</strong> [[/damage 8d6 lightning]] damage.*</p></li><li><p class=\"MsoBodyText\"><strong>Success:</strong> Half damage.</p></li></ul></div><div class=\"rd__b  rd__b--3\"><div class=\"rd__b  rd__b--3\"><p></p></div><div class=\"rd__b  rd__b--3\"><div class=\"rd__b  rd__b--3\"><p><span><strong style=\"font-weight:700\">*Upcasting</strong>: Increase damage by [[/damage 1d6 lightning]]{1d6}\u00a0for each spell level above 3rd.</span></p><p class=\"JDT-d xwmtH QGv3S DNLHv\" dir=\"auto\" id=\"viewer-f6jmp9907\"><span><em style=\"font-style:italic\">Some objects may be too large or flammable to be simply extinguished as an action, and will require creative solutions.</em></span></p></div></div></div>"
+        },
+        "source": {
+            "custom": "Elkan 5e",
+            "revision": 1,
+            "rules": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "action",
+            "condition": "",
+            "value": 1
+        },
+        "duration": {
+            "value": "",
+            "units": "inst"
+        },
+        "target": {
+            "affects": {
+                "choice": false,
+                "count": "",
+                "type": ""
+            },
+            "template": {
+                "units": "ft",
+                "type": "line",
+                "size": "100",
+                "contiguous": false,
+                "width": "",
+                "count": ""
+            }
+        },
+        "range": {
+            "value": "0",
+            "units": "self",
+            "special": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "ability": "",
+        "level": 3,
+        "school": "evo",
+        "materials": {
+            "value": "a bit of fur and a rod of amber, crystal, or glass",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": true
+        },
+        "properties": [
+            "vocal",
+            "somatic",
+            "material"
+        ],
+        "activities": {
+            "9qEOBoBzdHzcUFmN": {
+                "type": "save",
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "damage": {
+                    "onSave": "half",
+                    "parts": [
+                        {
+                            "number": 8,
+                            "denomination": 6,
+                            "bonus": "",
+                            "types": [
+                                "lightning"
+                            ],
+                            "custom": {
+                                "enabled": false,
+                                "formula": ""
+                            },
+                            "scaling": {
+                                "mode": "whole",
+                                "number": 1,
+                                "formula": ""
+                            }
+                        }
+                    ]
+                },
+                "save": {
+                    "ability": "dex",
+                    "dc": {
+                        "calculation": "spellcasting",
+                        "formula": ""
+                    }
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": []
+                },
+                "sort": 0,
+                "_id": "9qEOBoBzdHzcUFmN"
+            }
+        },
+        "identifier": ""
+    },
+    "ownership": {
+        "default": 0,
+        "VJURYym0JQByHBQL": 3,
+        "MKYWAnkTJr0gkDqT": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.4",
+        "createdTime": 1726952204900,
+        "modifiedTime": 1728939211624,
+        "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+    },
+    "_id": "mVhHk4YEzfICiaiz",
+    "sort": 3200000,
+    "_key": "!items!mVhHk4YEzfICiaiz"
+}
