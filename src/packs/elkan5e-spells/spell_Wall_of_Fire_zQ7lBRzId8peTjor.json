@@ -1,0 +1,220 @@
+{
+    "name": "Wall of Fire",
+    "type": "spell",
+    "img": "icons/magic/fire/barrier-wall-explosion-orange.webp",
+    "effects": [],
+    "folder": "90eJtrVwLFIxcWJw",
+    "flags": {
+        "core": {},
+        "midi-qol": {
+            "effectActivation": false,
+            "AoETargetType": "any",
+            "AoETargetTypeIncludeSelf": true,
+            "autoTarget": "default",
+            "rollAttackPerTarget": "default",
+            "removeAttackDamageButtons": "default",
+            "itemCondition": "",
+            "effectCondition": "",
+            "reactionCondition": ""
+        },
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "confirmTargets": "default",
+            "saveDamage": "default",
+            "bonusSaveDamage": "default",
+            "noConcentrationCheck": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedProperties": [
+                "vocal",
+                "somatic",
+                "material",
+                "concentration"
+            ]
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<p>You create a wall of fire on a solid surface within range. You can make the wall up to 60 feet long, 20 feet high, and 1 foot thick, or a ringed wall up to 20 feet in diameter, 20 feet high, and 1 foot thick. The wall is opaque and lasts for the duration.</p><p>When the wall appears, each creature within its area must make a Dexterity saving throw. On a failed save, a creature takes 5d8 fire damage, or half as much damage on a successful save.</p><p>One side of the wall, selected by you when you cast this spell, deals 5d8 fire damage to each creature that ends its turn within 10 feet of that side or inside the wall. A creature takes the same damage when it enters the wall for the first time on a turn or ends its turn there. The other side of the wall deals no damage.</p><p></p><div class=\"rd__b  rd__b--3\"><div class=\"rd__b  rd__b--3\"><p><strong>*Upcasting</strong>: Increase damage by [[/damage 1d8 fire]]{1d8} for each spell level above 4th.</p></div></div>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "Elkan 5e",
+            "revision": 1,
+            "rules": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "action",
+            "condition": "",
+            "value": 1
+        },
+        "duration": {
+            "value": "1",
+            "units": "minute"
+        },
+        "target": {
+            "affects": {
+                "choice": false,
+                "count": "",
+                "type": ""
+            },
+            "template": {
+                "units": "ft",
+                "width": "10",
+                "type": "wall",
+                "size": "60",
+                "contiguous": false,
+                "height": "",
+                "count": ""
+            }
+        },
+        "range": {
+            "value": "120",
+            "units": "ft",
+            "special": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "ability": "",
+        "level": 4,
+        "school": "evo",
+        "materials": {
+            "value": "A small piece of phosphorous",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": true
+        },
+        "properties": [
+            "vocal",
+            "somatic",
+            "material",
+            "concentration"
+        ],
+        "activities": {
+            "uKgd8XsMvGM1IbmS": {
+                "type": "save",
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "damage": {
+                    "onSave": "half",
+                    "parts": [
+                        {
+                            "number": 5,
+                            "denomination": 8,
+                            "bonus": "",
+                            "types": [
+                                "fire"
+                            ],
+                            "custom": {
+                                "enabled": false,
+                                "formula": ""
+                            },
+                            "scaling": {
+                                "mode": "whole",
+                                "number": 1,
+                                "formula": ""
+                            }
+                        }
+                    ]
+                },
+                "save": {
+                    "ability": "dex",
+                    "dc": {
+                        "calculation": "spellcasting",
+                        "formula": ""
+                    }
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": []
+                },
+                "sort": 0,
+                "_id": "uKgd8XsMvGM1IbmS"
+            }
+        },
+        "identifier": ""
+    },
+    "ownership": {
+        "default": 0,
+        "ymJDAw0PgXIWIHMH": 3,
+        "MKYWAnkTJr0gkDqT": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.4",
+        "createdTime": 1726952206862,
+        "modifiedTime": 1728958605107,
+        "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+    },
+    "_id": "zQ7lBRzId8peTjor",
+    "sort": 3100000,
+    "_key": "!items!zQ7lBRzId8peTjor"
+}

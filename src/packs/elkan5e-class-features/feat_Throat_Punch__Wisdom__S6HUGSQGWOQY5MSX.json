@@ -1,0 +1,267 @@
+{
+    "name": "Throat Punch (Wisdom)",
+    "type": "feat",
+    "img": "icons/skills/melee/unarmed-punch-fist-yellow-red.webp",
+    "effects": [
+        {
+            "name": "Silenced",
+            "origin": "Compendium.elkan5e.elkan5e-class-features.Item.I1YVA6iTXA5wJnJS",
+            "changes": [
+                {
+                    "key": "StatusEffect",
+                    "mode": 0,
+                    "value": "silenced",
+                    "priority": 0
+                }
+            ],
+            "transfer": false,
+            "flags": {
+                "dae": {
+                    "itemName": "Throat Punch (Strength)",
+                    "disableIncapacitated": false,
+                    "selfTarget": false,
+                    "selfTargetAlways": false,
+                    "dontApply": false,
+                    "stackable": "noneName",
+                    "showIcon": true,
+                    "durationExpression": "",
+                    "macroRepeat": "none",
+                    "specialDuration": [
+                        "turnEndSource"
+                    ]
+                },
+                "ActiveAuras": {
+                    "isAura": false,
+                    "aura": "None",
+                    "nameOverride": "",
+                    "radius": "",
+                    "alignment": "",
+                    "type": "",
+                    "customCheck": "",
+                    "ignoreSelf": false,
+                    "height": false,
+                    "hidden": false,
+                    "displayTemp": false,
+                    "hostile": false,
+                    "onlyOnce": false,
+                    "wallsBlock": "system"
+                },
+                "core": {
+                    "sourceId": "Compendium.elkan5e.elkan5e-class-features.Item.EH05Ow4TACkrtN16.ActiveEffect.NbuvxvxcrPewtI89"
+                }
+            },
+            "_id": "2I53udbXmpzOcWiP",
+            "disabled": false,
+            "duration": {
+                "startTime": null,
+                "seconds": null,
+                "combat": null,
+                "rounds": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null
+            },
+            "description": "",
+            "statuses": [],
+            "tint": "#ffffff",
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.0.2",
+                "createdTime": null,
+                "modifiedTime": null,
+                "lastModifiedBy": null
+            },
+            "img": "modules/elkan5e/icons/silenced.svg",
+            "type": "base",
+            "system": {},
+            "sort": 0,
+            "_key": "!items.effects!S6HUGSQGWOQY5MSX.2I53udbXmpzOcWiP"
+        }
+    ],
+    "folder": "VItoxcRgh8Mh5cC1",
+    "flags": {
+        "core": {},
+        "midi-qol": {
+            "effectActivation": false,
+            "onUseMacroName": "",
+            "rollAttackPerTarget": "default",
+            "removeAttackDamageButtons": "default",
+            "itemCondition": "",
+            "effectCondition": ""
+        },
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "confirmTargets": "default",
+            "noConcentrationCheck": false,
+            "saveDamage": "fulldam",
+            "bonusSaveDamage": "default"
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            }
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<p>Throat Punch is a @UUID[Compendium.elkan5e.elkan5e-class-features.Item.hW3DmOPgBpa7lGU8]{Precision Attacks}.</p><p><strong>As Part of a Weapon Attack</strong>\u00a0- 1 Creature (5 ft.) - 1 Round</p><p>You can sacrifice 4d6 of your sneak attack damage to interrupt and briefly prevent your opponent from speaking.\u200b</p><p><strong>Constitution Save</strong></p><p><strong>Failure:</strong>\u00a0@UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{Sneak Attack} (-4d6) bludgeoning damage. Target is &amp;Reference[silenced].</p><p><strong>Success:</strong>\u00a0@UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{Sneak Attack} (-4d6) bludgeoning damage.</p>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "elkan5e.com/rogue",
+            "revision": 1,
+            "rules": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "license": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "type": {
+            "value": "class",
+            "subtype": "precision"
+        },
+        "requirements": "Rogue 11",
+        "properties": [
+            "mgc"
+        ],
+        "prerequisites": {
+            "level": 11
+        },
+        "activities": {
+            "dnd5eactivity000": {
+                "_id": "dnd5eactivity000",
+                "type": "save",
+                "activation": {
+                    "type": "duringattack",
+                    "value": null,
+                    "condition": "",
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "concentration": false,
+                    "value": "1",
+                    "units": "round",
+                    "special": "",
+                    "override": false
+                },
+                "effects": [
+                    {
+                        "_id": "2I53udbXmpzOcWiP",
+                        "onSave": false
+                    }
+                ],
+                "range": {
+                    "value": "5",
+                    "units": "ft",
+                    "special": "",
+                    "override": false
+                },
+                "target": {
+                    "template": {
+                        "count": "",
+                        "contiguous": false,
+                        "type": "",
+                        "size": "",
+                        "width": "",
+                        "height": "",
+                        "units": ""
+                    },
+                    "affects": {
+                        "count": "1",
+                        "type": "creature",
+                        "choice": false,
+                        "special": ""
+                    },
+                    "prompt": true,
+                    "override": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "max": "",
+                    "recovery": []
+                },
+                "damage": {
+                    "onSave": "half",
+                    "parts": [
+                        {
+                            "number": null,
+                            "denomination": null,
+                            "bonus": "",
+                            "types": [
+                                "bludgeoning"
+                            ],
+                            "custom": {
+                                "enabled": true,
+                                "formula": "((@scale.rogue.sneak-attack - 4)d6)"
+                            },
+                            "scaling": {
+                                "mode": "whole",
+                                "number": null,
+                                "formula": ""
+                            }
+                        }
+                    ]
+                },
+                "save": {
+                    "ability": "con",
+                    "dc": {
+                        "calculation": "wis",
+                        "formula": ""
+                    }
+                },
+                "sort": 0
+            }
+        },
+        "identifier": "",
+        "enchant": {}
+    },
+    "ownership": {
+        "default": 0,
+        "9B4LXF0S1sIudaRa": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.2",
+        "createdTime": 1726952011696,
+        "modifiedTime": 1726952011696,
+        "lastModifiedBy": "vHqSHJMdmEO6Mk2C"
+    },
+    "_id": "S6HUGSQGWOQY5MSX",
+    "sort": 400000,
+    "_key": "!items!S6HUGSQGWOQY5MSX"
+}

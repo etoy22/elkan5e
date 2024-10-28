@@ -1,0 +1,306 @@
+{
+    "name": "Command",
+    "type": "spell",
+    "img": "icons/magic/control/control-influence-rally-purple.webp",
+    "effects": [
+        {
+            "name": "Command",
+            "origin": "Compendium.elkan5e.elkan5e-spells.Item.xwb82OAnypYUZ5BO",
+            "changes": [
+                {
+                    "key": "StatusEffect",
+                    "mode": 0,
+                    "value": "charmed",
+                    "priority": 0
+                }
+            ],
+            "transfer": false,
+            "flags": {
+                "dae": {
+                    "itemName": "Command",
+                    "disableIncapacitated": false,
+                    "stackable": "noneName",
+                    "showIcon": false,
+                    "durationExpression": "",
+                    "macroRepeat": "none",
+                    "specialDuration": [
+                        "turnEndSource"
+                    ],
+                    "selfTarget": false,
+                    "selfTargetAlways": false,
+                    "dontApply": false,
+                    "enableCondition": "",
+                    "disableCondition": ""
+                },
+                "ActiveAuras": {
+                    "isAura": false,
+                    "aura": "None",
+                    "nameOverride": "",
+                    "radius": "",
+                    "alignment": "",
+                    "type": "",
+                    "customCheck": "",
+                    "ignoreSelf": false,
+                    "height": false,
+                    "hidden": false,
+                    "displayTemp": false,
+                    "hostile": false,
+                    "onlyOnce": false,
+                    "wallsBlock": "system"
+                },
+                "core": {
+                    "overlay": false
+                }
+            },
+            "img": "icons/magic/control/control-influence-rally-purple.webp",
+            "_id": "DZGVSR1WfffP2paT",
+            "type": "base",
+            "system": {},
+            "disabled": false,
+            "duration": {
+                "startTime": null,
+                "seconds": 7,
+                "combat": null,
+                "rounds": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null
+            },
+            "description": "",
+            "tint": "#ffffff",
+            "statuses": [
+                "charmed"
+            ],
+            "sort": 0,
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.0.2",
+                "createdTime": null,
+                "modifiedTime": 1728417022607,
+                "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+            },
+            "_key": "!items.effects!xwb82OAnypYUZ5BO.DZGVSR1WfffP2paT"
+        }
+    ],
+    "folder": "U0k4VGG6bziqf3oH",
+    "flags": {
+        "dynamiceffects": {
+            "effects": [
+                {
+                    "modSpecKey": "flags.dnd5e.conditions",
+                    "value": "Charmed",
+                    "mode": "+",
+                    "targetSpecific": false,
+                    "id": 1,
+                    "itemId": "Rkamxk5rL0RQpiYv",
+                    "active": true,
+                    "_targets": []
+                }
+            ],
+            "equipActive": true,
+            "alwaysActive": false
+        },
+        "dae": {
+            "activeEquipped": false,
+            "alwaysActive": false
+        },
+        "midi-qol": {
+            "onUseMacroName": "",
+            "effectActivation": false,
+            "forceCEOn": false,
+            "forceCEOff": false,
+            "itemCondition": "",
+            "reactionCondition": "",
+            "otherCondition": "",
+            "effectCondition": "target.failedSave && ![\"construct\", \"undead\"].includes(raceOrType)",
+            "rollAttackPerTarget": "default"
+        },
+        "core": {},
+        "midiProperties": {
+            "nodam": false,
+            "halfdam": false,
+            "fulldam": false,
+            "rollOther": false,
+            "critOther": false,
+            "concentration": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "toggleEffect": false,
+            "ignoreTotalCover": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "noConcentrationCheck": false,
+            "confirmTargets": "default",
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedProperties": [
+                "vocal"
+            ]
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<p><em>You shout one of the following one-word commands, using magic to compel obedience in a creature.</em></p><p><strong>Wisdom Save</strong></p><p>The target must be able to understand your language.</p><ul><li><p><strong>Failure</strong>: Target is\u00a0&amp;reference[charmed] for 1 round, and must follow one of the following commands on their next turn. The target still has use of their action and their movement if they aren't required to use their movement in a specific way.</p><ul><li><p><strong>Approach</strong>:\u00a0The target moves up to their speed toward you by the shortest safe route.</p></li><li><p><strong>Drop</strong>:\u00a0The target drops whatever they are holding, or drops to the ground safely if they were flying.</p></li><li><p><strong>Flee</strong>:\u00a0The target moves up to their speed away from you, triggering attacks of opportunity if applicable, but otherwise taking a safe route.</p></li><li><p><strong>Grovel</strong>:\u00a0The target falls prone and verbally grovels.</p></li></ul></li><li><p><strong>Success</strong>:\u00a0No effect.</p></li></ul><p></p><p><strong>Upcasting</strong>: <span style=\"font-family:Signika, sans-serif\">Target one additional creature for each spell level above 1st.</span></p>",
+            "chat": "<p><strong>Wisdom Save</strong></p><p>The target must be able to understand your language.</p><ul><li><p><strong>Failure</strong>: Target is\u00a0&amp;reference[charmed] for 1 round, and must follow one of the following commands on their next turn. The target still has use of their action and their movement if they aren't required to use their movement in a specific way.</p><ul><li><p><strong>Approach</strong>:\u00a0The target moves up to their speed toward you by the shortest safe route.</p></li><li><p><strong>Drop</strong>:\u00a0The target drops whatever they are holding, or drops to the ground safely if they were flying.</p></li><li><p><strong>Flee</strong>:\u00a0The target moves up to their speed away from you, triggering attacks of opportunity if applicable, but otherwise taking a safe route.</p></li><li><p><strong>Grovel</strong>:\u00a0The target falls prone and verbally grovels.</p></li></ul></li><li><p><strong>Success</strong>:\u00a0No effect.</p></li></ul><p></p><p><strong>Upcasting</strong>: <span style=\"font-family:Signika, sans-serif\">Target one additional creature for each spell level above 1st.</span></p>"
+        },
+        "source": {
+            "custom": "elkan5e.com/spells/command",
+            "revision": 1,
+            "rules": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "action",
+            "condition": "",
+            "value": 1
+        },
+        "duration": {
+            "value": "1",
+            "units": "round"
+        },
+        "target": {
+            "affects": {
+                "special": "",
+                "type": "creature",
+                "count": "1",
+                "choice": false
+            },
+            "template": {
+                "type": "",
+                "units": "",
+                "contiguous": false
+            }
+        },
+        "range": {
+            "value": "60",
+            "units": "ft",
+            "special": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "ability": "",
+        "level": 1,
+        "school": "enc",
+        "materials": {
+            "value": "",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": true
+        },
+        "properties": [
+            "vocal",
+            "mgc"
+        ],
+        "activities": {
+            "EU6dNr8sLgT5tOY4": {
+                "type": "save",
+                "_id": "EU6dNr8sLgT5tOY4",
+                "sort": 0,
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "scaling": {
+                        "allowed": false
+                    },
+                    "spellSlot": true,
+                    "targets": []
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [
+                    {
+                        "_id": "DZGVSR1WfffP2paT",
+                        "onSave": false
+                    }
+                ],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false,
+                    "prompt": true
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "damage": {
+                    "parts": [],
+                    "onSave": "none"
+                },
+                "save": {
+                    "ability": "wis",
+                    "dc": {
+                        "calculation": "spellcasting",
+                        "formula": ""
+                    }
+                },
+                "name": "",
+                "img": "",
+                "effectConditionText": "!target.traits.ci.value.has('charmed')",
+                "appliedEffects": [
+                    "DZGVSR1WfffP2paT"
+                ]
+            }
+        },
+        "identifier": ""
+    },
+    "ownership": {
+        "default": 0,
+        "VJURYym0JQByHBQL": 3,
+        "ymJDAw0PgXIWIHMH": 3,
+        "MKYWAnkTJr0gkDqT": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.4",
+        "createdTime": 1726952206592,
+        "modifiedTime": 1728935616718,
+        "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+    },
+    "_id": "xwb82OAnypYUZ5BO",
+    "sort": 4800000,
+    "_key": "!items!xwb82OAnypYUZ5BO"
+}

@@ -1,0 +1,276 @@
+{
+    "name": "Spike Growth",
+    "type": "spell",
+    "img": "icons/magic/nature/root-vines-grow-brown.webp",
+    "effects": [],
+    "folder": "6J3i75lfD1J0xYwA",
+    "flags": {
+        "midi-qol": {
+            "onUseMacroName": "[postActiveEffects]AA ApplyEffectsToTemplate",
+            "effectActivation": false,
+            "AoETargetType": "any",
+            "AoETargetTypeIncludeSelf": true,
+            "autoTarget": "default",
+            "itemCondition": "",
+            "reactionCondition": "",
+            "otherCondition": "",
+            "effectCondition": "",
+            "rollAttackPerTarget": "default",
+            "removeAttackDamageButtons": "default"
+        },
+        "core": {},
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "confirmTargets": "default",
+            "noConcentrationCheck": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedProperties": [
+                "vocal",
+                "somatic",
+                "material",
+                "concentration"
+            ]
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<p><em>You drop seven sharp thorns or sticks to the ground, asking the land to obey your will. You gesture over the area you want the spikes to sprout forth from. When they appear, they blend in with their surroundings as best they can and harmlessly appear next to creatures and objects in the area, but any creature who sees the spell being cast can recognize the danger.</em></p><p><strong>Area Hazard</strong></p><ul><li><p>The spikes are camouflaged to look natural. Any creature that can't see the area at the time the spell is cast rolls a [[/check Perception]] check against your spell save DC right before they would step into the spikes to notice the danger.</p></li><li><p>When a creature moves into a space occupied by the spikes, they take [[/damage 2d4 piercing]] damage for every 5 feet they travel.</p></li><li><p>The spikes create &amp;reference[difficultterrain].</p></li></ul><p></p><div class=\"rd__b  rd__b--3\"><div class=\"rd__b  rd__b--3\"><p><strong>Upcasting:</strong> <span style=\"font-family:Signika, sans-serif\">The radius of the spell increases by 5 ft.</span> for each spell level above 2nd level.</p></div></div>",
+            "chat": "<p><strong>Area Hazard</strong></p><ul><li><p>The spikes are camouflaged to look natural. Any creature that can't see the area at the time the spell is cast rolls a [[/check Perception]] check against your spell save DC right before they would step into the spikes to notice the danger.</p></li><li><p>When a creature moves into a space occupied by the spikes, they take [[/damage 2d4 piercing]] damage for every 5 feet they travel.</p></li><li><p>The spikes create &amp;reference[difficultterrain].</p></li></ul><p></p><div class=\"rd__b  rd__b--3\"><div class=\"rd__b  rd__b--3\"><p><strong>Upcasting:</strong> <span style=\"font-family:Signika, sans-serif\">The radius of the spell increases by 5 ft.</span> for each spell level above 2nd level.</p></div></div>"
+        },
+        "source": {
+            "custom": "elkan5e.com/spells/spike-growth",
+            "revision": 1,
+            "rules": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "action",
+            "condition": "",
+            "value": 1
+        },
+        "duration": {
+            "value": "10",
+            "units": "minute"
+        },
+        "target": {
+            "affects": {
+                "choice": false,
+                "count": "",
+                "type": ""
+            },
+            "template": {
+                "units": "ft",
+                "type": "radius",
+                "size": "20",
+                "contiguous": false,
+                "count": ""
+            }
+        },
+        "range": {
+            "value": "150",
+            "units": "ft",
+            "special": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "ability": "",
+        "level": 2,
+        "school": "trs",
+        "materials": {
+            "value": "Seven sharp thorns or seven small twigs, each sharpened to a point",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": true
+        },
+        "properties": [
+            "vocal",
+            "somatic",
+            "material",
+            "concentration"
+        ],
+        "activities": {
+            "dnd5eactivity000": {
+                "_id": "dnd5eactivity000",
+                "type": "utility",
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "max": "",
+                    "recovery": []
+                },
+                "roll": {
+                    "formula": "",
+                    "name": "",
+                    "prompt": false,
+                    "visible": false
+                },
+                "sort": 0
+            },
+            "RMaFSkHQ59YBoS8F": {
+                "type": "damage",
+                "name": "Creature Moves",
+                "_id": "RMaFSkHQ59YBoS8F",
+                "sort": 0,
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "scaling": {
+                        "allowed": false
+                    },
+                    "spellSlot": false,
+                    "targets": []
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": true,
+                    "units": "any",
+                    "special": ""
+                },
+                "target": {
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft",
+                        "type": ""
+                    },
+                    "affects": {
+                        "choice": false,
+                        "count": "1",
+                        "type": "creature",
+                        "special": ""
+                    },
+                    "override": true,
+                    "prompt": true
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "damage": {
+                    "critical": {
+                        "allow": false
+                    },
+                    "parts": [
+                        {
+                            "custom": {
+                                "enabled": false,
+                                "formula": ""
+                            },
+                            "number": 2,
+                            "denomination": 4,
+                            "bonus": "",
+                            "types": [
+                                "piercing"
+                            ],
+                            "scaling": {
+                                "mode": "",
+                                "number": 1
+                            }
+                        }
+                    ]
+                },
+                "useConditionText": "",
+                "forceDialog": false,
+                "effectConditionText": "",
+                "img": "",
+                "appliedEffects": []
+            }
+        },
+        "identifier": ""
+    },
+    "ownership": {
+        "default": 0,
+        "VJURYym0JQByHBQL": 3,
+        "MKYWAnkTJr0gkDqT": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.4",
+        "createdTime": 1726952205254,
+        "modifiedTime": 1728932698318,
+        "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+    },
+    "_id": "pvaTvkG3eFu2qojR",
+    "sort": 3500000,
+    "_key": "!items!pvaTvkG3eFu2qojR"
+}
