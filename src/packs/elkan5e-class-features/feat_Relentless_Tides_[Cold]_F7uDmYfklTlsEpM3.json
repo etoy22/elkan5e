@@ -1,0 +1,225 @@
+{
+    "folder": "p1GfUmL5Upoo2x6Y",
+    "name": "Relentless Tides [Cold]",
+    "type": "feat",
+    "_id": "F7uDmYfklTlsEpM3",
+    "img": "icons/magic/water/wave-water-explosion.webp",
+    "system": {
+        "description": {
+            "value": "<p><strong>No Action Cost</strong>\u00a0- 1 Creature - 1/Turn - 1 Minute - Magical</p><p>Once on each of your turns, when you deal damage with a spell that deals &amp;reference[cold] or &amp;reference[acid] damage, you can choose one affected creature who took full damage from the spell to suffer lingering damage.</p><p><strong>Debuff</strong></p><ul><li><p>For 1 minute or until you become &amp;reference[incapacitated], the target takes [[/damage 1d6 cold]] damage at the end of each of their turns.\u00a0</p></li></ul>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "",
+            "revision": 1,
+            "rules": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "license": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "type": {
+            "value": "subclass",
+            "subtype": ""
+        },
+        "prerequisites": {
+            "level": 3
+        },
+        "properties": [
+            "mgc"
+        ],
+        "requirements": "Water Savant 3",
+        "activities": {
+            "dnd5eactivity000": {
+                "_id": "dnd5eactivity000",
+                "type": "utility",
+                "activation": {
+                    "type": "nocost",
+                    "value": null,
+                    "condition": "",
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "concentration": false,
+                    "value": "",
+                    "units": "",
+                    "special": "",
+                    "override": false
+                },
+                "effects": [
+                    {
+                        "_id": "9K7998TraxQDHmGN"
+                    }
+                ],
+                "range": {
+                    "units": "",
+                    "special": "",
+                    "override": false
+                },
+                "target": {
+                    "template": {
+                        "count": "",
+                        "contiguous": false,
+                        "type": "",
+                        "size": "",
+                        "width": "",
+                        "height": "",
+                        "units": ""
+                    },
+                    "affects": {
+                        "count": "1",
+                        "type": "creature",
+                        "choice": false,
+                        "special": ""
+                    },
+                    "prompt": true,
+                    "override": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "max": "",
+                    "recovery": []
+                },
+                "roll": {
+                    "formula": "",
+                    "name": "",
+                    "prompt": false,
+                    "visible": false
+                },
+                "sort": 0
+            }
+        },
+        "identifier": "",
+        "enchant": {}
+    },
+    "effects": [
+        {
+            "name": "Relentless Tides",
+            "changes": [
+                {
+                    "key": "flags.midi-qol.OverTime",
+                    "mode": 2,
+                    "value": "turn=end,\ndamageType=cold,\nallowIncapacitated=true,\ndamageRoll=1d8\nlabel=Relentless Tides",
+                    "priority": 20
+                }
+            ],
+            "transfer": false,
+            "img": "icons/magic/water/wave-water-explosion.webp",
+            "_id": "9K7998TraxQDHmGN",
+            "type": "base",
+            "system": {},
+            "disabled": false,
+            "duration": {
+                "startTime": null,
+                "seconds": null,
+                "combat": null,
+                "rounds": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null
+            },
+            "description": "",
+            "origin": null,
+            "tint": "#ffffff",
+            "statuses": [],
+            "sort": 0,
+            "flags": {
+                "dae": {
+                    "disableIncapacitated": false,
+                    "selfTarget": false,
+                    "selfTargetAlways": false,
+                    "dontApply": false,
+                    "stackable": "noneName",
+                    "showIcon": false,
+                    "durationExpression": "",
+                    "macroRepeat": "none",
+                    "specialDuration": []
+                },
+                "ActiveAuras": {
+                    "isAura": false,
+                    "aura": "None",
+                    "nameOverride": "",
+                    "radius": "",
+                    "alignment": "",
+                    "type": "",
+                    "customCheck": "",
+                    "ignoreSelf": false,
+                    "height": false,
+                    "hidden": false,
+                    "displayTemp": false,
+                    "hostile": false,
+                    "onlyOnce": false,
+                    "wallsBlock": "system"
+                }
+            },
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.0.2",
+                "createdTime": null,
+                "modifiedTime": null,
+                "lastModifiedBy": null
+            },
+            "_key": "!items.effects!F7uDmYfklTlsEpM3.9K7998TraxQDHmGN"
+        }
+    ],
+    "sort": 400000,
+    "ownership": {
+        "default": 0,
+        "3Yi0HjF4PKCA4vX0": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "flags": {
+        "midiProperties": {
+            "confirmTargets": "default",
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "critOther": false,
+            "offHandWeapon": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "noConcentrationCheck": false,
+            "toggleEffect": false,
+            "ignoreTotalCover": false
+        },
+        "midi-qol": {
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "effectCondition": ""
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            }
+        }
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.2",
+        "createdTime": 1726952009106,
+        "modifiedTime": 1726952009106,
+        "lastModifiedBy": "vHqSHJMdmEO6Mk2C"
+    },
+    "_key": "!items!F7uDmYfklTlsEpM3"
+}

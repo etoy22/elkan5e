@@ -1,0 +1,382 @@
+{
+    "name": "Faerie Fire",
+    "type": "spell",
+    "img": "icons/magic/fire/projectile-meteor-salvo-strong-teal.webp",
+    "effects": [
+        {
+            "_id": "0hz3Z5o2VSWZFDyA",
+            "flags": {
+                "dae": {
+                    "stackable": "none",
+                    "specialDuration": [
+                        "None"
+                    ],
+                    "macroRepeat": "none",
+                    "transfer": false,
+                    "selfTarget": false,
+                    "selfTargetAlways": false,
+                    "durationExpression": "",
+                    "disableIncapacitated": false,
+                    "dontApply": false,
+                    "showIcon": false
+                },
+                "ActiveAuras": {
+                    "isAura": false,
+                    "ignoreSelf": false,
+                    "hidden": false,
+                    "height": false,
+                    "aura": "None",
+                    "radius": "",
+                    "alignment": "",
+                    "type": "",
+                    "hostile": false,
+                    "onlyOnce": false,
+                    "displayTemp": false,
+                    "nameOverride": "",
+                    "customCheck": "",
+                    "wallsBlock": "system"
+                },
+                "core": {
+                    "statusId": ""
+                }
+            },
+            "changes": [
+                {
+                    "key": "macro.itemMacro",
+                    "mode": 0,
+                    "value": "",
+                    "priority": 20
+                },
+                {
+                    "key": "flags.midi-qol.grants.advantage.attack.all",
+                    "mode": 5,
+                    "value": "1",
+                    "priority": 20
+                },
+                {
+                    "key": "macro.tokenMagic",
+                    "mode": 0,
+                    "value": "bevel",
+                    "priority": 20
+                },
+                {
+                    "key": "system.traits.ci.value",
+                    "mode": 0,
+                    "value": "invisible",
+                    "priority": 20
+                },
+                {
+                    "key": "flags.midi-qol.OverTime",
+                    "mode": 2,
+                    "value": "turn=end,\nsaveAbility=dex,\nsaveDC=@attributes.spelldc,\nsaveMagic=true,\nlabel=Faerie Fire",
+                    "priority": 20
+                },
+                {
+                    "key": "system.traits.ci.value",
+                    "mode": 0,
+                    "value": "invisible",
+                    "priority": 20
+                }
+            ],
+            "disabled": false,
+            "duration": {
+                "startTime": null,
+                "seconds": 60,
+                "combat": null,
+                "rounds": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null
+            },
+            "tint": "#ffffff",
+            "transfer": false,
+            "origin": null,
+            "name": "Faerie Fire",
+            "description": "",
+            "statuses": [],
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.0.2",
+                "createdTime": null,
+                "modifiedTime": null,
+                "lastModifiedBy": null
+            },
+            "img": "icons/magic/fire/projectile-meteor-salvo-strong-teal.webp",
+            "type": "base",
+            "system": {},
+            "sort": 0,
+            "_key": "!items.effects!xxhReFO5bBzylMmY.0hz3Z5o2VSWZFDyA"
+        }
+    ],
+    "folder": "U0k4VGG6bziqf3oH",
+    "flags": {
+        "itemacro": {
+            "macro": {
+                "_data": {
+                    "name": "Faerie Fire",
+                    "type": "script",
+                    "scope": "global",
+                    "command": "const lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nlet target = canvas.tokens.get(lastArg.tokenId)\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEItem.data.save\n\nif (args[0] === \"on\") {\n\n    new Dialog({\n        title: `Choose the colour for Faerie Fire on ${target.name}`,\n        buttons: {\n            one: {\n                label: \"Blue\",\n                callback: async () => {\n                    let color = target.data.lightColor ? target.data.lightColor : \"\";\n                    let dimLight = target.data.dimLight ? target.data.dimLight : \"0\"\n                    await DAE.setFlag(target, 'FaerieFire', {\n                        color: color,\n                        alpha: target.data.lightAlpha,\n                        dimLight: dimLight\n                    });\n                    target.update({ \"lightColor\": \"#5ab9e2\", \"lightAlpha\": 0.64, \"dimLight\": \"10\" })\n                }\n            },\n            two: {\n                label: \"Green\",\n                callback: async () => {\n                    let color = target.data.lightColor ? target.data.lightColor : \"\";\n                    let dimLight = target.data.dimLight ? target.data.dimLight : \"0\"\n                    await DAE.setFlag(target, 'FaerieFire', {\n                        color: color,\n                        alpha: target.data.lightAlpha,\n                        dimLight: dimLight\n                    });\n                    target.update({ \"lightColor\": \"#55d553\", \"lightAlpha\": 0.64, \"dimLight\": \"10\" })\n                }\n            },\n            three: {\n                label: \"Purple\",\n                callback: async () => {\n                    let color = target.data.lightColor ? target.data.lightColor : \"\";\n                    let dimLight = target.data.dimLight ? target.data.dimLight : \"0\"\n                    await DAE.setFlag(target, 'FaerieFire', {\n                        color: color,\n                        alpha: target.data.lightAlpha,\n                        dimLight: dimLight\n                    });\n                    target.update({ \"lightColor\": \"#844ec6\", \"lightAlpha\": 0.64, \"dimLight\": \"10\" })\n                }\n            }\n        }\n    }).render(true);\n}\n\nif (args[0] === \"off\") {\n    let { color, alpha, dimLight } = await DAE.getFlag(target, \"FaerieFire\")\n    target.update({ \"lightColor\": color, \"lightAlpha\": alpha, \"dimLight\": dimLight })\n    DAE.unsetFlag(tactor, \"FaerieFire\")\n}",
+                    "author": "E4BVikjIkVl2lL2j"
+                },
+                "data": {
+                    "name": "Faerie Fire",
+                    "type": "script",
+                    "scope": "global",
+                    "command": "// DAE macro, just call the macro, nothing else\n// setup the spell as normal\nif (!game.modules.get(\"advanced-macros\")?.active) {ui.notifications.error(\"Please enable the Advanced Macros module\") ;return;}\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nlet target = canvas.tokens.get(lastArg.tokenId)\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEItem.data.save\n\nif (args[0] === \"on\") {\n\n    new Dialog({\n        title: `Choose the colour for Faerie Fire on ${target.name}`,\n        buttons: {\n            one: {\n                label: \"Blue\",\n                callback: async () => {\n                    let color = target.data.lightColor ? target.data.lightColor : \"\";\n                    let dimLight = target.data.dimLight ? target.data.dimLight : \"0\"\n                    await DAE.setFlag(target, 'FaerieFire', {\n                        color: color,\n                        alpha: target.data.lightAlpha,\n                        dimLight: dimLight\n                    });\n                    target.update({ \"lightColor\": \"#5ab9e2\", \"lightAlpha\": 0.64, \"dimLight\": \"10\", \"lightAnimation.intensity\" : 3 })\n                }\n            },\n            two: {\n                label: \"Green\",\n                callback: async () => {\n                    let color = target.data.lightColor ? target.data.lightColor : \"\";\n                    let dimLight = target.data.dimLight ? target.data.dimLight : \"0\"\n                    await DAE.setFlag(target, 'FaerieFire', {\n                        color: color,\n                        alpha: target.data.lightAlpha,\n                        dimLight: dimLight\n                    });\n                    target.update({ \"lightColor\": \"#55d553\", \"lightAlpha\": 0.64, \"dimLight\": \"10\",\"lightAnimation.intensity\" : 3  })\n                }\n            },\n            three: {\n                label: \"Purple\",\n                callback: async () => {\n                    let color = target.data.lightColor ? target.data.lightColor : \"\";\n                    let dimLight = target.data.dimLight ? target.data.dimLight : \"0\"\n                    await DAE.setFlag(target, 'FaerieFire', {\n                        color: color,\n                        alpha: target.data.lightAlpha,\n                        dimLight: dimLight\n                    });\n                    target.update({ \"lightColor\": \"#844ec6\", \"lightAlpha\": 0.64, \"dimLight\": \"10\",\"lightAnimation.intensity\" : 3  })\n                }\n            }\n        }\n    }).render(true);\n}\n\nif (args[0] === \"off\") {\n    let { color, alpha, dimLight } = await DAE.getFlag(target, \"FaerieFire\")\n    target.update({ \"lightColor\": color, \"lightAlpha\": alpha, \"dimLight\": dimLight })\n    DAE.unsetFlag(tactor, \"FaerieFire\")\n}",
+                    "author": "zrPR3wueYsESSBR3",
+                    "_id": null,
+                    "img": "icons/svg/dice-target.svg",
+                    "folder": null,
+                    "sort": 0,
+                    "permission": {
+                        "default": 0
+                    },
+                    "flags": {}
+                },
+                "options": {},
+                "apps": {},
+                "compendium": null
+            }
+        },
+        "dae": {
+            "activeEquipped": false,
+            "alwaysActive": false,
+            "macro": {
+                "name": "Faerie Fire",
+                "img": "icons/magic/fire/projectile-meteor-salvo-strong-teal.webp",
+                "type": "script",
+                "scope": "global",
+                "command": "",
+                "author": "3Yi0HjF4PKCA4vX0",
+                "ownership": {
+                    "default": 3
+                },
+                "_id": null,
+                "folder": null,
+                "sort": 0,
+                "flags": {},
+                "_stats": {
+                    "coreVersion": "12.325",
+                    "systemId": "dnd5e",
+                    "systemVersion": "3.2.0",
+                    "createdTime": null,
+                    "modifiedTime": null,
+                    "lastModifiedBy": null,
+                    "compendiumSource": null,
+                    "duplicateSource": null
+                }
+            }
+        },
+        "midi-qol": {
+            "onUseMacroName": "",
+            "effectActivation": false,
+            "AoETargetType": "any",
+            "AoETargetTypeIncludeSelf": true,
+            "autoTarget": "default",
+            "itemCondition": "",
+            "reactionCondition": "",
+            "otherCondition": "",
+            "effectCondition": "",
+            "rollAttackPerTarget": "default"
+        },
+        "core": {},
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "noConcentrationCheck": false,
+            "confirmTargets": "default",
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedProperties": [
+                "vocal",
+                "concentration"
+            ]
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<p><em>You hum an upbeat folk tune as creatures in front of you light up with vibrant color. Objects automatically light up, while creatures can attempt to move away from the bright light cloying to them. The lights dance and lead attackers to a target's weak spots.</em></p><p><strong>Dexterity Save</strong></p><ul><li><p><strong>Failure</strong>: Target is outlined in blue, green, or violet light (your choice), and sheds dim light in a 10-foot radius. All attack rolls against them have advantage if the attacker can see them, and they can\u2019t benefit from being &amp;reference[invisible]. Target rolls a save again at end of their turns, ending effect on success.</p></li><li><p><strong>Success</strong>: No Effect.</p></li></ul>",
+            "chat": "<p><strong>Dexterity Save</strong></p><ul><li><p><strong>Failure</strong>: Target is outlined in blue, green, or violet light (your choice), and sheds dim light in a 10-foot radius. All attack rolls against them have advantage if the attacker can see them, and they can\u2019t benefit from being &amp;reference[invisible]. Target rolls a save again at end of their turns, ending effect on success.</p></li><li><p><strong>Success</strong>: No Effect.</p></li></ul>"
+        },
+        "source": {
+            "custom": "elkan5e.com/spells/faerie-fire",
+            "revision": 1,
+            "rules": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "action",
+            "condition": "",
+            "value": 1
+        },
+        "duration": {
+            "value": "1",
+            "units": "minute"
+        },
+        "target": {
+            "affects": {
+                "count": "",
+                "type": "",
+                "choice": false
+            },
+            "template": {
+                "count": "",
+                "units": "ft",
+                "type": "cube",
+                "size": "20",
+                "contiguous": false
+            }
+        },
+        "range": {
+            "value": "60",
+            "units": "ft",
+            "special": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "ability": "",
+        "level": 1,
+        "school": "ill",
+        "materials": {
+            "value": "",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": true
+        },
+        "properties": [
+            "vocal",
+            "concentration",
+            "mgc"
+        ],
+        "activities": {
+            "dnd5eactivity000": {
+                "name": "",
+                "img": "",
+                "damage": {
+                    "onSave": "none"
+                },
+                "appliedEffects": [
+                    "0hz3Z5o2VSWZFDyA"
+                ]
+            },
+            "8a6JXbb5vhpSYhI1": {
+                "type": "save",
+                "_id": "8a6JXbb5vhpSYhI1",
+                "sort": 0,
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "scaling": {
+                        "allowed": false
+                    },
+                    "spellSlot": true,
+                    "targets": []
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [
+                    {
+                        "_id": "0hz3Z5o2VSWZFDyA",
+                        "onSave": false
+                    }
+                ],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false,
+                    "prompt": true
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "damage": {
+                    "parts": [],
+                    "onSave": "none"
+                },
+                "save": {
+                    "ability": "dex",
+                    "dc": {
+                        "calculation": "spellcasting",
+                        "formula": ""
+                    }
+                },
+                "name": "",
+                "img": "",
+                "appliedEffects": [
+                    "0hz3Z5o2VSWZFDyA"
+                ]
+            }
+        },
+        "identifier": ""
+    },
+    "ownership": {
+        "default": 0,
+        "VJURYym0JQByHBQL": 3,
+        "MKYWAnkTJr0gkDqT": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.3",
+        "createdTime": 1726952206621,
+        "modifiedTime": 1729560677080,
+        "lastModifiedBy": "LhShb9ShQN3ambNF"
+    },
+    "_id": "xxhReFO5bBzylMmY",
+    "sort": 4900000,
+    "_key": "!items!xxhReFO5bBzylMmY"
+}

@@ -1,0 +1,242 @@
+{
+    "name": "Darkness [Shadow Casting]",
+    "type": "spell",
+    "img": "icons/magic/unholy/barrier-shield-glowing-pink.webp",
+    "effects": [],
+    "folder": "xK6AKiFRAeHhSYt9",
+    "flags": {
+        "itemacro": {
+            "macro": {
+                "data": {
+                    "_id": null,
+                    "name": "Darkness",
+                    "type": "script",
+                    "author": "Jwooh1sMQvmhHrUO",
+                    "img": "icons/svg/dice-target.svg",
+                    "scope": "global",
+                    "command": "MidiMacros.darkness(args)",
+                    "folder": null,
+                    "sort": 0,
+                    "permission": {
+                        "default": 0
+                    },
+                    "flags": {}
+                }
+            }
+        },
+        "dae": {
+            "activeEquipped": false,
+            "alwaysActive": false,
+            "macro": {
+                "name": "Darkness",
+                "img": "icons/magic/unholy/barrier-shield-glowing-pink.webp",
+                "type": "script",
+                "scope": "global",
+                "command": "",
+                "author": "3Yi0HjF4PKCA4vX0",
+                "ownership": {
+                    "default": 3
+                },
+                "_id": null,
+                "folder": null,
+                "sort": 0,
+                "flags": {},
+                "_stats": {
+                    "systemId": null,
+                    "systemVersion": null,
+                    "coreVersion": null,
+                    "createdTime": null,
+                    "modifiedTime": null,
+                    "lastModifiedBy": null
+                }
+            }
+        },
+        "midi-qol": {
+            "onUseMacroName": "",
+            "effectActivation": false,
+            "AoETargetType": "any",
+            "AoETargetTypeIncludeSelf": true,
+            "autoTarget": "default",
+            "itemCondition": "",
+            "reactionCondition": "",
+            "otherCondition": "",
+            "effectCondition": "",
+            "rollAttackPerTarget": "default"
+        },
+        "core": {},
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "noConcentrationCheck": false,
+            "confirmTargets": "default"
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            }
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<p>You can cast the darkness spell at 2nd level using @UUID[Compendium.elkan5e.elkan5e-class-features.Item.IXk7hfrAoVQU3dLJ]{2 ki points}. Your spellcasting ability for this spell is Wisdom.</p><p>Magical darkness spreads from a point you choose within range to fill a 15-foot-radius sphere for the duration. The darkness spreads around corners. A creature with darkvision can't see through this darkness, and nonmagical light can't illuminate it.</p><p>If the point you choose is on an object you are holding or one that isn't being worn or carried, the darkness emanates from the object and moves with it. Completely covering the source of the darkness with an opaque object, such as a bowl or a helm, blocks the darkness.</p><p>If any of this spell's area overlaps with an area of light created by a spell of 2nd level or lower, the spell that created the light is dispelled.</p>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "Elkan 5e",
+            "revision": 1,
+            "rules": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "action",
+            "condition": "",
+            "value": 1
+        },
+        "duration": {
+            "value": "10",
+            "units": "minute"
+        },
+        "target": {
+            "affects": {
+                "choice": false,
+                "count": "",
+                "type": ""
+            },
+            "template": {
+                "units": "ft",
+                "type": "sphere",
+                "size": "15",
+                "contiguous": false,
+                "count": ""
+            }
+        },
+        "range": {
+            "value": "60",
+            "units": "ft",
+            "special": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "ability": "",
+        "level": 2,
+        "school": "ill",
+        "materials": {
+            "value": "Bat fur and a drop of pitch or piece of coal",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": true
+        },
+        "properties": [
+            "vocal",
+            "material",
+            "concentration",
+            "mgc"
+        ],
+        "activities": {
+            "dnd5eactivity000": {
+                "_id": "dnd5eactivity000",
+                "type": "utility",
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [
+                        {
+                            "type": "itemUses",
+                            "target": "Compendium.elkan5e.elkan5e-class-features.Item.IXk7hfrAoVQU3dLJ",
+                            "value": "2",
+                            "scaling": {
+                                "mode": "",
+                                "formula": ""
+                            }
+                        }
+                    ],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "max": "",
+                    "recovery": []
+                },
+                "roll": {
+                    "formula": "",
+                    "name": "",
+                    "prompt": false,
+                    "visible": false
+                },
+                "sort": 0
+            }
+        },
+        "identifier": ""
+    },
+    "ownership": {
+        "default": 0,
+        "ymJDAw0PgXIWIHMH": 3,
+        "MKYWAnkTJr0gkDqT": 3,
+        "3Yi0HjF4PKCA4vX0": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.3",
+        "createdTime": 1726952011445,
+        "modifiedTime": 1727134662835,
+        "lastModifiedBy": "EOoTLydebB6B7YQi"
+    },
+    "_id": "QqLcNLC6z0p5RuiM",
+    "sort": 100000,
+    "_key": "!items!QqLcNLC6z0p5RuiM"
+}

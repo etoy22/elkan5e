@@ -1,0 +1,271 @@
+{
+    "folder": "arbeIFN3TOtTkIOz",
+    "name": "Dazing Blow [Strength] (Fighter)",
+    "type": "feat",
+    "_id": "De9TFquN3tO297pZ",
+    "img": "icons/skills/melee/strike-morningstar-gray.webp",
+    "system": {
+        "description": {
+            "value": "<p><em>Your attack scrambles your target's senses and leaves them slow to react.</em></p><p><strong>Action</strong> - Melee/Ranged -\u00a01 Creature - 1 Round\u00a0- Uses Equal to Proficiency Bonus/Long Rest</p><p>You use your normal attack action, but on your first hit on this turn, you can try to daze your target. Your DC for this ability equals 8 + your proficiency bonus + your STR or DEX modifier (your choice).</p><p><strong>Constitution Save</strong></p><ul><li><p><strong>Failure</strong>: Target is &amp;reference[dazed].</p></li><li><p><strong>Success</strong>: No effect.</p></li></ul>",
+            "chat": ""
+        },
+        "source": {
+            "book": "Elkan 5e",
+            "page": "",
+            "custom": "elkan5e.com/feats",
+            "license": "",
+            "revision": 1,
+            "rules": ""
+        },
+        "uses": {
+            "max": "@attributes.prof",
+            "recovery": [
+                {
+                    "period": "lr",
+                    "type": "recoverAll"
+                }
+            ],
+            "spent": 0
+        },
+        "type": {
+            "value": "feat",
+            "subtype": "manuevers"
+        },
+        "requirements": "Maneuver (Level 8)",
+        "prerequisites": {
+            "level": 7
+        },
+        "properties": [],
+        "activities": {
+            "CHJSx1UlCjfEJZGI": {
+                "type": "save",
+                "activation": {
+                    "type": "action",
+                    "value": 1,
+                    "condition": "",
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [
+                        {
+                            "type": "itemUses",
+                            "value": "1",
+                            "target": "",
+                            "scaling": {}
+                        }
+                    ],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "concentration": false,
+                    "value": "",
+                    "units": "inst",
+                    "special": "",
+                    "override": false
+                },
+                "effects": [
+                    {
+                        "_id": "FY8WigKSbmCgHwIJ",
+                        "onSave": false
+                    }
+                ],
+                "range": {
+                    "units": "self",
+                    "special": "",
+                    "override": false
+                },
+                "target": {
+                    "template": {
+                        "count": "",
+                        "contiguous": false,
+                        "type": "",
+                        "size": "",
+                        "width": "",
+                        "height": "",
+                        "units": ""
+                    },
+                    "affects": {
+                        "count": "",
+                        "type": "",
+                        "choice": false,
+                        "special": ""
+                    },
+                    "prompt": true,
+                    "override": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "max": "",
+                    "recovery": []
+                },
+                "damage": {
+                    "onSave": "none",
+                    "parts": []
+                },
+                "save": {
+                    "ability": "con",
+                    "dc": {
+                        "calculation": "str",
+                        "formula": ""
+                    }
+                },
+                "sort": 0,
+                "name": "",
+                "useConditionText": "",
+                "forceDialog": false,
+                "effectConditionText": "!target.traits.ci.value.has('dazed')",
+                "_id": "CHJSx1UlCjfEJZGI",
+                "img": "",
+                "appliedEffects": [
+                    "FY8WigKSbmCgHwIJ"
+                ]
+            }
+        },
+        "identifier": "",
+        "enchant": {}
+    },
+    "effects": [
+        {
+            "statuses": [
+                "dazed"
+            ],
+            "name": "Dazing Blow",
+            "changes": [],
+            "description": "",
+            "duration": {
+                "seconds": 7,
+                "startTime": null,
+                "rounds": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null,
+                "combat": null
+            },
+            "flags": {
+                "ActiveAuras": {
+                    "isAura": false,
+                    "aura": "None",
+                    "nameOverride": "",
+                    "radius": "",
+                    "alignment": "",
+                    "type": "",
+                    "customCheck": "",
+                    "ignoreSelf": false,
+                    "height": false,
+                    "hidden": false,
+                    "displayTemp": false,
+                    "hostile": false,
+                    "onlyOnce": false,
+                    "wallsBlock": "system"
+                },
+                "core": {
+                    "overlay": false,
+                    "sourceId": "Compendium.elkan5e.elkan5e-feats.Item.De9TFquN3tO297pZ.ActiveEffect.4iF4K8m5ErG3ZmpJ"
+                },
+                "condition-lab-triggler": {
+                    "conditionId": "fcsfAnZIUhJjnpBv"
+                },
+                "times-up": {
+                    "isPassive": false
+                },
+                "dae": {
+                    "disableIncapacitated": false,
+                    "selfTarget": false,
+                    "selfTargetAlways": false,
+                    "dontApply": false,
+                    "stackable": "noneName",
+                    "showIcon": false,
+                    "durationExpression": "",
+                    "macroRepeat": "none",
+                    "specialDuration": [
+                        "turnEndSource"
+                    ],
+                    "enableCondition": "",
+                    "disableCondition": ""
+                }
+            },
+            "_id": "FY8WigKSbmCgHwIJ",
+            "disabled": false,
+            "origin": "Compendium.elkan5e.elkan5e-feats.Item.ACnpE4RJYyX6El8Q",
+            "transfer": false,
+            "tint": "#ffffff",
+            "_stats": {
+                "compendiumSource": "Compendium.elkan5e.elkan5e-class-features.Item.ACnpE4RJYyX6El8Q.ActiveEffect.d77AXyp8Re5GN0y4",
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.0.4",
+                "createdTime": 1729632399059,
+                "modifiedTime": 1729632399059,
+                "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+            },
+            "img": "icons/skills/melee/strike-morningstar-gray.webp",
+            "type": "base",
+            "system": {},
+            "sort": 0,
+            "_key": "!items.effects!De9TFquN3tO297pZ.FY8WigKSbmCgHwIJ"
+        }
+    ],
+    "sort": 0,
+    "ownership": {
+        "default": 0,
+        "3Yi0HjF4PKCA4vX0": 3,
+        "9B4LXF0S1sIudaRa": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "flags": {
+        "midi-qol": {
+            "effectActivation": false,
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "effectCondition": "",
+            "reactionCondition": ""
+        },
+        "midiProperties": {
+            "confirmTargets": "default",
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "rollOther": false,
+            "critOther": false,
+            "offHandWeapon": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "noConcentrationCheck": false,
+            "toggleEffect": false,
+            "ignoreTotalCover": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedUses": 3
+        }
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.4",
+        "createdTime": 1726952008812,
+        "modifiedTime": 1729632418058,
+        "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+    },
+    "_key": "!items!De9TFquN3tO297pZ"
+}

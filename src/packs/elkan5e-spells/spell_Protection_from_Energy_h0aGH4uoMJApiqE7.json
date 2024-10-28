@@ -1,0 +1,260 @@
+{
+    "name": "Protection from Energy",
+    "type": "spell",
+    "img": "icons/magic/defensive/shield-barrier-flaming-diamond-purple-orange.webp",
+    "effects": [],
+    "folder": "Tf2FNuyyu2gEaYOF",
+    "flags": {
+        "dynamiceffects": {
+            "equipActive": true,
+            "alwaysActive": false,
+            "effects": [
+                {
+                    "modSpecKey": "macro.execute",
+                    "value": "ProtectionFromEnergy @target ",
+                    "mode": "+",
+                    "targetSpecific": false,
+                    "id": 1,
+                    "itemId": "KKNq69wypjHpwo1b",
+                    "active": true,
+                    "_targets": [],
+                    "label": "Macro Execute"
+                }
+            ]
+        },
+        "dae": {
+            "activeEquipped": false,
+            "alwaysActive": false,
+            "macro": {
+                "name": "Protection from Energy",
+                "img": "icons/magic/defensive/shield-barrier-flaming-diamond-purple-orange.webp",
+                "type": "script",
+                "scope": "global",
+                "command": "",
+                "author": "3Yi0HjF4PKCA4vX0",
+                "ownership": {
+                    "default": 3
+                },
+                "_id": null,
+                "folder": null,
+                "sort": 0,
+                "flags": {},
+                "_stats": {
+                    "coreVersion": "12.327",
+                    "systemId": "dnd5e",
+                    "systemVersion": "3.2.1",
+                    "createdTime": null,
+                    "modifiedTime": null,
+                    "lastModifiedBy": null,
+                    "compendiumSource": null,
+                    "duplicateSource": null
+                }
+            }
+        },
+        "itemacro": {
+            "macro": {
+                "_data": {
+                    "name": "Protection from Energy",
+                    "type": "script",
+                    "scope": "global",
+                    "command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target \n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\n\n  if (args[0] === \"on\") {\n    new Dialog({\n      title: 'Choose a damage type',\n      content: `\n          <form class=\"flexcol\">\n            <div class=\"form-group\">\n              <select id=\"element\">\n                <option value=\"acid\">Acid</option>\n                <option value=\"cold\">Cold</option>\n                <option value=\"fire\">Fire</option>\n                <option value=\"lightning\">Lightning</option>\n                <option value=\"thunder\">Thunder</option>\n              </select>\n            </div>\n          </form>\n        `,\n      buttons: {\n        yes: {\n          icon: '<i class=\"fas fa-check\"></i>',\n          label: 'Yes',\n          callback: (html) => {\n            let element = html.find('#element').val();\n            let resistances = tactor.data.data.traits.dr.value;\n            resistances.push(element);\n            tactor.update({ \"data.traits.dr.value\": resistances });\n            DAE.setFlag(tactor, 'ProtectionFromEnergy', element);\n            ChatMessage.create({ content: `${tactor.name} gains resistance to ${element}` });\n          }\n        },\n      },\n    }).render(true);\n  }\n  if (args[0] === \"off\") {\n    let element = DAE.getFlag(tactor, 'ProtectionFromEnergy');\n    let resistances = tactor.data.data.traits.dr.value;\n    const index = resistances.indexOf(element);\n    resistances.splice(index, 1);\n    tactor.update({ \"data.traits.dr.value\": resistances });\n    DAE.unsetFlag(tactor, 'ProtectionFromEnergy');\n    ChatMessage.create({ content: `${tactor.name} loses resistance to ${element}`});\n  }",
+                    "author": "E4BVikjIkVl2lL2j"
+                },
+                "data": {
+                    "name": "Protection from Energy",
+                    "type": "script",
+                    "scope": "global",
+                    "command": "//DAE  Macro, no arguments passed\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\n\nlet content = `\n<style>\n    .protEnergy .form-group {\n        display: flex;\n        flex-wrap: wrap;\n        width: 100%;\n        align-items: flex-start;\n      }\n      \n      .protEnergy .radio-label {\n        display: flex;\n        flex-direction: column;\n        align-items: center;\n        text-align: center;\n        justify-items: center;\n        flex: 1 0 20%;\n        line-height: normal;\n      }\n      \n      .protEnergy .radio-label input {\n        display: none;\n      }\n      \n      .protEnergy img {\n        border: 0px;\n        width: 50px;\n        height: 50px;\n        flex: 0 0 50px;\n        cursor: pointer;\n      }\n          \n      /* CHECKED STYLES */\n      .protEnergy [type=radio]:checked + img {\n        outline: 2px solid #f00;\n      }\n    </style>\n    <form class=\"protEnergy\">\n            <div class=\"form-group\" id=\"types\">\n              <label class=\"radio-label\">\n                <input type=\"radio\" name=\"type\" value=\"acid\">\n                <img src=\"icons/magic/acid/dissolve-bone-white.webp\" style=\"border:0px; width: 50px; height:50px;\">\n                  Acid\n              </label>\n              <label class=\"radio-label\">\n                <input type=\"radio\" name=\"type\" value=\"cold\">\n                <img src=\"icons/magic/water/barrier-ice-crystal-wall-jagged-blue.webp\" style=\"border:0px; width: 50px; height:50px;\">\n                Cold\n              </label>\n              <label class=\"radio-label\">\n              <input type=\"radio\" name=\"type\" value=\"fire\">\n              <img src=\"icons/magic/fire/barrier-wall-flame-ring-yellow.webp\" style=\"border:0px; width: 50px; height:50px;\">\n              Fire\n            </label>\n            <label class=\"radio-label\">\n            <input type=\"radio\" name=\"type\" value=\"lightning\">\n            <img src=\"icons/magic/lightning/bolt-strike-blue.webp\" style=\"border:0px; width: 50px; height:50px;\">\n            Lighting\n          </label>\n                <label class=\"radio-label\">\n                <input type=\"radio\" name=\"type\" value=\"thunder\">\n                <img src=\"icons/magic/sonic/explosion-shock-wave-teal.webp\" style=\"border:0px; width: 50px; height:50px;\">\n                Thunder\n              </label>\n            </div>\n          </form>\n`\n\nif (args[0] === \"on\") {\n  new Dialog({\n    title: 'Choose a damage type',\n    content: content,\n    buttons: {\n      yes: {\n        icon: '<i class=\"fas fa-check\"></i>',\n        label: 'Yes',\n        callback: async (html) => {\n          let element = $(\"input[type='radio'][name='type']:checked\").val();\n          let resistances = tactor.data.data.traits.dr.value;\n          resistances.push(element);\n          await tactor.update({ \"data.traits.dr.value\": resistances });\n          await DAE.setFlag(tactor, 'ProtectionFromEnergy', element);\n          ChatMessage.create({ content: `${tactor.name} gains resistance to ${element}` });\n        }\n      },\n    },\n  }).render(true, {width: 400});\n}\nif (args[0] === \"off\") {\n  let element = DAE.getFlag(tactor, 'ProtectionFromEnergy');\n  let resistances = tactor.data.data.traits.dr.value;\n  const index = resistances.indexOf(element);\n  resistances.splice(index, 1);\n  await tactor.update({ \"data.traits.dr.value\": resistances });\n  await DAE.unsetFlag(tactor, 'ProtectionFromEnergy');\n  ChatMessage.create({ content: `${tactor.name} loses resistance to ${element}` });\n}",
+                    "author": "zrPR3wueYsESSBR3",
+                    "_id": null,
+                    "img": "icons/svg/dice-target.svg",
+                    "folder": null,
+                    "sort": 0,
+                    "permission": {
+                        "default": 0
+                    },
+                    "flags": {}
+                },
+                "options": {},
+                "apps": {},
+                "compendium": null
+            }
+        },
+        "midi-qol": {
+            "onUseMacroName": "",
+            "effectActivation": false,
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "effectCondition": ""
+        },
+        "core": {},
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "confirmTargets": "default",
+            "noConcentrationCheck": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedProperties": [
+                "vocal",
+                "somatic",
+                "concentration"
+            ]
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<p class=\"MsoBodyText\"><strong>Buff</strong></p><ul><li><p class=\"MsoBodyText\">The target gains resistance to one damage type of your choice: &amp;reference[acid], &amp;reference[cold], &amp;reference[lightning], &amp;reference[fire], or &amp;reference[thunder].</p></li></ul><p></p><p><strong>Upcasting</strong>: <span style=\"font-family:Signika, sans-serif\">Target one additional creature for each spell level above 3rd.</span></p>",
+            "chat": "<p class=\"MsoBodyText\"><strong>Buff</strong></p><ul><li><p class=\"MsoBodyText\">The target gains resistance to one damage type of your choice: &amp;reference[acid], &amp;reference[cold], &amp;reference[lightning], &amp;reference[fire], or &amp;reference[thunder].</p></li></ul><p></p><p><strong>Upcasting</strong>: <span style=\"font-family:Signika, sans-serif\">Target one additional creature for each spell level above 3rd.</span></p>"
+        },
+        "source": {
+            "custom": "Elkan 5e",
+            "revision": 1,
+            "rules": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "action",
+            "condition": "",
+            "value": 1
+        },
+        "duration": {
+            "value": "1",
+            "units": "hour"
+        },
+        "target": {
+            "affects": {
+                "type": "creature",
+                "count": "1",
+                "choice": false,
+                "special": ""
+            },
+            "template": {
+                "units": "",
+                "contiguous": false,
+                "type": ""
+            }
+        },
+        "range": {
+            "units": "touch",
+            "special": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "ability": "",
+        "level": 3,
+        "school": "abj",
+        "materials": {
+            "value": "",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": true
+        },
+        "properties": [
+            "vocal",
+            "somatic",
+            "concentration"
+        ],
+        "activities": {
+            "fbmww6fiWZtExjdA": {
+                "type": "utility",
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "roll": {
+                    "formula": "",
+                    "name": "",
+                    "prompt": false,
+                    "visible": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": []
+                },
+                "sort": 0,
+                "_id": "fbmww6fiWZtExjdA"
+            }
+        },
+        "identifier": ""
+    },
+    "ownership": {
+        "default": 0,
+        "VJURYym0JQByHBQL": 3,
+        "MKYWAnkTJr0gkDqT": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.4",
+        "createdTime": 1726952203870,
+        "modifiedTime": 1728418215229,
+        "lastModifiedBy": "LhShb9ShQN3ambNF"
+    },
+    "_id": "h0aGH4uoMJApiqE7",
+    "sort": 2600000,
+    "_key": "!items!h0aGH4uoMJApiqE7"
+}

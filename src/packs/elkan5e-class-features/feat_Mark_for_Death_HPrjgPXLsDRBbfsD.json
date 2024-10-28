@@ -1,0 +1,248 @@
+{
+    "_id": "HPrjgPXLsDRBbfsD",
+    "name": "Mark for Death",
+    "type": "feat",
+    "img": "icons/magic/death/projectile-skull-fire-purple.webp",
+    "effects": [
+        {
+            "_id": "7jw1gxiuvosibvcs",
+            "changes": [
+                {
+                    "key": "macro.createItem",
+                    "mode": 0,
+                    "value": "Compendium.elkan5e.elkan5e-class-features.Item.ssrooAciG2Ea66aN",
+                    "priority": 20
+                }
+            ],
+            "disabled": false,
+            "duration": {
+                "startTime": null,
+                "seconds": 60,
+                "combat": null,
+                "rounds": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null
+            },
+            "transfer": false,
+            "flags": {
+                "core": {},
+                "dae": {
+                    "stackable": "none",
+                    "durationExpression": "",
+                    "macroRepeat": "none",
+                    "specialDuration": [],
+                    "transfer": false,
+                    "disableIncapacitated": false,
+                    "selfTarget": false,
+                    "selfTargetAlways": false,
+                    "dontApply": false,
+                    "showIcon": false
+                },
+                "ActiveAuras": {
+                    "isAura": false,
+                    "aura": "None",
+                    "radius": "",
+                    "alignment": "",
+                    "type": "",
+                    "ignoreSelf": false,
+                    "height": false,
+                    "hidden": false,
+                    "displayTemp": false,
+                    "hostile": false,
+                    "onlyOnce": false,
+                    "nameOverride": "",
+                    "customCheck": "",
+                    "wallsBlock": "system"
+                }
+            },
+            "tint": "#ffffff",
+            "origin": null,
+            "name": "Mark for Death (Uses)",
+            "description": "",
+            "statuses": [],
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.0.2",
+                "createdTime": null,
+                "modifiedTime": null,
+                "lastModifiedBy": null
+            },
+            "img": "icons/magic/death/projectile-skull-fire-purple.webp",
+            "type": "base",
+            "system": {},
+            "sort": 0,
+            "_key": "!items.effects!HPrjgPXLsDRBbfsD.7jw1gxiuvosibvcs"
+        }
+    ],
+    "folder": "k63aDnjqpB2qe9Nr",
+    "sort": 1500000,
+    "flags": {
+        "midi-qol": {
+            "effectActivation": false,
+            "itemCondition": "",
+            "reactionCondition": "",
+            "otherCondition": "",
+            "effectCondition": "",
+            "rollAttackPerTarget": "default"
+        },
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "rollOther": false,
+            "critOther": false,
+            "offHandWeapon": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "ignoreTotalCover": false,
+            "confirmTargets": "default",
+            "noConcentrationCheck": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedUses": 2
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<p><strong>Bonus Action</strong> - Self - 1 Minute - 2/Long Rest*</p><p>You enter a state of heightened focus during combat where you focus on one target.</p><p>You can mark a creature you can see when you take the &amp;reference[Attack] action. You deal an extra [[/r 1d4]]* damage with your weapons when you hit a marked target with a weapon attack. This damage is of the same type as your weapon. You can shift your mark to a new target every time you take the Attack action. You can only have one marked target at a time. If you kill your marked target (or knock them unconscious), you won't be able to deal this extra damage until your next turn.</p><p>This ability ends early if you become incapacitated.</p><p>*Your Mark for Death die changes from a d4 to larger dice and you get more uses of this ability when you reach certain levels in this class, as shown in the @UUID[Compendium.elkan5e.elkan5e-class.Item.t9qEzMyJh0kg5Djk]{Ranger Progression Table}.</p><p></p><p><em>This ability is meant to replace the hunter's mark spell. You cannot benefit from the hunter's mark spell while using this ability.</em></p>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "elkan5e.com/ranger",
+            "revision": 1,
+            "rules": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "license": ""
+        },
+        "uses": {
+            "max": "@scale.ranger.mark-for-death-uses",
+            "recovery": [
+                {
+                    "period": "lr",
+                    "type": "recoverAll"
+                }
+            ],
+            "spent": 0
+        },
+        "type": {
+            "value": "class",
+            "subtype": ""
+        },
+        "requirements": "Ranger 2",
+        "activities": {
+            "dnd5eactivity000": {
+                "_id": "dnd5eactivity000",
+                "type": "utility",
+                "activation": {
+                    "type": "bonus",
+                    "value": 1,
+                    "condition": "",
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [
+                        {
+                            "type": "itemUses",
+                            "target": "",
+                            "value": "1",
+                            "scaling": {
+                                "mode": "",
+                                "formula": ""
+                            }
+                        }
+                    ],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "concentration": false,
+                    "units": "",
+                    "special": "",
+                    "override": false
+                },
+                "effects": [
+                    {
+                        "_id": "7jw1gxiuvosibvcs"
+                    }
+                ],
+                "range": {
+                    "units": "self",
+                    "special": "",
+                    "override": false
+                },
+                "target": {
+                    "template": {
+                        "count": "",
+                        "contiguous": false,
+                        "type": "",
+                        "size": "",
+                        "width": "",
+                        "height": "",
+                        "units": ""
+                    },
+                    "affects": {
+                        "count": "",
+                        "type": "self",
+                        "choice": false,
+                        "special": ""
+                    },
+                    "prompt": true,
+                    "override": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "max": "",
+                    "recovery": []
+                },
+                "roll": {
+                    "formula": "",
+                    "name": "",
+                    "prompt": false,
+                    "visible": false
+                },
+                "sort": 0
+            }
+        },
+        "identifier": "",
+        "enchant": {},
+        "prerequisites": {
+            "level": null
+        },
+        "properties": []
+    },
+    "ownership": {
+        "default": 0,
+        "VJURYym0JQByHBQL": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.2",
+        "createdTime": 1726952009431,
+        "modifiedTime": 1726952009431,
+        "lastModifiedBy": "vHqSHJMdmEO6Mk2C"
+    },
+    "_key": "!items!HPrjgPXLsDRBbfsD"
+}
