@@ -1,0 +1,200 @@
+{
+    "name": "Reverse Gravity",
+    "type": "spell",
+    "img": "icons/magic/earth/barrier-stone-explosion-debris.webp",
+    "effects": [],
+    "folder": "H799nI2ov6BcHwd6",
+    "flags": {
+        "midi-qol": {
+            "onUseMacroName": "",
+            "effectActivation": false,
+            "AoETargetType": "any",
+            "AoETargetTypeIncludeSelf": true,
+            "autoTarget": "default",
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "effectCondition": "",
+            "reactionCondition": ""
+        },
+        "core": {},
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "confirmTargets": "default",
+            "noConcentrationCheck": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedProperties": [
+                "vocal",
+                "somatic",
+                "material",
+                "concentration"
+            ]
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<div class=\"rd__b  rd__b--3\"><p>This spell reverses gravity in a 50-foot-radius, 100-foot-high cylinder centered on a point within range. All creatures and objects that aren't somehow anchored to the ground in the area fall upward and reach the top of the area when you cast this spell. A creature can make a Dexterity saving throw to grab onto a fixed object it can reach, thus avoiding the fall.</p><div class=\"rd__spc-inline-post\"></div><p>If some solid object (such as a ceiling) is encountered in this fall, falling objects and creatures strike it just as they would during a normal downward fall. If an object or creature reaches the top of the area without striking anything, it remains there, oscillating slightly, for the duration.</p><p>At the end of the duration, affected objects and creatures fall back down.</p></div>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "Elkan 5e",
+            "revision": 1,
+            "rules": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "action",
+            "condition": "",
+            "value": 1
+        },
+        "duration": {
+            "value": "1",
+            "units": "minute"
+        },
+        "target": {
+            "affects": {
+                "choice": false,
+                "count": "",
+                "type": ""
+            },
+            "template": {
+                "units": "ft",
+                "type": "cylinder",
+                "size": "50",
+                "contiguous": false,
+                "height": "",
+                "count": ""
+            }
+        },
+        "range": {
+            "value": "100",
+            "units": "ft",
+            "special": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "ability": "",
+        "level": 7,
+        "school": "trs",
+        "materials": {
+            "value": "a lodestone and iron filings",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": true
+        },
+        "properties": [
+            "vocal",
+            "somatic",
+            "material",
+            "concentration"
+        ],
+        "activities": {
+            "LPsrAUMBUAiKcHXh": {
+                "type": "save",
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "damage": {
+                    "onSave": "half",
+                    "parts": []
+                },
+                "save": {
+                    "ability": "dex",
+                    "dc": {
+                        "calculation": "spellcasting",
+                        "formula": ""
+                    }
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": []
+                },
+                "sort": 0,
+                "_id": "LPsrAUMBUAiKcHXh"
+            }
+        },
+        "identifier": ""
+    },
+    "ownership": {
+        "default": 0,
+        "VJURYym0JQByHBQL": 3,
+        "ymJDAw0PgXIWIHMH": 3,
+        "MKYWAnkTJr0gkDqT": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.4",
+        "createdTime": 1726952198366,
+        "modifiedTime": 1728958000180,
+        "lastModifiedBy": "LhShb9ShQN3ambNF"
+    },
+    "_id": "DR28lbu7yQr8myGX",
+    "sort": 800000,
+    "_key": "!items!DR28lbu7yQr8myGX"
+}

@@ -1,0 +1,238 @@
+{
+    "folder": "hs1kzC3J5ULWhDl5",
+    "name": "Breath Weapon (Black, Constitution)",
+    "type": "feat",
+    "img": "icons/magic/acid/projectile-flame-smoke-green.webp",
+    "system": {
+        "description": {
+            "value": "<p><em>You spew a jet of &amp;reference[acid].</em></p><p><strong>Action</strong> - 30 ft. line (5 ft. wide) -\u00a01/Long Rest - Magical</p><p><strong>Dexterity</strong> Saving Throw</p><ul><li><p><strong>Failure:</strong>\u00a0[[/damage 3d6 acid]] damage*</p></li><li><p><strong>Success:</strong> half damage</p></li></ul><p>\u200b</p><p><strong>*At Higher Levels:</strong> This ability's damage increases by 3d6 when you reach a total character or creature level of 5th level (\u00a0[[/damage 6d6 acid]]{6d6}), 11th level (\u00a0[[/damage 9d6 acid]]{9d6}), and 17th level (\u00a0[[/damage 12d6 acid]]{12d6}).</p>",
+            "chat": ""
+        },
+        "source": {
+            "book": "Elkan 5e",
+            "page": "",
+            "custom": "elkan5e.com/ancestrybackground",
+            "license": "",
+            "revision": 1,
+            "rules": ""
+        },
+        "uses": {
+            "max": "1",
+            "recovery": [
+                {
+                    "period": "lr",
+                    "type": "recoverAll"
+                }
+            ],
+            "spent": 0
+        },
+        "type": {
+            "value": "race",
+            "subtype": ""
+        },
+        "requirements": "Black Dragonborn",
+        "properties": [
+            "mgc"
+        ],
+        "activities": {
+            "dnd5eactivity000": {
+                "name": "",
+                "img": "",
+                "target": {
+                    "affects": {
+                        "type": "any"
+                    }
+                },
+                "consumption": {
+                    "targets": [
+                        {
+                            "type": "itemUses",
+                            "value": "1",
+                            "target": "",
+                            "scaling": {}
+                        }
+                    ]
+                },
+                "range": {
+                    "units": "self"
+                },
+                "damage": {
+                    "parts": [
+                        {
+                            "custom": {
+                                "enabled": true,
+                                "formula": "(max(@scale.dragonborn.breath-weapon,(3*@scale.draconic-origin.breath-weapon)d6))"
+                            },
+                            "number": null,
+                            "denomination": null,
+                            "bonus": "",
+                            "types": [
+                                "acid"
+                            ],
+                            "scaling": {
+                                "number": 1
+                            }
+                        }
+                    ]
+                },
+                "appliedEffects": []
+            },
+            "WqQNm2M50u1uVuft": {
+                "type": "save",
+                "_id": "WqQNm2M50u1uVuft",
+                "sort": 0,
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false,
+                    "condition": ""
+                },
+                "consumption": {
+                    "scaling": {
+                        "allowed": false
+                    },
+                    "spellSlot": true,
+                    "targets": [
+                        {
+                            "type": "itemUses",
+                            "value": "1",
+                            "target": "",
+                            "scaling": {}
+                        }
+                    ]
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false,
+                    "units": "self",
+                    "special": ""
+                },
+                "target": {
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft",
+                        "type": "line",
+                        "size": "30",
+                        "width": "5",
+                        "count": ""
+                    },
+                    "affects": {
+                        "choice": false,
+                        "count": "",
+                        "type": "any",
+                        "special": ""
+                    },
+                    "override": false,
+                    "prompt": true
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "damage": {
+                    "parts": [
+                        {
+                            "custom": {
+                                "enabled": true,
+                                "formula": "max(@scale.dragonborn.breath-weapon,(2*@scale.draconic-origin.breath-weapon)d6)"
+                            },
+                            "number": null,
+                            "denomination": 0,
+                            "bonus": "",
+                            "types": [
+                                "acid"
+                            ],
+                            "scaling": {
+                                "number": 1
+                            }
+                        }
+                    ],
+                    "onSave": "half"
+                },
+                "save": {
+                    "ability": "dex",
+                    "dc": {
+                        "calculation": "con",
+                        "formula": ""
+                    }
+                },
+                "name": "",
+                "img": "",
+                "appliedEffects": []
+            }
+        },
+        "identifier": "",
+        "enchant": {},
+        "prerequisites": {
+            "level": null
+        }
+    },
+    "effects": [],
+    "ownership": {
+        "default": 0,
+        "cwIJ7W3XRXrY0zj2": 3,
+        "9B4LXF0S1sIudaRa": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "flags": {
+        "midi-qol": {
+            "effectActivation": false,
+            "AoETargetType": "any",
+            "AoETargetTypeIncludeSelf": true,
+            "autoTarget": "default",
+            "removeAttackDamageButtons": "default",
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "effectCondition": ""
+        },
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": true,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "rollOther": false,
+            "critOther": false,
+            "offHandWeapon": false,
+            "magicdam": true,
+            "magiceffect": true,
+            "concentration": false,
+            "noConcentrationCheck": false,
+            "toggleEffect": false,
+            "ignoreTotalCover": false,
+            "confirmTargets": "default",
+            "saveDamage": "halfdam",
+            "bonusSaveDamage": "default"
+        },
+        "core": {},
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedUses": 1
+        }
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.3",
+        "createdTime": 1726952222279,
+        "modifiedTime": 1727139949255,
+        "lastModifiedBy": "SJEoVYnEWZ67g3Ni"
+    },
+    "_id": "Ov4Vqz3SZ6WgjBnR",
+    "sort": 1500000,
+    "_key": "!items!Ov4Vqz3SZ6WgjBnR"
+}

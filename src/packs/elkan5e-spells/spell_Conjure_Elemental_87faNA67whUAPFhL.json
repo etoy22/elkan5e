@@ -1,0 +1,218 @@
+{
+    "name": "Conjure Elemental",
+    "type": "spell",
+    "img": "icons/magic/fire/elemental-fire-flying.webp",
+    "effects": [],
+    "folder": "PnZJTE6T4UQY81Pm",
+    "flags": {
+        "core": {},
+        "midi-qol": {
+            "effectActivation": false,
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "effectCondition": "",
+            "reactionCondition": ""
+        },
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "confirmTargets": "default",
+            "noConcentrationCheck": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedProperties": [
+                "vocal",
+                "somatic",
+                "material",
+                "concentration"
+            ]
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<p>You call forth an elemental servant. Choose an area of air, earth, fire, or water that fills a 10-foot cube within range. An elemental of challenge rating 5 or lower appropriate to the area you chose appears in an unoccupied space within 10 feet of it. For example, a fire elemental emerges from a bonfire, and an earth elemental rises up from the ground. The elemental disappears when it drops to 0 hit points or when the spell ends.</p><p>The elemental is friendly to you and your companions for the duration. Roll initiative for the elemental, which has its own turns. It obeys any verbal commands that you issue to it (no action required by you). If you don't issue any commands to the elemental, it defends itself from hostile creatures but otherwise takes no actions.</p><p>If your concentration is broken, the elemental doesn't disappear. Instead, you lose control of the elemental, it becomes hostile toward you and your companions, and it might attack. An uncontrolled elemental can't be dismissed by you, and it disappears 1 hour after you summoned it.</p><p></p><p><strong>Upcasting:</strong>\u00a0Increase the CR of the summoned creature by 1 for each spell level above 5th.</p>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "Elkan 5e",
+            "revision": 1,
+            "rules": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "minute",
+            "condition": "an area of air, earth, fire, or water that fills a 10-foot cube within range",
+            "value": 1
+        },
+        "duration": {
+            "value": "1",
+            "units": "hour"
+        },
+        "target": {
+            "affects": {
+                "type": "space",
+                "count": "1",
+                "choice": false,
+                "special": ""
+            },
+            "template": {
+                "units": "",
+                "contiguous": false,
+                "type": ""
+            }
+        },
+        "range": {
+            "value": "90",
+            "units": "ft",
+            "special": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "ability": "",
+        "level": 5,
+        "school": "con",
+        "materials": {
+            "value": "Burning incense for air, soft clay for earth, sulfur and phosphorus for fire, or water and sand for water.",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": true
+        },
+        "properties": [
+            "vocal",
+            "somatic",
+            "material",
+            "concentration"
+        ],
+        "activities": {
+            "qQrUseyVn2kCzLWz": {
+                "type": "summon",
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "bonuses": {
+                    "ac": "",
+                    "hd": "",
+                    "hp": "",
+                    "attackDamage": "",
+                    "saveDamage": "",
+                    "healing": ""
+                },
+                "creatureSizes": [],
+                "creatureTypes": [],
+                "match": {
+                    "attacks": false,
+                    "proficiency": false,
+                    "saves": false
+                },
+                "profiles": [
+                    {
+                        "count": "1",
+                        "cr": "@item.level",
+                        "name": "",
+                        "_id": "BFnNfSl7Ojcw4Rm2",
+                        "uuid": "",
+                        "level": {
+                            "min": null,
+                            "max": null
+                        },
+                        "types": [
+                            "elemental"
+                        ]
+                    }
+                ],
+                "summon": {
+                    "identifier": "",
+                    "mode": "cr",
+                    "prompt": true
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": []
+                },
+                "sort": 0,
+                "effects": [],
+                "_id": "qQrUseyVn2kCzLWz"
+            }
+        },
+        "identifier": ""
+    },
+    "ownership": {
+        "default": 0,
+        "ymJDAw0PgXIWIHMH": 3,
+        "MKYWAnkTJr0gkDqT": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.4",
+        "createdTime": 1726952197402,
+        "modifiedTime": 1728957405655,
+        "lastModifiedBy": "LhShb9ShQN3ambNF"
+    },
+    "_id": "87faNA67whUAPFhL",
+    "sort": 1000000,
+    "_key": "!items!87faNA67whUAPFhL"
+}
