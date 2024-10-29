@@ -4,7 +4,7 @@
   "description": "A set of compendiums for adding Elkan 5e content to your Foundry VTT games using the DND5E game system. Contains classes, subclasses, a new ancestry and background system, items, and more.",
   "version": "1.12.8",
   "compatibility": {
-    "minimum": "11",
+    "minimum": "12",
     "verified": "12.331"
   },
   "authors": [
@@ -47,7 +47,7 @@
     {
       "name": "elkan5e-class-features",
       "label": "Elkan 5e Class Features",
-      "path": "packs/elkan5e-classFeatures",
+      "path": "packs/elkan5e-class-features",
       "type": "Item",
       "system": "dnd5e",
       "ownership": {
@@ -74,9 +74,9 @@
       }
     },
     {
-      "name": "elkan-5e-creature-features",
+      "name": "elkan5e-creature-features",
       "label": "Elkan 5e Creature Features",
-      "path": "packs/elkan-5e-creature-features",
+      "path": "packs/elkan5e-creature-features",
       "type": "Item",
       "system": "dnd5e",
       "ownership": {
@@ -138,7 +138,7 @@
       }
     },
     {
-      "name": "elkan5e-mundane-items",
+      "name": "elkan5e-equipment",
       "label": "Elkan 5e Equipment",
       "path": "packs/elkan5e-equipment",
       "type": "Item",
@@ -219,9 +219,9 @@
       }
     },
     {
-      "name": "elkan-5e-feats",
+      "name": "elkan5e-feats",
       "label": "Elkan 5e Feats",
-      "path": "packs/elkan-5e-feats",
+      "path": "packs/elkan5e-feats",
       "type": "Item",
       "system": "dnd5e",
       "ownership": {
@@ -237,9 +237,9 @@
       }
     },
     {
-      "name": "elkan-5e-ancestries",
+      "name": "elkan5e-ancestries",
       "label": "Elkan 5e Ancestries",
-      "path": "packs/elkan-5e-ancestries",
+      "path": "packs/elkan5e-ancestries",
       "type": "Item",
       "system": "dnd5e",
       "ownership": {
@@ -256,9 +256,9 @@
       }
     },
     {
-      "name": "elkan-5e-summoned-creatures",
+      "name": "elkan5e-summoned-creatures",
       "label": "Elkan 5e Summoned Creatures",
-      "path": "packs/elkan-5e-summoned-creatures",
+      "path": "packs/elkan5e-summoned-creatures",
       "type": "Actor",
       "system": "dnd5e",
       "ownership": {
@@ -288,11 +288,11 @@
           "sorting": "a",
           "color": "#512323",
           "packs": [
-            "elkan-5e-ancestries",
+            "elkan5e-ancestries",
             "elkan5e-background",
             "elkan5e-class-features",
             "elkan5e-class",
-            "elkan-5e-feats",
+            "elkan5e-feats",
             "elkan5e-subclass"
           ],
           "folders": []
@@ -302,8 +302,8 @@
           "sorting": "a",
           "color": "#512323",
           "packs": [
-            "elkan-5e-creature-features",
-            "elkan-5e-summoned-creatures",
+            "elkan5e-creature-features",
+            "elkan5e-summoned-creatures",
             "elkan5e-creatures"
           ],
           "folders": []
@@ -313,7 +313,7 @@
           "sorting": "a",
           "color": "#512323",
           "packs": [
-            "elkan5e-mundane-items",
+            "elkan5e-equipment",
             "elkan5e-magic-items",
             "elkan5e-spells"
           ],
@@ -336,6 +336,11 @@
   "relationships": {
     "recommends": [
       {
+        "id": "midi-qol",
+        "type": "module",
+        "compatibility": {}
+      },
+      {
         "id": "ActiveAuras",
         "type": "module",
         "compatibility": {}
@@ -351,32 +356,27 @@
         "id": "dnd5e",
         "type": "system",
         "compatibility": {
-          "minimum": "3.0.0",
-          "verified": "3.3.1",
-          "maximum": "3.9.9"
+          "minimum": "4.0.0",
+          "verified": "4.0.4",
+          "maximum": "4.0.9"
         }
       }
     ],
     "requires": [
       {
-        "id": "dae",
-        "type": "module",
-        "compatibility": {}
-      },
-      {
-        "id": "midi-qol",
-        "type": "module",
-        "compatibility": {}
-      },
-      {
         "id": "times-up",
+        "type": "module",
+        "compatibility": {}
+      },
+      {
+        "id": "dae",
         "type": "module",
         "compatibility": {}
       }
     ]
   },
   "esmodules": [
-    "module/elkan5e.mjs"
+    "src/elkan5e.mjs"
   ],
   "languages": [
     {
@@ -394,6 +394,23 @@
       "flags": {}
     }
   ],
+  "flags": {
+    "dnd5e": {
+      "sourceBooks": {
+        "Elkan 5e": "Elkan 5e"
+      },
+      "spellLists": [
+        "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.bOMm72Xmest4hBy4",
+        "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.POm2RctcMrK11sTq",
+        "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.816dAxycI1cXYrCa",
+        "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.KewWBKn532POzyW4",
+        "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.lAhMRphO3T6NphaH",
+        "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.AhDBGnMKm7VqbOzs",
+        "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.eIAPSko797Cjf0Yb",
+        "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.MNWLud81msaiZukw"
+      ]
+    }
+  },
   "readme": "https://github.com/etoy22/elkan5e/blob/main/README.md",
   "changelog": "https://github.com/etoy22/elkan5e/blob/main/CHANGELOG.md",
   "url": "https://github.com/etoy22/elkan5e",
