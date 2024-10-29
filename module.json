@@ -2,7 +2,7 @@
   "id": "elkan5e",
   "title": "Elkan 5e",
   "description": "A set of compendiums for adding Elkan 5e content to your Foundry VTT games using the DND5E game system. Contains classes, subclasses, a new ancestry and background system, items, and more.",
-  "version": "1.12.9.1",
+  "version": "1.12.9.3",
   "compatibility": {
     "minimum": "12",
     "verified": "12.331"
@@ -47,7 +47,7 @@
     {
       "name": "elkan5e-class-features",
       "label": "Elkan 5e Class Features",
-      "path": "packs/elkan5e-class-features",
+      "path": "packs/elkan5e-classFeatures",
       "type": "Item",
       "system": "dnd5e",
       "ownership": {
@@ -138,7 +138,7 @@
       }
     },
     {
-      "name": "elkan5e-equipment",
+      "name": "elkan5e-mundane-items",
       "label": "Elkan 5e Equipment",
       "path": "packs/elkan5e-equipment",
       "type": "Item",
@@ -313,7 +313,7 @@
           "sorting": "a",
           "color": "#512323",
           "packs": [
-            "elkan5e-equipment",
+            "elkan5e-mundane-items",
             "elkan5e-magic-items",
             "elkan5e-spells"
           ],
@@ -335,11 +335,6 @@
   ],
   "relationships": {
     "recommends": [
-      {
-        "id": "midi-qol",
-        "type": "module",
-        "compatibility": {}
-      },
       {
         "id": "ActiveAuras",
         "type": "module",
@@ -364,19 +359,24 @@
     ],
     "requires": [
       {
-        "id": "times-up",
+        "id": "dae",
         "type": "module",
         "compatibility": {}
       },
       {
-        "id": "dae",
+        "id": "midi-qol",
+        "type": "module",
+        "compatibility": {}
+      },
+      {
+        "id": "times-up",
         "type": "module",
         "compatibility": {}
       }
     ]
   },
   "esmodules": [
-    "src/elkan5e.mjs"
+    "module/elkan5e.mjs"
   ],
   "languages": [
     {
@@ -394,27 +394,10 @@
       "flags": {}
     }
   ],
-  "flags": {
-    "dnd5e": {
-      "sourceBooks": {
-        "Elkan 5e": "Elkan 5e"
-      },
-      "spellLists": [
-        "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.bOMm72Xmest4hBy4",
-        "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.POm2RctcMrK11sTq",
-        "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.816dAxycI1cXYrCa",
-        "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.KewWBKn532POzyW4",
-        "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.lAhMRphO3T6NphaH",
-        "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.AhDBGnMKm7VqbOzs",
-        "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.eIAPSko797Cjf0Yb",
-        "Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.MNWLud81msaiZukw"
-      ]
-    }
-  },
   "readme": "https://github.com/etoy22/elkan5e/blob/main/README.md",
   "changelog": "https://github.com/etoy22/elkan5e/blob/main/CHANGELOG.md",
   "url": "https://github.com/etoy22/elkan5e",
   "bugs": "https://github.com/etoy22/elkan5e/issues",
-  "manifest": "https://github.com/etoy22/elkan5e/releases/download/v1.12.8/module.json",
-  "download": "https://github.com/etoy22/elkan5e/releases/download/v1.12.8/module.zip"
+  "manifest": "https://github.com/etoy22/elkan5e/releases/download/v1.12.9.3/module.json",
+  "download": "https://github.com/etoy22/elkan5e/releases/download/v1.12.9.3/module.zip"
 }
