@@ -147,7 +147,8 @@ export function icons(){
     CONFIG.statusEffects.find(effect => effect.id === "silenced").img="modules/elkan5e/icons/silenced.svg"
     CONFIG.statusEffects.find(effect => effect.id === "coverHalf").img= "modules/elkan5e/icons/cover-half.svg"
     CONFIG.statusEffects.find(effect => effect.id === "coverThreeQuarters").img= "modules/elkan5e/icons/cover-three-quarters.svg"
-    
+    CONFIG.statusEffects.find(effect => effect.id === "coverTotal").img= "modules/elkan5e/icons/cover-full.svg"
+
     
     
     CONFIG.statusEffects.find(effect => effect.id === "coverHalf").changes = [
@@ -193,6 +194,12 @@ export function icons(){
         CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "transformed");
         CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "sleeping");
         CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "stable");
+		CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "burning");
+		CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "dehydration");
+		CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "falling");
+		CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "malnutrition");
+		CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => effect.id !== "suffocation");
+
     }
 
 
