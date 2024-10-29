@@ -1,4 +1,118 @@
 # Changelog
+# v1.12.9
+## **Breaking Change**
+**Existing characters using Elkan 5e will need to be recreated to work with this update. Due to extensive changes, many old features were incompatible with v4 of DND and had to be recreated from scratch. All the new features now use the NEW Activities system.**
+## Ancestry
+- Dragonborn
+	- Consolidated the two versions dragon breath weapons
+- Minotaur:
+	- A minotaur's gore attack now pushes a target 5 ft. once per turn.
+## Backgrounds
+- 
+## Classes
+- Spellcasters now will now be able to see their amount of spells they can prepare'
+- Now have Primary Ability marked
+- All Spellcasting Classes now have their tables located in their Spellcasting Feature
+
+ **[Barbarian](https://www.elkan5e.com/barbarian)**
+- Bloodrager
+	- Has been Reworked
+	- Move damage resistance to 10
+	- Remove Seething Mist
+	- Seething Blood not reaction, 1/turn
+	- Add War Casting at level 6
+	- Seething Blood ranged decreased to 10 ft. but now occurs When Hit by a Weapon Attack and not reaction and doesn't take reaction 
+	 
+**[Bard](https://www.elkan5e.com/bard)**
+- Fix Bardic Inspiration short rest recharge
+
+**[Cleric](https://www.elkan5e.com/cleric)**
+- 
+
+**[Druid](https://www.elkan5e.com/druid)**
+- Increased speed increase on Herd's Momentum to 15 ft
+
+**[Fighter](https://www.elkan5e.com/fighter)**
+- Subclass Example
+	- 
+
+**[Monk](https://www.elkan5e.com/monk)**
+- 
+
+**[Paladin](https://www.elkan5e.com/paladin)**
+- Consolidated elemental smite
+
+**[Ranger](https://www.elkan5e.com/ranger)**
+- Beasmaster
+	- Spell to restore companion was cleaned up
+
+**[Rogue](https://www.elkan5e.com/rogue)**
+- Assasin:
+	- Now Identifies as a rogue
+- Duelist:
+	- New ability at level 6: Close the Gap, replacing Face Me!
+
+**[Sorcerer](https://www.elkan5e.com/sorcerer)**
+- Distant Spell: Inverted the metamagic so that making a touch spell have a range of 30 ft. is free and doubling the range of a spell costs 1 sorcery point.
+
+**[Warlock](https://www.elkan5e.com/warlock)**
+- Pact of the Chain
+	- Spell to restore their familiar was cleaned up
+- Pact of the Warrior
+	- Thirsting Weapon has been Implementent
+- Fiend Patron
+	- Dark One's Blessing can now only be used 3/Long Rest but doesn't damage self after use
+**[Wizard](https://www.elkan5e.com/)**
+- Evoker:
+	- Now adds int mod to all spell damage at level 6
+	- New 'Closing Blast' ability at level 10
+- Necromancer
+	- Life Drain on Spectral Graveguard was fixed to be a save and not an Attack
+## Equipment
+- **For those who use the New Weapon Mastery System all Elkan 5e weapons now have their proper Mastery**
+- Sickles are now finesse weapons.
+- Blowguns now deal 1d4 piercing damage instead of 1.
+- Increased prices of many lower-price weapons. All weapons are now worth at least 1 gold.
+- Decreased price of scimitars and hand crossbows.
+- Adjusted weight on a few weapons.
+- Adjusted price on magic items
+- Blowgun now has a base weapon
+- Pike now says that it is two handed in the reference area
+- Tools have been fixed
+## Feats
+- Consolidated the two versions combat manuevers
+- [War Casting](https://www.elkan5e.com/feats/war-casting) feat now 3/Long Rest
+- [Shifty](https://www.elkan5e.com/feats/shifty) now references Attack of Opportunity
+## Game Rules
+- Added Spell Scroll Description and Pricing
+## Spells
+- **Spells cast as rituals now have an activity that won't take a spell slot**
+- Now say if they are Melee Spell Attacks or Ranged Spell Attacks in the description
+- Phantom Steed casting time of 1 minute (original time)
+- Alarm and Augury casting time 1 action
+- 1 Minute rituals: All spells that take 1 action to cast
+- [Life Drain](https://www.elkan5e.com/spells/life-drain) now drains a creature on successful save
+- [Well of Corruption](https://www.elkan5e.com/spells/well-of-corruption) - now a one-time drain and area hazard that prevents healing
+- [Floating Disk](https://www.elkan5e.com/spells/floating-disk) updated
+- Elkan Classes will now be listed on top of Elkan Spells for which spells they have access to
+## UI
+- All of Elkan stuff has now been integrated with the compendium browser
+- Tons of clarity and formatting edits
+- Change Species Feature back to Ancestry in the code
+- Status Effect icons in Foundry
+	- New Full Cover Icon
+	- Remove icons for Burning, Dehydration, Falling, Malnutrition, Suffocation and put them into the area with other settings
+- Lots of Referencing Updates
+	- Concentration Referencing now works with Elkan's concentration
+- Elkan Actions are now listed in the action list for features and equipment
+- Spell Schools for all spells now exists
+## Misc
+- Effects should not expire early when they have a duration of 1 round
+- Abilities now grant the name of the effect in addition to the result like Animal Friendship and Charmed (To clean up and understand where effects are coming from)
+- Add generic Disadvantage and Advantage conditions
+- Fixed Use Custom Conditions having SRD Conditions and SRD Condition + Extra Conditions being mixed up
+## Bug Fixes
+- A lot of Bug Fixes
 
 # v1.12.8
 ## Classes
