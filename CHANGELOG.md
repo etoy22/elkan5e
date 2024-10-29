@@ -7,8 +7,6 @@
 	- Consolidated the two versions dragon breath weapons
 - Minotaur:
 	- A minotaur's gore attack now pushes a target 5 ft. once per turn.
-## Backgrounds
-- 
 ## Classes
 - Spellcasters now will now be able to see their amount of spells they can prepare'
 - Now have Primary Ability marked
@@ -26,18 +24,8 @@
 **[Bard](https://www.elkan5e.com/bard)**
 - Fix Bardic Inspiration short rest recharge
 
-**[Cleric](https://www.elkan5e.com/cleric)**
-- 
-
 **[Druid](https://www.elkan5e.com/druid)**
 - Increased speed increase on Herd's Momentum to 15 ft
-
-**[Fighter](https://www.elkan5e.com/fighter)**
-- Subclass Example
-	- 
-
-**[Monk](https://www.elkan5e.com/monk)**
-- 
 
 **[Paladin](https://www.elkan5e.com/paladin)**
 - Consolidated elemental smite
