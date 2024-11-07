@@ -1,4 +1,4 @@
-# Elkan 5e
+# Elkan 5e Automated Content
 ![GitHub Downloads (specific asset, all releases)](https://img.shields.io/github/downloads/etoy22/elkan5e/module.zip?color=blue)
 
 Welcome to the Elkan 5e Foundry Package! Here you can download the Elkan 5e module for Foundry's DnD 5e System. The module will add most Elkan 5e content to your Foundry game worlds. We also have a website which you can go see <a href = "https://elkan5e.com" title="Website">Elkan 5e.</a> 
