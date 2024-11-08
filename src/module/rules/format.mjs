@@ -22,9 +22,11 @@ export function ruleType(){
 export function activation(){
     //TODO: CONFIG.DND5E.activityActivationTypes
     CONFIG.DND5E.abilityActivationTypes.duringattack = "As Part of a Weapon Attack"
+	CONFIG.DND5E.abilityActivationTypes.once = "Once Per Turn"
     CONFIG.DND5E.abilityActivationTypes.shortrest = "During a Short Rest"
     CONFIG.DND5E.abilityActivationTypes.longrest = "During a Long Rest"
     CONFIG.DND5E.abilityActivationTypes.nocost = "No Action Cost"
+	CONFIG.DND5E.staticAbilityActivationTypes.once = "Once Per Turn"
     CONFIG.DND5E.staticAbilityActivationTypes.duringattack = "As Part of a Weapon Attack"
     CONFIG.DND5E.staticAbilityActivationTypes.shortrest = "During a Short Rest"
     CONFIG.DND5E.staticAbilityActivationTypes.longrest = "During a Long Rest"
@@ -32,9 +34,14 @@ export function activation(){
     
     //I think this is for the new version
     CONFIG.DND5E.activityActivationTypes.duringattack = {
+        "label": "Once Per Turn",
+        "group": "DND5E.ACTIVATION.Category.Standard"
+    }
+	CONFIG.DND5E.activityActivationTypes.once = {
         "label": "As Part of a Weapon Attack",
         "group": "DND5E.ACTIVATION.Category.Standard"
     }
+	
     CONFIG.DND5E.activityActivationTypes.shortrest = {
         "label": "During a Short Rest",
         "group": "DND5E.ACTIVATION.Category.Time",
