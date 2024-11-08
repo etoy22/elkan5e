@@ -3,6 +3,7 @@
  * one that we had to do a full replacement
  */
 export function tools(){
+	const tool = game.settings.get("elkan5e", "tools");
     console.log("Elkan 5e  |  Initializing Tools")
     
     //Adding Tool Types
@@ -50,7 +51,7 @@ export function tools(){
     CONFIG.DND5E.tools.forg.id = "Compendium.elkan5e.elkan5e-equipment.Item.dFa31G5pfZ3FGcjk";
     
     //Removing Tools
-    if(!tools){
+    if(!tool){
         console.log("Elkan 5e  |  Removing Tools")
         delete CONFIG.DND5E.tools.glassblower
         delete CONFIG.DND5E.tools.potter
