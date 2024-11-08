@@ -56,6 +56,7 @@ for folder_path in folder_paths:
             mod3 = replace_in_json(mod2, 'elkan-5e-feats', 'elkan5e-feats')
             mod4 = replace_in_json(mod3, 'elkan-5e-summoned-creatures', 'elkan5e-summoned-creatures')
             mod5 = replace_in_json(mod4, 'elkan5e-mundane-items', 'elkan5e-equipment')
+            mod6 = replace_in_json(mod5, 'elkan5e-journal-entries', 'elkan5e-lore')
             modified_data = mod5
 
             # Write the modified data back to the file
