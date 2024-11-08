@@ -25,9 +25,8 @@ jobs:
         id: get-version
         run: |
           version=$(git log -1 --pretty=%B | grep -o -E '[v]?[0-9]+\.[0-9]+\.[0-9]+(\.[0-9]+)?' | sed 's/^v//')
-          echo "v#version=$version" >> $GITHUB_OUTPUT
+          echo "version=$version" >> $GITHUB_OUTPUT
           echo "Extracted version: $version"
-
 
       - name: Set Release Notes from Commit Description
         id: set-release-notes-github
@@ -45,26 +44,25 @@ jobs:
           echo "::set-output name=release-notes-discord::$DISCORD_NOTES"
 
       - name: Update module.json with Version
-        run: node .github/workflows/update-module.js ${{ steps.get-version.outputs.version }}
+        run: node .github/workflows/update-module.js "v${{ steps.get-version.outputs.version }}"
 
       - name: Zip Files
         working-directory: ./
         run: |
-          zip -r ./module.zip ./ -x "README.md" "CHANGELOG.md" "LICENSE.md" "TODO.md" ".gitattributes" ".gitignore" 
-
+          zip -r ./module.zip ./ -x "README.md" "CHANGELOG.md" "LICENSE.md" "TODO.md" ".gitattributes" ".gitignore"
 
       - name: Create Release
         id: create-release
         uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
-          name: ${{ steps.get-version.outputs.version }}
+          name: "v${{ steps.get-version.outputs.version }}"
           draft: false
           prerelease: false
           body: ${{ env.release-notes-github }}
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: './module.zip, ./module.json'
-          tag: ${{ steps.get-version.outputs.version }}
+          tag: "v${{ steps.get-version.outputs.version }}"
 
       - name: Release Foundry Package
         run: |
@@ -75,10 +73,10 @@ jobs:
           -d '{
             "id": "'"elkan5e"'",
             "release": {
-              "version": "'"${{ steps.get-version.outputs.version }}"'",
+              "version": "'"v${{ steps.get-version.outputs.version }}"'",
               "manifest": "'"${REPO_URL}/releases/latest/download/module.json"'",
-              "download": "'"${REPO_URL}/releases/download/${{ steps.get-version.outputs.version }}/module.zip"'",
-              "notes": "'"${REPO_URL}/releases/tag/${{ steps.get-version.outputs.version }}"'",
+              "download": "'"${REPO_URL}/releases/download/v${{ steps.get-version.outputs.version }}/module.zip"'",
+              "notes": "'"${REPO_URL}/releases/tag/v${{ steps.get-version.outputs.version }}"'",
               "compatibility": {
                 "minimum": "'"12"'",
                 "verified": "'"12.331"'",
@@ -86,7 +84,6 @@ jobs:
               }
             }
           }'
-
       - name: Post to Discord
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
