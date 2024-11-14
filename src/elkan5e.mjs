@@ -57,3 +57,14 @@ Hooks.once('ready', async () => {
 Hooks.on("dnd5e.preRollAttack", (item, config) => {
     focus(item,config)
 });
+
+
+/*
+    Automation for Undead Nature
+*/
+Hooks.on("dnd5e.preRollHitDieV2", (config) => {
+    let actor = config.subject;
+    if (actor.items.find(feature => feature.name === "Undead Nature") && (!(actor.effects.find(effects => effects.name === "Gentle Repose")))){
+        config.rolls[0].parts[0] += '-@abilities.con.mod';
+    }
+});
