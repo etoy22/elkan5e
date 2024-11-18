@@ -42,7 +42,8 @@ for folder_path in folder_paths:
 
                         # Applies the default magic bonus if in the name
                         data["system"]["armor"]["magicalBonus"] = magicBonus
-
+                        data["system"]["unidentified"]["description"] = "<p><em>This armor is unusually strong and well-crafted. It is most likely magic, though you can’t identify the specific enchantment.</em></p>"
+                        data["system"]["source"]["custom"] = "elkan5e.com/weapons"
 
                         # Takes the base item and then gives values based on it
                         match data["system"]["type"]["baseItem"]:
@@ -88,8 +89,9 @@ for folder_path in folder_paths:
 
                 if data["type"] == "weapon" and data['folder'] != "6Glc0xFoDvY8BJYX" :
                     versatile = False
-
+                    data["system"]["unidentified"]["description"] = "<p><em>This weapon is unusually keen and easy to handle. It is most likely a magic weapon, though you can’t identify the specific enchantment.</em></p>"
                     #  Sets these values to be default empty in any case where it should be different then its changed at that point
+                    data["system"]["source"]["custom"] = "elkan5e.com/armor"
                     data["system"]["damage"]["base"]["bonus"] = ""
                     data["system"]["damage"]["base"]["custom"]["enabled"] = False
                     data["system"]["damage"]["base"]["custom"]["formula"] = ""

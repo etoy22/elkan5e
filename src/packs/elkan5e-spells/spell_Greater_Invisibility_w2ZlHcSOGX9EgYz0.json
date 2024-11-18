@@ -1,332 +1,332 @@
 {
-  "name": "Greater Invisibility",
-  "type": "spell",
-  "img": "icons/magic/control/silhouette-hold-change-blue.webp",
-  "effects": [
-    {
-      "name": "Greater Invisibility",
-      "img": "icons/magic/control/silhouette-hold-change-blue.webp",
-      "origin": "Compendium.elkan5e.elkan5e-spells.Item.w2ZlHcSOGX9EgYz0",
-      "transfer": false,
-      "_id": "zwfg5OEIkYAOsgQl",
-      "type": "base",
-      "system": {},
-      "changes": [],
-      "disabled": false,
-      "duration": {
-        "startTime": null,
-        "seconds": 3600,
-        "combat": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
-      },
-      "description": "",
-      "tint": "#ffffff",
-      "statuses": [
-        "invisible"
-      ],
-      "sort": 0,
-      "flags": {
-        "dae": {
-          "enableCondition": "",
-          "disableCondition": "",
-          "stackable": "noneName",
-          "showIcon": false,
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "specialDuration": []
-        },
-        "core": {
-          "overlay": false
-        },
-        "ActiveAuras": {
-          "isAura": false,
-          "aura": "None",
-          "nameOverride": "",
-          "radius": "",
-          "alignment": "",
-          "type": "",
-          "customCheck": "",
-          "ignoreSelf": false,
-          "height": false,
-          "hidden": false,
-          "displayTemp": false,
-          "hostile": false,
-          "onlyOnce": false,
-          "wallsBlock": "system"
+    "name": "Greater Invisibility",
+    "type": "spell",
+    "img": "icons/magic/control/silhouette-hold-change-blue.webp",
+    "effects": [
+        {
+            "name": "Greater Invisibility",
+            "img": "icons/magic/control/silhouette-hold-change-blue.webp",
+            "origin": "Compendium.elkan5e.elkan5e-spells.Item.w2ZlHcSOGX9EgYz0",
+            "transfer": false,
+            "_id": "zwfg5OEIkYAOsgQl",
+            "type": "base",
+            "system": {},
+            "changes": [],
+            "disabled": false,
+            "duration": {
+                "startTime": null,
+                "seconds": 3600,
+                "combat": null,
+                "rounds": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null
+            },
+            "description": "",
+            "tint": "#ffffff",
+            "statuses": [
+                "invisible"
+            ],
+            "sort": 0,
+            "flags": {
+                "dae": {
+                    "enableCondition": "",
+                    "disableCondition": "",
+                    "stackable": "noneName",
+                    "showIcon": false,
+                    "durationExpression": "",
+                    "macroRepeat": "none",
+                    "specialDuration": []
+                },
+                "core": {
+                    "overlay": false
+                },
+                "ActiveAuras": {
+                    "isAura": false,
+                    "aura": "None",
+                    "nameOverride": "",
+                    "radius": "",
+                    "alignment": "",
+                    "type": "",
+                    "customCheck": "",
+                    "ignoreSelf": false,
+                    "height": false,
+                    "hidden": false,
+                    "displayTemp": false,
+                    "hostile": false,
+                    "onlyOnce": false,
+                    "wallsBlock": "system"
+                }
+            },
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.0.3",
+                "createdTime": 1727118238126,
+                "modifiedTime": 1728419094007,
+                "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+            },
+            "_key": "!items.effects!w2ZlHcSOGX9EgYz0.zwfg5OEIkYAOsgQl"
         }
-      },
-      "_stats": {
+    ],
+    "folder": "90eJtrVwLFIxcWJw",
+    "flags": {
+        "dynamiceffects": {
+            "equipActive": true,
+            "alwaysActive": false,
+            "effects": [
+                {
+                    "modSpecKey": "macro.execute",
+                    "value": "Invisibility @target",
+                    "mode": "+",
+                    "targetSpecific": false,
+                    "id": 1,
+                    "itemId": "H4h4NNlgyp0rFmjC",
+                    "active": true,
+                    "_targets": []
+                }
+            ]
+        },
+        "dae": {
+            "activeEquipped": false,
+            "alwaysActive": false,
+            "macro": {
+                "name": "Greater Invisibility",
+                "img": "icons/magic/control/silhouette-hold-change-blue.webp",
+                "type": "script",
+                "scope": "global",
+                "command": "",
+                "author": "3Yi0HjF4PKCA4vX0",
+                "ownership": {
+                    "default": 3
+                },
+                "_id": null,
+                "folder": null,
+                "sort": 0,
+                "flags": {},
+                "_stats": {
+                    "coreVersion": "12.327",
+                    "systemId": "dnd5e",
+                    "systemVersion": "3.2.1",
+                    "createdTime": null,
+                    "modifiedTime": null,
+                    "lastModifiedBy": null,
+                    "compendiumSource": null,
+                    "duplicateSource": null
+                }
+            }
+        },
+        "itemacro": {
+            "macro": {
+                "_data": {
+                    "name": "Greater Invisibility",
+                    "type": "script",
+                    "scope": "global",
+                    "command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target\n\nlet target = canvas.tokens.get(args[1])\nif (args[0] === \"on\") {\n    ChatMessage.create({ content: `${target.name} turns invisible` });\n    target.update({ \"hidden\": true });\n}\nif (args[0] === \"off\") {\n    ChatMessage.create({ content: `${target.name} re-appears` });\n    target.update({ \"hidden\": false });\n}",
+                    "author": "E4BVikjIkVl2lL2j"
+                },
+                "data": {
+                    "name": "Greater Invisibility",
+                    "type": "script",
+                    "scope": "global",
+                    "command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target\n\nlet target = canvas.tokens.get(args[1])\nif (args[0] === \"on\") {\n    ChatMessage.create({ content: `${target.name} turns invisible` });\n    target.update({ \"hidden\": true });\n}\nif (args[0] === \"off\") {\n    ChatMessage.create({ content: `${target.name} re-appears` });\n    target.update({ \"hidden\": false });\n}",
+                    "author": "E4BVikjIkVl2lL2j"
+                },
+                "options": {},
+                "apps": {},
+                "compendium": null
+            }
+        },
+        "midi-qol": {
+            "onUseMacroName": "",
+            "effectActivation": false,
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "effectCondition": "",
+            "reactionCondition": ""
+        },
+        "core": {},
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "confirmTargets": "default",
+            "noConcentrationCheck": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedProperties": [
+                "vocal",
+                "somatic",
+                "concentration"
+            ]
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<div id=\"comp-lv1rylmm__1ba5372e-9802-48ab-b3a9-956f0d636c20\" class=\"HcOXKn c9GqVL QxJLC3 comp-lv1rylmm wixui-rich-text\" data-testid=\"richTextElement\"><p><strong>Buff</strong></p></div><ul><li><p>The target becomes &amp;reference[invisible] until the spell ends. Anything the target is wearing or carrying that is at least half their size or smaller is invisible as long as it is on the target's person.</p></li></ul><p></p><p><strong>Upcasting</strong>: <span style=\"font-family:Signika, sans-serif\">Target one additional creature for each spell level above 4th.</span></p>",
+            "chat": "<div id=\"comp-lv1rylmm__1ba5372e-9802-48ab-b3a9-956f0d636c20\" class=\"HcOXKn c9GqVL QxJLC3 comp-lv1rylmm wixui-rich-text\" data-testid=\"richTextElement\"><p><strong>Buff</strong></p></div><ul><li><p>The target becomes &amp;reference[invisible] until the spell ends. Anything the target is wearing or carrying that is at least half their size or smaller is invisible as long as it is on the target's person.</p></li></ul><p></p><p><strong>Upcasting</strong>: <span style=\"font-family:Signika, sans-serif\">Target one additional creature for each spell level above 4th.</span></p>"
+        },
+        "source": {
+            "custom": "Elkan 5e",
+            "revision": 1,
+            "rules": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "action",
+            "condition": "",
+            "value": 1
+        },
+        "duration": {
+            "value": "1",
+            "units": "hour"
+        },
+        "target": {
+            "affects": {
+                "type": "creature",
+                "count": "1",
+                "choice": false,
+                "special": ""
+            },
+            "template": {
+                "units": "",
+                "contiguous": false,
+                "type": ""
+            }
+        },
+        "range": {
+            "units": "touch",
+            "special": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "ability": "",
+        "level": 4,
+        "school": "ill",
+        "materials": {
+            "value": "",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": true
+        },
+        "properties": [
+            "vocal",
+            "somatic",
+            "material",
+            "concentration"
+        ],
+        "activities": {
+            "AiC6ywSsg8YSm4me": {
+                "type": "utility",
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [
+                    {
+                        "_id": "zwfg5OEIkYAOsgQl"
+                    }
+                ],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "roll": {
+                    "formula": "",
+                    "name": "",
+                    "prompt": false,
+                    "visible": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "sort": 0,
+                "_id": "AiC6ywSsg8YSm4me",
+                "name": "",
+                "img": "",
+                "appliedEffects": [
+                    "zwfg5OEIkYAOsgQl"
+                ],
+                "effectConditionText": "!target.traits.ci.value.has('invisible')"
+            }
+        },
+        "identifier": ""
+    },
+    "ownership": {
+        "default": 0,
+        "VJURYym0JQByHBQL": 3,
+        "MKYWAnkTJr0gkDqT": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
         "coreVersion": "12.331",
         "systemId": "dnd5e",
-        "systemVersion": "4.0.3",
-        "createdTime": 1727118238126,
-        "modifiedTime": 1728419094007,
+        "systemVersion": "4.0.4",
+        "createdTime": 1726952206230,
+        "modifiedTime": 1729268560755,
         "lastModifiedBy": "YxlXl9sauSuWxHdZ"
-      },
-      "_key": "!items.effects!w2ZlHcSOGX9EgYz0.zwfg5OEIkYAOsgQl"
-    }
-  ],
-  "folder": "90eJtrVwLFIxcWJw",
-  "flags": {
-    "dynamiceffects": {
-      "equipActive": true,
-      "alwaysActive": false,
-      "effects": [
-        {
-          "modSpecKey": "macro.execute",
-          "value": "Invisibility @target",
-          "mode": "+",
-          "targetSpecific": false,
-          "id": 1,
-          "itemId": "H4h4NNlgyp0rFmjC",
-          "active": true,
-          "_targets": []
-        }
-      ]
     },
-    "dae": {
-      "activeEquipped": false,
-      "alwaysActive": false,
-      "macro": {
-        "name": "Greater Invisibility",
-        "img": "icons/magic/control/silhouette-hold-change-blue.webp",
-        "type": "script",
-        "scope": "global",
-        "command": "",
-        "author": "3Yi0HjF4PKCA4vX0",
-        "ownership": {
-          "default": 3
-        },
-        "_id": null,
-        "folder": null,
-        "sort": 0,
-        "flags": {},
-        "_stats": {
-          "coreVersion": "12.327",
-          "systemId": "dnd5e",
-          "systemVersion": "3.2.1",
-          "createdTime": null,
-          "modifiedTime": null,
-          "lastModifiedBy": null,
-          "compendiumSource": null,
-          "duplicateSource": null
-        }
-      }
-    },
-    "itemacro": {
-      "macro": {
-        "_data": {
-          "name": "Greater Invisibility",
-          "type": "script",
-          "scope": "global",
-          "command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target\n\nlet target = canvas.tokens.get(args[1])\nif (args[0] === \"on\") {\n    ChatMessage.create({ content: `${target.name} turns invisible` });\n    target.update({ \"hidden\": true });\n}\nif (args[0] === \"off\") {\n    ChatMessage.create({ content: `${target.name} re-appears` });\n    target.update({ \"hidden\": false });\n}",
-          "author": "E4BVikjIkVl2lL2j"
-        },
-        "data": {
-          "name": "Greater Invisibility",
-          "type": "script",
-          "scope": "global",
-          "command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target\n\nlet target = canvas.tokens.get(args[1])\nif (args[0] === \"on\") {\n    ChatMessage.create({ content: `${target.name} turns invisible` });\n    target.update({ \"hidden\": true });\n}\nif (args[0] === \"off\") {\n    ChatMessage.create({ content: `${target.name} re-appears` });\n    target.update({ \"hidden\": false });\n}",
-          "author": "E4BVikjIkVl2lL2j"
-        },
-        "options": {},
-        "apps": {},
-        "compendium": null
-      }
-    },
-    "midi-qol": {
-      "onUseMacroName": "",
-      "effectActivation": false,
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": "",
-      "reactionCondition": ""
-    },
-    "core": {},
-    "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
-      "rollOther": false,
-      "critOther": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "toggleEffect": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "offHandWeapon": false,
-      "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      },
-      "migratedProperties": [
-        "vocal",
-        "somatic",
-        "concentration"
-      ]
-    }
-  },
-  "system": {
-    "description": {
-      "value": "<div id=\"comp-lv1rylmm__1ba5372e-9802-48ab-b3a9-956f0d636c20\" class=\"HcOXKn c9GqVL QxJLC3 comp-lv1rylmm wixui-rich-text\" data-testid=\"richTextElement\"><p><strong>Buff</strong></p></div><ul><li><p>The target becomes &amp;reference[invisible] until the spell ends. Anything the target is wearing or carrying that is at least half their size or smaller is invisible as long as it is on the target's person.</p></li></ul><p></p><p><strong>Upcasting</strong>: <span style=\"font-family:Signika, sans-serif\">Target one additional creature for each spell level above 4th.</span></p>",
-      "chat": "<div id=\"comp-lv1rylmm__1ba5372e-9802-48ab-b3a9-956f0d636c20\" class=\"HcOXKn c9GqVL QxJLC3 comp-lv1rylmm wixui-rich-text\" data-testid=\"richTextElement\"><p><strong>Buff</strong></p></div><ul><li><p>The target becomes &amp;reference[invisible] until the spell ends. Anything the target is wearing or carrying that is at least half their size or smaller is invisible as long as it is on the target's person.</p></li></ul><p></p><p><strong>Upcasting</strong>: <span style=\"font-family:Signika, sans-serif\">Target one additional creature for each spell level above 4th.</span></p>"
-    },
-    "source": {
-      "custom": "Elkan 5e",
-      "revision": 1,
-      "rules": "",
-      "book": "",
-      "page": "",
-      "license": ""
-    },
-    "activation": {
-      "type": "action",
-      "condition": "",
-      "value": 1
-    },
-    "duration": {
-      "value": "1",
-      "units": "hour"
-    },
-    "target": {
-      "affects": {
-        "type": "creature",
-        "count": "1",
-        "choice": false,
-        "special": ""
-      },
-      "template": {
-        "units": "",
-        "contiguous": false,
-        "type": ""
-      }
-    },
-    "range": {
-      "units": "touch",
-      "special": ""
-    },
-    "uses": {
-      "max": "",
-      "recovery": [],
-      "spent": 0
-    },
-    "ability": "",
-    "level": 4,
-    "school": "ill",
-    "materials": {
-      "value": "",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
-    },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": true
-    },
-    "properties": [
-      "vocal",
-      "somatic",
-      "material",
-      "concentration"
-    ],
-    "activities": {
-      "AiC6ywSsg8YSm4me": {
-        "type": "utility",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [
-          {
-            "_id": "zwfg5OEIkYAOsgQl"
-          }
-        ],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "prompt": true,
-          "template": {
-            "contiguous": false,
-            "units": "ft"
-          },
-          "affects": {
-            "choice": false
-          },
-          "override": false
-        },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "sort": 0,
-        "_id": "AiC6ywSsg8YSm4me",
-        "name": "",
-        "img": "",
-        "appliedEffects": [
-          "zwfg5OEIkYAOsgQl"
-        ],
-        "effectConditionText": "!target.traits.ci.value.has('invisible')"
-      }
-    },
-    "identifier": ""
-  },
-  "ownership": {
-    "default": 0,
-    "VJURYym0JQByHBQL": 3,
-    "MKYWAnkTJr0gkDqT": 3,
-    "vHqSHJMdmEO6Mk2C": 3
-  },
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.331",
-    "systemId": "dnd5e",
-    "systemVersion": "4.0.4",
-    "createdTime": 1726952206230,
-    "modifiedTime": 1729268560755,
-    "lastModifiedBy": "YxlXl9sauSuWxHdZ"
-  },
-  "_id": "w2ZlHcSOGX9EgYz0",
-  "sort": 3600000,
-  "_key": "!items!w2ZlHcSOGX9EgYz0"
+    "_id": "w2ZlHcSOGX9EgYz0",
+    "sort": 3600000,
+    "_key": "!items!w2ZlHcSOGX9EgYz0"
 }
