@@ -1,0 +1,262 @@
+{
+  "folder": "n1N4yw4iM9FB4BkF",
+  "name": "Sweep",
+  "type": "feat",
+  "_id": "ecHupkSSAus3eGjy",
+  "img": "icons/magic/earth/projectile-stone-landslide.webp",
+  "system": {
+    "description": {
+      "value": "<p><strong>Once Per Turn</strong> - 1 Creature - Magical</p><p>If you use @UUID[Compendium.elkan5e.elkan5e-class-features.Item.rfkAaOhAsX1HQRuo]{Flurry of Blows} and deal damage to a large or smaller creature with an unarmed or weapon attack, you can use this ability. You can't use this ability on the same turn you use @UUID[Compendium.elkan5e.elkan5e-class-features.Item.1E9Qb3ijat4apwwk]{Thrust}.</p><p><strong>Strength Save</strong></p><p><strong>Failure</strong>: Target is knocked &amp;reference[prone].</p><p><strong>Success</strong>: No effect.</p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "elkan5e.com/monk",
+      "revision": 1,
+      "rules": "",
+      "book": "",
+      "page": "",
+      "license": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "type": {
+      "value": "subclass",
+      "subtype": ""
+    },
+    "requirements": "Open Hand 3",
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "save",
+        "activation": {
+          "type": "duringattack",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "",
+          "units": "inst",
+          "special": "",
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "lvI9Pmwxb1rN95qt",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": ""
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": []
+        },
+        "save": {
+          "ability": "str",
+          "dc": {
+            "calculation": "wis",
+            "formula": ""
+          }
+        },
+        "sort": 0,
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "lvI9Pmwxb1rN95qt"
+        ]
+      }
+    },
+    "identifier": "",
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    },
+    "properties": []
+  },
+  "effects": [
+    {
+      "_id": "lvI9Pmwxb1rN95qt",
+      "changes": [
+        {
+          "key": "macro.StatusEffect",
+          "mode": 0,
+          "value": "prone",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": 0,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "transfer": false,
+      "flags": {
+        "ActiveAuras": {
+          "isAura": false,
+          "radius": "",
+          "aura": "None",
+          "alignment": "",
+          "type": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "displayTemp": false,
+          "nameOverride": "",
+          "customCheck": "",
+          "wallsBlock": "system"
+        },
+        "combat-utility-belt": {
+          "conditionId": "prone",
+          "overlay": false
+        },
+        "core": {
+          "sourceId": "Actor.AkXA9xszgaJBcjpI.Item.MuH5aMoKOyZanrFf.ActiveEffect.gcxgylisuj21fpt3",
+          "overlay": false
+        },
+        "dae": {
+          "selfTarget": false,
+          "stackable": "noneName",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [],
+          "transfer": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "showIcon": true,
+          "enableCondition": "-1",
+          "disableCondition": "",
+          "disableIncapacitated": false
+        },
+        "dnd5e-helpers": {
+          "rest-effect": "Ignore"
+        },
+        "times-up": {
+          "isPassive": false
+        }
+      },
+      "tint": "#ffffff",
+      "origin": "Compendium.elkan5e.elkan5e-class-features.Item.ecHupkSSAus3eGjy",
+      "name": "Prone",
+      "description": "",
+      "statuses": [],
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.2",
+        "createdTime": null,
+        "modifiedTime": 1730154873167,
+        "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+      },
+      "img": "modules/elkan5e/icons/prone.svg",
+      "type": "base",
+      "system": {},
+      "sort": 0,
+      "_key": "!items.effects!ecHupkSSAus3eGjy.lvI9Pmwxb1rN95qt"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "ymGs3J4QpWbCOXON": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "flags": {
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "reactionCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.1.0",
+    "createdTime": 1726952014183,
+    "modifiedTime": 1731382169517,
+    "lastModifiedBy": "5QT7SwPoj3a9WqpY"
+  },
+  "_key": "!items!ecHupkSSAus3eGjy"
+}

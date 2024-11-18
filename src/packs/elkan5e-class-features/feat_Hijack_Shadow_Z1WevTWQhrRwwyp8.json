@@ -1,0 +1,255 @@
+{
+  "folder": "wSeYj7YJ85CRRgnP",
+  "name": "Hijack Shadow",
+  "type": "feat",
+  "_id": "Z1WevTWQhrRwwyp8",
+  "img": "icons/creatures/magical/humanoid-silhouette-dashing-blue.webp",
+  "system": {
+    "description": {
+      "value": "<p><strong>Bonus Action</strong> - 1 Creature (5 ft.) - 1 Minute - @UUID[Compendium.elkan5e.elkan5e-class-features.Item.IXk7hfrAoVQU3dLJ]{2 Ki Points} - Magical</p><p>You can now use hide inside a creature of small size or larger's shadow, merging with the shadows on the ground. When you do, you roll &amp;reference[stealth]​ to hide and then turn &amp;reference[Invisible], occupying your target's space in their shadow. If you end your turn and have not moved away from your target, you remain in the target's shadow, moving with them when they move on their turn. You remain invisible and occupy their space until this effect ends.</p><p>This effect ends if you move away from your target, roll an attack roll, or cast a spell. When this ability ends, you appear in a space of your choice within 5 ft. of your target.</p><p>​</p><p><em>You can be targeted (including by the creature whose shadow you hijacked) as if invisible in the same space as your target. If you successfully used stealth to hide from the creature whose shadow you are hijacking and you haven't given away your presence, they usually won't know you're there.</em></p><p><em>While you can use this ability in darkness, if the target somehow doesn't cast a shadow, you cannot use this ability, and this ability ends if your target no longer cast a shadow.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "elkan5e.com/monk",
+      "revision": 1,
+      "rules": "",
+      "book": "",
+      "page": "",
+      "license": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "type": {
+      "value": "subclass",
+      "subtype": ""
+    },
+    "properties": [
+      "mgc"
+    ],
+    "requirements": "Shadowdancer 10",
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "utility",
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "target": "Compendium.elkan5e.elkan5e-class-features.Item.IXk7hfrAoVQU3dLJ",
+              "value": "2",
+              "scaling": {
+                "mode": "",
+                "formula": ""
+              }
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "1",
+          "units": "minute",
+          "special": "",
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "InyO3Q9OBFxXkFq4"
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
+        },
+        "sort": 0
+      }
+    },
+    "identifier": "",
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    }
+  },
+  "effects": [
+    {
+      "name": "Invisible",
+      "_id": "InyO3Q9OBFxXkFq4",
+      "changes": [
+        {
+          "key": "flags.midi-qol.advantage.attack.all",
+          "mode": 5,
+          "value": "1",
+          "priority": 50
+        },
+        {
+          "key": "flags.midi-qol.grants.disadvantage.attack.all",
+          "mode": 5,
+          "value": "1",
+          "priority": 50
+        }
+      ],
+      "statuses": [
+        "invisible"
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": 60,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": "Compendium.elkan5e.elkan5e-class-features.Item.Z1WevTWQhrRwwyp8",
+      "transfer": false,
+      "flags": {
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [
+            "1Attack",
+            "1Spell"
+          ]
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system"
+        },
+        "core": {
+          "sourceId": "Compendium.elkan5e.elkan5e-class-features.Item.6Vq7as8e3VfMLFQo.ActiveEffect.hsW6pyTteqQaoBIx"
+        }
+      },
+      "tint": "#ffffff",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "img": "modules/elkan5e/icons/invisible.svg",
+      "type": "base",
+      "system": {},
+      "sort": 0,
+      "_key": "!items.effects!Z1WevTWQhrRwwyp8.InyO3Q9OBFxXkFq4"
+    }
+  ],
+  "sort": 600000,
+  "ownership": {
+    "default": 0,
+    "ymGs3J4QpWbCOXON": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "flags": {
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": true,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "reactionCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.0.4",
+    "createdTime": 1726952013222,
+    "modifiedTime": 1730155219739,
+    "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+  },
+  "_key": "!items!Z1WevTWQhrRwwyp8"
+}

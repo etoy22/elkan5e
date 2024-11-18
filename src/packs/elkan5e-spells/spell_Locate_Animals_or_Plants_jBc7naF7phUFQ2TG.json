@@ -1,0 +1,249 @@
+{
+  "name": "Locate Animals or Plants",
+  "type": "spell",
+  "img": "icons/magic/nature/plant-sprout-snow-green.webp",
+  "effects": [],
+  "folder": "6J3i75lfD1J0xYwA",
+  "flags": {
+    "core": {},
+    "midi-qol": {
+      "effectActivation": false,
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "rollAttackPerTarget": "default"
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic",
+        "material",
+        "ritual"
+      ]
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<div class=\"rd__b  rd__b--3\"><p><em>You touch a bit of bloodhound fur to your nose, heightening your senses and projecting your awareness outside of your body. You can smell a plant or animal of your choice in your vicinity.</em></p><p><strong>Ritual Casting Time:</strong> 1 Minute</p><p><strong>Utility Spell</strong></p><p>Describe or name a specific kind of &amp;reference[beast] or &amp;reference[plant]. You don't need line of sight to the target.</p><ul><li><p>You learn the direction and distance to the closest creature or plant of that kind within 5 miles, if any are present.</p></li><li><p>If the creature is in motion, you know the direction of its movement.</p></li></ul></div><p></p><div class=\"rd__b  rd__b--3\"><p><strong>*Upcasting</strong>: Range increases by 5 miles for each spell level above 2nd.</p></div>",
+      "chat": "<div class=\"rd__b  rd__b--3\"><p><strong>Ritual Casting Time:</strong> 10 Minutes</p><p><strong>Utility Spell</strong></p><p>Describe or name a specific kind of &amp;reference[beast] or &amp;reference[plant]. You don't need line of sight to the target.</p><ul><li><p>You learn the direction and distance to the closest creature or plant of that kind within 5 miles, if any are present.</p></li><li><p>If the creature is in motion, you know the direction of its movement.</p></li></ul></div><p></p><div class=\"rd__b  rd__b--3\"><p><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial\">*</strong></span><strong>Upcasting</strong>: Range increases by 5 miles for each spell level above 2nd.</p></div>"
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/locate-animals-or-plants",
+      "revision": 1,
+      "rules": "",
+      "book": "",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "",
+      "units": "inst"
+    },
+    "target": {
+      "affects": {
+        "type": "self",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "units": "",
+        "contiguous": false,
+        "type": ""
+      }
+    },
+    "range": {
+      "value": "5",
+      "units": "mi",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 2,
+    "school": "div",
+    "materials": {
+      "value": "a bit of fur from a bloodhound",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "ritual"
+    ],
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "utility",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
+        },
+        "sort": 0
+      },
+      "VEMyXNWxKgfPJEYO": {
+        "type": "utility",
+        "activation": {
+          "type": "minute",
+          "value": 1,
+          "override": true,
+          "condition": ""
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": false
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
+        },
+        "sort": 0,
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "_id": "VEMyXNWxKgfPJEYO",
+        "name": "Ritual",
+        "img": "",
+        "appliedEffects": []
+      }
+    },
+    "identifier": ""
+  },
+  "ownership": {
+    "default": 0,
+    "VJURYym0JQByHBQL": 3,
+    "ymJDAw0PgXIWIHMH": 3,
+    "MKYWAnkTJr0gkDqT": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.0.4",
+    "createdTime": 1726952204376,
+    "modifiedTime": 1730176824694,
+    "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+  },
+  "_id": "jBc7naF7phUFQ2TG",
+  "sort": 3300000,
+  "_key": "!items!jBc7naF7phUFQ2TG"
+}

@@ -1,0 +1,300 @@
+{
+  "folder": "ZW1sRF87HzKQ77cY",
+  "name": "Forceful Image",
+  "type": "feat",
+  "_id": "fQxYa5USyngg0253",
+  "img": "icons/magic/sonic/projectile-shock-wave-blue.webp",
+  "system": {
+    "activities": {
+      "Zfhw9yt7mbhZ8Irs": {
+        "type": "utility",
+        "_id": "Zfhw9yt7mbhZ8Irs",
+        "sort": 0,
+        "activation": {
+          "type": "nocost",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "When you damage a creature with Phantom Grasp, you can drag the target 10 ft. or lift the target 10 ft. into the air, holding the target Prone."
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "W1WiTYStX7WvWMz4"
+          }
+        ],
+        "range": {
+          "override": false,
+          "units": "spec",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "1",
+            "type": "creature",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "name": "Phantom Grasp",
+        "img": "",
+        "appliedEffects": [
+          "W1WiTYStX7WvWMz4"
+        ]
+      },
+      "XZGzHfKD8eWKc6QP": {
+        "type": "utility",
+        "name": "Phantom Barrage or Phantom Force",
+        "_id": "XZGzHfKD8eWKc6QP",
+        "sort": 0,
+        "activation": {
+          "type": "nocost",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "You may push the target 10 ft. in a direction of your choice."
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "spec",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "1",
+            "type": "creature",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "img": "",
+        "appliedEffects": []
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "description": {
+      "value": "<p><strong>No Action Cost</strong> - Magical​</p><ul><li><p>When you damage a creature with @UUID[Compendium.elkan5e.elkan5e-class-features.Item.K3soXTx6xqaMJv86]{Phantom Barrage} or @UUID[Compendium.elkan5e.elkan5e-class-features.Item.hg1255dcMD2hQTGz]{Phantom Force}, you push the target 10 ft. in a direction of your choice.</p></li><li><p>When you damage a creature with @UUID[Compendium.elkan5e.elkan5e-class-features.Item.8KxLYpEVn8TsAg3i]{Phantom Grasp}, you can drag the target 10 ft. or lift the target 10 ft. into the air, holding the target &amp;reference[prone]. If your &amp;reference[illusoryimages]{illusory image} moves for any other reason, it still drops a target it is &amp;reference[grappled]{grappling}.</p></li></ul>",
+      "chat": ""
+    },
+    "identifier": "",
+    "source": {
+      "revision": 1,
+      "rules": "",
+      "book": "",
+      "page": "",
+      "custom": "elkan5e.com/wizard",
+      "license": ""
+    },
+    "enchant": {},
+    "type": {
+      "value": "subclass",
+      "subtype": ""
+    },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [
+      "mgc"
+    ],
+    "requirements": "Illusionist 10"
+  },
+  "effects": [
+    {
+      "name": "Prone",
+      "origin": "Compendium.elkan5e.elkan5e-class-features.Item.fQxYa5USyngg0253",
+      "changes": [
+        {
+          "key": "macro.StatusEffect",
+          "mode": 0,
+          "value": "prone",
+          "priority": 0
+        }
+      ],
+      "transfer": false,
+      "flags": {
+        "dae": {
+          "itemName": "Forceful Image",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [],
+          "enableCondition": "",
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false
+        },
+        "core": {
+          "overlay": false
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system"
+        }
+      },
+      "img": "modules/elkan5e/icons/prone.svg",
+      "_id": "W1WiTYStX7WvWMz4",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.4",
+        "createdTime": 1730773277890,
+        "modifiedTime": 1730773286400,
+        "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+      },
+      "_key": "!items.effects!fQxYa5USyngg0253.W1WiTYStX7WvWMz4"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YxlXl9sauSuWxHdZ": 3
+  },
+  "flags": {
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "effectCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.0.4",
+    "createdTime": 1730773121337,
+    "modifiedTime": 1730783388991,
+    "lastModifiedBy": "5QT7SwPoj3a9WqpY"
+  },
+  "_key": "!items!fQxYa5USyngg0253"
+}
