@@ -1,0 +1,372 @@
+{
+  "name": "Sand in the Eyes",
+  "type": "feat",
+  "img": "icons/magic/air/air-smoke-casting.webp",
+  "effects": [
+    {
+      "name": "Sand in the Eyes",
+      "origin": "Compendium.elkan5e.elkan5e-class-features.Item.ywAWW4ncyWfOIqpB",
+      "changes": [],
+      "transfer": false,
+      "flags": {
+        "dae": {
+          "itemName": "Sand in the Eyes (Dexterity)",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": true,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [
+            "turnEndSource"
+          ],
+          "enableCondition": "",
+          "disableCondition": ""
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system"
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_id": "M1ZC2FMhfYl3lTVb",
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": 7,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "statuses": [
+        "blinded"
+      ],
+      "tint": "#ffffff",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.2",
+        "createdTime": null,
+        "modifiedTime": 1730167840750,
+        "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+      },
+      "img": "icons/magic/air/air-smoke-casting.webp",
+      "type": "base",
+      "system": {},
+      "sort": 0,
+      "_key": "!items.effects!ywAWW4ncyWfOIqpB.M1ZC2FMhfYl3lTVb"
+    }
+  ],
+  "folder": "58NfBHlULjAFkPbV",
+  "flags": {
+    "core": {},
+    "midi-qol": {
+      "effectActivation": false,
+      "onUseMacroName": "",
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "reactionCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "saveDamage": "fulldam",
+      "bonusSaveDamage": "default",
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p>Sand in the Eyes is a @UUID[Compendium.elkan5e.elkan5e-class-features.Item.hW3DmOPgBpa7lGU8]{Precision Attacks}.</p><p><strong>Alternative Sneak Attack</strong> - 1 Creature (5 ft.) - 1 Round</p><p>You can sacrifice 4d6 of your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{sneak attack} damage to briefly blind your target with sand, dirt, or something else in your environment.</p><p><strong>Constitution Save</strong></p><ul><li><p><strong>Failure:</strong> @UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{Sneak Attack} (-4d6) damage. Target is &amp;Reference[blinded].</p></li><li><p><strong>Success:</strong> @UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{Sneak Attack} (-4d6) damage. No effect.</p></li></ul>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "elkan5e.com/rogue",
+      "revision": 1,
+      "rules": "",
+      "book": "",
+      "page": "",
+      "license": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "type": {
+      "value": "class",
+      "subtype": "precision"
+    },
+    "requirements": "Rogue 7",
+    "properties": [],
+    "prerequisites": {
+      "level": 7
+    },
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "save",
+        "activation": {
+          "type": "duringattack",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "1",
+          "units": "round",
+          "special": "",
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "M1ZC2FMhfYl3lTVb",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "value": "5",
+          "units": "ft",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": ""
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "damage": {
+          "onSave": "full",
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "(@scale.rogue.sneak-attack - 4)d6"
+              },
+              "number": null,
+              "denomination": null,
+              "bonus": "",
+              "types": [
+                "piercing"
+              ],
+              "scaling": {
+                "number": 1
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": "con",
+          "dc": {
+            "calculation": "dex",
+            "formula": ""
+          }
+        },
+        "sort": 0,
+        "name": "Save (Dexterity)",
+        "img": "",
+        "appliedEffects": [
+          "M1ZC2FMhfYl3lTVb"
+        ],
+        "effectConditionText": "!target.traits.ci.value.has('blinded')"
+      },
+      "UAgeclAmI9sMwEp7": {
+        "type": "save",
+        "activation": {
+          "type": "duringattack",
+          "value": null,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "1",
+          "units": "round",
+          "special": "",
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "M1ZC2FMhfYl3lTVb",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "value": "5",
+          "units": "ft",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": ""
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "damage": {
+          "onSave": "full",
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "(@scale.rogue.sneak-attack - 4)d6"
+              },
+              "number": null,
+              "denomination": null,
+              "bonus": "",
+              "types": [
+                "piercing"
+              ],
+              "scaling": {
+                "number": 1
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": "con",
+          "dc": {
+            "calculation": "dex",
+            "formula": ""
+          }
+        },
+        "sort": 0,
+        "name": "Save (Strength)",
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "!target.traits.ci.value.has('blinded')",
+        "_id": "UAgeclAmI9sMwEp7",
+        "img": "",
+        "appliedEffects": [
+          "M1ZC2FMhfYl3lTVb"
+        ]
+      }
+    },
+    "identifier": "",
+    "enchant": {}
+  },
+  "ownership": {
+    "default": 0,
+    "ymJDAw0PgXIWIHMH": 3,
+    "WaiirYzq9mhRj9cS": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.1.0",
+    "createdTime": 1726952017899,
+    "modifiedTime": 1731382792565,
+    "lastModifiedBy": "5QT7SwPoj3a9WqpY"
+  },
+  "_id": "ywAWW4ncyWfOIqpB",
+  "sort": 200000,
+  "_key": "!items!ywAWW4ncyWfOIqpB"
+}
