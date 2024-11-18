@@ -1,194 +1,194 @@
 {
-  "name": "Control Weather",
-  "type": "spell",
-  "img": "icons/magic/air/weather-clouds-rainbow.webp",
-  "effects": [],
-  "folder": "TOjvTMaQMAMN24MV",
-  "flags": {
-    "midi-qol": {
-      "onUseMacroName": "",
-      "effectActivation": false,
-      "AoETargetType": "any",
-      "AoETargetTypeIncludeSelf": true,
-      "autoTarget": "default",
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "otherCondition": "",
-      "effectCondition": "",
-      "reactionCondition": ""
-    },
-    "core": {},
-    "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
-      "rollOther": false,
-      "critOther": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "toggleEffect": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "offHandWeapon": false,
-      "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      },
-      "migratedProperties": [
-        "vocal",
-        "somatic",
-        "material",
-        "concentration"
-      ]
-    }
-  },
-  "system": {
-    "description": {
-      "value": "<div class=\"rd__b  rd__b--3\"><p>You take control of the weather within 5 miles of you for the duration. You must be outdoors to cast this spell. Moving to a place where you don't have a clear path to the sky ends the spell early.</p><div class=\"rd__spc-inline-post\"></div><p>When you cast the spell, you change the current weather conditions, which are determined by the DM based on the climate and season. You can change precipitation, temperature, and wind. It takes [[/r 1d4 * 10]] (1d4 × 10) minutes for the new conditions to take effect. Once they do so, you can change the conditions again. When the spell ends, the weather gradually returns to normal.</p><p>When you change the weather conditions, find a current condition on the following tables and change its stage by one, up or down. When changing the wind, you can change its direction.</p><table class=\"rd__table  stripe-odd-table\"><caption>Precipitation</caption><thead><tr><th class=\"col-1 text-center\" data-rd-isroller=\"false\">Stage</th><th class=\"col-11\" data-rd-isroller=\"false\">Condition</th></tr></thead><tbody><tr><td class=\"col-1 text-center\">1</td><td class=\"col-11\">Clear</td></tr><tr><td class=\"col-1 text-center\">2</td><td class=\"col-11\">Light clouds</td></tr><tr><td class=\"col-1 text-center\">3</td><td class=\"col-11\">Overcast or ground fog</td></tr><tr><td class=\"col-1 text-center\">4</td><td class=\"col-11\">Rain, hail, or snow</td></tr><tr><td class=\"col-1 text-center\">5</td><td class=\"col-11\">Torrential rain, driving hail, or blizzard</td></tr></tbody></table><table class=\"rd__table  stripe-odd-table\"><caption>Temperature</caption><thead><tr><th class=\"col-1 text-center\" data-rd-isroller=\"false\">Stage</th><th class=\"col-11\" data-rd-isroller=\"false\">Condition</th></tr></thead><tbody><tr><td class=\"col-1 text-center\">1</td><td class=\"col-11\">Unbearable heat</td></tr><tr><td class=\"col-1 text-center\">2</td><td class=\"col-11\">Hot</td></tr><tr><td class=\"col-1 text-center\">3</td><td class=\"col-11\">Warm</td></tr><tr><td class=\"col-1 text-center\">4</td><td class=\"col-11\">Cool</td></tr><tr><td class=\"col-1 text-center\">5</td><td class=\"col-11\">Cold</td></tr><tr><td class=\"col-1 text-center\">6</td><td class=\"col-11\">Arctic cold</td></tr></tbody></table><table class=\"rd__table  stripe-odd-table\"><caption>Wind</caption><thead><tr><th class=\"col-1 text-center\" data-rd-isroller=\"false\">Stage</th><th class=\"col-11\" data-rd-isroller=\"false\">Condition</th></tr></thead><tbody><tr><td class=\"col-1 text-center\">1</td><td class=\"col-11\">Calm</td></tr><tr><td class=\"col-1 text-center\">2</td><td class=\"col-11\">Moderate wind</td></tr><tr><td class=\"col-1 text-center\">3</td><td class=\"col-11\">Strong wind</td></tr><tr><td class=\"col-1 text-center\">4</td><td class=\"col-11\">Gale</td></tr><tr><td class=\"col-1 text-center\">5</td><td class=\"col-11\">Storm</td></tr></tbody></table></div>",
-      "chat": ""
-    },
-    "source": {
-      "custom": "Elkan 5e",
-      "revision": 1,
-      "rules": "",
-      "book": "",
-      "page": "",
-      "license": ""
-    },
-    "activation": {
-      "type": "minute",
-      "condition": "",
-      "value": 1
-    },
-    "duration": {
-      "value": "8",
-      "units": "hour"
-    },
-    "target": {
-      "affects": {
-        "choice": false,
-        "count": "",
-        "type": ""
-      },
-      "template": {
-        "units": "mi",
-        "type": "radius",
-        "size": "5",
-        "contiguous": false,
-        "count": ""
-      }
-    },
-    "range": {
-      "value": "0",
-      "units": "self",
-      "special": ""
-    },
-    "uses": {
-      "max": "",
-      "recovery": [],
-      "spent": 0
-    },
-    "ability": "",
-    "level": 8,
-    "school": "trs",
-    "materials": {
-      "value": "burning incense and bits of earth and wood mixed in water",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
-    },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": true
-    },
-    "properties": [
-      "vocal",
-      "somatic",
-      "material",
-      "concentration"
-    ],
-    "activities": {
-      "7dgqLPmZqfDjjxD6": {
-        "type": "utility",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
+    "name": "Control Weather",
+    "type": "spell",
+    "img": "icons/magic/air/weather-clouds-rainbow.webp",
+    "effects": [],
+    "folder": "TOjvTMaQMAMN24MV",
+    "flags": {
+        "midi-qol": {
+            "onUseMacroName": "",
+            "effectActivation": false,
+            "AoETargetType": "any",
+            "AoETargetTypeIncludeSelf": true,
+            "autoTarget": "default",
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "otherCondition": "",
+            "effectCondition": "",
+            "reactionCondition": ""
         },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
+        "core": {},
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "confirmTargets": "default",
+            "noConcentrationCheck": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
         },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedProperties": [
+                "vocal",
+                "somatic",
+                "material",
+                "concentration"
+            ]
+        }
+    },
+    "system": {
         "description": {
-          "chatFlavor": ""
+            "value": "<div class=\"rd__b  rd__b--3\"><p>You take control of the weather within 5 miles of you for the duration. You must be outdoors to cast this spell. Moving to a place where you don't have a clear path to the sky ends the spell early.</p><div class=\"rd__spc-inline-post\"></div><p>When you cast the spell, you change the current weather conditions, which are determined by the DM based on the climate and season. You can change precipitation, temperature, and wind. It takes [[/r 1d4 * 10]] (1d4 \u00d7 10) minutes for the new conditions to take effect. Once they do so, you can change the conditions again. When the spell ends, the weather gradually returns to normal.</p><p>When you change the weather conditions, find a current condition on the following tables and change its stage by one, up or down. When changing the wind, you can change its direction.</p><table class=\"rd__table  stripe-odd-table\"><caption>Precipitation</caption><thead><tr><th class=\"col-1 text-center\" data-rd-isroller=\"false\">Stage</th><th class=\"col-11\" data-rd-isroller=\"false\">Condition</th></tr></thead><tbody><tr><td class=\"col-1 text-center\">1</td><td class=\"col-11\">Clear</td></tr><tr><td class=\"col-1 text-center\">2</td><td class=\"col-11\">Light clouds</td></tr><tr><td class=\"col-1 text-center\">3</td><td class=\"col-11\">Overcast or ground fog</td></tr><tr><td class=\"col-1 text-center\">4</td><td class=\"col-11\">Rain, hail, or snow</td></tr><tr><td class=\"col-1 text-center\">5</td><td class=\"col-11\">Torrential rain, driving hail, or blizzard</td></tr></tbody></table><table class=\"rd__table  stripe-odd-table\"><caption>Temperature</caption><thead><tr><th class=\"col-1 text-center\" data-rd-isroller=\"false\">Stage</th><th class=\"col-11\" data-rd-isroller=\"false\">Condition</th></tr></thead><tbody><tr><td class=\"col-1 text-center\">1</td><td class=\"col-11\">Unbearable heat</td></tr><tr><td class=\"col-1 text-center\">2</td><td class=\"col-11\">Hot</td></tr><tr><td class=\"col-1 text-center\">3</td><td class=\"col-11\">Warm</td></tr><tr><td class=\"col-1 text-center\">4</td><td class=\"col-11\">Cool</td></tr><tr><td class=\"col-1 text-center\">5</td><td class=\"col-11\">Cold</td></tr><tr><td class=\"col-1 text-center\">6</td><td class=\"col-11\">Arctic cold</td></tr></tbody></table><table class=\"rd__table  stripe-odd-table\"><caption>Wind</caption><thead><tr><th class=\"col-1 text-center\" data-rd-isroller=\"false\">Stage</th><th class=\"col-11\" data-rd-isroller=\"false\">Condition</th></tr></thead><tbody><tr><td class=\"col-1 text-center\">1</td><td class=\"col-11\">Calm</td></tr><tr><td class=\"col-1 text-center\">2</td><td class=\"col-11\">Moderate wind</td></tr><tr><td class=\"col-1 text-center\">3</td><td class=\"col-11\">Strong wind</td></tr><tr><td class=\"col-1 text-center\">4</td><td class=\"col-11\">Gale</td></tr><tr><td class=\"col-1 text-center\">5</td><td class=\"col-11\">Storm</td></tr></tbody></table></div>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "Elkan 5e",
+            "revision": 1,
+            "rules": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "minute",
+            "condition": "",
+            "value": 1
         },
         "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false
+            "value": "8",
+            "units": "hour"
         },
         "target": {
-          "prompt": true,
-          "template": {
-            "contiguous": false,
-            "units": "ft"
-          },
-          "affects": {
-            "choice": false
-          },
-          "override": false
+            "affects": {
+                "choice": false,
+                "count": "",
+                "type": ""
+            },
+            "template": {
+                "units": "mi",
+                "type": "radius",
+                "size": "5",
+                "contiguous": false,
+                "count": ""
+            }
         },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
+        "range": {
+            "value": "0",
+            "units": "self",
+            "special": ""
         },
         "uses": {
-          "spent": 0,
-          "recovery": []
+            "max": "",
+            "recovery": [],
+            "spent": 0
         },
-        "sort": 0,
-        "_id": "7dgqLPmZqfDjjxD6"
-      }
+        "ability": "",
+        "level": 8,
+        "school": "trs",
+        "materials": {
+            "value": "burning incense and bits of earth and wood mixed in water",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": true
+        },
+        "properties": [
+            "vocal",
+            "somatic",
+            "material",
+            "concentration"
+        ],
+        "activities": {
+            "7dgqLPmZqfDjjxD6": {
+                "type": "utility",
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "roll": {
+                    "formula": "",
+                    "name": "",
+                    "prompt": false,
+                    "visible": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": []
+                },
+                "sort": 0,
+                "_id": "7dgqLPmZqfDjjxD6"
+            }
+        },
+        "identifier": ""
     },
-    "identifier": ""
-  },
-  "ownership": {
-    "default": 0,
-    "VJURYym0JQByHBQL": 3,
-    "MKYWAnkTJr0gkDqT": 3,
-    "vHqSHJMdmEO6Mk2C": 3
-  },
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.331",
-    "systemId": "dnd5e",
-    "systemVersion": "4.0.4",
-    "createdTime": 1726952205661,
-    "modifiedTime": 1728958201706,
-    "lastModifiedBy": "LhShb9ShQN3ambNF"
-  },
-  "_id": "sVZJABiQvYbZZR0b",
-  "sort": 0,
-  "_key": "!items!sVZJABiQvYbZZR0b"
+    "ownership": {
+        "default": 0,
+        "VJURYym0JQByHBQL": 3,
+        "MKYWAnkTJr0gkDqT": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.4",
+        "createdTime": 1726952205661,
+        "modifiedTime": 1728958201706,
+        "lastModifiedBy": "LhShb9ShQN3ambNF"
+    },
+    "_id": "sVZJABiQvYbZZR0b",
+    "sort": 0,
+    "_key": "!items!sVZJABiQvYbZZR0b"
 }

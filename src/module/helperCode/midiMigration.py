@@ -30,7 +30,8 @@ for folder_path in folder_paths:
             # Load the JSON file
             with open(file_path, 'r', encoding='utf-8') as file:
                 data = json.load(file)
-
+            if "system" in data:
+                data["system"]["source"]["book"]="Elkan 5e"
             if 'type' in data:
                 if "midiProperties" in data["flags"]:
                     if "confirmTargets" in data["flags"]["midiProperties"] and data["flags"]["midiProperties"]["confirmTargets"] != "":
