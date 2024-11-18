@@ -1,1369 +1,1369 @@
 {
-  "name": "Spectral Graveguard",
-  "type": "npc",
-  "img": "icons/magic/death/undead-ghost-scream-teal.webp",
-  "system": {
-    "abilities": {
-      "str": {
-        "value": 3,
-        "proficient": 0,
-        "bonuses": {
-          "check": "",
-          "save": ""
-        },
-        "max": null
-      },
-      "dex": {
-        "value": 14,
-        "proficient": 1,
-        "bonuses": {
-          "check": "",
-          "save": ""
-        },
-        "max": null
-      },
-      "con": {
-        "value": 12,
-        "proficient": 0,
-        "bonuses": {
-          "check": "",
-          "save": ""
-        },
-        "max": null
-      },
-      "int": {
-        "value": 10,
-        "proficient": 0,
-        "bonuses": {
-          "check": "",
-          "save": ""
-        },
-        "max": null
-      },
-      "wis": {
-        "value": 10,
-        "proficient": 1,
-        "bonuses": {
-          "check": "",
-          "save": ""
-        },
-        "max": null
-      },
-      "cha": {
-        "value": 14,
-        "proficient": 0,
-        "bonuses": {
-          "check": "",
-          "save": ""
-        },
-        "max": null
-      }
-    },
-    "attributes": {
-      "ac": {
-        "flat": 12,
-        "calc": "default",
-        "formula": ""
-      },
-      "hp": {
-        "value": 12,
-        "max": 0,
-        "temp": null,
-        "tempmax": 0,
-        "formula": "0d4"
-      },
-      "init": {
-        "ability": "",
-        "bonus": "0",
-        "roll": {
-          "min": null,
-          "max": null,
-          "mode": 0
-        }
-      },
-      "movement": {
-        "burrow": 0,
-        "climb": 0,
-        "fly": 0,
-        "swim": 0,
-        "walk": 30,
-        "units": "ft",
-        "hover": false
-      },
-      "attunement": {
-        "max": 3
-      },
-      "senses": {
-        "darkvision": 60,
-        "blindsight": 0,
-        "tremorsense": 0,
-        "truesight": 0,
-        "units": "ft",
-        "special": ""
-      },
-      "spellcasting": "str",
-      "exhaustion": 0,
-      "concentration": {
-        "ability": "",
-        "roll": {
-          "min": null,
-          "max": null,
-          "mode": 0
-        },
-        "bonuses": {
-          "save": ""
-        },
-        "limit": 1
-      },
-      "hd": {
-        "spent": 0
-      },
-      "death": {
-        "ability": "",
-        "roll": {
-          "min": null,
-          "max": null,
-          "mode": 0
-        },
-        "success": 0,
-        "failure": 0
-      }
-    },
-    "details": {
-      "biography": {
-        "value": "",
-        "public": ""
-      },
-      "alignment": "",
-      "race": null,
-      "type": {
-        "value": "undead",
-        "subtype": "",
-        "swarm": "",
-        "custom": ""
-      },
-      "environment": "",
-      "cr": 1,
-      "spellLevel": 0,
-      "ideal": "",
-      "bond": "",
-      "flaw": ""
-    },
-    "traits": {
-      "size": "med",
-      "di": {
-        "value": [
-          "necrotic",
-          "poison"
-        ],
-        "bypasses": [],
-        "custom": ""
-      },
-      "dr": {
-        "value": [
-          "acid",
-          "bludgeoning",
-          "cold",
-          "fire",
-          "lightning",
-          "piercing",
-          "slashing",
-          "thunder"
-        ],
-        "bypasses": [
-          "coldIron",
-          "mgc"
-        ],
-        "custom": ""
-      },
-      "dv": {
-        "value": [],
-        "bypasses": [],
-        "custom": ""
-      },
-      "ci": {
-        "value": [
-          "charmed",
-          "drained",
-          "exhaustion",
-          "grappled",
-          "paralyzed",
-          "petrified",
-          "poisoned",
-          "prone",
-          "restrained"
-        ],
-        "custom": ""
-      },
-      "languages": {
-        "value": [],
-        "custom": "Understands all languages of their creator, and can speak whatever languages they knew while alive"
-      },
-      "dm": {
-        "amount": {},
-        "bypasses": []
-      }
-    },
-    "currency": {
-      "pp": 0,
-      "gp": 0,
-      "ep": 0,
-      "sp": 0,
-      "cp": 0
-    },
-    "skills": {
-      "acr": {
-        "value": 0,
-        "ability": "dex",
-        "bonuses": {
-          "check": "",
-          "passive": ""
-        },
-        "roll": {
-          "min": null,
-          "max": null,
-          "mode": 0
-        }
-      },
-      "ani": {
-        "value": 0,
-        "ability": "wis",
-        "bonuses": {
-          "check": "",
-          "passive": ""
-        },
-        "roll": {
-          "min": null,
-          "max": null,
-          "mode": 0
-        }
-      },
-      "arc": {
-        "value": 0,
-        "ability": "int",
-        "bonuses": {
-          "check": "",
-          "passive": ""
-        },
-        "roll": {
-          "min": null,
-          "max": null,
-          "mode": 0
-        }
-      },
-      "ath": {
-        "value": 0,
-        "ability": "str",
-        "bonuses": {
-          "check": "",
-          "passive": ""
-        },
-        "roll": {
-          "min": null,
-          "max": null,
-          "mode": 0
-        }
-      },
-      "dec": {
-        "value": 0,
-        "ability": "cha",
-        "bonuses": {
-          "check": "",
-          "passive": ""
-        },
-        "roll": {
-          "min": null,
-          "max": null,
-          "mode": 0
-        }
-      },
-      "his": {
-        "value": 0,
-        "ability": "int",
-        "bonuses": {
-          "check": "",
-          "passive": ""
-        },
-        "roll": {
-          "min": null,
-          "max": null,
-          "mode": 0
-        }
-      },
-      "ins": {
-        "value": 0,
-        "ability": "wis",
-        "bonuses": {
-          "check": "",
-          "passive": ""
-        },
-        "roll": {
-          "min": null,
-          "max": null,
-          "mode": 0
-        }
-      },
-      "itm": {
-        "value": 0,
-        "ability": "cha",
-        "bonuses": {
-          "check": "",
-          "passive": ""
-        },
-        "roll": {
-          "min": null,
-          "max": null,
-          "mode": 0
-        }
-      },
-      "inv": {
-        "value": 0,
-        "ability": "int",
-        "bonuses": {
-          "check": "",
-          "passive": ""
-        },
-        "roll": {
-          "min": null,
-          "max": null,
-          "mode": 0
-        }
-      },
-      "med": {
-        "value": 0,
-        "ability": "wis",
-        "bonuses": {
-          "check": "",
-          "passive": ""
-        },
-        "roll": {
-          "min": null,
-          "max": null,
-          "mode": 0
-        }
-      },
-      "nat": {
-        "value": 0,
-        "ability": "int",
-        "bonuses": {
-          "check": "",
-          "passive": ""
-        },
-        "roll": {
-          "min": null,
-          "max": null,
-          "mode": 0
-        }
-      },
-      "prc": {
-        "value": 0,
-        "ability": "wis",
-        "bonuses": {
-          "check": "",
-          "passive": ""
-        },
-        "roll": {
-          "min": null,
-          "max": null,
-          "mode": 0
-        }
-      },
-      "prf": {
-        "value": 0,
-        "ability": "cha",
-        "bonuses": {
-          "check": "",
-          "passive": ""
-        },
-        "roll": {
-          "min": null,
-          "max": null,
-          "mode": 0
-        }
-      },
-      "per": {
-        "value": 0,
-        "ability": "cha",
-        "bonuses": {
-          "check": "",
-          "passive": ""
-        },
-        "roll": {
-          "min": null,
-          "max": null,
-          "mode": 0
-        }
-      },
-      "rel": {
-        "value": 0,
-        "ability": "int",
-        "bonuses": {
-          "check": "",
-          "passive": ""
-        },
-        "roll": {
-          "min": null,
-          "max": null,
-          "mode": 0
-        }
-      },
-      "slt": {
-        "value": 0,
-        "ability": "dex",
-        "bonuses": {
-          "check": "",
-          "passive": ""
-        },
-        "roll": {
-          "min": null,
-          "max": null,
-          "mode": 0
-        }
-      },
-      "ste": {
-        "value": 0,
-        "ability": "dex",
-        "bonuses": {
-          "check": "",
-          "passive": ""
-        },
-        "roll": {
-          "min": null,
-          "max": null,
-          "mode": 0
-        }
-      },
-      "sur": {
-        "value": 0,
-        "ability": "wis",
-        "bonuses": {
-          "check": "",
-          "passive": ""
-        },
-        "roll": {
-          "min": null,
-          "max": null,
-          "mode": 0
-        }
-      }
-    },
-    "spells": {
-      "spell1": {
-        "value": 0,
-        "override": null
-      },
-      "spell2": {
-        "value": 0,
-        "override": null
-      },
-      "spell3": {
-        "value": 0,
-        "override": null
-      },
-      "spell4": {
-        "value": 0,
-        "override": null
-      },
-      "spell5": {
-        "value": 0,
-        "override": null
-      },
-      "spell6": {
-        "value": 0,
-        "override": null
-      },
-      "spell7": {
-        "value": 0,
-        "override": null
-      },
-      "spell8": {
-        "value": 0,
-        "override": null
-      },
-      "spell9": {
-        "value": 0,
-        "override": null
-      },
-      "pact": {
-        "value": 0,
-        "override": null
-      },
-      "spell0": {
-        "value": 0,
-        "override": null
-      }
-    },
-    "bonuses": {
-      "mwak": {
-        "attack": "",
-        "damage": ""
-      },
-      "rwak": {
-        "attack": "",
-        "damage": ""
-      },
-      "msak": {
-        "attack": "",
-        "damage": ""
-      },
-      "rsak": {
-        "attack": "",
-        "damage": ""
-      },
-      "abilities": {
-        "check": "",
-        "save": "",
-        "skill": ""
-      },
-      "spell": {
-        "dc": ""
-      }
-    },
-    "resources": {
-      "legact": {
-        "value": 0,
-        "max": 0
-      },
-      "legres": {
-        "value": 0,
-        "max": 0
-      },
-      "lair": {
-        "value": false,
-        "initiative": null
-      }
-    },
-    "tools": {},
-    "source": {
-      "custom": "",
-      "book": "",
-      "page": "",
-      "license": "",
-      "revision": 1,
-      "rules": ""
-    }
-  },
-  "prototypeToken": {
     "name": "Spectral Graveguard",
-    "displayName": 50,
-    "actorLink": true,
-    "width": 1,
-    "height": 1,
-    "lockRotation": false,
-    "rotation": 0,
-    "disposition": 1,
-    "displayBars": 40,
-    "bar1": {
-      "attribute": "attributes.hp"
-    },
-    "bar2": {
-      "attribute": null
-    },
-    "flags": {
-      "token-z": {
-        "zIndex": 0
-      },
-      "dnd5e": {
-        "tokenRing": {
-          "effects": 1
-        }
-      }
-    },
-    "randomImg": false,
-    "alpha": 1,
-    "light": {
-      "alpha": 1,
-      "angle": 360,
-      "bright": 0,
-      "coloration": 1,
-      "dim": 0,
-      "luminosity": 0.5,
-      "saturation": 0,
-      "contrast": 0,
-      "shadows": 0,
-      "animation": {
-        "speed": 5,
-        "intensity": 5,
-        "type": null,
-        "reverse": false
-      },
-      "darkness": {
-        "min": 0,
-        "max": 1
-      },
-      "color": null,
-      "attenuation": 0.5,
-      "negative": false,
-      "priority": 0
-    },
-    "texture": {
-      "src": "icons/magic/death/undead-ghost-scream-teal.webp",
-      "tint": "#ffffff",
-      "scaleX": 1,
-      "scaleY": 1,
-      "offsetX": 0,
-      "offsetY": 0,
-      "rotation": 0,
-      "anchorX": 0.5,
-      "anchorY": 0.5,
-      "fit": "contain",
-      "alphaThreshold": 0.75
-    },
-    "sight": {
-      "angle": 360,
-      "enabled": true,
-      "range": 60,
-      "brightness": 0,
-      "visionMode": "darkvision",
-      "color": null,
-      "attenuation": 0,
-      "saturation": -1,
-      "contrast": 0
-    },
-    "detectionModes": [
-      {
-        "id": "basicSight",
-        "range": 60,
-        "enabled": true
-      }
-    ],
-    "appendNumber": false,
-    "prependAdjective": false,
-    "hexagonalShape": 0,
-    "occludable": {
-      "radius": 0
-    },
-    "ring": {
-      "enabled": false,
-      "colors": {
-        "ring": null,
-        "background": null
-      },
-      "effects": 0,
-      "subject": {
-        "scale": 1,
-        "texture": null
-      }
-    }
-  },
-  "items": [
-    {
-      "_id": "FpoS5qzlgE3YPZGN",
-      "name": "Incorporeal Movement",
-      "type": "feat",
-      "img": "icons/creatures/magical/spirit-mischief-fire-blue.webp",
-      "system": {
-        "description": {
-          "value": "<p><span>The graveguard can move through solid objects. For every 5 ft. the graveguard travels where some of its body is inside a solid object, the graveguard takes 1d10 force damage.​</span></p>",
-          "chat": ""
+    "type": "npc",
+    "img": "icons/magic/death/undead-ghost-scream-teal.webp",
+    "system": {
+        "abilities": {
+            "str": {
+                "value": 3,
+                "proficient": 0,
+                "bonuses": {
+                    "check": "",
+                    "save": ""
+                },
+                "max": null
+            },
+            "dex": {
+                "value": 14,
+                "proficient": 1,
+                "bonuses": {
+                    "check": "",
+                    "save": ""
+                },
+                "max": null
+            },
+            "con": {
+                "value": 12,
+                "proficient": 0,
+                "bonuses": {
+                    "check": "",
+                    "save": ""
+                },
+                "max": null
+            },
+            "int": {
+                "value": 10,
+                "proficient": 0,
+                "bonuses": {
+                    "check": "",
+                    "save": ""
+                },
+                "max": null
+            },
+            "wis": {
+                "value": 10,
+                "proficient": 1,
+                "bonuses": {
+                    "check": "",
+                    "save": ""
+                },
+                "max": null
+            },
+            "cha": {
+                "value": 14,
+                "proficient": 0,
+                "bonuses": {
+                    "check": "",
+                    "save": ""
+                },
+                "max": null
+            }
         },
+        "attributes": {
+            "ac": {
+                "flat": 12,
+                "calc": "default",
+                "formula": ""
+            },
+            "hp": {
+                "value": 12,
+                "max": 0,
+                "temp": null,
+                "tempmax": 0,
+                "formula": "0d4"
+            },
+            "init": {
+                "ability": "",
+                "bonus": "0",
+                "roll": {
+                    "min": null,
+                    "max": null,
+                    "mode": 0
+                }
+            },
+            "movement": {
+                "burrow": 0,
+                "climb": 0,
+                "fly": 0,
+                "swim": 0,
+                "walk": 30,
+                "units": "ft",
+                "hover": false
+            },
+            "attunement": {
+                "max": 3
+            },
+            "senses": {
+                "darkvision": 60,
+                "blindsight": 0,
+                "tremorsense": 0,
+                "truesight": 0,
+                "units": "ft",
+                "special": ""
+            },
+            "spellcasting": "str",
+            "exhaustion": 0,
+            "concentration": {
+                "ability": "",
+                "roll": {
+                    "min": null,
+                    "max": null,
+                    "mode": 0
+                },
+                "bonuses": {
+                    "save": ""
+                },
+                "limit": 1
+            },
+            "hd": {
+                "spent": 0
+            },
+            "death": {
+                "ability": "",
+                "roll": {
+                    "min": null,
+                    "max": null,
+                    "mode": 0
+                },
+                "success": 0,
+                "failure": 0
+            }
+        },
+        "details": {
+            "biography": {
+                "value": "",
+                "public": ""
+            },
+            "alignment": "",
+            "race": null,
+            "type": {
+                "value": "undead",
+                "subtype": "",
+                "swarm": "",
+                "custom": ""
+            },
+            "environment": "",
+            "cr": 1,
+            "spellLevel": 0,
+            "ideal": "",
+            "bond": "",
+            "flaw": ""
+        },
+        "traits": {
+            "size": "med",
+            "di": {
+                "value": [
+                    "necrotic",
+                    "poison"
+                ],
+                "bypasses": [],
+                "custom": ""
+            },
+            "dr": {
+                "value": [
+                    "acid",
+                    "bludgeoning",
+                    "cold",
+                    "fire",
+                    "lightning",
+                    "piercing",
+                    "slashing",
+                    "thunder"
+                ],
+                "bypasses": [
+                    "coldIron",
+                    "mgc"
+                ],
+                "custom": ""
+            },
+            "dv": {
+                "value": [],
+                "bypasses": [],
+                "custom": ""
+            },
+            "ci": {
+                "value": [
+                    "charmed",
+                    "drained",
+                    "exhaustion",
+                    "grappled",
+                    "paralyzed",
+                    "petrified",
+                    "poisoned",
+                    "prone",
+                    "restrained"
+                ],
+                "custom": ""
+            },
+            "languages": {
+                "value": [],
+                "custom": "Understands all languages of their creator, and can speak whatever languages they knew while alive"
+            },
+            "dm": {
+                "amount": {},
+                "bypasses": []
+            }
+        },
+        "currency": {
+            "pp": 0,
+            "gp": 0,
+            "ep": 0,
+            "sp": 0,
+            "cp": 0
+        },
+        "skills": {
+            "acr": {
+                "value": 0,
+                "ability": "dex",
+                "bonuses": {
+                    "check": "",
+                    "passive": ""
+                },
+                "roll": {
+                    "min": null,
+                    "max": null,
+                    "mode": 0
+                }
+            },
+            "ani": {
+                "value": 0,
+                "ability": "wis",
+                "bonuses": {
+                    "check": "",
+                    "passive": ""
+                },
+                "roll": {
+                    "min": null,
+                    "max": null,
+                    "mode": 0
+                }
+            },
+            "arc": {
+                "value": 0,
+                "ability": "int",
+                "bonuses": {
+                    "check": "",
+                    "passive": ""
+                },
+                "roll": {
+                    "min": null,
+                    "max": null,
+                    "mode": 0
+                }
+            },
+            "ath": {
+                "value": 0,
+                "ability": "str",
+                "bonuses": {
+                    "check": "",
+                    "passive": ""
+                },
+                "roll": {
+                    "min": null,
+                    "max": null,
+                    "mode": 0
+                }
+            },
+            "dec": {
+                "value": 0,
+                "ability": "cha",
+                "bonuses": {
+                    "check": "",
+                    "passive": ""
+                },
+                "roll": {
+                    "min": null,
+                    "max": null,
+                    "mode": 0
+                }
+            },
+            "his": {
+                "value": 0,
+                "ability": "int",
+                "bonuses": {
+                    "check": "",
+                    "passive": ""
+                },
+                "roll": {
+                    "min": null,
+                    "max": null,
+                    "mode": 0
+                }
+            },
+            "ins": {
+                "value": 0,
+                "ability": "wis",
+                "bonuses": {
+                    "check": "",
+                    "passive": ""
+                },
+                "roll": {
+                    "min": null,
+                    "max": null,
+                    "mode": 0
+                }
+            },
+            "itm": {
+                "value": 0,
+                "ability": "cha",
+                "bonuses": {
+                    "check": "",
+                    "passive": ""
+                },
+                "roll": {
+                    "min": null,
+                    "max": null,
+                    "mode": 0
+                }
+            },
+            "inv": {
+                "value": 0,
+                "ability": "int",
+                "bonuses": {
+                    "check": "",
+                    "passive": ""
+                },
+                "roll": {
+                    "min": null,
+                    "max": null,
+                    "mode": 0
+                }
+            },
+            "med": {
+                "value": 0,
+                "ability": "wis",
+                "bonuses": {
+                    "check": "",
+                    "passive": ""
+                },
+                "roll": {
+                    "min": null,
+                    "max": null,
+                    "mode": 0
+                }
+            },
+            "nat": {
+                "value": 0,
+                "ability": "int",
+                "bonuses": {
+                    "check": "",
+                    "passive": ""
+                },
+                "roll": {
+                    "min": null,
+                    "max": null,
+                    "mode": 0
+                }
+            },
+            "prc": {
+                "value": 0,
+                "ability": "wis",
+                "bonuses": {
+                    "check": "",
+                    "passive": ""
+                },
+                "roll": {
+                    "min": null,
+                    "max": null,
+                    "mode": 0
+                }
+            },
+            "prf": {
+                "value": 0,
+                "ability": "cha",
+                "bonuses": {
+                    "check": "",
+                    "passive": ""
+                },
+                "roll": {
+                    "min": null,
+                    "max": null,
+                    "mode": 0
+                }
+            },
+            "per": {
+                "value": 0,
+                "ability": "cha",
+                "bonuses": {
+                    "check": "",
+                    "passive": ""
+                },
+                "roll": {
+                    "min": null,
+                    "max": null,
+                    "mode": 0
+                }
+            },
+            "rel": {
+                "value": 0,
+                "ability": "int",
+                "bonuses": {
+                    "check": "",
+                    "passive": ""
+                },
+                "roll": {
+                    "min": null,
+                    "max": null,
+                    "mode": 0
+                }
+            },
+            "slt": {
+                "value": 0,
+                "ability": "dex",
+                "bonuses": {
+                    "check": "",
+                    "passive": ""
+                },
+                "roll": {
+                    "min": null,
+                    "max": null,
+                    "mode": 0
+                }
+            },
+            "ste": {
+                "value": 0,
+                "ability": "dex",
+                "bonuses": {
+                    "check": "",
+                    "passive": ""
+                },
+                "roll": {
+                    "min": null,
+                    "max": null,
+                    "mode": 0
+                }
+            },
+            "sur": {
+                "value": 0,
+                "ability": "wis",
+                "bonuses": {
+                    "check": "",
+                    "passive": ""
+                },
+                "roll": {
+                    "min": null,
+                    "max": null,
+                    "mode": 0
+                }
+            }
+        },
+        "spells": {
+            "spell1": {
+                "value": 0,
+                "override": null
+            },
+            "spell2": {
+                "value": 0,
+                "override": null
+            },
+            "spell3": {
+                "value": 0,
+                "override": null
+            },
+            "spell4": {
+                "value": 0,
+                "override": null
+            },
+            "spell5": {
+                "value": 0,
+                "override": null
+            },
+            "spell6": {
+                "value": 0,
+                "override": null
+            },
+            "spell7": {
+                "value": 0,
+                "override": null
+            },
+            "spell8": {
+                "value": 0,
+                "override": null
+            },
+            "spell9": {
+                "value": 0,
+                "override": null
+            },
+            "pact": {
+                "value": 0,
+                "override": null
+            },
+            "spell0": {
+                "value": 0,
+                "override": null
+            }
+        },
+        "bonuses": {
+            "mwak": {
+                "attack": "",
+                "damage": ""
+            },
+            "rwak": {
+                "attack": "",
+                "damage": ""
+            },
+            "msak": {
+                "attack": "",
+                "damage": ""
+            },
+            "rsak": {
+                "attack": "",
+                "damage": ""
+            },
+            "abilities": {
+                "check": "",
+                "save": "",
+                "skill": ""
+            },
+            "spell": {
+                "dc": ""
+            }
+        },
+        "resources": {
+            "legact": {
+                "value": 0,
+                "max": 0
+            },
+            "legres": {
+                "value": 0,
+                "max": 0
+            },
+            "lair": {
+                "value": false,
+                "initiative": null
+            }
+        },
+        "tools": {},
         "source": {
-          "custom": "elkan5e.com/wizard",
-          "book": "",
-          "page": "",
-          "license": "",
-          "revision": 1,
-          "rules": "2014"
+            "custom": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "license": "",
+            "revision": 1,
+            "rules": ""
+        }
+    },
+    "prototypeToken": {
+        "name": "Spectral Graveguard",
+        "displayName": 50,
+        "actorLink": true,
+        "width": 1,
+        "height": 1,
+        "lockRotation": false,
+        "rotation": 0,
+        "disposition": 1,
+        "displayBars": 40,
+        "bar1": {
+            "attribute": "attributes.hp"
         },
-        "uses": {
-          "max": "",
-          "recovery": [],
-          "spent": 0
+        "bar2": {
+            "attribute": null
         },
-        "type": {
-          "value": "",
-          "subtype": ""
-        },
-        "requirements": "",
-        "properties": [],
-        "prerequisites": {
-          "level": null
-        },
-        "activities": {
-          "dnd5eactivity000": {
-            "_id": "dnd5eactivity000",
-            "type": "damage",
-            "activation": {
-              "type": "special",
-              "value": null,
-              "condition": "",
-              "override": false
+        "flags": {
+            "token-z": {
+                "zIndex": 0
             },
-            "consumption": {
-              "targets": [],
-              "scaling": {
-                "allowed": false,
-                "max": ""
-              },
-              "spellSlot": true
+            "dnd5e": {
+                "tokenRing": {
+                    "effects": 1
+                }
+            }
+        },
+        "randomImg": false,
+        "alpha": 1,
+        "light": {
+            "alpha": 1,
+            "angle": 360,
+            "bright": 0,
+            "coloration": 1,
+            "dim": 0,
+            "luminosity": 0.5,
+            "saturation": 0,
+            "contrast": 0,
+            "shadows": 0,
+            "animation": {
+                "speed": 5,
+                "intensity": 5,
+                "type": null,
+                "reverse": false
             },
-            "description": {
-              "chatFlavor": ""
+            "darkness": {
+                "min": 0,
+                "max": 1
             },
-            "duration": {
-              "concentration": false,
-              "value": "",
-              "units": "",
-              "special": "",
-              "override": false
+            "color": null,
+            "attenuation": 0.5,
+            "negative": false,
+            "priority": 0
+        },
+        "texture": {
+            "src": "icons/magic/death/undead-ghost-scream-teal.webp",
+            "tint": "#ffffff",
+            "scaleX": 1,
+            "scaleY": 1,
+            "offsetX": 0,
+            "offsetY": 0,
+            "rotation": 0,
+            "anchorX": 0.5,
+            "anchorY": 0.5,
+            "fit": "contain",
+            "alphaThreshold": 0.75
+        },
+        "sight": {
+            "angle": 360,
+            "enabled": true,
+            "range": 60,
+            "brightness": 0,
+            "visionMode": "darkvision",
+            "color": null,
+            "attenuation": 0,
+            "saturation": -1,
+            "contrast": 0
+        },
+        "detectionModes": [
+            {
+                "id": "basicSight",
+                "range": 60,
+                "enabled": true
+            }
+        ],
+        "appendNumber": false,
+        "prependAdjective": false,
+        "hexagonalShape": 0,
+        "occludable": {
+            "radius": 0
+        },
+        "ring": {
+            "enabled": false,
+            "colors": {
+                "ring": null,
+                "background": null
+            },
+            "effects": 0,
+            "subject": {
+                "scale": 1,
+                "texture": null
+            }
+        }
+    },
+    "items": [
+        {
+            "_id": "FpoS5qzlgE3YPZGN",
+            "name": "Incorporeal Movement",
+            "type": "feat",
+            "img": "icons/creatures/magical/spirit-mischief-fire-blue.webp",
+            "system": {
+                "description": {
+                    "value": "<p><span>The graveguard can move through solid objects. For every 5 ft. the graveguard travels where some of its body is inside a solid object, the graveguard takes 1d10 force damage.\u200b</span></p>",
+                    "chat": ""
+                },
+                "source": {
+                    "custom": "elkan5e.com/wizard",
+                    "book": "",
+                    "page": "",
+                    "license": "",
+                    "revision": 1,
+                    "rules": "2014"
+                },
+                "uses": {
+                    "max": "",
+                    "recovery": [],
+                    "spent": 0
+                },
+                "type": {
+                    "value": "",
+                    "subtype": ""
+                },
+                "requirements": "",
+                "properties": [],
+                "prerequisites": {
+                    "level": null
+                },
+                "activities": {
+                    "dnd5eactivity000": {
+                        "_id": "dnd5eactivity000",
+                        "type": "damage",
+                        "activation": {
+                            "type": "special",
+                            "value": null,
+                            "condition": "",
+                            "override": false
+                        },
+                        "consumption": {
+                            "targets": [],
+                            "scaling": {
+                                "allowed": false,
+                                "max": ""
+                            },
+                            "spellSlot": true
+                        },
+                        "description": {
+                            "chatFlavor": ""
+                        },
+                        "duration": {
+                            "concentration": false,
+                            "value": "",
+                            "units": "",
+                            "special": "",
+                            "override": false
+                        },
+                        "effects": [],
+                        "range": {
+                            "units": "self",
+                            "special": "",
+                            "override": false
+                        },
+                        "target": {
+                            "template": {
+                                "count": "",
+                                "contiguous": false,
+                                "type": "",
+                                "size": "",
+                                "width": "",
+                                "height": "",
+                                "units": ""
+                            },
+                            "affects": {
+                                "count": "",
+                                "type": "self",
+                                "choice": false,
+                                "special": ""
+                            },
+                            "prompt": true,
+                            "override": false
+                        },
+                        "uses": {
+                            "spent": 0,
+                            "max": "",
+                            "recovery": []
+                        },
+                        "damage": {
+                            "critical": {
+                                "allow": false,
+                                "bonus": ""
+                            },
+                            "parts": [
+                                {
+                                    "number": 1,
+                                    "denomination": 10,
+                                    "bonus": "",
+                                    "types": [
+                                        "force"
+                                    ],
+                                    "custom": {
+                                        "enabled": false,
+                                        "formula": ""
+                                    },
+                                    "scaling": {
+                                        "mode": "whole",
+                                        "number": null,
+                                        "formula": ""
+                                    }
+                                }
+                            ]
+                        },
+                        "sort": 0
+                    }
+                },
+                "identifier": "incorporeal-movement",
+                "enchant": {}
             },
             "effects": [],
-            "range": {
-              "units": "self",
-              "special": "",
-              "override": false
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0
             },
-            "target": {
-              "template": {
-                "count": "",
-                "contiguous": false,
-                "type": "",
-                "size": "",
-                "width": "",
-                "height": "",
-                "units": ""
-              },
-              "affects": {
-                "count": "",
-                "type": "self",
-                "choice": false,
-                "special": ""
-              },
-              "prompt": true,
-              "override": false
+            "flags": {
+                "core": {
+                    "sourceId": "Compendium.dnd5e.monsterfeatures.LUHmtIDD1VTreFqI"
+                },
+                "midiProperties": {
+                    "confirmTargets": "default",
+                    "autoFailFriendly": false,
+                    "autoSaveFriendly": false,
+                    "critOther": false,
+                    "offHandWeapon": false,
+                    "magicdam": false,
+                    "magiceffect": false,
+                    "noConcentrationCheck": false,
+                    "toggleEffect": false,
+                    "ignoreTotalCover": false,
+                    "idr": false,
+                    "idi": false,
+                    "idv": false,
+                    "ida": false
+                },
+                "midi-qol": {
+                    "rollAttackPerTarget": "default",
+                    "removeAttackDamageButtons": "default",
+                    "itemCondition": "",
+                    "effectCondition": ""
+                },
+                "dnd5e": {}
             },
-            "uses": {
-              "spent": 0,
-              "max": "",
-              "recovery": []
+            "_stats": {
+                "compendiumSource": "Compendium.dnd5e.monsterfeatures.LUHmtIDD1VTreFqI",
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.0.2",
+                "createdTime": null,
+                "modifiedTime": null,
+                "lastModifiedBy": null
             },
-            "damage": {
-              "critical": {
-                "allow": false,
-                "bonus": ""
-              },
-              "parts": [
-                {
-                  "number": 1,
-                  "denomination": 10,
-                  "bonus": "",
-                  "types": [
-                    "force"
-                  ],
-                  "custom": {
-                    "enabled": false,
-                    "formula": ""
-                  },
-                  "scaling": {
-                    "mode": "whole",
-                    "number": null,
-                    "formula": ""
-                  }
-                }
-              ]
-            },
-            "sort": 0
-          }
+            "_key": "!actors.items!cpIgcOpmk6YiimMw.FpoS5qzlgE3YPZGN"
         },
-        "identifier": "incorporeal-movement",
-        "enchant": {}
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0
-      },
-      "flags": {
-        "core": {
-          "sourceId": "Compendium.dnd5e.monsterfeatures.LUHmtIDD1VTreFqI"
-        },
-        "midiProperties": {
-          "confirmTargets": "default",
-          "autoFailFriendly": false,
-          "autoSaveFriendly": false,
-          "critOther": false,
-          "offHandWeapon": false,
-          "magicdam": false,
-          "magiceffect": false,
-          "noConcentrationCheck": false,
-          "toggleEffect": false,
-          "ignoreTotalCover": false,
-          "idr": false,
-          "idi": false,
-          "idv": false,
-          "ida": false
-        },
-        "midi-qol": {
-          "rollAttackPerTarget": "default",
-          "removeAttackDamageButtons": "default",
-          "itemCondition": "",
-          "effectCondition": ""
-        },
-        "dnd5e": {}
-      },
-      "_stats": {
-        "compendiumSource": "Compendium.dnd5e.monsterfeatures.LUHmtIDD1VTreFqI",
-        "duplicateSource": null,
-        "coreVersion": "12.331",
-        "systemId": "dnd5e",
-        "systemVersion": "4.0.2",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_key": "!actors.items!cpIgcOpmk6YiimMw.FpoS5qzlgE3YPZGN"
-    },
-    {
-      "name": "Life Drain",
-      "type": "weapon",
-      "img": "icons/magic/unholy/strike-hand-glow-pink.webp",
-      "system": {
-        "description": {
-          "value": "<p><em>The graveguard touches a creature, their hand moving through armor to drain the target's life force.</em></p><p><strong>Action</strong> - 1 Creature (5 ft.) - Magical</p><p>This ability counts as an attack. The DC for this ability equals 8 + proficiency bonus + charisma modifier (whichever is higher).</p><p><strong>Dexterity Saving Throw</strong></p><ul><li><p><strong>Failure</strong>: Target takes 1d6 + charisma modifier necrotic damage and their hit points are drained by the same amount.</p></li><li><p><strong>Success</strong>: No damage.</p></li></ul>",
-          "chat": ""
-        },
-        "source": {
-          "custom": "elkan5e.com/wizard",
-          "book": "",
-          "page": "",
-          "license": "",
-          "revision": 1,
-          "rules": "2024"
-        },
-        "quantity": 1,
-        "weight": {
-          "value": 0,
-          "units": "lb"
-        },
-        "price": {
-          "value": 0,
-          "denomination": "gp"
-        },
-        "attunement": "",
-        "rarity": "",
-        "identified": true,
-        "cover": null,
-        "range": {
-          "value": null,
-          "long": null,
-          "units": "",
-          "reach": null
-        },
-        "uses": {
-          "max": "",
-          "spent": 0,
-          "recovery": []
-        },
-        "damage": {
-          "versatile": {
-            "number": null,
-            "denomination": null,
-            "bonus": "",
-            "types": [],
-            "custom": {
-              "enabled": false,
-              "formula": ""
-            },
-            "scaling": {
-              "mode": "",
-              "number": null,
-              "formula": ""
-            }
-          },
-          "base": {
-            "number": 1,
-            "denomination": 6,
-            "bonus": "",
-            "types": [
-              "necrotic"
-            ],
-            "custom": {
-              "enabled": false,
-              "formula": ""
-            },
-            "scaling": {
-              "mode": "",
-              "number": null,
-              "formula": ""
-            }
-          }
-        },
-        "armor": {
-          "value": 10
-        },
-        "hp": {
-          "value": 0,
-          "max": 0,
-          "dt": null,
-          "conditions": ""
-        },
-        "properties": [
-          "mgc"
-        ],
-        "unidentified": {
-          "description": ""
-        },
-        "type": {
-          "value": "natural",
-          "baseItem": ""
-        },
-        "container": null,
-        "crewed": false,
-        "magicalBonus": null,
-        "attuned": false,
-        "equipped": true,
-        "proficient": null,
-        "activities": {
-          "dnd5eactivity100": {
-            "name": "",
-            "img": "",
-            "damage": {
-              "onSave": "none",
-              "parts": [
-                {
-                  "custom": {
-                    "enabled": false,
-                    "formula": ""
-                  },
-                  "number": 1,
-                  "denomination": 6,
-                  "bonus": "+@mod",
-                  "types": [],
-                  "scaling": {
-                    "number": 1
-                  }
-                }
-              ]
-            },
-            "appliedEffects": [
-              "derUyYkWvF5CSMcI"
-            ],
-            "target": {
-              "affects": {
-                "type": "creature",
-                "count": "1"
-              }
-            },
-            "range": {
-              "override": true,
-              "units": "touch",
-              "value": "5"
-            }
-          }
-        },
-        "mastery": "",
-        "identifier": "",
-        "ammunition": {}
-      },
-      "effects": [
         {
-          "name": "Drained",
-          "origin": "Compendium.elkan5e.elkan5e-creatures.Actor.cpIgcOpmk6YiimMw.Item.L4qItZ7kCk7qMc4R",
-          "changes": [
-            {
-              "key": "system.attributes.hp.max",
-              "mode": 2,
-              "value": "-@damage",
-              "priority": 20
-            }
-          ],
-          "transfer": false,
-          "flags": {
-            "dae": {
-              "itemName": "Life Drain",
-              "disableIncapacitated": false,
-              "stackable": "noneName",
-              "showIcon": false,
-              "durationExpression": "",
-              "macroRepeat": "none",
-              "specialDuration": [],
-              "enableCondition": "",
-              "disableCondition": "",
-              "selfTarget": false,
-              "selfTargetAlways": false,
-              "dontApply": false
+            "name": "Life Drain",
+            "type": "weapon",
+            "img": "icons/magic/unholy/strike-hand-glow-pink.webp",
+            "system": {
+                "description": {
+                    "value": "<p><em>The graveguard touches a creature, their hand moving through armor to drain the target's life force.</em></p><p><strong>Action</strong> - 1 Creature (5 ft.) - Magical</p><p>This ability counts as an attack. The DC for this ability equals 8 + proficiency bonus + charisma modifier (whichever is higher).</p><p><strong>Dexterity Saving Throw</strong></p><ul><li><p><strong>Failure</strong>: Target takes 1d6 + charisma modifier necrotic damage and their hit points are drained by the same amount.</p></li><li><p><strong>Success</strong>:\u00a0No damage.</p></li></ul>",
+                    "chat": ""
+                },
+                "source": {
+                    "custom": "elkan5e.com/wizard",
+                    "book": "",
+                    "page": "",
+                    "license": "",
+                    "revision": 1,
+                    "rules": "2024"
+                },
+                "quantity": 1,
+                "weight": {
+                    "value": 0,
+                    "units": "lb"
+                },
+                "price": {
+                    "value": 0,
+                    "denomination": "gp"
+                },
+                "attunement": "",
+                "rarity": "",
+                "identified": true,
+                "cover": null,
+                "range": {
+                    "value": null,
+                    "long": null,
+                    "units": "",
+                    "reach": null
+                },
+                "uses": {
+                    "max": "",
+                    "spent": 0,
+                    "recovery": []
+                },
+                "damage": {
+                    "versatile": {
+                        "number": null,
+                        "denomination": null,
+                        "bonus": "",
+                        "types": [],
+                        "custom": {
+                            "enabled": false,
+                            "formula": ""
+                        },
+                        "scaling": {
+                            "mode": "",
+                            "number": null,
+                            "formula": ""
+                        }
+                    },
+                    "base": {
+                        "number": 1,
+                        "denomination": 6,
+                        "bonus": "",
+                        "types": [
+                            "necrotic"
+                        ],
+                        "custom": {
+                            "enabled": false,
+                            "formula": ""
+                        },
+                        "scaling": {
+                            "mode": "",
+                            "number": null,
+                            "formula": ""
+                        }
+                    }
+                },
+                "armor": {
+                    "value": 10
+                },
+                "hp": {
+                    "value": 0,
+                    "max": 0,
+                    "dt": null,
+                    "conditions": ""
+                },
+                "properties": [
+                    "mgc"
+                ],
+                "unidentified": {
+                    "description": ""
+                },
+                "type": {
+                    "value": "natural",
+                    "baseItem": ""
+                },
+                "container": null,
+                "crewed": false,
+                "magicalBonus": null,
+                "attuned": false,
+                "equipped": true,
+                "proficient": null,
+                "activities": {
+                    "dnd5eactivity100": {
+                        "name": "",
+                        "img": "",
+                        "damage": {
+                            "onSave": "none",
+                            "parts": [
+                                {
+                                    "custom": {
+                                        "enabled": false,
+                                        "formula": ""
+                                    },
+                                    "number": 1,
+                                    "denomination": 6,
+                                    "bonus": "+@mod",
+                                    "types": [],
+                                    "scaling": {
+                                        "number": 1
+                                    }
+                                }
+                            ]
+                        },
+                        "appliedEffects": [
+                            "derUyYkWvF5CSMcI"
+                        ],
+                        "target": {
+                            "affects": {
+                                "type": "creature",
+                                "count": "1"
+                            }
+                        },
+                        "range": {
+                            "override": true,
+                            "units": "touch",
+                            "value": "5"
+                        }
+                    }
+                },
+                "mastery": "",
+                "identifier": "",
+                "ammunition": {}
             },
-            "ActiveAuras": {
-              "isAura": false,
-              "aura": "None",
-              "nameOverride": "",
-              "radius": "",
-              "alignment": "",
-              "type": "",
-              "customCheck": "",
-              "ignoreSelf": false,
-              "height": false,
-              "hidden": false,
-              "displayTemp": false,
-              "hostile": false,
-              "onlyOnce": false,
-              "wallsBlock": "system"
-            }
-          },
-          "img": "modules/elkan5e/icons/drained.svg",
-          "_id": "derUyYkWvF5CSMcI",
-          "type": "base",
-          "system": {},
-          "disabled": false,
-          "duration": {
-            "startTime": null,
-            "seconds": null,
-            "combat": null,
-            "rounds": null,
-            "turns": null,
-            "startRound": null,
-            "startTurn": null
-          },
-          "description": "",
-          "tint": "#ffffff",
-          "statuses": [
-            "drained"
-          ],
-          "sort": 0,
-          "_stats": {
-            "compendiumSource": null,
-            "duplicateSource": null,
-            "coreVersion": "12.331",
-            "systemId": "dnd5e",
-            "systemVersion": "4.0.2",
-            "createdTime": null,
-            "modifiedTime": null,
-            "lastModifiedBy": null
-          },
-          "_key": "!actors.items.effects!cpIgcOpmk6YiimMw.L4qItZ7kCk7qMc4R.derUyYkWvF5CSMcI"
+            "effects": [
+                {
+                    "name": "Drained",
+                    "origin": "Compendium.elkan5e.elkan5e-creatures.Actor.cpIgcOpmk6YiimMw.Item.L4qItZ7kCk7qMc4R",
+                    "changes": [
+                        {
+                            "key": "system.attributes.hp.max",
+                            "mode": 2,
+                            "value": "-@damage",
+                            "priority": 20
+                        }
+                    ],
+                    "transfer": false,
+                    "flags": {
+                        "dae": {
+                            "itemName": "Life Drain",
+                            "disableIncapacitated": false,
+                            "stackable": "noneName",
+                            "showIcon": false,
+                            "durationExpression": "",
+                            "macroRepeat": "none",
+                            "specialDuration": [],
+                            "enableCondition": "",
+                            "disableCondition": "",
+                            "selfTarget": false,
+                            "selfTargetAlways": false,
+                            "dontApply": false
+                        },
+                        "ActiveAuras": {
+                            "isAura": false,
+                            "aura": "None",
+                            "nameOverride": "",
+                            "radius": "",
+                            "alignment": "",
+                            "type": "",
+                            "customCheck": "",
+                            "ignoreSelf": false,
+                            "height": false,
+                            "hidden": false,
+                            "displayTemp": false,
+                            "hostile": false,
+                            "onlyOnce": false,
+                            "wallsBlock": "system"
+                        }
+                    },
+                    "img": "modules/elkan5e/icons/drained.svg",
+                    "_id": "derUyYkWvF5CSMcI",
+                    "type": "base",
+                    "system": {},
+                    "disabled": false,
+                    "duration": {
+                        "startTime": null,
+                        "seconds": null,
+                        "combat": null,
+                        "rounds": null,
+                        "turns": null,
+                        "startRound": null,
+                        "startTurn": null
+                    },
+                    "description": "",
+                    "tint": "#ffffff",
+                    "statuses": [
+                        "drained"
+                    ],
+                    "sort": 0,
+                    "_stats": {
+                        "compendiumSource": null,
+                        "duplicateSource": null,
+                        "coreVersion": "12.331",
+                        "systemId": "dnd5e",
+                        "systemVersion": "4.0.2",
+                        "createdTime": null,
+                        "modifiedTime": null,
+                        "lastModifiedBy": null
+                    },
+                    "_key": "!actors.items.effects!cpIgcOpmk6YiimMw.L4qItZ7kCk7qMc4R.derUyYkWvF5CSMcI"
+                }
+            ],
+            "folder": "45nJjAnFwni76P4o",
+            "ownership": {
+                "default": 0,
+                "3Yi0HjF4PKCA4vX0": 3
+            },
+            "flags": {
+                "midi-qol": {
+                    "fumbleThreshold": null,
+                    "rollAttackPerTarget": "default",
+                    "removeAttackDamageButtons": "default",
+                    "itemCondition": "",
+                    "effectCondition": ""
+                },
+                "midiProperties": {
+                    "confirmTargets": "default",
+                    "saveDamage": "default",
+                    "bonusSaveDamage": "default",
+                    "autoFailFriendly": false,
+                    "autoSaveFriendly": false,
+                    "critOther": false,
+                    "offHandWeapon": false,
+                    "magicdam": false,
+                    "magiceffect": false,
+                    "noConcentrationCheck": false,
+                    "toggleEffect": false,
+                    "ignoreTotalCover": false,
+                    "idr": false,
+                    "idi": false,
+                    "idv": false,
+                    "ida": false
+                },
+                "dnd5e": {
+                    "riders": {
+                        "activity": [],
+                        "effect": []
+                    }
+                }
+            },
+            "_stats": {
+                "compendiumSource": "Compendium.elkan5e.elkan5e-class-features.Item.2Bwht3NPmBHZKAMb",
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.0.2",
+                "createdTime": null,
+                "modifiedTime": null,
+                "lastModifiedBy": null
+            },
+            "_id": "L4qItZ7kCk7qMc4R",
+            "sort": 0,
+            "_key": "!actors.items!cpIgcOpmk6YiimMw.L4qItZ7kCk7qMc4R"
+        },
+        {
+            "name": "Graveguard",
+            "type": "class",
+            "_id": "9Hc7jrIvmRTYR8sQ",
+            "img": "icons/magic/death/hand-undead-skeleton-fire-green.webp",
+            "system": {
+                "description": {
+                    "value": "",
+                    "chat": ""
+                },
+                "source": {
+                    "custom": "elkan5e.com/wizard",
+                    "rules": "2014",
+                    "revision": 1
+                },
+                "startingEquipment": [],
+                "identifier": "graveguard",
+                "levels": 3,
+                "hitDice": "d4",
+                "hitDiceUsed": 0,
+                "advancement": [
+                    {
+                        "_id": "IWmHAIfzXgOz5Kaw",
+                        "type": "HitPoints",
+                        "configuration": {},
+                        "value": {
+                            "1": "avg",
+                            "2": "avg",
+                            "3": "avg"
+                        }
+                    },
+                    {
+                        "_id": "nBF6jxLDTUI4orLm",
+                        "type": "AbilityScoreImprovement",
+                        "configuration": {
+                            "points": 2,
+                            "fixed": {
+                                "str": 0,
+                                "dex": 0,
+                                "con": 0,
+                                "int": 0,
+                                "wis": 0,
+                                "cha": 0
+                            },
+                            "cap": 2,
+                            "locked": []
+                        },
+                        "value": {
+                            "type": "asi"
+                        },
+                        "level": 6,
+                        "title": "",
+                        "hint": "You can increase one of your graveguard\u2019s ability scores of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature. Unlike with player characters, you do not gain a feat."
+                    },
+                    {
+                        "_id": "hi2T4qTYbM4DsJmp",
+                        "type": "AbilityScoreImprovement",
+                        "configuration": {
+                            "points": 2,
+                            "fixed": {
+                                "str": 0,
+                                "dex": 0,
+                                "con": 0,
+                                "int": 0,
+                                "wis": 0,
+                                "cha": 0
+                            },
+                            "cap": 2,
+                            "locked": []
+                        },
+                        "value": {
+                            "type": "asi"
+                        },
+                        "level": 10,
+                        "title": "",
+                        "hint": ""
+                    },
+                    {
+                        "_id": "k4JdAlX9T3tgZuXN",
+                        "type": "AbilityScoreImprovement",
+                        "configuration": {
+                            "points": 2,
+                            "fixed": {
+                                "str": 0,
+                                "dex": 0,
+                                "con": 0,
+                                "int": 0,
+                                "wis": 0,
+                                "cha": 0
+                            },
+                            "cap": 2,
+                            "locked": []
+                        },
+                        "value": {
+                            "type": "asi"
+                        },
+                        "level": 14,
+                        "title": "",
+                        "hint": "You can increase one of your graveguard\u2019s ability scores of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature. Unlike with player characters, you do not gain a feat."
+                    },
+                    {
+                        "_id": "Gqud4u3OAc66cpBZ",
+                        "type": "ItemChoice",
+                        "configuration": {
+                            "choices": {
+                                "0": {
+                                    "count": 1,
+                                    "replacement": false
+                                },
+                                "6": {
+                                    "count": 1,
+                                    "replacement": false
+                                }
+                            },
+                            "allowDrops": false,
+                            "type": null,
+                            "pool": [
+                                {
+                                    "uuid": "Compendium.elkan5e.elkan5e-feats.Item.EltLjyZdKGEgk2UQ"
+                                },
+                                {
+                                    "uuid": "Compendium.elkan5e.elkan5e-feats.Item.lOnYG5rDvcj9cNpC"
+                                },
+                                {
+                                    "uuid": "Compendium.elkan5e.elkan5e-feats.Item.15DYqMSBjFZ0E8sN"
+                                },
+                                {
+                                    "uuid": "Compendium.elkan5e.elkan5e-feats.Item.AQMAZwkPlJx8lrKv"
+                                },
+                                {
+                                    "uuid": "Compendium.elkan5e.elkan5e-feats.Item.VVAO5rqWy2pEFNtd"
+                                },
+                                {
+                                    "uuid": "Compendium.elkan5e.elkan5e-feats.Item.zeUWyy9PRFOOpItf"
+                                },
+                                {
+                                    "uuid": "Compendium.elkan5e.elkan5e-feats.Item.QGWsedYohAVh6ra1"
+                                },
+                                {
+                                    "uuid": "Compendium.elkan5e.elkan5e-feats.Item.00AhlBjPvdfrZuW1"
+                                },
+                                {
+                                    "uuid": "Compendium.elkan5e.elkan5e-feats.Item.IMKA5ByKVLV2oFVp"
+                                },
+                                {
+                                    "uuid": "Compendium.elkan5e.elkan5e-feats.Item.qipEtgxd8tivjOui"
+                                },
+                                {
+                                    "uuid": "Compendium.elkan5e.elkan5e-feats.Item.keMyt5hDz6jW3kbg"
+                                },
+                                {
+                                    "uuid": "Compendium.elkan5e.elkan5e-feats.Item.DYVcmd8l1flqHyLC"
+                                },
+                                {
+                                    "uuid": "Compendium.elkan5e.elkan5e-feats.Item.OkmUfzESvxPzkfhG"
+                                },
+                                {
+                                    "uuid": "Compendium.elkan5e.elkan5e-feats.Item.Ykpwkd7Ieh73M4p4"
+                                },
+                                {
+                                    "uuid": "Compendium.elkan5e.elkan5e-feats.Item.BSexykbHcQcUq4pH"
+                                },
+                                {
+                                    "uuid": "Compendium.elkan5e.elkan5e-class-features.Item.4D4jpAQNKqC0p51l"
+                                },
+                                {
+                                    "uuid": "Compendium.elkan5e.elkan5e-class-features.Item.blk5RiyMUAatGcyM"
+                                }
+                            ],
+                            "spell": null,
+                            "restriction": {}
+                        },
+                        "value": {
+                            "added": {},
+                            "replaced": {}
+                        },
+                        "title": "Graveguard Specialization",
+                        "hint": "Your graveguard gains new abilities, either as they learn from their new life or remember what they could do while alive. Choose one of the following options:"
+                    }
+                ],
+                "spellcasting": {
+                    "progression": "none",
+                    "ability": "",
+                    "preparation": {}
+                },
+                "primaryAbility": {
+                    "value": [],
+                    "all": true
+                }
+            },
+            "effects": [],
+            "folder": null,
+            "sort": 0,
+            "ownership": {
+                "default": 0,
+                "3Yi0HjF4PKCA4vX0": 3
+            },
+            "flags": {},
+            "_stats": {
+                "compendiumSource": "Item.T3FzuEwf9UeJy3yj",
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.0.2",
+                "createdTime": null,
+                "modifiedTime": null,
+                "lastModifiedBy": null
+            },
+            "_key": "!actors.items!cpIgcOpmk6YiimMw.9Hc7jrIvmRTYR8sQ"
         }
-      ],
-      "folder": "45nJjAnFwni76P4o",
-      "ownership": {
+    ],
+    "effects": [
+        {
+            "name": "Drained",
+            "_id": "dnd5edrained0000",
+            "img": "modules/elkan5e/icons/drained.svg",
+            "statuses": [
+                "drained"
+            ],
+            "description": "@Embed[Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.ZnhMIMgPZv1QDxzZ inline]",
+            "type": "base",
+            "system": {},
+            "changes": [],
+            "disabled": false,
+            "duration": {
+                "startTime": 659315822,
+                "seconds": null,
+                "combat": null,
+                "rounds": null,
+                "turns": null,
+                "startRound": 5,
+                "startTurn": 0
+            },
+            "origin": "Compendium.elkan5e.elkan5e-creatures.Actor.cpIgcOpmk6YiimMw.Item.L4qItZ7kCk7qMc4R.ActiveEffect.derUyYkWvF5CSMcI",
+            "tint": "#ffffff",
+            "transfer": false,
+            "sort": 0,
+            "flags": {
+                "dae": {
+                    "stackable": "noneName",
+                    "specialDuration": []
+                }
+            },
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.0.2",
+                "createdTime": null,
+                "modifiedTime": null,
+                "lastModifiedBy": null
+            },
+            "_key": "!actors.effects!cpIgcOpmk6YiimMw.dnd5edrained0000"
+        }
+    ],
+    "folder": "I9cWkK7zXpb9TRo0",
+    "ownership": {
         "default": 0,
-        "3Yi0HjF4PKCA4vX0": 3
-      },
-      "flags": {
-        "midi-qol": {
-          "fumbleThreshold": null,
-          "rollAttackPerTarget": "default",
-          "removeAttackDamageButtons": "default",
-          "itemCondition": "",
-          "effectCondition": ""
-        },
-        "midiProperties": {
-          "confirmTargets": "default",
-          "saveDamage": "default",
-          "bonusSaveDamage": "default",
-          "autoFailFriendly": false,
-          "autoSaveFriendly": false,
-          "critOther": false,
-          "offHandWeapon": false,
-          "magicdam": false,
-          "magiceffect": false,
-          "noConcentrationCheck": false,
-          "toggleEffect": false,
-          "ignoreTotalCover": false,
-          "idr": false,
-          "idi": false,
-          "idv": false,
-          "ida": false
-        },
-        "dnd5e": {
-          "riders": {
-            "activity": [],
-            "effect": []
-          }
-        }
-      },
-      "_stats": {
-        "compendiumSource": "Compendium.elkan5e.elkan5e-class-features.Item.2Bwht3NPmBHZKAMb",
-        "duplicateSource": null,
-        "coreVersion": "12.331",
-        "systemId": "dnd5e",
-        "systemVersion": "4.0.2",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_id": "L4qItZ7kCk7qMc4R",
-      "sort": 0,
-      "_key": "!actors.items!cpIgcOpmk6YiimMw.L4qItZ7kCk7qMc4R"
+        "3Yi0HjF4PKCA4vX0": 3,
+        "vHqSHJMdmEO6Mk2C": 3
     },
-    {
-      "name": "Graveguard",
-      "type": "class",
-      "_id": "9Hc7jrIvmRTYR8sQ",
-      "img": "icons/magic/death/hand-undead-skeleton-fire-green.webp",
-      "system": {
-        "description": {
-          "value": "",
-          "chat": ""
-        },
-        "source": {
-          "custom": "elkan5e.com/wizard",
-          "rules": "2014",
-          "revision": 1
-        },
-        "startingEquipment": [],
-        "identifier": "graveguard",
-        "levels": 3,
-        "hitDice": "d4",
-        "hitDiceUsed": 0,
-        "advancement": [
-          {
-            "_id": "IWmHAIfzXgOz5Kaw",
-            "type": "HitPoints",
-            "configuration": {},
-            "value": {
-              "1": "avg",
-              "2": "avg",
-              "3": "avg"
-            }
-          },
-          {
-            "_id": "nBF6jxLDTUI4orLm",
-            "type": "AbilityScoreImprovement",
-            "configuration": {
-              "points": 2,
-              "fixed": {
-                "str": 0,
-                "dex": 0,
-                "con": 0,
-                "int": 0,
-                "wis": 0,
-                "cha": 0
-              },
-              "cap": 2,
-              "locked": []
-            },
-            "value": {
-              "type": "asi"
-            },
-            "level": 6,
-            "title": "",
-            "hint": "You can increase one of your graveguard’s ability scores of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature. Unlike with player characters, you do not gain a feat."
-          },
-          {
-            "_id": "hi2T4qTYbM4DsJmp",
-            "type": "AbilityScoreImprovement",
-            "configuration": {
-              "points": 2,
-              "fixed": {
-                "str": 0,
-                "dex": 0,
-                "con": 0,
-                "int": 0,
-                "wis": 0,
-                "cha": 0
-              },
-              "cap": 2,
-              "locked": []
-            },
-            "value": {
-              "type": "asi"
-            },
-            "level": 10,
-            "title": "",
-            "hint": ""
-          },
-          {
-            "_id": "k4JdAlX9T3tgZuXN",
-            "type": "AbilityScoreImprovement",
-            "configuration": {
-              "points": 2,
-              "fixed": {
-                "str": 0,
-                "dex": 0,
-                "con": 0,
-                "int": 0,
-                "wis": 0,
-                "cha": 0
-              },
-              "cap": 2,
-              "locked": []
-            },
-            "value": {
-              "type": "asi"
-            },
-            "level": 14,
-            "title": "",
-            "hint": "You can increase one of your graveguard’s ability scores of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature. Unlike with player characters, you do not gain a feat."
-          },
-          {
-            "_id": "Gqud4u3OAc66cpBZ",
-            "type": "ItemChoice",
-            "configuration": {
-              "choices": {
-                "0": {
-                  "count": 1,
-                  "replacement": false
-                },
-                "6": {
-                  "count": 1,
-                  "replacement": false
-                }
-              },
-              "allowDrops": false,
-              "type": null,
-              "pool": [
-                {
-                  "uuid": "Compendium.elkan5e.elkan5e-feats.Item.EltLjyZdKGEgk2UQ"
-                },
-                {
-                  "uuid": "Compendium.elkan5e.elkan5e-feats.Item.lOnYG5rDvcj9cNpC"
-                },
-                {
-                  "uuid": "Compendium.elkan5e.elkan5e-feats.Item.15DYqMSBjFZ0E8sN"
-                },
-                {
-                  "uuid": "Compendium.elkan5e.elkan5e-feats.Item.AQMAZwkPlJx8lrKv"
-                },
-                {
-                  "uuid": "Compendium.elkan5e.elkan5e-feats.Item.VVAO5rqWy2pEFNtd"
-                },
-                {
-                  "uuid": "Compendium.elkan5e.elkan5e-feats.Item.zeUWyy9PRFOOpItf"
-                },
-                {
-                  "uuid": "Compendium.elkan5e.elkan5e-feats.Item.QGWsedYohAVh6ra1"
-                },
-                {
-                  "uuid": "Compendium.elkan5e.elkan5e-feats.Item.00AhlBjPvdfrZuW1"
-                },
-                {
-                  "uuid": "Compendium.elkan5e.elkan5e-feats.Item.IMKA5ByKVLV2oFVp"
-                },
-                {
-                  "uuid": "Compendium.elkan5e.elkan5e-feats.Item.qipEtgxd8tivjOui"
-                },
-                {
-                  "uuid": "Compendium.elkan5e.elkan5e-feats.Item.keMyt5hDz6jW3kbg"
-                },
-                {
-                  "uuid": "Compendium.elkan5e.elkan5e-feats.Item.DYVcmd8l1flqHyLC"
-                },
-                {
-                  "uuid": "Compendium.elkan5e.elkan5e-feats.Item.OkmUfzESvxPzkfhG"
-                },
-                {
-                  "uuid": "Compendium.elkan5e.elkan5e-feats.Item.Ykpwkd7Ieh73M4p4"
-                },
-                {
-                  "uuid": "Compendium.elkan5e.elkan5e-feats.Item.BSexykbHcQcUq4pH"
-                },
-                {
-                  "uuid": "Compendium.elkan5e.elkan5e-class-features.Item.4D4jpAQNKqC0p51l"
-                },
-                {
-                  "uuid": "Compendium.elkan5e.elkan5e-class-features.Item.blk5RiyMUAatGcyM"
-                }
-              ],
-              "spell": null,
-              "restriction": {}
-            },
-            "value": {
-              "added": {},
-              "replaced": {}
-            },
-            "title": "Graveguard Specialization",
-            "hint": "Your graveguard gains new abilities, either as they learn from their new life or remember what they could do while alive. Choose one of the following options:"
-          }
-        ],
-        "spellcasting": {
-          "progression": "none",
-          "ability": "",
-          "preparation": {}
-        },
-        "primaryAbility": {
-          "value": [],
-          "all": true
+    "flags": {
+        "dnd5e": {
+            "showTokenPortrait": false
         }
-      },
-      "effects": [],
-      "folder": null,
-      "sort": 0,
-      "ownership": {
-        "default": 0,
-        "3Yi0HjF4PKCA4vX0": 3
-      },
-      "flags": {},
-      "_stats": {
-        "compendiumSource": "Item.T3FzuEwf9UeJy3yj",
-        "duplicateSource": null,
-        "coreVersion": "12.331",
-        "systemId": "dnd5e",
-        "systemVersion": "4.0.2",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_key": "!actors.items!cpIgcOpmk6YiimMw.9Hc7jrIvmRTYR8sQ"
-    }
-  ],
-  "effects": [
-    {
-      "name": "Drained",
-      "_id": "dnd5edrained0000",
-      "img": "modules/elkan5e/icons/drained.svg",
-      "statuses": [
-        "drained"
-      ],
-      "description": "@Embed[Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.ZnhMIMgPZv1QDxzZ inline]",
-      "type": "base",
-      "system": {},
-      "changes": [],
-      "disabled": false,
-      "duration": {
-        "startTime": 659315822,
-        "seconds": null,
-        "combat": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": 5,
-        "startTurn": 0
-      },
-      "origin": "Compendium.elkan5e.elkan5e-creatures.Actor.cpIgcOpmk6YiimMw.Item.L4qItZ7kCk7qMc4R.ActiveEffect.derUyYkWvF5CSMcI",
-      "tint": "#ffffff",
-      "transfer": false,
-      "sort": 0,
-      "flags": {
-        "dae": {
-          "stackable": "noneName",
-          "specialDuration": []
-        }
-      },
-      "_stats": {
+    },
+    "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
         "coreVersion": "12.331",
         "systemId": "dnd5e",
-        "systemVersion": "4.0.2",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_key": "!actors.effects!cpIgcOpmk6YiimMw.dnd5edrained0000"
-    }
-  ],
-  "folder": "I9cWkK7zXpb9TRo0",
-  "ownership": {
-    "default": 0,
-    "3Yi0HjF4PKCA4vX0": 3,
-    "vHqSHJMdmEO6Mk2C": 3
-  },
-  "flags": {
-    "dnd5e": {
-      "showTokenPortrait": false
-    }
-  },
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.331",
-    "systemId": "dnd5e",
-    "systemVersion": "4.0.4",
-    "createdTime": 1726952231668,
-    "modifiedTime": 1730162936784,
-    "lastModifiedBy": "5QT7SwPoj3a9WqpY"
-  },
-  "_id": "cpIgcOpmk6YiimMw",
-  "sort": 0,
-  "_key": "!actors!cpIgcOpmk6YiimMw"
+        "systemVersion": "4.0.4",
+        "createdTime": 1726952231668,
+        "modifiedTime": 1730162936784,
+        "lastModifiedBy": "5QT7SwPoj3a9WqpY"
+    },
+    "_id": "cpIgcOpmk6YiimMw",
+    "sort": 0,
+    "_key": "!actors!cpIgcOpmk6YiimMw"
 }

@@ -1,169 +1,169 @@
 {
-  "folder": "3C9dgjEakFgXqKsj",
-  "name": "Thirsting Weapon",
-  "type": "feat",
-  "_id": "9Y7fh4iRtGJkjixc",
-  "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
-  "system": {
-    "activities": {
-      "RC477CyFKuNnZ7Hc": {
-        "type": "heal",
-        "_id": "RC477CyFKuNnZ7Hc",
-        "sort": 0,
-        "activation": {
-          "type": "nocost",
-          "value": null,
-          "override": false,
-          "condition": ""
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": true,
-          "targets": [
-            {
-              "type": "itemUses",
-              "value": "1",
-              "target": "",
-              "scaling": {}
+    "folder": "3C9dgjEakFgXqKsj",
+    "name": "Thirsting Weapon",
+    "type": "feat",
+    "_id": "9Y7fh4iRtGJkjixc",
+    "img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
+    "system": {
+        "activities": {
+            "RC477CyFKuNnZ7Hc": {
+                "type": "heal",
+                "_id": "RC477CyFKuNnZ7Hc",
+                "sort": 0,
+                "activation": {
+                    "type": "nocost",
+                    "value": null,
+                    "override": false,
+                    "condition": ""
+                },
+                "consumption": {
+                    "scaling": {
+                        "allowed": false
+                    },
+                    "spellSlot": true,
+                    "targets": [
+                        {
+                            "type": "itemUses",
+                            "value": "1",
+                            "target": "",
+                            "scaling": {}
+                        }
+                    ]
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false,
+                    "units": "self",
+                    "special": ""
+                },
+                "target": {
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft",
+                        "type": ""
+                    },
+                    "affects": {
+                        "choice": false,
+                        "count": "",
+                        "type": "self"
+                    },
+                    "override": false,
+                    "prompt": true
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "healing": {
+                    "number": null,
+                    "denomination": "",
+                    "types": [],
+                    "custom": {
+                        "enabled": true,
+                        "formula": "@classes.warlock.level + 5"
+                    },
+                    "scaling": {
+                        "number": 1
+                    },
+                    "bonus": ""
+                },
+                "useConditionText": "",
+                "forceDialog": false,
+                "effectConditionText": "",
+                "name": "",
+                "img": "",
+                "appliedEffects": []
             }
-          ]
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false,
-          "units": "self",
-          "special": ""
-        },
-        "target": {
-          "template": {
-            "contiguous": false,
-            "units": "ft",
-            "type": ""
-          },
-          "affects": {
-            "choice": false,
-            "count": "",
-            "type": "self"
-          },
-          "override": false,
-          "prompt": true
         },
         "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
+            "spent": 0,
+            "recovery": [
+                {
+                    "period": "sr",
+                    "type": "recoverAll"
+                }
+            ],
+            "max": "1"
         },
-        "healing": {
-          "number": null,
-          "denomination": "",
-          "types": [],
-          "custom": {
-            "enabled": true,
-            "formula": "@classes.warlock.level + 5"
-          },
-          "scaling": {
-            "number": 1
-          },
-          "bonus": ""
+        "description": {
+            "value": "<p>You weapon drains the life force of its victim and gives their life force to you.</p><p><strong>Once Per Turn</strong>\u00a0- Self - 1/Short Rest - Magical</p><p>When you reduce a hostile creature to 0 hit points with a @UUID[Compendium.elkan5e.elkan5e-class-features.Item.69lkgPv5DA2dWxTW]{Pact Weapon}, you regain hit points equal to 5 plus your warlock level.\u00a0\u200b\u200b</p>",
+            "chat": "<p><strong>No Action Cost</strong>\u00a0- Self - 1/Short Rest - Magical</p><p>When you reduce a hostile creature to 0 hit points with a Pact Weapon, you regain hit points equal to 5 plus your warlock level.\u00a0\u200b\u200b</p>"
         },
-        "useConditionText": "",
-        "forceDialog": false,
-        "effectConditionText": "",
-        "name": "",
-        "img": "",
-        "appliedEffects": []
-      }
+        "identifier": "",
+        "source": {
+            "revision": 1,
+            "rules": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "license": ""
+        },
+        "enchant": {},
+        "type": {
+            "value": "class",
+            "subtype": ""
+        },
+        "prerequisites": {
+            "level": null
+        },
+        "properties": [
+            "mgc"
+        ],
+        "requirements": ""
     },
-    "uses": {
-      "spent": 0,
-      "recovery": [
-        {
-          "period": "sr",
-          "type": "recoverAll"
+    "effects": [],
+    "sort": 0,
+    "ownership": {
+        "default": 0,
+        "YxlXl9sauSuWxHdZ": 3
+    },
+    "flags": {
+        "midiProperties": {
+            "confirmTargets": "default",
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "critOther": false,
+            "offHandWeapon": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "noConcentrationCheck": false,
+            "toggleEffect": false,
+            "ignoreTotalCover": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "midi-qol": {
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "reactionCondition": "",
+            "effectCondition": ""
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            }
         }
-      ],
-      "max": "1"
     },
-    "description": {
-      "value": "<p>You weapon drains the life force of its victim and gives their life force to you.</p><p><strong>Once Per Turn</strong> - Self - 1/Short Rest - Magical</p><p>When you reduce a hostile creature to 0 hit points with a @UUID[Compendium.elkan5e.elkan5e-class-features.Item.69lkgPv5DA2dWxTW]{Pact Weapon}, you regain hit points equal to 5 plus your warlock level. ​​</p>",
-      "chat": "<p><strong>No Action Cost</strong> - Self - 1/Short Rest - Magical</p><p>When you reduce a hostile creature to 0 hit points with a Pact Weapon, you regain hit points equal to 5 plus your warlock level. ​​</p>"
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.1.0",
+        "createdTime": 1730178608624,
+        "modifiedTime": 1731383129228,
+        "lastModifiedBy": "5QT7SwPoj3a9WqpY"
     },
-    "identifier": "",
-    "source": {
-      "revision": 1,
-      "rules": "",
-      "book": "",
-      "page": "",
-      "license": ""
-    },
-    "enchant": {},
-    "type": {
-      "value": "class",
-      "subtype": ""
-    },
-    "prerequisites": {
-      "level": null
-    },
-    "properties": [
-      "mgc"
-    ],
-    "requirements": ""
-  },
-  "effects": [],
-  "sort": 0,
-  "ownership": {
-    "default": 0,
-    "YxlXl9sauSuWxHdZ": 3
-  },
-  "flags": {
-    "midiProperties": {
-      "confirmTargets": "default",
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "critOther": false,
-      "offHandWeapon": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "noConcentrationCheck": false,
-      "toggleEffect": false,
-      "ignoreTotalCover": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "midi-qol": {
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "reactionCondition": "",
-      "effectCondition": ""
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      }
-    }
-  },
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.331",
-    "systemId": "dnd5e",
-    "systemVersion": "4.1.0",
-    "createdTime": 1730178608624,
-    "modifiedTime": 1731383129228,
-    "lastModifiedBy": "5QT7SwPoj3a9WqpY"
-  },
-  "_key": "!items!9Y7fh4iRtGJkjixc"
+    "_key": "!items!9Y7fh4iRtGJkjixc"
 }
