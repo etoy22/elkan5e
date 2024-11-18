@@ -1,0 +1,206 @@
+{
+  "_id": "8Ctt1vOsZuKXxAIN",
+  "name": "Sneak Attack",
+  "type": "feat",
+  "img": "icons/skills/melee/strike-dagger-arcane-pink.webp",
+  "effects": [],
+  "folder": "q0UiE4fadK2NFcWo",
+  "sort": 1100000,
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.dnd5e.classfeatures.DPN2Gfk8yi1Z5wp7"
+    },
+    "midi-qol": {
+      "effectActivation": false,
+      "onUseMacroName": "",
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "reactionCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><span style=\"font-weight:bold\"><strong>Once Per Turn</strong></span> - 1 Creature</p><p>You know how to strike subtly and exploit a foe's distraction. You can deal extra damage to one creature you hit with a weapon attack. This damage counts as part of the attack, and if you roll critical hit and use sneak attack, your sneak attack damage is doubled. To deal this extra damage, your weapon cannot be a &amp;reference[Heavy] melee weapon, and you must meet one of the following criteria:</p><ul><li><p>you have advantage on the attack roll against your target</p></li><li><p>your target is within 5 ft. of another creature hostile to them, and the other creature is not &amp;reference[Incapacitated]</p></li></ul><p>Your Sneak Attack damage increases as you gain levels in this class, as shown in the Sneak Attack column of the @UUID[Compendium.elkan5e.elkan5e-class.RTS23KqJMFWlzLKd]{Rogue Progression Table}.</p><p></p><p></p><p><em>An example of Sneak Attack in action:</em></p><p><em>Let's say a rogue is attacking a bandit, and the bandit is also attacking a goblin. The rogue gets to add @UUID[Compendium.elkan5e.elkan5e-class-features.8Ctt1vOsZuKXxAIN]{Sneak Attack} because the goblin is hostile to the bandit, even though the rogue and the goblin are not allies.</em></p><p><em>If the goblin were to be &amp;Reference[Stunned], the rogue could not use @UUID[Compendium.elkan5e.elkan5e-class-features.8Ctt1vOsZuKXxAIN]{Sneak Attack} because the &amp;Reference[Stunned] condition will make the goblin &amp;Reference[Incapacitated].</em></p><p><em>If the goblin were to die, but the rogue gained advantage because the bandit was knocked &amp;Reference[Prone], the rogue could use @UUID[Compendium.elkan5e.elkan5e-class-features.8Ctt1vOsZuKXxAIN]{Sneak Attack}.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "elkan5e.com/rogue",
+      "revision": 1,
+      "rules": "",
+      "book": "",
+      "page": "",
+      "license": ""
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "Rogue 1",
+    "activities": {
+      "dnd5eactivity000": {
+        "name": "",
+        "img": "",
+        "duration": {
+          "units": "inst"
+        },
+        "range": {
+          "units": "self"
+        },
+        "damage": {
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "(@scale.rogue.sneak-attack)d6"
+              },
+              "number": null,
+              "denomination": null,
+              "bonus": "",
+              "types": [
+                "piercing"
+              ]
+            }
+          ]
+        },
+        "appliedEffects": []
+      },
+      "UEPnoxUNnngKBhrS": {
+        "type": "damage",
+        "_id": "UEPnoxUNnngKBhrS",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "self",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "critical": {
+            "allow": false
+          },
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "@scale.rogue.sneak-attack"
+              },
+              "number": null,
+              "denomination": 0,
+              "bonus": "",
+              "types": [
+                "bludgeoning",
+                "piercing",
+                "slashing"
+              ],
+              "scaling": {
+                "number": 1
+              }
+            }
+          ]
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "name": "",
+        "img": "",
+        "appliedEffects": []
+      }
+    },
+    "identifier": "",
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    },
+    "properties": []
+  },
+  "ownership": {
+    "default": 0,
+    "ymJDAw0PgXIWIHMH": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "_stats": {
+    "compendiumSource": "Compendium.dnd5e.classfeatures.DPN2Gfk8yi1Z5wp7",
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.1.0",
+    "createdTime": 1726952007908,
+    "modifiedTime": 1731382541063,
+    "lastModifiedBy": "5QT7SwPoj3a9WqpY"
+  },
+  "_key": "!items!8Ctt1vOsZuKXxAIN"
+}

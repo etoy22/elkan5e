@@ -1,0 +1,231 @@
+{
+  "name": "Animate Dead",
+  "type": "spell",
+  "img": "icons/magic/death/hand-dirt-undead-zombie.webp",
+  "effects": [],
+  "flags": {
+    "midi-qol": {
+      "effectActivation": false,
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "rollAttackPerTarget": "default"
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "autoFailFriendly": false,
+      "offHandWeapon": false,
+      "autoSaveFriendly": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "core": {
+      "sourceId": "Compendium.dnd5e.spells.oyE5nVppa5mde5gT"
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic",
+        "material",
+        "concentration"
+      ]
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>Scattering a mix of bone dust wet with blood upon the ground, you call a nearby corpse back into unlife as either a skeleton or a zombie.</em></p><p><strong>Summoning Spell</strong></p><ul><li><p>Your spell imbues a target medum or small corpse with a foul mimicry of life, raising it as an undead creature. The target becomes a skeleton or a @UUID[Compendium.elkan5e.elkan5e-creatures.Actor.iyBmfvksjNJz5ueD]{zombie} depending on the state of the body.</p></li><li><p>Your summoned undead take their turns on your turn (including when you cast the spell), and count as &amp;reference[dominated] by you. If you issue no commands or the undead's orders do not require immediate action, the undead defends itself against hostile creatures.</p></li><li><p>When you lose concentration on this spell, the undead servant continues following whatever command you last gave it. If the servant finishes its task, it then returns to the place where it was summoned and guards that location. Even after you lose concentration, the undead cannot harm you, and will not attack anyone you tell them not to. **</p></li></ul><p></p><div class=\"rd__b  rd__b--3\"><div class=\"rd__b  rd__b--3\"><p><strong>Upcasting:</strong> <span style=\"font-family:Signika, sans-serif\">Animate an additional zombie or skeleton</span> for each spell level above 2nd level. Each of the creatures must come from a different corpse.</p><p></p></div></div><p><span style=\"font-family:Signika, sans-serif\"><em>**Animated undead can follow basic commands such as \"watch for orcs and return here if you see any\", but are prone to error when given complex tasks that require judgement such as \"come find me if you see something suspicious\". These undead are also susceptible to disguises, and if instructed not to attack necromancers in black robes, might not attack anyone in a black robe.</em></span></p><p><em>If you die, the undead servant becomes completely free-willed, and may wander as it likes. Typically, this</em> <em>means the skeleton or zombie will kill any living creature it can find.</em></p>",
+      "chat": "<p><strong>Summoning Spell</strong></p><ul><li><p>Your spell imbues a target medum or small corpse with a foul mimicry of life, raising it as an undead creature. The target becomes a skeleton or a @UUID[Compendium.elkan5e.elkan5e-creatures.Actor.iyBmfvksjNJz5ueD]{zombie} depending on the state of the body.</p></li><li><p>Your summoned undead take their turns on your turn (including when you cast the spell), and count as &amp;reference[dominated] by you. If you issue no commands or the undead's orders do not require immediate action, the undead defends itself against hostile creatures.</p></li><li><p>When you lose concentration on this spell, the undead servant continues following whatever command you last gave it. If the servant finishes its task, it then returns to the place where it was summoned and guards that location. Even after you lose concentration, the undead cannot harm you, and will not attack anyone you tell them not to. **</p></li></ul><p></p><div class=\"rd__b  rd__b--3\"><div class=\"rd__b  rd__b--3\"><p><strong>Upcasting:</strong> <span style=\"font-family:Signika, sans-serif\">Animate an additional zombie or skeleton</span> for each spell level above 2nd level. Each of the creatures must come from a different corpse.</p><p></p></div></div><p><span style=\"font-family:Signika, sans-serif\"><em>**Animated undead can follow basic commands such as \"watch for orcs and return here if you see any\", but are prone to error when given complex tasks that require judgement such as \"come find me if you see something suspicious\". These undead are also susceptible to disguises, and if instructed not to attack necromancers in black robes, might not attack anyone in a black robe.</em></span></p><p><em>If you die, the undead servant becomes completely free-willed, and may wander as it likes. Typically, this</em> <em>means the skeleton or zombie will kill any living creature it can find.</em></p>"
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/animate-dead",
+      "revision": 1,
+      "rules": "",
+      "book": "",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "1",
+      "units": "hour"
+    },
+    "target": {
+      "affects": {
+        "type": "object",
+        "count": "1",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "units": "",
+        "contiguous": false,
+        "type": ""
+      }
+    },
+    "range": {
+      "value": "10",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 2,
+    "school": "nec",
+    "materials": {
+      "value": "A mix of bone dust wet with blood",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "concentration",
+      "mgc"
+    ],
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "summon",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "bonuses": {
+          "ac": "",
+          "hd": "",
+          "hp": "",
+          "attackDamage": "",
+          "saveDamage": "",
+          "healing": ""
+        },
+        "creatureSizes": [],
+        "creatureTypes": [],
+        "match": {
+          "proficiency": false,
+          "attacks": false,
+          "saves": false
+        },
+        "profiles": [
+          {
+            "count": "(@item.level - 1)",
+            "name": "",
+            "_id": "ZdtarqbkRPz1GR8f",
+            "uuid": "Compendium.elkan5e.elkan5e-creatures.Actor.er5obJLoWkRJnirv",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "types": []
+          },
+          {
+            "count": "(@item.level - 1)",
+            "name": "",
+            "_id": "U3T1Ui1jYkfLq59E",
+            "uuid": "Compendium.elkan5e.elkan5e-creatures.Actor.iyBmfvksjNJz5ueD",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "types": []
+          }
+        ],
+        "summon": {
+          "identifier": "",
+          "mode": "",
+          "prompt": true
+        },
+        "sort": 0
+      }
+    },
+    "identifier": ""
+  },
+  "ownership": {
+    "default": 0,
+    "ymJDAw0PgXIWIHMH": 3,
+    "WaiirYzq9mhRj9cS": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "_stats": {
+    "compendiumSource": "Compendium.dnd5e.spells.oyE5nVppa5mde5gT",
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.0.4",
+    "createdTime": 1726952201027,
+    "modifiedTime": 1729564947500,
+    "lastModifiedBy": "LhShb9ShQN3ambNF"
+  },
+  "folder": "6J3i75lfD1J0xYwA",
+  "sort": 6000000,
+  "_id": "PZqEeI92y9Cllufe",
+  "_key": "!items!PZqEeI92y9Cllufe"
+}
