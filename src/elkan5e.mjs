@@ -54,7 +54,7 @@ Hooks.once('ready', async () => {
 /**
  * Things that occur when an attack is declaired
  */
-Hooks.on("dnd5e.preRollAttack", (item, config) => {
+Hooks.on("dnd5e.preRollAttackV2", (item, config) => {
     focus(item,config)
 });
 
