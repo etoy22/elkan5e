@@ -175,7 +175,7 @@ export function spellCasting(){
     CONFIG.DND5E.rules.abilityspells = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.arD4KLvgCPbi1Pl7"
     CONFIG.DND5E.rules.focusspells = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.R25K8TvAPK3c4ywr"
     CONFIG.DND5E.rules.spellscroll = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.R25K8TvAPK3c4ywr"
-
+    CONFIG.DND5E.rules.cursed = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.Vpwu9GQC6HVNZFze"
 
     // Changing the properies in itemProperties
     CONFIG.DND5E.itemProperties.concentration.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.4ZOHN6tGvj54J6Kv"
