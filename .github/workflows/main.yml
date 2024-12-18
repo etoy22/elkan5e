@@ -89,7 +89,7 @@ jobs:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
           REPO_URL="https://github.com/${GITHUB_REPOSITORY}"
-          VERSION="${{ steps.get-version.outputs.version }}"
+          VERSION="v${{ steps.get-version.outputs.version }}"
           RELEASE_NOTES="${{ steps.format-release-notes-discord.outputs.release-notes-discord }}"
 
           # Format the release notes to handle newlines correctly
