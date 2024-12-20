@@ -1,6 +1,6 @@
 /**
  * Adds functionality to Archdruid.
- *   @param {object} actor - The actor instance.
+ * @param {object} actor - The actor instance.
  */
 export function archDruid(actor) {
     if (actor.items.find(i => i.name === "Archdruid")) {
