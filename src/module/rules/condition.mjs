@@ -40,7 +40,7 @@ export function conditions(){
         }
         CONFIG.DND5E.conditionTypes.coverthreequarters = {
             label:"Three Quarters Cover",
-            reference:"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
+            reference:"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.82ph4sMqvhxjLbiw",
             icon:"modules/elkan5e/icons/cover-three-quarters.svg"
         }
         CONFIG.DND5E.conditionTypes.dazed = {
