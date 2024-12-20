@@ -1,12 +1,12 @@
-export function initWarlockSpellSlot (){
+export function initWarlockSpellSlot() {
     CONFIG.DND5E.spellcastingTypes.leveled.progression.warlock = {
-      label: 'Elkan Warlock',
-      img: 'icons/consumables/potions/bottle-round-corked-orante-red.webp'
+        label: 'Elkan Warlock',
+        img: 'icons/consumables/potions/bottle-round-corked-orante-red.webp'
     };
     CONFIG.DND5E.spellProgression.warlock = 'Elkan Warlock';
     Hooks.on('elkan5e.computeWarlockProgression', computeProgression);
     Hooks.on('elkan5e.prepareWarlockSlots', prepareSlots);
-}  
+}
 
 export function computeProgression(progression, actor, cls, spellcasting, count) {
     progression.warlock ??= 0;
