@@ -7,8 +7,6 @@ import { weapons } from "./rules/weapon.mjs";
 import { references } from "./rules/references.mjs";
 import { scroll } from "./rules/scroll.mjs";
 
-
-
 export function init(){
     references()
     tools();
@@ -20,6 +18,4 @@ export function init(){
     formating();
 	scroll();
     console.log("Elkan 5e  |  Done Initalizing")
-    // TODO: the following below
-    // speed()
 } 
