@@ -33,10 +33,57 @@ Hooks.on("dnd5e.preRollAttackV2", (item, config) => {
  *   @param {object} config - The configuration for the hit die roll.
  */
 Hooks.on("dnd5e.preRollHitDieV2", (config) => {
+    console.log("preRollHitDieV2 Hook Triggered", { config });
     // Adjust hit die roll for Undead Nature feature
     const actor = config.subject;
     if (actor.items.find(feature => feature.name === "Undead Nature") && !actor.effects.find(effect => effect.name === "Gentle Repose")) {
         config.rolls[0].parts[0] += '-@abilities.con.mod';
+    }
+});
+
+// TODO: Move all of these to macros use this -> flags.midi-qol.onUseMacroName | Custom | ItemMacro, preDamageApplication
+
+
+/**
+ * Handle pre-use activity for Wild Mage Sorcerer
+ *   @param {object} activity - The activity performed.
+ *   @param {object} usageConfig - The usage configuration.
+ */
+Hooks.on("dnd5e.postUseActivity", async (activity) => {
+    // console.log(activity)
+    // Wild Magic Surge
+    const actor = activity.actor;
+    const item = activity.item;
+    if (item.type === "spell" && item.system.level > 0 && actor.items.find(i => i.name === "Random Wild Surge")) {
+        const roll = await new Roll("1d6").roll({ async: true });
+        await roll.toMessage({
+            flavor: "Random Wild Surge",
+            speaker: ChatMessage.getSpeaker({ actor: actor })
+        });
+        if (roll.total >= 5) {
+            const tableUUIDs = [
+                null, // No table for level 0
+                "GDE5tgmRfX1GiOQs",
+                "mxwqgbo7xnNXSnIm",
+                "Fwl1JxM19LzeYxjJ",
+                "0TDp89O9iGt4zovG",
+                "V4BRRp6vWntQNVwa",
+                "4TsMG2a2EtcLdgkc",
+                "wt2VfjYQyuvwftih",
+                "xkUpS2XBuSdyVEah",
+                "LV2skOm8hCwM1JRH"
+            ];
+            const tableUUID = tableUUIDs[item.system.level];
+            if (tableUUID) {
+                const table = await fromUuid(`Compendium.elkan5e.elkan5e-roll-tables.RollTable.${tableUUID}`);
+                console.log("elkan5e table", table);
+                if (table) {
+                    table.draw();
+                }
+            } else {
+                console.log("No table found for this spell level.");
+            }
+        }
     }
 });
 
@@ -51,18 +98,17 @@ Hooks.on("dnd5e.postUseActivity", (activity, usageConfig, results) => {
     infuseHeal(actor, activity, usageConfig);
 });
 
-// /**
-//  * Handle healing overflow on damage roll
-//  *   @param {object} rolls - The resulting roll.
-//  *   @param {object} activity - The activity that performed the roll.
-// */
-// Hooks.on("dnd5e.rollDamageV2", (rolls, data) => {
-//     // healOver(activity.item, rolls);
-//     // let actor = activity.actor; //Actor who is rolling
-//     let activity = data.activity; //Activity performed
-//     console.log("Rolls: ", rolls);
-//     console.log("Data: ", data);
-//     console.log("Activity: ", activity);
+/**
+ * Handle healing overflow on damage calculation
+ *   @param {object} actor - The actor being damaged.
+ *   @param {object} damages - The damage descriptions.
+ *   @param {object} options - Additional damage application options.
+ */
+// Hooks.on("dnd5e.calculateDamage", (actor, damages, options) => {
+//     console.log("calculateDamage Hook Triggered", { actor, damages, options });
+//     // const item = options.item;
+//     // const roll = damages[0]; // Assuming the first damage roll is the one to consider
+//     // healOver(item, roll);
 // });
 
 /**
@@ -71,6 +117,7 @@ Hooks.on("dnd5e.postUseActivity", (activity, usageConfig, results) => {
  *   @param {object} roll - The resulting roll.
  */
 Hooks.on("dnd5e.preRollInitiative", (actor, roll) => {
+    console.log("preRollInitiative Hook Triggered", { actor, roll });
     archDruid(actor);
     improvedFeral(actor);
     feral(actor);
