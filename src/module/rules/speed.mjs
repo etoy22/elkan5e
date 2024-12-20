@@ -4,8 +4,12 @@
 export function speed(){
     console.log("Elkan 5e  |  Initializing Speed")
 
-    CONFIG.DND5E.movementTypes.crawl = "Crawl"
-    CONFIG.DND5E.movementTypes.longJump = "Long Jump"
-    CONFIG.DND5E.movementTypes.highJump = "High Jump"
+    const movementTypes = {
+        crawl: "Crawl",
+        longJump: "Long Jump",
+        highJump: "High Jump"
+    };
+
+    Object.assign(CONFIG.DND5E.movementTypes, movementTypes);
 }
 
