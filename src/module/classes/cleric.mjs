@@ -4,7 +4,8 @@
  *   @param {object} activity - The activity performed.
  *   @param {object} usageConfig - The usage configuration.
  */
-export function infuseHeal(actor, activity, usageConfig) {
+export function infuseHeal(activity, usageConfig) {
+    let actor = activity.actor;
     if (activity.type === "heal" && actor.items.find(i => i.name === "Infused Healer")) {
         const spellLevel = parseInt(usageConfig.spell.slot.replace('spell', ''));
         const infusedValue = 2 + spellLevel;
