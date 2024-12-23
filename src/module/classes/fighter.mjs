@@ -1,22 +1,42 @@
 /**
- * Adds functionality to Persistent Leader which does this "When you use your Second Wind ability, you regain one use of your Rally feature and one use of your Commander's Strike feature."
- * TODO: Clean up and make it work. Max = xxxFeature.system.uses.max, Spent = xxxFeature.system.uses.spent
+ * Adds functionality to Persistent Leader which does this:
+ * "When you use your Second Wind ability, you regain one use of your Rally feature and one use of your Commander's Strike feature."
+ * @param {object} activity - The activity performed.
  */
-export function perLeader(item) {
+export function perLeader(activity) {
+    const item = activity.item;
+    const actor = activity.actor;
+
     if (item.name === "Second Wind" && actor.items.find(i => i.name === "Persistent Leader")) {
-        const rallyFeature = item.actor.items.find(i => i.name === "Rally");
-        const commandersStrikeFeature = item.actor.items.find(i => i.name === "Commander's Strike");
+        const rallyFeature = actor.items.find(i => i.name === "Rally");
+        const commandersStrikeFeature = actor.items.find(i => i.name === "Commander's Strike");
 
         if (rallyFeature) {
-            rallyFeature.update({ "data.uses.spent": rallyFeature.data.uses.value + 1 });
+            rallyFeature.update({ "system.uses.spent": rallyFeature.system.uses.spent - 1 });
         }
 
         if (commandersStrikeFeature) {
-            commandersStrikeFeature.update({ "data.uses.value": commandersStrikeFeature.data.data.uses.value + 1 });
+            commandersStrikeFeature.update({ "system.uses.spent": commandersStrikeFeature.system.uses.spent - 1 });
         }
-        if (game.user.isGM || item.actor.isOwner) {
-            ui.notifications.notify("Persistent Leader: Regained one use of Rally and Commander's Strike.");
+        if (game.user.isGM || actor.isOwner) {
+            ui.notifications.notify(`${actor.name} - Persistent Leader: Regained one use of Rally and Commander's Strike.`);
         }
     }
 }
 
+/**
+ * Adds functionality to Rallying Surge which does this:
+ * "When you use your Action Surge, choose up to 3 allies within 60 ft. You shout a command, and each ally can use their reaction to immediately use an action. They can use any action available to them, but they cannot cast a spell of 1st level or higher."
+ * @param {object} activity - The activity performed.
+ */
+export function rallySurge(activity) {
+    const item = activity.item;
+    const actor = activity.actor;
+
+    if (item.name === "Action Surge" && actor.items.find(i => i.name === "Rallying Surge")) {
+        const rallySurge = actor.items.find(i => i.name === "Rallying Surge");
+        if (game.user.isGM || actor.isOwner) {
+            ui.notifications.notify(`${actor.name} - Rallying Surge: Choose up to 3 allies within 60 ft. Each ally can use their reaction to immediately use an action, but they cannot cast a spell of 1st level or higher.`);
+        }
+    }
+}

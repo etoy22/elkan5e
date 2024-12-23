@@ -2,7 +2,7 @@ import { gameSettingRegister } from "./module/gameSettings/gameSettingRegister.m
 import { startDialog } from "./module/gameSettings/startDialog.mjs";
 import { init } from "./module/initalizing.mjs";
 import { initWarlockSpellSlot } from "./module/classes/warlock.mjs";
-import { perLeader } from "./module/classes/fighter.mjs";
+import { perLeader, rallySurge } from "./module/classes/fighter.mjs";
 import { healOver, infuseHeal } from "./module/classes/cleric.mjs";
 import { archDruid } from "./module/classes/druid.mjs";
 import { feral, improvedFeral } from "./module/classes/barbarian.mjs";
@@ -33,7 +33,6 @@ Hooks.on("dnd5e.preRollAttackV2", (item, config) => {
  * @param {object} config - The configuration for the hit die roll.
  */
 Hooks.on("dnd5e.preRollHitDieV2", (config) => {
-    console.log("preRollHitDieV2 Hook Triggered", { config });
     const actor = config.subject;
     if (actor.items.find(feature => feature.name === "Undead Nature") && !actor.effects.find(effect => effect.name === "Gentle Repose")) {
         config.rolls[0].parts[0] += '-@abilities.con.mod';
@@ -56,6 +55,8 @@ Hooks.on("dnd5e.postUseActivity", async (activity) => {
  */
 Hooks.on("dnd5e.postUseActivity", (activity, usageConfig, results) => {
     infuseHeal(activity, usageConfig);
+    perLeader(activity)
+    rallySurge(activity);
 });
 
 /**
