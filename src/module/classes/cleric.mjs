@@ -24,6 +24,7 @@ export function infuseHeal(activity, usageConfig) {
  * Adds functionality to Healing Overflow.
  *   @param {object} item - The item used.
  *   @param {object} roll - The resulting roll.
+ * TODO: HAVE THIS WORK
  */
 export function healOver(item, roll) {
     if (activity.type === "heal" && actor.items.find(i => i.name === "Healing Overflow")) {
