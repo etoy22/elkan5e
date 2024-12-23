@@ -2,10 +2,11 @@ import { gameSettingRegister } from "./module/gameSettings/gameSettingRegister.m
 import { startDialog } from "./module/gameSettings/startDialog.mjs";
 import { init } from "./module/initalizing.mjs";
 import { initWarlockSpellSlot } from "./module/classes/warlock.mjs";
-// import { perLeader } from "./module/classes/fighter.mjs";
-// import { healOver, infuseHeal } from "./module/classes/cleric.mjs";
-// import { archDruid } from "./module/classes/druid.mjs";
-// import { feral, improvedFeral } from "./module/classes/barbarian.mjs";
+import { perLeader, rallySurge } from "./module/classes/fighter.mjs";
+import { healOver, infuseHeal } from "./module/classes/cleric.mjs";
+import { archDruid } from "./module/classes/druid.mjs";
+import { feral, improvedFeral } from "./module/classes/barbarian.mjs";
+import { wildSurge } from "./module/classes/sorcerer.mjs";
 
 Hooks.once("init", () => {
     console.log("Elkan 5e  |  Initializing Elkan 5e");
@@ -19,15 +20,18 @@ Hooks.once('ready', async () => {
 });
 
 /**
- * Things that occur when an attack is declared
+ * Handle focus when an attack is declared.
+ * @param {object} item - The item used.
+ * @param {object} config - The configuration for the attack roll.
  */
 Hooks.on("dnd5e.preRollAttackV2", (item, config) => {
     focus(item, config);
 });
 
-/*
-    Automation for Undead Nature
-*/
+/**
+ * Adjust hit die roll for Undead Nature feature.
+ * @param {object} config - The configuration for the hit die roll.
+ */
 Hooks.on("dnd5e.preRollHitDieV2", (config) => {
     const actor = config.subject;
     if (actor.items.find(feature => feature.name === "Undead Nature") && !actor.effects.find(effect => effect.name === "Gentle Repose")) {
@@ -35,18 +39,34 @@ Hooks.on("dnd5e.preRollHitDieV2", (config) => {
     }
 });
 
-// Hooks.on("dnd5e.useItem", (item, config) => {
-//     perLeader(item);
-//     infuseHeal(item);
+/**
+ * Handle post-use activity for Wild Mage Sorcerer.
+ * @param {object} activity - The activity performed.
+ */
+Hooks.on("dnd5e.postUseActivity", async (activity) => {
+    wildSurge(activity);
+});
 
-// });
+/**
+ * Handle post-use activity for Infused Healer.
+ * @param {object} activity - The activity performed.
+ * @param {object} usageConfig - The usage configuration.
+ * @param {object} results - The results of the activity.
+ */
+Hooks.on("dnd5e.postUseActivity", (activity, usageConfig, results) => {
+    infuseHeal(activity, usageConfig);
+    perLeader(activity)
+    rallySurge(activity);
+});
 
-// Hooks.on("dnd5e.rollDamage", (item, roll) => {
-//     healOver(item, roll);
-// });
-
-// Hooks.on("dnd5e.preRollInitiative", (actor, roll) => {
-//     // archDruid(actor);
-//     improvedFeral(actor);
-//     // feral(actor);
-// });
+/**
+ * Handle pre-roll initiative for various features.
+ * @param {object} actor - The actor rolling initiative.
+ * @param {object} roll - The resulting roll.
+ */
+Hooks.on("dnd5e.preRollInitiative", (actor, roll) => {
+    console.log("preRollInitiative Hook Triggered", { actor, roll });
+    archDruid(actor);
+    improvedFeral(actor);
+    feral(actor);
+});
