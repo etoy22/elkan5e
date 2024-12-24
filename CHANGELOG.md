@@ -768,7 +768,7 @@ Made subclass names consistent in formatting
   - Fixed the folder name to be the proper spelling of Equipment
   - Renamed and sorted Compendiums
 - Conditions
-  - Foundry now uses Elkan 5e conditions and has almost all been automated (exhaustion notwithstanding)
+  - Foundry now uses Elkan 5e conditions and has almost all been automated (exhaustion not with standing)
   - Have been updated. The changes are reflected on the [website](https://www.elkan5e.com/conditions).
   - Muted renamed to Silenced
 - Feats 
