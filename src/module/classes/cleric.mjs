@@ -14,8 +14,8 @@ export function infuseHeal(activity, usageConfig) {
             actor.update({
                 "system.attributes.hp.value": newHpValue
             });
-            if (actor.isOwner) {
-                ui.notifications.notify("Infused Healer: Additional healing applied.");
+            if (game.user.isGM ||actor.isOwner) {
+                ui.notifications.notify(`${actor.name} - Infused Healer: Your Infused Healer feature has caused you to regain hit points equal to 2 + the spell’s level. This has been automatically applied.`);
             }
         }
     }
