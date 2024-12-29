@@ -7,8 +7,11 @@ import { weapons } from "./rules/weapon.mjs";
 import { references } from "./rules/references.mjs";
 import { scroll } from "./rules/scroll.mjs";
 
+/**
+ * Initializes all Elkan 5e modules in Foundry.
+ */
 export function init(){
-    references()
+    references();
     tools();
     conditions();
     weapons();
@@ -16,6 +19,6 @@ export function init(){
     language();
     icons();
     formating();
-	scroll();
-    console.log("Elkan 5e  |  Done Initalizing")
-} 
+    scroll();
+    console.log("Elkan 5e  |  Done Initalizing");
+}
