@@ -21,12 +21,12 @@ export function armor() {
     if (dragon) {
         CONFIG.DND5E.armorClasses.draconic.formula = "14 + @abilities.dex.mod";
     }
-    /*
-    Work in progress the goal is to make it so that con is used in replacement for dex
-    
-    CONFIG.DND5E.armorClasses.armorBarb = {
-         label: "Armored Defence (Barbarian)",
-         formula: "@attributes.ac.armor + @abilities.con.mod"
-     };
-     */
+
+    // CONFIG.DND5E.armorClasses.unarmoredBarb.formula = `10 + @abilities.dex.mod + @abilities.con.mod`;
+
+    // // New code to handle unarmoredBarb with light or medium armor
+    // const armorType = actor.items.find(i => i.type === "armor")?.data?.armor?.type;
+    // if (armorType === "light" || armorType === "medium") {
+    //     CONFIG.DND5E.armorClasses.unarmoredBarb.formula = `@attributes.ac.value + @abilities.con.mod`;
+    // }
 }

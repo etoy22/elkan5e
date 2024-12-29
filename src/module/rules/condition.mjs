@@ -255,11 +255,13 @@ export function icons() {
 
     if (!exhaustion) {
         CONFIG.statusEffects.find(effect => effect.id === "exhaustion").changes = [
-            { "key": "system.bonuses.All-Attacks", "mode": 2, "value": "-2*@attributes.exhaustion" },
             { "key": "system.bonuses.spell.dc", "mode": 2, "value": "-2*@attributes.exhaustion" },
-            { "key": "system.bonuses.abilities.skill", "mode": 2, "value": "-2*@attributes.exhaustion" },
             { "key": "system.bonuses.abilities.save", "mode": 2, "value": "-2*@attributes.exhaustion" }
         ];
+        CONFIG.statusEffects.find(effect => effect.id === "exhaustion").reduction = {"rolls": 2}
+        CONFIG.DND5E.conditionEffects.halfMovement.delete("exhaustion-2")
+        CONFIG.DND5E.conditionEffects.halfHealth.delete("exhaustion-4")
+        CONFIG.DND5E.conditionEffects.noMovement.delete("exhaustion-5")
     }
 
     if (conditions === "a" || conditions === "b") {
