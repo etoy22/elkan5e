@@ -19,7 +19,7 @@ export function perLeader(activity) {
             commandersStrikeFeature.update({ "system.uses.spent": commandersStrikeFeature.system.uses.spent - 1 });
         }
         if (game.user.isGM || actor.isOwner) {
-            ui.notifications.notify(`${actor.name} - Persistent Leader: Regained one use of Rally and Commander's Strike.`);
+            ui.notifications.notify(`${actor.name} - Your Persistent Leader feature has caused you to regain one use of Rally and one use of Commander's Strike. This has been automatically applied.`);
         }
     }
 }
