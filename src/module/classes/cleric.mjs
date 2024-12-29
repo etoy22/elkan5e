@@ -35,7 +35,7 @@ export function healOver(item, roll) {
             if (targets.length > 0) {
                 const target = targets[0]; // Example: apply to the first valid target
                 target.update({ "system.attributes.hp.value": Math.min(target.system.attributes.hp.value + overflow, target.system.attributes.hp.max) });
-                ui.notifications.notify(`Healing Overflow: ${overflow} healing overflow applied to ${target.name}.`);
+                ui.notifications.notify(`${actor.name} - Healing Overflow: ${overflow} healing overflow applied to ${target.name}.`);
             }
         }
     }
