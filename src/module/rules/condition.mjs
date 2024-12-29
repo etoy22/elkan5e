@@ -255,7 +255,6 @@ export function icons() {
 
     if (!exhaustion) {
         CONFIG.statusEffects.find(effect => effect.id === "exhaustion").changes = [
-            { "key": "system.bonuses.spell.dc", "mode": 2, "value": "-2*@attributes.exhaustion" },
             { "key": "system.bonuses.abilities.save", "mode": 2, "value": "-2*@attributes.exhaustion" }
         ];
         CONFIG.statusEffects.find(effect => effect.id === "exhaustion").reduction = {"rolls": 2}
