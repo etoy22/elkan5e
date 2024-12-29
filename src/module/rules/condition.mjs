@@ -18,7 +18,6 @@ export function conditions() {
     // For now this is commented out while we work on effecting icons
     // Add conditions
     const conditions = game.settings.get("elkan5e", "conditions");
-    const exhaustion = game.settings.get("elkan5e", "conditions-exhaustion");
     if (conditions === "a" || conditions === "b") {
         console.log("Elkan 5e  |  Adding New Elkan Conditions");
         const newConditions = {
@@ -256,11 +255,12 @@ export function icons() {
 
     if (!exhaustion) {
         CONFIG.statusEffects.find(effect => effect.id === "exhaustion").changes = [
-            { "key": "system.bonuses.All-Attacks", "mode": 2, "value": "-2*@attributes.exhaustion" },
-            { "key": "system.bonuses.spell.dc", "mode": 2, "value": "-2*@attributes.exhaustion" },
-            { "key": "system.bonuses.abilities.skill", "mode": 2, "value": "-2*@attributes.exhaustion" },
             { "key": "system.bonuses.abilities.save", "mode": 2, "value": "-2*@attributes.exhaustion" }
         ];
+        CONFIG.statusEffects.find(effect => effect.id === "exhaustion").reduction = {"rolls": 2}
+        CONFIG.DND5E.conditionEffects.halfMovement.delete("exhaustion-2")
+        CONFIG.DND5E.conditionEffects.halfHealth.delete("exhaustion-4")
+        CONFIG.DND5E.conditionEffects.noMovement.delete("exhaustion-5")
     }
 
     if (conditions === "a" || conditions === "b") {
@@ -469,16 +469,25 @@ export function grapple(){
 }
 
 /**
- * TODO: Adds functionality to Dwarven Resilience to give advantage on saves via poison. Probably need to use midi to automate
- * maybe with looking at there overtime effects and how to mix that 
+ * Adds functionality to Dwarven Resilience to give advantage on saves against poison.
+ * TODO: FIX THIS
  */
-export function dwarfResil(){
-
+export function dwarfResil() {
+    Hooks.on("midi-qol.preCheckSaves", (workflow) => {
+        if (workflow.actor.data.data.traits.race === "Dwarf") {
+            workflow.advantage = true;
+        }
+    });
 }
 
 /**
- * TODO: Add Functionality
- * Adds functionality to Sturdy to give advantage on saves via prone.   
+ * Adds functionality to Sturdy to give advantage on saves against being knocked prone.
+ * TODO: FIX THIS
  */
-export function sturdy(){
+export function sturdy() {
+    Hooks.on("midi-qol.preCheckSaves", (workflow) => {
+        if (workflow.actor.data.data.traits.feats.includes("Sturdy")) {
+            workflow.advantage = true;
+        }
+    });
 }
