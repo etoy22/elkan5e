@@ -1,0 +1,19 @@
+name: CodeRabbit Review on Merge
+
+on:
+  push:
+    branches:
+      - '**'  # This triggers the workflow for all branches on a push
+
+jobs:
+  coderabbit-review:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Run CodeRabbit Review
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          coderabbit review --branch ${GITHUB_REF_NAME}  # Replace with the actual CodeRabbit command
