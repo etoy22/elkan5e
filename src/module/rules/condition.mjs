@@ -255,8 +255,9 @@ export function icons() {
 
     if (!exhaustion) {
         CONFIG.statusEffects.find(effect => effect.id === "exhaustion").changes = [
-            { "key": "system.bonuses.abilities.save", "mode": 2, "value": "-2*@attributes.exhaustion" }
+            { "key": "system.bonuses.spell.dc", "mode": 2, "value": "-2*@attributes.exhaustion" },
         ];
+        CONFIG.DND5E.conditionTypes["exhaustion"].reduction = {"rolls": 2}
         CONFIG.statusEffects.find(effect => effect.id === "exhaustion").reduction = {"rolls": 2}
         CONFIG.DND5E.conditionEffects.halfMovement.delete("exhaustion-2")
         CONFIG.DND5E.conditionEffects.halfHealth.delete("exhaustion-4")
