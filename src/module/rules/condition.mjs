@@ -12,7 +12,9 @@ export function conditions() {
         "stunned", "unconscious"
     ];
     conditionIcons.forEach(id => {
-        CONFIG.DND5E.conditionTypes[id].icon = `modules/elkan5e/icons/${id}.svg`;
+        if (CONFIG.DND5E.conditionTypes[id]){
+            CONFIG.DND5E.conditionTypes[id].icon = `modules/elkan5e/icons/${id}.svg`;
+        }
     });
 
     // For now this is commented out while we work on effecting icons
@@ -40,12 +42,6 @@ export function conditions() {
                 label: "Dazed",
                 reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.0BYyVwipnS55gVFq",
                 icon: "modules/elkan5e/icons/dazed.svg"
-            },
-            dominated: {
-                label: "Dominated",
-                statuses: ["Charmed"],
-                reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.0OYaVPznKqYgchW9",
-                icon: "modules/elkan5e/icons/dominated.svg"
             },
             drained: {
                 label: "Drained",
@@ -123,7 +119,9 @@ export function icons() {
         "unconscious", "silenced"
     ];
     statusIcons.forEach(id => {
-        CONFIG.statusEffects.find(effect => effect.id === id).img = `modules/elkan5e/icons/${id}.svg`;
+        if (CONFIG.statusEffects.find(effect => effect.id === id)){
+            CONFIG.statusEffects.find(effect => effect.id === id).img = `modules/elkan5e/icons/${id}.svg`;
+        }
     });
     
     CONFIG.statusEffects.find(effect => effect.id === "coverHalf").img = `modules/elkan5e/icons/cover-half.svg`;
@@ -232,7 +230,9 @@ export function icons() {
         ]
     };
     Object.entries(effects).forEach(([id, changes]) => {
-        CONFIG.statusEffects.find(effect => effect.id === id).changes = changes;
+        if (CONFIG.statusEffects.find(effect => effect.id === id)){
+            CONFIG.statusEffects.find(effect => effect.id === id).changes = changes;
+        }
     });
 
     CONFIG.statusEffects.find(effect => effect.id === "surprised").flags = {
@@ -291,13 +291,6 @@ export function icons() {
                 _id: "dnd5edazed000000",
                 icon: "modules/elkan5e/icons/dazed.svg",
                 reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.0BYyVwipnS55gVFq"
-            },
-            {
-                id: "dominated",
-                name: "Dominated",
-                _id: "dnd5edominated00",
-                icon: "modules/elkan5e/icons/dominated.svg",
-                reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.0OYaVPznKqYgchW9"
             },
             {
                 id: "drained",
@@ -475,8 +468,11 @@ export function grapple(){
  */
 export function dwarfResil() {
     Hooks.on("midi-qol.preCheckSaves", (workflow) => {
-        if (workflow.actor.data.data.traits.race === "Dwarf") {
-            workflow.advantage = true;
+        const actor = workflow.actor;
+        if (actor.system.details.race?.toLowerCase().includes("dwarf")) {
+            if (workflow.item.system.damage.parts.some(part => part[1] === "poison")) {
+                workflow.advantage = true;
+            }
         }
     });
 }
@@ -487,7 +483,10 @@ export function dwarfResil() {
  */
 export function sturdy() {
     Hooks.on("midi-qol.preCheckSaves", (workflow) => {
-        if (workflow.actor.data.data.traits.feats.includes("Sturdy")) {
+        const actor = workflow.actor;
+        const hasSturdyFeat = actor.items.some(item => item.name === "Sturdy" && item.type === "feat");
+        const isProneSave = workflow.item?.system.save?.ability === "dex" && workflow.item?.name.includes("Prone");
+        if (hasSturdyFeat && isProneSave) {
             workflow.advantage = true;
         }
     });
