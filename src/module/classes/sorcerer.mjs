@@ -7,8 +7,8 @@ export async function wildSurge(activity) {
     const item = activity.item;
     const level = item.system.level;
 
-    // Check if the item is a spell and its level is greater than 0
-    if (item.type === "spell" && level > 0) {
+    // Check if the item is a spell and its level is greater than 0 and the activity is a ritual or the spell consumes a spell slot or the item is a scroll
+    if ((item.type === "spell" && level > 0 && (activity.name == "Ritual" || activity.consumption.spellSlot == true))|| (item.type=="consumable" && item.system.type.value=="scroll")) {
         const wild = actor.items.find(i => i.name === "Random Wild Surge");
         const volen = actor.effects.find(i => i.name === "Volentary Surge");
         const blowout = actor.effects.find(i => i.name === "Magical Blowout");

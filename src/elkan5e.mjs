@@ -65,7 +65,6 @@ Hooks.on("dnd5e.postUseActivity", (activity, usageConfig, results) => {
  * @param {object} roll - The resulting roll.
  */
 Hooks.on("dnd5e.preRollInitiative", (actor, roll) => {
-    console.log("preRollInitiative Hook Triggered", { actor, roll });
     archDruid(actor);
     improvedFeral(actor);
     feral(actor);
