@@ -21,4 +21,5 @@ export function init(){
     formating();
     scroll();
     console.log("Elkan 5e  |  Done Initalizing");
+    
 }
