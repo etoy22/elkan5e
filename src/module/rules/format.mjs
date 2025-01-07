@@ -20,7 +20,6 @@ export function ruleType() {
  */
 export function activation() {
     const activationTypes = {
-        duringattack: "As Part of a Weapon Attack",
         once: "Once Per Turn",
         shortrest: "During a Short Rest",
         longrest: "During a Long Rest",
@@ -32,12 +31,8 @@ export function activation() {
 
     // For the new version
     const activityActivationTypes = {
-        duringattack: {
-            label: "Once Per Turn",
-            group: "DND5E.ACTIVATION.Category.Standard"
-        },
         once: {
-            label: "As Part of a Weapon Attack",
+            label: "Once Per Turn",
             group: "DND5E.ACTIVATION.Category.Standard"
         },
         shortrest: {
