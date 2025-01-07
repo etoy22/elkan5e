@@ -12,14 +12,14 @@ export function perLeader(activity) {
         const commandersStrikeFeature = actor.items.find(i => i.name === "Commander's Strike");
 
         if (rallyFeature) {
-            rallyFeature.update({ "system.uses.spent": rallyFeature.system.uses.spent - 1 });
+            rallyFeature.update({ "system.uses.spent": Math.max(rallyFeature.system.uses.spent - 1, 0) })
         }
 
         if (commandersStrikeFeature) {
-            commandersStrikeFeature.update({ "system.uses.spent": commandersStrikeFeature.system.uses.spent - 1 });
+            commandersStrikeFeature.update({ "system.uses.spent": Math.max(commandersStrikeFeature.system.uses.spent - 1, 0) });
         }
         if (game.user.isGM || actor.isOwner) {
-            ui.notifications.notify(`${actor.name} - Your Persistent Leader feature has caused you to regain one use of Rally and one use of Commander's Strike. This has been automatically applied.`);
+            ui.notifications.notify(game.i18n.format("elkan5e.notifications.PersistentLeader", { name: actor.name }));
         }
     }
 }
@@ -34,9 +34,8 @@ export function rallySurge(activity) {
     const actor = activity.actor;
 
     if (item.name === "Action Surge" && actor.items.find(i => i.name === "Rallying Surge")) {
-        const rallySurge = actor.items.find(i => i.name === "Rallying Surge");
         if (game.user.isGM || actor.isOwner) {
-            ui.notifications.notify(`${actor.name} - Rallying Surge: Choose up to 3 allies within 60 ft. Each ally can use their reaction to immediately use an action, but they cannot cast a spell of 1st level or higher.`);
+            ui.notifications.notify(game.i18n.format("elkan5e.notifications.RallyingSurge", { name: actor.name }));
         }
     }
 }

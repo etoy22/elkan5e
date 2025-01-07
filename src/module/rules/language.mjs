@@ -3,11 +3,14 @@
  */
 export function language() {
     console.log("Elkan 5e  |  Initializing Languages");
-
+    if (!CONFIG.DND5E?.languages?.standard?.children) {
+        console.warn("Elkan 5e | CONFIG.DND5E.languages not properly initialized");
+        return
+    }
     // Deleting Languages
     const languagesToDelete = ["giant", "gnomish", "orc", "druidic", "cant"];
-    languagesToDelete.forEach(lang => delete CONFIG.DND5E.languages.standard.children[lang]);
-    delete CONFIG.DND5E.languages.exotic;
+    languagesToDelete.forEach(lang => CONFIG.DND5E.languages.standard.children[lang] = undefined);
+    CONFIG.DND5E.languages.exotic = undefined;
 
     // Adding Languages
     CONFIG.DND5E.languages.standard.children.under = "Undercommon";
