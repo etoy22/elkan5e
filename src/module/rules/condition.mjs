@@ -41,12 +41,6 @@ export function conditions() {
                 reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.0BYyVwipnS55gVFq",
                 icon: "modules/elkan5e/icons/dazed.svg"
             },
-            dominated: {
-                label: "Dominated",
-                statuses: ["Charmed"],
-                reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.0OYaVPznKqYgchW9",
-                icon: "modules/elkan5e/icons/dominated.svg"
-            },
             drained: {
                 label: "Drained",
                 reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.ZnhMIMgPZv1QDxzZ",
@@ -291,13 +285,6 @@ export function icons() {
                 _id: "dnd5edazed000000",
                 icon: "modules/elkan5e/icons/dazed.svg",
                 reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.0BYyVwipnS55gVFq"
-            },
-            {
-                id: "dominated",
-                name: "Dominated",
-                _id: "dnd5edominated00",
-                icon: "modules/elkan5e/icons/dominated.svg",
-                reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.0OYaVPznKqYgchW9"
             },
             {
                 id: "drained",

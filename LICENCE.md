@@ -39,8 +39,6 @@ The SRD 5.1 is licensed under the Creative Commons Attribution 4.0 International
 
 /icons/diseased.svg - Biohazard icon
 <br>
-/icons/dominated.svg - Crowned heart icon
-<br>
 /icons/drained.svg - Droplets icon
 <br>
 /icons/frightened.svg - Terror icon
