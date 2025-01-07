@@ -1,4 +1,235 @@
 # Changelog
+# v1.12.14
+## **Breaking Change**
+**Existing characters using Elkan 5e will need to be recreated to work with this update. Due to extensive changes, many old features were incompatible with v4 of DND and had to be recreated from scratch. All the new features now use the NEW Activities system.**
+
+**Rename Module 'Elkan 5e Automated Content'**
+Stating the previous changes as they were testing updates
+
+## Ancestry
+- Updated in v1.12.13
+    - Dragonborn are now considered dragons as their type
+    - Hobgoblins now have the Strength in Numbers feature instead of Repressed Memory
+    - New Construct Ancestry
+    - New Genasi Ancestry
+- Updated in v1.12.12
+    - Aasimar and Tieflings now get [*Thaumaturgy*](https://www.elkan5e.com/spells/thamaturgy) rather than a choice of two cantrips
+- Updated in v1.12.9
+    - Dragonborn
+        - Consolidated the two versions of dragon breath weapons
+    - Minotaur
+        - A minotaur's gore attack now pushes a target 5 ft. once per turn
+## Backgrounds
+- Wild
+	- Sudden Warning can no longer target self
+- Updated in v1.12.12
+    - New Criminal Background
+    - New Entertainer Background
+    - Relaxed the restrictions on what tools could be chosen by each background
+    - Improved Wild Background Feature
+    - Maritime Background reworked, added new Sailor's Vigilance feature
+    - Coordinating Direction for Nobles now allows an ally to reroll a skill check
+    - Cosmopolitan gains a choice of Crafter, Dabbler, or Polyglot feat
+    - Arcanist, Devout, and Fey-Touched now each grant one of your choice from a given spell list
+    - Removed weapon proficiencies from backgrounds other than militant and granted extra tools instead
+    - Backgrounds now give the spell for free as one spell instead of two
+## Classes
+**[Barbarian](https://www.elkan5e.com/barbarian)**
+- Feral Instincts and Improved Feral Instincts now give a notification to remind players that they can use it at initiative roll
+- Bloodrager
+	- New Level 6 feature to replace the free War Casting feat
+	- Wild Magic Bloodragers can now trigger Wild Surges
+- Updated in v1.12.9
+    - Bloodrager
+        - Has been reworked
+        - Move damage resistance to 10
+        - Remove Seething Mist
+        - Seething Blood not reaction, 1/turn
+        - Add War Casting at level 6
+        - Seething Blood range decreased to 10 ft. but now occurs when hit by a weapon attack and not reaction and doesn't take reaction
+     
+**[Bard](https://www.elkan5e.com/bard)**
+- Updated in v1.12.9
+    - Fix Bardic Inspiration short rest recharge
+
+**[Cleric](https://www.elkan5e.com/cleric)**
+- Life Domain
+	- Infused Healer has been automated and outputs a notification to indicate it has occurred
+- Updated in v1.12.12
+    - New Death Domain Subclass
+
+**[Druid](https://www.elkan5e.com/druid)**
+- Archdruid now gives a notification to remind players that they can use it at initiative roll
+- Updated in v1.12.12
+    - New Grassland Subclass
+    - New Mountain Subclass
+    - New Underworld Subclass
+    - Lesser Shifting added to Wild Shape options where it was previously missing from the list
+- Updated in v1.12.9
+    - Increased speed increase on Herd's Momentum to 15 ft
+
+**[Fighter](https://www.elkan5e.com/fighter)**
+- Commander
+	- Rallying Surge gives a notification when Action Surge is used
+	- Persistent Leader gives a notification when Second Wind is used
+
+**[Paladin](https://www.elkan5e.com/paladin)**
+- Updated in v1.12.9
+    - Consolidated elemental smite
+
+**[Ranger](https://www.elkan5e.com/ranger)**
+- Updated in v1.12.9
+    - Beastmaster
+        - Spell to restore companion was cleaned up
+
+**[Rogue](https://www.elkan5e.com/rogue)**
+- Mystic Trickster
+	- Combined the Precision Attacks
+- Updated in v1.12.9
+    - Assassin
+        - Now identifies as a rogue
+    - Duelist
+        - New ability at level 6: Close the Gap, replacing Face Me!
+
+**[Sorcerer](https://www.elkan5e.com/sorcerer)**
+- Wild Mage Subclass
+	- New Subclass
+	- Will automatically roll for your surge when casting a spell
+	- Completed surge tables from level 1-5
+- Updated in v1.12.13
+    - Metamagic has been properly tied back to sorcery points
+- Updated in v1.12.9
+    - Distant Spell: Inverted the metamagic so that making a touch spell have a range of 30 ft. is free and doubling the range of a spell costs 1 sorcery point
+
+**[Warlock](https://www.elkan5e.com/warlock)**
+- [Invocations](https://www.elkan5e.com/invocations)
+	- Armor of Shadows, Beast Speech, Eldritch Sight, Fiendish Vigor, Mask of Many Faces, Misty Visions, Otherworldly Leap, Ascendant Step, Whispers of the Grave, Master of Myriad Forms, Visions of Distant Realms can now cast spells from their feature
+- Updated in v1.12.13
+    - Spells now appear properly onto warlock (might have been done in a previous version)
+- Updated in v1.12.9
+    - Pact of the Chain
+        - Spell to restore their familiar was cleaned up
+    - Pact of the Warrior
+        - Thirsting Weapon has been implemented
+    - Fiend Patron
+        - Dark One's Blessing can now only be used 3/Long Rest but doesn't damage self after use
+
+**[Wizard](https://www.elkan5e.com/)**
+- Illusionist
+	- Added Masterful Illusions ability
+- Updated in v1.12.12
+    - New Illusionist Subclass
+- Updated in v1.12.9
+    - Evoker
+        - Now adds int mod to all spell damage at level 6
+        - New 'Closing Blast' ability at level 10
+    - Necromancer
+        - Life Drain on Spectral Graveguard was fixed to be a save and not an attack
+## Equipment
+- Ammunition have had their price changed to make it so that it properly calculates the weight as a group of 20
+- Updated in v1.12.13
+    - Ammunition have had their weight changed to make it so that it properly calculates the weight as a group of 20
+    - Magical items now have a default Unidentified description
+- Updated in v1.12.9
+    - **For those who use the New Weapon Mastery System all Elkan 5e weapons now have their proper Mastery**
+    - Sickles are now finesse weapons
+    - Blowguns now deal 1d4 piercing damage instead of 1
+    - Increased prices of many lower-price weapons. All weapons are now worth at least 1 gold
+    - Decreased price of scimitars and hand crossbows
+    - Adjusted weight on a few weapons
+    - Adjusted price on magic items
+    - Blowgun now has a base weapon
+    - Pike now says that it is two-handed in the reference area
+    - Tools have been fixed
+
+## Feats
+- Removed War Casting feat
+- Updated in v1.12.13
+    - Repressed Memory which was a Hobgoblin feature has been made into a feat
+    - New Feat: Undead Nature 
+- Updated in v1.12.9
+    - Consolidated the two versions of combat maneuvers
+    - [Shifty](https://www.elkan5e.com/feats/shifty) now references Attack of Opportunity
+
+## Game Rules
+- Removed Dominated Condition
+- Updated in v1.12.13
+    - Curse Rules can now be found
+    - Phased out "As Part of a Weapon Attack" and added "Once per Turn" where it made sense 
+- Updated in v1.12.9
+    - Added Spell Scroll Description and Pricing
+
+## Spells
+- New Spells
+	- [*Curse of Frailty*](https://www.elkan5e.com/spells/curse-of-frailty)
+	- [*Curse of Mindfire*](https://www.elkan5e.com/spells/curse-of-mindfire)
+	- [*Curse of Fate*](https://www.elkan5e.com/spells/curse-of-fate)
+	- [*Curse of Foolishness*](https://www.elkan5e.com/spells/curse-of-foolishness)
+	- [*Curse of Clumsiness*](https://www.elkan5e.com/spells/curse-of-clumsiness)
+	- [*Curse of Doom*](https://www.elkan5e.com/spells/curse-of-doom)
+	- [*Curse of the Troll*](https://www.elkan5e.com/spells/curse-of-the-troll)
+	- [*Prismatic Bolt*](https://www.elkan5e.com/spells/prismatic-bolt)
+- Updated Spells
+	- Remaining level 3 spells
+	- [*Cure Wounds*](https://www.elkan5e.com/spells/cure-wounds) healing increased
+	- [*Healing Word*](https://www.elkan5e.com/spells/healing-word) healing increased
+	- [*Dominate*](https://www.elkan5e.com/spells/dominate)
+	- [*Prismatic Spray*](https://www.elkan5e.com/spells/prismatic-spray) (now level 5)
+- Added [*Inflict Wounds*](https://www.elkan5e.com/spells/inflict-wounds) to sorcerer spell list
+- Removed [*Confusion*](https://www.elkan5e.com/spells/confusion) from Druid spell list
+- [*Druidcraft*](https://www.elkan5e.com/spells/druidcraft) can now clear a 5 ft. cube of difficult terrain
+- [*Knock*](https://www.elkan5e.com/spells/knock) cannot be dispelled. Forcing the lock open ends the spell.
+- Updated in v1.12.13
+    - Curse Rules can now be found
+    - Phased out "As Part of a Weapon Attack" and added "Once per Turn" where it made sense 
+- Updated in v1.12.12
+    - [*Produce Flame*](https://www.elkan5e.com/spells/produce-flame) can now set fires
+- Updated in v1.12.9
+    - **Spells cast as rituals now have an activity that won't take a spell slot**
+    - Now say if they are Melee Spell Attacks or Ranged Spell Attacks in the description
+    - [*Phantom Steed*](https://www.elkan5e.com/spells/phantom-steed) casting time of 1 minute (original time)
+    - [*Alarm*](https://www.elkan5e.com/spells/alarm) and [*Augury*](https://www.elkan5e.com/spells/augury) casting time 1 action
+    - 1 Minute rituals: All spells that take 1 action to cast
+    - [*Life Drain*](https://www.elkan5e.com/spells/life-drain) now drains a creature on successful save
+    - [*Well of Corruption*](https://www.elkan5e.com/spells/well-of-corruption) - now a one-time drain and area hazard that prevents healing
+    - [*Floating Disk*](https://www.elkan5e.com/spells/floating-disk) updated
+    - Elkan Classes will now be listed on top of Elkan Spells for which spells they have access to
+
+## UI
+- Made it possible for text localization of the background code base
+- Split up the Spell List Journals to Spells by Class, Subclass, School of Magic
+- Updated in v1.12.9
+    - All of Elkan stuff has now been integrated with the compendium browser
+    - Tons of clarity and formatting edits
+    - Change Species Feature back to Ancestry in the code
+    - Status Effect icons in Foundry
+        - New Full Cover Icon
+        - Remove icons for Burning, Dehydration, Falling, Malnutrition, Suffocation and put them into the area with other settings
+    - Lots of Referencing Updates
+        - Concentration Referencing now works with Elkan's concentration
+    - Elkan Actions are now listed in the action list for features and equipment
+    - Spell Schools for all spells now exists
+
+## Misc
+- 
+- Updated in v1.12.9
+    - Effects should not expire early when they have a duration of 1 round
+    - Abilities now grant the name of the effect in addition to the result like Animal Friendship and Charmed (To clean up and understand where effects are coming from)
+    - Add generic Disadvantage and Advantage conditions
+    - Fixed Use Custom Conditions having SRD Conditions and SRD Condition + Extra Conditions being mixed up
+
+## Bug Fixes
+- Added Shifty feat to class progression
+- Sapping Smite duration fixed
+- Now when using Elkan 5e, Exhaustion will override DND 5e 2024 exhaustion
+- Bard gets undead nature at level 1
+- Confusion now listed for sorcerer
+- Updated in v1.12.12
+    - In module.json a file was incorrectly named which was causing issues for all class features and equipment
+    - Fixed dead links
+- Updated in v1.12.9
+    - A lot of Bug Fixes
+
 # v1.12.13
 ## **Breaking Change**
 **Existing characters using Elkan 5e will need to be recreated to work with this update. Due to extensive changes, many old features were incompatible with v4 of DND and had to be recreated from scratch. All the new features now use the NEW Activities system.**
@@ -30,6 +261,7 @@
 ## Bug Fixes
 - Class Tags can now be seen again on spells
 - Fixed DND tools appearing when the setting for Elkan is unchecked 
+
 # v1.12.12
 ## **Breaking Change**
 **Existing characters using Elkan 5e will need to be recreated to work with this update. Due to extensive changes, many old features were incompatible with v4 of DND and had to be recreated from scratch. All the new features now use the NEW Activities system.**
@@ -43,7 +275,7 @@ Rename Module 'Elkan 5e Automated Content'
 - Relaxed the restrictions on what tools could be chosen by each background
 - Improved Wild Backgreound Feature
 - Maritime Background reworked, added new Sailor's Vigilance feature.
-- Coordinating Direction for Nobles is now allows an ally to reroll a skill check
+- Coordinating Direction for Nobles now allows an ally to reroll a skill check
 - Cosmopolitan gains a choice of Crafter, Dabbler, or Polyglot feat
 - Arcanist, Devout, and Fey-Touched now each grant one of your choice from a given spell list
 - Removed weapon proficiencies from backgrounds other than militant and granted extra tools instead
@@ -890,7 +1122,7 @@ Made subclass names consistent in formatting
     - Shifter
       - Durable Form has been made passive with its ability affecting Wild Shapeshifting Directly
     - Feats
-      - Supreme Might is now a feat
+      - Supreme Might has been added as a feat
     - Journals
       - Weapon Rules Page
       - Class Notes Fighting Style Updated
@@ -1040,7 +1272,7 @@ Made subclass names consistent in formatting
 - Aasimar and Tiefling's ancestries are now properly complete.
 - Added the Bulwark fighter subclass (so all subclasses on the website are now in Foundry).
 - Fixed numerous issues with the Ranger class and its subclasses' features.
-- Fixed the problem where some cantrips did half damage on a successful saving throw.
+- Resolved an issue where some cantrips did half damage on a successful saving throw.
 ### November 6, 2023
 - Added the College of Jesters subclass to Bard
 - Added the College of Lore subclass to Bard

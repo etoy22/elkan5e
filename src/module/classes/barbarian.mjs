@@ -1,31 +1,17 @@
 /**
- * Adds functionality to Feral Instincts.
+ * Adds functionality to Feral Instincts and Improved Feral Instincts.
  *   @param {object} actor - The actor instance.
  */
 export function feral(actor) {
     const rageFeature = actor.items.find(i => i.name === "Rage");
-    if (rageFeature && actor.items.find(i => i.name === "Feral Instincts") && !actor.items.find(i => i.name === "Improved Feral Instincts")) {
-        let uses = rageFeature.system.uses.max - rageFeature.system.uses.spent;
-        if (uses > 0) {
-            if (actor.isOwner) {
-                ui.notifications.notify(`${actor.name} - Feral Instincts: When you roll initiative, you can enter Rage immediately. If you are surprised, you end the surprised condition when you enter Rage in this way. If you are not surprised, you can immediately move up to half of your movement.`);
-            }
+    let notification = "elkan5e.notifications.FeralInstincts";
+    if (rageFeature && (actor.items.find(i => i.name === "Feral Instincts") || actor.items.find(i => i.name === "Improved Feral Instincts"))) {
+        if (actor.items.find(i => i.name === "Improved Feral Instincts")) {
+            notification = "elkan5e.notifications.ImprovedFeralInstincts";
         }
-    }
-}
-
-/**
- * Adds functionality to Improved Feral Instincts.
- *   @param {object} actor - The actor instance.
- */
-export function improvedFeral(actor) {
-    const rageFeature = actor.items.find(i => i.name === "Rage");
-    if (rageFeature && actor.items.find(i => i.name === "Improved Feral Instinct")) {
         let uses = rageFeature.system.uses.max - rageFeature.system.uses.spent;
-        if (uses > 0) {
-            if (actor.isOwner) {
-                ui.notifications.notify(`${actor.name} - Improved Feral Instinct: When you roll initiative, you can enter Rage immediately. If you are surprised, you end the surprised condition when you enter Rage in this way. You can immediately move up to your movement speed.`);
-            }
+        if (uses > 0 && actor.isOwner) {
+            ui.notifications.notify(game.i18n.format(notification, { name: actor.name }));
         }
     }
 }
