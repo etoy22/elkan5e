@@ -1,0 +1,311 @@
+{
+  "folder": "6J3i75lfD1J0xYwA",
+  "name": "Arms of Earth",
+  "type": "spell",
+  "_id": "cUZFvfqNa3nidrFs",
+  "img": "icons/magic/earth/barrier-stone-explosion-debris.webp",
+  "system": {
+    "description": {
+      "value": "<p><span style=\"font-family:Signika, sans-serif\"><em style=\"box-sizing:border-box;user-select:text\">Saying an incantation to draw upon the power contained in an igneous stone you carry, you make a grasping gesture at your target location, and the earth surges upwards to grab creatures in the radius.</em></span></p><p><strong>Strength Save</strong></p><ul><li><p><strong>Failure:</strong> [[/damage 2d6 bludgeoning]] damage*, and target is &amp;reference[grappled]. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li><li><p><strong>Area Hazard:</strong> The area is &amp;reference[difficultterrain]. Creatures who remain &amp;reference[grappled] take damage again at the end of each of their turns.</p></li></ul><p></p><div><div><p><strong>*Upcasting</strong>: Increase damage by [[/damage 1d6 bludgeoning]]{1d6} for each spell level above 2nd.</p></div></div>",
+      "chat": "<p><strong>Strength Save</strong></p><ul><li><p><strong>Failure:</strong> [[/damage 2d6 bludgeoning]] damage*, and target is &amp;reference[grappled]. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li><li><p><strong>Area Hazard:</strong> The area is &amp;reference[difficultterrain]. Creatures who remain &amp;reference[grappled] take damage again at the end of each of their turns.</p></li></ul><p></p><div><div><p><strong>*Upcasting</strong>: Increase damage by [[/damage 1d6 bludgeoning]]{1d6} for each spell level above 2nd.</p></div></div>"
+    },
+    "source": {
+      "book": "",
+      "page": "",
+      "custom": "elkan5e.com/spells/arms-of-earth",
+      "license": "",
+      "revision": 1,
+      "rules": ""
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "1",
+      "units": "minute"
+    },
+    "target": {
+      "affects": {
+        "choice": false,
+        "count": "",
+        "type": ""
+      },
+      "template": {
+        "units": "ft",
+        "width": "5",
+        "type": "cube",
+        "size": "30",
+        "contiguous": false,
+        "count": ""
+      }
+    },
+    "range": {
+      "value": "90",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 2,
+    "school": "trs",
+    "materials": {
+      "value": "A sample of igneous rock",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "concentration",
+      "mgc"
+    ],
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "save",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "r9EFw5aAIeaNpIpE",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "number": 2,
+              "denomination": 6,
+              "bonus": "",
+              "types": [
+                "bludgeoning"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "",
+                "number": null,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": "str",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "sort": 0
+      }
+    },
+    "identifier": ""
+  },
+  "effects": [
+    {
+      "origin": "Compendium.elkan5e.elkan5e-spells.Item.cUZFvfqNa3nidrFs",
+      "duration": {
+        "rounds": null,
+        "startTime": null,
+        "seconds": 60,
+        "combat": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "disabled": false,
+      "_id": "r9EFw5aAIeaNpIpE",
+      "changes": [
+        {
+          "key": "system.attributes.movement.all",
+          "mode": 0,
+          "value": "0",
+          "priority": null
+        },
+        {
+          "key": "flags.midi-qol.OverTime",
+          "mode": 5,
+          "value": "turn=end,saveAbility=str,saveDC=@attributes.spelldc,damageRoll= (1+@spellLevel)d6,damageType=bludgeoningsaveMagic=true,label=Arms of Earth",
+          "priority": null
+        }
+      ],
+      "tint": "#ffffff",
+      "transfer": false,
+      "flags": {
+        "dae": {
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "stackable": "none",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [],
+          "disableIncapacitated": false,
+          "dontApply": false,
+          "showIcon": false
+        },
+        "core": {
+          "sourceId": "Actor.TxKqIQwqUed9XU8Z.Item.Ed7XgnZu9qRs3qdn.ActiveEffect.e7lEeBV86hFLDK7D"
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "radius": "null",
+          "alignment": "",
+          "type": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "nameOverride": "",
+          "customCheck": "",
+          "wallsBlock": "system"
+        },
+        "times-up": {
+          "isPassive": false
+        }
+      },
+      "name": "Arms of Earth",
+      "description": "",
+      "statuses": [
+        "grappled"
+      ],
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.2",
+        "createdTime": null,
+        "modifiedTime": 1727115070281,
+        "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+      },
+      "img": "icons/magic/earth/barrier-stone-explosion-debris.webp",
+      "type": "base",
+      "system": {},
+      "sort": 0,
+      "_key": "!items.effects!cUZFvfqNa3nidrFs.r9EFw5aAIeaNpIpE"
+    }
+  ],
+  "sort": 400000,
+  "ownership": {
+    "default": 0,
+    "WaiirYzq9mhRj9cS": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "flags": {
+    "midi-qol": {
+      "effectActivation": false,
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "rollAttackPerTarget": "default"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "saveDamage": "default",
+      "bonusSaveDamage": "default",
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic",
+        "material",
+        "concentration"
+      ]
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.0.3",
+    "createdTime": 1726952203014,
+    "modifiedTime": 1728937057147,
+    "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+  },
+  "_key": "!items!cUZFvfqNa3nidrFs"
+}

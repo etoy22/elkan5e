@@ -1,0 +1,342 @@
+{
+  "name": "Grease",
+  "type": "spell",
+  "img": "icons/containers/barrels/barrel-drum-steel-oil.webp",
+  "effects": [
+    {
+      "name": "Prone",
+      "origin": "Compendium.elkan5e.elkan5e-spells.Item.AymsSXnrNy6KbHkY",
+      "changes": [
+        {
+          "key": "macro.StatusEffect",
+          "mode": 0,
+          "value": "prone",
+          "priority": 0
+        }
+      ],
+      "transfer": false,
+      "flags": {
+        "dae": {
+          "itemName": "Grease",
+          "disableCondition": "",
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "specialDuration": [],
+          "enableCondition": "",
+          "macroRepeat": "none"
+        },
+        "core": {
+          "overlay": false
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system"
+        }
+      },
+      "img": "modules/elkan5e/icons/prone.svg",
+      "_id": "qfS3TWZEuFiUK2JJ",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": 0,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.2",
+        "createdTime": null,
+        "modifiedTime": 1728417151739,
+        "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+      },
+      "_key": "!items.effects!AymsSXnrNy6KbHkY.qfS3TWZEuFiUK2JJ"
+    }
+  ],
+  "folder": "U0k4VGG6bziqf3oH",
+  "flags": {
+    "midi-qol": {
+      "onUseMacroName": "[postActiveEffects]AA ApplyEffectsToTemplate",
+      "effectActivation": false,
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "rollAttackPerTarget": "default"
+    },
+    "itemacro": {
+      "macro": {
+        "_data": {
+          "name": "Grease",
+          "type": "script",
+          "scope": "global",
+          "command": "//On use macro to apply an item's active effects to the placed template instead of applying through the normal midi QoL workflow \n// requires midi qol, furnace and Active Auras \ndebugger\nif (args[0].tag === \"OnUse\") {\n    let template = canvas.templates.get(args[0].templateId)\n    let effects = args[0].item.effects\n    let templateEffectData = []\n    for (let effect of effects) {\n        let data = { data: duplicate(effect), parentActorId: false, parentActorLink: false, entityType: \"template\", entityId: template.id, }\n        templateEffectData.push(data)\n    }\n    await template.setFlag(\"ActiveAuras\", \"IsAura\", templateEffectData)\n    ActiveAuras.CollateAuras(canvas.scene.id, true, false, \"spellCast\")\n    return { haltEffectsApplication: true }\n}\n\n\nelse if (args[0] === \"on\") {\n    const lastArg = args[args.length - 1];\n    let tactor;\n    if (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\n    else tactor = game.actors.get(lastArg.actorId);\n    const target = canvas.tokens.get(lastArg.tokenId)\n    const DAEitem = lastArg.efData.flags.dae.itemData\n    const saveData = DAEitem.data.save\n    const flavor = `${CONFIG.DND5E.abilities[\"dex\"]} DC${args[1]} ${DAEitem?.name || \"\"}`;\n    let saveRoll = (await tactor.rollAbilitySave(\"dex\", { flavor })).total;\n    if (saveRoll < args[1]) {\n        game.cub.addCondition(\"Prone\", token)\n    }\n}\n\nelse if (args[0] === \"each\") {\n\n    const lastArg = args[args.length - 1];\n    let tactor;\n    if (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\n    else tactor = game.actors.get(lastArg.actorId);\n    const target = canvas.tokens.get(lastArg.tokenId)\n    const DAEitem = lastArg.efData.flags.dae.itemData\n    const saveData = DAEitem.data.save\n    const flavor = `${CONFIG.DND5E.abilities[\"dex\"]} DC${args[1]} ${DAEitem?.name || \"\"}`;\nlet saveRoll = (await tactor.rollAbilitySave(\"dex\", { flavor })).total;\n    if (saveRoll < args[1]) {\n        game.cub.addCondition(\"Prone\", token)\n    }\n}",
+          "author": "E4BVikjIkVl2lL2j"
+        },
+        "data": {
+          "name": "Grease",
+          "type": "script",
+          "scope": "global",
+          "command": "//On use macro to apply an item's active effects to the placed template instead of applying through the normal midi QoL workflow \n// requires midi qol, furnace and Active Auras \ndebugger\nif (args[0].tag === \"OnUse\") {\n    let template = canvas.templates.get(args[0].templateId)\n    let effects = args[0].item.effects\n    let templateEffectData = []\n    for (let effect of effects) {\n        let data = { data: duplicate(effect), parentActorId: false, parentActorLink: false, entityType: \"template\", entityId: template.id, }\n        templateEffectData.push(data)\n    }\n    await template.setFlag(\"ActiveAuras\", \"IsAura\", templateEffectData)\n    ActiveAuras.CollateAuras(canvas.scene.id, true, false, \"spellCast\")\n    return { haltEffectsApplication: true }\n}\n\n\nelse if (args[0] === \"on\") {\n    const lastArg = args[args.length - 1];\n    let tactor;\n    if (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\n    else tactor = game.actors.get(lastArg.actorId);\n    const target = canvas.tokens.get(lastArg.tokenId)\n    const DAEitem = lastArg.efData.flags.dae.itemData\n    const saveData = DAEitem.data.save\n    const flavor = `${CONFIG.DND5E.abilities[\"dex\"]} DC${args[1]} ${DAEitem?.name || \"\"}`;\n    let saveRoll = (await tactor.rollAbilitySave(\"dex\", { flavor })).total;\n    if (saveRoll < args[1]) {\n        game.cub.addCondition(\"Prone\", token)\n    }\n}\n\nelse if (args[0] === \"each\") {\n\n    const lastArg = args[args.length - 1];\n    let tactor;\n    if (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\n    else tactor = game.actors.get(lastArg.actorId);\n    const target = canvas.tokens.get(lastArg.tokenId)\n    const DAEitem = lastArg.efData.flags.dae.itemData\n    const saveData = DAEitem.data.save\n    const flavor = `${CONFIG.DND5E.abilities[\"dex\"]} DC${args[1]} ${DAEitem?.name || \"\"}`;\nlet saveRoll = (await tactor.rollAbilitySave(\"dex\", { flavor })).total;\n    if (saveRoll < args[1]) {\n        game.cub.addCondition(\"Prone\", token)\n    }\n}",
+          "author": "E4BVikjIkVl2lL2j"
+        },
+        "options": {},
+        "apps": {},
+        "compendium": null
+      }
+    },
+    "core": {},
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "noConcentrationCheck": false,
+      "confirmTargets": "default",
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dae": {
+      "macro": {
+        "name": "Grease",
+        "img": "icons/containers/barrels/barrel-drum-steel-oil.webp",
+        "type": "script",
+        "scope": "global",
+        "command": "",
+        "author": "3Yi0HjF4PKCA4vX0",
+        "ownership": {
+          "default": 3
+        },
+        "_id": null,
+        "folder": null,
+        "sort": 0,
+        "flags": {},
+        "_stats": {
+          "systemId": null,
+          "systemVersion": null,
+          "coreVersion": null,
+          "createdTime": null,
+          "modifiedTime": null,
+          "lastModifiedBy": null
+        }
+      }
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic",
+        "material"
+      ]
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>You teleport a small stick of butter or similar shortening, where it rapidly melts and spreads in a thin layer over the ground.</em></p><p><strong>Dexterity Save</strong></p><ul><li><p><strong>Failure</strong>: Target is &amp;reference[prone]</p></li><li><p><strong>Success</strong>: No Effect.</p></li><li><p><strong>Area Hazard</strong>: The area is &amp;reference[difficultterrain]. A creature that moves onto or away from the grease must make a save against the spell.</p></li></ul>",
+      "chat": "<p><strong>Dexterity Save</strong></p><ul><li><p><strong>Failure</strong>: Target is &amp;reference[prone]</p></li><li><p><strong>Success</strong>: No Effect.</p></li><li><p><strong>Area Hazard</strong>: The area is &amp;reference[difficultterrain]. A creature that moves onto or away from the grease must make a save against the spell.</p></li></ul>"
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/grease",
+      "revision": 1,
+      "rules": "",
+      "book": "",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "1",
+      "units": "minute"
+    },
+    "target": {
+      "affects": {
+        "count": "",
+        "type": "creature",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "count": "",
+        "units": "ft",
+        "type": "circle",
+        "size": "10",
+        "contiguous": false
+      }
+    },
+    "range": {
+      "value": "60",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 1,
+    "school": "con",
+    "materials": {
+      "value": "A stick of butter",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "mgc"
+    ],
+    "activities": {
+      "dnd5eactivity000": {
+        "effects": [
+          {
+            "_id": "qfS3TWZEuFiUK2JJ",
+            "onSave": false
+          }
+        ],
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "qfS3TWZEuFiUK2JJ"
+        ]
+      },
+      "i5imuQTxpXiWcBFS": {
+        "type": "save",
+        "_id": "i5imuQTxpXiWcBFS",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "qfS3TWZEuFiUK2JJ",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "parts": [],
+          "onSave": "none"
+        },
+        "save": {
+          "ability": "dex",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "qfS3TWZEuFiUK2JJ"
+        ]
+      }
+    },
+    "identifier": ""
+  },
+  "ownership": {
+    "default": 0,
+    "VJURYym0JQByHBQL": 3,
+    "MKYWAnkTJr0gkDqT": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.0.3",
+    "createdTime": 1726952197820,
+    "modifiedTime": 1728935993479,
+    "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+  },
+  "_id": "AymsSXnrNy6KbHkY",
+  "sort": 1200000,
+  "_key": "!items!AymsSXnrNy6KbHkY"
+}
