@@ -5,11 +5,11 @@ import { initWarlockSpellSlot } from "./module/classes/warlock.mjs";
 import { perLeader, rallySurge } from "./module/classes/fighter.mjs";
 import { healOver, infuseHeal } from "./module/classes/cleric.mjs";
 import { archDruid } from "./module/classes/druid.mjs";
-import { feral, improvedFeral } from "./module/classes/barbarian.mjs";
+import { feral } from "./module/classes/barbarian.mjs";
 import { wildSurge } from "./module/classes/sorcerer.mjs";
 
 Hooks.once("init", () => {
-    console.log("Elkan 5e  |  Initializing Elkan 5e");
+    console.log("Elkan 5e | Initializing Elkan 5e");
     gameSettingRegister();
     init();
     initWarlockSpellSlot();
@@ -34,26 +34,24 @@ Hooks.on("dnd5e.preRollAttackV2", (item, config) => {
  */
 Hooks.on("dnd5e.preRollHitDieV2", (config) => {
     const actor = config.subject;
-    if (actor.items.find(feature => feature.name === "Undead Nature") && !actor.effects.find(effect => effect.name === "Gentle Repose")) {
+    const hasUndeadNature = actor.items.find(feature => feature.name === "Undead Nature");
+    const hasGentleRepose = actor.effects.find(effect => effect.name === "Gentle Repose");
+    // Subtract Constitution modifier from hit die roll for undead characters without Gentle Repose
+    if (hasUndeadNature && !hasGentleRepose) {
         config.rolls[0].parts[0] += '-@abilities.con.mod';
     }
 });
 
-/**
- * Handle post-use activity for Wild Mage Sorcerer.
- * @param {object} activity - The activity performed.
- */
-Hooks.on("dnd5e.postUseActivity", async (activity) => {
-    wildSurge(activity);
-});
+
 
 /**
- * Handle post-use activity for Infused Healer.
+ * Handle post-use activity.
  * @param {object} activity - The activity performed.
  * @param {object} usageConfig - The usage configuration.
  * @param {object} results - The results of the activity.
- */
+*/
 Hooks.on("dnd5e.postUseActivity", (activity, usageConfig, results) => {
+    wildSurge(activity);
     infuseHeal(activity, usageConfig);
     perLeader(activity)
     rallySurge(activity);
@@ -65,8 +63,6 @@ Hooks.on("dnd5e.postUseActivity", (activity, usageConfig, results) => {
  * @param {object} roll - The resulting roll.
  */
 Hooks.on("dnd5e.preRollInitiative", (actor, roll) => {
-    console.log("preRollInitiative Hook Triggered", { actor, roll });
     archDruid(actor);
-    improvedFeral(actor);
     feral(actor);
 });
