@@ -1,6 +1,9 @@
-export function startDialog() {
-    const dialogShown = game.settings.get("elkan5e", "dialogShown");
-    if (!dialogShown) {
+export async function startDialog() {
+    const SAVED_VERSION = game.settings.get("elkan5e", "moduleVersion");
+    const DIALOG_SHOWN = game.settings.get("elkan5e", "dialogShown");
+    const MODULE_VERSION = getModuleVersion();
+
+    if (!DIALOG_SHOWN || SAVED_VERSION !== MODULE_VERSION) {
         let dialog = new Dialog({
             title: game.i18n.localize("elkan5e.dialog.title"),
             content: `
@@ -16,6 +19,7 @@ export function startDialog() {
                     label: "Do Not Show Again",
                     callback: async () => {
                         await game.settings.set("elkan5e", "dialogShown", true);
+                        await game.settings.set("elkan5e", "moduleVersion", MODULE_VERSION);
                         dialog.close();
                     }
                 }

@@ -3,17 +3,11 @@
  * one that we had to do a full replacement
  */
 export function tools() {
-    const tool = game.settings.get("elkan5e", "tools");
     console.log("Elkan 5e  |  Initializing Tools");
 
-    // Adding Tool Types
-    CONFIG.DND5E.toolTypes.craft = "Crafting Tools";
-    CONFIG.DND5E.toolTypes.explore = "Exploration Tools";
-    CONFIG.DND5E.toolProficiencies.craft = "Crafting Tools";
-    CONFIG.DND5E.toolProficiencies.explore = "Exploration Tools";
-
-    // Define tools
-    const tools = {
+    const TOOL_SETTING = game.settings.get("elkan5e", "tools");
+    const TOOLS_TO_REMOVE = ["glassblower", "potter", "weaver", "carpenter", "cartographer", "cobbler"];
+    const TOOLS = {
         painter: { id: "Compendium.elkan5e.elkan5e-equipment.Item.qZe6ua1j3TtX3QGv" },
         sculpt: { ability: "dex", id: "Compendium.elkan5e.elkan5e-equipment.Item.6x1yyzDnWGRNRwJD" },
         alchemist: { id: "Compendium.elkan5e.elkan5e-equipment.Item.5TRgfcXqzHRvcYql" },
@@ -38,15 +32,20 @@ export function tools() {
         forg: { id: "Compendium.elkan5e.elkan5e-equipment.Item.dFa31G5pfZ3FGcjk" }
     };
 
+    // Adding Tool Types
+    CONFIG.DND5E.toolTypes.craft = "Crafting Tools";
+    CONFIG.DND5E.toolTypes.explore = "Exploration Tools";
+    CONFIG.DND5E.toolProficiencies.craft = "Crafting Tools";
+    CONFIG.DND5E.toolProficiencies.explore = "Exploration Tools";
+
     // Assign tools
-    Object.entries(tools).forEach(([key, value]) => {
+    Object.entries(TOOLS).forEach(([key, value]) => {
         CONFIG.DND5E.tools[key] = value;
     });
 
     // Removing Tools
-    if (!tool) {
+    if (!TOOL_SETTING) {
         console.log("Elkan 5e  |  Removing Tools");
-        const toolsToRemove = ["glassblower", "potter", "weaver", "carpenter", "cartographer", "cobbler"];
-        toolsToRemove.forEach(tool => delete CONFIG.DND5E.tools[tool]);
+        TOOLS_TO_REMOVE.forEach(tool => delete CONFIG.DND5E.tools[tool]);
     }
 }
