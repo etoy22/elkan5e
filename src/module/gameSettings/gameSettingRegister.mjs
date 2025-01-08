@@ -1,4 +1,12 @@
-export function gameSettingRegister(){
+export async function getModuleVersion() {
+    const response = await fetch("modules/elkan5e/module.json");
+    const moduleData = await response.json();
+    return moduleData.version;
+}
+
+export async function gameSettingRegister() {
+    const MODULE_VERSION = await getModuleVersion();
+
     game.settings.register("elkan5e", "dialogShown", {
         name: "elkan5e.dialog.name",
         hint: "elkan5e.dialog.hint",
@@ -17,10 +25,10 @@ export function gameSettingRegister(){
         requiresReload: true,
         default: "a",
         choices: {
-            "a":"elkan5e.conditions.choiceA",
-            "b":"elkan5e.conditions.choiceB",
-            "c":"elkan5e.conditions.choiceC",
-            "d":"elkan5e.conditions.choiceD"
+            "a": "elkan5e.conditions.choiceA",
+            "b": "elkan5e.conditions.choiceB",
+            "c": "elkan5e.conditions.choiceC",
+            "d": "elkan5e.conditions.choiceD"
         },
         restricted: true,
     });
@@ -35,7 +43,7 @@ export function gameSettingRegister(){
         restricted: true,
         requiresReload: true,
     });
-    
+
     game.settings.register("elkan5e", "tools", {
         name: "elkan5e.tools.name",
         hint: "elkan5e.tools.hint",
@@ -57,7 +65,7 @@ export function gameSettingRegister(){
         type: Boolean,
         restricted: true,
     });
-    
+
     game.settings.register("elkan5e", "weapons", {
         name: "elkan5e.weapons.name",
         hint: "elkan5e.weapons.hint",
@@ -78,5 +86,14 @@ export function gameSettingRegister(){
         default: true,
         type: Boolean,
         restricted: true,
+    });
+
+    game.settings.register("elkan5e", "moduleVersion", {
+        name: "elkan5e.moduleVersion.name",
+        hint: "elkan5e.moduleVersion.hint",
+        scope: "client",
+        config: false,
+        type: String,
+        default: MODULE_VERSION,
     });
 }

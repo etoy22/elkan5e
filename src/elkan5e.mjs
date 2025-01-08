@@ -1,4 +1,4 @@
-import { gameSettingRegister } from "./module/gameSettings/gameSettingRegister.mjs";
+import { gameSettingRegister, getModuleVersion } from "./module/gameSettings/gameSettingRegister.mjs";
 import { startDialog } from "./module/gameSettings/startDialog.mjs";
 import { init } from "./module/initalizing.mjs";
 import { initWarlockSpellSlot } from "./module/classes/warlock.mjs";
@@ -8,11 +8,11 @@ import { archDruid } from "./module/classes/druid.mjs";
 import { feral } from "./module/classes/barbarian.mjs";
 import { wildSurge } from "./module/classes/sorcerer.mjs";
 
-Hooks.once("init", () => {
+Hooks.once("init", async () => {
     console.log("Elkan 5e | Initializing Elkan 5e");
-    gameSettingRegister();
-    init();
-    initWarlockSpellSlot();
+    await gameSettingRegister();
+    await init();
+    await initWarlockSpellSlot();
 });
 
 Hooks.once('ready', async () => {
@@ -34,15 +34,13 @@ Hooks.on("dnd5e.preRollAttackV2", (item, config) => {
  */
 Hooks.on("dnd5e.preRollHitDieV2", (config) => {
     const actor = config.subject;
-    const hasUndeadNature = actor.items.find(feature => feature.name === "Undead Nature");
-    const hasGentleRepose = actor.effects.find(effect => effect.name === "Gentle Repose");
+    const HAS_UNDEAD_NATURE = actor.items.find(feature => feature.name === "Undead Nature");
+    const HAS_GENTLE_REPOSE  = actor.effects.find(effect => effect.name === "Gentle Repose");
     // Subtract Constitution modifier from hit die roll for undead characters without Gentle Repose
-    if (hasUndeadNature && !hasGentleRepose) {
+    if (HAS_UNDEAD_NATURE && !HAS_GENTLE_REPOSE) {
         config.rolls[0].parts[0] += '-@abilities.con.mod';
     }
 });
-
-
 
 /**
  * Handle post-use activity.
