@@ -19,18 +19,15 @@ export function ruleType() {
  * Adds new activation types that are used in Elkan 5e
  */
 export function activation() {
-    const activationTypes = {
+
+    const ACTIVATION_TYPES = {
         once: "Once Per Turn",
         shortrest: "During a Short Rest",
         longrest: "During a Long Rest",
         nocost: "No Action Cost"
     };
 
-    Object.assign(CONFIG.DND5E.abilityActivationTypes, activationTypes);
-    Object.assign(CONFIG.DND5E.staticAbilityActivationTypes, activationTypes);
-
-    // For the new version
-    const activityActivationTypes = {
+    const ACTIVITY_ACTIVATION_TYPES = {
         once: {
             label: "Once Per Turn",
             group: "DND5E.ACTIVATION.Category.Standard"
@@ -49,8 +46,13 @@ export function activation() {
             label: "No Action Cost"
         }
     };
+    
+    
+    Object.assign(CONFIG.DND5E.abilityActivationTypes, ACTIVATION_TYPES);
+    Object.assign(CONFIG.DND5E.staticAbilityActivationTypes, ACTIVATION_TYPES);
 
-    Object.assign(CONFIG.DND5E.activityActivationTypes, activityActivationTypes);
+    // For the new version
+    Object.assign(CONFIG.DND5E.activityActivationTypes, ACTIVITY_ACTIVATION_TYPES);
 }
 
 /*
