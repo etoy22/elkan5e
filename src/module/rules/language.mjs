@@ -9,9 +9,9 @@ export function language() {
     }
     // Deleting Languages
     const languagesToDelete = ["giant", "gnomish", "orc", "druidic", "cant"];
-    languagesToDelete.forEach(lang => CONFIG.DND5E.languages.standard.children[lang] = undefined);
-    CONFIG.DND5E.languages.exotic = undefined;
-
+    languagesToDelete.forEach(lang => delete CONFIG.DND5E.languages.standard.children[lang]);
+    delete CONFIG.DND5E.languages.exotic;
+    
     // Adding Languages
     CONFIG.DND5E.languages.standard.children.under = "Undercommon";
 
