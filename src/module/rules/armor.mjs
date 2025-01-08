@@ -8,7 +8,7 @@ export function armor() {
 
     if (!armor) {
         // Delete List
-        ["ringmail", "studded"].forEach(id => CONFIG.DND5E.armorIds[id] = undefined)
+        ["ringmail", "studded"].forEach(id => delete CONFIG.DND5E.armorIds[id]);
         delete CONFIG.DND5E.shieldIds.shield;
     }
 
