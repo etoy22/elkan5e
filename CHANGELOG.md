@@ -39,6 +39,7 @@ Stating the previous changes as they were testing updates
 - Bloodrager
 	- New Level 6 feature to replace the free War Casting feat
 	- Wild Magic Bloodragers can now trigger Wild Surges
+	- Seething Blood reworked to a bonus action and save, starts at 2d6 and scales higher at higher levels. Removed Transfused Strikes
 - Updated in v1.12.9
     - Bloodrager
         - Has been reworked
@@ -175,10 +176,12 @@ Stating the previous changes as they were testing updates
 	- [*Healing Word*](https://www.elkan5e.com/spells/healing-word) healing increased
 	- [*Dominate*](https://www.elkan5e.com/spells/dominate)
 	- [*Prismatic Spray*](https://www.elkan5e.com/spells/prismatic-spray) (now level 5)
-- Added [*Inflict Wounds*](https://www.elkan5e.com/spells/inflict-wounds) to sorcerer spell list
-- Removed [*Confusion*](https://www.elkan5e.com/spells/confusion) from Druid spell list
-- [*Druidcraft*](https://www.elkan5e.com/spells/druidcraft) can now clear a 5 ft. cube of difficult terrain
-- [*Knock*](https://www.elkan5e.com/spells/knock) cannot be dispelled. Forcing the lock open ends the spell.
+	- [*Druidcraft*](https://www.elkan5e.com/spells/druidcraft) can now clear a 5 ft. cube of difficult terrain
+	- [*Knock*](https://www.elkan5e.com/spells/knock) cannot be dispelled. Forcing the lock open ends the spell.
+	- [Goodberry](https://www.elkan5e.com/spells/goodberry) increased amount to 10 berries plus 5 on upcast
+- Spell List Changes
+	- Added [*Inflict Wounds*](https://www.elkan5e.com/spells/inflict-wounds) to sorcerer spell list
+	- Removed [*Confusion*](https://www.elkan5e.com/spells/confusion) from Druid spell list
 - Updated in v1.12.13
     - Curse Rules can now be found
     - Phased out "As Part of a Weapon Attack" and added "Once per Turn" where it made sense 
@@ -211,7 +214,7 @@ Stating the previous changes as they were testing updates
     - Spell Schools for all spells now exists
 
 ## Misc
-- 
+- Update Summary of Changes
 - Updated in v1.12.9
     - Effects should not expire early when they have a duration of 1 round
     - Abilities now grant the name of the effect in addition to the result like Animal Friendship and Charmed (To clean up and understand where effects are coming from)

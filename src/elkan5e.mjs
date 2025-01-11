@@ -1,4 +1,4 @@
-import { gameSettingRegister, getModuleVersion } from "./module/gameSettings/gameSettingRegister.mjs";
+import { gameSettingRegister } from "./module/gameSettings/gameSettingRegister.mjs";
 import { startDialog } from "./module/gameSettings/startDialog.mjs";
 import { init } from "./module/initalizing.mjs";
 import { initWarlockSpellSlot } from "./module/classes/warlock.mjs";
