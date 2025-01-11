@@ -1,11 +1,4 @@
-export async function getModuleVersion() {
-    const response = await fetch("modules/elkan5e/module.json");
-    const moduleData = await response.json();
-    return moduleData.version;
-}
-
 export async function gameSettingRegister() {
-    const MODULE_VERSION = await getModuleVersion();
 
     game.settings.register("elkan5e", "dialogShown", {
         name: "elkan5e.dialog.name",
@@ -94,6 +87,6 @@ export async function gameSettingRegister() {
         scope: "client",
         config: false,
         type: String,
-        default: MODULE_VERSION,
+        default: "1.0",
     });
 }
