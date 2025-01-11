@@ -10,11 +10,14 @@ on:
       - 'LICENSE.md'
       - '.gitattributes'
       - '.gitignore'
-      - '/src/packs'
-      - '/src/module/helperCode'
+      - '/src/packs/**'
+      - '/src/module/helperCode/**'
+      - 'package-lock.json'
+      - 'package.json'
     
 jobs:
   build:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     outputs:
       release-notes: ${{ steps.set-release-notes.outputs.release-notes }}
@@ -107,7 +110,7 @@ jobs:
               title: $title,
               fields: [
                 {name: "Version", value: $version, inline: true},
-                {name: "Compatibility", value: "Core: V12.331, System: 4.0.4+", inline: true},
+                {name: "Compatibility", value: "Core: V12.331, System: 4.1.4+", inline: true},
                 {name: "Foundry Package", value: $foundry_url, inline: false},
                 {name: "Release Tag", value: $release_url, inline: false},
                 {name: "Manual Download", value: $download_url, inline: false},
