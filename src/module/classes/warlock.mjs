@@ -13,6 +13,7 @@ export function computeProgression(progression, actor, cls, spellcasting, count)
     progression.warlock += spellcasting.levels;
 }
 
+
 function prepareSlots(spells, actor, progression) {
     const WARLOCK_SPELL_SLOT_TABLE = {
         0: [2],

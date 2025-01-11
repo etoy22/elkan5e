@@ -1,17 +1,19 @@
 /**
  * Changes Foundry's languages to fit that of Elkan 5e.
- */
+*/
 export function language() {
     console.log("Elkan 5e  |  Initializing Languages");
+    
+    const LANGUAGES_TO_DELETE = ["giant", "gnomish", "orc", "druidic", "cant"];
+    
     if (!CONFIG.DND5E?.languages?.standard?.children) {
         console.warn("Elkan 5e | CONFIG.DND5E.languages not properly initialized");
         return
     }
     // Deleting Languages
-    const languagesToDelete = ["giant", "gnomish", "orc", "druidic", "cant"];
-    languagesToDelete.forEach(lang => delete CONFIG.DND5E.languages.standard.children[lang]);
+    LANGUAGES_TO_DELETE.forEach(lang => delete CONFIG.DND5E.languages.standard.children[lang]);
     delete CONFIG.DND5E.languages.exotic;
-    
+
     // Adding Languages
     CONFIG.DND5E.languages.standard.children.under = "Undercommon";
 

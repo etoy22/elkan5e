@@ -12,20 +12,13 @@ export function weapons() {
  */
 export function weaponTypes() {
     // Adding new weapon Properties
-    const newProperties = {
+    const NEW_PROPERTIES = {
         coldIron: { label: "Cold Iron", isPhysical: "true" },
         mou: { label: "Mounted" },
         unw: { label: "Unwieldy" }
     };
-
-    Object.assign(CONFIG.DND5E.itemProperties, newProperties);
-    Object.keys(newProperties).forEach(prop => CONFIG.DND5E.validProperties.weapon.add(prop));
-
-    // Removing Weapon Property
-    CONFIG.DND5E.validProperties.weapon.delete("spc");
-
-    // Config Weapons
-    const weaponIds = {
+    
+    const WEAPON_IDS = {
         battleaxe: "gpZnusEdpaxAPesT",
         blowgun: "1eqSvbUzm4rVN0BW",
         club: "Xq5GOTmI51WGTB2i",
@@ -62,12 +55,20 @@ export function weaponTypes() {
         whip: "GdgYGzD0cqVlYguz"
     };
 
-    Object.entries(weaponIds).forEach(([key, id]) => {
+    Object.assign(CONFIG.DND5E.itemProperties, NEW_PROPERTIES);
+    Object.keys(NEW_PROPERTIES).forEach(prop => CONFIG.DND5E.validProperties.weapon.add(prop));
+
+    // Removing Weapon Property
+    CONFIG.DND5E.validProperties.weapon.delete("spc");
+
+    // Config Weapons
+
+    Object.entries(WEAPON_IDS).forEach(([key, id]) => {
         CONFIG.DND5E.weaponIds[key] = `Compendium.elkan5e.elkan5e-equipment.Item.${id}`;
     });
 
-    const weapons = game.settings.get("elkan5e", "weapons");
-    if (!weapons) {
+    const WEAPONS = game.settings.get("elkan5e", "weapons");
+    if (!WEAPONS) {
         ["flail", "net", "trident", "warpick"].forEach(weapon => delete CONFIG.DND5E.weaponIds[weapon]);
     }
 }
@@ -76,7 +77,7 @@ export function weaponTypes() {
  * Adds the weapons reference
  */
 export function weaponRules() {
-    const weaponRefs = {
+    const WEAPON_REFS = {
         adamantine: "cUHKJTc6BHyI1gfR",
         ammunition: "5RUwcK38cpr1fZLe",
         coldw: "ciqBm30ddE1BsPOg",
@@ -94,7 +95,7 @@ export function weaponRules() {
         versatile: "zrkm2gvW9a0IXpvW"
     };
 
-    Object.entries(weaponRefs).forEach(([key, id]) => {
+    Object.entries(WEAPON_REFS).forEach(([key, id]) => {
         CONFIG.DND5E.rules[key] = `Compendium.elkan5e.elkan5e-rules.JournalEntry.nfEDSQG0DMBs7eGp.JournalEntryPage.${id}`;
     });
 }
