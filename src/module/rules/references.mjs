@@ -11,7 +11,7 @@ export function references() {
 export function skillsRef() {
     console.log("Elkan 5e  |  Initializing Skills References");
 
-    const skills = [
+    const SKILLS = [
         { key: "acr", id: "nJvKshCeUsYho87K" },
         { key: "ani", id: "JR9h0nL97GegQ9Vz" },
         { key: "arc", id: "Cc49eyAgMrF1GIjH" },
@@ -32,7 +32,7 @@ export function skillsRef() {
         { key: "sur", id: "6KIdxNMhOuvZUMxc" }
     ];
 
-    skills.forEach(({ key, id }) => {
+    SKILLS.forEach(({ key, id }) => {
         const reference = `Compendium.elkan5e.elkan5e-rules.JournalEntry.rv19GFzEa0nMTuAF.JournalEntryPage.${id}`;
         CONFIG.DND5E.skills[key].reference = reference;
         CONFIG.DND5E.enrichmentLookup.skills[key].reference = reference;
@@ -42,7 +42,7 @@ export function skillsRef() {
 export function combatRef() {
     console.log("Elkan 5e  |  Initializing Combat References");
 
-    const combatRefs = {
+    const COMBAT_REFS = {
         attack: "IauYsEM9MxyZCIdc",
         opportunityattacks: "5zEWVU1yw2Sv3hSI",
         dodge: "2Fxm6ATuDUyDIrt7",
@@ -57,7 +57,7 @@ export function combatRef() {
         twoweaponfighting: "XLZbNEhoayCw5bk8"
     };
 
-    Object.entries(combatRefs).forEach(([key, id]) => {
+    Object.entries(COMBAT_REFS).forEach(([key, id]) => {
         CONFIG.DND5E.rules[key] = `Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.${id}`;
     });
 }
@@ -65,7 +65,7 @@ export function combatRef() {
 export function conditionsRef() {
     console.log("Elkan 5e  |  Initializing Condition References");
 
-    const conditions = [
+    const CONDITIONS = [
         { key: "blinded", id: "SXTqmewRrCwPS8yW" },
         { key: "charmed", id: "ieDILSkRbu9r8pmZ" },
         { key: "deafened", id: "AHgIwuNdpp0wKF2y" },
@@ -83,21 +83,20 @@ export function conditionsRef() {
         { key: "exhaustion", id: "mPzXN6MW8L6ePFmq" }
     ];
 
-    conditions.forEach(({ key, id }) => {
-        const reference = `Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.${id}`;
-        CONFIG.DND5E.conditionTypes[key].reference = reference;
-        CONFIG.statusEffects.find(effect => effect.id === key).reference = reference;
-    });
-
-    // Cover references
-    const coverRefs = {
+    const COVER_REFS = {
         cover: "d2hBqe6EYHX2mxKD",
         halfcover: "1BmTbnT3xDPqv9dq",
         threequarterscover: "82ph4sMqvhxjLbiw",
         totalcover: "hY5s70xMeG5ISFUA"
     };
 
-    Object.entries(coverRefs).forEach(([key, id]) => {
+    CONDITIONS.forEach(({ key, id }) => {
+        const reference = `Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.${id}`;
+        CONFIG.DND5E.conditionTypes[key].reference = reference;
+        CONFIG.statusEffects.find(effect => effect.id === key).reference = reference;
+    });
+
+    Object.entries(COVER_REFS).forEach(([key, id]) => {
         CONFIG.DND5E.rules[key] = `Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.${id}`;
     });
 
@@ -109,7 +108,7 @@ export function conditionsRef() {
 export function damageRef() {
     console.log("Elkan 5e  |  Initializing New Damage References");
 
-    const damageTypes = [
+    const DAMAGE_TYPES = [
         { key: "acid", id: "VKYjrEO909FEbScG" },
         { key: "bludgeoning", id: "DLkhjyAJK6R1lPrA" },
         { key: "cold", id: "qnctn4Gcve0px0wU" },
@@ -125,7 +124,7 @@ export function damageRef() {
         { key: "thunder", id: "kPmCUWoSWv3lEW3t" } //Renamed to Sonic
     ];
 
-    damageTypes.forEach(({ key, id }) => {
+    DAMAGE_TYPES.forEach(({ key, id }) => {
         CONFIG.DND5E.damageTypes[key].reference = `Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.${id}`;
     });
 }
@@ -133,7 +132,7 @@ export function damageRef() {
 export function spellCasting() {
     console.log("Elkan 5e  |  Initializing Spell Casting References");
 
-    const spellRefs = {
+    const SPELL_REFS = {
         spellslots: "RAatADW6Izlm9yu6",
         spelllevel: "RAatADW6Izlm9yu6",
         cantrips: "UnQ8KUMYK3a6BWwu",
@@ -158,12 +157,7 @@ export function spellCasting() {
         cursed: "Vpwu9GQC6HVNZFze"
     };
 
-    Object.entries(spellRefs).forEach(([key, id]) => {
-        CONFIG.DND5E.rules[key] = `Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.${id}`;
-    });
-
-    // Changing the properties in itemProperties
-    const itemProperties = {
+    const ITEM_PROPERTIES = {
         concentration: "4ZOHN6tGvj54J6Kv",
         material: "gdVkgCiREuukVhLb",
         ritual: "CMI1OFzBkvjEmlj7",
@@ -171,7 +165,11 @@ export function spellCasting() {
         somatic: "ooFAPmKTS7Cd6YXp"
     };
 
-    Object.entries(itemProperties).forEach(([key, id]) => {
+    Object.entries(SPELL_REFS).forEach(([key, id]) => {
+        CONFIG.DND5E.rules[key] = `Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.${id}`;
+    });
+
+    Object.entries(ITEM_PROPERTIES).forEach(([key, id]) => {
         CONFIG.DND5E.itemProperties[key].reference = `Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.${id}`;
     });
 }
