@@ -1,32 +1,22 @@
-
 /**
- * TODO: This will make it so if they have Feral Instincts a pop up will appear at roll of initative 
- * to remind the player that they can rage. This reminder should only appear if actor also doesn't
- * have suprised condition. Maybe dnd5e.rollInitiative
- * 
- * Adds functionality to Feral Instincts.
- *   @param {object[]} actor - The Actor that rolled initiative.
- *   @param {object[]} combatants - The associated Combatants whose initiative was updated.
+ * Adds functionality to Feral Instincts and Improved Feral Instincts.
+ *   @param {object} actor - The actor instance.
  */
-export function feral(actor,combatants){
-    let improved = true
-    if (improved){
-        improvedFeral(actor,combatants)
-    }else{
+export function feral(actor) {
+    const RAGE = actor.items.find(i => i.name === "Rage");
+    
+    // Set the default notification message
+    let notification = "elkan5e.notifications.FeralInstincts";
+    
+    // Check if the actor has Feral Instincts or Improved Feral Instincts
+    if (RAGE && (actor.items.find(i => i.name === "Feral Instincts") || actor.items.find(i => i.name === "Improved Feral Instincts"))) {
+        if (actor.items.find(i => i.name === "Improved Feral Instincts")) {
+            notification = "elkan5e.notifications.ImprovedFeralInstincts";
+        }
         
-        // console.log("Nothing ")
+        let uses = RAGE.system.uses.max - RAGE.system.uses.spent;
+        if (uses > 0 && actor.isOwner) {
+            ui.notifications.notify(game.i18n.format(notification, { name: actor.name }));
+        }
     }
-}
-
-/**
- * TODO: This will make it so if they have Feral Instincts a pop up will appear at roll of initative 
- * to remind the player that they can rage. This reminder should only appear if actor also doesn't
- * have suprised condition. Maybe using dnd5e.rollInitiative
- * 
- * Adds functionality to Improved Feral Instincts.
- *   @param {object[]} actor - The Actor that rolled initiative.
- *   @param {object[]} combatants - The associated Combatants whose initiative was updated.
- */
-export function improvedFeral(actor,combatants){
-    // console.log("Nothing ")
 }
