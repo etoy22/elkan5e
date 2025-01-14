@@ -275,7 +275,7 @@ for folder_path in folder_paths:
                             data["system"]["damage"]["base"]["types"] = ["piercing"]
                             data["system"]["weight"]["value"] = 8
                             weight = 2
-                            price = 20
+                            price = 10
                         case 'quarterstaff':
                             data["system"]["damage"]["base"]["number"] = "1"
                             data["system"]["damage"]["base"]["denomination"] = "6"
@@ -351,7 +351,7 @@ for folder_path in folder_paths:
                         # Calculate pricing on weapons
                         if "Silvered" in data["name"]:
                             if magicBonus == None:
-                                finPrice = price + weight
+                                finPrice = price + weight * 25
                             else:
                                 calc = magicPrice(price,magicBonus)
                                 finPrice = calc + weight * 100
