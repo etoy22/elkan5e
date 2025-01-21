@@ -128,7 +128,7 @@ for folder_path in folder_paths:
                         additionProperties.append("sil")
                     if data["system"]["properties"] == "adamantine":
                         additionProperties.append("ada")
-                    if data["system"]["properties"] == "magic" or magicBonus != None:
+                    if data["system"]["properties"] == "mgc" or magicBonus != None:
                         additionProperties.append("mgc")
                 
                     ranged = False
@@ -437,7 +437,7 @@ for folder_path in folder_paths:
                             finPrice = price
                     elif ranged:
                         data["system"]["magicalBonus"] = magicBonus
-                        if magicBonus != None and "mgc" in data["system"]["properties"]:
+                        if magicBonus == None and "mgc" in data["system"]["properties"]:
                             data["system"]["properties"].remove("mgc")
                         if magicBonus == None:
                             finPrice = price
