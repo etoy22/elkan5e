@@ -192,7 +192,7 @@ export function spellCasting() {
         Object.entries(ITEM_PROPERTIES).forEach(([key, id]) => {
             CONFIG.DND5E.itemProperties[key].reference = `Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.${id}`;
         });
-        CONFIG.DND5E.itemProperties.concentration = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.4ZOHN6tGvj54J6Kv";
+        CONFIG.DND5E.itemProperties.concentration.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.4ZOHN6tGvj54J6Kv";
     
     } catch (error) {
         console.error("Error initializing spell casting references:", error);
