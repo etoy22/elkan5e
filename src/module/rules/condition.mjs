@@ -17,12 +17,14 @@ export function conditions() {
         coverhalf: {
             label: "Half Cover",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
-            icon: "modules/elkan5e/icons/cover-half.svg"
+            icon: "modules/elkan5e/icons/cover-half.svg",
+            _id: "dnd5ecoverhalf0000" // Ensure this is a valid 16-character alphanumeric ID
         },
         coverthreequarters: {
             label: "Three Quarters Cover",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
-            icon: "modules/elkan5e/icons/cover-three-quarters.svg"
+            icon: "modules/elkan5e/icons/cover-three-quarters.svg",
+            _id: "dnd5ecoverthree0000" // Ensure this is a valid 16-character alphanumeric ID
         },
         dazed: {
             label: "Dazed",
@@ -225,6 +227,20 @@ export function icons() {
             ]
         },
         {
+            id: "coverhalf",
+            name: "Half Cover",
+            _id: "dnd5ecoverhalf00", // Ensure this is a valid 16-character alphanumeric ID
+            reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
+            icon: "modules/elkan5e/icons/cover-half.svg"
+        },
+        {
+            id: "coverthreequarters",
+            name: "Three Quarters Cover",
+            _id: "dnd5ecoverthree0", // Ensure this is a valid 16-character alphanumeric ID
+            reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
+            icon: "modules/elkan5e/icons/cover-three-quarters.svg"
+        },
+        {
             id: "siphoned",
             name: "Siphoned",
             _id: "dnd5esiphoned000",
@@ -379,31 +395,6 @@ export function icons() {
     CONFIG.statusEffects.find(effect => effect.id === "coverThreeQuarters").img = `modules/elkan5e/icons/cover-three-quarters.svg`;
     CONFIG.statusEffects.find(effect => effect.id === "coverTotal").img = `modules/elkan5e/icons/cover-full.svg`;
 
-    CONFIG.statusEffects.find(effect => effect.id === "coverHalf").changes = [
-        {
-            "key": "system.abilities.dex.bonuses.save",
-            "mode": 2,
-            "value": "+2"
-        },
-        {
-            "key": "system.attributes.ac.bonus",
-            "mode": 2,
-            "value": "+2"
-        }
-    ];
-
-    CONFIG.statusEffects.find(effect => effect.id === "coverThreeQuarters").changes = [
-        {
-            "key": "system.abilities.dex.bonuses.save",
-            "mode": 2,
-            "value": "+5"
-        },
-        {
-            "key": "system.attributes.ac.bonus",
-            "mode": 2,
-            "value": "+5"
-        }
-    ];
 
     // Removing Unused Conditions
     if (conditions === "a" || conditions === "d") {
