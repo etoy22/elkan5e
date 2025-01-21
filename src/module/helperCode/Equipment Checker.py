@@ -351,7 +351,7 @@ for folder_path in folder_paths:
                             data["system"]["damage"]["versatile"]["number"] = "1"
                             data["system"]["damage"]["versatile"]["denomination"] = "10"
                             data["system"]["damage"]["versatile"]["types"] = ["piercing"]
-                            data["system"]["properties"] = [PROPERTY_ABBREVIATIONS["versatile"]]
+                            data["system"]["properties"] = ["ver"]
                             weight = 4
                             price = 15
                         case 'pike':
@@ -480,6 +480,3 @@ for folder_path in folder_paths:
             i+= 1
 
 print("Gone through", i, "files")
-print("Equipment",sorted(equipment))
-print("Weapons",sorted(weapons))
-print("No Base Item",no_name)
