@@ -437,11 +437,8 @@ for folder_path in folder_paths:
                             finPrice = price
                     elif ranged:
                         data["system"]["magicalBonus"] = magicBonus
-                        data["system"]["damage"]["base"]["bonus"] = 0
-                        activity = next(iter(data["system"]["activities"].values()))
-                        activity["attack"]["bonus"] = 0
-                        if magicBonus != None and data["system"]["properties"] != None and "mgc" in data["system"]["properties"]:
-                            data["system"]["properties"] = data["system"]["properties"].remove("mgc")
+                        if magicBonus != None and "mgc" in data["system"]["properties"]:
+                            data["system"]["properties"].remove("mgc")
                         if magicBonus == None:
                             finPrice = price
                         elif magicBonus == 1:
