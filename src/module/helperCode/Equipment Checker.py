@@ -444,10 +444,7 @@ for folder_path in folder_paths:
                         elif magicBonus == 1:
                             finPrice = (price * 10) + 100
                         else:
-                            finPrice = ((price * 10) + 350) * 4**(magicBonus-1)
-
-                        
-                        
+                            finPrice = ((price * 10) + 350) * 4**(magicBonus-1)                        
                     data["system"]["price"]["value"] = finPrice
                                  
                 if data["type"] == "consumable":
