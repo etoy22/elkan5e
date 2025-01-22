@@ -62,7 +62,6 @@ export function weaponTypes() {
     CONFIG.DND5E.validProperties.weapon.delete("spc");
 
     // Config Weapons
-
     Object.entries(WEAPON_IDS).forEach(([key, id]) => {
         CONFIG.DND5E.weaponIds[key] = `Compendium.elkan5e.elkan5e-equipment.Item.${id}`;
     });
