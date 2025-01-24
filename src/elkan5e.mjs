@@ -5,7 +5,7 @@ import { initWarlockSpellSlot } from "./module/classes/warlock.mjs";
 import { perLeader, rallySurge } from "./module/classes/fighter.mjs";
 import { healOver, infuseHeal } from "./module/classes/cleric.mjs";
 import { archDruid } from "./module/classes/druid.mjs";
-import { feral } from "./module/classes/barbarian.mjs";
+import { feral, wildBlood } from "./module/classes/barbarian.mjs";
 import { wildSurge } from "./module/classes/sorcerer.mjs";
 
 Hooks.once("init", async () => {
@@ -50,6 +50,7 @@ Hooks.on("dnd5e.preRollHitDieV2", (config) => {
 */
 Hooks.on("dnd5e.postUseActivity", (activity, usageConfig, results) => {
     wildSurge(activity);
+    wildBlood(activity);
     infuseHeal(activity, usageConfig);
     perLeader(activity)
     rallySurge(activity);
