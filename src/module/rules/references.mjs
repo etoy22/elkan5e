@@ -5,7 +5,6 @@ export function references() {
         conditionsRef();
         damageRef();
         spellCasting();
-        spellSchools();
     } catch (error) {
         console.error("Error initializing references:", error);
     }
