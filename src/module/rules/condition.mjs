@@ -137,10 +137,6 @@ export function icons() {
                     mode: 2,
                     value: "turn=start, label=Confused Effect, macro=Compendium.elkan5e.elkan5e-macros.Macro.HW9jG0cdn6BmhzyE"
                 }
-            ],
-            macros: [
-                { id: "", type: "apply" },
-                { id: "", type: "remove" }
             ]
         },
         {
@@ -381,7 +377,6 @@ export function icons() {
     };
 
     const conditions = game.settings.get("elkan5e", "conditions");
-    const exhaustion = game.settings.get("elkan5e", "conditions-exhaustion");
 
     console.log("Elkan 5e  |  Initializing Icons");
 
@@ -428,15 +423,19 @@ export function icons() {
         }
     });
 
-    if (!exhaustion) {
+    if (conditions === "a" || conditions === "b") {
+        const version = game.settings.get("dnd5e", "rulesVersion");
+        if (version !== "modern"){
+            CONFIG.statusEffects.find(effect => effect.id === "exhaustion").reduction = {"rolls": 2, "speed": 5}
+            CONFIG.DND5E.conditionTypes["exhaustion"].reduction =  {"rolls": 2, "speed": 5}
+            CONFIG.DND5E.conditionEffects.halfMovement.delete("exhaustion-2")
+            CONFIG.DND5E.conditionEffects.halfHealth.delete("exhaustion-4")
+            CONFIG.DND5E.conditionEffects.noMovement.delete("exhaustion-5")
+        }
         CONFIG.statusEffects.find(effect => effect.id === "exhaustion").changes = [
             { "key": "system.bonuses.spell.dc", "mode": 2, "value": "-2*@attributes.exhaustion" },
         ];
-        CONFIG.DND5E.conditionTypes["exhaustion"].reduction = {"rolls": 2}
-        CONFIG.statusEffects.find(effect => effect.id === "exhaustion").reduction = {"rolls": 2}
-        CONFIG.DND5E.conditionEffects.halfMovement.delete("exhaustion-2")
-        CONFIG.DND5E.conditionEffects.halfHealth.delete("exhaustion-4")
-        CONFIG.DND5E.conditionEffects.noMovement.delete("exhaustion-5")
+        
     }
 
     if (conditions === "a" || conditions === "b") {
