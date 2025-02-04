@@ -174,14 +174,14 @@ for folder_path in folder_paths:
                             data["system"]["damage"]["base"]["types"] = ["piercing"]
                             data["system"]["properties"] = ["fin", "thr", "unw"]
                             data["system"]["range"] = {"value": "30/90"}
-                            weight = 5 / 20
+                            weight = 3 / 20
                             price = 1 / 20
                         case 'greatclub':
                             data["system"]["damage"]["base"]["number"] = "1"
                             data["system"]["damage"]["base"]["denomination"] = "8"
                             data["system"]["damage"]["base"]["types"] = ["bludgeoning"]
                             data["system"]["properties"] = ["two"]
-                            weight = 10
+                            weight = 5
                             price = 10
                         case 'handaxe':
                             data["system"]["damage"]["base"]["number"] = "1"
@@ -213,7 +213,7 @@ for folder_path in folder_paths:
                             data["system"]["damage"]["base"]["types"] = ["piercing"]
                             data["system"]["properties"] = ["thr"]
                             data["system"]["range"] = {"value": "30/120"}
-                            weight = 2
+                            weight = 1
                             price = 5
                         case 'lightcrossbow':
                             data["system"]["damage"]["base"]["number"] = "1"
@@ -254,7 +254,7 @@ for folder_path in folder_paths:
                             data["system"]["damage"]["base"]["denomination"] = "6"
                             data["system"]["damage"]["base"]["types"] = ["bludgeoning"]
                             data["system"]["properties"] = []
-                            weight = 4
+                            weight = 3
                             price = 5
                         case 'quarterstaff':
                             data["system"]["damage"]["base"]["number"] = "1"
@@ -294,7 +294,7 @@ for folder_path in folder_paths:
                             data["system"]["properties"] = ["rch", "thr", "ver"]
                             data["system"]["range"] = {"value": "20/60"}
                             data["system"]["damage"]["versatile"] = {"number": "1", "denomination": "8", "types": ["piercing"]}
-                            weight = 3
+                            weight = 1
                             price = 5
                         case 'unarmed strike':
                             data["system"]["damage"]["base"]["number"] = "1"
@@ -307,7 +307,7 @@ for folder_path in folder_paths:
                             data["system"]["damage"]["base"]["denomination"] = "10"
                             data["system"]["damage"]["base"]["types"] = ["slashing"]
                             data["system"]["properties"] = ["hvy", "rch", "two"]
-                            weight = 6
+                            weight = 4
                             price = 20
                         case 'greataxe':
                             data["system"]["damage"]["base"]["number"] = "1"
@@ -321,28 +321,28 @@ for folder_path in folder_paths:
                             data["system"]["damage"]["base"]["denomination"] = "6"
                             data["system"]["damage"]["base"]["types"] = ["slashing"]
                             data["system"]["properties"] = ["hvy", "two"]
-                            weight = 6
+                            weight = 4
                             price = 50
                         case 'halberd':
                             data["system"]["damage"]["base"]["number"] = "1"
                             data["system"]["damage"]["base"]["denomination"] = "10"
                             data["system"]["damage"]["base"]["types"] = ["piercing", "slashing"]
                             data["system"]["properties"] = ["hvy", "rch", "two"]
-                            weight = 6
+                            weight = 4
                             price = 30
                         case 'lance':
                             data["system"]["damage"]["base"]["number"] = "1"
                             data["system"]["damage"]["base"]["denomination"] = "12"
                             data["system"]["damage"]["base"]["types"] = ["piercing"]
                             data["system"]["properties"] = ["mou", "rch", "unw"]
-                            weight = 6
+                            weight = 4
                             price = 20
                         case 'maul':
                             data["system"]["damage"]["base"]["number"] = "2"
                             data["system"]["damage"]["base"]["denomination"] = "6"
                             data["system"]["damage"]["base"]["types"] = ["bludgeoning"]
                             data["system"]["properties"] = ["hvy", "two"]
-                            weight = 10
+                            weight = 6
                             price = 40
                         case 'morningstar':
                             data["system"]["damage"]["base"]["number"] = "1"
@@ -359,7 +359,7 @@ for folder_path in folder_paths:
                             data["system"]["damage"]["base"]["denomination"] = "10"
                             data["system"]["damage"]["base"]["types"] = ["piercing"]
                             data["system"]["properties"] = ["hvy", "rch", "two", "unw"]
-                            weight = 8
+                            weight = 2
                             price = 10
                         case 'rapier':
                             data["system"]["damage"]["base"]["number"] = "1"
