@@ -26,17 +26,6 @@ export async function gameSettingRegister() {
         restricted: true,
     });
 
-    game.settings.register("elkan5e", "conditions-exhaustion", {
-        name: "elkan5e.exhaustion.name",
-        hint: "elkan5e.exhaustion.hint",
-        scope: "world",
-        config: true,
-        default: false,
-        type: Boolean,
-        restricted: true,
-        requiresReload: true,
-    });
-
     game.settings.register("elkan5e", "tools", {
         name: "elkan5e.tools.name",
         hint: "elkan5e.tools.hint",
