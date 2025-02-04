@@ -7,50 +7,51 @@
 - Add overview of subclass features to subclass items
 
 **[Barbarian](https://www.elkan5e.com/barbarian)**
-- Bloodrager: Wild Blood Automate
+- Bloodrager
+	- Wild Blood Automate
 
 **[Druid](https://www.elkan5e.com/druid)**
 - Clean up formatting on Druid abilities
 
 **[Sorcerer](https://www.elkan5e.com/sorcerer)**
 - Wild Mage
-  - More updates to automation to wild magic
-  - Avert Disaster now 3/long rest
+	- More updates to automation to wild magic
+	- Avert Disaster now 3/long rest
   
-  **[Wizard](https://www.elkan5e.com/)**
-  - Illusionist:
-  - Illusory attacks reduced to d6s from d8s 
-  ## Equipment
-  - Weapon adjustments again
-  - Pike base price reduced to 10
-  - Darts are now unwieldy and listed in the melee weapons table
-  - Blowgun Needles weight halved
-  - Arrows/Bolts prices
-  - Also fix dart and ranged weapon prices
-  - Also we added silver etc whips
-  - Ranged Weapons apply the new magic property
-  - Fixed Weight and properties on items
-  - fixed weapons pricing
-  - Non-magical silvered weapons now have correct value
-  ## Feats
-  - New Spell Trap feat
-  ## Game Rules
-  - Adjust Confused condition to be less debilitating
-  - Exhaustion Changes
-  ## Spells
-  - The Shield Spell has been changed and will need to be replaced
-  - Silent Cacophony reduced die size
-  - Floating Disk now sinks in water
-  - Longstrider: Give an activity
-  ## Bug Fixes
-  - Fixed missing damage type on Burning Hands
-  - Fix Sneak Attack
-  - With Background you could have pick all languages
-  - Fix Condition issues
-  - Fix features that add conditions not adding conditions- see Confusion or Frightful Gaze (sorcerer)
-  - Fix cover being doubled
-  - Construct Ancestry Remove Reference on Size (As the reference wasn't in the game yesterday)
-  - Fix reference for concentration
+**[Wizard](https://www.elkan5e.com/)**
+- Illusionist:
+	- Illusory attacks reduced to d6s from d8s 
+## Equipment
+- Weapon adjustments again
+	- Pike base price reduced to 10
+  	- Darts are now unwieldy and listed in the melee weapons table
+  	- Blowgun Needles weight halved
+  	- Arrows/Bolts prices
+  	- Also fix dart and ranged weapon prices
+  	- Also we added silver etc whips
+  	- Ranged Weapons apply the new magic property
+  	- Fixed Weight and properties on items
+  	- fixed weapons pricing
+	- Non-magical silvered weapons now have correct value
+## Feats
+- New Spell Trap feat
+## Game Rules
+- Adjust Confused condition to be less debilitating
+- Exhaustion Changes
+## Spells
+- The Shield Spell has been changed and will need to be replaced
+- Silent Cacophony reduced die size
+- Floating Disk now sinks in water
+- Longstrider: Give an activity
+## Bug Fixes
+- Fixed missing damage type on Burning Hands
+- Fix Sneak Attack
+- With Background you could have pick all languages
+- Fix Condition issues
+- Fix features that add conditions not adding conditions
+- Fix cover being doubled
+- Construct Ancestry Remove Reference on Size (As the reference wasn't in the game yesterday)
+- Fix reference for concentration
 
 # v1.12.14
 ## **Breaking Change**
