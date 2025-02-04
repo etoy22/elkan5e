@@ -17,12 +17,14 @@ export function conditions() {
         coverhalf: {
             label: "Half Cover",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
-            icon: "modules/elkan5e/icons/cover-half.svg"
+            icon: "modules/elkan5e/icons/cover-half.svg",
+            _id: "dnd5ecoverhalf0000" // Ensure this is a valid 16-character alphanumeric ID
         },
         coverthreequarters: {
             label: "Three Quarters Cover",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
-            icon: "modules/elkan5e/icons/cover-three-quarters.svg"
+            icon: "modules/elkan5e/icons/cover-three-quarters.svg",
+            _id: "dnd5ecoverthree0000" // Ensure this is a valid 16-character alphanumeric ID
         },
         dazed: {
             label: "Dazed",
@@ -135,10 +137,6 @@ export function icons() {
                     mode: 2,
                     value: "turn=start, label=Confused Effect, macro=Compendium.elkan5e.elkan5e-macros.Macro.HW9jG0cdn6BmhzyE"
                 }
-            ],
-            macros: [
-                { id: "", type: "apply" },
-                { id: "", type: "remove" }
             ]
         },
         {
@@ -223,6 +221,20 @@ export function icons() {
                     value: "1"
                 }
             ]
+        },
+        {
+            id: "coverhalf",
+            name: "Half Cover",
+            _id: "dnd5ecoverhalf00", // Ensure this is a valid 16-character alphanumeric ID
+            reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
+            icon: "modules/elkan5e/icons/cover-half.svg"
+        },
+        {
+            id: "coverthreequarters",
+            name: "Three Quarters Cover",
+            _id: "dnd5ecoverthree0", // Ensure this is a valid 16-character alphanumeric ID
+            reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
+            icon: "modules/elkan5e/icons/cover-three-quarters.svg"
         },
         {
             id: "siphoned",
@@ -365,7 +377,6 @@ export function icons() {
     };
 
     const conditions = game.settings.get("elkan5e", "conditions");
-    const exhaustion = game.settings.get("elkan5e", "conditions-exhaustion");
 
     console.log("Elkan 5e  |  Initializing Icons");
 
@@ -379,31 +390,6 @@ export function icons() {
     CONFIG.statusEffects.find(effect => effect.id === "coverThreeQuarters").img = `modules/elkan5e/icons/cover-three-quarters.svg`;
     CONFIG.statusEffects.find(effect => effect.id === "coverTotal").img = `modules/elkan5e/icons/cover-full.svg`;
 
-    CONFIG.statusEffects.find(effect => effect.id === "coverHalf").changes = [
-        {
-            "key": "system.abilities.dex.bonuses.save",
-            "mode": 2,
-            "value": "+2"
-        },
-        {
-            "key": "system.attributes.ac.bonus",
-            "mode": 2,
-            "value": "+2"
-        }
-    ];
-
-    CONFIG.statusEffects.find(effect => effect.id === "coverThreeQuarters").changes = [
-        {
-            "key": "system.abilities.dex.bonuses.save",
-            "mode": 2,
-            "value": "+5"
-        },
-        {
-            "key": "system.attributes.ac.bonus",
-            "mode": 2,
-            "value": "+5"
-        }
-    ];
 
     // Removing Unused Conditions
     if (conditions === "a" || conditions === "d") {
@@ -437,15 +423,19 @@ export function icons() {
         }
     });
 
-    if (!exhaustion) {
+    if (conditions === "a" || conditions === "b") {
+        const version = game.settings.get("dnd5e", "rulesVersion");
+        if (version !== "modern"){
+            CONFIG.statusEffects.find(effect => effect.id === "exhaustion").reduction = {"rolls": 2, "speed": 5}
+            CONFIG.DND5E.conditionTypes["exhaustion"].reduction =  {"rolls": 2, "speed": 5}
+            CONFIG.DND5E.conditionEffects.halfMovement.delete("exhaustion-2")
+            CONFIG.DND5E.conditionEffects.halfHealth.delete("exhaustion-4")
+            CONFIG.DND5E.conditionEffects.noMovement.delete("exhaustion-5")
+        }
         CONFIG.statusEffects.find(effect => effect.id === "exhaustion").changes = [
             { "key": "system.bonuses.spell.dc", "mode": 2, "value": "-2*@attributes.exhaustion" },
         ];
-        CONFIG.DND5E.conditionTypes["exhaustion"].reduction = {"rolls": 2}
-        CONFIG.statusEffects.find(effect => effect.id === "exhaustion").reduction = {"rolls": 2}
-        CONFIG.DND5E.conditionEffects.halfMovement.delete("exhaustion-2")
-        CONFIG.DND5E.conditionEffects.halfHealth.delete("exhaustion-4")
-        CONFIG.DND5E.conditionEffects.noMovement.delete("exhaustion-5")
+        
     }
 
     if (conditions === "a" || conditions === "b") {
