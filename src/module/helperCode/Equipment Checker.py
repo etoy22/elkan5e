@@ -407,7 +407,7 @@ for folder_path in folder_paths:
                     if not(ranged):
                         data["system"]["magicalBonus"] = magicBonus
                         # Calculate pricing on weapons
-                        if "Silvered" in data["name"]:
+                        if "Silver" in data["name"]:
                             if "sil" not in data["system"]["properties"]:
                                 data["system"]["properties"].append("sil")
                             if magicBonus == None:
