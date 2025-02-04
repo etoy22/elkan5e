@@ -25,7 +25,7 @@ export async function wildSurge(activity) {
     // Check if the item is a spell and its level is greater than 0 and the activity is a ritual or the spell consumes a spell slot or the item is a scroll
     if ((item.type === "spell" && level > 0 && (activity.name == "Ritual" || activity.consumption.spellSlot == true))|| (item.type=="consumable" && item.system.type.value=="scroll")) {
         const wild = actor.items.find(i => i.name === "Random Wild Surge");
-        const volen = actor.effects.find(i => i.name === "Volentary Surge");
+        const volen = actor.effects.find(i => i.name === "Voluntary Surge");
         const blowout = actor.effects.find(i => i.name === "Magical Blowout");
         let rollAbove = false;
 
@@ -53,9 +53,9 @@ export async function wildSurge(activity) {
             if (rollAbove) count++;
             if (volen) count++;
             if (blowout) count++;
-
             // Calculate the table level based on the spell level and additional conditions
             let tableLevel = level - 1 + count;
+
             if (tableLevel > MAX_TABLE_LEVEL) tableLevel = MAX_TABLE_LEVEL;
 
             let tableUUID = TABLE_UUIDS[tableLevel];
