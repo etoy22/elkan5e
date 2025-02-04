@@ -1,4 +1,72 @@
 # Changelog
+# v1.12.15
+## Ancestry
+- All ancestries now have a speed of 30
+
+## Classes
+- There is now a guide for converting subclasses in Foundry
+- Add an overview of subclass features to subclass items
+
+**[Barbarian](https://www.elkan5e.com/barbarian)**
+- Bloodrager
+	- Automate Wild Blood
+
+**[Ranger](https://www.elkan5e.com/ranger)**
+- Added Magic Fang to Beastmasters at level 6, granting their companions magic cold iron attacks as an enchantment.
+
+**[Druid](https://www.elkan5e.com/druid)**
+- Cleaned up formatting on Druid abilities.
+- Changed Magic Fang to Primal Talons, now granting cold iron properties in addition to magic as an enchantment.
+
+
+**[Sorcerer](https://www.elkan5e.com/sorcerer)**
+- Wild Mage
+	- More updates to automation for wild magic
+	- Avert Disaster now 3/long rest
+	- New Delayed Surge feature for Wild Mages at level 10, replacing Refract Magic
+	- **Wild Surge Tables are done**
+
+**[Wizard](https://www.elkan5e.com/)**
+- Illusionist
+	- Illusory attacks reduced to d6s from d8s
+
+## Equipment
+- Weapon adjustments again
+	- Pike base price reduced to 10
+	- Darts are now unwieldy and listed in the melee weapons table
+	- Blowgun needles weight halved
+	- Adjusted prices for arrows/bolts
+	- Fixed dart and ranged weapon prices
+	- Added silvered whips
+	- Ranged weapons apply the new magic property
+	- Fixed weight and properties on items
+	- Fixed weapon pricing
+	- Non-magical silvered weapons now have the correct value
+
+## Feats
+- New Spell Trap feat
+
+## Game Rules
+- Adjusted Confused condition to be less debilitating
+- Changes to Exhaustion
+
+## Spells
+- The Shield spell has been changed and will need to be replaced
+- Silent Cacophony reduced die size
+- Floating Disk now sinks in water
+- Longstrider: Added an activity
+- Inflict Wounds: Damage decreased from 3d10 to 3d8
+
+## Bug Fixes
+- Fixed missing damage type on Burning Hands
+- Fixed Sneak Attack
+- Fixed issue where backgrounds allowed picking all languages
+- Fixed condition issues
+- Fixed features that add conditions not adding conditions
+- Fixed cover being doubled
+- Removed size reference from Construct Ancestry (as the reference wasn't in the game)
+- Fixed reference for concentration
+
 # v1.12.14
 ## **Breaking Change**
 **Existing characters using Elkan 5e will need to be recreated to work with this update. Due to extensive changes, many old features were incompatible with v4 of DND and had to be recreated from scratch. All the new features now use the NEW Activities system.**
@@ -697,41 +765,51 @@ Made subclass names consistent in formatting
 - Fixed [Spiritual Weapon](https://www.elkan5e.com/spells/spiritual-weapon) not being labeled as concentration
 ## Misc
 - Changed the look of the Changelog
+
 # v1.12.1
-- Classes
-	- [Barbarian](https://www.elkan5e.com/barbarian)
-		- Rumination: A new recovery of rage
-	- [Cleric](https://www.elkan5e.com/cleric)
-		- Life Domain: Subclass
-			- Preserve Life feature reverted to its original design
-	- [Fighter](https://www.elkan5e.com/fighter)
-		- Bulwark: Subclass
-			- Iron Retribution now consumes Action Surge as part of using it
-		- Commander: Subclass
-			- Rallying Surge now consumes Action Surge as part of using it
-		- Spellsword: Subclass
-			- Spellsurge now consumes Action Surge as part of using it
-			- Fixed incorrect cantrip lists
-	- [Ranger](https://www.elkan5e.com/ranger)
-		- Fixed glitch were they were getting their fighting style at level 2 instead of 1
-		- Plan for Death: A new recovery of Mark for Death on long rest 
-	- [Rogue](https://www.elkan5e.com/rogue)
-		- Mystic Trickster: Subclass
-			- Fixed incorrect cantrip lists
-- Feats
-	- Cleave has been updated
-	- Find Steed has become a Paladin Feat
-- Features
-	- Standardized text for upcasting
-- Journals
-	- Medicine Journal now has its missing text
-- Spell
-	- Level 2 Spells are Done
-		- Been reformated
-		- Been modified
-	- New summons have been put in
-	- Well of Corruption Drained Update
-	- Alternative words for Save Ends Nomenclature
+## Classes
+ **[Barbarian](https://www.elkan5e.com/barbarian)**
+- Rumination: A new recovery of rage
+
+**[Cleric](https://www.elkan5e.com/cleric)**
+- Life Domain:
+	- Preserve Life feature reverted to its original design
+
+**[Fighter](https://www.elkan5e.com/fighter)**
+- Bulwark: 
+	- Iron Retribution now consumes Action Surge as part of using it
+- Commander: 
+	- Rallying Surge now consumes Action Surge as part of using it
+- Spellsword: 
+	- Spellsurge now consumes Action Surge as part of using it
+	- Fixed incorrect cantrip lists
+
+**[Ranger](https://www.elkan5e.com/ranger)**
+- Fixed glitch where they were getting their fighting style at level 2 instead of 1
+- Plan for Death: A new recovery of Mark for Death on long rest 
+
+**[Rogue](https://www.elkan5e.com/rogue)**
+- Mystic Trickster: Subclass
+	- Fixed incorrect cantrip lists
+
+## Feats
+- Cleave has been updated
+- Find Steed has become a Paladin Feat
+
+## Features
+- Standardized text for upcasting
+
+## Journals
+- Medicine Journal now has its missing text
+
+## Spells
+- Level 2 Spells are Done
+	- Been reformatted
+	- Been modified
+- New summons have been put in
+- Well of Corruption Drained Update
+- Alternative words for Save Ends Nomenclature
+
 # v1.12.0
 * **Required Modules**
 	* Times-Up has become a required module

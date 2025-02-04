@@ -21,16 +21,11 @@ export async function wildSurge(activity) {
         "LV2skOm8hCwM1JRH",
         "O7JYPPoDS7gLGkNj"
     ];
-    
-    if (!activity?.actor?.items || !activity?.item?.system?.level) {
-        console.warn("Invalid activity parameters for wildSurge");
-        return;
-    }
 
     // Check if the item is a spell and its level is greater than 0 and the activity is a ritual or the spell consumes a spell slot or the item is a scroll
     if ((item.type === "spell" && level > 0 && (activity.name == "Ritual" || activity.consumption.spellSlot == true))|| (item.type=="consumable" && item.system.type.value=="scroll")) {
         const wild = actor.items.find(i => i.name === "Random Wild Surge");
-        const volen = actor.effects.find(i => i.name === "Volentary Surge");
+        const volen = actor.effects.find(i => i.name === "Voluntary Surge");
         const blowout = actor.effects.find(i => i.name === "Magical Blowout");
         let rollAbove = false;
 
@@ -42,13 +37,13 @@ export async function wildSurge(activity) {
                     flavor: "Random Wild Surge",
                     speaker: ChatMessage.getSpeaker({ actor: actor })
                 });
+                if (roll.total >= WILD_SURGE_THRESHOLD) {
+                    rollAbove = true;
+                }
             }
             catch (error){
                 console.error("Error rolling wild surge: ", error);
                 return; // Exit early if the roll fails
-            }
-            if (roll.total >= WILD_SURGE_THRESHOLD) {
-                rollAbove = true;
             }
         }
 
@@ -58,21 +53,23 @@ export async function wildSurge(activity) {
             if (rollAbove) count++;
             if (volen) count++;
             if (blowout) count++;
-
             // Calculate the table level based on the spell level and additional conditions
             let tableLevel = level - 1 + count;
+
             if (tableLevel > MAX_TABLE_LEVEL) tableLevel = MAX_TABLE_LEVEL;
 
             let tableUUID = TABLE_UUIDS[tableLevel];
 
             // Draw from the appropriate roll table if it exists
             if (tableUUID) {
-                const table = await fromUuid(`Compendium.elkan5e.elkan5e-roll-tables.RollTable.${tableUUID}`);
-                if (table) {
-                    table.draw();
+                try {
+                    const table = await fromUuid(`Compendium.elkan5e.elkan5e-roll-tables.RollTable.${tableUUID}`);
+                    if (table) {
+                        table.draw({ displayChat: true });
+                    }
+                } catch (error) {
+                    console.error("Error drawing from roll table: ", error);
                 }
-            } else {
-                console.log("No table found for this spell level.");
             }
         }
     }
