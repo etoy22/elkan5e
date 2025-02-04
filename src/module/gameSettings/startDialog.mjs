@@ -30,6 +30,12 @@ export async function startDialog() {
                         dialog.close();
                     }
                 }
+            },
+            close: async (html) => {
+                const buttonClicked = html.find('button').length > 0;
+                if (!buttonClicked) {
+                    await game.settings.set("elkan5e", "dialogShown", false);
+                }
             }
         });
         dialog.render(true);
