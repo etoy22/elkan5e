@@ -17,6 +17,7 @@
 - Wild Mage
 	- More updates to automation to wild magic
 	- Avert Disaster now 3/long rest
+	- **Wild Surge Talbes are done**
   
 **[Wizard](https://www.elkan5e.com/)**
 - Illusionist:

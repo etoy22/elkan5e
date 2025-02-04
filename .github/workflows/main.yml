@@ -14,6 +14,7 @@ on:
       - '/src/module/helperCode/**'
       - 'package-lock.json'
       - 'package.json'
+      - 'release_notes.txt'
     
 jobs:
   build:
@@ -39,6 +40,27 @@ jobs:
           echo "$release_notes" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
           echo "$release_notes" > release_notes.txt
+          - name: Set Release Notes from CHANGELOG.md
+          id: set-release-notes-github
+          run: |
+            # Extract release notes from CHANGELOG.md
+            release_notes=$(awk '/^# v/{count++} count<=1' CHANGELOG.md | tail -n +3)
+        
+            # Print the extracted release notes
+            echo "Extracted Release Notes:"
+            echo "$release_notes"
+        
+            # Write the release notes to release_notes.txt
+            echo "$release_notes" > release_notes.txt
+        
+            # Print the contents of release_notes.txt to verify
+            echo "Contents of release_notes.txt:"
+            cat release_notes.txt
+        
+            # Set the release notes as an environment variable
+            echo "release-notes-github<<EOF" >> $GITHUB_ENV
+            echo "$release_notes" >> $GITHUB_ENV
+            echo "EOF" >> $GITHUB_ENV
 
       - name: Format Release Notes for Discord
         id: format-release-notes-discord
