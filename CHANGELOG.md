@@ -11,12 +11,12 @@
 - Bloodrager
 	- Automate Wild Blood
 
-	**[Ranger](https://www.elkan5e.com/ranger)**
-	- Added Magic Fang to Beastmasters at level 6, granting their companions magic cold iron attacks as an enchantment.
+**[Ranger](https://www.elkan5e.com/ranger)**
+- Added Magic Fang to Beastmasters at level 6, granting their companions magic cold iron attacks as an enchantment.
 
-	**[Druid](https://www.elkan5e.com/druid)**
-	- Cleaned up formatting on Druid abilities.
-	- Changed Magic Fang to Primal Talons, now granting cold iron properties in addition to magic as an enchantment.
+**[Druid](https://www.elkan5e.com/druid)**
+- Cleaned up formatting on Druid abilities.
+- Changed Magic Fang to Primal Talons, now granting cold iron properties in addition to magic as an enchantment.
 
 
 **[Sorcerer](https://www.elkan5e.com/sorcerer)**
