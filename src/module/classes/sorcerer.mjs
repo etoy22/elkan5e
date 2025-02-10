@@ -22,14 +22,14 @@ export async function wildSurge(activity) {
         "O7JYPPoDS7gLGkNj"
     ];
 
-    // Check if the item is a spell and its level is greater than 0 and the activity is a ritual or the spell consumes a spell slot or the item is a scroll
-    if ((item.type === "spell" && level > 0 && (activity.name == "Ritual" || activity.consumption.spellSlot == true))|| (item.type=="consumable" && item.system.type.value=="scroll")) {
+        if ((item.type === "spell" && level > 0 && (activity.name === "Ritual" || activity.consumption.spellSlot)) || 
+            (item.type === "consumable" && item.system.type.value === "scroll")) {
         const wild = actor.items.find(i => i.name === "Random Wild Surge");
         const volen = actor.effects.find(i => i.name === "Voluntary Surge");
         const blowout = actor.effects.find(i => i.name === "Magical Blowout");
         let rollAbove = false;
 
-        // Roll a d6 if the actor has the "Random Wild Surge" item
+                // Roll a d6 if the actor has the "Random Wild Surge" item
         if (wild) {
             try {
                 const roll = await new Roll("1d6").roll({ async: true });
@@ -40,8 +40,8 @@ export async function wildSurge(activity) {
                 if (roll.total >= WILD_SURGE_THRESHOLD) {
                     rollAbove = true;
                 }
-            }
-            catch (error){
+         
+            } catch (error) {
                 console.error("Error rolling wild surge: ", error);
                 return; // Exit early if the roll fails
             }
@@ -65,10 +65,67 @@ export async function wildSurge(activity) {
                 try {
                     const table = await fromUuid(`Compendium.elkan5e.elkan5e-roll-tables.RollTable.${tableUUID}`);
                     if (table) {
-                        table.draw({ displayChat: true });
+                        await table.draw({ displayChat: true });
                     }
                 } catch (error) {
                     console.error("Error drawing from roll table: ", error);
+                }
+                const avert = actor.items.find(i => i.name === "Avert Disaster");
+                const delay = actor.items.find(i => i.name === "Delayed Surge");
+                let buttons = {};
+
+                if (avert) {
+                    buttons.avert = {
+                        label: "Avert Disaster",
+                        callback: async () => {
+                            console.log("Uses spent", avert.system.uses.spent);
+                            await avert.update({ "system.uses.spent": avert.system.uses.spent + 1 });
+                            console.log("Uses spent", avert.system.uses.spent);
+                            ui.notifications.info("Avert Disaster used to mitigate the wild surge.");
+                            try {
+                                const table = await fromUuid(`Compendium.elkan5e.elkan5e-roll-tables.RollTable.${tableUUID}`);
+                                if (table) {
+                                    await table.draw({ displayChat: true });
+                                }
+                            } catch (error) {
+                                console.error("Error drawing from roll table: ", error);
+                            }
+                        },
+                        disabled: avert.system.uses.spent >= avert.system.uses.max
+                    };
+                }
+
+                if (delay) {
+                    buttons.delay = {
+                        label: "Delayed Surge",
+                        callback: async () => {
+                            await delay.update({ "system.uses.spent": delay.system.uses.spent + 1 });
+                            ui.notifications.info("Delayed Surge used to delay the wild surge.");
+                        },
+                        disabled: delay.system.uses.spent >= delay.system.uses.max
+                    };
+                }
+
+                buttons.cancel = {
+                    label: "Cancel",
+                    callback: () => {
+                        ui.notifications.info("No abilities used.");
+                    }
+                };
+
+                if (Object.keys(buttons).length > 1) {
+                    let dialog = new Dialog({
+                        title: game.i18n.localize("Wild Surge Abilities"),
+                        content: `
+                            <h2>Would you like to use your abilities to help deal with this wild surge</h2>
+                            <p>Using an ability will consume one of its uses</p>
+                            <p>Current abilities:</p>
+                            ${avert ? `<p>Avert Disaster: ${avert.system.uses.max - avert.system.uses.spent} uses remaining</p>` : ""}
+                            ${delay ? `<p>Delayed Surge: ${delay.system.uses.max - delay.system.uses.spent} uses remaining</p>` : ""}
+                        `,
+                        buttons: buttons
+                    });
+                    dialog.render(true);
                 }
             }
         }
