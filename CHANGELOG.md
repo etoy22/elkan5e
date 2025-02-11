@@ -1,4 +1,22 @@
 # Changelog
+# v1.12.16
+## Classes
+**[Rogue](https://www.elkan5e.com/rogue)**
+- Poisoned Weapon Precision Strike now poisons for 1 minute, with saves to end early
+- Make melee precision attacks more clear that they are melee only, and work with reach
+- Improve damage on several precision strike options (alternate sneak attacks)
+
+**[Sorcerer](https://www.elkan5e.com/sorcerer)**
+- Wild Mage
+	- Automated all wild surging abilities
+
+**[Warlock](https://www.elkan5e.com/warlock)**
+- New Subclass Fey Patron
+
+# Spells
+- [Blink](https://www.elkan5e.com/spells/blink)
+- [Rend Vigor](https://www.elkan5e.com/spells/rend-vigor) now automated and upcasting does more targets
+
 # v1.12.15
 ## Ancestry
 - All ancestries now have a speed of 30
