@@ -87,7 +87,7 @@ export async function wildSurge(activity) {
                             if (delayButton) buttons.delay = delayButton;
                             buttons.cancel = await createCancelButton();
             
-                            if (Object.keys(buttons).length > 1) {
+                            if (Object.keys(buttons).length > 1 && delay.system.uses.spent < delay.system.uses.max) {
                                 new Dialog({
                                     title: game.i18n.localize("elkan5e.wildMage.wildSurgeAbilities"),
                                     content: `
@@ -108,7 +108,7 @@ export async function wildSurge(activity) {
                 if (delayButton) buttons.delay = delayButton;
                 buttons.cancel = await createCancelButton();
 
-                if (Object.keys(buttons).length > 1) {
+                if (Object.keys(buttons).length > 1 && (avert.system.uses.spent < avert.system.uses.max || delay.system.uses.spent < delay.system.uses.max)) {
                     new Dialog({
                         title: game.i18n.localize("elkan5e.wildMage.wildSurgeAbilities"),
                         content: `
