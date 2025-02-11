@@ -73,11 +73,11 @@ export async function wildSurge(activity) {
                         label: game.i18n.localize("elkan5e.wildMage.avertDisaster"),
                         callback: async () => {
                             await avert.update({ "system.uses.spent": avert.system.uses.spent + 1 });
-                            ui.notifications.info(game.i18n.localize("elkan5e.wildMage.avertDisasterUsed"));
                             try {
                                 const table = await fromUuid(`Compendium.elkan5e.elkan5e-roll-tables.RollTable.${tableUUID}`);
                                 if (table) {
-                                    await table.draw({ displayChat: true });
+                                    const results = await table.draw({ displayChat: true });
+                                    rollResult = results.results[0].text;
                                 }
                             } catch (error) {
                                 console.error("Error drawing from roll table: ", error);
@@ -93,7 +93,6 @@ export async function wildSurge(activity) {
                                     content: `
                                         <h2>${game.i18n.localize("elkan5e.wildMage.alterWildSurge")}</h2>
                                         <p>${game.i18n.localize("elkan5e.wildMage.abilityUsage")}</p>
-                                        <p>${game.i18n.localize("elkan5e.wildMage.currentAbilities")}</p>
                                         ${delay ? `<p>${game.i18n.format("elkan5e.wildMage.delayedSurgeUses", { remaining: delay.system.uses.max - delay.system.uses.spent })}</p>` : ""}
                                     `,
                                     buttons: buttons
@@ -114,7 +113,6 @@ export async function wildSurge(activity) {
                         content: `
                             <h2>${game.i18n.localize("elkan5e.wildMage.alterWildSurge")}</h2>
                             <p>${game.i18n.localize("elkan5e.wildMage.abilityUsage")}</p>
-                            <p>${game.i18n.localize("elkan5e.wildMage.currentAbilities")}</p>
                             ${avert ? `<p>${game.i18n.format("elkan5e.wildMage.avertDisasterUses", { remaining: avert.system.uses.max - avert.system.uses.spent })}</p>` : ""}
                             ${delay ? `<p>${game.i18n.format("elkan5e.wildMage.delayedSurgeUses", { remaining: delay.system.uses.max - delay.system.uses.spent })}</p>` : ""}
                         `,
@@ -134,12 +132,102 @@ async function createDelayButton(actor, rollResult) {
         label: game.i18n.localize("elkan5e.wildMage.delayedSurge"),
         callback: async () => {
             await delay.update({ "system.uses.spent": delay.system.uses.spent + 1 });
-            ui.notifications.info(game.i18n.localize("elkan5e.wildMage.delayedSurgeUsed"));
             const delayedSurge = {
                 name: game.i18n.localize("elkan5e.wildMage.delayedWildSurge"),
                 type: "consumable",
                 img: "icons/magic/defensive/barrier-shield-dome-deflect-blue.webp",
                 system: {
+                    activities: {
+                        "4x72PccdTFiNUQqd": {
+                            type: "utility",
+                            _id: "4x72PccdTFiNUQqd",
+                            sort: 0,
+                            activation: {
+                                type: "reaction",
+                                value: null,
+                                override: false,
+                                condition: ""
+                            },
+                            consumption: {
+                                scaling: {
+                                    allowed: false
+                                },
+                                spellSlot: true,
+                                targets: [
+                                    {
+                                        type: "itemUses",
+                                        value: "1",
+                                        scaling: {}
+                                    }
+                                ]
+                            },
+                            description: {
+                                chatFlavor: ""
+                            },
+                            duration: {
+                                units: "inst",
+                                concentration: false,
+                                override: false
+                            },
+                            effects: [],
+                            range: {
+                                override: false,
+                                units: "self",
+                                special: ""
+                            },
+                            target: {
+                                template: {
+                                    contiguous: false,
+                                    units: "ft",
+                                    type: ""
+                                },
+                                affects: {
+                                    choice: false,
+                                    type: ""
+                                },
+                                override: false,
+                                prompt: true
+                            },
+                            uses: {
+                                spent: 0,
+                                recovery: [],
+                                max: ""
+                            },
+                            roll: {
+                                prompt: false,
+                                visible: false,
+                                formula: "",
+                                name: ""
+                            },
+                            useConditionText: "",
+                            effectConditionText: "",
+                            macroData: {
+                                name: "",
+                                command: ""
+                            },
+                            ignoreTraits: {
+                                idi: false,
+                                idr: false,
+                                idv: false,
+                                ida: false
+                            },
+                            midiProperties: {
+                                ignoreTraits: [],
+                                triggeredActivityId: "none",
+                                triggeredActivityConditionText: "",
+                                triggeredActivityTargets: "targets",
+                                triggeredActivityRollAs: "self",
+                                forceDialog: false,
+                                confirmTargets: "default",
+                                autoTargetType: "any",
+                                autoTargetAction: "default",
+                                automationOnly: false,
+                                otherActivityCompatible: true,
+                                identifier: ""
+                            },
+                            name: ""
+                        }
+                    },
                     uses: {
                         spent: 0,
                         max: 1,
@@ -178,7 +266,6 @@ async function createDelayButton(actor, rollResult) {
 
             await actor.createEmbeddedDocuments("Item", [delayedSurge]);
             await actor.createEmbeddedDocuments("ActiveEffect", [delayedSurgeEffect]);
-            ui.notifications.info(game.i18n.localize("elkan5e.wildMage.delayedWildSurgeAdded"));
         },
         disabled: delay.system.uses.spent >= delay.system.uses.max
     };
@@ -188,7 +275,6 @@ async function createCancelButton() {
     return {
         label: game.i18n.localize("elkan5e.wildMage.cancel"),
         callback: () => {
-            ui.notifications.info(game.i18n.localize("elkan5e.wildMage.noAbilitiesUsed"));
         }
     };
 }

@@ -6,7 +6,7 @@ import { perLeader, rallySurge } from "./module/classes/fighter.mjs";
 import { healOver, infuseHeal } from "./module/classes/cleric.mjs";
 import { archDruid } from "./module/classes/druid.mjs";
 import { feral, wildBlood } from "./module/classes/barbarian.mjs";
-import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
+import { wildSurge } from "./module/classes/sorcerer.mjs";
 
 Hooks.once("init", async () => {
     console.log("Elkan 5e | Initializing Elkan 5e");
@@ -64,13 +64,4 @@ Hooks.on("dnd5e.postUseActivity", (activity, usageConfig, results) => {
 Hooks.on("dnd5e.preRollInitiative", (actor, roll) => {
     archDruid(actor);
     feral(actor);
-});
-
-
-Hooks.on("deleteActiveEffect", async (effect, options, userId) => {
-    delayedDuration(effect);
-});
-
-Hooks.on("deleteItem", async (item, options, userId) => {
-    delayedItem(item);
 });
