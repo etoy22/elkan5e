@@ -65,3 +65,27 @@ Hooks.on("dnd5e.preRollInitiative", (actor, roll) => {
     archDruid(actor);
     feral(actor);
 });
+
+
+Hooks.on("dnd5e.rollSkillV2", async (rolls, data) => {
+    console.log("Rolls: ", rolls);
+    console.log("Data: ", data);
+    console.log("Next Attempt", rolls[0].terms[0].total);
+    if (rolls[0].terms[0].total === 20) {
+        console.log("Critical Success!");
+        rolls.total += 5
+    }
+    if (rolls[0].terms[0].total === 1) {
+        console.log("Critical Success!");
+        rolls.total = rolls.total + 5
+    }
+    // Access the result of the first term
+    // const result = data.terms[0].results[0].result;
+    // console.log("Result: ", result);
+
+    // Example usage: Check for a critical success
+    // if (result === 20) {
+    //     console.log("Critical Success!");
+    //     // Modify the roll or perform additional actions here
+    // }
+});
