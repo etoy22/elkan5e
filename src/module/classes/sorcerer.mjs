@@ -22,55 +22,286 @@ export async function wildSurge(activity) {
         "O7JYPPoDS7gLGkNj"
     ];
 
-    // Check if the item is a spell and its level is greater than 0 and the activity is a ritual or the spell consumes a spell slot or the item is a scroll
-    if ((item.type === "spell" && level > 0 && (activity.name == "Ritual" || activity.consumption.spellSlot == true))|| (item.type=="consumable" && item.system.type.value=="scroll")) {
+    if ((item.type === "spell" && level > 0 && (activity.name === "Ritual" || activity.consumption.spellSlot)) || 
+        (item.type === "consumable" && item.system.type.value === "scroll")) {
         const wild = actor.items.find(i => i.name === "Random Wild Surge");
         const volen = actor.effects.find(i => i.name === "Voluntary Surge");
         const blowout = actor.effects.find(i => i.name === "Magical Blowout");
         let rollAbove = false;
 
-        // Roll a d6 if the actor has the "Random Wild Surge" item
         if (wild) {
             try {
                 const roll = await new Roll("1d6").roll({ async: true });
                 await roll.toMessage({
-                    flavor: "Random Wild Surge",
+                    flavor: game.i18n.localize("elkan5e.wildMage.randomWildSurge"),
                     speaker: ChatMessage.getSpeaker({ actor: actor })
                 });
                 if (roll.total >= WILD_SURGE_THRESHOLD) {
                     rollAbove = true;
                 }
-            }
-            catch (error){
+            } catch (error) {
                 console.error("Error rolling wild surge: ", error);
-                return; // Exit early if the roll fails
+                return;
             }
         }
 
-        // Determine if a wild surge should occur
         if (rollAbove || volen || blowout) {
             let count = 0;
             if (rollAbove) count++;
             if (volen) count++;
             if (blowout) count++;
-            // Calculate the table level based on the spell level and additional conditions
-            let tableLevel = level - 1 + count;
-
-            if (tableLevel > MAX_TABLE_LEVEL) tableLevel = MAX_TABLE_LEVEL;
-
+            let tableLevel = Math.min(level - 1 + count, MAX_TABLE_LEVEL);
             let tableUUID = TABLE_UUIDS[tableLevel];
+            let rollResult = "";
 
-            // Draw from the appropriate roll table if it exists
             if (tableUUID) {
                 try {
                     const table = await fromUuid(`Compendium.elkan5e.elkan5e-roll-tables.RollTable.${tableUUID}`);
                     if (table) {
-                        table.draw({ displayChat: true });
+                        const results = await table.draw({ displayChat: true });
+                        rollResult = results.results[0].text;
                     }
                 } catch (error) {
                     console.error("Error drawing from roll table: ", error);
                 }
+                const avert = actor.items.find(i => i.name === "Avert Disaster");
+                const delay = actor.items.find(i => i.name === "Delayed Surge");
+                let buttons = {};
+
+                if (avert) {
+                    buttons.avert = {
+                        label: game.i18n.localize("elkan5e.wildMage.avertDisaster"),
+                        callback: async () => {
+                            await avert.update({ "system.uses.spent": avert.system.uses.spent + 1 });
+                            try {
+                                const table = await fromUuid(`Compendium.elkan5e.elkan5e-roll-tables.RollTable.${tableUUID}`);
+                                if (table) {
+                                    const results = await table.draw({ displayChat: true });
+                                    rollResult = results.results[0].text;
+                                }
+                            } catch (error) {
+                                console.error("Error drawing from roll table: ", error);
+                            }
+                            let buttons = {}
+                            const delayButton = await createDelayButton(actor, rollResult);
+                            if (delayButton) buttons.delay = delayButton;
+                            buttons.cancel = await createCancelButton();
+            
+                            if (Object.keys(buttons).length > 1 && delay.system.uses.spent < delay.system.uses.max) {
+                                new Dialog({
+                                    title: game.i18n.localize("elkan5e.wildMage.wildSurgeAbilities"),
+                                    content: `
+                                        <h2>${game.i18n.localize("elkan5e.wildMage.alterWildSurge")}</h2>
+                                        <p>${game.i18n.localize("elkan5e.wildMage.abilityUsage")}</p>
+                                        ${delay ? `<p>${game.i18n.format("elkan5e.wildMage.delayedSurgeUses", { remaining: delay.system.uses.max - delay.system.uses.spent })}</p>` : ""}
+                                    `,
+                                    buttons: buttons
+                                }).render(true);
+                            } 
+                        },
+                        disabled: avert.system.uses.spent >= avert.system.uses.max
+                    };
+                }
+
+                const delayButton = await createDelayButton(actor, rollResult);
+                if (delayButton) buttons.delay = delayButton;
+                buttons.cancel = await createCancelButton();
+
+                if (Object.keys(buttons).length > 1 && (avert.system.uses.spent < avert.system.uses.max || delay.system.uses.spent < delay.system.uses.max)) {
+                    new Dialog({
+                        title: game.i18n.localize("elkan5e.wildMage.wildSurgeAbilities"),
+                        content: `
+                            <h2>${game.i18n.localize("elkan5e.wildMage.alterWildSurge")}</h2>
+                            <p>${game.i18n.localize("elkan5e.wildMage.abilityUsage")}</p>
+                            ${avert ? `<p>${game.i18n.format("elkan5e.wildMage.avertDisasterUses", { remaining: avert.system.uses.max - avert.system.uses.spent })}</p>` : ""}
+                            ${delay ? `<p>${game.i18n.format("elkan5e.wildMage.delayedSurgeUses", { remaining: delay.system.uses.max - delay.system.uses.spent })}</p>` : ""}
+                        `,
+                        buttons: buttons
+                    }).render(true);
+                }
             }
+        }
+    }
+}
+
+async function createDelayButton(actor, rollResult) {
+    const delay = actor.items.find(i => i.name === "Delayed Surge");
+    if (!delay) return null;
+
+    return {
+        label: game.i18n.localize("elkan5e.wildMage.delayedSurge"),
+        callback: async () => {
+            await delay.update({ "system.uses.spent": delay.system.uses.spent + 1 });
+            const delayedSurge = {
+                name: game.i18n.localize("elkan5e.wildMage.delayedWildSurge"),
+                type: "consumable",
+                img: "icons/magic/defensive/barrier-shield-dome-deflect-blue.webp",
+                system: {
+                    activities: {
+                        "4x72PccdTFiNUQqd": {
+                            type: "utility",
+                            _id: "4x72PccdTFiNUQqd",
+                            sort: 0,
+                            activation: {
+                                type: "reaction",
+                                value: null,
+                                override: false,
+                                condition: ""
+                            },
+                            consumption: {
+                                scaling: {
+                                    allowed: false
+                                },
+                                spellSlot: true,
+                                targets: [
+                                    {
+                                        type: "itemUses",
+                                        value: "1",
+                                        scaling: {}
+                                    }
+                                ]
+                            },
+                            description: {
+                                chatFlavor: ""
+                            },
+                            duration: {
+                                units: "inst",
+                                concentration: false,
+                                override: false
+                            },
+                            effects: [],
+                            range: {
+                                override: false,
+                                units: "self",
+                                special: ""
+                            },
+                            target: {
+                                template: {
+                                    contiguous: false,
+                                    units: "ft",
+                                    type: ""
+                                },
+                                affects: {
+                                    choice: false,
+                                    type: ""
+                                },
+                                override: false,
+                                prompt: true
+                            },
+                            uses: {
+                                spent: 0,
+                                recovery: [],
+                                max: ""
+                            },
+                            roll: {
+                                prompt: false,
+                                visible: false,
+                                formula: "",
+                                name: ""
+                            },
+                            useConditionText: "",
+                            effectConditionText: "",
+                            macroData: {
+                                name: "",
+                                command: ""
+                            },
+                            ignoreTraits: {
+                                idi: false,
+                                idr: false,
+                                idv: false,
+                                ida: false
+                            },
+                            midiProperties: {
+                                ignoreTraits: [],
+                                triggeredActivityId: "none",
+                                triggeredActivityConditionText: "",
+                                triggeredActivityTargets: "targets",
+                                triggeredActivityRollAs: "self",
+                                forceDialog: false,
+                                confirmTargets: "default",
+                                autoTargetType: "any",
+                                autoTargetAction: "default",
+                                automationOnly: false,
+                                otherActivityCompatible: true,
+                                identifier: ""
+                            },
+                            name: ""
+                        }
+                    },
+                    uses: {
+                        spent: 0,
+                        max: 1,
+                        autoDestroy: true
+                    },
+                    description: {
+                        value: game.i18n.format("elkan5e.wildMage.delayedWildSurgeDescription", { result: rollResult })
+                    },
+                    identifier: "delayed-wild-surge",
+                    source: {
+                        source: "Elkan5e"
+                    },
+                    properties: [
+                        "mgc"
+                    ]
+                }
+            };
+
+            const delayedSurgeEffect = {
+                name: game.i18n.localize("elkan5e.wildMage.delayedWildSurgeDuration"),
+                transfer: false,
+                img: "icons/magic/defensive/barrier-shield-dome-deflect-blue.webp",
+                duration: {
+                    seconds: 3600
+                },
+                flags: {
+                    dae: {
+                        selfTarget: true,
+                        stackable: "multi",
+                        specialDuration: [
+                            "shortRest"
+                        ]
+                    }
+                }
+            };
+
+            await actor.createEmbeddedDocuments("Item", [delayedSurge]);
+            await actor.createEmbeddedDocuments("ActiveEffect", [delayedSurgeEffect]);
+        },
+        disabled: delay.system.uses.spent >= delay.system.uses.max
+    };
+}
+
+async function createCancelButton() {
+    return {
+        label: game.i18n.localize("elkan5e.wildMage.cancel"),
+        callback: () => {
+        }
+    };
+}
+
+export async function delayedDuration(effect){
+    if (effect.name === game.i18n.localize("elkan5e.wildMage.delayedWildSurgeDuration")) {
+        const actor = effect.parent;
+        const delayed = actor.items.find(i => i.name === game.i18n.localize("elkan5e.wildMage.delayedWildSurge"));
+        if (delayed) {
+            const description = delayed.system.description.value.replace(game.i18n.localize("elkan5e.wildMage.delayedWildSurgeDescriptionPrefix"), "").trim();
+            const chatData = {
+                user: game.user.id,
+                speaker: ChatMessage.getSpeaker({ actor: actor }),
+                content: `<p>${description}</p><p>${game.i18n.localize("elkan5e.wildMage.delayedWildSurgeEnded")}</p>`
+            };
+            ChatMessage.create(chatData);
+            await delayed.delete();
+        }
+    }
+}
+
+export async function delayedItem(item){
+    if (item.name === game.i18n.localize("elkan5e.wildMage.delayedWildSurge")) {
+        const actor = item.parent;
+        const effect = actor.effects.find(e => e.name === game.i18n.localize("elkan5e.wildMage.delayedWildSurgeDuration"));
+        if (effect) {
+            await effect.delete();
         }
     }
 }
