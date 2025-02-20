@@ -124,6 +124,13 @@ export async function wildSurge(activity) {
     }
 }
 
+/**
+ * Creates a delay button for the actor's "Delayed Surge" item.
+ * 
+ * @param {object} actor - The actor object containing the items.
+ * @param {number} rollResult - The result of the roll to be used in the delayed surge description.
+ * @returns {Promise<object|null>} A promise that resolves to the button configuration object or null if the "Delayed Surge" item is not found.
+ */
 async function createDelayButton(actor, rollResult) {
     const delay = actor.items.find(i => i.name === "Delayed Surge");
     if (!delay) return null;
@@ -270,6 +277,10 @@ async function createDelayButton(actor, rollResult) {
         disabled: delay.system.uses.spent >= delay.system.uses.max
     };
 }
+/**
+ * Creates a cancel button for the actor
+ * 
+ */
 
 async function createCancelButton() {
     return {
@@ -279,6 +290,12 @@ async function createCancelButton() {
     };
 }
 
+/**
+ * Handle the delayed wild surge duration effect.
+ * 
+ * @param {object} effect - The effect object to be processed.
+ * @returns {Promise<void>} A promise that resolves when the effect has been processed.
+ */
 export async function delayedDuration(effect){
     if (effect.name === game.i18n.localize("elkan5e.wildMage.delayedWildSurgeDuration")) {
         const actor = effect.parent;
@@ -296,6 +313,12 @@ export async function delayedDuration(effect){
     }
 }
 
+/**
+ * Handle the delayed wild surge item.
+ * 
+ * @param {object} item - The item object to be processed.
+ * @returns {Promise<void>} A promise that resolves when the item has been processed.
+ */
 export async function delayedItem(item){
     if (item.name === game.i18n.localize("elkan5e.wildMage.delayedWildSurge")) {
         const actor = item.parent;
