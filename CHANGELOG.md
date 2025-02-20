@@ -1,4 +1,68 @@
 # Changelog
+# v1.12.17
+## Ancestry
+- Fixed Human Inspiration being labeled as passive
+
+## Classes
+**[Barbarian](https://www.elkan5e.com/barbarian)**
+- Barbarians were dealing 2x the damage of a fighter at some levels. Reckless Attack moved to level 11
+- Feral Strike removed
+- Rumination moved to level 2
+- Bloodrager
+	- Seething Blood now starts damage at 3d6 and scales to 6d6 but can only be used 3/long rest
+
+**[Fighter](https://www.elkan5e.com/fighter)**
+- Battlemaster
+	- Reworked to fit the new combat maneuvers
+- Bulwark
+	- Swapped level 3 (now Defender's Charge) and level 6 (now Iron Wall) abilities
+- Champion Reworked
+	- New Keen Strikes feature at level 3 which adds 1d10 damage 1/turn and increases to 2d10 at level 14
+- Commander
+	- Commander's Strike is now unlimited
+	- Rally now uses a d10 instead of a d8
+	- Persistent Leader changed slightly so that when you use second wind you can also use commander's strike in the same turn
+
+**[Monk](https://www.elkan5e.com/monk)**
+- Flurry of Blows now increases to two attacks at level 11
+- Effortless Step moved to level 13
+- Empty Body is no longer a base monk feature
+- Purity of Body has been moved to level 18
+- Open Hand
+	- Condensed Thrust and Sweep into a single feature now called Thrust
+	- Shockwave is now more versatile
+- Shadowdancer
+	- A number of QOL and formatting updates. Abilities work more consistently
+	- Empty Body is now a level 14 feature
+
+**[Ranger](https://www.elkan5e.com/ranger)**
+- Hunter
+	- Improved Hunter's Prey now only grants the options granted by Hunter's Prey level 3
+
+**[Rogue](https://www.elkan5e.com/rogue)**
+- Assassin
+	- Finishing Blow now works on creatures with 10 or fewer hit points on any attack the assassin makes
+	- New Ability at level 6: Death Strike. 1/Short Rest. When you hit a creature and deal sneak attack damage or use a precision strike, instead do it twice
+	- Moved Snap Reaction to level 10
+
+## Equipment
+- Armor Prices Adjustments
+	- Large Shield 10 gp -> 20 gp
+	- Chain Mail 75 gp -> 100 gp
+	- Plate Mail 1500 gp -> 1200 gp
+
+## Feats
+- Reworked some Combat Maneuvers to have no action cost
+- [Spirit Speech](https://www.elkan5e.com/feats/spirit-speech) is now a level 8 monk feat
+
+## Bug Fixes
+- Fiend [Warlock](https://www.elkan5e.com/warlock) fix of dark one's blessing where it wasn't granting the 5 hitpoints and only giving the level bonus
+
+
+
+# v1.12.16.1
+Just updated version to work with the DND5E. 
+
 # v1.12.16
 ## Classes
 **[Rogue](https://www.elkan5e.com/rogue)**
@@ -35,7 +99,6 @@
 **[Druid](https://www.elkan5e.com/druid)**
 - Cleaned up formatting on Druid abilities.
 - Changed Magic Fang to Primal Talons, now granting cold iron properties in addition to magic as an enchantment.
-
 
 **[Sorcerer](https://www.elkan5e.com/sorcerer)**
 - Wild Mage
