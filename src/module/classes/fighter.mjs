@@ -9,15 +9,12 @@ export function perLeader(activity) {
 
     if (item.name === "Second Wind" && actor.items.find(i => i.name === "Persistent Leader")) {
         const rallyFeature = actor.items.find(i => i.name === "Rally");
-        const commandersStrikeFeature = actor.items.find(i => i.name === "Commander's Strike");
 
         if (rallyFeature) {
             rallyFeature.update({ "system.uses.spent": Math.max(rallyFeature.system.uses.spent - 1, 0) })
         }
 
-        if (commandersStrikeFeature) {
-            commandersStrikeFeature.update({ "system.uses.spent": Math.max(commandersStrikeFeature.system.uses.spent - 1, 0) });
-        }
+       
         if (game.user.isGM || actor.isOwner) {
             ui.notifications.notify(game.i18n.format("elkan5e.notifications.PersistentLeader", { name: actor.name }));
         }
