@@ -7,7 +7,7 @@ import { healOver, infuseHeal } from "./module/classes/cleric.mjs";
 import { archDruid } from "./module/classes/druid.mjs";
 import { feral, wildBlood } from "./module/classes/barbarian.mjs";
 import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
-import { meldWithShadow } from "./module/classes/monk.mjs";
+import { meldWithShadow, shadowMonk } from "./module/classes/monk.mjs";
 
 Hooks.once("init", async () => {
     console.log("Elkan 5e | Initializing Elkan 5e");
@@ -55,6 +55,7 @@ Hooks.on("dnd5e.postUseActivity", (activity, usageConfig, results) => {
     infuseHeal(activity, usageConfig);
     perLeader(activity)
     rallySurge(activity);
+    shadowMonk(activity)
 });
 
 /**
@@ -84,4 +85,7 @@ Hooks.on("combatTurnChange", (combat, prior, current) => {
     let lastTurnActor = combat.combatants.get(prior.combatantId).actor
     // console.log(lastTurnActor);
     meldWithShadow(lastTurnActor);
+    hijackShadow(lastTurnActor);
 });
+
+
