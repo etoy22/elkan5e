@@ -1,4 +1,7 @@
 # Changelog
+# v1.12.16.1
+Just updated version to work with the DND5E. 
+
 # v1.12.16
 ## Classes
 **[Rogue](https://www.elkan5e.com/rogue)**
