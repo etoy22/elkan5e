@@ -40,54 +40,54 @@ for folder_path in folder_paths:
                 if "+3" in data["name"]:
                     magicBonus = 3
                 
-                if data["type"] == "equipment" and data['folder'] != "K5xsW4FLQleQsk3D":
-                    if data["system"]["type"]["value"] in ["shield", "heavy", "medium", "light"]:
-                        # Applies the default magic bonus if in the name
-                        data["system"]["armor"]["magicalBonus"] = magicBonus
-                        data["system"]["unidentified"]["description"] = "<p><em>This armor is unusually strong and well-crafted. It is most likely magic, though you can’t identify the specific enchantment.</em></p>"
-                        data["system"]["source"]["custom"] = "elkan5e.com/weapons"
+                # if data["type"] == "equipment" and data['folder'] != "K5xsW4FLQleQsk3D":
+                #     if data["system"]["type"]["value"] in ["shield", "heavy", "medium", "light"]:
+                #         # Applies the default magic bonus if in the name
+                #         data["system"]["armor"]["magicalBonus"] = magicBonus
+                #         data["system"]["unidentified"]["description"] = "<p><em>This armor is unusually strong and well-crafted. It is most likely magic, though you can’t identify the specific enchantment.</em></p>"
+                #         data["system"]["source"]["custom"] = "elkan5e.com/weapons"
 
-                        # Takes the base item and then gives values based on it
-                        match data["system"]["type"]["baseItem"]:
-                            case 'padded':
-                                data["system"]["armor"]["value"] = 11
-                                data["system"]["armor"]["dex"] = None
-                            case 'leather':
-                                data["system"]["armor"]["value"] = 12
-                                data["system"]["armor"]["dex"] = None
-                            case 'hide':
-                                data["system"]["armor"]["value"] = 12
-                                data["system"]["armor"]["dex"] = 2
-                            case 'chainshirt':
-                                data["system"]["armor"]["value"] = 13
-                                data["system"]["armor"]["dex"] = 2
-                            case 'scalemail':
-                                data["system"]["armor"]["value"] = 14
-                                data["system"]["armor"]["dex"] = 2
-                            case 'halfplate':
-                                data["system"]["armor"]["value"] = 15
-                                data["system"]["armor"]["dex"] = 2
-                            case 'ringmail':
-                                data["system"]["armor"]["value"] = 14
-                                data["system"]["armor"]["dex"] = None
-                            case 'chainmail':
-                                data["system"]["armor"]["value"] = 16
-                                data["system"]["armor"]["dex"] = 0
-                            case 'splint':
-                                data["system"]["armor"]["value"] = 17
-                                data["system"]["armor"]["dex"] = 0
-                            case 'plate':
-                                data["system"]["armor"]["value"] = 18
-                                data["system"]["armor"]["dex"] = 0
-                            case 'breastplate':
-                                data["system"]["armor"]["value"] = 14
-                                data["system"]["armor"]["dex"] = 2
-                            case 'large':
-                                data["system"]["armor"]["value"] = 2
-                                data["system"]["armor"]["dex"] = None
-                            case 'small':
-                                data["system"]["armor"]["value"] = 1
-                                data["system"]["armor"]["dex"] = None
+                #         # Takes the base item and then gives values based on it
+                #         match data["system"]["type"]["baseItem"]:
+                #             case 'padded':
+                #                 data["system"]["armor"]["value"] = 11
+                #                 data["system"]["armor"]["dex"] = None
+                #             case 'leather':
+                #                 data["system"]["armor"]["value"] = 12
+                #                 data["system"]["armor"]["dex"] = None
+                #             case 'hide':
+                #                 data["system"]["armor"]["value"] = 12
+                #                 data["system"]["armor"]["dex"] = 2
+                #             case 'chainshirt':
+                #                 data["system"]["armor"]["value"] = 13
+                #                 data["system"]["armor"]["dex"] = 2
+                #             case 'scalemail':
+                #                 data["system"]["armor"]["value"] = 14
+                #                 data["system"]["armor"]["dex"] = 2
+                #             case 'halfplate':
+                #                 data["system"]["armor"]["value"] = 15
+                #                 data["system"]["armor"]["dex"] = 2
+                #             case 'ringmail':
+                #                 data["system"]["armor"]["value"] = 14
+                #                 data["system"]["armor"]["dex"] = None
+                #             case 'chainmail':
+                #                 data["system"]["armor"]["value"] = 16
+                #                 data["system"]["armor"]["dex"] = 0
+                #             case 'splint':
+                #                 data["system"]["armor"]["value"] = 17
+                #                 data["system"]["armor"]["dex"] = 0
+                #             case 'plate':
+                #                 data["system"]["armor"]["value"] = 18
+                #                 data["system"]["armor"]["dex"] = 0
+                #             case 'breastplate':
+                #                 data["system"]["armor"]["value"] = 14
+                #                 data["system"]["armor"]["dex"] = 2
+                #             case 'large':
+                #                 data["system"]["armor"]["value"] = 2
+                #                 data["system"]["armor"]["dex"] = None
+                #             case 'small':
+                #                 data["system"]["armor"]["value"] = 1
+                #                 data["system"]["armor"]["dex"] = None
 
                 if data["type"] == "weapon" and data['folder'] != "6Glc0xFoDvY8BJYX":
                     versatile = False
