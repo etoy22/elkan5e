@@ -33,7 +33,7 @@ jobs:
         id: set-release-notes-github
         run: |
           # Extract release notes from CHANGELOG.md
-          release_notes=$(awk '/^# v/{count++} count<=1' CHANGELOG.md | tail -n +3 | sed 's/^##/**/; s/^##.*$/&**/')
+          release_notes=$(awk '/^# v/{count++} count<=1' CHANGELOG.md | tail -n +3 | sed 's/^## */**/; s/^##.*$/&**/')
           
           # Print the extracted release notes
           echo "Extracted Release Notes:"
