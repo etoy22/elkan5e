@@ -18,7 +18,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     outputs:
-      release-notes: ${{ steps.set-release-notes.outputs.release-notes }}
+      release-notes: ${{ steps.set-release-notes-github.outputs.release-notes }}
     steps:
       - uses: actions/checkout@v4
 
@@ -26,34 +26,49 @@ jobs:
         id: get-version
         run: |
           version=$(git log -1 --pretty=%B | grep -o -E '[v]?[0-9]+\.[0-9]+\.[0-9]+(\.[0-9]+)?' | sed 's/^v//')
-          echo "version=$version" >> $GITHUB_OUTPUT
+          echo "version=$version" >> $GITHUB_ENV
           echo "Extracted version: $version"
 
       - name: Get System Version from module.json
         id: get-system
         run: |
           system_version=$(node .github/workflows/get-system.js)
-          echo "system_version=$system_version" >> $GITHUB_OUTPUT
+          echo "system_version=$system_version" >> $GITHUB_ENV
           echo "Extracted system version: $system_version"
       
-      - name: Get Release Notes from CHANGELOG.md
-        id: get-release-notes
+      - name: Set Release Notes from CHANGELOG.md
+        id: set-release-notes-github
         run: |
-          release_notes=$(node .github/workflows/get-release-notes.js)
-          echo "release_notes=$release_notes" >> $GITHUB_OUTPUT
-          echo "Extracted release notes: $release_notes"
+          # Extract release notes from CHANGELOG.md
+          release_notes=$(awk '/^# v/{count++} count<=1' CHANGELOG.md | tail -n +3 | sed 's/^##/**/; s/^##.*$/&**/')
+          
+          # Print the extracted release notes
+          echo "Extracted Release Notes:"
+          echo "$release_notes"
+          
+          # Write the release notes to release_notes.txt
+          echo "$release_notes" > release_notes.txt
+          
+          # Print the contents of release_notes.txt to verify
+          echo "Contents of release_notes.txt:"
+          cat release_notes.txt
+          
+          # Set the release notes as an environment variable
+          echo "release-notes-github<<EOF" >> $GITHUB_ENV
+          echo "$release_notes" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
 
       - name: Format Release Notes for Discord
         id: format-release-notes-discord
         run: |
           DISCORD_NOTES=$(awk '{printf "%s\\n", $0}' release_notes.txt | sed 's/\\n$//')
-          echo "::set-output name=release-notes-discord::$DISCORD_NOTES"
+          echo "release-notes-discord=$DISCORD_NOTES" >> $GITHUB_ENV
 
       - name: Update module.json with Version
         run: node .github/workflows/update-module.js "v${{ steps.get-version.outputs.version }}"
 
       - name: Zip Files
-        working-directory: ./
+        working-directory: ./ 
         run: |
           zip -r ./module.zip ./ -x "README.md" "CHANGELOG.md" "LICENSE.md" "TODO.md" ".gitattributes" ".gitignore"
 
@@ -65,7 +80,7 @@ jobs:
           name: "v${{ steps.get-version.outputs.version }}"
           draft: false
           prerelease: false
-          body: ${{ steps.get-release-notes.outputs.release_notes }}
+          body: ${{ steps.set-release-notes-github.outputs.release-notes }}
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: './module.zip, ./module.json'
           tag: "v${{ steps.get-version.outputs.version }}"
