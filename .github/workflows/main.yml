@@ -28,28 +28,20 @@ jobs:
           version=$(git log -1 --pretty=%B | grep -o -E '[v]?[0-9]+\.[0-9]+\.[0-9]+(\.[0-9]+)?' | sed 's/^v//')
           echo "version=$version" >> $GITHUB_OUTPUT
           echo "Extracted version: $version"
-      
-      - name: Set Release Notes from CHANGELOG.md
-        id: set-release-notes-github
+
+      - name: Get System Version from module.json
+        id: get-system
         run: |
-          # Extract release notes from CHANGELOG.md
-          release_notes=$(awk '/^# v/{count++} count<=1' CHANGELOG.md | tail -n +3 | sed 's/^##/**/; s/^##.*$/&**/')
-          
-          # Print the extracted release notes
-          echo "Extracted Release Notes:"
-          echo "$release_notes"
-          
-          # Write the release notes to release_notes.txt
-          echo "$release_notes" > release_notes.txt
-          
-          # Print the contents of release_notes.txt to verify
-          echo "Contents of release_notes.txt:"
-          cat release_notes.txt
-          
-          # Set the release notes as an environment variable
-          echo "release-notes-github<<EOF" >> $GITHUB_ENV
-          echo "$release_notes" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
+          system_version=$(node .github/workflows/get-system.js)
+          echo "system_version=$system_version" >> $GITHUB_OUTPUT
+          echo "Extracted system version: $system_version"
+      
+      - name: Get Release Notes from CHANGELOG.md
+        id: get-release-notes
+        run: |
+          release_notes=$(node .github/workflows/get-release-notes.js)
+          echo "release_notes=$release_notes" >> $GITHUB_OUTPUT
+          echo "Extracted release notes: $release_notes"
 
       - name: Format Release Notes for Discord
         id: format-release-notes-discord
@@ -73,7 +65,7 @@ jobs:
           name: "v${{ steps.get-version.outputs.version }}"
           draft: false
           prerelease: false
-          body: ${{ env.release-notes-github }}
+          body: ${{ steps.get-release-notes.outputs.release_notes }}
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: './module.zip, ./module.json'
           tag: "v${{ steps.get-version.outputs.version }}"
@@ -104,6 +96,7 @@ jobs:
         run: |
           REPO_URL="https://github.com/${GITHUB_REPOSITORY}"
           VERSION="v${{ steps.get-version.outputs.version }}"
+          SYSTEM_VERSION="${{ steps.get-system.outputs.system_version }}"
           RELEASE_NOTES="${{ steps.format-release-notes-discord.outputs.release-notes-discord }}"
 
           # Format the release notes to handle newlines correctly
@@ -113,6 +106,7 @@ jobs:
           JSON_PAYLOAD=$(jq -n \
             --arg title "Elkan 5e Release" \
             --arg version "$VERSION" \
+            --arg system_version "$SYSTEM_VERSION" \
             --arg foundry_url "https://foundryvtt.com/packages/elkan5e" \
             --arg release_url "$REPO_URL/releases/tag/$VERSION/module.json" \
             --arg download_url "$REPO_URL/releases/tag/$VERSION/module.zip" \
@@ -121,7 +115,7 @@ jobs:
               title: $title,
               fields: [
                 {name: "Version", value: $version, inline: true},
-                {name: "Compatibility", value: "Core: V12.331, System: 4.3.3+", inline: true},
+                {name: "Compatibility", value: ("Core: V12.331, System: " + $system_version + "+"), inline: true},
                 {name: "Foundry Package", value: $foundry_url, inline: false},
                 {name: "Release Tag", value: $release_url, inline: false},
                 {name: "Manual Download", value: $download_url, inline: false},
