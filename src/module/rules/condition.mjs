@@ -241,7 +241,20 @@ export function icons() {
             name: "Siphoned",
             _id: "dnd5esiphoned000",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.SthB8javJuFySiBg",
-            icon: "modules/elkan5e/icons/siphoned.svg"
+            icon: "modules/elkan5e/icons/siphoned.svg",
+            changes: [
+                {
+                    key: "flags.midi-qol.grants.advantage.attack.save",
+                    mode: 5,
+                    value: "1"
+
+                }
+                {
+                    key: "flags.midi-qol.onUseMacroName",
+                    mode: 0,
+                    value: "Compendium.elkan5e.elkan5e-macros.Macro.4X80aHI9r8I9aSKG, preDamageApplication"
+                }
+            ]
         },
         {
             id: "slowed",
@@ -283,6 +296,11 @@ export function icons() {
                     key: "flags.midi-qol.disadvantage.ability.str",
                     mode: 5,
                     value: "1"
+                },
+                {
+                    key: "flags.midi-qol.onUseMacroName",
+                    mode: 0,
+                    value: "Compendium.elkan5e.elkan5e-macros.Macro.1NtnoPvTQj1IEHCa, preDamageApplication"
                 }
             ]
         },
