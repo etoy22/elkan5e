@@ -75,6 +75,7 @@ Hooks.on("deleteActiveEffect", async (effect, options, userId) => {
 Hooks.on("deleteItem", async (item, options, userId) => {
     delayedItem(item);
 });
+
 /**
  * Handle end of turn activities.
  * @param {object} combatant - The combatant whose turn ended.
@@ -87,5 +88,3 @@ Hooks.on("combatTurnChange", (combat, prior, current) => {
     meldWithShadow(lastTurnActor);
     hijackShadow(lastTurnActor);
 });
-
-
