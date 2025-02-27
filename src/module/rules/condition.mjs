@@ -248,7 +248,7 @@ export function icons() {
                     mode: 5,
                     value: "1"
 
-                }
+                },
                 {
                     key: "flags.midi-qol.onUseMacroName",
                     mode: 0,

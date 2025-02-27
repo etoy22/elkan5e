@@ -58,6 +58,9 @@ jobs:
           echo "release-notes-github<<EOF" >> $GITHUB_ENV
           echo "$release_notes" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
+          
+          # Set the release notes as an output
+          echo "::set-output name=release-notes::$release_notes"
 
       - name: Format Release Notes for Discord
         id: format-release-notes-discord
