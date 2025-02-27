@@ -26,10 +26,8 @@ export function tools() {
         disg: { id: "Compendium.elkan5e.elkan5e-equipment.Item.ArsBY1Z7YMKYCWp5" },
         navg: { id: "Compendium.elkan5e.elkan5e-equipment.Item.lExi8Y6jXHBv8vd2" },
         thief: { id: "Compendium.elkan5e.elkan5e-equipment.Item.LMnHshpVe3ciVIwF" },
-        card: { id: "Compendium.elkan5e.elkan5e-equipment.Item.SnmHCNVC2dgjQfKC" },
-        chess: { id: "Compendium.elkan5e.elkan5e-equipment.Item.xC669rfIiGBpAALC" },
-        dice: { id: "Compendium.elkan5e.elkan5e-equipment.Item.ZkZ9QPLdXvGleXxj" },
-        forg: { id: "Compendium.elkan5e.elkan5e-equipment.Item.dFa31G5pfZ3FGcjk" }
+        forg: { id: "Compendium.elkan5e.elkan5e-equipment.Item.dFa31G5pfZ3FGcjk" },
+        game: { id: "Compendium.elkan5e.elkan5e-equipment.Item.xC669rfIiGBpAALC" },
     };
 
     // Adding Tool Types
@@ -47,5 +45,6 @@ export function tools() {
     if (!TOOL_SETTING) {
         console.log("Elkan 5e  |  Removing Tools");
         TOOLS_TO_REMOVE.forEach(tool => delete CONFIG.DND5E.tools[tool]);
+        delete CONFIG.DND5E.toolTypes.game
     }
 }
