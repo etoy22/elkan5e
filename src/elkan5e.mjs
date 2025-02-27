@@ -87,5 +87,3 @@ Hooks.on("combatTurnChange", (combat, prior, current) => {
     meldWithShadow(lastTurnActor);
     hijackShadow(lastTurnActor);
 });
-
-
