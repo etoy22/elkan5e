@@ -1,4 +1,46 @@
 # Changelog
+# v1.12.18
+## Classes
+ **[Barbarian](https://www.elkan5e.com/barbarian)**
+- Reckless Attack changed to be 3/Long Rest at level 2 and unlimited at level 11
+- Relentless Endurance now gives health
+
+**[Monk](https://www.elkan5e.com/monk)**
+- Flurry of Blows no longer requires the monk to also use the Attack action
+- New Subclass: Elements Monk
+- Open Hand:
+	- Thrust renamed to Sweep, costs 1 ki and does not require the attack or flurry of blows actions to occur first.
+
+**[Ranger](https://www.elkan5e.com/ranger)**
+- Beastmaster:
+	-  There is now a Beast Companion class that will scale things for you that can be found in Subclasses
+	- Can now see through your companion's eyes and telepathically communicate starting at level 3 instead of 6.
+	- Predator's Instinct feature at level 6, replacing One Mind, which is now redundant.
+	- Swapped Coordinated Attacks for Companion's Extra Attack
+	- Animal Companion now has an explanation on how they work in Foundry
+	- Swapped Coordinated Attacks for Companion's Extra Attack
+ 
+**[Wizard](https://www.elkan5e.com/)**
+- New Subclass: Abjurer
+- Necromancer
+	- Graveguard now has an explanation on how they work in Foundry
+	- Graveguard now have Standard Actions
+## Equipment
+- [Magic Armor](https://www.elkan5e.com/armor) revision
+- [Gaming Sets](https://www.elkan5e.com/tools) have been merged into one tool
+## Game Rules
+- Both [Siphoned and Weakened conditions](https://www.elkan5e.com/conditions) now are properly implemented
+## Spells
+- [Ball Lightning](https://www.elkan5e.com/spells/ball-lightning) damage increase from 2d6 to 2d8
+- [Burning Hands](https://www.elkan5e.com/spells/burning-hands) upcasting reverted to 1d6 per spell level
+- [Gentle Current](https://www.elkan5e.com/spells/gentle-current) now has a better upcasting option, and doesn't work on restrained creatures.
+- [False Life](https://www.elkan5e.com/spells/false-life) increase base max health from 1d4+4 to 1d4+5 to make more sense with upcasting
+## Bug Fixes
+- Fixed formatting issues in chat descriptions for spells
+- [Curse of Mindfire](https://www.elkan5e.com/spells/curse-of-mindfire) disadvantage on int and cha save
+- Wild Surge on scrolls
+- Thunderwave upcasting now deals damage
+
 # v1.12.17
 ## Ancestry
 - Fixed Human Inspiration being labeled as passive
@@ -57,8 +99,6 @@
 
 ## Bug Fixes
 - Fiend [Warlock](https://www.elkan5e.com/warlock) fix of dark one's blessing where it wasn't granting the 5 hitpoints and only giving the level bonus
-
-
 
 # v1.12.16.1
 Just updated version to work with the DND5E. 
@@ -609,12 +649,15 @@ Rename Module 'Elkan 5e Automated Content'
 - Fixed combat maneuver list not appearing in level up for fighters
 - Inflict Wounds is now a constitution save.
 - Harm now has a range on the spell
+
 # v1.12.7.2
 ## Bug Fixes
 - Fixed Long rest not working
+
 # v1.12.7.1
 ## Bug Fixes
 - Quick bug fix to recomment code
+
 # v1.12.7
 ## Classes
 **[Barbarian](https://www.elkan5e.com/barbarian)**
@@ -656,10 +699,12 @@ Rename Module 'Elkan 5e Automated Content'
 	- [*Slow*](https://www.elkan5e.com/spells/slow) from warlock spell list
 ## UI
 - Changed sheets for Spell Lists no longer using Class Spell List and School List
+
 # v1.12.6
 ## Classes
 **[Bard](https://www.elkan5e.com/bard)**
 - Updated Text on Magical Secrets for Bard to reflect how we implemented it
+
 **[Fighter](https://www.elkan5e.com/fighter)**
 - Fighter versions of Manuevers now have "(Fighter)" in their name
 - New Fighter level 20 feature
@@ -669,13 +714,16 @@ Rename Module 'Elkan 5e Automated Content'
 	- Now gain conventional expertise features rather than their old ones.
 	- Now gets expertise at level 3 instead of 6
 	- Gains a new feature at level 6 that allows them to dash as a bonus action.
+
 **[Paladin](https://www.elkan5e.com/paladin)**
 - Divine Strike now deals damage on ranged weapons attacks
+
 **[Wizard](https://www.elkan5e.com/)**
 - Now gain Signature Spells at level 18, and must choose spells with a spellcasting time of 1 action.
 - Spell Mastery is a completely new ability for level 20 Wizards that lets them gain an extra action for spellcasting and ignore the normal limits on casting multiple spells in a turn for 1 turn, 1/Short Rest
 - Necromancer
 	- New Subclass
+
 ## Equipment
 - Chain Shirt has a New Icon
 ## Game Rules
@@ -702,6 +750,7 @@ Rename Module 'Elkan 5e Automated Content'
 - Fixed Elemental Smites Damage
 - Fixed Text on Pact of the Chain
 - Fixed Sunbeam duration
+
 # v1.12.5
 ## Classes
 **[Warlock](https://www.elkan5e.com/warlock)**
@@ -725,6 +774,7 @@ Rename Module 'Elkan 5e Automated Content'
 - [Arcanist](https://www.elkan5e.com/ancestrybackground) now receive the common language by default
 - Fixed [Static Charge \[Air Savant\]](https://www.elkan5e.com/sorcerer) to deal 1d8 instead of 1d6
 - [Ray of Enfeeblement](https://www.elkan5e.com/spells/ray-of-frost) is now just be a saving throw
+
 # v1.12.4
 ## Classes
 Made subclass names consistent in formatting
@@ -732,13 +782,17 @@ Made subclass names consistent in formatting
 - Rumination now works as a single click as it now has a item macro
 - Bloodrager
 	- New Subclasses
+
 **[Bard](https://www.elkan5e.com/bard)**
 - Lorekeeper
 	- New name for College of Lore
+
 **[Monk](https://www.elkan5e.com/monk)**
 - Meditation now works as a single click as it now has a item macro
+
 **[Ranger](https://www.elkan5e.com/ranger)**
 - Plan the Hunt now works as a single click as it now has a item macro
+
 **[Sorcerer](https://www.elkan5e.com/sorcerer)**
 - Sorcerers now get their first main subclass ability at level 3
 - Magic Coalescence now works as a single click as it now has a item macro
@@ -761,6 +815,7 @@ Made subclass names consistent in formatting
 - Added 'Help' to Elkan 5e Rules Compendium with useful information and links.
 - Added links to changelog in Summary of Changes
 - Fixed folder structure for Ancestries so they now appear in Character Options
+
 # v1.12.3
 ## Backgrounds
 - Forge-bound now grants the option of an armor training feat instead of both light and medium armor training
@@ -772,12 +827,16 @@ Made subclass names consistent in formatting
 - Druids can now end a Wild Shape effect as a bonus action.
 - Shifter
 	- Reduced expanded spell list to one spell per level
+
 **[Monk](https://www.elkan5e.com/monk)**
 - Add a Fighting Style to monks
+
 **[Paladin](https://www.elkan5e.com/paladin)**
 - Fixed that the class was getting two of the same choice for divine smite at Level 9
+
 **[Sorcerer](https://www.elkan5e.com/sorcerer)**
 - Removed [Vicious Mockery](https://www.elkan5e.com/spells/vicious-mockery) from the spell choice (for real this time)
+
 **[Warlock](https://www.elkan5e.com/warlock)**
 - Chain Invocations that use a familiar's action/reaction now say so at the top
 - Eldritch Weapon now works as an enchanment
@@ -812,16 +871,17 @@ Made subclass names consistent in formatting
 ## UI
 - Pop up with links now appears
 - Changed Compendium Folder from Character Features to Character Options to help with searching
+
 # v1.12.2.1
 ## Classes
 **[Rogue](https://www.elkan5e.com/rogue)**
 - Arcane Tricksters
-  - Now able to use spellcasting ability for Precision Attack DCs\
-## Equipment
+	- Now able to use spellcasting ability for Precision Attack DCs\
 ## Feats
 - Clarify you can choose a higher level feat if your total character level is equal to or higher than the level of the feat
 ## Spells
 - Replace Upcasting text in 3rd level + spells in Foundry
+
 # v1.12.2
 ## Backgrounds
 - Clarified Coordinating Direction
@@ -830,10 +890,13 @@ Made subclass names consistent in formatting
 - Evasion has been fixed previously was functioning as an active ability even though it wasn't
 **[Barbarian](https://www.elkan5e.com/barbarian)**
 - Rumination now has the right amount of uses
+
 **[Monk](https://www.elkan5e.com/monk)**
 - Meditation now has the right amount of uses
+
 **[Ranger](https://www.elkan5e.com/ranger)**
 - Plan the Hunt now has the right amount of uses
+
 **[Sorcerer](https://www.elkan5e.com/sorcerer)**
 - Magic Coalescence now has the right amount of uses
 ## Game Rules
@@ -870,7 +933,7 @@ Made subclass names consistent in formatting
 - Plan for Death: A new recovery of Mark for Death on long rest 
 
 **[Rogue](https://www.elkan5e.com/rogue)**
-- Mystic Trickster: Subclass
+- Mystic Trickster
 	- Fixed incorrect cantrip lists
 
 ## Feats
@@ -894,105 +957,130 @@ Made subclass names consistent in formatting
 # v1.12.0
 * **Required Modules**
 	* Times-Up has become a required module
+## Ancestry
+- Fixed Identifiers
+
+## Backgrounds
+- Fixed Identifiers
+- Now has the starting equipment done (for future use)
+
+## Classes
+- Updated Starting equipment on all Classes
+- Removed Unarmed Strike as it didn't make sense for it to exist there
+- Finished Reformatting Ability Descriptions
+
+**[Cleric](https://www.elkan5e.com/cleric)**
+- Divine Intervention now has the tag magical ability
+
+**[Druid](https://www.elkan5e.com/druid)**
+- Lurking Fog (Heavy) is now added when Lurking Fog is used
+
+**[Monk](https://www.elkan5e.com/monk)**
+- Open Hand
+	- Quivering Palm (Damage) now gets added after Quivering Palm - previously called Quivering Palm (Vibrations) - is used
+
+**[Paladin](https://www.elkan5e.com/paladin)**
+- Oath of Devotion
+	- Aura of Devotion says it blocks domination as well
+
+**[Ranger](https://www.elkan5e.com/ranger)**
+- Shortened the description for Mark for Death Feature
+- Fixed broken link in ranger
+
+**[Rogue](https://www.elkan5e.com/rogue)**
+- Fixed Rogue Progression Table
+- Precision Attack
+	- Fixed Damage
+	- Fixed Visual Issue
+- Thief
+	- New Subclass
+
+**[Sorcerer](https://www.elkan5e.com/sorcerer)**
+- Draconic Origin
+	- Fixed Dragonbreath Choice
+	- Fix Dragonbreath Damage Scaling
+
+**[Warlock](https://www.elkan5e.com/warlock)**
+- Implant Suggestion grants suggestion
+- Invocations Switched to use the new system
+- Invocations can be switched on advancement
+
+## Equipment
+- Set proficiency for all items to Automatic
+
+## Feats
+- Remade Fey Step as a Feat Type instead of a Spell
+- Added a version of Combat Maneuvers with a lower level requirement for Fighters
+- Removed Supreme Might Feat
+
+## Features
+- Clicking Ancestry, Background and Class on character sheet now gives Elkan stuff
+- Changed how we do resource consumption to work with the new update since its supported by default
+- Change source not to start with \http://www.
+- Introduced and Implemented Feature Categories and Subcategories
+	- Class Features (Not New)
+		- Wild Shape
+		- Precision Attack
+	- Subclass Features (New)
+		- Ki Ability
+		- Channel Divinity
+		- Hunter's Prey 
+		- Improved Fighting Style 
+
+## Journals
+- Fix links to summary of changes at top of class items
+- Fixed linking to the surprised rule
+
+## Spells
+- Can be switched on Advancement
+- Added Healing enrichers to level 1 and 2 spells
+- Implemented the new Enchant System
+	- Magic Weapon
+	- Pact Weapon
+- New Spells
+
+## Bug Fixes
 - Emergency Bug Fix
 	- Temporarily put () around the damage in Dragonbreath, Sneak attack, precision attacks as it resolves a bug in the code
-- Ancestry
-	- Fixed Identifiers
-- Background
-	- Fixed Identifiers
-	- Now has the starting equipment done (for future use)
-- Bug
-	- Fixed Bug with ancestries not going in the right folder
-- Classes
-	- Updated Starting equipment on all Classes
-		- Removed Unarmed Strike as it didn't make sense for it to exist there
-	- Finished Reformatting Ability Descriptions
-	- [Cleric](https://www.elkan5e.com/cleric)
-		- Divine Intervention now has the tag magical ability
-	- [Druid](https://www.elkan5e.com/druid)
-		- Lurking Fog (Heavy) is now added when Lurking Fog is used
-	- [Monk](https://www.elkan5e.com/monk)
-		- Open Hand: Subclass
-			- Quivering Palm (Damage) now gets added after Quivering Palm - previously called Quivering Palm (Vibrations) - is used
-	- [Paladin](https://www.elkan5e.com/paladin)
-		- Oath of Devotion: Subclass
-			- Aura of Devotion says it blocks domination as well
-	- [Ranger](https://www.elkan5e.com/ranger)
-		- Shortened the description for Mark for Death Feature
-		- Fixed broken link in ranger
-	- [Rogue](https://www.elkan5e.com/rogue)
-		- Fixed Rogue Progression Table
-		- Precision Attack
-			- Fixed Damage
-			- Fixed Visual Issue
-		- Thief: Subclass
-			- New Subclass
-	- [Sorcerer](https://www.elkan5e.com/sorcerer)
-		- Draconic Origin: Subclass
-			- Fixed Dragonbreath Choice
-			- Fix Dragonbreath Damage Scaling
-	- [Warlock](https://www.elkan5e.com/warlock)
-		- Implant Suggestion grants suggestion
-		- Invocations Switched to use the new system
-		- Invocations can be switched on advancement
-- Equipment
-	- Set proficiency for all items to Automatic
-- Feats
-	- Remade Fey Step as a Feat Type instead of a Spell
-	- Added a version of Combat Maneuvers with a lower level requirement for Fighters
-	- Removed Supreme Might Feat
-- Features
-	- Clicking Ancestry, Background and Class on character sheet now gives Elkan stuff
-	- Changed how we do resource consumption to work with the new update since its supported by default
-	- Change source not to start with \http://www.
-	- Introduced and Implemented Feature Categories and Subcategories
-		- Class Features (Not New)
-			- Wild Shape
-			- Precision Attack
-		- Subclass Features (New)
-			- Ki Ability
-			- Channel Divinity
-			- Hunter's Prey 
-			- Improved Fighting Style 
-- Format
-	- A lot of features have been reformatted to be more clear
-- Journals
-	- Fix links to summary of changes at top of class items
-	- Fixed linking to the surprised rule
-- Spell
-	- Can be switched on Advancement
-	- Added Healing enrichers to level 1 and 2 spells
-	- Implemented the new Enchant System
-		- Magic Weapon
-		- Pact Weapon
-	- New Spells
+
 ## v1.11.6.2
+## Backgrounds
+- Devout now gets skills
+
+## Classes
+**[Druid](https://www.elkan5e.com/druid)**
+- Cragged Path has had its details filled out
+
+**[Fighter](https://www.elkan5e.com/fighter)**
+- Removed Challenger from combat maneuver choice list as it's not a combat maneuver
+- Spellsword
+	- Now links to Action Surge
+
+**[Paladin](https://www.elkan5e.com/paladin)**
+- Oath of Devotion
+	- Gives immunity to Dominated condition as well
+
+**[Rogue](https://www.elkan5e.com/rogue)**
+- Precision Attacks now added to progression
+- Thieves' tools item is now automatically given
+
+**[Warlock](https://www.elkan5e.com/warlock)**
+- Implant Suggestion now gives Suggestion
+- Sculptor of Flesh now gives Alter Self
+
+## Feats
+- Added Shifty Feat
+- Brawler Feat now gives Unarmed Proficiency
+
+## Spells
+- Moonbeam damage now has its Damage component
+
+## Bug Fixes
 - Emergency Bug Fix
+
 	- Fixed major error causing things not to load
 		- Did the wrong type of push on Feature Type
-- Background
-	- Devout now gets skills
-- Classes
-	- Druid
-		- Cragged Path has had its details filled out
-	- Fighter
-		- Removed Challenger from combat manuever choice list as its not a combat manuever
-		- Spellsword: Subclass
-			- Now links to Action Surge
-	- Paladin
-		- Oath of Devotion: Subclass
-			- Gives immunity to Dominated condition as well
-	- Rogue
-		- Precision Attacks now added to progression
-		- Thieves tools items is now automatically given.
-	- Warlock
-		- Implant Suggestion now give Suggestion
-		- Sculptor of Flesh now gives Alter Self
-- Feats
-	- Added Shifty Feat
-	- Brawler Feat now gives Unarmed Profiency
-- Spell
-	- Moonbeam damage now has its Damage component
+
 ## v1.11.6.1
 - Reverted attacks of opportunity to no longer trigger on spellcasting
 ## v1.11.6
