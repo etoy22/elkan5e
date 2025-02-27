@@ -1,4 +1,46 @@
 # Changelog
+# v1.12.18
+## Classes
+ **[Barbarian](https://www.elkan5e.com/barbarian)**
+- Reckless Attack changed to be 3/Long Rest at level 2 and unlimited at level 11
+- Relentless Endurance now gives health
+
+**[Monk](https://www.elkan5e.com/monk)**
+- Flurry of Blows no longer requires the monk to also use the Attack action
+- New Subclass: Elements Monk
+- Open Hand:
+	- Thrust renamed to Sweep, costs 1 ki and does not require the attack or flurry of blows actions to occur first.
+
+**[Ranger](https://www.elkan5e.com/ranger)**
+- Beastmaster:
+	-  There is now a Beast Companion class that will scale things for you that can be found in Subclasses
+	- Can now see through your companion's eyes and telepathically communicate starting at level 3 instead of 6.
+	- Predator's Instinct feature at level 6, replacing One Mind, which is now redundant.
+	- Swapped Coordinated Attacks for Companion's Extra Attack
+	- Animal Companion now has an explanation on how they work in Foundry
+	- Swapped Coordinated Attacks for Companion's Extra Attack
+ 
+**[Wizard](https://www.elkan5e.com/)**
+- New Subclass: Abjurer
+- Necromancer
+	- Graveguard now has an explanation on how they work in Foundry
+	- Graveguard now have Standard Actions
+## Equipment
+- [Magic Armor](https://www.elkan5e.com/armor) revision
+- [Gaming Sets](https://www.elkan5e.com/tools) have been merged into one tool
+## Game Rules
+- Both [Siphoned and Weakened conditions](https://www.elkan5e.com/conditions) now are properly implemented
+## Spells
+- [Ball Lightning](https://www.elkan5e.com/spells/ball-lightning) damage increase from 2d6 to 2d8
+- [Burning Hands](https://www.elkan5e.com/spells/burning-hands) upcasting reverted to 1d6 per spell level
+- [Gentle Current](https://www.elkan5e.com/spells/gentle-current) now has a better upcasting option, and doesn't work on restrained creatures.
+- [False Life](https://www.elkan5e.com/spells/false-life) increase base max health from 1d4+4 to 1d4+5 to make more sense with upcasting
+## Bug Fixes
+- Fixed formatting issues in chat descriptions for spells
+- [Curse of Mindfire](https://www.elkan5e.com/spells/curse-of-mindfire) disadvantage on int and cha save
+- Wild Surge on scrolls
+- Thunderwave upcasting now deals damage
+
 # v1.12.17
 ## Ancestry
 - Fixed Human Inspiration being labeled as passive
