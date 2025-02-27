@@ -18,7 +18,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     outputs:
-      release-notes: ${{ steps.set-release-notes.outputs.release-notes }}
+      release-notes: ${{ steps.set-release-notes-github.outputs.release-notes }}
     steps:
       - uses: actions/checkout@v4
 
@@ -26,8 +26,15 @@ jobs:
         id: get-version
         run: |
           version=$(git log -1 --pretty=%B | grep -o -E '[v]?[0-9]+\.[0-9]+\.[0-9]+(\.[0-9]+)?' | sed 's/^v//')
-          echo "version=$version" >> $GITHUB_OUTPUT
+          echo "version=$version" >> $GITHUB_ENV
           echo "Extracted version: $version"
+
+      - name: Get System Version from module.json
+        id: get-system
+        run: |
+          system_version=$(node .github/workflows/get-system.js)
+          echo "system_version=$system_version" >> $GITHUB_ENV
+          echo "Extracted system version: $system_version"
       
       - name: Set Release Notes from CHANGELOG.md
         id: set-release-notes-github
@@ -55,13 +62,13 @@ jobs:
         id: format-release-notes-discord
         run: |
           DISCORD_NOTES=$(awk '{printf "%s\\n", $0}' release_notes.txt | sed 's/\\n$//')
-          echo "::set-output name=release-notes-discord::$DISCORD_NOTES"
+          echo "release-notes-discord=$DISCORD_NOTES" >> $GITHUB_ENV
 
       - name: Update module.json with Version
         run: node .github/workflows/update-module.js "v${{ steps.get-version.outputs.version }}"
 
       - name: Zip Files
-        working-directory: ./
+        working-directory: ./ 
         run: |
           zip -r ./module.zip ./ -x "README.md" "CHANGELOG.md" "LICENSE.md" "TODO.md" ".gitattributes" ".gitignore"
 
@@ -73,7 +80,7 @@ jobs:
           name: "v${{ steps.get-version.outputs.version }}"
           draft: false
           prerelease: false
-          body: ${{ env.release-notes-github }}
+          body: ${{ steps.set-release-notes-github.outputs.release-notes }}
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: './module.zip, ./module.json'
           tag: "v${{ steps.get-version.outputs.version }}"
@@ -104,6 +111,7 @@ jobs:
         run: |
           REPO_URL="https://github.com/${GITHUB_REPOSITORY}"
           VERSION="v${{ steps.get-version.outputs.version }}"
+          SYSTEM_VERSION="${{ steps.get-system.outputs.system_version }}"
           RELEASE_NOTES="${{ steps.format-release-notes-discord.outputs.release-notes-discord }}"
 
           # Format the release notes to handle newlines correctly
@@ -113,6 +121,7 @@ jobs:
           JSON_PAYLOAD=$(jq -n \
             --arg title "Elkan 5e Release" \
             --arg version "$VERSION" \
+            --arg system_version "$SYSTEM_VERSION" \
             --arg foundry_url "https://foundryvtt.com/packages/elkan5e" \
             --arg release_url "$REPO_URL/releases/tag/$VERSION/module.json" \
             --arg download_url "$REPO_URL/releases/tag/$VERSION/module.zip" \
@@ -121,7 +130,7 @@ jobs:
               title: $title,
               fields: [
                 {name: "Version", value: $version, inline: true},
-                {name: "Compatibility", value: "Core: V12.331, System: 4.3.3+", inline: true},
+                {name: "Compatibility", value: ("Core: V12.331, System: " + $system_version + "+"), inline: true},
                 {name: "Foundry Package", value: $foundry_url, inline: false},
                 {name: "Release Tag", value: $release_url, inline: false},
                 {name: "Manual Download", value: $download_url, inline: false},
