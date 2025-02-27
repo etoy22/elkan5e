@@ -5,7 +5,7 @@
 export async function wildSurge(activity) {
     const actor = activity.actor;
     const item = activity.item;
-    const level = item.system.level;
+    const level = item.system.level || item.flags.dnd5e.spellLevel.value;
     const WILD_SURGE_THRESHOLD = 5;
     const MAX_TABLE_LEVEL = 10;
     const TABLE_UUIDS = [
@@ -21,9 +21,8 @@ export async function wildSurge(activity) {
         "LV2skOm8hCwM1JRH",
         "O7JYPPoDS7gLGkNj"
     ];
-
     if ((item.type === "spell" && level > 0 && (activity.name === "Ritual" || activity.consumption.spellSlot)) || 
-        (item.type === "consumable" && item.system.type.value === "scroll")) {
+    (item.type === "consumable" && item.system.type.value === "scroll")) {
         const wild = actor.items.find(i => i.name === "Random Wild Surge");
         const volen = actor.effects.find(i => i.name === "Voluntary Surge");
         const blowout = actor.effects.find(i => i.name === "Magical Blowout");
