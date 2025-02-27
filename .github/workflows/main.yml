@@ -27,6 +27,7 @@ jobs:
         run: |
           version=$(git log -1 --pretty=%B | grep -o -E '[v]?[0-9]+\.[0-9]+\.[0-9]+(\.[0-9]+)?' | sed 's/^v//')
           echo "version=$version" >> $GITHUB_ENV
+          echo "::set-output name=version::$version"
           echo "Extracted version: $version"
 
       - name: Get System Version from module.json
