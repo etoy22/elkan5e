@@ -1,4 +1,12 @@
 # Changelog
+# v1.12.18.2
+
+## Classes
+**[Monk](https://www.elkan5e.com/monk)**
+- Elements Monk:
+	- Add note about Elemental Attunement requiring actor to be on screen
+  - Make Elemental Thrusts equipped by default
+
 # v1.12.18.1
 ## Bug Fix
 - to get the code to work
