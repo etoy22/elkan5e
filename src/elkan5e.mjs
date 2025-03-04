@@ -15,6 +15,7 @@ import { references } from "./module/rules/references.mjs";
 import { tools } from "./module/rules/tools.mjs";
 import { weapons } from "./module/rules/weapon.mjs";
 import { scroll } from "./module/rules/scroll.mjs";
+import { sanctuary } from "./module/spells/sanctuary.mjs";
 
 Hooks.once("init", async () => {
     console.log("Elkan 5e | Initializing Elkan 5e");
@@ -131,3 +132,19 @@ Hooks.on("combatTurnChange", (combat, prior, current) => {
         console.error("Error in combatTurnChange hook:", error);
     }
 });
+
+// Hooks.on("dnd5e.preRollAttackV2", async (config, dialog, message) => {
+//     console.log("CONFIG:", config, dialog, message);
+//     const actor = config.subject.actor; // Attacking Actor
+//     const hitTargets = config.subject.workflow.hitTargets; // Targets Attacked
+//     for (const target of hitTargets) {
+//         if (config.subject.type === "attack") {
+//             const sanc = await sanctuary(actor, target.actor);
+//             console.log("RETURN VALUE", sanc);
+//             if (!sanc) {
+//                 console.log("Sanctuary Protection");
+//                 return false;
+//             }
+//         }
+//     }
+// });
