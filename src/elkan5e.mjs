@@ -102,7 +102,7 @@ Hooks.on("dnd5e.preRollInitiative", (actor, roll) => {
 
 Hooks.on("deleteActiveEffect", async (effect, options, userId) => {
     try {
-        await delayedDuration(effect);
+        delayedDuration(effect);
     } catch (error) {
         console.error("Error in deleteActiveEffect hook:", error);
     }
@@ -110,7 +110,8 @@ Hooks.on("deleteActiveEffect", async (effect, options, userId) => {
 
 Hooks.on("deleteItem", async (item, options, userId) => {
     try {
-        await delayedItem(item);
+        delayedItem(item);
+        deleteGoodberryEffect(item)
     } catch (error) {
         console.error("Error in deleteItem hook:", error);
     }
