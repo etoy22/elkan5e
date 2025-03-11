@@ -121,8 +121,11 @@ export function icons() {
     const UNUSED_CONDITIONS = [
         "bleeding", "burrowing", "cursed", "dodging", "ethereal", "flying",
         "hidden", "hiding", "hovering", "marked", "transformed", "sleeping",
-        "stable", "burning", "dehydration", "falling", "malnutrition", "suffocation"
+        "stable", "burning", "dehydration", "falling", "malnutrition", "suffocation",
+        "flanking", "flanked"
     ];
+
+    const conditionsToRemove = ["bleeding", "burning", "dehydration", "falling","malnutrition","suffocation"]; 
 
     const NEW_STATUS_EFFECTS = [
         {
@@ -413,6 +416,9 @@ export function icons() {
     if (conditions === "a" || conditions === "d") {
         console.log("Elkan 5e  |  Removing unused conditions");
         CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => !UNUSED_CONDITIONS.includes(effect.id));
+        conditionsToRemove.forEach(condition => {
+            delete CONFIG.DND5E.conditionTypes[condition];
+        });
     }
 
     // Applying effects
