@@ -15,7 +15,7 @@ import { references } from "./module/rules/references.mjs";
 import { tools } from "./module/rules/tools.mjs";
 import { weapons } from "./module/rules/weapon.mjs";
 import { scroll } from "./module/rules/scroll.mjs";
-import { sanctuary } from "./module/spells/sanctuary.mjs";
+// import { sanctuary } from "./module/spells/sanctuary.mjs";
 
 Hooks.once("init", async () => {
     console.log("Elkan 5e | Initializing Elkan 5e");
