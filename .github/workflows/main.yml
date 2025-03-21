@@ -61,12 +61,14 @@ jobs:
           
           # Set the release notes as an output
           echo "::set-output name=release-notes::$release_notes"
+          echo "Set release notes output: $release_notes"
 
       - name: Format Release Notes for Discord
         id: format-release-notes-discord
         run: |
           DISCORD_NOTES=$(awk '{printf "%s\\n", $0}' release_notes.txt | sed 's/\\n$//')
           echo "release-notes-discord=$DISCORD_NOTES" >> $GITHUB_ENV
+          echo "Formatted release notes for Discord: $DISCORD_NOTES"
 
       - name: Update module.json with Version
         run: node .github/workflows/update-module.js "v${{ steps.get-version.outputs.version }}"
@@ -119,7 +121,9 @@ jobs:
           RELEASE_NOTES="${{ steps.format-release-notes-discord.outputs.release-notes-discord }}"
 
           # Format the release notes to handle newlines correctly
+          echo "Original release notes: $RELEASE_NOTES"
           CLEAN_RELEASE_NOTES=$(echo -e "$RELEASE_NOTES")
+          echo "Cleaned release notes: $CLEAN_RELEASE_NOTES"
           
           # Create JSON payload with fields for version, links, and release notes
           JSON_PAYLOAD=$(jq -n \
@@ -141,6 +145,9 @@ jobs:
                 {name: "Release Notes", value: $release_notes, inline: false}
               ]
             }]}')
+
+          # Print JSON payload to verify
+          echo "JSON Payload: $JSON_PAYLOAD"
 
           # Post to Discord
           curl -H "Content-Type: application/json" \
