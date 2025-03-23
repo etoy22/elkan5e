@@ -6,7 +6,7 @@ export function tools() {
     console.log("Elkan 5e  |  Initializing Tools");
 
     const TOOL_SETTING = game.settings.get("elkan5e", "tools");
-    const TOOLS_TO_REMOVE = ["glassblower", "potter", "weaver", "carpenter", "cartographer", "cobbler"];
+    const TOOLS_TO_REMOVE = ["carpenter", "card", "cartographer", "chess", "cobbler", "dice", "glassblower", "potter", "weaver"];
     const TOOLS = {
         painter: { id: "Compendium.elkan5e.elkan5e-equipment.Item.qZe6ua1j3TtX3QGv" },
         sculpt: { ability: "dex", id: "Compendium.elkan5e.elkan5e-equipment.Item.6x1yyzDnWGRNRwJD" },
@@ -46,5 +46,7 @@ export function tools() {
         console.log("Elkan 5e  |  Removing Tools");
         TOOLS_TO_REMOVE.forEach(tool => delete CONFIG.DND5E.tools[tool]);
         delete CONFIG.DND5E.toolTypes.game
+        delete CONFIG.DND5E.toolProficiencies.game
+
     }
 }
