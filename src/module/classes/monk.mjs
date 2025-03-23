@@ -1,3 +1,5 @@
+import { deleteEffectRemoveEffect } from '../global.mjs';
+
 /**
  * Handle the "Meld with Shadows" effect for the given actor.
  * 
@@ -8,14 +10,13 @@
  * @param {object} actor - The actor object to be processed.
  * @returns {Promise<void>} A promise that resolves when the effect has been processed.
  */
-export async function meldWithShadow(actor){
-    const meldEffect = actor.effects.find(i => i.name === game.i18n.localize("elkan5e.monk.meldWithShadowsEffect"));
-    if (meldEffect && actor.effects.find(i => i.name !== game.i18n.localize("elkan5e.monk.meldWithShadowsAttacks"))){
-        await meldEffect.delete(); 
-        if (actor.effects.find(i => i.name === game.i18n.localize("elkan5e.monk.emptyBody"))){
-            await actor.effects.find(i => i.name === game.i18n.localize("elkan5e.monk.emptyBody")).delete();
-        }
-    }
+export async function meldWithShadow(actor) {
+    await deleteEffectRemoveEffect(
+        actor,
+        "elkan5e.monk.meldWithShadowsEffect",
+        "elkan5e.monk.meldWithShadowsAttacks",
+        ["elkan5e.monk.emptyBody"]
+    );
 }
 
 /**
@@ -28,14 +29,13 @@ export async function meldWithShadow(actor){
  * @param {object} actor - The actor object to be processed.
  * @returns {Promise<void>} A promise that resolves when the effect has been processed.
  */
-export async function hijackShadow(actor){
-    const hijackEffect = actor.effects.find(i => i.name === game.i18n.localize("elkan5e.monk.hijackShadowEffect"));
-    if (hijackEffect && actor.effects.find(i => i.name !== game.i18n.localize("elkan5e.monk.hijackShadowAttacks"))){
-        await hijackEffect.delete(); 
-        if (actor.effects.find(i => i.name === game.i18n.localize("elkan5e.monk.emptyBody"))){
-            await actor.effects.find(i => i.name === game.i18n.localize("elkan5e.monk.emptyBody")).delete();
-        }
-    }
+export async function hijackShadow(actor) {
+    await deleteEffectRemoveEffect(
+        actor,
+        "elkan5e.monk.hijackShadowEffect",
+        "elkan5e.monk.hijackShadowAttacks",
+        ["elkan5e.monk.emptyBody"]
+    );
 }
 
 export async function shadowMonk(activity){
