@@ -1,4 +1,55 @@
 # Changelog
+# v1.12.19
+## Bug Fixes
+- Reverted languages on ancestries to resolve conflicts with other systems modifying languages.
+- Fixed [Shield](https://www.elkan5e.com/spells/shield) spell to correctly grant AC. Replace the spell to apply the fix.
+- Corrected Dazing Blow to use item instead of activity for consumtion.
+
+## Ancestry
+- Fey Ancestry now grants advantage on saving throws against being Charmed.
+- Sturdy now grants advantage on saving throws against being Prone.
+- Dwarven Resilience now grants advantage on saving throws against being Poisoned.
+
+## Backgrounds
+- Laborer's Endurance now grants advantage on saving throws against Exhaustion.
+
+## Classes
+**[Monk](https://www.elkan5e.com/monk)**
+- Open Hand
+  - Renamed Shockwave to Repulsion Wave.
+
+**[Sorcerer](https://www.elkan5e.com/sorcerer)**
+- Wild Mage
+  - Swapped wild magic level 6 and 10 abilities.
+
+**[Warlock](https://www.elkan5e.com/warlock)**
+- New Subclass: Celestial Patron.
+
+## Feats
+- Countercharm (Bard) now grants advantage against Charm/Frightened.
+
+## Game Rules
+- Clarified that a creature must have a higher passive perception than an illusion check total to automatically disbelieve an illusion.
+
+## Spells
+- Level 4 Spells done
+- New level 6 spell [Flood](https://www.elkan5e.com/spells/flood) 
+- [Rend the Veil](https://www.elkan5e.com/spells/rend-the-veil) frighten effect now applies after the damage activity.
+- [Protection from Poison](https://www.elkan5e.com/spells/protection-from-poison) grants advantage on saving throws against being Poisoned.
+- [Rend Vigor](https://www.elkan5e.com/spells/rend-vigor) now checks for curse immunity before removing temporary hit points.
+- [Purify](https://www.elkan5e.com/spells/purify) grants advantage on saving throws against being Poisoned.
+- [Heroism](https://www.elkan5e.com/spells/heroism) now grants temporary hit points at the start of each turn.
+- [Goodberry](https://www.elkan5e.com/spells/goodberry) now grants an item called goodberry that disappears after the spell duration ends.
+- [Command](https://www.elkan5e.com/spells/command) each command now has its own activity.
+- [Negative Energy Ray](https://www.elkan5e.com/spells/negative-energy-ray) now grants disadvantage on attack rolls if the target is undead and works correctly.
+- [Hold Creature](https://www.elkan5e.com/spells/hold-creature) no longer applies the dazed condition.
+- Whirlwind renamed to [Vortex](https://www.elkan5e.com/spells/vortex) and now works in water.
+- [Protection from Evil and Good](https://www.elkan5e.com/spells/protection-from-evil-and-good) has been automated.
+
+### Removed Spells
+- Giant Insect merged into [Conjure Beast](https://www.elkan5e.com/spells/conjure-beast).
+- Creation has been removed.
+
 # v1.12.18.2
 
 ## Classes
