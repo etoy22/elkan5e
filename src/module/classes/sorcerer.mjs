@@ -1,3 +1,5 @@
+import { deletedEffectRemovesItem, deletedItemRemovesEffect } from "../global.mjs";
+
 /**
  * Handle the wild surge effect after casting a spell.
  * @param {object} activity - The activity performed.
@@ -297,20 +299,10 @@ async function createCancelButton() {
  */
 export async function delayedDuration(effect){
     if (effect.name === game.i18n.localize("elkan5e.wildMage.delayedWildSurgeDuration")) {
-        const actor = effect.parent;
-        const delayed = actor.items.find(i => i.name === game.i18n.localize("elkan5e.wildMage.delayedWildSurge"));
-        if (delayed) {
-            const description = delayed.system.description.value.replace(game.i18n.localize("elkan5e.wildMage.delayedWildSurgeDescriptionPrefix"), "").trim();
-            const chatData = {
-                user: game.user.id,
-                speaker: ChatMessage.getSpeaker({ actor: actor }),
-                content: `<p>${description}</p><p>${game.i18n.localize("elkan5e.wildMage.delayedWildSurgeEnded")}</p>`
-            };
-            ChatMessage.create(chatData);
-            await delayed.delete();
-        }
+        await deletedEffectRemovesItem(effect, game.i18n.localize("elkan5e.wildMage.delayedWildSurge"));
     }
 }
+
 
 /**
  * Handle the delayed wild surge item.
@@ -320,10 +312,6 @@ export async function delayedDuration(effect){
  */
 export async function delayedItem(item){
     if (item.name === game.i18n.localize("elkan5e.wildMage.delayedWildSurge")) {
-        const actor = item.parent;
-        const effect = actor.effects.find(e => e.name === game.i18n.localize("elkan5e.wildMage.delayedWildSurgeDuration"));
-        if (effect) {
-            await effect.delete();
-        }
+        await deletedItemRemovesEffect(item, game.i18n.localize("elkan5e.wildMage.delayedWildSurgeDuration"));
     }
 }
