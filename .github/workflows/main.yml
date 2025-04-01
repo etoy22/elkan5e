@@ -41,7 +41,10 @@ jobs:
         id: set-release-notes-github
         run: |
           # Extract release notes from CHANGELOG.md
-          release_notes=$(awk '/^# v/{count++} count<=1' CHANGELOG.md | tail -n +3 | sed 's/^## */**/; s/^##.*$/&**/')
+          release_notes=$(awk '/^# v/{count++} count<=1' CHANGELOG.md | tail -n +3 | sed 's/^## \(.*\)$/\*\*\1\*\*/')
+          
+          # Escape special characters for GitHub Actions
+          escaped_release_notes=$(echo "$release_notes" | sed 's/%/%25/g; s/\n/%0A/g; s/\r/%0D/g')
           
           # Print the extracted release notes
           echo "Extracted Release Notes:"
@@ -50,18 +53,19 @@ jobs:
           # Write the release notes to release_notes.txt
           echo "$release_notes" > release_notes.txt
           
-          # Save release notes to state and output
-          echo "release_notes_github=$release_notes" >> $GITHUB_ENV
-          echo "release_notes_github=$release_notes" >> $GITHUB_OUTPUT
-          echo "Set release notes environment variable: $release_notes"
+          # Save release notes to environment and output
+          echo "release_notes_github=$escaped_release_notes" >> $GITHUB_ENV
+          echo "release_notes_github=$escaped_release_notes" >> $GITHUB_OUTPUT
+          echo "Set release notes environment variable: $escaped_release_notes"
 
       - name: Format Release Notes for Discord
         id: format-release-notes-discord
         run: |
           DISCORD_NOTES=$(awk '{printf "%s\\n", $0}' release_notes.txt | sed 's/\\n$//')
-          echo "release_notes_discord=$DISCORD_NOTES" >> $GITHUB_ENV
-          echo "release_notes_discord=$DISCORD_NOTES" >> $GITHUB_OUTPUT
-          echo "Formatted release notes for Discord: $DISCORD_NOTES"
+          escaped_discord_notes=$(echo "$DISCORD_NOTES" | sed 's/%/%25/g; s/\n/%0A/g; s/\r/%0D/g')
+          echo "release_notes_discord=$escaped_discord_notes" >> $GITHUB_ENV
+          echo "release_notes_discord=$escaped_discord_notes" >> $GITHUB_OUTPUT
+          echo "Formatted release notes for Discord: $escaped_discord_notes"
 
       - name: Update module.json with Version
         run: node .github/workflows/update-module.js "v${{ steps.get-version.outputs.version }}"
