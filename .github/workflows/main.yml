@@ -45,22 +45,6 @@ jobs:
         run: |
           zip -r ./module.zip ./ -x "README.md" "CHANGELOG.md" "LICENSE.md" "TODO.md" ".gitattributes" ".gitignore"
 
-      - name: Set Release Notes from CHANGELOG.md
-        id: set-release-notes-github
-        run: |
-          release_notes=$(node .github/workflows/extract-release-notes.js CHANGELOG.md)
-          
-          # Escape special characters for GitHub Actions
-          escaped_release_notes=$(echo "$release_notes" | sed 's/%/%25/g; s/\n/%0A/g; s/\r/%0D/g')
-          
-          # Print the extracted release notes
-          echo "Extracted Release Notes:"
-          echo "$release_notes"
-          
-          # Save release notes to environment and output
-          echo "release_notes_github=$escaped_release_notes" >> $GITHUB_ENV
-          echo "release_notes_github=$escaped_release_notes" >> $GITHUB_OUTPUT
-          echo "Set release notes environment variable: $escaped_release_notes"
 
       - name: Create Release
         id: create-release
@@ -95,7 +79,23 @@ jobs:
               }
             }
           }'
-
+      - name: Set Release Notes from CHANGELOG.md
+        id: set-release-notes-github
+        run: |
+          release_notes=$(node .github/workflows/extract-release-notes.js CHANGELOG.md)
+            
+          # Escape special characters for GitHub Actions
+          escaped_release_notes=$(echo "$release_notes" | sed 's/%/%25/g; s/\n/%0A/g; s/\r/%0D/g')
+            
+          # Print the extracted release notes
+          echo "Extracted Release Notes:"
+          echo "$release_notes"
+            
+          # Save release notes to environment and output
+          echo "release_notes_github=$escaped_release_notes" >> $GITHUB_ENV
+          echo "release_notes_github=$escaped_release_notes" >> $GITHUB_OUTPUT
+          echo "Set release notes environment variable: $escaped_release_notes"
+          
       - name: Format Release Notes for Discord
         id: format-release-notes-discord
         run: |
