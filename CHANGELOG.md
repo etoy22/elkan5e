@@ -1,4 +1,12 @@
 # Changelog
+# v1.12.19.1
+## Bug Fixes
+- Fixed Guardian Angel not being added to Celestial warlocks
+- Fix sending be avaliable on the level 4 warlock spell selection
+- Ambush Tactics (Rogue Assasin) had the wrong text
+- Greatclubs were dealing a d8 instead of their updated d10
+- Fix source for Elkan weapons (it currently says armor)
+
 # v1.12.19
 ## Bug Fixes
 - Reverted languages on ancestries to resolve conflicts with other systems modifying languages.

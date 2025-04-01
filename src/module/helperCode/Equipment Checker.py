@@ -93,7 +93,7 @@ for folder_path in folder_paths:
                     versatile = False
                     data["system"]["unidentified"]["description"] = "<p><em>This weapon is unusually keen and easy to handle. It is most likely a magic weapon, though you can’t identify the specific enchantment.</em></p>"
                     # Sets these values to be default empty in any case where it should be different then its changed at that point
-                    data["system"]["source"]["custom"] = "elkan5e.com/armor"
+                    data["system"]["source"]["custom"] = "elkan5e.com/weapons"
                     data["system"]["damage"]["base"]["bonus"] = ""
                     data["system"]["damage"]["base"]["custom"]["enabled"] = False
                     data["system"]["damage"]["base"]["custom"]["formula"] = ""
@@ -178,7 +178,7 @@ for folder_path in folder_paths:
                             price = 1 / 20
                         case 'greatclub':
                             data["system"]["damage"]["base"]["number"] = "1"
-                            data["system"]["damage"]["base"]["denomination"] = "8"
+                            data["system"]["damage"]["base"]["denomination"] = "10"
                             data["system"]["damage"]["base"]["types"] = ["bludgeoning"]
                             data["system"]["properties"] = ["two"]
                             weight = 5
