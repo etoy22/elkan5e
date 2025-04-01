@@ -44,7 +44,7 @@ jobs:
           release_notes=$(awk '/^# v/{count++} count<=1' CHANGELOG.md | tail -n +3 | sed 's/^## \(.*\)$/\*\*\1\*\*/')
           
           # Escape special characters for GitHub Actions
-          escaped_release_notes=$(echo "$release_notes" | sed 's/%/%25/g; s/\n/%0A/g; s/\r/%0D/g')
+          escaped_release_notes=$(echo "$release_notes" | sed 's/%/%25/g; s/\n/%0A/g; s/\r/%0D/g; s/^-/\\-/g')
           
           # Print the extracted release notes
           echo "Extracted Release Notes:"
