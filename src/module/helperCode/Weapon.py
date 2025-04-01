@@ -30,5 +30,11 @@ for folder_path in folder_paths:
                         data["system"]["damage"]["base"]["denomination"] = "10"
                         data["system"]["damage"]["base"]["types"] = ["bludgeoning"]
                         data["system"]["properties"] = ["two"]
+                        # print(f'{data["name"]} | Base Damage: {data["system"]["damage"]["base"]["number"]}d{data["system"]["damage"]["base"]["denomination"]} {", ".join(data["system"]["damage"]["base"]["types"])} | Properties: {", ".join(data["system"]["properties"])}')
                         weight = 5
                         price = 10
+            
+            with open(file_path, 'w') as file:
+                json.dump(data, file, indent=4)
+
+            # print(f'Processed file: {filename}')
