@@ -27,7 +27,7 @@ jobs:
         run: |
           version=$(git log -1 --pretty=%B | grep -o -E '[v]?[0-9]+\.[0-9]+\.[0-9]+(\.[0-9]+)?' | sed 's/^v//')
           echo "version=$version" >> $GITHUB_ENV
-          echo "::set-output name=version::$version"
+          echo "version=$version" >> $GITHUB_OUTPUT
           echo "Extracted version: $version"
 
       - name: Get System Version from module.json
@@ -50,24 +50,17 @@ jobs:
           # Write the release notes to release_notes.txt
           echo "$release_notes" > release_notes.txt
           
-          # Print the contents of release_notes.txt to verify
-          echo "Contents of release_notes.txt:"
-          cat release_notes.txt
-          
-          # Set the release notes as an environment variable
-          echo "release-notes-github<<EOF" >> $GITHUB_ENV
-          echo "$release_notes" >> $GITHUB_ENV
-          echo "EOF" >> $GITHUB_ENV
-          
-          # Set the release notes as an output
-          echo "::set-output name=release-notes::$release_notes"
-          echo "Set release notes output: $release_notes"
+          # Save release notes to state and output
+          echo "release_notes_github=$release_notes" >> $GITHUB_ENV
+          echo "release_notes_github=$release_notes" >> $GITHUB_OUTPUT
+          echo "Set release notes environment variable: $release_notes"
 
       - name: Format Release Notes for Discord
         id: format-release-notes-discord
         run: |
           DISCORD_NOTES=$(awk '{printf "%s\\n", $0}' release_notes.txt | sed 's/\\n$//')
-          echo "release-notes-discord=$DISCORD_NOTES" >> $GITHUB_ENV
+          echo "release_notes_discord=$DISCORD_NOTES" >> $GITHUB_ENV
+          echo "release_notes_discord=$DISCORD_NOTES" >> $GITHUB_OUTPUT
           echo "Formatted release notes for Discord: $DISCORD_NOTES"
 
       - name: Update module.json with Version
@@ -111,6 +104,10 @@ jobs:
               }
             }
           }'
+
+      - name: Install jq
+        run: sudo apt-get install -y jq
+
       - name: Post to Discord
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
@@ -118,7 +115,7 @@ jobs:
           REPO_URL="https://github.com/${GITHUB_REPOSITORY}"
           VERSION="v${{ steps.get-version.outputs.version }}"
           SYSTEM_VERSION="${{ steps.get-system.outputs.system_version }}"
-          RELEASE_NOTES="${{ steps.format-release-notes-discord.outputs.release-notes-discord }}"
+          RELEASE_NOTES="${{ env.release_notes_discord }}"
 
           # Format the release notes to handle newlines correctly
           echo "Original release notes: $RELEASE_NOTES"
