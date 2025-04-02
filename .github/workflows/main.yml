@@ -18,7 +18,7 @@ jobs:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     outputs:
-      release-notes: ${{ steps.set-release-notes-github.outputs.release-notes }}
+      release-notes: ${{ steps.set-release-notes.outputs.release-notes }}
     steps:
       - uses: actions/checkout@v4
 
@@ -28,33 +28,35 @@ jobs:
           version=$(git log -1 --pretty=%B | grep -o -E '[v]?[0-9]+\.[0-9]+\.[0-9]+(\.[0-9]+)?' | sed 's/^v//')
           echo "version=$version" >> $GITHUB_ENV
           echo "version=$version" >> $GITHUB_OUTPUT
-          echo "Extracted version: $version"
 
       - name: Get System Version from module.json
         id: get-system
         run: |
           system_version=$(node .github/workflows/get-system.js)
           echo "system_version=$system_version" >> $GITHUB_ENV
-          echo "Extracted system version: $system_version"
 
       - name: Update module.json with Version
         run: node .github/workflows/update-module.js "v${{ steps.get-version.outputs.version }}"
 
       - name: Zip Files
-        working-directory: ./ 
         run: |
           zip -r ./module.zip ./ -x "README.md" "CHANGELOG.md" "LICENSE.md" "TODO.md" ".gitattributes" ".gitignore"
 
+      - name: Set Release Notes from CHANGELOG.md
+        id: set-release-notes
+        run: |
+          release_notes=$(node .github/workflows/extract-release-notes.js CHANGELOG.md)
+          echo "release_notes=$release_notes" >> $GITHUB_ENV
+          echo "release_notes=$release_notes" >> $GITHUB_OUTPUT
 
       - name: Create Release
-        id: create-release
         uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
           name: "v${{ steps.get-version.outputs.version }}"
           draft: false
           prerelease: false
-          body: ${{ steps.set-release-notes-github.outputs.release-notes }}
+          body: ${{ steps.set-release-notes.outputs.release-notes }}
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: './module.zip, ./module.json'
           tag: "v${{ steps.get-version.outputs.version }}"
@@ -66,55 +68,19 @@ jobs:
           -H "Content-Type: application/json" \
           -H "Authorization: ${{ secrets.FOUNDRY_API_TOKEN }}" \
           -d '{
-            "id": "'"elkan5e"'",
+            "id": "elkan5e",
             "release": {
-              "version": "'"v${{ steps.get-version.outputs.version }}"'",
+              "version": "v${{ steps.get-version.outputs.version }}",
               "manifest": "'"${REPO_URL}/releases/latest/download/module.json"'",
               "download": "'"${REPO_URL}/releases/download/v${{ steps.get-version.outputs.version }}/module.zip"'",
               "notes": "'"${REPO_URL}/releases/tag/v${{ steps.get-version.outputs.version }}"'",
               "compatibility": {
-                "minimum": "'"12"'",
-                "verified": "'"12.331"'",
-                "maximum": "'"12.999"'"
+                "minimum": "12",
+                "verified": "12.331",
+                "maximum": "12.999"
               }
             }
           }'
-      - name: Set Release Notes from CHANGELOG.md
-        id: set-release-notes-github
-        run: |
-          release_notes=$(node .github/workflows/extract-release-notes.js CHANGELOG.md)
-            
-          # Escape special characters for GitHub Actions
-          escaped_release_notes=$(echo "$release_notes" | sed 's/%/%25/g; s/\n/%0A/g; s/\r/%0D/g')
-            
-          # Print the extracted release notes
-          echo "Extracted Release Notes:"
-          echo "$release_notes"
-            
-          # Save release notes to environment and output
-          echo "release_notes_github=$escaped_release_notes" >> $GITHUB_ENV
-          echo "release_notes_github=$escaped_release_notes" >> $GITHUB_OUTPUT
-          echo "Set release notes environment variable: $escaped_release_notes"
-          
-      - name: Format Release Notes for Discord
-        id: format-release-notes-discord
-        run: |
-          # Read release notes from CHANGELOG.md
-          DISCORD_NOTES=$(awk '/^# v/{count++} count<=1' CHANGELOG.md | tail -n +3 | sed 's/^## \(.*\)$/\*\*\1\*\*/' | sed 's/^-/ -/')
-          
-          # Escape special characters for Discord
-          escaped_discord_notes=$(echo "$DISCORD_NOTES" | sed 's/%/%25/g; s/\n/%0A/g; s/\r/%0D/g')
-          
-          # Print the formatted release notes for debugging
-          echo "Formatted Release Notes for Discord:"
-          echo "$escaped_discord_notes"
-          
-          # Save the formatted release notes to environment and output
-          echo "release_notes_discord=$escaped_discord_notes" >> $GITHUB_ENV
-          echo "release_notes_discord=$escaped_discord_notes" >> $GITHUB_OUTPUT
-
-      - name: Install jq
-        run: sudo apt-get install -y jq
 
       - name: Post to Discord
         env:
@@ -123,14 +89,8 @@ jobs:
           REPO_URL="https://github.com/${GITHUB_REPOSITORY}"
           VERSION="v${{ steps.get-version.outputs.version }}"
           SYSTEM_VERSION="${{ steps.get-system.outputs.system_version }}"
-          RELEASE_NOTES="${{ env.release_notes_discord }}"
+          RELEASE_NOTES="${{ steps.set-release-notes.outputs.release-notes }}"
 
-          # Format the release notes to handle newlines correctly
-          echo "Original release notes: $RELEASE_NOTES"
-          CLEAN_RELEASE_NOTES=$(echo -e "$RELEASE_NOTES")
-          echo "Cleaned release notes: $CLEAN_RELEASE_NOTES"
-          
-          # Create JSON payload with fields for version, links, and release notes
           JSON_PAYLOAD=$(jq -n \
             --arg title "Elkan 5e Release" \
             --arg version "$VERSION" \
@@ -138,7 +98,7 @@ jobs:
             --arg foundry_url "https://foundryvtt.com/packages/elkan5e" \
             --arg release_url "$REPO_URL/releases/tag/$VERSION/module.json" \
             --arg download_url "$REPO_URL/releases/tag/$VERSION/module.zip" \
-            --arg release_notes "$CLEAN_RELEASE_NOTES" \
+            --arg release_notes "$RELEASE_NOTES" \
             '{embeds: [{
               title: $title,
               fields: [
@@ -151,10 +111,6 @@ jobs:
               ]
             }]}')
 
-          # Print JSON payload to verify
-          echo "JSON Payload: $JSON_PAYLOAD"
-
-          # Post to Discord
           curl -H "Content-Type: application/json" \
                -d "$JSON_PAYLOAD" \
                $DISCORD_WEBHOOK
