@@ -1,4 +1,8 @@
 # Changelog
+# v1.12.19.2
+## Bug Fixes
+- Resolved an issue where using Hijak Shadow caused errors during combat. The feature now functions correctly.
+
 # v1.12.19.1
 ## Bug Fixes
 - Fixed Guardian Angel not being added to Celestial warlocks
