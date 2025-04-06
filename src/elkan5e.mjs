@@ -6,7 +6,7 @@ import { healOver, infuseHeal } from "./module/classes/cleric.mjs";
 import { archDruid } from "./module/classes/druid.mjs";
 import { feral, wildBlood } from "./module/classes/barbarian.mjs";
 import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
-import { meldWithShadow, shadowMonk } from "./module/classes/monk.mjs";
+import { meldWithShadow, shadowMonk, hijackShadow } from "./module/classes/monk.mjs";
 import { armor } from "./module/rules/armor.mjs";
 import { conditions, icons } from "./module/rules/condition.mjs";
 import { language } from "./module/rules/language.mjs";
