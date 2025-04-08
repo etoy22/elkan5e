@@ -9,7 +9,11 @@ export async function startDialog() {
     const DIALOG_SHOWN = game.settings.get("elkan5e", "dialogShown");
     const MODULE_VERSION = await getModuleVersion();
 
+    let saved_version = SAVED_VERSION.split('.');
     if (SAVED_VERSION !== MODULE_VERSION || !DIALOG_SHOWN) {
+        if (parseInt(saved_version[1]) < 12 || parseInt(saved_version[2]) < 9) {
+            //This is where we add the warning for updating to V4 of DND 5e
+        }
         let dialog = new Dialog({
             title: game.i18n.localize("elkan5e.dialog.title"),
             content: `

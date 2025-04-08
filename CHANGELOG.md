@@ -63,7 +63,6 @@
 - Creation has been removed.
 
 # v1.12.18.2
-
 ## Classes
 **[Monk](https://www.elkan5e.com/monk)**
 - Elements Monk:
