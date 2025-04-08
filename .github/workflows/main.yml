@@ -41,15 +41,9 @@ jobs:
         id: set-release-notes
         run: |
           release_notes=$(node .github/workflows/extract-release-notes.js CHANGELOG.md)
-          # echo 'release_notes=$release_notes' >> $GITHUB_ENV
-          # echo 'release_notes=$release_notes' >> $GITHUB_OUTPUT
-
-      - name: Format Release Notes for Discord
-        id: format-release-notes-discord
-        run: |
-          DISCORD_NOTES=$(awk '{printf "%s\\n", $0}' release_notes.txt | sed 's/\\n$//')
-          echo "release-notes-discord=$DISCORD_NOTES" >> $GITHUB_ENV
-          echo "Formatted release notes for Discord: $DISCORD_NOTES"
+          sanitized_release_notes=$(echo "$release_notes" | sed 's/"/\\"/g' | sed "s/'/\\'/g")
+          echo "release_notes=$sanitized_release_notes" >> $GITHUB_ENV
+          echo "release_notes=$sanitized_release_notes" >> $GITHUB_OUTPUT
 
       - name: Update module.json with Version
         run: node .github/workflows/update-module.js "v${{ steps.get-version.outputs.version }}"
