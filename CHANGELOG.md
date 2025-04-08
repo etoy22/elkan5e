@@ -1,7 +1,61 @@
 # Changelog
+# v1.12.20
+## Bug Fixes
+- [Aid](https://www.elkan5e.com/spell/aid) scrolls no longer reduce maximum health.
+- Fixed [Lapidate](https://www.elkan5e.com/spell/lapidate) incorrectly dealing other damage on attack.
+- Corrected Jester's [Vicious Mockery](https://www.elkan5e.com/spell/vicious-mockery) dice scaling.
+- [Ray of Sickness](https://www.elkan5e.com/spell/ray-of-sickness) now uses Constitution saving throws instead of Strength.
+- [Lurking Fog](https://www.elkan5e.com/spell/lurking-fog) no longer has stacking conditions.
+
+## Classes
+- If a class gains a bonus spell or cantrip, it is now mentioned in the class description.
+
+**[Bard](https://www.elkan5e.com/bard)**
+- Subclasses are now gained at level 1, with an expanded spell list.
+- Clarified that Bardic Inspiration cannot be used on oneself.
+- Jester:
+  - Expanded Spells: [Hellish Rebuke](https://www.elkan5e.com/spell/hellish-rebuke), [Enthrall](https://www.elkan5e.com/spell/enthrall), [Major Image](https://www.elkan5e.com/spell/major-image), [Compulsion](https://www.elkan5e.com/spell/compulsion), [Dominate](https://www.elkan5e.com/spell/dominate).
+- Lorekeeper:
+  - Expanded Spells: [Identify](https://www.elkan5e.com/spell/identify), [Augury](https://www.elkan5e.com/spell/augury), [Tongues](https://www.elkan5e.com/spell/tongues), [Divination](https://www.elkan5e.com/spell/divination), [Legend Lore](https://www.elkan5e.com/spell/legend-lore).
+  - Voice of Legend now allows an ally to reroll their roll instead of rerolling the Bardic Inspiration die.
+- Noise:
+  - Expanded Spells: [Thunderwave](https://www.elkan5e.com/spell/thunderwave), [Silence](https://www.elkan5e.com/spell/silence), [Thundering Omen](https://www.elkan5e.com/spell/thundering-omen), [Shockwave](https://www.elkan5e.com/spell/shockwave), [Telepathic Bond](https://www.elkan5e.com/spell/telepathic-bond).
+
+**[Druid](https://www.elkan5e.com/druid)**
+- Howling Storm: Duration changed from 1 minute to 10 minutes; radius reduced from 40 ft. to 30 ft.
+- Ice Flow: Duration increased from 1 minute to 10 minutes.
+- Lurking Fog: Radius reduced from 100/30 ft. to 50/15 ft.
+- Twisted Terrain: Radius reduced from 40 ft. to 20 ft.
+- Underworld Eyes: Duration increased from 1 minute to 10 minutes.
+- Breath of the Sea: Duration increased from 1 minute to 1 hour.
+- Crawler’s Claws: Duration increased from 1 minute to 1 hour.
+- Removed Springing Step.
+- Rising Mud: Radius reduced from 40 ft. to 30 ft.
+- Soaring Winds: Duration increased from 1 minute to 10 minutes.
+
+**[Wizard](https://www.elkan5e.com/wizard)**
+- Illusionist:
+  - [Silent Image](https://www.elkan5e.com/spell/silent-image) (Illusionist) moved to a different folder. If you have not yet gained this ability, you can find it in the Elkan 5e Spell Compendium under Spells (Class-Specific Versions).
+- Necromancer:
+  - Spectral Graveguard can now fly as intended.
+  - Spectral Graveguard's Life Drain now has an activity.
+
+## Feats
+- Close Shot automation added.
+
+## Spells
+- [Curse of Frailty](https://www.elkan5e.com/spell/curse-of-frailty) no longer causes creatures to instantly die at 0 hit points. Instead, it blocks features that prevent dropping to 0 hit points and incapacitates creatures who survive the drop to 0.
+- [Identify](https://www.elkan5e.com/spell/identify) and [Shockwave](https://www.elkan5e.com/spell/shockwave) are no longer **[Bard](https://www.elkan5e.com/bard)** spells.
+- [Spiritual Weapon](https://www.elkan5e.com/spell/spiritual-weapon) now adds your modifier to damage.
+
+## UI
+- Updated the intro text when loading Foundry VTT.
+- The intro text will now only warn about updating to V4 if you are actually updating to V4.
+
 # v1.12.19.2
 ## Bug Fixes
 - Resolved an issue where using Hijack Shadow caused errors during combat. The feature now functions correctly.
+
 # v1.12.19.1
 ## Bug Fixes
 - Fixed Guardian Angel not being added to Celestial warlocks
@@ -62,7 +116,6 @@
 - Creation has been removed.
 
 # v1.12.18.2
-
 ## Classes
 **[Monk](https://www.elkan5e.com/monk)**
 - Elements Monk:
@@ -94,7 +147,7 @@
 	- Animal Companion now has an explanation on how they work in Foundry
 	- Swapped Coordinated Attacks for Companion's Extra Attack
  
-**[Wizard](https://www.elkan5e.com/)**
+**[Wizard](https://www.elkan5e.com/wizard)**
 - New Subclass: Abjurer
 - Necromancer
 	- Graveguard now has an explanation on how they work in Foundry
@@ -221,7 +274,7 @@ Just updated version to work with the DND5E.
 	- New Delayed Surge feature for Wild Mages at level 10, replacing Refract Magic
 	- **Wild Surge Tables are done**
 
-**[Wizard](https://www.elkan5e.com/)**
+**[Wizard](https://www.elkan5e.com/wizard)**
 - Illusionist
 	- Illusory attacks reduced to d6s from d8s
 
@@ -268,6 +321,18 @@ Just updated version to work with the DND5E.
 
 **Rename Module 'Elkan 5e Automated Content'**
 Stating the previous changes as they were testing updates
+
+## Bug Fixes
+- Added Shifty feat to class progression
+- Sapping Smite duration fixed
+- Now when using Elkan 5e, Exhaustion will override DND 5e 2024 exhaustion
+- Bard gets undead nature at level 1
+- Confusion now listed for sorcerer
+- Updated in v1.12.12
+    - In module.json a file was incorrectly named which was causing issues for all class features and equipment
+    - Fixed dead links
+- Updated in v1.12.9
+    - A lot of Bug Fixes
 
 ## Ancestry
 - Updated in v1.12.13
@@ -378,7 +443,7 @@ Stating the previous changes as they were testing updates
     - Fiend Patron
         - Dark One's Blessing can now only be used 3/Long Rest but doesn't damage self after use
 
-**[Wizard](https://www.elkan5e.com/)**
+**[Wizard](https://www.elkan5e.com/wizard)**
 - Illusionist
 	- Added Masterful Illusions ability
 - Updated in v1.12.12
@@ -484,18 +549,6 @@ Stating the previous changes as they were testing updates
     - Add generic Disadvantage and Advantage conditions
     - Fixed Use Custom Conditions having SRD Conditions and SRD Condition + Extra Conditions being mixed up
 
-## Bug Fixes
-- Added Shifty feat to class progression
-- Sapping Smite duration fixed
-- Now when using Elkan 5e, Exhaustion will override DND 5e 2024 exhaustion
-- Bard gets undead nature at level 1
-- Confusion now listed for sorcerer
-- Updated in v1.12.12
-    - In module.json a file was incorrectly named which was causing issues for all class features and equipment
-    - Fixed dead links
-- Updated in v1.12.9
-    - A lot of Bug Fixes
-
 # v1.12.13
 ## **Breaking Change**
 **Existing characters using Elkan 5e will need to be recreated to work with this update. Due to extensive changes, many old features were incompatible with v4 of DND and had to be recreated from scratch. All the new features now use the NEW Activities system.**
@@ -557,7 +610,7 @@ Rename Module 'Elkan 5e Automated Content'
 - New Underworld Subclass
 - Lesser Shifting added to Wild Shape options where it was previously missing from the list
  
-**[Wizard](https://www.elkan5e.com/)**
+**[Wizard](https://www.elkan5e.com/wizard)**
 - New Illusionist Subclass
 ## Spells
 - [Produce Flame](https://www.elkan5e.com/spells/produce-flame) can now set fires
@@ -610,7 +663,7 @@ Rename Module 'Elkan 5e Automated Content'
 	- Thirsting Weapon has been Implementent
 - Fiend Patron
 	- Dark One's Blessing can now only be used 3/Long Rest but doesn't damage self after use
-**[Wizard](https://www.elkan5e.com/)**
+**[Wizard](https://www.elkan5e.com/wizard)**
 - Evoker:
 	- Now adds int mod to all spell damage at level 6
 	- New 'Closing Blast' ability at level 10
@@ -661,6 +714,7 @@ Rename Module 'Elkan 5e Automated Content'
 - Fixed Use Custom Conditions having SRD Conditions and SRD Condition + Extra Conditions being mixed up
 ## Bug Fixes
 - A lot of Bug Fixes
+
 # v1.12.8
 ## Classes
  **[Barbarian](https://www.elkan5e.com/barbarian)**
@@ -686,7 +740,7 @@ Rename Module 'Elkan 5e Automated Content'
 	- [Eyes of the Rune Keeper](https://www.elkan5e.com/invocations/eyes-of-the-rune-keeper) now can see hidden message left by an [_Illusory Script_](https://www.elkan5e.com/spells/illusory-script)
 	- [One with Shadow](https://www.elkan5e.com/invocations/one-with-shadows) now properly synergizes with the hide action
 	 
-**[Wizard](https://www.elkan5e.com/)**
+**[Wizard](https://www.elkan5e.com/wizard)**
 - Now get Calligrapher's Tools in addition to a tool of their choice
 ## Feats
 - Move level 1 feats on to class instead of background
@@ -792,7 +846,7 @@ Rename Module 'Elkan 5e Automated Content'
 **[Paladin](https://www.elkan5e.com/paladin)**
 - Divine Strike now deals damage on ranged weapons attacks
 
-**[Wizard](https://www.elkan5e.com/)**
+**[Wizard](https://www.elkan5e.com/wizard)**
 - Now gain Signature Spells at level 18, and must choose spells with a spellcasting time of 1 action.
 - Spell Mastery is a completely new ability for level 20 Wizards that lets them gain an extra action for spellcasting and ignore the normal limits on casting multiple spells in a turn for 1 turn, 1/Short Rest
 - Necromancer
