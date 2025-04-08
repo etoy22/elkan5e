@@ -1,3 +1,4 @@
-let fs = require('fs');
-let moduleData = JSON.parse(fs.readFileSync('./module.json', 'utf8'));
-console.log(moduleData.relationships.systems[0].compatibility.verified);
+const fs = require('fs');
+
+const moduleJson = JSON.parse(fs.readFileSync('module.json', 'utf8'));
+console.log(moduleJson.systemVersion || '12.0');
