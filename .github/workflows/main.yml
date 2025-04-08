@@ -12,22 +12,21 @@ on:
       - 'package-lock.json'
       - 'package.json'
       - 'release_notes.txt'
-    
+
 jobs:
   build:
     if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     outputs:
-      release-notes: ${{ steps.set-release-notes-github.outputs.release-notes }}
+      release-notes: ${{ steps.set-release-notes.outputs.release_notes }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       - name: Get Version from Commit Message
         id: get-version
         run: |
           version=$(git log -1 --pretty=%B | grep -o -E '[v]?[0-9]+\.[0-9]+\.[0-9]+(\.[0-9]+)?' | sed 's/^v//')
           echo "version=$version" >> $GITHUB_ENV
-          echo "::set-output name=version::$version"
           echo "Extracted version: $version"
 
       - name: Get System Version from module.json
@@ -36,23 +35,30 @@ jobs:
           system_version=$(node .github/workflows/get-system.js)
           echo "system_version=$system_version" >> $GITHUB_ENV
           echo "Extracted system version: $system_version"
-      
+
+      - name: Get Verified Version from module.json
+        id: get-verified-version
+        run: |
+          verified_version=$(node .github/workflows/get-verified-version.js)
+          echo "verified_version=$verified_version" >> $GITHUB_ENV
+          echo "Extracted verified version: $verified_version"
+
       - name: Set Release Notes from CHANGELOG.md
         id: set-release-notes
         run: |
           release_notes=$(node .github/workflows/extract-release-notes.js CHANGELOG.md)
-          echo 'release_notes=$release_notes' >> $GITHUB_ENV
-          echo 'release_notes=$release_notes' >> $GITHUB_OUTPUT
+          echo "release_notes=$release_notes" >> $GITHUB_ENV
+          echo "release_notes=$release_notes" >> $GITHUB_OUTPUT
 
-      - name: Format Release Notes for Discord
-        id: format-release-notes-discord
+      - name: Debug All Variables
         run: |
-          DISCORD_NOTES=$(awk '{printf "%s\\n", $0}' release_notes.txt | sed 's/\\n$//')
-          echo "release-notes-discord=$DISCORD_NOTES" >> $GITHUB_ENV
-          echo "Formatted release notes for Discord: $DISCORD_NOTES"
+          echo "Version: ${{ env.version }}"
+          echo "System Version: ${{ env.system_version }}"
+          echo "Verified Version: ${{ env.verified_version }}"
+          echo "Release Notes: ${{ env.release_notes }}"
 
       - name: Update module.json with Version
-        run: node .github/workflows/update-module.js "v${{ steps.get-version.outputs.version }}"
+        run: node .github/workflows/update-module.js "v${{ env.version }}"
 
       - name: Zip Files
         working-directory: ./ 
@@ -64,13 +70,13 @@ jobs:
         uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
-          name: "v${{ steps.get-version.outputs.version }}"
+          name: "v${{ env.version }}"
           draft: false
           prerelease: false
-          body: ${{ steps.set-release-notes-github.outputs.release-notes }}
+          body: ${{ env.release_notes }}
           token: ${{ secrets.GITHUB_TOKEN }}
           artifacts: './module.zip, ./module.json'
-          tag: "v${{ steps.get-version.outputs.version }}"
+          tag: "v${{ env.version }}"
 
       - name: Release Foundry Package
         run: |
@@ -81,45 +87,46 @@ jobs:
           -d '{
             "id": "'"elkan5e"'",
             "release": {
-              "version": "'"v${{ steps.get-version.outputs.version }}"'",
+              "version": "'"v${{ env.version }}"'",
               "manifest": "'"${REPO_URL}/releases/latest/download/module.json"'",
-              "download": "'"${REPO_URL}/releases/download/v${{ steps.get-version.outputs.version }}/module.zip"'",
-              "notes": "'"${REPO_URL}/releases/tag/v${{ steps.get-version.outputs.version }}"'",
+              "download": "'"${REPO_URL}/releases/download/v${{ env.version }}/module.zip"'",
+              "notes": "'"${REPO_URL}/releases/tag/v${{ env.version }}"'",
               "compatibility": {
-                "minimum": "'"12"'",
-                "verified": "'"12.331"'",
-                "maximum": "'"12.999"'"
+                "minimum": "12",
+                "verified": "'"${{ env.verified_version }}"'",
+                "maximum": "12.999"
               }
             }
           }'
+
       - name: Post to Discord
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
         run: |
           REPO_URL="https://github.com/${GITHUB_REPOSITORY}"
-          VERSION="v${{ steps.get-version.outputs.version }}"
-          SYSTEM_VERSION="${{ steps.get-system.outputs.system_version }}"
-          RELEASE_NOTES="${{ steps.format-release-notes-discord.outputs.release-notes-discord }}"
+          VERSION="v${{ env.version }}"
+          SYSTEM_VERSION="${{ env.system_version }}"
+          VERIFIED_VERSION="v${{ env.verified_version }}"
+          RELEASE_NOTES="${{ env.release_notes }}"
 
-          # Format the release notes to handle newlines correctly
-          echo "Original release notes: $RELEASE_NOTES"
-          CLEAN_RELEASE_NOTES=$(echo -e "$RELEASE_NOTES")
-          echo "Cleaned release notes: $CLEAN_RELEASE_NOTES"
-          
+          # Escape special characters in release notes
+          CLEAN_RELEASE_NOTES=$(echo "$RELEASE_NOTES" | jq -R .)
+
           # Create JSON payload with fields for version, links, and release notes
           JSON_PAYLOAD=$(jq -n \
             --arg title "Elkan 5e Release" \
             --arg version "$VERSION" \
             --arg system_version "$SYSTEM_VERSION" \
+            --arg verified_version "$VERIFIED_VERSION" \
             --arg foundry_url "https://foundryvtt.com/packages/elkan5e" \
-            --arg release_url "$REPO_URL/releases/tag/$VERSION/module.json" \
-            --arg download_url "$REPO_URL/releases/tag/$VERSION/module.zip" \
+            --arg release_url "$REPO_URL/releases/tag/$VERSION" \
+            --arg download_url "$REPO_URL/releases/download/$VERSION/module.zip" \
             --arg release_notes "$CLEAN_RELEASE_NOTES" \
             '{embeds: [{
               title: $title,
               fields: [
                 {name: "Version", value: $version, inline: true},
-                {name: "Compatibility", value: ("Core: V12.331, System: " + $system_version + "+"), inline: true},
+                {name: "Compatibility", value: ("Core: " + $verified_version + ", System: " + $system_version + "+"), inline: true},
                 {name: "Foundry Package", value: $foundry_url, inline: false},
                 {name: "Release Tag", value: $release_url, inline: false},
                 {name: "Manual Download", value: $download_url, inline: false},
