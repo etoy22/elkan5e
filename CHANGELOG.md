@@ -269,6 +269,18 @@ Just updated version to work with the DND5E.
 **Rename Module 'Elkan 5e Automated Content'**
 Stating the previous changes as they were testing updates
 
+## Bug Fixes
+- Added Shifty feat to class progression
+- Sapping Smite duration fixed
+- Now when using Elkan 5e, Exhaustion will override DND 5e 2024 exhaustion
+- Bard gets undead nature at level 1
+- Confusion now listed for sorcerer
+- Updated in v1.12.12
+    - In module.json a file was incorrectly named which was causing issues for all class features and equipment
+    - Fixed dead links
+- Updated in v1.12.9
+    - A lot of Bug Fixes
+
 ## Ancestry
 - Updated in v1.12.13
     - Dragonborn are now considered dragons as their type
@@ -484,18 +496,6 @@ Stating the previous changes as they were testing updates
     - Add generic Disadvantage and Advantage conditions
     - Fixed Use Custom Conditions having SRD Conditions and SRD Condition + Extra Conditions being mixed up
 
-## Bug Fixes
-- Added Shifty feat to class progression
-- Sapping Smite duration fixed
-- Now when using Elkan 5e, Exhaustion will override DND 5e 2024 exhaustion
-- Bard gets undead nature at level 1
-- Confusion now listed for sorcerer
-- Updated in v1.12.12
-    - In module.json a file was incorrectly named which was causing issues for all class features and equipment
-    - Fixed dead links
-- Updated in v1.12.9
-    - A lot of Bug Fixes
-
 # v1.12.13
 ## **Breaking Change**
 **Existing characters using Elkan 5e will need to be recreated to work with this update. Due to extensive changes, many old features were incompatible with v4 of DND and had to be recreated from scratch. All the new features now use the NEW Activities system.**
@@ -661,6 +661,7 @@ Rename Module 'Elkan 5e Automated Content'
 - Fixed Use Custom Conditions having SRD Conditions and SRD Condition + Extra Conditions being mixed up
 ## Bug Fixes
 - A lot of Bug Fixes
+
 # v1.12.8
 ## Classes
  **[Barbarian](https://www.elkan5e.com/barbarian)**
