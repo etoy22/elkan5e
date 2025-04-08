@@ -10,30 +10,11 @@ if (!version) {
 
 const moduleJsonPath = path.join(__dirname, '../../module.json');
 
-fs.readFile(moduleJsonPath, 'utf8', (err, data) => {
-  if (err) {
-    console.error(`Error reading module.json: ${err}`);
-    return;
-  }
+const moduleJson = JSON.parse(fs.readFileSync(moduleJsonPath, 'utf8'));
 
-  let moduleJson;
-  try {
-    moduleJson = JSON.parse(data);
-  } catch (err) {
-    console.error(`Error parsing module.json: ${err}`);
-    return;
-  }
+moduleJson.version = version;
+moduleJson.manifest = `https://github.com/etoy22/elkan5e/releases/download/${version}//module.json`;
+moduleJson.download = `https://github.com/etoy22/elkan5e/releases/download/${version}/module.zip`;
 
-  moduleJson.version = version;
-  moduleJson.manifest = `https://github.com/etoy22/elkan5e/releases/download/${version}//module.json`;
-  moduleJson.download = `https://github.com/etoy22/elkan5e/releases/download/${version}/module.zip`;
-
-  fs.writeFile(moduleJsonPath, JSON.stringify(moduleJson, null, 2), 'utf8', (err) => {
-    if (err) {
-      console.error(`Error writing module.json: ${err}`);
-      return;
-    }
-
-    console.log(`module.json successfully updated to version ${version}`);
-  });
-});
+fs.writeFileSync(moduleJsonPath, JSON.stringify(moduleJson, null, 2));
+console.log(`Updated module.json to version ${version}`);
