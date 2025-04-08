@@ -37,13 +37,6 @@ jobs:
           echo "system_version=$system_version" >> $GITHUB_ENV
           echo "Extracted system version: $system_version"
       
-      - name: Set Release Notes from CHANGELOG.md
-        id: set-release-notes
-        run: |
-          release_notes=$(node .github/workflows/extract-release-notes.js CHANGELOG.md)
-          sanitized_release_notes=$(echo "$release_notes" | sed 's/"/\\"/g' | sed "s/'/\\'/g")
-          echo "release_notes=$sanitized_release_notes" >> $GITHUB_ENV
-          echo "release_notes=$sanitized_release_notes" >> $GITHUB_OUTPUT
 
       - name: Update module.json with Version
         run: node .github/workflows/update-module.js "v${{ steps.get-version.outputs.version }}"
@@ -66,6 +59,7 @@ jobs:
           artifacts: './module.zip, ./module.json'
           tag: "v${{ steps.get-version.outputs.version }}"
 
+
       - name: Release Foundry Package
         run: |
           REPO_URL="https://github.com/${GITHUB_REPOSITORY}"
@@ -86,6 +80,14 @@ jobs:
               }
             }
           }'
+
+      - name: Set Release Notes from CHANGELOG.md
+        id: set-release-notes
+        run: |
+          release_notes=$(node .github/workflows/extract-release-notes.js CHANGELOG.md)
+          sanitized_release_notes=$(echo "$release_notes" | sed 's/"/\\"/g' | sed "s/'/\\'/g")
+          echo "release_notes=$sanitized_release_notes" >> $GITHUB_ENV
+          echo "release_notes=$sanitized_release_notes" >> $GITHUB_OUTPUT
       - name: Post to Discord
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
