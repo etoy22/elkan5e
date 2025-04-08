@@ -16,7 +16,7 @@ export async function startDialog() {
             <p>${game.i18n.localize("elkan5e.dialog.content.headerText")}</p>
         `;
             
-        if (parseInt(saved_version[1]) < 12 || parseInt(saved_version[2]) < 9) {
+        if (parseInt(saved_version[1]) <= 12 && parseInt(saved_version[2]) < 9) {
             content += `
                 <h3>${game.i18n.localize("elkan5e.dialog.content.update")}</h3>
                 <p>${game.i18n.localize("elkan5e.dialog.content.updateNotice")}</p>
