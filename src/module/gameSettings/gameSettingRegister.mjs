@@ -76,6 +76,6 @@ export async function gameSettingRegister() {
         scope: "client",
         config: false,
         type: String,
-        default: "1.0",
+        default: "1.12.10",
     });
 }
