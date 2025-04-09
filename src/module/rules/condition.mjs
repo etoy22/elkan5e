@@ -119,7 +119,7 @@ export function icons() {
     ];
 
     const UNUSED_CONDITIONS = [
-        "bleeding", "burrowing", "cursed", "dodging", "ethereal", "flying",
+        "bleeding", "burrowing", "dodging", "ethereal", "flying",
         "hidden", "hiding", "hovering", "marked", "transformed", "sleeping",
         "stable", "burning", "dehydration", "falling", "malnutrition", "suffocation",
         "flanking", "flanked"
