@@ -1,0 +1,333 @@
+{
+    "name": "Phantasmal Killer",
+    "type": "spell",
+    "img": "icons/magic/control/fear-fright-monster-grin-purple-blue.webp",
+    "effects": [
+        {
+            "_id": "xzM7tIPM4P693aM3",
+            "flags": {
+                "core": {
+                    "overlay": false
+                },
+                "combat-utility-belt": {
+                    "conditionId": "frightened",
+                    "overlay": false
+                },
+                "dae": {
+                    "transfer": false,
+                    "selfTarget": false,
+                    "selfTargetAlways": false,
+                    "stackable": "none",
+                    "durationExpression": "",
+                    "macroRepeat": "none",
+                    "specialDuration": [],
+                    "dontApply": false,
+                    "showIcon": false,
+                    "enableCondition": "",
+                    "disableCondition": "",
+                    "disableIncapacitated": false
+                },
+                "ActiveAuras": {
+                    "isAura": false,
+                    "aura": "None",
+                    "radius": "",
+                    "alignment": "",
+                    "type": "",
+                    "ignoreSelf": false,
+                    "height": false,
+                    "hidden": false,
+                    "displayTemp": false,
+                    "hostile": false,
+                    "onlyOnce": false,
+                    "nameOverride": "",
+                    "customCheck": "",
+                    "wallsBlock": "system"
+                }
+            },
+            "changes": [
+                {
+                    "key": "flags.midi-qol.OverTime",
+                    "mode": 2,
+                    "value": "turn=end,\nsaveAbility=wis,\nsaveDC=@attributes.spelldc,\ndamageType=psychic,\ndamageRoll=(@spellLevel)d10,\nlabel=Phantasmal Killer",
+                    "priority": 20
+                }
+            ],
+            "disabled": false,
+            "duration": {
+                "startTime": null,
+                "seconds": 60,
+                "combat": null,
+                "rounds": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null
+            },
+            "tint": "#ffffff",
+            "transfer": false,
+            "origin": null,
+            "name": "Phantasmal Killer",
+            "description": "",
+            "statuses": [
+                "frightened"
+            ],
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.0.2",
+                "createdTime": null,
+                "modifiedTime": 1729560470933,
+                "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+            },
+            "img": "icons/magic/control/fear-fright-monster-grin-purple-blue.webp",
+            "type": "base",
+            "system": {},
+            "sort": 0,
+            "_key": "!items.effects!Y7ncQQZXoZGGqJun.xzM7tIPM4P693aM3"
+        }
+    ],
+    "folder": "90eJtrVwLFIxcWJw",
+    "flags": {
+        "dynamiceffects": {
+            "equipActive": true,
+            "alwaysActive": false,
+            "effects": [
+                {
+                    "modSpecKey": "flags.dnd5e.conditions",
+                    "value": "Frightened",
+                    "mode": "+",
+                    "targetSpecific": false,
+                    "id": 1,
+                    "itemId": "UWXxnmoLDNjm4DTU",
+                    "active": true,
+                    "_targets": []
+                }
+            ]
+        },
+        "dae": {
+            "activeEquipped": false,
+            "alwaysActive": false
+        },
+        "core": {},
+        "midi-qol": {
+            "effectActivation": false,
+            "removeAttackDamageButtons": "default",
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "effectCondition": "",
+            "reactionCondition": "",
+            "otherCondition": ""
+        },
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "confirmTargets": "default",
+            "saveDamage": "default",
+            "noConcentrationCheck": false,
+            "bonusSaveDamage": "default",
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedProperties": [
+                "vocal",
+                "somatic",
+                "concentration"
+            ]
+        },
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<p><em>You tap into a creature's nightmares, drawing one of their worst fears into an illusion only they can see. Your magic makes it appear that your illusion is in the process of killing your target, and your target is overwhelmed with pain.</em></p><p><strong>Wisdom Save</strong></p><ul><li><p><strong>Failure: </strong>The target takes [[/damage 4d10 psychic]] damage* and becomes &amp;reference[Frightened]. While frightened in this way, the target is &amp;reference[incapacitated]. for the duration of the spell. <span>Target rolls again at end of their turns, ending effect on success.</span></p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li></ul><p></p><div class=\"rd__b  rd__b--3\"><div class=\"rd__b  rd__b--3\"><p><strong>*Upcasting</strong>: Increase damage by [[/damage 1d10 psychic]]{1d10} for each spell level above 4th.</p></div></div>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "elkan5e.com/spells/phantasmal-killer",
+            "revision": 1,
+            "rules": "",
+            "book": "",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "action",
+            "condition": "",
+            "value": 1
+        },
+        "duration": {
+            "value": "1",
+            "units": "minute"
+        },
+        "target": {
+            "affects": {
+                "type": "creature",
+                "count": "1",
+                "choice": false,
+                "special": ""
+            },
+            "template": {
+                "units": "",
+                "contiguous": false,
+                "type": ""
+            }
+        },
+        "range": {
+            "value": "120",
+            "units": "ft",
+            "special": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "ability": "",
+        "level": 4,
+        "school": "ill",
+        "materials": {
+            "value": "",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": true
+        },
+        "properties": [
+            "vocal",
+            "somatic",
+            "concentration"
+        ],
+        "activities": {
+            "q0xJF2FrzCSRY7Ik": {
+                "type": "save",
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [
+                    {
+                        "_id": "xzM7tIPM4P693aM3",
+                        "onSave": false
+                    }
+                ],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "damage": {
+                    "onSave": "half",
+                    "parts": [
+                        {
+                            "custom": {
+                                "enabled": false,
+                                "formula": ""
+                            },
+                            "number": 4,
+                            "denomination": "10",
+                            "bonus": "",
+                            "types": [
+                                "psychic"
+                            ],
+                            "scaling": {
+                                "mode": "whole",
+                                "number": 1,
+                                "formula": ""
+                            }
+                        }
+                    ]
+                },
+                "save": {
+                    "ability": "wis",
+                    "dc": {
+                        "calculation": "spellcasting",
+                        "formula": ""
+                    }
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "sort": 0,
+                "_id": "q0xJF2FrzCSRY7Ik",
+                "name": "",
+                "img": "",
+                "appliedEffects": [
+                    "xzM7tIPM4P693aM3"
+                ],
+                "effectConditionText": "!target.traits.ci.value.has('frightened')"
+            }
+        },
+        "identifier": ""
+    },
+    "ownership": {
+        "default": 0,
+        "VJURYym0JQByHBQL": 3,
+        "MKYWAnkTJr0gkDqT": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.3.6",
+        "createdTime": 1726952202129,
+        "modifiedTime": 1742261933915,
+        "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
+    },
+    "_id": "Y7ncQQZXoZGGqJun",
+    "sort": 3000000,
+    "_key": "!items!Y7ncQQZXoZGGqJun"
+}

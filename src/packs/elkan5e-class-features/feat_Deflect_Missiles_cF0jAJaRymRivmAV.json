@@ -1,0 +1,281 @@
+{
+    "_id": "cF0jAJaRymRivmAV",
+    "name": "Deflect Missiles",
+    "type": "feat",
+    "img": "icons/skills/ranged/arrow-flying-white-blue.webp",
+    "effects": [],
+    "folder": "0pkJJHVz20jLFoE1",
+    "sort": 200000,
+    "flags": {
+        "core": {
+            "sourceId": "Compendium.dnd5e.classfeatures.mzweVbnsJPQiVkAe"
+        },
+        "midi-qol": {
+            "effectActivation": false,
+            "itemCondition": "",
+            "reactionCondition": "",
+            "otherCondition": "",
+            "effectCondition": "",
+            "rollAttackPerTarget": "default",
+            "fumbleThreshold": null,
+            "removeAttackDamageButtons": "default",
+            "AoETargetType": "any",
+            "AoETargetTypeIncludeSelf": true,
+            "autoTarget": "default"
+        },
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "confirmTargets": "default",
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "noConcentrationCheck": false,
+            "ignoreTotalCover": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            }
+        },
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<p><span style=\"font-weight:bold\" class=\"wixui-rich-text__text\"><strong>Reaction</strong></span> - Self - 0 or 1 @UUID[Compendium.elkan5e.elkan5e-class-features.Item.IXk7hfrAoVQU3dLJ]{Ki Point} - Magical</p><p>You can use your reaction to deflect or catch a missile (such as an arrow or stone) when you are hit by a ranged weapon attack. When you do so, the damage you take from the attack is reduced by 1d10 + your dexterity modifier + your monk level.</p><p>If you reduce the damage to 0, you can catch the missile if it is small enough for you to hold in one hand and you have at least one hand free.</p><p>If you catch a missile in this way, you can spend 1 ki point to make a ranged attack with a range of 20/60 using the weapon or piece of ammunition you just caught, as part of the same reaction. You make this attack with proficiency, regardless of your weapon proficiencies, and the missile counts as a monk weapon for the attack.</p><p></p><p><em>Here's a breakdown of the ability in action:</em></p><p><em>A guard fires an arrow at a level 8 monk with 16 dexterity. The guard misses, so the monk cannot deflect the arrow. Then another guard shoots another arrow, dealing 7 damage. The monk uses their reaction to reduce the damage by [[/r 1d10+11]].</em></p><p><em>This reduction in damage is calculated as ([[/r 1d10+11]]{1d10+8 (level) +3 (dexterity modifier)}).</em></p><p><em>In this example, monk doesn't even need to roll to block 7 damage. The attack's damage is reduced to 0. The monk then chooses to expend a ki point to redirect the missile, choosing to target a goblin. The monk rolls an attack bonus as if the arrow was a @UUID[Compendium.elkan5e.elkan5e-class-features.4km0TjS91nC4PBNL]{monk weapon}, then deals 1d8+3 damage when it hits.</em></p><p><em>The monk would be unable to deflect a @UUID[Compendium.elkan5e.elkan5e-spells.Item.Ggy29O9qIiYJTo1c]{scorching ray} spell at all, and if a fire giant throws a rock at a monk, the monk cannot catch the massive stone, so the monk could deflect the missile but not redirect it.</em> </p>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "elkan5e.com/monk",
+            "revision": 1,
+            "rules": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "license": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "type": {
+            "value": "class",
+            "subtype": "ki"
+        },
+        "requirements": "Monk 3",
+        "activities": {
+            "dnd5eactivity000": {
+                "_id": "dnd5eactivity000",
+                "type": "utility",
+                "activation": {
+                    "type": "reaction",
+                    "value": 1,
+                    "condition": "",
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "concentration": false,
+                    "units": "inst",
+                    "special": "",
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "units": "self",
+                    "special": "",
+                    "override": false,
+                    "value": ""
+                },
+                "target": {
+                    "template": {
+                        "count": "",
+                        "contiguous": false,
+                        "type": "",
+                        "size": "",
+                        "width": "",
+                        "height": "",
+                        "units": ""
+                    },
+                    "affects": {
+                        "count": "",
+                        "type": "self",
+                        "choice": false,
+                        "special": ""
+                    },
+                    "prompt": true,
+                    "override": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "max": "",
+                    "recovery": []
+                },
+                "roll": {
+                    "formula": "1d10 + @mod + @classes.monk.levels",
+                    "name": "Reduce Damage",
+                    "prompt": false,
+                    "visible": false
+                },
+                "sort": 0,
+                "name": "Deflect Missiles",
+                "img": "",
+                "appliedEffects": []
+            },
+            "mdIJP6CViRstAomB": {
+                "type": "attack",
+                "_id": "mdIJP6CViRstAomB",
+                "sort": 0,
+                "activation": {
+                    "type": "reaction",
+                    "value": null,
+                    "override": false,
+                    "condition": ""
+                },
+                "consumption": {
+                    "scaling": {
+                        "allowed": false
+                    },
+                    "spellSlot": true,
+                    "targets": [
+                        {
+                            "type": "itemUses",
+                            "value": "1",
+                            "target": "Compendium.elkan5e.elkan5e-class-features.Item.IXk7hfrAoVQU3dLJ",
+                            "scaling": {}
+                        }
+                    ]
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false,
+                    "units": "ft",
+                    "special": "20/60",
+                    "value": "20"
+                },
+                "target": {
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft",
+                        "type": ""
+                    },
+                    "affects": {
+                        "choice": false,
+                        "count": "1",
+                        "type": "creatureOrObject",
+                        "special": ""
+                    },
+                    "override": false,
+                    "prompt": true
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "attack": {
+                    "critical": {
+                        "threshold": null
+                    },
+                    "flat": false,
+                    "type": {
+                        "value": "ranged",
+                        "classification": "weapon"
+                    },
+                    "ability": "",
+                    "bonus": ""
+                },
+                "damage": {
+                    "critical": {
+                        "bonus": ""
+                    },
+                    "includeBase": true,
+                    "parts": [
+                        {
+                            "custom": {
+                                "enabled": true,
+                                "formula": "@scale.monk.die + @mod"
+                            },
+                            "number": null,
+                            "denomination": 0,
+                            "bonus": "",
+                            "types": [
+                                "bludgeoning",
+                                "piercing"
+                            ],
+                            "scaling": {
+                                "number": 1
+                            }
+                        }
+                    ]
+                },
+                "useConditionText": "",
+                "forceDialog": false,
+                "effectConditionText": "",
+                "attackMode": "oneHanded",
+                "ammunition": "",
+                "otherActivityUuid": "",
+                "name": "Redirect Missile",
+                "img": "",
+                "appliedEffects": []
+            }
+        },
+        "identifier": "",
+        "enchant": {},
+        "prerequisites": {
+            "level": null
+        },
+        "properties": [
+            "mgc"
+        ]
+    },
+    "ownership": {
+        "default": 0,
+        "ymJDAw0PgXIWIHMH": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": "Compendium.dnd5e.classfeatures.mzweVbnsJPQiVkAe",
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.3.8",
+        "createdTime": 1726952013692,
+        "modifiedTime": 1744074229003,
+        "lastModifiedBy": "fgP8EzWy33UFoZmI"
+    },
+    "_key": "!items!cF0jAJaRymRivmAV"
+}

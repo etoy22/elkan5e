@@ -1,0 +1,287 @@
+{
+    "folder": "VGAGvD4k9YHm9VSP",
+    "name": "Menacing Smite",
+    "type": "spell",
+    "_id": "VnFCPkYMsvuKpbkY",
+    "img": "icons/weapons/axes/axe-double-white-red.webp",
+    "system": {
+        "description": {
+            "value": "<p>When you hit a creature with a weapon attack, you can expend a spell slot to deal &amp;reference[psychic] damage and attempt to frighten the target, in addition to the weapon's damage.</p><p><strong>Wisdom Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d6 psychic]] damage* and is &amp;reference[frightened].</p></li><li><p><strong>Success:</strong> Target takes [[/damage 4d6 psychic]] damage.*</p></li></ul><p>​</p><p>​*<strong>Using Higher Level Spell Slots</strong>: Damage increases by [[/r 1d6]] for each spell level above 3rd.</p>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "elkan5e.com/paladin",
+            "revision": 1,
+            "rules": "",
+            "book": "",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "nocost",
+            "condition": "",
+            "value": null
+        },
+        "duration": {
+            "value": "1",
+            "units": "round"
+        },
+        "target": {
+            "affects": {
+                "type": "creature",
+                "count": "1",
+                "choice": false,
+                "special": ""
+            },
+            "template": {
+                "units": "ft",
+                "contiguous": false,
+                "type": ""
+            }
+        },
+        "range": {
+            "units": "self",
+            "special": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "ability": "",
+        "level": 3,
+        "school": "enc",
+        "properties": [],
+        "materials": {
+            "value": "",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "always",
+            "prepared": true
+        },
+        "activities": {
+            "dnd5eactivity100": {
+                "_id": "dnd5eactivity100",
+                "type": "save",
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [
+                    {
+                        "_id": "4XvMjTzjt8Cy8YoW",
+                        "onSave": false
+                    }
+                ],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "max": "",
+                    "recovery": []
+                },
+                "damage": {
+                    "onSave": "full",
+                    "parts": [
+                        {
+                            "number": 4,
+                            "denomination": 6,
+                            "bonus": "",
+                            "types": [
+                                "psychic"
+                            ],
+                            "custom": {
+                                "enabled": false,
+                                "formula": ""
+                            },
+                            "scaling": {
+                                "mode": "whole",
+                                "number": 1,
+                                "formula": ""
+                            }
+                        }
+                    ]
+                },
+                "save": {
+                    "ability": "wis",
+                    "dc": {
+                        "calculation": "spellcasting",
+                        "formula": ""
+                    }
+                },
+                "sort": 0,
+                "name": "",
+                "img": "",
+                "appliedEffects": [
+                    "4XvMjTzjt8Cy8YoW"
+                ],
+                "effectConditionText": "!target.traits.ci.value.has('frightened')"
+            }
+        },
+        "identifier": ""
+    },
+    "effects": [
+        {
+            "name": "Menacing Smite",
+            "origin": "Compendium.elkan5e.elkan5e-class-features.Item.VnFCPkYMsvuKpbkY",
+            "changes": [],
+            "transfer": false,
+            "flags": {
+                "dae": {
+                    "itemName": "Menacing Smite",
+                    "disableIncapacitated": false,
+                    "selfTarget": false,
+                    "selfTargetAlways": false,
+                    "dontApply": false,
+                    "stackable": "none",
+                    "showIcon": false,
+                    "durationExpression": "",
+                    "macroRepeat": "none",
+                    "specialDuration": [
+                        "turnEndSource"
+                    ],
+                    "enableCondition": "",
+                    "disableCondition": ""
+                },
+                "ActiveAuras": {
+                    "isAura": false,
+                    "aura": "None",
+                    "nameOverride": "",
+                    "radius": "",
+                    "alignment": "",
+                    "type": "",
+                    "customCheck": "",
+                    "ignoreSelf": false,
+                    "height": false,
+                    "hidden": false,
+                    "displayTemp": false,
+                    "hostile": false,
+                    "onlyOnce": false,
+                    "wallsBlock": "system"
+                },
+                "core": {
+                    "overlay": false
+                }
+            },
+            "_id": "4XvMjTzjt8Cy8YoW",
+            "disabled": false,
+            "duration": {
+                "startTime": null,
+                "seconds": 7,
+                "combat": null,
+                "rounds": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null
+            },
+            "description": "",
+            "statuses": [
+                "frightened"
+            ],
+            "tint": "#ffffff",
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.0.2",
+                "createdTime": null,
+                "modifiedTime": 1730159557648,
+                "lastModifiedBy": "vY549pHXgrOzkh9H"
+            },
+            "img": "icons/weapons/axes/axe-double-white-red.webp",
+            "type": "base",
+            "system": {},
+            "sort": 0,
+            "_key": "!items.effects!VnFCPkYMsvuKpbkY.4XvMjTzjt8Cy8YoW"
+        }
+    ],
+    "sort": 0,
+    "ownership": {
+        "default": 0,
+        "3Yi0HjF4PKCA4vX0": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "flags": {
+        "midiProperties": {
+            "confirmTargets": "default",
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "critOther": false,
+            "offHandWeapon": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "noConcentrationCheck": false,
+            "toggleEffect": false,
+            "ignoreTotalCover": false,
+            "saveDamage": "fulldam",
+            "bonusSaveDamage": "default",
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "midi-qol": {
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "effectCondition": "",
+            "removeAttackDamageButtons": "default",
+            "reactionCondition": "",
+            "otherCondition": ""
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            }
+        },
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
+        }
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.1.0",
+        "createdTime": 1726952012376,
+        "modifiedTime": 1738625498724,
+        "lastModifiedBy": "ymGs3J4QpWbCOXON"
+    },
+    "_key": "!items!VnFCPkYMsvuKpbkY"
+}
