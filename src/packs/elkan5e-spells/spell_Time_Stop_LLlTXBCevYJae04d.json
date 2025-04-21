@@ -1,185 +1,185 @@
 {
-  "name": "Time Stop",
-  "type": "spell",
-  "img": "icons/magic/time/hourglass-tilted-gray.webp",
-  "effects": [],
-  "folder": "OLc6BMEuifPnCAUH",
-  "flags": {
-    "core": {},
-    "midi-qol": {
-      "effectActivation": false,
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "otherCondition": "",
-      "effectCondition": "",
-      "reactionCondition": ""
-    },
-    "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
-      "rollOther": false,
-      "critOther": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "toggleEffect": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "offHandWeapon": false,
-      "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      },
-      "migratedProperties": [
-        "vocal"
-      ]
-    }
-  },
-  "system": {
-    "description": {
-      "value": "<p>You briefly stop the flow of time for everyone but yourself. No time passes for other creatures, while you take 1d4 + 1 turns in a row, during which you can use Actions and move as normal.</p><p>This spell ends if one of the Actions you use during this period, or any Effects that you create during this period, affects a creature other than you or an object being worn or carried by someone other than you. In addition, the spell ends if you move to a place more than 1,000 feet from the location where you cast it.</p>",
-      "chat": ""
-    },
-    "source": {
-      "custom": "Elkan 5e",
-      "revision": 1,
-      "rules": "",
-      "book": "",
-      "page": "",
-      "license": ""
-    },
-    "activation": {
-      "type": "action",
-      "condition": "",
-      "value": 1
-    },
-    "duration": {
-      "value": "",
-      "units": "inst"
-    },
-    "target": {
-      "affects": {
-        "type": "self",
-        "choice": false,
-        "special": ""
-      },
-      "template": {
-        "units": "",
-        "contiguous": false,
-        "type": ""
-      }
-    },
-    "range": {
-      "units": "self",
-      "special": ""
-    },
-    "uses": {
-      "max": "",
-      "recovery": [],
-      "spent": 0
-    },
-    "ability": "",
-    "level": 9,
-    "school": "trs",
-    "materials": {
-      "value": "",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
-    },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": true
-    },
-    "properties": [
-      "vocal"
-    ],
-    "activities": {
-      "HhGNPWag8QYxLgsW": {
-        "type": "utility",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
+    "name": "Time Stop",
+    "type": "spell",
+    "img": "icons/magic/time/hourglass-tilted-gray.webp",
+    "effects": [],
+    "folder": "OLc6BMEuifPnCAUH",
+    "flags": {
+        "core": {},
+        "midi-qol": {
+            "effectActivation": false,
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "otherCondition": "",
+            "effectCondition": "",
+            "reactionCondition": ""
         },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "confirmTargets": "default",
+            "noConcentrationCheck": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
         },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedProperties": [
+                "vocal"
+            ]
+        }
+    },
+    "system": {
         "description": {
-          "chatFlavor": ""
+            "value": "<p>You briefly stop the flow of time for everyone but yourself. No time passes for other creatures, while you take 1d4 + 1 turns in a row, during which you can use Actions and move as normal.</p><p>This spell ends if one of the Actions you use during this period, or any Effects that you create during this period, affects a creature other than you or an object being worn or carried by someone other than you. In addition, the spell ends if you move to a place more than 1,000 feet from the location where you cast it.</p>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "Elkan 5e",
+            "revision": 1,
+            "rules": "",
+            "book": "",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "action",
+            "condition": "",
+            "value": 1
         },
         "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false
+            "value": "",
+            "units": "inst"
         },
         "target": {
-          "prompt": true,
-          "template": {
-            "contiguous": false,
-            "units": "ft"
-          },
-          "affects": {
-            "choice": false
-          },
-          "override": false
+            "affects": {
+                "type": "self",
+                "choice": false,
+                "special": ""
+            },
+            "template": {
+                "units": "",
+                "contiguous": false,
+                "type": ""
+            }
         },
-        "roll": {
-          "formula": "1d4+1",
-          "name": "Time Stop Rounds",
-          "prompt": false,
-          "visible": false
+        "range": {
+            "units": "self",
+            "special": ""
         },
         "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
+            "max": "",
+            "recovery": [],
+            "spent": 0
         },
-        "sort": 0,
-        "_id": "HhGNPWag8QYxLgsW",
-        "name": "",
-        "img": "",
-        "appliedEffects": []
-      }
+        "ability": "",
+        "level": 9,
+        "school": "trs",
+        "materials": {
+            "value": "",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": true
+        },
+        "properties": [
+            "vocal"
+        ],
+        "activities": {
+            "HhGNPWag8QYxLgsW": {
+                "type": "utility",
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "roll": {
+                    "formula": "1d4+1",
+                    "name": "Time Stop Rounds",
+                    "prompt": false,
+                    "visible": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "sort": 0,
+                "_id": "HhGNPWag8QYxLgsW",
+                "name": "",
+                "img": "",
+                "appliedEffects": []
+            }
+        },
+        "identifier": ""
     },
-    "identifier": ""
-  },
-  "ownership": {
-    "default": 0,
-    "ymJDAw0PgXIWIHMH": 3,
-    "MKYWAnkTJr0gkDqT": 3,
-    "vHqSHJMdmEO6Mk2C": 3
-  },
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.331",
-    "systemId": "dnd5e",
-    "systemVersion": "4.0.4",
-    "createdTime": 1726952200025,
-    "modifiedTime": 1729564534480,
-    "lastModifiedBy": "YxlXl9sauSuWxHdZ"
-  },
-  "_id": "LLlTXBCevYJae04d",
-  "sort": 0,
-  "_key": "!items!LLlTXBCevYJae04d"
+    "ownership": {
+        "default": 0,
+        "ymJDAw0PgXIWIHMH": 3,
+        "MKYWAnkTJr0gkDqT": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.4",
+        "createdTime": 1726952200025,
+        "modifiedTime": 1729564534480,
+        "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+    },
+    "_id": "LLlTXBCevYJae04d",
+    "sort": 0,
+    "_key": "!items!LLlTXBCevYJae04d"
 }

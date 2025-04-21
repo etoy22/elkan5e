@@ -1,310 +1,310 @@
 {
-  "name": "Arcane Lock",
-  "type": "spell",
-  "img": "icons/sundries/misc/lock-steel-blue.webp",
-  "effects": [],
-  "folder": "6J3i75lfD1J0xYwA",
-  "flags": {
-    "core": {},
-    "midi-qol": {
-      "effectActivation": false,
-      "itemCondition": "",
-      "reactionCondition": "",
-      "otherCondition": "",
-      "effectCondition": "",
-      "rollAttackPerTarget": "default",
-      "AoETargetType": "any",
-      "AoETargetTypeIncludeSelf": true,
-      "autoTarget": "default",
-      "removeAttackDamageButtons": "default"
-    },
-    "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
-      "rollOther": false,
-      "critOther": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "toggleEffect": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "offHandWeapon": false,
-      "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      },
-      "migratedProperties": [
-        "vocal",
-        "somatic",
-        "material"
-      ]
-    },
-    "tidy5e-sheet": {
-      "section": "",
-      "actionSection": ""
-    }
-  },
-  "system": {
-    "description": {
-      "value": "<p><em>You touch a closed door, window, gate, chest, or other solid entryway, scattering gold dust on the door handle or latch. You verbally say the password and the names of your chosen allies, and the object becomes locked for the duration.</em></p><div class=\"rd__b  rd__b--3\"><p><strong>Ritual Casting Time:</strong> 1 Minute</p><p><strong>Materials:</strong> You require 0.1 pounds of pure @UUID[Compendium.elkan5e.elkan5e-spells.Item.Ia9Kl5nqaJlv67VI]{gold dust}, typically valued at 25 gold. This spell consumes this material.</p></div><p><strong>Utility Spell</strong></p><p>You and the creatures you designate when you cast this spell can open the object normally. You also set a password that, when spoken within 5 feet of the object, suppresses this spell for 1 minute. Otherwise, it is impassable. Casting <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.ImAJahFvkxJnFmaC]{knock} </em>on the object suppresses arcane lock for 10 minutes.</p><ul><li><p>As an action you can touch the object and can change who you designated to be able to open the door manually.</p></li><li><p>While affected by this spell, the object is more difficult to break or force open; the DC to break it or pick any locks on it increases to 20 + the spell slot level you used to cast this spell. Forcibly picking the lock or breaking the object open ends this spell.</p></li></ul>",
-      "chat": "<div class=\"rd__b  rd__b--3\"><p><strong>Materials:</strong><span style=\"font-family:Signika, sans-serif\"> You require 0.1 pounds of pure @UUID[Compendium.elkan5e.elkan5e-spells.Item.Ia9Kl5nqaJlv67VI]{gold dust}, typically valued at 25 gold. This spell consumes this material.</span></p></div><p><strong>Utility Spell</strong></p><p>You and the creatures you designate when you cast this spell can open the object normally. You also set a password that, when spoken within 5 feet of the object, suppresses this spell for 1 minute. Otherwise, it is impassable until it is broken or the spell is dispelled or suppressed. Casting <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.ImAJahFvkxJnFmaC]{knock} </em>on the object suppresses arcane lock for 10 minutes.</p><ul><li><p>As an action you can touch the object and can change who you designated to be able to open the door manually.</p></li><li><p>While affected by this spell, the object is more difficult to break or force open; the DC to break it or pick any locks on it increases to 20 + the spell slot level you used to cast this spell.</p></li></ul>"
-    },
-    "source": {
-      "custom": "elkan5e.com/spells/arcane-lock",
-      "revision": 1,
-      "rules": "",
-      "book": "",
-      "page": "",
-      "license": ""
-    },
-    "activation": {
-      "type": "action",
-      "condition": "",
-      "value": 1
-    },
-    "duration": {
-      "value": "",
-      "units": "perm"
-    },
-    "target": {
-      "affects": {
-        "type": "object",
-        "count": "1",
-        "choice": false,
-        "special": ""
-      },
-      "template": {
-        "units": "",
-        "contiguous": false,
-        "type": ""
-      }
-    },
-    "range": {
-      "units": "touch",
-      "special": ""
-    },
-    "uses": {
-      "max": "",
-      "recovery": [],
-      "spent": 0
-    },
-    "ability": "",
-    "level": 2,
-    "school": "abj",
-    "materials": {
-      "value": "Gold dust worth at least 25 gp, which the spell consumes.",
-      "consumed": true,
-      "cost": 25,
-      "supply": 0
-    },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": true
-    },
-    "properties": [
-      "vocal",
-      "somatic",
-      "material",
-      "ritual"
-    ],
-    "activities": {
-      "dnd5eactivity000": {
-        "_id": "dnd5eactivity000",
-        "type": "utility",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "targets": [
-            {
-              "type": "itemUses",
-              "target": "Compendium.elkan5e.elkan5e-spells.Item.Ia9Kl5nqaJlv67VI",
-              "value": "1",
-              "scaling": {
-                "mode": "",
-                "formula": ""
-              }
-            }
-          ],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "prompt": true,
-          "template": {
-            "contiguous": false,
-            "units": "ft"
-          },
-          "affects": {
-            "choice": false
-          },
-          "override": false
-        },
-        "uses": {
-          "spent": 0,
-          "max": "",
-          "recovery": []
-        },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
-        },
-        "sort": 0
-      },
-      "ibde1HzARXSDqGxO": {
-        "type": "utility",
-        "activation": {
-          "type": "minute",
-          "value": 1,
-          "override": true,
-          "condition": ""
-        },
-        "consumption": {
-          "targets": [
-            {
-              "type": "itemUses",
-              "value": "1",
-              "target": "Compendium.elkan5e.elkan5e-spells.Item.Ia9Kl5nqaJlv67VI",
-              "scaling": {
-                "mode": ""
-              }
-            }
-          ],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": false
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "prompt": true,
-          "template": {
-            "contiguous": false,
-            "units": "ft"
-          },
-          "affects": {
-            "choice": false
-          },
-          "override": false
-        },
-        "uses": {
-          "spent": 0,
-          "max": "",
-          "recovery": []
-        },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
-        },
-        "sort": 0,
-        "useConditionText": "",
-        "useConditionReason": "",
-        "effectConditionText": "",
-        "macroData": {
-          "name": "",
-          "command": ""
-        },
-        "ignoreTraits": {
-          "idi": false,
-          "idr": false,
-          "idv": false,
-          "ida": false
+    "name": "Arcane Lock",
+    "type": "spell",
+    "img": "icons/sundries/misc/lock-steel-blue.webp",
+    "effects": [],
+    "folder": "6J3i75lfD1J0xYwA",
+    "flags": {
+        "core": {},
+        "midi-qol": {
+            "effectActivation": false,
+            "itemCondition": "",
+            "reactionCondition": "",
+            "otherCondition": "",
+            "effectCondition": "",
+            "rollAttackPerTarget": "default",
+            "AoETargetType": "any",
+            "AoETargetTypeIncludeSelf": true,
+            "autoTarget": "default",
+            "removeAttackDamageButtons": "default"
         },
         "midiProperties": {
-          "ignoreTraits": [],
-          "triggeredActivityId": "none",
-          "triggeredActivityConditionText": "",
-          "triggeredActivityTargets": "targets",
-          "triggeredActivityRollAs": "self",
-          "forceDialog": false,
-          "confirmTargets": "default",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "automationOnly": false,
-          "otherActivityCompatible": true,
-          "identifier": "",
-          "displayActivityName": false,
-          "rollMode": "default",
-          "chooseEffects": false,
-          "toggleEffect": false,
-          "ignoreFullCover": false
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "confirmTargets": "default",
+            "noConcentrationCheck": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
         },
-        "isOverTimeFlag": false,
-        "overTimeProperties": {
-          "saveRemoves": true,
-          "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedProperties": [
+                "vocal",
+                "somatic",
+                "material"
+            ]
         },
-        "otherActivityId": "none",
-        "_id": "ibde1HzARXSDqGxO",
-        "name": "Ritual",
-        "img": "",
-        "appliedEffects": []
-      }
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
+        }
     },
-    "identifier": ""
-  },
-  "ownership": {
-    "default": 0,
-    "ymJDAw0PgXIWIHMH": 3,
-    "MKYWAnkTJr0gkDqT": 3,
-    "vHqSHJMdmEO6Mk2C": 3
-  },
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.331",
-    "systemId": "dnd5e",
-    "systemVersion": "4.3.8",
-    "createdTime": 1726952203650,
-    "modifiedTime": 1745205032147,
-    "lastModifiedBy": "ymGs3J4QpWbCOXON"
-  },
-  "_id": "fsKqUGAIN0YXi4Dm",
-  "sort": 4500000,
-  "_key": "!items!fsKqUGAIN0YXi4Dm"
+    "system": {
+        "description": {
+            "value": "<p><em>You touch a closed door, window, gate, chest, or other solid entryway, scattering gold dust on the door handle or latch. You verbally say the password and the names of your chosen allies, and the object becomes locked for the duration.</em></p><div class=\"rd__b  rd__b--3\"><p><strong>Ritual Casting Time:</strong>\u00a01 Minute</p><p><strong>Materials:</strong> You require 0.1 pounds of pure @UUID[Compendium.elkan5e.elkan5e-spells.Item.Ia9Kl5nqaJlv67VI]{gold dust}, typically valued at 25 gold. This spell consumes this material.</p></div><p><strong>Utility Spell</strong></p><p>You and the creatures you designate when you cast this spell can open the object normally. You also set a password that, when spoken within 5 feet of the object, suppresses this spell for 1 minute. Otherwise, it is impassable. Casting <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.ImAJahFvkxJnFmaC]{knock} </em>on the object suppresses arcane lock for 10 minutes.</p><ul><li><p>As an action you can touch the object and can change who you designated to be able to open the door manually.</p></li><li><p>While affected by this spell, the object is more difficult to break or force open; the DC to break it or pick any locks on it increases to 20 + the spell slot level you used to cast this spell. Forcibly picking the lock or breaking the object open ends this spell.</p></li></ul>",
+            "chat": "<div class=\"rd__b  rd__b--3\"><p><strong>Materials:</strong><span style=\"font-family:Signika, sans-serif\"> You require 0.1 pounds of pure @UUID[Compendium.elkan5e.elkan5e-spells.Item.Ia9Kl5nqaJlv67VI]{gold dust}, typically valued at 25 gold. This spell consumes this material.</span></p></div><p><strong>Utility Spell</strong></p><p>You and the creatures you designate when you cast this spell can open the object normally. You also set a password that, when spoken within 5 feet of the object, suppresses this spell for 1 minute. Otherwise, it is impassable until it is broken or the spell is dispelled or suppressed. Casting <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.ImAJahFvkxJnFmaC]{knock} </em>on the object suppresses arcane lock for 10 minutes.</p><ul><li><p>As an action you can touch the object and can change who you designated to be able to open the door manually.</p></li><li><p>While affected by this spell, the object is more difficult to break or force open; the DC to break it or pick any locks on it increases to 20 + the spell slot level you used to cast this spell.</p></li></ul>"
+        },
+        "source": {
+            "custom": "elkan5e.com/spells/arcane-lock",
+            "revision": 1,
+            "rules": "",
+            "book": "",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "action",
+            "condition": "",
+            "value": 1
+        },
+        "duration": {
+            "value": "",
+            "units": "perm"
+        },
+        "target": {
+            "affects": {
+                "type": "object",
+                "count": "1",
+                "choice": false,
+                "special": ""
+            },
+            "template": {
+                "units": "",
+                "contiguous": false,
+                "type": ""
+            }
+        },
+        "range": {
+            "units": "touch",
+            "special": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "ability": "",
+        "level": 2,
+        "school": "abj",
+        "materials": {
+            "value": "Gold dust worth at least 25 gp, which the spell consumes.",
+            "consumed": true,
+            "cost": 25,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": true
+        },
+        "properties": [
+            "vocal",
+            "somatic",
+            "material",
+            "ritual"
+        ],
+        "activities": {
+            "dnd5eactivity000": {
+                "_id": "dnd5eactivity000",
+                "type": "utility",
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [
+                        {
+                            "type": "itemUses",
+                            "target": "Compendium.elkan5e.elkan5e-spells.Item.Ia9Kl5nqaJlv67VI",
+                            "value": "1",
+                            "scaling": {
+                                "mode": "",
+                                "formula": ""
+                            }
+                        }
+                    ],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "max": "",
+                    "recovery": []
+                },
+                "roll": {
+                    "formula": "",
+                    "name": "",
+                    "prompt": false,
+                    "visible": false
+                },
+                "sort": 0
+            },
+            "ibde1HzARXSDqGxO": {
+                "type": "utility",
+                "activation": {
+                    "type": "minute",
+                    "value": 1,
+                    "override": true,
+                    "condition": ""
+                },
+                "consumption": {
+                    "targets": [
+                        {
+                            "type": "itemUses",
+                            "value": "1",
+                            "target": "Compendium.elkan5e.elkan5e-spells.Item.Ia9Kl5nqaJlv67VI",
+                            "scaling": {
+                                "mode": ""
+                            }
+                        }
+                    ],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": false
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "max": "",
+                    "recovery": []
+                },
+                "roll": {
+                    "formula": "",
+                    "name": "",
+                    "prompt": false,
+                    "visible": false
+                },
+                "sort": 0,
+                "useConditionText": "",
+                "useConditionReason": "",
+                "effectConditionText": "",
+                "macroData": {
+                    "name": "",
+                    "command": ""
+                },
+                "ignoreTraits": {
+                    "idi": false,
+                    "idr": false,
+                    "idv": false,
+                    "ida": false
+                },
+                "midiProperties": {
+                    "ignoreTraits": [],
+                    "triggeredActivityId": "none",
+                    "triggeredActivityConditionText": "",
+                    "triggeredActivityTargets": "targets",
+                    "triggeredActivityRollAs": "self",
+                    "forceDialog": false,
+                    "confirmTargets": "default",
+                    "autoTargetType": "any",
+                    "autoTargetAction": "default",
+                    "automationOnly": false,
+                    "otherActivityCompatible": true,
+                    "identifier": "",
+                    "displayActivityName": false,
+                    "rollMode": "default",
+                    "chooseEffects": false,
+                    "toggleEffect": false,
+                    "ignoreFullCover": false
+                },
+                "isOverTimeFlag": false,
+                "overTimeProperties": {
+                    "saveRemoves": true,
+                    "preRemoveConditionText": "",
+                    "postRemoveConditionText": ""
+                },
+                "otherActivityId": "none",
+                "_id": "ibde1HzARXSDqGxO",
+                "name": "Ritual",
+                "img": "",
+                "appliedEffects": []
+            }
+        },
+        "identifier": ""
+    },
+    "ownership": {
+        "default": 0,
+        "ymJDAw0PgXIWIHMH": 3,
+        "MKYWAnkTJr0gkDqT": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.3.8",
+        "createdTime": 1726952203650,
+        "modifiedTime": 1745205032147,
+        "lastModifiedBy": "ymGs3J4QpWbCOXON"
+    },
+    "_id": "fsKqUGAIN0YXi4Dm",
+    "sort": 4500000,
+    "_key": "!items!fsKqUGAIN0YXi4Dm"
 }
