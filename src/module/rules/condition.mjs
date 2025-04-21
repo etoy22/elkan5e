@@ -3,7 +3,7 @@
  */
 export function conditions() {
     const CONDITION_ICONS = [
-        "blinded", "charmed", "deafened", "frightened", "grappled", "incapacitated",
+        "blinded", "charmed", "cursed", "deafened", "frightened", "grappled", "incapacitated",
         "invisible", "restrained", "paralyzed", "petrified", "poisoned", "prone",
         "stunned", "unconscious"
     ];
@@ -112,7 +112,7 @@ export function conditions() {
 */
 export function icons() {
     const STATUS_ICONS = [
-        "dead", "blinded", "charmed", "concentrating", "deafened", "diseased",
+        "dead", "blinded", "charmed", "concentrating", "cursed", "deafened", "diseased",
         "frightened", "grappled", "incapacitated", "invisible", "paralyzed",
         "petrified", "poisoned", "prone", "restrained", "surprised", "stunned",
         "unconscious", "silenced"
