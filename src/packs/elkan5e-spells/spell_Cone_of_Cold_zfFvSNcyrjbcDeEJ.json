@@ -1,0 +1,223 @@
+{
+  "name": "Cone of Cold",
+  "type": "spell",
+  "img": "icons/magic/air/wind-tornado-wall-blue.webp",
+  "effects": [],
+  "folder": "PnZJTE6T4UQY81Pm",
+  "flags": {
+    "core": {},
+    "midi-qol": {
+      "onUseMacroName": "",
+      "effectActivation": false,
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "halfdam": false,
+      "fulldam": false,
+      "rollOther": false,
+      "critOther": false,
+      "concentration": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "saveDamage": "default",
+      "bonusSaveDamage": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic",
+        "material"
+      ]
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<div class=\"rd__b  rd__b--3\"><p><strong>Constitution Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 8d8 cold]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul></div><div class=\"rd__b  rd__b--3\"><div class=\"rd__b  rd__b--3\"><p></p><p><strong>*Upcasting</strong>: Increase damage by [[/damage 1d8 cold]]{1d8} for each spell level above 5th.</p></div></div><div class=\"rd__b  rd__b--3\"><p><em>Creatures killed by this spell become frozen statues until they thaw.</em></p></div>",
+      "chat": "<div class=\"rd__b  rd__b--3\"><p><strong>Constitution Save</strong></p><ul><li><p><strong>Failure:</strong> [[/damage 8d8 cold]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul></div><div class=\"rd__b  rd__b--3\"><div class=\"rd__b  rd__b--3\"><p></p><p><span style=\"font-family:Signika, sans-serif\"><strong style=\"box-sizing:border-box;user-select:text;color:rgb(25, 24, 19);font-family:Signika, sans-serif;font-size:13px;font-style:normal;font-variant-ligatures:normal;font-variant-caps:normal;letter-spacing:normal;orphans:2;text-align:start;text-indent:0px;text-transform:none;white-space:normal;widows:2;word-spacing:0px;-webkit-text-stroke-width:0px;text-decoration-thickness:initial;text-decoration-style:initial;text-decoration-color:initial\">*</strong></span><strong>Upcasting</strong>: Increase damage by [[/damage 1d8 cold]]{1d8} for each spell level above 5th.</p></div></div><div class=\"rd__b  rd__b--3\"><p><em>Creatures killed by this spell become frozen statues until they thaw.</em></p></div>"
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/cone-of-cold",
+      "revision": 1,
+      "rules": "",
+      "book": "",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "",
+      "units": "inst"
+    },
+    "target": {
+      "affects": {
+        "choice": false,
+        "count": "",
+        "type": ""
+      },
+      "template": {
+        "units": "ft",
+        "type": "cone",
+        "size": "60",
+        "contiguous": false,
+        "count": ""
+      }
+    },
+    "range": {
+      "value": "0",
+      "units": "self",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 5,
+    "school": "evo",
+    "materials": {
+      "value": "a small crystal or glass cone",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material"
+    ],
+    "activities": {
+      "BDXA7v4Er71yRjU5": {
+        "type": "save",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "number": 8,
+              "denomination": 8,
+              "bonus": "",
+              "types": [
+                "cold"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "whole",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": "con",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": []
+        },
+        "sort": 0,
+        "_id": "BDXA7v4Er71yRjU5"
+      }
+    },
+    "identifier": ""
+  },
+  "ownership": {
+    "default": 0,
+    "VJURYym0JQByHBQL": 3,
+    "ymJDAw0PgXIWIHMH": 3,
+    "MKYWAnkTJr0gkDqT": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.3.8",
+    "createdTime": 1726952206916,
+    "modifiedTime": 1744687901981,
+    "lastModifiedBy": "fgP8EzWy33UFoZmI"
+  },
+  "_id": "zfFvSNcyrjbcDeEJ",
+  "sort": 3600000,
+  "_key": "!items!zfFvSNcyrjbcDeEJ"
+}

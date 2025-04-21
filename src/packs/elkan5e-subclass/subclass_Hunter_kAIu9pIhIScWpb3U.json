@@ -1,0 +1,163 @@
+{
+  "_id": "kAIu9pIhIScWpb3U",
+  "name": "Hunter",
+  "type": "subclass",
+  "img": "icons/skills/ranged/arrow-flying-spiral-blue.webp",
+  "effects": [],
+  "folder": "FE9p4vuccVgBLy1d",
+  "sort": 200000,
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.dnd5e.subclasses.uqd2q6WjVfcsaaGb"
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p>Rangers belonging to the Hunter Conclave specialize in hunting creatures that pose a threat to civilization or the wild. They hone their fighting skills and reflexes beyond the limits of most rangers. You should play a hunter if you want to be an exceptionally agile fighter who exemplified the peak of physical ability for a ranger. Some hunters also specialize in fighting groups of enemies.</p><table class=\"features-table\" data-toc-level=\"3\" style=\"text-align:left\"><caption style=\"text-align:center\">The Hunter</caption><colgroup><col class=\"level\" style=\"text-align:left\"></col><col class=\"features\" style=\"text-align:left\"></col></colgroup><thead><tr><th scope=\"col\">Level</th><th scope=\"col\" style=\"text-align:left\">Features</th></tr></thead><tbody><tr><td class=\"level\" style=\"padding-right:10px\">3</td><td class=\"features\">@UUID[Compendium.elkan5e.elkan5e-class-features.Item.yO5wCIjqp2yIGr1n]{Scent of Blood} or @UUID[Compendium.elkan5e.elkan5e-class-features.Item.4fuU7shxI8WsQdQQ]{Horde Breaker} or @UUID[Compendium.elkan5e.elkan5e-class-features.Item.McUrekQH8xZiGY80]{Riposte}</td></tr><tr><td class=\"level\" style=\"padding-right:10px\">6</td><td class=\"features\">@UUID[Compendium.elkan5e.elkan5e-class-features.Item.heQdOB3wnAhccHoS]{Evasion}</td></tr><tr><td class=\"level\" style=\"padding-right:10px\">11</td><td class=\"features\">@UUID[Compendium.elkan5e.elkan5e-class-features.Item.Yhr2ITGz0N6WkPrU]{Extra Attack (3 Attacks)}</td></tr><tr><td class=\"level\" style=\"padding-right:10px\">14</td><td class=\"features\">@UUID[Compendium.elkan5e.elkan5e-class-features.Item.yO5wCIjqp2yIGr1n]{Scent of Blood} or @UUID[Compendium.elkan5e.elkan5e-class-features.Item.4fuU7shxI8WsQdQQ]{Horde Breaker} or @UUID[Compendium.elkan5e.elkan5e-class-features.Item.McUrekQH8xZiGY80]{Riposte}</td></tr></tbody></table>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Elkan 5e",
+      "page": "",
+      "custom": "elkan5e.com/ranger",
+      "license": "",
+      "rules": "",
+      "revision": 1
+    },
+    "identifier": "",
+    "classIdentifier": "ranger",
+    "advancement": [
+      {
+        "_id": "gia6u4kb86to8zu2",
+        "type": "ItemGrant",
+        "configuration": {
+          "items": [
+            {
+              "uuid": "Compendium.elkan5e.elkan5e-class-features.Item.heQdOB3wnAhccHoS",
+              "optional": false
+            }
+          ],
+          "optional": false,
+          "spell": null
+        },
+        "value": {},
+        "level": 6,
+        "title": "Hunter Feature",
+        "icon": null
+      },
+      {
+        "_id": "fFIkWbCMbGqjKM3A",
+        "type": "ItemChoice",
+        "configuration": {
+          "choices": {
+            "3": {
+              "count": 1,
+              "replacement": false
+            }
+          },
+          "allowDrops": true,
+          "type": "feat",
+          "pool": [
+            {
+              "uuid": "Compendium.elkan5e.elkan5e-class-features.Item.yO5wCIjqp2yIGr1n"
+            },
+            {
+              "uuid": "Compendium.elkan5e.elkan5e-class-features.Item.4fuU7shxI8WsQdQQ"
+            },
+            {
+              "uuid": "Compendium.elkan5e.elkan5e-class-features.Item.McUrekQH8xZiGY80"
+            }
+          ],
+          "spell": null,
+          "restriction": {
+            "type": "class",
+            "subtype": "huntersPrey"
+          }
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        },
+        "title": "Hunter's Prey",
+        "hint": "At 3rd level, you gain one of the following features of your choice."
+      },
+      {
+        "_id": "5mvPf2tR42E5OjDl",
+        "type": "ItemChoice",
+        "configuration": {
+          "choices": {
+            "14": {
+              "count": 1,
+              "replacement": false
+            }
+          },
+          "allowDrops": true,
+          "type": "feat",
+          "pool": [
+            {
+              "uuid": "Compendium.elkan5e.elkan5e-class-features.Item.4fuU7shxI8WsQdQQ"
+            },
+            {
+              "uuid": "Compendium.elkan5e.elkan5e-class-features.Item.McUrekQH8xZiGY80"
+            },
+            {
+              "uuid": "Compendium.elkan5e.elkan5e-class-features.Item.yO5wCIjqp2yIGr1n"
+            }
+          ],
+          "spell": null,
+          "restriction": {
+            "type": "subclass",
+            "subtype": ""
+          }
+        },
+        "value": {
+          "added": {},
+          "replaced": {}
+        },
+        "title": "Improved Hunter's Prey",
+        "hint": "Choose another option from the 3rd level Hunter's Prey ability:"
+      },
+      {
+        "_id": "JOWiKhc9J6BBVUpx",
+        "type": "ItemGrant",
+        "configuration": {
+          "items": [
+            {
+              "uuid": "Compendium.elkan5e.elkan5e-class-features.Item.Yhr2ITGz0N6WkPrU",
+              "optional": false
+            }
+          ],
+          "optional": false,
+          "spell": null
+        },
+        "value": {},
+        "level": 11,
+        "title": "Hunter Feature",
+        "icon": null
+      }
+    ],
+    "spellcasting": {
+      "progression": "none",
+      "ability": "",
+      "preparation": {
+        "formula": ""
+      }
+    }
+  },
+  "ownership": {
+    "default": 0,
+    "ymJDAw0PgXIWIHMH": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "_stats": {
+    "compendiumSource": "Compendium.dnd5e.subclasses.uqd2q6WjVfcsaaGb",
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.3.8",
+    "createdTime": 1726952201117,
+    "modifiedTime": 1744082331967,
+    "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
+  },
+  "_key": "!items!kAIu9pIhIScWpb3U"
+}

@@ -1,0 +1,354 @@
+{
+  "name": "Dark One's Blessing",
+  "type": "feat",
+  "img": "icons/creatures/unholy/demon-horned-winged-laughing.webp",
+  "effects": [
+    {
+      "name": "Dark One's Blessing",
+      "changes": [
+        {
+          "key": "system.bonuses.mwak.damage",
+          "mode": 2,
+          "value": "+1d4[fire]",
+          "priority": 20
+        },
+        {
+          "key": "system.bonuses.rwak.damage",
+          "mode": 2,
+          "value": "+1d4[fire]",
+          "priority": 20
+        },
+        {
+          "key": "macro.createItem",
+          "mode": 0,
+          "value": "Compendium.elkan5e.elkan5e-class-features.Item.ncz6URImyQtFOexw",
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "img": "icons/creatures/unholy/demon-horned-winged-laughing.webp",
+      "_id": "kbflvNVMlNexwjZE",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": 60,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [],
+          "enableCondition": "",
+          "disableCondition": ""
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system"
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.2",
+        "createdTime": null,
+        "modifiedTime": 1730171374207,
+        "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+      },
+      "_key": "!items.effects!O1owFjLB6wfrqs0J.kbflvNVMlNexwjZE"
+    }
+  ],
+  "folder": "ruoNuxxnmurwszYF",
+  "flags": {
+    "core": {},
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "reactionCondition": "",
+      "AoETargetType": "any",
+      "autoTarget": "default",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "noConcentrationCheck": false,
+      "confirmTargets": "default",
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>Your patron's power overtakes you. You take on a fiendish appearance similar to your patron, and while they allow you to leach life from creatures you kill, the power threatens your life at the end of the transformation.</em></p><p><strong>Bonus Action</strong> - Self - 1 Minute - 3/Long Rest - Magical</p><p>You gain the following effects for 1 minute:</p><ul><li><p>Your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.FHiTJvr5Nbb7HsgX]{Eldritch Blasts} and weapon attacks do an extra [[/damage 1d4 fire]] damage.</p></li><li><p>When you kill a hostile creature, you gain temporary hit points equal to 5 + your warlock level. If the creature's hit point maximum is lower than this total, you instead gain temporary hit points equal to the creature's hit point maximum.​​</p></li></ul>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "elkan5e.com/warlock",
+      "revision": 1,
+      "rules": "",
+      "book": "",
+      "page": "",
+      "license": ""
+    },
+    "uses": {
+      "max": "3",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
+      "spent": 0
+    },
+    "type": {
+      "value": "subclass",
+      "subtype": ""
+    },
+    "requirements": "Fiend 3",
+    "properties": [
+      "mgc"
+    ],
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "heal",
+        "activation": {
+          "type": "nocost",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "",
+          "units": "inst",
+          "special": "",
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": ""
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "healing": {
+          "number": null,
+          "denomination": null,
+          "bonus": "",
+          "types": [
+            "temphp"
+          ],
+          "custom": {
+            "enabled": true,
+            "formula": "max(1, 5 + @classes.warlock.levels)"
+          },
+          "scaling": {
+            "mode": "whole",
+            "number": null,
+            "formula": ""
+          }
+        },
+        "sort": 100000,
+        "name": "On Kill",
+        "img": "",
+        "appliedEffects": []
+      },
+      "c5OoIHeK34ZeS7fO": {
+        "type": "utility",
+        "_id": "c5OoIHeK34ZeS7fO",
+        "sort": 0,
+        "activation": {
+          "type": "bonus",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "kbflvNVMlNexwjZE"
+          }
+        ],
+        "range": {
+          "override": false,
+          "units": "self",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": "self"
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "name": "Start Ability",
+        "img": "",
+        "appliedEffects": [
+          "kbflvNVMlNexwjZE"
+        ]
+      }
+    },
+    "identifier": "",
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    }
+  },
+  "ownership": {
+    "default": 0,
+    "ymJDAw0PgXIWIHMH": 3,
+    "3Yi0HjF4PKCA4vX0": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.3.3",
+    "createdTime": 1726952010850,
+    "modifiedTime": 1740002808881,
+    "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
+  },
+  "_id": "O1owFjLB6wfrqs0J",
+  "sort": 0,
+  "_key": "!items!O1owFjLB6wfrqs0J"
+}
