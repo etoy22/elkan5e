@@ -1,0 +1,224 @@
+{
+    "name": "Circle of Death",
+    "type": "spell",
+    "img": "icons/creatures/eyes/void-single-black-purple.webp",
+    "effects": [],
+    "folder": "sDaRY0H81UTha6hq",
+    "flags": {
+        "midi-qol": {
+            "onUseMacroName": "",
+            "effectActivation": false,
+            "removeAttackDamageButtons": "default",
+            "AoETargetType": "any",
+            "AoETargetTypeIncludeSelf": true,
+            "autoTarget": "default",
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "effectCondition": "",
+            "reactionCondition": "",
+            "otherCondition": ""
+        },
+        "core": {},
+        "midiProperties": {
+            "nodam": false,
+            "halfdam": false,
+            "fulldam": false,
+            "rollOther": false,
+            "critOther": false,
+            "concentration": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "confirmTargets": "default",
+            "saveDamage": "default",
+            "noConcentrationCheck": false,
+            "bonusSaveDamage": "default",
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedProperties": [
+                "vocal",
+                "somatic",
+                "material"
+            ]
+        },
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<div class=\"rd__b  rd__b--3\"><p>A sphere of negative energy ripples out in a 60-foot-radius sphere from a point within range. Each creature in that area must make a Constitution saving throw. A target takes [[/r 8d6]] necrotic damage on a failed save, or half as much damage on a successful one.</p><p></p><div class=\"rd__b  rd__b--3\"><p><strong>*Upcasting</strong>: Increase damage by [[/damage 2d6 necrotic]]{2d6} for each spell level above 6th.</p></div></div>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "Elkan 5e",
+            "revision": 1,
+            "rules": "",
+            "book": "",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "action",
+            "condition": "",
+            "value": 1
+        },
+        "duration": {
+            "value": "",
+            "units": "inst"
+        },
+        "target": {
+            "affects": {
+                "choice": false,
+                "count": "",
+                "type": ""
+            },
+            "template": {
+                "units": "ft",
+                "type": "cylinder",
+                "size": "60",
+                "contiguous": false,
+                "height": "",
+                "count": ""
+            }
+        },
+        "range": {
+            "value": "150",
+            "units": "ft",
+            "special": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "ability": "",
+        "level": 6,
+        "school": "nec",
+        "materials": {
+            "value": "the powder of a crushed black pearl worth at least 500 gp",
+            "consumed": false,
+            "cost": 500,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": true
+        },
+        "properties": [
+            "vocal",
+            "somatic",
+            "material"
+        ],
+        "activities": {
+            "8Y041rs3vcMcxRcH": {
+                "type": "save",
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "damage": {
+                    "onSave": "half",
+                    "parts": [
+                        {
+                            "number": 8,
+                            "denomination": 6,
+                            "bonus": "",
+                            "types": [
+                                "necrotic"
+                            ],
+                            "custom": {
+                                "enabled": false,
+                                "formula": ""
+                            },
+                            "scaling": {
+                                "mode": "whole",
+                                "number": 2,
+                                "formula": ""
+                            }
+                        }
+                    ]
+                },
+                "save": {
+                    "ability": "con",
+                    "dc": {
+                        "calculation": "spellcasting",
+                        "formula": ""
+                    }
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": []
+                },
+                "sort": 0,
+                "_id": "8Y041rs3vcMcxRcH"
+            }
+        },
+        "identifier": ""
+    },
+    "ownership": {
+        "default": 0,
+        "VJURYym0JQByHBQL": 3,
+        "ymJDAw0PgXIWIHMH": 3,
+        "MKYWAnkTJr0gkDqT": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.4",
+        "createdTime": 1726952206539,
+        "modifiedTime": 1737428877215,
+        "lastModifiedBy": "ymGs3J4QpWbCOXON"
+    },
+    "_id": "xnhX9BjSIuRVNyyI",
+    "sort": 3000000,
+    "_key": "!items!xnhX9BjSIuRVNyyI"
+}

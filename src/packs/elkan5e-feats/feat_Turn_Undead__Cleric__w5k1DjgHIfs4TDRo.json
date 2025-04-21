@@ -1,0 +1,280 @@
+{
+    "name": "Turn Undead (Cleric)",
+    "ownership": {
+        "default": 0,
+        "3Yi0HjF4PKCA4vX0": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "type": "feat",
+    "system": {
+        "description": {
+            "value": "<p><em><strong>Prerequisite: @UUID[Compendium.elkan5e.elkan5e-class.Item.Z68Q5K5fejrVQZAy]{Cleric} Level 4</strong></em></p><p><em>You present your holy symbol and speak a prayer censuring the undead.</em></p><p><strong>Action</strong> - Undead in a 30 ft. Radius - 1 Minute - Magical</p><p>This consumes one use of your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.WKKAHUBp42287xui]{Channel Divinity} feature.</p><p><strong>Wisdom Save</strong></p><ul><li><p><strong>Failure:</strong> Target &amp;reference[undead] are &amp;reference[frightened] for 1 minute. Target rolls again at end of their turns, ending effect on success. While frightened in this way, a creature must spend its turns trying to move as far away from you as it can. It also can't take reactions. For its action, it can use only the &amp;reference[Dash] action or try to escape from an effect that prevents it from moving. If neither of these options helps the creature escape you, the creature can use the &amp;reference[Dodge] action.</p></li><li><p><strong>Failure:</strong> If the turned undead's hit point maximum is equal to or less than three times your cleric level, it is destroyed. </p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "elkan5e.com/feats/turn-undead",
+            "revision": 1,
+            "rules": "",
+            "book": "",
+            "page": "",
+            "license": ""
+        },
+        "uses": {
+            "max": "",
+            "spent": 0,
+            "recovery": []
+        },
+        "type": {
+            "value": "feat",
+            "subtype": ""
+        },
+        "requirements": "Feat (Cleric Level 4)",
+        "prerequisites": {
+            "level": 4
+        },
+        "properties": [
+            "mgc"
+        ],
+        "activities": {
+            "dnd5eactivity000": {
+                "name": "",
+                "img": "",
+                "target": {
+                    "affects": {
+                        "count": ""
+                    }
+                },
+                "consumption": {
+                    "targets": [
+                        {
+                            "type": "itemUses",
+                            "value": "1",
+                            "target": "Compendium.elkan5e.elkan5e-class-features.Item.WKKAHUBp42287xui",
+                            "scaling": {}
+                        }
+                    ]
+                },
+                "appliedEffects": [
+                    "3wxkJYzkpSdZIb5y"
+                ],
+                "damage": {
+                    "onSave": "none"
+                }
+            },
+            "rijRyf9emQ3kgTXO": {
+                "type": "save",
+                "_id": "rijRyf9emQ3kgTXO",
+                "sort": 0,
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false,
+                    "condition": ""
+                },
+                "consumption": {
+                    "scaling": {
+                        "allowed": false
+                    },
+                    "spellSlot": true,
+                    "targets": []
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [
+                    {
+                        "_id": "SLTwhHpsLQzYrbal",
+                        "onSave": false
+                    }
+                ],
+                "range": {
+                    "override": false,
+                    "units": "self",
+                    "special": ""
+                },
+                "target": {
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft",
+                        "type": ""
+                    },
+                    "affects": {
+                        "choice": false,
+                        "count": "",
+                        "type": ""
+                    },
+                    "override": false,
+                    "prompt": true
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "damage": {
+                    "parts": [],
+                    "onSave": "none"
+                },
+                "save": {
+                    "ability": "wis",
+                    "dc": {
+                        "calculation": "",
+                        "formula": ""
+                    }
+                },
+                "name": "",
+                "img": "",
+                "appliedEffects": [
+                    "SLTwhHpsLQzYrbal"
+                ],
+                "effectConditionText": "!target.traits.ci.value.has('frightened') && raceOrType.includes(\"undead\"))"
+            }
+        },
+        "identifier": "",
+        "enchant": {}
+    },
+    "flags": {
+        "core": {},
+        "midi-qol": {
+            "effectActivation": false,
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "effectCondition": "",
+            "reactionCondition": "",
+            "removeAttackDamageButtons": "default",
+            "otherCondition": ""
+        },
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "rollOther": false,
+            "critOther": false,
+            "offHandWeapon": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "ignoreTotalCover": false,
+            "noConcentrationCheck": false,
+            "confirmTargets": "default",
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            }
+        },
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
+        }
+    },
+    "img": "icons/magic/fire/flame-burning-creature-skeleton.webp",
+    "effects": [
+        {
+            "name": "Turn Undead",
+            "origin": "Compendium.elkan5e.elkan5e-feats.Item.w5k1DjgHIfs4TDRo",
+            "changes": [
+                {
+                    "key": "flags.midi-qol.OverTime",
+                    "mode": 2,
+                    "value": "turn=end,\nsaveAbility=wis,\nsaveDC=@attributes.spelldc,\nsaveMagic=true,\nlabel=Fear",
+                    "priority": 20
+                }
+            ],
+            "transfer": false,
+            "flags": {
+                "dae": {
+                    "itemName": "Fear",
+                    "disableIncapacitated": false,
+                    "stackable": "noneName",
+                    "showIcon": false,
+                    "durationExpression": "",
+                    "macroRepeat": "none",
+                    "specialDuration": [],
+                    "selfTarget": false,
+                    "selfTargetAlways": false,
+                    "dontApply": false,
+                    "enableCondition": "",
+                    "disableCondition": ""
+                },
+                "ActiveAuras": {
+                    "isAura": false,
+                    "aura": "None",
+                    "nameOverride": "",
+                    "radius": "",
+                    "alignment": "",
+                    "type": "",
+                    "customCheck": "",
+                    "ignoreSelf": false,
+                    "height": false,
+                    "hidden": false,
+                    "displayTemp": false,
+                    "hostile": false,
+                    "onlyOnce": false,
+                    "wallsBlock": "system"
+                },
+                "core": {
+                    "overlay": false
+                }
+            },
+            "img": "icons/magic/fire/flame-burning-creature-skeleton.webp",
+            "_id": "SLTwhHpsLQzYrbal",
+            "type": "base",
+            "system": {},
+            "disabled": false,
+            "duration": {
+                "startTime": null,
+                "seconds": null,
+                "combat": null,
+                "rounds": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null
+            },
+            "description": "",
+            "tint": "#ffffff",
+            "statuses": [
+                "exhaustion"
+            ],
+            "sort": 0,
+            "_stats": {
+                "compendiumSource": "Compendium.elkan5e.elkan5e-spells.Item.GBsOYscOZmOZy0Ff.ActiveEffect.l6OewsHuJoP9Q3sg",
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.0.2",
+                "createdTime": 1726957271729,
+                "modifiedTime": 1728947146653,
+                "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+            },
+            "_key": "!items.effects!w5k1DjgHIfs4TDRo.SLTwhHpsLQzYrbal"
+        }
+    ],
+    "folder": "ogte6xIATR5ia9jb",
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.4",
+        "createdTime": 1726952213938,
+        "modifiedTime": 1741046686702,
+        "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
+    },
+    "_id": "w5k1DjgHIfs4TDRo",
+    "sort": 100000,
+    "_key": "!items!w5k1DjgHIfs4TDRo"
+}

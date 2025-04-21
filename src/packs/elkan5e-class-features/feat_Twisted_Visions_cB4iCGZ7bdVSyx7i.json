@@ -1,0 +1,291 @@
+{
+    "folder": "uAITj5I2TQ6QjXIW",
+    "name": "Twisted Visions",
+    "type": "feat",
+    "_id": "cB4iCGZ7bdVSyx7i",
+    "img": "icons/magic/nature/root-vine-thorned-fire-purple.webp",
+    "system": {
+        "activities": {
+            "JpeiJL8ZUsOwhLTw": {
+                "type": "save",
+                "_id": "JpeiJL8ZUsOwhLTw",
+                "sort": 0,
+                "activation": {
+                    "type": "nocost",
+                    "value": null,
+                    "override": false,
+                    "condition": ""
+                },
+                "consumption": {
+                    "scaling": {
+                        "allowed": false
+                    },
+                    "spellSlot": true,
+                    "targets": [
+                        {
+                            "type": "itemUses",
+                            "value": "1",
+                            "target": ""
+                        }
+                    ]
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [
+                    {
+                        "_id": "rioT6iHXIleLvyoE"
+                    }
+                ],
+                "range": {
+                    "override": false,
+                    "units": "any",
+                    "special": ""
+                },
+                "target": {
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft",
+                        "type": ""
+                    },
+                    "affects": {
+                        "choice": false,
+                        "type": "creature",
+                        "count": "",
+                        "special": ""
+                    },
+                    "override": false,
+                    "prompt": true
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "damage": {
+                    "parts": [
+                        {
+                            "custom": {
+                                "enabled": false,
+                                "formula": ""
+                            },
+                            "number": 6,
+                            "denomination": "6",
+                            "bonus": "",
+                            "types": [
+                                "psychic"
+                            ]
+                        }
+                    ],
+                    "critical": {
+                        "allow": false
+                    },
+                    "onSave": "half"
+                },
+                "save": {
+                    "ability": [],
+                    "dc": {
+                        "calculation": "spellcasting",
+                        "formula": ""
+                    }
+                },
+                "useConditionText": "",
+                "effectConditionText": "!target.traits.ci.value.has('frightened')",
+                "macroData": {
+                    "name": "",
+                    "command": ""
+                },
+                "ignoreTraits": {
+                    "idi": false,
+                    "idr": false,
+                    "idv": false,
+                    "ida": false
+                },
+                "midiProperties": {
+                    "ignoreTraits": [],
+                    "triggeredActivityId": "none",
+                    "triggeredActivityConditionText": "",
+                    "triggeredActivityTargets": "targets",
+                    "triggeredActivityRollAs": "self",
+                    "forceDialog": false,
+                    "confirmTargets": "default",
+                    "autoTargetType": "any",
+                    "autoTargetAction": "default",
+                    "automationOnly": false,
+                    "otherActivityCompatible": true,
+                    "identifier": ""
+                },
+                "name": "",
+                "img": "",
+                "appliedEffects": [
+                    "rioT6iHXIleLvyoE"
+                ]
+            }
+        },
+        "uses": {
+            "spent": 0,
+            "recovery": [
+                {
+                    "period": "lr",
+                    "type": "recoverAll"
+                }
+            ],
+            "max": "3"
+        },
+        "description": {
+            "value": "<p><strong>No Action Cost</strong> - 1 Creature - 1 Round - Magical</p><p>When you use @UUID[Compendium.elkan5e.elkan5e-class-features.Item.LkbTss8XzxMinCPZ]{Misty Misdirect}, you can choose to afflict the creature who attacked you.</p><p><strong>Wisdom Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 6d6 psychic]] damage and is &amp;reference[frightened] of you.</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li></ul>",
+            "chat": ""
+        },
+        "identifier": "",
+        "source": {
+            "revision": 1,
+            "rules": "",
+            "book": "",
+            "page": "",
+            "custom": "elkan5e.com/warlock",
+            "license": ""
+        },
+        "advancement": [],
+        "cover": null,
+        "crewed": false,
+        "enchant": {},
+        "prerequisites": {
+            "level": 14,
+            "repeatable": false
+        },
+        "properties": [
+            "mgc"
+        ],
+        "requirements": "Fey 14",
+        "type": {
+            "value": "subclass",
+            "subtype": ""
+        }
+    },
+    "effects": [
+        {
+            "name": "Twisted Visions",
+            "img": "icons/magic/nature/root-vine-thorned-fire-purple.webp",
+            "origin": "Compendium.elkan5e.elkan5e-class-features.Item.cB4iCGZ7bdVSyx7i",
+            "transfer": false,
+            "_id": "rioT6iHXIleLvyoE",
+            "type": "base",
+            "system": {},
+            "changes": [],
+            "disabled": false,
+            "duration": {
+                "startTime": null,
+                "seconds": 7,
+                "combat": null,
+                "rounds": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null
+            },
+            "description": "",
+            "tint": "#ffffff",
+            "statuses": [
+                "frightened"
+            ],
+            "sort": 0,
+            "flags": {
+                "dae": {
+                    "enableCondition": "",
+                    "disableCondition": "",
+                    "disableIncapacitated": false,
+                    "selfTarget": false,
+                    "selfTargetAlways": false,
+                    "dontApply": false,
+                    "stackable": "multi",
+                    "showIcon": false,
+                    "durationExpression": "",
+                    "macroRepeat": "none",
+                    "specialDuration": [
+                        "turnEnd"
+                    ]
+                },
+                "core": {
+                    "overlay": false
+                },
+                "ActiveAuras": {
+                    "isAura": false,
+                    "aura": "None",
+                    "nameOverride": "",
+                    "radius": "",
+                    "alignment": "",
+                    "type": "",
+                    "customCheck": "",
+                    "ignoreSelf": false,
+                    "height": false,
+                    "hidden": false,
+                    "displayTemp": false,
+                    "hostile": false,
+                    "onlyOnce": false,
+                    "wallsBlock": "system",
+                    "statuses": []
+                }
+            },
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.2.2",
+                "createdTime": 1739248132491,
+                "modifiedTime": 1739248150124,
+                "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
+            },
+            "_key": "!items.effects!cB4iCGZ7bdVSyx7i.rioT6iHXIleLvyoE"
+        }
+    ],
+    "sort": 0,
+    "ownership": {
+        "default": 0,
+        "ymGs3J4QpWbCOXON": 3
+    },
+    "flags": {
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
+        },
+        "midi-qol": {
+            "rollAttackPerTarget": "default",
+            "removeAttackDamageButtons": "default",
+            "itemCondition": "",
+            "reactionCondition": "",
+            "otherCondition": "",
+            "effectCondition": ""
+        },
+        "midiProperties": {
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "noConcentrationCheck": false,
+            "toggleEffect": false,
+            "ignoreTotalCover": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            }
+        }
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.2.2",
+        "createdTime": 1739247745365,
+        "modifiedTime": 1739248240817,
+        "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
+    },
+    "_key": "!items!cB4iCGZ7bdVSyx7i"
+}

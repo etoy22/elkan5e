@@ -1,0 +1,298 @@
+{
+    "folder": "qFXBWCjEDflMsWOJ",
+    "name": "Imbue Light (Enchant Weapon)",
+    "type": "feat",
+    "img": "icons/magic/light/projectile-beam-yellow.webp",
+    "system": {
+        "activities": {
+            "7yydVMeCn9hoeVQz": {
+                "type": "enchant",
+                "_id": "7yydVMeCn9hoeVQz",
+                "sort": 0,
+                "activation": {
+                    "type": "nocost",
+                    "value": null,
+                    "override": false,
+                    "condition": ""
+                },
+                "consumption": {
+                    "scaling": {
+                        "allowed": false
+                    },
+                    "spellSlot": true,
+                    "targets": []
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [
+                    {
+                        "_id": "llP8LFalO72CModq",
+                        "level": {
+                            "min": null,
+                            "max": null
+                        },
+                        "riders": {
+                            "activity": [],
+                            "effect": [],
+                            "item": []
+                        }
+                    }
+                ],
+                "range": {
+                    "override": false,
+                    "units": "self",
+                    "special": ""
+                },
+                "target": {
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft",
+                        "type": ""
+                    },
+                    "affects": {
+                        "choice": false,
+                        "type": ""
+                    },
+                    "override": false,
+                    "prompt": true
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "enchant": {
+                    "identifier": "warlock"
+                },
+                "restrictions": {
+                    "allowMagical": true,
+                    "categories": [],
+                    "properties": [],
+                    "type": "weapon"
+                },
+                "useConditionText": "",
+                "useConditionReason": "",
+                "effectConditionText": "",
+                "macroData": {
+                    "name": "",
+                    "command": ""
+                },
+                "ignoreTraits": {
+                    "idi": false,
+                    "idr": false,
+                    "idv": false,
+                    "ida": false
+                },
+                "midiProperties": {
+                    "ignoreTraits": [],
+                    "triggeredActivityId": "none",
+                    "triggeredActivityConditionText": "",
+                    "triggeredActivityTargets": "targets",
+                    "triggeredActivityRollAs": "self",
+                    "forceDialog": false,
+                    "confirmTargets": "default",
+                    "autoTargetType": "any",
+                    "autoTargetAction": "default",
+                    "automationOnly": false,
+                    "otherActivityCompatible": true,
+                    "identifier": "",
+                    "displayActivityName": false,
+                    "rollMode": "default",
+                    "chooseEffects": false
+                },
+                "isOverTimeFlag": false,
+                "overTimeProperties": {
+                    "saveRemoves": true,
+                    "preRemoveConditionText": "",
+                    "postRemoveConditionText": ""
+                },
+                "name": ""
+            }
+        },
+        "uses": {
+            "spent": 0,
+            "recovery": [],
+            "max": ""
+        },
+        "description": {
+            "value": "<p><em>​Your attacks become glowing beams of light.</em></p><p>When you deal damage with @UUID[Compendium.elkan5e.elkan5e-class-features.Item.FHiTJvr5Nbb7HsgX]{Eldritch Blast} or a weapon attack, you can choose to make your attack deal radiant damage.</p>",
+            "chat": ""
+        },
+        "identifier": "imbue-light",
+        "source": {
+            "revision": 1,
+            "rules": "",
+            "book": "",
+            "page": "",
+            "custom": "elkan5e.com/warlock",
+            "license": ""
+        },
+        "advancement": [],
+        "cover": null,
+        "crewed": false,
+        "enchant": {},
+        "prerequisites": {
+            "level": 3,
+            "repeatable": false
+        },
+        "properties": [
+            "mgc"
+        ],
+        "requirements": "Celestial 3",
+        "type": {
+            "value": "subclass",
+            "subtype": ""
+        }
+    },
+    "effects": [
+        {
+            "type": "enchantment",
+            "name": "Imbue Light",
+            "img": "icons/magic/light/projectile-beam-yellow.webp",
+            "disabled": true,
+            "_id": "llP8LFalO72CModq",
+            "system": {},
+            "changes": [
+                {
+                    "key": "system.properties",
+                    "mode": 2,
+                    "value": "mgc",
+                    "priority": 20
+                },
+                {
+                    "key": "system.damage.base.types",
+                    "mode": 5,
+                    "value": "radient",
+                    "priority": 20
+                },
+                {
+                    "key": "system.damage.versatile.types",
+                    "mode": 5,
+                    "value": "radient",
+                    "priority": 20
+                },
+                {
+                    "key": "name",
+                    "mode": 5,
+                    "value": "Light Imbued {}",
+                    "priority": 20
+                }
+            ],
+            "duration": {
+                "startTime": null,
+                "seconds": null,
+                "combat": null,
+                "rounds": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null
+            },
+            "description": "",
+            "origin": null,
+            "tint": "#ffffff",
+            "transfer": false,
+            "statuses": [],
+            "sort": 0,
+            "flags": {
+                "dae": {
+                    "enableCondition": "",
+                    "disableCondition": "",
+                    "stackable": "multi",
+                    "showIcon": false,
+                    "durationExpression": "",
+                    "macroRepeat": "none",
+                    "specialDuration": []
+                },
+                "dnd5e": {
+                    "riders": {
+                        "statuses": []
+                    }
+                },
+                "core": {
+                    "overlay": false
+                },
+                "ActiveAuras": {
+                    "isAura": false,
+                    "aura": "None",
+                    "nameOverride": "",
+                    "radius": "",
+                    "alignment": "",
+                    "type": "",
+                    "customCheck": "",
+                    "ignoreSelf": false,
+                    "height": false,
+                    "hidden": false,
+                    "displayTemp": false,
+                    "hostile": false,
+                    "onlyOnce": false,
+                    "wallsBlock": "system",
+                    "statuses": []
+                }
+            },
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.3.6",
+                "createdTime": null,
+                "modifiedTime": null,
+                "lastModifiedBy": null
+            },
+            "_key": "!items.effects!sh5flVwMuqnyaj8x.llP8LFalO72CModq"
+        }
+    ],
+    "ownership": {
+        "default": 0,
+        "ymGs3J4QpWbCOXON": 3
+    },
+    "flags": {
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
+        },
+        "midi-qol": {
+            "rollAttackPerTarget": "default",
+            "removeAttackDamageButtons": "default",
+            "itemCondition": "",
+            "reactionCondition": "",
+            "otherCondition": "",
+            "effectCondition": "",
+            "fumbleThreshold": null
+        },
+        "midiProperties": {
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "noConcentrationCheck": false,
+            "toggleEffect": false,
+            "ignoreTotalCover": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            }
+        }
+    },
+    "_stats": {
+        "compendiumSource": "Compendium.elkan5e.elkan5e-class-features.Item.A4UCL7CST8SHyeOC",
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.3.8",
+        "createdTime": 1742270546465,
+        "modifiedTime": 1744076237330,
+        "lastModifiedBy": "fgP8EzWy33UFoZmI"
+    },
+    "_id": "sh5flVwMuqnyaj8x",
+    "sort": 200000,
+    "_key": "!items!sh5flVwMuqnyaj8x"
+}

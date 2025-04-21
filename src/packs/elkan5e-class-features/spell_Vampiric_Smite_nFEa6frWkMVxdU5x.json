@@ -1,0 +1,223 @@
+{
+    "folder": "VGAGvD4k9YHm9VSP",
+    "name": "Vampiric Smite",
+    "type": "spell",
+    "_id": "nFEa6frWkMVxdU5x",
+    "img": "icons/weapons/axes/axe-crooked-crystal-pink.webp",
+    "system": {
+        "description": {
+            "value": "<p>When you hit a creature with a weapon attack, you can expend a spell slot to deal &amp;reference[necrotic] damage and regain hit points, in addition to the weapon's damage.</p><ul><li><p><span style=\"font-weight:bold\"><strong>On Hit: </strong></span>Target takes [[/damage 5d6 necrotic]] damage* and you regain hit points equal to half the necrotic damage dealt.</p></li></ul><p>​</p><p>​*<strong>Using Higher Level Spell Slots</strong>: Damage increases by [[/r 1d6]] for each spell level above 4th.</p>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "elkan5e.com/paladin",
+            "revision": 1,
+            "rules": "",
+            "book": "",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "nocost",
+            "condition": "",
+            "value": null
+        },
+        "duration": {
+            "value": "",
+            "units": "inst"
+        },
+        "target": {
+            "affects": {
+                "type": "creature",
+                "count": "1",
+                "choice": false,
+                "special": ""
+            },
+            "template": {
+                "units": "ft",
+                "contiguous": false,
+                "type": ""
+            }
+        },
+        "range": {
+            "units": "self",
+            "special": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "ability": "",
+        "level": 4,
+        "school": "nec",
+        "properties": [],
+        "materials": {
+            "value": "",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "always",
+            "prepared": true
+        },
+        "activities": {
+            "dnd5eactivity000": {
+                "_id": "dnd5eactivity000",
+                "type": "damage",
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "max": "",
+                    "recovery": []
+                },
+                "damage": {
+                    "critical": {
+                        "allow": true,
+                        "bonus": ""
+                    },
+                    "parts": [
+                        {
+                            "number": 5,
+                            "denomination": 6,
+                            "bonus": "",
+                            "types": [
+                                "necrotic"
+                            ],
+                            "custom": {
+                                "enabled": false,
+                                "formula": ""
+                            },
+                            "scaling": {
+                                "mode": "whole",
+                                "number": 1,
+                                "formula": ""
+                            }
+                        }
+                    ]
+                },
+                "sort": 0,
+                "name": "",
+                "img": "",
+                "appliedEffects": []
+            }
+        },
+        "identifier": ""
+    },
+    "effects": [],
+    "sort": 0,
+    "ownership": {
+        "default": 0,
+        "3Yi0HjF4PKCA4vX0": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "flags": {
+        "midiProperties": {
+            "confirmTargets": "default",
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "critOther": false,
+            "offHandWeapon": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "noConcentrationCheck": false,
+            "toggleEffect": false,
+            "ignoreTotalCover": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "midi-qol": {
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "effectCondition": "",
+            "removeAttackDamageButtons": "default",
+            "reactionCondition": "",
+            "otherCondition": ""
+        },
+        "dae": {
+            "macro": {
+                "name": "Vampiric Smite",
+                "img": "systems/dnd5e/icons/svg/items/spell.svg",
+                "type": "script",
+                "scope": "global",
+                "command": "const {damage,damageMultiplier} = workflow.damageItem.damageDetail[0].find(d=>d.type === 'necrotic') || {};\nif (damage && workflow.hitTargets.size === 1) {\n  const dmgToApply = Math.floor(damage * damageMultiplier /2);\n  await MidiQOL.applyTokenDamage([{\n        damage: dmgToApply,\n        type: 'healing',\n        flavor:'Life Steal'\n    }], dmgToApply, new Set([token]), null, null);\n}",
+                "author": "3Yi0HjF4PKCA4vX0",
+                "ownership": {
+                    "default": 3
+                },
+                "_id": null,
+                "folder": null,
+                "sort": 0,
+                "flags": {},
+                "_stats": {
+                    "systemId": null,
+                    "systemVersion": null,
+                    "coreVersion": null,
+                    "createdTime": null,
+                    "modifiedTime": null,
+                    "lastModifiedBy": null
+                }
+            }
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            }
+        },
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
+        }
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.1.0",
+        "createdTime": 1726952015856,
+        "modifiedTime": 1738625508995,
+        "lastModifiedBy": "ymGs3J4QpWbCOXON"
+    },
+    "_key": "!items!nFEa6frWkMVxdU5x"
+}
