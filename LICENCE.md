@@ -59,7 +59,9 @@ The SRD 5.1 is licensed under the Creative Commons Attribution 4.0 International
 <br>
 /icons/conditions/surprised.svg - Worried eyes icon
 <br>
-/icons/conditions/weakened.svg - Shattered sword icon 
+/icons/conditions/weakened.svg - Shattered sword icon
+<br>
+/icons/conditions/cursed.svg - Voodoo doll icon
 </details>
 
 ## Flaticon
