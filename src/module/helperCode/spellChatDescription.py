@@ -32,7 +32,8 @@ for folder in folders:
             else:
                 notSpells[data["system"]["level"]].append(data["name"])
                 chat = ''  # Remove the description
-
+        with open(file_path, 'w', encoding='utf-8') as file:
+            json.dump(data, file, indent=4, ensure_ascii=False)
 
 
 
