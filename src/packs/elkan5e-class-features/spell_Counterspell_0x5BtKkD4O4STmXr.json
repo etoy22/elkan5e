@@ -1,197 +1,197 @@
 {
-  "folder": "8B6bbXy2Yi2jjMus",
-  "name": "Counterspell",
-  "type": "spell",
-  "_id": "0x5BtKkD4O4STmXr",
-  "img": "icons/magic/control/energy-stream-link-large-blue.webp",
-  "system": {
-    "activities": {
-      "gbMdBvd8cxdX7k5l": {
-        "type": "utility",
-        "_id": "gbMdBvd8cxdX7k5l",
-        "sort": 0,
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": true,
-          "targets": []
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "template": {
-            "contiguous": false,
-            "units": "ft"
-          },
-          "affects": {
-            "choice": false
-          },
-          "override": false,
-          "prompt": false
+    "folder": "8B6bbXy2Yi2jjMus",
+    "name": "Counterspell",
+    "type": "spell",
+    "_id": "0x5BtKkD4O4STmXr",
+    "img": "icons/magic/control/energy-stream-link-large-blue.webp",
+    "system": {
+        "activities": {
+            "gbMdBvd8cxdX7k5l": {
+                "type": "utility",
+                "_id": "gbMdBvd8cxdX7k5l",
+                "sort": 0,
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "scaling": {
+                        "allowed": false
+                    },
+                    "spellSlot": true,
+                    "targets": []
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false,
+                    "prompt": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "roll": {
+                    "prompt": false,
+                    "visible": false,
+                    "name": "",
+                    "formula": "1d20+@abilities.int.mod"
+                },
+                "useConditionText": "",
+                "effectConditionText": "",
+                "macroData": {
+                    "name": "",
+                    "command": ""
+                },
+                "ignoreTraits": {
+                    "idi": false,
+                    "idr": false,
+                    "idv": false,
+                    "ida": false
+                },
+                "midiProperties": {
+                    "ignoreTraits": [],
+                    "triggeredActivityId": "none",
+                    "triggeredActivityConditionText": "",
+                    "triggeredActivityTargets": "targets",
+                    "triggeredActivityRollAs": "self",
+                    "forceDialog": false,
+                    "confirmTargets": "default",
+                    "autoTargetType": "any",
+                    "autoTargetAction": "default",
+                    "automationOnly": false,
+                    "otherActivityCompatible": true,
+                    "identifier": ""
+                },
+                "name": "Counterspell",
+                "img": "",
+                "appliedEffects": []
+            }
         },
         "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
+            "spent": 0,
+            "recovery": [],
+            "max": ""
         },
-        "roll": {
-          "prompt": false,
-          "visible": false,
-          "name": "",
-          "formula": "1d20+@abilities.int.mod"
+        "description": {
+            "value": "<p><em>You attempt to cancel the effects of a spell using your own magic.</em></p><p><strong>Reaction</strong> - 60 ft. - 1st Level (Abjuration) - VS</p><p>You can use this reaction when within line of sight of at least one target or part of the area of effect for a spell that is about to take effect. You counter the entire spell.</p><p>The spell slot level used for Counterspell determines what it can counter.</p><ul><li><p>If the target spell is lower level than your Counterspell, including cantrips, the target spell fails and has no effect.</p></li><li><p>If the target spell is the same level as your counterspell, roll 1d20 + your intelligence modifier. If you roll at least 10 + the spell's level, the target spell fails and has no effect.</p></li><li><p>If the target spell is higher level than your Counterspell, you cannot use Counterspell.</p></li></ul><p>\u200b</p><p><strong>Upcasting:</strong>\u00a0See above for details.</p>",
+            "chat": ""
         },
-        "useConditionText": "",
-        "effectConditionText": "",
-        "macroData": {
-          "name": "",
-          "command": ""
+        "identifier": "",
+        "source": {
+            "revision": 1,
+            "rules": "",
+            "book": "",
+            "page": "",
+            "custom": "elkan5e.com/wizard",
+            "license": ""
         },
-        "ignoreTraits": {
-          "idi": false,
-          "idr": false,
-          "idv": false,
-          "ida": false
+        "activation": {
+            "type": "reaction",
+            "value": null,
+            "condition": "when a creature casts a spell"
+        },
+        "duration": {
+            "units": "inst"
+        },
+        "level": 1,
+        "materials": {
+            "value": "",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": true
+        },
+        "properties": [
+            "vocal",
+            "somatic"
+        ],
+        "range": {
+            "units": "ft",
+            "special": "",
+            "value": "60"
+        },
+        "school": "abj",
+        "target": {
+            "template": {
+                "contiguous": false,
+                "units": "ft",
+                "type": ""
+            },
+            "affects": {
+                "choice": false,
+                "type": "",
+                "count": "",
+                "special": ""
+            }
+        }
+    },
+    "effects": [],
+    "sort": 0,
+    "ownership": {
+        "default": 0,
+        "ymGs3J4QpWbCOXON": 3
+    },
+    "flags": {
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
+        },
+        "midi-qol": {
+            "rollAttackPerTarget": "default",
+            "removeAttackDamageButtons": "default",
+            "itemCondition": "",
+            "reactionCondition": "",
+            "otherCondition": "",
+            "effectCondition": ""
         },
         "midiProperties": {
-          "ignoreTraits": [],
-          "triggeredActivityId": "none",
-          "triggeredActivityConditionText": "",
-          "triggeredActivityTargets": "targets",
-          "triggeredActivityRollAs": "self",
-          "forceDialog": false,
-          "confirmTargets": "default",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "automationOnly": false,
-          "otherActivityCompatible": true,
-          "identifier": ""
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "noConcentrationCheck": false,
+            "toggleEffect": false,
+            "ignoreTotalCover": false
         },
-        "name": "Counterspell",
-        "img": "",
-        "appliedEffects": []
-      }
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            }
+        }
     },
-    "uses": {
-      "spent": 0,
-      "recovery": [],
-      "max": ""
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.3.3",
+        "createdTime": 1740467893243,
+        "modifiedTime": 1740512794000,
+        "lastModifiedBy": "ymGs3J4QpWbCOXON"
     },
-    "description": {
-      "value": "<p><em>You attempt to cancel the effects of a spell using your own magic.</em></p><p><strong>Reaction</strong> - 60 ft. - 1st Level (Abjuration) - VS</p><p>You can use this reaction when within line of sight of at least one target or part of the area of effect for a spell that is about to take effect. You counter the entire spell.</p><p>The spell slot level used for Counterspell determines what it can counter.</p><ul><li><p>If the target spell is lower level than your Counterspell, including cantrips, the target spell fails and has no effect.</p></li><li><p>If the target spell is the same level as your counterspell, roll 1d20 + your intelligence modifier. If you roll at least 10 + the spell's level, the target spell fails and has no effect.</p></li><li><p>If the target spell is higher level than your Counterspell, you cannot use Counterspell.</p></li></ul><p>​</p><p><strong>Upcasting:</strong> See above for details.</p>",
-      "chat": ""
-    },
-    "identifier": "",
-    "source": {
-      "revision": 1,
-      "rules": "2024",
-      "book": "",
-      "page": "",
-      "custom": "elkan5e.com/wizard",
-      "license": ""
-    },
-    "activation": {
-      "type": "reaction",
-      "value": null,
-      "condition": "when a creature casts a spell"
-    },
-    "duration": {
-      "units": "inst"
-    },
-    "level": 1,
-    "materials": {
-      "value": "",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
-    },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": true
-    },
-    "properties": [
-      "vocal",
-      "somatic"
-    ],
-    "range": {
-      "units": "ft",
-      "special": "",
-      "value": "60"
-    },
-    "school": "abj",
-    "target": {
-      "template": {
-        "contiguous": false,
-        "units": "ft",
-        "type": ""
-      },
-      "affects": {
-        "choice": false,
-        "type": "",
-        "count": "",
-        "special": ""
-      }
-    }
-  },
-  "effects": [],
-  "sort": 0,
-  "ownership": {
-    "default": 0,
-    "ymGs3J4QpWbCOXON": 3
-  },
-  "flags": {
-    "tidy5e-sheet": {
-      "section": "",
-      "actionSection": ""
-    },
-    "midi-qol": {
-      "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default",
-      "itemCondition": "",
-      "reactionCondition": "",
-      "otherCondition": "",
-      "effectCondition": ""
-    },
-    "midiProperties": {
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "noConcentrationCheck": false,
-      "toggleEffect": false,
-      "ignoreTotalCover": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      }
-    }
-  },
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.331",
-    "systemId": "dnd5e",
-    "systemVersion": "4.3.3",
-    "createdTime": 1740467893243,
-    "modifiedTime": 1740512794000,
-    "lastModifiedBy": "ymGs3J4QpWbCOXON"
-  },
-  "_key": "!items!0x5BtKkD4O4STmXr"
+    "_key": "!items!0x5BtKkD4O4STmXr"
 }
