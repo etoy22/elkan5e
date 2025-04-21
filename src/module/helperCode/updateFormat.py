@@ -38,7 +38,8 @@ replacement_variants = [
     "<strong>Success:</strong> Half damage.",
     "<strong>Success</strong>: Half damage.",
     "<strong>Success</strong>: Half damage",
-    "<strong>Success: </strong>Half damage."
+    "<strong>Success: </strong>Half damage.",
+    "<strong>Success:</strong> half damage"
 ]
 
 success_keywords = [
@@ -81,6 +82,7 @@ for folder in folders:
                     )
                 continue
             
+            # Apply replacements for "half damage" variants
             if "half damage" in description.lower() and "Half damage, no other effect." not in description:
                 if replacement_text not in description:
                     success_items.append(data["name"])
@@ -88,6 +90,7 @@ for folder in folders:
                     if variant in description:
                         if apply_replacements:
                             description = description.replace(variant, replacement_text)
+                            data["system"]["description"]["value"] = description  # Update the description in the data
                         caught_items.append(data["name"])
             elif any(keyword in description for keyword in [
                 "Half damage, no other effect.", 
@@ -111,7 +114,11 @@ for folder in folders:
                         description = description.replace(keyword, "<strong>Success:</strong>")
             else:
                 other_items.append(data["name"])
-            
+        
+        # Write the updated data back to the file
+        if apply_replacements:
+            with open(file_path, 'w', encoding='utf-8') as file:
+                json.dump(data, file, indent=4, ensure_ascii=False)
 
 print("Length of success_items:", len(success_items))
 print("Length of caught_items:", len(caught_items))
