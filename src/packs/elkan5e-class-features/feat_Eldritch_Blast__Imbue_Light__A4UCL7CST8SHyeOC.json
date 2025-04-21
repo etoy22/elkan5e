@@ -1,0 +1,324 @@
+{
+  "folder": "qFXBWCjEDflMsWOJ",
+  "name": "Eldritch Blast (Imbue Light)",
+  "type": "feat",
+  "_id": "A4UCL7CST8SHyeOC",
+  "img": "icons/magic/light/projectile-beam-yellow.webp",
+  "system": {
+    "activities": {
+      "8YVcJv0nQnuja5nz": {
+        "type": "attack",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "",
+          "units": "inst",
+          "special": "",
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "value": "120",
+          "units": "ft",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "attack": {
+          "ability": "cha",
+          "bonus": "",
+          "critical": {
+            "threshold": null
+          },
+          "flat": false,
+          "type": {
+            "value": "ranged",
+            "classification": "spell"
+          }
+        },
+        "damage": {
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true,
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 1,
+              "denomination": "10",
+              "bonus": "@mod",
+              "types": [
+                "radiant"
+              ]
+            }
+          ]
+        },
+        "sort": 0,
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "attackMode": "",
+        "ammunition": "",
+        "otherActivityId": "",
+        "otherActivityUuid": "",
+        "_id": "8YVcJv0nQnuja5nz",
+        "name": "Eldritch Blast (Radiant)",
+        "img": "",
+        "appliedEffects": []
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "description": {
+      "value": "<p><em>​Your attacks become glowing beams of light.</em></p><p>When you deal damage with @UUID[Compendium.elkan5e.elkan5e-class-features.Item.FHiTJvr5Nbb7HsgX]{Eldritch Blast} or a weapon attack, you can choose to make your attack deal radiant damage.</p>",
+      "chat": ""
+    },
+    "identifier": "",
+    "source": {
+      "revision": 1,
+      "rules": "",
+      "book": "",
+      "page": "",
+      "custom": "elkan5e.com/warlock",
+      "license": ""
+    },
+    "advancement": [],
+    "cover": null,
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": 3,
+      "repeatable": false
+    },
+    "properties": [
+      "mgc"
+    ],
+    "requirements": "Celestial 3",
+    "type": {
+      "value": "subclass",
+      "subtype": ""
+    }
+  },
+  "effects": [
+    {
+      "type": "enchantment",
+      "name": "Imbue Light",
+      "img": "icons/magic/light/projectile-beam-yellow.webp",
+      "disabled": true,
+      "_id": "llP8LFalO72CModq",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.properties",
+          "mode": 2,
+          "value": "mgc",
+          "priority": 20
+        },
+        {
+          "key": "system.damage.base.types",
+          "mode": 5,
+          "value": "radient",
+          "priority": 20
+        },
+        {
+          "key": "system.damage.versatile.types",
+          "mode": 5,
+          "value": "radient",
+          "priority": 20
+        },
+        {
+          "key": "name",
+          "mode": 5,
+          "value": "Light Imbued {}",
+          "priority": 20
+        }
+      ],
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "stackable": "multi",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "core": {
+          "overlay": false
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system",
+          "statuses": []
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.3.6",
+        "createdTime": 1742270313644,
+        "modifiedTime": 1742270511325,
+        "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
+      },
+      "_key": "!items.effects!A4UCL7CST8SHyeOC.llP8LFalO72CModq"
+    }
+  ],
+  "sort": 100000,
+  "ownership": {
+    "default": 0,
+    "3Yi0HjF4PKCA4vX0": 3
+  },
+  "flags": {
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "fumbleThreshold": null
+    },
+    "midiProperties": {
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.3.8",
+    "createdTime": 1742268391779,
+    "modifiedTime": 1744076199477,
+    "lastModifiedBy": "fgP8EzWy33UFoZmI"
+  },
+  "_key": "!items!A4UCL7CST8SHyeOC"
+}
