@@ -1,0 +1,212 @@
+{
+  "name": "False Life",
+  "type": "spell",
+  "img": "icons/magic/life/heart-pink.webp",
+  "effects": [],
+  "folder": "U0k4VGG6bziqf3oH",
+  "flags": {
+    "midi-qol": {
+      "onUseMacroName": "",
+      "effectActivation": false,
+      "forceCEOn": false,
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "rollAttackPerTarget": "default",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default"
+    },
+    "core": {},
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "noConcentrationCheck": false,
+      "confirmTargets": "default",
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic",
+        "material"
+      ]
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p class=\"font8\"><em>You hold a flask or bottle of alcohol, maybe even a soaked rag, underneath the nose of a creature. As they breathe in, they feel more resilient to pain and their spirit is temporarily strengthened.</em></p><p class=\"font8\"><strong>Buff</strong></p><ul><li><p class=\"font8\">The target gains [[/r 1d4 + 5]] temporary hit points.*</p></li></ul><p></p><div class=\"rd__b  rd__b--3\"><div class=\"rd__spc-inline-post\"><div class=\"rd__b  rd__b--3\"><div class=\"rd__b  rd__b--3\"><p><strong>*Upcasting</strong>: Increase temporary hit points by 5 for each spell level above 1st.</p></div></div></div></div>",
+      "chat": "<p><strong>Buff</strong></p><ul><li><p class=\"font8\">The target gains [[/r 1d4 + 5]] temporary hit points.*</p></li></ul><p></p><div class=\"rd__b  rd__b--3\"><div class=\"rd__spc-inline-post\"><div class=\"rd__b  rd__b--3\"><div class=\"rd__b  rd__b--3\"><p><strong>*Upcasting</strong>: Increase temporary hit points by 5 for each spell level above 1st.</p></div></div></div></div>"
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/false-life",
+      "revision": 1,
+      "rules": "",
+      "book": "",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "1",
+      "units": "hour"
+    },
+    "target": {
+      "affects": {
+        "special": "",
+        "type": "creature",
+        "count": "1",
+        "choice": false
+      },
+      "template": {
+        "type": "",
+        "units": "ft",
+        "contiguous": false
+      }
+    },
+    "range": {
+      "value": "5",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 1,
+    "school": "nec",
+    "materials": {
+      "value": "A small amount of alcohol",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "mgc"
+    ],
+    "activities": {
+      "V6BZFrZxGd2mitaU": {
+        "type": "heal",
+        "_id": "V6BZFrZxGd2mitaU",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "healing": {
+          "number": 1,
+          "denomination": "4",
+          "types": [
+            "temphp"
+          ],
+          "custom": {
+            "enabled": false
+          },
+          "scaling": {
+            "number": null,
+            "mode": "whole",
+            "formula": "5"
+          },
+          "bonus": "5"
+        },
+        "name": "",
+        "img": "",
+        "appliedEffects": []
+      }
+    },
+    "identifier": ""
+  },
+  "ownership": {
+    "default": 0,
+    "ygtj3TTCBfw839Uz": 3,
+    "ymJDAw0PgXIWIHMH": 3,
+    "MKYWAnkTJr0gkDqT": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.3.3",
+    "createdTime": 1726952196011,
+    "modifiedTime": 1740641521185,
+    "lastModifiedBy": "ymGs3J4QpWbCOXON"
+  },
+  "_id": "11BFcp2vsPHO1JFX",
+  "sort": 500000,
+  "_key": "!items!11BFcp2vsPHO1JFX"
+}
