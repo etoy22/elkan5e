@@ -1,180 +1,180 @@
 {
-  "folder": "k63aDnjqpB2qe9Nr",
-  "name": "Plan the Hunt",
-  "type": "feat",
-  "img": "icons/tools/navigation/map-marked-gold.webp",
-  "system": {
-    "description": {
-      "value": "<p><span style=\"letter-spacing:normal\"><em>You focus on thoughts of your enemies, trying to clear your head for when you finally catch up with your foes.</em></span></p><p class=\"font_8\"><span style=\"font-weight:bold\"><strong>During a Short Rest</strong></span> - Self - 1/Long Rest</p><p class=\"font_8\">You regain half of your uses of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.HPrjgPXLsDRBbfsD]{Mark for Death}.</p>",
-      "chat": ""
-    },
-    "source": {
-      "custom": "elkan5e.com/ranger",
-      "revision": 1,
-      "rules": "",
-      "book": "",
-      "page": "",
-      "license": ""
-    },
-    "uses": {
-      "max": "1",
-      "recovery": [
-        {
-          "period": "lr",
-          "type": "recoverAll"
-        }
-      ],
-      "spent": 0
-    },
-    "type": {
-      "value": "class",
-      "subtype": ""
-    },
-    "prerequisites": {
-      "level": null
-    },
-    "properties": [],
-    "requirements": "Ranger 1",
-    "activities": {
-      "dnd5eactivity000": {
-        "_id": "dnd5eactivity000",
-        "type": "utility",
-        "activation": {
-          "type": "shortrest",
-          "value": null,
-          "condition": "",
-          "override": false
-        },
-        "consumption": {
-          "targets": [
-            {
-              "type": "itemUses",
-              "value": "1",
-              "target": "",
-              "scaling": {}
-            },
-            {
-              "type": "itemUses",
-              "value": "-(@scale.ranger.mark-for-death-uses / 2)",
-              "target": "Compendium.elkan5e.elkan5e-class-features.Item.HPrjgPXLsDRBbfsD",
-              "scaling": {}
-            }
-          ],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
+    "folder": "k63aDnjqpB2qe9Nr",
+    "name": "Plan the Hunt",
+    "type": "feat",
+    "img": "icons/tools/navigation/map-marked-gold.webp",
+    "system": {
         "description": {
-          "chatFlavor": ""
+            "value": "<p><span style=\"letter-spacing:normal\"><em>You focus on thoughts of your enemies, trying to clear your head for when you finally catch up with your foes.</em></span></p><p class=\"font_8\"><span style=\"font-weight:bold\"><strong>During a Short Rest</strong></span>\u00a0- Self - 1/Long Rest</p><p class=\"font_8\">You regain half of your uses of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.HPrjgPXLsDRBbfsD]{Mark for Death}.</p>",
+            "chat": ""
         },
-        "duration": {
-          "concentration": false,
-          "value": "",
-          "units": "inst",
-          "special": "",
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "units": "self",
-          "special": "",
-          "override": false
-        },
-        "target": {
-          "template": {
-            "count": "",
-            "contiguous": false,
-            "type": "",
-            "size": "",
-            "width": "",
-            "height": "",
-            "units": ""
-          },
-          "affects": {
-            "count": "",
-            "type": "self",
-            "choice": false,
-            "special": ""
-          },
-          "prompt": true,
-          "override": false
+        "source": {
+            "custom": "elkan5e.com/ranger",
+            "revision": 1,
+            "rules": "",
+            "book": "",
+            "page": "",
+            "license": ""
         },
         "uses": {
-          "spent": 0,
-          "max": "",
-          "recovery": []
+            "max": "1",
+            "recovery": [
+                {
+                    "period": "lr",
+                    "type": "recoverAll"
+                }
+            ],
+            "spent": 0
         },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
+        "type": {
+            "value": "class",
+            "subtype": ""
         },
-        "sort": 0,
-        "name": "",
-        "img": "",
-        "appliedEffects": []
-      }
+        "prerequisites": {
+            "level": null
+        },
+        "properties": [],
+        "requirements": "Ranger 1",
+        "activities": {
+            "dnd5eactivity000": {
+                "_id": "dnd5eactivity000",
+                "type": "utility",
+                "activation": {
+                    "type": "shortrest",
+                    "value": null,
+                    "condition": "",
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [
+                        {
+                            "type": "itemUses",
+                            "value": "1",
+                            "target": "",
+                            "scaling": {}
+                        },
+                        {
+                            "type": "itemUses",
+                            "value": "-(@scale.ranger.mark-for-death-uses / 2)",
+                            "target": "Compendium.elkan5e.elkan5e-class-features.Item.HPrjgPXLsDRBbfsD",
+                            "scaling": {}
+                        }
+                    ],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "concentration": false,
+                    "value": "",
+                    "units": "inst",
+                    "special": "",
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "units": "self",
+                    "special": "",
+                    "override": false
+                },
+                "target": {
+                    "template": {
+                        "count": "",
+                        "contiguous": false,
+                        "type": "",
+                        "size": "",
+                        "width": "",
+                        "height": "",
+                        "units": ""
+                    },
+                    "affects": {
+                        "count": "",
+                        "type": "self",
+                        "choice": false,
+                        "special": ""
+                    },
+                    "prompt": true,
+                    "override": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "max": "",
+                    "recovery": []
+                },
+                "roll": {
+                    "formula": "",
+                    "name": "",
+                    "prompt": false,
+                    "visible": false
+                },
+                "sort": 0,
+                "name": "",
+                "img": "",
+                "appliedEffects": []
+            }
+        },
+        "identifier": "",
+        "enchant": {}
     },
-    "identifier": "",
-    "enchant": {}
-  },
-  "effects": [],
-  "ownership": {
-    "default": 0,
-    "WaiirYzq9mhRj9cS": 3,
-    "vHqSHJMdmEO6Mk2C": 3
-  },
-  "flags": {
-    "midiProperties": {
-      "confirmTargets": "default",
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "critOther": false,
-      "offHandWeapon": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "noConcentrationCheck": false,
-      "toggleEffect": false,
-      "ignoreTotalCover": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
+    "effects": [],
+    "ownership": {
+        "default": 0,
+        "WaiirYzq9mhRj9cS": 3,
+        "vHqSHJMdmEO6Mk2C": 3
     },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      },
-      "migratedUses": 1
+    "flags": {
+        "midiProperties": {
+            "confirmTargets": "default",
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "critOther": false,
+            "offHandWeapon": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "noConcentrationCheck": false,
+            "toggleEffect": false,
+            "ignoreTotalCover": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedUses": 1
+        },
+        "midi-qol": {
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "reactionCondition": "",
+            "effectCondition": "",
+            "removeAttackDamageButtons": "default",
+            "otherCondition": ""
+        },
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
+        }
     },
-    "midi-qol": {
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "reactionCondition": "",
-      "effectCondition": "",
-      "removeAttackDamageButtons": "default",
-      "otherCondition": ""
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.4",
+        "createdTime": 1726952014236,
+        "modifiedTime": 1744075007461,
+        "lastModifiedBy": "fgP8EzWy33UFoZmI"
     },
-    "tidy5e-sheet": {
-      "section": "",
-      "actionSection": ""
-    }
-  },
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.331",
-    "systemId": "dnd5e",
-    "systemVersion": "4.0.4",
-    "createdTime": 1726952014236,
-    "modifiedTime": 1744075007461,
-    "lastModifiedBy": "fgP8EzWy33UFoZmI"
-  },
-  "_id": "eopKDR4URWGMJ8vh",
-  "sort": 0,
-  "_key": "!items!eopKDR4URWGMJ8vh"
+    "_id": "eopKDR4URWGMJ8vh",
+    "sort": 0,
+    "_key": "!items!eopKDR4URWGMJ8vh"
 }
