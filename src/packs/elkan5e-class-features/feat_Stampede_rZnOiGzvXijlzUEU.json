@@ -1,0 +1,332 @@
+{
+  "folder": "HRaz7Ko1gRBHmJxq",
+  "name": "Stampede",
+  "type": "feat",
+  "_id": "rZnOiGzvXijlzUEU",
+  "img": "icons/environment/people/charge.webp",
+  "system": {
+    "activities": {
+      "I02Ti8RKGxVRr0Dr": {
+        "type": "utility",
+        "_id": "I02Ti8RKGxVRr0Dr",
+        "sort": 0,
+        "activation": {
+          "type": "bonus",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "round",
+          "concentration": false,
+          "override": false,
+          "value": "1"
+        },
+        "effects": [
+          {
+            "_id": "U1tLXOGpLNXEDcwk"
+          }
+        ],
+        "range": {
+          "override": false,
+          "units": "ft",
+          "special": "",
+          "value": "60"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "1",
+            "type": "ally",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "U1tLXOGpLNXEDcwk"
+        ]
+      },
+      "GChL6BNZXTqeQyO3": {
+        "type": "damage",
+        "sort": 0,
+        "activation": {
+          "type": "duringattack",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": "You may also push the target up to 10 ft. in a direction of your choice."
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "ft",
+          "special": "",
+          "value": "5"
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "1",
+            "type": "creature",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "critical": {
+            "allow": true,
+            "bonus": ""
+          },
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 2,
+              "denomination": 6,
+              "bonus": "",
+              "types": [
+                "bludgeoning"
+              ],
+              "scaling": {
+                "number": 1
+              }
+            }
+          ]
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "name": "",
+        "_id": "GChL6BNZXTqeQyO3"
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "description": {
+      "value": "<p><em>Your magic propels you or your ally into forward motion, scattering your enemies when they charge.</em></p><p><strong>Bonus Action</strong> - 1 Ally (60 ft) - 1 Round - Magical</p><p>You can use this feature as part of the same bonus action when you use @UUID[Compendium.elkan5e.elkan5e-class-features.Item.rEgvy8ZFH9bI19ym]{Herd's Swiftness}.​</p><ul><li><p>Target ally's walking speed increases by an additional 15 ft.</p></li><li><p>Target ally gains the following:</p></li></ul><p></p><p><strong>Once Per Turn</strong> - 1 Creature (5 ft.)​</p><ul><li><p>While stampeding, if you move at least 20 ft. towards a target and then hit the target with a melee weapon attack:</p></li><li><p>Target takes an extra [[/damage 2d6 bludgeoning]] damage and is pushed up to 10 ft. in a direction of your choice.</p></li></ul>",
+      "chat": ""
+    },
+    "identifier": "",
+    "source": {
+      "revision": 1,
+      "rules": "",
+      "book": "",
+      "page": "",
+      "custom": "elkan5e.com/druid",
+      "license": ""
+    },
+    "enchant": {},
+    "type": {
+      "value": "subclass",
+      "subtype": ""
+    },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [
+      "mgc"
+    ],
+    "requirements": "Grassland 3"
+  },
+  "effects": [
+    {
+      "name": "Stampede",
+      "img": "icons/environment/people/charge.webp",
+      "origin": "Compendium.elkan5e.elkan5e-class-features.Item.rZnOiGzvXijlzUEU",
+      "transfer": false,
+      "_id": "U1tLXOGpLNXEDcwk",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "system.attributes.movement.walk",
+          "mode": 2,
+          "value": "+15",
+          "priority": 20
+        },
+        {
+          "key": "macro.createItem",
+          "mode": 0,
+          "value": "Compendium.elkan5e.elkan5e-class-features.Item.2pDyRxV3mP5pCGpD",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system"
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.4",
+        "createdTime": 1730664465403,
+        "modifiedTime": 1730782783408,
+        "lastModifiedBy": "5QT7SwPoj3a9WqpY"
+      },
+      "_key": "!items.effects!rZnOiGzvXijlzUEU.U1tLXOGpLNXEDcwk"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "YxlXl9sauSuWxHdZ": 3
+  },
+  "flags": {
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "effectCondition": "",
+      "removeAttackDamageButtons": "default",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.0.4",
+    "createdTime": 1730664399013,
+    "modifiedTime": 1733165216116,
+    "lastModifiedBy": "ymGs3J4QpWbCOXON"
+  },
+  "_key": "!items!rZnOiGzvXijlzUEU"
+}
