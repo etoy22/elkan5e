@@ -52,7 +52,7 @@ for folder_path in folder_paths:
                 if 'source' in data['system']:
                     data["system"]["source"]["revision"] =  1
                     data["system"]["source"]["rules"] =  ""
-                    data["system"]["source"]["book"] =  ""
+                    data["system"]["source"]["book"] =  "Elkan 5e"
                     data["system"]["source"]["page"] =  ""
                     data["system"]["source"]["license"] =  ""
 
