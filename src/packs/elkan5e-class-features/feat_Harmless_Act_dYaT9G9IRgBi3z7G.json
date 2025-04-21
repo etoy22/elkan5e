@@ -1,0 +1,275 @@
+{
+    "folder": "k6HVpRgLfky7iqqr",
+    "name": "Harmless Act",
+    "type": "feat",
+    "img": "icons/commodities/treasure/mask-wood-tan.webp",
+    "system": {
+        "description": {
+            "value": "<p>When you use @UUID[Compendium.elkan5e.elkan5e-class-features.Item.0rGMBnPwhdbwFZrU]{Vicious Mockery} and your target fails their save or you deal damage with @UUID[Compendium.elkan5e.elkan5e-class-features.Item.f71fyym4jcBrftdZ]{Jester's Aspersion}, you can choose to @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.ieDILSkRbu9r8pmZ]{charm} the creature until you damage them or until the end of your next turn. Note that this charm does not protect your allies from the target.</p>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "elkan5e.com/bard",
+            "revision": 1,
+            "rules": "",
+            "book": "",
+            "page": "",
+            "license": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "type": {
+            "value": "subclass",
+            "subtype": ""
+        },
+        "requirements": "Jester 14",
+        "activities": {
+            "dnd5eactivity000": {
+                "_id": "dnd5eactivity000",
+                "type": "damage",
+                "activation": {
+                    "type": "special",
+                    "value": 1,
+                    "condition": "",
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "concentration": false,
+                    "value": "",
+                    "units": "inst",
+                    "special": "",
+                    "override": false
+                },
+                "effects": [
+                    {
+                        "_id": "qyguygxKDLY2YGQf"
+                    }
+                ],
+                "range": {
+                    "units": "self",
+                    "special": "",
+                    "override": false
+                },
+                "target": {
+                    "template": {
+                        "count": "",
+                        "contiguous": false,
+                        "type": "",
+                        "size": "",
+                        "width": "",
+                        "height": "",
+                        "units": ""
+                    },
+                    "affects": {
+                        "count": "1",
+                        "type": "creature",
+                        "choice": false,
+                        "special": ""
+                    },
+                    "prompt": true,
+                    "override": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "max": "",
+                    "recovery": []
+                },
+                "damage": {
+                    "critical": {
+                        "allow": false,
+                        "bonus": ""
+                    },
+                    "parts": [
+                        {
+                            "custom": {
+                                "enabled": true,
+                                "formula": ""
+                            },
+                            "number": null,
+                            "denomination": null,
+                            "bonus": "",
+                            "types": [],
+                            "scaling": {
+                                "number": 1
+                            }
+                        }
+                    ]
+                },
+                "sort": 0,
+                "name": "",
+                "img": "",
+                "appliedEffects": [
+                    "qyguygxKDLY2YGQf"
+                ],
+                "effectConditionText": "!target.traits.ci.value.has('charmed')"
+            }
+        },
+        "identifier": "",
+        "enchant": {},
+        "prerequisites": {
+            "level": null
+        },
+        "properties": []
+    },
+    "effects": [
+        {
+            "statuses": [
+                "charmed"
+            ],
+            "name": "Harmless Act",
+            "changes": [],
+            "description": "",
+            "duration": {
+                "startTime": null,
+                "seconds": null,
+                "combat": null,
+                "rounds": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null
+            },
+            "flags": {
+                "core": {
+                    "overlay": false,
+                    "sourceId": "Actor.khnqq0pFNnc0cNq4.ActiveEffect.BzkkOUNxekwmy8Sd"
+                },
+                "condition-lab-triggler": {
+                    "conditionId": "charmed"
+                },
+                "dae": {
+                    "specialDuration": [
+                        "turnEndSource"
+                    ],
+                    "stackable": "noneName",
+                    "transfer": true,
+                    "disableIncapacitated": false,
+                    "selfTarget": false,
+                    "selfTargetAlways": false,
+                    "dontApply": false,
+                    "showIcon": false,
+                    "durationExpression": "",
+                    "macroRepeat": "none",
+                    "enableCondition": "",
+                    "disableCondition": ""
+                },
+                "times-up": {
+                    "isPassive": false
+                },
+                "ActiveAuras": {
+                    "isAura": false,
+                    "aura": "None",
+                    "nameOverride": "",
+                    "radius": "",
+                    "alignment": "",
+                    "type": "",
+                    "customCheck": "",
+                    "ignoreSelf": false,
+                    "height": false,
+                    "hidden": false,
+                    "displayTemp": false,
+                    "hostile": false,
+                    "onlyOnce": false,
+                    "wallsBlock": "system"
+                }
+            },
+            "_id": "qyguygxKDLY2YGQf",
+            "disabled": false,
+            "origin": "Compendium.elkan5e.elkan5e-class-features.Item.dYaT9G9IRgBi3z7G",
+            "transfer": false,
+            "tint": "#ffffff",
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.0.2",
+                "createdTime": null,
+                "modifiedTime": 1729566956264,
+                "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+            },
+            "img": "icons/commodities/treasure/mask-wood-tan.webp",
+            "type": "base",
+            "system": {},
+            "sort": 0,
+            "_key": "!items.effects!dYaT9G9IRgBi3z7G.qyguygxKDLY2YGQf"
+        }
+    ],
+    "ownership": {
+        "default": 0,
+        "ymGs3J4QpWbCOXON": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "flags": {
+        "midi-qol": {
+            "effectActivation": false,
+            "rollAttackPerTarget": "default",
+            "removeAttackDamageButtons": "default",
+            "itemCondition": "",
+            "effectCondition": "",
+            "reactionCondition": "",
+            "AoETargetType": "any",
+            "AoETargetTypeIncludeSelf": true,
+            "autoTarget": "default",
+            "otherCondition": ""
+        },
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "rollOther": false,
+            "critOther": false,
+            "offHandWeapon": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "noConcentrationCheck": false,
+            "toggleEffect": false,
+            "ignoreTotalCover": false,
+            "confirmTargets": "default",
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "core": {},
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            }
+        },
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
+        }
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.4",
+        "createdTime": 1726952014000,
+        "modifiedTime": 1744073290998,
+        "lastModifiedBy": "fgP8EzWy33UFoZmI"
+    },
+    "_id": "dYaT9G9IRgBi3z7G",
+    "sort": 0,
+    "_key": "!items!dYaT9G9IRgBi3z7G"
+}

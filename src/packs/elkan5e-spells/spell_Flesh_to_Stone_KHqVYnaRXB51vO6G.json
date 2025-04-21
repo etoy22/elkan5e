@@ -1,0 +1,334 @@
+{
+    "name": "Flesh to Stone",
+    "type": "spell",
+    "img": "icons/magic/earth/strike-fist-stone-gray.webp",
+    "effects": [
+        {
+            "_id": "rcvkBwQW0yl4arjK",
+            "flags": {
+                "dae": {
+                    "stackable": "none",
+                    "specialDuration": [
+                        "None"
+                    ],
+                    "macroRepeat": "endEveryTurn",
+                    "transfer": false,
+                    "selfTarget": false,
+                    "selfTargetAlways": false,
+                    "durationExpression": "",
+                    "enableCondition": "",
+                    "disableCondition": "",
+                    "disableIncapacitated": false,
+                    "dontApply": false,
+                    "showIcon": false
+                },
+                "ActiveAuras": {
+                    "isAura": false,
+                    "radius": "",
+                    "aura": "None",
+                    "alignment": "",
+                    "type": "",
+                    "ignoreSelf": false,
+                    "height": false,
+                    "hidden": false,
+                    "hostile": false,
+                    "onlyOnce": false,
+                    "displayTemp": false,
+                    "nameOverride": "",
+                    "customCheck": "",
+                    "wallsBlock": "system"
+                },
+                "core": {
+                    "overlay": false
+                }
+            },
+            "changes": [],
+            "disabled": false,
+            "duration": {
+                "startTime": null,
+                "seconds": 60,
+                "combat": null,
+                "rounds": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null
+            },
+            "tint": "#ffffff",
+            "transfer": false,
+            "origin": null,
+            "name": "Flesh to Stone",
+            "description": "",
+            "statuses": [],
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.0.2",
+                "createdTime": null,
+                "modifiedTime": 1729562209222,
+                "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+            },
+            "img": "icons/magic/earth/strike-fist-stone-gray.webp",
+            "type": "base",
+            "system": {},
+            "sort": 0,
+            "_key": "!items.effects!KHqVYnaRXB51vO6G.rcvkBwQW0yl4arjK"
+        }
+    ],
+    "folder": "sDaRY0H81UTha6hq",
+    "flags": {
+        "itemacro": {
+            "macro": {
+                "_data": {
+                    "name": "Flesh to Stone",
+                    "type": "script",
+                    "scope": "global",
+                    "command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target @attributes.spelldc\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEItem.data.save\n\n\nif (args[0] === \"on\") {\n\n    DAE.setFlag(tactor, \"FleshToStoneSpell\", {\n        successes: 0,\n        failures: 0\n    });\n}\n\nif (args[0] === \"off\") {\n    DAE.unsetFlag(\"world\", \"FleshToStoneSpell\");\n    ChatMessage.create({ content: \"Flesh to stone ends, if concentration was maintained for the entire duration,the creature is turned to stone until the effect is removed. \" });\n}\n\nif(args[0] === \"each\") {\n    let flag = DAE.getFlag(tactor, \"FleshToStoneSpell\");\nif(flag.failures === 3) return;\n    const flavor = `${CONFIG.DND5E.abilities[saveData.ability]} DC${saveData.dc} ${DAEItem?.name || \"\"}`;\n    let saveRoll = (await tactor.rollAbilitySave(saveData.ability, {flavor})).total;\n\n    ChatMessage.create({content: `${tactor.name}'s save roll is ${saveRoll} vs ${saveData.dc}`});\n    if (saveRoll < saveData.dc) {\n        if (flag.failures === 2) {\n            let fleshToStoneFailures = (flag.failures + 1);\n\n            DAE.setFlag(tactor, \"FleshToStoneSpell\", {\n                failures: fleshToStoneFailures\n            });\n            ChatMessage.create({ content: `Flesh To Stone on ${tactor.name} is complete` });\n            FleshToStoneUpdate();\n            return;\n        }\n        else {\n            let fleshToStoneFailures = (flag.failures + 1);\n\n            DAE.setFlag(tactor, \"FleshToStoneSpell\", {\n                failures: fleshToStoneFailures\n            });\n            console.log(`Flesh To Stone failures increments to ${fleshToStoneFailures}`);\n\n        }\n    }\n    else if (saveRoll >= save) {\n        if (flag.successes === 2) {\n            ChatMessage.create({ content: `Flesh To Stone on ${tactor.name} ends` });\n            tactor.deleteEmbeddedEntity(\"ActiveEffect\", lastArg.effectId); \n            return;\n        }\n        else {\n            let fleshToStoneSuccesses = (flag.successes + 1);\n            DAE.setFlag(tactor, \"FleshToStoneSpell\", {\n                successes: fleshToStoneSuccesses\n            });\n            console.log(`Flesh To Stone successes to ${fleshToStoneSuccesses}`);\n        }\n    }\n}\n\n/**\n * Update token with accurate DAE effect\n */\nasync function FleshToStoneUpdate() {\n    let fleshToStone = tactor.effects.get(lastArg.effectId);\n    let icon = fleshToStone.data.icon;\n    if(game.modules.get(\"combat-utility-belt\").active) icon = \"modules/combat-utility-belt/icons/petrified.svg\";\n    else icon = \"icons/svg/paralysis.svg\"\n    let label = fleshToStone.data.label;\n    label = \"Flesh to Stone - Petrified\";\n    fleshToStone.update({ icon, label });\n\n}",
+                    "author": "E4BVikjIkVl2lL2j"
+                },
+                "data": {
+                    "name": "Flesh to Stone",
+                    "type": "script",
+                    "scope": "global",
+                    "command": "//DAE Macro, Effect Value = @attributes.spelldc\nif (!game.modules.get(\"advanced-macros\")?.active) { ui.notifications.error(\"Please enable the Advanced Macros module\"); return; }\nif (!game.modules.get(\"combat-utility-belt\")?.active) { ui.notifications.error(\"Please enable the CUB module\"); return; }\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEItem.data.save\nlet dc = args[1]\n\nif (args[0] === \"on\") {\n    await game.cub.addCondition(\"Restrained\", tactor)\n    await DAE.setFlag(tactor, \"FleshToStoneSpell\", {\n        successes: 0,\n        failures: 0\n    });\n}\n\nif (args[0] === \"off\") {\n    DAE.unsetFlag(\"world\", \"FleshToStoneSpell\");\n    ChatMessage.create({ content: \"Flesh to stone ends, if concentration was maintained for the entire duration,the creature is turned to stone until the effect is removed. \" });\n}\n\nif (args[0] === \"each\") {\n    let flag = DAE.getFlag(tactor, \"FleshToStoneSpell\");\n    if (flag.failures === 3) return;\n    const flavor = `${CONFIG.DND5E.abilities[saveData.ability]} DC${dc} ${DAEItem?.name || \"\"}`;\n    let saveRoll = (await tactor.rollAbilitySave(saveData.ability, { flavor })).total;\n\n    if (saveRoll < saveData.dc) {\n        if (flag.failures === 2) {\n            let fleshToStoneFailures = (flag.failures + 1);\n\n            DAE.setFlag(tactor, \"FleshToStoneSpell\", {\n                failures: fleshToStoneFailures\n            });\n            ChatMessage.create({ content: `Flesh To Stone on ${tactor.name} is complete` });\n            FleshToStoneUpdate();\n            return;\n        }\n        else {\n            let fleshToStoneFailures = (flag.failures + 1);\n\n            DAE.setFlag(tactor, \"FleshToStoneSpell\", {\n                failures: fleshToStoneFailures\n            });\n            console.log(`Flesh To Stone failures increments to ${fleshToStoneFailures}`);\n\n        }\n    }\n    else if (saveRoll >= dc) {\n        if (flag.successes === 2) {\n            ChatMessage.create({ content: `Flesh To Stone on ${tactor.name} ends` });\n            await tactor.deleteEmbeddedDocuments(\"ActiveEffect\", [lastArg.effectId]);\n            await game.cub.removeCondition(\"Restrained\", tactor)\n            return;\n        }\n        else {\n            let fleshToStoneSuccesses = (flag.successes + 1);\n            DAE.setFlag(tactor, \"FleshToStoneSpell\", {\n                successes: fleshToStoneSuccesses\n            });\n            console.log(`Flesh To Stone successes to ${fleshToStoneSuccesses}`);\n        }\n    }\n}\n\n/**\n * Update token with accurate DAE effect\n */\nasync function FleshToStoneUpdate() {\n    let fleshToStone = tactor.effects.get(lastArg.effectId);\n    let icon = fleshToStone.data.icon;\n    if (game.modules.get(\"combat-utility-belt\").active) icon = \"modules/combat-utility-belt/icons/petrified.svg\";\n    else icon = \"icons/svg/paralysis.svg\"\n    let label = fleshToStone.data.label;\n    label = \"Flesh to Stone - Petrified\";\n    let time = fleshToStone.data.duration.seconds\n    time = 60000000\n    fleshToStone.update({ icon, label, time });\n\n}",
+                    "author": "zrPR3wueYsESSBR3",
+                    "_id": null,
+                    "img": "icons/svg/dice-target.svg",
+                    "folder": null,
+                    "sort": 0,
+                    "permission": {
+                        "default": 0
+                    },
+                    "flags": {}
+                },
+                "options": {},
+                "apps": {},
+                "compendium": null
+            }
+        },
+        "dae": {
+            "activeEquipped": false,
+            "alwaysActive": false,
+            "macro": {
+                "name": "Flesh to Stone",
+                "img": "icons/magic/earth/strike-fist-stone-gray.webp",
+                "type": "script",
+                "scope": "global",
+                "command": "",
+                "author": "3Yi0HjF4PKCA4vX0",
+                "ownership": {
+                    "default": 3
+                },
+                "_id": null,
+                "folder": null,
+                "sort": 0,
+                "flags": {},
+                "_stats": {
+                    "systemId": null,
+                    "systemVersion": null,
+                    "coreVersion": null,
+                    "createdTime": null,
+                    "modifiedTime": null,
+                    "lastModifiedBy": null
+                }
+            }
+        },
+        "core": {},
+        "midi-qol": {
+            "onUseMacroName": "",
+            "effectActivation": false,
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "effectCondition": "",
+            "reactionCondition": ""
+        },
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "confirmTargets": "default",
+            "noConcentrationCheck": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedProperties": [
+                "vocal",
+                "somatic",
+                "material",
+                "concentration"
+            ]
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<p>You attempt to turn one creature that you can see within range into stone. If the target’s body is made of flesh, the creature must make a Constitution saving throw. On a failed save, it is Restrained as its flesh begins to harden. On a successful save, the creature isn’t affected.</p><p>A creature Restrained by this spell must make another Constitution saving throw at the end of each of its turns. If it successfully saves against this spell three times, the spell ends. If it fails its saves three times, it is turned to stone and subjected to the Petrified condition for the Duration. The successes and failures don’t need to be consecutive; keep track of both until the target collects three of a kind.</p><p>If the creature is physically broken while Petrified, it suffers from similar deformities if it reverts to its original state.</p><p>If you maintain your Concentration on this spell for the entire possible Duration, the creature is turned to stone until the effect is removed.</p>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "Elkan 5e",
+            "revision": 1,
+            "rules": "",
+            "book": "",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "action",
+            "condition": "",
+            "value": 1
+        },
+        "duration": {
+            "value": "1",
+            "units": "minute"
+        },
+        "target": {
+            "affects": {
+                "type": "creature",
+                "count": "1",
+                "choice": false,
+                "special": ""
+            },
+            "template": {
+                "units": "",
+                "contiguous": false,
+                "type": ""
+            }
+        },
+        "range": {
+            "value": "60",
+            "units": "ft",
+            "special": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "ability": "",
+        "level": 6,
+        "school": "trs",
+        "materials": {
+            "value": "A pinch of lime, water, and earth",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": true
+        },
+        "properties": [
+            "vocal",
+            "somatic",
+            "material",
+            "concentration"
+        ],
+        "activities": {
+            "YF0mstJLLxf6XAtC": {
+                "type": "save",
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [
+                    {
+                        "_id": "rcvkBwQW0yl4arjK",
+                        "onSave": false
+                    }
+                ],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "damage": {
+                    "onSave": "half",
+                    "parts": []
+                },
+                "save": {
+                    "ability": "con",
+                    "dc": {
+                        "calculation": "spellcasting",
+                        "formula": ""
+                    }
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "sort": 0,
+                "_id": "YF0mstJLLxf6XAtC",
+                "name": "",
+                "img": "",
+                "appliedEffects": [
+                    "rcvkBwQW0yl4arjK"
+                ]
+            }
+        },
+        "identifier": ""
+    },
+    "ownership": {
+        "default": 0,
+        "VJURYym0JQByHBQL": 3,
+        "MKYWAnkTJr0gkDqT": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.4",
+        "createdTime": 1726952199793,
+        "modifiedTime": 1728957866329,
+        "lastModifiedBy": "LhShb9ShQN3ambNF"
+    },
+    "_id": "KHqVYnaRXB51vO6G",
+    "sort": 1500000,
+    "_key": "!items!KHqVYnaRXB51vO6G"
+}
