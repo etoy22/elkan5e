@@ -41,7 +41,8 @@ for folder_path in folder_paths:
                     obj = obj.replace('<strong>Hit</strong>:', '<strong>Hit:</strong>')
                     obj = obj.replace('<strong>Miss</strong>:', '<strong>Miss:</strong>')
                     obj = obj.replace('<strong>*At Higher Levels</strong>:', '<strong>*At Higher Levels:</strong>')
-                    obj = obj.replace('elkan5e/icons/', 'elkan5e/icons/conditions/')  # New replacement
+                    if 'elkan5e/icons/' in obj and 'elkan5e/icons/conditions/' not in obj:
+                        obj = obj.replace('elkan5e/icons/', 'elkan5e/icons/conditions/')  # New replacement
                     return obj
                 elif isinstance(obj, list):
                     return [replace_text(item) for item in obj]
