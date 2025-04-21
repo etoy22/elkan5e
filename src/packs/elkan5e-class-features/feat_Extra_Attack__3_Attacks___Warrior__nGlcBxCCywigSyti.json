@@ -1,163 +1,163 @@
 {
-  "name": "Extra Attack (3 Attacks) (Warrior)",
-  "type": "feat",
-  "img": "icons/skills/melee/blade-tips-double-blue.webp",
-  "system": {
-    "description": {
-      "value": "<div data-draftjs-conductor-fragment=\"{\" style=\"white-space:pre-wrap\"><p>You can attack thrice, instead of twice, whenever you take the &amp;reference[Attack] action on your turn. If you are dual-wielding, your off-hand attack brings you to a total of four attacks.</p></div>",
-      "chat": ""
+    "name": "Extra Attack (3 Attacks) (Warrior)",
+    "type": "feat",
+    "img": "icons/skills/melee/blade-tips-double-blue.webp",
+    "system": {
+        "description": {
+            "value": "<div data-draftjs-conductor-fragment=\"{\" style=\"white-space:pre-wrap\"><p>You can attack thrice, instead of twice, whenever you take the &amp;reference[Attack] action on your turn. If you are dual-wielding, your off-hand attack brings you to a total of four attacks.</p></div>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "elkan5e.com/invocations/infused-strikes",
+            "rules": "",
+            "revision": 1,
+            "book": "",
+            "page": "",
+            "license": ""
+        },
+        "uses": {
+            "max": "",
+            "spent": 0,
+            "recovery": []
+        },
+        "type": {
+            "value": "class",
+            "subtype": "eldritchInvocation"
+        },
+        "requirements": "Warlock 11, Pact of the Warrior",
+        "properties": [
+            "mgc"
+        ],
+        "prerequisites": {
+            "level": 11
+        },
+        "identifier": "",
+        "activities": {},
+        "enchant": {}
     },
-    "source": {
-      "custom": "elkan5e.com/invocations/infused-strikes",
-      "rules": "",
-      "revision": 1,
-      "book": "Elkan 5e",
-      "page": "",
-      "license": ""
-    },
-    "uses": {
-      "max": "",
-      "spent": 0,
-      "recovery": []
-    },
-    "type": {
-      "value": "class",
-      "subtype": "eldritchInvocation"
-    },
-    "requirements": "Warlock 11, Pact of the Warrior",
-    "properties": [
-      "mgc"
+    "effects": [
+        {
+            "changes": [
+                {
+                    "key": "system.bonuses.mwak.damage",
+                    "mode": 2,
+                    "value": "+max(1,@abilities.cha.mod)[Force]",
+                    "priority": 20
+                },
+                {
+                    "key": "system.bonuses.rwak.damage",
+                    "mode": 2,
+                    "value": "+max(1,@abilities.cha.mod)[Force]",
+                    "priority": 20
+                }
+            ],
+            "transfer": false,
+            "_id": "rmLq9V32XACj432o",
+            "disabled": false,
+            "duration": {
+                "startTime": null,
+                "seconds": null,
+                "combat": null,
+                "rounds": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null
+            },
+            "origin": null,
+            "tint": "#ffffff",
+            "flags": {
+                "dae": {
+                    "selfTarget": false,
+                    "selfTargetAlways": false,
+                    "stackable": "none",
+                    "durationExpression": "",
+                    "specialDuration": []
+                },
+                "core": {
+                    "statusId": ""
+                },
+                "ActiveAuras": {
+                    "isAura": false,
+                    "aura": "None",
+                    "radius": null,
+                    "alignment": "",
+                    "type": "",
+                    "ignoreSelf": false,
+                    "height": false,
+                    "hidden": false,
+                    "displayTemp": false,
+                    "hostile": false,
+                    "onlyOnce": false
+                }
+            },
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.0.2",
+                "createdTime": null,
+                "modifiedTime": null,
+                "lastModifiedBy": null
+            },
+            "name": "Invocation: Infused Strikes",
+            "img": "icons/weapons/clubs/club-spiked-glowing.webp",
+            "type": "base",
+            "system": {},
+            "description": "",
+            "statuses": [],
+            "sort": 0,
+            "_key": "!items.effects!nGlcBxCCywigSyti.rmLq9V32XACj432o"
+        }
     ],
-    "prerequisites": {
-      "level": 11
+    "flags": {
+        "midiProperties": {
+            "confirmTargets": "default",
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "critOther": false,
+            "offHandWeapon": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "noConcentrationCheck": false,
+            "toggleEffect": false,
+            "ignoreTotalCover": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "midi-qol": {
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "effectCondition": "",
+            "reactionCondition": "",
+            "removeAttackDamageButtons": "default",
+            "otherCondition": ""
+        },
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
+        }
     },
-    "identifier": "",
-    "activities": {},
-    "enchant": {}
-  },
-  "effects": [
-    {
-      "changes": [
-        {
-          "key": "system.bonuses.mwak.damage",
-          "mode": 2,
-          "value": "+max(1,@abilities.cha.mod)[Force]",
-          "priority": 20
-        },
-        {
-          "key": "system.bonuses.rwak.damage",
-          "mode": 2,
-          "value": "+max(1,@abilities.cha.mod)[Force]",
-          "priority": 20
-        }
-      ],
-      "transfer": false,
-      "_id": "rmLq9V32XACj432o",
-      "disabled": false,
-      "duration": {
-        "startTime": null,
-        "seconds": null,
-        "combat": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
-      },
-      "origin": null,
-      "tint": "#ffffff",
-      "flags": {
-        "dae": {
-          "selfTarget": false,
-          "selfTargetAlways": false,
-          "stackable": "none",
-          "durationExpression": "",
-          "specialDuration": []
-        },
-        "core": {
-          "statusId": ""
-        },
-        "ActiveAuras": {
-          "isAura": false,
-          "aura": "None",
-          "radius": null,
-          "alignment": "",
-          "type": "",
-          "ignoreSelf": false,
-          "height": false,
-          "hidden": false,
-          "displayTemp": false,
-          "hostile": false,
-          "onlyOnce": false
-        }
-      },
-      "_stats": {
+    "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
         "coreVersion": "12.331",
         "systemId": "dnd5e",
-        "systemVersion": "4.0.2",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "name": "Invocation: Infused Strikes",
-      "img": "icons/weapons/clubs/club-spiked-glowing.webp",
-      "type": "base",
-      "system": {},
-      "description": "",
-      "statuses": [],
-      "sort": 0,
-      "_key": "!items.effects!nGlcBxCCywigSyti.rmLq9V32XACj432o"
-    }
-  ],
-  "flags": {
-    "midiProperties": {
-      "confirmTargets": "default",
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "critOther": false,
-      "offHandWeapon": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "noConcentrationCheck": false,
-      "toggleEffect": false,
-      "ignoreTotalCover": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
+        "systemVersion": "4.3.8",
+        "createdTime": 1726952015881,
+        "modifiedTime": 1744076294045,
+        "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
     },
-    "midi-qol": {
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": "",
-      "reactionCondition": "",
-      "removeAttackDamageButtons": "default",
-      "otherCondition": ""
+    "_id": "nGlcBxCCywigSyti",
+    "folder": "jI3cppxSTQdaGwta",
+    "sort": 100000,
+    "ownership": {
+        "default": 0,
+        "SMzzktN48GxcmwJd": 3,
+        "vHqSHJMdmEO6Mk2C": 3
     },
-    "tidy5e-sheet": {
-      "section": "",
-      "actionSection": ""
-    }
-  },
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.331",
-    "systemId": "dnd5e",
-    "systemVersion": "4.3.8",
-    "createdTime": 1726952015881,
-    "modifiedTime": 1744076294045,
-    "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
-  },
-  "_id": "nGlcBxCCywigSyti",
-  "folder": "jI3cppxSTQdaGwta",
-  "sort": 100000,
-  "ownership": {
-    "default": 0,
-    "SMzzktN48GxcmwJd": 3,
-    "vHqSHJMdmEO6Mk2C": 3
-  },
-  "_key": "!items!nGlcBxCCywigSyti"
+    "_key": "!items!nGlcBxCCywigSyti"
 }

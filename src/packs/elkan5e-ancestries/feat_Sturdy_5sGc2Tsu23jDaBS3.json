@@ -1,174 +1,174 @@
 {
-  "name": "Sturdy",
-  "type": "feat",
-  "img": "icons/environment/settlement/fence-stone-brick.webp",
-  "system": {
-    "description": {
-      "value": "<p>You have advantage on any saving throw against an effect that would knock you &amp;reference[prone] or push you.</p>",
-      "chat": ""
+    "name": "Sturdy",
+    "type": "feat",
+    "img": "icons/environment/settlement/fence-stone-brick.webp",
+    "system": {
+        "description": {
+            "value": "<p>You have advantage on any saving throw against an effect that would knock you &amp;reference[prone] or push you.</p>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "elkan5e.com/ancestrybackground",
+            "rules": "",
+            "revision": 1,
+            "book": "",
+            "page": "",
+            "license": ""
+        },
+        "uses": {
+            "max": "",
+            "spent": 0,
+            "recovery": []
+        },
+        "type": {
+            "value": "race",
+            "subtype": ""
+        },
+        "requirements": "Dwarf, Earth Genasi",
+        "properties": [],
+        "identifier": "",
+        "activities": {},
+        "enchant": {},
+        "prerequisites": {
+            "level": null
+        }
     },
-    "source": {
-      "custom": "elkan5e.com/ancestrybackground",
-      "rules": "",
-      "revision": 1,
-      "book": "",
-      "page": "",
-      "license": ""
-    },
-    "uses": {
-      "max": "",
-      "spent": 0,
-      "recovery": []
-    },
-    "type": {
-      "value": "race",
-      "subtype": ""
-    },
-    "requirements": "Dwarf, Earth Genasi",
-    "properties": [],
-    "identifier": "",
-    "activities": {},
-    "enchant": {},
-    "prerequisites": {
-      "level": null
-    }
-  },
-  "effects": [
-    {
-      "name": "Sturdy",
-      "changes": [
+    "effects": [
         {
-          "key": "flags.midi-qol.advantage.ability.save.all",
-          "mode": 0,
-          "value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"prone\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"prone\") || ef.name == 'Prone');",
-          "priority": 20
+            "name": "Sturdy",
+            "changes": [
+                {
+                    "key": "flags.midi-qol.advantage.ability.save.all",
+                    "mode": 0,
+                    "value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"prone\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"prone\") || ef.name == 'Prone');",
+                    "priority": 20
+                }
+            ],
+            "transfer": true,
+            "img": "icons/environment/settlement/fence-stone-brick.webp",
+            "_id": "c20tOjmaQyVdLZkp",
+            "type": "base",
+            "system": {},
+            "disabled": false,
+            "duration": {
+                "startTime": null,
+                "seconds": null,
+                "combat": null,
+                "rounds": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null
+            },
+            "description": "",
+            "origin": "Compendium.elkan5e.elkan5e-ancestries.Item.5sGc2Tsu23jDaBS3",
+            "tint": "#ffffff",
+            "statuses": [],
+            "sort": 0,
+            "flags": {
+                "dae": {
+                    "enableCondition": "",
+                    "disableCondition": "",
+                    "disableIncapacitated": false,
+                    "selfTarget": false,
+                    "selfTargetAlways": false,
+                    "dontApply": false,
+                    "stackable": "multi",
+                    "showIcon": false,
+                    "durationExpression": "",
+                    "macroRepeat": "none",
+                    "specialDuration": []
+                },
+                "dnd5e": {
+                    "riders": {
+                        "statuses": []
+                    }
+                },
+                "core": {
+                    "overlay": false
+                },
+                "ActiveAuras": {
+                    "isAura": false,
+                    "aura": "None",
+                    "nameOverride": "",
+                    "radius": "",
+                    "alignment": "",
+                    "type": "",
+                    "customCheck": "",
+                    "ignoreSelf": false,
+                    "height": false,
+                    "hidden": false,
+                    "displayTemp": false,
+                    "hostile": false,
+                    "onlyOnce": false,
+                    "wallsBlock": "system",
+                    "statuses": []
+                }
+            },
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.3.3",
+                "createdTime": 1741118746548,
+                "modifiedTime": 1741118909958,
+                "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
+            },
+            "_key": "!items.effects!5sGc2Tsu23jDaBS3.c20tOjmaQyVdLZkp"
         }
-      ],
-      "transfer": true,
-      "img": "icons/environment/settlement/fence-stone-brick.webp",
-      "_id": "c20tOjmaQyVdLZkp",
-      "type": "base",
-      "system": {},
-      "disabled": false,
-      "duration": {
-        "startTime": null,
-        "seconds": null,
-        "combat": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
-      },
-      "description": "",
-      "origin": "Compendium.elkan5e.elkan5e-ancestries.Item.5sGc2Tsu23jDaBS3",
-      "tint": "#ffffff",
-      "statuses": [],
-      "sort": 0,
-      "flags": {
-        "dae": {
-          "enableCondition": "",
-          "disableCondition": "",
-          "disableIncapacitated": false,
-          "selfTarget": false,
-          "selfTargetAlways": false,
-          "dontApply": false,
-          "stackable": "multi",
-          "showIcon": false,
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "specialDuration": []
-        },
-        "dnd5e": {
-          "riders": {
-            "statuses": []
-          }
-        },
+    ],
+    "ownership": {
+        "default": 0,
+        "SMzzktN48GxcmwJd": 3,
+        "9B4LXF0S1sIudaRa": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "flags": {
         "core": {
-          "overlay": false
+            "sourceId": "Item.3wb9QV0qaIfNZHnc"
         },
-        "ActiveAuras": {
-          "isAura": false,
-          "aura": "None",
-          "nameOverride": "",
-          "radius": "",
-          "alignment": "",
-          "type": "",
-          "customCheck": "",
-          "ignoreSelf": false,
-          "height": false,
-          "hidden": false,
-          "displayTemp": false,
-          "hostile": false,
-          "onlyOnce": false,
-          "wallsBlock": "system",
-          "statuses": []
+        "midiProperties": {
+            "confirmTargets": "default",
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "critOther": false,
+            "offHandWeapon": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "noConcentrationCheck": false,
+            "toggleEffect": false,
+            "ignoreTotalCover": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "midi-qol": {
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "effectCondition": "",
+            "reactionCondition": "",
+            "removeAttackDamageButtons": "default",
+            "otherCondition": ""
+        },
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
         }
-      },
-      "_stats": {
-        "compendiumSource": null,
+    },
+    "_stats": {
+        "compendiumSource": "Item.3wb9QV0qaIfNZHnc",
         "duplicateSource": null,
         "coreVersion": "12.331",
         "systemId": "dnd5e",
-        "systemVersion": "4.3.3",
-        "createdTime": 1741118746548,
-        "modifiedTime": 1741118909958,
+        "systemVersion": "4.1.0",
+        "createdTime": 1726952222058,
+        "modifiedTime": 1741044472265,
         "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
-      },
-      "_key": "!items.effects!5sGc2Tsu23jDaBS3.c20tOjmaQyVdLZkp"
-    }
-  ],
-  "ownership": {
-    "default": 0,
-    "SMzzktN48GxcmwJd": 3,
-    "9B4LXF0S1sIudaRa": 3,
-    "vHqSHJMdmEO6Mk2C": 3
-  },
-  "flags": {
-    "core": {
-      "sourceId": "Item.3wb9QV0qaIfNZHnc"
     },
-    "midiProperties": {
-      "confirmTargets": "default",
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "critOther": false,
-      "offHandWeapon": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "noConcentrationCheck": false,
-      "toggleEffect": false,
-      "ignoreTotalCover": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "midi-qol": {
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": "",
-      "reactionCondition": "",
-      "removeAttackDamageButtons": "default",
-      "otherCondition": ""
-    },
-    "tidy5e-sheet": {
-      "section": "",
-      "actionSection": ""
-    }
-  },
-  "_stats": {
-    "compendiumSource": "Item.3wb9QV0qaIfNZHnc",
-    "duplicateSource": null,
-    "coreVersion": "12.331",
-    "systemId": "dnd5e",
-    "systemVersion": "4.1.0",
-    "createdTime": 1726952222058,
-    "modifiedTime": 1741044472265,
-    "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
-  },
-  "folder": "M1xo3lzGN0JYazM8",
-  "sort": 200000,
-  "_id": "5sGc2Tsu23jDaBS3",
-  "_key": "!items!5sGc2Tsu23jDaBS3"
+    "folder": "M1xo3lzGN0JYazM8",
+    "sort": 200000,
+    "_id": "5sGc2Tsu23jDaBS3",
+    "_key": "!items!5sGc2Tsu23jDaBS3"
 }
