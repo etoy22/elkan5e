@@ -6,7 +6,7 @@
     "img": "icons/weapons/axes/axe-battle-orange.webp",
     "system": {
         "description": {
-            "value": "<p><em>You leave your opponent open to another creature's attack.</em></p><p><strong>Action</strong> - Melee/Ranged - 1 Creature - 1 Round - Uses Equal to Proficiency Bonus/Long Rest</p><p>You use your normal attack action, and the next attack made by a creature other than you against your target has advantage.</p>",
+            "value": "<p><em>You leave your opponent open to another creature's attack.</em></p><p><strong>Once Per Turn</strong> - Melee/Ranged - 1 Creature - 1 Round - Uses Equal to Proficiency Bonus/Long Rest</p><p>After attacking a creature, you distract your target. The next attack against them by a creature other than you has advantage.</p>",
             "chat": ""
         },
         "source": {
@@ -41,7 +41,7 @@
                 "_id": "dnd5eactivity000",
                 "type": "utility",
                 "activation": {
-                    "type": "action",
+                    "type": "once",
                     "value": 1,
                     "condition": "",
                     "override": false
@@ -50,12 +50,8 @@
                     "targets": [
                         {
                             "type": "itemUses",
-                            "target": "",
                             "value": "1",
-                            "scaling": {
-                                "mode": "",
-                                "formula": ""
-                            }
+                            "target": ""
                         }
                     ],
                     "scaling": {
@@ -70,7 +66,7 @@
                 "duration": {
                     "concentration": false,
                     "value": "",
-                    "units": "",
+                    "units": "inst",
                     "special": "",
                     "override": false
                 },
@@ -80,7 +76,7 @@
                     }
                 ],
                 "range": {
-                    "units": "",
+                    "units": "self",
                     "special": "",
                     "override": false
                 },
@@ -114,7 +110,12 @@
                     "prompt": false,
                     "visible": false
                 },
-                "sort": 0
+                "sort": 0,
+                "name": "",
+                "img": "",
+                "appliedEffects": [
+                    "UttoCznS25zlIZWh"
+                ]
             }
         },
         "identifier": "",
@@ -258,10 +259,10 @@
         "duplicateSource": null,
         "coreVersion": "12.331",
         "systemId": "dnd5e",
-        "systemVersion": "4.0.2",
+        "systemVersion": "4.3.8",
         "createdTime": 1726952008045,
-        "modifiedTime": 1744073873296,
-        "lastModifiedBy": "fgP8EzWy33UFoZmI"
+        "modifiedTime": 1744604460894,
+        "lastModifiedBy": "ymGs3J4QpWbCOXON"
     },
     "_key": "!items!8eWqDueYXQnYaY6T"
 }

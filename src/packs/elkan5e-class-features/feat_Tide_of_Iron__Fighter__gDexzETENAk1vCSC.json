@@ -6,7 +6,7 @@
     "img": "icons/skills/melee/shield-damaged-broken-brown.webp",
     "system": {
         "description": {
-            "value": "<p><em>Your assault presses your target back.</em></p><p><strong>Action</strong> - Melee - 1 Creature - Uses Equal to Proficiency Bonus/Long Rest</p><p>You use your normal attack action, and the first time you damage a creature with a melee attack and that creature is no more than one size category larger than you, you can choose to push the creature up to 10 ft. in a direction of your choice.</p>",
+            "value": "<p><em>Your assault presses your target back.</em></p><p><strong>Once Per Turn</strong> - Melee - 1 Creature - Uses Equal to Proficiency Bonus/Long Rest</p><p>When you damage a creature with a melee attack and that creature is no more than one size category larger than you, you can choose to push the creature up to 10 ft. in a direction of your choice.</p>",
             "chat": ""
         },
         "source": {
@@ -41,7 +41,7 @@
                 "_id": "dnd5eactivity000",
                 "type": "utility",
                 "activation": {
-                    "type": "action",
+                    "type": "once",
                     "value": 1,
                     "condition": "",
                     "override": false
@@ -50,12 +50,8 @@
                     "targets": [
                         {
                             "type": "itemUses",
-                            "target": "",
                             "value": "1",
-                            "scaling": {
-                                "mode": "",
-                                "formula": ""
-                            }
+                            "target": ""
                         }
                     ],
                     "scaling": {
@@ -70,13 +66,13 @@
                 "duration": {
                     "concentration": false,
                     "value": "",
-                    "units": "",
+                    "units": "inst",
                     "special": "",
                     "override": false
                 },
                 "effects": [],
                 "range": {
-                    "units": "",
+                    "units": "self",
                     "special": "",
                     "override": false
                 },
@@ -110,7 +106,10 @@
                     "prompt": false,
                     "visible": false
                 },
-                "sort": 0
+                "sort": 0,
+                "name": "",
+                "img": "",
+                "appliedEffects": []
             }
         },
         "identifier": "",
@@ -170,10 +169,10 @@
         "duplicateSource": null,
         "coreVersion": "12.331",
         "systemId": "dnd5e",
-        "systemVersion": "4.0.2",
+        "systemVersion": "4.3.8",
         "createdTime": 1726952014500,
-        "modifiedTime": 1744073883492,
-        "lastModifiedBy": "fgP8EzWy33UFoZmI"
+        "modifiedTime": 1744604510500,
+        "lastModifiedBy": "ymGs3J4QpWbCOXON"
     },
     "_key": "!items!gDexzETENAk1vCSC"
 }
