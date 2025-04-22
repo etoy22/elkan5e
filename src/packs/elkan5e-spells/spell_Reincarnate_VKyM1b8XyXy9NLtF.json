@@ -1,32 +1,28 @@
 {
-    "name": "Create Food and Water",
+    "name": "Reincarnate",
     "type": "spell",
-    "img": "icons/consumables/food/bowl-stew-brown.webp",
+    "img": "icons/magic/nature/plant-sproud-hands-dirt-green.webp",
     "effects": [],
-    "folder": "Tf2FNuyyu2gEaYOF",
+    "folder": "PnZJTE6T4UQY81Pm",
     "flags": {
         "core": {},
         "midi-qol": {
             "effectActivation": false,
+            "rollAttackPerTarget": "default",
             "itemCondition": "",
-            "reactionCondition": "",
             "otherCondition": "",
             "effectCondition": "",
-            "rollAttackPerTarget": "default",
-            "AoETargetType": "any",
-            "AoETargetTypeIncludeSelf": true,
-            "autoTarget": "default",
-            "removeAttackDamageButtons": "default"
+            "reactionCondition": ""
         },
         "midiProperties": {
             "nodam": false,
-            "halfdam": false,
             "fulldam": false,
+            "halfdam": false,
             "rollOther": false,
             "critOther": false,
-            "concentration": false,
             "magicdam": false,
             "magiceffect": false,
+            "concentration": false,
             "toggleEffect": false,
             "autoFailFriendly": false,
             "autoSaveFriendly": false,
@@ -46,21 +42,18 @@
             },
             "migratedProperties": [
                 "vocal",
-                "somatic"
+                "somatic",
+                "material"
             ]
-        },
-        "tidy5e-sheet": {
-            "section": "",
-            "actionSection": ""
         }
     },
     "system": {
         "description": {
-            "value": "<p><em>You place your hands on the ground, and begin describing your favourite food and drink. While you do so the imagined tastes drains away to nothingness, as both gallons of plain water and pounds of a nourishing but tasteless and bland-looking imitation of your favorite dish appears on the ground near you.</em></p><p><strong>Utility Spell</strong> </p><ul><li><p>Create 45 pounds of food and 30 gallons of water on the ground or in containers within range. This is enough to sustain up to fifteen small/medium humanoids or five large creatures for 24 hours.</p></li><li><p>The food is bland but nourishing, and spoils rapidly if uneaten after 24 hours. The water is clean.</p></li></ul>",
-            "chat": "<strong>Utility Spell</strong> </p><ul><li><p>Create 45 pounds of food and 30 gallons of water on the ground or in containers within range. This is enough to sustain up to fifteen small/medium humanoids or five large creatures for 24 hours.</p></li><li><p>The food is bland but nourishing, and spoils rapidly if uneaten after 24 hours. The water is clean.</p></li></ul>"
+            "value": "<p>You touch a dead humanoid or a piece of a dead humanoid. Provided that the creature has been dead no longer than 10 days, the spell forms a new adult body for it and then calls the soul to enter that body. If the target's soul isn't free or willing to do so, the spell fails.</p><p>The magic fashions a new body for the creature to inhabit, which likely causes the creature's race to change. The DM rolls a d100 and consults the following table to determine what form the creature takes when restored to life, or the DM chooses a form.</p><table border=\"1\"><tbody><tr><td><strong>d100</strong> </td><td><strong>Race</strong> </td></tr><tr><td>01-04</td><td>Dragonborn</td></tr><tr><td>05-13</td><td>Dwarf, hill</td></tr><tr><td>14-21</td><td>Dwarf, mountain</td></tr><tr><td>22-25</td><td>Elf, dark</td></tr><tr><td>26-34</td><td>Elf, high</td></tr><tr><td>35-42</td><td>Elf, wood</td></tr><tr><td>43-46</td><td>Gnome, forest</td></tr><tr><td>47-52</td><td>Gnome, rock</td></tr><tr><td>53-56</td><td>Half-elf</td></tr><tr><td>57-60</td><td>Half-orc</td></tr><tr><td>61-68</td><td>Halfling, lightfoot</td></tr><tr><td>69-79</td><td>Halfling, stout</td></tr><tr><td>77-96</td><td>Human</td></tr><tr><td>97-00</td><td>Tiefling</td></tr></tbody></table><p>The reincarnated creature recalls its former life and experiences. It retains the capabilities it had in its original form, except it exchanges its original race for the new one and changes its Racial Traits accordingly.</p>",
+            "chat": ""
         },
         "source": {
-            "custom": "elkan5e.com/spells/create-food-and-water",
+            "custom": "Elkan 5e",
             "revision": 1,
             "rules": "",
             "book": "Elkan 5e",
@@ -68,18 +61,18 @@
             "license": ""
         },
         "activation": {
-            "type": "action",
+            "type": "hour",
             "condition": "",
             "value": 1
         },
         "duration": {
-            "value": "24",
-            "units": "perm"
+            "value": "",
+            "units": "inst"
         },
         "target": {
             "affects": {
-                "type": "space",
-                "count": "0",
+                "type": "creature",
+                "count": "1",
                 "choice": false,
                 "special": ""
             },
@@ -90,8 +83,7 @@
             }
         },
         "range": {
-            "value": "30",
-            "units": "ft",
+            "units": "touch",
             "special": ""
         },
         "uses": {
@@ -100,12 +92,12 @@
             "spent": 0
         },
         "ability": "",
-        "level": 3,
-        "school": "con",
+        "level": 5,
+        "school": "nec",
         "materials": {
-            "value": "",
-            "consumed": false,
-            "cost": 0,
+            "value": "Rare oils and unguents worth at least 1,000 gp, which the spell consumes",
+            "consumed": true,
+            "cost": 1000,
             "supply": 0
         },
         "preparation": {
@@ -114,10 +106,11 @@
         },
         "properties": [
             "vocal",
-            "somatic"
+            "somatic",
+            "material"
         ],
         "activities": {
-            "XS4sbE5jNJiTKfTj": {
+            "K1x9vMCT18OTWJKW": {
                 "type": "utility",
                 "activation": {
                     "type": "action",
@@ -156,7 +149,7 @@
                     "override": false
                 },
                 "roll": {
-                    "formula": "",
+                    "formula": "1d100",
                     "name": "",
                     "prompt": false,
                     "visible": false
@@ -166,14 +159,13 @@
                     "recovery": []
                 },
                 "sort": 0,
-                "_id": "XS4sbE5jNJiTKfTj"
+                "_id": "K1x9vMCT18OTWJKW"
             }
         },
         "identifier": ""
     },
     "ownership": {
         "default": 0,
-        "VJURYym0JQByHBQL": 3,
         "ymJDAw0PgXIWIHMH": 3,
         "MKYWAnkTJr0gkDqT": 3,
         "vHqSHJMdmEO6Mk2C": 3
@@ -183,12 +175,12 @@
         "duplicateSource": null,
         "coreVersion": "12.331",
         "systemId": "dnd5e",
-        "systemVersion": "4.3.9",
-        "createdTime": 1726952203845,
-        "modifiedTime": 1745264731560,
-        "lastModifiedBy": "vHqSHJMdmEO6Mk2C"
+        "systemVersion": "4.0.4",
+        "createdTime": 1726952201836,
+        "modifiedTime": 1728957571521,
+        "lastModifiedBy": "LhShb9ShQN3ambNF"
     },
-    "_id": "gmqVsedqtGyldEnG",
-    "sort": 2500000,
-    "_key": "!items!gmqVsedqtGyldEnG"
+    "_id": "VKyM1b8XyXy9NLtF",
+    "sort": 2000000,
+    "_key": "!items!VKyM1b8XyXy9NLtF"
 }
