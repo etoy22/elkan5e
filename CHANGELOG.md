@@ -27,6 +27,7 @@
 - Added skill proficiency prerequisites to [Brawler](https://www.elkan5e.com/feats/brawler), [Fast Hands](https://www.elkan5e.com/feats/fast-hands), [Grapple Hold](https://www.elkan5e.com/feats/grapple-hold), [Danger Sense](https://www.elkan5e.com/feats/danger-sense), and [Gymnast](https://www.elkan5e.com/feats/gymnast).
 - [Battle Cry](https://www.elkan5e.com/feats/battle-cry) now grants targets advantage on their next attack instead of granting temporary hit points.
 - Changed [Find Familiar](https://elkan5e.com/feats/find-familiar) icon.
+- Added 5 new skill-related feats
 ## Game Rules
 - Fully implemented the new Cursed Condition with a new icon.
 ## Spells
@@ -35,6 +36,7 @@
 - Clarified that [Well of Corruption](https://www.elkan5e.com/spells/well-of-corruption) prevents raising the dead.
 - Added new level 1 spells: [Seeping Ooze](https://www.elkan5e.com/spells/seeping-ooze), [Snowball Swarm](https://www.elkan5e.com/spells/snowball-swarm), [Otherworldly Veil](https://www.elkan5e.com/spells/otherworldly-veil).
 - Changed [Alter Self](https://www.elkan5e.com/spells/alter-self) icon to avoid confusion with Life Drain.
+- Updated [Dream](https://www.elkan5e.com/spells/dream), [Geas](https://www.elkan5e.com/spells/geas) and [Planar Binding](https://www.elkan5e.com/spells/planar-binding)
 ## Misc
 - Moved icons into a subfolder in the module.
 - Standardized success text to be 'Half damage.'
