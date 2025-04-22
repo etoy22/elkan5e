@@ -1,38 +1,40 @@
 {
-    "name": "Create Food and Water",
+    "name": "Flame Strike",
     "type": "spell",
-    "img": "icons/consumables/food/bowl-stew-brown.webp",
+    "img": "icons/magic/fire/beam-jet-stream-yellow.webp",
     "effects": [],
-    "folder": "Tf2FNuyyu2gEaYOF",
+    "folder": "PnZJTE6T4UQY81Pm",
     "flags": {
-        "core": {},
         "midi-qol": {
+            "onUseMacroName": "",
             "effectActivation": false,
-            "itemCondition": "",
-            "reactionCondition": "",
-            "otherCondition": "",
-            "effectCondition": "",
-            "rollAttackPerTarget": "default",
             "AoETargetType": "any",
             "AoETargetTypeIncludeSelf": true,
             "autoTarget": "default",
-            "removeAttackDamageButtons": "default"
+            "rollAttackPerTarget": "default",
+            "removeAttackDamageButtons": "default",
+            "itemCondition": "",
+            "effectCondition": "",
+            "reactionCondition": ""
         },
+        "core": {},
         "midiProperties": {
             "nodam": false,
-            "halfdam": false,
             "fulldam": false,
+            "halfdam": false,
             "rollOther": false,
             "critOther": false,
-            "concentration": false,
             "magicdam": false,
             "magiceffect": false,
+            "concentration": false,
             "toggleEffect": false,
             "autoFailFriendly": false,
             "autoSaveFriendly": false,
             "offHandWeapon": false,
             "ignoreTotalCover": false,
             "confirmTargets": "default",
+            "saveDamage": "default",
+            "bonusSaveDamage": "default",
             "noConcentrationCheck": false,
             "idr": false,
             "idi": false,
@@ -46,21 +48,18 @@
             },
             "migratedProperties": [
                 "vocal",
-                "somatic"
+                "somatic",
+                "material"
             ]
-        },
-        "tidy5e-sheet": {
-            "section": "",
-            "actionSection": ""
         }
     },
     "system": {
         "description": {
-            "value": "<p><em>You place your hands on the ground, and begin describing your favourite food and drink. While you do so the imagined tastes drains away to nothingness, as both gallons of plain water and pounds of a nourishing but tasteless and bland-looking imitation of your favorite dish appears on the ground near you.</em></p><p><strong>Utility Spell</strong> </p><ul><li><p>Create 45 pounds of food and 30 gallons of water on the ground or in containers within range. This is enough to sustain up to fifteen small/medium humanoids or five large creatures for 24 hours.</p></li><li><p>The food is bland but nourishing, and spoils rapidly if uneaten after 24 hours. The water is clean.</p></li></ul>",
-            "chat": "<strong>Utility Spell</strong> </p><ul><li><p>Create 45 pounds of food and 30 gallons of water on the ground or in containers within range. This is enough to sustain up to fifteen small/medium humanoids or five large creatures for 24 hours.</p></li><li><p>The food is bland but nourishing, and spoils rapidly if uneaten after 24 hours. The water is clean.</p></li></ul>"
+            "value": "<p>A vertical column of divine fire roars down from the heavens in a location you specify. Each creature in a 10-foot-radius, 40-foot-high cylinder centered on a point within range must make a Dexterity saving throw. A creature takes [[/damage 4d6 fire]] damage and [[/damage 4d6 radiant]] damage on a failed save, or half as much damage on a successful one.</p><p></p><p><strong>*Upcasting</strong> : Increase damage by either [[/damage 1d6 fire]] or [[/damage 1d6 radiant]] (your choice) for each spell level above 5th.</p>",
+            "chat": ""
         },
         "source": {
-            "custom": "elkan5e.com/spells/create-food-and-water",
+            "custom": "Elkan 5e",
             "revision": 1,
             "rules": "",
             "book": "Elkan 5e",
@@ -73,24 +72,26 @@
             "value": 1
         },
         "duration": {
-            "value": "24",
-            "units": "perm"
+            "value": "",
+            "units": "inst"
         },
         "target": {
             "affects": {
-                "type": "space",
-                "count": "0",
                 "choice": false,
-                "special": ""
+                "count": "",
+                "type": ""
             },
             "template": {
-                "units": "",
+                "units": "ft",
+                "type": "cylinder",
+                "size": "10",
                 "contiguous": false,
-                "type": ""
+                "height": "40",
+                "count": ""
             }
         },
         "range": {
-            "value": "30",
+            "value": "60",
             "units": "ft",
             "special": ""
         },
@@ -100,10 +101,10 @@
             "spent": 0
         },
         "ability": "",
-        "level": 3,
-        "school": "con",
+        "level": 5,
+        "school": "evo",
         "materials": {
-            "value": "",
+            "value": "pinch of sulfur",
             "consumed": false,
             "cost": 0,
             "supply": 0
@@ -114,11 +115,12 @@
         },
         "properties": [
             "vocal",
-            "somatic"
+            "somatic",
+            "material"
         ],
         "activities": {
-            "XS4sbE5jNJiTKfTj": {
-                "type": "utility",
+            "dCTFF7PJgd4MRHaN": {
+                "type": "save",
                 "activation": {
                     "type": "action",
                     "value": null,
@@ -155,18 +157,58 @@
                     },
                     "override": false
                 },
-                "roll": {
-                    "formula": "",
-                    "name": "",
-                    "prompt": false,
-                    "visible": false
+                "damage": {
+                    "onSave": "half",
+                    "parts": [
+                        {
+                            "number": 4,
+                            "denomination": 6,
+                            "bonus": "",
+                            "types": [
+                                "radiant"
+                            ],
+                            "custom": {
+                                "enabled": false,
+                                "formula": ""
+                            },
+                            "scaling": {
+                                "mode": "whole",
+                                "number": 1,
+                                "formula": ""
+                            }
+                        },
+                        {
+                            "number": 4,
+                            "denomination": 6,
+                            "bonus": "",
+                            "types": [
+                                "fire"
+                            ],
+                            "custom": {
+                                "enabled": false,
+                                "formula": ""
+                            },
+                            "scaling": {
+                                "mode": "whole",
+                                "number": 1,
+                                "formula": ""
+                            }
+                        }
+                    ]
+                },
+                "save": {
+                    "ability": "dex",
+                    "dc": {
+                        "calculation": "spellcasting",
+                        "formula": ""
+                    }
                 },
                 "uses": {
                     "spent": 0,
                     "recovery": []
                 },
                 "sort": 0,
-                "_id": "XS4sbE5jNJiTKfTj"
+                "_id": "dCTFF7PJgd4MRHaN"
             }
         },
         "identifier": ""
@@ -183,12 +225,12 @@
         "duplicateSource": null,
         "coreVersion": "12.331",
         "systemId": "dnd5e",
-        "systemVersion": "4.3.9",
-        "createdTime": 1726952203845,
-        "modifiedTime": 1745264731560,
-        "lastModifiedBy": "vHqSHJMdmEO6Mk2C"
+        "systemVersion": "4.0.4",
+        "createdTime": 1726952205349,
+        "modifiedTime": 1728957767391,
+        "lastModifiedBy": "YxlXl9sauSuWxHdZ"
     },
-    "_id": "gmqVsedqtGyldEnG",
-    "sort": 2500000,
-    "_key": "!items!gmqVsedqtGyldEnG"
+    "_id": "4aHanynDdrafvkTuP",
+    "sort": 2800000,
+    "_key": "!items!4aHanynDdrafvkTuP"
 }
