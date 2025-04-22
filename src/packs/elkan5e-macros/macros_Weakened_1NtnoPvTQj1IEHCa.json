@@ -1,0 +1,27 @@
+{
+    "name": "Weakened",
+    "type": "script",
+    "_id": "1NtnoPvTQj1IEHCa",
+    "author": "3Yi0HjF4PKCA4vX0",
+    "img": "modules/elkan5e/icons/conditions/weakened.svg",
+    "scope": "global",
+    "command": "if (![\"mwak\",\"rwak\"].includes(workflow.activity.actionType)) return {};\nconst damageItem = workflow.damageItem;\n\nif (!damageItem) return;\n\nlet totalReduction = 0;\n\nfor (let detail of damageItem.damageDetail) {\n    const originalDamage = detail.value ?? 0;\n\n    // Apply 50% reduction to the damage value\n    const reducedDamage = Math.floor(originalDamage * 0.5);\n    totalReduction += (originalDamage - reducedDamage); // Accumulate the reduction\n    detail.value = reducedDamage; // Update the damageDetail array\n}\n\nif (totalReduction > 0) {\n    MidiQOL.modifyDamageBy({\n        damageItem,\n        value: -totalReduction,\n        type: 'none', // Use the type here , \"none\" for a general damage increase\n        reason: 'Reduce damage by 50%'\n    });\n}",
+    "folder": null,
+    "sort": 0,
+    "ownership": {
+        "default": 0,
+        "3Yi0HjF4PKCA4vX0": 3
+    },
+    "flags": {},
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.3.3",
+        "createdTime": 1740626313092,
+        "modifiedTime": 1740626330453,
+        "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
+    },
+    "_key": "!macros!1NtnoPvTQj1IEHCa"
+}

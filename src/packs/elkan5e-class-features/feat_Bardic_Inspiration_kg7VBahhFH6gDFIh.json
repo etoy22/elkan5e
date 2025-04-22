@@ -1,0 +1,204 @@
+{
+    "_id": "kg7VBahhFH6gDFIh",
+    "name": "Bardic Inspiration",
+    "type": "feat",
+    "img": "icons/skills/melee/unarmed-punch-fist.webp",
+    "effects": [],
+    "folder": "JYeqERhDIlYrk2gp",
+    "sort": 400000,
+    "flags": {
+        "core": {
+            "sourceId": "Compendium.dnd5e.classfeatures.hpLNiGq7y67d2EHA"
+        },
+        "midi-qol": {
+            "effectActivation": false,
+            "removeAttackDamageButtons": "default",
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "effectCondition": "",
+            "reactionCondition": "",
+            "AoETargetType": "any",
+            "AoETargetTypeIncludeSelf": true,
+            "autoTarget": "default",
+            "otherCondition": ""
+        },
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "noConcentrationCheck": false,
+            "confirmTargets": "default",
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedUses": 1
+        },
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<p><em>You inspire an ally at a critical moment, pushing them to succeed rather than fail.</em></p><p><strong>No Action Cost</strong> - 1 Ally (60 ft.) - 2/Short Rest* - Magical</p><ul><li><p>While your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.3u8Og5ABnDcYhudF]{Inspiring Performance} is active, you can inspire an ally other than yourself when they miss an attack roll, fail a saving throw, or fail a skill check. The ally must be able to hear you.</p></li><li><p>When you inspire your ally, you can roll a d6* and add the number to the total, potentially turning the failure into a success.</p></li><li><p>Regardless of whether you succeed or fail together, you expend a use of this ability and your performance ends until you use this ability again. If you have the @UUID[Compendium.elkan5e.elkan5e-class-features.Item.QIiLoZgVJqdEguAX]{Counterpoint} feature, you don't expend a use or end your performance when the roll fails.</p></li></ul><p>*Your bardic inspiration die changes from a d6 to larger dice and you get more uses of this ability when you reach certain levels in this class, as shown in the @UUID[Compendium.elkan5e.elkan5e-class.Item.SmG14gsqWBtqmcjt]{Bard} Progression Table.</p>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "elkan5e.com/bard",
+            "revision": 1,
+            "rules": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "license": ""
+        },
+        "uses": {
+            "max": "@scale.bard.bardic-uses",
+            "recovery": [
+                {
+                    "period": "sr",
+                    "type": "recoverAll"
+                }
+            ],
+            "spent": 0
+        },
+        "type": {
+            "value": "class",
+            "subtype": ""
+        },
+        "requirements": "Bard 1",
+        "activities": {
+            "dnd5eactivity000": {
+                "_id": "dnd5eactivity000",
+                "type": "damage",
+                "activation": {
+                    "type": "nocost",
+                    "value": null,
+                    "condition": "",
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [
+                        {
+                            "type": "itemUses",
+                            "target": "",
+                            "value": "1",
+                            "scaling": {
+                                "mode": "",
+                                "formula": ""
+                            }
+                        }
+                    ],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "concentration": false,
+                    "value": "1",
+                    "units": "inst",
+                    "special": "",
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "value": "60",
+                    "units": "ft",
+                    "special": "",
+                    "override": false
+                },
+                "target": {
+                    "template": {
+                        "count": "",
+                        "contiguous": false,
+                        "type": "",
+                        "size": "",
+                        "width": "",
+                        "height": "",
+                        "units": ""
+                    },
+                    "affects": {
+                        "count": "1",
+                        "type": "creature",
+                        "choice": false,
+                        "special": ""
+                    },
+                    "prompt": true,
+                    "override": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "max": "",
+                    "recovery": []
+                },
+                "damage": {
+                    "critical": {
+                        "allow": false,
+                        "bonus": ""
+                    },
+                    "parts": [
+                        {
+                            "number": null,
+                            "denomination": null,
+                            "bonus": "",
+                            "types": [],
+                            "custom": {
+                                "enabled": true,
+                                "formula": "1@scale.bard.inspiration"
+                            },
+                            "scaling": {
+                                "mode": "whole",
+                                "number": null,
+                                "formula": ""
+                            }
+                        }
+                    ]
+                },
+                "sort": 0
+            }
+        },
+        "identifier": "",
+        "enchant": {},
+        "prerequisites": {
+            "level": null
+        },
+        "properties": []
+    },
+    "ownership": {
+        "default": 0,
+        "ymJDAw0PgXIWIHMH": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": "Compendium.dnd5e.classfeatures.hpLNiGq7y67d2EHA",
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.3.8",
+        "createdTime": 1726952015307,
+        "modifiedTime": 1744088398335,
+        "lastModifiedBy": "ymGs3J4QpWbCOXON"
+    },
+    "_key": "!items!kg7VBahhFH6gDFIh"
+}

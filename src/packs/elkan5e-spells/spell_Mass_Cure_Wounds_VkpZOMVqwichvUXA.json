@@ -1,0 +1,209 @@
+{
+    "name": "Mass Cure Wounds",
+    "type": "spell",
+    "img": "icons/magic/life/cross-explosion-burst-green.webp",
+    "effects": [],
+    "folder": "PnZJTE6T4UQY81Pm",
+    "flags": {
+        "core": {},
+        "midi-qol": {
+            "effectActivation": false,
+            "AoETargetType": "any",
+            "AoETargetTypeIncludeSelf": true,
+            "autoTarget": "default",
+            "removeAttackDamageButtons": "default",
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "effectCondition": "",
+            "reactionCondition": "",
+            "otherCondition": ""
+        },
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "confirmTargets": "default",
+            "noConcentrationCheck": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedProperties": [
+                "vocal",
+                "somatic"
+            ]
+        },
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<p><strong>Action</strong> - 6 Creatures (60 ft.) - 5th Level (Transmutation) - VS<strong><br/>Healing Spell</strong> </p><p>This spell has no effect on &amp;reference[construct]{constructs}.</p><ul><li><p>Target gains hit points equal to [[/healing 4d6 + @attributes.spellmod]]{4d6 + your spellcasting ability modifier}.*</p></li></ul><p></p><p><span><strong>*</strong> </span><strong>Upcasting</strong> : Increase healing by [[/healing 2d6]]{2d6} for each spell level above 5th.</p>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "elkan5e.com/spells/mass-cure-wounds",
+            "revision": 1,
+            "rules": "",
+            "book": "",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "action",
+            "condition": "",
+            "value": 1
+        },
+        "duration": {
+            "value": "",
+            "units": "inst"
+        },
+        "target": {
+            "affects": {
+                "type": "creature",
+                "count": "6",
+                "choice": false,
+                "special": ""
+            },
+            "template": {
+                "units": "",
+                "contiguous": false,
+                "type": ""
+            }
+        },
+        "range": {
+            "value": "60",
+            "units": "ft",
+            "special": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "ability": "",
+        "level": 5,
+        "school": "trs",
+        "materials": {
+            "value": "",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": true
+        },
+        "properties": [
+            "vocal",
+            "somatic"
+        ],
+        "activities": {
+            "wASZ6b4LRZWIjBmc": {
+                "type": "heal",
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "healing": {
+                    "number": 4,
+                    "denomination": "6",
+                    "bonus": "@mod",
+                    "types": [
+                        "healing"
+                    ],
+                    "custom": {
+                        "enabled": false,
+                        "formula": ""
+                    },
+                    "scaling": {
+                        "mode": "whole",
+                        "number": 2,
+                        "formula": ""
+                    }
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "sort": 0,
+                "_id": "wASZ6b4LRZWIjBmc",
+                "name": "",
+                "img": "",
+                "appliedEffects": []
+            }
+        },
+        "identifier": ""
+    },
+    "ownership": {
+        "default": 0,
+        "VJURYym0JQByHBQL": 3,
+        "ymJDAw0PgXIWIHMH": 3,
+        "MKYWAnkTJr0gkDqT": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.3.8",
+        "createdTime": 1726952201916,
+        "modifiedTime": 1744691144524,
+        "lastModifiedBy": "FtNMjeyGsjxOZR8p"
+    },
+    "_id": "VkpZOMVqwichvUXA",
+    "sort": 2100000,
+    "_key": "!items!VkpZOMVqwichvUXA"
+}
