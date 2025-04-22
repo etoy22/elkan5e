@@ -57,8 +57,8 @@
     },
     "system": {
         "description": {
-            "value": "<p><em>You touch a closed door, window, gate, chest, or other solid entryway, scattering gold dust on the door handle or latch. You verbally say the password and the names of your chosen allies, and the object becomes locked for the duration.</em></p><div class=\"rd__b  rd__b--3\"><p><strong>Materials:</strong><span style=\"font-family:Signika, sans-serif\"> You require 0.1 pounds of pure @UUID[Compendium.elkan5e.elkan5e-spells.Item.Ia9Kl5nqaJlv67VI]{gold dust}, typically valued at 25 gold. This spell consumes this material.</span></p></div><p><strong>Utility Spell</strong></p><p>You and the creatures you designate when you cast this spell can open the object normally. You also set a password that, when spoken within 5 feet of the object, suppresses this spell for 1 minute. Otherwise, it is impassable. Casting <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.ImAJahFvkxJnFmaC]{knock} </em>on the object suppresses arcane lock for 10 minutes.</p><ul><li><p>As an action you can touch the object and can change who you designated to be able to open the door manually.</p></li><li><p>While affected by this spell, the object is more difficult to break or force open; the DC to break it or pick any locks on it increases to 20 + the spell slot level you used to cast this spell. Forcibly picking the lock or breaking the object open ends this spell.</p></li></ul>",
-            "chat": "<div class=\"rd__b  rd__b--3\"><p><strong>Materials:</strong><span style=\"font-family:Signika, sans-serif\"> You require 0.1 pounds of pure @UUID[Compendium.elkan5e.elkan5e-spells.Item.Ia9Kl5nqaJlv67VI]{gold dust}, typically valued at 25 gold. This spell consumes this material.</span></p></div><p><strong>Utility Spell</strong></p><p>You and the creatures you designate when you cast this spell can open the object normally. You also set a password that, when spoken within 5 feet of the object, suppresses this spell for 1 minute. Otherwise, it is impassable until it is broken or the spell is dispelled or suppressed. Casting <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.ImAJahFvkxJnFmaC]{knock} </em>on the object suppresses arcane lock for 10 minutes.</p><ul><li><p>As an action you can touch the object and can change who you designated to be able to open the door manually.</p></li><li><p>While affected by this spell, the object is more difficult to break or force open; the DC to break it or pick any locks on it increases to 20 + the spell slot level you used to cast this spell.</p></li></ul>"
+            "value": "<p><em>You touch a closed door, window, gate, chest, or other solid entryway, scattering gold dust on the door handle or latch. You verbally say the password and the names of your chosen allies, and the object becomes locked for the duration.</em></p><p><strong>Ritual Casting Time:</strong> 1 Minute</p><p><strong>Materials:</strong> You require 0.1 pounds of pure @UUID[Compendium.elkan5e.elkan5e-spells.Item.Ia9Kl5nqaJlv67VI]{gold dust}, typically valued at 25 gold. This spell consumes this material.</p></div><p><strong>Utility Spell</strong></p><p>You and the creatures you designate when you cast this spell can open the object normally. You also set a password that, when spoken within 5 feet of the object, suppresses this spell for 1 minute. Otherwise, it is impassable. Casting <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.ImAJahFvkxJnFmaC]{knock} </em>on the object suppresses arcane lock for 10 minutes.</p><ul><li><p>As an action you can touch the object and can change who you designated to be able to open the door manually.</p></li><li><p>While affected by this spell, the object is more difficult to break or force open; the DC to break it or pick any locks on it increases to 20 + the spell slot level you used to cast this spell. Forcibly picking the lock or breaking the object open ends this spell.</p></li></ul>",
+            "chat": "<p><strong>Ritual Casting Time:</strong> 1 Minute</p><p><strong>Materials:</strong> You require 0.1 pounds of pure @UUID[Compendium.elkan5e.elkan5e-spells.Item.Ia9Kl5nqaJlv67VI]{gold dust}, typically valued at 25 gold. This spell consumes this material.</p></div><p><strong>Utility Spell</strong></p><p>You and the creatures you designate when you cast this spell can open the object normally. You also set a password that, when spoken within 5 feet of the object, suppresses this spell for 1 minute. Otherwise, it is impassable. Casting <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.ImAJahFvkxJnFmaC]{knock} </em>on the object suppresses arcane lock for 10 minutes.</p><ul><li><p>As an action you can touch the object and can change who you designated to be able to open the door manually.</p></li><li><p>While affected by this spell, the object is more difficult to break or force open; the DC to break it or pick any locks on it increases to 20 + the spell slot level you used to cast this spell. Forcibly picking the lock or breaking the object open ends this spell.</p></li></ul>",
         },
         "source": {
             "custom": "elkan5e.com/spells/arcane-lock",
@@ -115,7 +115,8 @@
         "properties": [
             "vocal",
             "somatic",
-            "material"
+            "material",
+            "ritual"
         ],
         "activities": {
             "dnd5eactivity000": {
@@ -179,6 +180,110 @@
                     "visible": false
                 },
                 "sort": 0
+            },
+            "ibde1HzARXSDqGxO": {
+                "type": "utility",
+                "activation": {
+                    "type": "minute",
+                    "value": 1,
+                    "override": true,
+                    "condition": ""
+                },
+                "consumption": {
+                    "targets": [
+                        {
+                            "type": "itemUses",
+                            "value": "1",
+                            "target": "Compendium.elkan5e.elkan5e-spells.Item.Ia9Kl5nqaJlv67VI",
+                            "scaling": {
+                                "mode": ""
+                            }
+                        }
+                    ],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": false
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "max": "",
+                    "recovery": []
+                },
+                "roll": {
+                    "formula": "",
+                    "name": "",
+                    "prompt": false,
+                    "visible": false
+                },
+                "sort": 0,
+                "useConditionText": "",
+                "useConditionReason": "",
+                "effectConditionText": "",
+                "macroData": {
+                    "name": "",
+                    "command": ""
+                },
+                "ignoreTraits": {
+                    "idi": false,
+                    "idr": false,
+                    "idv": false,
+                    "ida": false
+                },
+                "midiProperties": {
+                    "ignoreTraits": [],
+                    "triggeredActivityId": "none",
+                    "triggeredActivityConditionText": "",
+                    "triggeredActivityTargets": "targets",
+                    "triggeredActivityRollAs": "self",
+                    "forceDialog": false,
+                    "confirmTargets": "default",
+                    "autoTargetType": "any",
+                    "autoTargetAction": "default",
+                    "automationOnly": false,
+                    "otherActivityCompatible": true,
+                    "identifier": "",
+                    "displayActivityName": false,
+                    "rollMode": "default",
+                    "chooseEffects": false,
+                    "toggleEffect": false,
+                    "ignoreFullCover": false
+                },
+                "isOverTimeFlag": false,
+                "overTimeProperties": {
+                    "saveRemoves": true,
+                    "preRemoveConditionText": "",
+                    "postRemoveConditionText": ""
+                },
+                "otherActivityId": "none",
+                "_id": "ibde1HzARXSDqGxO",
+                "name": "Ritual",
+                "img": "",
+                "appliedEffects": []
             }
         },
         "identifier": ""
@@ -194,9 +299,9 @@
         "duplicateSource": null,
         "coreVersion": "12.331",
         "systemId": "dnd5e",
-        "systemVersion": "4.1.1",
+        "systemVersion": "4.3.8",
         "createdTime": 1726952203650,
-        "modifiedTime": 1732961074612,
+        "modifiedTime": 1745205032147,
         "lastModifiedBy": "ymGs3J4QpWbCOXON"
     },
     "_id": "fsKqUGAIN0YXi4Dm",
