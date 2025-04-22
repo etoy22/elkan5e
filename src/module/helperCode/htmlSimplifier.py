@@ -22,6 +22,7 @@ def simplify_html(html_content):
     simplified_html = soup.prettify(formatter="minimal")
     simplified_html = " ".join(simplified_html.split())  # Compact into a single line
     simplified_html = simplified_html.replace(" <", "<")  # Remove spaces between tags
+    simplified_html = simplified_html.replace("> ", ">")  # Remove spaces between tags
 
     return simplified_html
 
