@@ -41,6 +41,7 @@ for folder_path in folder_paths:
                 if isinstance(obj, str):
                     obj = obj.replace('\u00A0', ' ')
                     obj = obj.replace('\u200B', '')  # Replace zero-width space with a regular space
+                    obj = obj.replace('’', '\'')  # Replace zero-width space with a regular space
                     obj = obj.replace('<strong>Success</strong>:', '<strong>Success:</strong>')
                     obj = obj.replace('<strong>Failure</strong>:', '<strong>Failure:</strong>')
                     obj = obj.replace('<strong>Material</strong>:', '<strong>Material:</strong>')
