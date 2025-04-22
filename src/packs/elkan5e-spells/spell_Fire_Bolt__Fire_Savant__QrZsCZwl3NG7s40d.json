@@ -1,0 +1,234 @@
+{
+    "name": "Fire Bolt (Fire Savant)",
+    "type": "spell",
+    "img": "icons/magic/fire/projectile-fireball-smoke-orange-red.webp",
+    "effects": [],
+    "folder": "NfxMJJFyraG9EXbD",
+    "flags": {
+        "midi-qol": {
+            "onUseMacroName": "",
+            "effectActivation": false,
+            "fumbleThreshold": null,
+            "removeAttackDamageButtons": "default",
+            "itemCondition": "",
+            "reactionCondition": "",
+            "otherCondition": "",
+            "effectCondition": "",
+            "rollAttackPerTarget": "default",
+            "AoETargetType": "any",
+            "AoETargetTypeIncludeSelf": true,
+            "autoTarget": "default"
+        },
+        "core": {},
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "ignoreTotalCover": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "noConcentrationCheck": false,
+            "confirmTargets": "default",
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            }
+        },
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<p><em>Muttering a short invocation and pointing at your target, you send a bolt of fire streaking forward.</em></p><p><strong>Spell Attack</strong> </p><p>If this spell damages a vehicle or object that is flammable and has hit points, the object is set on fire**.</p><ul><li><p><strong>Hit:</strong> [[/damage 1d12 fire]] damage*</p></li></ul><p></p><p><strong>*Using Higher Level Spell Slots:</strong> <span>This spell's damage increases by 1d12 when you reach a total character or creature level of 5th level ([[/damage 2d12 fire]]), 11th level ([[/damage 3d12 fire]]), and 17th level ([[/damage 4d12 fire]]).</span></p><p>**Some objects may be too large or flammable to be simply extinguished as an action, and will require creative solutions. Additionally, some vehicles or other objects may have a 'damage threshold'. For example, a fire bolt would have to deal at least 5 damage to damage and ignite a wooden catapult. Once ignited, the ignited object takes [[/damage 1d10 fire]] damage at the end of each of the caster's turns, which is dealt regardless of the target's damage threshold.</p>",
+            "chat": "<strong>Spell Attack</strong> </p><p>If this spell damages a vehicle or object that is flammable and has hit points, the object is set on fire**.</p><ul><li><p><strong>Hit:</strong> [[/damage 1d12 fire]] damage*</p></li></ul><p></p><p><strong>*Using Higher Level Spell Slots:</strong> <span>This spell's damage increases by 1d12 when you reach a total character or creature level of 5th level ([[/damage 2d12 fire]]), 11th level ([[/damage 3d12 fire]]), and 17th level ([[/damage 4d12 fire]]).</span></p><p>**Some objects may be too large or flammable to be simply extinguished as an action, and will require creative solutions. Additionally, some vehicles or other objects may have a 'damage threshold'. For example, a fire bolt would have to deal at least 5 damage to damage and ignite a wooden catapult. Once ignited, the ignited object takes [[/damage 1d10 fire]] damage at the end of each of the caster's turns, which is dealt regardless of the target's damage threshold.</p>"
+        },
+        "source": {
+            "custom": "elkan5e.com/sorcerer",
+            "revision": 1,
+            "rules": "",
+            "book": "",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "action",
+            "condition": "",
+            "value": 1
+        },
+        "duration": {
+            "value": "",
+            "units": "inst"
+        },
+        "target": {
+            "affects": {
+                "type": "creature",
+                "count": "1",
+                "choice": false,
+                "special": ""
+            },
+            "template": {
+                "units": "",
+                "contiguous": false,
+                "type": ""
+            }
+        },
+        "range": {
+            "value": "120",
+            "units": "ft",
+            "special": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "ability": "",
+        "level": 0,
+        "school": "evo",
+        "materials": {
+            "value": "",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "always",
+            "prepared": true
+        },
+        "properties": [
+            "vocal",
+            "somatic",
+            "mgc"
+        ],
+        "activities": {
+            "dnd5eactivity000": {
+                "_id": "dnd5eactivity000",
+                "type": "attack",
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "max": "",
+                    "recovery": []
+                },
+                "attack": {
+                    "ability": "",
+                    "bonus": "",
+                    "critical": {
+                        "threshold": null
+                    },
+                    "flat": false,
+                    "type": {
+                        "value": "ranged",
+                        "classification": "spell"
+                    }
+                },
+                "damage": {
+                    "critical": {
+                        "bonus": ""
+                    },
+                    "includeBase": true,
+                    "parts": [
+                        {
+                            "number": 1,
+                            "denomination": 12,
+                            "bonus": "",
+                            "types": [
+                                "fire"
+                            ],
+                            "custom": {
+                                "enabled": false,
+                                "formula": ""
+                            },
+                            "scaling": {
+                                "mode": "whole",
+                                "number": 1,
+                                "formula": ""
+                            }
+                        }
+                    ]
+                },
+                "sort": 0,
+                "useConditionText": "",
+                "forceDialog": false,
+                "effectConditionText": "",
+                "midiAutomationOnly": false,
+                "attackMode": "oneHanded",
+                "ammunition": "",
+                "otherActivityUuid": ""
+            }
+        },
+        "identifier": "fire-bolt-fire-savant"
+    },
+    "ownership": {
+        "default": 0,
+        "VJURYym0JQByHBQL": 3,
+        "ymJDAw0PgXIWIHMH": 3,
+        "MKYWAnkTJr0gkDqT": 3,
+        "3Yi0HjF4PKCA4vX0": 3,
+        "vHqSHJMdmEO6Mk2C": 3,
+        "ymGs3J4QpWbCOXON": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.1.2",
+        "createdTime": 1733165289952,
+        "modifiedTime": 1740642685485,
+        "lastModifiedBy": "ymGs3J4QpWbCOXON"
+    },
+    "_id": "QrZsCZwl3NG7s40d",
+    "sort": 400000,
+    "_key": "!items!QrZsCZwl3NG7s40d"
+}

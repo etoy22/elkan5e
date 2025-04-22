@@ -1,0 +1,273 @@
+{
+    "folder": "dqN1OSiHa3McvNxD",
+    "name": "Sacred Weapon",
+    "type": "feat",
+    "_id": "1h1j8h29V9gDtlMD",
+    "img": "icons/weapons/hammers/hammer-double-glowing-yellow.webp",
+    "system": {
+        "description": {
+            "value": "<p><em>You imbue the weapons you are holding with radiant energy.</em></p><p><strong>Bonus Action</strong> - Self - 1 Minute - 1/Short Rest - Magical</p><p><strong>Buff</strong> </p><ul><li><p>You add your charisma modifier to your attack rolls with weapons, and deal extra radiant damage equal to your charisma modifier.</p></li><li><p>Any weapon you are wielding glows, shedding &amp;rerefence[dim light] in a 40 ft. radius and &amp;reference[bright light] in a 20 ft. radius.</p></li></ul>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "elkan5e.com/paladin",
+            "revision": 1,
+            "rules": "",
+            "book": "",
+            "page": "",
+            "license": ""
+        },
+        "uses": {
+            "max": "1",
+            "recovery": [
+                {
+                    "period": "sr",
+                    "type": "recoverAll"
+                }
+            ],
+            "spent": 0
+        },
+        "type": {
+            "value": "subclass",
+            "subtype": ""
+        },
+        "properties": [
+            "mgc"
+        ],
+        "requirements": "Oath of Devotion 3/10",
+        "activities": {
+            "dnd5eactivity000": {
+                "_id": "dnd5eactivity000",
+                "type": "utility",
+                "activation": {
+                    "type": "bonus",
+                    "value": 1,
+                    "condition": "",
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [
+                        {
+                            "type": "itemUses",
+                            "value": "1",
+                            "target": "",
+                            "scaling": {}
+                        }
+                    ],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "concentration": false,
+                    "value": "1",
+                    "units": "minute",
+                    "special": "",
+                    "override": false
+                },
+                "effects": [
+                    {
+                        "_id": "O6MzZzjEQgSCWY8D"
+                    }
+                ],
+                "range": {
+                    "units": "self",
+                    "special": "",
+                    "override": false
+                },
+                "target": {
+                    "template": {
+                        "count": "",
+                        "contiguous": false,
+                        "type": "",
+                        "size": "",
+                        "width": "",
+                        "height": "",
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "count": "",
+                        "type": "self",
+                        "choice": false,
+                        "special": ""
+                    },
+                    "prompt": true,
+                    "override": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "max": "",
+                    "recovery": []
+                },
+                "roll": {
+                    "formula": "",
+                    "name": "",
+                    "prompt": false,
+                    "visible": false
+                },
+                "sort": 0,
+                "name": "",
+                "img": "",
+                "appliedEffects": [
+                    "O6MzZzjEQgSCWY8D"
+                ]
+            }
+        },
+        "identifier": "",
+        "enchant": {},
+        "prerequisites": {
+            "level": null
+        }
+    },
+    "effects": [
+        {
+            "origin": "Compendium.elkan5e.elkan5e-class-features.Item.1h1j8h29V9gDtlMD",
+            "duration": {
+                "rounds": 10,
+                "startTime": null,
+                "seconds": 60,
+                "combat": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null
+            },
+            "disabled": false,
+            "name": "Sacred Weapon",
+            "_id": "O6MzZzjEQgSCWY8D",
+            "changes": [
+                {
+                    "key": "system.bonuses.weapon.attack",
+                    "mode": 2,
+                    "value": "+max(1,@abilities.cha.mod)",
+                    "priority": 20
+                },
+                {
+                    "key": "system.bonuses.weapon.damage",
+                    "mode": 2,
+                    "value": "+max(1,@abilities.cha.mod)[Radiant]",
+                    "priority": 20
+                },
+                {
+                    "key": "ATL.light.bright",
+                    "mode": 2,
+                    "value": "20",
+                    "priority": 20
+                },
+                {
+                    "key": "ATL.light.dim",
+                    "mode": 2,
+                    "value": "40",
+                    "priority": 20
+                }
+            ],
+            "description": "",
+            "transfer": true,
+            "statuses": [],
+            "flags": {
+                "dae": {
+                    "disableIncapacitated": false,
+                    "selfTarget": false,
+                    "selfTargetAlways": false,
+                    "dontApply": false,
+                    "stackable": "noneName",
+                    "showIcon": false,
+                    "durationExpression": "",
+                    "macroRepeat": "none",
+                    "specialDuration": []
+                },
+                "ActiveAuras": {
+                    "isAura": false,
+                    "aura": "None",
+                    "nameOverride": "",
+                    "radius": "",
+                    "alignment": "",
+                    "type": "",
+                    "customCheck": "",
+                    "ignoreSelf": false,
+                    "height": false,
+                    "hidden": false,
+                    "displayTemp": false,
+                    "hostile": false,
+                    "onlyOnce": false,
+                    "wallsBlock": "system"
+                }
+            },
+            "tint": "#ffffff",
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.0.2",
+                "createdTime": null,
+                "modifiedTime": null,
+                "lastModifiedBy": null
+            },
+            "img": "icons/weapons/hammers/hammer-double-glowing-yellow.webp",
+            "type": "base",
+            "system": {},
+            "sort": 0,
+            "_key": "!items.effects!1h1j8h29V9gDtlMD.O6MzZzjEQgSCWY8D"
+        }
+    ],
+    "sort": 100000,
+    "ownership": {
+        "default": 0,
+        "ymGs3J4QpWbCOXON": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "flags": {
+        "midiProperties": {
+            "confirmTargets": "default",
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "critOther": false,
+            "offHandWeapon": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "noConcentrationCheck": false,
+            "toggleEffect": false,
+            "ignoreTotalCover": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "midi-qol": {
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "effectCondition": "",
+            "removeAttackDamageButtons": "default",
+            "reactionCondition": "",
+            "otherCondition": ""
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedUses": 1
+        },
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
+        }
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.4",
+        "createdTime": 1726952006433,
+        "modifiedTime": 1740357120021,
+        "lastModifiedBy": "fgP8EzWy33UFoZmI"
+    },
+    "_key": "!items!1h1j8h29V9gDtlMD"
+}

@@ -1,0 +1,337 @@
+{
+    "name": "Life Drain",
+    "type": "spell",
+    "img": "icons/magic/control/debuff-energy-hold-green.webp",
+    "effects": [
+        {
+            "name": "Drained",
+            "origin": "Compendium.elkan5e.elkan5e-spells.Item.seKEwAbEZFBi6GWb",
+            "changes": [
+                {
+                    "key": "system.attributes.hp.tempmax",
+                    "mode": 2,
+                    "value": "-@damage",
+                    "priority": 20
+                }
+            ],
+            "transfer": false,
+            "flags": {
+                "dae": {
+                    "itemName": "Life Drain",
+                    "enableCondition": "",
+                    "disableCondition": "",
+                    "disableIncapacitated": false,
+                    "selfTarget": false,
+                    "selfTargetAlways": false,
+                    "dontApply": false,
+                    "stackable": "multi",
+                    "showIcon": true,
+                    "durationExpression": "",
+                    "macroRepeat": "none",
+                    "specialDuration": []
+                },
+                "ActiveAuras": {
+                    "isAura": false,
+                    "aura": "None",
+                    "nameOverride": "",
+                    "radius": "",
+                    "alignment": "",
+                    "type": "",
+                    "customCheck": "",
+                    "ignoreSelf": false,
+                    "height": false,
+                    "hidden": false,
+                    "displayTemp": false,
+                    "hostile": false,
+                    "onlyOnce": false,
+                    "wallsBlock": "system"
+                },
+                "core": {
+                    "overlay": false
+                }
+            },
+            "img": "modules/elkan5e/icons/conditions/drained.svg",
+            "_id": "IJZL8FRw8X61ZipV",
+            "type": "base",
+            "system": {},
+            "disabled": false,
+            "duration": {
+                "startTime": null,
+                "seconds": 0,
+                "combat": null,
+                "rounds": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null
+            },
+            "description": "",
+            "tint": "#ffffff",
+            "statuses": [],
+            "sort": 0,
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.0.2",
+                "createdTime": null,
+                "modifiedTime": 1728939085330,
+                "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+            },
+            "_key": "!items.effects!seKEwAbEZFBi6GWb.IJZL8FRw8X61ZipV"
+        }
+    ],
+    "folder": "Tf2FNuyyu2gEaYOF",
+    "flags": {
+        "core": {},
+        "midi-qol": {
+            "fumbleThreshold": null,
+            "effectActivation": false,
+            "removeAttackDamageButtons": "default",
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "effectCondition": "",
+            "onUseMacroName": "[postActiveEffects]ItemMacro",
+            "reactionCondition": "",
+            "AoETargetType": "any",
+            "AoETargetTypeIncludeSelf": true,
+            "autoTarget": "default",
+            "otherCondition": ""
+        },
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "confirmTargets": "default",
+            "noConcentrationCheck": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false,
+            "saveDamage": "default",
+            "bonusSaveDamage": "default"
+        },
+        "dae": {
+            "macro": {
+                "name": "Life Drain",
+                "img": "icons/magic/control/debuff-energy-hold-green.webp",
+                "type": "script",
+                "scope": "global",
+                "command": "const {damage,damageMultiplier} = workflow.damageItem.damageDetail[0].find(d=>d.type === 'necrotic') || {};\nif (damage && workflow.hitTargets.size === 1) {\n  const dmgToApply = Math.floor(damage * damageMultiplier /2);\n  await MidiQOL.applyTokenDamage([{\n        damage: dmgToApply,\n        type: 'healing',\n        flavor:'Life Steal'\n    }], dmgToApply, new Set([token]), null, null);\n}",
+                "author": "3Yi0HjF4PKCA4vX0",
+                "ownership": {
+                    "default": 3
+                },
+                "_id": null,
+                "folder": null,
+                "sort": 0,
+                "flags": {},
+                "_stats": {
+                    "coreVersion": "12.330",
+                    "systemId": "dnd5e",
+                    "systemVersion": "3.3.1",
+                    "createdTime": null,
+                    "modifiedTime": null,
+                    "lastModifiedBy": null,
+                    "compendiumSource": null,
+                    "duplicateSource": null
+                }
+            }
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedProperties": [
+                "vocal",
+                "somatic",
+                "concentration"
+            ]
+        },
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<p><em>You stare at your victim, visualizing the ebb and flow of their animating energies. Your eyes glaze for an instant, before your hands contort into seemingly unnatural shapes that are rapidly obscured by a clinging, roiling darkness that restores your vitality as your target's life is drained into you.</em></p><p><strong>Constitution Save</strong> </p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 6d6 necrotic]] damage* and the target is &amp;reference[drained] by the same amount. The caster regains hit points equal to half the amount of damage taken.</p></li><li><p><strong>Success:</strong> Half damage and the target is drained by the same amount. The caster regains hit points equal to half the amount of damage taken.</p></li></ul><p></p><p><strong>Upcasting</strong> : Increase damage by<span data-damage-type=\"necrotic\" data-formula=\"2d6\" data-type=\"damage\">[[/damage 1d6 necrotic]]{1d6}</span>for each spell level above 3rd.</p>",
+            "chat": "<strong>Constitution Save</strong> </p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 6d6 necrotic]] damage* and the target is &amp;reference[drained] by the same amount. The caster regains hit points equal to half the amount of damage taken.</p></li><li><p><strong>Success:</strong> Half damage and the target is drained by the same amount. The caster regains hit points equal to half the amount of damage taken.</p></li></ul><p></p><p><strong>Upcasting</strong> : Increase damage by<span data-damage-type=\"necrotic\" data-formula=\"2d6\" data-type=\"damage\">[[/damage 1d6 necrotic]]{1d6}</span>for each spell level above 3rd.</p>"
+        },
+        "source": {
+            "custom": "elkan5e.com/spells/life-drain",
+            "revision": 1,
+            "rules": "",
+            "book": "",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "action",
+            "condition": "",
+            "value": 1
+        },
+        "duration": {
+            "value": "1",
+            "units": "inst"
+        },
+        "target": {
+            "affects": {
+                "type": "creature",
+                "count": "1",
+                "choice": false,
+                "special": ""
+            },
+            "template": {
+                "units": "",
+                "contiguous": false,
+                "type": ""
+            }
+        },
+        "range": {
+            "value": "30",
+            "units": "ft",
+            "special": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "ability": "",
+        "level": 3,
+        "school": "nec",
+        "materials": {
+            "value": "",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": true
+        },
+        "properties": [
+            "vocal",
+            "somatic"
+        ],
+        "activities": {
+            "dnd5eactivity000": {
+                "_id": "dnd5eactivity000",
+                "type": "save",
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [
+                    {
+                        "_id": "IJZL8FRw8X61ZipV",
+                        "onSave": true
+                    }
+                ],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "max": "",
+                    "recovery": []
+                },
+                "damage": {
+                    "onSave": "half",
+                    "parts": [
+                        {
+                            "number": 6,
+                            "denomination": 6,
+                            "bonus": "",
+                            "types": [
+                                "necrotic"
+                            ],
+                            "custom": {
+                                "enabled": false,
+                                "formula": ""
+                            },
+                            "scaling": {
+                                "mode": "whole",
+                                "number": 1,
+                                "formula": ""
+                            }
+                        }
+                    ]
+                },
+                "save": {
+                    "ability": "con",
+                    "dc": {
+                        "calculation": "spellcasting",
+                        "formula": ""
+                    }
+                },
+                "sort": 0,
+                "name": "",
+                "img": "",
+                "appliedEffects": [
+                    "IJZL8FRw8X61ZipV"
+                ]
+            }
+        },
+        "identifier": ""
+    },
+    "ownership": {
+        "default": 0,
+        "ymJDAw0PgXIWIHMH": 3,
+        "MKYWAnkTJr0gkDqT": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.3.8",
+        "createdTime": 1726952205754,
+        "modifiedTime": 1744750286700,
+        "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
+    },
+    "_id": "seKEwAbEZFBi6GWb",
+    "sort": 3600000,
+    "_key": "!items!seKEwAbEZFBi6GWb"
+}
