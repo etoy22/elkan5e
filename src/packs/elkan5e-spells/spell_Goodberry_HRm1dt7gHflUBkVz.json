@@ -1,0 +1,326 @@
+{
+    "name": "Goodberry",
+    "type": "spell",
+    "img": "icons/consumables/fruit/gooseberry-stem-red.webp",
+    "effects": [
+        {
+            "name": "Goodberry",
+            "img": "icons/consumables/fruit/gooseberry-stem-red.webp",
+            "origin": "Compendium.elkan5e.elkan5e-spells.Item.HRm1dt7gHflUBkVz",
+            "transfer": false,
+            "_id": "3s2eqSVl2SkRW7Mm",
+            "type": "base",
+            "system": {},
+            "changes": [
+                {
+                    "key": "macro.itemMacro",
+                    "mode": 0,
+                    "value": "@actor @spellLevel",
+                    "priority": 20
+                }
+            ],
+            "disabled": false,
+            "duration": {
+                "startTime": null,
+                "seconds": null,
+                "combat": null,
+                "rounds": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null
+            },
+            "description": "",
+            "tint": "#ffffff",
+            "statuses": [],
+            "sort": 0,
+            "flags": {
+                "dae": {
+                    "enableCondition": "",
+                    "disableCondition": "",
+                    "disableIncapacitated": false,
+                    "selfTarget": false,
+                    "selfTargetAlways": false,
+                    "dontApply": false,
+                    "stackable": "multi",
+                    "showIcon": false,
+                    "durationExpression": "",
+                    "macroRepeat": "none",
+                    "specialDuration": []
+                },
+                "dnd5e": {
+                    "riders": {
+                        "statuses": []
+                    }
+                },
+                "core": {
+                    "overlay": false
+                },
+                "ActiveAuras": {
+                    "isAura": false,
+                    "aura": "None",
+                    "nameOverride": "",
+                    "radius": "",
+                    "alignment": "",
+                    "type": "",
+                    "customCheck": "",
+                    "ignoreSelf": false,
+                    "height": false,
+                    "hidden": false,
+                    "displayTemp": false,
+                    "hostile": false,
+                    "onlyOnce": false,
+                    "wallsBlock": "system",
+                    "statuses": []
+                }
+            },
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.3.3",
+                "createdTime": 1741054876161,
+                "modifiedTime": 1741054911112,
+                "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
+            },
+            "_key": "!items.effects!HRm1dt7gHflUBkVz.3s2eqSVl2SkRW7Mm"
+        }
+    ],
+    "folder": "U0k4VGG6bziqf3oH",
+    "flags": {
+        "core": {},
+        "midi-qol": {
+            "effectActivation": false,
+            "removeAttackDamageButtons": "default",
+            "itemCondition": "",
+            "reactionCondition": "",
+            "otherCondition": "",
+            "effectCondition": "",
+            "rollAttackPerTarget": "default",
+            "AoETargetType": "any",
+            "AoETargetTypeIncludeSelf": true,
+            "autoTarget": "default"
+        },
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "noConcentrationCheck": false,
+            "confirmTargets": "default",
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedProperties": [
+                "vocal",
+                "somatic",
+                "material"
+            ]
+        },
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
+        },
+        "dae": {
+            "macro": {
+                "name": "Goodberry",
+                "img": "icons/consumables/fruit/gooseberry-stem-red.webp",
+                "type": "script",
+                "scope": "global",
+                "command": "if (args[0] == \"on\") {\n    // console.log(\"Goodberry spell activated\");\n    // Get the spell level and calculate the number of berries\n    const level = args[2];\n\n    let berry = (level + 1) * 5;\n    // console.log(`Level: ${level}, Berries: ${berry}`);\n    \n    // Define the goodberry item\n    let goodberry = {\n        \"name\": \"Goodberry (Item)\",\n        \"type\": \"consumable\",\n        \"img\": \"icons/consumables/fruit/gooseberry-stem-red.webp\",\n        \"system\": {\n            \"activities\": {\n                \"aL7vnNQ8QKdl98gJ\": {\n                    \"type\": \"heal\",\n                    \"_id\": \"aL7vnNQ8QKdl98gJ\",\n                    \"sort\": 0,\n                    \"activation\": {\n                        \"type\": \"action\",\n                        \"value\": null,\n                        \"override\": false,\n                        \"condition\": \"\"\n                    },\n                    \"consumption\": {\n                        \"scaling\": {\n                            \"allowed\": true,\n                            \"max\": \"\"\n                        },\n                        \"spellSlot\": true,\n                        \"targets\": [\n                            {\n                                \"type\": \"itemUses\",\n                                \"value\": \"1\",\n                                \"target\": \"\",\n                                \"scaling\": {\n                                    \"mode\": \"amount\"\n                                } \n                            }\n                        ]\n                    },\n                    \"duration\": {\n                        \"units\": \"inst\",\n                        \"concentration\": false,\n                        \"override\": false\n                    },\n                    \"effects\": [],\n                    \"range\": {\n                        \"override\": false,\n                        \"units\": \"touch\",\n                        \"special\": \"\"\n                    },\n                    \"target\": {\n                        \"template\": {\n                            \"contiguous\": false,\n                            \"units\": \"ft\",\n                            \"type\": \"\"\n                        },\n                        \"affects\": {\n                            \"choice\": false,\n                            \"count\": \"\",\n                            \"type\": \"creature\",\n                            \"special\": \"\"\n                        },\n                        \"override\": false,\n                        \"prompt\": true\n                    },\n                    \"uses\": {\n                        \"spent\": 0,\n                        \"recovery\": [],\n                        \"max\": \"\"\n                    },\n                    \"healing\": {\n                        \"number\": null,\n                        \"denomination\": 0,\n                        \"types\": [\n                            \"healing\"\n                        ],\n                        \"custom\": {\n                            \"enabled\": true,\n                            \"formula\": \"1\"\n                        },\n                        \"scaling\": {\n                            \"number\": null,\n                            \"mode\": \"whole\",\n                            \"formula\": \"1\"\n                        },\n                        \"bonus\": \"\"\n                    },\n                    \"macroData\": {\n                        \"name\": \"\",\n                        \"command\": \"\"\n                    }\n                }\n            },\n            \"uses\": {\n                \"spent\": 0,\n                \"recovery\": [],\n                \"autoDestroy\": true,\n                \"max\": berry\n            },\n            \"description\": {\n                \"value\": \"\",\n                \"chat\": \"\"\n            },\n            \"identifier\": \"\",\n            \"source\": {\n                \"revision\": 1,\n                \"rules\": \"2024\",\n                \"book\": \"Elkan 5e\",\n                \"page\": \"\",\n                \"custom\": \"\",\n                \"license\": \"\"\n            },\n            \"identified\": true,\n            \"unidentified\": {\n                \"description\": \"\"\n            },\n            \"container\": null,\n            \"quantity\": 1,\n            \"weight\": {\n                \"value\": 0,\n                \"units\": \"lb\"\n            },\n            \"price\": {\n                \"value\": 0,\n                \"denomination\": \"gp\"\n            },\n            \"rarity\": \"\",\n            \"attunement\": \"\",\n            \"attuned\": false,\n            \"equipped\": false,\n            \"type\": {\n                \"value\": \"food\",\n                \"subtype\": \"\"\n            },\n            \"damage\": {\n                \"base\": {\n                    \"number\": null,\n                    \"denomination\": null,\n                    \"types\": [],\n                    \"custom\": {\n                        \"enabled\": false\n                    },\n                    \"scaling\": {\n                        \"number\": 1\n                    }\n                },\n                \"replace\": false\n            },\n            \"magicalBonus\": null,\n            \"properties\": [\n                \"mgc\"\n            ]\n        }\n    };\n    \n    // Get the actor and check if the goodberry item already exists\n    const actor = await game.actors.get(args[1]);\n    // console.log(`Actor: ${actor.name}`);\n    const existingItem = actor.items.find(item => item.name === \"Goodberry (Item)\");\n    if (existingItem) {\n        // Update the existing item's uses\n        // console.log(\"Updating existing Goodberry item\");\n        existingItem.update({ \"system.uses.max\": existingItem.system.uses.max + berry });\n    } else {\n        // Create a new goodberry item\n        // console.log(\"Creating new Goodberry item\");\n        await actor.createEmbeddedDocuments(\"Item\", [goodberry]);\n    }\n}\n\nif (args[0] == \"off\") {\n    // console.log(\"Goodberry spell deactivated\");\n    // Get the spell level and calculate the number of berries\n    const level = args[2];\n    let berry = (level + 1) * 5;\n    // console.log(`Level: ${level}, Berries: ${berry}`);\n    \n    // Get the actor and find the existing goodberry item\n    const actor = await game.actors.get(args[1]);\n    // console.log(`Actor: ${actor.name}`);\n    const existingItem = actor.items.find(item => item.name === \"Goodberry (Item)\");\n    \n    // Update the existing item's uses\n    // console.log(\"Updating existing Goodberry item\");\n    await existingItem.update({ \"system.uses.max\": existingItem.system.uses.max - berry });\n    await existingItem.update({ \"system.uses.spent\": existingItem.system.uses.spent - berry });\n    // console.log(`Uses remaining: ${existingItem.system.uses.max}`);\n    // Delete the item if the uses are depleted\n    if (existingItem.system.uses.max <= 0) {\n        // console.log(\"Deleting Goodberry item\");\n        await existingItem.delete();\n    }\n}",
+                "author": "3Yi0HjF4PKCA4vX0",
+                "ownership": {
+                    "default": 3
+                },
+                "_id": null,
+                "folder": null,
+                "sort": 0,
+                "flags": {},
+                "_stats": {
+                    "coreVersion": "12.331",
+                    "systemId": "dnd5e",
+                    "systemVersion": "4.3.3",
+                    "createdTime": null,
+                    "modifiedTime": null,
+                    "lastModifiedBy": null,
+                    "compendiumSource": null,
+                    "duplicateSource": null
+                }
+            }
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<p><span><em>Holding a small sprig that once carried edible berries, you ask for nature's blessing and magically regrow the berries, now instilled with healing magic.</em></span></p><p><strong>Healing</strong> </p><ul><li><p>Ten berries* appear in your hand. A creature can use their action to eat up to ten berries, or a creature can use their action to feed a berry to another creature, including unconscious creatures. Eating a berry restores 1 hit point.</p></li></ul><p></p><p><strong>*Upcasting</strong> : Create five more berries for each spell level above 1st.</p><p><em>A creature that cannot swallow or digest the berry cannot gain hit points from this spell.</em></p>",
+            "chat": "<strong>Healing</strong> </p><ul><li><p>Ten berries* appear in your hand. A creature can use their action to eat up to ten berries, or a creature can use their action to feed a berry to another creature, including unconscious creatures. Eating a berry restores 1 hit point.</p></li></ul><p></p><p><strong>*Upcasting</strong> : Create five more berries for each spell level above 1st.</p>"
+        },
+        "source": {
+            "custom": "elkan5e.com/spells/goodberry",
+            "revision": 1,
+            "rules": "",
+            "book": "",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "action",
+            "condition": "",
+            "value": 1
+        },
+        "duration": {
+            "value": "",
+            "units": "inst"
+        },
+        "target": {
+            "affects": {
+                "count": "",
+                "type": "",
+                "choice": false
+            },
+            "template": {
+                "type": "",
+                "units": "ft",
+                "contiguous": false
+            }
+        },
+        "range": {
+            "units": "touch",
+            "special": ""
+        },
+        "uses": {
+            "max": "50",
+            "recovery": [],
+            "spent": 50
+        },
+        "ability": "",
+        "level": 1,
+        "school": "trs",
+        "materials": {
+            "value": "A sprig of mistletoe",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": true
+        },
+        "properties": [
+            "vocal",
+            "somatic",
+            "material",
+            "mgc"
+        ],
+        "activities": {
+            "Tgfkcnu2uKIVShWa": {
+                "type": "utility",
+                "_id": "Tgfkcnu2uKIVShWa",
+                "sort": 0,
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "scaling": {
+                        "allowed": false
+                    },
+                    "spellSlot": true,
+                    "targets": [
+                        {
+                            "type": "itemUses",
+                            "value": "-10",
+                            "target": "",
+                            "scaling": {
+                                "mode": "amount",
+                                "formula": "-5"
+                            }
+                        }
+                    ]
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [
+                    {
+                        "_id": "3s2eqSVl2SkRW7Mm"
+                    }
+                ],
+                "range": {
+                    "override": true
+                },
+                "target": {
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false,
+                    "prompt": true
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "roll": {
+                    "prompt": false,
+                    "visible": false,
+                    "name": "",
+                    "formula": ""
+                },
+                "useConditionText": "",
+                "forceDialog": false,
+                "effectConditionText": "",
+                "midiAutomationOnly": false,
+                "name": "Create Goodberry",
+                "img": "",
+                "appliedEffects": []
+            }
+        },
+        "identifier": ""
+    },
+    "ownership": {
+        "default": 0,
+        "VJURYym0JQByHBQL": 3,
+        "ymJDAw0PgXIWIHMH": 3,
+        "MKYWAnkTJr0gkDqT": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.3.3",
+        "createdTime": 1726952199251,
+        "modifiedTime": 1741054876342,
+        "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
+    },
+    "_id": "HRm1dt7gHflUBkVz",
+    "sort": 1800000,
+    "_key": "!items!HRm1dt7gHflUBkVz"
+}

@@ -1,0 +1,420 @@
+{
+    "name": "Heroism",
+    "type": "spell",
+    "img": "icons/skills/melee/weapons-crossed-swords-purple.webp",
+    "effects": [
+        {
+            "_id": "ofPxOG62bxg60zIO",
+            "flags": {
+                "dae": {
+                    "transfer": false,
+                    "stackable": "none",
+                    "specialDuration": [],
+                    "macroRepeat": "startEveryTurn",
+                    "selfTarget": false,
+                    "selfTargetAlways": false,
+                    "durationExpression": "",
+                    "dontApply": false,
+                    "showIcon": false,
+                    "enableCondition": "",
+                    "disableCondition": "",
+                    "disableIncapacitated": false
+                },
+                "ActiveAuras": {
+                    "isAura": false,
+                    "radius": "",
+                    "aura": "None",
+                    "alignment": "",
+                    "type": "",
+                    "ignoreSelf": false,
+                    "height": false,
+                    "hidden": false,
+                    "hostile": false,
+                    "onlyOnce": false,
+                    "displayTemp": false,
+                    "nameOverride": "",
+                    "customCheck": "",
+                    "wallsBlock": "system",
+                    "statuses": []
+                },
+                "core": {
+                    "overlay": false
+                },
+                "dnd5e": {
+                    "riders": {
+                        "statuses": []
+                    }
+                }
+            },
+            "changes": [
+                {
+                    "key": "flags.midi-qol.OverTime",
+                    "mode": 0,
+                    "value": "turn=start,\ndamageRoll=@attributes.spellmod,\ndamageType=temphp,\nlabel=Heroism [Temp Hp]",
+                    "priority": 0
+                },
+                {
+                    "key": "system.traits.ci.value",
+                    "mode": 0,
+                    "value": "frightened",
+                    "priority": 20
+                }
+            ],
+            "disabled": false,
+            "duration": {
+                "startTime": null,
+                "seconds": 60,
+                "combat": null,
+                "rounds": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null
+            },
+            "tint": "#ffffff",
+            "transfer": false,
+            "origin": null,
+            "name": "Heroism",
+            "description": "",
+            "statuses": [],
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.3.3",
+                "createdTime": null,
+                "modifiedTime": 1741059495773,
+                "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
+            },
+            "img": "icons/skills/melee/weapons-crossed-swords-purple.webp",
+            "type": "base",
+            "system": {},
+            "sort": 0,
+            "_key": "!items.effects!Vw4A99WE03c7r6RO.ofPxOG62bxg60zIO"
+        }
+    ],
+    "folder": "U0k4VGG6bziqf3oH",
+    "flags": {
+        "dynamiceffects": {
+            "effects": [
+                {
+                    "modSpecKey": "macro.execute",
+                    "value": "\"Heroism\" @target @abilities.wis.mod",
+                    "mode": "+",
+                    "targetSpecific": false,
+                    "id": 1,
+                    "itemId": "MZri1qA9dTyQqtvt",
+                    "active": true,
+                    "_targets": []
+                }
+            ],
+            "equipActive": true,
+            "alwaysActive": false
+        },
+        "dae": {
+            "activeEquipped": false,
+            "alwaysActive": false,
+            "macro": {
+                "name": "Heroism",
+                "img": "icons/skills/melee/weapons-crossed-swords-purple.webp",
+                "type": "script",
+                "scope": "global",
+                "command": "",
+                "author": "3Yi0HjF4PKCA4vX0",
+                "ownership": {
+                    "default": 3
+                },
+                "_id": null,
+                "folder": null,
+                "sort": 0,
+                "flags": {},
+                "_stats": {
+                    "systemId": null,
+                    "systemVersion": null,
+                    "coreVersion": null,
+                    "createdTime": null,
+                    "modifiedTime": null,
+                    "lastModifiedBy": null
+                }
+            }
+        },
+        "core": {},
+        "midi-qol": {
+            "onUseMacroName": "",
+            "effectActivation": false,
+            "removeAttackDamageButtons": "default",
+            "itemCondition": "",
+            "reactionCondition": "",
+            "otherCondition": "",
+            "effectCondition": "",
+            "rollAttackPerTarget": "default",
+            "AoETargetType": "any",
+            "AoETargetTypeIncludeSelf": true,
+            "autoTarget": "default"
+        },
+        "itemacro": {
+            "macro": {
+                "_data": {
+                    "name": "Heroism",
+                    "type": "script",
+                    "scope": "global",
+                    "command": "//DAE Macro Execute, Effect Value = \"Macro Name\" t @damage (apply @mod damge of none type)\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId)\n\nlet mod = args[1];\n\nif (args[0] === \"on\") {\n    ChatMessage.create({ content: `Heroism is applied to ${tactor.name}` })\n}\nif (args[0] === \"off\") {\n    ChatMessage.create({ content: \"Heroism ends\" });\n}\nif(args[0] === \"each\"){\nlet bonus = mod > tactor.data.data.attributes.hp.temp ? mod : tactor.data.data.attributes.hp.temp\n    tactor.update({ \"data.attributes.hp.temp\": mod });\n    ChatMessage.create({ content: \"Heroism continues on \" + tactor.name })\n}",
+                    "author": "E4BVikjIkVl2lL2j"
+                },
+                "data": {
+                    "name": "Heroism",
+                    "type": "script",
+                    "scope": "global",
+                    "command": "//DAE Macro Execute, Effect Value = \"Macro Name\" t @damage (apply @mod damge of none type)\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId)\n\nlet mod = args[1];\n\nif (args[0] === \"on\") {\n    ChatMessage.create({ content: `Heroism is applied to ${tactor.name}` })\n}\nif (args[0] === \"off\") {\n    ChatMessage.create({ content: \"Heroism ends\" });\n}\nif(args[0] === \"each\"){\nlet bonus = mod > tactor.data.data.attributes.hp.temp ? mod : tactor.data.data.attributes.hp.temp\n    tactor.update({ \"data.attributes.hp.temp\": mod });\n    ChatMessage.create({ content: \"Heroism continues on \" + tactor.name })\n}",
+                    "author": "E4BVikjIkVl2lL2j"
+                },
+                "options": {},
+                "apps": {},
+                "compendium": null
+            }
+        },
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "noConcentrationCheck": false,
+            "confirmTargets": "default",
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedProperties": [
+                "vocal",
+                "somatic",
+                "concentration"
+            ]
+        },
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<p><em>You call out to a creature and salute them, telling them to be brave and magically lessening the weight of their fears.</em></p><p><strong>Buff</strong> </p><ul><li><p>The creature is immune to being &amp;reference[Frightened] and gains Temporary Hit Points equal to your spellcasting ability modifier at the start of each of its turns. When the spell ends, the target loses any remaining tempora⁠ry hit point⁠s from this spell.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 1st.</p>",
+            "chat": "<strong>Buff</strong> </p><ul><li><p>The creature is immune to being &amp;reference[Frightened] and gains Temporary Hit Points equal to your spellcasting ability modifier at the start of each of its turns. When the spell ends, the target loses any remaining tempora⁠ry hit point⁠s from this spell.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 1st.</p>"
+        },
+        "source": {
+            "custom": "elkan5e.com/spells/heroism",
+            "revision": 1,
+            "rules": "",
+            "book": "",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "action",
+            "condition": "",
+            "value": 1
+        },
+        "duration": {
+            "value": "1",
+            "units": "minute"
+        },
+        "target": {
+            "affects": {
+                "special": "",
+                "type": "creature",
+                "count": "1",
+                "choice": false
+            },
+            "template": {
+                "type": "",
+                "units": "",
+                "contiguous": false
+            }
+        },
+        "range": {
+            "value": "60",
+            "units": "ft",
+            "special": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "ability": "",
+        "level": 1,
+        "school": "enc",
+        "materials": {
+            "value": "",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": true
+        },
+        "properties": [
+            "vocal",
+            "somatic",
+            "concentration",
+            "mgc"
+        ],
+        "activities": {
+            "m0D61pOjAL8G6t1j": {
+                "type": "utility",
+                "_id": "m0D61pOjAL8G6t1j",
+                "sort": 0,
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "scaling": {
+                        "allowed": false
+                    },
+                    "spellSlot": true,
+                    "targets": []
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [
+                    {
+                        "_id": "ofPxOG62bxg60zIO"
+                    }
+                ],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false,
+                    "prompt": true
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "roll": {
+                    "prompt": false,
+                    "visible": false,
+                    "name": "",
+                    "formula": ""
+                },
+                "name": ""
+            },
+            "8d74kVVCjLR9Nxx5": {
+                "type": "heal",
+                "name": "Temporary Hit Points",
+                "_id": "8d74kVVCjLR9Nxx5",
+                "sort": 0,
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "scaling": {
+                        "allowed": false
+                    },
+                    "spellSlot": false,
+                    "targets": []
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": true
+                },
+                "effects": [],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false,
+                    "prompt": true
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "healing": {
+                    "number": null,
+                    "denomination": "",
+                    "types": [
+                        "temphp"
+                    ],
+                    "custom": {
+                        "enabled": true,
+                        "formula": "@mod"
+                    },
+                    "scaling": {
+                        "number": 1,
+                        "mode": ""
+                    },
+                    "bonus": "@mod"
+                },
+                "img": "",
+                "appliedEffects": []
+            }
+        },
+        "identifier": ""
+    },
+    "ownership": {
+        "default": 0,
+        "VJURYym0JQByHBQL": 3,
+        "MKYWAnkTJr0gkDqT": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.3.8",
+        "createdTime": 1726952201948,
+        "modifiedTime": 1744406794105,
+        "lastModifiedBy": "ymGs3J4QpWbCOXON"
+    },
+    "_id": "Vw4A99WE03c7r6RO",
+    "sort": 3400000,
+    "_key": "!items!Vw4A99WE03c7r6RO"
+}

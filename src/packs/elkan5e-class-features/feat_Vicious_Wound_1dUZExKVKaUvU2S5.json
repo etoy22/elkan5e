@@ -1,0 +1,383 @@
+{
+    "name": "Vicious Wound",
+    "type": "feat",
+    "img": "icons/skills/melee/strike-dagger-blood-red.webp",
+    "effects": [
+        {
+            "name": "Vicious Wound",
+            "changes": [
+                {
+                    "key": "system.attributes.exhaustion",
+                    "mode": 2,
+                    "value": "+1",
+                    "priority": 20
+                }
+            ],
+            "transfer": false,
+            "_id": "szIbmtQuEJDe2pSl",
+            "disabled": false,
+            "duration": {
+                "startTime": null,
+                "seconds": 28800,
+                "combat": null,
+                "rounds": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null
+            },
+            "description": "",
+            "origin": "Compendium.elkan5e.elkan5e-class-features.Item.1dUZExKVKaUvU2S5",
+            "statuses": [],
+            "flags": {
+                "dae": {
+                    "disableIncapacitated": false,
+                    "selfTarget": false,
+                    "selfTargetAlways": false,
+                    "dontApply": false,
+                    "stackable": "noneName",
+                    "showIcon": false,
+                    "durationExpression": "",
+                    "macroRepeat": "none",
+                    "specialDuration": [],
+                    "enableCondition": "",
+                    "disableCondition": ""
+                },
+                "ActiveAuras": {
+                    "isAura": false,
+                    "aura": "None",
+                    "nameOverride": "",
+                    "radius": "",
+                    "alignment": "",
+                    "type": "",
+                    "customCheck": "",
+                    "ignoreSelf": false,
+                    "height": false,
+                    "hidden": false,
+                    "displayTemp": false,
+                    "hostile": false,
+                    "onlyOnce": false,
+                    "wallsBlock": "system",
+                    "statuses": []
+                },
+                "core": {
+                    "sourceId": "Compendium.elkan5e.elkan5e-class-features.Item.rGwSOpD6jZ5J4IKU.ActiveEffect.4MMofdhnOGYiXhMR",
+                    "overlay": false
+                }
+            },
+            "tint": "#ffffff",
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.0.2",
+                "createdTime": null,
+                "modifiedTime": 1739244349835,
+                "lastModifiedBy": "ymGs3J4QpWbCOXON"
+            },
+            "img": "icons/skills/melee/strike-dagger-blood-red.webp",
+            "type": "base",
+            "system": {},
+            "sort": 0,
+            "_key": "!items.effects!1dUZExKVKaUvU2S5.szIbmtQuEJDe2pSl"
+        }
+    ],
+    "folder": "W9CJCqCpyCG78O7E",
+    "flags": {
+        "core": {},
+        "midi-qol": {
+            "effectActivation": false,
+            "onUseMacroName": "",
+            "rollAttackPerTarget": "default",
+            "removeAttackDamageButtons": "default",
+            "itemCondition": "",
+            "effectCondition": "",
+            "reactionCondition": "",
+            "otherCondition": ""
+        },
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "confirmTargets": "default",
+            "noConcentrationCheck": false,
+            "saveDamage": "fulldam",
+            "bonusSaveDamage": "default",
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            }
+        },
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<p>Vicious Wound is a @UUID[Compendium.elkan5e.elkan5e-class-features.Item.hW3DmOPgBpa7lGU8]{Precision Attacks}.</p><p><strong>Alternative Sneak Attack</strong> - 1 Creature - 8 Hours</p><p>You can sacrifice 5d6 of your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{sneak attack} damage to injure your target and prevent them from fighting at full effectiveness.</p><p><strong>Constitution Save</strong> </p><ul><li><p><strong>Failure:</strong> @UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{Sneak Attack} (-5d6) damage. Target takes one level of &amp;reference[exhaustion].</p></li><li><p><strong>Success:</strong> @UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{Sneak Attack} (-5d6) damage.</p></li></ul>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "elkan5e.com/rogue",
+            "revision": 1,
+            "rules": "",
+            "book": "",
+            "page": "",
+            "license": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "type": {
+            "value": "class",
+            "subtype": "precision"
+        },
+        "requirements": "Rogue 11",
+        "properties": [],
+        "prerequisites": {
+            "level": 11
+        },
+        "activities": {
+            "dnd5eactivity100": {
+                "_id": "dnd5eactivity100",
+                "type": "save",
+                "activation": {
+                    "type": "duringattack",
+                    "value": null,
+                    "condition": "",
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "concentration": false,
+                    "value": "1",
+                    "units": "hour",
+                    "special": "",
+                    "override": false
+                },
+                "effects": [
+                    {
+                        "_id": "szIbmtQuEJDe2pSl",
+                        "onSave": false
+                    }
+                ],
+                "range": {
+                    "units": "self",
+                    "special": "",
+                    "override": false
+                },
+                "target": {
+                    "template": {
+                        "count": "",
+                        "contiguous": false,
+                        "type": "",
+                        "size": "",
+                        "width": "",
+                        "height": "",
+                        "units": ""
+                    },
+                    "affects": {
+                        "count": "1",
+                        "type": "creature",
+                        "choice": false,
+                        "special": ""
+                    },
+                    "prompt": true,
+                    "override": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "max": "",
+                    "recovery": []
+                },
+                "damage": {
+                    "onSave": "full",
+                    "parts": [
+                        {
+                            "custom": {
+                                "enabled": true,
+                                "formula": "(@scale.rogue.sneak-attack - 5)d6"
+                            },
+                            "number": null,
+                            "denomination": null,
+                            "bonus": "",
+                            "types": [
+                                "bludgeoning",
+                                "piercing",
+                                "slashing"
+                            ],
+                            "scaling": {
+                                "number": 1
+                            }
+                        }
+                    ]
+                },
+                "save": {
+                    "ability": "con",
+                    "dc": {
+                        "calculation": "dex",
+                        "formula": ""
+                    }
+                },
+                "sort": 0,
+                "name": "Save (Dexterity)",
+                "img": "",
+                "appliedEffects": [
+                    "szIbmtQuEJDe2pSl"
+                ],
+                "effectConditionText": "!target.traits.ci.value.has('exhaustion')"
+            },
+            "poDOrthxt3Ebb3kp": {
+                "type": "save",
+                "activation": {
+                    "type": "duringattack",
+                    "value": null,
+                    "condition": "",
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "concentration": false,
+                    "value": "1",
+                    "units": "hour",
+                    "special": "",
+                    "override": false
+                },
+                "effects": [
+                    {
+                        "_id": "szIbmtQuEJDe2pSl",
+                        "onSave": false
+                    }
+                ],
+                "range": {
+                    "units": "self",
+                    "special": "",
+                    "override": false
+                },
+                "target": {
+                    "template": {
+                        "count": "",
+                        "contiguous": false,
+                        "type": "",
+                        "size": "",
+                        "width": "",
+                        "height": "",
+                        "units": ""
+                    },
+                    "affects": {
+                        "count": "1",
+                        "type": "creature",
+                        "choice": false,
+                        "special": ""
+                    },
+                    "prompt": true,
+                    "override": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "max": "",
+                    "recovery": []
+                },
+                "damage": {
+                    "onSave": "full",
+                    "parts": [
+                        {
+                            "custom": {
+                                "enabled": true,
+                                "formula": "(@scale.rogue.sneak-attack - 5)d6"
+                            },
+                            "number": null,
+                            "denomination": null,
+                            "bonus": "",
+                            "types": [
+                                "bludgeoning",
+                                "piercing",
+                                "slashing"
+                            ],
+                            "scaling": {
+                                "number": 1
+                            }
+                        }
+                    ]
+                },
+                "save": {
+                    "ability": "con",
+                    "dc": {
+                        "calculation": "str",
+                        "formula": ""
+                    }
+                },
+                "sort": 0,
+                "name": "Save (Strength)",
+                "useConditionText": "",
+                "forceDialog": false,
+                "effectConditionText": "!target.traits.ci.value.has('exhaustion')",
+                "_id": "poDOrthxt3Ebb3kp",
+                "img": "",
+                "appliedEffects": [
+                    "szIbmtQuEJDe2pSl"
+                ]
+            }
+        },
+        "identifier": "",
+        "enchant": {}
+    },
+    "ownership": {
+        "default": 0,
+        "ymJDAw0PgXIWIHMH": 3,
+        "WaiirYzq9mhRj9cS": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.3.8",
+        "createdTime": 1726952006405,
+        "modifiedTime": 1744750965909,
+        "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
+    },
+    "_id": "1dUZExKVKaUvU2S5",
+    "sort": 0,
+    "_key": "!items!1dUZExKVKaUvU2S5"
+}
