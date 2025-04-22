@@ -75,8 +75,7 @@ jobs:
               "notes": "'"${REPO_URL}/releases/tag/v${{ steps.get-version.outputs.version }}"'",
               "compatibility": {
                 "minimum": "'"12"'",
-                "verified": "'"12.331"'",
-                "maximum": "'"12.999"'"
+                "verified": "'"12.331"'"
               }
             }
           }'
@@ -88,6 +87,7 @@ jobs:
           sanitized_release_notes=$(echo "$release_notes" | sed 's/"/\\"/g' | sed "s/'/\\'/g")
           echo "release_notes=$sanitized_release_notes" >> $GITHUB_ENV
           echo "release_notes=$sanitized_release_notes" >> $GITHUB_OUTPUT
+        
       - name: Post to Discord
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
