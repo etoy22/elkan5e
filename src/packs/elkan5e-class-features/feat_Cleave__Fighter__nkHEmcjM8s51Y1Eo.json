@@ -6,7 +6,7 @@
     "img": "icons/skills/melee/strike-sword-blood-red.webp",
     "system": {
         "description": {
-            "value": "<p><em>You cleave through foes that are packed together.</em></p><p><strong>Action</strong> - Melee - 1 Creature - Uses Equal to Proficiency Bonus/Long Rest</p><p>You use your normal attack action, but one of your attacks is replaced by Cleave. Make a melee weapon attack against one target creature and all creatures of your choice within 5 ft. of your target. You are still limited by your weapon's normal &amp;reference[reach]. You roll a single synchronous attack roll for all targets, dealing the same damage to each. </p>",
+            "value": "<p><em>You cleave through foes that are packed together.</em></p><p><strong>Once Per Turn</strong> - Melee - 1 Creature - Uses Equal to Proficiency Bonus/Long Rest</p><p>You replace one weapon attack with a cleaving attack. You swing, targeting one creature and all creatures of your choice within 5 ft. of the first target. You are still limited by your weapon's normal &amp;reference[reach]. You roll a single synchronous attack roll for all targets, dealing the same damage to each. </p><p></p><p><em>Cleave counts as an area of effect ability for the purposes of attacking swarms, and if targeting a creature with @UUID[Compendium.elkan5e.elkan5e-spells.Item.PTAk4NGn6oIrRq1A]{Mirror Image} active, you target all images and the caster.</em></p>",
             "chat": ""
         },
         "source": {
@@ -41,7 +41,7 @@
                 "_id": "dnd5eactivity000",
                 "type": "utility",
                 "activation": {
-                    "type": "action",
+                    "type": "once",
                     "value": 1,
                     "condition": "",
                     "override": false
@@ -50,12 +50,8 @@
                     "targets": [
                         {
                             "type": "itemUses",
-                            "target": "",
                             "value": "1",
-                            "scaling": {
-                                "mode": "",
-                                "formula": ""
-                            }
+                            "target": ""
                         }
                     ],
                     "scaling": {
@@ -70,13 +66,13 @@
                 "duration": {
                     "concentration": false,
                     "value": "",
-                    "units": "",
+                    "units": "inst",
                     "special": "",
                     "override": false
                 },
                 "effects": [],
                 "range": {
-                    "units": "",
+                    "units": "self",
                     "special": "",
                     "override": false
                 },
@@ -110,7 +106,10 @@
                     "prompt": false,
                     "visible": false
                 },
-                "sort": 0
+                "sort": 0,
+                "name": "",
+                "img": "",
+                "appliedEffects": []
             }
         },
         "identifier": "",
@@ -171,10 +170,10 @@
         "duplicateSource": null,
         "coreVersion": "12.331",
         "systemId": "dnd5e",
-        "systemVersion": "4.0.2",
+        "systemVersion": "4.3.8",
         "createdTime": 1726952015991,
-        "modifiedTime": 1744073895547,
-        "lastModifiedBy": "fgP8EzWy33UFoZmI"
+        "modifiedTime": 1744604584976,
+        "lastModifiedBy": "ymGs3J4QpWbCOXON"
     },
     "_key": "!items!nkHEmcjM8s51Y1Eo"
 }

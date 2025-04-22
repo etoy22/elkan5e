@@ -4,16 +4,9 @@
     "img": "icons/magic/control/buff-flight-wings-runes-purple.webp",
     "effects": [
         {
-            "name": "Hasted",
+            "name": "Haste",
             "origin": "Compendium.elkan5e.elkan5e-spells.Item.lul0V4xIEqxIhJaZ",
-            "changes": [
-                {
-                    "key": "StatusEffect",
-                    "mode": 0,
-                    "value": "hasted",
-                    "priority": 0
-                }
-            ],
+            "changes": [],
             "transfer": false,
             "flags": {
                 "dae": {
@@ -26,7 +19,9 @@
                     "showIcon": false,
                     "durationExpression": "",
                     "macroRepeat": "none",
-                    "specialDuration": []
+                    "specialDuration": [],
+                    "enableCondition": "",
+                    "disableCondition": ""
                 },
                 "ActiveAuras": {
                     "isAura": false,
@@ -42,10 +37,19 @@
                     "displayTemp": false,
                     "hostile": false,
                     "onlyOnce": false,
-                    "wallsBlock": "system"
+                    "wallsBlock": "system",
+                    "statuses": []
+                },
+                "dnd5e": {
+                    "riders": {
+                        "statuses": []
+                    }
+                },
+                "core": {
+                    "overlay": false
                 }
             },
-            "img": "modules/elkan5e/icons/conditions/hasted.svg",
+            "img": "icons/magic/control/buff-flight-wings-runes-purple.webp",
             "_id": "TtnAWxKQzAQ1mBIL",
             "type": "base",
             "system": {},
@@ -61,17 +65,19 @@
             },
             "description": "",
             "tint": "#ffffff",
-            "statuses": [],
+            "statuses": [
+                "hasted"
+            ],
             "sort": 0,
             "_stats": {
                 "compendiumSource": null,
                 "duplicateSource": null,
                 "coreVersion": "12.331",
                 "systemId": "dnd5e",
-                "systemVersion": "4.0.2",
+                "systemVersion": "4.3.8",
                 "createdTime": null,
-                "modifiedTime": null,
-                "lastModifiedBy": null
+                "modifiedTime": 1744689719285,
+                "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
             },
             "_key": "!items.effects!lul0V4xIEqxIhJaZ.TtnAWxKQzAQ1mBIL"
         }

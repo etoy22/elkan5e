@@ -6,7 +6,7 @@
     "img": "icons/skills/melee/strike-sword-dagger-runes-yellow.webp",
     "system": {
         "description": {
-            "value": "<p><em>You strike fast and hard, sacrificing accuracy for power.</em></p><p><strong>Action</strong> - Melee/Ranged - Uses Equal to Proficiency Bonus/Long Rest</p><p>You use your normal attack action, but you subtract your proficiency bonus from each attack roll. If you hit, add twice your proficiency bonus to each damage roll.</p>",
+            "value": "<p><em>You strike fast and hard, sacrificing accuracy for power.</em></p><p><strong>No Action Cost</strong> - Melee/Ranged - Uses Equal to Proficiency Bonus/Long Rest</p><p>For this turn, you subtract your proficiency bonus from each attack roll. If you hit, add twice your proficiency bonus to each damage roll.</p>",
             "chat": ""
         },
         "source": {
@@ -41,7 +41,7 @@
                 "_id": "dnd5eactivity000",
                 "type": "utility",
                 "activation": {
-                    "type": "special",
+                    "type": "once",
                     "value": null,
                     "condition": "",
                     "override": false
@@ -50,12 +50,8 @@
                     "targets": [
                         {
                             "type": "itemUses",
-                            "target": "",
                             "value": "1",
-                            "scaling": {
-                                "mode": "",
-                                "formula": ""
-                            }
+                            "target": ""
                         }
                     ],
                     "scaling": {
@@ -70,7 +66,7 @@
                 "duration": {
                     "concentration": false,
                     "value": "",
-                    "units": "",
+                    "units": "inst",
                     "special": "",
                     "override": false
                 },
@@ -80,7 +76,7 @@
                     }
                 ],
                 "range": {
-                    "units": "",
+                    "units": "self",
                     "special": "",
                     "override": false
                 },
@@ -114,7 +110,12 @@
                     "prompt": false,
                     "visible": false
                 },
-                "sort": 0
+                "sort": 0,
+                "name": "",
+                "img": "",
+                "appliedEffects": [
+                    "4MOQgUHBXyVgKQDJ"
+                ]
             }
         },
         "identifier": "",
@@ -275,10 +276,10 @@
         "duplicateSource": null,
         "coreVersion": "12.331",
         "systemId": "dnd5e",
-        "systemVersion": "4.0.2",
+        "systemVersion": "4.3.8",
         "createdTime": 1726952006682,
-        "modifiedTime": 1744073919372,
-        "lastModifiedBy": "fgP8EzWy33UFoZmI"
+        "modifiedTime": 1744604658558,
+        "lastModifiedBy": "ymGs3J4QpWbCOXON"
     },
     "_key": "!items!2uADEZFy73Vgs322"
 }

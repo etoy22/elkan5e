@@ -6,7 +6,7 @@
     "img": "icons/skills/melee/strikes-sword-triple-gray.webp",
     "system": {
         "description": {
-            "value": "<p><em>Your assault prevents your target from moving quickly.</em></p><p><strong>Action</strong> - Melee/Ranged - 1 Creature - 1 Round - Uses Equal to Proficiency Bonus/Long Rest</p><p>You use your normal attack action, and the first time you damage a creature of large size or smaller with a weapon attack, you can choose to halve the creature's speed.</p>",
+            "value": "<p><em>Your assault prevents your target from moving quickly.</em></p><p><strong>Once Per Turn</strong> - Melee/Ranged - 1 Creature - 1 Round - Uses Equal to Proficiency Bonus/Long Rest</p><p>When you damage a creature of large size or smaller with a weapon attack, you can choose to halve the creature's speed.</p>",
             "chat": ""
         },
         "source": {
@@ -41,7 +41,7 @@
                 "_id": "dnd5eactivity000",
                 "type": "utility",
                 "activation": {
-                    "type": "action",
+                    "type": "once",
                     "value": 1,
                     "condition": "[\"lg\", \"med\", \"sm\", \"tiny\"].includes(target.traits.size)",
                     "override": false
@@ -50,12 +50,8 @@
                     "targets": [
                         {
                             "type": "itemUses",
-                            "target": "",
                             "value": "1",
-                            "scaling": {
-                                "mode": "",
-                                "formula": ""
-                            }
+                            "target": ""
                         }
                     ],
                     "scaling": {
@@ -70,7 +66,7 @@
                 "duration": {
                     "concentration": false,
                     "value": "",
-                    "units": "",
+                    "units": "inst",
                     "special": "",
                     "override": false
                 },
@@ -80,7 +76,7 @@
                     }
                 ],
                 "range": {
-                    "units": "",
+                    "units": "self",
                     "special": "",
                     "override": false
                 },
@@ -114,7 +110,12 @@
                     "prompt": false,
                     "visible": false
                 },
-                "sort": 0
+                "sort": 0,
+                "name": "",
+                "img": "",
+                "appliedEffects": [
+                    "K66hfGN5qMk9HWOA"
+                ]
             }
         },
         "identifier": "",
@@ -256,10 +257,10 @@
         "duplicateSource": null,
         "coreVersion": "12.331",
         "systemId": "dnd5e",
-        "systemVersion": "4.0.2",
+        "systemVersion": "4.3.8",
         "createdTime": 1726952008996,
-        "modifiedTime": 1744073878100,
-        "lastModifiedBy": "fgP8EzWy33UFoZmI"
+        "modifiedTime": 1744604482282,
+        "lastModifiedBy": "ymGs3J4QpWbCOXON"
     },
     "_key": "!items!EqA3m6smVsTig8Xo"
 }
