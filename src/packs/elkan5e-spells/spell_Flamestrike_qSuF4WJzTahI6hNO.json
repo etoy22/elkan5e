@@ -1,0 +1,241 @@
+{
+    "name": "Flamestrike",
+    "type": "spell",
+    "img": "icons/magic/fire/beam-jet-stream-yellow.webp",
+    "effects": [],
+    "folder": "PnZJTE6T4UQY81Pm",
+    "flags": {
+        "midi-qol": {
+            "onUseMacroName": "",
+            "effectActivation": false,
+            "AoETargetType": "any",
+            "AoETargetTypeIncludeSelf": true,
+            "autoTarget": "default",
+            "rollAttackPerTarget": "default",
+            "removeAttackDamageButtons": "default",
+            "itemCondition": "",
+            "effectCondition": "",
+            "reactionCondition": "",
+            "otherCondition": ""
+        },
+        "core": {},
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "confirmTargets": "default",
+            "saveDamage": "default",
+            "bonusSaveDamage": "default",
+            "noConcentrationCheck": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedProperties": [
+                "vocal",
+                "somatic",
+                "material"
+            ]
+        },
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
+        }
+    },
+    "system": {
+        "description": {
+            "value": "<div class=\"rd__b  rd__b--3\"><p><em>You smear a pinch of sulfur on your hands and call a vertical column of divine fire down from the heavens.</em></p><p><strong>Dexterity Save</strong></p><ul><li><p><strong>Failure:</strong> [[/damage 4d6 fire]] damage and [[/damage 4d6 radiant]] damage.</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><div class=\"rd__spc-inline-post\"><p></p></div></div><div class=\"rd__b  rd__b--3\"><div class=\"rd__b  rd__b--3\"><p><strong style=\"font-weight:700\">Upcasting</strong>: Increase both the fire and radiant damage by 1d6 for each spell level above 5th level.</p></div></div>",
+            "chat": ""
+        },
+        "source": {
+            "custom": "elkan5e.com/spells/flame-strike",
+            "revision": 1,
+            "rules": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "action",
+            "condition": "",
+            "value": 1
+        },
+        "duration": {
+            "value": "",
+            "units": "inst"
+        },
+        "target": {
+            "affects": {
+                "choice": false,
+                "count": "",
+                "type": ""
+            },
+            "template": {
+                "units": "ft",
+                "type": "cylinder",
+                "size": "20",
+                "contiguous": false,
+                "height": "40",
+                "count": ""
+            }
+        },
+        "range": {
+            "value": "60",
+            "units": "ft",
+            "special": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "ability": "",
+        "level": 5,
+        "school": "evo",
+        "materials": {
+            "value": "pinch of sulfur",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": true
+        },
+        "properties": [
+            "vocal",
+            "somatic",
+            "material"
+        ],
+        "activities": {
+            "dCTFF7PJgd4MRHaN": {
+                "type": "save",
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "damage": {
+                    "onSave": "half",
+                    "parts": [
+                        {
+                            "number": 4,
+                            "denomination": 6,
+                            "bonus": "",
+                            "types": [
+                                "radiant"
+                            ],
+                            "custom": {
+                                "enabled": false,
+                                "formula": ""
+                            },
+                            "scaling": {
+                                "mode": "whole",
+                                "number": 1,
+                                "formula": ""
+                            }
+                        },
+                        {
+                            "number": 4,
+                            "denomination": 6,
+                            "bonus": "",
+                            "types": [
+                                "fire"
+                            ],
+                            "custom": {
+                                "enabled": false,
+                                "formula": ""
+                            },
+                            "scaling": {
+                                "mode": "whole",
+                                "number": 1,
+                                "formula": ""
+                            }
+                        }
+                    ]
+                },
+                "save": {
+                    "ability": "dex",
+                    "dc": {
+                        "calculation": "spellcasting",
+                        "formula": ""
+                    }
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": []
+                },
+                "sort": 0,
+                "_id": "dCTFF7PJgd4MRHaN"
+            }
+        },
+        "identifier": ""
+    },
+    "ownership": {
+        "default": 0,
+        "VJURYym0JQByHBQL": 3,
+        "ymJDAw0PgXIWIHMH": 3,
+        "MKYWAnkTJr0gkDqT": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.3.8",
+        "createdTime": 1726952205349,
+        "modifiedTime": 1744698413023,
+        "lastModifiedBy": "ymGs3J4QpWbCOXON"
+    },
+    "_id": "qSuF4WJzTahI6hNO",
+    "sort": 2800000,
+    "_key": "!items!qSuF4WJzTahI6hNO"
+}
