@@ -28,7 +28,7 @@ export function conditions() {
         },
         cursed:{
             label: "Cursed",
-            reference: "",
+            reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.Vpwu9GQC6HVNZFze",
             icon: "modules/elkan5e/icons/conditions/cursed.svg",
             _id: "dnd5ecursed0000" // Ensure this is a valid 16-character alphanumeric ID
         },
