@@ -1,427 +1,432 @@
 {
-    "folder": "hs1kzC3J5ULWhDl5",
-    "name": "Breath Weapon (Copper)",
-    "type": "feat",
-    "_id": "2VBFIYOhfcnlyzEF",
-    "img": "icons/magic/acid/projectile-flame-smoke-green.webp",
-    "system": {
-        "description": {
-            "value": "<p><em>You spew heavy caustic globs which stick to enemies and hinder them.</em></p><p><strong>Action</strong> - 20 ft. cone - 1/Long Rest - Magical</p><p><strong>Dexterity</strong> Saving Throw</p><ul><li><p><strong>Failure:</strong> [[/damage 2d6 acid]] damage*and the target is &amp;reference[Slowed] until the end of your next turn.</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p></p><p><strong>*At Higher Levels:</strong> This ability's damage increases by 2d6 when you reach a total character or creature level of 5th level ([[/damage 4d6 acid]]{4d6}), 11th level ([[/damage 6d6 acid]]{6d6}), and 17th level ([[/damage 8d6 acid]]{8d6}).</p>",
-            "chat": ""
+  "folder": "hs1kzC3J5ULWhDl5",
+  "name": "Breath Weapon (Copper)",
+  "type": "feat",
+  "_id": "2VBFIYOhfcnlyzEF",
+  "img": "icons/magic/acid/projectile-flame-smoke-green.webp",
+  "system": {
+    "description": {
+      "value": "<p><em>You spew heavy caustic globs which stick to enemies and hinder them.</em></p><p><strong>Action</strong> - 20 ft. cone - 1/Long Rest - Magical</p><p><strong>Dexterity</strong> Saving Throw</p><ul><li><p><strong>Failure:</strong> [[/damage 2d6 acid]] damage*and the target is &amp;reference[Slowed] until the end of your next turn.</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p></p><p><strong>*At Higher Levels:</strong> This ability's damage increases by 2d6 when you reach a total character or creature level of 5th level ([[/damage 4d6 acid]]{4d6}), 11th level ([[/damage 6d6 acid]]{6d6}), and 17th level ([[/damage 8d6 acid]]{8d6}).</p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Elkan 5e",
+      "page": "",
+      "custom": "elkan5e.com/ancestrybackground",
+      "license": "",
+      "revision": 1,
+      "rules": ""
+    },
+    "uses": {
+      "max": "1",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
+      "spent": 0
+    },
+    "type": {
+      "value": "race",
+      "subtype": ""
+    },
+    "requirements": "Copper Dragonborn",
+    "properties": [
+      "mgc"
+    ],
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "save",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
         },
-        "source": {
-            "book": "Elkan 5e",
-            "page": "",
-            "custom": "elkan5e.com/ancestrybackground",
-            "license": "",
-            "revision": 1,
-            "rules": ""
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "",
+          "units": "inst",
+          "special": "",
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "9ZsiuWmELiXXi8W5",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "cone",
+            "size": "20",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
         },
         "uses": {
-            "max": "1",
-            "recovery": [
-                {
-                    "period": "lr",
-                    "type": "recoverAll"
-                }
-            ],
-            "spent": 0
+          "spent": 0,
+          "max": "",
+          "recovery": []
         },
-        "type": {
-            "value": "race",
-            "subtype": ""
-        },
-        "requirements": "Copper Dragonborn",
-        "properties": [
-            "mgc"
-        ],
-        "activities": {
-            "dnd5eactivity000": {
-                "_id": "dnd5eactivity000",
-                "type": "save",
-                "activation": {
-                    "type": "action",
-                    "value": 1,
-                    "condition": "",
-                    "override": false
-                },
-                "consumption": {
-                    "targets": [
-                        {
-                            "type": "itemUses",
-                            "value": "1",
-                            "target": "",
-                            "scaling": {}
-                        }
-                    ],
-                    "scaling": {
-                        "allowed": false,
-                        "max": ""
-                    },
-                    "spellSlot": true
-                },
-                "description": {
-                    "chatFlavor": ""
-                },
-                "duration": {
-                    "concentration": false,
-                    "value": "",
-                    "units": "inst",
-                    "special": "",
-                    "override": false
-                },
-                "effects": [
-                    {
-                        "_id": "9ZsiuWmELiXXi8W5",
-                        "onSave": false
-                    }
-                ],
-                "range": {
-                    "units": "self",
-                    "special": "",
-                    "override": false
-                },
-                "target": {
-                    "template": {
-                        "count": "",
-                        "contiguous": false,
-                        "type": "cone",
-                        "size": "20",
-                        "width": "",
-                        "height": "",
-                        "units": "ft"
-                    },
-                    "affects": {
-                        "count": "",
-                        "type": "",
-                        "choice": false,
-                        "special": ""
-                    },
-                    "prompt": true,
-                    "override": false
-                },
-                "uses": {
-                    "spent": 0,
-                    "max": "",
-                    "recovery": []
-                },
-                "damage": {
-                    "onSave": "half",
-                    "parts": [
-                        {
-                            "custom": {
-                                "enabled": true,
-                                "formula": "max(@scale.dragonborn.breath-weapon,(2*@scale.draconic-origin.breath-weapon)d6)"
-                            },
-                            "number": null,
-                            "denomination": null,
-                            "bonus": "",
-                            "types": [
-                                "acid"
-                            ],
-                            "scaling": {
-                                "number": 1
-                            }
-                        }
-                    ]
-                },
-                "save": {
-                    "ability": "dex",
-                    "dc": {
-                        "calculation": "cha",
-                        "formula": ""
-                    }
-                },
-                "sort": 0,
-                "name": "Save (Charisma)",
-                "img": "",
-                "appliedEffects": [
-                    "9ZsiuWmELiXXi8W5"
-                ],
-                "effectConditionText": "!target.traits.ci.value.has('slowed')"
-            },
-            "InFKQcspv1KLwcHB": {
-                "type": "save",
-                "activation": {
-                    "type": "action",
-                    "value": 1,
-                    "condition": "",
-                    "override": false
-                },
-                "consumption": {
-                    "targets": [
-                        {
-                            "type": "itemUses",
-                            "value": "1",
-                            "target": "",
-                            "scaling": {}
-                        }
-                    ],
-                    "scaling": {
-                        "allowed": false,
-                        "max": ""
-                    },
-                    "spellSlot": true
-                },
-                "description": {
-                    "chatFlavor": ""
-                },
-                "duration": {
-                    "concentration": false,
-                    "value": "",
-                    "units": "inst",
-                    "special": "",
-                    "override": false
-                },
-                "effects": [
-                    {
-                        "_id": "9ZsiuWmELiXXi8W5",
-                        "onSave": false
-                    }
-                ],
-                "range": {
-                    "units": "self",
-                    "special": "",
-                    "override": false
-                },
-                "target": {
-                    "template": {
-                        "count": "",
-                        "contiguous": false,
-                        "type": "cone",
-                        "size": "20",
-                        "width": "",
-                        "height": "",
-                        "units": "ft"
-                    },
-                    "affects": {
-                        "count": "",
-                        "type": "",
-                        "choice": false,
-                        "special": ""
-                    },
-                    "prompt": true,
-                    "override": false
-                },
-                "uses": {
-                    "spent": 0,
-                    "max": "",
-                    "recovery": []
-                },
-                "damage": {
-                    "onSave": "half",
-                    "parts": [
-                        {
-                            "custom": {
-                                "enabled": true,
-                                "formula": "max(@scale.dragonborn.breath-weapon,(2*@scale.draconic-origin.breath-weapon)d6)"
-                            },
-                            "number": null,
-                            "denomination": null,
-                            "bonus": "",
-                            "types": [
-                                "acid"
-                            ],
-                            "scaling": {
-                                "number": 1
-                            }
-                        }
-                    ]
-                },
-                "save": {
-                    "ability": "dex",
-                    "dc": {
-                        "calculation": "con",
-                        "formula": ""
-                    }
-                },
-                "sort": 0,
-                "name": "Save (Constitution)",
-                "useConditionText": "",
-                "forceDialog": false,
-                "effectConditionText": "!target.traits.ci.value.has('slowed')",
-                "_id": "InFKQcspv1KLwcHB",
-                "img": "",
-                "appliedEffects": [
-                    "9ZsiuWmELiXXi8W5"
-                ]
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "max(@scale.dragonborn.breath-weapon,(2*@scale.draconic-origin.breath-weapon)d6)"
+              },
+              "number": null,
+              "denomination": null,
+              "bonus": "",
+              "types": [
+                "acid"
+              ],
+              "scaling": {
+                "number": 1
+              }
             }
+          ]
         },
-        "identifier": "",
-        "enchant": {},
-        "prerequisites": {
-            "level": null
-        }
-    },
-    "effects": [
-        {
-            "statuses": [
-                "slowed"
-            ],
-            "changes": [
-                {
-                    "key": "flags.midi-qol.disadvantage.attack.all",
-                    "mode": 5,
-                    "value": "1",
-                    "priority": 50
-                },
-                {
-                    "key": "system.attributes.ac.bonus",
-                    "mode": 2,
-                    "value": "-2",
-                    "priority": 20
-                },
-                {
-                    "key": "system.abilities.dex.bonuses.save",
-                    "mode": 2,
-                    "value": "-2",
-                    "priority": 20
-                },
-                {
-                    "key": "system.attributes.movement.all",
-                    "mode": 0,
-                    "value": "/2",
-                    "priority": 0
-                }
-            ],
-            "description": "",
-            "duration": {
-                "seconds": 7,
-                "startTime": null,
-                "rounds": null,
-                "turns": null,
-                "startRound": null,
-                "startTurn": null,
-                "combat": null
-            },
-            "flags": {
-                "ActiveAuras": {
-                    "isAura": false,
-                    "aura": "None",
-                    "radius": "",
-                    "alignment": "",
-                    "type": "",
-                    "ignoreSelf": false,
-                    "height": false,
-                    "hidden": false,
-                    "displayTemp": false,
-                    "hostile": false,
-                    "onlyOnce": false,
-                    "nameOverride": "",
-                    "customCheck": "",
-                    "wallsBlock": "system"
-                },
-                "combat-utility-belt": {
-                    "conditionId": "KZ95rIvYYKBARCbe"
-                },
-                "condition-lab-triggler": {
-                    "conditionId": "KZ95rIvYYKBARCbe"
-                },
-                "core": {
-                    "overlay": false,
-                    "sourceId": "Compendium.elkan5e.elkan5e-spells.Item.HAvT3aakGxIuH4kH.ActiveEffect.UqK0hcSOMjaiMcXP"
-                },
-                "times-up": {
-                    "isPassive": false
-                },
-                "dae": {
-                    "selfTarget": false,
-                    "selfTargetAlways": false,
-                    "dontApply": false,
-                    "stackable": "noneName",
-                    "showIcon": true,
-                    "durationExpression": "",
-                    "macroRepeat": "none",
-                    "specialDuration": [
-                        "turnEndSource"
-                    ],
-                    "enableCondition": "",
-                    "disableCondition": "",
-                    "disableIncapacitated": false
-                }
-            },
-            "name": "Breath Weapon (Copper)",
+        "save": {
+          "ability": "dex",
+          "dc": {
+            "calculation": "cha",
+            "formula": ""
+          }
+        },
+        "sort": 0,
+        "name": "Save (Charisma)",
+        "img": "",
+        "appliedEffects": [
+          "9ZsiuWmELiXXi8W5"
+        ],
+        "effectConditionText": "!target.traits.ci.value.has('slowed')"
+      },
+      "InFKQcspv1KLwcHB": {
+        "type": "save",
+        "activation": {
+          "type": "action",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "",
+          "units": "inst",
+          "special": "",
+          "override": false
+        },
+        "effects": [
+          {
             "_id": "9ZsiuWmELiXXi8W5",
-            "disabled": false,
-            "origin": "Compendium.elkan5e.elkan5e-ancestryFeatures.Item.2VBFIYOhfcnlyzEF",
-            "transfer": false,
-            "tint": "#ffffff",
-            "_stats": {
-                "compendiumSource": null,
-                "duplicateSource": null,
-                "coreVersion": "12.331",
-                "systemId": "dnd5e",
-                "systemVersion": "4.0.2",
-                "createdTime": null,
-                "modifiedTime": 1730175275500,
-                "lastModifiedBy": "YxlXl9sauSuWxHdZ"
-            },
-            "img": "icons/magic/acid/projectile-flame-smoke-green.webp",
-            "type": "base",
-            "system": {},
-            "sort": 0,
-            "_key": "!items.effects!2VBFIYOhfcnlyzEF.9ZsiuWmELiXXi8W5"
-        }
-    ],
-    "sort": 1800000,
-    "ownership": {
-        "default": 0,
-        "cwIJ7W3XRXrY0zj2": 3,
-        "9B4LXF0S1sIudaRa": 3,
-        "vHqSHJMdmEO6Mk2C": 3
-    },
-    "flags": {
-        "midi-qol": {
-            "effectActivation": false,
-            "AoETargetType": "any",
-            "AoETargetTypeIncludeSelf": true,
-            "autoTarget": "default",
-            "removeAttackDamageButtons": "default",
-            "rollAttackPerTarget": "default",
-            "itemCondition": "",
-            "effectCondition": "",
-            "reactionCondition": ""
+            "onSave": false
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
         },
-        "midiProperties": {
-            "nodam": false,
-            "fulldam": false,
-            "halfdam": true,
-            "autoFailFriendly": false,
-            "autoSaveFriendly": false,
-            "rollOther": false,
-            "critOther": false,
-            "offHandWeapon": false,
-            "magicdam": true,
-            "magiceffect": true,
-            "concentration": false,
-            "noConcentrationCheck": false,
-            "toggleEffect": false,
-            "ignoreTotalCover": false,
-            "confirmTargets": "default",
-            "saveDamage": "halfdam",
-            "bonusSaveDamage": "default",
-            "idr": false,
-            "idi": false,
-            "idv": false,
-            "ida": false
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "cone",
+            "size": "20",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
         },
-        "dnd5e": {
-            "riders": {
-                "activity": [],
-                "effect": []
-            },
-            "migratedUses": 1
-        }
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "max(@scale.dragonborn.breath-weapon,(2*@scale.draconic-origin.breath-weapon)d6)"
+              },
+              "number": null,
+              "denomination": null,
+              "bonus": "",
+              "types": [
+                "acid"
+              ],
+              "scaling": {
+                "number": 1
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": "dex",
+          "dc": {
+            "calculation": "con",
+            "formula": ""
+          }
+        },
+        "sort": 0,
+        "name": "Save (Constitution)",
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "!target.traits.ci.value.has('slowed')",
+        "_id": "InFKQcspv1KLwcHB",
+        "img": "",
+        "appliedEffects": [
+          "9ZsiuWmELiXXi8W5"
+        ]
+      }
     },
-    "_stats": {
+    "identifier": "",
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    }
+  },
+  "effects": [
+    {
+      "statuses": [
+        "slowed"
+      ],
+      "changes": [
+        {
+          "key": "flags.midi-qol.disadvantage.attack.all",
+          "mode": 5,
+          "value": "1",
+          "priority": 50
+        },
+        {
+          "key": "system.attributes.ac.bonus",
+          "mode": 2,
+          "value": "-2",
+          "priority": 20
+        },
+        {
+          "key": "system.abilities.dex.bonuses.save",
+          "mode": 2,
+          "value": "-2",
+          "priority": 20
+        },
+        {
+          "key": "system.attributes.movement.all",
+          "mode": 0,
+          "value": "/2",
+          "priority": 0
+        }
+      ],
+      "description": "",
+      "duration": {
+        "seconds": 7,
+        "startTime": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null,
+        "combat": null
+      },
+      "flags": {
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "nameOverride": "",
+          "customCheck": "",
+          "wallsBlock": "system"
+        },
+        "combat-utility-belt": {
+          "conditionId": "KZ95rIvYYKBARCbe"
+        },
+        "condition-lab-triggler": {
+          "conditionId": "KZ95rIvYYKBARCbe"
+        },
+        "core": {
+          "overlay": false,
+          "sourceId": "Compendium.elkan5e.elkan5e-spells.Item.HAvT3aakGxIuH4kH.ActiveEffect.UqK0hcSOMjaiMcXP"
+        },
+        "times-up": {
+          "isPassive": false
+        },
+        "dae": {
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": true,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [
+            "turnEndSource"
+          ],
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false
+        }
+      },
+      "name": "Breath Weapon (Copper)",
+      "_id": "9ZsiuWmELiXXi8W5",
+      "disabled": false,
+      "origin": "Compendium.elkan5e.elkan5e-ancestryFeatures.Item.2VBFIYOhfcnlyzEF",
+      "transfer": false,
+      "tint": "#ffffff",
+      "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
         "coreVersion": "12.331",
         "systemId": "dnd5e",
-        "systemVersion": "4.3.8",
-        "createdTime": 1726952222022,
-        "modifiedTime": 1745211360484,
-        "lastModifiedBy": "ymGs3J4QpWbCOXON"
+        "systemVersion": "4.0.2",
+        "createdTime": null,
+        "modifiedTime": 1730175275500,
+        "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+      },
+      "img": "icons/magic/acid/projectile-flame-smoke-green.webp",
+      "type": "base",
+      "system": {},
+      "sort": 0,
+      "_key": "!items.effects!2VBFIYOhfcnlyzEF.9ZsiuWmELiXXi8W5"
+    }
+  ],
+  "sort": 1800000,
+  "ownership": {
+    "default": 0,
+    "cwIJ7W3XRXrY0zj2": 3,
+    "9B4LXF0S1sIudaRa": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "flags": {
+    "midi-qol": {
+      "effectActivation": false,
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "reactionCondition": "",
+      "otherCondition": ""
     },
-    "_key": "!items!2VBFIYOhfcnlyzEF"
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": true,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": true,
+      "magiceffect": true,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "saveDamage": "halfdam",
+      "bonusSaveDamage": "default",
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedUses": 1
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.3.8",
+    "createdTime": 1726952222022,
+    "modifiedTime": 1745211360484,
+    "lastModifiedBy": "ymGs3J4QpWbCOXON"
+  },
+  "_key": "!items!2VBFIYOhfcnlyzEF"
 }
