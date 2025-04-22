@@ -14,6 +14,7 @@ export function weaponTypes() {
     // Adding new weapon Properties
     const NEW_PROPERTIES = {
         coldIron: { label: "Cold Iron", isPhysical: "true" },
+        conc : { label: "Concussive" },
         mou: { label: "Mounted" },
         unw: { label: "Unwieldy" }
     };
@@ -52,7 +53,9 @@ export function weaponTypes() {
         spear: "l6tAULuFVbSNewP4",
         unarmed: "pRDNsHpNLLk1Qq58",
         warhammer: "3geQ0izotY1xNo8c",
-        whip: "GdgYGzD0cqVlYguz"
+        whip: "GdgYGzD0cqVlYguz",
+        pistol: "O7abmlrF4raTjnkr",
+        musket: "IUIwCZtPbwMwB0b1"
     };
 
     Object.assign(CONFIG.DND5E.itemProperties, NEW_PROPERTIES);
