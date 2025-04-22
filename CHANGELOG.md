@@ -1,4 +1,46 @@
 # Changelog
+# v1.12.21
+## Bug Fixes
+- Fixed a few spells that were missing or erroneously listed in some class spell lists in the journal.
+- [Guiding Bolt](https://www.elkan5e.com/spells/guiding-bolt) now expires correctly.
+- [Phantasmal Killer](https://www.elkan5e.com/spells/phantasmal-killer) now adds the incapacitated condition.
+## Backgrounds
+- Forge-Bound:
+  - Feature options changed to [Armor Training](https://www.elkan5e.com/feats/armor-training), [Weapon Training](https://www.elkan5e.com/feats/weapon-training), or [Crafter](https://www.elkan5e.com/feats/crafter).
+## Classes
+ 
+**[Bard](https://www.elkan5e.com/bard)**
+- Now always gains performance as a skill in addition to a choice of three skills.
+
+**[Druid](https://www.elkan5e.com/druid)**
+- Twisted Terrain is now properly a circle rather than an emanation.
+- Grassland:
+  - Shepherd's Ward switched to reroll rather than auto-miss.
+- Underworld:
+  - [Otherworldly Veil](https://www.elkan5e.com/spells/otherworldly-veil) replaces [Color Spray](https://www.elkan5e.com/spells/color-spray) and works with Echoes in the Dark.
+
+**[Fighter](https://www.elkan5e.com/fighter)**
+- Replaced outdated text on maneuvers (Fighter).
+
+## Feats
+- [Shifty](https://www.elkan5e.com/feats/shifty) feat reworked so Attacks of Opportunity have disadvantage against you, and you can move 5 ft. extra when disengaging.
+- Added skill proficiency prerequisites to [Brawler](https://www.elkan5e.com/feats/brawler), [Fast Hands](https://www.elkan5e.com/feats/fast-hands), [Grapple Hold](https://www.elkan5e.com/feats/grapple-hold), [Danger Sense](https://www.elkan5e.com/feats/danger-sense), and [Gymnast](https://www.elkan5e.com/feats/gymnast).
+- [Battle Cry](https://www.elkan5e.com/feats/battle-cry) now grants targets advantage on their next attack instead of granting temporary hit points.
+- Changed [Find Familiar](https://elkan5e.com/feats/find-familiar) icon.
+## Game Rules
+- Fully implemented the new Cursed Condition with a new icon.
+## Spells
+- Fixed missing ritual status for [Gentle Repose](https://www.elkan5e.com/spells/gentle-repose), [Magic Mouth](https://www.elkan5e.com/spells/magic-mouth), and [Meld Into Stone](https://www.elkan5e.com/spells/meld-into-stone).
+- [Arcane Lock](https://www.elkan5e.com/spells/arcane-lock) is now a ritual.
+- Clarified that [Well of Corruption](https://www.elkan5e.com/spells/well-of-corruption) prevents raising the dead.
+- Added new level 1 spells: [Seeping Ooze](https://www.elkan5e.com/spells/seeping-ooze), [Snowball Swarm](https://www.elkan5e.com/spells/snowball-swarm), [Otherworldly Veil](https://www.elkan5e.com/spells/otherworldly-veil).
+- Changed [Alter Self](https://www.elkan5e.com/spells/alter-self) icon to avoid confusion with Life Drain.
+## Misc
+- Moved icons into a subfolder in the module.
+- Standardized success text to be 'Half damage.'
+- Cleaned up all the HTML in description areas (e.g., Features, Spells).
+
+
 # v1.12.20
 ## Bug Fixes
 - [Aid](https://www.elkan5e.com/spell/aid) scrolls no longer reduce maximum health.
