@@ -1,0 +1,238 @@
+{
+  "folder": "GAaTOyY6q3hBxDlY",
+  "name": "Wreathing Flames",
+  "type": "feat",
+  "_id": "VbLYqCgcsK2lp4ZH",
+  "img": "icons/magic/fire/flame-burning-tree-face.webp",
+  "system": {
+    "description": {
+      "value": "<p><span><strong>Once Per Turn</strong> </span>- 1 Creature - 1 Round - Magical</p><p>When you deal damage with a spell that deals &amp;reference[fire] or &amp;reference[radiant] damage, you can choose to temporarily wreath one affected creature in flames.</p><p><strong>Debuff</strong> </p><ul><li><p>Unless a creature uses their action to put out the fire or the fire is otherwise put out, the target takes [[/damage 1d8 fire]] damage at the end of their next turn (or the end of the initiative round if the target is an object).</p></li></ul>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "elkan5e.com/sorcerer",
+      "rules": "",
+      "revision": 1,
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "subclass",
+      "subtype": ""
+    },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [
+      "mgc"
+    ],
+    "requirements": "Fire Savant 3",
+    "identifier": "",
+    "activities": {
+      "mgkm3JkFDmri8Z3M": {
+        "type": "utility",
+        "_id": "mgkm3JkFDmri8Z3M",
+        "sort": 0,
+        "activation": {
+          "type": "duringattack",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "round",
+          "concentration": false,
+          "override": false,
+          "value": "1"
+        },
+        "effects": [
+          {
+            "_id": "fYI0LnpZNuarM2F2"
+          }
+        ],
+        "range": {
+          "override": false,
+          "units": "spec",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "1",
+            "type": "creature",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "fYI0LnpZNuarM2F2"
+        ]
+      }
+    },
+    "enchant": {}
+  },
+  "effects": [
+    {
+      "name": "Wreathing Flames",
+      "changes": [
+        {
+          "key": "flags.midi-qol.OverTime",
+          "mode": 2,
+          "value": "turn=end,\ndamageType=fire,\nallowIncapacitated=true,\ndamageRoll=1d8\nlabel=Wreathing Flames",
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "img": "icons/magic/fire/flame-burning-tree-face.webp",
+      "_id": "fYI0LnpZNuarM2F2",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system"
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!VbLYqCgcsK2lp4ZH.fYI0LnpZNuarM2F2"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "3Yi0HjF4PKCA4vX0": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "flags": {
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "reactionCondition": "",
+      "removeAttackDamageButtons": "default",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.1.0",
+    "createdTime": 1726952012349,
+    "modifiedTime": 1744075645364,
+    "lastModifiedBy": "fgP8EzWy33UFoZmI"
+  },
+  "_key": "!items!VbLYqCgcsK2lp4ZH"
+}

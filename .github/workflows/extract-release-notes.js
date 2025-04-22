@@ -28,16 +28,16 @@ try {
       inClassesSection = line.toLowerCase().includes('classes');
     } else if (inClassesSection && line.startsWith('**[')) {
       // Handle subheadings under "Classes" (e.g., Monk, Sorcerer)
-      formattedNotes.push(`- ${line.slice(2,-3)}`);
+      formattedNotes.push(`* ${line.slice(2,-3)}`);
     } else if (inClassesSection && line.startsWith('  -')) {
       // Indent nested list items under "Classes"
-      formattedNotes.push(`  ${line.trim()}`);
+      formattedNotes.push(`  *${line.trim().slice(1)}`);
     } else if (inClassesSection && line.startsWith('-')) {
       // Handle nested list items under subheadings in "Classes"
-      formattedNotes.push(`  ${line.trim()}`);
+      formattedNotes.push(`  *${line.trim().slice(1)}`);
     } else if (line.startsWith('-')) {
-      // Keep list items as is
-      formattedNotes.push(line);
+      // Replace list items with *
+      formattedNotes.push(`*${line.slice(1)}`);
     } else if (line.trim() === '') {
       // Preserve empty lines
       formattedNotes.push('');

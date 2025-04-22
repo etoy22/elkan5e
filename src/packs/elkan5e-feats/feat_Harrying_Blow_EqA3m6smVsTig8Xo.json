@@ -1,0 +1,261 @@
+{
+  "folder": "iibzWFAaPgRwaEzD",
+  "name": "Harrying Blow",
+  "type": "feat",
+  "_id": "EqA3m6smVsTig8Xo",
+  "img": "icons/skills/melee/strikes-sword-triple-gray.webp",
+  "system": {
+    "description": {
+      "value": "<p><em>Your assault prevents your target from moving quickly.</em></p><p><strong>Once Per Turn</strong> - Melee/Ranged - 1 Creature - 1 Round - Uses Equal to Proficiency Bonus/Long Rest</p><p>When you damage a creature of large size or smaller with a weapon attack, you can choose to halve the creature's speed.</p>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Elkan 5e",
+      "page": "",
+      "custom": "elkan5e.com/feats/harrying-blow",
+      "license": "",
+      "revision": 1,
+      "rules": ""
+    },
+    "uses": {
+      "max": "@attributes.prof",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
+      "spent": 0
+    },
+    "type": {
+      "value": "feat",
+      "subtype": "manuevers"
+    },
+    "requirements": "Feat (Level 4)",
+    "prerequisites": {
+      "level": 4
+    },
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "utility",
+        "activation": {
+          "type": "once",
+          "value": 1,
+          "condition": "[\"lg\", \"med\", \"sm\", \"tiny\"].includes(target.traits.size)",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": ""
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "",
+          "units": "inst",
+          "special": "",
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "K66hfGN5qMk9HWOA"
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "1",
+            "type": "creature",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
+        },
+        "sort": 0,
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "K66hfGN5qMk9HWOA"
+        ]
+      }
+    },
+    "identifier": "",
+    "enchant": {},
+    "properties": []
+  },
+  "effects": [
+    {
+      "name": "Harrying Blow",
+      "changes": [
+        {
+          "key": "system.attributes.movement.all",
+          "mode": 0,
+          "value": "/2",
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "_id": "K66hfGN5qMk9HWOA",
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": 1,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "statuses": [],
+      "flags": {
+        "times-up": {
+          "isPassive": false
+        },
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneNameOnly",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system"
+        }
+      },
+      "tint": "#ffffff",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "img": "icons/skills/melee/strikes-sword-triple-gray.webp",
+      "type": "base",
+      "system": {},
+      "sort": 0,
+      "_key": "!items.effects!EqA3m6smVsTig8Xo.K66hfGN5qMk9HWOA"
+    }
+  ],
+  "sort": 500000,
+  "ownership": {
+    "default": 0,
+    "cwIJ7W3XRXrY0zj2": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "flags": {
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "reactionCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedUses": 2
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.3.3",
+    "createdTime": 1726952213290,
+    "modifiedTime": 1740014794873,
+    "lastModifiedBy": "ymGs3J4QpWbCOXON"
+  },
+  "_key": "!items!EqA3m6smVsTig8Xo"
+}

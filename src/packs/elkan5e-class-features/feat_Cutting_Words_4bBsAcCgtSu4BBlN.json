@@ -1,0 +1,245 @@
+{
+  "name": "Cutting Words",
+  "ownership": {
+    "default": 0,
+    "ymGs3J4QpWbCOXON": 3,
+    "WaiirYzq9mhRj9cS": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "type": "feat",
+  "system": {
+    "description": {
+      "value": "<p><em>You demoralize an enemy at a critical moment, pushing them to fail rather than succeed.</em></p><p><strong>No Action Cost</strong> - 1 Ally (60 ft.) - Magical</p><p>While your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.3u8Og5ABnDcYhudF]{Inspiring Performance} is active, you can demoralize an enemy when they hit with an attack roll or succeed a skill check (but you cannot use this ability on saving throws). The enemy must be able to hear you. When you demoralize your target, you can roll your bardic inspiration die and subtract the number from the total, potentially turning the success into a failure.</p><p>Regardless of whether you succeed or fail together, you expend a use of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh]{Bardic Inspiration} and your performance ends until you use this ability again. If you have the @UUID[Compendium.elkan5e.elkan5e-class-features.Item.QIiLoZgVJqdEguAX]{Counterpoint} feature, you don't expend a use or end your performance when the roll fails.</p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "elkan5e.com/bard",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "type": {
+      "value": "subclass",
+      "subtype": ""
+    },
+    "requirements": "Jester 3",
+    "activities": {
+      "IAziwDfNn0xTb67r": {
+        "type": "utility",
+        "_id": "IAziwDfNn0xTb67r",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "self",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "Reduce Dice",
+          "formula": "1@scale.bard.inspiration"
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "name": "",
+        "img": "",
+        "appliedEffects": []
+      },
+      "YYh4AxFB2MKjv7Jv": {
+        "type": "damage",
+        "_id": "YYh4AxFB2MKjv7Jv",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "self",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "critical": {
+            "allow": false
+          },
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "@scale.jester.bardic"
+              },
+              "number": null,
+              "denomination": 0,
+              "bonus": "",
+              "types": [
+                "psychic"
+              ],
+              "scaling": {
+                "number": 1
+              }
+            }
+          ]
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "name": "",
+        "img": "",
+        "appliedEffects": []
+      }
+    },
+    "identifier": "",
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    },
+    "properties": []
+  },
+  "flags": {
+    "core": {},
+    "midi-qol": {
+      "effectActivation": false,
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "AoETargetType": "any",
+      "autoTarget": "default"
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "noConcentrationCheck": false,
+      "confirmTargets": "default",
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "img": "icons/skills/wounds/injury-face-impact-orange.webp",
+  "effects": [],
+  "folder": "k6HVpRgLfky7iqqr",
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.0.4",
+    "createdTime": 1726952007104,
+    "modifiedTime": 1737425434252,
+    "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
+  },
+  "_id": "4bBsAcCgtSu4BBlN",
+  "sort": 300000,
+  "_key": "!items!4bBsAcCgtSu4BBlN"
+}

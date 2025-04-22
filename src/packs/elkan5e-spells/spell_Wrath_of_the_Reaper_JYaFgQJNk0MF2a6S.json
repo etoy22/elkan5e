@@ -1,0 +1,305 @@
+{
+  "name": "Wrath of the Reaper",
+  "type": "spell",
+  "img": "icons/magic/death/weapon-scythe-rune-green.webp",
+  "system": {
+    "description": {
+      "value": "<p><span><em>With but a single word, you call upon the power of death. A scythe descends upon your target. There is no avoiding it.</em></span></p><p><span><strong>Constitution</strong> <strong>Save</strong> </span></p><p>This spell has no effect on unliving &amp;reference[construct].</p><ul><li><p><strong>Failure:</strong> Target takes damage equal to half their maximum hit points, up to a maximum of 100. If the target has already had their maximum hit points reduced by something else, this is half of their original hit point maximum. Target's maximum hit points are reduced by the amount of damage taken until they next finish a long rest.</p></li><li><p><strong>Success:</strong> Target takes the same damage, but their hit point maximum is not reduced.</p></li></ul>",
+      "chat": "<span><strong>Constitution</strong> <strong>Save</strong> </span></p><p>This spell has no effect on unliving &amp;reference[construct].</p><ul><li><p><strong>Failure:</strong> Target takes damage equal to half their maximum hit points, up to a maximum of 100. If the target has already had their maximum hit points reduced by something else, this is half of their original hit point maximum. Target's maximum hit points are reduced by the amount of damage taken until they next finish a long rest.</p></li><li><p><strong>Success:</strong> Target takes the same damage, but their hit point maximum is not reduced.</p></li></ul>"
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/wrath-of-the-reaper",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "",
+      "units": "inst"
+    },
+    "target": {
+      "affects": {
+        "type": "creature",
+        "count": "1",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "units": "",
+        "contiguous": false,
+        "type": ""
+      }
+    },
+    "range": {
+      "units": "touch",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 9,
+    "school": "nec",
+    "materials": {
+      "value": "A sickle or scythe",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material"
+    ],
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "save",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "UvXbDbz0tcYCQmpY",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "100"
+              },
+              "number": null,
+              "denomination": null,
+              "bonus": "",
+              "types": [],
+              "scaling": {
+                "mode": "",
+                "number": 1
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": "con",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "sort": 0,
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "UvXbDbz0tcYCQmpY"
+        ]
+      }
+    },
+    "identifier": ""
+  },
+  "effects": [
+    {
+      "name": "Drained",
+      "origin": "Compendium.elkan5e.elkan5e-spells.Item.JYaFgQJNk0MF2a6S",
+      "changes": [
+        {
+          "key": "system.attributes.hp.tempmax",
+          "mode": 2,
+          "value": "-@damage",
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "flags": {
+        "dae": {
+          "itemName": "Wrath of the Reaper",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [
+            "longRest"
+          ],
+          "enableCondition": "",
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false
+        },
+        "core": {
+          "overlay": false
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system"
+        }
+      },
+      "img": "modules/elkan5e/icons/conditions/drained.svg",
+      "_id": "UvXbDbz0tcYCQmpY",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": 0,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.4",
+        "createdTime": 1729564616467,
+        "modifiedTime": 1729564831419,
+        "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+      },
+      "_key": "!items.effects!JYaFgQJNk0MF2a6S.UvXbDbz0tcYCQmpY"
+    }
+  ],
+  "ownership": {
+    "default": 0,
+    "WaiirYzq9mhRj9cS": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "flags": {
+    "midi-qol": {
+      "effectActivation": false,
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "rollAttackPerTarget": "default"
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "noConcentrationCheck": false,
+      "confirmTargets": "default",
+      "saveDamage": "default",
+      "bonusSaveDamage": "default",
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "core": {
+      "sourceId": "Item.So4UkiMrvZhNUMkJ"
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic",
+        "material"
+      ]
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "_stats": {
+    "compendiumSource": "Item.So4UkiMrvZhNUMkJ",
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.3.6",
+    "createdTime": 1726952199647,
+    "modifiedTime": 1741670236663,
+    "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
+  },
+  "folder": "OLc6BMEuifPnCAUH",
+  "sort": 100000,
+  "_id": "JYaFgQJNk0MF2a6S",
+  "_key": "!items!JYaFgQJNk0MF2a6S"
+}
