@@ -26,6 +26,12 @@ export function conditions() {
             icon: "modules/elkan5e/icons/conditions/cover-three-quarters.svg",
             _id: "dnd5ecoverthree0000" // Ensure this is a valid 16-character alphanumeric ID
         },
+        cursed:{
+            label: "Cursed",
+            reference: "",
+            icon: "modules/elkan5e/icons/conditions/cursed.svg",
+            _id: "dnd5ecursed0000" // Ensure this is a valid 16-character alphanumeric ID
+        },
         dazed: {
             label: "Dazed",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.0BYyVwipnS55gVFq",
