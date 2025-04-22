@@ -1,0 +1,283 @@
+{
+  "folder": "0sThIHmikYUfv55I",
+  "name": "Air Elemental Form",
+  "type": "feat",
+  "_id": "7osHeNgdVZKXuuno",
+  "img": "icons/creatures/magical/spirit-undead-ghost-blue.webp",
+  "system": {
+    "description": {
+      "value": "<p>You transform into an hybrid humanoid and air elemental form, crackling with electricity and surrounded by whipping winds. Your form shifts, transforming back and forth from solid to gas.</p><p><span><strong>Bonus Action</strong> </span>- Self - 10 Minutes -<span></span>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.Ik6ei7V7ryr5XVoe]{3 Sorcery Points} - Magical</p><p>You choose whether your equipment falls to the ground in your space, merges into your new form, or if you continue to visibly wear it.</p><ul><li><p>You have a fly (hover) speed of 40 ft.</p></li><li><p>You are resistant to &amp;reference[lightning] damage.</p></li><li><p>You are immune to &amp;reference[poison] damage and the &amp;reference[poisoned] condition.</p></li><li><p>You are immune to the &amp;reference[grappled], &amp;reference[petrified], and &amp;reference[restrained] conditions.</p></li><li><p>You weigh close to nothing and can squeeze through gaps as small as 1 inch wide.</p></li><li><p>You no longer have normal bodily functions. You don't breathe, can't bleed, be magically aged, or otherwise do anything that relies on your normal biological functions.</p></li></ul><p>You can revert to your normal form using a bonus action. You also revert to your normal form if you are reduced to 0 hit points.</p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "elkan5e.com/sorcerer",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "type": {
+      "value": "subclass",
+      "subtype": ""
+    },
+    "prerequisites": {
+      "level": null
+    },
+    "properties": [
+      "mgc"
+    ],
+    "requirements": "Air Savant 14",
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "utility",
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "3",
+              "target": "Compendium.elkan5e.elkan5e-class-features.Item.Ik6ei7V7ryr5XVoe",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "",
+          "units": "inst",
+          "special": "",
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "hM9DHM6h1pI1T3n4"
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": ""
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
+        },
+        "sort": 0,
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "hM9DHM6h1pI1T3n4"
+        ]
+      }
+    },
+    "identifier": "",
+    "enchant": {}
+  },
+  "effects": [
+    {
+      "name": "Air Elemental Form",
+      "changes": [
+        {
+          "key": "system.traits.dr.value",
+          "mode": 0,
+          "value": "lightning",
+          "priority": 20
+        },
+        {
+          "key": "system.traits.ci.value",
+          "mode": 0,
+          "value": "poisoned",
+          "priority": 20
+        },
+        {
+          "key": "system.traits.di.value",
+          "mode": 2,
+          "value": "poison",
+          "priority": 20
+        },
+        {
+          "key": "system.traits.ci.value",
+          "mode": 2,
+          "value": "grappled",
+          "priority": 20
+        },
+        {
+          "key": "system.traits.ci.value",
+          "mode": 2,
+          "value": "petrified",
+          "priority": 20
+        },
+        {
+          "key": "system.traits.ci.value",
+          "mode": 2,
+          "value": "restrained",
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "img": "icons/creatures/magical/spirit-undead-ghost-blue.webp",
+      "_id": "hM9DHM6h1pI1T3n4",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": 600,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [
+            "zeroHP"
+          ]
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system"
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!7osHeNgdVZKXuuno.hM9DHM6h1pI1T3n4"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "cwIJ7W3XRXrY0zj2": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "flags": {
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "reactionCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.1.1",
+    "createdTime": 1726952007759,
+    "modifiedTime": 1732220002298,
+    "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
+  },
+  "_key": "!items!7osHeNgdVZKXuuno"
+}

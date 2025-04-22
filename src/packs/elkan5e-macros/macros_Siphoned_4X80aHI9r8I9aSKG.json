@@ -1,0 +1,27 @@
+{
+  "name": "Siphoned",
+  "type": "script",
+  "_id": "4X80aHI9r8I9aSKG",
+  "author": "3Yi0HjF4PKCA4vX0",
+  "img": "modules/elkan5e/icons/conditions/siphoned.svg",
+  "scope": "global",
+  "command": "if (![\"msak\",\"rsak\",\"heal\"].includes(workflow.activity.actionType)) return {};\nconst damageItem = workflow.damageItem;\n\nif (!damageItem) return;\n\nif (workflow.activity.actionType === 'heal') {\n    // Calculate the total healing applied\n    const healing = damageItem.damageDetail.reduce((acc, a) => acc += a.type === 'healing' ? a.value : 0, 0);\n\n    // Calculate the healing bonus\n    const healingBonus = Math.round(healing * 0.5); // 50% increase\n\n    // Apply the healing bonus\n    if (healingBonus) {\n        MidiQOL.modifyDamageBy({damageItem, value: -healingBonus, type: 'healing', reason: workflow.item.name});\n    }\n} else {\n    let totalReduction = 0;\n    for (let detail of damageItem.damageDetail) {\n        const originalDamage = detail.value ?? 0;\n\n        // Apply 50% reduction to the damage value\n        const reducedDamage = Math.floor(originalDamage * 0.50);\n        totalReduction += (originalDamage - reducedDamage); // Accumulate the reduction\n        detail.value = reducedDamage; // Update the damageDetail array\n    }\n\n    if (totalReduction > 0) {\n        MidiQOL.modifyDamageBy({\n            damageItem,\n            value: -totalReduction,\n            type: 'none', // Use the type here , \"none\" for a general damage increase\n            reason: 'Reduce damage by 50%'\n        });\n    }\n}",
+  "folder": null,
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "3Yi0HjF4PKCA4vX0": 3
+  },
+  "flags": {},
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.3.3",
+    "createdTime": 1740626281173,
+    "modifiedTime": 1740626301349,
+    "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
+  },
+  "_key": "!macros!4X80aHI9r8I9aSKG"
+}

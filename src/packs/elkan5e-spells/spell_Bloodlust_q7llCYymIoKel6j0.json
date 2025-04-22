@@ -1,0 +1,286 @@
+{
+  "folder": "Tf2FNuyyu2gEaYOF",
+  "name": "Bloodlust",
+  "type": "spell",
+  "img": "icons/skills/melee/strike-axe-red.webp",
+  "system": {
+    "description": {
+      "value": "<p><em>Pricking your finger, you draw blood. You address your target, reminding them of how much they want to fight their enemies. Your target is overwhelmed by anger, mindlessly focused on their enemies, unwilling to flee from conflict.</em></p><p><strong>Wisdom Save</strong> </p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[Goaded] by the nearest creature they are hostile towards at any given time, and they have advantage on all attack rolls.<span>An unwilling target rolls again at end of their turns, ending effect on success.</span></p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><strong>Upcasting</strong> : Target one additional creature for each spell level above 3rd.</p>",
+      "chat": "<strong>Wisdom Save</strong> </p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[Goaded] by the nearest creature they are hostile towards at any given time, and they have advantage on all attack rolls.<span>An unwilling target rolls again at end of their turns, ending effect on success.</span></p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><strong>Upcasting</strong> : Target one additional creature for each spell level above 3rd.</p>"
+    },
+    "source": {
+      "book": "Elkan 5e",
+      "page": "",
+      "custom": "elkan5e.com/spells/bloodlust",
+      "license": "",
+      "revision": 1,
+      "rules": ""
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "1",
+      "units": "minute"
+    },
+    "target": {
+      "affects": {
+        "type": "creature",
+        "count": "1",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "units": "",
+        "contiguous": false,
+        "type": ""
+      }
+    },
+    "range": {
+      "value": "90",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 3,
+    "school": "enc",
+    "materials": {
+      "value": "A drop of blood you draw from your own body",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "concentration"
+    ],
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "save",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "g02foCT34SklETUD",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": []
+        },
+        "save": {
+          "ability": "wis",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "sort": 0,
+        "name": "",
+        "img": "",
+        "effectConditionText": "!target.traits.ci.value.has('goaded')",
+        "appliedEffects": [
+          "g02foCT34SklETUD"
+        ]
+      }
+    },
+    "identifier": ""
+  },
+  "effects": [
+    {
+      "name": "Bloodlust",
+      "origin": "Item.Xoqflq6rzbyuX30P",
+      "duration": {
+        "rounds": null,
+        "startTime": null,
+        "seconds": 60,
+        "combat": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "transfer": false,
+      "disabled": false,
+      "_id": "g02foCT34SklETUD",
+      "changes": [
+        {
+          "key": "flags.midi-qol.advantage.attack.all",
+          "mode": 0,
+          "value": "1",
+          "priority": 20
+        }
+      ],
+      "description": "",
+      "statuses": [
+        "goaded"
+      ],
+      "flags": {
+        "times-up": {
+          "isPassive": false
+        },
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [],
+          "enableCondition": "",
+          "disableCondition": ""
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system"
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "tint": "#ffffff",
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.2",
+        "createdTime": null,
+        "modifiedTime": 1728418562056,
+        "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+      },
+      "img": "icons/skills/melee/strike-axe-red.webp",
+      "type": "base",
+      "system": {},
+      "sort": 0,
+      "_key": "!items.effects!q7llCYymIoKel6j0.g02foCT34SklETUD"
+    }
+  ],
+  "ownership": {
+    "default": 0,
+    "WaiirYzq9mhRj9cS": 3,
+    "ymGs3J4QpWbCOXON": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "flags": {
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": true,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "effectActivation": false,
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default"
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "core": {},
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.1.2",
+    "createdTime": 1726952205318,
+    "modifiedTime": 1733226146879,
+    "lastModifiedBy": "ymGs3J4QpWbCOXON"
+  },
+  "_id": "q7llCYymIoKel6j0",
+  "sort": 600000,
+  "_key": "!items!q7llCYymIoKel6j0"
+}
