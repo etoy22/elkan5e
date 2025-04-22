@@ -1,172 +1,172 @@
 {
-    "name": "Survivor",
-    "type": "feat",
-    "img": "icons/magic/life/heart-glowing-red.webp",
-    "effects": [
+  "name": "Survivor",
+  "type": "feat",
+  "img": "icons/magic/life/heart-glowing-red.webp",
+  "effects": [
+    {
+      "changes": [
         {
-            "changes": [
-                {
-                    "key": "flags.midi-qol.OverTime",
-                    "mode": 2,
-                    "value": "turn=start,\napplyCondition=@attributes.hp.value > 0 && @attributes.hp.value <= @attributes.hp.max/2,\ndamageRoll=5+@abilities.con.mod,\ndamageType=healing",
-                    "priority": 20
-                }
-            ],
-            "transfer": true,
-            "_id": "4VqImnsFQHf7wKmj",
-            "disabled": false,
-            "duration": {
-                "startTime": null,
-                "seconds": null,
-                "combat": null,
-                "rounds": null,
-                "turns": null,
-                "startRound": null,
-                "startTurn": null
-            },
-            "origin": "Compendium.elkan5e.elkan5e-class-features.Item.SjY0CQtBO51uq1ll",
-            "tint": "#ffffff",
-            "flags": {
-                "dae": {
-                    "selfTarget": false,
-                    "selfTargetAlways": false,
-                    "stackable": "none",
-                    "durationExpression": "",
-                    "specialDuration": [],
-                    "disableCondition": "",
-                    "disableIncapacitated": true,
-                    "showIcon": false,
-                    "macroRepeat": "none"
-                },
-                "core": {
-                    "sourceId": "Compendium.Personal-Foundry-Automation-5e.subclass-features.WOqmsjMuWlyMGqpV.ActiveEffect.4VqImnsFQHf7wKmj",
-                    "overlay": false
-                },
-                "ActiveAuras": {
-                    "isAura": false,
-                    "aura": "None",
-                    "radius": "",
-                    "alignment": "",
-                    "type": "",
-                    "ignoreSelf": false,
-                    "height": false,
-                    "hidden": false,
-                    "displayTemp": false,
-                    "hostile": false,
-                    "onlyOnce": false,
-                    "nameOverride": "",
-                    "customCheck": "",
-                    "wallsBlock": "system"
-                }
-            },
-            "_stats": {
-                "compendiumSource": null,
-                "duplicateSource": null,
-                "coreVersion": "12.331",
-                "systemId": "dnd5e",
-                "systemVersion": "4.0.2",
-                "createdTime": null,
-                "modifiedTime": 1729631978016,
-                "lastModifiedBy": "YxlXl9sauSuWxHdZ"
-            },
-            "name": "Survivor",
-            "img": "icons/magic/life/heart-glowing-red.webp",
-            "type": "base",
-            "system": {},
-            "description": "",
-            "statuses": [],
-            "sort": 0,
-            "_key": "!items.effects!SjY0CQtBO51uq1ll.4VqImnsFQHf7wKmj"
+          "key": "flags.midi-qol.OverTime",
+          "mode": 2,
+          "value": "turn=start,\napplyCondition=@attributes.hp.value > 0 && @attributes.hp.value <= @attributes.hp.max/2,\ndamageRoll=5+@abilities.con.mod,\ndamageType=healing",
+          "priority": 20
         }
-    ],
-    "flags": {
+      ],
+      "transfer": true,
+      "_id": "4VqImnsFQHf7wKmj",
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "origin": "Compendium.elkan5e.elkan5e-class-features.Item.SjY0CQtBO51uq1ll",
+      "tint": "#ffffff",
+      "flags": {
+        "dae": {
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "stackable": "none",
+          "durationExpression": "",
+          "specialDuration": [],
+          "disableCondition": "",
+          "disableIncapacitated": true,
+          "showIcon": false,
+          "macroRepeat": "none"
+        },
         "core": {
-            "sourceId": "Compendium.dnd5e.classfeatures.ipG5yx1tRNmeJfSH"
+          "sourceId": "Compendium.Personal-Foundry-Automation-5e.subclass-features.WOqmsjMuWlyMGqpV.ActiveEffect.4VqImnsFQHf7wKmj",
+          "overlay": false
         },
-        "midi-qol": {
-            "effectActivation": false,
-            "rollAttackPerTarget": "default",
-            "itemCondition": "",
-            "effectCondition": "",
-            "reactionCondition": "",
-            "removeAttackDamageButtons": "default",
-            "otherCondition": ""
-        },
-        "midiProperties": {
-            "nodam": false,
-            "fulldam": false,
-            "halfdam": false,
-            "rollOther": false,
-            "critOther": false,
-            "magicdam": false,
-            "magiceffect": false,
-            "concentration": false,
-            "toggleEffect": false,
-            "ignoreTotalCover": false,
-            "confirmTargets": "default",
-            "autoFailFriendly": false,
-            "autoSaveFriendly": false,
-            "offHandWeapon": false,
-            "noConcentrationCheck": false,
-            "idr": false,
-            "idi": false,
-            "idv": false,
-            "ida": false
-        },
-        "tidy5e-sheet": {
-            "section": "",
-            "actionSection": ""
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "nameOverride": "",
+          "customCheck": "",
+          "wallsBlock": "system"
         }
-    },
-    "system": {
-        "description": {
-            "value": "<p>At the start of your turn when you have fewer than half your hit points (rounded down), you regain hit points equal to 5 + your constitution modifier. This feature does not function if you are unconscious.</p>",
-            "chat": ""
-        },
-        "source": {
-            "rules": "",
-            "revision": 1,
-            "book": "Elkan 5e",
-            "page": "",
-            "license": "",
-            "custom": "elkan5e.com/fighter"
-        },
-        "uses": {
-            "max": "",
-            "spent": 0,
-            "recovery": []
-        },
-        "type": {
-            "value": "subclass",
-            "subtype": ""
-        },
-        "requirements": "Champion 18",
-        "identifier": "",
-        "activities": {},
-        "enchant": {},
-        "prerequisites": {
-            "level": null
-        },
-        "properties": []
-    },
-    "ownership": {
-        "default": 0,
-        "ymJDAw0PgXIWIHMH": 3,
-        "MKYWAnkTJr0gkDqT": 3,
-        "vHqSHJMdmEO6Mk2C": 3
-    },
-    "_stats": {
-        "compendiumSource": "Compendium.dnd5e.classfeatures.ipG5yx1tRNmeJfSH",
+      },
+      "_stats": {
+        "compendiumSource": null,
         "duplicateSource": null,
         "coreVersion": "12.331",
         "systemId": "dnd5e",
-        "systemVersion": "4.3.8",
-        "createdTime": 1726952011925,
-        "modifiedTime": 1744073754102,
-        "lastModifiedBy": "fgP8EzWy33UFoZmI"
+        "systemVersion": "4.0.2",
+        "createdTime": null,
+        "modifiedTime": 1729631978016,
+        "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+      },
+      "name": "Survivor",
+      "img": "icons/magic/life/heart-glowing-red.webp",
+      "type": "base",
+      "system": {},
+      "description": "",
+      "statuses": [],
+      "sort": 0,
+      "_key": "!items.effects!SjY0CQtBO51uq1ll.4VqImnsFQHf7wKmj"
+    }
+  ],
+  "flags": {
+    "core": {
+      "sourceId": "Compendium.dnd5e.classfeatures.ipG5yx1tRNmeJfSH"
     },
-    "folder": "Jmr7C3kJih3PzzE1",
-    "sort": 400000,
-    "_id": "SjY0CQtBO51uq1ll",
-    "_key": "!items!SjY0CQtBO51uq1ll"
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "reactionCondition": "",
+      "removeAttackDamageButtons": "default",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p>At the start of your turn when you have fewer than half your hit points (rounded down), you regain hit points equal to 5 + your constitution modifier. This feature does not function if you are unconscious.</p>",
+      "chat": ""
+    },
+    "source": {
+      "rules": "",
+      "revision": 1,
+      "book": "Elkan 5e",
+      "page": "",
+      "license": "",
+      "custom": "elkan5e.com/fighter"
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "subclass",
+      "subtype": ""
+    },
+    "requirements": "Champion 18",
+    "identifier": "",
+    "activities": {},
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    },
+    "properties": []
+  },
+  "ownership": {
+    "default": 0,
+    "ymJDAw0PgXIWIHMH": 3,
+    "MKYWAnkTJr0gkDqT": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "_stats": {
+    "compendiumSource": "Compendium.dnd5e.classfeatures.ipG5yx1tRNmeJfSH",
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.3.8",
+    "createdTime": 1726952011925,
+    "modifiedTime": 1744073754102,
+    "lastModifiedBy": "fgP8EzWy33UFoZmI"
+  },
+  "folder": "Jmr7C3kJih3PzzE1",
+  "sort": 400000,
+  "_id": "SjY0CQtBO51uq1ll",
+  "_key": "!items!SjY0CQtBO51uq1ll"
 }
