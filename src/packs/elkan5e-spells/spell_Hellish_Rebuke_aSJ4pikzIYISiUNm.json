@@ -1,0 +1,222 @@
+{
+  "name": "Hellish Rebuke",
+  "type": "spell",
+  "img": "icons/magic/fire/flame-burning-eye.webp",
+  "effects": [],
+  "folder": "U0k4VGG6bziqf3oH",
+  "flags": {
+    "midi-qol": {
+      "onUseMacroName": "",
+      "effectActivation": false,
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "rollAttackPerTarget": "default",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default"
+    },
+    "core": {},
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "noConcentrationCheck": false,
+      "confirmTargets": "default",
+      "saveDamage": "default",
+      "bonusSaveDamage": "default",
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "somatic"
+      ]
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>You point your finger, cursing your target, and the creature that damaged you is momentarily surrounded by hellish flames.</em></p><p><span><strong>Dexterity Save</strong> </span></p><p>You cast this spell when a creature damages you.</p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 2d10 fire]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p></p><p><strong>*Upcasting</strong> : Increase damage by [[/damage 1d10 fire]]{1d10} for each spell level above 1st.</p>",
+      "chat": "<span><strong>Dexterity Save</strong> </span></p><p>You cast this spell when a creature damages you.</p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 2d10 fire]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p></p><p><strong>*Upcasting</strong> : Increase damage by [[/damage 1d10 fire]]{1d10} for each spell level above 1st.</p>"
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/hellish-rebuke",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "reaction",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "",
+      "units": "inst"
+    },
+    "target": {
+      "affects": {
+        "special": "",
+        "type": "creature",
+        "count": "1",
+        "choice": false
+      },
+      "template": {
+        "type": "",
+        "units": "",
+        "contiguous": false
+      }
+    },
+    "range": {
+      "value": "60",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 1,
+    "school": "evo",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "mgc"
+    ],
+    "activities": {
+      "oN0EvsXWN8SZXfTg": {
+        "type": "save",
+        "_id": "oN0EvsXWN8SZXfTg",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 2,
+              "denomination": 10,
+              "bonus": "",
+              "types": [
+                "fire"
+              ],
+              "scaling": {
+                "mode": "whole",
+                "number": 1
+              }
+            }
+          ],
+          "onSave": "half"
+        },
+        "save": {
+          "ability": "dex",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "name": "",
+        "img": "",
+        "appliedEffects": []
+      }
+    },
+    "identifier": ""
+  },
+  "ownership": {
+    "default": 0,
+    "VJURYym0JQByHBQL": 3,
+    "ymJDAw0PgXIWIHMH": 3,
+    "MKYWAnkTJr0gkDqT": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.0.3",
+    "createdTime": 1726952202601,
+    "modifiedTime": 1735019620903,
+    "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
+  },
+  "_id": "aSJ4pikzIYISiUNm",
+  "sort": 3500000,
+  "_key": "!items!aSJ4pikzIYISiUNm"
+}
