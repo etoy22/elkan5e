@@ -4,7 +4,7 @@ import json
 folders = [
     'src\packs\elkan5e-spells', 
 ]
-
+#Add class features that are spells
 spells = [[] for _ in range(10)]
 notSpells = [[] for _ in range(10)]
 for folder in folders:
@@ -32,6 +32,7 @@ for folder in folders:
             else:
                 notSpells[data["system"]["level"]].append(data["name"])
                 chat = ''  # Remove the description
+        
         with open(file_path, 'w', encoding='utf-8') as file:
             json.dump(data, file, indent=4, ensure_ascii=False)
 
