@@ -1,0 +1,249 @@
+{
+    "folder": "p19CySc0yCc71ayz",
+    "name": "Unseen Menace",
+    "type": "feat",
+    "_id": "Y4ArRuSt8cFococY",
+    "img": "icons/magic/unholy/silhouette-robe-evil-glow.webp",
+    "system": {
+        "activities": {
+            "QsUIylQsabw5QPPa": {
+                "type": "save",
+                "_id": "QsUIylQsabw5QPPa",
+                "sort": 0,
+                "activation": {
+                    "type": "reaction",
+                    "value": null,
+                    "override": false,
+                    "condition": ""
+                },
+                "consumption": {
+                    "scaling": {
+                        "allowed": false
+                    },
+                    "spellSlot": true,
+                    "targets": []
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "minute",
+                    "concentration": false,
+                    "override": false,
+                    "value": "1"
+                },
+                "effects": [
+                    {
+                        "_id": "eMJcl5rSb3kJkYnn",
+                        "onSave": false
+                    }
+                ],
+                "range": {
+                    "override": false,
+                    "units": "ft",
+                    "special": "",
+                    "value": "90"
+                },
+                "target": {
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft",
+                        "type": ""
+                    },
+                    "affects": {
+                        "choice": false,
+                        "count": "1",
+                        "type": "creature",
+                        "special": ""
+                    },
+                    "override": false,
+                    "prompt": true
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "damage": {
+                    "parts": [],
+                    "onSave": "none"
+                },
+                "save": {
+                    "ability": "wis",
+                    "dc": {
+                        "calculation": "spellcasting",
+                        "formula": ""
+                    }
+                },
+                "useConditionText": "",
+                "forceDialog": false,
+                "effectConditionText": "!target.traits.ci.value.has('frightened')",
+                "name": "",
+                "img": "",
+                "appliedEffects": [
+                    "eMJcl5rSb3kJkYnn"
+                ]
+            }
+        },
+        "uses": {
+            "spent": 0,
+            "recovery": [],
+            "max": ""
+        },
+        "description": {
+            "value": "<p>Twisting the mind of your target, you instill fear of an unseen foe.</p><p><strong>Reaction</strong> - 1 Creature (90 ft.) - 1 Minute - Magical</p><p>When a target takes damage from a creature they cannot see, you can use this ability.</p><p><strong>Wisdom Save</strong> </p><ul><li><p>Failure: Target is &amp;reference[frightened] of their unseen attacker. Target rolls again at end of their turns, ending effect on success. If the target has seen their attacker since being frightened, they roll this save with advantage. While frightened in this way:</p><ul><li><p>Target has disadvantage on attack rolls even if they cannot see their attacker.</p></li><li><p>Target can move in any direction, including towards their attacker, if they cannot see their attacker.</p></li></ul></li><li><p>Success: No effect.</p></li></ul>",
+            "chat": ""
+        },
+        "identifier": "",
+        "source": {
+            "revision": 1,
+            "rules": "",
+            "book": "",
+            "page": "",
+            "custom": "elkan5e.com/druid",
+            "license": ""
+        },
+        "enchant": {},
+        "type": {
+            "value": "",
+            "subtype": ""
+        },
+        "prerequisites": {
+            "level": null
+        },
+        "properties": [],
+        "requirements": "Underworld 6"
+    },
+    "effects": [
+        {
+            "name": "Unseen Menace",
+            "img": "icons/magic/unholy/silhouette-robe-evil-glow.webp",
+            "origin": "Compendium.elkan5e.elkan5e-class-features.Item.Y4ArRuSt8cFococY",
+            "transfer": false,
+            "_id": "eMJcl5rSb3kJkYnn",
+            "type": "base",
+            "system": {},
+            "changes": [
+                {
+                    "key": "flags.midi-qol.OverTime",
+                    "mode": 2,
+                    "value": "turn=end,\nsaveAbility=wis,\nsaveDC=@attributes.spelldc,\nsaveMagic=true,\nlabel=Unseen Menace",
+                    "priority": 20
+                }
+            ],
+            "disabled": false,
+            "duration": {
+                "startTime": null,
+                "seconds": null,
+                "combat": null,
+                "rounds": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null
+            },
+            "description": "",
+            "tint": "#ffffff",
+            "statuses": [
+                "frightened"
+            ],
+            "sort": 0,
+            "flags": {
+                "dae": {
+                    "enableCondition": "",
+                    "disableCondition": "",
+                    "disableIncapacitated": false,
+                    "selfTarget": false,
+                    "selfTargetAlways": false,
+                    "dontApply": false,
+                    "stackable": "noneName",
+                    "showIcon": false,
+                    "durationExpression": "",
+                    "macroRepeat": "none",
+                    "specialDuration": []
+                },
+                "core": {
+                    "overlay": false
+                },
+                "ActiveAuras": {
+                    "isAura": false,
+                    "aura": "None",
+                    "nameOverride": "",
+                    "radius": "",
+                    "alignment": "",
+                    "type": "",
+                    "customCheck": "",
+                    "ignoreSelf": false,
+                    "height": false,
+                    "hidden": false,
+                    "displayTemp": false,
+                    "hostile": false,
+                    "onlyOnce": false,
+                    "wallsBlock": "system"
+                }
+            },
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.0.4",
+                "createdTime": 1730751218927,
+                "modifiedTime": 1730783755155,
+                "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+            },
+            "_key": "!items.effects!Y4ArRuSt8cFococY.eMJcl5rSb3kJkYnn"
+        }
+    ],
+    "sort": 0,
+    "ownership": {
+        "default": 0,
+        "YxlXl9sauSuWxHdZ": 3
+    },
+    "flags": {
+        "midiProperties": {
+            "confirmTargets": "default",
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "critOther": false,
+            "offHandWeapon": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "noConcentrationCheck": false,
+            "toggleEffect": false,
+            "ignoreTotalCover": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "midi-qol": {
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "reactionCondition": "",
+            "effectCondition": "",
+            "removeAttackDamageButtons": "default",
+            "otherCondition": ""
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            }
+        },
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
+        }
+    },
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.4",
+        "createdTime": 1730750697795,
+        "modifiedTime": 1744073615025,
+        "lastModifiedBy": "fgP8EzWy33UFoZmI"
+    },
+    "_key": "!items!Y4ArRuSt8cFococY"
+}
