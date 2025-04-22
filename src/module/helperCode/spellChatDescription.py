@@ -1,8 +1,10 @@
 import os
 import json
+from htmlSimplifier import simplify_html  # Import the simplify_html function
 
 folders = [
     'src\packs\elkan5e-spells', 
+    'src\packs\elkan5e-class-features'
 ]
 #Add class features that are spells
 spells = [[] for _ in range(10)]
@@ -16,23 +18,24 @@ for folder in folders:
         # Load the JSON file
         with open(file_path, 'r', encoding='utf-8') as file:
             data = json.load(file)
-        if data["type"] == 'spell':
+        if data.get("type", "").strip().lower() == 'spell':  # Ensure type is explicitly "spell"
             description = data.get("system", {}).get("description", {}).get("value", "")
 
-            # Check for <em> in the first paragraph
-            description_parts = description.split("<p>")
-            if len(description_parts) > 1:
-                first_paragraph = description_parts[1]
-                if "<em>" in first_paragraph:
-                    spells[data["system"]["level"]].append(data["name"])
-                    chat = "<p>".join(description.split("<p>")[2:])  # Remove the first line
-                else:
-                    notSpells[data["system"]["level"]].append(data["name"])
-                    chat = ''  # Remove the description
+            # Simplify the HTML in the description
+            simplified_description = simplify_html(description)
+            data["system"]["description"]["value"] = simplified_description
+
+            # Check for <em> in the first non-empty paragraph
+            description_parts = simplified_description.split("<p>")
+            first_paragraph = next((part for part in description_parts if part.strip()), "")
+            if "<em>" in first_paragraph:
+                spells[data["system"]["level"]].append(data["name"])
+                chat = "<p>".join(description_parts[1:])  # Remove the first paragraph
             else:
                 notSpells[data["system"]["level"]].append(data["name"])
                 chat = ''  # Remove the description
         
+        # Save the updated JSON file
         with open(file_path, 'w', encoding='utf-8') as file:
             json.dump(data, file, indent=4, ensure_ascii=False)
 
