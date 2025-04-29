@@ -31,8 +31,10 @@ export function language() {
     LANGUAGES_TO_DELETE.forEach(
       (lang) => delete CONFIG.DND5E.languages.standard.children[lang]
     );
+    delete CONFIG.DND5E.languages.cant
+    delete CONFIG.DND5E.languages.druidic
     delete CONFIG.DND5E.languages.exotic;
-
+    
     // Adding Languages
     CONFIG.DND5E.languages.standard.children.under = "Undercommon";
 
