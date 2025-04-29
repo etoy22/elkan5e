@@ -1,5 +1,6 @@
 import os
 import json
+from updateTime import load_and_update_json  # Import the helper function
 
 # Define the folder containing the JSON files
 folder_paths = [
@@ -20,6 +21,7 @@ folder_paths = [
     'src\packs\elkan5e-subclass', 
     'src\packs\elkan5e-summoned-creatures'   
 ]
+
 i = 0
 # Loop through every file in the folder
 for folder_path in folder_paths:
@@ -27,9 +29,8 @@ for folder_path in folder_paths:
         if filename.endswith('.json'):
             file_path = os.path.join(folder_path, filename)
             
-            # Load the JSON file
-            with open(file_path, 'r', encoding='utf-8') as file:
-                data = json.load(file)
+            # Load and update the JSON file
+            data = load_and_update_json(file_path)
 
             # Modify the data (example: removing a key)
             keys_to_remove = [
@@ -56,11 +57,12 @@ for folder_path in folder_paths:
                     data["system"]["source"]["page"] =  ""
                     data["system"]["source"]["license"] =  ""
 
-
-            with open(file_path, 'w') as file:
+            # Update the last modified time in the JSON file
+            data = load_and_update_json(file_path)
+            with open(file_path, 'w', encoding='utf-8') as file:
                 json.dump(data, file, indent=4)
 
             print(f'Processed file: {filename}')
-            i+= 1
+            i += 1
 
 print("Gone through", i, "files")

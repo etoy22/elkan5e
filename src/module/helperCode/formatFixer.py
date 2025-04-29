@@ -1,5 +1,6 @@
 import os
 import json
+from updateTime import load_and_update_json  # Import the helper function
 
 folder_paths = [
     'src\packs\elkan5e-ancestries', 
@@ -78,7 +79,9 @@ for folder_path in folder_paths:
                         find_elements(item)
             
             find_elements(updated_data)
-            
+
+            # Update the last modified time in the JSON file
+            data = load_and_update_json(file_path)
             # Save the updated JSON file
             with open(file_path, 'w', encoding='utf-8') as file:
                 json.dump(updated_data, file, ensure_ascii=False, indent=4)
