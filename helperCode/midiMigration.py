@@ -29,10 +29,12 @@ for folder_path in folder_paths:
         if filename.endswith('.json'):
             file_path = os.path.join(folder_path, filename)
             
-            # Load and update the JSON file
-            data = load_and_update_json(file_path)
+            # Load the original JSON file
+            with open(file_path, 'r', encoding='utf-8') as file:
+                original_data = json.load(file)
 
             # Modify the data
+            data = original_data.copy()
             if "system" in data:
                 data["system"]["source"]["book"] = "Elkan 5e"
             if 'type' in data:
@@ -46,11 +48,12 @@ for folder_path in folder_paths:
                         data["flags"]["midi-qol"]["rollAttackPerTarget"] = "default"
                     if "removeAttackDamageButtons" in data["flags"]["midi-qol"] and data["flags"]["midi-qol"]["removeAttackDamageButtons"] != "":
                         data["flags"]["midi-qol"]["removeAttackDamageButtons"] = "default"
-                        
-            # Update the last modified time in the JSON file
-            data = load_and_update_json(file_path)
-            with open(file_path, 'w', encoding='utf-8') as file:
-                json.dump(data, file, indent=4)
+
+            # Only update the JSON if changes were made
+            if data != original_data:
+                data = load_and_update_json(data)
+                with open(file_path, 'w', encoding='utf-8') as file:
+                    json.dump(data, file, indent=4)
 
             print(f'Processed file: {filename}')
             i += 1

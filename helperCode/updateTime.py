@@ -1,7 +1,7 @@
 import time
 import json
 
-def update_stats(json_obj):
+def load_and_update_json(json_obj):
     """
     Updates the _stats field in the given JSON object.
     Fetches coreVersion and systemVersion from module.json data.
@@ -20,14 +20,6 @@ def update_stats(json_obj):
         "unknown"
     )
     return json_obj
-
-def load_and_update_json(file_path):
-    """
-    Loads a JSON file, updates its _stats field, and returns the updated JSON object.
-    """
-    with open(file_path, "r") as f:
-        json_obj = json.load(f)
-    return update_stats(json_obj)
 
 if __name__ == "__main__":
     # Example usage:

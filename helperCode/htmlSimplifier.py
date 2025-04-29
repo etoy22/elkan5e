@@ -1,5 +1,9 @@
 from bs4 import BeautifulSoup
+from bs4 import MarkupResemblesLocatorWarning
+import warnings
 
+# Suppress MarkupResemblesLocatorWarning
+warnings.filterwarnings("ignore", category=MarkupResemblesLocatorWarning)
 
 def simplify_html(html_content):
     """
