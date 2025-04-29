@@ -1,5 +1,6 @@
 import os
 import json
+from updateTime import load_and_update_json  # Import the helper function
 
 apply_replacements = True  # Set to True to apply replacements
 
@@ -117,6 +118,8 @@ for folder in folders:
         
         # Write the updated data back to the file
         if apply_replacements:
+            # Update the last modified time in the JSON file
+            data = load_and_update_json(file_path)
             with open(file_path, 'w', encoding='utf-8') as file:
                 json.dump(data, file, indent=4, ensure_ascii=False)
 
