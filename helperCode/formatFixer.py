@@ -62,10 +62,10 @@ references = skills + skill_labels + conditions + condition_labels + creature_la
 
 def transform_value(value):
     """Simplify and apply replacements to a string value."""
-    logging.debug("Original value: %s", value)
     simplified = simplify_html(value)
     replacements = {
         '\u00A0': ' ', '\u200B': '', '’': '\'',
+        '<strong>Dexterity</strong> Saving Throw': '<strong>Dexterity Save</strong>',
         '<strong>Feats From Other Sources</strong> :': '<strong>Feats From Other Sources:</strong>',
         '<strong>Summoning Spell</strong> :': '<strong>Summoning Spell:</strong>',
         '<strong>Materials</strong> :': '<strong>Materials:</strong>',
@@ -158,10 +158,8 @@ def transform_value(value):
         for i, splice in enumerate(splices):
             # Match whole words only
             if f"&amp;reference[{ref}]" in splice or f"{ref}]]" in splice:
-                logging.debug("Reference '%s' already exists in splice %d, skipping.", ref, i)
                 continue
             if f"&amp;reference[" in splice:
-                logging.debug("Skipping nested &amp;reference for '%s' in splice %d.", ref, i)
                 continue
             if any(word == ref for word in splice.split()):  # Match whole words
                 logging.debug("Adding reference '%s' in splice %d", ref, i)
