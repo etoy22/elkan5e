@@ -2,7 +2,7 @@
  * Changes Foundry's languages to fit that of Elkan 5e.
  */
 export function language() {
-  let lang = game.settings.set("elkan5e", "languageSystem");
+  let lang = game.settings.get("elkan5e", "languageSystem");
   if (!lang) {
     console.warn(
       "Elkan 5e | No language settings found, skipping language initialization."
@@ -25,8 +25,8 @@ export function language() {
       console.warn(
         "Elkan 5e | CONFIG.DND5E.languages not properly initialized"
       );
-      return;
     }
+    else{
     // Deleting Languages
     LANGUAGES_TO_DELETE.forEach(
       (lang) => delete CONFIG.DND5E.languages.standard.children[lang]
@@ -76,6 +76,7 @@ export function language() {
         gnoll: "Gnoll",
       },
     };
+  }
   } else {
     console.warn(
       "Elkan 5e | Language settings not set to elkan5e, skipping language initialization."
