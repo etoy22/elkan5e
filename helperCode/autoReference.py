@@ -114,9 +114,6 @@ for ref in refereneces:
 
             print(f"Reference '{ref}' located at index {splice.lower().find(ref.lower())} in splice {i}")
             splices[i] = splice.replace(ref, f"&amp;reference[{ref}]", 1)
-            # Here you can add your logic to handle the reference found in the splice
-            # For example, you could replace it with a UUID or perform some other action
-            # Example: splices[i] = splice.replace(ref, "UUID_REPLACEMENT")
 
 result = ''.join(splices)
 print("Final Result:", result)
