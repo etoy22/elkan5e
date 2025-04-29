@@ -1,5 +1,5 @@
-# import os
-# import json
+import os
+import json
 
 # folder_paths = [
 #     'src\packs\elkan5e-ancestries',
@@ -37,26 +37,50 @@
 #                 continue
 
 
-example = """
-<p><em>You present a vial of magical shadow which flows outwards and creates a swirling vortex in front of you that corrupts everything it touches.</em></p>
-<p><strong>Materials:</strong> Casting this spell requires a bottled @UUID[Compendium.elkan5e.elkan5e-spells.Item.eUy7hq3K0RdLI4O7]{shadow essence} typically valued at 20 gold. This spell consumes the material.</p>
-<p><strong>Constitution Save</strong></p>
-<ul>
-    <li>
-        <p><strong>Failure:</strong> Target is &amp;reference[drained] for [[/r 4d8]] hit points*. This cannot drain a target below their current hit point total, only draining them up to the amount of damage they've already taken.</p>
-    </li>
-    <li>
-        <p><strong>Success:</strong> Target is drained by half as much.</p>
-    </li>
-    <li>
-        <p><strong>Area Hazard:</strong> The well remains in place. Targets within the well cannot regain hit points, gain temporary hit points, or be raised from the dead (as undead or otherwise).</p>
-    </li>
-</ul>
-<p><strong>*Upcasting:</strong> Targets are drained an additional [[/r 2d8]] for each spell level above 2nd level.</p>
-"""
+file_path = 'src\\packs\\elkan5e-spells\\spell_Well_of_Corruption_cHIuORdoA1WnHfmK.json'
+
+# Load the JSON file
+try:
+    with open(file_path, 'r', encoding='utf-8') as file:
+        data = json.load(file)
+        example = data.get("system", {}).get("description", {}).get("value", "")
+except json.JSONDecodeError as e:
+    print(f"Error decoding JSON in file {file_path}: {e}")
+    example = ""
 
 
-refernces = ["drained"]
+skills = ["acr", "ani", "arc", "ath", "dec", "his", "ins", "itm", "inv",
+    "med", "nat", "prc", "prf", "per", "rel", "slt", "ste", "sur"]
+skill_labels = ["acrobatics", "animal handling", "arcana", "athletics", "deception",
+    "history", "insight", "intimidation", "investigation", "medicine",
+    "nature", "perception", "performance", "persuasion", "religion",
+    "sleight of hand", "stealth", "survival"]
+conditions = [
+    "blinded", "charmed", "concentrating", "confused", "cursed", "dazed",
+    "deafened", "diseased", "drained", "exhaustion", "frightened", "goaded",
+    "grappled", "half cover", "hasted", "heavily obscured", "incapacitated",
+    "invisible", "lightly obscured", "paralyzed", "petrified", "poisoned",
+    "prone", "restrained", "silenced", "siphoned", "slowed", "stunned",
+    "surprised", "three quarters cover", "transformed", "unconscious", "weakened"
+]
+condition_labels = ["halfcover", "heavilyobscured", "lightlyobscured", "threequarterscover"]
+creature_labels = ["aberration", "beast", "celestial", "construct", "dragon", "elemental", "fey", "fiend", "giant", "humanoid", "monstrosity", "ooze", "plant", "undead"]
+damage_types = ["acid", "bludgeoning", "cold", "lightning", "fire", "force", "necrotic", "piercing", "poison", "psychic", "radiant", "slashing", "thunder"]
+schools_of_magic = ["abj", "con", "div", "enc", "evo", "ill", "nec", "trs"]
+school_labels = ["Abjuration", "Conjuration", "Divination", "Enchantment", "Evocation", "Illusion", "Necromancy", "Transmutation"]
+rules = [
+    "attack", "opportunityattacks", "dodge", "dash", "disengage", 
+    "help", "hide", "ready", "search", "surprise", 
+    "unarmedstrike", "twoweaponfighting", "spellSlots", "spellLevel",
+    "cantrips", "upcasting", "castingAtHigherLevel", "multipleSpellsInATurn",
+    "duplicateMagicalEffects", "lineOfSight", "coverAndWalls", "castingInArmor",
+    "castingTime", "spellTargets", "spellRange", "verbal", "spellDuration",
+    "illusoryImages", "knownSpells", "preparedSpells", "abilitySpells",
+    "focusSpells", "spellScroll", "cursed", "material", "ritual", "vocal", "somatic"
+]
+
+refereneces = skills + skill_labels + conditions + condition_labels + creature_labels + damage_types + schools_of_magic + school_labels + rules
+
 start_indices = [i for i in range(len(example)) if example.startswith("<ul>", i)]
 end_indices = [i for i in range(len(example)) if example.startswith("</ul>", i)]
 p_start_indices = [i for i in range(len(example)) if example.startswith("<p>", i)]
@@ -81,12 +105,14 @@ for start, end in cut:
 
 # print("Splices:", splices)
 
-for ref in refernces:
+for ref in refereneces:
     for i, splice in enumerate(splices):
-        if ref in splice:
-            if f"&amp;reference[{ref}]" in splice:
+        if ref.lower() in splice.lower():
+            if f"&amp;reference[{ref}]" in splice or f"{ref}]]" in splice:
                 print(f"Reference '{ref}' already contains '&amp;reference[{ref}]' in splice {i}, skipping.")
                 continue
+
+            print(f"Reference '{ref}' located at index {splice.lower().find(ref.lower())} in splice {i}")
             splices[i] = splice.replace(ref, f"&amp;reference[{ref}]", 1)
             # Here you can add your logic to handle the reference found in the splice
             # For example, you could replace it with a UUID or perform some other action
