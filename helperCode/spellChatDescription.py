@@ -33,7 +33,9 @@ for folder in folders:
         
         # Load the JSON file
         with open(file_path, 'r', encoding='utf-8') as file:
-            data = json.load(file)
+            original_data = json.load(file)
+        
+        data = original_data.copy()  # Create a copy to track changes
             
         description = data.get("system", {}).get("description", {}).get("value", "")
 
@@ -58,18 +60,13 @@ for folder in folders:
             # Assign the calculated chat value back to the JSON data
             data["system"]["description"]["chat"] = chat
 
-        # Update the last modified time in the JSON file
-        data = load_and_update_json(file_path)
-        # Save the updated JSON file
-        with open(file_path, 'w', encoding='utf-8') as file:
-            json.dump(data, file, indent=4, ensure_ascii=False)
+        # Update the last modified time in the JSON file only if data has changed
+        if data != original_data:
+            data = load_and_update_json(data)
+            # Save the updated JSON file
+            with open(file_path, 'w', encoding='utf-8') as file:
+                json.dump(data, file, indent=4, ensure_ascii=False)
 
-
-
-# for level in range(len(spells)):  # Loop through levels all Spells
-#     print(f"Level {level} Spells with Italized text: {len(spells[level])}")
-#     for spell in spells[level]:
-#         print(f" - {spell}")
 
 for level in range(4):  # Loop through levels 0 to 5
     print(f"Level {level} Not Spells without Italized text: {len(notSpells[level])}")
@@ -80,31 +77,3 @@ for level in range(4):  # Loop through levels 0 to 5
     print(f"Level {level} Not Spells without Italized text: {len(spells[level])}")
     for spell in spells[level]:
         print(f" - {spell}")
-
-
-# # Example input for testing
-# test_description = """
-# <p><em>You dab your hand on a wet adder's stomach stuffed with rhubarb leaves. When you then point at your target and speak the magic command phrase, a shimmering green arrow streaks toward them and bursts in a spray of acid.</em></p>
-# <p><strong>Ranged Spell Attack</strong></p>
-# <ul>
-#     <li>
-#         <p><strong>Hit</strong>: Target takes [[/damage 4d4 acid]] damage* immediately and [[/damage 4d4 acid]] damage* at the end of their next turn.</p>
-#     </li>
-#     <li>
-#         <p><strong>Miss:</strong> [[/damage 2d4 acid]] initial damage, no damage on your next turn.</p>
-#     </li>
-# </ul>
-# <p></p>
-# <div class="rd__b  rd__b--3">
-#     <div class="rd__b  rd__b--3">
-#         <p><strong>*Upcasting</strong>: Increase initial damage and damage on target's next turn by [[/damage 1d4 acid]] for each spell level above 2nd.</p>
-#     </div>
-# </div>
-# """
-
-# Check if the test description contains italicized text in the first paragraph
-# first_paragraph = test_description.split("<p>")[0]  # Extract the first paragraph
-# if "<em>" in first_paragraph:
-#     print("The first paragraph contains italicized text.")
-# else:
-#     print("The first paragraph does not contain italicized text.")

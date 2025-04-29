@@ -24,8 +24,12 @@ for folder_path in folder_paths:
         if filename.endswith('.json'):
             file_path = os.path.join(folder_path, filename)
             
-            # Load and update the JSON file
-            data = load_and_update_json(file_path)
+            # Load the original JSON file
+            with open(file_path, 'r', encoding='utf-8') as file:
+                original_data = json.load(file)
+
+            # Process the data
+            data = original_data.copy()
 
             if "type" in data:
                 # Checks the name for the value of the magic bonus
@@ -414,10 +418,12 @@ for folder_path in folder_paths:
                                 data["system"]["weight"] = 2 / 20
                                 data["system"]["price"]["value"] = 1 / 20
                                 data["system"]["quantity"] = 20
-            # Update the last modified time in the JSON file
-            data = load_and_update_json(file_path)
-            with open(file_path, 'w', encoding='utf-8') as file:
-                json.dump(data, file, indent=4)
+
+            # Only update the file if the data has changed
+            if data != original_data:
+                data = load_and_update_json(data)
+                with open(file_path, 'w', encoding='utf-8') as file:
+                    json.dump(data, file, indent=4)
 
             print(f'Processed file: {filename}')
             i += 1
