@@ -1,5 +1,6 @@
 import os
 import json
+from updateTime import load_and_update_json  # Import the helper function
 
 # Define the folder containing the JSON files
 folder_paths = [
@@ -16,9 +17,6 @@ def magicPrice(price, magicBonus):
     return price
 
 i = 0
-equipment = []
-weapons = []
-no_name = []
 
 # Loop through every file in the folder
 for folder_path in folder_paths:
@@ -26,10 +24,9 @@ for folder_path in folder_paths:
         if filename.endswith('.json'):
             file_path = os.path.join(folder_path, filename)
             
-            # Load the JSON file
-            with open(file_path, 'r', encoding='utf-8') as file:
-                data = json.load(file)
-            
+            # Load and update the JSON file
+            data = load_and_update_json(file_path)
+
             if "type" in data:
                 # Checks the name for the value of the magic bonus
                 magicBonus = None
@@ -39,55 +36,6 @@ for folder_path in folder_paths:
                     magicBonus = 2
                 if "+3" in data["name"]:
                     magicBonus = 3
-                
-                # if data["type"] == "equipment" and data['folder'] != "K5xsW4FLQleQsk3D":
-                #     if data["system"]["type"]["value"] in ["shield", "heavy", "medium", "light"]:
-                #         # Applies the default magic bonus if in the name
-                #         data["system"]["armor"]["magicalBonus"] = magicBonus
-                #         data["system"]["unidentified"]["description"] = "<p><em>This armor is unusually strong and well-crafted. It is most likely magic, though you can’t identify the specific enchantment.</em></p>"
-                #         data["system"]["source"]["custom"] = "elkan5e.com/weapons"
-
-                #         # Takes the base item and then gives values based on it
-                #         match data["system"]["type"]["baseItem"]:
-                #             case 'padded':
-                #                 data["system"]["armor"]["value"] = 11
-                #                 data["system"]["armor"]["dex"] = None
-                #             case 'leather':
-                #                 data["system"]["armor"]["value"] = 12
-                #                 data["system"]["armor"]["dex"] = None
-                #             case 'hide':
-                #                 data["system"]["armor"]["value"] = 12
-                #                 data["system"]["armor"]["dex"] = 2
-                #             case 'chainshirt':
-                #                 data["system"]["armor"]["value"] = 13
-                #                 data["system"]["armor"]["dex"] = 2
-                #             case 'scalemail':
-                #                 data["system"]["armor"]["value"] = 14
-                #                 data["system"]["armor"]["dex"] = 2
-                #             case 'halfplate':
-                #                 data["system"]["armor"]["value"] = 15
-                #                 data["system"]["armor"]["dex"] = 2
-                #             case 'ringmail':
-                #                 data["system"]["armor"]["value"] = 14
-                #                 data["system"]["armor"]["dex"] = None
-                #             case 'chainmail':
-                #                 data["system"]["armor"]["value"] = 16
-                #                 data["system"]["armor"]["dex"] = 0
-                #             case 'splint':
-                #                 data["system"]["armor"]["value"] = 17
-                #                 data["system"]["armor"]["dex"] = 0
-                #             case 'plate':
-                #                 data["system"]["armor"]["value"] = 18
-                #                 data["system"]["armor"]["dex"] = 0
-                #             case 'breastplate':
-                #                 data["system"]["armor"]["value"] = 14
-                #                 data["system"]["armor"]["dex"] = 2
-                #             case 'large':
-                #                 data["system"]["armor"]["value"] = 2
-                #                 data["system"]["armor"]["dex"] = None
-                #             case 'small':
-                #                 data["system"]["armor"]["value"] = 1
-                #                 data["system"]["armor"]["dex"] = None
 
                 if data["type"] == "weapon" and data['folder'] != "6Glc0xFoDvY8BJYX":
                     versatile = False
@@ -466,11 +414,12 @@ for folder_path in folder_paths:
                                 data["system"]["weight"] = 2 / 20
                                 data["system"]["price"]["value"] = 1 / 20
                                 data["system"]["quantity"] = 20
-
-            with open(file_path, 'w') as file:
+            # Update the last modified time in the JSON file
+            data = load_and_update_json(file_path)
+            with open(file_path, 'w', encoding='utf-8') as file:
                 json.dump(data, file, indent=4)
 
             print(f'Processed file: {filename}')
-            i+= 1
+            i += 1
 
 print("Gone through", i, "files")

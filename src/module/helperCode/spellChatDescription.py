@@ -1,6 +1,7 @@
 import os
 import json
 from htmlSimplifier import simplify_html  # Import the simplify_html function
+from updateTime import load_and_update_json  # Import the helper function
 
 folders = [
     'src\packs\elkan5e-ancestries', 
@@ -56,7 +57,9 @@ for folder in folders:
 
             # Assign the calculated chat value back to the JSON data
             data["system"]["description"]["chat"] = chat
-        
+
+        # Update the last modified time in the JSON file
+        data = load_and_update_json(file_path)
         # Save the updated JSON file
         with open(file_path, 'w', encoding='utf-8') as file:
             json.dump(data, file, indent=4, ensure_ascii=False)

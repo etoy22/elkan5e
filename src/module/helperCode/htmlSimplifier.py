@@ -1,15 +1,20 @@
 from bs4 import BeautifulSoup
 
+
 def simplify_html(html_content):
     """
     Simplifies HTML by removing unnecessary nested <div> tags, redundant classes, inline styles, custom tags,
-    excessive newlines, and unnecessary spaces. Produces compact inline formatting.
+    excessive newlines, unnecessary spaces, and <span> tags. Produces compact inline formatting.
     """
     soup = BeautifulSoup(html_content, 'html.parser')
 
     # Remove all <div> tags but keep their content
     for div in soup.find_all('div'):
         div.unwrap()
+
+    # Remove all <span> tags but keep their content
+    for span in soup.find_all('span'):
+        span.unwrap()
 
     # Remove redundant classes and inline styles
     for tag in soup.find_all(True):  # Iterate over all tags
@@ -20,47 +25,30 @@ def simplify_html(html_content):
 
     # Minimize excessive newlines and unnecessary spaces
     simplified_html = soup.prettify(formatter="minimal")
-    simplified_html = " ".join(simplified_html.split())  # Compact into a single line
-    simplified_html = simplified_html.replace(" <", "<")  # Remove spaces between tags
+    # Compact into a single line
+    simplified_html = " ".join(simplified_html.split())
+    simplified_html = simplified_html.replace(
+        " <", "<")  # Remove spaces between tags
     # Remove spaces between tags, but not after </strong>
-    simplified_html = simplified_html.replace("> ", ">")  # Remove spaces between tags
-    simplified_html = simplified_html.replace("</strong>", "</strong> ")  # Preserve space after </strong>
+    simplified_html = simplified_html.replace(
+        "> ", ">")  # Remove spaces between tags
+    simplified_html = simplified_html.replace(
+        "</strong>", "</strong> ")  # Preserve space after </strong>
 
     return simplified_html
+
 
 # Example usage
 if __name__ == "__main__":
     html_input = """
-    <p>
-        <span style="font-family:Signika, sans-serif">
-            <em style="box-sizing:border-box;user-select:text">
-                Holding a small reflective black stone in your palm, you curse your target, who appears in the reflection of the stone. You attempt to strip them of the energy empowering them, whether it be biological, magical, or psychological.
-            </em>
-        </span>
-    </p>
-    <p>
-        <strong>Charisma Save</strong>
-    </p>
+    <p><em>You declare yourself to wield the power of the storm, touching a small ball of crumbled metal foil. The ball electrifies, and as you pull your hand away, a congruent ball of lightning appears in your hand, which you fling at an enemy. As you move your hand to mimic a ball bouncing, the ball then bounces to a creature of your choice close to the first.</em></p>
+    <p><strong>Dexterity Save</strong></p>
+    <p>This spell can affect 2 creatures* within 15 ft. of each other. The first must be within 30 ft. of you.</p>
     <ul>
-        <li>
-            <p>
-                <strong>Failure:</strong> Target loses all &reference[temporary hit points].
-            </p>
-        </li>
-        <li>
-            <p>
-                <strong>Success:</strong> Target loses half of their temporary hit points.
-            </p>
-        </li>
+        <li><p><strong>Failure:</strong> Target takes [[/damage 2d8 lightning]] damage.</p></li>
+        <li><p><strong>Success:</strong> Half damage.</p></li>
     </ul>
-    <p></p>
-    <p>
-        <strong>Upcasting:</strong> Target one additional creature for each spell level above 1st.
-    </p>
-    <p></p>
-    <p>
-        <em>This spell counts as a &reference[cursed]{curse}.</em>
-    </p>
+    <p><strong>*Upcasting:</strong> The ball can bounce to an additional target within 15 ft. of your last target for each spell level above 1st.</p>
     """
     simplified_html = simplify_html(html_input)
     print(simplified_html)
