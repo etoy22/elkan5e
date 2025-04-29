@@ -29,6 +29,18 @@ def transform_value(value):
     simplified = simplify_html(value)
     replacements = {
         '\u00A0': ' ', '\u200B': '', '’': '\'',
+        '<strong>Feats From Other Sources</strong> :': '<strong>Feats From Other Sources:</strong>',
+        '<strong>Summoning Spell</strong> :': '<strong>Summoning Spell:</strong>',
+        '<strong>Materials</strong> :': '<strong>Materials:</strong>',
+        '<strong>Reactions</strong> :': '<strong>Reactions:</strong>',
+        '<strong>Actions</strong> :': '<strong>Actions:</strong>',
+        '<strong>Upcasting</strong> :': '<strong>Upcasting:</strong>',
+        '<strong>At Higher Levels</strong> :': '<strong>At Higher Levels:</strong>',
+        '<strong>On Hit</strong> :': '<strong>On Hit:</strong>',
+        '*<strong>Using Higher Level Spell Slots</strong> :': '<strong>*Using Higher Level Spell Slots:</strong>',
+        '<strong>Hit Dice</strong> :': '<strong>Hit Dice:</strong>',
+        '<strong>Items</strong> :': '<strong>Items:</strong>',
+        '<strong>Swim Speed</strong> :': '<strong>Swim Speed:</strong>',
         '<strong>Success</strong>:': '<strong>Success:</strong>',
         '<strong>Failure</strong>:': '<strong>Failure:</strong>',
         '<strong>Material</strong>:': '<strong>Material:</strong>',
@@ -38,9 +50,18 @@ def transform_value(value):
         '<strong>Miss</strong>:': '<strong>Miss:</strong>',
         '<strong>*At Higher Levels</strong>:': '<strong>*At Higher Levels:</strong>',
         '<strong>*Upcasting</strong> :': '<strong>*Upcasting:</strong>',
+        '<strong>Size</strong> :': '<strong>Size:</strong>',
         '<strong>*Upcasting</strong>:': '<strong>*Upcasting:</strong>',
         '*<strong>At Higher Levels</strong>:': '<strong>*Using Higher Level Spell Slots:</strong>',
         '*<strong>At Higher Levels</strong> :': '<strong>*Using Higher Level Spell Slots:</strong>',
+        '<strong>Cantrips</strong> :': '<strong>Cantrips:</strong>',
+        '<strong>Size</strong> :': '<strong>Size:</strong>',
+        '<strong>Type</strong> :': '<strong>Type:</strong>',
+        '<strong>Language</strong> :': '<strong>Language:</strong>',
+        '<strong>Walking Speed</strong> :': '<strong>Walking Speed:</strong>',
+        '<strong>Damage Resistance</strong> :': '<strong>Damage Resistance:</strong>',
+        '<strong>Senses</strong> :': '<strong>Senses:</strong>',
+        '<strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.5l8QNlgPDPOHpGID]{Language}</strong> :': '<strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.5l8QNlgPDPOHpGID]{Language}:</strong>',
         '&amp;reference[magicW]': '&amp;reference[magic weapon]',
         '&amp;reference[magicw]': '&amp;reference[magic weapon]',
         '&amp;reference[Magicw]': '&amp;reference[magic weapon]',
@@ -110,8 +131,9 @@ def process_object(obj):
                     chat = ''  # Remove the description
 
                 # Assign the calculated chat value back to the JSON data
-                obj["system"]["description"]["chat"] = chat
-                has_changes = True
+                if chat != obj["system"]["description"]["chat"]:
+                    obj["system"]["description"]["chat"] = chat
+                    has_changes = True
 
         # Recursively process nested objects
         for key, value in obj.items():
