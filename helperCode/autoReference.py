@@ -1,119 +1,162 @@
 import os
 import json
+from helping.constants import references
+from updateTime import load_and_update_json
 
-# folder_paths = [
-#     'src\packs\elkan5e-ancestries',
-#     'src\packs\elkan5e-backgrounds',
-#     'src\packs\elkan5e-class',
-#     'src\packs\elkan5e-class-features',
-#     'src\packs\elkan5e-creature-features',
-#     'src\packs\elkan5e-creatures',
-#     'src\packs\elkan5e-equipment',
-#     'src\packs\elkan5e-feats',
-#     'src\packs\elkan5e-lore',
-#     'src\packs\elkan5e-macros',
-#     'src\packs\elkan5e-magic-items',
-#     'src\packs\elkan5e-roll-tables',
-#     'src\packs\elkan5e-rules',
-#     'src\packs\elkan5e-spells',
-#     'src\packs\elkan5e-subclass',
-#     'src\packs\elkan5e-summoned-creatures'
-# ]
-
-# elements_with_div = []  # List to store elements containing <div in system.description.value
-# elements_with_span = []  # List to store elements containing <span in system.description.value
-
-# for folder_path in folder_paths:
-#     for filename in os.listdir(folder_path):
-#         if filename.endswith('.json'):
-#             file_path = os.path.join(folder_path, filename)
-
-#             # Load the JSON file
-#             try:
-#                 with open(file_path, 'r', encoding='utf-8') as file:
-#                     data = json.load(file)
-#             except json.JSONDecodeError as e:
-#                 print(f"Error decoding JSON in file {file_path}: {e}")
-#                 continue
-
-
-file_path = 'src\\packs\\elkan5e-spells\\spell_Well_of_Corruption_cHIuORdoA1WnHfmK.json'
-
-# Load the JSON file
-try:
-    with open(file_path, 'r', encoding='utf-8') as file:
-        data = json.load(file)
-        example = data.get("system", {}).get("description", {}).get("value", "")
-except json.JSONDecodeError as e:
-    print(f"Error decoding JSON in file {file_path}: {e}")
-    example = ""
-
-
-skills = ["acr", "ani", "arc", "ath", "dec", "his", "ins", "itm", "inv",
-    "med", "nat", "prc", "prf", "per", "rel", "slt", "ste", "sur"]
-skill_labels = ["acrobatics", "animal handling", "arcana", "athletics", "deception",
-    "history", "insight", "intimidation", "investigation", "medicine",
-    "nature", "perception", "performance", "persuasion", "religion",
-    "sleight of hand", "stealth", "survival"]
-conditions = [
-    "blinded", "charmed", "concentrating", "confused", "cursed", "dazed",
-    "deafened", "diseased", "drained", "exhaustion", "frightened", "goaded",
-    "grappled", "half cover", "hasted", "heavily obscured", "incapacitated",
-    "invisible", "lightly obscured", "paralyzed", "petrified", "poisoned",
-    "prone", "restrained", "silenced", "siphoned", "slowed", "stunned",
-    "surprised", "three quarters cover", "transformed", "unconscious", "weakened"
-]
-condition_labels = ["halfcover", "heavilyobscured", "lightlyobscured", "threequarterscover"]
-creature_labels = ["aberration", "beast", "celestial", "construct", "dragon", "elemental", "fey", "fiend", "giant", "humanoid", "monstrosity", "ooze", "plant", "undead"]
-damage_types = ["acid", "bludgeoning", "cold", "lightning", "fire", "force", "necrotic", "piercing", "poison", "psychic", "radiant", "slashing", "thunder"]
-schools_of_magic = ["abj", "con", "div", "enc", "evo", "ill", "nec", "trs"]
-school_labels = ["Abjuration", "Conjuration", "Divination", "Enchantment", "Evocation", "Illusion", "Necromancy", "Transmutation"]
-rules = [
-    "attack", "opportunityattacks", "dodge", "dash", "disengage", 
-    "help", "hide", "ready", "search", "surprise", 
-    "unarmedstrike", "twoweaponfighting", "spellSlots", "spellLevel",
-    "cantrips", "upcasting", "castingAtHigherLevel", "multipleSpellsInATurn",
-    "duplicateMagicalEffects", "lineOfSight", "coverAndWalls", "castingInArmor",
-    "castingTime", "spellTargets", "spellRange", "verbal", "spellDuration",
-    "illusoryImages", "knownSpells", "preparedSpells", "abilitySpells",
-    "focusSpells", "spellScroll", "cursed", "material", "ritual", "vocal", "somatic"
+folder_paths = [
+    'src\packs\elkan5e-ancestries',
+    'src\packs\elkan5e-backgrounds',
+    'src\packs\elkan5e-class',
+    'src\packs\elkan5e-class-features',
+    'src\packs\elkan5e-creature-features',
+    'src\packs\elkan5e-creatures',
+    'src\packs\elkan5e-equipment',
+    'src\packs\elkan5e-feats',
+    'src\packs\elkan5e-lore',
+    'src\packs\elkan5e-macros',
+    'src\packs\elkan5e-magic-items',
+    'src\packs\elkan5e-roll-tables',
+    'src\packs\elkan5e-rules',
+    'src\packs\elkan5e-spells',
+    'src\packs\elkan5e-subclass',
+    'src\packs\elkan5e-summoned-creatures'
 ]
 
-refereneces = skills + skill_labels + conditions + condition_labels + creature_labels + damage_types + schools_of_magic + school_labels + rules
+count = 0
+log_file_path = "change_log.txt"  # Path to the log file
 
-start_indices = [i for i in range(len(example)) if example.startswith("<ul>", i)]
-end_indices = [i for i in range(len(example)) if example.startswith("</ul>", i)]
-p_start_indices = [i for i in range(len(example)) if example.startswith("<p>", i)]
-p_end_indices = [i for i in range(len(example)) if example.startswith("</p>", i)]
+# Clear the log file at the start
+with open(log_file_path, 'w', encoding='utf-8') as log_file:
+    log_file.write("Change Log:\n\n")
 
-ULcomb = list(zip(start_indices, end_indices))
-Pcomb = list(zip(p_start_indices, p_end_indices))
+def deduplicate_nested_lists(content):
+    """
+    Deduplicates nested <ul> structures in the given HTML content.
+    """
+    from bs4 import BeautifulSoup
 
-cut = []
-for p_start, p_end in Pcomb:
-    if not any(ul_start < p_start < ul_end and ul_start < p_end < ul_end for ul_start, ul_end in ULcomb):
-        cut.append((p_start, p_end))
+    soup = BeautifulSoup(content, "html.parser")
 
-cut.extend(ULcomb)
-cut.sort()
+    def deduplicate_ul(ul):
+        seen = set()
+        unique_items = []
+        for li in ul.find_all("li", recursive=False):
+            li_text = str(li)
+            if li_text not in seen:
+                seen.add(li_text)
+                unique_items.append(li)
+        ul.clear()
+        ul.extend(unique_items)
 
-# print("Cut ranges:", cut)
+    def recursive_deduplication(tag):
+        # Recursively deduplicate all <ul> tags within the given tag
+        for ul in tag.find_all("ul", recursive=False):
+            deduplicate_ul(ul)
+            recursive_deduplication(ul)  # Recurse into nested <ul> tags
 
-splices = []
-for start, end in cut:
-    splices.append(example[start:end + 5])  # Include the closing tag
+    # Start deduplication from the root
+    recursive_deduplication(soup)
 
-# print("Splices:", splices)
+    return str(soup)
 
-for ref in refereneces:
-    for i, splice in enumerate(splices):
-        if ref.lower() in splice.lower():
-            if f"&amp;reference[{ref}]" in splice or f"{ref}]]" in splice:
-                print(f"Reference '{ref}' already contains '&amp;reference[{ref}]' in splice {i}, skipping.")
+for folder_path in folder_paths:
+    for filename in os.listdir(folder_path):
+        if filename.endswith('.json'):
+            file_path = os.path.join(folder_path, filename)
+
+            # Load the JSON file
+            try:
+                with open(file_path, 'r', encoding='utf-8') as file:
+                    data = json.load(file)
+            except json.JSONDecodeError as e:
+                print(f"Error decoding JSON in file {file_path}: {e}")
                 continue
 
-            print(f"Reference '{ref}' located at index {splice.lower().find(ref.lower())} in splice {i}")
-            splices[i] = splice.replace(ref, f"&amp;reference[{ref}]", 1)
+            example = data.get("system", {}).get("description", {}).get("value", "")
 
-result = ''.join(splices)
-print("Final Result:", result)
+            # Deduplicate nested <ul> structures
+            example = deduplicate_nested_lists(example)
+
+            start_indices = [i for i in range(len(example)) if example.startswith("<ul>", i)]
+            end_indices = [i for i in range(len(example)) if example.startswith("</ul>", i)]
+            p_start_indices = [i for i in range(len(example)) if example.startswith("<p>", i)]
+            p_end_indices = [i for i in range(len(example)) if example.startswith("</p>", i)]
+            table_start_indices = [i for i in range(len(example)) if example.startswith("<table", i)]
+            table_end_indices = [i for i in range(len(example)) if example.startswith("</table>", i)]
+
+            ULcomb = list(zip(start_indices, end_indices))
+            TableComb = list(zip(table_start_indices, table_end_indices))
+            Pcomb = list(zip(p_start_indices, p_end_indices))
+
+            cut = []
+            for p_start, p_end in Pcomb:
+                if not any(ul_start < p_start < ul_end and ul_start < p_end < ul_end for ul_start, ul_end in ULcomb):
+                    if not any(table_start < p_start < table_end and table_start < p_end < table_end for table_start, table_end in TableComb):
+                        cut.append((p_start, p_end))
+
+            cut.extend(ULcomb)
+            cut.extend(TableComb)  # Include table sections
+            cut.sort()
+
+            splices = []
+            for start, end in cut:
+                # Ensure the end index is within bounds
+                if end >= len(example):
+                    end = len(example) - 1
+
+                # Dynamically calculate the length of the closing tag
+                closing_tag_length = 0
+                if example[end:end + len("</p>")].startswith("</p>"):
+                    closing_tag_length = len("</p>")
+                elif example[end:end + len("</ul>")].startswith("</ul>"):
+                    closing_tag_length = len("</ul>")
+                elif example[end:end + len("</table>")].startswith("</table>"):
+                    closing_tag_length = len("</table>")
+
+                # Ensure the slice includes the closing tag and does not truncate
+                splices.append(example[start:end + closing_tag_length])
+
+            for ref in references:
+                for i, splice in enumerate(splices):
+                    # Track if the reference has already been added in the current section
+                    ref_added = False
+                    words = splice.split()  # Split the splice into words
+                    for j, word in enumerate(words):
+                        if word.lower() == ref.lower():  # Check for exact match
+                            # Skip if the word is already referenced in the original example
+                            if f"&amp;reference[{ref}]" in example or f"{ref}]]" in example or ref_added:
+                                continue
+                            words[j] = word.replace(ref, f"&amp;reference[{ref}]")  # Replace the whole word
+                            ref_added = True  # Mark the reference as added for this section
+                    splices[i] = " ".join(words)  # Rejoin the words into the splice
+
+            result = ''.join(splices)
+            result = result.replace('<<', '<')
+            # Deduplicate repeated lines
+            lines = result.splitlines()
+            deduplicated_lines = []
+            for line in lines:
+                if not deduplicated_lines or line != deduplicated_lines[-1]:
+                    deduplicated_lines.append(line)
+            result = "\n".join(deduplicated_lines)
+            if result != example.strip():  # Compare the processed result with the original, ignoring minor whitespace differences
+                try:
+                    # Log the changes
+                    with open(log_file_path, 'a', encoding='utf-8') as log_file:
+                        log_file.write(f"File: {file_path}\n")
+                        log_file.write("Original:\n")
+                        log_file.write(example + "\n\n")
+                        log_file.write("Modified:\n")
+                        log_file.write(result + "\n\n")
+                        log_file.write("=" * 50 + "\n\n")
+
+                    # Update the JSON data with the modified result
+                    data["system"]["description"]["value"] = result
+                    with open(file_path, 'w', encoding='utf-8') as file:
+                        json.dump(data, file, ensure_ascii=False, indent=4)
+                    print(f"Updated file: {file_path}")
+                    count += 1
+                except Exception as e:
+                    print(f"Error writing {file_path}: {e}")
+
+print("Final amount of changes:", count)
