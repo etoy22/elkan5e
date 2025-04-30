@@ -1,11 +1,18 @@
 import os
 import json
-import logging
 from updateTime import load_and_update_json
 from htmlSimplifier import simplify_html
+from helping.constants import references
 
-# Setup logging
-logging.basicConfig(level=logging.DEBUG, format='%(asctime)s - %(levelname)s - %(message)s')
+# Setup logging to a file
+log_file_path = os.path.join(os.path.dirname(__file__), "formatFixer.log")
+with open(log_file_path, 'w', encoding='utf-8') as log_file:  # Clear the log file at the start
+    log_file.write("")
+
+def log_message(message):
+    """Log a message to the log file."""
+    with open(log_file_path, 'a', encoding='utf-8') as log_file:  # Use UTF-8 encoding
+        log_file.write(message + "\n")
 
 folder_paths = [
     'src\packs\elkan5e-ancestries',
@@ -28,43 +35,14 @@ folder_paths = [
 
 change_count = 0
 
-skills = ["acr", "ani", "arc", "ath", "dec", "his", "ins", "itm", "inv",
-    "med", "nat", "prc", "prf", "per", "rel", "slt", "ste", "sur"]
-skill_labels = ["acrobatics", "animal handling", "arcana", "athletics", "deception",
-    "history", "insight", "intimidation", "investigation", "medicine",
-    "nature", "perception", "performance", "persuasion", "religion",
-    "sleight of hand", "stealth", "survival"]
-conditions = [
-    "blinded", "charmed", "concentrating", "confused", "cursed", "dazed",
-    "deafened", "diseased", "drained", "exhaustion", "frightened", "goaded",
-    "grappled", "half cover", "hasted", "heavily obscured", "incapacitated",
-    "invisible", "lightly obscured", "paralyzed", "petrified", "poisoned",
-    "prone", "restrained", "silenced", "siphoned", "slowed", "stunned",
-    "surprised", "three quarters cover", "transformed", "unconscious", "weakened"
-]
-condition_labels = ["halfcover", "heavilyobscured", "lightlyobscured", "threequarterscover"]
-creature_labels = ["aberration", "beast", "celestial", "construct", "dragon", "elemental", "fey", "fiend", "giant", "humanoid", "monstrosity", "ooze", "plant", "undead"]
-damage_types = ["acid", "bludgeoning", "cold", "lightning", "fire", "force", "necrotic", "piercing", "poison", "psychic", "radiant", "slashing", "thunder"]
-schools_of_magic = ["abj", "con", "div", "enc", "evo", "ill", "nec", "trs"]
-school_labels = ["Abjuration", "Conjuration", "Divination", "Enchantment", "Evocation", "Illusion", "Necromancy", "Transmutation"]
-rules = [
-    "attack", "opportunityattacks", "dodge", "dash", "disengage", 
-    "help", "hide", "ready", "search", "surprise", 
-    "unarmedstrike", "twoweaponfighting", "spellSlots", "spellLevel",
-    "cantrips", "upcasting", "castingAtHigherLevel", "multipleSpellsInATurn",
-    "duplicateMagicalEffects", "lineOfSight", "coverAndWalls", "castingInArmor",
-    "castingTime", "spellTargets", "spellRange", "verbal", "spellDuration",
-    "illusoryImages", "knownSpells", "preparedSpells", "abilitySpells",
-    "focusSpells", "spellScroll", "cursed", "material", "ritual", "vocal", "somatic"
-]
-
-references = skills + skill_labels + conditions + condition_labels + creature_labels + damage_types + schools_of_magic + school_labels + rules
 
 def transform_value(value):
     """Simplify and apply replacements to a string value."""
     simplified = simplify_html(value)
     replacements = {
         '\u00A0': ' ', '\u200B': '', '’': '\'',
+        '</p>&': '</p>',  # Ensure this replacement is applied only when necessary
+        '<strong>Strength</strong> Saving Throw': '<strong>Strength Save</strong>',
         '<strong>Dexterity</strong> Saving Throw': '<strong>Dexterity Save</strong>',
         '<strong>Feats From Other Sources</strong> :': '<strong>Feats From Other Sources:</strong>',
         '<strong>Summoning Spell</strong> :': '<strong>Summoning Spell:</strong>',
@@ -124,53 +102,23 @@ def transform_value(value):
         '&amp;Reference[LightW]': "&amp;reference[light weapon]",
         'elkan5e/icons/': 'elkan5e/icons/conditions/' if 'elkan5e/icons/conditions/' not in value else value
     }
-    original_simplified = simplified  # Keep track of the original value
+    original_simplified = simplified.strip()  # Normalize by trimming whitespace
     has_changes = False  # Track if any changes are made
 
     for old, new in replacements.items():
-        if old in simplified:
-            logging.debug("Replacing '%s' with '%s'", old, new)
+        # Skip replacement if the target string is already in the correct format
+        if old in simplified and new not in simplified:
+            log_message(f"Replacing '{old}' with '{new}'")
             simplified = simplified.replace(old, new)
             has_changes = True
 
-    # Handle references
-    start_indices = [i for i in range(len(simplified)) if simplified.startswith("<ul>", i)]
-    end_indices = [i for i in range(len(simplified)) if simplified.startswith("</ul>", i)]
-    p_start_indices = [i for i in range(len(simplified)) if simplified.startswith("<p>", i)]
-    p_end_indices = [i for i in range(len(simplified)) if simplified.startswith("</p>", i)]
-
-    ULcomb = list(zip(start_indices, end_indices))
-    Pcomb = list(zip(p_start_indices, p_end_indices))
-
-    cut = []
-    for p_start, p_end in Pcomb:
-        if not any(ul_start < p_start < ul_end and ul_start < p_end < ul_end for ul_start, ul_end in ULcomb):
-            cut.append((p_start, p_end))
-
-    cut.extend(ULcomb)
-    cut.sort()
-
-    splices = []
-    for start, end in cut:
-        splices.append(simplified[start:end + 5])  # Include the closing tag
-
-    for ref in references:
-        for i, splice in enumerate(splices):
-            # Match whole words only
-            if f"&amp;reference[{ref}]" in splice or f"{ref}]]" in splice:
-                continue
-            if f"&amp;reference[" in splice:
-                continue
-            if any(word == ref for word in splice.split()):  # Match whole words
-                logging.debug("Adding reference '%s' in splice %d", ref, i)
-                splices[i] = splice.replace(ref, f"&amp;reference[{ref}]", 1)
-                has_changes = True  # Mark changes when a reference is updated
-
-    updated_value = ''.join(splices)
-    if updated_value != original_simplified:  # Compare with the original value
+    updated_value = simplified.strip()  # Normalize updated value
+    if updated_value != original_simplified:  # Compare normalized values
         has_changes = True
+    else:
+        log_message("No actual changes detected in transform_value.")
 
-    logging.debug("Updated value: %s", updated_value)
+    log_message(f"Updated value: {updated_value}")
     return updated_value if has_changes else value
 
 def process_object(obj):
@@ -182,7 +130,7 @@ def process_object(obj):
             original = obj['description']['value']
             updated = transform_value(original)
             if updated != original:
-                logging.debug("Updating 'description.value': %s -> %s", original, updated)
+                log_message(f"Updating 'description.value': {original} -> {updated}")
                 obj['description']['value'] = updated
                 has_changes = True
 
@@ -191,7 +139,7 @@ def process_object(obj):
             original = obj['text']['content']
             updated = transform_value(original)
             if updated != original:
-                logging.debug("Updating 'text.content': %s -> %s", original, updated)
+                log_message(f"Updating 'text.content': {original} -> {updated}")
                 obj['text']['content'] = updated
                 has_changes = True
 
@@ -200,21 +148,22 @@ def process_object(obj):
             description = obj.get("system", {}).get("description", {}).get("value", "")
             if description:
                 simplified_description = simplify_html(description)
-                obj["system"]["description"]["value"] = simplified_description
+                if simplified_description != description:
+                    log_message(f"Updating 'system.description.value': {description} -> {simplified_description}")
+                    obj["system"]["description"]["value"] = simplified_description
+                    has_changes = True
 
                 # Check for <em> in the first non-empty paragraph
                 description_parts = simplified_description.split("<p>")
                 first_paragraph = next((part for part in description_parts if part.strip()), "")
                 if "<em>" in first_paragraph:
-                    # Exclude the first paragraph containing <em> when constructing chat
                     chat_parts = [part for part in description_parts[1:] if "<em>" not in part]
                     chat = "<p>".join(chat_parts) if chat_parts else ""
                 else:
                     chat = ''  # Remove the description
 
-                # Assign the calculated chat value back to the JSON data
-                if chat != obj["system"]["description"]["chat"]:
-                    logging.debug("Updating 'system.description.chat': %s -> %s", obj["system"]["description"]["chat"], chat)
+                if chat != obj["system"]["description"].get("chat", ""):
+                    log_message(f"Updating 'system.description.chat': {obj['system']['description'].get('chat', '')} -> {chat}")
                     obj["system"]["description"]["chat"] = chat
                     has_changes = True
 
@@ -226,6 +175,7 @@ def process_object(obj):
         for i, item in enumerate(obj):
             if process_object(item):
                 has_changes = True
+
     return has_changes
 
 def process_file(file_path):
@@ -235,14 +185,19 @@ def process_file(file_path):
         with open(file_path, 'r', encoding='utf-8') as file:
             data = json.load(file)
     except json.JSONDecodeError as e:
-        print(f"Error decoding JSON in file {file_path}: {e}")
+        log_message(f"Error decoding JSON in file {file_path}: {e}")
         return
 
+    original_data = json.dumps(data, ensure_ascii=False, indent=4, separators=(',', ': '))  # Serialize original data
     if process_object(data):  # Only update if changes were made
-        data = load_and_update_json(data)
-        with open(file_path, 'w', encoding='utf-8') as file:
-            json.dump(data, file, ensure_ascii=False, indent=4)
-        change_count += 1  # Increment only when a file is written
+        # Use load_and_update_json to apply additional updates
+        updated_data = load_and_update_json(data)
+        updated_serialized = json.dumps(updated_data, ensure_ascii=False, indent=4, separators=(',', ': '))
+        if updated_serialized != original_data:  # Compare serialized data to detect actual changes
+            with open(file_path, 'w', encoding='utf-8') as file:
+                file.write(updated_serialized)
+            change_count += 1  # Increment only when a file is written
+            log_message(f"Changes written to file: {file_path}")
 
 def main():
     """Main function to process all JSON files in the specified folders."""
@@ -251,7 +206,7 @@ def main():
             if filename.endswith('.json'):
                 process_file(os.path.join(folder_path, filename))
 
-    print(f"Total changes made: {change_count}")
+    log_message(f"Total changes made: {change_count}")
 
 if __name__ == "__main__":
     main()
