@@ -635,7 +635,6 @@
           "grappled",
           "hasted",
           "incapacitated",
-          "invisible",
           "obscuredheavily",
           "obscuredlightly",
           "paralyzed",
@@ -769,7 +768,69 @@
     "randomImg": false
   },
   "items": [],
-  "effects": [],
+  "effects": [
+    {
+      "name": "Invisible",
+      "_id": "dnd5einvisible00",
+      "img": "modules/elkan5e/icons/conditions/invisible.svg",
+      "changes": [
+        {
+          "key": "flags.midi-qol.advantage.attack.all",
+          "mode": 5,
+          "value": "1",
+          "priority": null
+        },
+        {
+          "key": "flags.midi-qol.grants.disadvantage.attack.all",
+          "mode": 5,
+          "value": "1",
+          "priority": null
+        },
+        {
+          "key": "flags.midi-qol.advantage.skill.ste",
+          "mode": 2,
+          "value": "1",
+          "priority": null
+        }
+      ],
+      "statuses": [
+        "invisible"
+      ],
+      "description": "@Embed[Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.GfTD899cLRZxGG1H inline]",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": 660430074,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": 5,
+        "startTurn": 0
+      },
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "specialDuration": []
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.3.9",
+        "createdTime": 1746034593942,
+        "modifiedTime": 1746034593942,
+        "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
+      },
+      "_key": "!actors.effects!kGS0cb4DAkTThUfa.dnd5einvisible00"
+    }
+  ],
   "sort": 600000,
   "ownership": {
     "default": 0,
@@ -781,10 +842,10 @@
     "duplicateSource": null,
     "coreVersion": "12.331",
     "systemId": "dnd5e",
-    "systemVersion": "4.3.8",
+    "systemVersion": "4.3.9",
     "createdTime": 1745283389510,
-    "modifiedTime": 1745285245495,
-    "lastModifiedBy": "fgP8EzWy33UFoZmI"
+    "modifiedTime": 1746034588778,
+    "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
   },
   "_key": "!actors!kGS0cb4DAkTThUfa"
 }

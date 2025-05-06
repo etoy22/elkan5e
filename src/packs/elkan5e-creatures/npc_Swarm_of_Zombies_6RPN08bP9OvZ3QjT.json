@@ -1,1403 +1,1403 @@
 {
-    "name": "Swarm of Zombies",
-    "type": "npc",
-    "img": "icons/magic/death/undead-zombie-grave-green.webp",
-    "system": {
-        "abilities": {
-            "str": {
-                "value": 15,
-                "proficient": 0,
-                "max": null,
-                "bonuses": {
-                    "check": "",
-                    "save": ""
-                }
-            },
-            "dex": {
-                "value": 6,
-                "proficient": 0,
-                "max": null,
-                "bonuses": {
-                    "check": "",
-                    "save": ""
-                }
-            },
-            "con": {
-                "value": 16,
-                "proficient": 0,
-                "max": null,
-                "bonuses": {
-                    "check": "",
-                    "save": ""
-                }
-            },
-            "int": {
-                "value": 3,
-                "proficient": 0,
-                "max": null,
-                "bonuses": {
-                    "check": "",
-                    "save": ""
-                }
-            },
-            "wis": {
-                "value": 6,
-                "proficient": 1,
-                "max": null,
-                "bonuses": {
-                    "check": "",
-                    "save": ""
-                }
-            },
-            "cha": {
-                "value": 5,
-                "proficient": 0,
-                "max": null,
-                "bonuses": {
-                    "check": "",
-                    "save": ""
-                }
-            }
-        },
-        "attributes": {
-            "ac": {
-                "flat": 8,
-                "calc": "natural",
-                "formula": ""
-            },
-            "hp": {
-                "value": 30,
-                "max": 30,
-                "temp": null,
-                "tempmax": null,
-                "formula": "2d8 + 6"
-            },
-            "init": {
-                "ability": "",
-                "bonus": "0",
-                "roll": {
-                    "min": null,
-                    "max": null,
-                    "mode": 0
-                }
-            },
-            "movement": {
-                "burrow": 0,
-                "climb": 0,
-                "fly": 0,
-                "swim": 0,
-                "walk": 20,
-                "units": "ft",
-                "hover": false
-            },
-            "attunement": {
-                "max": 3
-            },
-            "senses": {
-                "darkvision": 60,
-                "blindsight": 0,
-                "tremorsense": 0,
-                "truesight": 0,
-                "units": "ft",
-                "special": ""
-            },
-            "spellcasting": "",
-            "exhaustion": 0,
-            "concentration": {
-                "ability": "",
-                "roll": {
-                    "min": null,
-                    "max": null,
-                    "mode": 0
-                },
-                "bonuses": {
-                    "save": ""
-                },
-                "limit": 1
-            },
-            "hd": {
-                "spent": 0
-            },
-            "death": {
-                "ability": "",
-                "roll": {
-                    "min": null,
-                    "max": null,
-                    "mode": 0
-                },
-                "success": 0,
-                "failure": 0
-            }
-        },
-        "details": {
-            "biography": {
-                "value": "<p>When the magic of necromancy is utilized upon the preserved flesh of a humanoid, a zombie will rise to serve its dark master.  In much the same way that an animated skeleton is returned from the dead so too are zombies shunted back into this world.  While a skilled spellcaster may animate the dead and command the newly awakened, zombies may also rise in areas of the world saturated with necromantic energy.  In this situation, the zombies will not obey the command of a master, but roam aimlessly in a small area until they either find something to attack and consume or rot away into a pile of inanimate bones.  </p>\n<p><strong>Re: Your Brains.</strong> Zombies do retain quite a lot of their former selves in regards to their physical appearance.  Zombies will still show the wounds or disease scars which slew them upon reanimating.  The symptoms of decay will also be present as many freshly spawned zombies will be bloated, have patches of skin sloughing from their bodies, or even trailing entrails from exploded abdomens.  While a zombie may resemble the person they were before, there is nothing at work within the head except mindless hunger.  Zombies stumble through their existence in a perpetual state of mindlessness only able to heed their master's orders.  This fact of the zombie's mind makes them invaluable warriors for a necromancer in need.  Zombies are direct and will shamble off towards their quarry without so much as a second thought to their own safety.  It's been noted that some zombies have walked through fires or pits of acid in order to reach their enemies.  Once they reach their target, zombies will pummel and bite at their enemy until either they or the enemy fall in the tussle.  Zombies may also wield weapons, though not cleverly; zombies will not be able to reclaim a weapon should they be disarmed as the lack of weapon will simply drive them to claw with their broken hands.  The magic which binds the zombie to the mortal plane is tricky to the uninitiated as well, so please be warned young adventurers!  Should you fell a zombie, be aware that the creature may not be fully dead for the second time; you should always be sure to wait and see if the beast attempts to rise once more before wandering deeper into the dungeon.</p>\n<ul>\n<li><em>Token artwork by Forgotten Adventures.</em></li>\n<li><em>Bestiary entry by Penelope (Vyrnali).</em></li>\n</ul>",
-                "public": ""
-            },
-            "alignment": "",
-            "race": null,
-            "type": {
-                "value": "undead",
-                "subtype": "",
-                "swarm": "med",
-                "custom": ""
-            },
-            "environment": "",
-            "cr": 5,
-            "spellLevel": 0,
-            "ideal": "",
-            "bond": "",
-            "flaw": ""
-        },
-        "traits": {
-            "size": "lg",
-            "di": {
-                "value": [],
-                "bypasses": [],
-                "custom": ""
-            },
-            "dr": {
-                "value": [],
-                "bypasses": [],
-                "custom": "Single Target Effects"
-            },
-            "dv": {
-                "value": [],
-                "bypasses": [],
-                "custom": "Area of Effect Damage"
-            },
-            "ci": {
-                "value": [],
-                "custom": ""
-            },
-            "languages": {
-                "value": [],
-                "custom": "Understands the languages it knew in life but can't speak"
-            },
-            "dm": {
-                "amount": {},
-                "bypasses": []
-            }
-        },
-        "currency": {
-            "pp": 0,
-            "gp": 0,
-            "ep": 0,
-            "sp": 0,
-            "cp": 0
-        },
-        "skills": {
-            "acr": {
-                "value": 0,
-                "ability": "dex",
-                "bonuses": {
-                    "check": "",
-                    "passive": ""
-                },
-                "roll": {
-                    "min": null,
-                    "max": null,
-                    "mode": 0
-                }
-            },
-            "ani": {
-                "value": 0,
-                "ability": "wis",
-                "bonuses": {
-                    "check": "",
-                    "passive": ""
-                },
-                "roll": {
-                    "min": null,
-                    "max": null,
-                    "mode": 0
-                }
-            },
-            "arc": {
-                "value": 0,
-                "ability": "int",
-                "bonuses": {
-                    "check": "",
-                    "passive": ""
-                },
-                "roll": {
-                    "min": null,
-                    "max": null,
-                    "mode": 0
-                }
-            },
-            "ath": {
-                "value": 0,
-                "ability": "str",
-                "bonuses": {
-                    "check": "",
-                    "passive": ""
-                },
-                "roll": {
-                    "min": null,
-                    "max": null,
-                    "mode": 0
-                }
-            },
-            "dec": {
-                "value": 0,
-                "ability": "cha",
-                "bonuses": {
-                    "check": "",
-                    "passive": ""
-                },
-                "roll": {
-                    "min": null,
-                    "max": null,
-                    "mode": 0
-                }
-            },
-            "his": {
-                "value": 0,
-                "ability": "int",
-                "bonuses": {
-                    "check": "",
-                    "passive": ""
-                },
-                "roll": {
-                    "min": null,
-                    "max": null,
-                    "mode": 0
-                }
-            },
-            "ins": {
-                "value": 0,
-                "ability": "wis",
-                "bonuses": {
-                    "check": "",
-                    "passive": ""
-                },
-                "roll": {
-                    "min": null,
-                    "max": null,
-                    "mode": 0
-                }
-            },
-            "itm": {
-                "value": 0,
-                "ability": "cha",
-                "bonuses": {
-                    "check": "",
-                    "passive": ""
-                },
-                "roll": {
-                    "min": null,
-                    "max": null,
-                    "mode": 0
-                }
-            },
-            "inv": {
-                "value": 0,
-                "ability": "int",
-                "bonuses": {
-                    "check": "",
-                    "passive": ""
-                },
-                "roll": {
-                    "min": null,
-                    "max": null,
-                    "mode": 0
-                }
-            },
-            "med": {
-                "value": 0,
-                "ability": "wis",
-                "bonuses": {
-                    "check": "",
-                    "passive": ""
-                },
-                "roll": {
-                    "min": null,
-                    "max": null,
-                    "mode": 0
-                }
-            },
-            "nat": {
-                "value": 0,
-                "ability": "int",
-                "bonuses": {
-                    "check": "",
-                    "passive": ""
-                },
-                "roll": {
-                    "min": null,
-                    "max": null,
-                    "mode": 0
-                }
-            },
-            "prc": {
-                "value": 0,
-                "ability": "wis",
-                "bonuses": {
-                    "check": "",
-                    "passive": ""
-                },
-                "roll": {
-                    "min": null,
-                    "max": null,
-                    "mode": 0
-                }
-            },
-            "prf": {
-                "value": 0,
-                "ability": "cha",
-                "bonuses": {
-                    "check": "",
-                    "passive": ""
-                },
-                "roll": {
-                    "min": null,
-                    "max": null,
-                    "mode": 0
-                }
-            },
-            "per": {
-                "value": 0,
-                "ability": "cha",
-                "bonuses": {
-                    "check": "",
-                    "passive": ""
-                },
-                "roll": {
-                    "min": null,
-                    "max": null,
-                    "mode": 0
-                }
-            },
-            "rel": {
-                "value": 0,
-                "ability": "int",
-                "bonuses": {
-                    "check": "",
-                    "passive": ""
-                },
-                "roll": {
-                    "min": null,
-                    "max": null,
-                    "mode": 0
-                }
-            },
-            "slt": {
-                "value": 0,
-                "ability": "dex",
-                "bonuses": {
-                    "check": "",
-                    "passive": ""
-                },
-                "roll": {
-                    "min": null,
-                    "max": null,
-                    "mode": 0
-                }
-            },
-            "ste": {
-                "value": 0,
-                "ability": "dex",
-                "bonuses": {
-                    "check": "",
-                    "passive": ""
-                },
-                "roll": {
-                    "min": null,
-                    "max": null,
-                    "mode": 0
-                }
-            },
-            "sur": {
-                "value": 0,
-                "ability": "wis",
-                "bonuses": {
-                    "check": "",
-                    "passive": ""
-                },
-                "roll": {
-                    "min": null,
-                    "max": null,
-                    "mode": 0
-                }
-            }
-        },
-        "tools": {},
-        "spells": {
-            "spell1": {
-                "value": 0,
-                "override": null
-            },
-            "spell2": {
-                "value": 0,
-                "override": null
-            },
-            "spell3": {
-                "value": 0,
-                "override": null
-            },
-            "spell4": {
-                "value": 0,
-                "override": null
-            },
-            "spell5": {
-                "value": 0,
-                "override": null
-            },
-            "spell6": {
-                "value": 0,
-                "override": null
-            },
-            "spell7": {
-                "value": 0,
-                "override": null
-            },
-            "spell8": {
-                "value": 0,
-                "override": null
-            },
-            "spell9": {
-                "value": 0,
-                "override": null
-            },
-            "pact": {
-                "value": 0,
-                "override": null
-            },
-            "spell0": {
-                "value": 0,
-                "override": null
-            }
+  "name": "Swarm of Zombies",
+  "type": "npc",
+  "img": "icons/magic/death/undead-zombie-grave-green.webp",
+  "system": {
+    "abilities": {
+      "str": {
+        "value": 15,
+        "proficient": 0,
+        "max": null,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        }
+      },
+      "dex": {
+        "value": 6,
+        "proficient": 0,
+        "max": null,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        }
+      },
+      "con": {
+        "value": 16,
+        "proficient": 0,
+        "max": null,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        }
+      },
+      "int": {
+        "value": 3,
+        "proficient": 0,
+        "max": null,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        }
+      },
+      "wis": {
+        "value": 6,
+        "proficient": 1,
+        "max": null,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        }
+      },
+      "cha": {
+        "value": 5,
+        "proficient": 0,
+        "max": null,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        }
+      }
+    },
+    "attributes": {
+      "ac": {
+        "flat": 8,
+        "calc": "natural",
+        "formula": ""
+      },
+      "hp": {
+        "value": 30,
+        "max": 30,
+        "temp": null,
+        "tempmax": null,
+        "formula": "2d8 + 6"
+      },
+      "init": {
+        "ability": "",
+        "bonus": "0",
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "movement": {
+        "burrow": 0,
+        "climb": 0,
+        "fly": 0,
+        "swim": 0,
+        "walk": 20,
+        "units": "ft",
+        "hover": false
+      },
+      "attunement": {
+        "max": 3
+      },
+      "senses": {
+        "darkvision": 60,
+        "blindsight": 0,
+        "tremorsense": 0,
+        "truesight": 0,
+        "units": "ft",
+        "special": ""
+      },
+      "spellcasting": "",
+      "exhaustion": 0,
+      "concentration": {
+        "ability": "",
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
         },
         "bonuses": {
-            "mwak": {
-                "attack": "",
-                "damage": ""
-            },
-            "rwak": {
-                "attack": "",
-                "damage": ""
-            },
-            "msak": {
-                "attack": "",
-                "damage": ""
-            },
-            "rsak": {
-                "attack": "",
-                "damage": ""
-            },
-            "abilities": {
-                "check": "",
-                "save": "",
-                "skill": ""
-            },
-            "spell": {
-                "dc": ""
-            }
+          "save": ""
         },
-        "resources": {
-            "legact": {
-                "value": 0,
-                "max": 0
-            },
-            "legres": {
-                "value": 0,
-                "max": 0
-            },
-            "lair": {
-                "value": false,
-                "initiative": 0
-            }
+        "limit": 1
+      },
+      "hd": {
+        "spent": 0
+      },
+      "death": {
+        "ability": "",
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
         },
-        "source": {
-            "custom": "Elkan 5e",
-            "revision": 1,
-            "rules": "",
-            "book": "Elkan 5e",
-            "page": "",
-            "license": ""
-        }
+        "success": 0,
+        "failure": 0
+      }
     },
-    "prototypeToken": {
-        "name": "Swarm of Zombies",
-        "displayName": 50,
-        "actorLink": false,
-        "width": 2,
-        "height": 2,
-        "lockRotation": false,
-        "rotation": 0,
-        "disposition": -1,
-        "displayBars": 50,
-        "bar1": {
-            "attribute": "attributes.hp"
-        },
-        "bar2": {
-            "attribute": null
-        },
-        "flags": {
-            "monks-enhanced-journal": {
-                "chatbubble": ""
-            },
-            "token-z": {
-                "zIndex": 0
-            },
-            "elevation-drag-ruler": {
-                "selectedSpeed": "auto",
-                "hasBonusDash": false,
-                "hideSpeedButton": false,
-                "movementMode": "walk"
-            }
-        },
-        "randomImg": false,
-        "alpha": 1,
-        "light": {
-            "alpha": 1,
-            "angle": 360,
-            "bright": 0,
-            "coloration": 1,
-            "dim": 0,
-            "luminosity": 0.5,
-            "saturation": 0,
-            "contrast": 0,
-            "shadows": 0,
-            "animation": {
-                "speed": 5,
-                "intensity": 5,
-                "type": null,
-                "reverse": false
-            },
-            "darkness": {
-                "min": 0,
-                "max": 1
-            },
-            "color": null,
-            "attenuation": 0.5,
-            "negative": false,
-            "priority": 0
-        },
-        "texture": {
-            "src": "icons/magic/death/undead-zombie-grave-green.webp",
-            "tint": "#ffffff",
-            "scaleX": 1,
-            "scaleY": 1,
-            "offsetX": 0,
-            "offsetY": 0,
-            "rotation": 0,
-            "anchorX": 0.5,
-            "anchorY": 0.5,
-            "fit": "contain",
-            "alphaThreshold": 0.75
-        },
-        "sight": {
-            "angle": 360,
-            "enabled": false,
-            "range": 60,
-            "brightness": 0,
-            "visionMode": "basic",
-            "color": null,
-            "attenuation": 0.1,
-            "saturation": 0,
-            "contrast": 0
-        },
-        "detectionModes": [],
-        "appendNumber": false,
-        "prependAdjective": false,
-        "hexagonalShape": 1,
-        "occludable": {
-            "radius": 0
-        },
-        "ring": {
-            "enabled": false,
-            "colors": {
-                "ring": null,
-                "background": null
-            },
-            "effects": 1,
-            "subject": {
-                "scale": 1,
-                "texture": null
-            }
-        }
+    "details": {
+      "biography": {
+        "value": "<p>When the magic of necromancy is utilized upon the preserved flesh of a humanoid, a zombie will rise to serve its dark master.  In much the same way that an animated skeleton is returned from the dead so too are zombies shunted back into this world.  While a skilled spellcaster may animate the dead and command the newly awakened, zombies may also rise in areas of the world saturated with necromantic energy.  In this situation, the zombies will not obey the command of a master, but roam aimlessly in a small area until they either find something to attack and consume or rot away into a pile of inanimate bones.  </p>\n<p><strong>Re: Your Brains.</strong> Zombies do retain quite a lot of their former selves in regards to their physical appearance.  Zombies will still show the wounds or disease scars which slew them upon reanimating.  The symptoms of decay will also be present as many freshly spawned zombies will be bloated, have patches of skin sloughing from their bodies, or even trailing entrails from exploded abdomens.  While a zombie may resemble the person they were before, there is nothing at work within the head except mindless hunger.  Zombies stumble through their existence in a perpetual state of mindlessness only able to heed their master's orders.  This fact of the zombie's mind makes them invaluable warriors for a necromancer in need.  Zombies are direct and will shamble off towards their quarry without so much as a second thought to their own safety.  It's been noted that some zombies have walked through fires or pits of acid in order to reach their enemies.  Once they reach their target, zombies will pummel and bite at their enemy until either they or the enemy fall in the tussle.  Zombies may also wield weapons, though not cleverly; zombies will not be able to reclaim a weapon should they be disarmed as the lack of weapon will simply drive them to claw with their broken hands.  The magic which binds the zombie to the mortal plane is tricky to the uninitiated as well, so please be warned young adventurers!  Should you fell a zombie, be aware that the creature may not be fully dead for the second time; you should always be sure to wait and see if the beast attempts to rise once more before wandering deeper into the dungeon.</p>\n<ul>\n<li><em>Token artwork by Forgotten Adventures.</em></li>\n<li><em>Bestiary entry by Penelope (Vyrnali).</em></li>\n</ul>",
+        "public": ""
+      },
+      "alignment": "",
+      "race": null,
+      "type": {
+        "value": "undead",
+        "subtype": "",
+        "swarm": "med",
+        "custom": ""
+      },
+      "environment": "",
+      "cr": 5,
+      "spellLevel": 0,
+      "ideal": "",
+      "bond": "",
+      "flaw": ""
     },
-    "items": [
-        {
-            "_id": "Ed7XgnZu9qRs3qdn",
-            "name": "Slam",
-            "type": "weapon",
-            "img": "icons/skills/melee/unarmed-punch-fist-yellow-red.webp",
-            "system": {
-                "description": {
-                    "value": "<section id=\"secret-r3Hnwg8Q5kpTBzww\"><p><em>Melee Weapon Attack:</em><strong>+3 to hit,</strong> ,<strong>5 ft.,</strong> one target. Hit:<strong>4 (1d6 + 1)</strong> <em><strong>bludgeoning damage</strong> </em>.</p><p></p></section><p>The Zombie attacks with its Slam. On a hit, the target is grappled.</p>",
-                    "chat": ""
-                },
-                "source": {
-                    "custom": "",
-                    "revision": 1,
-                    "rules": "2014"
-                },
-                "quantity": 1,
-                "weight": {
-                    "value": 0,
-                    "units": "lb"
-                },
-                "price": {
-                    "value": 0,
-                    "denomination": "gp"
-                },
-                "attunement": "",
-                "equipped": true,
-                "rarity": "",
-                "identified": true,
-                "cover": null,
-                "crewed": false,
-                "range": {
-                    "value": 5,
-                    "long": null,
-                    "units": "ft",
-                    "reach": null
-                },
-                "uses": {
-                    "max": "",
-                    "recovery": [],
-                    "spent": 0
-                },
-                "damage": {
-                    "versatile": {
-                        "number": null,
-                        "denomination": null,
-                        "bonus": "",
-                        "types": [],
-                        "custom": {
-                            "enabled": false,
-                            "formula": ""
-                        },
-                        "scaling": {
-                            "mode": "",
-                            "number": null,
-                            "formula": ""
-                        }
-                    },
-                    "base": {
-                        "number": 2,
-                        "denomination": 6,
-                        "bonus": "",
-                        "types": [
-                            "bludgeoning"
-                        ],
-                        "custom": {
-                            "enabled": false,
-                            "formula": ""
-                        },
-                        "scaling": {
-                            "mode": "",
-                            "number": null,
-                            "formula": ""
-                        }
-                    }
-                },
-                "armor": {
-                    "value": 10
-                },
-                "hp": {
-                    "value": 0,
-                    "max": 0,
-                    "dt": null,
-                    "conditions": ""
-                },
-                "properties": [],
-                "proficient": 1,
-                "unidentified": {
-                    "description": ""
-                },
-                "type": {
-                    "value": "natural",
-                    "baseItem": ""
-                },
-                "activities": {
-                    "dnd5eactivity000": {
-                        "_id": "dnd5eactivity000",
-                        "type": "attack",
-                        "activation": {
-                            "type": "action",
-                            "value": 1,
-                            "condition": "",
-                            "override": false
-                        },
-                        "consumption": {
-                            "targets": [],
-                            "scaling": {
-                                "allowed": false,
-                                "max": ""
-                            },
-                            "spellSlot": true
-                        },
-                        "description": {
-                            "chatFlavor": ""
-                        },
-                        "duration": {
-                            "concentration": false,
-                            "value": "",
-                            "units": "",
-                            "special": "",
-                            "override": false
-                        },
-                        "effects": [
-                            {
-                                "_id": "e7lEeBV86hFLDK7D"
-                            }
-                        ],
-                        "range": {
-                            "value": "5",
-                            "units": "ft",
-                            "special": "",
-                            "override": false
-                        },
-                        "target": {
-                            "template": {
-                                "count": "",
-                                "contiguous": false,
-                                "type": "",
-                                "size": "",
-                                "width": "",
-                                "height": "",
-                                "units": ""
-                            },
-                            "affects": {
-                                "count": "",
-                                "type": "",
-                                "choice": false,
-                                "special": ""
-                            },
-                            "prompt": true,
-                            "override": false
-                        },
-                        "uses": {
-                            "spent": 0,
-                            "max": "",
-                            "recovery": []
-                        },
-                        "attack": {
-                            "ability": "str",
-                            "bonus": "",
-                            "critical": {
-                                "threshold": null
-                            },
-                            "flat": false,
-                            "type": {
-                                "value": "melee",
-                                "classification": "weapon"
-                            }
-                        },
-                        "damage": {
-                            "critical": {
-                                "bonus": ""
-                            },
-                            "includeBase": true,
-                            "parts": []
-                        },
-                        "sort": 0
-                    }
-                },
-                "identifier": "slam",
-                "container": null,
-                "attuned": false,
-                "ammunition": {},
-                "magicalBonus": null
-            },
-            "effects": [
-                {
-                    "origin": "Actor.TxKqIQwqUed9XU8Z.Item.Ed7XgnZu9qRs3qdn",
-                    "duration": {
-                        "rounds": null,
-                        "startTime": null,
-                        "seconds": null,
-                        "combat": null,
-                        "turns": null,
-                        "startRound": null,
-                        "startTurn": null
-                    },
-                    "disabled": false,
-                    "_id": "e7lEeBV86hFLDK7D",
-                    "changes": [
-                        {
-                            "key": "system.attributes.movement.all",
-                            "mode": 0,
-                            "value": "0",
-                            "priority": 50
-                        }
-                    ],
-                    "tint": "#ffffff",
-                    "transfer": false,
-                    "flags": {
-                        "dae": {
-                            "selfTarget": false,
-                            "selfTargetAlways": false,
-                            "stackable": "none",
-                            "durationExpression": "",
-                            "macroRepeat": "none",
-                            "specialDuration": []
-                        },
-                        "core": {
-                            "statusId": "combat-utility-belt.grappled"
-                        },
-                        "ActiveAuras": {
-                            "isAura": false,
-                            "aura": "None",
-                            "radius": null,
-                            "alignment": "",
-                            "type": "",
-                            "ignoreSelf": false,
-                            "height": false,
-                            "hidden": false,
-                            "displayTemp": false,
-                            "hostile": false,
-                            "onlyOnce": false
-                        }
-                    },
-                    "name": "Grappled",
-                    "description": "",
-                    "statuses": [],
-                    "_stats": {
-                        "compendiumSource": null,
-                        "duplicateSource": null,
-                        "coreVersion": "12.331",
-                        "systemId": "dnd5e",
-                        "systemVersion": "4.0.2",
-                        "createdTime": null,
-                        "modifiedTime": null,
-                        "lastModifiedBy": null
-                    },
-                    "img": "modules/combat-utility-belt/icons/grappled.svg",
-                    "type": "base",
-                    "system": {},
-                    "sort": 0,
-                    "_key": "!actors.items.effects!6RPN08bP9OvZ3QjT.Ed7XgnZu9qRs3qdn.e7lEeBV86hFLDK7D"
-                }
-            ],
-            "folder": null,
-            "sort": 200000,
-            "ownership": {
-                "default": 0
-            },
-            "flags": {
-                "midi-qol": {
-                    "fumbleThreshold": null,
-                    "effectActivation": false
-                },
-                "midiProperties": {
-                    "nodam": false,
-                    "fulldam": false,
-                    "halfdam": false,
-                    "autoFailFriendly": false,
-                    "rollOther": false,
-                    "critOther": false,
-                    "offHandWeapon": false,
-                    "magicdam": false,
-                    "magiceffect": false,
-                    "concentration": false,
-                    "toggleEffect": false,
-                    "ignoreTotalCover": false,
-                    "autoSaveFriendly": false
-                },
-                "tidy5e-sheet": {
-                    "favorite": false
-                },
-                "dnd5e": {}
-            },
-            "_stats": {
-                "compendiumSource": null,
-                "duplicateSource": null,
-                "coreVersion": "12.331",
-                "systemId": "dnd5e",
-                "systemVersion": "4.0.2",
-                "createdTime": null,
-                "modifiedTime": null,
-                "lastModifiedBy": null
-            },
-            "_key": "!actors.items!6RPN08bP9OvZ3QjT.Ed7XgnZu9qRs3qdn"
+    "traits": {
+      "size": "lg",
+      "di": {
+        "value": [],
+        "bypasses": [],
+        "custom": ""
+      },
+      "dr": {
+        "value": [],
+        "bypasses": [],
+        "custom": "Single Target Effects"
+      },
+      "dv": {
+        "value": [],
+        "bypasses": [],
+        "custom": "Area of Effect Damage"
+      },
+      "ci": {
+        "value": [],
+        "custom": ""
+      },
+      "languages": {
+        "value": [],
+        "custom": "Understands the languages it knew in life but can't speak"
+      },
+      "dm": {
+        "amount": {},
+        "bypasses": []
+      }
+    },
+    "currency": {
+      "pp": 0,
+      "gp": 0,
+      "ep": 0,
+      "sp": 0,
+      "cp": 0
+    },
+    "skills": {
+      "acr": {
+        "value": 0,
+        "ability": "dex",
+        "bonuses": {
+          "check": "",
+          "passive": ""
         },
-        {
-            "_id": "RDeCoZRniQBNq0rX",
-            "name": "Undead Fortitude",
-            "type": "feat",
-            "img": "icons/magic/acid/pouring-gas-smoke-liquid.webp",
-            "system": {
-                "description": {
-                    "value": "<section><p>If damage reduces the zombie to<strong>0 hit points</strong> , it must make a<strong>Constitution</strong> saving throw with a DC of 5+the damage taken, unless the damage is radiant or from a critical hit. On a success, the zombie drops to<strong>1 hit point</strong> instead.</p></section><p>If damage reduces the zombie to<strong>0 hit points</strong> , it must make a<strong>Constitution</strong> saving throw.</p>",
-                    "chat": ""
-                },
-                "source": {
-                    "custom": "",
-                    "revision": 1,
-                    "rules": "2024"
-                },
-                "uses": {
-                    "max": "",
-                    "spent": 0,
-                    "recovery": []
-                },
-                "type": {
-                    "value": "",
-                    "subtype": ""
-                },
-                "requirements": "",
-                "activities": {},
-                "identifier": "",
-                "enchant": {},
-                "prerequisites": {
-                    "level": null
-                },
-                "properties": []
-            },
-            "effects": [],
-            "folder": null,
-            "sort": 300000,
-            "ownership": {
-                "default": 0
-            },
-            "flags": {},
-            "_stats": {
-                "compendiumSource": null,
-                "duplicateSource": null,
-                "coreVersion": "12.331",
-                "systemId": "dnd5e",
-                "systemVersion": "4.0.2",
-                "createdTime": null,
-                "modifiedTime": null,
-                "lastModifiedBy": null
-            },
-            "_key": "!actors.items!6RPN08bP9OvZ3QjT.RDeCoZRniQBNq0rX"
-        },
-        {
-            "name": "Swarm Attack",
-            "type": "feat",
-            "flags": {
-                "core": {
-                    "sourceId": "Actor.IqD84TeR5sfpcyLu.Item.ZDZkNGQyZmUxYzhk"
-                },
-                "midiProperties": {
-                    "confirmTargets": "default",
-                    "autoFailFriendly": false,
-                    "autoSaveFriendly": false,
-                    "critOther": false,
-                    "offHandWeapon": false,
-                    "magicdam": false,
-                    "magiceffect": false,
-                    "concentration": false,
-                    "noConcentrationCheck": false,
-                    "toggleEffect": false,
-                    "ignoreTotalCover": false
-                },
-                "midi-qol": {
-                    "rollAttackPerTarget": "default",
-                    "itemCondition": "",
-                    "effectCondition": ""
-                },
-                "dnd5e": {}
-            },
-            "img": "icons/magic/death/skull-trio-badge-purple.webp",
-            "effects": [],
-            "sort": 900000,
-            "folder": null,
-            "system": {
-                "description": {
-                    "value": "<p>The swarm makes two attacks, or one if at half or fewer of their total hit points.</p><p></p>",
-                    "chat": ""
-                },
-                "source": {
-                    "custom": "Elkan 5e",
-                    "revision": 1,
-                    "rules": "2014"
-                },
-                "uses": {
-                    "max": "",
-                    "recovery": [],
-                    "spent": 0
-                },
-                "type": {
-                    "value": "",
-                    "subtype": ""
-                },
-                "requirements": "",
-                "activities": {
-                    "dnd5eactivity000": {
-                        "_id": "dnd5eactivity000",
-                        "type": "utility",
-                        "activation": {
-                            "type": "action",
-                            "value": 1,
-                            "condition": "",
-                            "override": false
-                        },
-                        "consumption": {
-                            "targets": [],
-                            "scaling": {
-                                "allowed": false,
-                                "max": ""
-                            },
-                            "spellSlot": true
-                        },
-                        "description": {
-                            "chatFlavor": ""
-                        },
-                        "duration": {
-                            "concentration": false,
-                            "value": "",
-                            "units": "",
-                            "special": "",
-                            "override": false
-                        },
-                        "effects": [],
-                        "range": {
-                            "units": "",
-                            "special": "",
-                            "override": false
-                        },
-                        "target": {
-                            "template": {
-                                "count": "",
-                                "contiguous": false,
-                                "type": "",
-                                "size": "",
-                                "width": "",
-                                "height": "",
-                                "units": ""
-                            },
-                            "affects": {
-                                "count": "",
-                                "type": "",
-                                "choice": false,
-                                "special": ""
-                            },
-                            "prompt": true,
-                            "override": false
-                        },
-                        "uses": {
-                            "spent": 0,
-                            "max": "",
-                            "recovery": []
-                        },
-                        "roll": {
-                            "formula": "",
-                            "name": "",
-                            "prompt": false,
-                            "visible": false
-                        },
-                        "sort": 0
-                    }
-                },
-                "identifier": "swarm-attack",
-                "enchant": {},
-                "prerequisites": {
-                    "level": null
-                },
-                "properties": []
-            },
-            "ownership": {
-                "default": 0,
-                "WaiirYzq9mhRj9cS": 3,
-                "ymGs3J4QpWbCOXON": 3
-            },
-            "_stats": {
-                "compendiumSource": "Actor.IqD84TeR5sfpcyLu.Item.ZDZkNGQyZmUxYzhk",
-                "duplicateSource": null,
-                "coreVersion": "12.331",
-                "systemId": "dnd5e",
-                "systemVersion": "4.0.2",
-                "createdTime": null,
-                "modifiedTime": null,
-                "lastModifiedBy": null
-            },
-            "_id": "0RCntZWi533c8bIV",
-            "_key": "!actors.items!6RPN08bP9OvZ3QjT.0RCntZWi533c8bIV"
-        },
-        {
-            "name": "Swarm Damage Resistance",
-            "type": "feat",
-            "system": {
-                "description": {
-                    "value": "<p>A swarm takes half damage from anything that does damage to a single creature. It takes double damage from anything that does damage in an area of effect.</p><p>In Foundry VTT, we give swarms resistance to bludgeoning, piercing, and slashing damage as a convenience. Effects that deal physical damage in an area of effect will need to be manually adjusted to deal double damage instead of half, and single target effects that deal a different kind of damage will also need to be adjusted to deal half damage.</p>",
-                    "chat": ""
-                },
-                "source": {
-                    "custom": "Elkan 5e",
-                    "rules": "2014",
-                    "revision": 1
-                },
-                "uses": {
-                    "max": "",
-                    "spent": 0,
-                    "recovery": []
-                },
-                "type": {
-                    "value": "monster",
-                    "subtype": ""
-                },
-                "properties": [],
-                "requirements": "",
-                "identifier": "swarm-damage-resistance",
-                "activities": {},
-                "enchant": {},
-                "prerequisites": {
-                    "level": null
-                }
-            },
-            "_id": "RRVeQNipYJWDlS4U",
-            "img": "icons/creatures/invertebrates/wasp-swarm-tan.webp",
-            "effects": [
-                {
-                    "origin": "Compendium.elkan5e.elkan5e-creatures.Actor.6RPN08bP9OvZ3QjT.Item.RRVeQNipYJWDlS4U",
-                    "duration": {
-                        "startTime": null,
-                        "seconds": null,
-                        "combat": null,
-                        "rounds": null,
-                        "turns": null,
-                        "startRound": null,
-                        "startTurn": null
-                    },
-                    "disabled": false,
-                    "name": "Swarm Damage Resistance",
-                    "_id": "N1DOkgMpxlKZeu8I",
-                    "changes": [
-                        {
-                            "key": "system.traits.dr.value",
-                            "mode": 2,
-                            "value": "bludgeoning",
-                            "priority": 5
-                        },
-                        {
-                            "key": "system.traits.dr.value",
-                            "mode": 2,
-                            "value": "piercing",
-                            "priority": 5
-                        },
-                        {
-                            "key": "system.traits.dr.value",
-                            "mode": 2,
-                            "value": "slashing",
-                            "priority": 20
-                        }
-                    ],
-                    "description": "",
-                    "transfer": true,
-                    "statuses": [],
-                    "flags": {
-                        "dae": {
-                            "disableIncapacitated": false,
-                            "selfTarget": false,
-                            "selfTargetAlways": false,
-                            "dontApply": false,
-                            "stackable": "noneName",
-                            "showIcon": false,
-                            "durationExpression": "",
-                            "macroRepeat": "none",
-                            "specialDuration": []
-                        },
-                        "ActiveAuras": {
-                            "isAura": false,
-                            "aura": "None",
-                            "nameOverride": "",
-                            "radius": "",
-                            "alignment": "",
-                            "type": "",
-                            "customCheck": "",
-                            "ignoreSelf": false,
-                            "height": false,
-                            "hidden": false,
-                            "displayTemp": false,
-                            "hostile": false,
-                            "onlyOnce": false,
-                            "wallsBlock": "system"
-                        }
-                    },
-                    "tint": "#ffffff",
-                    "_stats": {
-                        "compendiumSource": null,
-                        "duplicateSource": null,
-                        "coreVersion": "12.331",
-                        "systemId": "dnd5e",
-                        "systemVersion": "4.0.2",
-                        "createdTime": null,
-                        "modifiedTime": null,
-                        "lastModifiedBy": null
-                    },
-                    "img": "icons/creatures/invertebrates/wasp-swarm-tan.webp",
-                    "type": "base",
-                    "system": {},
-                    "sort": 0,
-                    "_key": "!actors.items.effects!6RPN08bP9OvZ3QjT.RRVeQNipYJWDlS4U.N1DOkgMpxlKZeu8I"
-                }
-            ],
-            "folder": null,
-            "sort": 0,
-            "ownership": {
-                "default": 0,
-                "WaiirYzq9mhRj9cS": 3
-            },
-            "flags": {
-                "midiProperties": {
-                    "confirmTargets": "default",
-                    "autoFailFriendly": false,
-                    "autoSaveFriendly": false,
-                    "critOther": false,
-                    "offHandWeapon": false,
-                    "magicdam": false,
-                    "magiceffect": false,
-                    "concentration": false,
-                    "noConcentrationCheck": false,
-                    "toggleEffect": false,
-                    "ignoreTotalCover": false
-                },
-                "midi-qol": {
-                    "rollAttackPerTarget": "default",
-                    "itemCondition": "",
-                    "effectCondition": ""
-                }
-            },
-            "_stats": {
-                "compendiumSource": null,
-                "duplicateSource": null,
-                "coreVersion": "12.331",
-                "systemId": "dnd5e",
-                "systemVersion": "4.0.2",
-                "createdTime": null,
-                "modifiedTime": null,
-                "lastModifiedBy": null
-            },
-            "_key": "!actors.items!6RPN08bP9OvZ3QjT.RRVeQNipYJWDlS4U"
-        },
-        {
-            "name": "Swarm",
-            "type": "feat",
-            "img": "icons/creatures/mammals/bats-movement-flying-purple.webp",
-            "system": {
-                "description": {
-                    "value": "<p>A swarm typically represents several dozen tiny creatures or about 4 small or medium creatures.</p><p>The swarm can occupy another creature's space and vice versa, though a swarm is counted as difficult terrain for other creatures. The swarm can move through any opening large enough for a an individual one of its creatures to fit through.</p><p>The swarm is only affected by an effect if the effect would target all members of the swarm. A DM may decide that a spell has limited effects targeting a single creature. For instance, polymorphing a member of a swarm might create one polymorphed creature but leave the swarm statistically unaffected. Grappling a member of the swarm would have little to no practical effect.</p><p>If a spell or ability requiring a saving throw, like the<em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.x76d4kCFyMIc6wQZ]{Entangle}</em>spell, targets the entire swarm, the swarm rolls one saving throw for the entire swarm at once.</p><p></p><p><em>To create a swarm, increase the size of the base creature by one category, approximately double their hit points, double their basic attack damage, and give them Swarm Attack, Swarm Damage Resistance, and the Swarm ability. This assumes that the base creature has one attack. If you want, manually add \"Single Target Effects' to damage resistances and 'Area of Effect Damage' to damage vulnerabilities.</em></p>",
-                    "chat": ""
-                },
-                "source": {
-                    "custom": "Elkan 5e",
-                    "rules": "2014",
-                    "revision": 1
-                },
-                "uses": {
-                    "max": "",
-                    "spent": 0,
-                    "recovery": []
-                },
-                "type": {
-                    "value": "monster",
-                    "subtype": ""
-                },
-                "requirements": "",
-                "properties": [],
-                "identifier": "swarm",
-                "activities": {},
-                "enchant": {},
-                "prerequisites": {
-                    "level": null
-                }
-            },
-            "effects": [],
-            "folder": "LsnGSDgwdgIhefDV",
-            "ownership": {
-                "default": 0,
-                "3Yi0HjF4PKCA4vX0": 3,
-                "WaiirYzq9mhRj9cS": 3,
-                "ymGs3J4QpWbCOXON": 3
-            },
-            "flags": {
-                "core": {
-                    "sourceId": "Compendium.elkan5e.elkan5e-creature-features.Item.WpPWeLaBqUVj2mlj"
-                },
-                "midiProperties": {
-                    "confirmTargets": "default",
-                    "autoFailFriendly": false,
-                    "autoSaveFriendly": false,
-                    "critOther": false,
-                    "offHandWeapon": false,
-                    "magicdam": false,
-                    "magiceffect": false,
-                    "concentration": false,
-                    "noConcentrationCheck": false,
-                    "toggleEffect": false,
-                    "ignoreTotalCover": false
-                },
-                "midi-qol": {
-                    "rollAttackPerTarget": "default",
-                    "itemCondition": "",
-                    "effectCondition": ""
-                }
-            },
-            "_stats": {
-                "compendiumSource": "Compendium.elkan5e.elkan5e-creature-features.Item.WpPWeLaBqUVj2mlj",
-                "duplicateSource": null,
-                "coreVersion": "12.331",
-                "systemId": "dnd5e",
-                "systemVersion": "4.0.2",
-                "createdTime": null,
-                "modifiedTime": null,
-                "lastModifiedBy": null
-            },
-            "_id": "3W7k7W1ATetJ10Gc",
-            "sort": 100000,
-            "_key": "!actors.items!6RPN08bP9OvZ3QjT.3W7k7W1ATetJ10Gc"
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
         }
-    ],
-    "effects": [],
-    "folder": "d4eAWG3lFU3GIIjy",
-    "ownership": {
-        "default": 3,
-        "ymGs3J4QpWbCOXON": 3,
-        "WaiirYzq9mhRj9cS": 3,
-        "Iu69CD0r3ke4BAoP": 3,
-        "vHqSHJMdmEO6Mk2C": 3
+      },
+      "ani": {
+        "value": 0,
+        "ability": "wis",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "arc": {
+        "value": 0,
+        "ability": "int",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "ath": {
+        "value": 0,
+        "ability": "str",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "dec": {
+        "value": 0,
+        "ability": "cha",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "his": {
+        "value": 0,
+        "ability": "int",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "ins": {
+        "value": 0,
+        "ability": "wis",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "itm": {
+        "value": 0,
+        "ability": "cha",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "inv": {
+        "value": 0,
+        "ability": "int",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "med": {
+        "value": 0,
+        "ability": "wis",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "nat": {
+        "value": 0,
+        "ability": "int",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "prc": {
+        "value": 0,
+        "ability": "wis",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "prf": {
+        "value": 0,
+        "ability": "cha",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "per": {
+        "value": 0,
+        "ability": "cha",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "rel": {
+        "value": 0,
+        "ability": "int",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "slt": {
+        "value": 0,
+        "ability": "dex",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "ste": {
+        "value": 0,
+        "ability": "dex",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "sur": {
+        "value": 0,
+        "ability": "wis",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      }
+    },
+    "tools": {},
+    "spells": {
+      "spell1": {
+        "value": 0,
+        "override": null
+      },
+      "spell2": {
+        "value": 0,
+        "override": null
+      },
+      "spell3": {
+        "value": 0,
+        "override": null
+      },
+      "spell4": {
+        "value": 0,
+        "override": null
+      },
+      "spell5": {
+        "value": 0,
+        "override": null
+      },
+      "spell6": {
+        "value": 0,
+        "override": null
+      },
+      "spell7": {
+        "value": 0,
+        "override": null
+      },
+      "spell8": {
+        "value": 0,
+        "override": null
+      },
+      "spell9": {
+        "value": 0,
+        "override": null
+      },
+      "pact": {
+        "value": 0,
+        "override": null
+      },
+      "spell0": {
+        "value": 0,
+        "override": null
+      }
+    },
+    "bonuses": {
+      "mwak": {
+        "attack": "",
+        "damage": ""
+      },
+      "rwak": {
+        "attack": "",
+        "damage": ""
+      },
+      "msak": {
+        "attack": "",
+        "damage": ""
+      },
+      "rsak": {
+        "attack": "",
+        "damage": ""
+      },
+      "abilities": {
+        "check": "",
+        "save": "",
+        "skill": ""
+      },
+      "spell": {
+        "dc": ""
+      }
+    },
+    "resources": {
+      "legact": {
+        "value": 0,
+        "max": 0
+      },
+      "legres": {
+        "value": 0,
+        "max": 0
+      },
+      "lair": {
+        "value": false,
+        "initiative": 0
+      }
+    },
+    "source": {
+      "custom": "Elkan 5e",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    }
+  },
+  "prototypeToken": {
+    "name": "Swarm of Zombies",
+    "displayName": 50,
+    "actorLink": false,
+    "width": 2,
+    "height": 2,
+    "lockRotation": false,
+    "rotation": 0,
+    "disposition": -1,
+    "displayBars": 50,
+    "bar1": {
+      "attribute": "attributes.hp"
+    },
+    "bar2": {
+      "attribute": null
     },
     "flags": {
-        "midi-qol": {
-            "concentration-damage": 0
-        },
-        "core": {},
-        "tidy5e-sheet": {
-            "traitsExpanded": true,
-            "gender": "",
-            "age": "",
-            "height": "",
-            "weight": "",
-            "eyes": "",
-            "skin": "",
-            "hair": "",
-            "notes1": {
-                "name": ""
-            },
-            "notes2": {
-                "name": ""
-            },
-            "notes3": {
-                "name": ""
-            },
-            "notes4": {
-                "name": ""
-            },
-            "death": {
-                "success": 0,
-                "failure": 0
-            },
-            "maxPreparedSpells": null
-        }
+      "monks-enhanced-journal": {
+        "chatbubble": ""
+      },
+      "token-z": {
+        "zIndex": 0
+      },
+      "elevation-drag-ruler": {
+        "selectedSpeed": "auto",
+        "hasBonusDash": false,
+        "hideSpeedButton": false,
+        "movementMode": "walk"
+      }
     },
-    "_stats": {
+    "randomImg": false,
+    "alpha": 1,
+    "light": {
+      "alpha": 1,
+      "angle": 360,
+      "bright": 0,
+      "coloration": 1,
+      "dim": 0,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "speed": 5,
+        "intensity": 5,
+        "type": null,
+        "reverse": false
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      },
+      "color": null,
+      "attenuation": 0.5,
+      "negative": false,
+      "priority": 0
+    },
+    "texture": {
+      "src": "icons/magic/death/undead-zombie-grave-green.webp",
+      "tint": "#ffffff",
+      "scaleX": 1,
+      "scaleY": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "rotation": 0,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "fit": "contain",
+      "alphaThreshold": 0.75
+    },
+    "sight": {
+      "angle": 360,
+      "enabled": false,
+      "range": 60,
+      "brightness": 0,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "appendNumber": false,
+    "prependAdjective": false,
+    "hexagonalShape": 1,
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    }
+  },
+  "items": [
+    {
+      "_id": "Ed7XgnZu9qRs3qdn",
+      "name": "Slam",
+      "type": "weapon",
+      "img": "icons/skills/melee/unarmed-punch-fist-yellow-red.webp",
+      "system": {
+        "description": {
+          "value": "<section class=\"secret\" id=\"secret-r3Hnwg8Q5kpTBzww\"><p><em>Melee Weapon Attack:</em><strong>+3 to hit,</strong>, <strong>5 ft.,</strong> one target. Hit: <strong>4 (1d6 + 1) </strong><em><strong>bludgeoning damage</strong></em>.</p><p></p></section><p>The Zombie attacks with its Slam. On a hit, the target is grappled.</p>",
+          "chat": ""
+        },
+        "source": {
+          "custom": "",
+          "revision": 1,
+          "rules": "2014"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 0,
+          "units": "lb"
+        },
+        "price": {
+          "value": 0,
+          "denomination": "gp"
+        },
+        "attunement": "",
+        "equipped": true,
+        "rarity": "",
+        "identified": true,
+        "cover": null,
+        "crewed": false,
+        "range": {
+          "value": 5,
+          "long": null,
+          "units": "ft",
+          "reach": null
+        },
+        "uses": {
+          "max": "",
+          "recovery": [],
+          "spent": 0
+        },
+        "damage": {
+          "versatile": {
+            "number": null,
+            "denomination": null,
+            "bonus": "",
+            "types": [],
+            "custom": {
+              "enabled": false,
+              "formula": ""
+            },
+            "scaling": {
+              "mode": "",
+              "number": null,
+              "formula": ""
+            }
+          },
+          "base": {
+            "number": 2,
+            "denomination": 6,
+            "bonus": "",
+            "types": [
+              "bludgeoning"
+            ],
+            "custom": {
+              "enabled": false,
+              "formula": ""
+            },
+            "scaling": {
+              "mode": "",
+              "number": null,
+              "formula": ""
+            }
+          }
+        },
+        "armor": {
+          "value": 10
+        },
+        "hp": {
+          "value": 0,
+          "max": 0,
+          "dt": null,
+          "conditions": ""
+        },
+        "properties": [],
+        "proficient": 1,
+        "unidentified": {
+          "description": ""
+        },
+        "type": {
+          "value": "natural",
+          "baseItem": ""
+        },
+        "activities": {
+          "dnd5eactivity000": {
+            "_id": "dnd5eactivity000",
+            "type": "attack",
+            "activation": {
+              "type": "action",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": true
+            },
+            "description": {
+              "chatFlavor": ""
+            },
+            "duration": {
+              "concentration": false,
+              "value": "",
+              "units": "",
+              "special": "",
+              "override": false
+            },
+            "effects": [
+              {
+                "_id": "e7lEeBV86hFLDK7D"
+              }
+            ],
+            "range": {
+              "value": "5",
+              "units": "ft",
+              "special": "",
+              "override": false
+            },
+            "target": {
+              "template": {
+                "count": "",
+                "contiguous": false,
+                "type": "",
+                "size": "",
+                "width": "",
+                "height": "",
+                "units": ""
+              },
+              "affects": {
+                "count": "",
+                "type": "",
+                "choice": false,
+                "special": ""
+              },
+              "prompt": true,
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "max": "",
+              "recovery": []
+            },
+            "attack": {
+              "ability": "str",
+              "bonus": "",
+              "critical": {
+                "threshold": null
+              },
+              "flat": false,
+              "type": {
+                "value": "melee",
+                "classification": "weapon"
+              }
+            },
+            "damage": {
+              "critical": {
+                "bonus": ""
+              },
+              "includeBase": true,
+              "parts": []
+            },
+            "sort": 0
+          }
+        },
+        "identifier": "slam",
+        "container": null,
+        "attuned": false,
+        "ammunition": {},
+        "magicalBonus": null
+      },
+      "effects": [
+        {
+          "origin": "Actor.TxKqIQwqUed9XU8Z.Item.Ed7XgnZu9qRs3qdn",
+          "duration": {
+            "rounds": null,
+            "startTime": null,
+            "seconds": null,
+            "combat": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "disabled": false,
+          "_id": "e7lEeBV86hFLDK7D",
+          "changes": [
+            {
+              "key": "system.attributes.movement.all",
+              "mode": 0,
+              "value": "0",
+              "priority": 50
+            }
+          ],
+          "tint": "#ffffff",
+          "transfer": false,
+          "flags": {
+            "dae": {
+              "selfTarget": false,
+              "selfTargetAlways": false,
+              "stackable": "none",
+              "durationExpression": "",
+              "macroRepeat": "none",
+              "specialDuration": []
+            },
+            "core": {
+              "statusId": "combat-utility-belt.grappled"
+            },
+            "ActiveAuras": {
+              "isAura": false,
+              "aura": "None",
+              "radius": null,
+              "alignment": "",
+              "type": "",
+              "ignoreSelf": false,
+              "height": false,
+              "hidden": false,
+              "displayTemp": false,
+              "hostile": false,
+              "onlyOnce": false
+            }
+          },
+          "name": "Grappled",
+          "description": "",
+          "statuses": [],
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "coreVersion": "12.331",
+            "systemId": "dnd5e",
+            "systemVersion": "4.0.2",
+            "createdTime": null,
+            "modifiedTime": null,
+            "lastModifiedBy": null
+          },
+          "img": "modules/combat-utility-belt/icons/grappled.svg",
+          "type": "base",
+          "system": {},
+          "sort": 0,
+          "_key": "!actors.items.effects!6RPN08bP9OvZ3QjT.Ed7XgnZu9qRs3qdn.e7lEeBV86hFLDK7D"
+        }
+      ],
+      "folder": null,
+      "sort": 200000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {
+        "midi-qol": {
+          "fumbleThreshold": null,
+          "effectActivation": false
+        },
+        "midiProperties": {
+          "nodam": false,
+          "fulldam": false,
+          "halfdam": false,
+          "autoFailFriendly": false,
+          "rollOther": false,
+          "critOther": false,
+          "offHandWeapon": false,
+          "magicdam": false,
+          "magiceffect": false,
+          "concentration": false,
+          "toggleEffect": false,
+          "ignoreTotalCover": false,
+          "autoSaveFriendly": false
+        },
+        "tidy5e-sheet": {
+          "favorite": false
+        },
+        "dnd5e": {}
+      },
+      "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
         "coreVersion": "12.331",
         "systemId": "dnd5e",
-        "systemVersion": "4.3.9",
-        "createdTime": 1726952021414,
-        "modifiedTime": 1745959398977,
-        "lastModifiedBy": "code change"
+        "systemVersion": "4.0.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!6RPN08bP9OvZ3QjT.Ed7XgnZu9qRs3qdn"
     },
-    "_id": "6RPN08bP9OvZ3QjT",
-    "sort": 200000,
-    "_key": "!actors!6RPN08bP9OvZ3QjT"
+    {
+      "_id": "RDeCoZRniQBNq0rX",
+      "name": "Undead Fortitude",
+      "type": "feat",
+      "img": "icons/magic/acid/pouring-gas-smoke-liquid.webp",
+      "system": {
+        "description": {
+          "value": "<section class=\"secret\"><p>If damage reduces the zombie to <strong>0 hit points</strong>, it must make a <strong>Constitution</strong> saving throw with a DC of 5+the damage taken, unless the damage is radiant or from a critical hit. On a success, the zombie drops to <strong>1 hit point</strong> instead.</p></section><p>If damage reduces the zombie to <strong>0 hit points</strong>, it must make a <strong>Constitution</strong> saving throw.</p>",
+          "chat": ""
+        },
+        "source": {
+          "custom": "",
+          "revision": 1,
+          "rules": "2024"
+        },
+        "uses": {
+          "max": "",
+          "spent": 0,
+          "recovery": []
+        },
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "requirements": "",
+        "activities": {},
+        "identifier": "",
+        "enchant": {},
+        "prerequisites": {
+          "level": null
+        },
+        "properties": []
+      },
+      "effects": [],
+      "folder": null,
+      "sort": 300000,
+      "ownership": {
+        "default": 0
+      },
+      "flags": {},
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!6RPN08bP9OvZ3QjT.RDeCoZRniQBNq0rX"
+    },
+    {
+      "name": "Swarm Attack",
+      "type": "feat",
+      "flags": {
+        "core": {
+          "sourceId": "Actor.IqD84TeR5sfpcyLu.Item.ZDZkNGQyZmUxYzhk"
+        },
+        "midiProperties": {
+          "confirmTargets": "default",
+          "autoFailFriendly": false,
+          "autoSaveFriendly": false,
+          "critOther": false,
+          "offHandWeapon": false,
+          "magicdam": false,
+          "magiceffect": false,
+          "concentration": false,
+          "noConcentrationCheck": false,
+          "toggleEffect": false,
+          "ignoreTotalCover": false
+        },
+        "midi-qol": {
+          "rollAttackPerTarget": "default",
+          "itemCondition": "",
+          "effectCondition": ""
+        },
+        "dnd5e": {}
+      },
+      "img": "icons/magic/death/skull-trio-badge-purple.webp",
+      "effects": [],
+      "sort": 900000,
+      "folder": null,
+      "system": {
+        "description": {
+          "value": "<p>The swarm makes two attacks, or one if at half or fewer of their total hit points.</p><p></p>",
+          "chat": ""
+        },
+        "source": {
+          "custom": "Elkan 5e",
+          "revision": 1,
+          "rules": "2014"
+        },
+        "uses": {
+          "max": "",
+          "recovery": [],
+          "spent": 0
+        },
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "requirements": "",
+        "activities": {
+          "dnd5eactivity000": {
+            "_id": "dnd5eactivity000",
+            "type": "utility",
+            "activation": {
+              "type": "action",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": true
+            },
+            "description": {
+              "chatFlavor": ""
+            },
+            "duration": {
+              "concentration": false,
+              "value": "",
+              "units": "",
+              "special": "",
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "units": "",
+              "special": "",
+              "override": false
+            },
+            "target": {
+              "template": {
+                "count": "",
+                "contiguous": false,
+                "type": "",
+                "size": "",
+                "width": "",
+                "height": "",
+                "units": ""
+              },
+              "affects": {
+                "count": "",
+                "type": "",
+                "choice": false,
+                "special": ""
+              },
+              "prompt": true,
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "max": "",
+              "recovery": []
+            },
+            "roll": {
+              "formula": "",
+              "name": "",
+              "prompt": false,
+              "visible": false
+            },
+            "sort": 0
+          }
+        },
+        "identifier": "swarm-attack",
+        "enchant": {},
+        "prerequisites": {
+          "level": null
+        },
+        "properties": []
+      },
+      "ownership": {
+        "default": 0,
+        "WaiirYzq9mhRj9cS": 3,
+        "ymGs3J4QpWbCOXON": 3
+      },
+      "_stats": {
+        "compendiumSource": "Actor.IqD84TeR5sfpcyLu.Item.ZDZkNGQyZmUxYzhk",
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_id": "0RCntZWi533c8bIV",
+      "_key": "!actors.items!6RPN08bP9OvZ3QjT.0RCntZWi533c8bIV"
+    },
+    {
+      "name": "Swarm Damage Resistance",
+      "type": "feat",
+      "system": {
+        "description": {
+          "value": "<p>A swarm takes half damage from anything that does damage to a single creature. It takes double damage from anything that does damage in an area of effect.</p><p>In Foundry VTT, we give swarms resistance to bludgeoning, piercing, and slashing damage as a convenience. Effects that deal physical damage in an area of effect will need to be manually adjusted to deal double damage instead of half, and single target effects that deal a different kind of damage will also need to be adjusted to deal half damage.</p>",
+          "chat": ""
+        },
+        "source": {
+          "custom": "Elkan 5e",
+          "rules": "2014",
+          "revision": 1
+        },
+        "uses": {
+          "max": "",
+          "spent": 0,
+          "recovery": []
+        },
+        "type": {
+          "value": "monster",
+          "subtype": ""
+        },
+        "properties": [],
+        "requirements": "",
+        "identifier": "swarm-damage-resistance",
+        "activities": {},
+        "enchant": {},
+        "prerequisites": {
+          "level": null
+        }
+      },
+      "_id": "RRVeQNipYJWDlS4U",
+      "img": "icons/creatures/invertebrates/wasp-swarm-tan.webp",
+      "effects": [
+        {
+          "origin": "Compendium.elkan5e.elkan5e-creatures.Actor.6RPN08bP9OvZ3QjT.Item.RRVeQNipYJWDlS4U",
+          "duration": {
+            "startTime": null,
+            "seconds": null,
+            "combat": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "disabled": false,
+          "name": "Swarm Damage Resistance",
+          "_id": "N1DOkgMpxlKZeu8I",
+          "changes": [
+            {
+              "key": "system.traits.dr.value",
+              "mode": 2,
+              "value": "bludgeoning",
+              "priority": 5
+            },
+            {
+              "key": "system.traits.dr.value",
+              "mode": 2,
+              "value": "piercing",
+              "priority": 5
+            },
+            {
+              "key": "system.traits.dr.value",
+              "mode": 2,
+              "value": "slashing",
+              "priority": 20
+            }
+          ],
+          "description": "",
+          "transfer": true,
+          "statuses": [],
+          "flags": {
+            "dae": {
+              "disableIncapacitated": false,
+              "selfTarget": false,
+              "selfTargetAlways": false,
+              "dontApply": false,
+              "stackable": "noneName",
+              "showIcon": false,
+              "durationExpression": "",
+              "macroRepeat": "none",
+              "specialDuration": []
+            },
+            "ActiveAuras": {
+              "isAura": false,
+              "aura": "None",
+              "nameOverride": "",
+              "radius": "",
+              "alignment": "",
+              "type": "",
+              "customCheck": "",
+              "ignoreSelf": false,
+              "height": false,
+              "hidden": false,
+              "displayTemp": false,
+              "hostile": false,
+              "onlyOnce": false,
+              "wallsBlock": "system"
+            }
+          },
+          "tint": "#ffffff",
+          "_stats": {
+            "compendiumSource": null,
+            "duplicateSource": null,
+            "coreVersion": "12.331",
+            "systemId": "dnd5e",
+            "systemVersion": "4.0.2",
+            "createdTime": null,
+            "modifiedTime": null,
+            "lastModifiedBy": null
+          },
+          "img": "icons/creatures/invertebrates/wasp-swarm-tan.webp",
+          "type": "base",
+          "system": {},
+          "sort": 0,
+          "_key": "!actors.items.effects!6RPN08bP9OvZ3QjT.RRVeQNipYJWDlS4U.N1DOkgMpxlKZeu8I"
+        }
+      ],
+      "folder": null,
+      "sort": 0,
+      "ownership": {
+        "default": 0,
+        "WaiirYzq9mhRj9cS": 3
+      },
+      "flags": {
+        "midiProperties": {
+          "confirmTargets": "default",
+          "autoFailFriendly": false,
+          "autoSaveFriendly": false,
+          "critOther": false,
+          "offHandWeapon": false,
+          "magicdam": false,
+          "magiceffect": false,
+          "concentration": false,
+          "noConcentrationCheck": false,
+          "toggleEffect": false,
+          "ignoreTotalCover": false
+        },
+        "midi-qol": {
+          "rollAttackPerTarget": "default",
+          "itemCondition": "",
+          "effectCondition": ""
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!actors.items!6RPN08bP9OvZ3QjT.RRVeQNipYJWDlS4U"
+    },
+    {
+      "name": "Swarm",
+      "type": "feat",
+      "img": "icons/creatures/mammals/bats-movement-flying-purple.webp",
+      "system": {
+        "description": {
+          "value": "<p>A swarm typically represents several dozen tiny creatures or about 4 small or medium creatures.</p><p>The swarm can occupy another creature's space and vice versa, though a swarm is counted as difficult terrain for other creatures. The swarm can move through any opening large enough for a an individual one of its creatures to fit through.</p><p>The swarm is only affected by an effect if the effect would target all members of the swarm. A DM may decide that a spell has limited effects targeting a single creature. For instance, polymorphing a member of a swarm might create one polymorphed creature but leave the swarm statistically unaffected. Grappling a member of the swarm would have little to no practical effect.</p><p>If a spell or ability requiring a saving throw, like the <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.x76d4kCFyMIc6wQZ]{Entangle}</em> spell, targets the entire swarm, the swarm rolls one saving throw for the entire swarm at once.</p><p></p><p><em>To create a swarm, increase the size of the base creature by one category, approximately double their hit points, double their basic attack damage, and give them Swarm Attack, Swarm Damage Resistance, and the Swarm ability. This assumes that the base creature has one attack. If you want, manually add \"Single Target Effects' to damage resistances and 'Area of Effect Damage' to damage vulnerabilities.</em></p>",
+          "chat": ""
+        },
+        "source": {
+          "custom": "Elkan 5e",
+          "rules": "2014",
+          "revision": 1
+        },
+        "uses": {
+          "max": "",
+          "spent": 0,
+          "recovery": []
+        },
+        "type": {
+          "value": "monster",
+          "subtype": ""
+        },
+        "requirements": "",
+        "properties": [],
+        "identifier": "swarm",
+        "activities": {},
+        "enchant": {},
+        "prerequisites": {
+          "level": null
+        }
+      },
+      "effects": [],
+      "folder": "LsnGSDgwdgIhefDV",
+      "ownership": {
+        "default": 0,
+        "3Yi0HjF4PKCA4vX0": 3,
+        "WaiirYzq9mhRj9cS": 3,
+        "ymGs3J4QpWbCOXON": 3
+      },
+      "flags": {
+        "core": {
+          "sourceId": "Compendium.elkan5e.elkan5e-creature-features.Item.WpPWeLaBqUVj2mlj"
+        },
+        "midiProperties": {
+          "confirmTargets": "default",
+          "autoFailFriendly": false,
+          "autoSaveFriendly": false,
+          "critOther": false,
+          "offHandWeapon": false,
+          "magicdam": false,
+          "magiceffect": false,
+          "concentration": false,
+          "noConcentrationCheck": false,
+          "toggleEffect": false,
+          "ignoreTotalCover": false
+        },
+        "midi-qol": {
+          "rollAttackPerTarget": "default",
+          "itemCondition": "",
+          "effectCondition": ""
+        }
+      },
+      "_stats": {
+        "compendiumSource": "Compendium.elkan5e.elkan5e-creature-features.Item.WpPWeLaBqUVj2mlj",
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_id": "3W7k7W1ATetJ10Gc",
+      "sort": 100000,
+      "_key": "!actors.items!6RPN08bP9OvZ3QjT.3W7k7W1ATetJ10Gc"
+    }
+  ],
+  "effects": [],
+  "folder": "d4eAWG3lFU3GIIjy",
+  "ownership": {
+    "default": 3,
+    "ymGs3J4QpWbCOXON": 3,
+    "WaiirYzq9mhRj9cS": 3,
+    "Iu69CD0r3ke4BAoP": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "flags": {
+    "midi-qol": {
+      "concentration-damage": 0
+    },
+    "core": {},
+    "tidy5e-sheet": {
+      "traitsExpanded": true,
+      "gender": "",
+      "age": "",
+      "height": "",
+      "weight": "",
+      "eyes": "",
+      "skin": "",
+      "hair": "",
+      "notes1": {
+        "name": ""
+      },
+      "notes2": {
+        "name": ""
+      },
+      "notes3": {
+        "name": ""
+      },
+      "notes4": {
+        "name": ""
+      },
+      "death": {
+        "success": 0,
+        "failure": 0
+      },
+      "maxPreparedSpells": null
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.0.2",
+    "createdTime": 1726952021414,
+    "modifiedTime": 1726952021414,
+    "lastModifiedBy": "vHqSHJMdmEO6Mk2C"
+  },
+  "_id": "6RPN08bP9OvZ3QjT",
+  "sort": 200000,
+  "_key": "!actors!6RPN08bP9OvZ3QjT"
 }
