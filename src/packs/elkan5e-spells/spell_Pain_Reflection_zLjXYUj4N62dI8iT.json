@@ -1,262 +1,262 @@
 {
-    "name": "Pain Reflection",
-    "type": "spell",
-    "img": "icons/skills/wounds/injury-body-pain-gray.webp",
-    "system": {
-        "description": {
-            "value": "<p><em>You hold a shard of a silver mirror in your hand, drawing just a drop of blood from your palm as you speak a curse on your target. Every time your target harms another creature while under the effects of this spell.</em></p><p>Wisdom Save</p><ul><li><p><strong>Failure:</strong> Target is cursed. While cursed in this way, they take psychic damage equal to half of the damage they deal to other creatures. If they use an area of effect spell or ability that damages multiple creatures at once, they take half of the damage they deal to only one creature (whichever creature took the most damage).</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><em>This spell counts as a curse, so it cannot be easily dispelled but can be suppressed with @UUID[Compendium.elkan5e.elkan5e-spells.Item.xT937OvSQSRfUoix]{Protection From Curses}.</em></p><p><strong>Note: This spell does not automatically deal damage to the target in Foundry VTT.</strong> </p>",
-            "chat": "Wisdom Save</p><ul><li><p><strong>Failure:</strong> Target is cursed. While cursed in this way, they take psychic damage equal to half of the damage they deal to other creatures. If they use an area of effect spell or ability that damages multiple creatures at once, they take half of the damage they deal to only one creature (whichever creature took the most damage).</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><strong>Note: This spell does not automatically deal damage to the target in Foundry VTT.</strong> </p>"
-        },
-        "source": {
-            "custom": "elkan5e.com/spells/pain-reflection",
-            "revision": 1,
-            "rules": "",
-            "book": "Elkan 5e",
-            "page": "",
-            "license": ""
-        },
+  "name": "Pain Reflection",
+  "type": "spell",
+  "img": "icons/skills/wounds/injury-body-pain-gray.webp",
+  "system": {
+    "description": {
+      "value": "<p><em>You hold a shard of a silver mirror in your hand, drawing just a drop of blood from your palm as you speak a curse on your target. Every time your target harms another creature while under the effects of this spell.</em></p><p>Wisdom Save</p><ul><li><p><strong>Failure:</strong> Target is cursed. While cursed in this way, they take psychic damage equal to half of the damage they deal to other creatures. If they use an area of effect spell or ability that damages multiple creatures at once, they take half of the damage they deal to only one creature (whichever creature took the most damage).</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><em>This spell counts as a curse, so it cannot be easily dispelled but can be suppressed with @UUID[Compendium.elkan5e.elkan5e-spells.Item.xT937OvSQSRfUoix]{Protection From Curses}.</em></p><p><strong>Note: This spell does not automatically deal damage to the target in Foundry VTT.</strong> </p>",
+      "chat": "Wisdom Save</p><ul><li><p><strong>Failure:</strong> Target is cursed. While cursed in this way, they take psychic damage equal to half of the damage they deal to other creatures. If they use an area of effect spell or ability that damages multiple creatures at once, they take half of the damage they deal to only one creature (whichever creature took the most damage).</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><strong>Note: This spell does not automatically deal damage to the target in Foundry VTT.</strong> </p>"
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/pain-reflection",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "1",
+      "units": "hour"
+    },
+    "target": {
+      "affects": {
+        "type": "creature",
+        "count": "1",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "units": "",
+        "contiguous": false,
+        "type": ""
+      }
+    },
+    "range": {
+      "value": "60",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "level": 7,
+    "school": "ill",
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "concentration"
+    ],
+    "materials": {
+      "value": "A shard of a silver mirror",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "save",
         "activation": {
-            "type": "action",
-            "condition": "",
-            "value": 1
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
         },
         "duration": {
-            "value": "1",
-            "units": "hour"
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "Q063OCh3QFUkczCr",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "override": false
         },
         "target": {
-            "affects": {
-                "type": "creature",
-                "count": "1",
-                "choice": false,
-                "special": ""
-            },
-            "template": {
-                "units": "",
-                "contiguous": false,
-                "type": ""
-            }
-        },
-        "range": {
-            "value": "60",
-            "units": "ft",
-            "special": ""
+          "prompt": true,
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false
         },
         "uses": {
-            "max": "",
-            "recovery": [],
-            "spent": 0
+          "spent": 0,
+          "max": "",
+          "recovery": []
         },
-        "level": 7,
-        "school": "ill",
-        "properties": [
-            "vocal",
-            "somatic",
-            "material",
-            "concentration"
-        ],
-        "materials": {
-            "value": "A shard of a silver mirror",
-            "consumed": false,
-            "cost": 0,
-            "supply": 0
+        "damage": {
+          "onSave": "half",
+          "parts": []
         },
-        "preparation": {
-            "mode": "prepared",
-            "prepared": true
+        "save": {
+          "ability": "wis",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
         },
-        "activities": {
-            "dnd5eactivity000": {
-                "_id": "dnd5eactivity000",
-                "type": "save",
-                "activation": {
-                    "type": "action",
-                    "value": null,
-                    "override": false
-                },
-                "consumption": {
-                    "targets": [],
-                    "scaling": {
-                        "allowed": false,
-                        "max": ""
-                    },
-                    "spellSlot": true
-                },
-                "description": {
-                    "chatFlavor": ""
-                },
-                "duration": {
-                    "units": "inst",
-                    "concentration": false,
-                    "override": false
-                },
-                "effects": [
-                    {
-                        "_id": "Q063OCh3QFUkczCr",
-                        "onSave": false
-                    }
-                ],
-                "range": {
-                    "override": false
-                },
-                "target": {
-                    "prompt": true,
-                    "template": {
-                        "contiguous": false,
-                        "units": "ft"
-                    },
-                    "affects": {
-                        "choice": false
-                    },
-                    "override": false
-                },
-                "uses": {
-                    "spent": 0,
-                    "max": "",
-                    "recovery": []
-                },
-                "damage": {
-                    "onSave": "half",
-                    "parts": []
-                },
-                "save": {
-                    "ability": "wis",
-                    "dc": {
-                        "calculation": "spellcasting",
-                        "formula": ""
-                    }
-                },
-                "sort": 0
-            }
-        },
-        "identifier": ""
+        "sort": 0
+      }
     },
-    "effects": [
-        {
-            "name": "Pain Reflection (Curse)",
-            "changes": [],
-            "transfer": false,
-            "img": "icons/skills/wounds/injury-body-pain-gray.webp",
-            "_id": "Q063OCh3QFUkczCr",
-            "type": "base",
-            "system": {},
-            "disabled": false,
-            "duration": {
-                "startTime": null,
-                "seconds": 3600,
-                "combat": null,
-                "rounds": null,
-                "turns": null,
-                "startRound": null,
-                "startTurn": null
-            },
-            "description": "",
-            "origin": null,
-            "tint": "#ffffff",
-            "statuses": [],
-            "sort": 0,
-            "flags": {
-                "dae": {
-                    "enableCondition": "",
-                    "disableCondition": "",
-                    "disableIncapacitated": false,
-                    "selfTarget": false,
-                    "selfTargetAlways": false,
-                    "dontApply": false,
-                    "stackable": "noneName",
-                    "showIcon": false,
-                    "durationExpression": "",
-                    "macroRepeat": "none",
-                    "specialDuration": []
-                },
-                "core": {
-                    "overlay": false
-                },
-                "ActiveAuras": {
-                    "isAura": false,
-                    "aura": "None",
-                    "nameOverride": "",
-                    "radius": "",
-                    "alignment": "",
-                    "type": "",
-                    "customCheck": "",
-                    "ignoreSelf": false,
-                    "height": false,
-                    "hidden": false,
-                    "displayTemp": false,
-                    "hostile": false,
-                    "onlyOnce": false,
-                    "wallsBlock": "system"
-                }
-            },
-            "_stats": {
-                "compendiumSource": null,
-                "duplicateSource": null,
-                "coreVersion": "12.331",
-                "systemId": "dnd5e",
-                "systemVersion": "4.0.2",
-                "createdTime": null,
-                "modifiedTime": null,
-                "lastModifiedBy": null
-            },
-            "_key": "!items.effects!zLjXYUj4N62dI8iT.Q063OCh3QFUkczCr"
+    "identifier": ""
+  },
+  "effects": [
+    {
+      "name": "Pain Reflection (Curse)",
+      "changes": [],
+      "transfer": false,
+      "img": "icons/skills/wounds/injury-body-pain-gray.webp",
+      "_id": "Q063OCh3QFUkczCr",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": 3600,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system"
         }
-    ],
-    "folder": "H799nI2ov6BcHwd6",
-    "ownership": {
-        "default": 0,
-        "ymGs3J4QpWbCOXON": 3,
-        "vHqSHJMdmEO6Mk2C": 3
-    },
-    "flags": {
-        "midiProperties": {
-            "confirmTargets": "default",
-            "autoFailFriendly": false,
-            "autoSaveFriendly": false,
-            "critOther": false,
-            "offHandWeapon": false,
-            "magicdam": false,
-            "magiceffect": false,
-            "noConcentrationCheck": false,
-            "toggleEffect": false,
-            "ignoreTotalCover": false,
-            "idr": false,
-            "idi": false,
-            "idv": false,
-            "ida": false,
-            "saveDamage": "default",
-            "bonusSaveDamage": "default"
-        },
-        "midi-qol": {
-            "rollAttackPerTarget": "default",
-            "itemCondition": "",
-            "effectCondition": "",
-            "removeAttackDamageButtons": "default",
-            "reactionCondition": "",
-            "otherCondition": ""
-        },
-        "dnd5e": {
-            "riders": {
-                "activity": [],
-                "effect": []
-            }
-        },
-        "tidy5e-sheet": {
-            "section": "",
-            "actionSection": ""
-        }
-    },
-    "_stats": {
+      },
+      "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
         "coreVersion": "12.331",
         "systemId": "dnd5e",
-        "systemVersion": "4.3.6",
-        "createdTime": 1726952206806,
-        "modifiedTime": 1741832145477,
-        "lastModifiedBy": "ymGs3J4QpWbCOXON"
+        "systemVersion": "4.0.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "_key": "!items.effects!zLjXYUj4N62dI8iT.Q063OCh3QFUkczCr"
+    }
+  ],
+  "folder": "H799nI2ov6BcHwd6",
+  "ownership": {
+    "default": 0,
+    "ymGs3J4QpWbCOXON": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "flags": {
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false,
+      "saveDamage": "default",
+      "bonusSaveDamage": "default"
     },
-    "_id": "zLjXYUj4N62dI8iT",
-    "sort": 0,
-    "_key": "!items!zLjXYUj4N62dI8iT"
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.3.6",
+    "createdTime": 1726952206806,
+    "modifiedTime": 1741832145477,
+    "lastModifiedBy": "ymGs3J4QpWbCOXON"
+  },
+  "_id": "zLjXYUj4N62dI8iT",
+  "sort": 0,
+  "_key": "!items!zLjXYUj4N62dI8iT"
 }
