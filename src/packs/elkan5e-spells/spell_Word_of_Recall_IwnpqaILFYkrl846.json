@@ -1,182 +1,182 @@
 {
-    "name": "Word of Recall",
-    "type": "spell",
-    "img": "icons/environment/settlement/tavern.webp",
-    "effects": [],
-    "folder": "sDaRY0H81UTha6hq",
-    "flags": {
-        "core": {},
-        "midi-qol": {
-            "effectActivation": false,
-            "rollAttackPerTarget": "default",
-            "itemCondition": "",
-            "effectCondition": "",
-            "reactionCondition": ""
-        },
-        "midiProperties": {
-            "nodam": false,
-            "fulldam": false,
-            "halfdam": false,
-            "rollOther": false,
-            "critOther": false,
-            "magicdam": false,
-            "magiceffect": false,
-            "concentration": false,
-            "toggleEffect": false,
-            "autoFailFriendly": false,
-            "autoSaveFriendly": false,
-            "offHandWeapon": false,
-            "ignoreTotalCover": false,
-            "confirmTargets": "default",
-            "noConcentrationCheck": false,
-            "idr": false,
-            "idi": false,
-            "idv": false,
-            "ida": false
-        },
-        "dnd5e": {
-            "riders": {
-                "activity": [],
-                "effect": []
-            },
-            "migratedProperties": [
-                "vocal"
-            ]
-        }
+  "name": "Word of Recall",
+  "type": "spell",
+  "img": "icons/environment/settlement/tavern.webp",
+  "effects": [],
+  "folder": "sDaRY0H81UTha6hq",
+  "flags": {
+    "core": {},
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "reactionCondition": ""
     },
-    "system": {
-        "description": {
-            "value": "<p>You and up to five willing creatures within 5 feet of you instantly teleport to a previously designated sanctuary. You and any creatures that teleport with you appear in the nearest unoccupied space to the spot you designated when you prepared your sanctuary (see below). If you cast this spell without first preparing a sanctuary, the spell has no effect.</p><p>You must designate a sanctuary by casting this spell within a location, such as a temple, dedicated to or strongly linked to your deity. If you attempt to cast the spell in this manner in an area that isn't dedicated to your deity, the spell has no effect.</p>",
-            "chat": ""
-        },
-        "source": {
-            "custom": "Elkan 5e",
-            "revision": 1,
-            "rules": "",
-            "book": "Elkan 5e",
-            "page": "",
-            "license": ""
-        },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal"
+      ]
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p>You and up to five willing creatures within 5 feet of you instantly teleport to a previously designated sanctuary. You and any creatures that teleport with you appear in the nearest unoccupied space to the spot you designated when you prepared your sanctuary (see below). If you cast this spell without first preparing a sanctuary, the spell has no effect.</p><p>You must designate a sanctuary by casting this spell within a location, such as a temple, dedicated to or strongly linked to your deity. If you attempt to cast the spell in this manner in an area that isn't dedicated to your deity, the spell has no effect.</p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Elkan 5e",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "",
+      "units": "inst"
+    },
+    "target": {
+      "affects": {
+        "type": "creature",
+        "count": "6",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "units": "",
+        "contiguous": false,
+        "type": ""
+      }
+    },
+    "range": {
+      "value": "5",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 6,
+    "school": "con",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal"
+    ],
+    "activities": {
+      "oTju0tVriPb2WYYS": {
+        "type": "utility",
         "activation": {
-            "type": "action",
-            "condition": "",
-            "value": 1
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
         },
         "duration": {
-            "value": "",
-            "units": "inst"
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
         },
         "target": {
-            "affects": {
-                "type": "creature",
-                "count": "6",
-                "choice": false,
-                "special": ""
-            },
-            "template": {
-                "units": "",
-                "contiguous": false,
-                "type": ""
-            }
+          "prompt": true,
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false
         },
-        "range": {
-            "value": "5",
-            "units": "ft",
-            "special": ""
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
         },
         "uses": {
-            "max": "",
-            "recovery": [],
-            "spent": 0
+          "spent": 0,
+          "recovery": []
         },
-        "ability": "",
-        "level": 6,
-        "school": "con",
-        "materials": {
-            "value": "",
-            "consumed": false,
-            "cost": 0,
-            "supply": 0
-        },
-        "preparation": {
-            "mode": "prepared",
-            "prepared": true
-        },
-        "properties": [
-            "vocal"
-        ],
-        "activities": {
-            "oTju0tVriPb2WYYS": {
-                "type": "utility",
-                "activation": {
-                    "type": "action",
-                    "value": null,
-                    "override": false
-                },
-                "consumption": {
-                    "targets": [],
-                    "scaling": {
-                        "allowed": false,
-                        "max": ""
-                    },
-                    "spellSlot": true
-                },
-                "description": {
-                    "chatFlavor": ""
-                },
-                "duration": {
-                    "units": "inst",
-                    "concentration": false,
-                    "override": false
-                },
-                "effects": [],
-                "range": {
-                    "override": false
-                },
-                "target": {
-                    "prompt": true,
-                    "template": {
-                        "contiguous": false,
-                        "units": "ft"
-                    },
-                    "affects": {
-                        "choice": false
-                    },
-                    "override": false
-                },
-                "roll": {
-                    "formula": "",
-                    "name": "",
-                    "prompt": false,
-                    "visible": false
-                },
-                "uses": {
-                    "spent": 0,
-                    "recovery": []
-                },
-                "sort": 0,
-                "_id": "oTju0tVriPb2WYYS"
-            }
-        },
-        "identifier": ""
+        "sort": 0,
+        "_id": "oTju0tVriPb2WYYS"
+      }
     },
-    "ownership": {
-        "default": 0,
-        "ymJDAw0PgXIWIHMH": 3,
-        "MKYWAnkTJr0gkDqT": 3,
-        "vHqSHJMdmEO6Mk2C": 3
-    },
-    "_stats": {
-        "compendiumSource": null,
-        "duplicateSource": null,
-        "coreVersion": "12.331",
-        "systemId": "dnd5e",
-        "systemVersion": "4.3.9",
-        "createdTime": 1726952199537,
-        "modifiedTime": 1745963734715,
-        "lastModifiedBy": "code change"
-    },
-    "_id": "IwnpqaILFYkrl846",
-    "sort": 1300000,
-    "_key": "!items!IwnpqaILFYkrl846"
+    "identifier": ""
+  },
+  "ownership": {
+    "default": 0,
+    "ymJDAw0PgXIWIHMH": 3,
+    "MKYWAnkTJr0gkDqT": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.0.4",
+    "createdTime": 1726952199537,
+    "modifiedTime": 1728957802264,
+    "lastModifiedBy": "LhShb9ShQN3ambNF"
+  },
+  "_id": "IwnpqaILFYkrl846",
+  "sort": 1300000,
+  "_key": "!items!IwnpqaILFYkrl846"
 }

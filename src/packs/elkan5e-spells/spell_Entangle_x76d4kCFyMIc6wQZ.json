@@ -1,297 +1,297 @@
 {
-    "name": "Entangle",
-    "type": "spell",
-    "img": "icons/magic/nature/root-vine-entangle-foot-green.webp",
-    "effects": [
+  "name": "Entangle",
+  "type": "spell",
+  "img": "icons/magic/nature/root-vine-entangle-foot-green.webp",
+  "effects": [
+    {
+      "name": "Entangle",
+      "origin": "Compendium.elkan5e.elkan5e-spells.Item.x76d4kCFyMIc6wQZ",
+      "changes": [
         {
-            "name": "Entangle",
-            "origin": "Compendium.elkan5e.elkan5e-spells.Item.x76d4kCFyMIc6wQZ",
-            "changes": [
-                {
-                    "key": "flags.midi-qol.OverTime",
-                    "mode": 2,
-                    "value": "turn=end,\nsaveAbility=str,\nsaveDC=@attributes.spelldc,\nsaveMagic=true,\nlabel=Entangle",
-                    "priority": 20
-                }
-            ],
-            "transfer": false,
-            "flags": {
-                "dae": {
-                    "itemName": "Entangle",
-                    "disableIncapacitated": false,
-                    "selfTarget": false,
-                    "selfTargetAlways": false,
-                    "dontApply": false,
-                    "stackable": "noneName",
-                    "showIcon": false,
-                    "durationExpression": "",
-                    "macroRepeat": "none",
-                    "specialDuration": [],
-                    "enableCondition": "",
-                    "disableCondition": ""
-                },
-                "ActiveAuras": {
-                    "isAura": false,
-                    "aura": "None",
-                    "nameOverride": "",
-                    "radius": "",
-                    "alignment": "",
-                    "type": "",
-                    "customCheck": "",
-                    "ignoreSelf": false,
-                    "height": false,
-                    "hidden": false,
-                    "displayTemp": false,
-                    "hostile": false,
-                    "onlyOnce": false,
-                    "wallsBlock": "system"
-                },
-                "core": {
-                    "overlay": false
-                }
-            },
-            "img": "icons/magic/nature/root-vine-entangle-foot-green.webp",
-            "_id": "OPOIjeSC7TbTC1Ul",
-            "type": "base",
-            "system": {},
-            "disabled": false,
-            "duration": {
-                "startTime": null,
-                "seconds": 60,
-                "combat": null,
-                "rounds": null,
-                "turns": null,
-                "startRound": null,
-                "startTurn": null
-            },
-            "description": "",
-            "tint": "#ffffff",
-            "statuses": [
-                "grappled"
-            ],
-            "sort": 0,
-            "_stats": {
-                "compendiumSource": null,
-                "duplicateSource": null,
-                "coreVersion": "12.331",
-                "systemId": "dnd5e",
-                "systemVersion": "4.0.2",
-                "createdTime": null,
-                "modifiedTime": 1728417105867,
-                "lastModifiedBy": "YxlXl9sauSuWxHdZ"
-            },
-            "_key": "!items.effects!x76d4kCFyMIc6wQZ.OPOIjeSC7TbTC1Ul"
+          "key": "flags.midi-qol.OverTime",
+          "mode": 2,
+          "value": "turn=end,\nsaveAbility=str,\nsaveDC=@attributes.spelldc,\nsaveMagic=true,\nlabel=Entangle",
+          "priority": 20
         }
-    ],
-    "folder": "U0k4VGG6bziqf3oH",
-    "flags": {
-        "core": {},
-        "midi-qol": {
-            "onUseMacroName": "",
-            "effectActivation": false,
-            "AoETargetType": "any",
-            "AoETargetTypeIncludeSelf": true,
-            "autoTarget": "default",
-            "itemCondition": "",
-            "reactionCondition": "",
-            "otherCondition": "",
-            "effectCondition": "",
-            "rollAttackPerTarget": "default",
-            "removeAttackDamageButtons": "default"
+      ],
+      "transfer": false,
+      "flags": {
+        "dae": {
+          "itemName": "Entangle",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [],
+          "enableCondition": "",
+          "disableCondition": ""
         },
-        "midiProperties": {
-            "nodam": false,
-            "fulldam": false,
-            "halfdam": false,
-            "rollOther": false,
-            "critOther": false,
-            "magicdam": false,
-            "magiceffect": false,
-            "concentration": false,
-            "toggleEffect": false,
-            "autoFailFriendly": false,
-            "autoSaveFriendly": false,
-            "offHandWeapon": false,
-            "ignoreTotalCover": false,
-            "noConcentrationCheck": false,
-            "confirmTargets": "default",
-            "idr": false,
-            "idi": false,
-            "idv": false,
-            "ida": false
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system"
         },
-        "dnd5e": {
-            "riders": {
-                "activity": [],
-                "effect": []
-            },
-            "migratedProperties": [
-                "vocal",
-                "somatic",
-                "concentration"
-            ]
-        },
-        "tidy5e-sheet": {
-            "section": "",
-            "actionSection": ""
+        "core": {
+          "overlay": false
         }
-    },
-    "system": {
-        "description": {
-            "value": "<p><em>Reaching out to your foes, you call upon nature to spring forth and hold them in place.</em></p><p><strong>Strength Save</strong> </p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[grappled] by the entangling plants until the spell ends. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li><li><p><strong>Area Hazard:</strong> The area is &amp;reference[difficult terrain]. Creatures who enter the area are not &amp;reference[grappled].</p></li></ul>",
-            "chat": "<strong>Strength Save</strong> </p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[grappled] by the entangling plants until the spell ends. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li><li><p><strong>Area Hazard:</strong> The area is &amp;reference[difficult terrain]. Creatures who enter the area are not &amp;reference[grappled].</p></li></ul>"
-        },
-        "source": {
-            "custom": "elkan5e.com/spells/entangle",
-            "revision": 1,
-            "rules": "",
-            "book": "Elkan 5e",
-            "page": "",
-            "license": ""
-        },
-        "activation": {
-            "type": "action",
-            "condition": "",
-            "value": 1
-        },
-        "duration": {
-            "value": "1",
-            "units": "minute"
-        },
-        "target": {
-            "affects": {
-                "count": "",
-                "type": "",
-                "choice": false
-            },
-            "template": {
-                "count": "",
-                "units": "ft",
-                "type": "square",
-                "size": "20",
-                "contiguous": false
-            }
-        },
-        "range": {
-            "value": "90",
-            "units": "ft",
-            "special": ""
-        },
-        "uses": {
-            "max": "",
-            "recovery": [],
-            "spent": 0
-        },
-        "ability": "",
-        "level": 1,
-        "school": "con",
-        "materials": {
-            "value": "",
-            "consumed": false,
-            "cost": 0,
-            "supply": 0
-        },
-        "preparation": {
-            "mode": "prepared",
-            "prepared": true
-        },
-        "properties": [
-            "vocal",
-            "somatic",
-            "concentration",
-            "mgc"
-        ],
-        "activities": {
-            "griwcW3Xtxr9o2sf": {
-                "type": "save",
-                "_id": "griwcW3Xtxr9o2sf",
-                "sort": 0,
-                "activation": {
-                    "type": "action",
-                    "value": null,
-                    "override": false
-                },
-                "consumption": {
-                    "scaling": {
-                        "allowed": false
-                    },
-                    "spellSlot": true,
-                    "targets": []
-                },
-                "description": {
-                    "chatFlavor": ""
-                },
-                "duration": {
-                    "units": "inst",
-                    "concentration": false,
-                    "override": false
-                },
-                "effects": [
-                    {
-                        "_id": "OPOIjeSC7TbTC1Ul",
-                        "onSave": false
-                    }
-                ],
-                "range": {
-                    "override": false
-                },
-                "target": {
-                    "template": {
-                        "contiguous": false,
-                        "units": "ft"
-                    },
-                    "affects": {
-                        "choice": false
-                    },
-                    "override": false,
-                    "prompt": true
-                },
-                "uses": {
-                    "spent": 0,
-                    "recovery": [],
-                    "max": ""
-                },
-                "damage": {
-                    "parts": [],
-                    "onSave": "none"
-                },
-                "save": {
-                    "ability": "str",
-                    "dc": {
-                        "calculation": "spellcasting",
-                        "formula": ""
-                    }
-                },
-                "useConditionText": "",
-                "forceDialog": false,
-                "effectConditionText": "!target.traits.ci.value.has('grappled')",
-                "name": "",
-                "img": "",
-                "appliedEffects": [
-                    "OPOIjeSC7TbTC1Ul"
-                ]
-            }
-        },
-        "identifier": ""
-    },
-    "ownership": {
-        "default": 0,
-        "VJURYym0JQByHBQL": 3,
-        "ymJDAw0PgXIWIHMH": 3,
-        "MKYWAnkTJr0gkDqT": 3,
-        "vHqSHJMdmEO6Mk2C": 3
-    },
-    "_stats": {
+      },
+      "img": "icons/magic/nature/root-vine-entangle-foot-green.webp",
+      "_id": "OPOIjeSC7TbTC1Ul",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": 60,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [
+        "grappled"
+      ],
+      "sort": 0,
+      "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
         "coreVersion": "12.331",
         "systemId": "dnd5e",
-        "systemVersion": "4.3.9",
-        "createdTime": 1726952206423,
-        "modifiedTime": 1745963734057,
-        "lastModifiedBy": "code change"
+        "systemVersion": "4.0.2",
+        "createdTime": null,
+        "modifiedTime": 1728417105867,
+        "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+      },
+      "_key": "!items.effects!x76d4kCFyMIc6wQZ.OPOIjeSC7TbTC1Ul"
+    }
+  ],
+  "folder": "U0k4VGG6bziqf3oH",
+  "flags": {
+    "core": {},
+    "midi-qol": {
+      "onUseMacroName": "",
+      "effectActivation": false,
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default"
     },
-    "_id": "x76d4kCFyMIc6wQZ",
-    "sort": 4700000,
-    "_key": "!items!x76d4kCFyMIc6wQZ"
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "noConcentrationCheck": false,
+      "confirmTargets": "default",
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic",
+        "concentration"
+      ]
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>Reaching out to your foes, you call upon nature to spring forth and hold them in place.</em></p><p><strong>Strength Save</strong> </p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[grappled] by the entangling plants until the spell ends. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li><li><p><strong>Area Hazard:</strong> The area is &amp;reference[difficult terrain]. Creatures who enter the area are not &amp;reference[grappled].</p></li></ul>",
+      "chat": "<strong>Strength Save</strong> </p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[grappled] by the entangling plants until the spell ends. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li><li><p><strong>Area Hazard:</strong> The area is &amp;reference[difficult terrain]. Creatures who enter the area are not &amp;reference[grappled].</p></li></ul>"
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/entangle",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "1",
+      "units": "minute"
+    },
+    "target": {
+      "affects": {
+        "count": "",
+        "type": "",
+        "choice": false
+      },
+      "template": {
+        "count": "",
+        "units": "ft",
+        "type": "square",
+        "size": "20",
+        "contiguous": false
+      }
+    },
+    "range": {
+      "value": "90",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 1,
+    "school": "con",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "concentration",
+      "mgc"
+    ],
+    "activities": {
+      "griwcW3Xtxr9o2sf": {
+        "type": "save",
+        "_id": "griwcW3Xtxr9o2sf",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "OPOIjeSC7TbTC1Ul",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "parts": [],
+          "onSave": "none"
+        },
+        "save": {
+          "ability": "str",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "!target.traits.ci.value.has('grappled')",
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "OPOIjeSC7TbTC1Ul"
+        ]
+      }
+    },
+    "identifier": ""
+  },
+  "ownership": {
+    "default": 0,
+    "VJURYym0JQByHBQL": 3,
+    "ymJDAw0PgXIWIHMH": 3,
+    "MKYWAnkTJr0gkDqT": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.1.2",
+    "createdTime": 1726952206423,
+    "modifiedTime": 1737159503638,
+    "lastModifiedBy": "Iu69CD0r3ke4BAoP"
+  },
+  "_id": "x76d4kCFyMIc6wQZ",
+  "sort": 4700000,
+  "_key": "!items!x76d4kCFyMIc6wQZ"
 }
