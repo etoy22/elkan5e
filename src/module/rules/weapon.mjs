@@ -72,6 +72,8 @@ export function weaponTypes() {
     const WEAPONS = game.settings.get("elkan5e", "weapons");
     if (!WEAPONS) {
         ["flail", "net", "trident", "warpick"].forEach(weapon => delete CONFIG.DND5E.weaponIds[weapon]);
+        CONFIG.DND5E.weaponIds["pistol"] = "Compendium.elkan5e.elkan5e-equipment.Item.O7abmlrF4raTjnkr";
+        CONFIG.DND5E.weaponIds["musket"] = "Compendium.elkan5e.elkan5e-equipment.Item.IUIwCZtPbwMwB0b1";
     }
 }
 
