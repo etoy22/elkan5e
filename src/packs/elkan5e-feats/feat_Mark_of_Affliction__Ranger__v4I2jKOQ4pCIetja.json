@@ -1,396 +1,396 @@
 {
-    "folder": "OC0XZyjIvqTz8IUW",
-    "name": "Mark of Affliction (Ranger)",
-    "type": "feat",
-    "_id": "v4I2jKOQ4pCIetja",
-    "img": "icons/skills/toxins/symbol-poison-drop-skull-green.webp",
-    "system": {
-        "description": {
-            "value": "<p><strong>Bonus Action</strong> - Self - 1 Minute - Magical</p><p>Using this ability consumes a use of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.HPrjgPXLsDRBbfsD]{Mark for Death}. You cannot use this ability alongside Mark for Death or any other ranger mark.</p><p>While you use the Mark of Affliction, once on each of your turns, when you hit a creature with a weapon attack or damage a creature with a ranger spell, you can attempt to poison them with your magic. This ability ends early if you become &amp;reference[incapacitated].</p><p><strong>Constitution Saving Throw</strong> </p><p>This ability uses your ranger spellcasting DC.</p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[poisoned] until this ability ends. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
-            "chat": ""
+  "folder": "OC0XZyjIvqTz8IUW",
+  "name": "Mark of Affliction (Ranger)",
+  "type": "feat",
+  "_id": "v4I2jKOQ4pCIetja",
+  "img": "icons/skills/toxins/symbol-poison-drop-skull-green.webp",
+  "system": {
+    "description": {
+      "value": "<p><strong>Bonus Action</strong> - Self - 1 Minute - Magical</p><p>Using this ability consumes a use of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.HPrjgPXLsDRBbfsD]{Mark for Death}. You cannot use this ability alongside Mark for Death or any other ranger mark.</p><p>While you use the Mark of Affliction, once on each of your turns, when you hit a creature with a weapon attack or damage a creature with a ranger spell, you can attempt to poison them with your magic. This ability ends early if you become &amp;reference[incapacitated].</p><p><strong>Constitution Saving Throw</strong> </p><p>This ability uses your ranger spellcasting DC.</p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[poisoned] until this ability ends. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "elkan5e.com/feats/mark-of-affliction",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "uses": {
+      "max": "",
+      "spent": 0,
+      "recovery": []
+    },
+    "type": {
+      "value": "feat",
+      "subtype": ""
+    },
+    "properties": [
+      "mgc"
+    ],
+    "requirements": "Feat (Ranger Level 4)",
+    "prerequisites": {
+      "level": 4
+    },
+    "activities": {
+      "yb6Urg59gqcQs0SC": {
+        "type": "save",
+        "_id": "yb6Urg59gqcQs0SC",
+        "sort": 0,
+        "activation": {
+          "type": "special",
+          "value": null,
+          "override": false,
+          "condition": ""
         },
-        "source": {
-            "custom": "elkan5e.com/feats/mark-of-affliction",
-            "revision": 1,
-            "rules": "",
-            "book": "Elkan 5e",
-            "page": "",
-            "license": ""
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "fZaBbTUxBpfQqEw7",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "override": false,
+          "units": "spec",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "1",
+            "type": "creature",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
         },
         "uses": {
-            "max": "",
-            "spent": 0,
-            "recovery": []
+          "spent": 0,
+          "recovery": [],
+          "max": ""
         },
-        "type": {
-            "value": "feat",
-            "subtype": ""
+        "damage": {
+          "parts": [],
+          "onSave": "none"
         },
-        "properties": [
-            "mgc"
+        "save": {
+          "ability": "con",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "fZaBbTUxBpfQqEw7"
+        ]
+      },
+      "840fT1vHK0n8BU8K": {
+        "type": "utility",
+        "name": "Mark of Affliction (Uses)",
+        "_id": "840fT1vHK0n8BU8K",
+        "sort": 0,
+        "activation": {
+          "type": "bonus",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "Compendium.elkan5e.elkan5e-class-features.Item.HPrjgPXLsDRBbfsD",
+              "scaling": {}
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "8e1fUpb3psM0UzkV"
+          }
         ],
-        "requirements": "Feat (Ranger Level 4)",
-        "prerequisites": {
-            "level": 4
+        "range": {
+          "override": false,
+          "units": "self",
+          "special": ""
         },
-        "activities": {
-            "yb6Urg59gqcQs0SC": {
-                "type": "save",
-                "_id": "yb6Urg59gqcQs0SC",
-                "sort": 0,
-                "activation": {
-                    "type": "special",
-                    "value": null,
-                    "override": false,
-                    "condition": ""
-                },
-                "consumption": {
-                    "scaling": {
-                        "allowed": false
-                    },
-                    "spellSlot": true,
-                    "targets": []
-                },
-                "description": {
-                    "chatFlavor": ""
-                },
-                "duration": {
-                    "units": "inst",
-                    "concentration": false,
-                    "override": false
-                },
-                "effects": [
-                    {
-                        "_id": "fZaBbTUxBpfQqEw7",
-                        "onSave": false
-                    }
-                ],
-                "range": {
-                    "override": false,
-                    "units": "spec",
-                    "special": ""
-                },
-                "target": {
-                    "template": {
-                        "contiguous": false,
-                        "units": "ft",
-                        "type": ""
-                    },
-                    "affects": {
-                        "choice": false,
-                        "count": "1",
-                        "type": "creature",
-                        "special": ""
-                    },
-                    "override": false,
-                    "prompt": true
-                },
-                "uses": {
-                    "spent": 0,
-                    "recovery": [],
-                    "max": ""
-                },
-                "damage": {
-                    "parts": [],
-                    "onSave": "none"
-                },
-                "save": {
-                    "ability": "con",
-                    "dc": {
-                        "calculation": "spellcasting",
-                        "formula": ""
-                    }
-                },
-                "name": "",
-                "img": "",
-                "appliedEffects": [
-                    "fZaBbTUxBpfQqEw7"
-                ]
-            },
-            "840fT1vHK0n8BU8K": {
-                "type": "utility",
-                "name": "Mark of Affliction (Uses)",
-                "_id": "840fT1vHK0n8BU8K",
-                "sort": 0,
-                "activation": {
-                    "type": "bonus",
-                    "value": null,
-                    "override": false,
-                    "condition": ""
-                },
-                "consumption": {
-                    "scaling": {
-                        "allowed": false
-                    },
-                    "spellSlot": true,
-                    "targets": [
-                        {
-                            "type": "itemUses",
-                            "value": "1",
-                            "target": "Compendium.elkan5e.elkan5e-class-features.Item.HPrjgPXLsDRBbfsD",
-                            "scaling": {}
-                        }
-                    ]
-                },
-                "description": {
-                    "chatFlavor": ""
-                },
-                "duration": {
-                    "units": "inst",
-                    "concentration": false,
-                    "override": false
-                },
-                "effects": [
-                    {
-                        "_id": "8e1fUpb3psM0UzkV"
-                    }
-                ],
-                "range": {
-                    "override": false,
-                    "units": "self",
-                    "special": ""
-                },
-                "target": {
-                    "template": {
-                        "contiguous": false,
-                        "units": "ft",
-                        "type": ""
-                    },
-                    "affects": {
-                        "choice": false,
-                        "count": "",
-                        "type": "self",
-                        "special": ""
-                    },
-                    "override": false,
-                    "prompt": true
-                },
-                "uses": {
-                    "spent": 0,
-                    "recovery": [],
-                    "max": ""
-                },
-                "roll": {
-                    "prompt": false,
-                    "visible": false,
-                    "name": "",
-                    "formula": ""
-                },
-                "img": "",
-                "appliedEffects": [
-                    "8e1fUpb3psM0UzkV"
-                ]
-            }
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": "self",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
         },
-        "identifier": "",
-        "enchant": {}
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "img": "",
+        "appliedEffects": [
+          "8e1fUpb3psM0UzkV"
+        ]
+      }
     },
-    "effects": [
-        {
-            "name": "Mark of Affliction",
-            "changes": [],
-            "transfer": false,
-            "_id": "8e1fUpb3psM0UzkV",
-            "disabled": false,
-            "duration": {
-                "startTime": null,
-                "seconds": 60,
-                "combat": null,
-                "rounds": null,
-                "turns": null,
-                "startRound": null,
-                "startTurn": null
-            },
-            "description": "",
-            "origin": null,
-            "statuses": [],
-            "flags": {
-                "dae": {
-                    "disableIncapacitated": true,
-                    "selfTarget": false,
-                    "selfTargetAlways": false,
-                    "dontApply": false,
-                    "stackable": "noneName",
-                    "showIcon": false,
-                    "durationExpression": "",
-                    "macroRepeat": "none",
-                    "specialDuration": [],
-                    "enableCondition": "",
-                    "disableCondition": ""
-                },
-                "ActiveAuras": {
-                    "isAura": false,
-                    "aura": "None",
-                    "nameOverride": "",
-                    "radius": "",
-                    "alignment": "",
-                    "type": "",
-                    "customCheck": "",
-                    "ignoreSelf": false,
-                    "height": false,
-                    "hidden": false,
-                    "displayTemp": false,
-                    "hostile": false,
-                    "onlyOnce": false,
-                    "wallsBlock": "system"
-                },
-                "core": {
-                    "overlay": false
-                }
-            },
-            "tint": "#ffffff",
-            "_stats": {
-                "compendiumSource": null,
-                "duplicateSource": null,
-                "coreVersion": "12.331",
-                "systemId": "dnd5e",
-                "systemVersion": "4.0.2",
-                "createdTime": null,
-                "modifiedTime": null,
-                "lastModifiedBy": null
-            },
-            "img": "icons/skills/toxins/symbol-poison-drop-skull-green.webp",
-            "type": "base",
-            "system": {},
-            "sort": 0,
-            "_key": "!items.effects!v4I2jKOQ4pCIetja.8e1fUpb3psM0UzkV"
+    "identifier": "",
+    "enchant": {}
+  },
+  "effects": [
+    {
+      "name": "Mark of Affliction",
+      "changes": [],
+      "transfer": false,
+      "_id": "8e1fUpb3psM0UzkV",
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": 60,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "statuses": [],
+      "flags": {
+        "dae": {
+          "disableIncapacitated": true,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [],
+          "enableCondition": "",
+          "disableCondition": ""
         },
-        {
-            "name": "Poisoned",
-            "origin": "Compendium.elkan5e.elkan5e-feats.Item.Kb50Xn83LKmo9PB0",
-            "changes": [
-                {
-                    "key": "macro.StatusEffect",
-                    "mode": 0,
-                    "value": "poisoned",
-                    "priority": 0
-                },
-                {
-                    "key": "flags.midi-qol.OverTime",
-                    "mode": 2,
-                    "value": "turn=end,\nsaveAbility=con,\nsaveDC=@attributes.spelldc,\nsaveMagic=true,\nlabel=Mark of Affliction",
-                    "priority": 20
-                }
-            ],
-            "transfer": false,
-            "flags": {
-                "dae": {
-                    "itemName": "Mark of Affliction (Poison)",
-                    "disableIncapacitated": false,
-                    "selfTarget": false,
-                    "selfTargetAlways": false,
-                    "dontApply": false,
-                    "stackable": "noneName",
-                    "showIcon": false,
-                    "durationExpression": "",
-                    "macroRepeat": "none",
-                    "specialDuration": [],
-                    "enableCondition": "",
-                    "disableCondition": ""
-                },
-                "ActiveAuras": {
-                    "isAura": false,
-                    "aura": "None",
-                    "nameOverride": "",
-                    "radius": "",
-                    "alignment": "",
-                    "type": "",
-                    "customCheck": "",
-                    "ignoreSelf": false,
-                    "height": false,
-                    "hidden": false,
-                    "displayTemp": false,
-                    "hostile": false,
-                    "onlyOnce": false,
-                    "wallsBlock": "system"
-                },
-                "core": {
-                    "overlay": false
-                }
-            },
-            "_id": "fZaBbTUxBpfQqEw7",
-            "disabled": false,
-            "duration": {
-                "startTime": null,
-                "seconds": null,
-                "combat": null,
-                "rounds": null,
-                "turns": null,
-                "startRound": null,
-                "startTurn": null
-            },
-            "description": "",
-            "statuses": [],
-            "tint": "#ffffff",
-            "_stats": {
-                "compendiumSource": "Compendium.elkan5e.elkan5e-feats.Item.Kb50Xn83LKmo9PB0.ActiveEffect.KF2ObcfKkwafyL83",
-                "duplicateSource": null,
-                "coreVersion": "12.331",
-                "systemId": "dnd5e",
-                "systemVersion": "4.0.2",
-                "createdTime": null,
-                "modifiedTime": null,
-                "lastModifiedBy": null
-            },
-            "img": "modules/elkan5e/icons/conditions/poisoned.svg",
-            "type": "base",
-            "system": {},
-            "sort": 0,
-            "_key": "!items.effects!v4I2jKOQ4pCIetja.fZaBbTUxBpfQqEw7"
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system"
+        },
+        "core": {
+          "overlay": false
         }
-    ],
-    "sort": 0,
-    "ownership": {
-        "default": 0,
-        "3Yi0HjF4PKCA4vX0": 3,
-        "vHqSHJMdmEO6Mk2C": 3
-    },
-    "flags": {
-        "midiProperties": {
-            "confirmTargets": "default",
-            "autoFailFriendly": false,
-            "autoSaveFriendly": false,
-            "critOther": false,
-            "offHandWeapon": false,
-            "magicdam": false,
-            "magiceffect": false,
-            "concentration": false,
-            "noConcentrationCheck": false,
-            "toggleEffect": false,
-            "ignoreTotalCover": false,
-            "idr": false,
-            "idi": false,
-            "idv": false,
-            "ida": false
-        },
-        "midi-qol": {
-            "rollAttackPerTarget": "default",
-            "itemCondition": "",
-            "effectCondition": "",
-            "reactionCondition": "",
-            "removeAttackDamageButtons": "default",
-            "otherCondition": ""
-        },
-        "dnd5e": {
-            "riders": {
-                "activity": [],
-                "effect": []
-            }
-        },
-        "tidy5e-sheet": {
-            "section": "",
-            "actionSection": ""
-        }
-    },
-    "_stats": {
+      },
+      "tint": "#ffffff",
+      "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
         "coreVersion": "12.331",
         "systemId": "dnd5e",
-        "systemVersion": "4.0.4",
-        "createdTime": 1726952213896,
-        "modifiedTime": 1739855521785,
-        "lastModifiedBy": "fgP8EzWy33UFoZmI"
+        "systemVersion": "4.0.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "img": "icons/skills/toxins/symbol-poison-drop-skull-green.webp",
+      "type": "base",
+      "system": {},
+      "sort": 0,
+      "_key": "!items.effects!v4I2jKOQ4pCIetja.8e1fUpb3psM0UzkV"
     },
-    "_key": "!items!v4I2jKOQ4pCIetja"
+    {
+      "name": "Poisoned",
+      "origin": "Compendium.elkan5e.elkan5e-feats.Item.Kb50Xn83LKmo9PB0",
+      "changes": [
+        {
+          "key": "macro.StatusEffect",
+          "mode": 0,
+          "value": "poisoned",
+          "priority": 0
+        },
+        {
+          "key": "flags.midi-qol.OverTime",
+          "mode": 2,
+          "value": "turn=end,\nsaveAbility=con,\nsaveDC=@attributes.spelldc,\nsaveMagic=true,\nlabel=Mark of Affliction",
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "flags": {
+        "dae": {
+          "itemName": "Mark of Affliction (Poison)",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [],
+          "enableCondition": "",
+          "disableCondition": ""
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system"
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "_id": "fZaBbTUxBpfQqEw7",
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "statuses": [],
+      "tint": "#ffffff",
+      "_stats": {
+        "compendiumSource": "Compendium.elkan5e.elkan5e-feats.Item.Kb50Xn83LKmo9PB0.ActiveEffect.KF2ObcfKkwafyL83",
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.0.2",
+        "createdTime": null,
+        "modifiedTime": null,
+        "lastModifiedBy": null
+      },
+      "img": "modules/elkan5e/icons/conditions/poisoned.svg",
+      "type": "base",
+      "system": {},
+      "sort": 0,
+      "_key": "!items.effects!v4I2jKOQ4pCIetja.fZaBbTUxBpfQqEw7"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "3Yi0HjF4PKCA4vX0": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "flags": {
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "reactionCondition": "",
+      "removeAttackDamageButtons": "default",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.0.4",
+    "createdTime": 1726952213896,
+    "modifiedTime": 1739855521785,
+    "lastModifiedBy": "fgP8EzWy33UFoZmI"
+  },
+  "_key": "!items!v4I2jKOQ4pCIetja"
 }
