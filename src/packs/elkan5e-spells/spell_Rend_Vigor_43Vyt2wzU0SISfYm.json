@@ -1,244 +1,244 @@
 {
-    "name": "Rend Vigor",
-    "type": "spell",
-    "img": "icons/magic/unholy/hand-light-pink.webp",
-    "system": {
-        "description": {
-            "value": "<p><em>Holding a small reflective black stone in your palm, you curse your target, who appears in the reflection of the stone. You attempt to strip them of the energy empowering them, whether it be biological, magical, or psychological.</em></p><p><strong>Charisma Save</strong> </p><ul><li><p><strong>Failure:</strong> Target loses all &amp;reference[temporary hit points].</p></li><li><p><strong>Success:</strong> Target loses half of their temporary hit points.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 1st.</p><p></p><p><em>This spell counts as a &amp;reference[cursed]{curse}.</em></p>",
-            "chat": "<strong>Charisma Save</strong> </p><ul><li><p><strong>Failure:</strong> Target loses all &amp;reference[temporary hit points].</p></li><li><p><strong>Success:</strong> Target loses half of their temporary hit points.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 1st.</p><p></p>"
+  "name": "Rend Vigor",
+  "type": "spell",
+  "img": "icons/magic/unholy/hand-light-pink.webp",
+  "system": {
+    "description": {
+      "value": "<p><em>Holding a small reflective black stone in your palm, you curse your target, who appears in the reflection of the stone. You attempt to strip them of the energy empowering them, whether it be biological, magical, or psychological.</em></p><p><strong>Charisma Save</strong> </p><ul><li><p><strong>Failure:</strong> Target loses all &amp;reference[temporary hit points].</p></li><li><p><strong>Success:</strong> Target loses half of their temporary hit points.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 1st.</p><p></p><p><em>This spell counts as a &amp;reference[cursed]{curse}.</em></p>",
+      "chat": "<strong>Charisma Save</strong> </p><ul><li><p><strong>Failure:</strong> Target loses all &amp;reference[temporary hit points].</p></li><li><p><strong>Success:</strong> Target loses half of their temporary hit points.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 1st.</p><p></p>"
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/rend-vigor",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "bonus",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "",
+      "units": "inst"
+    },
+    "target": {
+      "affects": {
+        "special": "",
+        "type": "creature",
+        "count": "1",
+        "choice": false
+      },
+      "template": {
+        "type": "",
+        "units": "",
+        "contiguous": false
+      }
+    },
+    "range": {
+      "value": "90",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 1,
+    "school": "nec",
+    "materials": {
+      "value": "A small reflective black stone",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": false
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "mgc"
+    ],
+    "activities": {
+      "dnd5eactivity000": {
+        "name": "",
+        "img": "",
+        "damage": {
+          "onSave": "half"
         },
-        "source": {
-            "custom": "elkan5e.com/spells/rend-vigor",
-            "revision": 1,
-            "rules": "",
-            "book": "Elkan 5e",
-            "page": "",
-            "license": ""
-        },
+        "appliedEffects": []
+      },
+      "YokfxH3FPKLu3kx4": {
+        "type": "save",
+        "_id": "YokfxH3FPKLu3kx4",
+        "sort": 0,
         "activation": {
-            "type": "bonus",
-            "condition": "",
-            "value": 1
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
         },
         "duration": {
-            "value": "",
-            "units": "inst"
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
         },
         "target": {
-            "affects": {
-                "special": "",
-                "type": "creature",
-                "count": "1",
-                "choice": false
-            },
-            "template": {
-                "type": "",
-                "units": "",
-                "contiguous": false
-            }
-        },
-        "range": {
-            "value": "90",
-            "units": "ft",
-            "special": ""
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
         },
         "uses": {
-            "max": "",
-            "recovery": [],
-            "spent": 0
+          "spent": 0,
+          "recovery": [],
+          "max": ""
         },
-        "ability": "",
-        "level": 1,
-        "school": "nec",
-        "materials": {
-            "value": "A small reflective black stone",
-            "consumed": false,
-            "cost": 0,
-            "supply": 0
+        "damage": {
+          "parts": [],
+          "onSave": "none"
         },
-        "preparation": {
-            "mode": "prepared",
-            "prepared": false
+        "save": {
+          "ability": "cha",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
         },
-        "properties": [
-            "vocal",
-            "somatic",
-            "material",
-            "mgc"
-        ],
-        "activities": {
-            "dnd5eactivity000": {
-                "name": "",
-                "img": "",
-                "damage": {
-                    "onSave": "half"
-                },
-                "appliedEffects": []
-            },
-            "YokfxH3FPKLu3kx4": {
-                "type": "save",
-                "_id": "YokfxH3FPKLu3kx4",
-                "sort": 0,
-                "activation": {
-                    "type": "action",
-                    "value": null,
-                    "override": false
-                },
-                "consumption": {
-                    "scaling": {
-                        "allowed": false
-                    },
-                    "spellSlot": true,
-                    "targets": []
-                },
-                "description": {
-                    "chatFlavor": ""
-                },
-                "duration": {
-                    "units": "inst",
-                    "concentration": false,
-                    "override": false
-                },
-                "effects": [],
-                "range": {
-                    "override": false
-                },
-                "target": {
-                    "template": {
-                        "contiguous": false,
-                        "units": "ft"
-                    },
-                    "affects": {
-                        "choice": false
-                    },
-                    "override": false,
-                    "prompt": true
-                },
-                "uses": {
-                    "spent": 0,
-                    "recovery": [],
-                    "max": ""
-                },
-                "damage": {
-                    "parts": [],
-                    "onSave": "none"
-                },
-                "save": {
-                    "ability": "cha",
-                    "dc": {
-                        "calculation": "spellcasting",
-                        "formula": ""
-                    }
-                },
-                "name": "",
-                "img": "",
-                "appliedEffects": [],
-                "useConditionText": "!target.traits.ci.value.has('cursed')"
-            }
-        },
-        "identifier": ""
+        "name": "",
+        "img": "",
+        "appliedEffects": [],
+        "useConditionText": "!target.traits.ci.value.has('cursed')"
+      }
     },
-    "effects": [],
-    "ownership": {
-        "default": 2,
-        "WaiirYzq9mhRj9cS": 3,
-        "vHqSHJMdmEO6Mk2C": 3
+    "identifier": ""
+  },
+  "effects": [],
+  "ownership": {
+    "default": 2,
+    "WaiirYzq9mhRj9cS": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "flags": {
+    "midi-qol": {
+      "effectActivation": false,
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "rollAttackPerTarget": "default",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "onUseMacroName": "[postSave]ItemMacro"
     },
-    "flags": {
-        "midi-qol": {
-            "effectActivation": false,
-            "removeAttackDamageButtons": "default",
-            "itemCondition": "",
-            "reactionCondition": "",
-            "otherCondition": "",
-            "effectCondition": "",
-            "rollAttackPerTarget": "default",
-            "AoETargetType": "any",
-            "AoETargetTypeIncludeSelf": true,
-            "autoTarget": "default",
-            "onUseMacroName": "[postSave]ItemMacro"
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "noConcentrationCheck": false,
+      "confirmTargets": "default",
+      "saveDamage": "default",
+      "bonusSaveDamage": "default",
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "core": {
+      "sourceId": "Item.jy5ADu5PzR6ElRWf"
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic",
+        "material"
+      ]
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    },
+    "dae": {
+      "macro": {
+        "name": "Rend Vigor",
+        "img": "icons/magic/unholy/hand-light-pink.webp",
+        "type": "script",
+        "scope": "global",
+        "command": "let saves = workflow.saves;\nlet failed = workflow.failedSaves;\n\nsaves.forEach(save => {\n    let target = save.actor;\n    console.log(\"target\", target)\n    if (target.system.attributes.hp.temp != null){\n        target.system.attributes.hp.temp = Math.floor(target.system.attributes.hp.temp/2);\n    }\n});\n\nfailed.forEach(fail => {\n    let target = fail.actor;\n    if (target.system.attributes.hp.temp != null){\n        target.system.attributes.hp.temp = null;\n    }\n});",
+        "author": "cwIJ7W3XRXrY0zj2",
+        "ownership": {
+          "default": 3
         },
-        "midiProperties": {
-            "nodam": false,
-            "fulldam": false,
-            "halfdam": false,
-            "autoFailFriendly": false,
-            "autoSaveFriendly": false,
-            "rollOther": false,
-            "critOther": false,
-            "offHandWeapon": false,
-            "magicdam": false,
-            "magiceffect": false,
-            "concentration": false,
-            "toggleEffect": false,
-            "ignoreTotalCover": false,
-            "noConcentrationCheck": false,
-            "confirmTargets": "default",
-            "saveDamage": "default",
-            "bonusSaveDamage": "default",
-            "idr": false,
-            "idi": false,
-            "idv": false,
-            "ida": false
-        },
-        "core": {
-            "sourceId": "Item.jy5ADu5PzR6ElRWf"
-        },
-        "dnd5e": {
-            "riders": {
-                "activity": [],
-                "effect": []
-            },
-            "migratedProperties": [
-                "vocal",
-                "somatic",
-                "material"
-            ]
-        },
-        "tidy5e-sheet": {
-            "section": "",
-            "actionSection": ""
-        },
-        "dae": {
-            "macro": {
-                "name": "Rend Vigor",
-                "img": "icons/magic/unholy/hand-light-pink.webp",
-                "type": "script",
-                "scope": "global",
-                "command": "let saves = workflow.saves;\nlet failed = workflow.failedSaves;\n\nsaves.forEach(save => {\n    let target = save.actor;\n    console.log(\"target\", target)\n    if (target.system.attributes.hp.temp != null){\n        target.system.attributes.hp.temp = Math.floor(target.system.attributes.hp.temp/2);\n    }\n});\n\nfailed.forEach(fail => {\n    let target = fail.actor;\n    if (target.system.attributes.hp.temp != null){\n        target.system.attributes.hp.temp = null;\n    }\n});",
-                "author": "cwIJ7W3XRXrY0zj2",
-                "ownership": {
-                    "default": 3
-                },
-                "_id": null,
-                "folder": null,
-                "sort": 0,
-                "flags": {},
-                "_stats": {
-                    "coreVersion": "12.331",
-                    "systemId": "dnd5e",
-                    "systemVersion": "4.2.2",
-                    "createdTime": null,
-                    "modifiedTime": null,
-                    "lastModifiedBy": null,
-                    "compendiumSource": null,
-                    "duplicateSource": null
-                }
-            }
+        "_id": null,
+        "folder": null,
+        "sort": 0,
+        "flags": {},
+        "_stats": {
+          "coreVersion": "12.331",
+          "systemId": "dnd5e",
+          "systemVersion": "4.2.2",
+          "createdTime": null,
+          "modifiedTime": null,
+          "lastModifiedBy": null,
+          "compendiumSource": null,
+          "duplicateSource": null
         }
-    },
-    "_stats": {
-        "compendiumSource": "Item.jy5ADu5PzR6ElRWf",
-        "duplicateSource": null,
-        "coreVersion": "12.331",
-        "systemId": "dnd5e",
-        "systemVersion": "4.3.8",
-        "createdTime": 1726952196630,
-        "modifiedTime": 1744754413045,
-        "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
-    },
-    "folder": "U0k4VGG6bziqf3oH",
-    "sort": 5100000,
-    "_id": "43Vyt2wzU0SISfYm",
-    "_key": "!items!43Vyt2wzU0SISfYm"
+      }
+    }
+  },
+  "_stats": {
+    "compendiumSource": "Item.jy5ADu5PzR6ElRWf",
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.3.8",
+    "createdTime": 1726952196630,
+    "modifiedTime": 1744754413045,
+    "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
+  },
+  "folder": "U0k4VGG6bziqf3oH",
+  "sort": 5100000,
+  "_id": "43Vyt2wzU0SISfYm",
+  "_key": "!items!43Vyt2wzU0SISfYm"
 }
