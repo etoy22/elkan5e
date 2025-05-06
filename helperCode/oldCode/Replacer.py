@@ -1,5 +1,6 @@
 import os
 import json
+from updateTime import load_and_update_json  # Import the helper function
 
 def replace_in_json(obj, target, replacement):
     # Convert the object to a JSON string
@@ -61,6 +62,8 @@ for folder_path in folder_paths:
 
             # Write the modified data back to the file
             try:
+                # Update the last modified time in the JSON file
+                data = load_and_update_json(file_path)
                 with open(file_path, 'w', encoding='utf-8') as file:
                     json.dump(modified_data, file, indent=4)
                 print(f'Processed file: {filename}')
