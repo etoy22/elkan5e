@@ -78,4 +78,15 @@ export async function gameSettingRegister() {
         type: String,
         default: "1.12.10",
     });
+
+    game.settings.register("elkan5e", "languageSystem", {
+        name: "elkan5e.languageSystem.name",
+        hint: "elkan5e.languageSystem.hint",
+        scope: "world",
+        config: true,
+        requiresReload: true,
+        default: true,
+        type: Boolean,
+        restricted: true,
+    });
 }
