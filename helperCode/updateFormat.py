@@ -13,7 +13,7 @@ folders = [
     'src\packs\elkan5e-creatures', 
     'src\packs\elkan5e-equipment', 
     'src\packs\elkan5e-feats', 
-    'src\packs\elkan5e-lore', -
+    'src\packs\elkan5e-lore',
     'src\packs\elkan5e-macros', 
     'src\packs\elkan5e-magic-items', 
     'src\packs\elkan5e-roll-tables', 
