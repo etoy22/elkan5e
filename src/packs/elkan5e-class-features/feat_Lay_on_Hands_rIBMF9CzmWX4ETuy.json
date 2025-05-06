@@ -1,191 +1,191 @@
 {
-  "_id": "rIBMF9CzmWX4ETuy",
-  "name": "Lay on Hands",
-  "type": "feat",
-  "img": "icons/magic/light/orbs-hand-gray.webp",
-  "effects": [],
-  "folder": "RoQn7As2fhRPc593",
-  "sort": 1100000,
-  "flags": {
-    "core": {
-      "sourceId": "Compendium.dnd5e.classfeatures.OdrvL3afwLOPeuYZ"
-    },
-    "midi-qol": {
-      "effectActivation": false,
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": "",
-      "reactionCondition": "",
-      "removeAttackDamageButtons": "default",
-      "otherCondition": ""
-    },
-    "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
-      "rollOther": false,
-      "critOther": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "toggleEffect": false,
-      "confirmTargets": "default",
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "offHandWeapon": false,
-      "noConcentrationCheck": false,
-      "ignoreTotalCover": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      },
-      "migratedUses": 5
-    },
-    "tidy5e-sheet": {
-      "section": "",
-      "actionSection": ""
-    }
-  },
-  "system": {
-    "description": {
-      "value": "<p><em>Your touch can heal wounds.</em></p><p><strong>Action</strong> - 1 Creature (Touch) - Magical</p><p>You have a pool of healing power that replenishes when you take a long rest. With that pool, you can restore a total number of hit points equal to your paladin level x 5.</p><p>As an action, you can touch a creature and draw power from the pool to restore a number of hit points to that creature, up to the maximum amount remaining in your pool.</p><p>This feature has no effect on &amp;reference[construct].</p>",
-      "chat": ""
-    },
-    "source": {
-      "custom": "elkan5e.com/paladin",
-      "revision": 1,
-      "rules": "",
-      "book": "Elkan 5e",
-      "page": "",
-      "license": ""
-    },
-    "uses": {
-      "max": "5 * @classes.paladin.levels",
-      "recovery": [
-        {
-          "period": "lr",
-          "type": "recoverAll"
+    "_id": "rIBMF9CzmWX4ETuy",
+    "name": "Lay on Hands",
+    "type": "feat",
+    "img": "icons/magic/light/orbs-hand-gray.webp",
+    "effects": [],
+    "folder": "RoQn7As2fhRPc593",
+    "sort": 1100000,
+    "flags": {
+        "core": {
+            "sourceId": "Compendium.dnd5e.classfeatures.OdrvL3afwLOPeuYZ"
+        },
+        "midi-qol": {
+            "effectActivation": false,
+            "rollAttackPerTarget": "default",
+            "itemCondition": "",
+            "effectCondition": "",
+            "reactionCondition": "",
+            "removeAttackDamageButtons": "default",
+            "otherCondition": ""
+        },
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "confirmTargets": "default",
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "noConcentrationCheck": false,
+            "ignoreTotalCover": false,
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedUses": 5
+        },
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
         }
-      ],
-      "spent": 0
     },
-    "type": {
-      "value": "class",
-      "subtype": ""
-    },
-    "requirements": "Paladin 1",
-    "activities": {
-      "dnd5eactivity000": {
-        "_id": "dnd5eactivity000",
-        "type": "heal",
-        "activation": {
-          "type": "action",
-          "value": 1,
-          "condition": "Target cannot be a Construct.",
-          "override": false
-        },
-        "consumption": {
-          "targets": [
-            {
-              "type": "itemUses",
-              "target": "",
-              "value": "1",
-              "scaling": {
-                "mode": "",
-                "formula": ""
-              }
-            }
-          ],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
+    "system": {
         "description": {
-          "chatFlavor": ""
+            "value": "<p><em>Your touch can heal wounds.</em></p><p><strong>Action</strong> - 1 Creature (Touch) - Magical</p><p>You have a pool of healing power that replenishes when you take a long rest. With that pool, you can restore a total number of hit points equal to your paladin level x 5.</p><p>As an action, you can touch a creature and draw power from the pool to restore a number of hit points to that creature, up to the maximum amount remaining in your pool.</p><p>This feature has no effect on &amp;reference[construct].</p>",
+            "chat": ""
         },
-        "duration": {
-          "concentration": false,
-          "units": "",
-          "special": "",
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "units": "touch",
-          "special": "",
-          "override": false
-        },
-        "target": {
-          "template": {
-            "count": "",
-            "contiguous": false,
-            "type": "",
-            "size": "",
-            "width": "",
-            "height": "",
-            "units": ""
-          },
-          "affects": {
-            "count": "1",
-            "type": "creature",
-            "choice": false,
-            "special": ""
-          },
-          "prompt": true,
-          "override": false
+        "source": {
+            "custom": "elkan5e.com/paladin",
+            "revision": 1,
+            "rules": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "license": ""
         },
         "uses": {
-          "spent": 0,
-          "max": "",
-          "recovery": []
+            "max": "5 * @classes.paladin.levels",
+            "recovery": [
+                {
+                    "period": "lr",
+                    "type": "recoverAll"
+                }
+            ],
+            "spent": 0
         },
-        "healing": {
-          "number": null,
-          "denomination": null,
-          "bonus": "",
-          "types": [],
-          "custom": {
-            "enabled": false,
-            "formula": ""
-          },
-          "scaling": {
-            "mode": "whole",
-            "number": null,
-            "formula": ""
-          }
+        "type": {
+            "value": "class",
+            "subtype": ""
         },
-        "sort": 0
-      }
+        "requirements": "Paladin 1",
+        "activities": {
+            "dnd5eactivity000": {
+                "_id": "dnd5eactivity000",
+                "type": "heal",
+                "activation": {
+                    "type": "action",
+                    "value": 1,
+                    "condition": "Target cannot be a Construct.",
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [
+                        {
+                            "type": "itemUses",
+                            "target": "",
+                            "value": "1",
+                            "scaling": {
+                                "mode": "",
+                                "formula": ""
+                            }
+                        }
+                    ],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "concentration": false,
+                    "units": "",
+                    "special": "",
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "units": "touch",
+                    "special": "",
+                    "override": false
+                },
+                "target": {
+                    "template": {
+                        "count": "",
+                        "contiguous": false,
+                        "type": "",
+                        "size": "",
+                        "width": "",
+                        "height": "",
+                        "units": ""
+                    },
+                    "affects": {
+                        "count": "1",
+                        "type": "creature",
+                        "choice": false,
+                        "special": ""
+                    },
+                    "prompt": true,
+                    "override": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "max": "",
+                    "recovery": []
+                },
+                "healing": {
+                    "number": null,
+                    "denomination": null,
+                    "bonus": "",
+                    "types": [],
+                    "custom": {
+                        "enabled": false,
+                        "formula": ""
+                    },
+                    "scaling": {
+                        "mode": "whole",
+                        "number": null,
+                        "formula": ""
+                    }
+                },
+                "sort": 0
+            }
+        },
+        "identifier": "",
+        "enchant": {},
+        "prerequisites": {
+            "level": null
+        },
+        "properties": []
     },
-    "identifier": "",
-    "enchant": {},
-    "prerequisites": {
-      "level": null
+    "ownership": {
+        "default": 0,
+        "ymJDAw0PgXIWIHMH": 3,
+        "vHqSHJMdmEO6Mk2C": 3
     },
-    "properties": []
-  },
-  "ownership": {
-    "default": 0,
-    "ymJDAw0PgXIWIHMH": 3,
-    "vHqSHJMdmEO6Mk2C": 3
-  },
-  "_stats": {
-    "compendiumSource": "Compendium.dnd5e.classfeatures.OdrvL3afwLOPeuYZ",
-    "duplicateSource": null,
-    "coreVersion": "12.331",
-    "systemId": "dnd5e",
-    "systemVersion": "4.3.8",
-    "createdTime": 1726952016827,
-    "modifiedTime": 1744074780190,
-    "lastModifiedBy": "fgP8EzWy33UFoZmI"
-  },
-  "_key": "!items!rIBMF9CzmWX4ETuy"
+    "_stats": {
+        "compendiumSource": "Compendium.dnd5e.classfeatures.OdrvL3afwLOPeuYZ",
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.3.8",
+        "createdTime": 1726952016827,
+        "modifiedTime": 1744074780190,
+        "lastModifiedBy": "fgP8EzWy33UFoZmI"
+    },
+    "_key": "!items!rIBMF9CzmWX4ETuy"
 }
