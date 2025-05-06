@@ -1,351 +1,351 @@
 {
-    "name": "Irresistible Dance",
-    "type": "spell",
-    "img": "icons/tools/instruments/rattle-gourd-glowing-teal.webp",
-    "effects": [
-        {
-            "_id": "3mNPKbwjiaapU9XI",
-            "flags": {
-                "dae": {
-                    "stackable": "none",
-                    "specialDuration": [],
-                    "macroRepeat": "none",
-                    "transfer": false,
-                    "selfTarget": false,
-                    "selfTargetAlways": false,
-                    "durationExpression": "",
-                    "enableCondition": "",
-                    "disableCondition": "",
-                    "showIcon": false
-                },
-                "ActiveAuras": {
-                    "isAura": false,
-                    "ignoreSelf": false,
-                    "hidden": false,
-                    "height": false,
-                    "aura": "None",
-                    "radius": "",
-                    "alignment": "",
-                    "type": "",
-                    "hostile": false,
-                    "onlyOnce": false,
-                    "displayTemp": false,
-                    "nameOverride": "",
-                    "customCheck": "",
-                    "wallsBlock": "system"
-                },
-                "core": {
-                    "overlay": false
-                }
-            },
-            "changes": [
-                {
-                    "key": "flags.midi-qol.grants.advantage.attack.all",
-                    "mode": 5,
-                    "value": "1",
-                    "priority": 20
-                }
-            ],
-            "disabled": false,
-            "duration": {
-                "startTime": null,
-                "seconds": 60,
-                "combat": null,
-                "rounds": null,
-                "turns": null,
-                "startRound": null,
-                "startTurn": null
-            },
-            "tint": "#ffffff",
-            "transfer": false,
-            "origin": null,
-            "name": "Irresistible Dance",
-            "description": "",
-            "statuses": [],
-            "_stats": {
-                "compendiumSource": null,
-                "duplicateSource": null,
-                "coreVersion": "12.331",
-                "systemId": "dnd5e",
-                "systemVersion": "4.0.2",
-                "createdTime": null,
-                "modifiedTime": 1728420076782,
-                "lastModifiedBy": "YxlXl9sauSuWxHdZ"
-            },
-            "img": "icons/tools/instruments/rattle-gourd-glowing-teal.webp",
-            "type": "base",
-            "system": {},
-            "sort": 0,
-            "_key": "!items.effects!jAh5RoOPbAPx5Yqd.3mNPKbwjiaapU9XI"
-        }
-    ],
-    "folder": "sDaRY0H81UTha6hq",
-    "flags": {
-        "dynamiceffects": {
-            "equipActive": true,
-            "alwaysActive": false,
-            "effects": [
-                {
-                    "modSpecKey": "flags.dnd5e.conditions",
-                    "value": "Charmed",
-                    "mode": "+",
-                    "targetSpecific": false,
-                    "id": 1,
-                    "itemId": "U5jQJ2Ry565NS8BY",
-                    "active": true,
-                    "_targets": []
-                }
-            ]
-        },
+  "name": "Irresistible Dance",
+  "type": "spell",
+  "img": "icons/tools/instruments/rattle-gourd-glowing-teal.webp",
+  "effects": [
+    {
+      "_id": "3mNPKbwjiaapU9XI",
+      "flags": {
         "dae": {
-            "activeEquipped": false,
-            "alwaysActive": false,
-            "macro": {
-                "name": "Irresistible Dance",
-                "img": "icons/tools/instruments/rattle-gourd-glowing-teal.webp",
-                "type": "script",
-                "scope": "global",
-                "command": "",
-                "author": "3Yi0HjF4PKCA4vX0",
-                "ownership": {
-                    "default": 3
-                },
-                "_id": null,
-                "folder": null,
-                "sort": 0,
-                "flags": {},
-                "_stats": {
-                    "coreVersion": "12.327",
-                    "systemId": "dnd5e",
-                    "systemVersion": "3.2.1",
-                    "createdTime": null,
-                    "modifiedTime": null,
-                    "lastModifiedBy": null,
-                    "compendiumSource": null,
-                    "duplicateSource": null
-                }
-            }
+          "stackable": "none",
+          "specialDuration": [],
+          "macroRepeat": "none",
+          "transfer": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "durationExpression": "",
+          "enableCondition": "",
+          "disableCondition": "",
+          "showIcon": false
         },
-        "itemacro": {
-            "macro": {
-                "_data": {
-                    "name": "Irresistible Dance",
-                    "type": "script",
-                    "scope": "global",
-                    "command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target @attributes.spelldc @item\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEItem.data.save\n\n\nif (args[0] === \"each\") {\n    new Dialog({\n        title: \"Use action to make a wisdom save to end Irresistible Dance?\",\n        buttons: {\n            one: {\n                label: \"Yes\",\n                callback: async () => {\n                    const flavor = `${CONFIG.DND5E.abilities[saveData.ability]} DC${saveData.dc} ${DAEItem?.name || \"\"}`;\n                    let saveRoll = (await tactor.rollAbilitySave(saveData.ability, { flavor })).total;\n\n                    if (saveRoll >= saveData.dc) {\n                        target.actor.deleteEmbeddedEntity(\"ActiveEffect\", lastArg.effectId);\n                    }\n                    if (saveRoll < saveData.dc) {\n                        ChatMessage.create({ content: `${target.name} fails the save` });\n                    }\n                }\n            },\n            two: {\n                label: \"No\",\n                callback: () => {\n                }\n            }\n        }\n    }).render(true);\n}",
-                    "author": "E4BVikjIkVl2lL2j"
-                },
-                "data": {
-                    "name": "Irresistible Dance",
-                    "type": "script",
-                    "scope": "global",
-                    "command": "//DAE Macro , Effect Value = @attributes.spelldc\nif(!game.modules.get(\"advanced-macros\")?.active) {ui.notifications.error(\"Please enable the Advanced Macros module\") ;return;}\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEItem.data.save\nconst DC = args[1]\n\nif (args[0] === \"each\") {\n    new Dialog({\n        title: \"Use action to make a wisdom save to end Irresistible Dance?\",\n        buttons: {\n            one: {\n                label: \"Yes\",\n                callback: async () => {\n                    const flavor = `${CONFIG.DND5E.abilities[saveData.ability]} DC${DC} ${DAEItem?.name || \"\"}`;\n                    let saveRoll = (await tactor.rollAbilitySave(saveData.ability, { flavor })).total;\n\n                    if (saveRoll >= DC) {\n                        tactor.deleteEmbeddedEntity(\"ActiveEffect\", lastArg.effectId);\n                    }\n                    if (saveRoll < DC) {\n                        ChatMessage.create({ content: `${tactor.name} fails the save` });\n                    }\n                }\n            },\n            two: {\n                label: \"No\",\n                callback: () => {\n                }\n            }\n        }\n    }).render(true);\n}",
-                    "author": "zrPR3wueYsESSBR3",
-                    "_id": null,
-                    "img": "icons/svg/dice-target.svg",
-                    "folder": null,
-                    "sort": 0,
-                    "permission": {
-                        "default": 0
-                    },
-                    "flags": {}
-                },
-                "options": {},
-                "apps": {},
-                "compendium": null
-            }
+        "ActiveAuras": {
+          "isAura": false,
+          "ignoreSelf": false,
+          "hidden": false,
+          "height": false,
+          "aura": "None",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "hostile": false,
+          "onlyOnce": false,
+          "displayTemp": false,
+          "nameOverride": "",
+          "customCheck": "",
+          "wallsBlock": "system"
         },
-        "core": {},
-        "midi-qol": {
-            "onUseMacroName": "",
-            "effectActivation": false,
-            "rollAttackPerTarget": "default",
-            "itemCondition": "",
-            "effectCondition": "",
-            "reactionCondition": ""
-        },
-        "midiProperties": {
-            "nodam": false,
-            "fulldam": false,
-            "halfdam": false,
-            "rollOther": false,
-            "critOther": false,
-            "magicdam": false,
-            "magiceffect": false,
-            "concentration": false,
-            "toggleEffect": false,
-            "autoFailFriendly": false,
-            "autoSaveFriendly": false,
-            "offHandWeapon": false,
-            "ignoreTotalCover": false,
-            "confirmTargets": "default",
-            "noConcentrationCheck": false,
-            "idr": false,
-            "idi": false,
-            "idv": false,
-            "ida": false
-        },
-        "dnd5e": {
-            "riders": {
-                "activity": [],
-                "effect": []
-            },
-            "migratedProperties": [
-                "vocal",
-                "concentration"
-            ]
+        "core": {
+          "overlay": false
         }
-    },
-    "system": {
-        "description": {
-            "value": "<p>Choose one creature that you can see within range. The target begins a comic dance in place: shuffling, tapping its feet, and capering for the duration. Creatures that can't be charmed are immune to this spell.</p><p>A dancing creature must use all its movement to dance without leaving its space and has disadvantage on Dexterity saving throws and attack rolls. While the target is affected by this spell, other creatures have advantage on attack rolls against it. As an action, a dancing creature makes a Wisdom saving throw to regain control of itself. On a successful save, the spell ends.</p>",
-            "chat": ""
-        },
-        "source": {
-            "custom": "Elkan 5e",
-            "revision": 1,
-            "rules": "",
-            "book": "Elkan 5e",
-            "page": "",
-            "license": ""
-        },
-        "activation": {
-            "type": "action",
-            "condition": "",
-            "value": 1
-        },
-        "duration": {
-            "value": "1",
-            "units": "minute"
-        },
-        "target": {
-            "affects": {
-                "type": "creature",
-                "count": "1",
-                "choice": false,
-                "special": ""
-            },
-            "template": {
-                "units": "",
-                "contiguous": false,
-                "type": ""
-            }
-        },
-        "range": {
-            "value": "30",
-            "units": "ft",
-            "special": ""
-        },
-        "uses": {
-            "max": "",
-            "recovery": [],
-            "spent": 0
-        },
-        "ability": "",
-        "level": 6,
-        "school": "enc",
-        "materials": {
-            "value": "",
-            "consumed": false,
-            "cost": 0,
-            "supply": 0
-        },
-        "preparation": {
-            "mode": "prepared",
-            "prepared": true
-        },
-        "properties": [
-            "vocal",
-            "concentration"
-        ],
-        "activities": {
-            "ba4toQVTjhAF5MbS": {
-                "type": "save",
-                "activation": {
-                    "type": "action",
-                    "value": null,
-                    "override": false
-                },
-                "consumption": {
-                    "targets": [],
-                    "scaling": {
-                        "allowed": false,
-                        "max": ""
-                    },
-                    "spellSlot": true
-                },
-                "description": {
-                    "chatFlavor": ""
-                },
-                "duration": {
-                    "units": "inst",
-                    "concentration": false,
-                    "override": false
-                },
-                "effects": [
-                    {
-                        "_id": "3mNPKbwjiaapU9XI",
-                        "onSave": false
-                    }
-                ],
-                "range": {
-                    "override": false
-                },
-                "target": {
-                    "prompt": true,
-                    "template": {
-                        "contiguous": false,
-                        "units": "ft"
-                    },
-                    "affects": {
-                        "choice": false
-                    },
-                    "override": false
-                },
-                "damage": {
-                    "onSave": "half",
-                    "parts": []
-                },
-                "save": {
-                    "ability": "wis",
-                    "dc": {
-                        "calculation": "spellcasting",
-                        "formula": ""
-                    }
-                },
-                "uses": {
-                    "spent": 0,
-                    "recovery": [],
-                    "max": ""
-                },
-                "sort": 0,
-                "_id": "ba4toQVTjhAF5MbS",
-                "name": "",
-                "img": "",
-                "appliedEffects": [
-                    "3mNPKbwjiaapU9XI"
-                ]
-            }
-        },
-        "identifier": ""
-    },
-    "ownership": {
-        "default": 0,
-        "VJURYym0JQByHBQL": 3,
-        "MKYWAnkTJr0gkDqT": 3,
-        "vHqSHJMdmEO6Mk2C": 3
-    },
-    "_stats": {
+      },
+      "changes": [
+        {
+          "key": "flags.midi-qol.grants.advantage.attack.all",
+          "mode": 5,
+          "value": "1",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": 60,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "tint": "#ffffff",
+      "transfer": false,
+      "origin": null,
+      "name": "Irresistible Dance",
+      "description": "",
+      "statuses": [],
+      "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
         "coreVersion": "12.331",
         "systemId": "dnd5e",
-        "systemVersion": "4.3.9",
-        "createdTime": 1726952204344,
-        "modifiedTime": 1745963734256,
-        "lastModifiedBy": "code change"
+        "systemVersion": "4.0.2",
+        "createdTime": null,
+        "modifiedTime": 1728420076782,
+        "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+      },
+      "img": "icons/tools/instruments/rattle-gourd-glowing-teal.webp",
+      "type": "base",
+      "system": {},
+      "sort": 0,
+      "_key": "!items.effects!jAh5RoOPbAPx5Yqd.3mNPKbwjiaapU9XI"
+    }
+  ],
+  "folder": "sDaRY0H81UTha6hq",
+  "flags": {
+    "dynamiceffects": {
+      "equipActive": true,
+      "alwaysActive": false,
+      "effects": [
+        {
+          "modSpecKey": "flags.dnd5e.conditions",
+          "value": "Charmed",
+          "mode": "+",
+          "targetSpecific": false,
+          "id": 1,
+          "itemId": "U5jQJ2Ry565NS8BY",
+          "active": true,
+          "_targets": []
+        }
+      ]
     },
-    "_id": "jAh5RoOPbAPx5Yqd",
-    "sort": 2600000,
-    "_key": "!items!jAh5RoOPbAPx5Yqd"
+    "dae": {
+      "activeEquipped": false,
+      "alwaysActive": false,
+      "macro": {
+        "name": "Irresistible Dance",
+        "img": "icons/tools/instruments/rattle-gourd-glowing-teal.webp",
+        "type": "script",
+        "scope": "global",
+        "command": "",
+        "author": "3Yi0HjF4PKCA4vX0",
+        "ownership": {
+          "default": 3
+        },
+        "_id": null,
+        "folder": null,
+        "sort": 0,
+        "flags": {},
+        "_stats": {
+          "coreVersion": "12.327",
+          "systemId": "dnd5e",
+          "systemVersion": "3.2.1",
+          "createdTime": null,
+          "modifiedTime": null,
+          "lastModifiedBy": null,
+          "compendiumSource": null,
+          "duplicateSource": null
+        }
+      }
+    },
+    "itemacro": {
+      "macro": {
+        "_data": {
+          "name": "Irresistible Dance",
+          "type": "script",
+          "scope": "global",
+          "command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target @attributes.spelldc @item\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEItem.data.save\n\n\nif (args[0] === \"each\") {\n    new Dialog({\n        title: \"Use action to make a wisdom save to end Irresistible Dance?\",\n        buttons: {\n            one: {\n                label: \"Yes\",\n                callback: async () => {\n                    const flavor = `${CONFIG.DND5E.abilities[saveData.ability]} DC${saveData.dc} ${DAEItem?.name || \"\"}`;\n                    let saveRoll = (await tactor.rollAbilitySave(saveData.ability, { flavor })).total;\n\n                    if (saveRoll >= saveData.dc) {\n                        target.actor.deleteEmbeddedEntity(\"ActiveEffect\", lastArg.effectId);\n                    }\n                    if (saveRoll < saveData.dc) {\n                        ChatMessage.create({ content: `${target.name} fails the save` });\n                    }\n                }\n            },\n            two: {\n                label: \"No\",\n                callback: () => {\n                }\n            }\n        }\n    }).render(true);\n}",
+          "author": "E4BVikjIkVl2lL2j"
+        },
+        "data": {
+          "name": "Irresistible Dance",
+          "type": "script",
+          "scope": "global",
+          "command": "//DAE Macro , Effect Value = @attributes.spelldc\nif(!game.modules.get(\"advanced-macros\")?.active) {ui.notifications.error(\"Please enable the Advanced Macros module\") ;return;}\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEItem.data.save\nconst DC = args[1]\n\nif (args[0] === \"each\") {\n    new Dialog({\n        title: \"Use action to make a wisdom save to end Irresistible Dance?\",\n        buttons: {\n            one: {\n                label: \"Yes\",\n                callback: async () => {\n                    const flavor = `${CONFIG.DND5E.abilities[saveData.ability]} DC${DC} ${DAEItem?.name || \"\"}`;\n                    let saveRoll = (await tactor.rollAbilitySave(saveData.ability, { flavor })).total;\n\n                    if (saveRoll >= DC) {\n                        tactor.deleteEmbeddedEntity(\"ActiveEffect\", lastArg.effectId);\n                    }\n                    if (saveRoll < DC) {\n                        ChatMessage.create({ content: `${tactor.name} fails the save` });\n                    }\n                }\n            },\n            two: {\n                label: \"No\",\n                callback: () => {\n                }\n            }\n        }\n    }).render(true);\n}",
+          "author": "zrPR3wueYsESSBR3",
+          "_id": null,
+          "img": "icons/svg/dice-target.svg",
+          "folder": null,
+          "sort": 0,
+          "permission": {
+            "default": 0
+          },
+          "flags": {}
+        },
+        "options": {},
+        "apps": {},
+        "compendium": null
+      }
+    },
+    "core": {},
+    "midi-qol": {
+      "onUseMacroName": "",
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "reactionCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "concentration"
+      ]
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p>Choose one creature that you can see within range. The target begins a comic dance in place: shuffling, tapping its feet, and capering for the duration. Creatures that can't be charmed are immune to this spell.</p><p>A dancing creature must use all its movement to dance without leaving its space and has disadvantage on Dexterity saving throws and attack rolls. While the target is affected by this spell, other creatures have advantage on attack rolls against it. As an action, a dancing creature makes a Wisdom saving throw to regain control of itself. On a successful save, the spell ends.</p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Elkan 5e",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "1",
+      "units": "minute"
+    },
+    "target": {
+      "affects": {
+        "type": "creature",
+        "count": "1",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "units": "",
+        "contiguous": false,
+        "type": ""
+      }
+    },
+    "range": {
+      "value": "30",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 6,
+    "school": "enc",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "concentration"
+    ],
+    "activities": {
+      "ba4toQVTjhAF5MbS": {
+        "type": "save",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "3mNPKbwjiaapU9XI",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "prompt": true,
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": []
+        },
+        "save": {
+          "ability": "wis",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "sort": 0,
+        "_id": "ba4toQVTjhAF5MbS",
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "3mNPKbwjiaapU9XI"
+        ]
+      }
+    },
+    "identifier": ""
+  },
+  "ownership": {
+    "default": 0,
+    "VJURYym0JQByHBQL": 3,
+    "MKYWAnkTJr0gkDqT": 3,
+    "vHqSHJMdmEO6Mk2C": 3
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.0.4",
+    "createdTime": 1726952204344,
+    "modifiedTime": 1728957913594,
+    "lastModifiedBy": "LhShb9ShQN3ambNF"
+  },
+  "_id": "jAh5RoOPbAPx5Yqd",
+  "sort": 2600000,
+  "_key": "!items!jAh5RoOPbAPx5Yqd"
 }
