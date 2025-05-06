@@ -83,6 +83,7 @@ export function weaponRules() {
         adamantine: "cUHKJTc6BHyI1gfR",
         ammunition: "5RUwcK38cpr1fZLe",
         coldiron: "ciqBm30ddE1BsPOg",
+        concussive: "1hVvE10PnHaKQGik",
         finesse: "QIw9oL7nHuy6A5e3",
         heavy: "K644Km2l7enin6ou",
         lightweapon: "AHUBfDV0TrMzcTUa",
