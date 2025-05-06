@@ -100,25 +100,24 @@ def transform_value(value):
         '&amp;Reference[lightW]': "&amp;reference[light weapon]",
         '&amp;Reference[Lightw]': "&amp;reference[light weapon]",
         '&amp;Reference[LightW]': "&amp;reference[light weapon]",
+        '<p>You have a bonus to attack and damage rolls made with this magic weapon.</p>': "",
         'elkan5e/icons/': 'elkan5e/icons/conditions/' if 'elkan5e/icons/conditions/' not in value else value
     }
     original_simplified = simplified.strip()  # Normalize by trimming whitespace
     has_changes = False  # Track if any changes are made
 
     for old, new in replacements.items():
-        # Skip replacement if the target string is already in the correct format
-        if old in simplified and new not in simplified:
-            log_message(f"Replacing '{old}' with '{new}'")
+        # Log the replacement for debugging
+        if old in simplified:
+            log_message(f"Applying replacement: '{old}' -> '{new}'")
             simplified = simplified.replace(old, new)
             has_changes = True
 
     updated_value = simplified.strip()  # Normalize updated value
     if updated_value != original_simplified:  # Compare normalized values
         has_changes = True
-    else:
-        log_message("No actual changes detected in transform_value.")
+        log_message(f"Updated value: {updated_value}")
 
-    log_message(f"Updated value: {updated_value}")
     return updated_value if has_changes else value
 
 def process_object(obj):
