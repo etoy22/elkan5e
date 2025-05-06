@@ -15,7 +15,9 @@ import { references } from "./module/rules/references.mjs";
 import { tools } from "./module/rules/tools.mjs";
 import { weapons } from "./module/rules/weapon.mjs";
 import { scroll } from "./module/rules/scroll.mjs";
+import { goodberry, deleteGoodberryEffect } from "./module/spells/goodberry.mjs";
 // import { sanctuary } from "./module/spells/sanctuary.mjs";
+
 
 Hooks.once("init", async () => {
     console.log("Elkan 5e | Initializing Elkan 5e");
@@ -148,3 +150,17 @@ Hooks.on("combatTurnChange", (combat, prior, current) => {
 //         }
 //     }
 // });
+
+let spells = {
+    goodberry: goodberry,
+  };
+  
+
+let macros = {
+    spells: spells,
+    features: features
+  };
+
+globalThis['elkan5e'] = {
+    macros: macros,
+};

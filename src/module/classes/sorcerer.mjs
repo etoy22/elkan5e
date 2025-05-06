@@ -7,7 +7,7 @@ import { deletedEffectRemovesItem, deletedItemRemovesEffect } from "../global.mj
 export async function wildSurge(activity) {
     const actor = activity.actor;
     const item = activity.item;
-    const level = item.system.level || item.flags.dnd5e.spellLevel.value;
+    const level = item.system.level || item.flags.dnd5e.spellLevel?.value || 1;
     const WILD_SURGE_THRESHOLD = 5;
     const MAX_TABLE_LEVEL = 10;
     const TABLE_UUIDS = [
