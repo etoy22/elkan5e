@@ -1,412 +1,412 @@
 {
-  "name": "Confusion",
-  "type": "spell",
-  "img": "icons/magic/air/wind-tornado-cyclone-purple-pink.webp",
-  "effects": [
-    {
-      "statuses": [
-        "confused"
-      ],
-      "name": "Confusion",
-      "changes": [
+    "name": "Confusion",
+    "type": "spell",
+    "img": "icons/magic/air/wind-tornado-cyclone-purple-pink.webp",
+    "effects": [
         {
-          "key": "flags.midi-qol.OverTime",
-          "mode": 2,
-          "value": "turn=end, label=Confused Save, saveAbility=wis, saveDC=@attributes.spelldc,\nlabel=Confusion Save",
-          "priority": 20
+            "statuses": [
+                "confused"
+            ],
+            "name": "Confusion",
+            "changes": [
+                {
+                    "key": "flags.midi-qol.OverTime",
+                    "mode": 2,
+                    "value": "turn=end, label=Confused Save, saveAbility=wis, saveDC=@attributes.spelldc,\nlabel=Confusion Save",
+                    "priority": 20
+                }
+            ],
+            "description": "",
+            "duration": {
+                "seconds": 60,
+                "startTime": null,
+                "rounds": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null,
+                "combat": null
+            },
+            "flags": {
+                "ActiveAuras": {
+                    "isAura": false,
+                    "aura": "None",
+                    "nameOverride": "",
+                    "radius": "",
+                    "alignment": "",
+                    "type": "",
+                    "customCheck": "",
+                    "ignoreSelf": false,
+                    "height": false,
+                    "hidden": false,
+                    "displayTemp": false,
+                    "hostile": false,
+                    "onlyOnce": false,
+                    "wallsBlock": "system"
+                },
+                "core": {
+                    "overlay": false
+                },
+                "condition-lab-triggler": {
+                    "conditionId": "FwBRO5jcEXdGQTf8"
+                },
+                "times-up": {},
+                "dae": {
+                    "disableIncapacitated": false,
+                    "selfTarget": false,
+                    "selfTargetAlways": false,
+                    "dontApply": false,
+                    "stackable": "noneName",
+                    "showIcon": false,
+                    "durationExpression": "",
+                    "macroRepeat": "none",
+                    "specialDuration": [],
+                    "enableCondition": "",
+                    "disableCondition": ""
+                }
+            },
+            "_id": "DyN0npqi5Se0CpOm",
+            "disabled": false,
+            "origin": null,
+            "transfer": false,
+            "tint": "#ffffff",
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.0.2",
+                "createdTime": null,
+                "modifiedTime": 1728945170120,
+                "lastModifiedBy": "YxlXl9sauSuWxHdZ"
+            },
+            "img": "icons/magic/air/wind-tornado-cyclone-purple-pink.webp",
+            "type": "base",
+            "system": {},
+            "sort": 0,
+            "_key": "!items.effects!qiyNsnKPpmPRjvtv.DyN0npqi5Se0CpOm"
         }
-      ],
-      "description": "",
-      "duration": {
-        "seconds": 60,
-        "startTime": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null,
-        "combat": null
-      },
-      "flags": {
-        "ActiveAuras": {
-          "isAura": false,
-          "aura": "None",
-          "nameOverride": "",
-          "radius": "",
-          "alignment": "",
-          "type": "",
-          "customCheck": "",
-          "ignoreSelf": false,
-          "height": false,
-          "hidden": false,
-          "displayTemp": false,
-          "hostile": false,
-          "onlyOnce": false,
-          "wallsBlock": "system"
+    ],
+    "folder": "90eJtrVwLFIxcWJw",
+    "flags": {
+        "itemacro": {
+            "macro": {
+                "_data": {
+                    "name": "Confusion",
+                    "type": "script",
+                    "scope": "global",
+                    "command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target @attributes.spelldc\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEItem.data.save\n\nif (args[0] === \"each\") {\n\n        let confusionRoll = new Roll(\"1d10\").roll().total;\n        let content;\n        switch (confusionRoll) {\n            case 1:\n                content = \"The creature uses all its movement to move in a random direction. To determine the direction, roll a  [[d8]] and assign a direction to each die face. The creature doesn't take an action this turn.\";\n                break;\n            case 2:\n                content = \"\tThe creature doesn't move or take actions this turn.\";\n                break;\n            case 3:\n            case 4:\n            case 5:\n            case 6:\n            case 7:\n                content = \"The creature uses its action to make a melee attack against a randomly determined creature within its reach. If there is no creature within its reach, the creature does nothing this turn.\";\n                break;\n            case 8:\n            case 9:\n            case 10:\n                content = \"The creature can act and move normally.\";\n                break;\n        }\n        ChatMessage.create({ content: `Confusion roll for ${tactor.name} is ${confusionRoll}: ` + content });\n\n        const flavor = `${CONFIG.DND5E.abilities[saveData.ability]} DC${saveData.dc} ${DAEItem?.name || \"\"}`;\n        let saveRoll = (await tactor.rollAbilitySave(saveData.ability, { flavor })).total;\n\n    if(saveRoll >= DC) {\n        ChatMessage.create({ content: `Confusion ends for ${tactor.name} at the end of their turn`})\n        tactor.deleteEmbeddedEntity(\"ActiveEffect\", lastArg.effectId); \n    }\n\n}",
+                    "author": "E4BVikjIkVl2lL2j"
+                },
+                "data": {
+                    "name": "Confusion",
+                    "type": "script",
+                    "scope": "global",
+                    "command": "//DAE Macro , Effect Value = @target @attributes.spelldc\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEItem.data.save\n\nif (args[0] === \"each\") {\n\n        let confusionRoll = await new Roll(\"1d10\").evaluate().total;\n        let content;\n        switch (confusionRoll) {\n            case 1:\n                content = \"The creature uses all its movement to move in a random direction. To determine the direction, roll a  [[d8]] and assign a direction to each die face. The creature doesn't take an action this turn.\";\n                break;\n            case 2:\n                content = \"\tThe creature doesn't move or take actions this turn.\";\n                break;\n            case 3:\n            case 4:\n            case 5:\n            case 6:\n            case 7:\n                content = \"The creature uses its action to make a melee attack against a randomly determined creature within its reach. If there is no creature within its reach, the creature does nothing this turn.\";\n                break;\n            case 8:\n            case 9:\n            case 10:\n                content = \"The creature can act and move normally.\";\n                break;\n        }\n        ChatMessage.create({ content: `Confusion roll for ${tactor.name} is ${confusionRoll}:<br> ` + content });\n\n        const flavor = `${CONFIG.DND5E.abilities[saveData.ability]} DC${args[1]} End of turn save for Confusion`;\n        let saveRoll = (await tactor.rollAbilitySave(saveData.ability, { flavor })).total;\n\n    if(saveRoll >= args[1]) {\n        ChatMessage.create({ content: `Confusion ends for ${tactor.name} at the end of their turn`})\n        tactor.deleteEmbeddedEntity(\"ActiveEffect\", lastArg.effectId); \n    }\n\n}",
+                    "author": "zrPR3wueYsESSBR3",
+                    "_id": null,
+                    "img": "icons/svg/dice-target.svg",
+                    "folder": null,
+                    "sort": 0,
+                    "permission": {
+                        "default": 0
+                    },
+                    "flags": {}
+                },
+                "options": {},
+                "apps": {},
+                "compendium": null
+            }
         },
-        "core": {
-          "overlay": false
-        },
-        "condition-lab-triggler": {
-          "conditionId": "FwBRO5jcEXdGQTf8"
-        },
-        "times-up": {},
         "dae": {
-          "disableIncapacitated": false,
-          "selfTarget": false,
-          "selfTargetAlways": false,
-          "dontApply": false,
-          "stackable": "noneName",
-          "showIcon": false,
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "specialDuration": [],
-          "enableCondition": "",
-          "disableCondition": ""
+            "activeEquipped": false,
+            "alwaysActive": false,
+            "macro": {
+                "name": "Confusion",
+                "img": "icons/magic/air/wind-tornado-cyclone-purple-pink.webp",
+                "type": "script",
+                "scope": "global",
+                "command": "",
+                "author": "3Yi0HjF4PKCA4vX0",
+                "ownership": {
+                    "default": 3
+                },
+                "_id": null,
+                "folder": null,
+                "sort": 0,
+                "flags": {},
+                "_stats": {
+                    "systemId": null,
+                    "systemVersion": null,
+                    "coreVersion": null,
+                    "createdTime": null,
+                    "modifiedTime": null,
+                    "lastModifiedBy": null
+                }
+            }
+        },
+        "core": {},
+        "midi-qol": {
+            "onUseMacroName": "",
+            "effectActivation": false,
+            "AoETargetType": "any",
+            "AoETargetTypeIncludeSelf": true,
+            "autoTarget": "default",
+            "itemCondition": "",
+            "reactionCondition": "",
+            "otherCondition": "",
+            "effectCondition": "",
+            "rollAttackPerTarget": "default",
+            "removeAttackDamageButtons": "default"
+        },
+        "midiProperties": {
+            "nodam": false,
+            "fulldam": false,
+            "halfdam": false,
+            "rollOther": false,
+            "critOther": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "concentration": false,
+            "toggleEffect": false,
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "offHandWeapon": false,
+            "ignoreTotalCover": false,
+            "confirmTargets": "default",
+            "noConcentrationCheck": false,
+            "otherSaveDamage": "default",
+            "idr": false,
+            "idi": false,
+            "idv": false,
+            "ida": false
+        },
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            },
+            "migratedProperties": [
+                "vocal",
+                "somatic",
+                "material",
+                "concentration"
+            ]
+        },
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
         }
-      },
-      "_id": "DyN0npqi5Se0CpOm",
-      "disabled": false,
-      "origin": null,
-      "transfer": false,
-      "tint": "#ffffff",
-      "_stats": {
+    },
+    "system": {
+        "description": {
+            "value": "<p><em>You tap three walnut shells, which start vibrating for the duration of the spell. With a short incantation, this spell assails and distorts the minds of creatures, generating illusions and causing them to act uncontrollably.</em></p><p><strong>Wisdom Save</strong> </p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[confused].<span>Target rolls again at end of their turns, ending effect on success.</span></p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><strong>Upcasting:</strong> The radius of the spell increases by 5 ft. for each spell level above 4th level.</p>",
+            "chat": "<strong>Wisdom Save</strong> </p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[confused].<span>Target rolls again at end of their turns, ending effect on success.</span></p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><strong>Upcasting:</strong> The radius of the spell increases by 5 ft. for each spell level above 4th level.</p>"
+        },
+        "source": {
+            "custom": "elkan5e.com/spells/confusion",
+            "revision": 1,
+            "rules": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "license": ""
+        },
+        "activation": {
+            "type": "action",
+            "condition": "",
+            "value": 1
+        },
+        "duration": {
+            "value": "1",
+            "units": "minute"
+        },
+        "target": {
+            "affects": {
+                "choice": false,
+                "count": "",
+                "type": ""
+            },
+            "template": {
+                "units": "ft",
+                "type": "sphere",
+                "size": "10",
+                "contiguous": false,
+                "count": ""
+            }
+        },
+        "range": {
+            "value": "90",
+            "units": "ft",
+            "special": ""
+        },
+        "uses": {
+            "max": "",
+            "recovery": [],
+            "spent": 0
+        },
+        "ability": "",
+        "level": 4,
+        "school": "enc",
+        "materials": {
+            "value": "Three walnut shells.",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": true
+        },
+        "properties": [
+            "vocal",
+            "somatic",
+            "material",
+            "concentration",
+            "mgc"
+        ],
+        "activities": {
+            "UQR6lMyctQn2K0bV": {
+                "type": "save",
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [
+                    {
+                        "_id": "DyN0npqi5Se0CpOm",
+                        "onSave": false
+                    }
+                ],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "damage": {
+                    "onSave": "none",
+                    "parts": []
+                },
+                "save": {
+                    "ability": "wis",
+                    "dc": {
+                        "calculation": "spellcasting",
+                        "formula": ""
+                    }
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "sort": 0,
+                "_id": "UQR6lMyctQn2K0bV",
+                "name": "",
+                "img": "",
+                "appliedEffects": [
+                    "DyN0npqi5Se0CpOm"
+                ],
+                "effectConditionText": "!target.traits.ci.value.has('confusion')"
+            },
+            "yORFKlZi0yNX5XHF": {
+                "type": "utility",
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "targets": [],
+                    "scaling": {
+                        "allowed": false,
+                        "max": ""
+                    },
+                    "spellSlot": true
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "prompt": true,
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false
+                },
+                "roll": {
+                    "formula": "1d10",
+                    "name": "Confusion Roll",
+                    "prompt": false,
+                    "visible": false
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "sort": 0,
+                "_id": "yORFKlZi0yNX5XHF",
+                "name": "Confusion Roll",
+                "img": "",
+                "appliedEffects": []
+            }
+        },
+        "identifier": ""
+    },
+    "ownership": {
+        "default": 0,
+        "VJURYym0JQByHBQL": 3,
+        "MKYWAnkTJr0gkDqT": 3,
+        "vHqSHJMdmEO6Mk2C": 3
+    },
+    "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
         "coreVersion": "12.331",
         "systemId": "dnd5e",
-        "systemVersion": "4.0.2",
-        "createdTime": null,
-        "modifiedTime": 1728945170120,
-        "lastModifiedBy": "YxlXl9sauSuWxHdZ"
-      },
-      "img": "icons/magic/air/wind-tornado-cyclone-purple-pink.webp",
-      "type": "base",
-      "system": {},
-      "sort": 0,
-      "_key": "!items.effects!qiyNsnKPpmPRjvtv.DyN0npqi5Se0CpOm"
-    }
-  ],
-  "folder": "90eJtrVwLFIxcWJw",
-  "flags": {
-    "itemacro": {
-      "macro": {
-        "_data": {
-          "name": "Confusion",
-          "type": "script",
-          "scope": "global",
-          "command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target @attributes.spelldc\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEItem.data.save\n\nif (args[0] === \"each\") {\n\n        let confusionRoll = new Roll(\"1d10\").roll().total;\n        let content;\n        switch (confusionRoll) {\n            case 1:\n                content = \"The creature uses all its movement to move in a random direction. To determine the direction, roll a  [[d8]] and assign a direction to each die face. The creature doesn't take an action this turn.\";\n                break;\n            case 2:\n                content = \"\tThe creature doesn't move or take actions this turn.\";\n                break;\n            case 3:\n            case 4:\n            case 5:\n            case 6:\n            case 7:\n                content = \"The creature uses its action to make a melee attack against a randomly determined creature within its reach. If there is no creature within its reach, the creature does nothing this turn.\";\n                break;\n            case 8:\n            case 9:\n            case 10:\n                content = \"The creature can act and move normally.\";\n                break;\n        }\n        ChatMessage.create({ content: `Confusion roll for ${tactor.name} is ${confusionRoll}: ` + content });\n\n        const flavor = `${CONFIG.DND5E.abilities[saveData.ability]} DC${saveData.dc} ${DAEItem?.name || \"\"}`;\n        let saveRoll = (await tactor.rollAbilitySave(saveData.ability, { flavor })).total;\n\n    if(saveRoll >= DC) {\n        ChatMessage.create({ content: `Confusion ends for ${tactor.name} at the end of their turn`})\n        tactor.deleteEmbeddedEntity(\"ActiveEffect\", lastArg.effectId); \n    }\n\n}",
-          "author": "E4BVikjIkVl2lL2j"
-        },
-        "data": {
-          "name": "Confusion",
-          "type": "script",
-          "scope": "global",
-          "command": "//DAE Macro , Effect Value = @target @attributes.spelldc\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEItem.data.save\n\nif (args[0] === \"each\") {\n\n        let confusionRoll = await new Roll(\"1d10\").evaluate().total;\n        let content;\n        switch (confusionRoll) {\n            case 1:\n                content = \"The creature uses all its movement to move in a random direction. To determine the direction, roll a  [[d8]] and assign a direction to each die face. The creature doesn't take an action this turn.\";\n                break;\n            case 2:\n                content = \"\tThe creature doesn't move or take actions this turn.\";\n                break;\n            case 3:\n            case 4:\n            case 5:\n            case 6:\n            case 7:\n                content = \"The creature uses its action to make a melee attack against a randomly determined creature within its reach. If there is no creature within its reach, the creature does nothing this turn.\";\n                break;\n            case 8:\n            case 9:\n            case 10:\n                content = \"The creature can act and move normally.\";\n                break;\n        }\n        ChatMessage.create({ content: `Confusion roll for ${tactor.name} is ${confusionRoll}:<br> ` + content });\n\n        const flavor = `${CONFIG.DND5E.abilities[saveData.ability]} DC${args[1]} End of turn save for Confusion`;\n        let saveRoll = (await tactor.rollAbilitySave(saveData.ability, { flavor })).total;\n\n    if(saveRoll >= args[1]) {\n        ChatMessage.create({ content: `Confusion ends for ${tactor.name} at the end of their turn`})\n        tactor.deleteEmbeddedEntity(\"ActiveEffect\", lastArg.effectId); \n    }\n\n}",
-          "author": "zrPR3wueYsESSBR3",
-          "_id": null,
-          "img": "icons/svg/dice-target.svg",
-          "folder": null,
-          "sort": 0,
-          "permission": {
-            "default": 0
-          },
-          "flags": {}
-        },
-        "options": {},
-        "apps": {},
-        "compendium": null
-      }
+        "systemVersion": "4.3.6",
+        "createdTime": 1726952205435,
+        "modifiedTime": 1741902567685,
+        "lastModifiedBy": "ymGs3J4QpWbCOXON"
     },
-    "dae": {
-      "activeEquipped": false,
-      "alwaysActive": false,
-      "macro": {
-        "name": "Confusion",
-        "img": "icons/magic/air/wind-tornado-cyclone-purple-pink.webp",
-        "type": "script",
-        "scope": "global",
-        "command": "",
-        "author": "3Yi0HjF4PKCA4vX0",
-        "ownership": {
-          "default": 3
-        },
-        "_id": null,
-        "folder": null,
-        "sort": 0,
-        "flags": {},
-        "_stats": {
-          "systemId": null,
-          "systemVersion": null,
-          "coreVersion": null,
-          "createdTime": null,
-          "modifiedTime": null,
-          "lastModifiedBy": null
-        }
-      }
-    },
-    "core": {},
-    "midi-qol": {
-      "onUseMacroName": "",
-      "effectActivation": false,
-      "AoETargetType": "any",
-      "AoETargetTypeIncludeSelf": true,
-      "autoTarget": "default",
-      "itemCondition": "",
-      "reactionCondition": "",
-      "otherCondition": "",
-      "effectCondition": "",
-      "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default"
-    },
-    "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
-      "rollOther": false,
-      "critOther": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "toggleEffect": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "offHandWeapon": false,
-      "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
-      "otherSaveDamage": "default",
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      },
-      "migratedProperties": [
-        "vocal",
-        "somatic",
-        "material",
-        "concentration"
-      ]
-    },
-    "tidy5e-sheet": {
-      "section": "",
-      "actionSection": ""
-    }
-  },
-  "system": {
-    "description": {
-      "value": "<p><em>You tap three walnut shells, which start vibrating for the duration of the spell. With a short incantation, this spell assails and distorts the minds of creatures, generating illusions and causing them to act uncontrollably.</em></p><p><strong>Wisdom Save</strong> </p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[confused].<span>Target rolls again at end of their turns, ending effect on success.</span></p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><strong>Upcasting:</strong> The radius of the spell increases by 5 ft. for each spell level above 4th level.</p>",
-      "chat": "<strong>Wisdom Save</strong> </p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[confused].<span>Target rolls again at end of their turns, ending effect on success.</span></p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><strong>Upcasting:</strong> The radius of the spell increases by 5 ft. for each spell level above 4th level.</p>"
-    },
-    "source": {
-      "custom": "elkan5e.com/spells/confusion",
-      "revision": 1,
-      "rules": "",
-      "book": "Elkan 5e",
-      "page": "",
-      "license": ""
-    },
-    "activation": {
-      "type": "action",
-      "condition": "",
-      "value": 1
-    },
-    "duration": {
-      "value": "1",
-      "units": "minute"
-    },
-    "target": {
-      "affects": {
-        "choice": false,
-        "count": "",
-        "type": ""
-      },
-      "template": {
-        "units": "ft",
-        "type": "sphere",
-        "size": "10",
-        "contiguous": false,
-        "count": ""
-      }
-    },
-    "range": {
-      "value": "90",
-      "units": "ft",
-      "special": ""
-    },
-    "uses": {
-      "max": "",
-      "recovery": [],
-      "spent": 0
-    },
-    "ability": "",
-    "level": 4,
-    "school": "enc",
-    "materials": {
-      "value": "Three walnut shells.",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
-    },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": true
-    },
-    "properties": [
-      "vocal",
-      "somatic",
-      "material",
-      "concentration",
-      "mgc"
-    ],
-    "activities": {
-      "UQR6lMyctQn2K0bV": {
-        "type": "save",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [
-          {
-            "_id": "DyN0npqi5Se0CpOm",
-            "onSave": false
-          }
-        ],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "prompt": true,
-          "template": {
-            "contiguous": false,
-            "units": "ft"
-          },
-          "affects": {
-            "choice": false
-          },
-          "override": false
-        },
-        "damage": {
-          "onSave": "none",
-          "parts": []
-        },
-        "save": {
-          "ability": "wis",
-          "dc": {
-            "calculation": "spellcasting",
-            "formula": ""
-          }
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "sort": 0,
-        "_id": "UQR6lMyctQn2K0bV",
-        "name": "",
-        "img": "",
-        "appliedEffects": [
-          "DyN0npqi5Se0CpOm"
-        ],
-        "effectConditionText": "!target.traits.ci.value.has('confusion')"
-      },
-      "yORFKlZi0yNX5XHF": {
-        "type": "utility",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "prompt": true,
-          "template": {
-            "contiguous": false,
-            "units": "ft"
-          },
-          "affects": {
-            "choice": false
-          },
-          "override": false
-        },
-        "roll": {
-          "formula": "1d10",
-          "name": "Confusion Roll",
-          "prompt": false,
-          "visible": false
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "sort": 0,
-        "_id": "yORFKlZi0yNX5XHF",
-        "name": "Confusion Roll",
-        "img": "",
-        "appliedEffects": []
-      }
-    },
-    "identifier": ""
-  },
-  "ownership": {
-    "default": 0,
-    "VJURYym0JQByHBQL": 3,
-    "MKYWAnkTJr0gkDqT": 3,
-    "vHqSHJMdmEO6Mk2C": 3
-  },
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.331",
-    "systemId": "dnd5e",
-    "systemVersion": "4.3.6",
-    "createdTime": 1726952205435,
-    "modifiedTime": 1741902567685,
-    "lastModifiedBy": "ymGs3J4QpWbCOXON"
-  },
-  "_id": "qiyNsnKPpmPRjvtv",
-  "sort": 2600000,
-  "_key": "!items!qiyNsnKPpmPRjvtv"
+    "_id": "qiyNsnKPpmPRjvtv",
+    "sort": 2600000,
+    "_key": "!items!qiyNsnKPpmPRjvtv"
 }

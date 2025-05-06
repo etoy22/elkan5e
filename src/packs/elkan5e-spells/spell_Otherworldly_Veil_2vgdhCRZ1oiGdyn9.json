@@ -1,314 +1,312 @@
 {
-  "folder": "U0k4VGG6bziqf3oH",
-  "name": "Otherworldly Veil",
-  "type": "spell",
-  "img": "icons/creatures/magical/spirit-undead-masked-blue.webp",
-  "system": {
-    "activities": {
-      "hbUjtAJ9NTxWkn2b": {
-        "type": "save",
-        "_id": "hbUjtAJ9NTxWkn2b",
-        "sort": 0,
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": true,
-          "targets": []
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [
-          {
-            "_id": "PqxhnlqCTajlDpbE",
-            "onSave": false
-          }
-        ],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "template": {
-            "contiguous": false,
-            "units": "ft"
-          },
-          "affects": {
-            "choice": false
-          },
-          "override": false,
-          "prompt": true
+    "folder": "U0k4VGG6bziqf3oH",
+    "name": "Otherworldly Veil",
+    "type": "spell",
+    "img": "icons/creatures/magical/spirit-undead-masked-blue.webp",
+    "system": {
+        "activities": {
+            "hbUjtAJ9NTxWkn2b": {
+                "type": "save",
+                "_id": "hbUjtAJ9NTxWkn2b",
+                "sort": 0,
+                "activation": {
+                    "type": "action",
+                    "value": null,
+                    "override": false
+                },
+                "consumption": {
+                    "scaling": {
+                        "allowed": false
+                    },
+                    "spellSlot": true,
+                    "targets": []
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false
+                },
+                "target": {
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft"
+                    },
+                    "affects": {
+                        "choice": false
+                    },
+                    "override": false,
+                    "prompt": true
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "damage": {
+                    "parts": [
+                        {
+                            "custom": {
+                                "enabled": false,
+                                "formula": ""
+                            },
+                            "number": 2,
+                            "denomination": "8",
+                            "bonus": "",
+                            "types": [
+                                "acid"
+                            ],
+                            "scaling": {
+                                "mode": "whole",
+                                "number": 1,
+                                "formula": ""
+                            }
+                        }
+                    ],
+                    "critical": {
+                        "allow": false
+                    },
+                    "onSave": "half"
+                },
+                "save": {
+                    "ability": [
+                        "int"
+                    ],
+                    "dc": {
+                        "calculation": "spellcasting",
+                        "formula": ""
+                    }
+                },
+                "useConditionText": "",
+                "useConditionReason": "",
+                "effectConditionText": "",
+                "macroData": {
+                    "name": "",
+                    "command": ""
+                },
+                "ignoreTraits": {
+                    "idi": false,
+                    "idr": false,
+                    "idv": false,
+                    "ida": false
+                },
+                "midiProperties": {
+                    "ignoreTraits": [],
+                    "triggeredActivityId": "none",
+                    "triggeredActivityConditionText": "",
+                    "triggeredActivityTargets": "targets",
+                    "triggeredActivityRollAs": "self",
+                    "forceDialog": false,
+                    "confirmTargets": "default",
+                    "autoTargetType": "any",
+                    "autoTargetAction": "default",
+                    "automationOnly": false,
+                    "otherActivityCompatible": true,
+                    "identifier": "",
+                    "displayActivityName": false,
+                    "rollMode": "default",
+                    "chooseEffects": false,
+                    "toggleEffect": false,
+                    "ignoreFullCover": false
+                },
+                "isOverTimeFlag": false,
+                "overTimeProperties": {
+                    "saveRemoves": true,
+                    "preRemoveConditionText": "",
+                    "postRemoveConditionText": ""
+                },
+                "otherActivityId": "",
+                "name": "",
+                "img": "",
+                "appliedEffects": []
+            }
         },
         "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
+            "spent": 0,
+            "recovery": [],
+            "max": ""
         },
-        "damage": {
-          "parts": [
-            {
-              "custom": {
-                "enabled": false,
-                "formula": ""
-              },
-              "number": 2,
-              "denomination": 8,
-              "bonus": "",
-              "types": [
-                "acid"
-              ],
-              "scaling": {
-                "mode": "whole",
-                "number": 1
-              }
+        "description": {
+            "value": "<p><em>You whisper a spell that shields you from being detected from your target, damaging their mind in the process.</em></p><p><strong>Intelligence Save</strong> </p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 2d6 psychic]] damage and is &amp;reference[charmed]. While charmed in this way, your target is unable to see you or otherwise detect your presence. Target rolls save again at the end of each of their turns, ending effect on success.</p><p>The effect ends if you take hostile action against the target.</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 1st.</p>",
+            "chat": "<strong>Intelligence Save</strong> </p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 2d6 psychic]] damage and is &amp;reference[charmed]. While charmed in this way, your target is unable to see you or otherwise detect your presence. Target rolls save again at the end of each of their turns, ending effect on success.</p><p>The effect ends if you take hostile action against the target.</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 1st.</p>"
+        },
+        "identifier": "",
+        "source": {
+            "revision": 1,
+            "rules": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "custom": "elkan5e.com/spells/otherworldly-veil",
+            "license": ""
+        },
+        "activation": {
+            "type": "action",
+            "value": null,
+            "condition": ""
+        },
+        "duration": {
+            "units": "minute",
+            "value": "1"
+        },
+        "level": 1,
+        "materials": {
+            "value": "a handful of something sticky, like tree sap",
+            "consumed": false,
+            "cost": 0,
+            "supply": 0
+        },
+        "preparation": {
+            "mode": "prepared",
+            "prepared": false
+        },
+        "properties": [
+            "vocal"
+        ],
+        "range": {
+            "value": "60",
+            "units": "ft",
+            "special": ""
+        },
+        "school": "enc",
+        "target": {
+            "template": {
+                "contiguous": false,
+                "units": "ft",
+                "type": ""
+            },
+            "affects": {
+                "choice": false,
+                "count": "1",
+                "type": "creature",
+                "special": ""
             }
-          ],
-          "critical": {
-            "allow": false
-          },
-          "onSave": "half"
+        }
+    },
+    "effects": [
+        {
+            "name": "Otherworldly Veil",
+            "img": "icons/creatures/magical/spirit-undead-masked-blue.webp",
+            "origin": "Item.WlBgPCMxkZZxFt4t",
+            "_id": "LvbxgarlCUC19gcU",
+            "type": "base",
+            "system": {},
+            "changes": [],
+            "disabled": false,
+            "duration": {
+                "startTime": null,
+                "seconds": null,
+                "combat": null,
+                "rounds": null,
+                "turns": null,
+                "startRound": null,
+                "startTurn": null
+            },
+            "description": "",
+            "tint": "#ffffff",
+            "transfer": false,
+            "statuses": [
+                "charmed"
+            ],
+            "sort": 0,
+            "flags": {
+                "dae": {
+                    "disableCondition": "",
+                    "disableIncapacitated": false,
+                    "stackable": "multi",
+                    "showIcon": false,
+                    "durationExpression": "",
+                    "macroRepeat": "none",
+                    "specialDuration": []
+                },
+                "dnd5e": {
+                    "riders": {
+                        "statuses": []
+                    }
+                },
+                "core": {
+                    "overlay": false
+                },
+                "ActiveAuras": {
+                    "isAura": false,
+                    "aura": "None",
+                    "nameOverride": "",
+                    "radius": "",
+                    "alignment": "",
+                    "type": "",
+                    "customCheck": "",
+                    "ignoreSelf": false,
+                    "height": false,
+                    "hidden": false,
+                    "displayTemp": false,
+                    "hostile": false,
+                    "onlyOnce": false,
+                    "wallsBlock": "system",
+                    "statuses": []
+                }
+            },
+            "_stats": {
+                "compendiumSource": null,
+                "duplicateSource": null,
+                "coreVersion": "12.331",
+                "systemId": "dnd5e",
+                "systemVersion": "4.3.8",
+                "createdTime": null,
+                "modifiedTime": null,
+                "lastModifiedBy": null
+            },
+            "_key": "!items.effects!2vgdhCRZ1oiGdyn9.LvbxgarlCUC19gcU"
+        }
+    ],
+    "flags": {
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
         },
-        "save": {
-          "ability": [
-            "dex"
-          ],
-          "dc": {
-            "calculation": "spellcasting",
-            "formula": ""
-          }
-        },
-        "useConditionText": "",
-        "useConditionReason": "",
-        "effectConditionText": "",
-        "macroData": {
-          "name": "",
-          "command": ""
-        },
-        "ignoreTraits": {
-          "idi": false,
-          "idr": false,
-          "idv": false,
-          "ida": false
+        "midi-qol": {
+            "rollAttackPerTarget": "default",
+            "removeAttackDamageButtons": "default",
+            "itemCondition": "",
+            "reactionCondition": "",
+            "otherCondition": "",
+            "effectCondition": ""
         },
         "midiProperties": {
-          "ignoreTraits": [],
-          "triggeredActivityId": "none",
-          "triggeredActivityConditionText": "",
-          "triggeredActivityTargets": "targets",
-          "triggeredActivityRollAs": "self",
-          "forceDialog": false,
-          "confirmTargets": "default",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "automationOnly": false,
-          "otherActivityCompatible": true,
-          "identifier": "",
-          "displayActivityName": false,
-          "rollMode": "default",
-          "chooseEffects": false,
-          "toggleEffect": false,
-          "ignoreFullCover": false
-        },
-        "isOverTimeFlag": false,
-        "overTimeProperties": {
-          "saveRemoves": true,
-          "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
-        },
-        "otherActivityId": "",
-        "name": ""
-      }
-    },
-    "uses": {
-      "spent": 0,
-      "recovery": [],
-      "max": ""
-    },
-    "description": {
-      "value": "<p><em>You whisper a spell that shields you from being detected from your target, damaging their mind in the process.</em></p><p><strong>Intelligence Save</strong> </p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 2d6 psychic]] damage and is &amp;reference[charmed]. While charmed in this way, your target is unable to see you or otherwise detect your presence. Target rolls save again at the end of each of their turns, ending effect on success.</p><p>The effect ends if you take hostile action against the target.</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 1st.</p>",
-      "chat": "<strong>Intelligence Save</strong> </p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 2d6 psychic]] damage and is &amp;reference[charmed]. While charmed in this way, your target is unable to see you or otherwise detect your presence. Target rolls save again at the end of each of their turns, ending effect on success.</p><p>The effect ends if you take hostile action against the target.</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 1st.</p>"
-    },
-    "identifier": "",
-    "source": {
-      "revision": 1,
-      "rules": "",
-      "book": "Elkan 5e",
-      "page": "",
-      "custom": "elkan5e.com/spells/otherworldly-veil",
-      "license": ""
-    },
-    "activation": {
-      "type": "action",
-      "value": null,
-      "condition": ""
-    },
-    "duration": {
-      "units": "minute",
-      "value": "1"
-    },
-    "level": 1,
-    "materials": {
-      "value": "a handful of something sticky, like tree sap",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
-    },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": false
-    },
-    "properties": [
-      "vocal"
-    ],
-    "range": {
-      "value": "60",
-      "units": "ft",
-      "special": ""
-    },
-    "school": "enc",
-    "target": {
-      "template": {
-        "contiguous": false,
-        "units": "ft",
-        "type": ""
-      },
-      "affects": {
-        "choice": false,
-        "count": "1",
-        "type": "creature",
-        "special": ""
-      }
-    }
-  },
-  "effects": [
-    {
-      "name": "Otherworldly Veil",
-      "img": "icons/creatures/magical/spirit-undead-masked-blue.webp",
-      "origin": "Item.WlBgPCMxkZZxFt4t",
-      "_id": "LvbxgarlCUC19gcU",
-      "type": "base",
-      "system": {},
-      "changes": [],
-      "disabled": false,
-      "duration": {
-        "startTime": null,
-        "seconds": null,
-        "combat": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
-      },
-      "description": "",
-      "tint": "#ffffff",
-      "transfer": false,
-      "statuses": [
-        "charmed"
-      ],
-      "sort": 0,
-      "flags": {
-        "dae": {
-          "disableCondition": "",
-          "disableIncapacitated": false,
-          "stackable": "multi",
-          "showIcon": false,
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "specialDuration": []
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "noConcentrationCheck": false,
+            "toggleEffect": false,
+            "ignoreTotalCover": false
         },
         "dnd5e": {
-          "riders": {
-            "statuses": []
-          }
-        },
-        "core": {
-          "overlay": false
-        },
-        "ActiveAuras": {
-          "isAura": false,
-          "aura": "None",
-          "nameOverride": "",
-          "radius": "",
-          "alignment": "",
-          "type": "",
-          "customCheck": "",
-          "ignoreSelf": false,
-          "height": false,
-          "hidden": false,
-          "displayTemp": false,
-          "hostile": false,
-          "onlyOnce": false,
-          "wallsBlock": "system",
-          "statuses": []
+            "riders": {
+                "activity": [],
+                "effect": []
+            }
         }
-      },
-      "_stats": {
+    },
+    "_stats": {
         "compendiumSource": null,
         "duplicateSource": null,
         "coreVersion": "12.331",
         "systemId": "dnd5e",
-        "systemVersion": "4.3.8",
-        "createdTime": null,
-        "modifiedTime": null,
-        "lastModifiedBy": null
-      },
-      "_key": "!items.effects!2vgdhCRZ1oiGdyn9.LvbxgarlCUC19gcU"
-    }
-  ],
-  "flags": {
-    "tidy5e-sheet": {
-      "section": "",
-      "actionSection": ""
+        "systemVersion": "4.3.9",
+        "createdTime": 1744755588996,
+        "modifiedTime": 1746034013358,
+        "lastModifiedBy": "3Yi0HjF4PKCA4vX0"
     },
-    "midi-qol": {
-      "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default",
-      "itemCondition": "",
-      "reactionCondition": "",
-      "otherCondition": "",
-      "effectCondition": ""
+    "_id": "2vgdhCRZ1oiGdyn9",
+    "sort": 2950000,
+    "ownership": {
+        "default": 0,
+        "ymGs3J4QpWbCOXON": 3
     },
-    "midiProperties": {
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "noConcentrationCheck": false,
-      "toggleEffect": false,
-      "ignoreTotalCover": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      }
-    }
-  },
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.331",
-    "systemId": "dnd5e",
-    "systemVersion": "4.3.8",
-    "createdTime": 1744755588996,
-    "modifiedTime": 1744755665536,
-    "lastModifiedBy": "ymGs3J4QpWbCOXON"
-  },
-  "_id": "2vgdhCRZ1oiGdyn9",
-  "sort": 2950000,
-  "ownership": {
-    "default": 0,
-    "ymGs3J4QpWbCOXON": 3
-  },
-  "_key": "!items!2vgdhCRZ1oiGdyn9"
+    "_key": "!items!2vgdhCRZ1oiGdyn9"
 }
