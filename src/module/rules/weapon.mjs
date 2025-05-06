@@ -14,6 +14,7 @@ export function weaponTypes() {
     // Adding new weapon Properties
     const NEW_PROPERTIES = {
         coldIron: { label: "Cold Iron", isPhysical: "true" },
+        conc : { label: "Concussive" },
         mou: { label: "Mounted" },
         unw: { label: "Unwieldy" }
     };
@@ -52,7 +53,9 @@ export function weaponTypes() {
         spear: "l6tAULuFVbSNewP4",
         unarmed: "pRDNsHpNLLk1Qq58",
         warhammer: "3geQ0izotY1xNo8c",
-        whip: "GdgYGzD0cqVlYguz"
+        whip: "GdgYGzD0cqVlYguz",
+        pistol: "O7abmlrF4raTjnkr",
+        musket: "IUIwCZtPbwMwB0b1"
     };
 
     Object.assign(CONFIG.DND5E.itemProperties, NEW_PROPERTIES);
@@ -69,6 +72,8 @@ export function weaponTypes() {
     const WEAPONS = game.settings.get("elkan5e", "weapons");
     if (!WEAPONS) {
         ["flail", "net", "trident", "warpick"].forEach(weapon => delete CONFIG.DND5E.weaponIds[weapon]);
+        CONFIG.DND5E.weaponIds["pistol"] = "Compendium.elkan5e.elkan5e-equipment.Item.O7abmlrF4raTjnkr";
+        CONFIG.DND5E.weaponIds["musket"] = "Compendium.elkan5e.elkan5e-equipment.Item.IUIwCZtPbwMwB0b1";
     }
 }
 
@@ -79,12 +84,13 @@ export function weaponRules() {
     const WEAPON_REFS = {
         adamantine: "cUHKJTc6BHyI1gfR",
         ammunition: "5RUwcK38cpr1fZLe",
-        coldw: "ciqBm30ddE1BsPOg",
+        coldiron: "ciqBm30ddE1BsPOg",
+        concussive: "1hVvE10PnHaKQGik",
         finesse: "QIw9oL7nHuy6A5e3",
         heavy: "K644Km2l7enin6ou",
-        lightw: "AHUBfDV0TrMzcTUa",
+        lightweapon: "AHUBfDV0TrMzcTUa",
         loading: "VENz7U1ksd5WtYbK",
-        magicw: "ZqkxXr9joWmx5dEx",
+        magicweapon: "ZqkxXr9joWmx5dEx",
         mounted: "NF2lMEQyT4y6dxd0",
         reach: "1xgI5cPXMX8TwBt5",
         thrown: "cJzshBhfAwz9VYv0",

@@ -1,4 +1,42 @@
 # Changelog
+# v1.12.22
+## Bug Fixes
+- Fixed pricing for cold iron, silver, and adamantine ammunition
+- Fixed an issue causing condition icon images to be missing
+- Scrying Summon now invisible
+- Fix Otherworldly Veil to use Int instead of Dex
+- Fixed Issue where druidic and thieves cant appear multiple times in (2014 DND)
+- Removed second draconic language appearing (2024 DND)
+- Fixed issues with a duplicate flamestrike spell in compendium
+## Classes
+**[Paladin](https://www.elkan5e.com/paladin)**
+- Renamed Oath of Devotion to Paragon
+- New Vengence Subclass
+
+**[Ranger](https://www.elkan5e.com/ranger)**
+- New Spellbreaker Subclass
+
+**[Warlock](https://www.elkan5e.com/warlock)**
+- Fey
+	- Added Conjure Woodland Creature to expanded list
+	 
+**[Wizard](https://www.elkan5e.com/wizard)**
+- Necromancer
+	- Spectral Graveguard force damage
+## Equipment
+- Firearms have been added
+## Feats
+- Expanded Fast Loading feat to allow loading weapons using a shield arm or a hand holding another one-handed ammunition weapon.
+- Ambidextrous Might renamed to Ambidexterity
+## Spells
+- Added Guardian of Faith, Mass Cure Wounds, Commune, Planar Binding to the paladin spell list
+- Added Dispel Magic, Arcane Eye, Mislead, Mass Cure Wounds, Divination, Dream, Conjure Elemental to the ranger spell list
+- Conjure Woodland Beings and Conjure Fey merged into a single 4th level spell
+- Conjure Minor Elementals and Conjure Elemental merged into a single 4th level spell
+- Added Intercession as a 3rd level spell for clerics, paladins, and spellbreakers
+## Misc
+- Add SRD (2024) to legal documentation
+
 # v1.12.21
 ## Bug Fixes
 - Fixed a few spells that were missing or erroneously listed in some class spell lists in the journal.
