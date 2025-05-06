@@ -1,208 +1,208 @@
 {
-  "folder": "qFXBWCjEDflMsWOJ",
-  "name": "Guardian Angel",
-  "type": "feat",
-  "_id": "8evXHUkCY6ct94KP",
-  "img": "icons/magic/life/heart-hand-gold-green.webp",
-  "system": {
-    "activities": {
-      "ooXbzx7bhpdfsEyW": {
-        "type": "heal",
-        "_id": "ooXbzx7bhpdfsEyW",
-        "sort": 0,
-        "activation": {
-          "type": "reaction",
-          "value": null,
-          "override": false,
-          "condition": "When a creature is reduced to 0 hit points."
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": true,
-          "targets": [
-            {
-              "type": "itemUses",
-              "value": "1",
-              "target": ""
+    "folder": "qFXBWCjEDflMsWOJ",
+    "name": "Guardian Angel",
+    "type": "feat",
+    "_id": "8evXHUkCY6ct94KP",
+    "img": "icons/magic/life/heart-hand-gold-green.webp",
+    "system": {
+        "activities": {
+            "ooXbzx7bhpdfsEyW": {
+                "type": "heal",
+                "_id": "ooXbzx7bhpdfsEyW",
+                "sort": 0,
+                "activation": {
+                    "type": "reaction",
+                    "value": null,
+                    "override": false,
+                    "condition": "When a creature is reduced to 0 hit points."
+                },
+                "consumption": {
+                    "scaling": {
+                        "allowed": false
+                    },
+                    "spellSlot": true,
+                    "targets": [
+                        {
+                            "type": "itemUses",
+                            "value": "1",
+                            "target": ""
+                        }
+                    ]
+                },
+                "description": {
+                    "chatFlavor": ""
+                },
+                "duration": {
+                    "units": "inst",
+                    "concentration": false,
+                    "override": false
+                },
+                "effects": [],
+                "range": {
+                    "override": false,
+                    "units": "ft",
+                    "special": "",
+                    "value": "60"
+                },
+                "target": {
+                    "template": {
+                        "contiguous": false,
+                        "units": "ft",
+                        "type": ""
+                    },
+                    "affects": {
+                        "choice": false,
+                        "type": "creature",
+                        "count": "1",
+                        "special": ""
+                    },
+                    "override": false,
+                    "prompt": true
+                },
+                "uses": {
+                    "spent": 0,
+                    "recovery": [],
+                    "max": ""
+                },
+                "healing": {
+                    "number": 4,
+                    "denomination": "6",
+                    "types": [
+                        "healing"
+                    ],
+                    "custom": {
+                        "enabled": false
+                    },
+                    "scaling": {
+                        "number": 1
+                    },
+                    "bonus": ""
+                },
+                "useConditionText": "",
+                "useConditionReason": "",
+                "effectConditionText": "",
+                "macroData": {
+                    "name": "",
+                    "command": ""
+                },
+                "ignoreTraits": {
+                    "idi": false,
+                    "idr": false,
+                    "idv": false,
+                    "ida": false
+                },
+                "midiProperties": {
+                    "ignoreTraits": [],
+                    "triggeredActivityId": "none",
+                    "triggeredActivityConditionText": "",
+                    "triggeredActivityTargets": "targets",
+                    "triggeredActivityRollAs": "self",
+                    "forceDialog": false,
+                    "confirmTargets": "default",
+                    "autoTargetType": "any",
+                    "autoTargetAction": "default",
+                    "automationOnly": false,
+                    "otherActivityCompatible": true,
+                    "identifier": "",
+                    "displayActivityName": false,
+                    "rollMode": "default",
+                    "chooseEffects": false
+                },
+                "isOverTimeFlag": false,
+                "overTimeProperties": {
+                    "saveRemoves": true,
+                    "preRemoveConditionText": "",
+                    "postRemoveConditionText": ""
+                },
+                "name": "",
+                "img": "",
+                "appliedEffects": []
             }
-          ]
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false,
-          "units": "ft",
-          "special": "",
-          "value": "60"
-        },
-        "target": {
-          "template": {
-            "contiguous": false,
-            "units": "ft",
-            "type": ""
-          },
-          "affects": {
-            "choice": false,
-            "type": "creature",
-            "count": "1",
-            "special": ""
-          },
-          "override": false,
-          "prompt": true
         },
         "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
+            "spent": 0,
+            "recovery": [
+                {
+                    "period": "sr",
+                    "type": "recoverAll"
+                }
+            ],
+            "max": "1"
         },
-        "healing": {
-          "number": 4,
-          "denomination": "6",
-          "types": [
-            "healing"
-          ],
-          "custom": {
-            "enabled": false
-          },
-          "scaling": {
-            "number": 1
-          },
-          "bonus": ""
+        "description": {
+            "value": "<p><em>You send your light to save an ally at the brink of death. Glowing briefly, you restore their life force.</em></p><p><strong>Reaction</strong> - 1 Creature (60 ft.) - 1/Short Rest - Magical</p><p>When a creature is reduced to 0 hit points, you can heal them and prevent them from injury or death.</p><ul><li><p>Target regains [[/healing 4d6]] hit points rather than dropping to 0. Target does not fall &amp;reference[prone] if healed.</p></li></ul>",
+            "chat": ""
         },
-        "useConditionText": "",
-        "useConditionReason": "",
-        "effectConditionText": "",
-        "macroData": {
-          "name": "",
-          "command": ""
+        "identifier": "",
+        "source": {
+            "revision": 1,
+            "rules": "",
+            "book": "Elkan 5e",
+            "page": "",
+            "custom": "elkan5e.com/warlock",
+            "license": ""
         },
-        "ignoreTraits": {
-          "idi": false,
-          "idr": false,
-          "idv": false,
-          "ida": false
+        "advancement": [],
+        "cover": null,
+        "crewed": false,
+        "enchant": {},
+        "prerequisites": {
+            "level": null,
+            "repeatable": false
+        },
+        "properties": [
+            "mgc"
+        ],
+        "requirements": "Celestial 6",
+        "type": {
+            "value": "",
+            "subtype": ""
+        }
+    },
+    "effects": [],
+    "sort": 400000,
+    "ownership": {
+        "default": 0,
+        "3Yi0HjF4PKCA4vX0": 3
+    },
+    "flags": {
+        "tidy5e-sheet": {
+            "section": "",
+            "actionSection": ""
+        },
+        "midi-qol": {
+            "rollAttackPerTarget": "default",
+            "removeAttackDamageButtons": "default",
+            "itemCondition": "",
+            "reactionCondition": "",
+            "otherCondition": "",
+            "effectCondition": ""
         },
         "midiProperties": {
-          "ignoreTraits": [],
-          "triggeredActivityId": "none",
-          "triggeredActivityConditionText": "",
-          "triggeredActivityTargets": "targets",
-          "triggeredActivityRollAs": "self",
-          "forceDialog": false,
-          "confirmTargets": "default",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "automationOnly": false,
-          "otherActivityCompatible": true,
-          "identifier": "",
-          "displayActivityName": false,
-          "rollMode": "default",
-          "chooseEffects": false
+            "autoFailFriendly": false,
+            "autoSaveFriendly": false,
+            "magicdam": false,
+            "magiceffect": false,
+            "noConcentrationCheck": false,
+            "toggleEffect": false,
+            "ignoreTotalCover": false
         },
-        "isOverTimeFlag": false,
-        "overTimeProperties": {
-          "saveRemoves": true,
-          "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
-        },
-        "name": "",
-        "img": "",
-        "appliedEffects": []
-      }
-    },
-    "uses": {
-      "spent": 0,
-      "recovery": [
-        {
-          "period": "sr",
-          "type": "recoverAll"
+        "dnd5e": {
+            "riders": {
+                "activity": [],
+                "effect": []
+            }
         }
-      ],
-      "max": "1"
     },
-    "description": {
-      "value": "<p><em>You send your light to save an ally at the brink of death. Glowing briefly, you restore their life force.</em></p><p><strong>Reaction</strong> - 1 Creature (60 ft.) - 1/Short Rest - Magical</p><p>When a creature is reduced to 0 hit points, you can heal them and prevent them from injury or death.</p><ul><li><p>Target regains [[/healing 4d6]] hit points rather than dropping to 0. Target does not fall &amp;reference[prone] if healed.</p></li></ul>",
-      "chat": ""
+    "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.3.8",
+        "createdTime": 1742268956814,
+        "modifiedTime": 1744076210387,
+        "lastModifiedBy": "fgP8EzWy33UFoZmI"
     },
-    "identifier": "",
-    "source": {
-      "revision": 1,
-      "rules": "",
-      "book": "Elkan 5e",
-      "page": "",
-      "custom": "elkan5e.com/warlock",
-      "license": ""
-    },
-    "advancement": [],
-    "cover": null,
-    "crewed": false,
-    "enchant": {},
-    "prerequisites": {
-      "level": null,
-      "repeatable": false
-    },
-    "properties": [
-      "mgc"
-    ],
-    "requirements": "Celestial 6",
-    "type": {
-      "value": "",
-      "subtype": ""
-    }
-  },
-  "effects": [],
-  "sort": 400000,
-  "ownership": {
-    "default": 0,
-    "3Yi0HjF4PKCA4vX0": 3
-  },
-  "flags": {
-    "tidy5e-sheet": {
-      "section": "",
-      "actionSection": ""
-    },
-    "midi-qol": {
-      "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default",
-      "itemCondition": "",
-      "reactionCondition": "",
-      "otherCondition": "",
-      "effectCondition": ""
-    },
-    "midiProperties": {
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "noConcentrationCheck": false,
-      "toggleEffect": false,
-      "ignoreTotalCover": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      }
-    }
-  },
-  "_stats": {
-    "compendiumSource": null,
-    "duplicateSource": null,
-    "coreVersion": "12.331",
-    "systemId": "dnd5e",
-    "systemVersion": "4.3.8",
-    "createdTime": 1742268956814,
-    "modifiedTime": 1744076210387,
-    "lastModifiedBy": "fgP8EzWy33UFoZmI"
-  },
-  "_key": "!items!8evXHUkCY6ct94KP"
+    "_key": "!items!8evXHUkCY6ct94KP"
 }
