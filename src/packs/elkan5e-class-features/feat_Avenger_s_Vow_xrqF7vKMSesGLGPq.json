@@ -1,0 +1,281 @@
+{
+  "folder": "LPkxlapT1hK0gA3h",
+  "name": "Avenger's Vow",
+  "type": "feat",
+  "_id": "xrqF7vKMSesGLGPq",
+  "img": "icons/skills/melee/hand-grip-sword-orange.webp",
+  "system": {
+    "activities": {
+      "1zJQk38rQU7hTAIJ": {
+        "type": "utility",
+        "_id": "1zJQk38rQU7hTAIJ",
+        "sort": 0,
+        "activation": {
+          "type": "nocost",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "hour",
+          "concentration": false,
+          "override": false,
+          "value": "1"
+        },
+        "effects": [
+          {
+            "_id": "jMAziC7H1qRIOleD"
+          }
+        ],
+        "range": {
+          "override": false,
+          "units": "spec",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "type": "creature",
+            "count": "1",
+            "special": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "jMAziC7H1qRIOleD"
+        ]
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "description": {
+      "value": "<p><em>You speak a creature's name, their title, or otherwise specify a single creature, condemning them for past misdeeds.</em></p><p><strong>No Action Cost</strong> - Self - 1 Hour - Magical</p><p>You use this ability when you use @UUID[Compendium.elkan5e.elkan5e-class-features.Item.MUXZKqXOk5k1w8pS]{Commanding Challenge}, @UUID[Compendium.elkan5e.elkan5e-class-features.Item.wjflquP9J7ItZqny]{Avenger's Leap}, or @UUID[Compendium.elkan5e.elkan5e-class-features.Item.2yjAwCh8FpQP0MAP]{Searing Retribution}, targeting the same creature.</p><ul><li><p>You have advantage on attack rolls against the target.</p></li><li><p>You have advantage on all &amp;reference[investigation], &amp;reference[perception], and &amp;reference[survival] checks made to locate the creature.</p></li></ul><p></p>",
+      "chat": ""
+    },
+    "identifier": "",
+    "source": {
+      "revision": 1,
+      "rules": "2024",
+      "book": "",
+      "page": "",
+      "custom": "elkan5e.com/paladin",
+      "license": ""
+    },
+    "advancement": [],
+    "cover": null,
+    "crewed": false,
+    "enchant": {},
+    "prerequisites": {
+      "level": null,
+      "repeatable": false
+    },
+    "properties": [
+      "mgc"
+    ],
+    "requirements": "Avenger 14",
+    "type": {
+      "value": "subclass",
+      "subtype": ""
+    }
+  },
+  "effects": [
+    {
+      "name": "Avenger's Vow",
+      "changes": [
+        {
+          "key": "flags.midi-qol.grants.advantage.attack.all",
+          "mode": 0,
+          "value": "targetActorUuid === \"@actorUuid\"",
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "img": "icons/skills/melee/hand-grip-sword-orange.webp",
+      "_id": "jMAziC7H1qRIOleD",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": 3600,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "multi",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "core": {
+          "overlay": false
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system",
+          "statuses": []
+        }
+      },
+      "_stats": {
+        "compendiumSource": null,
+        "duplicateSource": null,
+        "coreVersion": "12.331",
+        "systemId": "dnd5e",
+        "systemVersion": "4.3.9",
+        "createdTime": 1746504259333,
+        "modifiedTime": 1746505181987,
+        "lastModifiedBy": "Iu69CD0r3ke4BAoP"
+      },
+      "_key": "!items.effects!xrqF7vKMSesGLGPq.jMAziC7H1qRIOleD"
+    }
+  ],
+  "sort": 0,
+  "ownership": {
+    "default": 0,
+    "cwIJ7W3XRXrY0zj2": 3
+  },
+  "flags": {
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": ""
+    },
+    "midiProperties": {
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    }
+  },
+  "_stats": {
+    "compendiumSource": null,
+    "duplicateSource": null,
+    "coreVersion": "12.331",
+    "systemId": "dnd5e",
+    "systemVersion": "4.3.9",
+    "createdTime": 1746504106001,
+    "modifiedTime": 1746505188133,
+    "lastModifiedBy": "Iu69CD0r3ke4BAoP"
+  },
+  "_key": "!items!xrqF7vKMSesGLGPq"
+}
