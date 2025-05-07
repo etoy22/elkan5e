@@ -21,9 +21,13 @@ export function feral(actor) {
     }
 }
 
-export async function wildBlood(activity){
-    const actor = activity.actor;
-    const item = activity.item;
+export async function wildBlood({item, scope}){
+    if (!game.modules.get("elkan5e")?.active) return;
+
+    if (item.type !== "spell" || !item.system.activities) return;
+
+    const activityId = scope.workflow.uuid?.split(".").pop(); 
+    let type = item.system.activities.find(a => a.id === activityId).type
     const level = item.system.level;
     const TABLE_UUIDS = [
         null, // No table for level 0 spells
@@ -38,11 +42,30 @@ export async function wildBlood(activity){
         "LV2skOm8hCwM1JRH",
         "O7JYPPoDS7gLGkNj"
     ];
-    const wild = actor.items.find(i => i.name === "Wild Blood");
-    if (wild && ["Prismatic Bolt", "Mirror Image", "Blink", "Confusion", "Prismatic Spray"].includes(item.name)) {
-        const activityType = activity.type;
-        console.log(activityType);
-        if (activityType != "utility" || ["Mirror Image","Blink"].includes(item.name)) {
+
+
+    if (["Prismatic Bolt", "Mirror Image", "Blink", "Confusion", "Prismatic Spray"].includes(item.name)) {
+
+        let confirmed = await new Promise((resolve) => {
+            new Dialog({
+                title: "Wild Surge",
+                content: `<p>Do you want to trigger a Wild Surge?</p>`,
+                buttons: {
+                    yes: {
+                        label: "Yes",
+                        callback: () => resolve(true)
+                    },
+                    no: {
+                        label: "No",
+                        callback: () => resolve(false)
+                    }
+                },
+                default: "no"
+            }).render(true);
+        });
+
+        if (!confirmed) return;
+        if (type != "utility" || ["Mirror Image","Blink"].includes(item.name)) {
             let tableUUID = TABLE_UUIDS[level];
             if (tableUUID) {
                 try {
@@ -56,6 +79,6 @@ export async function wildBlood(activity){
                 }
             }
         }
-        }
+    }
 
 }
