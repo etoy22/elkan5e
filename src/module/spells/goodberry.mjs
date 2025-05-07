@@ -5,7 +5,7 @@ export async function deleteGoodberryEffect (item){
     }
 }
 // TODO: This function works but causes errors when deleting the item with multiple effects
-export async function goodberry({ actor, item, }) {
+export async function goodberry({ actor, item }) {
     console.log(`${item.name} spell activated`);
 
     // Determine the spell level and calculate the number of berries

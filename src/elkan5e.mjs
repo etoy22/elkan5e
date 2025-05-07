@@ -4,7 +4,7 @@ import { initWarlockSpellSlot } from "./module/classes/warlock.mjs";
 import { perLeader, rallySurge } from "./module/classes/fighter.mjs";
 import { healOver, infuseHeal } from "./module/classes/cleric.mjs";
 import { archDruid } from "./module/classes/druid.mjs";
-import { feral, wildBlood } from "./module/classes/barbarian.mjs";
+import { feral, wild_blood, wildBlood } from "./module/classes/barbarian.mjs";
 import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
 import { meldWithShadow, shadowMonk, hijackShadow } from "./module/classes/monk.mjs";
 import { armor } from "./module/rules/armor.mjs";
@@ -135,21 +135,9 @@ Hooks.on("combatTurnChange", (combat, prior, current) => {
     }
 });
 
-// Hooks.on("dnd5e.preRollAttackV2", async (config, dialog, message) => {
-//     console.log("CONFIG:", config, dialog, message);
-//     const actor = config.subject.actor; // Attacking Actor
-//     const hitTargets = config.subject.workflow.hitTargets; // Targets Attacked
-//     for (const target of hitTargets) {
-//         if (config.subject.type === "attack") {
-//             const sanc = await sanctuary(actor, target.actor);
-//             console.log("RETURN VALUE", sanc);
-//             if (!sanc) {
-//                 console.log("Sanctuary Protection");
-//                 return false;
-//             }
-//         }
-//     }
-// });
+let features = {
+    wildBlood: wildBlood
+}
 
 let spells = {
     goodberry: goodberry,
