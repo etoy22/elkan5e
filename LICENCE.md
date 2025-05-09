@@ -91,3 +91,7 @@ The SRD 5.1 is licensed under the Creative Commons Attribution 4.0 International
 <br>
 /icons/conditions/prone.svg - Falling icon
 </details>
+
+Weapon icons by Ulisses Klysman: https://www.instagram.com/klysman37/
+
+Title Card Art by Sleight: https://www.artstation.com/sleightxyz
