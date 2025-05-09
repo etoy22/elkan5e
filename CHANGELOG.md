@@ -1,4 +1,26 @@
 # Changelog
+# v1.12.23
+## Bug Fixes
+- Add material component for Rend the Veil
+## Backgrounds
+- Increase number of known languages per background by one
+## Classes
+ **[Barbarian](https://www.elkan5e.com/barbarian)**
+- Reckless Attack now tied to short rest rather than long rest
+ 
+**[Bard](https://www.elkan5e.com/bard)**
+- Renamed College of Noise to Cacophony:
+	- Blasting Volume 20 ft. cone -> 30 ft. cone
+## Equipment
+- Added new custom icon for rapiers and lances
+## Game Rules
+- Clarified drawing weapons for thrown weapons
+- Added Creature Types
+## Spells
+- Clarified Magic Aura's mask option
+- Add damage to Banishment, which is dealt on a successful save. If damage reduces you to 0, banish to home plane nonlethally.
+- Stillness of Mind now removes goaded and confused
+
 # v1.12.22
 ## Bug Fixes
 - Fixed pricing for cold iron, silver, and adamantine ammunition
