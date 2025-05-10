@@ -1,4 +1,8 @@
 # Changelog
+# v1.12.23.1
+## Bug Fixes
+- Fixed Spellbreaker and Avenger missing the class identifier allowing them to function with advancements.
+
 # v1.12.23
 ## Bug Fixes
 - Add material component for Rend the Veil
