@@ -44,6 +44,12 @@ export function skillsRef() {
     try {
         console.log("Elkan 5e  |  Initializing Skills References");
 
+        const PROF = [
+            { key: "proficiency", id: "FSOQGFobVnECHPSC" },
+            { key: "expertise", id: "BXLGKD3SIZiYuaHt" },
+            { key: "dabbler", id: "HCfJwhuVwWCLPEBC" }
+
+        ];
         const SKILLS = [
             { key: "acr", id: "nJvKshCeUsYho87K" },
             { key: "ani", id: "JR9h0nL97GegQ9Vz" },
@@ -70,6 +76,11 @@ export function skillsRef() {
             CONFIG.DND5E.skills[key].reference = reference;
             CONFIG.DND5E.enrichmentLookup.skills[key].reference = reference;
         });
+
+        PROF.forEach(({ key, id }) => {
+            const reference = `Compendium.elkan5e.elkan5e-rules.JournalEntry.rv19GFzEa0nMTuAF.JournalEntryPage.${id}`;
+            CONFIG.DND5E.rules[key] = reference;
+        });
     } catch (error) {
         console.error("Error initializing skills references:", error);
     }
@@ -87,8 +98,10 @@ export function combatRef() {
             disengage: "bYoY0gZQArDraXRs",
             help: "ZdoIWQgcoqcHlZSf",
             hide: "57VIppmrOewNVKF5",
+            influence: "tQyGfgGBXBSz2UBe",
             ready: "Uo0qriXzk4YInJrl",
             search: "bRo3ci56JJiuxYk8",
+            study: "LAZotCjxu5Y9BIkK",
             surprise: "QOZeW0m8RCdVg6UE",
             unarmedstrike: "pRDNsHpNLLk1Qq58",
             twoweaponfighting: "XLZbNEhoayCw5bk8"
