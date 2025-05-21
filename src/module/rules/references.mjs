@@ -16,24 +16,24 @@ export function creature() {
         console.log("Elkan 5e  |  Initializing Creature References");
 
         const CREATURE_REFS = {
-            "aberration": "s654bq7hgEOCdSal",
-            "beast": "u3JShAq2ZxnVV2yV",
-            "celestial": "ZZwFqDb6FC9Z3XkD",
-            "construct": "rcp9DD1ydtLTIRhn",
-            "dragon": "pIZXeLpJ5fCozA1H",
-            "elemental": "QYh9NqKgmt6Hhj8c",
-            "fey": "XfgpzHZJ84H0sYVh",
-            "fiend": "EBIlihpWmZWGkC45",
-            "giant": "OGbTyzGQUuttmGfS",
-            "humanoid": "rdY46Jtmqi2OMGwJ",
-            "monstrosity": "eKwEjCvWliZqkyOL",
-            "ooze": "joRNgGxKjOYH3gMu",
-            "plant": "UYIBDnkcxC2BjHgm",
-            "undead": "R1lM7n8ZgXzgc1K3"
+            aberration: "s654bq7hgEOCdSal",
+            beast: "u3JShAq2ZxnVV2yV",
+            celestial: "ZZwFqDb6FC9Z3XkD",
+            construct: "rcp9DD1ydtLTIRhn",
+            dragon: "pIZXeLpJ5fCozA1H",
+            elemental: "QYh9NqKgmt6Hhj8c",
+            fey: "XfgpzHZJ84H0sYVh",
+            fiend: "EBIlihpWmZWGkC45",
+            giant: "OGbTyzGQUuttmGfS",
+            humanoid: "rdY46Jtmqi2OMGwJ",
+            monstrosity: "eKwEjCvWliZqkyOL",
+            ooze: "joRNgGxKjOYH3gMu",
+            plant: "UYIBDnkcxC2BjHgm",
+            undead: "R1lM7n8ZgXzgc1K3"
         };
 
         Object.entries(CREATURE_REFS).forEach(([key, id]) => {
-            CONFIG.DND5E.creatureTypes[key].reference = `Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.${CREATURE_REFS[id]}`;
+            CONFIG.DND5E.creatureTypes[key].reference = `Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.${id}`;
         });
     } catch (error) {
         console.error("Error initializing creature references:", error);
