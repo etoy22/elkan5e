@@ -41,6 +41,7 @@ def transform_value(value):
     simplified = simplify_html(value)
     replacements = {
         '\u00A0': ' ', '\u200B': '', '’': '\'',
+        '<p></p>': '',  # Ensure this replacement is applied only when necessary
         '</p>&': '</p>',  # Ensure this replacement is applied only when necessary
         '<strong>Strength</strong> Saving Throw': '<strong>Strength Save</strong>',
         '<strong>Dexterity</strong> Saving Throw': '<strong>Dexterity Save</strong>',
