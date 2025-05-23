@@ -1,4 +1,7 @@
 # Changelog
+# v1.12.24.1
+- Creature type references now work properly.
+
 # v1.12.24
 ## Bug Fixes
 - Added [Enervate](https://www.elkan5e.com/spells/enervate) to spell lists.
