@@ -1,3 +1,5 @@
+# TODO: FIX THIS SCRIPT
+
 import os
 import json
 from updateTime import load_and_update_json
