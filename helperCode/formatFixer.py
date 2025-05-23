@@ -41,7 +41,6 @@ def transform_value(value):
     simplified = simplify_html(value)
     replacements = {
         '\u00A0': ' ', '\u200B': '', '’': '\'',
-        '<p></p>': '',  # Ensure this replacement is applied only when necessary
         '</p>&': '</p>',  # Ensure this replacement is applied only when necessary
         '<strong>Strength</strong> Saving Throw': '<strong>Strength Save</strong>',
         '<strong>Dexterity</strong> Saving Throw': '<strong>Dexterity Save</strong>',
@@ -157,7 +156,8 @@ def process_object(obj):
                 description_parts = simplified_description.split("<p>")
                 first_paragraph = next((part for part in description_parts if part.strip()), "")
                 if "<em>" in first_paragraph:
-                    chat_parts = [part for part in description_parts[1:] if "<em>" not in part]
+                    # Exclude only the first paragraph (after split, that's description_parts[1])
+                    chat_parts = description_parts[1:]  # Skip the first paragraph after the split
                     chat = "<p>".join(chat_parts) if chat_parts else ""
                 else:
                     chat = ''  # Remove the description
