@@ -1,4 +1,79 @@
 # Changelog
+# v1.12.24
+## Bug Fixes
+- Added [Enervate](https://www.elkan5e.com/spells/enervate) to spell lists.
+- Creature type references now work properly.
+
+## Class
+**[Bard](https://www.elkan5e.com/bard)**
+- Removed Song of Rest.
+- Jack of All Trades is now gained at level 2.
+- Bardic Inspiration is now a reaction.
+- Inspiring Performance has been removed to streamline related bard features.
+- Bard Magical Secrets no longer allows selecting ranger or paladin spells.
+- Jester:
+    - Cutting Words is now a reaction.
+- Lorekeeper:
+    - Voice of Legend reworked to allow rolling twice for Bardic Inspiration each time.
+    - Foretold Victory is now 1/short rest instead of 1/long rest.
+- New Warchanter subclass.
+
+**[Fighter](https://www.elkan5e.com/fighter)**
+- Second Wind now allows you to move up to half your speed without provoking opportunity attacks.
+- Indomitable is now 3/long rest immediately, can be used on skill checks, and increases to 2d10 at level 13.
+
+**[Monk](https://www.elkan5e.com/monk)**
+- Step of the Wind now grants both Dash and Disengage at the same time.
+- Ki-Empowered Strikes now count as adamantine, cold iron, and silver.
+
+**[Ranger](https://www.elkan5e.com/ranger)**
+- Added Acrobatics to the ranger skill list.
+- Expertise is now granted at level 2.
+- Tireless feature replaces Expertise at level 15.
+
+**[Rogue](https://www.elkan5e.com/rogue)**
+- Decreased the cost of most precision attack options.
+- Knockdown no longer works on creatures larger than Large.
+- Fixed rogue multiclass proficiencies.
+- Rogues can choose from previous lists of precision attacks at higher levels and gain a new precision attack at level 15 instead of more expertise.
+
+**[Sorcerer](https://www.elkan5e.com/sorcerer)**
+- Effortless Metamagic no longer has a sorcery point limit.
+- Draconic:
+    - Draconic Resilience changed to 13 + CHA from 14 + DEX.
+
+**[Warlock](https://www.elkan5e.com/warlock)**
+- Eldritch Recovery no longer mentions Wizard.
+- Fiend:
+    - Spell list changed: lost [Blindness/Deafness](https://www.elkan5e.com/spells/blindness%2Fdeafness), [Dominate](https://www.elkan5e.com/spells/dominate), and [Hallow](https://www.elkan5e.com/spells/hollow); gained [Suggestion](https://www.elkan5e.com/spells/suggestion), [Geas](https://www.elkan5e.com/spells/geas), and [Insect Plague](https://www.elkan5e.com/spells/insect-plague).
+    - Dark One's Blessing no longer requires you to last-hit the target, but provides fewer temporary hit points.
+
+**[Wizard](https://www.elkan5e.com/wizard)**
+- Wizards now always get Arcana as a bonus skill; Nature is added to their skill list, and they get expertise in one skill only.
+- Reduced the number of known spells for wizards from spell levels 6–9 from 4 to 3.
+- Evoker:
+    - Swapped level 3 and 6 features.
+- Necromancer:
+    - Added missing activity for Necromantic Surge.
+
+## Equipment
+- Non-magical Lance and Rapier now use the new image.
+
+## Feats
+- Dabbler is now repeatable.
+- Magic Dilettante is now repeatable.
+- Countercharm works more reliably and is now a reaction.
+
+## Game Rules
+- New Influence and Study actions.
+- Standardized rules for levels of skill proficiency (expertise, etc.).
+
+## Spells
+- [Shadow Strike](https://www.elkan5e.com/spells/shadow-strike) rewritten as an action.
+- [Phantasmal Killer](https://www.elkan5e.com/spells/phantasmal-killer) now sets speed to 0 rather than incapacitating, and damage is increased to 6d10.
+- New 5th-level ranger spell: [Phantom Carnage](https://www.elkan5e.com/spells/phantom-carnage).
+
+
 # v1.12.23.1
 ## Bug Fixes
 - Fixed Spellbreaker and Avenger missing the class identifier allowing them to function with advancements.
