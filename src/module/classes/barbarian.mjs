@@ -21,6 +21,10 @@ export function feral(actor) {
     }
 }
 
+export async function feralInstincts({item, scope}) {
+}
+
+
 export async function wildBlood({item, scope}){
     if (!game.modules.get("elkan5e")?.active) return;
 
