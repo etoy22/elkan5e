@@ -1,8 +1,8 @@
 import { gameSettingRegister } from "./module/gameSettings/gameSettingRegister.mjs";
 import { startDialog } from "./module/gameSettings/startDialog.mjs";
 import { initWarlockSpellSlot } from "./module/classes/warlock.mjs";
-import { perLeader, rallySurge } from "./module/classes/fighter.mjs";
-import { healOver, infusedHealer } from "./module/classes/cleric.mjs";
+import { secondWind } from "./module/classes/fighter.mjs";
+import { healingOverflow, infusedHealer } from "./module/classes/cleric.mjs";
 import { archDruid } from "./module/classes/druid.mjs";
 import { feral, rage, wildBlood } from "./module/classes/barbarian.mjs";
 import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
@@ -79,9 +79,6 @@ Hooks.on("dnd5e.preRollHitDieV2", (config) => {
 Hooks.on("dnd5e.postUseActivity", (activity, usageConfig, results) => {
     try {
         wildSurge(activity);
-        // wildBlood(activity);
-        perLeader(activity);
-        rallySurge(activity);
         shadowMonk(activity);
     } catch (error) {
         console.error("Error in postUseActivity hook:", error);
@@ -136,6 +133,9 @@ Hooks.on("combatTurnChange", (combat, prior, current) => {
 let features = {
     rage: rage,
     infusedHealer: infusedHealer,
+    healingOverflow:healingOverflow,
+    wildBlood: wildBlood,
+    secondWind, secondWind,
 }
 
 let spells = {

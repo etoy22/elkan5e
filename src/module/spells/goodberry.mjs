@@ -1,6 +1,8 @@
 // TODO: This function works but causes errors when deleting the item with multiple effects
-export async function goodberry({ actor, item }) {
-    console.log(`${item.name} spell activated`);
+export async function goodberry( workflow) {
+    const actor = workflow.actor;
+    const item = workflow.item;
+    // console.log(`${item.name} spell activated`);
 
     // Determine the spell level and calculate the number of berries
     const level = Math.max(item.system.level, 1);
@@ -185,7 +187,7 @@ export async function goodberry({ actor, item }) {
     const effect = await actor.createEmbeddedDocuments("ActiveEffect", [effectData]);
     if (effect.length > 0) {
         const effectId = effect[0].id;
-        console.log("Effect created with ID:", effectId);
+        // console.log("Effect created with ID:", effectId);
         Hooks.on("deleteActiveEffect", async (deletedEffect) => {
             const name = deletedEffect.label.replace(/ Duration \(Level \d+\)$/, "") + " (Item)";
             const levelMatch = deletedEffect.label.match(/Level (\d+)/);
@@ -211,12 +213,12 @@ export async function goodberry({ actor, item }) {
             console.warn("Actor not found, skipping item cleanup.");
             return;
         }
-        console.log(`${deletedItem.name} item deleted, cleaning up associated effects.`);
+        // console.log(`${deletedItem.name} item deleted, cleaning up associated effects.`);
         const name = deletedItem.name.replace(/ \(Item\)$/, "");
         const effects = actor.effects.filter(effect => effect.label.includes(name));
 
         if (effects.length === 0) {
-            console.log("No effects found for cleanup.");
+            // console.log("No effects found for cleanup.");
             return;
         }
 
@@ -228,7 +230,7 @@ export async function goodberry({ actor, item }) {
                     continue;
                 }
                 await effect.delete();
-                console.log(`Deleted effect: ${effect.label}`);
+                // console.log(`Deleted effect: ${effect.label}`);
             } catch (error) {
                 console.error(`Failed to delete effect: ${effect.label}`, error);
             }
@@ -254,14 +256,14 @@ async function handleGoodberryItemCleanup(actor, level, itemName) {
     // console.log("New spent uses:", newSpentUses);
 
     if (newMaxUses === 0 || newMaxUses === newSpentUses) {
-        console.log("Deleting consumable item as max uses reached zero or matches spent uses.");
+        // console.log("Deleting consumable item as max uses reached zero or matches spent uses.");
         try {
             // Ensure the item exists and is not already being deleted
             if (!consumableItem.flags?.elkan5e?.deleting) {
-                console.log("Marking consumable item as being deleted.");
+                // console.log("Marking consumable item as being deleted.");
                 await consumableItem.update({ "flags.elkan5e.deleting": true }); // Mark as being deleted
                 await consumableItem.delete();
-                console.log("Consumable item successfully deleted.");
+                // console.log("Consumable item successfully deleted.");
             } else {
                 console.warn("Consumable item already marked as being deleted, skipping.");
             }
@@ -269,7 +271,7 @@ async function handleGoodberryItemCleanup(actor, level, itemName) {
             console.warn("Error during consumable item deletion or item already deleted:", error);
         }
     } else {
-        console.log("Updating consumable item with new max and spent uses.");
+        // console.log("Updating consumable item with new max and spent uses.");
         await consumableItem.update({
             "system.uses.max": newMaxUses,
             "system.uses.spent": newSpentUses

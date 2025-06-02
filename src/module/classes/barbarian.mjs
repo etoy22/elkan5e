@@ -21,10 +21,11 @@ export function feral(actor) {
     }
 }
 
-export async function rage({ actor }) {
+export async function rage( workflow) {
+    const actor = workflow.actor;
     let notification = "elkan5e.notifications.FeralInstinctsMove";
     if ((actor.items.find(i => i.name === "Feral Instinct") || actor.items.find(i => i.name === "Improved Feral Instincts"))) {
-        console.log("Feral Instincts or Improved Feral Instincts found");
+        // console.log("Feral Instincts or Improved Feral Instincts found");
         if (actor.items.find(i => i.name === "Improved Feral Instincts")){
             notification = "elkan5e.notifications.ImprovedFeralInstinctsMove";
         }
@@ -35,7 +36,9 @@ export async function rage({ actor }) {
 }
 
 
-export async function wildBlood({item, scope}){
+export async function wildBlood(workflow){
+    const item = workflow.item;
+    const scope = workflow.scope;
     if (!game.modules.get("elkan5e")?.active) return;
 
     if (item.type !== "spell" || !item.system.activities) return;
