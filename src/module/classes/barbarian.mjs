@@ -9,7 +9,7 @@ export function feral(actor) {
     let notification = "elkan5e.notifications.FeralInstincts";
     
     // Check if the actor has Feral Instincts or Improved Feral Instincts
-    if (RAGE && (actor.items.find(i => i.name === "Feral Instincts") || actor.items.find(i => i.name === "Improved Feral Instincts"))) {
+    if (RAGE && (actor.items.find(i => i.name === "Feral Instinct") || actor.items.find(i => i.name === "Improved Feral Instincts"))) {
         if (actor.items.find(i => i.name === "Improved Feral Instincts")) {
             notification = "elkan5e.notifications.ImprovedFeralInstincts";
         }
@@ -21,7 +21,17 @@ export function feral(actor) {
     }
 }
 
-export async function feralInstincts({item, scope}) {
+export async function rage({ actor }) {
+    let notification = "elkan5e.notifications.FeralInstinctsMove";
+    if ((actor.items.find(i => i.name === "Feral Instinct") || actor.items.find(i => i.name === "Improved Feral Instincts"))) {
+        console.log("Feral Instincts or Improved Feral Instincts found");
+        if (actor.items.find(i => i.name === "Improved Feral Instincts")){
+            notification = "elkan5e.notifications.ImprovedFeralInstinctsMove";
+        }
+        if (actor.isOwner){
+            ui.notifications.notify(game.i18n.format(notification, { name: actor.name }));
+        }
+    }
 }
 
 
@@ -84,5 +94,4 @@ export async function wildBlood({item, scope}){
             }
         }
     }
-
 }
