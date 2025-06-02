@@ -1,25 +1,32 @@
-/**
- * Adds functionality to Infused Healer.
- *   @param {object} actor - The actor using the item.
- *   @param {object} activity - The activity performed.
- *   @param {object} usageConfig - The usage configuration.
- */
-export function infuseHeal(activity, usageConfig) {
-    const actor = activity.actor;
-    if (activity.type === "heal" && actor.items.find(i => i.name === "Infused Healer")) {
-        const spellLevel = Number.parseInt(usageConfig.spell.slot.replace('spell', ''));
-        const infusedValue = 2 + spellLevel;
-        if (actor.system.attributes.hp.value !== actor.system.attributes.hp.max) {
-            let newHpValue = Math.min(actor.system.attributes.hp.value + infusedValue, actor.system.attributes.hp.max)
-            actor.update({
-                "system.attributes.hp.value": newHpValue
-            });
-            if (game.user.isGM || actor.isOwner) {
-                ui.notifications.notify(game.i18n.format("elkan5e.notifications.InfusedHealer", { name: actor.name }));
-            }
-        }
+export async function infusedHealer(workflow) {
+    // Bail if not a healing spell of 1st level or higher
+    let item = workflow.item;
+    if (item.type !== "spell" || item.system.level < 1 || item.system.actionType !== "heal") return;
+    
+    // Get caster's token and actor
+    let casterToken = workflow.token ?? canvas.tokens.get(workflow.actor.token?.id);
+    let caster = casterToken?.actor;
+    if (!casterToken || !caster) {
+        console.warn("Infused Healer | Could not resolve caster token.");
+        return;
     }
+    
+    const targets = [...workflow.targets];
+    if (targets.some(t => t.actor.id === caster.id)) return;
+    
+    const healAmount = "" + (2 + item.system.level);
+    
+    // Heal the caster
+    const itemData = {
+        type: "feat",
+        img: "icons/magic/light/orbs-hand-gray.webp"
+    }
+    const damageRoll = await new Roll(healAmount,{},{type:"healing"}).evaluate({async:true});
+    new MidiQOL.DamageOnlyWorkflow(caster, casterToken, damageRoll.total, "healing", [casterToken], damageRoll, {itemData:itemData,flavor: `Infused Healer`});
 }
+
+
+
 
 /**
  * Adds functionality to Healing Overflow.

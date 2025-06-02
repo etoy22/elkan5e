@@ -2,9 +2,9 @@ import { gameSettingRegister } from "./module/gameSettings/gameSettingRegister.m
 import { startDialog } from "./module/gameSettings/startDialog.mjs";
 import { initWarlockSpellSlot } from "./module/classes/warlock.mjs";
 import { perLeader, rallySurge } from "./module/classes/fighter.mjs";
-import { healOver, infuseHeal } from "./module/classes/cleric.mjs";
+import { healOver, infusedHealer } from "./module/classes/cleric.mjs";
 import { archDruid } from "./module/classes/druid.mjs";
-import { feral, wildBlood } from "./module/classes/barbarian.mjs";
+import { feral, rage, wildBlood } from "./module/classes/barbarian.mjs";
 import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
 import { meldWithShadow, shadowMonk, hijackShadow } from "./module/classes/monk.mjs";
 import { armor } from "./module/rules/armor.mjs";
@@ -15,7 +15,7 @@ import { references } from "./module/rules/references.mjs";
 import { tools } from "./module/rules/tools.mjs";
 import { weapons } from "./module/rules/weapon.mjs";
 import { scroll } from "./module/rules/scroll.mjs";
-import { goodberry, deleteGoodberryEffect } from "./module/spells/goodberry.mjs";
+import { goodberry } from "./module/spells/goodberry.mjs";
 // import { sanctuary } from "./module/spells/sanctuary.mjs";
 
 
@@ -79,8 +79,7 @@ Hooks.on("dnd5e.preRollHitDieV2", (config) => {
 Hooks.on("dnd5e.postUseActivity", (activity, usageConfig, results) => {
     try {
         wildSurge(activity);
-        wildBlood(activity);
-        infuseHeal(activity, usageConfig);
+        // wildBlood(activity);
         perLeader(activity);
         rallySurge(activity);
         shadowMonk(activity);
@@ -114,7 +113,6 @@ Hooks.on("deleteActiveEffect", async (effect, options, userId) => {
 Hooks.on("deleteItem", async (item, options, userId) => {
     try {
         delayedItem(item);
-        deleteGoodberryEffect(item)
     } catch (error) {
         console.error("Error in deleteItem hook:", error);
     }
@@ -136,7 +134,8 @@ Hooks.on("combatTurnChange", (combat, prior, current) => {
 });
 
 let features = {
-    wildBlood: wildBlood
+    rage: rage,
+    infusedHealer: infusedHealer,
 }
 
 let spells = {
@@ -150,5 +149,5 @@ let macros = {
   };
 
 globalThis['elkan5e'] = {
-    macros: macros,
+    macros: macros
 };
