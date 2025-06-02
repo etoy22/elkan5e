@@ -19,7 +19,7 @@ export function armor() {
     });
 
     if (dragon) {
-        CONFIG.DND5E.armorClasses.draconic.formula = "14 + @abilities.dex.mod";
+        CONFIG.DND5E.armorClasses.draconic.formula = "13 + @abilities.cha.mod";
     }
 
     // CONFIG.DND5E.armorClasses.unarmoredBarb.formula = `10 + @abilities.dex.mod + @abilities.con.mod`;

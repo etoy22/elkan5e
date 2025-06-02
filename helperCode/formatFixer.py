@@ -1,3 +1,5 @@
+# TODO: FIX THIS SCRIPT
+
 import os
 import json
 from updateTime import load_and_update_json
@@ -40,9 +42,9 @@ def transform_value(value):
     """Simplify and apply replacements to a string value."""
     simplified = simplify_html(value)
     replacements = {
-        '\u00A0': ' ', '\u200B': '', '’': '\'',
+        '\u00A0': ' ', '\u200B': '', '’': '\'','':'​',
         '<p></p>': '', 
-        '</p>&': '</p>', 
+        '</p>&': '</p>',  # Ensure this replacement is applied only when necessary
         '<strong>Strength</strong> Saving Throw': '<strong>Strength Save</strong>',
         '<strong>Dexterity</strong> Saving Throw': '<strong>Dexterity Save</strong>',
         '<strong>Feats From Other Sources</strong> :': '<strong>Feats From Other Sources:</strong>',
@@ -159,7 +161,8 @@ def process_object(obj):
                 description_parts = simplified_description.split("<p>")
                 first_paragraph = next((part for part in description_parts if part.strip()), "")
                 if "<em>" in first_paragraph:
-                    chat_parts = [part for part in description_parts[1:] if "<em>" not in part]
+                    # Exclude only the first paragraph (after split, that's description_parts[1])
+                    chat_parts = description_parts[1:]  # Skip the first paragraph after the split
                     chat = "<p>".join(chat_parts) if chat_parts else ""
                 else:
                     chat = ''  # Remove the description
