@@ -4,7 +4,7 @@ import { initWarlockSpellSlot } from "./module/classes/warlock.mjs";
 import { perLeader, rallySurge } from "./module/classes/fighter.mjs";
 import { healOver, infuseHeal } from "./module/classes/cleric.mjs";
 import { archDruid } from "./module/classes/druid.mjs";
-import { feral, wild_blood, wildBlood } from "./module/classes/barbarian.mjs";
+import { feral, wildBlood } from "./module/classes/barbarian.mjs";
 import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
 import { meldWithShadow, shadowMonk, hijackShadow } from "./module/classes/monk.mjs";
 import { armor } from "./module/rules/armor.mjs";
