@@ -1,9 +1,3 @@
-// TODO: delete eventually
-export async function deleteGoodberryEffect (item){
-    if (item.name === game.i18n.localize("elkan5e.spell.GoodberryItem")) {
-        await deletedItemRemovesEffect(item, game.i18n.localize("elkan5e.spell.Goodberry"));
-    }
-}
 // TODO: This function works but causes errors when deleting the item with multiple effects
 export async function goodberry({ actor, item }) {
     console.log(`${item.name} spell activated`);
