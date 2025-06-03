@@ -16,6 +16,10 @@ import { tools } from "./module/rules/tools.mjs";
 import { weapons } from "./module/rules/weapon.mjs";
 import { scroll } from "./module/rules/scroll.mjs";
 import { goodberry } from "./module/spells/goodberry.mjs";
+import { slicingBlow } from "./module/classes/rogue.mjs";
+import { sappingSmite } from "./module/spells/sappingSmite.mjs";
+import { spectralEmpowerment } from "./module/classes/wizard.mjs";
+import { enervate, enervateOngoing } from "./module/spells/enervate.mjs";
 // import { sanctuary } from "./module/spells/sanctuary.mjs";
 
 
@@ -123,7 +127,7 @@ Hooks.on("combatTurnChange", (combat, prior, current) => {
     try {
         let lastTurnActor = combat.combatants.get(prior.combatantId).actor;
         rmvMeldShadow(lastTurnActor);
-        hijackShadow(lastTurnActor);
+        rmvhijackShadow(lastTurnActor);
     } catch (error) {
         console.error("Error in combatTurnChange hook:", error);
     }
@@ -137,16 +141,24 @@ let features = {
     secondWind, secondWind,
     hijackShadow: hijackShadow,
     meldWithShadows: meldWithShadows,
+    slicingBlow: slicingBlow,
 }
 
 let spells = {
     goodberry: goodberry,
-  };
-  
+    sappingSmite: sappingSmite,
+    enervate: enervate,
+    enervateOngoing: enervateOngoing,
+};
+
+let monsterFeatures = {
+    spectralEmpowerment: spectralEmpowerment,
+}
 
 let macros = {
     spells: spells,
-    features: features
+    features: features,
+    monsterFeatures: monsterFeatures,
   };
 
 globalThis['elkan5e'] = {
