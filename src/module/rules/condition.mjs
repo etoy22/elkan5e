@@ -14,17 +14,17 @@ export function conditions() {
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.WJFtNc5UraHVrV5V",
             icon: "modules/elkan5e/icons/conditions/confused.svg"
         },
-        coverhalf: {
+        coverHalf: {
             label: "Half Cover",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
             icon: "modules/elkan5e/icons/conditions/cover-half.svg",
-            _id: "dnd5ecoverhalf0000" // Ensure this is a valid 16-character alphanumeric ID
+            _id: "dnd5ecoverHalf00" // Ensure this is a valid 16-character alphanumeric ID
         },
-        coverthreequarters: {
+        coverThreeQuarters: {
             label: "Three Quarters Cover",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
             icon: "modules/elkan5e/icons/conditions/cover-three-quarters.svg",
-            _id: "dnd5ecoverthree0000" // Ensure this is a valid 16-character alphanumeric ID
+            _id: "dnd5ecoverThreeQ" // Ensure this is a valid 16-character alphanumeric ID
         },
         cursed:{
             label: "Cursed",
@@ -232,20 +232,6 @@ export function icons() {
             ]
         },
         {
-            id: "coverhalf",
-            name: "Half Cover",
-            _id: "dnd5ecoverhalf0000", // Ensure this is a valid 16-character alphanumeric ID
-            reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
-            icon: "modules/elkan5e/icons/conditions/cover-half.svg"
-        },
-        {
-            id: "coverthreequarters",
-            name: "Three Quarters Cover",
-            _id: "dnd5ecoverthree0000", // Ensure this is a valid 16-character alphanumeric ID
-            reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
-            icon: "modules/elkan5e/icons/conditions/cover-three-quarters.svg"
-        },
-        {
             id: "siphoned",
             name: "Siphoned",
             _id: "dnd5esiphoned000",
@@ -317,6 +303,7 @@ export function icons() {
             id: "advantage",
             name: "Advantage",
             icon: "icons/svg/upgrade.svg",
+            exclusiveGroup: "advantage",
             changes: [
                 {
                     key: "flags.midi-qol.advantage.all",
@@ -329,6 +316,7 @@ export function icons() {
             id: "disadvantage",
             name: "Disadvantage",
             icon: "icons/svg/downgrade.svg",
+            exclusiveGroup: "advantage",
             changes: [
                 {
                     key: "flags.midi-qol.disadvantage.all",
