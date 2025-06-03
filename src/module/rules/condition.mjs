@@ -234,14 +234,14 @@ export function icons() {
         {
             id: "coverhalf",
             name: "Half Cover",
-            _id: "dnd5ecoverhalf00", // Ensure this is a valid 16-character alphanumeric ID
+            _id: "dnd5ecoverhalf0000", // Ensure this is a valid 16-character alphanumeric ID
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
             icon: "modules/elkan5e/icons/conditions/cover-half.svg"
         },
         {
             id: "coverthreequarters",
             name: "Three Quarters Cover",
-            _id: "dnd5ecoverthree0", // Ensure this is a valid 16-character alphanumeric ID
+            _id: "dnd5ecoverthree0000", // Ensure this is a valid 16-character alphanumeric ID
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
             icon: "modules/elkan5e/icons/conditions/cover-three-quarters.svg"
         },
