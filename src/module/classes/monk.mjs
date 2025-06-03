@@ -40,17 +40,16 @@ export async function rmvhijackShadow(actor) {
 
 export async function hijackShadow(workflow) {
     const actor = workflow.actor;
-    emptyBody(item, actor);
+    emptyBody(actor);
 }
 
 
 export async function meldWithShadows(workflow) {
     const actor = workflow.actor;
-    emptyBody(item, actor);
-
+    emptyBody(actor);
 }
 
-export async function emptyBody(item,actor){
+export async function emptyBody(actor){
     if(actor.items.find(i => i.name === game.i18n.localize("elkan5e.monk.emptyBody"))){
         const emptyBody = {
             "_id": "4dvYtqvbQGDsVi51",
