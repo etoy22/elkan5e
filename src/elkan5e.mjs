@@ -7,7 +7,7 @@ import { archDruid } from "./module/classes/druid.mjs";
 import { feral, rage, wildBlood } from "./module/classes/barbarian.mjs";
 import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
 import { hijackShadow, meldWithShadows, rmvMeldShadow, rmvhijackShadow } from "./module/classes/monk.mjs";
-import { armor } from "./module/rules/armor.mjs";
+import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
 import { conditions, icons } from "./module/rules/condition.mjs";
 import { language } from "./module/rules/language.mjs";
 import { formating } from "./module/rules/format.mjs";
@@ -24,23 +24,32 @@ import { enervate, enervateOngoing } from "./module/spells/enervate.mjs";
 
 
 Hooks.once("init", async () => {
-    console.log("Elkan 5e | Initializing Elkan 5e");
-    await gameSettingRegister();
-    await initWarlockSpellSlot();
-    references();
-    tools();
-    conditions();
-    weapons();
-    armor();
-    language();
-    icons();
-    formating();
-    scroll();
-    console.log("Elkan 5e  |  Done Initializing");
+    try {
+        console.log("Elkan 5e | Initializing Elkan 5e");
+        await gameSettingRegister();
+        await initWarlockSpellSlot();
+        references();
+        tools();
+        conditions();
+        weapons();
+        armor();
+        language();
+        icons();
+        formating();
+        scroll();
+        console.log("Elkan 5e  |  Done Initializing");
+    }
+    catch (error) {
+        console.error("Elkan 5e | Initialization Error:", error);
+    }
 });
 
 Hooks.once('ready', async () => {
-    startDialog();
+    try{
+        startDialog();
+    }catch (error) {
+        console.error("Elkan 5e | Ready Hook Error:", error);
+    }
 });
 
 /**
@@ -52,7 +61,7 @@ Hooks.on("dnd5e.preRollAttackV2", (item, config) => {
     try {
         focus(item, config);
     } catch (error) {
-        console.error("Error in preRollAttackV2 hook:", error);
+        console.error("Elkan 5e | Error in preRollAttackV2 hook:", error);
     }
 });
 
@@ -70,7 +79,7 @@ Hooks.on("dnd5e.preRollHitDieV2", (config) => {
             config.rolls[0].parts[0] += '-@abilities.con.mod';
         }
     } catch (error) {
-        console.error("Error in preRollHitDieV2 hook:", error);
+        console.error("Elkan 5e | Error in preRollHitDieV2 hook:", error);
     }
 });
 
@@ -84,7 +93,7 @@ Hooks.on("dnd5e.postUseActivity", (activity, usageConfig, results) => {
     try {
         wildSurge(activity);
     } catch (error) {
-        console.error("Error in postUseActivity hook:", error);
+        console.error("Elkan 5e | Error in postUseActivity hook:", error);
     }
 });
 
@@ -98,15 +107,15 @@ Hooks.on("dnd5e.preRollInitiative", (actor, roll) => {
         archDruid(actor);
         feral(actor);
     } catch (error) {
-        console.error("Error in preRollInitiative hook:", error);
+        console.error("Elkan 5e | Error in preRollInitiative hook:", error);
     }
 });
 
 Hooks.on("deleteActiveEffect", async (effect, options, userId) => {
     try {
-        delayedDuration(effect);
+        await delayedDuration(effect);
     } catch (error) {
-        console.error("Error in deleteActiveEffect hook:", error);
+        console.error("Elkan 5e | Error in deleteActiveEffect hook:", error);
     }
 });
 
@@ -114,7 +123,7 @@ Hooks.on("deleteItem", async (item, options, userId) => {
     try {
         delayedItem(item);
     } catch (error) {
-        console.error("Error in deleteItem hook:", error);
+        console.error("Elkan 5e | Error in deleteItem hook:", error);
     }
 });
 
@@ -129,7 +138,24 @@ Hooks.on("combatTurnChange", (combat, prior, current) => {
         rmvMeldShadow(lastTurnActor);
         rmvhijackShadow(lastTurnActor);
     } catch (error) {
-        console.error("Error in combatTurnChange hook:", error);
+        console.error("Elkan 5e | Error in combatTurnChange hook:", error);
+    }
+});
+
+Hooks.on("updateItem", (item) => {
+    try{
+        const actor = item.parent;
+        updateBarbarianDefense(actor, "updateItem");
+    }catch (error) {
+        console.error("Elkan 5e | Error in updateItem hook:", error);
+    }
+});
+
+Hooks.on("updateActor", async (actor, changes) => {
+    try {
+        await updateBarbarianDefense(actor,"updateActor");
+    }catch (error) {
+        console.error("Elkan 5e | Error in updateActor hook:", error);
     }
 });
 
