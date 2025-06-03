@@ -6,7 +6,7 @@ import { healingOverflow, infusedHealer } from "./module/classes/cleric.mjs";
 import { archDruid } from "./module/classes/druid.mjs";
 import { feral, rage, wildBlood } from "./module/classes/barbarian.mjs";
 import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
-import { meldWithShadow, shadowMonk, hijackShadow } from "./module/classes/monk.mjs";
+import { hijackShadow, meldWithShadows, rmvMeldShadow, rmvhijackShadow } from "./module/classes/monk.mjs";
 import { armor } from "./module/rules/armor.mjs";
 import { conditions, icons } from "./module/rules/condition.mjs";
 import { language } from "./module/rules/language.mjs";
@@ -79,7 +79,6 @@ Hooks.on("dnd5e.preRollHitDieV2", (config) => {
 Hooks.on("dnd5e.postUseActivity", (activity, usageConfig, results) => {
     try {
         wildSurge(activity);
-        shadowMonk(activity);
     } catch (error) {
         console.error("Error in postUseActivity hook:", error);
     }
@@ -123,7 +122,7 @@ Hooks.on("deleteItem", async (item, options, userId) => {
 Hooks.on("combatTurnChange", (combat, prior, current) => {
     try {
         let lastTurnActor = combat.combatants.get(prior.combatantId).actor;
-        meldWithShadow(lastTurnActor);
+        rmvMeldShadow(lastTurnActor);
         hijackShadow(lastTurnActor);
     } catch (error) {
         console.error("Error in combatTurnChange hook:", error);
@@ -136,6 +135,8 @@ let features = {
     healingOverflow:healingOverflow,
     wildBlood: wildBlood,
     secondWind, secondWind,
+    hijackShadow: hijackShadow,
+    meldWithShadows: meldWithShadows,
 }
 
 let spells = {
