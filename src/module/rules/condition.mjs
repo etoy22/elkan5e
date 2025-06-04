@@ -474,46 +474,53 @@ export function icons() {
     }
 }
 
-/**
- * TODO: Adds functionality to Fey Ancestry to gain advantage on saves against charmed.
- *   
- */
-export function feyAncest(){
-}
-
 /*
  * TODO: Automate grapple and give conditions according to the size of the attacker grappler and the
  * size of the grappled. Also roll to see if the creature is actually grappled
  */
-export function grapple(){
-    console.log("Grapple")
-}
+export async function grapple(workflow){
 
-/**
- * Adds functionality to Dwarven Resilience to give advantage on saves against poison.
- * TODO: FIX THIS
- */
-export function dwarfResil() {
-    Hooks.on("midi-qol.preCheckSaves", (workflow) => {
-        const actor = workflow.actor;
-        if (actor.system.details.race?.toLowerCase().includes("dwarf")) {
-            if (workflow.item.system.damage.parts.some(part => part[1] === "poison")) {
-                workflow.advantage = true;
-            }
-        }
+    const grappler = workflow.actor;
+
+    if (game.user.targets.size === 0) {
+        ui.notifications.warn("You must target one or more creatures to grapple.");
+        return;
+    }
+
+    const grapplerRoll = await new Roll("1d20 + @abilities.str.mod + @skills.ath.mod", grappler.getRollData()).roll({ async: true });
+    await grapplerRoll.toMessage({
+        speaker: ChatMessage.getSpeaker({ actor: grappler }),
+        flavor: "Grapple Check (Athletics)"
     });
-}
 
-/**
- * Adds functionality to Sturdy to give advantage on saves against being knocked prone.
- * TODO: FIX THIS
- */
-export function sturdy() {
-    Hooks.on("midi-qol.preCheckSaves", (workflow) => {
-        const actor = workflow.actor;
-        const hasSturdyFeat = actor.items.some(item => item.name === "Sturdy" && item.type === "feat");
-        const isProneSave = workflow.item?.system.save?.ability === "dex" && workflow.item?.name.includes("Prone");
-        if (hasSturdyFeat && isProneSave) {
-            workflow.advantage = true;
+    for (const targetToken of game.user.targets) {
+        const target = targetToken.actor;
+        const athMod = getProperty(target, "system.skills.ath.mod") ?? 0;
+        const acroMod = getProperty(target, "system.skills.acr.mod") ?? 0;
+        const betterSkill = athMod >= acroMod ? "ath" : "acr";
+        const targetRoll = await new Roll(`1d20 + @skills.${betterSkill}.mod`, target.getRollData()).roll({ async: true });
+
+        await targetRoll.toMessage({
+            speaker: ChatMessage.getSpeaker({ actor: target }),
+            flavor: `Grapple Defense Check (${betterSkill === "ath" ? "Athletics" : "Acrobatics"})`
+        });
+
+        if (grapplerRoll.total > targetRoll.total) {
+            ChatMessage.create({
+            content: `<b>${grappler.name} grapples ${target.name}!</b>`,
+            speaker: ChatMessage.getSpeaker({ actor: grappler })
+            });
+
+            const condition = CONFIG.statusEffects.find(e => e.id === "grappled");
+            if (condition) {
+            await targetToken.toggleEffect(condition.icon, { active: true });
+            }
+        } else {
+            ChatMessage.create({
+            content: `<b>${grappler.name} fails to grapple ${target.name}.</b>`,
+            speaker: ChatMessage.getSpeaker({ actor: grappler })
+            });
         }
-    });}
+    }
+
+}
