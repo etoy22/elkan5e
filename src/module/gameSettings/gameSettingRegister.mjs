@@ -48,6 +48,14 @@ export async function gameSettingRegister() {
         restricted: true,
     });
 
+    game.settings.register("elkan5e", "v13Show", {
+        scope: "world",
+        requiresReload: false,
+        default: true,
+        type: Boolean,
+        restricted: true,
+    });
+
     game.settings.register("elkan5e", "weapons", {
         name: "elkan5e.weapons.name",
         hint: "elkan5e.weapons.hint",
