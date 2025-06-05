@@ -1,5 +1,5 @@
 import { gameSettingRegister } from "./module/gameSettings/gameSettingRegister.mjs";
-import { startDialog } from "./module/gameSettings/startDialog.mjs";
+import { startDialog } from "./module/gameSettings/dialog.mjs";
 import { initWarlockSpellSlot } from "./module/classes/warlock.mjs";
 import { secondWind } from "./module/classes/fighter.mjs";
 import { healingOverflow, infusedHealer } from "./module/classes/cleric.mjs";
