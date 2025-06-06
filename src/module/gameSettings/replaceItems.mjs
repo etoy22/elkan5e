@@ -1,77 +1,19 @@
 // Reusable progress bar functions
 
-// Create or retrieve the progress bar element
-function getOrCreateProgressBar() {
-  let container = document.getElementById("elkan-progress-container");
-  if (!container) {
-    container = document.createElement("div");
-    container.id = "elkan-progress-container";
-    container.style.position = "fixed";
-    container.style.top = "0";
-    container.style.left = "0";
-    container.style.width = "100%";
-    container.style.height = "6px";
-    container.style.zIndex = "10000";
-    container.style.backgroundColor = "#222";
-
-    const bar = document.createElement("div");
-    bar.id = "elkan-progress-bar";
-    bar.style.height = "100%";
-    bar.style.width = "0%";
-    bar.style.backgroundColor = "red";
-    bar.style.transition = "width 0.3s ease, background-color 0.3s ease";
-
-    container.appendChild(bar);
-    document.body.appendChild(container);
-  }
-  return {
-    container,
-    bar: document.getElementById("elkan-progress-bar")
-  };
-}
-
-// Update progress bar fill percentage and transition color from red to green
-function updateProgressBar(progress) {
-  const { bar } = getOrCreateProgressBar();
-  const clampedProgress = Math.min(Math.max(progress, 0), 1);
-  bar.style.width = `${clampedProgress * 100}%`;
-  const red = Math.floor(255 * (1 - clampedProgress));
-  const green = Math.floor(255 * clampedProgress);
-  bar.style.backgroundColor = `rgb(${red},${green},0)`;
-}
-
-// Remove progress bar from the document
-function removeProgressBar() {
-  const container = document.getElementById("elkan-progress-container");
-  if (container) container.remove();
-}
-
 // Process the form selections from the Elkan update dialog
-function processElkanUpdateForm(html) {
-  const updates = {
-    actor: {
-      features: html.find("#actor-features").is(":checked"),
-      items: html.find("input[name='actor-items']:checked").val(),
-      spells: html.find("input[name='actor-spells']:checked").val()
-    },
-    npc: {
-      features: html.find("#npc-features").is(":checked"),
-      items: html.find("input[name='npc-items']:checked").val(),
-      spells: html.find("input[name='npc-spells']:checked").val()
-    }
-  };
+export async function processElkanUpdateForm(updates) {
 
-  console.log("Elkan 5e Update Options:", updates);
+  // console.log("Elkan 5e Update Options:", updates);
 
   // Translate UI selections into specific update modes
-migrateActorItems({
-    players: updates.actor.items,
-    npcs: updates.npc.inventory
+  migrateActorItems({
+    players: updates.playerItems,
+    npcs: updates.npcItems
   });
 
   migrateActorSpells({
-    players: updates.actor.spells,
-    npcs: updates.npc.spells
+    players: updates.playerSpells,
+    npcs: updates.npcSpells
   });
 
   ui.notifications.info("Elkan 5e update process started. See console for details.");
@@ -79,49 +21,90 @@ migrateActorItems({
 
 
 // Utility: Filter actors by update mode and type
-function getActorsToProcess(updateMode) {
+export async function getActorsToProcess(updateMode) {
   return game.actors.filter(actor => {
-    if (actor.type === "character" && updateMode.players !== "None") return true;
-    if (actor.type === "npc" && updateMode.npcs !== "None") return true;
+    if (actor.type === "character" && updateMode.players !== "none") return true;
+    if (actor.type === "npc" && updateMode.npcs !== "none") return true;
     return false;
   });
 }
 
 // Utility: Filter documents by update mode and Elkan source if needed
-function filterDocsByMode(docs, mode) {
-  if (mode === "update-All") return docs;
+export function filterDocsByMode(docs, mode) {
+  if (!Array.isArray(docs)) {
+    console.warn("filterDocsByMode received non-array docs:", docs);
+    return [];
+  }
+
+  if (mode === "update-All"){
+    // console.log("Updating all items, no filtering applied.");
+    return docs;
+  } 
   if (mode === "update-Elkan") {
+    // console.log("Filtering for Elkan 5e items only.");
     return docs.filter(d => d.system.source?.book === "Elkan 5e");
   }
+
+  // Warn if mode is unrecognized
+  console.warn(`Unknown update mode "${mode}". Returning empty list.`);
   return [];
 }
 
-// Utility: Save relevant properties for usage transfer (customizable per item type)
-function savePropertiesForTransfer(items, mode, propKeys) {
+export async function savePropertiesForTransfer(items, mode, propKeys) {
   const saved = {};
   for (let item of items) {
-    if (mode === "update-Elkan" && item.system.source?.book !== "Elkan 5e") continue;
     saved[item.name] = {};
+    saved[item.name].sourceBook = item.system.source?.book ?? null;
+    saved[item.name].img = item.img;
     for (const key of propKeys) {
       saved[item.name][key] = getProperty(item.system, key);
     }
-    saved[item.name].img = item.img; // always save img
   }
+  // console.log(`Saved properties for transfer in mode '${mode}':`, saved);
   return saved;
 }
 
-// Utility: Restore saved properties back to new data
-function restorePropertiesToData(newData, savedProps) {
-  if (!savedProps) return;
-  if (savedProps.img) newData.img = savedProps.img;
-  for (const [key, value] of Object.entries(savedProps)) {
-    if (key === "img") continue;
-    setProperty(newData.system, key, value);
+
+export async function restorePropertiesToData(newData, savedProps, mode) {
+  if (!savedProps) {
+    // console.log(`No saved properties found for '${newData.name}', skipping restoration.`);
+    return;
+  }
+  // console.log(`Restoring properties for '${newData.name}' in mode '${mode}':`, savedProps);
+
+  // Always restore image if different
+  if (savedProps.img && newData.img !== savedProps.img) {
+    newData.img = savedProps.img;
+  } 
+  // else {
+  //   console.log(`Image already matches saved image or saved image missing for '${newData.name}', skipping image restore.`);
+  // }
+
+  const originalSource = savedProps.sourceBook ?? null;
+
+  // Determine if we should restore other properties beyond image
+  let restoreOtherProps = false;
+
+  if (mode === "update-Elkan" && originalSource === "Elkan 5e") {
+    restoreOtherProps = true;
+  } else if (mode === "update-All" && originalSource === "Elkan 5e") {
+    restoreOtherProps = true;
+  } 
+
+  if (restoreOtherProps) {
+    for (const [key, value] of Object.entries(savedProps)) {
+      if (key === "img" || key === "sourceBook") continue;
+      // console.log(`Restoring property '${key}' for '${newData.name}' with value:`, value);
+      setProperty(newData.system, key, value);
+    }
   }
 }
 
+
+
+
 // Generic migration function for actor items by type(s)
-async function migrateActorByType({
+export async function migrateActorByType({
   compendiums,
   types,
   updateMode,
@@ -131,74 +114,126 @@ async function migrateActorByType({
 }) {
   ui.notifications.notify(`Start Migration: ${progressLabel}`);
 
-  // Load all documents from compendiums
   const docsArrays = await Promise.all(
     compendiums.map(c => c?.getDocuments() ?? [])
   );
   const allDocs = docsArrays.flat();
   const filteredDocs = filterDocByType(allDocs, types);
 
-  const actorsToProcess = getActorsToProcess(updateMode);
+  const actorsToProcess = await getActorsToProcess(updateMode);
   const totalActors = actorsToProcess.length;
 
-  setProgressBarLabel(progressLabel);
+  const changeLog = {};
+  const changeLogIssues = {};
 
   for (let i = 0; i < totalActors; i++) {
     const actor = actorsToProcess[i];
+
+    changeLog[actor.name] = {
+      replaced: [],
+      removed: [],
+      added: [],
+      skipped: [],
+      missingReplacements: [],
+      error: null
+    };
+
     try {
       const isPlayer = actor.type === "character";
       const mode = isPlayer ? updateMode.players : updateMode.npcs;
 
-      // Filter documents by mode (all or Elkan only)
       const docsToUse = filterDocsByMode(filteredDocs, mode);
-
       const docNames = docsToUse.map(d => d.name);
+
       const actorItems = actor.items.filter(i => types.includes(i.type));
       const actorItemNames = actorItems.map(i => i.name);
 
-      // Items to remove: those that exist in docsToUse by name
-      const itemsToRemove = actorItems.filter(i => docNames.includes(i.name));
+      const itemsToRemove = actorItems.filter(i => {
+        const nameMatch = docNames.includes(i.name);
+        const isElkan = i.system?.source?.book === "Elkan 5e";
+        return nameMatch && (mode === "update-All" || (mode === "update-Elkan" && isElkan));
+      });
 
-      // Save properties for transfer before deletion
-      const savedProps = savePropertiesForTransfer(itemsToRemove, mode, preserveProperties);
-
-      // New items to add: those docs which actor already has by name
+      const savedProps = await savePropertiesForTransfer(itemsToRemove, mode, preserveProperties);
       const newItemsToAdd = docsToUse.filter(d => actorItemNames.includes(d.name));
 
-      // Check for missing replacements
       const missingReplacements = itemsToRemove
         .map(i => i.name)
-        .filter(name => !newItemsToAdd.some(i => i.name === name));
+        .filter(name => !newItemsToAdd.some(d => d.name === name));
 
       if (missingReplacements.length > 0) {
+        changeLog[actor.name].missingReplacements = missingReplacements;
         console.warn(`Missing replacements for ${actor.name}: ${missingReplacements.join(", ")}`);
         continue;
       }
 
-      // Remove old items
       await actor.deleteEmbeddedDocuments("Item", itemsToRemove.map(i => i.id));
 
-      // Add new items with restored properties
+      const added = [];
       for (let newItem of newItemsToAdd) {
-        if (mode === "update-Elkan" && newItem.system.source?.book !== "Elkan 5e") continue;
+        if (mode === "update-Elkan" && newItem.system.source?.book !== "Elkan 5e") {
+          changeLog[actor.name].skipped.push(newItem.name);
+          continue;
+        }
 
         const newData = newItem.toObject();
-        restorePropertiesToData(newData, savedProps[newItem.name]);
+        await restorePropertiesToData(newData, savedProps[newItem.name], mode);
         await actor.createEmbeddedDocuments("Item", [newData]);
+        added.push(newItem.name);
       }
+
+      const removedNames = itemsToRemove.map(i => i.name);
+      const replaced = [];
+
+      for (let name of added) {
+        if (removedNames.includes(name)) {
+          replaced.push(name);
+        } else {
+          changeLog[actor.name].added.push(name);
+        }
+      }
+
+      for (let name of removedNames) {
+        if (!replaced.includes(name)) {
+          changeLog[actor.name].removed.push(name);
+        }
+      }
+
+      changeLog[actor.name].replaced = replaced;
+
     } catch (err) {
       console.error(`Failed updating items for ${actor.name}`, err);
+      changeLog[actor.name].error = err.message ?? err;
     }
-    updateProgressBar((i + 1) / totalActors, i + 1, totalActors);
   }
 
-  setTimeout(() => removeProgressBar(), 1500);
+  // Populate changeLogIssues with entries that have any issues (non-replaced changes or errors)
+  for (const [actorName, entry] of Object.entries(changeLog)) {
+    const hasIssues =
+      entry.removed.length > 0 ||
+      entry.added.length > 0 ||
+      entry.skipped.length > 0 ||
+      entry.missingReplacements.length > 0 ||
+      entry.error !== null;
+
+    if (hasIssues) {
+      changeLogIssues[actorName] = entry;
+    }
+  }
+
   ui.notifications.notify(`End Migration: ${progressLabel}`);
+  console.log(`Migration ChangeLog for ${progressLabel}:`, changeLog);
+  console.log(`Migration ChangeLog Issues for ${progressLabel}:`, changeLogIssues);
 }
+
+
 
 // Then, you can implement the specific calls like this:
 
-async function migrateActorFeatures(updateMode = { players: "update-All", npcs: "update-Elkan" }) {
+export async function migrateActorFeatures(updateMode = { players: "update-All", npcs: "none" }) {
+  if (updateMode.players === "none" && updateMode.npcs === "none") {
+    return;
+  }
   const compFeatures = game.packs.get("elkan5e.elkan5e-class-features");
   const compClasses = game.packs.get("elkan5e.elkan5e-class");
   const compSubclasses = game.packs.get("elkan5e.elkan5e-subclass");
@@ -217,7 +252,10 @@ async function migrateActorFeatures(updateMode = { players: "update-All", npcs: 
   });
 }
 
-async function migrateActorItems(updateMode = { players: "update-All", npcs: "update-Elkan" }) {
+export async function migrateActorItems(updateMode = { players: "update-All", npcs: "update-Elkan" }) {
+  if (updateMode.players === "none" && updateMode.npcs === "none") {
+    return;
+  }
   const compMagic = game.packs.get("elkan5e.elkan5e-magic-items");
   const compEquip = game.packs.get("elkan5e.elkan5e-equipment");
   if (!compMagic || !compEquip) {
@@ -234,7 +272,10 @@ async function migrateActorItems(updateMode = { players: "update-All", npcs: "up
   });
 }
 
-async function migrateActorSpells(updateMode = { players: "update-All", npcs: "update-Elkan" }) {
+export async function migrateActorSpells(updateMode = { players: "update-All", npcs: "update-Elkan" }) {
+  if (updateMode.players === "none" && updateMode.npcs === "none") {
+    return;
+  }
   const compFeatures = game.packs.get("elkan5e.elkan5e-class-features");
   const compSpells = game.packs.get("elkan5e.elkan5e-spells");
   if (!compFeatures || !compSpells) {
@@ -250,51 +291,4 @@ async function migrateActorSpells(updateMode = { players: "update-All", npcs: "u
     progressLabel: "Spells",
     filterDocByType: (docs, types) => docs.filter(d => types.includes(d.type))
   });
-}
-
-
-export async function getSharedFormContent() {
-  return `
-    <form id="update-form">
-      <div class="form-group">
-        <strong>Actor Updates</strong><br>
-
-        <label><strong>Features</strong></label><br>
-        <label><input type="radio" name="actor-features" value="none" checked> None</label><br>
-        <label><input type="radio" name="actor-features" value="update-All"> Elkan Features + Class and Subclass</label><br>
-        <label><input type="radio" name="actor-features" value="update-Elkan"> Elkan Features</label><br>
-
-        <label><strong>Items in Inventory</strong></label><br>
-        <label><input type="radio" name="actor-items" value="none" checked> None</label><br>
-        <label><input type="radio" name="actor-items" value="update-All"> Update All</label><br>
-        <label><input type="radio" name="actor-items" value="update-Elkan"> Replace Only Elkan Version</label><br>
-
-        <label><strong>Spells</strong></label><br>
-        <label><input type="radio" name="actor-spells" value="none" checked> None</label><br>
-        <label><input type="radio" name="actor-spells" value="update-All"> Update All</label><br>
-        <label><input type="radio" name="actor-spells" value="update-Elkan"> Replace Only Elkan Version</label><br>
-      </div>
-
-      <p style="margin: 1em 0; font-style: italic; color: #a00;">
-        Please note: If you have NPCs with Tokens on the board—especially if those tokens are unlinked—you may see duplicates of some abilities.
-      </p>
-
-      <div class="form-group" style="margin-top:15px;">
-        <strong>NPC Updates</strong><br>
-
-        <label><strong>Features</strong></label><br>
-        <label><input type="radio" name="npc-features" value="none" checked> None</label><br>
-        <label><input type="radio" name="npc-features" value="update-Elkan"> Elkan Features</label><br>
-
-        <label><strong>Items in Inventory</strong></label><br>
-        <label><input type="radio" name="npc-items" value="none" checked> None</label><br>
-        <label><input type="radio" name="npc-items" value="update-All"> Update All</label><br>
-        <label><input type="radio" name="npc-items" value="update-Elkan"> Replace Only Elkan Version</label><br>
-
-        <label><strong>Spells</strong></label><br>
-        <label><input type="radio" name="npc-spells" value="none" checked> None</label><br>
-        <label><input type="radio" name="npc-spells" value="update-All"> Update All</label><br>
-        <label><input type="radio" name="npc-spells" value="update-Elkan"> Replace Only Elkan Version</label><br>
-      </div>
-    </form>`;
 }
