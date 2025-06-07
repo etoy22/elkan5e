@@ -14,11 +14,11 @@ export function weaponTypes() {
     // Adding new weapon Properties
     const NEW_PROPERTIES = {
         coldIron: { label: "Cold Iron", isPhysical: "true" },
-        conc : { label: "Concussive" },
+        conc: { label: "Concussive" },
         mou: { label: "Mounted" },
         unw: { label: "Unwieldy" }
     };
-    
+
     const WEAPON_IDS = {
         battleaxe: "gpZnusEdpaxAPesT",
         blowgun: "1eqSvbUzm4rVN0BW",

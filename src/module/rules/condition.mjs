@@ -26,7 +26,7 @@ export function conditions() {
             icon: "modules/elkan5e/icons/conditions/cover-three-quarters.svg",
             _id: "dnd5ecoverthree0000" // Ensure this is a valid 16-character alphanumeric ID
         },
-        cursed:{
+        cursed: {
             label: "Cursed",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.Vpwu9GQC6HVNZFze",
             icon: "modules/elkan5e/icons/conditions/cursed.svg",
@@ -99,7 +99,7 @@ export function conditions() {
 
     // Replace icons
     CONDITION_ICONS.forEach(id => {
-        if (CONFIG.DND5E.conditionTypes[id]){
+        if (CONFIG.DND5E.conditionTypes[id]) {
             CONFIG.DND5E.conditionTypes[id].icon = `modules/elkan5e/icons/conditions/${id}.svg`;
         }
     });
@@ -131,7 +131,7 @@ export function icons() {
         "flanking", "flanked"
     ];
 
-    const conditionsToRemove = ["bleeding", "burning", "dehydration", "falling","malnutrition","suffocation"]; 
+    const conditionsToRemove = ["bleeding", "burning", "dehydration", "falling", "malnutrition", "suffocation"];
 
     const NEW_STATUS_EFFECTS = [
         {
@@ -408,11 +408,11 @@ export function icons() {
     console.log("Elkan 5e  |  Initializing Icons");
 
     STATUS_ICONS.forEach(id => {
-        if (CONFIG.statusEffects.find(effect => effect.id === id)){
+        if (CONFIG.statusEffects.find(effect => effect.id === id)) {
             CONFIG.statusEffects.find(effect => effect.id === id).img = `modules/elkan5e/icons/conditions/${id}.svg`;
         }
     });
-    
+
     CONFIG.statusEffects.find(effect => effect.id === "coverHalf").img = `modules/elkan5e/icons/conditions/cover-half.svg`;
     CONFIG.statusEffects.find(effect => effect.id === "coverThreeQuarters").img = `modules/elkan5e/icons/conditions/cover-three-quarters.svg`;
     CONFIG.statusEffects.find(effect => effect.id === "coverTotal").img = `modules/elkan5e/icons/conditions/cover-full.svg`;
@@ -429,9 +429,9 @@ export function icons() {
 
     // Applying effects
     Object.entries(EFFECTS).forEach(([id, changes]) => {
-        if (CONFIG.statusEffects.find(effect => effect.id === id)){
+        if (CONFIG.statusEffects.find(effect => effect.id === id)) {
             CONFIG.statusEffects.find(effect => effect.id === id).changes = changes;
-            if (id === "surprised"){
+            if (id === "surprised") {
                 CONFIG.statusEffects.find(effect => effect.id === id).flags = {
                     "dae": {
                         "transfer": false,
@@ -455,9 +455,9 @@ export function icons() {
 
     if (conditions === "a" || conditions === "b") {
         const version = game.settings.get("dnd5e", "rulesVersion");
-        if (version !== "modern"){
-            CONFIG.statusEffects.find(effect => effect.id === "exhaustion").reduction = {"rolls": 2, "speed": 5}
-            CONFIG.DND5E.conditionTypes["exhaustion"].reduction =  {"rolls": 2, "speed": 5}
+        if (version !== "modern") {
+            CONFIG.statusEffects.find(effect => effect.id === "exhaustion").reduction = { "rolls": 2, "speed": 5 }
+            CONFIG.DND5E.conditionTypes["exhaustion"].reduction = { "rolls": 2, "speed": 5 }
             CONFIG.DND5E.conditionEffects.halfMovement.delete("exhaustion-2")
             CONFIG.DND5E.conditionEffects.halfHealth.delete("exhaustion-4")
             CONFIG.DND5E.conditionEffects.noMovement.delete("exhaustion-5")
@@ -465,7 +465,7 @@ export function icons() {
         CONFIG.statusEffects.find(effect => effect.id === "exhaustion").changes = [
             { "key": "system.bonuses.spell.dc", "mode": 2, "value": "-2*@attributes.exhaustion" },
         ];
-        
+
     }
 
     if (conditions === "a" || conditions === "b") {
@@ -478,14 +478,14 @@ export function icons() {
  * TODO: Adds functionality to Fey Ancestry to gain advantage on saves against charmed.
  *   
  */
-export function feyAncest(){
+export function feyAncest() {
 }
 
 /*
  * TODO: Automate grapple and give conditions according to the size of the attacker grappler and the
  * size of the grappled. Also roll to see if the creature is actually grappled
  */
-export function grapple(){
+export function grapple() {
     console.log("Grapple")
 }
 
@@ -516,4 +516,5 @@ export function sturdy() {
         if (hasSturdyFeat && isProneSave) {
             workflow.advantage = true;
         }
-    });}
+    });
+}

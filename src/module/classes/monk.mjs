@@ -38,11 +38,11 @@ export async function hijackShadow(actor) {
     );
 }
 
-export async function shadowMonk(activity){
+export async function shadowMonk(activity) {
     const item = activity.item;
-    if (item.name === game.i18n.localize("elkan5e.monk.meldWithShadows") || item.name === game.i18n.localize("elkan5e.monk.hijackShadow")){
+    if (item.name === game.i18n.localize("elkan5e.monk.meldWithShadows") || item.name === game.i18n.localize("elkan5e.monk.hijackShadow")) {
         const actor = activity.actor;
-        if(actor.items.find(i => i.name === game.i18n.localize("elkan5e.monk.emptyBody"))){
+        if (actor.items.find(i => i.name === game.i18n.localize("elkan5e.monk.emptyBody"))) {
             const emptyBody = {
                 "_id": "4dvYtqvbQGDsVi51",
                 "changes": [
