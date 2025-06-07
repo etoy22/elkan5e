@@ -1,5 +1,5 @@
 // TODO: This function works but causes errors when deleting the item with multiple effects
-export async function goodberry( workflow) {
+export async function goodberry(workflow) {
     const actor = workflow.actor;
     const item = workflow.item;
     // console.log(`${item.name} spell activated`);
@@ -193,20 +193,20 @@ export async function goodberry( workflow) {
             const levelMatch = deletedEffect.label.match(/Level (\d+)/);
             const level = levelMatch ? parseInt(levelMatch[1], 10) : null;
             const item = actor.items.find(i => i.name === name);
-            
+
             if (item) {
                 if (!level) {
                     console.warn("Could not determine spell level from effect label:", deletedEffect.label);
                     return;
                 }
-                
+
                 await handleGoodberryItemCleanup(actor, level, name);
             } else {
                 console.warn("No matching item found for cleanup:", name);
             }
         });
     }
-  
+
     // Hook to handle the deletion of the item
     Hooks.on("deleteItem", async (deletedItem) => {
         if (!actor) {

@@ -1,7 +1,7 @@
 /*
  * Adds the extra speed types (DOES NOTHING RIGHT NOW)
  */
-export function speed(){
+export function speed() {
     console.log("Elkan 5e  |  Initializing Speed")
 
     const MOVEMENT_TYPES = {
