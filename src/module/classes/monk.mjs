@@ -49,8 +49,8 @@ export async function meldWithShadows(workflow) {
     emptyBody(actor);
 }
 
-export async function emptyBody(actor){
-    if(actor.items.find(i => i.name === game.i18n.localize("elkan5e.monk.emptyBody"))){
+export async function emptyBody(actor) {
+    if (actor.items.find(i => i.name === game.i18n.localize("elkan5e.monk.emptyBody"))) {
         const emptyBody = {
             "_id": "4dvYtqvbQGDsVi51",
             "changes": [
@@ -85,6 +85,6 @@ export async function emptyBody(actor){
                 }
             },
             default: "no"
-            }).render(true);
+        }).render(true);
     }
 }

@@ -1,4 +1,4 @@
-import {UpdateElkanRunner } from "./UpdateElkanRunner.mjs";
+import { UpdateElkanRunner } from "./UpdateElkanRunner.mjs";
 export async function gameSettingRegister() {
     game.settings.register("elkan5e", "dialogShown", {
         name: "elkan5e.dialog.name",
@@ -104,8 +104,8 @@ export async function gameSettingRegister() {
         hint: "elkan5e.updateElkan.hint",
         icon: "fas fa-sync", // FontAwesome icon
         type: UpdateElkanRunner, // Class that runs your function
-    restricted: true
-});
+        restricted: true
+    });
 
 
 }
