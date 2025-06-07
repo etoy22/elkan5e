@@ -1,4 +1,75 @@
 # Changelog
+# v1.12.25
+## Bug Fixes
+- [Alter Self](https://www.elkan5e.com/spells/alter-self) active effect choice was appearing twice
+- [Healing Word](https://www.elkan5e.com/spells/healing-word) now works on Constructs
+- Cover was being listed twice under conditions — now fixed
+- Celestial Warlock Heavenly Aspect feature has been fixed
+
+## Ancestry
+- Flagged Soul Gem and Inorganic Form as Ancestry Features
+
+## Classes
+- Fixed the “ability score improvement or feat” level-up logic — all feats now grant ASI benefits
+
+**Barbarian**
+- Barbarian’s Defense moved to level 1
+- Rage and Rumination moved to level 2
+- Reckless Attack reverted to original form
+- Brutal Strike added at level 11
+
+**Fighter**
+- Champion  
+  - Fixed issue where Improved Fighting Styles were not accessible at level
+
+**Monk**
+- Deflect Missiles reworked as Deflect Attacks: always costs 1 ki, reduces damage from all attacks, and allows redirection
+
+**Paladin**
+- Lay on Hands and Cleansing Touch are now bonus actions
+- Removed Divine Health
+
+**Ranger**
+- Unrelenting Focus now allows you to deal Mark for Death damage when no mark is active
+- Added Precise Hunter feature at level 17
+
+**Rogue**
+- Sneak Attack and Precision Attack can now crit in the Foundry code
+- Mystic Trickster  
+  - Updated Mystic-specific Precision Attacks to use the updated damage
+
+**Sorcerer**
+- [Extended Spell](https://www.elkan5e.com/spells/extended-spell) now grants advantage on saves to maintain Concentration on the affected spell
+- [Accurate Spell](https://www.elkan5e.com/spells/accurate-spell) renamed to [Seeking Spell](https://www.elkan5e.com/spells/seeking-spell) and now only costs 1 sorcery point
+- [Careful Spell](https://www.elkan5e.com/spells/careful-spell) now prevents half damage, like Sculpt Spell
+
+**Warlock**
+- Dropped level requirements for several invocations
+- Contact Other Plane reworked as a 7th-level Warlock feature instead of a spell
+- [One With Shadows](https://www.elkan5e.com/invocations/one-with-shadows) now allows the user to move
+- [Witch Sight](https://www.elkan5e.com/invocations/witch-sight) now simply provides truesight
+- [Gaze of Two Minds](https://www.elkan5e.com/invocations/gaze-of-two-minds) is no longer restricted by creature type, no longer takes an action to maintain, and lasts 1 hour
+- [Fiendish Vigor](https://www.elkan5e.com/invocations/fiendish-vigor) is now decoupled from False Life and always grants 10 temporary hit points
+- New Invocation: [Gift of the Depths](https://www.elkan5e.com/invocations/gift-of-the-depths)
+- Added [Lifedrinker](https://www.elkan5e.com/invocations/lifedrinker) back at level 11, inspired by the 2024 rules, replacing the old option
+
+## Equipment
+- Unarmed Strikes are now always considered light — you can now always punch with your off hand
+
+## Feats
+- Replaced Crafter feat with [Multitalented](https://www.elkan5e.com/feats/multitalented), which lets you choose any tools or mounts
+- Removed Combat Casting
+
+## Game Rules
+- You no longer need a free hand for material components — it was too annoying, finicky, and required too many exceptions
+- Incapacitated now prevents speech
+
+## Spells
+- [Conjure Woodland Beings](https://www.elkan5e.com/spells/conjure-woodland-beings) now allows you to summon plants
+- [Lesser Restoration](https://www.elkan5e.com/spells/lesser-restoration) no longer removes disease
+- [Phantom Steed](https://www.elkan5e.com/spells/phantom-steed) reverted to 1 action
+
+
 # v1.12.24
 ## Bug Fixes
 - Added [Enervate](https://www.elkan5e.com/spells/enervate) to spell lists.
