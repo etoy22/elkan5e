@@ -46,8 +46,8 @@ export function activation() {
             label: "No Action Cost"
         }
     };
-    
-    
+
+
     Object.assign(CONFIG.DND5E.abilityActivationTypes, ACTIVATION_TYPES);
     Object.assign(CONFIG.DND5E.staticAbilityActivationTypes, ACTIVATION_TYPES);
 
@@ -93,7 +93,7 @@ export function sheets() {
     CONFIG.DND5E.sourcePacks.BACKGROUNDS = "elkan5e.elkan5e-background";
     CONFIG.DND5E.sourcePacks.CLASSES = "elkan5e.elkan5e-class";
     CONFIG.DND5E.sourcePacks.RACES = "elkan5e.elkan-5e-ancestries";
-    
+
     // Below breaks everything
     // CONFIG.DND5E.sourcePacks.ITEMS = "elkan5e.elkan5e-equipment";
 }
