@@ -14,7 +14,7 @@ export function perLeader(activity) {
             rallyFeature.update({ "system.uses.spent": Math.max(rallyFeature.system.uses.spent - 1, 0) })
         }
 
-       
+
         if (game.user.isGM || actor.isOwner) {
             ui.notifications.notify(game.i18n.format("elkan5e.notifications.PersistentLeader", { name: actor.name }));
         }
