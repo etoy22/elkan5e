@@ -4,16 +4,16 @@
  */
 export function feral(actor) {
     const RAGE = actor.items.find(i => i.name === "Rage");
-    
+
     // Set the default notification message
     let notification = "elkan5e.notifications.FeralInstincts";
-    
+
     // Check if the actor has Feral Instincts or Improved Feral Instincts
     if (RAGE && (actor.items.find(i => i.name === "Feral Instinct") || actor.items.find(i => i.name === "Improved Feral Instincts"))) {
         if (actor.items.find(i => i.name === "Improved Feral Instincts")) {
             notification = "elkan5e.notifications.ImprovedFeralInstincts";
         }
-        
+
         let uses = RAGE.system.uses.max - RAGE.system.uses.spent;
         if (uses > 0 && actor.isOwner) {
             ui.notifications.notify(game.i18n.format(notification, { name: actor.name }));
@@ -21,29 +21,29 @@ export function feral(actor) {
     }
 }
 
-export async function rage( workflow) {
+export async function rage(workflow) {
     const actor = workflow.actor;
     let notification = "elkan5e.notifications.FeralInstinctsMove";
     if ((actor.items.find(i => i.name === "Feral Instinct") || actor.items.find(i => i.name === "Improved Feral Instincts"))) {
         // console.log("Feral Instincts or Improved Feral Instincts found");
-        if (actor.items.find(i => i.name === "Improved Feral Instincts")){
+        if (actor.items.find(i => i.name === "Improved Feral Instincts")) {
             notification = "elkan5e.notifications.ImprovedFeralInstinctsMove";
         }
-        if (actor.isOwner){
+        if (actor.isOwner) {
             ui.notifications.notify(game.i18n.format(notification, { name: actor.name }));
         }
     }
 }
 
 
-export async function wildBlood(workflow){
+export async function wildBlood(workflow) {
     const item = workflow.item;
     const scope = workflow.scope;
     if (!game.modules.get("elkan5e")?.active) return;
 
     if (item.type !== "spell" || !item.system.activities) return;
 
-    const activityId = scope.workflow.uuid?.split(".").pop(); 
+    const activityId = scope.workflow.uuid?.split(".").pop();
     let type = item.system.activities.find(a => a.id === activityId).type
     const level = item.system.level;
     const TABLE_UUIDS = [
@@ -82,7 +82,7 @@ export async function wildBlood(workflow){
         });
 
         if (!confirmed) return;
-        if (type != "utility" || ["Mirror Image","Blink"].includes(item.name)) {
+        if (type != "utility" || ["Mirror Image", "Blink"].includes(item.name)) {
             let tableUUID = TABLE_UUIDS[level];
             if (tableUUID) {
                 try {
@@ -91,7 +91,7 @@ export async function wildBlood(workflow){
                         table.draw({ displayChat: true });
                     }
                 }
-                catch(error){
+                catch (error) {
                     console.error("Error drawing from Wild Blood table: ", error);
                 }
             }

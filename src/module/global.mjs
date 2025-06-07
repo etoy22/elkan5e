@@ -9,32 +9,32 @@
  * @returns {Promise<void>} A promise that resolves when the effect has been processed.
  */
 export async function deletedEffectRemovesItem(
-  effect,
-  effectName,
-  itemName,
-  descriptionPrefix,
-  endMessage
+	effect,
+	effectName,
+	itemName,
+	descriptionPrefix,
+	endMessage
 ) {
-  if (effect.name === game.i18n.localize(effectName)) {
-    const actor = effect.parent;
-    const item = actor.items.find(
-      (item) => item.name === game.i18n.localize(itemName)
-    );
-    if (item) {
-      const itemDescription = item.system.description.value
-        .replace(game.i18n.localize(descriptionPrefix), "")
-        .trim();
-      const chatMessageData = {
-        user: game.user.id,
-        speaker: ChatMessage.getSpeaker({ actor: actor }),
-        content: `<p>${itemDescription}</p><p>${game.i18n.localize(
-          endMessage
-        )}</p>`,
-      };
-      ChatMessage.create(chatMessageData);
-      await item.delete();
-    }
-  }
+	if (effect.name === game.i18n.localize(effectName)) {
+		const actor = effect.parent;
+		const item = actor.items.find(
+			(item) => item.name === game.i18n.localize(itemName)
+		);
+		if (item) {
+			const itemDescription = item.system.description.value
+				.replace(game.i18n.localize(descriptionPrefix), "")
+				.trim();
+			const chatMessageData = {
+				user: game.user.id,
+				speaker: ChatMessage.getSpeaker({ actor: actor }),
+				content: `<p>${itemDescription}</p><p>${game.i18n.localize(
+					endMessage
+				)}</p>`,
+			};
+			ChatMessage.create(chatMessageData);
+			await item.delete();
+		}
+	}
 }
 
 /**
@@ -46,15 +46,15 @@ export async function deletedEffectRemovesItem(
  * @returns {Promise<void>} A promise that resolves when the item has been processed.
  */
 export async function deletedItemRemovesEffect(item, itemName, effectName) {
-  if (item.name === game.i18n.localize(itemName)) {
-    const actor = item.parent;
-    const effect = actor.effects.find(
-      (e) => e.name === game.i18n.localize(effectName)
-    );
-    if (effect) {
-      await effect.delete();
-    }
-  }
+	if (item.name === game.i18n.localize(itemName)) {
+		const actor = item.parent;
+		const effect = actor.effects.find(
+			(e) => e.name === game.i18n.localize(effectName)
+		);
+		if (effect) {
+			await effect.delete();
+		}
+	}
 }
 
 /**
@@ -72,65 +72,65 @@ export async function deletedItemRemovesEffect(item, itemName, effectName) {
  * @returns {Promise<void>} A promise that resolves when the effects have been processed.
  */
 export async function deleteEffectRemoveEffect(
-  actor,
-  effectToRemove,
-  effectToIgnore,
-  additionalEffectsToRemove
+	actor,
+	effectToRemove,
+	effectToIgnore,
+	additionalEffectsToRemove
 ) {
-  const effectToRemoveLocalized = game.i18n.localize(effectToRemove);
-  const effectToIgnoreLocalized = game.i18n.localize(effectToIgnore);
-  const additionalEffectsToRemoveLocalized = additionalEffectsToRemove.map(
-    (effect) => game.i18n.localize(effect)
-  );
+	const effectToRemoveLocalized = game.i18n.localize(effectToRemove);
+	const effectToIgnoreLocalized = game.i18n.localize(effectToIgnore);
+	const additionalEffectsToRemoveLocalized = additionalEffectsToRemove.map(
+		(effect) => game.i18n.localize(effect)
+	);
 
-  // Find the effect to remove
-  const effect = actor.effects.find((i) => i.name === effectToRemoveLocalized);
-  if (effect && actor.effects.find((i) => i.name !== effectToIgnoreLocalized)) {
-    // Delete the effect to remove
-    await effect.delete();
+	// Find the effect to remove
+	const effect = actor.effects.find((i) => i.name === effectToRemoveLocalized);
+	if (effect && actor.effects.find((i) => i.name !== effectToIgnoreLocalized)) {
+		// Delete the effect to remove
+		await effect.delete();
 
-    // Find and delete any additional effects to remove
-    const additionalEffects = actor.effects.filter((i) =>
-      additionalEffectsToRemoveLocalized.includes(i.name)
-    );
-    for (const additionalEffect of additionalEffects) {
-      await additionalEffect.delete();
-    }
-  }
+		// Find and delete any additional effects to remove
+		const additionalEffects = actor.effects.filter((i) =>
+			additionalEffectsToRemoveLocalized.includes(i.name)
+		);
+		for (const additionalEffect of additionalEffects) {
+			await additionalEffect.delete();
+		}
+	}
 }
 
 export async function drainedEffect(actor, damage, name, img, uuid) {
-  const drained = {
-    _id: randomID(),
-    changes: [
-      {
-        key: "system.attributes.hp.tempmax",
-        mode: 2,
-        value: "-" + damage,
-        priority: 20,
-      },
-    ],
-    disabled: false,
-    origin: uuid || null,
-    name: name || "Drained",
-    img: img || "modules/elkan5e/icons/drained.svg",
-    type: "base",
-    statuses: ["drained"],
-    flags: {
-      dae: {
-        enableCondition: "",
-        disableCondition: "",
-        disableIncapacitated: false,
-        selfTarget: false,
-        selfTargetAlways: false,
-        dontApply: false,
-        stackable: "multi",
-        showIcon: false,
-        durationExpression: "",
-        macroRepeat: "none",
-        specialDuration: ["longRest"],
-      },
-    },
-  };
-  await actor.createEmbeddedDocuments("ActiveEffect", [drained]);
+	const drained = {
+		_id: randomID(),
+		changes: [
+			{
+				key: "system.attributes.hp.tempmax",
+				mode: 2,
+				value: "-" + damage,
+				priority: 20,
+			},
+		],
+		disabled: false,
+		origin: uuid || null,
+		name: name || "Drained",
+		img: img || "modules/elkan5e/icons/drained.svg",
+		type: "base",
+		statuses: ["drained"],
+		flags: {
+			dae: {
+				enableCondition: "",
+				disableCondition: "",
+				disableIncapacitated: false,
+				selfTarget: false,
+				selfTargetAlways: false,
+				dontApply: false,
+				stackable: "multi",
+				showIcon: false,
+				durationExpression: "",
+				macroRepeat: "none",
+				specialDuration: ["longRest"],
+			},
+		},
+	};
+	await actor.createEmbeddedDocuments("ActiveEffect", [drained]);
 }

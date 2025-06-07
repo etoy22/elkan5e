@@ -45,9 +45,9 @@ Hooks.once("init", async () => {
 });
 
 Hooks.once('ready', async () => {
-    try{
+    try {
         startDialog();
-    }catch (error) {
+    } catch (error) {
         console.error("Elkan 5e | Ready Hook Error:", error);
     }
 });
@@ -73,7 +73,7 @@ Hooks.on("dnd5e.preRollHitDieV2", (config) => {
     try {
         const actor = config.subject;
         const HAS_UNDEAD_NATURE = actor.items.find(feature => feature.name === "Undead Nature");
-        const HAS_GENTLE_REPOSE  = actor.effects.find(effect => effect.name === "Gentle Repose");
+        const HAS_GENTLE_REPOSE = actor.effects.find(effect => effect.name === "Gentle Repose");
         // Subtract Constitution modifier from hit die roll for undead characters without Gentle Repose
         if (HAS_UNDEAD_NATURE && !HAS_GENTLE_REPOSE) {
             config.rolls[0].parts[0] += '-@abilities.con.mod';
@@ -143,18 +143,18 @@ Hooks.on("combatTurnChange", (combat, prior, current) => {
 });
 
 Hooks.on("updateItem", (item) => {
-    try{
+    try {
         const actor = item.parent;
         updateBarbarianDefense(actor, "updateItem");
-    }catch (error) {
+    } catch (error) {
         console.error("Elkan 5e | Error in updateItem hook:", error);
     }
 });
 
 Hooks.on("updateActor", async (actor, changes) => {
     try {
-        await updateBarbarianDefense(actor,"updateActor");
-    }catch (error) {
+        await updateBarbarianDefense(actor, "updateActor");
+    } catch (error) {
         console.error("Elkan 5e | Error in updateActor hook:", error);
     }
 });
@@ -162,7 +162,7 @@ Hooks.on("updateActor", async (actor, changes) => {
 let features = {
     rage: rage,
     infusedHealer: infusedHealer,
-    healingOverflow:healingOverflow,
+    healingOverflow: healingOverflow,
     wildBlood: wildBlood,
     secondWind, secondWind,
     hijackShadow: hijackShadow,
@@ -185,7 +185,7 @@ let macros = {
     spells: spells,
     features: features,
     monsterFeatures: monsterFeatures,
-  };
+};
 
 globalThis['elkan5e'] = {
     macros: macros

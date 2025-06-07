@@ -19,7 +19,7 @@ export function armor() {
     });
     CONFIG.DND5E.armorClasses["barbarianDefense"] = {
         label: "Barbarian's Defense",
-        formula: "@attributes.ac.armor", 
+        formula: "@attributes.ac.armor",
         calc: "barbarianDefense"
     };
 
@@ -37,7 +37,7 @@ function calculateAcBonus(actor) {
         i.system.equipped &&
         i.system.armor?.type !== "shield"
     );
-    
+
     if (!armor) {
         // console.log(`Unarmored: ${actor.name}, Dex: ${dex}, Con: ${con}`);
         return con + dex;
@@ -53,7 +53,7 @@ function calculateAcBonus(actor) {
 
     const dexCap = armor.system.armor.dex ?? null;
     // console.log(`Dexterity Cap: ${dexCap}`);
-    if ( dexCap !== null ) {
+    if (dexCap !== null) {
         const effectiveDex = Math.min(dex, dexCap);
         const effectiveCon = Math.min(con, dexCap);
         // console.log(`Effective Dexterity: ${effectiveDex}, Effective Constitution: ${effectiveCon}`);

@@ -36,10 +36,10 @@ export function filterDocsByMode(docs, mode) {
     return [];
   }
 
-  if (mode === "update-All"){
+  if (mode === "update-All") {
     // console.log("Updating all items, no filtering applied.");
     return docs;
-  } 
+  }
   if (mode === "update-Elkan") {
     // console.log("Filtering for Elkan 5e items only.");
     return docs.filter(d => d.system.source?.book === "Elkan 5e");
@@ -75,7 +75,7 @@ export async function restorePropertiesToData(newData, savedProps, mode) {
   // Always restore image if different
   if (savedProps.img && newData.img !== savedProps.img) {
     newData.img = savedProps.img;
-  } 
+  }
   // else {
   //   console.log(`Image already matches saved image or saved image missing for '${newData.name}', skipping image restore.`);
   // }
@@ -89,7 +89,7 @@ export async function restorePropertiesToData(newData, savedProps, mode) {
     restoreOtherProps = true;
   } else if (mode === "update-All" && originalSource === "Elkan 5e") {
     restoreOtherProps = true;
-  } 
+  }
 
   if (restoreOtherProps) {
     for (const [key, value] of Object.entries(savedProps)) {
@@ -265,7 +265,7 @@ export async function migrateActorItems(updateMode = { players: "update-All", np
 
   await migrateActorByType({
     compendiums: [compMagic, compEquip],
-    types: ["consumable","container","equipment","loot","tool","weapon"],
+    types: ["consumable", "container", "equipment", "loot", "tool", "weapon"],
     updateMode,
     preserveProperties: ["quantity", "attunement", "equipped", "uses.max", "uses.spent", "uses.recovery", "activities"],
     progressLabel: "Items"
