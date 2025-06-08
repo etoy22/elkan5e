@@ -23,8 +23,8 @@ export async function wildSurge(activity) {
         "LV2skOm8hCwM1JRH",
         "O7JYPPoDS7gLGkNj"
     ];
-    if ((item.type === "spell" && level > 0 && (activity.name === "Ritual" || activity.consumption.spellSlot)) || 
-    (item.type === "consumable" && item.system.type.value === "scroll")) {
+    if ((item.type === "spell" && level > 0 && (activity.name === "Ritual" || activity.consumption.spellSlot)) ||
+        (item.type === "consumable" && item.system.type.value === "scroll")) {
         const wild = actor.items.find(i => i.name === "Random Wild Surge");
         const volen = actor.effects.find(i => i.name === "Voluntary Surge");
         const blowout = actor.effects.find(i => i.name === "Magical Blowout");
@@ -87,7 +87,7 @@ export async function wildSurge(activity) {
                             const delayButton = await createDelayButton(actor, rollResult);
                             if (delayButton) buttons.delay = delayButton;
                             buttons.cancel = await createCancelButton();
-            
+
                             if (Object.keys(buttons).length > 1 && delay.system.uses.spent < delay.system.uses.max) {
                                 new Dialog({
                                     title: game.i18n.localize("elkan5e.wildMage.wildSurgeAbilities"),
@@ -98,7 +98,7 @@ export async function wildSurge(activity) {
                                     `,
                                     buttons: buttons
                                 }).render(true);
-                            } 
+                            }
                         },
                         disabled: avert.system.uses.spent >= avert.system.uses.max
                     };
@@ -297,7 +297,7 @@ async function createCancelButton() {
  * @param {object} effect - The effect object to be processed.
  * @returns {Promise<void>} A promise that resolves when the effect has been processed.
  */
-export async function delayedDuration(effect){
+export async function delayedDuration(effect) {
     if (effect.name === game.i18n.localize("elkan5e.wildMage.delayedWildSurgeDuration")) {
         await deletedEffectRemovesItem(effect, game.i18n.localize("elkan5e.wildMage.delayedWildSurge"));
     }
@@ -310,7 +310,7 @@ export async function delayedDuration(effect){
  * @param {object} item - The item object to be processed.
  * @returns {Promise<void>} A promise that resolves when the item has been processed.
  */
-export async function delayedItem(item){
+export async function delayedItem(item) {
     if (item.name === game.i18n.localize("elkan5e.wildMage.delayedWildSurge")) {
         await deletedItemRemovesEffect(item, game.i18n.localize("elkan5e.wildMage.delayedWildSurgeDuration"));
     }

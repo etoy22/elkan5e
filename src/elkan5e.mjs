@@ -20,7 +20,7 @@ import { scroll } from "./module/rules/scroll.mjs";
 Hooks.once("init", async () => {
     console.log("Elkan 5e | Initializing Elkan 5e");
     await gameSettingRegister();
-    await initWarlockSpellSlot();
+    initWarlockSpellSlot();
     references();
     tools();
     conditions();
@@ -58,7 +58,7 @@ Hooks.on("dnd5e.preRollHitDieV2", (config) => {
     try {
         const actor = config.subject;
         const HAS_UNDEAD_NATURE = actor.items.find(feature => feature.name === "Undead Nature");
-        const HAS_GENTLE_REPOSE  = actor.effects.find(effect => effect.name === "Gentle Repose");
+        const HAS_GENTLE_REPOSE = actor.effects.find(effect => effect.name === "Gentle Repose");
         // Subtract Constitution modifier from hit die roll for undead characters without Gentle Repose
         if (HAS_UNDEAD_NATURE && !HAS_GENTLE_REPOSE) {
             config.rolls[0].parts[0] += '-@abilities.con.mod';
@@ -102,11 +102,7 @@ Hooks.on("dnd5e.preRollInitiative", (actor, roll) => {
 });
 
 Hooks.on("deleteActiveEffect", async (effect, options, userId) => {
-    try {
-        delayedDuration(effect);
-    } catch (error) {
-        console.error("Error in deleteActiveEffect hook:", error);
-    }
+    await delayedDuration(effect);
 });
 
 Hooks.on("deleteItem", async (item, options, userId) => {
