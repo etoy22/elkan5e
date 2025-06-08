@@ -10,87 +10,87 @@ export function conditions() {
 
     const NEW_CONDITIONS = {
         confused: {
-            label: "Confused",
+            name: "Confused",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.WJFtNc5UraHVrV5V",
-            icon: "modules/elkan5e/icons/conditions/confused.svg"
+            img: "modules/elkan5e/icons/conditions/confused.svg"
         },
         coverhalf: {
-            label: "Half Cover",
+            name: "Half Cover",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
-            icon: "modules/elkan5e/icons/conditions/cover-half.svg",
-            _id: "dnd5ecoverhalf0000" // Ensure this is a valid 16-character alphanumeric ID
+            img: "modules/elkan5e/icons/conditions/cover-half.svg",
+            _id: "dnd5ecoverhalf00" // Ensure this is a valid 16-character alphanumeric ID
         },
         coverthreequarters: {
-            label: "Three Quarters Cover",
+            name: "Three Quarters Cover",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
-            icon: "modules/elkan5e/icons/conditions/cover-three-quarters.svg",
-            _id: "dnd5ecoverthree0000" // Ensure this is a valid 16-character alphanumeric ID
+            img: "modules/elkan5e/icons/conditions/cover-three-quarters.svg",
+            _id: "dnd5ecoverthree0" // Ensure this is a valid 16-character alphanumeric ID
         },
         cursed: {
-            label: "Cursed",
+            name: "Cursed",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.Vpwu9GQC6HVNZFze",
-            icon: "modules/elkan5e/icons/conditions/cursed.svg",
+            img: "modules/elkan5e/icons/conditions/cursed.svg",
             _id: "dnd5ecursed0000" // Ensure this is a valid 16-character alphanumeric ID
         },
         dazed: {
-            label: "Dazed",
+            name: "Dazed",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.0BYyVwipnS55gVFq",
-            icon: "modules/elkan5e/icons/conditions/dazed.svg"
+            img: "modules/elkan5e/icons/conditions/dazed.svg"
         },
         drained: {
-            label: "Drained",
+            name: "Drained",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.ZnhMIMgPZv1QDxzZ",
-            icon: "modules/elkan5e/icons/conditions/drained.svg"
+            img: "modules/elkan5e/icons/conditions/drained.svg"
         },
         goaded: {
-            label: "Goaded",
+            name: "Goaded",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.IVZ318d1P8WBcDxN",
-            icon: "modules/elkan5e/icons/conditions/goaded.svg"
+            img: "modules/elkan5e/icons/conditions/goaded.svg"
         },
         hasted: {
-            label: "Hasted",
+            name: "Hasted",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.8dnyv0szJi7dCz74",
-            icon: "modules/elkan5e/icons/conditions/hasted.svg"
+            img: "modules/elkan5e/icons/conditions/hasted.svg"
         },
         obscuredheavily: {
-            label: "Heavily Obscured",
+            name: "Heavily Obscured",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.UC5VK6i6vqWEUfMn",
-            icon: "modules/elkan5e/icons/conditions/obscured-heavily.svg"
+            img: "modules/elkan5e/icons/conditions/obscured-heavily.svg"
         },
         obscuredlightly: {
-            label: "Lightly Obscured",
+            name: "Lightly Obscured",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.Jq7kMUlHodqSbYDD",
-            icon: "modules/elkan5e/icons/conditions/obscured-lightly.svg"
+            img: "modules/elkan5e/icons/conditions/obscured-lightly.svg"
         },
         silenced: {
-            label: "Silenced",
+            name: "Silenced",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.F51xrE7Mj8VeM3b8",
-            icon: "modules/elkan5e/icons/conditions/silenced.svg"
+            img: "modules/elkan5e/icons/conditions/silenced.svg"
         },
         siphoned: {
-            label: "Siphoned",
+            name: "Siphoned",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.SthB8javJuFySiBg",
-            icon: "modules/elkan5e/icons/conditions/siphoned.svg"
+            img: "modules/elkan5e/icons/conditions/siphoned.svg"
         },
         slowed: {
-            label: "Slowed",
+            name: "Slowed",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.kkbgHooTzrtu4q8T",
-            icon: "modules/elkan5e/icons/conditions/slowed.svg"
+            img: "modules/elkan5e/icons/conditions/slowed.svg"
         },
         weakened: {
-            label: "Weakened",
+            name: "Weakened",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.iJT3cWvyTNBv1L5h",
-            icon: "modules/elkan5e/icons/conditions/weakened.svg"
+            img: "modules/elkan5e/icons/conditions/weakened.svg"
         },
         concentrating: {
-            label: "Concentrating",
+            name: "Concentrating",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.4ZOHN6tGvj54J6Kv",
-            icon: "modules/elkan5e/icons/conditions/concentrating.svg"
+            img: "modules/elkan5e/icons/conditions/concentrating.svg"
         },
         surprised: {
-            label: "Surprised",
+            name: "Surprised",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.QOZeW0m8RCdVg6UE",
-            icon: "modules/elkan5e/icons/conditions/surprised.svg"
+            img: "modules/elkan5e/icons/conditions/surprised.svg"
         }
     };
 
@@ -100,7 +100,7 @@ export function conditions() {
     // Replace icons
     CONDITION_ICONS.forEach(id => {
         if (CONFIG.DND5E.conditionTypes[id]) {
-            CONFIG.DND5E.conditionTypes[id].icon = `modules/elkan5e/icons/conditions/${id}.svg`;
+            CONFIG.DND5E.conditionTypes[id].img = `modules/elkan5e/icons/conditions/${id}.svg`;
         }
     });
 
@@ -131,14 +131,14 @@ export function icons() {
         "flanking", "flanked"
     ];
 
-    const conditionsToRemove = ["bleeding", "burning", "dehydration", "falling", "malnutrition", "suffocation"];
+    const conditionsToRemove = ["bleeding", "burning", "dehydration", "falling", "malnutrition", "suffocation", "flanking", "flanked"];
 
     const NEW_STATUS_EFFECTS = [
         {
             id: "confused",
             name: "Confused",
             _id: "dnd5econfused000",
-            icon: "modules/elkan5e/icons/conditions/confused.svg",
+            img: "modules/elkan5e/icons/conditions/confused.svg",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.WJFtNc5UraHVrV5V",
             changes: [
                 {
@@ -152,7 +152,7 @@ export function icons() {
             id: "dazed",
             name: "Dazed",
             _id: "dnd5edazed000000",
-            icon: "modules/elkan5e/icons/conditions/dazed.svg",
+            img: "modules/elkan5e/icons/conditions/dazed.svg",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.0BYyVwipnS55gVFq"
         },
         {
@@ -160,21 +160,21 @@ export function icons() {
             name: "Drained",
             _id: "dnd5edrained0000",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.ZnhMIMgPZv1QDxzZ",
-            icon: "modules/elkan5e/icons/conditions/drained.svg"
+            img: "modules/elkan5e/icons/conditions/drained.svg"
         },
         {
             id: "goaded",
             name: "Goaded",
             _id: "dnd5egoaded00000",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.IVZ318d1P8WBcDxN",
-            icon: "modules/elkan5e/icons/conditions/goaded.svg"
+            img: "modules/elkan5e/icons/conditions/goaded.svg"
         },
         {
             id: "hasted",
             name: "Hasted",
             _id: "dnd5ehasted00000",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.8dnyv0szJi7dCz74",
-            icon: "modules/elkan5e/icons/conditions/hasted.svg",
+            img: "modules/elkan5e/icons/conditions/hasted.svg",
             changes: [
                 {
                     key: "system.attributes.ac.bonus",
@@ -198,7 +198,7 @@ export function icons() {
             name: "Heavily Obscured",
             _id: "dnd5eobscuredhea",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.UC5VK6i6vqWEUfMn",
-            icon: "modules/elkan5e/icons/conditions/obscured-heavily.svg",
+            img: "modules/elkan5e/icons/conditions/obscured-heavily.svg",
             changes: [
                 {
                     key: "flags.midi-qol.advantage.attack.all",
@@ -222,7 +222,7 @@ export function icons() {
             name: "Lightly Obscured",
             _id: "dnd5eobscuredlig",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.Jq7kMUlHodqSbYDD",
-            icon: "modules/elkan5e/icons/conditions/obscured-lightly.svg",
+            img: "modules/elkan5e/icons/conditions/obscured-lightly.svg",
             changes: [
                 {
                     key: "flags.midi-qol.advantage.skill.ste",
@@ -236,21 +236,21 @@ export function icons() {
             name: "Half Cover",
             _id: "dnd5ecoverhalf00", // Ensure this is a valid 16-character alphanumeric ID
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
-            icon: "modules/elkan5e/icons/conditions/cover-half.svg"
+            img: "modules/elkan5e/icons/conditions/cover-half.svg"
         },
         {
             id: "coverthreequarters",
             name: "Three Quarters Cover",
             _id: "dnd5ecoverthree0", // Ensure this is a valid 16-character alphanumeric ID
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
-            icon: "modules/elkan5e/icons/conditions/cover-three-quarters.svg"
+            img: "modules/elkan5e/icons/conditions/cover-three-quarters.svg"
         },
         {
             id: "siphoned",
             name: "Siphoned",
             _id: "dnd5esiphoned000",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.SthB8javJuFySiBg",
-            icon: "modules/elkan5e/icons/conditions/siphoned.svg",
+            img: "modules/elkan5e/icons/conditions/siphoned.svg",
             changes: [
                 {
                     key: "flags.midi-qol.grants.advantage.attack.save",
@@ -270,7 +270,7 @@ export function icons() {
             name: "Slowed",
             _id: "dnd5eslowed00000",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.kkbgHooTzrtu4q8T",
-            icon: "modules/elkan5e/icons/conditions/slowed.svg",
+            img: "modules/elkan5e/icons/conditions/slowed.svg",
             changes: [
                 {
                     key: "flags.midi-qol.disadvantage.attack.all",
@@ -294,7 +294,7 @@ export function icons() {
             name: "Weakened",
             _id: "dnd5eweakened000",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.iJT3cWvyTNBv1L5h",
-            icon: "modules/elkan5e/icons/conditions/weakened.svg",
+            img: "modules/elkan5e/icons/conditions/weakened.svg",
             changes: [
                 {
                     key: "flags.midi-qol.disadvantage.ability.dex",
@@ -316,7 +316,7 @@ export function icons() {
         {
             id: "advantage",
             name: "Advantage",
-            icon: "icons/svg/upgrade.svg",
+            img: "icons/svg/upgrade.svg",
             changes: [
                 {
                     key: "flags.midi-qol.advantage.all",
@@ -328,7 +328,7 @@ export function icons() {
         {
             id: "disadvantage",
             name: "Disadvantage",
-            icon: "icons/svg/downgrade.svg",
+            img: "icons/svg/downgrade.svg",
             changes: [
                 {
                     key: "flags.midi-qol.disadvantage.all",
@@ -413,9 +413,9 @@ export function icons() {
         }
     });
 
-    CONFIG.statusEffects.find(effect => effect.id === "coverHalf").img = `modules/elkan5e/icons/conditions/cover-half.svg`;
-    CONFIG.statusEffects.find(effect => effect.id === "coverThreeQuarters").img = `modules/elkan5e/icons/conditions/cover-three-quarters.svg`;
-    CONFIG.statusEffects.find(effect => effect.id === "coverTotal").img = `modules/elkan5e/icons/conditions/cover-full.svg`;
+    CONFIG.DND5E.statusEffects.coverHalf.img = `modules/elkan5e/icons/conditions/cover-half.svg`;
+    CONFIG.DND5E.statusEffects.coverThreeQuarters.img = `modules/elkan5e/icons/conditions/cover-three-quarters.svg`;
+    CONFIG.DND5E.statusEffects.coverTotal.img = `modules/elkan5e/icons/conditions/cover-full.svg`;
 
 
     // Removing Unused Conditions
@@ -462,10 +462,9 @@ export function icons() {
             CONFIG.DND5E.conditionEffects.halfHealth.delete("exhaustion-4")
             CONFIG.DND5E.conditionEffects.noMovement.delete("exhaustion-5")
         }
-        CONFIG.statusEffects.find(effect => effect.id === "exhaustion").changes = [
-            { "key": "system.bonuses.spell.dc", "mode": 2, "value": "-2*@attributes.exhaustion" },
-        ];
-
+        else{
+            CONFIG.DND5E.conditionTypes["exhaustion"].reduction = {"rolls": 2, "speed": 5}
+        }
     }
 
     if (conditions === "a" || conditions === "b") {
@@ -513,7 +512,7 @@ export async function grapple(workflow) {
 
             const condition = CONFIG.statusEffects.find(e => e.id === "grappled");
             if (condition) {
-                await targetToken.toggleEffect(condition.icon, { active: true });
+                await targetToken.toggleEffect(condition.img, { active: true });
             }
         } else {
             ChatMessage.create({
