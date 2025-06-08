@@ -27,7 +27,7 @@ Hooks.once("init", async () => {
     try {
         console.log("Elkan 5e | Initializing Elkan 5e");
         await gameSettingRegister();
-        await initWarlockSpellSlot();
+        initWarlockSpellSlot();
         references();
         tools();
         conditions();
