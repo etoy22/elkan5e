@@ -1,15 +1,41 @@
 export function references() {
     try {
         skillsRef();
+    } catch (error) {
+        console.warn("Warning: skillsRef() failed:", error);
+    }
+
+    try {
         combatRef();
+    } catch (error) {
+        console.warn("Warning: combatRef() failed:", error);
+    }
+
+    try {
         conditionsRef();
+    } catch (error) {
+        console.warn("Warning: conditionsRef() failed:", error);
+    }
+
+    try {
         damageRef();
+    } catch (error) {
+        console.warn("Warning: damageRef() failed:", error);
+    }
+
+    try {
         spellCasting();
+    } catch (error) {
+        console.warn("Warning: spellCasting() failed:", error);
+    }
+
+    try {
         creature();
     } catch (error) {
-        console.error("Error initializing references:", error);
+        console.warn("Warning: creature() failed:", error);
     }
 }
+
 
 export function creature() {
     try {
@@ -119,6 +145,7 @@ export function conditionsRef() {
     try {
         console.log("Elkan 5e  |  Initializing Condition References");
 
+        // Conditions with their journal entry page IDs
         const CONDITIONS = [
             { key: "blinded", id: "SXTqmewRrCwPS8yW" },
             { key: "charmed", id: "ieDILSkRbu9r8pmZ" },
@@ -137,6 +164,7 @@ export function conditionsRef() {
             { key: "exhaustion", id: "mPzXN6MW8L6ePFmq" }
         ];
 
+        // Cover references (also journal entry pages)
         const COVER_REFS = {
             cover: "d2hBqe6EYHX2mxKD",
             halfcover: "1BmTbnT3xDPqv9dq",
@@ -144,26 +172,56 @@ export function conditionsRef() {
             totalcover: "hY5s70xMeG5ISFUA"
         };
 
+        // Helper to create full journal entry reference string
+        function getJournalRef(id) {
+            return `Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.${id}`;
+        }
+
+        // Assign references to conditions in both conditionTypes and statusEffects
         CONDITIONS.forEach(({ key, id }) => {
-            const reference = `Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.${id}`;
-            CONFIG.statusEffects.find(effect => effect.id === "cursed").reference = `Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.Vpwu9GQC6HVNZFze`
-            CONFIG.DND5E.conditionTypes[key].reference = reference;
-            CONFIG.statusEffects.find(effect => effect.id === key).reference = reference;
+            const reference = getJournalRef(id);
+
+            if (CONFIG.DND5E?.conditionTypes?.[key]) {
+                CONFIG.DND5E.conditionTypes[key].reference = reference;
+            } else {
+                console.warn(`Condition key '${key}' missing in CONFIG.DND5E.conditionTypes`);
+            }
+
+            const effect = CONFIG.statusEffects.find(e => e.id === key);
+            if (effect) {
+                effect.reference = reference;
+            } else {
+                console.warn(`Effect with id '${key}' not found in CONFIG.statusEffects`);
+            }
         });
 
-        Object.entries(COVER_REFS).forEach(([key, id]) => {
-            CONFIG.DND5E.rules[key] = `Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.${id}`;
-        });
+        // Assign references for cover rules
+        if (CONFIG.DND5E?.rules) {
+            Object.entries(COVER_REFS).forEach(([key, id]) => {
+                CONFIG.DND5E.rules[key] = getJournalRef(id);
+            });
 
-        CONFIG.DND5E.rules["obscured"] = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.FuFWdz6zw9P9VrON"
+            // Additional special rules references
+            CONFIG.DND5E.rules.obscured = getJournalRef("FuFWdz6zw9P9VrON");
+            CONFIG.DND5E.rules.concentrating = getJournalRef("4ZOHN6tGvj54J6Kv");
+            CONFIG.DND5E.rules.surprise = getJournalRef("QOZeW0m8RCdVg6UE");
+        } else {
+            console.warn("CONFIG.DND5E.rules is undefined");
+        }
 
-        // Concentration and surprise references
-        CONFIG.DND5E.rules.concentrating = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.4ZOHN6tGvj54J6Kv";
-        CONFIG.DND5E.rules.surprise = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.QOZeW0m8RCdVg6UE";
+        // Cursed effect (special case, not in CONDITIONS)
+        const cursedEffect = CONFIG.statusEffects.find(e => e.id === "cursed");
+        if (cursedEffect) {
+            cursedEffect.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.Vpwu9GQC6HVNZFze";
+        } else {
+            console.warn("Warning: 'cursed' effect not found in CONFIG.statusEffects");
+        }
+
     } catch (error) {
         console.error("Error initializing condition references:", error);
     }
 }
+
 
 export function damageRef() {
     try {
