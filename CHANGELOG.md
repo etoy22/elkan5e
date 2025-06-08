@@ -1,4 +1,85 @@
 # Changelog
+# v1.12.25
+## Bug Fixes
+- [Alter Self](https://www.elkan5e.com/spells/alter-self) active effect choice no longer appears twice  
+- [Healing Word](https://www.elkan5e.com/spells/healing-word) now works on Constructs  
+- Cover was previously listed twice under conditions — now fixed  
+- Celestial Warlock's Heavenly Aspect feature has been corrected  
+
+## Ancestry/Background
+- Flagged Soul Gem and Inorganic Form as Ancestry Features  
+- Dwarf darkvision increased to 120 ft.  
+- Large Frame renamed to Powerful Build  
+
+## Classes
+- Fixed the “Ability Score Improvement or feat” level-up logic — all feats now grant ASI benefits  
+
+**Barbarian**
+- Barbarian’s Defense moved to level 1  
+- Rage and Rumination moved to level 2  
+- Reckless Attack reverted to its original form  
+- Brutal Strike added at level 11  
+
+**Fighter**  
+- **Champion**  
+  - Fixed an issue where Improved Fighting Styles were not accessible at the correct level  
+
+**Monk**
+- Deflect Missiles reworked as Deflect Attacks: always costs 1 ki, reduces damage from all attacks, and allows redirection  
+- Diamond Soul renamed to Monk's Resilience  
+
+**Paladin**
+- Lay on Hands and Cleansing Touch are now bonus actions  
+- Removed Divine Health  
+
+**Ranger**
+- Unrelenting Focus now allows you to deal Mark for Death damage even when no mark is active  
+- Added Precise Hunter feature at level 17  
+
+**Rogue**
+- Sneak Attack and Precision Attack can now critically hit in the Foundry code  
+- **Mystic Trickster**  
+  - Updated Mystic-specific Precision Attacks to use the revised damage  
+
+**Sorcerer**
+- [Extended Spell](https://www.elkan5e.com/spells/extended-spell) now grants advantage on saves to maintain concentration on the affected spell  
+- [Accurate Spell](https://www.elkan5e.com/spells/accurate-spell) renamed to [Seeking Spell](https://www.elkan5e.com/spells/seeking-spell); now costs only 1 sorcery point  
+- [Careful Spell](https://www.elkan5e.com/spells/careful-spell) now prevents half damage, like Sculpt Spell  
+
+**Warlock**
+- Lowered level requirements for several invocations  
+- Contact Other Plane reworked as a 7th-level Warlock feature instead of a spell  
+- [One With Shadows](https://www.elkan5e.com/invocations/one-with-shadows) now allows movement  
+- [Witch Sight](https://www.elkan5e.com/invocations/witch-sight) now simply grants truesight  
+- [Gaze of Two Minds](https://www.elkan5e.com/invocations/gaze-of-two-minds) is no longer restricted by creature type, does not require an action to maintain, and lasts 1 hour  
+- [Fiendish Vigor](https://www.elkan5e.com/invocations/fiendish-vigor) is now decoupled from False Life and always grants 10 temporary hit points  
+- Added new invocation: [Gift of the Depths](https://www.elkan5e.com/invocations/gift-of-the-depths)  
+- Re-added [Lifedrinker](https://www.elkan5e.com/invocations/lifedrinker) at level 11, inspired by the 2024 rules — replaces the previous option  
+
+## Equipment
+- Unarmed Strikes are now always considered light — you can now punch with your off hand  
+
+## Feats
+- Replaced Crafter feat with [Multitalented](https://www.elkan5e.com/feats/multitalented), which allows choosing any tools or mounts  
+- Removed Combat Casting  
+- [Bodyblock](https://www.elkan5e.com/feats/bodyblock) reworked into a reaction that reduces a target’s speed to 0 upon approach  
+- [Enraged Presence](https://www.elkan5e.com/feats/enraged-presence) is now passive and always active  
+- [Enraged Prowess](https://www.elkan5e.com/feats/enraged-prowess) is now passive and always active  
+- Added features from 2024 Alert to [Danger Sense](https://www.elkan5e.com/feats/danger-sense)  
+- [Turn the Unholy](https://www.elkan5e.com/feats/turn-the-unholy) reworked to be less undead-specific and less debilitating  
+- [Master of Minor Magics](https://www.elkan5e.com/feats/master-of-minor-magics) has a larger list of possible spells and now allows casting them as a bonus action  
+
+## Game Rules
+- You no longer need a free hand for material components — it was too annoying, finicky, and required too many exceptions  
+- Incapacitated now prevents speech  
+- Added a rule for sign language and verbal components  
+- "Emanation" is now the standard term used for radii around a creature  
+
+## Spells
+- [Conjure Woodland Beings](https://www.elkan5e.com/spells/conjure-woodland-beings) now allows summoning plants  
+- [Lesser Restoration](https://www.elkan5e.com/spells/lesser-restoration) no longer removes disease  
+- [Phantom Steed](https://www.elkan5e.com/spells/phantom-steed) reverted to a 1-action casting time  
+
 # v1.12.24.1
 - Creature type references now work properly.
 
