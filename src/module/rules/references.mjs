@@ -33,7 +33,7 @@ export function creature() {
         };
 
         Object.entries(CREATURE_REFS).forEach(([key, id]) => {
-            CONFIG.DND5E.creatureTypes[key].reference = `Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.${id}`;
+            CONFIG.DND5E.creatureTypes[key].reference = `Compendium.elkan5e.elkan5e-rules.JournalEntry.ZJX2hgglCq6NyNSD.JournalEntryPage.${id}`;
         });
     } catch (error) {
         console.error("Error initializing creature references:", error);
