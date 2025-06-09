@@ -88,9 +88,11 @@ for folder_path in folder_paths:
 
             cut = []
             for p_start, p_end in Pcomb:
-                if not any(ul_start < p_start < ul_end and ul_start < p_end < ul_end for ul_start, ul_end in ULcomb):
-                    if not any(table_start < p_start < table_end and table_start < p_end < table_end for table_start, table_end in TableComb):
-                        cut.append((p_start, p_end))
+                if (
+                    not any(ul_start < p_start < ul_end and ul_start < p_end < ul_end for ul_start, ul_end in ULcomb)
+                    and not any(table_start < p_start < table_end and table_start < p_end < table_end for table_start, table_end in TableComb)
+                ):
+                    cut.append((p_start, p_end))
 
             cut.extend(ULcomb)
             cut.extend(TableComb)  # Include table sections
