@@ -1,6 +1,6 @@
 # Changelog
 
-# v1.12.25.1 
+# v1.12.25.1
 
 ## Spells
 
