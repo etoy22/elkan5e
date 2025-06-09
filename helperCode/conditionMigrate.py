@@ -51,11 +51,11 @@ for folder_path in folders:
     if not os.path.exists(folder_path):
         print(f"Folder does not exist: {folder_path}")
         continue
-    
+
     for filename in os.listdir(folder_path):
         if filename.endswith('.json'):
             file_path = os.path.join(folder_path, filename)
-            
+
             # Load the JSON file
             try:
                 with open(file_path, 'r', encoding='utf-8') as file:
@@ -63,7 +63,7 @@ for folder_path in folders:
             except Exception as e:
                 print(f"Error reading {file_path}: {e}")
                 continue
-            
+
             # Replace instances of "/icons/" with "/icons/conditions/"
             updated = False
             if isinstance(data, (dict, list)):  # Ensure data is a dict or list
@@ -84,6 +84,6 @@ for folder_path in folders:
                     with open(file_path, 'w', encoding='utf-8') as file:
                         json.dump(data, file, ensure_ascii=False, indent=4)
                     print(f"Updated file: {file_path}")
-                    
+
                 except Exception as e:
                     print(f"Error writing {file_path}: {e}")
