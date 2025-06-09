@@ -146,7 +146,7 @@ export function conditionsRef() {
 
         CONDITIONS.forEach(({ key, id }) => {
             const reference = `Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.${id}`;
-            CONFIG.statusEffects.find(effect => effect.id === "cursed").reference = `Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.Vpwu9GQC6HVNZFze`
+            CONFIG.statusEffects.find(effect => effect.id === "cursed").reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.Vpwu9GQC6HVNZFze"
             CONFIG.DND5E.conditionTypes[key].reference = reference;
             CONFIG.statusEffects.find(effect => effect.id === key).reference = reference;
         });
