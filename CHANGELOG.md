@@ -9,7 +9,7 @@
 
 ## Misc
 
-- Updated Summary of Changes 
+- Updated Summary of Changes
 
 # v1.12.25
 
