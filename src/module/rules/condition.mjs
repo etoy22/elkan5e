@@ -401,9 +401,9 @@ export function icons() {
         }
     });
 
-    CONFIG.statusEffects.find(effect => effect.id === "coverHalf").img = `modules/elkan5e/icons/conditions/cover-half.svg`;
-    CONFIG.statusEffects.find(effect => effect.id === "coverThreeQuarters").img = `modules/elkan5e/icons/conditions/cover-three-quarters.svg`;
-    CONFIG.statusEffects.find(effect => effect.id === "coverTotal").img = `modules/elkan5e/icons/conditions/cover-full.svg`;
+    CONFIG.statusEffects.find(effect => effect.id === "coverHalf").img = "modules/elkan5e/icons/conditions/cover-half.svg";
+    CONFIG.statusEffects.find(effect => effect.id === "coverThreeQuarters").img = "modules/elkan5e/icons/conditions/cover-three-quarters.svg";
+    CONFIG.statusEffects.find(effect => effect.id === "coverTotal").img = "modules/elkan5e/icons/conditions/cover-full.svg";
 
 
     // Removing Unused Conditions
