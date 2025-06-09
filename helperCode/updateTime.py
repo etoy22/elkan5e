@@ -11,7 +11,7 @@ def load_and_update_json(json_obj):
 
     with open("module.json", "r") as f:
         module_data = json.load(f)
-    
+
     json_obj["_stats"]["modifiedTime"] = int(time.time() * 1000)
     json_obj["_stats"]["lastModifiedBy"] = "code change"
     json_obj["_stats"]["coreVersion"] = module_data["compatibility"]["verified"]
