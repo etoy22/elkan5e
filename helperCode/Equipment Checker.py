@@ -23,7 +23,7 @@ for folder_path in folder_paths:
     for filename in os.listdir(folder_path):
         if filename.endswith('.json'):
             file_path = os.path.join(folder_path, filename)
-            
+
             # Load the original JSON file
             with open(file_path, 'r', encoding='utf-8') as file:
                 original_data = json.load(file)
@@ -82,7 +82,7 @@ for folder_path in folder_paths:
                         additionProperties.append("ada")
                     if data["system"]["properties"] == "mgc" or magicBonus != None:
                         additionProperties.append("mgc")
-                
+
                     ranged = False
                     # Takes the base item and assigns values to it based on that base item
                     match data["system"]["type"]["baseItem"]:
@@ -351,10 +351,10 @@ for folder_path in folder_paths:
                             data["system"]["properties"] = ["fin", "rch"]
                             weight = 3
                             price = 5
-                    
+
                     # Add additional properties to data["system"]["properties"]
                     data["system"]["properties"].extend(additionProperties)
-                    
+
                     finPrice = 0
                     if not(ranged):
                         data["system"]["magicalBonus"] = magicBonus
@@ -398,26 +398,28 @@ for folder_path in folder_paths:
                         else:
                             finPrice = ((price * 10) + 350) * 4**(magicBonus-1)                        
                     data["system"]["price"]["value"] = finPrice
-                                 
-                if data["type"] == "consumable":
-                    if data["system"]["type"]["value"] == "ammo":
-                        match data["system"]["type"]["subtype"]:
-                            case "arrow":
-                                data["system"]["weight"] = 2 / 20
-                                data["system"]["price"]["value"] = 2 / 20
-                                data["system"]["quantity"] = 20
-                            case "blowgunNeedle":
-                                data["system"]["weight"] = 0.5 / 20
-                                data["system"]["price"]["value"] = 1 / 20
-                                data["system"]["quantity"] = 20
-                            case "crossbowBolt":
-                                data["system"]["weight"] = 1 / 20
-                                data["system"]["price"]["value"] = 2 / 20
-                                data["system"]["quantity"] = 20
-                            case "slingBullet":
-                                data["system"]["weight"] = 2 / 20
-                                data["system"]["price"]["value"] = 1 / 20
-                                data["system"]["quantity"] = 20
+
+                if (
+                    data["type"] == "consumable"
+                    and data["system"]["type"]["value"] == "ammo"
+                ):
+                    match data["system"]["type"]["subtype"]:
+                        case "arrow":
+                            data["system"]["weight"] = 2 / 20
+                            data["system"]["price"]["value"] = 2 / 20
+                            data["system"]["quantity"] = 20
+                        case "blowgunNeedle":
+                            data["system"]["weight"] = 0.5 / 20
+                            data["system"]["price"]["value"] = 1 / 20
+                            data["system"]["quantity"] = 20
+                        case "crossbowBolt":
+                            data["system"]["weight"] = 1 / 20
+                            data["system"]["price"]["value"] = 2 / 20
+                            data["system"]["quantity"] = 20
+                        case "slingBullet":
+                            data["system"]["weight"] = 2 / 20
+                            data["system"]["price"]["value"] = 1 / 20
+                            data["system"]["quantity"] = 20
 
             # Only update the file if the data has changed
             if data != original_data:
