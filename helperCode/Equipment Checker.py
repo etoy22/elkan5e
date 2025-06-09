@@ -399,25 +399,27 @@ for folder_path in folder_paths:
                             finPrice = ((price * 10) + 350) * 4**(magicBonus-1)                        
                     data["system"]["price"]["value"] = finPrice
 
-                if data["type"] == "consumable":
-                    if data["system"]["type"]["value"] == "ammo":
-                        match data["system"]["type"]["subtype"]:
-                            case "arrow":
-                                data["system"]["weight"] = 2 / 20
-                                data["system"]["price"]["value"] = 2 / 20
-                                data["system"]["quantity"] = 20
-                            case "blowgunNeedle":
-                                data["system"]["weight"] = 0.5 / 20
-                                data["system"]["price"]["value"] = 1 / 20
-                                data["system"]["quantity"] = 20
-                            case "crossbowBolt":
-                                data["system"]["weight"] = 1 / 20
-                                data["system"]["price"]["value"] = 2 / 20
-                                data["system"]["quantity"] = 20
-                            case "slingBullet":
-                                data["system"]["weight"] = 2 / 20
-                                data["system"]["price"]["value"] = 1 / 20
-                                data["system"]["quantity"] = 20
+                if (
+                    data["type"] == "consumable"
+                    and data["system"]["type"]["value"] == "ammo"
+                ):
+                    match data["system"]["type"]["subtype"]:
+                        case "arrow":
+                            data["system"]["weight"] = 2 / 20
+                            data["system"]["price"]["value"] = 2 / 20
+                            data["system"]["quantity"] = 20
+                        case "blowgunNeedle":
+                            data["system"]["weight"] = 0.5 / 20
+                            data["system"]["price"]["value"] = 1 / 20
+                            data["system"]["quantity"] = 20
+                        case "crossbowBolt":
+                            data["system"]["weight"] = 1 / 20
+                            data["system"]["price"]["value"] = 2 / 20
+                            data["system"]["quantity"] = 20
+                        case "slingBullet":
+                            data["system"]["weight"] = 2 / 20
+                            data["system"]["price"]["value"] = 1 / 20
+                            data["system"]["quantity"] = 20
 
             # Only update the file if the data has changed
             if data != original_data:
