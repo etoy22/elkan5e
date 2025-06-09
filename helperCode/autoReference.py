@@ -30,9 +30,7 @@ with open(log_file_path, 'w', encoding='utf-8') as log_file:
     log_file.write("Change Log:\n\n")
 
 def deduplicate_nested_lists(content):
-    """
-    Deduplicates nested <ul> structures in the given HTML content.
-    """
+    """Deduplicates nested <ul> structures in the given HTML content."""
     from bs4 import BeautifulSoup
 
     soup = BeautifulSoup(content, "html.parser")
