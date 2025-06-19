@@ -98,14 +98,21 @@ jobs:
         run: |
           zip -r module.zip . \
             -x "node_modules/**" \
+            -x "node_modules" \
             -x "helperCode/**" \
             -x "src/packs/**" \
+            -x "src/packs" \
             -x "packs/_source/**" \
+            -x "packs/_source" \
             -x "package.json" \
             -x "package-lock.json" \
             -x "jsconfig.json" \
             -x ".gitignore" \
-            -x ".gitattributes"
+            -x ".gitattributes" \
+            -x ".git" \
+            -x ".git/**" \
+
+
       - name: List zipped files
         run: unzip -l module.zip
 
@@ -213,7 +220,7 @@ jobs:
           PAYLOAD=$(jq -n \
             --arg title "Elkan 5e Release" \
             --arg version "$VERSION" \
-            --arg compatibility "Core: V$MINIMUM" \
+            --arg compatibility "Core: $MINIMUM" \
             --arg foundry_url "https://foundryvtt.com/packages/elkan5e" \
             --arg release_url "$REPO_URL/releases/tag/$VERSION" \
             --arg download_url "$REPO_URL/releases/download/$VERSION/module.zip" \
@@ -231,7 +238,11 @@ jobs:
             }]}')
 
           echo "$PAYLOAD"
-          echo "discord_payload=$PAYLOAD" >> $GITHUB_OUTPUT
+          # Use multiline output syntax for GitHub Actions
+          echo "discord_payload<<EOF" >> $GITHUB_OUTPUT
+          echo "$PAYLOAD" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
 
       - name: Post to Discord
         if: needs.version-check.outputs.test != 'true'
