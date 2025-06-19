@@ -37,10 +37,10 @@ try {
   });
 
   fs.writeFileSync(outputPath, formattedNotes.join('\n'), 'utf8');
-  console.log('Release notes written to release-notes.md');
+  console.error('Release notes written to release-notes.md');
 
 } catch (error) {
   console.warn(`Failed to extract release notes: ${error.message}`);
   fs.writeFileSync(outputPath, '', 'utf8');
-  console.log('Wrote blank release-notes.md instead.');
+  console.error('Wrote blank release-notes.md instead.');
 }
