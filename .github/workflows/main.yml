@@ -54,6 +54,12 @@ jobs:
           echo "Verified Compatibility: ${{ steps.get_version.outputs.verified }}"
           echo "Maximum Compatibility: ${{ steps.get_version.outputs.maximum }}"
 
+      - name: Exit if version check failed
+        if: steps.get_version.outputs.should_continue != 'true'
+        run: |
+          echo "::error::Version check failed or conditions not met. Stopping workflow."
+          exit 1
+
   extract-release-notes:
     runs-on: ubuntu-latest
     needs: version-check
@@ -182,7 +188,7 @@ jobs:
           echo "VERIFIED=$VERIFIED"
           echo "MAXIMUM=$MAXIMUM"
           echo "TEST=$TEST"
-
+          
   notify-discord:
     runs-on: ubuntu-latest
     needs: [version-check, extract-release-notes, build-and-pack, create-github-release]
