@@ -1,4 +1,4 @@
-const fs = require('fs');
+import fs from 'fs';
 
 const filePath = 'CHANGELOG.md';
 const outputPath = 'release-notes.md';

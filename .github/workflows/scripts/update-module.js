@@ -1,4 +1,4 @@
-const fs = require('fs');
+import fs from 'fs';
 
 function updateModuleJson(version, compatibility) {
   const filePath = 'module.json';
