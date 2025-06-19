@@ -8,6 +8,7 @@ async function main() {
     const minimum = process.env.MINIMUM;
     const verified = process.env.VERIFIED;
     const maximum = process.env.MAXIMUM;
+    const test = process.env.TEST;
 
     if (!token) throw new Error('FOUNDRY_API_TOKEN not set');
     if (!repo) throw new Error('GITHUB_REPOSITORY not set');
@@ -35,8 +36,13 @@ async function main() {
       payload.release.compatibility.maximum = maximum;
     }
 
-    console.log("Sending payload to Foundry API:");
+    console.log("Payload to Foundry API:");
     console.log(JSON.stringify(payload, null, 2));
+
+    if (test === 'true' || test === '1') {
+      console.log("Test mode enabled - skipping Foundry API request.");
+      return;
+    }
 
     const response = await fetch('https://api.foundryvtt.com/_api/packages/release_version', {
       method: 'POST',
