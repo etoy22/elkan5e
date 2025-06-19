@@ -1,5 +1,5 @@
-const { execSync } = require("child_process");
-const fs = require("fs");
+import { execSync } from 'child_process';
+import fs from 'fs';
 
 function cleanVersion(ver) {
   return ver.replace(/[.\s-]+$/g, "");
