@@ -209,8 +209,8 @@ jobs:
           echo "$PAYLOAD"
           echo "discord_payload=$PAYLOAD" >> $GITHUB_OUTPUT
 
-        - name: Post to Discord
-          if: needs.version-check.outputs.test != 'true'
-          run: |
-            echo "Posting to Discord..."
-            curl -H "Content-Type: application/json" -X POST -d "${{ steps.prepare_discord_payload.outputs.discord_payload }}" $DISCORD_WEBHOOK
+      - name: Post to Discord
+        if: needs.version-check.outputs.test != 'true'
+        run: |
+          echo "Posting to Discord..."
+          curl -H "Content-Type: application/json" -X POST -d "${{ steps.prepare_discord_payload.outputs.discord_payload }}" $DISCORD_WEBHOOK
