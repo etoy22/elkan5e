@@ -1,53 +1,46 @@
 const fs = require('fs');
 
 const filePath = 'CHANGELOG.md';
+const outputPath = 'release-notes.md';
 
 try {
   const changelog = fs.readFileSync(filePath, 'utf8');
   const lines = changelog.split('\n');
 
-  // Find the start of the latest version section
   const startIndex = lines.findIndex((line) => line.startsWith('# v'));
-  if (startIndex === -1) {
-    throw new Error('No version section found in CHANGELOG.md');
-  }
+  if (startIndex === -1) throw new Error('No version section found.');
 
-  // Extract lines for the latest version
   const versionLines = lines.slice(startIndex + 1);
   const nextVersionIndex = versionLines.findIndex((line) => line.startsWith('# v'));
   const releaseNotes = nextVersionIndex !== -1 ? versionLines.slice(0, nextVersionIndex) : versionLines;
 
-  // Format the release notes
   const formattedNotes = [];
   let inClassesSection = false;
 
   releaseNotes.forEach((line) => {
     if (line.startsWith('## ')) {
-      // Convert headings to bold
       formattedNotes.push(`**${line.slice(3).trim()}**`);
       inClassesSection = line.toLowerCase().includes('classes');
     } else if (inClassesSection && line.startsWith('**[')) {
-      // Handle subheadings under "Classes" (e.g., Monk, Sorcerer)
-      formattedNotes.push(`* ${line.slice(2,-3)}`);
+      formattedNotes.push(`* ${line.slice(2, -3)}`);
     } else if (inClassesSection && line.startsWith('  -')) {
-      // Indent nested list items under "Classes"
       formattedNotes.push(`  *${line.trim().slice(1)}`);
     } else if (inClassesSection && line.startsWith('-')) {
-      // Handle nested list items under subheadings in "Classes"
       formattedNotes.push(`  *${line.trim().slice(1)}`);
     } else if (line.startsWith('-')) {
-      // Replace list items with *
       formattedNotes.push(`*${line.slice(1)}`);
     } else if (line.trim() === '') {
-      // Preserve empty lines
       formattedNotes.push('');
     } else {
       formattedNotes.push(line);
     }
   });
 
-  console.log(formattedNotes.join('\n'));
+  fs.writeFileSync(outputPath, formattedNotes.join('\n'), 'utf8');
+  console.log('Release notes written to release-notes.md');
+
 } catch (error) {
-  console.error('Error reading or processing the file:', error.message);
-  process.exit(1);
+  console.warn(`Failed to extract release notes: ${error.message}`);
+  fs.writeFileSync(outputPath, '', 'utf8');
+  console.log('Wrote blank release-notes.md instead.');
 }

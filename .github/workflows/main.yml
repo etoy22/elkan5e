@@ -1,121 +1,198 @@
-name: Module Builder
+name: Release Build
 
 on:
   push:
     branches:
       - main
-    paths-ignore:
-      - '.gitattributes'
-      - '.gitignore'
-      - '/src/packs/**'
-      - 'helperCode/**'
-      - 'package-lock.json'
-      - 'package.json'
-      - 'release_notes.txt'
-    
+      - '**'  # all branches to catch test cases
+  workflow_dispatch:
+
 jobs:
-  build:
-    if: github.ref == 'refs/heads/main'
+  version-check:
     runs-on: ubuntu-latest
     outputs:
-      release-notes: ${{ steps.set-release-notes-github.outputs.release-notes }}
+      version: ${{ steps.get_version.outputs.version }}
+      should_continue: ${{ steps.get_version.outputs.should_continue }}
+      test: ${{ steps.get_version.outputs.test }}
+      prerelease: ${{ steps.get_version.outputs.prerelease }}
+      minimum: ${{ steps.get_version.outputs.minimum }}
+      verified: ${{ steps.get_version.outputs.verified }}
+      maximum: ${{ steps.get_version.outputs.maximum }}
     steps:
       - uses: actions/checkout@v4
 
-      - name: Get Version from Commit Message
-        id: get-version
+      - id: get_version
+        name: Run get-version-info script
         run: |
-          version=$(git log -1 --pretty=%B | grep -o -E '[v]?[0-9]+\.[0-9]+\.[0-9]+(\.[0-9]+)?' | sed 's/^v//')
-          echo "version=$version" >> $GITHUB_ENV
-          echo "::set-output name=version::$version"
-          echo "Extracted version: $version"
+          node .github/workflows/scripts/get-version-info.js > version-info.json
+          cat version-info.json
 
-      - name: Get System Version from module.json
-        id: get-system
+          version=$(jq -r '.version' version-info.json)
+          should_continue=$(jq -r '.should_continue' version-info.json)
+          test=$(jq -r '.test' version-info.json)
+          prerelease=$(jq -r '.prerelease' version-info.json)
+          minimum=$(jq -r '.compatibility.minimum // empty' version-info.json)
+          verified=$(jq -r '.compatibility.verified // empty' version-info.json)
+          maximum=$(jq -r '.compatibility.maximum // empty' version-info.json)
+
+          echo "version=$version" >> $GITHUB_OUTPUT
+          echo "should_continue=$should_continue" >> $GITHUB_OUTPUT
+          echo "test=$test" >> $GITHUB_OUTPUT
+          echo "prerelease=$prerelease" >> $GITHUB_OUTPUT
+          echo "minimum=$minimum" >> $GITHUB_OUTPUT
+          echo "verified=$verified" >> $GITHUB_OUTPUT
+          echo "maximum=$maximum" >> $GITHUB_OUTPUT
+
+      - name: Exit if version check failed
+        if: steps.get_version.outputs.should_continue != 'true'
         run: |
-          system_version=$(node .github/workflows/get-system.js)
-          echo "system_version=$system_version" >> $GITHUB_ENV
-          echo "Extracted system version: $system_version"
-      
+          echo "::error::Version check failed or conditions not met. Stopping workflow."
+          exit 1
 
-      - name: Update module.json with Version
-        run: node .github/workflows/update-module.js "v${{ steps.get-version.outputs.version }}"
+  extract-release-notes:
+    runs-on: ubuntu-latest
+    needs: version-check
+    if: (github.ref == 'refs/heads/main' || needs.version-check.outputs.test == 'true') && needs.version-check.outputs.should_continue == 'true'
+    steps:
+      - uses: actions/checkout@v4
 
-      - name: Zip Files
-        working-directory: ./ 
+      - name: Extract release notes from CHANGELOG.md
         run: |
-          zip -r ./module.zip ./ -x "README.md" "CHANGELOG.md" "LICENSE.md" "TODO.md" ".gitattributes" ".gitignore"
+          node .github/workflows/scripts/extract-release-notes.js > release-notes.md
 
-      - name: Create Release
-        id: create-release
+      - name: Upload release notes artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: release-notes
+          path: release-notes.md
+
+  build-and-pack:
+    runs-on: ubuntu-latest
+    needs: version-check
+    if: (github.ref == 'refs/heads/main' || needs.version-check.outputs.test == 'true') && needs.version-check.outputs.should_continue == 'true'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Update module.json version and compatibility
+        run: |
+          node .github/workflows/scripts/update-module.js \
+            "${{ needs.version-check.outputs.version }}" \
+            "${{ needs.version-check.outputs.minimum }}" \
+            "${{ needs.version-check.outputs.verified }}" \
+            "${{ needs.version-check.outputs.maximum }}"
+
+      - name: Run pack script
+        run: npm run pack
+
+      - name: Zip module for release
+        run: |
+          zip -r module.zip . \
+            -x "node_modules/**" \
+            -x "helperCode/**" \
+            -x "src/packs/**" \
+            -x "packs/_source/**" \
+            -x "package.json" \
+            -x "package-lock.json" \
+            -x "jsconfig.json" \
+            -x ".gitignore" \
+            -x ".gitattributes"
+
+  create-github-release:
+    runs-on: ubuntu-latest
+    needs: [version-check, extract-release-notes, build-and-pack]
+    if: (github.ref == 'refs/heads/main' || needs.version-check.outputs.test == 'true') && needs.version-check.outputs.should_continue == 'true' && needs.version-check.outputs.test != 'true' && needs.build-and-pack.result == 'success'
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Download release notes artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: release-notes
+          path: .
+
+      - name: Read release notes content
+        id: read_release_notes
+        run: |
+          echo "release_notes<<EOF" >> $GITHUB_OUTPUT
+          cat release-notes.md >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Create GitHub Release
         uses: ncipollo/release-action@v1
         with:
           allowUpdates: true
-          name: "v${{ steps.get-version.outputs.version }}"
+          name: "${{ needs.version-check.outputs.version }}"
           draft: false
-          prerelease: false
-          body: ${{ steps.set-release-notes-github.outputs.release-notes }}
+          prerelease: ${{ needs.version-check.outputs.prerelease }}
+          body: ${{ steps.read_release_notes.outputs.release_notes }}
           token: ${{ secrets.GITHUB_TOKEN }}
-          artifacts: './module.zip, ./module.json'
-          tag: "v${{ steps.get-version.outputs.version }}"
+          artifacts: |
+            ./module.zip
+            ./module.json
+          tag: "${{ needs.version-check.outputs.version }}"
 
+  release-foundry-package:
+    runs-on: ubuntu-latest
+    needs: [version-check, create-github-release]
+    if: (github.ref == 'refs/heads/main' || needs.version-check.outputs.test == 'true') && needs.version-check.outputs.should_continue == 'true' && needs.version-check.outputs.test != 'true' && needs.create-github-release.result == 'success'
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install node dependencies
+        run: npm install node-fetch@2
 
       - name: Release Foundry Package
-        run: |
-          REPO_URL="https://github.com/${GITHUB_REPOSITORY}"
-          curl -X POST "https://api.foundryvtt.com/_api/packages/release_version" \
-          -H "Content-Type: application/json" \
-          -H "Authorization: ${{ secrets.FOUNDRY_API_TOKEN }}" \
-          -d '{
-            "id": "'"elkan5e"'",
-            "release": {
-              "version": "'"v${{ steps.get-version.outputs.version }}"'",
-              "manifest": "'"${REPO_URL}/releases/latest/download/module.json"'",
-              "download": "'"${REPO_URL}/releases/download/v${{ steps.get-version.outputs.version }}/module.zip"'",
-              "notes": "'"${REPO_URL}/releases/tag/v${{ steps.get-version.outputs.version }}"'",
-              "compatibility": {
-                "minimum": "'"12"'",
-                "verified": "'"12.331"'"
-              }
-            }
-          }'
-
-      - name: Set Release Notes from CHANGELOG.md
-        id: set-release-notes
-        run: |
-          release_notes=$(node .github/workflows/extract-release-notes.js CHANGELOG.md)
-          sanitized_release_notes=$(echo "$release_notes" | sed 's/"/\\"/g' | sed "s/'/\\'/g")
-          echo "release_notes=$sanitized_release_notes" >> $GITHUB_ENV
-          echo "release_notes=$sanitized_release_notes" >> $GITHUB_OUTPUT
-        
-      - name: Post to Discord
         env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          FOUNDRY_API_TOKEN: ${{ secrets.FOUNDRY_API_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          VERSION: ${{ needs.version-check.outputs.version }}
+          MINIMUM: ${{ needs.version-check.outputs.minimum }}
+          VERIFIED: ${{ needs.version-check.outputs.verified }}
+          MAXIMUM: ${{ needs.version-check.outputs.maximum }}
+        run: node .github/workflows/scripts/release-foundry.js
+
+  notify-discord:
+    runs-on: ubuntu-latest
+    needs: [version-check, extract-release-notes, build-and-pack, create-github-release]
+    if: (github.ref == 'refs/heads/main' || needs.version-check.outputs.test == 'true') &&
+        needs.version-check.outputs.should_continue == 'true' &&
+        needs.version-check.outputs.test != 'true' &&
+        needs.create-github-release.result == 'success'
+    env:
+      DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+      VERSION: ${{ needs.version-check.outputs.version }}
+      MINIMUM: ${{ needs.version-check.outputs.minimum }}
+    steps:
+      - name: Download release notes artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: release-notes
+          path: .
+
+      - name: Notify Discord of Release
         run: |
           REPO_URL="https://github.com/${GITHUB_REPOSITORY}"
-          VERSION="v${{ steps.get-version.outputs.version }}"
-          SYSTEM_VERSION="${{ steps.get-system.outputs.system_version }}"
-          RELEASE_NOTES="${{ steps.format-release-notes-discord.outputs.release-notes-discord }}"
+          SYSTEM_VERSION="4.3.0"  # Replace with dynamic if available
+          RELEASE_NOTES=$(sed 's/"/\\"/g' release-notes.md | sed ':a;N;$!ba;s/\n/\\n/g')
 
-          # Format the release notes to handle newlines correctly
-          echo "Original release notes: $RELEASE_NOTES"
-          CLEAN_RELEASE_NOTES=$(echo -e "$RELEASE_NOTES")
-          echo "Cleaned release notes: $CLEAN_RELEASE_NOTES"
-          
-          # Create JSON payload with fields for version, links, and release notes
           JSON_PAYLOAD=$(jq -n \
             --arg title "Elkan 5e Release" \
-            --arg version "$VERSION" \
+            --arg version "${VERSION}" \
             --arg system_version "$SYSTEM_VERSION" \
+            --arg minimum "$MINIMUM" \
             --arg foundry_url "https://foundryvtt.com/packages/elkan5e" \
-            --arg release_url "$REPO_URL/releases/tag/$VERSION/module.json" \
-            --arg download_url "$REPO_URL/releases/tag/$VERSION/module.zip" \
-            --arg release_notes "$CLEAN_RELEASE_NOTES" \
+            --arg release_url "$REPO_URL/releases/tag/${VERSION}" \
+            --arg download_url "$REPO_URL/releases/download/${VERSION}/module.zip" \
+            --arg release_notes "$RELEASE_NOTES" \
             '{embeds: [{
               title: $title,
               fields: [
                 {name: "Version", value: $version, inline: true},
-                {name: "Compatibility", value: ("Core: V12.331, System: " + $system_version + "+"), inline: true},
+                {name: "Compatibility", value: ("Core: " + $minimum + ", System: " + $system_version + "+"), inline: true},
                 {name: "Foundry Package", value: $foundry_url, inline: false},
                 {name: "Release Tag", value: $release_url, inline: false},
                 {name: "Manual Download", value: $download_url, inline: false},
@@ -123,10 +200,4 @@ jobs:
               ]
             }]}')
 
-          # Print JSON payload to verify
-          echo "JSON Payload: $JSON_PAYLOAD"
-
-          # Post to Discord
-          curl -H "Content-Type: application/json" \
-               -d "$JSON_PAYLOAD" \
-               $DISCORD_WEBHOOK
+          curl -H "Content-Type: application/json" -d "$JSON_PAYLOAD" "$DISCORD_WEBHOOK"
