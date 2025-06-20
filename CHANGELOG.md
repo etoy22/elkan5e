@@ -1,4 +1,11 @@
 # Changelog
+# v1.12.25.1
+## Spells
+- Lesser Restoration now removes weakened
+- Reworked Dispel Evil and Good as Break Enchantment
+## Misc
+- Updated Summary of Changes
+
 # v1.12.25
 ## Bug Fixes
 - [Alter Self](https://www.elkan5e.com/spells/alter-self) active effect choice no longer appears twice  
