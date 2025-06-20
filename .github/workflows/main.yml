@@ -54,10 +54,16 @@ jobs:
           echo "Verified Compatibility: ${{ steps.get_version.outputs.verified }}"
           echo "Maximum Compatibility: ${{ steps.get_version.outputs.maximum }}"
 
-      - name: Exit if version check failed
+      - name: Exit if should_continue is not true
         if: steps.get_version.outputs.should_continue != 'true'
         run: |
-          echo "::error::Version check failed or conditions not met. Stopping workflow."
+          echo "should_continue is not 'true'. Exiting..."
+          exit 1
+
+      - name: Exit if test is false and branch is not main
+        if: steps.get_version.outputs.test == 'false' && github.ref != 'refs/heads/main'
+        run: |
+          echo "Test is false and branch is not main. Exiting..."
           exit 1
 
   extract-release-notes:
