@@ -1,0 +1,288 @@
+{
+	"name": "Static Charge (Air Savant)",
+	"type": "spell",
+	"img": "icons/magic/lightning/projectile-tendrils-teal.webp",
+	"effects": [
+		{
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.bMieP6ykkdm9Vp1x",
+			"duration": {
+				"rounds": null,
+				"startTime": null,
+				"seconds": 7,
+				"combat": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"disabled": false,
+			"_id": "IYgFd6lLaZ3A92Xu",
+			"changes": [
+				{
+					"key": "flags.midi-qol.disadvantage.skill.all",
+					"mode": 2,
+					"value": "1",
+					"priority": 20
+				}
+			],
+			"tint": "#ffffff",
+			"transfer": false,
+			"flags": {
+				"times-up": {
+					"isPassive": false
+				},
+				"dae": {
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"stackable": "none",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [
+						"turnEndSource",
+						"isSave",
+						"isSkill"
+					],
+					"disableIncapacitated": false,
+					"dontApply": false,
+					"showIcon": false,
+					"enableCondition": "",
+					"disableCondition": ""
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"radius": "undefined",
+					"alignment": "",
+					"type": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"nameOverride": "",
+					"customCheck": "",
+					"wallsBlock": "system"
+				}
+			},
+			"name": "Static Charge",
+			"description": "",
+			"statuses": [],
+			"img": "icons/magic/lightning/projectile-tendrils-teal.webp",
+			"type": "base",
+			"system": {},
+			"sort": 0,
+			"_key": "!items.effects!opsSo2C98pGkxitJ.IYgFd6lLaZ3A92Xu"
+		}
+	],
+	"flags": {
+		"midi-qol": {
+			"effectActivation": false,
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default",
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default"
+		},
+		"midiProperties": {
+			"nodam": true,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"noConcentrationCheck": false,
+			"confirmTargets": "default",
+			"saveDamage": "nodam",
+			"bonusSaveDamage": "default",
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"core": {},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>You hold out a small conductive metal rod , pointing at your target, concentrating static electricity around them.</em></p><p><strong>Constitution</strong> <strong>Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 1d8 lightning]] damage<strong>*</strong> and target has disadvantage on their next skill check or saving throw.</p></li><li><p><strong>Success:</strong> No Effect</p></li></ul><p></p><p><strong>*At Higher Levels:</strong> The spell's damage increases by 1d8 when you reach a total character or creature level of 5th level ([[/damage 2d8 lightning]]), 11th level ([[/damage 3d8 lightning]]), and 17th level ([[/damage 4d8 lightning]]).</p><p><em>Any creature touching your target is harmlessly shocked. At the GM's discretion, the target may not suffer disadvantage on a saving throw against electricity damage (due to lightning taking the path of least resistance).</em></p>",
+			"chat": "<p><strong>Constitution</strong> <strong>Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 1d8 lightning]] damage<strong>*</strong> and target has disadvantage on their next skill check or saving throw.</p></li><li><p><strong>Success:</strong> No Effect</p></li></ul><p></p><p><strong>*At Higher Levels:</strong> The spell's damage increases by 1d8 when you reach a total character or creature level of 5th level ([[/damage 2d8 lightning]]), 11th level ([[/damage 3d8 lightning]]), and 17th level ([[/damage 4d8 lightning]]).</p><p><em>Any creature touching your target is harmlessly shocked. At the GM's discretion, the target may not suffer disadvantage on a saving throw against electricity damage (due to lightning taking the path of least resistance).</em></p>"
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/static-charge",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "1",
+			"units": "round"
+		},
+		"target": {
+			"affects": {
+				"type": "creature",
+				"count": "1",
+				"choice": false,
+				"special": ""
+			},
+			"template": {
+				"units": "",
+				"contiguous": false,
+				"type": ""
+			}
+		},
+		"range": {
+			"value": "60",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 0,
+		"school": "evo",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "always",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"material",
+			"mgc"
+		],
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "IYgFd6lLaZ3A92Xu",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"onSave": "none",
+					"parts": [
+						{
+							"number": 1,
+							"denomination": 8,
+							"bonus": "",
+							"types": [
+								"lightning"
+							],
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"scaling": {
+								"mode": "whole",
+								"number": 1,
+								"formula": ""
+							}
+						}
+					],
+					"critical": {
+						"allow": false
+					}
+				},
+				"save": {
+					"ability": [
+						"con"
+					],
+					"dc": {
+						"calculation": "cha",
+						"formula": ""
+					}
+				},
+				"sort": 0,
+				"useConditionText": "",
+				"forceDialog": false,
+				"effectConditionText": "",
+				"midiAutomationOnly": false
+			}
+		},
+		"identifier": ""
+	},
+	"folder": "NfxMJJFyraG9EXbD",
+	"_id": "opsSo2C98pGkxitJ",
+	"_key": "!items!opsSo2C98pGkxitJ"
+}

@@ -1,0 +1,264 @@
+{
+	"folder": "SjVk5lAwzIpqSBbH",
+	"name": "Lapidate",
+	"type": "spell",
+	"_id": "MCkk4j7jTPlTmguW",
+	"img": "icons/weapons/thrown/bolas-stone.webp",
+	"system": {
+		"description": {
+			"value": "<p><em>You pick up an object or a small creature. You shake it, saying a few words to animate it, and then throw it at your target. Your magic aids your aim and allows you to strike with unnatural force.</em></p><p><strong>Ranged Spell Attack</strong> </p><p>You pick up a small object or a creature you are &amp;reference[grappled]{grappling} which is at least two sizes smaller than you. You throw it at a creature or location up to 60 ft. away.</p><ul><li><p><strong>Hit:</strong> Target takes [[/damage 1d8 bludgeoning]] damage* and the thrown object or creature takes the same damage.</p></li><li><p><strong>Miss:</strong> Thrown object or creatures takes [[/damage 1d8 bludgeoning]] damage*.</p><p></p></li></ul><p><strong>*Using Higher Level Spell Slots:</strong> This spell's damage increases by [[/damage 1d8 bludgeoning]]{1d8} when you reach a total character or creature level of 5th level ([[/damage 2d8 bludgeoning]]), 11th level ([[/damage 3d8 bludgeoning]]), and 17th level ([[/damage 4d8 bludgeoning]]).</p><p></p><p><em>An object or creature thrown by this spell does not take damage from falling, as the spell magically throttles the speed to the same speed constantly. If a creature is thrown 60 ft. into the air and then falls, they take this spell's damage when they hit the ground and no falling damage.</em></p>",
+			"chat": "<strong>Ranged Spell Attack</strong> </p><p>You pick up a small object or a creature you are &amp;reference[grappled]{grappling} which is at least two sizes smaller than you. You throw it at a creature or location up to 60 ft. away.</p><ul><li><p><strong>Hit:</strong> Target takes [[/damage 1d8 bludgeoning]] damage* and the thrown object or creature takes the same damage.</p></li><li><p><strong>Miss:</strong> Thrown object or creatures takes [[/damage 1d8 bludgeoning]] damage*.</p><p></p></li></ul><p><strong>*Using Higher Level Spell Slots:</strong> This spell's damage increases by [[/damage 1d8 bludgeoning]]{1d8} when you reach a total character or creature level of 5th level ([[/damage 2d8 bludgeoning]]), 11th level ([[/damage 3d8 bludgeoning]]), and 17th level ([[/damage 4d8 bludgeoning]]).</p><p></p>"
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/lapidate",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "",
+			"units": "inst"
+		},
+		"target": {
+			"affects": {
+				"special": "",
+				"type": "creature",
+				"count": "1",
+				"choice": false
+			},
+			"template": {
+				"type": "",
+				"units": "",
+				"contiguous": false
+			}
+		},
+		"range": {
+			"value": "90",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"spent": 0,
+			"recovery": []
+		},
+		"level": 0,
+		"school": "trs",
+		"properties": [
+			"vocal",
+			"somatic",
+			"material"
+		],
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "always",
+			"prepared": true
+		},
+		"activities": {
+			"NkMXDx3ZZEvHXgLt": {
+				"type": "attack",
+				"_id": "NkMXDx3ZZEvHXgLt",
+				"sort": 0,
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"attack": {
+					"critical": {
+						"threshold": null
+					},
+					"flat": false,
+					"type": {
+						"value": "ranged",
+						"classification": ""
+					},
+					"ability": "",
+					"bonus": ""
+				},
+				"damage": {
+					"critical": {
+						"bonus": ""
+					},
+					"includeBase": true,
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 1,
+							"denomination": "8",
+							"bonus": "",
+							"types": [
+								"bludgeoning"
+							],
+							"scaling": {
+								"mode": "whole",
+								"number": 1,
+								"formula": ""
+							}
+						}
+					]
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": [],
+				"attackMode": "",
+				"otherActivityId": "none"
+			},
+			"4iFrocvi1aDV22ys": {
+				"type": "damage",
+				"name": "To Creature or Object Thrown",
+				"_id": "4iFrocvi1aDV22ys",
+				"sort": 0,
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"critical": {
+						"allow": false
+					},
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 1,
+							"denomination": 8,
+							"bonus": "",
+							"types": [
+								"bludgeoning"
+							],
+							"scaling": {
+								"mode": "whole",
+								"number": 1
+							}
+						}
+					]
+				},
+				"img": "",
+				"appliedEffects": []
+			}
+		},
+		"identifier": ""
+	},
+	"effects": [],
+	"flags": {
+		"midi-qol": {
+			"fumbleThreshold": null,
+			"rollAttackPerTarget": "default",
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"otherCondition": ""
+		},
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"_key": "!items!MCkk4j7jTPlTmguW"
+}

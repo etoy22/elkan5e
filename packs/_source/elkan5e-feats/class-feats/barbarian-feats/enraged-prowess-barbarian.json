@@ -1,0 +1,193 @@
+{
+	"folder": "jSMGyrsU3dTiqyte",
+	"name": "Enraged Prowess (Barbarian)",
+	"type": "feat",
+	"_id": "aQ4pPCbaacN9P4yl",
+	"img": "icons/magic/control/buff-strength-muscle-damage-orange.webp",
+	"system": {
+		"description": {
+			"value": "<p><em>You can easily put your body into overdrive.</em> </p><ul><li><p>You add your rage bonus to your &amp;reference[acrobatics], &amp;reference[athletics], &amp;reference[sleight of hand], and &amp;reference[stealth] checks.</p></li></ul>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/feats/enraged-prowess",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"type": {
+			"value": "feat",
+			"subtype": ""
+		},
+		"properties": [],
+		"requirements": "Feat (Barbarian Level 4)",
+		"prerequisites": {
+			"level": 4
+		},
+		"activities": {},
+		"identifier": "",
+		"enchant": {},
+		"advancement": [
+			{
+				"_id": "aC5HuW1uXBe16dL0",
+				"type": "AbilityScoreImprovement",
+				"configuration": {
+					"cap": 2,
+					"fixed": {
+						"str": 0,
+						"dex": 0,
+						"con": 0,
+						"int": 0,
+						"wis": 0,
+						"cha": 0
+					},
+					"locked": [],
+					"points": 2
+				},
+				"value": {
+					"type": "asi"
+				},
+				"level": 0,
+				"title": "",
+				"hint": ""
+			}
+		]
+	},
+	"effects": [
+		{
+			"name": "Enraged Prowess",
+			"changes": [
+				{
+					"key": "system.skills.acr.bonuses.check",
+					"mode": 2,
+					"value": "+@scale.barbarian.rage-bonus",
+					"priority": 20
+				},
+				{
+					"key": "system.skills.ath.bonuses.check",
+					"mode": 2,
+					"value": "+@scale.barbarian.rage-bonus",
+					"priority": 20
+				},
+				{
+					"key": "system.skills.slt.value",
+					"mode": 2,
+					"value": "0",
+					"priority": 20
+				},
+				{
+					"key": "system.skills.ste.bonuses.check",
+					"mode": 2,
+					"value": "+@scale.barbarian.rage-bonus",
+					"priority": 20
+				}
+			],
+			"transfer": false,
+			"_id": "LG9bryVjKzfmGwYV",
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": null,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"origin": "Compendium.elkan5e.elkan5e-feats.Item.aQ4pPCbaacN9P4yl",
+			"statuses": [],
+			"flags": {
+				"dae": {
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"enableCondition": "",
+					"disableCondition": ""
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				},
+				"core": {
+					"overlay": false
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				}
+			},
+			"tint": "#ffffff",
+			"img": "icons/magic/control/buff-strength-muscle-damage-orange.webp",
+			"type": "base",
+			"system": {},
+			"sort": 0,
+			"_key": "!items.effects!aQ4pPCbaacN9P4yl.LG9bryVjKzfmGwYV"
+		}
+	],
+	"flags": {
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"_key": "!items!aQ4pPCbaacN9P4yl"
+}

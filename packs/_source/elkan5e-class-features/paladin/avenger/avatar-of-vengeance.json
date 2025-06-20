@@ -1,0 +1,270 @@
+{
+	"folder": "LPkxlapT1hK0gA3h",
+	"name": "Avatar of Vengeance",
+	"type": "feat",
+	"_id": "fliH2ub4KtFOh0KU",
+	"img": "icons/weapons/hammers/hammer-double-glowing-yellow.webp",
+	"system": {
+		"activities": {
+			"APFMkV05s4kdwmoj": {
+				"type": "utility",
+				"_id": "APFMkV05s4kdwmoj",
+				"sort": 0,
+				"activation": {
+					"type": "bonus",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": ""
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "minute",
+					"concentration": false,
+					"override": false,
+					"value": "1"
+				},
+				"effects": [
+					{
+						"_id": "eLYt4ftuIMZJjeZ1"
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"type": "self",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"forceDialog": false,
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"eLYt4ftuIMZJjeZ1"
+				]
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [
+				{
+					"period": "lr",
+					"type": "recoverAll"
+				}
+			],
+			"max": "1"
+		},
+		"description": {
+			"value": "<p><em>You transform into a glowing paragon of light and fury.</em></p><p><strong>Bonus Action</strong> - Self - 1 Minute - 1/Long Rest - Magical</p><ul><li><p>You deal an additional [[/damage 2d8 radiant]] damage with every weapon attack.</p></li><li><p>While active, you can use @UUID[Compendium.elkan5e.elkan5e-class-features.Item.MUXZKqXOk5k1w8pS]{Commanding Challenge} or @UUID[Compendium.elkan5e.elkan5e-class-features.Item.wjflquP9J7ItZqny]{Avenger's Leap} without consuming a use of the ability.</p></li></ul>",
+			"chat": ""
+		},
+		"identifier": "",
+		"source": {
+			"revision": 1,
+			"rules": "2024",
+			"book": "",
+			"page": "",
+			"custom": "elkan5e.com/paladin",
+			"license": ""
+		},
+		"advancement": [],
+		"cover": null,
+		"crewed": false,
+		"enchant": {},
+		"prerequisites": {
+			"level": null,
+			"repeatable": false
+		},
+		"properties": [],
+		"requirements": "Avenger 20",
+		"type": {
+			"value": "",
+			"subtype": ""
+		}
+	},
+	"effects": [
+		{
+			"name": "Avatar of Vengeance",
+			"img": "icons/weapons/hammers/hammer-double-glowing-yellow.webp",
+			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.fliH2ub4KtFOh0KU",
+			"transfer": false,
+			"_id": "eLYt4ftuIMZJjeZ1",
+			"type": "base",
+			"system": {},
+			"changes": [
+				{
+					"key": "system.bonuses.mwak.damage",
+					"mode": 2,
+					"value": "+2d8[Radiant]",
+					"priority": 20
+				},
+				{
+					"key": "system.bonuses.rwak.damage",
+					"mode": 2,
+					"value": "+2d8[Radiant]",
+					"priority": 20
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 60,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [],
+			"sort": 0,
+			"flags": {
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "multi",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!fliH2ub4KtFOh0KU.eLYt4ftuIMZJjeZ1"
+		}
+	],
+	"flags": {
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": ""
+		},
+		"midiProperties": {
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false
+		}
+	},
+	"_key": "!items!fliH2ub4KtFOh0KU"
+}

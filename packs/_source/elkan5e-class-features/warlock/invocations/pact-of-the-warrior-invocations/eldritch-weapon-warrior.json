@@ -1,0 +1,242 @@
+{
+	"_id": "c1lEKIaiHk8rQNMa",
+	"name": "Eldritch Weapon (Warrior)",
+	"type": "feat",
+	"img": "icons/weapons/swords/sword-flanged-lightning.webp",
+	"effects": [
+		{
+			"name": "Eldritch Weapon",
+			"flags": {
+				"dnd5e": {
+					"enchantment": {
+						"level": {
+							"min": null,
+							"max": null
+						},
+						"riders": {
+							"effect": [],
+							"item": []
+						}
+					}
+				},
+				"dae": {
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"enableCondition": "",
+					"disableCondition": ""
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
+				},
+				"core": {
+					"overlay": false
+				}
+			},
+			"img": "icons/weapons/swords/sword-flanged-lightning.webp",
+			"_id": "czFyXyOuOG7GxWkV",
+			"type": "enchantment",
+			"system": {},
+			"changes": [
+				{
+					"key": "name",
+					"mode": 5,
+					"value": "Eldritch {}",
+					"priority": 15
+				},
+				{
+					"key": "system.ability",
+					"mode": 5,
+					"value": "cha",
+					"priority": 20
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": null,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"origin": null,
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [],
+			"sort": 0,
+			"_key": "!items.effects!c1lEKIaiHk8rQNMa.czFyXyOuOG7GxWkV"
+		}
+	],
+	"folder": "jI3cppxSTQdaGwta",
+	"flags": {
+		"core": {},
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><span>You can imbue weapons you wield with your magic, allowing you to draw on your magical power to fight, rather than physical ability. You can use your charisma ability for the attack and damage rolls of attacks using weapons with which you have proficiency.</span></p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/invocations/eldritch-weapon",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"type": {
+			"value": "class",
+			"subtype": "eldritchInvocation"
+		},
+		"requirements": "Warlock 2",
+		"properties": [
+			"mgc"
+		],
+		"prerequisites": {
+			"level": null
+		},
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "enchant",
+				"activation": {
+					"type": "",
+					"value": 0,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"units": "",
+					"special": "",
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "czFyXyOuOG7GxWkV",
+						"level": {
+							"min": null,
+							"max": null
+						},
+						"riders": {
+							"effect": [],
+							"item": [],
+							"activity": []
+						}
+					}
+				],
+				"range": {
+					"units": "",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": ""
+					},
+					"affects": {
+						"count": "",
+						"type": "",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"enchant": {
+					"identifier": "warlock"
+				},
+				"restrictions": {
+					"allowMagical": true,
+					"type": "weapon",
+					"categories": [],
+					"properties": []
+				},
+				"sort": 0
+			}
+		},
+		"identifier": "",
+		"enchant": {}
+	},
+	"_key": "!items!c1lEKIaiHk8rQNMa"
+}

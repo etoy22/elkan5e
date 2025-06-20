@@ -1,0 +1,202 @@
+{
+  "name": "Insect Plague",
+  "type": "spell",
+  "img": "icons/creatures/invertebrates/wasp-swarm-movement.webp",
+  "effects": [],
+  "folder": "PnZJTE6T4UQY81Pm",
+  "flags": {
+    "midi-qol": {
+      "onUseMacroName": "[postActiveEffects]AA ApplyEffectsToTemplate",
+      "effectActivation": false,
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "core": {},
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic",
+        "material",
+        "concentration"
+      ]
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>Scattering a bit of sugary food, you conjure swarming, biting locusts.</em></p><p><strong>Constitution Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d10 piercing]] damage.</p></li><li><p><strong>Success:</strong> Half damage.</p></li><li><p><strong>Area Hazard:</strong> The area is &amp;reference[obscuredlightly] and is &amp;reference[difficult terrain]. Targets roll a save when they enter or when they end their turn in the wall (but only once per turn).</p></li></ul><p></p><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d10 piercing]]{1d10} for each spell level above 5th.</p>",
+      "chat": "<p><strong>Constitution Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d10 piercing]] damage.</p></li><li><p><strong>Success:</strong> Half damage.</p></li><li><p><strong>Area Hazard:</strong> The area is &amp;reference[obscuredlightly] and is &amp;reference[difficult terrain]. Targets roll a save when they enter or when they end their turn in the wall (but only once per turn).</p></li></ul><p></p><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d10 piercing]]{1d10} for each spell level above 5th.</p>"
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/insect-plague",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "10",
+      "units": "minute"
+    },
+    "target": {
+      "affects": {
+        "choice": false,
+        "count": "",
+        "type": ""
+      },
+      "template": {
+        "units": "ft",
+        "type": "sphere",
+        "size": "20",
+        "contiguous": false,
+        "count": ""
+      }
+    },
+    "range": {
+      "value": "300",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 5,
+    "school": "con",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "concentration"
+    ],
+    "activities": {
+      "YOMXWZnGjTNoLP3h": {
+        "type": "save",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "number": 4,
+              "denomination": 10,
+              "bonus": "",
+              "types": [
+                "piercing"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "whole",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": "con",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": []
+        },
+        "sort": 0,
+        "_id": "YOMXWZnGjTNoLP3h"
+      }
+    },
+    "identifier": ""
+  },
+  "_id": "BKC4Pg549XFFbfA0",
+  "_key": "!items!BKC4Pg549XFFbfA0"
+}

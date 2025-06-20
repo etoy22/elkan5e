@@ -1,0 +1,256 @@
+{
+  "name": "Shadow Clone",
+  "type": "spell",
+  "img": "icons/creatures/magical/humanoid-silhouette-aliens-green.webp",
+  "system": {
+    "description": {
+      "value": "<p><em>You say your own name and scatter a pinch of ashes from burned clothing you once wore. The ashes float through the air and take on you your appearance, allowing you to act in two places at once.</em></p><p><strong>Summoning Spell</strong></p><p>Roll an illusion check for this spell.</p><ul><li><p>You create what an illusory clone of yourself.* Creatures can see ashes transform in the air into the clone, but can't easily tell the difference after it has formed. Touching the clone does not allow creatures to disbelieve it. Even if they disbelieve the illusion, they can interact with the clone and be affected by it.</p></li><li><p>Your clone shares your hit point total. If one of you is damaged, both are damaged. If you are both damaged by the same spell or effect, you roll two saves and take damage once (taking the higher damage total).</p></li><li><p>You and your clone share a turn. You each have your own movement, but you only have one action, bonus action, and reaction collectively. If one of you uses an action, the other cannot. You can use your clone's senses and can speak through your clone.</p></li><li><p>The clone shares your abilities, and statistics, including items. If one of you uses an ability, item, or casts a spell, you expend collectively lose the use, charge, or spell slot as applicable. If the clone drops an item or something they're carrying, the cloned item turns to ash.</p></li><li><p>You can perceive things using your clone's senses.</p></li><li><p>Your clone does not have a mind of their own, and cannot concentrate on a spell separately from you. If one or both of you are targeted by a mental effect, like or the &amp;reference[frightened] condition or the @UUID[Compendium.elkan5e.elkan5e-spells.Item.Y2SIRWjQ8Vv3oWQK]{Mind Blank} spell, both of you are affected as if a single target.</p></li><li><p>Generally, effects that target you or your clone do not affect the other. However, temporary hit points and changes to your hit point total will affect both of you simultaneously.</p></li><li><p>If you lose concentration on this spell or your clone becomes incapacitated, the clone and any duplicated items drop to the ground in a pile of ash.</p></li></ul><p></p><p>*<strong>Upcasting:</strong> Create an additional clone for every two spell levels above 4th.</p>",
+      "chat": "<p><strong>Summoning Spell</strong></p><p>Roll an illusion check for this spell.</p><ul><li><p>You create what an illusory clone of yourself.* Creatures can see ashes transform in the air into the clone, but can't easily tell the difference after it has formed. Touching the clone does not allow creatures to disbelieve it. Even if they disbelieve the illusion, they can interact with the clone and be affected by it.</p></li><li><p>Your clone shares your hit point total. If one of you is damaged, both are damaged. If you are both damaged by the same spell or effect, you roll two saves and take damage once (taking the higher damage total).</p></li><li><p>You and your clone share a turn. You each have your own movement, but you only have one action, bonus action, and reaction collectively. If one of you uses an action, the other cannot. You can use your clone's senses and can speak through your clone.</p></li><li><p>The clone shares your abilities, and statistics, including items. If one of you uses an ability, item, or casts a spell, you expend collectively lose the use, charge, or spell slot as applicable. If the clone drops an item or something they're carrying, the cloned item turns to ash.</p></li><li><p>Your clone does not have a mind of their own, and cannot concentrate on a spell separately from you. If one or both of you are targeted by a mental effect, like or the &amp;reference[frightened] condition or the @UUID[Compendium.elkan5e.elkan5e-spells.Item.Y2SIRWjQ8Vv3oWQK]{Mind Blank} spell, both of you are affected as if a single target.</p></li><li><p>Generally, effects that target you or your clone do not affect the other. However, temporary hit points and changes to your hit point total will affect both of you simultaneously.</p></li><li><p>If you lose concentration on this spell or your clone becomes incapacitated, the clone and any duplicated items drop to the ground in a pile of ash.</p></li></ul><p></p><p>*<strong>Upcasting:</strong> Create an additional clone for every two spell levels above 4th.</p>"
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/shadow-clone",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "bonus",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "10",
+      "units": "minute"
+    },
+    "target": {
+      "affects": {
+        "choice": false,
+        "count": "",
+        "type": ""
+      },
+      "template": {
+        "units": "",
+        "contiguous": false,
+        "type": ""
+      }
+    },
+    "range": {
+      "value": "30",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "level": 4,
+    "school": "ill",
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "concentration"
+    ],
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "utility",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": "To best approximate this spell in Foundry, we recommend dragging a second instance of the caster onto the board (possibly with a tint or other visual effect)."
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
+        },
+        "sort": 0,
+        "name": "Place Illusion",
+        "img": "",
+        "appliedEffects": []
+      },
+      "8aug8IwgRB9do3vG": {
+        "type": "attack",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": false,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "spec",
+          "concentration": false,
+          "override": true,
+          "special": ""
+        },
+        "effects": [],
+        "range": {
+          "override": true,
+          "units": "spec",
+          "special": ""
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "attack": {
+          "critical": {
+            "threshold": null
+          },
+          "flat": false,
+          "type": {
+            "value": "ranged",
+            "classification": ""
+          },
+          "ability": "",
+          "bonus": ""
+        },
+        "damage": {
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true,
+          "parts": []
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": ""
+        },
+        "attackMode": "",
+        "ammunition": "",
+        "otherActivityId": "Auto",
+        "otherActivityUuid": "",
+        "name": "Illusion Check",
+        "_id": "8aug8IwgRB9do3vG"
+      }
+    },
+    "identifier": ""
+  },
+  "effects": [],
+  "folder": "90eJtrVwLFIxcWJw",
+  "flags": {
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false,
+      "saveDamage": "default",
+      "bonusSaveDamage": "default"
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "otherCondition": "",
+      "fumbleThreshold": null
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "_id": "bVLJ0ANP3MIhT5np",
+  "_key": "!items!bVLJ0ANP3MIhT5np"
+}
