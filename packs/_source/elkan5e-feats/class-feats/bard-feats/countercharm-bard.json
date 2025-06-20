@@ -1,0 +1,285 @@
+{
+	"name": "Countercharm (Bard)",
+	"type": "feat",
+	"img": "icons/magic/life/heart-broken-red.webp",
+	"effects": [
+		{
+			"name": "Countercharm",
+			"origin": "Compendium.elkan5e.elkan5e-feats.Item.9dnjpqEg6ihL57Se",
+			"duration": {
+				"rounds": null,
+				"startTime": null,
+				"seconds": 7,
+				"combat": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"transfer": false,
+			"disabled": false,
+			"_id": "THTBZwB48tSSIQ5Q",
+			"changes": [
+				{
+					"key": "flags.midi-qol.grants.advantage.save.all",
+					"mode": 0,
+					"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"charmed\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"charmed\") || ef.name == 'Charmed' || ef.statuses?.has(\"frightened\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"frightened\") || ef.name == 'Frightened')",
+					"priority": 20
+				}
+			],
+			"description": "",
+			"statuses": [],
+			"flags": {
+				"times-up": {
+					"isPassive": false
+				},
+				"dae": {
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [
+						"turnEndSource"
+					],
+					"enableCondition": "",
+					"disableCondition": "",
+					"disableIncapacitated": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"core": {
+					"overlay": false
+				}
+			},
+			"tint": "#ffffff",
+			"img": "icons/magic/life/heart-broken-red.webp",
+			"type": "base",
+			"system": {},
+			"sort": 0,
+			"_key": "!items.effects!9dnjpqEg6ihL57Se.THTBZwB48tSSIQ5Q"
+		}
+	],
+	"folder": "D9wKSOgQ6ofmnwrR",
+	"flags": {
+		"core": {},
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><span><em>You start a performance, using musical notes or words of power to disrupt mind-influencing effects.</em></span></p><p><span><strong>Reaction</strong> </span>- 6 Creatures (60 ft.) - Magical</p><p>You expend a use of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh]{Bardic Inspiration} to use this ability.</p><p>You can use this ability when a creature is affected by the &amp;Reference[charmed]<span>, &amp;reference[confused], </span>&amp;Reference[frightened], or &amp;reference[goaded] conditions, or when one of those conditions forces a creature to do something or prevents them from doing something.</p><ul><li><p>If<span> the creature just failed a save against the condition, or would normally be able to roll another save to end the effect at the end of their turns (as with a dragon's @UUID[Compendium.elkan5e.elkan5e-creature-features.Item.75G0Pxl3HPWYmRYz]{Frightful Presence}), then you can immediately make a charisma save and add your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh]{bardic inspiration} die to your roll. If you succeed (with the same DC the target rolls against), the target(s) lose the listed conditions. You roll only once, affecting all targets and effects simultaneously.</span></p></li><li><p>A creature must be able to hear you to gain this benefit.</p></li></ul>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/feats/countercharm",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"uses": {
+			"max": "",
+			"spent": 0,
+			"recovery": []
+		},
+		"type": {
+			"value": "feat",
+			"subtype": ""
+		},
+		"requirements": "Feat (Bard Level 8)",
+		"prerequisites": {
+			"level": 8
+		},
+		"properties": [
+			"mgc"
+		],
+		"activities": {
+			"dnd5eactivity000": {
+				"name": "",
+				"img": "",
+				"activation": {
+					"type": "bonus"
+				},
+				"appliedEffects": [
+					"THTBZwB48tSSIQ5Q"
+				],
+				"consumption": {
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh",
+							"scaling": {}
+						}
+					]
+				},
+				"target": {
+					"affects": {
+						"type": "creature",
+						"count": "6"
+					}
+				}
+			},
+			"I2e3I5Nh0uwpQVoh": {
+				"type": "utility",
+				"_id": "I2e3I5Nh0uwpQVoh",
+				"sort": 0,
+				"activation": {
+					"type": "bonus",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh"
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "round",
+					"concentration": false,
+					"override": false,
+					"value": "1"
+				},
+				"effects": [
+					{
+						"_id": "THTBZwB48tSSIQ5Q"
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "ft",
+					"special": "",
+					"value": "60"
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "6",
+						"type": "creature",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"THTBZwB48tSSIQ5Q"
+				]
+			}
+		},
+		"identifier": "",
+		"enchant": {},
+		"advancement": [
+			{
+				"_id": "aC5HuW1uXBe16dL0",
+				"type": "AbilityScoreImprovement",
+				"configuration": {
+					"cap": 2,
+					"fixed": {
+						"str": 0,
+						"dex": 0,
+						"con": 0,
+						"int": 0,
+						"wis": 0,
+						"cha": 0
+					},
+					"locked": [],
+					"points": 2
+				},
+				"value": {
+					"type": "asi"
+				},
+				"level": 0,
+				"title": "",
+				"hint": ""
+			}
+		]
+	},
+	"_id": "9dnjpqEg6ihL57Se",
+	"_key": "!items!9dnjpqEg6ihL57Se"
+}

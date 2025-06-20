@@ -1,0 +1,158 @@
+{
+	"folder": "45nJjAnFwni76P4o",
+	"name": "Mastery of Soul",
+	"type": "feat",
+	"_id": "8KhA4zHjC79O8OXP",
+	"img": "icons/magic/life/heart-cross-strong-purple-orange.webp",
+	"system": {
+		"description": {
+			"value": "<p><strong>No Action Cost</strong> - Self or Graveguard (120 ft.) - 1 Minute - Magical</p><p>Whenever you cast a necromancy spell of 1st level or higher, you can give temporary hit points to either yourself or your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.cHeoheBxXYSmJfbv]{graveguard}. This temporarily revives your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.cHeoheBxXYSmJfbv]{graveguard} if they are dead. The temporary hit points equal three times the spell's level, to a maximum total of 15. These temporary hit points last for 1 minute.</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/wizard",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"type": {
+			"value": "",
+			"subtype": ""
+		},
+		"prerequisites": {
+			"level": null
+		},
+		"properties": [
+			"mgc"
+		],
+		"requirements": "Necromancer 10",
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "heal",
+				"activation": {
+					"type": "nocost",
+					"value": null,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": true,
+						"max": "5"
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "1",
+					"units": "minute",
+					"special": "",
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "self",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": ""
+					},
+					"affects": {
+						"count": "1",
+						"type": "creature",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"healing": {
+					"number": null,
+					"denomination": null,
+					"bonus": "",
+					"types": [
+						"temphp"
+					],
+					"custom": {
+						"enabled": true,
+						"formula": "3"
+					},
+					"scaling": {
+						"mode": "whole",
+						"number": null,
+						"formula": "3"
+					}
+				},
+				"sort": 0,
+				"name": "",
+				"img": "",
+				"appliedEffects": []
+			}
+		},
+		"identifier": "",
+		"enchant": {}
+	},
+	"effects": [],
+	"flags": {
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"removeAttackDamageButtons": "default",
+			"reactionCondition": "",
+			"otherCondition": ""
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"_key": "!items!8KhA4zHjC79O8OXP"
+}

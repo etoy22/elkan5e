@@ -1,0 +1,267 @@
+{
+	"folder": "VGAGvD4k9YHm9VSP",
+	"name": "Branding Smite",
+	"type": "spell",
+	"_id": "L6MgA7thuskmnw5q",
+	"img": "icons/weapons/axes/axe-broad-chipped-glow-yellow.webp",
+	"system": {
+		"description": {
+			"value": "<p>When you hit a creature with a weapon attack, you can expend a spell slot to deal &amp;reference[radiant] damage to the target, in addition to the weapon's damage.</p><ul><li><p><strong>On Hit:</strong> Target takes [[/damage 2d8 radiant]] damage.* The target becomes visible if it's &amp;reference[invisible], has its silhouette illuminated to shed dim light in a 5-foot radius, and can't become invisible for 1 minute.</p></li></ul><p></p><p><strong>*Using Higher Level Spell Slots:</strong> Damage increases by [[/r 1d8]] for each spell level above 1st.</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/paladin",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "nocost",
+			"condition": "",
+			"value": null
+		},
+		"duration": {
+			"value": "1",
+			"units": "minute"
+		},
+		"target": {
+			"affects": {
+				"type": "creature",
+				"count": "1",
+				"choice": false,
+				"special": ""
+			},
+			"template": {
+				"units": "ft",
+				"contiguous": false,
+				"type": ""
+			}
+		},
+		"range": {
+			"units": "self",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 1,
+		"school": "evo",
+		"properties": [],
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "always",
+			"prepared": true
+		},
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "damage",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "TXm0TI6R1uKL4SdQ"
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"critical": {
+						"allow": true,
+						"bonus": ""
+					},
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 2,
+							"denomination": 8,
+							"bonus": "",
+							"types": [
+								"radiant"
+							],
+							"scaling": {
+								"mode": "whole",
+								"number": 1,
+								"formula": ""
+							}
+						}
+					]
+				},
+				"sort": 0,
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"TXm0TI6R1uKL4SdQ"
+				]
+			}
+		},
+		"identifier": ""
+	},
+	"effects": [
+		{
+			"name": "Branding Smite",
+			"changes": [
+				{
+					"key": "macro.tokenMagic",
+					"mode": 0,
+					"value": "bevel",
+					"priority": 20
+				},
+				{
+					"key": "system.traits.ci.value",
+					"mode": 2,
+					"value": "invisible",
+					"priority": 20
+				},
+				{
+					"key": "ATL.light.dim",
+					"mode": 4,
+					"value": "5",
+					"priority": 20
+				}
+			],
+			"transfer": false,
+			"_id": "TXm0TI6R1uKL4SdQ",
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 60,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"origin": null,
+			"statuses": [],
+			"flags": {
+				"dae": {
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"enableCondition": "",
+					"disableCondition": ""
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
+				},
+				"core": {
+					"overlay": false
+				}
+			},
+			"tint": "#ffffff",
+			"img": "icons/weapons/axes/axe-broad-chipped-glow-yellow.webp",
+			"type": "base",
+			"system": {},
+			"sort": 0,
+			"_key": "!items.effects!L6MgA7thuskmnw5q.TXm0TI6R1uKL4SdQ"
+		}
+	],
+	"flags": {
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"removeAttackDamageButtons": "default",
+			"reactionCondition": "",
+			"otherCondition": ""
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"_key": "!items!L6MgA7thuskmnw5q"
+}

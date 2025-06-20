@@ -1,0 +1,273 @@
+{
+	"name": "Mage Armor",
+	"type": "spell",
+	"img": "icons/magic/defensive/shield-barrier-glowing-triangle-blue.webp",
+	"effects": [
+		{
+			"_id": "XRkvYT9cV0BX5oJc",
+			"flags": {
+				"dae": {
+					"transfer": false,
+					"stackable": "none",
+					"specialDuration": [],
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"dontApply": false,
+					"showIcon": false,
+					"enableCondition": "",
+					"disableCondition": ""
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"radius": "",
+					"aura": "None",
+					"alignment": "",
+					"type": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"displayTemp": false,
+					"nameOverride": "",
+					"customCheck": "",
+					"wallsBlock": "system"
+				},
+				"core": {
+					"overlay": false
+				}
+			},
+			"changes": [
+				{
+					"key": "system.attributes.ac.calc",
+					"mode": 5,
+					"value": "mage",
+					"priority": 5
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 28800,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"tint": "#ffffff",
+			"transfer": false,
+			"origin": null,
+			"name": "Mage Armor",
+			"description": "",
+			"statuses": [],
+			"img": "icons/magic/defensive/shield-barrier-glowing-triangle-blue.webp",
+			"type": "base",
+			"system": {},
+			"sort": 0,
+			"_key": "!items.effects!3fVnKST3p10nK5v1.XRkvYT9cV0BX5oJc"
+		}
+	],
+	"folder": "U0k4VGG6bziqf3oH",
+	"flags": {
+		"_sheetTab": {},
+		"dynamiceffects": {
+			"effects": [
+				{
+					"modSpecKey": "data.attributes.ac.value",
+					"value": "13 + @abilities.dex.mod",
+					"mode": "=",
+					"targetSpecific": false,
+					"id": 1,
+					"itemId": "KWepVspVtjeboJgf",
+					"active": true,
+					"_targets": []
+				}
+			],
+			"alwaysActive": false,
+			"equipActive": true
+		},
+		"dae": {
+			"activeEquipped": false,
+			"alwaysActive": false
+		},
+		"core": {},
+		"midi-qol": {
+			"onUseMacroName": "",
+			"effectActivation": false,
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default",
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default",
+			"removeAttackDamageButtons": "default"
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"autoSaveFriendly": false,
+			"noConcentrationCheck": false,
+			"confirmTargets": "default",
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic",
+				"material"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>You touch a creature who isn't wearing armor, and a protective magical force surrounds them, appearing as a glowing, translucent suit of padded or leather armor.</em></p><p><strong>Buff</strong> </p><p>The spell has no effect if the target is wearing armor or later puts on armor - the magical armor flickers and disappears.</p><ul><li><p>The target's AC becomes 13 + its Dexterity modifier if it wasn't already higher.</p></li></ul>",
+			"chat": "<p><strong>Buff</strong></p><p>The spell has no effect if the target is wearing armor or later puts on armor - the magical armor flickers and disappears.</p><ul><li><p>The target's AC becomes 13 + its Dexterity modifier if it wasn't already higher.</p></li></ul>"
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/mage-armor",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "8",
+			"units": "hour"
+		},
+		"target": {
+			"affects": {
+				"special": "",
+				"type": "creature",
+				"count": "1",
+				"choice": false
+			},
+			"template": {
+				"type": "",
+				"units": "",
+				"contiguous": false
+			}
+		},
+		"range": {
+			"units": "touch",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 1,
+		"school": "abj",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"material",
+			"mgc"
+		],
+		"activities": {
+			"KizNIN0vYpdGWcEh": {
+				"type": "utility",
+				"_id": "KizNIN0vYpdGWcEh",
+				"sort": 0,
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "XRkvYT9cV0BX5oJc"
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"XRkvYT9cV0BX5oJc"
+				]
+			}
+		},
+		"identifier": ""
+	},
+	"_id": "3fVnKST3p10nK5v1",
+	"_key": "!items!3fVnKST3p10nK5v1"
+}

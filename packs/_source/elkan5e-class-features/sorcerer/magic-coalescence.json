@@ -1,0 +1,170 @@
+{
+	"folder": "wX74aYJoyZutj6z4",
+	"name": "Magic Coalescence",
+	"type": "feat",
+	"_id": "4jOUDoUbmBgHsB0G",
+	"img": "icons/magic/water/projectiles-ice-explosion.webp",
+	"system": {
+		"description": {
+			"value": "<p><em>You pull on magic around you to restore your magical power.</em></p><p><strong>During a Short Rest</strong> - Self - 1/Long Rest - Magical</p><p>You regain a number of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.Ik6ei7V7ryr5XVoe]{sorcery points} equal to half your level (rounded down).</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/sorcerer",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"uses": {
+			"max": "1",
+			"recovery": [
+				{
+					"period": "lr",
+					"type": "recoverAll"
+				}
+			],
+			"spent": 0
+		},
+		"type": {
+			"value": "class",
+			"subtype": ""
+		},
+		"properties": [
+			"mgc"
+		],
+		"requirements": "Sorcerer 2",
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "utility",
+				"activation": {
+					"type": "shortrest",
+					"value": null,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "- floor(@classes.sorcerer.levels /2)",
+							"target": "Compendium.elkan5e.elkan5e-class-features.Item.Ik6ei7V7ryr5XVoe",
+							"scaling": {}
+						},
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "",
+							"scaling": {}
+						}
+					],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "",
+					"units": "inst",
+					"special": "",
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "self",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": "ft"
+					},
+					"affects": {
+						"count": "",
+						"type": "self",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"roll": {
+					"formula": "",
+					"name": "",
+					"prompt": false,
+					"visible": false
+				},
+				"sort": 0,
+				"name": "",
+				"img": "",
+				"appliedEffects": []
+			}
+		},
+		"identifier": "",
+		"enchant": {},
+		"prerequisites": {
+			"level": null
+		}
+	},
+	"effects": [],
+	"flags": {
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedUses": 1
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"effectCondition": "",
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"_key": "!items!4jOUDoUbmBgHsB0G"
+}
