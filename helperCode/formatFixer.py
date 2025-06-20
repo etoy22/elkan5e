@@ -43,6 +43,7 @@ def transform_value(value):
     simplified = simplify_html(value)
     replacements = {
         '\u00A0': ' ', '\u200B': '', '’': '\'','':'​',
+        '<p></p>': '', 
         '</p>&': '</p>',  # Ensure this replacement is applied only when necessary
         '<strong>Strength</strong> Saving Throw': '<strong>Strength Save</strong>',
         '<strong>Dexterity</strong> Saving Throw': '<strong>Dexterity Save</strong>',
@@ -102,6 +103,8 @@ def transform_value(value):
         '&amp;Reference[lightW]': "&amp;reference[light weapon]",
         '&amp;Reference[Lightw]': "&amp;reference[light weapon]",
         '&amp;Reference[LightW]': "&amp;reference[light weapon]",
+        'attributes.spellmod': "attributes.spell.mod",
+        'attributes.spelldc': "attributes.spell.dc",
         '<p>You have a bonus to attack and damage rolls made with this magic weapon.</p>': "",
         'elkan5e/icons/': 'elkan5e/icons/conditions/' if 'elkan5e/icons/conditions/' not in value else value
     }
