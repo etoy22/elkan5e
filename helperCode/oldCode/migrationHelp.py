@@ -28,7 +28,7 @@ for folder_path in folder_paths:
     for filename in os.listdir(folder_path):
         if filename.endswith('.json'):
             file_path = os.path.join(folder_path, filename)
-            
+
             # Load and update the JSON file
             data = load_and_update_json(file_path)
 
@@ -47,9 +47,11 @@ for folder_path in folder_paths:
                         del data['flags'][key]
 
             if 'system' in data:
-                if 'identifier' in data["system"]:
-                    if data["system"]["identifier"] != "dragonborn":
-                        data["system"]["identifier"] = ""
+                if (
+                    'identifier' in data["system"]
+                    and data["system"]["identifier"] != "dragonborn"
+                ):
+                    data["system"]["identifier"] = ""
                 if 'source' in data['system']:
                     data["system"]["source"]["revision"] =  1
                     data["system"]["source"]["rules"] =  ""

@@ -64,20 +64,20 @@ for folder in folders:
     for file_name in os.listdir(folder):
         if not file_name.endswith('.json'):
             continue
-        
+
         file_path = os.path.join(folder, file_name)
-        
+
         # Load the JSON file
         with open(file_path, 'r', encoding='utf-8') as file:
             original_data = json.load(file)
-        
+
         data = original_data.copy()  # Create a copy to track changes
 
         description = data.get("system", {}).get("description", {}).get("value", "")
-            
+
         if "Success" not in description:
             continue
-        
+
         if "scroll" in data["name"].lower() and "<p>Success: the scroll is cast. The scroll's magic fades and the ink disintegrates." in description:
             if apply_replacements:
                 description = description.replace(
@@ -85,7 +85,7 @@ for folder in folders:
                     "<p><strong>Success:</strong> the scroll is cast. The scroll's magic fades and the ink disintegrates."
                 )
             continue
-        
+
         # Apply replacements for "half damage" variants
         if "half damage" in description.lower() and "Half damage, no other effect." not in description:
             if replacement_text not in description:
@@ -118,7 +118,7 @@ for folder in folders:
                     description = description.replace(keyword, "<strong>Success:</strong>")
         else:
             other_items.append(data["name"])
-        
+
         # Write the updated data back to the file only if data has changed
         if apply_replacements and data != original_data:
             # Update the last modified time in the JSON file
