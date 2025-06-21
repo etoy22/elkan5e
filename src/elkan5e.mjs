@@ -20,7 +20,7 @@ import { sappingSmite } from "./module/spells/sappingSmite.mjs";
 import { spectralEmpowerment } from "./module/classes/wizard.mjs";
 import { enervate, enervateOngoing } from "./module/spells/enervate.mjs";
 import { skills } from "./module/rules/skills.mjs";
-import { setupCombatReferences, setupDamageReferences, setupSpellcastingReferences, setupCreatureTypeReferences } from "./module/rules/references.mjs";
+import { setupCombatReferences, setupDamageReferences, setupSpellcastingReferences, setupCreatureTypeReferences, setupSkillReferences } from "./module/rules/references.mjs";
 
 
 Hooks.once("init", async () => {
@@ -163,6 +163,53 @@ Hooks.on("updateActor", async (actor, changes) => {
         console.error("Elkan 5e | Error in updateActor hook:", error);
     }
 });
+
+// Hooks.on("dnd5e.preRollSkill", (rollData, info, options) => {
+//   if (rollData.rolls?.length) {
+//     if (!Array.isArray(rollData.rolls[0].parts)) {
+//       rollData.rolls[0].parts = [];
+//     }
+//     rollData.rolls[0].parts.push("-5");
+//   }
+//   return true;
+// });
+
+// // 1. Pre-roll hook to add nothing or prepare
+// Hooks.on("dnd5e.preRollSkill", (rollData, info, options) => {
+//   // Don't modify anything here since we don't know the result yet
+//   return true;
+// });
+
+// // 2. Post-roll hook to check roll and adjust
+// Hooks.on("dnd5e.rollSkill", async (actor, roll, skillId) => {
+//   const d20 = roll.dice.find(d => d.faces === 20);
+//   if (!d20) return;
+
+//   const result = d20.results[0]?.result;
+//   if (result !== 1) return;  // Only continue if natural 1
+
+//   // Subtract 5 from the natural 1 result
+//   d20.results[0].result -= 5;
+//   d20.results[0]._isModified = true;
+
+//   // Update total
+//   roll._total = roll.total;
+
+//   await roll.toMessage({
+//     flavor: `${actor.name} rolls ${skillId || "a skill check"} (Natural 1: -5 penalty applied)`,
+//     speaker: ChatMessage.getSpeaker({ actor }),
+//   });
+
+//   // Prevent original unmodified roll from posting
+//   return false;
+// });
+
+
+
+
+
+
+
 
 let features = {
     rage: rage,
