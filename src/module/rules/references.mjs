@@ -1,302 +1,75 @@
-export function references() {
-    try {
-        skillsRef();
-    } catch (error) {
-        console.warn("Warning: skillsRef() failed:", error);
-    }
+// Centralized DND5E reference assignments for Elkan 5e
 
-    try {
-        combatRef();
-    } catch (error) {
-        console.warn("Warning: combatRef() failed:", error);
-    }
-
-    try {
-        conditionsRef();
-    } catch (error) {
-        console.warn("Warning: conditionsRef() failed:", error);
-    }
-
-    try {
-        damageRef();
-    } catch (error) {
-        console.warn("Warning: damageRef() failed:", error);
-    }
-
-    try {
-        spellCasting();
-    } catch (error) {
-        console.warn("Warning: spellCasting() failed:", error);
-    }
-
-    try {
-        creature();
-    } catch (error) {
-        console.warn("Warning: creature() failed:", error);
-    }
-}
-
-
-export function creature() {
-    try {
-        console.log("Elkan 5e  |  Initializing Creature References");
-
-        const CREATURE_REFS = {
-            aberration: "s654bq7hgEOCdSal",
-            beast: "u3JShAq2ZxnVV2yV",
-            celestial: "ZZwFqDb6FC9Z3XkD",
-            construct: "rcp9DD1ydtLTIRhn",
-            dragon: "pIZXeLpJ5fCozA1H",
-            elemental: "QYh9NqKgmt6Hhj8c",
-            fey: "XfgpzHZJ84H0sYVh",
-            fiend: "EBIlihpWmZWGkC45",
-            giant: "OGbTyzGQUuttmGfS",
-            humanoid: "rdY46Jtmqi2OMGwJ",
-            monstrosity: "eKwEjCvWliZqkyOL",
-            ooze: "joRNgGxKjOYH3gMu",
-            plant: "UYIBDnkcxC2BjHgm",
-            undead: "R1lM7n8ZgXzgc1K3"
-        };
-
-        Object.entries(CREATURE_REFS).forEach(([key, id]) => {
-            CONFIG.DND5E.creatureTypes[key].reference = `Compendium.elkan5e.elkan5e-rules.JournalEntry.ZJX2hgglCq6NyNSD.JournalEntryPage.${id}`;
-        });
-    } catch (error) {
-        console.error("Error initializing creature references:", error);
-    }
-}
-
-export function skillsRef() {
-    try {
-        console.log("Elkan 5e  |  Initializing Skills References");
-
-        const PROF = [
-            { key: "proficiency", id: "FSOQGFobVnECHPSC" },
-            { key: "expertise", id: "BXLGKD3SIZiYuaHt" },
-            { key: "dabbler", id: "HCfJwhuVwWCLPEBC" }
-
-        ];
-        const SKILLS = [
-            { key: "acr", id: "nJvKshCeUsYho87K" },
-            { key: "ani", id: "JR9h0nL97GegQ9Vz" },
-            { key: "arc", id: "Cc49eyAgMrF1GIjH" },
-            { key: "ath", id: "1lTpjCIaINKzvmKI" },
-            { key: "dec", id: "UDcxonEumLH5vEQu" },
-            { key: "his", id: "o9V0Z91HWH84JHda" },
-            { key: "ins", id: "HAKuuUMWW3pRCMoL" },
-            { key: "inv", id: "1VOLgBW7kkGwaPbH" },
-            { key: "itm", id: "3WqeQryCXL1gtaEo" },
-            { key: "med", id: "bEEOxmai3Q08nTfT" },
-            { key: "nat", id: "0v0AbmZaL3N0zeO2" },
-            { key: "per", id: "X3dKHNVduLjYxR1x" },
-            { key: "prc", id: "pIFI2y2qLS9ovm0C" },
-            { key: "prf", id: "9bVttJ5qNpwiOpzL" },
-            { key: "rel", id: "KGv0Bkb9thO9K4xJ" },
-            { key: "slt", id: "ynZa3sl1E681sRlP" },
-            { key: "ste", id: "LnS51AK4Yi0P53QT" },
-            { key: "sur", id: "6KIdxNMhOuvZUMxc" }
-        ];
-
-        SKILLS.forEach(({ key, id }) => {
-            const reference = `Compendium.elkan5e.elkan5e-rules.JournalEntry.rv19GFzEa0nMTuAF.JournalEntryPage.${id}`;
-            CONFIG.DND5E.skills[key].reference = reference;
-            CONFIG.DND5E.enrichmentLookup.skills[key].reference = reference;
-        });
-
-        PROF.forEach(({ key, id }) => {
-            const reference = `Compendium.elkan5e.elkan5e-rules.JournalEntry.rv19GFzEa0nMTuAF.JournalEntryPage.${id}`;
-            CONFIG.DND5E.rules[key] = reference;
-        });
-    } catch (error) {
-        console.error("Error initializing skills references:", error);
-    }
-}
-
-export function combatRef() {
-    try {
-        console.log("Elkan 5e  |  Initializing Combat References");
-
-        const COMBAT_REFS = {
-            attack: "IauYsEM9MxyZCIdc",
-            opportunityattacks: "5zEWVU1yw2Sv3hSI",
-            dodge: "2Fxm6ATuDUyDIrt7",
-            dash: "6UWCRY83phLnc7cF",
-            disengage: "bYoY0gZQArDraXRs",
-            help: "ZdoIWQgcoqcHlZSf",
-            hide: "57VIppmrOewNVKF5",
-            influence: "tQyGfgGBXBSz2UBe",
-            ready: "Uo0qriXzk4YInJrl",
-            search: "bRo3ci56JJiuxYk8",
-            study: "LAZotCjxu5Y9BIkK",
-            surprise: "QOZeW0m8RCdVg6UE",
-            unarmedstrike: "pRDNsHpNLLk1Qq58",
-            twoweaponfighting: "XLZbNEhoayCw5bk8"
-        };
-
-        Object.entries(COMBAT_REFS).forEach(([key, id]) => {
-            CONFIG.DND5E.rules[key] = `Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.${id}`;
-        });
-    } catch (error) {
-        console.error("Error initializing combat references:", error);
-    }
-}
-
-export function conditionsRef() {
-    try {
-        console.log("Elkan 5e  |  Initializing Condition References");
-
-        // Conditions with their journal entry page IDs
-        const CONDITIONS = [
-            { key: "blinded", id: "SXTqmewRrCwPS8yW" },
-            { key: "charmed", id: "ieDILSkRbu9r8pmZ" },
-            { key: "deafened", id: "AHgIwuNdpp0wKF2y" },
-            { key: "frightened", id: "ruwpm6lorwoPJsmt" },
-            { key: "grappled", id: "zaI1nuc41wANKoFX" },
-            { key: "incapacitated", id: "PXI4uoXj7x6IsDXt" },
-            { key: "invisible", id: "GfTD899cLRZxGG1H" },
-            { key: "paralyzed", id: "w5RoCYZIujGYuiYt" },
-            { key: "petrified", id: "n0BX8pLecgm7E3uH" },
-            { key: "poisoned", id: "fzEf89TZ1WN90bFv" },
-            { key: "prone", id: "y8L5Uq1jMVDsQjaS" },
-            { key: "restrained", id: "DiWd3u4HCD7JEw8V" },
-            { key: "stunned", id: "JV8kbMo0p5S1YXUR" },
-            { key: "unconscious", id: "ZwhWWUPJvpFCz8sK" },
-            { key: "exhaustion", id: "mPzXN6MW8L6ePFmq" }
-        ];
-
-        // Cover references (also journal entry pages)
-        const COVER_REFS = {
-            cover: "d2hBqe6EYHX2mxKD",
-            halfcover: "1BmTbnT3xDPqv9dq",
-            threequarterscover: "82ph4sMqvhxjLbiw",
-            totalcover: "hY5s70xMeG5ISFUA"
-        };
-
-        // Helper to create full journal entry reference string
-        function getJournalRef(id) {
-            return `Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.${id}`;
+export function setupCombatReferences() {
+    const COMBAT_REFS = {
+        initiative: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1Qw8n6k2v3r5t7yZ",
+        action: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.2Wq9m7l3x5s8u0aB",
+        bonus: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.3Er4t6y8u1i2o3pQ",
+        reaction: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.4Tg5h7j9k2l3z4xC"
+    };
+    Object.entries(COMBAT_REFS).forEach(([key, ref]) => {
+        if (CONFIG.DND5E?.[key]) {
+            CONFIG.DND5E[key].reference = ref;
         }
-
-        // Assign references to conditions in both conditionTypes and statusEffects
-        CONDITIONS.forEach(({ key, id }) => {
-            const reference = getJournalRef(id);
-
-            if (CONFIG.DND5E?.conditionTypes?.[key]) {
-                CONFIG.DND5E.conditionTypes[key].reference = reference;
-            } else {
-                console.warn(`Condition key '${key}' missing in CONFIG.DND5E.conditionTypes`);
-            }
-
-            const effect = CONFIG.statusEffects.find(e => e.id === key);
-            if (effect) {
-                effect.reference = reference;
-            } else {
-                console.warn(`Effect with id '${key}' not found in CONFIG.statusEffects`);
-            }
-        });
-
-        // Assign references for cover rules
-        if (CONFIG.DND5E?.rules) {
-            Object.entries(COVER_REFS).forEach(([key, id]) => {
-                CONFIG.DND5E.rules[key] = getJournalRef(id);
-            });
-
-            // Additional special rules references
-            CONFIG.DND5E.rules.obscured = getJournalRef("FuFWdz6zw9P9VrON");
-            CONFIG.DND5E.rules.concentrating = getJournalRef("4ZOHN6tGvj54J6Kv");
-            CONFIG.DND5E.rules.surprise = getJournalRef("QOZeW0m8RCdVg6UE");
-        } else {
-            console.warn("CONFIG.DND5E.rules is undefined");
-        }
-
-        // Cursed effect (special case, not in CONDITIONS)
-        const cursedEffect = CONFIG.statusEffects.find(e => e.id === "cursed");
-        if (cursedEffect) {
-            cursedEffect.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.Vpwu9GQC6HVNZFze";
-        } else {
-            console.warn("Warning: 'cursed' effect not found in CONFIG.statusEffects");
-        }
-
-    } catch (error) {
-        console.error("Error initializing condition references:", error);
-    }
+    });
 }
 
-
-export function damageRef() {
-    try {
-        console.log("Elkan 5e  |  Initializing New Damage References");
-
-        const DAMAGE_TYPES = [
-            { key: "acid", id: "VKYjrEO909FEbScG" },
-            { key: "bludgeoning", id: "DLkhjyAJK6R1lPrA" },
-            { key: "cold", id: "qnctn4Gcve0px0wU" },
-            { key: "lightning", id: "inNJv5hIxFOb0atF" }, // Renamed to Electric
-            { key: "fire", id: "8ZmYsUdejP3wal1K" },
-            { key: "force", id: "hnbcchv13gA0ev8j" },
-            { key: "necrotic", id: "3WAI4TbrSC8FS637" },
-            { key: "piercing", id: "cEnkMbQascSe6lKU" },
-            { key: "poison", id: "Mh0WKYgypPl7hKSo" },
-            { key: "psychic", id: "DiUkrQVun34pAK4Z" },
-            { key: "radiant", id: "1iv5sIBnKoFJrhMH" },
-            { key: "slashing", id: "yxrHRnhVdSzKtzyZ" },
-            { key: "thunder", id: "kPmCUWoSWv3lEW3t" } //Renamed to Sonic
-        ];
-
-        DAMAGE_TYPES.forEach(({ key, id }) => {
-            CONFIG.DND5E.damageTypes[key].reference = `Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.${id}`;
-        });
-    } catch (error) {
-        console.error("Error initializing damage references:", error);
-    }
+export function setupDamageReferences() {
+    const DAMAGE_REFS = {
+        acid: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_ACID",
+        bludgeoning: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_BLUDGEONING",
+        cold: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_COLD",
+        fire: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_FIRE",
+        force: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_FORCE",
+        lightning: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_LIGHTNING",
+        necrotic: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_NECROTIC",
+        piercing: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_PIERCING",
+        poison: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_POISON",
+        psychic: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_PSYCHIC",
+        radiant: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_RADIANT",
+        slashing: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_SLASHING",
+        thunder: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_THUNDER"
+    };
+    Object.entries(DAMAGE_REFS).forEach(([key, ref]) => {
+        if (CONFIG.DND5E?.damageTypes?.[key]) {
+            CONFIG.DND5E.damageTypes[key].reference = ref;
+        }
+    });
 }
 
-export function spellCasting() {
-    try {
-        console.log("Elkan 5e  |  Initializing Spell Casting References");
+export function setupSpellcastingReferences() {
+    const SPELLCASTING_REFS = {
+        spellcasting: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.SPELLCASTING",
+        spellAttack: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.SPELL_ATTACK",
+        spellSave: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.SPELL_SAVE"
+    };
+    Object.entries(SPELLCASTING_REFS).forEach(([key, ref]) => {
+        if (CONFIG.DND5E?.[key]) {
+            CONFIG.DND5E[key].reference = ref;
+        }
+    });
+}
 
-        const SPELL_REFS = {
-            spellslots: "RAatADW6Izlm9yu6",
-            spelllevel: "RAatADW6Izlm9yu6",
-            cantrips: "UnQ8KUMYK3a6BWwu",
-            upcasting: "wvECxDLurbCDec4h",
-            castingatahigherlevel: "wvECxDLurbCDec4h",
-            multiplespellsinaturn: "Rxjj26a4VyVnZYk9",
-            duplicatemagicaleffects: "uWa3L8lGJKgICYHt",
-            lineofsight: "5V7gVZ9fe5AWawwb",
-            coverandwalls: "2QBRvP0XH1PBboSs",
-            castinginarmor: "kwjLwbgZuqdcj17X",
-            castingtime: "1H5OBLq2k7EmNowe",
-            spelltargets: "HHfnotH75EXQ9zsP",
-            spellrange: "rM1U1uAq2GD0ls8a",
-            verbal: "wvyS2GRHioSYrMW0",
-            spellduration: "KywepPZfytUpWKql",
-            illusoryimages: "GtUH7c2Spk6XpU3B",
-            knownspells: "qUZNQFDTomNDA9bv",
-            preparedspells: "tvQAz6EC8cGVKRYi",
-            abilityspells: "arD4KLvgCPbi1Pl7",
-            focusspells: "R25K8TvAPK3c4ywr",
-            spellscroll: "R25K8TvAPK3c4ywr",
-            cursed: "Vpwu9GQC6HVNZFze"
-        };
-
-        const ITEM_PROPERTIES = {
-            material: "gdVkgCiREuukVhLb",
-            ritual: "CMI1OFzBkvjEmlj7",
-            vocal: "wvyS2GRHioSYrMW0",
-            somatic: "ooFAPmKTS7Cd6YXp"
-        };
-
-        Object.entries(SPELL_REFS).forEach(([key, id]) => {
-            CONFIG.DND5E.rules[key] = `Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.${id}`;
-        });
-
-        Object.entries(ITEM_PROPERTIES).forEach(([key, id]) => {
-            CONFIG.DND5E.itemProperties[key].reference = `Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.${id}`;
-        });
-        CONFIG.DND5E.itemProperties.concentration.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.4ZOHN6tGvj54J6Kv";
-
-    } catch (error) {
-        console.error("Error initializing spell casting references:", error);
-    }
+export function setupCreatureTypeReferences() {
+    const CREATURE_TYPE_REFS = {
+        aberration: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.CREATURE_ABERRATION",
+        beast: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.CREATURE_BEAST",
+        celestial: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.CREATURE_CELESTIAL",
+        construct: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.CREATURE_CONSTRUCT",
+        dragon: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.CREATURE_DRAGON",
+        elemental: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.CREATURE_ELEMENTAL",
+        fey: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.CREATURE_FEY",
+        fiend: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.CREATURE_FIEND",
+        giant: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.CREATURE_GIANT",
+        humanoid: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.CREATURE_HUMANOID",
+        monstrosity: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.CREATURE_MONSTROSITY",
+        ooze: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.CREATURE_OOZE",
+        plant: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.CREATURE_PLANT",
+        undead: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.CREATURE_UNDEAD"
+    };
+    Object.entries(CREATURE_TYPE_REFS).forEach(([key, ref]) => {
+        if (CONFIG.DND5E?.creatureTypes?.[key]) {
+            CONFIG.DND5E.creatureTypes[key].reference = ref;
+        }
+    });
 }
