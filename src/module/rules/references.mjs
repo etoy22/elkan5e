@@ -80,9 +80,6 @@ export function setupSpellcastingReferences() {
         { key: "focusspells", id: "R25K8TvAPK3c4ywr" },
         { key: "spellscroll", id: "R25K8TvAPK3c4ywr" },
         { key: "cursed", id: "Vpwu9GQC6HVNZFze" },
-        { key: "spellcasting", id: "SPELLCASTING" },
-        { key: "spellAttack", id: "SPELL_ATTACK" },
-        { key: "spellSave", id: "SPELL_SAVE" }
     ];
     if (!CONFIG.DND5E.rules) CONFIG.DND5E.rules = {};
     SPELL_REFS.forEach(({ key, id }) => {
@@ -175,8 +172,10 @@ export function setupSkillReferences() {
     SKILLS.forEach(({ key, id }) => {
         try {
             const reference = base + id;
-            CONFIG.DND5E.skills[key] = { reference };
-            CONFIG.DND5E.enrichmentLookup.skills[key] = { reference };
+            if (!CONFIG.DND5E.skills[key]) CONFIG.DND5E.skills[key] = {};
+            CONFIG.DND5E.skills[key].reference = reference;
+            if (!CONFIG.DND5E.enrichmentLookup.skills[key]) CONFIG.DND5E.enrichmentLookup.skills[key] = {};
+            CONFIG.DND5E.enrichmentLookup.skills[key].reference = reference;
         } catch (e) {
             console.warn(`Elkan 5e | Failed to assign skill reference for key '${key}':`, e);
         }
