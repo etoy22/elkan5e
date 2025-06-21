@@ -93,7 +93,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><strong>No Action Cost</strong> </p><p>When you cast a spell using your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.UeNCm9oElbQEXre6]{Bloodrager Spellcasting} feature, you can choose to make the spell trigger a @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.FEMWrKEyIrd0s6BT.JournalEntryPage.VJrA212Hv3sI9yQv]{wild surge}. If you roll a Wild Surge that references Sorcery Points, Metamagic, or otherwise requires you to be a sorcerer, you instead regain one use of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.W6yKtk7Svvy9dIq9]{Rage}.</p><p></p><p><strong>Note: This ability is not automated in Foundry. You can find the wild surge tables in the compendium tab under Elkan 5e -&gt; Other -&gt; Elkan 5e Roll Tables.</strong> </p>",
+			"value": "<p><strong>No Action Cost</strong></p><p>When you cast a spell using your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.UeNCm9oElbQEXre6]{Bloodrager Spellcasting} feature, you can choose to make the spell trigger a @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.FEMWrKEyIrd0s6BT.JournalEntryPage.VJrA212Hv3sI9yQv]{wild surge}. If you roll a Wild Surge that references Sorcery Points, Metamagic, or otherwise requires you to be a sorcerer, you instead regain one use of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.W6yKtk7Svvy9dIq9]{Rage}.</p>",
 			"chat": ""
 		},
 		"identifier": "",
@@ -118,7 +118,80 @@
 		],
 		"requirements": "Bloodrager 6"
 	},
-	"effects": [],
+	"effects": [
+		{
+			"name": "Wild Blood",
+			"changes": [
+				{
+					"key": "flags.midi-qol.onUseMacroName",
+					"mode": 0,
+					"value": "function.elkan5e.macros.features.wildBlood,preItemRoll",
+					"priority": 20
+				}
+			],
+			"transfer": true,
+			"img": "icons/magic/light/hand-sparks-smoke-teal.webp",
+			"_id": "KrGm8LAEkrWavSgJ",
+			"type": "base",
+			"system": {},
+			"disabled": false,
+			"duration": {
+				"startTime": 1720031242,
+				"seconds": null,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": 20,
+				"startTurn": 1
+			},
+			"description": "",
+			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.KQRBbG42MjUiR6im",
+			"tint": "#ffffff",
+			"statuses": [],
+			"sort": 0,
+			"flags": {
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "multi",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "Enemy",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!KQRBbG42MjUiR6im.KrGm8LAEkrWavSgJ"
+		}
+	],
 	"flags": {
 		"tidy5e-sheet": {
 			"section": "",

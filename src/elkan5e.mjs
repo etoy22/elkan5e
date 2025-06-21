@@ -37,6 +37,10 @@ Hooks.once("init", async () => {
         language();
         formating();
         scroll();
+        setupCombatReferences();
+        setupDamageReferences();
+        setupSpellcastingReferences();
+        setupCreatureTypeReferences();
         console.log("Elkan 5e  |  Done Initializing");
     }
     catch (error) {
@@ -46,10 +50,6 @@ Hooks.once("init", async () => {
 
 Hooks.once('ready', async () => {
     try {
-        setupCombatReferences();
-        setupDamageReferences();
-        setupSpellcastingReferences();
-        setupCreatureTypeReferences();
         startDialog();
     } catch (error) {
         console.error("Elkan 5e | Ready Hook Error:", error);
