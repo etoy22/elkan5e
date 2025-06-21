@@ -41,6 +41,7 @@ Hooks.once("init", async () => {
         setupDamageReferences();
         setupSpellcastingReferences();
         setupCreatureTypeReferences();
+        setupSkillReferences();
         console.log("Elkan 5e  |  Done Initializing");
     }
     catch (error) {
