@@ -22,6 +22,7 @@ export function feral(actor) {
 }
 
 export async function rage(workflow) {
+    console.log("Elkan 5e | Rage triggered");
     const actor = workflow.actor;
     let notification = "elkan5e.notifications.FeralInstinctsMove";
     if ((actor.items.find(i => i.name === "Feral Instinct") || actor.items.find(i => i.name === "Improved Feral Instincts"))) {

@@ -7,32 +7,40 @@ export function setupCombatReferences() {
         bonus: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.3Er4t6y8u1i2o3pQ",
         reaction: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.4Tg5h7j9k2l3z4xC"
     };
+    if (!CONFIG.DND5E.rules) CONFIG.DND5E.rules = {};
     Object.entries(COMBAT_REFS).forEach(([key, ref]) => {
-        if (CONFIG.DND5E?.[key]) {
-            CONFIG.DND5E[key].reference = ref;
+        try {
+            CONFIG.DND5E.rules[key] = { reference: ref };
+        } catch (e) {
+            console.warn(`Elkan 5e | Failed to assign combat reference for key '${key}':`, e);
         }
     });
 }
 
 export function setupDamageReferences() {
+    const base = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.";
     const DAMAGE_REFS = {
-        acid: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_ACID",
-        bludgeoning: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_BLUDGEONING",
-        cold: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_COLD",
-        fire: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_FIRE",
-        force: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_FORCE",
-        lightning: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_LIGHTNING",
-        necrotic: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_NECROTIC",
-        piercing: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_PIERCING",
-        poison: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_POISON",
-        psychic: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_PSYCHIC",
-        radiant: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_RADIANT",
-        slashing: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_SLASHING",
-        thunder: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.DAMAGE_THUNDER"
+        acid: base + "VKYjrEO909FEbScG",
+        bludgeoning: base + "DLkhjyAJK6R1lPrA",
+        cold: base + "qnctn4Gcve0px0wU",
+        lightning: base + "inNJv5hIxFOb0atF",
+        fire: base + "8ZmYsUdejP3wal1K",
+        force: base + "hnbcchv13gA0ev8j",
+        necrotic: base + "3WAI4TbrSC8FS637",
+        piercing: base + "cEnkMbQascSe6lKU",
+        poison: base + "Mh0WKYgypPl7hKSo",
+        psychic: base + "DiUkrQVun34pAK4Z",
+        radiant: base + "1iv5sIBnKoFJrhMH",
+        slashing: base + "yxrHRnhVdSzKtzyZ",
+        thunder: base + "kPmCUWoSWv3lEW3t",
     };
+    if (!CONFIG.DND5E.damageTypes) CONFIG.DND5E.damageTypes = {};
     Object.entries(DAMAGE_REFS).forEach(([key, ref]) => {
-        if (CONFIG.DND5E?.damageTypes?.[key]) {
+        try {
+            if (!CONFIG.DND5E.damageTypes[key]) CONFIG.DND5E.damageTypes[key] = {};
             CONFIG.DND5E.damageTypes[key].reference = ref;
+        } catch (e) {
+            console.warn(`Elkan 5e | Failed to assign damage reference for key '${key}':`, e);
         }
     });
 }
@@ -44,8 +52,11 @@ export function setupSpellcastingReferences() {
         spellSave: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.SPELL_SAVE"
     };
     Object.entries(SPELLCASTING_REFS).forEach(([key, ref]) => {
-        if (CONFIG.DND5E?.[key]) {
-            CONFIG.DND5E[key].reference = ref;
+        try {
+            if (!CONFIG.DND5E.rules[key]) CONFIG.DND5E.rules[key] = {};
+            CONFIG.DND5E.rules[key].reference = ref;
+        } catch (e) {
+            console.warn(`Elkan 5e | Failed to assign spellcasting reference for key '${key}':`, e);
         }
     });
 }
@@ -67,9 +78,13 @@ export function setupCreatureTypeReferences() {
         plant: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.CREATURE_PLANT",
         undead: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.CREATURE_UNDEAD"
     };
+    if (!CONFIG.DND5E.creatureTypes) CONFIG.DND5E.creatureTypes = {};
     Object.entries(CREATURE_TYPE_REFS).forEach(([key, ref]) => {
-        if (CONFIG.DND5E?.creatureTypes?.[key]) {
+        try {
+            if (!CONFIG.DND5E.creatureTypes[key]) CONFIG.DND5E.creatureTypes[key] = {};
             CONFIG.DND5E.creatureTypes[key].reference = ref;
+        } catch (e) {
+            console.warn(`Elkan 5e | Failed to assign creature type reference for key '${key}':`, e);
         }
     });
 }
