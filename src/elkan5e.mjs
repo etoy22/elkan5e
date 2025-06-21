@@ -8,10 +8,9 @@ import { feral, rage, wildBlood } from "./module/classes/barbarian.mjs";
 import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
 import { hijackShadow, meldWithShadows, rmvMeldShadow, rmvhijackShadow } from "./module/classes/monk.mjs";
 import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
-import { conditions, icons } from "./module/rules/condition.mjs";
+import { conditions } from "./module/rules/condition.mjs";
 import { language } from "./module/rules/language.mjs";
 import { formating } from "./module/rules/format.mjs";
-import { references } from "./module/rules/references.mjs";
 import { tools } from "./module/rules/tools.mjs";
 import { weapons } from "./module/rules/weapon.mjs";
 import { scroll } from "./module/rules/scroll.mjs";
@@ -20,7 +19,8 @@ import { slicingBlow } from "./module/classes/rogue.mjs";
 import { sappingSmite } from "./module/spells/sappingSmite.mjs";
 import { spectralEmpowerment } from "./module/classes/wizard.mjs";
 import { enervate, enervateOngoing } from "./module/spells/enervate.mjs";
-// import { sanctuary } from "./module/spells/sanctuary.mjs";
+import { skills } from "./module/rules/skills.mjs";
+import { setupCombatReferences, setupDamageReferences, setupSpellcastingReferences, setupCreatureTypeReferences } from "./module/rules/references.mjs";
 
 
 Hooks.once("init", async () => {
@@ -28,13 +28,13 @@ Hooks.once("init", async () => {
         console.log("Elkan 5e | Initializing Elkan 5e");
         await gameSettingRegister();
         initWarlockSpellSlot();
-        references();
-        tools();
+        // Ensure conditions and icons are initialized before other systems
         conditions();
+        skills();
+        tools();
         weapons();
         armor();
         language();
-        icons();
         formating();
         scroll();
         console.log("Elkan 5e  |  Done Initializing");
@@ -46,6 +46,10 @@ Hooks.once("init", async () => {
 
 Hooks.once('ready', async () => {
     try {
+        setupCombatReferences();
+        setupDamageReferences();
+        setupSpellcastingReferences();
+        setupCreatureTypeReferences();
         startDialog();
     } catch (error) {
         console.error("Elkan 5e | Ready Hook Error:", error);
