@@ -95,8 +95,8 @@ async function cleanPacks(packName, entryName) {
 				continue;
 			}
 			cleanPackEntry(data);
-			// Write back JSON with 2 space indentation and overwrite original
-			await writeFile(src, JSON.stringify(data, null, 2), { mode: 0o664 });
+			// Write back JSON with tab indentation and overwrite original
+			await writeFile(src, JSON.stringify(data, null, '\t'), { mode: 0o664 });
 		}
 	}
 }
@@ -230,7 +230,7 @@ async function extractPacks(packName, entryName) {
 
 				fs.mkdirSync(path.dirname(filePath), { recursive: true });
 
-				await fsp.writeFile(filePath, JSON.stringify(entry, null, "\t") + "\n", "utf8");
+				await fsp.writeFile(filePath, JSON.stringify(entry, null, "\t"), "utf8");
 
 				writtenFiles.add(path.normalize(filePath));
 
