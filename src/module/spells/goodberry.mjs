@@ -201,12 +201,16 @@ Hooks.on("deleteActiveEffect", async (deletedEffect, options, userId) => {
         console.warn("deleteActiveEffect: Effect name is missing, skipping cleanup.");
         return;
     }
-    const name = deletedEffect.name.replace(/ Duration \(Level \d+\)$/, "") + " (Item)";
-    const levelMatch = deletedEffect.name.match(/Level (\d+)/);
-    const level = levelMatch ? parseInt(levelMatch[1], 10) : null;
+    // Only handle effects created by the goodberry spell (must match the duration naming pattern)
+    const match = deletedEffect.name.match(/^(.*) Duration \(Level (\d+)\)$/);
+    if (!match) return; // Not a goodberry effect, skip
+    const baseName = match[1];
+    const level = parseInt(match[2], 10);
+    if (level === null || isNaN(level)) return; // If level is null or not a number, skip
+    const name = baseName + " (Item)";
     const item = actor.items.find(i => i.name === name);
     console.log("deleteActiveEffect: Triggered for name:", deletedEffect.name, "Looking for item:", name, "Found:", !!item, "Level:", level);
-    if (item && level !== null) {
+    if (item) {
         await handleGoodberryItemCleanup(actor, level, item);
     } else {
         console.warn("deleteActiveEffect: No matching item found for cleanup.", { name, level });
@@ -217,8 +221,15 @@ Hooks.on("deleteActiveEffect", async (deletedEffect, options, userId) => {
 Hooks.on("deleteItem", async (deletedItem, options, userId) => {
     const actor = deletedItem.parent;
     if (!actor) return;
-    const name = deletedItem.name.replace(/ \(Item\)$/, "");
-    const effects = actor.effects.filter(effect => effect.name && effect.name.includes(name));
+    // Only handle items created by the goodberry spell (must end with " (Item)")
+    if (!deletedItem.name.endsWith(" (Item)")) return;
+    // Only target effects that match the goodberry duration naming pattern
+    const baseName = deletedItem.name.replace(/ \(Item\)$/, "");
+    const effects = actor.effects.filter(effect =>
+        effect.name &&
+        effect.name.startsWith(baseName) &&
+        / Duration \(Level \d+\)$/.test(effect.name)
+    );
     if (effects.length === 0) return;
     for (const effect of effects) {
         try {
