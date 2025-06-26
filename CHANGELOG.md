@@ -1,4 +1,39 @@
 # Changelog
+# v1.12.26
+
+## Bug Fixes
+- Narrow Escape now actually has uses now says that its a Background Feature
+## Classes
+**[Monk](https://www.elkan5e.com/monk)**
+- Open Hand:
+	- Added Twin Currents as a new 3rd level feature
+
+**[Paladin](https://www.elkan5e.com/paladin)**
+- Update Cleansing Touch to use the Elkan version
+
+**[Sorcerer](https://www.elkan5e.com/sorcerer)**
+- Increased number of spells known at level 1 from 2-4
+
+**[Warlock](https://www.elkan5e.com/warlock)**
+- Level 11 pact boon invocations are now core class features.
+- Invocation choice moved from level 11 to level 13
+- Increased spells known slightly to match bard
+## Feats
+- [Grapple Hold](https://www.elkan5e.com/feats/grapple-hold) now allows easily dragging grappled creatures
+- [Brawler](https://www.elkan5e.com/feats/brawler) feat reworked as level 1 with no prerequisites. Now allows for viable improvised weapons and grappling on attacks of opportunity
+- [Enraged Presence](https://www.elkan5e.com/feats/enraged-presence) no longer stack with expertise
+- [Enraged Prowess](https://www.elkan5e.com/feats/enraged-prowess) no longer stack with expertise
+- 6 new feats, including 4 ancestry-specific feats
+	- [Human Versatility](https://www.elkan5e.com/feats/human-versatility)
+	- [Naturally Stealthy](https://www.elkan5e.com/feats/naturally-stealthy)
+	- [Stonecunning](https://www.elkan5e.com/feats/stonecunning)
+	- [Draconic Flight](https://www.elkan5e.com/feats/draconic-flight)
+	- [Powerful Build](https://www.elkan5e.com/feats/powerful-build)
+	- [Inspiring Performance](https://www.elkan5e.com/feats/inspiring-performance)
+## Spells
+- [Passwall](https://www.elkan5e.com/spells/passwall) now bypasses [wall of force](https://www.elkan5e.com/spells/wall-of-force) and forcecage
+- Shortened spell flavor text where it was too long
+- Some updated 5th level spells
 
 # v1.12.25.1
 
