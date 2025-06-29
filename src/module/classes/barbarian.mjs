@@ -9,7 +9,7 @@ export function feral(actor) {
     let notification = "elkan5e.notifications.FeralInstincts";
 
     // Check if the actor has Feral Instincts or Improved Feral Instincts
-    if (RAGE && (actor.items.find(i => i.name === "Feral Instincts") || actor.items.find(i => i.name === "Improved Feral Instincts"))) {
+    if (RAGE && (actor.items.find(i => i.name === "Feral Instinct") || actor.items.find(i => i.name === "Improved Feral Instincts"))) {
         if (actor.items.find(i => i.name === "Improved Feral Instincts")) {
             notification = "elkan5e.notifications.ImprovedFeralInstincts";
         }
@@ -21,9 +21,30 @@ export function feral(actor) {
     }
 }
 
-export async function wildBlood(activity) {
-    const actor = activity.actor;
-    const item = activity.item;
+export async function rage(workflow) {
+    const actor = workflow.actor;
+    let notification = "elkan5e.notifications.FeralInstinctsMove";
+    if ((actor.items.find(i => i.name === "Feral Instinct") || actor.items.find(i => i.name === "Improved Feral Instincts"))) {
+        // console.log("Feral Instincts or Improved Feral Instincts found");
+        if (actor.items.find(i => i.name === "Improved Feral Instincts")) {
+            notification = "elkan5e.notifications.ImprovedFeralInstinctsMove";
+        }
+        if (actor.isOwner) {
+            ui.notifications.notify(game.i18n.format(notification, { name: actor.name }));
+        }
+    }
+}
+
+
+export async function wildBlood(workflow) {
+    const item = workflow.item;
+    const scope = workflow.scope;
+    if (!game.modules.get("elkan5e")?.active) return;
+
+    if (item.type !== "spell" || !item.system.activities) return;
+
+    const activityId = scope.workflow.uuid?.split(".").pop();
+    let type = item.system.activities.find(a => a.id === activityId).type
     const level = item.system.level;
     const TABLE_UUIDS = [
         null, // No table for level 0 spells
@@ -38,11 +59,30 @@ export async function wildBlood(activity) {
         "LV2skOm8hCwM1JRH",
         "O7JYPPoDS7gLGkNj"
     ];
-    const wild = actor.items.find(i => i.name === "Wild Blood");
-    if (wild && ["Prismatic Bolt", "Mirror Image", "Blink", "Confusion", "Prismatic Spray"].includes(item.name)) {
-        const activityType = activity.type;
-        console.log(activityType);
-        if (activityType != "utility" || ["Mirror Image", "Blink"].includes(item.name)) {
+
+
+    if (["Prismatic Bolt", "Mirror Image", "Blink", "Confusion", "Prismatic Spray"].includes(item.name)) {
+
+        let confirmed = await new Promise((resolve) => {
+            new Dialog({
+                title: "Wild Surge",
+                content: `<p>Do you want to trigger a Wild Surge?</p>`,
+                buttons: {
+                    yes: {
+                        label: "Yes",
+                        callback: () => resolve(true)
+                    },
+                    no: {
+                        label: "No",
+                        callback: () => resolve(false)
+                    }
+                },
+                default: "no"
+            }).render(true);
+        });
+
+        if (!confirmed) return;
+        if (type != "utility" || ["Mirror Image", "Blink"].includes(item.name)) {
             let tableUUID = TABLE_UUIDS[level];
             if (tableUUID) {
                 try {
@@ -57,5 +97,4 @@ export async function wildBlood(activity) {
             }
         }
     }
-
 }
