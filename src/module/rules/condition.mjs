@@ -1,6 +1,8 @@
 /**
  * Adds the Elkan 5e conditions to Foundry.
  */
+
+// TODO: Automate Dodging
 export function conditions() {
     // Define all condition icons and new conditions in one place
     const CONDITION_ICONS = [
@@ -117,15 +119,167 @@ export function conditions() {
         "unconscious", "silenced"
     ];
 
+    const conditionsToRemove = ["burning", "dehydration", "falling", "malnutrition", "suffocation"];
+    
+    const EFFECTS = {
+        dead: [
+            { "key": "attributes.hp.value", "mode": 5, "value": "0", "priority": null }
+        ],
+        blinded: [
+            { "key": "flags.midi-qol.disadvantage.attack.all", "mode": 5, "value": "1" },
+            { "key": "flags.midi-qol.grants.advantage.attack.all", "mode": 5, "value": "1" }
+        ],
+        deafened: [
+            { "key": "flags.midi-qol.disadvantage.ability.check.dex", "mode": 5, "value": "1" },
+            { "key": "flags.midi-qol.disadvantage.ability.save.dex", "mode": 5, "value": "1" }
+        ],
+        frightened: [
+            { "key": "flags.midi-qol.disadvantage.attack.all", "mode": 5, "value": "1" },
+            { "key": "flags.midi-qol.disadvantage.ability.check.all", "mode": 5, "value": "1" }
+        ],
+        incapacitated: [
+            { "key": "flags.midi-qol.fail.ability.save.dex", "mode": 5, "value": "1", "priority": null },
+            { "key": "flags.midi-qol.fail.ability.save.str", "mode": 5, "value": "1", "priority": null }
+        ],
+        invisible: [
+            { "key": "flags.midi-qol.advantage.attack.all", "mode": 5, "value": "1" },
+            { "key": "flags.midi-qol.grants.disadvantage.attack.all", "mode": 5, "value": "1" },
+            { "key": "flags.midi-qol.advantage.skill.ste", "mode": 2, "value": "1" }
+        ],
+        paralyzed: [
+            { "key": "flags.midi-qol.grants.advantage.attack.all", "mode": 5, "value": "1" },
+            { "key": "flags.midi-qol.grants.critical.mwak", "mode": 5, "value": "1" },
+            { "key": "flags.midi-qol.grants.critical.msak", "mode": 5, "value": "1" }
+        ],
+        petrified: [
+            { "key": "flags.midi-qol.grants.advantage.attack.all", "mode": 2, "value": "1" },
+            { "key": "system.traits.dr.all", "mode": 0, "value": "physical" },
+            { "key": "system.traits.dr.all", "mode": 0, "value": "magical" }
+        ],
+        poisoned: [
+            { "key": "flags.midi-qol.disadvantage.attack.all", "mode": 5, "value": "1" },
+            { "key": "flags.midi-qol.disadvantage.ability.check.all", "mode": 5, "value": "1" }
+        ],
+        prone: [
+            { "key": "flags.midi-qol.grants.advantage.attack.mwak", "mode": 5, "value": "1" },
+            { "key": "flags.midi-qol.grants.advantage.attack.msak", "mode": 5, "value": "1" },
+            { "key": "flags.midi-qol.grants.disadvantage.attack.rwak", "mode": 5, "value": "1" },
+            { "key": "flags.midi-qol.grants.disadvantage.attack.rsak", "mode": 5, "value": "1" },
+            { "key": "flags.midi-qol.disadvantage.attack.all", "mode": 5, "value": "1" }
+        ],
+        restrained: [
+            { "key": "flags.midi-qol.disadvantage.attack.all", "mode": 5, "value": "1", "priority": null },
+            { "key": "flags.midi-qol.disadvantage.ability.save.dex", "mode": 5, "value": "1", "priority": null },
+            { "key": "flags.midi-qol.grants.advantage.attack.all", "mode": 5, "value": "1", "priority": null },
+            { "key": "flags.midi-qol.fail.spell.somatic", "mode": 2, "value": "1", "priority": null }
+        ],
+        silenced: [
+            { "key": "flags.midi-qol.fail.spell.verbal", "mode": 5, "value": "1" }
+        ],
+        stunned: [
+            { "key": "flags.midi-qol.grants.advantage.attack.all", "mode": 5, "value": "1" }
+        ],
+        surprised: [
+            { "key": "system.attributes.init.bonus", "mode": 2, "value": "-20" },
+            { "key": "flags.midi-qol.disadvantage.ability.save.dex", "mode": 5, "value": "1" }
+        ]
+    };
+    
+    // Assign references for core conditions (merge from old conditionsRef)
+    const CORE_CONDITIONS = [
+        { key: "blinded", id: "SXTqmewRrCwPS8yW" },
+        { key: "charmed", id: "ieDILSkRbu9r8pmZ" },
+        { key: "deafened", id: "AHgIwuNdpp0wKF2y" },
+        { key: "frightened", id: "ruwpm6lorwoPJsmt" },
+        { key: "grappled", id: "zaI1nuc41wANKoFX" },
+        { key: "incapacitated", id: "PXI4uoXj7x6IsDXt" },
+        { key: "invisible", id: "GfTD899cLRZxGG1H" },
+        { key: "paralyzed", id: "w5RoCYZIujGYuiYt" },
+        { key: "petrified", id: "n0BX8pLecgm7E3uH" },
+        { key: "poisoned", id: "fzEf89TZ1WN90bFv" },
+        { key: "prone", id: "y8L5Uq1jMVDsQjaS" },
+        { key: "restrained", id: "DiWd3u4HCD7JEw8V" },
+        { key: "stunned", id: "JV8kbMo0p5S1YXUR" },
+        { key: "unconscious", id: "ZwhWWUPJvpFCz8sK" },
+        { key: "exhaustion", id: "mPzXN6MW8L6ePFmq" }
+    ];
+    function getJournalRef(id) {
+        return `Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.${id}`;
+    }
+    CORE_CONDITIONS.forEach(({ key, id }) => {
+        const reference = getJournalRef(id);
+        if (CONFIG.DND5E?.conditionTypes?.[key]) {
+            CONFIG.DND5E.conditionTypes[key].reference = reference;
+        }
+        const effect = CONFIG.statusEffects?.find(e => e.id === key);
+        if (effect) {
+            effect.reference = reference;
+        }
+    });
+    // Special case for cursed
+    const cursedEffect = CONFIG.statusEffects?.find(e => e.id === "cursed");
+    if (cursedEffect) {
+        cursedEffect.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.Vpwu9GQC6HVNZFze";
+    }
+
+    // Set icons for all status effects
+    STATUS_ICONS.forEach(id => {
+        const effect = CONFIG.statusEffects.find(effect => effect.id === id);
+        if (effect) {
+            effect.img = `modules/elkan5e/icons/conditions/${id}.svg`;
+        }
+    });
+    if (CONFIG.DND5E.statusEffects?.coverHalf) CONFIG.DND5E.statusEffects.coverHalf.img = `modules/elkan5e/icons/conditions/cover-half.svg`;
+    if (CONFIG.DND5E.statusEffects?.coverThreeQuarters) CONFIG.DND5E.statusEffects.coverThreeQuarters.img = `modules/elkan5e/icons/conditions/cover-three-quarters.svg`;
+    if (CONFIG.DND5E.statusEffects?.coverTotal) CONFIG.DND5E.statusEffects.coverTotal.img = `modules/elkan5e/icons/conditions/cover-full.svg`;
+    
+    // Removing Unused Conditions
+    if (conditionsSetting === "a" || conditionsSetting === "d") {
+        conditionsToRemove.forEach(condition => {
+            delete CONFIG.DND5E.conditionTypes[condition];
+        });
+    }
+    
+    
+    // Applying effects
+    Object.entries(EFFECTS).forEach(([id, changes]) => {
+        const effect = CONFIG.statusEffects.find(effect => effect.id === id);
+        if (effect) {
+            effect.changes = changes;
+            if (id === "surprised") {
+                effect.flags = {
+                    "dae": {
+                        "transfer": false,
+                        "stackable": "none",
+                        "macroRepeat": "none",
+                        "specialDuration": ["turnEnd"],
+                        "durationExpression": "",
+                        "selfTarget": false,
+                        "selfTargetAlways": false,
+                        "disableIncapacitated": true,
+                        "dontApply": false,
+                        "showIcon": true
+                    },
+                    "core": {
+                        "statusId": ""
+                    }
+                };
+            }
+        }
+    });
+    
+}
+
+export async function conditionsReady() {
+    const conditionsSetting = game.settings.get("elkan5e", "conditions");
+
     const UNUSED_CONDITIONS = [
-        "bleeding", "burrowing", "dodging", "ethereal", "flying",
-        "hidden", "hiding", "hovering", "marked", "transformed", "sleeping",
-        "stable", "burning", "dehydration", "falling", "malnutrition", "suffocation",
+        "burrowing", "ethereal", "flying", "fireShield", 
+        "hidden", "hiding", "hovering", "marked", "sleeping",
+        "burning", "dehydration", "falling", "malnutrition", "suffocation",
         "flanking", "flanked"
     ];
-
-    const conditionsToRemove = ["bleeding", "burning", "dehydration", "falling", "malnutrition", "suffocation", "flanking", "flanked"];
-
+    
     const NEW_STATUS_EFFECTS = [
         {
             id: "confused",
@@ -249,7 +403,7 @@ export function conditions() {
                     key: "flags.midi-qol.grants.advantage.attack.save",
                     mode: 5,
                     value: "1"
-
+    
                 },
                 {
                     key: "flags.midi-qol.onUseMacroName",
@@ -331,154 +485,17 @@ export function conditions() {
             ]
         }
     ];
-
-    const EFFECTS = {
-        dead: [
-            { "key": "attributes.hp.value", "mode": 5, "value": "0", "priority": null }
-        ],
-        blinded: [
-            { "key": "flags.midi-qol.disadvantage.attack.all", "mode": 5, "value": "1" },
-            { "key": "flags.midi-qol.grants.advantage.attack.all", "mode": 5, "value": "1" }
-        ],
-        deafened: [
-            { "key": "flags.midi-qol.disadvantage.ability.check.dex", "mode": 5, "value": "1" },
-            { "key": "flags.midi-qol.disadvantage.ability.save.dex", "mode": 5, "value": "1" }
-        ],
-        frightened: [
-            { "key": "flags.midi-qol.disadvantage.attack.all", "mode": 5, "value": "1" },
-            { "key": "flags.midi-qol.disadvantage.ability.check.all", "mode": 5, "value": "1" }
-        ],
-        incapacitated: [
-            { "key": "flags.midi-qol.fail.ability.save.dex", "mode": 5, "value": "1", "priority": null },
-            { "key": "flags.midi-qol.fail.ability.save.str", "mode": 5, "value": "1", "priority": null }
-        ],
-        invisible: [
-            { "key": "flags.midi-qol.advantage.attack.all", "mode": 5, "value": "1" },
-            { "key": "flags.midi-qol.grants.disadvantage.attack.all", "mode": 5, "value": "1" },
-            { "key": "flags.midi-qol.advantage.skill.ste", "mode": 2, "value": "1" }
-        ],
-        paralyzed: [
-            { "key": "flags.midi-qol.grants.advantage.attack.all", "mode": 5, "value": "1" },
-            { "key": "flags.midi-qol.grants.critical.mwak", "mode": 5, "value": "1" },
-            { "key": "flags.midi-qol.grants.critical.msak", "mode": 5, "value": "1" }
-        ],
-        petrified: [
-            { "key": "flags.midi-qol.grants.advantage.attack.all", "mode": 2, "value": "1" },
-            { "key": "system.traits.dr.all", "mode": 0, "value": "physical" },
-            { "key": "system.traits.dr.all", "mode": 0, "value": "magical" }
-        ],
-        poisoned: [
-            { "key": "flags.midi-qol.disadvantage.attack.all", "mode": 5, "value": "1" },
-            { "key": "flags.midi-qol.disadvantage.ability.check.all", "mode": 5, "value": "1" }
-        ],
-        prone: [
-            { "key": "flags.midi-qol.grants.advantage.attack.mwak", "mode": 5, "value": "1" },
-            { "key": "flags.midi-qol.grants.advantage.attack.msak", "mode": 5, "value": "1" },
-            { "key": "flags.midi-qol.grants.disadvantage.attack.rwak", "mode": 5, "value": "1" },
-            { "key": "flags.midi-qol.grants.disadvantage.attack.rsak", "mode": 5, "value": "1" },
-            { "key": "flags.midi-qol.disadvantage.attack.all", "mode": 5, "value": "1" }
-        ],
-        restrained: [
-            { "key": "flags.midi-qol.disadvantage.attack.all", "mode": 5, "value": "1", "priority": null },
-            { "key": "flags.midi-qol.disadvantage.ability.save.dex", "mode": 5, "value": "1", "priority": null },
-            { "key": "flags.midi-qol.grants.advantage.attack.all", "mode": 5, "value": "1", "priority": null },
-            { "key": "flags.midi-qol.fail.spell.somatic", "mode": 2, "value": "1", "priority": null }
-        ],
-        silenced: [
-            { "key": "flags.midi-qol.fail.spell.verbal", "mode": 5, "value": "1" }
-        ],
-        stunned: [
-            { "key": "flags.midi-qol.grants.advantage.attack.all", "mode": 5, "value": "1" }
-        ],
-        surprised: [
-            { "key": "system.attributes.init.bonus", "mode": 2, "value": "-20" },
-            { "key": "flags.midi-qol.disadvantage.ability.save.dex", "mode": 5, "value": "1" }
-        ]
-    };
-
-    // Assign references for core conditions (merge from old conditionsRef)
-    const CORE_CONDITIONS = [
-        { key: "blinded", id: "SXTqmewRrCwPS8yW" },
-        { key: "charmed", id: "ieDILSkRbu9r8pmZ" },
-        { key: "deafened", id: "AHgIwuNdpp0wKF2y" },
-        { key: "frightened", id: "ruwpm6lorwoPJsmt" },
-        { key: "grappled", id: "zaI1nuc41wANKoFX" },
-        { key: "incapacitated", id: "PXI4uoXj7x6IsDXt" },
-        { key: "invisible", id: "GfTD899cLRZxGG1H" },
-        { key: "paralyzed", id: "w5RoCYZIujGYuiYt" },
-        { key: "petrified", id: "n0BX8pLecgm7E3uH" },
-        { key: "poisoned", id: "fzEf89TZ1WN90bFv" },
-        { key: "prone", id: "y8L5Uq1jMVDsQjaS" },
-        { key: "restrained", id: "DiWd3u4HCD7JEw8V" },
-        { key: "stunned", id: "JV8kbMo0p5S1YXUR" },
-        { key: "unconscious", id: "ZwhWWUPJvpFCz8sK" },
-        { key: "exhaustion", id: "mPzXN6MW8L6ePFmq" }
-    ];
-    function getJournalRef(id) {
-        return `Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.${id}`;
-    }
-    CORE_CONDITIONS.forEach(({ key, id }) => {
-        const reference = getJournalRef(id);
-        if (CONFIG.DND5E?.conditionTypes?.[key]) {
-            CONFIG.DND5E.conditionTypes[key].reference = reference;
-        }
-        const effect = CONFIG.statusEffects?.find(e => e.id === key);
-        if (effect) {
-            effect.reference = reference;
-        }
-    });
-    // Special case for cursed
-    const cursedEffect = CONFIG.statusEffects?.find(e => e.id === "cursed");
-    if (cursedEffect) {
-        cursedEffect.reference = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.Vpwu9GQC6HVNZFze";
-    }
-
-    // Set icons for all status effects
-    STATUS_ICONS.forEach(id => {
-        const effect = CONFIG.statusEffects.find(effect => effect.id === id);
-        if (effect) {
-            effect.img = `modules/elkan5e/icons/conditions/${id}.svg`;
-        }
-    });
-    if (CONFIG.DND5E.statusEffects?.coverHalf) CONFIG.DND5E.statusEffects.coverHalf.img = `modules/elkan5e/icons/conditions/cover-half.svg`;
-    if (CONFIG.DND5E.statusEffects?.coverThreeQuarters) CONFIG.DND5E.statusEffects.coverThreeQuarters.img = `modules/elkan5e/icons/conditions/cover-three-quarters.svg`;
-    if (CONFIG.DND5E.statusEffects?.coverTotal) CONFIG.DND5E.statusEffects.coverTotal.img = `modules/elkan5e/icons/conditions/cover-full.svg`;
-
-    // Removing Unused Conditions
+    
+    
     if (conditionsSetting === "a" || conditionsSetting === "d") {
-        console.log("Elkan 5e  |  Removing unused conditions");
+        console.log("Elkan 5e  |  Conditions before", CONFIG.statusEffects);
         CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => !UNUSED_CONDITIONS.includes(effect.id));
-        conditionsToRemove.forEach(condition => {
-            delete CONFIG.DND5E.conditionTypes[condition];
-        });
+        console.log("Elkan 5e  |  Conditions after", CONFIG.statusEffects);
     }
-
-    // Applying effects
-    Object.entries(EFFECTS).forEach(([id, changes]) => {
-        const effect = CONFIG.statusEffects.find(effect => effect.id === id);
-        if (effect) {
-            effect.changes = changes;
-            if (id === "surprised") {
-                effect.flags = {
-                    "dae": {
-                        "transfer": false,
-                        "stackable": "none",
-                        "macroRepeat": "none",
-                        "specialDuration": ["turnEnd"],
-                        "durationExpression": "",
-                        "selfTarget": false,
-                        "selfTargetAlways": false,
-                        "disableIncapacitated": true,
-                        "dontApply": false,
-                        "showIcon": true
-                    },
-                    "core": {
-                        "statusId": ""
-                    }
-                };
-            }
-        }
-    });
+    if (conditionsSetting === "a" || conditionsSetting === "b") {
+        console.log("Elkan 5e  |  Adding new conditions");
+        NEW_STATUS_EFFECTS.forEach(effect => CONFIG.statusEffects.push(effect));
+    }
 
     // Ensure CONFIG.DND5E.conditionTypes exists before setting properties on it
     if (!CONFIG.DND5E.conditionTypes) CONFIG.DND5E.conditionTypes = {};
@@ -498,12 +515,8 @@ export function conditions() {
             CONFIG.DND5E.conditionTypes["exhaustion"].reduction = {"rolls": 2, "speed": 5}
         }
     }
-
-    if (conditionsSetting === "a" || conditionsSetting === "b") {
-        console.log("Elkan 5e  |  Adding new conditions");
-        NEW_STATUS_EFFECTS.forEach(effect => CONFIG.statusEffects.push(effect));
-    }
 }
+
 
 /*
  * TODO: Automate grapple and give conditions according to the size of the attacker grappler and the

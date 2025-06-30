@@ -8,7 +8,7 @@ import { feral, rage, wildBlood } from "./module/classes/barbarian.mjs";
 import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
 import { hijackShadow, meldWithShadows, rmvMeldShadow, rmvhijackShadow } from "./module/classes/monk.mjs";
 import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
-import { conditions } from "./module/rules/condition.mjs";
+import { conditions, conditionsReady } from "./module/rules/condition.mjs";
 import { language } from "./module/rules/language.mjs";
 import { formating } from "./module/rules/format.mjs";
 import { tools } from "./module/rules/tools.mjs";
@@ -51,7 +51,9 @@ Hooks.once("init", async () => {
 
 Hooks.once('ready', async () => {
     try {
+        conditionsReady()
         startDialog();
+
     } catch (error) {
         console.error("Elkan 5e | Ready Hook Error:", error);
     }
