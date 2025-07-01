@@ -1,343 +1,333 @@
 {
-	"folder": "90eJtrVwLFIxcWJw",
-	"name": "Vitriolic Sphere",
-	"type": "spell",
-	"_id": "uNl8IyAJRobgk26u",
-	"img": "icons/magic/acid/orb-bubble-smoke-drip.webp",
-	"system": {
-		"activities": {
-			"wnSzxOYv6HaSGEja": {
-				"type": "save",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"override": false,
-					"concentration": false
-				},
-				"effects": [
-					{
-						"_id": "WHhf4PFHQBDkCAyb",
-						"onSave": false
-					}
-				],
-				"range": {
-					"override": false,
-					"units": "self"
-				},
-				"target": {
-					"prompt": true,
-					"template": {
-						"contiguous": false,
-						"units": "ft"
-					},
-					"affects": {
-						"choice": false
-					},
-					"override": false
-				},
-				"damage": {
-					"onSave": "half",
-					"parts": [
-						{
-							"custom": {
-								"enabled": false,
-								"formula": "(2 * @item.level + 2)d4"
-							},
-							"number": 10,
-							"denomination": 4,
-							"bonus": "",
-							"types": [
-								"acid"
-							],
-							"scaling": {
-								"mode": "whole",
-								"number": 2,
-								"formula": ""
-							}
-						}
-					],
-					"critical": {
-						"allow": false
-					}
-				},
-				"save": {
-					"ability": [
-						"dex"
-					],
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
-					}
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"sort": 0,
-				"name": "",
-				"_id": "wnSzxOYv6HaSGEja",
-				"useConditionText": "",
-				"useConditionReason": "",
-				"effectConditionText": "",
-				"macroData": {
-					"name": "",
-					"command": ""
-				},
-				"ignoreTraits": {
-					"idi": false,
-					"idr": false,
-					"idv": false,
-					"ida": false
-				},
-				"midiProperties": {
-					"ignoreTraits": [],
-					"triggeredActivityId": "none",
-					"triggeredActivityConditionText": "",
-					"triggeredActivityTargets": "targets",
-					"triggeredActivityRollAs": "self",
-					"forceDialog": false,
-					"confirmTargets": "default",
-					"autoTargetType": "any",
-					"autoTargetAction": "default",
-					"automationOnly": false,
-					"otherActivityCompatible": true,
-					"identifier": "",
-					"displayActivityName": false,
-					"rollMode": "default",
-					"chooseEffects": false,
-					"toggleEffect": false,
-					"ignoreFullCover": false
-				},
-				"isOverTimeFlag": false,
-				"overTimeProperties": {
-					"saveRemoves": true,
-					"preRemoveConditionText": "",
-					"postRemoveConditionText": ""
-				},
-				"otherActivityId": ""
-			},
-			"vNvHHSA1d8gj8rA8": {
-				"type": "damage",
-				"activation": {
-					"type": "",
-					"value": null,
-					"override": true,
-					"condition": ""
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": false
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"override": true,
-					"concentration": false
-				},
-				"effects": [],
-				"range": {
-					"override": true,
-					"units": "any",
-					"special": ""
-				},
-				"target": {
-					"prompt": true,
-					"template": {
-						"contiguous": false,
-						"units": "ft",
-						"type": ""
-					},
-					"affects": {
-						"choice": false,
-						"count": "1",
-						"type": "creature",
-						"special": ""
-					},
-					"override": true
-				},
-				"damage": {
-					"critical": {
-						"allow": false,
-						"bonus": ""
-					},
-					"parts": [
-						{
-							"custom": {
-								"enabled": false,
-								"formula": ""
-							},
-							"number": 5,
-							"denomination": 4,
-							"bonus": "",
-							"types": [
-								"acid"
-							],
-							"scaling": {
-								"mode": "",
-								"number": 1
-							}
-						}
-					]
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"sort": 0,
-				"name": "End of Turn Damage",
-				"_id": "vNvHHSA1d8gj8rA8",
-				"useConditionText": "",
-				"useConditionReason": "",
-				"effectConditionText": "",
-				"macroData": {
-					"name": "",
-					"command": ""
-				},
-				"ignoreTraits": {
-					"idi": false,
-					"idr": false,
-					"idv": false,
-					"ida": false
-				},
-				"midiProperties": {
-					"ignoreTraits": [],
-					"triggeredActivityId": "none",
-					"triggeredActivityConditionText": "",
-					"triggeredActivityTargets": "targets",
-					"triggeredActivityRollAs": "self",
-					"forceDialog": false,
-					"confirmTargets": "default",
-					"autoTargetType": "any",
-					"autoTargetAction": "default",
-					"automationOnly": false,
-					"otherActivityCompatible": true,
-					"identifier": "",
-					"displayActivityName": false,
-					"rollMode": "default",
-					"chooseEffects": false,
-					"toggleEffect": false,
-					"ignoreFullCover": false
-				},
-				"isOverTimeFlag": false,
-				"overTimeProperties": {
-					"saveRemoves": true,
-					"preRemoveConditionText": "",
-					"postRemoveConditionText": ""
-				}
-			}
-		},
-		"uses": {
-			"spent": 0,
-			"recovery": [],
-			"max": ""
-		},
-		"description": {
-			"value": "<p>You point at a location within range, and a glowing, 1-foot-diameter ball of acid streaks there and explodes in a 20-foot-radius Sphere. Each creature in that area makes a Dexterity saving throw. On a failed save, a creature takes 10d4 Acid damage and another [[/damage 5d4 type=acid]] damage at the end of its next turn. On a successful save, a creature takes half the initial damage only.</p><p><strong>Using a Higher-Level Spell Slot. </strong>The initial damage increases by 2d4 for each spell slot level above 4.</p>",
-			"chat": ""
-		},
-		"identifier": "vitriolic-sphere",
-		"source": {
-			"revision": 1,
-			"rules": "2024"
-		},
-		"activation": {
-			"type": "action",
-			"value": null,
-			"condition": ""
-		},
-		"duration": {
-			"units": "inst"
-		},
-		"level": 4,
-		"materials": {
-			"value": "",
-			"consumed": false,
-			"cost": 0,
-			"supply": 0
-		},
-		"preparation": {
-			"mode": "prepared",
-			"prepared": true
-		},
-		"properties": [
-			"vocal",
-			"somatic",
-			"material"
-		],
-		"range": {
-			"units": "ft",
-			"special": "",
-			"value": "150"
-		},
-		"school": "evo",
-		"target": {
-			"template": {
-				"contiguous": false,
-				"units": "ft",
-				"type": "sphere",
-				"size": "20",
-				"count": ""
-			},
-			"affects": {
-				"choice": false,
-				"type": "",
-				"special": "",
-				"count": ""
-			}
-		}
-	},
-	"effects": [],
-	"flags": {
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
-		},
-		"midi-qol": {
-			"rollAttackPerTarget": "default",
-			"removeAttackDamageButtons": "default",
-			"itemCondition": "",
-			"reactionCondition": "",
-			"otherCondition": "",
-			"effectCondition": ""
-		},
-		"midiProperties": {
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"noConcentrationCheck": false,
-			"toggleEffect": false,
-			"ignoreTotalCover": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			}
-		}
-	},
-	"_key": "!items!uNl8IyAJRobgk26u"
+  "folder": "90eJtrVwLFIxcWJw",
+  "name": "Vitriolic Sphere",
+  "type": "spell",
+  "_id": "uNl8IyAJRobgk26u",
+  "img": "icons/magic/acid/orb-bubble-smoke-drip.webp",
+  "system": {
+    "activities": {
+      "wnSzxOYv6HaSGEja": {
+        "type": "save",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "override": false,
+          "concentration": false
+        },
+        "effects": [
+          {
+            "_id": "WHhf4PFHQBDkCAyb",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "override": false,
+          "units": "self"
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": "(2 * @item.level + 2)d4"
+              },
+              "number": 10,
+              "denomination": 4,
+              "bonus": "",
+              "types": [
+                "acid"
+              ],
+              "scaling": {
+                "mode": "whole",
+                "number": 2,
+                "formula": ""
+              }
+            }
+          ],
+          "critical": {
+            "allow": false
+          }
+        },
+        "save": {
+          "ability": [
+            "dex"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "sort": 0,
+        "name": "",
+        "_id": "wnSzxOYv6HaSGEja",
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": ""
+      },
+      "vNvHHSA1d8gj8rA8": {
+        "type": "damage",
+        "activation": {
+          "type": "",
+          "value": null,
+          "override": true,
+          "condition": ""
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": false
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "override": true,
+          "concentration": false
+        },
+        "effects": [],
+        "range": {
+          "override": true,
+          "units": "any",
+          "special": ""
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "damage": {
+          "critical": {
+            "allow": false,
+            "bonus": ""
+          },
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 5,
+              "denomination": 4,
+              "bonus": "",
+              "types": [
+                "acid"
+              ],
+              "scaling": {
+                "mode": "",
+                "number": 1
+              }
+            }
+          ]
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "sort": 0,
+        "name": "End of Turn Damage",
+        "_id": "vNvHHSA1d8gj8rA8",
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        }
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "description": {
+      "value": "<p>You point at a location within range, and a glowing, 1-foot-diameter ball of acid streaks there and explodes in a 20-foot-radius Sphere. Each creature in that area makes a Dexterity saving throw. On a failed save, a creature takes 10d4 Acid damage and another [[/damage 5d4 type=acid]] damage at the end of its next turn. On a successful save, a creature takes half the initial damage only.</p><p><strong>Using a Higher-Level Spell Slot. </strong>The initial damage increases by 2d4 for each spell slot level above 4.</p>",
+      "chat": ""
+    },
+    "identifier": "vitriolic-sphere",
+    "source": {
+      "revision": 1,
+      "rules": "2024"
+    },
+    "activation": {
+      "type": "action",
+      "value": null,
+      "condition": ""
+    },
+    "duration": {
+      "units": "inst"
+    },
+    "level": 4,
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material"
+    ],
+    "range": {
+      "units": "ft",
+      "special": "",
+      "value": "150"
+    },
+    "school": "evo",
+    "target": {
+      "template": {
+        "contiguous": false,
+        "units": "ft",
+        "type": "sphere",
+        "size": "20",
+        "count": ""
+      },
+      "affects": {
+        "choice": false,
+        "type": "",
+        "special": "",
+        "count": ""
+      }
+    }
+  },
+  "effects": [],
+  "flags": {
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": ""
+    },
+    "midiProperties": {
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    }
+  },
+  "_key": "!items!uNl8IyAJRobgk26u"
 }
