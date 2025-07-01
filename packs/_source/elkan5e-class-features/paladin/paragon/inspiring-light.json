@@ -1,0 +1,319 @@
+{
+	"folder": "dqN1OSiHa3McvNxD",
+	"name": "Inspiring Light",
+	"type": "feat",
+	"img": "icons/magic/light/explosion-star-blue-yellow.webp",
+	"system": {
+		"description": {
+			"value": "<p><em>A burst of light shines from you, empowering your allies.</em></p><p><strong>Bonus Action</strong> - 6 Creatures (60 ft.) - 1/Short Rest - Magical</p><ul><li><p>Targets gain [[/healing 2d8 temp]]{2d8 temporary hit points}, which last you or they finish a &amp;reference[short rest]{short} or &amp;reference[long rest].</p></li><li><p>Targets have advantage on the first saving throw they make before the end of your next turn.</p></li><li><p>You shed &amp;reference[bright light] in a 60 ft. radius until the end of this turn.</p></li></ul>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/paladin",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"uses": {
+			"max": "1",
+			"recovery": [
+				{
+					"period": "sr",
+					"type": "recoverAll"
+				}
+			],
+			"spent": 0
+		},
+		"type": {
+			"value": "subclass",
+			"subtype": ""
+		},
+		"properties": [
+			"mgc"
+		],
+		"requirements": "Paragon 3/10",
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "heal",
+				"activation": {
+					"type": "bonus",
+					"value": 1,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [
+						{
+							"type": "itemUses",
+							"target": "",
+							"value": "1",
+							"scaling": {
+								"mode": "",
+								"formula": ""
+							}
+						}
+					],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "1",
+					"units": "spec",
+					"special": "",
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "Q7slROouWJTS0OAN"
+					},
+					{
+						"_id": "mD8Bg4LzYQC5awa7"
+					}
+				],
+				"range": {
+					"value": "60",
+					"units": "ft",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": ""
+					},
+					"affects": {
+						"count": "6",
+						"type": "creature",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"healing": {
+					"number": 2,
+					"denomination": 8,
+					"bonus": "",
+					"types": [
+						"temphp"
+					],
+					"custom": {
+						"enabled": false,
+						"formula": ""
+					},
+					"scaling": {
+						"mode": "whole",
+						"number": null,
+						"formula": ""
+					}
+				},
+				"sort": 0
+			}
+		},
+		"identifier": "",
+		"enchant": {},
+		"prerequisites": {
+			"level": null
+		}
+	},
+	"effects": [
+		{
+			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.1h1j8h29V9gDtlMD",
+			"duration": {
+				"rounds": null,
+				"startTime": null,
+				"seconds": 7,
+				"combat": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"disabled": false,
+			"name": "Inspiring Light (Target)",
+			"_id": "Q7slROouWJTS0OAN",
+			"changes": [
+				{
+					"key": "flags.midi-qol.advantage.ability.save.all",
+					"mode": 5,
+					"value": "1",
+					"priority": 20
+				}
+			],
+			"description": "",
+			"transfer": false,
+			"statuses": [],
+			"flags": {
+				"dae": {
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [
+						"turnEndSource",
+						"isSave"
+					],
+					"enableCondition": "",
+					"disableCondition": ""
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
+				},
+				"core": {
+					"overlay": false
+				}
+			},
+			"tint": "#ffffff",
+			"img": "icons/magic/light/explosion-star-blue-yellow.webp",
+			"type": "base",
+			"system": {},
+			"sort": 0,
+			"_key": "!items.effects!eEEEvZIs5DK6LLic.Q7slROouWJTS0OAN"
+		},
+		{
+			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.1h1j8h29V9gDtlMD",
+			"duration": {
+				"rounds": null,
+				"startTime": null,
+				"seconds": 7,
+				"combat": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"disabled": false,
+			"name": "Inspiring Light (Caster)",
+			"_id": "mD8Bg4LzYQC5awa7",
+			"changes": [
+				{
+					"key": "ATL.light.bright",
+					"mode": 2,
+					"value": "60",
+					"priority": 20
+				}
+			],
+			"description": "",
+			"transfer": false,
+			"statuses": [],
+			"flags": {
+				"dae": {
+					"disableIncapacitated": false,
+					"selfTarget": true,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": true,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [
+						"turnEndSource"
+					],
+					"enableCondition": "",
+					"disableCondition": ""
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
+				},
+				"core": {
+					"overlay": false
+				}
+			},
+			"tint": "#ffffff",
+			"img": "icons/magic/light/explosion-star-blue-yellow.webp",
+			"type": "base",
+			"system": {},
+			"sort": 0,
+			"_key": "!items.effects!eEEEvZIs5DK6LLic.mD8Bg4LzYQC5awa7"
+		}
+	],
+	"flags": {
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"removeAttackDamageButtons": "default",
+			"reactionCondition": "",
+			"otherCondition": ""
+		},
+		"core": {},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedUses": 1
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"_id": "eEEEvZIs5DK6LLic",
+	"_key": "!items!eEEEvZIs5DK6LLic"
+}

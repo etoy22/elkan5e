@@ -1,0 +1,296 @@
+{
+	"name": "Unseen Servant",
+	"type": "spell",
+	"img": "icons/tools/hand/broom-straw-brown.webp",
+	"effects": [],
+	"folder": "U0k4VGG6bziqf3oH",
+	"flags": {
+		"core": {},
+		"midi-qol": {
+			"effectActivation": false,
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default",
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default",
+			"removeAttackDamageButtons": "default"
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"noConcentrationCheck": false,
+			"confirmTargets": "default",
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic",
+				"material",
+				"ritual"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>You beckon forth an invisible servant, calling its name. Holding a piece of</em><em>string tied to wood, the creature grasps out and takes it from you. This creature, really a minor air elemental, performs simple tasks at your command.</em></p><p><strong>Ritual Casting Time</strong> : 1 Minute</p><p><strong>Summoning Spell</strong> </p><ul><li><p>You create an &amp;reference[Invisible] @UUID[Compendium.elkan5e.elkan5e-summoned-creatures.Actor.QHbbzyqIbYaekjXY]{Unseen Servant}. It is a medium &amp;reference[elemental] that has AC 10, 1 hit point, and all its ability scores are 2, except dexterity which is 10. It can't attack. If it drops to 0 hit points, the spell ends.</p></li><li><p>The servant can act on your turns. It can move up to 15 feet and perform simple tasks, such as fetching things, cleaning, mending, folding clothes, lighting fires, serving food, and pouring wine. Once you give the command, the servant performs the task to the best of its ability until it completes the task, then waits for your next command.</p></li></ul><p></p><p><em>The unseen servant is not capable of interpreting non-literal commands, and may need step-by-step instructions for complex tasks. On the other hand, Unseen Servants are often summoned for housekeeping duties, and are typically experienced at following such commands.</em></p>",
+			"chat": "<p><strong>Ritual Casting Time</strong> : 1 Minute</p><p><strong>Summoning Spell</strong></p><ul><li><p>You create an &amp;reference[Invisible] @UUID[Compendium.elkan5e.elkan5e-summoned-creatures.Actor.QHbbzyqIbYaekjXY]{Unseen Servant}. It is a medium &amp;reference[elemental] that has AC 10, 1 hit point, and all its ability scores are 2, except dexterity which is 10. It can't attack. If it drops to 0 hit points, the spell ends.</p></li><li><p>The servant can act on your turns. It can move up to 15 feet and perform simple tasks, such as fetching things, cleaning, mending, folding clothes, lighting fires, serving food, and pouring wine. Once you give the command, the servant performs the task to the best of its ability until it completes the task, then waits for your next command.</p></li></ul><p></p>"
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/unseen-servant",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "1",
+			"units": "hour"
+		},
+		"target": {
+			"affects": {
+				"special": "",
+				"type": "space",
+				"count": "1",
+				"choice": false
+			},
+			"template": {
+				"type": "",
+				"units": "",
+				"contiguous": false
+			}
+		},
+		"range": {
+			"value": "60",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 1,
+		"school": "con",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"material",
+			"ritual",
+			"mgc"
+		],
+		"activities": {
+			"H9r9tgGeDrYSRRL1": {
+				"type": "summon",
+				"activation": {
+					"type": "minute",
+					"value": 10,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"bonuses": {
+					"ac": "",
+					"hp": "",
+					"attackDamage": "",
+					"saveDamage": "",
+					"healing": "",
+					"hd": ""
+				},
+				"creatureSizes": [],
+				"creatureTypes": [],
+				"match": {
+					"proficiency": false,
+					"attacks": false,
+					"saves": false
+				},
+				"profiles": [
+					{
+						"count": "",
+						"name": "Unseen Servant",
+						"_id": "z0rUhGYHmdy9LrCW",
+						"uuid": "Compendium.elkan5e.elkan5e-summoned-creatures.Actor.QHbbzyqIbYaekjXY",
+						"level": {
+							"min": null,
+							"max": null
+						},
+						"types": []
+					}
+				],
+				"summon": {
+					"identifier": "",
+					"mode": "",
+					"prompt": true
+				},
+				"sort": 0,
+				"_id": "H9r9tgGeDrYSRRL1",
+				"name": "",
+				"img": "",
+				"appliedEffects": []
+			},
+			"MrATfos502JiiBOQ": {
+				"type": "summon",
+				"activation": {
+					"type": "minute",
+					"value": 1,
+					"override": true,
+					"condition": ""
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"bonuses": {
+					"ac": "",
+					"hp": "",
+					"attackDamage": "",
+					"saveDamage": "",
+					"healing": "",
+					"hd": ""
+				},
+				"creatureSizes": [],
+				"creatureTypes": [],
+				"match": {
+					"proficiency": false,
+					"attacks": false,
+					"saves": false
+				},
+				"profiles": [
+					{
+						"count": "",
+						"name": "Unseen Servant",
+						"_id": "z0rUhGYHmdy9LrCW",
+						"uuid": "Compendium.elkan5e.elkan5e-summoned-creatures.Actor.QHbbzyqIbYaekjXY",
+						"level": {
+							"min": null,
+							"max": null
+						},
+						"types": []
+					}
+				],
+				"summon": {
+					"identifier": "",
+					"mode": "",
+					"prompt": true
+				},
+				"sort": 0,
+				"name": "Ritual",
+				"_id": "MrATfos502JiiBOQ",
+				"img": "",
+				"appliedEffects": []
+			}
+		},
+		"identifier": ""
+	},
+	"_id": "hkKA1Y06dJtUlKQJ",
+	"_key": "!items!hkKA1Y06dJtUlKQJ"
+}
