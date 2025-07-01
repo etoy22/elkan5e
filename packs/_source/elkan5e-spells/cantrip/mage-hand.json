@@ -1,201 +1,201 @@
 {
-  "name": "Mage Hand",
-  "type": "spell",
-  "img": "icons/magic/water/water-hand.webp",
-  "effects": [],
-  "folder": "SjVk5lAwzIpqSBbH",
-  "flags": {
-    "core": {},
-    "midi-qol": {
-      "effectActivation": false,
-      "itemCondition": "",
-      "reactionCondition": "",
-      "otherCondition": "",
-      "effectCondition": "",
-      "rollAttackPerTarget": "default",
-      "AoETargetType": "any",
-      "autoTarget": "default",
-      "removeAttackDamageButtons": "default"
-    },
-    "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
-      "rollOther": false,
-      "critOther": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "toggleEffect": false,
-      "ignoreTotalCover": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "offHandWeapon": false,
-      "noConcentrationCheck": false,
-      "confirmTargets": "default",
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      },
-      "migratedProperties": [
-        "vocal",
-        "somatic"
-      ]
-    },
-    "tidy5e-sheet": {
-      "section": "",
-      "actionSection": ""
-    }
-  },
-  "system": {
-    "description": {
-      "value": "<p><em>You hold your hand out towards the location you want to create your mage hand, briefly close your eyes and say a few magic words, and conjure forth a second, magical hand at the position you choose.</em></p><p><strong>Summoning Spell</strong> </p><ul><li><p>It is a tiny &amp;reference[elemental]{Elemental}, and is immune to all damage and conditions.</p></li><li><p>A spectral, floating hand appears at a point you choose within range. The hand vanishes if it is ever more than 30 feet away from you or if you cast this spell again.</p></li><li><p>You can use your action to control the hand. You can use the hand to manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or pour the contents out of a vial. You can have the hand fly up to 30 ft. each time you use it.</p></li><li><p>The hand can't attack, activate magic items, or carry more than 10 pounds. It is clumsy, and automatically fails all &amp;reference[sleightOfHand] checks.</p></li></ul>",
-      "chat": "<p><strong>Summoning Spell</strong></p><ul><li><p>It is a tiny &amp;reference[elemental]{Elemental}, and is immune to all damage and conditions.</p></li><li><p>A spectral, floating hand appears at a point you choose within range. The hand vanishes if it is ever more than 30 feet away from you or if you cast this spell again.</p></li><li><p>You can use your action to control the hand. You can use the hand to manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or pour the contents out of a vial. You can have the hand fly up to 30 ft. each time you use it.</p></li><li><p>The hand can't attack, activate magic items, or carry more than 10 pounds. It is clumsy, and automatically fails all &amp;reference[sleightOfHand] checks.</p></li></ul>"
-    },
-    "source": {
-      "custom": "elkan5e.com/spells/mage-hand",
-      "revision": 1,
-      "rules": "",
-      "book": "Elkan 5e",
-      "page": "",
-      "license": ""
-    },
-    "activation": {
-      "type": "action",
-      "condition": "",
-      "value": 1
-    },
-    "duration": {
-      "value": "1",
-      "units": "minute"
-    },
-    "target": {
-      "affects": {
-        "special": "",
-        "type": "space",
-        "count": "1",
-        "choice": false
-      },
-      "template": {
-        "type": "",
-        "units": "ft",
-        "contiguous": false
-      }
-    },
-    "range": {
-      "value": "30",
-      "units": "ft",
-      "special": ""
-    },
-    "uses": {
-      "max": "",
-      "recovery": [],
-      "spent": 0
-    },
-    "ability": "",
-    "level": 0,
-    "school": "con",
-    "materials": {
-      "value": "",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
-    },
-    "preparation": {
-      "mode": "always",
-      "prepared": true
-    },
-    "properties": [
-      "vocal",
-      "somatic",
-      "mgc"
-    ],
-    "activities": {
-      "dnd5eactivity000": {
-        "_id": "dnd5eactivity000",
-        "type": "summon",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "type": "creature",
-          "value": 1,
-          "units": "ft",
-          "width": null,
-          "override": false,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "max": "",
-          "recovery": []
-        },
-        "bonuses": {
-          "ac": "",
-          "hd": "",
-          "hp": "",
-          "attackDamage": "",
-          "saveDamage": "",
-          "healing": ""
-        },
-        "creatureSizes": [],
-        "creatureTypes": [],
-        "match": {
-          "proficiency": false,
-          "attacks": false,
-          "saves": false
-        },
-        "profiles": [
-          {
-            "count": "",
-            "name": "",
-            "_id": "ziPD1GbupLiddqdT",
-            "uuid": "Compendium.elkan5e.elkan5e-summoned-creatures.Actor.aQlhMcxMEc88cZv6",
-            "level": {
-              "min": null,
-              "max": null
-            },
-            "types": []
-          }
-        ],
-        "summon": {
-          "identifier": "",
-          "mode": "",
-          "prompt": true
-        },
-        "sort": 0
-      }
-    },
-    "identifier": ""
-  },
-  "_id": "5q8pIqm30Geurdx2",
-  "_key": "!items!5q8pIqm30Geurdx2"
+	"name": "Mage Hand",
+	"type": "spell",
+	"img": "icons/magic/water/water-hand.webp",
+	"effects": [],
+	"folder": "SjVk5lAwzIpqSBbH",
+	"flags": {
+		"core": {},
+		"midi-qol": {
+			"effectActivation": false,
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default",
+			"AoETargetType": "any",
+			"autoTarget": "default",
+			"removeAttackDamageButtons": "default"
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"noConcentrationCheck": false,
+			"confirmTargets": "default",
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>You hold your hand out towards the location you want to create your mage hand, briefly close your eyes and say a few magic words, and conjure forth a second, magical hand at the position you choose.</em></p><p><strong>Summoning Spell</strong> </p><ul><li><p>It is a tiny &amp;reference[elemental]{Elemental}, and is immune to all damage and conditions.</p></li><li><p>A spectral, floating hand appears at a point you choose within range. The hand vanishes if it is ever more than 30 feet away from you or if you cast this spell again.</p></li><li><p>You can use your action to control the hand. You can use the hand to manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or pour the contents out of a vial. You can have the hand fly up to 30 ft. each time you use it.</p></li><li><p>The hand can't attack, activate magic items, or carry more than 10 pounds. It is clumsy, and automatically fails all &amp;reference[sleightOfHand] checks.</p></li></ul>",
+			"chat": "<p><strong>Summoning Spell</strong></p><ul><li><p>It is a tiny &amp;reference[elemental]{Elemental}, and is immune to all damage and conditions.</p></li><li><p>A spectral, floating hand appears at a point you choose within range. The hand vanishes if it is ever more than 30 feet away from you or if you cast this spell again.</p></li><li><p>You can use your action to control the hand. You can use the hand to manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or pour the contents out of a vial. You can have the hand fly up to 30 ft. each time you use it.</p></li><li><p>The hand can't attack, activate magic items, or carry more than 10 pounds. It is clumsy, and automatically fails all &amp;reference[sleightOfHand] checks.</p></li></ul>"
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/mage-hand",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "1",
+			"units": "minute"
+		},
+		"target": {
+			"affects": {
+				"special": "",
+				"type": "space",
+				"count": "1",
+				"choice": false
+			},
+			"template": {
+				"type": "",
+				"units": "ft",
+				"contiguous": false
+			}
+		},
+		"range": {
+			"value": "30",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 0,
+		"school": "con",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "always",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"mgc"
+		],
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "summon",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"bonuses": {
+					"ac": "",
+					"hd": "",
+					"hp": "",
+					"attackDamage": "",
+					"saveDamage": "",
+					"healing": ""
+				},
+				"creatureSizes": [],
+				"creatureTypes": [],
+				"match": {
+					"proficiency": false,
+					"attacks": false,
+					"saves": false
+				},
+				"profiles": [
+					{
+						"count": "",
+						"name": "",
+						"_id": "ziPD1GbupLiddqdT",
+						"uuid": "Compendium.elkan5e.elkan5e-summoned-creatures.Actor.aQlhMcxMEc88cZv6",
+						"level": {
+							"min": null,
+							"max": null
+						},
+						"types": []
+					}
+				],
+				"summon": {
+					"identifier": "",
+					"mode": "",
+					"prompt": true
+				},
+				"sort": 0
+			}
+		},
+		"identifier": ""
+	},
+	"_id": "5q8pIqm30Geurdx2",
+	"_key": "!items!5q8pIqm30Geurdx2"
 }

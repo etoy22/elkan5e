@@ -1,265 +1,265 @@
 {
-  "name": "Modify Memory",
-  "type": "spell",
-  "img": "icons/magic/control/hypnosis-mesmerism-watch.webp",
-  "effects": [
-    {
-      "_id": "B7caBvOF9F3db87I",
-      "changes": [],
-      "disabled": false,
-      "duration": {
-        "startTime": null,
-        "seconds": 60,
-        "combat": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
-      },
-      "transfer": false,
-      "flags": {
-        "core": {
-          "overlay": false
-        },
-        "combat-utility-belt": {
-          "conditionId": "charmed",
-          "overlay": false
-        },
-        "dae": {
-          "stackable": "none",
-          "specialDuration": [],
-          "transfer": false,
-          "selfTarget": false,
-          "selfTargetAlways": false,
-          "dontApply": false,
-          "showIcon": false,
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "enableCondition": "",
-          "disableCondition": "",
-          "disableIncapacitated": false
-        },
-        "ActiveAuras": {
-          "isAura": false,
-          "radius": "",
-          "aura": "None",
-          "alignment": "",
-          "type": "",
-          "ignoreSelf": false,
-          "height": false,
-          "hidden": false,
-          "hostile": false,
-          "onlyOnce": false,
-          "nameOverride": "",
-          "customCheck": "",
-          "displayTemp": false,
-          "wallsBlock": "system",
-          "statuses": []
-        },
-        "dnd5e": {
-          "riders": {
-            "statuses": []
-          }
-        }
-      },
-      "tint": "#ffffff",
-      "origin": null,
-      "name": "Modify Memory",
-      "description": "",
-      "statuses": [
-        "charmed",
-        "incapacitated"
-      ],
-      "img": "icons/magic/control/hypnosis-mesmerism-watch.webp",
-      "type": "base",
-      "system": {},
-      "sort": 0,
-      "_key": "!items.effects!txItvxlcpaIbIt5s.B7caBvOF9F3db87I"
-    }
-  ],
-  "folder": "PnZJTE6T4UQY81Pm",
-  "flags": {
-    "midi-qol": {
-      "onUseMacroName": "",
-      "effectActivation": false,
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": "",
-      "reactionCondition": "",
-      "AoETargetType": "any",
-      "autoTarget": "default",
-      "removeAttackDamageButtons": "default",
-      "otherCondition": ""
-    },
-    "core": {},
-    "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
-      "rollOther": false,
-      "critOther": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "toggleEffect": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "offHandWeapon": false,
-      "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      },
-      "migratedProperties": [
-        "vocal",
-        "somatic",
-        "concentration"
-      ]
-    },
-    "tidy5e-sheet": {
-      "section": "",
-      "actionSection": ""
-    }
-  },
-  "system": {
-    "description": {
-      "value": "<p><em>You speak in a rhythmic pattern, placing your target in a trance state under which their memories become malleable.</em></p><p><strong>Wisdom Save</strong></p><ul><li><p><strong>Failure</strong>: Target becomes &amp;reference[Charmed] for 1 minute or until they take damage or a creature uses an action to wake them up. While charmed in this way:</p><ul><li><p>The creature is &amp;reference[incapacitated] and unaware of its surroundings, though it can still hear you.</p></li><li><p>You can speak to the target, describing new memories to them. If they understand you, you can eliminate memories, alter existing memories, and create new ones, so long as all your adjustments to their memory all refer to a single 24-hour period.* The target will do their best to integrate the memories and make them fit with existing information.</p></li></ul></li></ul><ul><li><p>If the spell lasts the full minute without interruption, the target is &amp;reference[cursed]. While cursed in this way:</p><ul><li><p>Their memories are permanently altered with the new memories you gave them.</p></li><li><p>The target behaves normally, and the target might identify the memory as false if it seems illogical or nonsensical.</p></li></ul></li></ul><ul><li><p><strong>Success</strong>: No effect.</p></li></ul><p></p><p><strong>*Upcasting:</strong> At level 6, any edited memories must be within a week span. At level 7, a month. At level 8, a year. At level 9, the affected memories can be across any period of time.</p>",
-      "chat": ""
-    },
-    "source": {
-      "custom": "elkan5e.com/spells/modify-memory",
-      "revision": 1,
-      "rules": "",
-      "book": "Elkan 5e",
-      "page": "",
-      "license": ""
-    },
-    "activation": {
-      "type": "action",
-      "condition": "",
-      "value": 1
-    },
-    "duration": {
-      "value": "1",
-      "units": "minute"
-    },
-    "target": {
-      "affects": {
-        "type": "creature",
-        "count": "1",
-        "choice": false,
-        "special": ""
-      },
-      "template": {
-        "units": "",
-        "contiguous": false,
-        "type": ""
-      }
-    },
-    "range": {
-      "value": "15",
-      "units": "ft",
-      "special": ""
-    },
-    "uses": {
-      "max": "",
-      "recovery": [],
-      "spent": 0
-    },
-    "ability": "",
-    "level": 5,
-    "school": "enc",
-    "materials": {
-      "value": "",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
-    },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": true
-    },
-    "properties": [
-      "vocal",
-      "somatic",
-      "concentration"
-    ],
-    "activities": {
-      "fmN8BATi6XbiXhEq": {
-        "type": "save",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [
-          {
-            "_id": "B7caBvOF9F3db87I",
-            "onSave": false
-          }
-        ],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "type": "creature",
-          "value": 1,
-          "units": "ft",
-          "width": null,
-          "override": false,
-          "prompt": true
-        },
-        "damage": {
-          "onSave": "half",
-          "parts": []
-        },
-        "save": {
-          "ability": "wis",
-          "dc": {
-            "calculation": "spellcasting",
-            "formula": ""
-          }
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "sort": 0,
-        "_id": "fmN8BATi6XbiXhEq",
-        "name": "",
-        "img": "",
-        "appliedEffects": [
-          "B7caBvOF9F3db87I"
-        ]
-      }
-    },
-    "identifier": ""
-  },
-  "_id": "txItvxlcpaIbIt5s",
-  "_key": "!items!txItvxlcpaIbIt5s"
+	"name": "Modify Memory",
+	"type": "spell",
+	"img": "icons/magic/control/hypnosis-mesmerism-watch.webp",
+	"effects": [
+		{
+			"_id": "B7caBvOF9F3db87I",
+			"changes": [],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 60,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"transfer": false,
+			"flags": {
+				"core": {
+					"overlay": false
+				},
+				"combat-utility-belt": {
+					"conditionId": "charmed",
+					"overlay": false
+				},
+				"dae": {
+					"stackable": "none",
+					"specialDuration": [],
+					"transfer": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"enableCondition": "",
+					"disableCondition": "",
+					"disableIncapacitated": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"radius": "",
+					"aura": "None",
+					"alignment": "",
+					"type": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"nameOverride": "",
+					"customCheck": "",
+					"displayTemp": false,
+					"wallsBlock": "system",
+					"statuses": []
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				}
+			},
+			"tint": "#ffffff",
+			"origin": null,
+			"name": "Modify Memory",
+			"description": "",
+			"statuses": [
+				"charmed",
+				"incapacitated"
+			],
+			"img": "icons/magic/control/hypnosis-mesmerism-watch.webp",
+			"type": "base",
+			"system": {},
+			"sort": 0,
+			"_key": "!items.effects!txItvxlcpaIbIt5s.B7caBvOF9F3db87I"
+		}
+	],
+	"folder": "PnZJTE6T4UQY81Pm",
+	"flags": {
+		"midi-qol": {
+			"onUseMacroName": "",
+			"effectActivation": false,
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"AoETargetType": "any",
+			"autoTarget": "default",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"core": {},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"confirmTargets": "default",
+			"noConcentrationCheck": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic",
+				"concentration"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>You speak in a rhythmic pattern, placing your target in a trance state under which their memories become malleable.</em></p><p><strong>Wisdom Save</strong></p><ul><li><p><strong>Failure</strong>: Target becomes &amp;reference[Charmed] for 1 minute or until they take damage or a creature uses an action to wake them up. While charmed in this way:</p><ul><li><p>The creature is &amp;reference[incapacitated] and unaware of its surroundings, though it can still hear you.</p></li><li><p>You can speak to the target, describing new memories to them. If they understand you, you can eliminate memories, alter existing memories, and create new ones, so long as all your adjustments to their memory all refer to a single 24-hour period.* The target will do their best to integrate the memories and make them fit with existing information.</p></li></ul></li></ul><ul><li><p>If the spell lasts the full minute without interruption, the target is &amp;reference[cursed]. While cursed in this way:</p><ul><li><p>Their memories are permanently altered with the new memories you gave them.</p></li><li><p>The target behaves normally, and the target might identify the memory as false if it seems illogical or nonsensical.</p></li></ul></li></ul><ul><li><p><strong>Success</strong>: No effect.</p></li></ul><p></p><p><strong>*Upcasting:</strong> At level 6, any edited memories must be within a week span. At level 7, a month. At level 8, a year. At level 9, the affected memories can be across any period of time.</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/modify-memory",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "1",
+			"units": "minute"
+		},
+		"target": {
+			"affects": {
+				"type": "creature",
+				"count": "1",
+				"choice": false,
+				"special": ""
+			},
+			"template": {
+				"units": "",
+				"contiguous": false,
+				"type": ""
+			}
+		},
+		"range": {
+			"value": "15",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 5,
+		"school": "enc",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"concentration"
+		],
+		"activities": {
+			"fmN8BATi6XbiXhEq": {
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "B7caBvOF9F3db87I",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": []
+				},
+				"save": {
+					"ability": "wis",
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"sort": 0,
+				"_id": "fmN8BATi6XbiXhEq",
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"B7caBvOF9F3db87I"
+				]
+			}
+		},
+		"identifier": ""
+	},
+	"_id": "txItvxlcpaIbIt5s",
+	"_key": "!items!txItvxlcpaIbIt5s"
 }

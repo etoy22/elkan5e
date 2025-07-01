@@ -1,286 +1,286 @@
 {
-  "name": "Shield",
-  "type": "spell",
-  "img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
-  "effects": [
-    {
-      "_id": "6pbotGIvqQkraPva",
-      "flags": {
-        "dae": {
-          "stackable": "none",
-          "specialDuration": [
-            "turnEndSource"
-          ],
-          "transfer": false,
-          "macroRepeat": "none",
-          "durationExpression": "",
-          "selfTarget": false,
-          "selfTargetAlways": false,
-          "dontApply": false,
-          "showIcon": false,
-          "disableIncapacitated": false,
-          "enableCondition": "",
-          "disableCondition": ""
-        },
-        "ActiveAuras": {
-          "isAura": false,
-          "radius": "",
-          "aura": "None",
-          "alignment": "",
-          "type": "",
-          "ignoreSelf": false,
-          "height": false,
-          "hidden": false,
-          "hostile": false,
-          "onlyOnce": false,
-          "displayTemp": false,
-          "nameOverride": "",
-          "customCheck": "",
-          "wallsBlock": "system",
-          "statuses": []
-        },
-        "core": {
-          "overlay": false
-        },
-        "dnd5e": {
-          "riders": {
-            "statuses": []
-          }
-        }
-      },
-      "changes": [
-        {
-          "key": "macro.itemMacro",
-          "mode": 0,
-          "value": "@actor @level",
-          "priority": 20
-        }
-      ],
-      "disabled": false,
-      "duration": {
-        "startTime": null,
-        "rounds": 1,
-        "seconds": null,
-        "combat": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
-      },
-      "origin": "Actor.MTJhNTdkNDlhNTI4.Item.undefined",
-      "tint": "#ffffff",
-      "transfer": false,
-      "name": "Shield",
-      "description": "",
-      "statuses": [],
-      "img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
-      "type": "base",
-      "system": {},
-      "sort": 0,
-      "_key": "!items.effects!k6lJOHWJa0XF2zCb.6pbotGIvqQkraPva"
-    }
-  ],
-  "folder": "U0k4VGG6bziqf3oH",
-  "flags": {
-    "midi-qol": {
-      "onUseMacroName": "",
-      "effectActivation": false,
-      "forceCEOff": false,
-      "itemCondition": "",
-      "reactionCondition": "",
-      "otherCondition": "",
-      "effectCondition": "",
-      "rollAttackPerTarget": "default",
-      "AoETargetType": "any",
-      "AoETargetTypeIncludeSelf": true,
-      "autoTarget": "default",
-      "removeAttackDamageButtons": "default"
-    },
-    "core": {},
-    "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
-      "rollOther": false,
-      "critOther": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "toggleEffect": false,
-      "ignoreTotalCover": false,
-      "autoFailFriendly": false,
-      "offHandWeapon": false,
-      "autoSaveFriendly": false,
-      "noConcentrationCheck": false,
-      "confirmTargets": "default",
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      },
-      "migratedProperties": [
-        "vocal",
-        "somatic"
-      ]
-    },
-    "tidy5e-sheet": {
-      "section": "",
-      "actionSection": ""
-    },
-    "dae": {
-      "macro": {
-        "name": "Shield",
-        "img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
-        "type": "script",
-        "scope": "global",
-        "command": "if (args[0] === \"on\") {\n    // Get the spell level and calculate the spell bonus\n    let level = args[2];\n    let spellBonus = Math.min(Math.max(level, 1) + 2, 5);\n    \n    // Get the actor\n    let actorID = args[1];\n    let actor = game.actors.get(actorID);\n    let shieldBonus = 0;\n    let items = actor.items;\n    // Find the equipped shield\n    let shield = items.find(item => item.type === \"equipment\" && item.system.type.value === \"shield\" && item.system.equipped === true);\n    if (shield) {\n        console.log(\"Here 2\");\n        // Calculate the shield bonus\n        shieldBonus = shield.system.armor.value;\n        if (shield.system.armor.magicalBonus) {\n            shieldBonus += shield.system.armor.magicalBonus;\n        }\n    }\n    console.log(\"Level:\", level);\n    console.log(\"Spell Bonus:\", spellBonus);\n    console.log(\"Actor ID:\", actorID);\n    console.log(\"Actor:\", actor);\n    console.log(\"Items:\", items);\n    console.log(\"Shield\", shield);\n    // Calculate the total bonus\n    let bonus = spellBonus - shieldBonus;\n    // Define the effect data\n    console.log(\"Here 3\");\n    let effectData = {\n        label: \"AC Bonus\",\n        icon: \"icons/magic/defensive/shield-barrier-glowing-blue.webp\", // You can use any icon you prefer\n        changes: [\n            {\n                key: \"system.attributes.ac.bonus\",\n                mode: CONST.ACTIVE_EFFECT_MODES.ADD,\n                value: bonus,\n                priority: 20\n            }\n        ],\n        origin: `Actor.${actor.id}`,\n        disabled: false,\n        duration: {\n            rounds: 1, // Duration of the effect in rounds\n        }\n    };\n    // Apply the effect to the actor\n    await actor.createEmbeddedDocuments(\"ActiveEffect\", [effectData]);\n    console.log(`Applied AC Bonus effect: ${bonus}`);\n}\nif (args[0] === \"off\") {\n    // Get the actor\n    let actorID = args[1];\n    let actor = game.actors.get(actorID);\n    // Find and delete the effect\n    let effect = actor.effects.find(e => e.label === \"AC Bonus\");\n    if (effect) {\n        await effect.delete();\n    }\n}",
-        "author": "3Yi0HjF4PKCA4vX0",
-        "ownership": {
-          "default": 3
-        },
-        "_id": null,
-        "folder": null,
-        "sort": 0,
-        "flags": {},
-        "_stats": {
-          "coreVersion": "12.331",
-          "systemId": "dnd5e",
-          "systemVersion": "4.3.6",
-          "createdTime": null,
-          "modifiedTime": null,
-          "lastModifiedBy": null,
-          "compendiumSource": null,
-          "duplicateSource": null
-        }
-      }
-    }
-  },
-  "system": {
-    "description": {
-      "value": "<p><em>A shimmering shield forms around one of your arms, allowing you to block incoming attacks.</em></p><p><strong>Buff:</strong> </p><p>You cast this spell to block an incoming attack.</p><p>If you are holding a shield, you cannot gain the benefits of your shield and this spell at the same time.</p><ul><li><p>You have a +3* bonus to AC for 1 round, including against the triggering attack, and you take no damage from magic missile.</p></li></ul><p></p><p><strong>*Upcasting:</strong> The bonus to AC increases by 1 for each spell level above 1st, to a maximum of +5 to AC.</p><p><em>If your character is equipping a shield when they cast this spell, they will not gain the AC bonus from this spell until they unequip their normal shield.</em></p>",
-      "chat": "<p><strong>Buff:</strong></p><p>You cast this spell to block an incoming attack.</p><p>If you are holding a shield, you cannot gain the benefits of your shield and this spell at the same time.</p><ul><li><p>You have a +3* bonus to AC for 1 round, including against the triggering attack, and you take no damage from magic missile.</p></li></ul><p></p><p><strong>*Upcasting:</strong> The bonus to AC increases by 1 for each spell level above 1st, to a maximum of +5 to AC.</p>"
-    },
-    "source": {
-      "custom": "elkan5e.com/spells/shield",
-      "revision": 1,
-      "rules": "",
-      "book": "Elkan 5e",
-      "page": "",
-      "license": ""
-    },
-    "activation": {
-      "type": "reaction",
-      "condition": "when you are hit by an attack or targeted by the magic missile spell",
-      "value": 1
-    },
-    "duration": {
-      "value": "1",
-      "units": "round"
-    },
-    "target": {
-      "affects": {
-        "special": "",
-        "type": "self",
-        "choice": false
-      },
-      "template": {
-        "type": "",
-        "units": "",
-        "contiguous": false
-      }
-    },
-    "range": {
-      "units": "self",
-      "special": ""
-    },
-    "uses": {
-      "max": "",
-      "recovery": [],
-      "spent": 0
-    },
-    "ability": "",
-    "level": 1,
-    "school": "abj",
-    "materials": {
-      "value": "",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
-    },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": true
-    },
-    "properties": [
-      "vocal",
-      "somatic",
-      "mgc"
-    ],
-    "activities": {
-      "NTFhQ3vQNBtt6ZAr": {
-        "type": "utility",
-        "_id": "NTFhQ3vQNBtt6ZAr",
-        "sort": 0,
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": true,
-          "targets": []
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [
-          {
-            "_id": "6pbotGIvqQkraPva"
-          }
-        ],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "type": "creature",
-          "value": 1,
-          "units": "ft",
-          "width": null,
-          "override": false,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "roll": {
-          "prompt": false,
-          "visible": false,
-          "name": "",
-          "formula": ""
-        },
-        "name": "",
-        "img": "",
-        "appliedEffects": [
-          "6pbotGIvqQkraPva"
-        ]
-      }
-    },
-    "identifier": ""
-  },
-  "_id": "k6lJOHWJa0XF2zCb",
-  "_key": "!items!k6lJOHWJa0XF2zCb"
+	"name": "Shield",
+	"type": "spell",
+	"img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
+	"effects": [
+		{
+			"_id": "6pbotGIvqQkraPva",
+			"flags": {
+				"dae": {
+					"stackable": "none",
+					"specialDuration": [
+						"turnEndSource"
+					],
+					"transfer": false,
+					"macroRepeat": "none",
+					"durationExpression": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"showIcon": false,
+					"disableIncapacitated": false,
+					"enableCondition": "",
+					"disableCondition": ""
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"radius": "",
+					"aura": "None",
+					"alignment": "",
+					"type": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"displayTemp": false,
+					"nameOverride": "",
+					"customCheck": "",
+					"wallsBlock": "system",
+					"statuses": []
+				},
+				"core": {
+					"overlay": false
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				}
+			},
+			"changes": [
+				{
+					"key": "macro.itemMacro",
+					"mode": 0,
+					"value": "@actor @level",
+					"priority": 20
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"rounds": 1,
+				"seconds": null,
+				"combat": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"origin": "Actor.MTJhNTdkNDlhNTI4.Item.undefined",
+			"tint": "#ffffff",
+			"transfer": false,
+			"name": "Shield",
+			"description": "",
+			"statuses": [],
+			"img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
+			"type": "base",
+			"system": {},
+			"sort": 0,
+			"_key": "!items.effects!k6lJOHWJa0XF2zCb.6pbotGIvqQkraPva"
+		}
+	],
+	"folder": "U0k4VGG6bziqf3oH",
+	"flags": {
+		"midi-qol": {
+			"onUseMacroName": "",
+			"effectActivation": false,
+			"forceCEOff": false,
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default",
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default",
+			"removeAttackDamageButtons": "default"
+		},
+		"core": {},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"autoFailFriendly": false,
+			"offHandWeapon": false,
+			"autoSaveFriendly": false,
+			"noConcentrationCheck": false,
+			"confirmTargets": "default",
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		},
+		"dae": {
+			"macro": {
+				"name": "Shield",
+				"img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "if (args[0] === \"on\") {\n    // Get the spell level and calculate the spell bonus\n    let level = args[2];\n    let spellBonus = Math.min(Math.max(level, 1) + 2, 5);\n    \n    // Get the actor\n    let actorID = args[1];\n    let actor = game.actors.get(actorID);\n    let shieldBonus = 0;\n    let items = actor.items;\n    // Find the equipped shield\n    let shield = items.find(item => item.type === \"equipment\" && item.system.type.value === \"shield\" && item.system.equipped === true);\n    if (shield) {\n        console.log(\"Here 2\");\n        // Calculate the shield bonus\n        shieldBonus = shield.system.armor.value;\n        if (shield.system.armor.magicalBonus) {\n            shieldBonus += shield.system.armor.magicalBonus;\n        }\n    }\n    console.log(\"Level:\", level);\n    console.log(\"Spell Bonus:\", spellBonus);\n    console.log(\"Actor ID:\", actorID);\n    console.log(\"Actor:\", actor);\n    console.log(\"Items:\", items);\n    console.log(\"Shield\", shield);\n    // Calculate the total bonus\n    let bonus = spellBonus - shieldBonus;\n    // Define the effect data\n    console.log(\"Here 3\");\n    let effectData = {\n        label: \"AC Bonus\",\n        icon: \"icons/magic/defensive/shield-barrier-glowing-blue.webp\", // You can use any icon you prefer\n        changes: [\n            {\n                key: \"system.attributes.ac.bonus\",\n                mode: CONST.ACTIVE_EFFECT_MODES.ADD,\n                value: bonus,\n                priority: 20\n            }\n        ],\n        origin: `Actor.${actor.id}`,\n        disabled: false,\n        duration: {\n            rounds: 1, // Duration of the effect in rounds\n        }\n    };\n    // Apply the effect to the actor\n    await actor.createEmbeddedDocuments(\"ActiveEffect\", [effectData]);\n    console.log(`Applied AC Bonus effect: ${bonus}`);\n}\nif (args[0] === \"off\") {\n    // Get the actor\n    let actorID = args[1];\n    let actor = game.actors.get(actorID);\n    // Find and delete the effect\n    let effect = actor.effects.find(e => e.label === \"AC Bonus\");\n    if (effect) {\n        await effect.delete();\n    }\n}",
+				"author": "3Yi0HjF4PKCA4vX0",
+				"ownership": {
+					"default": 3
+				},
+				"_id": null,
+				"folder": null,
+				"sort": 0,
+				"flags": {},
+				"_stats": {
+					"coreVersion": "12.331",
+					"systemId": "dnd5e",
+					"systemVersion": "4.3.6",
+					"createdTime": null,
+					"modifiedTime": null,
+					"lastModifiedBy": null,
+					"compendiumSource": null,
+					"duplicateSource": null
+				}
+			}
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>A shimmering shield forms around one of your arms, allowing you to block incoming attacks.</em></p><p><strong>Buff:</strong> </p><p>You cast this spell to block an incoming attack.</p><p>If you are holding a shield, you cannot gain the benefits of your shield and this spell at the same time.</p><ul><li><p>You have a +3* bonus to AC for 1 round, including against the triggering attack, and you take no damage from magic missile.</p></li></ul><p></p><p><strong>*Upcasting:</strong> The bonus to AC increases by 1 for each spell level above 1st, to a maximum of +5 to AC.</p><p><em>If your character is equipping a shield when they cast this spell, they will not gain the AC bonus from this spell until they unequip their normal shield.</em></p>",
+			"chat": "<p><strong>Buff:</strong></p><p>You cast this spell to block an incoming attack.</p><p>If you are holding a shield, you cannot gain the benefits of your shield and this spell at the same time.</p><ul><li><p>You have a +3* bonus to AC for 1 round, including against the triggering attack, and you take no damage from magic missile.</p></li></ul><p></p><p><strong>*Upcasting:</strong> The bonus to AC increases by 1 for each spell level above 1st, to a maximum of +5 to AC.</p>"
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/shield",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "reaction",
+			"condition": "when you are hit by an attack or targeted by the magic missile spell",
+			"value": 1
+		},
+		"duration": {
+			"value": "1",
+			"units": "round"
+		},
+		"target": {
+			"affects": {
+				"special": "",
+				"type": "self",
+				"choice": false
+			},
+			"template": {
+				"type": "",
+				"units": "",
+				"contiguous": false
+			}
+		},
+		"range": {
+			"units": "self",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 1,
+		"school": "abj",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"mgc"
+		],
+		"activities": {
+			"NTFhQ3vQNBtt6ZAr": {
+				"type": "utility",
+				"_id": "NTFhQ3vQNBtt6ZAr",
+				"sort": 0,
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "6pbotGIvqQkraPva"
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"6pbotGIvqQkraPva"
+				]
+			}
+		},
+		"identifier": ""
+	},
+	"_id": "k6lJOHWJa0XF2zCb",
+	"_key": "!items!k6lJOHWJa0XF2zCb"
 }

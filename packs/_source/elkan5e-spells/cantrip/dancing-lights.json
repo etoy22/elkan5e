@@ -1,213 +1,213 @@
 {
-  "name": "Dancing Lights",
-  "type": "spell",
-  "img": "icons/magic/light/projectile-smoke-pink.webp",
-  "effects": [],
-  "folder": "SjVk5lAwzIpqSBbH",
-  "flags": {
-    "core": {},
-    "midi-qol": {
-      "effectActivation": false,
-      "itemCondition": "",
-      "reactionCondition": "",
-      "otherCondition": "",
-      "effectCondition": "",
-      "rollAttackPerTarget": "default",
-      "AoETargetType": "any",
-      "AoETargetTypeIncludeSelf": true,
-      "autoTarget": "default",
-      "removeAttackDamageButtons": "default"
-    },
-    "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
-      "rollOther": false,
-      "critOther": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "toggleEffect": false,
-      "ignoreTotalCover": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "offHandWeapon": false,
-      "noConcentrationCheck": false,
-      "confirmTargets": "default",
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      },
-      "migratedProperties": [
-        "vocal",
-        "somatic",
-        "material"
-      ]
-    },
-    "tidy5e-sheet": {
-      "section": "",
-      "actionSection": ""
-    }
-  },
-  "system": {
-    "description": {
-      "value": "<p><em>You hum as you magically draw a small amount of wax from tiny colored candles into the air. They burn rapidly, then form glowing balls of light that you can move and combine.</em></p><p><strong>Utility Spell</strong> </p><p>You create one of the following effects with glowing light. Whichever form you choose, each light sheds &amp;reference[dimlight] in a 10-foot radius. The spell ends if you cast this spell again.</p><ul><li><p>You create up to four torch-sized lights within range, making them appear as torches, lanterns, or glowing orbs that hover in the air for the duration.</p></li><li><p>You combine the four lights into one glowing vaguely humanoid or beast-like form of Medium size or smaller.</p></li><li><p>You create glowing letters in a 20 ft. cube. The letters are large, and can only spell out a few short words or about 15 letters.</p><p></p></li></ul><p>As a bonus action on your turn, you can move the lights up to 60 feet to a new spot within range. If you have more than one light, each light must be within 20 feet of another light created by this spell, and a light winks out if it exceeds the spell's range.</p>",
-      "chat": "<p><strong>Utility Spell</strong></p><p>You create one of the following effects with glowing light. Whichever form you choose, each light sheds &amp;reference[dimlight] in a 10-foot radius. The spell ends if you cast this spell again.</p><ul><li><p>You create up to four torch-sized lights within range, making them appear as torches, lanterns, or glowing orbs that hover in the air for the duration.</p></li><li><p>You combine the four lights into one glowing vaguely humanoid or beast-like form of Medium size or smaller.</p></li><li><p>You create glowing letters in a 20 ft. cube. The letters are large, and can only spell out a few short words or about 15 letters.</p><p></p></li></ul><p>As a bonus action on your turn, you can move the lights up to 60 feet to a new spot within range. If you have more than one light, each light must be within 20 feet of another light created by this spell, and a light winks out if it exceeds the spell's range.</p>"
-    },
-    "source": {
-      "custom": "elkan5e.com/spells/dancing-lights",
-      "revision": 1,
-      "rules": "",
-      "book": "Elkan 5e",
-      "page": "",
-      "license": ""
-    },
-    "activation": {
-      "type": "action",
-      "condition": "",
-      "value": 1
-    },
-    "duration": {
-      "value": "1",
-      "units": "minute"
-    },
-    "target": {
-      "affects": {
-        "special": "",
-        "type": "space",
-        "choice": false,
-        "count": ""
-      },
-      "template": {
-        "type": "",
-        "units": "ft",
-        "contiguous": false
-      }
-    },
-    "range": {
-      "value": "120",
-      "units": "ft",
-      "special": ""
-    },
-    "uses": {
-      "max": "",
-      "recovery": [],
-      "spent": 0
-    },
-    "ability": "",
-    "level": 0,
-    "school": "ill",
-    "materials": {
-      "value": "",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
-    },
-    "preparation": {
-      "mode": "always",
-      "prepared": true
-    },
-    "properties": [
-      "vocal",
-      "somatic",
-      "material",
-      "mgc"
-    ],
-    "activities": {
-      "evjtehaUpl9ZIixx": {
-        "type": "summon",
-        "_id": "evjtehaUpl9ZIixx",
-        "sort": 0,
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": true,
-          "targets": []
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "range": {
-          "override": false
-        },
-        "target": {
-          "type": "creature",
-          "value": 1,
-          "units": "ft",
-          "width": null,
-          "override": false,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "bonuses": {
-          "ac": "",
-          "hd": "",
-          "hp": "",
-          "attackDamage": "",
-          "saveDamage": "",
-          "healing": ""
-        },
-        "creatureSizes": [],
-        "creatureTypes": [],
-        "match": {
-          "attacks": false,
-          "proficiency": false,
-          "saves": false
-        },
-        "profiles": [
-          {
-            "count": "4",
-            "name": "",
-            "_id": "M5KWNUQ0D9CdHVaU",
-            "uuid": "Compendium.elkan5e.elkan5e-summoned-creatures.Actor.lNHwcswoWh0Sc93l",
-            "level": {
-              "min": null,
-              "max": null
-            },
-            "types": []
-          },
-          {
-            "uuid": "Compendium.elkan5e.elkan5e-summoned-creatures.Actor.9iqF1orEqOIZ25Nt",
-            "_id": "zSCoVLPN62XzalUj",
-            "level": {
-              "min": null,
-              "max": null
-            },
-            "types": []
-          }
-        ],
-        "summon": {
-          "prompt": true,
-          "mode": "",
-          "identifier": ""
-        },
-        "name": "Summon",
-        "effects": []
-      }
-    },
-    "identifier": ""
-  },
-  "_id": "loSfOWaB9bTmb5AJ",
-  "_key": "!items!loSfOWaB9bTmb5AJ"
+	"name": "Dancing Lights",
+	"type": "spell",
+	"img": "icons/magic/light/projectile-smoke-pink.webp",
+	"effects": [],
+	"folder": "SjVk5lAwzIpqSBbH",
+	"flags": {
+		"core": {},
+		"midi-qol": {
+			"effectActivation": false,
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default",
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default",
+			"removeAttackDamageButtons": "default"
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"noConcentrationCheck": false,
+			"confirmTargets": "default",
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic",
+				"material"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>You hum as you magically draw a small amount of wax from tiny colored candles into the air. They burn rapidly, then form glowing balls of light that you can move and combine.</em></p><p><strong>Utility Spell</strong> </p><p>You create one of the following effects with glowing light. Whichever form you choose, each light sheds &amp;reference[dimlight] in a 10-foot radius. The spell ends if you cast this spell again.</p><ul><li><p>You create up to four torch-sized lights within range, making them appear as torches, lanterns, or glowing orbs that hover in the air for the duration.</p></li><li><p>You combine the four lights into one glowing vaguely humanoid or beast-like form of Medium size or smaller.</p></li><li><p>You create glowing letters in a 20 ft. cube. The letters are large, and can only spell out a few short words or about 15 letters.</p><p></p></li></ul><p>As a bonus action on your turn, you can move the lights up to 60 feet to a new spot within range. If you have more than one light, each light must be within 20 feet of another light created by this spell, and a light winks out if it exceeds the spell's range.</p>",
+			"chat": "<p><strong>Utility Spell</strong></p><p>You create one of the following effects with glowing light. Whichever form you choose, each light sheds &amp;reference[dimlight] in a 10-foot radius. The spell ends if you cast this spell again.</p><ul><li><p>You create up to four torch-sized lights within range, making them appear as torches, lanterns, or glowing orbs that hover in the air for the duration.</p></li><li><p>You combine the four lights into one glowing vaguely humanoid or beast-like form of Medium size or smaller.</p></li><li><p>You create glowing letters in a 20 ft. cube. The letters are large, and can only spell out a few short words or about 15 letters.</p><p></p></li></ul><p>As a bonus action on your turn, you can move the lights up to 60 feet to a new spot within range. If you have more than one light, each light must be within 20 feet of another light created by this spell, and a light winks out if it exceeds the spell's range.</p>"
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/dancing-lights",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "1",
+			"units": "minute"
+		},
+		"target": {
+			"affects": {
+				"special": "",
+				"type": "space",
+				"choice": false,
+				"count": ""
+			},
+			"template": {
+				"type": "",
+				"units": "ft",
+				"contiguous": false
+			}
+		},
+		"range": {
+			"value": "120",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 0,
+		"school": "ill",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "always",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"material",
+			"mgc"
+		],
+		"activities": {
+			"evjtehaUpl9ZIixx": {
+				"type": "summon",
+				"_id": "evjtehaUpl9ZIixx",
+				"sort": 0,
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"bonuses": {
+					"ac": "",
+					"hd": "",
+					"hp": "",
+					"attackDamage": "",
+					"saveDamage": "",
+					"healing": ""
+				},
+				"creatureSizes": [],
+				"creatureTypes": [],
+				"match": {
+					"attacks": false,
+					"proficiency": false,
+					"saves": false
+				},
+				"profiles": [
+					{
+						"count": "4",
+						"name": "",
+						"_id": "M5KWNUQ0D9CdHVaU",
+						"uuid": "Compendium.elkan5e.elkan5e-summoned-creatures.Actor.lNHwcswoWh0Sc93l",
+						"level": {
+							"min": null,
+							"max": null
+						},
+						"types": []
+					},
+					{
+						"uuid": "Compendium.elkan5e.elkan5e-summoned-creatures.Actor.9iqF1orEqOIZ25Nt",
+						"_id": "zSCoVLPN62XzalUj",
+						"level": {
+							"min": null,
+							"max": null
+						},
+						"types": []
+					}
+				],
+				"summon": {
+					"prompt": true,
+					"mode": "",
+					"identifier": ""
+				},
+				"name": "Summon",
+				"effects": []
+			}
+		},
+		"identifier": ""
+	},
+	"_id": "loSfOWaB9bTmb5AJ",
+	"_key": "!items!loSfOWaB9bTmb5AJ"
 }
