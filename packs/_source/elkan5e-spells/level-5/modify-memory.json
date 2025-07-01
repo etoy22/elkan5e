@@ -36,7 +36,8 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"disableIncapacitated": false
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -52,14 +53,23 @@
 					"nameOverride": "",
 					"customCheck": "",
 					"displayTemp": false,
-					"wallsBlock": "system"
+					"wallsBlock": "system",
+					"statuses": []
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
 				}
 			},
 			"tint": "#ffffff",
 			"origin": null,
 			"name": "Modify Memory",
 			"description": "",
-			"statuses": [],
+			"statuses": [
+				"charmed",
+				"incapacitated"
+			],
 			"img": "icons/magic/control/hypnosis-mesmerism-watch.webp",
 			"type": "base",
 			"system": {},
@@ -121,7 +131,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><strong>Wisdom Save</strong></p><p>You attempt to reshape another creature's memories.</p><ul><li><p><strong>Failure:</strong> The target is charmed by you for the duration. The charmed target is incapacitated and unaware of its surroundings, though it can still hear you.</p></li><li><p><strong>Success:</strong> No effect.</p></li><li><p>The target has advantage on the save if you are fighting it.</p></li><li><p>If the target takes any damage or is targeted by another spell, this spell ends and none of the target's memories are changed.</p></li><li><p>While the charm lasts, you can affect the target's memory of an event it experienced in the last 24 hours, and that lasted no more than 10 minutes.</p></li></ul><p><em>You can permanently eliminate all memory of the event, allow the target to recall the event with perfect clarity and exacting detail, change its memory of the details of the event, or create a memory of some other event.</em></p><p><em>You must speak to the target to describe how its memories are affected, and it must be able to understand your language for the modified memories to take root. Its mind fills in any gaps in the details of your description. If the spell ends before you have finished describing the modified memories, the creature's memory isn't altered. Otherwise, the modified memories take hold when the spell ends.</em></p><p><em>A modified memory doesn't necessarily affect how a creature behaves, particularly if the memory contradicts the creature's natural inclinations, alignment, or beliefs. An illogical modified memory, such as implanting a memory of how much the creature enjoyed dousing itself in acid, is dismissed, perhaps as a bad dream. The DM might deem a modified memory too nonsensical to affect a creature in a significant manner.</em></p><p><em>A remove curse or greater restoration spell cast on the target restores the creature's true memory.</em></p><p></p><p><strong>Upcasting:</strong> If you cast this spell using a spell slot of 6th level or higher, you can alter the target's memories of an event that took place up to 7 days ago (6th level), 30 days ago (7th level), 1 year ago (8th level), or any time in the creature's past (9th level).</p>",
+			"value": "<p><em>You speak in a rhythmic pattern, placing your target in a trance state under which their memories become malleable.</em></p><p><strong>Wisdom Save</strong></p><ul><li><p><strong>Failure</strong>: Target becomes &amp;reference[Charmed] for 1 minute or until they take damage or a creature uses an action to wake them up. While charmed in this way:</p><ul><li><p>The creature is &amp;reference[incapacitated] and unaware of its surroundings, though it can still hear you.</p></li><li><p>You can speak to the target, describing new memories to them. If they understand you, you can eliminate memories, alter existing memories, and create new ones, so long as all your adjustments to their memory all refer to a single 24-hour period.* The target will do their best to integrate the memories and make them fit with existing information.</p></li></ul></li></ul><ul><li><p>If the spell lasts the full minute without interruption, the target is &amp;reference[cursed]. While cursed in this way:</p><ul><li><p>Their memories are permanently altered with the new memories you gave them.</p></li><li><p>The target behaves normally, and the target might identify the memory as false if it seems illogical or nonsensical.</p></li></ul></li></ul><ul><li><p><strong>Success</strong>: No effect.</p></li></ul><p></p><p><strong>*Upcasting:</strong> At level 6, any edited memories must be within a week span. At level 7, a month. At level 8, a year. At level 9, the affected memories can be across any period of time.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -155,7 +165,7 @@
 			}
 		},
 		"range": {
-			"value": "30",
+			"value": "15",
 			"units": "ft",
 			"special": ""
 		},
@@ -216,12 +226,15 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false
 				},
 				"damage": {
 					"onSave": "half",

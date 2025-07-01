@@ -59,7 +59,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You drop seven sharp thorns or sticks to the ground, asking the land to obey your will. You gesture over the area you want the spikes to sprout forth from. When they appear, they blend in with their surroundings as best they can and harmlessly appear next to creatures and objects in the area, but any creature who sees the spell being cast can recognize the danger.</em></p><p><strong>Area Hazard</strong> </p><ul><li><p>The spikes are camouflaged to look natural. Any creature that can't see the area at the time the spell is cast rolls a [[/check Perception]] check against your spell save DC right before they would step into the spikes to notice the danger.</p></li><li><p>When a creature moves into a space occupied by the spikes, they take [[/damage 2d4 piercing]] damage for every 5 feet they travel.</p></li><li><p>The spikes create &amp;reference[difficultterrain].</p></li></ul><p></p><p><strong>Upcasting:</strong> The radius of the spell increases by 5 ft. for each spell level above 2nd level.</p>",
+			"value": "<p><em>You drop seven sharp thorns or sticks to the ground, asking the land to obey your will. You gesture over the area and spikes sprout forth, blending in with their surroundings.</em></p><p><strong>Area Hazard</strong></p><ul><li><p>The spikes are camouflaged to look natural. Any creature that can't see the area at the time the spell is cast rolls a [[/check Perception]] check against your spell save DC right before they would step into the spikes to notice the danger. Creatures who witness the spell can see the danger.</p></li><li><p>When a creature moves into a space occupied by the spikes, they take [[/damage 2d4 piercing]] damage for every 5 feet they travel.</p></li><li><p>The spikes create &amp;reference[difficultterrain].</p></li></ul><p></p><p><strong>Upcasting:</strong> The radius of the spell increases by 5 ft. for each spell level above 2nd level.</p>",
 			"chat": "<p><strong>Area Hazard</strong></p><ul><li><p>The spikes are camouflaged to look natural. Any creature that can't see the area at the time the spell is cast rolls a [[/check Perception]] check against your spell save DC right before they would step into the spikes to notice the danger.</p></li><li><p>When a creature moves into a space occupied by the spikes, they take [[/damage 2d4 piercing]] damage for every 5 feet they travel.</p></li><li><p>The spikes create &amp;reference[difficultterrain].</p></li></ul><p></p><p><strong>Upcasting:</strong> The radius of the spell increases by 5 ft. for each spell level above 2nd level.</p>"
 		},
 		"source": {
@@ -152,12 +152,15 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false
 				},
 				"uses": {
 					"spent": 0,
@@ -207,11 +210,18 @@
 					"special": ""
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "1",
+						"type": "creature",
+						"special": ""
+					},
+					"override": true,
 					"prompt": true
 				},
 				"uses": {

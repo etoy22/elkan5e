@@ -114,8 +114,8 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><strong>Utility Spell</strong> </p><p>You change the appearance of any number of creatures that you can see within range.</p><ul><li><p>Each target gets a new, illusory appearance.</p></li><li><p>An unwilling target must make a Charisma save; if it succeeds, it is unaffected by the spell.</p></li><li><p>You can change physical appearance as well as clothing and equipment.</p></li><li><p>You can change a target's body to appear 1 foot shorter or taller, and to appear thin, fat, or in-between.</p></li><li><p>You cannot change a target's arrangement of limbs.</p></li><li><p>The spell lasts for the duration, unless you use an Action to dismiss it before then.</p></li></ul>",
-			"chat": ""
+			"value": "<p><em>You call upon the power of disguise, and an illusory appearance settles over those you choose in your proximity.</em></p><p><strong>Illusory Image</strong></p><p>Roll an &amp;Reference[illusoryimages]{illusion check} for this spell.</p><ul><li><p>Each target you choose gets a new, illusory appearance. These can be unique or identical. The disguises include clothing, armor, weapons, and other belongings. Affected creatures can seem up to 1 foot shorter or taller but must otherwise remain in their size category. They must have the same basic arrangement of limbs. Otherwise, the extent of the illusion is up to you.</p></li><li><p>An unwilling target must make a Charisma save:</p></li></ul><p><strong>Charisma Save</strong></p><ul><li><p><strong>Failure:</strong> Target is affected by the illusion.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"chat": "<p><strong>Illusory Image</strong></p><p>Roll an &amp;Reference[illusoryimages]{illusion check} for this spell.</p><ul><li><p>Each target you choose gets a new, illusory appearance. These can be unique or identical. The disguises include clothing, armor, weapons, and other belongings. Affected creatures can seem up to 1 foot shorter or taller but must otherwise remain in their size category. They must have the same basic arrangement of limbs. Otherwise, the extent of the illusion is up to you.</p></li><li><p>An unwilling target must make a Charisma save:</p></li></ul><p><strong>Charisma Save</strong></p><ul><li><p><strong>Failure:</strong> Target is affected by the illusion.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>"
 		},
 		"source": {
 			"custom": "elkan5e.com/spells/seeming",
@@ -137,7 +137,7 @@
 		"target": {
 			"affects": {
 				"type": "creature",
-				"count": "10",
+				"count": "",
 				"choice": false,
 				"special": ""
 			},
@@ -208,12 +208,15 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false
 				},
 				"damage": {
 					"onSave": "none",

@@ -54,7 +54,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><strong>Healing Spell<br /></strong>You remove debilitating effects from the target. You remove:</p><ul><li>One level of exhaustion,</li><li>One disease,</li><li>The blinded, dazed, deafened, drained, paralyzed, stunned, poisoned, and weakened conditions.</li></ul><p>This spell cannot remove a condition caused by a curse or another condition not listed (eg. a version of frightened that causes creatures to also be weakened).</p>",
+			"value": "<p><strong>Healing Spell<br /></strong>You remove debilitating effects from the target. You remove:</p><ul><li>One level of exhaustion,</li><li>One disease,</li><li>The blinded, dazed, deafened, drained, paralyzed, stunned, poisoned, and weakened conditions.</li></ul><p></p><p><em>This spell cannot remove a condition caused by a curse or another condition not listed (eg. a version of frightened that causes creatures to also be weakened).</em></p>",
 			"chat": ""
 		},
 		"source": {
@@ -78,7 +78,7 @@
 			"affects": {
 				"type": "creature",
 				"choice": false,
-				"count": "",
+				"count": "1",
 				"special": ""
 			},
 			"template": {
@@ -94,7 +94,7 @@
 		"uses": {
 			"max": "",
 			"recovery": [],
-			"spent": 0
+			"spent": null
 		},
 		"ability": "",
 		"level": 5,
@@ -142,12 +142,15 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false
 				},
 				"roll": {
 					"formula": "",

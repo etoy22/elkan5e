@@ -57,7 +57,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>Placing your hand on a body that died a violent or otherwise unnatural death, you scatter diamond dust while invoking a higher principle that requires the victim return to life. This could be such as need for second chances, the completion of unfinished business, or the power of love. The diamonds evaporate into a curling pale smoke as the body returns to life.</em></p><p><strong>Materials:</strong> You require 0.6 pounds of pure @UUID[Compendium.elkan5e.elkan5e-spells.Item.wV3r0XKYOLYdI0nz]{Diamond Dust}, typically valued at 300 gold. This spell consumes this material.</p><p><strong>Healing Spell</strong> </p><p>Your chosen creature must have died in the last minute. This spell cannot restore missing body parts or return life to a creature that has died of old age.</p><ul><li><p>The creature returns to life with 1 hit point.</p></li></ul>",
+			"value": "<p><em>Placing your hand on a dead body, you invoke a higher principle that requires the victim return to life, such as the completion of unfinished business or the power of love, then scatter diamond dust that evaporates into curling smoke.</em></p><p><strong>Materials:</strong> You require 0.6 pounds of pure @UUID[Compendium.elkan5e.elkan5e-spells.Item.wV3r0XKYOLYdI0nz]{Diamond Dust}, typically valued at 300 gold. This spell consumes this material.</p><p><strong>Healing Spell</strong></p><p>Your chosen creature must have died in the last minute. This spell cannot restore missing body parts or return life to a creature that has died of old age.</p><ul><li><p>The creature returns to life with 1 hit point.</p></li></ul>",
 			"chat": "<p><strong>Materials:</strong> You require 0.6 pounds of pure @UUID[Compendium.elkan5e.elkan5e-spells.Item.wV3r0XKYOLYdI0nz]{Diamond Dust}, typically valued at 300 gold. This spell consumes this material.</p><p><strong>Healing Spell</strong></p><p>Your chosen creature must have died in the last minute. This spell cannot restore missing body parts or return life to a creature that has died of old age.</p><ul><li><p>The creature returns to life with 1 hit point.</p></li></ul>"
 		},
 		"source": {
@@ -146,12 +146,15 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false
 				},
 				"healing": {
 					"number": null,

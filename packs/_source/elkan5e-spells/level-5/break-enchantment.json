@@ -56,7 +56,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><strong>Materials:</strong> You require 0.2 pounds of pure @UUID[Compendium.elkan5e.elkan5e-spells.Item.wV3r0XKYOLYdI0nz]{Diamond Dust}, typically valued at 100 gold. This spell consumes this material.</p><p><strong>Healing Spell<br /></strong> <br />You remove one of the following from the target:</p><ul><li>The charmed, confused, frightened, goaded, petrified, silenced, or siphoned condition.</li><li>Any ongoing spell or magical effect on the target that would normally allow the target to make an intelligence, wisdom, or charisma saving throw at the end of their turn to end the spell.</li><li>One curse, including the target's attunement to a cursed magic item.</li><li>A creature possessing the target, which appears in a space of its choice within 5 ft. of the target.</li></ul>",
+			"value": "<p><strong>Materials:</strong> You require 0.2 pounds of pure @UUID[Compendium.elkan5e.elkan5e-spells.Item.wV3r0XKYOLYdI0nz]{Diamond Dust}, typically valued at 100 gold. This spell consumes this material.</p><p><strong>Healing Spell<br /></strong> <br />You remove one of the following from the target:</p><ul><li>All of the following: charmed, confused, frightened, goaded, petrified, silenced, and siphoned conditions.</li><li>All curses, including the target's attunement to a cursed magic item.</li><li>A creature possessing the target, which appears in a space of its choice within 5 ft. of the target.</li></ul><p></p><p><em>This spell cannot remove a condition caused by a disease or another condition not listed (eg. a version of poisoned that causes creatures to also be confused).</em></p>",
 			"chat": ""
 		},
 		"source": {
@@ -68,13 +68,13 @@
 			"license": ""
 		},
 		"activation": {
-			"type": "action",
+			"type": "minute",
 			"condition": "",
 			"value": 1
 		},
 		"duration": {
 			"value": "1",
-			"units": "minute"
+			"units": "inst"
 		},
 		"target": {
 			"affects": {
@@ -115,8 +115,7 @@
 		"properties": [
 			"vocal",
 			"somatic",
-			"material",
-			"concentration"
+			"material"
 		],
 		"activities": {
 			"vUk9GA2tHkOWyKZL": {
@@ -147,12 +146,15 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false
 				},
 				"attack": {
 					"ability": "",
@@ -208,12 +210,15 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false
 				},
 				"damage": {
 					"onSave": "half",

@@ -126,7 +126,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>Holding a small clay model of a ziggurat inscribed with glyphs, you speak a simple phrase in a language you know well. Your words echo through the clay ziggurat in a thousand whispering languages before settling into a language your target can understand. The target can temporarily communicate verbally with any creature.</em></p><p><strong>Utility Spell</strong> </p><ul><li><p>The target understands any spoken language it hears.</p></li><li><p>When the target speaks, they can be understood by any creature that can hear them and knows at least one language.</p></li></ul>",
+			"value": "<p><em>Holding a small clay model of a ziggurat inscribed with glyphs, you speak a simple phrase in a language you know well. Your words echo through the clay ziggurat in a thousand languages before settling into the target's mind.</em></p><p><strong>Utility Spell</strong></p><ul><li><p>The target understands any spoken language it hears.</p></li><li><p>When the target speaks, they can be understood by any creature that can hear them and knows at least one language.</p></li></ul>",
 			"chat": "<p><strong>Utility Spell</strong></p><ul><li><p>The target understands any spoken language it hears.</p></li><li><p>When the target speaks, they can be understood by any creature that can hear them and knows at least one language.</p></li></ul>"
 		},
 		"source": {
@@ -218,12 +218,15 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false
 				},
 				"roll": {
 					"formula": "",

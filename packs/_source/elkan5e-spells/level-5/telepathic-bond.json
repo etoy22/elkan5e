@@ -107,8 +107,8 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><strong>Ritual Casting Time:</strong> 1 Minute</p><p><strong>Utility Spell</strong> </p><ul><li><p>You create a telepathic link with up to 8 willing creatures of your choice within range.</p></li><li><p>Each creature is connected to all the others. Creatures with an Intelligence score of 2 or less aren't affected by this spell.</p></li><li><p>All connected creatures can communicate telepathically through the bond regardless of whether they have a common language.</p></li><li><p>Communication is possible over any distance, though it can't extend to other planes.</p></li></ul>",
-			"chat": ""
+			"value": "<p><em>You crack two raw eggs into each other, mingling their insides, and as you do so the minds of nearby creatures psychically link.</em></p><p><strong>Ritual Casting Time:</strong> 1 Minute</p><p><strong>Utility Spell</strong></p><ul><li><p>Each target is telepathically connected to all the others and can at any time choose to telepathically communicate to them all simultaneously via thought.</p></li><li><p>Communication is possible over any distance, but cannot extend to other planes.</p></li></ul><p></p><p><em>Creatures that do not share a language cannot understand each other telepathically. A spell such as @UUID[Compendium.elkan5e.elkan5e-spells.Item.yJzrgvxa2QVSAr6z]{Tongues} or @UUID[Compendium.elkan5e.elkan5e-spells.Item.K9TCdZs4SV9PqI2i]{Speak with Animals} can allow you to telepathically communicate with creatures you cannot typically understand.</em></p>",
+			"chat": "<p><strong>Ritual Casting Time:</strong> 1 Minute</p><p><strong>Utility Spell</strong></p><ul><li><p>Each target is telepathically connected to all the others and can at any time choose to telepathically communicate to them all simultaneously via thought.</p></li><li><p>Communication is possible over any distance, but cannot extend to other planes.</p></li></ul><p></p><p><em>Creatures that do not share a language cannot understand each other telepathically. A spell such as @UUID[Compendium.elkan5e.elkan5e-spells.Item.yJzrgvxa2QVSAr6z]{Tongues} or @UUID[Compendium.elkan5e.elkan5e-spells.Item.K9TCdZs4SV9PqI2i]{Speak with Animals} can allow you to telepathically communicate with creatures you cannot typically understand.</em></p>"
 		},
 		"source": {
 			"custom": "elkan5e.com/spells/telepathic-bond",
@@ -130,7 +130,7 @@
 		"target": {
 			"affects": {
 				"type": "creature",
-				"count": "9",
+				"count": "",
 				"choice": false,
 				"special": ""
 			},
@@ -164,7 +164,6 @@
 			"prepared": true
 		},
 		"properties": [
-			"vocal",
 			"somatic",
 			"material",
 			"ritual"
@@ -202,12 +201,15 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false
 				},
 				"roll": {
 					"formula": "",

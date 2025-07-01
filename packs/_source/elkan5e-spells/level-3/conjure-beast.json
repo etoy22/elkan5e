@@ -57,7 +57,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You slowly walk in place, and quietly speak a few words to encourage spirits to briefly come to the physical realm. You could be tempting fey spirits with novel experiences, encouraging the spirits of dead animals to briefly return to life, or threatening them with punishment if they do not comply. Once your words are finished, the obedient spirit or spirits you have summoned emerge from the ground and rapidly assume the shape of an animal.</em></p><p><strong>Summoning Spell</strong> </p><p>An animal spirit is called from beyond the grave to aid you. You summon one &amp;reference[beast]{beast} of challenge rating 2 or lower.*</p><ul><li>The beast is friendly to you and your companions and follows your instructions.</li><li>The beast acts after your turn in initiative.</li><li>If you don't issue any commands, the beast only defends itself from attackers and otherwise does nothing.</li></ul><p></p><p><strong>*Upcasting:</strong> The challenge rating of the summoned creature increases by 1 for every two spell levels above 3rd.</p>",
+			"value": "<p><em>You speak a few words to encourage spirits to briefly come to the physical realm. Once your words are finished, the obedient spirit or spirits you have summoned emerge from the ground and rapidly assume the shape of an animal.</em></p><p><strong>Summoning Spell</strong></p><p>An animal spirit is called from beyond the grave to aid you. You summon one &amp;reference[beast]{beast} of challenge rating 2 or lower.*</p><ul><li>The beast is friendly to you and your companions and follows your instructions.</li><li>The beast acts after your turn in initiative.</li><li>If you don't issue any commands, the beast only defends itself from attackers and otherwise does nothing.</li></ul><p></p><p><strong>*Upcasting:</strong> The challenge rating of the summoned creature increases by 1 for every two spell levels above 3rd.</p>",
 			"chat": "<p><strong>Summoning Spell</strong></p><p>An animal spirit is called from beyond the grave to aid you. You summon one &amp;reference[beast]{beast} of challenge rating 2 or lower.*</p><ul><li>The beast is friendly to you and your companions and follows your instructions.</li><li>The beast acts after your turn in initiative.</li><li>If you don't issue any commands, the beast only defends itself from attackers and otherwise does nothing.</li></ul><p></p><p><strong>*Upcasting:</strong> The challenge rating of the summoned creature increases by 1 for every two spell levels above 3rd.</p>"
 		},
 		"source": {
@@ -115,7 +115,6 @@
 		},
 		"properties": [
 			"vocal",
-			"somatic",
 			"concentration",
 			"mgc"
 		],
@@ -147,12 +146,15 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false
 				},
 				"bonuses": {
 					"ac": "",

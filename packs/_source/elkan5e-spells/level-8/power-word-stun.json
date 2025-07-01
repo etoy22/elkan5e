@@ -82,7 +82,9 @@
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
 			"effectCondition": "",
-			"reactionCondition": ""
+			"reactionCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
 		},
 		"midiProperties": {
 			"nodam": false,
@@ -113,6 +115,10 @@
 			"migratedProperties": [
 				"vocal"
 			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
 		}
 	},
 	"system": {
@@ -210,12 +216,15 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false
 				},
 				"damage": {
 					"onSave": "none",
