@@ -1,446 +1,436 @@
 {
-	"folder": "sDaRY0H81UTha6hq",
-	"name": "Flood",
-	"type": "spell",
-	"_id": "fFLifsi8a2pIPHVi",
-	"img": "icons/magic/water/waves-water-blue.webp",
-	"system": {
-		"activities": {
-			"GvtfJLxjjozODq9n": {
-				"type": "save",
-				"_id": "GvtfJLxjjozODq9n",
-				"sort": 0,
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"template": {
-						"contiguous": false,
-						"units": "ft"
-					},
-					"affects": {
-						"choice": false
-					},
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"damage": {
-					"parts": [],
-					"critical": {
-						"allow": false
-					},
-					"onSave": "none"
-				},
-				"save": {
-					"ability": [
-						"str"
-					],
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
-					}
-				},
-				"useConditionText": "",
-				"useConditionReason": "",
-				"effectConditionText": "",
-				"macroData": {
-					"name": "",
-					"command": ""
-				},
-				"ignoreTraits": {
-					"idi": false,
-					"idr": false,
-					"idv": false,
-					"ida": false
-				},
-				"midiProperties": {
-					"ignoreTraits": [],
-					"triggeredActivityId": "k5DHZ9FztYp9AfJd",
-					"triggeredActivityConditionText": "target.actorType === 'vehicle'",
-					"triggeredActivityTargets": "retarget",
-					"triggeredActivityRollAs": "self",
-					"forceDialog": false,
-					"confirmTargets": "default",
-					"autoTargetType": "any",
-					"autoTargetAction": "default",
-					"automationOnly": false,
-					"otherActivityCompatible": false,
-					"identifier": "",
-					"displayActivityName": false,
-					"rollMode": "default",
-					"chooseEffects": false
-				},
-				"isOverTimeFlag": false,
-				"overTimeProperties": {
-					"saveRemoves": true,
-					"preRemoveConditionText": "",
-					"postRemoveConditionText": ""
-				},
-				"name": "",
-				"img": "",
-				"appliedEffects": []
-			},
-			"k5DHZ9FztYp9AfJd": {
-				"type": "utility",
-				"name": "Vehicle Restrain",
-				"_id": "k5DHZ9FztYp9AfJd",
-				"sort": 0,
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "spec",
-					"concentration": false,
-					"override": true,
-					"special": ""
-				},
-				"effects": [
-					{
-						"_id": "5qHjz7oiqjycqzm4"
-					}
-				],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"template": {
-						"contiguous": false,
-						"units": "ft",
-						"type": ""
-					},
-					"affects": {
-						"choice": false,
-						"type": "creatureOrObject",
-						"count": "",
-						"special": ""
-					},
-					"override": true,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"roll": {
-					"prompt": false,
-					"visible": false,
-					"name": "",
-					"formula": ""
-				},
-				"useConditionText": "",
-				"useConditionReason": "",
-				"effectConditionText": "",
-				"macroData": {
-					"name": "",
-					"command": ""
-				},
-				"ignoreTraits": {
-					"idi": false,
-					"idr": false,
-					"idv": false,
-					"ida": false
-				},
-				"midiProperties": {
-					"ignoreTraits": [],
-					"triggeredActivityId": "none",
-					"triggeredActivityConditionText": "",
-					"triggeredActivityTargets": "targets",
-					"triggeredActivityRollAs": "self",
-					"forceDialog": false,
-					"confirmTargets": "default",
-					"autoTargetType": "any",
-					"autoTargetAction": "default",
-					"automationOnly": false,
-					"otherActivityCompatible": true,
-					"identifier": "",
-					"displayActivityName": false,
-					"rollMode": "default",
-					"chooseEffects": false
-				},
-				"isOverTimeFlag": false,
-				"overTimeProperties": {
-					"saveRemoves": true,
-					"preRemoveConditionText": "",
-					"postRemoveConditionText": ""
-				},
-				"img": "",
-				"appliedEffects": [
-					"5qHjz7oiqjycqzm4"
-				]
-			}
-		},
-		"uses": {
-			"spent": 0,
-			"recovery": [],
-			"max": ""
-		},
-		"description": {
-			"value": "<p><em>Squeezing water from a clump of seaweed, you conjure water, bursting from a source of standing water nearby. The area floods as your spell conjures a massive volume of water.The water spills forth, endlessly replenished but vanishing as it spills out of the area.</em></p><p>Your chosen area must have at least a 5 ft. cube of water. This can be used on top of a body of water. The water rises by at least 5 ft. and as much as 20 ft.</p><p><strong>Strength Save</strong></p><p>If a creature or vehicle is larger than huge, they automatically save.</p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[prone] and moved to the surface of the flooding water. A vehicle is capsized and becomes &amp;reference[restrained] until something rights the ship back up again.</p></li><li><p><strong>Success:</strong> Target can choose to move to the surface of the flooding water or stay where they are. Vehicles harmlessly move to the surface of the water.</p></li><li><p><strong>Area Hazard:</strong> The area is underwater. As normal, a creature without a swimming speed has disadvantage on attack rolls while underwater, has their speed halved, and has resistance to fire damage. Ranged weapons cannot use their long range when underwater or when attacking an underwater creature.</p></li></ul>",
-			"chat": "<p>Your chosen area must have at least a 5 ft. cube of water. This can be used on top of a body of water. The water rises by at least 5 ft. and as much as 20 ft.</p><p><strong>Strength Save</strong></p><p>If a creature or vehicle is larger than huge, they automatically save.</p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[prone] and moved to the surface of the flooding water. A vehicle is capsized and becomes &amp;reference[restrained] until something rights the ship back up again.</p></li><li><p><strong>Success:</strong> Target can choose to move to the surface of the flooding water or stay where they are. Vehicles harmlessly move to the surface of the water.</p></li><li><p><strong>Area Hazard:</strong> The area is underwater. As normal, a creature without a swimming speed has disadvantage on attack rolls while underwater, has their speed halved, and has resistance to fire damage. Ranged weapons cannot use their long range when underwater or when attacking an underwater creature.</p></li></ul>"
-		},
-		"identifier": "",
-		"source": {
-			"revision": 1,
-			"rules": "",
-			"book": "Elkan 5e",
-			"page": "",
-			"custom": "elkan5e.com/spells/flood",
-			"license": ""
-		},
-		"activation": {
-			"type": "action",
-			"value": null,
-			"condition": ""
-		},
-		"duration": {
-			"units": "minute",
-			"value": "10"
-		},
-		"level": 6,
-		"materials": {
-			"value": "",
-			"consumed": false,
-			"cost": 0,
-			"supply": 0
-		},
-		"preparation": {
-			"mode": "prepared",
-			"prepared": true
-		},
-		"properties": [
-			"vocal",
-			"somatic",
-			"material",
-			"concentration"
-		],
-		"range": {
-			"units": "ft",
-			"special": "",
-			"value": "300"
-		},
-		"school": "con",
-		"target": {
-			"template": {
-				"contiguous": false,
-				"units": "ft",
-				"type": "cube",
-				"size": "50",
-				"count": ""
-			},
-			"affects": {
-				"choice": false,
-				"type": "creatureOrObject",
-				"count": "",
-				"special": ""
-			}
-		}
-	},
-	"effects": [
-		{
-			"name": "Prone",
-			"_id": "dnd5eprone000000",
-			"img": "modules/elkan5e/icons/conditions/prone.svg",
-			"changes": [
-				{
-					"key": "StatusEffect",
-					"mode": 0,
-					"value": "prone",
-					"priority": 50
-				}
-			],
-			"statuses": [
-				"prone"
-			],
-			"description": "<p>@Embed[Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.y8L5Uq1jMVDsQjaS inline]</p>",
-			"type": "base",
-			"system": {},
-			"disabled": false,
-			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
-			},
-			"origin": "Compendium.elkan5e.elkan5e-spells.Item.fFLifsi8a2pIPHVi",
-			"tint": "#ffffff",
-			"transfer": false,
-			"sort": 0,
-			"flags": {
-				"dae": {
-					"disableCondition": "",
-					"disableIncapacitated": false,
-					"stackable": "multi",
-					"showIcon": false,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": []
-				},
-				"dnd5e": {
-					"riders": {
-						"statuses": []
-					}
-				},
-				"core": {
-					"overlay": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
-				}
-			},
-			"_key": "!items.effects!fFLifsi8a2pIPHVi.dnd5eprone000000"
-		},
-		{
-			"name": "Flood",
-			"img": "icons/magic/water/waves-water-blue.webp",
-			"origin": "Compendium.elkan5e.elkan5e-spells.Item.fFLifsi8a2pIPHVi",
-			"transfer": false,
-			"_id": "5qHjz7oiqjycqzm4",
-			"type": "base",
-			"system": {},
-			"changes": [],
-			"disabled": false,
-			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"statuses": [
-				"restrained"
-			],
-			"sort": 0,
-			"flags": {
-				"dae": {
-					"enableCondition": "",
-					"disableCondition": "",
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"stackable": "multi",
-					"showIcon": false,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": []
-				},
-				"dnd5e": {
-					"riders": {
-						"statuses": []
-					}
-				},
-				"core": {
-					"overlay": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
-				}
-			},
-			"_key": "!items.effects!fFLifsi8a2pIPHVi.5qHjz7oiqjycqzm4"
-		}
-	],
-	"flags": {
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
-		},
-		"midi-qol": {
-			"rollAttackPerTarget": "default",
-			"removeAttackDamageButtons": "default",
-			"itemCondition": "",
-			"reactionCondition": "",
-			"otherCondition": "",
-			"effectCondition": ""
-		},
-		"midiProperties": {
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"noConcentrationCheck": false,
-			"toggleEffect": false,
-			"ignoreTotalCover": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			}
-		}
-	},
-	"_key": "!items!fFLifsi8a2pIPHVi"
+  "folder": "sDaRY0H81UTha6hq",
+  "name": "Flood",
+  "type": "spell",
+  "_id": "fFLifsi8a2pIPHVi",
+  "img": "icons/magic/water/waves-water-blue.webp",
+  "system": {
+    "activities": {
+      "GvtfJLxjjozODq9n": {
+        "type": "save",
+        "_id": "GvtfJLxjjozODq9n",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "parts": [],
+          "critical": {
+            "allow": false
+          },
+          "onSave": "none"
+        },
+        "save": {
+          "ability": [
+            "str"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "k5DHZ9FztYp9AfJd",
+          "triggeredActivityConditionText": "target.actorType === 'vehicle'",
+          "triggeredActivityTargets": "retarget",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": false,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "name": "",
+        "img": "",
+        "appliedEffects": []
+      },
+      "k5DHZ9FztYp9AfJd": {
+        "type": "utility",
+        "name": "Vehicle Restrain",
+        "_id": "k5DHZ9FztYp9AfJd",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "spec",
+          "concentration": false,
+          "override": true,
+          "special": ""
+        },
+        "effects": [
+          {
+            "_id": "5qHjz7oiqjycqzm4"
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "img": "",
+        "appliedEffects": [
+          "5qHjz7oiqjycqzm4"
+        ]
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "description": {
+      "value": "<p><em>Squeezing water from a clump of seaweed, you conjure water, bursting from a source of standing water nearby. The area floods as your spell conjures a massive volume of water.The water spills forth, endlessly replenished but vanishing as it spills out of the area.</em></p><p>Your chosen area must have at least a 5 ft. cube of water. This can be used on top of a body of water. The water rises by at least 5 ft. and as much as 20 ft.</p><p><strong>Strength Save</strong></p><p>If a creature or vehicle is larger than huge, they automatically save.</p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[prone] and moved to the surface of the flooding water. A vehicle is capsized and becomes &amp;reference[restrained] until something rights the ship back up again.</p></li><li><p><strong>Success:</strong> Target can choose to move to the surface of the flooding water or stay where they are. Vehicles harmlessly move to the surface of the water.</p></li><li><p><strong>Area Hazard:</strong> The area is underwater. As normal, a creature without a swimming speed has disadvantage on attack rolls while underwater, has their speed halved, and has resistance to fire damage. Ranged weapons cannot use their long range when underwater or when attacking an underwater creature.</p></li></ul>",
+      "chat": "<p>Your chosen area must have at least a 5 ft. cube of water. This can be used on top of a body of water. The water rises by at least 5 ft. and as much as 20 ft.</p><p><strong>Strength Save</strong></p><p>If a creature or vehicle is larger than huge, they automatically save.</p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[prone] and moved to the surface of the flooding water. A vehicle is capsized and becomes &amp;reference[restrained] until something rights the ship back up again.</p></li><li><p><strong>Success:</strong> Target can choose to move to the surface of the flooding water or stay where they are. Vehicles harmlessly move to the surface of the water.</p></li><li><p><strong>Area Hazard:</strong> The area is underwater. As normal, a creature without a swimming speed has disadvantage on attack rolls while underwater, has their speed halved, and has resistance to fire damage. Ranged weapons cannot use their long range when underwater or when attacking an underwater creature.</p></li></ul>"
+    },
+    "identifier": "",
+    "source": {
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "custom": "elkan5e.com/spells/flood",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "value": null,
+      "condition": ""
+    },
+    "duration": {
+      "units": "minute",
+      "value": "10"
+    },
+    "level": 6,
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "concentration"
+    ],
+    "range": {
+      "units": "ft",
+      "special": "",
+      "value": "300"
+    },
+    "school": "con",
+    "target": {
+      "template": {
+        "contiguous": false,
+        "units": "ft",
+        "type": "cube",
+        "size": "50",
+        "count": ""
+      },
+      "affects": {
+        "choice": false,
+        "type": "creatureOrObject",
+        "count": "",
+        "special": ""
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Prone",
+      "_id": "dnd5eprone000000",
+      "img": "modules/elkan5e/icons/conditions/prone.svg",
+      "changes": [
+        {
+          "key": "StatusEffect",
+          "mode": 0,
+          "value": "prone",
+          "priority": 50
+        }
+      ],
+      "statuses": [
+        "prone"
+      ],
+      "description": "<p>@Embed[Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.y8L5Uq1jMVDsQjaS inline]</p>",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "origin": "Compendium.elkan5e.elkan5e-spells.Item.fFLifsi8a2pIPHVi",
+      "tint": "#ffffff",
+      "transfer": false,
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "stackable": "multi",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "core": {
+          "overlay": false
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system",
+          "statuses": []
+        }
+      },
+      "_key": "!items.effects!fFLifsi8a2pIPHVi.dnd5eprone000000"
+    },
+    {
+      "name": "Flood",
+      "img": "icons/magic/water/waves-water-blue.webp",
+      "origin": "Compendium.elkan5e.elkan5e-spells.Item.fFLifsi8a2pIPHVi",
+      "transfer": false,
+      "_id": "5qHjz7oiqjycqzm4",
+      "type": "base",
+      "system": {},
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [
+        "restrained"
+      ],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "multi",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "core": {
+          "overlay": false
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system",
+          "statuses": []
+        }
+      },
+      "_key": "!items.effects!fFLifsi8a2pIPHVi.5qHjz7oiqjycqzm4"
+    }
+  ],
+  "flags": {
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": ""
+    },
+    "midiProperties": {
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    }
+  },
+  "_key": "!items!fFLifsi8a2pIPHVi"
 }

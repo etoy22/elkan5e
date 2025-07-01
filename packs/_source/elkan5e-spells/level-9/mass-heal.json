@@ -1,184 +1,181 @@
 {
-	"name": "Mass Heal",
-	"type": "spell",
-	"img": "icons/magic/life/heart-cross-strong-flame-purple-orange.webp",
-	"effects": [],
-	"folder": "OLc6BMEuifPnCAUH",
-	"flags": {
-		"midi-qol": {
-			"onUseMacroName": "",
-			"effectActivation": false,
-			"removeAttackDamageButtons": "default",
-			"rollAttackPerTarget": "default",
-			"itemCondition": "",
-			"effectCondition": "",
-			"reactionCondition": ""
-		},
-		"core": {},
-		"midiProperties": {
-			"nodam": false,
-			"fulldam": false,
-			"halfdam": false,
-			"rollOther": false,
-			"critOther": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"concentration": false,
-			"toggleEffect": false,
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"offHandWeapon": false,
-			"ignoreTotalCover": false,
-			"noConcentrationCheck": false,
-			"confirmTargets": "default",
-			"idr": false,
-			"idi": false,
-			"idv": false,
-			"ida": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedProperties": [
-				"vocal",
-				"somatic"
-			]
-		}
-	},
-	"system": {
-		"description": {
-			"value": "<p>A flood of healing energy flows from you into injured creatures around you. You restore up to 700 hit points, divided as you choose among any number of creatures that you can see within range. Creatures healed by this spell are also cured of all diseases and any effect making them &amp;Reference[Blinded] or &amp;Reference[Deafened]. This spell has no effect on undead or constructs.</p><p></p>",
-			"chat": ""
-		},
-		"source": {
-			"custom": "Elkan 5e",
-			"revision": 1,
-			"rules": "",
-			"book": "Elkan 5e",
-			"page": "",
-			"license": ""
-		},
-		"activation": {
-			"type": "action",
-			"condition": "",
-			"value": 1
-		},
-		"duration": {
-			"value": "",
-			"units": "inst"
-		},
-		"target": {
-			"affects": {
-				"choice": false,
-				"count": "",
-				"type": ""
-			},
-			"template": {
-				"units": "",
-				"contiguous": false,
-				"type": ""
-			}
-		},
-		"range": {
-			"value": "60",
-			"units": "ft",
-			"special": ""
-		},
-		"uses": {
-			"max": "",
-			"recovery": [],
-			"spent": 0
-		},
-		"ability": "",
-		"level": 9,
-		"school": "trs",
-		"materials": {
-			"value": "",
-			"consumed": false,
-			"cost": 0,
-			"supply": 0
-		},
-		"preparation": {
-			"mode": "prepared",
-			"prepared": true
-		},
-		"properties": [
-			"vocal",
-			"somatic"
-		],
-		"activities": {
-			"X8u5IFamKryzEuOs": {
-				"type": "heal",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"prompt": true,
-					"template": {
-						"contiguous": false,
-						"units": "ft"
-					},
-					"affects": {
-						"choice": false
-					},
-					"override": false
-				},
-				"healing": {
-					"number": null,
-					"denomination": null,
-					"bonus": "",
-					"types": [
-						"healing"
-					],
-					"custom": {
-						"enabled": true,
-						"formula": "700"
-					},
-					"scaling": {
-						"mode": "",
-						"number": null,
-						"formula": ""
-					}
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"sort": 0,
-				"_id": "X8u5IFamKryzEuOs",
-				"name": "",
-				"img": "",
-				"useConditionText": "!target.details.type?.value === \"undead\" or !target.details.type?.value === \"construct\" or target.details.type?.subtype=== \"Soul Gem\"",
-				"appliedEffects": []
-			}
-		},
-		"identifier": ""
-	},
-	"_id": "0mR21mpsojkIU9ci",
-	"_key": "!items!0mR21mpsojkIU9ci"
+  "name": "Mass Heal",
+  "type": "spell",
+  "img": "icons/magic/life/heart-cross-strong-flame-purple-orange.webp",
+  "effects": [],
+  "folder": "OLc6BMEuifPnCAUH",
+  "flags": {
+    "midi-qol": {
+      "onUseMacroName": "",
+      "effectActivation": false,
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "reactionCondition": ""
+    },
+    "core": {},
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "noConcentrationCheck": false,
+      "confirmTargets": "default",
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic"
+      ]
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p>A flood of healing energy flows from you into injured creatures around you. You restore up to 700 hit points, divided as you choose among any number of creatures that you can see within range. Creatures healed by this spell are also cured of all diseases and any effect making them &amp;Reference[Blinded] or &amp;Reference[Deafened]. This spell has no effect on undead or constructs.</p><p></p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Elkan 5e",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "",
+      "units": "inst"
+    },
+    "target": {
+      "affects": {
+        "choice": false,
+        "count": "",
+        "type": ""
+      },
+      "template": {
+        "units": "",
+        "contiguous": false,
+        "type": ""
+      }
+    },
+    "range": {
+      "value": "60",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 9,
+    "school": "trs",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic"
+    ],
+    "activities": {
+      "X8u5IFamKryzEuOs": {
+        "type": "heal",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "healing": {
+          "number": null,
+          "denomination": null,
+          "bonus": "",
+          "types": [
+            "healing"
+          ],
+          "custom": {
+            "enabled": true,
+            "formula": "700"
+          },
+          "scaling": {
+            "mode": "",
+            "number": null,
+            "formula": ""
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "sort": 0,
+        "_id": "X8u5IFamKryzEuOs",
+        "name": "",
+        "img": "",
+        "useConditionText": "!target.details.type?.value === \"undead\" or !target.details.type?.value === \"construct\" or target.details.type?.subtype=== \"Soul Gem\"",
+        "appliedEffects": []
+      }
+    },
+    "identifier": ""
+  },
+  "_id": "0mR21mpsojkIU9ci",
+  "_key": "!items!0mR21mpsojkIU9ci"
 }

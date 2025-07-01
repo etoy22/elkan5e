@@ -1,264 +1,261 @@
 {
-	"name": "Suggestion",
-	"type": "spell",
-	"img": "icons/magic/control/mouth-smile-deception-purple.webp",
-	"effects": [
-		{
-			"_id": "C0OCEM3j6nXEJeDA",
-			"changes": [],
-			"disabled": false,
-			"duration": {
-				"startTime": null,
-				"seconds": 28800,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
-			},
-			"transfer": false,
-			"flags": {
-				"core": {
-					"overlay": false
-				},
-				"combat-utility-belt": {
-					"conditionId": "charmed",
-					"overlay": false
-				},
-				"dae": {
-					"stackable": "none",
-					"specialDuration": [],
-					"transfer": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"showIcon": false,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"disableIncapacitated": false,
-					"enableCondition": "",
-					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"radius": "",
-					"aura": "None",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"displayTemp": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
-				}
-			},
-			"tint": "#ffffff",
-			"origin": null,
-			"name": "Suggestion",
-			"description": "",
-			"statuses": [
-				"charmed"
-			],
-			"img": "icons/magic/control/mouth-smile-deception-purple.webp",
-			"type": "base",
-			"system": {},
-			"sort": 0,
-			"_key": "!items.effects!Fn71VAKQOXzIt89X.C0OCEM3j6nXEJeDA"
-		}
-	],
-	"folder": "6J3i75lfD1J0xYwA",
-	"flags": {
-		"midi-qol": {
-			"onUseMacroName": "",
-			"effectActivation": false,
-			"forceCEOff": false,
-			"itemCondition": "",
-			"reactionCondition": "",
-			"otherCondition": "",
-			"effectCondition": "",
-			"rollAttackPerTarget": "default",
-			"AoETargetType": "any",
-			"autoTarget": "default",
-			"removeAttackDamageButtons": "default"
-		},
-		"core": {},
-		"midiProperties": {
-			"nodam": false,
-			"fulldam": false,
-			"halfdam": false,
-			"rollOther": false,
-			"critOther": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"concentration": false,
-			"toggleEffect": false,
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"offHandWeapon": false,
-			"ignoreTotalCover": false,
-			"confirmTargets": "default",
-			"noConcentrationCheck": false,
-			"idr": false,
-			"idi": false,
-			"idv": false,
-			"ida": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedProperties": [
-				"vocal",
-				"material",
-				"concentration"
-			]
-		},
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
-		}
-	},
-	"system": {
-		"description": {
-			"value": "<p><em>You place a dab of honey or sweet oil on your lips and offer a suggestion to a creature, magically making your words sound appealing to them.</em></p><p><strong>Control Spell</strong></p><p>You suggest a specific course of action that a creature believes they could finish within 8 hours.</p><p>The target must be able to hear and understand you. This spell cannot compel someone to do something they would not normally consider doing. If a character could not influence a creature to do something with a persuasion skill check, the suggestion spell will not work either.</p><p><strong>Wisdom Save</strong></p><ul><li><p><strong>Failure:</strong> The target is &amp;reference[Charmed] by you. While charmed, they make your suggested course of action an immediate priority. If the suggested course of action leads the target or one of their allies to physical harm, or is about to lead them to harm, the spell ends. Targets will generally eat and take care of themselves, but only as much as is needed to follow the suggested course of action.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 2nd.</p><p></p><p><em>You can also specify conditions that will trigger an action during the duration. For example, you might suggest that a knight give money to the first beggar they meet. If the condition isn't met before the spell expires, the activity isn't performed.</em></p>",
-			"chat": "<p><strong>Control Spell</strong></p><p>You suggest a specific course of action that a creature believes they could finish within 8 hours.</p><p>The target must be able to hear and understand you. This spell cannot compel someone to do something they would not normally consider doing. If a character could not influence a creature to do something with a persuasion skill check, the suggestion spell will not work either.</p><p><strong>Wisdom Save</strong></p><ul><li><p><strong>Failure:</strong> The target is &amp;reference[Charmed] by you. While charmed, they make your suggested course of action an immediate priority. If the suggested course of action leads the target or one of their allies to physical harm, or is about to lead them to harm, the spell ends. Targets will generally eat and take care of themselves, but only as much as is needed to follow the suggested course of action.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 2nd.</p><p></p><p><em>You can also specify conditions that will trigger an action during the duration. For example, you might suggest that a knight give money to the first beggar they meet. If the condition isn't met before the spell expires, the activity isn't performed.</em></p>"
-		},
-		"source": {
-			"custom": "elkan5e.com/spells/suggestion",
-			"revision": 1,
-			"rules": "",
-			"book": "Elkan 5e",
-			"page": "",
-			"license": ""
-		},
-		"activation": {
-			"type": "action",
-			"condition": "",
-			"value": 1
-		},
-		"duration": {
-			"value": "8",
-			"units": "hour"
-		},
-		"target": {
-			"affects": {
-				"type": "creature",
-				"count": "1",
-				"choice": false,
-				"special": ""
-			},
-			"template": {
-				"units": "",
-				"contiguous": false,
-				"type": ""
-			}
-		},
-		"range": {
-			"value": "30",
-			"units": "ft",
-			"special": ""
-		},
-		"uses": {
-			"max": "",
-			"recovery": [],
-			"spent": 0
-		},
-		"ability": "",
-		"level": 2,
-		"school": "enc",
-		"materials": {
-			"value": "",
-			"consumed": false,
-			"cost": 0,
-			"supply": 0
-		},
-		"preparation": {
-			"mode": "prepared",
-			"prepared": true
-		},
-		"properties": [
-			"vocal",
-			"somatic",
-			"material",
-			"concentration"
-		],
-		"activities": {
-			"dnd5eactivity000": {
-				"_id": "dnd5eactivity000",
-				"type": "save",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "C0OCEM3j6nXEJeDA",
-						"onSave": false
-					}
-				],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"prompt": true,
-					"template": {
-						"contiguous": false,
-						"units": "ft"
-					},
-					"affects": {
-						"choice": false
-					},
-					"override": false
-				},
-				"uses": {
-					"spent": 0,
-					"max": "",
-					"recovery": []
-				},
-				"damage": {
-					"onSave": "none",
-					"parts": []
-				},
-				"save": {
-					"ability": "wis",
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
-					}
-				},
-				"sort": 0,
-				"name": "",
-				"img": "",
-				"appliedEffects": [
-					"C0OCEM3j6nXEJeDA"
-				],
-				"effectConditionText": "!target.traits.ci.value.has('charmed')"
-			}
-		},
-		"identifier": ""
-	},
-	"_id": "Fn71VAKQOXzIt89X",
-	"_key": "!items!Fn71VAKQOXzIt89X"
+  "name": "Suggestion",
+  "type": "spell",
+  "img": "icons/magic/control/mouth-smile-deception-purple.webp",
+  "effects": [
+    {
+      "_id": "C0OCEM3j6nXEJeDA",
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": 28800,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "transfer": false,
+      "flags": {
+        "core": {
+          "overlay": false
+        },
+        "combat-utility-belt": {
+          "conditionId": "charmed",
+          "overlay": false
+        },
+        "dae": {
+          "stackable": "none",
+          "specialDuration": [],
+          "transfer": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "enableCondition": "",
+          "disableCondition": ""
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "radius": "",
+          "aura": "None",
+          "alignment": "",
+          "type": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "displayTemp": false,
+          "nameOverride": "",
+          "customCheck": "",
+          "wallsBlock": "system"
+        }
+      },
+      "tint": "#ffffff",
+      "origin": null,
+      "name": "Suggestion",
+      "description": "",
+      "statuses": [
+        "charmed"
+      ],
+      "img": "icons/magic/control/mouth-smile-deception-purple.webp",
+      "type": "base",
+      "system": {},
+      "sort": 0,
+      "_key": "!items.effects!Fn71VAKQOXzIt89X.C0OCEM3j6nXEJeDA"
+    }
+  ],
+  "folder": "6J3i75lfD1J0xYwA",
+  "flags": {
+    "midi-qol": {
+      "onUseMacroName": "",
+      "effectActivation": false,
+      "forceCEOff": false,
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "rollAttackPerTarget": "default",
+      "AoETargetType": "any",
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default"
+    },
+    "core": {},
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "material",
+        "concentration"
+      ]
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>You place a dab of honey or sweet oil on your lips and offer a suggestion to a creature, magically making your words sound appealing to them.</em></p><p><strong>Control Spell</strong></p><p>You suggest a specific course of action that a creature believes they could finish within 8 hours.</p><p>The target must be able to hear and understand you. This spell cannot compel someone to do something they would not normally consider doing. If a character could not influence a creature to do something with a persuasion skill check, the suggestion spell will not work either.</p><p><strong>Wisdom Save</strong></p><ul><li><p><strong>Failure:</strong> The target is &amp;reference[Charmed] by you. While charmed, they make your suggested course of action an immediate priority. If the suggested course of action leads the target or one of their allies to physical harm, or is about to lead them to harm, the spell ends. Targets will generally eat and take care of themselves, but only as much as is needed to follow the suggested course of action.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 2nd.</p><p></p><p><em>You can also specify conditions that will trigger an action during the duration. For example, you might suggest that a knight give money to the first beggar they meet. If the condition isn't met before the spell expires, the activity isn't performed.</em></p>",
+      "chat": "<p><strong>Control Spell</strong></p><p>You suggest a specific course of action that a creature believes they could finish within 8 hours.</p><p>The target must be able to hear and understand you. This spell cannot compel someone to do something they would not normally consider doing. If a character could not influence a creature to do something with a persuasion skill check, the suggestion spell will not work either.</p><p><strong>Wisdom Save</strong></p><ul><li><p><strong>Failure:</strong> The target is &amp;reference[Charmed] by you. While charmed, they make your suggested course of action an immediate priority. If the suggested course of action leads the target or one of their allies to physical harm, or is about to lead them to harm, the spell ends. Targets will generally eat and take care of themselves, but only as much as is needed to follow the suggested course of action.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 2nd.</p><p></p><p><em>You can also specify conditions that will trigger an action during the duration. For example, you might suggest that a knight give money to the first beggar they meet. If the condition isn't met before the spell expires, the activity isn't performed.</em></p>"
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/suggestion",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "8",
+      "units": "hour"
+    },
+    "target": {
+      "affects": {
+        "type": "creature",
+        "count": "1",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "units": "",
+        "contiguous": false,
+        "type": ""
+      }
+    },
+    "range": {
+      "value": "30",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 2,
+    "school": "enc",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "concentration"
+    ],
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "save",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "C0OCEM3j6nXEJeDA",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "damage": {
+          "onSave": "none",
+          "parts": []
+        },
+        "save": {
+          "ability": "wis",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "sort": 0,
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "C0OCEM3j6nXEJeDA"
+        ],
+        "effectConditionText": "!target.traits.ci.value.has('charmed')"
+      }
+    },
+    "identifier": ""
+  },
+  "_id": "Fn71VAKQOXzIt89X",
+  "_key": "!items!Fn71VAKQOXzIt89X"
 }

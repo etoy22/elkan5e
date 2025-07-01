@@ -1,288 +1,282 @@
 {
-	"name": "Blight",
-	"type": "spell",
-	"img": "icons/magic/death/skull-energy-light-white.webp",
-	"effects": [],
-	"folder": "90eJtrVwLFIxcWJw",
-	"flags": {
-		"midi-qol": {
-			"onUseMacroName": "",
-			"effectActivation": false,
-			"removeAttackDamageButtons": "default",
-			"rollAttackPerTarget": "default",
-			"itemCondition": "",
-			"effectCondition": "",
-			"reactionCondition": "",
-			"AoETargetType": "any",
-			"AoETargetTypeIncludeSelf": true,
-			"autoTarget": "default",
-			"otherCondition": ""
-		},
-		"core": {},
-		"midiProperties": {
-			"nodam": false,
-			"halfdam": false,
-			"fulldam": false,
-			"rollOther": false,
-			"critOther": false,
-			"concentration": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"toggleEffect": false,
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"offHandWeapon": false,
-			"ignoreTotalCover": false,
-			"confirmTargets": "default",
-			"saveDamage": "default",
-			"noConcentrationCheck": false,
-			"bonusSaveDamage": "default",
-			"idr": false,
-			"idi": false,
-			"idv": false,
-			"ida": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedProperties": [
-				"vocal",
-				"somatic"
-			]
-		},
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
-		}
-	},
-	"system": {
-		"description": {
-			"value": "<p><strong>Constitution Save</strong> </p><p>If you target a &amp;reference[plant]{plant} creature or a magical plant, it makes the saving throw with disadvantage, and you don't roll damage, instead dealing maximum damage. This spell has no effect on creatures that don't have water in their bodies.</p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 8d8 necrotic]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p></p><p><strong>*</strong> <strong>Upcasting:</strong> Increase damage by [[/damage 1d8 necrotic]]{1d8} for each spell level above 4th.</p>",
-			"chat": ""
-		},
-		"source": {
-			"custom": "elkan5e.com/spells/blight",
-			"revision": 1,
-			"rules": "",
-			"book": "Elkan 5e",
-			"page": "",
-			"license": ""
-		},
-		"activation": {
-			"type": "action",
-			"condition": "",
-			"value": 1
-		},
-		"duration": {
-			"value": "",
-			"units": "inst"
-		},
-		"target": {
-			"affects": {
-				"type": "creature",
-				"count": "1",
-				"choice": false,
-				"special": ""
-			},
-			"template": {
-				"units": "",
-				"contiguous": false,
-				"type": ""
-			}
-		},
-		"range": {
-			"value": "30",
-			"units": "ft",
-			"special": ""
-		},
-		"uses": {
-			"max": "",
-			"recovery": [],
-			"spent": 0
-		},
-		"ability": "",
-		"level": 4,
-		"school": "trs",
-		"materials": {
-			"value": "",
-			"consumed": false,
-			"cost": 0,
-			"supply": 0
-		},
-		"preparation": {
-			"mode": "prepared",
-			"prepared": true
-		},
-		"properties": [
-			"vocal",
-			"somatic"
-		],
-		"activities": {
-			"bNtp2ufQNlTXxuyo": {
-				"type": "save",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"prompt": true,
-					"template": {
-						"contiguous": false,
-						"units": "ft"
-					},
-					"affects": {
-						"choice": false
-					},
-					"override": false
-				},
-				"damage": {
-					"onSave": "half",
-					"parts": [
-						{
-							"custom": {
-								"enabled": false,
-								"formula": ""
-							},
-							"number": 8,
-							"denomination": "8",
-							"bonus": "",
-							"types": [
-								"necrotic"
-							],
-							"scaling": {
-								"mode": "whole",
-								"number": 1,
-								"formula": ""
-							}
-						}
-					]
-				},
-				"save": {
-					"ability": "con",
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
-					}
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"sort": 0,
-				"_id": "bNtp2ufQNlTXxuyo",
-				"name": "",
-				"img": "",
-				"appliedEffects": [],
-				"otherActivityId": "none"
-			},
-			"LjKvMoSDAbaFgjMZ": {
-				"type": "save",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"prompt": true,
-					"template": {
-						"contiguous": false,
-						"units": "ft"
-					},
-					"affects": {
-						"choice": false
-					},
-					"override": false
-				},
-				"damage": {
-					"onSave": "half",
-					"parts": [
-						{
-							"custom": {
-								"enabled": true,
-								"formula": "56"
-							},
-							"number": 8,
-							"denomination": 8,
-							"bonus": "",
-							"types": [
-								"necrotic"
-							],
-							"scaling": {
-								"mode": "whole",
-								"number": null,
-								"formula": "8"
-							}
-						}
-					]
-				},
-				"save": {
-					"ability": "con",
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
-					}
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"sort": 0,
-				"useConditionText": "",
-				"forceDialog": false,
-				"effectConditionText": "",
-				"_id": "LjKvMoSDAbaFgjMZ",
-				"name": "Save (Against Plant)",
-				"img": "",
-				"appliedEffects": []
-			}
-		},
-		"identifier": ""
-	},
-	"_id": "LqSOaXSQoFC5WULx",
-	"_key": "!items!LqSOaXSQoFC5WULx"
+  "name": "Blight",
+  "type": "spell",
+  "img": "icons/magic/death/skull-energy-light-white.webp",
+  "effects": [],
+  "folder": "90eJtrVwLFIxcWJw",
+  "flags": {
+    "midi-qol": {
+      "onUseMacroName": "",
+      "effectActivation": false,
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "reactionCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "otherCondition": ""
+    },
+    "core": {},
+    "midiProperties": {
+      "nodam": false,
+      "halfdam": false,
+      "fulldam": false,
+      "rollOther": false,
+      "critOther": false,
+      "concentration": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "saveDamage": "default",
+      "noConcentrationCheck": false,
+      "bonusSaveDamage": "default",
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic"
+      ]
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><strong>Constitution Save</strong> </p><p>If you target a &amp;reference[plant]{plant} creature or a magical plant, it makes the saving throw with disadvantage, and you don't roll damage, instead dealing maximum damage. This spell has no effect on creatures that don't have water in their bodies.</p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 8d8 necrotic]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p></p><p><strong>*</strong> <strong>Upcasting:</strong> Increase damage by [[/damage 1d8 necrotic]]{1d8} for each spell level above 4th.</p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/blight",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "",
+      "units": "inst"
+    },
+    "target": {
+      "affects": {
+        "type": "creature",
+        "count": "1",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "units": "",
+        "contiguous": false,
+        "type": ""
+      }
+    },
+    "range": {
+      "value": "30",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 4,
+    "school": "trs",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic"
+    ],
+    "activities": {
+      "bNtp2ufQNlTXxuyo": {
+        "type": "save",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 8,
+              "denomination": "8",
+              "bonus": "",
+              "types": [
+                "necrotic"
+              ],
+              "scaling": {
+                "mode": "whole",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": "con",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "sort": 0,
+        "_id": "bNtp2ufQNlTXxuyo",
+        "name": "",
+        "img": "",
+        "appliedEffects": [],
+        "otherActivityId": "none"
+      },
+      "LjKvMoSDAbaFgjMZ": {
+        "type": "save",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "56"
+              },
+              "number": 8,
+              "denomination": 8,
+              "bonus": "",
+              "types": [
+                "necrotic"
+              ],
+              "scaling": {
+                "mode": "whole",
+                "number": null,
+                "formula": "8"
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": "con",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "sort": 0,
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "_id": "LjKvMoSDAbaFgjMZ",
+        "name": "Save (Against Plant)",
+        "img": "",
+        "appliedEffects": []
+      }
+    },
+    "identifier": ""
+  },
+  "_id": "LqSOaXSQoFC5WULx",
+  "_key": "!items!LqSOaXSQoFC5WULx"
 }

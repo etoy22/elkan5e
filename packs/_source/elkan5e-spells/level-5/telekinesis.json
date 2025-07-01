@@ -1,417 +1,411 @@
 {
-	"name": "Telekinesis",
-	"type": "spell",
-	"img": "icons/magic/earth/projectile-stone-ball-blue.webp",
-	"effects": [
-		{
-			"name": "Telekinesis",
-			"img": "icons/magic/earth/projectile-stone-ball-blue.webp",
-			"origin": "Compendium.elkan5e.elkan5e-spells.Item.EihC0prUS7NZDdtL",
-			"_id": "77CUQ8sBVFHQGMbg",
-			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 2,
-					"value": "turn=end,\nsaveAbility=str,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nname=Telekinesis",
-					"priority": 20
-				}
-			],
-			"disabled": false,
-			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"transfer": false,
-			"statuses": [
-				"grappled"
-			],
-			"sort": 0,
-			"flags": {
-				"dae": {
-					"disableCondition": "",
-					"disableIncapacitated": false,
-					"stackable": "multi",
-					"showIcon": false,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": [],
-					"enableCondition": "",
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false
-				},
-				"dnd5e": {
-					"riders": {
-						"statuses": []
-					}
-				},
-				"core": {
-					"overlay": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
-				}
-			},
-			"_key": "!items.effects!EihC0prUS7NZDdtL.77CUQ8sBVFHQGMbg"
-		}
-	],
-	"folder": "PnZJTE6T4UQY81Pm",
-	"flags": {
-		"core": {},
-		"midi-qol": {
-			"effectActivation": false,
-			"rollAttackPerTarget": "default",
-			"itemCondition": "",
-			"effectCondition": "",
-			"reactionCondition": "",
-			"removeAttackDamageButtons": "default",
-			"otherCondition": ""
-		},
-		"midiProperties": {
-			"nodam": false,
-			"fulldam": false,
-			"halfdam": false,
-			"rollOther": false,
-			"critOther": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"concentration": false,
-			"toggleEffect": false,
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"offHandWeapon": false,
-			"ignoreTotalCover": false,
-			"confirmTargets": "default",
-			"noConcentrationCheck": false,
-			"idr": false,
-			"idi": false,
-			"idv": false,
-			"ida": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedProperties": [
-				"vocal",
-				"somatic",
-				"concentration"
-			]
-		},
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
-		}
-	},
-	"system": {
-		"description": {
-			"value": "<p><em>Holding your hands outstretched, you begin to manipulate creatures an objects from afar.</em></p><p><strong>Utility Spell</strong></p><p>Target a huge or smaller creature or object. If your target is an object carried by a creature, that creature rolls the save for the object.</p><p><strong>Strength Save</strong></p><ul><li><p><strong>Failure</strong>: Target is &amp;reference[grappled] and moved up to 30 feet in any direction within the spell’s range, including into the air. If you want, you can also cause the target to become &amp;reference[prone]. Target rolls again at end of their turns, ending effect on success (falling if suspended in midair).</p><p>You can also release a target at any time.</p></li><li><p><strong>Success</strong>: No effect.</p></li><li><p><strong>Concentration:</strong> Once on each subsequent turn, you can target a different creature or object or move one previously grappled target as a bonus action. You can grapple up to 5 creatures (including yourself) in this way.</p><p></p></li></ul><p><em>You can exert fine control on objects with your telekinetic grip, such as manipulating a simple tool, opening a door or a container, stowing or retrieving an item from an open container, or pouring the contents from a vial.</em></p>",
-			"chat": "<p><strong>Utility Spell</strong></p><p>Target a huge or smaller creature or object. If your target is an object carried by a creature, that creature rolls the save for the object.</p><p><strong>Strength Save</strong></p><ul><li><p><strong>Failure</strong>: Target is &amp;reference[grappled] and moved up to 30 feet in any direction within the spell’s range, including into the air. If you want, you can also cause the target to become &amp;reference[prone]. Target rolls again at end of their turns, ending effect on success (falling if suspended in midair).</p><p>You can also release a target at any time.</p></li><li><p><strong>Success</strong>: No effect.</p></li><li><p><strong>Concentration:</strong> Once on each subsequent turn, you can target a different creature or object or move one previously grappled target as a bonus action. You can grapple up to 5 creatures (including yourself) in this way.</p><p></p></li></ul><p><em>You can exert fine control on objects with your telekinetic grip, such as manipulating a simple tool, opening a door or a container, stowing or retrieving an item from an open container, or pouring the contents from a vial.</em></p>"
-		},
-		"source": {
-			"custom": "elkan5e.com/spells/telekinesis",
-			"revision": 1,
-			"rules": "",
-			"book": "Elkan 5e",
-			"page": "",
-			"license": ""
-		},
-		"activation": {
-			"type": "action",
-			"condition": "",
-			"value": 1
-		},
-		"duration": {
-			"value": "10",
-			"units": "minute"
-		},
-		"target": {
-			"affects": {
-				"type": "creature",
-				"count": "1",
-				"choice": false,
-				"special": ""
-			},
-			"template": {
-				"units": "",
-				"contiguous": false,
-				"type": ""
-			}
-		},
-		"range": {
-			"value": "60",
-			"units": "ft",
-			"special": ""
-		},
-		"uses": {
-			"max": "",
-			"recovery": [],
-			"spent": 0
-		},
-		"ability": "",
-		"level": 5,
-		"school": "trs",
-		"materials": {
-			"value": "",
-			"consumed": false,
-			"cost": 0,
-			"supply": 0
-		},
-		"preparation": {
-			"mode": "prepared",
-			"prepared": true
-		},
-		"properties": [
-			"somatic",
-			"concentration"
-		],
-		"activities": {
-			"pavRoIGuFiIXmTps": {
-				"type": "save",
-				"_id": "pavRoIGuFiIXmTps",
-				"sort": 0,
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "77CUQ8sBVFHQGMbg"
-					}
-				],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"template": {
-						"contiguous": false,
-						"units": "ft"
-					},
-					"affects": {
-						"choice": false
-					},
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"damage": {
-					"parts": [],
-					"critical": {
-						"allow": false
-					},
-					"onSave": "none"
-				},
-				"save": {
-					"ability": [
-						"str"
-					],
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
-					}
-				},
-				"useConditionText": "",
-				"useConditionReason": "",
-				"effectConditionText": "",
-				"macroData": {
-					"name": "",
-					"command": ""
-				},
-				"ignoreTraits": {
-					"idi": false,
-					"idr": false,
-					"idv": false,
-					"ida": false
-				},
-				"midiProperties": {
-					"ignoreTraits": [],
-					"triggeredActivityId": "none",
-					"triggeredActivityConditionText": "",
-					"triggeredActivityTargets": "targets",
-					"triggeredActivityRollAs": "self",
-					"forceDialog": false,
-					"confirmTargets": "default",
-					"autoTargetType": "any",
-					"autoTargetAction": "default",
-					"automationOnly": false,
-					"otherActivityCompatible": true,
-					"identifier": "",
-					"displayActivityName": false,
-					"rollMode": "default",
-					"chooseEffects": false,
-					"toggleEffect": false,
-					"ignoreFullCover": false
-				},
-				"isOverTimeFlag": false,
-				"overTimeProperties": {
-					"saveRemoves": true,
-					"preRemoveConditionText": "",
-					"postRemoveConditionText": ""
-				},
-				"otherActivityId": "",
-				"name": "Initial Casting (Use First)",
-				"img": "",
-				"appliedEffects": [
-					"77CUQ8sBVFHQGMbg"
-				]
-			},
-			"c5G7K6keUSsf3DFY": {
-				"type": "save",
-				"sort": 0,
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": false,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "77CUQ8sBVFHQGMbg",
-						"onSave": false
-					}
-				],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"template": {
-						"contiguous": false,
-						"units": "ft"
-					},
-					"affects": {
-						"choice": false
-					},
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"damage": {
-					"parts": [],
-					"critical": {
-						"allow": false
-					},
-					"onSave": "none"
-				},
-				"save": {
-					"ability": [
-						"str"
-					],
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
-					}
-				},
-				"useConditionText": "",
-				"useConditionReason": "",
-				"effectConditionText": "",
-				"macroData": {
-					"name": "",
-					"command": ""
-				},
-				"ignoreTraits": {
-					"idi": false,
-					"idr": false,
-					"idv": false,
-					"ida": false
-				},
-				"midiProperties": {
-					"ignoreTraits": [],
-					"triggeredActivityId": "none",
-					"triggeredActivityConditionText": "",
-					"triggeredActivityTargets": "targets",
-					"triggeredActivityRollAs": "self",
-					"forceDialog": false,
-					"confirmTargets": "default",
-					"autoTargetType": "any",
-					"autoTargetAction": "default",
-					"automationOnly": false,
-					"otherActivityCompatible": true,
-					"identifier": "",
-					"displayActivityName": false,
-					"rollMode": "default",
-					"chooseEffects": false,
-					"toggleEffect": false,
-					"ignoreFullCover": false
-				},
-				"isOverTimeFlag": false,
-				"overTimeProperties": {
-					"saveRemoves": true,
-					"preRemoveConditionText": "",
-					"postRemoveConditionText": ""
-				},
-				"otherActivityId": "",
-				"name": "Later Turns",
-				"_id": "c5G7K6keUSsf3DFY",
-				"img": "",
-				"appliedEffects": [
-					"77CUQ8sBVFHQGMbg"
-				]
-			}
-		},
-		"identifier": ""
-	},
-	"_id": "EihC0prUS7NZDdtL",
-	"_key": "!items!EihC0prUS7NZDdtL"
+  "name": "Telekinesis",
+  "type": "spell",
+  "img": "icons/magic/earth/projectile-stone-ball-blue.webp",
+  "effects": [
+    {
+      "name": "Telekinesis",
+      "img": "icons/magic/earth/projectile-stone-ball-blue.webp",
+      "origin": "Compendium.elkan5e.elkan5e-spells.Item.EihC0prUS7NZDdtL",
+      "_id": "77CUQ8sBVFHQGMbg",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "flags.midi-qol.OverTime",
+          "mode": 2,
+          "value": "turn=end,\nsaveAbility=str,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nname=Telekinesis",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [
+        "grappled"
+      ],
+      "sort": 0,
+      "flags": {
+        "dae": {
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "stackable": "multi",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [],
+          "enableCondition": "",
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "core": {
+          "overlay": false
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system",
+          "statuses": []
+        }
+      },
+      "_key": "!items.effects!EihC0prUS7NZDdtL.77CUQ8sBVFHQGMbg"
+    }
+  ],
+  "folder": "PnZJTE6T4UQY81Pm",
+  "flags": {
+    "core": {},
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "reactionCondition": "",
+      "removeAttackDamageButtons": "default",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic",
+        "concentration"
+      ]
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>Holding your hands outstretched, you begin to manipulate creatures an objects from afar.</em></p><p><strong>Utility Spell</strong></p><p>Target a huge or smaller creature or object. If your target is an object carried by a creature, that creature rolls the save for the object.</p><p><strong>Strength Save</strong></p><ul><li><p><strong>Failure</strong>: Target is &amp;reference[grappled] and moved up to 30 feet in any direction within the spell’s range, including into the air. If you want, you can also cause the target to become &amp;reference[prone]. Target rolls again at end of their turns, ending effect on success (falling if suspended in midair).</p><p>You can also release a target at any time.</p></li><li><p><strong>Success</strong>: No effect.</p></li><li><p><strong>Concentration:</strong> Once on each subsequent turn, you can target a different creature or object or move one previously grappled target as a bonus action. You can grapple up to 5 creatures (including yourself) in this way.</p><p></p></li></ul><p><em>You can exert fine control on objects with your telekinetic grip, such as manipulating a simple tool, opening a door or a container, stowing or retrieving an item from an open container, or pouring the contents from a vial.</em></p>",
+      "chat": "<p><strong>Utility Spell</strong></p><p>Target a huge or smaller creature or object. If your target is an object carried by a creature, that creature rolls the save for the object.</p><p><strong>Strength Save</strong></p><ul><li><p><strong>Failure</strong>: Target is &amp;reference[grappled] and moved up to 30 feet in any direction within the spell’s range, including into the air. If you want, you can also cause the target to become &amp;reference[prone]. Target rolls again at end of their turns, ending effect on success (falling if suspended in midair).</p><p>You can also release a target at any time.</p></li><li><p><strong>Success</strong>: No effect.</p></li><li><p><strong>Concentration:</strong> Once on each subsequent turn, you can target a different creature or object or move one previously grappled target as a bonus action. You can grapple up to 5 creatures (including yourself) in this way.</p><p></p></li></ul><p><em>You can exert fine control on objects with your telekinetic grip, such as manipulating a simple tool, opening a door or a container, stowing or retrieving an item from an open container, or pouring the contents from a vial.</em></p>"
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/telekinesis",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "10",
+      "units": "minute"
+    },
+    "target": {
+      "affects": {
+        "type": "creature",
+        "count": "1",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "units": "",
+        "contiguous": false,
+        "type": ""
+      }
+    },
+    "range": {
+      "value": "60",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 5,
+    "school": "trs",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "somatic",
+      "concentration"
+    ],
+    "activities": {
+      "pavRoIGuFiIXmTps": {
+        "type": "save",
+        "_id": "pavRoIGuFiIXmTps",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "77CUQ8sBVFHQGMbg"
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "parts": [],
+          "critical": {
+            "allow": false
+          },
+          "onSave": "none"
+        },
+        "save": {
+          "ability": [
+            "str"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "",
+        "name": "Initial Casting (Use First)",
+        "img": "",
+        "appliedEffects": [
+          "77CUQ8sBVFHQGMbg"
+        ]
+      },
+      "c5G7K6keUSsf3DFY": {
+        "type": "save",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": false,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "77CUQ8sBVFHQGMbg",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "parts": [],
+          "critical": {
+            "allow": false
+          },
+          "onSave": "none"
+        },
+        "save": {
+          "ability": [
+            "str"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "",
+        "name": "Later Turns",
+        "_id": "c5G7K6keUSsf3DFY",
+        "img": "",
+        "appliedEffects": [
+          "77CUQ8sBVFHQGMbg"
+        ]
+      }
+    },
+    "identifier": ""
+  },
+  "_id": "EihC0prUS7NZDdtL",
+  "_key": "!items!EihC0prUS7NZDdtL"
 }
