@@ -1,0 +1,233 @@
+{
+	"name": "Inciting Remarks",
+	"type": "feat",
+	"system": {
+		"description": {
+			"value": "<p><strong>No Action Cost</strong> - 1 Creature (60 ft.) - Magical</p><p>Whenever you roll a @UUID[Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh]{Bardic Inspiration} die for any reason, you can make comments inciting one creature against another. Choose one creature within 60 ft. of you. That creature must succeed on a wisdom saving throw against your spellcasting DC or be &amp;reference[goaded] towards an ally of yours that is within 60 ft. of you and the target until the end of your next turn. If a creature hears your words, they magically understand them even if they could not otherwise.</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "Elkan 5e",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"type": {
+			"value": "subclass",
+			"subtype": ""
+		},
+		"requirements": "Jester 6",
+		"properties": [
+			"mgc"
+		],
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "save",
+				"activation": {
+					"type": "nocost",
+					"value": null,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "",
+					"units": "inst",
+					"special": "",
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "4fXyx9VlIPqcVU6n",
+						"onSave": false
+					}
+				],
+				"range": {
+					"value": "60",
+					"units": "ft",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": ""
+					},
+					"affects": {
+						"count": "1",
+						"type": "creature",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"onSave": "none",
+					"parts": []
+				},
+				"save": {
+					"ability": "wis",
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"sort": 0,
+				"name": "",
+				"img": "",
+				"effectConditionText": "!target.traits.ci.value.has('goaded')",
+				"appliedEffects": [
+					"4fXyx9VlIPqcVU6n"
+				]
+			}
+		},
+		"identifier": "",
+		"enchant": {},
+		"prerequisites": {
+			"level": null
+		}
+	},
+	"img": "icons/magic/perception/mask-stone-eyes-orange.webp",
+	"effects": [
+		{
+			"statuses": [
+				"goaded"
+			],
+			"name": "Inciting Remarks",
+			"changes": [],
+			"description": "",
+			"duration": {
+				"startTime": null,
+				"seconds": 7,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"flags": {
+				"core": {
+					"overlay": false
+				},
+				"condition-lab-triggler": {
+					"conditionId": "Kq9PYa0G2aHGmUvc"
+				},
+				"dae": {
+					"specialDuration": [
+						"turnEndSource"
+					],
+					"stackable": "noneName",
+					"transfer": true,
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"enableCondition": "",
+					"disableCondition": ""
+				},
+				"times-up": {
+					"isPassive": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
+				}
+			},
+			"_id": "4fXyx9VlIPqcVU6n",
+			"disabled": false,
+			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.QDGgq6r9urw1Dmtg",
+			"transfer": false,
+			"tint": "#ffffff",
+			"img": "icons/magic/perception/mask-stone-eyes-orange.webp",
+			"type": "base",
+			"system": {},
+			"sort": 0,
+			"_key": "!items.effects!QDGgq6r9urw1Dmtg.4fXyx9VlIPqcVU6n"
+		}
+	],
+	"folder": "k6HVpRgLfky7iqqr",
+	"flags": {
+		"midi-qol": {
+			"effectActivation": false,
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": ""
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"rollOther": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"noConcentrationCheck": false,
+			"confirmTargets": "default",
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"core": {},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		}
+	},
+	"_id": "QDGgq6r9urw1Dmtg",
+	"_key": "!items!QDGgq6r9urw1Dmtg"
+}
