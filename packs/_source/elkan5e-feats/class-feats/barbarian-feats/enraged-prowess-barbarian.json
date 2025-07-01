@@ -6,7 +6,7 @@
 	"img": "icons/magic/control/buff-strength-muscle-damage-orange.webp",
 	"system": {
 		"description": {
-			"value": "<p><em>You can easily put your body into overdrive.</em> </p><ul><li><p>You add your rage bonus to your &amp;reference[acrobatics], &amp;reference[athletics], &amp;reference[sleight of hand], and &amp;reference[stealth] checks.</p></li></ul>",
+			"value": "<p><em>You can easily put your body into overdrive.</em></p><ul><li><p>You add your rage bonus to your &amp;reference[acrobatics], &amp;reference[athletics], &amp;reference[sleight of hand], and &amp;reference[stealth] checks. You gain no benefit from this feat for a skill with which you have expertise.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -67,29 +67,29 @@
 				{
 					"key": "system.skills.acr.bonuses.check",
 					"mode": 2,
-					"value": "+@scale.barbarian.rage-bonus",
+					"value": "dae.eval(@skills.acr.value < 2 ? @scale.barbarian.rage-bonus : 0)",
 					"priority": 20
 				},
 				{
 					"key": "system.skills.ath.bonuses.check",
 					"mode": 2,
-					"value": "+@scale.barbarian.rage-bonus",
+					"value": "dae.eval(@skills.ath.value < 2 ? @scale.barbarian.rage-bonus : 0)",
 					"priority": 20
 				},
 				{
-					"key": "system.skills.slt.value",
+					"key": "system.skills.slt.bonuses.check",
 					"mode": 2,
-					"value": "0",
+					"value": "dae.eval(@skills.slt.value < 2 ? @scale.barbarian.rage-bonus : 0)",
 					"priority": 20
 				},
 				{
 					"key": "system.skills.ste.bonuses.check",
 					"mode": 2,
-					"value": "+@scale.barbarian.rage-bonus",
+					"value": "dae.eval(@skills.ste.value < 2 ? @scale.barbarian.rage-bonus : 0)",
 					"priority": 20
 				}
 			],
-			"transfer": false,
+			"transfer": true,
 			"_id": "LG9bryVjKzfmGwYV",
 			"disabled": false,
 			"duration": {

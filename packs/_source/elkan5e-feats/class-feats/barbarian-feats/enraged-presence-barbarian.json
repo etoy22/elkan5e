@@ -6,7 +6,7 @@
 	"img": "icons/skills/social/intimidation-impressing.webp",
 	"system": {
 		"description": {
-			"value": "<p><em>You adopt a powerful presence of personality.</em> </p><ul><li><p>You add your rage bonus to your &amp;reference[deception], &amp;reference[intimidation], &amp;reference[performance], and &amp;reference[persuasion] checks.</p></li></ul>",
+			"value": "<p><em>You adopt a powerful presence of personality.</em></p><ul><li><p>You add your rage bonus to your &amp;reference[deception], &amp;reference[intimidation], &amp;reference[performance], and &amp;reference[persuasion] checks. You gain no benefit from this feat for a skill with which you have expertise.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -67,30 +67,30 @@
 				{
 					"key": "system.skills.dec.bonuses.check",
 					"mode": 2,
-					"value": "+@scale.barbarian.rage-bonus",
+					"value": "dae.eval(@skills.dec.value < 2 ? @scale.barbarian.rage-bonus : 0)",
 					"priority": 20
 				},
 				{
 					"key": "system.skills.itm.bonuses.check",
 					"mode": 2,
-					"value": "+@scale.barbarian.rage-bonus",
+					"value": "dae.eval(@skills.itm.value < 2 ? @scale.barbarian.rage-bonus : 0)",
 					"priority": 20
 				},
 				{
 					"key": "system.skills.prf.bonuses.check",
 					"mode": 2,
-					"value": "+@scale.barbarian.rage-bonus",
+					"value": "dae.eval(@skills.prf.value < 2 ? @scale.barbarian.rage-bonus : 0)",
 					"priority": 20
 				},
 				{
 					"key": "system.skills.per.bonuses.check",
 					"mode": 2,
-					"value": "+@scale.barbarian.rage-bonus",
+					"value": "dae.eval(@skills.per.value < 2 ? @scale.barbarian.rage-bonus : 0)",
 					"priority": 20
 				}
 			],
-			"transfer": false,
-			"_id": "oWMnia5oQhvwClR8",
+			"transfer": true,
+			"_id": "Ee4PwL25jAsSG2Kl",
 			"disabled": false,
 			"duration": {
 				"startTime": null,
@@ -102,7 +102,7 @@
 				"startTurn": null
 			},
 			"description": "",
-			"origin": null,
+			"origin": "Compendium.elkan5e.elkan5e-feats.Item.67JYA9ET83kuwn84",
 			"statuses": [],
 			"flags": {
 				"dae": {
@@ -149,7 +149,7 @@
 			"type": "base",
 			"system": {},
 			"sort": 0,
-			"_key": "!items.effects!67JYA9ET83kuwn84.oWMnia5oQhvwClR8"
+			"_key": "!items.effects!67JYA9ET83kuwn84.Ee4PwL25jAsSG2Kl"
 		}
 	],
 	"flags": {
