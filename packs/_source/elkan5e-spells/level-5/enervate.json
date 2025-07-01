@@ -1,0 +1,422 @@
+{
+	"folder": "PnZJTE6T4UQY81Pm",
+	"name": "Enervate",
+	"type": "spell",
+	"_id": "RSKUzHAckpwb1wR2",
+	"img": "icons/magic/death/skeleton-skull-soul-blue.webp",
+	"system": {
+		"activities": {
+			"Sj8xNlBnRWgk5nbK": {
+				"type": "save",
+				"_id": "Sj8xNlBnRWgk5nbK",
+				"sort": 0,
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "2ageNmPyfzB4UlN2",
+						"onSave": true
+					},
+					{
+						"_id": "3eQ3jQzQHQ9LVYkC",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 4,
+							"denomination": 10,
+							"bonus": "",
+							"types": [
+								"necrotic"
+							],
+							"scaling": {
+								"mode": "whole",
+								"number": 1,
+								"formula": ""
+							}
+						}
+					],
+					"onSave": "half"
+				},
+				"save": {
+					"ability": "con",
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"useConditionText": "",
+				"forceDialog": false,
+				"effectConditionText": "",
+				"name": "Initial Casting (Use First)",
+				"img": "",
+				"appliedEffects": [
+					"2ageNmPyfzB4UlN2",
+					"3eQ3jQzQHQ9LVYkC"
+				]
+			},
+			"jSU8vhBTZWfQqp6p": {
+				"type": "save",
+				"sort": 0,
+				"activation": {
+					"type": "nocost",
+					"value": null,
+					"override": true,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": false,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [
+					{
+						"_id": "2ageNmPyfzB4UlN2",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 4,
+							"denomination": "10",
+							"bonus": "",
+							"types": [
+								"necrotic"
+							],
+							"scaling": {
+								"mode": "whole",
+								"number": 1,
+								"formula": ""
+							}
+						}
+					],
+					"onSave": "none"
+				},
+				"save": {
+					"ability": "con",
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"useConditionText": "effects.some(eff=>eff.name===\"Enervate (Ongoing)\")",
+				"forceDialog": false,
+				"effectConditionText": "",
+				"name": "",
+				"_id": "jSU8vhBTZWfQqp6p",
+				"img": "",
+				"appliedEffects": [
+					"2ageNmPyfzB4UlN2"
+				],
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"turnChoice": "end"
+				}
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"max": ""
+		},
+		"description": {
+			"value": "<p><em>You make a grasping motion towards a creature, cursing them to be drained of life and energy in an ancient apocryphal language. The target's body rapidly withers and weakens.</em></p><p><strong>Constitution Save</strong> </p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d10 necrotic]] damage* and is &amp;reference[drained] by the same amount. Target rolls again at end of their turns, taking damage again and being drained on a failure. On a success, the spell ends but the drained effect persists.</p></li><li><p><strong>Success:</strong> Half initial damage and drained by the same amount, no other effect.</p></li></ul><p><br/></p><p><strong>*Upcasting:</strong> Increase damage by 1d10 for each spell level above 5th.</p>",
+			"chat": "<p><strong>Constitution Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d10 necrotic]] damage* and is &amp;reference[drained] by the same amount. Target rolls again at end of their turns, taking damage again and being drained on a failure. On a success, the spell ends but the drained effect persists.</p></li><li><p><strong>Success:</strong> Half initial damage and drained by the same amount, no other effect.</p></li></ul><p><br /></p><p><strong>*Upcasting:</strong> Increase damage by 1d10 for each spell level above 5th.</p>"
+		},
+		"identifier": "",
+		"source": {
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": "",
+			"custom": "elkan5e.com/spells/enervate"
+		},
+		"activation": {
+			"type": "action",
+			"value": null,
+			"condition": ""
+		},
+		"duration": {
+			"units": "minute",
+			"value": "1"
+		},
+		"level": 5,
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"concentration"
+		],
+		"range": {
+			"units": "ft",
+			"special": "",
+			"value": "60"
+		},
+		"school": "nec",
+		"target": {
+			"template": {
+				"contiguous": false,
+				"units": "ft",
+				"type": ""
+			},
+			"affects": {
+				"choice": false,
+				"count": "1",
+				"type": "creature",
+				"special": ""
+			}
+		}
+	},
+	"effects": [
+		{
+			"name": "Drained",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.RSKUzHAckpwb1wR2",
+			"changes": [
+				{
+					"key": "system.attributes.hp.tempmax",
+					"mode": 2,
+					"value": "-@damage",
+					"priority": 20
+				}
+			],
+			"transfer": false,
+			"flags": {
+				"dae": {
+					"itemName": "Enervate",
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"stackable": "multi",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
+				}
+			},
+			"img": "modules/elkan5e/icons/conditions/drained.svg",
+			"_id": "2ageNmPyfzB4UlN2",
+			"type": "base",
+			"system": {},
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 0,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [],
+			"sort": 0,
+			"_key": "!items.effects!RSKUzHAckpwb1wR2.2ageNmPyfzB4UlN2"
+		},
+		{
+			"name": "Enervate (Ongoing)",
+			"img": "icons/magic/death/skeleton-skull-soul-blue.webp",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.RSKUzHAckpwb1wR2",
+			"transfer": false,
+			"_id": "3eQ3jQzQHQ9LVYkC",
+			"type": "base",
+			"system": {},
+			"changes": [],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 60,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [],
+			"sort": 0,
+			"flags": {
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
+				}
+			},
+			"_key": "!items.effects!RSKUzHAckpwb1wR2.3eQ3jQzQHQ9LVYkC"
+		}
+	],
+	"flags": {
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"effectCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"_key": "!items!RSKUzHAckpwb1wR2"
+}

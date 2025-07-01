@@ -1,0 +1,406 @@
+{
+	"name": "Calm Emotions",
+	"type": "spell",
+	"img": "icons/magic/nature/instrument-recorder-leaves.webp",
+	"effects": [
+		{
+			"_id": "7k2e5sbq9xcjrtu7",
+			"changes": [
+				{
+					"key": "system.traits.ci.value",
+					"mode": 2,
+					"value": "charmed",
+					"priority": 20
+				},
+				{
+					"key": "system.traits.ci.value",
+					"mode": 2,
+					"value": "frightened",
+					"priority": 20
+				},
+				{
+					"key": "system.traits.ci.value",
+					"mode": 2,
+					"value": "goaded",
+					"priority": 20
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 60,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"transfer": false,
+			"flags": {
+				"core": {
+					"overlay": false
+				},
+				"dae": {
+					"stackable": "none",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"transfer": false,
+					"enableCondition": "",
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"showIcon": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"nameOverride": "",
+					"customCheck": "",
+					"wallsBlock": "system"
+				}
+			},
+			"tint": "#ffffff",
+			"name": "Calm Emotions [Suppress Emotions]",
+			"description": "",
+			"origin": null,
+			"statuses": [],
+			"img": "icons/magic/nature/instrument-recorder-leaves.webp",
+			"type": "base",
+			"system": {},
+			"sort": 0,
+			"_key": "!items.effects!BOEHQcNx7kBjJZXN.7k2e5sbq9xcjrtu7"
+		},
+		{
+			"changes": [],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 60,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"transfer": false,
+			"flags": {
+				"core": {
+					"overlay": false
+				},
+				"dae": {
+					"stackable": "none",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"transfer": false,
+					"enableCondition": "",
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"showIcon": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"nameOverride": "",
+					"customCheck": "",
+					"wallsBlock": "system"
+				}
+			},
+			"tint": "#ffffff",
+			"name": "Calm Emotions [Charm]",
+			"description": "",
+			"origin": null,
+			"statuses": [
+				"charmed"
+			],
+			"img": "icons/magic/nature/instrument-recorder-leaves.webp",
+			"type": "base",
+			"system": {},
+			"sort": 0,
+			"_id": "B8n28rSjMCwkD6wk",
+			"_key": "!items.effects!BOEHQcNx7kBjJZXN.B8n28rSjMCwkD6wk"
+		}
+	],
+	"folder": "6J3i75lfD1J0xYwA",
+	"flags": {
+		"midi-qol": {
+			"effectActivation": false,
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default",
+			"removeAttackDamageButtons": "default"
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"confirmTargets": "default",
+			"noConcentrationCheck": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"core": {},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic",
+				"concentration"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>You attempt to calm nearby creatures with your words. Your words may or may not actually make sense, but when you work your magic, affected creatures begin to agree that their feelings were irrational.</em></p><p><strong>Charisma Save</strong> </p><ul><li><p><strong>Failure:</strong> You choose one of the following effects for all affected creatures.</p><ul><li><p>You can suppress any effect causing a target to be &amp;reference[charmed], &amp;reference[frightened] or &amp;reference[goaded]. When this spell ends, any suppressed effect resumes, provided that its duration has not expired in the meantime. During the time that the effect is suppress you do not save at the end of your turn.</p></li><li><p>Targets get &amp;reference[charmed] by all creatures of your choice. This charm affect ends if the target gets attacked or harmed by a spell or witness any of its allies being harmed. When the charm ends, the creature may become hostile again at GM discretion.</p></li></ul></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p><strong>Upcasting:</strong> Target two additional creatures for each spell level above 2nd.</p>",
+			"chat": "<p><strong>Charisma Save</strong></p><ul><li><p><strong>Failure:</strong> You choose one of the following effects for all affected creatures.</p><ul><li><p>You can suppress any effect causing a target to be &amp;reference[charmed], &amp;reference[frightened] or &amp;reference[goaded]. When this spell ends, any suppressed effect resumes, provided that its duration has not expired in the meantime. During the time that the effect is suppress you do not save at the end of your turn.</p></li><li><p>Targets get &amp;reference[charmed] by all creatures of your choice. This charm affect ends if the target gets attacked or harmed by a spell or witness any of its allies being harmed. When the charm ends, the creature may become hostile again at GM discretion.</p></li></ul></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p><strong>Upcasting:</strong> Target two additional creatures for each spell level above 2nd.</p>"
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/calm-emotions",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "1",
+			"units": "minute"
+		},
+		"target": {
+			"affects": {
+				"type": "creature",
+				"count": "6",
+				"choice": false,
+				"special": ""
+			},
+			"template": {
+				"units": "",
+				"contiguous": false,
+				"type": ""
+			}
+		},
+		"range": {
+			"value": "30",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 2,
+		"school": "enc",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"concentration"
+		],
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "7k2e5sbq9xcjrtu7",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"onSave": "none",
+					"parts": []
+				},
+				"save": {
+					"ability": "cha",
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"sort": 0,
+				"name": "Save (Suppress Emotions)",
+				"img": "",
+				"appliedEffects": [
+					"7k2e5sbq9xcjrtu7"
+				]
+			},
+			"kA5aV17m7wVipbxL": {
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "B8n28rSjMCwkD6wk",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"onSave": "none",
+					"parts": []
+				},
+				"save": {
+					"ability": "cha",
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"sort": 0,
+				"name": "Save (Charm)",
+				"useConditionText": "",
+				"forceDialog": false,
+				"effectConditionText": "!target.traits.ci.value.has('charmed')",
+				"_id": "kA5aV17m7wVipbxL",
+				"img": "",
+				"appliedEffects": [
+					"B8n28rSjMCwkD6wk"
+				]
+			}
+		},
+		"identifier": ""
+	},
+	"_id": "BOEHQcNx7kBjJZXN",
+	"_key": "!items!BOEHQcNx7kBjJZXN"
+}

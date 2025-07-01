@@ -1,0 +1,183 @@
+{
+	"name": "Wall of Force",
+	"type": "spell",
+	"img": "icons/magic/control/debuff-chains-ropes-purple.webp",
+	"effects": [],
+	"folder": "PnZJTE6T4UQY81Pm",
+	"flags": {
+		"core": {},
+		"midi-qol": {
+			"effectActivation": false,
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default",
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"noConcentrationCheck": false,
+			"confirmTargets": "default",
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic",
+				"material",
+				"concentration"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><strong>Summoning Spell</strong></p><p>You create an invisible wall of force, which can be free-floating or on a solid surface.</p><ul><li><p>Nothing can move through the wall.</p></li><li><p>The wall is immune to &amp;reference[necrotic]{necrotic}, &amp;reference[poison]{poison}, and &amp;reference[psychic]{psychic} damage, as well as &amp;reference[magic weapon]{non-magical} &amp;reference[bludgeoning]{bludgeoning}, &amp;reference[piercing]{piercing}, and &amp;reference[slashing]{slashing} damage. It is also immune to @UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{Sneak Attack} or @UUID[Compendium.elkan5e.elkan5e-class-features.Item.hW3DmOPgBpa7lGU8]{Precision Attacks} and all conditions except cover and &amp;reference[obscured]{obscured}.</p></li><li><p>It has AC 5, 50 hit points, and all its ability scores are 0.</p></li><li><p>It has a damage threshold of 30, meaning anything that does less than 30 damage does no damage to the wall.</p></li><li><p>The wall cannot be dispelled, but it can be destroyed or bypassed with @UUID[Compendium.elkan5e.elkan5e-spells.Item.1A5qH1CkDOvUroqh]{Passwall}.</p></li><li><p><span style=\"font-family:inherit\">If a creature occupies part of the area where you summon the wall, they roll a save:</span></p></li></ul><p><span style=\"font-family:inherit\"><strong>Dexterity Save</strong></span></p><ul><li><p><strong>Failure:</strong> <span style=\"font-family:inherit\">You move the creature to one side of the wall of your choice.</span></p></li><li><strong>Success:</strong> The creature moves to the nearest unoccupied space of their choice.</li></ul>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/wall-in-force",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "10",
+			"units": "minute"
+		},
+		"target": {
+			"affects": {
+				"choice": false,
+				"count": "",
+				"type": ""
+			},
+			"template": {
+				"units": "ft",
+				"width": "1",
+				"type": "wall",
+				"size": "100",
+				"contiguous": true,
+				"height": "10",
+				"count": ""
+			}
+		},
+		"range": {
+			"value": "120",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 5,
+		"school": "abj",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"material",
+			"concentration"
+		],
+		"activities": {
+			"h8kkSNN01CZEB21Z": {
+				"type": "utility",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false
+				},
+				"roll": {
+					"formula": "",
+					"name": "",
+					"prompt": false,
+					"visible": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": []
+				},
+				"sort": 0,
+				"_id": "h8kkSNN01CZEB21Z"
+			}
+		},
+		"identifier": ""
+	},
+	"_id": "KdHgTZaQPRQOaTrB",
+	"_key": "!items!KdHgTZaQPRQOaTrB"
+}
