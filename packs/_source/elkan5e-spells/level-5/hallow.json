@@ -1,229 +1,389 @@
 {
-	"name": "Hallow",
-	"type": "spell",
-	"img": "icons/magic/light/explosion-star-large-teal.webp",
-	"effects": [],
-	"folder": "PnZJTE6T4UQY81Pm",
-	"flags": {
-		"midi-qol": {
-			"onUseMacroName": "",
-			"effectActivation": false,
-			"AoETargetType": "any",
-			"AoETargetTypeIncludeSelf": true,
-			"autoTarget": "default",
-			"rollAttackPerTarget": "default",
-			"itemCondition": "",
-			"effectCondition": "",
-			"reactionCondition": "",
-			"removeAttackDamageButtons": "default",
-			"otherCondition": ""
-		},
-		"core": {},
-		"midiProperties": {
-			"nodam": false,
-			"fulldam": false,
-			"halfdam": false,
-			"rollOther": false,
-			"critOther": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"concentration": false,
-			"toggleEffect": false,
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"offHandWeapon": false,
-			"ignoreTotalCover": false,
-			"confirmTargets": "default",
-			"noConcentrationCheck": false,
-			"idr": false,
-			"idi": false,
-			"idv": false,
-			"ida": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedProperties": [
-				"vocal",
-				"somatic",
-				"material"
-			]
-		},
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
-		}
-	},
-	"system": {
-		"description": {
-			"value": "<p><strong>Materials:</strong> You require Herbs, Oils, and Incense, typically valued at 1000 gold, which the spell consumes. (Note: same as Reincarnate)</p><p></p><p>You touch a point and infuse an area around it with holy (or unholy) power. The area can have a radius up to 60 feet, and the spell fails if the radius includes an area already under the effect a hallow spell. The affected area is subject to the following effects.</p><p></p><p>First, celestials, elementals, fey, fiends, and undead can't enter the area, nor can such creatures charm, frighten, or possess creatures within it. Any creature charmed, frightened, or possessed by such a creature is no longer charmed, frightened, or possessed upon entering the area. You can exclude one or more of those types of creatures from this effect.</p><p>Second, you can bind an extra effect to the area. Choose the effect from the following list, or choose an effect offered by the DM. Some of these effects apply to creatures in the area; you can designate whether the effect applies to all creatures, creatures that follow a specific deity or leader, or creatures of a specific sort, such as orcs or trolls. When a creature that would be affected enters the spell's area for the first time on a turn or starts its turn there, it can make a Charisma saving throw. On a success, the creature ignores the extra effect until it leaves the area.</p><p>Courage.</p><p>Affected creatures can't be frightened while in the area.</p><p></p><p>Darkness.</p><p>Darkness fills the area. Normal light, as well as magical light created by spells of a lower level than the slot you used to cast this spell, can't illuminate the area.</p><p></p><p>Daylight.</p><p>Bright light fills the area. Magical darkness created by spells of a lower level than the slot you used to cast this spell can't extinguish the light.</p><p></p><p>Energy Protection.</p><p>Affected creatures in the area have resistance to one damage type of your choice, except for bludgeoning, piercing, or slashing.</p><p></p><p>Energy Vulnerability.</p><p>Affected creatures in the area have vulnerability to one damage type of your choice, except for bludgeoning, piercing, or slashing.</p><p></p><p>Everlasting Rest.</p><p>Dead bodies interred in the area can't be turned into undead.</p><p></p><p>Extradimensional Interference.</p><p>Affected creatures can't move or travel using teleportation or by extradimensional or interplanar means.</p><p></p><p>Fear.</p><p>Affected creatures are frightened while in the area.</p><p></p><p>Silence.</p><p>No sound can emanate from within the area, and no sound can reach into it.</p><p></p><p>Tongues.</p><p>Affected creatures can communicate with any other creature in the area, even if they don't share a common language.</p><p></p>",
-			"chat": ""
-		},
-		"source": {
-			"custom": "elkan5e.com/spells/hallow",
-			"revision": 1,
-			"rules": "",
-			"book": "Elkan 5e",
-			"page": "",
-			"license": ""
-		},
-		"activation": {
-			"type": "minute",
-			"condition": "",
-			"value": 10
-		},
-		"duration": {
-			"value": "",
-			"units": "perm"
-		},
-		"target": {
-			"affects": {
-				"choice": false,
-				"count": "",
-				"type": ""
-			},
-			"template": {
-				"units": "ft",
-				"type": "sphere",
-				"size": "60",
-				"contiguous": false,
-				"count": ""
-			}
-		},
-		"range": {
-			"units": "touch",
-			"special": ""
-		},
-		"uses": {
-			"max": "",
-			"recovery": [],
-			"spent": 0
-		},
-		"ability": "",
-		"level": 5,
-		"school": "abj",
-		"materials": {
-			"value": "",
-			"consumed": true,
-			"cost": 1000,
-			"supply": 0
-		},
-		"preparation": {
-			"mode": "prepared",
-			"prepared": true
-		},
-		"properties": [
-			"vocal",
-			"somatic",
-			"material"
-		],
-		"activities": {
-			"FOtcuhrhyaq0guKn": {
-				"type": "utility",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"roll": {
-					"formula": "",
-					"name": "",
-					"prompt": false,
-					"visible": false
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": []
-				},
-				"sort": 0,
-				"_id": "FOtcuhrhyaq0guKn"
-			},
-			"QWTQjpLsGT3I6j1k": {
-				"type": "save",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"damage": {
-					"onSave": "half",
-					"parts": []
-				},
-				"save": {
-					"ability": "cha",
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
-					}
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": []
-				},
-				"sort": 0,
-				"_id": "QWTQjpLsGT3I6j1k"
-			}
-		},
-		"identifier": ""
-	},
-	"_id": "TM7nuwiFhBjdE2MT",
-	"_key": "!items!TM7nuwiFhBjdE2MT"
+  "name": "Hallow",
+  "type": "spell",
+  "img": "icons/magic/light/explosion-star-large-teal.webp",
+  "effects": [],
+  "folder": "PnZJTE6T4UQY81Pm",
+  "flags": {
+    "midi-qol": {
+      "onUseMacroName": "",
+      "effectActivation": false,
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "reactionCondition": "",
+      "removeAttackDamageButtons": "default",
+      "otherCondition": ""
+    },
+    "core": {},
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic",
+        "material"
+      ]
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>You burn incense and cast layered interwoven blessings or curses to ward the area against unwanted magical creatures, who are damaged as they approach.</em></p><p><strong>Optional Materials:</strong> If you use 1 lb of @UUID[Compendium.elkan5e.elkan5e-spells.Item.cdHZSCT73fIbD3le]{Hallowed Incense}, typically valued at 500 gold, while casting this spell, this spell is permanent. This consumes the incense.</p><p><strong>Utility Spell</strong></p><ul><li><p>You touch a point and infuse an area around it with holy or unholy power. The area must fit inside a 60 ft. radius sphere and not overlap with another Hallow effect.</p></li><li><p>Choose one or more of these creature types: &amp;reference[Aberration], &amp;reference[Celestial], &amp;reference[Elemental], &amp;reference[Fey], &amp;reference[Fiend], and &amp;reference[Undead]. You can set specific creatures to be unaffected by the spell, and you can later allow a creature to enter unaffected. All others of the chosen type(s) are affected.</p></li><li><p>Affected creatures:</p><ul><li><p><span style=\"font-family:'Roboto Condensed', sans-serif\"><strong style=\"box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:rgb(93, 20, 43) rgba(0, 0, 0, 0)\">Area Hazard: </strong>Affected creatures take </span>[[/damage 4d6 radiant ]] damage<span style=\"font-family:'Roboto Condensed', sans-serif\"> when they enter or when they end their turn in the area (but only once per turn).</span></p></li><li style=\"box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:rgb(93, 20, 43) rgba(0, 0, 0, 0)\"><p style=\"box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:rgb(93, 20, 43) rgba(0, 0, 0, 0);margin:0.5em 0px\">Cannot &amp;reference[charmed]{charm}, &amp;reference[frightened]{frighten}, or &amp;reference[goaded]{goad}, or possess creatures in the area. If the affected creature charms, frightens, goads, or possesses a creature and that creature enters the Hallowed area, then the condition is suppressed until the creature leaves the Hallowed area.</p></li><li style=\"box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:rgb(93, 20, 43) rgba(0, 0, 0, 0)\"><p>Cannot be summoned, raised from the dead, or otherwise created in the area.</p></li><li><p>Can sense the hallowed area is dangerous to them once within 30 ft. of the Hallowed area's boundaries.</p></li></ul></li><li><p>Hallow is a &amp;reference[cursed]{curse} and cannot be dispelled, but it can be ended with <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.piOfkIqVwkpV4Znb]{Break Enchantment}</em>. A creature immune to curses is immune to Hallow's effects.</p></li></ul><p></p><p><strong>Upcasting:</strong> Increase damage by [[/damage 2d6 radiant]]{2d6} for each spell level above 5th.</p>",
+      "chat": "<p><strong>Optional Materials:</strong> If you use 1 lb of @UUID[Compendium.elkan5e.elkan5e-spells.Item.cdHZSCT73fIbD3le]{Hallowed Incense}, typically valued at 500 gold, while casting this spell, this spell is permanent. This consumes the incense.</p><p><strong>Utility Spell</strong></p><ul><li><p>You touch a point and infuse an area around it with holy or unholy power. The area must fit inside a 60 ft. radius sphere and not overlap with another Hallow effect.</p></li><li><p>Choose one or more of these creature types: &amp;reference[Aberration], &amp;reference[Celestial], &amp;reference[Elemental], &amp;reference[Fey], &amp;reference[Fiend], and &amp;reference[Undead]. You can set specific creatures to be unaffected by the spell, and you can later allow a creature to enter unaffected. All others of the chosen type(s) are affected.</p></li><li><p>Affected creatures:</p><ul><li><p><span style=\"font-family:'Roboto Condensed', sans-serif\"><strong style=\"box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:rgb(93, 20, 43) rgba(0, 0, 0, 0)\">Area Hazard: </strong>Affected creatures take </span>[[/damage 4d6 radiant ]] damage<span style=\"font-family:'Roboto Condensed', sans-serif\"> when they enter or when they end their turn in the area (but only once per turn).</span></p></li><li style=\"box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:rgb(93, 20, 43) rgba(0, 0, 0, 0)\"><p style=\"box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:rgb(93, 20, 43) rgba(0, 0, 0, 0);margin:0.5em 0px\">Cannot &amp;reference[charmed]{charm}, &amp;reference[frightened]{frighten}, or &amp;reference[goaded]{goad}, or possess creatures in the area. If the affected creature charms, frightens, goads, or possesses a creature and that creature enters the Hallowed area, then the condition is suppressed until the creature leaves the Hallowed area.</p></li><li style=\"box-sizing:border-box;user-select:text;scrollbar-width:thin;scrollbar-color:rgb(93, 20, 43) rgba(0, 0, 0, 0)\"><p>Cannot be summoned, raised from the dead, or otherwise created in the area.</p></li><li><p>Can sense the hallowed area is dangerous to them once within 30 ft. of the Hallowed area's boundaries.</p></li></ul></li><li><p>Hallow is a &amp;reference[cursed]{curse} and cannot be dispelled, but it can be ended with <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.piOfkIqVwkpV4Znb]{Break Enchantment}</em>. A creature immune to curses is immune to Hallow's effects.</p></li></ul><p></p><p><strong>Upcasting:</strong> Increase damage by [[/damage 2d6 radiant]]{2d6} for each spell level above 5th.</p>"
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/hallow",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "minute",
+      "condition": "",
+      "value": 10
+    },
+    "duration": {
+      "value": "8",
+      "units": "hour"
+    },
+    "target": {
+      "affects": {
+        "choice": false,
+        "count": "",
+        "type": ""
+      },
+      "template": {
+        "units": "ft",
+        "type": "sphere",
+        "size": "60",
+        "contiguous": false,
+        "count": ""
+      }
+    },
+    "range": {
+      "units": "touch",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 5,
+    "school": "abj",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": null,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material"
+    ],
+    "activities": {
+      "FOtcuhrhyaq0guKn": {
+        "type": "utility",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "sort": 0,
+        "_id": "FOtcuhrhyaq0guKn",
+        "name": "Standard Casting",
+        "img": "",
+        "appliedEffects": []
+      },
+      "KmQzZEWolKsK7fJw": {
+        "type": "damage",
+        "_id": "KmQzZEWolKsK7fJw",
+        "sort": 200000,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": false,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": true,
+          "units": "spec",
+          "special": ""
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "critical": {
+            "allow": false
+          },
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 4,
+              "denomination": "6",
+              "bonus": "",
+              "types": [
+                "radiant"
+              ],
+              "scaling": {
+                "mode": "whole",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "name": "Area Hazard Damage",
+        "img": "",
+        "appliedEffects": []
+      },
+      "67Kzw8cnLAX4WG4i": {
+        "type": "utility",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "Compendium.elkan5e.elkan5e-spells.Item.cdHZSCT73fIbD3le",
+              "scaling": {
+                "mode": ""
+              }
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "disp",
+          "concentration": false,
+          "override": true
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "sort": 100000,
+        "name": "Permanent Version",
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "_id": "67Kzw8cnLAX4WG4i",
+        "img": "",
+        "appliedEffects": []
+      }
+    },
+    "identifier": ""
+  },
+  "_id": "TM7nuwiFhBjdE2MT",
+  "_key": "!items!TM7nuwiFhBjdE2MT"
 }

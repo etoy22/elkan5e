@@ -1,253 +1,253 @@
 {
-	"name": "Expeditious Retreat",
-	"type": "spell",
-	"img": "icons/skills/movement/figure-running-gray.webp",
-	"effects": [
-		{
-			"_id": "wIFxFyAeGU7ENxxU",
-			"changes": [],
-			"disabled": false,
-			"duration": {
-				"startTime": null,
-				"seconds": 600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
-			},
-			"transfer": false,
-			"flags": {
-				"dae": {
-					"stackable": "none",
-					"specialDuration": [],
-					"transfer": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"durationExpression": "",
-					"macroRepeat": "none"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"radius": null,
-					"aura": "None",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"displayTemp": false
-				},
-				"core": {
-					"statusId": ""
-				}
-			},
-			"tint": "#ffffff",
-			"origin": null,
-			"name": "Expeditious Retreat",
-			"description": "",
-			"statuses": [],
-			"img": "icons/skills/movement/figure-running-gray.webp",
-			"type": "base",
-			"system": {},
-			"sort": 0,
-			"_key": "!items.effects!RDBThhwVXSHPiJm7.wIFxFyAeGU7ENxxU"
-		}
-	],
-	"folder": "U0k4VGG6bziqf3oH",
-	"flags": {
-		"midi-qol": {
-			"onUseMacroName": "",
-			"effectActivation": false,
-			"itemCondition": "",
-			"reactionCondition": "",
-			"otherCondition": "",
-			"effectCondition": "",
-			"rollAttackPerTarget": "default",
-			"AoETargetType": "any",
-			"AoETargetTypeIncludeSelf": true,
-			"autoTarget": "default",
-			"removeAttackDamageButtons": "default"
-		},
-		"core": {},
-		"midiProperties": {
-			"nodam": false,
-			"fulldam": false,
-			"halfdam": false,
-			"rollOther": false,
-			"critOther": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"concentration": false,
-			"toggleEffect": false,
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"offHandWeapon": false,
-			"ignoreTotalCover": false,
-			"noConcentrationCheck": false,
-			"confirmTargets": "default",
-			"idr": false,
-			"idi": false,
-			"idv": false,
-			"ida": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedProperties": [
-				"vocal",
-				"somatic"
-			]
-		},
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
-		}
-	},
-	"system": {
-		"description": {
-			"value": "<p><em>You mutter a magical command to yourself to run as fast as possible, and shake your legs and arms quickly as you speed up.</em></p><p><strong>Buff</strong> </p><ul><li><p>When you cast this spell, and as a &amp;reference[bonusaction] on each of your turns until the spell ends, you can take the &amp;reference[Dash] action.</p></li></ul>",
-			"chat": "<p><strong>Buff</strong></p><ul><li><p>When you cast this spell, and as a &amp;reference[bonusaction] on each of your turns until the spell ends, you can take the &amp;reference[Dash] action.</p></li></ul>"
-		},
-		"source": {
-			"custom": "elkan5e.com/spells/expeditious-retreat",
-			"revision": 1,
-			"rules": "",
-			"book": "Elkan 5e",
-			"page": "",
-			"license": ""
-		},
-		"activation": {
-			"type": "bonus",
-			"condition": "",
-			"value": 1
-		},
-		"duration": {
-			"value": "10",
-			"units": "minute"
-		},
-		"target": {
-			"affects": {
-				"special": "",
-				"type": "self",
-				"choice": false
-			},
-			"template": {
-				"type": "",
-				"units": "ft",
-				"contiguous": false
-			}
-		},
-		"range": {
-			"units": "self",
-			"special": ""
-		},
-		"uses": {
-			"max": "",
-			"recovery": [],
-			"spent": 0
-		},
-		"ability": "",
-		"level": 1,
-		"school": "trs",
-		"materials": {
-			"value": "",
-			"consumed": false,
-			"cost": 0,
-			"supply": 0
-		},
-		"preparation": {
-			"mode": "prepared",
-			"prepared": true
-		},
-		"properties": [
-			"vocal",
-			"somatic",
-			"mgc"
-		],
-		"activities": {
-			"4I7TUXfzMRApO6WN": {
-				"type": "utility",
-				"_id": "4I7TUXfzMRApO6WN",
-				"sort": 0,
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "wIFxFyAeGU7ENxxU"
-					}
-				],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"roll": {
-					"prompt": false,
-					"visible": false,
-					"name": "",
-					"formula": ""
-				},
-				"useConditionText": "",
-				"effectConditionText": "",
-				"macroData": {
-					"name": "",
-					"command": ""
-				},
-				"ignoreTraits": {
-					"idi": false,
-					"idr": false,
-					"idv": false,
-					"ida": false
-				},
-				"midiProperties": {
-					"forceDialog": false,
-					"confirmTargets": "default",
-					"automationOnly": false,
-					"identifier": ""
-				},
-				"name": "",
-				"img": "",
-				"appliedEffects": [
-					"wIFxFyAeGU7ENxxU"
-				]
-			}
-		},
-		"identifier": ""
-	},
-	"_id": "RDBThhwVXSHPiJm7",
-	"_key": "!items!RDBThhwVXSHPiJm7"
+  "name": "Expeditious Retreat",
+  "type": "spell",
+  "img": "icons/skills/movement/figure-running-gray.webp",
+  "effects": [
+    {
+      "_id": "wIFxFyAeGU7ENxxU",
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": 600,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "transfer": false,
+      "flags": {
+        "dae": {
+          "stackable": "none",
+          "specialDuration": [],
+          "transfer": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "durationExpression": "",
+          "macroRepeat": "none"
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "radius": null,
+          "aura": "None",
+          "alignment": "",
+          "type": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "displayTemp": false
+        },
+        "core": {
+          "statusId": ""
+        }
+      },
+      "tint": "#ffffff",
+      "origin": null,
+      "name": "Expeditious Retreat",
+      "description": "",
+      "statuses": [],
+      "img": "icons/skills/movement/figure-running-gray.webp",
+      "type": "base",
+      "system": {},
+      "sort": 0,
+      "_key": "!items.effects!RDBThhwVXSHPiJm7.wIFxFyAeGU7ENxxU"
+    }
+  ],
+  "folder": "U0k4VGG6bziqf3oH",
+  "flags": {
+    "midi-qol": {
+      "onUseMacroName": "",
+      "effectActivation": false,
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "rollAttackPerTarget": "default",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default"
+    },
+    "core": {},
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "noConcentrationCheck": false,
+      "confirmTargets": "default",
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic"
+      ]
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>You mutter a magical command to yourself to run as fast as possible, and shake your legs and arms quickly as you speed up.</em></p><p><strong>Buff</strong> </p><ul><li><p>When you cast this spell, and as a &amp;reference[bonusaction] on each of your turns until the spell ends, you can take the &amp;reference[Dash] action.</p></li></ul>",
+      "chat": "<p><strong>Buff</strong></p><ul><li><p>When you cast this spell, and as a &amp;reference[bonusaction] on each of your turns until the spell ends, you can take the &amp;reference[Dash] action.</p></li></ul>"
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/expeditious-retreat",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "bonus",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "10",
+      "units": "minute"
+    },
+    "target": {
+      "affects": {
+        "special": "",
+        "type": "self",
+        "choice": false
+      },
+      "template": {
+        "type": "",
+        "units": "ft",
+        "contiguous": false
+      }
+    },
+    "range": {
+      "units": "self",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 1,
+    "school": "trs",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "mgc"
+    ],
+    "activities": {
+      "4I7TUXfzMRApO6WN": {
+        "type": "utility",
+        "_id": "4I7TUXfzMRApO6WN",
+        "sort": 0,
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "wIFxFyAeGU7ENxxU"
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": ""
+        },
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "wIFxFyAeGU7ENxxU"
+        ]
+      }
+    },
+    "identifier": ""
+  },
+  "_id": "RDBThhwVXSHPiJm7",
+  "_key": "!items!RDBThhwVXSHPiJm7"
 }
