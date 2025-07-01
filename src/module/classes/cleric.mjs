@@ -51,69 +51,69 @@ export function healOver(item, roll) {
 
 
 export async function healingOverflow(workflow) {
-    //     console.log("Elkan 5e | Healing Overflow triggered");
+    const [workflowData] = workflow.args;
+    if (!workflow.item || workflow.item.type !== "spell" || workflow.item.system.actionType !== "heal" || workflow.item.system.level < 1) return;
 
-    const item = workflow.item;
-    if (item.type !== "spell" || item.system.actionType !== "heal" || item.system.level < 1) return;
-    const healing = workflow.damageTotal
+    const healing = workflowData.damageTotal;
+    if (!healing || healing === 0) return;
+
     const caster = workflow.actor;
     const casterToken = workflow.token;
-    const targets = [...workflow.targets];
-    if (!caster || !casterToken || targets.length === 0 || healing === 0) return;
+    if (!caster || !casterToken) return;
 
+    const targets = workflowData.targets ?? [];
+    if (targets.length === 0) return;
 
+    // Calculate max overflow healing from targets
     let maxOverflow = 0;
-    for (let target of targets) {
-        const actor = target.actor;
-        const maxHP = actor.system.attributes.hp.max;
-        const currentHP = actor.system.attributes.hp.value;
-        const missingHP = maxHP - currentHP;
-        if (healing - missingHP > 0 && healing - missingHP > maxOverflow) {
-            maxOverflow = healing - missingHP;
-        }
+    for (const targetToken of targets) {
+        const actor = targetToken.actor;
+        if (!actor) continue;
+
+        const { max, value } = actor.system.attributes.hp;
+        const missingHP = max - value;
+        const overflow = healing - missingHP;
+        if (overflow > maxOverflow) maxOverflow = overflow;
     }
-    if (maxOverflow <= 0) return
+    if (maxOverflow <= 0) return;
 
-    //     console.log("Elkan 5e | Max Overflow:", maxOverflow);
-    const range = item.system.range?.value;
-    //     console.log("Elkan 5e | Range:", range);
-    const candidates = canvas.tokens.placeables.filter(t =>
-        !t.document.hidden &&
-        t.actor &&
-        t.actor.system?.attributes?.hp?.value < t.actor.system?.attributes?.hp?.max &&
-        canvas.grid.measureDistance(casterToken, t) <= range
-    );
-    //     console.log("Elkan 5e | Candidates:", candidates);
-    if (candidates.length === 0) return
+    // Determine range from the spell item
+    const range = workflow.item.system.range?.value ?? 0;
 
-    let options = "";
-    try {
-        options = candidates.map(t => {
-            const id = t.document?.id;
-            const name = t.document?.name ?? t.name ?? "Unnamed";
-            return `<option value="${id}">${name}</option>`;
-        }).join("");
-    } catch (err) {
-        console.error("Error building dropdown options", err);
-    }
+    // Find tokens within range that are missing HP
+    const candidates = canvas.tokens.placeables.filter(token => {
+        const actor = token.actor;
+        if (!actor || token.document.hidden) return false;
+        const hp = actor.system.attributes.hp;
+        const inRange = canvas.grid.measureDistance(casterToken, token) <= range;
+        return hp.value < hp.max && inRange;
+    });
+    if (candidates.length === 0) return;
 
+    // Build dropdown options for the dialog
+    const options = candidates.map(token => {
+        const id = token.document.id;
+        const name = token.document.name ?? token.name ?? "Unnamed";
+        return `<option value="${id}">${name}</option>`;
+    }).join("");
 
     const content = `
-	<form>
-		<div class="form-group">
-		<label>Redirect overflow healing:</label>
-		<select id="overflow-target">${options}</select>
-		</div>
-	</form>
-	`;
+        <form>
+            <div class="form-group">
+                <label>Redirect overflow healing:</label>
+                <select id="overflow-target">${options}</select>
+            </div>
+        </form>
+    `;
+
     const itemData = {
         type: "feat",
         img: "icons/magic/light/explosion-star-glow-silhouette.webp"
-    }
-    const damageRoll = await new Roll("" + maxOverflow, {}, { type: "healing" }).evaluate({ async: true });
+    };
 
+    const damageRoll = await new Roll(`${maxOverflow}`, {}, { type: "healing" }).evaluate({ async: true });
 
-    await new Dialog({
+    new Dialog({
         title: "Healing Overflow",
         content,
         buttons: {
@@ -124,7 +124,7 @@ export async function healingOverflow(workflow) {
                     const recipient = canvas.tokens.get(targetId);
                     if (!recipient) return;
 
-                    new MidiQOL.DamageOnlyWorkflow(caster, casterToken, damageRoll.total, "healing", [recipient], damageRoll, { itemData: itemData, flavor: `Healing Overflow` });
+                    new MidiQOL.DamageOnlyWorkflow(caster, casterToken, damageRoll.total, "healing", [recipient], damageRoll, { itemData, flavor: `Healing Overflow` });
                 }
             },
             cancel: { label: "Cancel" }

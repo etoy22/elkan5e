@@ -6,6 +6,15 @@ export function armor() {
     const dragon = game.settings.get("elkan5e", "draconic-toughness");
     console.log("Elkan 5e  |  Initializing Armor");
 
+    // Ensure CONFIG.DND5E.armorIds exists
+    if (!CONFIG.DND5E.armorIds) CONFIG.DND5E.armorIds = {};
+    // Ensure CONFIG.DND5E.shieldIds exists
+    if (!CONFIG.DND5E.shieldIds) CONFIG.DND5E.shieldIds = {};
+    // Ensure CONFIG.DND5E.armorClasses exists
+    if (!CONFIG.DND5E.armorClasses) CONFIG.DND5E.armorClasses = {};
+    // Ensure CONFIG.DND5E.armorClasses.draconic exists
+    if (!CONFIG.DND5E.armorClasses.draconic) CONFIG.DND5E.armorClasses.draconic = {};
+
     if (!armor) {
         // Delete List
         ["ringmail", "studded"].forEach(id => delete CONFIG.DND5E.armorIds[id]);
@@ -64,6 +73,8 @@ function calculateAcBonus(actor) {
 
 
 export async function updateBarbarianDefense(actor) {
+    if (!actor || !actor.system) return; // Prevents error if actor is null/undefined
+
     const isUsingBarbarianDefense = actor.system.attributes.ac.calc === "barbarianDefense";
     const existing = actor.effects.find(e => e.name === "Barbarian Defense Bonus");
     if (!isUsingBarbarianDefense) {
