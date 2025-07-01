@@ -1,324 +1,324 @@
 {
-  "name": "Ray of Enfeeblement",
-  "type": "spell",
-  "img": "icons/magic/unholy/projectile-smoke-trail-pink.webp",
-  "effects": [
-    {
-      "name": "Ray of Enfeeblement",
-      "origin": "Compendium.elkan5e.elkan5e-spells.Item.OGR7tJU7gq9xwsiU",
-      "changes": [
-        {
-          "key": "flags.midi-qol.OverTime",
-          "mode": 2,
-          "value": "turn=end,\nsaveAbility=con,\nsaveDC=@attributes.spelldc,\nsaveMagic=true,\nlabel=Ray of Enfeeblement",
-          "priority": 20
-        }
-      ],
-      "transfer": false,
-      "flags": {
-        "dae": {
-          "itemName": "Ray of Enfeeblement",
-          "disableIncapacitated": false,
-          "selfTarget": false,
-          "selfTargetAlways": false,
-          "dontApply": false,
-          "stackable": "noneName",
-          "showIcon": false,
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "specialDuration": [],
-          "enableCondition": "",
-          "disableCondition": ""
-        },
-        "ActiveAuras": {
-          "isAura": false,
-          "aura": "None",
-          "nameOverride": "",
-          "radius": "",
-          "alignment": "",
-          "type": "",
-          "customCheck": "",
-          "ignoreSelf": false,
-          "height": false,
-          "hidden": false,
-          "displayTemp": false,
-          "hostile": false,
-          "onlyOnce": false,
-          "wallsBlock": "system",
-          "statuses": []
-        },
-        "core": {
-          "overlay": false
-        },
-        "dnd5e": {
-          "riders": {
-            "statuses": []
-          }
-        }
-      },
-      "img": "icons/magic/unholy/projectile-smoke-trail-pink.webp",
-      "_id": "YT2fdYZvaFwOTsbf",
-      "type": "base",
-      "system": {},
-      "disabled": false,
-      "duration": {
-        "startTime": null,
-        "seconds": null,
-        "combat": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
-      },
-      "description": "",
-      "tint": "#ffffff",
-      "statuses": [
-        "weakened"
-      ],
-      "sort": 0,
-      "_key": "!items.effects!OGR7tJU7gq9xwsiU.YT2fdYZvaFwOTsbf"
-    }
-  ],
-  "folder": "6J3i75lfD1J0xYwA",
-  "flags": {
-    "dae": {
-      "activeEquipped": false,
-      "alwaysActive": false,
-      "macro": {
-        "name": "Ray of Enfeeblement",
-        "img": "icons/magic/unholy/projectile-smoke-trail-pink.webp",
-        "type": "script",
-        "scope": "global",
-        "command": "",
-        "author": "vHqSHJMdmEO6Mk2C",
-        "ownership": {
-          "default": 3
-        },
-        "_id": null,
-        "folder": null,
-        "sort": 0,
-        "flags": {},
-        "_stats": {
-          "systemId": null,
-          "systemVersion": null,
-          "coreVersion": null,
-          "createdTime": null,
-          "modifiedTime": null,
-          "lastModifiedBy": null
-        }
-      }
-    },
-    "itemacro": {
-      "macro": {
-        "_data": {
-          "name": "Ray of Enfeeblement",
-          "type": "script",
-          "scope": "global",
-          "command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target \n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId)\nlet weapons = tactor.items.filter(i => i.data.type === `weapon`);\n\n/**\n * For every str weapon, update the damage formulas to half the damage, set flag of original\n */\nif (args[0] === \"on\") {\n    for (let weapon of weapons) {\n        if (weapon.abilityMod === \"str\") {\n            let newWeaponParts = duplicate(weapon.data.data.damage.parts);\n            weapon.setFlag('world', 'RayOfEnfeeblement', newWeaponParts);\n            for (let part of weapon.data.data.damage.parts) {\n                part[0] = `floor((${part[0]})/2)`;\n            }\n            weapon.update({ \"data.damage.parts\": weapon.data.data.damage.parts });\n        }\n    }\n}\n\n// Update weapons to old value\nif (args[0] === \"off\") {\n    for (let weapon of weapons) {\n        let parts = weapon.getFlag('world', 'RayOfEnfeeblement');\n\n        weapon.update({ \"data.damage.parts\": parts });\n    }\n}",
-          "author": "E4BVikjIkVl2lL2j"
-        },
-        "data": {
-          "name": "Ray of Enfeeblement",
-          "type": "script",
-          "scope": "global",
-          "command": "//DAE Item Macro Execute, no arguments\nif (!game.modules.get(\"advanced-macros\")?.active) ui.notifications.error(\"Please enable the Advanced Macros module\")\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nlet weapons = tactor.items.filter(i => i.data.type === `weapon`);\n\n/**\n * For every str weapon, update the damage formulas to half the damage, set flag of original\n */\nif (args[0] === \"on\") {\n    for (let weapon of weapons) {\n        if (weapon.abilityMod === \"str\") {\n            let newWeaponParts = duplicate(weapon.data.data.damage.parts);\n            weapon.setFlag('world', 'RayOfEnfeeblement', newWeaponParts);\n            for (let part of weapon.data.data.damage.parts) {\n                part[0] = `floor((${part[0]})/2)`;\n            }\n            weapon.update({ \"data.damage.parts\": weapon.data.data.damage.parts });\n        }\n    }\n}\n\n// Update weapons to old value\nif (args[0] === \"off\") {\n    for (let weapon of weapons) {\n        let parts = weapon.getFlag('world', 'RayOfEnfeeblement');\n        weapon.update({ \"data.damage.parts\": parts });\n    }\n}",
-          "author": "zrPR3wueYsESSBR3",
-          "_id": null,
-          "img": "icons/svg/dice-target.svg",
-          "folder": null,
-          "sort": 0,
-          "permission": {
-            "default": 0
-          },
-          "flags": {}
-        },
-        "options": {},
-        "apps": {},
-        "compendium": null
-      }
-    },
-    "midi-qol": {
-      "onUseMacroName": "",
-      "effectActivation": false,
-      "fumbleThreshold": null,
-      "removeAttackDamageButtons": "default",
-      "itemCondition": "",
-      "reactionCondition": "",
-      "otherCondition": "",
-      "effectCondition": "",
-      "rollAttackPerTarget": "default"
-    },
-    "core": {},
-    "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
-      "rollOther": false,
-      "critOther": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "toggleEffect": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "offHandWeapon": false,
-      "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      },
-      "migratedProperties": [
-        "vocal",
-        "somatic",
-        "concentration"
-      ]
-    },
-    "tidy5e-sheet": {
-      "section": "",
-      "actionSection": ""
-    }
-  },
-  "system": {
-    "description": {
-      "value": "<p><em>Speaking an incantation in a forgotten language, you conjure</em><em>a winding red and black beam of enervating energy, which springs from your finger toward your target.</em></p><p><strong>Constitution Save</strong> </p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[Weakened]. Target rolls again at end of their turns, ending effect on success.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 2nd.</p>",
-      "chat": "<p><strong>Constitution Save</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[Weakened]. Target rolls again at end of their turns, ending effect on success.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 2nd.</p>"
-    },
-    "source": {
-      "custom": "elkan5e.com/spells/ray-of-enfeeblement",
-      "revision": 1,
-      "rules": "",
-      "book": "Elkan 5e",
-      "page": "",
-      "license": ""
-    },
-    "activation": {
-      "type": "action",
-      "condition": "",
-      "value": 1
-    },
-    "duration": {
-      "value": "1",
-      "units": "minute"
-    },
-    "target": {
-      "affects": {
-        "type": "creature",
-        "count": "1",
-        "choice": false,
-        "special": ""
-      },
-      "template": {
-        "units": "",
-        "contiguous": false,
-        "type": ""
-      }
-    },
-    "range": {
-      "value": "60",
-      "units": "ft",
-      "special": ""
-    },
-    "uses": {
-      "max": "",
-      "recovery": [],
-      "spent": 0
-    },
-    "ability": "",
-    "level": 2,
-    "school": "trs",
-    "materials": {
-      "value": "",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
-    },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": true
-    },
-    "properties": [
-      "vocal",
-      "somatic",
-      "concentration",
-      "mgc"
-    ],
-    "activities": {
-      "dnd5eactivity000": {
-        "_id": "dnd5eactivity000",
-        "type": "save",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [
-          {
-            "_id": "YT2fdYZvaFwOTsbf",
-            "onSave": false
-          }
-        ],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "type": "creature",
-          "value": 1,
-          "units": "ft",
-          "width": null,
-          "override": false,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "max": "",
-          "recovery": []
-        },
-        "damage": {
-          "onSave": "none",
-          "parts": []
-        },
-        "save": {
-          "ability": "con",
-          "dc": {
-            "calculation": "spellcasting",
-            "formula": ""
-          }
-        },
-        "sort": 0,
-        "name": "",
-        "img": "",
-        "appliedEffects": [
-          "YT2fdYZvaFwOTsbf"
-        ],
-        "effectConditionText": ""
-      }
-    },
-    "identifier": ""
-  },
-  "_id": "OGR7tJU7gq9xwsiU",
-  "_key": "!items!OGR7tJU7gq9xwsiU"
+	"name": "Ray of Enfeeblement",
+	"type": "spell",
+	"img": "icons/magic/unholy/projectile-smoke-trail-pink.webp",
+	"effects": [
+		{
+			"name": "Ray of Enfeeblement",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.OGR7tJU7gq9xwsiU",
+			"changes": [
+				{
+					"key": "flags.midi-qol.OverTime",
+					"mode": 2,
+					"value": "turn=end,\nsaveAbility=con,\nsaveDC=@attributes.spelldc,\nsaveMagic=true,\nlabel=Ray of Enfeeblement",
+					"priority": 20
+				}
+			],
+			"transfer": false,
+			"flags": {
+				"dae": {
+					"itemName": "Ray of Enfeeblement",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"enableCondition": "",
+					"disableCondition": ""
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				},
+				"core": {
+					"overlay": false
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				}
+			},
+			"img": "icons/magic/unholy/projectile-smoke-trail-pink.webp",
+			"_id": "YT2fdYZvaFwOTsbf",
+			"type": "base",
+			"system": {},
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": null,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [
+				"weakened"
+			],
+			"sort": 0,
+			"_key": "!items.effects!OGR7tJU7gq9xwsiU.YT2fdYZvaFwOTsbf"
+		}
+	],
+	"folder": "6J3i75lfD1J0xYwA",
+	"flags": {
+		"dae": {
+			"activeEquipped": false,
+			"alwaysActive": false,
+			"macro": {
+				"name": "Ray of Enfeeblement",
+				"img": "icons/magic/unholy/projectile-smoke-trail-pink.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "",
+				"author": "vHqSHJMdmEO6Mk2C",
+				"ownership": {
+					"default": 3
+				},
+				"_id": null,
+				"folder": null,
+				"sort": 0,
+				"flags": {},
+				"_stats": {
+					"systemId": null,
+					"systemVersion": null,
+					"coreVersion": null,
+					"createdTime": null,
+					"modifiedTime": null,
+					"lastModifiedBy": null
+				}
+			}
+		},
+		"itemacro": {
+			"macro": {
+				"_data": {
+					"name": "Ray of Enfeeblement",
+					"type": "script",
+					"scope": "global",
+					"command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target \n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId)\nlet weapons = tactor.items.filter(i => i.data.type === `weapon`);\n\n/**\n * For every str weapon, update the damage formulas to half the damage, set flag of original\n */\nif (args[0] === \"on\") {\n    for (let weapon of weapons) {\n        if (weapon.abilityMod === \"str\") {\n            let newWeaponParts = duplicate(weapon.data.data.damage.parts);\n            weapon.setFlag('world', 'RayOfEnfeeblement', newWeaponParts);\n            for (let part of weapon.data.data.damage.parts) {\n                part[0] = `floor((${part[0]})/2)`;\n            }\n            weapon.update({ \"data.damage.parts\": weapon.data.data.damage.parts });\n        }\n    }\n}\n\n// Update weapons to old value\nif (args[0] === \"off\") {\n    for (let weapon of weapons) {\n        let parts = weapon.getFlag('world', 'RayOfEnfeeblement');\n\n        weapon.update({ \"data.damage.parts\": parts });\n    }\n}",
+					"author": "E4BVikjIkVl2lL2j"
+				},
+				"data": {
+					"name": "Ray of Enfeeblement",
+					"type": "script",
+					"scope": "global",
+					"command": "//DAE Item Macro Execute, no arguments\nif (!game.modules.get(\"advanced-macros\")?.active) ui.notifications.error(\"Please enable the Advanced Macros module\")\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nlet weapons = tactor.items.filter(i => i.data.type === `weapon`);\n\n/**\n * For every str weapon, update the damage formulas to half the damage, set flag of original\n */\nif (args[0] === \"on\") {\n    for (let weapon of weapons) {\n        if (weapon.abilityMod === \"str\") {\n            let newWeaponParts = duplicate(weapon.data.data.damage.parts);\n            weapon.setFlag('world', 'RayOfEnfeeblement', newWeaponParts);\n            for (let part of weapon.data.data.damage.parts) {\n                part[0] = `floor((${part[0]})/2)`;\n            }\n            weapon.update({ \"data.damage.parts\": weapon.data.data.damage.parts });\n        }\n    }\n}\n\n// Update weapons to old value\nif (args[0] === \"off\") {\n    for (let weapon of weapons) {\n        let parts = weapon.getFlag('world', 'RayOfEnfeeblement');\n        weapon.update({ \"data.damage.parts\": parts });\n    }\n}",
+					"author": "zrPR3wueYsESSBR3",
+					"_id": null,
+					"img": "icons/svg/dice-target.svg",
+					"folder": null,
+					"sort": 0,
+					"permission": {
+						"default": 0
+					},
+					"flags": {}
+				},
+				"options": {},
+				"apps": {},
+				"compendium": null
+			}
+		},
+		"midi-qol": {
+			"onUseMacroName": "",
+			"effectActivation": false,
+			"fumbleThreshold": null,
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default"
+		},
+		"core": {},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"confirmTargets": "default",
+			"noConcentrationCheck": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic",
+				"concentration"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>Speaking an incantation in a forgotten language, you conjure</em><em>a winding red and black beam of enervating energy, which springs from your finger toward your target.</em></p><p><strong>Constitution Save</strong> </p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[Weakened]. Target rolls again at end of their turns, ending effect on success.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 2nd.</p>",
+			"chat": "<p><strong>Constitution Save</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[Weakened]. Target rolls again at end of their turns, ending effect on success.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 2nd.</p>"
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/ray-of-enfeeblement",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "1",
+			"units": "minute"
+		},
+		"target": {
+			"affects": {
+				"type": "creature",
+				"count": "1",
+				"choice": false,
+				"special": ""
+			},
+			"template": {
+				"units": "",
+				"contiguous": false,
+				"type": ""
+			}
+		},
+		"range": {
+			"value": "60",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 2,
+		"school": "trs",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"concentration",
+			"mgc"
+		],
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "YT2fdYZvaFwOTsbf",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"onSave": "none",
+					"parts": []
+				},
+				"save": {
+					"ability": "con",
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"sort": 0,
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"YT2fdYZvaFwOTsbf"
+				],
+				"effectConditionText": ""
+			}
+		},
+		"identifier": ""
+	},
+	"_id": "OGR7tJU7gq9xwsiU",
+	"_key": "!items!OGR7tJU7gq9xwsiU"
 }

@@ -1,226 +1,226 @@
 {
-  "name": "Misty Step",
-  "type": "spell",
-  "img": "icons/magic/movement/trail-streak-zigzag-teal.webp",
-  "effects": [],
-  "folder": "6J3i75lfD1J0xYwA",
-  "flags": {
-    "itemacro": {
-      "macro": {
-        "_data": {
-          "name": "Misty Step",
-          "type": "script",
-          "scope": "global",
-          "command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target \nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId) || token;\n\n\nif (args[0] === \"on\") {\n    let range = MeasuredTemplate.create({\n        t: \"circle\",\n        user: game.user._id,\n        x: target.x + canvas.grid.size / 2,\n        y: target.y + canvas.grid.size / 2,\n        direction: 0,\n        distance: 30,\n        borderColor: \"#FF0000\",\n        flags: {\n            DAESRD: {\n                MistyStep: {\n                    ActorId: tactor.id\n                }\n            }\n        }\n        //fillColor: \"#FF3366\",\n    });\n\n    range.then(result => {\n        let templateData = {\n            t: \"rect\",\n            user: game.user._id,\n            distance: 7.5,\n            direction: 45,\n            x: 0,\n            y: 0,\n            fillColor: game.user.color,\n            flags: {\n                DAESRD: {\n                    MistyStep: {\n                        ActorId: tactor.id\n                    }\n                }\n            }\n        };\n\n\n\n        Hooks.once(\"createMeasuredTemplate\", deleteTemplatesAndMove);\n\n        let template = new game.dnd5e.canvas.AbilityTemplate(templateData);\n        template.actorSheet = tactor.sheet;\n        template.drawPreview();\n\n        async function deleteTemplatesAndMove(scene, template) {\n\n            let removeTemplates = canvas.templates.placeables.filter(i => i.data.flags.DAESRD?.MistyStep?.ActorId === tactor.id);\n            await target.update({ x: template.x, y: template.y })\n            await canvas.templates.deleteMany([removeTemplates[0].id, removeTemplates[1].id]);\n            await tactor.deleteEmbeddedEntity(\"ActiveEffect\", lastArg.effectId); \n        };\n    });\n    \n}",
-          "author": "E4BVikjIkVl2lL2j"
-        },
-        "data": {
-          "name": "Misty Step",
-          "type": "script",
-          "scope": "global",
-          "command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target \nif (!game.modules.get(\"advanced-macros\")?.active) ui.notifications.error(\"Please enable the Advanced Macros module\")\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId) || token;\n\n\nif (args[0] === \"on\") {\n    let range = canvas.scene.createEmbeddedDocuments(\"MeasuredTemplate\", [{\n        t: \"circle\",\n        user: game.user._id,\n        x: target.x + canvas.grid.size / 2,\n        y: target.y + canvas.grid.size / 2,\n        direction: 0,\n        distance: 30,\n        borderColor: \"#FF0000\",\n        flags: {\n            DAESRD: {\n                MistyStep: {\n                    ActorId: tactor.id\n                }\n            }\n        }\n        //fillColor: \"#FF3366\",\n    }]);\n\n    range.then(result => {\n        let templateData = {\n            t: \"rect\",\n            user: game.user._id,\n            distance: 7.5,\n            direction: 45,\n            x: 0,\n            y: 0,\n            fillColor: game.user.color,\n            flags: {\n                DAESRD: {\n                    MistyStep: {\n                        ActorId: tactor.id\n                    }\n                }\n            }\n        };\n\n\n\n        Hooks.once(\"createMeasuredTemplate\", deleteTemplatesAndMove);\n        let doc = new CONFIG.MeasuredTemplate.documentClass(templateData, { parent: canvas.scene })\n        let template = new game.dnd5e.canvas.AbilityTemplate(doc);\n        template.actorSheet = tactor.sheet;\n        template.drawPreview();\n\n        async function deleteTemplatesAndMove(template) {\n\n            let removeTemplates = canvas.templates.placeables.filter(i => i.data.flags.DAESRD?.MistyStep?.ActorId === tactor.id);\n            let templateArray = removeTemplates.map(function (w) {\n                return w.id\n            })\n            await target.update({ x: template.data.x, y: template.data.y } , {animate : false})\n            if (removeTemplates) await canvas.scene.deleteEmbeddedDocuments(\"MeasuredTemplate\", templateArray)\n            await tactor.deleteEmbeddedDocuments(\"ActiveEffect\", [lastArg.effectId]); \n        };\n    });\n    \n}",
-          "author": "zrPR3wueYsESSBR3",
-          "_id": null,
-          "img": "icons/svg/dice-target.svg",
-          "folder": null,
-          "sort": 0,
-          "permission": {
-            "default": 0
-          },
-          "flags": {}
-        },
-        "options": {},
-        "apps": {},
-        "compendium": null
-      }
-    },
-    "dae": {
-      "activeEquipped": false,
-      "alwaysActive": false,
-      "macro": {
-        "name": "Misty Step",
-        "img": "icons/magic/movement/trail-streak-zigzag-teal.webp",
-        "type": "script",
-        "scope": "global",
-        "command": "",
-        "author": "3Yi0HjF4PKCA4vX0",
-        "ownership": {
-          "default": 3
-        },
-        "_id": null,
-        "folder": null,
-        "sort": 0,
-        "flags": {},
-        "_stats": {
-          "systemId": null,
-          "systemVersion": null,
-          "coreVersion": null,
-          "createdTime": null,
-          "modifiedTime": null,
-          "lastModifiedBy": null
-        }
-      }
-    },
-    "midi-qol": {
-      "onUseMacroName": "",
-      "effectActivation": false,
-      "itemCondition": "",
-      "reactionCondition": "",
-      "otherCondition": "",
-      "effectCondition": "",
-      "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default"
-    },
-    "core": {},
-    "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
-      "rollOther": false,
-      "critOther": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "toggleEffect": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "offHandWeapon": false,
-      "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      },
-      "migratedProperties": [
-        "vocal"
-      ]
-    },
-    "tidy5e-sheet": {
-      "section": "",
-      "actionSection": ""
-    }
-  },
-  "system": {
-    "description": {
-      "value": "<p><em>You say a word of power and step forward, vanishing in a silvery mist. You then appear a short distance away.</em></p><p><strong>Teleportation</strong> </p><ul><li><p>You teleport up to 30 feet to an unoccupied space that you can see.</p></li></ul>",
-      "chat": "<p><strong>Teleportation</strong></p><ul><li><p>You teleport up to 30 feet to an unoccupied space that you can see.</p></li></ul>"
-    },
-    "source": {
-      "custom": "elkan5e.com/spells/misty-step",
-      "revision": 1,
-      "rules": "",
-      "book": "Elkan 5e",
-      "page": "",
-      "license": ""
-    },
-    "activation": {
-      "type": "bonus",
-      "condition": "",
-      "value": 1
-    },
-    "duration": {
-      "value": "",
-      "units": "inst"
-    },
-    "target": {
-      "affects": {
-        "type": "self",
-        "choice": false,
-        "special": ""
-      },
-      "template": {
-        "units": "",
-        "contiguous": false,
-        "type": ""
-      }
-    },
-    "range": {
-      "value": "30",
-      "units": "ft",
-      "special": ""
-    },
-    "uses": {
-      "max": "",
-      "recovery": [],
-      "spent": 0
-    },
-    "ability": "",
-    "level": 2,
-    "school": "con",
-    "materials": {
-      "value": "",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
-    },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": true
-    },
-    "properties": [
-      "vocal",
-      "somatic"
-    ],
-    "activities": {
-      "dnd5eactivity000": {
-        "_id": "dnd5eactivity000",
-        "type": "utility",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "type": "creature",
-          "value": 1,
-          "units": "ft",
-          "width": null,
-          "override": false,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "max": "",
-          "recovery": []
-        },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
-        },
-        "sort": 0
-      }
-    },
-    "identifier": ""
-  },
-  "_id": "dtuVz3SGtuIqOwE9",
-  "_key": "!items!dtuVz3SGtuIqOwE9"
+	"name": "Misty Step",
+	"type": "spell",
+	"img": "icons/magic/movement/trail-streak-zigzag-teal.webp",
+	"effects": [],
+	"folder": "6J3i75lfD1J0xYwA",
+	"flags": {
+		"itemacro": {
+			"macro": {
+				"_data": {
+					"name": "Misty Step",
+					"type": "script",
+					"scope": "global",
+					"command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target \nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId) || token;\n\n\nif (args[0] === \"on\") {\n    let range = MeasuredTemplate.create({\n        t: \"circle\",\n        user: game.user._id,\n        x: target.x + canvas.grid.size / 2,\n        y: target.y + canvas.grid.size / 2,\n        direction: 0,\n        distance: 30,\n        borderColor: \"#FF0000\",\n        flags: {\n            DAESRD: {\n                MistyStep: {\n                    ActorId: tactor.id\n                }\n            }\n        }\n        //fillColor: \"#FF3366\",\n    });\n\n    range.then(result => {\n        let templateData = {\n            t: \"rect\",\n            user: game.user._id,\n            distance: 7.5,\n            direction: 45,\n            x: 0,\n            y: 0,\n            fillColor: game.user.color,\n            flags: {\n                DAESRD: {\n                    MistyStep: {\n                        ActorId: tactor.id\n                    }\n                }\n            }\n        };\n\n\n\n        Hooks.once(\"createMeasuredTemplate\", deleteTemplatesAndMove);\n\n        let template = new game.dnd5e.canvas.AbilityTemplate(templateData);\n        template.actorSheet = tactor.sheet;\n        template.drawPreview();\n\n        async function deleteTemplatesAndMove(scene, template) {\n\n            let removeTemplates = canvas.templates.placeables.filter(i => i.data.flags.DAESRD?.MistyStep?.ActorId === tactor.id);\n            await target.update({ x: template.x, y: template.y })\n            await canvas.templates.deleteMany([removeTemplates[0].id, removeTemplates[1].id]);\n            await tactor.deleteEmbeddedEntity(\"ActiveEffect\", lastArg.effectId); \n        };\n    });\n    \n}",
+					"author": "E4BVikjIkVl2lL2j"
+				},
+				"data": {
+					"name": "Misty Step",
+					"type": "script",
+					"scope": "global",
+					"command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target \nif (!game.modules.get(\"advanced-macros\")?.active) ui.notifications.error(\"Please enable the Advanced Macros module\")\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId) || token;\n\n\nif (args[0] === \"on\") {\n    let range = canvas.scene.createEmbeddedDocuments(\"MeasuredTemplate\", [{\n        t: \"circle\",\n        user: game.user._id,\n        x: target.x + canvas.grid.size / 2,\n        y: target.y + canvas.grid.size / 2,\n        direction: 0,\n        distance: 30,\n        borderColor: \"#FF0000\",\n        flags: {\n            DAESRD: {\n                MistyStep: {\n                    ActorId: tactor.id\n                }\n            }\n        }\n        //fillColor: \"#FF3366\",\n    }]);\n\n    range.then(result => {\n        let templateData = {\n            t: \"rect\",\n            user: game.user._id,\n            distance: 7.5,\n            direction: 45,\n            x: 0,\n            y: 0,\n            fillColor: game.user.color,\n            flags: {\n                DAESRD: {\n                    MistyStep: {\n                        ActorId: tactor.id\n                    }\n                }\n            }\n        };\n\n\n\n        Hooks.once(\"createMeasuredTemplate\", deleteTemplatesAndMove);\n        let doc = new CONFIG.MeasuredTemplate.documentClass(templateData, { parent: canvas.scene })\n        let template = new game.dnd5e.canvas.AbilityTemplate(doc);\n        template.actorSheet = tactor.sheet;\n        template.drawPreview();\n\n        async function deleteTemplatesAndMove(template) {\n\n            let removeTemplates = canvas.templates.placeables.filter(i => i.data.flags.DAESRD?.MistyStep?.ActorId === tactor.id);\n            let templateArray = removeTemplates.map(function (w) {\n                return w.id\n            })\n            await target.update({ x: template.data.x, y: template.data.y } , {animate : false})\n            if (removeTemplates) await canvas.scene.deleteEmbeddedDocuments(\"MeasuredTemplate\", templateArray)\n            await tactor.deleteEmbeddedDocuments(\"ActiveEffect\", [lastArg.effectId]); \n        };\n    });\n    \n}",
+					"author": "zrPR3wueYsESSBR3",
+					"_id": null,
+					"img": "icons/svg/dice-target.svg",
+					"folder": null,
+					"sort": 0,
+					"permission": {
+						"default": 0
+					},
+					"flags": {}
+				},
+				"options": {},
+				"apps": {},
+				"compendium": null
+			}
+		},
+		"dae": {
+			"activeEquipped": false,
+			"alwaysActive": false,
+			"macro": {
+				"name": "Misty Step",
+				"img": "icons/magic/movement/trail-streak-zigzag-teal.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "",
+				"author": "3Yi0HjF4PKCA4vX0",
+				"ownership": {
+					"default": 3
+				},
+				"_id": null,
+				"folder": null,
+				"sort": 0,
+				"flags": {},
+				"_stats": {
+					"systemId": null,
+					"systemVersion": null,
+					"coreVersion": null,
+					"createdTime": null,
+					"modifiedTime": null,
+					"lastModifiedBy": null
+				}
+			}
+		},
+		"midi-qol": {
+			"onUseMacroName": "",
+			"effectActivation": false,
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default",
+			"removeAttackDamageButtons": "default"
+		},
+		"core": {},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"confirmTargets": "default",
+			"noConcentrationCheck": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>You say a word of power and step forward, vanishing in a silvery mist. You then appear a short distance away.</em></p><p><strong>Teleportation</strong> </p><ul><li><p>You teleport up to 30 feet to an unoccupied space that you can see.</p></li></ul>",
+			"chat": "<p><strong>Teleportation</strong></p><ul><li><p>You teleport up to 30 feet to an unoccupied space that you can see.</p></li></ul>"
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/misty-step",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "bonus",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "",
+			"units": "inst"
+		},
+		"target": {
+			"affects": {
+				"type": "self",
+				"choice": false,
+				"special": ""
+			},
+			"template": {
+				"units": "",
+				"contiguous": false,
+				"type": ""
+			}
+		},
+		"range": {
+			"value": "30",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 2,
+		"school": "con",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic"
+		],
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "utility",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"roll": {
+					"formula": "",
+					"name": "",
+					"prompt": false,
+					"visible": false
+				},
+				"sort": 0
+			}
+		},
+		"identifier": ""
+	},
+	"_id": "dtuVz3SGtuIqOwE9",
+	"_key": "!items!dtuVz3SGtuIqOwE9"
 }

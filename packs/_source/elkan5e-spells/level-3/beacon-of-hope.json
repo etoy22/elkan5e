@@ -1,274 +1,274 @@
 {
-  "name": "Beacon of Hope",
-  "type": "spell",
-  "img": "icons/magic/light/explosion-star-large-orange.webp",
-  "effects": [
-    {
-      "_id": "RtkJJbNnHgYVRGhK",
-      "flags": {
-        "dae": {
-          "stackable": "none",
-          "specialDuration": [
-            "None"
-          ],
-          "transfer": false,
-          "macroRepeat": "none",
-          "selfTarget": false,
-          "selfTargetAlways": false,
-          "durationExpression": "",
-          "disableIncapacitated": false,
-          "dontApply": false,
-          "showIcon": true,
-          "enableCondition": "",
-          "disableCondition": ""
-        },
-        "ActiveAuras": {
-          "isAura": true,
-          "radius": "30",
-          "aura": "Allies",
-          "alignment": "",
-          "type": "",
-          "ignoreSelf": false,
-          "height": true,
-          "hidden": false,
-          "hostile": false,
-          "onlyOnce": false,
-          "displayTemp": false,
-          "nameOverride": "",
-          "customCheck": "",
-          "wallsBlock": "system"
-        },
-        "core": {
-          "overlay": false
-        }
-      },
-      "changes": [
-        {
-          "key": "flags.midi-qol.advantage.ability.save.wis",
-          "mode": 5,
-          "value": "1",
-          "priority": 20
-        },
-        {
-          "key": "flags.midi-qol.advantage.deathSave",
-          "mode": 5,
-          "value": "1",
-          "priority": 20
-        },
-        {
-          "key": "flags.midi-qol.max.damage.heal",
-          "mode": 5,
-          "value": "1",
-          "priority": 20
-        }
-      ],
-      "disabled": false,
-      "duration": {
-        "startTime": null,
-        "seconds": 60,
-        "combat": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
-      },
-      "tint": "#ffffff",
-      "transfer": false,
-      "origin": null,
-      "name": "Beacon of Hope",
-      "description": "",
-      "statuses": [],
-      "img": "icons/magic/light/explosion-star-large-orange.webp",
-      "type": "base",
-      "system": {},
-      "sort": 0,
-      "_key": "!items.effects!Y9ujzi4f01yflTyj.RtkJJbNnHgYVRGhK"
-    }
-  ],
-  "folder": "Tf2FNuyyu2gEaYOF",
-  "flags": {
-    "dae": {
-      "activeEquipped": false,
-      "alwaysActive": false
-    },
-    "core": {},
-    "midi-qol": {
-      "onUseMacroName": "",
-      "effectActivation": false,
-      "itemCondition": "",
-      "reactionCondition": "",
-      "otherCondition": "",
-      "effectCondition": "",
-      "rollAttackPerTarget": "default",
-      "AoETargetType": "any",
-      "AoETargetTypeIncludeSelf": true,
-      "autoTarget": "default",
-      "removeAttackDamageButtons": "default"
-    },
-    "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
-      "rollOther": false,
-      "critOther": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "toggleEffect": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "offHandWeapon": false,
-      "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      },
-      "migratedProperties": [
-        "vocal",
-        "somatic",
-        "concentration"
-      ]
-    },
-    "tidy5e-sheet": {
-      "section": "",
-      "actionSection": ""
-    }
-  },
-  "system": {
-    "description": {
-      "value": "<p><em>You hum a soft chant that magically carries over your surroundings, emboldening your allies and allowing them to recover quickly.</em></p><p><strong>Buff</strong></p><ul><li><p>Allies in radius have advantage on wisdom saving throws and death saving throws.</p></li><li><p>Allies regain the maximum number of hit points possible from any healing.</p></li></ul>",
-      "chat": "<p><strong>Buff</strong></p><ul><li><p>Target has advantage on wisdom saving throws and death saving throws.</p></li><li><p>Target regains the maximum number of hit points possible from any healing.</p></li></ul>"
-    },
-    "source": {
-      "book": "Elkan 5e",
-      "page": "",
-      "license": "",
-      "revision": 1,
-      "rules": "",
-      "custom": "elkan5e.com/spells/beacon-of-hope"
-    },
-    "activation": {
-      "type": "action",
-      "condition": "",
-      "value": 1
-    },
-    "duration": {
-      "value": "1",
-      "units": "minute"
-    },
-    "target": {
-      "affects": {
-        "special": "",
-        "type": "self",
-        "choice": false,
-        "count": ""
-      },
-      "template": {
-        "type": "radius",
-        "units": "ft",
-        "contiguous": false,
-        "size": "30",
-        "count": ""
-      }
-    },
-    "range": {
-      "value": "30",
-      "units": "self",
-      "special": ""
-    },
-    "uses": {
-      "max": "",
-      "recovery": [],
-      "spent": 0
-    },
-    "ability": "",
-    "level": 3,
-    "school": "abj",
-    "materials": {
-      "value": "",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
-    },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": true
-    },
-    "properties": [
-      "vocal",
-      "somatic",
-      "concentration"
-    ],
-    "activities": {
-      "a58J4HPZRQKaOaYr": {
-        "type": "utility",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [
-          {
-            "_id": "RtkJJbNnHgYVRGhK"
-          }
-        ],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "type": "creature",
-          "value": 1,
-          "units": "ft",
-          "width": null,
-          "override": false,
-          "prompt": true
-        },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "sort": 0,
-        "_id": "a58J4HPZRQKaOaYr",
-        "name": "",
-        "img": "",
-        "appliedEffects": [
-          "RtkJJbNnHgYVRGhK"
-        ]
-      }
-    },
-    "identifier": ""
-  },
-  "_id": "Y9ujzi4f01yflTyj",
-  "_key": "!items!Y9ujzi4f01yflTyj"
+	"name": "Beacon of Hope",
+	"type": "spell",
+	"img": "icons/magic/light/explosion-star-large-orange.webp",
+	"effects": [
+		{
+			"_id": "RtkJJbNnHgYVRGhK",
+			"flags": {
+				"dae": {
+					"stackable": "none",
+					"specialDuration": [
+						"None"
+					],
+					"transfer": false,
+					"macroRepeat": "none",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"durationExpression": "",
+					"disableIncapacitated": false,
+					"dontApply": false,
+					"showIcon": true,
+					"enableCondition": "",
+					"disableCondition": ""
+				},
+				"ActiveAuras": {
+					"isAura": true,
+					"radius": "30",
+					"aura": "Allies",
+					"alignment": "",
+					"type": "",
+					"ignoreSelf": false,
+					"height": true,
+					"hidden": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"displayTemp": false,
+					"nameOverride": "",
+					"customCheck": "",
+					"wallsBlock": "system"
+				},
+				"core": {
+					"overlay": false
+				}
+			},
+			"changes": [
+				{
+					"key": "flags.midi-qol.advantage.ability.save.wis",
+					"mode": 5,
+					"value": "1",
+					"priority": 20
+				},
+				{
+					"key": "flags.midi-qol.advantage.deathSave",
+					"mode": 5,
+					"value": "1",
+					"priority": 20
+				},
+				{
+					"key": "flags.midi-qol.max.damage.heal",
+					"mode": 5,
+					"value": "1",
+					"priority": 20
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 60,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"tint": "#ffffff",
+			"transfer": false,
+			"origin": null,
+			"name": "Beacon of Hope",
+			"description": "",
+			"statuses": [],
+			"img": "icons/magic/light/explosion-star-large-orange.webp",
+			"type": "base",
+			"system": {},
+			"sort": 0,
+			"_key": "!items.effects!Y9ujzi4f01yflTyj.RtkJJbNnHgYVRGhK"
+		}
+	],
+	"folder": "Tf2FNuyyu2gEaYOF",
+	"flags": {
+		"dae": {
+			"activeEquipped": false,
+			"alwaysActive": false
+		},
+		"core": {},
+		"midi-qol": {
+			"onUseMacroName": "",
+			"effectActivation": false,
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default",
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default",
+			"removeAttackDamageButtons": "default"
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"confirmTargets": "default",
+			"noConcentrationCheck": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic",
+				"concentration"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>You hum a soft chant that magically carries over your surroundings, emboldening your allies and allowing them to recover quickly.</em></p><p><strong>Buff</strong></p><ul><li><p>Allies in radius have advantage on wisdom saving throws and death saving throws.</p></li><li><p>Allies regain the maximum number of hit points possible from any healing.</p></li></ul>",
+			"chat": "<p><strong>Buff</strong></p><ul><li><p>Target has advantage on wisdom saving throws and death saving throws.</p></li><li><p>Target regains the maximum number of hit points possible from any healing.</p></li></ul>"
+		},
+		"source": {
+			"book": "Elkan 5e",
+			"page": "",
+			"license": "",
+			"revision": 1,
+			"rules": "",
+			"custom": "elkan5e.com/spells/beacon-of-hope"
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "1",
+			"units": "minute"
+		},
+		"target": {
+			"affects": {
+				"special": "",
+				"type": "self",
+				"choice": false,
+				"count": ""
+			},
+			"template": {
+				"type": "radius",
+				"units": "ft",
+				"contiguous": false,
+				"size": "30",
+				"count": ""
+			}
+		},
+		"range": {
+			"value": "30",
+			"units": "self",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 3,
+		"school": "abj",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"concentration"
+		],
+		"activities": {
+			"a58J4HPZRQKaOaYr": {
+				"type": "utility",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "RtkJJbNnHgYVRGhK"
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"roll": {
+					"formula": "",
+					"name": "",
+					"prompt": false,
+					"visible": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"sort": 0,
+				"_id": "a58J4HPZRQKaOaYr",
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"RtkJJbNnHgYVRGhK"
+				]
+			}
+		},
+		"identifier": ""
+	},
+	"_id": "Y9ujzi4f01yflTyj",
+	"_key": "!items!Y9ujzi4f01yflTyj"
 }
