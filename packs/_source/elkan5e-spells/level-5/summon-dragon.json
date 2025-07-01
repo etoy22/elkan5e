@@ -1,0 +1,216 @@
+{
+	"folder": "PnZJTE6T4UQY81Pm",
+	"name": "Summon Dragon",
+	"type": "spell",
+	"_id": "NXHg2MYkDbp1LZ78",
+	"img": "icons/creatures/abilities/dragon-breath-purple.webp",
+	"system": {
+		"activities": {
+			"DDIzDf6MszTxelEa": {
+				"type": "summon",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"override": false,
+					"concentration": false
+				},
+				"range": {
+					"override": false,
+					"units": "self"
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"sort": 0,
+				"bonuses": {
+					"ac": "@item.level",
+					"hd": "",
+					"hp": "10 * (@item.level - 5)",
+					"attackDamage": "@item.level",
+					"saveDamage": "",
+					"healing": ""
+				},
+				"creatureSizes": [],
+				"creatureTypes": [],
+				"match": {
+					"attacks": true,
+					"proficiency": true,
+					"saves": true
+				},
+				"profiles": [
+					{
+						"count": "",
+						"name": "",
+						"_id": "Bi6h3KIV8Sx2zSdH",
+						"uuid": "Compendium.elkan5e.elkan5e-summoned-creatures.Actor.UclZtN2YvfLcyO7D",
+						"level": {
+							"min": null,
+							"max": null
+						},
+						"types": []
+					}
+				],
+				"summon": {
+					"prompt": true,
+					"mode": "",
+					"identifier": ""
+				},
+				"name": "",
+				"effects": [],
+				"_id": "DDIzDf6MszTxelEa",
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"forceDialog": false,
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				}
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"max": ""
+		},
+		"description": {
+			"value": "<p>You call forth a Dragon spirit. It manifests in an unoccupied space that you can see within range and uses the <strong>@UUID[Compendium.elkan5e.elkan5e-summoned-creatures.Actor.UclZtN2YvfLcyO7D]{Draconic Spirit}</strong> stat block. The creature disappears when it drops to 0 Hit Points or when the spell ends.</p><p>The creature is an ally to you and your allies. In combat, the creature shares your Initiative count, but it takes its turn immediately after yours. It obeys your verbal commands (no action required by you). If you don't issue any, it takes the Dodge action and uses its movement to avoid danger.</p><p><strong>Using a Higher-Level Spell Slot. </strong>Use the spell slot's level for the spell's level in the stat block.</p><section class=\"fvtt advice\" style=\"margin:0.5rem;padding:0.5rem\"><article><p>In addition to the noted usage of the spell's level in the spirit's Traits and Actions, the following attributes are also affected.</p><table><caption>Draconic Spirit</caption><tbody><tr><td><strong>AC</strong></td><td>14 + the spell's level</td></tr><tr><td><strong>HP</strong></td><td>50 + 10 for each spell level above 5</td></tr><tr><td><strong>PB</strong></td><td>equals your Proficiency Bonus</td></tr></tbody></table></article></section>",
+			"chat": ""
+		},
+		"identifier": "summon-dragon",
+		"source": {
+			"revision": 1,
+			"rules": "2024"
+		},
+		"activation": {
+			"type": "action",
+			"value": null,
+			"condition": ""
+		},
+		"duration": {
+			"units": "hour",
+			"value": "1"
+		},
+		"level": 5,
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"material",
+			"concentration"
+		],
+		"range": {
+			"units": "ft",
+			"special": "",
+			"value": "60"
+		},
+		"school": "con",
+		"target": {
+			"template": {
+				"contiguous": false,
+				"units": "ft",
+				"type": ""
+			},
+			"affects": {
+				"choice": false,
+				"type": "space",
+				"special": "",
+				"count": "1"
+			}
+		}
+	},
+	"effects": [],
+	"flags": {
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": ""
+		},
+		"midiProperties": {
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		}
+	},
+	"_key": "!items!NXHg2MYkDbp1LZ78"
+}

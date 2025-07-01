@@ -19,10 +19,13 @@
 					"selfTargetAlways": false,
 					"disableIncapacitated": true,
 					"dontApply": false,
-					"showIcon": true
+					"showIcon": true,
+					"enableCondition": "",
+					"disableCondition": ""
 				},
 				"core": {
-					"statusId": ""
+					"statusId": "",
+					"overlay": false
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -38,7 +41,13 @@
 					"onlyOnce": false,
 					"nameOverride": "",
 					"customCheck": "",
-					"wallsBlock": "system"
+					"wallsBlock": "system",
+					"statuses": []
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
 				}
 			},
 			"changes": [
@@ -145,7 +154,22 @@
 		},
 		"dae": {
 			"activeEquipped": false,
-			"alwaysActive": false
+			"alwaysActive": false,
+			"macro": {
+				"name": "Rage",
+				"img": "icons/creatures/abilities/mouth-teeth-human.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "let workflow = { speaker, actor, token, character, item, args }\nreturn await elkan5e.macros.features.rage(workflow);",
+				"author": "vHqSHJMdmEO6Mk2C",
+				"ownership": {
+					"default": 3
+				},
+				"_id": null,
+				"folder": null,
+				"sort": 0,
+				"flags": {}
+			}
 		},
 		"core": {},
 		"midiProperties": {
@@ -212,7 +236,7 @@
 			"value": "class",
 			"subtype": ""
 		},
-		"requirements": "Barbarian 2",
+		"requirements": "Barbarian 1",
 		"activities": {
 			"dnd5eactivity000": {
 				"_id": "dnd5eactivity000",
@@ -291,15 +315,58 @@
 					"prompt": false,
 					"visible": false
 				},
-				"sort": 0
+				"sort": 0,
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"forceDialog": false,
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none"
 			}
 		},
 		"identifier": "",
 		"enchant": {},
 		"prerequisites": {
-			"level": null
+			"level": null,
+			"repeatable": false
 		},
-		"properties": []
+		"properties": [],
+		"advancement": [],
+		"cover": null,
+		"crewed": false
 	},
 	"_key": "!items!W6yKtk7Svvy9dIq9"
 }
