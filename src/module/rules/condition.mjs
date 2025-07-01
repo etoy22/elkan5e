@@ -488,12 +488,12 @@ export async function conditionsReady() {
     
     
     if (conditionsSetting === "a" || conditionsSetting === "d") {
-        console.log("Elkan 5e  |  Conditions before", CONFIG.statusEffects);
+        // console.log("Elkan 5e  |  Conditions before", CONFIG.statusEffects);
         CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => !UNUSED_CONDITIONS.includes(effect.id));
-        console.log("Elkan 5e  |  Conditions after", CONFIG.statusEffects);
+        // console.log("Elkan 5e  |  Conditions after", CONFIG.statusEffects);
     }
     if (conditionsSetting === "a" || conditionsSetting === "b") {
-        console.log("Elkan 5e  |  Adding new conditions");
+        // console.log("Elkan 5e  |  Adding new conditions");
         NEW_STATUS_EFFECTS.forEach(effect => CONFIG.statusEffects.push(effect));
     }
 
