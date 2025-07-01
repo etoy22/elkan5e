@@ -8,10 +8,9 @@ import { feral, rage, wildBlood } from "./module/classes/barbarian.mjs";
 import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
 import { hijackShadow, meldWithShadows, rmvMeldShadow, rmvhijackShadow } from "./module/classes/monk.mjs";
 import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
-import { conditions, icons } from "./module/rules/condition.mjs";
+import { conditions, conditionsReady } from "./module/rules/condition.mjs";
 import { language } from "./module/rules/language.mjs";
 import { formating } from "./module/rules/format.mjs";
-import { references } from "./module/rules/references.mjs";
 import { tools } from "./module/rules/tools.mjs";
 import { weapons } from "./module/rules/weapon.mjs";
 import { scroll } from "./module/rules/scroll.mjs";
@@ -20,7 +19,8 @@ import { slicingBlow } from "./module/classes/rogue.mjs";
 import { sappingSmite } from "./module/spells/sappingSmite.mjs";
 import { spectralEmpowerment } from "./module/classes/wizard.mjs";
 import { enervate, enervateOngoing } from "./module/spells/enervate.mjs";
-// import { sanctuary } from "./module/spells/sanctuary.mjs";
+import { skills } from "./module/rules/skills.mjs";
+import { setupCombatReferences, setupDamageReferences, setupSpellcastingReferences, setupCreatureTypeReferences, setupSkillReferences } from "./module/rules/references.mjs";
 
 
 Hooks.once("init", async () => {
@@ -28,15 +28,20 @@ Hooks.once("init", async () => {
         console.log("Elkan 5e | Initializing Elkan 5e");
         await gameSettingRegister();
         initWarlockSpellSlot();
-        references();
-        tools();
+        // Ensure conditions and icons are initialized before other systems
         conditions();
+        skills();
+        tools();
         weapons();
         armor();
         language();
-        icons();
         formating();
         scroll();
+        setupCombatReferences();
+        setupDamageReferences();
+        setupSpellcastingReferences();
+        setupCreatureTypeReferences();
+        setupSkillReferences();
         console.log("Elkan 5e  |  Done Initializing");
     }
     catch (error) {
@@ -46,7 +51,9 @@ Hooks.once("init", async () => {
 
 Hooks.once('ready', async () => {
     try {
+        conditionsReady()
         startDialog();
+
     } catch (error) {
         console.error("Elkan 5e | Ready Hook Error:", error);
     }
@@ -158,6 +165,105 @@ Hooks.on("updateActor", async (actor, changes) => {
         console.error("Elkan 5e | Error in updateActor hook:", error);
     }
 });
+
+// Register global hook for deleting ActiveEffect
+Hooks.on("deleteActiveEffect", async (deletedEffect, options, userId) => {
+    const actor = deletedEffect.parent;
+    if (!actor) {
+        console.warn("deleteActiveEffect: No actor found for effect.");
+        return;
+    }
+    if (!deletedEffect.name) {
+        console.warn("deleteActiveEffect: Effect name is missing, skipping cleanup.");
+        return;
+    }
+    // Only handle effects created by the goodberry spell (must match the duration naming pattern)
+    const match = deletedEffect.name.match(/^(.*) Duration \(Level (\d+)\)$/);
+    if (!match) return; // Not a goodberry effect, skip
+    const baseName = match[1];
+    const level = parseInt(match[2], 10);
+    if (level === null || isNaN(level)) return; // If level is null or not a number, skip
+    const name = baseName + " (Item)";
+    const item = actor.items.find(i => i.name === name);
+    console.log("deleteActiveEffect: Triggered for name:", deletedEffect.name, "Looking for item:", name, "Found:", !!item, "Level:", level);
+    if (item) {
+        await handleGoodberryItemCleanup(actor, level, item);
+    } else {
+        console.warn("deleteActiveEffect: No matching item found for cleanup.", { name, level });
+    }
+});
+
+
+Hooks.on("deleteItem", async (deletedItem, options, userId) => {
+    const actor = deletedItem.parent;
+    if (!actor) return;
+    // Only handle items created by the goodberry spell (must end with " (Item)")
+    if (!deletedItem.name.endsWith(" (Item)")) return;
+    // Only target effects that match the goodberry duration naming pattern
+    const baseName = deletedItem.name.replace(/ \(Item\)$/, "");
+    const effects = actor.effects.filter(effect =>
+        effect.name &&
+        effect.name.startsWith(baseName) &&
+        / Duration \(Level \d+\)$/.test(effect.name)
+    );
+    if (effects.length === 0) return;
+    for (const effect of effects) {
+        try {
+            if (!await actor.effects.get(effect.id)) continue;
+            await effect.delete();
+            console.log("deleteItem: Deleted effect:", effect.name);
+        } catch (error) {
+            console.error(`Failed to delete effect: ${effect.name}`, error);
+        }
+    }
+});
+
+// Hooks.on("dnd5e.preRollSkill", (rollData, info, options) => {
+//   if (rollData.rolls?.length) {
+//     if (!Array.isArray(rollData.rolls[0].parts)) {
+//       rollData.rolls[0].parts = [];
+//     }
+//     rollData.rolls[0].parts.push("-5");
+//   }
+//   return true;
+// });
+
+// // 1. Pre-roll hook to add nothing or prepare
+// Hooks.on("dnd5e.preRollSkill", (rollData, info, options) => {
+//   // Don't modify anything here since we don't know the result yet
+//   return true;
+// });
+
+// // 2. Post-roll hook to check roll and adjust
+// Hooks.on("dnd5e.rollSkill", async (actor, roll, skillId) => {
+//   const d20 = roll.dice.find(d => d.faces === 20);
+//   if (!d20) return;
+
+//   const result = d20.results[0]?.result;
+//   if (result !== 1) return;  // Only continue if natural 1
+
+//   // Subtract 5 from the natural 1 result
+//   d20.results[0].result -= 5;
+//   d20.results[0]._isModified = true;
+
+//   // Update total
+//   roll._total = roll.total;
+
+//   await roll.toMessage({
+//     flavor: `${actor.name} rolls ${skillId || "a skill check"} (Natural 1: -5 penalty applied)`,
+//     speaker: ChatMessage.getSpeaker({ actor }),
+//   });
+
+//   // Prevent original unmodified roll from posting
+//   return false;
+// });
+
+
+
+
+
+
+
 
 let features = {
     rage: rage,

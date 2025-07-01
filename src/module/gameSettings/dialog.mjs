@@ -189,9 +189,6 @@ export async function getForm() {
         <label><input type='radio' name='actor-features' value='none' checked> ${game.i18n.localize(
 		"elkan5e.updateElkan.form.options.none"
 	)}</label><br>
-        <label><input type='radio' name='actor-features' value='update-All'> ${game.i18n.localize(
-		"elkan5e.updateElkan.form.options.replaceClass"
-	)}</label><br>
         <label><input type='radio' name='actor-features' value='update-Elkan'> ${game.i18n.localize(
 		"elkan5e.updateElkan.form.options.replaceFeatures"
 	)}</label>
