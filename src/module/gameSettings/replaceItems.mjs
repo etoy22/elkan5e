@@ -3,17 +3,17 @@ const { getProperty, setProperty } = foundry.utils;
 // Process the form selections from the Elkan update dialog
 export async function processElkanUpdateForm(updates) {
 	migrateActorItems({
-		players: updates.playerItems,
+		players: updates.actorItems,
 		npcs: updates.npcItems
 	});
 
 	migrateActorSpells({
-		players: updates.playerSpells,
+		players: updates.actorSpells,
 		npcs: updates.npcSpells
 	});
 
 	migrateActorFeatures({
-		players: updates.playerFeatures,
+		players: updates.actorFeatures,
 		npcs: updates.npcFeatures
 	});
 
