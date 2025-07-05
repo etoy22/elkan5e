@@ -100,37 +100,67 @@ export async function deleteEffectRemoveEffect(
 }
 
 export async function drainedEffect(actor, damage, name, img, uuid) {
-	const drained = {
-		_id: randomID(),
-		changes: [
-			{
-				key: "system.attributes.hp.tempmax",
-				mode: 2,
-				value: "-" + damage,
-				priority: 20,
+	const effectName = name || "Drained";
+	const effectImg = img || "modules/elkan5e/icons/drained.svg";
+	const effectOrigin = uuid || null;
+
+	const existingEffect = actor.effects.find(e =>
+		e.name === effectName &&
+		e.img === effectImg &&
+		e.origin === effectOrigin
+	);
+
+	const newValue = -Math.abs(damage); // Ensure negative number
+
+	if (existingEffect) {
+		const updatedChanges = existingEffect.changes.map(change => {
+			if (change.key === "system.attributes.hp.tempmax") {
+				// Parse the old value (as string), add newValue
+				const oldVal = parseFloat(change.value) || 0;
+				const combinedValue = oldVal + newValue;
+
+				return {
+					...change,
+					value: combinedValue.toString()
+				};
+			}
+			return change;
+		});
+
+		await existingEffect.update({ changes: updatedChanges });
+	} else {
+		const drained = {
+			_id: foundry.utils.randomID(),
+			changes: [
+				{
+					key: "system.attributes.hp.tempmax",
+					mode: 2,
+					value: newValue.toString(),
+					priority: 20,
+				},
+			],
+			disabled: false,
+			origin: effectOrigin,
+			name: effectName,
+			img: effectImg,
+			type: "base",
+			statuses: ["drained"],
+			flags: {
+				dae: {
+					enableCondition: "",
+					disableCondition: "",
+					disableIncapacitated: false,
+					selfTarget: false,
+					selfTargetAlways: false,
+					dontApply: false,
+					stackable: "multi",
+					showIcon: false,
+					durationExpression: "",
+					macroRepeat: "none",
+					specialDuration: ["longRest"],
+				},
 			},
-		],
-		disabled: false,
-		origin: uuid || null,
-		name: name || "Drained",
-		img: img || "modules/elkan5e/icons/drained.svg",
-		type: "base",
-		statuses: ["drained"],
-		flags: {
-			dae: {
-				enableCondition: "",
-				disableCondition: "",
-				disableIncapacitated: false,
-				selfTarget: false,
-				selfTargetAlways: false,
-				dontApply: false,
-				stackable: "multi",
-				showIcon: false,
-				durationExpression: "",
-				macroRepeat: "none",
-				specialDuration: ["longRest"],
-			},
-		},
-	};
-	await actor.createEmbeddedDocuments("ActiveEffect", [drained]);
+		};
+		await actor.createEmbeddedDocuments("ActiveEffect", [drained]);
+	}
 }

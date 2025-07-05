@@ -2,89 +2,13 @@
 	"name": "Slicing Blow",
 	"type": "feat",
 	"img": "icons/skills/melee/strike-sword-blood-red.webp",
-	"effects": [
-		{
-			"name": "Drained",
-			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.4gScyLipKHRE6iRC",
-			"changes": [
-				{
-					"key": "system.attributes.hp.tempmax",
-					"mode": 2,
-					"value": "-@damage",
-					"priority": 20
-				}
-			],
-			"transfer": false,
-			"flags": {
-				"dae": {
-					"itemName": "Slicing Blow",
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"stackable": "multi",
-					"showIcon": true,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": [
-						"longRest"
-					],
-					"enableCondition": "",
-					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
-				},
-				"core": {
-					"overlay": false
-				},
-				"dnd5e": {
-					"riders": {
-						"statuses": []
-					}
-				}
-			},
-			"_id": "gUjSMEHjXUy63n2a",
-			"disabled": false,
-			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
-			},
-			"description": "",
-			"statuses": [],
-			"tint": "#ffffff",
-			"img": "modules/elkan5e/icons/conditions/drained.svg",
-			"type": "base",
-			"system": {},
-			"sort": 0,
-			"_key": "!items.effects!4gScyLipKHRE6iRC.gUjSMEHjXUy63n2a"
-		}
-	],
+	"effects": [],
 	"folder": "g6svgOX6AsUIjZW3",
 	"flags": {
 		"core": {},
 		"midi-qol": {
 			"effectActivation": false,
-			"onUseMacroName": "",
+			"onUseMacroName": "[postActiveEffects]ItemMacro",
 			"rollAttackPerTarget": "default",
 			"removeAttackDamageButtons": "default",
 			"itemCondition": "",
@@ -124,6 +48,32 @@
 		"tidy5e-sheet": {
 			"section": "",
 			"actionSection": ""
+		},
+		"dae": {
+			"macro": {
+				"name": "Slicing Blow",
+				"img": "icons/skills/melee/strike-sword-blood-red.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "return await elkan5e.macros.features.slicingBlow(workflow);",
+				"author": "vHqSHJMdmEO6Mk2C",
+				"ownership": {
+					"default": 3
+				},
+				"_id": null,
+				"folder": null,
+				"sort": 0,
+				"flags": {},
+				"_stats": {
+					"coreVersion": "13.346",
+					"systemId": "dnd5e",
+					"systemVersion": "5.0.4",
+					"lastModifiedBy": null,
+					"compendiumSource": null,
+					"duplicateSource": null,
+					"exportSource": null
+				}
+			}
 		}
 	},
 	"system": {

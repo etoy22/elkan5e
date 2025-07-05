@@ -11,13 +11,12 @@ export async function secondWind(workflow) {
  * @param {object} activity - The activity performed.
  */
 export async function persistentLeader(actor) {
-    if (actor.items.find(i => i.name === "Persistent Leader")) {
-        const rallyFeature = actor.items.find(i => i.name === "Rally");
+    if (actor.items.find(i => i.system.identifier === "persistent-leader")) {
+        const rallyFeature = actor.items.find(i => i.system.identifier === "rally");
 
         if (rallyFeature) {
             rallyFeature.update({ "system.uses.spent": Math.max(rallyFeature.system.uses.spent - 1, 0) })
         }
-
 
         if (game.user.isGM || actor.isOwner) {
             ui.notifications.notify(game.i18n.format("elkan5e.notifications.PersistentLeader", { name: actor.name }));
@@ -32,7 +31,7 @@ export async function persistentLeader(actor) {
  * @param {object} activity - The activity performed.
  */
 export async function rallySurge(actor) {
-    if (actor.items.find(i => i.name === "Rallying Surge")) {
+    if (actor.items.find(i => i.system.identifier === "rallying-surge")) {
         if (game.user.isGM || actor.isOwner) {
             ui.notifications.notify(game.i18n.format("elkan5e.notifications.RallyingSurge", { name: actor.name }));
         }

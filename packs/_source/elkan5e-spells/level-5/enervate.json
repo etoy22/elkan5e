@@ -6,9 +6,8 @@
 	"img": "icons/magic/death/skeleton-skull-soul-blue.webp",
 	"system": {
 		"activities": {
-			"Sj8xNlBnRWgk5nbK": {
+			"GNkzznGWTTfmfqr1": {
 				"type": "save",
-				"_id": "Sj8xNlBnRWgk5nbK",
 				"sort": 0,
 				"activation": {
 					"type": "action",
@@ -32,24 +31,24 @@
 				},
 				"effects": [
 					{
-						"_id": "2ageNmPyfzB4UlN2",
-						"onSave": true
-					},
-					{
 						"_id": "3eQ3jQzQHQ9LVYkC",
 						"onSave": false
 					}
 				],
 				"range": {
-					"override": false
+					"override": false,
+					"units": "self"
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
 					"override": false,
-					"prompt": true
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					}
 				},
 				"uses": {
 					"spent": 0,
@@ -76,26 +75,73 @@
 							}
 						}
 					],
-					"onSave": "half"
+					"onSave": "half",
+					"critical": {
+						"allow": false
+					}
 				},
 				"save": {
-					"ability": "con",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
 					}
 				},
 				"useConditionText": "",
-				"forceDialog": false,
 				"effectConditionText": "",
 				"name": "Initial Casting (Use First)",
+				"macroData": {
+					"name": "Initial Casting (Use First)",
+					"command": "return await elkan5e.macros.spells.enervate(workflow);"
+				},
+				"useConditionReason": "",
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"forceDialog": false,
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffects": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"friendlySave": "default",
+				"_id": "GNkzznGWTTfmfqr1",
 				"img": "",
 				"appliedEffects": [
-					"2ageNmPyfzB4UlN2",
 					"3eQ3jQzQHQ9LVYkC"
 				]
 			},
-			"jSU8vhBTZWfQqp6p": {
+			"FIGGLJuUjOoFegXD": {
 				"type": "save",
 				"sort": 0,
 				"activation": {
@@ -119,22 +165,21 @@
 					"concentration": false,
 					"override": true
 				},
-				"effects": [
-					{
-						"_id": "2ageNmPyfzB4UlN2",
-						"onSave": false
-					}
-				],
+				"effects": [],
 				"range": {
-					"override": false
+					"override": false,
+					"units": "self"
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
 					"override": false,
-					"prompt": true
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					}
 				},
 				"uses": {
 					"spent": 0,
@@ -149,7 +194,7 @@
 								"formula": ""
 							},
 							"number": 4,
-							"denomination": "10",
+							"denomination": 10,
 							"bonus": "",
 							"types": [
 								"necrotic"
@@ -161,28 +206,68 @@
 							}
 						}
 					],
-					"onSave": "none"
+					"onSave": "none",
+					"critical": {
+						"allow": false
+					}
 				},
 				"save": {
-					"ability": "con",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
 					}
 				},
-				"useConditionText": "effects.some(eff=>eff.name===\"Enervate (Ongoing)\")",
-				"forceDialog": false,
+				"useConditionText": "",
 				"effectConditionText": "",
-				"name": "",
-				"_id": "jSU8vhBTZWfQqp6p",
-				"img": "",
-				"appliedEffects": [
-					"2ageNmPyfzB4UlN2"
-				],
-				"isOverTimeFlag": false,
+				"name": "Ongoing Damage",
+				"isOverTimeFlag": true,
 				"overTimeProperties": {
-					"turnChoice": "end"
-				}
+					"turnChoice": "end",
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"macroData": {
+					"name": "Midi Save",
+					"command": "return await elkan5e.macros.spells.enervateOngoing(workflow);"
+				},
+				"useConditionReason": "",
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"forceDialog": false,
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffects": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"otherActivityId": "none",
+				"friendlySave": "default",
+				"_id": "FIGGLJuUjOoFegXD"
 			}
 		},
 		"uses": {
@@ -250,73 +335,6 @@
 	},
 	"effects": [
 		{
-			"name": "Drained",
-			"origin": "Compendium.elkan5e.elkan5e-spells.Item.RSKUzHAckpwb1wR2",
-			"changes": [
-				{
-					"key": "system.attributes.hp.tempmax",
-					"mode": 2,
-					"value": "-@damage",
-					"priority": 20
-				}
-			],
-			"transfer": false,
-			"flags": {
-				"dae": {
-					"itemName": "Enervate",
-					"disableCondition": "",
-					"disableIncapacitated": false,
-					"stackable": "multi",
-					"showIcon": false,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": [],
-					"enableCondition": "",
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false
-				},
-				"core": {
-					"overlay": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
-				}
-			},
-			"img": "modules/elkan5e/icons/conditions/drained.svg",
-			"_id": "2ageNmPyfzB4UlN2",
-			"type": "base",
-			"system": {},
-			"disabled": false,
-			"duration": {
-				"startTime": null,
-				"seconds": 0,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"statuses": [],
-			"sort": 0,
-			"_key": "!items.effects!RSKUzHAckpwb1wR2.2ageNmPyfzB4UlN2"
-		},
-		{
 			"name": "Enervate (Ongoing)",
 			"img": "icons/magic/death/skeleton-skull-soul-blue.webp",
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.RSKUzHAckpwb1wR2",
@@ -324,7 +342,14 @@
 			"_id": "3eQ3jQzQHQ9LVYkC",
 			"type": "base",
 			"system": {},
-			"changes": [],
+			"changes": [
+				{
+					"key": "flags.midi-qol.ActivityOverTime",
+					"mode": 2,
+					"value": "ongoing-damage",
+					"priority": 20
+				}
+			],
 			"disabled": false,
 			"duration": {
 				"startTime": null,
@@ -358,7 +383,7 @@
 				},
 				"ActiveAuras": {
 					"isAura": false,
-					"aura": "None",
+					"aura": "Enemy",
 					"nameOverride": "",
 					"radius": "",
 					"alignment": "",
@@ -370,7 +395,13 @@
 					"displayTemp": false,
 					"hostile": false,
 					"onlyOnce": false,
-					"wallsBlock": "system"
+					"wallsBlock": "system",
+					"statuses": []
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
 				}
 			},
 			"_key": "!items.effects!RSKUzHAckpwb1wR2.3eQ3jQzQHQ9LVYkC"
@@ -399,7 +430,8 @@
 			"reactionCondition": "",
 			"effectCondition": "",
 			"removeAttackDamageButtons": "default",
-			"otherCondition": ""
+			"otherCondition": "",
+			"onUseMacroName": "[postActiveEffects]ActivityMacro-GNkzznGWTTfmfqr1,[postActiveEffects]ActivityMacro-FIGGLJuUjOoFegXD"
 		},
 		"dnd5e": {
 			"riders": {

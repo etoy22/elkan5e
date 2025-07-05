@@ -1,37 +1,35 @@
 import { drainedEffect } from "../global.mjs";
 
 export async function spectralEmpowerment(workflow) {
-	const target = workflow?.args?.[0]?.hitTargets?.[0];
-	if (!target) return;
+	const caster = workflow.actor;
+	const casterToken = workflow.token;
+	const casterUuid = workflow.token.actor.uuid;
 
-	const actor = target.actors?.contents?.[0];
-	if (!actor) return;
-
-	let damage = workflow.args[0].damageTotal;
-	const damageType = "necrotic";
-
-	// Check damage traits
-	const di = actor.system.traits.di.value || [];
-	const dr = actor.system.traits.dr.value || [];
-	const dv = actor.system.traits.dv.value || [];
-
-	if (di.includes(damageType)) {
-		return; // Immune to this damage type, no effect
-	} else {
-		if (dr.includes(damageType)) {
-			// Resistant: half damage
-			damage = Math.floor(damage / 2);
-		}
-		if (dv.includes(damageType)) {
-			// Vulnerable: double damage
-			damage = damage * 2;
-		}
+	if (!caster || !casterToken) {
+		console.warn("Spectral Empowerment aborted: missing actor or actorToken");
+		return;
 	}
-	drainedEffect(
-		target,
-		damage,
-		"Sapping Smite",
-		"icons/weapons/polearms/spear-flared-silver-pink.webp",
-		workflow.item?.uuid
-	);
-}
+	for (const dmgEntry of workflow.damageList) {
+		const damage = (dmgEntry.tempDamage ?? 0) + (dmgEntry.hpDamage ?? 0);
+		if (damage <= 0 || !dmgEntry.isHit) continue;
+
+		if (!dmgEntry.targetUuid) {
+			console.warn("Spectral Empowerment: damageList entry missing targetUuid", dmgEntry);
+			continue;
+		}
+
+		const parts = dmgEntry.targetUuid.split(".");
+		if (parts.length < 4) {
+			console.warn("Spectral Empowerment: Invalid targetUuid format", dmgEntry.targetUuid);
+			continue;
+		}
+		const tokenId = parts[3];
+		const targetToken = canvas.tokens.get(tokenId);
+		if (!targetToken) {
+			console.warn(`Spectral Empowerment: Token with ID ${tokenId} not found on canvas`);
+			continue;
+		}
+
+		await drainedEffect(targetToken.actor, damage, "Spectral Empowerment", "icons/magic/unholy/strike-hand-glow-pink.webp", casterUuid);
+	}
+	}

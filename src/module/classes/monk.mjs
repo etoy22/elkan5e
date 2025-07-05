@@ -1,4 +1,5 @@
 import { deleteEffectRemoveEffect } from '../global.mjs';
+const DialogV2 = foundry.applications.api.DialogV2;
 
 /**
  * Handle the "Meld with Shadows" effect for the given actor.
@@ -50,7 +51,8 @@ export async function meldWithShadows(workflow) {
 }
 
 export async function emptyBody(actor) {
-    if (actor.items.find(i => i.name === game.i18n.localize("elkan5e.monk.emptyBody"))) {
+    if (!actor.isOwner ) return;
+    if (actor.items.find(i => i.system.identifier === "empty-body")) {
         const emptyBody = {
             "_id": "4dvYtqvbQGDsVi51",
             "changes": [
@@ -67,24 +69,14 @@ export async function emptyBody(actor) {
             "img": "icons/magic/perception/silhouette-stealth-shadow.webp",
             "type": "base"
         };
-
-        new Dialog({
-            title: game.i18n.localize("elkan5e.dialog.emptyBodyTitle"),
-            content: `<p>${game.i18n.localize("elkan5e.dialog.emptyBodyContent")}</p>`,
-            buttons: {
-                yes: {
-                    icon: "<i class='fas fa-check'></i>",
-                    label: game.i18n.localize("elkan5e.dialog.yes"),
-                    callback: async () => {
-                        await actor.createEmbeddedDocuments("ActiveEffect", [emptyBody]);
-                    }
-                },
-                no: {
-                    icon: "<i class='fas fa-times'></i>",
-                    label: game.i18n.localize("elkan5e.dialog.no")
-                }
-            },
-            default: "no"
-        }).render(true);
+        let confirm = await DialogV2.confirm({
+            window: { title: game.i18n.localize("elkan5e.monk.emptyBodyTitle") },
+            content: `<p>${game.i18n.localize("elkan5e.monk.emptyBodyContent")}</p>`,
+            rejectClose: false,
+            modal: true
+        });
+        if (confirm) {
+            await actor.createEmbeddedDocuments("ActiveEffect", [emptyBody]);
+        }
     }
 }

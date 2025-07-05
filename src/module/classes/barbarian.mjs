@@ -1,33 +1,16 @@
-/**
- * Adds functionality to Feral Instincts and Improved Feral Instincts.
- *   @param {object} actor - The actor instance.
- */
-export function feral(actor) {
-    const RAGE = actor.items.find(i => i.name === "Rage");
-
-    // Set the default notification message
-    let notification = "elkan5e.notifications.FeralInstincts";
-
-    // Check if the actor has Feral Instincts or Improved Feral Instincts
-    if (RAGE && (actor.items.find(i => i.name === "Feral Instinct") || actor.items.find(i => i.name === "Improved Feral Instincts"))) {
-        if (actor.items.find(i => i.name === "Improved Feral Instincts")) {
-            notification = "elkan5e.notifications.ImprovedFeralInstincts";
-        }
-
-        let uses = RAGE.system.uses.max - RAGE.system.uses.spent;
-        if (uses > 0 && actor.isOwner) {
-            ui.notifications.notify(game.i18n.format(notification, { name: actor.name }));
-        }
-    }
-}
+const DialogV2 = foundry.applications.api.DialogV2;
 
 export async function rage(workflow) {
     console.log("Elkan 5e | Rage triggered");
     const actor = workflow.actor;
     let notification = "elkan5e.notifications.FeralInstinctsMove";
-    if ((actor.items.find(i => i.name === "Feral Instinct") || actor.items.find(i => i.name === "Improved Feral Instincts"))) {
-        // console.log("Feral Instincts or Improved Feral Instincts found");
-        if (actor.items.find(i => i.name === "Improved Feral Instincts")) {
+
+    // Use system.identifier instead of name
+    const hasFeral = actor.items.find(i => i.system.identifier === "feral-instinct");
+    const hasImproved = actor.items.find(i => i.system.identifier === "improved-feral-instincts");
+
+    if (hasFeral || hasImproved) {
+        if (hasImproved) {
             notification = "elkan5e.notifications.ImprovedFeralInstinctsMove";
         }
         if (actor.isOwner) {
@@ -35,6 +18,7 @@ export async function rage(workflow) {
         }
     }
 }
+
 
 
 export async function wildBlood(workflow) {
@@ -64,22 +48,11 @@ export async function wildBlood(workflow) {
 
     if (["Prismatic Bolt", "Mirror Image", "Blink", "Confusion", "Prismatic Spray"].includes(item.name)) {
 
-        let confirmed = await new Promise((resolve) => {
-            new Dialog({
-                title: "Wild Surge",
-                content: `<p>Do you want to trigger a Wild Surge?</p>`,
-                buttons: {
-                    yes: {
-                        label: "Yes",
-                        callback: () => resolve(true)
-                    },
-                    no: {
-                        label: "No",
-                        callback: () => resolve(false)
-                    }
-                },
-                default: "no"
-            }).render(true);
+        let confirmed = await DialogV2.confirm({
+            window: { title: game.i18n.localize("elkan5e.barbarian.wildBloodTitle") },
+            content: `<p>${game.i18n.localize("elkan5e.barbarian.wildBloodContent")}</p>?`,
+            rejectClose: false,
+            modal: true
         });
 
         if (!confirmed) return;
