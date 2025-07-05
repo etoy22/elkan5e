@@ -146,77 +146,7 @@
 		},
 		"identifier": ""
 	},
-	"effects": [
-		{
-			"name": "Drained",
-			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.NHBuZoE6zh4mAHri",
-			"changes": [
-				{
-					"key": "system.attributes.hp.tempmax",
-					"mode": 2,
-					"value": "-@damage",
-					"priority": 20
-				}
-			],
-			"transfer": false,
-			"flags": {
-				"dae": {
-					"itemName": "Sapping Smite",
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"stackable": "multi",
-					"showIcon": true,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": [
-						"longRest"
-					],
-					"enableCondition": "",
-					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
-				},
-				"core": {
-					"overlay": false
-				}
-			},
-			"_id": "pzrkC7EHiex1BACP",
-			"disabled": false,
-			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
-			},
-			"description": "",
-			"statuses": [],
-			"tint": "#ffffff",
-			"img": "modules/elkan5e/icons/conditions/drained.svg",
-			"type": "base",
-			"system": {},
-			"sort": 0,
-			"_key": "!items.effects!NHBuZoE6zh4mAHri.pzrkC7EHiex1BACP"
-		}
-	],
+	"effects": [],
 	"flags": {
 		"midiProperties": {
 			"confirmTargets": "default",
@@ -243,7 +173,8 @@
 			"reactionCondition": "",
 			"AoETargetType": "any",
 			"autoTarget": "default",
-			"otherCondition": ""
+			"otherCondition": "",
+			"onUseMacroName": "[postActiveEffects]ItemMacro"
 		},
 		"dnd5e": {
 			"riders": {
@@ -254,6 +185,32 @@
 		"tidy5e-sheet": {
 			"section": "",
 			"actionSection": ""
+		},
+		"dae": {
+			"macro": {
+				"name": "Sapping Smite",
+				"img": "icons/weapons/polearms/spear-flared-silver-pink.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "let workflow = { speaker, actor, token, character, item, args }\nreturn await elkan5e.macros.spells.sappingSmite(workflow);",
+				"author": "vHqSHJMdmEO6Mk2C",
+				"ownership": {
+					"default": 3
+				},
+				"_id": null,
+				"folder": null,
+				"sort": 0,
+				"flags": {},
+				"_stats": {
+					"coreVersion": "13.346",
+					"systemId": "dnd5e",
+					"systemVersion": "5.0.4",
+					"lastModifiedBy": null,
+					"compendiumSource": null,
+					"duplicateSource": null,
+					"exportSource": null
+				}
+			}
 		}
 	},
 	"_key": "!items!NHBuZoE6zh4mAHri"

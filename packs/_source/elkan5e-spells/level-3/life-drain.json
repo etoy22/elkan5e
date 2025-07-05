@@ -2,75 +2,7 @@
 	"name": "Life Drain",
 	"type": "spell",
 	"img": "icons/magic/control/debuff-energy-hold-green.webp",
-	"effects": [
-		{
-			"name": "Drained",
-			"origin": "Compendium.elkan5e.elkan5e-spells.Item.seKEwAbEZFBi6GWb",
-			"changes": [
-				{
-					"key": "system.attributes.hp.tempmax",
-					"mode": 2,
-					"value": "-@damage",
-					"priority": 20
-				}
-			],
-			"transfer": false,
-			"flags": {
-				"dae": {
-					"itemName": "Life Drain",
-					"enableCondition": "",
-					"disableCondition": "",
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"stackable": "multi",
-					"showIcon": true,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
-				},
-				"core": {
-					"overlay": false
-				}
-			},
-			"img": "modules/elkan5e/icons/conditions/drained.svg",
-			"_id": "IJZL8FRw8X61ZipV",
-			"type": "base",
-			"system": {},
-			"disabled": false,
-			"duration": {
-				"startTime": null,
-				"seconds": 0,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"statuses": [],
-			"sort": 0,
-			"_key": "!items.effects!seKEwAbEZFBi6GWb.IJZL8FRw8X61ZipV"
-		}
-	],
+	"effects": [],
 	"folder": "Tf2FNuyyu2gEaYOF",
 	"flags": {
 		"core": {},
@@ -117,8 +49,8 @@
 				"img": "icons/magic/control/debuff-energy-hold-green.webp",
 				"type": "script",
 				"scope": "global",
-				"command": "const {damage,damageMultiplier} = workflow.damageItem.damageDetail[0].find(d=>d.type === 'necrotic') || {};\nif (damage && workflow.hitTargets.size === 1) {\n  const dmgToApply = Math.floor(damage * damageMultiplier /2);\n  await MidiQOL.applyTokenDamage([{\n        damage: dmgToApply,\n        type: 'healing',\n        flavor:'Life Steal'\n    }], dmgToApply, new Set([token]), null, null);\n}",
-				"author": "3Yi0HjF4PKCA4vX0",
+				"command": "return await elkan5e.macros.spells.lifeDrain(workflow);",
+				"author": "vHqSHJMdmEO6Mk2C",
 				"ownership": {
 					"default": 3
 				},
@@ -127,14 +59,15 @@
 				"sort": 0,
 				"flags": {},
 				"_stats": {
-					"coreVersion": "12.330",
+					"coreVersion": "13.346",
 					"systemId": "dnd5e",
-					"systemVersion": "3.3.1",
+					"systemVersion": "5.0.4",
 					"createdTime": null,
 					"modifiedTime": null,
 					"lastModifiedBy": null,
 					"compendiumSource": null,
-					"duplicateSource": null
+					"duplicateSource": null,
+					"exportSource": null
 				}
 			}
 		},

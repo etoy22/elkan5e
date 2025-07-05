@@ -120,7 +120,7 @@ export async function startDialog() {
 	const DIALOG_SHOWN = game.settings.get("elkan5e", "dialogShown");
 	const MODULE_VERSION = await getModuleVersion();
 	let saved_version = SAVED_VERSION.split('.');
-	if (SAVED_VERSION !== MODULE_VERSION || !DIALOG_SHOWN || true) {
+	if (SAVED_VERSION !== MODULE_VERSION || !DIALOG_SHOWN) {
 		let content = `
 				<h2>${game.i18n.localize("elkan5e.dialog.content.header")}</h2>
 				<p>${game.i18n.localize("elkan5e.dialog.content.headerText")}</p>
@@ -168,13 +168,13 @@ export async function startDialog() {
 
 		if (entryDialog == "choice") {
 			await game.settings.set("elkan5e", "dialogShown", false)
-			if ((saved_version[0] < 13 && MODULE_VERSION.split(".")[0] >= 13) || game.settings.get("elkan5e", "v13Show") || true) {
+			if ((saved_version[0] < 13 && MODULE_VERSION.split(".")[0] >= 13) || game.settings.get("elkan5e", "v13Show")) {
 				showV13UpdateDialog();
 			}
 			await game.settings.set("elkan5e", "moduleVersion", MODULE_VERSION);
 		}
 		else {
-			if ((saved_version[0] < 13 && MODULE_VERSION.split(".")[0] >= 13) || game.settings.get("elkan5e", "v13Show") || true) {
+			if ((saved_version[0] < 13 && MODULE_VERSION.split(".")[0] >= 13) || game.settings.get("elkan5e", "v13Show")) {
 				showV13UpdateDialog();
 			}
 			await game.settings.set("elkan5e", "moduleVersion", MODULE_VERSION);

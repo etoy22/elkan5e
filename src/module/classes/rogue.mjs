@@ -1,39 +1,35 @@
 import { drainedEffect } from "../global.mjs";
 
 export async function slicingBlow(workflow) {
-	const target = workflow?.args?.[0]?.hitTargets?.[0];
-	if (!target) return;
+	const caster = workflow.actor;
+	const casterToken = workflow.token;
+	const casterUuid = workflow.token.actor.uuid;
 
-	const actor = target.actors?.contents?.[0];
-	if (!actor) return;
-
-	let damage = workflow.args[0].damageTotal;
-	const damageType = "slashing";
-
-	// Check damage traits
-	const di = actor.system.traits.di.value || [];
-	const dr = actor.system.traits.dr.value || [];
-	const dv = actor.system.traits.dv.value || [];
-
-	if (di.includes(damageType)) {
-		return; // Immune to this damage type, no effect
-	} else {
-		if (dr.includes(damageType)) {
-			// Resistant: half damage
-			damage = Math.floor(damage / 2);
-		}
-		if (dv.includes(damageType)) {
-			// Vulnerable: double damage
-			damage = damage * 2;
-		}
+	if (!caster || !casterToken) {
+		console.warn("Slicing Blow aborted: missing actor or actorToken");
+		return;
 	}
-	if (damage <= 0) return; // No damage to apply
+	for (const dmgEntry of workflow.damageList) {
+		const damage = (dmgEntry.hpDamage ?? 0);
+		if (damage <= 0) continue;
 
-	await drainedEffect(
-		target,
-		damage,
-		"Slicing Blow",
-		"icons/skills/melee/strike-sword-blood-red.webp",
-		workflow.item?.uuid
-	);
+		if (!dmgEntry.targetUuid) {
+			console.warn("Slicing Blow: damageList entry missing targetUuid", dmgEntry);
+			continue;
+		}
+
+		const parts = dmgEntry.targetUuid.split(".");
+		if (parts.length < 4) {
+			console.warn("Slicing Blow: Invalid targetUuid format", dmgEntry.targetUuid);
+			continue;
+		}
+		const tokenId = parts[3];
+		const targetToken = canvas.tokens.get(tokenId);
+		if (!targetToken) {
+			console.warn(`Slicing Blow: Token with ID ${tokenId} not found on canvas`);
+			continue;
+		}
+
+		await drainedEffect(targetToken.actor, damage, "Slicing Blow", "icons/skills/melee/strike-sword-blood-red.webp", casterUuid);
+	}
 }

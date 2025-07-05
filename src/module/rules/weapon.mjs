@@ -5,7 +5,7 @@ export function weapons() {
     console.log("Elkan 5e  |  Initializing Weapons");
     // Weapon Properties
     const NEW_PROPERTIES = {
-        coldIron: { label: "Cold Iron", isPhysical: "true" },
+        coldIron: { label: "Cold Iron", isPhysical: true },
         conc: { label: "Concussive" },
         mou: { label: "Mounted" },
         unw: { label: "Unwieldy" }
@@ -80,8 +80,6 @@ export function weapons() {
                     console.warn(`Elkan 5e | Failed to delete weapon ID for '${weapon}':`, e);
                 }
             });
-            CONFIG.DND5E.weaponIds["pistol"] = "Compendium.elkan5e.elkan5e-equipment.Item.O7abmlrF4raTjnkr";
-            CONFIG.DND5E.weaponIds["musket"] = "Compendium.elkan5e.elkan5e-equipment.Item.IUIwCZtPbwMwB0b1";
         }
     } catch (e) {
         console.warn("Elkan 5e | Failed to update weapon IDs based on settings:", e);

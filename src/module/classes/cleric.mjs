@@ -1,3 +1,5 @@
+const DialogV2 = foundry.applications.api.DialogV2;
+
 export async function infusedHealer(workflow) {
     // Bail if not a healing spell of 1st level or higher
     let item = workflow.item;
@@ -34,7 +36,7 @@ export async function infusedHealer(workflow) {
  *   @param {object} roll - The resulting roll.
  */
 export function healOver(item, roll) {
-    if (activity.type === "heal" && actor.items.find(i => i.name === "Healing Overflow")) {
+    if (activity.type === "heal" && actor.items.find(i => i.system.identifier === "healing-overflow")) {
         const remainingHealth = item.actor.system.attributes.hp.max - item.actor.system.attributes.hp.value;
         const overflow = roll.total - remainingHealth;
         if (overflow > 0) {
@@ -113,22 +115,25 @@ export async function healingOverflow(workflow) {
 
     const damageRoll = await new Roll(`${maxOverflow}`, {}, { type: "healing" }).evaluate({ async: true });
 
-    new Dialog({
-        title: "Healing Overflow",
+    new DialogV2({
+        window: { title: "Healing Overflow" },
         content,
-        buttons: {
-            ok: {
+        buttons: [
+            {
+                action: "ok",
                 label: "Apply",
-                callback: async (html) => {
-                    const targetId = html.find("#overflow-target").val();
+                callback: async (event, button, dialog) => {
+                    const targetId = button.form.querySelector("#overflow-target")?.value;
                     const recipient = canvas.tokens.get(targetId);
                     if (!recipient) return;
-
-                    new MidiQOL.DamageOnlyWorkflow(caster, casterToken, damageRoll.total, "healing", [recipient], damageRoll, { itemData, flavor: `Healing Overflow` });
+                    new MidiQOL.DamageOnlyWorkflow(caster, casterToken, damageRoll.total, "healing", [recipient], damageRoll, { itemData, flavor: "Healing Overflow" });
                 }
             },
-            cancel: { label: "Cancel" }
-        },
-        default: "ok"
+            {
+                action: "cancel",
+                label: "Cancel",
+                default: true
+            }
+        ]
     }).render(true);
 }

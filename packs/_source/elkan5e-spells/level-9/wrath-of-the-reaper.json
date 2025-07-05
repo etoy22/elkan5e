@@ -4,7 +4,7 @@
 	"img": "icons/magic/death/weapon-scythe-rune-green.webp",
 	"system": {
 		"description": {
-			"value": "<p><em>With but a single word, you call upon the power of death. A scythe descends upon your target. There is no avoiding it.</em></p><p><strong>Constitution</strong> <strong>Save</strong> </p><p>This spell has no effect on unliving &amp;reference[construct].</p><ul><li><p><strong>Failure:</strong> Target takes damage equal to half their maximum hit points, up to a maximum of 100. If the target has already had their maximum hit points reduced by something else, this is half of their original hit point maximum. Target's maximum hit points are reduced by the amount of damage taken until they next finish a long rest.</p></li><li><p><strong>Success:</strong> Target takes the same damage, but their hit point maximum is not reduced.</p></li></ul>",
+			"value": "<p><em>With but a single word, you call upon the power of death. A scythe descends upon your target. There is no avoiding it.</em></p><p><strong>Constitution</strong> <strong>Save</strong></p><p>This spell has no effect on unliving &amp;reference[construct].</p><ul><li><p><strong>Failure:</strong> Target takes damage equal to half their maximum hit points, up to a maximum of 100. If the target has already had their maximum hit points reduced by something else, this is half of their original hit point maximum. Target's maximum hit points are reduced by the amount of damage taken until they next finish a long rest.</p></li><li><p><strong>Success:</strong> Target takes the same damage, but their hit point maximum is not reduced.</p></li></ul>",
 			"chat": "<p><strong>Constitution</strong> <strong>Save</strong></p><p>This spell has no effect on unliving &amp;reference[construct].</p><ul><li><p><strong>Failure:</strong> Target takes damage equal to half their maximum hit points, up to a maximum of 100. If the target has already had their maximum hit points reduced by something else, this is half of their original hit point maximum. Target's maximum hit points are reduced by the amount of damage taken until they next finish a long rest.</p></li><li><p><strong>Success:</strong> Target takes the same damage, but their hit point maximum is not reduced.</p></li></ul>"
 		},
 		"source": {
@@ -89,12 +89,7 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [
-					{
-						"_id": "UvXbDbz0tcYCQmpY",
-						"onSave": false
-					}
-				],
+				"effects": [],
 				"range": {
 					"override": false
 				},
@@ -112,20 +107,19 @@
 					"recovery": []
 				},
 				"damage": {
-					"onSave": "half",
+					"onSave": "full",
 					"parts": [
 						{
 							"custom": {
 								"enabled": true,
-								"formula": "100"
+								"formula": "0"
 							},
 							"number": null,
 							"denomination": null,
 							"bonus": "",
 							"types": [],
 							"scaling": {
-								"mode": "",
-								"number": 1
+								"mode": ""
 							}
 						}
 					]
@@ -140,84 +134,12 @@
 				"sort": 0,
 				"name": "",
 				"img": "",
-				"appliedEffects": [
-					"UvXbDbz0tcYCQmpY"
-				]
+				"appliedEffects": []
 			}
 		},
 		"identifier": ""
 	},
-	"effects": [
-		{
-			"name": "Drained",
-			"origin": "Compendium.elkan5e.elkan5e-spells.Item.JYaFgQJNk0MF2a6S",
-			"changes": [
-				{
-					"key": "system.attributes.hp.tempmax",
-					"mode": 2,
-					"value": "-@damage",
-					"priority": 20
-				}
-			],
-			"transfer": false,
-			"flags": {
-				"dae": {
-					"itemName": "Wrath of the Reaper",
-					"disableCondition": "",
-					"disableIncapacitated": false,
-					"stackable": "noneName",
-					"showIcon": false,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": [
-						"longRest"
-					],
-					"enableCondition": "",
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false
-				},
-				"core": {
-					"overlay": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
-				}
-			},
-			"img": "modules/elkan5e/icons/conditions/drained.svg",
-			"_id": "UvXbDbz0tcYCQmpY",
-			"type": "base",
-			"system": {},
-			"disabled": false,
-			"duration": {
-				"startTime": null,
-				"seconds": 0,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"statuses": [],
-			"sort": 0,
-			"_key": "!items.effects!JYaFgQJNk0MF2a6S.UvXbDbz0tcYCQmpY"
-		}
-	],
+	"effects": [],
 	"flags": {
 		"midi-qol": {
 			"effectActivation": false,
@@ -226,7 +148,8 @@
 			"reactionCondition": "",
 			"otherCondition": "",
 			"effectCondition": "",
-			"rollAttackPerTarget": "default"
+			"rollAttackPerTarget": "default",
+			"onUseMacroName": "[postActiveEffects]ItemMacro"
 		},
 		"midiProperties": {
 			"nodam": false,
@@ -266,6 +189,32 @@
 		"tidy5e-sheet": {
 			"section": "",
 			"actionSection": ""
+		},
+		"dae": {
+			"macro": {
+				"name": "Wrath of the Reaper",
+				"img": "icons/magic/death/weapon-scythe-rune-green.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "return await elkan5e.macros.spells.wrathOfTheReaper(workflow);",
+				"author": "vHqSHJMdmEO6Mk2C",
+				"ownership": {
+					"default": 3
+				},
+				"_id": null,
+				"folder": null,
+				"sort": 0,
+				"flags": {},
+				"_stats": {
+					"coreVersion": "13.346",
+					"systemId": "dnd5e",
+					"systemVersion": "5.0.4",
+					"lastModifiedBy": null,
+					"compendiumSource": null,
+					"duplicateSource": null,
+					"exportSource": null
+				}
+			}
 		}
 	},
 	"folder": "OLc6BMEuifPnCAUH",
