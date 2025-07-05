@@ -10,7 +10,7 @@ export async function slicingBlow(workflow) {
 		return;
 	}
 	for (const dmgEntry of workflow.damageList) {
-		const damage = (dmgEntry.hpDamage ?? 0);
+		const damage = (dmgEntry.tempDamage ?? 0) + (dmgEntry.hpDamage ?? 0);
 		if (damage <= 0) continue;
 
 		if (!dmgEntry.targetUuid) {
