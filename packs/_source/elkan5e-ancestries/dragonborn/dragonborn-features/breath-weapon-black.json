@@ -97,8 +97,7 @@
 						{
 							"type": "itemUses",
 							"value": "1",
-							"target": "",
-							"scaling": {}
+							"target": ""
 						}
 					]
 				},
@@ -151,10 +150,7 @@
 							"bonus": "",
 							"types": [
 								"acid"
-							],
-							"scaling": {
-								"number": 1
-							}
+							]
 						}
 					],
 					"onSave": "half"
@@ -162,106 +158,11 @@
 				"save": {
 					"ability": "dex",
 					"dc": {
-						"calculation": "cha",
-						"formula": ""
+						"calculation": "",
+						"formula": "8 + max(@abilities.cha.mod, @abilities.con.mod) + @prof"
 					}
 				},
-				"name": "Save (Charisma)",
-				"img": "",
-				"appliedEffects": []
-			},
-			"AUbfJ7kYlAlMWCp6": {
-				"type": "save",
-				"sort": 0,
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false,
-					"condition": ""
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": [
-						{
-							"type": "itemUses",
-							"value": "1",
-							"target": "",
-							"scaling": {}
-						}
-					]
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": false,
-					"units": "self",
-					"special": ""
-				},
-				"target": {
-					"template": {
-						"contiguous": false,
-						"units": "ft",
-						"type": "line",
-						"size": "30",
-						"width": "5",
-						"count": ""
-					},
-					"affects": {
-						"choice": false,
-						"count": "",
-						"type": "any",
-						"special": ""
-					},
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"damage": {
-					"parts": [
-						{
-							"custom": {
-								"enabled": true,
-								"formula": "max(@scale.dragonborn.breath-weapon,(2*@scale.draconic-origin.breath-weapon)d6)"
-							},
-							"number": null,
-							"denomination": 0,
-							"bonus": "",
-							"types": [
-								"acid"
-							],
-							"scaling": {
-								"number": 1
-							}
-						}
-					],
-					"onSave": "half"
-				},
-				"save": {
-					"ability": "dex",
-					"dc": {
-						"calculation": "con",
-						"formula": ""
-					}
-				},
-				"name": "Save (Constitution)",
-				"useConditionText": "",
-				"forceDialog": false,
-				"effectConditionText": "",
-				"_id": "AUbfJ7kYlAlMWCp6",
+				"name": "",
 				"img": "",
 				"appliedEffects": []
 			}
