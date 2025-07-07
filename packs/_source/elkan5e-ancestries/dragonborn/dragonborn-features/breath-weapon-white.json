@@ -36,102 +36,6 @@
 			"mgc"
 		],
 		"activities": {
-			"Qu8nAGSzj55jQ2QO": {
-				"type": "save",
-				"activation": {
-					"type": "action",
-					"value": 1,
-					"condition": "",
-					"override": false
-				},
-				"consumption": {
-					"targets": [
-						{
-							"type": "itemUses",
-							"value": "1",
-							"target": "",
-							"scaling": {}
-						}
-					],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"concentration": false,
-					"value": "",
-					"units": "inst",
-					"special": "",
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"units": "self",
-					"special": "",
-					"override": false
-				},
-				"target": {
-					"template": {
-						"count": "",
-						"contiguous": false,
-						"type": "cone",
-						"size": "20",
-						"width": "",
-						"height": "",
-						"units": "ft"
-					},
-					"affects": {
-						"count": "",
-						"type": "any",
-						"choice": false,
-						"special": ""
-					},
-					"prompt": true,
-					"override": false
-				},
-				"uses": {
-					"spent": 0,
-					"max": "",
-					"recovery": []
-				},
-				"damage": {
-					"onSave": "half",
-					"parts": [
-						{
-							"custom": {
-								"enabled": true,
-								"formula": "max(@scale.dragonborn.breath-weapon,(2*@scale.draconic-origin.breath-weapon)d6)"
-							},
-							"number": null,
-							"denomination": null,
-							"bonus": "",
-							"types": [
-								"cold"
-							],
-							"scaling": {
-								"number": 1
-							}
-						}
-					]
-				},
-				"save": {
-					"ability": "con",
-					"dc": {
-						"calculation": "cha",
-						"formula": ""
-					}
-				},
-				"sort": 0,
-				"name": "Save (Charisma)",
-				"_id": "Qu8nAGSzj55jQ2QO",
-				"img": "",
-				"appliedEffects": []
-			},
 			"c4X21Trc6f8JyiwI": {
 				"type": "save",
 				"activation": {
@@ -145,8 +49,7 @@
 						{
 							"type": "itemUses",
 							"value": "1",
-							"target": "",
-							"scaling": {}
+							"target": ""
 						}
 					],
 					"scaling": {
@@ -208,22 +111,19 @@
 							"bonus": "",
 							"types": [
 								"cold"
-							],
-							"scaling": {
-								"number": 1
-							}
+							]
 						}
 					]
 				},
 				"save": {
 					"ability": "con",
 					"dc": {
-						"calculation": "con",
-						"formula": ""
+						"calculation": "",
+						"formula": "8 + max(@abilities.cha.mod, @abilities.con.mod) + @prof"
 					}
 				},
 				"sort": 0,
-				"name": "Save (Constitution)",
+				"name": "",
 				"useConditionText": "",
 				"forceDialog": false,
 				"effectConditionText": "",

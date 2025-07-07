@@ -50,8 +50,7 @@
 						{
 							"type": "itemUses",
 							"value": "1",
-							"target": "",
-							"scaling": {}
+							"target": ""
 						}
 					],
 					"scaling": {
@@ -118,133 +117,24 @@
 							"bonus": "",
 							"types": [
 								"acid"
-							],
-							"scaling": {
-								"number": 1
-							}
+							]
 						}
 					]
 				},
 				"save": {
 					"ability": "dex",
 					"dc": {
-						"calculation": "cha",
-						"formula": ""
+						"calculation": "",
+						"formula": "8 + max(@abilities.cha.mod, @abilities.con.mod) + @prof"
 					}
 				},
 				"sort": 0,
-				"name": "Save (Charisma)",
+				"name": "",
 				"img": "",
 				"appliedEffects": [
 					"9ZsiuWmELiXXi8W5"
 				],
 				"effectConditionText": "!target.traits.ci.value.has('slowed')"
-			},
-			"InFKQcspv1KLwcHB": {
-				"type": "save",
-				"activation": {
-					"type": "action",
-					"value": 1,
-					"condition": "",
-					"override": false
-				},
-				"consumption": {
-					"targets": [
-						{
-							"type": "itemUses",
-							"value": "1",
-							"target": "",
-							"scaling": {}
-						}
-					],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"concentration": false,
-					"value": "",
-					"units": "inst",
-					"special": "",
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "9ZsiuWmELiXXi8W5",
-						"onSave": false
-					}
-				],
-				"range": {
-					"units": "self",
-					"special": "",
-					"override": false
-				},
-				"target": {
-					"template": {
-						"count": "",
-						"contiguous": false,
-						"type": "cone",
-						"size": "20",
-						"width": "",
-						"height": "",
-						"units": "ft"
-					},
-					"affects": {
-						"count": "",
-						"type": "",
-						"choice": false,
-						"special": ""
-					},
-					"prompt": true,
-					"override": false
-				},
-				"uses": {
-					"spent": 0,
-					"max": "",
-					"recovery": []
-				},
-				"damage": {
-					"onSave": "half",
-					"parts": [
-						{
-							"custom": {
-								"enabled": true,
-								"formula": "max(@scale.dragonborn.breath-weapon,(2*@scale.draconic-origin.breath-weapon)d6)"
-							},
-							"number": null,
-							"denomination": null,
-							"bonus": "",
-							"types": [
-								"acid"
-							],
-							"scaling": {
-								"number": 1
-							}
-						}
-					]
-				},
-				"save": {
-					"ability": "dex",
-					"dc": {
-						"calculation": "con",
-						"formula": ""
-					}
-				},
-				"sort": 0,
-				"name": "Save (Constitution)",
-				"useConditionText": "",
-				"forceDialog": false,
-				"effectConditionText": "!target.traits.ci.value.has('slowed')",
-				"_id": "InFKQcspv1KLwcHB",
-				"img": "",
-				"appliedEffects": [
-					"9ZsiuWmELiXXi8W5"
-				]
 			}
 		},
 		"identifier": "",
