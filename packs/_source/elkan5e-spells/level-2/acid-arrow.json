@@ -15,7 +15,7 @@
 				{
 					"key": "flags.midi-qol.OverTime",
 					"mode": 2,
-					"value": "turn=end, removeCondition=true, damageRoll = (@spellLevel+2)d4, damageType = acid, label=Acid Arrow",
+					"value": "turn=end, removeCondition=true, damageRoll = (@spell.level+2)d4, damageType = acid, label=Acid Arrow",
 					"priority": 20
 				}
 			],
@@ -36,7 +36,7 @@
 			"flags": {
 				"ActiveAuras": {
 					"isAura": false,
-					"aura": "None",
+					"aura": "Enemy",
 					"nameOverride": "",
 					"radius": "",
 					"alignment": "",
@@ -48,7 +48,8 @@
 					"displayTemp": false,
 					"hostile": false,
 					"onlyOnce": false,
-					"wallsBlock": "system"
+					"wallsBlock": "system",
+					"statuses": []
 				},
 				"dae": {
 					"enableCondition": "",
@@ -65,6 +66,11 @@
 				},
 				"core": {
 					"overlay": false
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
 				}
 			},
 			"_key": "!items.effects!xZu2pzKegvWyGnKo.WBIvDzj1NiSog2Ys"
