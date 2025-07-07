@@ -9,7 +9,7 @@
 				{
 					"key": "flags.midi-qol.OverTime",
 					"mode": 2,
-					"value": "turn=end,\nsaveAbility=str,\nsaveDC=@attributes.spelldc,\ndamageType=bludgeoning,\nsaveDamage=halfdamage,\ndamageRoll = 4d6 + ((@spellLevel - 5)*2)d6),\nsaveMagic=true,\nlabel=Whirlwind",
+					"value": "turn=end,\nsaveAbility=str,\nsaveDC=@attributes.spell.dc,\ndamageType=bludgeoning,\nsaveDamage=halfdamage,\ndamageRoll = 4d6 + ((@spell.level - 5)*2)d6),\nsaveMagic=true,\nlabel=Whirlwind",
 					"priority": 20
 				}
 			],
@@ -51,7 +51,7 @@
 				},
 				"ActiveAuras": {
 					"isAura": false,
-					"aura": "None",
+					"aura": "Enemy",
 					"nameOverride": "",
 					"radius": "",
 					"alignment": "",
@@ -63,10 +63,16 @@
 					"displayTemp": false,
 					"hostile": false,
 					"onlyOnce": false,
-					"wallsBlock": "system"
+					"wallsBlock": "system",
+					"statuses": []
 				},
 				"core": {
 					"overlay": false
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
 				}
 			},
 			"_key": "!items.effects!zI81EiDs2vyozitg.p4VvJpYMpbb4Htk3"
