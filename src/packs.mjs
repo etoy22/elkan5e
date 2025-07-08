@@ -10,6 +10,9 @@ import { compilePack, extractPack } from "@foundryvtt/foundryvtt-cli";
 
 const PACK_DEST = "packs";
 const PACK_SRC = "packs/_source";
+const PACK_SOURCE_NAME_OVERRIDES = {
+	"elkan5e-background": "elkan5e-backgrounds"
+};
 
 // Ensure base folders exist
 fs.mkdirSync(PACK_SRC, { recursive: true });
@@ -108,7 +111,8 @@ async function compilePacks(packName) {
 	);
 
 	for (const folder of folders) {
-		const src = path.join(PACK_SRC, folder.name);
+		const folderName = PACK_SOURCE_NAME_OVERRIDES[folder.name] || folder.name;
+		const src = path.join(PACK_SRC, folderName);
 		const dest = path.join(PACK_DEST, folder.name);
 
 		// Create destination folder if missing
@@ -142,7 +146,9 @@ async function extractPacks(packName, entryName) {
 	const packs = module.packs.filter(p => !packName || p.name === packName);
 
 	for (const packInfo of packs) {
-		const dest = path.join(PACK_SRC, packInfo.name);
+		const folderName = PACK_SOURCE_NAME_OVERRIDES[packInfo.name] || packInfo.name;
+		const dest = path.join(PACK_SRC, folderName);
+
 		fs.mkdirSync(dest, { recursive: true });
 
 		logger.info(`Extracting pack ${packInfo.name}`);
@@ -192,7 +198,7 @@ async function extractPacks(packName, entryName) {
 		let existingFiles = [];
 		try {
 			existingFiles = await listAllFiles(dest);
-		} catch {}
+		} catch { }
 
 		const existingFilesSet = new Set(existingFiles.map(f => path.normalize(f)));
 		const writtenFiles = new Set();
