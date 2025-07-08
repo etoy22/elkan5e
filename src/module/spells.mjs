@@ -800,7 +800,7 @@ export async function createLightFromTemplate(workflow, config, minLevel = 1) {
     }
 
     const { x, y, id: templateId } = lastTemplate;
-    const spellLevel = Math.max(workflow.item.system.level - 1, minLevel);
+    const spellLevel = Math.max(workflow.castData.castLevel - 1, minLevel);
 
     const lightData = {
         x,
@@ -894,4 +894,22 @@ export async function moonBeam(workflow) {
             intensity: 5
         }
     }, 2);
+}
+
+//TODO: Fix this (the code works but not sure when i would have this occur)
+export async function fogCloud(workflow) {
+    const template = workflow.template;
+
+    if (!template) {
+        ui.notifications.warn("No template ID found in workflow.");
+        return;
+    }
+
+
+    const baseRadius = 20;
+    const spellLevel = Math.max(workflow.castData.castLevel, 1);
+    const radius = baseRadius + (spellLevel - 1) * 20;
+
+    await template.update({ distance: radius });
+    ui.notifications.info(`Fog Cloud radius set to ${radius} ft.`);
 }

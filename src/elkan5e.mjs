@@ -213,7 +213,8 @@ let spells = {
     darkness: Spells.darkness,
     light: Spells.light,
     continualFlame:Spells.continualFlame,
-    moonBeam:Spells.moonBeam
+    moonBeam:Spells.moonBeam,
+    fogCloud:Spells.fogCloud
 };
 
 let monsterFeatures = {
