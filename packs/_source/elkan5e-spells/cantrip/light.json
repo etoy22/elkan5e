@@ -82,7 +82,8 @@
 			"otherCondition": ",,",
 			"effectCondition": ",,,,,,,,",
 			"rollAttackPerTarget": "default",
-			"removeAttackDamageButtons": "default"
+			"removeAttackDamageButtons": "default",
+			"onUseMacroName": "[postActiveEffects]ActivityMacro-7MV051I9ooLKsVvh"
 		},
 		"midiProperties": {
 			"nodam": false,
@@ -143,6 +144,32 @@
 		"tidy5e-sheet": {
 			"section": "",
 			"actionSection": ""
+		},
+		"dae": {
+			"macro": {
+				"name": "Light",
+				"img": "icons/magic/light/orb-beams-green.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "",
+				"author": "vHqSHJMdmEO6Mk2C",
+				"ownership": {
+					"default": 3
+				},
+				"_id": null,
+				"folder": null,
+				"sort": 0,
+				"flags": {},
+				"_stats": {
+					"coreVersion": "13.346",
+					"systemId": "dnd5e",
+					"systemVersion": "5.0.4",
+					"lastModifiedBy": null,
+					"compendiumSource": null,
+					"duplicateSource": null,
+					"exportSource": null
+				}
+			}
 		}
 	},
 	"system": {
@@ -225,7 +252,9 @@
 					"spellSlot": true,
 					"targets": []
 				},
-				"description": {},
+				"description": {
+					"chatFlavor": ""
+				},
 				"duration": {
 					"units": "inst",
 					"concentration": false,
@@ -240,17 +269,65 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": "space",
+						"count": "",
+						"special": ""
+					},
+					"template": {
+						"type": "sphere",
+						"size": "5",
+						"count": ""
+					}
 				},
 				"uses": {
 					"spent": 0,
-					"recovery": []
+					"recovery": [],
+					"max": ""
 				},
 				"roll": {
 					"prompt": false,
-					"visible": false
-				}
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"macroData": {
+					"name": "Midi Use",
+					"command": "return await elkan5e.macros.spells.light(workflow)"
+				},
+				"flags": {
+					"dae": {
+						"macro": {
+							"name": "Midi Use",
+							"img": "systems/dnd5e/icons/svg/activity/utility.svg",
+							"type": "script",
+							"scope": "global",
+							"command": "return await elkan5e.macros.spells.light(workflow)",
+							"author": "vHqSHJMdmEO6Mk2C",
+							"ownership": {
+								"default": 3
+							},
+							"_id": null,
+							"folder": null,
+							"sort": 0,
+							"flags": {},
+							"_stats": {
+								"coreVersion": "13.346",
+								"systemId": "dnd5e",
+								"systemVersion": "5.0.4",
+								"lastModifiedBy": null,
+								"compendiumSource": null,
+								"duplicateSource": null,
+								"exportSource": null
+							}
+						}
+					}
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": []
 			},
 			"tNPoWJCWyAzTN7CC": {
 				"type": "utility",

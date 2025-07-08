@@ -169,6 +169,25 @@ Hooks.on("deleteItem", async (deletedItem, options, userId) => {
 });
 
 
+Hooks.on("updateMeasuredTemplate", async (template, data, options, userId) => {
+    const linkedLight = canvas.lighting.placeables.filter(light =>
+        light.document.getFlag("elkan5e", "linkedTemplate") === template.id
+    );
+    if  (linkedLight.length === 0) return
+    for (const light of linkedLight) {
+        await light.document.update({ x: template.x, y: template.y });
+    }
+})
+
+Hooks.on("deleteMeasuredTemplate", async (template, options, userId) => {
+    const linkedLight = canvas.lighting.placeables.filter(light =>
+        light.document.getFlag("elkan5e", "linkedTemplate") === template.id
+    );
+    if  (linkedLight.length === 0) return
+    const ids = linkedLight.map(l => l.id);
+
+    await canvas.scene.deleteEmbeddedDocuments("AmbientLight", ids);
+});
 
 let features = {
     rage: rage,
@@ -191,7 +210,10 @@ let spells = {
     wrathOfTheReaper: Spells.wrathOfTheReaper,
     enlarge: Spells.enlarge,
     reduce: Spells.reduce,
-
+    darkness: Spells.darkness,
+    light: Spells.light,
+    continualFlame:Spells.continualFlame,
+    moonBeam:Spells.moonBeam
 };
 
 let monsterFeatures = {
