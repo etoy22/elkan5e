@@ -1,5 +1,5 @@
 import { drainedEffect } from "./global.mjs";
-const Token =  foundry.canvas.placeables.token
+const Token = foundry.canvas.placeables.token
 
 const SIZE_ORDER = ["tiny", "sm", "med", "lg", "huge", "grg"];
 const SIZE_TO_GRID = {
@@ -10,8 +10,6 @@ const SIZE_TO_GRID = {
     huge: 3,
     grg: 4,
 };
-
-
 
 /**
  * Applies the "Enervate" drained effect to each damaged target after the initial spell cast.
@@ -622,93 +620,120 @@ export async function wrathOfTheReaper(workflow) {
 
 //Automation for Enlarge/Reduce
 export async function enlarge(workflow) {
-    const token = workflow.token;
-    const actor = workflow.actor;
-    if (!token || !actor) return;
-
-    const flag = token.document.getFlag("elkan5e", "sizeChange") || {};
-    if (flag.enlarged) {
-        ui.notifications.info(`${actor.name} is already enlarged.`);
-        return;
-    }
-    if (flag.reduced) {
-        ui.notifications.info(`${actor.name} is currently reduced — cannot enlarge until reduced effect removed.`);
+    if (!workflow._failedSaves || workflow._failedSaves.size === 0) {
+        ui.notifications.warn("No targets failed the roll — cannot apply enlarge.");
         return;
     }
 
-    const currentSize = actor.system.traits.size;
-    const currentIndex = SIZE_ORDER.indexOf(currentSize);
-    if (currentIndex === -1 || currentIndex >= SIZE_ORDER.length - 1) {
-        ui.notifications.warn(`${actor.name} is already at maximum size or unknown size.`);
-        return;
+    for (const failedToken of workflow._failedSaves) {
+        let token;
+        if (typeof failedToken === "string") {
+            token = canvas.tokens.get(failedToken);
+        } else {
+            token = failedToken;
+        }
+        if (!token) continue;
+
+        const actor = token.actor;
+        if (!actor) continue;
+
+        const flag = token.document.getFlag("elkan5e", "sizeChange") || {};
+        if (flag.enlarged) {
+            ui.notifications.info(`${actor.name} is already enlarged.`);
+            continue;
+        }
+        if (flag.reduced) {
+            ui.notifications.info(`${actor.name} is currently reduced — cannot enlarge until reduced effect removed.`);
+            continue;
+        }
+
+        const currentSize = actor.system.traits.size;
+        const currentIndex = SIZE_ORDER.indexOf(currentSize);
+        if (currentIndex === -1 || currentIndex >= SIZE_ORDER.length - 1) {
+            ui.notifications.warn(`${actor.name} is already at maximum size or unknown size.`);
+            continue;
+        }
+
+        const newSize = SIZE_ORDER[currentIndex + 1];
+        const newGrid = SIZE_TO_GRID[newSize];
+
+        if (!flag.originalSize) {
+            flag.originalSize = currentSize;
+            flag.originalWidth = token.document.width;
+            flag.originalHeight = token.document.height;
+        }
+        flag.enlarged = true;
+
+        await token.document.update({
+            width: newGrid,
+            height: newGrid,
+            "flags.elkan5e.sizeChange": flag,
+        });
+        await actor.update({ "system.traits.size": newSize });
+
+        ui.notifications.info(`${actor.name} has been enlarged to size ${newSize.toUpperCase()}.`);
     }
-
-    const newSize = SIZE_ORDER[currentIndex + 1];
-    const newGrid = SIZE_TO_GRID[newSize];
-
-    // Store original size only if no flag set yet
-    if (!flag.originalSize) {
-        flag.originalSize = currentSize;
-        flag.originalWidth = token.document.width;
-        flag.originalHeight = token.document.height;
-    }
-    flag.enlarged = true;
-
-    await token.document.update({
-        width: newGrid,
-        height: newGrid,
-        "flags.elkan5e.sizeChange": flag,
-    });
-    await actor.update({ "system.traits.size": newSize });
-
-    ui.notifications.info(`${actor.name} has been enlarged to size ${newSize.toUpperCase()}.`);
 }
 
 export async function reduce(workflow) {
-    const token = workflow.token;
-    const actor = workflow.actor;
-    if (!token || !actor) return;
-
-    const flag = token.document.getFlag("elkan5e", "sizeChange") || {};
-    if (flag.reduced) {
-        ui.notifications.info(`${actor.name} is already reduced.`);
-        return;
-    }
-    if (flag.enlarged) {
-        ui.notifications.info(`${actor.name} is currently enlarged — cannot reduce until enlarged effect removed.`);
+    if (!workflow._failedSaves || workflow._failedSaves.size === 0) {
+        ui.notifications.warn("No targets failed the roll — cannot apply reduce.");
         return;
     }
 
-    const currentSize = actor.system.traits.size;
-    const currentIndex = SIZE_ORDER.indexOf(currentSize);
-    if (currentIndex <= 0) {
-        ui.notifications.warn(`${actor.name} is already at minimum size or unknown size.`);
-        return;
+    for (const failedToken of workflow._failedSaves) {
+        let token;
+        if (typeof failedToken === "string") {
+            token = canvas.tokens.get(failedToken);
+        } else {
+            token = failedToken;
+        }
+        if (!token) continue;
+
+        const actor = token.actor;
+        if (!actor) continue;
+
+        const flag = token.document.getFlag("elkan5e", "sizeChange") || {};
+        if (flag.reduced) {
+            // Already reduced, skip
+            continue;
+        }
+        if (flag.enlarged) {
+            // Currently enlarged, cannot reduce until enlarged removed
+            continue;
+        }
+
+        const currentSize = actor.system.traits.size;
+        const currentIndex = SIZE_ORDER.indexOf(currentSize);
+        if (currentIndex <= 0) {
+            // Already at minimum or unknown size, skip
+            continue;
+        }
+
+        const newSize = SIZE_ORDER[currentIndex - 1];
+        const newGrid = SIZE_TO_GRID[newSize];
+
+        if (!flag.originalSize) {
+            flag.originalSize = currentSize;
+            flag.originalWidth = token.document.width;
+            flag.originalHeight = token.document.height;
+        }
+        flag.reduced = true;
+
+        await token.document.update({
+            width: newGrid,
+            height: newGrid,
+            "flags.elkan5e.sizeChange": flag,
+        });
+        await actor.update({ "system.traits.size": newSize });
+
+        // You can uncomment to notify
+        // ui.notifications.info(`${actor.name} has been reduced to size ${newSize.toUpperCase()}.`);
     }
-
-    const newSize = SIZE_ORDER[currentIndex - 1];
-    const newGrid = SIZE_TO_GRID[newSize];
-
-    // Store original size only if no flag set yet
-    if (!flag.originalSize) {
-        flag.originalSize = currentSize;
-        flag.originalWidth = token.document.width;
-        flag.originalHeight = token.document.height;
-    }
-    flag.reduced = true;
-
-    await token.document.update({
-        width: newGrid,
-        height: newGrid,
-        "flags.elkan5e.sizeChange": flag,
-    });
-    await actor.update({ "system.traits.size": newSize });
-
-    ui.notifications.info(`${actor.name} has been reduced to size ${newSize.toUpperCase()}.`);
 }
 
 export async function returnToNormalSize(effect) {
-    const actor = effect.parent
+    const actor = effect.parent;
 
     if (!actor || !effect) {
         console.warn("Missing actor or effect, aborting returnToNormalSize.");
@@ -764,4 +789,109 @@ export async function returnToNormalSize(effect) {
             "flags.elkan5e.sizeChange": flag,
         });
     }
+}
+
+
+export async function createLightFromTemplate(workflow, config, minLevel = 1) {
+    const lastTemplate = canvas.templates.placeables.at(-1);
+    if (!lastTemplate) {
+        ui.notifications.warn("No measured template found.");
+        return;
+    }
+
+    const { x, y, id: templateId } = lastTemplate;
+    const spellLevel = Math.max(workflow.item.system.level - 1, minLevel);
+
+    const lightData = {
+        x,
+        y,
+        config: {
+            priority: spellLevel,
+            ...config
+        },
+        flags: {
+            elkan5e: {
+                linkedTemplate: templateId
+            }
+        }
+    };
+
+    await canvas.scene.createEmbeddedDocuments("AmbientLight", [lightData]);
+}
+
+export async function darkness(workflow) {
+    return createLightFromTemplate(workflow, {
+        dim: 0,
+        bright: 15,
+        alpha: 0.3,
+        angle: 360,
+        luminosity: 0.5,
+        saturation: 0,
+        contrast: 0,
+        shadows: 0,
+        negative: true,
+        animation: {
+            type: "",
+            speed: 2,
+            intensity: 5
+        }
+    }, 1);
+}
+
+export async function light(workflow) {
+    return createLightFromTemplate(workflow, {
+        dim: 40,
+        bright: 20,
+        alpha: 0.3,
+        angle: 360,
+        luminosity: 0.5,
+        saturation: 0,
+        contrast: 0,
+        shadows: 0,
+        negative: false,
+        animation: {
+            type: "",
+            speed: 2,
+            intensity: 5
+        }
+    }, 1);
+}
+
+export async function continualFlame(workflow) {
+    return createLightFromTemplate(workflow, {
+        dim: 60,
+        bright: 30,
+        alpha: 0.3,
+        angle: 360,
+        luminosity: 0.5,
+        saturation: 0,
+        contrast: 0,
+        shadows: 0,
+        negative: false,
+        animation: {
+            type: "torch",
+            speed: 2,
+            intensity: 5
+        }
+    }, 2);
+}
+
+export async function moonBeam(workflow) {
+    return createLightFromTemplate(workflow, {
+        dim: 5,
+        bright: 0,
+        alpha: 0.3,
+        angle: 360,
+        luminosity: 0.5,
+        saturation: 0,
+        contrast: 0,
+        shadows: 0,
+        negative: false,
+        color: "#587BA5",
+        animation: {
+            type: "",
+            speed: 2,
+            intensity: 5
+        }
+    }, 2);
 }
