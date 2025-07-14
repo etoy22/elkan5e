@@ -15,7 +15,7 @@ import { tools } from "./module/rules/tools.mjs";
 import { weapons } from "./module/rules/weapon.mjs";
 import { scroll } from "./module/rules/scroll.mjs";
 import { slicingBlow } from "./module/classes/rogue.mjs";
-import { spectralEmpowerment } from "./module/classes/wizard.mjs";
+import { lifeDrainGraveguard, spectralEmpowerment } from "./module/classes/wizard.mjs";
 import { skills } from "./module/rules/skills.mjs";
 import { setupCombatReferences, setupDamageReferences, setupSpellcastingReferences, setupCreatureTypeReferences, setupSkillReferences } from "./module/rules/references.mjs";
 import * as Spells from "./module/spells.mjs"
@@ -218,6 +218,7 @@ let spells = {
 };
 
 let monsterFeatures = {
+    lifeDrain:lifeDrainGraveguard,
     spectralEmpowerment: spectralEmpowerment,
 }
 

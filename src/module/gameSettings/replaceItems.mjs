@@ -133,23 +133,25 @@ export async function savePropertiesForTransfer(items, mode, propKeys) {
 
 export async function restorePropertiesToData(newData, savedProps, mode, preserveProperties = []) {
 	if (!savedProps) return;
-	// console.log("Restoring props for item:", newData.name, "with savedProps:", savedProps, "mode:", mode);
+
 	newData.img = savedProps.img ?? newData.img;
 	const originalSource = savedProps.sourceBook ?? null;
+
 	if ((mode === "update-Elkan" && originalSource === "Elkan 5e") || (mode === "update-All" && originalSource === "Elkan 5e")) {
 		for (const key of preserveProperties) {
 			if (key !== "img" && key !== "sourceBook" && key in savedProps) {
+				if (savedProps[key] === undefined || savedProps[key] === null || savedProps[key] === "") continue;
+
 				if (key === "name") {
-					// console.log(`Restoring name to "${savedProps[key]}"`);
-					newData.name = savedProps[key];
+					newData.name = savedProps.name;
 				} else {
-					// console.log(`Restoring system.${key} to`, savedProps[key]);
 					setProperty(newData.system, key, savedProps[key]);
 				}
 			}
 		}
 	} 
 }
+
 
 
 
