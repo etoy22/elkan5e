@@ -8,7 +8,7 @@ export function conditions() {
     const CONDITION_ICONS = [
         "blinded", "charmed", "cursed", "deafened", "frightened", "grappled", "incapacitated",
         "invisible", "restrained", "paralyzed", "petrified", "poisoned", "prone",
-        "stunned", "unconscious"
+        "stunned", "unconscious", "transformed"
     ];
 
     // New and custom conditions with references and icons
@@ -18,13 +18,13 @@ export function conditions() {
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.WJFtNc5UraHVrV5V",
             img: "modules/elkan5e/icons/conditions/confused.svg"
         },
-        coverhalf: {
+        coverHalf: {
             name: "Half Cover",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
             img: "modules/elkan5e/icons/conditions/cover-half.svg",
             _id: "dnd5ecoverhalf00"
         },
-        coverthreequarters: {
+        coverThreeQuarters: {
             name: "Three Quarters Cover",
             reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
             img: "modules/elkan5e/icons/conditions/cover-three-quarters.svg",
@@ -102,6 +102,7 @@ export function conditions() {
     const conditionsSetting = game.settings.get("elkan5e", "conditions");
     if (conditionsSetting === "a" || conditionsSetting === "b") {
         Object.assign(CONFIG.DND5E.conditionTypes, NEW_CONDITIONS);
+        CONFIG.DND5E.conditionTypes.transformed.pseudo = false
     }
 
     // Set icons for all conditions
@@ -120,7 +121,7 @@ export function conditions() {
     ];
 
     const conditionsToRemove = ["burning", "dehydration", "falling", "malnutrition", "suffocation"];
-    
+
     const EFFECTS = {
         dead: [
             { "key": "attributes.hp.value", "mode": 5, "value": "0", "priority": null }
@@ -184,7 +185,7 @@ export function conditions() {
             { "key": "flags.midi-qol.disadvantage.ability.save.dex", "mode": 5, "value": "1" }
         ]
     };
-    
+
     // Assign references for core conditions (merge from old conditionsRef)
     const CORE_CONDITIONS = [
         { key: "blinded", id: "SXTqmewRrCwPS8yW" },
@@ -229,18 +230,19 @@ export function conditions() {
             effect.img = `modules/elkan5e/icons/conditions/${id}.svg`;
         }
     });
+
     if (CONFIG.DND5E.statusEffects?.coverHalf) CONFIG.DND5E.statusEffects.coverHalf.img = `modules/elkan5e/icons/conditions/cover-half.svg`;
     if (CONFIG.DND5E.statusEffects?.coverThreeQuarters) CONFIG.DND5E.statusEffects.coverThreeQuarters.img = `modules/elkan5e/icons/conditions/cover-three-quarters.svg`;
     if (CONFIG.DND5E.statusEffects?.coverTotal) CONFIG.DND5E.statusEffects.coverTotal.img = `modules/elkan5e/icons/conditions/cover-full.svg`;
-    
+    CONFIG.DND5E.statusEffects.concentrating.img = "modules/elkan5e/icons/conditions/concentrating.svg"
     // Removing Unused Conditions
     if (conditionsSetting === "a" || conditionsSetting === "d") {
         conditionsToRemove.forEach(condition => {
             delete CONFIG.DND5E.conditionTypes[condition];
         });
     }
-    
-    
+
+
     // Applying effects
     Object.entries(EFFECTS).forEach(([id, changes]) => {
         const effect = CONFIG.statusEffects.find(effect => effect.id === id);
@@ -267,19 +269,18 @@ export function conditions() {
             }
         }
     });
-    
 }
 
 export async function conditionsReady() {
     const conditionsSetting = game.settings.get("elkan5e", "conditions");
-
+    CONFIG.statusEffects.find(effect => effect.id === "dead").img = `modules/elkan5e/icons/conditions/dead.svg`
     const UNUSED_CONDITIONS = [
-        "burrowing", "ethereal", "flying", "fireShield", 
-        "hidden", "hiding", "hovering", "marked", "sleeping",
+        "burrowing", "ethereal", "flying", "fireShield",
+        "hidden", "hovering", "marked", "sleeping",
         "burning", "dehydration", "falling", "malnutrition", "suffocation",
         "flanking", "flanked"
     ];
-    
+
     const NEW_STATUS_EFFECTS = [
         {
             id: "confused",
@@ -379,20 +380,6 @@ export async function conditionsReady() {
             ]
         },
         {
-            id: "coverhalf",
-            name: "Half Cover",
-            _id: "dnd5ecoverhalf00", // Ensure this is a valid 16-character alphanumeric ID
-            reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
-            img: "modules/elkan5e/icons/conditions/cover-half.svg"
-        },
-        {
-            id: "coverthreequarters",
-            name: "Three Quarters Cover",
-            _id: "dnd5ecoverthree0", // Ensure this is a valid 16-character alphanumeric ID
-            reference: "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq",
-            img: "modules/elkan5e/icons/conditions/cover-three-quarters.svg"
-        },
-        {
             id: "siphoned",
             name: "Siphoned",
             _id: "dnd5esiphoned000",
@@ -403,7 +390,7 @@ export async function conditionsReady() {
                     key: "flags.midi-qol.grants.advantage.attack.save",
                     mode: 5,
                     value: "1"
-    
+
                 },
                 {
                     key: "flags.midi-qol.onUseMacroName",
@@ -485,8 +472,8 @@ export async function conditionsReady() {
             ]
         }
     ];
-    
-    
+
+
     if (conditionsSetting === "a" || conditionsSetting === "d") {
         // console.log("Elkan 5e  |  Conditions before", CONFIG.statusEffects);
         CONFIG.statusEffects = CONFIG.statusEffects.filter(effect => !UNUSED_CONDITIONS.includes(effect.id));
@@ -501,6 +488,16 @@ export async function conditionsReady() {
     if (!CONFIG.DND5E.conditionTypes) CONFIG.DND5E.conditionTypes = {};
     // Ensure CONFIG.DND5E.conditionTypes["exhaustion"] exists before setting 'reduction'
     if (!CONFIG.DND5E.conditionTypes["exhaustion"]) CONFIG.DND5E.conditionTypes["exhaustion"] = {};
+    let bleeding = CONFIG.statusEffects.find(effect => effect.id === "bleeding")
+    bleeding.name = "Bloodied"
+    bleeding.img = "systems/dnd5e/icons/svg/statuses/bloodied.svg"
+    CONFIG.DND5E.conditionTypes.bleeding.name = "Bloodied"
+    CONFIG.DND5E.conditionTypes.diseased.img = "modules/elkan5e/icons/conditions/diseased.svg"
+    CONFIG.statusEffects.find(effect => effect.id === "diseased").img = "modules/elkan5e/icons/conditions/diseased.svg"
+    CONFIG.statusEffects.find(effect => effect.id === "hiding").img = "modules/elkan5e/icons/conditions/hiding.svg"
+    CONFIG.statusEffects.find(effect => effect.id === "dodging").img = "modules/elkan5e/icons/conditions/dodging.svg"
+    CONFIG.DND5E.conditionTypes.bleeding.img = "systems/dnd5e/icons/svg/statuses/bloodied.svg"
+
     if (conditionsSetting === "a" || conditionsSetting === "b") {
         const version = game.settings.get("dnd5e", "rulesVersion");
         if (version !== "modern") {
@@ -511,8 +508,8 @@ export async function conditionsReady() {
             if (CONFIG.DND5E.conditionEffects?.halfHealth) CONFIG.DND5E.conditionEffects.halfHealth.delete("exhaustion-4");
             if (CONFIG.DND5E.conditionEffects?.noMovement) CONFIG.DND5E.conditionEffects.noMovement.delete("exhaustion-5");
         }
-        else{
-            CONFIG.DND5E.conditionTypes["exhaustion"].reduction = {"rolls": 2, "speed": 5}
+        else {
+            CONFIG.DND5E.conditionTypes["exhaustion"].reduction = { "rolls": 2, "speed": 5 }
         }
     }
 }
