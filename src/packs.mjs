@@ -60,17 +60,33 @@ function packageCommand() {
 
 
 
-// Clean single entry (minimal version)
 function cleanPackEntry(data, { clearSourceId = true, ownership = 0 } = {}) {
+	// Your existing top-level cleanup
 	if (clearSourceId && data.flags?.core?.sourceId) delete data.flags.core.sourceId;
 	if (data.ownership) data.ownership = { default: ownership };
+
+	// Recursive deep cleaner for _stats and other keys
+	function recursiveClean(obj) {
+		if (!obj || typeof obj !== "object") return;
+
+		// Delete these keys if present
+		if ("_stats" in obj) delete obj._stats;
+		if ("sort" in obj) delete obj.sort;
+		if ("ownership" in obj) delete obj.ownership;
+
+		// Recursively clean nested objects/arrays
+		for (const key of Object.keys(obj)) {
+			const val = obj[key];
+			if (Array.isArray(val)) {
+				val.forEach(recursiveClean);
+			} else if (val && typeof val === "object") {
+				recursiveClean(val);
+			}
+		}
+	}
+	recursiveClean(data);
 }
 
-
-// Clean string helper (not used much here but kept from original)
-function cleanString(str) {
-	return str.replace(/\u2060/gu, "").replace(/[‘’]/gu, "'").replace(/[“”]/gu, '"');
-}
 
 
 async function cleanPacks(packName, entryName) {
@@ -91,7 +107,17 @@ async function cleanPacks(packName, entryName) {
 	for (const folder of folders) {
 		logger.info(`Cleaning pack ${folder.name}`);
 		for await (const src of _walkDir(path.join(PACK_SRC, folder.name))) {
-			const data = JSON.parse(await readFile(src, { encoding: "utf8" }));
+			let data;
+			try {
+				const content = await readFile(src, { encoding: "utf8" });
+				data = JSON.parse(content);
+			} catch (err) {
+				logger.error(`Failed to parse JSON in file: ${src}`);
+				logger.error(err.message);
+				// Stop execution after logging
+				throw err;
+			}
+
 			if (entryName && (entryName !== data.name.toLowerCase())) continue;
 			if (!data._id || !data._key) {
 				console.log(`Failed to clean \x1b[31m${src}\x1b[0m, must have _id and _key.`);
@@ -103,6 +129,7 @@ async function cleanPacks(packName, entryName) {
 		}
 	}
 }
+
 
 
 async function compilePacks(packName) {
