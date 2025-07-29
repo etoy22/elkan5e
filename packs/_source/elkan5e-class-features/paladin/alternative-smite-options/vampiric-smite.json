@@ -132,7 +132,6 @@
 						}
 					]
 				},
-				"sort": 0,
 				"name": "",
 				"img": "",
 				"appliedEffects": []
@@ -175,21 +174,9 @@
 				"scope": "global",
 				"command": "const {damage,damageMultiplier} = workflow.damageItem.damageDetail[0].find(d=>d.type === 'necrotic') || {};\nif (damage && workflow.hitTargets.size === 1) {\n  const dmgToApply = Math.floor(damage * damageMultiplier /2);\n  await MidiQOL.applyTokenDamage([{\n        damage: dmgToApply,\n        type: 'healing',\n        flavor:'Life Steal'\n    }], dmgToApply, new Set([token]), null, null);\n}",
 				"author": "3Yi0HjF4PKCA4vX0",
-				"ownership": {
-					"default": 3
-				},
 				"_id": null,
 				"folder": null,
-				"sort": 0,
-				"flags": {},
-				"_stats": {
-					"systemId": null,
-					"systemVersion": null,
-					"coreVersion": null,
-					"createdTime": null,
-					"modifiedTime": null,
-					"lastModifiedBy": null
-				}
+				"flags": {}
 			}
 		},
 		"dnd5e": {

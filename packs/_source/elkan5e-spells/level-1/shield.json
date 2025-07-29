@@ -75,7 +75,6 @@
 			"img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
 			"type": "base",
 			"system": {},
-			"sort": 0,
 			"_key": "!items.effects!k6lJOHWJa0XF2zCb.6pbotGIvqQkraPva"
 		}
 	],
@@ -139,23 +138,9 @@
 				"scope": "global",
 				"command": "if (args[0] === \"on\") {\n    // Get the spell level and calculate the spell bonus\n    let level = args[2];\n    let spellBonus = Math.min(Math.max(level, 1) + 2, 5);\n    \n    // Get the actor\n    let actorID = args[1];\n    let actor = game.actors.get(actorID);\n    let shieldBonus = 0;\n    let items = actor.items;\n    // Find the equipped shield\n    let shield = items.find(item => item.type === \"equipment\" && item.system.type.value === \"shield\" && item.system.equipped === true);\n    if (shield) {\n        console.log(\"Here 2\");\n        // Calculate the shield bonus\n        shieldBonus = shield.system.armor.value;\n        if (shield.system.armor.magicalBonus) {\n            shieldBonus += shield.system.armor.magicalBonus;\n        }\n    }\n    console.log(\"Level:\", level);\n    console.log(\"Spell Bonus:\", spellBonus);\n    console.log(\"Actor ID:\", actorID);\n    console.log(\"Actor:\", actor);\n    console.log(\"Items:\", items);\n    console.log(\"Shield\", shield);\n    // Calculate the total bonus\n    let bonus = spellBonus - shieldBonus;\n    // Define the effect data\n    console.log(\"Here 3\");\n    let effectData = {\n        label: \"AC Bonus\",\n        icon: \"icons/magic/defensive/shield-barrier-glowing-blue.webp\", // You can use any icon you prefer\n        changes: [\n            {\n                key: \"system.attributes.ac.bonus\",\n                mode: CONST.ACTIVE_EFFECT_MODES.ADD,\n                value: bonus,\n                priority: 20\n            }\n        ],\n        origin: `Actor.${actor.id}`,\n        disabled: false,\n        duration: {\n            rounds: 1, // Duration of the effect in rounds\n        }\n    };\n    // Apply the effect to the actor\n    await actor.createEmbeddedDocuments(\"ActiveEffect\", [effectData]);\n    console.log(`Applied AC Bonus effect: ${bonus}`);\n}\nif (args[0] === \"off\") {\n    // Get the actor\n    let actorID = args[1];\n    let actor = game.actors.get(actorID);\n    // Find and delete the effect\n    let effect = actor.effects.find(e => e.label === \"AC Bonus\");\n    if (effect) {\n        await effect.delete();\n    }\n}",
 				"author": "3Yi0HjF4PKCA4vX0",
-				"ownership": {
-					"default": 3
-				},
 				"_id": null,
 				"folder": null,
-				"sort": 0,
-				"flags": {},
-				"_stats": {
-					"coreVersion": "12.331",
-					"systemId": "dnd5e",
-					"systemVersion": "4.3.6",
-					"createdTime": null,
-					"modifiedTime": null,
-					"lastModifiedBy": null,
-					"compendiumSource": null,
-					"duplicateSource": null
-				}
+				"flags": {}
 			}
 		}
 	},
@@ -224,7 +209,6 @@
 			"NTFhQ3vQNBtt6ZAr": {
 				"type": "utility",
 				"_id": "NTFhQ3vQNBtt6ZAr",
-				"sort": 0,
 				"activation": {
 					"type": "action",
 					"value": null,
