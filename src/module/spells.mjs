@@ -896,6 +896,25 @@ export async function moonBeam(workflow) {
     }, 2);
 }
 
+export async function rendVigor(workflow) {
+    let saves = workflow.saves;
+    let failed = workflow.failedSaves;
+
+    saves.forEach(save => {
+        let target = save.actor;
+        if (target.system.attributes.hp.temp != null) {
+            target.system.attributes.hp.temp = Math.floor(target.system.attributes.hp.temp / 2);
+        }
+    });
+
+    failed.forEach(fail => {
+        let target = fail.actor;
+        if (target.system.attributes.hp.temp != null) {
+            target.system.attributes.hp.temp = null;
+        }
+    });
+}
+
 //TODO: Fix this (the code works but not sure when i would have this occur)
 export async function fogCloud(workflow) {
     const template = workflow.template;
@@ -912,4 +931,74 @@ export async function fogCloud(workflow) {
 
     await template.update({ distance: radius });
     ui.notifications.info(`Fog Cloud radius set to ${radius} ft.`);
+}
+
+// TODO: Set in line with the rest of the code
+export async function vampiricSmite(workflow) {
+    const { damage, damageMultiplier } = workflow.damageItem.damageDetail[0].find(d => d.type === 'necrotic') || {};
+    if (damage && workflow.hitTargets.size === 1) {
+        const dmgToApply = Math.floor(damage * damageMultiplier / 2);
+        await MidiQOL.applyTokenDamage([{
+            damage: dmgToApply,
+            type: 'healing',
+            flavor: 'Life Steal'
+        }], dmgToApply, new Set([token]), null, null);
+    }
+}
+
+export async function shield(workflow) {
+  const actor = workflow.actor;
+  const item = workflow.item;
+
+  if (!actor) {
+    console.error("Actor not found for the spell.");
+    return;
+  }
+
+  // Spell level (minimum 1)
+  const level = Math.max(item.system.level ?? 1, 1);
+
+  // Spell bonus: level + 2 capped at 5
+  const spellBonus = Math.min(level + 2, 5);
+
+  // Find equipped shield
+  const shield = actor.items.find(i =>
+    i.type === "equipment" &&
+    i.system.type?.value === "shield" &&
+    i.system.equipped === true
+  );
+
+  // Calculate shield bonus (armor value + magical bonus if any)
+  let shieldBonus = 0;
+  if (shield) {
+    shieldBonus = Number(shield.system.armor?.value ?? 0);
+    if (shield.system.armor?.magicalBonus) {
+      shieldBonus += Number(shield.system.armor.magicalBonus);
+    }
+  }
+
+  // Calculate net bonus to AC
+  const bonus = spellBonus - shieldBonus;
+
+  // Prepare active effect data
+  const effectData = {
+    name: item.name,
+    label: item.name,
+    icon: item.img,
+    origin: item.uuid,
+    duration: { seconds: 7 },
+    changes: [
+      {
+        key: "system.attributes.ac.bonus",
+        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+        value: bonus,
+        priority: 20
+      }
+    ],
+    flags: {
+      dae: { specialDuration: ["turnEndSource"] }
+    }
+  };
+
+  await actor.createEmbeddedDocuments("ActiveEffect", [effectData]);
 }
