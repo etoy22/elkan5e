@@ -270,27 +270,6 @@
 				"flags": {}
 			}
 		},
-		"itemacro": {
-			"macro": {
-				"_data": {
-					"name": "Enlarge/Reduce",
-					"type": "script",
-					"scope": "global",
-					"command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target \n\n/**\n * For each target, the GM will have to choose \n */\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\n\nlet target = canvas.tokens.get(lastArg.tokenId);\nlet originalSize = target.data.width;\nlet mwak = target.actor.data.data.bonuses.mwak.damage;\n\nif (args[0] === \"on\") {\n    new Dialog({\n        title: \"Enlarge or Reduce\",\n        buttons: {\n            one: {\n                label: \"Enlarge\",\n                callback: () => {\n                    let bonus = mwak + \"+ 1d4\";\n                    let enlarge = (originalSize + 1);\n                    tactor.update({ \"data.bonuses.mwak.damage\": bonus });\n                    target.update({ \"width\": enlarge, \"height\": enlarge });\n                    DAE.setFlag(tactor, 'enlageReduceSpell', {\n                        size: originalSize,\n                        ogMwak: mwak,\n                    });\n                    ChatMessage.create({ content: `${target.name} is enlarged` });\n                }\n            },\n            two: {\n                label: \"Reduce\",\n                callback: () => {\n                    let bonus = mwak + \" -1d4\";\n                    let size = originalSize;\n                    let newSize = (size > 1) ? (size - 1) : (size - 0.3);\n                    tactor.update({ \"data.bonuses.mwak.damage\": bonus });\n                    target.update({ \"width\": newSize, \"height\": newSize });\n                    DAE.setFlag(tactor, 'enlageReduceSpell', {\n                        size: originalSize,\n                        ogMwak: mwak,\n                    });\n                    ChatMessage.create({ content: `${target.name} is reduced` });\n                }\n            },\n        }\n    }).render(true);\n}\nif (args[0] === \"off\") {\n    let flag = DAE.getFlag(tactor, 'enlageReduceSpell');\n    tactor.update({ \"data.bonuses.mwak.damage\": flag.ogMwak });\n    target.update({ \"width\": flag.size, \"height\": flag.size });\n    DAE.unsetFlag(tactor, 'enlageReduceSpell');\n    ChatMessage.create({ content: `${target.name} is returned to normal size` });\n}",
-					"author": "E4BVikjIkVl2lL2j"
-				},
-				"data": {
-					"name": "Enlarge/Reduce",
-					"type": "script",
-					"scope": "global",
-					"command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target \n\n/**\n * For each target, the GM will have to choose \n */\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\n\nlet target = canvas.tokens.get(lastArg.tokenId);\nlet originalSize = target.data.width;\nlet mwak = target.actor.data.data.bonuses.mwak.damage;\n\nif (args[0] === \"on\") {\n    new Dialog({\n        title: \"Enlarge or Reduce\",\n        buttons: {\n            one: {\n                label: \"Enlarge\",\n                callback: () => {\n                    let bonus = mwak + \"+ 1d4\";\n                    let enlarge = (originalSize + 1);\n                    tactor.update({ \"data.bonuses.mwak.damage\": bonus });\n                    target.update({ \"width\": enlarge, \"height\": enlarge });\n                    DAE.setFlag(tactor, 'enlageReduceSpell', {\n                        size: originalSize,\n                        ogMwak: mwak,\n                    });\n                    ChatMessage.create({ content: `${target.name} is enlarged` });\n                }\n            },\n            two: {\n                label: \"Reduce\",\n                callback: () => {\n                    let bonus = mwak + \" -1d4\";\n                    let size = originalSize;\n                    let newSize = (size > 1) ? (size - 1) : (size - 0.3);\n                    tactor.update({ \"data.bonuses.mwak.damage\": bonus });\n                    target.update({ \"width\": newSize, \"height\": newSize });\n                    DAE.setFlag(tactor, 'enlageReduceSpell', {\n                        size: originalSize,\n                        ogMwak: mwak,\n                    });\n                    ChatMessage.create({ content: `${target.name} is reduced` });\n                }\n            },\n        }\n    }).render(true);\n}\nif (args[0] === \"off\") {\n    let flag = DAE.getFlag(tactor, 'enlageReduceSpell');\n    tactor.update({ \"data.bonuses.mwak.damage\": flag.ogMwak });\n    target.update({ \"width\": flag.size, \"height\": flag.size });\n    DAE.unsetFlag(tactor, 'enlageReduceSpell');\n    ChatMessage.create({ content: `${target.name} is returned to normal size` });\n}",
-					"author": "E4BVikjIkVl2lL2j"
-				},
-				"options": {},
-				"apps": {},
-				"compendium": null
-			}
-		},
 		"midi-qol": {
 			"onUseMacroName": "[postActiveEffects]ActivityMacro-dnd5eactivity000,[postActiveEffects]ActivityMacro-bSof9ywHy23AsoJQ",
 			"effectActivation": false,

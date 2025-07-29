@@ -113,27 +113,6 @@
 			"removeAttackDamageButtons": "default"
 		},
 		"core": {},
-		"itemacro": {
-			"macro": {
-				"_data": {
-					"name": "Darkvision",
-					"type": "script",
-					"scope": "global",
-					"command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId)\n\nlet dimVision = target.data.dimSight;\nif (args[0] === \"on\") {\n    DAE.setFlag(tactor, 'darkvisionSpell', dimVision);\n    let newSight = dimVision < 60 ? 60 : dimVision\n    await target.update({\"dimSight\" : newSight});\n    await tactor.update({\"token.dimSight\" : newSight})\n    ChatMessage.create({content: `${target.name}'s vision has been improved`});\n}\nif(args[0] === \"off\") {\n    let sight = DAE.getFlag(tactor, 'darkvisionSpell');\n    target.update({\"dimSight\" : sight });\n    await tactor.update({\"token.dimSight\" : sight})\n    DAE.unsetFlag(tactor, 'darkvisionSpell');\n    ChatMessage.create({content: `${target.name}'s vision has been returned`});\n}",
-					"author": "E4BVikjIkVl2lL2j"
-				},
-				"data": {
-					"name": "Darkvision",
-					"type": "script",
-					"scope": "global",
-					"command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId)\n\nlet dimVision = target.data.dimSight;\nif (args[0] === \"on\") {\n    DAE.setFlag(tactor, 'darkvisionSpell', dimVision);\n    let newSight = dimVision < 60 ? 60 : dimVision\n    await target.update({\"dimSight\" : newSight});\n    await tactor.update({\"token.dimSight\" : newSight})\n    ChatMessage.create({content: `${target.name}'s vision has been improved`});\n}\nif(args[0] === \"off\") {\n    let sight = DAE.getFlag(tactor, 'darkvisionSpell');\n    target.update({\"dimSight\" : sight });\n    await tactor.update({\"token.dimSight\" : sight})\n    DAE.unsetFlag(tactor, 'darkvisionSpell');\n    ChatMessage.create({content: `${target.name}'s vision has been returned`});\n}",
-					"author": "E4BVikjIkVl2lL2j"
-				},
-				"options": {},
-				"apps": {},
-				"compendium": null
-			}
-		},
 		"midiProperties": {
 			"nodam": false,
 			"fulldam": false,

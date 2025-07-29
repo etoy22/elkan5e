@@ -100,34 +100,6 @@
 				"flags": {}
 			}
 		},
-		"itemacro": {
-			"macro": {
-				"_data": {
-					"name": "Invisibility",
-					"type": "script",
-					"scope": "global",
-					"command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId)\n\n\nif (args[0] === \"on\") {\n    ChatMessage.create({ content: `${target.name} turns invisible` });\n    target.update({ \"hidden\": true });\n}\nif (args[0] === \"off\") {\n    ChatMessage.create({ content: `${target.name} re-appears` });\n    target.update({ \"hidden\": false });\n}",
-					"author": "E4BVikjIkVl2lL2j"
-				},
-				"data": {
-					"name": "Invisibility",
-					"type": "script",
-					"scope": "global",
-					"command": "//DAE Item Macro, no arguments passed\nif (!game.modules.get(\"advanced-macros\")?.active) {ui.notifications.error(\"Please enable the Advanced Macros module\") ;return;}\n\nconst lastArg = args[args.length - 1];\nconst target = canvas.tokens.get(lastArg.tokenId)\n\n\nif (args[0] === \"on\") {\n    ChatMessage.create({ content: `${target.name} turns invisible`, whisper: [game.user] });\n    target.update({ \"hidden\": true });\n}\nif (args[0] === \"off\") {\n    ChatMessage.create({ content: `${target.name} re-appears`, whisper: [game.user] });\n    target.update({ \"hidden\": false });\n}",
-					"author": "zrPR3wueYsESSBR3",
-					"_id": null,
-					"img": "icons/svg/dice-target.svg",
-					"folder": null,
-					"permission": {
-						"default": 0
-					},
-					"flags": {}
-				},
-				"options": {},
-				"apps": {},
-				"compendium": null
-			}
-		},
 		"midi-qol": {
 			"onUseMacroName": "",
 			"effectActivation": false,

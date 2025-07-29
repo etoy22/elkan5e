@@ -17,34 +17,6 @@
 			"effectCondition": "",
 			"reactionCondition": ""
 		},
-		"itemacro": {
-			"macro": {
-				"_data": {
-					"name": "Divine Word",
-					"type": "script",
-					"scope": "global",
-					"command": "////DAE Item Macro, requires CUB and About Time\n\n/**\n * Apply Divine Word to targeted tokens\n * @param {Number} targetHp \n * @param {Boolean} linked \n */\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId)\n\nlet target = canvas.tokens.get(args[1]);\n\nasync function DivineWordApply(target, targetHp, linked) {\n    switch (targetHP) {\n        case (targetHp <= 20): {\n            if (linked = true) {\n                await tactor.update({ \"data.attributes.hp.value\": 0 });\n            } else if (linked = false) {\n                await target.update({ \"actorData.data.attributes.hp.value\": 0 })\n            }\n        }\n            break;\n        case (targetHp <= 30): {\n            await game.cub.addCondition([\"Blinded\", \"Deafened\", \"Stunned\"], target)\n            game.Gametime.doIn({ hours: 1 }, async () => {\n                game.cub.removeCondition([\"Blinded\", \"Deafened\", \"Stunned\"], target)\n            });\n        }\n            break;\n\n        case (targetHp <= 40): {\n            await game.cub.addCondition([\"Blinded\", \"Deafened\"], target)\n            game.Gametime.doIn({ minutes: 10 }, async () => {\n                game.cub.removeCondition([\"Blinded\", \"Deafened\", target])\n            });\n        }\n            break;\n        case (targetHp <= 50): {\n            await game.cub.addCondition(\"Deafened\", target)\n            game.Gametime.doIn({ minutes: 1 }, async () => {\n                game.cub.removeCondition(\"Deafened\", target)\n            });\n        }\n            break;\n    }\n}\nif (args[0] === \"on\") {\n    let targetHp = null;\n    let linked = null;\n    if (target.data.actorLink == true) {\n        targetHp = target.actor.data.data.attributes.hp.value\n        linked = true\n    } else {\n        targetHp = getProperty(target, \"actorData.data.attributes.hp\") || getProperty(target.actor, \"data.data.attributes.hp.value\")\n        linked = false\n    }\n    DivineWordApply(target, targetHp, linked)\n}",
-					"author": "E4BVikjIkVl2lL2j"
-				},
-				"data": {
-					"name": "Divine Word",
-					"type": "script",
-					"scope": "global",
-					"command": "////DAE Item Macro \n\n/**\n * Apply Divine Word to targeted tokens\n * @param {Number} targetHp \n * @param {Boolean} linked \n */\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId)\n\nasync function DivineWordApply(target, targetHp) {\n\n    if (targetHp <= 20) {\n        await target.actor.update({ \"data.attributes.hp.value\": 0 });\n    } else if (targetHp <= 30) {\n        await game.cub.addCondition([\"Blinded\", \"Deafened\", \"Stunned\"], target)\n        game.Gametime.doIn({ hours: 1 }, async () => {\n            game.cub.removeCondition([\"Blinded\", \"Deafened\", \"Stunned\"], target)\n        });\n    } else if (targetHp <= 40) {\n        await game.cub.addCondition([\"Blinded\", \"Deafened\"], target)\n        game.Gametime.doIn({ minutes: 10 }, async () => {\n            game.cub.removeCondition([\"Blinded\", \"Deafened\", target])\n        });\n    } else if (targetHp <= 50) {\n        await game.cub.addCondition(\"Deafened\", target)\n        game.Gametime.doIn({ minutes: 1 }, async () => {\n            game.cub.removeCondition(\"Deafened\", target)\n        });\n    }\n}\nif (args[0] === \"on\") {\n    DivineWordApply(target, target.actor.data.data.attributes.hp.value)\n}",
-					"author": "zrPR3wueYsESSBR3",
-					"_id": null,
-					"img": "icons/svg/dice-target.svg",
-					"folder": null,
-					"permission": {
-						"default": 0
-					},
-					"flags": {}
-				},
-				"options": {},
-				"apps": {},
-				"compendium": null
-			}
-		},
 		"core": {},
 		"midiProperties": {
 			"nodam": false,

@@ -129,27 +129,6 @@
 			"AoETargetTypeIncludeSelf": true,
 			"autoTarget": "default"
 		},
-		"itemacro": {
-			"macro": {
-				"_data": {
-					"name": "Heroism",
-					"type": "script",
-					"scope": "global",
-					"command": "//DAE Macro Execute, Effect Value = \"Macro Name\" t @damage (apply @mod damge of none type)\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId)\n\nlet mod = args[1];\n\nif (args[0] === \"on\") {\n    ChatMessage.create({ content: `Heroism is applied to ${tactor.name}` })\n}\nif (args[0] === \"off\") {\n    ChatMessage.create({ content: \"Heroism ends\" });\n}\nif(args[0] === \"each\"){\nlet bonus = mod > tactor.data.data.attributes.hp.temp ? mod : tactor.data.data.attributes.hp.temp\n    tactor.update({ \"data.attributes.hp.temp\": mod });\n    ChatMessage.create({ content: \"Heroism continues on \" + tactor.name })\n}",
-					"author": "E4BVikjIkVl2lL2j"
-				},
-				"data": {
-					"name": "Heroism",
-					"type": "script",
-					"scope": "global",
-					"command": "//DAE Macro Execute, Effect Value = \"Macro Name\" t @damage (apply @mod damge of none type)\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId)\n\nlet mod = args[1];\n\nif (args[0] === \"on\") {\n    ChatMessage.create({ content: `Heroism is applied to ${tactor.name}` })\n}\nif (args[0] === \"off\") {\n    ChatMessage.create({ content: \"Heroism ends\" });\n}\nif(args[0] === \"each\"){\nlet bonus = mod > tactor.data.data.attributes.hp.temp ? mod : tactor.data.data.attributes.hp.temp\n    tactor.update({ \"data.attributes.hp.temp\": mod });\n    ChatMessage.create({ content: \"Heroism continues on \" + tactor.name })\n}",
-					"author": "E4BVikjIkVl2lL2j"
-				},
-				"options": {},
-				"apps": {},
-				"compendium": null
-			}
-		},
 		"midiProperties": {
 			"nodam": false,
 			"fulldam": false,

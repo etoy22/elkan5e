@@ -130,27 +130,6 @@
 				"flags": {}
 			}
 		},
-		"itemacro": {
-			"macro": {
-				"_data": {
-					"name": "Aid",
-					"type": "script",
-					"scope": "global",
-					"command": "const lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId)\n\nlet buf = (parseInt(args[1])-1) * 5;\nlet curHP = tactor.data.data.attributes.hp.value;\nlet curMax = tactor.data.data.attributes.hp.max;\n\nif (args[0] === \"on\") {\n    tactor.update({\"data.attributes.hp.value\": curHP+buf})\n} else {\n  if (curHP > (curMax)) {\n     tactor.update({\"data.attributes.hp.value\": curMax})\n  }\n}",
-					"author": "E4BVikjIkVl2lL2j"
-				},
-				"data": {
-					"name": "Aid",
-					"type": "script",
-					"scope": "global",
-					"command": "const lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId)\n\nlet buf = (parseInt(args[1])-1) * 5;\nlet curHP = tactor.data.data.attributes.hp.value;\nlet curMax = tactor.data.data.attributes.hp.max;\n\nif (args[0] === \"on\") {\n    tactor.update({\"data.attributes.hp.value\": curHP+buf})\n} else {\n  if (curHP > (curMax)) {\n     tactor.update({\"data.attributes.hp.value\": curMax})\n  }\n}",
-					"author": "E4BVikjIkVl2lL2j"
-				},
-				"options": {},
-				"apps": {},
-				"compendium": null
-			}
-		},
 		"core": {},
 		"midiProperties": {
 			"nodam": false,

@@ -81,27 +81,6 @@
 			"rollAttackPerTarget": "default",
 			"removeAttackDamageButtons": "default"
 		},
-		"itemacro": {
-			"macro": {
-				"_data": {
-					"name": "Grease",
-					"type": "script",
-					"scope": "global",
-					"command": "//On use macro to apply an item's active effects to the placed template instead of applying through the normal midi QoL workflow \n// requires midi qol, furnace and Active Auras \ndebugger\nif (args[0].tag === \"OnUse\") {\n    let template = canvas.templates.get(args[0].templateId)\n    let effects = args[0].item.effects\n    let templateEffectData = []\n    for (let effect of effects) {\n        let data = { data: duplicate(effect), parentActorId: false, parentActorLink: false, entityType: \"template\", entityId: template.id, }\n        templateEffectData.push(data)\n    }\n    await template.setFlag(\"ActiveAuras\", \"IsAura\", templateEffectData)\n    ActiveAuras.CollateAuras(canvas.scene.id, true, false, \"spellCast\")\n    return { haltEffectsApplication: true }\n}\n\n\nelse if (args[0] === \"on\") {\n    const lastArg = args[args.length - 1];\n    let tactor;\n    if (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\n    else tactor = game.actors.get(lastArg.actorId);\n    const target = canvas.tokens.get(lastArg.tokenId)\n    const DAEitem = lastArg.efData.flags.dae.itemData\n    const saveData = DAEitem.data.save\n    const flavor = `${CONFIG.DND5E.abilities[\"dex\"]} DC${args[1]} ${DAEitem?.name || \"\"}`;\n    let saveRoll = (await tactor.rollAbilitySave(\"dex\", { flavor })).total;\n    if (saveRoll < args[1]) {\n        game.cub.addCondition(\"Prone\", token)\n    }\n}\n\nelse if (args[0] === \"each\") {\n\n    const lastArg = args[args.length - 1];\n    let tactor;\n    if (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\n    else tactor = game.actors.get(lastArg.actorId);\n    const target = canvas.tokens.get(lastArg.tokenId)\n    const DAEitem = lastArg.efData.flags.dae.itemData\n    const saveData = DAEitem.data.save\n    const flavor = `${CONFIG.DND5E.abilities[\"dex\"]} DC${args[1]} ${DAEitem?.name || \"\"}`;\nlet saveRoll = (await tactor.rollAbilitySave(\"dex\", { flavor })).total;\n    if (saveRoll < args[1]) {\n        game.cub.addCondition(\"Prone\", token)\n    }\n}",
-					"author": "E4BVikjIkVl2lL2j"
-				},
-				"data": {
-					"name": "Grease",
-					"type": "script",
-					"scope": "global",
-					"command": "//On use macro to apply an item's active effects to the placed template instead of applying through the normal midi QoL workflow \n// requires midi qol, furnace and Active Auras \ndebugger\nif (args[0].tag === \"OnUse\") {\n    let template = canvas.templates.get(args[0].templateId)\n    let effects = args[0].item.effects\n    let templateEffectData = []\n    for (let effect of effects) {\n        let data = { data: duplicate(effect), parentActorId: false, parentActorLink: false, entityType: \"template\", entityId: template.id, }\n        templateEffectData.push(data)\n    }\n    await template.setFlag(\"ActiveAuras\", \"IsAura\", templateEffectData)\n    ActiveAuras.CollateAuras(canvas.scene.id, true, false, \"spellCast\")\n    return { haltEffectsApplication: true }\n}\n\n\nelse if (args[0] === \"on\") {\n    const lastArg = args[args.length - 1];\n    let tactor;\n    if (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\n    else tactor = game.actors.get(lastArg.actorId);\n    const target = canvas.tokens.get(lastArg.tokenId)\n    const DAEitem = lastArg.efData.flags.dae.itemData\n    const saveData = DAEitem.data.save\n    const flavor = `${CONFIG.DND5E.abilities[\"dex\"]} DC${args[1]} ${DAEitem?.name || \"\"}`;\n    let saveRoll = (await tactor.rollAbilitySave(\"dex\", { flavor })).total;\n    if (saveRoll < args[1]) {\n        game.cub.addCondition(\"Prone\", token)\n    }\n}\n\nelse if (args[0] === \"each\") {\n\n    const lastArg = args[args.length - 1];\n    let tactor;\n    if (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\n    else tactor = game.actors.get(lastArg.actorId);\n    const target = canvas.tokens.get(lastArg.tokenId)\n    const DAEitem = lastArg.efData.flags.dae.itemData\n    const saveData = DAEitem.data.save\n    const flavor = `${CONFIG.DND5E.abilities[\"dex\"]} DC${args[1]} ${DAEitem?.name || \"\"}`;\nlet saveRoll = (await tactor.rollAbilitySave(\"dex\", { flavor })).total;\n    if (saveRoll < args[1]) {\n        game.cub.addCondition(\"Prone\", token)\n    }\n}",
-					"author": "E4BVikjIkVl2lL2j"
-				},
-				"options": {},
-				"apps": {},
-				"compendium": null
-			}
-		},
 		"core": {},
 		"midiProperties": {
 			"nodam": false,

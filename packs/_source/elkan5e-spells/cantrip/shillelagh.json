@@ -143,27 +143,6 @@
 				}
 			]
 		},
-		"itemacro": {
-			"macro": {
-				"_data": {
-					"name": "Shillelagh",
-					"type": "script",
-					"scope": "global",
-					"command": "const lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\n\nlet weapons = tactor.items.filter(i => i.data.type === `weapon`);\nlet weapon_content = ``;\n\nfor (let weapon of weapons) {\n    weapon_content += `<option value=${weapon.id}>${weapon.name}</option>`;\n}\nif (args[0] === \"on\") {\n    let content = `\n<div class=\"form-group\">\n  <label>Weapons : </label>\n  <select name=\"weapons\">\n    ${weapon_content}\n  </select>\n</div>`;\n\n    new Dialog({\n        title: \"Choose a club or quarterstaff\",\n        content,\n        buttons:\n        {\n            Ok:\n            {\n                label: `Ok`,\n                callback: (html) => {\n                    let itemId = html.find('[name=weapons]')[0].value;\n                    let weaponItem = tactor.items.get(itemId);\n                    let copy_item = duplicate(weaponItem);\n                    DAE.setFlag(tactor, `shillelagh`, {\n                        id : itemId,\n                        damage : copy_item.data.damage.parts[0][0]    \n                    });\n                    let damage = copy_item.data.damage.parts[0][0];\n                    var newdamage = damage.replace(/1d(4|6)/g,\"1d8\");\n                    copy_item.data.damage.parts[0][0] = newdamage;\n                    copy_item.data.ability = \"wis\";\n                    tactor.updateEmbeddedEntity(\"OwnedItem\", copy_item);\n                    ChatMessage.create({content: copy_item.name + \" is empowered\"});\n                }\n            },\n            Cancel:\n            {\n                label: `Cancel`\n            }\n        }\n    }).render(true);\n}\n\nif (args[0] === \"off\") {\n    let flag = DAE.getFlag(tactor, `shillelagh`);\n    let weaponItem = tactor.items.get(flag.id);\n    let copy_item = duplicate(weaponItem);\n    copy_item.data.damage.parts[0][0] = flag.damage;\n    copy_item.data.ability = \"\";\n    tactor.updateEmbeddedEntity(\"OwnedItem\", copy_item);\n    DAE.unsetFlag(tactor, `shillelagh`);\n    ChatMessage.create({content: copy_item.name + \" returns to normal\"});\n\n}",
-					"author": "E4BVikjIkVl2lL2j"
-				},
-				"data": {
-					"name": "Shillelagh",
-					"type": "script",
-					"scope": "global",
-					"command": "const lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\n\nlet weapons = tactor.items.filter(i => i.data.type === `weapon`);\nlet weapon_content = ``;\n\nfor (let weapon of weapons) {\n    weapon_content += `<option value=${weapon.id}>${weapon.name}</option>`;\n}\nif (args[0] === \"on\") {\n    let content = `\n<div class=\"form-group\">\n  <label>Weapons : </label>\n  <select name=\"weapons\">\n    ${weapon_content}\n  </select>\n</div>`;\n\n    new Dialog({\n        title: \"Choose a club or quarterstaff\",\n        content,\n        buttons:\n        {\n            Ok:\n            {\n                label: `Ok`,\n                callback: (html) => {\n                    let itemId = html.find('[name=weapons]')[0].value;\n                    let weaponItem = tactor.items.get(itemId);\n                    let copy_item = duplicate(weaponItem);\n                    DAE.setFlag(tactor, `shillelagh`, {\n                        id : itemId,\n                        damage : copy_item.data.damage.parts[0][0]    \n                    });\n                    let damage = copy_item.data.damage.parts[0][0];\n                    var newdamage = damage.replace(/1d(4|6)/g,\"1d8\");\n                    copy_item.data.damage.parts[0][0] = newdamage;\n                    copy_item.data.ability = \"wis\";\n                    tactor.updateEmbeddedEntity(\"OwnedItem\", copy_item);\n                    ChatMessage.create({content: copy_item.name + \" is empowered\"});\n                }\n            },\n            Cancel:\n            {\n                label: `Cancel`\n            }\n        }\n    }).render(true);\n}\n\nif (args[0] === \"off\") {\n    let flag = DAE.getFlag(tactor, `shillelagh`);\n    let weaponItem = tactor.items.get(flag.id);\n    let copy_item = duplicate(weaponItem);\n    copy_item.data.damage.parts[0][0] = flag.damage;\n    copy_item.data.ability = \"\";\n    tactor.updateEmbeddedEntity(\"OwnedItem\", copy_item);\n    DAE.unsetFlag(tactor, `shillelagh`);\n    ChatMessage.create({content: copy_item.name + \" returns to normal\"});\n\n}",
-					"author": "E4BVikjIkVl2lL2j"
-				},
-				"options": {},
-				"apps": {},
-				"compendium": null
-			}
-		},
 		"core": {},
 		"midiProperties": {
 			"confirmTargets": "default",

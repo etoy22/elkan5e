@@ -121,36 +121,6 @@
 			"activeEquipped": false,
 			"alwaysActive": false
 		},
-		"itemacro": {
-			"macro": {
-				"_data": {
-					"name": "Warding Bond",
-					"type": "script",
-					"scope": "global",
-					"command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target @item\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId)\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\n\nlet caster = canvas.tokens.placeables.find(token => token?.actor?.items.get(DAEItem._id) != null)\n\nif (args[0] === \"on\") {\n    await DAE.setFlag(tactor, \"WardingBondIds\", {\n        tokenID: tactor.id,\n        casterID: caster.actor.id\n    })\n    SetWardingBondHook(target)\n\n}\n\nasync function SetWardingBondHook(target) {\n    const hookId = Hooks.on(\"preUpdateActor\", async (actor, update) => {\n        let flag = await DAE.getFlag(tactor, \"WardingBondIds\")\n        if (flag.tokenID !== actor.id) return\n        if (!\"actorData.data.attributes.hp\" in update) return;\n        let oldHP = actor.data.data.attributes.hp.value;\n        let newHP = getProperty(update, \"data.attributes.hp.value\");\n        let hpChange = oldHP - newHP\n        if (hpChange > 0 && typeof hpChange === \"number\") {\n            let caster = game.actors.get(flag.casterID).getActiveTokens()[0]\n            caster.actor.applyDamage(hpChange)\n        }\n    })\n    DAE.setFlag(tactor, \"WardingBondHook\", hookId)\n    \n}\n\nasync function RemoveHook() {\n    let flag = await DAE.getFlag(tactor, 'WardingBondHook');\n    Hooks.off(\"preUpdateActor\", flag);\n    await DAE.unsetFlag(tactor, \"WardingBondHook\");\n}\n\nif (args[0] === \"off\") {\n    RemoveHook()\n    await DAE.unsetFlag(tactor, \"WardingBondIds\");\n    console.log(\"Death Ward removed\");\n}\n\nif (args[0] === \"each\") {\n    await RemoveHook()\n    await SetWardingBondHook()\n}",
-					"author": "E4BVikjIkVl2lL2j"
-				},
-				"data": {
-					"name": "Warding Bond",
-					"type": "script",
-					"scope": "global",
-					"command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target @item\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId)\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\n\nlet caster = canvas.tokens.placeables.find(token => token?.actor?.items.get(DAEItem._id) != null)\n\nif (args[0] === \"on\") {\n    await DAE.setFlag(tactor, \"WardingBondIds\", {\n        tokenID: tactor.id,\n        casterID: caster.actor.id\n    })\n    SetWardingBondHook(target)\n\n}\n\nasync function SetWardingBondHook(target) {\n    const hookId = Hooks.on(\"preUpdateActor\", async (actor, update) => {\n        let flag = await DAE.getFlag(tactor, \"WardingBondIds\")\n        if (flag.tokenID !== actor.id) return\n        if (!\"actorData.data.attributes.hp\" in update) return;\n        let oldHP = actor.data.data.attributes.hp.value;\n        let newHP = getProperty(update, \"data.attributes.hp.value\");\n        let hpChange = oldHP - newHP\n        if (hpChange > 0 && typeof hpChange === \"number\") {\n            let caster = game.actors.get(flag.casterID).getActiveTokens()[0]\n            caster.actor.applyDamage(hpChange)\n        }\n    })\n    DAE.setFlag(tactor, \"WardingBondHook\", hookId)\n    \n}\n\nasync function RemoveHook() {\n    let flag = await DAE.getFlag(tactor, 'WardingBondHook');\n    Hooks.off(\"preUpdateActor\", flag);\n    await DAE.unsetFlag(tactor, \"WardingBondHook\");\n}\n\nif (args[0] === \"off\") {\n    RemoveHook()\n    await DAE.unsetFlag(tactor, \"WardingBondIds\");\n    console.log(\"Death Ward removed\");\n}\n\nif (args[0] === \"each\") {\n    await RemoveHook()\n    await SetWardingBondHook()\n}",
-					"author": "E4BVikjIkVl2lL2j"
-				},
-				"options": {},
-				"apps": {},
-				"compendium": null,
-				"name": "Warding Bond",
-				"img": "icons/magic/control/energy-stream-link-white.webp",
-				"type": "script",
-				"scope": "global",
-				"command": "",
-				"author": "3Yi0HjF4PKCA4vX0",
-				"_id": null,
-				"folder": null,
-				"flags": {}
-			}
-		},
 		"midi-qol": {
 			"onUseMacroName": "",
 			"effectActivation": false,

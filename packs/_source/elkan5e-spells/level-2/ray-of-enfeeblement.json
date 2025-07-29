@@ -95,34 +95,6 @@
 				"flags": {}
 			}
 		},
-		"itemacro": {
-			"macro": {
-				"_data": {
-					"name": "Ray of Enfeeblement",
-					"type": "script",
-					"scope": "global",
-					"command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target \n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId)\nlet weapons = tactor.items.filter(i => i.data.type === `weapon`);\n\n/**\n * For every str weapon, update the damage formulas to half the damage, set flag of original\n */\nif (args[0] === \"on\") {\n    for (let weapon of weapons) {\n        if (weapon.abilityMod === \"str\") {\n            let newWeaponParts = duplicate(weapon.data.data.damage.parts);\n            weapon.setFlag('world', 'RayOfEnfeeblement', newWeaponParts);\n            for (let part of weapon.data.data.damage.parts) {\n                part[0] = `floor((${part[0]})/2)`;\n            }\n            weapon.update({ \"data.damage.parts\": weapon.data.data.damage.parts });\n        }\n    }\n}\n\n// Update weapons to old value\nif (args[0] === \"off\") {\n    for (let weapon of weapons) {\n        let parts = weapon.getFlag('world', 'RayOfEnfeeblement');\n\n        weapon.update({ \"data.damage.parts\": parts });\n    }\n}",
-					"author": "E4BVikjIkVl2lL2j"
-				},
-				"data": {
-					"name": "Ray of Enfeeblement",
-					"type": "script",
-					"scope": "global",
-					"command": "//DAE Item Macro Execute, no arguments\nif (!game.modules.get(\"advanced-macros\")?.active) ui.notifications.error(\"Please enable the Advanced Macros module\")\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nlet weapons = tactor.items.filter(i => i.data.type === `weapon`);\n\n/**\n * For every str weapon, update the damage formulas to half the damage, set flag of original\n */\nif (args[0] === \"on\") {\n    for (let weapon of weapons) {\n        if (weapon.abilityMod === \"str\") {\n            let newWeaponParts = duplicate(weapon.data.data.damage.parts);\n            weapon.setFlag('world', 'RayOfEnfeeblement', newWeaponParts);\n            for (let part of weapon.data.data.damage.parts) {\n                part[0] = `floor((${part[0]})/2)`;\n            }\n            weapon.update({ \"data.damage.parts\": weapon.data.data.damage.parts });\n        }\n    }\n}\n\n// Update weapons to old value\nif (args[0] === \"off\") {\n    for (let weapon of weapons) {\n        let parts = weapon.getFlag('world', 'RayOfEnfeeblement');\n        weapon.update({ \"data.damage.parts\": parts });\n    }\n}",
-					"author": "zrPR3wueYsESSBR3",
-					"_id": null,
-					"img": "icons/svg/dice-target.svg",
-					"folder": null,
-					"permission": {
-						"default": 0
-					},
-					"flags": {}
-				},
-				"options": {},
-				"apps": {},
-				"compendium": null
-			}
-		},
 		"midi-qol": {
 			"onUseMacroName": "",
 			"effectActivation": false,

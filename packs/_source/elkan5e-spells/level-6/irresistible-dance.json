@@ -101,34 +101,6 @@
 				"flags": {}
 			}
 		},
-		"itemacro": {
-			"macro": {
-				"_data": {
-					"name": "Irresistible Dance",
-					"type": "script",
-					"scope": "global",
-					"command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target @attributes.spell.dc @item\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEItem.data.save\n\n\nif (args[0] === \"each\") {\n    new Dialog({\n        title: \"Use action to make a wisdom save to end Irresistible Dance?\",\n        buttons: {\n            one: {\n                label: \"Yes\",\n                callback: async () => {\n                    const flavor = `${CONFIG.DND5E.abilities[saveData.ability]} DC${saveData.dc} ${DAEItem?.name || \"\"}`;\n                    let saveRoll = (await tactor.rollAbilitySave(saveData.ability, { flavor })).total;\n\n                    if (saveRoll >= saveData.dc) {\n                        target.actor.deleteEmbeddedEntity(\"ActiveEffect\", lastArg.effectId);\n                    }\n                    if (saveRoll < saveData.dc) {\n                        ChatMessage.create({ content: `${target.name} fails the save` });\n                    }\n                }\n            },\n            two: {\n                label: \"No\",\n                callback: () => {\n                }\n            }\n        }\n    }).render(true);\n}",
-					"author": "E4BVikjIkVl2lL2j"
-				},
-				"data": {
-					"name": "Irresistible Dance",
-					"type": "script",
-					"scope": "global",
-					"command": "//DAE Macro , Effect Value = @attributes.spell.dc\nif(!game.modules.get(\"advanced-macros\")?.active) {ui.notifications.error(\"Please enable the Advanced Macros module\") ;return;}\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEItem.data.save\nconst DC = args[1]\n\nif (args[0] === \"each\") {\n    new Dialog({\n        title: \"Use action to make a wisdom save to end Irresistible Dance?\",\n        buttons: {\n            one: {\n                label: \"Yes\",\n                callback: async () => {\n                    const flavor = `${CONFIG.DND5E.abilities[saveData.ability]} DC${DC} ${DAEItem?.name || \"\"}`;\n                    let saveRoll = (await tactor.rollAbilitySave(saveData.ability, { flavor })).total;\n\n                    if (saveRoll >= DC) {\n                        tactor.deleteEmbeddedEntity(\"ActiveEffect\", lastArg.effectId);\n                    }\n                    if (saveRoll < DC) {\n                        ChatMessage.create({ content: `${tactor.name} fails the save` });\n                    }\n                }\n            },\n            two: {\n                label: \"No\",\n                callback: () => {\n                }\n            }\n        }\n    }).render(true);\n}",
-					"author": "zrPR3wueYsESSBR3",
-					"_id": null,
-					"img": "icons/svg/dice-target.svg",
-					"folder": null,
-					"permission": {
-						"default": 0
-					},
-					"flags": {}
-				},
-				"options": {},
-				"apps": {},
-				"compendium": null
-			}
-		},
 		"core": {},
 		"midi-qol": {
 			"onUseMacroName": "",
