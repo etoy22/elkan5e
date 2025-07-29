@@ -1,0 +1,266 @@
+{
+	"name": "Forbiddance",
+	"type": "spell",
+	"img": "icons/sundries/misc/key-ring-long-silver.webp",
+	"effects": [],
+	"folder": "sDaRY0H81UTha6hq",
+	"flags": {
+		"midi-qol": {
+			"onUseMacroName": "",
+			"effectActivation": false,
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"core": {},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"confirmTargets": "default",
+			"noConcentrationCheck": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic",
+				"material",
+				"ritual"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>You magically activate a wardstone, which lodges itself into position and weaves a spell over the area to block magical entry.</em></p><p><strong>Materials:</strong> You require a @UUID[Compendium.elkan5e.elkan5e-spells.Item.cB0Cwt5l7TefAUlC]{Wardstone} that weighs 10 lbs, typically valued at 500 gold. This spell doesn't consume the Wardstone, but the Wardstone cannot be used again until the spell ends.</p><p><strong>Ritual Casting Time</strong>: 1 Hour</p><p><strong>Utility Spell</strong></p><ul><li><p>The Wardstone becomes immobile and emanates a magical field over an area. The area must fit inside a 1000 foot radius and not overlap with another Forbiddance effect.</p></li><li><p>Creatures can't teleport into the radius or enter the area through another plane. When you cast this spell, you designate a password or keyed item. A creature that speaks the password or carries the keyed item can bypass the Forbiddance spell.</p></li></ul><ul><li><p>Forbiddance can be ended by casting <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.piOfkIqVwkpV4Znb]{Break Enchantment}</em> on the wardstone. The caster can also end the spell by touching the Wardstone and saying a command word. Finally, the Wardstone can be destroyed with the <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.057CZWwhMSyXT0M3]{Disintegrate} </em>spell, which ends Forbiddance<em>.</em></p></li></ul>",
+			"chat": "<p><strong>Materials:</strong> You require a @UUID[Compendium.elkan5e.elkan5e-spells.Item.cB0Cwt5l7TefAUlC]{Wardstone} that weighs 10 lbs, typically valued at 500 gold. This spell doesn't consume the Wardstone, but the Wardstone cannot be used again until the spell ends.</p><p><strong>Ritual Casting Time</strong>: 1 Hour</p><p><strong>Utility Spell</strong></p><ul><li><p>The Wardstone becomes immobile and emanates a magical field over an area. The area must fit inside a 1000 foot radius and not overlap with another Forbiddance effect.</p></li><li><p>Creatures can't teleport into the radius or enter the area through another plane. When you cast this spell, you designate a password or keyed item. A creature that speaks the password or carries the keyed item can bypass the Forbiddance spell.</p></li></ul><ul><li><p>Forbiddance can be ended by casting <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.piOfkIqVwkpV4Znb]{Break Enchantment}</em> on the wardstone. The caster can also end the spell by touching the Wardstone and saying a command word. Finally, the Wardstone can be destroyed with the <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.057CZWwhMSyXT0M3]{Disintegrate} </em>spell, which ends Forbiddance<em>.</em></p></li></ul>"
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/forbiddance",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "minute",
+			"condition": "",
+			"value": 10
+		},
+		"duration": {
+			"value": "1",
+			"units": "year"
+		},
+		"target": {
+			"affects": {
+				"choice": false,
+				"count": "",
+				"type": ""
+			},
+			"template": {
+				"units": "ft",
+				"contiguous": false,
+				"type": "emanationNoTemplate",
+				"size": "1000",
+				"count": ""
+			}
+		},
+		"range": {
+			"units": "touch",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 6,
+		"school": "abj",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 500,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"material",
+			"ritual"
+		],
+		"activities": {
+			"A9beCf6NNav03w43": {
+				"type": "utility",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"roll": {
+					"formula": "",
+					"name": "",
+					"prompt": false,
+					"visible": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": []
+				},
+				"sort": 0,
+				"_id": "A9beCf6NNav03w43"
+			},
+			"wK73duHhbntk6x50": {
+				"type": "utility",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"roll": {
+					"formula": "",
+					"name": "",
+					"prompt": false,
+					"visible": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"sort": 0,
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"forceDialog": false,
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"_id": "wK73duHhbntk6x50",
+				"name": "Ritual",
+				"img": "",
+				"appliedEffects": []
+			}
+		},
+		"identifier": ""
+	},
+	"_id": "dU9ntCb3obW5GJTM",
+	"_key": "!items!dU9ntCb3obW5GJTM"
+}

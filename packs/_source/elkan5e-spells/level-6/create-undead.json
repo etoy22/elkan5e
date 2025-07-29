@@ -1,0 +1,233 @@
+{
+	"name": "Create Undead",
+	"type": "spell",
+	"img": "icons/magic/death/hand-dirt-undead-zombie.webp",
+	"effects": [],
+	"folder": "sDaRY0H81UTha6hq",
+	"flags": {
+		"core": {},
+		"midi-qol": {
+			"effectActivation": false,
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"confirmTargets": "default",
+			"noConcentrationCheck": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic",
+				"material"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p>You can cast this spell only at night. Choose up to three corpses of Medium or Small humanoids within range. Each corpse becomes a ghoul under your control. (The DM has game statistics for these creatures.)</p><p>As a bonus action on each of your turns, you can mentally command any creature you animated with this spell if the creature is within 120 feet of you (if you control multiple creatures, you can command any or all of them at the same time, issuing the same command to each one). You decide what action the creature will take and where it will move during its next turn, or you can issue a general command, such as to guard a particular chamber or corridor. If you issue no commands, the creature only defends itself against hostile creatures. Once given an order, the creature continues to follow it until its task is complete.</p><p>The creature is under your control for 24 hours, after which it stops obeying any command you have given it. To maintain control of the creature for another 24 hours, you must cast this spell on the creature before the current 24-hour period ends. This use of the spell reasserts your control over up to three creatures you have animated with this spell, rather than animating new ones.</p><p></p><p><strong>Upcasting:</strong> When you cast this spell using a 7th-level spell slot, you can animate or reassert control over four ghouls. When you cast this spell using an 8th-level spell slot, you can animate or reassert control over five ghouls or two ghasts or wights. When you cast this spell using a 9th-level spell slot, you can animate or reassert control over six ghouls, three ghasts or wights, or two mummies.</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "Elkan 5e",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "minute",
+			"condition": "You can cast this spell only at night.",
+			"value": 1
+		},
+		"duration": {
+			"value": "",
+			"units": "inst"
+		},
+		"target": {
+			"affects": {
+				"type": "creature",
+				"count": "3",
+				"choice": false,
+				"special": ""
+			},
+			"template": {
+				"units": "",
+				"contiguous": false,
+				"type": ""
+			}
+		},
+		"range": {
+			"value": "10",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 6,
+		"school": "nec",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 150,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"material",
+			"mgc"
+		],
+		"activities": {
+			"tPTZCd1jgr8EeTHk": {
+				"type": "summon",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"bonuses": {
+					"ac": "",
+					"hd": "",
+					"hp": "",
+					"attackDamage": "",
+					"saveDamage": "",
+					"healing": ""
+				},
+				"creatureSizes": [],
+				"creatureTypes": [],
+				"match": {
+					"attacks": false,
+					"proficiency": false,
+					"saves": false
+				},
+				"profiles": [
+					{
+						"count": "@item.level - 6",
+						"name": "",
+						"_id": "GGQa2fXx4sJFOhCv",
+						"uuid": "Compendium.dnd5e.monsters.Actor.IyIybE5t2adMEVUM",
+						"level": {
+							"min": 8,
+							"max": null
+						},
+						"types": []
+					},
+					{
+						"count": "@item.level - 3",
+						"name": "",
+						"_id": "439tNP7qngefOmVd",
+						"uuid": "Compendium.dnd5e.monsters.Actor.OBujQLLPSmlJiZnL",
+						"level": {
+							"min": null,
+							"max": null
+						},
+						"types": []
+					},
+					{
+						"count": "@item.level - 7",
+						"name": "",
+						"_id": "8377f4szK4aEYLqD",
+						"uuid": "Compendium.dnd5e.monsters.Actor.t8WYD7ak07X7xpx8",
+						"level": {
+							"min": 9,
+							"max": null
+						},
+						"types": []
+					},
+					{
+						"count": "@item.level - 6",
+						"name": "",
+						"_id": "1wXs9fpxffiMlT1j",
+						"uuid": "Compendium.dnd5e.monsters.Actor.rbyp54px2D0ql4QK",
+						"level": {
+							"min": 8,
+							"max": null
+						},
+						"types": []
+					}
+				],
+				"summon": {
+					"identifier": "",
+					"mode": "",
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": []
+				},
+				"sort": 0,
+				"effects": [],
+				"_id": "tPTZCd1jgr8EeTHk"
+			}
+		},
+		"identifier": ""
+	},
+	"_id": "naW0Ym5t87dZ3Z9Z",
+	"_key": "!items!naW0Ym5t87dZ3Z9Z"
+}

@@ -1,0 +1,273 @@
+{
+	"folder": "n9GtLA8IFh2LwcK7",
+	"name": "Deflect Elements",
+	"type": "feat",
+	"_id": "DTZI9xO5vXSldkWj",
+	"img": "icons/magic/defensive/armor-shield-barrier-steel.webp",
+	"system": {
+		"activities": {
+			"YTALgGV5JGqZG9cG": {
+				"type": "utility",
+				"_id": "YTALgGV5JGqZG9cG",
+				"sort": 0,
+				"activation": {
+					"type": "reaction",
+					"value": null,
+					"override": false,
+					"condition": "When you take acid, cold, electric, fire, or sonic damage"
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "Compendium.elkan5e.elkan5e-class-features.Item.IXk7hfrAoVQU3dLJ"
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "A7p2a7h7RyD0fkR0"
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"type": "self",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"useConditionText": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"forceDialog": false,
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"identifier": ""
+				},
+				"name": "Deflect Elements",
+				"img": "",
+				"appliedEffects": [
+					"A7p2a7h7RyD0fkR0"
+				]
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"max": ""
+		},
+		"description": {
+			"value": "<p><strong>Reaction</strong> - Self - 2 Ki - Magical</p><p><em>Trigger: You take &amp;reference[acid], &amp;reference[cold], &amp;reference[lightning], &amp;reference[fire], or &amp;reference[thunder] damage.</em></p><p>You halve the damage, then use the absorbed energy to make a single @UUID[Compendium.elkan5e.elkan5e-class-features.Item.RFs2JK8U1HWwRtRy]{Elemental Thrust} attack.</p>",
+			"chat": ""
+		},
+		"identifier": "",
+		"source": {
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"custom": "elkan5e.com/monk",
+			"license": ""
+		},
+		"advancement": [],
+		"cover": null,
+		"crewed": false,
+		"enchant": {},
+		"prerequisites": {
+			"level": null,
+			"repeatable": false
+		},
+		"properties": [
+			"mgc"
+		],
+		"requirements": "Elementalist 10",
+		"type": {
+			"value": "subclass",
+			"subtype": "ki"
+		}
+	},
+	"effects": [
+		{
+			"name": "Deflect Elements",
+			"img": "icons/magic/defensive/armor-shield-barrier-steel.webp",
+			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.DTZI9xO5vXSldkWj",
+			"_id": "A7p2a7h7RyD0fkR0",
+			"type": "base",
+			"system": {},
+			"changes": [
+				{
+					"key": "system.traits.dr.value",
+					"mode": 2,
+					"value": "acid",
+					"priority": 20
+				},
+				{
+					"key": "system.traits.dr.value",
+					"mode": 2,
+					"value": "cold",
+					"priority": 20
+				},
+				{
+					"key": "system.traits.dr.value",
+					"mode": 2,
+					"value": "lightning",
+					"priority": 20
+				},
+				{
+					"key": "system.traits.dr.value",
+					"mode": 2,
+					"value": "fire",
+					"priority": 20
+				},
+				{
+					"key": "system.traits.dr.value",
+					"mode": 2,
+					"value": "thunder",
+					"priority": 20
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 7,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [],
+			"sort": 0,
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"stackable": "multi",
+					"showIcon": true,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [
+						"isHit"
+					],
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!DTZI9xO5vXSldkWj.A7p2a7h7RyD0fkR0"
+		}
+	],
+	"flags": {
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": ""
+		},
+		"midiProperties": {
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		}
+	},
+	"_key": "!items!DTZI9xO5vXSldkWj"
+}

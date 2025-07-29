@@ -1,0 +1,229 @@
+{
+	"folder": "eazGA4ZD48w7Dmiw",
+	"name": "Shield of the Crags",
+	"type": "feat",
+	"_id": "11N2O2L1gec8vqHz",
+	"img": "icons/magic/earth/barrier-stone-brown-green.webp",
+	"system": {
+		"activities": {
+			"YQl1Zt9byWtvvQGo": {
+				"type": "heal",
+				"_id": "YQl1Zt9byWtvvQGo",
+				"sort": 0,
+				"activation": {
+					"type": "bonus",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "Compendium.elkan5e.elkan5e-class-features.Item.3Dlq6orj97yca72n",
+							"scaling": {}
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "minute",
+					"concentration": false,
+					"override": false,
+					"value": "10"
+				},
+				"effects": [
+					{
+						"_id": "Z9FErQiEjWBToqZe"
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "ft",
+					"special": "",
+					"value": "30"
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "6",
+						"type": "ally",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"healing": {
+					"number": null,
+					"denomination": "",
+					"types": [],
+					"custom": {
+						"enabled": true,
+						"formula": "5+(@classes.druid.level / 2)"
+					},
+					"scaling": {
+						"number": 1
+					},
+					"bonus": ""
+				},
+				"useConditionText": "",
+				"forceDialog": false,
+				"effectConditionText": "",
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"Z9FErQiEjWBToqZe"
+				]
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"max": ""
+		},
+		"description": {
+			"value": "<p>You can use a use of your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.3Dlq6orj97yca72n]{Wild Shape} ability to protect your allies.</p><p><em>You conjure floating rocks to float around your allies and protect them. You selectively draw terrain and other obstacles, clearing a path at the same time.</em></p><p><strong>Bonus Action</strong> - 6 Allies (30 ft) - 10 Minutes - Magical</p><ul><li><p>They gain temporary hit points equal to [[/healing 5+(@classes.druid.level /2) temp]]{5 + half your druid level (rounded down)}.</p></li><li><p>While they have these temporary hit points, they have half cover.</p></li></ul>",
+			"chat": ""
+		},
+		"identifier": "",
+		"source": {
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"custom": "elkan5e.com/druid",
+			"license": ""
+		},
+		"enchant": {},
+		"type": {
+			"value": "subclass",
+			"subtype": ""
+		},
+		"prerequisites": {
+			"level": null
+		},
+		"properties": [
+			"mgc"
+		],
+		"requirements": "Earthshaker 3"
+	},
+	"effects": [
+		{
+			"name": "Shield of the Crags",
+			"changes": [],
+			"transfer": false,
+			"img": "icons/magic/earth/barrier-stone-brown-green.webp",
+			"_id": "Z9FErQiEjWBToqZe",
+			"type": "base",
+			"system": {},
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 600,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"origin": null,
+			"tint": "#ffffff",
+			"statuses": [
+				"coverHalf"
+			],
+			"sort": 0,
+			"flags": {
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [
+						"None"
+					]
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
+				}
+			},
+			"_key": "!items.effects!11N2O2L1gec8vqHz.Z9FErQiEjWBToqZe"
+		}
+	],
+	"flags": {
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"effectCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"_key": "!items!11N2O2L1gec8vqHz"
+}
