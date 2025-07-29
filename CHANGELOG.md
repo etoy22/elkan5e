@@ -1,4 +1,52 @@
 # Changelog
+# v1.12.27
+
+## Bug Fixes
+- Fixed Standard Action
+
+## Classes
+**[Bard](https://www.elkan5e.com/bard)**
+- Warchanter:
+- Fixed Warchant
+
+**[Druid](https://www.elkan5e.com/druid)**
+- Wild Shape now resets on a Short Rest
+- Revised Druid subclasses
+- Grassland -> Shepard:
+- New spell list
+- New level 10 feature
+- Features renamed
+- Shepard's Ward now has limited uses
+- Mountain -> Earthshaker:
+- New spell list
+- New level 6 feature
+- Level 10 feature wording updated
+- Underworld -> Chthonic:
+- New spell list
+- Level 3 and 6 features adjusted
+- New level 10 feature
+
+**[Monk](https://www.elkan5e.com/monk)**
+- Shadowdancer:
+- Fixed incorrect 14th-level feature
+
+**[Ranger](https://www.elkan5e.com/ranger)**
+- Fixed progression chart in class item description
+
+## Game Rules
+- Added *trigger* lines to all reactions (features and spells)
+
+## Spells
+- All level 5 spells are complete
+- *[Thaumaturgy](https://www.elkan5e.com/spells/thaumaturgy)* no longer has a limit of 3 effects at once
+- *[Prestidigitation](https://www.elkan5e.com/spells/prestidigitation)* no longer has a limit of 3 effects at once
+- *Speak with Plants* renamed to *[Speak with Nature](https://www.elkan5e.com/spells/speak-with-nature)* and improved again, with an upcasting option. Replaces *Commune with Nature*
+- *[Banishment](https://www.elkan5e.com/spells/banishment)* damage automation occurs only on success
+- *[Stinking Cloud](https://www.elkan5e.com/spells/stinking-cloud)* now lightly obscures the area instead of heavily obscuring it
+- *[Cloudkill](https://www.elkan5e.com/spells/cloudkill)* now lightly obscures the area instead of heavily obscuring it
+- *[Curse of Doom](https://www.elkan5e.com/spells/curse-of-doom)* now deals one-time damage instead of damage over time
+- *[Gentle Repose](https://www.elkan5e.com/spells/gentle-repose)* now includes a permanent casting option
+
 # v1.12.26
 
 ## Bug Fixes
