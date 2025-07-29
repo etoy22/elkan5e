@@ -1,0 +1,356 @@
+{
+	"folder": "TOjvTMaQMAMN24MV",
+	"name": "Tsunami",
+	"type": "spell",
+	"_id": "1basspH1gLA1y8NF",
+	"img": "icons/magic/water/wave-water-blue.webp",
+	"system": {
+		"activities": {
+			"LnDJHSlJhDy02eF4": {
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "-6",
+							"scaling": {
+								"mode": ""
+							}
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"units": "self"
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"sort": 0,
+				"damage": {
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 6,
+							"denomination": 10,
+							"bonus": "",
+							"types": [
+								"bludgeoning"
+							],
+							"scaling": {
+								"mode": "",
+								"number": 1
+							}
+						}
+					],
+					"onSave": "half",
+					"critical": {
+						"allow": false
+					}
+				},
+				"save": {
+					"ability": [
+						"str"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"name": "Create Tsunami",
+				"_id": "LnDJHSlJhDy02eF4",
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"forceDialog": false,
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": ""
+			},
+			"T5SuLm7LjqNl4J3f": {
+				"type": "save",
+				"activation": {
+					"type": "",
+					"value": null,
+					"override": true,
+					"condition": "start of each of your turns"
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": false,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "",
+							"scaling": {
+								"mode": ""
+							}
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [],
+				"range": {
+					"override": true,
+					"units": "ft",
+					"special": "moves away from you",
+					"value": "50"
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"sort": 0,
+				"damage": {
+					"parts": [
+						{
+							"custom": {
+								"enabled": true,
+								"formula": "(@item.uses.value)d10"
+							},
+							"number": null,
+							"denomination": 0,
+							"bonus": "",
+							"types": [
+								"bludgeoning"
+							],
+							"scaling": {
+								"mode": "",
+								"number": 1
+							}
+						}
+					],
+					"onSave": "half",
+					"critical": {
+						"allow": false
+					}
+				},
+				"save": {
+					"ability": [
+						"str"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"name": "Start of Turn Effects",
+				"img": "systems/dnd5e/icons/svg/statuses/concentrating.svg",
+				"_id": "T5SuLm7LjqNl4J3f",
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"forceDialog": false,
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": ""
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"max": "6"
+		},
+		"description": {
+			"value": "<p>A wall of water springs into existence at a point you choose within range. You can make the wall up to 300 feet long, 300 feet high, and 50 feet thick. The wall lasts for the duration.</p><p>When the wall appears, each creature in its area makes a Strength saving throw, taking 6d10 Bludgeoning damage on a failed save or half as much damage on a successful one.</p><p>At the start of each of your turns after the wall appears, the wall, along with any creatures in it, moves 50 feet away from you. Any Huge or smaller creature inside the wall or whose space the wall enters when it moves must succeed on a Strength saving throw or take 5d10 Bludgeoning damage. A creature can take this damage only once per round. At the end of the turn, the wall's height is reduced by 50 feet, and the damage the wall deals on later rounds is reduced by 1d10. When the wall reaches 0 feet in height, the spell ends.</p><p>A creature caught in the wall can move by swimming. Because of the wave's force, though, the creature must succeed on a [[/check ability=str skill=ath dc=@attributes.spell.dc]] check against your spell save DC to move at all. If it fails the check, it can't move. A creature that moves out of the wall falls to the ground.</p><section class=\"secret\" id=\"secret-DjnpywHmWDd4OWo0\"><p><strong>Foundry Note</strong></p><p>The limited uses value of this spell tracks the number of rounds remaining from its initial 6, which is reset as part of the <strong>Create Tsunami </strong>activity.</p><p>The <strong>Start of Turn Effects</strong> activity consumes one use to represent one round passing and uses the updated count for its damage rolls.</p></section>",
+			"chat": ""
+		},
+		"identifier": "tsunami",
+		"source": {
+			"revision": 1,
+			"rules": "2024"
+		},
+		"activation": {
+			"type": "minute",
+			"value": 1,
+			"condition": ""
+		},
+		"duration": {
+			"units": "round",
+			"value": "6"
+		},
+		"level": 8,
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"concentration"
+		],
+		"range": {
+			"units": "mi",
+			"special": "",
+			"value": "1"
+		},
+		"school": "con",
+		"target": {
+			"template": {
+				"contiguous": false,
+				"units": "ft",
+				"type": "wall",
+				"size": "300",
+				"width": "50",
+				"height": "300",
+				"count": ""
+			},
+			"affects": {
+				"choice": false,
+				"type": "creature",
+				"count": "",
+				"special": ""
+			}
+		}
+	},
+	"effects": [],
+	"flags": {
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": ""
+		},
+		"midiProperties": {
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		}
+	},
+	"_key": "!items!1basspH1gLA1y8NF"
+}

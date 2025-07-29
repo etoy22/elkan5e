@@ -1,0 +1,262 @@
+{
+	"folder": "iibzWFAaPgRwaEzD",
+	"name": "Brace",
+	"type": "feat",
+	"img": "icons/skills/melee/shield-block-bash-blue.webp",
+	"system": {
+		"description": {
+			"value": "<p><em><strong>Prerequisite: @UUID[Compendium.elkan5e.elkan5e-class-features.Item.tSL6ilfth2TTRNTR]{Fighting Style}</strong></em></p><p><span><em>You prepare yourself for an oncoming blow.</em></span></p><p><strong>Reaction</strong> - 1 Creature - Uses Equal to Proficiency Bonus/Long Rest</p><p><em>Trigger: A creature attacks you for the first time on their turn.</em></p><ul><li><p>You brace to impose disadvantage on the creature's first attack.</p></li></ul>",
+			"chat": ""
+		},
+		"source": {
+			"book": "Elkan 5e",
+			"page": "",
+			"custom": "elkan5e.com/feats/brace",
+			"license": "",
+			"revision": 1,
+			"rules": ""
+		},
+		"uses": {
+			"max": "@attributes.prof",
+			"recovery": [
+				{
+					"period": "lr",
+					"type": "recoverAll"
+				}
+			],
+			"spent": 0
+		},
+		"type": {
+			"value": "feat",
+			"subtype": "manuevers"
+		},
+		"requirements": "Feat (Level 4)",
+		"prerequisites": {
+			"level": 4
+		},
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "utility",
+				"activation": {
+					"type": "reaction",
+					"value": 1,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"scaling": {}
+						}
+					],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "",
+					"units": "inst",
+					"special": "",
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "UzfqSEvAugprw9Nk"
+					}
+				],
+				"range": {
+					"units": "self",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": ""
+					},
+					"affects": {
+						"count": "",
+						"type": "self",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": null,
+					"max": "",
+					"recovery": []
+				},
+				"roll": {
+					"formula": "",
+					"name": "",
+					"prompt": false,
+					"visible": false
+				},
+				"sort": 0,
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"UzfqSEvAugprw9Nk"
+				]
+			}
+		},
+		"identifier": "",
+		"enchant": {},
+		"properties": [],
+		"advancement": [
+			{
+				"_id": "aC5HuW1uXBe16dL0",
+				"type": "AbilityScoreImprovement",
+				"configuration": {
+					"cap": 2,
+					"fixed": {
+						"str": 0,
+						"dex": 0,
+						"con": 0,
+						"int": 0,
+						"wis": 0,
+						"cha": 0
+					},
+					"locked": [],
+					"points": 2
+				},
+				"value": {
+					"type": "asi"
+				},
+				"level": 0,
+				"title": "",
+				"hint": ""
+			}
+		]
+	},
+	"effects": [
+		{
+			"name": "Brace",
+			"changes": [
+				{
+					"key": "flags.midi-qol.grants.disadvantage.attack.all",
+					"mode": 2,
+					"value": "1",
+					"priority": 20
+				}
+			],
+			"transfer": false,
+			"_id": "UzfqSEvAugprw9Nk",
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": null,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"origin": null,
+			"statuses": [],
+			"flags": {
+				"times-up": {
+					"isPassive": false
+				},
+				"dae": {
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": true,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [
+						"isAttacked"
+					]
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
+				}
+			},
+			"tint": "#ffffff",
+			"img": "icons/skills/melee/shield-block-bash-blue.webp",
+			"type": "base",
+			"system": {},
+			"sort": 0,
+			"_key": "!items.effects!IyTu3qiMNHY9pAes.UzfqSEvAugprw9Nk"
+		}
+	],
+	"flags": {
+		"midi-qol": {
+			"effectActivation": false,
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"effectCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"midiProperties": {
+			"confirmTargets": "default",
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"rollOther": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"core": {},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedUses": 2
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"_id": "IyTu3qiMNHY9pAes",
+	"_key": "!items!IyTu3qiMNHY9pAes"
+}

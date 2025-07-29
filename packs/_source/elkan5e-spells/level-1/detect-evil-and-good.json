@@ -1,0 +1,260 @@
+{
+	"name": "Detect Evil and Good",
+	"type": "spell",
+	"img": "icons/magic/unholy/orb-glowing-yellow-purple.webp",
+	"effects": [
+		{
+			"_id": "jzbxpne38fos80hz",
+			"changes": [
+				{
+					"key": "macro.tokenMagic",
+					"mode": 0,
+					"value": "outline",
+					"priority": 20
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 600,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"transfer": false,
+			"flags": {
+				"core": {
+					"overlay": false
+				},
+				"dae": {
+					"stackable": "none",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"transfer": false,
+					"selfTarget": true,
+					"selfTargetAlways": false,
+					"disableIncapacitated": false,
+					"dontApply": false,
+					"showIcon": false,
+					"enableCondition": "",
+					"disableCondition": ""
+				},
+				"ActiveAuras": {
+					"isAura": true,
+					"aura": "All",
+					"radius": "30",
+					"alignment": "",
+					"type": "aberration; celestial; elemental; fey; fiend; undead",
+					"ignoreSelf": true,
+					"height": true,
+					"hidden": true,
+					"displayTemp": true,
+					"hostile": false,
+					"onlyOnce": false,
+					"nameOverride": "",
+					"customCheck": "",
+					"wallsBlock": "system",
+					"statuses": []
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				}
+			},
+			"tint": "#ffffff",
+			"origin": null,
+			"name": "Detect Evil and Good",
+			"description": "",
+			"statuses": [],
+			"img": "icons/magic/unholy/orb-glowing-yellow-purple.webp",
+			"type": "base",
+			"system": {},
+			"sort": 0,
+			"_key": "!items.effects!KzJ4ChPXHr2MnGbz.jzbxpne38fos80hz"
+		}
+	],
+	"folder": "U0k4VGG6bziqf3oH",
+	"flags": {
+		"core": {},
+		"midi-qol": {
+			"effectActivation": false,
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default",
+			"removeAttackDamageButtons": "default"
+		},
+		"midiProperties": {
+			"nodam": false,
+			"halfdam": false,
+			"fulldam": false,
+			"rollOther": false,
+			"critOther": false,
+			"concentration": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"noConcentrationCheck": false,
+			"confirmTargets": "default",
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic",
+				"concentration"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>You gain a second sort of awareness outside of yourself, seeing certain magical creatures in your mind, even when you aren't looking at them.</em></p><p><strong>Buff</strong></p><ul><li><p>You know if there is an &amp;reference[aberration]{Aberration}, &amp;reference[celestial]{Celestial}, &amp;reference[elemental]{Elemental}, &amp;reference[fey], &amp;reference[fiend]{Fiend}, or &amp;reference[undead] within 30 feet of you, as well as where the creature is located. Similarly, you know if there is a place or object within 30 feet of you that has been magically consecrated or desecrated (such as with the <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.TM7nuwiFhBjdE2MT]{Hallow} </em>spell). The spell can penetrate most barriers, but it is blocked by 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt.</p></li></ul><p></p><p><em>This spell does not allow you to accurately see invisible creatures, but you know their location.</em></p>",
+			"chat": "<p><strong>Buff</strong></p><ul><li><p>You know if there is an &amp;reference[aberration]{Aberration}, &amp;reference[celestial]{Celestial}, &amp;reference[elemental]{Elemental}, &amp;reference[fey], &amp;reference[fiend]{Fiend}, or &amp;reference[undead] within 30 feet of you, as well as where the creature is located. Similarly, you know if there is a place or object within 30 feet of you that has been magically consecrated or desecrated (such as with the <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.TM7nuwiFhBjdE2MT]{Hallow} </em>spell). The spell can penetrate most barriers, but it is blocked by 1 foot of stone, 1 inch of common metal, a thin sheet of lead, or 3 feet of wood or dirt.</p></li></ul><p></p><p><em>This spell does not allow you to accurately see invisible creatures, but you know their location.</em></p>"
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/detect-evil-and-good",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "10",
+			"units": "minute"
+		},
+		"target": {
+			"affects": {
+				"special": "",
+				"type": "self",
+				"count": "",
+				"choice": false
+			},
+			"template": {
+				"type": "radius",
+				"units": "ft",
+				"contiguous": false,
+				"size": "30",
+				"count": ""
+			}
+		},
+		"range": {
+			"units": "self",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 1,
+		"school": "div",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"concentration",
+			"mgc"
+		],
+		"activities": {
+			"pakIFO9Shjejkdv7": {
+				"type": "utility",
+				"_id": "pakIFO9Shjejkdv7",
+				"sort": 0,
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "jzbxpne38fos80hz"
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": true,
+					"visible": true,
+					"name": "",
+					"formula": ""
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"jzbxpne38fos80hz"
+				]
+			}
+		},
+		"identifier": ""
+	},
+	"_id": "KzJ4ChPXHr2MnGbz",
+	"_key": "!items!KzJ4ChPXHr2MnGbz"
+}

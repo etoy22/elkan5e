@@ -1,0 +1,228 @@
+{
+	"folder": "8TdNVUtlOTsUcDDC",
+	"name": "Mob Tactics",
+	"type": "feat",
+	"_id": "S92we0Ma9IKTHaG9",
+	"img": "icons/skills/melee/strike-weapons-orange.webp",
+	"system": {
+		"activities": {
+			"JqlZ4sWSRtYhbvYv": {
+				"type": "utility",
+				"_id": "JqlZ4sWSRtYhbvYv",
+				"sort": 0,
+				"activation": {
+					"type": "nocost",
+					"value": null,
+					"override": false,
+					"condition": "One of your allies is within 5 ft. of the target"
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "",
+							"scaling": {}
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "sTdzjytZJJ5ise2V"
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": "self",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"useConditionText": "",
+				"forceDialog": false,
+				"effectConditionText": "",
+				"name": "",
+				"img": "",
+				"appliedEffects": []
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [
+				{
+					"period": "sr",
+					"type": "recoverAll"
+				}
+			],
+			"max": "1"
+		},
+		"description": {
+			"value": "<p>You strike fast and hard, using your ally's help to overcome your target's defenses.</p><p><strong>No Action Cost</strong> - 1 Creature - 1/Short Rest</p><ul><li><p>When you attack a creature and one of your allies is within 5 ft. of the target, you can roll the attack with advantage.​</p></li></ul>",
+			"chat": ""
+		},
+		"identifier": "",
+		"source": {
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"custom": "elkan5e.com/ancestrybackground",
+			"license": ""
+		},
+		"enchant": {},
+		"type": {
+			"value": "background",
+			"subtype": ""
+		},
+		"prerequisites": {
+			"level": null
+		},
+		"properties": [],
+		"requirements": "Criminal"
+	},
+	"effects": [
+		{
+			"name": "Mob Tactics",
+			"img": "icons/skills/melee/strike-weapons-orange.webp",
+			"origin": "Compendium.elkan5e.elkan5e-background.Item.S92we0Ma9IKTHaG9",
+			"transfer": false,
+			"_id": "sTdzjytZJJ5ise2V",
+			"type": "base",
+			"system": {},
+			"changes": [
+				{
+					"key": "flags.midi-qol.advantage.attack.all",
+					"mode": 2,
+					"value": "1",
+					"priority": 20
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": null,
+				"combat": null,
+				"rounds": null,
+				"turns": 1,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [],
+			"sort": 0,
+			"flags": {
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": true,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [
+						"1Attack"
+					]
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
+				}
+			},
+			"_key": "!items.effects!S92we0Ma9IKTHaG9.sTdzjytZJJ5ise2V"
+		}
+	],
+	"flags": {
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"effectCondition": "",
+			"AoETargetType": "any",
+			"autoTarget": "default",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"_key": "!items!S92we0Ma9IKTHaG9"
+}

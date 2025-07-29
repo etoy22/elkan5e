@@ -1,0 +1,290 @@
+{
+	"name": "Wall of Fire",
+	"type": "spell",
+	"img": "icons/magic/fire/barrier-wall-explosion-orange.webp",
+	"effects": [],
+	"folder": "90eJtrVwLFIxcWJw",
+	"flags": {
+		"core": {},
+		"midi-qol": {
+			"effectActivation": false,
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default",
+			"rollAttackPerTarget": "default",
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"otherCondition": ""
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"confirmTargets": "default",
+			"saveDamage": "default",
+			"bonusSaveDamage": "default",
+			"noConcentrationCheck": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic",
+				"material",
+				"concentration"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><strong>Dexterity Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 5d8 fire]] damage.</p></li><li><p><strong>Success:</strong> Half damage.</p></li><li><p><strong>Area Hazard:</strong> The area covered by the wall is &amp;reference[obscuredheavily]. Targets roll a save when they enter or when they end their turn in the wall (but only once per turn).</p></li></ul><p></p><p><strong>Upcasting:</strong> Increase damage by [[/damage 1d8 fire]]{1d8} for each spell level above 4th.</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/wall-of-fire",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "1",
+			"units": "minute"
+		},
+		"target": {
+			"affects": {
+				"choice": false,
+				"count": "",
+				"type": ""
+			},
+			"template": {
+				"units": "ft",
+				"width": "10",
+				"type": "wall",
+				"size": "60",
+				"contiguous": false,
+				"height": "",
+				"count": ""
+			}
+		},
+		"range": {
+			"value": "120",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 4,
+		"school": "evo",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"material",
+			"concentration"
+		],
+		"activities": {
+			"uKgd8XsMvGM1IbmS": {
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": [
+						{
+							"number": 5,
+							"denomination": 8,
+							"bonus": "",
+							"types": [
+								"fire"
+							],
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"scaling": {
+								"mode": "whole",
+								"number": 1,
+								"formula": ""
+							}
+						}
+					]
+				},
+				"save": {
+					"ability": "dex",
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": []
+				},
+				"sort": 0,
+				"_id": "uKgd8XsMvGM1IbmS"
+			},
+			"ZiK0uvuhfodT9M0m": {
+				"type": "save",
+				"_id": "ZiK0uvuhfodT9M0m",
+				"sort": 0,
+				"activation": {
+					"type": "nocost",
+					"value": null,
+					"override": true,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": false,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": true,
+					"units": "spec",
+					"special": ""
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 5,
+							"denomination": 8,
+							"bonus": "",
+							"types": [
+								"fire"
+							],
+							"scaling": {
+								"mode": "",
+								"number": 1
+							}
+						}
+					],
+					"critical": {
+						"allow": false
+					},
+					"onSave": "half"
+				},
+				"save": {
+					"ability": [
+						"dex"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"useConditionText": "",
+				"forceDialog": false,
+				"effectConditionText": "",
+				"midiAutomationOnly": false,
+				"name": "Target Enters/Ends Turn",
+				"img": "",
+				"appliedEffects": []
+			}
+		},
+		"identifier": ""
+	},
+	"_id": "zQ7lBRzId8peTjor",
+	"_key": "!items!zQ7lBRzId8peTjor"
+}

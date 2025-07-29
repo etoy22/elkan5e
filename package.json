@@ -1,16 +1,20 @@
 {
   "name": "elkan5e",
   "version": "1.0.0",
-  "description": "![GitHub Downloads (specific asset, all releases)](https://img.shields.io/github/downloads/etoy22/elkan5e/module.zip?color=blue)",
-  "main": "index.js",
+  "description": "![GitHub Downloads](https://img.shields.io/github/downloads/etoy22/elkan5e/module.zip?color=blue)",
+  "main": "elkan5e.mjs",
+  "type": "module",
   "scripts": {
-    "pushLDBtoJSON": "node ./src/module/pushLDBtoJSON.mjs",
-    "pullJSONtoLDB": "node ./src/module/pullJSONtoLDB.mjs"
+    "pack": "npm run build:clean && npm run build:db",
+    "unpack": "node ./src/packs.mjs package unpack",
+    "build:clean": "node ./src/packs.mjs package clean",
+    "build:db": "node ./src/packs.mjs package pack",
+    "build:json": "node ./src/packs.mjs package unpack",
+    "remove": "node ./src/packs.mjs package remove"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "devDependencies": {
-    "@foundryvtt/foundryvtt-cli": "^1.0.3"
+    "@foundryvtt/foundryvtt-cli": "^1.0.3",
+    "fancy-log": "^2.0.0",
+    "yargs": "^17.7.2"
   }
 }
