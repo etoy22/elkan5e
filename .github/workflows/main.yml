@@ -159,7 +159,7 @@ jobs:
   release-foundry-package:
     runs-on: ubuntu-latest
     needs: [version-check, create-github-release]
-    if: needs.version-check.outputs.should_continue == 'true' && needs.create-github-release.result == 'success'
+    if: needs.version-check.outputs.should_continue == 'true' && needs.create-github-release.result == 'success' && needs.version-check.outputs.prerelease != 'true'
     steps:
       - uses: actions/checkout@v4
 
@@ -196,13 +196,14 @@ jobs:
       MINIMUM: ${{ needs.version-check.outputs.minimum }}
       VERIFIED: ${{ needs.version-check.outputs.verified }}
       MAXIMUM: ${{ needs.version-check.outputs.maximum }}
+      PRERELEASE: "${{ needs.version-check.outputs.prerelease }}"
     steps:
       - name: Download release notes artifact
         uses: actions/download-artifact@v4
         with:
           name: release-notes
           path: .
-      
+
       - name: Show release notes in logs
         run: cat release-notes.md
 
@@ -219,10 +220,16 @@ jobs:
           RELEASE_NOTES="${{ steps.read_release_notes.outputs.release_notes }}"
           CLEAN_RELEASE_NOTES=$(echo -e "$RELEASE_NOTES")
 
+          PRERELEASE_STATUS="No"
+          if [ "$PRERELEASE" = "true" ]; then
+            PRERELEASE_STATUS="Yes"
+          fi
+
           PAYLOAD=$(jq -n \
             --arg title "Elkan 5e Release" \
             --arg version "$VERSION" \
             --arg compatibility "Core: $MINIMUM +" \
+            --arg prerelease "$PRERELEASE_STATUS" \
             --arg foundry_url "https://foundryvtt.com/packages/elkan5e" \
             --arg release_url "$REPO_URL/releases/tag/$VERSION" \
             --arg download_url "$REPO_URL/releases/download/$VERSION/module.zip" \
@@ -232,6 +239,7 @@ jobs:
               fields: [
                 {name: "Version", value: $version, inline: true},
                 {name: "Compatibility", value: $compatibility, inline: true},
+                {name: "Prerelease", value: $prerelease, inline: true},
                 {name: "Foundry Package", value: $foundry_url, inline: false},
                 {name: "Release Tag", value: $release_url, inline: false},
                 {name: "Manual Download", value: $download_url, inline: false},
@@ -240,11 +248,9 @@ jobs:
             }]}')
 
           echo "$PAYLOAD"
-          # Use multiline output syntax for GitHub Actions
           echo "discord_payload<<EOF" >> $GITHUB_OUTPUT
           echo "$PAYLOAD" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
-
 
       - name: Post to Discord
         if: needs.version-check.outputs.test != 'true'
