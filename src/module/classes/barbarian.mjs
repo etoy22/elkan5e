@@ -1,29 +1,35 @@
-/**
- * Adds functionality to Feral Instincts and Improved Feral Instincts.
- *   @param {object} actor - The actor instance.
- */
-export function feral(actor) {
-    const RAGE = actor.items.find(i => i.name === "Rage");
+const DialogV2 = foundry.applications.api.DialogV2;
 
-    // Set the default notification message
-    let notification = "elkan5e.notifications.FeralInstincts";
+export async function rage(workflow) {
+    console.log("Elkan 5e | Rage triggered");
+    const actor = workflow.actor;
+    let notification = "elkan5e.notifications.FeralInstinctsMove";
 
-    // Check if the actor has Feral Instincts or Improved Feral Instincts
-    if (RAGE && (actor.items.find(i => i.name === "Feral Instincts") || actor.items.find(i => i.name === "Improved Feral Instincts"))) {
-        if (actor.items.find(i => i.name === "Improved Feral Instincts")) {
-            notification = "elkan5e.notifications.ImprovedFeralInstincts";
+    // Use system.identifier instead of name
+    const hasFeral = actor.items.find(i => i.system.identifier === "feral-instinct");
+    const hasImproved = actor.items.find(i => i.system.identifier === "improved-feral-instincts");
+
+    if (hasFeral || hasImproved) {
+        if (hasImproved) {
+            notification = "elkan5e.notifications.ImprovedFeralInstinctsMove";
         }
-
-        let uses = RAGE.system.uses.max - RAGE.system.uses.spent;
-        if (uses > 0 && actor.isOwner) {
+        if (actor.isOwner) {
             ui.notifications.notify(game.i18n.format(notification, { name: actor.name }));
         }
     }
 }
 
-export async function wildBlood(activity) {
-    const actor = activity.actor;
-    const item = activity.item;
+
+
+export async function wildBlood(workflow) {
+    const item = workflow.item;
+    const scope = workflow.scope;
+    if (!game.modules.get("elkan5e")?.active) return;
+
+    if (item.type !== "spell" || !item.system.activities) return;
+
+    const activityId = scope.workflow.uuid?.split(".").pop();
+    let type = item.system.activities.find(a => a.id === activityId).type
     const level = item.system.level;
     const TABLE_UUIDS = [
         null, // No table for level 0 spells
@@ -38,11 +44,19 @@ export async function wildBlood(activity) {
         "LV2skOm8hCwM1JRH",
         "O7JYPPoDS7gLGkNj"
     ];
-    const wild = actor.items.find(i => i.name === "Wild Blood");
-    if (wild && ["Prismatic Bolt", "Mirror Image", "Blink", "Confusion", "Prismatic Spray"].includes(item.name)) {
-        const activityType = activity.type;
-        console.log(activityType);
-        if (activityType != "utility" || ["Mirror Image", "Blink"].includes(item.name)) {
+
+
+    if (["Prismatic Bolt", "Mirror Image", "Blink", "Confusion", "Prismatic Spray"].includes(item.name)) {
+
+        let confirmed = await DialogV2.confirm({
+            window: { title: game.i18n.localize("elkan5e.barbarian.wildBloodTitle") },
+            content: `<p>${game.i18n.localize("elkan5e.barbarian.wildBloodContent")}</p>?`,
+            rejectClose: false,
+            modal: true
+        });
+
+        if (!confirmed) return;
+        if (type != "utility" || ["Mirror Image", "Blink"].includes(item.name)) {
             let tableUUID = TABLE_UUIDS[level];
             if (tableUUID) {
                 try {
@@ -57,5 +71,4 @@ export async function wildBlood(activity) {
             }
         }
     }
-
 }

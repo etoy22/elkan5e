@@ -6,7 +6,7 @@ export function scroll() {
         "tI3rWx4bxefNCexS", "mtyw4NS1s7j2EJaD", "aOrinPg7yuDZEuWr",
         "O4YbkJkLlnsgUszZ"
     ];
-    
+
     if (!CONFIG.DND5E?.spellScrollIds) {
         console.warn("Elkan 5e | CONFIG.DND5E.spellScrollIds not initialized");
         return;

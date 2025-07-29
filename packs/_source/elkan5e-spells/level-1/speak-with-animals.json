@@ -4,7 +4,14 @@
 	"img": "icons/creatures/mammals/ox-buffalo-horned-green.webp",
 	"effects": [
 		{
-			"changes": [],
+			"changes": [
+				{
+					"key": "system.traits.languages.custom",
+					"mode": 2,
+					"value": ";comprehend and verbally communicate with Beasts",
+					"priority": 20
+				}
+			],
 			"transfer": false,
 			"_id": "2cxPSaKCNusaNeV2",
 			"disabled": false,
@@ -26,15 +33,21 @@
 					"stackable": "none",
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
+					"specialDuration": [],
+					"enableCondition": "",
+					"disableCondition": "",
+					"showIcon": false,
+					"disableIncapacitated": false,
+					"dontApply": false
 				},
 				"core": {
-					"statusId": ""
+					"statusId": "",
+					"overlay": false
 				},
 				"ActiveAuras": {
 					"isAura": false,
-					"aura": "None",
-					"radius": null,
+					"aura": "Enemy",
+					"radius": "",
 					"alignment": "",
 					"type": "",
 					"ignoreSelf": false,
@@ -42,7 +55,16 @@
 					"hidden": false,
 					"displayTemp": false,
 					"hostile": false,
-					"onlyOnce": false
+					"onlyOnce": false,
+					"nameOverride": "",
+					"customCheck": "",
+					"wallsBlock": "system",
+					"statuses": []
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
 				}
 			},
 			"name": "Speak with Animals",
