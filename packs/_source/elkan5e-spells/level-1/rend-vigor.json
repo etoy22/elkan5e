@@ -93,7 +93,6 @@
 			"YokfxH3FPKLu3kx4": {
 				"type": "save",
 				"_id": "YokfxH3FPKLu3kx4",
-				"sort": 0,
 				"activation": {
 					"type": "action",
 					"value": null,
@@ -212,23 +211,9 @@
 				"scope": "global",
 				"command": "let saves = workflow.saves;\nlet failed = workflow.failedSaves;\n\nsaves.forEach(save => {\n    let target = save.actor;\n    console.log(\"target\", target)\n    if (target.system.attributes.hp.temp != null){\n        target.system.attributes.hp.temp = Math.floor(target.system.attributes.hp.temp/2);\n    }\n});\n\nfailed.forEach(fail => {\n    let target = fail.actor;\n    if (target.system.attributes.hp.temp != null){\n        target.system.attributes.hp.temp = null;\n    }\n});",
 				"author": "cwIJ7W3XRXrY0zj2",
-				"ownership": {
-					"default": 3
-				},
 				"_id": null,
 				"folder": null,
-				"sort": 0,
-				"flags": {},
-				"_stats": {
-					"coreVersion": "12.331",
-					"systemId": "dnd5e",
-					"systemVersion": "4.2.2",
-					"createdTime": null,
-					"modifiedTime": null,
-					"lastModifiedBy": null,
-					"compendiumSource": null,
-					"duplicateSource": null
-				}
+				"flags": {}
 			}
 		}
 	},

@@ -9,7 +9,6 @@
 			"zO2vX4HUih36s2OP": {
 				"type": "utility",
 				"_id": "zO2vX4HUih36s2OP",
-				"sort": 0,
 				"activation": {
 					"type": "bonus",
 					"value": null,
@@ -107,7 +106,6 @@
 			"7pOEUvT88eZFBhqV": {
 				"type": "utility",
 				"_id": "7pOEUvT88eZFBhqV",
-				"sort": 0,
 				"activation": {
 					"type": "bonus",
 					"value": null,
@@ -205,7 +203,6 @@
 			"bpVXcfR5Q1zyUTpE": {
 				"type": "utility",
 				"_id": "bpVXcfR5Q1zyUTpE",
-				"sort": 0,
 				"activation": {
 					"type": "bonus",
 					"value": null,
@@ -303,7 +300,6 @@
 			"V8s07ax3XTkogKqY": {
 				"type": "utility",
 				"_id": "V8s07ax3XTkogKqY",
-				"sort": 0,
 				"activation": {
 					"type": "bonus",
 					"value": null,
@@ -469,7 +465,6 @@
 			"description": "",
 			"tint": "#ffffff",
 			"statuses": [],
-			"sort": 0,
 			"flags": {
 				"dae": {
 					"enableCondition": "",
@@ -540,7 +535,6 @@
 			"description": "",
 			"tint": "#ffffff",
 			"statuses": [],
-			"sort": 0,
 			"flags": {
 				"dae": {
 					"enableCondition": "",
@@ -612,7 +606,6 @@
 			"description": "",
 			"tint": "#ffffff",
 			"statuses": [],
-			"sort": 0,
 			"flags": {
 				"dae": {
 					"enableCondition": "",
@@ -684,7 +677,6 @@
 			"description": "",
 			"tint": "#ffffff",
 			"statuses": [],
-			"sort": 0,
 			"flags": {
 				"dae": {
 					"enableCondition": "",
@@ -765,23 +757,9 @@
 				"scope": "global",
 				"command": "if (args[0] == \"on\") {\n    const actor = await game.actors.get(args[1]);\n    let element = args[2];\n    console.log(\"Actor items\", actor.items);\n    if (actor.items.find(i => i.name === \"Monk\")) {\n        let level = actor.items.find(i => i.name === \"Monk\").system.levels;\n        const elements = {\n            air: {\n                effectsToRemove: [\"Earth Attunement\", \"Fire Attunement\", \"Water Attunement\"],\n                itemsToAdd: [\"RFs2JK8U1HWwRtRy\"],\n                spellsToAdd: level >= 14 ? [\"MKvNn3Q5xPa0vEK2\", \"Q6y7fBSwRIUMChVh\", \"ZRsOGTOZI6aksC85\", \"efO0uhdOJ89v9RKL\"] : level >= 6 ? [\"MKvNn3Q5xPa0vEK2\", \"Q6y7fBSwRIUMChVh\", \"ZRsOGTOZI6aksC85\"] : []\n            },\n            earth: {\n                effectsToRemove: [\"Air Attunement\", \"Fire Attunement\", \"Water Attunement\"],\n                itemsToAdd: [\"UE1CR9GhnUHA8W3v\"],\n                spellsToAdd: level >= 14 ? [\"8iOXbBYr8peoRGtp\", \"QNa2AQVdnwGihVCe\", \"yJX39WZzkHIvxhVv\", \"i8ASCHhH1r6NHPPy\"] : level >= 6 ? [\"8iOXbBYr8peoRGtp\", \"QNa2AQVdnwGihVCe\", \"yJX39WZzkHIvxhVv\"] : []\n            },\n            fire: {\n                effectsToRemove: [\"Air Attunement\", \"Earth Attunement\", \"Water Attunement\"],\n                itemsToAdd: [\"MRDsf3PEbZ89LXAP\"],\n                spellsToAdd: level >= 14 ? [\"FQa89kp1ChIK9CZi\", \"5rlXmCb6DTBy3YHa\", \"wVs9K6vtsN4TFuXD\", \"4ySODrSdwd6MCKCH\"] : level >= 6 ? [\"FQa89kp1ChIK9CZi\", \"5rlXmCb6DTBy3YHa\", \"wVs9K6vtsN4TFuXD\"] : []\n            },\n            water: {\n                effectsToRemove: [\"Air Attunement\", \"Earth Attunement\", \"Fire Attunement\"],\n                itemsToAdd: [\"78p6Y6A3i9DWvUj3\"],\n                spellsToAdd: level >= 14 ? [\"kSTZBRIi9DuHuA4h\", \"eeaEt3KwnC1sWXUX\", \"tr8hhpZg8jrGA6rp\", \"SZ7WREA5tz4LLrOL\"] : level >= 6 ? [\"kSTZBRIi9DuHuA4h\", \"eeaEt3KwnC1sWXUX\", \"tr8hhpZg8jrGA6rp\"] : []\n            }\n        };\n\n        const { effectsToRemove, itemsToAdd, spellsToAdd } = elements[element];\n\n        for (const effectLabel of effectsToRemove) {\n            const effect = actor.effects.find(i => i.label === effectLabel);\n            if (effect) {\n                await effect.delete();\n            }\n        }\n\n        for (const itemId of spellsToAdd) {\n            let item = await game.packs.get(\"elkan5e.elkan5e-spells\").getDocument(itemId);\n            await actor.createEmbeddedDocuments(\"Item\", [item.toObject()]);\n        }\n\n        for (const itemId of itemsToAdd) {\n            let item = await game.packs.get(\"elkan5e.elkan5e-class-features\").getDocument(itemId);\n            await actor.createEmbeddedDocuments(\"Item\", [item.toObject()]);\n        }\n    }\n}\n\nif (args[0] == \"off\") {\n    const actor = await game.actors.get(args[1]);\n    let element = args[2];\n    if (actor.items.find(i => i.name === \"Monk\")) {\n        const itemsToRemove = {\n            air: [\"Elemental Thrust (Air)\", \"Thunderwave (1 Ki)\", \"Thunderwave (2 Ki)\", \"Thunderwave (3 Ki)\", \"Fly (4 Ki)\"],\n            earth: [\"Elemental Thrust (Earth)\", \"False Life (1 Ki)\", \"False Life (2 Ki)\", \"False Life (3 Ki)\", \"Rock Blast (4 Ki)\"],\n            fire: [\"Elemental Thrust (Fire)\", \"Burning Hands (1 Ki)\", \"Burning Hands (2 Ki)\", \"Burning Hands (3 Ki)\", \"Fireball (4 Ki)\"],\n            water: [\"Elemental Thrust (Water)\", \"Gentle Current (1 Ki)\", \"Gentle Current (2 Ki)\", \"Gentle Current (3 Ki)\", \"Sleet Storm (4 Ki)\"]\n        }[element];\n\n        for (const itemName of itemsToRemove) {\n            const item = actor.items.find(i => i.name === itemName);\n            if (item) {\n                await item.delete();\n            }\n        }\n    }\n}",
 				"author": "3Yi0HjF4PKCA4vX0",
-				"ownership": {
-					"default": 3
-				},
 				"_id": null,
 				"folder": null,
-				"sort": 0,
-				"flags": {},
-				"_stats": {
-					"coreVersion": "12.331",
-					"systemId": "dnd5e",
-					"systemVersion": "4.3.3",
-					"createdTime": null,
-					"modifiedTime": null,
-					"lastModifiedBy": null,
-					"compendiumSource": null,
-					"duplicateSource": null
-				}
+				"flags": {}
 			}
 		}
 	},
