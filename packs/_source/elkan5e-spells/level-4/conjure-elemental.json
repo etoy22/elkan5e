@@ -1,211 +1,208 @@
 {
-	"name": "Conjure Elemental",
-	"type": "spell",
-	"img": "icons/magic/fire/elemental-fire-flying.webp",
-	"effects": [],
-	"folder": "90eJtrVwLFIxcWJw",
-	"flags": {
-		"core": {},
-		"midi-qol": {
-			"effectActivation": false,
-			"rollAttackPerTarget": "default",
-			"itemCondition": "",
-			"effectCondition": "",
-			"reactionCondition": "",
-			"removeAttackDamageButtons": "default",
-			"otherCondition": ""
-		},
-		"midiProperties": {
-			"nodam": false,
-			"fulldam": false,
-			"halfdam": false,
-			"rollOther": false,
-			"critOther": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"concentration": false,
-			"toggleEffect": false,
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"offHandWeapon": false,
-			"ignoreTotalCover": false,
-			"confirmTargets": "default",
-			"noConcentrationCheck": false,
-			"idr": false,
-			"idi": false,
-			"idv": false,
-			"ida": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedProperties": [
-				"vocal",
-				"somatic",
-				"concentration"
-			]
-		},
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
-		}
-	},
-	"system": {
-		"description": {
-			"value": "<p><strong>Summoning Spell</strong> </p><p>You conjure one &amp;reference[elemental]{elemental} of challenge rating 4 or lower.*</p><ul><li><p>The elemental is friendly to you and your companions and follows your instructions.</p></li><li>The elemental acts after your turn in initiative.</li></ul><ul><li>If you don't issue any commands, the elemental only defends itself from attackers and otherwise does nothing.</li><li>When the spell ends, the elemental doesn't disappear. Instead, it gains free will, often in a way that makes it hostile to its summoner.</li></ul><p></p><p><strong>*Upcasting:</strong> The challenge rating of the summoned creature increases by 1 for every spell level above 4th.</p>",
-			"chat": ""
-		},
-		"source": {
-			"custom": "elkan5e.com/spells/conjure-elementals",
-			"revision": 1,
-			"rules": "",
-			"book": "Elkan 5e",
-			"page": "",
-			"license": ""
-		},
-		"activation": {
-			"type": "minute",
-			"condition": "",
-			"value": 1
-		},
-		"duration": {
-			"value": "1",
-			"units": "hour"
-		},
-		"target": {
-			"affects": {
-				"type": "space",
-				"choice": false,
-				"count": "",
-				"special": ""
-			},
-			"template": {
-				"units": "",
-				"contiguous": false,
-				"type": ""
-			}
-		},
-		"range": {
-			"value": "90",
-			"units": "ft",
-			"special": ""
-		},
-		"uses": {
-			"max": "",
-			"recovery": [],
-			"spent": 0
-		},
-		"ability": "",
-		"level": 4,
-		"school": "con",
-		"materials": {
-			"value": "",
-			"consumed": false,
-			"cost": 0,
-			"supply": 0
-		},
-		"preparation": {
-			"mode": "prepared",
-			"prepared": true
-		},
-		"properties": [
-			"vocal",
-			"somatic",
-			"concentration",
-			"mgc"
-		],
-		"activities": {
-			"AsFKb3GriDT9ETAj": {
-				"type": "summon",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"range": {
-					"override": false
-				},
-				"target": {
-					"prompt": true,
-					"template": {
-						"contiguous": false,
-						"units": "ft"
-					},
-					"affects": {
-						"choice": false
-					},
-					"override": false
-				},
-				"bonuses": {
-					"ac": "",
-					"hd": "",
-					"hp": "",
-					"attackDamage": "",
-					"saveDamage": "",
-					"healing": ""
-				},
-				"creatureSizes": [],
-				"creatureTypes": [],
-				"match": {
-					"attacks": false,
-					"proficiency": false,
-					"saves": false,
-					"ability": ""
-				},
-				"profiles": [
-					{
-						"count": "1",
-						"cr": "max(@item.level,4)",
-						"name": "",
-						"_id": "GXYOvyt5u1zbrtH5",
-						"uuid": "",
-						"types": [
-							"elemental"
-						],
-						"level": {
-							"min": null,
-							"max": null
-						}
-					}
-				],
-				"summon": {
-					"identifier": "",
-					"mode": "cr",
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"sort": 0,
-				"effects": [],
-				"_id": "AsFKb3GriDT9ETAj",
-				"name": "",
-				"img": "",
-				"appliedEffects": []
-			}
-		},
-		"identifier": ""
-	},
-	"_id": "sm66v23hm3vEeaTQ",
-	"_key": "!items!sm66v23hm3vEeaTQ"
+  "name": "Conjure Elemental",
+  "type": "spell",
+  "img": "icons/magic/fire/elemental-fire-flying.webp",
+  "effects": [],
+  "folder": "90eJtrVwLFIxcWJw",
+  "flags": {
+    "core": {},
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "reactionCondition": "",
+      "removeAttackDamageButtons": "default",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic",
+        "concentration"
+      ]
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><strong>Summoning Spell</strong> </p><p>You conjure one &amp;reference[elemental]{elemental} of challenge rating 4 or lower.*</p><ul><li><p>The elemental is friendly to you and your companions and follows your instructions.</p></li><li>The elemental acts after your turn in initiative.</li></ul><ul><li>If you don't issue any commands, the elemental only defends itself from attackers and otherwise does nothing.</li><li>When the spell ends, the elemental doesn't disappear. Instead, it gains free will, often in a way that makes it hostile to its summoner.</li></ul><p></p><p><strong>*Upcasting:</strong> The challenge rating of the summoned creature increases by 1 for every spell level above 4th.</p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/conjure-elementals",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "minute",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "1",
+      "units": "hour"
+    },
+    "target": {
+      "affects": {
+        "type": "space",
+        "choice": false,
+        "count": "",
+        "special": ""
+      },
+      "template": {
+        "units": "",
+        "contiguous": false,
+        "type": ""
+      }
+    },
+    "range": {
+      "value": "90",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 4,
+    "school": "con",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "concentration",
+      "mgc"
+    ],
+    "activities": {
+      "AsFKb3GriDT9ETAj": {
+        "type": "summon",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "bonuses": {
+          "ac": "",
+          "hd": "",
+          "hp": "",
+          "attackDamage": "",
+          "saveDamage": "",
+          "healing": ""
+        },
+        "creatureSizes": [],
+        "creatureTypes": [],
+        "match": {
+          "attacks": false,
+          "proficiency": false,
+          "saves": false,
+          "ability": ""
+        },
+        "profiles": [
+          {
+            "count": "1",
+            "cr": "max(@item.level,4)",
+            "name": "",
+            "_id": "GXYOvyt5u1zbrtH5",
+            "uuid": "",
+            "types": [
+              "elemental"
+            ],
+            "level": {
+              "min": null,
+              "max": null
+            }
+          }
+        ],
+        "summon": {
+          "identifier": "",
+          "mode": "cr",
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "sort": 0,
+        "effects": [],
+        "_id": "AsFKb3GriDT9ETAj",
+        "name": "",
+        "img": "",
+        "appliedEffects": []
+      }
+    },
+    "identifier": ""
+  },
+  "_id": "sm66v23hm3vEeaTQ",
+  "_key": "!items!sm66v23hm3vEeaTQ"
 }

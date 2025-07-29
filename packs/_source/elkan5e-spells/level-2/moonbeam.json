@@ -1,352 +1,346 @@
 {
-	"name": "Moonbeam",
-	"type": "spell",
-	"img": "icons/magic/light/beam-rays-blue-large.webp",
-	"effects": [],
-	"flags": {
-		"dae": {
-			"activeEquipped": false,
-			"alwaysActive": false,
-			"macro": {
-				"name": "Moonbeam",
-				"img": "icons/magic/light/beam-rays-blue-large.webp",
-				"type": "script",
-				"scope": "global",
-				"command": "",
-				"author": "vHqSHJMdmEO6Mk2C",
-				"ownership": {
-					"default": 3
-				},
-				"_id": null,
-				"folder": null,
-				"sort": 0,
-				"flags": {},
-				"_stats": {
-					"systemId": null,
-					"systemVersion": null,
-					"coreVersion": null,
-					"createdTime": null,
-					"modifiedTime": null,
-					"lastModifiedBy": null
-				}
-			}
-		},
-		"core": {},
-		"itemacro": {
-			"macro": {
-				"_data": {
-					"name": "Moonbeam",
-					"type": "script",
-					"scope": "global",
-					"command": "//DAE Item Macro Execute, Effect Value = @attributes.spell.dc\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEItem.data.save\nconst DC = args[1]\n/**\n * Create Moonbeam item in inventory\n */\nif (args[0] === \"on\") {\n  let templateData = {\n    t: \"circle\",\n    user: game.user._id,\n    distance: 5,\n    direction: 0,\n    x: 0,\n    y: 0,\n    flags: {\n        DAESRD: {\n            Moonbeam: {\n                ActorId: tactor.id\n            }\n        }\n    },\n    fillColor: game.user.color\n}\nlet template = new game.dnd5e.canvas.AbilityTemplate(templateData)\ntemplate.actorSheet = tactor.sheet;\ntemplate.drawPreview()\n\n  let damage = DAEItem.data.level;\n  await tactor.createOwnedItem(\n    {\n      \"name\": \"Moonbeam repeating\",\n      \"type\": \"spell\",\n      \"data\": {\n        \"source\": \"Casting Moonbeam\",\n        \"ability\": \"\",\n        \"description\": {\n          \"value\": \"half damage on save\" \n        },\n        \"actionType\": \"save\",\n        \"attackBonus\": 0,\n        \"damage\": {\n          \"parts\": [\n            [\n              `${damage}d10`,\n              \"radiant\"\n            ]\n          ],\n        },\n        \"formula\": \"\",\n        \"save\": {\n          \"ability\": \"con\",\n          \"dc\": saveData.dc,\n          \"scaling\": \"spell\"\n        },\n        \"level\": 0,\n        \"school\": \"abj\",\n        \"preparation\": {\n          \"mode\": \"prepared\",\n          \"prepared\": false\n        },\n\n      },\n      \"img\": DAEItem.img,\n    }\n  );\n}\n\n// Delete Moonbeam\nif (args[0] === \"off\") {\n  let casterItem = tactor.data.items.find(i => i.name === \"Moonbeam repeating\" && i.type === \"spell\")\n  tactor.deleteOwnedItem(casterItem._id)\n  let template = canvas.templates.placeables.filter(i => i.data.flags.DAESRD?.Moonbeam?.ActorId === tactor.id)\n    canvas.templates.deleteMany(template[0].id)\n}",
-					"author": "E4BVikjIkVl2lL2j"
-				},
-				"data": {
-					"name": "Moonbeam",
-					"type": "script",
-					"scope": "global",
-					"command": "//DAE Item Macro Execute, Effect Value = @attributes.spell.dc\nif (!game.modules.get(\"advanced-macros\")?.active) ui.notifications.error(\"Please enable the Advanced Macros module\")\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId)\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEItem.data.save\nconst DC = args[1]\n/**\n * Create Moonbeam item in inventory\n */\nif (args[0] === \"on\") {\n  let range = canvas.scene.createEmbeddedDocuments(\"MeasuredTemplate\", [{\n    t: \"circle\",\n    user: game.user._id,\n    x: target.x + canvas.grid.size / 2,\n    y: target.y + canvas.grid.size / 2,\n    direction: 0,\n    distance: 60,\n    borderColor: \"#517bc9\",\n    flags: {\n      DAESRD: {\n        MoonbeamRange: {\n          ActorId: tactor.id\n        }\n      }\n    }\n    //fillColor: \"#FF3366\",\n  }]);\n\n  range.then(result => {\n    let templateData = {\n      t: \"circle\",\n      user: game.user._id,\n      distance: 5,\n      direction: 0,\n      x: 0,\n      y: 0,\n      flags: {\n        DAESRD: {\n          Moonbeam: {\n            ActorId: tactor.id\n          }\n        }\n      },\n      fillColor: game.user.color\n    }\n    Hooks.once(\"createMeasuredTemplate\", deleteTemplates);\n\n    let doc = new CONFIG.MeasuredTemplate.documentClass(templateData, { parent: canvas.scene })\n    let template = new game.dnd5e.canvas.AbilityTemplate(doc)\n    template.actorSheet = tactor.sheet;\n    template.drawPreview()\n\n    async function deleteTemplates() {\n      let removeTemplates = canvas.templates.placeables.filter(i => i.data.flags.DAESRD?.MoonbeamRange?.ActorId === tactor.id);\n      await canvas.scene.deleteEmbeddedDocuments(\"MeasuredTemplate\", [removeTemplates[0].id]);\n    };\n\n    let damage = DAEItem.data.level;\n    tactor.createOwnedItem(\n      {\n        \"name\": \"Moonbeam repeating\",\n        \"type\": \"spell\",\n        \"data\": {\n          \"source\": \"Casting Moonbeam\",\n          \"ability\": \"\",\n          \"description\": {\n            \"value\": \"half damage on save\"\n          },\n          \"actionType\": \"save\",\n          \"attackBonus\": 0,\n          \"damage\": {\n            \"parts\": [\n              [\n                `${damage}d10`,\n                \"radiant\"\n              ]\n            ],\n          },\n          \"formula\": \"\",\n          \"save\": {\n            \"ability\": \"con\",\n            \"dc\": saveData.dc,\n            \"scaling\": \"spell\"\n          },\n          \"level\": 0,\n          \"school\": \"abj\",\n          \"preparation\": {\n            \"mode\": \"prepared\",\n            \"prepared\": false\n          },\n\n        },\n        \"img\": DAEItem.img,\n        \"effects\": []\n      }\n    );\n  });\n}\n\n// Delete Moonbeam\nif (args[0] === \"off\") {\n  let casterItem = tactor.data.items.find(i => i.name === \"Moonbeam repeating\" && i.type === \"spell\")\n  tactor.deleteOwnedItem(casterItem._id)\n  let template = canvas.templates.placeables.find(i => i.data.flags.DAESRD?.Moonbeam?.ActorId === tactor.id)\n  canvas.scene.deleteEmbeddedDocuments(\"MeasuredTemplate\", [template.id])\n}",
-					"author": "zrPR3wueYsESSBR3",
-					"_id": null,
-					"img": "icons/svg/dice-target.svg",
-					"folder": null,
-					"sort": 0,
-					"permission": {
-						"default": 0
-					},
-					"flags": {}
-				},
-				"options": {},
-				"apps": {},
-				"compendium": null
-			}
-		},
-		"midi-qol": {
-			"onUseMacroName": "",
-			"effectActivation": false,
-			"removeAttackDamageButtons": "default",
-			"itemCondition": "",
-			"reactionCondition": "",
-			"otherCondition": "",
-			"effectCondition": "",
-			"rollAttackPerTarget": "default",
-			"AoETargetType": "any",
-			"AoETargetTypeIncludeSelf": true,
-			"autoTarget": "default"
-		},
-		"midiProperties": {
-			"nodam": false,
-			"fulldam": false,
-			"halfdam": false,
-			"rollOther": false,
-			"critOther": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"concentration": false,
-			"toggleEffect": false,
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"offHandWeapon": false,
-			"ignoreTotalCover": false,
-			"confirmTargets": "default",
-			"noConcentrationCheck": false,
-			"idr": false,
-			"idi": false,
-			"idv": false,
-			"ida": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedProperties": [
-				"vocal",
-				"somatic",
-				"material",
-				"concentration"
-			]
-		},
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
-		}
-	},
-	"system": {
-		"description": {
-			"value": "<p><em>You chant an old mantra in a forgotten language, rubbing the seed of a moonseed plant as you call a silvery beam of pale light down from above, burning all creatures in a pillar before you.</em></p><p><strong>Constitution</strong> <strong>Save</strong></p><p>The moonbeam targets all creatures in a 5 ft. radius, 40-foot tall cylinder centered on a point within 120 ft.</p><p>Shapeshifters (including some druids, creatures that are polymorphed or cursed into another form, and natural shapeshifters like changelings) make their saving throws against this spell with disadvantage. If a shapeshifter fails their save against this spell, they instantly revert to their original form and stay that way until they leave the light or the spell ends.</p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 2d10 radiant]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li><li><p><strong>Area Hazard:</strong> The moonbeam remains in place, and fills the target location with &amp;reference[dimlight]. If a shapeshifter enters the light, they can't shapeshift while in the light.</p></li><li><p><strong>Concentration:</strong> Once per turn, you can use your action to move the beam up to 60 ft. and deal damage to all creatures in the light at its new destination.</p></li></ul><p></p><p>*<strong>Upcasting:</strong> Increase damage by [[/damage 1d10 radiant]]{1d10} for each spell level above 2nd.</p>",
-			"chat": "<p><strong>Constitution</strong> <strong>Save</strong></p><p>The moonbeam targets all creatures in a 5 ft. radius, 40-foot tall cylinder centered on a point within 120 ft.</p><p>Shapeshifters (including some druids, creatures that are polymorphed or cursed into another form, and natural shapeshifters like changelings) make their saving throws against this spell with disadvantage. If a shapeshifter fails their save against this spell, they instantly revert to their original form and stay that way until they leave the light or the spell ends.</p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 2d10 radiant]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li><li><p><strong>Area Hazard:</strong> The moonbeam remains in place, and fills the target location with &amp;reference[dimlight]. If a shapeshifter enters the light, they can't shapeshift while in the light.</p></li><li><p><strong>Concentration:</strong> Once per turn, you can use your action to move the beam up to 60 ft. and deal damage to all creatures in the light at its new destination.</p></li></ul><p></p><p>*<strong>Upcasting:</strong> Increase damage by [[/damage 1d10 radiant]]{1d10} for each spell level above 2nd.</p>"
-		},
-		"source": {
-			"custom": "elkan5e.com/spells/moonbeam",
-			"revision": 1,
-			"rules": "",
-			"book": "Elkan 5e",
-			"page": "",
-			"license": ""
-		},
-		"activation": {
-			"type": "action",
-			"condition": "",
-			"value": 1
-		},
-		"duration": {
-			"value": "1",
-			"units": "minute"
-		},
-		"target": {
-			"affects": {
-				"special": "",
-				"type": "any",
-				"choice": false,
-				"count": ""
-			},
-			"template": {
-				"type": "cylinder",
-				"units": "ft",
-				"contiguous": false,
-				"size": "5",
-				"height": "40",
-				"count": ""
-			}
-		},
-		"range": {
-			"units": "ft",
-			"special": "",
-			"value": "120"
-		},
-		"uses": {
-			"max": "",
-			"recovery": [],
-			"spent": 0
-		},
-		"ability": "",
-		"level": 2,
-		"school": "evo",
-		"materials": {
-			"value": "",
-			"consumed": false,
-			"cost": 0,
-			"supply": 0
-		},
-		"preparation": {
-			"mode": "prepared",
-			"prepared": true
-		},
-		"properties": [
-			"vocal",
-			"somatic",
-			"material",
-			"concentration",
-			"mgc"
-		],
-		"activities": {
-			"Ifa6sYkqQecMpx6D": {
-				"type": "save",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"prompt": true,
-					"template": {
-						"contiguous": false,
-						"units": "ft"
-					},
-					"affects": {
-						"choice": false
-					},
-					"override": false
-				},
-				"uses": {
-					"spent": 0,
-					"max": "",
-					"recovery": []
-				},
-				"damage": {
-					"onSave": "half",
-					"parts": [
-						{
-							"number": 2,
-							"denomination": 10,
-							"bonus": "",
-							"types": [
-								"radiant"
-							],
-							"custom": {
-								"enabled": false,
-								"formula": ""
-							},
-							"scaling": {
-								"mode": "whole",
-								"number": 1,
-								"formula": ""
-							}
-						}
-					]
-				},
-				"save": {
-					"ability": "con",
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
-					}
-				},
-				"sort": 0,
-				"useConditionText": "",
-				"forceDialog": false,
-				"effectConditionText": "",
-				"_id": "Ifa6sYkqQecMpx6D",
-				"name": "Initial Casting (Use First)",
-				"img": "",
-				"appliedEffects": []
-			},
-			"Wfb4gNxtzBqyVYMx": {
-				"type": "save",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": false
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"prompt": true,
-					"template": {
-						"contiguous": false,
-						"units": "ft"
-					},
-					"affects": {
-						"choice": false
-					},
-					"override": false
-				},
-				"uses": {
-					"spent": 0,
-					"max": "",
-					"recovery": []
-				},
-				"damage": {
-					"onSave": "half",
-					"parts": [
-						{
-							"number": 2,
-							"denomination": 10,
-							"bonus": "",
-							"types": [
-								"radiant"
-							],
-							"custom": {
-								"enabled": false,
-								"formula": ""
-							},
-							"scaling": {
-								"mode": "whole",
-								"number": 1,
-								"formula": ""
-							}
-						}
-					]
-				},
-				"save": {
-					"ability": "con",
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
-					}
-				},
-				"sort": 0,
-				"useConditionText": "",
-				"forceDialog": false,
-				"effectConditionText": "",
-				"_id": "Wfb4gNxtzBqyVYMx",
-				"name": "",
-				"img": "",
-				"appliedEffects": []
-			}
-		},
-		"identifier": ""
-	},
-	"folder": "6J3i75lfD1J0xYwA",
-	"_id": "Mvx2Nzj5Nz6MjRVC",
-	"_key": "!items!Mvx2Nzj5Nz6MjRVC"
+  "name": "Moonbeam",
+  "type": "spell",
+  "img": "icons/magic/light/beam-rays-blue-large.webp",
+  "effects": [],
+  "flags": {
+    "dae": {
+      "activeEquipped": false,
+      "alwaysActive": false,
+      "macro": {
+        "name": "Moonbeam",
+        "img": "icons/magic/light/beam-rays-blue-large.webp",
+        "type": "script",
+        "scope": "global",
+        "command": "",
+        "author": "vHqSHJMdmEO6Mk2C",
+        "ownership": {
+          "default": 3
+        },
+        "_id": null,
+        "folder": null,
+        "sort": 0,
+        "flags": {},
+        "_stats": {
+          "systemId": null,
+          "systemVersion": null,
+          "coreVersion": null,
+          "createdTime": null,
+          "modifiedTime": null,
+          "lastModifiedBy": null
+        }
+      }
+    },
+    "core": {},
+    "itemacro": {
+      "macro": {
+        "_data": {
+          "name": "Moonbeam",
+          "type": "script",
+          "scope": "global",
+          "command": "//DAE Item Macro Execute, Effect Value = @attributes.spell.dc\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEItem.data.save\nconst DC = args[1]\n/**\n * Create Moonbeam item in inventory\n */\nif (args[0] === \"on\") {\n  let templateData = {\n    t: \"circle\",\n    user: game.user._id,\n    distance: 5,\n    direction: 0,\n    x: 0,\n    y: 0,\n    flags: {\n        DAESRD: {\n            Moonbeam: {\n                ActorId: tactor.id\n            }\n        }\n    },\n    fillColor: game.user.color\n}\nlet template = new game.dnd5e.canvas.AbilityTemplate(templateData)\ntemplate.actorSheet = tactor.sheet;\ntemplate.drawPreview()\n\n  let damage = DAEItem.data.level;\n  await tactor.createOwnedItem(\n    {\n      \"name\": \"Moonbeam repeating\",\n      \"type\": \"spell\",\n      \"data\": {\n        \"source\": \"Casting Moonbeam\",\n        \"ability\": \"\",\n        \"description\": {\n          \"value\": \"half damage on save\" \n        },\n        \"actionType\": \"save\",\n        \"attackBonus\": 0,\n        \"damage\": {\n          \"parts\": [\n            [\n              `${damage}d10`,\n              \"radiant\"\n            ]\n          ],\n        },\n        \"formula\": \"\",\n        \"save\": {\n          \"ability\": \"con\",\n          \"dc\": saveData.dc,\n          \"scaling\": \"spell\"\n        },\n        \"level\": 0,\n        \"school\": \"abj\",\n        \"preparation\": {\n          \"mode\": \"prepared\",\n          \"prepared\": false\n        },\n\n      },\n      \"img\": DAEItem.img,\n    }\n  );\n}\n\n// Delete Moonbeam\nif (args[0] === \"off\") {\n  let casterItem = tactor.data.items.find(i => i.name === \"Moonbeam repeating\" && i.type === \"spell\")\n  tactor.deleteOwnedItem(casterItem._id)\n  let template = canvas.templates.placeables.filter(i => i.data.flags.DAESRD?.Moonbeam?.ActorId === tactor.id)\n    canvas.templates.deleteMany(template[0].id)\n}",
+          "author": "E4BVikjIkVl2lL2j"
+        },
+        "data": {
+          "name": "Moonbeam",
+          "type": "script",
+          "scope": "global",
+          "command": "//DAE Item Macro Execute, Effect Value = @attributes.spell.dc\nif (!game.modules.get(\"advanced-macros\")?.active) ui.notifications.error(\"Please enable the Advanced Macros module\")\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId)\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEItem.data.save\nconst DC = args[1]\n/**\n * Create Moonbeam item in inventory\n */\nif (args[0] === \"on\") {\n  let range = canvas.scene.createEmbeddedDocuments(\"MeasuredTemplate\", [{\n    t: \"circle\",\n    user: game.user._id,\n    x: target.x + canvas.grid.size / 2,\n    y: target.y + canvas.grid.size / 2,\n    direction: 0,\n    distance: 60,\n    borderColor: \"#517bc9\",\n    flags: {\n      DAESRD: {\n        MoonbeamRange: {\n          ActorId: tactor.id\n        }\n      }\n    }\n    //fillColor: \"#FF3366\",\n  }]);\n\n  range.then(result => {\n    let templateData = {\n      t: \"circle\",\n      user: game.user._id,\n      distance: 5,\n      direction: 0,\n      x: 0,\n      y: 0,\n      flags: {\n        DAESRD: {\n          Moonbeam: {\n            ActorId: tactor.id\n          }\n        }\n      },\n      fillColor: game.user.color\n    }\n    Hooks.once(\"createMeasuredTemplate\", deleteTemplates);\n\n    let doc = new CONFIG.MeasuredTemplate.documentClass(templateData, { parent: canvas.scene })\n    let template = new game.dnd5e.canvas.AbilityTemplate(doc)\n    template.actorSheet = tactor.sheet;\n    template.drawPreview()\n\n    async function deleteTemplates() {\n      let removeTemplates = canvas.templates.placeables.filter(i => i.data.flags.DAESRD?.MoonbeamRange?.ActorId === tactor.id);\n      await canvas.scene.deleteEmbeddedDocuments(\"MeasuredTemplate\", [removeTemplates[0].id]);\n    };\n\n    let damage = DAEItem.data.level;\n    tactor.createOwnedItem(\n      {\n        \"name\": \"Moonbeam repeating\",\n        \"type\": \"spell\",\n        \"data\": {\n          \"source\": \"Casting Moonbeam\",\n          \"ability\": \"\",\n          \"description\": {\n            \"value\": \"half damage on save\"\n          },\n          \"actionType\": \"save\",\n          \"attackBonus\": 0,\n          \"damage\": {\n            \"parts\": [\n              [\n                `${damage}d10`,\n                \"radiant\"\n              ]\n            ],\n          },\n          \"formula\": \"\",\n          \"save\": {\n            \"ability\": \"con\",\n            \"dc\": saveData.dc,\n            \"scaling\": \"spell\"\n          },\n          \"level\": 0,\n          \"school\": \"abj\",\n          \"preparation\": {\n            \"mode\": \"prepared\",\n            \"prepared\": false\n          },\n\n        },\n        \"img\": DAEItem.img,\n        \"effects\": []\n      }\n    );\n  });\n}\n\n// Delete Moonbeam\nif (args[0] === \"off\") {\n  let casterItem = tactor.data.items.find(i => i.name === \"Moonbeam repeating\" && i.type === \"spell\")\n  tactor.deleteOwnedItem(casterItem._id)\n  let template = canvas.templates.placeables.find(i => i.data.flags.DAESRD?.Moonbeam?.ActorId === tactor.id)\n  canvas.scene.deleteEmbeddedDocuments(\"MeasuredTemplate\", [template.id])\n}",
+          "author": "zrPR3wueYsESSBR3",
+          "_id": null,
+          "img": "icons/svg/dice-target.svg",
+          "folder": null,
+          "sort": 0,
+          "permission": {
+            "default": 0
+          },
+          "flags": {}
+        },
+        "options": {},
+        "apps": {},
+        "compendium": null
+      }
+    },
+    "midi-qol": {
+      "onUseMacroName": "",
+      "effectActivation": false,
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "rollAttackPerTarget": "default",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default"
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic",
+        "material",
+        "concentration"
+      ]
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>You chant an old mantra in a forgotten language, rubbing the seed of a moonseed plant as you call a silvery beam of pale light down from above, burning all creatures in a pillar before you.</em></p><p><strong>Constitution</strong> <strong>Save</strong></p><p>The moonbeam targets all creatures in a 5 ft. radius, 40-foot tall cylinder centered on a point within 120 ft.</p><p>Shapeshifters (including some druids, creatures that are polymorphed or cursed into another form, and natural shapeshifters like changelings) make their saving throws against this spell with disadvantage. If a shapeshifter fails their save against this spell, they instantly revert to their original form and stay that way until they leave the light or the spell ends.</p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 2d10 radiant]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li><li><p><strong>Area Hazard:</strong> The moonbeam remains in place, and fills the target location with &amp;reference[dimlight]. If a shapeshifter enters the light, they can't shapeshift while in the light.</p></li><li><p><strong>Concentration:</strong> Once per turn, you can use your action to move the beam up to 60 ft. and deal damage to all creatures in the light at its new destination.</p></li></ul><p></p><p>*<strong>Upcasting:</strong> Increase damage by [[/damage 1d10 radiant]]{1d10} for each spell level above 2nd.</p>",
+      "chat": "<p><strong>Constitution</strong> <strong>Save</strong></p><p>The moonbeam targets all creatures in a 5 ft. radius, 40-foot tall cylinder centered on a point within 120 ft.</p><p>Shapeshifters (including some druids, creatures that are polymorphed or cursed into another form, and natural shapeshifters like changelings) make their saving throws against this spell with disadvantage. If a shapeshifter fails their save against this spell, they instantly revert to their original form and stay that way until they leave the light or the spell ends.</p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 2d10 radiant]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li><li><p><strong>Area Hazard:</strong> The moonbeam remains in place, and fills the target location with &amp;reference[dimlight]. If a shapeshifter enters the light, they can't shapeshift while in the light.</p></li><li><p><strong>Concentration:</strong> Once per turn, you can use your action to move the beam up to 60 ft. and deal damage to all creatures in the light at its new destination.</p></li></ul><p></p><p>*<strong>Upcasting:</strong> Increase damage by [[/damage 1d10 radiant]]{1d10} for each spell level above 2nd.</p>"
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/moonbeam",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "1",
+      "units": "minute"
+    },
+    "target": {
+      "affects": {
+        "special": "",
+        "type": "any",
+        "choice": false,
+        "count": ""
+      },
+      "template": {
+        "type": "cylinder",
+        "units": "ft",
+        "contiguous": false,
+        "size": "5",
+        "height": "40",
+        "count": ""
+      }
+    },
+    "range": {
+      "units": "ft",
+      "special": "",
+      "value": "120"
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 2,
+    "school": "evo",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "concentration",
+      "mgc"
+    ],
+    "activities": {
+      "Ifa6sYkqQecMpx6D": {
+        "type": "save",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "number": 2,
+              "denomination": 10,
+              "bonus": "",
+              "types": [
+                "radiant"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "whole",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": "con",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "sort": 0,
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "_id": "Ifa6sYkqQecMpx6D",
+        "name": "Initial Casting (Use First)",
+        "img": "",
+        "appliedEffects": []
+      },
+      "Wfb4gNxtzBqyVYMx": {
+        "type": "save",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": false
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "number": 2,
+              "denomination": 10,
+              "bonus": "",
+              "types": [
+                "radiant"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "whole",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": "con",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "sort": 0,
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "_id": "Wfb4gNxtzBqyVYMx",
+        "name": "",
+        "img": "",
+        "appliedEffects": []
+      }
+    },
+    "identifier": ""
+  },
+  "folder": "6J3i75lfD1J0xYwA",
+  "_id": "Mvx2Nzj5Nz6MjRVC",
+  "_key": "!items!Mvx2Nzj5Nz6MjRVC"
 }
