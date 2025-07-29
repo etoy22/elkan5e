@@ -71,6 +71,8 @@ def estimate_formula(formula):
     except:
         return 0
 
+# Updated `extract_spell_stats` function with range, damage type, duration, and concentration extraction
+
 def extract_spell_stats(spell_path):
     def safe_int(val):
         if val is None or val == '':
@@ -79,14 +81,17 @@ def extract_spell_stats(spell_path):
             return int(val)
         except (TypeError, ValueError):
             return 0
+
     try:
         with open(spell_path, encoding='utf-8') as f:
             try:
                 data = json.load(f)
             except Exception as e:
                 return {'name': os.path.basename(spell_path), 'error': f'JSON decode error: {str(e)}'}
+
         if data.get('type') != 'spell':
             return None
+
         system = data.get('system', {})
         activities = system.get('activities', {})
         damage_values = []
@@ -105,6 +110,7 @@ def extract_spell_stats(spell_path):
         save_values_without_effects = []
         attack_values_with_effects = []
         attack_values_without_effects = []
+
         for act in activities.values():
             dmg = act.get('damage', {}).get('parts', [])
             has_effects = bool(act.get('effects', []))
@@ -123,6 +129,7 @@ def extract_spell_stats(spell_path):
                     damage_dice_counts.append(dice)
                     damage_dice_values.append(denom)
                     damage_avg_parts.append(avg)
+
             if act.get('type') == 'save':
                 save_count += 1
                 for part in act.get('damage', {}).get('parts', []):
@@ -140,6 +147,7 @@ def extract_spell_stats(spell_path):
                         save_values_with_effects.append(val)
                     else:
                         save_values_without_effects.append(val)
+
             if act.get('type') == 'attack':
                 attack_count += 1
                 for part in act.get('damage', {}).get('parts', []):
@@ -157,11 +165,27 @@ def extract_spell_stats(spell_path):
                         attack_values_with_effects.append(val)
                     else:
                         attack_values_without_effects.append(val)
+
         # Ritual detection: check system.properties for 'ritual'
         ritual = False
         props = system.get('properties', [])
         if isinstance(props, list) and 'ritual' in props:
             ritual = True
+
+        # Damage types
+        damage_types = sorted({
+            part.get('type', {}).get('value')
+            for act in activities.values()
+            for part in act.get('damage', {}).get('parts', [])
+            if part.get('type', {}).get('value')
+        })
+
+        # Duration
+        duration = f"{system.get('duration', {}).get('value', '')} {system.get('duration', {}).get('units', '')}".strip() or None
+
+        # Concentration
+        concentration = bool(system.get('concentration', False))
+
         return {
             'name': data.get('name'),
             'level': system.get('level'),
@@ -174,11 +198,16 @@ def extract_spell_stats(spell_path):
             'attack count': attack_count,
             'activation': system.get('activation', {}).get('type', None),
             'ritual': ritual,
+            'range': system.get('range', {}).get('value', None),
+            'damage type': ', '.join(damage_types) if damage_types else None,
+            'duration': duration,
+            'concentration': concentration,
             'average damage save with effects': round(sum(save_values_with_effects)/max(1,len(save_values_with_effects)),2) if save_values_with_effects else None,
             'average damage save without effects': round(sum(save_values_without_effects)/max(1,len(save_values_without_effects)),2) if save_values_without_effects else None,
             'average damage attack with effects': round(sum(attack_values_with_effects)/max(1,len(attack_values_with_effects)),2) if attack_values_with_effects else None,
             'average damage attack without effects': round(sum(attack_values_without_effects)/max(1,len(attack_values_without_effects)),2) if attack_values_without_effects else None
         }
+
     except Exception as e:
         return {'name': os.path.basename(spell_path), 'error': str(e)}
 
