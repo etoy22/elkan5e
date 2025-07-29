@@ -164,16 +164,17 @@
 			"effectCondition": "",
 			"removeAttackDamageButtons": "default",
 			"reactionCondition": "",
-			"otherCondition": ""
+			"otherCondition": "",
+			"onUseMacroName": "[postActiveEffects]ItemMacro"
 		},
 		"dae": {
 			"macro": {
 				"name": "Vampiric Smite",
-				"img": "systems/dnd5e/icons/svg/items/spell.svg",
+				"img": "icons/weapons/axes/axe-crooked-crystal-pink.webp",
 				"type": "script",
 				"scope": "global",
-				"command": "const {damage,damageMultiplier} = workflow.damageItem.damageDetail[0].find(d=>d.type === 'necrotic') || {};\nif (damage && workflow.hitTargets.size === 1) {\n  const dmgToApply = Math.floor(damage * damageMultiplier /2);\n  await MidiQOL.applyTokenDamage([{\n        damage: dmgToApply,\n        type: 'healing',\n        flavor:'Life Steal'\n    }], dmgToApply, new Set([token]), null, null);\n}",
-				"author": "3Yi0HjF4PKCA4vX0",
+				"command": "return await elkan5e.macros.spells.vampiricSmite(workflow)",
+				"author": "vHqSHJMdmEO6Mk2C",
 				"_id": null,
 				"folder": null,
 				"flags": {}

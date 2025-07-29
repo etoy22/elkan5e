@@ -102,6 +102,8 @@
 -   Replaced `@attributes.spelldc` with `@attributes.spell.dc`.
 -   Replaced `@spellLevel` with `@spell.level`.
 -   System now works with JSON files, allowing for easier editing and merging.
+-   Removed stale/old code that didnt do anything
+-   Moved rest of code to the script side except for conditions
 
 # v1.12.27
 

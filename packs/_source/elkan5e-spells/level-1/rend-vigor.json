@@ -209,8 +209,8 @@
 				"img": "icons/magic/unholy/hand-light-pink.webp",
 				"type": "script",
 				"scope": "global",
-				"command": "let saves = workflow.saves;\nlet failed = workflow.failedSaves;\n\nsaves.forEach(save => {\n    let target = save.actor;\n    console.log(\"target\", target)\n    if (target.system.attributes.hp.temp != null){\n        target.system.attributes.hp.temp = Math.floor(target.system.attributes.hp.temp/2);\n    }\n});\n\nfailed.forEach(fail => {\n    let target = fail.actor;\n    if (target.system.attributes.hp.temp != null){\n        target.system.attributes.hp.temp = null;\n    }\n});",
-				"author": "cwIJ7W3XRXrY0zj2",
+				"command": "return await elkan5e.macros.spells.rendVigor(workflow)",
+				"author": "vHqSHJMdmEO6Mk2C",
 				"_id": null,
 				"folder": null,
 				"flags": {}
