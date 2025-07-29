@@ -1,0 +1,173 @@
+{
+	"name": "Improved Protection (Fighter)",
+	"type": "feat",
+	"img": "icons/magic/defensive/shield-barrier-deflect-gold.webp",
+	"effects": [],
+	"flags": {
+		"core": {},
+		"midiProperties": {
+			"confirmTargets": "default",
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"effectCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em><strong>Prerequisite: Prerequisite: Fighter level 12, Protection Fighting Style</strong></em></p><p><span><strong>Reaction</strong> </span>- 1 Ally (5 ft.)</p><p><em>Trigger: A creature hits one of your allies within 5 ft. of you with an attack roll.</em></p><ul><li><p>You force the attacker to reroll the attack, targeting you instead. Until the end of your next turn, all attacks directed at the ally you are protecting are made against you instead. You must be holding a shield or melee weapon to use this ability.</p></li></ul>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/feats/improved-protection",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"type": {
+			"value": "feat",
+			"subtype": ""
+		},
+		"requirements": "Feat (Fighter Level 12)",
+		"properties": [],
+		"prerequisites": {
+			"level": 12
+		},
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "utility",
+				"activation": {
+					"type": "reaction",
+					"value": 1,
+					"condition": "Must be wearing a shield.",
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "",
+					"units": "",
+					"special": "",
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"value": "5",
+					"units": "ft",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": ""
+					},
+					"affects": {
+						"count": "1",
+						"type": "creature",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"roll": {
+					"formula": "",
+					"name": "",
+					"prompt": false,
+					"visible": false
+				},
+				"sort": 0
+			}
+		},
+		"identifier": "",
+		"enchant": {},
+		"advancement": [
+			{
+				"_id": "aC5HuW1uXBe16dL0",
+				"type": "AbilityScoreImprovement",
+				"configuration": {
+					"cap": 2,
+					"fixed": {
+						"str": 0,
+						"dex": 0,
+						"con": 0,
+						"int": 0,
+						"wis": 0,
+						"cha": 0
+					},
+					"locked": [],
+					"points": 2
+				},
+				"value": {
+					"type": "asi"
+				},
+				"level": 0,
+				"title": "",
+				"hint": ""
+			}
+		]
+	},
+	"folder": "7jLpyN1aDF7GxaPb",
+	"_id": "VP4blm22Yz6kunKa",
+	"_key": "!items!VP4blm22Yz6kunKa"
+}

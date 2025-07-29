@@ -1,0 +1,261 @@
+{
+	"name": "Spook",
+	"type": "spell",
+	"img": "icons/creatures/magical/spirit-fear-energy-pink.webp",
+	"system": {
+		"description": {
+			"value": "<p><em>You shout or make a loud noise, projecting your voice towards your target. Your magic creates a terrible illusion to startle your target and disrupt their focus.</em></p><p><strong>Wisdom Save</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[frightened]. While they are frightened in this way, they have disadvantage on &amp;reference[concentration] saves.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 1st.</p>",
+			"chat": "<p><strong>Wisdom Save</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[frightened]. While they are frightened in this way, they have disadvantage on &amp;reference[concentration] saves.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 1st.</p>"
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/spook",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "bonus",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "",
+			"units": "spec",
+			"special": ""
+		},
+		"target": {
+			"affects": {
+				"special": "",
+				"type": "creature",
+				"count": "1",
+				"choice": false
+			},
+			"template": {
+				"type": "",
+				"units": "",
+				"contiguous": false
+			}
+		},
+		"range": {
+			"value": "60",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"spent": 0,
+			"recovery": []
+		},
+		"level": 1,
+		"school": "ill",
+		"properties": [
+			"vocal",
+			"somatic"
+		],
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"activities": {
+			"KeF1VpGrpJy0aDtD": {
+				"type": "save",
+				"_id": "KeF1VpGrpJy0aDtD",
+				"sort": 0,
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "5SuoRBUBfu3ron2h",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"parts": [],
+					"onSave": "none"
+				},
+				"save": {
+					"ability": "wis",
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"name": "",
+				"img": "",
+				"effectConditionText": "!target.traits.ci.value.has('frightened')",
+				"appliedEffects": [
+					"5SuoRBUBfu3ron2h"
+				]
+			}
+		},
+		"identifier": ""
+	},
+	"effects": [
+		{
+			"name": "Spook",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.CmSMaOFx3F2fa4gg",
+			"changes": [
+				{
+					"key": "flags.midi-qol.disadvantage.concentration",
+					"mode": 5,
+					"value": "1",
+					"priority": 20
+				}
+			],
+			"transfer": false,
+			"flags": {
+				"dae": {
+					"itemName": "Spook",
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"stackable": "multi",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [
+						"turnEndSource"
+					],
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				}
+			},
+			"img": "icons/creatures/magical/spirit-fear-energy-pink.webp",
+			"_id": "5SuoRBUBfu3ron2h",
+			"type": "base",
+			"system": {},
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 7,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [
+				"frightened"
+			],
+			"sort": 0,
+			"_key": "!items.effects!CmSMaOFx3F2fa4gg.5SuoRBUBfu3ron2h"
+		}
+	],
+	"folder": "U0k4VGG6bziqf3oH",
+	"flags": {
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false,
+			"saveDamage": "default",
+			"bonusSaveDamage": "default"
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"removeAttackDamageButtons": "default",
+			"reactionCondition": "",
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default",
+			"otherCondition": ""
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"_id": "CmSMaOFx3F2fa4gg",
+	"_key": "!items!CmSMaOFx3F2fa4gg"
+}

@@ -1,0 +1,217 @@
+{
+	"name": "Divine Word",
+	"type": "spell",
+	"img": "icons/magic/symbols/circle-ouroboros.webp",
+	"effects": [],
+	"folder": "H799nI2ov6BcHwd6",
+	"flags": {
+		"dae": {
+			"activeEquipped": false,
+			"alwaysActive": false
+		},
+		"midi-qol": {
+			"onUseMacroName": "",
+			"effectActivation": false,
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": ""
+		},
+		"itemacro": {
+			"macro": {
+				"_data": {
+					"name": "Divine Word",
+					"type": "script",
+					"scope": "global",
+					"command": "////DAE Item Macro, requires CUB and About Time\n\n/**\n * Apply Divine Word to targeted tokens\n * @param {Number} targetHp \n * @param {Boolean} linked \n */\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId)\n\nlet target = canvas.tokens.get(args[1]);\n\nasync function DivineWordApply(target, targetHp, linked) {\n    switch (targetHP) {\n        case (targetHp <= 20): {\n            if (linked = true) {\n                await tactor.update({ \"data.attributes.hp.value\": 0 });\n            } else if (linked = false) {\n                await target.update({ \"actorData.data.attributes.hp.value\": 0 })\n            }\n        }\n            break;\n        case (targetHp <= 30): {\n            await game.cub.addCondition([\"Blinded\", \"Deafened\", \"Stunned\"], target)\n            game.Gametime.doIn({ hours: 1 }, async () => {\n                game.cub.removeCondition([\"Blinded\", \"Deafened\", \"Stunned\"], target)\n            });\n        }\n            break;\n\n        case (targetHp <= 40): {\n            await game.cub.addCondition([\"Blinded\", \"Deafened\"], target)\n            game.Gametime.doIn({ minutes: 10 }, async () => {\n                game.cub.removeCondition([\"Blinded\", \"Deafened\", target])\n            });\n        }\n            break;\n        case (targetHp <= 50): {\n            await game.cub.addCondition(\"Deafened\", target)\n            game.Gametime.doIn({ minutes: 1 }, async () => {\n                game.cub.removeCondition(\"Deafened\", target)\n            });\n        }\n            break;\n    }\n}\nif (args[0] === \"on\") {\n    let targetHp = null;\n    let linked = null;\n    if (target.data.actorLink == true) {\n        targetHp = target.actor.data.data.attributes.hp.value\n        linked = true\n    } else {\n        targetHp = getProperty(target, \"actorData.data.attributes.hp\") || getProperty(target.actor, \"data.data.attributes.hp.value\")\n        linked = false\n    }\n    DivineWordApply(target, targetHp, linked)\n}",
+					"author": "E4BVikjIkVl2lL2j"
+				},
+				"data": {
+					"name": "Divine Word",
+					"type": "script",
+					"scope": "global",
+					"command": "////DAE Item Macro \n\n/**\n * Apply Divine Word to targeted tokens\n * @param {Number} targetHp \n * @param {Boolean} linked \n */\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId)\n\nasync function DivineWordApply(target, targetHp) {\n\n    if (targetHp <= 20) {\n        await target.actor.update({ \"data.attributes.hp.value\": 0 });\n    } else if (targetHp <= 30) {\n        await game.cub.addCondition([\"Blinded\", \"Deafened\", \"Stunned\"], target)\n        game.Gametime.doIn({ hours: 1 }, async () => {\n            game.cub.removeCondition([\"Blinded\", \"Deafened\", \"Stunned\"], target)\n        });\n    } else if (targetHp <= 40) {\n        await game.cub.addCondition([\"Blinded\", \"Deafened\"], target)\n        game.Gametime.doIn({ minutes: 10 }, async () => {\n            game.cub.removeCondition([\"Blinded\", \"Deafened\", target])\n        });\n    } else if (targetHp <= 50) {\n        await game.cub.addCondition(\"Deafened\", target)\n        game.Gametime.doIn({ minutes: 1 }, async () => {\n            game.cub.removeCondition(\"Deafened\", target)\n        });\n    }\n}\nif (args[0] === \"on\") {\n    DivineWordApply(target, target.actor.data.data.attributes.hp.value)\n}",
+					"author": "zrPR3wueYsESSBR3",
+					"_id": null,
+					"img": "icons/svg/dice-target.svg",
+					"folder": null,
+					"sort": 0,
+					"permission": {
+						"default": 0
+					},
+					"flags": {}
+				},
+				"options": {},
+				"apps": {},
+				"compendium": null
+			}
+		},
+		"core": {},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"confirmTargets": "default",
+			"noConcentrationCheck": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal"
+			]
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p>You utter a divine word, imbued with the power that shaped the world at the dawn of Creation. Choose any number of creatures you can see within range. Each creature that can hear you must make a Charisma saving throw. On a failed save, a creature suffers an effect based on its current hit points:</p><ul><li>50 Hit Points or fewer: Deafened for 1 minute</li><li>40 Hit Points or fewer: Deafened and Blinded for 10 minutes</li><li>30 Hit Points or fewer: Blinded, Deafened, and Stunned for 1 Hour</li><li>20 Hit Points or fewer: killed instantly</li></ul><p>Regardless of its current Hit Points, a Celestial, an elemental, a fey, or a fiend that fails its save is forced back to its plane of Origin (if it isn't there already) and can't return to your current plane for 24 hours by any means short of a wish spell.</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "Elkan 5e",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "bonus",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "",
+			"units": "inst"
+		},
+		"target": {
+			"affects": {
+				"type": "creature",
+				"count": "0",
+				"choice": false,
+				"special": ""
+			},
+			"template": {
+				"units": "",
+				"contiguous": false,
+				"type": ""
+			}
+		},
+		"range": {
+			"value": "30",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 7,
+		"school": "enc",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal"
+		],
+		"activities": {
+			"bT6j5OqMNEpB9nbV": {
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "ng33sfAG959luxm1",
+						"onSave": false
+					},
+					{
+						"_id": "WFygB4koHfaqBOiK",
+						"onSave": false
+					},
+					{
+						"_id": "QNru4BLkBqnn3uBB",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": []
+				},
+				"save": {
+					"ability": "cha",
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": []
+				},
+				"sort": 0,
+				"_id": "bT6j5OqMNEpB9nbV"
+			}
+		},
+		"identifier": ""
+	},
+	"_id": "YtotsL5PLmbOhUKz",
+	"_key": "!items!YtotsL5PLmbOhUKz"
+}

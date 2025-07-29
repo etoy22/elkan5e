@@ -1,0 +1,230 @@
+{
+	"folder": "SjVk5lAwzIpqSBbH",
+	"name": "Sorcerous Burst",
+	"type": "spell",
+	"_id": "4GeWN5GchYGshzgv",
+	"img": "icons/magic/lightning/bolt-strike-embers-teal.webp",
+	"system": {
+		"activities": {
+			"U9MJCgXJXClCkjsg": {
+				"type": "attack",
+				"sort": 0,
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"units": "self"
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"attack": {
+					"critical": {
+						"threshold": null
+					},
+					"flat": false,
+					"type": {
+						"value": "ranged",
+						"classification": ""
+					},
+					"ability": "",
+					"bonus": ""
+				},
+				"damage": {
+					"critical": {
+						"bonus": ""
+					},
+					"includeBase": true,
+					"parts": [
+						{
+							"custom": {
+								"enabled": true,
+								"formula": "1d8x@mod=8"
+							},
+							"number": 1,
+							"denomination": 8,
+							"bonus": "",
+							"types": [
+								"acid",
+								"cold",
+								"fire",
+								"lightning",
+								"poison",
+								"psychic",
+								"thunder"
+							],
+							"scaling": {
+								"mode": "whole",
+								"number": 1,
+								"formula": ""
+							}
+						}
+					]
+				},
+				"name": "",
+				"_id": "U9MJCgXJXClCkjsg",
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"forceDialog": false,
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "",
+				"attackMode": "oneHanded",
+				"ammunition": "",
+				"otherActivityUuid": ""
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"max": ""
+		},
+		"description": {
+			"value": "<p><em>You unleash the sorcerous energy within you, which manifests in the way you choose.</em></p><p><strong>Ranged Spell Attack</strong></p><ul><li><p><strong>Hit:</strong> [[/damage 1d8]] damage.* You choose the damage type: Acid, Cold, Fire, Lightning, Poison, Psychic, or Thunder.</p></li><li><p>If you roll an 8 on a d8 for this spell, you can roll another d8, and add it to the damage. The maximum number of these d8s you can add to the spell's damage equals your spellcasting ability modifier.</p><p></p></li></ul><p><strong>*At Higher Levels:</strong> This spell's damage increases by [[/damage 1d8]] when you reach a total character or creature level of 5th level ([[/damage 2d8]]), 11th level ([[/damage 3d8]]), and 17th level ([[/damage 4d8]] ).</p>",
+			"chat": ""
+		},
+		"identifier": "sorcerous-burst",
+		"source": {
+			"revision": 1,
+			"rules": "2024"
+		},
+		"activation": {
+			"type": "action",
+			"value": null,
+			"condition": ""
+		},
+		"duration": {
+			"units": "inst"
+		},
+		"level": 0,
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "always",
+			"prepared": false
+		},
+		"properties": [
+			"vocal"
+		],
+		"range": {
+			"units": "ft",
+			"special": "",
+			"value": "120"
+		},
+		"school": "evo",
+		"target": {
+			"template": {
+				"contiguous": false,
+				"units": "ft",
+				"type": ""
+			},
+			"affects": {
+				"choice": false,
+				"type": "creatureOrObject",
+				"count": "1",
+				"special": ""
+			}
+		}
+	},
+	"effects": [],
+	"flags": {
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"fumbleThreshold": null
+		},
+		"midiProperties": {
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		}
+	},
+	"_key": "!items!4GeWN5GchYGshzgv"
+}
