@@ -1,33 +1,34 @@
 import { deletedEffectRemovesItem, deletedItemRemovesEffect } from "../global.mjs";
+const DialogV2 = foundry.applications.api.DialogV2;
 
 /**
  * Handle the wild surge effect after casting a spell.
  * @param {object} activity - The activity performed.
 */
 export async function wildSurge(activity) {
-    const actor = activity.actor;
     const item = activity.item;
-    const level = item.system.level || item.flags.dnd5e.spellLevel.value;
-    const WILD_SURGE_THRESHOLD = 5;
-    const MAX_TABLE_LEVEL = 10;
-    const TABLE_UUIDS = [
-        null, // No table for level 0 spells
-        "GDE5tgmRfX1GiOQs",
-        "mxwqgbo7xnNXSnIm",
-        "Fwl1JxM19LzeYxjJ",
-        "0TDp89O9iGt4zovG",
-        "V4BRRp6vWntQNVwa",
-        "4TsMG2a2EtcLdgkc",
-        "wt2VfjYQyuvwftih",
-        "xkUpS2XBuSdyVEah",
-        "LV2skOm8hCwM1JRH",
-        "O7JYPPoDS7gLGkNj"
-    ];
-    if ((item.type === "spell" && level > 0 && (activity.name === "Ritual" || activity.consumption.spellSlot)) ||
-        (item.type === "consumable" && item.system.type.value === "scroll")) {
-        const wild = actor.items.find(i => i.name === "Random Wild Surge");
-        const volen = actor.effects.find(i => i.name === "Voluntary Surge");
-        const blowout = actor.effects.find(i => i.name === "Magical Blowout");
+    const level = item.system.level || item.flags.dnd5e?.spellLevel?.value || 1;
+
+    if ((item.type === "spell" && level > 0 && (activity.name === "Ritual" || activity.consumption.spellSlot)) || (item.type === "consumable" && item.system.type.value === "scroll")) {
+        const actor = activity.actor;
+        const WILD_SURGE_THRESHOLD = 5;
+        const MAX_TABLE_LEVEL = 10;
+        const TABLE_UUIDS = [
+            null, // No table for level 0 spells
+            "GDE5tgmRfX1GiOQs",
+            "mxwqgbo7xnNXSnIm",
+            "Fwl1JxM19LzeYxjJ",
+            "0TDp89O9iGt4zovG",
+            "V4BRRp6vWntQNVwa",
+            "4TsMG2a2EtcLdgkc",
+            "wt2VfjYQyuvwftih",
+            "xkUpS2XBuSdyVEah",
+            "LV2skOm8hCwM1JRH",
+            "O7JYPPoDS7gLGkNj"
+        ];
+        const wild = actor.items.find(i => i.system.identifier === "random-wild-surge");
+        const volen = actor.effects.find(i => i.system.identifier === "Voluntary Surge");
+        const blowout = actor.effects.find(i => i.system.identifier === "Magical Blowout");
         let rollAbove = false;
 
         if (wild) {
@@ -65,8 +66,10 @@ export async function wildSurge(activity) {
                 } catch (error) {
                     console.error("Error drawing from roll table: ", error);
                 }
-                const avert = actor.items.find(i => i.name === "Avert Disaster");
-                const delay = actor.items.find(i => i.name === "Delayed Surge");
+
+                const avert = actor.items.find(i => i.system.identifier === "avert-disaster");
+                const delay = actor.items.find(i => i.system.identifier === "delayed-surge");
+
                 let buttons = {};
 
                 if (avert) {
@@ -83,20 +86,31 @@ export async function wildSurge(activity) {
                             } catch (error) {
                                 console.error("Error drawing from roll table: ", error);
                             }
-                            let buttons = {}
+                            let innerButtons = {};
                             const delayButton = await createDelayButton(actor, rollResult);
-                            if (delayButton) buttons.delay = delayButton;
-                            buttons.cancel = await createCancelButton();
+                            if (delayButton) innerButtons.delay = delayButton;
+                            innerButtons.cancel = await createCancelButton();
 
-                            if (Object.keys(buttons).length > 1 && delay.system.uses.spent < delay.system.uses.max) {
-                                new Dialog({
-                                    title: game.i18n.localize("elkan5e.wildMage.wildSurgeAbilities"),
+                            if (
+                                Object.keys(innerButtons).length > 1 &&
+                                delay.system.uses.spent < delay.system.uses.max
+                            ) {
+                                await new DialogV2({
+                                    window: {
+                                        title: game.i18n.localize("elkan5e.wildMage.wildSurgeAbilities"),
+                                        modal: true
+                                    },
                                     content: `
-                                        <h2>${game.i18n.localize("elkan5e.wildMage.alterWildSurge")}</h2>
-                                        <p>${game.i18n.localize("elkan5e.wildMage.abilityUsage")}</p>
-                                        ${delay ? `<p>${game.i18n.format("elkan5e.wildMage.delayedSurgeUses", { remaining: delay.system.uses.max - delay.system.uses.spent })}</p>` : ""}
-                                    `,
-                                    buttons: buttons
+										<h2>${game.i18n.localize("elkan5e.wildMage.alterWildSurge")}</h2>
+										<p>${game.i18n.localize("elkan5e.wildMage.abilityUsage")}</p>
+										${delay ? `<p>${game.i18n.format("elkan5e.wildMage.delayedSurgeUses", {
+                                        remaining: delay.system.uses.max - delay.system.uses.spent
+                                    })}</p>` : ""}
+									`,
+                                    buttons: Object.entries(innerButtons).map(([action, data]) => ({
+                                        action,
+                                        ...data
+                                    }))
                                 }).render(true);
                             }
                         },
@@ -108,16 +122,29 @@ export async function wildSurge(activity) {
                 if (delayButton) buttons.delay = delayButton;
                 buttons.cancel = await createCancelButton();
 
-                if (Object.keys(buttons).length > 1 && (avert.system.uses.spent < avert.system.uses.max || delay.system.uses.spent < delay.system.uses.max)) {
-                    new Dialog({
-                        title: game.i18n.localize("elkan5e.wildMage.wildSurgeAbilities"),
+                if (
+                    Object.keys(buttons).length > 1 &&
+                    (avert?.system.uses.spent < avert?.system.uses.max || delay?.system.uses.spent < delay?.system.uses.max)
+                ) {
+                    await new DialogV2({
+                        window: {
+                            title: game.i18n.localize("elkan5e.wildMage.wildSurgeAbilities"),
+                            modal: true
+                        },
                         content: `
-                            <h2>${game.i18n.localize("elkan5e.wildMage.alterWildSurge")}</h2>
-                            <p>${game.i18n.localize("elkan5e.wildMage.abilityUsage")}</p>
-                            ${avert ? `<p>${game.i18n.format("elkan5e.wildMage.avertDisasterUses", { remaining: avert.system.uses.max - avert.system.uses.spent })}</p>` : ""}
-                            ${delay ? `<p>${game.i18n.format("elkan5e.wildMage.delayedSurgeUses", { remaining: delay.system.uses.max - delay.system.uses.spent })}</p>` : ""}
-                        `,
-                        buttons: buttons
+							<h2>${game.i18n.localize("elkan5e.wildMage.alterWildSurge")}</h2>
+							<p>${game.i18n.localize("elkan5e.wildMage.abilityUsage")}</p>
+							${avert ? `<p>${game.i18n.format("elkan5e.wildMage.avertDisasterUses", {
+                            remaining: avert.system.uses.max - avert.system.uses.spent
+                        })}</p>` : ""}
+							${delay ? `<p>${game.i18n.format("elkan5e.wildMage.delayedSurgeUses", {
+                            remaining: delay.system.uses.max - delay.system.uses.spent
+                        })}</p>` : ""}
+						`,
+                        buttons: Object.entries(buttons).map(([action, data]) => ({
+                            action,
+                            ...data
+                        }))
                     }).render(true);
                 }
             }
@@ -133,7 +160,7 @@ export async function wildSurge(activity) {
  * @returns {Promise<object|null>} A promise that resolves to the button configuration object or null if the "Delayed Surge" item is not found.
  */
 async function createDelayButton(actor, rollResult) {
-    const delay = actor.items.find(i => i.name === "Delayed Surge");
+    const delay = actor.items.find(i => i.system.identifier === "delayed-surge");
     if (!delay) return null;
 
     return {
@@ -282,7 +309,6 @@ async function createDelayButton(actor, rollResult) {
  * Creates a cancel button for the actor
  * 
  */
-
 async function createCancelButton() {
     return {
         label: game.i18n.localize("elkan5e.wildMage.cancel"),

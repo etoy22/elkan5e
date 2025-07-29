@@ -75,16 +75,18 @@
 					"disableIncapacitated": false,
 					"selfTarget": false,
 					"selfTargetAlways": false,
-					"dontApply": true,
-					"stackable": "noneName",
+					"dontApply": false,
+					"stackable": "noneNameOnly",
 					"showIcon": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
+					"specialDuration": [],
+					"enableCondition": "",
+					"disableCondition": ""
 				},
 				"ActiveAuras": {
 					"isAura": false,
-					"aura": "None",
+					"aura": "Enemy",
 					"nameOverride": "",
 					"radius": "",
 					"alignment": "",
@@ -96,13 +98,19 @@
 					"displayTemp": false,
 					"hostile": false,
 					"onlyOnce": false,
-					"wallsBlock": "system"
+					"wallsBlock": "system",
+					"statuses": []
 				},
 				"core": {
-					"sourceId": "Actor.pJ1UzEiQhmmr2Lp4.Item.QAw2mSz0KBsTJfq1.ActiveEffect.DAAVZx3dfbPkU4nX"
+					"overlay": false
 				},
 				"times-up": {
 					"isPassive": false
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
 				}
 			},
 			"tint": "#ffffff",
@@ -184,16 +192,18 @@
 					"disableIncapacitated": false,
 					"selfTarget": false,
 					"selfTargetAlways": false,
-					"dontApply": true,
-					"stackable": "noneName",
+					"dontApply": false,
+					"stackable": "noneNameOnly",
 					"showIcon": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
+					"specialDuration": [],
+					"enableCondition": "",
+					"disableCondition": ""
 				},
 				"ActiveAuras": {
 					"isAura": false,
-					"aura": "None",
+					"aura": "Enemy",
 					"nameOverride": "",
 					"radius": "",
 					"alignment": "",
@@ -205,13 +215,19 @@
 					"displayTemp": false,
 					"hostile": false,
 					"onlyOnce": false,
-					"wallsBlock": "system"
+					"wallsBlock": "system",
+					"statuses": []
 				},
 				"core": {
-					"sourceId": "Actor.pJ1UzEiQhmmr2Lp4.Item.QAw2mSz0KBsTJfq1.ActiveEffect.DAAVZx3dfbPkU4nX"
+					"overlay": false
 				},
 				"times-up": {
 					"isPassive": false
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
 				}
 			},
 			"tint": "#ffffff",
@@ -290,7 +306,7 @@
 			}
 		},
 		"midi-qol": {
-			"onUseMacroName": "",
+			"onUseMacroName": "[postActiveEffects]ActivityMacro-dnd5eactivity000,[postActiveEffects]ActivityMacro-bSof9ywHy23AsoJQ",
 			"effectActivation": false,
 			"itemCondition": "",
 			"reactionCondition": "",
@@ -469,7 +485,41 @@
 				"img": "",
 				"appliedEffects": [
 					"1SHg1KCgSQvbyXVw"
-				]
+				],
+				"macroData": {
+					"name": "Save (Enlarge)",
+					"command": "return await elkan5e.macros.spells.enlarge(workflow);"
+				},
+				"flags": {
+					"dae": {
+						"macro": {
+							"name": "Save (Enlarge)",
+							"img": "systems/dnd5e/icons/svg/activity/save.svg",
+							"type": "script",
+							"scope": "global",
+							"command": "return await elkan5e.macros.spells.enlarge(workflow);",
+							"author": "vHqSHJMdmEO6Mk2C",
+							"ownership": {
+								"default": 3
+							},
+							"_id": null,
+							"folder": null,
+							"sort": 0,
+							"flags": {},
+							"_stats": {
+								"coreVersion": "13.346",
+								"systemId": "dnd5e",
+								"systemVersion": "5.0.4",
+								"lastModifiedBy": null,
+								"compendiumSource": null,
+								"duplicateSource": null,
+								"exportSource": null
+							}
+						}
+					}
+				},
+				"friendlySave": "friendlyFail",
+				"otherActivityId": "none"
 			},
 			"bSof9ywHy23AsoJQ": {
 				"type": "save",
@@ -535,9 +585,42 @@
 				"_id": "bSof9ywHy23AsoJQ",
 				"img": "",
 				"appliedEffects": [
-					"1SHg1KCgSQvbyXVw",
 					"hCTBIqpD4gHYtMiB"
-				]
+				],
+				"macroData": {
+					"name": "Save (Reduce)",
+					"command": "return await elkan5e.macros.spells.reduce(workflow);"
+				},
+				"flags": {
+					"dae": {
+						"macro": {
+							"name": "Save (Reduce)",
+							"img": "systems/dnd5e/icons/svg/activity/save.svg",
+							"type": "script",
+							"scope": "global",
+							"command": "return await elkan5e.macros.spells.reduce(workflow);",
+							"author": "vHqSHJMdmEO6Mk2C",
+							"ownership": {
+								"default": 3
+							},
+							"_id": null,
+							"folder": null,
+							"sort": 0,
+							"flags": {},
+							"_stats": {
+								"coreVersion": "13.346",
+								"systemId": "dnd5e",
+								"systemVersion": "5.0.4",
+								"lastModifiedBy": null,
+								"compendiumSource": null,
+								"duplicateSource": null,
+								"exportSource": null
+							}
+						}
+					}
+				},
+				"friendlySave": "friendlyFail",
+				"otherActivityId": "none"
 			}
 		},
 		"identifier": ""

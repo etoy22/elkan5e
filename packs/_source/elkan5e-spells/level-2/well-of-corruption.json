@@ -4,7 +4,7 @@
 	"img": "icons/magic/unholy/orb-swirling-teal.webp",
 	"system": {
 		"description": {
-			"value": "<p><em>You present a vial of magical shadow which flows outwards and creates a swirling vortex in front of you that corrupts everything it touches.</em></p><p><strong>Materials:</strong> Casting this spell requires a bottled @UUID[Compendium.elkan5e.elkan5e-spells.Item.eUy7hq3K0RdLI4O7]{shadow essence} typically valued at 20 gold. This spell consumes the material.</p><p><strong>Constitution Save</strong> </p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[drained] for [[/r 4d8]] hit points*. This cannot drain a target below their current hit point total, only draining them up to the amount of damage they've already taken.</p></li><li><p><strong>Success:</strong> Target is drained by half as much.</p></li><li><p><strong>Area Hazard:</strong> The well remains in place. Targets within the well cannot regain hit points, gain temporary hit points, or be raised from the dead (as undead or otherwise).</p></li></ul><p></p><p><strong>*Upcasting:</strong> Targets are drained an additional [[/r 2d8]] for each spell level above 2nd level.</p>",
+			"value": "<p><em>You present a vial of magical shadow which flows outwards and creates a swirling vortex in front of you that corrupts everything it touches.</em></p><p><strong>Materials:</strong> Casting this spell requires a bottled @UUID[Compendium.elkan5e.elkan5e-spells.Item.eUy7hq3K0RdLI4O7]{shadow essence} typically valued at 20 gold. This spell consumes the material.</p><p><strong>Constitution Save</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[drained] for [[/r 4d8]] hit points*. This cannot drain a target below their current hit point total, only draining them up to the amount of damage they've already taken.</p></li><li><p><strong>Success:</strong> Target is drained by half as much.</p></li><li><p><strong>Area Hazard:</strong> The well remains in place. Targets within the well cannot regain hit points, gain temporary hit points, or be raised from the dead (as &amp;reference[undead] or otherwise).</p></li></ul><p></p><p><strong>*Upcasting:</strong> Targets are drained an additional [[/r 2d8]] for each spell level above 2nd level.</p>",
 			"chat": "<p><strong>Materials:</strong> Casting this spell requires a bottled @UUID[Compendium.elkan5e.elkan5e-spells.Item.eUy7hq3K0RdLI4O7]{shadow essence} typically valued at 20 gold. This spell consumes the material.</p><p><strong>Constitution Save</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[drained] for [[/r 4d8]] hit points*. This cannot drain a target below their current hit point total, only draining them up to the amount of damage they've already taken.</p></li><li><p><strong>Success:</strong> Target is drained by half as much.</p></li><li><p><strong>Area Hazard:</strong> The well remains in place. Targets within the well cannot regain hit points, gain temporary hit points, or be raised from the dead (as undead or otherwise).</p></li></ul><p></p><p><strong>*Upcasting:</strong> Targets are drained an additional [[/r 2d8]] for each spell level above 2nd level.</p>"
 		},
 		"source": {
@@ -66,8 +66,7 @@
 			"vocal",
 			"somatic",
 			"material",
-			"concentration",
-			"mgc"
+			"concentration"
 		],
 		"activities": {
 			"dnd5eactivity000": {
@@ -218,81 +217,6 @@
 			"system": {},
 			"sort": 0,
 			"_key": "!items.effects!cHIuORdoA1WnHfmK.B87Jb1X0vnCBBTa9"
-		},
-		{
-			"name": "Drained",
-			"origin": "Compendium.elkan5e.elkan5e-spells.Item.cHIuORdoA1WnHfmK",
-			"changes": [
-				{
-					"key": "system.attributes.hp.tempmax",
-					"mode": 2,
-					"value": "-[[min((@item.level * 2)d6,@attributes.hp.max-system.attributes.hp.value]]",
-					"priority": 20
-				}
-			],
-			"transfer": false,
-			"flags": {
-				"dae": {
-					"itemName": "Well of Corruption",
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"stackable": "multi",
-					"showIcon": false,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": [
-						"longRest"
-					],
-					"enableCondition": "",
-					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
-				},
-				"core": {
-					"overlay": false
-				},
-				"dnd5e": {
-					"riders": {
-						"statuses": []
-					}
-				}
-			},
-			"img": "modules/elkan5e/icons/conditions/drained.svg",
-			"_id": "APojk4ffrGfsIbbZ",
-			"type": "base",
-			"system": {},
-			"disabled": false,
-			"duration": {
-				"startTime": null,
-				"seconds": 0,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"statuses": [],
-			"sort": 0,
-			"_key": "!items.effects!cHIuORdoA1WnHfmK.APojk4ffrGfsIbbZ"
 		}
 	],
 	"flags": {
@@ -306,7 +230,8 @@
 			"reactionCondition": "",
 			"otherCondition": "",
 			"effectCondition": "",
-			"rollAttackPerTarget": "default"
+			"rollAttackPerTarget": "default",
+			"onUseMacroName": "[postActiveEffects]ItemMacro"
 		},
 		"midiProperties": {
 			"nodam": false,
@@ -347,6 +272,32 @@
 		"tidy5e-sheet": {
 			"section": "",
 			"actionSection": ""
+		},
+		"dae": {
+			"macro": {
+				"name": "Well of Corruption",
+				"img": "icons/magic/unholy/orb-swirling-teal.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "return await elkan5e.macros.spells.wellOfCorruption(workflow);",
+				"author": "vHqSHJMdmEO6Mk2C",
+				"ownership": {
+					"default": 3
+				},
+				"_id": null,
+				"folder": null,
+				"sort": 0,
+				"flags": {},
+				"_stats": {
+					"coreVersion": "13.346",
+					"systemId": "dnd5e",
+					"systemVersion": "5.0.4",
+					"lastModifiedBy": null,
+					"compendiumSource": null,
+					"duplicateSource": null,
+					"exportSource": null
+				}
+			}
 		}
 	},
 	"folder": "6J3i75lfD1J0xYwA",
