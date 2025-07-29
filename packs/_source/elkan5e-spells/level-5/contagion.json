@@ -18,7 +18,9 @@
 					"durationExpression": "",
 					"disableIncapacitated": false,
 					"dontApply": false,
-					"showIcon": false
+					"showIcon": false,
+					"enableCondition": "",
+					"disableCondition": ""
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -34,11 +36,26 @@
 					"displayTemp": false,
 					"nameOverride": "",
 					"customCheck": "",
-					"wallsBlock": "system"
+					"wallsBlock": "system",
+					"statuses": []
 				},
-				"core": {}
+				"core": {
+					"overlay": false
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				}
 			},
-			"changes": [],
+			"changes": [
+				{
+					"key": "flags.midi-qol.grants.disadvantage.save.all",
+					"mode": 5,
+					"value": "1",
+					"priority": 20
+				}
+			],
 			"disabled": false,
 			"duration": {
 				"startTime": null,
@@ -54,7 +71,10 @@
 			"origin": null,
 			"name": "Contagion",
 			"description": "",
-			"statuses": [],
+			"statuses": [
+				"diseased",
+				"poisoned"
+			],
 			"img": "icons/skills/wounds/illness-disease-glowing-green.webp",
 			"type": "base",
 			"system": {},
@@ -120,8 +140,8 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p>Your touch inflicts disease. Make a melee spell attack against a creature within your reach. On a hit, you afflict the creature with a disease of your choice from any of the ones described below.</p><p>At the end of each of the target's turns, it must make a Constitution saving throw. After failing three of these saving throws, the disease's effects last for the duration, and the creature stops making these saves. After succeeding on three of these saving throws, the creature recovers from the disease, and the spell ends.</p><p>Since this spell induces a natural disease in its target, any effect that removes a disease or otherwise ameliorates a disease's effects apply to it.</p><p><strong>Blinding Sickness.</strong> Pain grips the creature's mind, and its eyes turn milky white. The creature has disadvantage on Wisdom checks and Wisdom saving throws and is blinded.</p><p><strong>Filth Fever.</strong> A raging fever sweeps through the creature's body. The creature has disadvantage on Strength checks, Strength saving throws, and attack rolls that use Strength.</p><p><strong>Flesh Rot.</strong> The creature's flesh decays. The creature has disadvantage on Charisma checks and vulnerability to all damage.</p><p><strong>Mindfire.</strong> The creature's mind becomes feverish. The creature has disadvantage on Intelligence checks and Intelligence saving throws, and the creature behaves as if under the effects of the confusion spell during combat.</p><p><strong>Seizure.</strong> The creature is overcome with shaking. The creature has disadvantage on Dexterity checks, Dexterity saving throws, and attack rolls that use Dexterity.</p><p><strong>Slimy Doom.</strong> The creature begins to bleed uncontrollably. The creature has disadvantage on Constitution checks and Constitution saving throws. In addition, whenever the creature takes damage, it is stunned until the end of its next turn.</p>",
-			"chat": ""
+			"value": "<p><em>Your touch afflicts your victim with a magical disease.</em></p><p><strong>Constitution Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 8d10 poison]] damage and gains the &amp;reference[diseased]{diseased} condition. While diseased in this way:</p><ul><li><p>The target is &amp;reference[poisoned]{poisoned} and has disadvantage on saving throws.</p></li></ul></li><li><p><strong>Success:</strong> Half damage.</p></li></ul>",
+			"chat": "<p><strong>Constitution Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 8d10 poison]] damage and gains the &amp;reference[diseased]{diseased} condition. While diseased in this way:</p><ul><li><p>The target is &amp;reference[poisoned]{poisoned} and has disadvantage on saving throws.</p></li></ul></li><li><p><strong>Success:</strong> Half damage.</p></li></ul>"
 		},
 		"source": {
 			"custom": "elkan5e.com/spells/contagion",
@@ -180,67 +200,6 @@
 			"somatic"
 		],
 		"activities": {
-			"C8WNMHAUG8zTnUPh": {
-				"type": "attack",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"attack": {
-					"ability": "",
-					"bonus": "",
-					"critical": {
-						"threshold": null
-					},
-					"flat": false,
-					"type": {
-						"value": "melee",
-						"classification": "spell"
-					}
-				},
-				"damage": {
-					"critical": {
-						"bonus": ""
-					},
-					"includeBase": true,
-					"parts": []
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": []
-				},
-				"sort": 0,
-				"_id": "C8WNMHAUG8zTnUPh"
-			},
 			"Fv9hZeoVdONeqLLa": {
 				"type": "save",
 				"activation": {
@@ -254,7 +213,7 @@
 						"allowed": false,
 						"max": ""
 					},
-					"spellSlot": false
+					"spellSlot": true
 				},
 				"description": {
 					"chatFlavor": ""
@@ -283,7 +242,21 @@
 				},
 				"damage": {
 					"onSave": "half",
-					"parts": []
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 8,
+							"denomination": "",
+							"bonus": "",
+							"types": [],
+							"scaling": {
+								"mode": ""
+							}
+						}
+					]
 				},
 				"save": {
 					"ability": "con",
@@ -303,7 +276,8 @@
 				"img": "",
 				"appliedEffects": [
 					"Podq2B0qNxTBlH0c"
-				]
+				],
+				"effectConditionText": "!target.traits.ci.value.has('diseased')"
 			}
 		},
 		"identifier": ""

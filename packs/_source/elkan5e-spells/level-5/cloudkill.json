@@ -2,7 +2,155 @@
 	"name": "Cloudkill",
 	"type": "spell",
 	"img": "icons/magic/air/fog-gas-smoke-swirling-green.webp",
-	"effects": [],
+	"effects": [
+		{
+			"name": "Cloudkill",
+			"img": "icons/magic/air/fog-gas-smoke-swirling-green.webp",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.EuVC53keqdJq1LTn",
+			"transfer": false,
+			"_id": "IKuTictLfDcVRIpO",
+			"type": "base",
+			"system": {},
+			"changes": [
+				{
+					"key": "flags.midi-qol.OverTime",
+					"mode": 2,
+					"value": "turn=end,\nsaveAbility=con,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nname=Cloudkill",
+					"priority": 20
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 600,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [
+				"poisoned"
+			],
+			"sort": 0,
+			"flags": {
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "multi",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!EuVC53keqdJq1LTn.IKuTictLfDcVRIpO"
+		},
+		{
+			"name": "Lightly Obscured",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.EuVC53keqdJq1LTn",
+			"changes": [
+				{
+					"key": "macro.StatusEffect",
+					"mode": 0,
+					"value": "obscuredlightly",
+					"priority": 20
+				}
+			],
+			"transfer": false,
+			"flags": {
+				"dae": {
+					"itemName": "Stinking Cloud",
+					"enableCondition": "",
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				}
+			},
+			"img": "modules/elkan5e/icons/conditions/obscured-lightly.svg",
+			"_id": "2u9mvanLfZM9xaCQ",
+			"type": "base",
+			"system": {},
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 0,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [],
+			"sort": 0,
+			"_key": "!items.effects!EuVC53keqdJq1LTn.2u9mvanLfZM9xaCQ"
+		}
+	],
 	"folder": "PnZJTE6T4UQY81Pm",
 	"flags": {
 		"midi-qol": {
@@ -58,8 +206,8 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><strong>Action</strong> - 20 ft. Radius (120 ft.) - 5th Level (Conjuration) - VS - Concentration (10 Minutes)</p><p>You create a 20-foot-radius sphere of poisonous, yellow-green fog centered on a point you choose within range. The fog spreads around corners. It lasts for the duration or until strong wind disperses the fog, ending the spell. Its area is heavily obscured.</p><p>When a creature enters the spell's area for the first time on a turn or starts its turn there, that creature must make a Constitution saving throw. The creature takes 5d8 poison damage on a failed save, or half as much damage on a successful one. Creatures are affected even if they hold their breath or don't need to breathe.</p><p>The fog moves 10 feet away from you at the start of each of your turns, rolling along the surface of the ground. The vapors, being heavier than air, sink to the lowest level of the land, even pouring down openings.</p><p></p><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d8 poison]]{1d8} for each spell level above 5th.</p>",
-			"chat": ""
+			"value": "<p><em>With a fell incantation, you conjure a drifting cloud of putrid, yellow-green poisonous fog that seeps into creatures through their skin.</em></p><p><strong>Constitution Save</strong></p><p>Creatures are affected even if they hold their breath or don't need to breathe.</p><ul><li><p><strong>Failure</strong>: Targets take [[/damage 5d8 poison]] damage and gain the &amp;reference[poisoned] condition. Targets roll again at end of their turns, ending the poisoned effect on success.</p></li><li><p><strong>Success</strong>: Half damage.</p></li><li><p><strong>Area Hazard</strong>: The area is &amp;reference[obscuredlightly]. Targets roll a save when they enter or when they end their turn in the area (but only once per turn).</p></li><li><p><strong>Concentration: </strong>At the start of each of your turns, you can choose to move the area of effect up to 10 ft in any direction.</p></li></ul><p></p><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d8 poison]]{1d8} for each spell level above 5th.</p><p></p><p><em>A moderate wind (at least 10 miles per hour) can move the cloud 10 ft. per round. A strong wind (at least 20 miles per hour) disperses the cloud and ends the spell.</em></p>",
+			"chat": "<p><strong>Constitution Save</strong></p><p>Creatures are affected even if they hold their breath or don't need to breathe.</p><ul><li><p><strong>Failure</strong>: Targets take [[/damage 5d8 poison]] damage and gain the &amp;reference[poisoned] condition. Targets roll again at end of their turns, ending the poisoned effect on success.</p></li><li><p><strong>Success</strong>: Half damage.</p></li><li><p><strong>Area Hazard</strong>: The area is &amp;reference[obscuredlightly]. Targets roll a save when they enter or when they end their turn in the area (but only once per turn).</p></li><li><p><strong>Concentration: </strong>At the start of each of your turns, you can choose to move the area of effect up to 10 ft in any direction.</p></li></ul><p></p><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d8 poison]]{1d8} for each spell level above 5th.</p><p></p><p><em>A moderate wind (at least 10 miles per hour) can move the cloud 10 ft. per round. A strong wind (at least 20 miles per hour) disperses the cloud and ends the spell.</em></p>"
 		},
 		"source": {
 			"custom": "elkan5e.com/spells/cloudkill",
@@ -144,7 +292,16 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "IKuTictLfDcVRIpO",
+						"onSave": false
+					},
+					{
+						"_id": "2u9mvanLfZM9xaCQ",
+						"onSave": true
+					}
+				],
 				"range": {
 					"override": false
 				},
@@ -160,16 +317,16 @@
 					"onSave": "half",
 					"parts": [
 						{
-							"number": 5,
-							"denomination": 8,
-							"bonus": "",
-							"types": [
-								"poison"
-							],
 							"custom": {
 								"enabled": false,
 								"formula": ""
 							},
+							"number": 5,
+							"denomination": "8",
+							"bonus": "",
+							"types": [
+								"poison"
+							],
 							"scaling": {
 								"mode": "whole",
 								"number": 1,
@@ -187,10 +344,148 @@
 				},
 				"uses": {
 					"spent": 0,
-					"recovery": []
+					"recovery": [],
+					"max": ""
 				},
 				"sort": 0,
-				"_id": "5bcj1twVtsdWaeHn"
+				"_id": "5bcj1twVtsdWaeHn",
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"IKuTictLfDcVRIpO",
+					"2u9mvanLfZM9xaCQ"
+				]
+			},
+			"hW3AAcNpcKKgS57i": {
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "IKuTictLfDcVRIpO",
+						"onSave": false
+					},
+					{
+						"_id": "2u9mvanLfZM9xaCQ",
+						"onSave": true
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 5,
+							"denomination": "8",
+							"bonus": "",
+							"types": [
+								"poison"
+							],
+							"scaling": {
+								"mode": "whole",
+								"number": 1,
+								"formula": ""
+							}
+						}
+					],
+					"critical": {
+						"allow": false
+					}
+				},
+				"save": {
+					"ability": [
+						"con"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"sort": 0,
+				"name": "Target Enters/Ends Turn",
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"forceDialog": false,
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "",
+				"_id": "hW3AAcNpcKKgS57i",
+				"img": "",
+				"appliedEffects": [
+					"IKuTictLfDcVRIpO",
+					"2u9mvanLfZM9xaCQ"
+				]
 			}
 		},
 		"identifier": ""

@@ -16,7 +16,9 @@
 					"durationExpression": "",
 					"disableIncapacitated": false,
 					"dontApply": false,
-					"showIcon": false
+					"showIcon": false,
+					"enableCondition": "",
+					"disableCondition": ""
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -34,16 +36,29 @@
 					"displayTemp": false,
 					"nameOverride": "",
 					"customCheck": "",
-					"wallsBlock": "system"
+					"wallsBlock": "system",
+					"statuses": []
 				},
 				"dnd5e-helpers": {
 					"rest-effect": "Ignore"
 				},
 				"core": {
-					"statusId": ""
+					"overlay": false
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
 				}
 			},
-			"changes": [],
+			"changes": [
+				{
+					"key": "flags.midi-qol.neverTarget",
+					"mode": 0,
+					"value": "true",
+					"priority": 20
+				}
+			],
 			"disabled": false,
 			"duration": {
 				"startTime": null,
@@ -292,23 +307,7 @@
 				},
 				"damage": {
 					"onSave": "full",
-					"parts": [
-						{
-							"custom": {
-								"enabled": false,
-								"formula": ""
-							},
-							"number": 4,
-							"denomination": "10",
-							"bonus": "",
-							"types": [
-								"force"
-							],
-							"scaling": {
-								"mode": ""
-							}
-						}
-					]
+					"parts": []
 				},
 				"save": {
 					"ability": "cha",
@@ -328,7 +327,117 @@
 				"img": "",
 				"appliedEffects": [
 					"iufZU12yslQQSskX"
-				]
+				],
+				"otherActivityId": "none",
+				"midiProperties": {
+					"triggeredActivityId": "damage",
+					"triggeredActivityTargets": "saveTargets"
+				}
+			},
+			"1IROxxqPEpaS1Xtb": {
+				"type": "damage",
+				"_id": "1IROxxqPEpaS1Xtb",
+				"sort": 0,
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"critical": {
+						"allow": false
+					},
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 4,
+							"denomination": "10",
+							"bonus": "",
+							"types": [
+								"force"
+							],
+							"scaling": {
+								"mode": ""
+							}
+						}
+					]
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"forceDialog": false,
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": true,
+					"otherActivityCompatible": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": []
 			}
 		},
 		"identifier": ""

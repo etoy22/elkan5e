@@ -1,0 +1,2045 @@
+File: packs/_source/elkan5e-class-features/bard/cacophony/improved-blasting-volume.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:24:41.133212900 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:24:41.185158500 -0400
+@@ -67,9 +67,7 @@
+ 					"onlyOnce": false,
+ 					"wallsBlock": "system"
+ 				},
+-				"core": {
+-					"sourceId": "Compendium.elkan5e.elkan5e-class-features.Item.MfhfSzLQbJqLCZ6q.ActiveEffect.EWrKBMRyzcv270DG"
+-				}
++				"core": {}
+ 			},
+ 			"tint": "#ffffff",
+ 			"img": "modules/elkan5e/icons/conditions/deafened.svg",
+
+File: packs/_source/elkan5e-class-features/bard/jester/cutting-words.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:24:41.554952300 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:24:41.603993500 -0400
+@@ -3,7 +3,7 @@
+ 	"type": "feat",
+ 	"system": {
+ 		"description": {
+-			"value": "<p><em>You demoralize an enemy at a critical moment, pushing them to fail rather than succeed.</em></p><p><strong>Reaction </strong>- 1 Creature (60 ft.) - Magical</p><p><em>Trigger: An enemy hits with an attack roll or succeeds a skill check (you cannot use this ability on saving throws). The enemy must be able to hear you.</em></p><p>You expend a use of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh]{Bardic Inspiration} to use this ability.</p><ul><li><p>You roll your bardic inspiration die and subtract the number from the total, potentially turning the success into a failure. </p></li><li><p>If you have the @UUID[Compendium.elkan5e.elkan5e-class-features.Item.QIiLoZgVJqdEguAX]{Counterpoint} feature, you don't expend a use of Bardic Inspiration when the target succeeds their roll.</p></li></ul>",
++			"value": "<p><em>You demoralize an enemy at a critical moment, pushing them to fail rather than succeed.</em></p><p><strong>Reaction </strong>- 1 Creature (60 ft.) - Magical</p><p>You expend a use of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh]{Bardic Inspiration} to use this ability.</p><ul><li><p>You can demoralize an enemy when they hit with an attack roll or succeed a skill check (but you cannot use this ability on saving throws). The enemy must be able to hear you.</p></li><li><p>You roll your bardic inspiration die and subtract the number from the total, potentially turning the success into a failure. </p></li><li><p>If you have the @UUID[Compendium.elkan5e.elkan5e-class-features.Item.QIiLoZgVJqdEguAX]{Counterpoint} feature, you don't expend a use of Bardic Inspiration when the target succeeds their roll.</p></li></ul>",
+ 			"chat": ""
+ 		},
+ 		"source": {
+@@ -30,7 +30,7 @@
+ 				"_id": "IAziwDfNn0xTb67r",
+ 				"sort": 0,
+ 				"activation": {
+-					"type": "reaction",
++					"type": "action",
+ 					"value": null,
+ 					"override": false,
+ 					"condition": ""
+
+File: packs/_source/elkan5e-class-features/bard/jester/harmless-act.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:24:41.976144800 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:24:42.024857700 -0400
+@@ -5,7 +5,7 @@
+ 	"img": "icons/commodities/treasure/mask-wood-tan.webp",
+ 	"system": {
+ 		"description": {
+-			"value": "<p><strong>No Action Cost</strong></p><p><em>Trigger: You use @UUID[Compendium.elkan5e.elkan5e-spells.Item.Gm7eVG59Om6KG3aM]{Vicious Mockery} and your target fails their save or you deal damage with @UUID[Compendium.elkan5e.elkan5e-class-features.Item.f71fyym4jcBrftdZ]{Jester's Aspersion}.</em></p><ul><li><p>You can choose to @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.ieDILSkRbu9r8pmZ]{charm} the creature until you damage them or until the end of your next turn. Note that this charm does not protect your allies from the target.</p></li></ul>",
++			"value": "<p>When you use @UUID[Compendium.elkan5e.elkan5e-class-features.Item.0rGMBnPwhdbwFZrU]{Vicious Mockery} and your target fails their save or you deal damage with @UUID[Compendium.elkan5e.elkan5e-class-features.Item.f71fyym4jcBrftdZ]{Jester's Aspersion}, you can choose to @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.ieDILSkRbu9r8pmZ]{charm} the creature until you damage them or until the end of your next turn. Note that this charm does not protect your allies from the target.</p>",
+ 			"chat": ""
+ 		},
+ 		"source": {
+@@ -144,8 +144,7 @@
+ 			},
+ 			"flags": {
+ 				"core": {
+-					"overlay": false,
+-					"sourceId": "Actor.khnqq0pFNnc0cNq4.ActiveEffect.BzkkOUNxekwmy8Sd"
++					"overlay": false
+ 				},
+ 				"condition-lab-triggler": {
+ 					"conditionId": "charmed"
+
+File: packs/_source/elkan5e-class-features/bard/jester/inciting-remarks.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:24:42.385780200 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:24:42.433316000 -0400
+@@ -137,8 +137,7 @@
+ 			},
+ 			"flags": {
+ 				"core": {
+-					"overlay": false,
+-					"sourceId": "Scene.n3ItXg6tkrZJOzWV.Token.QZiz1nCjJXyzoGt7.Actor.QEG2y6Ltbr2H2nkA.ActiveEffect.7EtmraiUpXVfGlLq"
++					"overlay": false
+ 				},
+ 				"condition-lab-triggler": {
+ 					"conditionId": "Kq9PYa0G2aHGmUvc"
+@@ -198,9 +197,7 @@
+ 			"rollAttackPerTarget": "default",
+ 			"itemCondition": "",
+ 			"effectCondition": "",
+-			"reactionCondition": "",
+-			"removeAttackDamageButtons": "default",
+-			"otherCondition": ""
++			"reactionCondition": ""
+ 		},
+ 		"midiProperties": {
+ 			"nodam": false,
+@@ -229,10 +226,6 @@
+ 				"activity": [],
+ 				"effect": []
+ 			}
+-		},
+-		"tidy5e-sheet": {
+-			"section": "",
+-			"actionSection": ""
+ 		}
+ 	},
+ 	"_id": "QDGgq6r9urw1Dmtg",
+
+File: packs/_source/elkan5e-class-features/cleric/life-domain/healing-overflow.json
+Diff too large to display (>93 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-class-features/cleric/life-domain/infused-healer.json
+Diff too large to display (>54 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-class-features/fighter/champion/survivor.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:24:43.643139300 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:24:43.692182400 -0400
+@@ -39,7 +39,6 @@
+ 					"macroRepeat": "none"
+ 				},
+ 				"core": {
+-					"sourceId": "Compendium.Personal-Foundry-Automation-5e.subclass-features.WOqmsjMuWlyMGqpV.ActiveEffect.4VqImnsFQHf7wKmj",
+ 					"overlay": false
+ 				},
+ 				"ActiveAuras": {
+
+File: packs/_source/elkan5e-class-features/fighter/combat-maneuvers/level-8-maneuvers/dazing-blow-fighter.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:24:44.073433800 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:24:44.122632500 -0400
+@@ -5,7 +5,7 @@
+ 	"img": "icons/skills/melee/strike-morningstar-gray.webp",
+ 	"system": {
+ 		"description": {
+-			"value": "<p><em>Your attack scrambles your target's senses and leaves them slow to react.</em></p><p><strong>Once Per Turn</strong> - Melee/Ranged - 1 Creature - 1 Round - Uses Equal to Proficiency Bonus/Long Rest</p><p><em>Trigger: You damage a creature with a weapon.</em></p><p>You try to daze your target. Your DC for this ability equals 8 + your proficiency bonus + your STR or DEX modifier (your choice).</p><p><strong>Constitution Save</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[dazed].</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
++			"value": "<p><em>Your attack scrambles your target's senses and leaves them slow to react.</em></p><p><strong>Once Per Turn</strong> - Melee/Ranged - 1 Creature - 1 Round - Uses Equal to Proficiency Bonus/Long Rest</p><p>When you damage a creature with a weapon, you can try to daze your target. Your DC for this ability equals 8 + your proficiency bonus + your STR or DEX modifier (your choice).</p><p><strong>Constitution Save</strong> </p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[dazed].</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+ 			"chat": ""
+ 		},
+ 		"source": {
+@@ -251,8 +251,7 @@
+ 					"wallsBlock": "system"
+ 				},
+ 				"core": {
+-					"overlay": false,
+-					"sourceId": "Compendium.elkan5e.elkan5e-feats.Item.De9TFquN3tO297pZ.ActiveEffect.4iF4K8m5ErG3ZmpJ"
++					"overlay": false
+ 				},
+ 				"condition-lab-triggler": {
+ 					"conditionId": "fcsfAnZIUhJjnpBv"
+
+File: packs/_source/elkan5e-class-features/fighter/second-wind.json
+Diff too large to display (>43 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-class-features/monk/open-hand/sweep.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:24:44.922886500 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:24:44.971858000 -0400
+@@ -6,7 +6,7 @@
+ 	"img": "icons/magic/air/air-wave-gust-blue.webp",
+ 	"system": {
+ 		"description": {
+-			"value": "<p><strong>Once Per Turn</strong> - 1 Creature - @UUID[Compendium.elkan5e.elkan5e-class-features.Item.IXk7hfrAoVQU3dLJ]{1 Ki Point} - Magical</p><p><em>Trigger: You deal damage to a large or smaller creature with an attack.</em></p><p><strong>Strength Save</strong></p><ul><li><p><strong>Failure:</strong> Target is knocked &amp;reference[prone], and you may push them up to 10 ft. away from you.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
++			"value": "<p><strong>Once Per Turn</strong> - 1 Creature - @UUID[Compendium.elkan5e.elkan5e-class-features.Item.IXk7hfrAoVQU3dLJ]{1 Ki Point} - Magical</p><p>If you deal damage to a large or smaller creature with an attack, you can use this ability.</p><p><strong>Strength Save</strong></p><ul><li><p><strong>Failure:</strong> Target is knocked &amp;reference[prone], and you may push them up to 10 ft. away from you.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+ 			"chat": ""
+ 		},
+ 		"source": {
+@@ -168,7 +168,6 @@
+ 					"overlay": false
+ 				},
+ 				"core": {
+-					"sourceId": "Actor.AkXA9xszgaJBcjpI.Item.MuH5aMoKOyZanrFf.ActiveEffect.gcxgylisuj21fpt3",
+ 					"overlay": false
+ 				},
+ 				"dae": {
+
+File: packs/_source/elkan5e-class-features/monk/shadowdancer/hijack-shadow.json
+Diff too large to display (>125 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-class-features/monk/shadowdancer/meld-with-shadows.json
+Diff too large to display (>63 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-class-features/multiple-classes/blindsight.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:24:46.175757600 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:24:46.223905700 -0400
+@@ -33,7 +33,6 @@
+ 			"transfer": true,
+ 			"flags": {
+ 				"core": {
+-					"sourceId": "Compendium.elkan5e.elkan5e-class-features.Item.n0uHDatuL2TnF2tQ.ActiveEffect.4CcFhyAcLWDGFFX5",
+ 					"overlay": false
+ 				},
+ 				"dae": {
+
+File: packs/_source/elkan5e-class-features/paladin/alternative-smite-options/sapping-smite.json
+Diff too large to display (>124 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-class-features/rogue/mystic-trickster/precision-attacks-mystic-trickster/sunder-mystic.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:24:46.999723900 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:24:47.047971900 -0400
+@@ -61,7 +61,6 @@
+ 					"wallsBlock": "system"
+ 				},
+ 				"core": {
+-					"sourceId": "Compendium.elkan5e.elkan5e-class-features.Item.2XF9UnCWXgZpdrt5.ActiveEffect.9TUrdh3RF7oB91d4",
+ 					"overlay": false
+ 				}
+ 			},
+
+File: packs/_source/elkan5e-class-features/rogue/mystic-trickster/precision-attacks-mystic-trickster/throat-punch-mystic.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:24:47.417925000 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:24:47.464984500 -0400
+@@ -42,7 +42,6 @@
+ 					"wallsBlock": "system"
+ 				},
+ 				"core": {
+-					"sourceId": "Compendium.elkan5e.elkan5e-class-features.Item.EH05Ow4TACkrtN16.ActiveEffect.NbuvxvxcrPewtI89",
+ 					"overlay": false
+ 				}
+ 			},
+
+File: packs/_source/elkan5e-class-features/rogue/mystic-trickster/precision-attacks-mystic-trickster/vicious-wound-mystic.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:24:47.824161400 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:24:47.874854700 -0400
+@@ -59,7 +59,6 @@
+ 					"wallsBlock": "system"
+ 				},
+ 				"core": {
+-					"sourceId": "Compendium.elkan5e.elkan5e-class-features.Item.rGwSOpD6jZ5J4IKU.ActiveEffect.4MMofdhnOGYiXhMR",
+ 					"overlay": false
+ 				}
+ 			},
+
+File: packs/_source/elkan5e-class-features/rogue/precision-attacks/level-11/throat-punch.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:24:48.293310800 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:24:48.343851300 -0400
+@@ -42,7 +42,6 @@
+ 					"wallsBlock": "system"
+ 				},
+ 				"core": {
+-					"sourceId": "Compendium.elkan5e.elkan5e-class-features.Item.EH05Ow4TACkrtN16.ActiveEffect.NbuvxvxcrPewtI89",
+ 					"overlay": false
+ 				}
+ 			},
+
+File: packs/_source/elkan5e-class-features/rogue/precision-attacks/level-11/vicious-wound.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:24:48.714809100 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:24:48.761912100 -0400
+@@ -60,7 +60,6 @@
+ 					"statuses": []
+ 				},
+ 				"core": {
+-					"sourceId": "Compendium.elkan5e.elkan5e-class-features.Item.rGwSOpD6jZ5J4IKU.ActiveEffect.4MMofdhnOGYiXhMR",
+ 					"overlay": false
+ 				}
+ 			},
+
+File: packs/_source/elkan5e-class-features/rogue/precision-attacks/level-3/slicing-blow.json
+Diff too large to display (>133 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-class-features/sorcerer/metamagic/careful-spell.json
+Diff too large to display (>99 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-class-features/warlock/pact-magic.json
+Diff too large to display (>100 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-class-features/wizard/abjurer/greater-mage-armor.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:24:50.412774200 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:24:50.461803200 -0400
+@@ -85,7 +85,7 @@
+ 	],
+ 	"folder": "8B6bbXy2Yi2jjMus",
+ 	"flags": {
+-		"_sheetTab": "details",
++		"_sheetTab": {},
+ 		"dynamiceffects": {
+ 			"effects": [
+ 				{
+
+File: packs/_source/elkan5e-class-features/wizard/necromancer/spectral-empowerment.json
+Diff too large to display (>350 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creature-features/keen-senses/keen-sight-and-smell.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:24:51.244160800 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:24:51.291758900 -0400
+@@ -70,8 +70,7 @@
+ 					"macroRepeat": "none"
+ 				},
+ 				"core": {
+-					"statusId": "",
+-					"sourceId": "Compendium.elkan5e.elkan5e-creature-features.Item.333v7J13x4QCjLxX.ActiveEffect.LWHLArqPtzqymV0F"
++					"statusId": ""
+ 				},
+ 				"ActiveAuras": {
+ 					"isAura": false,
+
+File: packs/_source/elkan5e-creature-features/keen-senses/keen-sight.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:24:51.662033100 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:24:51.711770300 -0400
+@@ -70,8 +70,7 @@
+ 					"macroRepeat": "none"
+ 				},
+ 				"core": {
+-					"statusId": "",
+-					"sourceId": "Compendium.elkan5e.elkan5e-creature-features.Item.333v7J13x4QCjLxX.ActiveEffect.LWHLArqPtzqymV0F"
++					"statusId": ""
+ 				},
+ 				"ActiveAuras": {
+ 					"isAura": false,
+
+File: packs/_source/elkan5e-creatures/aberration/malakai-crawler.json
+Diff too large to display (>241 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/aberration/malakai-grunt.json
+Diff too large to display (>212 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/aberration/malakai-hound.json
+Diff too large to display (>201 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/beast/brown-bear.json
+Diff too large to display (>230 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/beast/dire-badger.json
+Diff too large to display (>180 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/beast/dire-wolf.json
+Diff too large to display (>241 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/beast/giant-spitting-spider.json
+Diff too large to display (>106 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/beast/sabercat.json
+Diff too large to display (>153 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/construct/iron-sentry.json
+Diff too large to display (>204 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/construct/rock-golem.json
+Diff too large to display (>123 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/giant/ogre-lord.json
+Diff too large to display (>193 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/giant/ogre-mage.json
+Diff too large to display (>194 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/giant/ogre-mauler.json
+Diff too large to display (>134 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/giant/ogre.json
+Diff too large to display (>107 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/humanoid/abbot.json
+Diff too large to display (>382 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/humanoid/assassin.json
+Diff too large to display (>204 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/humanoid/bandit-brute.json
+Diff too large to display (>120 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/humanoid/bandit-enforcer.json
+Diff too large to display (>123 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/humanoid/bandit-knife-thrower.json
+Diff too large to display (>120 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/humanoid/bandit-lord.json
+Diff too large to display (>245 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/humanoid/deceiver.json
+Diff too large to display (>262 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/humanoid/duelist.json
+Diff too large to display (>112 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/humanoid/enlightened-initiate.json
+Diff too large to display (>129 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/humanoid/enlightened-monk.json
+Diff too large to display (>151 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/humanoid/kobold-shaman.json
+Diff too large to display (>291 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/humanoid/kobold-tunneler.json
+Diff too large to display (>182 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/humanoid/kobold.json
+Diff too large to display (>128 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/humanoid/radiant-archer.json
+Diff too large to display (>150 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/monstrosity/mutant-warrior.json
+Diff too large to display (>158 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/monstrosity/mutant-wizard.json
+Diff too large to display (>286 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/ooze/green-slime.json
+Diff too large to display (>154 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/undead/skeleton.json
+Diff too large to display (>135 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/undead/swarm-of-zombies.json
+Diff too large to display (>160 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/undead/zombie-brute.json
+Diff too large to display (>85 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/undead/zombie-plague-carrier.json
+Diff too large to display (>180 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-creatures/undead/zombie.json
+Diff too large to display (>102 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-feats/class-feats/barbarian-feats/enraged-prowess-barbarian.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:09.211911900 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:09.262866100 -0400
+@@ -136,7 +136,6 @@
+ 					"statuses": []
+ 				},
+ 				"core": {
+-					"sourceId": "Compendium.elkan5e.elkan5e-feats.Item.67JYA9ET83kuwn84.ActiveEffect.oWMnia5oQhvwClR8",
+ 					"overlay": false
+ 				},
+ 				"dnd5e": {
+
+File: packs/_source/elkan5e-feats/combat-maneuver-feats/level-8-maneuvers/dazing-blow.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:09.664754400 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:09.718856600 -0400
+@@ -5,7 +5,7 @@
+ 	"img": "icons/skills/melee/strike-morningstar-gray.webp",
+ 	"system": {
+ 		"description": {
+-			"value": "<p><em>Your attack scrambles your target's senses and leaves them slow to react.</em></p><p><strong>Once Per Turn</strong> - Melee/Ranged - 1 Creature - 1 Round - Uses Equal to Proficiency Bonus/Long Rest</p><p><em>Trigger: You damage a creature with a weapon.</em></p><p>You try to daze your target. Your DC for this ability equals 8 + your proficiency bonus + your STR or DEX modifier (your choice).</p><p><strong>Constitution Save</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[dazed].</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
++			"value": "<p><em>Your attack scrambles your target's senses and leaves them slow to react.</em></p><p><strong>Once Per Turn</strong> - Melee/Ranged - 1 Creature - 1 Round - Uses Equal to Proficiency Bonus/Long Rest</p><p>When you damage a creature with a weapon, you can try to daze your target. Your DC for this ability equals 8 + your proficiency bonus + your STR or DEX modifier (your choice).</p><p><strong>Constitution Save</strong> </p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[dazed].</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+ 			"chat": ""
+ 		},
+ 		"source": {
+@@ -283,8 +283,7 @@
+ 					"wallsBlock": "system"
+ 				},
+ 				"core": {
+-					"overlay": false,
+-					"sourceId": "Compendium.elkan5e.elkan5e-feats.Item.De9TFquN3tO297pZ.ActiveEffect.4iF4K8m5ErG3ZmpJ"
++					"overlay": false
+ 				},
+ 				"condition-lab-triggler": {
+ 					"conditionId": "fcsfAnZIUhJjnpBv"
+
+File: packs/_source/elkan5e-feats/level-8-feats/challenger-charisma.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:10.147589900 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:10.200156400 -0400
+@@ -180,8 +180,7 @@
+ 			},
+ 			"flags": {
+ 				"core": {
+-					"overlay": false,
+-					"sourceId": "Compendium.elkan5e.elkan5e-feats.Item.DYz1uFlSNv13lYwt.ActiveEffect.djv5T3sUA5wjXBoc"
++					"overlay": false
+ 				},
+ 				"condition-lab-triggler": {
+ 					"conditionId": "Kq9PYa0G2aHGmUvc"
+
+File: packs/_source/elkan5e-feats/level-8-feats/challenger-strength.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:10.599644400 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:10.649664600 -0400
+@@ -179,8 +179,7 @@
+ 			},
+ 			"flags": {
+ 				"core": {
+-					"overlay": false,
+-					"sourceId": "Compendium.elkan5e.elkan5e-feats.Item.DYz1uFlSNv13lYwt.ActiveEffect.djv5T3sUA5wjXBoc"
++					"overlay": false
+ 				},
+ 				"condition-lab-triggler": {
+ 					"conditionId": "Kq9PYa0G2aHGmUvc"
+
+File: packs/_source/elkan5e-lore/batari-dualism.json
+Diff too large to display (>54 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-lore/elkan-lore-languages.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:11.554739500 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:11.611792200 -0400
+@@ -36,17 +36,20 @@
+ 			"_stats": {
+ 				"compendiumSource": null,
+ 				"duplicateSource": null,
+-				"coreVersion": "12.331",
++				"coreVersion": "13.346",
+ 				"systemId": "dnd5e",
+ 				"systemVersion": "4.0.2",
+ 				"createdTime": null,
+ 				"modifiedTime": null,
+-				"lastModifiedBy": null
++				"lastModifiedBy": null,
++				"exportSource": null
+ 			},
++			"category": null,
+ 			"_key": "!journal.pages!HFyo08zlcI9175bi.TbvARV9riqejrnOP"
+ 		}
+ 	],
+ 	"folder": null,
+ 	"_id": "HFyo08zlcI9175bi",
++	"categories": [],
+ 	"_key": "!journal!HFyo08zlcI9175bi"
+ }
+\ No newline at end of file
+
+File: packs/_source/elkan5e-lore/the-chimera-heresy.json
+Diff too large to display (>54 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-magic-items/weapon/misc-weapons/samar-quarterstaff.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:12.480463500 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:12.537043600 -0400
+@@ -226,8 +226,7 @@
+ 					"showIcon": false
+ 				},
+ 				"core": {
+-					"statusId": "",
+-					"sourceId": "Item.Ff5w0N7QunFUtGZD.ActiveEffect.cPh1UyYOiGKJG97x"
++					"statusId": ""
+ 				},
+ 				"dnd5e-helpers": {
+ 					"rest-effect": "Ignore"
+
+File: packs/_source/elkan5e-magic-items/weapon/misc-weapons/staff-of-truth-1.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:13.018817100 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:13.094964700 -0400
+@@ -227,8 +227,7 @@
+ 					"showIcon": false
+ 				},
+ 				"core": {
+-					"statusId": "",
+-					"sourceId": "Compendium.elkan5e.elkan5e-magic-items.Item.Qd73gYxzV68UGpFI.ActiveEffect.cPh1UyYOiGKJG97x"
++					"statusId": ""
+ 				},
+ 				"dnd5e-helpers": {
+ 					"rest-effect": "Ignore"
+
+File: packs/_source/elkan5e-roll-tables/confused.json
+Diff too large to display (>98 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-roll-tables/wild-surge/wild-surge-table-lv-1.json
+Diff too large to display (>527 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-roll-tables/wild-surge/wild-surge-table-lv-10.json
+Diff too large to display (>482 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-roll-tables/wild-surge/wild-surge-table-lv-2.json
+Diff too large to display (>527 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-roll-tables/wild-surge/wild-surge-table-lv-3.json
+Diff too large to display (>527 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-roll-tables/wild-surge/wild-surge-table-lv-4.json
+Diff too large to display (>527 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-roll-tables/wild-surge/wild-surge-table-lv-5.json
+Diff too large to display (>527 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-roll-tables/wild-surge/wild-surge-table-lv-6.json
+Diff too large to display (>527 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-roll-tables/wild-surge/wild-surge-table-lv-7.json
+Diff too large to display (>527 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-roll-tables/wild-surge/wild-surge-table-lv-8.json
+Diff too large to display (>527 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-roll-tables/wild-surge/wild-surge-table-lv-9.json
+Diff too large to display (>527 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-rules/character-creation/ancestry-and-background.json
+Diff too large to display (>44 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-rules/character-creation/character-creation.json
+Diff too large to display (>170 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-rules/character-creation/feats.json
+Diff too large to display (>61 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-rules/character-creation/warlock-invocations.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:20.381865100 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:20.439009400 -0400
+@@ -38,15 +38,18 @@
+ 			"_stats": {
+ 				"compendiumSource": null,
+ 				"duplicateSource": null,
+-				"coreVersion": "12.331",
++				"coreVersion": "13.346",
+ 				"systemId": "dnd5e",
+ 				"systemVersion": "4.0.2",
+ 				"createdTime": null,
+ 				"modifiedTime": null,
+-				"lastModifiedBy": null
++				"lastModifiedBy": null,
++				"exportSource": null
+ 			},
++			"category": null,
+ 			"_key": "!journal.pages!ZMMOwoWhgylf3hP5.4BlzKOgtB1yYU6fV"
+ 		}
+ 	],
++	"categories": [],
+ 	"_key": "!journal!ZMMOwoWhgylf3hP5"
+ }
+\ No newline at end of file
+
+File: packs/_source/elkan5e-rules/help.json
+Diff too large to display (>43 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-rules/rules-references/armor.json
+Diff too large to display (>130 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-rules/rules-references/character-statistics.json
+Diff too large to display (>457 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-rules/rules-references/combat.json
+Diff too large to display (>582 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-rules/rules-references/conditions.json
+Diff too large to display (>675 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-rules/rules-references/languages.json
+Diff too large to display (>80 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-rules/rules-references/skills.json
+Diff too large to display (>548 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-rules/rules-references/spellcasting.json
+Diff too large to display (>690 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-rules/rules-references/tools.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:24.842131900 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:24.903241200 -0400
+@@ -36,17 +36,20 @@
+ 			"_stats": {
+ 				"compendiumSource": null,
+ 				"duplicateSource": null,
+-				"coreVersion": "12.331",
++				"coreVersion": "13.346",
+ 				"systemId": "dnd5e",
+ 				"systemVersion": "4.0.2",
+ 				"createdTime": null,
+ 				"modifiedTime": 1727029846543,
+-				"lastModifiedBy": "YxlXl9sauSuWxHdZ"
++				"lastModifiedBy": "YxlXl9sauSuWxHdZ",
++				"exportSource": null
+ 			},
++			"category": null,
+ 			"_key": "!journal.pages!SySQiDfSWcSRUCFN.wuMEnZz82yY02Dok"
+ 		}
+ 	],
+ 	"folder": "Cnzh1GRPMpoqKTdA",
+ 	"_id": "SySQiDfSWcSRUCFN",
++	"categories": [],
+ 	"_key": "!journal!SySQiDfSWcSRUCFN"
+ }
+\ No newline at end of file
+
+File: packs/_source/elkan5e-rules/rules-references/weapons.json
+Diff too large to display (>380 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-rules/rules-references/wild-magic.json
+Diff too large to display (>43 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-rules/spell-lists/spells-by-class.json
+Diff too large to display (>303 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-rules/spell-lists/spells-by-school-of-magic.json
+Diff too large to display (>150 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-rules/spell-lists/spells-by-subclass.json
+Diff too large to display (>688 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-rules/summary-of-changes.json
+Diff too large to display (>244 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-spells/cantrip/floating-disk.json
+Diff too large to display (>617 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-spells/cantrip/light.json
+Diff too large to display (>127 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-spells/cantrip/produce-flame.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:29.281729400 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:29.342286300 -0400
+@@ -42,7 +42,7 @@
+ 			"flags": {
+ 				"ActiveAuras": {
+ 					"isAura": false,
+-					"aura": "None",
++					"aura": "Enemy",
+ 					"nameOverride": "",
+ 					"radius": "",
+ 					"alignment": "",
+@@ -54,7 +54,8 @@
+ 					"displayTemp": false,
+ 					"hostile": false,
+ 					"onlyOnce": false,
+-					"wallsBlock": "system"
++					"wallsBlock": "system",
++					"statuses": []
+ 				},
+ 				"dae": {
+ 					"disableCondition": "",
+@@ -67,6 +68,11 @@
+ 				},
+ 				"core": {
+ 					"overlay": false
++				},
++				"dnd5e": {
++					"riders": {
++						"statuses": []
++					}
+ 				}
+ 			},
+ 			"_key": "!items.effects!D8IuKqy7kayCCO15.exMuXD4DcHwMZuMF"
+
+File: packs/_source/elkan5e-spells/cantrip/starry-wisp.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:29.765632800 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:29.811210200 -0400
+@@ -139,7 +139,7 @@
+ 			"max": ""
+ 		},
+ 		"description": {
+-			"value": "<p><em>You launch a mote of starlight that lingers around your target.</em></p><p><strong>Ranged Spell Attack</strong></p><p><strong>Hit:</strong> [[/damage 1d8 radiant]] damage.* The target emits Dim Light in a 10-foot radius and can't benefit from the &amp;Reference[Invisible] condition.</p><p></p><p><strong>*At Higher Levels:</strong> This spell's damage increases by [[/damage 1d8 radiant]] when you reach a total character or creature level of 5th level ([[/damage 2d8 radiant]]), 11th level ([[/damage 3d8 radiant]]), and 17th level ([[/damage 4d8 radiant]] ).</p>",
++			"value": "<p>You launch a mote of light at one creature or object within range. Make a ranged spell attack against the target. On a hit, the target takes 1d8 Radiant damage, and until the end of your next turn, it emits Dim Light in a 10-foot radius and can't benefit from the &amp;Reference[Invisible] condition.</p><p><strong>Cantrip Upgrade.</strong> The damage increases by 1d8 when you reach levels 5 (2d8), 11 (3d8), and 17 (4d8).</p>",
+ 			"chat": ""
+ 		},
+ 		"identifier": "starry-wisp",
+@@ -153,8 +153,7 @@
+ 			"condition": ""
+ 		},
+ 		"duration": {
+-			"units": "round",
+-			"value": "1"
++			"units": "inst"
+ 		},
+ 		"level": 0,
+ 		"materials": {
+
+File: packs/_source/elkan5e-spells/cantrip/static-charge.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:30.271053400 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:30.352246300 -0400
+@@ -46,7 +46,6 @@
+ 					"disableCondition": ""
+ 				},
+ 				"core": {
+-					"sourceId": "Actor.ALMTVvK9BZrKHQ9c.Item.jHgSrJCBJMGvlZ1V.ActiveEffect.hJqcI4pphFqaYhv7",
+ 					"overlay": false
+ 				},
+ 				"ActiveAuras": {
+
+File: packs/_source/elkan5e-spells/level-1/faerie-fire.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:30.748277600 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:30.801841200 -0400
+@@ -27,7 +27,7 @@
+ 					"ignoreSelf": false,
+ 					"hidden": false,
+ 					"height": false,
+-					"aura": "None",
++					"aura": "Enemy",
+ 					"radius": "",
+ 					"alignment": "",
+ 					"type": "",
+@@ -58,7 +58,7 @@
+ 				{
+ 					"key": "macro.tokenMagic",
+ 					"mode": 0,
+-					"value": "bevel",
++					"value": "invalid",
+ 					"priority": 20
+ 				},
+ 				{
+@@ -74,12 +74,6 @@
+ 					"priority": 20
+ 				},
+ 				{
+-					"key": "system.traits.ci.value",
+-					"mode": 0,
+-					"value": "invisible",
+-					"priority": 20
+-				},
+-				{
+ 					"key": "ATL.light.dim",
+ 					"mode": 2,
+ 					"value": "10",
+
+File: packs/_source/elkan5e-spells/level-1/fog-cloud.json
+Diff too large to display (>53 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-spells/level-1/goodberry.json
+Diff too large to display (>273 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-spells/level-1/ice-knife.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:32.204428200 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:32.272239000 -0400
+@@ -289,7 +289,7 @@
+ 			"special": "",
+ 			"value": "60"
+ 		},
+-		"school": "",
++		"school": "con",
+ 		"target": {
+ 			"template": {
+ 				"contiguous": false,
+
+File: packs/_source/elkan5e-spells/level-1/mage-armor.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:32.713621000 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:32.790250800 -0400
+@@ -72,7 +72,7 @@
+ 	],
+ 	"folder": "U0k4VGG6bziqf3oH",
+ 	"flags": {
+-		"_sheetTab": "details",
++		"_sheetTab": {},
+ 		"dynamiceffects": {
+ 			"effects": [
+ 				{
+
+File: packs/_source/elkan5e-spells/level-1/speak-with-animals.json
+Diff too large to display (>62 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-spells/level-2/acid-arrow.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:33.719813100 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:33.775875600 -0400
+@@ -36,7 +36,7 @@
+ 			"flags": {
+ 				"ActiveAuras": {
+ 					"isAura": false,
+-					"aura": "None",
++					"aura": "Enemy",
+ 					"nameOverride": "",
+ 					"radius": "",
+ 					"alignment": "",
+@@ -48,7 +48,8 @@
+ 					"displayTemp": false,
+ 					"hostile": false,
+ 					"onlyOnce": false,
+-					"wallsBlock": "system"
++					"wallsBlock": "system",
++					"statuses": []
+ 				},
+ 				"dae": {
+ 					"enableCondition": "",
+@@ -65,6 +66,11 @@
+ 				},
+ 				"core": {
+ 					"overlay": false
++				},
++				"dnd5e": {
++					"riders": {
++						"statuses": []
++					}
+ 				}
+ 			},
+ 			"_key": "!items.effects!xZu2pzKegvWyGnKo.WBIvDzj1NiSog2Ys"
+
+File: packs/_source/elkan5e-spells/level-2/aid.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:34.226838700 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:34.292411100 -0400
+@@ -23,7 +23,7 @@
+ 				"ActiveAuras": {
+ 					"isAura": false,
+ 					"radius": "null",
+-					"aura": "None",
++					"aura": "Enemy",
+ 					"alignment": "",
+ 					"type": "",
+ 					"ignoreSelf": false,
+@@ -95,7 +95,7 @@
+ 			"effects": [
+ 				{
+ 					"modSpecKey": "data.attributes.hp.max",
+-					"value": "5 * @spell.level + @classes.paladin.levels",
++					"value": "5 * @spellLevel + @classes.paladin.levels",
+ 					"mode": "+",
+ 					"targetSpecific": false,
+ 					"id": 1,
+
+File: packs/_source/elkan5e-spells/level-2/arms-of-earth.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:34.707343000 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:34.770397900 -0400
+@@ -197,12 +197,11 @@
+ 					"disableCondition": ""
+ 				},
+ 				"core": {
+-					"sourceId": "Actor.TxKqIQwqUed9XU8Z.Item.Ed7XgnZu9qRs3qdn.ActiveEffect.e7lEeBV86hFLDK7D",
+ 					"overlay": false
+ 				},
+ 				"ActiveAuras": {
+ 					"isAura": false,
+-					"aura": "None",
++					"aura": "Enemy",
+ 					"radius": "null",
+ 					"alignment": "",
+ 					"type": "",
+
+File: packs/_source/elkan5e-spells/level-2/continual-flame.json
+Diff too large to display (>53 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-spells/level-2/darkness.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:35.638895500 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:35.691143000 -0400
+@@ -32,8 +32,8 @@
+ 				"img": "icons/magic/unholy/barrier-shield-glowing-pink.webp",
+ 				"type": "script",
+ 				"scope": "global",
+-				"command": "",
+-				"author": "3Yi0HjF4PKCA4vX0",
++				"command": "return await elkan5e.macros.spells.darkness(workflow)",
++				"author": "vHqSHJMdmEO6Mk2C",
+ 				"ownership": {
+ 					"default": 3
+ 				},
+@@ -42,17 +42,20 @@
+ 				"sort": 0,
+ 				"flags": {},
+ 				"_stats": {
+-					"systemId": null,
+-					"systemVersion": null,
+-					"coreVersion": null,
++					"systemId": "dnd5e",
++					"systemVersion": "5.0.4",
++					"coreVersion": "13.346",
+ 					"createdTime": null,
+ 					"modifiedTime": null,
+-					"lastModifiedBy": null
++					"lastModifiedBy": null,
++					"compendiumSource": null,
++					"duplicateSource": null,
++					"exportSource": null
+ 				}
+ 			}
+ 		},
+ 		"midi-qol": {
+-			"onUseMacroName": "",
++			"onUseMacroName": "[postActiveEffects]ItemMacro",
+ 			"effectActivation": false,
+ 			"AoETargetType": "any",
+ 			"AoETargetTypeIncludeSelf": true,
+
+File: packs/_source/elkan5e-spells/level-2/enlarge/reduce.json
+Diff too large to display (>189 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-spells/level-2/gentle-repose.json
+Diff too large to display (>302 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-spells/level-2/moonbeam.json
+Diff too large to display (>63 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-spells/level-2/silence.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:37.560939900 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:37.620531700 -0400
+@@ -41,7 +41,6 @@
+ 					"disableCondition": ""
+ 				},
+ 				"core": {
+-					"sourceId": "Actor.xqQ8R2n5bk06N7UX.Item.kG78aKbHhcEhf7me.ActiveEffect.bxRflC6KtPQ3Vydq",
+ 					"overlay": false
+ 				},
+ 				"ActiveAuras": {
+
+File: packs/_source/elkan5e-spells/level-2/well-of-corruption.json
+Diff too large to display (>146 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-spells/level-3/daylight.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:38.525659800 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:38.585742700 -0400
+@@ -58,7 +58,7 @@
+ 				},
+ 				"ActiveAuras": {
+ 					"isAura": false,
+-					"aura": "None",
++					"aura": "Enemy",
+ 					"nameOverride": "",
+ 					"radius": "",
+ 					"alignment": "",
+@@ -70,7 +70,13 @@
+ 					"displayTemp": false,
+ 					"hostile": false,
+ 					"onlyOnce": false,
+-					"wallsBlock": "system"
++					"wallsBlock": "system",
++					"statuses": []
++				},
++				"dnd5e": {
++					"riders": {
++						"statuses": []
++					}
+ 				}
+ 			},
+ 			"_key": "!items.effects!jdFMmZrR5TJegYvD.pBWFiLI4mICdzF8D"
+
+File: packs/_source/elkan5e-spells/level-3/life-drain.json
+Diff too large to display (>109 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-spells/level-3/spirit-guardians.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:39.468778900 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:39.533872300 -0400
+@@ -60,7 +60,6 @@
+ 					"wallsBlock": "system"
+ 				},
+ 				"core": {
+-					"sourceId": "Compendium.midi-qol.midiqol-sample-items.Item.X2gVj3jeAI1sDz54.ActiveEffect.kJdmHhTJH03zJxo2",
+ 					"overlay": false
+ 				},
+ 				"times-up": {
+
+File: packs/_source/elkan5e-spells/level-3/stinking-cloud.json
+Diff too large to display (>48 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-spells/level-4/banishment.json
+Diff too large to display (>189 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-spells/level-4/blight.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:40.945285400 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:40.992816600 -0400
+@@ -59,7 +59,7 @@
+ 	},
+ 	"system": {
+ 		"description": {
+-			"value": "<p><strong>Constitution Save</strong></p><p>If you target a &amp;reference[plant]{plant} creature or a magical plant, it makes the saving throw with disadvantage, and you don't roll damage, instead dealing maximum damage. This spell has no effect on creatures that don't have water in their bodies.</p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 8d8 necrotic]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p></p><p><strong>*</strong> <strong>Upcasting:</strong> Increase damage by [[/damage 1d8 necrotic]]{1d8} for each spell level above 4th.</p>",
++			"value": "<p><strong>Constitution Save</strong> </p><p>If you target a &amp;reference[plant]{plant} creature or a magical plant, it makes the saving throw with disadvantage, and you don't roll damage, instead dealing maximum damage. This spell has no effect on creatures that don't have water in their bodies.</p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 8d8 necrotic]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p></p><p><strong>*</strong> <strong>Upcasting:</strong> Increase damage by [[/damage 1d8 necrotic]]{1d8} for each spell level above 4th.</p>",
+ 			"chat": ""
+ 		},
+ 		"source": {
+@@ -194,7 +194,10 @@
+ 				"name": "",
+ 				"img": "",
+ 				"appliedEffects": [],
+-				"otherActivityId": "none"
++				"otherActivityId": "none",
++				"midiProperties": {
++					"triggeredActivityId": "none"
++				}
+ 			},
+ 			"LjKvMoSDAbaFgjMZ": {
+ 				"type": "save",
+@@ -272,7 +275,8 @@
+ 				"_id": "LjKvMoSDAbaFgjMZ",
+ 				"name": "Save (Against Plant)",
+ 				"img": "",
+-				"appliedEffects": []
++				"appliedEffects": [],
++				"otherActivityId": "none"
+ 			}
+ 		},
+ 		"identifier": ""
+
+File: packs/_source/elkan5e-spells/level-4/fire-shield.json
+Diff too large to display (>88 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-spells/level-4/phantasmal-killer.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:41.895903900 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:41.947432700 -0400
+@@ -29,7 +29,7 @@
+ 				},
+ 				"ActiveAuras": {
+ 					"isAura": false,
+-					"aura": "None",
++					"aura": "Enemy",
+ 					"radius": "",
+ 					"alignment": "",
+ 					"type": "",
+
+File: packs/_source/elkan5e-spells/level-4/shockwave.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:42.412855300 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:42.469924000 -0400
+@@ -198,8 +198,7 @@
+ 					"conditionId": "prone"
+ 				},
+ 				"core": {
+-					"overlay": false,
+-					"sourceId": "Actor.AkXA9xszgaJBcjpI.Item.MuH5aMoKOyZanrFf.ActiveEffect.d6phTu61XPC2wFAQ"
++					"overlay": false
+ 				},
+ 				"condition-lab-triggler": {
+ 					"conditionId": "prone"
+
+File: packs/_source/elkan5e-spells/level-5/antilife-shell.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:42.936600100 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:42.990640800 -0400
+@@ -59,8 +59,8 @@
+ 	},
+ 	"system": {
+ 		"description": {
+-			"value": "<p><em>You surround yourself with a magical transparent bubble that keeps living creatures from approaching.</em></p><p><strong>Utility Spell</strong></p><ul><li><p>An aura extends from you in a 10-foot emanation. The aura prevents creatures other than &amp;reference[construct]{constructs} and &amp;reference[undead]{undead} from passing or reaching through it.</p></li><li><p>An affected creature can cast spells or make attacks with ranged or &amp;reference[reach] weapons through the barrier.</p></li><li><p>If you move so that an affected creature larger than tiny is forced to pass through the barrier, the spell ends. Tiny creatures and swarms of tiny creatures are instead pushed by the moving barrier.</p></li></ul>",
+-			"chat": "<p><strong>Utility Spell</strong></p><ul><li><p>An aura extends from you in a 10-foot emanation. The aura prevents creatures other than &amp;reference[construct]{constructs} and &amp;reference[undead]{undead} from passing or reaching through it.</p></li><li><p>An affected creature can cast spells or make attacks with ranged or &amp;reference[reach] weapons through the barrier.</p></li><li><p>If you move so that an affected creature larger than tiny is forced to pass through the barrier, the spell ends. Tiny creatures and swarms of tiny creatures are instead pushed by the moving barrier.</p></li></ul>"
++			"value": "<p><strong>Utility Spell</strong> </p><p>A shimmering barrier extends out from you in a 10-foot radius and moves with you, remaining centered on you and hedging out creatures other than undead and constructs. The barrier lasts for the duration.</p><p>The barrier prevents an affected creature from passing or reaching through. An affected creature can cast spells or make attacks with ranged or reach weapons through the barrier.</p><p>If you move so that an affected creature is forced to pass through the barrier, the spell ends.</p>",
++			"chat": ""
+ 		},
+ 		"source": {
+ 			"custom": "elkan5e.com/spells/antilife-shell",
+
+File: packs/_source/elkan5e-spells/level-5/arcane-hand.json
+Diff too large to display (>67 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-spells/level-5/awaken.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:43.940145800 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:44.000191200 -0400
+@@ -177,8 +177,8 @@
+ 	},
+ 	"system": {
+ 		"description": {
+-			"value": "<p><em>After tracing magical pathways within a precious gemstone, you touch a beast or plant, awakening sapience within it. Plants also become mobile.</em></p><p><strong>Materials:</strong> You require a @UUID[Compendium.elkan5e.elkan5e-spells.Item.ebjwiio4y36G5pP5]{Large Agate}, typically valued at 250 gold, which the spell consumes.</p><p><strong>Utility Spell</strong></p><p>You touch a &amp;reference[beast] or &amp;reference[plant] of huge size or smaller. The target must have no &amp;reference[intelligence] score or an intelligence of 4 or lower.</p><ul><li><p>The target gains an Intelligence of 10 and the ability to speak one language you know.</p></li><li><p>The target is &amp;reference[charmed] by you for 30 days or until you or your companions do anything harmful to it. It may or may not remain friendly to you afterwards.</p></li><li><p>If the target is a plant, it gains a walking speed of 30 ft. and can see like a human could.</p></li><li><p>For plants that didn't previously have statistics, your GM chooses statistics appropriate for the awakened plant, such as the statistics for the awakened shrub or the awakened tree.</p></li></ul>",
+-			"chat": "<p><strong>Materials:</strong> You require a @UUID[Compendium.elkan5e.elkan5e-spells.Item.ebjwiio4y36G5pP5]{Large Agate}, typically valued at 250 gold, which the spell consumes.</p><p><strong>Utility Spell</strong></p><p>You touch a &amp;reference[beast] or &amp;reference[plant] of huge size or smaller. The target must have no &amp;reference[intelligence] score or an intelligence of 4 or lower.</p><ul><li><p>The target gains an Intelligence of 10 and the ability to speak one language you know.</p></li><li><p>The target is &amp;reference[charmed] by you for 30 days or until you or your companions do anything harmful to it. It may or may not remain friendly to you afterwards.</p></li><li><p>If the target is a plant, it gains a walking speed of 30 ft. and can see like a human could.</p></li><li><p>For plants that didn't previously have statistics, your GM chooses statistics appropriate for the awakened plant, such as the statistics for the awakened shrub or the awakened tree.</p></li></ul>"
++			"value": "<p><em>After tracing magical pathways within a precious gemstone, you touch a beast or plant, awakening sapience within it. Plants also become mobile.</em></p><p><strong>Materials:</strong> You require a @UUID[Compendium.elkan5e.elkan5e-spells.Item.ebjwiio4y36G5pP5]{Large Agate}, typically valued at 250 gold, which the spell consumes.</p><p><strong>Utility Spell</strong></p><p>You touch a beast or plant of huge size or smaller. The target must have no intelligence score or an intelligence of 4 or lower.</p><ul><li><p>The target gains an Intelligence of 10 and the ability to speak one language you know.</p></li><li><p>The target is charmed by you for 30 days or until you or your companions do anything harmful to it. It may or may not remain friendly to you afterwards.</p></li><li><p>If the target is a plant, it gains a walking speed of 30 ft. and can see like a human could.</p></li><li><p>For plants that didn't previously have statistics, your GM chooses statistics appropriate for the awakened plant, such as the statistics for the awakened shrub or the awakened tree.</p></li></ul>",
++			"chat": ""
+ 		},
+ 		"source": {
+ 			"book": "Elkan 5e",
+
+File: packs/_source/elkan5e-spells/level-5/break-enchantment.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:44.463284700 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:44.515188000 -0400
+@@ -56,8 +56,8 @@
+ 	},
+ 	"system": {
+ 		"description": {
+-			"value": "<p><strong>Materials:</strong> You require 0.2 pounds of pure @UUID[Compendium.elkan5e.elkan5e-spells.Item.wV3r0XKYOLYdI0nz]{Diamond Dust}, typically valued at 100 gold. This spell consumes this material.</p><p><strong>Healing Spell</strong></p><p>You remove one of the following from the target:</p><ul><li>All of the following: &amp;reference[charmed], &amp;reference[confused], &amp;reference[frightened], &amp;reference[goaded], &amp;reference[petrified], &amp;reference[silenced], and &amp;reference[siphoned] conditions.</li><li>All curses, including the target's attunement to a &amp;reference[cursed] magic item.</li><li>A creature possessing the target, which appears in a space of its choice within 5 ft. of the target.</li></ul><p></p><p><em>This spell cannot remove a condition caused by a disease or another condition not listed (eg. a version of poisoned that causes creatures to also be confused).</em></p>",
+-			"chat": "<p><strong>Materials:</strong> You require 0.2 pounds of pure @UUID[Compendium.elkan5e.elkan5e-spells.Item.wV3r0XKYOLYdI0nz]{Diamond Dust}, typically valued at 100 gold. This spell consumes this material.</p><p><strong>Healing Spell</strong></p><p>You remove one of the following from the target:</p><ul><li>All of the following: &amp;reference[charmed], &amp;reference[confused], &amp;reference[frightened], &amp;reference[goaded], &amp;reference[petrified], &amp;reference[silenced], and &amp;reference[siphoned] conditions.</li><li>All curses, including the target's attunement to a &amp;reference[cursed] magic item.</li><li>A creature possessing the target, which appears in a space of its choice within 5 ft. of the target.</li></ul><p></p><p><em>This spell cannot remove a condition caused by a disease or another condition not listed (eg. a version of poisoned that causes creatures to also be confused).</em></p>"
++			"value": "<p><strong>Materials:</strong> You require 0.2 pounds of pure @UUID[Compendium.elkan5e.elkan5e-spells.Item.wV3r0XKYOLYdI0nz]{Diamond Dust}, typically valued at 100 gold. This spell consumes this material.</p><p><strong>Healing Spell<br /></strong> <br />You remove one of the following from the target:</p><ul><li>All of the following: charmed, confused, frightened, goaded, petrified, silenced, and siphoned conditions.</li><li>All curses, including the target's attunement to a cursed magic item.</li><li>A creature possessing the target, which appears in a space of its choice within 5 ft. of the target.</li></ul><p></p><p><em>This spell cannot remove a condition caused by a disease or another condition not listed (eg. a version of poisoned that causes creatures to also be confused).</em></p>",
++			"chat": ""
+ 		},
+ 		"source": {
+ 			"custom": "elkan5e.com/spells/break-enchantment",
+
+File: packs/_source/elkan5e-spells/level-5/cloudkill.json
+Diff too large to display (>369 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-spells/level-5/commune.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:45.408972900 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:45.469011800 -0400
+@@ -59,13 +59,7 @@
+ 					"displayTemp": false,
+ 					"hostile": false,
+ 					"onlyOnce": false,
+-					"wallsBlock": "system",
+-					"statuses": []
+-				},
+-				"dnd5e": {
+-					"riders": {
+-						"statuses": []
+-					}
++					"wallsBlock": "system"
+ 				}
+ 			},
+ 			"_key": "!items.effects!3cY7WOkURuISX8fc.MrRJZ8VF2rQ0ioVz"
+@@ -124,8 +118,8 @@
+ 	},
+ 	"system": {
+ 		"description": {
+-			"value": "<div data-draftjs-conductor-fragment=\"{\" style=\"white-space:pre-wrap\"><p><strong>Ritual Casting Time:</strong> 10 Minutes</p></div><p><strong>Utility Spell</strong></p><p>You contact a powerful spirit or divine entity.</p><ul><li><p>You ask the creature <strong>three questions</strong>. The creature responds however they like, giving you answers no longer than one minute each.</p></li><li><p>Even divine beings aren't necessarily omniscient, so they might not be able to answer your question.</p></li></ul><p>If you cast the spell two or more times before finishing your next long rest, there is a cumulative [[/r 1d100]] (25 percent) chance for each casting after the first that you get no answer. The DM makes this roll in secret.</p><p></p><p><em>The chosen creature you commune with must be willing to receive your requests. In most settings, deities have servants who answer their commune spells for them. Spirits of the land are also valid targets, and they may not have a physical body.</em></p>",
+-			"chat": "<div data-draftjs-conductor-fragment=\"{\" style=\"white-space:pre-wrap\"><p><strong>Ritual Casting Time:</strong> 10 Minutes</p></div><p><strong>Utility Spell</strong></p><p>You contact a powerful spirit or divine entity.</p><ul><li><p>You ask the creature <strong>three questions</strong>. The creature responds however they like, giving you answers no longer than one minute each.</p></li><li><p>Even divine beings aren't necessarily omniscient, so they might not be able to answer your question.</p></li></ul><p>If you cast the spell two or more times before finishing your next long rest, there is a cumulative [[/r 1d100]] (25 percent) chance for each casting after the first that you get no answer. The DM makes this roll in secret.</p><p></p><p><em>The chosen creature you commune with must be willing to receive your requests. In most settings, deities have servants who answer their commune spells for them. Spirits of the land are also valid targets, and they may not have a physical body.</em></p>"
++			"value": "<p><strong>Ritual Casting Time:</strong> 10 Minutes</p><p><strong>Utility Spell</strong></p><p>You contact your deity or a divine proxy and ask up to three questions that can be answered with a yes or no. You must ask your questions before the spell ends. You receive a correct answer for each question.</p><p></p><p>Divine beings aren't necessarily omniscient, so you might receive \"unclear\" as an answer if a question pertains to information that lies beyond the deity's knowledge. In a case where a one-word answer could be misleading or contrary to the deity's interests, the DM might offer a short phrase as an answer instead.</p><p>If you cast the spell two or more times before finishing your next long rest, there is a cumulative [[/r 1d100]] (25 percent) chance for each casting after the first that you get no answer. The DM makes this roll in secret.</p>",
++			"chat": ""
+ 		},
+ 		"source": {
+ 			"custom": "elkan5e.com/spells/commune",
+@@ -141,7 +135,7 @@
+ 			"value": 1
+ 		},
+ 		"duration": {
+-			"value": "3",
++			"value": "1",
+ 			"units": "minute"
+ 		},
+ 		"target": {
+
+File: packs/_source/elkan5e-spells/level-5/cone-of-cold.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:45.886975500 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:45.942011900 -0400
+@@ -60,8 +60,8 @@
+ 	},
+ 	"system": {
+ 		"description": {
+-			"value": "<p><strong>Constitution Save</strong></p><ul><li><p><strong>Failure:</strong> [[/damage 8d8 cold]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p></p><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d8 cold]]{1d8} for each spell level above 5th.</p><p><em>Creatures killed by this spell become frozen statues until they thaw.</em></p>",
+-			"chat": "<p><strong>Constitution Save</strong></p><ul><li><p><strong>Failure:</strong> [[/damage 8d8 cold]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p></p><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d8 cold]]{1d8} for each spell level above 5th.</p><p><em>Creatures killed by this spell become frozen statues until they thaw.</em></p>"
++			"value": "<p><strong>Constitution Save</strong> </p><ul><li><p><strong>Failure:</strong> [[/damage 8d8 cold]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p></p><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d8 cold]]{1d8} for each spell level above 5th.</p><p><em>Creatures killed by this spell become frozen statues until they thaw.</em></p>",
++			"chat": ""
+ 		},
+ 		"source": {
+ 			"custom": "elkan5e.com/spells/cone-of-cold",
+
+File: packs/_source/elkan5e-spells/level-5/contagion.json
+Diff too large to display (>176 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-spells/level-5/dream.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:46.861799500 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:46.930253800 -0400
+@@ -122,8 +122,8 @@
+ 	},
+ 	"system": {
+ 		"description": {
+-			"value": "<p><strong>Utility Spell</strong></p><p>You and up to nine other creatures enter the dream of a chosen creature you know, who must be asleep but can be anywhere on the same plane as you.</p><ul><li><p>Anyone in the dream can converse with the dreamer. The caster can also shape the environment of the dream, creating landscapes, objects, and other images. The player or GM controlling the dreamer controls the state of the dream when you enter it, and the dreamer may continue to affect the dream environment consciously or subconsciously. Otherwise, creatures in the dream cannot affect each other (with damage, spells, or abilities etc.).</p></li><li><p>While in the dream, you are &amp;reference[blinded] and &amp;reference[deafened] and appear to be asleep, but can wake at any time.</p></li><li><p>If you voluntarily end this spell or the full duration passes, you can choose to psychically attack the dreamer. The dreamer then rolls a save.</p></li></ul><p><strong>Wisdom Save</strong></p><ul><li><p><strong>Failure:</strong> Dreamer gains no benefit from sleep for 8 hours.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional dreamer for each spell level above 5th. Target dreamers enter a shared dream which they can all influence.</p><p></p><p><em>If the chosen creature is awake, you can concentrate on this spell and wait until they sleep. If a dreaming creature wakes up, the spell ends.</em></p><p><em>If multiple creatures cast</em>Dream<em>on the same creature, they can see each other in the dream.</em></p>",
+-			"chat": "<p><strong>Utility Spell</strong></p><p>You and up to nine other creatures enter the dream of a chosen creature you know, who must be asleep but can be anywhere on the same plane as you.</p><ul><li><p>Anyone in the dream can converse with the dreamer. The caster can also shape the environment of the dream, creating landscapes, objects, and other images. The player or GM controlling the dreamer controls the state of the dream when you enter it, and the dreamer may continue to affect the dream environment consciously or subconsciously. Otherwise, creatures in the dream cannot affect each other (with damage, spells, or abilities etc.).</p></li><li><p>While in the dream, you are &amp;reference[blinded] and &amp;reference[deafened] and appear to be asleep, but can wake at any time.</p></li><li><p>If you voluntarily end this spell or the full duration passes, you can choose to psychically attack the dreamer. The dreamer then rolls a save.</p></li></ul><p><strong>Wisdom Save</strong></p><ul><li><p><strong>Failure:</strong> Dreamer gains no benefit from sleep for 8 hours.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional dreamer for each spell level above 5th. Target dreamers enter a shared dream which they can all influence.</p><p></p><p><em>If the chosen creature is awake, you can concentrate on this spell and wait until they sleep. If a dreaming creature wakes up, the spell ends.</em></p><p><em>If multiple creatures cast</em>Dream<em>on the same creature, they can see each other in the dream.</em></p>"
++			"value": "<p><strong>Utility Spell</strong></p><p>You and up to nine other creatures enter the dream of a chosen creature you know, who must be asleep but can be anywhere on the same plane as you.</p><ul><li><p>Anyone in the dream can converse with the dreamer. The caster can also shape the environment of the dream, creating landscapes, objects, and other images. The player or GM controlling the dreamer controls the state of the dream when you enter it, and the dreamer may continue to affect the dream environment consciously or subconsciously. Otherwise, creatures in the dream cannot affect each other (with damage, spells, or abilities etc.).</p></li><li><p>While in the dream, you are blinded and deafened and appear to be asleep, but can wake at any time.</p></li><li><p>If you voluntarily end this spell or the full duration passes, you can choose to psychically attack the dreamer. The dreamer then rolls a save.</p></li></ul><p><strong>Wisdom Save</strong></p><ul><li><p><strong>Failure:</strong> Dreamer gains no benefit from sleep for 8 hours.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional dreamer for each spell level above 5th. Target dreamers enter a shared dream which they can all influence.</p><p></p><p><em>If the chosen creature is awake, you can concentrate on this spell and wait until they sleep. If a dreaming creature wakes up, the spell ends.</em></p><p><em>If multiple creatures cast</em>Dream<em>on the same creature, they can see each other in the dream.</em></p>",
++			"chat": ""
+ 		},
+ 		"source": {
+ 			"custom": "elkan5e.com/spells/dream",
+
+File: packs/_source/elkan5e-spells/level-5/enervate.json
+Diff too large to display (>376 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-spells/level-5/geas.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:47.841892900 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:47.898948300 -0400
+@@ -283,8 +283,8 @@
+ 	},
+ 	"system": {
+ 		"description": {
+-			"value": "<p><em>You place a curse on willing creatures, forcing them to carry out some service or refrain from some action.</em></p><p><strong>Curse</strong></p><p>Your target(s) must be willing to be placed under a Geas. Each target is &amp;reference[cursed].</p><ul><li><p>You and the targets must agree on the contract before the spell is cast. The targets must understand the contract they agree to, or the spell fails. The contract usually includes a time or a condition that causes the Geas to end.</p></li><li><p>Once per day, if the target acts in a manner directly counter to the contract, they make a save.</p></li></ul><p><strong>Charisma Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 10d10 psychic]] damage* and suffers 2 levels of &amp;reference[exhaustion].</p></li><li><p><strong>Success:</strong> Half damage, and target suffers 1 level of exhaustion.</p></li></ul><p></p><p><strong>*Upcasting:</strong> Increase damage by [[/damage 2d10]] for each spell level above 5th level.</p><p></p><p><em>The target never takes damage if the believe they are following the original contract. If they are tricked into breaking the terms of the Geas, they must try to rectify their error if possible.</em></p><p><em>A @UUID[Compendium.elkan5e.elkan5e-spells.Item.Mi4qWwfmDYv6GrkI]{Greater Restoration} or @UUID[Compendium.elkan5e.elkan5e-spells.Item.5e0swEflzMmSszQ0]{Wish} spell can end the Geas.</em></p>",
+-			"chat": "<p><strong>Curse</strong></p><p>Your target(s) must be willing to be placed under a Geas. Each target is &amp;reference[cursed].</p><ul><li><p>You and the targets must agree on the contract before the spell is cast. The targets must understand the contract they agree to, or the spell fails. The contract usually includes a time or a condition that causes the Geas to end.</p></li><li><p>Once per day, if the target acts in a manner directly counter to the contract, they make a save.</p></li></ul><p><strong>Charisma Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 10d10 psychic]] damage* and suffers 2 levels of &amp;reference[exhaustion].</p></li><li><p><strong>Success:</strong> Half damage, and target suffers 1 level of exhaustion.</p></li></ul><p></p><p><strong>*Upcasting:</strong> Increase damage by [[/damage 2d10]] for each spell level above 5th level.</p><p></p><p><em>The target never takes damage if the believe they are following the original contract. If they are tricked into breaking the terms of the Geas, they must try to rectify their error if possible.</em></p><p><em>A @UUID[Compendium.elkan5e.elkan5e-spells.Item.Mi4qWwfmDYv6GrkI]{Greater Restoration} or @UUID[Compendium.elkan5e.elkan5e-spells.Item.5e0swEflzMmSszQ0]{Wish} spell can end the Geas.</em></p>"
++			"value": "<p><em>You place a curse on willing creatures, forcing them to carry out some service or refrain from some action.</em></p><p><strong>Curse</strong></p><p>Your target(s) must be willing to be placed under a Geas. Each target is &amp;reference[cursed].</p><ul><li><p>You and the targets must agree on the contract before the spell is cast. The targets must understand the contract they agree to, or the spell fails. The contract usually includes a time or a condition that causes the Geas to end.</p></li><li><p>Once per day, if the target acts in a manner directly counter to the contract, they make a save.</p></li></ul><p><strong>Charisma Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 10d10 psychic]] damage* and suffers 2 levels of exhaustion.</p></li><li><p><strong>Success:</strong> Half damage, and target suffers 1 level of exhaustion.</p></li></ul><p></p><p><strong>*Upcasting:</strong> Increase damage by [[/damage 2d10]] for each spell level above 5th level.</p><p></p><p><em>The target never takes damage if the believe they are following the original contract. If they are tricked into breaking the terms of the Geas, they must try to rectify their error if possible.</em></p><p><em>A Greater Restoration or Wish spell can end the Geas.</em></p>",
++			"chat": "<p><strong>Curse</strong></p><p>Your target(s) must be willing to be placed under a Geas.</p><ul><li><p>You and the targets must agree on the contract before the spell is cast. The targets must understand the contract they agree to, or the spell fails. The contract usually includes a time or a condition that causes the Geas to end. The caster can end the Geas at any time.</p></li><li><p>Once per day, if the target acts in a manner directly counter to the contract, they make a save.</p></li></ul><p><strong>Charisma Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 10d10 psychic]] damage* and suffers 2 levels of exhaustion.</p></li><li><p><strong>Success:</strong> Half damage, and target suffers 1 level of exhaustion.</p></li></ul><p></p><p><strong>*Upcasting:</strong> Increase damage by [[/damage 2d10]] for each spell level above 5th level.</p><p></p><p><em>The target never takes damage if the believe they are following the original contract. If they are tricked into breaking the terms of the Geas, they must try to rectify their error if possible.</em></p><p><em>A Greater Restoration or Wish spell can end the Geas.</em></p>"
+ 		},
+ 		"source": {
+ 			"custom": "elkan5e.com/spells/geas",
+
+File: packs/_source/elkan5e-spells/level-5/greater-restoration.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:48.330429700 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:48.384612200 -0400
+@@ -54,8 +54,8 @@
+ 	},
+ 	"system": {
+ 		"description": {
+-			"value": "<p><strong>Healing Spell</strong></p><p>You remove debilitating effects from the target. You remove:</p><ul><li>One level of &amp;reference[exhaustion],</li><li>One &amp;reference[disease],</li><li>The &amp;reference[blinded], &amp;reference[dazed], &amp;reference[deafened, &amp;reference[drained], &amp;reference[paralyzed], &amp;reference[stunned], &amp;reference[poisoned], and &amp;reference[weakened] conditions.</li></ul><p></p><p><em>This spell cannot remove a condition caused by a &amp;reference[cursed]{curse} or another condition not listed (eg. a version of &amp;reference[frightened] that causes creatures to also be &amp;reference[weakened]).</em></p>",
+-			"chat": "<p><strong>Healing Spell</strong></p><p>You remove debilitating effects from the target. You remove:</p><ul><li>One level of &amp;reference[exhaustion],</li><li>One &amp;reference[disease],</li><li>The &amp;reference[blinded], &amp;reference[dazed], &amp;reference[deafened, &amp;reference[drained], &amp;reference[paralyzed], &amp;reference[stunned], &amp;reference[poisoned], and &amp;reference[weakened] conditions.</li></ul><p></p><p><em>This spell cannot remove a condition caused by a &amp;reference[cursed]{curse} or another condition not listed (eg. a version of &amp;reference[frightened] that causes creatures to also be &amp;reference[weakened]).</em></p>"
++			"value": "<p><strong>Healing Spell<br /></strong>You remove debilitating effects from the target. You remove:</p><ul><li>One level of exhaustion,</li><li>One disease,</li><li>The blinded, dazed, deafened, drained, paralyzed, stunned, poisoned, and weakened conditions.</li></ul><p></p><p><em>This spell cannot remove a condition caused by a curse or another condition not listed (eg. a version of frightened that causes creatures to also be weakened).</em></p>",
++			"chat": ""
+ 		},
+ 		"source": {
+ 			"custom": "elkan5e.com/spells/greater-restoration",
+
+File: packs/_source/elkan5e-spells/level-5/legend-lore.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:48.810117000 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:48.877438200 -0400
+@@ -56,7 +56,7 @@
+ 	"system": {
+ 		"description": {
+ 			"value": "<p><em>You burn incense, and as you inhale the fumes, you have visions of the past.</em></p><p><strong>Materials:</strong> You require 0.2 pounds of @UUID[Compendium.elkan5e.elkan5e-spells.Item.fHpnZTIOy3hCEZOb]{Wizard's Sage Incense}, typically valued at 100 gold. This spell consumes this material.</p><p><strong>Utility Spell</strong></p><ul><li><p>Name or describe a creature, place, or object.</p></li><li><p>The GM may reveal information concerning:</p><ul><li><p>The subject's origin,</p></li><li><p>Its involvement in legendary and historical events,</p></li><li><p>How the subject became what it is now.</p></li></ul></li><li><p>The information revealed is limited to what is known in written records, folklore, and popular rumors.</p></li><li><p>The information may be misleading, cryptic, or missing details. The more information you already have about the subject of the spell, the more precise and detailed the information you receive is.</p></li><li><p>If the subject is mundane, the results will probably be likewise mundane.</p></li></ul>",
+-			"chat": "<p><strong>Materials:</strong> You require 0.2 pounds of @UUID[Compendium.elkan5e.elkan5e-spells.Item.fHpnZTIOy3hCEZOb]{Wizard's Sage Incense}, typically valued at 100 gold. This spell consumes this material.</p><p><strong>Utility Spell</strong></p><ul><li><p>Name or describe a creature, place, or object.</p></li><li><p>The GM may reveal information concerning:</p><ul><li><p>The subject's origin,</p></li><li><p>Its involvement in legendary and historical events,</p></li><li><p>How the subject became what it is now.</p></li></ul></li><li><p>The information revealed is limited to what is known in written records, folklore, and popular rumors.</p></li><li><p>The information may be misleading, cryptic, or missing details. The more information you already have about the subject of the spell, the more precise and detailed the information you receive is.</p></li><li><p>If the subject is mundane, the results will probably be likewise mundane.</p></li></ul>"
++			"chat": ""
+ 		},
+ 		"source": {
+ 			"custom": "elkan5e.com/spells/legend-lore",
+
+File: packs/_source/elkan5e-spells/level-5/mass-cure-wounds.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:49.321739000 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:49.380379600 -0400
+@@ -57,7 +57,7 @@
+ 	"system": {
+ 		"description": {
+ 			"value": "<p><strong>Healing Spell</strong></p><p>This spell has no effect on &amp;reference[construct]{constructs}.</p><ul><li><p>Target gains hit points equal to [[/healing 4d6 + @attributes.spellmod]]{4d6 + your spellcasting ability modifier}.*</p></li></ul><p></p><p><strong>*</strong> <strong>Upcasting:</strong> Increase healing by [[/healing 2d6]]{2d6} for each spell level above 5th.</p>",
+-			"chat": "<p><strong>Healing Spell</strong></p><p>This spell has no effect on &amp;reference[construct]{constructs}.</p><ul><li><p>Target gains hit points equal to [[/healing 4d6 + @attributes.spellmod]]{4d6 + your spellcasting ability modifier}.*</p></li></ul><p></p><p><strong>*</strong> <strong>Upcasting:</strong> Increase healing by [[/healing 2d6]]{2d6} for each spell level above 5th.</p>"
++			"chat": ""
+ 		},
+ 		"source": {
+ 			"custom": "elkan5e.com/spells/mass-cure-wounds",
+
+File: packs/_source/elkan5e-spells/level-5/mislead.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:49.784187800 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:49.842735800 -0400
+@@ -118,8 +118,8 @@
+ 	},
+ 	"system": {
+ 		"description": {
+-			"value": "<p><em>With a flick of the wrist, you create and animate an illusory double of yourself, distracting your foes and allowing you to do as you will invisibly.</em></p><p><strong>Illusory Image</strong></p><p>Roll an &amp;Reference[illusoryimages]{illusion check} for this spell.</p><ul><li><p>You and anything you are wearing or carrying that is at least half your size or smaller become &amp;reference[Invisible]. This invisibility ends immediately after you make an attack roll, deal damage, or cast a spell.</p></li><li><p>An illusory double of you appears where you are standing. You can see through the double’s eyes and hear through its ears, as if you were located where it is, simultaneously with your own senses.</p></li><li><p>You can move your illusion up to twice your speed and make it gesture, speak, and behave in whatever way you choose. It is intangible and invulnerable, but you can change its appearance to appear wounded or affected by magic.</p></li><li><p><strong>Concentration:</strong> Once on each subsequent turn, you can move the illusion again and make it gesture, speak, and behave however you like.</p></li></ul>",
+-			"chat": "<p><strong>Illusory Image</strong></p><p>Roll an &amp;Reference[illusoryimages]{illusion check} for this spell.</p><ul><li><p>You and anything you are wearing or carrying that is at least half your size or smaller become &amp;reference[Invisible]. This invisibility ends immediately after you make an attack roll, deal damage, or cast a spell.</p></li><li><p>An illusory double of you appears where you are standing. You can see through the double’s eyes and hear through its ears, as if you were located where it is, simultaneously with your own senses.</p></li><li><p>You can move your illusion up to twice your speed and make it gesture, speak, and behave in whatever way you choose. It is intangible and invulnerable, but you can change its appearance to appear wounded or affected by magic.</p></li><li><p><strong>Concentration:</strong> Once on each subsequent turn, you can move the illusion again and make it gesture, speak, and behave however you like.</p></li></ul>"
++			"value": "<p><em>With a flick of the wrist, you create and animate an illusory double of yourself, distracting your foes and allowing you to do as you will invisibly.</em></p><p><strong>Illusory Image</strong></p><p>Roll an &amp;Reference[illusoryimages]{illusion check} for this spell.</p><ul><li><p>You and anything you are wearing or carrying that is at least half your size or smaller become Invisible. This invisibility ends immediately after you make an attack roll, deal damage, or cast a spell.</p></li><li><p>An illusory double of you appears where you are standing. You can see through the double’s eyes and hear through its ears, as if you were located where it is, simultaneously with your own senses.</p></li><li><p>You can move your illusion up to twice your speed and make it gesture, speak, and behave in whatever way you choose. It is intangible and invulnerable, but you can change its appearance to appear wounded or affected by magic.</p></li><li><p><strong>Concentration:</strong> Once on each subsequent turn, you can move the illusion again and make it gesture, speak, and behave however you like.</p></li></ul>",
++			"chat": ""
+ 		},
+ 		"source": {
+ 			"custom": "elkan5e.com/spells/mislead",
+
+File: packs/_source/elkan5e-spells/level-5/modify-memory.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:50.280220500 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:50.330792000 -0400
+@@ -132,7 +132,7 @@
+ 	"system": {
+ 		"description": {
+ 			"value": "<p><em>You speak in a rhythmic pattern, placing your target in a trance state under which their memories become malleable.</em></p><p><strong>Wisdom Save</strong></p><ul><li><p><strong>Failure</strong>: Target becomes &amp;reference[Charmed] for 1 minute or until they take damage or a creature uses an action to wake them up. While charmed in this way:</p><ul><li><p>The creature is &amp;reference[incapacitated] and unaware of its surroundings, though it can still hear you.</p></li><li><p>You can speak to the target, describing new memories to them. If they understand you, you can eliminate memories, alter existing memories, and create new ones, so long as all your adjustments to their memory all refer to a single 24-hour period.* The target will do their best to integrate the memories and make them fit with existing information.</p></li></ul></li></ul><ul><li><p>If the spell lasts the full minute without interruption, the target is &amp;reference[cursed]. While cursed in this way:</p><ul><li><p>Their memories are permanently altered with the new memories you gave them.</p></li><li><p>The target behaves normally, and the target might identify the memory as false if it seems illogical or nonsensical.</p></li></ul></li></ul><ul><li><p><strong>Success</strong>: No effect.</p></li></ul><p></p><p><strong>*Upcasting:</strong> At level 6, any edited memories must be within a week span. At level 7, a month. At level 8, a year. At level 9, the affected memories can be across any period of time.</p>",
+-			"chat": "<p><strong>Wisdom Save</strong></p><ul><li><p><strong>Failure</strong>: Target becomes &amp;reference[Charmed] for 1 minute or until they take damage or a creature uses an action to wake them up. While charmed in this way:</p><ul><li><p>The creature is &amp;reference[incapacitated] and unaware of its surroundings, though it can still hear you.</p></li><li><p>You can speak to the target, describing new memories to them. If they understand you, you can eliminate memories, alter existing memories, and create new ones, so long as all your adjustments to their memory all refer to a single 24-hour period.* The target will do their best to integrate the memories and make them fit with existing information.</p></li></ul></li></ul><ul><li><p>If the spell lasts the full minute without interruption, the target is &amp;reference[cursed]. While cursed in this way:</p><ul><li><p>Their memories are permanently altered with the new memories you gave them.</p></li><li><p>The target behaves normally, and the target might identify the memory as false if it seems illogical or nonsensical.</p></li></ul></li></ul><ul><li><p><strong>Success</strong>: No effect.</p></li></ul><p></p><p><strong>*Upcasting:</strong> At level 6, any edited memories must be within a week span. At level 7, a month. At level 8, a year. At level 9, the affected memories can be across any period of time.</p>"
++			"chat": ""
+ 		},
+ 		"source": {
+ 			"custom": "elkan5e.com/spells/modify-memory",
+
+File: packs/_source/elkan5e-spells/level-5/passwall.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:50.750397600 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:50.807519600 -0400
+@@ -55,8 +55,8 @@
+ 	},
+ 	"system": {
+ 		"description": {
+-			"value": "<p><em>With a gesture like opening a door, you create a passage through a solid surface or body of water.</em></p><p><strong>Utility Spell</strong></p><p>You create a passage through which creatures can safely travel, opening a gap in either a solid surface or body of water (or similar liquid). The spell cannot create a gap in organic material, moving objects, or creatures, though it can create a gap in a magical barrier such as <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.KdHgTZaQPRQOaTrB]{Wall of Force}</em> or <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.Al4cudyzaoFQ2V0u]{Forcecage}</em>.</p><ul><li><p>The passage can be as large as this spell's listed area of effect or smaller.</p></li><li><p>The passage can go in any direction, including upwards or downwards.</p></li><li><p>Passwall never causes structural instability or displaces material. Even if the hole created by the wall would cause a building to collapse, the building is stable as if the passwall was never created. This may cause things to float.</p></li><li><p>When the spell ends, anything inside the passage is safely ejected to the closest end of the passage, and the material originally displaced returns to its original location.</p></li></ul>",
+-			"chat": "<p><strong>Utility Spell</strong></p><p>You create a passage through which creatures can safely travel, opening a gap in either a solid surface or body of water (or similar liquid). The spell cannot create a gap in organic material, moving objects, or creatures, though it can create a gap in a magical barrier such as <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.KdHgTZaQPRQOaTrB]{Wall of Force}</em> or <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.Al4cudyzaoFQ2V0u]{Forcecage}</em>.</p><ul><li><p>The passage can be as large as this spell's listed area of effect or smaller.</p></li><li><p>The passage can go in any direction, including upwards or downwards.</p></li><li><p>Passwall never causes structural instability or displaces material. Even if the hole created by the wall would cause a building to collapse, the building is stable as if the passwall was never created. This may cause things to float.</p></li><li><p>When the spell ends, anything inside the passage is safely ejected to the closest end of the passage, and the material originally displaced returns to its original location.</p></li></ul>"
++			"value": "<p><em>With a gesture like opening a door, you create a passage through a solid surface or body of water.</em></p><p><strong>Utility Spell</strong></p><p>You create a passage through which creatures can safely travel, opening a gap in either a solid surface or body of water (or similar liquid). The spell cannot create a gap in organic material, moving objects, or creatures, though it can create a gap in a magical barrier such as @UUID[Compendium.elkan5e.elkan5e-spells.Item.KdHgTZaQPRQOaTrB]{Wall of Force} or @UUID[Compendium.elkan5e.elkan5e-spells.Item.Al4cudyzaoFQ2V0u]{Forcecage}.</p><ul><li><p>The passage can be as large as this spell's listed area of effect or smaller.</p></li><li><p>The passage can go in any direction, including upwards or downwards.</p></li><li><p>Passwall never causes structural instability or displaces material. Even if the hole created by the wall would cause a building to collapse, the building is stable as if the passwall was never created. This may cause things to float.</p></li><li><p>When the spell ends, anything inside the passage is safely ejected to the closest end of the passage, and the material originally displaced returns to its original location.</p></li></ul>",
++			"chat": "<p><strong>Utility Spell</strong></p><p>You create a passage through which creatures can safely travel, opening a gap in either a solid surface or body of water (or similar liquid). The spell cannot create a gap in organic material, moving objects, or creatures.</p><ul><li><p>The passage can be as large as this spell's listed area of effect or smaller.</p></li><li><p>The passage can go in any direction, including upwards or downwards.</p></li><li><p>Passwall never causes structural instability or displaces material. Even if the hole created by the wall would cause a building to collapse, the building is stable as if the passwall was never created. This may cause things to float.</p></li><li><p>When the spell ends, anything inside the passage is safely ejected to the closest end of the passage, and the material originally displaced returns to its original location.</p></li></ul>"
+ 		},
+ 		"source": {
+ 			"custom": "elkan5e.com/spells/passwall",
+
+File: packs/_source/elkan5e-spells/level-5/raise-dead.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:51.229492800 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:51.283043000 -0400
+@@ -57,8 +57,8 @@
+ 	},
+ 	"system": {
+ 		"description": {
+-			"value": "<p><strong>Materials:</strong> You require a @UUID[Compendium.elkan5e.elkan5e-spells.Item.GEEqIdVUGNFunaJU]{Small Diamond}, typically valued at 500 gold, which the spell consumes.</p><p><strong>Healing Spell</strong></p><p>You target a dead creature who has not been dead longer than 10 days.</p><ul><li><p>The target creature returns to life with 1 hit point and two levels of &amp;reference[exhaustion] (to a maximum of 5 levels of exhaustion).</p></li><li><p>Any &amp;reference[poisoned]{poisons} affecting the creature are removed.</p></li><li><p>The spell fails if the creature is missing an essential body part, is currently undead, if their soul is unable or unwilling to rejoin their body, or if the target has been dead more than 10 days.</p></li></ul>",
+-			"chat": "<p><strong>Materials:</strong> You require a @UUID[Compendium.elkan5e.elkan5e-spells.Item.GEEqIdVUGNFunaJU]{Small Diamond}, typically valued at 500 gold, which the spell consumes.</p><p><strong>Healing Spell</strong></p><p>You target a dead creature who has not been dead longer than 10 days.</p><ul><li><p>The target creature returns to life with 1 hit point and two levels of &amp;reference[exhaustion] (to a maximum of 5 levels of exhaustion).</p></li><li><p>Any &amp;reference[poisoned]{poisons} affecting the creature are removed.</p></li><li><p>The spell fails if the creature is missing an essential body part, is currently undead, if their soul is unable or unwilling to rejoin their body, or if the target has been dead more than 10 days.</p></li></ul>"
++			"value": "<p><strong>Materials:</strong> You require a @UUID[Compendium.elkan5e.elkan5e-spells.Item.GEEqIdVUGNFunaJU]{Small Diamond}, typically valued at 500 gold, which the spell consumes.</p><p><strong>Healing Spell</strong> </p><p>You target a dead creature who has not been dead longer than 10 days.</p><ul><li><p>The target creature returns to life with 1 hit point and two levels of &amp;reference[exhaustion] (to a maximum of 5 levels of exhaustion).</p></li><li><p>Any &amp;reference[poisoned]{poisons} affecting the creature are removed.</p></li><li><p>The spell fails if the creature is missing an essential body part, is currently undead, if their soul is unable or unwilling to rejoin their body, or if the target has been dead more than 10 days.</p></li></ul>",
++			"chat": ""
+ 		},
+ 		"source": {
+ 			"custom": "elkan5e.com/spells/raise-dead",
+
+File: packs/_source/elkan5e-spells/level-5/vortex.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:51.714987200 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:51.770522400 -0400
+@@ -51,7 +51,7 @@
+ 				},
+ 				"ActiveAuras": {
+ 					"isAura": false,
+-					"aura": "None",
++					"aura": "Enemy",
+ 					"nameOverride": "",
+ 					"radius": "",
+ 					"alignment": "",
+@@ -63,10 +63,16 @@
+ 					"displayTemp": false,
+ 					"hostile": false,
+ 					"onlyOnce": false,
+-					"wallsBlock": "system"
++					"wallsBlock": "system",
++					"statuses": []
+ 				},
+ 				"core": {
+ 					"overlay": false
++				},
++				"dnd5e": {
++					"riders": {
++						"statuses": []
++					}
+ 				}
+ 			},
+ 			"_key": "!items.effects!zI81EiDs2vyozitg.p4VvJpYMpbb4Htk3"
+
+File: packs/_source/elkan5e-spells/level-6/eyebite.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:52.189157500 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:52.241773100 -0400
+@@ -277,9 +277,7 @@
+ 			"effectActivation": false,
+ 			"itemCondition": "",
+ 			"effectCondition": "",
+-			"reactionCondition": "",
+-			"removeAttackDamageButtons": "default",
+-			"otherCondition": ""
++			"reactionCondition": ""
+ 		},
+ 		"dae": {
+ 			"macro": {
+@@ -316,10 +314,6 @@
+ 				"somatic",
+ 				"concentration"
+ 			]
+-		},
+-		"tidy5e-sheet": {
+-			"section": "",
+-			"actionSection": ""
+ 		}
+ 	},
+ 	"system": {
+
+File: packs/_source/elkan5e-spells/level-6/instant-summons.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:52.640282000 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:52.693671500 -0400
+@@ -11,9 +11,7 @@
+ 			"rollAttackPerTarget": "default",
+ 			"itemCondition": "",
+ 			"effectCondition": "",
+-			"reactionCondition": "",
+-			"removeAttackDamageButtons": "default",
+-			"otherCondition": ""
++			"reactionCondition": ""
+ 		},
+ 		"core": {},
+ 		"midiProperties": {
+@@ -48,10 +46,6 @@
+ 				"material",
+ 				"ritual"
+ 			]
+-		},
+-		"tidy5e-sheet": {
+-			"section": "",
+-			"actionSection": ""
+ 		}
+ 	},
+ 	"system": {
+
+File: packs/_source/elkan5e-spells/level-6/magic-jar.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:53.125740000 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:53.179872400 -0400
+@@ -10,9 +10,7 @@
+ 			"rollAttackPerTarget": "default",
+ 			"itemCondition": "",
+ 			"effectCondition": "",
+-			"reactionCondition": "",
+-			"removeAttackDamageButtons": "default",
+-			"otherCondition": ""
++			"reactionCondition": ""
+ 		},
+ 		"midiProperties": {
+ 			"nodam": false,
+@@ -46,10 +44,6 @@
+ 				"somatic",
+ 				"material"
+ 			]
+-		},
+-		"tidy5e-sheet": {
+-			"section": "",
+-			"actionSection": ""
+ 		}
+ 	},
+ 	"system": {
+
+File: packs/_source/elkan5e-spells/level-7/curse-of-doom.json
+Diff too large to display (>102 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-spells/level-9/prismatic-wall.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:54.042696900 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:54.095803800 -0400
+@@ -15,8 +15,7 @@
+ 			"rollAttackPerTarget": "default",
+ 			"itemCondition": "",
+ 			"effectCondition": "",
+-			"reactionCondition": "",
+-			"otherCondition": ""
++			"reactionCondition": ""
+ 		},
+ 		"midiProperties": {
+ 			"nodam": false,
+@@ -50,10 +49,6 @@
+ 				"vocal",
+ 				"somatic"
+ 			]
+-		},
+-		"tidy5e-sheet": {
+-			"section": "",
+-			"actionSection": ""
+ 		}
+ 	},
+ 	"system": {
+
+File: packs/_source/elkan5e-spells/level-9/storm-of-vengeance.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:54.488848500 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:54.550558600 -0400
+@@ -52,10 +52,6 @@
+ 				"somatic",
+ 				"concentration"
+ 			]
+-		},
+-		"tidy5e-sheet": {
+-			"section": "",
+-			"actionSection": ""
+ 		}
+ 	},
+ 	"system": {
+
+File: packs/_source/elkan5e-spells/level-9/wrath-of-the-reaper.json
+Diff too large to display (>179 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-spells/spells-class-specific-versions/elemental-savant-sorcerer/static-charge-air-savant.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:55.528065800 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:55.581157200 -0400
+@@ -48,7 +48,6 @@
+ 					"disableCondition": ""
+ 				},
+ 				"core": {
+-					"sourceId": "Actor.ALMTVvK9BZrKHQ9c.Item.jHgSrJCBJMGvlZ1V.ActiveEffect.hJqcI4pphFqaYhv7",
+ 					"overlay": false
+ 				},
+ 				"ActiveAuras": {
+
+File: packs/_source/elkan5e-subclass/bard/warchanter.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:55.984338100 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:56.038292600 -0400
+@@ -245,30 +245,16 @@
+ 				"type": "ScaleValue",
+ 				"configuration": {
+ 					"identifier": "",
+-					"type": "dice",
++					"type": "string",
+ 					"distance": {
+ 						"units": ""
+ 					},
+ 					"scale": {
+ 						"3": {
+-							"number": 1,
+-							"faces": 6,
+-							"modifiers": []
+-						},
+-						"5": {
+-							"number": 1,
+-							"faces": 8,
+-							"modifiers": []
++							"value": "1"
+ 						},
+ 						"10": {
+-							"number": 2,
+-							"faces": 10,
+-							"modifiers": []
+-						},
+-						"15": {
+-							"number": 1,
+-							"faces": 12,
+-							"modifiers": []
++							"value": "2"
+ 						}
+ 					}
+ 				},
+
+File: packs/_source/elkan5e-subclass/druid/shifter.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:56.473243600 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:56.526289300 -0400
+@@ -6,7 +6,7 @@
+ 	"img": "icons/creatures/abilities/bear-roar-bite-brown-green.webp",
+ 	"system": {
+ 		"description": {
+-			"value": "<p>Druids belonging to the circle of the shifter use their magical power to transform their bodies into animals, borrowing their many strengths while retaining their minds and magical abilities.</p><table data-toc-level=\"3\"><caption>Shifter</caption><colgroup><col></col><col></col></colgroup><thead><tr><th scope=\"col\">Level</th><th scope=\"col\">Features</th></tr></thead><tbody><tr><td>3</td><td>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.hmliC9DvCFITKc1l]{Wild Shapeshifting}</td></tr><tr><td>6</td><td>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.J69hTLCioqFsWCaI]{Primal Talons}, @UUID[Compendium.elkan5e.elkan5e-class-features.Item.HeLZXls2OiMJ6nu8]{Twisting Shape}</td></tr><tr><td>10</td><td>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.py86kvAd0WdIg5o9]{Durable Form}</td></tr><tr><td>14</td><td>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.EnYznwxVf0e0NL20]{Supernatural Form}</td></tr></tbody></table><table data-toc-level=\"3\"><caption>Expanded Spell List</caption><colgroup><col></col><col></col></colgroup><thead><tr><th scope=\"col\">Druid Level</th><th scope=\"col\">Extra Spells</th></tr></thead><tbody><tr><td>1</td><td>@UUID[Compendium.elkan5e.elkan5e-spells.Item.11BFcp2vsPHO1JFX]{False Life}</td></tr><tr><td>3</td><td>@UUID[Compendium.elkan5e.elkan5e-spells.Item.pQF7bFtH2aIv9Nyq]{Alter Self}</td></tr><tr><td>5</td><td>@UUID[Compendium.elkan5e.elkan5e-spells.Item.s9yP2fTX15pSkCZM]{Gaseous Form}</td></tr><tr><td>7</td><td>@UUID[Compendium.elkan5e.elkan5e-spells.Item.wfPXFotkHWY7laah]{Polymorph}</td></tr><tr><td>9</td><td>@UUID[Compendium.elkan5e.elkan5e-spells.Item.PH8IHWnZkad6jFB2]{Awaken}</td></tr></tbody></table>",
++			"value": "<p>Druids belonging to the circle of the shifter use their magical power to transform their bodies into animals, borrowing their many strengths while retaining their minds and magical abilities.</p><table data-toc-level=\"3\"><caption>The Shifter</caption><colgroup><col/><col/></colgroup><thead><tr><th scope=\"col\">Level</th><th scope=\"col\">Features</th></tr></thead><tbody><tr><td>3</td><td>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.hmliC9DvCFITKc1l]{Wild Shapeshifting}</td></tr><tr><td>6</td><td>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.J69hTLCioqFsWCaI]{Primal Talons}, @UUID[Compendium.elkan5e.elkan5e-class-features.Item.HeLZXls2OiMJ6nu8]{Twisting Shape}</td></tr><tr><td>10</td><td>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.py86kvAd0WdIg5o9]{Durable Form}</td></tr><tr><td>14</td><td>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.EnYznwxVf0e0NL20]{Supernatural Form}</td></tr></tbody></table><table data-toc-level=\"3\"><caption>Expanded Spell List</caption><colgroup><col/><col/></colgroup><thead><tr><th scope=\"col\">Druid Level</th><th scope=\"col\">Extra Spells</th></tr></thead><tbody><tr><td>1</td><td>@UUID[Compendium.elkan5e.elkan5e-spells.Item.11BFcp2vsPHO1JFX]{False Life}</td></tr><tr><td>3</td><td>@UUID[Compendium.elkan5e.elkan5e-spells.Item.pQF7bFtH2aIv9Nyq]{Alter Self}</td></tr><tr><td>5</td><td>@UUID[Compendium.elkan5e.elkan5e-spells.Item.s9yP2fTX15pSkCZM]{Gaseous Form}</td></tr><tr><td>7</td><td>@UUID[Compendium.elkan5e.elkan5e-spells.Item.wfPXFotkHWY7laah]{Polymorph}</td></tr><tr><td>9</td><td>@UUID[Compendium.elkan5e.elkan5e-spells.Item.PH8IHWnZkad6jFB2]{Awaken}</td></tr></tbody></table>",
+ 			"chat": ""
+ 		},
+ 		"source": {
+
+File: packs/_source/elkan5e-subclass/fighter/spellsword-bard.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:56.950837800 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:57.009397800 -0400
+@@ -176,9 +176,6 @@
+ 						},
+ 						{
+ 							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.hkKA1Y06dJtUlKQJ"
+-						},
+-						{
+-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.XZB5aeuLtatCgXVN"
+ 						}
+ 					],
+ 					"spell": {
+
+File: packs/_source/elkan5e-subclass/fighter/spellsword-cleric.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:57.444969700 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:57.499017800 -0400
+@@ -490,9 +490,6 @@
+ 						},
+ 						{
+ 							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.bUcGdKMh18yrVyLX"
+-						},
+-						{
+-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.a1CjGU1Cr8r5q9vF"
+ 						}
+ 					],
+ 					"spell": {
+
+File: packs/_source/elkan5e-subclass/fighter/spellsword-druid.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:57.935398300 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:57.989935900 -0400
+@@ -167,9 +167,6 @@
+ 						},
+ 						{
+ 							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.XXiksYtyFprWyH0d"
+-						},
+-						{
+-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.TGSbd5cNMb6Ci3Dp"
+ 						}
+ 					],
+ 					"spell": {
+@@ -589,12 +586,6 @@
+ 						},
+ 						{
+ 							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.MCkk4j7jTPlTmguW"
+-						},
+-						{
+-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.LpXH8ce2ZJjeP27x"
+-						},
+-						{
+-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.a1CjGU1Cr8r5q9vF"
+ 						}
+ 					],
+ 					"spell": {
+
+File: packs/_source/elkan5e-subclass/fighter/spellsword-sorcerer.json
+Diff too large to display (>51 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-subclass/fighter/spellsword-warlock.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:58.864727600 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:58.917775200 -0400
+@@ -265,9 +265,6 @@
+ 						},
+ 						{
+ 							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.cHIuORdoA1WnHfmK"
+-						},
+-						{
+-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.OXZtg9KDXOMsa77Q"
+ 						}
+ 					],
+ 					"spell": {
+
+File: packs/_source/elkan5e-subclass/fighter/spellsword-wizard.json
+Diff too large to display (>48 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-subclass/monk/shadowdancer.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:25:59.806170600 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:25:59.863941800 -0400
+@@ -6,7 +6,7 @@
+ 	"img": "icons/equipment/head/hood-cloth-blue-white.webp",
+ 	"system": {
+ 		"description": {
+-			"value": "<p>Shadowdancers train to manipulate shadows, even transforming themself into shadow to travel through darkness and strike at their foes. They weave magic spells using wisps of magical shadow they draw out of their surroundings. Shadowdancers are often members of secretive organizations, including intelligence agencies, assassin guilds, and hidden cults.</p><table data-toc-level=\"3\"><caption>The Shadowdancer</caption><colgroup><col></col><col></col></colgroup><thead><tr><th scope=\"col\">Level</th><th scope=\"col\">Features</th></tr></thead><tbody><tr><td>3</td><td>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.PfakcO5lEiPbsaun]{Eyes of Shade}, @UUID[Compendium.elkan5e.elkan5e-class-features.Item.7Gnq3qfLzpIuRs0U]{Meld with Shadows}</td></tr><tr><td>6</td><td>@UUID[Compendium.elkan5e.elkan5e-spells.Item.F1OXrcqeSVW4QJsO]{Darkness [Shadow Casting]}, @UUID[Compendium.elkan5e.elkan5e-spells.Item.865Z7wQrflrDk445]{Pass without Trace [Shadow Casting]}, @UUID[Compendium.elkan5e.elkan5e-spells.Item.kn8N0utJOjohpYmh]{Shadow Strike [Shadow Casting]}</td></tr><tr><td>10</td><td>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.Z1WevTWQhrRwwyp8]{Hijack Shadow}, @UUID[Compendium.elkan5e.elkan5e-class-features.Item.SXI9iC2kLWjtlYmp]{Shadow Form}</td></tr><tr><td>14</td><td>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.l3i6WN3UaErdMDZj]{Empty Body}</td></tr></tbody></table>",
++			"value": "<p>Shadowdancers train to manipulate shadows, even transforming themself into shadow to travel through darkness and strike at their foes. They weave magic spells using wisps of magical shadow they draw out of their surroundings. Shadowdancers are often members of secretive organizations, including intelligence agencies, assassin guilds, and hidden cults.</p><table data-toc-level=\"3\"><caption>The Shadowdancer</caption><colgroup><col/><col/></colgroup><thead><tr><th scope=\"col\">Level</th><th scope=\"col\">Features</th></tr></thead><tbody><tr><td>3</td><td>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.PfakcO5lEiPbsaun]{Eyes of Shade}, @UUID[Compendium.elkan5e.elkan5e-class-features.Item.7Gnq3qfLzpIuRs0U]{Meld with Shadows}</td></tr><tr><td>6</td><td>@UUID[Compendium.elkan5e.elkan5e-spells.Item.F1OXrcqeSVW4QJsO]{Darkness [Shadow Casting]}, @UUID[Compendium.elkan5e.elkan5e-spells.Item.865Z7wQrflrDk445]{Pass without Trace [Shadow Casting]}, @UUID[Compendium.elkan5e.elkan5e-spells.Item.kn8N0utJOjohpYmh]{Shadow Strike [Shadow Casting]}</td></tr><tr><td>10</td><td>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.Z1WevTWQhrRwwyp8]{Hijack Shadow}, @UUID[Compendium.elkan5e.elkan5e-class-features.Item.SXI9iC2kLWjtlYmp]{Shadow Form}</td></tr><tr><td>14</td><td>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.6Vq7as8e3VfMLFQo]{Shadow Stalker}</td></tr></tbody></table>",
+ 			"chat": ""
+ 		},
+ 		"source": {
+@@ -106,7 +106,7 @@
+ 				"configuration": {
+ 					"items": [
+ 						{
+-							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.l3i6WN3UaErdMDZj",
++							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.6Vq7as8e3VfMLFQo",
+ 							"optional": false
+ 						}
+ 					],
+
+File: packs/_source/elkan5e-subclass/rogue/mystic-trickster-bard.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:26:00.262374300 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:26:00.315415100 -0400
+@@ -557,9 +557,6 @@
+ 						},
+ 						{
+ 							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.hkKA1Y06dJtUlKQJ"
+-						},
+-						{
+-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.XZB5aeuLtatCgXVN"
+ 						}
+ 					],
+ 					"spell": {
+
+File: packs/_source/elkan5e-subclass/rogue/mystic-trickster-cleric.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:26:00.735842200 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:26:00.789884200 -0400
+@@ -494,9 +494,6 @@
+ 						},
+ 						{
+ 							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.bUcGdKMh18yrVyLX"
+-						},
+-						{
+-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.a1CjGU1Cr8r5q9vF"
+ 						}
+ 					],
+ 					"spell": {
+
+File: packs/_source/elkan5e-subclass/rogue/mystic-trickster-druid.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:26:01.198847700 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:26:01.249439900 -0400
+@@ -177,9 +177,6 @@
+ 						},
+ 						{
+ 							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.XXiksYtyFprWyH0d"
+-						},
+-						{
+-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.TGSbd5cNMb6Ci3Dp"
+ 						}
+ 					],
+ 					"spell": {
+@@ -609,12 +606,6 @@
+ 						},
+ 						{
+ 							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.MCkk4j7jTPlTmguW"
+-						},
+-						{
+-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.LpXH8ce2ZJjeP27x"
+-						},
+-						{
+-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.a1CjGU1Cr8r5q9vF"
+ 						}
+ 					],
+ 					"spell": {
+
+File: packs/_source/elkan5e-subclass/rogue/mystic-trickster-sorcerer.json
+Diff too large to display (>51 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-subclass/rogue/mystic-trickster-warlock.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:26:02.139309600 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:26:02.191854200 -0400
+@@ -269,9 +269,6 @@
+ 						},
+ 						{
+ 							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.cHIuORdoA1WnHfmK"
+-						},
+-						{
+-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.OXZtg9KDXOMsa77Q"
+ 						}
+ 					],
+ 					"spell": {
+
+File: packs/_source/elkan5e-subclass/rogue/mystic-trickster-wizard.json
+Diff too large to display (>48 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/familiars/bat-familiar.json
+Diff too large to display (>131 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/familiars/cat-familiar.json
+Diff too large to display (>93 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/familiars/crab-familiar.json
+Diff too large to display (>85 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/familiars/frog-familiar.json
+Diff too large to display (>120 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/familiars/hawk-familiar.json
+Diff too large to display (>106 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/familiars/lizard-familiar.json
+Diff too large to display (>72 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/familiars/octopus-familiar.json
+Diff too large to display (>163 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/familiars/owl-familiar.json
+Diff too large to display (>109 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/familiars/quipper-familiar.json
+Diff too large to display (>112 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/familiars/rat-familiar.json
+Diff too large to display (>104 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/familiars/raven-familiar.json
+Diff too large to display (>96 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/familiars/snake-familiar.json
+Diff too large to display (>72 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/familiars/spider-familiar.json
+Diff too large to display (>125 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/familiars/weasel-familiar.json
+Diff too large to display (>104 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/graveguards/cadaverous-graveguard.json
+Diff too large to display (>246 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/graveguards/skeletal-graveguard.json
+Diff too large to display (>276 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/graveguards/spectral-graveguard.json
+Diff too large to display (>285 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/pact-of-the-chain-familiar/bat-pact.json
+Diff too large to display (>147 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/pact-of-the-chain-familiar/cat-pact.json
+Diff too large to display (>109 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/pact-of-the-chain-familiar/crab-pact.json
+Diff too large to display (>101 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/pact-of-the-chain-familiar/frog-pact.json
+Diff too large to display (>136 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/pact-of-the-chain-familiar/hawk-pact.json
+Diff too large to display (>122 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/pact-of-the-chain-familiar/imp-pact.json
+Diff too large to display (>118 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/pact-of-the-chain-familiar/lizard-pact.json
+Diff too large to display (>88 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/pact-of-the-chain-familiar/octopus-pact.json
+Diff too large to display (>179 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/pact-of-the-chain-familiar/owl-pact.json
+Diff too large to display (>125 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/pact-of-the-chain-familiar/pseudodragon-pact.json
+Diff too large to display (>125 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/pact-of-the-chain-familiar/quasit-pact.json
+Diff too large to display (>118 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/pact-of-the-chain-familiar/quipper-pact.json
+Diff too large to display (>128 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/pact-of-the-chain-familiar/rat-pact.json
+Diff too large to display (>104 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/pact-of-the-chain-familiar/raven-pact.json
+Diff too large to display (>112 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/pact-of-the-chain-familiar/snake-pact.json
+Diff too large to display (>88 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/pact-of-the-chain-familiar/spider-pact.json
+Diff too large to display (>141 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/pact-of-the-chain-familiar/sprite-pact.json
+Diff too large to display (>94 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/pact-of-the-chain-familiar/weasel-pact.json
+Diff too large to display (>120 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/spells/animated-object-large.json
+Diff too large to display (>57 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/spells/animated-objects-swarm.json
+Diff too large to display (>73 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/spells/arcane-eye.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:26:20.629961100 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:26:20.686007000 -0400
+@@ -648,10 +648,16 @@
+ 				"scale": 1
+ 			}
+ 		},
+-		"hexagonalShape": 0,
+ 		"occludable": {
+ 			"radius": 0
+-		}
++		},
++		"turnMarker": {
++			"mode": 1,
++			"animation": null,
++			"src": null,
++			"disposition": false
++		},
++		"movementAction": null
+ 	},
+ 	"items": [
+ 		{
+@@ -783,12 +789,13 @@
+ 			"_stats": {
+ 				"compendiumSource": null,
+ 				"duplicateSource": null,
+-				"coreVersion": "12.331",
++				"coreVersion": "13.346",
+ 				"systemId": "dnd5e",
+ 				"systemVersion": "4.0.2",
+ 				"createdTime": null,
+ 				"modifiedTime": null,
+-				"lastModifiedBy": null
++				"lastModifiedBy": null,
++				"exportSource": null
+ 			},
+ 			"_key": "!actors.items!2zFPDI9k7ScaqVfo.kDgtOIYemCbwuIXK"
+ 		}
+
+File: packs/_source/elkan5e-summoned-creatures/spells/arcane-sword.json
+Diff too large to display (>42 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/spells/dancing-lights-medium.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:26:21.564982200 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:26:21.613516300 -0400
+@@ -643,10 +643,16 @@
+ 				"scale": 1
+ 			}
+ 		},
+-		"hexagonalShape": 0,
+ 		"occludable": {
+ 			"radius": 0
+-		}
++		},
++		"turnMarker": {
++			"mode": 1,
++			"animation": null,
++			"src": null,
++			"disposition": false
++		},
++		"movementAction": null
+ 	},
+ 	"items": [],
+ 	"effects": [],
+
+File: packs/_source/elkan5e-summoned-creatures/spells/dancing-lights-tiny.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:26:22.039044700 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:26:22.091883300 -0400
+@@ -593,10 +593,16 @@
+ 				"scale": 1
+ 			}
+ 		},
+-		"hexagonalShape": 0,
+ 		"occludable": {
+ 			"radius": 0
+-		}
++		},
++		"turnMarker": {
++			"mode": 1,
++			"animation": null,
++			"src": null,
++			"disposition": false
++		},
++		"movementAction": null
+ 	},
+ 	"items": [],
+ 	"effects": [],
+
+File: packs/_source/elkan5e-summoned-creatures/spells/daylight-sphere.json
+Diff between versions:
+--- /tmp/ours.tmp	2025-07-29 13:26:22.519332600 -0400
++++ /tmp/theirs.tmp	2025-07-29 13:26:22.573395300 -0400
+@@ -587,7 +587,6 @@
+ 			"tint": "#ffffff",
+ 			"alphaThreshold": 0.75
+ 		},
+-		"hexagonalShape": 0,
+ 		"lockRotation": false,
+ 		"rotation": 0,
+ 		"alpha": 1,
+@@ -652,7 +651,14 @@
+ 			}
+ 		},
+ 		"flags": {},
+-		"randomImg": false
++		"randomImg": false,
++		"turnMarker": {
++			"mode": 1,
++			"animation": null,
++			"src": null,
++			"disposition": false
++		},
++		"movementAction": null
+ 	},
+ 	"items": [],
+ 	"effects": [],
+
+File: packs/_source/elkan5e-summoned-creatures/spells/explosive-rune.json
+Diff too large to display (>57 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/spells/faithful-hound.json
+Diff too large to display (>42 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/spells/flaming-sphere.json
+Diff too large to display (>90 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/spells/floating-disk.json
+Diff too large to display (>42 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/spells/guardian-of-faith.json
+Diff too large to display (>42 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/spells/mage-hand.json
+Diff too large to display (>51 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/spells/rope-trick.json
+Diff too large to display (>58 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/spells/scrying-sensor.json
+Diff too large to display (>41 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/spells/spirit-steed.json
+Diff too large to display (>91 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/spells/spiritual-weapon.json
+Diff too large to display (>51 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/spells/tiny-hut.json
+Diff too large to display (>41 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/spells/unseen-servant.json
+Diff too large to display (>66 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/spells/wall-of-stone.json
+Diff too large to display (>41 lines), skipping detailed diff.
+
+File: packs/_source/elkan5e-summoned-creatures/spells/zombie.json
+Diff too large to display (>74 lines), skipping detailed diff.
+

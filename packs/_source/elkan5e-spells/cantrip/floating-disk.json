@@ -1,288 +1,325 @@
-import os
-import json
-import math
-from collections import defaultdict, Counter
-from openpyxl import Workbook
-
-ROOT_DIR = "./packs/_source/elkan5e-spells"
-
-DND_SPELL_SCHOOLS = {
-    "abj": "Abjuration",
-    "con": "Conjuration",
-    "div": "Divination",
-    "enc": "Enchantment",
-    "evo": "Evocation",
-    "ill": "Illusion",
-    "nec": "Necromancy",
-    "trs": "Transmutation",
+{
+	"name": "Floating Disk",
+	"type": "spell",
+	"img": "icons/commodities/treasure/token-silver-blue.webp",
+	"effects": [
+		{
+			"name": "Floating Disk",
+			"img": "icons/commodities/treasure/token-silver-blue.webp",
+			"_id": "CPUoy2cQlGyi2m8Z",
+			"type": "base",
+			"system": {},
+			"changes": [
+				{
+					"key": "system.attributes.movement.fly",
+					"mode": 4,
+					"value": "30",
+					"priority": 20
+				},
+				{
+					"key": "system.attributes.movement.hover",
+					"mode": 0,
+					"value": "1",
+					"priority": 20
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 600,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.SVQbo44OiMZ0fpCS",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [],
+			"sort": 0,
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [
+						"zeroHP"
+					],
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": true,
+					"dontApply": false
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
+				}
+			},
+			"_key": "!items.effects!SVQbo44OiMZ0fpCS.CPUoy2cQlGyi2m8Z"
+		}
+	],
+	"folder": "SjVk5lAwzIpqSBbH",
+	"flags": {
+		"core": {},
+		"midi-qol": {
+			"effectActivation": false,
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default",
+			"AoETargetType": "any",
+			"autoTarget": "default",
+			"removeAttackDamageButtons": "default"
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"noConcentrationCheck": false,
+			"confirmTargets": "default",
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic",
+				"material",
+				"ritual"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>You say a command word and pour a single drop of mercury into the air, which dissipates and forms into a circular, horizontal plane of force which floats above the ground and follows you, acting as a platform to carry you, objects, or other people.</em></p><p><strong>Utility Spell</strong></p><ul><li><p>A floating disk appears in an unoccupied space 5 ft. space of your choice. It can hold up to 500 pounds, is 5 ft. in diameter, and weighs 5 lbs.</p></li><li><p>While you stand on the disk, you gain a flying (floating) speed of 30 ft., but you can't fly more than 5 ft. above the ground.</p></li><li><p>If you move more than 20 feet away from the disk, it follows you so that it remains within 20 feet of you. It can move across uneven terrain, up or down stairs, slopes and the like, but it sinks in water and can't cross an elevation change of 5 feet or more. For example, the disk can't move across a 5-foot-deep pit, nor could it leave such a pit if it was created at the bottom.</p></li><li><p>This spell ends if you become &amp;reference[incapacitated], you cast this spell again, if more than 500 lbs is placed on the disk, or if you move more than 100 feet from the disk. When this spell ends, everything on the disk falls to the ground.</p></li></ul>",
+			"chat": "<p><strong>Utility Spell</strong></p><ul><li><p>A floating disk appears in an unoccupied space 5 ft. space of your choice. It can hold up to 500 pounds, is 5 ft. in diameter, and weighs 5 lbs.</p></li><li><p>While you stand on the disk, you gain a flying (floating) speed of 30 ft., but you can't fly more than 5 ft. above the ground.</p></li><li><p>If you move more than 20 feet away from the disk, it follows you so that it remains within 20 feet of you. It can move across uneven terrain, up or down stairs, slopes and the like, but it sinks in water and can't cross an elevation change of 5 feet or more. For example, the disk can't move across a 5-foot-deep pit, nor could it leave such a pit if it was created at the bottom.</p></li><li><p>This spell ends if you become &amp;reference[incapacitated], you cast this spell again, if more than 500 lbs is placed on the disk, or if you move more than 100 feet from the disk. When this spell ends, everything on the disk falls to the ground.</p></li></ul>"
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/floating-disk",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "1",
+			"units": "hour"
+		},
+		"target": {
+			"affects": {
+				"special": "",
+				"type": "space",
+				"count": "1",
+				"choice": false
+			},
+			"template": {
+				"type": "",
+				"units": "ft",
+				"contiguous": false
+			}
+		},
+		"range": {
+			"value": "30",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 0,
+		"school": "con",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "always",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"material",
+			"ritual",
+			"mgc"
+		],
+		"activities": {
+			"AcwucV1D6WFGKE6P": {
+				"type": "summon",
+				"_id": "AcwucV1D6WFGKE6P",
+				"sort": 0,
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": []
+				},
+				"bonuses": {},
+				"creatureSizes": [],
+				"creatureTypes": [],
+				"match": {
+					"attacks": false,
+					"proficiency": false,
+					"saves": false
+				},
+				"profiles": [
+					{
+						"uuid": "Compendium.elkan5e.elkan5e-summoned-creatures.Actor.RDmq1mbYcCNfaXIp",
+						"_id": "zDFJHpHQpxkHTDYl",
+						"level": {
+							"min": null,
+							"max": null
+						},
+						"types": []
+					}
+				],
+				"summon": {
+					"prompt": true
+				},
+				"effects": []
+			},
+			"Yre4vAksLccREHBa": {
+				"type": "utility",
+				"_id": "Yre4vAksLccREHBa",
+				"sort": 0,
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "CPUoy2cQlGyi2m8Z"
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"useConditionText": "",
+				"forceDialog": false,
+				"effectConditionText": "",
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"CPUoy2cQlGyi2m8Z"
+				]
+			}
+		},
+		"identifier": ""
+	},
+	"_id": "SVQbo44OiMZ0fpCS",
+	"_key": "!items!SVQbo44OiMZ0fpCS"
 }
-
-# Data trackers
-spell_counts_by_level = Counter()
-spell_counts_by_school = Counter()
-spell_counts_by_level_and_school = defaultdict(Counter)
-
-damage_save_counts_by_level = Counter()
-damage_attack_counts_by_level = Counter()
-
-damage_values_by_level = defaultdict(list)
-
-damage_save_values_by_level = defaultdict(list)
-damage_save_values_with_effect_by_level = defaultdict(list)
-damage_save_values_without_effect_by_level = defaultdict(list)
-
-damage_attack_values_by_level = defaultdict(list)
-damage_attack_values_with_effect_by_level = defaultdict(list)
-damage_attack_values_without_effect_by_level = defaultdict(list)
-
-# Activation data
-activation_by_school = defaultdict(Counter)  # school -> activation type -> count
-ritual_counts_by_school = Counter()  # school -> ritual count
-
-def safe_int(value, default=0):
-    try:
-        return int(value)
-    except (TypeError, ValueError):
-        return default
-
-def calc_average_damage(damage_parts):
-    total_damage = 0
-    for part in damage_parts:
-        number = safe_int(part.get("number", 0))
-        denomination = safe_int(part.get("denomination", 0))
-        bonus = safe_int(part.get("bonus", 0))
-        average_per_die = math.ceil(denomination / 2)
-        total_damage += number * average_per_die + bonus
-    return total_damage
-
-def scan_folder(folder):
-    for root, dirs, files in os.walk(folder):
-        if "spells-class-specific-versions" in root:
-            continue
-        for file in files:
-            if file.endswith(".json"):
-                parse_spell(os.path.join(root, file))
-
-def parse_spell(file_path):
-    try:
-        with open(file_path, encoding="utf-8") as f:
-            data = json.load(f)
-            if data.get("type") != "spell":
-                return
-
-            system = data.get("system", {})
-            level = safe_int(system.get("level", -1))
-            school_short = system.get("school", "").lower()
-            school = DND_SPELL_SCHOOLS.get(school_short)
-            if not school:
-                school = None
-
-            spell_counts_by_level[level] += 1
-            if school:
-                spell_counts_by_school[school] += 1
-                spell_counts_by_level_and_school[level][school] += 1
-
-            # Ritual flag fix: check system.properties.ritual
-            properties = system.get("properties", {})
-            if properties.get("ritual", False) and school:
-                ritual_counts_by_school[school] += 1
-
-            activities = system.get("activities", {})
-
-            total_avg_damage = 0
-            for act in activities.values():
-                if isinstance(act, dict):
-                    damage_parts = act.get("damage", {}).get("parts", [])
-                    total_avg_damage += calc_average_damage(damage_parts)
-
-            if total_avg_damage > 0:
-                damage_values_by_level[level].append(total_avg_damage)
-
-            # Activation counts by school
-            for act in activities.values():
-                if not isinstance(act, dict):
-                    continue
-                activation_type = act.get("activation", system.get("activation", {})).get("type") or act.get("activation", {}).get("type") or system.get("activation", {}).get("type") or act.get("activation", system.get("activation", {}))
-                if not activation_type:
-                    activation_type = act.get("activation", {}).get("type", "unknown")
-
-                if isinstance(activation_type, dict):
-                    activation_type = activation_type.get("type", "unknown")
-                if not isinstance(activation_type, str):
-                    activation_type = "unknown"
-
-                if activation_type == "unknown":
-                    continue
-
-                if school:
-                    activation_by_school[school][activation_type] += 1
-
-            for act in activities.values():
-                if not isinstance(act, dict):
-                    continue
-                act_type = act.get("type")
-                damage_parts = act.get("damage", {}).get("parts", [])
-                avg_damage = calc_average_damage(damage_parts)
-                effect_present = bool(act.get("effect")) or avg_damage > 0
-
-                if act_type == "save":
-                    damage_save_counts_by_level[level] += 1
-                    if avg_damage > 0:
-                        damage_save_values_by_level[level].append(avg_damage)
-                        if effect_present:
-                            damage_save_values_with_effect_by_level[level].append(avg_damage)
-                        else:
-                            damage_save_values_without_effect_by_level[level].append(avg_damage)
-                elif act_type == "attack":
-                    damage_attack_counts_by_level[level] += 1
-                    if avg_damage > 0:
-                        damage_attack_values_by_level[level].append(avg_damage)
-                        if effect_present:
-                            damage_attack_values_with_effect_by_level[level].append(avg_damage)
-                        else:
-                            damage_attack_values_without_effect_by_level[level].append(avg_damage)
-
-    except Exception as e:
-        print(f"Error parsing {file_path}: {e}")
-
-# Run scanning
-scan_folder(ROOT_DIR)
-
-# Create workbook
-wb = Workbook()
-
-# ===== SummaryByLevel sheet =====
-summary_ws = wb.active
-summary_ws.title = "SummaryByLevel"
-
-header = [
-    "Level", "Count",
-    "Abjuration", "Conjuration", "Divination", "Enchantment", "Evocation",
-    "Illusion", "Necromancy", "Transmutation",
-    "Average Damage",
-    "Count Damage Saves", "Average Damage Save",
-    "Average Damage Save With Effect", "Average Damage Save Without Effect",
-    "Count Damage Attacks", "Average Damage Attack",
-    "Average Damage Attack With Effect", "Average Damage Attack Without Effect",
-]
-summary_ws.append(header)
-
-all_levels = sorted(spell_counts_by_level.keys())
-
-for lvl in all_levels:
-    row = [
-        lvl,
-        spell_counts_by_level.get(lvl, 0),
-    ]
-    for school_short in ["abj", "con", "div", "enc", "evo", "ill", "nec", "trs"]:
-        school_name = DND_SPELL_SCHOOLS[school_short]
-        count = spell_counts_by_level_and_school[lvl].get(school_name, 0)
-        row.append(count)
-
-    avg_damage = (
-        sum(damage_values_by_level[lvl]) / len(damage_values_by_level[lvl])
-        if damage_values_by_level[lvl]
-        else 0
-    )
-    row.append(round(avg_damage, 2))
-
-    count_saves = damage_save_counts_by_level.get(lvl, 0)
-    row.append(count_saves)
-
-    avg_save = (
-        sum(damage_save_values_by_level[lvl]) / len(damage_save_values_by_level[lvl])
-        if damage_save_values_by_level[lvl]
-        else 0
-    )
-    row.append(round(avg_save, 2))
-
-    avg_save_with = (
-        sum(damage_save_values_with_effect_by_level[lvl])
-        / len(damage_save_values_with_effect_by_level[lvl])
-        if damage_save_values_with_effect_by_level[lvl]
-        else 0
-    )
-    row.append(round(avg_save_with, 2))
-
-    avg_save_without = (
-        sum(damage_save_values_without_effect_by_level[lvl])
-        / len(damage_save_values_without_effect_by_level[lvl])
-        if damage_save_values_without_effect_by_level[lvl]
-        else 0
-    )
-    row.append(round(avg_save_without, 2))
-
-    count_attacks = damage_attack_counts_by_level.get(lvl, 0)
-    row.append(count_attacks)
-
-    avg_attack = (
-        sum(damage_attack_values_by_level[lvl]) / len(damage_attack_values_by_level[lvl])
-        if damage_attack_values_by_level[lvl]
-        else 0
-    )
-    row.append(round(avg_attack, 2))
-
-    avg_attack_with = (
-        sum(damage_attack_values_with_effect_by_level[lvl])
-        / len(damage_attack_values_with_effect_by_level[lvl])
-        if damage_attack_values_with_effect_by_level[lvl]
-        else 0
-    )
-    row.append(round(avg_attack_with, 2))
-
-    avg_attack_without = (
-        sum(damage_attack_values_without_effect_by_level[lvl])
-        / len(damage_attack_values_without_effect_by_level[lvl])
-        if damage_attack_values_without_effect_by_level[lvl]
-        else 0
-    )
-    row.append(round(avg_attack_without, 2))
-
-    summary_ws.append(row)
-
-# ===== ActivationsBySchool sheet =====
-activations_ws = wb.create_sheet("ActivationsBySchool")
-
-# Gather all activation types dynamically
-all_activation_types = set()
-for school, counter in activation_by_school.items():
-    all_activation_types.update(counter.keys())
-
-# Sort activation types but keep "Action", "Bonus Action", "Minute", "Hour" upfront if present
-priority_order = ["Action", "Bonus Action", "Minute", "Hour"]
-sorted_activation_types = [t for t in priority_order if t in all_activation_types]
-sorted_activation_types += sorted(t for t in all_activation_types if t not in priority_order)
-
-# Prepare header
-header = ["School", "Count"] + sorted_activation_types + ["Ritual Count"]
-activations_ws.append(header)
-
-# Write data rows, skipping schools with zero count
-for school in sorted(spell_counts_by_school.keys()):
-    total_count = spell_counts_by_school[school]
-    if total_count == 0:
-        continue
-
-    row = [school, total_count]
-
-    act_counts = activation_by_school.get(school, {})
-
-    # Add counts for each activation type or 0 if missing
-    for act_type in sorted_activation_types:
-        count = act_counts.get(act_type, 0)
-        row.append(count)
-
-    # Add ritual count or 0
-    ritual_count = ritual_counts_by_school.get(school, 0)
-    row.append(ritual_count)
-
-    # Skip the entire row if all activation counts and ritual count are zero
-    if all(x == 0 for x in row[2:]):
-        continue
-
-    activations_ws.append(row)
-
-# Save Excel file
-output_path = r".\helperCode\logs\spells_info.xlsx"
-wb.save(output_path)
-print(f"Done! Data saved to {output_path}")
