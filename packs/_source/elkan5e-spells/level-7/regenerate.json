@@ -87,34 +87,6 @@
 				"flags": {}
 			}
 		},
-		"itemacro": {
-			"macro": {
-				"_data": {
-					"name": "Regenerate",
-					"type": "script",
-					"scope": "global",
-					"command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @tactor\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\n\n/**\n * Set hooks to fire on combat update and world time update\n */\nif (args[0] === \"on\") {\n\n    // If 6s elapses, update HP by one\n    const timeHookId = Hooks.on(\"updateWorldTime\", (currentTime, updateInterval) => {\n        if (game.combats === []) return;\n        let effect = tactor.effects.find(i => i.data.label === \"Regenerate\");\n        let applyTime = effect.data.duration.startTime;\n        let expireTime = applyTime + effect.data.duration.seconds;\n        let healing = roundCount(currentTime, updateInterval, applyTime, expireTime);\n        console.log(`${tactor.name} healed for ${healing}`);\n        tactor.applyDamage(-healing);\n    }\n    );\n\n    tactor.setFlag(\"world\", \"Regenerate\", {\n        timeHook: timeHookId\n    }\n    );\n}\n\nif (args[0] === \"each\") {\n    tactor.applyDamage(-1);\n    ChatMessage.create({ content: `${tactor.name} gains 1 hp` });\n}\n\nif (args[0] === \"off\") {\n    async function RegenerateOff() {\n        let flag = await tactor.getFlag('world', 'Regenerate');\n        Hooks.off(\"updateWorldTime\", flag.timeHook);\n        tactor.unsetFlag(\"world\", \"Regenerate\");\n        console.log(\"Regenerate removed\");\n    };\n    RegenerateOff();\n}\n\n\n/**\n * \n * @param {Number} currentTime current world time\n * @param {Number} updateInterval amount the world time was incremented\n * @param {Number} applyTime time the effect was applied\n * @param {Number} expireTime time the effect should expire\n */\nfunction roundCount(currentTime, updateInterval, applyTime, expireTime) {\n    // Don't count time before applyTime\n    if (currentTime - updateInterval < applyTime) {\n        let offset = applyTime - (currentTime - updateInterval);\n        updateInterval -= offset;\n    }\n\n    // Don't count time after expireTime\n    if (currentTime > expireTime) {\n        let offset = currentTime - expireTime;\n        currentTime = expireTime;\n        updateInterval -= offset;\n    }\n\n    let sTime = currentTime - updateInterval;\n    let fRound = sTime + 6 - (sTime % 6); // Time of the first round\n    let lRound = currentTime - (currentTime % 6); // Time of the last round\n    let roundCount = 0;\n    if (lRound >= fRound)\n        roundCount = (lRound - fRound) / 6 + 1;\n\n    return roundCount;\n}",
-					"author": "E4BVikjIkVl2lL2j"
-				},
-				"data": {
-					"name": "Regenerate",
-					"type": "script",
-					"scope": "global",
-					"command": "//DAE Macro , no arguments\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\n\n/**\n * Set hooks to fire on combat update and world time update\n */\nif (args[0] === \"on\") {\n\n    // If 6s elapses, update HP by one\n    const timeHookId = Hooks.on(\"updateWorldTime\", (currentTime, updateInterval) => {\n        let effect = tactor.effects.find(i => i.data.label === \"Regenerate\");\n        let applyTime = effect.data.duration.startTime;\n        let expireTime = applyTime + effect.data.duration.seconds;\n        let healing = roundCount(currentTime, updateInterval, applyTime, expireTime);\n        tactor.applyDamage(-healing);\n        ChatMessage.create({ content: `${tactor.name} gains 1 hp` });\n    }\n    );\n\n    tactor.setFlag(\"world\", \"Regenerate\", {\n        timeHook: timeHookId\n    }\n    );\n}\n\nif (args[0] === \"off\") {\n    async function RegenerateOff() {\n        let flag = await tactor.getFlag('world', 'Regenerate');\n        Hooks.off(\"updateWorldTime\", flag.timeHook);\n        tactor.unsetFlag(\"world\", \"Regenerate\");\n        console.log(\"Regenerate removed\");\n    };\n    RegenerateOff();\n}\n\n\n/**\n * \n * @param {Number} currentTime current world time\n * @param {Number} updateInterval amount the world time was incremented\n * @param {Number} applyTime time the effect was applied\n * @param {Number} expireTime time the effect should expire\n */\nfunction roundCount(currentTime, updateInterval, applyTime, expireTime) {\n    // Don't count time before applyTime\n    if (currentTime - updateInterval < applyTime) {\n        let offset = applyTime - (currentTime - updateInterval);\n        updateInterval -= offset;\n    }\n\n    // Don't count time after expireTime\n    if (currentTime > expireTime) {\n        let offset = currentTime - expireTime;\n        currentTime = expireTime;\n        updateInterval -= offset;\n    }\n\n    let sTime = currentTime - updateInterval;\n    let fRound = sTime + 6 - (sTime % 6); // Time of the first round\n    let lRound = currentTime - (currentTime % 6); // Time of the last round\n    let roundCount = 0;\n    if (lRound >= fRound)\n        roundCount = (lRound - fRound) / 6 + 1;\n\n    return roundCount;\n}",
-					"author": "zrPR3wueYsESSBR3",
-					"_id": null,
-					"img": "icons/svg/dice-target.svg",
-					"folder": null,
-					"permission": {
-						"default": 0
-					},
-					"flags": {}
-				},
-				"options": {},
-				"apps": {},
-				"compendium": null
-			}
-		},
 		"midi-qol": {
 			"onUseMacroName": "",
 			"effectActivation": false,

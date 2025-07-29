@@ -171,27 +171,6 @@
 			"removeAttackDamageButtons": "default",
 			"otherCondition": ""
 		},
-		"itemacro": {
-			"macro": {
-				"_data": {
-					"name": "Banishment",
-					"type": "script",
-					"scope": "global",
-					"command": "let target = canvas.tokens.get(args[1]);\n\nif (args[0] === \"on\") {\n    await target.update({hidden : true});\n    await target.actor.setFlag('world','banishment', 1);\n    ChatMessage.create({content: target.name + \"  was banished\"})\n    \n}\nif(args[0]=== \"off\") {\n target.update({hidden : false})\n target;actor.unsetFlag(args[1], 'world', 'banishment');\n ChatMessage.create({content: target.name + \"  returned\"})\n}",
-					"author": "devnIbfBHb74U9Zv"
-				},
-				"data": {
-					"name": "Banishment",
-					"type": "script",
-					"scope": "global",
-					"command": "let target = canvas.tokens.get(args[1]);\n\nif (args[0] === \"on\") {\n    await target.update({hidden : true});\n    await target.actor.setFlag('world','banishment', 1);\n    ChatMessage.create({content: target.name + \"  was banished\"})\n    \n}\nif(args[0]=== \"off\") {\n target.update({hidden : false})\n target;actor.unsetFlag(args[1], 'world', 'banishment');\n ChatMessage.create({content: target.name + \"  returned\"})\n}",
-					"author": "devnIbfBHb74U9Zv"
-				},
-				"options": {},
-				"apps": {},
-				"compendium": null
-			}
-		},
 		"midiProperties": {
 			"nodam": false,
 			"fulldam": false,

@@ -90,34 +90,6 @@
 				}
 			]
 		},
-		"itemacro": {
-			"macro": {
-				"data": {
-					"name": "Blindness/Deafness",
-					"type": "script",
-					"scope": "global",
-					"command": "if(!game.modules.get(\"advanced-macros\")?.active) {ui.notifications.error(\"Please enable the Advanced Macros module\") ;return;}\nif(!game.modules.get(\"combat-utility-belt\")?.active) {ui.notifications.error(\"Please enable the CUB module\"); return;}\n\n//DAE macro, call directly with no arguments\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nlet target = canvas.tokens.get(lastArg.tokenId)\nconst DAEitem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEitem.data.save\n\nif (args[0] === \"on\") {\n    new Dialog({\n        title: \"Choose an Effect\",\n        buttons: {\n            one: {\n                label: \"Blindness\",\n                callback: () => {\n                    DAE.setFlag(tactor, \"DAEBlind\", \"blind\")\n                    game.cub.addCondition(\"Blinded\", target)\n                }\n            },\n            two: {\n                label: \"Deafness\",\n                callback: () => {\n                    DAE.setFlag(tactor, \"DAEBlind\", \"deaf\")\n                    game.cub.addCondition(\"Deafened\", target)\n                }\n            }\n        },\n    }).render(true);\n}\nif (args[0] === \"off\") {\n    let flag = DAE.getFlag(tactor, \"DAEBlind\")\n    if (flag === \"blind\") {\n        game.cub.removeCondition(\"Blinded\", target)\n    } else if (flag === \"deaf\") {\n        game.cub.removeCondition(\"Deafened\", target)\n    }\n    DAE.unsetFlag(tactor, \"DAEBlind\")\n}\n\nif (args[0] === \"each\") {\n    const flavor = `${CONFIG.DND5E.abilities[saveData.ability]} DC${saveData.dc} ${DAEitem?.name || \"\"}`;\n    let saveRoll = (await tactor.rollAbilitySave(saveData.ability, { flavor })).total;\n    if (saveRoll >= saveData.dc) tactor.deleteEmbeddedEntity(\"ActiveEffect\", lastArg.effectId);\n}",
-					"author": "zrPR3wueYsESSBR3",
-					"_id": null,
-					"img": "icons/svg/dice-target.svg",
-					"folder": null,
-					"permission": {
-						"default": 0
-					},
-					"flags": {}
-				},
-				"options": {},
-				"apps": {},
-				"compendium": null,
-				"_data": {
-					"name": "Blindness/Deafness",
-					"type": "script",
-					"scope": "global",
-					"command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target @attributes.spell.dc\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nlet target = canvas.tokens.get(lastArg.tokenId)\nconst DAEitem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEitem.data.save\n\nif (args[0] === \"on\") {\n    new Dialog({\n        title: \"Choose an Effect\",\n        buttons: {\n            one: {\n                label: \"Blindness\",\n                callback: () => {\n                    DAE.setFlag(tactor, \"DAEBlind\", \"blind\")\n                    game.cub.addCondition(\"Blinded\", target)\n                }\n            },\n            two: {\n                label: \"Deafness\",\n                callback: () => {\n                    DAE.setFlag(tactor, \"DAEBlind\", \"deaf\")\n                    game.cub.addCondition(\"Deafened\", target)\n                }\n            }\n        },\n    }).render(true);\n}\nif (args[0] === \"off\") {\n    let flag = DAE.getFlag(tactor, \"DAEBlind\")\n    if (flag === \"blind\") {\n        game.cub.removeCondition(\"Blinded\", target)\n    } else if (flag === \"deaf\") {\n        game.cub.removeCondition(\"Deafened\", target)\n    }\n    DAE.unsetFlag(tactor, \"DAEBlind\")\n}\n\nif (args[0] === \"each\") {\n    const flavor = `${CONFIG.DND5E.abilities[saveData.ability]} DC${saveData.dc} ${DAEitem?.name || \"\"}`;\n    let saveRoll = (await tactor.rollAbilitySave(saveData.ability, { flavor })).total;\n    if (saveRoll >= saveData.dc) tactor.deleteEmbeddedEntity(\"ActiveEffect\", lastArg.effectId);\n}",
-					"author": "E4BVikjIkVl2lL2j"
-				}
-			}
-		},
 		"dae": {
 			"activeEquipped": false,
 			"alwaysActive": false,

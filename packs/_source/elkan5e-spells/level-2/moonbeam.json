@@ -20,34 +20,6 @@
 			}
 		},
 		"core": {},
-		"itemacro": {
-			"macro": {
-				"_data": {
-					"name": "Moonbeam",
-					"type": "script",
-					"scope": "global",
-					"command": "//DAE Item Macro Execute, Effect Value = @attributes.spell.dc\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEItem.data.save\nconst DC = args[1]\n/**\n * Create Moonbeam item in inventory\n */\nif (args[0] === \"on\") {\n  let templateData = {\n    t: \"circle\",\n    user: game.user._id,\n    distance: 5,\n    direction: 0,\n    x: 0,\n    y: 0,\n    flags: {\n        DAESRD: {\n            Moonbeam: {\n                ActorId: tactor.id\n            }\n        }\n    },\n    fillColor: game.user.color\n}\nlet template = new game.dnd5e.canvas.AbilityTemplate(templateData)\ntemplate.actorSheet = tactor.sheet;\ntemplate.drawPreview()\n\n  let damage = DAEItem.data.level;\n  await tactor.createOwnedItem(\n    {\n      \"name\": \"Moonbeam repeating\",\n      \"type\": \"spell\",\n      \"data\": {\n        \"source\": \"Casting Moonbeam\",\n        \"ability\": \"\",\n        \"description\": {\n          \"value\": \"half damage on save\" \n        },\n        \"actionType\": \"save\",\n        \"attackBonus\": 0,\n        \"damage\": {\n          \"parts\": [\n            [\n              `${damage}d10`,\n              \"radiant\"\n            ]\n          ],\n        },\n        \"formula\": \"\",\n        \"save\": {\n          \"ability\": \"con\",\n          \"dc\": saveData.dc,\n          \"scaling\": \"spell\"\n        },\n        \"level\": 0,\n        \"school\": \"abj\",\n        \"preparation\": {\n          \"mode\": \"prepared\",\n          \"prepared\": false\n        },\n\n      },\n      \"img\": DAEItem.img,\n    }\n  );\n}\n\n// Delete Moonbeam\nif (args[0] === \"off\") {\n  let casterItem = tactor.data.items.find(i => i.name === \"Moonbeam repeating\" && i.type === \"spell\")\n  tactor.deleteOwnedItem(casterItem._id)\n  let template = canvas.templates.placeables.filter(i => i.data.flags.DAESRD?.Moonbeam?.ActorId === tactor.id)\n    canvas.templates.deleteMany(template[0].id)\n}",
-					"author": "E4BVikjIkVl2lL2j"
-				},
-				"data": {
-					"name": "Moonbeam",
-					"type": "script",
-					"scope": "global",
-					"command": "//DAE Item Macro Execute, Effect Value = @attributes.spell.dc\nif (!game.modules.get(\"advanced-macros\")?.active) ui.notifications.error(\"Please enable the Advanced Macros module\")\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId)\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEItem.data.save\nconst DC = args[1]\n/**\n * Create Moonbeam item in inventory\n */\nif (args[0] === \"on\") {\n  let range = canvas.scene.createEmbeddedDocuments(\"MeasuredTemplate\", [{\n    t: \"circle\",\n    user: game.user._id,\n    x: target.x + canvas.grid.size / 2,\n    y: target.y + canvas.grid.size / 2,\n    direction: 0,\n    distance: 60,\n    borderColor: \"#517bc9\",\n    flags: {\n      DAESRD: {\n        MoonbeamRange: {\n          ActorId: tactor.id\n        }\n      }\n    }\n    //fillColor: \"#FF3366\",\n  }]);\n\n  range.then(result => {\n    let templateData = {\n      t: \"circle\",\n      user: game.user._id,\n      distance: 5,\n      direction: 0,\n      x: 0,\n      y: 0,\n      flags: {\n        DAESRD: {\n          Moonbeam: {\n            ActorId: tactor.id\n          }\n        }\n      },\n      fillColor: game.user.color\n    }\n    Hooks.once(\"createMeasuredTemplate\", deleteTemplates);\n\n    let doc = new CONFIG.MeasuredTemplate.documentClass(templateData, { parent: canvas.scene })\n    let template = new game.dnd5e.canvas.AbilityTemplate(doc)\n    template.actorSheet = tactor.sheet;\n    template.drawPreview()\n\n    async function deleteTemplates() {\n      let removeTemplates = canvas.templates.placeables.filter(i => i.data.flags.DAESRD?.MoonbeamRange?.ActorId === tactor.id);\n      await canvas.scene.deleteEmbeddedDocuments(\"MeasuredTemplate\", [removeTemplates[0].id]);\n    };\n\n    let damage = DAEItem.data.level;\n    tactor.createOwnedItem(\n      {\n        \"name\": \"Moonbeam repeating\",\n        \"type\": \"spell\",\n        \"data\": {\n          \"source\": \"Casting Moonbeam\",\n          \"ability\": \"\",\n          \"description\": {\n            \"value\": \"half damage on save\"\n          },\n          \"actionType\": \"save\",\n          \"attackBonus\": 0,\n          \"damage\": {\n            \"parts\": [\n              [\n                `${damage}d10`,\n                \"radiant\"\n              ]\n            ],\n          },\n          \"formula\": \"\",\n          \"save\": {\n            \"ability\": \"con\",\n            \"dc\": saveData.dc,\n            \"scaling\": \"spell\"\n          },\n          \"level\": 0,\n          \"school\": \"abj\",\n          \"preparation\": {\n            \"mode\": \"prepared\",\n            \"prepared\": false\n          },\n\n        },\n        \"img\": DAEItem.img,\n        \"effects\": []\n      }\n    );\n  });\n}\n\n// Delete Moonbeam\nif (args[0] === \"off\") {\n  let casterItem = tactor.data.items.find(i => i.name === \"Moonbeam repeating\" && i.type === \"spell\")\n  tactor.deleteOwnedItem(casterItem._id)\n  let template = canvas.templates.placeables.find(i => i.data.flags.DAESRD?.Moonbeam?.ActorId === tactor.id)\n  canvas.scene.deleteEmbeddedDocuments(\"MeasuredTemplate\", [template.id])\n}",
-					"author": "zrPR3wueYsESSBR3",
-					"_id": null,
-					"img": "icons/svg/dice-target.svg",
-					"folder": null,
-					"permission": {
-						"default": 0
-					},
-					"flags": {}
-				},
-				"options": {},
-				"apps": {},
-				"compendium": null
-			}
-		},
 		"midi-qol": {
 			"onUseMacroName": "[postActiveEffects]ActivityMacro-Ifa6sYkqQecMpx6D",
 			"effectActivation": false,

@@ -110,34 +110,6 @@
 	],
 	"folder": "U0k4VGG6bziqf3oH",
 	"flags": {
-		"itemacro": {
-			"macro": {
-				"_data": {
-					"name": "Faerie Fire",
-					"type": "script",
-					"scope": "global",
-					"command": "const lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nlet target = canvas.tokens.get(lastArg.tokenId)\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEItem.data.save\n\nif (args[0] === \"on\") {\n\n    new Dialog({\n        title: `Choose the colour for Faerie Fire on ${target.name}`,\n        buttons: {\n            one: {\n                label: \"Blue\",\n                callback: async () => {\n                    let color = target.data.lightColor ? target.data.lightColor : \"\";\n                    let dimLight = target.data.dimLight ? target.data.dimLight : \"0\"\n                    await DAE.setFlag(target, 'FaerieFire', {\n                        color: color,\n                        alpha: target.data.lightAlpha,\n                        dimLight: dimLight\n                    });\n                    target.update({ \"lightColor\": \"#5ab9e2\", \"lightAlpha\": 0.64, \"dimLight\": \"10\" })\n                }\n            },\n            two: {\n                label: \"Green\",\n                callback: async () => {\n                    let color = target.data.lightColor ? target.data.lightColor : \"\";\n                    let dimLight = target.data.dimLight ? target.data.dimLight : \"0\"\n                    await DAE.setFlag(target, 'FaerieFire', {\n                        color: color,\n                        alpha: target.data.lightAlpha,\n                        dimLight: dimLight\n                    });\n                    target.update({ \"lightColor\": \"#55d553\", \"lightAlpha\": 0.64, \"dimLight\": \"10\" })\n                }\n            },\n            three: {\n                label: \"Purple\",\n                callback: async () => {\n                    let color = target.data.lightColor ? target.data.lightColor : \"\";\n                    let dimLight = target.data.dimLight ? target.data.dimLight : \"0\"\n                    await DAE.setFlag(target, 'FaerieFire', {\n                        color: color,\n                        alpha: target.data.lightAlpha,\n                        dimLight: dimLight\n                    });\n                    target.update({ \"lightColor\": \"#844ec6\", \"lightAlpha\": 0.64, \"dimLight\": \"10\" })\n                }\n            }\n        }\n    }).render(true);\n}\n\nif (args[0] === \"off\") {\n    let { color, alpha, dimLight } = await DAE.getFlag(target, \"FaerieFire\")\n    target.update({ \"lightColor\": color, \"lightAlpha\": alpha, \"dimLight\": dimLight })\n    DAE.unsetFlag(tactor, \"FaerieFire\")\n}",
-					"author": "E4BVikjIkVl2lL2j"
-				},
-				"data": {
-					"name": "Faerie Fire",
-					"type": "script",
-					"scope": "global",
-					"command": "// DAE macro, just call the macro, nothing else\n// setup the spell as normal\nif (!game.modules.get(\"advanced-macros\")?.active) {ui.notifications.error(\"Please enable the Advanced Macros module\") ;return;}\n\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nlet target = canvas.tokens.get(lastArg.tokenId)\n\nconst DAEItem = lastArg.efData.flags.dae.itemData\nconst saveData = DAEItem.data.save\n\nif (args[0] === \"on\") {\n\n    new Dialog({\n        title: `Choose the colour for Faerie Fire on ${target.name}`,\n        buttons: {\n            one: {\n                label: \"Blue\",\n                callback: async () => {\n                    let color = target.data.lightColor ? target.data.lightColor : \"\";\n                    let dimLight = target.data.dimLight ? target.data.dimLight : \"0\"\n                    await DAE.setFlag(target, 'FaerieFire', {\n                        color: color,\n                        alpha: target.data.lightAlpha,\n                        dimLight: dimLight\n                    });\n                    target.update({ \"lightColor\": \"#5ab9e2\", \"lightAlpha\": 0.64, \"dimLight\": \"10\", \"lightAnimation.intensity\" : 3 })\n                }\n            },\n            two: {\n                label: \"Green\",\n                callback: async () => {\n                    let color = target.data.lightColor ? target.data.lightColor : \"\";\n                    let dimLight = target.data.dimLight ? target.data.dimLight : \"0\"\n                    await DAE.setFlag(target, 'FaerieFire', {\n                        color: color,\n                        alpha: target.data.lightAlpha,\n                        dimLight: dimLight\n                    });\n                    target.update({ \"lightColor\": \"#55d553\", \"lightAlpha\": 0.64, \"dimLight\": \"10\",\"lightAnimation.intensity\" : 3  })\n                }\n            },\n            three: {\n                label: \"Purple\",\n                callback: async () => {\n                    let color = target.data.lightColor ? target.data.lightColor : \"\";\n                    let dimLight = target.data.dimLight ? target.data.dimLight : \"0\"\n                    await DAE.setFlag(target, 'FaerieFire', {\n                        color: color,\n                        alpha: target.data.lightAlpha,\n                        dimLight: dimLight\n                    });\n                    target.update({ \"lightColor\": \"#844ec6\", \"lightAlpha\": 0.64, \"dimLight\": \"10\",\"lightAnimation.intensity\" : 3  })\n                }\n            }\n        }\n    }).render(true);\n}\n\nif (args[0] === \"off\") {\n    let { color, alpha, dimLight } = await DAE.getFlag(target, \"FaerieFire\")\n    target.update({ \"lightColor\": color, \"lightAlpha\": alpha, \"dimLight\": dimLight })\n    DAE.unsetFlag(tactor, \"FaerieFire\")\n}",
-					"author": "zrPR3wueYsESSBR3",
-					"_id": null,
-					"img": "icons/svg/dice-target.svg",
-					"folder": null,
-					"permission": {
-						"default": 0
-					},
-					"flags": {}
-				},
-				"options": {},
-				"apps": {},
-				"compendium": null
-			}
-		},
 		"dae": {
 			"activeEquipped": false,
 			"alwaysActive": false,

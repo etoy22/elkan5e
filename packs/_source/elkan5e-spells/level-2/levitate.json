@@ -105,34 +105,6 @@
 				"flags": {}
 			}
 		},
-		"itemacro": {
-			"macro": {
-				"_data": {
-					"name": "Levitate",
-					"type": "script",
-					"scope": "global",
-					"command": "//DAE Macro Execute, Effect Value = \"Macro Name\" @target\nconst lastArg = args[args.length - 1];\nlet tactor;\nif (lastArg.tokenId) tactor = canvas.tokens.get(lastArg.tokenId).actor;\nelse tactor = game.actors.get(lastArg.actorId);\nconst target = canvas.tokens.get(lastArg.tokenId)\n\nif (args[0] === \"on\") {\n    ChatMessage.create({ content: `${target.name} is levitated 20ft` });\n    target.update({ \"elevation\": 20 });\n}\nif (args[0] === \"off\") {\n    target.update({\"elevation\": 0 });\n    ChatMessage.create({ content: `${target.name} is returned to the ground` });\n}",
-					"author": "E4BVikjIkVl2lL2j"
-				},
-				"data": {
-					"name": "Levitate",
-					"type": "script",
-					"scope": "global",
-					"command": "//DAE Item Macro, no arguments passed\nif (!game.modules.get(\"advanced-macros\")?.active) ui.notifications.error(\"Please enable the Advanced Macros module\")\nconst lastArg = args[args.length - 1];\nlet tactor;\nconst target = canvas.tokens.get(lastArg.tokenId)\n\nif (args[0] === \"on\") {\n    ChatMessage.create({ content: `${target.name} is levitated 20ft` });\n    target.update({ \"elevation\": 20 });\n}\nif (args[0] === \"off\") {\n    target.update({\"elevation\": 0 });\n    ChatMessage.create({ content: `${target.name} is returned to the ground` });\n}",
-					"author": "zrPR3wueYsESSBR3",
-					"_id": null,
-					"img": "icons/svg/dice-target.svg",
-					"folder": null,
-					"permission": {
-						"default": 0
-					},
-					"flags": {}
-				},
-				"options": {},
-				"apps": {},
-				"compendium": null
-			}
-		},
 		"midi-qol": {
 			"onUseMacroName": "",
 			"effectActivation": false,
