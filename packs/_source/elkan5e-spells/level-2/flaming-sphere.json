@@ -1,0 +1,210 @@
+{
+	"name": "Flaming Sphere",
+	"type": "spell",
+	"img": "icons/magic/fire/orb-lightning-sun.webp",
+	"effects": [],
+	"folder": "6J3i75lfD1J0xYwA",
+	"flags": {
+		"core": {},
+		"midi-qol": {
+			"effectActivation": false,
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default",
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default"
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"confirmTargets": "default",
+			"saveDamage": "default",
+			"noConcentrationCheck": false,
+			"bonusSaveDamage": "default",
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic",
+				"material",
+				"concentration"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>You empty a flask containing a bit of tallow, a pinch of brimstone, and a dusting of powdered iron on the ground. As you say a few magic words in a firm voice, you create a flaming confluence of elemental energy.</em></p><p><strong>Summoning Spell</strong></p><p>You create an sphere of fire.</p><ul><li><p>It is a medium &amp;reference[elemental]{elemental} and acts immediately after the end of your turn.</p></li><li><p>It is immune to &amp;reference[fire]{fire} and &amp;reference[poison]{poison} damage, and immune to the &amp;reference[grappled]{grappled}, &amp;reference[paralyzed]{paralyzed}, &amp;reference[petrified]{petrified}, &amp;reference[poisoned]{poisoned}, &amp;reference[prone]{prone}, &amp;reference[restrained]{restrained}, &amp;reference[unconscious], and &amp;reference[exhaustion]{exhaustion} conditions.</p></li><li><p>It has AC 10, 20 hit points,* and all its ability scores are 2, except &amp;reference[dexterity]{dexterity} and &amp;reference[constitution]{constitution} which are 10.</p></li><li><p>Its speed is 30 and can move through other creatures (but not end in their space).</p></li><li><p>It emits &amp;reference[brightlight] in a 20 ft. radius and &amp;reference[dimlight] in a 40 ft. radius.</p></li><li><p>At the end of each of the sphere's turns or if the sphere is reduced to 0 hit points, any creature within 5 feet of the sphere makes a dexterity save.</p></li></ul><p><strong>Dexterity Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 2d6 fire]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p></p><p><strong>*Upcasting:</strong> The sphere's hit points increase by 10 and its damage increases by [[/r 1d6 fire]]{1d6} for each spell level above 2nd level.</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/flaming-sphere",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "1",
+			"units": "minute"
+		},
+		"target": {
+			"affects": {
+				"choice": false,
+				"count": "",
+				"type": ""
+			},
+			"template": {
+				"units": "",
+				"contiguous": false,
+				"type": ""
+			}
+		},
+		"range": {
+			"value": "60",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 2,
+		"school": "con",
+		"materials": {
+			"value": "",
+			"consumed": true,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"material",
+			"concentration",
+			"mgc"
+		],
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "summon",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"bonuses": {
+					"ac": "",
+					"hd": "",
+					"hp": "((@item.level - 1) * 10)",
+					"attackDamage": "",
+					"saveDamage": "((@item.level - 2) d6)",
+					"healing": ""
+				},
+				"creatureSizes": [
+					"med"
+				],
+				"creatureTypes": [
+					"elemental"
+				],
+				"match": {
+					"proficiency": false,
+					"attacks": false,
+					"saves": true
+				},
+				"profiles": [
+					{
+						"count": "",
+						"name": "",
+						"_id": "ivQTGCKCkmoaExDW",
+						"uuid": "Compendium.elkan5e.elkan5e-summoned-creatures.Actor.zHxGbSC5bRm7jUGN",
+						"level": {
+							"min": null,
+							"max": null
+						},
+						"types": []
+					}
+				],
+				"summon": {
+					"identifier": "",
+					"mode": "",
+					"prompt": true
+				}
+			}
+		},
+		"identifier": ""
+	},
+	"_id": "AVOHD5ueiuXdw9VS",
+	"_key": "!items!AVOHD5ueiuXdw9VS"
+}

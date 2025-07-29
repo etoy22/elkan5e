@@ -1,0 +1,226 @@
+{
+	"name": "Topple",
+	"type": "feat",
+	"system": {
+		"description": {
+			"value": "<p>If the kobold is burrowing underneath a creature of large size or smaller, and the kobold is within 10 ft. of the surface, they can attempt to collapse the ground underneath their target's feet. The target must succeed on a dexterity saving throw or fall prone. The ground the kobold disturbed becomes difficult terrain if it wasn't already.</p><p><span>When the kobold uses Topple, they make themselves vulnerable to attacks from the surface. The kobold benefits from half-cover, but can be struck as if in the 5 ft. cube beneath the kobold's target.</span></p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "Elkan 5e",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"type": {
+			"value": "monster",
+			"subtype": ""
+		},
+		"requirements": "Kobold",
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": 1,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "",
+					"units": "inst",
+					"special": "",
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "DM6X3uYU6m0Rs3V7",
+						"onSave": false
+					}
+				],
+				"range": {
+					"value": "10",
+					"units": "ft",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": ""
+					},
+					"affects": {
+						"count": "1",
+						"type": "creature",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": []
+				},
+				"save": {
+					"ability": "",
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				}
+			}
+		},
+		"identifier": "",
+		"enchant": {},
+		"prerequisites": {
+			"level": null
+		},
+		"properties": []
+	},
+	"img": "icons/magic/earth/projectile-stone-landslide.webp",
+	"effects": [
+		{
+			"flags": {
+				"ActiveAuras": {
+					"isAura": false,
+					"radius": null,
+					"aura": "None",
+					"alignment": "",
+					"type": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"displayTemp": false
+				},
+				"combat-utility-belt": {
+					"conditionId": "prone",
+					"overlay": false
+				},
+				"core": {
+					"statusId": "combat-utility-belt.prone"
+				}
+			},
+			"changes": [
+				{
+					"key": "flags.midi-qol.grants.advantage.attack.mwak",
+					"mode": 5,
+					"value": "1",
+					"priority": null
+				},
+				{
+					"key": "flags.midi-qol.grants.advantage.attack.msak",
+					"mode": 5,
+					"value": "1",
+					"priority": null
+				},
+				{
+					"key": "flags.midi-qol.grants.disadvantage.attack.rwak",
+					"mode": 5,
+					"value": "1",
+					"priority": null
+				},
+				{
+					"key": "flags.midi-qol.grants.disadvantage.attack.rsak",
+					"mode": 5,
+					"value": "1",
+					"priority": null
+				},
+				{
+					"key": "flags.midi-qol.disadvantage.attack.all",
+					"mode": 5,
+					"value": "1",
+					"priority": null
+				}
+			],
+			"duration": {
+				"seconds": null,
+				"startTime": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null,
+				"combat": null
+			},
+			"_id": "DM6X3uYU6m0Rs3V7",
+			"disabled": false,
+			"origin": null,
+			"tint": "#ffffff",
+			"transfer": false,
+			"name": "Prone",
+			"description": "",
+			"statuses": [],
+			"img": "modules/combat-utility-belt/icons/prone.svg",
+			"type": "base",
+			"system": {},
+			"_key": "!items.effects!XWaqFDNXv3QbdAN5.DM6X3uYU6m0Rs3V7"
+		}
+	],
+	"folder": "tYfPJpCdZlpfgNlV",
+	"flags": {
+		"midi-qol": {
+			"effectActivation": false,
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": ""
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"noConcentrationCheck": false
+		},
+		"core": {},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		}
+	},
+	"_id": "XWaqFDNXv3QbdAN5",
+	"_key": "!items!XWaqFDNXv3QbdAN5"
+}

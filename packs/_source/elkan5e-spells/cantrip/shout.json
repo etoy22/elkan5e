@@ -1,0 +1,186 @@
+{
+	"folder": "SjVk5lAwzIpqSBbH",
+	"name": "Shout",
+	"type": "spell",
+	"_id": "2XgqGwjzUtXriiiq",
+	"img": "icons/magic/sonic/scream-wail-shout-teal.webp",
+	"system": {
+		"description": {
+			"value": "<p><em>You straighten your back, drawing in as deep a breath as you can, then lean forward as you shout, letting out a sound far far louder and more dangerous than normal.</em></p><p><strong>Constitution</strong> <strong>Save</strong> </p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 1d6 thunder]] damage.*</p></li><li><p><strong>Success:</strong> No damage.</p></li></ul><p></p><p><strong>*At Higher Levels:</strong> This spell's damage increases by 1d6 when you reach a total character or creature level of 5th level ([[/damage 2d6 thunder]]), 11th level ([[/damage 3d6 thunder]]), and 17th level ([[/damage 4d6 thunder]]).</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/shout",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "",
+			"units": "inst"
+		},
+		"target": {
+			"affects": {
+				"count": "",
+				"type": "",
+				"choice": false
+			},
+			"template": {
+				"count": "",
+				"units": "ft",
+				"type": "cone",
+				"size": "15",
+				"contiguous": false
+			}
+		},
+		"range": {
+			"units": "self",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"level": 0,
+		"school": "evo",
+		"properties": [
+			"vocal",
+			"somatic"
+		],
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "always",
+			"prepared": true
+		},
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"onSave": "none",
+					"parts": [
+						{
+							"number": 1,
+							"denomination": 6,
+							"bonus": "",
+							"types": [
+								"thunder"
+							],
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"scaling": {
+								"mode": "whole",
+								"number": 1,
+								"formula": ""
+							}
+						}
+					]
+				},
+				"save": {
+					"ability": "con",
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				}
+			}
+		},
+		"identifier": ""
+	},
+	"effects": [],
+	"flags": {
+		"midi-qol": {
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default",
+			"rollAttackPerTarget": "default",
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"otherCondition": ""
+		},
+		"midiProperties": {
+			"confirmTargets": "default",
+			"saveDamage": "nodam",
+			"bonusSaveDamage": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"_key": "!items!2XgqGwjzUtXriiiq"
+}

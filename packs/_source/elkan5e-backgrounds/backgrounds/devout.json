@@ -1,0 +1,333 @@
+{
+	"name": "Devout",
+	"type": "background",
+	"img": "icons/skills/social/diplomacy-offering-ritual.webp",
+	"system": {
+		"description": {
+			"value": "<p>In many campaign settings, there is a culture where religion plays a central role in nearly everything they do. Some with the devout background were raised by priests. Many with the devout background are raised by devout members of a less devout society, or are members of a small sect or cult.</p><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.5l8QNlgPDPOHpGID]{Languages}:</strong> @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.5l8QNlgPDPOHpGID.JournalEntryPage.t1Js6zSa30XvbceF#common]{Common} and two others.</p><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.rv19GFzEa0nMTuAF]{Skills}:</strong> two of your choice: (Recommended: &amp;reference[Insight] and &amp;reference[Religion])</p><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.SySQiDfSWcSRUCFN]{Tools and Vehicles}:</strong> any @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.SySQiDfSWcSRUCFN]{Tool} or @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.SySQiDfSWcSRUCFN.JournalEntryPage.wuMEnZz82yY02Dok#vehicles]{Vehicle type} of your choice</p><p><strong>Items:</strong> the @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.SySQiDfSWcSRUCFN]{Tools} (but not @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.SySQiDfSWcSRUCFN.JournalEntryPage.wuMEnZz82yY02Dok#vehicles]{Vehicles}) you gained proficiency with above</p><p><strong>Starting Gold:</strong> 25 gold, which can be spent at character creation to buy nonmagical equipment at base cost.</p><p><strong>Cantrips:</strong> one of your choice from the @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.vaLYevRxKe8mAvdE.JournalEntryPage.POm2RctcMrK11sTq]{Cleric spell list}. You use &amp;reference[wisdom] as your &amp;reference[abilityspells] for this cantrip.</p><p><strong>Spells:</strong> <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.cwMTnqjwjFYeJtSR]{Protection from Evil and Good}</em>. You can cast this spell once per long rest without expending a spell slot. If you are a spellcaster, you count this spell as a spell you know and have prepared, and can cast it with a spell slot. This spell is a bonus on top of your normal number of spells known.</p><p></p><p><em>In the world of Elkan, the Solar Hegemony is a predominantly human kingdom ruled by living saints who have ascended and become angels, each embodying one of their revered virtues. The Archangels, the first among the saints, look for mortal paragons of their associated virtues, and raise these mortal paragons as new angels when they die. Further northeast, the gnomish god and Lord of Light, Glanis, walks among his children, encouraging them to take up arms to protect the weak and seek the truth.</em></p>",
+			"chat": ""
+		},
+		"source": {
+			"book": "Elkan 5e",
+			"page": "",
+			"custom": "elkan5e.com/ancestrybackground",
+			"license": "",
+			"rules": "",
+			"revision": 1
+		},
+		"advancement": [
+			{
+				"_id": "OabnwtKCkriK8wer",
+				"type": "Trait",
+				"configuration": {
+					"mode": "default",
+					"allowReplacements": false,
+					"grants": [
+						"languages:standard:common"
+					],
+					"choices": [
+						{
+							"count": 2,
+							"pool": [
+								"languages:*"
+							]
+						}
+					]
+				},
+				"level": 0,
+				"title": "",
+				"value": {
+					"chosen": []
+				},
+				"hint": ""
+			},
+			{
+				"_id": "iVdducHx1bciHDfF",
+				"type": "Trait",
+				"configuration": {
+					"mode": "default",
+					"allowReplacements": false,
+					"grants": [],
+					"choices": [
+						{
+							"count": 1,
+							"pool": [
+								"tool:*"
+							]
+						}
+					]
+				},
+				"level": 0,
+				"title": "",
+				"value": {
+					"chosen": []
+				},
+				"hint": ""
+			},
+			{
+				"_id": "Vb2GIM5W9egJsNTT",
+				"type": "ItemGrant",
+				"configuration": {
+					"items": [
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-background.Item.zSzQDsYMjQD3BXPv",
+							"optional": false
+						}
+					],
+					"optional": false,
+					"spell": null
+				},
+				"value": {},
+				"level": 0,
+				"title": "Starting Gold",
+				"icon": null
+			},
+			{
+				"_id": "zwX9ywlytz7EUElV",
+				"type": "Trait",
+				"configuration": {
+					"mode": "default",
+					"allowReplacements": false,
+					"grants": [],
+					"choices": [
+						{
+							"count": 2,
+							"pool": [
+								"skills:*"
+							]
+						}
+					]
+				},
+				"value": {
+					"chosen": []
+				},
+				"level": 0,
+				"title": "Skills",
+				"hint": "Two of your choice: (Recommended: Insight and Religion)"
+			},
+			{
+				"_id": "faS8du8Cai2YRksH",
+				"type": "ItemGrant",
+				"configuration": {
+					"items": [
+						{
+							"optional": false,
+							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.cwMTnqjwjFYeJtSR"
+						}
+					],
+					"optional": false,
+					"spell": {
+						"ability": [],
+						"preparation": "always",
+						"uses": {
+							"max": "1",
+							"per": "lr",
+							"requireSlot": false
+						}
+					}
+				},
+				"value": {},
+				"level": 0,
+				"title": "Devout Spellcasting (1/long)",
+				"hint": ""
+			},
+			{
+				"_id": "g3gTUiHk6UMXdQbH",
+				"type": "ItemChoice",
+				"configuration": {
+					"choices": {
+						"0": {
+							"count": 1,
+							"replacement": false
+						}
+					},
+					"allowDrops": true,
+					"type": "spell",
+					"pool": [
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.zOXEMpARlENZuoL1"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.e4MmHYtpD4jFrRuH"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.xw35KW3YQQkg2Zn4"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.cgM2ice2dC7Fh4G6"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.LPMNsu5kIBekG4x0"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.e213NWDPfjE5FIex"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.gRspPs2vx18Jx5BQ"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.2VU1Z3LHux5DfZRW"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.vRUeWAv7ZesZ1Tzj"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.bUcGdKMh18yrVyLX"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.a1CjGU1Cr8r5q9vF"
+						}
+					],
+					"spell": {
+						"ability": [
+							"int",
+							"cha"
+						],
+						"preparation": "always",
+						"uses": {
+							"max": "",
+							"per": "",
+							"requireSlot": false
+						}
+					},
+					"restriction": {
+						"level": "0"
+					}
+				},
+				"value": {
+					"added": {},
+					"replaced": {}
+				},
+				"title": "Devout Cantrip",
+				"hint": ""
+			},
+			{
+				"_id": "VeQiCexdsnqNl4vu",
+				"type": "ItemChoice",
+				"configuration": {
+					"choices": {
+						"0": {
+							"count": 1,
+							"replacement": false
+						}
+					},
+					"allowDrops": false,
+					"type": "tool",
+					"pool": [
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.5TRgfcXqzHRvcYql"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.bltntEoiFJvXR939"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.sETCxXco4DFwc95F"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.PSBsNmH0WWBmwTMY"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.xC669rfIiGBpAALC"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.ArsBY1Z7YMKYCWp5"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.VLTPhQqTAOk2LPHW"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.v72QLYutEG6w5ZRI"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.uDJgqlZsYrqLrNEX"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.dFa31G5pfZ3FGcjk"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.LQiHNDl73EtsWxj1"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.PgP06DVVwXZNPMOW"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.0xX2toS9DTCJapez"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.SMTANmxywrhJQVmr"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.yQy1cBGK6P3eD4GZ"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.BrCG6C5mCLPahCml"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.daNXsoFk7oYAeDRt"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.lExi8Y6jXHBv8vd2"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.qZe6ua1j3TtX3QGv"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.VC36HOskyNfD6DXV"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.PGHsgtscRcDrKt6j"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.6x1yyzDnWGRNRwJD"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.ZN6lVBJAeNqt4EE9"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.aFpNp019JYV5bcgI"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.C3PHE8sJKlVZs9bH"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.2Yeb51C04CmAhbsv"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.LMnHshpVe3ciVIwF"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-equipment.Item.FDsEsGSSPWhqwjlE"
+						}
+					],
+					"spell": null,
+					"restriction": {}
+				},
+				"value": {
+					"added": {},
+					"replaced": {}
+				},
+				"title": "One of Any Tool",
+				"hint": "You gain the items corresponding to the tool proficiencies you gained from this background.\n\nIf you gained proficiency in a mount or vehicle from this background, you do not gain that mount or vehicle. In that case, skip this step."
+			}
+		],
+		"startingEquipment": [
+			{
+				"type": "tool",
+				"count": null,
+				"key": "",
+				"requiresProficiency": false,
+				"_id": "5prO7JENhIdGTjBy",
+				"group": ""
+			}
+		],
+		"identifier": "",
+		"wealth": "25"
+	},
+	"effects": [],
+	"flags": {
+		"core": {}
+	},
+	"folder": "RoE8MiIsrMhDqpYQ",
+	"_id": "au4Exd9c4iyITjRx",
+	"_key": "!items!au4Exd9c4iyITjRx"
+}

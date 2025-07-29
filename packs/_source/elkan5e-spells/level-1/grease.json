@@ -1,0 +1,297 @@
+{
+	"name": "Grease",
+	"type": "spell",
+	"img": "icons/containers/barrels/barrel-drum-steel-oil.webp",
+	"effects": [
+		{
+			"name": "Prone",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.AymsSXnrNy6KbHkY",
+			"changes": [
+				{
+					"key": "macro.StatusEffect",
+					"mode": 0,
+					"value": "prone",
+					"priority": 0
+				}
+			],
+			"transfer": false,
+			"flags": {
+				"dae": {
+					"itemName": "Grease",
+					"disableCondition": "",
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"specialDuration": [],
+					"enableCondition": "",
+					"macroRepeat": "none"
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
+				}
+			},
+			"img": "modules/elkan5e/icons/conditions/prone.svg",
+			"_id": "qfS3TWZEuFiUK2JJ",
+			"type": "base",
+			"system": {},
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 0,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [],
+			"_key": "!items.effects!AymsSXnrNy6KbHkY.qfS3TWZEuFiUK2JJ"
+		}
+	],
+	"folder": "U0k4VGG6bziqf3oH",
+	"flags": {
+		"midi-qol": {
+			"onUseMacroName": "[postActiveEffects]AA ApplyEffectsToTemplate",
+			"effectActivation": false,
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default",
+			"removeAttackDamageButtons": "default"
+		},
+		"core": {},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"noConcentrationCheck": false,
+			"confirmTargets": "default",
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dae": {
+			"macro": {
+				"name": "Grease",
+				"img": "icons/containers/barrels/barrel-drum-steel-oil.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "",
+				"author": "3Yi0HjF4PKCA4vX0",
+				"_id": null,
+				"folder": null,
+				"flags": {}
+			}
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic",
+				"material"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>You teleport a small stick of butter or similar shortening, where it rapidly melts and spreads in a thin layer over the ground.</em></p><p><strong>Dexterity Save</strong> </p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[prone]</p></li><li><p><strong>Success:</strong> No Effect.</p></li><li><p><strong>Area Hazard:</strong> The area is &amp;reference[difficultterrain]. A creature that moves onto or away from the grease must make a save against the spell.</p></li></ul>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/grease",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "1",
+			"units": "minute"
+		},
+		"target": {
+			"affects": {
+				"count": "",
+				"type": "creature",
+				"choice": false,
+				"special": ""
+			},
+			"template": {
+				"count": "",
+				"units": "ft",
+				"type": "circle",
+				"size": "10",
+				"contiguous": false
+			}
+		},
+		"range": {
+			"value": "60",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 1,
+		"school": "con",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"material",
+			"mgc"
+		],
+		"activities": {
+			"dnd5eactivity000": {
+				"effects": [
+					{
+						"_id": "qfS3TWZEuFiUK2JJ",
+						"onSave": false
+					}
+				],
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"qfS3TWZEuFiUK2JJ"
+				],
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				}
+			},
+			"i5imuQTxpXiWcBFS": {
+				"type": "save",
+				"_id": "i5imuQTxpXiWcBFS",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "qfS3TWZEuFiUK2JJ",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"parts": [],
+					"onSave": "none"
+				},
+				"save": {
+					"ability": "dex",
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"qfS3TWZEuFiUK2JJ"
+				]
+			}
+		},
+		"identifier": ""
+	},
+	"_id": "AymsSXnrNy6KbHkY",
+	"_key": "!items!AymsSXnrNy6KbHkY"
+}

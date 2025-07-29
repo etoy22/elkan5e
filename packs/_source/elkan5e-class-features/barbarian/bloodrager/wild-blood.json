@@ -1,0 +1,230 @@
+{
+	"folder": "QbFS0gDSAyFToUpB",
+	"name": "Wild Blood",
+	"type": "feat",
+	"img": "icons/magic/light/hand-sparks-smoke-teal.webp",
+	"system": {
+		"activities": {
+			"GNhvwOfXvFZgHEvM": {
+				"type": "utility",
+				"_id": "GNhvwOfXvFZgHEvM",
+				"activation": {
+					"type": "nocost",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"units": "spec",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"formula": "",
+					"name": ""
+				},
+				"useConditionText": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"forceDialog": false,
+					"confirmTargets": "default",
+					"automationOnly": false,
+					"identifier": ""
+				},
+				"name": ""
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"max": ""
+		},
+		"description": {
+			"value": "<p><strong>No Action Cost</strong></p><p>When you cast a spell using your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.UeNCm9oElbQEXre6]{Bloodrager Spellcasting} feature, you can choose to make the spell trigger a @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.FEMWrKEyIrd0s6BT.JournalEntryPage.VJrA212Hv3sI9yQv]{wild surge}. If you roll a Wild Surge that references Sorcery Points, Metamagic, or otherwise requires you to be a sorcerer, you instead regain one use of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.W6yKtk7Svvy9dIq9]{Rage}.</p>",
+			"chat": ""
+		},
+		"identifier": "",
+		"source": {
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"custom": "elkan5e.com/barbarian",
+			"license": ""
+		},
+		"enchant": {},
+		"type": {
+			"value": "subclass",
+			"subtype": ""
+		},
+		"prerequisites": {
+			"level": null
+		},
+		"properties": [
+			"mgc"
+		],
+		"requirements": "Bloodrager 6"
+	},
+	"effects": [
+		{
+			"name": "Wild Blood",
+			"changes": [
+				{
+					"key": "flags.midi-qol.onUseMacroName",
+					"mode": 0,
+					"value": "function.elkan5e.macros.features.wildBlood,preItemRoll",
+					"priority": 20
+				}
+			],
+			"transfer": true,
+			"img": "icons/magic/light/hand-sparks-smoke-teal.webp",
+			"_id": "KrGm8LAEkrWavSgJ",
+			"type": "base",
+			"system": {},
+			"disabled": false,
+			"duration": {
+				"startTime": 1720031242,
+				"seconds": null,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": 20,
+				"startTurn": 1
+			},
+			"description": "",
+			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.KQRBbG42MjUiR6im",
+			"tint": "#ffffff",
+			"statuses": [],
+			"flags": {
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "multi",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "Enemy",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!KQRBbG42MjUiR6im.KrGm8LAEkrWavSgJ"
+		}
+	],
+	"flags": {
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		},
+		"midi-qol": {
+			"AoETargetType": "any",
+			"autoTarget": "default",
+			"rollAttackPerTarget": "default",
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": ""
+		},
+		"midiProperties": {
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		}
+	},
+	"_id": "KQRBbG42MjUiR6im",
+	"_key": "!items!KQRBbG42MjUiR6im"
+}

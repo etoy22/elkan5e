@@ -1,0 +1,276 @@
+{
+	"name": "Divine Favor",
+	"type": "spell",
+	"img": "icons/magic/control/buff-flight-wings-blue.webp",
+	"effects": [
+		{
+			"_id": "NntOCqix8BqYaAoR",
+			"changes": [
+				{
+					"key": "system.bonuses.mwak.damage",
+					"mode": 2,
+					"value": "+1d4[Radiant]",
+					"priority": 20
+				},
+				{
+					"key": "system.bonuses.rwak.damage",
+					"mode": 2,
+					"value": "+1d4[Radiant]",
+					"priority": 20
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 60,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"transfer": false,
+			"flags": {
+				"dae": {
+					"stackable": "none",
+					"specialDuration": [],
+					"transfer": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"disableIncapacitated": false,
+					"dontApply": false,
+					"showIcon": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"radius": "",
+					"aura": "None",
+					"alignment": "",
+					"type": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"displayTemp": false,
+					"nameOverride": "",
+					"customCheck": "",
+					"wallsBlock": "system"
+				},
+				"core": {
+					"statusId": ""
+				},
+				"dnd5e": {}
+			},
+			"tint": "#ffffff",
+			"origin": null,
+			"name": "Divine Favor",
+			"description": "",
+			"statuses": [],
+			"img": "icons/magic/control/buff-flight-wings-blue.webp",
+			"type": "base",
+			"system": {},
+			"_key": "!items.effects!Z7kTdTSJzi68e588.NntOCqix8BqYaAoR"
+		}
+	],
+	"folder": "U0k4VGG6bziqf3oH",
+	"flags": {
+		"midi-qol": {
+			"onUseMacroName": "",
+			"effectActivation": false,
+			"forceCEOn": false,
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default",
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default"
+		},
+		"core": {},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"noConcentrationCheck": false,
+			"confirmTargets": "default",
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic",
+				"concentration"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>You ask for divine radiance to empower the weapons of one of your allies.</em></p><p><strong>Buff</strong> </p><ul><li><p>The target's weapon attacks deal an extra [[/damage 1d4 radiant]] damage.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 1st.</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/divine-favor",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "bonus",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "1",
+			"units": "minute"
+		},
+		"target": {
+			"affects": {
+				"special": "",
+				"type": "creature",
+				"count": "1",
+				"choice": false
+			},
+			"template": {
+				"type": "",
+				"units": "ft",
+				"contiguous": false
+			}
+		},
+		"range": {
+			"value": "60",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 1,
+		"school": "evo",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"concentration",
+			"mgc"
+		],
+		"activities": {
+			"KXzQIPifJpq690HV": {
+				"type": "utility",
+				"_id": "KXzQIPifJpq690HV",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "NntOCqix8BqYaAoR"
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"useConditionText": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false
+				},
+				"midiProperties": {
+					"forceDialog": false,
+					"confirmTargets": "default",
+					"automationOnly": false,
+					"identifier": ""
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"NntOCqix8BqYaAoR"
+				]
+			}
+		},
+		"identifier": ""
+	},
+	"_id": "Z7kTdTSJzi68e588",
+	"_key": "!items!Z7kTdTSJzi68e588"
+}

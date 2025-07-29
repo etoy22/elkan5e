@@ -1,0 +1,224 @@
+{
+	"folder": "AirJq2HqJwdyZn1H",
+	"name": "Interference",
+	"type": "feat",
+	"_id": "k6X1hbsP2BxX11sq",
+	"img": "icons/equipment/head/mask-carved-gargoyle-grey.webp",
+	"system": {
+		"description": {
+			"value": "<p><em>You interfere with your target's ability to focus clearly.</em></p><p><strong>Once Per Turn</strong> - 1 Creature - 1 Round</p><p><em>Trigger: You hit a creature with your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{Sneak Attack} or one of your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.hW3DmOPgBpa7lGU8]{Precision Attacks}.</em></p><p><strong>Debuff</strong></p><ul><li><p>Your target cannot have advantage on any roll or use any ability that forces a reroll in their favor.</p></li><li><p>Your target has disadvantage on &amp;reference[concentration] checks, including against the @UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{Sneak Attack} damage you just dealt.</p></li></ul>",
+			"chat": ""
+		},
+		"source": {
+			"book": "Elkan 5e",
+			"page": "",
+			"custom": "elkan5e.com/rogue",
+			"license": "",
+			"revision": 1,
+			"rules": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"type": {
+			"value": "subclass",
+			"subtype": ""
+		},
+		"prerequisites": {
+			"level": null
+		},
+		"properties": [],
+		"requirements": "Thief 10",
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "utility",
+				"activation": {
+					"type": "duringattack",
+					"value": null,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "",
+					"units": "inst",
+					"special": "",
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "c3qpeueDiGsOgQUX"
+					}
+				],
+				"range": {
+					"units": "spec",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": ""
+					},
+					"affects": {
+						"count": "1",
+						"type": "creature",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"roll": {
+					"formula": "",
+					"name": "",
+					"prompt": false,
+					"visible": false
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"c3qpeueDiGsOgQUX"
+				]
+			}
+		},
+		"identifier": "",
+		"enchant": {}
+	},
+	"effects": [
+		{
+			"name": "Interference",
+			"changes": [
+				{
+					"key": "flags.midi-qol.disadvantage.concentration",
+					"mode": 2,
+					"value": "1",
+					"priority": 20
+				},
+				{
+					"key": "flags.midi-qol.advantage.all",
+					"mode": 5,
+					"value": "0",
+					"priority": 20
+				}
+			],
+			"transfer": false,
+			"img": "icons/equipment/head/mask-carved-gargoyle-grey.webp",
+			"_id": "c3qpeueDiGsOgQUX",
+			"type": "base",
+			"system": {},
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 7,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"origin": null,
+			"tint": "#ffffff",
+			"statuses": [],
+			"flags": {
+				"dae": {
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"specialDuration": [
+						"turnEndSource"
+					],
+					"macroRepeat": "none",
+					"enableCondition": "",
+					"disableCondition": ""
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
+				}
+			},
+			"_key": "!items.effects!k6X1hbsP2BxX11sq.c3qpeueDiGsOgQUX"
+		}
+	],
+	"flags": {
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"_key": "!items!k6X1hbsP2BxX11sq"
+}
