@@ -1,0 +1,159 @@
+{
+	"_id": "fZAjYSugg5JKvpgH",
+	"name": "Action Surge",
+	"type": "feat",
+	"img": "icons/skills/social/intimidation-impressing.webp",
+	"effects": [],
+	"folder": "NkSo7UriQJHNGSUd",
+	"flags": {
+		"core": {},
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedUses": 1
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>You can push yourself beyond your normal limits for a moment.</em></p><p><strong>No Action Cost</strong> - Self - 1/Short Rest</p><p>On your turn, you can take one additional action. As per normal, you cannot expend more than one spell slot on your turn (if you have spellcasting), even using your action surge.</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/fighter",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"uses": {
+			"max": "1",
+			"recovery": [
+				{
+					"period": "sr",
+					"type": "recoverAll"
+				}
+			],
+			"spent": 0
+		},
+		"type": {
+			"value": "class",
+			"subtype": ""
+		},
+		"requirements": "Fighter 2",
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "utility",
+				"activation": {
+					"type": "nocost",
+					"value": null,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [
+						{
+							"type": "itemUses",
+							"target": "",
+							"value": "1",
+							"scaling": {
+								"mode": "",
+								"formula": ""
+							}
+						}
+					],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "0",
+					"units": "",
+					"special": "",
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "self",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": ""
+					},
+					"affects": {
+						"count": "",
+						"type": "self",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"roll": {
+					"formula": "",
+					"name": "",
+					"prompt": false,
+					"visible": false
+				}
+			}
+		},
+		"identifier": "",
+		"enchant": {},
+		"prerequisites": {
+			"level": null
+		},
+		"properties": []
+	},
+	"_key": "!items!fZAjYSugg5JKvpgH"
+}

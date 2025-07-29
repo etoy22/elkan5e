@@ -1,0 +1,248 @@
+{
+	"name": "Burning Hands (3 Ki)",
+	"type": "spell",
+	"img": "icons/magic/fire/flame-burning-hand-white.webp",
+	"effects": [],
+	"folder": "sYfrVzIx61tmIQZm",
+	"flags": {
+		"midi-qol": {
+			"onUseMacroName": "",
+			"effectActivation": false,
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default",
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default"
+		},
+		"core": {},
+		"midiProperties": {
+			"nodam": false,
+			"halfdam": false,
+			"fulldam": false,
+			"rollOther": false,
+			"critOther": false,
+			"concentration": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"noConcentrationCheck": false,
+			"confirmTargets": "default",
+			"saveDamage": "default",
+			"bonusSaveDamage": "default",
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>As you hold your hands with thumbs touching and fingers spread and say a word of power, a thin sheet of flames shoots forth from your outstretched fingertips.</em></p><p><strong>Dexterity Save</strong> </p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 3d6 fire]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p></p><p><strong>*</strong> <strong>Upcasting:</strong> Increase damage by [[/damage 1d6 fire]] for each spell level above 1st.</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/burning-hands",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "",
+			"units": "inst"
+		},
+		"target": {
+			"affects": {
+				"count": "",
+				"type": "creature",
+				"special": "",
+				"choice": false
+			},
+			"template": {
+				"count": "",
+				"units": "ft",
+				"type": "cone",
+				"size": "20",
+				"contiguous": false
+			}
+		},
+		"range": {
+			"value": "0",
+			"units": "self",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 3,
+		"school": "evo",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"mgc"
+		],
+		"activities": {
+			"Voyh3XO9G9gjAZlL": {
+				"type": "save",
+				"_id": "Voyh3XO9G9gjAZlL",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": false,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "3",
+							"target": "Compendium.elkan5e.elkan5e-class-features.Item.IXk7hfrAoVQU3dLJ",
+							"scaling": {
+								"mode": "amount",
+								"formula": ""
+							}
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 5,
+							"denomination": "6",
+							"bonus": "",
+							"types": [
+								"fire"
+							],
+							"scaling": {
+								"mode": "whole",
+								"number": 1,
+								"formula": ""
+							}
+						}
+					],
+					"onSave": "half",
+					"critical": {
+						"allow": false
+					}
+				},
+				"save": {
+					"ability": [
+						"dex"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"name": "",
+				"useConditionText": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"forceDialog": false,
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"identifier": ""
+				},
+				"img": "",
+				"appliedEffects": []
+			}
+		},
+		"identifier": ""
+	},
+	"_id": "wVs9K6vtsN4TFuXD",
+	"_key": "!items!wVs9K6vtsN4TFuXD"
+}

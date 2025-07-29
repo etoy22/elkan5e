@@ -1,5 +1,5 @@
+import { UpdateElkanRunner } from "./UpdateElkanRunner.mjs";
 export async function gameSettingRegister() {
-
     game.settings.register("elkan5e", "dialogShown", {
         name: "elkan5e.dialog.name",
         hint: "elkan5e.dialog.hint",
@@ -48,6 +48,14 @@ export async function gameSettingRegister() {
         restricted: true,
     });
 
+    game.settings.register("elkan5e", "v13Show", {
+        scope: "world",
+        requiresReload: false,
+        default: true,
+        type: Boolean,
+        restricted: true,
+    });
+
     game.settings.register("elkan5e", "weapons", {
         name: "elkan5e.weapons.name",
         hint: "elkan5e.weapons.hint",
@@ -76,7 +84,7 @@ export async function gameSettingRegister() {
         scope: "client",
         config: false,
         type: String,
-        default: "1.12.10",
+        default: "1.13.0",
     });
 
     game.settings.register("elkan5e", "languageSystem", {
@@ -89,4 +97,15 @@ export async function gameSettingRegister() {
         type: Boolean,
         restricted: true,
     });
+
+    game.settings.registerMenu("elkan5e", "updateElkanMenu", {
+        name: "elkan5e.updateElkan.name",
+        label: "elkan5e.updateElkan.label", // Text on the button
+        hint: "elkan5e.updateElkan.hint",
+        icon: "fas fa-sync", // FontAwesome icon
+        type: UpdateElkanRunner, // Class that runs your function
+        restricted: true
+    });
+
+
 }

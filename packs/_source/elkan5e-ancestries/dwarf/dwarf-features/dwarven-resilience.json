@@ -1,0 +1,144 @@
+{
+	"_id": "InoiZKsErd54LfKy",
+	"name": "Dwarven Resilience",
+	"type": "feat",
+	"img": "icons/creatures/abilities/stinger-poison-green.webp",
+	"effects": [
+		{
+			"name": "Dwarven Resilience",
+			"changes": [
+				{
+					"key": "flags.midi-qol.advantage.ability.save.all",
+					"mode": 0,
+					"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"poisoned\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"poisoned\") || ef.name == 'Poisoned');",
+					"priority": 20
+				}
+			],
+			"transfer": true,
+			"img": "icons/creatures/abilities/stinger-poison-green.webp",
+			"_id": "LTGdhHSioC7dAnpt",
+			"type": "base",
+			"system": {},
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": null,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"origin": "Compendium.elkan5e.elkan5e-ancestries.Item.InoiZKsErd54LfKy",
+			"tint": "#ffffff",
+			"statuses": [],
+			"flags": {
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "multi",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!InoiZKsErd54LfKy.LTGdhHSioC7dAnpt"
+		}
+	],
+	"folder": "M1xo3lzGN0JYazM8",
+	"flags": {
+		"core": {},
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p>You have advantage on saves against the &amp;reference[poisoned] condition.</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/ancestrybackground",
+			"rules": "",
+			"revision": 1,
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"uses": {
+			"max": "",
+			"spent": 0,
+			"recovery": []
+		},
+		"type": {
+			"value": "race",
+			"subtype": ""
+		},
+		"requirements": "Dwarf",
+		"properties": [],
+		"identifier": "",
+		"activities": {},
+		"enchant": {},
+		"prerequisites": {
+			"level": null
+		}
+	},
+	"_key": "!items!InoiZKsErd54LfKy"
+}

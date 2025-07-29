@@ -1,0 +1,230 @@
+{
+	"name": "Frightful Presence",
+	"type": "feat",
+	"img": "icons/creatures/unholy/demons-horned-glowing-pink.webp",
+	"system": {
+		"description": {
+			"value": "<p><strong>1 Action</strong> - All Enemies (120 ft.)</p><p>A creature must be aware of the dragon to be affected by this ability.</p><p><span><strong>Wisdom</strong> Saving Throw</span></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[frightened] (save ends).</p></li><li><p><strong>Success:</strong> No effect, and the target cannot be affected by this dragon's Frightful Presence until they finish a long rest.</p></li></ul>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "Elkan 5e",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"type": {
+			"value": "monster",
+			"subtype": ""
+		},
+		"requirements": "",
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": 1,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "1",
+					"units": "minute",
+					"special": "",
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "QGITrQQP2CHqhkNo",
+						"onSave": false
+					}
+				],
+				"range": {
+					"value": "120",
+					"units": "self",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": "ft"
+					},
+					"affects": {
+						"count": "120",
+						"type": "enemy",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": []
+				},
+				"save": {
+					"ability": "wis",
+					"dc": {
+						"calculation": "",
+						"formula": "16"
+					}
+				}
+			}
+		},
+		"identifier": "",
+		"enchant": {},
+		"prerequisites": {
+			"level": null
+		},
+		"properties": []
+	},
+	"effects": [
+		{
+			"statuses": [
+				"condition-lab-triggler.frightened"
+			],
+			"changes": [
+				{
+					"key": "flags.midi-qol.disadvantage.attack.all",
+					"mode": 5,
+					"value": "1",
+					"priority": 50
+				},
+				{
+					"key": "flags.midi-qol.disadvantage.ability.check.all",
+					"mode": 5,
+					"value": "1",
+					"priority": 50
+				},
+				{
+					"key": "flags.midi-qol.OverTime",
+					"mode": 2,
+					"value": "turn=end,\nlabel=\"Frightful Presence\",\nallowIncapacitated = False,\nsaveAbility=wis,\nsaveDC = 16",
+					"priority": 20
+				}
+			],
+			"description": "",
+			"duration": {
+				"seconds": null,
+				"startTime": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null,
+				"combat": null
+			},
+			"flags": {
+				"ActiveAuras": {
+					"isAura": false,
+					"radius": "",
+					"aura": "None",
+					"alignment": "",
+					"type": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"nameOverride": "",
+					"customCheck": "",
+					"displayTemp": false,
+					"wallsBlock": "system"
+				},
+				"core": {
+					"overlay": false
+				},
+				"condition-lab-triggler": {
+					"conditionId": "frightened"
+				},
+				"dae": {
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				}
+			},
+			"name": "Frightened",
+			"_id": "QGITrQQP2CHqhkNo",
+			"disabled": false,
+			"origin": null,
+			"transfer": false,
+			"tint": "#ffffff",
+			"img": "modules/elkan5e/icons/conditions/frightened.svg",
+			"type": "base",
+			"system": {},
+			"_key": "!items.effects!75G0Pxl3HPWYmRYz.QGITrQQP2CHqhkNo"
+		}
+	],
+	"folder": "tYfPJpCdZlpfgNlV",
+	"flags": {
+		"core": {},
+		"midi-qol": {
+			"effectActivation": false,
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default"
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"rollOther": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"confirmTargets": "default",
+			"noConcentrationCheck": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		}
+	},
+	"_id": "75G0Pxl3HPWYmRYz",
+	"_key": "!items!75G0Pxl3HPWYmRYz"
+}

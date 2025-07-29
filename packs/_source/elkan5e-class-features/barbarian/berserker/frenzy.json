@@ -1,0 +1,220 @@
+{
+	"name": "Frenzy",
+	"type": "feat",
+	"img": "icons/skills/wounds/anatomy-organ-heart-red.webp",
+	"effects": [
+		{
+			"statuses": [
+				"goaded"
+			],
+			"name": "Frenzy",
+			"changes": [],
+			"description": "",
+			"duration": {
+				"startTime": null,
+				"seconds": 60,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"flags": {
+				"core": {
+					"overlay": false
+				},
+				"condition-lab-triggler": {
+					"conditionId": "Kq9PYa0G2aHGmUvc"
+				},
+				"times-up": {},
+				"dae": {
+					"disableIncapacitated": false,
+					"selfTarget": true,
+					"selfTargetAlways": true,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
+				}
+			},
+			"_id": "ygcrAQDn3qLtxrAK",
+			"disabled": false,
+			"origin": null,
+			"transfer": false,
+			"tint": "#ffffff",
+			"img": "icons/skills/wounds/anatomy-organ-heart-red.webp",
+			"type": "base",
+			"system": {},
+			"_key": "!items.effects!OlP5CWXKH4mMRMsX.ygcrAQDn3qLtxrAK"
+		}
+	],
+	"folder": "7fU320pG2Q1j3mSL",
+	"flags": {
+		"core": {},
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"midi-qol": {
+			"effectActivation": false,
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default",
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default",
+			"removeAttackDamageButtons": "default"
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><strong>When you Rage</strong> - 1 Visible Creature (120 ft.)</p><p>When you enter @UUID[Compendium.elkan5e.elkan5e-class-features.Item.W6yKtk7Svvy9dIq9]{rage}, you can choose to make it a frenzy. Choose a hostile creature you can see. You are &amp;reference[goaded] by this creature until it is no longer within line of sight or it reaches 0 hit points. If you begin your turn while Frenzied and are not goaded by a creature you can see, then you can choose a new creature within line of sight if there is one.</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/barbarian",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"type": {
+			"value": "subclass",
+			"subtype": ""
+		},
+		"requirements": "Berserker 3",
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "utility",
+				"activation": {
+					"type": "special",
+					"value": 1,
+					"condition": "When you Rage",
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "1",
+					"units": "minute",
+					"special": "",
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "ygcrAQDn3qLtxrAK"
+					}
+				],
+				"range": {
+					"value": "120",
+					"units": "ft",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": "ft"
+					},
+					"affects": {
+						"count": "1",
+						"type": "enemy",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"roll": {
+					"formula": "",
+					"name": "",
+					"prompt": false,
+					"visible": false
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"ygcrAQDn3qLtxrAK"
+				]
+			}
+		},
+		"identifier": "",
+		"enchant": {},
+		"prerequisites": {
+			"level": null
+		},
+		"properties": []
+	},
+	"_id": "OlP5CWXKH4mMRMsX",
+	"_key": "!items!OlP5CWXKH4mMRMsX"
+}

@@ -1,40 +1,60 @@
 import { gameSettingRegister } from "./module/gameSettings/gameSettingRegister.mjs";
-import { startDialog } from "./module/gameSettings/startDialog.mjs";
+import { startDialog } from "./module/gameSettings/dialog.mjs";
 import { initWarlockSpellSlot } from "./module/classes/warlock.mjs";
-import { perLeader, rallySurge } from "./module/classes/fighter.mjs";
-import { healOver, infuseHeal } from "./module/classes/cleric.mjs";
+import { secondWind } from "./module/classes/fighter.mjs";
+import { healingOverflow, infusedHealer } from "./module/classes/cleric.mjs";
 import { archDruid } from "./module/classes/druid.mjs";
-import { feral, wildBlood } from "./module/classes/barbarian.mjs";
+import { rage, wildBlood } from "./module/classes/barbarian.mjs";
 import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
-import { meldWithShadow, shadowMonk, hijackShadow } from "./module/classes/monk.mjs";
-import { armor } from "./module/rules/armor.mjs";
-import { conditions, icons } from "./module/rules/condition.mjs";
+import { elementalAttunement, hijackShadow, meldWithShadows, rmvMeldShadow, rmvhijackShadow } from "./module/classes/monk.mjs";
+import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
+import { conditions, conditionsReady } from "./module/rules/condition.mjs";
 import { language } from "./module/rules/language.mjs";
 import { formating } from "./module/rules/format.mjs";
-import { references } from "./module/rules/references.mjs";
 import { tools } from "./module/rules/tools.mjs";
 import { weapons } from "./module/rules/weapon.mjs";
 import { scroll } from "./module/rules/scroll.mjs";
-// import { sanctuary } from "./module/spells/sanctuary.mjs";
+import { slicingBlow } from "./module/classes/rogue.mjs";
+import { lifeDrainGraveguard, spectralEmpowerment } from "./module/classes/wizard.mjs";
+import { skills } from "./module/rules/skills.mjs";
+import { setupCombatReferences, setupDamageReferences, setupSpellcastingReferences, setupCreatureTypeReferences, setupSkillReferences } from "./module/rules/references.mjs";
+import * as Spells from "./module/spells.mjs"
+import * as Feats from "./module/feats.mjs"
+
 
 Hooks.once("init", async () => {
-    console.log("Elkan 5e | Initializing Elkan 5e");
-    await gameSettingRegister();
-    initWarlockSpellSlot();
-    references();
-    tools();
-    conditions();
-    weapons();
-    armor();
-    language();
-    icons();
-    formating();
-    scroll();
-    console.log("Elkan 5e  |  Done Initializing");
+    try {
+        console.log("Elkan 5e | Initializing Elkan 5e");
+        await gameSettingRegister();
+        initWarlockSpellSlot();
+        // Ensure conditions and icons are initialized before other systems
+        conditions();
+        skills();
+        tools();
+        weapons();
+        armor();
+        language();
+        formating();
+        scroll();
+        setupCombatReferences();
+        setupDamageReferences();
+        setupSpellcastingReferences();
+        setupCreatureTypeReferences();
+        setupSkillReferences();
+        console.log("Elkan 5e  |  Done Initializing");
+    }
+    catch (error) {
+        console.error("Elkan 5e | Initialization Error:", error);
+    }
 });
 
 Hooks.once('ready', async () => {
-    startDialog();
+    try {
+        conditionsReady()
+        startDialog();
+    } catch (error) {
+        console.error("Elkan 5e | Ready Hook Error:", error);
+    }
 });
 
 /**
@@ -46,7 +66,7 @@ Hooks.on("dnd5e.preRollAttackV2", (item, config) => {
     try {
         focus(item, config);
     } catch (error) {
-        console.error("Error in preRollAttackV2 hook:", error);
+        console.error("Elkan 5e | Error in preRollAttackV2 hook:", error);
     }
 });
 
@@ -56,15 +76,9 @@ Hooks.on("dnd5e.preRollAttackV2", (item, config) => {
  */
 Hooks.on("dnd5e.preRollHitDieV2", (config) => {
     try {
-        const actor = config.subject;
-        const HAS_UNDEAD_NATURE = actor.items.find(feature => feature.name === "Undead Nature");
-        const HAS_GENTLE_REPOSE = actor.effects.find(effect => effect.name === "Gentle Repose");
-        // Subtract Constitution modifier from hit die roll for undead characters without Gentle Repose
-        if (HAS_UNDEAD_NATURE && !HAS_GENTLE_REPOSE) {
-            config.rolls[0].parts[0] += '-@abilities.con.mod';
-        }
+        Feats.undeadNature(config)
     } catch (error) {
-        console.error("Error in preRollHitDieV2 hook:", error);
+        console.error("Elkan 5e | Error in preRollHitDieV2 hook:", error);
     }
 });
 
@@ -77,13 +91,8 @@ Hooks.on("dnd5e.preRollHitDieV2", (config) => {
 Hooks.on("dnd5e.postUseActivity", (activity, usageConfig, results) => {
     try {
         wildSurge(activity);
-        wildBlood(activity);
-        infuseHeal(activity, usageConfig);
-        perLeader(activity);
-        rallySurge(activity);
-        shadowMonk(activity);
     } catch (error) {
-        console.error("Error in postUseActivity hook:", error);
+        console.error("Elkan 5e | Error in postUseActivity hook:", error);
     }
 });
 
@@ -95,22 +104,24 @@ Hooks.on("dnd5e.postUseActivity", (activity, usageConfig, results) => {
 Hooks.on("dnd5e.preRollInitiative", (actor, roll) => {
     try {
         archDruid(actor);
-        feral(actor);
     } catch (error) {
-        console.error("Error in preRollInitiative hook:", error);
+        console.error("Elkan 5e | Error in preRollInitiative hook:", error);
     }
 });
 
 Hooks.on("deleteActiveEffect", async (effect, options, userId) => {
-    await delayedDuration(effect);
+    try {
+        await delayedDuration(effect);
+    } catch (error) {
+        console.error("Elkan 5e | Error in deleteActiveEffect hook:", error);
+    }
 });
 
 Hooks.on("deleteItem", async (item, options, userId) => {
     try {
         delayedItem(item);
-        deleteGoodberryEffect(item)
     } catch (error) {
-        console.error("Error in deleteItem hook:", error);
+        console.error("Elkan 5e | Error in deleteItem hook:", error);
     }
 });
 
@@ -122,25 +133,104 @@ Hooks.on("deleteItem", async (item, options, userId) => {
 Hooks.on("combatTurnChange", (combat, prior, current) => {
     try {
         let lastTurnActor = combat.combatants.get(prior.combatantId).actor;
-        meldWithShadow(lastTurnActor);
-        hijackShadow(lastTurnActor);
+        rmvMeldShadow(lastTurnActor);
+        rmvhijackShadow(lastTurnActor);
     } catch (error) {
-        console.error("Error in combatTurnChange hook:", error);
+        console.error("Elkan 5e | Error in combatTurnChange hook:", error);
     }
 });
 
-// Hooks.on("dnd5e.preRollAttackV2", async (config, dialog, message) => {
-//     console.log("CONFIG:", config, dialog, message);
-//     const actor = config.subject.actor; // Attacking Actor
-//     const hitTargets = config.subject.workflow.hitTargets; // Targets Attacked
-//     for (const target of hitTargets) {
-//         if (config.subject.type === "attack") {
-//             const sanc = await sanctuary(actor, target.actor);
-//             console.log("RETURN VALUE", sanc);
-//             if (!sanc) {
-//                 console.log("Sanctuary Protection");
-//                 return false;
-//             }
-//         }
-//     }
-// });
+Hooks.on("updateItem", (item) => {
+    try {
+        const actor = item.parent;
+        updateBarbarianDefense(actor, "updateItem");
+    } catch (error) {
+        console.error("Elkan 5e | Error in updateItem hook:", error);
+    }
+});
+
+Hooks.on("updateActor", async (actor, changes) => {
+    try {
+        await updateBarbarianDefense(actor, "updateActor");
+    } catch (error) {
+        console.error("Elkan 5e | Error in updateActor hook:", error);
+    }
+});
+
+// Register global hook for deleting ActiveEffect
+Hooks.on("deleteActiveEffect", async (deletedEffect, options, userId) => {
+    Spells.goodberryDeleteActive(deletedEffect)
+    Spells.returnToNormalSize(deletedEffect);
+});
+
+
+Hooks.on("deleteItem", async (deletedItem, options, userId) => {
+    Spells.goodberryDeleteItem(deletedItem)
+});
+
+
+Hooks.on("updateMeasuredTemplate", async (template, data, options, userId) => {
+    const linkedLight = canvas.lighting.placeables.filter(light =>
+        light.document.getFlag("elkan5e", "linkedTemplate") === template.id
+    );
+    if  (linkedLight.length === 0) return
+    for (const light of linkedLight) {
+        await light.document.update({ x: template.x, y: template.y });
+    }
+})
+
+Hooks.on("deleteMeasuredTemplate", async (template, options, userId) => {
+    const linkedLight = canvas.lighting.placeables.filter(light =>
+        light.document.getFlag("elkan5e", "linkedTemplate") === template.id
+    );
+    if  (linkedLight.length === 0) return
+    const ids = linkedLight.map(l => l.id);
+
+    await canvas.scene.deleteEmbeddedDocuments("AmbientLight", ids);
+});
+
+let features = {
+    rage: rage,
+    infusedHealer: infusedHealer,
+    healingOverflow: healingOverflow,
+    wildBlood: wildBlood,
+    secondWind, secondWind,
+    hijackShadow: hijackShadow,
+    meldWithShadows: meldWithShadows,
+    slicingBlow: slicingBlow,
+    elementalAttunement: elementalAttunement,
+}
+
+let spells = {
+    goodberry: Spells.goodberry,
+    sappingSmite: Spells.sappingSmite,
+    enervate: Spells.enervate,
+    enervateOngoing: Spells.enervateOngoing,
+    lifeDrain: Spells.lifeDrain,
+    wellOfCorruption: Spells.wellOfCorruption,
+    wrathOfTheReaper: Spells.wrathOfTheReaper,
+    enlarge: Spells.enlarge,
+    reduce: Spells.reduce,
+    darkness: Spells.darkness,
+    light: Spells.light,
+    continualFlame:Spells.continualFlame,
+    moonBeam:Spells.moonBeam,
+    fogCloud:Spells.fogCloud,
+    rendVigor:Spells.rendVigor,
+    vampiricSmite:Spells.vampiricSmite,
+    shield:Spells.shield
+};
+
+let monsterFeatures = {
+    lifeDrain:lifeDrainGraveguard,
+    spectralEmpowerment: spectralEmpowerment,
+}
+
+let macros = {
+    spells: spells,
+    features: features,
+    monsterFeatures: monsterFeatures,
+};
+globalThis['elkan5e'] = {
+    macros: macros
+};
