@@ -6,7 +6,7 @@ import { healingOverflow, infusedHealer } from "./module/classes/cleric.mjs";
 import { archDruid } from "./module/classes/druid.mjs";
 import { rage, wildBlood } from "./module/classes/barbarian.mjs";
 import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
-import { hijackShadow, meldWithShadows, rmvMeldShadow, rmvhijackShadow } from "./module/classes/monk.mjs";
+import { elementalAttunement, hijackShadow, meldWithShadows, rmvMeldShadow, rmvhijackShadow } from "./module/classes/monk.mjs";
 import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
 import { conditions, conditionsReady } from "./module/rules/condition.mjs";
 import { language } from "./module/rules/language.mjs";
@@ -198,6 +198,7 @@ let features = {
     hijackShadow: hijackShadow,
     meldWithShadows: meldWithShadows,
     slicingBlow: slicingBlow,
+    elementalAttunement: elementalAttunement,
 }
 
 let spells = {
@@ -214,7 +215,10 @@ let spells = {
     light: Spells.light,
     continualFlame:Spells.continualFlame,
     moonBeam:Spells.moonBeam,
-    fogCloud:Spells.fogCloud
+    fogCloud:Spells.fogCloud,
+    rendVigor:Spells.rendVigor,
+    vampiricSmite:Spells.vampiricSmite,
+    shield:Spells.shield
 };
 
 let monsterFeatures = {
@@ -227,7 +231,6 @@ let macros = {
     features: features,
     monsterFeatures: monsterFeatures,
 };
-
 globalThis['elkan5e'] = {
     macros: macros
 };
