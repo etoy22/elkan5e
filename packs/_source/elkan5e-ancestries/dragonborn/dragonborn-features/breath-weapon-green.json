@@ -50,7 +50,8 @@
 						{
 							"type": "itemUses",
 							"value": "1",
-							"target": ""
+							"target": "",
+							"scaling": {}
 						}
 					],
 					"scaling": {
@@ -112,19 +113,121 @@
 							"bonus": "",
 							"types": [
 								"poison"
-							]
+							],
+							"scaling": {
+								"number": 1
+							}
 						}
 					]
 				},
 				"save": {
 					"ability": "con",
 					"dc": {
-						"calculation": "",
-						"formula": "8 + max(@abilities.cha.mod, @abilities.con.mod) + @prof"
+						"calculation": "cha",
+						"formula": ""
 					}
 				},
 				"sort": 0,
-				"name": "",
+				"name": "Save (Charisma)",
+				"img": "",
+				"appliedEffects": []
+			},
+			"Ss0ezG9A179lmvyd": {
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": 1,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "",
+							"scaling": {}
+						}
+					],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "",
+					"units": "inst",
+					"special": "",
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "self",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "cone",
+						"size": "20",
+						"width": "",
+						"height": "",
+						"units": "ft"
+					},
+					"affects": {
+						"count": "",
+						"type": "",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": [
+						{
+							"custom": {
+								"enabled": true,
+								"formula": "max(@scale.dragonborn.breath-weapon,(2*@scale.draconic-origin.breath-weapon)d6)"
+							},
+							"number": null,
+							"denomination": null,
+							"bonus": "",
+							"types": [
+								"poison"
+							],
+							"scaling": {
+								"number": 1
+							}
+						}
+					]
+				},
+				"save": {
+					"ability": "con",
+					"dc": {
+						"calculation": "con",
+						"formula": ""
+					}
+				},
+				"sort": 0,
+				"name": "Save (Constitution)",
+				"useConditionText": "",
+				"forceDialog": false,
+				"effectConditionText": "",
+				"_id": "Ss0ezG9A179lmvyd",
 				"img": "",
 				"appliedEffects": []
 			}

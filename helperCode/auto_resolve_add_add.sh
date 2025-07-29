@@ -1,6 +1,11 @@
 #!/bin/bash
 
-cd "/c/Users/My PC/AppData/Local/FoundryVTT/Data/modules/elkan5e" || {
+echo "==> Starting merge conflict resolution script..."
+# Resolve the absolute path of the script and its parent (elkan5e)
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+MODULE_DIR="$(dirname "$SCRIPT_DIR")"
+
+cd "$MODULE_DIR" || {
   echo "Failed to change directory to elkan5e module."
   exit 1
 }
@@ -40,14 +45,11 @@ for file in $conflicted_files; do
   tr -d '[:space:]' < "$theirs_tmp" | fold -w1 | sort | tr -d '\n' > "$theirs_norm"
 
   if cmp -s "$ours_norm" "$theirs_norm"; then
-    # Auto-resolve: checkout 'ours' and stage quietly
     git checkout --ours -- "$file"
     git add "$file"
   else
     manual_merge_required+=("$file")
     echo "File: $file" >> "$manual_merge_log"
-
-    # Generate diff summary of the conflicting versions
     diff_output=$(diff -u "$ours_tmp" "$theirs_tmp")
     diff_line_count=$(echo "$diff_output" | wc -l)
 

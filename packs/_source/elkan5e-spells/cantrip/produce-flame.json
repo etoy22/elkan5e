@@ -42,6 +42,333 @@
 			"flags": {
 				"ActiveAuras": {
 					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
+				},
+				"dae": {
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"core": {
+					"overlay": false
+				}
+			},
+			"_key": "!items.effects!D8IuKqy7kayCCO15.exMuXD4DcHwMZuMF"
+		}
+	],
+	"folder": "SjVk5lAwzIpqSBbH",
+	"flags": {
+		"core": {},
+		"midi-qol": {
+			"fumbleThreshold": null,
+			"effectActivation": false,
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default"
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"confirmTargets": "default",
+			"noConcentrationCheck": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>You blow into your open hand, and a fire forms in your palm. You can hold the fire or throw it at a creature.</em></p><p><strong>Utility Spell</strong></p><p>A flame appears in your empty hand and harms neither you nor your equipment. The flame sheds bright light in a 10-foot radius and dim light for an additional 10 feet.</p><p>You can also attack with the flame, which extinguishes it, either when you cast this spell, or later as an action.</p><p><strong>Ranged Spell Attack</strong></p><p>If this spell damages a vehicle or object that is flammable and has hit points, the object is set on fire**.</p><ul><li><p><strong>Hit:</strong> Target takes [[/damage 1d8 fire]] damage*</p></li></ul><p></p><p><strong>*At Higher Levels:</strong> This spell's damage increases by 1d8 when you reach a total character or creature level of 5th level ([[/damage 2d8 fire]]), 11th level ([[/damage 3d8 fire]]), and 17th level ([[/damage 4d8 fire]]).</p><p><em>**Some objects may be too large or flammable to be simply extinguished as an action, and will require creative solutions. Additionally, some vehicles or other objects may have a 'damage threshold'. For example, a fire bolt would have to deal at least 5 damage to damage and ignite a wooden catapult. Once ignited, the ignited object takes [[/damage 1d10 fire]] damage at the end of each of the caster's turns, which is dealt regardless of the target's damage threshold.</em></p>",
+			"chat": "<p><strong>Utility Spell</strong></p><p>A flame appears in your empty hand and harms neither you nor your equipment. The flame sheds bright light in a 10-foot radius and dim light for an additional 10 feet.</p><p>You can also attack with the flame, which extinguishes it, either when you cast this spell, or later as an action.</p><p><strong>Ranged Spell Attack</strong></p><p>If this spell damages a vehicle or object that is flammable and has hit points, the object is set on fire**.</p><ul><li><p><strong>Hit:</strong> Target takes [[/damage 1d8 fire]] damage*</p></li></ul><p></p><p><strong>*At Higher Levels:</strong> This spell's damage increases by 1d8 when you reach a total character or creature level of 5th level ([[/damage 2d8 fire]]), 11th level ([[/damage 3d8 fire]]), and 17th level ([[/damage 4d8 fire]]).</p><p><em>**Some objects may be too large or flammable to be simply extinguished as an action, and will require creative solutions. Additionally, some vehicles or other objects may have a 'damage threshold'. For example, a fire bolt would have to deal at least 5 damage to damage and ignite a wooden catapult. Once ignited, the ignited object takes [[/damage 1d10 fire]] damage at the end of each of the caster's turns, which is dealt regardless of the target's damage threshold.</em></p>"
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/produce-flame",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "1",
+			"units": "hour"
+		},
+		"target": {
+			"affects": {
+				"special": "",
+				"type": "creature",
+				"count": "1",
+				"choice": false
+			},
+			"template": {
+				"type": "",
+				"units": "ft",
+				"contiguous": false
+			}
+		},
+		"range": {
+			"value": "90",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 0,
+		"school": "con",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "always",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"mgc"
+		],
+		"activities": {
+			"bhRkpoRiUOKL8KLq": {
+				"type": "utility",
+				"_id": "bhRkpoRiUOKL8KLq",
+				"sort": 0,
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "exMuXD4DcHwMZuMF"
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"name": ""
+			},
+			"kbfHUqGQMm0hIjMg": {
+				"type": "attack",
+				"_id": "kbfHUqGQMm0hIjMg",
+				"sort": 0,
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"attack": {
+					"critical": {
+						"threshold": null
+					},
+					"flat": false,
+					"type": {
+						"value": "ranged",
+						"classification": ""
+					},
+					"ability": "",
+					"bonus": ""
+				},
+				"damage": {
+					"critical": {
+						"bonus": ""
+					},
+					"includeBase": true,
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 1,
+							"denomination": 8,
+							"bonus": "",
+							"types": [
+								"fire"
+							],
+							"scaling": {
+								"mode": "whole",
+								"number": 1
+							}
+						}
+					]
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": []
+			}
+		},
+		"identifier": ""
+	},
+	"_id": "D8IuKqy7kayCCO15",
+	"_key": "!items!D8IuKqy7kayCCO15"
+}
+{
+	"name": "Produce Flame",
+	"type": "spell",
+	"img": "icons/magic/fire/flame-burning-hand-orange.webp",
+	"effects": [
+		{
+			"name": "Produce Flame",
+			"img": "icons/magic/fire/flame-burning-hand-orange.webp",
+			"_id": "exMuXD4DcHwMZuMF",
+			"type": "base",
+			"system": {},
+			"changes": [
+				{
+					"key": "ATL.light.bright",
+					"mode": 4,
+					"value": "10",
+					"priority": 40
+				},
+				{
+					"key": "ATL.light.dim",
+					"mode": 4,
+					"value": "20",
+					"priority": 40
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": null,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.D8IuKqy7kayCCO15",
+			"tint": "#ffffff",
+			"transfer": true,
+			"statuses": [],
+			"sort": 0,
+			"flags": {
+				"ActiveAuras": {
+					"isAura": false,
 					"aura": "Enemy",
 					"nameOverride": "",
 					"radius": "",

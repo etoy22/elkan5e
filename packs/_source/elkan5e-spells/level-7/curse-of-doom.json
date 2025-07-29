@@ -30,14 +30,6 @@
 				},
 				"effects": [
 					{
-						"_id": "8AKA0iuDZXsSnSUd",
-						"onSave": false
-					},
-					{
-						"_id": "x0kQP33fYoo6A7xV",
-						"onSave": false
-					},
-					{
 						"_id": "zlA5PytbQkgpmI96",
 						"onSave": false
 					}
@@ -59,11 +51,29 @@
 					"max": ""
 				},
 				"damage": {
-					"parts": [],
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 8,
+							"denomination": "6",
+							"bonus": "",
+							"types": [
+								"force"
+							],
+							"scaling": {
+								"mode": "whole",
+								"number": 2,
+								"formula": ""
+							}
+						}
+					],
 					"critical": {
 						"allow": false
 					},
-					"onSave": "none"
+					"onSave": "half"
 				},
 				"save": {
 					"ability": [
@@ -98,7 +108,11 @@
 					"automationOnly": false,
 					"identifier": ""
 				},
-				"_id": "kmDn0GDVo5tdzNSj"
+				"_id": "kmDn0GDVo5tdzNSj",
+				"img": "",
+				"appliedEffects": [
+					"zlA5PytbQkgpmI96"
+				]
 			}
 		},
 		"uses": {
@@ -107,7 +121,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><strong>Charisma Save</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[cursed]. While cursed in this way, target takes 1d20+5 force damage at the start of each of their turns. If the target reaches 0 hit points while under the effects of this curse, the target instantly dies, and their body and soul becomes permanently cursed, preventing them from being raised from the dead.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><em>Removing the curse on a creature slain by Curse of Doom will allow them to be raised again.</em></p>",
+			"value": "<p><strong>Charisma Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes 8d6 force damage* and is &amp;reference[cursed]. While cursed in this way, if the target reaches 0 hit points while under the effects of this curse, the target instantly dies, and their body and soul becomes permanently cursed, preventing them from being raised from the dead.</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p></p><p>*<strong>Upcasting:</strong> Increase damage by [[/damage 2d6 force]]{2d6} for each spell level above 7th.</p><p></p><p><em>Removing the curse on a creature slain by Curse of Doom will allow them to be raised again.</em></p>",
 			"chat": ""
 		},
 		"identifier": "",
@@ -172,14 +186,7 @@
 			"_id": "zlA5PytbQkgpmI96",
 			"type": "base",
 			"system": {},
-			"changes": [
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 2,
-					"value": "turn=start,\nsaveDC=1,\nsaveDamage=fulldamage,\nsaveRemove=false,\nsaveMagic=true,\ndamageBeforeSave=true,\ndamageRoll=1d20+5,\ndamageType=force,\nlabel= Curse of Doom",
-					"priority": 20
-				}
-			],
+			"changes": [],
 			"disabled": false,
 			"duration": {
 				"startTime": null,
@@ -225,7 +232,13 @@
 					"displayTemp": false,
 					"hostile": false,
 					"onlyOnce": false,
-					"wallsBlock": "system"
+					"wallsBlock": "system",
+					"statuses": []
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
 				}
 			},
 			"_key": "!items.effects!pvuDBeDRGbrexK9a.zlA5PytbQkgpmI96"
