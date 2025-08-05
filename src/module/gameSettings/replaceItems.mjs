@@ -296,15 +296,13 @@ export async function migrateActorItems(updateMode = { players: "update-All", np
 export async function migrateActorFeatures(updateMode = { players: "update-Elkan", npcs: "none" }) {
 	if (updateMode.players === "none" && updateMode.npcs === "none") return;
 	const compFeatures = game.packs.get("elkan5e.elkan5e-class-features");
-	const compClasses = game.packs.get("elkan5e.elkan5e-class");
-	const compSubclasses = game.packs.get("elkan5e.elkan5e-subclass");
-	if (!compFeatures || !compClasses || !compSubclasses) return;
+	if (!compFeatures) return;
 
 	await migrateActorByType({
-		compendiums: [compFeatures, compClasses, compSubclasses],
-		types: ["feat", "class", "subclass"],
+		compendiums: [compFeatures],
+		types: ["feat"],
 		updateMode,
 		preserveProperties: ["name", "uses", "recharge", "activation", "consume", "save", "duration", "target", "activities"],
-		progressLabel: "Features, Classes, and Subclasses"
+		progressLabel: "Features"
 	});
 }
