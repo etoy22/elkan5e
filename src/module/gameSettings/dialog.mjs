@@ -1,3 +1,5 @@
+/* global foundry, game */
+/* eslint-disable no-unused-vars */
 import { processElkanUpdateForm } from "./replaceItems.mjs";
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -9,29 +11,22 @@ export async function getModuleVersion() {
 
 export async function showUpdateDialog() {
 	const form = await getForm();
-	const content =
-		`<div class="elkan-update-text">
+	const content = `<div class="elkan-update-text">
 			<h2> ${game.i18n.localize("elkan5e.updateElkan.header")}</h2>
 			<p> ${game.i18n.localize("elkan5e.updateElkan.description")}</p>
 			${form}
 		</div>`;
 
-	// const proceed  = await DialogV2.confirm({
-	// 	window: { title: game.i18n.localize("elkan5e.updateElkan.title") },
-	// 	content: content,
-	// 	rejectClose: false,
-	// 	modal: true
-	// })
 	new DialogV2({
 		window: {
-			title: game.i18n.localize("elkan5e.updateElkan.title")
+			title: game.i18n.localize("elkan5e.updateElkan.title"),
 		},
 		content,
 		buttons: [
 			{
 				label: "Update",
 				action: "update",
-				callback: (event, button, dialog) => {
+				callback: (_event, button, _dialog) => {
 					game.settings.set("elkan5e", "v13Show", false);
 					const form = button.form;
 					const data = new FormData(form);
@@ -41,24 +36,23 @@ export async function showUpdateDialog() {
 						actorSpells: data.get("actor-spells") ?? "none",
 						npcFeatures: data.get("npc-features") ?? "none",
 						npcItems: data.get("npc-items") ?? "none",
-						npcSpells: data.get("npc-spells") ?? "none"
-					}
+						npcSpells: data.get("npc-spells") ?? "none",
+					};
 					processElkanUpdateForm(formProcessing);
-				}
+				},
 			},
 			{
 				label: "Close",
 				action: "close",
-			}
-		]
+			},
+		],
 	}).render(true);
 }
 
 export async function showV13UpdateDialog() {
 	if (!game.user.isGM) return;
 	const form = await getForm();
-	const content =
-		`<div class="elkan-update-text-v13">
+	const content = `<div class="elkan-update-text-v13">
 			<p>
 				${game.i18n.localize("elkan5e.updateElkan.descriptionV13.initial")} <br>
 			 	${game.i18n.localize("elkan5e.updateElkan.descriptionV13.manually")} <br>
@@ -73,7 +67,6 @@ export async function showV13UpdateDialog() {
 			${form}
 		</div>`;
 
-
 	new DialogV2({
 		window: { title: "Elkan 5e V13 Update" },
 		content: content,
@@ -81,23 +74,22 @@ export async function showV13UpdateDialog() {
 			{
 				action: "never",
 				label: "Never See Again",
-				callback: (event, button, dialog) => {
-					game.settings.set("elkan5e", "v13Show", false)
-				}
-
+				callback: (_event, _button, _dialog) => {
+					game.settings.set("elkan5e", "v13Show", false);
+				},
 			},
 			{
 				action: "updateLater",
 				label: "Update Later",
 				default: true,
-				callback: (event, button, dialog) => {
-					game.settings.set("elkan5e", "v13Show", true)
-				}
+				callback: (_event, _button, _dialog) => {
+					game.settings.set("elkan5e", "v13Show", true);
+				},
 			},
 			{
 				action: "update",
 				label: "Update",
-				callback: (event, button, dialog) => {
+				callback: (_event, button, _dialog) => {
 					game.settings.set("elkan5e", "v13Show", false);
 					const form = button.form;
 					const data = new FormData(form);
@@ -107,11 +99,12 @@ export async function showV13UpdateDialog() {
 						actorSpells: data.get("actor-spells") ?? "none",
 						npcFeatures: data.get("npc-features") ?? "none",
 						npcItems: data.get("npc-items") ?? "none",
-						npcSpells: data.get("npc-spells") ?? "none"
-					}
+						npcSpells: data.get("npc-spells") ?? "none",
+					};
 					processElkanUpdateForm(formProcessing);
-				}
-			}]
+				},
+			},
+		],
 	}).render(true);
 }
 
@@ -119,14 +112,14 @@ export async function startDialog() {
 	const SAVED_VERSION = game.settings.get("elkan5e", "moduleVersion");
 	const DIALOG_SHOWN = game.settings.get("elkan5e", "dialogShown");
 	const MODULE_VERSION = await getModuleVersion();
-	let saved_version = SAVED_VERSION.split('.');
+	let saved_version = SAVED_VERSION.split(".");
 	if (SAVED_VERSION !== MODULE_VERSION || !DIALOG_SHOWN) {
 		let content = `
 				<h2>${game.i18n.localize("elkan5e.dialog.content.header")}</h2>
 				<p>${game.i18n.localize("elkan5e.dialog.content.headerText")}</p>
 			`;
 
-		const showUntil = new Date("2025-06-22T23:59:59");  // Target cutoff date
+		const showUntil = new Date("2025-06-22T23:59:59"); // Target cutoff date
 		const now = new Date();
 
 		if (now < showUntil) {
@@ -139,7 +132,6 @@ export async function startDialog() {
 					</a></p>
 				`;
 		}
-
 
 		if (parseInt(saved_version[1]) <= 12 && parseInt(saved_version[2]) < 9) {
 			content += `
@@ -156,31 +148,38 @@ export async function startDialog() {
 
 		content = `<div class="elkan-dialog-content">${content}</div>`;
 
-		let entryDialog = await DialogV2.prompt({
+		let entryDialog = await DialogV2.confirm({
 			window: { title: game.i18n.localize("elkan5e.dialog.title") },
-			content: content,
-			ok: {
+			content: content, // this can just be text or HTML
+			yes: {
 				label: game.i18n.localize("elkan5e.dialog.doNotShow"),
-				action: "choice",
-				callback: (event, button, dialog) => button.form.elements.choice.value
-			}
+			},
+			no: {
+				label: "Cancel",
+			},
 		});
 
-		if (entryDialog == "choice") {
-			await game.settings.set("elkan5e", "dialogShown", false)
-			if ((saved_version[0] < 13 && MODULE_VERSION.split(".")[0] >= 13) || game.settings.get("elkan5e", "v13Show")) {
-				showV13UpdateDialog();
-			}
-			await game.settings.set("elkan5e", "moduleVersion", MODULE_VERSION);
+		console.log("Elkan 5e dialog shown:", entryDialog);
+		await game.settings.set("elkan5e", "dialogShown", entryDialog);
+		
+		if (
+			(saved_version[0] < 13 && MODULE_VERSION.split(".")[0] >= 13) ||
+			game.settings.get("elkan5e", "v13Show")
+		) {
+			showV13UpdateDialog();
 		}
-		else {
-			if ((saved_version[0] < 13 && MODULE_VERSION.split(".")[0] >= 13) || game.settings.get("elkan5e", "v13Show")) {
-				showV13UpdateDialog();
-			}
-			await game.settings.set("elkan5e", "moduleVersion", MODULE_VERSION);
+		await game.settings.set("elkan5e", "moduleVersion", MODULE_VERSION);
+	} else {
+		if (
+			(saved_version[0] < 13 && MODULE_VERSION.split(".")[0] >= 13) ||
+			game.settings.get("elkan5e", "v13Show")
+		) {
+			showV13UpdateDialog();
 		}
+		await game.settings.set("elkan5e", "moduleVersion", MODULE_VERSION);
 	}
 }
+
 
 export async function getForm() {
 	return `
@@ -207,5 +206,5 @@ export async function getForm() {
 		<label><input type='radio' name='npc-spells' value='update-All'> ${game.i18n.localize("elkan5e.updateElkan.form.options.updateAll")}</label>
 		<label><input type='radio' name='npc-spells' value='update-Elkan'> ${game.i18n.localize("elkan5e.updateElkan.form.options.replaceElkan")}</label><br>
 	</form>
-	`
+	`;
 }
