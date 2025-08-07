@@ -1,14 +1,14 @@
-import { drainedEffect } from "./global.mjs";
-const Token = foundry.canvas.placeables.token
+/* global canvas, Roll, MidiQOL, ui, fromUuid, token, CONST */
+import { drainedEffect, forEachDamagedTarget } from "./global.mjs";
 
 const SIZE_ORDER = ["tiny", "sm", "med", "lg", "huge", "grg"];
 const SIZE_TO_GRID = {
-    tiny: 0.5,
-    sm: 1,
-    med: 1,
-    lg: 2,
-    huge: 3,
-    grg: 4,
+	tiny: 0.5,
+	sm: 1,
+	med: 1,
+	lg: 2,
+	huge: 3,
+	grg: 4,
 };
 
 /**
@@ -25,38 +25,16 @@ const SIZE_TO_GRID = {
  * @returns {Promise<void>}
  */
 export async function enervate(workflow) {
-    const caster = workflow.actor;
-    const casterToken = workflow.token;
-    const casterUuid = workflow.token.actor.uuid;
-
-    if (!caster || !casterToken) {
-        console.warn("Enervate aborted: missing actor or actorToken");
-        return;
-    }
-
-    for (const dmgEntry of workflow.damageList) {
-        const damage = (dmgEntry.tempDamage ?? 0) + (dmgEntry.hpDamage ?? 0);
-        if (damage <= 0) continue;
-
-        if (!dmgEntry.targetUuid) {
-            console.warn("Enervate: damageList entry missing targetUuid", dmgEntry);
-            continue;
-        }
-
-        const parts = dmgEntry.targetUuid.split(".");
-        if (parts.length < 4) {
-            console.warn("Enervate: Invalid targetUuid format", dmgEntry.targetUuid);
-            continue;
-        }
-        const tokenId = parts[3];
-        const targetToken = canvas.tokens.get(tokenId);
-        if (!targetToken) {
-            console.warn(`Enervate: Token with ID ${tokenId} not found on canvas`);
-            continue;
-        }
-
-        await drainedEffect(targetToken.actor, damage, "Enervate", "icons/magic/death/skeleton-skull-soul-blue.webp", casterUuid);
-    }
+	const casterUuid = workflow.token.actor.uuid;
+	await forEachDamagedTarget(workflow, (targetToken, damage) =>
+		drainedEffect(
+			targetToken.actor,
+			damage,
+			"Enervate",
+			"icons/magic/death/skeleton-skull-soul-blue.webp",
+			casterUuid,
+		),
+	);
 }
 
 /**
@@ -73,321 +51,301 @@ export async function enervate(workflow) {
  * @returns {Promise<void>}
  */
 export async function enervateOngoing(workflow) {
-    const caster = workflow.actor;
-    const casterToken = workflow.token;
-    const casterUuid = workflow.token.actor.uuid;
-
-    if (!caster || !casterToken) {
-        console.warn("Enervate aborted: missing actor or actorToken");
-        return;
-    }
-
-    for (const dmgEntry of workflow.damageList) {
-        const damage = (dmgEntry.tempDamage ?? 0) + (dmgEntry.hpDamage ?? 0);
-        if (damage <= 0) continue;
-
-        if (!dmgEntry.targetUuid) {
-            console.warn("Enervate: damageList entry missing targetUuid", dmgEntry);
-            continue;
-        }
-
-        const parts = dmgEntry.targetUuid.split(".");
-        if (parts.length < 4) {
-            console.warn("Enervate: Invalid targetUuid format", dmgEntry.targetUuid);
-            continue;
-        }
-        const tokenId = parts[3];
-        const targetToken = canvas.tokens.get(tokenId);
-        if (!targetToken) {
-            console.warn(`Enervate: Token with ID ${tokenId} not found on canvas`);
-            continue;
-        }
-
-        await drainedEffect(targetToken.actor, damage, "Enervate", "icons/magic/death/skeleton-skull-soul-blue.webp", casterUuid);
-    }
+	const casterUuid = workflow.token.actor.uuid;
+	await forEachDamagedTarget(workflow, (targetToken, damage) =>
+		drainedEffect(
+			targetToken.actor,
+			damage,
+			"Enervate",
+			"icons/magic/death/skeleton-skull-soul-blue.webp",
+			casterUuid,
+		),
+	);
 }
 
 /**
  * Creates or updates a Goodberry consumable item on the actor based on spell level,
  * and applies a duration effect linked to the consumable.
- * 
+ *
  * @param {object} workflow - The workflow object from the spell use containing actor and item.
  * @param {Actor} workflow.actor - The actor casting the spell.
  * @param {Item} workflow.item - The spell item being cast.
- * 
+ *
  * @returns {Promise<void>} Resolves when item creation/update and effect creation are complete.
  */
 export async function goodberry(workflow) {
-    const actor = workflow.actor;
-    const item = workflow.item;
+	const actor = workflow.actor;
+	const item = workflow.item;
 
-    // Determine the spell level and calculate the number of berries
-    const level = Math.max(item.system.level, 1);
-    let berry = (level + 1) * 5;
-    const img = item.img;
+	// Determine the spell level and calculate the number of berries
+	const level = Math.max(item.system.level, 1);
+	let berry = (level + 1) * 5;
+	const img = item.img;
 
-    // Define the item to be created
-    const consumableItem = {
-        "name": `${item.name} (Item)`,
-        "type": "consumable",
-        "img": `${img}`,
-        "system": {
-            "activities": {
-                "aL7vnNQ8QKdl98gJ": {
-                    "type": "heal",
-                    "_id": "aL7vnNQ8QKdl98gJ",
-                    "sort": 0,
-                    "activation": {
-                        "type": "action",
-                        "value": null,
-                        "override": false,
-                        "condition": ""
-                    },
-                    "consumption": {
-                        "scaling": {
-                            "allowed": true,
-                            "max": ""
-                        },
-                        "spellSlot": true,
-                        "targets": [
-                            {
-                                "type": "itemUses",
-                                "value": "1",
-                                "target": "",
-                                "scaling": {
-                                    "mode": "amount"
-                                }
-                            }
-                        ]
-                    },
-                    "duration": {
-                        "units": "inst",
-                        "concentration": false,
-                        "override": false
-                    },
-                    "effects": [],
-                    "range": {
-                        "override": false,
-                        "units": "touch",
-                        "special": ""
-                    },
-                    "target": {
-                        "template": {
-                            "contiguous": false,
-                            "units": "ft",
-                            "type": ""
-                        },
-                        "affects": {
-                            "choice": false,
-                            "count": "",
-                            "type": "creature",
-                            "special": ""
-                        },
-                        "override": false,
-                        "prompt": true
-                    },
-                    "uses": {
-                        "spent": 0,
-                        "recovery": [],
-                        "max": ""
-                    },
-                    "healing": {
-                        "number": null,
-                        "denomination": 0,
-                        "types": [
-                            "healing"
-                        ],
-                        "custom": {
-                            "enabled": true,
-                            "formula": "1"
-                        },
-                        "scaling": {
-                            "number": null,
-                            "mode": "whole",
-                            "formula": "1"
-                        },
-                        "bonus": ""
-                    },
-                    "macroData": {
-                        "name": "",
-                        "command": ""
-                    }
-                }
-            },
-            "uses": {
-                "spent": 0,
-                "recovery": [],
-                "autoDestroy": true,
-                "max": berry
-            },
-            "description": {
-                "value": "",
-                "chat": ""
-            },
-            "identifier": "goodberry-item",
-            "source": {
-                "revision": 1,
-                "rules": "2024",
-                "book": "Elkan 5e",
-                "page": "",
-                "custom": "",
-                "license": ""
-            },
-            "identified": true,
-            "unidentified": {
-                "description": ""
-            },
-            "container": null,
-            "quantity": 1,
-            "weight": {
-                "value": 0,
-                "units": "lb"
-            },
-            "price": {
-                "value": 0,
-                "denomination": "gp"
-            },
-            "rarity": "",
-            "attunement": "",
-            "attuned": false,
-            "equipped": false,
-            "type": {
-                "value": "food",
-                "subtype": ""
-            },
-            "damage": {
-                "base": {
-                    "number": null,
-                    "denomination": null,
-                    "types": [],
-                    "custom": {
-                        "enabled": false
-                    },
-                    "scaling": {
-                        "number": 1
-                    }
-                },
-                "replace": false
-            },
-            "magicalBonus": null,
-            "properties": [
-                "mgc"
-            ]
-        }
-    };
+	// Define the item to be created
+	const consumableItem = {
+		name: `${item.name} (Item)`,
+		type: "consumable",
+		img: `${img}`,
+		system: {
+			activities: {
+				aL7vnNQ8QKdl98gJ: {
+					type: "heal",
+					_id: "aL7vnNQ8QKdl98gJ",
+					sort: 0,
+					activation: {
+						type: "action",
+						value: null,
+						override: false,
+						condition: "",
+					},
+					consumption: {
+						scaling: {
+							allowed: true,
+							max: "",
+						},
+						spellSlot: true,
+						targets: [
+							{
+								type: "itemUses",
+								value: "1",
+								target: "",
+								scaling: {
+									mode: "amount",
+								},
+							},
+						],
+					},
+					duration: {
+						units: "inst",
+						concentration: false,
+						override: false,
+					},
+					effects: [],
+					range: {
+						override: false,
+						units: "touch",
+						special: "",
+					},
+					target: {
+						template: {
+							contiguous: false,
+							units: "ft",
+							type: "",
+						},
+						affects: {
+							choice: false,
+							count: "",
+							type: "creature",
+							special: "",
+						},
+						override: false,
+						prompt: true,
+					},
+					uses: {
+						spent: 0,
+						recovery: [],
+						max: "",
+					},
+					healing: {
+						number: null,
+						denomination: 0,
+						types: ["healing"],
+						custom: {
+							enabled: true,
+							formula: "1",
+						},
+						scaling: {
+							number: null,
+							mode: "whole",
+							formula: "1",
+						},
+						bonus: "",
+					},
+					macroData: {
+						name: "",
+						command: "",
+					},
+				},
+			},
+			uses: {
+				spent: 0,
+				recovery: [],
+				autoDestroy: true,
+				max: berry,
+			},
+			description: {
+				value: "",
+				chat: "",
+			},
+			identifier: "goodberry-item",
+			source: {
+				revision: 1,
+				rules: "2024",
+				book: "Elkan 5e",
+				page: "",
+				custom: "",
+				license: "",
+			},
+			identified: true,
+			unidentified: {
+				description: "",
+			},
+			container: null,
+			quantity: 1,
+			weight: {
+				value: 0,
+				units: "lb",
+			},
+			price: {
+				value: 0,
+				denomination: "gp",
+			},
+			rarity: "",
+			attunement: "",
+			attuned: false,
+			equipped: false,
+			type: {
+				value: "food",
+				subtype: "",
+			},
+			damage: {
+				base: {
+					number: null,
+					denomination: null,
+					types: [],
+					custom: {
+						enabled: false,
+					},
+					scaling: {
+						number: 1,
+					},
+				},
+				replace: false,
+			},
+			magicalBonus: null,
+			properties: ["mgc"],
+		},
+	};
 
-    // Ensure the actor exists
-    if (!actor) {
-        console.error("Actor not found for the spell.");
-        return;
-    }
+	// Ensure the actor exists
+	if (!actor) {
+		console.error("Actor not found for the spell.");
+		return;
+	}
 
-    // Check if the item already exists on the actor
-    const existingItem = actor.items.find(i => i.identifier === "goodberry-item");
-    if (existingItem) {
-        // Update the existing item's maximum uses
-        await existingItem.update({ "system.uses.max": existingItem.system.uses.max + berry });
-    } else {
-        await actor.createEmbeddedDocuments("Item", [consumableItem]);
-    }
+	// Check if the item already exists on the actor
+	const existingItem = actor.items.find((i) => i.identifier === "goodberry-item");
+	if (existingItem) {
+		// Update the existing item's maximum uses
+		await existingItem.update({
+			"system.uses.max": existingItem.system.uses.max + berry,
+		});
+	} else {
+		await actor.createEmbeddedDocuments("Item", [consumableItem]);
+	}
 
-    // Create an active effect to track the spell's duration
-    const linkedItem = existingItem ?? (await actor.items.find(i => i.system.identifier === "goodberry-item"));
-    const effectData = {
-        name: `${item.name} Duration (Level ${level})`, // Added required name property
-        label: `${item.name} Duration (Level ${level})`,
-        icon: `${img}`,
-        origin: item.uuid,
-        duration: { seconds: 3600 }, // 1 hour duration
-        changes: [],
-        flags: {
-            dae: { specialDuration: ["longRest"] },
-            elkan5e: { goodberryItemId: linkedItem.uuid }
-        }
-    };
+	// Create an active effect to track the spell's duration
+	const linkedItem =
+		existingItem ?? (await actor.items.find((i) => i.system.identifier === "goodberry-item"));
+	const effectData = {
+		name: `${item.name} Duration (Level ${level})`, // Added required name property
+		label: `${item.name} Duration (Level ${level})`,
+		icon: `${img}`,
+		origin: item.uuid,
+		duration: { seconds: 3600 }, // 1 hour duration
+		changes: [],
+		flags: {
+			dae: { specialDuration: ["longRest"] },
+			elkan5e: { goodberryItemId: linkedItem.uuid },
+		},
+	};
 
-    const effect = await actor.createEmbeddedDocuments("ActiveEffect", [effectData]);
-    if (effect.length > 0) {
-        const effectId = effect[0].id;
-    }
+	await actor.createEmbeddedDocuments("ActiveEffect", [effectData]);
 }
 
 /**
  * Handles cleanup when a Goodberry duration active effect is deleted.
  * It reduces the uses of the linked Goodberry consumable item accordingly or deletes it if depleted.
- * 
+ *
  * @param {ActiveEffect} deletedEffect - The active effect being deleted.
  *   Must have a flag `flags.elkan5e.goodberryItemId` linking to the consumable item.
- * 
+ *
  * @returns {Promise<void>} Resolves when cleanup is complete or if no action is needed.
  */
 export async function goodberryDeleteActive(deletedEffect) {
-    const actor = deletedEffect.parent;
-    if (!actor) {
-        console.warn("deleteActiveEffect: No actor found for effect.");
-        return;
-    }
-    if (!deletedEffect.flags?.elkan5e?.goodberryItemId) return
-    const itemId = deletedEffect.flags?.elkan5e?.goodberryItemId;
+	const actor = deletedEffect.parent;
+	if (!actor) {
+		console.warn("deleteActiveEffect: No actor found for effect.");
+		return;
+	}
+	if (!deletedEffect.flags?.elkan5e?.goodberryItemId) return;
+	const itemId = deletedEffect.flags?.elkan5e?.goodberryItemId;
 
-    const item = await fromUuid(itemId);
-    if (item == null) return
+	const item = await fromUuid(itemId);
+	if (item == null) return;
 
-    const match = deletedEffect.name.match(/^(.*) Duration \(Level (\d+)\)$/);
+	const match = deletedEffect.name.match(/^(.*) Duration \(Level (\d+)\)$/);
 
-    if (!match) return;
+	if (!match) return;
 
-    const level = parseInt(match[2], 10);
+	const level = parseInt(match[2], 10);
 
-    if (level === null || isNaN(level)) return;
+	if (level === null || isNaN(level)) return;
 
-    const berriesToRemove = (level + 1) * 5;
-    const newMaxUses = Math.max(item.system.uses.max - berriesToRemove, 0);
-    const newSpentUses = Math.min(Math.max(item.system.uses.spent - berriesToRemove, 0), newMaxUses);
-    if (newMaxUses === 0) {
-        try {
-            await item.delete();
-        } catch (error) {
-            console.warn("handleGoodberryItemCleanup: Error during consumable item deletion or item already deleted:", error);
-        }
-    } else {
-        await item.update({
-            "system.uses.max": newMaxUses,
-            "system.uses.spent": newSpentUses
-        });
-    }
+	const berriesToRemove = (level + 1) * 5;
+	const newMaxUses = Math.max(item.system.uses.max - berriesToRemove, 0);
+	const newSpentUses = Math.min(
+		Math.max(item.system.uses.spent - berriesToRemove, 0),
+		newMaxUses,
+	);
+	if (newMaxUses === 0) {
+		try {
+			await item.delete();
+		} catch (error) {
+			console.warn(
+				"handleGoodberryItemCleanup: Error during consumable item deletion or item already deleted:",
+				error,
+			);
+		}
+	} else {
+		await item.update({
+			"system.uses.max": newMaxUses,
+			"system.uses.spent": newSpentUses,
+		});
+	}
 }
 
 /**
  * Handles cleanup when a Goodberry consumable item is deleted.
  * It deletes all active effects on the actor that reference the deleted item's UUID via the flag `flags.elkan5e.goodberryItemId`.
- * 
+ *
  * @param {Item} deletedItem - The consumable item that was deleted.
  *   Must have `system.identifier` set to `"goodberry-item"` to trigger cleanup.
- * 
+ *
  * @returns {Promise<void>} Resolves when all linked effects are deleted.
  */
 export async function goodberryDeleteItem(deletedItem) {
-    const actor = deletedItem.parent;
-    if (!actor) return;
+	const actor = deletedItem.parent;
+	if (!actor) return;
 
-    // Only handle items created by goodberry, identified by your custom identifier flag
-    if (deletedItem.system.identifier !== "goodberry-item") return;
+	// Only handle items created by goodberry, identified by your custom identifier flag
+	if (deletedItem.system.identifier !== "goodberry-item") return;
 
-    // // Find all active effects on the actor whose origin matches this deleted item's UUID + suffix
-    // const expectedOrigin = deletedItem.uuid + " (goodberry-effect)";
+	// // Find all active effects on the actor whose origin matches this deleted item's UUID + suffix
+	// const expectedOrigin = deletedItem.uuid + " (goodberry-effect)";
 
-    const effectsToDelete = actor.effects.filter(effect =>
-        effect.flags?.elkan5e?.goodberryItemId !== undefined
-    );
+	const effectsToDelete = actor.effects.filter(
+		(effect) => effect.flags?.elkan5e?.goodberryItemId !== undefined,
+	);
 
-    for (const effect of effectsToDelete) {
-        try {
-            await effect.delete();
-        } catch (error) {
-            console.error(`Failed to delete effect with origin ${effect.origin}`, error);
-        }
-    }
+	for (const effect of effectsToDelete) {
+		try {
+			await effect.delete();
+		} catch (error) {
+			console.error(`Failed to delete effect with origin ${effect.origin}`, error);
+		}
+	}
 }
 
 /**
@@ -405,52 +363,34 @@ export async function goodberryDeleteItem(deletedItem) {
  * @returns {Promise<void>} Resolves once all effects and healing are applied.
  */
 export async function lifeDrain(workflow) {
-    const caster = workflow.actor;
-    const casterToken = workflow.token;
-    const casterUuid = workflow.token.actor.uuid;
-    if (!caster || !casterToken) {
-        console.warn("Life Drain aborted: missing caster or casterToken");
-        return;
-    }
+	const caster = workflow.actor;
+	const casterToken = workflow.token;
+	const casterUuid = casterToken.actor.uuid;
+	let totalHealing = 0;
 
-    const itemData = {
-        type: "spell",
-        img: "icons/magic/control/debuff-energy-hold-green.webp",
-    };
+	await forEachDamagedTarget(workflow, async (targetToken, damage) => {
+		totalHealing += Math.floor(damage / 2);
+		await drainedEffect(
+			targetToken.actor,
+			damage,
+			"Life Drain",
+			"icons/magic/control/debuff-energy-hold-green.webp",
+			casterUuid,
+		);
+	});
 
-    let healingDetail = 0;
-    for (const dmgEntry of workflow.damageList) {
-        const damage = (dmgEntry.tempDamage ?? 0) + (dmgEntry.hpDamage ?? 0);
-        if (damage <= 0) continue;
-
-        if (!dmgEntry.targetUuid) {
-            console.warn("Life Drain: damageList entry missing targetUuid", dmgEntry);
-            continue;
-        }
-
-        const parts = dmgEntry.targetUuid.split(".");
-        if (parts.length < 4) {
-            console.warn("Life Drain: Invalid targetUuid format", dmgEntry.targetUuid);
-            continue;
-        }
-        const tokenId = parts[3];
-        const targetToken = canvas.tokens.get(tokenId);
-        if (!targetToken) {
-            console.warn(`Life Drain: Token with ID ${tokenId} not found on canvas`);
-            continue;
-        }
-
-        healingDetail += Math.floor(damage / 2);
-        await drainedEffect(targetToken.actor, damage, "Life Drain", "icons/magic/control/debuff-energy-hold-green.webp", casterUuid);
-    }
-
-    if (healingDetail <= 0) return;
-
-    const healingRoll = await new Roll(`${healingDetail}`, {}, { type: "healing" }).evaluate({ async: true });
-
-    new MidiQOL.DamageOnlyWorkflow(caster, casterToken, healingRoll.total, "healing", [casterToken], healingRoll, { itemData, flavor: "Life Drain Healing" });
+	if (totalHealing <= 0) return;
+	const healingRoll = await new Roll(`${totalHealing}`).evaluate({ async: true });
+	new MidiQOL.DamageOnlyWorkflow(
+		caster,
+		casterToken,
+		healingRoll.total,
+		"healing",
+		[casterToken],
+		healingRoll,
+		{ flavor: "Life Drain Healing" },
+	);
 }
-
 /**
  * Applies the "Sapping Smite" drained effect to each target damaged by the smite.
  *
@@ -466,38 +406,11 @@ export async function lifeDrain(workflow) {
  * @returns {Promise<void>} Resolves after all drained effects have been applied.
  */
 export async function sappingSmite(workflow) {
-    const caster = workflow.actor;
-    const casterToken = workflow.token;
-    const casterUuid = workflow.token.actor.uuid;
-
-    if (!caster || !casterToken) {
-        console.warn("Sapping Smite aborted: missing actor or actorToken");
-        return;
-    }
-
-    for (const dmgEntry of workflow.damageList) {
-        const damage = (dmgEntry.tempDamage ?? 0) + (dmgEntry.hpDamage ?? 0);
-        if (damage <= 0) continue;
-
-        if (!dmgEntry.targetUuid) {
-            console.warn("Sapping Smite: damageList entry missing targetUuid", dmgEntry);
-            continue;
-        }
-
-        const parts = dmgEntry.targetUuid.split(".");
-        if (parts.length < 4) {
-            console.warn("Sapping Smite: Invalid targetUuid format", dmgEntry.targetUuid);
-            continue;
-        }
-        const tokenId = parts[3];
-        const targetToken = canvas.tokens.get(tokenId);
-        if (!targetToken) {
-            console.warn(`Sapping Smite: Token with ID ${tokenId} not found on canvas`);
-            continue;
-        }
-
-        await drainedEffect(targetToken.actor, damage, "Sapping Smite", "icons/weapons/polearms/spear-flared-silver-pink.webp", casterUuid);
-    }
+	const originUuid = workflow.token.actor.uuid;
+	const icon = "icons/weapons/polearms/spear-flared-silver-pink.webp";
+	await forEachDamagedTarget(workflow, (token, dmg) =>
+		drainedEffect(token.actor, dmg, "Sapping Smite", icon, originUuid),
+	);
 }
 
 /**
@@ -515,42 +428,43 @@ export async function sappingSmite(workflow) {
  * @returns {Promise<void>} Resolves after applying drained effects to all valid targets.
  */
 export async function wellOfCorruption(workflow) {
-    const caster = workflow.actor;
-    const casterToken = workflow.token;
-    const casterUuid = workflow.token.actor.uuid;
-    if (!caster || !casterToken) {
-        console.warn("Well of Corruption aborted: missing caster or casterToken");
-        return;
-    }
+	const caster = workflow.actor;
+	const casterToken = workflow.token;
+	const casterUuid = workflow.token.actor.uuid;
+	if (!caster || !casterToken) {
+		console.warn("Well of Corruption aborted: missing caster or casterToken");
+		return;
+	}
 
-    const itemData = {
-        type: "spell",
-        img: "icons/magic/control/debuff-energy-hold-green.webp",
-    };
+	for (const dmgEntry of workflow.damageList) {
+		const damage = (dmgEntry.tempDamage ?? 0) + (dmgEntry.hpDamage ?? 0);
+		if (damage <= 0) continue;
 
-    for (const dmgEntry of workflow.damageList) {
-        const damage = (dmgEntry.tempDamage ?? 0) + (dmgEntry.hpDamage ?? 0);
-        if (damage <= 0) continue;
+		if (!dmgEntry.targetUuid) {
+			console.warn("Well of Corruption: damageList entry missing targetUuid", dmgEntry);
+			continue;
+		}
 
-        if (!dmgEntry.targetUuid) {
-            console.warn("Well of Corruption: damageList entry missing targetUuid", dmgEntry);
-            continue;
-        }
+		const parts = dmgEntry.targetUuid.split(".");
+		if (parts.length < 4) {
+			console.warn("Well of Corruption: Invalid targetUuid format", dmgEntry.targetUuid);
+			continue;
+		}
+		const tokenId = parts[3];
+		const targetToken = canvas.tokens.get(tokenId);
+		if (!targetToken) {
+			console.warn(`Well of Corruption: Token with ID ${tokenId} not found on canvas`);
+			continue;
+		}
 
-        const parts = dmgEntry.targetUuid.split(".");
-        if (parts.length < 4) {
-            console.warn("Well of Corruption: Invalid targetUuid format", dmgEntry.targetUuid);
-            continue;
-        }
-        const tokenId = parts[3];
-        const targetToken = canvas.tokens.get(tokenId);
-        if (!targetToken) {
-            console.warn(`Well of Corruption: Token with ID ${tokenId} not found on canvas`);
-            continue;
-        }
-
-        await drainedEffect(targetToken.actor, damage, "Well of Corruption", "icons/magic/unholy/orb-swirling-teal.webp", casterUuid);
-    }
+		await drainedEffect(
+			targetToken.actor,
+			damage,
+			"Well of Corruption",
+			"icons/magic/unholy/orb-swirling-teal.webp",
+			casterUuid,
+		);
+	}
 }
 
 /**
@@ -572,433 +486,446 @@ export async function wellOfCorruption(workflow) {
  * @returns {Promise<void>} Resolves once all damage and effects are applied.
  */
 export async function wrathOfTheReaper(workflow) {
-    const caster = workflow.actor;
-    const casterToken = workflow.token;
-    const casterUuid = workflow.token.actor.uuid;
-    if (!caster || !casterToken) {
-        console.warn("Wrath of the Reaper aborted: missing caster or casterToken");
-        return;
-    }
+	const caster = workflow.actor;
+	const casterToken = workflow.token;
+	const casterUuid = casterToken.actor.uuid;
+	const itemData = { type: "spell", img: "icons/magic/death/weapon-scythe-rune-green.webp" };
 
-    const itemData = {
-        type: "spell",
-        img: "icons/magic/death/weapon-scythe-rune-green.webp",
-    };
-    for (const dmgEntry of workflow.damageList) {
+	await forEachDamagedTarget(workflow, async (targetToken, _damage, dmgEntry) => {
+		const maxHp = targetToken.actor.system.attributes.hp.max;
+		const forceDamage = Math.min(Math.floor(maxHp / 2), 100);
+		if (forceDamage <= 0) return;
 
-        if (!dmgEntry.targetUuid) {
-            console.warn("Wrath of the Reaper: damageList entry missing targetUuid", dmgEntry);
-            continue;
-        }
+		const damageRoll = await new Roll(`${forceDamage}`).evaluate({ async: true });
+		new MidiQOL.DamageOnlyWorkflow(
+			caster,
+			casterToken,
+			damageRoll.total,
+			"force",
+			[targetToken],
+			damageRoll,
+			{ itemData, flavor: "Wrath of the Reaper Damage" },
+		);
 
-        const parts = dmgEntry.targetUuid.split(".");
-        if (parts.length < 4) {
-            console.warn("Wrath of the Reaper: Invalid targetUuid format", dmgEntry.targetUuid);
-            continue;
-        }
-        const tokenId = parts[3];
-        const targetToken = canvas.tokens.get(tokenId);
-        if (!targetToken) {
-            console.warn(`Wrath of the Reaper: Token with ID ${tokenId} not found on canvas`);
-            continue;
-        }
-
-
-        const damage = Math.min(Math.floor(targetToken.actor.system.attributes.hp.max / 2), 100);
-
-        if (damage <= 0) continue;
-
-        const damageRoll = await new Roll(`${damage}`, {}, { type: "force" }).evaluate({ async: true });
-
-        new MidiQOL.DamageOnlyWorkflow(caster, casterToken, damageRoll.total, "force", [targetToken], damageRoll, { itemData, flavor: "Wrath of the Reaper Damage" });
-        if (!dmgEntry.saved) {
-            await drainedEffect(targetToken.actor, damage, "Wrath of the Reaper", "icons/magic/death/weapon-scythe-rune-green.webp", casterUuid);
-        }
-    }
+		if (!dmgEntry.saved) {
+			await drainedEffect(
+				targetToken.actor,
+				forceDamage,
+				"Wrath of the Reaper",
+				itemData.img,
+				casterUuid,
+			);
+		}
+	});
 }
-
 
 //Automation for Enlarge/Reduce
 export async function enlarge(workflow) {
-    if (!workflow._failedSaves || workflow._failedSaves.size === 0) {
-        ui.notifications.warn("No targets failed the roll — cannot apply enlarge.");
-        return;
-    }
+	if (!workflow._failedSaves || workflow._failedSaves.size === 0) {
+		ui.notifications.warn("No targets failed the roll — cannot apply enlarge.");
+		return;
+	}
 
-    for (const failedToken of workflow._failedSaves) {
-        let token;
-        if (typeof failedToken === "string") {
-            token = canvas.tokens.get(failedToken);
-        } else {
-            token = failedToken;
-        }
-        if (!token) continue;
+	for (const failedToken of workflow._failedSaves) {
+		let token;
+		if (typeof failedToken === "string") {
+			token = canvas.tokens.get(failedToken);
+		} else {
+			token = failedToken;
+		}
+		if (!token) continue;
 
-        const actor = token.actor;
-        if (!actor) continue;
+		const actor = token.actor;
+		if (!actor) continue;
 
-        const flag = token.document.getFlag("elkan5e", "sizeChange") || {};
-        if (flag.enlarged) {
-            ui.notifications.info(`${actor.name} is already enlarged.`);
-            continue;
-        }
-        if (flag.reduced) {
-            ui.notifications.info(`${actor.name} is currently reduced — cannot enlarge until reduced effect removed.`);
-            continue;
-        }
+		const flag = token.document.getFlag("elkan5e", "sizeChange") || {};
+		if (flag.enlarged) {
+			ui.notifications.info(`${actor.name} is already enlarged.`);
+			continue;
+		}
+		if (flag.reduced) {
+			ui.notifications.info(
+				`${actor.name} is currently reduced — cannot enlarge until reduced effect removed.`,
+			);
+			continue;
+		}
 
-        const currentSize = actor.system.traits.size;
-        const currentIndex = SIZE_ORDER.indexOf(currentSize);
-        if (currentIndex === -1 || currentIndex >= SIZE_ORDER.length - 1) {
-            ui.notifications.warn(`${actor.name} is already at maximum size or unknown size.`);
-            continue;
-        }
+		const currentSize = actor.system.traits.size;
+		const currentIndex = SIZE_ORDER.indexOf(currentSize);
+		if (currentIndex === -1 || currentIndex >= SIZE_ORDER.length - 1) {
+			ui.notifications.warn(`${actor.name} is already at maximum size or unknown size.`);
+			continue;
+		}
 
-        const newSize = SIZE_ORDER[currentIndex + 1];
-        const newGrid = SIZE_TO_GRID[newSize];
+		const newSize = SIZE_ORDER[currentIndex + 1];
+		const newGrid = SIZE_TO_GRID[newSize];
 
-        if (!flag.originalSize) {
-            flag.originalSize = currentSize;
-            flag.originalWidth = token.document.width;
-            flag.originalHeight = token.document.height;
-        }
-        flag.enlarged = true;
+		if (!flag.originalSize) {
+			flag.originalSize = currentSize;
+			flag.originalWidth = token.document.width;
+			flag.originalHeight = token.document.height;
+		}
+		flag.enlarged = true;
 
-        await token.document.update({
-            width: newGrid,
-            height: newGrid,
-            "flags.elkan5e.sizeChange": flag,
-        });
-        await actor.update({ "system.traits.size": newSize });
+		await token.document.update({
+			width: newGrid,
+			height: newGrid,
+			"flags.elkan5e.sizeChange": flag,
+		});
+		await actor.update({ "system.traits.size": newSize });
 
-        ui.notifications.info(`${actor.name} has been enlarged to size ${newSize.toUpperCase()}.`);
-    }
+		ui.notifications.info(`${actor.name} has been enlarged to size ${newSize.toUpperCase()}.`);
+	}
 }
 
 export async function reduce(workflow) {
-    if (!workflow._failedSaves || workflow._failedSaves.size === 0) {
-        ui.notifications.warn("No targets failed the roll — cannot apply reduce.");
-        return;
-    }
+	if (!workflow._failedSaves || workflow._failedSaves.size === 0) {
+		ui.notifications.warn("No targets failed the roll — cannot apply reduce.");
+		return;
+	}
 
-    for (const failedToken of workflow._failedSaves) {
-        let token;
-        if (typeof failedToken === "string") {
-            token = canvas.tokens.get(failedToken);
-        } else {
-            token = failedToken;
-        }
-        if (!token) continue;
+	for (const failedToken of workflow._failedSaves) {
+		let token;
+		if (typeof failedToken === "string") {
+			token = canvas.tokens.get(failedToken);
+		} else {
+			token = failedToken;
+		}
+		if (!token) continue;
 
-        const actor = token.actor;
-        if (!actor) continue;
+		const actor = token.actor;
+		if (!actor) continue;
 
-        const flag = token.document.getFlag("elkan5e", "sizeChange") || {};
-        if (flag.reduced) {
-            // Already reduced, skip
-            continue;
-        }
-        if (flag.enlarged) {
-            // Currently enlarged, cannot reduce until enlarged removed
-            continue;
-        }
+		const flag = token.document.getFlag("elkan5e", "sizeChange") || {};
+		if (flag.reduced) {
+			// Already reduced, skip
+			continue;
+		}
+		if (flag.enlarged) {
+			// Currently enlarged, cannot reduce until enlarged removed
+			continue;
+		}
 
-        const currentSize = actor.system.traits.size;
-        const currentIndex = SIZE_ORDER.indexOf(currentSize);
-        if (currentIndex <= 0) {
-            // Already at minimum or unknown size, skip
-            continue;
-        }
+		const currentSize = actor.system.traits.size;
+		const currentIndex = SIZE_ORDER.indexOf(currentSize);
+		if (currentIndex <= 0) {
+			// Already at minimum or unknown size, skip
+			continue;
+		}
 
-        const newSize = SIZE_ORDER[currentIndex - 1];
-        const newGrid = SIZE_TO_GRID[newSize];
+		const newSize = SIZE_ORDER[currentIndex - 1];
+		const newGrid = SIZE_TO_GRID[newSize];
 
-        if (!flag.originalSize) {
-            flag.originalSize = currentSize;
-            flag.originalWidth = token.document.width;
-            flag.originalHeight = token.document.height;
-        }
-        flag.reduced = true;
+		if (!flag.originalSize) {
+			flag.originalSize = currentSize;
+			flag.originalWidth = token.document.width;
+			flag.originalHeight = token.document.height;
+		}
+		flag.reduced = true;
 
-        await token.document.update({
-            width: newGrid,
-            height: newGrid,
-            "flags.elkan5e.sizeChange": flag,
-        });
-        await actor.update({ "system.traits.size": newSize });
+		await token.document.update({
+			width: newGrid,
+			height: newGrid,
+			"flags.elkan5e.sizeChange": flag,
+		});
+		await actor.update({ "system.traits.size": newSize });
 
-        // You can uncomment to notify
-        // ui.notifications.info(`${actor.name} has been reduced to size ${newSize.toUpperCase()}.`);
-    }
+		// You can uncomment to notify
+		// ui.notifications.info(`${actor.name} has been reduced to size ${newSize.toUpperCase()}.`);
+	}
 }
 
 export async function returnToNormalSize(effect) {
-    const actor = effect.parent;
+	const actor = effect.parent;
 
-    if (!actor || !effect) {
-        console.warn("Missing actor or effect, aborting returnToNormalSize.");
-        return;
-    }
+	if (!actor || !effect) {
+		console.warn("Missing actor or effect, aborting returnToNormalSize.");
+		return;
+	}
 
-    const name = effect.name?.toLowerCase();
+	const name = effect.name?.toLowerCase();
 
-    if (!name?.includes("enlarge") && !name?.includes("reduce")) {
-        return;
-    }
+	if (!name?.includes("enlarge") && !name?.includes("reduce")) {
+		return;
+	}
 
-    const token = actor.getActiveTokens()[0];
+	const token = actor.getActiveTokens()[0];
 
-    if (!token) {
-        console.warn("No active token found for actor.");
-        return;
-    }
+	if (!token) {
+		console.warn("No active token found for actor.");
+		return;
+	}
 
-    const flag = token.document.getFlag("elkan5e", "sizeChange");
+	const flag = token.document.getFlag("elkan5e", "sizeChange");
 
-    if (!flag) {
-        console.warn("No sizeChange flag found on token. Nothing to revert.");
-        return;
-    }
+	if (!flag) {
+		console.warn("No sizeChange flag found on token. Nothing to revert.");
+		return;
+	}
 
-    let changed = false;
+	let changed = false;
 
-    if (name.includes("enlarge") && flag.enlarged) {
-        flag.enlarged = false;
-        changed = true;
-    }
-    if (name.includes("reduce") && flag.reduced) {
-        flag.reduced = false;
-        changed = true;
-    }
+	if (name.includes("enlarge") && flag.enlarged) {
+		flag.enlarged = false;
+		changed = true;
+	}
+	if (name.includes("reduce") && flag.reduced) {
+		flag.reduced = false;
+		changed = true;
+	}
 
-    if (!changed) {
-        console.warn("No matching size change flags to clear.");
-        return;
-    }
+	if (!changed) {
+		console.warn("No matching size change flags to clear.");
+		return;
+	}
 
-    if (!flag.enlarged && !flag.reduced) {
-        await token.document.update({
-            width: flag.originalWidth,
-            height: flag.originalHeight,
-        });
-        await actor.update({ "system.traits.size": flag.originalSize });
-        await token.document.unsetFlag("elkan5e", "sizeChange");
-    } else {
-        // If one effect remains active, update the flags only
-        await token.document.update({
-            "flags.elkan5e.sizeChange": flag,
-        });
-    }
+	if (!flag.enlarged && !flag.reduced) {
+		await token.document.update({
+			width: flag.originalWidth,
+			height: flag.originalHeight,
+		});
+		await actor.update({ "system.traits.size": flag.originalSize });
+		await token.document.unsetFlag("elkan5e", "sizeChange");
+	} else {
+		// If one effect remains active, update the flags only
+		await token.document.update({
+			"flags.elkan5e.sizeChange": flag,
+		});
+	}
 }
 
-
 export async function createLightFromTemplate(workflow, config, minLevel = 1) {
-    const lastTemplate = canvas.templates.placeables.at(-1);
-    if (!lastTemplate) {
-        ui.notifications.warn("No measured template found.");
-        return;
-    }
+	const lastTemplate = canvas.templates.placeables.at(-1);
+	if (!lastTemplate) {
+		ui.notifications.warn("No measured template found.");
+		return;
+	}
 
-    const { x, y, id: templateId } = lastTemplate;
-    const spellLevel = Math.max(workflow.castData.castLevel - 1, minLevel);
+	const { x, y, id: templateId } = lastTemplate;
+	const spellLevel = Math.max(workflow.castData.castLevel - 1, minLevel);
 
-    const lightData = {
-        x,
-        y,
-        config: {
-            priority: spellLevel,
-            ...config
-        },
-        flags: {
-            elkan5e: {
-                linkedTemplate: templateId
-            }
-        }
-    };
+	const lightData = {
+		x,
+		y,
+		config: {
+			priority: spellLevel,
+			...config,
+		},
+		flags: {
+			elkan5e: {
+				linkedTemplate: templateId,
+			},
+		},
+	};
 
-    await canvas.scene.createEmbeddedDocuments("AmbientLight", [lightData]);
+	await canvas.scene.createEmbeddedDocuments("AmbientLight", [lightData]);
 }
 
 export async function darkness(workflow) {
-    return createLightFromTemplate(workflow, {
-        dim: 0,
-        bright: 15,
-        alpha: 0.3,
-        angle: 360,
-        luminosity: 0.5,
-        saturation: 0,
-        contrast: 0,
-        shadows: 0,
-        negative: true,
-        animation: {
-            type: "",
-            speed: 2,
-            intensity: 5
-        }
-    }, 1);
+	return createLightFromTemplate(
+		workflow,
+		{
+			dim: 0,
+			bright: 15,
+			alpha: 0.3,
+			angle: 360,
+			luminosity: 0.5,
+			saturation: 0,
+			contrast: 0,
+			shadows: 0,
+			negative: true,
+			animation: {
+				type: "",
+				speed: 2,
+				intensity: 5,
+			},
+		},
+		1,
+	);
 }
 
 export async function light(workflow) {
-    return createLightFromTemplate(workflow, {
-        dim: 40,
-        bright: 20,
-        alpha: 0.3,
-        angle: 360,
-        luminosity: 0.5,
-        saturation: 0,
-        contrast: 0,
-        shadows: 0,
-        negative: false,
-        animation: {
-            type: "",
-            speed: 2,
-            intensity: 5
-        }
-    }, 1);
+	return createLightFromTemplate(
+		workflow,
+		{
+			dim: 40,
+			bright: 20,
+			alpha: 0.3,
+			angle: 360,
+			luminosity: 0.5,
+			saturation: 0,
+			contrast: 0,
+			shadows: 0,
+			negative: false,
+			animation: {
+				type: "",
+				speed: 2,
+				intensity: 5,
+			},
+		},
+		1,
+	);
 }
 
 export async function continualFlame(workflow) {
-    return createLightFromTemplate(workflow, {
-        dim: 60,
-        bright: 30,
-        alpha: 0.3,
-        angle: 360,
-        luminosity: 0.5,
-        saturation: 0,
-        contrast: 0,
-        shadows: 0,
-        negative: false,
-        animation: {
-            type: "torch",
-            speed: 2,
-            intensity: 5
-        }
-    }, 2);
+	return createLightFromTemplate(
+		workflow,
+		{
+			dim: 60,
+			bright: 30,
+			alpha: 0.3,
+			angle: 360,
+			luminosity: 0.5,
+			saturation: 0,
+			contrast: 0,
+			shadows: 0,
+			negative: false,
+			animation: {
+				type: "torch",
+				speed: 2,
+				intensity: 5,
+			},
+		},
+		2,
+	);
 }
 
 export async function moonBeam(workflow) {
-    return createLightFromTemplate(workflow, {
-        dim: 5,
-        bright: 0,
-        alpha: 0.3,
-        angle: 360,
-        luminosity: 0.5,
-        saturation: 0,
-        contrast: 0,
-        shadows: 0,
-        negative: false,
-        color: "#587BA5",
-        animation: {
-            type: "",
-            speed: 2,
-            intensity: 5
-        }
-    }, 2);
+	return createLightFromTemplate(
+		workflow,
+		{
+			dim: 5,
+			bright: 0,
+			alpha: 0.3,
+			angle: 360,
+			luminosity: 0.5,
+			saturation: 0,
+			contrast: 0,
+			shadows: 0,
+			negative: false,
+			color: "#587BA5",
+			animation: {
+				type: "",
+				speed: 2,
+				intensity: 5,
+			},
+		},
+		2,
+	);
 }
 
 export async function rendVigor(workflow) {
-    let saves = workflow.saves;
-    let failed = workflow.failedSaves;
+	let saves = workflow.saves;
+	let failed = workflow.failedSaves;
 
-    saves.forEach(save => {
-        let target = save.actor;
-        if (target.system.attributes.hp.temp != null) {
-            target.system.attributes.hp.temp = Math.floor(target.system.attributes.hp.temp / 2);
-        }
-    });
+	saves.forEach((save) => {
+		let target = save.actor;
+		if (target.system.attributes.hp.temp != null) {
+			target.system.attributes.hp.temp = Math.floor(target.system.attributes.hp.temp / 2);
+		}
+	});
 
-    failed.forEach(fail => {
-        let target = fail.actor;
-        if (target.system.attributes.hp.temp != null) {
-            target.system.attributes.hp.temp = null;
-        }
-    });
+	failed.forEach((fail) => {
+		let target = fail.actor;
+		if (target.system.attributes.hp.temp != null) {
+			target.system.attributes.hp.temp = null;
+		}
+	});
 }
 
 //TODO: Fix this (the code works but not sure when i would have this occur)
 export async function fogCloud(workflow) {
-    const template = workflow.template;
+	const template = workflow.template;
 
-    if (!template) {
-        ui.notifications.warn("No template ID found in workflow.");
-        return;
-    }
+	if (!template) {
+		ui.notifications.warn("No template ID found in workflow.");
+		return;
+	}
 
+	const baseRadius = 20;
+	const spellLevel = Math.max(workflow.castData.castLevel, 1);
+	const radius = baseRadius + (spellLevel - 1) * 20;
 
-    const baseRadius = 20;
-    const spellLevel = Math.max(workflow.castData.castLevel, 1);
-    const radius = baseRadius + (spellLevel - 1) * 20;
-
-    await template.update({ distance: radius });
-    ui.notifications.info(`Fog Cloud radius set to ${radius} ft.`);
+	await template.update({ distance: radius });
+	ui.notifications.info(`Fog Cloud radius set to ${radius} ft.`);
 }
 
 // TODO: Set in line with the rest of the code
 export async function vampiricSmite(workflow) {
-    const { damage, damageMultiplier } = workflow.damageItem.damageDetail[0].find(d => d.type === 'necrotic') || {};
-    if (damage && workflow.hitTargets.size === 1) {
-        const dmgToApply = Math.floor(damage * damageMultiplier / 2);
-        await MidiQOL.applyTokenDamage([{
-            damage: dmgToApply,
-            type: 'healing',
-            flavor: 'Life Steal'
-        }], dmgToApply, new Set([token]), null, null);
-    }
+	const { damage, damageMultiplier } =
+		workflow.damageItem.damageDetail[0].find((d) => d.type === "necrotic") || {};
+	if (damage && workflow.hitTargets.size === 1) {
+		const dmgToApply = Math.floor((damage * damageMultiplier) / 2);
+		await MidiQOL.applyTokenDamage(
+			[
+				{
+					damage: dmgToApply,
+					type: "healing",
+					flavor: "Life Steal",
+				},
+			],
+			dmgToApply,
+			new Set([token]),
+			null,
+			null,
+		);
+	}
 }
 
 export async function shield(workflow) {
-  const actor = workflow.actor;
-  const item = workflow.item;
+	const actor = workflow.actor;
+	const item = workflow.item;
 
-  if (!actor) {
-    console.error("Actor not found for the spell.");
-    return;
-  }
+	if (!actor) {
+		console.error("Actor not found for the spell.");
+		return;
+	}
 
-  // Spell level (minimum 1)
-  const level = Math.max(item.system.level ?? 1, 1);
+	// Spell level (minimum 1)
+	const level = Math.max(item.system.level ?? 1, 1);
 
-  // Spell bonus: level + 2 capped at 5
-  const spellBonus = Math.min(level + 2, 5);
+	// Spell bonus: level + 2 capped at 5
+	const spellBonus = Math.min(level + 2, 5);
 
-  // Find equipped shield
-  const shield = actor.items.find(i =>
-    i.type === "equipment" &&
-    i.system.type?.value === "shield" &&
-    i.system.equipped === true
-  );
+	// Find equipped shield
+	const shield = actor.items.find(
+		(i) =>
+			i.type === "equipment" &&
+			i.system.type?.value === "shield" &&
+			i.system.equipped === true,
+	);
 
-  // Calculate shield bonus (armor value + magical bonus if any)
-  let shieldBonus = 0;
-  if (shield) {
-    shieldBonus = Number(shield.system.armor?.value ?? 0);
-    if (shield.system.armor?.magicalBonus) {
-      shieldBonus += Number(shield.system.armor.magicalBonus);
-    }
-  }
+	// Calculate shield bonus (armor value + magical bonus if any)
+	let shieldBonus = 0;
+	if (shield) {
+		shieldBonus = Number(shield.system.armor?.value ?? 0);
+		if (shield.system.armor?.magicalBonus) {
+			shieldBonus += Number(shield.system.armor.magicalBonus);
+		}
+	}
 
-  // Calculate net bonus to AC
-  const bonus = spellBonus - shieldBonus;
+	// Calculate net bonus to AC
+	const bonus = spellBonus - shieldBonus;
 
-  // Prepare active effect data
-  const effectData = {
-    name: item.name,
-    label: item.name,
-    icon: item.img,
-    origin: item.uuid,
-    duration: { seconds: 7 },
-    changes: [
-      {
-        key: "system.attributes.ac.bonus",
-        mode: CONST.ACTIVE_EFFECT_MODES.ADD,
-        value: bonus,
-        priority: 20
-      }
-    ],
-    flags: {
-      dae: { specialDuration: ["turnEndSource"] }
-    }
-  };
+	// Prepare active effect data
+	const effectData = {
+		name: item.name,
+		label: item.name,
+		icon: item.img,
+		origin: item.uuid,
+		duration: { seconds: 7 },
+		changes: [
+			{
+				key: "system.attributes.ac.bonus",
+				mode: CONST.ACTIVE_EFFECT_MODES.ADD,
+				value: bonus,
+				priority: 20,
+			},
+		],
+		flags: {
+			dae: { specialDuration: ["turnEndSource"] },
+		},
+	};
 
-  await actor.createEmbeddedDocuments("ActiveEffect", [effectData]);
+	await actor.createEmbeddedDocuments("ActiveEffect", [effectData]);
 }
