@@ -1,6 +1,10 @@
 /* global CONFIG */
-/*
- * Adds the extra speed types (DOES NOTHING RIGHT NOW)
+/**
+ * Add additional movement types to the DND5E system.
+ *
+ * Currently registers crawl, long jump, and high jump movement options.
+ *
+ * @returns {void}
  */
 export function speed() {
 	console.log("Elkan 5e  |  Initializing Speed");

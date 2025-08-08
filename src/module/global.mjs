@@ -2,7 +2,7 @@
 /**
  * Handle the removal of an effect and its associated item.
  *
- * @param {object} effect - The effect object to be processed.
+ * @param {ActiveEffect} effect - The effect object to be processed.
  * @param {string} effectName - The localized name of the effect to check.
  * @param {string} itemName - The localized name of the item to find.
  * @param {string} descriptionPrefix - The prefix to remove from the item's description.
@@ -37,7 +37,7 @@ export async function deletedEffectRemovesItem(
 /**
  * Handle the removal of an effect associated with an item.
  *
- * @param {object} item - The item object to be processed.
+ * @param {Item} item - The item object to be processed.
  * @param {string} itemName - The localized name of the item to check.
  * @param {string} effectName - The localized name of the effect to find.
  * @returns {Promise<void>} A promise that resolves when the item has been processed.
@@ -60,7 +60,7 @@ export async function deletedItemRemovesEffect(item, itemName, effectName) {
  * the `effectToRemove` will be deleted. Additionally, if the actor has
  * any of the `additionalEffectsToRemove`, they will also be deleted.
  *
- * @param {object} actor - The actor object to be processed.
+ * @param {Actor} actor - The actor object to be processed.
  * @param {string} effectToRemove - The localized name of the effect to remove.
  * @param {string} effectToIgnore - The localized name of the effect to ignore.
  * @param {string[]} additionalEffectsToRemove - An array of localized names of additional effects to remove.
@@ -94,6 +94,15 @@ export async function deleteEffectRemoveEffect(
 	}
 }
 
+/**
+ * Apply or update a drained effect on an actor, reducing temp HP maximum.
+ *
+ * @param {Actor} actor - The actor receiving the drained effect.
+ * @param {number} damage - Amount of damage to convert into temp HP reduction.
+ * @param {string} [name="Drained"] - Optional custom effect name.
+ * @param {string} [img="modules/elkan5e/icons/drained.svg"] - Effect image path.
+ * @param {string} [uuid] - Origin UUID for the effect.
+ */
 export async function drainedEffect(actor, damage, name, img, uuid) {
 	const effectName = name || "Drained";
 	const effectImg = img || "modules/elkan5e/icons/drained.svg";
@@ -161,6 +170,9 @@ export async function drainedEffect(actor, damage, name, img, uuid) {
 /**
  * Loop every entry in workflow.damageList, skip non-damage or missing targets,
  * resolve each Token, and invoke your callback(token, damage, savedFlag).
+ *
+ * @param {object} workflow - Workflow containing damageList entries.
+ * @param {(token: Token, damage: number, saved: boolean) => Promise<void>|void} callback - Function executed for each damaged target.
  */
 export async function forEachDamagedTarget(workflow, callback) {
 	for (const { targetUuid, tempDamage = 0, hpDamage = 0, saved = false } of workflow.damageList) {
