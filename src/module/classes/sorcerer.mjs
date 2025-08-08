@@ -4,7 +4,7 @@ const DialogV2 = foundry.applications.api.DialogV2;
 
 /**
  * Handle the wild surge effect after casting a spell.
- * @param {object} activity - The activity performed.
+ * @param {Activity} activity - The activity performed.
  */
 export async function wildSurge(activity) {
 	const item = activity.item;
@@ -189,7 +189,7 @@ export async function wildSurge(activity) {
 /**
  * Creates a delay button for the actor's "Delayed Surge" item.
  *
- * @param {object} actor - The actor object containing the items.
+ * @param {Actor} actor - The actor object containing the items.
  * @param {number} rollResult - The result of the roll to be used in the delayed surge description.
  * @returns {Promise<object|null>} A promise that resolves to the button configuration object or null if the "Delayed Surge" item is not found.
  */
@@ -351,7 +351,7 @@ async function createCancelButton() {
 /**
  * Handle the delayed wild surge duration effect.
  *
- * @param {object} effect - The effect object to be processed.
+ * @param {ActiveEffect} effect - The effect object to be processed.
  * @returns {Promise<void>} A promise that resolves when the effect has been processed.
  */
 export async function delayedDuration(effect) {
@@ -366,7 +366,7 @@ export async function delayedDuration(effect) {
 /**
  * Handle the delayed wild surge item.
  *
- * @param {object} item - The item object to be processed.
+ * @param {Item} item - The item object to be processed.
  * @returns {Promise<void>} A promise that resolves when the item has been processed.
  */
 export async function delayedItem(item) {

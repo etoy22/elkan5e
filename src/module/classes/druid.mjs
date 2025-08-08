@@ -1,7 +1,7 @@
 /* global game, ui */
 /**
  * Adds functionality to Archdruid.
- * @param {object} actor - The actor instance.
+ * @param {Actor} actor - The actor instance.
  */
 export function archDruid(actor) {
 	if (

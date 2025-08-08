@@ -18,7 +18,7 @@ const SIZE_TO_GRID = {
  * target is found and damage was dealt, it applies the drained effect using {@link drainedEffect}.
  *
  * @param {object} workflow - The workflow object from MidiQOL or similar automation.
- * @param {Actor5e} workflow.actor - The caster of the spell.
+ * @param {Actor} workflow.actor - The caster of the spell.
  * @param {Token} workflow.token - The token representing the caster.
  * @param {string} workflow.token.actor.uuid - UUID for tracking origin of the effect.
  * @param {Array<object>} workflow.damageList - List of damage entries by target.
@@ -44,7 +44,7 @@ export async function enervate(workflow) {
  * Intended for ongoing damage processing hooks like `midi-qol.damageApplied` or custom macros.
  *
  * @param {object} workflow - The workflow object from MidiQOL or similar automation.
- * @param {Actor5e} workflow.actor - The caster of the spell.
+ * @param {Actor} workflow.actor - The caster of the spell.
  * @param {Token} workflow.token - The token representing the caster.
  * @param {string} workflow.token.actor.uuid - UUID for tracking origin of the effect.
  * @param {Array<object>} workflow.damageList - List of damage entries by target.
@@ -355,7 +355,7 @@ export async function goodberryDeleteItem(deletedItem) {
  * to targets that took damage. The caster is then healed for half the total damage dealt.
  *
  * @param {object} workflow - The workflow object representing the damage event.
- * @param {Actor5e} workflow.actor - The caster actor who is healed by the life drain.
+ * @param {Actor} workflow.actor - The caster actor who is healed by the life drain.
  * @param {Token} workflow.token - The token representing the caster.
  * @param {string} workflow.token.actor.uuid - The caster's actor UUID for effect origin.
  * @param {Array<object>} workflow.damageList - List of damage entries including damage amounts and target UUIDs.
@@ -398,7 +398,7 @@ export async function lifeDrain(workflow) {
  * instance on a valid target token, applies the drainedEffect with the "Sapping Smite" effect.
  *
  * @param {object} workflow - The workflow object containing spell and damage details.
- * @param {Actor5e} workflow.actor - The caster of the Sapping Smite spell.
+ * @param {Actor} workflow.actor - The caster of the Sapping Smite spell.
  * @param {Token} workflow.token - The token representing the caster.
  * @param {string} workflow.token.actor.uuid - The UUID of the caster actor, used as effect origin.
  * @param {Array<object>} workflow.damageList - Array of damage entries detailing damage dealt per target.
@@ -420,7 +420,7 @@ export async function sappingSmite(workflow) {
  * that received damage, applies the drainedEffect with the "Well of Corruption" effect.
  *
  * @param {object} workflow - The workflow object representing the spell's damage application.
- * @param {Actor5e} workflow.actor - The caster actor of the Well of Corruption spell.
+ * @param {Actor} workflow.actor - The caster actor of the Well of Corruption spell.
  * @param {Token} workflow.token - The token representing the caster.
  * @param {string} workflow.token.actor.uuid - The caster's actor UUID, used as effect origin.
  * @param {Array<object>} workflow.damageList - List of damage entries with damage amounts and target UUIDs.
@@ -478,7 +478,7 @@ export async function wellOfCorruption(workflow) {
  * - If the target failed a save (dmgEntry.saved is false), applies the "drainedEffect" to the target.
  *
  * @param {object} workflow - The workflow object representing the triggering action.
- * @param {Actor5e} workflow.actor - The caster actor applying Wrath of the Reaper.
+ * @param {Actor} workflow.actor - The caster actor applying Wrath of the Reaper.
  * @param {Token} workflow.token - The token representing the caster.
  * @param {string} workflow.token.actor.uuid - The caster's actor UUID for effect origin.
  * @param {Array<object>} workflow.damageList - List of damage entries with target info.
@@ -519,7 +519,12 @@ export async function wrathOfTheReaper(workflow) {
 	});
 }
 
-//Automation for Enlarge/Reduce
+/**
+ * Automation for the Enlarge spell: increases the size of each failed target by one step.
+ *
+ * @param {object} workflow - Workflow containing `_failedSaves` from the cast.
+ * @returns {Promise<void>}
+ */
 export async function enlarge(workflow) {
 	if (!workflow._failedSaves || workflow._failedSaves.size === 0) {
 		ui.notifications.warn("No targets failed the roll — cannot apply enlarge.");
@@ -578,6 +583,12 @@ export async function enlarge(workflow) {
 	}
 }
 
+/**
+ * Automation for the Reduce spell: decreases the size of failed targets by one step.
+ *
+ * @param {object} workflow - Workflow containing `_failedSaves` from the cast.
+ * @returns {Promise<void>}
+ */
 export async function reduce(workflow) {
 	if (!workflow._failedSaves || workflow._failedSaves.size === 0) {
 		ui.notifications.warn("No targets failed the roll — cannot apply reduce.");
@@ -635,6 +646,12 @@ export async function reduce(workflow) {
 	}
 }
 
+/**
+ * Restores a token to its original dimensions when an enlarge or reduce effect ends.
+ *
+ * @param {ActiveEffect} effect - The size-changing effect being removed.
+ * @returns {Promise<void>}
+ */
 export async function returnToNormalSize(effect) {
 	const actor = effect.parent;
 
@@ -694,6 +711,14 @@ export async function returnToNormalSize(effect) {
 	}
 }
 
+/**
+ * Creates an ambient light at the position of the last measured template.
+ *
+ * @param {object} workflow - Workflow containing spell casting data.
+ * @param {object} config - Base light configuration.
+ * @param {number} [minLevel=1] - Minimum spell level used for light priority.
+ * @returns {Promise<void>}
+ */
 export async function createLightFromTemplate(workflow, config, minLevel = 1) {
 	const lastTemplate = canvas.templates.placeables.at(-1);
 	if (!lastTemplate) {
@@ -721,6 +746,12 @@ export async function createLightFromTemplate(workflow, config, minLevel = 1) {
 	await canvas.scene.createEmbeddedDocuments("AmbientLight", [lightData]);
 }
 
+/**
+ * Creates a darkness light effect from the last measured template.
+ *
+ * @param {object} workflow - Workflow for the spell cast.
+ * @returns {Promise<void>}
+ */
 export async function darkness(workflow) {
 	return createLightFromTemplate(
 		workflow,
@@ -744,6 +775,12 @@ export async function darkness(workflow) {
 	);
 }
 
+/**
+ * Creates a standard light effect from the last measured template.
+ *
+ * @param {object} workflow - Workflow for the spell cast.
+ * @returns {Promise<void>}
+ */
 export async function light(workflow) {
 	return createLightFromTemplate(
 		workflow,
@@ -767,6 +804,12 @@ export async function light(workflow) {
 	);
 }
 
+/**
+ * Creates a continual flame light source from the last measured template.
+ *
+ * @param {object} workflow - Workflow for the spell cast.
+ * @returns {Promise<void>}
+ */
 export async function continualFlame(workflow) {
 	return createLightFromTemplate(
 		workflow,
@@ -790,6 +833,12 @@ export async function continualFlame(workflow) {
 	);
 }
 
+/**
+ * Creates a moonbeam light source from the last measured template.
+ *
+ * @param {object} workflow - Workflow for the spell cast.
+ * @returns {Promise<void>}
+ */
 export async function moonBeam(workflow) {
 	return createLightFromTemplate(
 		workflow,
@@ -814,6 +863,12 @@ export async function moonBeam(workflow) {
 	);
 }
 
+/**
+ * Adjusts temporary hit points based on save results of the Rend Vigor spell.
+ *
+ * @param {object} workflow - Workflow containing `saves` and `failedSaves` collections.
+ * @returns {Promise<void>}
+ */
 export async function rendVigor(workflow) {
 	let saves = workflow.saves;
 	let failed = workflow.failedSaves;
@@ -833,7 +888,12 @@ export async function rendVigor(workflow) {
 	});
 }
 
-//TODO: Fix this (the code works but not sure when i would have this occur)
+/**
+ * Scales a Fog Cloud template's radius based on spell level.
+ *
+ * @param {object} workflow - Workflow providing template and cast level information.
+ * @returns {Promise<void>}
+ */
 export async function fogCloud(workflow) {
 	const template = workflow.template;
 
@@ -850,7 +910,12 @@ export async function fogCloud(workflow) {
 	ui.notifications.info(`Fog Cloud radius set to ${radius} ft.`);
 }
 
-// TODO: Set in line with the rest of the code
+/**
+ * Heals the caster for half the necrotic damage dealt when a single target is hit.
+ *
+ * @param {object} workflow - Damage workflow containing result information.
+ * @returns {Promise<void>}
+ */
 export async function vampiricSmite(workflow) {
 	const { damage, damageMultiplier } =
 		workflow.damageItem.damageDetail[0].find((d) => d.type === "necrotic") || {};
@@ -872,6 +937,14 @@ export async function vampiricSmite(workflow) {
 	}
 }
 
+/**
+ * Grants an AC bonus based on spell level and the caster's equipped shield.
+ *
+ * @param {object} workflow - Workflow containing actor and item data.
+ * @param {Actor} workflow.actor - The actor casting the spell.
+ * @param {Item} workflow.item - The Shield spell item.
+ * @returns {Promise<void>}
+ */
 export async function shield(workflow) {
 	const actor = workflow.actor;
 	const item = workflow.item;
