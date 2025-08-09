@@ -166,6 +166,15 @@ export async function restorePropertiesToData(newData, savedProps, mode, preserv
 	}
 }
 
+function getKeyByValue(obj, value) {
+	for (const key in obj) {
+		if (obj[key].name === value) { // Check if the 'name' matches
+			return key;  // Return the key if a match is found
+		}
+	}
+	return null;  // Return null if no match is found
+}
+
 export async function migrateActorByType({
 	compendiums,
 	types,
@@ -248,8 +257,7 @@ export async function migrateActorByType({
 			const id = getItemIdentifier(newItem);
 			const oldItem = itemsToRemove.find((i) => getItemIdentifier(i) === id);
 
-			console.log(
-				oldItem
+			console.log(oldItem
 					? `Updating item: ${oldItem.name}`
 					: `Creating new item: ${newData.name} (${id})`,
 			);
@@ -259,42 +267,67 @@ export async function migrateActorByType({
 			// === Custom 'uses' preservation ===
 			if (preserveProperties.includes("uses") && oldItem) {
 				const oldActivities = foundry.utils.deepClone(oldItem.system?.activities ?? {});
-				// Default empty-consumption shape to ignore
-				const defaultConsumption = {
-					targets: [],
-					scaling: { allowed: false, max: "" },
-					spellSlot: true,
-				};
-				// Test if a consumption object matches the default
-				const isDefaultConsumption = (cons) => {
-					if (!cons) return true;
-					if (!Array.isArray(cons.targets) || cons.targets.length !== 0) return false;
-					const sc = cons.scaling || {};
-					if (
-						sc.allowed !== defaultConsumption.scaling.allowed ||
-						(sc.max ?? "") !== defaultConsumption.scaling.max
-					)
-						return false;
-					if (cons.spellSlot !== defaultConsumption.spellSlot) return false;
-					return true;
-				};
+				const newActivities = newData.system?.activities ?? {};
+				// Check if the number of activities is the same
+				if (oldActivities.size === Object.keys(newActivities).length) {
+					// Check if the names of the activities are the same
+					const oldActivityNames = [];
+					oldActivities.forEach((activity) => {
+						oldActivityNames.push(activity.name);
+					});
 
-				for (const [key, newActivity] of Object.entries(newData.system.activities ?? {})) {
-					const name = newActivity.name?.toLowerCase() ?? "";
-					if (/ritual|ritaul|ritul/.test(name)) continue;
+					const newActivityNames = Object.keys(newActivities).map(key => newActivities[key].name);;
 
-					const oldActivity = oldActivities[key];
-					const oldConsumption = oldActivity?.consumption;
+					let activityNamesMatch = true
 
-					// Only restore if old consumption existed and was not the default
-					if (oldConsumption && !isDefaultConsumption(oldConsumption)) {
-						newData.system.activities[key].consumption =
-							foundry.utils.deepClone(oldConsumption);
-						console.log(
-							`Restored custom consumption for activity ${key} on item ${newData.name}`,
-						);
+					for (let i = 0; i < oldActivityNames.length; i++) {
+						if (oldActivityNames[i] !== newActivityNames[i] && newActivityNames[i] !== "") {
+							activityNamesMatch = false; // Mismatch found
+							break; // Stop as soon as a mismatch is found
+						}
 					}
+
+					if (activityNamesMatch) {
+						let newKeys = [];
+
+						// Iterate over the keys of newActivities (assuming it's a plain object)
+						Object.keys(newActivities).forEach((key) => {
+							const activity = newActivities[key];
+
+							// Find the key by matching activity names
+							const newKey = getKeyByValue(newActivities, activity.name);
+							newKeys.push(newKey);
+						});
+
+
+						// Now, you can iterate through old and new activities to copy the consumption
+						for (let i = 0; i < oldActivityNames.length; i++) {
+							// Get the old activity by name from the old Activities Collection
+
+							// Get the corresponding new activity using the new key
+							const newKey = newKeys[i];
+							const oldActivity = oldActivities.get(newKey);
+							const newActivity = newActivities[newKey];
+
+							// If both activities exist, copy the consumption data
+							if (oldActivity && newActivity) {
+								// New Activity: {"targets":[],"scaling":{"allowed":false,"max":""},"spellSlot":true}
+								let same =
+									(oldActivity.consumption.targets.length === newActivity.consumption.targets.length) &&
+									(oldActivity.consumption.scaling.allowed === newActivity.consumption.scaling.allowed) &&
+									(oldActivity.consumption.scaling.max === newActivity.consumption.scaling.max) &&
+									(oldActivity.consumption.spellSlot === newActivity.consumption.spellSlot);
+
+
+								if (!same) {
+									newActivity.consumption = { ...oldActivity.consumption };
+								}
+							}
+						}
+					}
+
 				}
+
 			}
 
 			const createdItems = await actor.createEmbeddedDocuments("Item", [newData]);
