@@ -1,3 +1,4 @@
+/* global game, ChatMessage, foundry */
 /**
  * Handle the removal of an effect and its associated item.
  *
@@ -13,13 +14,11 @@ export async function deletedEffectRemovesItem(
 	effectName,
 	itemName,
 	descriptionPrefix,
-	endMessage
+	endMessage,
 ) {
 	if (effect.name === game.i18n.localize(effectName)) {
 		const actor = effect.parent;
-		const item = actor.items.find(
-			(item) => item.name === game.i18n.localize(itemName)
-		);
+		const item = actor.items.find((item) => item.name === game.i18n.localize(itemName));
 		if (item) {
 			const itemDescription = item.system.description.value
 				.replace(game.i18n.localize(descriptionPrefix), "")
@@ -27,9 +26,7 @@ export async function deletedEffectRemovesItem(
 			const chatMessageData = {
 				user: game.user.id,
 				speaker: ChatMessage.getSpeaker({ actor: actor }),
-				content: `<p>${itemDescription}</p><p>${game.i18n.localize(
-					endMessage
-				)}</p>`,
+				content: `<p>${itemDescription}</p><p>${game.i18n.localize(endMessage)}</p>`,
 			};
 			ChatMessage.create(chatMessageData);
 			await item.delete();
@@ -48,9 +45,7 @@ export async function deletedEffectRemovesItem(
 export async function deletedItemRemovesEffect(item, itemName, effectName) {
 	if (item.name === game.i18n.localize(itemName)) {
 		const actor = item.parent;
-		const effect = actor.effects.find(
-			(e) => e.name === game.i18n.localize(effectName)
-		);
+		const effect = actor.effects.find((e) => e.name === game.i18n.localize(effectName));
 		if (effect) {
 			await effect.delete();
 		}
@@ -75,12 +70,12 @@ export async function deleteEffectRemoveEffect(
 	actor,
 	effectToRemove,
 	effectToIgnore,
-	additionalEffectsToRemove
+	additionalEffectsToRemove,
 ) {
 	const effectToRemoveLocalized = game.i18n.localize(effectToRemove);
 	const effectToIgnoreLocalized = game.i18n.localize(effectToIgnore);
-	const additionalEffectsToRemoveLocalized = additionalEffectsToRemove.map(
-		(effect) => game.i18n.localize(effect)
+	const additionalEffectsToRemoveLocalized = additionalEffectsToRemove.map((effect) =>
+		game.i18n.localize(effect),
 	);
 
 	// Find the effect to remove
@@ -91,7 +86,7 @@ export async function deleteEffectRemoveEffect(
 
 		// Find and delete any additional effects to remove
 		const additionalEffects = actor.effects.filter((i) =>
-			additionalEffectsToRemoveLocalized.includes(i.name)
+			additionalEffectsToRemoveLocalized.includes(i.name),
 		);
 		for (const additionalEffect of additionalEffects) {
 			await additionalEffect.delete();
@@ -104,16 +99,14 @@ export async function drainedEffect(actor, damage, name, img, uuid) {
 	const effectImg = img || "modules/elkan5e/icons/drained.svg";
 	const effectOrigin = uuid || null;
 
-	const existingEffect = actor.effects.find(e =>
-		e.name === effectName &&
-		e.img === effectImg &&
-		e.origin === effectOrigin
+	const existingEffect = actor.effects.find(
+		(e) => e.name === effectName && e.img === effectImg && e.origin === effectOrigin,
 	);
 
 	const newValue = -Math.abs(damage); // Ensure negative number
 
 	if (existingEffect) {
-		const updatedChanges = existingEffect.changes.map(change => {
+		const updatedChanges = existingEffect.changes.map((change) => {
 			if (change.key === "system.attributes.hp.tempmax") {
 				// Parse the old value (as string), add newValue
 				const oldVal = parseFloat(change.value) || 0;
@@ -121,7 +114,7 @@ export async function drainedEffect(actor, damage, name, img, uuid) {
 
 				return {
 					...change,
-					value: combinedValue.toString()
+					value: combinedValue.toString(),
 				};
 			}
 			return change;
@@ -162,5 +155,21 @@ export async function drainedEffect(actor, damage, name, img, uuid) {
 			},
 		};
 		await actor.createEmbeddedDocuments("ActiveEffect", [drained]);
+	}
+}
+
+/**
+ * Loop every entry in workflow.damageList, skip non-damage or missing targets,
+ * resolve each Token, and invoke your callback(token, damage, savedFlag).
+ */
+export async function forEachDamagedTarget(workflow, callback) {
+	for (const { targetUuid, tempDamage = 0, hpDamage = 0, saved = false } of workflow.damageList) {
+		const dmg = tempDamage + hpDamage;
+		if (dmg <= 0 || !targetUuid) continue;
+		const parts = targetUuid.split(".");
+		const token = canvas.tokens.get(parts.at(-1));
+		if (!token) continue;
+		// Guarantee we’re awaiting a Promise
+		await Promise.resolve(callback(token, dmg, saved));
 	}
 }
