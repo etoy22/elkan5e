@@ -9,7 +9,7 @@ const DialogV2 = foundry.applications.api.DialogV2;
  * If the actor also has any other effect that is not "Meld with Shadows [Attacks]",
  * the "Meld with Shadows [Effect]" will be deleted.
  *
- * @param {object} actor - The actor object to be processed.
+ * @param {Actor} actor - The actor object to be processed.
  * @returns {Promise<void>} A promise that resolves when the effect has been processed.
  */
 export async function rmvMeldShadow(actor) {
@@ -28,7 +28,7 @@ export async function rmvMeldShadow(actor) {
  * If the actor also has any other effect that is not "Hijack Shadow [Attacks]",
  * the "Hijack Shadow [Effect]" will be deleted.
  *
- * @param {object} actor - The actor object to be processed.
+ * @param {Actor} actor - The actor object to be processed.
  * @returns {Promise<void>} A promise that resolves when the effect has been processed.
  */
 export async function rmvhijackShadow(actor) {

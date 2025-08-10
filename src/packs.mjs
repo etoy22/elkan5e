@@ -317,8 +317,11 @@ async function removePacks(packName) {
 }
 
 /**
- * Slugify names for safe file/folder names.
+ * Slugify names for safe file or folder names.
  * Allows folder paths by allowing slashes.
+ *
+ * @param {string} name - Name to convert to a slug.
+ * @returns {string} The slugified name.
  */
 function slugify(name) {
 	return name
