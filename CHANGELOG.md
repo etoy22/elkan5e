@@ -29,29 +29,29 @@
 
 **[Bard](https://www.elkan5e.com/bard)**
 
-- **[Cleric](https://www.elkan5e.com/cleric)**
+**[Cleric](https://www.elkan5e.com/cleric)**
 
-- **[Druid](https://www.elkan5e.com/druid)**
+**[Druid](https://www.elkan5e.com/druid)**
 
-- **[Fighter](https://www.elkan5e.com/fighter)**
+**[Fighter](https://www.elkan5e.com/fighter)**
 
-- **[Monk](https://www.elkan5e.com/monk)**
+**[Monk](https://www.elkan5e.com/monk)**
 
-- **[Paladin](https://www.elkan5e.com/paladin)**
+**[Paladin](https://www.elkan5e.com/paladin)**
 
 - Sapping Smite's drained effect now works.
 
 **[Ranger](https://www.elkan5e.com/ranger)**
 
-- **[Rogue](https://www.elkan5e.com/rogue)**
+**[Rogue](https://www.elkan5e.com/rogue)**
 
 - Slicing Blow's drained effect now works.
 
 **[Sorcerer](https://www.elkan5e.com/sorcerer)**
 
-- **[Warlock](https://www.elkan5e.com/warlock)**
+**[Warlock](https://www.elkan5e.com/warlock)**
 
-- **[Wizard](https://www.elkan5e.com/wizard)**
+**[Wizard](https://www.elkan5e.com/wizard)**
 
 - **Necromancer**:
     - Spectral Empowerment's drained effect now works.
