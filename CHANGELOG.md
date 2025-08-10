@@ -5,8 +5,8 @@
 ## **IMPORTANT**
 
 - A new popup will appear on first load of Elkan, allowing you to migrate all your features. You can access it again anytime from **Elkan Settings**.
-- If you have **unlinked tokens** on the board, the feature might duplicate instead of being deleted. To fix this, simply replace the creature on the board.
 - This system will still work if you rename the file, as long as the identifier hasn’t been changed. The only thing that might be lost is any changes made to the description.
+- **Warning:** This Migration Tool is in beta. It may cause bugs or interact with custom content in unexpected ways. We strongly recommend you make a backup of the world before running it. If you find an issue, you can report it on our [Discord](https://discord.gg/4Z2c7b6).
 
 ## Bug Fixes
 
