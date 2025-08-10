@@ -1,9 +1,10 @@
-export async function secondWind(workflow) {
-    const actor = workflow.actor;
-    persistentLeader(actor)
-    rallySurge(actor)
-}
+/* global game, ui */
 
+export async function secondWind(workflow) {
+	const actor = workflow.actor;
+	persistentLeader(actor);
+	rallySurge(actor);
+}
 
 /**
  * Adds functionality to Persistent Leader which does this:
@@ -11,19 +12,24 @@ export async function secondWind(workflow) {
  * @param {object} activity - The activity performed.
  */
 export async function persistentLeader(actor) {
-    if (actor.items.find(i => i.system.identifier === "persistent-leader")) {
-        const rallyFeature = actor.items.find(i => i.system.identifier === "rally");
+	if (actor.items.find((i) => i.system.identifier === "persistent-leader")) {
+		const rallyFeature = actor.items.find((i) => i.system.identifier === "rally");
 
-        if (rallyFeature) {
-            rallyFeature.update({ "system.uses.spent": Math.max(rallyFeature.system.uses.spent - 1, 0) })
-        }
+		if (rallyFeature) {
+			rallyFeature.update({
+				"system.uses.spent": Math.max(rallyFeature.system.uses.spent - 1, 0),
+			});
+		}
 
-        if (game.user.isGM || actor.isOwner) {
-            ui.notifications.notify(game.i18n.format("elkan5e.notifications.PersistentLeader", { name: actor.name }));
-        }
-    }
+		if (game.user.isGM || actor.isOwner) {
+			ui.notifications.notify(
+				game.i18n.format("elkan5e.notifications.PersistentLeader", {
+					name: actor.name,
+				}),
+			);
+		}
+	}
 }
-
 
 /**
  * Adds functionality to Rallying Surge which does this:
@@ -31,9 +37,13 @@ export async function persistentLeader(actor) {
  * @param {object} activity - The activity performed.
  */
 export async function rallySurge(actor) {
-    if (actor.items.find(i => i.system.identifier === "rallying-surge")) {
-        if (game.user.isGM || actor.isOwner) {
-            ui.notifications.notify(game.i18n.format("elkan5e.notifications.RallyingSurge", { name: actor.name }));
-        }
-    }
+	if (actor.items.find((i) => i.system.identifier === "rallying-surge")) {
+		if (game.user.isGM || actor.isOwner) {
+			ui.notifications.notify(
+				game.i18n.format("elkan5e.notifications.RallyingSurge", {
+					name: actor.name,
+				}),
+			);
+		}
+	}
 }

@@ -1,3 +1,4 @@
+/* global canvas */
 import { drainedEffect } from "../global.mjs";
 
 export async function lifeDrainGraveguard(workflow) {
@@ -30,7 +31,13 @@ export async function lifeDrainGraveguard(workflow) {
 			continue;
 		}
 
-		await drainedEffect(targetToken.actor, damage, "Life Drain", "icons/magic/unholy/strike-hand-glow-pink.webp", casterUuid);
+		await drainedEffect(
+			targetToken.actor,
+			damage,
+			"Life Drain",
+			"icons/magic/unholy/strike-hand-glow-pink.webp",
+			casterUuid,
+		);
 	}
 }
 export async function spectralEmpowerment(workflow) {
@@ -63,6 +70,12 @@ export async function spectralEmpowerment(workflow) {
 			continue;
 		}
 
-		await drainedEffect(targetToken.actor, damage, "Spectral Empowerment", "icons/magic/unholy/strike-hand-glow-pink.webp", casterUuid);
+		await drainedEffect(
+			targetToken.actor,
+			damage,
+			"Spectral Empowerment",
+			"icons/magic/unholy/strike-hand-glow-pink.webp",
+			casterUuid,
+		);
 	}
 }
