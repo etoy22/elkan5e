@@ -41,8 +41,8 @@ export async function infusedHealer(workflow) {
 
 /**
  * Adds functionality to Healing Overflow.
- *   @param {object} item - The item used.
- *   @param {object} roll - The resulting roll.
+ * @param {Item} item - The item used.
+ * @param {Roll} roll - The resulting roll.
  */
 export function healOver(item, roll) {
 	if (

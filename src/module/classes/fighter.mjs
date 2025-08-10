@@ -9,7 +9,7 @@ export async function secondWind(workflow) {
 /**
  * Adds functionality to Persistent Leader which does this:
  * "When you use your Second Wind ability, you regain one use of your Rally feature and one use of your Commander's Strike feature."
- * @param {object} activity - The activity performed.
+ * @param {Actor} actor - The actor using Second Wind.
  */
 export async function persistentLeader(actor) {
 	if (actor.items.find((i) => i.system.identifier === "persistent-leader")) {
@@ -34,7 +34,7 @@ export async function persistentLeader(actor) {
 /**
  * Adds functionality to Rallying Surge which does this:
  * "When you use your Action Surge, choose up to 3 allies within 60 ft. You shout a command, and each ally can use their reaction to immediately use an action. They can use any action available to them, but they cannot cast a spell of 1st level or higher."
- * @param {object} activity - The activity performed.
+ * @param {Actor} actor - The actor using Action Surge.
  */
 export async function rallySurge(actor) {
 	if (actor.items.find((i) => i.system.identifier === "rallying-surge")) {
