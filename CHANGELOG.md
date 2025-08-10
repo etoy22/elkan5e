@@ -5,21 +5,18 @@
 ## **IMPORTANT**
 
 - A new popup will appear on first load of Elkan, allowing you to migrate all your features. You can access it again anytime from **Elkan Settings**.
-- If you have **unlinked tokens** on the board, the feature might duplicate instead of being deleted. To fix this, simply replace the creature on the board.
 - This system will still work if you rename the file, as long as the identifier hasn’t been changed. The only thing that might be lost is any changes made to the description.
+- **Warning:** This Migration Tool is in beta. It may cause bugs or interact with custom content in unexpected ways. We strongly recommend you make a backup of the world before running it. If you find an issue, you can report it on our [Discord](https://discord.gg/4Z2c7b6).
 
 ## Bug Fixes
 
 - Some spells caused errors when turned into scrolls—this has now been fixed.
+- Not sure when it was removed but just in case Spare the Dying has an activity
 
 ## Ancestry
 
 - **Dragonborn**:
     - Breath Weapons now use a single activity that automatically chooses the higher of Charisma or Constitution.
-
-## Backgrounds
-
--
 
 ## Classes
 
@@ -27,43 +24,19 @@
 
 - Barbarian Defense has been automated.
 
-**[Bard](https://www.elkan5e.com/bard)**
-
-- **[Cleric](https://www.elkan5e.com/cleric)**
-
-- **[Druid](https://www.elkan5e.com/druid)**
-
-- **[Fighter](https://www.elkan5e.com/fighter)**
-
-- **[Monk](https://www.elkan5e.com/monk)**
-
-- **[Paladin](https://www.elkan5e.com/paladin)**
+**[Paladin](https://www.elkan5e.com/paladin)**
 
 - Sapping Smite's drained effect now works.
 
-**[Ranger](https://www.elkan5e.com/ranger)**
-
-- **[Rogue](https://www.elkan5e.com/rogue)**
+**[Rogue](https://www.elkan5e.com/rogue)**
 
 - Slicing Blow's drained effect now works.
 
-**[Sorcerer](https://www.elkan5e.com/sorcerer)**
-
-- **[Warlock](https://www.elkan5e.com/warlock)**
-
-- **[Wizard](https://www.elkan5e.com/wizard)**
+**[Wizard](https://www.elkan5e.com/wizard)**
 
 - **Necromancer**:
     - Spectral Empowerment's drained effect now works.
     - Spectral Graveguard: Life Drain now works.
-
-## Equipment
-
--
-
-## Feats
-
--
 
 ## Game Rules
 
@@ -76,6 +49,7 @@
 - _[Enlarge/Reduce](https://www.elkan5e.com/spells/enlarge%2Freduce)_ spell automated.
 - _[Speak with Animals](https://www.elkan5e.com/spells/speak-with-animals)_ now grants a custom language.
 - _[Enervate](https://www.elkan5e.com/spells/enervate)_, _[Life Drain](https://www.elkan5e.com/spells/life-drain)_, _[Well of Corruption](https://www.elkan5e.com/spells/well-of-corruption)_, and _[Wrath of the Reaper](https://www.elkan5e.com/spells/wrath-of-the-reaper)_ drained effects now work.
+- _[Arcane Lock](https://www.elkan5e.com/spells/arcane-lock)_ increase DC to 25 + spell level.
 
 ## UI
 
