@@ -114,8 +114,11 @@ export function filterDocsByMode(docs, mode) {
 function getItemIdentifier(item) {
 	const id = item.system?.identifier;
 	if (id && id.trim().length > 0) return id.trim();
-	// fallback: slugify the name (lowercase, spaces -> dash)
-	return item.name.toLowerCase().replace(/\s+/g, "-");
+
+	// If no identifier exists, generate one and save it so it persists
+	const generated = item.name.toLowerCase().replace(/\s+/g, "-");
+	if (item.system) item.system.identifier = generated;
+	return generated;
 }
 
 export async function savePropertiesForTransfer(items, mode, propKeys) {
@@ -125,6 +128,7 @@ export async function savePropertiesForTransfer(items, mode, propKeys) {
 		saved[id] = {
 			sourceBook: item.system.source?.book ?? null,
 			img: item.img,
+			identifier: item.system?.identifier ?? id,
 		};
 		for (const key of propKeys) {
 			if (key === "name") {
@@ -141,6 +145,7 @@ export async function restorePropertiesToData(newData, savedProps, mode, preserv
 	if (!savedProps) return;
 
 	newData.img = savedProps.img ?? newData.img;
+	newData.system.identifier = savedProps.identifier ?? newData.system?.identifier;
 	const originalSource = savedProps.sourceBook ?? null;
 
 	if (
@@ -166,14 +171,60 @@ export async function restorePropertiesToData(newData, savedProps, mode, preserv
 	}
 }
 
+/* global foundry, game, ui */
+
+// ---------- helpers used by migrateActorByType ----------
+
 function getKeyByValue(obj, value) {
 	for (const key in obj) {
-		if (obj[key].name === value) { // Check if the 'name' matches
-			return key;  // Return the key if a match is found
+		if (Object.prototype.hasOwnProperty.call(obj, key) && obj[key]?.name === value) {
+			return key;
 		}
 	}
-	return null;  // Return null if no match is found
+	return null;
 }
+
+/**
+ * Deep compare that ignores _stats and ownership everywhere.
+ * NOTE: DOES NOT ignore identifier — differences in system.identifier will count.
+ */
+function deepEqualIgnoringMeta(a, b) {
+	if (a === b) return true;
+	if (typeof a !== typeof b) return false;
+
+	if (a === null || b === null) return a === b;
+
+	// Arrays
+	if (Array.isArray(a) && Array.isArray(b)) {
+		if (a.length !== b.length) return false;
+		for (let i = 0; i < a.length; i++) {
+			if (!deepEqualIgnoringMeta(a[i], b[i])) return false;
+		}
+		return true;
+	}
+
+	// Objects
+	if (typeof a === "object" && typeof b === "object") {
+		const aKeys = Object.keys(a).filter((k) => k !== "_stats" && k !== "ownership");
+		const bKeys = Object.keys(b).filter((k) => k !== "_stats" && k !== "ownership");
+
+		if (aKeys.length !== bKeys.length) return false;
+		for (const key of aKeys) {
+			if (!bKeys.includes(key)) return false;
+			if (!deepEqualIgnoringMeta(a[key], b[key])) return false;
+		}
+		return true;
+	}
+
+	// Primitives
+	return a === b;
+}
+
+function itemsAreFullyIdentical(oldItem, newItem) {
+	return deepEqualIgnoringMeta(oldItem.toObject(), newItem.toObject());
+}
+
+// ---------- main migration ----------
 
 export async function migrateActorByType({
 	compendiums,
@@ -194,6 +245,17 @@ export async function migrateActorByType({
 	let currentChar = 0;
 	let currentNPC = 0;
 
+	// reporting
+	const reportByActor = new Map(); // actorId -> { name, type, updated:[], created:[], skipped:[] }
+	const totals = {
+		updated: 0,
+		created: 0,
+		skipped: 0,
+		actors: actors.length,
+		characters: 0,
+		npcs: 0,
+	};
+
 	const docNameMap = new Map(filteredDocs.map((d) => [d.name, d]));
 	const docIdMap = new Map();
 	for (const d of filteredDocs) {
@@ -207,11 +269,20 @@ export async function migrateActorByType({
 		const mode = isChar ? updateMode.players : updateMode.npcs;
 		if (mode === "none") continue;
 
+		if (isChar) totals.characters++;
+		else totals.npcs++;
+		reportByActor.set(actor.id, {
+			name: actor.name,
+			type: actor.type,
+			updated: [],
+			created: [],
+			skipped: [],
+		});
+
 		const actorItems = actor.items.filter((i) => types.includes(i.type));
 		const itemsToRemove = [];
 		const itemsToAdd = [];
 
-		// Determine which items to remove and re-add
 		for (const actorItem of actorItems) {
 			const actorId = getItemIdentifier(actorItem);
 			const matchedDocs = docIdMap.get(actorId) ?? [];
@@ -220,6 +291,15 @@ export async function migrateActorByType({
 				const matchedDoc = matchedDocs[0];
 				if (mode === "update-Elkan" && matchedDoc.system?.source?.book !== "Elkan 5e")
 					continue;
+
+				if (itemsAreFullyIdentical(actorItem, matchedDoc)) {
+					reportByActor
+						.get(actor.id)
+						.skipped.push({ item: actorItem.name, reason: "Item is identical" });
+					totals.skipped++;
+					continue;
+				}
+
 				itemsToRemove.push(actorItem);
 				itemsToAdd.push(matchedDoc);
 			} else if (matchedDocs.length > 1) {
@@ -227,29 +307,61 @@ export async function migrateActorByType({
 					const docByName = docNameMap.get(actorItem.name);
 					if (mode === "update-Elkan" && docByName.system?.source?.book !== "Elkan 5e")
 						continue;
+
+					if (itemsAreFullyIdentical(actorItem, docByName)) {
+						reportByActor
+							.get(actor.id)
+							.skipped.push({ item: actorItem.name, reason: "Item is identical" });
+						totals.skipped++;
+						continue;
+					}
+
 					itemsToRemove.push(actorItem);
 					itemsToAdd.push(docByName);
 				} else {
-					console.warn(
-						`Ambiguous identifier '${actorId}' and no name match for actor item '${actorItem.name}', skipping update.`,
-					);
+					reportByActor.get(actor.id).skipped.push({
+						item: actorItem.name,
+						reason: `Ambiguous identifier '${actorId}' and no name match`,
+					});
+					totals.skipped++;
 					continue;
 				}
-			} else if (docNameMap.has(actorItem.name)) {
-				const docByName = docNameMap.get(actorItem.name);
-				if (mode === "update-Elkan" && docByName.system?.source?.book !== "Elkan 5e")
+			} else {
+				// no identifier matches at all
+				if (docNameMap.has(actorItem.name)) {
+					const docByName = docNameMap.get(actorItem.name);
+					if (mode === "update-Elkan" && docByName.system?.source?.book !== "Elkan 5e")
+						continue;
+
+					if (itemsAreFullyIdentical(actorItem, docByName)) {
+						reportByActor
+							.get(actor.id)
+							.skipped.push({ item: actorItem.name, reason: "Item is identical" });
+						totals.skipped++;
+						continue;
+					}
+
+					itemsToRemove.push(actorItem);
+					itemsToAdd.push(docByName);
+				} else {
+					reportByActor.get(actor.id).skipped.push({
+						item: actorItem.name,
+						reason: `No matching doc by id '${actorId}' or name`,
+					});
+					totals.skipped++;
 					continue;
-				itemsToRemove.push(actorItem);
-				itemsToAdd.push(docByName);
+				}
 			}
 		}
 
 		// Save custom properties, then delete old items
 		const savedProps = await savePropertiesForTransfer(itemsToRemove, mode, preserveProperties);
-		await actor.deleteEmbeddedDocuments(
-			"Item",
-			itemsToRemove.map((i) => i.id),
-		);
+		if (itemsToRemove.length) {
+			await actor.deleteEmbeddedDocuments(
+				"Item",
+				itemsToRemove.map((i) => i.id),
+			);
+		}
 
 		// Re-create each new item
 		for (const newItem of itemsToAdd) {
@@ -257,86 +369,86 @@ export async function migrateActorByType({
 			const id = getItemIdentifier(newItem);
 			const oldItem = itemsToRemove.find((i) => getItemIdentifier(i) === id);
 
-			console.log(oldItem
-					? `Updating item: ${oldItem.name}`
-					: `Creating new item: ${newData.name} (${id})`,
-			);
-
 			await restorePropertiesToData(newData, savedProps[id], mode, preserveProperties);
 
 			// === Custom 'uses' preservation ===
-			if (preserveProperties.includes("uses") && oldItem) {
+			if (preserveProperties?.includes?.("uses") && oldItem) {
 				const oldActivities = foundry.utils.deepClone(oldItem.system?.activities ?? {});
 				const newActivities = newData.system?.activities ?? {};
-				// Check if the number of activities is the same
+
 				if (oldActivities.size === Object.keys(newActivities).length) {
-					// Check if the names of the activities are the same
 					const oldActivityNames = [];
-					oldActivities.forEach((activity) => {
-						oldActivityNames.push(activity.name);
-					});
+					oldActivities.forEach((activity) => oldActivityNames.push(activity.name));
 
-					const newActivityNames = Object.keys(newActivities).map(key => newActivities[key].name);;
-
-					let activityNamesMatch = true
-
+					const newActivityNames = Object.keys(newActivities).map(
+						(key) => newActivities[key].name,
+					);
+					let activityNamesMatch = true;
 					for (let i = 0; i < oldActivityNames.length; i++) {
-						if (oldActivityNames[i] !== newActivityNames[i] && newActivityNames[i] !== "") {
-							activityNamesMatch = false; // Mismatch found
-							break; // Stop as soon as a mismatch is found
+						if (
+							oldActivityNames[i] !== newActivityNames[i] &&
+							newActivityNames[i] !== ""
+						) {
+							activityNamesMatch = false;
+							break;
 						}
 					}
 
 					if (activityNamesMatch) {
-						let newKeys = [];
-
-						// Iterate over the keys of newActivities (assuming it's a plain object)
-						Object.keys(newActivities).forEach((key) => {
-							const activity = newActivities[key];
-
-							// Find the key by matching activity names
-							const newKey = getKeyByValue(newActivities, activity.name);
-							newKeys.push(newKey);
-						});
-
-
-						// Now, you can iterate through old and new activities to copy the consumption
+						const newKeys = Object.keys(newActivities).map((key) =>
+							getKeyByValue(newActivities, newActivities[key].name),
+						);
 						for (let i = 0; i < oldActivityNames.length; i++) {
-							// Get the old activity by name from the old Activities Collection
-
-							// Get the corresponding new activity using the new key
 							const newKey = newKeys[i];
 							const oldActivity = oldActivities.get(newKey);
 							const newActivity = newActivities[newKey];
-
-							// If both activities exist, copy the consumption data
 							if (oldActivity && newActivity) {
-								// New Activity: {"targets":[],"scaling":{"allowed":false,"max":""},"spellSlot":true}
-								let same =
-									(oldActivity.consumption.targets.length === newActivity.consumption.targets.length) &&
-									(oldActivity.consumption.scaling.allowed === newActivity.consumption.scaling.allowed) &&
-									(oldActivity.consumption.scaling.max === newActivity.consumption.scaling.max) &&
-									(oldActivity.consumption.spellSlot === newActivity.consumption.spellSlot);
+								const same =
+									oldActivity.consumption.targets.length ===
+										newActivity.consumption.targets.length &&
+									oldActivity.consumption.scaling.allowed ===
+										newActivity.consumption.scaling.allowed &&
+									oldActivity.consumption.scaling.max ===
+										newActivity.consumption.scaling.max &&
+									oldActivity.consumption.spellSlot ===
+										newActivity.consumption.spellSlot;
 
-
-								if (!same) {
-									newActivity.consumption = { ...oldActivity.consumption };
-								}
+								if (!same) newActivity.consumption = { ...oldActivity.consumption };
 							}
 						}
 					}
-
 				}
-
 			}
 
 			const createdItems = await actor.createEmbeddedDocuments("Item", [newData]);
-			if (preserveProperties.includes("name") && savedProps[id]?.name) {
+
+			// Optional: preserve original name
+			let namePreserved = false;
+			if (preserveProperties?.includes?.("name") && savedProps[id]?.name) {
 				await createdItems[0].update({ name: savedProps[id].name });
+				namePreserved = true;
+			}
+
+			// report
+			if (oldItem) {
+				reportByActor.get(actor.id).updated.push({
+					from: oldItem.name,
+					to: namePreserved ? savedProps[id].name : newData.name,
+					id,
+					namePreserved,
+				});
+				totals.updated++;
+			} else {
+				reportByActor.get(actor.id).created.push({
+					name: namePreserved ? savedProps[id].name : newData.name,
+					id,
+					namePreserved,
+				});
+				totals.created++;
 			}
 		}
 
-		// Update progress
+		// progress tick
 		if (actor.type === "character") currentChar++;
 		else currentNPC++;
 		progress.tick(
@@ -349,6 +461,51 @@ export async function migrateActorByType({
 	}
 
 	progress.done();
+
+	// ---- single consolidated summary ----
+	console.groupCollapsed(`[${progressLabel}] Elkan 5e Migration Summary`);
+	console.info(
+		`Actors processed: ${totals.actors} (characters: ${totals.characters}, npcs: ${totals.npcs})`,
+	);
+	console.info(
+		`Items updated: ${totals.updated} | created: ${totals.created} | skipped: ${totals.skipped}`,
+	);
+
+	for (const [, rpt] of reportByActor.entries()) {
+		const header = `${rpt.name} [${rpt.type}] — updated: ${rpt.updated.length}, created: ${rpt.created.length}, skipped: ${rpt.skipped.length}`;
+		console.groupCollapsed(header);
+
+		if (rpt.updated.length) {
+			console.groupCollapsed("Updated");
+			rpt.updated.forEach((u) => {
+				console.log(
+					`• ${u.from} → ${u.to}${u.namePreserved ? " (name preserved)" : ""} [id:${u.id}]`,
+				);
+			});
+			console.groupEnd();
+		}
+		if (rpt.created.length) {
+			console.groupCollapsed("Created");
+			rpt.created.forEach((c) => {
+				console.log(
+					`• ${c.name}${c.namePreserved ? " (name preserved)" : ""} [id:${c.id}]`,
+				);
+			});
+			console.groupEnd();
+		}
+		if (rpt.skipped.length) {
+			console.groupCollapsed("Skipped");
+			rpt.skipped.forEach((s) => console.warn(`• ${s.item}: ${s.reason}`));
+			console.groupEnd();
+		}
+
+		console.groupEnd();
+	}
+	console.groupEnd();
+
+	ui.notifications.info(
+		`${progressLabel} finished — Actors: ${totals.actors}, Updated: ${totals.updated}, Created: ${totals.created}, Skipped: ${totals.skipped}. See console for details.`,
+	);
 }
 
 export async function migrateActorSpells(
