@@ -161,7 +161,7 @@ export async function startDialog() {
 
 		console.log("Elkan 5e dialog shown:", entryDialog);
 		await game.settings.set("elkan5e", "dialogShown", entryDialog);
-		
+
 		if (
 			(saved_version[0] < 13 && MODULE_VERSION.split(".")[0] >= 13) ||
 			game.settings.get("elkan5e", "v13Show")
@@ -179,7 +179,6 @@ export async function startDialog() {
 		await game.settings.set("elkan5e", "moduleVersion", MODULE_VERSION);
 	}
 }
-
 
 export async function getForm() {
 	return `
