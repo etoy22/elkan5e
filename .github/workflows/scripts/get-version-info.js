@@ -2,58 +2,48 @@ import { execSync } from 'child_process';
 import fs from 'fs';
 
 function cleanVersion(ver) {
-	return ver.replace(/[.\s-]+$/g, '');
-}
-
-function extractIntPart(versionStr) {
-	if (!versionStr) return null;
-	const match = versionStr.match(/^(\d+)/);
-	return match ? parseInt(match[1], 10) : null;
+	// normalize fancy dashes to ASCII hyphen and strip trailing ./-/space
+	return ver.replace(/[–—‒−]/g, '-').replace(/[.\s-]+$/g, '');
 }
 
 function main() {
 	try {
-		const commitMsg = execSync('git log -1 --pretty=%B').toString().trim();
-		const versionRegex = /^([vV])(\d+(\.\d+)+)((\s*-\s*\w+)*)$/;
-		const match = commitMsg.match(versionRegex);
+		// Subject only; take first line just in case
+		const raw = execSync('git log -1 --pretty=%s').toString();
+		const firstLine = raw.split(/\r?\n/)[0].trim();
+
+		// Pull out version if it's embedded (e.g., "release: v1.13.0")
+		// Allows optional suffix blocks like -alpha, -beta, -rc.1, -test
+		const embedRegex = /(^|\s)([vV]\d+(?:\.\d+)+(?:\s*-\s*[\w.]+)*)($|\s)/;
+		const m2 = embedRegex.exec(firstLine);
+		const candidate = cleanVersion((m2?.[2] ?? firstLine));
+
+		const versionRegex = /^[vV](\d+(?:\.\d+)+)(?:\s*-\s*[\w.]+)*$/;
+		const match = candidate.match(versionRegex);
 
 		if (!match) {
-			console.log(
-				JSON.stringify({
-					should_continue: false,
-					error: "Invalid commit message: must start with 'v' and have version numbers with optional suffixes separated by spaces and dashes.",
-				}),
-			);
+			console.log(JSON.stringify({
+				should_continue: false,
+				error: "Invalid commit message: expected something like 'v1.13.0' optionally followed by '-alpha|-beta|-test|-rc.1'.",
+				commit_subject: firstLine
+			}));
 			process.exit(0);
 		}
 
-		const prefix = match[1].toLowerCase(); // 'v'
-		const versionNumbers = match[2]; // e.g. '1.1.1'
-		const suffixesStr = match[4] || ''; // e.g. " -alpha -beta"
+		const prefix = 'v';
+		const versionNumbers = match[1];
+		const suffixes = (candidate.slice(match[0].length) || '')
+			.split('-').map(s => s.trim().toLowerCase()).filter(Boolean);
 
-		const fullVersion = prefix + versionNumbers;
-
-		// Extract suffixes, clean spaces, lowercase:
-		// " -alpha -beta" => ["alpha", "beta"]
-		const suffixes = suffixesStr
-			.split('-')
-			.map((s) => s.trim().toLowerCase())
-			.filter((s) => s.length > 0);
-
-		// Determine flags:
 		const isTest = suffixes.includes('test');
-		// prerelease if any suffix except test is present
-		const prerelease = suffixes.some((s) => s !== 'test');
+		const prerelease = suffixes.some(s => s !== 'test');
 
-		// Load module.json compatibility
 		const moduleJson = JSON.parse(fs.readFileSync('module.json', 'utf8'));
 		const comp = moduleJson.compatibility || {};
-		let { minimum, verified, maximum } = comp;
-
-		// Your compatibility logic here (unchanged)...
+		const { minimum, verified, maximum } = comp;
 
 		const output = {
-			version: fullVersion,
+			version: prefix + versionNumbers,   // => "v1.13.0"
 			compatibility: { minimum, verified, maximum },
 			should_continue: true,
 			prerelease,
@@ -67,5 +57,4 @@ function main() {
 		process.exit(1);
 	}
 }
-
 main();
