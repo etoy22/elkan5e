@@ -17,7 +17,6 @@ jobs:
       prerelease: ${{ steps.get_version.outputs.prerelease }}
       minimum: ${{ steps.get_version.outputs.minimum }}
       verified: ${{ steps.get_version.outputs.verified }}
-      maximum: ${{ steps.get_version.outputs.maximum }}
     steps:
       - uses: actions/checkout@v4
 
@@ -33,7 +32,6 @@ jobs:
           prerelease=$(jq -r '.prerelease' version-info.json)
           minimum=$(jq -r '.compatibility.minimum // empty' version-info.json)
           verified=$(jq -r '.compatibility.verified // empty' version-info.json)
-          maximum=$(jq -r '.compatibility.maximum // empty' version-info.json)
 
           echo "version=$version" >> $GITHUB_OUTPUT
           echo "should_continue=$should_continue" >> $GITHUB_OUTPUT
@@ -41,7 +39,6 @@ jobs:
           echo "prerelease=$prerelease" >> $GITHUB_OUTPUT
           echo "minimum=$minimum" >> $GITHUB_OUTPUT
           echo "verified=$verified" >> $GITHUB_OUTPUT
-          echo "maximum=$maximum" >> $GITHUB_OUTPUT
 
       - name: Show version info outputs
         if: steps.get_version.outputs.should_continue == 'true'
@@ -52,7 +49,6 @@ jobs:
           echo "Prerelease: ${{ steps.get_version.outputs.prerelease }}"
           echo "Minimum Compatibility: ${{ steps.get_version.outputs.minimum }}"
           echo "Verified Compatibility: ${{ steps.get_version.outputs.verified }}"
-          echo "Maximum Compatibility: ${{ steps.get_version.outputs.maximum }}"
 
   extract-release-notes:
     runs-on: ubuntu-latest
@@ -89,7 +85,6 @@ jobs:
             "${{ needs.version-check.outputs.version }}" \
             "${{ needs.version-check.outputs.minimum }}" \
             "${{ needs.version-check.outputs.verified }}" \
-            "${{ needs.version-check.outputs.maximum }}"
 
       - name: Run pack script
         run: npm run pack
@@ -175,7 +170,6 @@ jobs:
           VERSION: ${{ needs.version-check.outputs.version }}
           MINIMUM: ${{ needs.version-check.outputs.minimum }}
           VERIFIED: ${{ needs.version-check.outputs.verified }}
-          MAXIMUM: ${{ needs.version-check.outputs.maximum }}
           TEST: ${{ needs.version-check.outputs.test }}
         run: node .github/workflows/scripts/release-foundry.js
 
@@ -184,7 +178,6 @@ jobs:
           echo "VERSION=$VERSION"
           echo "MINIMUM=$MINIMUM"
           echo "VERIFIED=$VERIFIED"
-          echo "MAXIMUM=$MAXIMUM"
           echo "TEST=$TEST"
           
   notify-discord:
@@ -197,7 +190,6 @@ jobs:
       VERSION: "${{ needs.version-check.outputs.version }}"
       MINIMUM: ${{ needs.version-check.outputs.minimum }}
       VERIFIED: ${{ needs.version-check.outputs.verified }}
-      MAXIMUM: ${{ needs.version-check.outputs.maximum }}
     steps:
       - name: Download release notes artifact
         uses: actions/download-artifact@v4
