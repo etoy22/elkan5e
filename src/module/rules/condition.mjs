@@ -1,4 +1,3 @@
-/* global CONFIG, ChatMessage, Roll, game, ui, getProperty */
 /**
  * Adds the Elkan 5e conditions to Foundry.
  */

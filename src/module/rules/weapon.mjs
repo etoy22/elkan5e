@@ -1,4 +1,3 @@
-/* global game, CONFIG */
 /**
  * All the changes of Elkan 5e in Foundry.
  */

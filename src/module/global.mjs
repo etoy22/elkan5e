@@ -1,4 +1,3 @@
-/* global game, ChatMessage, foundry */
 /**
  * Handle the removal of an effect and its associated item.
  *

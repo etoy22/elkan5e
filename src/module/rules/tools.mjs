@@ -1,4 +1,3 @@
-/* global game, CONFIG */
 /**
  * Changes Foundry's tools to fit that of Elkan 5e. This is the only
  * one that we had to do a full replacement

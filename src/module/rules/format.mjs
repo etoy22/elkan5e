@@ -1,4 +1,3 @@
-/* global CONFIG */
 export function formating() {
 	ruleType();
 	activation();

@@ -1,4 +1,3 @@
-/* global canvas, Roll, MidiQOL, ui, fromUuid, token, CONST */
 import { drainedEffect, forEachDamagedTarget } from "./global.mjs";
 
 const SIZE_ORDER = ["tiny", "sm", "med", "lg", "huge", "grg"];
