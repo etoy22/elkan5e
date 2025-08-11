@@ -1,146 +1,210 @@
+/* global Hooks, canvas */
 import { gameSettingRegister } from "./module/gameSettings/gameSettingRegister.mjs";
-import { startDialog } from "./module/gameSettings/startDialog.mjs";
+import { startDialog } from "./module/gameSettings/dialog.mjs";
 import { initWarlockSpellSlot } from "./module/classes/warlock.mjs";
-import { perLeader, rallySurge } from "./module/classes/fighter.mjs";
-import { healOver, infuseHeal } from "./module/classes/cleric.mjs";
+import { secondWind } from "./module/classes/fighter.mjs";
+import { healingOverflow, infusedHealer } from "./module/classes/cleric.mjs";
 import { archDruid } from "./module/classes/druid.mjs";
-import { feral, wildBlood } from "./module/classes/barbarian.mjs";
+import { rage, wildBlood } from "./module/classes/barbarian.mjs";
 import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
-import { meldWithShadow, shadowMonk, hijackShadow } from "./module/classes/monk.mjs";
-import { armor } from "./module/rules/armor.mjs";
-import { conditions, icons } from "./module/rules/condition.mjs";
+import {
+	elementalAttunement,
+	hijackShadow,
+	meldWithShadows,
+	rmvMeldShadow,
+	rmvhijackShadow,
+} from "./module/classes/monk.mjs";
+import { slicingBlow } from "./module/classes/rogue.mjs";
+import { lifeDrainGraveguard, spectralEmpowerment } from "./module/classes/wizard.mjs";
+
+import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
+import { conditions, conditionsReady } from "./module/rules/condition.mjs";
 import { language } from "./module/rules/language.mjs";
 import { formating } from "./module/rules/format.mjs";
-import { references } from "./module/rules/references.mjs";
 import { tools } from "./module/rules/tools.mjs";
 import { weapons } from "./module/rules/weapon.mjs";
 import { scroll } from "./module/rules/scroll.mjs";
-// import { sanctuary } from "./module/spells/sanctuary.mjs";
+import { skills } from "./module/rules/skills.mjs";
+import {
+	setupCombatReferences,
+	setupDamageReferences,
+	setupSpellcastingReferences,
+	setupCreatureTypeReferences,
+	setupSkillReferences,
+} from "./module/rules/references.mjs";
+
+import * as Spells from "./module/spells.mjs";
+import * as Feats from "./module/feats.mjs";
 
 Hooks.once("init", async () => {
-    console.log("Elkan 5e | Initializing Elkan 5e");
-    await gameSettingRegister();
-    initWarlockSpellSlot();
-    references();
-    tools();
-    conditions();
-    weapons();
-    armor();
-    language();
-    icons();
-    formating();
-    scroll();
-    console.log("Elkan 5e  |  Done Initializing");
+	try {
+		console.log("Elkan 5e | Initializing Elkan 5e");
+		await gameSettingRegister();
+		initWarlockSpellSlot();
+
+		// Initialize rule systems
+		conditions();
+		skills();
+		tools();
+		weapons();
+		armor();
+		language();
+		formating();
+		scroll();
+
+		// Setup references
+		setupCombatReferences();
+		setupDamageReferences();
+		setupSpellcastingReferences();
+		setupCreatureTypeReferences();
+		setupSkillReferences();
+
+		console.log("Elkan 5e | Done Initializing");
+	} catch (error) {
+		console.error("Elkan 5e | Initialization Error:", error);
+	}
 });
 
-Hooks.once('ready', async () => {
-    startDialog();
+Hooks.once("ready", () => {
+	try {
+		conditionsReady();
+		startDialog();
+	} catch (error) {
+		console.error("Elkan 5e | Ready Hook Error:", error);
+	}
 });
 
-/**
- * Handle focus when an attack is declared.
- * @param {object} item - The item used.
- * @param {object} config - The configuration for the attack roll.
- */
+// Attack focus hook
 Hooks.on("dnd5e.preRollAttackV2", (item, config) => {
-    try {
-        focus(item, config);
-    } catch (error) {
-        console.error("Error in preRollAttackV2 hook:", error);
-    }
+	try {
+		focus(item, config);
+	} catch (error) {
+		console.error("Elkan 5e | Error in preRollAttackV2 hook:", error);
+	}
 });
 
-/**
- * Adjust hit die roll for Undead Nature feature.
- * @param {object} config - The configuration for the hit die roll.
- */
+// Hit die customization
 Hooks.on("dnd5e.preRollHitDieV2", (config) => {
-    try {
-        const actor = config.subject;
-        const HAS_UNDEAD_NATURE = actor.items.find(feature => feature.name === "Undead Nature");
-        const HAS_GENTLE_REPOSE = actor.effects.find(effect => effect.name === "Gentle Repose");
-        // Subtract Constitution modifier from hit die roll for undead characters without Gentle Repose
-        if (HAS_UNDEAD_NATURE && !HAS_GENTLE_REPOSE) {
-            config.rolls[0].parts[0] += '-@abilities.con.mod';
-        }
-    } catch (error) {
-        console.error("Error in preRollHitDieV2 hook:", error);
-    }
+	try {
+		Feats.undeadNature(config);
+	} catch (error) {
+		console.error("Elkan 5e | Error in preRollHitDieV2 hook:", error);
+	}
 });
 
-/**
- * Handle post-use activity.
- * @param {object} activity - The activity performed.
- * @param {object} usageConfig - The usage configuration.
- * @param {object} results - The results of the activity.
-*/
-Hooks.on("dnd5e.postUseActivity", (activity, usageConfig, results) => {
-    try {
-        wildSurge(activity);
-        wildBlood(activity);
-        infuseHeal(activity, usageConfig);
-        perLeader(activity);
-        rallySurge(activity);
-        shadowMonk(activity);
-    } catch (error) {
-        console.error("Error in postUseActivity hook:", error);
-    }
+// Post-use activity (Sorcerer wild surge)
+Hooks.on("dnd5e.postUseActivity", (activity) => {
+	try {
+		wildSurge(activity);
+	} catch (error) {
+		console.error("Elkan 5e | Error in postUseActivity hook:", error);
+	}
 });
 
-/**
- * Handle pre-roll initiative for various features.
- * @param {object} actor - The actor rolling initiative.
- * @param {object} roll - The resulting roll.
- */
-Hooks.on("dnd5e.preRollInitiative", (actor, roll) => {
-    try {
-        archDruid(actor);
-        feral(actor);
-    } catch (error) {
-        console.error("Error in preRollInitiative hook:", error);
-    }
+// Initiative pre-roll (Druid archdruid)
+Hooks.on("dnd5e.preRollInitiative", (actor) => {
+	try {
+		archDruid(actor);
+	} catch (error) {
+		console.error("Elkan 5e | Error in preRollInitiative hook:", error);
+	}
 });
 
-Hooks.on("deleteActiveEffect", async (effect, options, userId) => {
-    await delayedDuration(effect);
+// Active effect deletion hooks
+Hooks.on("deleteActiveEffect", async (effect) => {
+	try {
+		await delayedDuration(effect);
+	} catch (error) {
+		console.error("Elkan 5e | Error in deleteActiveEffect hook:", error);
+	}
 });
 
-Hooks.on("deleteItem", async (item, options, userId) => {
-    try {
-        delayedItem(item);
-        deleteGoodberryEffect(item)
-    } catch (error) {
-        console.error("Error in deleteItem hook:", error);
-    }
+// Item deletion hooks
+Hooks.on("deleteItem", async (item) => {
+	try {
+		delayedItem(item);
+	} catch (error) {
+		console.error("Elkan 5e | Error in deleteItem hook:", error);
+	}
 });
 
-/**
- * Handle end of turn activities.
- * @param {object} combatant - The combatant whose turn ended.
- * @param {object} turn - The turn data.
- */
-Hooks.on("combatTurnChange", (combat, prior, current) => {
-    try {
-        let lastTurnActor = combat.combatants.get(prior.combatantId).actor;
-        meldWithShadow(lastTurnActor);
-        hijackShadow(lastTurnActor);
-    } catch (error) {
-        console.error("Error in combatTurnChange hook:", error);
-    }
+// End of turn (Monk shadow meld cleanup)
+Hooks.on("combatTurnChange", (combat, prior) => {
+	try {
+		const lastActor = combat.combatants.get(prior.combatantId).actor;
+		rmvMeldShadow(lastActor);
+		rmvhijackShadow(lastActor);
+	} catch (error) {
+		console.error("Elkan 5e | Error in combatTurnChange hook:", error);
+	}
 });
 
-// Hooks.on("dnd5e.preRollAttackV2", async (config, dialog, message) => {
-//     console.log("CONFIG:", config, dialog, message);
-//     const actor = config.subject.actor; // Attacking Actor
-//     const hitTargets = config.subject.workflow.hitTargets; // Targets Attacked
-//     for (const target of hitTargets) {
-//         if (config.subject.type === "attack") {
-//             const sanc = await sanctuary(actor, target.actor);
-//             console.log("RETURN VALUE", sanc);
-//             if (!sanc) {
-//                 console.log("Sanctuary Protection");
-//                 return false;
-//             }
-//         }
-//     }
-// });
+// Item update (Barbarian defense update)
+Hooks.on("updateItem", (item) => {
+	try {
+		updateBarbarianDefense(item.parent, "updateItem");
+	} catch (error) {
+		console.error("Elkan 5e | Error in updateItem hook:", error);
+	}
+});
+
+// Actor update (Barbarian defense update)
+Hooks.on("updateActor", async (actor) => {
+	try {
+		await updateBarbarianDefense(actor, "updateActor");
+	} catch (error) {
+		console.error("Elkan 5e | Error in updateActor hook:", error);
+	}
+});
+
+// Goodberry & size effects cleanup
+Hooks.on("deleteActiveEffect", (effect) => {
+	Spells.goodberryDeleteActive(effect);
+	Spells.returnToNormalSize(effect);
+});
+
+Hooks.on("deleteItem", (item) => {
+	Spells.goodberryDeleteItem(item);
+});
+
+// Template movement synchronization
+Hooks.on("updateMeasuredTemplate", async (template) => {
+	const lights = canvas.lighting.placeables.filter(
+		(l) => l.document.getFlag("elkan5e", "linkedTemplate") === template.id,
+	);
+	if (!lights.length) return;
+	for (const light of lights) {
+		await light.document.update({ x: template.x, y: template.y });
+	}
+});
+
+Hooks.on("deleteMeasuredTemplate", async (template) => {
+	const lights = canvas.lighting.placeables.filter(
+		(l) => l.document.getFlag("elkan5e", "linkedTemplate") === template.id,
+	);
+	if (!lights.length) return;
+	const ids = lights.map((l) => l.id);
+	await canvas.scene.deleteEmbeddedDocuments("AmbientLight", ids);
+});
+
+// Expose macros
+globalThis.elkan5e = {
+	macros: {
+		spells: Spells,
+		features: {
+			rage,
+			infusedHealer,
+			healingOverflow,
+			wildBlood,
+			secondWind,
+			hijackShadow,
+			meldWithShadows,
+			slicingBlow,
+			elementalAttunement,
+		},
+		monsterFeatures: {
+			lifeDrainGraveguard,
+			spectralEmpowerment,
+		},
+	},
+};

@@ -1,0 +1,431 @@
+{
+	"folder": "iibzWFAaPgRwaEzD",
+	"name": "Bodyblock",
+	"type": "feat",
+	"_id": "4SsTjoLkTSjEO6A5",
+	"img": "icons/skills/melee/shield-block-gray-orange.webp",
+	"system": {
+		"description": {
+			"value": "<p><em><strong>Prerequisite: @UUID[Compendium.elkan5e.elkan5e-class-features.Item.tSL6ilfth2TTRNTR]{Fighting Style}</strong></em></p><p><em>You get in the way of your enemy and pin them down.</em></p><p><strong>Reaction</strong> - 1 Creature - Uses Equal to Proficiency Bonus/Long Rest - 1 Round</p><p><em>Trigger: a creature of your size or smaller* moves to a location within 5 ft. of you.</em></p><p><strong>Strength Save</strong></p><ul><li><p><strong>Failure:</strong> Target's speed is reduced to 0 and they stop moving.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><em>*If you have @UUID[Compendium.elkan5e.elkan5e-feats.Item.hUl83ZTGf8CrL6BO]{Powerful Build}, you count as large for the purposes of this feature.</em></p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/feats/bodyblock",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"uses": {
+			"max": "@attributes.prof",
+			"recovery": [
+				{
+					"period": "lr",
+					"type": "recoverAll"
+				}
+			],
+			"spent": 0
+		},
+		"type": {
+			"value": "feat",
+			"subtype": "manuevers"
+		},
+		"requirements": "Feat (Level 4)",
+		"prerequisites": {
+			"level": 4
+		},
+		"activities": {
+			"KSXiWDYwenQOukyB": {
+				"type": "save",
+				"_id": "KSXiWDYwenQOukyB",
+				"activation": {
+					"type": "reaction",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": ""
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "Iem6QdpqYGumQtFQ"
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "ft",
+					"special": "",
+					"value": "5"
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"type": "creature",
+						"count": "1",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"parts": [],
+					"critical": {
+						"allow": false
+					},
+					"onSave": "half"
+				},
+				"save": {
+					"ability": [
+						"str"
+					],
+					"dc": {
+						"calculation": "str",
+						"formula": ""
+					}
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"forceDialog": false,
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "",
+				"name": "Save (Strength)",
+				"img": "",
+				"appliedEffects": [
+					"Iem6QdpqYGumQtFQ"
+				]
+			},
+			"615i24pJOsMCbbq8": {
+				"type": "save",
+				"activation": {
+					"type": "reaction",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": ""
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "Iem6QdpqYGumQtFQ",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false,
+					"value": "5",
+					"units": "ft",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "1",
+						"type": "creature",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"parts": [],
+					"critical": {
+						"allow": false
+					},
+					"onSave": "half"
+				},
+				"save": {
+					"ability": [
+						"str"
+					],
+					"dc": {
+						"calculation": "dex",
+						"formula": ""
+					}
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"forceDialog": false,
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "",
+				"name": "Save (Dexterity)",
+				"_id": "615i24pJOsMCbbq8",
+				"img": "",
+				"appliedEffects": [
+					"Iem6QdpqYGumQtFQ"
+				]
+			}
+		},
+		"identifier": "",
+		"enchant": {},
+		"properties": [],
+		"advancement": [
+			{
+				"_id": "aC5HuW1uXBe16dL0",
+				"type": "AbilityScoreImprovement",
+				"configuration": {
+					"cap": 2,
+					"fixed": {
+						"str": 0,
+						"dex": 0,
+						"con": 0,
+						"int": 0,
+						"wis": 0,
+						"cha": 0
+					},
+					"locked": [],
+					"points": 2
+				},
+				"value": {
+					"type": "asi"
+				},
+				"level": 0,
+				"title": "",
+				"hint": ""
+			}
+		]
+	},
+	"effects": [
+		{
+			"name": "Bodyblock",
+			"changes": [
+				{
+					"key": "system.attributes.movement.all",
+					"mode": 0,
+					"value": "*0",
+					"priority": 20
+				}
+			],
+			"transfer": false,
+			"_id": "Iem6QdpqYGumQtFQ",
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": null,
+				"combat": null,
+				"rounds": 1,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"origin": "Compendium.elkan5e.elkan5e-feats.Item.4SsTjoLkTSjEO6A5",
+			"statuses": [],
+			"flags": {
+				"times-up": {
+					"isPassive": false
+				},
+				"dae": {
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneNameOnly",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [
+						"turnEndSource"
+					],
+					"enableCondition": "",
+					"disableCondition": ""
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"core": {
+					"overlay": false
+				}
+			},
+			"tint": "#ffffff",
+			"img": "icons/skills/melee/shield-block-gray-orange.webp",
+			"type": "base",
+			"system": {},
+			"_key": "!items.effects!4SsTjoLkTSjEO6A5.Iem6QdpqYGumQtFQ"
+		}
+	],
+	"flags": {
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"midi-qol": {
+			"effectActivation": false,
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default",
+			"removeAttackDamageButtons": "default"
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"_key": "!items!4SsTjoLkTSjEO6A5"
+}

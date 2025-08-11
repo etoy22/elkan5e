@@ -1,84 +1,167 @@
 # Changelog
+
+# v1.13.0
+
+## **IMPORTANT**
+
+- A new popup will appear on first load of Elkan, allowing you to migrate all your features. You can access it again anytime from **Elkan Settings**.
+- This system will still work if you rename the file, as long as the identifier hasn’t been changed. The only thing that might be lost is any changes made to the description.
+- **Warning:** This Migration Tool is in beta. It may cause bugs or interact with custom content in unexpected ways. We strongly recommend you make a backup of the world before running it. If you find an issue, you can report it on our [Discord](https://discord.gg/4Z2c7b6).
+
+## Bug Fixes
+
+- Some spells caused errors when turned into scrolls—this has now been fixed.
+- Not sure when it was removed but just in case Spare the Dying has an activity
+
+## Ancestry
+
+- **Dragonborn**:
+    - Breath Weapons now use a single activity that automatically chooses the higher of Charisma or Constitution.
+
+## Classes
+
+**[Barbarian](https://www.elkan5e.com/barbarian)**
+
+- Barbarian Defense has been automated.
+
+**[Paladin](https://www.elkan5e.com/paladin)**
+
+- Sapping Smite's drained effect now works.
+
+**[Rogue](https://www.elkan5e.com/rogue)**
+
+- Slicing Blow's drained effect now works.
+
+**[Wizard](https://www.elkan5e.com/wizard)**
+
+- **Necromancer**:
+    - Spectral Empowerment's drained effect now works.
+    - Spectral Graveguard: Life Drain now works.
+
+## Game Rules
+
+- New condition: Transformed
+- New token-only conditions: Bloodied, Hiding, Stable, Squeezing
+- Icon colors updated to better match theme aesthetics.
+
+## Spells
+
+- _[Enlarge/Reduce](https://www.elkan5e.com/spells/enlarge%2Freduce)_ spell automated.
+- _[Speak with Animals](https://www.elkan5e.com/spells/speak-with-animals)_ now grants a custom language.
+- _[Enervate](https://www.elkan5e.com/spells/enervate)_, _[Life Drain](https://www.elkan5e.com/spells/life-drain)_, _[Well of Corruption](https://www.elkan5e.com/spells/well-of-corruption)_, and _[Wrath of the Reaper](https://www.elkan5e.com/spells/wrath-of-the-reaper)_ drained effects now work.
+- _[Arcane Lock](https://www.elkan5e.com/spells/arcane-lock)_ increase DC to 25 + spell level.
+
+## UI
+
+- Codebase converted to V2 version, including popups.
+
+## Misc
+
+- Replaced `@attributes.spelldc` with `@attributes.spell.dc`.
+- Replaced `@spellLevel` with `@spell.level`.
+- System now works with JSON files, allowing for easier editing and merging.
+- Removed stale/old code that didnt do anything
+- Moved rest of code to the script side except for conditions
+
 # v1.12.27
 
 ## Bug Fixes
+
 - Fixed Standard Action
 
 ## Classes
+
 **[Bard](https://www.elkan5e.com/bard)**
+
 - Warchanter:
-- Fixed Warchant
+    - Fixed Warchant
 
 **[Druid](https://www.elkan5e.com/druid)**
+
 - Wild Shape now resets on a Short Rest
 - Revised Druid subclasses
 - Grassland -> Shepard:
-- New spell list
-- New level 10 feature
-- Features renamed
-- Shepard's Ward now has limited uses
+    - New spell list
+    - New level 10 feature
+    - Features renamed
+    - Shepard's Ward now has limited uses
 - Mountain -> Earthshaker:
-- New spell list
-- New level 6 feature
-- Level 10 feature wording updated
+    - New spell list
+    - New level 6 feature
+    - Level 10 feature wording updated
 - Underworld -> Chthonic:
-- New spell list
-- Level 3 and 6 features adjusted
-- New level 10 feature
+    - New spell list
+    - Level 3 and 6 features adjusted
+    - New level 10 feature
 
 **[Monk](https://www.elkan5e.com/monk)**
+
 - Shadowdancer:
-- Fixed incorrect 14th-level feature
+    - Fixed incorrect 14th-level feature
 
 **[Ranger](https://www.elkan5e.com/ranger)**
+
 - Fixed progression chart in class item description
 
 ## Game Rules
-- Added *trigger* lines to all reactions (features and spells)
+
+- Added _trigger_ lines to all reactions (features and spells)
 
 ## Spells
+
 - All level 5 spells are complete
-- *[Thaumaturgy](https://www.elkan5e.com/spells/thaumaturgy)* no longer has a limit of 3 effects at once
-- *[Prestidigitation](https://www.elkan5e.com/spells/prestidigitation)* no longer has a limit of 3 effects at once
-- *Speak with Plants* renamed to *[Speak with Nature](https://www.elkan5e.com/spells/speak-with-nature)* and improved again, with an upcasting option. Replaces *Commune with Nature*
-- *[Banishment](https://www.elkan5e.com/spells/banishment)* damage automation occurs only on success
-- *[Stinking Cloud](https://www.elkan5e.com/spells/stinking-cloud)* now lightly obscures the area instead of heavily obscuring it
-- *[Cloudkill](https://www.elkan5e.com/spells/cloudkill)* now lightly obscures the area instead of heavily obscuring it
-- *[Curse of Doom](https://www.elkan5e.com/spells/curse-of-doom)* now deals one-time damage instead of damage over time
-- *[Gentle Repose](https://www.elkan5e.com/spells/gentle-repose)* now includes a permanent casting option
+- _[Thaumaturgy](https://www.elkan5e.com/spells/thaumaturgy)_ no longer has a limit of 3 effects at once
+- _[Prestidigitation](https://www.elkan5e.com/spells/prestidigitation)_ no longer has a limit of 3 effects at once
+- _Speak with Plants_ renamed to _[Speak with Nature](https://www.elkan5e.com/spells/speak-with-nature)_ and improved again, with an upcasting option. Replaces _Commune with Nature_
+- _[Banishment](https://www.elkan5e.com/spells/banishment)_ damage automation occurs only on success
+- _[Stinking Cloud](https://www.elkan5e.com/spells/stinking-cloud)_ now lightly obscures the area instead of heavily obscuring it
+- _[Cloudkill](https://www.elkan5e.com/spells/cloudkill)_ now lightly obscures the area instead of heavily obscuring it
+- _[Curse of Doom](https://www.elkan5e.com/spells/curse-of-doom)_ now deals one-time damage instead of damage over time
+- _[Gentle Repose](https://www.elkan5e.com/spells/gentle-repose)_ now includes a permanent casting option
 
 # v1.12.26
 
 ## Bug Fixes
+
 - Narrow Escape now actually has uses now says that its a Background Feature
+
 ## Classes
+
 **[Monk](https://www.elkan5e.com/monk)**
+
 - Open Hand:
-	- Added Twin Currents as a new 3rd level feature
+    - Added Twin Currents as a new 3rd level feature
 
 **[Paladin](https://www.elkan5e.com/paladin)**
+
 - Update Cleansing Touch to use the Elkan version
 
 **[Sorcerer](https://www.elkan5e.com/sorcerer)**
+
 - Increased number of spells known at level 1 from 2-4
 
 **[Warlock](https://www.elkan5e.com/warlock)**
+
 - Level 11 pact boon invocations are now core class features.
 - Invocation choice moved from level 11 to level 13
 - Increased spells known slightly to match bard
+
 ## Feats
+
 - [Grapple Hold](https://www.elkan5e.com/feats/grapple-hold) now allows easily dragging grappled creatures
 - [Brawler](https://www.elkan5e.com/feats/brawler) feat reworked as level 1 with no prerequisites. Now allows for viable improvised weapons and grappling on attacks of opportunity
 - [Enraged Presence](https://www.elkan5e.com/feats/enraged-presence) no longer stack with expertise
 - [Enraged Prowess](https://www.elkan5e.com/feats/enraged-prowess) no longer stack with expertise
 - 6 new feats, including 4 ancestry-specific feats
-	- [Human Versatility](https://www.elkan5e.com/feats/human-versatility)
-	- [Naturally Stealthy](https://www.elkan5e.com/feats/naturally-stealthy)
-	- [Stonecunning](https://www.elkan5e.com/feats/stonecunning)
-	- [Draconic Flight](https://www.elkan5e.com/feats/draconic-flight)
-	- [Powerful Build](https://www.elkan5e.com/feats/powerful-build)
-	- [Inspiring Performance](https://www.elkan5e.com/feats/inspiring-performance)
+    - [Human Versatility](https://www.elkan5e.com/feats/human-versatility)
+    - [Naturally Stealthy](https://www.elkan5e.com/feats/naturally-stealthy)
+    - [Stonecunning](https://www.elkan5e.com/feats/stonecunning)
+    - [Draconic Flight](https://www.elkan5e.com/feats/draconic-flight)
+    - [Powerful Build](https://www.elkan5e.com/feats/powerful-build)
+    - [Inspiring Performance](https://www.elkan5e.com/feats/inspiring-performance)
+
 ## Spells
+
 - [Passwall](https://www.elkan5e.com/spells/passwall) now bypasses [wall of force](https://www.elkan5e.com/spells/wall-of-force) and forcecage
 - Shortened spell flavor text where it was too long
 - Some updated 5th level spells
@@ -123,7 +206,7 @@
 **Fighter**
 
 - **Champion**
-  - Fixed an issue where Improved Fighting Styles were not accessible at the correct level
+    - Fixed an issue where Improved Fighting Styles were not accessible at the correct level
 
 **Monk**
 
@@ -144,7 +227,7 @@
 
 - Sneak Attack and Precision Attack can now critically hit in the Foundry code
 - **Mystic Trickster**
-  - Updated Mystic-specific Precision Attacks to use the revised damage
+    - Updated Mystic-specific Precision Attacks to use the revised damage
 
 **Sorcerer**
 
@@ -187,9 +270,9 @@
 
 ## Spells
 
-- [Conjure Woodland Beings](https://www.elkan5e.com/spells/conjure-woodland-beings) now allows summoning plants
-- [Lesser Restoration](https://www.elkan5e.com/spells/lesser-restoration) no longer removes disease
-- [Phantom Steed](https://www.elkan5e.com/spells/phantom-steed) reverted to a 1-action casting time
+- _[Conjure Woodland Beings](https://www.elkan5e.com/spells/conjure-woodland-beings)_ now allows summoning plants
+- _[Lesser Restoration](https://www.elkan5e.com/spells/lesser-restoration)_ no longer removes disease
+- _[Phantom Steed](https://www.elkan5e.com/spells/phantom-steed)_ reverted to a 1-action casting time
 
 # v1.12.24.1
 
@@ -202,7 +285,7 @@
 - Added [Enervate](https://www.elkan5e.com/spells/enervate) to spell lists.
 - Creature type references now work properly.
 
-## Class
+## Classes
 
 **[Bard](https://www.elkan5e.com/bard)**
 
@@ -212,10 +295,10 @@
 - Inspiring Performance has been removed to streamline related bard features.
 - Bard Magical Secrets no longer allows selecting ranger or paladin spells.
 - Jester:
-  - Cutting Words is now a reaction.
+    - Cutting Words is now a reaction.
 - Lorekeeper:
-  - Voice of Legend reworked to allow rolling twice for Bardic Inspiration each time.
-  - Foretold Victory is now 1/short rest instead of 1/long rest.
+    - Voice of Legend reworked to allow rolling twice for Bardic Inspiration each time.
+    - Foretold Victory is now 1/short rest instead of 1/long rest.
 - New Warchanter subclass.
 
 **[Fighter](https://www.elkan5e.com/fighter)**
@@ -245,23 +328,23 @@
 
 - Effortless Metamagic no longer has a sorcery point limit.
 - Draconic:
-  - Draconic Resilience changed to 13 + CHA from 14 + DEX.
+    - Draconic Resilience changed to 13 + CHA from 14 + DEX.
 
 **[Warlock](https://www.elkan5e.com/warlock)**
 
 - Eldritch Recovery no longer mentions Wizard.
 - Fiend:
-  - Spell list changed: lost [Blindness/Deafness](https://www.elkan5e.com/spells/blindness%2Fdeafness), [Dominate](https://www.elkan5e.com/spells/dominate), and [Hallow](https://www.elkan5e.com/spells/hollow); gained [Suggestion](https://www.elkan5e.com/spells/suggestion), [Geas](https://www.elkan5e.com/spells/geas), and [Insect Plague](https://www.elkan5e.com/spells/insect-plague).
-  - Dark One's Blessing no longer requires you to last-hit the target, but provides fewer temporary hit points.
+    - Spell list changed: lost [Blindness/Deafness](https://www.elkan5e.com/spells/blindness%2Fdeafness), [Dominate](https://www.elkan5e.com/spells/dominate), and [Hallow](https://www.elkan5e.com/spells/hollow); gained [Suggestion](https://www.elkan5e.com/spells/suggestion), [Geas](https://www.elkan5e.com/spells/geas), and [Insect Plague](https://www.elkan5e.com/spells/insect-plague).
+    - Dark One's Blessing no longer requires you to last-hit the target, but provides fewer temporary hit points.
 
 **[Wizard](https://www.elkan5e.com/wizard)**
 
 - Wizards now always get Arcana as a bonus skill; Nature is added to their skill list, and they get expertise in one skill only.
 - Reduced the number of known spells for wizards from spell levels 6–9 from 4 to 3.
 - Evoker:
-  - Swapped level 3 and 6 features.
+    - Swapped level 3 and 6 features.
 - Necromancer:
-  - Added missing activity for Necromantic Surge.
+    - Added missing activity for Necromantic Surge.
 
 ## Equipment
 
@@ -309,7 +392,7 @@
 **[Bard](https://www.elkan5e.com/bard)**
 
 - Renamed College of Noise to Cacophony:
-  - Blasting Volume 20 ft. cone -> 30 ft. cone
+    - Blasting Volume 20 ft. cone -> 30 ft. cone
 
 ## Equipment
 
@@ -352,12 +435,12 @@
 **[Warlock](https://www.elkan5e.com/warlock)**
 
 - Fey
-  - Added Conjure Woodland Creature to expanded list
+    - Added Conjure Woodland Creature to expanded list
 
 **[Wizard](https://www.elkan5e.com/wizard)**
 
 - Necromancer
-  - Spectral Graveguard force damage
+    - Spectral Graveguard force damage
 
 ## Equipment
 
@@ -391,7 +474,7 @@
 ## Backgrounds
 
 - Forge-Bound:
-  - Feature options changed to [Armor Training](https://www.elkan5e.com/feats/armor-training), [Weapon Training](https://www.elkan5e.com/feats/weapon-training), or [Crafter](https://www.elkan5e.com/feats/crafter).
+    - Feature options changed to [Armor Training](https://www.elkan5e.com/feats/armor-training), [Weapon Training](https://www.elkan5e.com/feats/weapon-training), or [Crafter](https://www.elkan5e.com/feats/crafter).
 
 ## Classes
 
@@ -403,9 +486,9 @@
 
 - Twisted Terrain is now properly a circle rather than an emanation.
 - Grassland:
-  - Shepherd's Ward switched to reroll rather than auto-miss.
+    - Shepherd's Ward switched to reroll rather than auto-miss.
 - Underworld:
-  - [Otherworldly Veil](https://www.elkan5e.com/spells/otherworldly-veil) replaces [Color Spray](https://www.elkan5e.com/spells/color-spray) and works with Echoes in the Dark.
+    - [Otherworldly Veil](https://www.elkan5e.com/spells/otherworldly-veil) replaces [Color Spray](https://www.elkan5e.com/spells/color-spray) and works with Echoes in the Dark.
 
 **[Fighter](https://www.elkan5e.com/fighter)**
 
@@ -457,12 +540,12 @@
 - Subclasses are now gained at level 1, with an expanded spell list.
 - Clarified that Bardic Inspiration cannot be used on oneself.
 - Jester:
-  - Expanded Spells: [Hellish Rebuke](https://www.elkan5e.com/spell/hellish-rebuke), [Enthrall](https://www.elkan5e.com/spell/enthrall), [Major Image](https://www.elkan5e.com/spell/major-image), [Compulsion](https://www.elkan5e.com/spell/compulsion), [Dominate](https://www.elkan5e.com/spell/dominate).
+    - Expanded Spells: [Hellish Rebuke](https://www.elkan5e.com/spell/hellish-rebuke), [Enthrall](https://www.elkan5e.com/spell/enthrall), [Major Image](https://www.elkan5e.com/spell/major-image), [Compulsion](https://www.elkan5e.com/spell/compulsion), [Dominate](https://www.elkan5e.com/spell/dominate).
 - Lorekeeper:
-  - Expanded Spells: [Identify](https://www.elkan5e.com/spell/identify), [Augury](https://www.elkan5e.com/spell/augury), [Tongues](https://www.elkan5e.com/spell/tongues), [Divination](https://www.elkan5e.com/spell/divination), [Legend Lore](https://www.elkan5e.com/spell/legend-lore).
-  - Voice of Legend now allows an ally to reroll their roll instead of rerolling the Bardic Inspiration die.
+    - Expanded Spells: [Identify](https://www.elkan5e.com/spell/identify), [Augury](https://www.elkan5e.com/spell/augury), [Tongues](https://www.elkan5e.com/spell/tongues), [Divination](https://www.elkan5e.com/spell/divination), [Legend Lore](https://www.elkan5e.com/spell/legend-lore).
+    - Voice of Legend now allows an ally to reroll their roll instead of rerolling the Bardic Inspiration die.
 - Noise:
-  - Expanded Spells: [Thunderwave](https://www.elkan5e.com/spell/thunderwave), [Silence](https://www.elkan5e.com/spell/silence), [Thundering Omen](https://www.elkan5e.com/spell/thundering-omen), [Shockwave](https://www.elkan5e.com/spell/shockwave), [Telepathic Bond](https://www.elkan5e.com/spell/telepathic-bond).
+    - Expanded Spells: [Thunderwave](https://www.elkan5e.com/spell/thunderwave), [Silence](https://www.elkan5e.com/spell/silence), [Thundering Omen](https://www.elkan5e.com/spell/thundering-omen), [Shockwave](https://www.elkan5e.com/spell/shockwave), [Telepathic Bond](https://www.elkan5e.com/spell/telepathic-bond).
 
 **[Druid](https://www.elkan5e.com/druid)**
 
@@ -480,10 +563,10 @@
 **[Wizard](https://www.elkan5e.com/wizard)**
 
 - Illusionist:
-  - [Silent Image](https://www.elkan5e.com/spell/silent-image) (Illusionist) moved to a different folder. If you have not yet gained this ability, you can find it in the Elkan 5e Spell Compendium under Spells (Class-Specific Versions).
+    - [Silent Image](https://www.elkan5e.com/spell/silent-image) (Illusionist) moved to a different folder. If you have not yet gained this ability, you can find it in the Elkan 5e Spell Compendium under Spells (Class-Specific Versions).
 - Necromancer:
-  - Spectral Graveguard can now fly as intended.
-  - Spectral Graveguard's Life Drain now has an activity.
+    - Spectral Graveguard can now fly as intended.
+    - Spectral Graveguard's Life Drain now has an activity.
 
 ## Feats
 
@@ -539,12 +622,12 @@
 **[Monk](https://www.elkan5e.com/monk)**
 
 - Open Hand
-  - Renamed Shockwave to Repulsion Wave.
+    - Renamed Shockwave to Repulsion Wave.
 
 **[Sorcerer](https://www.elkan5e.com/sorcerer)**
 
 - Wild Mage
-  - Swapped wild magic level 6 and 10 abilities.
+    - Swapped wild magic level 6 and 10 abilities.
 
 **[Warlock](https://www.elkan5e.com/warlock)**
 
@@ -586,8 +669,8 @@
 **[Monk](https://www.elkan5e.com/monk)**
 
 - Elements Monk:
-  - Add note about Elemental Attunement requiring actor to be on screen
-  - Make Elemental Thrusts equipped by default
+    - Add note about Elemental Attunement requiring actor to be on screen
+    - Make Elemental Thrusts equipped by default
 
 # v1.12.18.1
 
@@ -609,24 +692,24 @@
 - Flurry of Blows no longer requires the monk to also use the Attack action
 - New Subclass: Elements Monk
 - Open Hand:
-  - Thrust renamed to Sweep, costs 1 ki and does not require the attack or flurry of blows actions to occur first.
+    - Thrust renamed to Sweep, costs 1 ki and does not require the attack or flurry of blows actions to occur first.
 
 **[Ranger](https://www.elkan5e.com/ranger)**
 
 - Beastmaster:
-  - There is now a Beast Companion class that will scale things for you that can be found in Subclasses
-  - Can now see through your companion's eyes and telepathically communicate starting at level 3 instead of 6.
-  - Predator's Instinct feature at level 6, replacing One Mind, which is now redundant.
-  - Swapped Coordinated Attacks for Companion's Extra Attack
-  - Animal Companion now has an explanation on how they work in Foundry
-  - Swapped Coordinated Attacks for Companion's Extra Attack
+    - There is now a Beast Companion class that will scale things for you that can be found in Subclasses
+    - Can now see through your companion's eyes and telepathically communicate starting at level 3 instead of 6.
+    - Predator's Instinct feature at level 6, replacing One Mind, which is now redundant.
+    - Swapped Coordinated Attacks for Companion's Extra Attack
+    - Animal Companion now has an explanation on how they work in Foundry
+    - Swapped Coordinated Attacks for Companion's Extra Attack
 
 **[Wizard](https://www.elkan5e.com/wizard)**
 
 - New Subclass: Abjurer
 - Necromancer
-  - Graveguard now has an explanation on how they work in Foundry
-  - Graveguard now have Standard Actions
+    - Graveguard now has an explanation on how they work in Foundry
+    - Graveguard now have Standard Actions
 
 ## Equipment
 
@@ -665,20 +748,20 @@
 - Feral Strike removed
 - Rumination moved to level 2
 - Bloodrager
-  - Seething Blood now starts damage at 3d6 and scales to 6d6 but can only be used 3/long rest
+    - Seething Blood now starts damage at 3d6 and scales to 6d6 but can only be used 3/long rest
 
 **[Fighter](https://www.elkan5e.com/fighter)**
 
 - Battlemaster
-  - Reworked to fit the new combat maneuvers
+    - Reworked to fit the new combat maneuvers
 - Bulwark
-  - Swapped level 3 (now Defender's Charge) and level 6 (now Iron Wall) abilities
+    - Swapped level 3 (now Defender's Charge) and level 6 (now Iron Wall) abilities
 - Champion Reworked
-  - New Keen Strikes feature at level 3 which adds 1d10 damage 1/turn and increases to 2d10 at level 14
+    - New Keen Strikes feature at level 3 which adds 1d10 damage 1/turn and increases to 2d10 at level 14
 - Commander
-  - Commander's Strike is now unlimited
-  - Rally now uses a d10 instead of a d8
-  - Persistent Leader changed slightly so that when you use second wind you can also use commander's strike in the same turn
+    - Commander's Strike is now unlimited
+    - Rally now uses a d10 instead of a d8
+    - Persistent Leader changed slightly so that when you use second wind you can also use commander's strike in the same turn
 
 **[Monk](https://www.elkan5e.com/monk)**
 
@@ -687,30 +770,30 @@
 - Empty Body is no longer a base monk feature
 - Purity of Body has been moved to level 18
 - Open Hand
-  - Condensed Thrust and Sweep into a single feature now called Thrust
-  - Shockwave is now more versatile
+    - Condensed Thrust and Sweep into a single feature now called Thrust
+    - Shockwave is now more versatile
 - Shadowdancer
-  - A number of QOL and formatting updates. Abilities work more consistently
-  - Empty Body is now a level 14 feature
+    - A number of QOL and formatting updates. Abilities work more consistently
+    - Empty Body is now a level 14 feature
 
 **[Ranger](https://www.elkan5e.com/ranger)**
 
 - Hunter
-  - Improved Hunter's Prey now only grants the options granted by Hunter's Prey level 3
+    - Improved Hunter's Prey now only grants the options granted by Hunter's Prey level 3
 
 **[Rogue](https://www.elkan5e.com/rogue)**
 
 - Assassin
-  - Finishing Blow now works on creatures with 10 or fewer hit points on any attack the assassin makes
-  - New Ability at level 6: Death Strike. 1/Short Rest. When you hit a creature and deal sneak attack damage or use a precision strike, instead do it twice
-  - Moved Snap Reaction to level 10
+    - Finishing Blow now works on creatures with 10 or fewer hit points on any attack the assassin makes
+    - New Ability at level 6: Death Strike. 1/Short Rest. When you hit a creature and deal sneak attack damage or use a precision strike, instead do it twice
+    - Moved Snap Reaction to level 10
 
 ## Equipment
 
 - Armor Prices Adjustments
-  - Large Shield 10 gp -> 20 gp
-  - Chain Mail 75 gp -> 100 gp
-  - Plate Mail 1500 gp -> 1200 gp
+    - Large Shield 10 gp -> 20 gp
+    - Chain Mail 75 gp -> 100 gp
+    - Plate Mail 1500 gp -> 1200 gp
 
 ## Feats
 
@@ -738,7 +821,7 @@ Just updated version to work with the DND5E.
 **[Sorcerer](https://www.elkan5e.com/sorcerer)**
 
 - Wild Mage
-  - Automated all wild surging abilities
+    - Automated all wild surging abilities
 
 **[Warlock](https://www.elkan5e.com/warlock)**
 
@@ -763,7 +846,7 @@ Just updated version to work with the DND5E.
 **[Barbarian](https://www.elkan5e.com/barbarian)**
 
 - Bloodrager
-  - Automate Wild Blood
+    - Automate Wild Blood
 
 **[Ranger](https://www.elkan5e.com/ranger)**
 
@@ -777,29 +860,29 @@ Just updated version to work with the DND5E.
 **[Sorcerer](https://www.elkan5e.com/sorcerer)**
 
 - Wild Mage
-  - More updates to automation for wild magic
-  - Avert Disaster now 3/long rest
-  - New Delayed Surge feature for Wild Mages at level 10, replacing Refract Magic
-  - **Wild Surge Tables are done**
+    - More updates to automation for wild magic
+    - Avert Disaster now 3/long rest
+    - New Delayed Surge feature for Wild Mages at level 10, replacing Refract Magic
+    - **Wild Surge Tables are done**
 
 **[Wizard](https://www.elkan5e.com/wizard)**
 
 - Illusionist
-  - Illusory attacks reduced to d6s from d8s
+    - Illusory attacks reduced to d6s from d8s
 
 ## Equipment
 
 - Weapon adjustments again
-  - Pike base price reduced to 10
-  - Darts are now unwieldy and listed in the melee weapons table
-  - Blowgun needles weight halved
-  - Adjusted prices for arrows/bolts
-  - Fixed dart and ranged weapon prices
-  - Added silvered whips
-  - Ranged weapons apply the new magic property
-  - Fixed weight and properties on items
-  - Fixed weapon pricing
-  - Non-magical silvered weapons now have the correct value
+    - Pike base price reduced to 10
+    - Darts are now unwieldy and listed in the melee weapons table
+    - Blowgun needles weight halved
+    - Adjusted prices for arrows/bolts
+    - Fixed dart and ranged weapon prices
+    - Added silvered whips
+    - Ranged weapons apply the new magic property
+    - Fixed weight and properties on items
+    - Fixed weapon pricing
+    - Non-magical silvered weapons now have the correct value
 
 ## Feats
 
@@ -846,41 +929,41 @@ Stating the previous changes as they were testing updates
 - Bard gets undead nature at level 1
 - Confusion now listed for sorcerer
 - Updated in v1.12.12
-  - In module.json a file was incorrectly named which was causing issues for all class features and equipment
-  - Fixed dead links
+    - In module.json a file was incorrectly named which was causing issues for all class features and equipment
+    - Fixed dead links
 - Updated in v1.12.9
-  - A lot of Bug Fixes
+    - A lot of Bug Fixes
 
 ## Ancestry
 
 - Updated in v1.12.13
-  - Dragonborn are now considered dragons as their type
-  - Hobgoblins now have the Strength in Numbers feature instead of Repressed Memory
-  - New Construct Ancestry
-  - New Genasi Ancestry
+    - Dragonborn are now considered dragons as their type
+    - Hobgoblins now have the Strength in Numbers feature instead of Repressed Memory
+    - New Construct Ancestry
+    - New Genasi Ancestry
 - Updated in v1.12.12
-  - Aasimar and Tieflings now get [_Thaumaturgy_](https://www.elkan5e.com/spells/thamaturgy) rather than a choice of two cantrips
+    - Aasimar and Tieflings now get [_Thaumaturgy_](https://www.elkan5e.com/spells/thamaturgy) rather than a choice of two cantrips
 - Updated in v1.12.9
-  - Dragonborn
-    - Consolidated the two versions of dragon breath weapons
-  - Minotaur
-    - A minotaur's gore attack now pushes a target 5 ft. once per turn
+    - Dragonborn
+        - Consolidated the two versions of dragon breath weapons
+    - Minotaur
+        - A minotaur's gore attack now pushes a target 5 ft. once per turn
 
 ## Backgrounds
 
 - Wild
-  - Sudden Warning can no longer target self
+    - Sudden Warning can no longer target self
 - Updated in v1.12.12
-  - New Criminal Background
-  - New Entertainer Background
-  - Relaxed the restrictions on what tools could be chosen by each background
-  - Improved Wild Background Feature
-  - Maritime Background reworked, added new Sailor's Vigilance feature
-  - Coordinating Direction for Nobles now allows an ally to reroll a skill check
-  - Cosmopolitan gains a choice of Crafter, Dabbler, or Polyglot feat
-  - Arcanist, Devout, and Fey-Touched now each grant one of your choice from a given spell list
-  - Removed weapon proficiencies from backgrounds other than militant and granted extra tools instead
-  - Backgrounds now give the spell for free as one spell instead of two
+    - New Criminal Background
+    - New Entertainer Background
+    - Relaxed the restrictions on what tools could be chosen by each background
+    - Improved Wild Background Feature
+    - Maritime Background reworked, added new Sailor's Vigilance feature
+    - Coordinating Direction for Nobles now allows an ally to reroll a skill check
+    - Cosmopolitan gains a choice of Crafter, Dabbler, or Polyglot feat
+    - Arcanist, Devout, and Fey-Touched now each grant one of your choice from a given spell list
+    - Removed weapon proficiencies from backgrounds other than militant and granted extra tools instead
+    - Backgrounds now give the spell for free as one spell instead of two
 
 ## Classes
 
@@ -888,206 +971,206 @@ Stating the previous changes as they were testing updates
 
 - Feral Instincts and Improved Feral Instincts now give a notification to remind players that they can use it at initiative roll
 - Bloodrager
-  - New Level 6 feature to replace the free War Casting feat
-  - Wild Magic Bloodragers can now trigger Wild Surges
-  - Seething Blood reworked to a bonus action and save, starts at 2d6 and scales higher at higher levels. Removed Transfused Strikes
+    - New Level 6 feature to replace the free War Casting feat
+    - Wild Magic Bloodragers can now trigger Wild Surges
+    - Seething Blood reworked to a bonus action and save, starts at 2d6 and scales higher at higher levels. Removed Transfused Strikes
 - Updated in v1.12.9
-  - Bloodrager
-    - Has been reworked
-    - Move damage resistance to 10
-    - Remove Seething Mist
-    - Seething Blood not reaction, 1/turn
-    - Add War Casting at level 6
-    - Seething Blood range decreased to 10 ft. but now occurs when hit by a weapon attack and not reaction and doesn't take reaction
+    - Bloodrager
+        - Has been reworked
+        - Move damage resistance to 10
+        - Remove Seething Mist
+        - Seething Blood not reaction, 1/turn
+        - Add War Casting at level 6
+        - Seething Blood range decreased to 10 ft. but now occurs when hit by a weapon attack and not reaction and doesn't take reaction
 
 **[Bard](https://www.elkan5e.com/bard)**
 
 - Updated in v1.12.9
-  - Fix Bardic Inspiration short rest recharge
+    - Fix Bardic Inspiration short rest recharge
 
 **[Cleric](https://www.elkan5e.com/cleric)**
 
 - Life Domain
-  - Infused Healer has been automated and outputs a notification to indicate it has occurred
+    - Infused Healer has been automated and outputs a notification to indicate it has occurred
 - Updated in v1.12.12
-  - New Death Domain Subclass
+    - New Death Domain Subclass
 
 **[Druid](https://www.elkan5e.com/druid)**
 
 - Archdruid now gives a notification to remind players that they can use it at initiative roll
 - Updated in v1.12.12
-  - New Grassland Subclass
-  - New Mountain Subclass
-  - New Underworld Subclass
-  - Lesser Shifting added to Wild Shape options where it was previously missing from the list
+    - New Grassland Subclass
+    - New Mountain Subclass
+    - New Underworld Subclass
+    - Lesser Shifting added to Wild Shape options where it was previously missing from the list
 - Updated in v1.12.9
-  - Increased speed increase on Herd's Momentum to 15 ft
+    - Increased speed increase on Herd's Momentum to 15 ft
 
 **[Fighter](https://www.elkan5e.com/fighter)**
 
 - Commander
-  - Rallying Surge gives a notification when Action Surge is used
-  - Persistent Leader gives a notification when Second Wind is used
+    - Rallying Surge gives a notification when Action Surge is used
+    - Persistent Leader gives a notification when Second Wind is used
 
 **[Paladin](https://www.elkan5e.com/paladin)**
 
 - Updated in v1.12.9
-  - Consolidated elemental smite
+    - Consolidated elemental smite
 
 **[Ranger](https://www.elkan5e.com/ranger)**
 
 - Updated in v1.12.9
-  - Beastmaster
-    - Spell to restore companion was cleaned up
+    - Beastmaster
+        - Spell to restore companion was cleaned up
 
 **[Rogue](https://www.elkan5e.com/rogue)**
 
 - Mystic Trickster
-  - Combined the Precision Attacks
+    - Combined the Precision Attacks
 - Updated in v1.12.9
-  - Assassin
-    - Now identifies as a rogue
-  - Duelist
-    - New ability at level 6: Close the Gap, replacing Face Me!
+    - Assassin
+        - Now identifies as a rogue
+    - Duelist
+        - New ability at level 6: Close the Gap, replacing Face Me!
 
 **[Sorcerer](https://www.elkan5e.com/sorcerer)**
 
 - Wild Mage Subclass
-  - New Subclass
-  - Will automatically roll for your surge when casting a spell
-  - Completed surge tables from level 1-5
+    - New Subclass
+    - Will automatically roll for your surge when casting a spell
+    - Completed surge tables from level 1-5
 - Updated in v1.12.13
-  - Metamagic has been properly tied back to sorcery points
+    - Metamagic has been properly tied back to sorcery points
 - Updated in v1.12.9
-  - Distant Spell: Inverted the metamagic so that making a touch spell have a range of 30 ft. is free and doubling the range of a spell costs 1 sorcery point
+    - Distant Spell: Inverted the metamagic so that making a touch spell have a range of 30 ft. is free and doubling the range of a spell costs 1 sorcery point
 
 **[Warlock](https://www.elkan5e.com/warlock)**
 
 - [Invocations](https://www.elkan5e.com/invocations)
-  - Armor of Shadows, Beast Speech, Eldritch Sight, Fiendish Vigor, Mask of Many Faces, Misty Visions, Otherworldly Leap, Ascendant Step, Whispers of the Grave, Master of Myriad Forms, Visions of Distant Realms can now cast spells from their feature
+    - Armor of Shadows, Beast Speech, Eldritch Sight, Fiendish Vigor, Mask of Many Faces, Misty Visions, Otherworldly Leap, Ascendant Step, Whispers of the Grave, Master of Myriad Forms, Visions of Distant Realms can now cast spells from their feature
 - Updated in v1.12.13
-  - Spells now appear properly onto warlock (might have been done in a previous version)
+    - Spells now appear properly onto warlock (might have been done in a previous version)
 - Updated in v1.12.9
-  - Pact of the Chain
-    - Spell to restore their familiar was cleaned up
-  - Pact of the Warrior
-    - Thirsting Weapon has been implemented
-  - Fiend Patron
-    - Dark One's Blessing can now only be used 3/Long Rest but doesn't damage self after use
+    - Pact of the Chain
+        - Spell to restore their familiar was cleaned up
+    - Pact of the Warrior
+        - Thirsting Weapon has been implemented
+    - Fiend Patron
+        - Dark One's Blessing can now only be used 3/Long Rest but doesn't damage self after use
 
 **[Wizard](https://www.elkan5e.com/wizard)**
 
 - Illusionist
-  - Added Masterful Illusions ability
+    - Added Masterful Illusions ability
 - Updated in v1.12.12
-  - New Illusionist Subclass
+    - New Illusionist Subclass
 - Updated in v1.12.9
-  - Evoker
-    - Now adds int mod to all spell damage at level 6
-    - New 'Closing Blast' ability at level 10
-  - Necromancer
-    - Life Drain on Spectral Graveguard was fixed to be a save and not an attack
+    - Evoker
+        - Now adds int mod to all spell damage at level 6
+        - New 'Closing Blast' ability at level 10
+    - Necromancer
+        - Life Drain on Spectral Graveguard was fixed to be a save and not an attack
 
 ## Equipment
 
 - Ammunition have had their price changed to make it so that it properly calculates the weight as a group of 20
 - Updated in v1.12.13
-  - Ammunition have had their weight changed to make it so that it properly calculates the weight as a group of 20
-  - Magical items now have a default Unidentified description
+    - Ammunition have had their weight changed to make it so that it properly calculates the weight as a group of 20
+    - Magical items now have a default Unidentified description
 - Updated in v1.12.9
-  - **For those who use the New Weapon Mastery System all Elkan 5e weapons now have their proper Mastery**
-  - Sickles are now finesse weapons
-  - Blowguns now deal 1d4 piercing damage instead of 1
-  - Increased prices of many lower-price weapons. All weapons are now worth at least 1 gold
-  - Decreased price of scimitars and hand crossbows
-  - Adjusted weight on a few weapons
-  - Adjusted price on magic items
-  - Blowgun now has a base weapon
-  - Pike now says that it is two-handed in the reference area
-  - Tools have been fixed
+    - **For those who use the New Weapon Mastery System all Elkan 5e weapons now have their proper Mastery**
+    - Sickles are now finesse weapons
+    - Blowguns now deal 1d4 piercing damage instead of 1
+    - Increased prices of many lower-price weapons. All weapons are now worth at least 1 gold
+    - Decreased price of scimitars and hand crossbows
+    - Adjusted weight on a few weapons
+    - Adjusted price on magic items
+    - Blowgun now has a base weapon
+    - Pike now says that it is two-handed in the reference area
+    - Tools have been fixed
 
 ## Feats
 
 - Removed War Casting feat
 - Updated in v1.12.13
-  - Repressed Memory which was a Hobgoblin feature has been made into a feat
-  - New Feat: Undead Nature
+    - Repressed Memory which was a Hobgoblin feature has been made into a feat
+    - New Feat: Undead Nature
 - Updated in v1.12.9
-  - Consolidated the two versions of combat maneuvers
-  - [Shifty](https://www.elkan5e.com/feats/shifty) now references Attack of Opportunity
+    - Consolidated the two versions of combat maneuvers
+    - [Shifty](https://www.elkan5e.com/feats/shifty) now references Attack of Opportunity
 
 ## Game Rules
 
 - Removed Dominated Condition
 - Updated in v1.12.13
-  - Curse Rules can now be found
-  - Phased out "As Part of a Weapon Attack" and added "Once per Turn" where it made sense
+    - Curse Rules can now be found
+    - Phased out "As Part of a Weapon Attack" and added "Once per Turn" where it made sense
 - Updated in v1.12.9
-  - Added Spell Scroll Description and Pricing
+    - Added Spell Scroll Description and Pricing
 
 ## Spells
 
 - New Spells
-  - [_Curse of Frailty_](https://www.elkan5e.com/spells/curse-of-frailty)
-  - [_Curse of Mindfire_](https://www.elkan5e.com/spells/curse-of-mindfire)
-  - [_Curse of Fate_](https://www.elkan5e.com/spells/curse-of-fate)
-  - [_Curse of Foolishness_](https://www.elkan5e.com/spells/curse-of-foolishness)
-  - [_Curse of Clumsiness_](https://www.elkan5e.com/spells/curse-of-clumsiness)
-  - [_Curse of Doom_](https://www.elkan5e.com/spells/curse-of-doom)
-  - [_Curse of the Troll_](https://www.elkan5e.com/spells/curse-of-the-troll)
-  - [_Prismatic Bolt_](https://www.elkan5e.com/spells/prismatic-bolt)
+    - [_Curse of Frailty_](https://www.elkan5e.com/spells/curse-of-frailty)
+    - [_Curse of Mindfire_](https://www.elkan5e.com/spells/curse-of-mindfire)
+    - [_Curse of Fate_](https://www.elkan5e.com/spells/curse-of-fate)
+    - [_Curse of Foolishness_](https://www.elkan5e.com/spells/curse-of-foolishness)
+    - [_Curse of Clumsiness_](https://www.elkan5e.com/spells/curse-of-clumsiness)
+    - [_Curse of Doom_](https://www.elkan5e.com/spells/curse-of-doom)
+    - [_Curse of the Troll_](https://www.elkan5e.com/spells/curse-of-the-troll)
+    - [_Prismatic Bolt_](https://www.elkan5e.com/spells/prismatic-bolt)
 - Updated Spells
-  - Remaining level 3 spells
-  - [_Cure Wounds_](https://www.elkan5e.com/spells/cure-wounds) healing increased
-  - [_Healing Word_](https://www.elkan5e.com/spells/healing-word) healing increased
-  - [_Dominate_](https://www.elkan5e.com/spells/dominate)
-  - [_Prismatic Spray_](https://www.elkan5e.com/spells/prismatic-spray) (now level 5)
-  - [_Druidcraft_](https://www.elkan5e.com/spells/druidcraft) can now clear a 5 ft. cube of difficult terrain
-  - [_Knock_](https://www.elkan5e.com/spells/knock) cannot be dispelled. Forcing the lock open ends the spell.
-  - [Goodberry](https://www.elkan5e.com/spells/goodberry) increased amount to 10 berries plus 5 on upcast
+    - Remaining level 3 spells
+    - [_Cure Wounds_](https://www.elkan5e.com/spells/cure-wounds) healing increased
+    - [_Healing Word_](https://www.elkan5e.com/spells/healing-word) healing increased
+    - [_Dominate_](https://www.elkan5e.com/spells/dominate)
+    - [_Prismatic Spray_](https://www.elkan5e.com/spells/prismatic-spray) (now level 5)
+    - [_Druidcraft_](https://www.elkan5e.com/spells/druidcraft) can now clear a 5 ft. cube of difficult terrain
+    - [_Knock_](https://www.elkan5e.com/spells/knock) cannot be dispelled. Forcing the lock open ends the spell.
+    - [Goodberry](https://www.elkan5e.com/spells/goodberry) increased amount to 10 berries plus 5 on upcast
 - Spell List Changes
-  - Added [_Inflict Wounds_](https://www.elkan5e.com/spells/inflict-wounds) to sorcerer spell list
-  - Removed [_Confusion_](https://www.elkan5e.com/spells/confusion) from Druid spell list
+    - Added [_Inflict Wounds_](https://www.elkan5e.com/spells/inflict-wounds) to sorcerer spell list
+    - Removed [_Confusion_](https://www.elkan5e.com/spells/confusion) from Druid spell list
 - Updated in v1.12.13
-  - Curse Rules can now be found
-  - Phased out "As Part of a Weapon Attack" and added "Once per Turn" where it made sense
+    - Curse Rules can now be found
+    - Phased out "As Part of a Weapon Attack" and added "Once per Turn" where it made sense
 - Updated in v1.12.12
-  - [_Produce Flame_](https://www.elkan5e.com/spells/produce-flame) can now set fires
+    - [_Produce Flame_](https://www.elkan5e.com/spells/produce-flame) can now set fires
 - Updated in v1.12.9
-  - **Spells cast as rituals now have an activity that won't take a spell slot**
-  - Now say if they are Melee Spell Attacks or Ranged Spell Attacks in the description
-  - [_Phantom Steed_](https://www.elkan5e.com/spells/phantom-steed) casting time of 1 minute (original time)
-  - [_Alarm_](https://www.elkan5e.com/spells/alarm) and [_Augury_](https://www.elkan5e.com/spells/augury) casting time 1 action
-  - 1 Minute rituals: All spells that take 1 action to cast
-  - [_Life Drain_](https://www.elkan5e.com/spells/life-drain) now drains a creature on successful save
-  - [_Well of Corruption_](https://www.elkan5e.com/spells/well-of-corruption) - now a one-time drain and area hazard that prevents healing
-  - [_Floating Disk_](https://www.elkan5e.com/spells/floating-disk) updated
-  - Elkan Classes will now be listed on top of Elkan Spells for which spells they have access to
+    - **Spells cast as rituals now have an activity that won't take a spell slot**
+    - Now say if they are Melee Spell Attacks or Ranged Spell Attacks in the description
+    - [_Phantom Steed_](https://www.elkan5e.com/spells/phantom-steed) casting time of 1 minute (original time)
+    - [_Alarm_](https://www.elkan5e.com/spells/alarm) and [_Augury_](https://www.elkan5e.com/spells/augury) casting time 1 action
+    - 1 Minute rituals: All spells that take 1 action to cast
+    - [_Life Drain_](https://www.elkan5e.com/spells/life-drain) now drains a creature on successful save
+    - [_Well of Corruption_](https://www.elkan5e.com/spells/well-of-corruption) - now a one-time drain and area hazard that prevents healing
+    - [_Floating Disk_](https://www.elkan5e.com/spells/floating-disk) updated
+    - Elkan Classes will now be listed on top of Elkan Spells for which spells they have access to
 
 ## UI
 
 - Made it possible for text localization of the background code base
 - Split up the Spell List Journals to Spells by Class, Subclass, School of Magic
 - Updated in v1.12.9
-  - All of Elkan stuff has now been integrated with the compendium browser
-  - Tons of clarity and formatting edits
-  - Change Species Feature back to Ancestry in the code
-  - Status Effect icons in Foundry
-    - New Full Cover Icon
-    - Remove icons for Burning, Dehydration, Falling, Malnutrition, Suffocation and put them into the area with other settings
-  - Lots of Referencing Updates
-    - Concentration Referencing now works with Elkan's concentration
-  - Elkan Actions are now listed in the action list for features and equipment
-  - Spell Schools for all spells now exists
+    - All of Elkan stuff has now been integrated with the compendium browser
+    - Tons of clarity and formatting edits
+    - Change Species Feature back to Ancestry in the code
+    - Status Effect icons in Foundry
+        - New Full Cover Icon
+        - Remove icons for Burning, Dehydration, Falling, Malnutrition, Suffocation and put them into the area with other settings
+    - Lots of Referencing Updates
+        - Concentration Referencing now works with Elkan's concentration
+    - Elkan Actions are now listed in the action list for features and equipment
+    - Spell Schools for all spells now exists
 
 ## Misc
 
 - Update Summary of Changes
 - Updated in v1.12.9
-  - Effects should not expire early when they have a duration of 1 round
-  - Abilities now grant the name of the effect in addition to the result like Animal Friendship and Charmed (To clean up and understand where effects are coming from)
-  - Add generic Disadvantage and Advantage conditions
-  - Fixed Use Custom Conditions having SRD Conditions and SRD Condition + Extra Conditions being mixed up
+    - Effects should not expire early when they have a duration of 1 round
+    - Abilities now grant the name of the effect in addition to the result like Animal Friendship and Charmed (To clean up and understand where effects are coming from)
+    - Add generic Disadvantage and Advantage conditions
+    - Fixed Use Custom Conditions having SRD Conditions and SRD Condition + Extra Conditions being mixed up
 
 # v1.12.13
 
@@ -1200,9 +1283,9 @@ Rename Module 'Elkan 5e Automated Content'
 ## Ancestry
 
 - Dragonborn
-  - Consolidated the two versions dragon breath weapons
+    - Consolidated the two versions dragon breath weapons
 - Minotaur:
-  - A minotaur's gore attack now pushes a target 5 ft. once per turn.
+    - A minotaur's gore attack now pushes a target 5 ft. once per turn.
 
 ## Classes
 
@@ -1211,12 +1294,12 @@ Rename Module 'Elkan 5e Automated Content'
 - All Spellcasting Classes now have their tables located in their Spellcasting Feature
   **[Barbarian](https://www.elkan5e.com/barbarian)**
 - Bloodrager
-  - Has been Reworked
-  - Move damage resistance to 10
-  - Remove Seething Mist
-  - Seething Blood not reaction, 1/turn
-  - Add War Casting at level 6
-  - Seething Blood ranged decreased to 10 ft. but now occurs When Hit by a Weapon Attack and not reaction and doesn't take reaction
+    - Has been Reworked
+    - Move damage resistance to 10
+    - Remove Seething Mist
+    - Seething Blood not reaction, 1/turn
+    - Add War Casting at level 6
+    - Seething Blood ranged decreased to 10 ft. but now occurs When Hit by a Weapon Attack and not reaction and doesn't take reaction
 
 **[Bard](https://www.elkan5e.com/bard)**
 
@@ -1229,22 +1312,22 @@ Rename Module 'Elkan 5e Automated Content'
 - Beasmaster - Spell to restore companion was cleaned up
   **[Rogue](https://www.elkan5e.com/rogue)**
 - Assasin:
-  - Now Identifies as a rogue
+    - Now Identifies as a rogue
 - Duelist: - New ability at level 6: Close the Gap, replacing Face Me!
   **[Sorcerer](https://www.elkan5e.com/sorcerer)**
 - Distant Spell: Inverted the metamagic so that making a touch spell have a range of 30 ft. is free and doubling the range of a spell costs 1 sorcery point.
   **[Warlock](https://www.elkan5e.com/warlock)**
 - Pact of the Chain
-  - Spell to restore their familiar was cleaned up
+    - Spell to restore their familiar was cleaned up
 - Pact of the Warrior
-  - Thirsting Weapon has been Implementent
+    - Thirsting Weapon has been Implementent
 - Fiend Patron - Dark One's Blessing can now only be used 3/Long Rest but doesn't damage self after use
   **[Wizard](https://www.elkan5e.com/wizard)**
 - Evoker:
-  - Now adds int mod to all spell damage at level 6
-  - New 'Closing Blast' ability at level 10
+    - Now adds int mod to all spell damage at level 6
+    - New 'Closing Blast' ability at level 10
 - Necromancer
-  - Life Drain on Spectral Graveguard was fixed to be a save and not an Attack
+    - Life Drain on Spectral Graveguard was fixed to be a save and not an Attack
 
 ## Equipment
 
@@ -1287,10 +1370,10 @@ Rename Module 'Elkan 5e Automated Content'
 - Tons of clarity and formatting edits
 - Change Species Feature back to Ancestry in the code
 - Status Effect icons in Foundry
-  - New Full Cover Icon
-  - Remove icons for Burning, Dehydration, Falling, Malnutrition, Suffocation and put them into the area with other settings
+    - New Full Cover Icon
+    - Remove icons for Burning, Dehydration, Falling, Malnutrition, Suffocation and put them into the area with other settings
 - Lots of Referencing Updates
-  - Concentration Referencing now works with Elkan's concentration
+    - Concentration Referencing now works with Elkan's concentration
 - Elkan Actions are now listed in the action list for features and equipment
 - Spell Schools for all spells now exists
 
@@ -1312,12 +1395,12 @@ Rename Module 'Elkan 5e Automated Content'
 **[Barbarian](https://www.elkan5e.com/barbarian)**
 
 - Bloodrager
-  - Can now cast their spells when not raging
+    - Can now cast their spells when not raging
 
 **[Bard](https://www.elkan5e.com/bard)**
 
 - Lorekeeper
-  - Add the new Master Ritualist ability
+    - Add the new Master Ritualist ability
 - Noise: - Drown Out the Voices now synergizes with psychic damage
   **[Fighter](https://www.elkan5e.com/fighter)**
 - Spellsword - Now granted [Combat Casting](<[Combat Casting](https://www.elkan5e.com/feats/combat-casting)>) Feat
@@ -1327,9 +1410,9 @@ Rename Module 'Elkan 5e Automated Content'
 - Now back to being only one class to choose instead of three
 - This was done a while ago: Make Pact of the Chain Unique Find Familiar with Unique Creatures
 - Invocation
-  - [Book of Rituals](https://www.elkan5e.com/invocations/book-of-rituals) now allows the warlock to ritually cast scrolls and gives them two scrolls.
-  - [Eyes of the Rune Keeper](https://www.elkan5e.com/invocations/eyes-of-the-rune-keeper) now can see hidden message left by an [_Illusory Script_](https://www.elkan5e.com/spells/illusory-script)
-  - [One with Shadow](https://www.elkan5e.com/invocations/one-with-shadows) now properly synergizes with the hide action
+    - [Book of Rituals](https://www.elkan5e.com/invocations/book-of-rituals) now allows the warlock to ritually cast scrolls and gives them two scrolls.
+    - [Eyes of the Rune Keeper](https://www.elkan5e.com/invocations/eyes-of-the-rune-keeper) now can see hidden message left by an [_Illusory Script_](https://www.elkan5e.com/spells/illusory-script)
+    - [One with Shadow](https://www.elkan5e.com/invocations/one-with-shadows) now properly synergizes with the hide action
 
 **[Wizard](https://www.elkan5e.com/wizard)**
 
@@ -1356,16 +1439,16 @@ Rename Module 'Elkan 5e Automated Content'
 - Massively improved [Rend Vigor](https://www.elkan5e.com/spells/rend-vigor) spell.
 - Ritual spells now have their ritual casting time listed in their spell descriptions
 - Revised
-  - [Hypnotic Pattern](https://www.elkan5e.com/spells/hypnotic-pattern)
-  - [Spirit Guardians](https://www.elkan5e.com/spells/spirit-guardians)
-  - [Arcane Lock](https://www.elkan5e.com/spells/arcane-lock)
+    - [Hypnotic Pattern](https://www.elkan5e.com/spells/hypnotic-pattern)
+    - [Spirit Guardians](https://www.elkan5e.com/spells/spirit-guardians)
+    - [Arcane Lock](https://www.elkan5e.com/spells/arcane-lock)
 - New Phantasmal Spells
-  - [Thundering Omen](https://www.elkan5e.com/spells/thundering-omen)
-  - [Spectral Lance](https://www.elkan5e.com/spells/spectral-lance)
-  - [Spook](https://www.elkan5e.com/spells/spook)
-  - [Silent Cacophony](https://www.elkan5e.com/spells/silent-cacophony)
-  - [Pain Reflection](https://www.elkan5e.com/spells/pain-reflection)
-  - [Shadow Clone](https://www.elkan5e.com/spells/shadow-clone)
+    - [Thundering Omen](https://www.elkan5e.com/spells/thundering-omen)
+    - [Spectral Lance](https://www.elkan5e.com/spells/spectral-lance)
+    - [Spook](https://www.elkan5e.com/spells/spook)
+    - [Silent Cacophony](https://www.elkan5e.com/spells/silent-cacophony)
+    - [Pain Reflection](https://www.elkan5e.com/spells/pain-reflection)
+    - [Shadow Clone](https://www.elkan5e.com/spells/shadow-clone)
 
 ## Bug Fixes
 
@@ -1409,22 +1492,22 @@ Rename Module 'Elkan 5e Automated Content'
 - Warlock Level 12 Invocation has been moved to Level 11
 - Added Thirsting Weapon ability to pact o- Invocations:
 - Fiend Patron:
-  - Redesigned Dark One's Blessing
+    - Redesigned Dark One's Blessing
 - Invocations:
-  - Added Eldritch Arcanum invocation for level 11 Pact of the Tome
-  - Removed Minions of Choas
+    - Added Eldritch Arcanum invocation for level 11 Pact of the Tome
+    - Removed Minions of Choas
 
 ## Conditions
 
 - Drained condition
-  - The health reduction is now working for features
+    - The health reduction is now working for features
 
 ## Feats
 
 - Edited text for Large Frame on small characters with the Laborer background
 - [Spirit Steed](<[Spirit Steed](https://www.elkan5e.com/feats/spirit-steed)>)
-  - Can now be taken as a level 1 paladin feat instead of level 4
-  - Grants some of the benefits of [Mounted Combatant](https://www.elkan5e.com/feats/mounted-combat) for the steed
+    - Can now be taken as a level 1 paladin feat instead of level 4
+    - Grants some of the benefits of [Mounted Combatant](https://www.elkan5e.com/feats/mounted-combat) for the steed
 
 ## Spells
 
@@ -1435,8 +1518,8 @@ Rename Module 'Elkan 5e Automated Content'
 - [_Invisibility_](https://www.elkan5e.com/spells/invisibility) has its proper duration of 1 hour
 - Updated some level 4 and level 5 spells
 - Removed Spells
-  - [_Haste_](https://www.elkan5e.com/spells/haste) from druid spell list
-  - [_Slow_](https://www.elkan5e.com/spells/slow) from warlock spell list
+    - [_Haste_](https://www.elkan5e.com/spells/haste) from druid spell list
+    - [_Slow_](https://www.elkan5e.com/spells/slow) from warlock spell list
 
 ## UI
 
@@ -1455,11 +1538,11 @@ Rename Module 'Elkan 5e Automated Content'
 - Fighter versions of Manuevers now have "(Fighter)" in their name
 - New Fighter level 20 feature
 - Commander:
-  - Now gain conventional expertise features rather than their old ones.
+    - Now gain conventional expertise features rather than their old ones.
 - Champion:
-  - Now gain conventional expertise features rather than their old ones.
-  - Now gets expertise at level 3 instead of 6
-  - Gains a new feature at level 6 that allows them to dash as a bonus action.
+    - Now gain conventional expertise features rather than their old ones.
+    - Now gets expertise at level 3 instead of 6
+    - Gains a new feature at level 6 that allows them to dash as a bonus action.
 
 **[Paladin](https://www.elkan5e.com/paladin)**
 
@@ -1470,7 +1553,7 @@ Rename Module 'Elkan 5e Automated Content'
 - Now gain Signature Spells at level 18, and must choose spells with a spellcasting time of 1 action.
 - Spell Mastery is a completely new ability for level 20 Wizards that lets them gain an extra action for spellcasting and ignore the normal limits on casting multiple spells in a turn for 1 turn, 1/Short Rest
 - Necromancer
-  - New Subclass
+    - New Subclass
 
 ## Equipment
 
@@ -1480,7 +1563,7 @@ Rename Module 'Elkan 5e Automated Content'
 
 - Renamed Lightning damage to Electric Damage
 - Combat Journal has been updated
-  - Move combat info from armor and weapons to combat page
+    - Move combat info from armor and weapons to combat page
 - Made Exhaustion removal as its own custom choice
 - Lower str requirements on armor to 12/14
 
@@ -1495,10 +1578,10 @@ Rename Module 'Elkan 5e Automated Content'
 - Add a link to the Github issue tracker on the Help journal entry
 - Make a summoned creature compendium (<span style="color:rgb(255, 0, 0)">WARNING</span> THIS MAY BREAK SUMMONING SPELLS)
 - Reference Additions
-  - Damage Types
-  - Unarmed Attack
-  - Opportunity Attack
-  - Dual Wielding (AKA Two-weapon fighting)
+    - Damage Types
+    - Unarmed Attack
+    - Opportunity Attack
+    - Dual Wielding (AKA Two-weapon fighting)
 
 ## Bug Fixes
 
@@ -1525,11 +1608,11 @@ Rename Module 'Elkan 5e Automated Content'
 ## Game Rules
 
 - Game Master now have the option to turn off or affect parts of the module
-  - **Conditions:** Choose how much of our rules around conditions you want to use
-  - **Armor:** You can now use the removed armor proficiencies that Elkan does not have
-  - **Draconic Toughness:** You can now choose to have AC use 13 + @dex instead of the change to 14 + @dex
-  - **Tools:** You can now use the removed tool proficiencies that Elkan does not have
-  - **Weapon Proficiencies:** You can now use the removed weapon proficiencies that Elkan does not have
+    - **Conditions:** Choose how much of our rules around conditions you want to use
+    - **Armor:** You can now use the removed armor proficiencies that Elkan does not have
+    - **Draconic Toughness:** You can now choose to have AC use 13 + @dex instead of the change to 14 + @dex
+    - **Tools:** You can now use the removed tool proficiencies that Elkan does not have
+    - **Weapon Proficiencies:** You can now use the removed weapon proficiencies that Elkan does not have
 
 ## Spells
 
@@ -1554,12 +1637,12 @@ Made subclass names consistent in formatting
 
 - Rumination now works as a single click as it now has a item macro
 - Bloodrager
-  - New Subclasses
+    - New Subclasses
 
 **[Bard](https://www.elkan5e.com/bard)**
 
 - Lorekeeper
-  - New name for College of Lore
+    - New name for College of Lore
 
 **[Monk](https://www.elkan5e.com/monk)**
 
@@ -1582,7 +1665,7 @@ Made subclass names consistent in formatting
 - Polygot is now repeatable
 - Create Familiar's for [Find Familiar](https://www.elkan5e.com/feats/find-familiar)
 - Create Familiar's for [Find Familiar](https://www.elkan5e.com/feats/find-familiar)
-  - Automated Familiar's Cloack
+    - Automated Familiar's Cloack
 
 ## Game Rules
 
@@ -1617,7 +1700,7 @@ Made subclass names consistent in formatting
 - Clarified Howling Storm
 - Druids can now end a Wild Shape effect as a bonus action.
 - Shifter
-  - Reduced expanded spell list to one spell per level
+    - Reduced expanded spell list to one spell per level
 
 **[Monk](https://www.elkan5e.com/monk)**
 
@@ -1649,13 +1732,13 @@ Made subclass names consistent in formatting
 ## Spells
 
 - 7 New Spells
-  - [Shout](https://www.elkan5e.com/spells/shout)
-  - [Lapidate](https://www.elkan5e.com/spells/lapidate)
-  - [Rock Blast](https://www.elkan5e.com/spells/rock-blast)
-  - [Crushing Wave](https://www.elkan5e.com/spells/crushing-wave)
-  - [Gentle Current](https://www.elkan5e.com/spells/gentle-current)
-  - [Whirlwind](https://www.elkan5e.com/spells/whirlwind)
-  - [Lashing Wind](https://www.elkan5e.com/spells/lashing-wind)
+    - [Shout](https://www.elkan5e.com/spells/shout)
+    - [Lapidate](https://www.elkan5e.com/spells/lapidate)
+    - [Rock Blast](https://www.elkan5e.com/spells/rock-blast)
+    - [Crushing Wave](https://www.elkan5e.com/spells/crushing-wave)
+    - [Gentle Current](https://www.elkan5e.com/spells/gentle-current)
+    - [Whirlwind](https://www.elkan5e.com/spells/whirlwind)
+    - [Lashing Wind](https://www.elkan5e.com/spells/lashing-wind)
 - Added Referencing
 - Arcane Eye (summon) now uses the updated invisibility
 - [Burning Beam](https://www.elkan5e.com/spells/burning-beam) is now a 45 ft. line rather than a 30 ft. line
@@ -1682,7 +1765,7 @@ Made subclass names consistent in formatting
 **[Rogue](https://www.elkan5e.com/rogue)**
 
 - Arcane Tricksters
-  - Now able to use spellcasting ability for Precision Attack DCs\
+    - Now able to use spellcasting ability for Precision Attack DCs\
 
 ## Feats
 
@@ -1744,17 +1827,17 @@ Made subclass names consistent in formatting
 **[Cleric](https://www.elkan5e.com/cleric)**
 
 - Life Domain:
-  - Preserve Life feature reverted to its original design
+    - Preserve Life feature reverted to its original design
 
 **[Fighter](https://www.elkan5e.com/fighter)**
 
 - Bulwark:
-  - Iron Retribution now consumes Action Surge as part of using it
+    - Iron Retribution now consumes Action Surge as part of using it
 - Commander:
-  - Rallying Surge now consumes Action Surge as part of using it
+    - Rallying Surge now consumes Action Surge as part of using it
 - Spellsword:
-  - Spellsurge now consumes Action Surge as part of using it
-  - Fixed incorrect cantrip lists
+    - Spellsurge now consumes Action Surge as part of using it
+    - Fixed incorrect cantrip lists
 
 **[Ranger](https://www.elkan5e.com/ranger)**
 
@@ -1764,7 +1847,7 @@ Made subclass names consistent in formatting
 **[Rogue](https://www.elkan5e.com/rogue)**
 
 - Mystic Trickster
-  - Fixed incorrect cantrip lists
+    - Fixed incorrect cantrip lists
 
 ## Feats
 
@@ -1782,8 +1865,8 @@ Made subclass names consistent in formatting
 ## Spells
 
 - Level 2 Spells are Done
-  - Been reformatted
-  - Been modified
+    - Been reformatted
+    - Been modified
 - New summons have been put in
 - Well of Corruption Drained Update
 - Alternative words for Save Ends Nomenclature
@@ -1791,7 +1874,7 @@ Made subclass names consistent in formatting
 # v1.12.0
 
 - **Required Modules**
-  - Times-Up has become a required module
+    - Times-Up has become a required module
 
 ## Ancestry
 
@@ -1819,12 +1902,12 @@ Made subclass names consistent in formatting
 **[Monk](https://www.elkan5e.com/monk)**
 
 - Open Hand
-  - Quivering Palm (Damage) now gets added after Quivering Palm - previously called Quivering Palm (Vibrations) - is used
+    - Quivering Palm (Damage) now gets added after Quivering Palm - previously called Quivering Palm (Vibrations) - is used
 
 **[Paladin](https://www.elkan5e.com/paladin)**
 
 - Oath of Devotion
-  - Aura of Devotion says it blocks domination as well
+    - Aura of Devotion says it blocks domination as well
 
 **[Ranger](https://www.elkan5e.com/ranger)**
 
@@ -1835,16 +1918,16 @@ Made subclass names consistent in formatting
 
 - Fixed Rogue Progression Table
 - Precision Attack
-  - Fixed Damage
-  - Fixed Visual Issue
+    - Fixed Damage
+    - Fixed Visual Issue
 - Thief
-  - New Subclass
+    - New Subclass
 
 **[Sorcerer](https://www.elkan5e.com/sorcerer)**
 
 - Draconic Origin
-  - Fixed Dragonbreath Choice
-  - Fix Dragonbreath Damage Scaling
+    - Fixed Dragonbreath Choice
+    - Fix Dragonbreath Damage Scaling
 
 **[Warlock](https://www.elkan5e.com/warlock)**
 
@@ -1868,14 +1951,14 @@ Made subclass names consistent in formatting
 - Changed how we do resource consumption to work with the new update since its supported by default
 - Change source not to start with \http://www.
 - Introduced and Implemented Feature Categories and Subcategories
-  - Class Features (Not New)
-    - Wild Shape
-    - Precision Attack
-  - Subclass Features (New)
-    - Ki Ability
-    - Channel Divinity
-    - Hunter's Prey
-    - Improved Fighting Style
+    - Class Features (Not New)
+        - Wild Shape
+        - Precision Attack
+    - Subclass Features (New)
+        - Ki Ability
+        - Channel Divinity
+        - Hunter's Prey
+        - Improved Fighting Style
 
 ## Journals
 
@@ -1887,14 +1970,14 @@ Made subclass names consistent in formatting
 - Can be switched on Advancement
 - Added Healing enrichers to level 1 and 2 spells
 - Implemented the new Enchant System
-  - Magic Weapon
-  - Pact Weapon
+    - Magic Weapon
+    - Pact Weapon
 - New Spells
 
 ## Bug Fixes
 
 - Emergency Bug Fix
-  - Temporarily put () around the damage in Dragonbreath, Sneak attack, precision attacks as it resolves a bug in the code
+    - Temporarily put () around the damage in Dragonbreath, Sneak attack, precision attacks as it resolves a bug in the code
 
 ## v1.11.6.2
 
@@ -1912,12 +1995,12 @@ Made subclass names consistent in formatting
 
 - Removed Challenger from combat maneuver choice list as it's not a combat maneuver
 - Spellsword
-  - Now links to Action Surge
+    - Now links to Action Surge
 
 **[Paladin](https://www.elkan5e.com/paladin)**
 
 - Oath of Devotion
-  - Gives immunity to Dominated condition as well
+    - Gives immunity to Dominated condition as well
 
 **[Rogue](https://www.elkan5e.com/rogue)**
 
@@ -1941,9 +2024,8 @@ Made subclass names consistent in formatting
 ## Bug Fixes
 
 - Emergency Bug Fix
-
-  - Fixed major error causing things not to load
-    - Did the wrong type of push on Feature Type
+    - Fixed major error causing things not to load
+        - Did the wrong type of push on Feature Type
 
 ## v1.11.6.1
 
@@ -1952,39 +2034,39 @@ Made subclass names consistent in formatting
 ## v1.11.6
 
 - Action
-  - Features now have
-    - During a Long Rest
-    - No Action Cost
-  - Standard Actions now exist (With Dash, Hide and Disengage) all being merged into Standard Actions Feature
+    - Features now have
+        - During a Long Rest
+        - No Action Cost
+    - Standard Actions now exist (With Dash, Hide and Disengage) all being merged into Standard Actions Feature
 - Classes
-  - Classes now give Standard Actions which explains all actions that can be taken with dodge and help seperate because they can be automated
-  - [Druid](https://www.elkan5e.com/druid)
-    - Losses Natural Recovery
-  - [Ranger](https://www.elkan5e.com/ranger)
-    - Primeval Awareness is a bonus action
-  - [Paladin](https://www.elkan5e.com/paladin)
-    - Subclass: Oath of Devotion
-      - Has been created and has some of its abilities changed and added to
-  - [Sorcerer](https://www.elkan5e.com/sorcerer)
-    - Magic Coalescence now allows Sorcerers to regain some metamagics (automated)
+    - Classes now give Standard Actions which explains all actions that can be taken with dodge and help seperate because they can be automated
+    - [Druid](https://www.elkan5e.com/druid)
+        - Losses Natural Recovery
+    - [Ranger](https://www.elkan5e.com/ranger)
+        - Primeval Awareness is a bonus action
+    - [Paladin](https://www.elkan5e.com/paladin)
+        - Subclass: Oath of Devotion
+            - Has been created and has some of its abilities changed and added to
+    - [Sorcerer](https://www.elkan5e.com/sorcerer)
+        - Magic Coalescence now allows Sorcerers to regain some metamagics (automated)
 - Feats
-  - Mark of Thorns now hjas a blank active effect to indicate who its affecting
+    - Mark of Thorns now hjas a blank active effect to indicate who its affecting
 - Features
-  - Added Feature Type Precision Attack as a subtype of Class Feature
+    - Added Feature Type Precision Attack as a subtype of Class Feature
 - Language
-  - Fixed typos where Ancestral was spelled Ancestrial
+    - Fixed typos where Ancestral was spelled Ancestrial
 - Journals
-  - Standard Actions now appear in the new Combat Journal Entry in Rules
-    - Attacks of Opportunity now trigger on any movement moving away from a creature, rather than just movement that moves outside of a weapon's range. They also trigger on a spellcaster casting a spell with a casting time of 1 action.
-    - Readied Actions no longer require the readying creature to set a specific trigger.
-  - Added guidelines for GMs to set skill check DCs
-  - Updated Summary of Changes to conform with the changes that have been made
-    - It also now has a list of new spell
+    - Standard Actions now appear in the new Combat Journal Entry in Rules
+        - Attacks of Opportunity now trigger on any movement moving away from a creature, rather than just movement that moves outside of a weapon's range. They also trigger on a spellcaster casting a spell with a casting time of 1 action.
+        - Readied Actions no longer require the readying creature to set a specific trigger.
+    - Added guidelines for GMs to set skill check DCs
+    - Updated Summary of Changes to conform with the changes that have been made
+        - It also now has a list of new spell
 - Weapons
    \* Unarmed Strike has now been added to the weapon list
 - Spell
-  - New [Vine Lash](https://www.elkan5e.com/spells/vine-lash)
-  - Wizards have lost [Misty Step](https://www.elkan5e.com/spells/misty-step) and now requires somatic Components
+    - New [Vine Lash](https://www.elkan5e.com/spells/vine-lash)
+    - Wizards have lost [Misty Step](https://www.elkan5e.com/spells/misty-step) and now requires somatic Components
 
 ## v1.11.5
 
@@ -2050,29 +2132,29 @@ Made subclass names consistent in formatting
 ## v1.11.4
 
 - Actions
-  - Applied the new terms that were put in last update
+    - Applied the new terms that were put in last update
 - Classes
-  - Monk
-    - Ki was set to recover on short rest and has been fixed to be long rest
-    - Rewrote deflect missiles to be more clear
-  - Rogue
-    - Brute: Level 3 abilities renamed
-    - Duelist: Feint ability has been reworked to not take a reaction.
-    - Duelist: Reworked Master Duelist
-  - Sorcerer
-    - Draconic Orgin: Fixed getting wings at level 4 and changed it back to level 14
-  - Warlock
-    - Level 1 and Level 3 features have been switched
-  - Multiple
-    - Blindsights have all combined into one ability
-    - Move class footnotes text to bottom of abilities in italics
+    - Monk
+        - Ki was set to recover on short rest and has been fixed to be long rest
+        - Rewrote deflect missiles to be more clear
+    - Rogue
+        - Brute: Level 3 abilities renamed
+        - Duelist: Feint ability has been reworked to not take a reaction.
+        - Duelist: Reworked Master Duelist
+    - Sorcerer
+        - Draconic Orgin: Fixed getting wings at level 4 and changed it back to level 14
+    - Warlock
+        - Level 1 and Level 3 features have been switched
+    - Multiple
+        - Blindsights have all combined into one ability
+        - Move class footnotes text to bottom of abilities in italics
 - Equipment
-  - SRD Weapons have been removed for now while we figure out what we want to do with them
+    - SRD Weapons have been removed for now while we figure out what we want to do with them
 - Spells
-  - Added 3 new spells ([Bloodlust](https://www.elkan5e.com/spells/bloodlust), [Ball Lightning](https://www.elkan5e.com/spells/ball-lightning), and [Shockwave](https://www.elkan5e.com/spells/shockwave))
-  - [Moonbeam](https://www.elkan5e.com/spells/moonbeam) is done
-  - Some spells now grant spells to cast at-will while concentrating for automation purposes
-  - Augury now explains why it has an active effect
+    - Added 3 new spells ([Bloodlust](https://www.elkan5e.com/spells/bloodlust), [Ball Lightning](https://www.elkan5e.com/spells/ball-lightning), and [Shockwave](https://www.elkan5e.com/spells/shockwave))
+    - [Moonbeam](https://www.elkan5e.com/spells/moonbeam) is done
+    - Some spells now grant spells to cast at-will while concentrating for automation purposes
+    - Augury now explains why it has an active effect
 
 ## v1.11.3.1
 
@@ -2081,112 +2163,112 @@ Made subclass names consistent in formatting
 ## v1.11.3
 
 - Actions
-  - Added two new terms for when abilities occur
-    - As Part of a Weapon Attack
-    - During a Short Rest
+    - Added two new terms for when abilities occur
+        - As Part of a Weapon Attack
+        - During a Short Rest
 - Background
-  - Forge-Bound now gets access to Vehicles
+    - Forge-Bound now gets access to Vehicles
 - Classes
-  - Format update for monk features (to be more in line with other features)
-  - Monks now have the Meditation Feature
-  - Unarmored Defense (Monk) can now be used with shields
-  - Stunning Strike cannot be used more than once per turn
-  - Made Arcane and Natural Recovery features work 1/long rest instead of 1/day
+    - Format update for monk features (to be more in line with other features)
+    - Monks now have the Meditation Feature
+    - Unarmored Defense (Monk) can now be used with shields
+    - Stunning Strike cannot be used more than once per turn
+    - Made Arcane and Natural Recovery features work 1/long rest instead of 1/day
 - Conditions
-  - Fixed conditions added by the module
-  - Automated Exhaustion
+    - Fixed conditions added by the module
+    - Automated Exhaustion
 - Creature Features
-  - Created the swarm template
+    - Created the swarm template
 - Equipment
-  - Staff of Truth has been remade
-  - Projectile weapons descriptions have been changed
+    - Staff of Truth has been remade
+    - Projectile weapons descriptions have been changed
 - Spells
-  - Moonbeam has been clarified
-  - Shadow strike clarification
+    - Moonbeam has been clarified
+    - Shadow strike clarification
 - Subclasses
-  - [Shadowdancer](https://www.elkan5e.com/monk) Monk now exists
+    - [Shadowdancer](https://www.elkan5e.com/monk) Monk now exists
 
 ## v1.11.2
 
 - Ancestries
-  - Breath Weapons:
-    - Now have the Magical property
-    - Now have enrichers on them
-  - Fixed formatting inconsistencies
-  - Gave Mixed Ancestry a link to its Journal Note
-  - Minor Edit to Labyrinthine Recall
+    - Breath Weapons:
+        - Now have the Magical property
+        - Now have enrichers on them
+    - Fixed formatting inconsistencies
+    - Gave Mixed Ancestry a link to its Journal Note
+    - Minor Edit to Labyrinthine Recall
 - Background
-  - Now gives starting gold
+    - Now gives starting gold
 - Backend
-  - Weapon Property is now a type of Rule page
-  - Replaced all icons for conditions
+    - Weapon Property is now a type of Rule page
+    - Replaced all icons for conditions
 - Classes
-  - Minor Edit to Beastmaster's One Mind
-  - Unarmed Strike (Monk) now has its light weapon property
-  - Made the change from Unarmored Movement to Empowered Movement for Monks
-  - Merged Fighter (3 attacks) and Hunter (3 attacks)
-  - Mark for Death:
-    - Damage feature is now granted on Mark for Death Uses use
-    - Updated Description
-  - Cunning Action now mentions that you cannot use two of the same action
-  - Fighters now have a new level 20 feature, Endurance of Champions (has not been automated yet)
-  - Fighter chart updated
-  - Class equipment has been put in Starting Equipment (Currently does nothing)
-  - Familiar's Blast is an ability and not a cantrip
+    - Minor Edit to Beastmaster's One Mind
+    - Unarmed Strike (Monk) now has its light weapon property
+    - Made the change from Unarmored Movement to Empowered Movement for Monks
+    - Merged Fighter (3 attacks) and Hunter (3 attacks)
+    - Mark for Death:
+        - Damage feature is now granted on Mark for Death Uses use
+        - Updated Description
+    - Cunning Action now mentions that you cannot use two of the same action
+    - Fighters now have a new level 20 feature, Endurance of Champions (has not been automated yet)
+    - Fighter chart updated
+    - Class equipment has been put in Starting Equipment (Currently does nothing)
+    - Familiar's Blast is an ability and not a cantrip
 - Subclass
-  - [Assassin](https://elkan5e.com/rogue) is now available
-  - Feint a [Duelist](https://elkan5e.com/rogue) feature has been clarified to be able to be used with throwing weapons
+    - [Assassin](https://elkan5e.com/rogue) is now available
+    - Feint a [Duelist](https://elkan5e.com/rogue) feature has been clarified to be able to be used with throwing weapons
 - Compendium
-  - Fixed the folder name to be the proper spelling of Equipment
-  - Renamed and sorted Compendiums
+    - Fixed the folder name to be the proper spelling of Equipment
+    - Renamed and sorted Compendiums
 - Conditions
-  - Foundry now uses Elkan 5e conditions and has almost all been automated (exhaustion not with standing)
-  - Have been updated. The changes are reflected on the [website](https://www.elkan5e.com/conditions).
-  - Muted renamed to Silenced
+    - Foundry now uses Elkan 5e conditions and has almost all been automated (exhaustion not with standing)
+    - Have been updated. The changes are reflected on the [website](https://www.elkan5e.com/conditions).
+    - Muted renamed to Silenced
 - Feats
-  - [Dragon Breath Control](https://www.elkan5e.com/feats) is now avalable to [Draconic Origin](https://www.elkan5e.com/sorcerer) Sorcerer
-  - Fixed Activation of Lay on Hands
-  - Minor Edit to Volley
+    - [Dragon Breath Control](https://www.elkan5e.com/feats) is now avalable to [Draconic Origin](https://www.elkan5e.com/sorcerer) Sorcerer
+    - Fixed Activation of Lay on Hands
+    - Minor Edit to Volley
 - Items
-  - Morning Star now has its versatile property
-  - Set Magical Equipment with the magical property
-  - Fixed Large and Small Shields being counted as a type of light armor
-  - Bugfix: Gave all Cold Iron Weapons their properties back
-  - +1 Rapier now exists
-  - Links to Weapon Property is now using the new referencing
-  - Pikes have now been updated to get there 15 feet range
-  - Pike Icon has changed
-  - +1 Sling and +3 Sling have been put in the right place
+    - Morning Star now has its versatile property
+    - Set Magical Equipment with the magical property
+    - Fixed Large and Small Shields being counted as a type of light armor
+    - Bugfix: Gave all Cold Iron Weapons their properties back
+    - +1 Rapier now exists
+    - Links to Weapon Property is now using the new referencing
+    - Pikes have now been updated to get there 15 feet range
+    - Pike Icon has changed
+    - +1 Sling and +3 Sling have been put in the right place
 - Journal
-  - Removed Changes to Spells
-  - The Weapons Rule page has been split up
-  - Removed footnote on conditions page
-  - Removed notes for weapons and armor and references to those pages
-  - Added Summary of Changes Journal Entry in Elkan 5e Rules (which will be the main place to check what changes have been made)
-  - Weapon Characteristics have now been moved to Weapon Rules Page
+    - Removed Changes to Spells
+    - The Weapons Rule page has been split up
+    - Removed footnote on conditions page
+    - Removed notes for weapons and armor and references to those pages
+    - Added Summary of Changes Journal Entry in Elkan 5e Rules (which will be the main place to check what changes have been made)
+    - Weapon Characteristics have now been moved to Weapon Rules Page
 - References changes:
-  - Using the new system, we have flipped over a lot of the referencing in dnd5e to the Elkan version
-  - This includes weapon styles and conditions
+    - Using the new system, we have flipped over a lot of the referencing in dnd5e to the Elkan version
+    - This includes weapon styles and conditions
 - Spells
-  - All 1st level spells now reference their location on the [website](https://www.elkan5e.com/spells).
-  - Spell Lists:
-    - Ranger got [Expeditious Retreat](https://www.elkan5e.com/spells/expeditious-retreat)
-    - Sorcerers lose the gained [Protection from Good and Evil](https://www.elkan5e.com/spells/protection-from-evil-and-good)
-    - Wizards losses [Hideous Laughter](https://www.elkan5e.com/spells/hideous-laughter)
-  - 1st level spells now all have enrichers
-  - Fixed formatting inconsistencies
-  - Fixed [Command](https://www.elkan5e.com/spells/command) saying that it was VSM when it really just V
-  - Minor Edits to [Detect Poison and Disease](https://www.elkan5e.com/spells/detect-poison-and-disease)
-  - [Blindness/Deafness](https://www.elkan5e.com/spells/blindness%2Fdeafness) is now automated
-  - [Burning Hands](https://www.elkan5e.com/spells/burning-hands) adjustment added an additional 5 feet to the cone
-  - Fire Shield is no longer an attack
-  - [Ray of Enfeeblement](https://www.elkan5e.com/spells/ray-of-enfeeblement) now gives weakness condition
-  - [Shadow Strike](https://www.elkan5e.com/spells/shadow-strike) can no longer teleport to the air
-  - [Shield](https://www.elkan5e.com/spells/shield) Spell now says that it requires a free hand
-  - [Resistance](https://www.elkan5e.com/spells/resistance) now lasts for total concentration and no longer disappears after first hit
-  - Bugfix: All spells now have their spell components
-  - Some 2nd level spells have been updated
-  - Changed how spells were formatted
+    - All 1st level spells now reference their location on the [website](https://www.elkan5e.com/spells).
+    - Spell Lists:
+        - Ranger got [Expeditious Retreat](https://www.elkan5e.com/spells/expeditious-retreat)
+        - Sorcerers lose the gained [Protection from Good and Evil](https://www.elkan5e.com/spells/protection-from-evil-and-good)
+        - Wizards losses [Hideous Laughter](https://www.elkan5e.com/spells/hideous-laughter)
+    - 1st level spells now all have enrichers
+    - Fixed formatting inconsistencies
+    - Fixed [Command](https://www.elkan5e.com/spells/command) saying that it was VSM when it really just V
+    - Minor Edits to [Detect Poison and Disease](https://www.elkan5e.com/spells/detect-poison-and-disease)
+    - [Blindness/Deafness](https://www.elkan5e.com/spells/blindness%2Fdeafness) is now automated
+    - [Burning Hands](https://www.elkan5e.com/spells/burning-hands) adjustment added an additional 5 feet to the cone
+    - Fire Shield is no longer an attack
+    - [Ray of Enfeeblement](https://www.elkan5e.com/spells/ray-of-enfeeblement) now gives weakness condition
+    - [Shadow Strike](https://www.elkan5e.com/spells/shadow-strike) can no longer teleport to the air
+    - [Shield](https://www.elkan5e.com/spells/shield) Spell now says that it requires a free hand
+    - [Resistance](https://www.elkan5e.com/spells/resistance) now lasts for total concentration and no longer disappears after first hit
+    - Bugfix: All spells now have their spell components
+    - Some 2nd level spells have been updated
+    - Changed how spells were formatted
 
 ## v1.11.1
 
@@ -2330,12 +2412,12 @@ Made subclass names consistent in formatting
 - Added New Condition Types
 - Paladin Update
 - Added Elkan Settings to Foundry
-  - Armor
-      - Conditions
-      - Features (Renaming Race Feature to Ancestry Feature)
-      - Languages
-      - Tools
-      - Weapons
+    - Armor
+        - Conditions
+        - Features (Renaming Race Feature to Ancestry Feature)
+        - Languages
+        - Tools
+        - Weapons
 
 ## v1.2.5
 

@@ -1,0 +1,225 @@
+{
+	"folder": "hs1kzC3J5ULWhDl5",
+	"name": "Breath Weapon (Black)",
+	"type": "feat",
+	"_id": "O290gPChb2jSXOxr",
+	"img": "icons/magic/acid/projectile-flame-smoke-green.webp",
+	"system": {
+		"description": {
+			"value": "<p><em>You spew a jet of &amp;reference[acid].</em></p><p><strong>Action</strong> - 30 ft. line (5 ft. wide) - 1/Long Rest - Magical</p><p><strong>Dexterity Save</strong></p><ul><li><p><strong>Failure:</strong> [[/damage 3d6 acid]] damage*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p></p><p><strong>*At Higher Levels:</strong> This ability's damage increases by 3d6 when you reach a total character or creature level of 5th level ( [[/damage 6d6 acid]]{6d6}), 11th level ( [[/damage 9d6 acid]]{9d6}), and 17th level ( [[/damage 12d6 acid]]{12d6}).</p>",
+			"chat": ""
+		},
+		"source": {
+			"book": "Elkan 5e",
+			"page": "",
+			"custom": "elkan5e.com/ancestrybackground",
+			"license": "",
+			"revision": 1,
+			"rules": ""
+		},
+		"uses": {
+			"max": "1",
+			"recovery": [
+				{
+					"period": "lr",
+					"type": "recoverAll"
+				}
+			],
+			"spent": 0
+		},
+		"type": {
+			"value": "race",
+			"subtype": ""
+		},
+		"requirements": "Black Dragonborn",
+		"properties": [
+			"mgc"
+		],
+		"activities": {
+			"dnd5eactivity000": {
+				"name": "",
+				"img": "",
+				"target": {
+					"affects": {
+						"type": "any"
+					}
+				},
+				"consumption": {
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "",
+							"scaling": {}
+						}
+					]
+				},
+				"range": {
+					"units": "self"
+				},
+				"damage": {
+					"parts": [
+						{
+							"custom": {
+								"enabled": true,
+								"formula": "max(@scale.dragonborn.breath-weapon, (3*@scale.draconic-origin.breath-weapon)d6)"
+							},
+							"number": null,
+							"denomination": null,
+							"bonus": "",
+							"types": [
+								"acid"
+							],
+							"scaling": {
+								"number": 1
+							}
+						}
+					]
+				},
+				"appliedEffects": []
+			},
+			"1Kw4O1HZ7rxGOJ1z": {
+				"type": "save",
+				"_id": "1Kw4O1HZ7rxGOJ1z",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": ""
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": "line",
+						"size": "30",
+						"width": "5",
+						"count": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": "any",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"parts": [
+						{
+							"custom": {
+								"enabled": true,
+								"formula": "max(@scale.dragonborn.breath-weapon,(2*@scale.draconic-origin.breath-weapon)d6)"
+							},
+							"number": null,
+							"denomination": 0,
+							"bonus": "",
+							"types": [
+								"acid"
+							]
+						}
+					],
+					"onSave": "half"
+				},
+				"save": {
+					"ability": "dex",
+					"dc": {
+						"calculation": "",
+						"formula": "8 + max(@abilities.cha.mod, @abilities.con.mod) + @prof"
+					}
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": []
+			}
+		},
+		"identifier": "",
+		"enchant": {},
+		"prerequisites": {
+			"level": null
+		}
+	},
+	"effects": [],
+	"flags": {
+		"midi-qol": {
+			"effectActivation": false,
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default",
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default"
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": true,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"rollOther": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": true,
+			"magiceffect": true,
+			"concentration": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"confirmTargets": "default",
+			"saveDamage": "halfdam",
+			"bonusSaveDamage": "default",
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedUses": 1
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"_key": "!items!O290gPChb2jSXOxr"
+}

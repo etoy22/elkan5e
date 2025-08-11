@@ -1,0 +1,239 @@
+{
+	"folder": "iibzWFAaPgRwaEzD",
+	"name": "Distracting Strike (Fighter)",
+	"type": "feat",
+	"_id": "8eWqDueYXQnYaY6T",
+	"img": "icons/weapons/axes/axe-battle-orange.webp",
+	"system": {
+		"description": {
+			"value": "<p><em>You leave your opponent open to another creature's attack.</em></p><p><strong>Once Per Turn</strong> - Melee/Ranged - 1 Creature - 1 Round - Uses Equal to Proficiency Bonus/Long Rest</p><p>After attacking a creature, you distract your target. The next attack against them by a creature other than you has advantage.</p>",
+			"chat": ""
+		},
+		"source": {
+			"book": "Elkan 5e",
+			"page": "",
+			"custom": "elkan5e.com/feats",
+			"license": "",
+			"revision": 1,
+			"rules": ""
+		},
+		"uses": {
+			"max": "@attributes.prof",
+			"recovery": [
+				{
+					"period": "lr",
+					"type": "recoverAll"
+				}
+			],
+			"spent": 0
+		},
+		"type": {
+			"value": "feat",
+			"subtype": "manuevers"
+		},
+		"requirements": "Maneuver (Level 4)",
+		"prerequisites": {
+			"level": 2
+		},
+		"properties": [],
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "utility",
+				"activation": {
+					"type": "once",
+					"value": 1,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": ""
+						}
+					],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "",
+					"units": "inst",
+					"special": "",
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "UttoCznS25zlIZWh"
+					}
+				],
+				"range": {
+					"units": "self",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": ""
+					},
+					"affects": {
+						"count": "1",
+						"type": "creature",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"roll": {
+					"formula": "",
+					"name": "",
+					"prompt": false,
+					"visible": false
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"UttoCznS25zlIZWh"
+				]
+			}
+		},
+		"identifier": "",
+		"enchant": {}
+	},
+	"effects": [
+		{
+			"name": "Distracting Strike",
+			"origin": "Compendium.elkan5e.elkan5e-feats.Item.8eWqDueYXQnYaY6T",
+			"duration": {
+				"rounds": null,
+				"startTime": null,
+				"seconds": 7,
+				"combat": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"transfer": false,
+			"disabled": false,
+			"_id": "UttoCznS25zlIZWh",
+			"changes": [
+				{
+					"key": "flags.midi-qol.grants.advantage.attack.all",
+					"mode": 4,
+					"value": "1",
+					"priority": 20
+				}
+			],
+			"description": "",
+			"statuses": [],
+			"flags": {
+				"times-up": {
+					"isPassive": false
+				},
+				"dae": {
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneNameOnly",
+					"showIcon": true,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [
+						"isAttacked",
+						"turnEndSource"
+					],
+					"enableCondition": "",
+					"disableCondition": ""
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
+				},
+				"core": {
+					"overlay": false
+				}
+			},
+			"tint": "#ffffff",
+			"img": "icons/weapons/axes/axe-battle-orange.webp",
+			"type": "base",
+			"system": {},
+			"_key": "!items.effects!8eWqDueYXQnYaY6T.UttoCznS25zlIZWh"
+		}
+	],
+	"flags": {
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"midi-qol": {
+			"effectActivation": false,
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default",
+			"removeAttackDamageButtons": "default"
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedUses": 2
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"_key": "!items!8eWqDueYXQnYaY6T"
+}
