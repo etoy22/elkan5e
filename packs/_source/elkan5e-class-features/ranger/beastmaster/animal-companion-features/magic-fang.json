@@ -1,0 +1,252 @@
+{
+	"folder": "1lwbNnXgP51OidMI",
+	"name": "Magic Fang",
+	"type": "feat",
+	"img": "icons/commodities/claws/claw-brown-black.webp",
+	"system": {
+		"description": {
+			"value": "<p>All attacks your companion makes are counted as &amp;reference[magic weapon]{magical} &amp;reference[cold iron]{cold iron} weapons for the purposes of dealing damage to monsters who are resistant or immune to non-magical or non-cold iron weapons.</p><p></p><p><em>To apply these benefits, use this feature to enchant your companion's attacks.</em></p>",
+			"chat": ""
+		},
+		"source": {
+			"rules": "",
+			"revision": 1,
+			"book": "Elkan 5e",
+			"page": "",
+			"license": "",
+			"custom": "elkan5e.com/ranger"
+		},
+		"uses": {
+			"max": "",
+			"spent": 0,
+			"recovery": []
+		},
+		"type": {
+			"value": "subclass",
+			"subtype": ""
+		},
+		"requirements": "Beastmaster 6",
+		"identifier": "",
+		"activities": {
+			"SHCqg41uqmwuRds7": {
+				"type": "enchant",
+				"_id": "SHCqg41uqmwuRds7",
+				"activation": {
+					"type": "special",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "yYoU2DK9nutJVO6e",
+						"level": {
+							"min": null,
+							"max": null
+						},
+						"riders": {
+							"activity": [],
+							"effect": [],
+							"item": []
+						}
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"type": "self",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"enchant": {
+					"identifier": ""
+				},
+				"restrictions": {
+					"allowMagical": true,
+					"categories": [
+						"simpleM",
+						"natural"
+					],
+					"properties": [],
+					"type": "weapon"
+				},
+				"useConditionText": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"forceDialog": false,
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"identifier": ""
+				},
+				"name": ""
+			}
+		},
+		"enchant": {},
+		"prerequisites": {
+			"level": null,
+			"repeatable": false
+		},
+		"properties": [],
+		"advancement": [],
+		"cover": null,
+		"crewed": false
+	},
+	"effects": [
+		{
+			"type": "enchantment",
+			"name": "Magic Fang",
+			"img": "icons/commodities/claws/claw-brown-black.webp",
+			"disabled": true,
+			"_id": "yYoU2DK9nutJVO6e",
+			"system": {},
+			"changes": [
+				{
+					"key": "system.properties",
+					"mode": 2,
+					"value": "mgc",
+					"priority": 20
+				},
+				{
+					"key": "system.properties",
+					"mode": 2,
+					"value": "coldIron",
+					"priority": 20
+				}
+			],
+			"duration": {
+				"startTime": null,
+				"seconds": null,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"origin": null,
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [],
+			"flags": {
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"stackable": "multi",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!NwLZivmFfDDLg0s4.yYoU2DK9nutJVO6e"
+		}
+	],
+	"flags": {
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		}
+	},
+	"_id": "NwLZivmFfDDLg0s4",
+	"_key": "!items!NwLZivmFfDDLg0s4"
+}

@@ -1,0 +1,459 @@
+{
+	"name": "Sanctify",
+	"type": "spell",
+	"img": "icons/magic/holy/chalice-glowing-gold-water.webp",
+	"effects": [
+		{
+			"name": "Sanctify",
+			"flags": {
+				"dnd5e": {
+					"enchantment": {
+						"level": {
+							"min": null,
+							"max": null
+						},
+						"riders": {
+							"effect": [],
+							"item": []
+						}
+					}
+				},
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
+				},
+				"core": {
+					"overlay": false
+				}
+			},
+			"img": "icons/magic/holy/chalice-glowing-gold-water.webp",
+			"_id": "5tB432nY4HKuN2k4",
+			"type": "enchantment",
+			"system": {},
+			"changes": [
+				{
+					"key": "system.properties",
+					"mode": 2,
+					"value": "sil",
+					"priority": 20
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 28800,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"origin": null,
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [],
+			"_key": "!items.effects!E70RMaoNacwk6n2C.5tB432nY4HKuN2k4"
+		}
+	],
+	"folder": "U0k4VGG6bziqf3oH",
+	"flags": {
+		"dynamiceffects": {
+			"equipActive": true,
+			"alwaysActive": false,
+			"effects": [
+				{
+					"modSpecKey": "data.attributes.ac.value",
+					"value": "2",
+					"mode": "+",
+					"targetSpecific": false,
+					"id": 1,
+					"itemId": "Vd17BhyN4J8OQljO",
+					"active": true,
+					"_targets": []
+				}
+			]
+		},
+		"core": {},
+		"midi-qol": {
+			"onUseMacroName": "",
+			"effectActivation": false,
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default",
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default",
+			"removeAttackDamageButtons": "default"
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"noConcentrationCheck": false,
+			"confirmTargets": "default",
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>You speak a prayer while sprinkling powdered silver and iron onto a liquid or object. The powder liquifies and then dissipates, imbuing the object with holy power.</em></p><p><strong>Ritual Casting Time:</strong> 1 Minute</p><p><strong>Materials:</strong> You require 0.2 pounds of @UUID[Compendium.elkan5e.elkan5e-spells.Item.fnmCUzOkiNZDOpQ0]{pure holy silver and iron powder} (one quarter sterling silver, three quarters iron), typically valued at 25 gold. You can alternatively use a pound of @UUID[Compendium.elkan5e.elkan5e-spells.Item.IndrcQ3rdMXvfyVh]{holy water} to sanctify a weapon. This spell consumes this material.</p><p><strong>Enchant Item</strong></p><ul><li><p>You touch a weapon. That weapon counts as a &amp;reference[silver] weapon if it wasn't already.</p></li><li><p>Alternatively, you can bless a pound of water, which becomes @UUID[Compendium.elkan5e.elkan5e-spells.Item.IndrcQ3rdMXvfyVh]{holy water}. If you use this spell to create holy water, the duration is permanent.</p></li></ul>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/sanctify",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "8",
+			"units": "hour"
+		},
+		"target": {
+			"affects": {
+				"special": "",
+				"type": "object",
+				"count": "1",
+				"choice": false
+			},
+			"template": {
+				"type": "",
+				"units": "",
+				"contiguous": false
+			}
+		},
+		"range": {
+			"value": "5",
+			"units": "touch",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 1,
+		"school": "abj",
+		"materials": {
+			"value": "",
+			"consumed": true,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"material",
+			"concentration",
+			"ritual"
+		],
+		"activities": {
+			"npHlljJN4niKVLb0": {
+				"type": "enchant",
+				"_id": "npHlljJN4niKVLb0",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "5tB432nY4HKuN2k4",
+						"level": {
+							"min": null,
+							"max": null
+						},
+						"riders": {
+							"activity": [],
+							"effect": [],
+							"item": []
+						}
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"enchant": {},
+				"restrictions": {
+					"allowMagical": true,
+					"categories": [],
+					"properties": [],
+					"type": "weapon"
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"5tB432nY4HKuN2k4"
+				]
+			},
+			"JacZImZaj9L3CdYc": {
+				"type": "utility",
+				"_id": "JacZImZaj9L3CdYc",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "perm",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"useConditionText": "",
+				"forceDialog": false,
+				"effectConditionText": "",
+				"name": "Bless Water",
+				"img": "",
+				"appliedEffects": []
+			},
+			"OSIVGwSJdLttkJka": {
+				"type": "enchant",
+				"activation": {
+					"type": "minute",
+					"value": 1,
+					"override": true,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": false,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "5tB432nY4HKuN2k4",
+						"level": {
+							"min": null,
+							"max": null
+						},
+						"riders": {
+							"activity": [],
+							"effect": [],
+							"item": []
+						}
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"enchant": {},
+				"restrictions": {
+					"allowMagical": true,
+					"categories": [],
+					"properties": [],
+					"type": "weapon"
+				},
+				"name": "Enchant (Ritual)",
+				"_id": "OSIVGwSJdLttkJka",
+				"img": "",
+				"appliedEffects": [
+					"5tB432nY4HKuN2k4"
+				]
+			},
+			"Fy6uyDiteCuNIC4r": {
+				"type": "utility",
+				"activation": {
+					"type": "minute",
+					"value": 1,
+					"override": true,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": false,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "perm",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"useConditionText": "",
+				"forceDialog": false,
+				"effectConditionText": "",
+				"name": "Bless Water (Ritual)",
+				"_id": "Fy6uyDiteCuNIC4r",
+				"img": "",
+				"appliedEffects": []
+			}
+		},
+		"identifier": ""
+	},
+	"_id": "E70RMaoNacwk6n2C",
+	"_key": "!items!E70RMaoNacwk6n2C"
+}

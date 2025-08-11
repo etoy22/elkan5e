@@ -1,0 +1,292 @@
+{
+	"folder": "b7dx6Md9CJ7WxZQs",
+	"name": "Draconic Flight (Dragonborn)",
+	"type": "feat",
+	"_id": "XXxtX29U6hj0nMW9",
+	"img": "icons/commodities/biological/wing-green.webp",
+	"system": {
+		"description": {
+			"value": "<p><em>Prerequisite: Dragonborn</em></p><p><em>You channel draconic magic, sprouting spectral wings made of the same energy as your breath weapon.</em> </p><p><strong>Bonus Action</strong> - Self - 10 Minutes - 1/Short Rest - Magical</p><ul><li><p>You gain a flying speed equal to your walking speed.</p></li><li><p>This ability ends early if you become incapacitated or you choose to dismiss the wings.</p></li></ul>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/feats/draconic-flight",
+			"rules": "",
+			"revision": 1,
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"uses": {
+			"max": "1",
+			"spent": 0,
+			"recovery": [
+				{
+					"period": "sr",
+					"type": "recoverAll"
+				}
+			]
+		},
+		"type": {
+			"value": "feat",
+			"subtype": ""
+		},
+		"requirements": "Feat (Level 8)",
+		"prerequisites": {
+			"level": 8
+		},
+		"properties": [
+			"mgc"
+		],
+		"identifier": "draconic_flight",
+		"activities": {
+			"73YUfZBEWC7omFYb": {
+				"type": "utility",
+				"_id": "73YUfZBEWC7omFYb",
+				"activation": {
+					"type": "bonus",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": ""
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "minute",
+					"concentration": false,
+					"override": false,
+					"value": "10"
+				},
+				"effects": [
+					{
+						"_id": "2nGTpRP5a8ouiMNe"
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"type": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"forceDialog": false,
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"name": "Draconic Flight",
+				"img": "",
+				"appliedEffects": [
+					"2nGTpRP5a8ouiMNe"
+				]
+			}
+		},
+		"enchant": {},
+		"advancement": [
+			{
+				"_id": "aC5HuW1uXBe16dL0",
+				"type": "AbilityScoreImprovement",
+				"configuration": {
+					"cap": 2,
+					"fixed": {
+						"str": 0,
+						"dex": 0,
+						"con": 0,
+						"int": 0,
+						"wis": 0,
+						"cha": 0
+					},
+					"locked": [],
+					"points": 2
+				},
+				"value": {
+					"type": "asi"
+				},
+				"level": 0,
+				"title": "",
+				"hint": ""
+			}
+		]
+	},
+	"effects": [
+		{
+			"name": "Draconic Flight",
+			"img": "icons/commodities/biological/wing-green.webp",
+			"origin": "Compendium.elkan5e.elkan5e-feats.Item.XXxtX29U6hj0nMW9",
+			"_id": "2nGTpRP5a8ouiMNe",
+			"type": "base",
+			"system": {},
+			"changes": [
+				{
+					"key": "system.attributes.movement.fly",
+					"mode": 2,
+					"value": "@attributes.movement.walk",
+					"priority": 20
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 600,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [],
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"stackable": "multi",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!XXxtX29U6hj0nMW9.2nGTpRP5a8ouiMNe"
+		}
+	],
+	"flags": {
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		}
+	},
+	"_key": "!items!XXxtX29U6hj0nMW9"
+}

@@ -1,0 +1,286 @@
+{
+	"name": "Turn the Unholy (Cleric)",
+	"type": "feat",
+	"system": {
+		"description": {
+			"value": "<p><em>You present your holy symbol and speak a prayer censuring creatures anathema to you.</em></p><p><strong>Action</strong> - 30 ft. Emanation (Self) - 1 Minute - Magical</p><p>This consumes one use of your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.WKKAHUBp42287xui]{Channel Divinity} feature.</p><p><strong>Wisdom Save</strong></p><ul><li><p><strong>Failure:</strong> Any &amp;reference[aberration], &amp;reference[celestial], &amp;reference[fey], &amp;reference[fiend], or &amp;reference[undead] of your choice are &amp;reference[frightened] for 1 minute. Target rolls again at end of their turns, ending effect on success. While frightened in this way:</p><ul><li><p>They must spend all of their movement trying to move as far away from you as it can.</p></li><li><p>They can't take reactions.</p></li><li><p>They can use their action and bonus action normally before, during, or after moving.</p></li></ul></li><li><p><strong>Failure:</strong> If a target of one of the above creature type's hit point maximum is equal to or less than three times your cleric level, it is destroyed.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/feats/turn-the-unholy",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"uses": {
+			"max": "",
+			"spent": 0,
+			"recovery": []
+		},
+		"type": {
+			"value": "feat",
+			"subtype": ""
+		},
+		"requirements": "Feat (Cleric Level 4)",
+		"prerequisites": {
+			"level": 4
+		},
+		"properties": [
+			"mgc"
+		],
+		"activities": {
+			"dnd5eactivity000": {
+				"name": "",
+				"img": "",
+				"target": {
+					"affects": {
+						"count": ""
+					}
+				},
+				"consumption": {
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "Compendium.elkan5e.elkan5e-class-features.Item.WKKAHUBp42287xui",
+							"scaling": {}
+						}
+					]
+				},
+				"appliedEffects": [
+					"3wxkJYzkpSdZIb5y"
+				],
+				"damage": {
+					"onSave": "none"
+				}
+			},
+			"rijRyf9emQ3kgTXO": {
+				"type": "save",
+				"_id": "rijRyf9emQ3kgTXO",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "SLTwhHpsLQzYrbal",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": "radius",
+						"size": "30",
+						"count": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": "creature",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"parts": [],
+					"onSave": "none"
+				},
+				"save": {
+					"ability": "wis",
+					"dc": {
+						"calculation": "wis",
+						"formula": ""
+					}
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"SLTwhHpsLQzYrbal"
+				],
+				"effectConditionText": "!target.traits.ci.value.has('frightened') && raceOrType.includes(\"undead\"))"
+			}
+		},
+		"identifier": "",
+		"enchant": {},
+		"advancement": [
+			{
+				"_id": "aC5HuW1uXBe16dL0",
+				"type": "AbilityScoreImprovement",
+				"configuration": {
+					"cap": 2,
+					"fixed": {
+						"str": 0,
+						"dex": 0,
+						"con": 0,
+						"int": 0,
+						"wis": 0,
+						"cha": 0
+					},
+					"locked": [],
+					"points": 2
+				},
+				"value": {
+					"type": "asi"
+				},
+				"level": 0,
+				"title": "",
+				"hint": ""
+			}
+		]
+	},
+	"flags": {
+		"core": {},
+		"midi-qol": {
+			"effectActivation": false,
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"rollOther": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"noConcentrationCheck": false,
+			"confirmTargets": "default",
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"img": "icons/magic/fire/flame-burning-creature-skeleton.webp",
+	"effects": [
+		{
+			"name": "Turn Undead",
+			"origin": "Compendium.elkan5e.elkan5e-feats.Item.w5k1DjgHIfs4TDRo",
+			"changes": [
+				{
+					"key": "flags.midi-qol.OverTime",
+					"mode": 2,
+					"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Fear",
+					"priority": 20
+				}
+			],
+			"transfer": false,
+			"flags": {
+				"dae": {
+					"itemName": "Fear",
+					"disableIncapacitated": false,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"enableCondition": "",
+					"disableCondition": ""
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				},
+				"core": {
+					"overlay": false
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				}
+			},
+			"img": "icons/magic/fire/flame-burning-creature-skeleton.webp",
+			"_id": "SLTwhHpsLQzYrbal",
+			"type": "base",
+			"system": {},
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": null,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [
+				"frightened"
+			],
+			"_key": "!items.effects!w5k1DjgHIfs4TDRo.SLTwhHpsLQzYrbal"
+		}
+	],
+	"folder": "ogte6xIATR5ia9jb",
+	"_id": "w5k1DjgHIfs4TDRo",
+	"_key": "!items!w5k1DjgHIfs4TDRo"
+}
