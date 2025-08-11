@@ -1,4 +1,3 @@
-/* global CONFIG, game */
 /**
  * Changes Foundry's languages to fit that of Elkan 5e.
  */

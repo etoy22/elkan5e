@@ -1,4 +1,3 @@
-/* global CONFIG */
 /**
  * Initialize custom spell scroll references for Elkan 5e.
  *

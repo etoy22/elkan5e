@@ -1,4 +1,3 @@
-/* global CONST, CONFIG, game */
 /**
  * Changes Foundry's armor types to that of Elkan 5e.
  */

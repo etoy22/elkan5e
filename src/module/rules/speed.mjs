@@ -1,4 +1,3 @@
-/* global CONFIG */
 /**
  * Add additional movement types to the DND5E system.
  *

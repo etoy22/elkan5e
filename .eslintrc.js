@@ -34,5 +34,6 @@ module.exports = {
 		MidiQOL: 'readonly',
 		Token: 'readonly',
 		fromUuid: 'readonly',
+		console: 'readonly',
 	},
 };

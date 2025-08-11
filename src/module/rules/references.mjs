@@ -1,4 +1,3 @@
-/* global CONFIG */
 // Centralized DND5E reference assignments for Elkan 5e
 export function setupCombatReferences() {
 	const base = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.";

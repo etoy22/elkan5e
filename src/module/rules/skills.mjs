@@ -1,4 +1,3 @@
-/* global CONFIG */
 /**
  * Adds Elkan 5e skill references to Foundry's DND5E config.
  */
