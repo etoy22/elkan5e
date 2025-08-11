@@ -16,7 +16,7 @@ try {
 		nextVersionIndex !== -1 ? versionLines.slice(0, nextVersionIndex) : versionLines;
 
 	const formattedNotes = [];
-	let inClassesSection = false;
+	let inClassesSection = false; 
 
 	releaseNotes.forEach((line) => {
 		if (line.startsWith('## ')) {
