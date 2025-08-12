@@ -1,8 +1,8 @@
 // .github/workflows/scripts/update-module-json.js
 // Usage: node update-module-json.js <version>
 // Rewrites manifest/download URLs in module.json to point at the new release tag.
-const fs = require("fs");
-const path = require("path");
+import fs from 'fs';
+import path from "path";
 
 function main() {
 	const version = process.argv[2];
