@@ -1,5 +1,11 @@
 # Changelog
 
+# v1.13.0.3
+
+Bug fix for Barbarian Defense so that it calculates correctly when not wearing armor and only runs once regardless of amount of GMs
+To look at release information look [here](https://github.com/etoy22/elkan5e/releases/tag/v1.13.0)
+
+
 # v1.13.0.2
 
 Bug fix for release to look at release information look [here](https://github.com/etoy22/elkan5e/releases/tag/v1.13.0)
