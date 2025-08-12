@@ -1,24 +1,34 @@
+// .github/workflows/scripts/update-module-json.js
+// Usage: node update-module-json.js <version>
+// Rewrites manifest/download URLs in module.json to point at the new release tag.
 import fs from 'fs';
+import path from "path";
 
-function updateModuleJson(version, compatibility) {
-	const filePath = 'module.json';
-	const moduleJson = JSON.parse(fs.readFileSync(filePath, 'utf8'));
+function main() {
+	const version = process.argv[2];
+	if (!version) {
+		console.error("Missing version argument.");
+		process.exit(1);
+	}
+	const modulePath = path.resolve(process.cwd(), "module.json");
+	if (!fs.existsSync(modulePath)) {
+		console.error("module.json not found at project root.");
+		process.exit(1);
+	}
+	const raw = fs.readFileSync(modulePath, "utf8");
+	let json;
+	try { json = JSON.parse(raw); }
+	catch (e) {
+		console.error("Failed to parse module.json:", e.message);
+		process.exit(1);
+	}
 
-	moduleJson.version = version;
+	const tag = `v${version}`;
+	json.manifest = `https://github.com/etoy22/elkan5e/releases/download/${tag}/module.json`;
+	json.download = `https://github.com/etoy22/elkan5e/releases/download/${tag}/module.zip`;
 
-	if (!moduleJson.compatibility) moduleJson.compatibility = {};
-
-	moduleJson.compatibility.minimum = compatibility.minimum;
-	moduleJson.compatibility.verified = compatibility.verified;
-
-	fs.writeFileSync(filePath, JSON.stringify(moduleJson, null, 2), 'utf8');
-	console.log(`Updated module.json with version ${version} and compatibility.`);
+	fs.writeFileSync(modulePath, JSON.stringify(json, null, 2) + "\n", "utf8");
+	console.log("Updated module.json manifest & download for", tag);
 }
 
-const version = process.argv[2];
-const compatibility = {
-	minimum: process.argv[3],
-	verified: process.argv[4],
-};
-
-updateModuleJson(version, compatibility);
+main();
