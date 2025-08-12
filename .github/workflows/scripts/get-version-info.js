@@ -66,7 +66,7 @@ function main() {
 	// - Always continue for main pushes (including merged PRs that land on main)
 	// - For PR events: continue when PR targets main AND is merged (action: closed with merged=true)
 	// - Otherwise, do not continue (but the CI might still run tests if you add them)
-	let should_continue = false;
+	let should_continue = isTest;
 	if (ref === "refs/heads/main") {
 		should_continue = true;
 	} else if (eventName === "pull_request" && baseRef === "main" && prMerged) {
