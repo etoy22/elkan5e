@@ -2,10 +2,13 @@ name: Release Build
 
 on:
     push:
-        branches: [main]
+        branches:
+            - main
+            - "**"
     pull_request:
-        types: [closed]
-        branches: [main]
+        branches:
+            - "**"
+        types: [opened, synchronize, reopened, closed]
     workflow_dispatch:
 
 concurrency:
