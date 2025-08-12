@@ -40,9 +40,8 @@ export function armor() {
 function calculateAcBonus(actor) {
 	const dex = actor.system.abilities.dex.mod;
 	const con = actor.system.abilities.con.mod;
-
 	const armor = actor.items.find(
-		(i) => i.type === "equipment" && i.system.equipped && i.system.armor?.type !== "shield",
+		(i) => i.type === "equipment" && i.system.equipped && (i.system.type.value == "medium" || i.system.type.value == "light"),
 	);
 
 	if (!armor) {
@@ -71,8 +70,11 @@ function calculateAcBonus(actor) {
 
 export async function updateBarbarianDefense(actor) {
 	if (!actor || !actor.system) return; // Prevents error if actor is null/undefined
+	const firstActiveGM = game.users.find(u => u.isGM && u.active);
+	if (!firstActiveGM || firstActiveGM.id !== game.user.id) return;
 
 	const isUsingBarbarianDefense = actor.system.attributes.ac.calc === "barbarianDefense";
+	// console.log(`Actor ${actor.name} is using barbarianDefense AC`);
 	const existing = actor.effects.find((e) => e.name === "Barbarian Defense Bonus");
 	if (!isUsingBarbarianDefense) {
 		if (existing) {
@@ -98,7 +100,7 @@ export async function updateBarbarianDefense(actor) {
 			priority: 20,
 		},
 	];
-
+	// console.log(`Barbarian Defense Bonus for ${actor.name}: ${bonus}`);
 	if (existing) {
 		const current = Number(existing.changes?.[0]?.value ?? 0);
 		if (current !== bonus) {
