@@ -251,6 +251,7 @@ const STATUS_EFFECTS = [
 	},
 	{ key: "hiding" },
 	{ key: "stable", image: false },
+	{ key: "squeezing" },
 ];
 
 // Special filenames
@@ -271,9 +272,7 @@ const COVER_IMG_MAP = {
 };
 
 
-// Main entrypoint
 export function conditions() {
-	// --- helpers ---
 	const locCond = (key) => game.i18n.localize(`elkan5e.conditions.${key}`);
 	const mergeChanges = (existing = [], incoming = []) => {
 		const sig = (c) => `${c.key}|${c.mode}|${c.value}`;
@@ -364,13 +363,10 @@ export function conditions() {
 		CONFIG.DND5E.conditionEffects.halfMovement.delete("blinded");
 		CONFIG.DND5E.conditionEffects.dexteritySaveDisadvantage.delete("deafened");
 
-		// Ensure/patch your conditions (with i18n names + changes/flags)
 		for (const def of CONDITIONS_TYPES) ensureConditionEntry(def);
 
-		// Patch remaining status effects (icons/refs + i18n names)
 		for (const def of STATUS_EFFECTS) {
-			const se = CONFIG.DND5E.statusEffects[def.key];
-			if (!se) continue;
+			const se = (CONFIG.DND5E.statusEffects[def.key] ??= {}); 
 			se.name = locCond(def.key);
 			if (def.image !== false) {
 				se.img = COVER_IMG_MAP[def.key]
@@ -378,6 +374,9 @@ export function conditions() {
 					: imgFor(def.key);
 			}
 			if (def.id) se.reference = RULES_REF(def.id);
+			if (def.changes?.length) se.changes = mergeChanges(se.changes, def.changes);
+			if (def.flags) se.flags = mergeFlags(se.flags, def.flags);
+			if (def.order != null && se.order == null) se.order = def.order;
 		}
 
 		// Migrate these SE -> CT
@@ -403,8 +402,8 @@ export function conditions() {
 			order: 999,
 		};
 	}
-
 }
+
 
 
 export function conditionsReady() {
