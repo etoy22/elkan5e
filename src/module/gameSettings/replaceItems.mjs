@@ -403,30 +403,43 @@ export async function migrateActorByType({
 							const oldActivity = oldActivities.get(newKey);
 							const newActivity = newActivities[newKey];
 							if (oldActivity && newActivity) {
-								const same =
-									oldActivity.consumption.targets.length ===
-										newActivity.consumption.targets.length &&
-									oldActivity.consumption.scaling.allowed ===
-										newActivity.consumption.scaling.allowed &&
-									oldActivity.consumption.scaling.max ===
-										newActivity.consumption.scaling.max &&
-									oldActivity.consumption.spellSlot ===
-										newActivity.consumption.spellSlot;
-
-								if (!same) newActivity.consumption = { ...oldActivity.consumption };
+								// Check if consumption is the same
+								const consumptionIsSame = JSON.stringify(oldActivity.consumption) === JSON.stringify(newActivity.consumption);
+								if (!consumptionIsSame) { newActivity.consumption = { ...oldActivity.consumption }; }
 							}
 						}
 					}
 				}
 			}
 
+
 			const createdItems = await actor.createEmbeddedDocuments("Item", [newData]);
+			// Set _stats.compendiumSource after creation to avoid DataModelValidationError
+			if (newItem.pack && newItem.id) {
+
+				await createdItems[0].update({
+					_stats: {
+						...createdItems[0]._stats,
+						compendiumSource: `Compendium.${newItem.pack}.Item.${newItem.id}`,
+					},
+				});
+			}
 
 			// Optional: preserve original name
 			let namePreserved = false;
 			if (preserveProperties?.includes?.("name") && savedProps[id]?.name) {
 				await createdItems[0].update({ name: savedProps[id].name });
 				namePreserved = true;
+			}
+
+			// Post-creation: force a refresh/update for the item
+			if (createdItems[0]) {
+				if (typeof createdItems[0].refresh === "function") {
+					createdItems[0].refresh();
+				} else {
+					// Fallback: trigger a dummy update to force Foundry to re-link resources
+					await createdItems[0].update({});
+				}
 			}
 
 			// report
