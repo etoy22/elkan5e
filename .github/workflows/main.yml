@@ -5,154 +5,265 @@ on:
         branches:
             - main
             - "**"
-    pull_request:
-        branches:
-            - "**"
-        types: [opened, synchronize, reopened, closed]
     workflow_dispatch:
 
-concurrency:
-    group: release-${{ github.ref }}
-    cancel-in-progress: false
-
 permissions:
-    contents: write
+  contents: write
 
 jobs:
     version-check:
-        name: Version Check
         runs-on: ubuntu-latest
         outputs:
-            version: ${{ steps.out.outputs.version }}
-            should_continue: ${{ steps.out.outputs.should_continue }}
-            test: ${{ steps.out.outputs.test }}
-            prerelease: ${{ steps.out.outputs.prerelease }}
+            version: ${{ steps.get_version.outputs.version }}
+            should_continue: ${{ steps.get_version.outputs.should_continue }}
+            test: ${{ steps.get_version.outputs.test }}
+            prerelease: ${{ steps.get_version.outputs.prerelease }}
+            minimum: ${{ steps.get_version.outputs.minimum }}
+            verified: ${{ steps.get_version.outputs.verified }}
         steps:
             - uses: actions/checkout@v4
 
-            - name: Setup Node
-              uses: actions/setup-node@v4
-              with:
-                  node-version: 20
-
             - id: get_version
               name: Run get-version-info script
-              env:
-                  GITHUB_EVENT_NAME: ${{ github.event_name }}
-                  GITHUB_REF: ${{ github.ref }}
-                  GITHUB_EVENT_PATH: ${{ github.event_path }}
               run: |
                   node .github/workflows/scripts/get-version-info.js > version-info.json
                   cat version-info.json
 
-            - id: out
-              name: Export version outputs
-              run: |
                   version=$(jq -r '.version' version-info.json)
                   should_continue=$(jq -r '.should_continue' version-info.json)
                   test=$(jq -r '.test' version-info.json)
                   prerelease=$(jq -r '.prerelease' version-info.json)
+                  minimum=$(jq -r '.compatibility.minimum // empty' version-info.json)
+                  verified=$(jq -r '.compatibility.verified // empty' version-info.json)
+
                   echo "version=$version" >> $GITHUB_OUTPUT
                   echo "should_continue=$should_continue" >> $GITHUB_OUTPUT
                   echo "test=$test" >> $GITHUB_OUTPUT
                   echo "prerelease=$prerelease" >> $GITHUB_OUTPUT
+                  echo "minimum=$minimum" >> $GITHUB_OUTPUT
+                  echo "verified=$verified" >> $GITHUB_OUTPUT
 
-    build:
-        name: Build & Package
+            - name: Show version info outputs
+              if: steps.get_version.outputs.should_continue == 'true'
+              run: |
+                  echo "Version: ${{ steps.get_version.outputs.version }}"
+                  echo "Should Continue: ${{ steps.get_version.outputs.should_continue }}"
+                  echo "Test: ${{ steps.get_version.outputs.test }}"
+                  echo "Prerelease: ${{ steps.get_version.outputs.prerelease }}"
+                  echo "Minimum Compatibility: ${{ steps.get_version.outputs.minimum }}"
+                  echo "Verified Compatibility: ${{ steps.get_version.outputs.verified }}"
+
+    extract-release-notes:
         runs-on: ubuntu-latest
         needs: version-check
-        if: needs.version-check.outputs.should_continue == 'true'
-        env:
-            # DRY_RUN is 1 when -test flag is present; your build/pack scripts should respect it.
-            DRY_RUN: ${{ needs.version-check.outputs.test == 'true' && '1' || '0' }}
-        outputs:
-            artifact_name: ${{ steps.pkg.outputs.name }}
-            artifact_path: ${{ steps.pkg.outputs.path }}
+        if: needs.version-check.outputs.should_continue == 'true' && (needs.version-check.outputs.test == 'true' || github.ref == 'refs/heads/main')
         steps:
             - uses: actions/checkout@v4
 
-            - name: Setup Node
-              uses: actions/setup-node@v4
-              with:
-                  node-version: 20
+            - name: Extract release notes from CHANGELOG.md
+              run: node .github/workflows/scripts/extract-release-notes.js > release-notes.md
 
-            - name: Install deps
+            - name: Show extracted release notes
+              run: cat release-notes.md
+
+            - uses: actions/upload-artifact@v4
+              with:
+                  name: release-notes
+                  path: release-notes.md
+                  retention-days: 1
+
+    build-and-pack:
+        runs-on: ubuntu-latest
+        needs: version-check
+        if: needs.version-check.outputs.should_continue == 'true' && (needs.version-check.outputs.test == 'true' || github.ref == 'refs/heads/main')
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Install dependencies
               run: npm ci
 
-            - name: Echo DRY_RUN mode
+            - name: Update module.json version and compatibility
               run: |
-                  if [ "${DRY_RUN}" = "1" ]; then
-                    echo "DRY_RUN enabled (-test flag detected)."
-                  else
-                    echo "DRY_RUN disabled."
-                  fi
+                  node .github/workflows/scripts/update-module.js \
+                    "${{ needs.version-check.outputs.version }}" \
+                    "${{ needs.version-check.outputs.minimum }}" \
+                    "${{ needs.version-check.outputs.verified }}"
 
-            - name: Build
-              run: npm run build --if-present
+            - name: Run pack script
+              run: npm run pack
 
-            - name: Update module.json URLs
-              if: env.DRY_RUN != '1'
+            - name: Zip module for release
               run: |
-                  node .github/workflows/scripts/update-module.js "${{ needs.version-check.outputs.version }}"
-                  cat module.json
+                  zip -r module.zip . \
+                    -x "node_modules/**" \
+                    -x "node_modules" \
+                    -x "helperCode/**" \
+                    -x "src/packs/**" \
+                    -x "src/packs" \
+                    -x "packs/_source/**" \
+                    -x "packs/_source" \
+                    -x "package.json" \
+                    -x "package-lock.json" \
+                    -x "jsconfig.json" \
+                    -x ".gitignore" \
+                    -x ".gitattributes" \
+                    -x ".git" \
+                    -x ".git/**" \
+                    -x ".eslintrc.js" \
+                    -x ".prettierrc.json" \
+                    -x ".vscode/**" \
+                    -x ".github/**"
 
-            - id: pkg
-              name: Create package (zip)
-              run: |
-                  NAME="elkan5e-${{ needs.version-check.outputs.version }}"
-                  mkdir -p dist
-                  zip -r "dist/$NAME.zip" . -x ".git/*" ".github/*" "node_modules/*" "dist/*"
-                  echo "name=$NAME" >> $GITHUB_OUTPUT
-                  echo "path=dist/$NAME.zip" >> $GITHUB_OUTPUT
+            - name: List zipped files
+              run: unzip -l module.zip
 
-            - name: Upload artifact
+            - name: Upload build artifacts
               uses: actions/upload-artifact@v4
               with:
-                  name: ${{ steps.pkg.outputs.name }}
-                  path: ${{ steps.pkg.outputs.path }}
-                  if-no-files-found: error
-                  retention-days: 14
+                  name: elkan5e-build
+                  path: |
+                      module.zip
+                      module.json
+                  retention-days: 3
 
-    release:
-        name: Create/Update GitHub Release
+    create-github-release:
         runs-on: ubuntu-latest
-        needs: [version-check, build]
-        if: needs.version-check.outputs.should_continue == 'true' && needs.version-check.outputs.version != '' &&  needs.version-check.outputs.test != 'true'
+        needs: [version-check, extract-release-notes, build-and-pack]
+        if: needs.version-check.outputs.should_continue == 'true' && needs.build-and-pack.result == 'success'
+        env:
+            DRY_RUN: ${{ needs.version-check.outputs.test }}
         steps:
-            - uses: actions/download-artifact@v4
-              with:
-                  name: ${{ needs.build.outputs.artifact_name }}
-                  path: dist
+            - uses: actions/checkout@v4
 
-            - name: Create release
-              uses: softprops/action-gh-release@v2
+            - name: Download release notes artifact
+              uses: actions/download-artifact@v4
               with:
-                  tag_name: v${{ needs.version-check.outputs.version }}
-                  name: v${{ needs.version-check.outputs.version }}
+                  name: release-notes
+                  path: .
+
+            - name: Read release notes content
+              id: read_release_notes
+              run: |
+                  echo "release_notes<<EOF" >> $GITHUB_OUTPUT
+                  cat release-notes.md >> $GITHUB_OUTPUT
+                  echo "EOF" >> $GITHUB_OUTPUT
+
+            - name: Show release notes content before release
+              run: echo "${{ steps.read_release_notes.outputs.release_notes }}"
+
+            - name: Download build artifacts
+              uses: actions/download-artifact@v4
+              with:
+                  name: elkan5e-build
+                  path: .
+
+            - name: Verify artifacts exist (dry-run safe)
+              run: |
+                  ls -l module.zip module.json
+                  unzip -t module.zip
+
+            - name: Simulate GitHub Release (no publish on test)
+              if: env.DRY_RUN == 'true'
+              run: |
+                  echo "::notice::[DRY RUN] Would create release:"
+                  echo "  tag: ${{ needs.version-check.outputs.version }}"
+                  echo "  prerelease: ${{ needs.version-check.outputs.prerelease }}"
+                  echo "  artifacts: module.zip, module.json"
+                  echo "  body (first 200 chars):"
+                  echo "${{ steps.read_release_notes.outputs.release_notes }}" | head -c 200
+
+            - name: Create GitHub Release
+              if: env.DRY_RUN != 'true'
+              uses: ncipollo/release-action@v1
+              with:
+                  allowUpdates: true
+                  name: "${{ needs.version-check.outputs.version }}"
                   draft: false
-                  prerelease: ${{ needs.version-check.outputs.prerelease == 'true' }}
-                  generate_release_notes: true
-                  files: |
-                      dist/${{ needs.build.outputs.artifact_name }}.zip
+                  prerelease: ${{ needs.version-check.outputs.prerelease }}
+                  body: ${{ steps.read_release_notes.outputs.release_notes }}
+                  token: ${{ secrets.GITHUB_TOKEN }}
+                  artifacts: |
+                      module.zip
+                      module.json
+                  tag: "${{ needs.version-check.outputs.version }}"
 
-    jira:
-        name: Update Jira Issue
+    release-foundry-package:
         runs-on: ubuntu-latest
-        needs: release
+        needs: [version-check, create-github-release]
+        if: needs.version-check.outputs.should_continue == 'true' && needs.create-github-release.result == 'success' && needs.version-check.outputs.test != 'true'
         steps:
-            - name: Find issue key
-              id: find
-              uses: atlassian/gajira-find-issue-key@v3
-              with:
-                  string: ${{ github.event.head_commit.message }}
+            - uses: actions/checkout@v4
 
-            - name: Transition issue to Released
-              if: steps.find.outputs.issue != ''
-              uses: atlassian/gajira-transition@v3
-              with:
-                  issue: ${{ steps.find.outputs.issue }}
-                  transition: "Released"
+            - name: Install node dependencies
+              run: npm install node-fetch@2
+
+            - name: Release Foundry Package
               env:
-                  JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-                  JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-                  JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+                  FOUNDRY_API_TOKEN: ${{ secrets.FOUNDRY_API_TOKEN }}
+                  GITHUB_REPOSITORY: ${{ github.repository }}
+                  VERSION: ${{ needs.version-check.outputs.version }}
+                  MINIMUM: ${{ needs.version-check.outputs.minimum }}
+                  VERIFIED: ${{ needs.version-check.outputs.verified }}
+                  TEST: ${{ needs.version-check.outputs.test }}
+              run: node .github/workflows/scripts/release-foundry.js
+
+    notify-discord:
+        runs-on: ubuntu-latest
+        needs: [version-check, extract-release-notes, build-and-pack, create-github-release]
+        if: needs.version-check.outputs.should_continue == 'true' && needs.create-github-release.result == 'success' && needs.version-check.outputs.test != 'true'
+        env:
+            DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+            REPO_URL: "https://github.com/${{ github.repository }}"
+            VERSION: "${{ needs.version-check.outputs.version }}"
+            MINIMUM: ${{ needs.version-check.outputs.minimum }}
+            VERIFIED: ${{ needs.version-check.outputs.verified }}
+        steps:
+            - name: Download release notes artifact
+              uses: actions/download-artifact@v4
+              with:
+                  name: release-notes
+                  path: .
+
+            - name: Show release notes in logs
+              run: cat release-notes.md
+
+            - name: Read release notes content
+              id: read_release_notes
+              run: |
+                  echo "release_notes<<EOF" >> $GITHUB_OUTPUT
+                  cat release-notes.md >> $GITHUB_OUTPUT
+                  echo "EOF" >> $GITHUB_OUTPUT
+
+            - name: Prepare Discord payload
+              id: prepare_discord_payload
+              run: |
+                  RELEASE_NOTES="${{ steps.read_release_notes.outputs.release_notes }}"
+                  CLEAN_RELEASE_NOTES=$(echo -e "$RELEASE_NOTES")
+                  PAYLOAD=$(jq -n \
+                    --arg title "Elkan 5e Release" \
+                    --arg version "$VERSION" \
+                    --arg compatibility "Core: $MINIMUM +" \
+                    --arg foundry_url "https://foundryvtt.com/packages/elkan5e" \
+                    --arg release_url "$REPO_URL/releases/tag/$VERSION" \
+                    --arg download_url "$REPO_URL/releases/download/$VERSION/module.zip" \
+                    --arg release_notes "$CLEAN_RELEASE_NOTES" \
+                    '{embeds: [{
+                      title: $title,
+                      fields: [
+                        {name: "Version", value: $version, inline: true},
+                        {name: "Compatibility", value: $compatibility, inline: true},
+                        {name: "Foundry Package", value: $foundry_url, inline: false},
+                        {name: "Release Tag", value: $release_url, inline: false},
+                        {name: "Manual Download", value: $download_url, inline: false},
+                        {name: "Release Notes", value: $release_notes, inline: false}
+                      ]
+                    }]}')
+                  echo "$PAYLOAD"
+                  echo "discord_payload<<EOF" >> $GITHUB_OUTPUT
+                  echo "$PAYLOAD" >> $GITHUB_OUTPUT
+                  echo "EOF" >> $GITHUB_OUTPUT
+
+            - name: Post to Discord
+              run: |
+                  echo "Posting to Discord..."
+                  curl -H "Content-Type: application/json" -X POST -d "${{ steps.prepare_discord_payload.outputs.discord_payload }}" $DISCORD_WEBHOOK
