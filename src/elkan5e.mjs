@@ -40,6 +40,7 @@ Hooks.once("init", async () => {
 	try {
 		console.log("Elkan 5e | Initializing Elkan 5e");
 		await gameSettingRegister();
+
 		initWarlockSpellSlot();
 
 		// Initialize rule systems
@@ -64,6 +65,12 @@ Hooks.once("init", async () => {
 		console.error("Elkan 5e | Initialization Error:", error);
 	}
 });
+
+
+
+
+
+
 
 Hooks.once("ready", () => {
 	try {
