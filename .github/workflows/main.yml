@@ -8,7 +8,7 @@ on:
     workflow_dispatch:
 
 permissions:
-  contents: write
+    contents: write
 
 jobs:
     version-check:
@@ -239,6 +239,7 @@ jobs:
               run: |
                   RELEASE_NOTES="${{ steps.read_release_notes.outputs.release_notes }}"
                   CLEAN_RELEASE_NOTES=$(echo -e "$RELEASE_NOTES")
+
                   PAYLOAD=$(jq -n \
                     --arg title "Elkan 5e Release" \
                     --arg version "$VERSION" \
@@ -266,4 +267,5 @@ jobs:
             - name: Post to Discord
               run: |
                   echo "Posting to Discord..."
-                  curl -H "Content-Type: application/json" -X POST -d "${{ steps.prepare_discord_payload.outputs.discord_payload }}" $DISCORD_WEBHOOK
+                  PAYLOAD="${{ steps.prepare_discord_payload.outputs.discord_payload }}"
+                  curl -H "Content-Type: application/json" -X POST -d "$PAYLOAD" "$DISCORD_WEBHOOK"
