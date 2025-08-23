@@ -404,19 +404,21 @@ export async function migrateActorByType({
 							const newActivity = newActivities[newKey];
 							if (oldActivity && newActivity) {
 								// Check if consumption is the same
-								const consumptionIsSame = JSON.stringify(oldActivity.consumption) === JSON.stringify(newActivity.consumption);
-								if (!consumptionIsSame) { newActivity.consumption = { ...oldActivity.consumption }; }
+								const consumptionIsSame =
+									JSON.stringify(oldActivity.consumption) ===
+									JSON.stringify(newActivity.consumption);
+								if (!consumptionIsSame) {
+									newActivity.consumption = { ...oldActivity.consumption };
+								}
 							}
 						}
 					}
 				}
 			}
 
-
 			const createdItems = await actor.createEmbeddedDocuments("Item", [newData]);
 			// Set _stats.compendiumSource after creation to avoid DataModelValidationError
 			if (newItem.pack && newItem.id) {
-
 				await createdItems[0].update({
 					_stats: {
 						...createdItems[0]._stats,
