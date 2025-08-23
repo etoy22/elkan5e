@@ -1,5 +1,25 @@
 # Changelog
 
+# v1.13.0.5
+
+Fix to auto release
+
+# v1.13.0.4
+
+## Bug Fixes
+
+- Fixed conditions active effects not working properly
+
+## UI
+
+- Added new Skill Engineering that will be put into use soon
+- Sorted actions alphabetically for choices in classes
+
+## Misc
+
+- Cleaned up github actions
+- Commented out the warlock spell progresssion that wasnt in use anyways
+
 # v1.13.0.3
 
 Bug fix for Barbarian Defense so that it calculates correctly when not wearing armor and only runs once regardless of amount of GMs
