@@ -16,7 +16,6 @@ import {
 } from "./module/classes/monk.mjs";
 import { slicingBlow } from "./module/classes/rogue.mjs";
 import { lifeDrainGraveguard, spectralEmpowerment } from "./module/classes/wizard.mjs";
-
 import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
 import { conditions, conditionsReady } from "./module/rules/condition.mjs";
 import { language } from "./module/rules/language.mjs";
@@ -40,7 +39,7 @@ Hooks.once("init", async () => {
 	try {
 		console.log("Elkan 5e | Initializing Elkan 5e");
 		await gameSettingRegister();
-		initWarlockSpellSlot();
+		// initWarlockSpellSlot();
 
 		// Initialize rule systems
 		conditions();
@@ -58,6 +57,14 @@ Hooks.once("init", async () => {
 		setupSpellcastingReferences();
 		setupCreatureTypeReferences();
 		setupSkillReferences();
+
+		CONFIG.DND5E.skills.engineering = {
+			label: "Engineering",
+			ability: "int",
+			fullKey: "engineering", 
+			reference: "",
+			icon: "" 
+		}
 
 		console.log("Elkan 5e | Done Initializing");
 	} catch (error) {
