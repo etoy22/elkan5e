@@ -41,7 +41,10 @@ function calculateAcBonus(actor) {
 	const dex = actor.system.abilities.dex.mod;
 	const con = actor.system.abilities.con.mod;
 	const armor = actor.items.find(
-		(i) => i.type === "equipment" && i.system.equipped && (i.system.type.value == "medium" || i.system.type.value == "light"),
+		(i) =>
+			i.type === "equipment" &&
+			i.system.equipped &&
+			(i.system.type.value == "medium" || i.system.type.value == "light"),
 	);
 
 	if (!armor) {
@@ -70,7 +73,7 @@ function calculateAcBonus(actor) {
 
 export async function updateBarbarianDefense(actor) {
 	if (!actor || !actor.system) return; // Prevents error if actor is null/undefined
-	const firstActiveGM = game.users.find(u => u.isGM && u.active);
+	const firstActiveGM = game.users.find((u) => u.isGM && u.active);
 	if (!firstActiveGM || firstActiveGM.id !== game.user.id) return;
 
 	const isUsingBarbarianDefense = actor.system.attributes.ac.calc === "barbarianDefense";
