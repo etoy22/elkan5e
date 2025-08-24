@@ -111,60 +111,14 @@ export function filterDocsByMode(docs, mode) {
 }
 
 // Helper to get the identifier for an item or doc
-
 function getItemIdentifier(item) {
 	const id = item.system?.identifier;
 	if (id && id.trim().length > 0) return id.trim();
+
 	// If no identifier exists, generate one and save it so it persists
 	const generated = item.name.toLowerCase().replace(/\s+/g, "-");
 	if (item.system) item.system.identifier = generated;
 	return generated;
-}
-
-// Compare two items and return a list of differing top-level fields (excluding meta fields)
-function getDifferingFields(oldItem, newItem) {
-	const oldObj = oldItem.toObject();
-	const newObj = newItem.toObject();
-	const ignore = ["_stats", "ownership", "id", "_id", "identifier"];
-
-	// Helper to check if path matches fields to ignore
-	function isIgnoredPath(path) {
-		return (
-			/^effects\[\d+\]\.duration\.startTime$/.test(path) ||
-			/^effects\[\d+\]\.flags\.dae\.itemsToDelete$/.test(path) ||
-			/^effects\[\d+\]\.flags\.dae$/.test(path) ||
-			/^flags\.dae$/.test(path)
-		);
-	}
-	const diffs = [];
-
-	function compare(a, b, path = "") {
-	// Skip ignored paths
-	if (isIgnoredPath(path)) return;
-		// If both are objects, recurse
-		if (a && b && typeof a === "object" && typeof b === "object" && !Array.isArray(a) && !Array.isArray(b)) {
-			const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
-			for (const key of keys) {
-				if (ignore.includes(key)) continue;
-				compare(a[key], b[key], path ? `${path}.${key}` : key);
-			}
-		} else if (Array.isArray(a) && Array.isArray(b)) {
-			if (a.length !== b.length) {
-				diffs.push(path);
-			} else {
-				for (let i = 0; i < a.length; i++) {
-					compare(a[i], b[i], `${path}[${i}]`);
-				}
-			}
-		} else {
-			if (!deepEqualIgnoringMeta(a, b, path)) {
-				diffs.push(path);
-			}
-		}
-	}
-
-	compare(oldObj, newObj);
-	return diffs;
 }
 
 export async function savePropertiesForTransfer(items, mode, propKeys) {
@@ -240,36 +194,24 @@ function deepEqualIgnoringMeta(a, b) {
 
 	if (a === null || b === null) return a === b;
 
-	// Helper to check if path matches fields to ignore
-	function isIgnoredPath(path) {
-		return (
-			/^effects\[\d+\]\.duration\.startTime$/.test(path) ||
-			/^effects\[\d+\]\.flags\.dae\.itemsToDelete$/.test(path) ||
-			/^effects\[\d+\]\.flags\.dae$/.test(path) ||
-			/^flags\.dae$/.test(path)
-		);
-	}
-
 	// Arrays
 	if (Array.isArray(a) && Array.isArray(b)) {
 		if (a.length !== b.length) return false;
 		for (let i = 0; i < a.length; i++) {
-			if (!deepEqualIgnoringMeta(a[i], b[i], arguments[2] ? `${arguments[2]}[${i}]` : `[${i}]`)) return false;
+			if (!deepEqualIgnoringMeta(a[i], b[i])) return false;
 		}
 		return true;
 	}
 
 	// Objects
 	if (typeof a === "object" && typeof b === "object") {
-		const aKeys = Object.keys(a).filter((k) => k !== "_stats" && k !== "ownership" && k !== "id" && k !== "_id" && k !== "identifier");
-		const bKeys = Object.keys(b).filter((k) => k !== "_stats" && k !== "ownership" && k !== "id" && k !== "_id" && k !== "identifier");
+		const aKeys = Object.keys(a).filter((k) => k !== "_stats" && k !== "ownership");
+		const bKeys = Object.keys(b).filter((k) => k !== "_stats" && k !== "ownership");
 
 		if (aKeys.length !== bKeys.length) return false;
 		for (const key of aKeys) {
 			if (!bKeys.includes(key)) return false;
-			const nextPath = arguments[2] ? `${arguments[2]}.${key}` : key;
-			if (isIgnoredPath(nextPath)) continue;
-			if (!deepEqualIgnoringMeta(a[key], b[key], nextPath)) return false;
+			if (!deepEqualIgnoringMeta(a[key], b[key])) return false;
 		}
 		return true;
 	}
@@ -279,11 +221,7 @@ function deepEqualIgnoringMeta(a, b) {
 }
 
 function itemsAreFullyIdentical(oldItem, newItem) {
-	// If the only difference is the identifier being assigned to the compendium item, treat as identical
-	const oldObj = oldItem.toObject();
-	const newObj = newItem.toObject();
-	return deepEqualIgnoringMeta(oldObj, newObj);
-
+	return deepEqualIgnoringMeta(oldItem.toObject(), newItem.toObject());
 }
 
 // ---------- main migration ----------
@@ -465,13 +403,17 @@ export async function migrateActorByType({
 							const oldActivity = oldActivities.get(newKey);
 							const newActivity = newActivities[newKey];
 							if (oldActivity && newActivity) {
-								// Check if consumption is the same
-								const consumptionIsSame =
-									JSON.stringify(oldActivity.consumption) ===
-									JSON.stringify(newActivity.consumption);
-								if (!consumptionIsSame) {
-									newActivity.consumption = { ...oldActivity.consumption };
-								}
+								const same =
+									oldActivity.consumption.targets.length ===
+										newActivity.consumption.targets.length &&
+									oldActivity.consumption.scaling.allowed ===
+										newActivity.consumption.scaling.allowed &&
+									oldActivity.consumption.scaling.max ===
+										newActivity.consumption.scaling.max &&
+									oldActivity.consumption.spellSlot ===
+										newActivity.consumption.spellSlot;
+
+								if (!same) newActivity.consumption = { ...oldActivity.consumption };
 							}
 						}
 					}
@@ -479,15 +421,6 @@ export async function migrateActorByType({
 			}
 
 			const createdItems = await actor.createEmbeddedDocuments("Item", [newData]);
-			// Set _stats.compendiumSource after creation to avoid DataModelValidationError
-			if (newItem.pack && newItem.id) {
-				await createdItems[0].update({
-					_stats: {
-						...createdItems[0]._stats,
-						compendiumSource: `Compendium.${newItem.pack}.Item.${newItem.id}`,
-					},
-				});
-			}
 
 			// Optional: preserve original name
 			let namePreserved = false;
@@ -496,26 +429,13 @@ export async function migrateActorByType({
 				namePreserved = true;
 			}
 
-			// Post-creation: force a refresh/update for the item
-			if (createdItems[0]) {
-				if (typeof createdItems[0].refresh === "function") {
-					createdItems[0].refresh();
-				} else {
-					// Fallback: trigger a dummy update to force Foundry to re-link resources
-					await createdItems[0].update({});
-				}
-			}
-
 			// report
 			if (oldItem) {
-				// Get differing fields for report
-				const differingFields = getDifferingFields(oldItem, newItem);
 				reportByActor.get(actor.id).updated.push({
 					from: oldItem.name,
 					to: namePreserved ? savedProps[id].name : newData.name,
 					id,
 					namePreserved,
-					differingFields,
 				});
 				totals.updated++;
 			} else {
@@ -542,107 +462,46 @@ export async function migrateActorByType({
 
 	progress.done();
 
-
-	// ---- Calculate totals and partition actors ----
-	const safeArr = (v) => (Array.isArray(v) ? v : []);
-
-	let updatedCount = 0;
-	let createdCount = 0;
-	let skippedCount = 0;
-
-	const changedActors = [];
-	const unchangedActors = [];
+	// ---- single consolidated summary ----
+	console.groupCollapsed(`[${progressLabel}] Elkan 5e Migration Summary`);
+	console.info(
+		`Actors processed: ${totals.actors} (characters: ${totals.characters}, npcs: ${totals.npcs})`,
+	);
+	console.info(
+		`Items updated: ${totals.updated} | created: ${totals.created} | skipped: ${totals.skipped}`,
+	);
 
 	for (const [, rpt] of reportByActor.entries()) {
-		const updated = safeArr(rpt.updated);
-		const created = safeArr(rpt.created);
-		const skipped = safeArr(rpt.skipped);
+		const header = `${rpt.name} [${rpt.type}] — updated: ${rpt.updated.length}, created: ${rpt.created.length}, skipped: ${rpt.skipped.length}`;
+		console.groupCollapsed(header);
 
-		updatedCount += updated.length;
-		createdCount += created.length;
-		skippedCount += skipped.length;
-
-		if (updated.length > 0 || created.length > 0) {
-			changedActors.push({ ...rpt, updated, created, skipped });
-		} else {
-			unchangedActors.push({ ...rpt, updated, created, skipped });
-		}
-	}
-
-	// ---- Summary group ----
-	console.groupCollapsed(`[Elkan 5e] ${progressLabel} Migration Summary`);
-	console.log(`Actors processed: ${totals.actors} (characters: ${totals.characters}, npcs: ${totals.npcs})`);
-	console.log(`Items updated: ${updatedCount} | created: ${createdCount} | skipped: ${skippedCount}`);
-
-	// ---- Changed actors ----
-	if (changedActors.length) {
-		console.groupCollapsed(`Actors with updates or creations (${changedActors.length})`);
-		for (const rpt of changedActors) {
-			const u = rpt.updated.length;
-			const c = rpt.created.length;
-			const s = rpt.skipped.length;
-
-			console.groupCollapsed(`${rpt.name} [${rpt.type}] | updated: ${u} | created: ${c} | skipped: ${s}`);
-
-			// Updated
-			console.groupCollapsed(`Updated (${u})`);
-			if (u) {
-				for (const it of rpt.updated) {
-					const label =
-						it.from || it.to
-							? `${it.from ?? it.name ?? "Unknown"} → ${it.to ?? it.name ?? "Unknown"}`
-							: `${it.name ?? "Unknown"}`;
-					const details = [];
-					if (it.why) details.push(it.why);
-					if (Array.isArray(it.differingFields) && it.differingFields.length) {
-						details.push(`fields: ${it.differingFields.join(", ")}`);
-					}
-					const suffix = details.length ? ` — ${details.join(" | ")}` : "";
-					console.log(`${label}${suffix}`);
-				}
-			} else {
-				console.log("None");
-			}
+		if (rpt.updated.length) {
+			console.groupCollapsed("Updated");
+			rpt.updated.forEach((u) => {
+				console.log(
+					`• ${u.from} → ${u.to}${u.namePreserved ? " (name preserved)" : ""} [id:${u.id}]`,
+				);
+			});
 			console.groupEnd();
-
-			// Created
-			console.groupCollapsed(`Created (${c})`);
-			if (c) {
-				for (const it of rpt.created) {
-					console.log(it.name ?? "Unnamed");
-				}
-			} else {
-				console.log("None");
-			}
-			console.groupEnd();
-
-			// Skipped
-			console.groupCollapsed(`Skipped (${s})`);
-			if (s) {
-				for (const it of rpt.skipped) {
-					console.log(it.item ?? it.name ?? "Unnamed");
-				}
-			} else {
-				console.log("None");
-			}
-			console.groupEnd();
-
-			console.groupEnd(); // actor
 		}
-		console.groupEnd(); // changed actors
-	}
-
-	// ---- Unchanged actors ----
-	if (unchangedActors.length) {
-		console.groupCollapsed(`Actors with no changes (${unchangedActors.length})`);
-		for (const rpt of unchangedActors) {
-			console.log(`${rpt.name} [${rpt.type}]`);
+		if (rpt.created.length) {
+			console.groupCollapsed("Created");
+			rpt.created.forEach((c) => {
+				console.log(
+					`• ${c.name}${c.namePreserved ? " (name preserved)" : ""} [id:${c.id}]`,
+				);
+			});
+			console.groupEnd();
 		}
+		if (rpt.skipped.length) {
+			console.groupCollapsed("Skipped");
+			rpt.skipped.forEach((s) => console.warn(`• ${s.item}: ${s.reason}`));
+			console.groupEnd();
+		}
+
 		console.groupEnd();
 	}
-
-	console.groupEnd(); // top summary
-
+	console.groupEnd();
 
 	ui.notifications.info(
 		`${progressLabel} finished — Actors: ${totals.actors}, Updated: ${totals.updated}, Created: ${totals.created}, Skipped: ${totals.skipped}. See console for details.`,
@@ -661,7 +520,7 @@ export async function migrateActorSpells(
 		compendiums: [compFeatures, compSpells],
 		types: ["spell"],
 		updateMode,
-		preserveProperties: ["name", "system.uses", "system.preparation","uses","preparation"],
+		preserveProperties: ["name", "uses", "preparation"],
 		progressLabel: "Spells",
 	});
 }
@@ -678,7 +537,7 @@ export async function migrateActorItems(
 		compendiums: [compMagic, compEquip],
 		types: ["consumable", "equipment", "loot", "tool", "weapon"],
 		updateMode,
-		preserveProperties: ["name", "system.quantity", "system.attunement", "system.equipped","quantity","attunement","equipped"],
+		preserveProperties: ["name", "quantity", "attunement", "equipped"],
 		progressLabel: "Items",
 	});
 }
