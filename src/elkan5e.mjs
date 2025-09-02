@@ -24,17 +24,16 @@ import { formating } from "./module/rules/format.mjs";
 import { tools } from "./module/rules/tools.mjs";
 import { weapons } from "./module/rules/weapon.mjs";
 import { scroll } from "./module/rules/scroll.mjs";
-import { skills } from "./module/rules/skills.mjs";
 import {
 	setupCombatReferences,
 	setupDamageReferences,
 	setupSpellcastingReferences,
 	setupCreatureTypeReferences,
-	setupSkillReferences,
 } from "./module/rules/references.mjs";
 
 import * as Spells from "./module/spells.mjs";
 import * as Feats from "./module/feats.mjs";
+import { skills } from "./module/rules/skills.mjs";
 
 Hooks.once("init", async () => {
 	try {
@@ -45,39 +44,24 @@ Hooks.once("init", async () => {
 
 		// Initialize rule systems
 		conditions();
-		skills();
 		tools();
 		weapons();
 		armor();
 		language();
 		formating();
 		scroll();
-
+		skills();
 		// Setup references
 		setupCombatReferences();
 		setupDamageReferences();
 		setupSpellcastingReferences();
 		setupCreatureTypeReferences();
-		setupSkillReferences();
-		CONFIG.DND5E.skills.engineering = {
-			label: "Engineering",
-			ability: "int",
-			fullKey: "engineering",
-			reference: "",
-			icon: ""
-		}
 
-		console.log("Elkan 5e | Done Initializing");
+		console.log("Elkan 5e  |  Done Initializing");
 	} catch (error) {
-		console.error("Elkan 5e | Initialization Error:", error);
+		console.error("Elkan 5e  |  Initialization Error:", error);
 	}
 });
-
-
-
-
-
-
 
 Hooks.once("ready", () => {
 	try {
