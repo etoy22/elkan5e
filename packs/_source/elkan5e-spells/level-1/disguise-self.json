@@ -1,317 +1,318 @@
 {
-	"name": "Disguise Self",
-	"type": "spell",
-	"img": "icons/creatures/mammals/humanoid-fox-cat-archer.webp",
-	"effects": [
-		{
-			"name": "Disguise Self",
-			"changes": [],
-			"transfer": false,
-			"_id": "XXMcvu6njDC0wM5a",
-			"disabled": false,
-			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
-			},
-			"description": "",
-			"origin": null,
-			"statuses": [],
-			"flags": {
-				"times-up": {
-					"isPassive": false
-				},
-				"dae": {
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"stackable": "noneName",
-					"showIcon": false,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false
-				}
-			},
-			"tint": "#ffffff",
-			"img": "icons/creatures/mammals/humanoid-fox-cat-archer.webp",
-			"type": "base",
-			"system": {},
-			"_key": "!items.effects!mcpWUlgl737AIttd.XXMcvu6njDC0wM5a"
-		}
-	],
-	"folder": "U0k4VGG6bziqf3oH",
-	"flags": {
-		"core": {},
-		"midi-qol": {
-			"effectActivation": false,
-			"itemCondition": "",
-			"reactionCondition": "",
-			"otherCondition": "",
-			"effectCondition": "",
-			"removeAttackDamageButtons": "default",
-			"rollAttackPerTarget": "default",
-			"fumbleThreshold": null,
-			"AoETargetType": "any",
-			"AoETargetTypeIncludeSelf": true,
-			"autoTarget": "default"
-		},
-		"midiProperties": {
-			"nodam": false,
-			"fulldam": false,
-			"halfdam": false,
-			"rollOther": false,
-			"critOther": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"concentration": false,
-			"toggleEffect": false,
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"offHandWeapon": false,
-			"ignoreTotalCover": false,
-			"noConcentrationCheck": false,
-			"confirmTargets": "default",
-			"idr": false,
-			"idi": false,
-			"idv": false,
-			"ida": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedProperties": [
-				"vocal",
-				"somatic"
-			]
-		},
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
-		}
-	},
-	"system": {
-		"description": {
-			"value": "<p><em>You call upon the power of disguise, and an illusory appearance settles over your real body.</em></p><p dir=\"auto\" id=\"viewer-nmest4883\"><strong>Illusory Image</strong></p><p>Roll an &amp;Reference[illusoryimages]{illusion check} for this spell.</p><ul><li><p>You make yourself look different using an illusion*, including your clothing, armor, weapons, and other belongings on your person. You can seem up to 1 foot shorter or taller and must otherwise remain in your size category. You must adopt a form that has the same basic arrangement of limbs. Otherwise, the extent of the illusion is up to you.</p></li><li><p>The changes wrought by this spell fail to hold up to physical inspection. For example, if you use this spell to add a hat to your outfit, objects pass through the hat, and anyone who touches it would feel nothing or would feel your head and hair. If you use this spell to appear thinner than you are, the hand of someone who reaches out to touch you would bump into you while it was seemingly still in midair.</p></li></ul>",
-			"chat": ""
-		},
-		"source": {
-			"custom": "elkan5e.com/spells/disguise-self",
-			"revision": 1,
-			"rules": "",
-			"book": "Elkan 5e",
-			"page": "",
-			"license": ""
-		},
-		"activation": {
-			"type": "action",
-			"condition": "",
-			"value": 1
-		},
-		"duration": {
-			"value": "1",
-			"units": "hour"
-		},
-		"target": {
-			"affects": {
-				"special": "",
-				"type": "self",
-				"choice": false
-			},
-			"template": {
-				"type": "",
-				"units": "ft",
-				"contiguous": false
-			}
-		},
-		"range": {
-			"units": "self",
-			"special": ""
-		},
-		"uses": {
-			"max": "",
-			"recovery": [],
-			"spent": 0
-		},
-		"ability": "",
-		"level": 1,
-		"school": "ill",
-		"materials": {
-			"value": "",
-			"consumed": false,
-			"cost": 0,
-			"supply": 0
-		},
-		"preparation": {
-			"mode": "prepared",
-			"prepared": true
-		},
-		"properties": [
-			"vocal",
-			"somatic"
-		],
-		"activities": {
-			"EoztJtDEOpSlESyR": {
-				"type": "utility",
-				"name": "Apply Illusion",
-				"_id": "EoztJtDEOpSlESyR",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "XXMcvu6njDC0wM5a"
-					}
-				],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"roll": {
-					"prompt": false,
-					"visible": false,
-					"name": "",
-					"formula": ""
-				}
-			},
-			"dEj9s93JBH9wjcz4": {
-				"type": "attack",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": false,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "spec",
-					"concentration": false,
-					"override": true,
-					"special": ""
-				},
-				"effects": [],
-				"range": {
-					"override": true,
-					"units": "spec",
-					"special": ""
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"attack": {
-					"critical": {
-						"threshold": null
-					},
-					"flat": false,
-					"type": {
-						"value": "ranged",
-						"classification": ""
-					},
-					"ability": "",
-					"bonus": ""
-				},
-				"damage": {
-					"critical": {
-						"bonus": ""
-					},
-					"includeBase": true,
-					"parts": []
-				},
-				"useConditionText": "",
-				"effectConditionText": "",
-				"macroData": {
-					"name": "",
-					"command": ""
-				},
-				"ignoreTraits": {
-					"idi": false,
-					"idr": false,
-					"idv": false,
-					"ida": false
-				},
-				"midiProperties": {
-					"forceDialog": false,
-					"confirmTargets": "default",
-					"automationOnly": false,
-					"identifier": ""
-				},
-				"attackMode": "",
-				"ammunition": "",
-				"otherActivityId": "none",
-				"otherActivityUuid": "",
-				"name": "Illusion Check",
-				"_id": "dEj9s93JBH9wjcz4",
-				"img": "",
-				"appliedEffects": []
-			}
-		},
-		"identifier": ""
-	},
-	"_id": "mcpWUlgl737AIttd",
-	"_key": "!items!mcpWUlgl737AIttd"
+  "name": "Disguise Self",
+  "type": "spell",
+  "img": "icons/creatures/mammals/humanoid-fox-cat-archer.webp",
+  "effects": [
+    {
+      "name": "Disguise Self",
+      "changes": [],
+      "transfer": false,
+      "_id": "XXMcvu6njDC0wM5a",
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": 3600,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "statuses": [],
+      "flags": {
+        "times-up": {
+          "isPassive": false
+        },
+        "dae": {
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false
+        }
+      },
+      "tint": "#ffffff",
+      "img": "icons/creatures/mammals/humanoid-fox-cat-archer.webp",
+      "type": "base",
+      "system": {},
+      "_key": "!items.effects!mcpWUlgl737AIttd.XXMcvu6njDC0wM5a"
+    }
+  ],
+  "folder": "U0k4VGG6bziqf3oH",
+  "flags": {
+    "core": {},
+    "midi-qol": {
+      "effectActivation": false,
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "removeAttackDamageButtons": "default",
+      "rollAttackPerTarget": "default",
+      "fumbleThreshold": null,
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default"
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "noConcentrationCheck": false,
+      "confirmTargets": "default",
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic"
+      ]
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>You call upon the power of disguise, and an illusory appearance settles over your real body.</em></p><p dir=\"auto\" id=\"viewer-nmest4883\"><strong>Illusory Image</strong></p><p>Roll an &amp;Reference[illusoryimages]{illusion check} for this spell.</p><ul><li><p>You make yourself look different using an illusion*, including your clothing, armor, weapons, and other belongings on your person. You can seem up to 1 foot shorter or taller and must otherwise remain in your size category. You must adopt a form that has the same basic arrangement of limbs. Otherwise, the extent of the illusion is up to you.</p></li><li><p>The changes wrought by this spell fail to hold up to physical inspection. For example, if you use this spell to add a hat to your outfit, objects pass through the hat, and anyone who touches it would feel nothing or would feel your head and hair. If you use this spell to appear thinner than you are, the hand of someone who reaches out to touch you would bump into you while it was seemingly still in midair.</p></li></ul>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/disguise-self",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "1",
+      "units": "hour"
+    },
+    "target": {
+      "affects": {
+        "special": "",
+        "type": "self",
+        "choice": false
+      },
+      "template": {
+        "type": "",
+        "units": "ft",
+        "contiguous": false
+      }
+    },
+    "range": {
+      "units": "self",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 1,
+    "school": "ill",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic"
+    ],
+    "activities": {
+      "EoztJtDEOpSlESyR": {
+        "type": "utility",
+        "name": "Apply Illusion",
+        "_id": "EoztJtDEOpSlESyR",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "XXMcvu6njDC0wM5a"
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        }
+      },
+      "dEj9s93JBH9wjcz4": {
+        "type": "attack",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": false,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "spec",
+          "concentration": false,
+          "override": true,
+          "special": ""
+        },
+        "effects": [],
+        "range": {
+          "override": true,
+          "units": "spec",
+          "special": ""
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "attack": {
+          "critical": {
+            "threshold": null
+          },
+          "flat": false,
+          "type": {
+            "value": "ranged",
+            "classification": ""
+          },
+          "ability": "",
+          "bonus": ""
+        },
+        "damage": {
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true,
+          "parts": []
+        },
+        "useConditionText": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "automationOnly": false,
+          "identifier": ""
+        },
+        "attackMode": "",
+        "ammunition": "",
+        "otherActivityId": "none",
+        "otherActivityUuid": "",
+        "name": "Illusion Check",
+        "_id": "dEj9s93JBH9wjcz4",
+        "img": "",
+        "appliedEffects": []
+      }
+    },
+    "identifier": "disguise-self"
+  },
+  "_id": "mcpWUlgl737AIttd",
+  "_key": "!items!mcpWUlgl737AIttd",
+  "identifier": "disguise-self"
 }

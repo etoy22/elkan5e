@@ -1,447 +1,448 @@
 {
-	"name": "Sunbeam",
-	"type": "spell",
-	"img": "icons/magic/light/beams-rays-orange-purple-large.webp",
-	"effects": [
-		{
-			"name": "Sunbeam [Caster]",
-			"changes": [
-				{
-					"key": "ATL.light.bright",
-					"mode": 4,
-					"value": "30",
-					"priority": 20
-				},
-				{
-					"key": "ATL.light.dim",
-					"mode": 4,
-					"value": "60",
-					"priority": 20
-				}
-			],
-			"transfer": false,
-			"_id": "UipbqM1ltYhrzFnJ",
-			"disabled": false,
-			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
-			},
-			"description": "",
-			"origin": null,
-			"statuses": [],
-			"flags": {
-				"dae": {
-					"disableIncapacitated": false,
-					"selfTarget": true,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"stackable": "noneName",
-					"showIcon": false,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": [],
-					"enableCondition": "",
-					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
-				},
-				"core": {
-					"overlay": false
-				}
-			},
-			"tint": "#ffffff",
-			"img": "icons/magic/light/beams-rays-orange-purple-large.webp",
-			"type": "base",
-			"system": {},
-			"_key": "!items.effects!3PLCI9VCm0OztsBx.UipbqM1ltYhrzFnJ"
-		},
-		{
-			"name": "Sunbeam",
-			"img": "icons/magic/light/beams-rays-orange-purple-large.webp",
-			"_id": "blKszWgnHgQS6Ny7",
-			"type": "base",
-			"system": {},
-			"changes": [],
-			"disabled": false,
-			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
-			},
-			"description": "",
-			"origin": null,
-			"tint": "#ffffff",
-			"transfer": false,
-			"statuses": [
-				"blinded"
-			],
-			"flags": {
-				"dae": {
-					"enableCondition": "",
-					"disableCondition": "",
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"stackable": "noneName",
-					"showIcon": false,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": []
-				},
-				"core": {
-					"overlay": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
-				}
-			},
-			"_key": "!items.effects!3PLCI9VCm0OztsBx.blKszWgnHgQS6Ny7"
-		}
-	],
-	"folder": "sDaRY0H81UTha6hq",
-	"flags": {
-		"dynamiceffects": {
-			"effects": [
-				{
-					"modSpecKey": "flags.dnd5e.conditions",
-					"value": "Blinded",
-					"mode": "+",
-					"targetSpecific": false,
-					"id": 1,
-					"itemId": "36XZH7ErzipKvuY8",
-					"active": true,
-					"_targets": []
-				}
-			],
-			"equipActive": false,
-			"alwaysActive": false
-		},
-		"dae": {
-			"activeEquipped": false,
-			"alwaysActive": false
-		},
-		"midi-qol": {
-			"onUseMacroName": "",
-			"effectActivation": false,
-			"AoETargetType": "any",
-			"AoETargetTypeIncludeSelf": true,
-			"autoTarget": "default",
-			"rollAttackPerTarget": "default",
-			"removeAttackDamageButtons": "default",
-			"itemCondition": "",
-			"effectCondition": "",
-			"reactionCondition": ""
-		},
-		"core": {},
-		"midiProperties": {
-			"nodam": false,
-			"fulldam": false,
-			"halfdam": false,
-			"rollOther": false,
-			"critOther": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"concentration": false,
-			"toggleEffect": false,
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"offHandWeapon": false,
-			"ignoreTotalCover": false,
-			"confirmTargets": "default",
-			"saveDamage": "default",
-			"bonusSaveDamage": "default",
-			"noConcentrationCheck": false,
-			"idr": false,
-			"idi": false,
-			"idv": false,
-			"ida": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedProperties": [
-				"vocal",
-				"somatic",
-				"material",
-				"concentration"
-			]
-		}
-	},
-	"system": {
-		"description": {
-			"value": "<p>A beam of brilliant light flashes out from your hand in a 5-foot-wide, 60-foot-long line. Each creature in the line must make a Constitution saving throw. On a failed save, a creature takes 6d8 radiant damage and is Blinded until your next turn. On a successful save, it takes half as much damage and isn't b⁠linded by this spell. Undead and oozes have disadvantage on this saving throw.</p><p>You can create a new line of radiance as your action on any turn until the spell ends.</p><p>For the Duration, a mote of brilliant radiance shines in your hand. It sheds bright light in a 30-foot radius and dim light for an additional 30 feet. This light is sunlight.</p>",
-			"chat": ""
-		},
-		"source": {
-			"custom": "Elkan 5e",
-			"revision": 1,
-			"rules": "",
-			"book": "Elkan 5e",
-			"page": "",
-			"license": ""
-		},
-		"activation": {
-			"type": "action",
-			"condition": "",
-			"value": 1
-		},
-		"duration": {
-			"value": "1",
-			"units": "minute"
-		},
-		"target": {
-			"affects": {
-				"type": "self",
-				"count": "60",
-				"choice": false,
-				"special": ""
-			},
-			"template": {
-				"units": "ft",
-				"contiguous": false,
-				"type": ""
-			}
-		},
-		"range": {
-			"units": "self",
-			"special": ""
-		},
-		"uses": {
-			"max": "",
-			"recovery": [],
-			"spent": 0
-		},
-		"ability": "",
-		"level": 6,
-		"school": "evo",
-		"materials": {
-			"value": "",
-			"consumed": false,
-			"cost": 0,
-			"supply": 0
-		},
-		"preparation": {
-			"mode": "prepared",
-			"prepared": true
-		},
-		"properties": [
-			"vocal",
-			"somatic",
-			"material",
-			"concentration"
-		],
-		"activities": {
-			"Dvk1AHhirTu6WRHW": {
-				"type": "save",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "UipbqM1ltYhrzFnJ",
-						"onSave": true
-					},
-					{
-						"_id": "blKszWgnHgQS6Ny7",
-						"onSave": false
-					}
-				],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"damage": {
-					"onSave": "half",
-					"parts": [
-						{
-							"custom": {
-								"enabled": false,
-								"formula": ""
-							},
-							"number": 6,
-							"denomination": 8,
-							"bonus": "",
-							"types": [
-								"radiant"
-							],
-							"scaling": {
-								"mode": "",
-								"number": 1
-							}
-						}
-					]
-				},
-				"save": {
-					"ability": "con",
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
-					}
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"_id": "Dvk1AHhirTu6WRHW",
-				"name": "Initial Casting (Use First)",
-				"img": "",
-				"appliedEffects": [
-					"UipbqM1ltYhrzFnJ",
-					"blKszWgnHgQS6Ny7"
-				]
-			},
-			"SknNCnaBTOZIPofn": {
-				"type": "save",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": false
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": true
-				},
-				"effects": [
-					{
-						"_id": "blKszWgnHgQS6Ny7",
-						"onSave": false
-					}
-				],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"damage": {
-					"onSave": "half",
-					"parts": [
-						{
-							"custom": {
-								"enabled": false,
-								"formula": ""
-							},
-							"number": 6,
-							"denomination": 8,
-							"bonus": "",
-							"types": [
-								"radiant"
-							],
-							"scaling": {
-								"mode": "",
-								"number": 1
-							}
-						}
-					]
-				},
-				"save": {
-					"ability": "con",
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
-					}
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"name": "",
-				"useConditionText": "",
-				"forceDialog": false,
-				"effectConditionText": "",
-				"_id": "SknNCnaBTOZIPofn",
-				"img": "",
-				"appliedEffects": [
-					"UipbqM1ltYhrzFnJ",
-					"blKszWgnHgQS6Ny7"
-				]
-			}
-		},
-		"identifier": ""
-	},
-	"_id": "3PLCI9VCm0OztsBx",
-	"_key": "!items!3PLCI9VCm0OztsBx"
+  "name": "Sunbeam",
+  "type": "spell",
+  "img": "icons/magic/light/beams-rays-orange-purple-large.webp",
+  "effects": [
+    {
+      "name": "Sunbeam [Caster]",
+      "changes": [
+        {
+          "key": "ATL.light.bright",
+          "mode": 4,
+          "value": "30",
+          "priority": 20
+        },
+        {
+          "key": "ATL.light.dim",
+          "mode": 4,
+          "value": "60",
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "_id": "UipbqM1ltYhrzFnJ",
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": 60,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "statuses": [],
+      "flags": {
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": true,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [],
+          "enableCondition": "",
+          "disableCondition": ""
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system"
+        },
+        "core": {
+          "overlay": false
+        }
+      },
+      "tint": "#ffffff",
+      "img": "icons/magic/light/beams-rays-orange-purple-large.webp",
+      "type": "base",
+      "system": {},
+      "_key": "!items.effects!3PLCI9VCm0OztsBx.UipbqM1ltYhrzFnJ"
+    },
+    {
+      "name": "Sunbeam",
+      "img": "icons/magic/light/beams-rays-orange-purple-large.webp",
+      "_id": "blKszWgnHgQS6Ny7",
+      "type": "base",
+      "system": {},
+      "changes": [],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "transfer": false,
+      "statuses": [
+        "blinded"
+      ],
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system"
+        }
+      },
+      "_key": "!items.effects!3PLCI9VCm0OztsBx.blKszWgnHgQS6Ny7"
+    }
+  ],
+  "folder": "sDaRY0H81UTha6hq",
+  "flags": {
+    "dynamiceffects": {
+      "effects": [
+        {
+          "modSpecKey": "flags.dnd5e.conditions",
+          "value": "Blinded",
+          "mode": "+",
+          "targetSpecific": false,
+          "id": 1,
+          "itemId": "36XZH7ErzipKvuY8",
+          "active": true,
+          "_targets": []
+        }
+      ],
+      "equipActive": false,
+      "alwaysActive": false
+    },
+    "dae": {
+      "activeEquipped": false,
+      "alwaysActive": false
+    },
+    "midi-qol": {
+      "onUseMacroName": "",
+      "effectActivation": false,
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "reactionCondition": ""
+    },
+    "core": {},
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "saveDamage": "default",
+      "bonusSaveDamage": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic",
+        "material",
+        "concentration"
+      ]
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p>A beam of brilliant light flashes out from your hand in a 5-foot-wide, 60-foot-long line. Each creature in the line must make a Constitution saving throw. On a failed save, a creature takes 6d8 radiant damage and is Blinded until your next turn. On a successful save, it takes half as much damage and isn't b⁠linded by this spell. Undead and oozes have disadvantage on this saving throw.</p><p>You can create a new line of radiance as your action on any turn until the spell ends.</p><p>For the Duration, a mote of brilliant radiance shines in your hand. It sheds bright light in a 30-foot radius and dim light for an additional 30 feet. This light is sunlight.</p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Elkan 5e",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "1",
+      "units": "minute"
+    },
+    "target": {
+      "affects": {
+        "type": "self",
+        "count": "60",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "units": "ft",
+        "contiguous": false,
+        "type": ""
+      }
+    },
+    "range": {
+      "units": "self",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 6,
+    "school": "evo",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "concentration"
+    ],
+    "activities": {
+      "Dvk1AHhirTu6WRHW": {
+        "type": "save",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "UipbqM1ltYhrzFnJ",
+            "onSave": true
+          },
+          {
+            "_id": "blKszWgnHgQS6Ny7",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 6,
+              "denomination": 8,
+              "bonus": "",
+              "types": [
+                "radiant"
+              ],
+              "scaling": {
+                "mode": "",
+                "number": 1
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": "con",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "_id": "Dvk1AHhirTu6WRHW",
+        "name": "Initial Casting (Use First)",
+        "img": "",
+        "appliedEffects": [
+          "UipbqM1ltYhrzFnJ",
+          "blKszWgnHgQS6Ny7"
+        ]
+      },
+      "SknNCnaBTOZIPofn": {
+        "type": "save",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": false
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": true
+        },
+        "effects": [
+          {
+            "_id": "blKszWgnHgQS6Ny7",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 6,
+              "denomination": 8,
+              "bonus": "",
+              "types": [
+                "radiant"
+              ],
+              "scaling": {
+                "mode": "",
+                "number": 1
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": "con",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "name": "",
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "_id": "SknNCnaBTOZIPofn",
+        "img": "",
+        "appliedEffects": [
+          "UipbqM1ltYhrzFnJ",
+          "blKszWgnHgQS6Ny7"
+        ]
+      }
+    },
+    "identifier": "sunbeam"
+  },
+  "_id": "3PLCI9VCm0OztsBx",
+  "_key": "!items!3PLCI9VCm0OztsBx",
+  "identifier": "sunbeam"
 }

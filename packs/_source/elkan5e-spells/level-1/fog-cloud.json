@@ -1,260 +1,261 @@
 {
-	"name": "Fog Cloud",
-	"type": "spell",
-	"img": "icons/magic/air/air-wave-gust-smoke-yellow.webp",
-	"effects": [
-		{
-			"name": "Heavily Obscured",
-			"origin": "Compendium.elkan5e.elkan5e-spells.Item.KAxrIssIzjSZveQL",
-			"changes": [
-				{
-					"key": "macro.StatusEffect",
-					"mode": 0,
-					"value": "obscuredheavily",
-					"priority": 0
-				}
-			],
-			"transfer": false,
-			"flags": {
-				"dae": {
-					"itemName": "Fog Cloud",
-					"enableCondition": "",
-					"disableCondition": "",
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"stackable": "noneName",
-					"showIcon": false,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": []
-				},
-				"core": {
-					"overlay": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
-				}
-			},
-			"img": "modules/elkan5e/icons/conditions/obscured-heavily.svg",
-			"_id": "va7C2o5SAi8gAqYF",
-			"type": "base",
-			"system": {},
-			"disabled": false,
-			"duration": {
-				"startTime": null,
-				"seconds": 0,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"statuses": [],
-			"_key": "!items.effects!KAxrIssIzjSZveQL.va7C2o5SAi8gAqYF"
-		}
-	],
-	"folder": "U0k4VGG6bziqf3oH",
-	"flags": {
-		"core": {},
-		"midi-qol": {
-			"AoETargetType": "any",
-			"AoETargetTypeIncludeSelf": true,
-			"autoTarget": "default",
-			"effectActivation": false,
-			"itemCondition": "",
-			"reactionCondition": "",
-			"otherCondition": "",
-			"effectCondition": "",
-			"rollAttackPerTarget": "default",
-			"removeAttackDamageButtons": "default"
-		},
-		"midiProperties": {
-			"confirmTargets": "default",
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"critOther": false,
-			"offHandWeapon": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"concentration": false,
-			"noConcentrationCheck": false,
-			"toggleEffect": false,
-			"ignoreTotalCover": false,
-			"idr": false,
-			"idi": false,
-			"idv": false,
-			"ida": false
-		},
-		"dae": {
-			"macro": {
-				"name": "Fog Cloud",
-				"img": "icons/magic/air/air-wave-gust-smoke-yellow.webp",
-				"type": "script",
-				"scope": "global",
-				"command": "",
-				"author": "3Yi0HjF4PKCA4vX0",
-				"_id": null,
-				"folder": null,
-				"flags": {}
-			}
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedProperties": [
-				"vocal",
-				"somatic",
-				"concentration"
-			]
-		},
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
-		}
-	},
-	"system": {
-		"description": {
-			"value": "<p><em>You call upon the power of water, forming a fog cloud where you reach out your hand.</em></p><p><strong>Utility Spell</strong> </p><ul><li><p>You create a 20-foot-radius sphere of fog centered on a point within range. The sphere spreads around corners.</p></li><li><p><strong>Area Hazard:</strong> The area is &amp;reference[heavilyobscured]. It lasts for the duration or until a wind of moderate or greater speed (at least 10 miles per hour) disperses it. This spell also doesn't function underwater.</p></li></ul><p></p><p><strong>Upcasting:</strong> The radius of the spell increases by 20 ft. for each spell level above 1st level.</p>",
-			"chat": ""
-		},
-		"source": {
-			"custom": "elkan5e.com/spells/fog-cloud",
-			"revision": 1,
-			"rules": "",
-			"book": "Elkan 5e",
-			"page": "",
-			"license": ""
-		},
-		"activation": {
-			"type": "action",
-			"condition": "",
-			"value": 1
-		},
-		"duration": {
-			"value": "1",
-			"units": "minute"
-		},
-		"target": {
-			"affects": {
-				"count": "",
-				"type": "",
-				"choice": false
-			},
-			"template": {
-				"count": "",
-				"units": "ft",
-				"type": "sphere",
-				"size": "20",
-				"contiguous": false
-			}
-		},
-		"range": {
-			"value": "120",
-			"units": "ft",
-			"special": ""
-		},
-		"uses": {
-			"max": "",
-			"recovery": [],
-			"spent": 0
-		},
-		"level": 1,
-		"school": "con",
-		"materials": {
-			"value": "",
-			"consumed": false,
-			"cost": 0,
-			"supply": 0
-		},
-		"preparation": {
-			"mode": "prepared",
-			"prepared": true
-		},
-		"properties": [
-			"vocal",
-			"somatic",
-			"concentration",
-			"mgc"
-		],
-		"activities": {
-			"jXI9EuFuUj76VceW": {
-				"type": "utility",
-				"_id": "jXI9EuFuUj76VceW",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "va7C2o5SAi8gAqYF"
-					}
-				],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"roll": {
-					"prompt": false,
-					"visible": false,
-					"name": "",
-					"formula": ""
-				},
-				"name": "",
-				"img": "",
-				"appliedEffects": [
-					"va7C2o5SAi8gAqYF"
-				]
-			}
-		},
-		"identifier": ""
-	},
-	"_id": "KAxrIssIzjSZveQL",
-	"_key": "!items!KAxrIssIzjSZveQL"
+  "name": "Fog Cloud",
+  "type": "spell",
+  "img": "icons/magic/air/air-wave-gust-smoke-yellow.webp",
+  "effects": [
+    {
+      "name": "Heavily Obscured",
+      "origin": "Compendium.elkan5e.elkan5e-spells.Item.KAxrIssIzjSZveQL",
+      "changes": [
+        {
+          "key": "macro.StatusEffect",
+          "mode": 0,
+          "value": "obscuredheavily",
+          "priority": 0
+        }
+      ],
+      "transfer": false,
+      "flags": {
+        "dae": {
+          "itemName": "Fog Cloud",
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "core": {
+          "overlay": false
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system"
+        }
+      },
+      "img": "modules/elkan5e/icons/conditions/obscured-heavily.svg",
+      "_id": "va7C2o5SAi8gAqYF",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": 0,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [],
+      "_key": "!items.effects!KAxrIssIzjSZveQL.va7C2o5SAi8gAqYF"
+    }
+  ],
+  "folder": "U0k4VGG6bziqf3oH",
+  "flags": {
+    "core": {},
+    "midi-qol": {
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "effectActivation": false,
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default"
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dae": {
+      "macro": {
+        "name": "Fog Cloud",
+        "img": "icons/magic/air/air-wave-gust-smoke-yellow.webp",
+        "type": "script",
+        "scope": "global",
+        "command": "",
+        "author": "3Yi0HjF4PKCA4vX0",
+        "_id": null,
+        "folder": null,
+        "flags": {}
+      }
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic",
+        "concentration"
+      ]
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>You call upon the power of water, forming a fog cloud where you reach out your hand.</em></p><p><strong>Utility Spell</strong> </p><ul><li><p>You create a 20-foot-radius sphere of fog centered on a point within range. The sphere spreads around corners.</p></li><li><p><strong>Area Hazard:</strong> The area is &amp;reference[heavilyobscured]. It lasts for the duration or until a wind of moderate or greater speed (at least 10 miles per hour) disperses it. This spell also doesn't function underwater.</p></li></ul><p></p><p><strong>Upcasting:</strong> The radius of the spell increases by 20 ft. for each spell level above 1st level.</p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/fog-cloud",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "1",
+      "units": "minute"
+    },
+    "target": {
+      "affects": {
+        "count": "",
+        "type": "",
+        "choice": false
+      },
+      "template": {
+        "count": "",
+        "units": "ft",
+        "type": "sphere",
+        "size": "20",
+        "contiguous": false
+      }
+    },
+    "range": {
+      "value": "120",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "level": 1,
+    "school": "con",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "concentration",
+      "mgc"
+    ],
+    "activities": {
+      "jXI9EuFuUj76VceW": {
+        "type": "utility",
+        "_id": "jXI9EuFuUj76VceW",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "va7C2o5SAi8gAqYF"
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "va7C2o5SAi8gAqYF"
+        ]
+      }
+    },
+    "identifier": "fog-cloud"
+  },
+  "_id": "KAxrIssIzjSZveQL",
+  "_key": "!items!KAxrIssIzjSZveQL",
+  "identifier": "fog-cloud"
 }

@@ -1,286 +1,287 @@
 {
-	"name": "Rope Trick",
-	"type": "spell",
-	"img": "icons/sundries/survival/rope-coiled-tan.webp",
-	"effects": [],
-	"folder": "6J3i75lfD1J0xYwA",
-	"flags": {
-		"core": {},
-		"midi-qol": {
-			"effectActivation": false,
-			"itemCondition": "",
-			"reactionCondition": "",
-			"otherCondition": "",
-			"effectCondition": "",
-			"rollAttackPerTarget": "default",
-			"removeAttackDamageButtons": "default"
-		},
-		"midiProperties": {
-			"nodam": false,
-			"fulldam": false,
-			"halfdam": false,
-			"rollOther": false,
-			"critOther": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"concentration": false,
-			"toggleEffect": false,
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"offHandWeapon": false,
-			"ignoreTotalCover": false,
-			"confirmTargets": "default",
-			"noConcentrationCheck": false,
-			"idr": false,
-			"idi": false,
-			"idv": false,
-			"ida": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedProperties": [
-				"vocal",
-				"somatic",
-				"material"
-			]
-		},
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
-		}
-	},
-	"system": {
-		"description": {
-			"value": "<p><em>You run your hand along a rope 30 to 60 ft. long, feeding it upwards into the air, where, at your command, it remains. The animated rope moves according to your directions. This spell is typically used to secure a rope high above where an adventuring party can reach.</em></p><p><strong>Ritual Casting Time:</strong> 1 Minute</p><p><strong>Summoning Spell</strong> </p><p>You animate a rope. If it ties itself to something, it remains tied after this spell ends.</p><ul><li><p>It is a small &amp;reference[construct] and acts immediately after the end of your turn.</p></li><li><p>The only action the rope can take is to tie one end of itself to something or untie itself. It can attempt to grapple someone, but has an athletics score of -4. If it ties up someone who is not struggling, the DC to escape from this rope is then your spellcasting DC.</p></li><li><p>It is resistant to &amp;reference[bludgeoning] and &amp;reference[piercing] damage, immune to &amp;reference[poison] and &amp;reference[psychic] damage, and immune to the &amp;reference[charmed], &amp;reference[confused], &amp;reference[frightened], &amp;reference[deafened], &amp;reference[goaded], &amp;reference[paralyzed], &amp;reference[poisoned], &amp;reference[prone], &amp;reference[unconscious], and &amp;reference[exhaustion] conditions.</p></li><li><p>It has AC 10, 5 hit points,* and all its ability scores are 2, except dexterity which is 10. It has a fly speed of 20 ft. The rope has a blindsight of 30 feet but no regular sight and has no ability to speak or hear.</p></li></ul><p></p><p><strong>*Upcasting:</strong> The rope has an additional 5 hit points for each spell level above 2nd level.</p>",
-			"chat": ""
-		},
-		"source": {
-			"custom": "elkan5e.com/spells/rope-trick",
-			"revision": 1,
-			"rules": "",
-			"book": "Elkan 5e",
-			"page": "",
-			"license": ""
-		},
-		"activation": {
-			"type": "action",
-			"condition": "",
-			"value": 1
-		},
-		"duration": {
-			"value": "10",
-			"units": "minute"
-		},
-		"target": {
-			"affects": {
-				"type": "object",
-				"count": "1",
-				"choice": false,
-				"special": ""
-			},
-			"template": {
-				"units": "",
-				"contiguous": false,
-				"type": ""
-			}
-		},
-		"range": {
-			"units": "touch",
-			"special": ""
-		},
-		"uses": {
-			"max": "",
-			"recovery": [],
-			"spent": 0
-		},
-		"ability": "",
-		"level": 2,
-		"school": "trs",
-		"materials": {
-			"value": "",
-			"consumed": false,
-			"cost": 0,
-			"supply": 0
-		},
-		"preparation": {
-			"mode": "prepared",
-			"prepared": true
-		},
-		"properties": [
-			"vocal",
-			"somatic",
-			"material",
-			"concentration",
-			"mgc"
-		],
-		"activities": {
-			"dnd5eactivity000": {
-				"_id": "dnd5eactivity000",
-				"type": "summon",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "dsJtkIUMB2Nqv9PC"
-					}
-				],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"max": "",
-					"recovery": []
-				},
-				"bonuses": {
-					"ac": "",
-					"hd": "",
-					"hp": "(@item.level -2) * 5",
-					"attackDamage": "",
-					"saveDamage": "",
-					"healing": ""
-				},
-				"creatureSizes": [],
-				"creatureTypes": [],
-				"match": {
-					"proficiency": false,
-					"attacks": false,
-					"saves": false
-				},
-				"profiles": [
-					{
-						"count": "",
-						"name": "",
-						"_id": "zFb6Gor35zpEsAoG",
-						"uuid": "Compendium.elkan5e.elkan5e-summoned-creatures.Actor.gWkqLtycDzfH44ZF",
-						"level": {
-							"min": null,
-							"max": null
-						},
-						"types": []
-					}
-				],
-				"summon": {
-					"identifier": "",
-					"mode": "",
-					"prompt": true
-				}
-			},
-			"Fp9Ut52FwLoJQRW8": {
-				"type": "summon",
-				"activation": {
-					"type": "minute",
-					"value": 1,
-					"override": true,
-					"condition": ""
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": false
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"max": "",
-					"recovery": []
-				},
-				"bonuses": {
-					"ac": "",
-					"hd": "",
-					"hp": "(@item.level -2) * 5",
-					"attackDamage": "",
-					"saveDamage": "",
-					"healing": ""
-				},
-				"creatureSizes": [],
-				"creatureTypes": [],
-				"match": {
-					"proficiency": false,
-					"attacks": false,
-					"saves": false
-				},
-				"profiles": [
-					{
-						"count": "",
-						"name": "",
-						"_id": "zFb6Gor35zpEsAoG",
-						"uuid": "Compendium.elkan5e.elkan5e-summoned-creatures.Actor.gWkqLtycDzfH44ZF",
-						"level": {
-							"min": null,
-							"max": null
-						},
-						"types": []
-					}
-				],
-				"summon": {
-					"identifier": "",
-					"mode": "",
-					"prompt": true
-				},
-				"useConditionText": "",
-				"forceDialog": false,
-				"effectConditionText": "",
-				"_id": "Fp9Ut52FwLoJQRW8",
-				"name": "Ritual",
-				"img": "",
-				"appliedEffects": []
-			}
-		},
-		"identifier": ""
-	},
-	"_id": "MUnlvQQtZxVOx78G",
-	"_key": "!items!MUnlvQQtZxVOx78G"
+  "name": "Rope Trick",
+  "type": "spell",
+  "img": "icons/sundries/survival/rope-coiled-tan.webp",
+  "effects": [],
+  "folder": "6J3i75lfD1J0xYwA",
+  "flags": {
+    "core": {},
+    "midi-qol": {
+      "effectActivation": false,
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default"
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic",
+        "material"
+      ]
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>You run your hand along a rope 30 to 60 ft. long, feeding it upwards into the air, where, at your command, it remains. The animated rope moves according to your directions. This spell is typically used to secure a rope high above where an adventuring party can reach.</em></p><p><strong>Ritual Casting Time:</strong> 1 Minute</p><p><strong>Summoning Spell</strong> </p><p>You animate a rope. If it ties itself to something, it remains tied after this spell ends.</p><ul><li><p>It is a small &amp;reference[construct] and acts immediately after the end of your turn.</p></li><li><p>The only action the rope can take is to tie one end of itself to something or untie itself. It can attempt to grapple someone, but has an athletics score of -4. If it ties up someone who is not struggling, the DC to escape from this rope is then your spellcasting DC.</p></li><li><p>It is resistant to &amp;reference[bludgeoning] and &amp;reference[piercing] damage, immune to &amp;reference[poison] and &amp;reference[psychic] damage, and immune to the &amp;reference[charmed], &amp;reference[confused], &amp;reference[frightened], &amp;reference[deafened], &amp;reference[goaded], &amp;reference[paralyzed], &amp;reference[poisoned], &amp;reference[prone], &amp;reference[unconscious], and &amp;reference[exhaustion] conditions.</p></li><li><p>It has AC 10, 5 hit points,* and all its ability scores are 2, except dexterity which is 10. It has a fly speed of 20 ft. The rope has a blindsight of 30 feet but no regular sight and has no ability to speak or hear.</p></li></ul><p></p><p><strong>*Upcasting:</strong> The rope has an additional 5 hit points for each spell level above 2nd level.</p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/rope-trick",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "10",
+      "units": "minute"
+    },
+    "target": {
+      "affects": {
+        "type": "object",
+        "count": "1",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "units": "",
+        "contiguous": false,
+        "type": ""
+      }
+    },
+    "range": {
+      "units": "touch",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 2,
+    "school": "trs",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material",
+      "concentration",
+      "mgc"
+    ],
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "summon",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "dsJtkIUMB2Nqv9PC"
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "bonuses": {
+          "ac": "",
+          "hd": "",
+          "hp": "(@item.level -2) * 5",
+          "attackDamage": "",
+          "saveDamage": "",
+          "healing": ""
+        },
+        "creatureSizes": [],
+        "creatureTypes": [],
+        "match": {
+          "proficiency": false,
+          "attacks": false,
+          "saves": false
+        },
+        "profiles": [
+          {
+            "count": "",
+            "name": "",
+            "_id": "zFb6Gor35zpEsAoG",
+            "uuid": "Compendium.elkan5e.elkan5e-summoned-creatures.Actor.gWkqLtycDzfH44ZF",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "types": []
+          }
+        ],
+        "summon": {
+          "identifier": "",
+          "mode": "",
+          "prompt": true
+        }
+      },
+      "Fp9Ut52FwLoJQRW8": {
+        "type": "summon",
+        "activation": {
+          "type": "minute",
+          "value": 1,
+          "override": true,
+          "condition": ""
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": false
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "bonuses": {
+          "ac": "",
+          "hd": "",
+          "hp": "(@item.level -2) * 5",
+          "attackDamage": "",
+          "saveDamage": "",
+          "healing": ""
+        },
+        "creatureSizes": [],
+        "creatureTypes": [],
+        "match": {
+          "proficiency": false,
+          "attacks": false,
+          "saves": false
+        },
+        "profiles": [
+          {
+            "count": "",
+            "name": "",
+            "_id": "zFb6Gor35zpEsAoG",
+            "uuid": "Compendium.elkan5e.elkan5e-summoned-creatures.Actor.gWkqLtycDzfH44ZF",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "types": []
+          }
+        ],
+        "summon": {
+          "identifier": "",
+          "mode": "",
+          "prompt": true
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "_id": "Fp9Ut52FwLoJQRW8",
+        "name": "Ritual",
+        "img": "",
+        "appliedEffects": []
+      }
+    },
+    "identifier": "rope-trick"
+  },
+  "_id": "MUnlvQQtZxVOx78G",
+  "_key": "!items!MUnlvQQtZxVOx78G",
+  "identifier": "rope-trick"
 }

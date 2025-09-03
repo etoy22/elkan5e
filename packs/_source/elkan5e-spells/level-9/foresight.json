@@ -1,237 +1,238 @@
 {
-	"name": "Foresight",
-	"type": "spell",
-	"img": "icons/magic/perception/eye-ringed-glow-angry-large-teal.webp",
-	"effects": [
-		{
-			"changes": [
-				{
-					"key": "flags.midi-qol.grants.disadvantage.attack.all",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.advantage.all",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				}
-			],
-			"transfer": false,
-			"_id": "RwADECbOXUNdA4Tk",
-			"disabled": false,
-			"duration": {
-				"startTime": null,
-				"seconds": 28800,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
-			},
-			"origin": null,
-			"tint": "#ffffff",
-			"flags": {
-				"dae": {
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"stackable": "none",
-					"durationExpression": "",
-					"specialDuration": []
-				},
-				"core": {
-					"statusId": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": null,
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false
-				}
-			},
-			"name": "Foresight",
-			"description": "",
-			"statuses": [],
-			"img": "icons/magic/perception/eye-ringed-glow-angry-large-teal.webp",
-			"type": "base",
-			"system": {},
-			"_key": "!items.effects!Cii0FzQ0LiMsZqrT.RwADECbOXUNdA4Tk"
-		}
-	],
-	"folder": "OLc6BMEuifPnCAUH",
-	"flags": {
-		"core": {},
-		"midi-qol": {
-			"effectActivation": false,
-			"rollAttackPerTarget": "default",
-			"itemCondition": "",
-			"effectCondition": "",
-			"reactionCondition": ""
-		},
-		"midiProperties": {
-			"nodam": false,
-			"fulldam": false,
-			"halfdam": false,
-			"rollOther": false,
-			"critOther": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"concentration": false,
-			"toggleEffect": false,
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"offHandWeapon": false,
-			"ignoreTotalCover": false,
-			"noConcentrationCheck": false,
-			"confirmTargets": "default",
-			"idr": false,
-			"idi": false,
-			"idv": false,
-			"ida": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedProperties": [
-				"vocal",
-				"somatic",
-				"material"
-			]
-		}
-	},
-	"system": {
-		"description": {
-			"value": "<p>You touch a willing creature and bestow a limited ability to see into the immediate future. For the Duration, the target can't be surprised and has advantage on Attack rolls, Ability Checks, and Saving Throws. Additionally, other creatures have disadvantage on attack rolls against the target for the duration.</p><p>This spell immediately ends if you cast it again before its Duration ends.</p>",
-			"chat": ""
-		},
-		"source": {
-			"custom": "Elkan 5e",
-			"revision": 1,
-			"rules": "",
-			"book": "Elkan 5e",
-			"page": "",
-			"license": ""
-		},
-		"activation": {
-			"type": "minute",
-			"condition": "",
-			"value": 1
-		},
-		"duration": {
-			"value": "8",
-			"units": "hour"
-		},
-		"target": {
-			"affects": {
-				"type": "creature",
-				"count": "1",
-				"choice": false,
-				"special": ""
-			},
-			"template": {
-				"units": "",
-				"contiguous": false,
-				"type": ""
-			}
-		},
-		"range": {
-			"units": "touch",
-			"special": ""
-		},
-		"uses": {
-			"max": "",
-			"recovery": [],
-			"spent": 0
-		},
-		"ability": "",
-		"level": 9,
-		"school": "div",
-		"materials": {
-			"value": "",
-			"consumed": false,
-			"cost": 0,
-			"supply": 0
-		},
-		"preparation": {
-			"mode": "prepared",
-			"prepared": true
-		},
-		"properties": [
-			"vocal",
-			"somatic",
-			"material"
-		],
-		"activities": {
-			"NN7GddPzP3NWzL4Q": {
-				"type": "utility",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "RwADECbOXUNdA4Tk"
-					}
-				],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"roll": {
-					"formula": "",
-					"name": "",
-					"prompt": false,
-					"visible": false
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"_id": "NN7GddPzP3NWzL4Q",
-				"name": "",
-				"img": "",
-				"appliedEffects": [
-					"RwADECbOXUNdA4Tk"
-				]
-			}
-		},
-		"identifier": ""
-	},
-	"_id": "Cii0FzQ0LiMsZqrT",
-	"_key": "!items!Cii0FzQ0LiMsZqrT"
+  "name": "Foresight",
+  "type": "spell",
+  "img": "icons/magic/perception/eye-ringed-glow-angry-large-teal.webp",
+  "effects": [
+    {
+      "changes": [
+        {
+          "key": "flags.midi-qol.grants.disadvantage.attack.all",
+          "mode": 5,
+          "value": "1",
+          "priority": 20
+        },
+        {
+          "key": "flags.midi-qol.advantage.all",
+          "mode": 5,
+          "value": "1",
+          "priority": 20
+        }
+      ],
+      "transfer": false,
+      "_id": "RwADECbOXUNdA4Tk",
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": 28800,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "origin": null,
+      "tint": "#ffffff",
+      "flags": {
+        "dae": {
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "stackable": "none",
+          "durationExpression": "",
+          "specialDuration": []
+        },
+        "core": {
+          "statusId": ""
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "radius": null,
+          "alignment": "",
+          "type": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false
+        }
+      },
+      "name": "Foresight",
+      "description": "",
+      "statuses": [],
+      "img": "icons/magic/perception/eye-ringed-glow-angry-large-teal.webp",
+      "type": "base",
+      "system": {},
+      "_key": "!items.effects!Cii0FzQ0LiMsZqrT.RwADECbOXUNdA4Tk"
+    }
+  ],
+  "folder": "OLc6BMEuifPnCAUH",
+  "flags": {
+    "core": {},
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "reactionCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "noConcentrationCheck": false,
+      "confirmTargets": "default",
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic",
+        "material"
+      ]
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p>You touch a willing creature and bestow a limited ability to see into the immediate future. For the Duration, the target can't be surprised and has advantage on Attack rolls, Ability Checks, and Saving Throws. Additionally, other creatures have disadvantage on attack rolls against the target for the duration.</p><p>This spell immediately ends if you cast it again before its Duration ends.</p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Elkan 5e",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "minute",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "8",
+      "units": "hour"
+    },
+    "target": {
+      "affects": {
+        "type": "creature",
+        "count": "1",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "units": "",
+        "contiguous": false,
+        "type": ""
+      }
+    },
+    "range": {
+      "units": "touch",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 9,
+    "school": "div",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material"
+    ],
+    "activities": {
+      "NN7GddPzP3NWzL4Q": {
+        "type": "utility",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "RwADECbOXUNdA4Tk"
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "_id": "NN7GddPzP3NWzL4Q",
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "RwADECbOXUNdA4Tk"
+        ]
+      }
+    },
+    "identifier": "foresight"
+  },
+  "_id": "Cii0FzQ0LiMsZqrT",
+  "_key": "!items!Cii0FzQ0LiMsZqrT",
+  "identifier": "foresight"
 }
