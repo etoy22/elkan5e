@@ -1,298 +1,299 @@
 {
-	"name": "Intercession",
-	"type": "spell",
-	"img": "icons/magic/symbols/triangle-glow-purple.webp",
-	"system": {
-		"activities": {
-			"nBRZjvhSxi9nwZUC": {
-				"type": "save",
-				"_id": "nBRZjvhSxi9nwZUC",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "H7Tj4zegHob4FhDP",
-						"onSave": false
-					}
-				],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"damage": {
-					"parts": [
-						{
-							"custom": {
-								"enabled": false,
-								"formula": ""
-							},
-							"number": 2,
-							"denomination": "8",
-							"bonus": "",
-							"types": [
-								"psychic"
-							],
-							"scaling": {
-								"mode": ""
-							}
-						}
-					],
-					"critical": {
-						"allow": false
-					},
-					"onSave": "half"
-				},
-				"save": {
-					"ability": [
-						"wis"
-					],
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
-					}
-				},
-				"useConditionText": "",
-				"useConditionReason": "",
-				"effectConditionText": "",
-				"macroData": {
-					"name": "",
-					"command": ""
-				},
-				"ignoreTraits": {
-					"idi": false,
-					"idr": false,
-					"idv": false,
-					"ida": false
-				},
-				"midiProperties": {
-					"ignoreTraits": [],
-					"triggeredActivityId": "none",
-					"triggeredActivityConditionText": "",
-					"triggeredActivityTargets": "targets",
-					"triggeredActivityRollAs": "self",
-					"forceDialog": false,
-					"confirmTargets": "default",
-					"autoTargetType": "any",
-					"autoTargetAction": "default",
-					"automationOnly": false,
-					"otherActivityCompatible": true,
-					"identifier": "",
-					"displayActivityName": false,
-					"rollMode": "default",
-					"chooseEffects": false,
-					"toggleEffect": false,
-					"ignoreFullCover": false
-				},
-				"isOverTimeFlag": false,
-				"overTimeProperties": {
-					"saveRemoves": true,
-					"preRemoveConditionText": "",
-					"postRemoveConditionText": ""
-				},
-				"otherActivityId": "",
-				"name": "",
-				"img": "",
-				"appliedEffects": []
-			}
-		},
-		"uses": {
-			"spent": 0,
-			"recovery": [],
-			"max": ""
-		},
-		"description": {
-			"value": "<p><strong>Wisdom Save</strong> </p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 2d8 psychic]] damage and is &amp;reference[siphoned]. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 3rd.</p>",
-			"chat": ""
-		},
-		"identifier": "intercession",
-		"source": {
-			"revision": 1,
-			"rules": "",
-			"book": "Elkan 5e",
-			"page": "",
-			"custom": "elkan5e.com/spells/intercession",
-			"license": ""
-		},
-		"activation": {
-			"type": "action",
-			"value": null,
-			"condition": ""
-		},
-		"duration": {
-			"units": "minute",
-			"value": "1"
-		},
-		"level": 3,
-		"materials": {
-			"value": "",
-			"consumed": false,
-			"cost": 0,
-			"supply": 0
-		},
-		"preparation": {
-			"mode": "prepared",
-			"prepared": true
-		},
-		"properties": [
-			"vocal",
-			"material",
-			"concentration"
-		],
-		"range": {
-			"value": "60",
-			"units": "ft",
-			"special": ""
-		},
-		"school": "abj",
-		"target": {
-			"template": {
-				"contiguous": false,
-				"units": "ft",
-				"type": ""
-			},
-			"affects": {
-				"choice": false,
-				"count": "1",
-				"type": "creature",
-				"special": ""
-			}
-		}
-	},
-	"effects": [
-		{
-			"name": "Intercession",
-			"img": "icons/magic/symbols/triangle-glow-purple.webp",
-			"origin": "Compendium.elkan5e.elkan5e-spells.Item.3URtFYL4DElhR4Jr",
-			"transfer": false,
-			"_id": "H7Tj4zegHob4FhDP",
-			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "flags.midi-qol.ActivityOverTime",
-					"mode": 2,
-					"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\ndamageType=none,\nname=Intercession",
-					"priority": 20
-				}
-			],
-			"disabled": false,
-			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"statuses": [
-				"siphoned"
-			],
-			"flags": {
-				"dae": {
-					"enableCondition": "",
-					"disableCondition": "",
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"stackable": "multi",
-					"showIcon": false,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": []
-				},
-				"dnd5e": {
-					"riders": {
-						"statuses": []
-					}
-				},
-				"core": {
-					"overlay": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
-				}
-			},
-			"_key": "!items.effects!3URtFYL4DElhR4Jr.H7Tj4zegHob4FhDP"
-		}
-	],
-	"folder": "Tf2FNuyyu2gEaYOF",
-	"flags": {
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
-		},
-		"midi-qol": {
-			"rollAttackPerTarget": "default",
-			"removeAttackDamageButtons": "default",
-			"itemCondition": "",
-			"reactionCondition": "",
-			"otherCondition": "",
-			"effectCondition": ""
-		},
-		"midiProperties": {
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"noConcentrationCheck": false,
-			"toggleEffect": false,
-			"ignoreTotalCover": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			}
-		}
-	},
-	"_id": "3URtFYL4DElhR4Jr",
-	"_key": "!items!3URtFYL4DElhR4Jr"
+  "name": "Intercession",
+  "type": "spell",
+  "img": "icons/magic/symbols/triangle-glow-purple.webp",
+  "system": {
+    "activities": {
+      "nBRZjvhSxi9nwZUC": {
+        "type": "save",
+        "_id": "nBRZjvhSxi9nwZUC",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "H7Tj4zegHob4FhDP",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 2,
+              "denomination": "8",
+              "bonus": "",
+              "types": [
+                "psychic"
+              ],
+              "scaling": {
+                "mode": ""
+              }
+            }
+          ],
+          "critical": {
+            "allow": false
+          },
+          "onSave": "half"
+        },
+        "save": {
+          "ability": [
+            "wis"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "",
+        "name": "",
+        "img": "",
+        "appliedEffects": []
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "description": {
+      "value": "<p><strong>Wisdom Save</strong> </p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 2d8 psychic]] damage and is &amp;reference[siphoned]. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 3rd.</p>",
+      "chat": ""
+    },
+    "identifier": "intercession",
+    "source": {
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "custom": "elkan5e.com/spells/intercession",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "value": null,
+      "condition": ""
+    },
+    "duration": {
+      "units": "minute",
+      "value": "1"
+    },
+    "level": 3,
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "material",
+      "concentration"
+    ],
+    "range": {
+      "value": "60",
+      "units": "ft",
+      "special": ""
+    },
+    "school": "abj",
+    "target": {
+      "template": {
+        "contiguous": false,
+        "units": "ft",
+        "type": ""
+      },
+      "affects": {
+        "choice": false,
+        "count": "1",
+        "type": "creature",
+        "special": ""
+      }
+    }
+  },
+  "effects": [
+    {
+      "name": "Intercession",
+      "img": "icons/magic/symbols/triangle-glow-purple.webp",
+      "origin": "Compendium.elkan5e.elkan5e-spells.Item.3URtFYL4DElhR4Jr",
+      "transfer": false,
+      "_id": "H7Tj4zegHob4FhDP",
+      "type": "base",
+      "system": {},
+      "changes": [
+        {
+          "key": "flags.midi-qol.ActivityOverTime",
+          "mode": 2,
+          "value": "turn=end,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\ndamageType=none,\nname=Intercession",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": 60,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "statuses": [
+        "siphoned"
+      ],
+      "flags": {
+        "dae": {
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "multi",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": []
+        },
+        "dnd5e": {
+          "riders": {
+            "statuses": []
+          }
+        },
+        "core": {
+          "overlay": false
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system",
+          "statuses": []
+        }
+      },
+      "_key": "!items.effects!3URtFYL4DElhR4Jr.H7Tj4zegHob4FhDP"
+    }
+  ],
+  "folder": "Tf2FNuyyu2gEaYOF",
+  "flags": {
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": ""
+    },
+    "midiProperties": {
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    }
+  },
+  "_id": "3URtFYL4DElhR4Jr",
+  "_key": "!items!3URtFYL4DElhR4Jr",
+  "identifier": "intercession"
 }

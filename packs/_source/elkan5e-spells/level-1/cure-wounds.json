@@ -1,186 +1,187 @@
 {
-	"name": "Cure Wounds",
-	"type": "spell",
-	"img": "icons/magic/life/cross-worn-green.webp",
-	"effects": [],
-	"folder": "U0k4VGG6bziqf3oH",
-	"flags": {
-		"midi-qol": {
-			"onUseMacroName": "",
-			"effectActivation": false,
-			"removeAttackDamageButtons": "default",
-			"itemCondition": "!raceOrType.includes(\"construct\")\n",
-			"reactionCondition": "",
-			"otherCondition": "",
-			"effectCondition": "",
-			"rollAttackPerTarget": "default",
-			"AoETargetType": "any",
-			"AoETargetTypeIncludeSelf": true,
-			"autoTarget": "default"
-		},
-		"core": {},
-		"midiProperties": {
-			"nodam": false,
-			"halfdam": false,
-			"fulldam": false,
-			"rollOther": false,
-			"critOther": false,
-			"concentration": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"toggleEffect": false,
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"offHandWeapon": false,
-			"ignoreTotalCover": false,
-			"noConcentrationCheck": false,
-			"confirmTargets": "default",
-			"idr": false,
-			"idi": false,
-			"idv": false,
-			"ida": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedProperties": [
-				"vocal",
-				"somatic"
-			]
-		},
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
-		}
-	},
-	"system": {
-		"description": {
-			"value": "<p><em>You touch a creature where they have been wounded, mentally picturing their bodies mending and asking for their recovery as they are healed of their wounds.</em></p><p><strong>Healing</strong></p><p>This spell has no effect on &amp;reference[construct]{constructs}.</p><ul><li><p>Target gains hit points equal to [[/healing 2d6 + @attributes.spellmod]]{2d6 + your spellcasting ability modifier}.*</p></li></ul><p></p><p><strong>*Upcasting:</strong> Increase healing by [[/healing 2d6]]{2d6} for each spell level above 1st.</p>",
-			"chat": ""
-		},
-		"source": {
-			"custom": "elkan5e.com/spells/cure-wounds",
-			"revision": 1,
-			"rules": "",
-			"book": "Elkan 5e",
-			"page": "",
-			"license": ""
-		},
-		"activation": {
-			"type": "action",
-			"condition": "",
-			"value": 1
-		},
-		"duration": {
-			"value": "",
-			"units": "inst"
-		},
-		"target": {
-			"affects": {
-				"special": "",
-				"type": "creature",
-				"count": "1",
-				"choice": false
-			},
-			"template": {
-				"type": "",
-				"units": "ft",
-				"contiguous": false
-			}
-		},
-		"range": {
-			"units": "touch",
-			"special": ""
-		},
-		"uses": {
-			"max": "",
-			"recovery": [],
-			"spent": 0
-		},
-		"ability": "",
-		"level": 1,
-		"school": "trs",
-		"materials": {
-			"value": "",
-			"consumed": false,
-			"cost": 0,
-			"supply": 0
-		},
-		"preparation": {
-			"mode": "prepared",
-			"prepared": true
-		},
-		"properties": [
-			"vocal",
-			"somatic"
-		],
-		"activities": {
-			"llW9VHB4G5PAdFyG": {
-				"type": "heal",
-				"_id": "llW9VHB4G5PAdFyG",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"healing": {
-					"number": 2,
-					"denomination": "6",
-					"types": [
-						"healing"
-					],
-					"custom": {
-						"enabled": false
-					},
-					"scaling": {
-						"number": 2,
-						"mode": "whole",
-						"formula": ""
-					},
-					"bonus": "@mod"
-				},
-				"name": "",
-				"img": "",
-				"useConditionText": "!raceOrType.includes(\"construct\")",
-				"appliedEffects": []
-			}
-		},
-		"identifier": ""
-	},
-	"_id": "I80JFUFkSDeMFgXF",
-	"_key": "!items!I80JFUFkSDeMFgXF"
+  "name": "Cure Wounds",
+  "type": "spell",
+  "img": "icons/magic/life/cross-worn-green.webp",
+  "effects": [],
+  "folder": "U0k4VGG6bziqf3oH",
+  "flags": {
+    "midi-qol": {
+      "onUseMacroName": "",
+      "effectActivation": false,
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "!raceOrType.includes(\"construct\")\n",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "rollAttackPerTarget": "default",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default"
+    },
+    "core": {},
+    "midiProperties": {
+      "nodam": false,
+      "halfdam": false,
+      "fulldam": false,
+      "rollOther": false,
+      "critOther": false,
+      "concentration": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "noConcentrationCheck": false,
+      "confirmTargets": "default",
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic"
+      ]
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>You touch a creature where they have been wounded, mentally picturing their bodies mending and asking for their recovery as they are healed of their wounds.</em></p><p><strong>Healing</strong></p><p>This spell has no effect on &amp;reference[construct]{constructs}.</p><ul><li><p>Target gains hit points equal to [[/healing 2d6 + @attributes.spellmod]]{2d6 + your spellcasting ability modifier}.*</p></li></ul><p></p><p><strong>*Upcasting:</strong> Increase healing by [[/healing 2d6]]{2d6} for each spell level above 1st.</p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/cure-wounds",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "",
+      "units": "inst"
+    },
+    "target": {
+      "affects": {
+        "special": "",
+        "type": "creature",
+        "count": "1",
+        "choice": false
+      },
+      "template": {
+        "type": "",
+        "units": "ft",
+        "contiguous": false
+      }
+    },
+    "range": {
+      "units": "touch",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 1,
+    "school": "trs",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic"
+    ],
+    "activities": {
+      "llW9VHB4G5PAdFyG": {
+        "type": "heal",
+        "_id": "llW9VHB4G5PAdFyG",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "healing": {
+          "number": 2,
+          "denomination": "6",
+          "types": [
+            "healing"
+          ],
+          "custom": {
+            "enabled": false
+          },
+          "scaling": {
+            "number": 2,
+            "mode": "whole",
+            "formula": ""
+          },
+          "bonus": "@mod"
+        },
+        "name": "",
+        "img": "",
+        "useConditionText": "!raceOrType.includes(\"construct\")",
+        "appliedEffects": []
+      }
+    },
+    "identifier": "cure-wounds"
+  },
+  "_id": "I80JFUFkSDeMFgXF",
+  "_key": "!items!I80JFUFkSDeMFgXF",
+  "identifier": "cure-wounds"
 }

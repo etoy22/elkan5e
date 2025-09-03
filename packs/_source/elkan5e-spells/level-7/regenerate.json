@@ -1,276 +1,277 @@
 {
-	"name": "Regenerate",
-	"type": "spell",
-	"img": "icons/magic/life/cross-beam-green.webp",
-	"effects": [
-		{
-			"_id": "gMvUlhgIUWdHEJ6r",
-			"flags": {
-				"dae": {
-					"stackable": "none",
-					"specialDuration": [
-						"None"
-					],
-					"transfer": false,
-					"macroRepeat": "startEveryTurn",
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"durationExpression": "",
-					"enableCondition": "",
-					"disableCondition": "",
-					"disableIncapacitated": false,
-					"dontApply": false,
-					"showIcon": false
-				},
-				"core": {},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
-				}
-			},
-			"changes": [
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 0,
-					"value": "turn=start,\napplyCondition=@attributes.hp.value >= 0 && @attributes.hp.value != @attributes.hp.max,\ndamageRoll = 1,\ndamageType = healing",
-					"priority": 20
-				}
-			],
-			"disabled": false,
-			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
-			},
-			"tint": "#ffffff",
-			"transfer": false,
-			"origin": null,
-			"name": "Regenerate",
-			"description": "",
-			"statuses": [],
-			"img": "icons/magic/life/cross-beam-green.webp",
-			"type": "base",
-			"system": {},
-			"_key": "!items.effects!CrRJUlDGltHJnc7c.gMvUlhgIUWdHEJ6r"
-		}
-	],
-	"folder": "H799nI2ov6BcHwd6",
-	"flags": {
-		"dae": {
-			"activeEquipped": false,
-			"alwaysActive": false,
-			"macro": {
-				"name": "Regenerate",
-				"img": "icons/magic/life/cross-beam-green.webp",
-				"type": "script",
-				"scope": "global",
-				"command": "",
-				"author": "3Yi0HjF4PKCA4vX0",
-				"_id": null,
-				"folder": null,
-				"flags": {}
-			}
-		},
-		"midi-qol": {
-			"onUseMacroName": "",
-			"effectActivation": false,
-			"rollAttackPerTarget": "default",
-			"removeAttackDamageButtons": "default",
-			"itemCondition": "",
-			"otherCondition": "",
-			"effectCondition": "",
-			"reactionCondition": "",
-			"AoETargetType": "any",
-			"autoTarget": "default"
-		},
-		"core": {},
-		"midiProperties": {
-			"nodam": false,
-			"fulldam": false,
-			"halfdam": false,
-			"rollOther": false,
-			"critOther": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"concentration": false,
-			"toggleEffect": false,
-			"ignoreTotalCover": false,
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"offHandWeapon": false,
-			"confirmTargets": "default",
-			"noConcentrationCheck": false,
-			"idr": false,
-			"idi": false,
-			"idv": false,
-			"ida": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedProperties": [
-				"vocal",
-				"somatic",
-				"material"
-			]
-		},
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
-		}
-	},
-	"system": {
-		"description": {
-			"value": "<p>You touch a creature and stimulate its natural Healing ability. The target regains 4d8 + 15 Hit Points. For the Duration of the spell, the target regains 1 hit point at the start of each of its turns (10 h⁠it points each minute).</p><p>The target's severed body members (fingers, legs, tails, and so on), if any, are restored after 2 minutes. If you have the severed part and hold it to the stump, the spell instantaneously causes the limb to knit to the stump.</p>",
-			"chat": ""
-		},
-		"source": {
-			"custom": "Elkan 5e",
-			"revision": 1,
-			"rules": "",
-			"book": "Elkan 5e",
-			"page": "",
-			"license": ""
-		},
-		"activation": {
-			"type": "minute",
-			"condition": "",
-			"value": 1
-		},
-		"duration": {
-			"value": "1",
-			"units": "hour"
-		},
-		"target": {
-			"affects": {
-				"type": "creature",
-				"count": "1",
-				"choice": false,
-				"special": ""
-			},
-			"template": {
-				"units": "",
-				"contiguous": false,
-				"type": ""
-			}
-		},
-		"range": {
-			"units": "touch",
-			"special": ""
-		},
-		"uses": {
-			"max": "",
-			"recovery": [],
-			"spent": 0
-		},
-		"ability": "",
-		"level": 7,
-		"school": "trs",
-		"materials": {
-			"value": "",
-			"consumed": false,
-			"cost": 0,
-			"supply": 0
-		},
-		"preparation": {
-			"mode": "prepared",
-			"prepared": true
-		},
-		"properties": [
-			"vocal",
-			"somatic",
-			"material"
-		],
-		"activities": {
-			"CG39k7s3MLbLH05T": {
-				"type": "heal",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "gMvUlhgIUWdHEJ6r"
-					}
-				],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"healing": {
-					"number": 4,
-					"denomination": "8",
-					"bonus": "15",
-					"types": [
-						"healing"
-					],
-					"custom": {
-						"enabled": false,
-						"formula": ""
-					},
-					"scaling": {
-						"mode": "",
-						"number": null,
-						"formula": ""
-					}
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"_id": "CG39k7s3MLbLH05T",
-				"name": "",
-				"img": "",
-				"appliedEffects": [
-					"gMvUlhgIUWdHEJ6r"
-				]
-			}
-		},
-		"identifier": ""
-	},
-	"_id": "CrRJUlDGltHJnc7c",
-	"_key": "!items!CrRJUlDGltHJnc7c"
+  "name": "Regenerate",
+  "type": "spell",
+  "img": "icons/magic/life/cross-beam-green.webp",
+  "effects": [
+    {
+      "_id": "gMvUlhgIUWdHEJ6r",
+      "flags": {
+        "dae": {
+          "stackable": "none",
+          "specialDuration": [
+            "None"
+          ],
+          "transfer": false,
+          "macroRepeat": "startEveryTurn",
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "durationExpression": "",
+          "enableCondition": "",
+          "disableCondition": "",
+          "disableIncapacitated": false,
+          "dontApply": false,
+          "showIcon": false
+        },
+        "core": {},
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "nameOverride": "",
+          "customCheck": "",
+          "wallsBlock": "system"
+        }
+      },
+      "changes": [
+        {
+          "key": "flags.midi-qol.OverTime",
+          "mode": 0,
+          "value": "turn=start,\napplyCondition=@attributes.hp.value >= 0 && @attributes.hp.value != @attributes.hp.max,\ndamageRoll = 1,\ndamageType = healing",
+          "priority": 20
+        }
+      ],
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": 3600,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "tint": "#ffffff",
+      "transfer": false,
+      "origin": null,
+      "name": "Regenerate",
+      "description": "",
+      "statuses": [],
+      "img": "icons/magic/life/cross-beam-green.webp",
+      "type": "base",
+      "system": {},
+      "_key": "!items.effects!CrRJUlDGltHJnc7c.gMvUlhgIUWdHEJ6r"
+    }
+  ],
+  "folder": "H799nI2ov6BcHwd6",
+  "flags": {
+    "dae": {
+      "activeEquipped": false,
+      "alwaysActive": false,
+      "macro": {
+        "name": "Regenerate",
+        "img": "icons/magic/life/cross-beam-green.webp",
+        "type": "script",
+        "scope": "global",
+        "command": "",
+        "author": "3Yi0HjF4PKCA4vX0",
+        "_id": null,
+        "folder": null,
+        "flags": {}
+      }
+    },
+    "midi-qol": {
+      "onUseMacroName": "",
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "reactionCondition": "",
+      "AoETargetType": "any",
+      "autoTarget": "default"
+    },
+    "core": {},
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic",
+        "material"
+      ]
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p>You touch a creature and stimulate its natural Healing ability. The target regains 4d8 + 15 Hit Points. For the Duration of the spell, the target regains 1 hit point at the start of each of its turns (10 h⁠it points each minute).</p><p>The target's severed body members (fingers, legs, tails, and so on), if any, are restored after 2 minutes. If you have the severed part and hold it to the stump, the spell instantaneously causes the limb to knit to the stump.</p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Elkan 5e",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "minute",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "1",
+      "units": "hour"
+    },
+    "target": {
+      "affects": {
+        "type": "creature",
+        "count": "1",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "units": "",
+        "contiguous": false,
+        "type": ""
+      }
+    },
+    "range": {
+      "units": "touch",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 7,
+    "school": "trs",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material"
+    ],
+    "activities": {
+      "CG39k7s3MLbLH05T": {
+        "type": "heal",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "gMvUlhgIUWdHEJ6r"
+          }
+        ],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "healing": {
+          "number": 4,
+          "denomination": "8",
+          "bonus": "15",
+          "types": [
+            "healing"
+          ],
+          "custom": {
+            "enabled": false,
+            "formula": ""
+          },
+          "scaling": {
+            "mode": "",
+            "number": null,
+            "formula": ""
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "_id": "CG39k7s3MLbLH05T",
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "gMvUlhgIUWdHEJ6r"
+        ]
+      }
+    },
+    "identifier": "regenerate"
+  },
+  "_id": "CrRJUlDGltHJnc7c",
+  "_key": "!items!CrRJUlDGltHJnc7c",
+  "identifier": "regenerate"
 }

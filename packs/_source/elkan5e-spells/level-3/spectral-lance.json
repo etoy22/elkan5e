@@ -1,185 +1,186 @@
 {
-	"name": "Spectral Lance",
-	"type": "spell",
-	"img": "icons/magic/light/beam-layered-teal.webp",
-	"system": {
-		"description": {
-			"value": "<p><em>You run your hand through the air in straight line, a lance of translucent force taking shape where your fingers cut the air. You grab the lance and hurl it, and it magically seeks your target, moving through other solid objects or creatures and damaging only the target you designate.</em></p><p>This spell ignores @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.d2hBqe6EYHX2mxKD]{Cover} and can go through objects or creatures harmlessly to reach its target, provided the caster can somehow see the target.</p><p><strong>Dexterity</strong> <strong>Save</strong> </p><p>Incorporeal creatures have disadvantage on this save.</p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d10]] force damage.</p></li><li><p><strong>Success:</strong> No damage.</p></li></ul><p></p><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d10 force]]{1d10} for each spell level above 3rd.</p>",
-			"chat": ""
-		},
-		"source": {
-			"custom": "elkan5e.com/spells/spectral-lance",
-			"revision": 1,
-			"rules": "",
-			"book": "Elkan 5e",
-			"page": "",
-			"license": ""
-		},
-		"activation": {
-			"type": "action",
-			"condition": "",
-			"value": 1
-		},
-		"duration": {
-			"value": "",
-			"units": "inst"
-		},
-		"target": {
-			"affects": {
-				"type": "creature",
-				"count": "1",
-				"choice": false,
-				"special": ""
-			},
-			"template": {
-				"units": "",
-				"contiguous": false,
-				"type": ""
-			}
-		},
-		"range": {
-			"value": "200",
-			"units": "ft",
-			"special": ""
-		},
-		"uses": {
-			"max": "",
-			"recovery": [],
-			"spent": 0
-		},
-		"level": 3,
-		"school": "con",
-		"properties": [
-			"somatic"
-		],
-		"materials": {
-			"value": "",
-			"consumed": false,
-			"cost": 0,
-			"supply": 0
-		},
-		"preparation": {
-			"mode": "prepared",
-			"prepared": true
-		},
-		"activities": {
-			"dnd5eactivity000": {
-				"_id": "dnd5eactivity000",
-				"type": "save",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"max": "",
-					"recovery": []
-				},
-				"damage": {
-					"onSave": "half",
-					"parts": [
-						{
-							"number": 4,
-							"denomination": 10,
-							"bonus": "",
-							"types": [
-								"force"
-							],
-							"custom": {
-								"enabled": false,
-								"formula": ""
-							},
-							"scaling": {
-								"mode": "whole",
-								"number": 1,
-								"formula": ""
-							}
-						}
-					]
-				},
-				"save": {
-					"ability": "dex",
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
-					}
-				}
-			}
-		},
-		"identifier": ""
-	},
-	"effects": [],
-	"folder": "Tf2FNuyyu2gEaYOF",
-	"flags": {
-		"midiProperties": {
-			"confirmTargets": "default",
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"critOther": false,
-			"offHandWeapon": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"noConcentrationCheck": false,
-			"toggleEffect": false,
-			"ignoreTotalCover": true,
-			"idr": false,
-			"idi": false,
-			"idv": false,
-			"ida": false,
-			"saveDamage": "nodam",
-			"bonusSaveDamage": "default"
-		},
-		"midi-qol": {
-			"rollAttackPerTarget": "default",
-			"itemCondition": "",
-			"effectCondition": "",
-			"removeAttackDamageButtons": "default",
-			"reactionCondition": "",
-			"AoETargetType": "any",
-			"AoETargetTypeIncludeSelf": true,
-			"autoTarget": "default",
-			"otherCondition": ""
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			}
-		},
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
-		}
-	},
-	"_id": "izFZhMupYa9gH9c8",
-	"_key": "!items!izFZhMupYa9gH9c8"
+  "name": "Spectral Lance",
+  "type": "spell",
+  "img": "icons/magic/light/beam-layered-teal.webp",
+  "system": {
+    "description": {
+      "value": "<p><em>You run your hand through the air in straight line, a lance of translucent force taking shape where your fingers cut the air. You grab the lance and hurl it, and it magically seeks your target, moving through other solid objects or creatures and damaging only the target you designate.</em></p><p>This spell ignores @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.d2hBqe6EYHX2mxKD]{Cover} and can go through objects or creatures harmlessly to reach its target, provided the caster can somehow see the target.</p><p><strong>Dexterity</strong> <strong>Save</strong> </p><p>Incorporeal creatures have disadvantage on this save.</p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d10]] force damage.</p></li><li><p><strong>Success:</strong> No damage.</p></li></ul><p></p><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d10 force]]{1d10} for each spell level above 3rd.</p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/spectral-lance",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "",
+      "units": "inst"
+    },
+    "target": {
+      "affects": {
+        "type": "creature",
+        "count": "1",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "units": "",
+        "contiguous": false,
+        "type": ""
+      }
+    },
+    "range": {
+      "value": "200",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "level": 3,
+    "school": "con",
+    "properties": [
+      "somatic"
+    ],
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "save",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "damage": {
+          "onSave": "half",
+          "parts": [
+            {
+              "number": 4,
+              "denomination": 10,
+              "bonus": "",
+              "types": [
+                "force"
+              ],
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "scaling": {
+                "mode": "whole",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "save": {
+          "ability": "dex",
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        }
+      }
+    },
+    "identifier": "spectral-lance"
+  },
+  "effects": [],
+  "folder": "Tf2FNuyyu2gEaYOF",
+  "flags": {
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": true,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false,
+      "saveDamage": "nodam",
+      "bonusSaveDamage": "default"
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "_id": "izFZhMupYa9gH9c8",
+  "_key": "!items!izFZhMupYa9gH9c8",
+  "identifier": "spectral-lance"
 }

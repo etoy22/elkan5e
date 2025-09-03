@@ -1,259 +1,260 @@
 {
-	"name": "Planar Binding",
-	"type": "spell",
-	"img": "icons/magic/symbols/star-inverted-yellow.webp",
-	"effects": [
-		{
-			"name": "Planar Binding",
-			"changes": [],
-			"transfer": false,
-			"img": "icons/magic/symbols/star-inverted-yellow.webp",
-			"_id": "Kxkt1vbpyVbCGNZr",
-			"type": "base",
-			"system": {},
-			"disabled": false,
-			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
-			},
-			"description": "",
-			"origin": null,
-			"tint": "#ffffff",
-			"statuses": [],
-			"flags": {},
-			"_key": "!items.effects!qd6husWa910b2sn4.Kxkt1vbpyVbCGNZr"
-		}
-	],
-	"folder": "PnZJTE6T4UQY81Pm",
-	"flags": {
-		"core": {},
-		"midi-qol": {
-			"onUseMacroName": "",
-			"effectActivation": false,
-			"rollAttackPerTarget": "default",
-			"itemCondition": "",
-			"effectCondition": "",
-			"reactionCondition": "",
-			"removeAttackDamageButtons": "default",
-			"otherCondition": ""
-		},
-		"midiProperties": {
-			"nodam": false,
-			"fulldam": false,
-			"halfdam": false,
-			"rollOther": false,
-			"critOther": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"concentration": false,
-			"toggleEffect": false,
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"offHandWeapon": false,
-			"ignoreTotalCover": false,
-			"confirmTargets": "default",
-			"noConcentrationCheck": false,
-			"idr": false,
-			"idi": false,
-			"idv": false,
-			"ida": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedProperties": [
-				"vocal",
-				"somatic",
-				"material"
-			]
-		},
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
-		}
-	},
-	"system": {
-		"description": {
-			"value": "<p><em>With a chanted invective, you bind an outsider to this plane and to your service.</em></p><p><strong>Materials:</strong> You require a @UUID[Compendium.elkan5e.elkan5e-spells.Item.zM1Wi6L5sdFUdRa7]{Planar Focus}, typically valued at 1000 gold. After casting this spell, the Planar Focus is bound to the target creature, and turns to dust when this spell ends.</p><p><strong>Charisma Save</strong></p><p>This spell can only be used on creatures that are not native to your current plane of existence. The target must remain within range for the full casting time or the spell fails.</p><ul><li><p><strong>Failure:</strong> Target is bound to this plane of existence, cannot willingly leave this plane, and is not affected by <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.ynE0kLi6F2AdqnR7]{Banishment}</em>. If the target was summoned or created by another spell, then that summoning spell becomes permanent.</p><p>If the target can be &amp;reference[charmed], they are charmed by you. While charmed in this way, the target must follow your commands, but may twist the meaning of your words to achieve its own objectives. If a creature has no current commands to follow, it is able to act freely.</p></li><li><p><strong>Success:</strong> No effect.</p></li><li><p>The spell ends if you die, the target creature dies, the creature leaves this plane of existence, or the Planar Focus is destroyed or moved to another plane. As normal for permanent spells, this spell cannot be dispelled.</p></li></ul><p></p><p><em>The Planar Focus has an AC of 18, 1 hit point*, and has a damage threshold of 15 (meaning an attack must deal at least 15 damage to damage the focus).</em></p>",
-			"chat": ""
-		},
-		"source": {
-			"custom": "elkan5e.com/spells/planar-binding",
-			"revision": 1,
-			"rules": "",
-			"book": "Elkan 5e",
-			"page": "",
-			"license": ""
-		},
-		"activation": {
-			"type": "minute",
-			"condition": "",
-			"value": 1
-		},
-		"duration": {
-			"value": "24",
-			"units": "perm"
-		},
-		"target": {
-			"affects": {
-				"type": "creature",
-				"count": "1",
-				"choice": false,
-				"special": ""
-			},
-			"template": {
-				"units": "",
-				"contiguous": false,
-				"type": ""
-			}
-		},
-		"range": {
-			"value": "60",
-			"units": "ft",
-			"special": ""
-		},
-		"uses": {
-			"max": "",
-			"recovery": [],
-			"spent": 0
-		},
-		"ability": "",
-		"level": 5,
-		"school": "abj",
-		"materials": {
-			"value": "",
-			"consumed": true,
-			"cost": 1000,
-			"supply": 0
-		},
-		"preparation": {
-			"mode": "prepared",
-			"prepared": true
-		},
-		"properties": [
-			"vocal",
-			"somatic",
-			"material"
-		],
-		"activities": {
-			"dnh2R8hzPyyH9qlT": {
-				"type": "save",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": [
-						{
-							"type": "material",
-							"value": "1",
-							"target": "Compendium.elkan5e.elkan5e-spells.Item.zM1Wi6L5sdFUdRa7",
-							"scaling": {
-								"mode": ""
-							}
-						}
-					]
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"damage": {
-					"parts": [],
-					"onSave": "none",
-					"critical": {
-						"allow": false
-					}
-				},
-				"save": {
-					"ability": [
-						"cha"
-					],
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
-					}
-				},
-				"name": "",
-				"effectConditionText": "!target.traits.ci.value.has('charmed')",
-				"useConditionText": "",
-				"useConditionReason": "",
-				"macroData": {
-					"name": "",
-					"command": ""
-				},
-				"ignoreTraits": {
-					"idi": false,
-					"idr": false,
-					"idv": false,
-					"ida": false
-				},
-				"midiProperties": {
-					"ignoreTraits": [],
-					"triggeredActivityId": "none",
-					"triggeredActivityConditionText": "",
-					"triggeredActivityTargets": "targets",
-					"triggeredActivityRollAs": "self",
-					"forceDialog": false,
-					"confirmTargets": "default",
-					"autoTargetType": "any",
-					"autoTargetAction": "default",
-					"automationOnly": false,
-					"otherActivityCompatible": true,
-					"identifier": "",
-					"displayActivityName": false,
-					"rollMode": "default",
-					"chooseEffects": false,
-					"toggleEffect": false,
-					"ignoreFullCover": false
-				},
-				"isOverTimeFlag": false,
-				"overTimeProperties": {
-					"saveRemoves": true,
-					"preRemoveConditionText": "",
-					"postRemoveConditionText": ""
-				},
-				"otherActivityId": "",
-				"_id": "dnh2R8hzPyyH9qlT",
-				"img": "",
-				"appliedEffects": []
-			}
-		},
-		"identifier": ""
-	},
-	"_id": "qd6husWa910b2sn4",
-	"_key": "!items!qd6husWa910b2sn4"
+  "name": "Planar Binding",
+  "type": "spell",
+  "img": "icons/magic/symbols/star-inverted-yellow.webp",
+  "effects": [
+    {
+      "name": "Planar Binding",
+      "changes": [],
+      "transfer": false,
+      "img": "icons/magic/symbols/star-inverted-yellow.webp",
+      "_id": "Kxkt1vbpyVbCGNZr",
+      "type": "base",
+      "system": {},
+      "disabled": false,
+      "duration": {
+        "startTime": null,
+        "seconds": null,
+        "combat": null,
+        "rounds": null,
+        "turns": null,
+        "startRound": null,
+        "startTurn": null
+      },
+      "description": "",
+      "origin": null,
+      "tint": "#ffffff",
+      "statuses": [],
+      "flags": {},
+      "_key": "!items.effects!qd6husWa910b2sn4.Kxkt1vbpyVbCGNZr"
+    }
+  ],
+  "folder": "PnZJTE6T4UQY81Pm",
+  "flags": {
+    "core": {},
+    "midi-qol": {
+      "onUseMacroName": "",
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "reactionCondition": "",
+      "removeAttackDamageButtons": "default",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic",
+        "material"
+      ]
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>With a chanted invective, you bind an outsider to this plane and to your service.</em></p><p><strong>Materials:</strong> You require a @UUID[Compendium.elkan5e.elkan5e-spells.Item.zM1Wi6L5sdFUdRa7]{Planar Focus}, typically valued at 1000 gold. After casting this spell, the Planar Focus is bound to the target creature, and turns to dust when this spell ends.</p><p><strong>Charisma Save</strong></p><p>This spell can only be used on creatures that are not native to your current plane of existence. The target must remain within range for the full casting time or the spell fails.</p><ul><li><p><strong>Failure:</strong> Target is bound to this plane of existence, cannot willingly leave this plane, and is not affected by <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.ynE0kLi6F2AdqnR7]{Banishment}</em>. If the target was summoned or created by another spell, then that summoning spell becomes permanent.</p><p>If the target can be &amp;reference[charmed], they are charmed by you. While charmed in this way, the target must follow your commands, but may twist the meaning of your words to achieve its own objectives. If a creature has no current commands to follow, it is able to act freely.</p></li><li><p><strong>Success:</strong> No effect.</p></li><li><p>The spell ends if you die, the target creature dies, the creature leaves this plane of existence, or the Planar Focus is destroyed or moved to another plane. As normal for permanent spells, this spell cannot be dispelled.</p></li></ul><p></p><p><em>The Planar Focus has an AC of 18, 1 hit point*, and has a damage threshold of 15 (meaning an attack must deal at least 15 damage to damage the focus).</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/planar-binding",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "minute",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "24",
+      "units": "perm"
+    },
+    "target": {
+      "affects": {
+        "type": "creature",
+        "count": "1",
+        "choice": false,
+        "special": ""
+      },
+      "template": {
+        "units": "",
+        "contiguous": false,
+        "type": ""
+      }
+    },
+    "range": {
+      "value": "60",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 5,
+    "school": "abj",
+    "materials": {
+      "value": "",
+      "consumed": true,
+      "cost": 1000,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material"
+    ],
+    "activities": {
+      "dnh2R8hzPyyH9qlT": {
+        "type": "save",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "material",
+              "value": "1",
+              "target": "Compendium.elkan5e.elkan5e-spells.Item.zM1Wi6L5sdFUdRa7",
+              "scaling": {
+                "mode": ""
+              }
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "parts": [],
+          "onSave": "none",
+          "critical": {
+            "allow": false
+          }
+        },
+        "save": {
+          "ability": [
+            "cha"
+          ],
+          "dc": {
+            "calculation": "spellcasting",
+            "formula": ""
+          }
+        },
+        "name": "",
+        "effectConditionText": "!target.traits.ci.value.has('charmed')",
+        "useConditionText": "",
+        "useConditionReason": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "",
+        "_id": "dnh2R8hzPyyH9qlT",
+        "img": "",
+        "appliedEffects": []
+      }
+    },
+    "identifier": "planar-binding"
+  },
+  "_id": "qd6husWa910b2sn4",
+  "_key": "!items!qd6husWa910b2sn4",
+  "identifier": "planar-binding"
 }

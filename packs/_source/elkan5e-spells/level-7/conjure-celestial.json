@@ -1,201 +1,202 @@
 {
-	"name": "Conjure Celestial",
-	"type": "spell",
-	"img": "icons/magic/holy/angel-winged-humanoid-blue.webp",
-	"effects": [],
-	"folder": "H799nI2ov6BcHwd6",
-	"flags": {
-		"core": {},
-		"midi-qol": {
-			"effectActivation": false,
-			"rollAttackPerTarget": "default",
-			"itemCondition": "",
-			"effectCondition": "",
-			"reactionCondition": "",
-			"removeAttackDamageButtons": "default",
-			"otherCondition": ""
-		},
-		"midiProperties": {
-			"nodam": false,
-			"fulldam": false,
-			"halfdam": false,
-			"rollOther": false,
-			"critOther": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"concentration": false,
-			"toggleEffect": false,
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"offHandWeapon": false,
-			"ignoreTotalCover": false,
-			"confirmTargets": "default",
-			"noConcentrationCheck": false,
-			"idr": false,
-			"idi": false,
-			"idv": false,
-			"ida": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedProperties": [
-				"vocal",
-				"somatic",
-				"concentration"
-			]
-		},
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
-		}
-	},
-	"system": {
-		"description": {
-			"value": "<p>You summon a celestial of challenge rating 4 or lower, which appears in an unoccupied space that you can see within range. The celestial disappears when it drops to 0 hit points or when the spell ends.</p><p>The celestial is friendly to you and your companions for the duration. Roll initiative for the celestial, which has its own turns. It obeys any verbal commands that you issue to it (no action required by you), as long as they don't violate its alignment. If you don't issue any commands to the celestial, it defends itself from hostile creatures but otherwise takes no actions.</p><p></p><p><strong>Upcasting:</strong> Increase the CR of the summoned creature to up to 5 when using a 9th-level spell slot.</p>",
-			"chat": ""
-		},
-		"source": {
-			"custom": "Elkan 5e",
-			"revision": 1,
-			"rules": "",
-			"book": "Elkan 5e",
-			"page": "",
-			"license": ""
-		},
-		"activation": {
-			"type": "minute",
-			"condition": "",
-			"value": 1
-		},
-		"duration": {
-			"value": "1",
-			"units": "hour"
-		},
-		"target": {
-			"affects": {
-				"type": "space",
-				"choice": false,
-				"count": "",
-				"special": ""
-			},
-			"template": {
-				"units": "",
-				"contiguous": false,
-				"type": ""
-			}
-		},
-		"range": {
-			"value": "90",
-			"units": "ft",
-			"special": ""
-		},
-		"uses": {
-			"max": "",
-			"recovery": [],
-			"spent": 0
-		},
-		"ability": "",
-		"level": 7,
-		"school": "con",
-		"materials": {
-			"value": "",
-			"consumed": false,
-			"cost": 0,
-			"supply": 0
-		},
-		"preparation": {
-			"mode": "prepared",
-			"prepared": true
-		},
-		"properties": [
-			"vocal",
-			"somatic",
-			"concentration"
-		],
-		"activities": {
-			"5UfGSuRVdSnadWXR": {
-				"type": "summon",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"bonuses": {
-					"ac": "",
-					"hd": "",
-					"hp": "",
-					"attackDamage": "",
-					"saveDamage": "",
-					"healing": ""
-				},
-				"creatureSizes": [],
-				"creatureTypes": [],
-				"match": {
-					"attacks": false,
-					"proficiency": false,
-					"saves": false
-				},
-				"profiles": [
-					{
-						"count": "1",
-						"cr": "@item.level - 3",
-						"name": "",
-						"_id": "4exNRoIOFTvFrefI",
-						"uuid": "",
-						"level": {
-							"min": null,
-							"max": null
-						},
-						"types": [
-							"celestial"
-						]
-					}
-				],
-				"summon": {
-					"identifier": "",
-					"mode": "cr",
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": []
-				},
-				"effects": [],
-				"_id": "5UfGSuRVdSnadWXR"
-			}
-		},
-		"identifier": ""
-	},
-	"_id": "SzKJAFJ2mZqtLiZ7",
-	"_key": "!items!SzKJAFJ2mZqtLiZ7"
+  "name": "Conjure Celestial",
+  "type": "spell",
+  "img": "icons/magic/holy/angel-winged-humanoid-blue.webp",
+  "effects": [],
+  "folder": "H799nI2ov6BcHwd6",
+  "flags": {
+    "core": {},
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "reactionCondition": "",
+      "removeAttackDamageButtons": "default",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "offHandWeapon": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      },
+      "migratedProperties": [
+        "vocal",
+        "somatic",
+        "concentration"
+      ]
+    },
+    "tidy5e-sheet": {
+      "section": "",
+      "actionSection": ""
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p>You summon a celestial of challenge rating 4 or lower, which appears in an unoccupied space that you can see within range. The celestial disappears when it drops to 0 hit points or when the spell ends.</p><p>The celestial is friendly to you and your companions for the duration. Roll initiative for the celestial, which has its own turns. It obeys any verbal commands that you issue to it (no action required by you), as long as they don't violate its alignment. If you don't issue any commands to the celestial, it defends itself from hostile creatures but otherwise takes no actions.</p><p></p><p><strong>Upcasting:</strong> Increase the CR of the summoned creature to up to 5 when using a 9th-level spell slot.</p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "Elkan 5e",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "minute",
+      "condition": "",
+      "value": 1
+    },
+    "duration": {
+      "value": "1",
+      "units": "hour"
+    },
+    "target": {
+      "affects": {
+        "type": "space",
+        "choice": false,
+        "count": "",
+        "special": ""
+      },
+      "template": {
+        "units": "",
+        "contiguous": false,
+        "type": ""
+      }
+    },
+    "range": {
+      "value": "90",
+      "units": "ft",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 7,
+    "school": "con",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "concentration"
+    ],
+    "activities": {
+      "5UfGSuRVdSnadWXR": {
+        "type": "summon",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "targets": [],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "bonuses": {
+          "ac": "",
+          "hd": "",
+          "hp": "",
+          "attackDamage": "",
+          "saveDamage": "",
+          "healing": ""
+        },
+        "creatureSizes": [],
+        "creatureTypes": [],
+        "match": {
+          "attacks": false,
+          "proficiency": false,
+          "saves": false
+        },
+        "profiles": [
+          {
+            "count": "1",
+            "cr": "@item.level - 3",
+            "name": "",
+            "_id": "4exNRoIOFTvFrefI",
+            "uuid": "",
+            "level": {
+              "min": null,
+              "max": null
+            },
+            "types": [
+              "celestial"
+            ]
+          }
+        ],
+        "summon": {
+          "identifier": "",
+          "mode": "cr",
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": []
+        },
+        "effects": [],
+        "_id": "5UfGSuRVdSnadWXR"
+      }
+    },
+    "identifier": "conjure-celestial"
+  },
+  "_id": "SzKJAFJ2mZqtLiZ7",
+  "_key": "!items!SzKJAFJ2mZqtLiZ7",
+  "identifier": "conjure-celestial"
 }
