@@ -1,4 +1,3 @@
-/* global Hooks, canvas */
 import { gameSettingRegister } from "./module/gameSettings/gameSettingRegister.mjs";
 import { startDialog } from "./module/gameSettings/dialog.mjs";
 import { initWarlockSpellSlot } from "./module/classes/warlock.mjs";
@@ -64,8 +63,8 @@ Hooks.once("init", async () => {
 			ability: "int",
 			fullKey: "engineering",
 			reference: "",
-			icon: ""
-		}
+			icon: "",
+		};
 
 		console.log("Elkan 5e | Done Initializing");
 	} catch (error) {
@@ -73,27 +72,12 @@ Hooks.once("init", async () => {
 	}
 });
 
-
-
-
-
-
-
 Hooks.once("ready", () => {
 	try {
 		conditionsReady();
 		startDialog();
 	} catch (error) {
 		console.error("Elkan 5e | Ready Hook Error:", error);
-	}
-});
-
-// Attack focus hook
-Hooks.on("dnd5e.preRollAttackV2", (item, config) => {
-	try {
-		focus(item, config);
-	} catch (error) {
-		console.error("Elkan 5e | Error in preRollAttackV2 hook:", error);
 	}
 });
 

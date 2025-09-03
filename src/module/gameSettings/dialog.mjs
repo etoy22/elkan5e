@@ -1,5 +1,3 @@
-/* global foundry, game */
-/* eslint-disable no-unused-vars */
 import { processElkanUpdateForm } from "./replaceItems.mjs";
 const DialogV2 = foundry.applications.api.DialogV2;
 
