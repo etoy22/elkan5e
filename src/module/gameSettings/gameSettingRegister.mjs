@@ -1,4 +1,3 @@
-/* global game */
 import { UpdateElkanRunner } from "./UpdateElkanRunner.mjs";
 export async function gameSettingRegister() {
 	game.settings.register("elkan5e", "dialogShown", {
