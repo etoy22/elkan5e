@@ -458,3 +458,71 @@ export function conditionsReady() {
 		if (def.flags) se.flags = mergeFlags(se.flags, def.flags);
 	}
 }
+
+
+export function grapple(workflow) {
+	console.log("Grapple: ", workflow);
+	console.log("Grapple actor: ", workflow.actor);
+	console.log("Grapple target: ", workflow.targets);
+
+	if (workflow.targets.size !== 1) {
+		console.warn("Grapple requires exactly one target");
+		return;
+	}
+
+	const actor = workflow.actor;
+	console.log("Grapple actor size:", actor.system.traits.size);
+	const target = workflow.targets.first();
+	console.log("Grapple target:", target);
+	console.log("Grapple target size:", target.actor.system.traits.size);
+
+
+	const sizeOrder = ["tiny", "sm", "med", "lg", "huge", "grg"];
+
+	let grapplerSize = actor.system.traits.size;
+	let targetSize = target.actor.system.traits.size;
+
+	console.log("Base Grappler Size:", grapplerSize);
+	console.log("Base Target Size:", targetSize);
+	// Check if either has Powerful Build
+	function hasPowerfulBuild (actor) {
+		return actor.items.some(
+			(i) =>
+				i.name?.toLowerCase() === "powerful build" ||
+				i.identity === "powerful-build"
+		);
+	}
+
+	if (hasPowerfulBuild(actor)) {
+		console.log("Actor has Powerful Build");
+		grapplerSize = sizeOrder[Math.min(sizeOrder.indexOf(grapplerSize) + 1, sizeOrder.length - 1)];
+	}
+
+	if (hasPowerfulBuild(target.actor)) {
+		console.log("Target has Powerful Build");
+		targetSize = sizeOrder[Math.min(sizeOrder.indexOf(targetSize) + 1, sizeOrder.length - 1)];
+	}
+
+	console.log("Effective Grappler Size:", grapplerSize);
+	console.log("Effective Target Size:", targetSize);
+	const sizeDifference = sizeOrder.indexOf(grapplerSize)-sizeOrder.indexOf(targetSize);
+	if (sizeDifference === 0) {
+		console.log(`${actor.name} attempts to grapple ${target.name}, both are the same size.`);
+	}
+	if (sizeDifference === 1) {
+		console.log(`${actor.name} attempts to grapple ${target.name}, both are the actor one size larger.`);
+	}
+	if (sizeDifference === 2) {
+		console.log(`${actor.name} attempts to grapple ${target.name}, both are the actor two size larger.`);
+	}
+	if (sizeDifference === -1) {
+		console.log(`${actor.name} attempts to grapple ${target.name}, both are the actor one size smaller.`);
+	}
+	if (sizeDifference === -2) {
+		console.log(`${actor.name} attempts to grapple ${target.name}, both are the actor two size smaller.`);
+	}
+}
+
+export function push(workflow) {
+	console.log("Push: ", workflow)
+}

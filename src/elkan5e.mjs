@@ -17,7 +17,7 @@ import { slicingBlow } from "./module/classes/rogue.mjs";
 import { lifeDrainGraveguard, spectralEmpowerment } from "./module/classes/wizard.mjs";
 
 import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
-import { conditions, conditionsReady } from "./module/rules/condition.mjs";
+import { conditions, conditionsReady, grapple, push } from "./module/rules/condition.mjs";
 import { language } from "./module/rules/language.mjs";
 import { formating } from "./module/rules/format.mjs";
 import { tools } from "./module/rules/tools.mjs";
@@ -190,6 +190,8 @@ globalThis.elkan5e = {
 	macros: {
 		spells: Spells,
 		features: {
+			grapple,
+			push,
 			rage,
 			infusedHealer,
 			healingOverflow,
