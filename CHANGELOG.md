@@ -36,6 +36,7 @@
 
 # Equipment
 - Added Healing Potions
+- Added Mana Potions
 - Increased the cost of Scrolls
 
 ## Feats
