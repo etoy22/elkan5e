@@ -48,6 +48,9 @@
 - Protection from Curses now affects up to 6 creatures
 - Clarified that you know the relative position with Locate Creature
 
+# Misc
+- All Saves now have the ability to simply click on them and roll and GMs now have the ability to request a roll simply from the description
+
 # v1.13.0.5
 
 Fix to auto release
