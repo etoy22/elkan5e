@@ -1,4 +1,3 @@
-/* global game, foundry, ui */
 const { getProperty, setProperty } = foundry.utils;
 
 // Process the form selections from the Elkan update dialog
@@ -121,6 +120,59 @@ function getItemIdentifier(item) {
 	return generated;
 }
 
+// Compare two items and return a list of differing top-level fields (excluding meta fields)
+function getDifferingFields(oldItem, newItem) {
+	const oldObj = oldItem.toObject();
+	const newObj = newItem.toObject();
+	const ignore = ["_stats", "ownership", "id", "_id", "identifier"];
+
+	// Helper to check if path matches fields to ignore
+	function isIgnoredPath(path) {
+		return (
+			/^effects\[\d+\]\.duration\.startTime$/.test(path) ||
+			/^effects\[\d+\]\.flags\.dae\.itemsToDelete$/.test(path) ||
+			/^effects\[\d+\]\.flags\.dae$/.test(path) ||
+			/^flags\.dae$/.test(path)
+		);
+	}
+	const diffs = [];
+
+	function compare(a, b, path = "") {
+		// Skip ignored paths
+		if (isIgnoredPath(path)) return;
+		// If both are objects, recurse
+		if (
+			a &&
+			b &&
+			typeof a === "object" &&
+			typeof b === "object" &&
+			!Array.isArray(a) &&
+			!Array.isArray(b)
+		) {
+			const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
+			for (const key of keys) {
+				if (ignore.includes(key)) continue;
+				compare(a[key], b[key], path ? `${path}.${key}` : key);
+			}
+		} else if (Array.isArray(a) && Array.isArray(b)) {
+			if (a.length !== b.length) {
+				diffs.push(path);
+			} else {
+				for (let i = 0; i < a.length; i++) {
+					compare(a[i], b[i], `${path}[${i}]`);
+				}
+			}
+		} else {
+			if (!deepEqualIgnoringMeta(a, b, path)) {
+				diffs.push(path);
+			}
+		}
+	}
+
+	compare(oldObj, newObj);
+	return diffs;
+}
+
 export async function savePropertiesForTransfer(items, mode, propKeys) {
 	const saved = {};
 	for (let item of items) {
@@ -171,8 +223,6 @@ export async function restorePropertiesToData(newData, savedProps, mode, preserv
 	}
 }
 
-/* global foundry, game, ui */
-
 // ---------- helpers used by migrateActorByType ----------
 
 function getKeyByValue(obj, value) {
@@ -198,15 +248,36 @@ function deepEqualIgnoringMeta(a, b) {
 	if (Array.isArray(a) && Array.isArray(b)) {
 		if (a.length !== b.length) return false;
 		for (let i = 0; i < a.length; i++) {
-			if (!deepEqualIgnoringMeta(a[i], b[i])) return false;
+			if (
+				!deepEqualIgnoringMeta(
+					a[i],
+					b[i],
+					arguments[2] ? `${arguments[2]}[${i}]` : `[${i}]`,
+				)
+			)
+				return false;
 		}
 		return true;
 	}
 
 	// Objects
 	if (typeof a === "object" && typeof b === "object") {
-		const aKeys = Object.keys(a).filter((k) => k !== "_stats" && k !== "ownership");
-		const bKeys = Object.keys(b).filter((k) => k !== "_stats" && k !== "ownership");
+		const aKeys = Object.keys(a).filter(
+			(k) =>
+				k !== "_stats" &&
+				k !== "ownership" &&
+				k !== "id" &&
+				k !== "_id" &&
+				k !== "identifier",
+		);
+		const bKeys = Object.keys(b).filter(
+			(k) =>
+				k !== "_stats" &&
+				k !== "ownership" &&
+				k !== "id" &&
+				k !== "_id" &&
+				k !== "identifier",
+		);
 
 		if (aKeys.length !== bKeys.length) return false;
 		for (const key of aKeys) {
@@ -221,7 +292,10 @@ function deepEqualIgnoringMeta(a, b) {
 }
 
 function itemsAreFullyIdentical(oldItem, newItem) {
-	return deepEqualIgnoringMeta(oldItem.toObject(), newItem.toObject());
+	// If the only difference is the identifier being assigned to the compendium item, treat as identical
+	const oldObj = oldItem.toObject();
+	const newObj = newItem.toObject();
+	return deepEqualIgnoringMeta(oldObj, newObj);
 }
 
 // ---------- main migration ----------
@@ -462,26 +536,72 @@ export async function migrateActorByType({
 
 	progress.done();
 
-	// ---- single consolidated summary ----
-	console.groupCollapsed(`[${progressLabel}] Elkan 5e Migration Summary`);
-	console.info(
-		`Actors processed: ${totals.actors} (characters: ${totals.characters}, npcs: ${totals.npcs})`,
-	);
-	console.info(
-		`Items updated: ${totals.updated} | created: ${totals.created} | skipped: ${totals.skipped}`,
-	);
+	// ---- Calculate totals and partition actors ----
+	const safeArr = (v) => (Array.isArray(v) ? v : []);
+
+	let updatedCount = 0;
+	let createdCount = 0;
+	let skippedCount = 0;
+
+	const changedActors = [];
+	const unchangedActors = [];
 
 	for (const [, rpt] of reportByActor.entries()) {
-		const header = `${rpt.name} [${rpt.type}] — updated: ${rpt.updated.length}, created: ${rpt.created.length}, skipped: ${rpt.skipped.length}`;
-		console.groupCollapsed(header);
+		const updated = safeArr(rpt.updated);
+		const created = safeArr(rpt.created);
+		const skipped = safeArr(rpt.skipped);
 
-		if (rpt.updated.length) {
-			console.groupCollapsed("Updated");
-			rpt.updated.forEach((u) => {
-				console.log(
-					`• ${u.from} → ${u.to}${u.namePreserved ? " (name preserved)" : ""} [id:${u.id}]`,
-				);
-			});
+		updatedCount += updated.length;
+		createdCount += created.length;
+		skippedCount += skipped.length;
+
+		if (updated.length > 0 || created.length > 0) {
+			changedActors.push({ ...rpt, updated, created, skipped });
+		} else {
+			unchangedActors.push({ ...rpt, updated, created, skipped });
+		}
+	}
+
+	// ---- Summary group ----
+	console.groupCollapsed(`[Elkan 5e] ${progressLabel} Migration Summary`);
+	console.log(
+		`Actors processed: ${totals.actors} (characters: ${totals.characters}, npcs: ${totals.npcs})`,
+	);
+	console.log(
+		`Items updated: ${updatedCount} | created: ${createdCount} | skipped: ${skippedCount}`,
+	);
+
+	// ---- Changed actors ----
+	if (changedActors.length) {
+		console.groupCollapsed(`Actors with updates or creations (${changedActors.length})`);
+		for (const rpt of changedActors) {
+			const u = rpt.updated.length;
+			const c = rpt.created.length;
+			const s = rpt.skipped.length;
+
+			console.groupCollapsed(
+				`${rpt.name} [${rpt.type}] | updated: ${u} | created: ${c} | skipped: ${s}`,
+			);
+
+			// Updated
+			console.groupCollapsed(`Updated (${u})`);
+			if (u) {
+				for (const it of rpt.updated) {
+					const label =
+						it.from || it.to
+							? `${it.from ?? it.name ?? "Unknown"} → ${it.to ?? it.name ?? "Unknown"}`
+							: `${it.name ?? "Unknown"}`;
+					const details = [];
+					if (it.why) details.push(it.why);
+					if (Array.isArray(it.differingFields) && it.differingFields.length) {
+						details.push(`fields: ${it.differingFields.join(", ")}`);
+					}
+					const suffix = details.length ? ` — ${details.join(" | ")}` : "";
+					console.log(`${label}${suffix}`);
+				}
+			} else {
+				console.log("None");
+			}
 			console.groupEnd();
 		}
 		if (rpt.created.length) {
@@ -501,6 +621,7 @@ export async function migrateActorByType({
 
 		console.groupEnd();
 	}
+
 	console.groupEnd();
 
 	ui.notifications.info(
@@ -520,7 +641,7 @@ export async function migrateActorSpells(
 		compendiums: [compFeatures, compSpells],
 		types: ["spell"],
 		updateMode,
-		preserveProperties: ["name", "uses", "preparation"],
+		preserveProperties: ["name", "system.uses", "system.preparation", "uses", "preparation"],
 		progressLabel: "Spells",
 	});
 }
@@ -537,7 +658,16 @@ export async function migrateActorItems(
 		compendiums: [compMagic, compEquip],
 		types: ["consumable", "equipment", "loot", "tool", "weapon"],
 		updateMode,
-		preserveProperties: ["name", "quantity", "attunement", "equipped"],
+		preserveProperties: [
+			"name",
+			"system.quantity",
+			"system.attunement",
+			"system.equipped",
+			"quantity",
+			"attunement",
+			"equipped",
+		],
+
 		progressLabel: "Items",
 	});
 }
