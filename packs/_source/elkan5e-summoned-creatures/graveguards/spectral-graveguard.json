@@ -1088,34 +1088,55 @@
 			"effects": [
 				{
 					"name": "Drained",
-					"origin": "Compendium.elkan5e.elkan5e-creatures.Actor.cpIgcOpmk6YiimMw.Item.L4qItZ7kCk7qMc4R",
-					"changes": [
-						{
-							"key": "system.attributes.hp.max",
-							"mode": 2,
-							"value": "-@damage",
-							"priority": 20
-						}
-					],
+					"img": "modules/elkan5e/icons/conditions/drained.svg",
+					"origin": "Compendium.elkan5e.elkan5e-summoned-creatures.Actor.cpIgcOpmk6YiimMw.Item.L4qItZ7kCk7qMc4R",
+					"_id": "rMcHeZ7n9q5yEOhW",
+					"type": "base",
+					"system": {},
+					"changes": [],
+					"disabled": false,
+					"duration": {
+						"startTime": null,
+						"combat": null,
+						"seconds": null,
+						"rounds": null,
+						"turns": null,
+						"startRound": null,
+						"startTurn": null
+					},
+					"description": "",
+					"tint": "#ffffff",
 					"transfer": false,
+					"statuses": [
+						"drained"
+					],
 					"flags": {
+						"dnd5e": {
+							"riders": {
+								"statuses": []
+							}
+						},
 						"dae": {
-							"itemName": "Life Drain",
-							"disableIncapacitated": false,
+							"disableCondition": "",
 							"stackable": "noneName",
 							"showIcon": false,
+							"disableIncapacitated": false,
 							"durationExpression": "",
 							"macroRepeat": "none",
-							"specialDuration": [],
+							"specialDuration": [
+								"longRest"
+							],
 							"enableCondition": "",
-							"disableCondition": "",
 							"selfTarget": false,
 							"selfTargetAlways": false,
 							"dontApply": false
 						},
+						"core": {
+							"overlay": false
+						},
 						"ActiveAuras": {
 							"isAura": false,
-							"aura": "None",
+							"aura": "All",
 							"nameOverride": "",
 							"radius": "",
 							"alignment": "",
@@ -1127,29 +1148,11 @@
 							"displayTemp": false,
 							"hostile": false,
 							"onlyOnce": false,
-							"wallsBlock": "system"
+							"wallsBlock": "system",
+							"statuses": []
 						}
 					},
-					"img": "modules/elkan5e/icons/conditions/drained.svg",
-					"_id": "derUyYkWvF5CSMcI",
-					"type": "base",
-					"system": {},
-					"disabled": false,
-					"duration": {
-						"startTime": null,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
-					},
-					"description": "",
-					"tint": "#ffffff",
-					"statuses": [
-						"drained"
-					],
-					"_key": "!actors.items.effects!cpIgcOpmk6YiimMw.L4qItZ7kCk7qMc4R.derUyYkWvF5CSMcI"
+					"_key": "!actors.items.effects!cpIgcOpmk6YiimMw.L4qItZ7kCk7qMc4R.rMcHeZ7n9q5yEOhW"
 				}
 			],
 			"folder": "45nJjAnFwni76P4o",
@@ -1165,7 +1168,7 @@
 					"autoTarget": "default",
 					"reactionCondition": "",
 					"otherCondition": "",
-					"onUseMacroName": "[postActiveEffects]ActivityMacro-hp53s297TuccW1pr"
+					"onUseMacroName": "[postActiveEffects]ItemMacro"
 				},
 				"midiProperties": {
 					"confirmTargets": "default",
@@ -1194,6 +1197,19 @@
 				"tidy5e-sheet": {
 					"section": "",
 					"actionSection": ""
+				},
+				"dae": {
+					"macro": {
+						"name": "Life Drain",
+						"img": "icons/magic/unholy/strike-hand-glow-pink.webp",
+						"type": "script",
+						"scope": "global",
+						"command": "return await elkan5e.macros.monsterFeatures.lifeDrain(workflow);",
+						"author": "3Yi0HjF4PKCA4vX0",
+						"_id": null,
+						"folder": null,
+						"flags": {}
+					}
 				}
 			},
 			"_id": "L4qItZ7kCk7qMc4R",
