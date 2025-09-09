@@ -1,185 +1,185 @@
 {
-  "name": "Prayer of Healing",
-  "type": "spell",
-  "img": "icons/magic/holy/prayer-hands-glowing-yellow.webp",
-  "effects": [],
-  "folder": "6J3i75lfD1J0xYwA",
-  "flags": {
-    "core": {},
-    "midi-qol": {
-      "effectActivation": false,
-      "removeAttackDamageButtons": "default",
-      "itemCondition": "",
-      "reactionCondition": "",
-      "otherCondition": "",
-      "effectCondition": "",
-      "rollAttackPerTarget": "default"
-    },
-    "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
-      "rollOther": false,
-      "critOther": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "toggleEffect": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "offHandWeapon": false,
-      "ignoreTotalCover": false,
-      "noConcentrationCheck": false,
-      "confirmTargets": "default",
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      },
-      "migratedProperties": [
-        "vocal"
-      ]
-    },
-    "tidy5e-sheet": {
-      "section": "",
-      "actionSection": ""
-    }
-  },
-  "system": {
-    "description": {
-      "value": "<p><em>You offer a prayer for the recovery of your allies, possibly yourself included. Your prayer is about a minute long, and usually includes some standard prayers to a particular faith.</em></p><p><strong>Healing</strong> </p><p>This spell has no effect on &amp;reference[construct]{constructs}.</p><ul><li><p>Targets gain hit points equal to [[/healing 2d8 + @attributes.spellmod]]{2d8 + your spellcasting ability modifier} .*</p></li></ul><p></p><p><strong>*Upcasting:</strong> Increase healing by [[/damage 1d8 healing]]{1d8} for each spell level above 2nd.</p>",
-      "chat": ""
-    },
-    "source": {
-      "custom": "elkan5e.com/spells/prayer-of-healing",
-      "revision": 1,
-      "rules": "",
-      "book": "Elkan 5e",
-      "page": "",
-      "license": ""
-    },
-    "activation": {
-      "type": "minute",
-      "condition": "",
-      "value": 1
-    },
-    "duration": {
-      "value": "",
-      "units": "inst"
-    },
-    "target": {
-      "affects": {
-        "type": "creature",
-        "count": "6",
-        "choice": false,
-        "special": ""
-      },
-      "template": {
-        "units": "",
-        "contiguous": false,
-        "type": ""
-      }
-    },
-    "range": {
-      "value": "30",
-      "units": "ft",
-      "special": ""
-    },
-    "uses": {
-      "max": "",
-      "recovery": [],
-      "spent": 0
-    },
-    "ability": "",
-    "level": 2,
-    "school": "nec",
-    "materials": {
-      "value": "",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
-    },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": true
-    },
-    "properties": [
-      "vocal",
-      "mgc"
-    ],
-    "activities": {
-      "dnd5eactivity000": {
-        "_id": "dnd5eactivity000",
-        "type": "heal",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "type": "creature",
-          "value": 1,
-          "units": "ft",
-          "width": null,
-          "override": false,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "max": "",
-          "recovery": []
-        },
-        "healing": {
-          "number": 2,
-          "denomination": "8",
-          "bonus": "@mod",
-          "types": [
-            "healing"
-          ],
-          "custom": {
-            "enabled": false,
-            "formula": ""
-          },
-          "scaling": {
-            "mode": "whole",
-            "number": 1,
-            "formula": ""
-          }
-        },
-        "name": "",
-        "img": "",
-        "useConditionText": "!target.details.type?.value === \"construct\" or target.details.type?.subtype=== \"Soul Gem\"",
-        "appliedEffects": []
-      }
-    },
-    "identifier": "prayer-of-healing"
-  },
-  "_id": "UoEQtWyLpJr5ZbGd",
-  "_key": "!items!UoEQtWyLpJr5ZbGd",
-  "identifier": "prayer-of-healing"
+	"name": "Prayer of Healing",
+	"type": "spell",
+	"img": "icons/magic/holy/prayer-hands-glowing-yellow.webp",
+	"effects": [],
+	"folder": "6J3i75lfD1J0xYwA",
+	"flags": {
+		"core": {},
+		"midi-qol": {
+			"effectActivation": false,
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default"
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"noConcentrationCheck": false,
+			"confirmTargets": "default",
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>You offer a prayer for the recovery of your allies, possibly yourself included. Your prayer is about a minute long, and usually includes some standard prayers to a particular faith.</em></p><p><strong>Healing</strong> </p><p>This spell has no effect on &amp;reference[construct]{constructs}.</p><ul><li><p>Targets gain hit points equal to [[/healing 2d8 + @attributes.spellmod]]{2d8 + your spellcasting ability modifier} .*</p></li></ul><p></p><p><strong>*Upcasting:</strong> Increase healing by [[/damage 1d8 healing]]{1d8} for each spell level above 2nd.</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/prayer-of-healing",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "minute",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "",
+			"units": "inst"
+		},
+		"target": {
+			"affects": {
+				"type": "creature",
+				"count": "6",
+				"choice": false,
+				"special": ""
+			},
+			"template": {
+				"units": "",
+				"contiguous": false,
+				"type": ""
+			}
+		},
+		"range": {
+			"value": "30",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 2,
+		"school": "nec",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"mgc"
+		],
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "heal",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"healing": {
+					"number": 2,
+					"denomination": "8",
+					"bonus": "@mod",
+					"types": [
+						"healing"
+					],
+					"custom": {
+						"enabled": false,
+						"formula": ""
+					},
+					"scaling": {
+						"mode": "whole",
+						"number": 1,
+						"formula": ""
+					}
+				},
+				"name": "",
+				"img": "",
+				"useConditionText": "!target.details.type?.value === \"construct\" or target.details.type?.subtype=== \"Soul Gem\"",
+				"appliedEffects": []
+			}
+		},
+		"identifier": "prayer-of-healing"
+	},
+	"_id": "UoEQtWyLpJr5ZbGd",
+	"_key": "!items!UoEQtWyLpJr5ZbGd",
+	"identifier": "prayer-of-healing"
 }

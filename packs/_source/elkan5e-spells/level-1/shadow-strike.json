@@ -1,245 +1,245 @@
 {
-  "folder": "U0k4VGG6bziqf3oH",
-  "name": "Shadow Strike",
-  "type": "spell",
-  "img": "icons/weapons/swords/sword-broad-serrated-blue.webp",
-  "system": {
-    "description": {
-      "value": "<p><em>You brandish your weapons or begin casting a spell, only to disappear in a burst of shadows or magical energy. You strike, then immediately teleport to your original position again.</em></p><p><strong>Utility Spell</strong></p><ul><li><p>You teleport up to 30 ft. to an unoccupied space on the ground, use your normal &amp;reference[attack] action from that position (with multiple attacks if applicable), then you teleport to your original position.</p></li><li><p>Your first attack on this turn has advantage.</p></li></ul><p></p><p><em>At your GM's discretion, you might be able to use an action other than attacking if it's quick and doesn't require you to move from the position you teleport to.</em></p>",
-      "chat": ""
-    },
-    "source": {
-      "custom": "elkan5e.com/spells/shadow-strike",
-      "revision": 1,
-      "rules": "",
-      "book": "Elkan 5e",
-      "page": "",
-      "license": ""
-    },
-    "activation": {
-      "type": "action",
-      "condition": "",
-      "value": 1
-    },
-    "duration": {
-      "value": "",
-      "units": "inst"
-    },
-    "target": {
-      "affects": {
-        "special": "",
-        "type": "self",
-        "choice": false
-      },
-      "template": {
-        "type": "",
-        "units": "",
-        "contiguous": false
-      }
-    },
-    "range": {
-      "value": "30",
-      "units": "ft",
-      "special": ""
-    },
-    "uses": {
-      "max": "",
-      "recovery": [],
-      "spent": 0
-    },
-    "level": 1,
-    "school": "con",
-    "materials": {
-      "value": "",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
-    },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": true
-    },
-    "properties": [
-      "somatic",
-      "mgc"
-    ],
-    "activities": {
-      "FpyQs0h6sLnf1EYv": {
-        "type": "utility",
-        "_id": "FpyQs0h6sLnf1EYv",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": true,
-          "targets": []
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [
-          {
-            "_id": "SNRbXUqFvo4lRckV"
-          }
-        ],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "type": "creature",
-          "value": 1,
-          "units": "ft",
-          "width": null,
-          "override": false,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "roll": {
-          "prompt": false,
-          "visible": false,
-          "name": "",
-          "formula": ""
-        },
-        "name": "",
-        "img": "",
-        "appliedEffects": [
-          "SNRbXUqFvo4lRckV"
-        ]
-      }
-    },
-    "identifier": "shadow-strike"
-  },
-  "effects": [
-    {
-      "origin": "Item.51MS8iyzxWRKOGfb",
-      "duration": {
-        "rounds": null,
-        "startTime": null,
-        "seconds": null,
-        "combat": null,
-        "turns": 1,
-        "startRound": null,
-        "startTurn": null
-      },
-      "disabled": false,
-      "_id": "SNRbXUqFvo4lRckV",
-      "changes": [
-        {
-          "key": "flags.midi-qol.advantage.attack.all",
-          "mode": 2,
-          "value": "1",
-          "priority": 50
-        }
-      ],
-      "tint": "#ffffff",
-      "transfer": false,
-      "flags": {
-        "times-up": {},
-        "dae": {
-          "selfTarget": false,
-          "selfTargetAlways": true,
-          "stackable": "none",
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "specialDuration": [
-            "1Attack",
-            "turnStartSource"
-          ],
-          "enableCondition": "",
-          "disableCondition": "",
-          "showIcon": false,
-          "disableIncapacitated": false,
-          "dontApply": false
-        },
-        "core": {
-          "overlay": false
-        },
-        "ActiveAuras": {
-          "isAura": false,
-          "aura": "None",
-          "radius": "undefined",
-          "alignment": "",
-          "type": "",
-          "ignoreSelf": false,
-          "height": false,
-          "hidden": false,
-          "displayTemp": false,
-          "hostile": false,
-          "onlyOnce": false,
-          "nameOverride": "",
-          "customCheck": "",
-          "wallsBlock": "system"
-        }
-      },
-      "name": "Shadow Strike (Advantage)",
-      "description": "",
-      "statuses": [],
-      "img": "icons/weapons/swords/sword-broad-serrated-blue.webp",
-      "type": "base",
-      "system": {},
-      "_key": "!items.effects!SZi4TOafYgqm0A0n.SNRbXUqFvo4lRckV"
-    }
-  ],
-  "flags": {
-    "core": {},
-    "midiProperties": {
-      "confirmTargets": "default",
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "critOther": false,
-      "offHandWeapon": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "noConcentrationCheck": false,
-      "toggleEffect": false,
-      "ignoreTotalCover": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "midi-qol": {
-      "effectActivation": false,
-      "itemCondition": "",
-      "reactionCondition": "",
-      "otherCondition": "",
-      "effectCondition": "",
-      "rollAttackPerTarget": "default",
-      "AoETargetType": "any",
-      "AoETargetTypeIncludeSelf": true,
-      "autoTarget": "default",
-      "removeAttackDamageButtons": "default"
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      },
-      "migratedProperties": [
-        "somatic"
-      ]
-    },
-    "tidy5e-sheet": {
-      "section": "",
-      "actionSection": ""
-    }
-  },
-  "_id": "SZi4TOafYgqm0A0n",
-  "_key": "!items!SZi4TOafYgqm0A0n",
-  "identifier": "shadow-strike"
+	"folder": "U0k4VGG6bziqf3oH",
+	"name": "Shadow Strike",
+	"type": "spell",
+	"img": "icons/weapons/swords/sword-broad-serrated-blue.webp",
+	"system": {
+		"description": {
+			"value": "<p><em>You brandish your weapons or begin casting a spell, only to disappear in a burst of shadows or magical energy. You strike, then immediately teleport to your original position again.</em></p><p><strong>Utility Spell</strong></p><ul><li><p>You teleport up to 30 ft. to an unoccupied space on the ground, use your normal &amp;reference[attack] action from that position (with multiple attacks if applicable), then you teleport to your original position.</p></li><li><p>Your first attack on this turn has advantage.</p></li></ul><p></p><p><em>At your GM's discretion, you might be able to use an action other than attacking if it's quick and doesn't require you to move from the position you teleport to.</em></p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/shadow-strike",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "",
+			"units": "inst"
+		},
+		"target": {
+			"affects": {
+				"special": "",
+				"type": "self",
+				"choice": false
+			},
+			"template": {
+				"type": "",
+				"units": "",
+				"contiguous": false
+			}
+		},
+		"range": {
+			"value": "30",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"level": 1,
+		"school": "con",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"somatic",
+			"mgc"
+		],
+		"activities": {
+			"FpyQs0h6sLnf1EYv": {
+				"type": "utility",
+				"_id": "FpyQs0h6sLnf1EYv",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "SNRbXUqFvo4lRckV"
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"SNRbXUqFvo4lRckV"
+				]
+			}
+		},
+		"identifier": "shadow-strike"
+	},
+	"effects": [
+		{
+			"origin": "Item.51MS8iyzxWRKOGfb",
+			"duration": {
+				"rounds": null,
+				"startTime": null,
+				"seconds": null,
+				"combat": null,
+				"turns": 1,
+				"startRound": null,
+				"startTurn": null
+			},
+			"disabled": false,
+			"_id": "SNRbXUqFvo4lRckV",
+			"changes": [
+				{
+					"key": "flags.midi-qol.advantage.attack.all",
+					"mode": 2,
+					"value": "1",
+					"priority": 50
+				}
+			],
+			"tint": "#ffffff",
+			"transfer": false,
+			"flags": {
+				"times-up": {},
+				"dae": {
+					"selfTarget": false,
+					"selfTargetAlways": true,
+					"stackable": "none",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [
+						"1Attack",
+						"turnStartSource"
+					],
+					"enableCondition": "",
+					"disableCondition": "",
+					"showIcon": false,
+					"disableIncapacitated": false,
+					"dontApply": false
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"radius": "undefined",
+					"alignment": "",
+					"type": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"nameOverride": "",
+					"customCheck": "",
+					"wallsBlock": "system"
+				}
+			},
+			"name": "Shadow Strike (Advantage)",
+			"description": "",
+			"statuses": [],
+			"img": "icons/weapons/swords/sword-broad-serrated-blue.webp",
+			"type": "base",
+			"system": {},
+			"_key": "!items.effects!SZi4TOafYgqm0A0n.SNRbXUqFvo4lRckV"
+		}
+	],
+	"flags": {
+		"core": {},
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"midi-qol": {
+			"effectActivation": false,
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default",
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default",
+			"removeAttackDamageButtons": "default"
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"somatic"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"_id": "SZi4TOafYgqm0A0n",
+	"_key": "!items!SZi4TOafYgqm0A0n",
+	"identifier": "shadow-strike"
 }
