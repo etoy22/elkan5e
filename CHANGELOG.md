@@ -34,6 +34,10 @@
 
 - Added and reworked CR 0 creatures for familiars
 
+# Equipment
+- Added Healing Potions
+- Increased the cost of Scrolls
+
 ## Feats
 
 - Find Familiar has been reworked and now allows you to choose any CR 0 beast
