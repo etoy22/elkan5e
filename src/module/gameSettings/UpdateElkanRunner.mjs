@@ -1,5 +1,3 @@
-/* global FormApplication */
-/* eslint-disable no-unused-vars */
 import { showUpdateDialog } from "./dialog.mjs";
 
 export class UpdateElkanRunner extends FormApplication {
