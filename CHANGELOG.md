@@ -22,7 +22,7 @@
 
 **[Warlock](https://www.elkan5e.com/warlock)**
 
-- Warlock spellcasting has been updated to use Foundry's new system and no longer relies on Active Effects. This may cause lag.
+- Warlock spellcasting has been updated to use Foundry's new system and no longer relies on Active Effects. The previous version may have caused lag.
 - Pact of the Chain is now mostly automated and can be applied by dragging the new class onto your familiar’s sheet
 
 **[Wizard](https://www.elkan5e.com/wizard)**

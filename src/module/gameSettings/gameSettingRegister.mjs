@@ -1,7 +1,5 @@
 import { UpdateElkanRunner } from "./UpdateElkanRunner.mjs";
 export async function gameSettingRegister() {
-
-
 	game.settings.register("elkan5e", "poll", {
 		name: "elkan5e.dialog.name",
 		hint: "elkan5e.dialog.hint",
