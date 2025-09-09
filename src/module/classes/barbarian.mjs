@@ -1,4 +1,3 @@
-/* global game, foundry, ui, fromUuid */
 const DialogV2 = foundry.applications.api.DialogV2;
 
 export async function rage(workflow) {

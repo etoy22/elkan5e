@@ -1,4 +1,3 @@
-/* global Hooks, canvas */
 import { gameSettingRegister } from "./module/gameSettings/gameSettingRegister.mjs";
 import { startDialog } from "./module/gameSettings/dialog.mjs";
 import { initWarlockSpellSlot } from "./module/classes/warlock.mjs";
@@ -24,17 +23,50 @@ import { formating } from "./module/rules/format.mjs";
 import { tools } from "./module/rules/tools.mjs";
 import { weapons } from "./module/rules/weapon.mjs";
 import { scroll } from "./module/rules/scroll.mjs";
-import { skills } from "./module/rules/skills.mjs";
 import {
 	setupCombatReferences,
 	setupDamageReferences,
 	setupSpellcastingReferences,
 	setupCreatureTypeReferences,
-	setupSkillReferences,
 } from "./module/rules/references.mjs";
 
 import * as Spells from "./module/spells.mjs";
 import * as Feats from "./module/feats.mjs";
+import { skills } from "./module/rules/skills.mjs";
+
+
+
+
+//Remove this text when poll is over
+const POLL_URL = "https://docs.google.com/forms/d/e/1FAIpQLSdl_E6udYqbRS_KJ0eLta1mIS54yCWUNiOQUTJwFZ9TR7CcNA/viewform?usp=dialog";
+
+Hooks.once("ready", async () => {
+	await ChatMessage.create({
+		speaker: { alias: "Elkan 5e — Poll"    },
+		content: `
+      <div class="elkan5e-poll-card">
+        <h4>We’d love your input!</h4>
+        <p>We're looking at restructuring our Foundry VTT Compendiums. You can help us by taking this quick poll to offer your opinion.</p>
+        <button type="button" class="elkan5e-poll-btn" data-url="${POLL_URL}">
+          Open Poll
+        </button>
+      </div>
+    `,
+		flags: { elkan5e: { poll: true } } // mark the message so we know it's ours
+	});
+});
+
+// Attach click handler when chat message is rendered
+Hooks.on("renderChatMessage", (message, html) => {
+	if (!message.flags?.elkan5e?.poll) return; // only for our poll message
+
+	html.find(".elkan5e-poll-btn").on("click", ev => {
+		ev.preventDefault();
+		const url = ev.currentTarget.dataset.url || POLL_URL;
+		if (url) window.open(url, "_blank", "noopener");
+	});
+});
+
 
 Hooks.once("init", async () => {
 	try {
@@ -45,14 +77,13 @@ Hooks.once("init", async () => {
 
 		// Initialize rule systems
 		conditions();
-		skills();
 		tools();
 		weapons();
 		armor();
 		language();
 		formating();
 		scroll();
-
+		skills();
 		// Setup references
 		setupCombatReferences();
 		setupDamageReferences();
@@ -64,20 +95,13 @@ Hooks.once("init", async () => {
 			ability: "int",
 			fullKey: "engineering",
 			reference: "",
-			icon: ""
-		}
+			icon: "",
+		};
 
-		console.log("Elkan 5e | Done Initializing");
 	} catch (error) {
-		console.error("Elkan 5e | Initialization Error:", error);
+		console.error("Elkan 5e  |  Initialization Error:", error);
 	}
 });
-
-
-
-
-
-
 
 Hooks.once("ready", () => {
 	try {
@@ -85,15 +109,6 @@ Hooks.once("ready", () => {
 		startDialog();
 	} catch (error) {
 		console.error("Elkan 5e | Ready Hook Error:", error);
-	}
-});
-
-// Attack focus hook
-Hooks.on("dnd5e.preRollAttackV2", (item, config) => {
-	try {
-		focus(item, config);
-	} catch (error) {
-		console.error("Elkan 5e | Error in preRollAttackV2 hook:", error);
 	}
 });
 
