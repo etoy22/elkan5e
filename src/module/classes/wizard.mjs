@@ -1,4 +1,3 @@
-/* global canvas */
 import { drainedEffect } from "../global.mjs";
 
 export async function lifeDrainGraveguard(workflow) {

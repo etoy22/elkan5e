@@ -1,4 +1,3 @@
-/* global Roll, foundry, ChatMessage, fromUuid, game */
 import { deletedEffectRemovesItem, deletedItemRemovesEffect } from "../global.mjs";
 const DialogV2 = foundry.applications.api.DialogV2;
 

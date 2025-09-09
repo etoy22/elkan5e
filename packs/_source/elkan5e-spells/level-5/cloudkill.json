@@ -13,9 +13,9 @@
 			"system": {},
 			"changes": [
 				{
-					"key": "flags.midi-qol.OverTime",
+					"key": "flags.midi-qol.ActivityOverTime",
 					"mode": 2,
-					"value": "turn=end,\nsaveAbility=con,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nname=Cloudkill",
+					"value": "target-enters/ends-turn",
 					"priority": 20
 				}
 			],
@@ -58,7 +58,7 @@
 				},
 				"ActiveAuras": {
 					"isAura": false,
-					"aura": "None",
+					"aura": "Enemy",
 					"nameOverride": "",
 					"radius": "",
 					"alignment": "",
@@ -204,7 +204,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>With a fell incantation, you conjure a drifting cloud of putrid, yellow-green poisonous fog that seeps into creatures through their skin.</em></p><p><strong>Constitution Save</strong></p><p>Creatures are affected even if they hold their breath or don't need to breathe.</p><ul><li><p><strong>Failure</strong>: Targets take [[/damage 5d8 poison]] damage and gain the &amp;reference[poisoned] condition. Targets roll again at end of their turns, ending the poisoned effect on success.</p></li><li><p><strong>Success</strong>: Half damage.</p></li><li><p><strong>Area Hazard</strong>: The area is &amp;reference[obscuredlightly]. Targets roll a save when they enter or when they end their turn in the area (but only once per turn).</p></li><li><p><strong>Concentration: </strong>At the start of each of your turns, you can choose to move the area of effect up to 10 ft in any direction.</p></li></ul><p></p><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d8 poison]]{1d8} for each spell level above 5th.</p><p></p><p><em>A moderate wind (at least 10 miles per hour) can move the cloud 10 ft. per round. A strong wind (at least 20 miles per hour) disperses the cloud and ends the spell.</em></p>",
+			"value": "<p><em>With a fell incantation, you conjure a drifting cloud of putrid, yellow-green poisonous fog that seeps into creatures through their skin.</em></p><p><strong>Constitution Save</strong></p><p>Creatures are affected even if they hold their breath or don't need to breathe.</p><ul><li><p><strong>Failure</strong>: Targets take [[/damage]] damage and gain the &amp;reference[poisoned] condition. Targets roll again at end of their turns, ending the poisoned effect on success.</p></li><li><p><strong>Success</strong>: Half damage.</p></li><li><p><strong>Area Hazard</strong>: The area is &amp;reference[obscuredlightly]. Targets roll a save when they enter or when they end their turn in the area (but only once per turn).</p></li><li><p><strong>Concentration: </strong>At the start of each of your turns, you can choose to move the area of effect up to 10 ft in any direction.</p></li></ul><p></p><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d8 poison]]{1d8} for each spell level above 5th.</p><p></p><p><em>A moderate wind (at least 10 miles per hour) can move the cloud 10 ft. per round. A strong wind (at least 20 miles per hour) disperses the cloud and ends the spell.</em></p>",
 			"chat": ""
 		},
 		"source": {
@@ -351,7 +351,8 @@
 				"appliedEffects": [
 					"IKuTictLfDcVRIpO",
 					"2u9mvanLfZM9xaCQ"
-				]
+				],
+				"otherActivityId": "none"
 			},
 			"hW3AAcNpcKKgS57i": {
 				"type": "save",
@@ -376,16 +377,7 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [
-					{
-						"_id": "IKuTictLfDcVRIpO",
-						"onSave": false
-					},
-					{
-						"_id": "2u9mvanLfZM9xaCQ",
-						"onSave": true
-					}
-				],
+				"effects": [],
 				"range": {
 					"override": false
 				},
@@ -469,19 +461,17 @@
 					"toggleEffect": false,
 					"ignoreFullCover": false
 				},
-				"isOverTimeFlag": false,
+				"isOverTimeFlag": true,
 				"overTimeProperties": {
 					"saveRemoves": true,
-					"preRemoveConditionText": "",
-					"postRemoveConditionText": ""
+					"preRemoveConditionText": "false",
+					"postRemoveConditionText": "false",
+					"turnChoice": "end"
 				},
-				"otherActivityId": "",
+				"otherActivityId": "none",
 				"_id": "hW3AAcNpcKKgS57i",
 				"img": "",
-				"appliedEffects": [
-					"IKuTictLfDcVRIpO",
-					"2u9mvanLfZM9xaCQ"
-				]
+				"appliedEffects": []
 			}
 		},
 		"identifier": ""

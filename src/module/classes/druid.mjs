@@ -1,4 +1,3 @@
-/* global game, ui */
 /**
  * Adds functionality to Archdruid.
  * @param {Actor} actor - The actor instance.

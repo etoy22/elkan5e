@@ -1,4 +1,3 @@
-/* global game, foundry, ui */
 const { getProperty, setProperty } = foundry.utils;
 
 // Process the form selections from the Elkan update dialog
@@ -139,10 +138,17 @@ function getDifferingFields(oldItem, newItem) {
 	const diffs = [];
 
 	function compare(a, b, path = "") {
-	// Skip ignored paths
-	if (isIgnoredPath(path)) return;
+		// Skip ignored paths
+		if (isIgnoredPath(path)) return;
 		// If both are objects, recurse
-		if (a && b && typeof a === "object" && typeof b === "object" && !Array.isArray(a) && !Array.isArray(b)) {
+		if (
+			a &&
+			b &&
+			typeof a === "object" &&
+			typeof b === "object" &&
+			!Array.isArray(a) &&
+			!Array.isArray(b)
+		) {
 			const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
 			for (const key of keys) {
 				if (ignore.includes(key)) continue;
@@ -217,8 +223,6 @@ export async function restorePropertiesToData(newData, savedProps, mode, preserv
 	}
 }
 
-/* global foundry, game, ui */
-
 // ---------- helpers used by migrateActorByType ----------
 
 function getKeyByValue(obj, value) {
@@ -254,15 +258,36 @@ function deepEqualIgnoringMeta(a, b) {
 	if (Array.isArray(a) && Array.isArray(b)) {
 		if (a.length !== b.length) return false;
 		for (let i = 0; i < a.length; i++) {
-			if (!deepEqualIgnoringMeta(a[i], b[i], arguments[2] ? `${arguments[2]}[${i}]` : `[${i}]`)) return false;
+			if (
+				!deepEqualIgnoringMeta(
+					a[i],
+					b[i],
+					arguments[2] ? `${arguments[2]}[${i}]` : `[${i}]`,
+				)
+			)
+				return false;
 		}
 		return true;
 	}
 
 	// Objects
 	if (typeof a === "object" && typeof b === "object") {
-		const aKeys = Object.keys(a).filter((k) => k !== "_stats" && k !== "ownership" && k !== "id" && k !== "_id" && k !== "identifier");
-		const bKeys = Object.keys(b).filter((k) => k !== "_stats" && k !== "ownership" && k !== "id" && k !== "_id" && k !== "identifier");
+		const aKeys = Object.keys(a).filter(
+			(k) =>
+				k !== "_stats" &&
+				k !== "ownership" &&
+				k !== "id" &&
+				k !== "_id" &&
+				k !== "identifier",
+		);
+		const bKeys = Object.keys(b).filter(
+			(k) =>
+				k !== "_stats" &&
+				k !== "ownership" &&
+				k !== "id" &&
+				k !== "_id" &&
+				k !== "identifier",
+		);
 
 		if (aKeys.length !== bKeys.length) return false;
 		for (const key of aKeys) {
@@ -283,7 +308,6 @@ function itemsAreFullyIdentical(oldItem, newItem) {
 	const oldObj = oldItem.toObject();
 	const newObj = newItem.toObject();
 	return deepEqualIgnoringMeta(oldObj, newObj);
-
 }
 
 // ---------- main migration ----------
@@ -542,7 +566,6 @@ export async function migrateActorByType({
 
 	progress.done();
 
-
 	// ---- Calculate totals and partition actors ----
 	const safeArr = (v) => (Array.isArray(v) ? v : []);
 
@@ -571,8 +594,12 @@ export async function migrateActorByType({
 
 	// ---- Summary group ----
 	console.groupCollapsed(`[Elkan 5e] ${progressLabel} Migration Summary`);
-	console.log(`Actors processed: ${totals.actors} (characters: ${totals.characters}, npcs: ${totals.npcs})`);
-	console.log(`Items updated: ${updatedCount} | created: ${createdCount} | skipped: ${skippedCount}`);
+	console.log(
+		`Actors processed: ${totals.actors} (characters: ${totals.characters}, npcs: ${totals.npcs})`,
+	);
+	console.log(
+		`Items updated: ${updatedCount} | created: ${createdCount} | skipped: ${skippedCount}`,
+	);
 
 	// ---- Changed actors ----
 	if (changedActors.length) {
@@ -582,7 +609,9 @@ export async function migrateActorByType({
 			const c = rpt.created.length;
 			const s = rpt.skipped.length;
 
-			console.groupCollapsed(`${rpt.name} [${rpt.type}] | updated: ${u} | created: ${c} | skipped: ${s}`);
+			console.groupCollapsed(
+				`${rpt.name} [${rpt.type}] | updated: ${u} | created: ${c} | skipped: ${s}`,
+			);
 
 			// Updated
 			console.groupCollapsed(`Updated (${u})`);
@@ -643,7 +672,6 @@ export async function migrateActorByType({
 
 	console.groupEnd(); // top summary
 
-
 	ui.notifications.info(
 		`${progressLabel} finished — Actors: ${totals.actors}, Updated: ${totals.updated}, Created: ${totals.created}, Skipped: ${totals.skipped}. See console for details.`,
 	);
@@ -661,7 +689,7 @@ export async function migrateActorSpells(
 		compendiums: [compFeatures, compSpells],
 		types: ["spell"],
 		updateMode,
-		preserveProperties: ["name", "system.uses", "system.preparation","uses","preparation"],
+		preserveProperties: ["name", "system.uses", "system.preparation", "uses", "preparation"],
 		progressLabel: "Spells",
 	});
 }
@@ -678,7 +706,15 @@ export async function migrateActorItems(
 		compendiums: [compMagic, compEquip],
 		types: ["consumable", "equipment", "loot", "tool", "weapon"],
 		updateMode,
-		preserveProperties: ["name", "system.quantity", "system.attunement", "system.equipped","quantity","attunement","equipped"],
+		preserveProperties: [
+			"name",
+			"system.quantity",
+			"system.attunement",
+			"system.equipped",
+			"quantity",
+			"attunement",
+			"equipped",
+		],
 		progressLabel: "Items",
 	});
 }

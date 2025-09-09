@@ -1,4 +1,3 @@
-/* global game, foundry */
 import { deleteEffectRemoveEffect } from "../global.mjs";
 const DialogV2 = foundry.applications.api.DialogV2;
 
