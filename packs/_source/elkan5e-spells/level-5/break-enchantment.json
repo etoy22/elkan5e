@@ -1,239 +1,239 @@
 {
-  "name": "Break Enchantment",
-  "type": "spell",
-  "img": "icons/commodities/gems/gem-rough-round-pink.webp",
-  "effects": [],
-  "folder": "PnZJTE6T4UQY81Pm",
-  "flags": {
-    "core": {},
-    "midi-qol": {
-      "fumbleThreshold": null,
-      "effectActivation": false,
-      "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default",
-      "itemCondition": "",
-      "effectCondition": "",
-      "reactionCondition": "",
-      "otherCondition": ""
-    },
-    "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
-      "rollOther": false,
-      "critOther": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "toggleEffect": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "offHandWeapon": false,
-      "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      },
-      "migratedProperties": [
-        "vocal",
-        "somatic",
-        "material",
-        "concentration"
-      ]
-    },
-    "tidy5e-sheet": {
-      "section": "",
-      "actionSection": ""
-    }
-  },
-  "system": {
-    "description": {
-      "value": "<p><strong>Materials:</strong> You require 0.2 pounds of pure @UUID[Compendium.elkan5e.elkan5e-spells.Item.wV3r0XKYOLYdI0nz]{Diamond Dust}, typically valued at 100 gold. This spell consumes this material.</p><p><strong>Healing Spell</strong></p><p>You remove one of the following from the target:</p><ul><li>All of the following: &amp;reference[charmed], &amp;reference[confused], &amp;reference[frightened], &amp;reference[goaded], &amp;reference[petrified], &amp;reference[silenced], and &amp;reference[siphoned] conditions.</li><li>All curses, including the target's attunement to a &amp;reference[cursed] magic item.</li><li>A creature possessing the target, which appears in a space of its choice within 5 ft. of the target.</li></ul><p></p><p><em>This spell cannot remove a condition caused by a disease or another condition not listed (eg. a version of poisoned that causes creatures to also be confused).</em></p>",
-      "chat": ""
-    },
-    "source": {
-      "custom": "elkan5e.com/spells/break-enchantment",
-      "revision": 1,
-      "rules": "",
-      "book": "Elkan 5e",
-      "page": "",
-      "license": ""
-    },
-    "activation": {
-      "type": "minute",
-      "condition": "",
-      "value": 1
-    },
-    "duration": {
-      "value": "1",
-      "units": "inst"
-    },
-    "target": {
-      "affects": {
-        "type": "creature",
-        "choice": false,
-        "special": "",
-        "count": "1"
-      },
-      "template": {
-        "units": "",
-        "contiguous": false,
-        "type": ""
-      }
-    },
-    "range": {
-      "units": "touch",
-      "special": "",
-      "value": ""
-    },
-    "uses": {
-      "max": "",
-      "recovery": [],
-      "spent": 0
-    },
-    "ability": "",
-    "level": 5,
-    "school": "abj",
-    "materials": {
-      "value": "",
-      "consumed": true,
-      "cost": 100,
-      "supply": 0
-    },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": true
-    },
-    "properties": [
-      "vocal",
-      "somatic",
-      "material"
-    ],
-    "activities": {
-      "vUk9GA2tHkOWyKZL": {
-        "type": "attack",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "type": "creature",
-          "value": 1,
-          "units": "ft",
-          "width": null,
-          "override": false,
-          "prompt": true
-        },
-        "attack": {
-          "ability": "",
-          "bonus": "",
-          "critical": {
-            "threshold": null
-          },
-          "flat": false,
-          "type": {
-            "value": "melee",
-            "classification": "spell"
-          }
-        },
-        "damage": {
-          "critical": {
-            "bonus": ""
-          },
-          "includeBase": true,
-          "parts": []
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": []
-        },
-        "_id": "vUk9GA2tHkOWyKZL"
-      },
-      "Tacbv3XdrOmaXk9i": {
-        "type": "save",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "type": "creature",
-          "value": 1,
-          "units": "ft",
-          "width": null,
-          "override": false,
-          "prompt": true
-        },
-        "damage": {
-          "onSave": "half",
-          "parts": []
-        },
-        "save": {
-          "ability": "cha",
-          "dc": {
-            "calculation": "spellcasting",
-            "formula": ""
-          }
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": []
-        },
-        "_id": "Tacbv3XdrOmaXk9i"
-      }
-    },
-    "identifier": "break-enchantment"
-  },
-  "_id": "piOfkIqVwkpV4Znb",
-  "_key": "!items!piOfkIqVwkpV4Znb",
-  "identifier": "break-enchantment"
+	"name": "Break Enchantment",
+	"type": "spell",
+	"img": "icons/commodities/gems/gem-rough-round-pink.webp",
+	"effects": [],
+	"folder": "PnZJTE6T4UQY81Pm",
+	"flags": {
+		"core": {},
+		"midi-qol": {
+			"fumbleThreshold": null,
+			"effectActivation": false,
+			"rollAttackPerTarget": "default",
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"otherCondition": ""
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"confirmTargets": "default",
+			"noConcentrationCheck": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic",
+				"material",
+				"concentration"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><strong>Materials:</strong> You require 0.2 pounds of pure @UUID[Compendium.elkan5e.elkan5e-spells.Item.wV3r0XKYOLYdI0nz]{Diamond Dust}, typically valued at 100 gold. This spell consumes this material.</p><p><strong>Healing Spell</strong></p><p>You remove one of the following from the target:</p><ul><li>All of the following: &amp;reference[charmed], &amp;reference[confused], &amp;reference[frightened], &amp;reference[goaded], &amp;reference[petrified], &amp;reference[silenced], and &amp;reference[siphoned] conditions.</li><li>All curses, including the target's attunement to a &amp;reference[cursed] magic item.</li><li>A creature possessing the target, which appears in a space of its choice within 5 ft. of the target.</li></ul><p></p><p><em>This spell cannot remove a condition caused by a disease or another condition not listed (eg. a version of poisoned that causes creatures to also be confused).</em></p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/break-enchantment",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "minute",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "1",
+			"units": "inst"
+		},
+		"target": {
+			"affects": {
+				"type": "creature",
+				"choice": false,
+				"special": "",
+				"count": "1"
+			},
+			"template": {
+				"units": "",
+				"contiguous": false,
+				"type": ""
+			}
+		},
+		"range": {
+			"units": "touch",
+			"special": "",
+			"value": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 5,
+		"school": "abj",
+		"materials": {
+			"value": "",
+			"consumed": true,
+			"cost": 100,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"material"
+		],
+		"activities": {
+			"vUk9GA2tHkOWyKZL": {
+				"type": "attack",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"attack": {
+					"ability": "",
+					"bonus": "",
+					"critical": {
+						"threshold": null
+					},
+					"flat": false,
+					"type": {
+						"value": "melee",
+						"classification": "spell"
+					}
+				},
+				"damage": {
+					"critical": {
+						"bonus": ""
+					},
+					"includeBase": true,
+					"parts": []
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": []
+				},
+				"_id": "vUk9GA2tHkOWyKZL"
+			},
+			"Tacbv3XdrOmaXk9i": {
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": []
+				},
+				"save": {
+					"ability": "cha",
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": []
+				},
+				"_id": "Tacbv3XdrOmaXk9i"
+			}
+		},
+		"identifier": "break-enchantment"
+	},
+	"_id": "piOfkIqVwkpV4Znb",
+	"_key": "!items!piOfkIqVwkpV4Znb",
+	"identifier": "break-enchantment"
 }

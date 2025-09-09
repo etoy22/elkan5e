@@ -1,292 +1,292 @@
 {
-  "name": "Well of Corruption",
-  "type": "spell",
-  "img": "icons/magic/unholy/orb-swirling-teal.webp",
-  "system": {
-    "description": {
-      "value": "<p><em>You present a vial of magical shadow which flows outwards and creates a swirling vortex in front of you that corrupts everything it touches.</em></p><p><strong>Materials:</strong> Casting this spell requires a bottled @UUID[Compendium.elkan5e.elkan5e-spells.Item.eUy7hq3K0RdLI4O7]{shadow essence} typically valued at 20 gold. This spell consumes the material.</p><p><strong>Constitution Save</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[drained] for [[/r 4d8]] hit points*. This cannot drain a target below their current hit point total, only draining them up to the amount of damage they've already taken.</p></li><li><p><strong>Success:</strong> Target is drained by half as much.</p></li><li><p><strong>Area Hazard:</strong> The well remains in place. Targets within the well cannot regain hit points, gain temporary hit points, or be raised from the dead (as &amp;reference[undead] or otherwise).</p></li></ul><p></p><p><strong>*Upcasting:</strong> Targets are drained an additional [[/r 2d8]] for each spell level above 2nd level.</p>",
-      "chat": ""
-    },
-    "source": {
-      "custom": "elkan5e.com/spells/well-of-corruption",
-      "revision": 1,
-      "rules": "",
-      "book": "Elkan 5e",
-      "page": "",
-      "license": ""
-    },
-    "activation": {
-      "type": "action",
-      "condition": "",
-      "value": 1
-    },
-    "duration": {
-      "value": "1",
-      "units": "spec",
-      "special": ""
-    },
-    "target": {
-      "affects": {
-        "choice": false,
-        "count": "",
-        "type": ""
-      },
-      "template": {
-        "units": "ft",
-        "type": "circle",
-        "size": "20",
-        "contiguous": false,
-        "count": ""
-      }
-    },
-    "range": {
-      "value": "90",
-      "units": "ft",
-      "special": ""
-    },
-    "uses": {
-      "max": "",
-      "recovery": [],
-      "spent": 0
-    },
-    "ability": "",
-    "level": 2,
-    "school": "nec",
-    "materials": {
-      "value": "",
-      "consumed": false,
-      "cost": 20,
-      "supply": 1
-    },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": true
-    },
-    "properties": [
-      "vocal",
-      "somatic",
-      "material",
-      "concentration"
-    ],
-    "activities": {
-      "dnd5eactivity000": {
-        "_id": "dnd5eactivity000",
-        "type": "save",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "targets": [
-            {
-              "type": "itemUses",
-              "value": "1",
-              "target": "Compendium.elkan5e.elkan5e-spells.Item.eUy7hq3K0RdLI4O7",
-              "scaling": {
-                "mode": ""
-              }
-            }
-          ],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [
-          {
-            "_id": "B87Jb1X0vnCBBTa9",
-            "onSave": false
-          },
-          {
-            "_id": "APojk4ffrGfsIbbZ",
-            "onSave": true
-          }
-        ],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "type": "creature",
-          "value": 1,
-          "units": "ft",
-          "width": null,
-          "override": false,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "max": "",
-          "recovery": []
-        },
-        "damage": {
-          "onSave": "half",
-          "parts": []
-        },
-        "save": {
-          "ability": "con",
-          "dc": {
-            "calculation": "spellcasting",
-            "formula": ""
-          }
-        },
-        "name": "",
-        "img": "",
-        "appliedEffects": [
-          "B87Jb1X0vnCBBTa9",
-          "APojk4ffrGfsIbbZ"
-        ]
-      }
-    },
-    "identifier": "well-of-corruption"
-  },
-  "effects": [
-    {
-      "origin": "Item.L4KMwQX53QUeTQFf",
-      "duration": {
-        "rounds": null,
-        "startTime": null,
-        "seconds": 60,
-        "combat": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
-      },
-      "disabled": false,
-      "_id": "B87Jb1X0vnCBBTa9",
-      "changes": [
-        {
-          "key": "system.traits.di.value",
-          "mode": 0,
-          "value": "healing",
-          "priority": 50
-        }
-      ],
-      "tint": "#ffffff",
-      "transfer": false,
-      "flags": {
-        "times-up": {},
-        "dae": {
-          "selfTarget": false,
-          "selfTargetAlways": false,
-          "stackable": "none",
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "specialDuration": [],
-          "disableIncapacitated": false,
-          "dontApply": false,
-          "showIcon": false,
-          "enableCondition": "",
-          "disableCondition": ""
-        },
-        "core": {
-          "overlay": false
-        },
-        "ActiveAuras": {
-          "isAura": false,
-          "aura": "None",
-          "radius": "undefined",
-          "alignment": "",
-          "type": "",
-          "ignoreSelf": false,
-          "height": false,
-          "hidden": false,
-          "displayTemp": false,
-          "hostile": false,
-          "onlyOnce": false,
-          "nameOverride": "",
-          "customCheck": "",
-          "wallsBlock": "system"
-        }
-      },
-      "name": "Well of Corruption",
-      "description": "",
-      "statuses": [],
-      "img": "icons/magic/unholy/orb-swirling-teal.webp",
-      "type": "base",
-      "system": {},
-      "_key": "!items.effects!cHIuORdoA1WnHfmK.B87Jb1X0vnCBBTa9"
-    }
-  ],
-  "flags": {
-    "midi-qol": {
-      "effectActivation": false,
-      "AoETargetType": "any",
-      "AoETargetTypeIncludeSelf": true,
-      "autoTarget": "default",
-      "removeAttackDamageButtons": "default",
-      "itemCondition": "",
-      "reactionCondition": "",
-      "otherCondition": "",
-      "effectCondition": "",
-      "rollAttackPerTarget": "default",
-      "onUseMacroName": "[postActiveEffects]ItemMacro"
-    },
-    "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "rollOther": false,
-      "critOther": false,
-      "offHandWeapon": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "toggleEffect": false,
-      "ignoreTotalCover": false,
-      "noConcentrationCheck": false,
-      "confirmTargets": "default",
-      "saveDamage": "default",
-      "bonusSaveDamage": "default",
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "core": {},
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      },
-      "migratedProperties": [
-        "vocal",
-        "somatic",
-        "material",
-        "concentration"
-      ]
-    },
-    "tidy5e-sheet": {
-      "section": "",
-      "actionSection": ""
-    },
-    "dae": {
-      "macro": {
-        "name": "Well of Corruption",
-        "img": "icons/magic/unholy/orb-swirling-teal.webp",
-        "type": "script",
-        "scope": "global",
-        "command": "return await elkan5e.macros.spells.wellOfCorruption(workflow);",
-        "author": "vHqSHJMdmEO6Mk2C",
-        "_id": null,
-        "folder": null,
-        "flags": {}
-      }
-    }
-  },
-  "folder": "6J3i75lfD1J0xYwA",
-  "_id": "cHIuORdoA1WnHfmK",
-  "_key": "!items!cHIuORdoA1WnHfmK",
-  "identifier": "well-of-corruption"
+	"name": "Well of Corruption",
+	"type": "spell",
+	"img": "icons/magic/unholy/orb-swirling-teal.webp",
+	"system": {
+		"description": {
+			"value": "<p><em>You present a vial of magical shadow which flows outwards and creates a swirling vortex in front of you that corrupts everything it touches.</em></p><p><strong>Materials:</strong> Casting this spell requires a bottled @UUID[Compendium.elkan5e.elkan5e-spells.Item.eUy7hq3K0RdLI4O7]{shadow essence} typically valued at 20 gold. This spell consumes the material.</p><p><strong>Constitution Save</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[drained] for [[/r 4d8]] hit points*. This cannot drain a target below their current hit point total, only draining them up to the amount of damage they've already taken.</p></li><li><p><strong>Success:</strong> Target is drained by half as much.</p></li><li><p><strong>Area Hazard:</strong> The well remains in place. Targets within the well cannot regain hit points, gain temporary hit points, or be raised from the dead (as &amp;reference[undead] or otherwise).</p></li></ul><p></p><p><strong>*Upcasting:</strong> Targets are drained an additional [[/r 2d8]] for each spell level above 2nd level.</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/well-of-corruption",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "1",
+			"units": "spec",
+			"special": ""
+		},
+		"target": {
+			"affects": {
+				"choice": false,
+				"count": "",
+				"type": ""
+			},
+			"template": {
+				"units": "ft",
+				"type": "circle",
+				"size": "20",
+				"contiguous": false,
+				"count": ""
+			}
+		},
+		"range": {
+			"value": "90",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 2,
+		"school": "nec",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 20,
+			"supply": 1
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"material",
+			"concentration"
+		],
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "Compendium.elkan5e.elkan5e-spells.Item.eUy7hq3K0RdLI4O7",
+							"scaling": {
+								"mode": ""
+							}
+						}
+					],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "B87Jb1X0vnCBBTa9",
+						"onSave": false
+					},
+					{
+						"_id": "APojk4ffrGfsIbbZ",
+						"onSave": true
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": []
+				},
+				"save": {
+					"ability": "con",
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"B87Jb1X0vnCBBTa9",
+					"APojk4ffrGfsIbbZ"
+				]
+			}
+		},
+		"identifier": "well-of-corruption"
+	},
+	"effects": [
+		{
+			"origin": "Item.L4KMwQX53QUeTQFf",
+			"duration": {
+				"rounds": null,
+				"startTime": null,
+				"seconds": 60,
+				"combat": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"disabled": false,
+			"_id": "B87Jb1X0vnCBBTa9",
+			"changes": [
+				{
+					"key": "system.traits.di.value",
+					"mode": 0,
+					"value": "healing",
+					"priority": 50
+				}
+			],
+			"tint": "#ffffff",
+			"transfer": false,
+			"flags": {
+				"times-up": {},
+				"dae": {
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"stackable": "none",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"disableIncapacitated": false,
+					"dontApply": false,
+					"showIcon": false,
+					"enableCondition": "",
+					"disableCondition": ""
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"radius": "undefined",
+					"alignment": "",
+					"type": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"nameOverride": "",
+					"customCheck": "",
+					"wallsBlock": "system"
+				}
+			},
+			"name": "Well of Corruption",
+			"description": "",
+			"statuses": [],
+			"img": "icons/magic/unholy/orb-swirling-teal.webp",
+			"type": "base",
+			"system": {},
+			"_key": "!items.effects!cHIuORdoA1WnHfmK.B87Jb1X0vnCBBTa9"
+		}
+	],
+	"flags": {
+		"midi-qol": {
+			"effectActivation": false,
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default",
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default",
+			"onUseMacroName": "[postActiveEffects]ItemMacro"
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"rollOther": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"noConcentrationCheck": false,
+			"confirmTargets": "default",
+			"saveDamage": "default",
+			"bonusSaveDamage": "default",
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"core": {},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic",
+				"material",
+				"concentration"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		},
+		"dae": {
+			"macro": {
+				"name": "Well of Corruption",
+				"img": "icons/magic/unholy/orb-swirling-teal.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "return await elkan5e.macros.spells.wellOfCorruption(workflow);",
+				"author": "vHqSHJMdmEO6Mk2C",
+				"_id": null,
+				"folder": null,
+				"flags": {}
+			}
+		}
+	},
+	"folder": "6J3i75lfD1J0xYwA",
+	"_id": "cHIuORdoA1WnHfmK",
+	"_key": "!items!cHIuORdoA1WnHfmK",
+	"identifier": "well-of-corruption"
 }

@@ -1,281 +1,281 @@
 {
-  "name": "Slow",
-  "type": "spell",
-  "img": "icons/magic/time/hourglass-brown-orange.webp",
-  "effects": [
-    {
-      "name": "Slow",
-      "origin": "Compendium.elkan5e.elkan5e-spells.Item.HAvT3aakGxIuH4kH",
-      "changes": [],
-      "transfer": false,
-      "flags": {
-        "dae": {
-          "itemName": "Slow",
-          "disableIncapacitated": false,
-          "selfTarget": false,
-          "selfTargetAlways": false,
-          "dontApply": false,
-          "stackable": "noneName",
-          "showIcon": false,
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "specialDuration": [],
-          "enableCondition": "",
-          "disableCondition": ""
-        },
-        "ActiveAuras": {
-          "isAura": false,
-          "aura": "None",
-          "nameOverride": "",
-          "radius": "",
-          "alignment": "",
-          "type": "",
-          "customCheck": "",
-          "ignoreSelf": false,
-          "height": false,
-          "hidden": false,
-          "displayTemp": false,
-          "hostile": false,
-          "onlyOnce": false,
-          "wallsBlock": "system"
-        },
-        "core": {
-          "overlay": false
-        }
-      },
-      "img": "icons/magic/time/hourglass-brown-orange.webp",
-      "_id": "QQszvyLvFF7SBY4D",
-      "type": "base",
-      "system": {},
-      "disabled": false,
-      "duration": {
-        "startTime": null,
-        "seconds": 60,
-        "combat": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
-      },
-      "description": "",
-      "tint": "#ffffff",
-      "statuses": [
-        "slowed"
-      ],
-      "_key": "!items.effects!HAvT3aakGxIuH4kH.QQszvyLvFF7SBY4D"
-    }
-  ],
-  "folder": "Tf2FNuyyu2gEaYOF",
-  "flags": {
-    "dynamiceffects": {
-      "equipActive": true,
-      "alwaysActive": false,
-      "effects": [
-        {
-          "modSpecKey": "macro.execute",
-          "value": "Slow",
-          "mode": "+",
-          "targetSpecific": false,
-          "id": 1,
-          "itemId": "FQy3csyQLdC6oQkD",
-          "active": true,
-          "_targets": [],
-          "label": "Macro Execute"
-        },
-        {
-          "modSpecKey": "data.attributes.ac.value",
-          "value": "-2",
-          "mode": "+",
-          "targetSpecific": false,
-          "id": 2,
-          "itemId": "FQy3csyQLdC6oQkD",
-          "active": true,
-          "_targets": []
-        }
-      ]
-    },
-    "dae": {
-      "activeEquipped": false,
-      "alwaysActive": false
-    },
-    "core": {},
-    "midi-qol": {
-      "effectActivation": false,
-      "AoETargetType": "any",
-      "AoETargetTypeIncludeSelf": true,
-      "autoTarget": "default",
-      "itemCondition": "workflow.targets.size <= 6",
-      "reactionCondition": "",
-      "otherCondition": "",
-      "effectCondition": "",
-      "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default"
-    },
-    "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
-      "rollOther": false,
-      "critOther": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "toggleEffect": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "offHandWeapon": false,
-      "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "otherSaveDamage": "default",
-      "noConcentrationCheck": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      },
-      "migratedProperties": [
-        "vocal",
-        "somatic",
-        "material",
-        "concentration"
-      ]
-    },
-    "tidy5e-sheet": {
-      "section": "",
-      "actionSection": ""
-    }
-  },
-  "system": {
-    "description": {
-      "value": "<p><em>You place a drop of molasses on the back of your hand, and gesture towards an area. Upon speaking a word of power, the molasses begins flowing like water as creatures within the area become sluggish.</em></p><p><strong>Wisdom Save</strong> </p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[slowed]. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 3rd.</p>",
-      "chat": ""
-    },
-    "source": {
-      "custom": "elkan5e.com/spells/slow",
-      "revision": 1,
-      "rules": "",
-      "book": "Elkan 5e",
-      "page": "",
-      "license": ""
-    },
-    "activation": {
-      "type": "action",
-      "condition": "",
-      "value": 1
-    },
-    "duration": {
-      "value": "1",
-      "units": "minute"
-    },
-    "target": {
-      "affects": {
-        "type": "creature",
-        "count": "3",
-        "choice": false,
-        "special": ""
-      },
-      "template": {
-        "units": "",
-        "contiguous": false,
-        "type": ""
-      }
-    },
-    "range": {
-      "value": "60",
-      "units": "ft",
-      "special": ""
-    },
-    "uses": {
-      "max": "",
-      "recovery": [],
-      "spent": 0
-    },
-    "ability": "",
-    "level": 3,
-    "school": "trs",
-    "materials": {
-      "value": "",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
-    },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": true
-    },
-    "properties": [
-      "vocal",
-      "somatic",
-      "material",
-      "concentration"
-    ],
-    "activities": {
-      "m9UfRroqidGRLEvj": {
-        "type": "save",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "type": "creature",
-          "value": 1,
-          "units": "ft",
-          "width": null,
-          "override": false,
-          "prompt": true
-        },
-        "damage": {
-          "onSave": "half",
-          "parts": []
-        },
-        "save": {
-          "ability": "wis",
-          "dc": {
-            "calculation": "spellcasting",
-            "formula": ""
-          }
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "_id": "m9UfRroqidGRLEvj",
-        "name": "",
-        "img": "",
-        "effectConditionText": "!target.traits.ci.value.has('slowed')",
-        "appliedEffects": []
-      }
-    },
-    "identifier": "slow"
-  },
-  "_id": "HAvT3aakGxIuH4kH",
-  "_key": "!items!HAvT3aakGxIuH4kH",
-  "identifier": "slow"
+	"name": "Slow",
+	"type": "spell",
+	"img": "icons/magic/time/hourglass-brown-orange.webp",
+	"effects": [
+		{
+			"name": "Slow",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.HAvT3aakGxIuH4kH",
+			"changes": [],
+			"transfer": false,
+			"flags": {
+				"dae": {
+					"itemName": "Slow",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"enableCondition": "",
+					"disableCondition": ""
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
+				},
+				"core": {
+					"overlay": false
+				}
+			},
+			"img": "icons/magic/time/hourglass-brown-orange.webp",
+			"_id": "QQszvyLvFF7SBY4D",
+			"type": "base",
+			"system": {},
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 60,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [
+				"slowed"
+			],
+			"_key": "!items.effects!HAvT3aakGxIuH4kH.QQszvyLvFF7SBY4D"
+		}
+	],
+	"folder": "Tf2FNuyyu2gEaYOF",
+	"flags": {
+		"dynamiceffects": {
+			"equipActive": true,
+			"alwaysActive": false,
+			"effects": [
+				{
+					"modSpecKey": "macro.execute",
+					"value": "Slow",
+					"mode": "+",
+					"targetSpecific": false,
+					"id": 1,
+					"itemId": "FQy3csyQLdC6oQkD",
+					"active": true,
+					"_targets": [],
+					"label": "Macro Execute"
+				},
+				{
+					"modSpecKey": "data.attributes.ac.value",
+					"value": "-2",
+					"mode": "+",
+					"targetSpecific": false,
+					"id": 2,
+					"itemId": "FQy3csyQLdC6oQkD",
+					"active": true,
+					"_targets": []
+				}
+			]
+		},
+		"dae": {
+			"activeEquipped": false,
+			"alwaysActive": false
+		},
+		"core": {},
+		"midi-qol": {
+			"effectActivation": false,
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default",
+			"itemCondition": "workflow.targets.size <= 6",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default",
+			"removeAttackDamageButtons": "default"
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"confirmTargets": "default",
+			"otherSaveDamage": "default",
+			"noConcentrationCheck": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic",
+				"material",
+				"concentration"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>You place a drop of molasses on the back of your hand, and gesture towards an area. Upon speaking a word of power, the molasses begins flowing like water as creatures within the area become sluggish.</em></p><p><strong>Wisdom Save</strong> </p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[slowed]. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 3rd.</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/slow",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "1",
+			"units": "minute"
+		},
+		"target": {
+			"affects": {
+				"type": "creature",
+				"count": "3",
+				"choice": false,
+				"special": ""
+			},
+			"template": {
+				"units": "",
+				"contiguous": false,
+				"type": ""
+			}
+		},
+		"range": {
+			"value": "60",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 3,
+		"school": "trs",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"material",
+			"concentration"
+		],
+		"activities": {
+			"m9UfRroqidGRLEvj": {
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": []
+				},
+				"save": {
+					"ability": "wis",
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"_id": "m9UfRroqidGRLEvj",
+				"name": "",
+				"img": "",
+				"effectConditionText": "!target.traits.ci.value.has('slowed')",
+				"appliedEffects": []
+			}
+		},
+		"identifier": "slow"
+	},
+	"_id": "HAvT3aakGxIuH4kH",
+	"_key": "!items!HAvT3aakGxIuH4kH",
+	"identifier": "slow"
 }

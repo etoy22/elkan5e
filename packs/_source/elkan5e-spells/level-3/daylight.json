@@ -1,320 +1,320 @@
 {
-  "name": "Daylight",
-  "type": "spell",
-  "img": "icons/magic/light/explosion-star-large-blue-yellow.webp",
-  "effects": [
-    {
-      "name": "Daylight",
-      "img": "icons/magic/light/explosion-star-large-blue-yellow.webp",
-      "origin": "Compendium.elkan5e.elkan5e-spells.Item.jdFMmZrR5TJegYvD",
-      "transfer": false,
-      "_id": "pBWFiLI4mICdzF8D",
-      "type": "base",
-      "system": {},
-      "changes": [
-        {
-          "key": "ATL.light.dim",
-          "mode": 2,
-          "value": "120",
-          "priority": 20
-        },
-        {
-          "key": "ATL.light.bright",
-          "mode": 2,
-          "value": "60",
-          "priority": 20
-        }
-      ],
-      "disabled": false,
-      "duration": {
-        "startTime": null,
-        "seconds": 3600,
-        "combat": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
-      },
-      "description": "",
-      "tint": "#ffffff",
-      "statuses": [],
-      "flags": {
-        "dae": {
-          "enableCondition": "",
-          "disableCondition": "",
-          "disableIncapacitated": false,
-          "selfTarget": false,
-          "selfTargetAlways": false,
-          "dontApply": false,
-          "stackable": "noneName",
-          "showIcon": false,
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "specialDuration": []
-        },
-        "core": {
-          "overlay": false
-        },
-        "ActiveAuras": {
-          "isAura": false,
-          "aura": "None",
-          "nameOverride": "",
-          "radius": "",
-          "alignment": "",
-          "type": "",
-          "customCheck": "",
-          "ignoreSelf": false,
-          "height": false,
-          "hidden": false,
-          "displayTemp": false,
-          "hostile": false,
-          "onlyOnce": false,
-          "wallsBlock": "system"
-        }
-      },
-      "_key": "!items.effects!jdFMmZrR5TJegYvD.pBWFiLI4mICdzF8D"
-    }
-  ],
-  "folder": "Tf2FNuyyu2gEaYOF",
-  "flags": {
-    "midi-qol": {
-      "onUseMacroName": "",
-      "effectActivation": false,
-      "AoETargetType": "any",
-      "AoETargetTypeIncludeSelf": true,
-      "autoTarget": "default",
-      "rollAttackPerTarget": "default",
-      "itemCondition": "",
-      "effectCondition": "",
-      "reactionCondition": "",
-      "removeAttackDamageButtons": "default",
-      "otherCondition": ""
-    },
-    "core": {},
-    "midiProperties": {
-      "nodam": false,
-      "halfdam": false,
-      "fulldam": false,
-      "rollOther": false,
-      "critOther": false,
-      "concentration": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "toggleEffect": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "offHandWeapon": false,
-      "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      },
-      "migratedProperties": [
-        "vocal",
-        "somatic"
-      ]
-    },
-    "tidy5e-sheet": {
-      "section": "",
-      "actionSection": ""
-    }
-  },
-  "system": {
-    "description": {
-      "value": "<p><em>You call upon the sun while raising one arm to the heavens. Light shines forth, briefly appearing as the dim red hues of early dawn before settling into the bright, clean, illuminating light of the noonday sun.</em></p><p><strong>Utility Spell</strong> </p><p>You conjure a @UUID[Compendium.elkan5e.elkan5e-summoned-creatures.Actor.4vbnZUyaAYGKs0aD]{sphere} of sunlight.</p><ul><li><p>The sphere emits &amp;reference[bright light] for 60 ft. and sheds &amp;reference[dim light] for an additional 60 ft beyond that.</p></li><li><p>If you chose a point on an object, you are holding or one that isn't being worn or carried, the light shines from the object and moves with it. Completely covering the affected object with an opaque object, such as a bowl or a helm, blocks the light.</p></li></ul>",
-      "chat": ""
-    },
-    "source": {
-      "custom": "elkan5e.com/spells/daylight",
-      "revision": 1,
-      "rules": "",
-      "book": "Elkan 5e",
-      "page": "",
-      "license": ""
-    },
-    "activation": {
-      "type": "action",
-      "condition": "",
-      "value": 1
-    },
-    "duration": {
-      "value": "1",
-      "units": "hour"
-    },
-    "target": {
-      "affects": {
-        "choice": false,
-        "count": "",
-        "type": ""
-      },
-      "template": {
-        "units": "ft",
-        "type": "sphere",
-        "size": "120",
-        "contiguous": false,
-        "count": ""
-      }
-    },
-    "range": {
-      "value": "60",
-      "units": "ft",
-      "special": ""
-    },
-    "uses": {
-      "max": "",
-      "recovery": [],
-      "spent": 0
-    },
-    "ability": "",
-    "level": 3,
-    "school": "ill",
-    "materials": {
-      "value": "",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
-    },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": true
-    },
-    "properties": [
-      "vocal",
-      "somatic"
-    ],
-    "activities": {
-      "BLz4QOUaCkxmdPpw": {
-        "type": "utility",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": true
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [
-          {
-            "_id": "pBWFiLI4mICdzF8D"
-          }
-        ],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "type": "creature",
-          "value": 1,
-          "units": "ft",
-          "width": null,
-          "override": false,
-          "prompt": true
-        },
-        "roll": {
-          "formula": "",
-          "name": "",
-          "prompt": false,
-          "visible": false
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "_id": "BLz4QOUaCkxmdPpw",
-        "name": "Target (Item on Person)",
-        "img": "",
-        "appliedEffects": [
-          "pBWFiLI4mICdzF8D"
-        ]
-      },
-      "9BJvqb9MCpNgrFup": {
-        "type": "summon",
-        "_id": "9BJvqb9MCpNgrFup",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": true,
-          "targets": []
-        },
-        "description": {},
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "type": "creature",
-          "value": 1,
-          "units": "ft",
-          "width": null,
-          "override": false,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": []
-        },
-        "bonuses": {},
-        "creatureSizes": [],
-        "creatureTypes": [],
-        "match": {
-          "attacks": false,
-          "proficiency": false,
-          "saves": false
-        },
-        "profiles": [
-          {
-            "uuid": "Compendium.elkan5e.elkan5e-summoned-creatures.Actor.4vbnZUyaAYGKs0aD",
-            "_id": "cEHAnIOjEc8nTX7w",
-            "level": {
-              "min": null,
-              "max": null
-            },
-            "types": []
-          }
-        ],
-        "summon": {
-          "prompt": true
-        },
-        "useConditionText": "",
-        "forceDialog": false,
-        "effectConditionText": ""
-      }
-    },
-    "identifier": "daylight"
-  },
-  "_id": "jdFMmZrR5TJegYvD",
-  "_key": "!items!jdFMmZrR5TJegYvD",
-  "identifier": "daylight"
+	"name": "Daylight",
+	"type": "spell",
+	"img": "icons/magic/light/explosion-star-large-blue-yellow.webp",
+	"effects": [
+		{
+			"name": "Daylight",
+			"img": "icons/magic/light/explosion-star-large-blue-yellow.webp",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.jdFMmZrR5TJegYvD",
+			"transfer": false,
+			"_id": "pBWFiLI4mICdzF8D",
+			"type": "base",
+			"system": {},
+			"changes": [
+				{
+					"key": "ATL.light.dim",
+					"mode": 2,
+					"value": "120",
+					"priority": 20
+				},
+				{
+					"key": "ATL.light.bright",
+					"mode": 2,
+					"value": "60",
+					"priority": 20
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 3600,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [],
+			"flags": {
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
+				}
+			},
+			"_key": "!items.effects!jdFMmZrR5TJegYvD.pBWFiLI4mICdzF8D"
+		}
+	],
+	"folder": "Tf2FNuyyu2gEaYOF",
+	"flags": {
+		"midi-qol": {
+			"onUseMacroName": "",
+			"effectActivation": false,
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default",
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"core": {},
+		"midiProperties": {
+			"nodam": false,
+			"halfdam": false,
+			"fulldam": false,
+			"rollOther": false,
+			"critOther": false,
+			"concentration": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"confirmTargets": "default",
+			"noConcentrationCheck": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>You call upon the sun while raising one arm to the heavens. Light shines forth, briefly appearing as the dim red hues of early dawn before settling into the bright, clean, illuminating light of the noonday sun.</em></p><p><strong>Utility Spell</strong> </p><p>You conjure a @UUID[Compendium.elkan5e.elkan5e-summoned-creatures.Actor.4vbnZUyaAYGKs0aD]{sphere} of sunlight.</p><ul><li><p>The sphere emits &amp;reference[bright light] for 60 ft. and sheds &amp;reference[dim light] for an additional 60 ft beyond that.</p></li><li><p>If you chose a point on an object, you are holding or one that isn't being worn or carried, the light shines from the object and moves with it. Completely covering the affected object with an opaque object, such as a bowl or a helm, blocks the light.</p></li></ul>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/daylight",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "1",
+			"units": "hour"
+		},
+		"target": {
+			"affects": {
+				"choice": false,
+				"count": "",
+				"type": ""
+			},
+			"template": {
+				"units": "ft",
+				"type": "sphere",
+				"size": "120",
+				"contiguous": false,
+				"count": ""
+			}
+		},
+		"range": {
+			"value": "60",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 3,
+		"school": "ill",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic"
+		],
+		"activities": {
+			"BLz4QOUaCkxmdPpw": {
+				"type": "utility",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": true
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "pBWFiLI4mICdzF8D"
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"roll": {
+					"formula": "",
+					"name": "",
+					"prompt": false,
+					"visible": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"_id": "BLz4QOUaCkxmdPpw",
+				"name": "Target (Item on Person)",
+				"img": "",
+				"appliedEffects": [
+					"pBWFiLI4mICdzF8D"
+				]
+			},
+			"9BJvqb9MCpNgrFup": {
+				"type": "summon",
+				"_id": "9BJvqb9MCpNgrFup",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": []
+				},
+				"bonuses": {},
+				"creatureSizes": [],
+				"creatureTypes": [],
+				"match": {
+					"attacks": false,
+					"proficiency": false,
+					"saves": false
+				},
+				"profiles": [
+					{
+						"uuid": "Compendium.elkan5e.elkan5e-summoned-creatures.Actor.4vbnZUyaAYGKs0aD",
+						"_id": "cEHAnIOjEc8nTX7w",
+						"level": {
+							"min": null,
+							"max": null
+						},
+						"types": []
+					}
+				],
+				"summon": {
+					"prompt": true
+				},
+				"useConditionText": "",
+				"forceDialog": false,
+				"effectConditionText": ""
+			}
+		},
+		"identifier": "daylight"
+	},
+	"_id": "jdFMmZrR5TJegYvD",
+	"_key": "!items!jdFMmZrR5TJegYvD",
+	"identifier": "daylight"
 }

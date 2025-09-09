@@ -1,187 +1,187 @@
 {
-  "name": "Healing Word",
-  "type": "spell",
-  "img": "icons/magic/life/heart-cross-green.webp",
-  "effects": [],
-  "folder": "U0k4VGG6bziqf3oH",
-  "flags": {
-    "core": {},
-    "midi-qol": {
-      "effectActivation": false,
-      "removeAttackDamageButtons": "default",
-      "itemCondition": "",
-      "reactionCondition": "",
-      "otherCondition": "",
-      "effectCondition": "",
-      "rollAttackPerTarget": "default",
-      "AoETargetType": "any",
-      "AoETargetTypeIncludeSelf": true,
-      "autoTarget": "default"
-    },
-    "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
-      "rollOther": false,
-      "critOther": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "toggleEffect": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "offHandWeapon": false,
-      "ignoreTotalCover": false,
-      "noConcentrationCheck": false,
-      "confirmTargets": "default",
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      },
-      "migratedProperties": [
-        "vocal"
-      ]
-    },
-    "tidy5e-sheet": {
-      "section": "",
-      "actionSection": ""
-    }
-  },
-  "system": {
-    "description": {
-      "value": "<p><em>Calling out a word of power, you invigorate your target's spirit and bolster their life energy.</em></p><p><strong>Healing</strong> </p><p>This spell has no effect on &amp;reference[construct].</p><ul><li><p>Target gains hit points equal to [[/healing 1d6 + @attributes.spellmod]]{1d6 + your spellcasting ability modifier} .</p><p></p></li></ul><p><strong>*Upcasting:</strong> Increase healing by [[/healing 1d6]]{1d6} for each spell level above 1st.</p>",
-      "chat": ""
-    },
-    "source": {
-      "custom": "elkan5e.com/spells/healing-word",
-      "revision": 1,
-      "rules": "",
-      "book": "Elkan 5e",
-      "page": "",
-      "license": ""
-    },
-    "activation": {
-      "type": "bonus",
-      "condition": "",
-      "value": 1
-    },
-    "duration": {
-      "value": "",
-      "units": "inst"
-    },
-    "target": {
-      "affects": {
-        "special": "",
-        "type": "creature",
-        "count": "1",
-        "choice": false
-      },
-      "template": {
-        "type": "",
-        "units": "",
-        "contiguous": false
-      }
-    },
-    "range": {
-      "value": "60",
-      "units": "ft",
-      "special": ""
-    },
-    "uses": {
-      "max": "",
-      "recovery": [],
-      "spent": 0
-    },
-    "ability": "",
-    "level": 1,
-    "school": "nec",
-    "materials": {
-      "value": "",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
-    },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": true
-    },
-    "properties": [
-      "vocal",
-      "mgc"
-    ],
-    "activities": {
-      "zxECUOwP9cQiM1r2": {
-        "type": "heal",
-        "_id": "zxECUOwP9cQiM1r2",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": true,
-          "targets": []
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "type": "creature",
-          "value": 1,
-          "units": "ft",
-          "width": null,
-          "override": false,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "healing": {
-          "number": 1,
-          "denomination": "6",
-          "types": [
-            "healing"
-          ],
-          "custom": {
-            "enabled": false
-          },
-          "scaling": {
-            "number": 1,
-            "mode": "whole",
-            "formula": ""
-          },
-          "bonus": "@mod"
-        },
-        "name": "",
-        "img": "",
-        "appliedEffects": [],
-        "effectConditionText": "",
-        "useConditionText": "target.details.type?.subtype=== \"Soul Gem\" || !target.details.type?.value === \"construct\""
-      }
-    },
-    "identifier": "healing-word"
-  },
-  "_id": "HKiFSQzi9E2rgaLV",
-  "_key": "!items!HKiFSQzi9E2rgaLV",
-  "identifier": "healing-word"
+	"name": "Healing Word",
+	"type": "spell",
+	"img": "icons/magic/life/heart-cross-green.webp",
+	"effects": [],
+	"folder": "U0k4VGG6bziqf3oH",
+	"flags": {
+		"core": {},
+		"midi-qol": {
+			"effectActivation": false,
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default",
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default"
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"noConcentrationCheck": false,
+			"confirmTargets": "default",
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>Calling out a word of power, you invigorate your target's spirit and bolster their life energy.</em></p><p><strong>Healing</strong> </p><p>This spell has no effect on &amp;reference[construct].</p><ul><li><p>Target gains hit points equal to [[/healing 1d6 + @attributes.spellmod]]{1d6 + your spellcasting ability modifier} .</p><p></p></li></ul><p><strong>*Upcasting:</strong> Increase healing by [[/healing 1d6]]{1d6} for each spell level above 1st.</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/healing-word",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "bonus",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "",
+			"units": "inst"
+		},
+		"target": {
+			"affects": {
+				"special": "",
+				"type": "creature",
+				"count": "1",
+				"choice": false
+			},
+			"template": {
+				"type": "",
+				"units": "",
+				"contiguous": false
+			}
+		},
+		"range": {
+			"value": "60",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 1,
+		"school": "nec",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"mgc"
+		],
+		"activities": {
+			"zxECUOwP9cQiM1r2": {
+				"type": "heal",
+				"_id": "zxECUOwP9cQiM1r2",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"healing": {
+					"number": 1,
+					"denomination": "6",
+					"types": [
+						"healing"
+					],
+					"custom": {
+						"enabled": false
+					},
+					"scaling": {
+						"number": 1,
+						"mode": "whole",
+						"formula": ""
+					},
+					"bonus": "@mod"
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": [],
+				"effectConditionText": "",
+				"useConditionText": "target.details.type?.subtype=== \"Soul Gem\" || !target.details.type?.value === \"construct\""
+			}
+		},
+		"identifier": "healing-word"
+	},
+	"_id": "HKiFSQzi9E2rgaLV",
+	"_key": "!items!HKiFSQzi9E2rgaLV",
+	"identifier": "healing-word"
 }

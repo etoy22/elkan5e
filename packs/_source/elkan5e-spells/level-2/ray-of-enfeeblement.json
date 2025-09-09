@@ -1,282 +1,282 @@
 {
-  "name": "Ray of Enfeeblement",
-  "type": "spell",
-  "img": "icons/magic/unholy/projectile-smoke-trail-pink.webp",
-  "effects": [
-    {
-      "name": "Ray of Enfeeblement",
-      "origin": "Compendium.elkan5e.elkan5e-spells.Item.OGR7tJU7gq9xwsiU",
-      "changes": [
-        {
-          "key": "flags.midi-qol.OverTime",
-          "mode": 2,
-          "value": "turn=end,\nsaveAbility=con,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Ray of Enfeeblement",
-          "priority": 20
-        }
-      ],
-      "transfer": false,
-      "flags": {
-        "dae": {
-          "itemName": "Ray of Enfeeblement",
-          "disableIncapacitated": false,
-          "selfTarget": false,
-          "selfTargetAlways": false,
-          "dontApply": false,
-          "stackable": "noneName",
-          "showIcon": false,
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "specialDuration": [],
-          "enableCondition": "",
-          "disableCondition": ""
-        },
-        "ActiveAuras": {
-          "isAura": false,
-          "aura": "None",
-          "nameOverride": "",
-          "radius": "",
-          "alignment": "",
-          "type": "",
-          "customCheck": "",
-          "ignoreSelf": false,
-          "height": false,
-          "hidden": false,
-          "displayTemp": false,
-          "hostile": false,
-          "onlyOnce": false,
-          "wallsBlock": "system",
-          "statuses": []
-        },
-        "core": {
-          "overlay": false
-        },
-        "dnd5e": {
-          "riders": {
-            "statuses": []
-          }
-        }
-      },
-      "img": "icons/magic/unholy/projectile-smoke-trail-pink.webp",
-      "_id": "YT2fdYZvaFwOTsbf",
-      "type": "base",
-      "system": {},
-      "disabled": false,
-      "duration": {
-        "startTime": null,
-        "seconds": null,
-        "combat": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null
-      },
-      "description": "",
-      "tint": "#ffffff",
-      "statuses": [
-        "weakened"
-      ],
-      "_key": "!items.effects!OGR7tJU7gq9xwsiU.YT2fdYZvaFwOTsbf"
-    }
-  ],
-  "folder": "6J3i75lfD1J0xYwA",
-  "flags": {
-    "dae": {
-      "activeEquipped": false,
-      "alwaysActive": false,
-      "macro": {
-        "name": "Ray of Enfeeblement",
-        "img": "icons/magic/unholy/projectile-smoke-trail-pink.webp",
-        "type": "script",
-        "scope": "global",
-        "command": "",
-        "author": "vHqSHJMdmEO6Mk2C",
-        "_id": null,
-        "folder": null,
-        "flags": {}
-      }
-    },
-    "midi-qol": {
-      "onUseMacroName": "",
-      "effectActivation": false,
-      "fumbleThreshold": null,
-      "removeAttackDamageButtons": "default",
-      "itemCondition": "",
-      "reactionCondition": "",
-      "otherCondition": "",
-      "effectCondition": "",
-      "rollAttackPerTarget": "default"
-    },
-    "core": {},
-    "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
-      "rollOther": false,
-      "critOther": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "toggleEffect": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "offHandWeapon": false,
-      "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      },
-      "migratedProperties": [
-        "vocal",
-        "somatic",
-        "concentration"
-      ]
-    },
-    "tidy5e-sheet": {
-      "section": "",
-      "actionSection": ""
-    }
-  },
-  "system": {
-    "description": {
-      "value": "<p><em>Speaking an incantation in a forgotten language, you conjure</em><em>a winding red and black beam of enervating energy, which springs from your finger toward your target.</em></p><p><strong>Constitution Save</strong> </p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[Weakened]. Target rolls again at end of their turns, ending effect on success.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 2nd.</p>",
-      "chat": ""
-    },
-    "source": {
-      "custom": "elkan5e.com/spells/ray-of-enfeeblement",
-      "revision": 1,
-      "rules": "",
-      "book": "Elkan 5e",
-      "page": "",
-      "license": ""
-    },
-    "activation": {
-      "type": "action",
-      "condition": "",
-      "value": 1
-    },
-    "duration": {
-      "value": "1",
-      "units": "minute"
-    },
-    "target": {
-      "affects": {
-        "type": "creature",
-        "count": "1",
-        "choice": false,
-        "special": ""
-      },
-      "template": {
-        "units": "",
-        "contiguous": false,
-        "type": ""
-      }
-    },
-    "range": {
-      "value": "60",
-      "units": "ft",
-      "special": ""
-    },
-    "uses": {
-      "max": "",
-      "recovery": [],
-      "spent": 0
-    },
-    "ability": "",
-    "level": 2,
-    "school": "trs",
-    "materials": {
-      "value": "",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
-    },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": true
-    },
-    "properties": [
-      "vocal",
-      "somatic",
-      "concentration",
-      "mgc"
-    ],
-    "activities": {
-      "dnd5eactivity000": {
-        "_id": "dnd5eactivity000",
-        "type": "save",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [
-          {
-            "_id": "YT2fdYZvaFwOTsbf",
-            "onSave": false
-          }
-        ],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "type": "creature",
-          "value": 1,
-          "units": "ft",
-          "width": null,
-          "override": false,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "max": "",
-          "recovery": []
-        },
-        "damage": {
-          "onSave": "none",
-          "parts": []
-        },
-        "save": {
-          "ability": "con",
-          "dc": {
-            "calculation": "spellcasting",
-            "formula": ""
-          }
-        },
-        "name": "",
-        "img": "",
-        "appliedEffects": [
-          "YT2fdYZvaFwOTsbf"
-        ],
-        "effectConditionText": ""
-      }
-    },
-    "identifier": "ray-of-enfeeblement"
-  },
-  "_id": "OGR7tJU7gq9xwsiU",
-  "_key": "!items!OGR7tJU7gq9xwsiU",
-  "identifier": "ray-of-enfeeblement"
+	"name": "Ray of Enfeeblement",
+	"type": "spell",
+	"img": "icons/magic/unholy/projectile-smoke-trail-pink.webp",
+	"effects": [
+		{
+			"name": "Ray of Enfeeblement",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.OGR7tJU7gq9xwsiU",
+			"changes": [
+				{
+					"key": "flags.midi-qol.OverTime",
+					"mode": 2,
+					"value": "turn=end,\nsaveAbility=con,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Ray of Enfeeblement",
+					"priority": 20
+				}
+			],
+			"transfer": false,
+			"flags": {
+				"dae": {
+					"itemName": "Ray of Enfeeblement",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"enableCondition": "",
+					"disableCondition": ""
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				},
+				"core": {
+					"overlay": false
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				}
+			},
+			"img": "icons/magic/unholy/projectile-smoke-trail-pink.webp",
+			"_id": "YT2fdYZvaFwOTsbf",
+			"type": "base",
+			"system": {},
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": null,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [
+				"weakened"
+			],
+			"_key": "!items.effects!OGR7tJU7gq9xwsiU.YT2fdYZvaFwOTsbf"
+		}
+	],
+	"folder": "6J3i75lfD1J0xYwA",
+	"flags": {
+		"dae": {
+			"activeEquipped": false,
+			"alwaysActive": false,
+			"macro": {
+				"name": "Ray of Enfeeblement",
+				"img": "icons/magic/unholy/projectile-smoke-trail-pink.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "",
+				"author": "vHqSHJMdmEO6Mk2C",
+				"_id": null,
+				"folder": null,
+				"flags": {}
+			}
+		},
+		"midi-qol": {
+			"onUseMacroName": "",
+			"effectActivation": false,
+			"fumbleThreshold": null,
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default"
+		},
+		"core": {},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"confirmTargets": "default",
+			"noConcentrationCheck": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic",
+				"concentration"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>Speaking an incantation in a forgotten language, you conjure</em><em>a winding red and black beam of enervating energy, which springs from your finger toward your target.</em></p><p><strong>Constitution Save</strong> </p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[Weakened]. Target rolls again at end of their turns, ending effect on success.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 2nd.</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/ray-of-enfeeblement",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "1",
+			"units": "minute"
+		},
+		"target": {
+			"affects": {
+				"type": "creature",
+				"count": "1",
+				"choice": false,
+				"special": ""
+			},
+			"template": {
+				"units": "",
+				"contiguous": false,
+				"type": ""
+			}
+		},
+		"range": {
+			"value": "60",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 2,
+		"school": "trs",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"concentration",
+			"mgc"
+		],
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "YT2fdYZvaFwOTsbf",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"onSave": "none",
+					"parts": []
+				},
+				"save": {
+					"ability": "con",
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"YT2fdYZvaFwOTsbf"
+				],
+				"effectConditionText": ""
+			}
+		},
+		"identifier": "ray-of-enfeeblement"
+	},
+	"_id": "OGR7tJU7gq9xwsiU",
+	"_key": "!items!OGR7tJU7gq9xwsiU",
+	"identifier": "ray-of-enfeeblement"
 }

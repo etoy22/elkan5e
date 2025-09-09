@@ -1,336 +1,336 @@
 {
-  "name": "Confusion",
-  "type": "spell",
-  "img": "icons/magic/air/wind-tornado-cyclone-purple-pink.webp",
-  "effects": [
-    {
-      "statuses": [
-        "confused"
-      ],
-      "name": "Confusion",
-      "changes": [
-        {
-          "key": "flags.midi-qol.OverTime",
-          "mode": 2,
-          "value": "turn=end, label=Confused Save, saveAbility=wis, saveDC=@attributes.spell.dc,\nlabel=Confusion Save",
-          "priority": 20
-        }
-      ],
-      "description": "",
-      "duration": {
-        "seconds": 60,
-        "startTime": null,
-        "rounds": null,
-        "turns": null,
-        "startRound": null,
-        "startTurn": null,
-        "combat": null
-      },
-      "flags": {
-        "ActiveAuras": {
-          "isAura": false,
-          "aura": "None",
-          "nameOverride": "",
-          "radius": "",
-          "alignment": "",
-          "type": "",
-          "customCheck": "",
-          "ignoreSelf": false,
-          "height": false,
-          "hidden": false,
-          "displayTemp": false,
-          "hostile": false,
-          "onlyOnce": false,
-          "wallsBlock": "system"
-        },
-        "core": {
-          "overlay": false
-        },
-        "condition-lab-triggler": {
-          "conditionId": "FwBRO5jcEXdGQTf8"
-        },
-        "times-up": {},
-        "dae": {
-          "disableIncapacitated": false,
-          "selfTarget": false,
-          "selfTargetAlways": false,
-          "dontApply": false,
-          "stackable": "noneName",
-          "showIcon": false,
-          "durationExpression": "",
-          "macroRepeat": "none",
-          "specialDuration": [],
-          "enableCondition": "",
-          "disableCondition": ""
-        }
-      },
-      "_id": "DyN0npqi5Se0CpOm",
-      "disabled": false,
-      "origin": null,
-      "transfer": false,
-      "tint": "#ffffff",
-      "img": "icons/magic/air/wind-tornado-cyclone-purple-pink.webp",
-      "type": "base",
-      "system": {},
-      "_key": "!items.effects!qiyNsnKPpmPRjvtv.DyN0npqi5Se0CpOm"
-    }
-  ],
-  "folder": "90eJtrVwLFIxcWJw",
-  "flags": {
-    "dae": {
-      "activeEquipped": false,
-      "alwaysActive": false,
-      "macro": {
-        "name": "Confusion",
-        "img": "icons/magic/air/wind-tornado-cyclone-purple-pink.webp",
-        "type": "script",
-        "scope": "global",
-        "command": "",
-        "author": "3Yi0HjF4PKCA4vX0",
-        "_id": null,
-        "folder": null,
-        "flags": {}
-      }
-    },
-    "core": {},
-    "midi-qol": {
-      "onUseMacroName": "",
-      "effectActivation": false,
-      "AoETargetType": "any",
-      "AoETargetTypeIncludeSelf": true,
-      "autoTarget": "default",
-      "itemCondition": "",
-      "reactionCondition": "",
-      "otherCondition": "",
-      "effectCondition": "",
-      "rollAttackPerTarget": "default",
-      "removeAttackDamageButtons": "default"
-    },
-    "midiProperties": {
-      "nodam": false,
-      "fulldam": false,
-      "halfdam": false,
-      "rollOther": false,
-      "critOther": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "concentration": false,
-      "toggleEffect": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "offHandWeapon": false,
-      "ignoreTotalCover": false,
-      "confirmTargets": "default",
-      "noConcentrationCheck": false,
-      "otherSaveDamage": "default",
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    },
-    "dnd5e": {
-      "riders": {
-        "activity": [],
-        "effect": []
-      },
-      "migratedProperties": [
-        "vocal",
-        "somatic",
-        "material",
-        "concentration"
-      ]
-    },
-    "tidy5e-sheet": {
-      "section": "",
-      "actionSection": ""
-    }
-  },
-  "system": {
-    "description": {
-      "value": "<p><em>You tap three walnut shells, which start vibrating for the duration of the spell. With a short incantation, this spell assails and distorts the minds of creatures, generating illusions and causing them to act uncontrollably.</em></p><p><strong>Wisdom Save</strong> </p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[confused]. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><strong>Upcasting:</strong> The radius of the spell increases by 5 ft. for each spell level above 4th level.</p>",
-      "chat": ""
-    },
-    "source": {
-      "custom": "elkan5e.com/spells/confusion",
-      "revision": 1,
-      "rules": "",
-      "book": "Elkan 5e",
-      "page": "",
-      "license": ""
-    },
-    "activation": {
-      "type": "action",
-      "condition": "",
-      "value": 1
-    },
-    "duration": {
-      "value": "1",
-      "units": "minute"
-    },
-    "target": {
-      "affects": {
-        "choice": false,
-        "count": "",
-        "type": ""
-      },
-      "template": {
-        "units": "ft",
-        "type": "sphere",
-        "size": "10",
-        "contiguous": false,
-        "count": ""
-      }
-    },
-    "range": {
-      "value": "90",
-      "units": "ft",
-      "special": ""
-    },
-    "uses": {
-      "max": "",
-      "recovery": [],
-      "spent": 0
-    },
-    "ability": "",
-    "level": 4,
-    "school": "enc",
-    "materials": {
-      "value": "",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
-    },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": true
-    },
-    "properties": [
-      "vocal",
-      "somatic",
-      "material",
-      "concentration",
-      "mgc"
-    ],
-    "activities": {
-      "UQR6lMyctQn2K0bV": {
-        "type": "save",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [
-          {
-            "_id": "DyN0npqi5Se0CpOm",
-            "onSave": false
-          }
-        ],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "type": "creature",
-          "value": 1,
-          "units": "ft",
-          "width": null,
-          "override": false,
-          "prompt": true
-        },
-        "damage": {
-          "onSave": "none",
-          "parts": []
-        },
-        "save": {
-          "ability": "wis",
-          "dc": {
-            "calculation": "spellcasting",
-            "formula": ""
-          }
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "_id": "UQR6lMyctQn2K0bV",
-        "name": "",
-        "img": "",
-        "appliedEffects": [
-          "DyN0npqi5Se0CpOm"
-        ],
-        "effectConditionText": "!target.traits.ci.value.has('confusion')"
-      },
-      "yORFKlZi0yNX5XHF": {
-        "type": "utility",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": true
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "type": "creature",
-          "value": 1,
-          "units": "ft",
-          "width": null,
-          "override": false,
-          "prompt": true
-        },
-        "roll": {
-          "formula": "1d10",
-          "name": "Confusion Roll",
-          "prompt": false,
-          "visible": false
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "_id": "yORFKlZi0yNX5XHF",
-        "name": "Confusion Roll",
-        "img": "",
-        "appliedEffects": []
-      }
-    },
-    "identifier": "confusion"
-  },
-  "_id": "qiyNsnKPpmPRjvtv",
-  "_key": "!items!qiyNsnKPpmPRjvtv",
-  "identifier": "confusion"
+	"name": "Confusion",
+	"type": "spell",
+	"img": "icons/magic/air/wind-tornado-cyclone-purple-pink.webp",
+	"effects": [
+		{
+			"statuses": [
+				"confused"
+			],
+			"name": "Confusion",
+			"changes": [
+				{
+					"key": "flags.midi-qol.OverTime",
+					"mode": 2,
+					"value": "turn=end, label=Confused Save, saveAbility=wis, saveDC=@attributes.spell.dc,\nlabel=Confusion Save",
+					"priority": 20
+				}
+			],
+			"description": "",
+			"duration": {
+				"seconds": 60,
+				"startTime": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null,
+				"combat": null
+			},
+			"flags": {
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
+				},
+				"core": {
+					"overlay": false
+				},
+				"condition-lab-triggler": {
+					"conditionId": "FwBRO5jcEXdGQTf8"
+				},
+				"times-up": {},
+				"dae": {
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"enableCondition": "",
+					"disableCondition": ""
+				}
+			},
+			"_id": "DyN0npqi5Se0CpOm",
+			"disabled": false,
+			"origin": null,
+			"transfer": false,
+			"tint": "#ffffff",
+			"img": "icons/magic/air/wind-tornado-cyclone-purple-pink.webp",
+			"type": "base",
+			"system": {},
+			"_key": "!items.effects!qiyNsnKPpmPRjvtv.DyN0npqi5Se0CpOm"
+		}
+	],
+	"folder": "90eJtrVwLFIxcWJw",
+	"flags": {
+		"dae": {
+			"activeEquipped": false,
+			"alwaysActive": false,
+			"macro": {
+				"name": "Confusion",
+				"img": "icons/magic/air/wind-tornado-cyclone-purple-pink.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "",
+				"author": "3Yi0HjF4PKCA4vX0",
+				"_id": null,
+				"folder": null,
+				"flags": {}
+			}
+		},
+		"core": {},
+		"midi-qol": {
+			"onUseMacroName": "",
+			"effectActivation": false,
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default",
+			"removeAttackDamageButtons": "default"
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"confirmTargets": "default",
+			"noConcentrationCheck": false,
+			"otherSaveDamage": "default",
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic",
+				"material",
+				"concentration"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>You tap three walnut shells, which start vibrating for the duration of the spell. With a short incantation, this spell assails and distorts the minds of creatures, generating illusions and causing them to act uncontrollably.</em></p><p><strong>Wisdom Save</strong> </p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[confused]. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><strong>Upcasting:</strong> The radius of the spell increases by 5 ft. for each spell level above 4th level.</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/confusion",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "1",
+			"units": "minute"
+		},
+		"target": {
+			"affects": {
+				"choice": false,
+				"count": "",
+				"type": ""
+			},
+			"template": {
+				"units": "ft",
+				"type": "sphere",
+				"size": "10",
+				"contiguous": false,
+				"count": ""
+			}
+		},
+		"range": {
+			"value": "90",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 4,
+		"school": "enc",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"material",
+			"concentration",
+			"mgc"
+		],
+		"activities": {
+			"UQR6lMyctQn2K0bV": {
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "DyN0npqi5Se0CpOm",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"damage": {
+					"onSave": "none",
+					"parts": []
+				},
+				"save": {
+					"ability": "wis",
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"_id": "UQR6lMyctQn2K0bV",
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"DyN0npqi5Se0CpOm"
+				],
+				"effectConditionText": "!target.traits.ci.value.has('confusion')"
+			},
+			"yORFKlZi0yNX5XHF": {
+				"type": "utility",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"roll": {
+					"formula": "1d10",
+					"name": "Confusion Roll",
+					"prompt": false,
+					"visible": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"_id": "yORFKlZi0yNX5XHF",
+				"name": "Confusion Roll",
+				"img": "",
+				"appliedEffects": []
+			}
+		},
+		"identifier": "confusion"
+	},
+	"_id": "qiyNsnKPpmPRjvtv",
+	"_key": "!items!qiyNsnKPpmPRjvtv",
+	"identifier": "confusion"
 }
