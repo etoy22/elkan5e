@@ -161,7 +161,7 @@ export async function startDialog() {
 		await game.settings.set("elkan5e", "dialogShown", entryDialog);
 
 		if (
-			(saved_version[1] < 13 && MODULE_VERSION.split(".")[1] >= 13) ||
+			(saved_version[0] < 13 && MODULE_VERSION.split(".")[0] >= 13) ||
 			game.settings.get("elkan5e", "v13Show")
 		) {
 			showV13UpdateDialog();
@@ -169,7 +169,7 @@ export async function startDialog() {
 		await game.settings.set("elkan5e", "moduleVersion", MODULE_VERSION);
 	} else {
 		if (
-			(saved_version[1] < 13 && MODULE_VERSION.split(".")[0] >= 13) ||
+			(saved_version[0] < 13 && MODULE_VERSION.split(".")[0] >= 13) ||
 			game.settings.get("elkan5e", "v13Show")
 		) {
 			showV13UpdateDialog();
