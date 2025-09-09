@@ -333,7 +333,7 @@ export function conditions() {
 		if (!(CONFIG.DND5E.conditionEffects[k] instanceof Set)) CONFIG.DND5E.conditionEffects[k] = new Set();
 	}
 
-	const conditionsSetting = game.settings.get("elkan5e", "conditions");
+	const conditionsSetting = game.settings.get("elkan5e", "conditionsSettings");
 
 	// Remove extras (a|d)
 	if (conditionsSetting === "a" || conditionsSetting === "d") {
