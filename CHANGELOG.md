@@ -1,5 +1,61 @@
 # Changelog
 
+# v1.13.1
+
+## Bug Fixes
+
+- Fixed Conditions again (there was a merging issue previously)
+- Fixed Danger Sense so it no longer gives advantage and now properly applies the proficiency bonus
+- Healing spells have been fixed so that healing will no longer throw errors
+
+## Classes
+
+**[Cleric](https://www.elkan5e.com/cleric)**
+
+- Death Domain:
+    - Draw Upon Vitality is now free
+
+**[Paladin](https://www.elkan5e.com/paladin)**
+
+- Paragon:
+    - Aura of Devotion now provides immunity to being goaded
+
+**[Warlock](https://www.elkan5e.com/warlock)**
+
+- Warlock spellcasting has been updated to use Foundry's new system and no longer relies on Active Effects. This may cause lag.
+- Pact of the Chain is now mostly automated and can be applied by dragging the new class onto your familiar’s sheet
+
+**[Wizard](https://www.elkan5e.com/wizard)**
+
+- Necromancer:
+    - Fixed Spectral Graveguard’s Life Drain
+
+## Creatures
+
+- Added and reworked CR 0 creatures for familiars
+
+# Equipment
+- Added Healing Potions
+- Added Mana Potions
+- Increased the cost of Scrolls
+
+## Feats
+
+- Find Familiar has been reworked and now allows you to choose any CR 0 beast
+- Find Familiar now uses a class and is mostly automated, allowing it to be dragged onto a creature’s sheet
+
+## Game Rules
+
+- Engineering has been fully implemented and added to the Fighter, Ranger, and Rogue class lists at level 1
+
+## Spells
+
+- Protection from Curses now affects up to 6 creatures
+- Clarified that you know the relative position with Locate Creature
+
+# Misc
+- All Saves now have the ability to simply click on them and roll and GMs now have the ability to request a roll simply from the description
+
 # v1.13.0.5
 
 Fix to auto release

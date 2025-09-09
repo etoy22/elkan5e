@@ -7,9 +7,9 @@
 			"name": "Black Tentacles",
 			"changes": [
 				{
-					"key": "flags.midi-qol.OverTime",
+					"key": "flags.midi-qol.ActivityOverTime",
 					"mode": 2,
-					"value": "turn=end,\nlabel=Black Tentacle,\nsaveAbility=dex,\ndamageRoll=3d6,\ndamageType=bludgeoning,\nsaveDamage=halfdamage,\nsaveMagic=true,\nsaveDC=@attributes.spell.dc",
+					"value": "target-enters/ends-Turn",
 					"priority": 20
 				}
 			],
@@ -53,7 +53,7 @@
 				},
 				"ActiveAuras": {
 					"isAura": false,
-					"aura": "None",
+					"aura": "Enemy",
 					"nameOverride": "",
 					"radius": "",
 					"alignment": "",
@@ -302,12 +302,7 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [
-					{
-						"_id": "ChKeNNwKeJ4uxPFQ",
-						"onSave": false
-					}
-				],
+				"effects": [],
 				"range": {
 					"override": false
 				},
@@ -338,8 +333,7 @@
 								"bludgeoning"
 							],
 							"scaling": {
-								"mode": "",
-								"number": 1
+								"mode": ""
 							}
 						}
 					],
@@ -355,15 +349,22 @@
 				"useConditionText": "",
 				"forceDialog": false,
 				"effectConditionText": "!target.traits.ci.value.has('restrained')",
-				"name": "Save (Subsequent turns for creatures who aren't restrained)",
+				"name": "Target Enters/Ends Turn",
 				"img": "",
 				"appliedEffects": [
 					"ChKeNNwKeJ4uxPFQ"
-				]
+				],
+				"isOverTimeFlag": true,
+				"overTimeProperties": {
+					"turnChoice": "end",
+					"preRemoveConditionText": "false",
+					"postRemoveConditionText": "false"
+				}
 			}
 		},
-		"identifier": ""
+		"identifier": "black-tentacles"
 	},
 	"_id": "beDRhRoHbFjUJ11k",
-	"_key": "!items!beDRhRoHbFjUJ11k"
+	"_key": "!items!beDRhRoHbFjUJ11k",
+	"identifier": "black-tentacles"
 }
