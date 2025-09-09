@@ -1,5 +1,3 @@
-/* global game, ui */
-
 export async function secondWind(workflow) {
 	const actor = workflow.actor;
 	persistentLeader(actor);
