@@ -1,35 +1,67 @@
-/**
- * Adds Elkan 5e skill references to Foundry's DND5E config.
- */
 export function skills() {
-	if (!CONFIG.DND5E?.skills) return;
-	// Map of skill keys to JournalEntryPage IDs in the compendium
-	const SKILL_REFS = {
-		acr: "Qw1Qw1Qw1Qw1Qw1Q", // Acrobatics
-		ani: "Ww2Ww2Ww2Ww2Ww2W", // Animal Handling
-		arc: "Ee3Ee3Ee3Ee3Ee3E", // Arcana
-		ath: "Rr4Rr4Rr4Rr4Rr4R", // Athletics
-		dec: "Tt5Tt5Tt5Tt5Tt5T", // Deception
-		his: "Yy6Yy6Yy6Yy6Yy6Y", // History
-		ins: "Uu7Uu7Uu7Uu7Uu7U", // Insight
-		itm: "Ii8Ii8Ii8Ii8Ii8I", // Intimidation
-		inv: "Oo9Oo9Oo9Oo9Oo9O", // Investigation
-		med: "Pp0Pp0Pp0Pp0Pp0P", // Medicine
-		nat: "Aa1Aa1Aa1Aa1Aa1A", // Nature
-		prc: "Ss2Ss2Ss2Ss2Ss2S", // Perception
-		prf: "Dd3Dd3Dd3Dd3Dd3D", // Performance
-		per: "Ff4Ff4Ff4Ff4Ff4F", // Persuasion
-		rel: "Gg5Gg5Gg5Gg5Gg5G", // Religion
-		slt: "Hh6Hh6Hh6Hh6Hh6H", // Sleight of Hand
-		ste: "Jj7Jj7Jj7Jj7Jj7J", // Stealth
-		sur: "Kk8Kk8Kk8Kk8Kk8K", // Survival
+	engineering();
+	setupSkillReferences();
+}
+
+export function engineering() {
+	CONFIG.DND5E.skills.eng = {
+		label: "Engineering",
+		ability: "int",
+		fullKey: "engineering",
+		reference:
+			"Compendium.elkan5e.elkan5e-rules.JournalEntry.rv19GFzEa0nMTuAF.JournalEntryPage.AT8kvdogoKRgWLO9",
 	};
-	function getSkillJournalRef(id) {
-		return `Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.${id}`;
-	}
-	for (const [key, id] of Object.entries(SKILL_REFS)) {
-		if (CONFIG.DND5E.skills[key]) {
-			CONFIG.DND5E.skills[key].reference = getSkillJournalRef(id);
+}
+
+export function setupSkillReferences() {
+	const base = "Compendium.elkan5e.elkan5e-rules.JournalEntry.rv19GFzEa0nMTuAF.JournalEntryPage.";
+	const SKILLS = [
+		{ key: "acr", id: "nJvKshCeUsYho87K" },
+		{ key: "ani", id: "JR9h0nL97GegQ9Vz" },
+		{ key: "arc", id: "Cc49eyAgMrF1GIjH" },
+		{ key: "ath", id: "1lTpjCIaINKzvmKI" },
+		{ key: "dec", id: "UDcxonEumLH5vEQu" },
+		{ key: "his", id: "o9V0Z91HWH84JHda" },
+		{ key: "ins", id: "HAKuuUMWW3pRCMoL" },
+		{ key: "inv", id: "1VOLgBW7kkGwaPbH" },
+		{ key: "itm", id: "3WqeQryCXL1gtaEo" },
+		{ key: "med", id: "bEEOxmai3Q08nTfT" },
+		{ key: "nat", id: "0v0AbmZaL3N0zeO2" },
+		{ key: "per", id: "X3dKHNVduLjYxR1x" },
+		{ key: "prc", id: "pIFI2y2qLS9ovm0C" },
+		{ key: "prf", id: "9bVttJ5qNpwiOpzL" },
+		{ key: "rel", id: "KGv0Bkb9thO9K4xJ" },
+		{ key: "slt", id: "ynZa3sl1E681sRlP" },
+		{ key: "ste", id: "LnS51AK4Yi0P53QT" },
+		{ key: "sur", id: "6KIdxNMhOuvZUMxc" },
+	];
+	const PROF = [
+		{ key: "proficiency", id: "FSOQGFobVnECHPSC" },
+		{ key: "expertise", id: "BXLGKD3SIZiYuaHt" },
+		{ key: "dabbler", id: "HCfJwhuVwWCLPEBC" },
+	];
+	if (!CONFIG.DND5E.skills) CONFIG.DND5E.skills = {};
+	if (!CONFIG.DND5E.enrichmentLookup) CONFIG.DND5E.enrichmentLookup = {};
+	if (!CONFIG.DND5E.enrichmentLookup.skills) CONFIG.DND5E.enrichmentLookup.skills = {};
+	SKILLS.forEach(({ key, id }) => {
+		try {
+			const reference = base + id;
+			if (!CONFIG.DND5E.skills[key]) CONFIG.DND5E.skills[key] = {};
+			CONFIG.DND5E.skills[key].reference = reference;
+			if (!CONFIG.DND5E.enrichmentLookup.skills[key])
+				CONFIG.DND5E.enrichmentLookup.skills[key] = {};
+			CONFIG.DND5E.enrichmentLookup.skills[key].reference = reference;
+		} catch (e) {
+			console.warn(`Elkan 5e | Failed to assign skill reference for key '${key}':`, e);
 		}
-	}
+	});
+	if (!CONFIG.DND5E.rules) CONFIG.DND5E.rules = {};
+	PROF.forEach(({ key, id }) => {
+		try {
+			const reference = base + id;
+			CONFIG.DND5E.rules[key] = { reference };
+		} catch (e) {
+			console.warn(`Elkan 5e | Failed to assign proficiency reference for key '${key}':`, e);
+		}
+	});
 }
