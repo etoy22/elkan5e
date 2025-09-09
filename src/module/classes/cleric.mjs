@@ -1,5 +1,3 @@
-/* global foundry, Roll, canvas, activity, MidiQOL, actor, ui, game */
-/* eslint-disable no-unused-vars */
 const DialogV2 = foundry.applications.api.DialogV2;
 
 export async function infusedHealer(workflow) {
