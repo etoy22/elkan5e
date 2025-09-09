@@ -1,4 +1,3 @@
-/* global game */
 import { UpdateElkanRunner } from "./UpdateElkanRunner.mjs";
 export async function gameSettingRegister() {
 	game.settings.register("elkan5e", "dialogShown", {
@@ -10,19 +9,19 @@ export async function gameSettingRegister() {
 		default: false,
 	});
 
-	game.settings.register("elkan5e", "conditions", {
-		name: "elkan5e.conditions.name",
-		hint: "elkan5e.conditions.hint",
+	game.settings.register("elkan5e", "conditionsSettings", {
+		name: "elkan5e.conditionsSettings.name",
+		hint: "elkan5e.conditionsSettings.hint",
 		scope: "world",
 		config: true,
 		type: String,
 		requiresReload: true,
 		default: "a",
 		choices: {
-			a: "elkan5e.conditions.choiceA",
-			b: "elkan5e.conditions.choiceB",
-			c: "elkan5e.conditions.choiceC",
-			d: "elkan5e.conditions.choiceD",
+			a: "elkan5e.conditionsSettings.choiceA",
+			b: "elkan5e.conditionsSettings.choiceB",
+			c: "elkan5e.conditionsSettings.choiceC",
+			d: "elkan5e.conditionsSettings.choiceD",
 		},
 		restricted: true,
 	});
