@@ -1,0 +1,412 @@
+{
+	"name": "Burnt Othur Fumes",
+	"type": "consumable",
+	"img": "icons/magic/air/fog-gas-smoke-dense-green.webp",
+	"system": {
+		"activities": {
+			"13ZvV9bxzM90FeQO": {
+				"type": "save",
+				"name": "",
+				"activation": {
+					"type": "",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": ""
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "nHYFhvAOvgcaftoV",
+						"onSave": true
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": "creature",
+						"special": ""
+					},
+					"override": false,
+					"prompt": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 3,
+							"denomination": 6,
+							"bonus": "",
+							"types": [
+								"poison"
+							]
+						}
+					],
+					"onSave": "none",
+					"critical": {
+						"allow": false
+					}
+				},
+				"save": {
+					"ability": [
+						"con"
+					],
+					"dc": {
+						"calculation": "",
+						"formula": "13"
+					}
+				},
+				"_id": "13ZvV9bxzM90FeQO",
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "!target.traits.ci.value.has('poisoned')",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "",
+				"otherActivityAsParentType": true,
+				"friendlySave": "default",
+				"img": "",
+				"appliedEffects": [
+					"nHYFhvAOvgcaftoV"
+				]
+			},
+			"6o0JLH0kvEJ1n6D8": {
+				"type": "damage",
+				"name": "Successive Failed Save Damage",
+				"_id": "6o0JLH0kvEJ1n6D8",
+				"activation": {
+					"type": "",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": "creature",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"critical": {
+						"allow": false
+					},
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 1,
+							"denomination": 6,
+							"bonus": "",
+							"types": [
+								"poison"
+							]
+						}
+					]
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": true,
+				"overTimeProperties": {
+					"saveRemoves": false,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": "",
+					"turnChoice": ""
+				},
+				"img": "",
+				"appliedEffects": []
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"autoDestroy": true,
+			"max": "1"
+		},
+		"description": {
+			"value": "<p>Inhaled - Until 3 successes</p><p><strong>[[/save constitution dc13]]{Constitution Save DC 13}</strong></p><ul><li><p><strong>Failure:</strong> [[/damage 3d6 poison]].</p></li><li><p><strong>Success:</strong> Ends after 3 total successes.</p></li><li><p><strong>Subsquent Turns: </strong>Roll the save taking [[/damage 1d6 poison]] on failure.</p></li></ul><section class=\"secret\" id=\"secret-MpNHFUNWcwNuZ6jW\"><p><strong>Foundry Note</strong></p><p>The Active Effect can be used for tracking.</p></section>",
+			"chat": ""
+		},
+		"identifier": "",
+		"source": {
+			"revision": 1,
+			"rules": "2024",
+			"license": "",
+			"book": "",
+			"page": "",
+			"custom": ""
+		},
+		"identified": true,
+		"unidentified": {
+			"description": ""
+		},
+		"container": null,
+		"quantity": 1,
+		"weight": {
+			"value": 0,
+			"units": "lb"
+		},
+		"price": {
+			"value": 500,
+			"denomination": "gp"
+		},
+		"rarity": "",
+		"attunement": "",
+		"attuned": false,
+		"equipped": false,
+		"type": {
+			"value": "poison",
+			"subtype": "inhaled"
+		},
+		"damage": {
+			"base": {
+				"number": null,
+				"denomination": null,
+				"types": [],
+				"custom": {
+					"enabled": false
+				},
+				"scaling": {
+					"number": 1
+				}
+			},
+			"replace": false
+		},
+		"magicalBonus": null,
+		"properties": []
+	},
+	"effects": [
+		{
+			"name": "Burnt Othur Fumes",
+			"img": "icons/magic/air/fog-gas-smoke-dense-green.webp",
+			"origin": "Compendium.elkan5e.elkan5e-magic-items.Item.5ud0tvrtOf25dRG6",
+			"_id": "nHYFhvAOvgcaftoV",
+			"type": "base",
+			"system": {},
+			"changes": [],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"combat": null,
+				"seconds": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [],
+			"flags": {
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"showIcon": true,
+					"disableIncapacitated": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "All",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!5ud0tvrtOf25dRG6.nHYFhvAOvgcaftoV"
+		}
+	],
+	"folder": "oiZn37v9LcHK7Dsi",
+	"flags": {
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		}
+	},
+	"_id": "5ud0tvrtOf25dRG6",
+	"_key": "!items!5ud0tvrtOf25dRG6"
+}
