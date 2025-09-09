@@ -118,20 +118,28 @@
 			"material"
 		],
 		"activities": {
-			"vUk9GA2tHkOWyKZL": {
-				"type": "attack",
+			"STCBkRIqBjwALkOu": {
+				"type": "utility",
+				"_id": "STCBkRIqBjwALkOu",
 				"activation": {
 					"type": "action",
-					"value": null,
 					"override": false
 				},
 				"consumption": {
-					"targets": [],
 					"scaling": {
-						"allowed": false,
-						"max": ""
+						"allowed": false
 					},
-					"spellSlot": true
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "material",
+							"value": "1",
+							"target": "Compendium.elkan5e.elkan5e-spells.Item.wV3r0XKYOLYdI0nz",
+							"scaling": {
+								"mode": ""
+							}
+						}
+					]
 				},
 				"description": {
 					"chatFlavor": ""
@@ -143,92 +151,84 @@
 				},
 				"effects": [],
 				"range": {
+					"units": "self",
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
 					"override": false,
 					"prompt": true
 				},
-				"attack": {
-					"ability": "",
-					"bonus": "",
-					"critical": {
-						"threshold": null
-					},
-					"flat": false,
-					"type": {
-						"value": "melee",
-						"classification": "spell"
-					}
-				},
-				"damage": {
-					"critical": {
-						"bonus": ""
-					},
-					"includeBase": true,
-					"parts": []
-				},
 				"uses": {
 					"spent": 0,
-					"recovery": []
+					"recovery": [],
+					"max": ""
 				},
-				"_id": "vUk9GA2tHkOWyKZL"
-			},
-			"Tacbv3XdrOmaXk9i": {
-				"type": "save",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
 				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
 				},
-				"description": {
-					"chatFlavor": ""
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
 				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
 				},
-				"effects": [],
-				"range": {
-					"override": false
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
 				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"damage": {
-					"onSave": "half",
-					"parts": []
-				},
-				"save": {
-					"ability": "cha",
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
-					}
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": []
-				},
-				"_id": "Tacbv3XdrOmaXk9i"
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"name": "Remove Condition",
+				"img": "",
+				"appliedEffects": []
 			}
 		},
 		"identifier": ""
