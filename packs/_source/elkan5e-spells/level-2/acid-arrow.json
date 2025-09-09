@@ -13,9 +13,9 @@
 			"system": {},
 			"changes": [
 				{
-					"key": "flags.midi-qol.OverTime",
+					"key": "flags.midi-qol.ActivityOverTime",
 					"mode": 2,
-					"value": "turn=end, removeCondition=true, damageRoll = (@spell.level+2)d4, damageType = acid, label=Acid Arrow",
+					"value": "damage-(end-of-target's-turn)",
 					"priority": 20
 				}
 			],
@@ -35,7 +35,7 @@
 			"flags": {
 				"ActiveAuras": {
 					"isAura": false,
-					"aura": "None",
+					"aura": "Enemy",
 					"nameOverride": "",
 					"radius": "",
 					"alignment": "",
@@ -47,7 +47,8 @@
 					"displayTemp": false,
 					"hostile": false,
 					"onlyOnce": false,
-					"wallsBlock": "system"
+					"wallsBlock": "system",
+					"statuses": []
 				},
 				"dae": {
 					"enableCondition": "",
@@ -64,6 +65,11 @@
 				},
 				"core": {
 					"overlay": false
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
 				}
 			},
 			"_key": "!items.effects!xZu2pzKegvWyGnKo.WBIvDzj1NiSog2Ys"
@@ -185,35 +191,9 @@
 		"properties": [
 			"vocal",
 			"somatic",
-			"material",
-			"mgc"
+			"material"
 		],
 		"activities": {
-			"dnd5eactivity000": {
-				"effects": [
-					{
-						"_id": "zpn449orzfjairk4"
-					},
-					{
-						"_id": "WBIvDzj1NiSog2Ys"
-					}
-				],
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				}
-			},
 			"qQMmBmz5yS6t8eZ6": {
 				"type": "attack",
 				"_id": "qQMmBmz5yS6t8eZ6",
@@ -301,7 +281,19 @@
 				"otherActivityId": "none",
 				"appliedEffects": [
 					"WBIvDzj1NiSog2Ys"
-				]
+				],
+				"midiProperties": {
+					"magicDamage": false,
+					"triggeredActivityId": "missed-damage",
+					"triggeredActivityTargets": "missedTargets"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"turnChoice": "end",
+					"saveRemoves": false,
+					"postRemoveConditionText": "true"
+				},
+				"otherActivityAsParentType": true
 			},
 			"7rpm5ijXMVnwjx8v": {
 				"type": "damage",
@@ -367,11 +359,143 @@
 					]
 				},
 				"img": "",
-				"appliedEffects": []
+				"appliedEffects": [],
+				"midiProperties": {
+					"otherActivityCompatible": false
+				},
+				"isOverTimeFlag": true,
+				"overTimeProperties": {
+					"turnChoice": "end",
+					"preRemoveConditionText": "false",
+					"postRemoveConditionText": "true"
+				}
+			},
+			"Oigwuq6k8SPZIqNz": {
+				"type": "damage",
+				"activation": {
+					"type": "special",
+					"value": null,
+					"override": true,
+					"condition": ""
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"units": "self"
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false
+				},
+				"damage": {
+					"critical": {
+						"allow": false,
+						"bonus": ""
+					},
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 2,
+							"denomination": 4,
+							"bonus": "",
+							"types": [
+								"acid"
+							],
+							"scaling": {
+								"mode": "whole",
+								"number": 1,
+								"formula": ""
+							}
+						}
+					]
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"useConditionText": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"confirmTargets": "never",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": true,
+					"otherActivityCompatible": false,
+					"identifier": "",
+					"displayActivityName": true,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"otherActivityAsParentType": true,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"name": "Missed Damage",
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"turnChoice": "start",
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"useConditionReason": "",
+				"_id": "Oigwuq6k8SPZIqNz"
 			}
 		},
-		"identifier": ""
+		"identifier": "acid-arrow"
 	},
 	"_id": "xZu2pzKegvWyGnKo",
-	"_key": "!items!xZu2pzKegvWyGnKo"
+	"_key": "!items!xZu2pzKegvWyGnKo",
+	"identifier": "acid-arrow"
 }

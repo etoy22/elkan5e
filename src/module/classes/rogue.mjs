@@ -1,5 +1,4 @@
-/* global canvas */
-import { drainedEffect } from "../global.mjs";
+import { drainedEffect, forEachDamagedTarget } from "../global.mjs";
 
 export async function slicingBlow(workflow) {
 	const casterUuid = workflow.token?.actor?.uuid;
