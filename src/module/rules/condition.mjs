@@ -21,7 +21,11 @@ const CONDITIONS_TYPES = [
 		key: "confused",
 		id: "WJFtNc5UraHVrV5V",
 		changes: [
-			{ key: "flags.midi-qol.OverTime", mode: 2, value: "turn=start, label=Confused Effect, macro=Compendium.elkan5e.elkan5e-macros.Macro.HW9jG0cdn6BmhzyE" },
+			{
+				key: "flags.midi-qol.OverTime",
+				mode: 2,
+				value: "turn=start, label=Confused Effect, macro=Compendium.elkan5e.elkan5e-macros.Macro.HW9jG0cdn6BmhzyE",
+			},
 		],
 	},
 	{ key: "cursed", id: "Vpwu9GQC6HVNZFze" },
@@ -51,9 +55,9 @@ const CONDITIONS_TYPES = [
 		key: "hasted",
 		id: "8dnyv0szJi7dCz74",
 		changes: [
-			{ key: "system.attributes.ac.bonus", mode: 2, value: "+2", },
-			{ key: "system.abilities.dex.bonuses.save", mode: 2, value: "+2", },
-			{ key: "system.attributes.movement.all", mode: 0, value: "*2", },
+			{ key: "system.attributes.ac.bonus", mode: 2, value: "+2" },
+			{ key: "system.abilities.dex.bonuses.save", mode: 2, value: "+2" },
+			{ key: "system.attributes.movement.all", mode: 0, value: "*2" },
 		],
 	},
 	{
@@ -96,9 +100,7 @@ const CONDITIONS_TYPES = [
 	{
 		key: "obscuredlightly",
 		id: "Jq7kMUlHodqSbYDD",
-		changes: [
-			{ key: "flags.midi-qol.advantage.skill.stealth", mode: 5, value: "1" },
-		],
+		changes: [{ key: "flags.midi-qol.advantage.skill.stealth", mode: 5, value: "1" }],
 	},
 	{
 		key: "paralyzed",
@@ -128,7 +130,6 @@ const CONDITIONS_TYPES = [
 			{ key: "flags.midi-qol.disadvantage.attack.all", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.disadvantage.ability.check.all", mode: 5, value: "1" },
 		],
-
 	},
 	{
 		key: "prone",
@@ -154,16 +155,24 @@ const CONDITIONS_TYPES = [
 	{
 		key: "silenced",
 		id: "F51xrE7Mj8VeM3b8",
-		changes: [{
-			key: "flags.midi-qol.fail.spell.verbal", mode: 5, value: "1",
-		}],
+		changes: [
+			{
+				key: "flags.midi-qol.fail.spell.verbal",
+				mode: 5,
+				value: "1",
+			},
+		],
 	},
 	{
 		key: "siphoned",
 		id: "SthB8javJuFySiBg",
 		changes: [
-			{ key: "flags.midi-qol.grants.advantage.attack.save", mode: 5, value: "1", },
-			{ key: "flags.midi-qol.onUseMacroName", mode: 0, value: "Compendium.elkan5e.elkan5e-macros.Macro.4X80aHI9r8I9aSKG, preDamageApplication", },
+			{ key: "flags.midi-qol.grants.advantage.attack.save", mode: 5, value: "1" },
+			{
+				key: "flags.midi-qol.onUseMacroName",
+				mode: 0,
+				value: "Compendium.elkan5e.elkan5e-macros.Macro.4X80aHI9r8I9aSKG, preDamageApplication",
+			},
 		],
 	},
 	{
@@ -172,16 +181,14 @@ const CONDITIONS_TYPES = [
 		changes: [
 			{ key: "flags.midi-qol.disadvantage.attack.all", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.noReactions", mode: 5, value: "1" },
-			{ key: "system.attributes.ac.bonus", mode: 2, value: "-2", },
-			{ key: "system.abilities.dex.bonuses.save", mode: 2, value: "-2", },
+			{ key: "system.attributes.ac.bonus", mode: 2, value: "-2" },
+			{ key: "system.abilities.dex.bonuses.save", mode: 2, value: "-2" },
 		],
 	},
 	{
 		key: "stunned",
 		id: "JV8kbMo0p5S1YXUR",
-		changes: [
-			{ key: "flags.midi-qol.grants.advantage.attack.all", mode: 5, value: "1" },
-		],
+		changes: [{ key: "flags.midi-qol.grants.advantage.attack.all", mode: 5, value: "1" }],
 	},
 	{
 		key: "surprised",
@@ -189,21 +196,20 @@ const CONDITIONS_TYPES = [
 		changes: [
 			{ key: "flags.midi-qol.noReactions", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.disadvantage.ability.save.dex", mode: 5, value: "1" },
-			{ key: "system.attributes.init.bonus", mode: 2, value: "-20" }
+			{ key: "system.attributes.init.bonus", mode: 2, value: "-20" },
 		],
 		flags: {
 			dae: {
 				transfer: false,
 				stackable: "none",
 				specialDuration: ["turnEnd"],
-				showIcon: true
+				showIcon: true,
 			},
 			core: {
-				statusId: "surprised"
-			}
-		}
-	}
-	,
+				statusId: "surprised",
+			},
+		},
+	},
 	{ key: "transformed" },
 	{
 		key: "unconscious",
@@ -217,9 +223,13 @@ const CONDITIONS_TYPES = [
 		key: "weakened",
 		id: "iJT3cWvyTNBv1L5h",
 		changes: [
-			{ key: "flags.midi-qol.disadvantage.ability.dex", mode: 5, value: "1", },
-			{ key: "flags.midi-qol.disadvantage.ability.str", mode: 5, value: "1", },
-			{ key: "flags.midi-qol.onUseMacroName", mode: 0, value: "Compendium.elkan5e.elkan5e-macros.Macro.1NtnoPvTQj1IEHCa, preDamageApplication", },
+			{ key: "flags.midi-qol.disadvantage.ability.dex", mode: 5, value: "1" },
+			{ key: "flags.midi-qol.disadvantage.ability.str", mode: 5, value: "1" },
+			{
+				key: "flags.midi-qol.onUseMacroName",
+				mode: 0,
+				value: "Compendium.elkan5e.elkan5e-macros.Macro.1NtnoPvTQj1IEHCa, preDamageApplication",
+			},
 		],
 	},
 	{ key: "concentrating", id: "4ZOHN6tGvj54J6Kv" },
@@ -236,7 +246,7 @@ const STATUS_EFFECTS = [
 		key: "dodging",
 		changes: [
 			{ key: "flags.midi-qol.grants.disadvantage.attack.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.advantage.ability.save.dex", mode: 5, value: "1" }
+			{ key: "flags.midi-qol.advantage.ability.save.dex", mode: 5, value: "1" },
 		],
 		flags: {
 			dae: {
@@ -244,10 +254,10 @@ const STATUS_EFFECTS = [
 				stackable: "none",
 				specialDuration: ["turnStart"],
 				disableIncapacitated: true,
-				showIcon: true
+				showIcon: true,
 			},
-			core: { statusId: "dodging" }
-		}
+			core: { statusId: "dodging" },
+		},
 	},
 	{ key: "hiding" },
 	{ key: "stable", image: false },
@@ -271,7 +281,6 @@ const COVER_IMG_MAP = {
 	coverTotal: "cover-full.svg",
 };
 
-
 export function conditions() {
 	const locCond = (key) => game.i18n.localize(`elkan5e.conditions.${key}`);
 	const mergeChanges = (existing = [], incoming = []) => {
@@ -283,7 +292,12 @@ export function conditions() {
 	};
 	const mergeFlags = (a = {}, b = {}) => {
 		const out = foundry.utils.duplicate(a);
-		return foundry.utils.mergeObject(out, b, { inplace: true, recursive: true, insertKeys: true, overwrite: true });
+		return foundry.utils.mergeObject(out, b, {
+			inplace: true,
+			recursive: true,
+			insertKeys: true,
+			overwrite: true,
+		});
 	};
 
 	const ensureConditionEntry = (def) => {
@@ -330,7 +344,8 @@ export function conditions() {
 		"attackDisadvantage",
 		"dexteritySaveDisadvantage",
 	]) {
-		if (!(CONFIG.DND5E.conditionEffects[k] instanceof Set)) CONFIG.DND5E.conditionEffects[k] = new Set();
+		if (!(CONFIG.DND5E.conditionEffects[k] instanceof Set))
+			CONFIG.DND5E.conditionEffects[k] = new Set();
 	}
 
 	const conditionsSetting = game.settings.get("elkan5e", "conditionsSettings");
@@ -404,8 +419,6 @@ export function conditions() {
 	}
 }
 
-
-
 export function conditionsReady() {
 	CONFIG.DND5E ??= {};
 	CONFIG.DND5E.conditionTypes ??= {};
@@ -425,7 +438,7 @@ export function conditionsReady() {
 			inplace: true,
 			recursive: true,
 			insertKeys: true,
-			overwrite: true
+			overwrite: true,
 		});
 	};
 
@@ -441,7 +454,7 @@ export function conditionsReady() {
 		CONFIG.DND5E.statusEffects[def.key] = {
 			...CONFIG.DND5E.statusEffects[def.key],
 			...ct,
-			key: def.key
+			key: def.key,
 		};
 	}
 
