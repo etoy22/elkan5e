@@ -6,19 +6,17 @@
 	"img": "icons/creatures/magical/humanoid-silhouette-glowing-pink.webp",
 	"system": {
 		"activities": {
-			"OJYGcsPwkOP726hK": {
-				"type": "damage",
-				"_id": "OJYGcsPwkOP726hK",
+			"DtVId281gK84YyPn": {
+				"type": "utility",
+				"_id": "DtVId281gK84YyPn",
 				"activation": {
-					"type": "bonus",
-					"value": null,
+					"type": "action",
 					"override": false,
 					"condition": ""
 				},
 				"consumption": {
 					"scaling": {
-						"allowed": true,
-						"max": "9"
+						"allowed": false
 					},
 					"spellSlot": true,
 					"targets": []
@@ -33,10 +31,9 @@
 				},
 				"effects": [],
 				"range": {
+					"units": "self",
 					"override": false,
-					"units": "ft",
-					"special": "",
-					"value": "60"
+					"special": ""
 				},
 				"target": {
 					"template": {
@@ -46,9 +43,7 @@
 					},
 					"affects": {
 						"choice": false,
-						"count": "1",
-						"type": "ally",
-						"special": ""
+						"type": ""
 					},
 					"override": false,
 					"prompt": true
@@ -58,32 +53,63 @@
 					"recovery": [],
 					"max": ""
 				},
-				"damage": {
-					"critical": {
-						"allow": false
-					},
-					"parts": [
-						{
-							"custom": {
-								"enabled": true,
-								"formula": "2"
-							},
-							"number": null,
-							"denomination": 0,
-							"bonus": "",
-							"types": [],
-							"scaling": {
-								"mode": "whole",
-								"number": null,
-								"formula": "2"
-							}
-						}
-					]
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
 				},
 				"useConditionText": "",
-				"forceDialog": false,
+				"useConditionReason": "",
 				"effectConditionText": "",
-				"name": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"name": "Reroll Spell Damage",
 				"img": "",
 				"appliedEffects": []
 			}
@@ -94,7 +120,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><strong>Bonus Action</strong> - 1 Ally (60 ft) - Magical</p><p>After you roll damage with a spell that deals &amp;reference[necrotic] damage, you can choose to sacrifice life energy to empower the spell.</p><ul><li><p>Target loses hit points equal to two times the spell's level (or 2 hit points for cantrips).</p></li><li><p>You then reroll the spell's damage. You must take the second roll.</p></li></ul>",
+			"value": "<p><strong>Bonus Action</strong> - 1 Ally (60 ft) - Magical</p><p>After you roll damage with a spell that deals &amp;reference[necrotic] damage, you can reroll the spell's damage. You must take the second roll. </p>",
 			"chat": ""
 		},
 		"identifier": "",

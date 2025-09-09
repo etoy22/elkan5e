@@ -53,12 +53,12 @@
 						"ability": [
 							""
 						],
-						"preparation": "",
 						"uses": {
 							"max": "",
 							"per": "",
 							"requireSlot": false
-						}
+						},
+						"prepared": 0
 					}
 				},
 				"value": {},
@@ -121,12 +121,13 @@
 						"ability": [
 							"wis"
 						],
-						"preparation": "always",
 						"uses": {
 							"max": "",
 							"per": "",
 							"requireSlot": false
-						}
+						},
+						"method": "spell",
+						"prepared": 2
 					}
 				},
 				"value": {},
@@ -149,12 +150,12 @@
 						"ability": [
 							""
 						],
-						"preparation": "",
 						"uses": {
 							"max": "",
 							"per": "",
 							"requireSlot": false
-						}
+						},
+						"prepared": 0
 					}
 				},
 				"value": {},
@@ -176,12 +177,12 @@
 						"ability": [
 							""
 						],
-						"preparation": "",
 						"uses": {
 							"max": "",
 							"per": "",
 							"requireSlot": false
-						}
+						},
+						"prepared": 0
 					}
 				},
 				"value": {},
@@ -204,12 +205,12 @@
 						"ability": [
 							""
 						],
-						"preparation": "",
 						"uses": {
 							"max": "",
 							"per": "",
 							"requireSlot": false
-						}
+						},
+						"prepared": 0
 					}
 				},
 				"value": {},
@@ -231,12 +232,12 @@
 						"ability": [
 							""
 						],
-						"preparation": "",
 						"uses": {
 							"max": "",
 							"per": "",
 							"requireSlot": false
-						}
+						},
+						"prepared": 0
 					}
 				},
 				"value": {},
@@ -306,7 +307,8 @@
 					"spell": null,
 					"restriction": {
 						"type": "class",
-						"subtype": "fightingStyle"
+						"subtype": "fightingStyle",
+						"list": []
 					}
 				},
 				"value": {
@@ -351,6 +353,7 @@
 								"skills:acr",
 								"skills:ani",
 								"skills:ath",
+								"skills:engineering",
 								"skills:ins",
 								"skills:inv",
 								"skills:nat",
@@ -578,7 +581,9 @@
 						}
 					],
 					"spell": null,
-					"restriction": {}
+					"restriction": {
+						"list": []
+					}
 				},
 				"value": {
 					"added": {},
@@ -697,7 +702,9 @@
 						}
 					],
 					"spell": null,
-					"restriction": {}
+					"restriction": {
+						"list": []
+					}
 				},
 				"value": {
 					"added": {},
@@ -789,7 +796,9 @@
 						}
 					],
 					"spell": null,
-					"restriction": {}
+					"restriction": {
+						"list": []
+					}
 				},
 				"value": {
 					"added": {},
@@ -815,70 +824,32 @@
 					},
 					"allowDrops": true,
 					"type": "spell",
-					"pool": [
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.Zo1HFoOJBt8vk6zJ"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.tZZRoQfeoRQoGyYu"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.I80JFUFkSDeMFgXF"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.zWjDq2YlL1XWOcji"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.1gqMmxF2RFCK9khd"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.x76d4kCFyMIc6wQZ"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.KAxrIssIzjSZveQL"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.HRm1dt7gHflUBkVz"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.kHLtxIW760jdAaMK"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.7LVyQDMteCRUUA7e"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.IVdLf4tdmOfA3W6w"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.SZi4TOafYgqm0A0n"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.K9TCdZs4SV9PqI2i"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.fosWpD16XnqN4ANt"
-						}
-					],
+					"pool": [],
 					"spell": {
 						"ability": [
 							"wis"
 						],
-						"preparation": "prepared",
 						"uses": {
 							"max": "",
 							"per": "",
 							"requireSlot": false
-						}
+						},
+						"method": "spell",
+						"prepared": 1
 					},
 					"restriction": {
-						"level": "1"
+						"level": "1",
+						"list": [
+							"class:ranger"
+						]
 					}
 				},
 				"value": {
 					"added": {},
 					"replaced": {}
 				},
-				"title": "Spells Prepared"
+				"title": "Spells Prepared",
+				"hint": ""
 			},
 			{
 				"_id": "NK8Q99dcxDJs0R9t",
@@ -900,75 +871,24 @@
 					},
 					"allowDrops": true,
 					"type": "spell",
-					"pool": [
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.01CfTGfvMT2cMkwy"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.ZdXoYq2EayCLMRKH"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.j6UssjR5FvR2utNB"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.gBuyXKNpNTF8i2Q8"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.4V8va0Ys29lMbeJW"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.G1qQZd6IkSfweHlE"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.gQCBKxTyZeqCvy0D"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.jBc7naF7phUFQ2TG"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.2UpbjReIH8Eij7jo"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.t9uz8UUAhL7TnJkP"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.9euw3Uj4JcV3GnaP"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.TjQaL5lRbogCKUWa"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.MUnlvQQtZxVOx78G"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.Wp9ckwdiUpIuPE5l"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.BVd4kOcKeN5hvGk2"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.mGEvLVu25XKdfgsq"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.pvaTvkG3eFu2qojR"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.oZwKW3I3yzrSdpLE"
-						}
-					],
+					"pool": [],
 					"spell": {
 						"ability": [
 							"wis"
 						],
-						"preparation": "prepared",
 						"uses": {
 							"max": "",
 							"per": "",
 							"requireSlot": false
-						}
+						},
+						"method": "spell",
+						"prepared": 1
 					},
 					"restriction": {
-						"level": "available"
+						"level": "2",
+						"list": [
+							"class:ranger"
+						]
 					}
 				},
 				"value": {
@@ -994,60 +914,24 @@
 					},
 					"allowDrops": true,
 					"type": "spell",
-					"pool": [
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.eeaujALWbZN0gsRL"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.jdFMmZrR5TJegYvD"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.l3PBmfstaAN5ybn3"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.726nL4N0WCfd9CRx"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.2oT2CvtPPtpZOJyL"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.h0aGH4uoMJApiqE7"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.Epn6BqqU0O0Bj2jv"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.6yixBp8pwhVAkbUJ"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.nr1SaOIIpI3fbZxp"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.KzFHf1TlgQnjbvII"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.xf2o9rcYvoN4NVgn"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.5YfzPpLkF7a0VrIq"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.oZwKW3I3yzrSdpLE"
-						}
-					],
+					"pool": [],
 					"spell": {
 						"ability": [
 							"wis"
 						],
-						"preparation": "prepared",
 						"uses": {
 							"max": "",
 							"per": "",
 							"requireSlot": false
-						}
+						},
+						"method": "spell",
+						"prepared": 1
 					},
 					"restriction": {
-						"level": "available"
+						"level": "3",
+						"list": [
+							"class:ranger"
+						]
 					}
 				},
 				"value": {
@@ -1073,37 +957,25 @@
 					},
 					"allowDrops": true,
 					"type": "spell",
-					"pool": [
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.aAdf75YGAxSNhwuL"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.Y24nyCt4lQreT5aH"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.8Yd24rEnI9QvQgMo"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.VhcOj938RhpZDDhI"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.sm66v23hm3vEeaTQ"
-						}
-					],
+					"pool": [],
 					"spell": {
 						"ability": [
 							"wis"
 						],
-						"preparation": "prepared",
 						"uses": {
 							"max": "",
 							"per": "",
 							"requireSlot": false
-						}
+						},
+						"method": "spell",
+						"prepared": 1
 					},
 					"restriction": {
 						"type": "",
-						"level": "available"
+						"level": "4",
+						"list": [
+							"class:ranger"
+						]
 					}
 				},
 				"value": {
@@ -1129,48 +1001,24 @@
 					},
 					"allowDrops": true,
 					"type": "spell",
-					"pool": [
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.PH8IHWnZkad6jFB2"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.Mi4qWwfmDYv6GrkI"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.5rGkXnOYlke1CBJf"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.1A5qH1CkDOvUroqh"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.6Bh8boQ7MlRLqTy0"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.VkpZOMVqwichvUXA"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.cYHN8rl47RcgXPxL"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.cbRs0Xmq9qT1yf45"
-						},
-						{
-							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.3cY7WOkURuISX8fc"
-						}
-					],
+					"pool": [],
 					"spell": {
 						"ability": [
 							"wis"
 						],
-						"preparation": "prepared",
 						"uses": {
 							"max": "",
 							"per": "",
 							"requireSlot": false
-						}
+						},
+						"method": "spell",
+						"prepared": 1
 					},
 					"restriction": {
-						"level": "available"
+						"level": "5",
+						"list": [
+							"class:ranger"
+						]
 					}
 				},
 				"value": {
@@ -1213,7 +1061,9 @@
 						}
 					],
 					"spell": null,
-					"restriction": {}
+					"restriction": {
+						"list": []
+					}
 				},
 				"value": {
 					"added": {},
@@ -1467,7 +1317,8 @@
 					],
 					"spell": null,
 					"restriction": {
-						"type": "feat"
+						"type": "feat",
+						"list": []
 					}
 				},
 				"value": {
@@ -1626,7 +1477,8 @@
 					"spell": null,
 					"restriction": {
 						"type": "feat",
-						"subtype": ""
+						"subtype": "",
+						"list": []
 					}
 				},
 				"value": {
