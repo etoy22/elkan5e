@@ -111,10 +111,10 @@ export async function gameSettingRegister() {
 
 	game.settings.registerMenu("elkan5e", "updateElkanMenu", {
 		name: "elkan5e.updateElkan.name",
-		label: "elkan5e.updateElkan.label",
+		label: "elkan5e.updateElkan.label", // Text on the button
 		hint: "elkan5e.updateElkan.hint",
-		icon: "fas fa-sync",
-		type: UpdateElkanRunner,
+		icon: "fas fa-sync", // FontAwesome icon
+		type: UpdateElkanRunner, // Class that runs your function
 		restricted: true,
 	});
 }

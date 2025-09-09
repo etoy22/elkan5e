@@ -110,10 +110,10 @@ export function filterDocsByMode(docs, mode) {
 }
 
 // Helper to get the identifier for an item or doc
-
 function getItemIdentifier(item) {
 	const id = item.system?.identifier;
 	if (id && id.trim().length > 0) return id.trim();
+
 	// If no identifier exists, generate one and save it so it persists
 	const generated = item.name.toLowerCase().replace(/\s+/g, "-");
 	if (item.system) item.system.identifier = generated;
@@ -244,16 +244,6 @@ function deepEqualIgnoringMeta(a, b) {
 
 	if (a === null || b === null) return a === b;
 
-	// Helper to check if path matches fields to ignore
-	function isIgnoredPath(path) {
-		return (
-			/^effects\[\d+\]\.duration\.startTime$/.test(path) ||
-			/^effects\[\d+\]\.flags\.dae\.itemsToDelete$/.test(path) ||
-			/^effects\[\d+\]\.flags\.dae$/.test(path) ||
-			/^flags\.dae$/.test(path)
-		);
-	}
-
 	// Arrays
 	if (Array.isArray(a) && Array.isArray(b)) {
 		if (a.length !== b.length) return false;
@@ -292,9 +282,7 @@ function deepEqualIgnoringMeta(a, b) {
 		if (aKeys.length !== bKeys.length) return false;
 		for (const key of aKeys) {
 			if (!bKeys.includes(key)) return false;
-			const nextPath = arguments[2] ? `${arguments[2]}.${key}` : key;
-			if (isIgnoredPath(nextPath)) continue;
-			if (!deepEqualIgnoringMeta(a[key], b[key], nextPath)) return false;
+			if (!deepEqualIgnoringMeta(a[key], b[key])) return false;
 		}
 		return true;
 	}
@@ -489,13 +477,17 @@ export async function migrateActorByType({
 							const oldActivity = oldActivities.get(newKey);
 							const newActivity = newActivities[newKey];
 							if (oldActivity && newActivity) {
-								// Check if consumption is the same
-								const consumptionIsSame =
-									JSON.stringify(oldActivity.consumption) ===
-									JSON.stringify(newActivity.consumption);
-								if (!consumptionIsSame) {
-									newActivity.consumption = { ...oldActivity.consumption };
-								}
+								const same =
+									oldActivity.consumption.targets.length ===
+										newActivity.consumption.targets.length &&
+									oldActivity.consumption.scaling.allowed ===
+										newActivity.consumption.scaling.allowed &&
+									oldActivity.consumption.scaling.max ===
+										newActivity.consumption.scaling.max &&
+									oldActivity.consumption.spellSlot ===
+										newActivity.consumption.spellSlot;
+
+								if (!same) newActivity.consumption = { ...oldActivity.consumption };
 							}
 						}
 					}
@@ -503,15 +495,6 @@ export async function migrateActorByType({
 			}
 
 			const createdItems = await actor.createEmbeddedDocuments("Item", [newData]);
-			// Set _stats.compendiumSource after creation to avoid DataModelValidationError
-			if (newItem.pack && newItem.id) {
-				await createdItems[0].update({
-					_stats: {
-						...createdItems[0]._stats,
-						compendiumSource: `Compendium.${newItem.pack}.Item.${newItem.id}`,
-					},
-				});
-			}
 
 			// Optional: preserve original name
 			let namePreserved = false;
@@ -520,26 +503,13 @@ export async function migrateActorByType({
 				namePreserved = true;
 			}
 
-			// Post-creation: force a refresh/update for the item
-			if (createdItems[0]) {
-				if (typeof createdItems[0].refresh === "function") {
-					createdItems[0].refresh();
-				} else {
-					// Fallback: trigger a dummy update to force Foundry to re-link resources
-					await createdItems[0].update({});
-				}
-			}
-
 			// report
 			if (oldItem) {
-				// Get differing fields for report
-				const differingFields = getDifferingFields(oldItem, newItem);
 				reportByActor.get(actor.id).updated.push({
 					from: oldItem.name,
 					to: namePreserved ? savedProps[id].name : newData.name,
 					id,
 					namePreserved,
-					differingFields,
 				});
 				totals.updated++;
 			} else {
@@ -633,44 +603,26 @@ export async function migrateActorByType({
 				console.log("None");
 			}
 			console.groupEnd();
-
-			// Created
-			console.groupCollapsed(`Created (${c})`);
-			if (c) {
-				for (const it of rpt.created) {
-					console.log(it.name ?? "Unnamed");
-				}
-			} else {
-				console.log("None");
-			}
-			console.groupEnd();
-
-			// Skipped
-			console.groupCollapsed(`Skipped (${s})`);
-			if (s) {
-				for (const it of rpt.skipped) {
-					console.log(it.item ?? it.name ?? "Unnamed");
-				}
-			} else {
-				console.log("None");
-			}
-			console.groupEnd();
-
-			console.groupEnd(); // actor
 		}
-		console.groupEnd(); // changed actors
-	}
-
-	// ---- Unchanged actors ----
-	if (unchangedActors.length) {
-		console.groupCollapsed(`Actors with no changes (${unchangedActors.length})`);
-		for (const rpt of unchangedActors) {
-			console.log(`${rpt.name} [${rpt.type}]`);
+		if (rpt.created.length) {
+			console.groupCollapsed("Created");
+			rpt.created.forEach((c) => {
+				console.log(
+					`• ${c.name}${c.namePreserved ? " (name preserved)" : ""} [id:${c.id}]`,
+				);
+			});
+			console.groupEnd();
 		}
+		if (rpt.skipped.length) {
+			console.groupCollapsed("Skipped");
+			rpt.skipped.forEach((s) => console.warn(`• ${s.item}: ${s.reason}`));
+			console.groupEnd();
+		}
+
 		console.groupEnd();
 	}
 
-	console.groupEnd(); // top summary
+	console.groupEnd();
 
 	ui.notifications.info(
 		`${progressLabel} finished — Actors: ${totals.actors}, Updated: ${totals.updated}, Created: ${totals.created}, Skipped: ${totals.skipped}. See console for details.`,
@@ -715,6 +667,7 @@ export async function migrateActorItems(
 			"attunement",
 			"equipped",
 		],
+
 		progressLabel: "Items",
 	});
 }
