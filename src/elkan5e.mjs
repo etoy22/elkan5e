@@ -39,8 +39,20 @@ const POLL_URL =
 	"https://docs.google.com/forms/d/e/1FAIpQLSdl_E6udYqbRS_KJ0eLta1mIS54yCWUNiOQUTJwFZ9TR7CcNA/viewform?usp=dialog";
 
 Hooks.once("ready", async () => {
+	// Only the first active GM should run this
+	if (!game.user.isGM) return;
+
+	// Prevent duplicates if message already exists
+	const existing = game.messages.contents.find((m) => m.flags?.elkan5e?.poll);
+	if (existing) return;
+
+	// Create the poll message
 	await ChatMessage.create({
-		speaker: { alias: "Elkan 5e — Poll" },
+		speaker: {
+			alias: "Elkan 5e — Poll",
+			// optional image
+			icon: "https://static.wixstatic.com/media/f326e7_6e591365076b48a085365f9bb46945ef~mv2.png/v1/fill/w_62,h_66,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Fallow%20Icon_edited.png",
+		},
 		content: `
       <div class="elkan5e-poll-card">
         <h4>We’d love your input!</h4>
@@ -50,13 +62,13 @@ Hooks.once("ready", async () => {
         </button>
       </div>
     `,
-		flags: { elkan5e: { poll: true } }, // mark the message so we know it's ours
+		flags: { elkan5e: { poll: true } },
 	});
 });
 
 // Attach click handler when chat message is rendered
 Hooks.on("renderChatMessage", (message, html) => {
-	if (!message.flags?.elkan5e?.poll) return; // only for our poll message
+	if (!message.flags?.elkan5e?.poll) return;
 
 	html.find(".elkan5e-poll-btn").on("click", (ev) => {
 		ev.preventDefault();

@@ -1,5 +1,9 @@
 # Changelog
 
+# v1.13.1.1
+
+- Fix so that the poll isn't spammed on screen
+
 # v1.13.1
 
 ## Bug Fixes
