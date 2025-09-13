@@ -163,9 +163,9 @@
 			"name": "Danger Sense",
 			"changes": [
 				{
-					"key": "flags.dnd5e.initiativeAdv",
-					"mode": 0,
-					"value": "1",
+					"key": "system.attributes.init.bonus",
+					"mode": 2,
+					"value": "+@attributes.prof",
 					"priority": 20
 				},
 				{
@@ -188,7 +188,7 @@
 				"startTurn": null
 			},
 			"description": "",
-			"origin": null,
+			"origin": "Compendium.elkan5e.elkan5e-feats.Item.k4Lf8VZtlESUaz24",
 			"statuses": [],
 			"flags": {
 				"times-up": {
@@ -203,11 +203,12 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": [],
-					"disableIncapacitated": false
+					"disableIncapacitated": false,
+					"disableCondition": ""
 				},
 				"ActiveAuras": {
 					"isAura": false,
-					"aura": "None",
+					"aura": "Enemy",
 					"nameOverride": "",
 					"radius": "",
 					"alignment": "",
@@ -219,7 +220,16 @@
 					"displayTemp": false,
 					"hostile": false,
 					"onlyOnce": false,
-					"wallsBlock": "system"
+					"wallsBlock": "system",
+					"statuses": []
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"core": {
+					"overlay": false
 				}
 			},
 			"tint": "#ffffff",
