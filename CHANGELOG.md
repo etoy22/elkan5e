@@ -1,5 +1,9 @@
 # Changelog
 
+# v1.13.1.2
+
+- Fix issue with error from left over code
+
 # v1.13.1.1
 
 - Fix so that the poll isn't spammed on screen
