@@ -98,7 +98,6 @@ Hooks.once("init", async () => {
 		setupDamageReferences();
 		setupSpellcastingReferences();
 		setupCreatureTypeReferences();
-		setupSkillReferences();
 		CONFIG.DND5E.skills.engineering = {
 			label: "Engineering",
 			ability: "int",
