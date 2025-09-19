@@ -1,0 +1,279 @@
+{
+	"name": "Potion of Necrotic Resistance",
+	"type": "consumable",
+	"img": "icons/consumables/potions/bottle-round-corked-pink.webp",
+	"system": {
+		"description": {
+			"value": "<p><em>The potion is a plain indescriminate color and smells slightly foul.</em></p><p><strong>Action</strong> - 1 Creature (Touch) - 1 Hour</p><p><strong>Buff</strong></p><ul><li><p>Target gain resistance to &amp;reference[necrotic].</p></li></ul>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "",
+			"book": "",
+			"page": "",
+			"license": "",
+			"rules": "2014",
+			"revision": 1
+		},
+		"quantity": 1,
+		"weight": {
+			"value": 0.1,
+			"units": "lb"
+		},
+		"price": {
+			"value": 200,
+			"denomination": "gp"
+		},
+		"attunement": "",
+		"equipped": false,
+		"rarity": "uncommon",
+		"identified": true,
+		"uses": {
+			"max": "1",
+			"recovery": [],
+			"autoDestroy": true,
+			"spent": 0
+		},
+		"damage": {
+			"base": {
+				"number": null,
+				"denomination": null,
+				"types": [],
+				"custom": {
+					"enabled": false
+				},
+				"scaling": {
+					"number": 1
+				}
+			},
+			"replace": false
+		},
+		"type": {
+			"value": "potion",
+			"subtype": ""
+		},
+		"unidentified": {
+			"description": ""
+		},
+		"container": null,
+		"properties": [
+			"mgc"
+		],
+		"magicalBonus": null,
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "utility",
+				"activation": {
+					"type": "action",
+					"value": 1,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [
+						{
+							"type": "itemUses",
+							"target": "",
+							"value": "1",
+							"scaling": {
+								"mode": "",
+								"formula": ""
+							}
+						}
+					],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "1",
+					"units": "hour",
+					"special": "",
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "28x7nDpppmU0LlOn"
+					}
+				],
+				"range": {
+					"units": "touch",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": "ft"
+					},
+					"affects": {
+						"count": "1",
+						"type": "creature",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"roll": {
+					"formula": "",
+					"name": "",
+					"prompt": false,
+					"visible": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": []
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true
+			}
+		},
+		"attuned": false,
+		"identifier": "potion-of-necrotic-resistance"
+	},
+	"effects": [
+		{
+			"name": "Potion of Necrotic Resistance",
+			"img": "icons/consumables/potions/bottle-round-corked-pink.webp",
+			"origin": "Compendium.elkan5e.elkan5e-magic-items.Item.SzN6lC4beNrse7F3",
+			"transfer": false,
+			"_id": "28x7nDpppmU0LlOn",
+			"type": "base",
+			"system": {},
+			"changes": [
+				{
+					"key": "system.traits.dr.value",
+					"mode": 2,
+					"value": "necrotic",
+					"priority": 20
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"combat": null,
+				"seconds": 3600,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [],
+			"flags": {
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"stackable": "noneName",
+					"showIcon": false,
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "All",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!SzN6lC4beNrse7F3.28x7nDpppmU0LlOn"
+		}
+	],
+	"folder": "MCDkPm6xibc3rF7y",
+	"flags": {
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		}
+	},
+	"_id": "SzN6lC4beNrse7F3",
+	"_key": "!items!SzN6lC4beNrse7F3"
+}
