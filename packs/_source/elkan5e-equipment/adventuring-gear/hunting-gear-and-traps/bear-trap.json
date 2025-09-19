@@ -1,0 +1,525 @@
+{
+	"name": "Bear Trap",
+	"system": {
+		"description": {
+			"value": "<p><span lang=\"EN-US\"><strong>1 Minute </strong>- 1 Space (5 ft.)</span></p><p>You place the trap.</p><ul><li><p><strong>Area Hazard: </strong>Any creature that moves onto the space must make a save.</p></li></ul><p class=\"MsoNormal\"><span lang=\"EN-US\"><strong>[[/save dexterity 13]]{Dexterity Save (DC 13)}</strong></span></p><ul style=\"margin-top:0cm\"><li class=\"MsoNormal\" style=\"mso-list:l0 level1 lfo1;tab-stops:list 36.0pt\"><span lang=\"EN-US\"><strong>Failure:</strong> Target takes [[/damage]] damage and is &amp;reference[grappled] by the trap. The target cannot be &amp;reference[push]{pushed} out of this grapple.</span></li><li class=\"MsoNormal\" style=\"mso-list:l0 level1 lfo1;tab-stops:list 36.0pt\"><span lang=\"EN-US\"><strong>Success:</strong> No effect.</span></li></ul><p><br /></p><p class=\"MsoNormal\"></p><p>A creature can attempt an &amp;reference[athletics] or &amp;reference[engineering] check to free a creature in a bear trap.</p><p class=\"MsoNormal\"><span lang=\"EN-US\"><strong>Action</strong> - 1 Object (Touch)</span></p><p><strong>[[/skill athletics 13]]{Athletics Check} or [[/skill engineering 13]]{Engineering Check (DC 13)}</strong></p><ul style=\"margin-top:0cm\"><li class=\"MsoNormal\" style=\"mso-list:l1 level1 lfo2;tab-stops:list 36.0pt\"><span lang=\"EN-US\"><strong>Success:</strong> Target is freed.</span></li><li class=\"MsoNormal\" style=\"mso-list:l1 level1 lfo2;tab-stops:list 36.0pt\"><span lang=\"EN-US\"><strong>Failure:</strong> Trapped target takes [[/damage activity=JAPD1WMoWD8PzLoA]] damage.</span></li></ul><p><br /><em>Note: It takes 1 minute to recover the bear trap.</em></p>",
+			"chat": ""
+		},
+		"price": {
+			"value": 15,
+			"denomination": "gp"
+		},
+		"source": {
+			"custom": "elkan5e.com/items/bear-trap",
+			"rules": "2024",
+			"license": "",
+			"book": "",
+			"revision": 1,
+			"page": ""
+		},
+		"identified": true,
+		"unidentified": {
+			"description": ""
+		},
+		"container": null,
+		"quantity": 1,
+		"weight": {
+			"value": 40,
+			"units": "lb"
+		},
+		"rarity": "common",
+		"attunement": "",
+		"attuned": false,
+		"equipped": false,
+		"uses": {
+			"max": "1",
+			"autoDestroy": false,
+			"spent": 0,
+			"recovery": []
+		},
+		"damage": {
+			"base": {
+				"number": null,
+				"denomination": null,
+				"types": [],
+				"custom": {
+					"enabled": false
+				},
+				"scaling": {
+					"number": 1
+				}
+			},
+			"replace": false
+		},
+		"type": {
+			"value": "trinket",
+			"subtype": ""
+		},
+		"magicalBonus": null,
+		"properties": [],
+		"activities": {
+			"tIsE5Y5S9TjOTs9C": {
+				"type": "save",
+				"_id": "tIsE5Y5S9TjOTs9C",
+				"activation": {
+					"type": "",
+					"value": null,
+					"override": false,
+					"condition": "Steps on the plate"
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "9jl46RZ5GOjs9QlJ",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "ft",
+					"special": "",
+					"value": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "1",
+						"type": "creature",
+						"special": ""
+					},
+					"override": false,
+					"prompt": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 2,
+							"denomination": 6,
+							"bonus": "",
+							"types": [
+								"piercing"
+							]
+						}
+					],
+					"onSave": "none",
+					"critical": {
+						"allow": false
+					}
+				},
+				"save": {
+					"ability": [
+						"dex"
+					],
+					"dc": {
+						"calculation": "",
+						"formula": "13"
+					}
+				},
+				"name": "",
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "",
+				"otherActivityAsParentType": true,
+				"friendlySave": "default",
+				"img": "",
+				"appliedEffects": [
+					"9jl46RZ5GOjs9QlJ"
+				]
+			},
+			"JAPD1WMoWD8PzLoA": {
+				"type": "damage",
+				"name": "Failed Escape",
+				"_id": "JAPD1WMoWD8PzLoA",
+				"activation": {
+					"type": "action",
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "self",
+					"override": false,
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"type": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"critical": {
+						"allow": false
+					},
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": "1"
+							},
+							"number": 2,
+							"denomination": 6,
+							"bonus": "",
+							"types": [
+								"piercing"
+							]
+						}
+					]
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": true,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"img": "",
+				"appliedEffects": []
+			},
+			"7JSAKxIFS7bRc4Km": {
+				"type": "utility",
+				"name": "Recover Bear Trap",
+				"activation": {
+					"type": "minute",
+					"value": 1,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "-1",
+							"target": ""
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": ""
+					},
+					"override": false,
+					"prompt": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"_id": "7JSAKxIFS7bRc4Km",
+				"img": "",
+				"appliedEffects": []
+			}
+		},
+		"identifier": "bear-trap"
+	},
+	"type": "consumable",
+	"folder": "Qjhe0eLLeK89MVke",
+	"img": "icons/environment/traps/trap-jaw-steel.webp",
+	"effects": [
+		{
+			"name": "Hunting Trap",
+			"img": "icons/environment/traps/trap-jaw-steel.webp",
+			"origin": "Compendium.dnd5e.equipment24.Item.phbagHuntingTrap",
+			"transfer": false,
+			"_id": "9jl46RZ5GOjs9QlJ",
+			"type": "base",
+			"system": {},
+			"changes": [
+				{
+					"key": "system.attributes.movement.all",
+					"mode": 0,
+					"value": "*0",
+					"priority": 20
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": null,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [],
+			"flags": {
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"stackable": "noneName",
+					"showIcon": true,
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "All",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!6feFbcgaZMorx6j6.9jl46RZ5GOjs9QlJ"
+		}
+	],
+	"flags": {
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		}
+	},
+	"_id": "6feFbcgaZMorx6j6",
+	"_key": "!items!6feFbcgaZMorx6j6"
+}

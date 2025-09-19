@@ -9,7 +9,7 @@
 				"type": "utility",
 				"_id": "o23C4IHWZOgCjqBz",
 				"activation": {
-					"type": "action",
+					"type": "bonus",
 					"value": null,
 					"override": false,
 					"condition": ""
@@ -23,7 +23,8 @@
 						{
 							"type": "itemUses",
 							"value": "1",
-							"target": ""
+							"target": "",
+							"scaling": {}
 						}
 					]
 				},
@@ -43,7 +44,7 @@
 				],
 				"range": {
 					"override": false,
-					"units": "touch",
+					"units": "self",
 					"special": ""
 				},
 				"target": {
@@ -54,9 +55,8 @@
 					},
 					"affects": {
 						"choice": false,
-						"count": "1",
-						"type": "creature",
-						"special": ""
+						"count": "",
+						"type": ""
 					},
 					"override": false,
 					"prompt": true
@@ -72,7 +72,7 @@
 					"name": "",
 					"formula": ""
 				},
-				"name": "",
+				"name": "Drink",
 				"useConditionText": "",
 				"useConditionReason": "",
 				"effectConditionText": "",
@@ -122,11 +122,7 @@
 					"postRemoveConditionText": ""
 				},
 				"otherActivityId": "none",
-				"otherActivityAsParentType": true,
-				"img": "",
-				"appliedEffects": [
-					"GxutU47JS0FNfeoM"
-				]
+				"otherActivityAsParentType": true
 			}
 		},
 		"uses": {
@@ -136,10 +132,10 @@
 			"max": "1"
 		},
 		"description": {
-			"value": "<p><strong>Action</strong> - 1 Creature (Touch) - 24 Hours</p><p><strong>Healing</strong></p><ul><li><p>Remove all levels of &amp;Reference[Exhaustion apply=false].</p></li><li><p>End the &amp;Reference[Poisoned apply=false] condition.</p></li><li><p>Regain maximum HP from Hit Dice.</p></li></ul><section class=\"secret\" id=\"secret-z0SSGecWIDLeIdS3\"><p><strong>Foundry Note</strong></p><p>The Active Effect can be used for tracking.</p></section>",
+			"value": "<p><strong>Action </strong>- 1 Creature (Touch) - 24 Hours</p><p><strong>Buff/Healing</strong></p><ul><li><p>Target loses the &amp;Reference[Exhaustion apply=false] and &amp;Reference[Poisoned apply=false] conditions.</p></li><li><p>Target regains maximum number of Hit Points for any Hit Point Die they spend.</p></li></ul><p></p><section class=\"secret\" id=\"secret-z0SSGecWIDLeIdS3\"><p><strong>Foundry Note</strong></p><p>The <strong>Potion of Vitality</strong> Active Effect can be used for tracking.</p></section>",
 			"chat": ""
 		},
-		"identifier": "",
+		"identifier": "potion-of-vitality",
 		"source": {
 			"revision": 1,
 			"rules": "2024",
@@ -252,7 +248,7 @@
 					"statuses": []
 				}
 			},
-			"_key": "!items.effects!4rhOSjSuKbbkvQgN.GxutU47JS0FNfeoM"
+			"_key": "!items.effects!VLWMTiQVE1tObfqZ.GxutU47JS0FNfeoM"
 		}
 	],
 	"flags": {
@@ -263,6 +259,6 @@
 			}
 		}
 	},
-	"_id": "4rhOSjSuKbbkvQgN",
-	"_key": "!items!4rhOSjSuKbbkvQgN"
+	"_id": "VLWMTiQVE1tObfqZ",
+	"_key": "!items!VLWMTiQVE1tObfqZ"
 }

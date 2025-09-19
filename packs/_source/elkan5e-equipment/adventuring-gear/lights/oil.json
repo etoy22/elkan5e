@@ -1,0 +1,413 @@
+{
+	"name": "Oil",
+	"system": {
+		"description": {
+			"value": "<p><strong>Utility</strong></p><p>You can use a flask of oil in one of the following ways:</p><ul><li><strong>Douse a Space:</strong> Pour oil on level ground to cover a 5 ft. square. If lit, it burns for 2 rounds, dealing 5 fire damage to any creature that enters or ends its turn in the space (once per turn).</li></ul><ul><li><strong>Fuel:</strong> Burn in a lamp or lantern for up to 6 hours (can be extinguished and relit until used up).</li><li><strong>Douse a Creature or Object:</strong> Replace one attack with throwing the flask (see below).</li></ul><p><br /></p><p><strong>In Place of a Weapon Attack</strong> - 1 Creature or Object (20 ft.) - 1 Minute</p><p><strong>[[/skill Dex]]{Dexterity Save (DC 8 + Dexterity Mod + Proficiency)}</strong></p><ul><li><p><strong>Failure:</strong> If doused, you are covered in oil. If you take fire damage during this time, you take an extra 5 fire damage.</p></li><li><p> <strong>Success:</strong> No effect.</p></li></ul>",
+			"chat": ""
+		},
+		"price": {
+			"value": 1,
+			"denomination": "sp"
+		},
+		"source": {
+			"custom": "elkan5e.com/items/oil",
+			"rules": "2024",
+			"license": "",
+			"book": "",
+			"revision": 1,
+			"page": ""
+		},
+		"identified": true,
+		"unidentified": {
+			"description": ""
+		},
+		"container": null,
+		"quantity": 1,
+		"weight": {
+			"value": 1,
+			"units": "lb"
+		},
+		"rarity": "common",
+		"attunement": "",
+		"attuned": false,
+		"equipped": false,
+		"uses": {
+			"max": "1",
+			"autoDestroy": true,
+			"spent": 0,
+			"recovery": []
+		},
+		"damage": {
+			"base": {
+				"number": null,
+				"denomination": null,
+				"types": [],
+				"custom": {
+					"enabled": false
+				},
+				"scaling": {
+					"number": 1
+				}
+			},
+			"replace": false
+		},
+		"type": {
+			"value": "potion",
+			"subtype": ""
+		},
+		"magicalBonus": null,
+		"properties": [],
+		"activities": {
+			"FoeoumkYcnAsGCRo": {
+				"type": "save",
+				"name": "Throw",
+				"_id": "FoeoumkYcnAsGCRo",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "",
+							"scaling": {}
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "WPsCu3vohbfLyPbz"
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "ft",
+					"special": "",
+					"value": "20"
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "1",
+						"type": "creature",
+						"special": ""
+					},
+					"override": false,
+					"prompt": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"parts": [],
+					"onSave": "half",
+					"critical": {
+						"allow": false
+					}
+				},
+				"save": {
+					"ability": [
+						"dex"
+					],
+					"dc": {
+						"calculation": "dex",
+						"formula": ""
+					}
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "",
+				"otherActivityAsParentType": true,
+				"friendlySave": "default"
+			},
+			"mDj3jtAY6ICmi1ZL": {
+				"type": "damage",
+				"name": "Douse Space",
+				"_id": "mDj3jtAY6ICmi1ZL",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "",
+							"scaling": {}
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"units": "ft",
+					"special": "",
+					"value": "5"
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": "square",
+						"size": "5",
+						"count": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "1",
+						"type": "space",
+						"special": ""
+					},
+					"override": false,
+					"prompt": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"critical": {
+						"allow": false
+					},
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": null,
+							"denomination": 0,
+							"bonus": "5",
+							"types": [
+								"fire"
+							],
+							"scaling": {
+								"number": 1
+							}
+						}
+					]
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				}
+			}
+		},
+		"identifier": "oil"
+	},
+	"type": "consumable",
+	"folder": "PDDSivJKdBfUIao5",
+	"img": "icons/consumables/potions/bottle-bulb-empty-glass.webp",
+	"effects": [
+		{
+			"name": "Oil",
+			"img": "icons/consumables/potions/bottle-bulb-empty-glass.webp",
+			"origin": "Compendium.elkan5e.elkan5e-equipment.Item.GJ2Y6dxmMU4lWtlO",
+			"transfer": false,
+			"_id": "WPsCu3vohbfLyPbz",
+			"type": "base",
+			"system": {},
+			"changes": [
+				{
+					"key": "system.traits.dm.amount.fire",
+					"mode": 2,
+					"value": "5",
+					"priority": 20
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"combat": null,
+				"seconds": 60,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [],
+			"flags": {
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"stackable": "noneName",
+					"showIcon": false,
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "All",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!GJ2Y6dxmMU4lWtlO.WPsCu3vohbfLyPbz"
+		}
+	],
+	"flags": {
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		}
+	},
+	"_id": "GJ2Y6dxmMU4lWtlO",
+	"_key": "!items!GJ2Y6dxmMU4lWtlO"
+}

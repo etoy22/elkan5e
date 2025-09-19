@@ -208,7 +208,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p>A beam of brilliant light flashes out from your hand in a 5-foot-wide, 60-foot-long line. Each creature in the line must make a Constitution saving throw. On a failed save, a creature takes 6d8 radiant damage and is Blinded until your next turn. On a successful save, it takes half as much damage and isn't b⁠linded by this spell. Undead and oozes have disadvantage on this saving throw.</p><p>You can create a new line of radiance as your action on any turn until the spell ends.</p><p>For the Duration, a mote of brilliant radiance shines in your hand. It sheds bright light in a 30-foot radius and dim light for an additional 30 feet. This light is sunlight.</p>",
+			"value": "<p><em>You hold a crystal lens in your hand, which shines as a mote of sunlight from which you can shoot beams of brilliant radiance.</em></p><p>You shed bright light in a 30-foot radius and dim light for an additional 30 feet.</p><p><strong>Constitution Save</strong></p><p>The sunbeam targets all creatures in a 5 ft. wide, 60-foot long line. &amp;reference[Undead] and &amp;reference[ooze] have disadvantage on this saving throw.</p><ul><li><p><strong>Failure: </strong>Target takes [[/damage 6d8 radiant]] damage and is &amp;reference[Blinded] until your next turn.</p></li><li><p><strong>Success:</strong> Half damage.</p></li><li><p><strong>Concentration:</strong> You can create a new line of radiance as your action.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -230,15 +230,18 @@
 		},
 		"target": {
 			"affects": {
-				"type": "self",
-				"count": "60",
+				"type": "creature",
+				"count": "",
 				"choice": false,
 				"special": ""
 			},
 			"template": {
 				"units": "ft",
 				"contiguous": false,
-				"type": ""
+				"type": "line",
+				"size": "60",
+				"width": "5",
+				"count": ""
 			}
 		},
 		"range": {
@@ -304,7 +307,10 @@
 					}
 				],
 				"range": {
-					"override": false
+					"override": false,
+					"special": "",
+					"units": "ft",
+					"value": ""
 				},
 				"target": {
 					"type": "creature",
@@ -329,8 +335,7 @@
 								"radiant"
 							],
 							"scaling": {
-								"mode": "",
-								"number": 1
+								"mode": ""
 							}
 						}
 					]
@@ -443,6 +448,5 @@
 		"identifier": "sunbeam"
 	},
 	"_id": "3PLCI9VCm0OztsBx",
-	"_key": "!items!3PLCI9VCm0OztsBx",
-	"identifier": "sunbeam"
+	"_key": "!items!3PLCI9VCm0OztsBx"
 }
