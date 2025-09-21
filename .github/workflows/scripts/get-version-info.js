@@ -18,7 +18,7 @@ function main() {
 		const m2 = embedRegex.exec(firstLine);
 		const candidate = cleanVersion((m2?.[2] ?? firstLine));
 
-		const versionRegex = /^[vV](\d+(?:\.\d+)+)(?:\s*-\s*[\w.]+)*$/;
+		const versionRegex = /^([vV])(\d+(?:\.\d+)+)((?:\s*-\s*[\w.]+)*)$/;
 		const match = candidate.match(versionRegex);
 
 		if (!match) {
@@ -30,9 +30,9 @@ function main() {
 			process.exit(0);
 		}
 
-		const prefix = 'v';
-		const versionNumbers = match[1];
-		const suffixes = (candidate.slice(match[0].length) || '')
+		const prefix = match[1].toLowerCase();
+		const versionNumbers = match[2];
+		const suffixes = (match[3] || '')
 			.split('-').map(s => s.trim().toLowerCase()).filter(Boolean);
 
 		const isTest = suffixes.includes('test');
