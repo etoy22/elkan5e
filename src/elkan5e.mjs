@@ -42,7 +42,6 @@ Hooks.once("ready", async () => {
 	// Only the first active GM should run this
 	if (!game.user.isGM) return;
 
-
 	// Remove any previous poll messages so the latest one is shown every load
 	const previousPolls = (game.messages?.contents ?? []).filter((m) => m.flags?.elkan5e?.poll);
 	if (previousPolls.length) {
@@ -251,6 +250,3 @@ globalThis.elkan5e = {
 		},
 	},
 };
-
-
-
