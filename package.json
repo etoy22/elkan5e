@@ -6,26 +6,30 @@
 	"type": "module",
 	"scripts": {
 		"pack": "npm run build:clean && npm run build:db",
-		"clean": "npm run build:clean",
+		"clean": "npm run fix && npm run build:clean",
 		"unpack": "node ./src/packs.mjs package unpack",
 		"build:clean": "node ./src/packs.mjs package clean",
 		"build:db": "node ./src/packs.mjs package pack",
 		"remove": "node ./src/packs.mjs package remove",
 		"lint": "eslint \"src/**/*.mjs\"",
 		"lint:fix": "eslint --fix \"src/**/*.mjs\"",
-		"format": "prettier --config .prettierrc.json --write \"src/**/*.{js,mjs,json,md}\""
+		"format": "prettier --config .prettierrc.json --write \"src/**/*.{js,mjs,json,md}\"",
+		"test": "node --test src/tests.mjs",
+		"fix": "npm run lint:fix && npm run format"
 	},
 	"devDependencies": {
 		"@foundryvtt/foundryvtt-cli": "^1.0.3",
 		"eslint": "^9.32.0",
 		"eslint-config-prettier": "^10.1.8",
 		"eslint-plugin-prettier": "^5.5.4",
-		"prettier": "^3.6.2"
+		"node-fetch": "^2.7.0",
+		"prettier": "^3.6.2",
+		"yaml": "^2.8.1"
 	},
 	"dependencies": {
+		"@foundryvtt/foundryvtt-cli": "^1.0.3",
 		"fancy-log": "^2.0.0",
-		"yargs": "^17.7.2",
-		"@foundryvtt/foundryvtt-cli": "^1.0.3"
+		"yargs": "^17.7.2"
 	},
 	"repository": {
 		"type": "git",

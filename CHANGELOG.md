@@ -1,5 +1,58 @@
 # Changelog
 
+# v1.13.2
+
+## Bug Fixes
+
+- [Fey Step](https://www.elkan5e.com/feats/fey-step) feat activation is now correctly flagged as a bonus action and consumes one per-rest use when triggered, aligning the feat with its intended timing.
+- Restored missing material components for certain spells.
+- Fixed the action cost on Abjurer's Control Magic.
+
+## Backgrounds
+
+- Backgrounds now grant clothing.
+
+## Classes
+
+All classes now provide starter equipment containing mundane items.
+
+**[Barbarian](https://www.elkan5e.com/barbarian)**
+- Bloodrage
+    - Updated Wild bloodrager to now use _[Chromatic Orb](https://www.elkan5e.com/spell/chromatic-orb)_
+    - Also made it so that you can rename your spells and not run into issues.
+
+**[Sorcerer](https://www.elkan5e.com/sorcerer)**
+
+- Draconic:
+    - _[Dragon's Breath](https://www.elkan5e.com/spell/dragons-breath)_ is now the 2nd-level spell granted instead of _[Alter Self](https://www.elkan5e.com/spell/alter-self)_.
+- Wild Mage:
+    - Now _[Chromatic Orb](https://www.elkan5e.com/spell/chromatic-orb)_ and _[Prismatic Bolt](https://www.elkan5e.com/spell/prismatic-bolt)_ are granted at Levels 1 and 2, rather than _[Prismatic Bolt](https://www.elkan5e.com/spell/prismatic-bolt)_ and _[Mirror Image](https://www.elkan5e.com/spell/mirror-image)_.
+
+## Equipment
+
+- Common adventuring gear has been expanded to include clothing, containers, ropes, and more.
+- Additional potions have been added. These use the Elkan 5e style with automation but are subject to change.
+- Poisons have been added in Elkan format (also subject to change).
+
+## Game Rules
+
+- Added Bonus Action and Reaction reference pages clarifying action economy guidance in the Combat Journal entry.
+
+## Spells
+
+- All SRD spells added by 2024 (and selected for Elkan) have been converted into our format and automated, except _Tsunami_.
+- _Ensnaring Strike_ renamed to _[Ensnaring Vine](https://www.elkan5e.com/spell/ensnaring-vine)_.
+- Power Word Heal renamed to _[Power Cure](https://www.elkan5e.com/spell/power-cure)_.
+- Starry Wisp renamed to _[Celestial Bolt](https://www.elkan5e.com/spell/celestial-bolt)_.
+- _[Prismatic Bolt](https://www.elkan5e.com/spell/prismatic-bolt)_ is now a 2nd-level spell.
+- All Elkan spells now include flavor text.
+- Most 6th level spells have been updated to the Elkan format. Some are fully updated, while others currently only have formatting changes.
+
+## Misc
+
+- Weapon records now include `elkan5e.com` URLs in their source metadata.
+- The Magic Item Compendium is now available for players.
+
 # v1.13.1.2
 
 - Fix issue with error from left over code
@@ -43,6 +96,7 @@
 - Added and reworked CR 0 creatures for familiars
 
 # Equipment
+
 - Added Healing Potions
 - Added Mana Potions
 - Increased the cost of Scrolls
@@ -62,6 +116,7 @@
 - Clarified that you know the relative position with Locate Creature
 
 # Misc
+
 - All Saves now have the ability to simply click on them and roll and GMs now have the ability to request a roll simply from the description
 
 # v1.13.0.5

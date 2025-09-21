@@ -1,0 +1,474 @@
+{
+	"name": "Manacles",
+	"system": {
+		"description": {
+			"value": "<p><em>Manacles are meant to bind a single creature. They come with a small key.</em></p><p><strong>Action</strong> - 1 or 2 Creatures (Touch)</p><p>You bind the hands of a creature that is willing, &amp;Reference[Incapacitated apply=false], or &amp;Reference[Restrained apply=false].</p><p><strong>[[/skill slt 10]]{Sleight of Hand (DC 10)}</strong></p><ul><li><p><strong>Success (DC 10)</strong>: The creature is bound in one of the following ways:</p><ul><li><p><strong>Hands:</strong> Target's hands are bound. They have disadvantage on attack rolls and sleight of hand checks, can't grapple a creature, and can't use the somatic components of spells.</p></li><li><p><strong>Feet:</strong> Target's feet are bound. They have disadvantage on dexterity saves and acrobatics checks, and their speed is halved.</p></li><li><p><strong>Shackle to Object/Creature:</strong> Target is grappled by the object. A creature cannot be pushed to break this grapple. Creatures shackled together can move at half speed if moving simultaneously.</p></li></ul></li><li><p><strong>Manacles:</strong> Has an AC of 18, is immune to &amp;reference[poison] and &amp;reference[psychic] damage, resistant to non-adamantine physical, &amp;reference[cold], &amp;reference[lightning], &amp;reference[fire], &amp;reference[necrotic], and &amp;reference[thunder] damage, and must take 5 damage at once to break.</p></li><li><p><strong>Failure:</strong> No effect.</p></li></ul><p> </p><p><strong>Escape Manacles</strong></p><p><strong>Action</strong> - Touch</p><p><strong>[[/skill athletics 30]]{Athletics Check} or [[/skill acr 30]]{Acrobatics Check (DC 30)}*</strong></p><ul><li><p><strong>Success:</strong> Creature is no longer bound. If using athletics, the manacles are broken.</p></li><li><p><strong>Failure:</strong> No effect.</p></li></ul><p><br /><strong>Unlock Manacles</strong></p><p><strong>Action </strong>- Touch</p><p>A creature can either use a key or thieves' tools. If using thieves' tools, they must make a sleight of hand check.</p><p><strong>[[/skill slt 15]]{Sleight of Hand Check (DC 15)}</strong></p><ul><li><p><strong>Success:</strong> Target(s) are no longer bound.</p></li><li><p><strong>Failure:</strong> No effect.</p></li></ul><p></p><p><span lang=\"EN-US\"><em>*Remember that with Elkan rules, you add +5 to a natural 20s with skill checks. If not using this rule, the DC to escape manacles is 25.</em></span></p><p></p>",
+			"chat": ""
+		},
+		"price": {
+			"value": 5,
+			"denomination": "gp"
+		},
+		"source": {
+			"custom": "elkan5e.com/items/manacles",
+			"rules": "2024",
+			"license": "",
+			"book": "",
+			"revision": 1,
+			"page": ""
+		},
+		"identified": true,
+		"unidentified": {
+			"description": ""
+		},
+		"container": null,
+		"quantity": 1,
+		"weight": {
+			"value": 6,
+			"units": "lb"
+		},
+		"rarity": "common",
+		"attunement": "",
+		"attuned": false,
+		"equipped": false,
+		"uses": {
+			"max": "1",
+			"autoDestroy": false,
+			"spent": 0,
+			"recovery": []
+		},
+		"damage": {
+			"base": {
+				"number": null,
+				"denomination": null,
+				"types": [],
+				"custom": {
+					"enabled": false
+				},
+				"scaling": {
+					"number": 1
+				}
+			},
+			"replace": false
+		},
+		"type": {
+			"value": "trinket",
+			"subtype": ""
+		},
+		"magicalBonus": null,
+		"properties": [],
+		"activities": {
+			"LPW3NsIFCn3pYMjY": {
+				"type": "check",
+				"name": "Bind",
+				"_id": "LPW3NsIFCn3pYMjY",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "",
+							"scaling": {}
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "hKJK8c3uwhFNdn5m"
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "ft",
+					"special": "",
+					"value": "5"
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "1",
+						"type": "creature",
+						"special": "Grappled, Incapacitated, or Restrained"
+					},
+					"override": false,
+					"prompt": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"check": {
+					"associated": [
+						"slt"
+					],
+					"dc": {
+						"calculation": "",
+						"formula": "13"
+					},
+					"ability": ""
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"damage": {
+					"onSave": "half",
+					"parts": [],
+					"critical": {
+						"allow": false
+					}
+				},
+				"friendlySave": "default"
+			},
+			"IpcLYRMUOUk7dKpE": {
+				"type": "check",
+				"name": "Escape Check",
+				"_id": "IpcLYRMUOUk7dKpE",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": ""
+					},
+					"override": false,
+					"prompt": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"check": {
+					"associated": [
+						"slt"
+					],
+					"dc": {
+						"calculation": "",
+						"formula": "20"
+					},
+					"ability": ""
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"damage": {
+					"onSave": "half",
+					"parts": [],
+					"critical": {
+						"allow": false
+					}
+				},
+				"friendlySave": "default"
+			},
+			"HStudlka63uekHM2": {
+				"type": "check",
+				"name": "Burst Check",
+				"_id": "HStudlka63uekHM2",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": ""
+					},
+					"override": false,
+					"prompt": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"check": {
+					"associated": [
+						"ath"
+					],
+					"dc": {
+						"calculation": "",
+						"formula": "25"
+					},
+					"ability": ""
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"damage": {
+					"onSave": "half",
+					"parts": [],
+					"critical": {
+						"allow": false
+					}
+				},
+				"friendlySave": "default"
+			}
+		},
+		"identifier": "manacles"
+	},
+	"type": "consumable",
+	"folder": "cFk8v5sApg0etkW4",
+	"img": "icons/sundries/survival/cuffs-shackles-steel.webp",
+	"effects": [
+		{
+			"name": "Manacled",
+			"img": "icons/sundries/survival/cuffs-shackles-steel.webp",
+			"origin": "Compendium.dnd5e.equipment24.Item.phbagManacles000",
+			"transfer": false,
+			"_id": "hKJK8c3uwhFNdn5m",
+			"type": "base",
+			"system": {},
+			"changes": [],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": null,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [],
+			"flags": {},
+			"_key": "!items.effects!gQdHSGV1mNemrUFV.hKJK8c3uwhFNdn5m"
+		}
+	],
+	"flags": {
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		}
+	},
+	"_id": "gQdHSGV1mNemrUFV",
+	"_key": "!items!gQdHSGV1mNemrUFV"
+}

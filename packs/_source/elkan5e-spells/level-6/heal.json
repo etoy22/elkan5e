@@ -124,11 +124,11 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p>Choose a creature that you can see within range. A surge of positive energy washes through the creature, causing it to regain 70 hit points. This spell also ends blindness, deafness, and any diseases affecting the target. This spell has no effect on constructs or undead.</p><p></p><p>*<strong>Upcasting:</strong> Increase healing by [[/healing 10]]{10} for each spell level above 6th.</p>",
+			"value": "<p><em>You pass your hand through the air, sending healing magic to thoroughly cleanse your target.</em></p><p></p><p><strong>Healing</strong></p><p>This spell has no effect on &amp;reference[construct]{Constructs}.</p><ul><li><p>Target gains [[/heal]] hit points.*</p></li><li><p>Target loses the &amp;reference[Blinded apply=false], &amp;reference[Deafened apply=false], &amp;reference[Paralyzed apply=false], &amp;reference[Poisoned apply=false], and &amp;reference[weakened apply=false] conditions, as well as any diseases.</p></li></ul><p></p><p>*<strong>Upcasting:</strong> Increase healing by [[/healing 10]]{10} for each spell level above 6th.</p>",
 			"chat": ""
 		},
 		"source": {
-			"custom": "Elkan 5e",
+			"custom": "elkan5e.com/spells/heal",
 			"revision": 1,
 			"rules": "",
 			"book": "Elkan 5e",
@@ -201,7 +201,7 @@
 					"spellSlot": true
 				},
 				"description": {
-					"chatFlavor": "!target.details.type?.value === \"undead\" or !target.details.type?.value === \"construct\" or target.details.type?.subtype=== \"Soul Gem\""
+					"chatFlavor": ""
 				},
 				"duration": {
 					"units": "inst",
@@ -251,12 +251,12 @@
 				"img": "",
 				"appliedEffects": [
 					"mePFgECiWaaS6SuC"
-				]
+				],
+				"useConditionText": "target.details.type?.subtype=== \"Soul Gem\" || !(target.details.type?.value === \"construct\")"
 			}
 		},
 		"identifier": "heal"
 	},
 	"_id": "6RL4h8kNHPkjQltU",
-	"_key": "!items!6RL4h8kNHPkjQltU",
-	"identifier": "heal"
+	"_key": "!items!6RL4h8kNHPkjQltU"
 }

@@ -31,11 +31,8 @@
 				},
 				"effects": [
 					{
-						"_id": "AbNgTsT2gRxwmBpg",
+						"_id": "V4LzuFTXy6pltC2q",
 						"onSave": false
-					},
-					{
-						"_id": "V4LzuFTXy6pltC2q"
 					}
 				],
 				"range": {
@@ -77,7 +74,7 @@
 				},
 				"save": {
 					"ability": [
-						"wis"
+						"cha"
 					],
 					"dc": {
 						"calculation": "spellcasting",
@@ -86,7 +83,8 @@
 				},
 				"uses": {
 					"spent": 0,
-					"recovery": []
+					"recovery": [],
+					"max": ""
 				},
 				"_id": "LBSLaBDSIPpGHF7l",
 				"useConditionText": "",
@@ -127,7 +125,12 @@
 					"preRemoveConditionText": "",
 					"postRemoveConditionText": ""
 				},
-				"otherActivityId": ""
+				"otherActivityId": "",
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"V4LzuFTXy6pltC2q"
+				]
 			}
 		},
 		"uses": {
@@ -136,13 +139,17 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p>You drive a spike of psionic energy into the mind of one creature you can see within range. The target makes a Wisdom saving throw, taking 3d8 Psychic damage on a failed save or half as much damage on a successful one. On a failed save, you also always know the target's location until the spell ends, but only while the two of you are on the same plane of existence. While you have this knowledge, the target can't become hidden from you, and if it has the &amp;Reference[invisible apply=false] condition, it gains no benefit from that condition against you.</p><p><strong>Using a Higher-Level Spell Slot. </strong>The damage increases by 1d8 for each spell slot level above 2.</p>",
+			"value": "<p><em>You make a stabbing gesture at your target, placing a harmful psychic link inside their mind, which then allows you to track them.</em></p><p><strong>Charisma Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage]]*. While this spell is active, you always know the target's location (within the same plane of existence). The target gains no benefit from the &amp;Reference[invisible apply=false] condition against you.</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d8 psychic]] for each slot level above 2nd.</p>",
 			"chat": ""
 		},
 		"identifier": "mind-spike",
 		"source": {
 			"revision": 1,
-			"rules": "2024"
+			"rules": "2024",
+			"book": "",
+			"page": "",
+			"custom": "elkan5e.com/spells/mind-spike",
+			"license": ""
 		},
 		"activation": {
 			"type": "action",
@@ -165,8 +172,7 @@
 			"prepared": true
 		},
 		"properties": [
-			"somatic",
-			"concentration"
+			"somatic"
 		],
 		"range": {
 			"units": "ft",
@@ -283,6 +289,5 @@
 			}
 		}
 	},
-	"_key": "!items!OXZtg9KDXOMsa77Q",
-	"identifier": "mind-spike"
+	"_key": "!items!OXZtg9KDXOMsa77Q"
 }

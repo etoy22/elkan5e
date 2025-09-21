@@ -805,7 +805,7 @@
 						"midiProperties": {
 							"ignoreTraits": [],
 							"triggeredActivityId": "save",
-							"triggeredActivityConditionText": "[\"tiny\"].includes(target.traits.size)",
+							"triggeredActivityConditionText": "[\"tiny\"].includes(target.traits.size)&& !target.traits.ci.value.has('poisoned')",
 							"triggeredActivityTargets": "targets",
 							"triggeredActivityRollAs": "self",
 							"autoConsume": false,
@@ -1110,7 +1110,7 @@
 				},
 				"damage": {
 					"base": {
-						"denomination": 0,
+						"denomination": null,
 						"bonus": "1",
 						"number": 1,
 						"types": [

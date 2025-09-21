@@ -36,6 +36,7 @@ export default [
         Hooks: "readonly",
         fetch: "readonly",
         FormApplication: "readonly",
+        window: "readonly",
       },
     },
 

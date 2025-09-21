@@ -56,6 +56,7 @@ function packageCommand() {
 }
 
 function cleanPackEntry(data, { clearSourceId = true, ownership = 0 } = {}) {
+	const preservedIdentifier = data?.system?.identifier ?? null;
 	// Your existing top-level cleanup
 	if (clearSourceId && data.flags?.core?.sourceId) delete data.flags.core.sourceId;
 	if (data.ownership) data.ownership = { default: ownership };
@@ -80,6 +81,10 @@ function cleanPackEntry(data, { clearSourceId = true, ownership = 0 } = {}) {
 		}
 	}
 	recursiveClean(data);
+
+	if (data.system && preservedIdentifier !== null && preservedIdentifier !== undefined) {
+		data.system.identifier = preservedIdentifier;
+	}
 }
 
 async function cleanPacks(packName, entryName) {
