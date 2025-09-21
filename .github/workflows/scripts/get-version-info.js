@@ -5,7 +5,7 @@ function cleanVersion(ver) {
 	// normalize fancy dashes to ASCII hyphen and strip trailing ./-/space
 	return ver.replace(/[–—‒−]/g, '-').replace(/[.\s-]+$/g, '');
 }
- 
+
 function main() {
 	try {
 		// Subject only; take first line just in case
