@@ -48,6 +48,11 @@ All classes now provide starter equipment containing mundane items.
 - All Elkan spells now include flavor text.
 - Most 6th level spells have been updated to the Elkan format. Some are fully updated, while others currently only have formatting changes.
 
+
+## UI
+- Removed Elkan 5e from the begining of some compendiums
+
+
 ## Misc
 
 - Weapon records now include `elkan5e.com` URLs in their source metadata.
