@@ -42,6 +42,7 @@ Hooks.once("ready", async () => {
 	// Only the first active GM should run this
 	if (!game.user.isGM) return;
 
+
 	// Remove any previous poll messages so the latest one is shown every load
 	const previousPolls = (game.messages?.contents ?? []).filter((m) => m.flags?.elkan5e?.poll);
 	if (previousPolls.length) {
@@ -68,13 +69,13 @@ Hooks.once("ready", async () => {
 	</div>
 
     `,
-		flags: { elkan5e: { poll: true } }, // mark the message so we know it's ours
+		flags: { elkan5e: { poll: true } },
 	});
 });
 
 // Attach click handler when chat message is rendered
 Hooks.on("renderChatMessage", (message, html) => {
-	if (!message.flags?.elkan5e?.poll) return; // only for our poll message
+	if (!message.flags?.elkan5e?.poll) return;
 
 	html.find(".elkan5e-poll-btn").on("click", (ev) => {
 		ev.preventDefault();
@@ -104,7 +105,6 @@ Hooks.once("init", async () => {
 		setupDamageReferences();
 		setupSpellcastingReferences();
 		setupCreatureTypeReferences();
-		setupSkillReferences();
 		CONFIG.DND5E.skills.engineering = {
 			label: "Engineering",
 			ability: "int",
