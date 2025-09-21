@@ -1,200 +1,141 @@
-﻿import { Buffer } from 'node:buffer';
-import process from 'node:process';
+import process from "node:process";
+import { Buffer } from "node:buffer";
 
-function requiredEnv(name) {
-    const value = process.env[name];
-    if (!value) {
-        console.error(`Missing required environment variable: ${name}`);
-        process.exit(1);
-    }
-    return value;
+function getEnv(name, { required = false, defaultValue = undefined } = {}) {
+	const value = process.env[name];
+	if (!value || value.length === 0) {
+		if (required) {
+			throw new Error(`Environment variable ${name} is required.`);
+		}
+		return defaultValue;
+	}
+	return value;
 }
 
-function optionalEnv(name, fallback) {
-    const value = process.env[name];
-    return value && value.length > 0 ? value : fallback;
+function parseBoolean(value) {
+	if (!value) return false;
+	const normalised = value.trim().toLowerCase();
+	return ["true", "1", "yes", "y", "on"].includes(normalised);
 }
 
-function unique(items) {
-    return Array.from(new Set(items));
+function uniqueIssueKeys(fromText) {
+	if (!fromText) return [];
+	const matches = fromText.match(/\b[A-Z][A-Z0-9]+-\d+\b/g);
+	return matches ? Array.from(new Set(matches)) : [];
 }
 
-function normaliseBaseUrl(url) {
-    return url.endsWith('/') ? url.slice(0, -1) : url;
+function cleanMultiline(value) {
+	return value ? value.replace(/\r\n/g, "\n").trim() : "";
 }
 
-function parseIssueKeys(text) {
-    if (!text) {
-        return [];
-    }
-    const matches = text.match(/[A-Z][A-Z0-9]+-\d+/g);
-    return matches ? unique(matches.map((key) => key.toUpperCase())) : [];
-}
+async function postJson(url, payload, headers, dryRun) {
+	if (dryRun) {
+		console.log(`::notice::[DRY RUN] Tracking Jira update for ${url}`);
+		console.log(JSON.stringify(payload, null, 2));
+	}
 
-function mapEnvironmentType(raw) {
-    const allowed = new Set([
-        'production',
-        'staging',
-        'testing',
-        'development',
-        'unmapped',
-    ]);
-    const normalised = (raw || '').toLowerCase();
-    if (allowed.has(normalised)) {
-        return normalised;
-    }
-    return 'unmapped';
-}
+	const response = await fetch(url, {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+			Accept: "application/json",
+			...headers,
+		},
+		body: JSON.stringify(payload),
+	});
 
-function asNumber(value, fallback) {
-    const parsed = Number(value);
-    return Number.isFinite(parsed) ? parsed : fallback;
-}
+	if (!response.ok) {
+		const text = await response.text();
+		throw new Error(`Jira request failed ${response.status} ${response.statusText}: ${text}`);
+	}
 
-function isTruthy(value) {
-    if (!value) {
-        return false;
-    }
-    const normalised = value.toString().trim().toLowerCase();
-    return normalised === '1' || normalised === 'true' || normalised === 'yes' || normalised === 'y' || normalised === 'on';
-}
-
-async function postJson(url, body, headers) {
-    const response = await fetch(url, {
-        method: 'POST',
-        headers,
-        body: JSON.stringify(body),
-    });
-
-    if (!response.ok) {
-        const details = await response.text();
-        throw new Error(`Request to ${url} failed: ${response.status} ${response.statusText}\n${details}`);
-    }
+	console.log(`::notice::Successful POST ${url}`);
 }
 
 async function main() {
-    const baseUrl = normaliseBaseUrl(requiredEnv('JIRA_BASE_URL'));
-    const email = requiredEnv('JIRA_USER_EMAIL');
-    const token = requiredEnv('JIRA_API_TOKEN');
+	const baseUrl = getEnv("JIRA_BASE_URL", { required: true }).replace(/\/$/, "");
+	const userEmail = getEnv("JIRA_USER_EMAIL", { required: true });
+	const apiToken = getEnv("JIRA_API_TOKEN", { required: true });
+	const dryRun = parseBoolean(getEnv("JIRA_DRY_RUN", { defaultValue: "false" }));
 
-    const releaseVersion = requiredEnv('RELEASE_VERSION');
-    const releaseUrl = requiredEnv('RELEASE_URL');
+	const releaseVersion = getEnv("RELEASE_VERSION", { required: true });
+	const releaseNotes = cleanMultiline(getEnv("RELEASE_NOTES", { defaultValue: "" }));
+	const releaseUrl = getEnv("RELEASE_URL", { defaultValue: "" });
+	const releaseState = getEnv("RELEASE_STATE", { defaultValue: "unreleased" });
 
-    const releaseNotes = optionalEnv('RELEASE_NOTES', '');
-    const releaseDescription = optionalEnv('RELEASE_DESCRIPTION', releaseNotes || `Release ${releaseVersion}`);
+	const pipelineUrl = getEnv("PIPELINE_URL", { defaultValue: releaseUrl });
+	const pipelineId = getEnv("PIPELINE_ID", { defaultValue: "elkan5e/pipeline" });
+	const pipelineName = getEnv("PIPELINE_NAME", { defaultValue: pipelineId });
 
-    const runId = optionalEnv('GITHUB_RUN_ID', `${Date.now()}`);
-    const runNumber = asNumber(optionalEnv('GITHUB_RUN_NUMBER', runId), Date.now());
-    const nowIso = new Date().toISOString();
+	const environmentId = getEnv("DEPLOYMENT_ENVIRONMENT_ID", { required: true });
+	const environmentName = getEnv("DEPLOYMENT_ENVIRONMENT_NAME", { required: true });
+	const environmentType = getEnv("DEPLOYMENT_ENVIRONMENT_TYPE", { required: true });
 
-    const repository = optionalEnv('GITHUB_REPOSITORY', '');
-    const workflowName = optionalEnv('GITHUB_WORKFLOW', 'GitHub Actions');
-    const pipelineUrl = optionalEnv('PIPELINE_URL', repository && runId ? `https://github.com/${repository}/actions/runs/${runId}` : releaseUrl);
-    const pipelineId = optionalEnv('PIPELINE_ID', repository ? `${repository}/${workflowName}` : workflowName);
-    const pipelineName = optionalEnv('PIPELINE_NAME', workflowName);
+	const deploymentSequenceNumber = Number(
+		getEnv("DEPLOYMENT_SEQUENCE_NUMBER", { defaultValue: Date.now().toString() }),
+	);
+	const deploymentUpdateSequenceNumber = Number(
+		getEnv("DEPLOYMENT_UPDATE_SEQUENCE_NUMBER", { defaultValue: deploymentSequenceNumber.toString() }),
+	);
 
-    const environmentId = optionalEnv('DEPLOYMENT_ENVIRONMENT_ID', optionalEnv('DEPLOYMENT_ENVIRONMENT_KEY', optionalEnv('DEPLOYMENT_ENVIRONMENT_NAME', 'production')));
-    const environmentName = optionalEnv('DEPLOYMENT_ENVIRONMENT_NAME', environmentId);
-    const environmentType = mapEnvironmentType(optionalEnv('DEPLOYMENT_ENVIRONMENT_TYPE', optionalEnv('TARGET_ENVIRONMENT_TYPE', optionalEnv('TARGET_ENVIRONMENT', 'production'))));
+	const issueKeys = uniqueIssueKeys(releaseNotes);
+	if (issueKeys.length === 0) {
+		console.log("::notice::No Jira issue keys detected in release notes. Skipping Jira update.");
+		return;
+	}
 
-    const deploymentState = optionalEnv('DEPLOYMENT_STATE', 'successful');
-    const deploymentDisplayName = optionalEnv('DEPLOYMENT_DISPLAY_NAME', `Deploy ${releaseVersion}`);
-    const deploymentUrl = optionalEnv('DEPLOYMENT_URL', pipelineUrl);
-    const deploymentDescription = optionalEnv('DEPLOYMENT_DESCRIPTION', `Deployment for ${releaseVersion}`);
+	const headers = {
+		Authorization: `Basic ${Buffer.from(`${userEmail}:${apiToken}`).toString("base64")}`,
+	};
 
-    const releaseState = optionalEnv('RELEASE_STATE', 'released');
-    const releaseDisplayName = optionalEnv('RELEASE_DISPLAY_NAME', `Release ${releaseVersion}`);
+	const deploymentPayload = {
+		deployments: [
+			{
+				schemaVersion: "1.0",
+				deploymentSequenceNumber,
+				updateSequenceNumber: deploymentUpdateSequenceNumber,
+				displayName: `Elkan 5e ${releaseVersion}`,
+				description: releaseNotes.split("\n")[0] ?? "",
+				issueKeys,
+				url: pipelineUrl || releaseUrl,
+				pipeline: pipelineId
+					? {
+						id: pipelineId,
+						displayName: pipelineName,
+						url: pipelineUrl || releaseUrl,
+					}
+					: undefined,
+				environment: {
+					id: environmentId,
+					displayName: environmentName,
+					type: environmentType,
+				},
+				associations: issueKeys.map((key) => ({ associationType: "ISSUE", values: [{ issueIdOrKey: key }] })),
+			},
+		],
+	};
 
-    const issueKeys = parseIssueKeys(releaseNotes);
-    const dryRun = isTruthy(optionalEnv('JIRA_DRY_RUN', ''));
+	const releasePayload = {
+		releases: [
+			{
+				schemaVersion: "1.0",
+				id: releaseVersion,
+				displayName: releaseVersion,
+				url: releaseUrl,
+				released: releaseState === "released",
+				status: releaseState,
+				releaseDate: new Date().toISOString(),
+				description: releaseNotes,
+				issueKeys,
+			},
+		],
+	};
 
-    const headers = {
-        'Content-Type': 'application/json',
-        Accept: 'application/json',
-        Authorization: `Basic ${Buffer.from(`${email}:${token}`).toString('base64')}`,
-        'User-Agent': optionalEnv('JIRA_USER_AGENT', 'elkan5e-ci-jira-integration/1.1'),
-    };
-
-    const deploymentPayload = {
-        deployments: [
-            {
-                schemaVersion: '1.0',
-                deploymentSequenceNumber: asNumber(optionalEnv('DEPLOYMENT_SEQUENCE_NUMBER', ''), runNumber),
-                updateSequenceNumber: asNumber(optionalEnv('DEPLOYMENT_UPDATE_SEQUENCE_NUMBER', ''), runNumber),
-                displayName: deploymentDisplayName,
-                url: deploymentUrl,
-                description: deploymentDescription,
-                lastUpdated: nowIso,
-                state: deploymentState,
-                pipeline: {
-                    id: pipelineId,
-                    displayName: pipelineName,
-                    url: pipelineUrl,
-                },
-                environment: {
-                    id: environmentId,
-                    displayName: environmentName,
-                    type: environmentType,
-                },
-                associations: issueKeys.length
-                    ? [
-                          {
-                              associationType: 'issueIdOrKeys',
-                              values: issueKeys,
-                          },
-                      ]
-                    : [],
-            },
-        ],
-    };
-
-    const releasePayload = {
-        releases: [
-            {
-                schemaVersion: '1.0',
-                id: optionalEnv('RELEASE_ID', `${pipelineId}-${releaseVersion}`),
-                displayName: releaseDisplayName,
-                url: releaseUrl,
-                description: releaseDescription,
-                lastUpdated: nowIso,
-                releaseDate: optionalEnv('RELEASE_DATE', nowIso),
-                state: releaseState,
-                associations: issueKeys.length
-                    ? [
-                          {
-                              associationType: 'issueIdOrKeys',
-                              values: issueKeys,
-                          },
-                      ]
-                    : [],
-                version: {
-                    id: optionalEnv('RELEASE_VERSION_ID', releaseVersion),
-                    name: releaseVersion,
-                    description: optionalEnv('VERSION_DESCRIPTION', releaseDescription),
-                    url: releaseUrl,
-                    released: releaseState === 'released',
-                    releaseDate: optionalEnv('VERSION_RELEASE_DATE', nowIso.split('T')[0]),
-                },
-            },
-        ],
-    };
-
-    if (dryRun) {
-        console.log('[JIRA] Dry run enabled; skipping API calls.');
-        console.log('[JIRA] Deployment payload preview:', JSON.stringify(deploymentPayload, null, 2));
-        console.log('[JIRA] Release payload preview:', JSON.stringify(releasePayload, null, 2));
-        return;
-    }
-
-    await postJson(`${baseUrl}/rest/deployments/0.1/bulk`, deploymentPayload, headers);
-    await postJson(`${baseUrl}/rest/releases/0.1/bulk`, releasePayload, headers);
-
-    console.log('Successfully sent deployment and release updates to Jira.');
+	await postJson(`${baseUrl}/rest/deployments/0.1/bulk`, deploymentPayload, headers, dryRun);
+	await postJson(`${baseUrl}/rest/release/1.0/bulk`, releasePayload, headers, dryRun);
 }
 
-try {
-    await main();
-} catch (error) {
-    console.error(error instanceof Error ? error.message : error);
-    process.exit(1);
-}
+main().catch((error) => {
+	console.error("::error::Failed to update Jira:", error);
+	process.exit(1);
+});
