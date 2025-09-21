@@ -1,0 +1,276 @@
+{
+	"name": "Antitoxin",
+	"system": {
+		"description": {
+			"value": "<p class=\"MsoNormal\"><span lang=\"EN-US\"><strong style=\"mso-bidi-font-weight:normal\">Bonus Action -</strong> 1 Creature (5 ft.) - 1 Hour</span></p><p class=\"MsoNormal\"><span lang=\"EN-US\"><strong style=\"mso-bidi-font-weight:normal\">Utility</strong></span></p><ul><li><p>Target gains advantage on saving throws to avoid or end the &amp;reference[Poisoned apply=false] condition.</p></li></ul>",
+			"chat": ""
+		},
+		"price": {
+			"value": 50,
+			"denomination": "gp"
+		},
+		"source": {
+			"rules": "2024",
+			"license": "",
+			"book": "",
+			"revision": 1,
+			"page": "",
+			"custom": ""
+		},
+		"identified": true,
+		"unidentified": {
+			"description": ""
+		},
+		"container": null,
+		"quantity": 1,
+		"weight": {
+			"value": 0,
+			"units": "lb"
+		},
+		"rarity": "common",
+		"attunement": "",
+		"attuned": false,
+		"equipped": false,
+		"uses": {
+			"max": "1",
+			"autoDestroy": true,
+			"spent": 0,
+			"recovery": []
+		},
+		"damage": {
+			"base": {
+				"number": null,
+				"denomination": null,
+				"types": [],
+				"custom": {
+					"enabled": false
+				},
+				"scaling": {
+					"number": 1
+				}
+			},
+			"replace": false
+		},
+		"type": {
+			"value": "potion",
+			"subtype": ""
+		},
+		"magicalBonus": null,
+		"properties": [],
+		"activities": {
+			"2TNbDh0n59svuGIx": {
+				"type": "utility",
+				"activation": {
+					"type": "bonus",
+					"value": 1,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "",
+							"scaling": {}
+						}
+					],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "1",
+					"units": "hour",
+					"special": "",
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "DzWVacNiq6ggXbU9"
+					}
+				],
+				"range": {
+					"units": "self",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": "ft"
+					},
+					"affects": {
+						"count": "",
+						"type": "self",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": false,
+					"override": false
+				},
+				"roll": {
+					"formula": "",
+					"name": "",
+					"prompt": false,
+					"visible": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"_id": "2TNbDh0n59svuGIx",
+				"name": "",
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true
+			}
+		},
+		"identifier": "antitoxin"
+	},
+	"type": "consumable",
+	"folder": "MCDkPm6xibc3rF7y",
+	"img": "icons/consumables/potions/bottle-round-corked-pink.webp",
+	"effects": [
+		{
+			"name": "Antitoxin",
+			"img": "icons/consumables/potions/bottle-round-corked-pink.webp",
+			"origin": "Compendium.dnd5e.equipment24.Item.phbagAntitoxin00",
+			"transfer": false,
+			"_id": "DzWVacNiq6ggXbU9",
+			"type": "base",
+			"system": {},
+			"changes": [
+				{
+					"key": "flags.midi-qol.advantage.ability.save.all",
+					"mode": 2,
+					"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"prone\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"prone\") || ef.name == 'Prone');",
+					"priority": 20
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 3600,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [],
+			"flags": {
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"stackable": "noneName",
+					"showIcon": false,
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "All",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!QU0pSE0n7ZlS59e5.DzWVacNiq6ggXbU9"
+		}
+	],
+	"flags": {
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		}
+	},
+	"_id": "QU0pSE0n7ZlS59e5",
+	"_key": "!items!QU0pSE0n7ZlS59e5"
+}

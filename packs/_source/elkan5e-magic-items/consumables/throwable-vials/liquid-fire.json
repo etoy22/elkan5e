@@ -1,0 +1,415 @@
+{
+	"name": "Liquid Fire",
+	"system": {
+		"description": {
+			"value": "<p data-start=\"244\" data-end=\"292\"><strong>Part of Attack </strong>- Thrown - 20 ft.</p><p data-start=\"294\" data-end=\"329\"><strong data-start=\"294\" data-end=\"327\">[[/save dex]]{Dexterity Save}</strong></p><ul data-start=\"331\" data-end=\"427\"><li data-start=\"331\" data-end=\"399\"><p data-start=\"333\" data-end=\"399\"><strong data-start=\"333\" data-end=\"345\">Failure:</strong> Target takes [[/damage 1d8 fire]] and starts &amp;reference[burning].</p></li><li data-start=\"400\" data-end=\"427\"><p data-start=\"402\" data-end=\"427\"><strong data-start=\"402\" data-end=\"414\">Success:</strong> No damage.</p></li></ul>",
+			"chat": ""
+		},
+		"price": {
+			"value": 50,
+			"denomination": "gp"
+		},
+		"source": {
+			"rules": "2024",
+			"license": "",
+			"book": "",
+			"revision": 2,
+			"page": "",
+			"custom": ""
+		},
+		"identified": true,
+		"unidentified": {
+			"description": ""
+		},
+		"container": null,
+		"quantity": 1,
+		"weight": {
+			"value": 1,
+			"units": "lb"
+		},
+		"rarity": "common",
+		"attunement": "",
+		"attuned": false,
+		"equipped": false,
+		"uses": {
+			"max": "1",
+			"autoDestroy": true,
+			"spent": 0,
+			"recovery": []
+		},
+		"damage": {
+			"base": {
+				"number": null,
+				"denomination": null,
+				"types": [],
+				"custom": {
+					"enabled": false
+				},
+				"scaling": {
+					"number": 1
+				}
+			},
+			"replace": false
+		},
+		"type": {
+			"value": "potion",
+			"subtype": ""
+		},
+		"magicalBonus": null,
+		"properties": [],
+		"activities": {
+			"NVclbplLi9uFhKQE": {
+				"type": "save",
+				"_id": "NVclbplLi9uFhKQE",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": ""
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "HL12olRyPOCmmMQ5",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "ft",
+					"special": "",
+					"value": "20"
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"type": "creatureOrObject",
+						"count": "1",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 1,
+							"denomination": 8,
+							"bonus": "",
+							"types": [
+								"fire"
+							]
+						}
+					],
+					"onSave": "half",
+					"critical": {
+						"allow": false
+					}
+				},
+				"save": {
+					"ability": [
+						"dex"
+					],
+					"dc": {
+						"calculation": "dex",
+						"formula": ""
+					}
+				},
+				"name": "",
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "!target.traits.ci.value.has('burning')",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"friendlySave": "default",
+				"img": "",
+				"appliedEffects": [
+					"HL12olRyPOCmmMQ5"
+				]
+			},
+			"PIS8ZGSWymjpwG4m": {
+				"type": "damage",
+				"_id": "PIS8ZGSWymjpwG4m",
+				"activation": {
+					"type": "action",
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "self",
+					"override": false,
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"type": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"critical": {
+						"allow": false
+					},
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 1,
+							"denomination": 8,
+							"bonus": "",
+							"types": []
+						}
+					]
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": true,
+					"otherActivityCompatible": false,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": true,
+				"overTimeProperties": {
+					"saveRemoves": false,
+					"preRemoveConditionText": "false",
+					"postRemoveConditionText": "false",
+					"turnChoice": "end"
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": []
+			}
+		},
+		"identifier": "liquid-fire"
+	},
+	"type": "consumable",
+	"folder": "vckxwxUO7VN1vtkV",
+	"img": "icons/consumables/potions/potion-flask-stopped-labeled-yellow.webp",
+	"effects": [
+		{
+			"name": "Liquid Fire",
+			"img": "icons/consumables/potions/potion-flask-stopped-labeled-yellow.webp",
+			"origin": "Compendium.dnd5e.equipment24.Item.phbagAlchemistsF",
+			"transfer": false,
+			"_id": "HL12olRyPOCmmMQ5",
+			"type": "base",
+			"system": {},
+			"changes": [
+				{
+					"key": "flags.midi-qol.ActivityOverTime",
+					"mode": 2,
+					"value": "turn-end",
+					"priority": 20
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": null,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "<p>Rules reference: &amp;Reference[burning].</p>",
+			"tint": "#ffffff",
+			"statuses": [],
+			"flags": {
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"stackable": "noneName",
+					"showIcon": false,
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "All",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!b5QqyU0bCXTdv8qg.HL12olRyPOCmmMQ5"
+		}
+	],
+	"flags": {
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		}
+	},
+	"_id": "b5QqyU0bCXTdv8qg",
+	"_key": "!items!b5QqyU0bCXTdv8qg"
+}

@@ -120,59 +120,6 @@ function getItemIdentifier(item) {
 	return generated;
 }
 
-// Compare two items and return a list of differing top-level fields (excluding meta fields)
-function getDifferingFields(oldItem, newItem) {
-	const oldObj = oldItem.toObject();
-	const newObj = newItem.toObject();
-	const ignore = ["_stats", "ownership", "id", "_id", "identifier"];
-
-	// Helper to check if path matches fields to ignore
-	function isIgnoredPath(path) {
-		return (
-			/^effects\[\d+\]\.duration\.startTime$/.test(path) ||
-			/^effects\[\d+\]\.flags\.dae\.itemsToDelete$/.test(path) ||
-			/^effects\[\d+\]\.flags\.dae$/.test(path) ||
-			/^flags\.dae$/.test(path)
-		);
-	}
-	const diffs = [];
-
-	function compare(a, b, path = "") {
-		// Skip ignored paths
-		if (isIgnoredPath(path)) return;
-		// If both are objects, recurse
-		if (
-			a &&
-			b &&
-			typeof a === "object" &&
-			typeof b === "object" &&
-			!Array.isArray(a) &&
-			!Array.isArray(b)
-		) {
-			const keys = new Set([...Object.keys(a), ...Object.keys(b)]);
-			for (const key of keys) {
-				if (ignore.includes(key)) continue;
-				compare(a[key], b[key], path ? `${path}.${key}` : key);
-			}
-		} else if (Array.isArray(a) && Array.isArray(b)) {
-			if (a.length !== b.length) {
-				diffs.push(path);
-			} else {
-				for (let i = 0; i < a.length; i++) {
-					compare(a[i], b[i], `${path}[${i}]`);
-				}
-			}
-		} else {
-			if (!deepEqualIgnoringMeta(a, b, path)) {
-				diffs.push(path);
-			}
-		}
-	}
-
-	compare(oldObj, newObj);
-	return diffs;
-}
-
 export async function savePropertiesForTransfer(items, mode, propKeys) {
 	const saved = {};
 	for (let item of items) {
@@ -589,37 +536,41 @@ export async function migrateActorByType({
 				for (const it of rpt.updated) {
 					const label =
 						it.from || it.to
-							? `${it.from ?? it.name ?? "Unknown"} → ${it.to ?? it.name ?? "Unknown"}`
+							? `${it.from ?? it.name ?? "Unknown"} -> ${it.to ?? it.name ?? "Unknown"}`
 							: `${it.name ?? "Unknown"}`;
 					const details = [];
 					if (it.why) details.push(it.why);
 					if (Array.isArray(it.differingFields) && it.differingFields.length) {
 						details.push(`fields: ${it.differingFields.join(", ")}`);
 					}
-					const suffix = details.length ? ` — ${details.join(" | ")}` : "";
+					const suffix = details.length ? ` - ${details.join(" | ")}` : "";
 					console.log(`${label}${suffix}`);
 				}
 			} else {
 				console.log("None");
 			}
 			console.groupEnd();
-		}
-		if (rpt.created.length) {
-			console.groupCollapsed("Created");
-			rpt.created.forEach((c) => {
-				console.log(
-					`• ${c.name}${c.namePreserved ? " (name preserved)" : ""} [id:${c.id}]`,
-				);
-			});
-			console.groupEnd();
-		}
-		if (rpt.skipped.length) {
-			console.groupCollapsed("Skipped");
-			rpt.skipped.forEach((s) => console.warn(`• ${s.item}: ${s.reason}`));
-			console.groupEnd();
-		}
 
-		console.groupEnd();
+			if (c) {
+				console.groupCollapsed(`Created (${c})`);
+				rpt.created.forEach((created) => {
+					console.log(
+						`- ${created.name}${created.namePreserved ? " (name preserved)" : ""} [id:${created.id}]`,
+					);
+				});
+				console.groupEnd();
+			}
+
+			if (s) {
+				console.groupCollapsed(`Skipped (${s})`);
+				rpt.skipped.forEach((skipped) =>
+					console.warn(`- ${skipped.item}: ${skipped.reason}`),
+				);
+				console.groupEnd();
+			}
+
+			console.groupEnd();
+		}
 	}
 
 	console.groupEnd();
