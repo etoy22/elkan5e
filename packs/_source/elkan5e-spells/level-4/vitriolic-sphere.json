@@ -31,7 +31,7 @@
 				},
 				"effects": [
 					{
-						"_id": "WHhf4PFHQBDkCAyb",
+						"_id": "SgbutUFTuhAyyC7T",
 						"onSave": false
 					}
 				],
@@ -126,7 +126,11 @@
 					"preRemoveConditionText": "",
 					"postRemoveConditionText": ""
 				},
-				"otherActivityId": ""
+				"otherActivityId": "none",
+				"img": "",
+				"appliedEffects": [
+					"SgbutUFTuhAyyC7T"
+				]
 			},
 			"vNvHHSA1d8gj8rA8": {
 				"type": "damage",
@@ -184,8 +188,7 @@
 								"acid"
 							],
 							"scaling": {
-								"mode": "",
-								"number": 1
+								"mode": ""
 							}
 						}
 					]
@@ -220,8 +223,8 @@
 					"confirmTargets": "default",
 					"autoTargetType": "any",
 					"autoTargetAction": "default",
-					"automationOnly": false,
-					"otherActivityCompatible": true,
+					"automationOnly": true,
+					"otherActivityCompatible": false,
 					"identifier": "",
 					"displayActivityName": false,
 					"rollMode": "default",
@@ -229,12 +232,15 @@
 					"toggleEffect": false,
 					"ignoreFullCover": false
 				},
-				"isOverTimeFlag": false,
+				"isOverTimeFlag": true,
 				"overTimeProperties": {
-					"saveRemoves": true,
-					"preRemoveConditionText": "",
-					"postRemoveConditionText": ""
-				}
+					"saveRemoves": false,
+					"preRemoveConditionText": "false",
+					"postRemoveConditionText": "true",
+					"turnChoice": "end"
+				},
+				"img": "",
+				"appliedEffects": []
 			}
 		},
 		"uses": {
@@ -243,13 +249,17 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p>You point at a location within range, and a glowing, 1-foot-diameter ball of acid streaks there and explodes in a 20-foot-radius Sphere. Each creature in that area makes a Dexterity saving throw. On a failed save, a creature takes 10d4 Acid damage and another [[/damage 5d4 type=acid]] damage at the end of its next turn. On a successful save, a creature takes half the initial damage only.</p><p><strong>Using a Higher-Level Spell Slot. </strong>The initial damage increases by 2d4 for each spell slot level above 4.</p>",
+			"value": "<p><em>You place a drop of bile from a giant slug on your tongue and spit. Acidic sludge manifests around your enemy, coating them in disgusting ooze.</em></p><p><strong>Dexterity Save</strong></p><ul><li><p><strong>Failure:</strong> [[/damage]] immediately and [[/damage activity=vNvHHSA1d8gj8rA8]] at the end of target's next turn.</p></li><li><p><strong>Success:</strong> Half initial damage, no other effect.</p></li></ul><p><em><strong>Upcasting:</strong></em> Increase initial damage by [[/damage 2d4 acid]] for each slot level above 4th.</p>",
 			"chat": ""
 		},
 		"identifier": "vitriolic-sphere",
 		"source": {
 			"revision": 1,
-			"rules": "2024"
+			"rules": "2024",
+			"book": "",
+			"page": "",
+			"custom": "elkan5e.com/spells/vitriolic-sphere",
+			"license": ""
 		},
 		"activation": {
 			"type": "action",
@@ -297,7 +307,81 @@
 			}
 		}
 	},
-	"effects": [],
+	"effects": [
+		{
+			"name": "Vitriolic Sphere",
+			"img": "icons/magic/acid/orb-bubble-smoke-drip.webp",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.uNl8IyAJRobgk26u",
+			"transfer": false,
+			"_id": "SgbutUFTuhAyyC7T",
+			"type": "base",
+			"system": {},
+			"changes": [
+				{
+					"key": "flags.midi-qol.ActivityOverTime",
+					"mode": 2,
+					"value": "end-of-turn-damage",
+					"priority": 20
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"combat": null,
+				"seconds": 7,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [],
+			"flags": {
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"stackable": "noneName",
+					"showIcon": false,
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [
+						"turnEndSource"
+					]
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "All",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!uNl8IyAJRobgk26u.SgbutUFTuhAyyC7T"
+		}
+	],
 	"flags": {
 		"tidy5e-sheet": {
 			"section": "",
@@ -327,6 +411,5 @@
 			}
 		}
 	},
-	"_key": "!items!uNl8IyAJRobgk26u",
-	"identifier": "vitriolic-sphere"
+	"_key": "!items!uNl8IyAJRobgk26u"
 }

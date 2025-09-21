@@ -1,0 +1,392 @@
+{
+	"name": "Net",
+	"type": "equipment",
+	"img": "icons/tools/fishing/net-simple-brown.webp",
+	"system": {
+		"activities": {
+			"3u15g2fvhp6MyN5O": {
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": ""
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"value": "15",
+					"units": "ft",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "1",
+						"type": "creature",
+						"special": ""
+					},
+					"override": false,
+					"prompt": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"parts": [],
+					"onSave": "none",
+					"critical": {
+						"allow": false
+					}
+				},
+				"save": {
+					"ability": [
+						"dex"
+					],
+					"dc": {
+						"calculation": "dex",
+						"formula": ""
+					}
+				},
+				"name": "",
+				"_id": "3u15g2fvhp6MyN5O",
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "[\"lg\", \"med\", \"sm\", \"tiny\"].includes(target.traits.size) && !target.traits.ci.value.has('restrained')",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "",
+				"otherActivityAsParentType": true,
+				"friendlySave": "default",
+				"img": "",
+				"appliedEffects": []
+			},
+			"fYPzMu5uRNGrpjPQ": {
+				"type": "utility",
+				"name": "Recover Net",
+				"activation": {
+					"type": "action",
+					"value": 10,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "-1",
+							"target": ""
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": ""
+					},
+					"override": false,
+					"prompt": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"_id": "fYPzMu5uRNGrpjPQ",
+				"img": "",
+				"appliedEffects": []
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [
+				{
+					"period": "",
+					"type": ""
+				}
+			],
+			"max": "1"
+		},
+		"description": {
+			"value": "<p><strong>In Place of a Weapon Attack </strong>- 1 Creature (15 ft.)</p><p>A creature can use this net instead of an attack to attempt to restrain a creature of large size or smaller.</p><p><strong>[[/skill Dex]]{Dexterity Save (DC 8 + Dexterity Mod + Proficiency)}</strong></p><ul><li><strong>Failure:</strong> The creature is &amp;reference[Restrained] until it escapes.</li><li><p><strong>Net:</strong> Has an AC of 10, is immune to &amp;reference[bludgeoning], &amp;reference[poison], and &amp;reference[psychic] damage, and must take 5 damage at once to break. If destroyed, the target is freed.</p></li><li><strong>Success:</strong> No effect.</li></ul><p><br /></p><p><strong>Untangle Net</strong></p><p><strong>Action</strong> - 1 Object (5 ft.)</p><p><strong>[[/skill athletics 10]]{Athletics Check} or [[/skill acr 10]]{Acrobatics Check (DC 10)}</strong></p><ul><li><strong>Success:</strong> The target is free.</li><li><strong>Failure:</strong> No effect.</li></ul><p><br /><em>Note: It takes Action to recover the nets.</em></p>",
+			"chat": ""
+		},
+		"identifier": "net",
+		"source": {
+			"revision": 1,
+			"rules": "2024",
+			"license": "",
+			"book": "",
+			"page": "",
+			"custom": "elkan5e.com/items/net"
+		},
+		"identified": true,
+		"unidentified": {
+			"description": ""
+		},
+		"container": null,
+		"quantity": 1,
+		"weight": {
+			"value": 3,
+			"units": "lb"
+		},
+		"price": {
+			"value": 1,
+			"denomination": "gp"
+		},
+		"rarity": "common",
+		"attunement": "",
+		"attuned": false,
+		"equipped": false,
+		"armor": {
+			"value": null,
+			"magicalBonus": null,
+			"dex": null
+		},
+		"cover": null,
+		"crewed": false,
+		"hp": {
+			"value": null,
+			"max": null,
+			"dt": null,
+			"conditions": ""
+		},
+		"type": {
+			"value": "trinket",
+			"baseItem": ""
+		},
+		"properties": [],
+		"strength": null,
+		"proficient": null
+	},
+	"effects": [
+		{
+			"name": "Net",
+			"img": "icons/tools/fishing/net-simple-brown.webp",
+			"origin": "Item.phbagNet00000000",
+			"transfer": false,
+			"_id": "67ofG0FVqrrkAHKa",
+			"type": "base",
+			"system": {},
+			"changes": [],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": null,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [
+				"restrained"
+			],
+			"flags": {
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"stackable": "noneName",
+					"showIcon": false,
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "All",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!iuP2DBJSmPZcM5AQ.67ofG0FVqrrkAHKa"
+		}
+	],
+	"folder": "Qjhe0eLLeK89MVke",
+	"flags": {
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		}
+	},
+	"_id": "iuP2DBJSmPZcM5AQ",
+	"_key": "!items!iuP2DBJSmPZcM5AQ"
+}
