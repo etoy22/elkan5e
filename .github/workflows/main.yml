@@ -239,37 +239,41 @@ jobs:
 
             - name: Prepare Discord payload
               id: prepare_discord_payload
+              env:
+                  RELEASE_NOTES: ${{ steps.read_release_notes.outputs.release_notes }}
+                  VERSION: ${{ needs.version-check.outputs.version }}
+                  MINIMUM: ${{ needs.version-check.outputs.minimum }}
+                  VERIFIED: ${{ needs.version-check.outputs.verified }}
+                  REPO_URL: https://github.com/${{ github.repository }}
               run: |
-                  RELEASE_NOTES="${{ steps.read_release_notes.outputs.release_notes }}"
-                  CLEAN_RELEASE_NOTES=$(echo -e "$RELEASE_NOTES")
-
-                  PAYLOAD=$(jq -n \
-                    --arg title "Elkan 5e Release" \
-                    --arg version "$VERSION" \
-                    --arg compatibility "Core: $MINIMUM +" \
-                    --arg foundry_url "https://foundryvtt.com/packages/elkan5e" \
-                    --arg release_url "$REPO_URL/releases/tag/$VERSION" \
-                    --arg download_url "$REPO_URL/releases/download/$VERSION/module.zip" \
-                    --arg release_notes "$CLEAN_RELEASE_NOTES" \
-                    '{embeds: [{
-                      title: $title,
-                      fields: [
-                        {name: "Version", value: $version, inline: true},
-                        {name: "Compatibility", value: $compatibility, inline: true},
-                        {name: "Foundry Package", value: $foundry_url, inline: false},
-                        {name: "Release Tag", value: $release_url, inline: false},
-                        {name: "Manual Download", value: $download_url, inline: false},
-                        {name: "Release Notes", value: $release_notes, inline: false}
-                      ]
-                    }]}')
-                  echo "$PAYLOAD"
-                  printf '%s' "$PAYLOAD" > discord-payload.json
+                  node <<'NODE'
+                  const fs = require('fs');
+                  const env = process.env;
+                  const releaseNotes = (env.RELEASE_NOTES || '').replace(/\r?\n/g, '\n').trim();
+                  const trimmedNotes = releaseNotes.length > 3900 ? `${releaseNotes.slice(0, 3897)}...` : releaseNotes;
+                  const payload = {
+                    embeds: [
+                      {
+                        title: 'Elkan 5e Release',
+                        fields: [
+                          { name: 'Version', value: env.VERSION || 'unknown', inline: true },
+                          { name: 'Compatibility', value: `Core: ${(env.MINIMUM || 'unknown')} +`, inline: true },
+                          { name: 'Foundry Package', value: 'https://foundryvtt.com/packages/elkan5e', inline: false },
+                          { name: 'Release Tag', value: `${env.REPO_URL}/releases/tag/${env.VERSION}`, inline: false },
+                          { name: 'Manual Download', value: `${env.REPO_URL}/releases/download/${env.VERSION}/module.zip`, inline: false },
+                          { name: 'Release Notes', value: trimmedNotes || 'See release notes artifact.', inline: false }
+                        ]
+                      }
+                    ]
+                  };
+                  fs.writeFileSync('discord-payload.json', JSON.stringify(payload));
+                  NODE
                   echo "payload_path=discord-payload.json" >> $GITHUB_OUTPUT
 
             - name: Post to Discord
               run: |
                   echo "Posting to Discord..."
-                  curl -H "Content-Type: application/json" -X POST -d @${{ steps.prepare_discord_payload.outputs.payload_path }} "$DISCORD_WEBHOOK"
+                  curl -H "Content-Type: application/json" -X POST --data-binary @${{ steps.prepare_discord_payload.outputs.payload_path }} "$DISCORD_WEBHOOK"
     update-jira:
         runs-on: ubuntu-latest
         needs: [version-check, extract-release-notes, create-github-release]
@@ -310,3 +314,4 @@ jobs:
                   DEPLOYMENT_UPDATE_SEQUENCE_NUMBER: ${{ github.run_number }}
                   RELEASE_STATE: ${{ needs.version-check.outputs.test == 'true' && 'unreleased' || 'released' }}
               run: node .github/workflows/scripts/update-jira.mjs
+
