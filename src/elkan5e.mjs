@@ -42,25 +42,32 @@ Hooks.once("ready", async () => {
 	// Only the first active GM should run this
 	if (!game.user.isGM) return;
 
-	// Prevent duplicates if message already exists
-	const existing = game.messages.contents.find((m) => m.flags?.elkan5e?.poll);
-	if (existing) return;
+
+	// Remove any previous poll messages so the latest one is shown every load
+	const previousPolls = (game.messages?.contents ?? []).filter((m) => m.flags?.elkan5e?.poll);
+	if (previousPolls.length) {
+		try {
+			await ChatMessage.deleteDocuments(previousPolls.map((m) => m.id));
+		} catch (error) {
+			console.warn("Elkan 5e | Failed to clear previous poll messages", error);
+		}
+	}
 
 	// Create the poll message
 	await ChatMessage.create({
 		speaker: {
-			alias: "Elkan 5e — Poll",
-			// optional image
-			icon: "https://static.wixstatic.com/media/f326e7_6e591365076b48a085365f9bb46945ef~mv2.png/v1/fill/w_62,h_66,al_c,q_85,usm_0.66_1.00_0.01,enc_avif,quality_auto/Fallow%20Icon_edited.png",
+			alias: "Elkan 5e - Poll",
+			icon: "modules/elkan5e/images/ElkanLogo.webp",
 		},
 		content: `
       <div class="elkan5e-poll-card">
-        <h4>We’d love your input!</h4>
-        <p>We're looking at restructuring our Foundry VTT Compendiums. You can help us by taking this quick poll to offer your opinion.</p>
-        <button type="button" class="elkan5e-poll-btn" data-url="${POLL_URL}">
-          Open Poll
-        </button>
-      </div>
+		<h4>We'd love your input!</h4>
+		<p>We're looking at restructuring our Foundry VTT Compendiums. Some of these changes may be disruptive, so your feedback is especially valuable. Please take this quick poll to share your opinion.</p>
+		<button type="button" class="elkan5e-poll-btn" data-url="${POLL_URL}">
+			Open Poll
+		</button>
+	</div>
+
     `,
 		flags: { elkan5e: { poll: true } },
 	});
@@ -244,3 +251,6 @@ globalThis.elkan5e = {
 		},
 	},
 };
+
+
+

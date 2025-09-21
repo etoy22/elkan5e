@@ -60,7 +60,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p>A sphere of negative energy ripples out in a 60-foot-radius sphere from a point within range. Each creature in that area must make a Constitution saving throw. A target takes [[/r 8d6]] necrotic damage on a failed save, or half as much damage on a successful one.</p><p></p><p><strong>*Upcasting:</strong> Increase damage by [[/damage 2d6 necrotic]]{2d6} for each spell level above 6th.</p>",
+			"value": "<p><em>A sphere of negative energy ripples out from a point within range.</em></p><p><strong>Materials:</strong> You require a @UUID[Compendium.elkan5e.elkan5e-spells.Item.oh52sKNklClZHEWa]{Crushed Black Pearl}, typically valued at 500 gold.</p><p><strong>Constitution Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage]] necrotic damage.</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 2d8 necrotic]]{2d8} for each spell level above 6th.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -88,7 +88,7 @@
 			},
 			"template": {
 				"units": "ft",
-				"type": "cylinder",
+				"type": "sphere",
 				"size": "60",
 				"contiguous": false,
 				"height": "",
@@ -163,16 +163,16 @@
 					"onSave": "half",
 					"parts": [
 						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
 							"number": 8,
 							"denomination": 6,
 							"bonus": "",
 							"types": [
 								"necrotic"
 							],
-							"custom": {
-								"enabled": false,
-								"formula": ""
-							},
 							"scaling": {
 								"mode": "whole",
 								"number": 2,
@@ -190,14 +190,17 @@
 				},
 				"uses": {
 					"spent": 0,
-					"recovery": []
+					"recovery": [],
+					"max": ""
 				},
-				"_id": "8Y041rs3vcMcxRcH"
+				"_id": "8Y041rs3vcMcxRcH",
+				"name": "",
+				"img": "",
+				"appliedEffects": []
 			}
 		},
 		"identifier": "circle-of-death"
 	},
 	"_id": "xnhX9BjSIuRVNyyI",
-	"_key": "!items!xnhX9BjSIuRVNyyI",
-	"identifier": "circle-of-death"
+	"_key": "!items!xnhX9BjSIuRVNyyI"
 }
