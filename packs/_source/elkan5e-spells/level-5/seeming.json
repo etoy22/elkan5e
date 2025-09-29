@@ -97,10 +97,6 @@
 			"ida": false
 		},
 		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
 			"migratedProperties": [
 				"vocal",
 				"somatic"
@@ -136,7 +132,7 @@
 		"target": {
 			"affects": {
 				"type": "creature",
-				"count": "",
+				"count": "8",
 				"choice": false,
 				"special": ""
 			},
@@ -235,7 +231,253 @@
 				"img": "",
 				"appliedEffects": [
 					"8FFE4c5PuHICu3kz"
-				]
+				],
+				"friendlySave": "friendlyFail",
+				"midiProperties": {
+					"triggeredActivityId": "transform",
+					"triggeredActivityTargets": "failedSaves"
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": false
+			},
+			"hif0S2Wkr1gdopDN": {
+				"type": "transform",
+				"_id": "hif0S2Wkr1gdopDN",
+				"activation": {
+					"type": "action",
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": false,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "self",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"profiles": [
+					{
+						"cr": "",
+						"name": "",
+						"_id": "eFpWdTPJbEZ8LjXF",
+						"uuid": "",
+						"sizes": [],
+						"types": [],
+						"movement": [],
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
+				"settings": null,
+				"transform": {
+					"customize": false,
+					"mode": "cr",
+					"preset": "polymorphSelf"
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": true,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"name": "",
+				"img": ""
+			},
+			"H4shAxtZKEHuKoW2": {
+				"type": "attack",
+				"name": "Illusion Check",
+				"activation": {
+					"type": "special",
+					"value": null,
+					"override": true,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": false,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": true,
+					"units": "spec",
+					"special": ""
+				},
+				"target": {
+					"override": false,
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					}
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"attack": {
+					"critical": {
+						"threshold": null
+					},
+					"flat": false,
+					"type": {
+						"value": "ranged",
+						"classification": ""
+					},
+					"ability": "",
+					"bonus": ""
+				},
+				"damage": {
+					"critical": {
+						"bonus": ""
+					},
+					"includeBase": true,
+					"parts": []
+				},
+				"useConditionText": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"confirmTargets": "default",
+					"automationOnly": false,
+					"identifier": "",
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"attackMode": "",
+				"ammunition": "",
+				"otherActivityId": "",
+				"otherActivityUuid": "",
+				"useConditionReason": "",
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityAsParentType": true,
+				"attackRollPerTarget": "default",
+				"fumbleThreshold": 1,
+				"_id": "H4shAxtZKEHuKoW2",
+				"img": "",
+				"appliedEffects": []
 			}
 		},
 		"identifier": "seeming"
