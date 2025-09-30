@@ -73,12 +73,14 @@ export function setupSpellcastingReferences() {
 		{ key: "verbal", id: "wvyS2GRHioSYrMW0" },
 		{ key: "spellduration", id: "KywepPZfytUpWKql" },
 		{ key: "illusoryimages", id: "GtUH7c2Spk6XpU3B" },
+		{ key: "illusionchecks", id: "GtUH7c2Spk6XpU3B" },
 		{ key: "knownspells", id: "qUZNQFDTomNDA9bv" },
 		{ key: "preparedspells", id: "tvQAz6EC8cGVKRYi" },
 		{ key: "abilityspells", id: "arD4KLvgCPbi1Pl7" },
 		{ key: "focusspells", id: "R25K8TvAPK3c4ywr" },
 		{ key: "spellscroll", id: "R25K8TvAPK3c4ywr" },
 		{ key: "cursed", id: "Vpwu9GQC6HVNZFze" },
+		{ key: "curses", id: "Vpwu9GQC6HVNZFze" },
 	];
 	if (!CONFIG.DND5E.rules) CONFIG.DND5E.rules = {};
 	SPELL_REFS.forEach(({ key, id }) => {
@@ -191,7 +193,25 @@ export function setupOtherReferences() {
 	CONFIG.DND5E.rules.healing = "Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.jLAG02U8x7MGm3u0"
 	CONFIG.DND5E.rules.instantdeath = "Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.EmlapwlGtPJP8US0"
 	CONFIG.DND5E.rules.knockingacreatureout = "Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.Fwd3U6gs6IAybt7Q"
-	CONFIG.DND5E.rules.temporaryhitpoints = CONFIG.DND5E.rules.temphp  = "Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.77jn4POOPOWB3Iq8"
+	CONFIG.DND5E.rules.temporaryhitpoints = CONFIG.DND5E.rules.temphp = "Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.77jn4POOPOWB3Iq8"
 	CONFIG.DND5E.rules.deathsavingthrows = CONFIG.DND5E.rules.deathsaves = "Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.lr1K8jG4k0ExfWDh"
 	CONFIG.DND5E.rules.stabilizing = "Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.fi7JLEcAIaVk9oG2"
+	CONFIG.DND5E.rules.bonusaction = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.Cx12WCR9KlNL9o8d"
+	CONFIG.DND5E.rules.reaction = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.EkKBA3oaiy1Kvs3c"
+	CONFIG.DND5E.rules.flying = "Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.0B1fxfmw0a48tPsc"
+	CONFIG.DND5E.rules.movingaroundothercreatures = "Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.9ZWCknaXCOdhyOrX"
+	CONFIG.DND5E.rules.jumping = "Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.aaJOlRhI1H6vAxt9"
+	CONFIG.DND5E.rules.cover = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.d2hBqe6EYHX2mxKD"
+	CONFIG.DND5E.rules.halfcover = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq"
+	CONFIG.DND5E.rules.threequarterscover = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.82ph4sMqvhxjLbiw"
+	CONFIG.DND5E.rules.totalcover = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.hY5s70xMeG5ISFUA"
+	CONFIG.DND5E.rules.components = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.kyqu4XQqGZqDCPXk"
+	CONFIG.DND5E.rules.armorclass = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.WtFgf9tz3JffM9eW"
+	CONFIG.DND5E.rules.rituals = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.CMI1OFzBkvjEmlj7"
+	CONFIG.DND5E.rules.schoolsofmagic = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.sCJqoQlaDzseYmXn"
+	CONFIG.DND5E.rules.temp = ""
+	CONFIG.DND5E.rules.temp = ""
+	CONFIG.DND5E.rules.temp = ""
+	CONFIG.DND5E.rules.temp = ""
+
 }
