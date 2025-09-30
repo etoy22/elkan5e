@@ -54,7 +54,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p>Choose a spell of 5th level or lower that you can cast, that has a casting time of 1 action, and that can target you. You cast that spell—called the contingent spell—as part of casting contingency, expending spell slots for both, but the contingent spell doesn't come into effect. Instead, it takes effect when a certain circumstance occurs. You describe that circumstance when you cast the two spells. For example, a contingency cast with water breathing might stipulate that water breathing comes into effect when you are engulfed in water or a similar liquid.</p><p>The contingent spell takes effect immediately after the circumstance is met for the first time, whether or not you want it to. and then contingency ends.</p><p>The contingent spell takes effect only on you, even if it can normally target others. You can use only one contingency spell at a time. If you cast this spell again, the effect of another contingency spell on you ends. Also, contingency ends on you if its material component is ever not on your person.</p>",
+			"value": "<p><strong>Action</strong> - Self - 6th Level (Abjuration) - VSM (a statuette of yourself worth 1,500 gp) - 10 Days</p><p><strong>Utility</strong></p><ul><li><p>Choose a spell of 5th level or lower that you can cast, that has a casting time of 1 action, and that can target only you. Cast that spell as part of casting <em>Contingency</em>, expending both spell slots. The chosen spell takes effect only when a triggering circumstance occurs.</p></li><li><p><strong>Trigger: </strong>You describe the condition under which the chosen spell takes effect. The spell is cast instantly when the condition is met, even if you are &amp;reference[unconscious apply=false]. The spell cast doesn't require &amp;reference[Concentration] even if it normally would.</p></li><li><p><strong>Limitation: </strong>You can have only one <em>Contingency</em> spell active at a time. If you cast <em>Contingency</em> again, the previous one ends. <em>Contingency</em> ends if the material the statuette is ever destroyed.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -160,11 +160,110 @@
 					"recovery": []
 				},
 				"_id": "vldjfeKG0w97mQs6"
+			},
+			"2WBe1bWKlNTm0vg2": {
+				"type": "cast",
+				"spell": {
+					"uuid": "Compendium.elkan5e.elkan5e-spells.Item.5e0swEflzMmSszQ0",
+					"challenge": {
+						"override": false
+					},
+					"properties": [
+						"vocal",
+						"somatic",
+						"material"
+					],
+					"spellbook": true
+				},
+				"_id": "2WBe1bWKlNTm0vg2",
+				"activation": {
+					"type": "action",
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"range": {
+					"units": "self",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": []
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				}
 			}
 		},
 		"identifier": "contingency"
 	},
 	"_id": "LIRYUDLP7NTEL0QF",
-	"_key": "!items!LIRYUDLP7NTEL0QF",
-	"identifier": "contingency"
+	"_key": "!items!LIRYUDLP7NTEL0QF"
 }
