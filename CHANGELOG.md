@@ -1,5 +1,11 @@
 # Changelog
 
+# v1.13.2.1
+
+# Bug Fix
+
+- Fixed issue where there was 2 copies of engineering
+
 # v1.13.2
 
 ## Bug Fixes
@@ -17,6 +23,7 @@
 All classes now provide starter equipment containing mundane items.
 
 **[Barbarian](https://www.elkan5e.com/barbarian)**
+
 - Bloodrage
     - Updated Wild bloodrager to now use _[Chromatic Orb](https://www.elkan5e.com/spell/chromatic-orb)_
     - Also made it so that you can rename your spells and not run into issues.
@@ -49,6 +56,7 @@ All classes now provide starter equipment containing mundane items.
 - Most 6th level spells have been updated to the Elkan format. Some are fully updated, while others currently only have formatting changes.
 
 ## UI
+
 - Removed Elkan 5e from the begining of some compendiums
 
 ## Misc
