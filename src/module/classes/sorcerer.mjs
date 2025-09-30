@@ -7,7 +7,7 @@ const DialogV2 = foundry.applications.api.DialogV2;
  */
 export async function wildSurge(activity) {
 	const item = activity.item;
-	const level = item.system.level || item.flags.dnd5e?.spellLevel?.value || 1;
+	const level = item.system.level ?? item.flags.dnd5e?.spellLevel?.value ?? 1;
 
 	if (
 		(item.type === "spell" &&
@@ -32,8 +32,8 @@ export async function wildSurge(activity) {
 			"O7JYPPoDS7gLGkNj",
 		];
 		const wild = actor.items.find((i) => i.system.identifier === "random-wild-surge");
-		const volen = actor.effects.find((i) => i.system.identifier === "Voluntary Surge");
-		const blowout = actor.effects.find((i) => i.system.identifier === "Magical Blowout");
+		const volen = actor.effects.find((i) => i.name === "Voluntary Surge");
+		const blowout = actor.effects.find((i) => i.name === "Magical Blowout");
 		let rollAbove = false;
 
 		if (wild) {
@@ -116,17 +116,16 @@ export async function wildSurge(activity) {
 									content: `
 										<h2>${game.i18n.localize("elkan5e.wildMage.alterWildSurge")}</h2>
 										<p>${game.i18n.localize("elkan5e.wildMage.abilityUsage")}</p>
-										${
-											delay
-												? `<p>${game.i18n.format(
-														"elkan5e.wildMage.delayedSurgeUses",
-														{
-															remaining:
-																delay.system.uses.max -
-																delay.system.uses.spent,
-														},
-													)}</p>`
-												: ""
+										${delay
+											? `<p>${game.i18n.format(
+												"elkan5e.wildMage.delayedSurgeUses",
+												{
+													remaining:
+														delay.system.uses.max -
+														delay.system.uses.spent,
+												},
+											)}</p>`
+											: ""
 										}
 									`,
 									buttons: Object.entries(innerButtons).map(([action, data]) => ({
@@ -157,21 +156,19 @@ export async function wildSurge(activity) {
 						content: `
 							<h2>${game.i18n.localize("elkan5e.wildMage.alterWildSurge")}</h2>
 							<p>${game.i18n.localize("elkan5e.wildMage.abilityUsage")}</p>
-							${
-								avert
-									? `<p>${game.i18n.format("elkan5e.wildMage.avertDisasterUses", {
-											remaining:
-												avert.system.uses.max - avert.system.uses.spent,
-										})}</p>`
-									: ""
+							${avert
+								? `<p>${game.i18n.format("elkan5e.wildMage.avertDisasterUses", {
+									remaining:
+										avert.system.uses.max - avert.system.uses.spent,
+								})}</p>`
+								: ""
 							}
-							${
-								delay
-									? `<p>${game.i18n.format("elkan5e.wildMage.delayedSurgeUses", {
-											remaining:
-												delay.system.uses.max - delay.system.uses.spent,
-										})}</p>`
-									: ""
+							${delay
+								? `<p>${game.i18n.format("elkan5e.wildMage.delayedSurgeUses", {
+									remaining:
+										delay.system.uses.max - delay.system.uses.spent,
+								})}</p>`
+								: ""
 							}
 						`,
 						buttons: Object.entries(buttons).map(([action, data]) => ({
@@ -343,7 +340,7 @@ async function createDelayButton(actor, rollResult) {
 async function createCancelButton() {
 	return {
 		label: game.i18n.localize("elkan5e.wildMage.cancel"),
-		callback: () => {},
+		callback: () => { },
 	};
 }
 
