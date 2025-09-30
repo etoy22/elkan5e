@@ -28,6 +28,7 @@ import {
 	setupDamageReferences,
 	setupSpellcastingReferences,
 	setupCreatureTypeReferences,
+	setupOtherReferences,
 } from "./module/rules/references.mjs";
 
 import * as Spells from "./module/spells.mjs";
@@ -98,6 +99,7 @@ Hooks.once("init", async () => {
 		setupDamageReferences();
 		setupSpellcastingReferences();
 		setupCreatureTypeReferences();
+		setupOtherReferences();
 		CONFIG.DND5E.skills.engineering = {
 			label: "Engineering",
 			ability: "int",
