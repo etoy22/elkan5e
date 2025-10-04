@@ -17,7 +17,7 @@
 					"scaling": {
 						"allowed": false
 					},
-					"spellSlot": false,
+					"spellSlot": true,
 					"targets": []
 				},
 				"description": {
@@ -57,95 +57,10 @@
 				"midiAutomationOnly": false,
 				"name": "Roll for Damage Type",
 				"img": "",
-				"appliedEffects": []
-			},
-			"jGRn9FEZrlUZJvOJ": {
-				"type": "attack",
-				"name": "Radiant Attack",
-				"_id": "jGRn9FEZrlUZJvOJ",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"attack": {
-					"critical": {
-						"threshold": null
-					},
-					"flat": false,
-					"type": {
-						"value": "melee",
-						"classification": ""
-					},
-					"ability": "",
-					"bonus": ""
-				},
-				"damage": {
-					"critical": {
-						"bonus": ""
-					},
-					"includeBase": true,
-					"parts": [
-						{
-							"custom": {
-								"enabled": false,
-								"formula": ""
-							},
-							"number": 1,
-							"denomination": 20,
-							"bonus": "5",
-							"types": [
-								"radiant"
-							],
-							"scaling": {
-								"mode": "whole",
-								"number": 1,
-								"formula": ""
-							}
-						}
-					]
-				},
-				"useConditionText": "",
-				"forceDialog": false,
-				"effectConditionText": "",
-				"midiAutomationOnly": false,
-				"attackMode": "",
-				"ammunition": "",
-				"otherActivityUuid": "",
-				"img": "",
 				"appliedEffects": [],
+				"midiProperties": {
+					"triggeredActivityId": "attack"
+				},
 				"otherActivityId": "none"
 			},
 			"8XQXG2nwqU16uU2d": {
@@ -160,7 +75,7 @@
 					"scaling": {
 						"allowed": false
 					},
-					"spellSlot": true,
+					"spellSlot": false,
 					"targets": []
 				},
 				"description": {
@@ -211,7 +126,7 @@
 								"enabled": false,
 								"formula": ""
 							},
-							"number": 1,
+							"number": 2,
 							"denomination": 20,
 							"bonus": "",
 							"types": [
@@ -221,6 +136,7 @@
 								"fire",
 								"force",
 								"necrotic",
+								"radiant",
 								"thunder"
 							],
 							"scaling": {
@@ -241,7 +157,130 @@
 				"name": "",
 				"img": "",
 				"appliedEffects": [],
-				"otherActivityId": "none"
+				"otherActivityId": "radient-damage",
+				"midiProperties": {
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "workflow?.damageRoll?.options?.flavor?.includes(\"radiant\")",
+					"automationOnly": true
+				}
+			},
+			"CHnyGwrfRWhsxnr6": {
+				"type": "damage",
+				"name": "Radiant Damage",
+				"_id": "CHnyGwrfRWhsxnr6",
+				"activation": {
+					"type": "action",
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": false,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "self",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"critical": {
+						"allow": true,
+						"bonus": ""
+					},
+					"parts": [
+						{
+							"custom": {
+								"enabled": true,
+								"formula": "10"
+							},
+							"number": null,
+							"denomination": null,
+							"bonus": "5",
+							"types": [
+								"radiant"
+							],
+							"scaling": {
+								"mode": ""
+							}
+						}
+					]
+				},
+				"useConditionText": "workflow?.damageRoll?.formula?.includes(\"[radiant]\")",
+				"useConditionReason": "Not Radient",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": true,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"img": "",
+				"appliedEffects": []
 			}
 		},
 		"uses": {
@@ -250,7 +289,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><em>At your command, light shoots through a small glass prism, shooting a rainbow light at your target. The bolt has a different effect based on the dominant color reflected.</em></p><p><strong>Ranged Spell Attack</strong></p><p>When you cast this spell, you roll [[/r 1d8]] to determine the damage type.</p><ul><li><p><strong>Hit:</strong> Target takes [[/damage 1d20]] damage (or [[/damage 1d20 + 5 radiant]]{1d20 + 5} if you rolled an 8 for radiant damage).*</p></li></ul><table><tbody><tr><td><p><strong>D8 Result</strong></p></td><td data-colwidth=\"349\"><p><strong>Damage Type</strong></p></td></tr><tr><td><p>1</p></td><td data-colwidth=\"349\"><p>&amp;reference[Fire] (Red)</p></td></tr><tr><td><p>2</p></td><td data-colwidth=\"349\"><p>&amp;reference[Thunder] (Orange)</p></td></tr><tr><td><p>3</p></td><td data-colwidth=\"349\"><p>&amp;reference[Lightning] (Yellow)</p></td></tr><tr><td><p>4</p></td><td data-colwidth=\"349\"><p>&amp;reference[Acid] (Green)</p></td></tr><tr><td><p>5</p></td><td data-colwidth=\"349\"><p>&amp;reference[Cold] (Blue)</p></td></tr><tr><td><p>6</p></td><td data-colwidth=\"349\"><p>&amp;reference[Force] (Indigo)</p></td></tr><tr><td><p>7</p></td><td data-colwidth=\"349\"><p>&amp;reference[Necrotic] (Purple)</p></td></tr><tr><td><p>8</p></td><td data-colwidth=\"349\"><p>&amp;reference[Radiant] (White or Rainbow), and add +5 to the spell's damage.</p></td></tr></tbody></table><p></p><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d20]] for each spell level above 1st.</p>",
+			"value": "<p><em>At your command, light shoots through a small glass prism, shooting a rainbow light at your target. The bolt has a different effect based on the dominant color reflected.</em></p><p><strong>Ranged Spell Attack</strong></p><p>When you cast this spell, you roll [[/r 1d8]] to determine the damage type.</p><ul><li><p><strong>Hit:</strong> Target takes [[/damage 2d20]] damage (or [[/damage 2d20 + 10 radiant]]{2d20 + 10} if you rolled an 8 for radiant damage).*</p></li></ul><table><tbody><tr><td><p><strong>D8 Result</strong></p></td><td data-colwidth=\"349\"><p><strong>Damage Type</strong></p></td></tr><tr><td><p>1</p></td><td data-colwidth=\"349\"><p>&amp;reference[Fire] (Red)</p></td></tr><tr><td><p>2</p></td><td data-colwidth=\"349\"><p>&amp;reference[Thunder] (Orange)</p></td></tr><tr><td><p>3</p></td><td data-colwidth=\"349\"><p>&amp;reference[Lightning] (Yellow)</p></td></tr><tr><td><p>4</p></td><td data-colwidth=\"349\"><p>&amp;reference[Acid] (Green)</p></td></tr><tr><td><p>5</p></td><td data-colwidth=\"349\"><p>&amp;reference[Cold] (Blue)</p></td></tr><tr><td><p>6</p></td><td data-colwidth=\"349\"><p>&amp;reference[Force] (Indigo)</p></td></tr><tr><td><p>7</p></td><td data-colwidth=\"349\"><p>&amp;reference[Necrotic] (Purple)</p></td></tr><tr><td><p>8</p></td><td data-colwidth=\"349\"><p>&amp;reference[Radiant] (White or Rainbow), and add +5 to the spell's damage.</p></td></tr></tbody></table><p></p><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d20]] for each spell level above 1st.</p>",
 			"chat": ""
 		},
 		"identifier": "prismatic-bolt",
@@ -270,7 +309,7 @@
 		"duration": {
 			"units": "inst"
 		},
-		"level": 1,
+		"level": 2,
 		"materials": {
 			"value": "",
 			"consumed": false,
@@ -346,6 +385,5 @@
 		}
 	},
 	"_id": "gOxZm4XAYTyrlGBo",
-	"_key": "!items!gOxZm4XAYTyrlGBo",
-	"identifier": "prismatic-bolt"
+	"_key": "!items!gOxZm4XAYTyrlGBo"
 }

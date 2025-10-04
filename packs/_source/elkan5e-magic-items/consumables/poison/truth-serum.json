@@ -1,0 +1,280 @@
+{
+	"name": "Truth Serum",
+	"type": "consumable",
+	"img": "icons/consumables/potions/bottle-pear-corked-labeled-ornamental-purple.webp",
+	"system": {
+		"activities": {
+			"gZRykfpoTDxT6cqO": {
+				"type": "save",
+				"name": "",
+				"activation": {
+					"type": "",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": ""
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "hour",
+					"concentration": false,
+					"override": false,
+					"value": "1"
+				},
+				"effects": [
+					{
+						"_id": "tA62YPOpn76531tv",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": "creature",
+						"special": ""
+					},
+					"override": false,
+					"prompt": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"parts": [],
+					"onSave": "half",
+					"critical": {
+						"allow": false
+					}
+				},
+				"save": {
+					"ability": [
+						"con"
+					],
+					"dc": {
+						"calculation": "",
+						"formula": "10"
+					}
+				},
+				"_id": "gZRykfpoTDxT6cqO",
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "!target.traits.ci.value.has('poisoned')",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "",
+				"otherActivityAsParentType": true,
+				"friendlySave": "default",
+				"img": "",
+				"appliedEffects": [
+					"tA62YPOpn76531tv"
+				]
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"autoDestroy": true,
+			"max": "1"
+		},
+		"description": {
+			"value": "<p>Ingested - 1 Hour</p><p><strong>[[/save constitution dc11]]{Constitution Save DC 11}</strong></p><ul><li><p><strong>Failure:</strong> &amp;reference[poisoned]; cannot knowingly lie.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><section class=\"secret\" id=\"secret-WKFdLw8kHbGnBNYD\"><p><strong>Foundry Note</strong></p><p>The Active Effect can be used for tracking.</p></section>",
+			"chat": ""
+		},
+		"identifier": "truth-serum",
+		"source": {
+			"revision": 1,
+			"rules": "2024",
+			"license": "",
+			"book": "",
+			"page": "",
+			"custom": ""
+		},
+		"identified": true,
+		"unidentified": {
+			"description": ""
+		},
+		"container": null,
+		"quantity": 1,
+		"weight": {
+			"value": 0,
+			"units": "lb"
+		},
+		"price": {
+			"value": 150,
+			"denomination": "gp"
+		},
+		"rarity": "",
+		"attunement": "",
+		"attuned": false,
+		"equipped": false,
+		"type": {
+			"value": "potion",
+			"subtype": ""
+		},
+		"damage": {
+			"base": {
+				"number": null,
+				"denomination": null,
+				"types": [],
+				"custom": {
+					"enabled": false
+				},
+				"scaling": {
+					"number": 1
+				}
+			},
+			"replace": false
+		},
+		"magicalBonus": null,
+		"properties": []
+	},
+	"effects": [
+		{
+			"name": "Truth Serum",
+			"img": "icons/consumables/potions/bottle-pear-corked-labeled-ornamental-purple.webp",
+			"origin": "Compendium.dnd5e.equipment24.Item.dmgTruthSerum000",
+			"transfer": false,
+			"_id": "tA62YPOpn76531tv",
+			"type": "base",
+			"system": {},
+			"changes": [],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 3600,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [
+				"poisoned"
+			],
+			"flags": {
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"stackable": "noneName",
+					"showIcon": true,
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "All",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!Gdx0N87hahaHjiIH.tA62YPOpn76531tv"
+		}
+	],
+	"folder": "oiZn37v9LcHK7Dsi",
+	"flags": {
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		}
+	},
+	"_id": "Gdx0N87hahaHjiIH",
+	"_key": "!items!Gdx0N87hahaHjiIH"
+}

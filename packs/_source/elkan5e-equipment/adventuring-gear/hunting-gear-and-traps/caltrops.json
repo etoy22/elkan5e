@@ -1,0 +1,446 @@
+{
+	"name": "Caltrops",
+	"system": {
+		"description": {
+			"value": "<p><strong>Action</strong> - 1 Space (5 ft.)</p><p>You place the trap.</p><ul><li><p><strong>Area Hazard: </strong>Any creature that moves onto the space must make a save.</p></li></ul><p><strong>[[/save dexterity 15]]{Dexterity Save (DC 15)}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage]] damage and their Speed is reduced to 0 until the start of your next turn.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p><br /></p><p><em>Note: It takes 1 minute to recover the caltrops.</em></p>",
+			"chat": ""
+		},
+		"price": {
+			"value": 2,
+			"denomination": "gp"
+		},
+		"source": {
+			"custom": "elkan5e.com/items/caltrops",
+			"rules": "2024",
+			"license": "",
+			"book": "",
+			"revision": 1,
+			"page": ""
+		},
+		"identified": true,
+		"unidentified": {
+			"description": ""
+		},
+		"container": null,
+		"quantity": 1,
+		"weight": {
+			"value": 2,
+			"units": "lb"
+		},
+		"rarity": "common",
+		"attunement": "",
+		"attuned": false,
+		"equipped": false,
+		"uses": {
+			"max": "1",
+			"autoDestroy": false,
+			"spent": 0,
+			"recovery": []
+		},
+		"damage": {
+			"base": {
+				"number": null,
+				"denomination": null,
+				"types": [],
+				"custom": {
+					"enabled": false
+				},
+				"scaling": {
+					"number": 1
+				}
+			},
+			"replace": false
+		},
+		"type": {
+			"value": "trinket",
+			"subtype": ""
+		},
+		"magicalBonus": null,
+		"properties": [],
+		"activities": {
+			"G8upRnZw22jGWKWy": {
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": 1,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": ""
+						}
+					],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "",
+					"units": "inst",
+					"special": "",
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "HsbtDDdiWhk4d7WB",
+						"onSave": false
+					}
+				],
+				"range": {
+					"units": "ft",
+					"special": "",
+					"override": false,
+					"value": "5"
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "square",
+						"size": "5",
+						"width": "",
+						"height": "",
+						"units": "ft"
+					},
+					"affects": {
+						"count": "",
+						"type": "",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": "1"
+							},
+							"number": 1,
+							"denomination": 4,
+							"bonus": "",
+							"types": [
+								"piercing"
+							]
+						}
+					],
+					"critical": {
+						"allow": false
+					}
+				},
+				"save": {
+					"ability": [
+						"dex"
+					],
+					"dc": {
+						"calculation": "",
+						"formula": "15"
+					}
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"_id": "G8upRnZw22jGWKWy",
+				"name": "Throw Caltrops",
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "",
+				"otherActivityAsParentType": true,
+				"friendlySave": "default",
+				"img": "",
+				"appliedEffects": [
+					"HsbtDDdiWhk4d7WB"
+				]
+			},
+			"RXhlloZxacWNQHu4": {
+				"type": "utility",
+				"name": "Recover Caltrops",
+				"activation": {
+					"type": "minute",
+					"value": 1,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "-1",
+							"target": ""
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": ""
+					},
+					"override": false,
+					"prompt": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"_id": "RXhlloZxacWNQHu4",
+				"img": "",
+				"appliedEffects": []
+			}
+		},
+		"identifier": "caltrops"
+	},
+	"type": "consumable",
+	"folder": "Qjhe0eLLeK89MVke",
+	"img": "icons/weapons/thrown/bomb-spiked-purple.webp",
+	"effects": [
+		{
+			"name": "Slowed",
+			"img": "icons/weapons/thrown/bomb-spiked-purple.webp",
+			"origin": "Compendium.dnd5e.equipment24.Item.phbagCaltrops000",
+			"transfer": false,
+			"_id": "HsbtDDdiWhk4d7WB",
+			"type": "base",
+			"system": {},
+			"changes": [
+				{
+					"key": "system.attributes.movement.walk",
+					"mode": 5,
+					"value": "0",
+					"priority": 50
+				},
+				{
+					"key": "system.attributes.movement.fly",
+					"mode": 5,
+					"value": "0",
+					"priority": 50
+				},
+				{
+					"key": "system.attributes.movement.swim",
+					"mode": 5,
+					"value": "0",
+					"priority": 50
+				},
+				{
+					"key": "system.attributes.movement.climb",
+					"mode": 5,
+					"value": "0",
+					"priority": 50
+				},
+				{
+					"key": "system.attributes.movement.burrow",
+					"mode": 5,
+					"value": "0",
+					"priority": 50
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 7,
+				"combat": null,
+				"rounds": null,
+				"turns": 1,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [],
+			"flags": {
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"stackable": "noneName",
+					"showIcon": false,
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [
+						"turnStartSource"
+					]
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "All",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!OJ4aG94WMMHPZuIF.HsbtDDdiWhk4d7WB"
+		}
+	],
+	"flags": {
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		}
+	},
+	"_id": "OJ4aG94WMMHPZuIF",
+	"_key": "!items!OJ4aG94WMMHPZuIF"
+}

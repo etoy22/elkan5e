@@ -1,5 +1,13 @@
 const DialogV2 = foundry.applications.api.DialogV2;
 
+const WILD_BLOOD_SPELL_IDENTIFIERS = new Set([
+	"chromatic-orb",
+	"prismatic-bolt",
+	"blink",
+	"confusion",
+	"prismatic-spray",
+]);
+
 export async function rage(workflow) {
 	console.log("Elkan 5e | Rage triggered");
 	const actor = workflow.actor;
@@ -43,32 +51,30 @@ export async function wildBlood(workflow) {
 		"O7JYPPoDS7gLGkNj",
 	];
 
-	if (
-		["Prismatic Bolt", "Mirror Image", "Blink", "Confusion", "Prismatic Spray"].includes(
-			item.name,
-		)
-	) {
-		let confirmed = await DialogV2.confirm({
-			window: { title: game.i18n.localize("elkan5e.barbarian.wildBloodTitle") },
-			content: `<p>${game.i18n.localize("elkan5e.barbarian.wildBloodContent")}</p>?`,
-			rejectClose: false,
-			modal: true,
-		});
+	const identifier = item.system?.identifier;
 
-		if (!confirmed) return;
-		if (type != "utility" || ["Mirror Image", "Blink"].includes(item.name)) {
-			let tableUUID = TABLE_UUIDS[level];
-			if (tableUUID) {
-				try {
-					const table = await fromUuid(
-						`Compendium.elkan5e.elkan5e-roll-tables.RollTable.${tableUUID}`,
-					);
-					if (table) {
-						table.draw({ displayChat: true });
-					}
-				} catch (error) {
-					console.error("Error drawing from Wild Blood table: ", error);
+	if (!identifier || !WILD_BLOOD_SPELL_IDENTIFIERS.has(identifier)) return;
+
+	let confirmed = await DialogV2.confirm({
+		window: { title: game.i18n.localize("elkan5e.barbarian.wildBloodTitle") },
+		content: `<p>${game.i18n.localize("elkan5e.barbarian.wildBloodContent")}</p>?`,
+		rejectClose: false,
+		modal: true,
+	});
+
+	if (!confirmed) return;
+	if (type !== "utility" || identifier === "blink") {
+		let tableUUID = TABLE_UUIDS[level];
+		if (tableUUID) {
+			try {
+				const table = await fromUuid(
+					`Compendium.elkan5e.elkan5e-roll-tables.RollTable.${tableUUID}`,
+				);
+				if (table) {
+					table.draw({ displayChat: true });
 				}
+			} catch (error) {
+				console.error("Error drawing from Wild Blood table: ", error);
 			}
 		}
 	}
