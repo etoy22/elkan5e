@@ -167,7 +167,7 @@ const CONDITIONS_TYPES = [
 		key: "siphoned",
 		id: "SthB8javJuFySiBg",
 		changes: [
-			{ key: "flags.midi-qol.grants.advantage.attack.save", mode: 5, value: "1" },
+			{ key: "flags.midi-qol.grants.advantage.ability.save.all", mode: 5, value: "1" },
 			{
 				key: "flags.midi-qol.onUseMacroName",
 				mode: 0,
@@ -223,8 +223,10 @@ const CONDITIONS_TYPES = [
 		key: "weakened",
 		id: "iJT3cWvyTNBv1L5h",
 		changes: [
-			{ key: "flags.midi-qol.disadvantage.ability.dex", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.disadvantage.ability.str", mode: 5, value: "1" },
+			{ key: "flags.midi-qol.disadvantage.ability.check.dex", mode: 5, value: "1" },
+			{ key: "flags.midi-qol.disadvantage.ability.save.dex", mode: 5, value: "1" },
+			{ key: "flags.midi-qol.disadvantage.ability.check.str", mode: 5, value: "1" },
+			{ key: "flags.midi-qol.disadvantage.ability.save.str", mode: 5, value: "1" },
 			{
 				key: "flags.midi-qol.onUseMacroName",
 				mode: 0,
