@@ -118,20 +118,20 @@ export function setupSpellcastingReferences() {
 export function setupCreatureTypeReferences() {
 	const base = "Compendium.elkan5e.elkan5e-rules.JournalEntry.ZJX2hgglCq6NyNSD.JournalEntryPage.";
 	const CREATURE_REFS = [
-		{ key: "aberration", id: "s654bq7hgEOCdSal" },
-		{ key: "beast", id: "u3JShAq2ZxnVV2yV" },
-		{ key: "celestial", id: "ZZwFqDb6FC9Z3XkD" },
-		{ key: "construct", id: "rcp9DD1ydtLTIRhn" },
-		{ key: "dragon", id: "pIZXeLpJ5fCozA1H" },
-		{ key: "elemental", id: "QYh9NqKgmt6Hhj8c" },
-		{ key: "fey", id: "XfgpzHZJ84H0sYVh" },
-		{ key: "fiend", id: "EBIlihpWmZWGkC45" },
-		{ key: "giant", id: "OGbTyzGQUuttmGfS" },
-		{ key: "humanoid", id: "rdY46Jtmqi2OMGwJ" },
-		{ key: "monstrosity", id: "eKwEjCvWliZqkyOL" },
-		{ key: "ooze", id: "joRNgGxKjOYH3gMu" },
-		{ key: "plant", id: "UYIBDnkcxC2BjHgm" },
-		{ key: "undead", id: "R1lM7n8ZgXzgc1K3" },
+		{ key: "aberration", id: "166a07288fc85326" },
+		{ key: "beast", id: "8681a3328ac16192" },
+		{ key: "celestial", id: "331e0da28ccaed70" },
+		{ key: "construct", id: "959dda3eedb9e181" },
+		{ key: "dragon", id: "aa4cc70979f32dfb" },
+		{ key: "elemental", id: "0434870bf8dbc29e" },
+		{ key: "fey", id: "901264f563365fa9" },
+		{ key: "fiend", id: "72bd2de4b001eac1" },
+		{ key: "giant", id: "4fac89a1a3af62cc" },
+		{ key: "humanoid", id: "a2cb6c9f0244d2fd" },
+		{ key: "monstrosity", id: "fe1300765a5aba0f" },
+		{ key: "ooze", id: "297e7beedc2516a2" },
+		{ key: "plant", id: "e1396f07ec5e0b96" },
+		{ key: "undead", id: "7b922c97b8a8f237" },
 	];
 	if (!CONFIG.DND5E.creatureTypes) CONFIG.DND5E.creatureTypes = {};
 	CREATURE_REFS.forEach(({ key, id }) => {
@@ -146,72 +146,131 @@ export function setupCreatureTypeReferences() {
 	});
 }
 
-
 export function setupOtherReferences() {
-	CONFIG.DND5E.rules.inspiration = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.nkEPI89CiQnOaLYh"
-	CONFIG.DND5E.rules.carryingcapacity = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.1PnjDBKbQJIVyc2t"
-	CONFIG.DND5E.rules.push = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.Hni8DjqLzoqsVjb6"
-	CONFIG.DND5E.rules.drag = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.RGbChQ710jj63bAq"
-	CONFIG.DND5E.rules.lift = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.XeTgxaUtUov8LyAU"
-	CONFIG.DND5E.rules.encumbrance = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.JwqYf9qb6gJAWZKs"
-	CONFIG.DND5E.rules.hiding = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.plHuoNdS0j3umPNS"
-	CONFIG.DND5E.rules.passiveperception = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.988C2hQNyvqkdbND"
-	CONFIG.DND5E.rules.time = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.eihqNjwpZ3HM4IqY"
-	CONFIG.DND5E.rules.speed = "Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.HhqeIiSj8sE1v1qZ"
-	CONFIG.DND5E.rules.travelpace = "Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.eFAISahBloR2X8MX"
-	CONFIG.DND5E.rules.forcemarch = "Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.uQWQpRKQ1kWhuvjZ"
-	CONFIG.DND5E.rules.difficultterrainpace = "Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.hFW5BR2yHHwwgurD"
-	CONFIG.DND5E.rules.climbing = "Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.KxUXbMrUCIAhv4AF"
-	CONFIG.DND5E.rules.swimming = "Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.y2Ayoo8l7XvSgZlL"
-	CONFIG.DND5E.rules.crawling = "Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.S3f1b2WGfipAqOhJ"
-	CONFIG.DND5E.rules.longjump = "Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.1U0myNrOvIVBUdJV"
-	CONFIG.DND5E.rules.highjump = "Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.raPwIkqKSv60ELmy"
-	CONFIG.DND5E.rules.falling = "Compendium.elkan5e.elkan5e-rules.JournalEntry.e7rUhwl4HkTVE0Qs.JournalEntryPage.kREHL5pgNUOhay9f"
-	CONFIG.DND5E.rules.suffocating = "Compendium.elkan5e.elkan5e-rules.JournalEntry.e7rUhwl4HkTVE0Qs.JournalEntryPage.BIlnr0xYhqt4TGsi"
-	CONFIG.DND5E.rules.hazards = "Compendium.elkan5e.elkan5e-rules.JournalEntry.e7rUhwl4HkTVE0Qs.JournalEntryPage.5hyEitPd1Kb27fP5"
-	CONFIG.DND5E.rules.vision = "Compendium.elkan5e.elkan5e-rules.JournalEntry.tF77rxp5fPPbE6Vx.JournalEntryPage.xShb3x5KBuTMzquX"
-	CONFIG.DND5E.rules.blindsight = "Compendium.elkan5e.elkan5e-rules.JournalEntry.tF77rxp5fPPbE6Vx.JournalEntryPage.sacjsfm9ZXnw4Tqc"
-	CONFIG.DND5E.rules.darkvision = "Compendium.elkan5e.elkan5e-rules.JournalEntry.tF77rxp5fPPbE6Vx.JournalEntryPage.ldmA1PbnEGVkmE11"
-	CONFIG.DND5E.rules.truesight = "Compendium.elkan5e.elkan5e-rules.JournalEntry.tF77rxp5fPPbE6Vx.JournalEntryPage.kNa8rJFbtaTM3Rmk"
-	CONFIG.DND5E.rules.tremorsense = "Compendium.elkan5e.elkan5e-rules.JournalEntry.tF77rxp5fPPbE6Vx.JournalEntryPage.8AIlZ95v54mL531X"
-	CONFIG.DND5E.rules.light = "Compendium.elkan5e.elkan5e-rules.JournalEntry.tF77rxp5fPPbE6Vx.JournalEntryPage.O6hamUbI9kVASN8b"
-	CONFIG.DND5E.rules.brightlight = "Compendium.elkan5e.elkan5e-rules.JournalEntry.tF77rxp5fPPbE6Vx.JournalEntryPage.RnMokVPyKGbbL8vi"
-	CONFIG.DND5E.rules.dimlight = "Compendium.elkan5e.elkan5e-rules.JournalEntry.tF77rxp5fPPbE6Vx.JournalEntryPage.n1Ocpbyhr6HhgbCG"
-	CONFIG.DND5E.rules.darkness = "Compendium.elkan5e.elkan5e-rules.JournalEntry.tF77rxp5fPPbE6Vx.JournalEntryPage.4dfREIDjG5N4fvxd"
-	CONFIG.DND5E.rules.lightlyobscured = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.Jq7kMUlHodqSbYDD"
-	CONFIG.DND5E.rules.heavilyobscured = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.UC5VK6i6vqWEUfMn"
-	CONFIG.DND5E.rules.food = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.jayo7XVgGnRCpTW0"
-	CONFIG.DND5E.rules.water = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.iIEI87J7lr2sqtb5"
-	CONFIG.DND5E.rules.forcedmarch = "Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.uQWQpRKQ1kWhuvjZ"
-	CONFIG.DND5E.rules.difficultterrain = "Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.hFW5BR2yHHwwgurD"
-	CONFIG.DND5E.rules.hitpoints = "Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.ndoKj9SzjOvxOI3J"
-	CONFIG.DND5E.rules.damagerolls = "Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.mlywbrr1G8qdxbE7"
-	CONFIG.DND5E.rules.criticalhits = "Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.kS19vAy9DQYUpp2X"
-	CONFIG.DND5E.rules.damagetypes = "Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.qsBGDPv1hDjzIPnc"
-	CONFIG.DND5E.rules.damageresistance = "Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.MGw7hOo14k9MWvyy"
-	CONFIG.DND5E.rules.damagevulnerability = "Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.MGw7hOo14k9MWvyy"
-	CONFIG.DND5E.rules.healing = "Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.jLAG02U8x7MGm3u0"
-	CONFIG.DND5E.rules.instantdeath = "Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.EmlapwlGtPJP8US0"
-	CONFIG.DND5E.rules.knockingacreatureout = "Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.Fwd3U6gs6IAybt7Q"
-	CONFIG.DND5E.rules.temporaryhitpoints = CONFIG.DND5E.rules.temphp = "Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.77jn4POOPOWB3Iq8"
-	CONFIG.DND5E.rules.deathsavingthrows = CONFIG.DND5E.rules.deathsaves = "Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.lr1K8jG4k0ExfWDh"
-	CONFIG.DND5E.rules.stabilizing = "Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.fi7JLEcAIaVk9oG2"
-	CONFIG.DND5E.rules.bonusaction = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.Cx12WCR9KlNL9o8d"
-	CONFIG.DND5E.rules.reaction = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.EkKBA3oaiy1Kvs3c"
-	CONFIG.DND5E.rules.flying = "Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.0B1fxfmw0a48tPsc"
-	CONFIG.DND5E.rules.movingaroundothercreatures = "Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.9ZWCknaXCOdhyOrX"
-	CONFIG.DND5E.rules.jumping = "Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.aaJOlRhI1H6vAxt9"
-	CONFIG.DND5E.rules.cover = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.d2hBqe6EYHX2mxKD"
-	CONFIG.DND5E.rules.halfcover = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq"
-	CONFIG.DND5E.rules.threequarterscover = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.82ph4sMqvhxjLbiw"
-	CONFIG.DND5E.rules.totalcover = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.hY5s70xMeG5ISFUA"
-	CONFIG.DND5E.rules.components = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.kyqu4XQqGZqDCPXk"
-	CONFIG.DND5E.rules.armorclass = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.WtFgf9tz3JffM9eW"
-	CONFIG.DND5E.rules.rituals = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.CMI1OFzBkvjEmlj7"
-	CONFIG.DND5E.rules.schoolsofmagic = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.sCJqoQlaDzseYmXn"
-	CONFIG.DND5E.rules.temp = ""
-	CONFIG.DND5E.rules.temp = ""
-	CONFIG.DND5E.rules.temp = ""
-	CONFIG.DND5E.rules.temp = ""
-
+	CONFIG.DND5E.rules.inspiration =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.nkEPI89CiQnOaLYh";
+	CONFIG.DND5E.rules.carryingcapacity =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.1PnjDBKbQJIVyc2t";
+	CONFIG.DND5E.rules.push =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.Hni8DjqLzoqsVjb6";
+	CONFIG.DND5E.rules.drag =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.RGbChQ710jj63bAq";
+	CONFIG.DND5E.rules.lift =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.XeTgxaUtUov8LyAU";
+	CONFIG.DND5E.rules.encumbrance =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.JwqYf9qb6gJAWZKs";
+	CONFIG.DND5E.rules.hiding =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.plHuoNdS0j3umPNS";
+	CONFIG.DND5E.rules.passiveperception =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.988C2hQNyvqkdbND";
+	CONFIG.DND5E.rules.time =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.eihqNjwpZ3HM4IqY";
+	CONFIG.DND5E.rules.speed =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.HhqeIiSj8sE1v1qZ";
+	CONFIG.DND5E.rules.travelpace =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.eFAISahBloR2X8MX";
+	CONFIG.DND5E.rules.forcemarch =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.uQWQpRKQ1kWhuvjZ";
+	CONFIG.DND5E.rules.difficultterrainpace =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.hFW5BR2yHHwwgurD";
+	CONFIG.DND5E.rules.climbing =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.KxUXbMrUCIAhv4AF";
+	CONFIG.DND5E.rules.swimming =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.y2Ayoo8l7XvSgZlL";
+	CONFIG.DND5E.rules.crawling =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.S3f1b2WGfipAqOhJ";
+	CONFIG.DND5E.rules.longjump =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.1U0myNrOvIVBUdJV";
+	CONFIG.DND5E.rules.highjump =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.raPwIkqKSv60ELmy";
+	CONFIG.DND5E.rules.falling =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.e7rUhwl4HkTVE0Qs.JournalEntryPage.kREHL5pgNUOhay9f";
+	CONFIG.DND5E.rules.suffocating =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.e7rUhwl4HkTVE0Qs.JournalEntryPage.BIlnr0xYhqt4TGsi";
+	CONFIG.DND5E.rules.hazards =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.e7rUhwl4HkTVE0Qs.JournalEntryPage.5hyEitPd1Kb27fP5";
+	CONFIG.DND5E.rules.vision =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.tF77rxp5fPPbE6Vx.JournalEntryPage.xShb3x5KBuTMzquX";
+	CONFIG.DND5E.rules.blindsight =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.tF77rxp5fPPbE6Vx.JournalEntryPage.sacjsfm9ZXnw4Tqc";
+	CONFIG.DND5E.rules.darkvision =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.tF77rxp5fPPbE6Vx.JournalEntryPage.ldmA1PbnEGVkmE11";
+	CONFIG.DND5E.rules.truesight =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.tF77rxp5fPPbE6Vx.JournalEntryPage.kNa8rJFbtaTM3Rmk";
+	CONFIG.DND5E.rules.tremorsense =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.tF77rxp5fPPbE6Vx.JournalEntryPage.8AIlZ95v54mL531X";
+	CONFIG.DND5E.rules.light =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.tF77rxp5fPPbE6Vx.JournalEntryPage.O6hamUbI9kVASN8b";
+	CONFIG.DND5E.rules.brightlight =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.tF77rxp5fPPbE6Vx.JournalEntryPage.RnMokVPyKGbbL8vi";
+	CONFIG.DND5E.rules.dimlight =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.tF77rxp5fPPbE6Vx.JournalEntryPage.n1Ocpbyhr6HhgbCG";
+	CONFIG.DND5E.rules.darkness =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.tF77rxp5fPPbE6Vx.JournalEntryPage.4dfREIDjG5N4fvxd";
+	CONFIG.DND5E.rules.lightlyobscured =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.Jq7kMUlHodqSbYDD";
+	CONFIG.DND5E.rules.heavilyobscured =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.UC5VK6i6vqWEUfMn";
+	CONFIG.DND5E.rules.food =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.jayo7XVgGnRCpTW0";
+	CONFIG.DND5E.rules.water =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.iIEI87J7lr2sqtb5";
+	CONFIG.DND5E.rules.forcedmarch =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.uQWQpRKQ1kWhuvjZ";
+	CONFIG.DND5E.rules.difficultterrain =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.hFW5BR2yHHwwgurD";
+	CONFIG.DND5E.rules.hitpoints =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.ndoKj9SzjOvxOI3J";
+	CONFIG.DND5E.rules.damagerolls =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.mlywbrr1G8qdxbE7";
+	CONFIG.DND5E.rules.criticalhits =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.kS19vAy9DQYUpp2X";
+	CONFIG.DND5E.rules.damagetypes =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.qsBGDPv1hDjzIPnc";
+	CONFIG.DND5E.rules.damageresistance =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.MGw7hOo14k9MWvyy";
+	CONFIG.DND5E.rules.damagevulnerability =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.MGw7hOo14k9MWvyy";
+	CONFIG.DND5E.rules.healing =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.jLAG02U8x7MGm3u0";
+	CONFIG.DND5E.rules.instantdeath =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.EmlapwlGtPJP8US0";
+	CONFIG.DND5E.rules.knockingacreatureout =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.Fwd3U6gs6IAybt7Q";
+	CONFIG.DND5E.rules.temporaryhitpoints = CONFIG.DND5E.rules.temphp =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.77jn4POOPOWB3Iq8";
+	CONFIG.DND5E.rules.deathsavingthrows = CONFIG.DND5E.rules.deathsaves =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.lr1K8jG4k0ExfWDh";
+	CONFIG.DND5E.rules.stabilizing =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.fi7JLEcAIaVk9oG2";
+	CONFIG.DND5E.rules.bonusaction =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.Cx12WCR9KlNL9o8d";
+	CONFIG.DND5E.rules.reaction =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.EkKBA3oaiy1Kvs3c";
+	CONFIG.DND5E.rules.flying =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.0B1fxfmw0a48tPsc";
+	CONFIG.DND5E.rules.movingaroundothercreatures =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.9ZWCknaXCOdhyOrX";
+	CONFIG.DND5E.rules.jumping =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.aaJOlRhI1H6vAxt9";
+	CONFIG.DND5E.rules.cover =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.d2hBqe6EYHX2mxKD";
+	CONFIG.DND5E.rules.halfcover =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.1BmTbnT3xDPqv9dq";
+	CONFIG.DND5E.rules.threequarterscover =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.82ph4sMqvhxjLbiw";
+	CONFIG.DND5E.rules.totalcover =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.hY5s70xMeG5ISFUA";
+	CONFIG.DND5E.rules.components =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.kyqu4XQqGZqDCPXk";
+	CONFIG.DND5E.rules.armorclass =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.WtFgf9tz3JffM9eW";
+	CONFIG.DND5E.rules.rituals =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.CMI1OFzBkvjEmlj7";
+	CONFIG.DND5E.rules.schoolsofmagic =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.sCJqoQlaDzseYmXn";
+	CONFIG.DND5E.rules.temp = "";
+	CONFIG.DND5E.rules.temp = "";
+	CONFIG.DND5E.rules.temp = "";
+	CONFIG.DND5E.rules.temp = "";
 }
