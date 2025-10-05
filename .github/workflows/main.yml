@@ -240,9 +240,31 @@ jobs:
             - name: Prepare Discord payload
               id: prepare_discord_payload
               run: |
+                  # Read and clean release notes
                   RELEASE_NOTES="${{ steps.read_release_notes.outputs.release_notes }}"
-                  CLEAN_RELEASE_NOTES=$(echo -e "$RELEASE_NOTES")
+                  # normalize line endings
+                  CLEAN_RELEASE_NOTES=$(printf "%s" "$RELEASE_NOTES" | sed 's/\r//g')
 
+                  # Convert Markdown headings to Discord-friendly styles by heading level
+                  # Mapping:
+                  #   #    -> __**Heading**__ (underline + bold)
+                  #   ##   -> **Heading** (bold)
+                  #   ###  -> *Heading* (italic)
+                  #   #### -> __Heading__ (underline)
+                  #   #####/###### -> `Heading` (inline code)
+                  PROCESSED=$(printf "%s" "$CLEAN_RELEASE_NOTES" | sed -E \
+                    # Shift each heading up one level (2->1, 3->2, ..., 6->5). Keep single-# as level-1.
+                    -e "s/^[[:space:]]*######[[:space:]]*(.*)$/__\\1__/" \
+                    -e "s/^[[:space:]]*#####[[:space:]]*(.*)$/__\\1__/" \
+                    -e "s/^[[:space:]]*####[[:space:]]*(.*)$/*\\1*/" \
+                    -e "s/^[[:space:]]*###[[:space:]]*(.*)$/**\\1**/" \
+                    -e "s/^[[:space:]]*##[[:space:]]*(.*)$/__**\\1**__/" \
+                    -e "s/^[[:space:]]*#[[:space:]]*(.*)$/__**\\1**__/" )
+
+                  # Use processed notes in full (no truncation) — convert headings to bold above
+                  TRUNCATED="$PROCESSED"
+
+                  # Build payload using embed.description (larger limit) instead of a field, and include concise fields for links
                   PAYLOAD=$(jq -n \
                     --arg title "Elkan 5e Release" \
                     --arg version "$VERSION" \
@@ -250,16 +272,16 @@ jobs:
                     --arg foundry_url "https://foundryvtt.com/packages/elkan5e" \
                     --arg release_url "$REPO_URL/releases/tag/$VERSION" \
                     --arg download_url "$REPO_URL/releases/download/$VERSION/module.zip" \
-                    --arg release_notes "$CLEAN_RELEASE_NOTES" \
+                    --arg description "$TRUNCATED" \
                     '{embeds: [{
                       title: $title,
+                      description: $description,
                       fields: [
                         {name: "Version", value: $version, inline: true},
                         {name: "Compatibility", value: $compatibility, inline: true},
                         {name: "Foundry Package", value: $foundry_url, inline: false},
-                        {name: "Release Tag", value: $release_url, inline: false},
-                        {name: "Manual Download", value: $download_url, inline: false},
-                        {name: "Release Notes", value: $release_notes, inline: false}
+                        {name: "Release", value: $release_url, inline: false},
+                        {name: "Download", value: $download_url, inline: false}
                       ]
                     }]}')
                   echo "$PAYLOAD"
