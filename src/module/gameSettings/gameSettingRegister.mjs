@@ -59,7 +59,7 @@ export async function gameSettingRegister() {
 
 	game.settings.register("elkan5e", "v13Show", {
 		scope: "world",
-		requiresReload: false,
+		requiresReload: true,
 		default: true,
 		type: Boolean,
 		restricted: true,
