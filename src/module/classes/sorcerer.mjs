@@ -5,15 +5,31 @@ const DialogV2 = foundry.applications.api.DialogV2;
  * Handle the wild surge effect after casting a spell.
  * @param {Activity} activity - The activity performed.
  */
-export async function wildSurge(activity) {
+export async function wildSurge(activity, usageConfig) {
 	const item = activity.item;
-	const level = item.system.level ?? item.flags.dnd5e?.spellLevel?.value ?? 1;
+
+	let rawSlot = usageConfig?.spell?.slot;
+	let level = null;
+
+	if (typeof rawSlot === "number") {
+		level = rawSlot;
+	} else if (typeof rawSlot === "string") {
+		const match = rawSlot.match(/\d+/);
+		if (match) {
+			level = parseInt(match[0], 10);
+		}
+	}
+
+	// Fallback if needed
+	if (level == null) {
+		level = activity.item?.system?.level ?? 0;
+	}
 
 	if (
 		(item.type === "spell" &&
 			level > 0 &&
 			(activity.name === "Ritual" || activity.consumption.spellSlot)) ||
-		(item.type === "consumable" && item.system.type.value === "scroll")
+		item.system.type.value === "scroll"
 	) {
 		const actor = activity.actor;
 		const WILD_SURGE_THRESHOLD = 5;
@@ -116,16 +132,17 @@ export async function wildSurge(activity) {
 									content: `
 										<h2>${game.i18n.localize("elkan5e.wildMage.alterWildSurge")}</h2>
 										<p>${game.i18n.localize("elkan5e.wildMage.abilityUsage")}</p>
-										${delay
-											? `<p>${game.i18n.format(
-												"elkan5e.wildMage.delayedSurgeUses",
-												{
-													remaining:
-														delay.system.uses.max -
-														delay.system.uses.spent,
-												},
-											)}</p>`
-											: ""
+										${
+											delay
+												? `<p>${game.i18n.format(
+														"elkan5e.wildMage.delayedSurgeUses",
+														{
+															remaining:
+																delay.system.uses.max -
+																delay.system.uses.spent,
+														},
+													)}</p>`
+												: ""
 										}
 									`,
 									buttons: Object.entries(innerButtons).map(([action, data]) => ({
@@ -156,19 +173,21 @@ export async function wildSurge(activity) {
 						content: `
 							<h2>${game.i18n.localize("elkan5e.wildMage.alterWildSurge")}</h2>
 							<p>${game.i18n.localize("elkan5e.wildMage.abilityUsage")}</p>
-							${avert
-								? `<p>${game.i18n.format("elkan5e.wildMage.avertDisasterUses", {
-									remaining:
-										avert.system.uses.max - avert.system.uses.spent,
-								})}</p>`
-								: ""
+							${
+								avert
+									? `<p>${game.i18n.format("elkan5e.wildMage.avertDisasterUses", {
+											remaining:
+												avert.system.uses.max - avert.system.uses.spent,
+										})}</p>`
+									: ""
 							}
-							${delay
-								? `<p>${game.i18n.format("elkan5e.wildMage.delayedSurgeUses", {
-									remaining:
-										delay.system.uses.max - delay.system.uses.spent,
-								})}</p>`
-								: ""
+							${
+								delay
+									? `<p>${game.i18n.format("elkan5e.wildMage.delayedSurgeUses", {
+											remaining:
+												delay.system.uses.max - delay.system.uses.spent,
+										})}</p>`
+									: ""
 							}
 						`,
 						buttons: Object.entries(buttons).map(([action, data]) => ({
@@ -340,7 +359,7 @@ async function createDelayButton(actor, rollResult) {
 async function createCancelButton() {
 	return {
 		label: game.i18n.localize("elkan5e.wildMage.cancel"),
-		callback: () => { },
+		callback: () => {},
 	};
 }
 
