@@ -230,7 +230,7 @@ export function setupOtherReferences() {
 	CONFIG.DND5E.rules.damageresistance =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.MGw7hOo14k9MWvyy";
 	CONFIG.DND5E.rules.damagevulnerability =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.MGw7hOo14k9MWvyy";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.TBWKBQBOoRASIEsC";
 	CONFIG.DND5E.rules.healing =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.jLAG02U8x7MGm3u0";
 	CONFIG.DND5E.rules.instantdeath =
@@ -269,8 +269,16 @@ export function setupOtherReferences() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.CMI1OFzBkvjEmlj7";
 	CONFIG.DND5E.rules.schoolsofmagic =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.sCJqoQlaDzseYmXn";
-	CONFIG.DND5E.rules.temp = "";
-	CONFIG.DND5E.rules.temp = "";
-	CONFIG.DND5E.rules.temp = "";
-	CONFIG.DND5E.rules.temp = "";
+	CONFIG.DND5E.rules.resistance =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.MGw7hOo14k9MWvyy";
+	CONFIG.DND5E.rules.size =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.HWHRQVBVG7K0RVVW";
+	CONFIG.DND5E.rules.space =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.WIA5bs3P45PmO3OS";
+	CONFIG.DND5E.rules.squeezing =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.wKtOwagDAiNfVoPS";
+	CONFIG.DND5E.rules.concentrating =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.4ZOHN6tGvj54J6Kv";
+	CONFIG.DND5E.rules.creaturetags =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.ZJX2hgglCq6NyNSD.JournalEntryPage.1ZgNrOURIMuR0CnH";
 }
