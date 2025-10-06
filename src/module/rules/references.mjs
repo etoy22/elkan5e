@@ -281,4 +281,32 @@ export function setupOtherReferences() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.4ZOHN6tGvj54J6Kv";
 	CONFIG.DND5E.rules.creaturetags =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.ZJX2hgglCq6NyNSD.JournalEntryPage.1ZgNrOURIMuR0CnH";
+	CONFIG.DND5E.rules.multipleitemsofthesamekind = CONFIG.DND5E.rules.combiningmagicaleffects =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.uWa3L8lGJKgICYHt";
+	CONFIG.DND5E.rules.resting =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.dpHJXYLigIdEseIb";
+	CONFIG.DND5E.rules.shortrest =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.1s2swI3UsjUUgbt2";
+	CONFIG.DND5E.rules.longrest =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.6cLtjbHn4KV2R7G9";
+	CONFIG.DND5E.rules.initiative =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.RcwElV4GAcVXKWxo";
+	CONFIG.DND5E.rules.beingprone =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.bV8akkBdVUUG21CO";
+	CONFIG.DND5E.rules.droppingprone = CONFIG.DND5E.rules.standingup =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.hwTLpAtSS5OqQsI1";
+	CONFIG.DND5E.rules.poisontypes =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.I6OMMWUaYCWR9xip";
+	CONFIG.DND5E.rules.contactpoison =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.kXnCEqqGUWRZeZDj";
+	CONFIG.DND5E.rules.ingestedpoison =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.KUyN4eK1xTBzXsjP";
+	CONFIG.DND5E.rules.inhaledpoison =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.KUyN4eK1xTBzXsjP";
+	CONFIG.DND5E.rules.injury =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.LUL48OUq6SJeMGc7";
+	CONFIG.DND5E.rules.grappling =
+		CONFIG.DND5E.rules.movingagrappledcreature =
+		CONFIG.DND5E.rules.escapingagrapple =
+			"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.zaI1nuc41wANKoFX";
 }
