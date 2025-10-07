@@ -104,13 +104,6 @@ Hooks.once("init", async () => {
 		setupDamageReferences();
 		setupSpellcastingReferences();
 		setupCreatureTypeReferences();
-		CONFIG.DND5E.skills.engineering = {
-			label: "Engineering",
-			ability: "int",
-			fullKey: "engineering",
-			reference: "",
-			icon: "",
-		};
 	} catch (error) {
 		console.error("Elkan 5e  |  Initialization Error:", error);
 	}
