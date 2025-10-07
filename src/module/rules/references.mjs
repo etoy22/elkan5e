@@ -308,5 +308,17 @@ export function setupOtherReferences() {
 	CONFIG.DND5E.rules.grappling =
 		CONFIG.DND5E.rules.movingagrappledcreature =
 		CONFIG.DND5E.rules.escapingagrapple =
-			"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.zaI1nuc41wANKoFX";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.zaI1nuc41wANKoFX";
+	CONFIG.DND5E.rules.bloodied = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.shZaSIlFPpHufPFn"
+	CONFIG.DND5E.rules.breakingobjects = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.RXTLVpAwcGm1qtKf"
+	CONFIG.DND5E.rules.attitude = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.ahMxQJTGDhq08GWQ"
+	CONFIG.DND5E.rules.friendly = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.RVcWSqblHIs7SUzn"
+	CONFIG.DND5E.rules.indifferent = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.eYX5eimGuYhHPoj4"
+	CONFIG.DND5E.rules.hostile = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.BNxLbtJofbNGzjsp"
+	CONFIG.DND5E.rules.attunement = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.CpD1zLLviYjS9FBX"
+	// CONFIG.DND5E.rules.temp = ""
+	// CONFIG.DND5E.rules.temp = ""
+	// CONFIG.DND5E.rules.temp = ""
+	// CONFIG.DND5E.rules.temp = ""
+	// CONFIG.DND5E.rules.temp = ""
 }
