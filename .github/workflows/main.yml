@@ -273,7 +273,7 @@ jobs:
             - name: Post to Discord
               run: |
                   echo "Posting to Discord..."
-                  curl -H "Content-Type: application/json" -X POST --data-binary @${{ steps.prepare_discord_payload.outputs.payload_path }} "$DISCORD_WEBHOOK"
+                  curl -H "Content-Type: application/json" -X POST -d @${{ steps.prepare_discord_payload.outputs.payload_path }} "$DISCORD_WEBHOOK"
     update-jira:
         runs-on: ubuntu-latest
         needs: [version-check, extract-release-notes, create-github-release]
