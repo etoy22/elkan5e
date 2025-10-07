@@ -5,15 +5,31 @@ const DialogV2 = foundry.applications.api.DialogV2;
  * Handle the wild surge effect after casting a spell.
  * @param {Activity} activity - The activity performed.
  */
-export async function wildSurge(activity) {
+export async function wildSurge(activity, usageConfig) {
 	const item = activity.item;
-	const level = item.system.level || item.flags.dnd5e?.spellLevel?.value || 1;
+
+	let rawSlot = usageConfig?.spell?.slot;
+	let level = null;
+
+	if (typeof rawSlot === "number") {
+		level = rawSlot;
+	} else if (typeof rawSlot === "string") {
+		const match = rawSlot.match(/\d+/);
+		if (match) {
+			level = parseInt(match[0], 10);
+		}
+	}
+
+	// Fallback if needed
+	if (level == null) {
+		level = activity.item?.system?.level ?? 0;
+	}
 
 	if (
 		(item.type === "spell" &&
 			level > 0 &&
 			(activity.name === "Ritual" || activity.consumption.spellSlot)) ||
-		(item.type === "consumable" && item.system.type.value === "scroll")
+		item.system.type.value === "scroll"
 	) {
 		const actor = activity.actor;
 		const WILD_SURGE_THRESHOLD = 5;
@@ -32,8 +48,8 @@ export async function wildSurge(activity) {
 			"O7JYPPoDS7gLGkNj",
 		];
 		const wild = actor.items.find((i) => i.system.identifier === "random-wild-surge");
-		const volen = actor.effects.find((i) => i.system.identifier === "Voluntary Surge");
-		const blowout = actor.effects.find((i) => i.system.identifier === "Magical Blowout");
+		const volen = actor.effects.find((i) => i.name === "Voluntary Surge");
+		const blowout = actor.effects.find((i) => i.name === "Magical Blowout");
 		let rollAbove = false;
 
 		if (wild) {
