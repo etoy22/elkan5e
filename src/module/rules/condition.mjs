@@ -91,10 +91,18 @@ const CONDITIONS_TYPES = [
 		key: "invisible",
 		id: "GfTD899cLRZxGG1H",
 		changes: [
-			{ key: "flags.midi-qol.advantage.attack.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.grants.disadvantage.attack.all", mode: 5, value: "1" },
+			{
+				key: "flags.midi-qol.advantage.attack.all",
+				mode: 5,
+				value: "!Boolean(target?.canSee)",
+			},
+			{
+				key: "flags.midi-qol.grants.disadvantage.attack.all",
+				mode: 5,
+				value: "!Boolean(canSee)",
+			},
 			{ key: "flags.midi-qol.advantage.skill.stealth", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.noOpportunityAttack", mode: 5, value: "1" },
+			{ key: "flags.midi-qol.noOpportunityAttack", mode: 5, value: "!Boolean(canSee)" },
 		],
 	},
 	{
@@ -167,7 +175,7 @@ const CONDITIONS_TYPES = [
 		key: "siphoned",
 		id: "SthB8javJuFySiBg",
 		changes: [
-			{ key: "flags.midi-qol.grants.advantage.attack.save", mode: 5, value: "1" },
+			{ key: "flags.midi-qol.grants.advantage.ability.save.all", mode: 5, value: "1" },
 			{
 				key: "flags.midi-qol.onUseMacroName",
 				mode: 0,
@@ -223,8 +231,10 @@ const CONDITIONS_TYPES = [
 		key: "weakened",
 		id: "iJT3cWvyTNBv1L5h",
 		changes: [
-			{ key: "flags.midi-qol.disadvantage.ability.dex", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.disadvantage.ability.str", mode: 5, value: "1" },
+			{ key: "flags.midi-qol.disadvantage.ability.check.dex", mode: 5, value: "1" },
+			{ key: "flags.midi-qol.disadvantage.ability.save.dex", mode: 5, value: "1" },
+			{ key: "flags.midi-qol.disadvantage.ability.check.str", mode: 5, value: "1" },
+			{ key: "flags.midi-qol.disadvantage.ability.save.str", mode: 5, value: "1" },
 			{
 				key: "flags.midi-qol.onUseMacroName",
 				mode: 0,
@@ -279,6 +289,43 @@ const COVER_IMG_MAP = {
 	coverHalf: "cover-half.svg",
 	coverThreeQuarters: "cover-three-quarters.svg",
 	coverTotal: "cover-full.svg",
+};
+
+const ensureMidiInvisibleVisionRule = () => {
+	const midiModule = game.modules.get("midi-qol");
+	if (!midiModule?.active) return;
+
+	const applyRule = (cfg) => {
+		if (!cfg?.optionalRules) return false;
+		if (cfg.optionalRules.invisAdvantage === "vision") return false;
+		cfg.optionalRules.invisAdvantage = "vision";
+		return true;
+	};
+
+	let updated = false;
+
+	const midiConfig = globalThis.MidiQOL?.currentConfigSettings;
+	if (midiConfig) updated = applyRule(midiConfig) || updated;
+
+	let storedConfig;
+	if (game.user?.isGM && typeof game.settings?.get === "function") {
+		try {
+			storedConfig = foundry.utils.duplicate(game.settings.get("midi-qol", "ConfigSettings"));
+			if (storedConfig) updated = applyRule(storedConfig) || updated;
+		} catch (error) {
+			console.warn("Elkan 5e | Failed to read midi-qol ConfigSettings", error);
+		}
+	}
+
+	if (!updated) return;
+
+	if (storedConfig && game.user?.isGM && typeof game.settings?.set === "function") {
+		game.settings
+			.set("midi-qol", "ConfigSettings", storedConfig)
+			.catch((error) =>
+				console.warn("Elkan 5e | Failed to persist midi invisibility override", error),
+			);
+	}
 };
 
 export function conditions() {
@@ -470,4 +517,5 @@ export function conditionsReady() {
 		if (def.changes?.length) se.changes = mergeChanges(se.changes, def.changes);
 		if (def.flags) se.flags = mergeFlags(se.flags, def.flags);
 	}
+	ensureMidiInvisibleVisionRule();
 }
