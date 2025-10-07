@@ -1,5 +1,58 @@
 # Changelog
 
+# v1.13.3
+
+## Bug Fixes
+
+- Many fixes for Wild Surges
+- Fixed Siphoned and Weakened not functioning properly
+
+## Classes
+
+**[Cleric](https://www.elkan5e.com/cleric)**
+
+- New Subclass Trickery Domain
+
+**[Druid](https://www.elkan5e.com/druid)**
+
+- Shepard Druid
+    - Removed Fast Climber
+
+**[Ranger](https://www.elkan5e.com/ranger)**
+
+- Spellbreaker:
+    - Magic Shackles is now 3/Short Rest and no longer requires concentration
+
+**[Wizard](https://www.elkan5e.com/wizard)**
+
+- Necromancer Revisions
+    - Spectral Graveguard base damage increased to 1d8
+    - Cadaverous and Skeletal Graveguards now have martial weapon proficiency by default
+    - Rearranged abilities to grant stronger features at earlier levels
+    - Added new Level 14 features: Undead Apotheosis and Ritual of Endless Night
+
+## Equipment
+
+- Mana potions now restore only one spell slot, with the level determined by rarity
+
+## Feats
+
+- Feats that grant an extra smite option, precision attack, or wild shape option now grant two instead of one
+
+## Game Rules
+
+- Creatures that can see invisible creatures no longer suffer penalties when doing so
+
+## Spells
+
+- New Artificer cantrips have been added
+- Formatting for all spells has been completed using the Elkan format, but updates are still in progress
+
+## Misc
+
+- Set up required features for feats and related systems
+- Transformation-related activities (Shapeshift, _Alter Self_, etc.) should now function correctly
+
 # v1.13.2.1
 
 # Bug Fix
