@@ -403,10 +403,6 @@
 			"ida": false
 		},
 		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
 			"migratedProperties": [
 				"vocal",
 				"somatic",
@@ -481,115 +477,6 @@
 			"mgc"
 		],
 		"activities": {
-			"sLy5qf4PkqZIKSeF": {
-				"type": "utility",
-				"_id": "sLy5qf4PkqZIKSeF",
-				"activation": {
-					"type": "action",
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "n534Sk4ynTkxgFe4"
-					}
-				],
-				"range": {
-					"units": "self",
-					"override": false
-				},
-				"target": {
-					"template": {
-						"contiguous": false,
-						"units": "ft"
-					},
-					"affects": {
-						"choice": false
-					},
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"roll": {
-					"prompt": false,
-					"visible": false,
-					"name": "",
-					"formula": ""
-				},
-				"useConditionText": "",
-				"useConditionReason": "",
-				"effectConditionText": "",
-				"macroData": {
-					"name": "",
-					"command": ""
-				},
-				"ignoreTraits": {
-					"idi": false,
-					"idr": false,
-					"idv": false,
-					"ida": false,
-					"idm": false
-				},
-				"midiProperties": {
-					"ignoreTraits": [],
-					"triggeredActivityId": "benefit",
-					"triggeredActivityConditionText": "",
-					"triggeredActivityTargets": "targets",
-					"triggeredActivityRollAs": "self",
-					"autoConsume": false,
-					"forceConsumeDialog": "default",
-					"forceRollDialog": "default",
-					"forceDamageDialog": "default",
-					"confirmTargets": "default",
-					"autoTargetType": "any",
-					"autoTargetAction": "default",
-					"automationOnly": false,
-					"otherActivityCompatible": true,
-					"otherActivityAsParentType": true,
-					"identifier": "",
-					"displayActivityName": false,
-					"rollMode": "default",
-					"chooseEffects": false,
-					"toggleEffect": false,
-					"ignoreFullCover": false,
-					"removeChatButtons": "default",
-					"magicEffect": false,
-					"magicDamage": false,
-					"noConcentrationCheck": false,
-					"autoCEEffects": "default"
-				},
-				"isOverTimeFlag": false,
-				"overTimeProperties": {
-					"saveRemoves": true,
-					"preRemoveConditionText": "",
-					"postRemoveConditionText": ""
-				},
-				"otherActivityId": "none",
-				"otherActivityAsParentType": true,
-				"name": "",
-				"img": "",
-				"appliedEffects": [
-					"n534Sk4ynTkxgFe4"
-				]
-			},
 			"4nIbjYsnkybgd9I9": {
 				"type": "utility",
 				"name": "Benefit",
@@ -710,6 +597,124 @@
 					"S3ef3mAm1qWY2rzH",
 					"SVA7zk2IgzcnC4Dz"
 				]
+			},
+			"OO1smnZxNXuyFhxE": {
+				"type": "transform",
+				"_id": "OO1smnZxNXuyFhxE",
+				"activation": {
+					"type": "action",
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "self",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"profiles": [
+					{
+						"cr": "",
+						"name": "",
+						"_id": "zvcrzNHetwgm8WMR",
+						"uuid": "",
+						"sizes": [
+							"sm",
+							"med"
+						],
+						"types": [],
+						"movement": [],
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
+				"settings": null,
+				"transform": {
+					"customize": false,
+					"mode": "cr",
+					"preset": "polymorphSelf"
+				},
+				"useConditionText": "!target.traits.ci.value.has('transformed')",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "benefit",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"name": "Change Appearance",
+				"img": ""
 			}
 		},
 		"identifier": "alter-self"
