@@ -2,7 +2,8 @@ import process from "node:process";
 import { Buffer } from "node:buffer";
 
 function getEnv(name, { required = false, defaultValue = undefined } = {}) {
-	const value = process.env[name];
+	const rawValue = process.env[name];
+	const value = typeof rawValue === "string" ? rawValue.trim() : rawValue;
 	if (!value || value.length === 0) {
 		if (required) {
 			throw new Error(`Environment variable ${name} is required.`);
@@ -41,6 +42,11 @@ async function postJson(url, payload, headers, dryRun) {
 
 	if (!response.ok) {
 		const text = await response.text();
+		if (response.status === 401) {
+			console.error(
+				"::error::Jira rejected the request with 401 Unauthorized. Verify JIRA_BASE_URL, JIRA_USER_EMAIL, and JIRA_API_TOKEN secrets and ensure the user has required permissions.",
+			);
+		}
 		throw new Error(`Jira request failed ${response.status} ${response.statusText}: ${text}`);
 	}
 
