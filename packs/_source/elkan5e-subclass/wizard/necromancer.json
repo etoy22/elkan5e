@@ -6,7 +6,7 @@
 	"img": "icons/magic/death/skull-humanoid-white-red.webp",
 	"system": {
 		"description": {
-			"value": "<p>Wizards who choose to become necromancers specialize in spells from the school of necromancy. Necromancers are some of the only wizards that can use healing magic, but they are best known for raising the dead, undead or otherwise. Skilled necromancers raise a graveguard to serve as their devoted servant. Unfortunately, being followed around by the undead is often the reason they are feared or stigmatized.</p><table data-toc-level=\"3\"><caption>The Necromancer</caption><colgroup><col/><col/></colgroup><thead><tr><th scope=\"col\">Level</th><th scope=\"col\">Features</th></tr></thead><tbody><tr><td>1</td><td>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.m8f4FMYWV0F98wGj]{Necromancy Specialization}</td></tr><tr><td>3</td><td>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.cHeoheBxXYSmJfbv]{Graveguard}</td></tr><tr><td>6</td><td>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.LicdG7YAOX5nGhL4]{Deathtouched}</td></tr><tr><td>10</td><td>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.8KhA4zHjC79O8OXP]{Mastery of Soul}</td></tr><tr><td>14</td><td>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.Cd8XFGk1IQKj67ja]{Necromantic Surge}</td></tr></tbody></table>",
+			"value": "<p>Wizards who choose to become necromancers specialize in spells from the school of necromancy. Necromancers are some of the only wizards that can use healing magic, but they are best known for raising the dead, undead or otherwise. Skilled necromancers raise a graveguard to serve as their devoted servant. Unfortunately, being followed around by the undead is often the reason they are feared or stigmatized.</p><table data-toc-level=\"3\"><caption>The Necromancer</caption><colgroup><col></col><col></col></colgroup><thead><tr><th scope=\"col\">Level</th><th scope=\"col\">Features</th></tr></thead><tbody><tr><td>1</td><td>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.m8f4FMYWV0F98wGj]{Necromancy Specialization}</td></tr><tr><td>3</td><td>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.cHeoheBxXYSmJfbv]{Graveguard}</td></tr><tr><td>6</td><td>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.LicdG7YAOX5nGhL4]{Deathtouched}</td></tr><tr><td>10</td><td>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.8KhA4zHjC79O8OXP]{Mastery of Soul}</td></tr><tr><td>14</td><td>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.Cd8XFGk1IQKj67ja]{Necromantic Surge}</td></tr></tbody></table>",
 			"chat": ""
 		},
 		"source": {
@@ -63,16 +63,19 @@
 					"mode": "default",
 					"allowReplacements": false,
 					"grants": [
-						"ci:drained"
+						"dr:necrotic",
+						"dr:poison",
+						"ci:drained",
+						"ci:poisoned"
 					],
 					"choices": []
 				},
 				"value": {
 					"chosen": []
 				},
-				"level": 6,
-				"title": "Deathtouched",
-				"hint": "Death magic has a hard time clinging to you, and your body starts to take on some of the features of being undead.\n        \n            You are immune to the drained condition and magical aging."
+				"level": 14,
+				"title": "Undead Apotheosis",
+				"hint": "You replace the Undead Nature feat with another level 1 feat if you already have it."
 			},
 			{
 				"_id": "LhuZpqyE9YWM2RmP",
@@ -80,8 +83,8 @@
 				"configuration": {
 					"items": [
 						{
-							"optional": false,
-							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.8KhA4zHjC79O8OXP"
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.Cd8XFGk1IQKj67ja",
+							"optional": false
 						}
 					],
 					"optional": false,
@@ -98,8 +101,12 @@
 				"configuration": {
 					"items": [
 						{
-							"optional": false,
-							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.Cd8XFGk1IQKj67ja"
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.NFqUYBFWbYHqAaxG",
+							"optional": false
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.LicdG7YAOX5nGhL4",
+							"optional": false
 						}
 					],
 					"optional": false,
@@ -116,8 +123,8 @@
 				"configuration": {
 					"items": [
 						{
-							"optional": false,
-							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.LicdG7YAOX5nGhL4"
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.8KhA4zHjC79O8OXP",
+							"optional": false
 						}
 					],
 					"optional": false,

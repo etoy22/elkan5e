@@ -92,10 +92,6 @@
 			"ida": false
 		},
 		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
 			"migratedProperties": [
 				"vocal",
 				"somatic",
@@ -105,7 +101,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p>You banish a creature that you can see within range into a labyrinthine demiplane. The target remains there for the duration or until it escapes the maze.</p><p>The target can use its action to attempt to escape. When it does so, it makes a DC 20 Intelligence check. If it succeeds, it escapes, and the spell ends (a minotaur or goristro demon automatically succeeds).</p><p>When the spell ends, the target reappears in the space it left or, if that space is occupied, in the nearest unoccupied space.</p>",
+			"value": "<p><strong>Action</strong> - 60 ft. - 8th Level (Conjuration) - VS - Concentration (Up to 10 Minutes)</p><p><strong>Debuff</strong></p><ul><li><p>You banish a creature you can see within range to a labyrinthine demiplane. The target remains there until the spell ends or it escapes.</p></li><li><p>At the end of each of its turns, the target may use its Action to attempt to escape, making a Intellignce Check.</p></li><li><p>When the spell ends, the target reappears in the space it left, or the nearest unoccupied space if that space is occupied.</p></li></ul><p><br /></p><p><strong>[[/check int 20]]{Intelligence Check (DC 20)}</strong></p><p>@UUID[Compendium.elkan5e.elkan5e-ancestries.Item.iEDRDOCZtAfPn2Q1]{Minotaurs} automatically succeed.</p><ul><li><p><strong>Failure: </strong>The Creature is still stuck in the maze.</p></li><li><p><strong>Success:</strong> The creature escapes and the spell ends.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -167,20 +163,19 @@
 			"concentration"
 		],
 		"activities": {
-			"sHqkOkqODgZbagCf": {
-				"type": "utility",
+			"q0K0R5zsyDmKbTRP": {
+				"type": "check",
+				"_id": "q0K0R5zsyDmKbTRP",
 				"activation": {
 					"type": "action",
-					"value": null,
 					"override": false
 				},
 				"consumption": {
-					"targets": [],
 					"scaling": {
-						"allowed": false,
-						"max": ""
+						"allowed": false
 					},
-					"spellSlot": true
+					"spellSlot": true,
+					"targets": []
 				},
 				"description": {
 					"chatFlavor": ""
@@ -196,28 +191,91 @@
 					}
 				],
 				"range": {
+					"units": "self",
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
 					"override": false,
 					"prompt": true
-				},
-				"roll": {
-					"formula": "",
-					"name": "",
-					"prompt": false,
-					"visible": false
 				},
 				"uses": {
 					"spent": 0,
 					"recovery": [],
 					"max": ""
 				},
-				"_id": "sHqkOkqODgZbagCf",
+				"check": {
+					"associated": [],
+					"dc": {
+						"calculation": "",
+						"formula": "20"
+					},
+					"ability": "int"
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"damage": {
+					"onSave": "half",
+					"parts": [],
+					"critical": {
+						"allow": false
+					}
+				},
+				"friendlySave": "default",
 				"name": "",
 				"img": "",
 				"appliedEffects": [

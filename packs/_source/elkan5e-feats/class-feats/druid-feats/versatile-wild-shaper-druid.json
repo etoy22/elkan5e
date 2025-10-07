@@ -6,7 +6,7 @@
 	"img": "icons/magic/nature/leaf-juggle-humanoid-green.webp",
 	"system": {
 		"description": {
-			"value": "<p><span><em>Note: This feat can be chosen multiple times.</em></span></p><p>You learn another @UUID[Compendium.elkan5e.elkan5e-class-features.Item.3Dlq6orj97yca72n]{Wild Shape} option. This can be an Advanced Wild Shape or Greater Wild Shape if you are high enough level to know one already. You can exchange this wild shape option for any other wild shape you are high enough level to know when you<strong>finish a long rest</strong> .</p><p><span><strong>You'll need to add the chosen Wild Shape to your character manually.</strong> </span></p>",
+			"value": "<p><span><em>Note: This feat can be chosen multiple times.</em></span></p><p>You learn two more @UUID[Compendium.elkan5e.elkan5e-class-features.Item.3Dlq6orj97yca72n]{Wild Shape} options. This can be an Advanced Wild Shape or Greater Wild Shape if you are high enough level to know one already. You can exchange this wild shape option for any other wild shape you are high enough level to know when you<strong>finish a long rest</strong> .</p><p><span><strong>You'll need to add the chosen Wild Shape to your character manually.</strong></span></p>",
 			"chat": ""
 		},
 		"source": {
@@ -31,74 +31,13 @@
 		],
 		"requirements": "Feat (Druid Level 4)",
 		"prerequisites": {
-			"level": 4
+			"level": 4,
+			"items": [
+				"druid"
+			],
+			"repeatable": true
 		},
-		"activities": {
-			"dnd5eactivity000": {
-				"_id": "dnd5eactivity000",
-				"type": "utility",
-				"activation": {
-					"type": "longrest",
-					"value": null,
-					"condition": "",
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"concentration": false,
-					"value": "",
-					"units": "",
-					"special": "",
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"units": "",
-					"special": "",
-					"override": false
-				},
-				"target": {
-					"template": {
-						"count": "",
-						"contiguous": false,
-						"type": "",
-						"size": "",
-						"width": "",
-						"height": "",
-						"units": ""
-					},
-					"affects": {
-						"count": "",
-						"type": "",
-						"choice": false,
-						"special": ""
-					},
-					"prompt": true,
-					"override": false
-				},
-				"uses": {
-					"spent": 0,
-					"max": "",
-					"recovery": []
-				},
-				"roll": {
-					"formula": "",
-					"name": "",
-					"prompt": false,
-					"visible": false
-				}
-			}
-		},
+		"activities": {},
 		"identifier": "",
 		"enchant": {},
 		"advancement": [
@@ -116,7 +55,8 @@
 						"cha": 0
 					},
 					"locked": [],
-					"points": 2
+					"points": 2,
+					"recommendation": null
 				},
 				"value": {
 					"type": "asi"
@@ -124,6 +64,76 @@
 				"level": 0,
 				"title": "",
 				"hint": ""
+			},
+			{
+				"_id": "9FrIB0kvgve5PfKy",
+				"type": "ItemChoice",
+				"configuration": {
+					"choices": {
+						"0": {
+							"count": 2,
+							"replacement": false
+						}
+					},
+					"allowDrops": false,
+					"type": "feat",
+					"pool": [
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.HgIwBTZyXFaTVnX0"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.hLwzhdYesPXg4cnh"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.egJvmduymeZBW7Uf"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.PKPPmevs5AsYJF1I"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.oLtJoJfmziRfZ4ux"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.lrCo3T7H91Z8yCqg"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.PRl5XEl1jZjhocVZ"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.uoC72nGV3Bs1wBV0"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.LsbceZDIv0Opf29G"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.fOYbPE3EWebPkJoZ"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.qYQRKHYiyUp4WTIU"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.CLBthD2bWod9r5hE"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.ZZGvyz7WRJ8VfBSb"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.53vaYJbFrOfrWnlP"
+						}
+					],
+					"spell": null,
+					"restriction": {
+						"type": "class",
+						"subtype": "wild",
+						"list": []
+					}
+				},
+				"value": {
+					"added": {},
+					"replaced": {}
+				},
+				"title": "Wild Shape",
+				"hint": "You gain the ability to twist your environment to your will. You can use Wild Shape as a bonus action, causing one effect when you do. You can use this feature twice, regaining all uses at the end of a short or long rest. When you gain this feature, you pick two of the following wild shape options. When you finish a long rest, you can exchange one of your Wild Shape options for another of the same level. All of these effects count as magical, but they are not spells."
 			}
 		]
 	},
@@ -154,12 +164,7 @@
 			"removeAttackDamageButtons": "default",
 			"otherCondition": ""
 		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			}
-		},
+		"dnd5e": {},
 		"tidy5e-sheet": {
 			"section": "",
 			"actionSection": ""
