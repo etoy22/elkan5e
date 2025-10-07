@@ -272,8 +272,34 @@ jobs:
 
             - name: Post to Discord
               run: |
-                  echo "Posting to Discord..."
-                  curl -H "Content-Type: application/json" -X POST -d @${{ steps.prepare_discord_payload.outputs.payload_path }} "$DISCORD_WEBHOOK"
+                  set -eo pipefail
+                  if [ -z "${DISCORD_WEBHOOK:-}" ]; then
+                    echo "::warning::DISCORD_WEBHOOK secret is not configured; skipping Discord notification."
+                    exit 0
+                  fi
+
+                  payload_path='${{ steps.prepare_discord_payload.outputs.payload_path }}'
+                  echo "Posting to Discord with payload ${payload_path}..."
+
+                  response_file="$(mktemp)"
+                  status="$(curl -sS -H 'Content-Type: application/json' -X POST -d @"${payload_path}" "$DISCORD_WEBHOOK" -o "${response_file}" -w "%{http_code}")"
+
+                  if [ "${status}" -ge 200 ] && [ "${status}" -lt 300 ]; then
+                    echo "Discord webhook responded with HTTP ${status}"
+                    if [ -s "${response_file}" ]; then
+                      echo "Response:"
+                      cat "${response_file}"
+                    fi
+                    rm -f "${response_file}"
+                  else
+                    echo "::error::Discord webhook failed with HTTP ${status}"
+                    if [ -s "${response_file}" ]; then
+                      echo "Response:"
+                      cat "${response_file}"
+                    fi
+                    rm -f "${response_file}"
+                    exit 1
+                  fi
     update-jira:
         runs-on: ubuntu-latest
         needs: [version-check, extract-release-notes, create-github-release]
