@@ -6,7 +6,7 @@
 	"img": "icons/weapons/swords/sword-gold-holy.webp",
 	"system": {
 		"description": {
-			"value": "<p><em>Note: This feat can be chosen multiple times.</em></p><ul><li><p>You learn another smite option. You can choose one of the level 5, 9, or 13 smite options if you are high enough level to know one.</p></li></ul><p><span><strong>You'll need to add the chosen Smite to your character manually.</strong> </span></p>",
+			"value": "<p><em>Note: This feat can be chosen multiple times.</em></p><ul><li><p>You learn two more smite options. You can choose level 5, 9, or 13 smite options if you are high enough level to know one.</p></li></ul><p><span><strong>You'll need to add the chosen Smite to your character manually.</strong></span></p>",
 			"chat": ""
 		},
 		"source": {
@@ -34,7 +34,11 @@
 		"activities": {},
 		"enchant": {},
 		"prerequisites": {
-			"level": null
+			"level": 4,
+			"repeatable": true,
+			"items": [
+				"paladin"
+			]
 		},
 		"advancement": [
 			{
@@ -51,12 +55,78 @@
 						"cha": 0
 					},
 					"locked": [],
-					"points": 2
+					"points": 2,
+					"recommendation": null
 				},
 				"value": {
 					"type": "asi"
 				},
 				"level": 0,
+				"title": "",
+				"hint": ""
+			},
+			{
+				"_id": "F0Mojdbo19pw7S7s",
+				"type": "ItemChoice",
+				"configuration": {
+					"choices": {
+						"0": {
+							"count": 2,
+							"replacement": false
+						}
+					},
+					"allowDrops": false,
+					"type": "spell",
+					"pool": [
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.4KkDueQiqF07mpCC"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.YsAqtRP6MoiQ4Mpz"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.L6MgA7thuskmnw5q"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.JOiApkwpU161ypDh"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.VnFCPkYMsvuKpbkY"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.NHBuZoE6zh4mAHri"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.VPexq5H4NcABTO2Z"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.0ucfEAdZzHZaqREC"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.nFEa6frWkMVxdU5x"
+						}
+					],
+					"spell": {
+						"ability": [
+							"cha"
+						],
+						"method": "spell",
+						"uses": {
+							"max": "",
+							"per": "",
+							"requireSlot": false
+						},
+						"prepared": 2
+					},
+					"restriction": {
+						"list": [],
+						"level": ""
+					}
+				},
+				"value": {
+					"added": {},
+					"replaced": {}
+				},
 				"title": "",
 				"hint": ""
 			}

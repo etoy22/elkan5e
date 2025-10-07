@@ -144,7 +144,8 @@
 				"midiProperties": {
 					"triggeredActivityId": "initial-casting-(use-second)",
 					"triggeredActivityTargets": "self"
-				}
+				},
+				"otherActivityId": "none"
 			},
 			"1mL8muqBPuqOW8Ec": {
 				"type": "save",
@@ -209,7 +210,124 @@
 				"img": "",
 				"appliedEffects": [
 					"LrRnZx9GBeTa8y76"
-				]
+				],
+				"otherActivityId": "none",
+				"otherActivityAsParentType": false
+			},
+			"u5vIV4FNysgfABJa": {
+				"type": "save",
+				"name": "Overtime",
+				"_id": "u5vIV4FNysgfABJa",
+				"activation": {
+					"type": "action",
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "self",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"onSave": "half",
+					"critical": {
+						"allow": false
+					},
+					"parts": []
+				},
+				"save": {
+					"ability": [
+						"wis"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": true,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": true,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "false",
+					"postRemoveConditionText": "alse",
+					"turnChoice": "end"
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"friendlySave": "default",
+				"img": "",
+				"appliedEffects": []
 			}
 		},
 		"identifier": "rend-the-veil"
@@ -232,9 +350,9 @@
 			"_id": "LrRnZx9GBeTa8y76",
 			"changes": [
 				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 2,
-					"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Rend the Veil",
+					"key": "flags.midi-qol.ActivityOverTime",
+					"mode": 0,
+					"value": "overtime",
 					"priority": 20
 				}
 			],
@@ -261,7 +379,7 @@
 				},
 				"ActiveAuras": {
 					"isAura": false,
-					"aura": "None",
+					"aura": "Enemy",
 					"nameOverride": "",
 					"radius": "",
 					"alignment": "",
@@ -273,10 +391,16 @@
 					"hostile": false,
 					"onlyOnce": false,
 					"customCheck": "",
-					"wallsBlock": "system"
+					"wallsBlock": "system",
+					"statuses": []
 				},
 				"core": {
 					"overlay": false
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
 				}
 			},
 			"tint": "#ffffff",
@@ -324,10 +448,6 @@
 		},
 		"core": {},
 		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
 			"migratedProperties": [
 				"vocal",
 				"somatic",

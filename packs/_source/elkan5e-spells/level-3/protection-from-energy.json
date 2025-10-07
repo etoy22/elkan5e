@@ -199,7 +199,7 @@
 			"_key": "!items.effects!h0aGH4uoMJApiqE7.17YNbVg6vPnKvVUZ"
 		},
 		{
-			"name": "Protection from Electric",
+			"name": "Protection from Electricity",
 			"img": "icons/magic/defensive/shield-barrier-flaming-diamond-purple-orange.webp",
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.h0aGH4uoMJApiqE7",
 			"transfer": false,
@@ -245,7 +245,7 @@
 				},
 				"ActiveAuras": {
 					"isAura": false,
-					"aura": "None",
+					"aura": "Enemy",
 					"nameOverride": "",
 					"radius": "",
 					"alignment": "",
@@ -257,7 +257,13 @@
 					"displayTemp": false,
 					"hostile": false,
 					"onlyOnce": false,
-					"wallsBlock": "system"
+					"wallsBlock": "system",
+					"statuses": []
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
 				}
 			},
 			"_id": "e2YStwdJrQszt8Z6",
@@ -399,10 +405,6 @@
 			"ida": false
 		},
 		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
 			"migratedProperties": [
 				"vocal",
 				"somatic",
@@ -416,7 +418,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>With your left index finger, you trace a rune of power on the surface of your target and speak a word of Primordial. Depending on the rune you drew, if briefly flashes either viridian, blue, red, yellow or white, as the creature gains resistance to either acid, cold, fire, electricity or sonic effects respectively.</em></p><p><strong>Buff</strong> </p><ul><li><p>The target gains resistance to one damage type of your choice: &amp;reference[acid], &amp;reference[cold], &amp;reference[lightning], &amp;reference[fire], or &amp;reference[thunder].</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 3rd.</p>",
+			"value": "<p><em>With your left index finger, you trace a rune of power on the surface of your target and speak a word of Primordial. Depending on the rune you drew, if briefly flashes either viridian, blue, red, yellow or white, as the creature gains resistance to either acid, cold, fire, electricity or sonic effects respectively.</em></p><p><strong>Buff</strong></p><ul><li><p>The target gains resistance to one damage type of your choice: &amp;reference[acid], &amp;reference[cold], &amp;reference[lightning], &amp;reference[fire], or &amp;reference[thunder].</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 3rd.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -502,245 +504,17 @@
 				},
 				"effects": [
 					{
-						"_id": "XCkKNgUFrFlltIN3"
-					}
-				],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"roll": {
-					"formula": "",
-					"name": "",
-					"prompt": false,
-					"visible": false
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"_id": "fbmww6fiWZtExjdA",
-				"name": "Protection from Fire",
-				"img": "",
-				"appliedEffects": [
-					"XCkKNgUFrFlltIN3"
-				]
-			},
-			"jJqbgK9JqI5Jv4Mu": {
-				"type": "utility",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [
-					{
 						"_id": "XzBVlmL1s5YR73pf"
-					}
-				],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"roll": {
-					"formula": "",
-					"name": "",
-					"prompt": false,
-					"visible": false
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"name": "Protection from Acid",
-				"useConditionText": "",
-				"forceDialog": false,
-				"effectConditionText": "",
-				"midiAutomationOnly": false,
-				"_id": "jJqbgK9JqI5Jv4Mu",
-				"img": "",
-				"appliedEffects": [
-					"XzBVlmL1s5YR73pf"
-				]
-			},
-			"ogOSZNvldO9LVZBY": {
-				"type": "utility",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
 					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [
+					{
+						"_id": "XCkKNgUFrFlltIN3"
+					},
 					{
 						"_id": "17YNbVg6vPnKvVUZ"
-					}
-				],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"roll": {
-					"formula": "",
-					"name": "",
-					"prompt": false,
-					"visible": false
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"name": "Protection from Cold",
-				"useConditionText": "",
-				"forceDialog": false,
-				"effectConditionText": "",
-				"midiAutomationOnly": false,
-				"_id": "ogOSZNvldO9LVZBY",
-				"img": "",
-				"appliedEffects": [
-					"17YNbVg6vPnKvVUZ"
-				]
-			},
-			"UtQiI4nPc5NbL33o": {
-				"type": "utility",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
 					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [
 					{
 						"_id": "e2YStwdJrQszt8Z6"
-					}
-				],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"roll": {
-					"formula": "",
-					"name": "",
-					"prompt": false,
-					"visible": false
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"name": "Protection from Electric",
-				"useConditionText": "",
-				"forceDialog": false,
-				"effectConditionText": "",
-				"midiAutomationOnly": false,
-				"_id": "UtQiI4nPc5NbL33o",
-				"img": "",
-				"appliedEffects": [
-					"e2YStwdJrQszt8Z6"
-				]
-			},
-			"DIcVbD3dNcDOguGc": {
-				"type": "utility",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
 					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [
 					{
 						"_id": "bPhjHGQa7nGiJKsz"
 					}
@@ -767,16 +541,19 @@
 					"recovery": [],
 					"max": ""
 				},
-				"name": "Protection from Fire",
-				"useConditionText": "",
-				"forceDialog": false,
-				"effectConditionText": "",
-				"midiAutomationOnly": false,
-				"_id": "DIcVbD3dNcDOguGc",
+				"_id": "fbmww6fiWZtExjdA",
+				"name": "",
 				"img": "",
 				"appliedEffects": [
+					"XCkKNgUFrFlltIN3",
+					"XzBVlmL1s5YR73pf",
+					"17YNbVg6vPnKvVUZ",
+					"e2YStwdJrQszt8Z6",
 					"bPhjHGQa7nGiJKsz"
-				]
+				],
+				"midiProperties": {
+					"chooseEffects": true
+				}
 			}
 		},
 		"identifier": "protection-from-energy"
