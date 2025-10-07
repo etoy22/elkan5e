@@ -5,7 +5,7 @@
 	"img": "icons/magic/control/buff-strength-muscle-damage.webp",
 	"system": {
 		"description": {
-			"value": "<ul><li><p>You gain proficiency in the &amp;reference[athletics] skills (or another skill if you already have it).</p></li><li><p>You also have advantage on saving throws against effects that could cause &amp;reference[Exhaustion].</p></li></ul>",
+			"value": "<ul><li><p>You gain proficiency in the &amp;reference[athletics] skills (or another skill if you already have it).</p></li><li><p>You also have advantage on saving throws against effects that could cause &amp;reference[Exhaustion apply=false].</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -32,7 +32,25 @@
 		"enchant": {},
 		"prerequisites": {
 			"level": null
-		}
+		},
+		"advancement": [
+			{
+				"type": "Trait",
+				"_id": "UmhIv6WZmveigPnC",
+				"configuration": {
+					"allowReplacements": true,
+					"choices": [],
+					"grants": [
+						"skills:ath"
+					],
+					"mode": "default"
+				},
+				"level": 0,
+				"title": "",
+				"hint": "",
+				"value": {}
+			}
+		]
 	},
 	"effects": [
 		{

@@ -12,7 +12,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p class=\"font_8\"><em>Prerequisite: Human or Part-Human Mixed Ancestry</em></p><ul class=\"font_8\"><li><p class=\"font_8\">You gain proficiency in two skills of your choice.</p></li></ul>",
+			"value": "<p class=\"font_8\"><em>Prerequisite: @UUID[Compendium.elkan5e.elkan5e-ancestries.Item.a9gG4vnOMwMvzrOn]{Human} or Part-Human Mixed Ancestry</em></p><ul class=\"font_8\"><li><p class=\"font_8\">You gain &amp;reference[proficiency] in two skills of your choice.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "human-versatility",
@@ -24,13 +24,38 @@
 			"custom": "elkan5e.com/feats/human-versatility",
 			"license": ""
 		},
-		"advancement": [],
+		"advancement": [
+			{
+				"type": "Trait",
+				"_id": "oHP22LwhZM3k9x5d",
+				"configuration": {
+					"allowReplacements": false,
+					"choices": [
+						{
+							"count": 1,
+							"pool": [
+								"skills:*"
+							]
+						}
+					],
+					"grants": [],
+					"mode": "default"
+				},
+				"level": 0,
+				"title": "",
+				"hint": "",
+				"value": {}
+			}
+		],
 		"cover": null,
 		"crewed": false,
 		"enchant": {},
 		"prerequisites": {
 			"level": null,
-			"repeatable": false
+			"repeatable": false,
+			"items": [
+				"human"
+			]
 		},
 		"properties": [],
 		"requirements": "Feat (Level 1)",

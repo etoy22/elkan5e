@@ -5,7 +5,7 @@
 	"img": "icons/environment/people/cavalry.webp",
 	"system": {
 		"description": {
-			"value": "<p>When you are mounted on a creature, you fight as one. You gain the following benefits, unless you are &amp;reference[incapacitated].</p><ul><li><p>The creature that was mounted does not roll initiative, and the mounted rider can replace one of their attacks every turn with one of the mount's attacks if they want. The mount provides its speed and mobility to the rider.</p></li><li><p>The mount cannot take damage. If the mount is targeted by an effect that does not target the rider, and the mount takes damage as a result, the rider instead takes the damage. All attacks against the mount target the rider instead. The mount can otherwise be affected by terrain, spells, and abilities normally.</p></li><li><p>If you are &amp;reference[incapacitated], you fall &amp;reference[prone] next to the mount, and the mount takes its own turn after your initiative count if you are still incapacitated by the time of its turn.</p></li></ul>",
+			"value": "<p>When you are mounted on a creature, you fight as one. You gain the following benefits, unless you are &amp;reference[incapacitated apply=false].</p><ul><li><p>The creature that was mounted does not roll initiative, and the mounted rider can replace one of their attacks every turn with one of the mount's attacks if they want. The mount provides its speed and mobility to the rider.</p></li><li><p>The mount cannot take damage. If the mount is targeted by an effect that does not target the rider, and the mount takes damage as a result, the rider instead takes the damage. All attacks against the mount target the rider instead. The mount can otherwise be affected by terrain, spells, and abilities normally.</p></li><li><p>If you are &amp;reference[incapacitated], you fall &amp;reference[prone] next to the mount, and the mount takes its own turn after your initiative count if you are still incapacitated by the time of its turn.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -132,9 +132,9 @@
 		{
 			"name": "Mounted Combat (Immunity To Damage)",
 			"img": "icons/environment/people/cavalry.webp",
-			"origin": "Compendium.elkan5e.elkan5e-feats.Item.IMKA5ByKVLV2oFVp",
+			"origin": "Compendium.elkan5e.elkan5e-feats.Item.rGhGb0kyBdN9WqeF",
 			"transfer": false,
-			"_id": "NOvtrUG5rfv74koy",
+			"_id": "YB9TGAAX9qCIL9cE",
 			"type": "base",
 			"system": {},
 			"changes": [
@@ -162,7 +162,7 @@
 				"dae": {
 					"enableCondition": "",
 					"disableCondition": "",
-					"disableIncapacitated": false,
+					"disableIncapacitated": true,
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false,
@@ -177,7 +177,7 @@
 				},
 				"ActiveAuras": {
 					"isAura": false,
-					"aura": "None",
+					"aura": "Enemy",
 					"nameOverride": "",
 					"radius": "",
 					"alignment": "",
@@ -189,10 +189,16 @@
 					"displayTemp": false,
 					"hostile": false,
 					"onlyOnce": false,
-					"wallsBlock": "system"
+					"wallsBlock": "system",
+					"statuses": []
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
 				}
 			},
-			"_key": "!items.effects!rGhGb0kyBdN9WqeF.NOvtrUG5rfv74koy"
+			"_key": "!items.effects!rGhGb0kyBdN9WqeF.YB9TGAAX9qCIL9cE"
 		}
 	],
 	"flags": {

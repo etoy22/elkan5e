@@ -128,9 +128,9 @@ Hooks.on("dnd5e.preRollHitDieV2", (config) => {
 });
 
 // Post-use activity (Sorcerer wild surge)
-Hooks.on("dnd5e.postUseActivity", (activity) => {
+Hooks.on("dnd5e.postUseActivity", (activity, usageConfig) => {
 	try {
-		wildSurge(activity);
+		wildSurge(activity, usageConfig);
 	} catch (error) {
 		console.error("Elkan 5e | Error in postUseActivity hook:", error);
 	}
