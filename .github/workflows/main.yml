@@ -308,9 +308,9 @@ jobs:
             JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
             JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
             JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-            JIRA_DRY_RUN: ${{ needs.version-check.outputs.test }}
+            JIRA_DRY_RUN: "false"
             RELEASE_VERSION: ${{ needs.version-check.outputs.version }}
-            RELEASE_URL: https://github.com/${{ github.repository }}/releases/tag/${{ needs.version-check.outputs.version }}
+            RELEASE_URL: ${{ github.ref == 'refs/heads/main' && format('https://github.com/{0}/releases/tag/{1}', github.repository, needs.version-check.outputs.version) || format('https://github.com/{0}/actions/runs/{1}', github.repository, github.run_id) }}
             DEPLOYMENT_ENVIRONMENT_ID: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
             DEPLOYMENT_ENVIRONMENT_NAME: ${{ github.ref == 'refs/heads/main' && 'Production' || 'Staging' }}
             DEPLOYMENT_ENVIRONMENT_TYPE: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}

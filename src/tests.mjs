@@ -90,10 +90,13 @@ test("notify-discord job publishes release details to Discord", () => {
 	assert.equal(job.steps[0].uses, "actions/download-artifact@v4");
 	assert.equal(job.steps[2].id, "read_release_notes");
 	assert.equal(job.steps[3].id, "prepare_discord_payload");
+	const postStep = job.steps[4].run ?? "";
+	assert.ok(postStep.includes("set -eo pipefail"), "post step should enable pipefail");
 	assert.ok(
-		job.steps[4].run?.includes(
-			'curl -H "Content-Type: application/json" -X POST -d @${{ steps.prepare_discord_payload.outputs.payload_path }}',
+		postStep.includes(
+			"curl -sS -H 'Content-Type: application/json' -X POST -d @\"${payload_path}\" \"$DISCORD_WEBHOOK\"",
 		),
+		"post step should invoke curl with payload and webhook",
 	);
 });
 
