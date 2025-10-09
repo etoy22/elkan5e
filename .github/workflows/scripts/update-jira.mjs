@@ -126,8 +126,25 @@ async function main() {
 		],
 	};
 
-	await postJson(`${baseUrl}/rest/deployments/0.1/bulk`, deploymentPayload, headers, dryRun);
-	await postJson(`${baseUrl}/rest/release/1.0/bulk`, releasePayload, headers, dryRun);
+	const [deploymentResult, releaseResult] = await Promise.allSettled([
+		postJson(`${baseUrl}/rest/deployments/0.1/bulk`, deploymentPayload, headers, dryRun),
+		postJson(`${baseUrl}/rest/release/1.0/bulk`, releasePayload, headers, dryRun),
+	]);
+
+	const failures = [];
+	if (deploymentResult.status === "rejected") {
+		failures.push(new Error(`Deployment update failed: ${deploymentResult.reason?.message ?? deploymentResult.reason}`));
+	}
+	if (releaseResult.status === "rejected") {
+		failures.push(new Error(`Release update failed: ${releaseResult.reason?.message ?? releaseResult.reason}`));
+	}
+
+	if (failures.length > 0) {
+		for (const failure of failures) {
+			console.error(`::error::${failure.message}`);
+		}
+		throw failures[0];
+	}
 }
 
 main().catch((error) => {
