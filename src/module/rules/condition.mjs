@@ -248,9 +248,19 @@ const CONDITIONS_TYPES = [
 const se_rmv = ["burrowing", "ethereal", "flying", "hovering", "marked", "sleeping"];
 const STATUS_EFFECTS = [
 	{ key: "concentrating", id: "4ZOHN6tGvj54J6Kv" },
-	{ key: "coverHalf", id: "1BmTbnT3xDPqv9dq" },
-	{ key: "coverThreeQuarters", id: "1BmTbnT3xDPqv9dq" },
-	{ key: "coverTotal", id: "hY5s70xMeG5ISFUA" },
+	{
+		key: "coverHalf",
+		id: "1BmTbnT3xDPqv9dq",
+		coverBonus: 2,
+		exclusiveGroup: "cover",
+	},
+	{
+		key: "coverThreeQuarters",
+		id: "1BmTbnT3xDPqv9dq",
+		coverBonus: 5,
+		exclusiveGroup: "cover",
+	},
+	{ key: "coverTotal", id: "hY5s70xMeG5ISFUA", exclusiveGroup: "cover" },
 	{ key: "dead" },
 	{
 		key: "dodging",
@@ -355,6 +365,8 @@ export function conditions() {
 		if (def.image !== false) ct.img = imgFor(def.key);
 		if (def.changes?.length) ct.changes = mergeChanges(ct.changes, def.changes);
 		if (def.flags) ct.flags = mergeFlags(ct.flags, def.flags);
+		if (def.coverBonus != null) ct.coverBonus = def.coverBonus;
+		if (def.exclusiveGroup) ct.exclusiveGroup = def.exclusiveGroup;
 	};
 
 	// Move statusEffects[key] -> conditionTypes[key], preserving SE props, then apply our def & i18n
@@ -428,25 +440,37 @@ export function conditions() {
 		for (const def of CONDITIONS_TYPES) ensureConditionEntry(def);
 
 		for (const def of STATUS_EFFECTS) {
-			const se = (CONFIG.DND5E.statusEffects[def.key] ??= {});
-			se.name = locCond(def.key);
-			if (def.image !== false) {
-				se.img = COVER_IMG_MAP[def.key]
-					? `modules/elkan5e/icons/conditions/${COVER_IMG_MAP[def.key]}`
-					: imgFor(def.key);
-			}
-			if (def.id) se.reference = RULES_REF(def.id);
-			if (def.changes?.length) se.changes = mergeChanges(se.changes, def.changes);
-			if (def.flags) se.flags = mergeFlags(se.flags, def.flags);
-			if (def.order != null && se.order == null) se.order = def.order;
+		const se = (CONFIG.DND5E.statusEffects[def.key] ??= {});
+		se.name = locCond(def.key);
+		if (def.image !== false) {
+			se.img = COVER_IMG_MAP[def.key]
+				? `modules/elkan5e/icons/conditions/${COVER_IMG_MAP[def.key]}`
+				: imgFor(def.key);
 		}
+		if (def.id) se.reference = RULES_REF(def.id);
+		if (def.changes?.length) se.changes = mergeChanges(se.changes, def.changes);
+		if (def.flags) se.flags = mergeFlags(se.flags, def.flags);
+		if (def.coverBonus != null) se.coverBonus = def.coverBonus;
+		if (def.exclusiveGroup) se.exclusiveGroup = def.exclusiveGroup;
+		if (def.order != null && se.order == null) se.order = def.order;
+	}
 
 		// Migrate these SE -> CT
 		const MOVE_TO_CONDITIONS = [
 			{ key: "concentrating", id: "4ZOHN6tGvj54J6Kv" },
-			{ key: "coverHalf", id: "1BmTbnT3xDPqv9dq" },
-			{ key: "coverThreeQuarters", id: "1BmTbnT3xDPqv9dq" },
-			{ key: "coverTotal", id: "hY5s70xMeG5ISFUA" },
+			{
+				key: "coverHalf",
+				id: "1BmTbnT3xDPqv9dq",
+				coverBonus: 2,
+				exclusiveGroup: "cover",
+			},
+			{
+				key: "coverThreeQuarters",
+				id: "1BmTbnT3xDPqv9dq",
+				coverBonus: 5,
+				exclusiveGroup: "cover",
+			},
+			{ key: "coverTotal", id: "hY5s70xMeG5ISFUA", exclusiveGroup: "cover" },
 		];
 		for (const def of MOVE_TO_CONDITIONS) migrateStatusToCondition(def);
 
@@ -496,6 +520,8 @@ export function conditionsReady() {
 		if (def.image !== false) ct.img = imgFor(def.key);
 		if (def.changes?.length) ct.changes = mergeChanges(ct.changes, def.changes);
 		if (def.flags) ct.flags = mergeFlags(ct.flags, def.flags);
+		if (def.coverBonus != null) ct.coverBonus = def.coverBonus;
+		if (def.exclusiveGroup) ct.exclusiveGroup = def.exclusiveGroup;
 
 		// Also mirror into statusEffects for backwards compat
 		CONFIG.DND5E.statusEffects[def.key] = {
@@ -516,6 +542,8 @@ export function conditionsReady() {
 		}
 		if (def.changes?.length) se.changes = mergeChanges(se.changes, def.changes);
 		if (def.flags) se.flags = mergeFlags(se.flags, def.flags);
+		if (def.coverBonus != null) se.coverBonus = def.coverBonus;
+		if (def.exclusiveGroup) se.exclusiveGroup = def.exclusiveGroup;
 	}
 	ensureMidiInvisibleVisionRule();
 }
