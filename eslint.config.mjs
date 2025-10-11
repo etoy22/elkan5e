@@ -3,7 +3,7 @@ import eslintPluginPrettier from "eslint-plugin-prettier";
 import eslintConfigPrettier from "eslint-config-prettier";
 
 export default [
-  { ignores: ["src/packs.mjs"] }, // or "**/src/packs.mjs" if needed
+  { ignores: ["src/scripts/packs.mjs"] }, // or "**/src/scripts/packs.mjs" if needed
   js.configs.recommended,
   eslintConfigPrettier,
   {

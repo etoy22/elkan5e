@@ -182,3 +182,8 @@ export async function healingOverflow(workflow) {
 		],
 	}).render(true);
 }
+
+export const macros = {
+	infusedHealer,
+	healingOverflow,
+};

@@ -17,3 +17,8 @@ export async function slicingBlow(workflow) {
 		);
 	});
 }
+
+export const macros = {
+	slicingBlow,
+};
+

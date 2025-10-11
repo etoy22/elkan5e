@@ -14,3 +14,8 @@ export function archDruid(actor) {
 		);
 	}
 }
+
+export const macros = {
+	archDruid,
+};
+

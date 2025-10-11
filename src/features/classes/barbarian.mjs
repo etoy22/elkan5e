@@ -79,3 +79,8 @@ export async function wildBlood(workflow) {
 		}
 	}
 }
+
+export const macros = {
+	rage,
+	wildBlood,
+};

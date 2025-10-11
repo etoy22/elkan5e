@@ -100,6 +100,12 @@ export async function emptyBody(actor) {
 	}
 }
 
+export const macros = {
+	hijackShadow,
+	meldWithShadows,
+	elementalAttunement,
+};
+
 export async function elementalAttunement(args) {
 	if (args[0] == "on") {
 		const actor = await game.actors.get(args[1]);

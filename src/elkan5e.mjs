@@ -1,87 +1,44 @@
-import { gameSettingRegister } from "./module/gameSettings/gameSettingRegister.mjs";
-import { startDialog } from "./module/gameSettings/dialog.mjs";
-import { initWarlockSpellSlot } from "./module/classes/warlock.mjs";
-import { secondWind } from "./module/classes/fighter.mjs";
-import { healingOverflow, infusedHealer } from "./module/classes/cleric.mjs";
-import { archDruid } from "./module/classes/druid.mjs";
-import { rage, wildBlood } from "./module/classes/barbarian.mjs";
-import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
+import { registerPatreonModuleCTA } from "./ui/patreon.mjs";
+
+import { gameSettingRegister } from "./settings/gameSettingRegister.mjs";
+import { startDialog } from "./settings/dialog.mjs";
+
+import { macros as barbarianMacros, rage, wildBlood } from "./features/classes/barbarian.mjs";
+import { macros as clericMacros, healingOverflow, infusedHealer } from "./features/classes/cleric.mjs";
+import { archDruid } from "./features/classes/druid.mjs";
+import { macros as fighterMacros, secondWind } from "./features/classes/fighter.mjs";
 import {
+	macros as monkMacros,
 	elementalAttunement,
 	hijackShadow,
 	meldWithShadows,
 	rmvMeldShadow,
 	rmvhijackShadow,
-} from "./module/classes/monk.mjs";
-import { slicingBlow } from "./module/classes/rogue.mjs";
-import { lifeDrainGraveguard, spectralEmpowerment } from "./module/classes/wizard.mjs";
-
-import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
-import { conditions, conditionsReady } from "./module/rules/condition.mjs";
-import { language } from "./module/rules/language.mjs";
-import { formating } from "./module/rules/format.mjs";
-import { tools } from "./module/rules/tools.mjs";
-import { weapons } from "./module/rules/weapon.mjs";
-import { scroll } from "./module/rules/scroll.mjs";
+} from "./features/classes/monk.mjs";
+import { macros as rogueMacros, slicingBlow } from "./features/classes/rogue.mjs";
+import { delayedDuration, delayedItem, wildSurge } from "./features/classes/sorcerer.mjs";
+import { initWarlockSpellSlot } from "./features/classes/warlock.mjs";
 import {
-	setupCombatReferences,
-	setupDamageReferences,
-	setupSpellcastingReferences,
-	setupCreatureTypeReferences,
-} from "./module/rules/references.mjs";
+	lifeDrainGraveguard,
+	monsterMacros as wizardMonsterMacros,
+	spectralEmpowerment,
+} from "./features/classes/wizard.mjs";
 
-import * as Spells from "./module/spells.mjs";
-import * as Feats from "./module/feats.mjs";
-import { skills } from "./module/rules/skills.mjs";
+import { armor, updateBarbarianDefense } from "./features/rules/armor.mjs";
+import { conditions, conditionsReady } from "./features/rules/condition.mjs";
+import { formating } from "./features/rules/format.mjs";
+import { language } from "./features/rules/language.mjs";
+import { setupReferences } from "./features/rules/references.mjs";
+import { scroll } from "./features/rules/scroll.mjs";
+import { skills } from "./features/rules/skills.mjs";
+import { tools } from "./features/rules/tools.mjs";
+import { weapons } from "./features/rules/weapon.mjs";
 
-//Remove this text when poll is over
-const POLL_URL =
-	"https://docs.google.com/forms/d/e/1FAIpQLSdl_E6udYqbRS_KJ0eLta1mIS54yCWUNiOQUTJwFZ9TR7CcNA/viewform?usp=dialog";
+import * as Feats from "./features/feats.mjs";
+import * as Spells from "./features/spells.mjs";
 
-Hooks.once("ready", async () => {
-	// Only the first active GM should run this
-	if (!game.user.isGM) return;
+registerPatreonModuleCTA();
 
-	// Remove any previous poll messages so the latest one is shown every load
-	const previousPolls = (game.messages?.contents ?? []).filter((m) => m.flags?.elkan5e?.poll);
-	if (previousPolls.length) {
-		try {
-			await ChatMessage.deleteDocuments(previousPolls.map((m) => m.id));
-		} catch (error) {
-			console.warn("Elkan 5e | Failed to clear previous poll messages", error);
-		}
-	}
-
-	// Create the poll message
-	await ChatMessage.create({
-		speaker: {
-			alias: "Elkan 5e - Poll",
-			icon: "modules/elkan5e/images/ElkanLogo.webp",
-		},
-		content: `
-      <div class="elkan5e-poll-card">
-		<h4>We'd love your input!</h4>
-		<p>We're looking at restructuring our Foundry VTT Compendiums. Some of these changes may be disruptive, so your feedback is especially valuable. Please take this quick poll to share your opinion.</p>
-		<button type="button" class="elkan5e-poll-btn" data-url="${POLL_URL}">
-			Open Poll
-		</button>
-	</div>
-
-    `,
-		flags: { elkan5e: { poll: true } },
-	});
-});
-
-// Attach click handler when chat message is rendered
-Hooks.on("renderChatMessage", (message, html) => {
-	if (!message.flags?.elkan5e?.poll) return;
-
-	html.find(".elkan5e-poll-btn").on("click", (ev) => {
-		ev.preventDefault();
-		const url = ev.currentTarget.dataset.url || POLL_URL;
-		if (url) window.open(url, "_blank", "noopener");
-	});
-});
 
 Hooks.once("init", async () => {
 	try {
@@ -100,10 +57,7 @@ Hooks.once("init", async () => {
 		scroll();
 		skills();
 		// Setup references
-		setupCombatReferences();
-		setupDamageReferences();
-		setupSpellcastingReferences();
-		setupCreatureTypeReferences();
+		setupReferences();
 	} catch (error) {
 		console.error("Elkan 5e  |  Initialization Error:", error);
 	}
@@ -223,23 +177,29 @@ Hooks.on("deleteMeasuredTemplate", async (template) => {
 });
 
 // Expose macros
-globalThis.elkan5e = {
-	macros: {
-		spells: Spells,
-		features: {
-			rage,
-			infusedHealer,
-			healingOverflow,
-			wildBlood,
-			secondWind,
-			hijackShadow,
-			meldWithShadows,
-			slicingBlow,
-			elementalAttunement,
-		},
-		monsterFeatures: {
-			lifeDrainGraveguard,
-			spectralEmpowerment,
-		},
+const featureMacros = {
+	...barbarianMacros,
+	...clericMacros,
+	...fighterMacros,
+	...monkMacros,
+	...rogueMacros,
+};
+
+const monsterFeatureMacros = {
+	...wizardMonsterMacros,
+};
+
+globalThis.elkan5e ??= {};
+const existingMacros = globalThis.elkan5e.macros ?? {};
+globalThis.elkan5e.macros = {
+	...existingMacros,
+	spells: Spells,
+	features: {
+		...(existingMacros.features ?? {}),
+		...featureMacros,
+	},
+	monsterFeatures: {
+		...(existingMacros.monsterFeatures ?? {}),
+		...monsterFeatureMacros,
 	},
 };

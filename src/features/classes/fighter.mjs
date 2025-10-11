@@ -45,3 +45,8 @@ export async function rallySurge(actor) {
 		}
 	}
 }
+
+export const macros = {
+	secondWind,
+};
+

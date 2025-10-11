@@ -7,14 +7,14 @@
 	"scripts": {
 		"pack": "npm run build:clean && npm run build:db",
 		"clean": "npm run fix && npm run build:clean",
-		"unpack": "node ./src/packs.mjs package unpack",
-		"build:clean": "node ./src/packs.mjs package clean",
-		"build:db": "node ./src/packs.mjs package pack",
-		"remove": "node ./src/packs.mjs package remove",
+		"unpack": "node ./src/scripts/packs.mjs package unpack",
+		"build:clean": "node ./src/scripts/packs.mjs package clean",
+		"build:db": "node ./src/scripts/packs.mjs package pack",
+		"remove": "node ./src/scripts/packs.mjs package remove",
 		"lint": "eslint \"src/**/*.mjs\"",
 		"lint:fix": "eslint --fix \"src/**/*.mjs\"",
 		"format": "prettier --config .prettierrc.json --write \"src/**/*.{js,mjs,json,md}\"",
-		"test": "node --test src/tests.mjs",
+		"test": "node --test src/tests/index.mjs",
 		"fix": "npm run lint:fix && npm run format"
 	},
 	"devDependencies": {

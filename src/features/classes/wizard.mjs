@@ -78,3 +78,9 @@ export async function spectralEmpowerment(workflow) {
 		);
 	}
 }
+
+export const monsterMacros = {
+	lifeDrainGraveguard,
+	spectralEmpowerment,
+};
+

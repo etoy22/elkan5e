@@ -392,3 +392,8 @@ export async function delayedItem(item) {
 		);
 	}
 }
+
+export const macros = {
+	wildSurge,
+};
+
