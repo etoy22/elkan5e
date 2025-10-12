@@ -6,7 +6,7 @@
 
 param(
     [Parameter(Mandatory=$false)]
-    [string]$Root = ".",
+    [string]$Root = "packs/_source",
 
     [Parameter(Mandatory=$false)]
     [string[]]$Include = @("*.json")
@@ -125,6 +125,20 @@ function Fix-Content {
         $tagRegex = New-Object System.Text.RegularExpressions.Regex($tagPattern, [System.Text.RegularExpressions.RegexOptions]::Singleline)
         $new = $tagRegex.Replace($new, { param($m) '<' + $t + $m.Groups['attrs'].Value + '>' + (Fix-Paragraph $m.Groups['body'].Value) + '</' + $t + '>' })
     }
+
+    # Pass 3: Visual spacing without CSS
+    # - Add a <br> between adjacent paragraphs to ensure a visible break when <p> has zero margins in Foundry.
+    $new = [regex]::Replace($new, '</p>\s*(?:<br\s*/?>\s*)?<p>', '</p><br><p>')
+    # - Ensure a space after inline closers when followed by text (avoid punctuation)
+    $new = [regex]::Replace($new, '(</(?:strong|em|a)>)\s*(?=[A-Za-z0-9@])', '$1 ')
+    # - Ensure a space before inline openers if jammed against text (avoid right after a tag)
+    $new = [regex]::Replace($new, '(?<=[A-Za-z0-9@])(<(?:strong|em|a)\b)', ' $1')
+    # - Remove accidental space right after opening block tags before inline tags (e.g., <p> <strong> -> <p><strong>)
+    $new = [regex]::Replace($new, '<(p|li|div|h[1-6])([^>]*)>\s+(?=<(?:strong|em|a)\b)', '<$1$2>')
+    # - Strip leading/trailing literal spaces inside common block tags
+    $new = [regex]::Replace($new, '<(p|li|div|blockquote|h[1-6]|td|th|dd|dt)([^>]*)>\s+', '<$1$2>')
+    $new = [regex]::Replace($new, '\s+</(p|li|div|blockquote|h[1-6]|td|th|dd|dt)>', '</$1>')
+    
     return $new
 }
 
