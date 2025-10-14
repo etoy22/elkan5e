@@ -1,34 +1,18 @@
-import { gameSettingRegister } from "./module/gameSettings/gameSettingRegister.mjs";
-import { startDialog } from "./module/gameSettings/dialog.mjs";
-import { initWarlockSpellSlot } from "./module/classes/warlock.mjs";
-import { secondWind } from "./module/classes/fighter.mjs";
-import { healingOverflow, infusedHealer } from "./module/classes/cleric.mjs";
-import { archDruid } from "./module/classes/druid.mjs";
-import { rage, wildBlood } from "./module/classes/barbarian.mjs";
-import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
-import {
-	elementalAttunement,
-	hijackShadow,
-	meldWithShadows,
-	rmvMeldShadow,
-	rmvhijackShadow,
-} from "./module/classes/monk.mjs";
-import { slicingBlow } from "./module/classes/rogue.mjs";
-import { lifeDrainGraveguard, spectralEmpowerment } from "./module/classes/wizard.mjs";
-
-import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
-import { conditions, conditionsReady } from "./module/rules/condition.mjs";
-import { language } from "./module/rules/language.mjs";
-import { formating } from "./module/rules/format.mjs";
-import { tools } from "./module/rules/tools.mjs";
-import { weapons } from "./module/rules/weapon.mjs";
-import { scroll } from "./module/rules/scroll.mjs";
 import {
 	setupCombatReferences,
 	setupDamageReferences,
 	setupSpellcastingReferences,
 	setupCreatureTypeReferences,
 	addPluralReferenceAliases,
+	setupMovementAndTravelRefs,
+	setupVisionLightObscurementRefs,
+	setupGeneralEnvRefs,
+	setupDamageHealingRefs,
+	setupActionsCoverRefs,
+	setupSpellcastingAuxRefs,
+	setupSizeTagsItemRefs,
+	setupRestPoisonGrappleRefs,
+	setupSocialMechanicsRefs,
 } from "./module/rules/references.mjs";
 
 import * as Spells from "./module/spells.mjs";
@@ -97,16 +81,28 @@ Hooks.once("init", async () => {
 		weapons();
 		armor();
 		language();
-		formating();
-		scroll();
-		skills();
+\t\tformating();
+\t\tscroll();
+\t\tskills();
+\t\t// Setup references
+\t\tsetupCombatReferences();
+\t\tsetupDamageReferences();
+\t\tsetupSpellcastingReferences();
+\t\tsetupCreatureTypeReferences();
+\t\tsetupMovementAndTravelRefs();
+\t\tsetupVisionLightObscurementRefs();
+\t\tsetupGeneralEnvRefs();
+\t\tsetupDamageHealingRefs();
+\t\tsetupActionsCoverRefs();
+\t\tsetupSpellcastingAuxRefs();
+\t\tsetupSizeTagsItemRefs();
+\t\tsetupRestPoisonGrappleRefs();
+\t\tsetupSocialMechanicsRefs();
+\t\taddPluralReferenceAliases();
 		// Setup references
 		setupCombatReferences();
 		setupDamageReferences();
-		setupSpellcastingReferences();
-		setupCreatureTypeReferences();
-		// Add plural aliases so macros like &reference[humanoids] resolve
-		addPluralReferenceAliases();
+		setupSpellcastingReferences(); addPluralReferenceAliases();
 	} catch (error) {
 		console.error("Elkan 5e  |  Initialization Error:", error);
 	}
@@ -246,3 +242,7 @@ globalThis.elkan5e = {
 		},
 	},
 };
+
+
+
+

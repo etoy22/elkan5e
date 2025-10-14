@@ -192,12 +192,28 @@ function Fix-Content {
     $content = [regex]::Replace($content, '&&(?=(?:amp;)?[Rr]eference)', '&')
 
     # Pass 2: Deduplicate within common HTML tags (treat each tag body as its own scope)
-    $tags = @('p','li','div','span','em','strong','td','th','dd','dt','blockquote','code','small','a','h1','h2','h3','h4','h5','h6')
+    # Exclude headers (h1–h6) from dedupe to avoid modifying references in headings
+    $tags = @('p','li','div','span','em','strong','td','th','dd','dt','blockquote','code','small','a')
     $new = $content
     foreach ($t in $tags) {
         $tagPattern = "<${t}(?<attrs>[^>]*)>(?<body>.*?)</${t}>"
         $tagRegex = New-Object System.Text.RegularExpressions.Regex($tagPattern, [System.Text.RegularExpressions.RegexOptions]::Singleline)
         $new = $tagRegex.Replace($new, { param($m) '<' + $t + $m.Groups['attrs'].Value + '>' + (Fix-Paragraph $m.Groups['body'].Value) + '</' + $t + '>' })
+    }
+
+    # Pass 2b: Remove macros within headers entirely (replace with display text only)
+    $hdrTags = @('h1','h2','h3','h4','h5','h6')
+    foreach ($t in $hdrTags) {
+        $tagPattern = "<${t}(?<attrs>[^>]*)>(?<body>.*?)</${t}>"
+        $tagRegex = New-Object System.Text.RegularExpressions.Regex($tagPattern, [System.Text.RegularExpressions.RegexOptions]::Singleline)
+        $pattern = '&(?<amp>amp;)?[Rr]eference\[(?<inside>[^\]]+)\](?:\{(?<label>[^}]+)\})?'
+        $macroRegex = New-Object System.Text.RegularExpressions.Regex($pattern)
+        $new = $tagRegex.Replace($new, {
+            param($m)
+            $body = $m.Groups['body'].Value
+            $replaced = $macroRegex.Replace($body, { param($m2) (Get-DisplayText $m2) })
+            return '<' + $t + $m.Groups['attrs'].Value + '>' + $replaced + '</' + $t + '>'
+        })
     }
 
     # Pass 3: Visual spacing without CSS

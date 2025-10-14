@@ -49,6 +49,7 @@ export function addPluralReferenceAliases() {
 	try { addPluralAliasesForReferenceField(CONFIG.DND5E?.damageTypes); } catch {}
 	try { addPluralAliasesForReferenceField(CONFIG.DND5E?.creatureTypes); } catch {}
 	try { addPluralAliasesForReferenceField(CONFIG.DND5E?.itemProperties); } catch {}
+	try { addPluralAliasesForReferenceField(CONFIG.DND5E?.rules); } catch {}
 	try {
 		// skills: use enrichmentLookup.skills if present
 		const skills = CONFIG.DND5E?.enrichmentLookup?.skills;
@@ -203,25 +204,8 @@ export function setupCreatureTypeReferences() {
 	});
 }
 
-export function setupOtherReferences() {
-	CONFIG.DND5E.rules.inspiration =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.nkEPI89CiQnOaLYh";
-	CONFIG.DND5E.rules.carryingcapacity =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.1PnjDBKbQJIVyc2t";
-	CONFIG.DND5E.rules.push =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.Hni8DjqLzoqsVjb6";
-	CONFIG.DND5E.rules.drag =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.RGbChQ710jj63bAq";
-	CONFIG.DND5E.rules.lift =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.XeTgxaUtUov8LyAU";
-	CONFIG.DND5E.rules.encumbrance =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.JwqYf9qb6gJAWZKs";
-	CONFIG.DND5E.rules.hiding =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.plHuoNdS0j3umPNS";
-	CONFIG.DND5E.rules.passiveperception =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.988C2hQNyvqkdbND";
-	CONFIG.DND5E.rules.time =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.eihqNjwpZ3HM4IqY";
+export function setupMovementReferences() {
+	// Travel and movement
 	CONFIG.DND5E.rules.speed =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.HhqeIiSj8sE1v1qZ";
 	CONFIG.DND5E.rules.travelpace =
@@ -246,6 +230,10 @@ export function setupOtherReferences() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.e7rUhwl4HkTVE0Qs.JournalEntryPage.BIlnr0xYhqt4TGsi";
 	CONFIG.DND5E.rules.hazards =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.e7rUhwl4HkTVE0Qs.JournalEntryPage.5hyEitPd1Kb27fP5";
+}
+
+export function setupVisionLightReferences() {
+	// Vision and light
 	CONFIG.DND5E.rules.vision =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.tF77rxp5fPPbE6Vx.JournalEntryPage.xShb3x5KBuTMzquX";
 	CONFIG.DND5E.rules.blindsight =
@@ -268,14 +256,49 @@ export function setupOtherReferences() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.Jq7kMUlHodqSbYDD";
 	CONFIG.DND5E.rules.heavilyobscured =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.UC5VK6i6vqWEUfMn";
-	CONFIG.DND5E.rules.food =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.jayo7XVgGnRCpTW0";
-	CONFIG.DND5E.rules.water =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.iIEI87J7lr2sqtb5";
+}
+
+// Long descriptive setup functions per category (no generic "other").
+
+export function setupMovementAndTravelRefs() {
+	// Delegate to fine-grained movement setup and add travel/difficulty entries
+	setupMovementReferences();
 	CONFIG.DND5E.rules.forcedmarch =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.uQWQpRKQ1kWhuvjZ";
 	CONFIG.DND5E.rules.difficultterrain =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.hFW5BR2yHHwwgurD";
+}
+
+export function setupVisionLightObscurementRefs() {
+	setupVisionLightReferences();
+}
+
+export function setupGeneralEnvRefs() {
+	CONFIG.DND5E.rules.inspiration =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.nkEPI89CiQnOaLYh";
+	CONFIG.DND5E.rules.carryingcapacity =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.1PnjDBKbQJIVyc2t";
+	CONFIG.DND5E.rules.push =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.Hni8DjqLzoqsVjb6";
+	CONFIG.DND5E.rules.drag =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.RGbChQ710jj63bAq";
+	CONFIG.DND5E.rules.lift =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.XeTgxaUtUov8LyAU";
+	CONFIG.DND5E.rules.encumbrance =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.JwqYf9qb6gJAWZKs";
+	CONFIG.DND5E.rules.hiding =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.plHuoNdS0j3umPNS";
+	CONFIG.DND5E.rules.passiveperception =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.988C2hQNyvqkdbND";
+	CONFIG.DND5E.rules.time =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.eihqNjwpZ3HM4IqY";
+	CONFIG.DND5E.rules.food =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.jayo7XVgGnRCpTW0";
+	CONFIG.DND5E.rules.water =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.iIEI87J7lr2sqtb5";
+}
+
+export function setupDamageHealingRefs() {
 	CONFIG.DND5E.rules.hitpoints =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.ndoKj9SzjOvxOI3J";
 	CONFIG.DND5E.rules.damagerolls =
@@ -300,10 +323,20 @@ export function setupOtherReferences() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.lr1K8jG4k0ExfWDh";
 	CONFIG.DND5E.rules.stabilizing =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.fi7JLEcAIaVk9oG2";
+}
+
+export function setupActionsCoverRefs() {
 	CONFIG.DND5E.rules.bonusaction =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.Cx12WCR9KlNL9o8d";
 	CONFIG.DND5E.rules.reaction =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.EkKBA3oaiy1Kvs3c";
+	// Core 5e action: Use an Object (until Elkan page exists)
+	try {
+		CONFIG.DND5E.rules.useanobject =
+			"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.ljqhJx8Qxu2ivo69";
+	} catch (e) {
+		console.warn("Elkan 5e | Failed to assign useanobject reference:", e);
+	}
 	CONFIG.DND5E.rules.flying =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.0B1fxfmw0a48tPsc";
 	CONFIG.DND5E.rules.movingaroundothercreatures =
@@ -318,6 +351,9 @@ export function setupOtherReferences() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.82ph4sMqvhxjLbiw";
 	CONFIG.DND5E.rules.totalcover =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.hY5s70xMeG5ISFUA";
+}
+
+export function setupSpellcastingAuxRefs() {
 	CONFIG.DND5E.rules.components =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.kyqu4XQqGZqDCPXk";
 	CONFIG.DND5E.rules.armorclass =
@@ -328,30 +364,41 @@ export function setupOtherReferences() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.sCJqoQlaDzseYmXn";
 	CONFIG.DND5E.rules.resistance =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.MGw7hOo14k9MWvyy";
+	CONFIG.DND5E.rules.concentrating =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.4ZOHN6tGvj54J6Kv";
+
+	// Core spellcasting action reference (previously commented TODO)
+	// Using core DND5E compendium until an Elkan 5e page is provided
+	try {
+		CONFIG.DND5E.rules.castaspell =
+			"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.GLwN36E4WXn3Cp4Z";
+	} catch (e) {
+		console.warn("Elkan 5e | Failed to assign castaspell reference:", e);
+	}
+}
+
+export function setupSizeTagsItemRefs() {
 	CONFIG.DND5E.rules.size =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.HWHRQVBVG7K0RVVW";
 	CONFIG.DND5E.rules.space =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.WIA5bs3P45PmO3OS";
 	CONFIG.DND5E.rules.squeezing =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.wKtOwagDAiNfVoPS";
-	CONFIG.DND5E.rules.concentrating =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.4ZOHN6tGvj54J6Kv";
 	CONFIG.DND5E.rules.creaturetags =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.ZJX2hgglCq6NyNSD.JournalEntryPage.1ZgNrOURIMuR0CnH";
 	CONFIG.DND5E.rules.multipleitemsofthesamekind = CONFIG.DND5E.rules.combiningmagicaleffects =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.uWa3L8lGJKgICYHt";
+	CONFIG.DND5E.rules.attunement =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.CpD1zLLviYjS9FBX";
+}
+
+export function setupRestPoisonGrappleRefs() {
 	CONFIG.DND5E.rules.resting =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.dpHJXYLigIdEseIb";
 	CONFIG.DND5E.rules.shortrest =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.1s2swI3UsjUUgbt2";
 	CONFIG.DND5E.rules.longrest =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.6cLtjbHn4KV2R7G9";
-	CONFIG.DND5E.rules.initiative =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.RcwElV4GAcVXKWxo";
-	CONFIG.DND5E.rules.beingprone =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.bV8akkBdVUUG21CO";
-	CONFIG.DND5E.rules.droppingprone = CONFIG.DND5E.rules.standingup =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.hwTLpAtSS5OqQsI1";
 	CONFIG.DND5E.rules.poisontypes =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.I6OMMWUaYCWR9xip";
 	CONFIG.DND5E.rules.contactpoison =
@@ -363,63 +410,73 @@ export function setupOtherReferences() {
 	CONFIG.DND5E.rules.injury =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.LUL48OUq6SJeMGc7";
 	CONFIG.DND5E.rules.grappling =
-		CONFIG.DND5E.rules.movingagrappledcreature =
-		CONFIG.DND5E.rules.escapingagrapple =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.zaI1nuc41wANKoFX";
-	CONFIG.DND5E.rules.bloodied = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.shZaSIlFPpHufPFn"
-	CONFIG.DND5E.rules.breakingobjects = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.RXTLVpAwcGm1qtKf"
-	CONFIG.DND5E.rules.attitude = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.ahMxQJTGDhq08GWQ"
-	CONFIG.DND5E.rules.friendly = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.RVcWSqblHIs7SUzn"
-	CONFIG.DND5E.rules.indifferent = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.eYX5eimGuYhHPoj4"
-	CONFIG.DND5E.rules.hostile = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.BNxLbtJofbNGzjsp"
-	CONFIG.DND5E.rules.attunement = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.CpD1zLLviYjS9FBX"
-
-
-	//TODO: Not done yet but leaving these here as placeholders
-	// CONFIG.DND5E.rules.castaspell = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.GLwN36E4WXn3Cp4Z";
-	// CONFIG.DND5E.rules.useanobject = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.ljqhJx8Qxu2ivo69";
-	// CONFIG.DND5E.rules.attackrolls = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.5wkqEqhbBD5kDeE7";
-	// CONFIG.DND5E.rules.unseenattackers = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.5ZJNwEPlsGurecg5";
-	// CONFIG.DND5E.rules.unseentargets = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.5ZJNwEPlsGurecg5";
-	// CONFIG.DND5E.rules.rangedattacks = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.S9aclVOCbusLE3kC";
-	// CONFIG.DND5E.rules.range = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.HjKXuB8ndjcqOds7";
-	// CONFIG.DND5E.rules.rangedattacksinclosecombat = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.qEZvxW0NM7ixSQP5";
-	// CONFIG.DND5E.rules.meleeattacks = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.GTk6emvzNxl8Oosl";
-	// CONFIG.DND5E.rules.escapingagrapple = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.2TZKy9YbMN3ZY3h8";
-	// CONFIG.DND5E.rules.shoving = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.hrdqMF8hRXJdNzJx";
-	// CONFIG.DND5E.rules.mounting = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.MFpyvUIdcBpC9kIE";
-	// CONFIG.DND5E.rules.dismounting = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.MFpyvUIdcBpC9kIE";
-	// CONFIG.DND5E.rules.controllingamount = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.khmR2xFk1NxoQUgZ";
-	// CONFIG.DND5E.rules.underwatercombat = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.6zVOeLyq4iMnrQT4";
-	// CONFIG.DND5E.rules.bonusactioncasting = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.RP1WL9FXI3aknlxZ";
-	// CONFIG.DND5E.rules.reactioncasting = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.t62lCfinwU9H7Lji";
-	// CONFIG.DND5E.rules.longercastingtimes = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.gOAIRFCyPUx42axn";
-	// CONFIG.DND5E.rules.instantaneous = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.kdlgZOpRMB6bGCod";
-	// CONFIG.DND5E.rules.areaofeffect = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.wvtCeGHgnUmh0cuj";
-	// CONFIG.DND5E.rules.pointoforigin = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.8HxbRceQQUAhyWRt";
-	// CONFIG.DND5E.rules.spellsavingthrows = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.8DajfNll90eeKcmB";
-	// CONFIG.DND5E.rules.spellattackrolls = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.qAFzmGZKhVvAEUF3";
-	// CONFIG.DND5E.rules.detectingtraps = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.DZ7AhdQ94xggG4bj";
-	// CONFIG.DND5E.rules.disablingtraps = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.DZ7AhdQ94xggG4bj";
-	// CONFIG.DND5E.rules.curingmadness = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.6Icem7G3CICdNOkM";
-	// CONFIG.DND5E.rules.damagethreshold = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.9LJZhqvCburpags3";
-	// CONFIG.DND5E.rules.wearingitems = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.iPB8mGKuQx3X0Z2J";
-	// CONFIG.DND5E.rules.wieldingitems = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.iPB8mGKuQx3X0Z2J";
-	// CONFIG.DND5E.rules.paireditems = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.rd9pCH8yFraSGN34";
-	// CONFIG.DND5E.rules.commandword = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.HiXixxLYesv6Ff3t";
-	// CONFIG.DND5E.rules.consumables = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.UEPAcZFzQ5x196zE";
-	// CONFIG.DND5E.rules.itemspells = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.DABoaeeF6w31UCsj";
-	// CONFIG.DND5E.rules.charges = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.NLRXcgrpRCfsA5mO";
-	// CONFIG.DND5E.rules.telepathy = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.geTidcFIYWuUvD2L";
-	// CONFIG.DND5E.rules.legendaryactions = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.C1awOyZh78pq1xmY";
-	// CONFIG.DND5E.rules.lairactions = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.07PtjpMxiRIhkBEp";
-	// CONFIG.DND5E.rules.regionaleffects = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.uj8W27NKFyzygPUd";
-	// CONFIG.DND5E.rules.disease = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.oNQWvyRZkTOJ8PBq";
-	// CONFIG.DND5E.rules.d20test = "Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.nxPH59t3iNtWJxnU";
-	// CONFIG.DND5E.rules.advantage = "Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.lvs9RRDi1UA1Lff8";
-	// CONFIG.DND5E.rules.disadvantage = "Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.fFrHBgqKUMY0Nnco";
-	// CONFIG.DND5E.rules.difficultyclass = "Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.afnB0KZZk2hKtjv4";
-	// CONFIG.DND5E.rules.abilitycheck = "Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.XBQqXCoTbvp5Dika";
-	// CONFIG.DND5E.rules.savingthrow = "Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.Vlri6Mp6grn9wt3g";
-	// CONFIG.DND5E.rules.challengerating = "Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.BMoxmXB8pX6bOBus";
+	CONFIG.DND5E.rules.movingagrappledcreature =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.zaI1nuc41wANKoFX";
+	CONFIG.DND5E.rules.escapingagrapple =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.zaI1nuc41wANKoFX";
 }
+
+export function setupSocialMechanicsRefs() {
+	CONFIG.DND5E.rules.initiative =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.RcwElV4GAcVXKWxo";
+	CONFIG.DND5E.rules.beingprone =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.bV8akkBdVUUG21CO";
+	CONFIG.DND5E.rules.droppingprone = CONFIG.DND5E.rules.standingup =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.hwTLpAtSS5OqQsI1";
+	CONFIG.DND5E.rules.attitude = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.ahMxQJTGDhq08GWQ";
+	CONFIG.DND5E.rules.friendly = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.RVcWSqblHIs7SUzn";
+	CONFIG.DND5E.rules.indifferent = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.eYX5eimGuYhHPoj4";
+	CONFIG.DND5E.rules.hostile = "Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.BNxLbtJofbNGzjsp";
+}
+
+/* only contains rules not implemented yet removed
+function setupOtherReferences() {
+	//TODO: Not done yet but leaving these here as placeholders
+	CONFIG.DND5E.rules.castaspell = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.GLwN36E4WXn3Cp4Z";
+	CONFIG.DND5E.rules.useanobject = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.ljqhJx8Qxu2ivo69";
+	CONFIG.DND5E.rules.attackrolls = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.5wkqEqhbBD5kDeE7";
+	CONFIG.DND5E.rules.unseenattackers = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.5ZJNwEPlsGurecg5";
+	CONFIG.DND5E.rules.unseentargets = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.5ZJNwEPlsGurecg5";
+	CONFIG.DND5E.rules.rangedattacks = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.S9aclVOCbusLE3kC";
+	CONFIG.DND5E.rules.range = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.HjKXuB8ndjcqOds7";
+	CONFIG.DND5E.rules.rangedattacksinclosecombat = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.qEZvxW0NM7ixSQP5";
+	CONFIG.DND5E.rules.meleeattacks = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.GTk6emvzNxl8Oosl";
+	CONFIG.DND5E.rules.escapingagrapple = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.2TZKy9YbMN3ZY3h8";
+	CONFIG.DND5E.rules.shoving = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.hrdqMF8hRXJdNzJx";
+	CONFIG.DND5E.rules.mounting = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.MFpyvUIdcBpC9kIE";
+	CONFIG.DND5E.rules.dismounting = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.MFpyvUIdcBpC9kIE";
+	CONFIG.DND5E.rules.controllingamount = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.khmR2xFk1NxoQUgZ";
+	CONFIG.DND5E.rules.underwatercombat = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.6zVOeLyq4iMnrQT4";
+	CONFIG.DND5E.rules.bonusactioncasting = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.RP1WL9FXI3aknlxZ";
+	CONFIG.DND5E.rules.reactioncasting = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.t62lCfinwU9H7Lji";
+	CONFIG.DND5E.rules.longercastingtimes = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.gOAIRFCyPUx42axn";
+	CONFIG.DND5E.rules.instantaneous = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.kdlgZOpRMB6bGCod";
+	CONFIG.DND5E.rules.areaofeffect = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.wvtCeGHgnUmh0cuj";
+	CONFIG.DND5E.rules.pointoforigin = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.8HxbRceQQUAhyWRt";
+	CONFIG.DND5E.rules.spellsavingthrows = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.8DajfNll90eeKcmB";
+	CONFIG.DND5E.rules.spellattackrolls = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.qAFzmGZKhVvAEUF3";
+	CONFIG.DND5E.rules.detectingtraps = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.DZ7AhdQ94xggG4bj";
+	CONFIG.DND5E.rules.disablingtraps = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.DZ7AhdQ94xggG4bj";
+	CONFIG.DND5E.rules.curingmadness = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.6Icem7G3CICdNOkM";
+	CONFIG.DND5E.rules.damagethreshold = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.9LJZhqvCburpags3";
+	CONFIG.DND5E.rules.wearingitems = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.iPB8mGKuQx3X0Z2J";
+	CONFIG.DND5E.rules.wieldingitems = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.iPB8mGKuQx3X0Z2J";
+	CONFIG.DND5E.rules.paireditems = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.rd9pCH8yFraSGN34";
+	CONFIG.DND5E.rules.commandword = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.HiXixxLYesv6Ff3t";
+	CONFIG.DND5E.rules.consumables = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.UEPAcZFzQ5x196zE";
+	CONFIG.DND5E.rules.itemspells = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.DABoaeeF6w31UCsj";
+	CONFIG.DND5E.rules.charges = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.NLRXcgrpRCfsA5mO";
+	CONFIG.DND5E.rules.telepathy = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.geTidcFIYWuUvD2L";
+	CONFIG.DND5E.rules.legendaryactions = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.C1awOyZh78pq1xmY";
+	CONFIG.DND5E.rules.lairactions = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.07PtjpMxiRIhkBEp";
+	CONFIG.DND5E.rules.regionaleffects = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.uj8W27NKFyzygPUd";
+	CONFIG.DND5E.rules.disease = "Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.oNQWvyRZkTOJ8PBq";
+	CONFIG.DND5E.rules.d20test = "Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.nxPH59t3iNtWJxnU";
+	CONFIG.DND5E.rules.advantage = "Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.lvs9RRDi1UA1Lff8";
+	CONFIG.DND5E.rules.disadvantage = "Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.fFrHBgqKUMY0Nnco";
+	CONFIG.DND5E.rules.difficultyclass = "Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.afnB0KZZk2hKtjv4";
+	CONFIG.DND5E.rules.abilitycheck = "Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.XBQqXCoTbvp5Dika";
+	CONFIG.DND5E.rules.savingthrow = "Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.Vlri6Mp6grn9wt3g";
+	CONFIG.DND5E.rules.challengerating = "Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.BMoxmXB8pX6bOBus";
+} */
