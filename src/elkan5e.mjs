@@ -28,6 +28,7 @@ import {
 	setupDamageReferences,
 	setupSpellcastingReferences,
 	setupCreatureTypeReferences,
+	addPluralReferenceAliases,
 } from "./module/rules/references.mjs";
 
 import * as Spells from "./module/spells.mjs";
@@ -104,6 +105,8 @@ Hooks.once("init", async () => {
 		setupDamageReferences();
 		setupSpellcastingReferences();
 		setupCreatureTypeReferences();
+		// Add plural aliases so macros like &reference[humanoids] resolve
+		addPluralReferenceAliases();
 	} catch (error) {
 		console.error("Elkan 5e  |  Initialization Error:", error);
 	}

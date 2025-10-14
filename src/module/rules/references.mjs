@@ -1,4 +1,61 @@
 // Centralized DND5E reference assignments for Elkan 5e
+function pluralizeKey(key) {
+	if (!key) return key;
+	const irregular = new Map([
+		["fey", "fey"],
+		["undead", "undead"],
+	]);
+	if (irregular.has(key)) return irregular.get(key);
+	// y -> ies (monstrosity -> monstrosities)
+	if (/[^aeiou]y$/i.test(key)) return key.slice(0, -1) + "ies";
+	// es endings for s/x/z/ch/sh
+	if (/(s|x|z|ch|sh)$/i.test(key)) return key + "es";
+	return key + "s";
+}
+
+function addPluralAliasesForRules(dict) {
+	if (!dict) return;
+	for (const [k, v] of Object.entries(dict)) {
+		try {
+			if (!v || (typeof v !== "object" && typeof v !== "string")) continue;
+			const pk = pluralizeKey(k);
+			if (pk === k || dict[pk]) continue;
+			// v may be an object like { reference: url } or { reference: url, ... }
+			dict[pk] = v;
+		} catch (e) {
+			console.warn(`Elkan 5e | Failed to add plural alias for rules '${k}':`, e);
+		}
+	}
+}
+
+function addPluralAliasesForReferenceField(dict) {
+	// for maps like damageTypes, creatureTypes, itemProperties where value has .reference
+	if (!dict) return;
+	for (const [k, v] of Object.entries(dict)) {
+		try {
+			if (!v || typeof v !== "object" || !v.reference) continue;
+			const pk = pluralizeKey(k);
+			if (pk === k) continue;
+			if (!dict[pk]) dict[pk] = {};
+			if (!dict[pk].reference) dict[pk].reference = v.reference;
+		} catch (e) {
+			console.warn(`Elkan 5e | Failed to add plural alias for reference '${k}':`, e);
+		}
+	}
+}
+
+export function addPluralReferenceAliases() {
+	try { addPluralAliasesForRules(CONFIG.DND5E?.rules); } catch {}
+	try { addPluralAliasesForReferenceField(CONFIG.DND5E?.damageTypes); } catch {}
+	try { addPluralAliasesForReferenceField(CONFIG.DND5E?.creatureTypes); } catch {}
+	try { addPluralAliasesForReferenceField(CONFIG.DND5E?.itemProperties); } catch {}
+	try {
+		// skills: use enrichmentLookup.skills if present
+		const skills = CONFIG.DND5E?.enrichmentLookup?.skills;
+		if (skills) addPluralAliasesForReferenceField(skills);
+	} catch {}
+}
+
 export function setupCombatReferences() {
 	const base = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.";
 	const COMBAT_REFS = [

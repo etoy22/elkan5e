@@ -15,18 +15,52 @@ param(
 Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
+function Normalize-Key {
+    param([string]$key)
+    if ([string]::IsNullOrWhiteSpace($key)) { return $key }
+    # Remove non-alphanumerics to match Foundry CONFIG keys (e.g., "Light Weapon" -> "lightweapon")
+    $k = [regex]::Replace($key, '[^A-Za-z0-9]+', '')
+    # Work on lowercase for rules; we will restore casing later if needed
+    $kl = $k.ToLowerInvariant()
+    # Basic plural heuristics (conservative)
+    if ($kl -match 'ies$' -and $kl.Length -gt 3) {
+        $kl = $kl.Substring(0, $kl.Length - 3) + 'y'
+    } elseif ($kl -match '(xes|zes|ches|shes|ses)$' -and $kl.Length -gt 3) {
+        $kl = $kl.Substring(0, $kl.Length - 2)
+    } elseif ($kl -match 's$' -and -not ($kl -match '(ss|us|is)$') -and $kl.Length -gt 3) {
+        $kl = $kl.Substring(0, $kl.Length - 1)
+    }
+    return $kl
+}
+
+function Apply-Casing {
+    param(
+        [string]$source,
+        [string]$canonical
+    )
+    if ([string]::IsNullOrEmpty($canonical)) { return $canonical }
+    if ($source -cmatch '^[A-Z]+$') { return $canonical.ToUpperInvariant() }
+    elseif ($source -cmatch '^[A-Z][a-z]+$') {
+        return ([char]::ToUpper($canonical[0])) + ($canonical.Substring(1).ToLowerInvariant())
+    }
+    elseif ($source -cmatch '^[a-z]+$') { return $canonical.ToLowerInvariant() }
+    else { return $canonical }
+}
+
 function Get-BaseKey {
     param([string]$inside)
     # If the inside begins with a macro, pull out its inside; else use as-is.
     $m = [regex]::Match($inside, '^&(amp;)?[Rr]eference\[(?<inner>[^\]]+)\]')
     if ($m.Success) {
-        $base = $m.Groups['inner'].Value
+        $innerInside = $m.Groups['inner'].Value
+        $base = $innerInside
     } else {
         $base = $inside
     }
-    # Use first token before space as the canonical key
-    $base = ($base -split '\s+',2)[0]
-    return $base.ToLowerInvariant()
+    # Remove any macro options like "apply=false" but preserve multi-word keys
+    $base = [regex]::Replace($base, '\s+\w+=\S+', '')
+    $base = $base.Trim()
+    return (Normalize-Key $base)
 }
 
 function Get-DisplayText {
@@ -38,23 +72,45 @@ function Get-DisplayText {
     $inner = [regex]::Match($inside, '^&(amp;)?[Rr]eference\[(?<inner>[^\]]+)\](?:\{(?<innerlabel>[^}]+)\})?')
     if ($inner.Success) {
         if ($inner.Groups['innerlabel'].Success) { return $inner.Groups['innerlabel'].Value }
-        return $inner.Groups['inner'].Value
+        $innerInside = $inner.Groups['inner'].Value
+        # Strip options from inner macro before display
+        $innerInside = [regex]::Replace($innerInside, '\s+\w+=\S+', '')
+        return $innerInside.Trim()
     }
-    return $inside
+    # Strip options from display
+    $disp = [regex]::Replace($inside, '\s+\w+=\S+', '')
+    return $disp.Trim()
 }
 
-function Fix-NestedMacroIfNeeded {
+function KeepOrFlattenMacro {
     param([System.Text.RegularExpressions.Match]$match)
-    # Reconstruct a clean macro if the inside begins with a macro
-    $full = $match.Value
-    $inside = $match.Groups['inside'].Value
-    if ($inside -notmatch '^&(amp;)?[Rr]eference\[') { return $full }
     $amp = if ($match.Groups['amp'].Success) { '&amp;' } else { '&' }
     $macroCase = if ($match.Value -cmatch '&Reference\[') { 'Reference' } else { 'reference' }
-    # Extract the base key and keep the original label if present
-    $key = Get-BaseKey $inside
-    $label = if ($match.Groups['label'].Success) { '{' + $match.Groups['label'].Value + '}' } else { '' }
-    return "$amp$macroCase[$key]$label"
+    $inside = $match.Groups['inside'].Value
+    $label = if ($match.Groups['label'].Success) { $match.Groups['label'].Value } else { $null }
+
+    # Extract options (e.g., "apply=false") and key part (which may be multi-word)
+    $optMatch = [regex]::Match($inside, '^(?<key>[^\]]*?)(?:\s+(?<opts>(?:\w+=\S+)(?:\s+\w+=\S+)*))?$')
+    $keyPart = $inside
+    $optsPart = ''
+    if ($optMatch.Success) {
+        $keyPart = $optMatch.Groups['key'].Value.Trim()
+        if ($optMatch.Groups['opts'].Success) { $optsPart = ' ' + $optMatch.Groups['opts'].Value.Trim() }
+    }
+
+    # If inside itself is a macro, flatten it keeping its label if present
+    $inner = [regex]::Match($keyPart, '^&(amp;)?[Rr]eference\[(?<inner>[^\]]+)\](?:\{(?<innerlabel>[^}]+)\})?')
+    if ($inner.Success) {
+        # Flatten one level: use the inner macro's inside verbatim; prefer outer label if present
+        $innerKey = $inner.Groups['inner'].Value.Trim()
+        $finalLabel = if ($label) { $label } elseif ($inner.Groups['innerlabel'].Success) { $inner.Groups['innerlabel'].Value } else { $null }
+        if ($finalLabel) { return "$amp$macroCase[$innerKey]$optsPart{$finalLabel}" }
+        return "$amp$macroCase[$innerKey]$optsPart"
+    }
+
+    # Normal case: keep macro as-is (do not singularize or change spacing/casing)
+    if ($label) { return "$amp$macroCase[$keyPart]$optsPart{$label}" }
+    return "$amp$macroCase[$keyPart]$optsPart"
 }
 
 function Fix-Paragraph {
@@ -70,9 +126,15 @@ function Fix-Paragraph {
         [void]$sb.Append($para.Substring($lastIndex, $m.Index - $lastIndex))
         # Key for uniqueness
         $key = Get-BaseKey $m.Groups['inside'].Value
-        if (-not $seen.Contains($key)) {
-            # Keep first occurrence; also sanitize nested macro if any
-            $kept = Fix-NestedMacroIfNeeded $m
+        # If macro includes apply=false option, keep it verbatim and do not count toward dedupe
+        $insideVal = $m.Groups['inside'].Value
+        $hasNoApply = [regex]::IsMatch($insideVal, '(?i)\bapply\s*=\s*false\b')
+        if ($hasNoApply) {
+            [void]$sb.Append((KeepOrFlattenMacro $m))
+        }
+        elseif (-not $seen.Contains($key)) {
+            # Keep first occurrence; flatten nested macro if any, but do not alter plural/singular
+            $kept = KeepOrFlattenMacro $m
             [void]$sb.Append($kept)
             [void]$seen.Add($key)
         } else {
@@ -92,6 +154,18 @@ function Fix-Paragraph {
 
 function Fix-Content {
     param([string]$content)
+    # Pre-pass A: move trailing apply=false into the macro brackets
+    # Example: &reference[Charmed] apply=false -> &reference[Charmed apply=false]
+    $outsideApplyPattern = '(?i)&(?<amp>amp;)?(?<case>reference)\[(?<inside>[^\]]+)\](?:\s|&nbsp;)+apply\s*=\s*false'
+    $content = [regex]::Replace($content, $outsideApplyPattern, {
+        param($m)
+        $prefix = if ($m.Groups['amp'].Success) { '&amp;' } else { '&' }
+        $macroCase = $m.Groups['case'].Value
+        $inside = $m.Groups['inside'].Value
+        return "$prefix$macroCase[$inside apply=false]"
+    })
+    # Fallback simple rewrite using backreferences
+    $content = [regex]::Replace($content, '(&(?:amp;)?[Rr]eference\[[^\]]+)\]\s*apply\s*=\s*false', '$1 apply=false]')
     # Pre-pass: collapse nested macros like &reference[&reference[x]{Y}]{Z} -> &reference[x]{Z}
     $nestedPattern = '&(?<amp>amp;)?(?<case>[Rr]eference)\[&(?:amp;)?[Rr]eference\[(?<inner>[^\]]+)\](?:\{(?<innerlabel>[^}]+)\})?\](?:\{(?<outerlabel>[^}]+)\})?'
     $content = [regex]::Replace($content, $nestedPattern, {
@@ -138,6 +212,8 @@ function Fix-Content {
     # - Strip leading/trailing literal spaces inside common block tags
     $new = [regex]::Replace($new, '<(p|li|div|blockquote|h[1-6]|td|th|dd|dt)([^>]*)>\s+', '<$1$2>')
     $new = [regex]::Replace($new, '\s+</(p|li|div|blockquote|h[1-6]|td|th|dd|dt)>', '</$1>')
+    # - Strip attributes from <p ...> so only <p> remains
+    $new = [regex]::Replace($new, '(?i)<p\b[^>]*>', '<p>')
     
     return $new
 }
