@@ -11,7 +11,8 @@
 				"activation": {
 					"type": "action",
 					"value": null,
-					"override": false
+					"override": false,
+					"condition": ""
 				},
 				"consumption": {
 					"scaling": {
@@ -20,7 +21,9 @@
 					"spellSlot": true,
 					"targets": []
 				},
-				"description": {},
+				"description": {
+					"chatFlavor": ""
+				},
 				"duration": {
 					"units": "inst",
 					"concentration": false,
@@ -34,27 +37,37 @@
 				"target": {
 					"template": {
 						"contiguous": false,
-						"units": "ft"
+						"units": "ft",
+						"type": ""
 					},
 					"affects": {
-						"choice": false
+						"choice": false,
+						"type": ""
 					},
 					"override": false,
 					"prompt": true
 				},
 				"uses": {
 					"spent": 0,
-					"recovery": []
+					"recovery": [],
+					"max": ""
 				},
 				"attack": {
 					"critical": {
 						"threshold": null
 					},
 					"flat": false,
-					"type": {}
+					"type": {
+						"value": "",
+						"classification": ""
+					},
+					"ability": "",
+					"bonus": ""
 				},
 				"damage": {
-					"critical": {},
+					"critical": {
+						"bonus": ""
+					},
 					"includeBase": true,
 					"parts": []
 				},
@@ -106,13 +119,16 @@
 					"preRemoveConditionText": "",
 					"postRemoveConditionText": ""
 				},
-				"otherActivityId": "",
-				"otherActivityAsParentType": true,
+				"otherActivityId": "damage-and-save",
+				"otherActivityAsParentType": false,
 				"attackMode": "oneHanded",
 				"ammunition": "",
 				"otherActivityUuid": "",
 				"attackRollPerTarget": "default",
-				"fumbleThreshold": 1
+				"fumbleThreshold": 1,
+				"name": "",
+				"img": "",
+				"appliedEffects": []
 			},
 			"aV1D7luak106JNQS": {
 				"type": "save",
@@ -133,8 +149,7 @@
 						{
 							"type": "itemUses",
 							"value": "1",
-							"target": "",
-							"scaling": {}
+							"target": ""
 						}
 					]
 				},
@@ -188,15 +203,12 @@
 							"bonus": "",
 							"types": [
 								"necrotic"
-							],
-							"scaling": {
-								"number": 1
-							}
+							]
 						}
 					],
 					"onSave": "full",
 					"critical": {
-						"allow": false
+						"allow": true
 					}
 				},
 				"save": {
@@ -256,9 +268,13 @@
 					"preRemoveConditionText": "",
 					"postRemoveConditionText": ""
 				},
-				"otherActivityId": "",
-				"otherActivityAsParentType": true,
-				"friendlySave": "default"
+				"otherActivityId": "none",
+				"otherActivityAsParentType": false,
+				"friendlySave": "default",
+				"img": "",
+				"appliedEffects": [
+					"x0R9R2vD4quIgYy2"
+				]
 			}
 		},
 		"uses": {
@@ -273,15 +289,17 @@
 			"max": "3"
 		},
 		"description": {
-			"value": "<p><em>@UUID[Compendium.dnd5e.equipment24.Item.phbafcStaffalsoa]{Staff}, Rare (Requires Attunement)</em></p><p>This staff has 3 charges and regains 1d3 expended charges daily at dawn.</p><p>The staff can be wielded as a magic Quarterstaff. On a hit, it deals damage as a normal Quarterstaff, and you can expend 1 charge to deal an extra 2d10 Necrotic damage to the target and force it to make a DC 15 Constitution saving throw. On a failed save, the target has Disadvantage for 1 hour on any ability check or saving throw that uses Strength or Constitution.</p><section class=\"secret\" id=\"secret-XLCxThjwbGtdndsQ\"><p><strong>Foundry Note</strong></p><p>The <strong>Save</strong> activity includes an Active Effect for tracking the disadvantage.</p></section>",
+			"value": "<p><em>Staff - Rare (Requires Attunement)</em></p><p>This staff has 3 charges and regains 1d3 expended charges daily at dawn.</p><p>The staff can be wielded as a magic Quarterstaff.</p><p><strong>Activation</strong> - 3 Charges (Regains [[/r 1d3]] Charges at Dawn)</p><ul><li><p><strong>Hit:</strong> [[/damage 1d6 Bludgeoning]] damage. You can expend 1 charge to deal an extra [[/damage 2d10 Necrotic]] damage to the target and force it to make a Constitution Save.</p></li></ul><p></p><p>[[/Save CON 15]]{Constitution Save (DC 15)} - 1 Hour</p><ul><li><p><strong>Failure:</strong> The target has &amp;reference[Disadvantage] on any &amp;reference[ability check] or &amp;reference[saving throw] that uses &amp;reference[Strength] or &amp;reference[Constitution].</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p></p>",
 			"chat": ""
 		},
 		"identifier": "staff-of-withering",
 		"source": {
 			"revision": 1,
 			"rules": "2024",
-			"license": "CC-BY-4.0",
-			"book": "SRD 5.2"
+			"license": "",
+			"book": "",
+			"page": "",
+			"custom": ""
 		},
 		"identified": true,
 		"unidentified": {
@@ -334,7 +352,7 @@
 			},
 			"versatile": {
 				"number": null,
-				"denomination": 0,
+				"denomination": null,
 				"types": [],
 				"custom": {
 					"enabled": false
@@ -361,14 +379,39 @@
 	},
 	"effects": [
 		{
-			"name": "Withered",
-			"img": "icons/magic/death/hand-undead-skeleton-fire-pink.webp",
+			"name": "Staff of Withering",
+			"img": "icons/weapons/staves/staff-animal-skull-bull.webp",
 			"origin": "Compendium.dnd5e.equipment24.Item.dmgStaffOfWither",
 			"transfer": false,
 			"_id": "x0R9R2vD4quIgYy2",
 			"type": "base",
 			"system": {},
-			"changes": [],
+			"changes": [
+				{
+					"key": "flags.midi-qol.disadvantage.ability.check.str",
+					"mode": 5,
+					"value": "1",
+					"priority": 20
+				},
+				{
+					"key": "flags.midi-qol.disadvantage.ability.check.con",
+					"mode": 5,
+					"value": "1",
+					"priority": 20
+				},
+				{
+					"key": "flags.midi-qol.disadvantage.ability.save.str",
+					"mode": 5,
+					"value": "1",
+					"priority": 20
+				},
+				{
+					"key": "flags.midi-qol.disadvantage.ability.save.con",
+					"mode": 5,
+					"value": "1",
+					"priority": 20
+				}
+			],
 			"disabled": false,
 			"duration": {
 				"startTime": null,
@@ -382,18 +425,52 @@
 			"description": "<p>The target has Disadvantage for 1 hour on any ability check or saving throw that uses Strength or Constitution.</p>",
 			"tint": "#ffffff",
 			"statuses": [],
-			"flags": {},
+			"flags": {
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"stackable": "noneName",
+					"showIcon": false,
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "All",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
 			"_key": "!items.effects!dmgStaffOfWither.x0R9R2vD4quIgYy2"
 		}
 	],
 	"folder": "5p9KrkF39e6vFO4g",
 	"flags": {
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			}
-		}
+		"dnd5e": {}
 	},
 	"_key": "!items!dmgStaffOfWither"
 }
