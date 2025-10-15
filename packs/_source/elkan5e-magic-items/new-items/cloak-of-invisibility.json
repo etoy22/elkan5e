@@ -1,0 +1,267 @@
+{
+	"name": "Cloak of Invisibility",
+	"type": "equipment",
+	"folder": "sQVfBLYn5sOPGB8Y",
+	"img": "icons/equipment/back/cloak-hooded-blue.webp",
+	"system": {
+		"activities": {
+			"l9IG07yOeWzPOpWB": {
+				"type": "utility",
+				"_id": "l9IG07yOeWzPOpWB",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "",
+							"scaling": {}
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "hour",
+					"concentration": false,
+					"override": false,
+					"value": "1"
+				},
+				"effects": [
+					{
+						"_id": "sSsgrnNQCK4vurTm"
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": "self"
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"name": "Raise Hood",
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [
+				{
+					"period": "dawn",
+					"type": "formula",
+					"formula": "1d3"
+				}
+			],
+			"max": "3"
+		},
+		"description": {
+			"value": "<div><p><em>Wondrous Item - Legendary (Requires Attunement)</em></p><p><strong>Action</strong> - Self - 1 Hour - 3 Charges (Regains [[/r 1d3]] Charges at Dawn)</p><ul><li><p>1 Charge - Target becomes &amp;Reference[Invisible] condition.</p></li><li><p>The effect ends early if you pull the hood down (no action required) or cease wearing the cloak.</p></li></ul></div>",
+			"chat": ""
+		},
+		"identifier": "cloak-of-invisibility",
+		"source": {
+			"revision": 1,
+			"rules": "2024",
+			"book": "",
+			"license": "",
+			"page": "",
+			"custom": ""
+		},
+		"identified": true,
+		"unidentified": {
+			"description": ""
+		},
+		"container": null,
+		"quantity": 1,
+		"weight": {
+			"value": 2,
+			"units": "lb"
+		},
+		"price": {
+			"value": 200000,
+			"denomination": "gp"
+		},
+		"rarity": "legendary",
+		"attunement": "required",
+		"attuned": false,
+		"equipped": false,
+		"armor": {
+			"value": null,
+			"magicalBonus": null,
+			"dex": null
+		},
+		"cover": null,
+		"crewed": false,
+		"hp": {
+			"value": null,
+			"max": null,
+			"dt": null,
+			"conditions": ""
+		},
+		"type": {
+			"value": "wondrous",
+			"baseItem": ""
+		},
+		"properties": [
+			"mgc"
+		],
+		"strength": null,
+		"proficient": null
+	},
+	"effects": [
+		{
+			"name": "Cloak of Invisibility",
+			"img": "icons/equipment/back/cloak-hooded-blue.webp",
+			"origin": "Compendium.elkan5e.elkan5e-magic-items.Item.GBYTdE1jyhmTMrpB",
+			"transfer": true,
+			"_id": "sSsgrnNQCK4vurTm",
+			"type": "base",
+			"system": {},
+			"changes": [],
+			"disabled": true,
+			"duration": {
+				"startTime": null,
+				"seconds": 3600,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "<p>The effect ends early if you pull the hood down (no action required) or cease wearing the cloak.</p>",
+			"tint": "#ffffff",
+			"statuses": [
+				"invisible"
+			],
+			"flags": {
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"showIcon": false,
+					"disableIncapacitated": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "All",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!GBYTdE1jyhmTMrpB.sSsgrnNQCK4vurTm"
+		}
+	],
+	"flags": {
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		}
+	},
+	"_id": "GBYTdE1jyhmTMrpB",
+	"_key": "!items!GBYTdE1jyhmTMrpB"
+}
