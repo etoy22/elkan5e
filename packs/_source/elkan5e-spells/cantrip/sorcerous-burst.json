@@ -322,10 +322,6 @@
 	},
 	"effects": [],
 	"flags": {
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
-		},
 		"midi-qol": {
 			"rollAttackPerTarget": "default",
 			"removeAttackDamageButtons": "default",
@@ -336,21 +332,6 @@
 			"fumbleThreshold": null,
 			"onUseMacroName": "[postActiveEffects]ItemMacro"
 		},
-		"midiProperties": {
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"noConcentrationCheck": false,
-			"toggleEffect": false,
-			"ignoreTotalCover": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			}
-		},
 		"dae": {
 			"macro": {
 				"name": "Sorcerous Burst",
@@ -360,8 +341,7 @@
 				"command": "// Sorcerous Burst - Recursive exploding d8s (applies to hit targets)\n// Foundry VTT v13 + DND5e v5.x + Midi-QOL\n\nif (args[0].item.name !== \"Sorcerous Burst\") return {};\n\nconst workflow = args[0].workflow;\nconst actor = workflow.actor;\nconst ability = actor.system.attributes.spellcasting;\nconst abilityMod = actor.system.abilities[ability]?.mod ?? 0;\n\nconst dmgRoll = args[0].damageRoll;\nif (!dmgRoll) return {};\n\nlet dmgType = \"acid\";\ntry {\n  if (workflow.damageDetail?.length) {\n    dmgType = workflow.damageDetail[0].type ?? \"acid\";\n  }\n} catch (err) {\n  console.warn(\"Could not determine damage type, using acid\");\n}\n\n// Count how many 8s appeared in the original roll\nlet bursts = 0;\nfor (const die of dmgRoll.dice) {\n  if (die.faces === 8) {\n    bursts += die.results.filter(r => r.result === 8).length;\n  }\n}\n\n// Nothing happens if no 8s\nif (bursts === 0) return {};\n\n// Cap by spellcasting mod, minimum 1\nconst totalAllowed = Math.max(abilityMod, 1);\nlet totalRolled = 0;\nlet totalDamage = 0;\n\n// Recursive explosion loop\nwhile (bursts > 0 && totalRolled < totalAllowed) {\n  const toRoll = Math.min(bursts, totalAllowed - totalRolled);\n  const burstRoll = await (new Roll(`${toRoll}d8[${dmgType}]`)).roll({async: true});\n  await burstRoll.toMessage({flavor: `Sorcerous Burst - Exploding d8s (${toRoll})`});\n\n  totalDamage += burstRoll.total;\n  totalRolled += toRoll;\n\n  // Count new 8s for further bursts\n  bursts = 0;\n  for (const die of burstRoll.dice) {\n    if (die.faces === 8) {\n      bursts += die.results.filter(r => r.result === 8).length;\n    }\n  }\n}\n\nif (totalDamage > 0) {\n  await new MidiQOL.DamageOnlyWorkflow(\n    actor,\n    workflow.token,\n    totalDamage,\n    dmgType,\n    workflow.hitTargets,\n    workflow.item,\n    {\n      flavor: `Sorcerous Burst - Extra Exploding Damage`,\n      itemCardId: workflow.itemCardId,\n      useOther: false\n    }\n  );\n}\n\nreturn {};",
 				"author": "3Yi0HjF4PKCA4vX0",
 				"_id": null,
-				"folder": null,
-				"flags": {}
+				"folder": null
 			}
 		}
 	},
