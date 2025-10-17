@@ -417,8 +417,7 @@ async function extractPacks(packName, entryName) {
 					const containerName = path.basename(containerMeta.path);
 					const parentPath = containerDir === "." ? "" : containerDir;
 					filename = path.join(parentPath, `${containerName}.json`);
-				}
-				else {
+				} else {
 					const outputName = slugify(entry.name);
 					const parent = containers[entry.system?.container] ?? folders[entry.folder];
 					filename = path.join(parent?.path ?? "", `${outputName}.json`);
