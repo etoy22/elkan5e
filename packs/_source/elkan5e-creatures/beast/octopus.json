@@ -610,7 +610,8 @@
 			"rules": "2024",
 			"license": "CC-BY-4.0",
 			"book": "SRD 5.2"
-		}
+		},
+		"identifier": "octopus"
 	},
 	"img": "systems/dnd5e/tokens/beast/Octopus.webp",
 	"prototypeToken": {
@@ -697,7 +698,6 @@
 				"texture": null
 			}
 		},
-		"flags": {},
 		"randomImg": false,
 		"turnMarker": {
 			"mode": 1,
@@ -750,14 +750,13 @@
 			"img": "icons/magic/control/silhouette-grow-shrink-blue.webp",
 			"effects": [],
 			"folder": null,
-			"flags": {},
 			"_key": "!actors.items!w0WwAXJFaQP6BSf9.phbaoiCompressio"
 		},
 		{
 			"name": "Ink Cloud",
 			"system": {
 				"description": {
-					"value": "<p class=\"font_8 wixui-rich-text__text\"><strong class=\"wixui-rich-text__text\">Reaction</strong> - 1 Creature - 1 Round</p><p class=\"font_8 wixui-rich-text__text\"><em class=\"wixui-rich-text__text\">Trigger: a creature moves to a location within 5 ft. of </em><em>the [[lookup @name lowercase]]</em><em class=\"wixui-rich-text__text\">.</em></p><p class=\"font_8 wixui-rich-text__text\"><strong class=\"wixui-rich-text__text\">Dexterity Save</strong></p><ul class=\"font_8 wixui-rich-text__text\"><li class=\"wixui-rich-text__text\"><p class=\"font_8 wixui-rich-text__text\"><strong class=\"wixui-rich-text__text\">Failure: </strong>Target is &amp;reference[blinded], and the [[lookup @name lowercase]] moves up to its speed.</p></li><li class=\"wixui-rich-text__text\"><p class=\"font_8 wixui-rich-text__text\"><strong class=\"wixui-rich-text__text\">Success:</strong> No effect, then the [[lookup @name lowercase]] moves up to its speed.</p></li><li class=\"wixui-rich-text__text\"><p class=\"font_8 wixui-rich-text__text\"><strong class=\"wixui-rich-text__text\">Area Hazard:</strong> The [[lookup @name lowercase]]'s space is &amp;reference[obscuredheavily] for 1 minute, which prevents most &amp;reference[opportunityattacks] against the [[lookup @name lowercase]] during its movement away.</p></li></ul>",
+					"value": "<p><strong>Reaction</strong> - 1 Creature - 1 Round</p><p><em>Trigger: a creature moves to a location within 5 ft. of </em><em>the [[lookup @name lowercase]]</em><em>.</em></p><p><strong>Dexterity Save</strong></p><ul><li><p><strong>Failure: </strong>Target is &amp;reference[blinded], and the [[lookup @name lowercase]] moves up to its speed.</p></li><li><p><strong>Success:</strong> No effect, then the [[lookup @name lowercase]] moves up to its speed.</p></li><li><p><strong>Area Hazard:</strong> The [[lookup @name lowercase]]'s space is &amp;reference[obscuredheavily] for 1 minute, which prevents most &amp;reference[opportunityattacks] against the [[lookup @name lowercase]] during its movement away.</p></li></ul>",
 					"chat": ""
 				},
 				"source": {
@@ -951,11 +950,6 @@
 						"blinded"
 					],
 					"flags": {
-						"dnd5e": {
-							"riders": {
-								"statuses": []
-							}
-						},
 						"dae": {
 							"enableCondition": "",
 							"disableCondition": "",
@@ -970,9 +964,6 @@
 							"specialDuration": [
 								"turnEnd"
 							]
-						},
-						"core": {
-							"overlay": false
 						},
 						"ActiveAuras": {
 							"isAura": false,
@@ -996,14 +987,6 @@
 				}
 			],
 			"folder": null,
-			"flags": {
-				"dnd5e": {
-					"riders": {
-						"activity": [],
-						"effect": []
-					}
-				}
-			},
 			"_key": "!actors.items!w0WwAXJFaQP6BSf9.phbaoiInkCloud1D"
 		},
 		{
@@ -1283,19 +1266,10 @@
 					"description": "",
 					"tint": "#ffffff",
 					"statuses": [],
-					"flags": {},
 					"_key": "!actors.items.effects!w0WwAXJFaQP6BSf9.phbaoiTentacles0.6dIC3lmbjd3P5WKR"
 				}
 			],
 			"folder": null,
-			"flags": {
-				"dnd5e": {
-					"riders": {
-						"activity": [],
-						"effect": []
-					}
-				}
-			},
 			"_key": "!actors.items!w0WwAXJFaQP6BSf9.phbaoiTentacles0"
 		},
 		{
@@ -1340,7 +1314,6 @@
 			"effects": [],
 			"folder": null,
 			"flags": {
-				"core": {},
 				"midiProperties": {
 					"confirmTargets": "default",
 					"autoFailFriendly": false,
@@ -1366,14 +1339,6 @@
 	],
 	"effects": [],
 	"folder": "g74Yk5RCg98JKk0V",
-	"flags": {
-		"dnd5e": {
-			"showTokenPortrait": false
-		},
-		"tidy5e-sheet": {
-			"skillsExpanded": false
-		}
-	},
 	"_id": "w0WwAXJFaQP6BSf9",
 	"_key": "!actors!w0WwAXJFaQP6BSf9"
 }

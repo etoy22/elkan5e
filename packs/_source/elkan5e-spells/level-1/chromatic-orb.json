@@ -105,7 +105,7 @@
 				"midiProperties": {
 					"ignoreTraits": [],
 					"triggeredActivityId": "bouncing-attack",
-					"triggeredActivityConditionText": "workflow.hitTargets.size > 0 && workflow?.damageRoll?.dice   .filter(d => d.faces === 8)   .flatMap(d => d.results.map(r => r.result))   .filter((v, i, a) => a.indexOf(v) !== i).length > 0",
+					"triggeredActivityConditionText": "workflow.hitTargets.size > 0 && workflow?.damageRoll?.dice  .filter(d => d.faces === 8)  .flatMap(d => d.results.map(r => r.result))  .filter((v, i, a) => a.indexOf(v) !== i).length > 0",
 					"triggeredActivityTargets": "retarget",
 					"triggeredActivityRollAs": "self",
 					"forceDialog": false,
@@ -288,7 +288,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><em>You spin a tiny prismatic diamond in your hand, catching the light and refracting its many colors to generate a flying sphere of energy.</em></p><p><strong>Materials</strong>: You require a @UUID[Compendium.elkan5e.elkan5e-spells.Item.FePPX5VU9YzmXpdU]{Tiny Prismatic Diamond}, typically valued at 5 gold.</p><p><strong>Ranged Spell Attack</strong></p><ul><li><p><strong>Hit:</strong> Target takes [[/damage]] damage.* You choose the damage type.</p></li><li><p>If two or more of the damage d8s show the same number, the orb leaps to another creature of your choice within 30 ft. of the target. Make a new attack and damage roll for that creature. A creature can be targeted only once by each casting.</p></li></ul><p></p><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d8 type=acid/cold/lightning/fire/poison/thunder]] for each spell slot level above 1st. <br /></p>",
+			"value": "<p><em>You spin a tiny prismatic diamond in your hand, catching the light and refracting its many colors to generate a flying sphere of energy.</em></p><p><strong>Materials</strong>: You require a <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.FePPX5VU9YzmXpdU]{Tiny Prismatic Diamond}</em>, typically valued at 5 gold.</p><p><strong>Ranged Spell Attack</strong></p><ul><li><p><strong>Hit:</strong> Target takes [[/damage]] damage.* You choose the damage type.</p></li><li><p>If two or more of the damage d8s show the same number, the orb leaps to another creature of your choice within 30 ft. of the target. Make a new attack and damage roll for that creature. A creature can be targeted only once by each casting.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d8 type=acid/cold/lightning/fire/poison/thunder]] for each spell slot level above 1st. <br /></p>",
 			"chat": ""
 		},
 		"identifier": "chromatic-orb",
@@ -344,10 +344,6 @@
 	},
 	"effects": [],
 	"flags": {
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
-		},
 		"midi-qol": {
 			"rollAttackPerTarget": "default",
 			"removeAttackDamageButtons": "default",
@@ -356,21 +352,6 @@
 			"otherCondition": "",
 			"effectCondition": "",
 			"fumbleThreshold": null
-		},
-		"midiProperties": {
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"noConcentrationCheck": false,
-			"toggleEffect": false,
-			"ignoreTotalCover": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			}
 		}
 	},
 	"_key": "!items!EBXbuU6UgNza87rc"

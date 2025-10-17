@@ -83,34 +83,6 @@
 					"specialDuration": [],
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "Enemy",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
-				},
-				"core": {
-					"overlay": false
-				},
-				"times-up": {
-					"isPassive": false
-				},
-				"dnd5e": {
-					"riders": {
-						"statuses": []
-					}
 				}
 			},
 			"tint": "#ffffff",
@@ -199,34 +171,6 @@
 					"specialDuration": [],
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "Enemy",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
-				},
-				"core": {
-					"overlay": false
-				},
-				"times-up": {
-					"isPassive": false
-				},
-				"dnd5e": {
-					"riders": {
-						"statuses": []
-					}
 				}
 			},
 			"tint": "#ffffff",
@@ -266,8 +210,7 @@
 				"command": "",
 				"author": "3Yi0HjF4PKCA4vX0",
 				"_id": null,
-				"folder": null,
-				"flags": {}
+				"folder": null
 			}
 		},
 		"midi-qol": {
@@ -280,7 +223,6 @@
 			"rollAttackPerTarget": "default",
 			"removeAttackDamageButtons": "default"
 		},
-		"core": {},
 		"midiProperties": {
 			"nodam": false,
 			"fulldam": false,
@@ -313,21 +255,17 @@
 				"material",
 				"concentration"
 			]
-		},
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
 		}
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>Holding a small amount of iron powder, you make either an expanding or compressing motion with your hands in the direction of your chosen creature. The creature and their apparel change size rapidly, their voice deepening or getting higher pitched as they do.</em></p><p>If the target is a creature, everything it is wearing and carrying changes size with it. Any item dropped by an affected creature returns to normal size at once.</p><p><strong>[[/save con]]{Constitution Save}</strong> </p><p>A willing creature automatically fails this saving throw as normal.</p><p><strong>Failure:</strong> The targets gain one of the following effects:</p><ul><li><p><strong>Enlarge:</strong> The target's size increases by one size category. If there isn't enough room for the target to double their size, the creature or object attains the maximum possible size in the space available. The target gains advantage on strength saves and strength skill checks but suffers disadvantage on dexterity saves and dexterity skill checks. If the target is a creature their speeds increase by 5 ft. and their carrying capacity is doubled.</p></li><li><p><strong>Reduce:</strong> The target's size decreases by one size category. The target gains advantage on dexterity saves and dexterity skill checks but suffers disadvantage on strength saves and strength skill checks. If the target is a creature their speeds decrease by 5 ft. and their carrying capacity is halved.</p></li></ul><p></p><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 2nd.</p>",
+			"value": "<p><em>Holding a small amount of iron powder, you make either an expanding or compressing motion with your hands in the direction of your chosen creature. The creature and their apparel change size rapidly, their voice deepening or getting higher pitched as they do.</em></p><p>If the target is a creature, everything it is wearing and carrying changes size with it. Any item dropped by an affected creature returns to normal size at once.</p><p><strong>Constitution Save</strong> </p><p>A willing creature automatically fails this saving throw as normal.</p><p><strong>Failure:</strong> The targets gain one of the following effects:</p><ul><li><p><strong>Enlarge:</strong> The target's size increases by one size category. If there isn't enough room for the target to double their size, the creature or object attains the maximum possible size in the space available. The target gains advantage on strength saves and strength skill checks but suffers disadvantage on dexterity saves and dexterity skill checks. If the target is a creature their speeds increase by 5 ft. and their carrying capacity is doubled.</p></li><li><p><strong>Reduce:</strong> The target's size decreases by one size category. The target gains advantage on dexterity saves and dexterity skill checks but suffers disadvantage on strength saves and strength skill checks. If the target is a creature their speeds decrease by 5 ft. and their carrying capacity is halved.</p></li></ul><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 2nd.</p>",
 			"chat": ""
 		},
 		"source": {
-			"custom": "elkan5e.com/spells/enlarge%2Freduce",
+			"custom": "elkan5e.com/spells/enlarge/reduce",
 			"revision": 1,
-			"rules": "",
+			"rules": "2024",
 			"book": "Elkan 5e",
 			"page": "",
 			"license": ""
@@ -463,8 +401,7 @@
 							"command": "return await elkan5e.macros.spells.enlarge(workflow);",
 							"author": "vHqSHJMdmEO6Mk2C",
 							"_id": null,
-							"folder": null,
-							"flags": {}
+							"folder": null
 						}
 					}
 				},
@@ -550,8 +487,7 @@
 							"command": "return await elkan5e.macros.spells.reduce(workflow);",
 							"author": "vHqSHJMdmEO6Mk2C",
 							"_id": null,
-							"folder": null,
-							"flags": {}
+							"folder": null
 						}
 					}
 				},
@@ -559,7 +495,7 @@
 				"otherActivityId": "none"
 			}
 		},
-		"identifier": "enlarge-reduce"
+		"identifier": "enlarge/reduce"
 	},
 	"_id": "fb3MDp9gl7vibSr5",
 	"_key": "!items!fb3MDp9gl7vibSr5"
