@@ -3,13 +3,13 @@
 	"type": "feat",
 	"system": {
 		"description": {
-			"value": "<p><em>You present your holy symbol and speak a prayer censuring creatures anathema to you.</em></p><p><strong>Action</strong> - 30 ft. Emanation (Self) - 1 Minute - Magical</p><p>This consumes one use of your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.WKKAHUBp42287xui]{Channel Divinity} feature.</p><p><strong>[[/save wisdom]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Any &amp;reference[aberration], &amp;reference[celestial], &amp;reference[fey], &amp;reference[fiend], or &amp;reference[undead] of your choice are &amp;reference[frightened] for 1 minute. Target rolls again at end of their turns, ending effect on success. While frightened in this way:</p><ul><li><p>They must spend all of their movement trying to move as far away from you as it can.</p></li><li><p>They can't take reactions.</p></li><li><p>They can use their action and bonus action normally before, during, or after moving.</p></li></ul></li><li><p><strong>Failure:</strong> If a target of one of the above creature type's hit point maximum is equal to or less than three times your cleric level, it is destroyed.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"value": "<p><em>You present your holy symbol and speak a prayer censuring creatures anathema to you.</em></p><p><strong>Action</strong> - 30 ft. Emanation (Self) - 1 Minute - Magical</p><p>This consumes one use of your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.WKKAHUBp42287xui]{Channel Divinity} feature.</p><p><strong>[[/save wisdom]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Any &amp;reference[aberration], &amp;reference[celestial], &amp;reference[fey], &amp;reference[fiend], or &amp;reference[undead] of your choice are &amp;reference[frightened] for 1 minute. Target rolls again at end of their turns, ending effect on success. While frightened in this way:</p><ul><li><p>They must spend all of their movement trying to move as far away from you as it can.</p></li><li><p>They can't take &amp;reference[reaction].</p></li><li><p>They can use their action and &amp;reference[bonus action] normally before, during, or after moving.</p></li></ul></li><li><p><strong>Failure:</strong> If a target of one of the above creature type's hit point maximum is equal to or less than three times your cleric level, it is destroyed.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
 			"custom": "elkan5e.com/feats/turn-the-unholy",
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
 			"license": ""
@@ -25,7 +25,10 @@
 		},
 		"requirements": "Feat (Cleric Level 4)",
 		"prerequisites": {
-			"level": 4
+			"level": 4,
+			"items": [
+				"cleric"
+			]
 		},
 		"properties": [
 			"mgc"
@@ -161,6 +164,7 @@
 		]
 	},
 	"flags": {
+		"core": {},
 		"midi-qol": {
 			"effectActivation": false,
 			"rollAttackPerTarget": "default",
@@ -179,8 +183,8 @@
 			"rollOther": false,
 			"critOther": false,
 			"offHandWeapon": false,
-			"magicdam": true,
-			"magiceffect": true,
+			"magicdam": false,
+			"magiceffect": false,
 			"concentration": false,
 			"toggleEffect": false,
 			"ignoreTotalCover": false,
@@ -190,6 +194,16 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
 		}
 	},
 	"img": "icons/magic/fire/flame-burning-creature-skeleton.webp",
@@ -220,6 +234,26 @@
 					"dontApply": false,
 					"enableCondition": "",
 					"disableCondition": ""
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				},
+				"core": {
+					"overlay": false
 				},
 				"dnd5e": {
 					"riders": {

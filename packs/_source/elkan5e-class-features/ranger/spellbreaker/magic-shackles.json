@@ -20,14 +20,20 @@
 						"allowed": false
 					},
 					"spellSlot": true,
-					"targets": []
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": ""
+						}
+					]
 				},
 				"description": {
 					"chatFlavor": ""
 				},
 				"duration": {
 					"units": "minute",
-					"concentration": true,
+					"concentration": false,
 					"override": false,
 					"value": "1"
 				},
@@ -126,11 +132,16 @@
 		},
 		"uses": {
 			"spent": 0,
-			"recovery": [],
-			"max": ""
+			"recovery": [
+				{
+					"period": "sr",
+					"type": "recoverAll"
+				}
+			],
+			"max": "3"
 		},
 		"description": {
-			"value": "<p><strong>Bonus Action</strong> - 1 Creature (60 ft.) - Concentration (1 Minute) - Magical</p><p><strong>[[/save dexterity]]{Dexterity Save}</strong></p><ul><li><p><strong>Failure:</strong> Target's speed is halved, and they cannot teleport. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"value": "<p><strong>Bonus Action</strong> - 1 Creature (60 ft.) - 1 Minute - 3/Short Rest - Magical</p><p><strong>[[/save dexterity]]{Dexterity Save}</strong></p><ul><li><p><strong>Failure:</strong> Target's speed is halved, and they cannot teleport. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "",
@@ -243,21 +254,54 @@
 					"riders": {
 						"statuses": []
 					}
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
 				}
 			},
 			"_key": "!items.effects!DTO0IEWtZxQvqJrP.BuHWEcTMu6q3qmld"
 		}
 	],
 	"flags": {
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": ""
+		},
 		"midiProperties": {
 			"autoFailFriendly": false,
 			"autoSaveFriendly": false,
-			"magicdam": true,
-			"magiceffect": true,
+			"magicdam": false,
+			"magiceffect": false,
 			"noConcentrationCheck": false,
 			"toggleEffect": false,
 			"ignoreTotalCover": false
-		}
+		},
+		"dnd5e": {}
 	},
 	"_key": "!items!DTO0IEWtZxQvqJrP"
 }

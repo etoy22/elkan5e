@@ -97,13 +97,13 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><em>You hit your foe with a surge of necrotic energy.</em></p><p><span><strong>Reaction</strong> </span>- 1 Creature (60 ft.) - 1 Round - Magical</p><p><em>Trigger: A creature regains hit points or gains temporary hit points.</em></p><ul><li><p>Any healing or temporary hit points the target just received are lost.</p></li><li><p>The target cannot be healed, gain temporary hit points, or benefit from any regeneration or similar feature.</p></li></ul>",
+			"value": "<p><em>You hit your foe with a surge of necrotic energy.</em></p><p><span><strong>Reaction</strong> </span>- 1 Creature (60 ft.) - 1 Round - Magical</p><p><em>Trigger: A creature regains hit points or gains temporary hit points.</em></p><ul><li><p>Any &amp;reference[healing] or &amp;reference[temphp] points the target just received are lost.</p></li><li><p>The target cannot be healed, gain temporary hit points, or benefit from any regeneration or similar feature.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
 			"custom": "elkan5e.com/cleric",
@@ -173,6 +173,25 @@
 					"specialDuration": [
 						"turnEndSource"
 					]
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
 				}
 			},
 			"_key": "!items.effects!oKEsTn9Jw7Whmyo9.6khsQIwSt0q2R5Jd"
@@ -185,8 +204,8 @@
 			"autoSaveFriendly": false,
 			"critOther": false,
 			"offHandWeapon": false,
-			"magicdam": true,
-			"magiceffect": true,
+			"magicdam": false,
+			"magiceffect": false,
 			"noConcentrationCheck": false,
 			"toggleEffect": false,
 			"ignoreTotalCover": false,
@@ -194,6 +213,26 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"effectCondition": "",
+			"removeAttackDamageButtons": "default",
+			"AoETargetType": "any",
+			"autoTarget": "default",
+			"otherCondition": ""
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
 		}
 	},
 	"_key": "!items!oKEsTn9Jw7Whmyo9"

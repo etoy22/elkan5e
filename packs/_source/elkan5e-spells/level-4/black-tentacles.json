@@ -35,6 +35,39 @@
 				"restrained"
 			],
 			"flags": {
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "Enemy",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				},
 				"dnd5e": {
 					"riders": {
 						"statuses": []
@@ -59,6 +92,28 @@
 			"reactionCondition": "",
 			"otherCondition": ""
 		},
+		"core": {},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"noConcentrationCheck": false,
+			"confirmTargets": "default",
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
 		"dnd5e": {
 			"riders": {
 				"activity": [],
@@ -70,17 +125,21 @@
 				"material",
 				"concentration"
 			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
 		}
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You gently stroke a severed piece of a tentacle or tendril of a giant cephalopod, and it begins to wriggle and writhe in your hand as if alive. Moments later, squirming ebony tentacles spring up from the ground.</em></p><p><strong>Dexterity Save</strong></p><ul><li><p><strong>Failure:</strong> [[/damage 3d6 bludgeoning]] damage*, and target is &amp;reference[restrained]. Target rolls again at end of their turns: taking full damage on a failure or taking half damage and ending effect on success.</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li><li><p><strong>Area Hazard:</strong> The area is &amp;reference[difficultterrain]. Targets roll a save when they enter or when they end their turn in the tentacles (but only once per turn).</p></li></ul><p></p><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d6 bludgeoning]]{1d6} for each spell level above 2nd.</p>",
+			"value": "<p><em>You gently stroke a severed piece of a tentacle or tendril of a &amp;reference[giant] cephalopod, and it begins to wriggle and writhe in your hand as if alive. Moments later, squirming ebony tentacles spring up from the ground.</em></p><p><strong>[[/save dex]]{Dexterity Save}</strong></p><ul><li><p><strong>Failure:</strong> [[/damage 3d6 bludgeoning]] damage*, and target is &amp;reference[restrained]. Target rolls again at end of their turns: taking full damage on a failure or taking half damage and ending effect on success.</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li><li><p><strong>Area Hazard:</strong> The area is &amp;reference[difficultterrain]. Targets roll a save when they enter or when they end their turn in the tentacles (but only once per turn).</p></li></ul><p></p><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d6 bludgeoning]]{1d6} for each spell level above 2nd.</p>",
 			"chat": ""
 		},
 		"source": {
 			"custom": "elkan5e.com/spells/black-tentacles",
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
 			"license": ""

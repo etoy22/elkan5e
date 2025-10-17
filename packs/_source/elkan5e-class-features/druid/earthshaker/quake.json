@@ -145,13 +145,13 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><strong>Once Per Turn</strong> - 1 Creature - Magical</p><p>You can use one of the following effects on a single target:</p><ul><li><p>When you cause a creature to become &amp;reference[prone] with a spell or Wild Shape feature, you can also push them up to 10 ft. in a direction of your choice.</p></li><li><p>When you cast a spell that pushes a target, you can also knock them &amp;reference[prone].</p></li></ul>",
+			"value": "<p><strong>Once Per Turn</strong> - 1 Creature - Magical</p><p>You can use one of the following effects on a single target:</p><ul><li><p>When you cause a creature to become &amp;reference[prone apply=false] with a spell or Wild Shape feature, you can also push them up to 10 ft. in a direction of your choice.</p></li><li><p>When you cast a spell that pushes a target, you can also knock them &amp;reference[prone].</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
 			"custom": "elkan5e.com/druid",
@@ -197,6 +197,25 @@
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
 				}
 			},
 			"img": "modules/elkan5e/icons/conditions/prone.svg",
@@ -226,8 +245,8 @@
 			"autoSaveFriendly": false,
 			"critOther": false,
 			"offHandWeapon": false,
-			"magicdam": true,
-			"magiceffect": true,
+			"magicdam": false,
+			"magiceffect": false,
 			"noConcentrationCheck": false,
 			"toggleEffect": false,
 			"ignoreTotalCover": false,
@@ -235,6 +254,24 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"effectCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
 		}
 	},
 	"_key": "!items!lnIHwujrZdItRoKO"

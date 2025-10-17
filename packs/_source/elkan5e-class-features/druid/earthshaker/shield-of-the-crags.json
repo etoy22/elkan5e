@@ -98,13 +98,13 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p>You can use a use of your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.3Dlq6orj97yca72n]{Wild Shape} ability to protect your allies.</p><p><em>You conjure floating rocks to float around your allies and protect them. You selectively draw terrain and other obstacles, clearing a path at the same time.</em></p><p><strong>Bonus Action</strong> - 6 Allies (30 ft) - 10 Minutes - Magical</p><ul><li><p>They gain temporary hit points equal to [[/healing 5+(@classes.druid.level /2) temp]]{5 + half your druid level (rounded down)}.</p></li><li><p>While they have these temporary hit points, they have half cover.</p></li></ul>",
+			"value": "<p>You can use a use of your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.3Dlq6orj97yca72n]{Wild Shape} ability to protect your allies.</p><p><em>You conjure floating rocks to float around your allies and protect them. You selectively draw terrain and other obstacles, clearing a path at the same time.</em></p><p><strong>Bonus Action</strong> - 6 Allies (30 ft) - 10 Minutes - Magical</p><ul><li><p>They gain &amp;reference[temphp] equal to [[/healing 5+(@classes.druid.level /2) temp]]{5 + half your druid level (rounded down)}.</p></li><li><p>While they have these temporary hit points, they have &amp;reference[half cover].</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
 			"custom": "elkan5e.com/druid",
@@ -163,6 +163,25 @@
 					"specialDuration": [
 						"None"
 					]
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
 				}
 			},
 			"_key": "!items.effects!11N2O2L1gec8vqHz.Z9FErQiEjWBToqZe"
@@ -175,8 +194,8 @@
 			"autoSaveFriendly": false,
 			"critOther": false,
 			"offHandWeapon": false,
-			"magicdam": true,
-			"magiceffect": true,
+			"magicdam": false,
+			"magiceffect": false,
 			"noConcentrationCheck": false,
 			"toggleEffect": false,
 			"ignoreTotalCover": false,
@@ -184,6 +203,24 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"effectCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
 		}
 	},
 	"_key": "!items!11N2O2L1gec8vqHz"

@@ -191,7 +191,8 @@
 					"petrified",
 					"poisoned",
 					"prone",
-					"restrained"
+					"restrained",
+					"transformed"
 				],
 				"custom": ""
 			},
@@ -772,12 +773,30 @@
 			"effects": [],
 			"folder": null,
 			"flags": {
-				"dnd5e": {
-					"riders": {
-						"activity": [],
-						"effect": []
-					}
-				}
+				"core": {},
+				"midiProperties": {
+					"confirmTargets": "default",
+					"autoFailFriendly": false,
+					"autoSaveFriendly": false,
+					"critOther": false,
+					"offHandWeapon": false,
+					"magicdam": false,
+					"magiceffect": false,
+					"noConcentrationCheck": false,
+					"toggleEffect": false,
+					"ignoreTotalCover": false,
+					"idr": false,
+					"idi": false,
+					"idv": false,
+					"ida": false
+				},
+				"midi-qol": {
+					"rollAttackPerTarget": "default",
+					"removeAttackDamageButtons": "default",
+					"itemCondition": "",
+					"effectCondition": ""
+				},
+				"dnd5e": {}
 			},
 			"_key": "!actors.items!cpIgcOpmk6YiimMw.FpoS5qzlgE3YPZGN"
 		},
@@ -787,7 +806,7 @@
 			"img": "icons/magic/unholy/strike-hand-glow-pink.webp",
 			"system": {
 				"description": {
-					"value": "<p><em>The graveguard touches a creature, their hand moving through armor to drain the target's life force.</em></p><p><strong>Action</strong> - 1 Creature (5 ft.) - Magical</p><p>This ability counts as an attack. The DC for this ability equals 8 + proficiency bonus + charisma modifier.</p><p><strong>Dexterity Saving Throw</strong></p><ul><li><p><strong>Failure:</strong> Target takes 1d6 + charisma modifier force damage and their hit points are drained by the same amount.</p></li><li><p><strong>Success:</strong> No damage.</p></li></ul>",
+					"value": "<p><em>The graveguard touches a creature, their hand moving through armor to drain the target's life force.</em></p><p><strong>Action</strong> - 1 Creature (5 ft.) - Magical</p><p>This ability counts as an attack. The DC for this ability equals 8 + proficiency bonus + charisma modifier.</p><p><strong>Dexterity Saving Throw</strong></p><ul><li><p><strong>Failure:</strong> Target takes 1d8 + charisma modifier force damage and their hit points are drained by the same amount.</p></li><li><p><strong>Success:</strong> No damage.</p></li></ul>",
 					"chat": ""
 				},
 				"source": {
@@ -942,11 +961,7 @@
 							"concentration": false,
 							"override": false
 						},
-						"effects": [
-							{
-								"_id": "derUyYkWvF5CSMcI"
-							}
-						],
+						"effects": [],
 						"range": {
 							"override": false
 						},
@@ -976,7 +991,7 @@
 										"formula": ""
 									},
 									"number": 1,
-									"denomination": 6,
+									"denomination": 8,
 									"bonus": "@mod",
 									"types": [
 										"force"
@@ -1038,9 +1053,7 @@
 						"otherActivityId": "",
 						"name": "",
 						"img": "",
-						"appliedEffects": [
-							"derUyYkWvF5CSMcI"
-						],
+						"appliedEffects": [],
 						"flags": {
 							"dae": {
 								"macro": {
@@ -1051,7 +1064,8 @@
 									"command": "return await elkan5e.macros.monsterFeatures.lifeDrain(workflow);",
 									"author": "vHqSHJMdmEO6Mk2C",
 									"_id": null,
-									"folder": null
+									"folder": null,
+									"flags": {}
 								}
 							}
 						}
@@ -1106,6 +1120,26 @@
 							"selfTarget": false,
 							"selfTargetAlways": false,
 							"dontApply": false
+						},
+						"core": {
+							"overlay": false
+						},
+						"ActiveAuras": {
+							"isAura": false,
+							"aura": "All",
+							"nameOverride": "",
+							"radius": "",
+							"alignment": "",
+							"type": "",
+							"customCheck": "",
+							"ignoreSelf": false,
+							"height": false,
+							"hidden": false,
+							"displayTemp": false,
+							"hostile": false,
+							"onlyOnce": false,
+							"wallsBlock": "system",
+							"statuses": []
 						}
 					},
 					"_key": "!actors.items.effects!cpIgcOpmk6YiimMw.L4qItZ7kCk7qMc4R.rMcHeZ7n9q5yEOhW"
@@ -1126,11 +1160,28 @@
 					"otherCondition": "",
 					"onUseMacroName": "[postActiveEffects]ItemMacro"
 				},
-				"dnd5e": {
-					"riders": {
-						"activity": [],
-						"effect": []
-					}
+				"midiProperties": {
+					"confirmTargets": "default",
+					"saveDamage": "default",
+					"bonusSaveDamage": "default",
+					"autoFailFriendly": false,
+					"autoSaveFriendly": false,
+					"critOther": false,
+					"offHandWeapon": false,
+					"magicdam": false,
+					"magiceffect": false,
+					"noConcentrationCheck": false,
+					"toggleEffect": false,
+					"ignoreTotalCover": false,
+					"idr": false,
+					"idi": false,
+					"idv": false,
+					"ida": false
+				},
+				"dnd5e": {},
+				"tidy5e-sheet": {
+					"section": "",
+					"actionSection": ""
 				},
 				"dae": {
 					"macro": {
@@ -1141,7 +1192,8 @@
 						"command": "return await elkan5e.macros.monsterFeatures.lifeDrain(workflow);",
 						"author": "3Yi0HjF4PKCA4vX0",
 						"_id": null,
-						"folder": null
+						"folder": null,
+						"flags": {}
 					}
 				}
 			},
@@ -1152,7 +1204,7 @@
 			"name": "Graveguard",
 			"type": "class",
 			"_id": "9Hc7jrIvmRTYR8sQ",
-			"img": "icons/magic/death/hand-undead-skeleton-fire-green.webp",
+			"img": "icons/magic/death/hand-&amp;reference[undead]-skeleton-fire-green.webp",
 			"system": {
 				"description": {
 					"value": "",
@@ -1193,7 +1245,8 @@
 								"cha": 0
 							},
 							"cap": 2,
-							"locked": []
+							"locked": [],
+							"recommendation": null
 						},
 						"value": {
 							"type": "asi"
@@ -1216,7 +1269,8 @@
 								"cha": 0
 							},
 							"cap": 2,
-							"locked": []
+							"locked": [],
+							"recommendation": null
 						},
 						"value": {
 							"type": "asi"
@@ -1224,61 +1278,6 @@
 						"level": 14,
 						"title": "",
 						"hint": "You can increase one of your graveguard's ability scores of your choice by 2, or you can increase two ability scores of your choice by 1. As normal, you can't increase an ability score above 20 using this feature. Unlike with player characters, you do not gain a feat."
-					},
-					{
-						"_id": "Gqud4u3OAc66cpBZ",
-						"type": "ItemChoice",
-						"configuration": {
-							"choices": {
-								"0": {
-									"count": 1,
-									"replacement": false
-								},
-								"6": {
-									"count": 1,
-									"replacement": false
-								}
-							},
-							"allowDrops": false,
-							"type": null,
-							"pool": [
-								{
-									"uuid": "Compendium.elkan5e.elkan5e-feats.Item.FkPsCpJ1MAE2Slu1"
-								},
-								{
-									"uuid": "Compendium.elkan5e.elkan5e-feats.Item.5xzfeU0btClghl28"
-								},
-								{
-									"uuid": "Compendium.elkan5e.elkan5e-feats.Item.fLxcKwL3sOXDvhIv"
-								},
-								{
-									"uuid": "Compendium.elkan5e.elkan5e-feats.Item.rGhGb0kyBdN9WqeF"
-								},
-								{
-									"uuid": "Compendium.elkan5e.elkan5e-feats.Item.dnBQZIbOg0aa3khp"
-								},
-								{
-									"uuid": "Compendium.elkan5e.elkan5e-feats.Item.cxheor8IwagTMkDl"
-								},
-								{
-									"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.4D4jpAQNKqC0p51l"
-								},
-								{
-									"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.blk5RiyMUAatGcyM"
-								},
-								{
-									"uuid": "Compendium.elkan5e.elkan5e-feats.Item.n4nZSlwzDwdIlhtw"
-								}
-							],
-							"spell": null,
-							"restriction": {}
-						},
-						"value": {
-							"added": {},
-							"replaced": {}
-						},
-						"title": "Graveguard Specialization",
-						"hint": "Your graveguard gains new abilities, either as they learn from their new life or remember what they could do while alive. Choose one of the following options:"
 					},
 					{
 						"_id": "ceE3LZkPQ1akYIpr",
@@ -1331,7 +1330,8 @@
 								"cha": 0
 							},
 							"cap": 2,
-							"locked": []
+							"locked": [],
+							"recommendation": null
 						},
 						"value": {
 							"type": "asi"
@@ -1357,6 +1357,7 @@
 			},
 			"effects": [],
 			"folder": null,
+			"flags": {},
 			"_key": "!actors.items!cpIgcOpmk6YiimMw.9Hc7jrIvmRTYR8sQ"
 		},
 		{
@@ -1372,7 +1373,7 @@
 				},
 				"source": {
 					"custom": "Elkan 5e",
-					"rules": "2024",
+					"rules": "",
 					"revision": 1,
 					"book": "",
 					"page": "",
@@ -1402,13 +1403,32 @@
 			},
 			"effects": [],
 			"flags": {
+				"midiProperties": {
+					"confirmTargets": "default",
+					"autoFailFriendly": false,
+					"autoSaveFriendly": false,
+					"critOther": false,
+					"offHandWeapon": false,
+					"magicdam": false,
+					"magiceffect": false,
+					"concentration": false,
+					"noConcentrationCheck": false,
+					"toggleEffect": false,
+					"ignoreTotalCover": false,
+					"idr": false,
+					"idi": false,
+					"idv": false,
+					"ida": false
+				},
+				"midi-qol": {
+					"rollAttackPerTarget": "default",
+					"itemCondition": "",
+					"effectCondition": "",
+					"reactionCondition": ""
+				},
 				"dnd5e": {
 					"sourceId": "Compendium.elkan5e.elkan5e-class-features.Item.IiUhj7YBTNPswktv",
-					"advancementOrigin": "9bhjmHMsCevLWq8L.ceE3LZkPQ1akYIpr",
-					"riders": {
-						"activity": [],
-						"effect": []
-					}
+					"advancementOrigin": "9bhjmHMsCevLWq8L.ceE3LZkPQ1akYIpr"
 				}
 			},
 			"_key": "!actors.items!cpIgcOpmk6YiimMw.ANYSjPuJhep3AJY5"
@@ -1427,7 +1447,7 @@
 				"source": {
 					"custom": "Elkan 5e",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "",
 					"page": "",
 					"license": ""
@@ -1596,6 +1616,25 @@
 							],
 							"enableCondition": "",
 							"disableCondition": ""
+						},
+						"ActiveAuras": {
+							"isAura": false,
+							"aura": "None",
+							"nameOverride": "",
+							"radius": "",
+							"alignment": "",
+							"type": "",
+							"customCheck": "",
+							"ignoreSelf": false,
+							"height": false,
+							"hidden": false,
+							"displayTemp": false,
+							"hostile": false,
+							"onlyOnce": false,
+							"wallsBlock": "system"
+						},
+						"core": {
+							"overlay": false
 						}
 					},
 					"tint": "#ffffff",
@@ -1606,11 +1645,30 @@
 				}
 			],
 			"flags": {
+				"midiProperties": {
+					"confirmTargets": "default",
+					"autoFailFriendly": false,
+					"autoSaveFriendly": false,
+					"critOther": false,
+					"offHandWeapon": false,
+					"magicdam": false,
+					"magiceffect": false,
+					"concentration": false,
+					"noConcentrationCheck": false,
+					"toggleEffect": false,
+					"ignoreTotalCover": false,
+					"idr": false,
+					"idi": false,
+					"idv": false,
+					"ida": false
+				},
+				"midi-qol": {
+					"rollAttackPerTarget": "default",
+					"itemCondition": "",
+					"effectCondition": "",
+					"reactionCondition": ""
+				},
 				"dnd5e": {
-					"riders": {
-						"activity": [],
-						"effect": []
-					},
 					"sourceId": "Compendium.elkan5e.elkan5e-class-features.Item.w3jjiADMUEZNKvsO",
 					"advancementOrigin": "9Hc7jrIvmRTYR8sQ.ceE3LZkPQ1akYIpr"
 				}
@@ -1631,7 +1689,7 @@
 				"source": {
 					"custom": "Elkan 5e",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "",
 					"page": "",
 					"license": ""
@@ -1798,6 +1856,25 @@
 							],
 							"enableCondition": "",
 							"disableCondition": ""
+						},
+						"ActiveAuras": {
+							"isAura": false,
+							"aura": "None",
+							"nameOverride": "",
+							"radius": "",
+							"alignment": "",
+							"type": "",
+							"customCheck": "",
+							"ignoreSelf": false,
+							"height": false,
+							"hidden": false,
+							"displayTemp": false,
+							"hostile": false,
+							"onlyOnce": false,
+							"wallsBlock": "system"
+						},
+						"core": {
+							"overlay": false
 						}
 					},
 					"tint": "#ffffff",
@@ -1847,6 +1924,25 @@
 							],
 							"enableCondition": "",
 							"disableCondition": ""
+						},
+						"ActiveAuras": {
+							"isAura": false,
+							"aura": "None",
+							"nameOverride": "",
+							"radius": "",
+							"alignment": "",
+							"type": "",
+							"customCheck": "",
+							"ignoreSelf": false,
+							"height": false,
+							"hidden": false,
+							"displayTemp": false,
+							"hostile": false,
+							"onlyOnce": false,
+							"wallsBlock": "system"
+						},
+						"core": {
+							"overlay": false
 						}
 					},
 					"tint": "#ffffff",
@@ -1857,6 +1953,23 @@
 				}
 			],
 			"flags": {
+				"midiProperties": {
+					"confirmTargets": "default",
+					"autoFailFriendly": false,
+					"autoSaveFriendly": false,
+					"critOther": false,
+					"offHandWeapon": false,
+					"magicdam": false,
+					"magiceffect": false,
+					"concentration": false,
+					"noConcentrationCheck": false,
+					"toggleEffect": false,
+					"ignoreTotalCover": false,
+					"idr": false,
+					"idi": false,
+					"idv": false,
+					"ida": false
+				},
 				"midi-qol": {
 					"rollAttackPerTarget": "default",
 					"itemCondition": "",
@@ -1865,10 +1978,6 @@
 					"reactionCondition": ""
 				},
 				"dnd5e": {
-					"riders": {
-						"activity": [],
-						"effect": []
-					},
 					"sourceId": "Compendium.elkan5e.elkan5e-class-features.Item.gR13n0dtX2w8sazy",
 					"advancementOrigin": "9Hc7jrIvmRTYR8sQ.ceE3LZkPQ1akYIpr"
 				}
@@ -1901,6 +2010,12 @@
 			"origin": "Compendium.elkan5e.elkan5e-creatures.Actor.cpIgcOpmk6YiimMw.Item.L4qItZ7kCk7qMc4R.ActiveEffect.derUyYkWvF5CSMcI",
 			"tint": "#ffffff",
 			"transfer": false,
+			"flags": {
+				"dae": {
+					"stackable": "noneName",
+					"specialDuration": []
+				}
+			},
 			"_key": "!actors.effects!cpIgcOpmk6YiimMw.dnd5edrained0000"
 		}
 	],

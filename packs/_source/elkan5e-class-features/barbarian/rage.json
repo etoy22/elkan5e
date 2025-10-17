@@ -23,6 +23,27 @@
 					"enableCondition": "",
 					"disableCondition": ""
 				},
+				"core": {
+					"statusId": "",
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"nameOverride": "",
+					"customCheck": "",
+					"wallsBlock": "system",
+					"statuses": []
+				},
 				"dnd5e": {
 					"riders": {
 						"statuses": []
@@ -141,8 +162,27 @@
 				"command": "return await elkan5e.macros.features.rage(workflow);",
 				"author": "vHqSHJMdmEO6Mk2C",
 				"_id": null,
-				"folder": null
+				"folder": null,
+				"flags": {}
 			}
+		},
+		"core": {},
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
 		},
 		"midi-qol": {
 			"rollAttackPerTarget": "default",
@@ -152,17 +192,28 @@
 			"removeAttackDamageButtons": "default",
 			"otherCondition": "",
 			"onUseMacroName": "[postActiveEffects]ItemMacro"
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedUses": 1
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
 		}
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You enter a state of primal ferocity or intense focus.</em></p><p><strong>Bonus Action</strong> - Self - 1 Minute</p><p>You have a bonus called the Rage Bonus that increases as you gain levels as a barbarian, listed in the Rage Bonus column of the @UUID[Compendium.elkan5e.elkan5e-class.M8lNLAe2okA9qgFg]{Barbarian Progression Chart}. At level 2, your Rage Bonus is +2.</p><p>While raging, you gain the following benefits:</p><ul><li>Your rage bonus is added to weapon damage with melee weapons (including thrown melee weapons).</li><li>You have resistance to &amp;reference[bludgeoning], &amp;reference[piercing], and &amp;reference[slashing] damage.</li><li>You have advantage on strength checks (including skill checks) and strength saving throws.</li><li>If you are able to cast spells, you can't cast them or concentrate on them while raging.</li><li><p><span>Your rage ends early if you fall</span>&amp;reference[unconscious]. You can also end your rage at any time of your choice. Once you have raged the number of times shown for your barbarian level in the Rages column of the Barbarian table, you must finish a long rest before you can rage again.</p></li><li><p>Other abilities will give you additional benefits while raging.</p><p></p></li></ul><p>You can use this ability once per long rest at level 1, and gain additional uses of this ability as you level up, listed in the @UUID[Compendium.elkan5e.elkan5e-class.M8lNLAe2okA9qgFg]{Barbarian Progression Chart}.</p>",
+			"value": "<p><em>You enter a state of primal ferocity or intense focus.</em></p><p><strong>Bonus Action</strong> - Self - 1 Minute</p><p>You have a bonus called the Rage Bonus that increases as you gain levels as a barbarian, listed in the Rage Bonus column of the @UUID[Compendium.elkan5e.elkan5e-class.M8lNLAe2okA9qgFg]{Barbarian Progression Chart}. At level 2, your Rage Bonus is +2.</p><p>While raging, you gain the following benefits:</p><ul><li>Your rage bonus is added to weapon damage with melee weapons (including thrown melee weapons).</li><li>You have resistance to &amp;reference[bludgeoning], &amp;reference[piercing], and &amp;reference[slashing] damage.</li><li>You have advantage on strength checks (including skill checks) and strength saving throws.</li><li>If you are able to cast spells, you can't cast them or &amp;reference[concentration]{Concentrate} on them while raging.</li><li><p><span>Your rage ends early if you fall</span>&amp;reference[unconscious apply=false]. You can also end your rage at any time of your choice. Once you have raged the number of times shown for your barbarian level in the Rages column of the Barbarian table, you must finish a long rest before you can rage again.</p></li><li><p>Other abilities will give you additional benefits while raging.</p><p></p></li></ul><p>You can use this ability once per long rest at level 1, and gain additional uses of this ability as you level up, listed in the @UUID[Compendium.elkan5e.elkan5e-class.M8lNLAe2okA9qgFg]{Barbarian Progression Chart}.</p>",
 			"chat": ""
 		},
 		"source": {
 			"custom": "elkan5e.com/barbarian",
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
 			"license": ""

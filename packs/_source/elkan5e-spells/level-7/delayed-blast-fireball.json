@@ -5,6 +5,7 @@
 	"effects": [],
 	"folder": "H799nI2ov6BcHwd6",
 	"flags": {
+		"core": {},
 		"midi-qol": {
 			"effectActivation": false,
 			"AoETargetType": "any",
@@ -17,28 +18,52 @@
 			"effectCondition": "",
 			"reactionCondition": ""
 		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"confirmTargets": "default",
+			"noConcentrationCheck": false,
+			"saveDamage": "default",
+			"bonusSaveDamage": "default",
+			"otherSaveDamage": "default",
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
 		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
 			"migratedProperties": [
 				"vocal",
 				"somatic",
 				"material",
 				"concentration"
 			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
 		}
 	},
 	"system": {
 		"description": {
-			"value": "<p>A beam of yellow light flashes from your pointing finger, then condenses to linger at a chosen point within range as a glowing bead for the duration. When the spell ends, either because your concentration is broken or because you decide to end it, the bead blossoms with a low roar into an explosion of flame that spreads around corners. Each creature in a 20-foot-radius sphere centered on that point must make a Dexterity saving throw. A creature takes fire damage equal to the total accumulated damage on a failed save, or half as much damage on a successful one.</p><p>The spell's base damage is 12d6. If at the end of your turn the bead has not yet detonated, the damage increases by 1d6.</p><p>If the glowing bead is touched before the interval has expired, the creature touching it must make a Dexterity saving throw. On a failed save, the spell ends immediately, causing the bead to erupt in flame. On a successful save, the creature can throw the bead up to 40 feet. When it strikes a creature or a solid object, the spell ends, and the bead explodes.</p><p>The fire damages objects in the area and ignites flammable objects that aren't being worn or carried.</p><p></p><p>*<strong>Upcasting:</strong> Increase damage by [[/damage 1d6 fire]]{1d6} for each spell level above 7th.</p>",
+			"value": "<p></p><p><strong>Summoning</strong></p><ul><li><p>When cast, a glowing bead appears at a point within range. The bead explodes when your concentration ends, or when you choose to end the spell.</p></li><li><p>Base damage is [[/damage 12d6 fire]] damage.* At the end of each of your turns, if the bead has not yet detonated, the damage increases by [[/damage 1d6 fire]]{1d6}.</p></li><li><p>If the bead is touched before detonation, the creature must make a <strong>[[/save DEX]]{Dexterity Save}</strong>:</p><ul><li><p><strong>Failure:</strong> The bead immediately detonates.</p></li><li><p><strong>Success:</strong> The creature may throw the bead up to 40 ft. When it strikes a creature or solid object, it explodes.</p></li></ul></li></ul><p></p><p><strong>[[/save DEX]]{Dexterity Save}</strong></p><p>The fire spreads around corners, igniting flammable objects in the area that aren't being worn or carried, which take [[/damage 1d10 fire]] damage every round until extinguished as an action.</p><ul><li><p><strong>Failure:</strong> Target takes the accumulated fire damage.</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p><br /><strong>*Upcasting:</strong> Increase damage by [[/damage 1d6 fire]]{1d6} for each spell level above 7th.</p><section class=\"secret\" id=\"secret-MJyHct0hk2xcEz89\"><p><strong>Foundry Note</strong></p><p>The limited uses value of this spell tracks the number of rounds that have passed since the initial casting and starts at 0.</p><p>The <strong>Turn End Damage Increase</strong> activity will increase that value by 1.</p><p>The <strong>Trigger Explosion</strong> activity calculates the total damage based on the limited uses.</p><p>If you would prefer manual tracking, you can use <strong>Trigger Explosion's</strong> Situational Bonus dialog to add the extra d6s and ignore the <strong>Turn End Damage</strong> Increase activity.</p></section>",
 			"chat": ""
 		},
 		"source": {
 			"custom": "Elkan 5e",
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
 			"license": ""
@@ -60,10 +85,10 @@
 			},
 			"template": {
 				"units": "ft",
-				"type": "square",
-				"size": "5",
+				"type": "sphere",
+				"size": "1",
 				"contiguous": false,
-				"count": ""
+				"count": "1"
 			}
 		},
 		"range": {
@@ -72,9 +97,9 @@
 			"special": ""
 		},
 		"uses": {
-			"max": "",
+			"max": "10",
 			"recovery": [],
-			"spent": 0
+			"spent": 10
 		},
 		"ability": "",
 		"level": 7,
@@ -96,20 +121,28 @@
 			"concentration"
 		],
 		"activities": {
-			"DG2GlPsqWZp9oGbA": {
-				"type": "save",
+			"biRUzxC6x3Jqf5Xo": {
+				"type": "utility",
 				"activation": {
 					"type": "action",
 					"value": null,
 					"override": false
 				},
 				"consumption": {
-					"targets": [],
 					"scaling": {
-						"allowed": false,
-						"max": ""
+						"allowed": false
 					},
-					"spellSlot": true
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "@item.uses.value",
+							"target": "",
+							"scaling": {
+								"mode": ""
+							}
+						}
+					]
 				},
 				"description": {
 					"chatFlavor": ""
@@ -121,69 +154,234 @@
 				},
 				"effects": [],
 				"range": {
-					"override": false
+					"override": false,
+					"units": "self"
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"count": "",
+						"type": "sphere",
+						"size": "1"
+					},
+					"affects": {
+						"choice": false,
+						"count": "1",
+						"type": "space",
+						"special": ""
+					},
+					"override": true,
 					"prompt": true
 				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"formula": "",
+					"name": ""
+				},
+				"name": "Create Bead",
+				"img": "systems/dnd5e/icons/svg/damage/force.svg",
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"_id": "biRUzxC6x3Jqf5Xo"
+			},
+			"oaxQk1f7nEXow11w": {
+				"type": "save",
+				"activation": {
+					"type": "",
+					"value": null,
+					"override": true,
+					"condition": "a creature touches the glowing bead before the spell ends"
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": false,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [],
+				"range": {
+					"override": true,
+					"units": "any",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "1",
+						"type": "creature",
+						"special": ""
+					},
+					"override": true,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
 				"damage": {
-					"onSave": "half",
-					"parts": [
-						{
-							"number": 12,
-							"denomination": 6,
-							"bonus": "",
-							"types": [
-								"fire"
-							],
-							"custom": {
-								"enabled": false,
-								"formula": ""
-							},
-							"scaling": {
-								"mode": "whole",
-								"number": 1,
-								"formula": ""
-							}
-						}
-					]
+					"parts": [],
+					"onSave": "none",
+					"critical": {
+						"allow": false
+					}
 				},
 				"save": {
-					"ability": "dex",
+					"ability": [
+						"dex"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
 					}
 				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
+				"name": "Touch Bead",
+				"img": "systems/dnd5e/icons/svg/trait-skills.svg",
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
 				},
-				"_id": "DG2GlPsqWZp9oGbA",
-				"name": "Save (Immediate Detonation)",
-				"img": "",
-				"appliedEffects": []
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "",
+				"otherActivityAsParentType": true,
+				"friendlySave": "default",
+				"_id": "oaxQk1f7nEXow11w"
 			},
-			"gp61SKZ8etkQLPc5": {
-				"type": "damage",
+			"VZvRVdVAwOcx5hus": {
+				"type": "utility",
 				"activation": {
-					"type": "action",
+					"type": "",
 					"value": null,
-					"override": false
+					"override": true,
+					"condition": "whenever your turn ends"
 				},
 				"consumption": {
-					"targets": [],
 					"scaling": {
-						"allowed": false,
-						"max": ""
+						"allowed": false
 					},
-					"spellSlot": false
+					"spellSlot": false,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "-1",
+							"target": "",
+							"scaling": {
+								"mode": ""
+							}
+						}
+					]
 				},
 				"description": {
 					"chatFlavor": ""
@@ -191,34 +389,154 @@
 				"duration": {
 					"units": "inst",
 					"concentration": false,
-					"override": false
+					"override": true
 				},
 				"effects": [],
 				"range": {
-					"override": false
+					"override": true,
+					"units": "any",
+					"special": ""
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": ""
+					},
+					"override": true,
+					"prompt": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"formula": "",
+					"name": ""
+				},
+				"name": "Turn End Damage Increase",
+				"img": "systems/dnd5e/icons/svg/scale-value.svg",
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"_id": "VZvRVdVAwOcx5hus"
+			},
+			"hXLQlL0jx1EL8mfs": {
+				"type": "save",
+				"activation": {
+					"type": "",
+					"value": null,
+					"override": true,
+					"condition": "when the spell ends"
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": false,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [],
+				"range": {
+					"override": true,
+					"units": "any",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"count": "",
+						"type": "sphere",
+						"size": "20"
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": "creature",
+						"special": ""
+					},
+					"override": true,
 					"prompt": true
 				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
 				"damage": {
-					"critical": {
-						"allow": false,
-						"bonus": ""
-					},
 					"parts": [
 						{
 							"custom": {
 								"enabled": false,
 								"formula": ""
 							},
-							"number": 1,
+							"number": 12,
 							"denomination": 6,
-							"bonus": "",
+							"bonus": "(@item.uses.value)d6",
 							"types": [
 								"fire"
 							],
@@ -228,17 +546,74 @@
 								"formula": ""
 							}
 						}
-					]
+					],
+					"onSave": "half",
+					"critical": {
+						"allow": false
+					}
 				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
+				"save": {
+					"ability": [
+						"dex"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
 				},
-				"_id": "gp61SKZ8etkQLPc5",
-				"name": "Save (Max Damage)",
-				"img": "",
-				"appliedEffects": []
+				"name": "Trigger Explosion",
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "",
+				"otherActivityAsParentType": true,
+				"friendlySave": "default",
+				"_id": "hXLQlL0jx1EL8mfs"
 			}
 		},
 		"identifier": "delayed-blast-fireball"

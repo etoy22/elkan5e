@@ -6,7 +6,7 @@
 	"img": "icons/skills/melee/weapons-crossed-swords-yellow.webp",
 	"system": {
 		"description": {
-			"value": "<p><strong>When You Use Frenzy</strong> -<span>1 Visible Creature (120 ft.)</span></p><p>When you become &amp;reference[goaded] by a creature as part of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.OlP5CWXKH4mMRMsX]{Frenzy}, you can attempt to goad your target as well. You can use this every time you switch your Frenzy target.</p><p><strong>Wisdom Save</strong> </p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[goaded].</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"value": "<p><strong>When You Use Frenzy</strong> -<span>1 Visible Creature (120 ft.)</span></p><p>When you become &amp;reference[goaded apply=false] by a creature as part of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.OlP5CWXKH4mMRMsX]{Frenzy}, you can attempt to goad your target as well. You can use this every time you switch your Frenzy target.</p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[goaded].</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -141,8 +141,39 @@
 				"startTurn": null
 			},
 			"flags": {
+				"core": {
+					"overlay": false
+				},
 				"condition-lab-triggler": {
 					"conditionId": "Kq9PYa0G2aHGmUvc"
+				},
+				"times-up": {},
+				"dae": {
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
 				}
 			},
 			"_id": "ebLG2pOcELyoC3ls",
@@ -157,6 +188,24 @@
 		}
 	],
 	"flags": {
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"rollOther": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
 		"midi-qol": {
 			"effectActivation": false,
 			"rollAttackPerTarget": "default",
@@ -168,6 +217,16 @@
 			"autoTarget": "default",
 			"removeAttackDamageButtons": "default",
 			"otherCondition": ""
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
 		}
 	},
 	"_key": "!items!tYr6YSe9Q6gOlfwF"

@@ -6,12 +6,12 @@
 	"img": "icons/commodities/biological/wing-green.webp",
 	"system": {
 		"description": {
-			"value": "<p><em>Prerequisite: Dragonborn</em></p><p><em>You channel draconic magic, sprouting spectral wings made of the same energy as your breath weapon.</em> </p><p><strong>Bonus Action</strong> - Self - 10 Minutes - 1/Short Rest - Magical</p><ul><li><p>You gain a flying speed equal to your walking speed.</p></li><li><p>This ability ends early if you become incapacitated or you choose to dismiss the wings.</p></li></ul>",
+			"value": "<p><em>Prerequisite: Dragonborn</em></p><p><em>You channel draconic magic, sprouting spectral wings made of the same energy as your breath weapon.</em></p><p><strong>Bonus Action</strong> - Self - 10 Minutes - 1/Short Rest - Magical</p><ul><li><p>You gain a &amp;reference[flying] speed equal to your walking speed.</p></li><li><p>This ability ends early if you become &amp;reference[incapacitated apply=false] or you choose to dismiss the wings.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
 			"custom": "elkan5e.com/feats/draconic-flight",
-			"rules": "2024",
+			"rules": "",
 			"revision": 1,
 			"book": "Elkan 5e",
 			"page": "",
@@ -33,7 +33,10 @@
 		},
 		"requirements": "Feat (Level 8)",
 		"prerequisites": {
-			"level": 8
+			"level": 8,
+			"items": [
+				"dragonborn"
+			]
 		},
 		"properties": [
 			"mgc"
@@ -211,7 +214,7 @@
 			"flags": {
 				"dae": {
 					"disableCondition": "",
-					"disableIncapacitated": false,
+					"disableIncapacitated": true,
 					"stackable": "multi",
 					"showIcon": false,
 					"durationExpression": "",
@@ -226,6 +229,26 @@
 					"riders": {
 						"statuses": []
 					}
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "Enemy",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
 				}
 			},
 			"_key": "!items.effects!XXxtX29U6hj0nMW9.2nGTpRP5a8ouiMNe"
@@ -238,8 +261,8 @@
 			"autoSaveFriendly": false,
 			"critOther": false,
 			"offHandWeapon": false,
-			"magicdam": true,
-			"magiceffect": true,
+			"magicdam": false,
+			"magiceffect": false,
 			"concentration": false,
 			"noConcentrationCheck": false,
 			"toggleEffect": false,
@@ -248,6 +271,24 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
 		}
 	},
 	"_key": "!items!XXxtX29U6hj0nMW9"

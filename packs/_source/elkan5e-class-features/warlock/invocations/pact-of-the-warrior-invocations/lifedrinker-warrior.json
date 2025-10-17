@@ -9,7 +9,7 @@
 		},
 		"source": {
 			"custom": "elkan5e.com/invocations/lifedrinker",
-			"rules": "2024",
+			"rules": "",
 			"revision": 1,
 			"book": "Elkan 5e",
 			"page": "",
@@ -29,7 +29,10 @@
 			"mgc"
 		],
 		"prerequisites": {
-			"level": 11
+			"level": 11,
+			"items": [
+				"pact-of-the-warrior"
+			]
 		},
 		"identifier": "",
 		"activities": {
@@ -290,8 +293,49 @@
 			},
 			"origin": null,
 			"tint": "#ffffff",
-			"name": "Invocation: Infused Strikes",
-			"img": "icons/weapons/clubs/club-spiked-glowing.webp",
+			"flags": {
+				"dae": {
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"stackable": "none",
+					"durationExpression": "",
+					"specialDuration": [],
+					"enableCondition": "",
+					"disableCondition": "",
+					"showIcon": false,
+					"disableIncapacitated": false,
+					"dontApply": false,
+					"macroRepeat": "none"
+				},
+				"core": {
+					"statusId": "",
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "Enemy",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"nameOverride": "",
+					"customCheck": "",
+					"wallsBlock": "system",
+					"statuses": []
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				}
+			},
+			"name": "Lifedrinker (Warrior)",
+			"img": "icons/skills/melee/strike-sword-blood-red.webp",
 			"type": "base",
 			"system": {},
 			"description": "",
@@ -306,8 +350,8 @@
 			"autoSaveFriendly": false,
 			"critOther": false,
 			"offHandWeapon": false,
-			"magicdam": true,
-			"magiceffect": true,
+			"magicdam": false,
+			"magiceffect": false,
 			"concentration": false,
 			"noConcentrationCheck": false,
 			"toggleEffect": false,
@@ -316,6 +360,24 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
 		}
 	},
 	"_id": "nGlcBxCCywigSyti",

@@ -32,6 +32,9 @@
 				},
 				"dnd5e-helpers": {
 					"rest-effect": "Ignore"
+				},
+				"core": {
+					"statusId": ""
 				}
 			},
 			"changes": [
@@ -93,11 +96,50 @@
 			"statuses": [
 				"blinded"
 			],
+			"flags": {
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
+				}
+			},
 			"_key": "!items.effects!zKJ6ia0SOCrIEGQn.4GSDd3tmZ1jW2Q87"
 		}
 	],
 	"folder": "TOjvTMaQMAMN24MV",
 	"flags": {
+		"dae": {
+			"activeEquipped": false,
+			"alwaysActive": false
+		},
+		"core": {},
 		"midi-qol": {
 			"onUseMacroName": "",
 			"effectActivation": false,
@@ -105,6 +147,27 @@
 			"itemCondition": "",
 			"effectCondition": "",
 			"reactionCondition": ""
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"confirmTargets": "default",
+			"noConcentrationCheck": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
 		},
 		"dnd5e": {
 			"riders": {
@@ -121,13 +184,13 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p>Divine light washes out from you and coalesces in a soft radiance in a 30-foot radius around you. Creatures of your choice in that radius when you cast this spell shed dim light in a 5-foot radius and have advantage on all Saving Throws, and other creatures have disadvantage on Attack rolls against them until the spell ends. In addition, when a fiend or an Undead hits an affected creature with a melee attack, the aura flashes with brilliant light. The attacker must succeed on a Constitution saving throw or be Blinded until the spell ends.</p>",
+			"value": "<p><br /><strong>Utility</strong></p><ul><li><p>Choose creatures within 30 ft. of you when you cast the spell. Each chosen creature sheds dim light in a 5 ft. radius.</p></li><li><p>Affected creatures have Advantage on all saving throws.</p></li><li><p>Other creatures have Disadvantage on attack rolls against affected creatures.</p></li></ul><p><br /></p><p><strong>No Action</strong></p><p><em>Trigger: When a &amp;reference[Fiend] or &amp;reference[Undead] hits an affected creature with a melee attack, the aura flashes with divine light.</em></p><p><strong>[[/save CON]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> The attacker is &amp;reference[Blinded] until the spell ends.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
 			"custom": "Elkan 5e",
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
 			"license": ""
@@ -143,14 +206,17 @@
 		},
 		"target": {
 			"affects": {
-				"type": "self",
+				"type": "ally",
 				"choice": false,
-				"special": ""
+				"special": "",
+				"count": ""
 			},
 			"template": {
 				"units": "",
 				"contiguous": false,
-				"type": ""
+				"type": "radius",
+				"size": "30",
+				"count": ""
 			}
 		},
 		"range": {

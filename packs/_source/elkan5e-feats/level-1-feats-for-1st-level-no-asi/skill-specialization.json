@@ -5,12 +5,12 @@
 	"img": "icons/skills/movement/arrow-upward-white.webp",
 	"system": {
 		"description": {
-			"value": "<p><em>Note: This feat can be chosen multiple times.</em></p><p>Pick one @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.rv19GFzEa0nMTuAF]{skill} you were already proficient in. You now have expertise with the skill(s), meaning your proficiency bonus is added twice for skill checks instead of added once.</p><p><strong>Note: You'll need to manually grant your character expertise. This feature is not automated.</strong> </p>",
+			"value": "<p><em>Note: This feat can be chosen multiple times.</em></p><p>Pick one @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.rv19GFzEa0nMTuAF]{skill} you were already proficient in. You now have expertise with the skill(s), meaning your proficiency bonus is added twice for skill checks instead of added once.</p>",
 			"chat": ""
 		},
 		"source": {
 			"custom": "elkan5e.com/feats/skill-specialization",
-			"rules": "2024",
+			"rules": "",
 			"revision": 1,
 			"book": "Elkan 5e",
 			"page": "",
@@ -34,11 +34,64 @@
 			"repeatable": true
 		},
 		"properties": [],
-		"advancement": [],
+		"advancement": [
+			{
+				"type": "Trait",
+				"_id": "V0LicFiHbKIgqBy9",
+				"configuration": {
+					"allowReplacements": false,
+					"choices": [
+						{
+							"count": 1,
+							"pool": [
+								"skills:*"
+							]
+						}
+					],
+					"grants": [],
+					"mode": "expertise"
+				},
+				"level": 0,
+				"title": "",
+				"hint": "",
+				"value": {}
+			}
+		],
 		"cover": null,
 		"crewed": false
 	},
 	"effects": [],
+	"flags": {
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
 	"_id": "csWJ1hCefejHYKt8",
 	"_key": "!items!csWJ1hCefejHYKt8"
 }

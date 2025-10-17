@@ -10,6 +10,21 @@
 				"midi-qol": {
 					"effectActivation": false
 				},
+				"midiProperties": {
+					"nodam": false,
+					"fulldam": false,
+					"halfdam": false,
+					"autoFailFriendly": false,
+					"autoSaveFriendly": false,
+					"rollOther": false,
+					"critOther": false,
+					"offHandWeapon": false,
+					"magicdam": false,
+					"magiceffect": false,
+					"concentration": false,
+					"toggleEffect": false,
+					"ignoreTotalCover": false
+				},
 				"dnd5e": {}
 			},
 			"type": "feat",
@@ -17,12 +32,39 @@
 			"effects": [
 				{
 					"flags": {
+						"ActiveAuras": {
+							"isAura": false,
+							"radius": "null",
+							"aura": "None",
+							"alignment": "",
+							"type": "",
+							"ignoreSelf": false,
+							"height": false,
+							"hidden": false,
+							"hostile": false,
+							"onlyOnce": false,
+							"displayTemp": false,
+							"nameOverride": ""
+						},
 						"core": {
 							"statusId": "combat-utility-belt.poisoned"
 						},
 						"combat-utility-belt": {
 							"conditionId": "poisoned",
 							"overlay": false
+						},
+						"dae": {
+							"selfTarget": false,
+							"selfTargetAlways": false,
+							"stackable": "none",
+							"durationExpression": "",
+							"macroRepeat": "none",
+							"specialDuration": [],
+							"dontApply": false,
+							"showIcon": false
+						},
+						"times-up": {
+							"isPassive": false
 						}
 					},
 					"changes": [
@@ -390,6 +432,9 @@
 			"type": "equipment",
 			"img": "icons/equipment/chest/breastplate-scale-leather.webp",
 			"effects": [],
+			"flags": {
+				"core": {}
+			},
 			"system": {
 				"description": {
 					"value": "<p>Hide armor consists of thick furs, pelts, and other animal skins that have been layered thick. Unlike leather armor, this armor is heavy, harder to maneuver in, and significantly cheaper. It is usually worn by hunters, druids, or groups without access to better armor.</p>",
@@ -581,6 +626,21 @@
 				"midi-qol": {
 					"effectActivation": false
 				},
+				"midiProperties": {
+					"nodam": false,
+					"fulldam": false,
+					"halfdam": false,
+					"autoFailFriendly": false,
+					"autoSaveFriendly": false,
+					"rollOther": false,
+					"critOther": false,
+					"offHandWeapon": false,
+					"magicdam": false,
+					"magiceffect": false,
+					"concentration": false,
+					"toggleEffect": false,
+					"ignoreTotalCover": false
+				},
 				"dnd5e": {}
 			},
 			"_key": "!actors.items!6q9IkifzuxdGRDaW.J4rWr3e3KUY7Rp53"
@@ -591,6 +651,7 @@
 			"img": "icons/weapons/swords/greatsword-guard-gem-blue.webp",
 			"effects": [],
 			"flags": {
+				"core": {},
 				"betterRolls5e": {
 					"quickDamage": {
 						"context": {
@@ -848,6 +909,7 @@
 	"effects": [],
 	"folder": "WaHQ0Hz787wfUXDl",
 	"flags": {
+		"core": {},
 		"tidy5e-sheet": {
 			"allow-edit": true,
 			"death": {
@@ -1394,7 +1456,7 @@
 		},
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
 			"license": ""

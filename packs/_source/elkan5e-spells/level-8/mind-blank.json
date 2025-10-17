@@ -32,6 +32,32 @@
 			},
 			"origin": null,
 			"tint": "#ffffff",
+			"flags": {
+				"dae": {
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"stackable": "none",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"core": {
+					"statusId": ""
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"radius": null,
+					"alignment": "",
+					"type": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false
+				}
+			},
 			"name": "Mind Blank",
 			"description": "",
 			"statuses": [],
@@ -55,6 +81,28 @@
 			"removeAttackDamageButtons": "default",
 			"otherCondition": ""
 		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"confirmTargets": "default",
+			"noConcentrationCheck": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"core": {},
 		"dnd5e": {
 			"riders": {
 				"activity": [],
@@ -64,17 +112,21 @@
 				"vocal",
 				"somatic"
 			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
 		}
 	},
 	"system": {
 		"description": {
-			"value": "<p>Until the spell ends, one willing creature you touch is immune to psychic damage, any effect that would sense its emotions or read its thoughts, Divination Spells, and the Charmed condition. The spell even foils Wish spells and Spells or Effects of similar power used to affect the target's mind or to gain information about the target.</p>",
+			"value": "<p><br /><strong>Buff</strong></p><ul><li><p>The target is immune to &amp;reference[Psychic] damage.</p></li><li><p>The target is immune to any effect that would sense its emotions or read its thoughts.</p></li><li><p>The target is immune to &amp;reference[Divination] spells.</p></li><li><p>The target is immune to the &amp;reference[Charmed apply=false] condition.</p></li><li><p>This spell even foils <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.5e0swEflzMmSszQ0]{Wish}</em> and similar magic of equal or greater power that would affect the target’s mind or reveal information about it.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
 			"custom": "Elkan 5e",
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
 			"license": ""

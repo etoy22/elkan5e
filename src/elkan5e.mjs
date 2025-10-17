@@ -34,31 +34,6 @@ import * as Spells from "./module/spells.mjs";
 import * as Feats from "./module/feats.mjs";
 import { skills } from "./module/rules/skills.mjs";
 
-function injectMidiCustomDamageTypes() {
-	const midiModule = game.modules.get("midi-qol");
-	if (!midiModule?.active) return;
-	const config = CONFIG.DND5E;
-	if (!config) return;
-	const custom = config.customDamageResistanceTypes ?? {};
-	if (!config.customDamageResistanceTypes) {
-		config.customDamageResistanceTypes = custom;
-	}
-
-	const localize = (key) => game.i18n?.localize?.(key) ?? key;
-	const additions = {
-		nonColdIronPhysical: "elkan5e.midi-qol.NonColdIronPhysical",
-		magicalSilverPhysical: "elkan5e.midi-qol.MagicalSilverPhysical",
-		magicalAdamantinePhysical: "elkan5e.midi-qol.MagicalAdamantinePhysical",
-		magicalColdIronPhysical: "elkan5e.midi-qol.MagicalColdIronPhysical",
-	};
-
-	for (const [key, locKey] of Object.entries(additions)) {
-		custom[key] = localize(locKey);
-	}
-}
-
-Hooks.once("midi-qol.ready", injectMidiCustomDamageTypes);
-Hooks.once("ready", () => injectMidiCustomDamageTypes());
 //Remove this text when poll is over
 const POLL_URL =
 	"https://docs.google.com/forms/d/e/1FAIpQLSdl_E6udYqbRS_KJ0eLta1mIS54yCWUNiOQUTJwFZ9TR7CcNA/viewform?usp=dialog";

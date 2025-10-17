@@ -13,155 +13,6 @@ const PACK_SOURCE_NAME_OVERRIDES = {
 	"elkan5e-background": "elkan5e-backgrounds",
 };
 
-const DEFAULT_FLAG_CANDIDATES = {
-	midiProperties: [
-		{
-			confirmTargets: "default",
-			autoFailFriendly: false,
-			autoSaveFriendly: false,
-			critOther: false,
-			offHandWeapon: false,
-			magicdam: false,
-			magiceffect: false,
-			noConcentrationCheck: false,
-			toggleEffect: false,
-			ignoreTotalCover: false,
-			saveDamage: "default",
-			bonusSaveDamage: "default",
-			otherSaveDamage: "default",
-			idr: false,
-			idi: false,
-			idv: false,
-			ida: false,
-			concentration: false,
-			fulldam: false,
-			halfdam: false,
-			nodam: false,
-			rollOther: false,
-		},
-	],
-	"midi-qol": [
-		{
-			rollAttackPerTarget: "default",
-			itemCondition: "",
-			effectCondition: "",
-			removeAttackDamageButtons: "default",
-			reactionCondition: "",
-			AoETargetType: "any",
-			autoTarget: "default",
-			otherCondition: "",
-		},
-	],
-	"tidy5e-sheet": [
-		{
-			section: "",
-			actionSection: "",
-		},
-	],
-	"times-up": [{}, { isPassive: false }],
-	dae: [
-		{
-			disableCondition: "",
-			disableIncapacitated: false,
-			dontApply: false,
-			durationExpression: "",
-			enableCondition: "",
-			macroRepeat: "none",
-			selfTarget: false,
-			selfTargetAlways: false,
-			showIcon: false,
-			specialDuration: [],
-			stackable: "noneName",
-			activeEquipped: false,
-			alwaysActive: false,
-			transfer: false,
-			macro: {},
-		},
-		{
-			disableCondition: "",
-			disableIncapacitated: false,
-			dontApply: false,
-			durationExpression: "",
-			enableCondition: "",
-			macroRepeat: "none",
-			selfTarget: false,
-			selfTargetAlways: false,
-			showIcon: false,
-			specialDuration: [],
-			stackable: "none",
-		},
-		{ activeEquipped: false, alwaysActive: false },
-		{ macro: {} },
-	],
-	core: [{}, { overlay: false }, { statusId: "" }, { overlay: false, statusId: "" }],
-};
-
-function isPlainObject(value) {
-	return typeof value === "object" && value !== null && !Array.isArray(value);
-}
-
-function deepEqual(a, b) {
-	if (a === b) return true;
-	if (Array.isArray(a) && Array.isArray(b)) {
-		if (a.length !== b.length) return false;
-		return a.every((value, index) => deepEqual(value, b[index]));
-	}
-	if (isPlainObject(a) && isPlainObject(b)) {
-		const aKeys = Object.keys(a);
-		const bKeys = Object.keys(b);
-		if (aKeys.length !== bKeys.length) return false;
-		return aKeys.every((key) => deepEqual(a[key], b[key]));
-	}
-	return false;
-}
-
-function matchesDefaultVariant(value, variant) {
-	if (!isPlainObject(value) || !isPlainObject(variant)) return false;
-	for (const key of Object.keys(value)) {
-		if (!Object.prototype.hasOwnProperty.call(variant, key)) return false;
-		if (!deepEqual(value[key], variant[key])) return false;
-	}
-	return true;
-}
-
-function isDefaultFlagValue(value, variants = []) {
-	if (!isPlainObject(value)) return false;
-	return variants.some((variant) => matchesDefaultVariant(value, variant));
-}
-
-function removeDefaultModuleFlags(data) {
-	if (!isPlainObject(data)) return;
-
-	const maybeRemove = (container, key, defaults) => {
-		if (!isPlainObject(container)) return;
-		const current = container[key];
-		if (!isPlainObject(current)) return;
-		if (isDefaultFlagValue(current, defaults)) {
-			delete container[key];
-		}
-	};
-
-	// Flags container cleanup
-	if (isPlainObject(data.flags)) {
-		const activeAuras = data.flags.ActiveAuras;
-		if (isPlainObject(activeAuras) && activeAuras.isAura === false) {
-			delete data.flags.ActiveAuras;
-		}
-
-		for (const [moduleName, defaults] of Object.entries(DEFAULT_FLAG_CANDIDATES)) {
-			maybeRemove(data.flags, moduleName, defaults);
-		}
-		if (Object.keys(data.flags).length === 0) {
-			delete data.flags;
-		}
-	}
-
-	// Direct module flag properties that aren't under flags
-	for (const [moduleName, defaults] of Object.entries(DEFAULT_FLAG_CANDIDATES)) {
-		maybeRemove(data, moduleName, defaults);
-	}
-}
-
 // Ensure base folders exist
 fs.mkdirSync(PACK_SRC, { recursive: true });
 fs.mkdirSync(PACK_DEST, { recursive: true });
@@ -228,12 +79,8 @@ function cleanPackEntry(data, { clearSourceId = true, ownership = 0 } = {}) {
 				recursiveClean(val);
 			}
 		}
-
-		removeDefaultModuleFlags(obj);
 	}
 	recursiveClean(data);
-
-	removeDefaultModuleFlags(data);
 
 	if (data.system && preservedIdentifier !== null && preservedIdentifier !== undefined) {
 		data.system.identifier = preservedIdentifier;
@@ -408,16 +255,11 @@ async function extractPacks(packName, entryName) {
 				if (entry.system?.materials?.value) entry.system.materials.value = "";
 
 				let filename;
-				const containerMeta = containers[entry._id];
-
 				if (entry._id in folders)
 					filename = path.join(folders[entry._id].path, "_folder.json");
-				else if (containerMeta) {
-					const containerDir = path.dirname(containerMeta.path);
-					const containerName = path.basename(containerMeta.path);
-					const parentPath = containerDir === "." ? "" : containerDir;
-					filename = path.join(parentPath, `${containerName}.json`);
-				} else {
+				else if (entry._id in containers)
+					filename = path.join(containers[entry._id].path, "_container.json");
+				else {
 					const outputName = slugify(entry.name);
 					const parent = containers[entry.system?.container] ?? folders[entry.folder];
 					filename = path.join(parent?.path ?? "", `${outputName}.json`);
@@ -481,7 +323,7 @@ async function removePacks(packName) {
 
 /**
  * Slugify names for safe file or folder names.
- * Removes path separators so entries stay in a single directory.
+ * Allows folder paths by allowing slashes.
  *
  * @param {string} name - Name to convert to a slug.
  * @returns {string} The slugified name.
@@ -490,8 +332,7 @@ function slugify(name) {
 	return name
 		.toLowerCase()
 		.replace(/'/g, "")
-		.replace(/[\/\\]+/g, " ")
-		.replace(/[^a-z0-9-]+/gi, " ")
+		.replace(/[^a-z0-9\/]+/gi, " ")
 		.trim()
 		.replace(/\s+/g, "-");
 }

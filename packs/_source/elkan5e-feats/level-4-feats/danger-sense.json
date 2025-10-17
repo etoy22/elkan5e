@@ -6,12 +6,12 @@
 	"img": "icons/creatures/eyes/lizard-single-slit-pink.webp",
 	"system": {
 		"description": {
-			"value": "<p><em><strong>Prerequisite: Proficiency in &amp;reference[perception].</strong></em></p><p><em>You gain an uncanny sense of your surroundings, always ready to leap out of danger.</em></p><ul><li><p>You add your proficiency bonus to &amp;reference[initiative] rolls.</p></li><li><p>You are immune to the &amp;reference[surprised apply=false] condition.</p></li><li><p>You can also Initiative Swap with allies:</p></li></ul><p><strong>Reaction</strong> - 1 Creature</p><p><em>Trigger: You and an ally roll initiative.</em></p><ul><li><p>You can swap your initiative with a willing ally, so long as neither you or they are &amp;reference[incapacitated apply=false].</p></li></ul>",
+			"value": "<p><em><strong>Prerequisite: Proficiency in &amp;reference[perception].</strong></em></p><p><em>You gain an uncanny sense of your surroundings, always ready to leap out of danger.</em></p><ul><li><p>You add your proficiency bonus to &amp;reference[initiative] rolls.</p></li><li><p>You are immune to the &amp;reference[surprised apply=false] condition.</p></li><li><p>You can also Initiative Swap with allies:</p></li></ul><p><strong>Reaction</strong> - 1 Creature</p><p><em>Trigger: You and an ally roll initiative.</em></p><ul><li><p>You can swap your initiative with a willing ally, so long as neither you or they are &amp;reference[incapacitated].</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
 			"custom": "elkan5e.com/feats/danger-sense",
-			"rules": "2024",
+			"rules": "",
 			"revision": 1,
 			"book": "Elkan 5e",
 			"page": "",
@@ -191,10 +191,45 @@
 			"origin": "Compendium.elkan5e.elkan5e-feats.Item.k4Lf8VZtlESUaz24",
 			"statuses": [],
 			"flags": {
+				"times-up": {
+					"isPassive": false
+				},
+				"dae": {
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"disableIncapacitated": false,
+					"disableCondition": ""
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "Enemy",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				},
 				"dnd5e": {
 					"riders": {
 						"statuses": []
 					}
+				},
+				"core": {
+					"overlay": false
 				}
 			},
 			"tint": "#ffffff",
@@ -205,6 +240,23 @@
 		}
 	],
 	"flags": {
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
 		"midi-qol": {
 			"effectActivation": false,
 			"itemCondition": "",
@@ -213,6 +265,16 @@
 			"effectCondition": "",
 			"rollAttackPerTarget": "default",
 			"removeAttackDamageButtons": "default"
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
 		}
 	},
 	"_key": "!items!k4Lf8VZtlESUaz24"

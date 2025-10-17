@@ -6,12 +6,12 @@
 	"img": "icons/environment/people/cavalry.webp",
 	"system": {
 		"description": {
-			"value": "<p>When you are mounted on a creature, you fight as one. You gain the following benefits, unless you are &amp;reference[incapacitated].</p><ul><li><p>The creature that was mounted does not roll initiative, and the mounted rider can replace one of their attacks every turn with one of the mount's attacks if they want. The mount provides its speed and mobility to the rider.</p></li><li><p>The mount cannot take damage. If the mount is targeted by an effect that does not target the rider, and the mount takes damage as a result, the rider instead takes the damage. All attacks against the mount target the rider instead. The mount can otherwise be affected by terrain, spells, and abilities normally.</p></li><li><p>If you are &amp;reference[incapacitated], you fall &amp;reference[prone] next to the mount, and the mount takes its own turn after your initiative count if you are still incapacitated by the time of its turn.</p></li></ul>",
+			"value": "<p>When you are mounted on a creature, you fight as one. You gain the following benefits, unless you are &amp;reference[incapacitated apply=false].</p><ul><li><p>The creature that was mounted does not roll initiative, and the mounted rider can replace one of their attacks every turn with one of the mount's attacks if they want. The mount provides its speed and mobility to the rider.</p></li><li><p>The mount cannot take damage. If the mount is targeted by an effect that does not target the rider, and the mount takes damage as a result, the rider instead takes the damage. All attacks against the mount target the rider instead. The mount can otherwise be affected by terrain, spells, and abilities normally.</p></li><li><p>If you are &amp;reference[incapacitated], you fall &amp;reference[prone] next to the mount, and the mount takes its own turn after your initiative count if you are still incapacitated by the time of its turn.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
 			"custom": "elkan5e.com/feats/mounted-combat",
-			"rules": "2024",
+			"rules": "",
 			"revision": 1,
 			"book": "Elkan 5e",
 			"page": "",
@@ -148,7 +148,7 @@
 				"dae": {
 					"enableCondition": "",
 					"disableCondition": "",
-					"disableIncapacitated": false,
+					"disableIncapacitated": true,
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false,
@@ -157,10 +157,72 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "Enemy",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
 				}
 			},
 			"_key": "!items.effects!IMKA5ByKVLV2oFVp.NOvtrUG5rfv74koy"
 		}
 	],
+	"flags": {
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
 	"_key": "!items!IMKA5ByKVLV2oFVp"
 }

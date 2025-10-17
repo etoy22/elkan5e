@@ -137,13 +137,13 @@
 			"max": "3"
 		},
 		"description": {
-			"value": "<p><strong>No Action Cost</strong> - 1 Creature - 1 Round - Magical</p><p>When you use @UUID[Compendium.elkan5e.elkan5e-class-features.Item.LkbTss8XzxMinCPZ]{Misty Misdirect}, you can choose to afflict the creature who attacked you.</p><p><strong>Wisdom Save</strong> </p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 6d6 psychic]] damage and is &amp;reference[frightened] of you.</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li></ul>",
+			"value": "<p><strong>No Action Cost</strong> - 1 Creature - 1 Round - Magical</p><p>When you use @UUID[Compendium.elkan5e.elkan5e-class-features.Item.LkbTss8XzxMinCPZ]{Misty Misdirect}, you can choose to afflict the creature who attacked you.</p><p><strong>[[/save wis]]{Wisdom Save}</strong> </p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 6d6 psychic]] damage and is &amp;reference[frightened] of you.</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
 			"custom": "elkan5e.com/warlock",
@@ -206,20 +206,58 @@
 					"specialDuration": [
 						"turnEnd"
 					]
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
 				}
 			},
 			"_key": "!items.effects!cB4iCGZ7bdVSyx7i.rioT6iHXIleLvyoE"
 		}
 	],
 	"flags": {
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": ""
+		},
 		"midiProperties": {
 			"autoFailFriendly": false,
 			"autoSaveFriendly": false,
-			"magicdam": true,
-			"magiceffect": true,
+			"magicdam": false,
+			"magiceffect": false,
 			"noConcentrationCheck": false,
 			"toggleEffect": false,
 			"ignoreTotalCover": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
 		}
 	},
 	"_key": "!items!cB4iCGZ7bdVSyx7i"

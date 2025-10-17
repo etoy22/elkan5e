@@ -1,0 +1,186 @@
+{
+	"name": "Antipathy/Sympathy",
+	"type": "spell",
+	"img": "icons/skills/social/diplomacy-unity-alliance.webp",
+	"effects": [],
+	"folder": "TOjvTMaQMAMN24MV",
+	"flags": {
+		"midi-qol": {
+			"effectActivation": false,
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"confirmTargets": "default",
+			"noConcentrationCheck": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"core": {},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			},
+			"migratedProperties": [
+				"vocal",
+				"somatic",
+				"material"
+			]
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><br /><strong>[[/save WIS]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> When casting the spell choose one of the effects below.</p><ul><li><p><strong>Antipathy:</strong> Designated creatures that see the target or come within 60 ft. are &amp;reference[Frightened]. The creature must use its movement to reach the nearest safe spot out of sight and beyond 60 ft. The effect ends if the creature is both unseen and more than 60 ft. away, but resumes if it reenters range or regains sight.</p></li><li><p><strong>Sympathy:</strong> Designated creatures that see the target or come within 60 ft. are compelled to approach. The creature must use its movement each turn to move into the area or within reach of the target. Once adjacent, it cannot willingly move away.</p></li></ul></li><li><p><strong>Success:</strong> No effect, and is immune to it for 1 minute, after which time it can be affected again.</p></li><li><p>If the target harms an affected creature, that creature may immediately make a Wisdom save to end the effect. If an affected creature ends its turn outside 60 ft. and without line of sight, it makes a Wisdom save. On success, the effect ends and it recognizes the aura as magical. Each affected creature repeats the save every 24 hours while the spell persists.</p></li></ul>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "Elkan 5e",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "minute",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "10",
+			"units": "day"
+		},
+		"target": {
+			"affects": {
+				"type": "creature",
+				"count": "1",
+				"choice": false,
+				"special": ""
+			},
+			"template": {
+				"units": "",
+				"contiguous": false,
+				"type": "cube",
+				"size": "200",
+				"count": ""
+			}
+		},
+		"range": {
+			"value": "60",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 8,
+		"school": "enc",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"material"
+		],
+		"activities": {
+			"RHIoQSzYHVjbOMR0": {
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "Cz824xQ2Z4BYuSa9",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": []
+				},
+				"save": {
+					"ability": "wis",
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": []
+				},
+				"_id": "RHIoQSzYHVjbOMR0"
+			}
+		},
+		"identifier": "antipathy-sympathy"
+	},
+	"_id": "3HtSvzBBjKnnRtLv",
+	"_key": "!items!3HtSvzBBjKnnRtLv"
+}

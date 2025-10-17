@@ -6,7 +6,7 @@
 	"img": "icons/magic/light/explosion-star-glow-silhouette.webp",
 	"system": {
 		"description": {
-			"value": "<p><strong>Once Per Turn</strong> - 1 Creature - Magical</p><ul><li><p>When you use a spell to restore more hit points to a creature than the creature is missing, you can instead restore those extra hit points to another creature within range of the spell.</p></li></ul>",
+			"value": "<p><strong>Once Per Turn</strong> - 1 Creature - Magical</p><ul><li><p>When you use a spell to restore more &amp;reference[hit points] to a creature than the creature is missing, you can instead restore those extra hit points to another creature within range of the spell.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -14,7 +14,7 @@
 			"page": "",
 			"custom": "elkan5e.com/cleric",
 			"license": "",
-			"rules": "2024",
+			"rules": "",
 			"revision": 1
 		},
 		"uses": {
@@ -85,6 +85,26 @@
 					"riders": {
 						"statuses": []
 					}
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "Enemy",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
 				}
 			},
 			"_key": "!items.effects!43O2lpH8Va14CKr9.nzuSkyG9x1G8tfvC"
@@ -97,8 +117,8 @@
 			"autoSaveFriendly": false,
 			"critOther": false,
 			"offHandWeapon": false,
-			"magicdam": true,
-			"magiceffect": true,
+			"magicdam": false,
+			"magiceffect": false,
 			"noConcentrationCheck": false,
 			"toggleEffect": false,
 			"ignoreTotalCover": false,
@@ -106,6 +126,18 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
 		}
 	},
 	"_key": "!items!43O2lpH8Va14CKr9"

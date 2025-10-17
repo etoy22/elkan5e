@@ -4,13 +4,13 @@
 	"img": "icons/magic/death/weapon-scythe-rune-green.webp",
 	"system": {
 		"description": {
-			"value": "<p><em>With but a single word, you call upon the power of death. A scythe descends upon your target. There is no avoiding it.</em></p><p><strong>Constitution</strong> <strong>Save</strong></p><p>This spell has no effect on unliving &amp;reference[construct].</p><ul><li><p><strong>Failure:</strong> Target takes damage equal to half their maximum hit points, up to a maximum of 100. If the target has already had their maximum hit points reduced by something else, this is half of their original hit point maximum. Target's maximum hit points are reduced by the amount of damage taken until they next finish a long rest.</p></li><li><p><strong>Success:</strong> Target takes the same damage, but their hit point maximum is not reduced.</p></li></ul>",
+			"value": "<p><em>With but a single word, you call upon the power of death. A scythe descends upon your target. There is no avoiding it.</em></p><p><strong>Constitution Save</strong></p><p>This spell has no effect on unliving &amp;reference[construct].</p><ul><li><p><strong>Failure:</strong> Target takes damage equal to half their maximum hit points, up to a maximum of 100. If the target has already had their maximum hit points reduced by something else, this is half of their original hit point maximum. Target's maximum hit points are reduced by the amount of damage taken until they next finish a long rest.</p></li><li><p><strong>Success:</strong> Target takes the same damage, but their hit point maximum is not reduced.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
 			"custom": "elkan5e.com/spells/wrath-of-the-reaper",
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
 			"license": ""
@@ -150,6 +150,30 @@
 			"rollAttackPerTarget": "default",
 			"onUseMacroName": "[postActiveEffects]ItemMacro"
 		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"rollOther": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"noConcentrationCheck": false,
+			"confirmTargets": "default",
+			"saveDamage": "default",
+			"bonusSaveDamage": "default",
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"core": {},
 		"dnd5e": {
 			"riders": {
 				"activity": [],
@@ -161,6 +185,10 @@
 				"material"
 			]
 		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		},
 		"dae": {
 			"macro": {
 				"name": "Wrath of the Reaper",
@@ -170,7 +198,8 @@
 				"command": "return await elkan5e.macros.spells.wrathOfTheReaper(workflow);",
 				"author": "vHqSHJMdmEO6Mk2C",
 				"_id": null,
-				"folder": null
+				"folder": null,
+				"flags": {}
 			}
 		}
 	},

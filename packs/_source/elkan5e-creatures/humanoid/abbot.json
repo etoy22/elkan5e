@@ -150,6 +150,19 @@
 						},
 						"dnd5e-helpers": {
 							"rest-effect": "Ignore"
+						},
+						"ActiveAuras": {
+							"isAura": false,
+							"aura": "None",
+							"radius": null,
+							"alignment": "",
+							"type": "",
+							"ignoreSelf": false,
+							"height": false,
+							"hidden": false,
+							"displayTemp": false,
+							"hostile": false,
+							"onlyOnce": false
 						}
 					},
 					"tint": "#ffffff",
@@ -181,7 +194,8 @@
 						"value": true,
 						"altValue": true
 					}
-				}
+				},
+				"core": {}
 			},
 			"system": {
 				"description": {
@@ -218,6 +232,7 @@
 			"img": "icons/equipment/chest/breastplate-layered-steel-black.webp",
 			"effects": [],
 			"flags": {
+				"core": {},
 				"betterRolls5e": {
 					"quickDesc": {
 						"value": true,
@@ -372,6 +387,9 @@
 				"properties": []
 			},
 			"effects": [],
+			"flags": {
+				"core": {}
+			},
 			"folder": "yoatIpUeYdrA4oWK",
 			"_id": "CW9WU9Lskj0IoGRk",
 			"_key": "!actors.items!uszmtXaLOXkYmV8m.CW9WU9Lskj0IoGRk"
@@ -384,6 +402,7 @@
 			"effects": [],
 			"folder": null,
 			"flags": {
+				"core": {},
 				"betterRolls5e": {
 					"quickDamage": {
 						"context": {
@@ -417,13 +436,28 @@
 				"midi-qol": {
 					"effectActivation": false
 				},
+				"midiProperties": {
+					"nodam": false,
+					"fulldam": false,
+					"halfdam": false,
+					"rollOther": false,
+					"critOther": false,
+					"magicdam": false,
+					"magiceffect": false,
+					"concentration": false,
+					"toggleEffect": false,
+					"autoFailFriendly": false,
+					"autoSaveFriendly": false,
+					"offHandWeapon": false,
+					"ignoreTotalCover": false
+				},
 				"dnd5e": {
 					"migratedUses": 1
 				}
 			},
 			"system": {
 				"description": {
-					"value": "<p>You can use your Channel Divinity to heal the badly injured.</p><p>As an action, you present your holy symbol and evoke healing energy that can restore 50 hit points.</p><p>Choose any creatures within 30 feet of you, and divide those hit points among them. This feature can restore a creature to no more than half of its hit point maximum. You can't use this feature on an undead or a construct.</p>",
+					"value": "<p>You can use your Channel Divinity to heal the badly injured.</p><p>As an action, you present your holy symbol and evoke healing energy that can restore 50 hit points.</p><p>Choose any creatures within 30 feet of you, and divide those hit points among them. This feature can restore a creature to no more than half of its hit point maximum. You can't use this feature on an &amp;reference[undead] or a &amp;reference[construct].</p>",
 					"chat": ""
 				},
 				"source": {
@@ -453,7 +487,7 @@
 						"activation": {
 							"type": "action",
 							"value": 1,
-							"condition": "The target cannot be Undead or a Construct",
+							"condition": "The target cannot be &amp;reference[undead] or a &amp;reference[construct]",
 							"override": false
 						},
 						"consumption": {
@@ -744,6 +778,9 @@
 					"description": "",
 					"statuses": [],
 					"flags": {
+						"times-up": {
+							"isPassive": false
+						},
 						"dae": {
 							"selfTarget": false,
 							"selfTargetAlways": false,
@@ -752,6 +789,19 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": []
+						},
+						"ActiveAuras": {
+							"isAura": false,
+							"aura": "None",
+							"radius": "",
+							"alignment": "",
+							"type": "",
+							"ignoreSelf": false,
+							"height": false,
+							"hidden": false,
+							"displayTemp": false,
+							"hostile": false,
+							"onlyOnce": false
 						}
 					},
 					"tint": "#ffffff",
@@ -771,6 +821,23 @@
 					"otherCondition": "",
 					"effectCondition": ""
 				},
+				"midiProperties": {
+					"nodam": false,
+					"fulldam": false,
+					"halfdam": false,
+					"autoFailFriendly": false,
+					"autoSaveFriendly": false,
+					"rollOther": false,
+					"critOther": false,
+					"offHandWeapon": false,
+					"magicdam": false,
+					"magiceffect": false,
+					"concentration": false,
+					"toggleEffect": false,
+					"ignoreTotalCover": false,
+					"noConcentrationCheck": false
+				},
+				"core": {},
 				"dnd5e": {
 					"migratedUses": 1,
 					"migratedProperties": [
@@ -778,6 +845,10 @@
 						"somatic",
 						"concentration"
 					]
+				},
+				"tidy5e-sheet": {
+					"section": "",
+					"actionSection": ""
 				}
 			},
 			"_key": "!actors.items!uszmtXaLOXkYmV8m.ndYu9JR4UyjxCZUS"
@@ -811,6 +882,22 @@
 						},
 						"dnd5e-helpers": {
 							"rest-effect": "Long Rest"
+						},
+						"ActiveAuras": {
+							"isAura": false,
+							"aura": "None",
+							"radius": null,
+							"alignment": "",
+							"type": "",
+							"ignoreSelf": false,
+							"height": false,
+							"hidden": false,
+							"hostile": false,
+							"onlyOnce": false,
+							"displayTemp": false
+						},
+						"core": {
+							"statusId": ""
 						}
 					},
 					"tint": "#ffffff",
@@ -826,6 +913,7 @@
 			],
 			"folder": "90eJtrVwLFIxcWJw",
 			"flags": {
+				"core": {},
 				"midi-qol": {
 					"onUseMacroName": "",
 					"effectActivation": false,
@@ -838,6 +926,27 @@
 					"removeAttackDamageButtons": "default",
 					"otherCondition": ""
 				},
+				"midiProperties": {
+					"nodam": false,
+					"halfdam": false,
+					"fulldam": false,
+					"rollOther": false,
+					"critOther": false,
+					"concentration": false,
+					"magicdam": false,
+					"magiceffect": false,
+					"toggleEffect": false,
+					"ignoreTotalCover": false,
+					"autoFailFriendly": false,
+					"offHandWeapon": false,
+					"autoSaveFriendly": false,
+					"confirmTargets": "default",
+					"noConcentrationCheck": false,
+					"idr": false,
+					"idi": false,
+					"idv": false,
+					"ida": false
+				},
 				"dnd5e": {
 					"riders": {
 						"activity": [],
@@ -847,6 +956,10 @@
 						"vocal",
 						"somatic"
 					]
+				},
+				"tidy5e-sheet": {
+					"section": "",
+					"actionSection": ""
 				}
 			},
 			"system": {
@@ -857,7 +970,7 @@
 				"source": {
 					"custom": "Elkan 5e",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "",
 					"page": "",
 					"license": ""
@@ -1044,6 +1157,27 @@
 							"disableIncapacitated": false,
 							"enableCondition": "",
 							"disableCondition": ""
+						},
+						"ActiveAuras": {
+							"isAura": false,
+							"ignoreSelf": false,
+							"hidden": false,
+							"height": false,
+							"alignment": "",
+							"type": "",
+							"aura": "None",
+							"radius": "",
+							"save": "",
+							"savedc": null,
+							"hostile": false,
+							"onlyOnce": false,
+							"displayTemp": false,
+							"nameOverride": "",
+							"customCheck": "",
+							"wallsBlock": "system"
+						},
+						"core": {
+							"overlay": false
 						}
 					},
 					"changes": [
@@ -1078,6 +1212,7 @@
 			],
 			"folder": "U0k4VGG6bziqf3oH",
 			"flags": {
+				"core": {},
 				"midi-qol": {
 					"onUseMacroName": "",
 					"effectActivation": false,
@@ -1093,6 +1228,27 @@
 					"AoETargetTypeIncludeSelf": true,
 					"autoTarget": "default"
 				},
+				"midiProperties": {
+					"nodam": false,
+					"fulldam": false,
+					"halfdam": false,
+					"rollOther": false,
+					"critOther": false,
+					"magicdam": false,
+					"magiceffect": false,
+					"concentration": false,
+					"toggleEffect": false,
+					"ignoreTotalCover": false,
+					"autoFailFriendly": false,
+					"autoSaveFriendly": false,
+					"offHandWeapon": false,
+					"noConcentrationCheck": false,
+					"confirmTargets": "default",
+					"idr": false,
+					"idi": false,
+					"idv": false,
+					"ida": false
+				},
 				"dnd5e": {
 					"riders": {
 						"activity": [],
@@ -1102,6 +1258,10 @@
 						"vocal",
 						"somatic"
 					]
+				},
+				"tidy5e-sheet": {
+					"section": "",
+					"actionSection": ""
 				}
 			},
 			"system": {
@@ -1112,7 +1272,7 @@
 				"source": {
 					"custom": "elkan5e.com/spells/guiding-bolt",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "",
 					"page": "",
 					"license": ""
@@ -1309,7 +1469,7 @@
 					"onUseMacroName": "",
 					"effectActivation": false,
 					"removeAttackDamageButtons": "default",
-					"itemCondition": "!raceOrType.includes(\"construct\")\n",
+					"itemCondition": "!raceOrType.includes(\"&amp;reference[construct]\")\n",
 					"reactionCondition": "",
 					"otherCondition": "",
 					"effectCondition": "",
@@ -1317,6 +1477,28 @@
 					"AoETargetType": "any",
 					"AoETargetTypeIncludeSelf": true,
 					"autoTarget": "default"
+				},
+				"core": {},
+				"midiProperties": {
+					"nodam": false,
+					"halfdam": false,
+					"fulldam": false,
+					"rollOther": false,
+					"critOther": false,
+					"concentration": false,
+					"magicdam": false,
+					"magiceffect": false,
+					"toggleEffect": false,
+					"autoFailFriendly": false,
+					"autoSaveFriendly": false,
+					"offHandWeapon": false,
+					"ignoreTotalCover": false,
+					"noConcentrationCheck": false,
+					"confirmTargets": "default",
+					"idr": false,
+					"idi": false,
+					"idv": false,
+					"ida": false
 				},
 				"dnd5e": {
 					"riders": {
@@ -1327,6 +1509,10 @@
 						"vocal",
 						"somatic"
 					]
+				},
+				"tidy5e-sheet": {
+					"section": "",
+					"actionSection": ""
 				}
 			},
 			"system": {
@@ -1337,7 +1523,7 @@
 				"source": {
 					"custom": "elkan5e.com/spells/cure-wounds",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "",
 					"page": "",
 					"license": ""
@@ -1465,7 +1651,7 @@
 							"bonus": "@mod"
 						},
 						"name": "",
-						"useConditionText": "!raceOrType.includes(\"construct\")",
+						"useConditionText": "!raceOrType.includes(\"&amp;reference[construct]\")",
 						"effectConditionText": "",
 						"macroData": {
 							"name": "",
@@ -1546,6 +1732,9 @@
 							"nameOverride": "",
 							"customCheck": "",
 							"wallsBlock": "system"
+						},
+						"core": {
+							"overlay": false
 						}
 					},
 					"changes": [
@@ -1592,6 +1781,11 @@
 			],
 			"folder": "Tf2FNuyyu2gEaYOF",
 			"flags": {
+				"dae": {
+					"activeEquipped": false,
+					"alwaysActive": false
+				},
+				"core": {},
 				"midi-qol": {
 					"onUseMacroName": "",
 					"effectActivation": false,
@@ -1605,6 +1799,27 @@
 					"autoTarget": "default",
 					"removeAttackDamageButtons": "default"
 				},
+				"midiProperties": {
+					"nodam": false,
+					"fulldam": false,
+					"halfdam": false,
+					"rollOther": false,
+					"critOther": false,
+					"magicdam": false,
+					"magiceffect": false,
+					"concentration": false,
+					"toggleEffect": false,
+					"autoFailFriendly": false,
+					"autoSaveFriendly": false,
+					"offHandWeapon": false,
+					"ignoreTotalCover": false,
+					"confirmTargets": "default",
+					"noConcentrationCheck": false,
+					"idr": false,
+					"idi": false,
+					"idv": false,
+					"ida": false
+				},
 				"dnd5e": {
 					"riders": {
 						"activity": [],
@@ -1615,6 +1830,10 @@
 						"somatic",
 						"concentration"
 					]
+				},
+				"tidy5e-sheet": {
+					"section": "",
+					"actionSection": ""
 				}
 			},
 			"system": {
@@ -1627,7 +1846,7 @@
 					"page": "",
 					"license": "",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"custom": "elkan5e.com/spells/beacon-of-hope"
 				},
 				"activation": {
@@ -1795,6 +2014,7 @@
 			"effects": [],
 			"folder": "PnZJTE6T4UQY81Pm",
 			"flags": {
+				"core": {},
 				"midi-qol": {
 					"effectActivation": false,
 					"AoETargetType": "any",
@@ -1807,6 +2027,27 @@
 					"reactionCondition": "",
 					"otherCondition": ""
 				},
+				"midiProperties": {
+					"nodam": false,
+					"fulldam": false,
+					"halfdam": false,
+					"rollOther": false,
+					"critOther": false,
+					"magicdam": false,
+					"magiceffect": false,
+					"concentration": false,
+					"toggleEffect": false,
+					"autoFailFriendly": false,
+					"autoSaveFriendly": false,
+					"offHandWeapon": false,
+					"ignoreTotalCover": false,
+					"confirmTargets": "default",
+					"noConcentrationCheck": false,
+					"idr": false,
+					"idi": false,
+					"idv": false,
+					"ida": false
+				},
 				"dnd5e": {
 					"riders": {
 						"activity": [],
@@ -1816,17 +2057,21 @@
 						"vocal",
 						"somatic"
 					]
+				},
+				"tidy5e-sheet": {
+					"section": "",
+					"actionSection": ""
 				}
 			},
 			"system": {
 				"description": {
-					"value": "<p><strong>Healing Spell</strong> </p><p>This spell has no effect on &amp;reference[construct]{constructs}.</p><ul><li><p>Target gains hit points equal to [[/healing 4d6 + @attributes.spellmod]]{4d6 + your spellcasting ability modifier}.*</p></li></ul><p></p><p><strong>*</strong> <strong>Upcasting:</strong> Increase healing by [[/healing 2d6]]{2d6} for each spell level above 5th.</p>",
+					"value": "<p><strong>Healing Spell</strong> </p><p>This spell has no effect on &amp;reference[construct]{constructs}.</p><ul><li><p>Target gains hit points equal to [[/healing 4d6 + @attributes.spellmod]]{4d6 + your spellcasting ability modifier}.*</p></li></ul><p></p><p><strong>* Upcasting:</strong> Increase healing by [[/healing 2d6]]{2d6} for each spell level above 5th.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "Elkan 5e",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "",
 					"page": "",
 					"license": ""
@@ -2017,6 +2262,28 @@
 							"disableIncapacitated": false,
 							"dontApply": false,
 							"showIcon": false
+						},
+						"ActiveAuras": {
+							"isAura": false,
+							"ignoreSelf": false,
+							"hidden": false,
+							"height": false,
+							"alignment": "",
+							"type": "",
+							"aura": "None",
+							"radius": "",
+							"save": "",
+							"savedc": null,
+							"hostile": false,
+							"onlyOnce": false,
+							"time": "None",
+							"displayTemp": false,
+							"nameOverride": "",
+							"customCheck": "",
+							"wallsBlock": "system"
+						},
+						"core": {
+							"statusId": ""
 						}
 					},
 					"changes": [
@@ -2121,6 +2388,24 @@
 					"autoTarget": "default",
 					"removeAttackDamageButtons": "default"
 				},
+				"core": {},
+				"midiProperties": {
+					"confirmTargets": "default",
+					"autoFailFriendly": false,
+					"autoSaveFriendly": false,
+					"critOther": false,
+					"offHandWeapon": false,
+					"magicdam": false,
+					"magiceffect": false,
+					"concentration": false,
+					"noConcentrationCheck": false,
+					"toggleEffect": false,
+					"ignoreTotalCover": false,
+					"idr": false,
+					"idi": false,
+					"idv": false,
+					"ida": false
+				},
 				"dnd5e": {
 					"riders": {
 						"activity": [],
@@ -2132,6 +2417,10 @@
 						"material",
 						"concentration"
 					]
+				},
+				"tidy5e-sheet": {
+					"section": "",
+					"actionSection": ""
 				}
 			},
 			"system": {
@@ -2142,7 +2431,7 @@
 				"source": {
 					"custom": "elkan5e.com/spells/bless",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "",
 					"page": "",
 					"license": ""
@@ -2316,6 +2605,7 @@
 			"effects": [],
 			"folder": "6J3i75lfD1J0xYwA",
 			"flags": {
+				"core": {},
 				"midi-qol": {
 					"effectActivation": false,
 					"itemCondition": "",
@@ -2324,6 +2614,27 @@
 					"effectCondition": "",
 					"rollAttackPerTarget": "default",
 					"removeAttackDamageButtons": "default"
+				},
+				"midiProperties": {
+					"nodam": false,
+					"fulldam": false,
+					"halfdam": false,
+					"rollOther": false,
+					"critOther": false,
+					"magicdam": false,
+					"magiceffect": false,
+					"concentration": false,
+					"toggleEffect": false,
+					"autoFailFriendly": false,
+					"autoSaveFriendly": false,
+					"offHandWeapon": false,
+					"ignoreTotalCover": false,
+					"noConcentrationCheck": false,
+					"confirmTargets": "default",
+					"idr": false,
+					"idi": false,
+					"idv": false,
+					"ida": false
 				},
 				"dnd5e": {
 					"riders": {
@@ -2334,6 +2645,10 @@
 						"vocal",
 						"somatic"
 					]
+				},
+				"tidy5e-sheet": {
+					"section": "",
+					"actionSection": ""
 				}
 			},
 			"system": {
@@ -2344,7 +2659,7 @@
 				"source": {
 					"custom": "elkan5e.com/spells/lesser-restoration",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "",
 					"page": "",
 					"license": ""
@@ -2544,6 +2859,19 @@
 				"dnd5e-helpers": {
 					"rest-effect": "Ignore"
 				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"radius": null,
+					"alignment": "",
+					"type": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false
+				},
 				"times-up": {
 					"isPassive": true
 				}
@@ -2559,6 +2887,7 @@
 		}
 	],
 	"flags": {
+		"core": {},
 		"midi-qol": {
 			"concentration-damage": 0
 		},
@@ -3106,7 +3435,7 @@
 		"source": {
 			"custom": "Elkan 5e",
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
 			"license": ""

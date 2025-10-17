@@ -32,6 +32,9 @@
 			},
 			"transfer": false,
 			"flags": {
+				"core": {
+					"overlay": false
+				},
 				"dae": {
 					"stackable": "none",
 					"durationExpression": "",
@@ -47,6 +50,22 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"showIcon": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
 				}
 			},
 			"tint": "#ffffff",
@@ -62,23 +81,53 @@
 	],
 	"folder": "9nbOVCsoskjugvch",
 	"flags": {
+		"core": {},
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
 		"dnd5e": {
 			"riders": {
 				"activity": [],
 				"effect": []
 			},
 			"migratedUses": 0
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
 		}
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You can throw aside all concern for defense to attack with fierce desperation.</em></p><p><strong>No Action Cost</strong> - Self</p><p><em>Trigger: You make your first attack on your turn.</em></p><ul><li><p>You gain advantage on melee weapon attack rolls during this turn.</p></li><li><p>Attack rolls against you have advantage until your next turn.</p></li></ul>",
+			"value": "<p><em>You can throw aside all concern for defense to attack with fierce desperation.</em></p><p><strong>No Action Cost</strong> - Self</p><p><em>Trigger: You make your first attack on your turn.</em></p><ul><li><p>You gain &amp;reference[advantage] on melee weapon attack rolls during this turn.</p></li><li><p>&amp;reference[Attack rolls] against you have advantage until your next turn.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
 			"custom": "elkan5e.com/barbarian",
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
 			"license": ""

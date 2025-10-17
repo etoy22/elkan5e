@@ -29,6 +29,9 @@
 			"description": "",
 			"statuses": [],
 			"flags": {
+				"times-up": {
+					"isPassive": false
+				},
 				"dae": {
 					"selfTarget": false,
 					"selfTargetAlways": false,
@@ -44,10 +47,30 @@
 					"disableCondition": "",
 					"disableIncapacitated": false
 				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				},
 				"dnd5e": {
 					"riders": {
 						"statuses": []
 					}
+				},
+				"core": {
+					"overlay": false
 				}
 			},
 			"tint": "#ffffff",
@@ -59,14 +82,15 @@
 	],
 	"folder": "D9wKSOgQ6ofmnwrR",
 	"flags": {
+		"core": {},
 		"midiProperties": {
 			"confirmTargets": "default",
 			"autoFailFriendly": false,
 			"autoSaveFriendly": false,
 			"critOther": false,
 			"offHandWeapon": false,
-			"magicdam": true,
-			"magiceffect": true,
+			"magicdam": false,
+			"magiceffect": false,
 			"concentration": false,
 			"noConcentrationCheck": false,
 			"toggleEffect": false,
@@ -75,17 +99,35 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
 		}
 	},
 	"system": {
 		"description": {
-			"value": "<p><span><em>You start a performance, using musical notes or words of power to disrupt mind-influencing effects.</em></span></p><p><span><strong>Reaction</strong> </span>- 6 Creatures (60 ft.) - Magical</p><p>You expend a use of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh]{Bardic Inspiration} to use this ability.</p><p>You can use this ability when a creature is affected by the &amp;Reference[charmed]<span>, &amp;reference[confused], </span>&amp;Reference[frightened], or &amp;reference[goaded] conditions, or when one of those conditions forces a creature to do something or prevents them from doing something.</p><ul><li><p>If<span> the creature just failed a save against the condition, or would normally be able to roll another save to end the effect at the end of their turns (as with a dragon's @UUID[Compendium.elkan5e.elkan5e-creature-features.Item.75G0Pxl3HPWYmRYz]{Frightful Presence}), then you can immediately make a charisma save and add your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh]{bardic inspiration} die to your roll. If you succeed (with the same DC the target rolls against), the target(s) lose the listed conditions. You roll only once, affecting all targets and effects simultaneously.</span></p></li><li><p>A creature must be able to hear you to gain this benefit.</p></li></ul>",
+			"value": "<p><span><em>You start a performance, using musical notes or words of power to disrupt mind-influencing effects.</em></span></p><p><span><strong>Reaction</strong> </span>- 6 Creatures (60 ft.) - Magical</p><p>You expend a use of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh]{Bardic Inspiration} to use this ability.</p><p>You can use this ability when a creature is affected by the &amp;Reference[charmed]<span>, &amp;reference[confused], </span>&amp;Reference[frightened], or &amp;reference[goaded] conditions, or when one of those conditions forces a creature to do something or prevents them from doing something.</p><ul><li><p>If<span> the creature just failed a save against the condition, or would normally be able to roll another save to end the effect at the end of their turns (as with a &amp;reference[dragon]'s @UUID[Compendium.elkan5e.elkan5e-creature-features.Item.75G0Pxl3HPWYmRYz]{Frightful Presence}), then you can immediately make a charisma save and add your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh]{bardic inspiration} die to your roll. If you succeed (with the same DC the target rolls against), the target(s) lose the listed conditions. You roll only once, affecting all targets and effects simultaneously.</span></p></li><li><p>A creature must be able to hear you to gain this benefit.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
 			"custom": "elkan5e.com/feats/countercharm",
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
 			"license": ""
@@ -101,7 +143,10 @@
 		},
 		"requirements": "Feat (Bard Level 8)",
 		"prerequisites": {
-			"level": 8
+			"level": 8,
+			"items": [
+				"bard"
+			]
 		},
 		"properties": [
 			"mgc"

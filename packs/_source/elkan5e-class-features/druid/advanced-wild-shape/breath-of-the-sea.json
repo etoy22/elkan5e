@@ -6,13 +6,13 @@
 	"img": "icons/creatures/fish/fish-bluefin-yellow-blue.webp",
 	"system": {
 		"description": {
-			"value": "<p><strong>Bonus Action</strong> - 6 Creatures (60 ft.) - 1 Hour - Magical</p><ul><li><p>Targets have a swimming speed equal to their walking speed.</p></li><li><p>Targets can breathe underwater.</p></li></ul>",
+			"value": "<p><strong>Bonus Action</strong> - 6 Creatures (60 ft.) - 1 Hour - Magical</p><ul><li><p>Targets have a &reference[swimming]{Swimming} speed equal to their walking speed.</p></li><li><p>Targets can breathe underwater.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
 			"custom": "elkan5e.com/druid",
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
 			"license": ""
@@ -115,7 +115,7 @@
 		"identifier": "",
 		"enchant": {},
 		"prerequisites": {
-			"level": null
+			"level": 5
 		}
 	},
 	"effects": [
@@ -145,10 +145,46 @@
 			"origin": null,
 			"statuses": [],
 			"flags": {
+				"times-up": {
+					"isPassive": false
+				},
+				"dae": {
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"enableCondition": "",
+					"disableCondition": ""
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				},
 				"dnd5e": {
 					"riders": {
 						"statuses": []
 					}
+				},
+				"core": {
+					"overlay": false
 				}
 			},
 			"tint": "#ffffff",
@@ -165,8 +201,8 @@
 			"autoSaveFriendly": false,
 			"critOther": false,
 			"offHandWeapon": false,
-			"magicdam": true,
-			"magiceffect": true,
+			"magicdam": false,
+			"magiceffect": false,
 			"noConcentrationCheck": false,
 			"toggleEffect": false,
 			"ignoreTotalCover": false,
@@ -174,6 +210,26 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"AoETargetType": "any",
+			"autoTarget": "default",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
 		}
 	},
 	"_key": "!items!fOYbPE3EWebPkJoZ"

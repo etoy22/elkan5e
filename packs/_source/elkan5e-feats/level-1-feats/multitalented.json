@@ -6,12 +6,12 @@
 	"img": "icons/skills/trades/textiles-cloth-dye-red.webp",
 	"system": {
 		"description": {
-			"value": "<p><em>Note: This feat can be chosen multiple times.</em></p><p>You gain proficiency with three @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.SySQiDfSWcSRUCFN]{tools} or @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.SySQiDfSWcSRUCFN.JournalEntryPage.wuMEnZz82yY02Dok#vehicles]{vehicles} of your choice.</p><p><strong>Note: You'll need to manually grant your character the proficiencies. This feature is not automated.</strong></p>",
+			"value": "<p><em>Note: This feat can be chosen multiple times.</em></p><p>You gain proficiency with three @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.SySQiDfSWcSRUCFN]{tools} or @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.SySQiDfSWcSRUCFN.JournalEntryPage.wuMEnZz82yY02Dok#vehicles]{vehicles} of your choice.</p>",
 			"chat": ""
 		},
 		"source": {
-			"custom": "elkan5e.com/feats/crafter",
-			"rules": "2024",
+			"custom": "elkan5e.com/feats/multitalented",
+			"rules": "",
 			"revision": 1,
 			"book": "Elkan 5e",
 			"page": "",
@@ -50,7 +50,8 @@
 						"cha": 0
 					},
 					"locked": [],
-					"points": 2
+					"points": 2,
+					"recommendation": null
 				},
 				"value": {
 					"type": "asi"
@@ -58,9 +59,56 @@
 				"level": 0,
 				"title": "",
 				"hint": ""
+			},
+			{
+				"type": "Trait",
+				"_id": "pKfPAy7Onr7waLD1",
+				"configuration": {
+					"allowReplacements": false,
+					"choices": [
+						{
+							"count": 3,
+							"pool": [
+								"tool:*"
+							]
+						}
+					],
+					"grants": [],
+					"mode": "default"
+				},
+				"level": 0,
+				"title": "",
+				"hint": "",
+				"value": {}
 			}
 		]
 	},
 	"effects": [],
+	"flags": {
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"removeAttackDamageButtons": "default",
+			"reactionCondition": "",
+			"otherCondition": ""
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		}
+	},
 	"_key": "!items!VVAO5rqWy2pEFNtd"
 }

@@ -19,6 +19,22 @@
 							"selfTargetAlways": false,
 							"durationExpression": "",
 							"macroRepeat": "none"
+						},
+						"ActiveAuras": {
+							"isAura": false,
+							"radius": null,
+							"aura": "None",
+							"alignment": "",
+							"type": "",
+							"ignoreSelf": false,
+							"height": false,
+							"hidden": false,
+							"hostile": false,
+							"onlyOnce": false,
+							"displayTemp": false
+						},
+						"core": {
+							"statusId": ""
 						}
 					},
 					"changes": [
@@ -70,6 +86,11 @@
 					"alwaysActive": false,
 					"equipActive": true
 				},
+				"dae": {
+					"activeEquipped": false,
+					"alwaysActive": false
+				},
+				"core": {},
 				"midi-qol": {
 					"onUseMacroName": "",
 					"effectActivation": false
@@ -146,6 +167,20 @@
 						"value": false,
 						"altValue": false
 					}
+				},
+				"midiProperties": {
+					"nodam": false,
+					"fulldam": false,
+					"halfdam": false,
+					"rollOther": false,
+					"critOther": false,
+					"magicdam": false,
+					"magiceffect": false,
+					"concentration": false,
+					"toggleEffect": false,
+					"autoFailFriendly": false,
+					"offHandWeapon": false,
+					"ignoreTotalCover": false
 				},
 				"dnd5e": {
 					"migratedUses": 1,
@@ -313,6 +348,11 @@
 					"description": "",
 					"origin": null,
 					"statuses": [],
+					"flags": {
+						"times-up": {
+							"isPassive": false
+						}
+					},
 					"img": "icons/magic/perception/silhouette-stealth-shadow.webp",
 					"type": "base",
 					"system": {},
@@ -338,10 +378,15 @@
 						}
 					]
 				},
+				"dae": {
+					"activeEquipped": false,
+					"alwaysActive": false
+				},
 				"midi-qol": {
 					"onUseMacroName": "",
 					"effectActivation": false
 				},
+				"core": {},
 				"betterRolls5e": {
 					"critRange": {
 						"type": "String",
@@ -420,6 +465,22 @@
 					"min": 0,
 					"max": 0,
 					"environment": ""
+				},
+				"midiProperties": {
+					"nodam": false,
+					"fulldam": false,
+					"halfdam": false,
+					"rollOther": false,
+					"critOther": false,
+					"magicdam": false,
+					"magiceffect": false,
+					"concentration": false,
+					"toggleEffect": false,
+					"ignoreTotalCover": false,
+					"autoFailFriendly": false,
+					"offHandWeapon": false,
+					"autoSaveFriendly": false,
+					"noConcentrationCheck": false
 				},
 				"dnd5e": {
 					"migratedUses": 1,
@@ -586,6 +647,20 @@
 							"transfer": false,
 							"macroRepeat": "none",
 							"specialDuration": []
+						},
+						"ActiveAuras": {
+							"isAura": false,
+							"ignoreSelf": false,
+							"hidden": false,
+							"height": false,
+							"alignment": "",
+							"type": "",
+							"aura": "None",
+							"radius": null,
+							"save": "",
+							"savedc": null,
+							"hostile": false,
+							"onlyOnce": false
 						}
 					},
 					"changes": [],
@@ -627,6 +702,10 @@
 						}
 					],
 					"equipActive": true,
+					"alwaysActive": false
+				},
+				"dae": {
+					"activeEquipped": false,
 					"alwaysActive": false
 				},
 				"betterRolls5e": {
@@ -706,11 +785,27 @@
 					"onUseMacroName": "",
 					"effectActivation": false
 				},
+				"core": {},
 				"enhanced-terrain-layer": {
 					"multiple": 1,
 					"min": 0,
 					"max": 0,
 					"environment": ""
+				},
+				"midiProperties": {
+					"nodam": false,
+					"fulldam": false,
+					"halfdam": false,
+					"rollOther": false,
+					"critOther": false,
+					"magicdam": false,
+					"magiceffect": false,
+					"concentration": false,
+					"toggleEffect": false,
+					"ignoreTotalCover": false,
+					"autoFailFriendly": false,
+					"offHandWeapon": false,
+					"autoSaveFriendly": false
 				},
 				"dnd5e": {
 					"migratedUses": 1,
@@ -722,7 +817,7 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p>You attempt to charm a humanoid you can see within range. It must make a Wisdom saving throw, and does so with advantage if you or your companions are fighting it. If it fails the saving throw, it is Charmed by you until the spell ends or until you or your companions do anything harmful to it. The Charmed creature regards you as a friendly acquaintance. When the spell ends, the creature knows it was Charmed by you.</p>",
+					"value": "<p>You attempt to charm a &amp;reference[humanoid] you can see within range. It must make a Wisdom saving throw, and does so with advantage if you or your companions are fighting it. If it fails the saving throw, it is Charmed by you until the spell ends or until you or your companions do anything harmful to it. The Charmed creature regards you as a friendly acquaintance. When the spell ends, the creature knows it was Charmed by you.</p>",
 					"chat": ""
 				},
 				"source": {
@@ -865,12 +960,33 @@
 			"effects": [
 				{
 					"flags": {
+						"ActiveAuras": {
+							"isAura": false,
+							"radius": null,
+							"aura": "None",
+							"alignment": "",
+							"type": "",
+							"ignoreSelf": false,
+							"height": false,
+							"hidden": false,
+							"hostile": false,
+							"onlyOnce": false,
+							"displayTemp": false
+						},
 						"core": {
 							"statusId": "combat-utility-belt.invisible"
 						},
 						"combat-utility-belt": {
 							"conditionId": "invisible",
 							"overlay": false
+						},
+						"dae": {
+							"selfTarget": false,
+							"selfTargetAlways": false,
+							"stackable": "none",
+							"durationExpression": "",
+							"macroRepeat": "none",
+							"specialDuration": []
 						}
 					},
 					"changes": [
@@ -927,6 +1043,10 @@
 							"_targets": []
 						}
 					]
+				},
+				"dae": {
+					"activeEquipped": false,
+					"alwaysActive": false
 				},
 				"midi-qol": {
 					"onUseMacroName": "",
@@ -1004,6 +1124,21 @@
 						"value": false,
 						"altValue": false
 					}
+				},
+				"core": {},
+				"midiProperties": {
+					"nodam": false,
+					"fulldam": false,
+					"halfdam": false,
+					"rollOther": false,
+					"critOther": false,
+					"magicdam": false,
+					"magiceffect": false,
+					"concentration": false,
+					"toggleEffect": false,
+					"autoFailFriendly": false,
+					"offHandWeapon": false,
+					"ignoreTotalCover": false
 				},
 				"dnd5e": {
 					"migratedUses": 1,
@@ -1337,6 +1472,20 @@
 					"fumbleThreshold": null,
 					"effectActivation": false
 				},
+				"midiProperties": {
+					"nodam": false,
+					"fulldam": false,
+					"halfdam": false,
+					"autoFailFriendly": false,
+					"rollOther": false,
+					"critOther": false,
+					"offHandWeapon": false,
+					"magicdam": false,
+					"magiceffect": false,
+					"concentration": false,
+					"toggleEffect": false,
+					"ignoreTotalCover": false
+				},
 				"dnd5e": {}
 			},
 			"_key": "!actors.items!ODZtWObKUQPRtVYf.tqKiUay23hhVzDDl"
@@ -1347,6 +1496,7 @@
 			"img": "icons/weapons/daggers/dagger-curved-guard-black.webp",
 			"effects": [],
 			"flags": {
+				"core": {},
 				"betterRolls5e": {
 					"quickDamage": {
 						"context": {
@@ -1606,6 +1756,7 @@
 	"effects": [],
 	"folder": "7CxetSc3gdsUyFOc",
 	"flags": {
+		"core": {},
 		"tidy5e-sheet": {
 			"allow-edit": true,
 			"traitsExpanded": true,
@@ -2149,7 +2300,7 @@
 		},
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
 			"license": ""
