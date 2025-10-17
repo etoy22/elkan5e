@@ -408,10 +408,16 @@ async function extractPacks(packName, entryName) {
 				if (entry.system?.materials?.value) entry.system.materials.value = "";
 
 				let filename;
+				const containerMeta = containers[entry._id];
+
 				if (entry._id in folders)
 					filename = path.join(folders[entry._id].path, "_folder.json");
-				else if (entry._id in containers)
-					filename = path.join(containers[entry._id].path, "_container.json");
+				else if (containerMeta) {
+					const containerDir = path.dirname(containerMeta.path);
+					const containerName = path.basename(containerMeta.path);
+					const parentPath = containerDir === "." ? "" : containerDir;
+					filename = path.join(parentPath, `${containerName}.json`);
+				}
 				else {
 					const outputName = slugify(entry.name);
 					const parent = containers[entry.system?.container] ?? folders[entry.folder];
@@ -476,7 +482,7 @@ async function removePacks(packName) {
 
 /**
  * Slugify names for safe file or folder names.
- * Allows folder paths by allowing slashes.
+ * Removes path separators so entries stay in a single directory.
  *
  * @param {string} name - Name to convert to a slug.
  * @returns {string} The slugified name.
@@ -485,7 +491,8 @@ function slugify(name) {
 	return name
 		.toLowerCase()
 		.replace(/'/g, "")
-		.replace(/[^a-z0-9\/]+/gi, " ")
+		.replace(/[\/\\]+/g, " ")
+		.replace(/[^a-z0-9-]+/gi, " ")
 		.trim()
 		.replace(/\s+/g, "-");
 }
