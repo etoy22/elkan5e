@@ -49,7 +49,8 @@
 					"affects": {
 						"choice": false,
 						"count": "",
-						"type": "self"
+						"type": "self",
+						"special": ""
 					},
 					"override": false,
 					"prompt": true
@@ -68,9 +69,127 @@
 				"useConditionText": "",
 				"forceDialog": false,
 				"effectConditionText": "",
-				"name": "",
+				"name": "Light Up",
 				"img": "",
-				"appliedEffects": []
+				"appliedEffects": [
+					"L3W2haymY7EetW1k"
+				]
+			},
+			"SUhCqli2WXbZP724": {
+				"type": "utility",
+				"activation": {
+					"type": "bonus",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "VtNqkAe2qFVBVv7I"
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": "self",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"useConditionText": "",
+				"effectConditionText": "",
+				"name": "Turn off the Light",
+				"useConditionReason": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"_id": "SUhCqli2WXbZP724",
+				"img": "",
+				"appliedEffects": [
+					"VtNqkAe2qFVBVv7I"
+				]
 			}
 		},
 		"uses": {
@@ -106,7 +225,7 @@
 	},
 	"effects": [
 		{
-			"name": "Living Lantern",
+			"name": "Living Lantern (On)",
 			"img": "icons/magic/fire/elemental-fire-humanoid.webp",
 			"origin": "Compendium.elkan5e.elkan5e-ancestries.Item.0yUHgRecCacVW5Jn",
 			"transfer": false,
@@ -156,6 +275,70 @@
 				}
 			},
 			"_key": "!items.effects!0yUHgRecCacVW5Jn.L3W2haymY7EetW1k"
+		},
+		{
+			"name": "Living Lantern (Off)",
+			"img": "icons/magic/fire/elemental-fire-humanoid.webp",
+			"origin": "Compendium.elkan5e.elkan5e-ancestries.Item.0yUHgRecCacVW5Jn",
+			"transfer": false,
+			"type": "base",
+			"system": {},
+			"changes": [],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": null,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [],
+			"flags": {
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": true,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "Enemy",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				}
+			},
+			"_id": "VtNqkAe2qFVBVv7I",
+			"_key": "!items.effects!0yUHgRecCacVW5Jn.VtNqkAe2qFVBVv7I"
 		}
 	],
 	"flags": {

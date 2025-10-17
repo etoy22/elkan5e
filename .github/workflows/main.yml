@@ -239,37 +239,67 @@ jobs:
 
             - name: Prepare Discord payload
               id: prepare_discord_payload
+              env:
+                  RELEASE_NOTES: ${{ steps.read_release_notes.outputs.release_notes }}
+                  VERSION: ${{ needs.version-check.outputs.version }}
+                  MINIMUM: ${{ needs.version-check.outputs.minimum }}
+                  VERIFIED: ${{ needs.version-check.outputs.verified }}
+                  REPO_URL: https://github.com/${{ github.repository }}
               run: |
-                  RELEASE_NOTES="${{ steps.read_release_notes.outputs.release_notes }}"
-                  CLEAN_RELEASE_NOTES=$(echo -e "$RELEASE_NOTES")
-
-                  PAYLOAD=$(jq -n \
-                    --arg title "Elkan 5e Release" \
-                    --arg version "$VERSION" \
-                    --arg compatibility "Core: $MINIMUM +" \
-                    --arg foundry_url "https://foundryvtt.com/packages/elkan5e" \
-                    --arg release_url "$REPO_URL/releases/tag/$VERSION" \
-                    --arg download_url "$REPO_URL/releases/download/$VERSION/module.zip" \
-                    --arg release_notes "$CLEAN_RELEASE_NOTES" \
-                    '{embeds: [{
-                      title: $title,
-                      fields: [
-                        {name: "Version", value: $version, inline: true},
-                        {name: "Compatibility", value: $compatibility, inline: true},
-                        {name: "Foundry Package", value: $foundry_url, inline: false},
-                        {name: "Release Tag", value: $release_url, inline: false},
-                        {name: "Manual Download", value: $download_url, inline: false},
-                        {name: "Release Notes", value: $release_notes, inline: false}
-                      ]
-                    }]}')
-                  echo "$PAYLOAD"
-                  printf '%s' "$PAYLOAD" > discord-payload.json
+                  node <<'NODE'
+                  const fs = require('fs');
+                  const env = process.env;
+                  const releaseNotes = (env.RELEASE_NOTES || '').replace(/\r?\n/g, '\n').trim();
+                  const trimmedNotes = releaseNotes.length > 3900 ? `${releaseNotes.slice(0, 3897)}...` : releaseNotes;
+                  const payload = {
+                    embeds: [
+                      {
+                        title: 'Elkan 5e Release',
+                        fields: [
+                          { name: 'Version', value: env.VERSION || 'unknown', inline: true },
+                          { name: 'Compatibility', value: `Core: ${(env.MINIMUM || 'unknown')} +`, inline: true },
+                          { name: 'Foundry Package', value: 'https://foundryvtt.com/packages/elkan5e', inline: false },
+                          { name: 'Release Tag', value: `${env.REPO_URL}/releases/tag/${env.VERSION}`, inline: false },
+                          { name: 'Manual Download', value: `${env.REPO_URL}/releases/download/${env.VERSION}/module.zip`, inline: false },
+                          { name: 'Release Notes', value: trimmedNotes || 'See release notes artifact.', inline: false }
+                        ]
+                      }
+                    ]
+                  };
+                  fs.writeFileSync('discord-payload.json', JSON.stringify(payload));
+                  NODE
                   echo "payload_path=discord-payload.json" >> $GITHUB_OUTPUT
 
             - name: Post to Discord
               run: |
-                  echo "Posting to Discord..."
-                  curl -H "Content-Type: application/json" -X POST -d @${{ steps.prepare_discord_payload.outputs.payload_path }} "$DISCORD_WEBHOOK"
+                  set -eo pipefail
+                  if [ -z "${DISCORD_WEBHOOK:-}" ]; then
+                    echo "::warning::DISCORD_WEBHOOK secret is not configured; skipping Discord notification."
+                    exit 0
+                  fi
+
+                  payload_path='${{ steps.prepare_discord_payload.outputs.payload_path }}'
+                  echo "Posting to Discord with payload ${payload_path}..."
+
+                  response_file="$(mktemp)"
+                  status="$(curl -sS -H 'Content-Type: application/json' -X POST -d @"${payload_path}" "$DISCORD_WEBHOOK" -o "${response_file}" -w "%{http_code}")"
+
+                  if [ "${status}" -ge 200 ] && [ "${status}" -lt 300 ]; then
+                    echo "Discord webhook responded with HTTP ${status}"
+                    if [ -s "${response_file}" ]; then
+                      echo "Response:"
+                      cat "${response_file}"
+                    fi
+                    rm -f "${response_file}"
+                  else
+                    echo "::error::Discord webhook failed with HTTP ${status}"
+                    if [ -s "${response_file}" ]; then
+                      echo "Response:"
+                      cat "${response_file}"
+                    fi
+                    rm -f "${response_file}"
+                    exit 1
+                  fi
     update-jira:
         runs-on: ubuntu-latest
         needs: [version-check, extract-release-notes, create-github-release]
@@ -278,9 +308,9 @@ jobs:
             JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
             JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
             JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-            JIRA_DRY_RUN: ${{ needs.version-check.outputs.test }}
+            JIRA_DRY_RUN: "false"
             RELEASE_VERSION: ${{ needs.version-check.outputs.version }}
-            RELEASE_URL: https://github.com/${{ github.repository }}/releases/tag/${{ needs.version-check.outputs.version }}
+            RELEASE_URL: ${{ github.ref == 'refs/heads/main' && format('https://github.com/{0}/releases/tag/{1}', github.repository, needs.version-check.outputs.version) || format('https://github.com/{0}/actions/runs/{1}', github.repository, github.run_id) }}
             DEPLOYMENT_ENVIRONMENT_ID: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
             DEPLOYMENT_ENVIRONMENT_NAME: ${{ github.ref == 'refs/heads/main' && 'Production' || 'Staging' }}
             DEPLOYMENT_ENVIRONMENT_TYPE: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
@@ -310,3 +340,4 @@ jobs:
                   DEPLOYMENT_UPDATE_SEQUENCE_NUMBER: ${{ github.run_number }}
                   RELEASE_STATE: ${{ needs.version-check.outputs.test == 'true' && 'unreleased' || 'released' }}
               run: node .github/workflows/scripts/update-jira.mjs
+

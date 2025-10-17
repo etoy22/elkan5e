@@ -1,5 +1,7 @@
 import fs from 'fs';
 
+const stripBold = (line) => line.trim().replace(/^\*\*(.*)\*\*$/, '$1');
+
 const filePath = 'CHANGELOG.md';
 const outputPath = 'release-notes.md';
 
@@ -19,21 +21,22 @@ try {
 	let inClassesSection = false; 
 
 	releaseNotes.forEach((line) => {
-		if (line.startsWith('## ')) {
-			formattedNotes.push(`**${line.slice(3).trim()}**`);
+		const trimmed = line.trim();
+		if (trimmed.startsWith('## ')) {
+			formattedNotes.push(`**${trimmed.slice(3).trim()}**`);
 			inClassesSection = line.toLowerCase().includes('classes');
-		} else if (inClassesSection && line.startsWith('**[')) {
-			formattedNotes.push(`* ${line.slice(2, -3)}`);
-		} else if (inClassesSection && line.startsWith('  -')) {
-			formattedNotes.push(`  *${line.trim().slice(1)}`);
-		} else if (inClassesSection && line.startsWith('-')) {
-			formattedNotes.push(`  *${line.trim().slice(1)}`);
-		} else if (line.startsWith('-')) {
-			formattedNotes.push(`*${line.slice(1)}`);
-		} else if (line.trim() === '') {
+		} else if (inClassesSection && trimmed.startsWith('**')) {
+			formattedNotes.push(`* ${stripBold(trimmed)}`);
+		} else if (inClassesSection && trimmed.startsWith('  -')) {
+			formattedNotes.push(`  *${trimmed.slice(1)}`);
+		} else if (inClassesSection && trimmed.startsWith('-')) {
+			formattedNotes.push(`  *${trimmed.slice(1)}`);
+		} else if (trimmed.startsWith('-')) {
+			formattedNotes.push(`*${trimmed.slice(1)}`);
+		} else if (trimmed === '') {
 			formattedNotes.push('');
 		} else {
-			formattedNotes.push(line);
+			formattedNotes.push(trimmed);
 		}
 	});
 

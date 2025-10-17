@@ -2,7 +2,8 @@ import process from "node:process";
 import { Buffer } from "node:buffer";
 
 function getEnv(name, { required = false, defaultValue = undefined } = {}) {
-	const value = process.env[name];
+	const rawValue = process.env[name];
+	const value = typeof rawValue === "string" ? rawValue.trim() : rawValue;
 	if (!value || value.length === 0) {
 		if (required) {
 			throw new Error(`Environment variable ${name} is required.`);
@@ -18,12 +19,6 @@ function parseBoolean(value) {
 	return ["true", "1", "yes", "y", "on"].includes(normalised);
 }
 
-function uniqueIssueKeys(fromText) {
-	if (!fromText) return [];
-	const matches = fromText.match(/\b[A-Z][A-Z0-9]+-\d+\b/g);
-	return matches ? Array.from(new Set(matches)) : [];
-}
-
 function cleanMultiline(value) {
 	return value ? value.replace(/\r\n/g, "\n").trim() : "";
 }
@@ -32,6 +27,7 @@ async function postJson(url, payload, headers, dryRun) {
 	if (dryRun) {
 		console.log(`::notice::[DRY RUN] Tracking Jira update for ${url}`);
 		console.log(JSON.stringify(payload, null, 2));
+		return;
 	}
 
 	const response = await fetch(url, {
@@ -46,6 +42,11 @@ async function postJson(url, payload, headers, dryRun) {
 
 	if (!response.ok) {
 		const text = await response.text();
+		if (response.status === 401) {
+			console.error(
+				"::error::Jira rejected the request with 401 Unauthorized. Verify JIRA_BASE_URL, JIRA_USER_EMAIL, and JIRA_API_TOKEN secrets and ensure the user has required permissions.",
+			);
+		}
 		throw new Error(`Jira request failed ${response.status} ${response.statusText}: ${text}`);
 	}
 
@@ -78,15 +79,11 @@ async function main() {
 		getEnv("DEPLOYMENT_UPDATE_SEQUENCE_NUMBER", { defaultValue: deploymentSequenceNumber.toString() }),
 	);
 
-	const issueKeys = uniqueIssueKeys(releaseNotes);
-	if (issueKeys.length === 0) {
-		console.log("::notice::No Jira issue keys detected in release notes. Skipping Jira update.");
-		return;
-	}
-
 	const headers = {
 		Authorization: `Basic ${Buffer.from(`${userEmail}:${apiToken}`).toString("base64")}`,
 	};
+
+	const releaseSummary = releaseNotes.split("\n")[0] ?? "";
 
 	const deploymentPayload = {
 		deployments: [
@@ -95,22 +92,20 @@ async function main() {
 				deploymentSequenceNumber,
 				updateSequenceNumber: deploymentUpdateSequenceNumber,
 				displayName: `Elkan 5e ${releaseVersion}`,
-				description: releaseNotes.split("\n")[0] ?? "",
-				issueKeys,
+				description: releaseSummary,
+				issueKeys: [],
+				associations: [],
 				url: pipelineUrl || releaseUrl,
-				pipeline: pipelineId
-					? {
-						id: pipelineId,
-						displayName: pipelineName,
-						url: pipelineUrl || releaseUrl,
-					}
-					: undefined,
+				pipeline: {
+					id: pipelineId,
+					displayName: pipelineName,
+					url: pipelineUrl || releaseUrl,
+				},
 				environment: {
 					id: environmentId,
 					displayName: environmentName,
 					type: environmentType,
 				},
-				associations: issueKeys.map((key) => ({ associationType: "ISSUE", values: [{ issueIdOrKey: key }] })),
 			},
 		],
 	};
@@ -126,13 +121,30 @@ async function main() {
 				status: releaseState,
 				releaseDate: new Date().toISOString(),
 				description: releaseNotes,
-				issueKeys,
+				issueKeys: [],
 			},
 		],
 	};
 
-	await postJson(`${baseUrl}/rest/deployments/0.1/bulk`, deploymentPayload, headers, dryRun);
-	await postJson(`${baseUrl}/rest/release/1.0/bulk`, releasePayload, headers, dryRun);
+	const [deploymentResult, releaseResult] = await Promise.allSettled([
+		postJson(`${baseUrl}/rest/deployments/0.1/bulk`, deploymentPayload, headers, dryRun),
+		postJson(`${baseUrl}/rest/release/1.0/bulk`, releasePayload, headers, dryRun),
+	]);
+
+	const failures = [];
+	if (deploymentResult.status === "rejected") {
+		failures.push(new Error(`Deployment update failed: ${deploymentResult.reason?.message ?? deploymentResult.reason}`));
+	}
+	if (releaseResult.status === "rejected") {
+		failures.push(new Error(`Release update failed: ${releaseResult.reason?.message ?? releaseResult.reason}`));
+	}
+
+	if (failures.length > 0) {
+		for (const failure of failures) {
+			console.error(`::error::${failure.message}`);
+		}
+		throw failures[0];
+	}
 }
 
 main().catch((error) => {
