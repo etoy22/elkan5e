@@ -228,19 +228,30 @@ function cleanPackEntry(data, { clearSourceId = true, ownership = 0 } = {}) {
 	// a flag so it won't be auto-changed again.
 	// Ensure system.identifier exists; preserve existing values without replacement.
 	try {
-		data.system = data.system ?? {};
-		const currentSlug = slugify(String(data.name || ""));
-		const hasId =
-			typeof data.system.identifier === "string" && data.system.identifier.trim().length > 0;
+		if (data.system || typeof data.system === "object") {
+			const currentSlug = slugify(String(data.name || ""));
+			const hasId =
+				typeof data.system.identifier === "string" &&
+				data.system.identifier.trim().length > 0;
 
-		// Only assign a new identifier if one does not already exist
-		if (!hasId && currentSlug) {
-			data.system.identifier = currentSlug;
+			// Only assign a new identifier if one does not already exist
+			if (
+				!hasId &&
+				currentSlug &&
+				(data.type !== "folder" ||
+					data.type !== "script" ||
+					data.pages !== null ||
+					data.results.length() < 0)
+			) {
+				data.system = data.system ?? {};
+				data.system.identifier = currentSlug;
+			}
 		}
 	} catch (err) {
-		logger.warn(`Failed to set identifier for ${data?.name ?? "unknown entry"}: ${err.message}`);
+		logger.warn(
+			`Failed to set identifier for ${data?.name ?? "unknown entry"}: ${err.message}`,
+		);
 	}
-
 }
 
 async function cleanPacks(packName, entryName) {

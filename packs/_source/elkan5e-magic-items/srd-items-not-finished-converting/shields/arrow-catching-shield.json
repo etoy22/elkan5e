@@ -1,0 +1,219 @@
+{
+	"name": "Arrow-Catching Shield",
+	"type": "equipment",
+	"folder": "hwX4V3neWB1EtOYW",
+	"img": "icons/skills/melee/shield-block-fire-orange.webp",
+	"system": {
+		"activities": {
+			"KZLj6yQjI7Ps1KkW": {
+				"type": "utility",
+				"name": "Intercept Attack",
+				"_id": "KZLj6yQjI7Ps1KkW",
+				"activation": {
+					"type": "reaction",
+					"value": null,
+					"override": false,
+					"condition": "an attacker makes a ranged attack roll against a target within 5 feet of you"
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": "You become the target of the ranged attack."
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"units": "ft",
+					"special": "",
+					"value": "5"
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "1",
+						"type": "any",
+						"special": "attack roll made against target"
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"max": ""
+		},
+		"description": {
+			"value": "<p><em>Armor (Large Shield) - Rare (Requires Attunement)</em></p><p>You gain a +2 bonus to &amp;reference[Armor Class] against ranged attack rolls while you wield this Shield. This bonus is in addition to the Shield's normal bonus to AC.</p><p><strong>Reaction</strong></p><p><em>Trigger: Whenever an attacker makes a ranged attack roll against a target within 5 feet of you</em></p><p><strong>Utility</strong></p><ul><li><p>Become the target of the attack instead.</p></li></ul><section><p><strong>Foundry Note</strong></p><p>The <strong>Arrow-Catching Shield</strong> effect is provided for optional use and may be toggled active before a ranged attack roll is made against the wearer.</p></section>",
+			"chat": ""
+		},
+		"identifier": "arrow-catching-shield",
+		"source": {
+			"revision": 1,
+			"rules": "2024",
+			"license": "",
+			"book": "",
+			"page": "",
+			"custom": ""
+		},
+		"identified": true,
+		"unidentified": {
+			"description": "<p><strong>Unidentified.</strong></p><p>Large shields can be made of metal or wood, and provide substantial protection to those carrying them. They typically extend to cover one flank of the creature carrying them, though they are not so large that they hinder movement. Unlike with small shields, the wielder of a large shield has little to no ability to manipulate objects with the shield hand.</p>",
+			"name": "Unidentified Large Shield"
+		},
+		"container": null,
+		"quantity": 1,
+		"weight": {
+			"value": 6,
+			"units": "lb"
+		},
+		"price": {
+			"value": 4000,
+			"denomination": "gp"
+		},
+		"rarity": "rare",
+		"attunement": "required",
+		"attuned": false,
+		"equipped": false,
+		"armor": {
+			"value": 2,
+			"magicalBonus": null,
+			"dex": null
+		},
+		"cover": null,
+		"crewed": false,
+		"hp": {
+			"value": null,
+			"max": null,
+			"dt": null,
+			"conditions": ""
+		},
+		"type": {
+			"value": "shield",
+			"baseItem": "large"
+		},
+		"properties": [
+			"mgc"
+		],
+		"strength": null,
+		"proficient": null
+	},
+	"effects": [
+		{
+			"name": "Arrow-Catching Shield",
+			"img": "icons/skills/melee/shield-block-fire-orange.webp",
+			"origin": "Compendium.elkan5e.elkan5e-magic-items.Item.RB2ACfl0VqlTP7pj",
+			"transfer": true,
+			"_id": "nds83KSHN6L236jW",
+			"type": "base",
+			"system": {},
+			"changes": [
+				{
+					"key": "system.attributes.ac.bonus",
+					"mode": 2,
+					"value": "2",
+					"priority": 20
+				}
+			],
+			"disabled": true,
+			"duration": {
+				"startTime": null,
+				"seconds": null,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "<p>You gain a +2 bonus to &amp;reference[Armor Class] against ranged attack rolls while you wield this Shield. This bonus is in addition to the Shield's normal bonus to AC.</p>",
+			"tint": "#ffffff",
+			"statuses": [],
+			"_key": "!items.effects!RB2ACfl0VqlTP7pj.nds83KSHN6L236jW"
+		}
+	],
+	"flags": {
+		"midiProperties": {
+			"magicdam": true,
+			"magiceffect": true
+		}
+	},
+	"_id": "RB2ACfl0VqlTP7pj",
+	"_key": "!items!RB2ACfl0VqlTP7pj"
+}
