@@ -15,7 +15,7 @@ import {
 } from "./module/classes/monk.mjs";
 import { slicingBlow } from "./module/classes/rogue.mjs";
 import { lifeDrainGraveguard, spectralEmpowerment } from "./module/classes/wizard.mjs";
-import {refs} from "./module/rules/refs.mjs";
+
 import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
 import { conditions, conditionsReady } from "./module/rules/condition.mjs";
 import { language } from "./module/rules/language.mjs";
@@ -23,14 +23,29 @@ import { formating } from "./module/rules/format.mjs";
 import { tools } from "./module/rules/tools.mjs";
 import { weapons } from "./module/rules/weapon.mjs";
 import { scroll } from "./module/rules/scroll.mjs";
+import { refs } from "./module/rules/references.mjs";
+
+import * as Spells from "./module/spells.mjs";
+import * as Feats from "./module/feats.mjs";
+import { skills } from "./module/rules/skills.mjs";
 
 
+// Attach click handler when chat message is rendered
+Hooks.on("renderChatMessage", (message, html) => {
+	if (!message.flags?.elkan5e?.poll) return;
 
+	html.find(".elkan5e-poll-btn").on("click", (ev) => {
+		ev.preventDefault();
+		const url = ev.currentTarget.dataset.url || POLL_URL;
+		if (url) window.open(url, "_blank", "noopener");
+	});
+});
 
 Hooks.once("init", async () => {
 	try {
 		console.log("Elkan 5e | Initializing Elkan 5e");
 		await gameSettingRegister();
+
 		initWarlockSpellSlot();
 
 		// Initialize rule systems
@@ -39,8 +54,8 @@ Hooks.once("init", async () => {
 		weapons();
 		armor();
 		language();
-		scroll();
 		formating();
+		scroll();
 		skills();
 		refs();
 	} catch (error) {
@@ -182,7 +197,3 @@ globalThis.elkan5e = {
 		},
 	},
 };
-
-
-
-
