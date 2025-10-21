@@ -136,7 +136,9 @@ export async function gameSettingRegister() {
 
 
 export async function gameSettingsMigrate() {
-	const oldValue = game.settings.storage.get("world")._source.find(s => s.key === `${MODULE_ID}.tools`).value;
+	const oldTools = game.settings.storage.get("world")._source.find(s => s.key === `${MODULE_ID}.tools`)
+	if (!oldValue) return;
+	const oldValue = oldTools.value;
 	
 	if ((oldValue === "false" || oldValue === false || oldValue === "true" || oldValue === true) && !game.settings.get(MODULE_ID, "toolsMigration")) {
 		console.log(`Elkan 5e | Migrating setting \"tools\" from to new settings`);
