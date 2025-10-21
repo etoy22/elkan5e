@@ -1,4 +1,4 @@
-import { gameSettingRegister } from "./module/gameSettings/gameSettingRegister.mjs";
+import { gameSettingRegister, gameSettingsMigrate } from "./module/gameSettings/gameSettingRegister.mjs";
 import { startDialog } from "./module/gameSettings/dialog.mjs";
 import { initWarlockSpellSlot } from "./module/classes/warlock.mjs";
 import { secondWind } from "./module/classes/fighter.mjs";
@@ -87,7 +87,6 @@ Hooks.once("init", async () => {
 	try {
 		console.log("Elkan 5e | Initializing Elkan 5e");
 		await gameSettingRegister();
-
 		initWarlockSpellSlot();
 
 		// Initialize rule systems
@@ -111,6 +110,7 @@ Hooks.once("init", async () => {
 
 Hooks.once("ready", () => {
 	try {
+		gameSettingsMigrate();
 		conditionsReady();
 		startDialog();
 	} catch (error) {

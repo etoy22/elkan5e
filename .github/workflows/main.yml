@@ -272,8 +272,34 @@ jobs:
 
             - name: Post to Discord
               run: |
-                  echo "Posting to Discord..."
-                  curl -H "Content-Type: application/json" -X POST --data-binary @${{ steps.prepare_discord_payload.outputs.payload_path }} "$DISCORD_WEBHOOK"
+                  set -eo pipefail
+                  if [ -z "${DISCORD_WEBHOOK:-}" ]; then
+                    echo "::warning::DISCORD_WEBHOOK secret is not configured; skipping Discord notification."
+                    exit 0
+                  fi
+
+                  payload_path='${{ steps.prepare_discord_payload.outputs.payload_path }}'
+                  echo "Posting to Discord with payload ${payload_path}..."
+
+                  response_file="$(mktemp)"
+                  status="$(curl -sS -H 'Content-Type: application/json' -X POST -d @"${payload_path}" "$DISCORD_WEBHOOK" -o "${response_file}" -w "%{http_code}")"
+
+                  if [ "${status}" -ge 200 ] && [ "${status}" -lt 300 ]; then
+                    echo "Discord webhook responded with HTTP ${status}"
+                    if [ -s "${response_file}" ]; then
+                      echo "Response:"
+                      cat "${response_file}"
+                    fi
+                    rm -f "${response_file}"
+                  else
+                    echo "::error::Discord webhook failed with HTTP ${status}"
+                    if [ -s "${response_file}" ]; then
+                      echo "Response:"
+                      cat "${response_file}"
+                    fi
+                    rm -f "${response_file}"
+                    exit 1
+                  fi
     update-jira:
         runs-on: ubuntu-latest
         needs: [version-check, extract-release-notes, create-github-release]
@@ -282,9 +308,9 @@ jobs:
             JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
             JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
             JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-            JIRA_DRY_RUN: ${{ needs.version-check.outputs.test }}
+            JIRA_DRY_RUN: "false"
             RELEASE_VERSION: ${{ needs.version-check.outputs.version }}
-            RELEASE_URL: https://github.com/${{ github.repository }}/releases/tag/${{ needs.version-check.outputs.version }}
+            RELEASE_URL: ${{ github.ref == 'refs/heads/main' && format('https://github.com/{0}/releases/tag/{1}', github.repository, needs.version-check.outputs.version) || format('https://github.com/{0}/actions/runs/{1}', github.repository, github.run_id) }}
             DEPLOYMENT_ENVIRONMENT_ID: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
             DEPLOYMENT_ENVIRONMENT_NAME: ${{ github.ref == 'refs/heads/main' && 'Production' || 'Staging' }}
             DEPLOYMENT_ENVIRONMENT_TYPE: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
