@@ -94,7 +94,7 @@ test("notify-discord job publishes release details to Discord", () => {
 	assert.ok(postStep.includes("set -eo pipefail"), "post step should enable pipefail");
 	assert.ok(
 		postStep.includes(
-			"curl -sS -H 'Content-Type: application/json' -X POST -d @\"${payload_path}\" \"$DISCORD_WEBHOOK\"",
+			'curl -sS -H \'Content-Type: application/json\' -X POST -d @"${payload_path}" "$DISCORD_WEBHOOK"',
 		),
 		"post step should invoke curl with payload and webhook",
 	);
