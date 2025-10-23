@@ -134,7 +134,7 @@ export async function gameSettingsMigrate() {
 		(oldValue === "false" || oldValue === false || oldValue === "true" || oldValue === true) &&
 		!game.settings.get(MODULE_ID, "toolsMigration")
 	) {
-		console.log(`Elkan 5e | Migrating setting \"tools\" from to new settings`);
+		console.log(`Elkan 5e | Migrating setting "tools" from to new settings`);
 		let convertedValue = 0;
 		if (oldValue === "false" || oldValue === false) {
 			convertedValue = 2;
