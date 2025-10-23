@@ -16,8 +16,8 @@ export function tools() {
 		"string",
 		"wind",
 		"vocal",
-		"fasion"
-	]
+		"fashion",
+	];
 	const TOOLS_TO_REMOVE_LEGACY = [
 		"carpenter",
 		"card",
@@ -34,7 +34,7 @@ export function tools() {
 		"string",
 		"wind",
 		"vocal",
-		"fasion"
+		"fashion",
 	];
 
 	const TOOLS_TO_REMOVE = [
@@ -60,10 +60,8 @@ export function tools() {
 		"lyre",
 		"panflute",
 		"shawm",
-		"viol"
+		"viol",
 	];
-
-
 
 	const TOOLS = {
 		alchemist: { id: "Compendium.elkan5e.elkan5e-equipment.Item.5TRgfcXqzHRvcYql" },
@@ -80,7 +78,7 @@ export function tools() {
 		disg: { id: "Compendium.elkan5e.elkan5e-equipment.Item.ArsBY1Z7YMKYCWp5" },
 		drum: { id: "Compendium.elkan5e.elkan5e-equipment.Item.VLTPhQqTAOk2LPHW" },
 		dulcimer: { id: "Compendium.elkan5e.elkan5e-equipment.Item.v72QLYutEG6w5ZRI" },
-		fasion: { id: "Compendium.elkan5e.elkan5e-equipment.Item.tRhjq67DVUwHu63D" },
+		fashion: { id: "Compendium.elkan5e.elkan5e-equipment.Item.tRhjq67DVUwHu63D" },
 		flute: { id: "Compendium.elkan5e.elkan5e-equipment.Item.uDJgqlZsYrqLrNEX" },
 		forg: { id: "Compendium.elkan5e.elkan5e-equipment.Item.dFa31G5pfZ3FGcjk" },
 		game: { id: "Compendium.elkan5e.elkan5e-equipment.Item.xC669rfIiGBpAALC" },
@@ -102,43 +100,108 @@ export function tools() {
 		thief: { id: "Compendium.elkan5e.elkan5e-equipment.Item.LMnHshpVe3ciVIwF" },
 		tinker: { id: "Compendium.elkan5e.elkan5e-equipment.Item.2Yeb51C04CmAhbsv" },
 		viol: { id: "Compendium.elkan5e.elkan5e-equipment.Item.rrNz3sZQQdb8ygRW" },
-		woodcarver: { id: "Compendium.elkan5e.elkan5e-equipment.Item.FDsEsGSSPWhqwjlE" }
+		woodcarver: { id: "Compendium.elkan5e.elkan5e-equipment.Item.FDsEsGSSPWhqwjlE" },
 	};
 
 	const SRD_TOOL_TYPES = {
-		alchemist: "art", brewer: "art", calligrapher: "art", carpenter: "art", cartographer: "art", cobbler: "art",
-		cook: "art", glassblower: "art", jeweler: "art", leatherworker: "art", mason: "art", painter: "art",
-		potter: "art", smith: "art", tinker: "art", weaver: "art", woodcarver: "art",
-		dice: "game", dragonchess: "game", card: "game", threedragonante: "game",
-		bagpipes: "instrument", drum: "instrument", dulcimer: "instrument", flute: "instrument", lute: "instrument", lyre: "instrument",
-		horn: "instrument", panflute: "instrument", shawm: "instrument", viol: "instrument",
-		disg: "", forg: "", herb: "", navg: "", pois: "", thief: ""
+		alchemist: "art",
+		brewer: "art",
+		calligrapher: "art",
+		carpenter: "art",
+		cartographer: "art",
+		cobbler: "art",
+		cook: "art",
+		glassblower: "art",
+		jeweler: "art",
+		leatherworker: "art",
+		mason: "art",
+		painter: "art",
+		potter: "art",
+		smith: "art",
+		tinker: "art",
+		weaver: "art",
+		woodcarver: "art",
+		dice: "game",
+		dragonchess: "game",
+		card: "game",
+		threedragonante: "game",
+		bagpipes: "instrument",
+		drum: "instrument",
+		dulcimer: "instrument",
+		flute: "instrument",
+		lute: "instrument",
+		lyre: "instrument",
+		horn: "instrument",
+		panflute: "instrument",
+		shawm: "instrument",
+		viol: "instrument",
+		disg: "",
+		forg: "",
+		herb: "",
+		navg: "",
+		pois: "",
+		thief: "",
 	};
 
 	const LEGACY_TOOL_TYPES = {
-		painter: "art", sculpt: "art",
-		alchemist: "craft", brewer: "craft", calligrapher: "craft", herb: "craft", jeweler: "craft", leatherworker: "craft", mason: "craft",
-		pois: "craft", smith: "craft", tailor: "craft", tinker: "craft", woodcarver: "craft",
-		disg: "explore", navg: "explore", thief: "explore",
-		forg: "", game: ""
+		painter: "art",
+		sculpt: "art",
+		alchemist: "craft",
+		brewer: "craft",
+		calligrapher: "craft",
+		herb: "craft",
+		jeweler: "craft",
+		leatherworker: "craft",
+		mason: "craft",
+		pois: "craft",
+		smith: "craft",
+		tailor: "craft",
+		tinker: "craft",
+		woodcarver: "craft",
+		disg: "explore",
+		navg: "explore",
+		thief: "explore",
+		forg: "",
+		game: "",
 	};
 
 	const ELKAN_TOOL_TYPES = {
-		disg: "art", painter: "art", sculpt: "art",
-		brass: "music", keyboard: "music", percussion: "music", string: "music", wind: "music", vocal: "music",
+		disg: "art",
+		painter: "art",
+		sculpt: "art",
+		brass: "music",
+		keyboard: "music",
+		percussion: "music",
+		string: "music",
+		wind: "music",
+		vocal: "music",
 
 		// Craft
-		alchemist: "craft", calligrapher: "craft", cook: "craft", jeweler: "craft", leatherworker: "craft", mason: "craft", pois: "craft",
-		smith: "craft", tinker: "craft", woodcarver: "craft",
-		game: "", navg: "", thief: ""
+		alchemist: "craft",
+		calligrapher: "craft",
+		cook: "craft",
+		jeweler: "craft",
+		leatherworker: "craft",
+		mason: "craft",
+		pois: "craft",
+		smith: "craft",
+		tinker: "craft",
+		woodcarver: "craft",
+		game: "",
+		navg: "",
+		thief: "",
 	};
 
 	function getToolType(key, toolSetting) {
 		switch (toolSetting) {
-			case 2: return SRD_TOOL_TYPES[key] ?? "";
-			case 1: return LEGACY_TOOL_TYPES[key] ?? "";
-			case 0: return ELKAN_TOOL_TYPES[key] ?? "";
-			default: return "";
+			case 2:
+				return SRD_TOOL_TYPES[key] ?? "";
+			case 1:
+				return LEGACY_TOOL_TYPES[key] ?? "";
+			case 0:
+				return ELKAN_TOOL_TYPES[key] ?? "";
+			default:
+				return "";
 		}
 	}
 
@@ -150,7 +213,7 @@ export function tools() {
 		const uuid = value.id;
 		if (!uuid) continue;
 
-		fromUuid(uuid).then(item => {
+		fromUuid(uuid).then((item) => {
 			if (!item) return;
 			const desiredType = getToolType(key, TOOL_SETTING);
 			const currentType = foundry.utils.getProperty(item, "system.type.value") ?? "";
@@ -164,7 +227,8 @@ export function tools() {
 	// ------------------------------
 	// APPLY CONFIG CHANGES BY SETTING
 	// ------------------------------
-	if (TOOL_SETTING === 0) { // Elkan Tools
+	if (TOOL_SETTING === 0) {
+		// Elkan Tools
 		CONFIG.DND5E.toolTypes.craft = "Crafting Tools";
 		CONFIG.DND5E.toolProficiencies.craft = "Crafting Tools";
 		delete CONFIG.DND5E.toolTypes.game;
@@ -172,7 +236,8 @@ export function tools() {
 		for (const tool of TOOLS_TO_REMOVE) delete CONFIG.DND5E.tools[tool];
 	}
 
-	if (TOOL_SETTING === 1) { // Legacy Tools
+	if (TOOL_SETTING === 1) {
+		// Legacy Tools
 		CONFIG.DND5E.toolTypes.craft = "Crafting Tools";
 		CONFIG.DND5E.toolTypes.explore = "Exploration Tools";
 		CONFIG.DND5E.toolProficiencies.craft = "Crafting Tools";
@@ -182,7 +247,8 @@ export function tools() {
 		for (const tool of TOOLS_TO_REMOVE_LEGACY) delete CONFIG.DND5E.tools[tool];
 	}
 
-	if (TOOL_SETTING === 2) { // SRD Tools
+	if (TOOL_SETTING === 2) {
+		// SRD Tools
 		for (const tool of TOOLS_TO_REMOVE_SRD) delete CONFIG.DND5E.tools[tool];
 	}
-};
+}

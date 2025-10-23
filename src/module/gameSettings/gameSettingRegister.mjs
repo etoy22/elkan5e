@@ -4,15 +4,6 @@ export async function gameSettingRegister() {
 	// Convert Game settings
 
 	//Set game settings
-	game.settings.register(MODULE_ID, "poll", {
-		name: "elkan5e.dialog.name",
-		hint: "elkan5e.dialog.hint",
-		scope: "client",
-		config: false,
-		type: Boolean,
-		default: false,
-	});
-
 	game.settings.register(MODULE_ID, "dialogShown", {
 		name: "elkan5e.dialog.name",
 		hint: "elkan5e.dialog.hint",
@@ -134,25 +125,26 @@ export async function gameSettingRegister() {
 	});
 }
 
-
 export async function gameSettingsMigrate() {
 	const worldSettings = game.settings.storage.get("world");
-	const oldValue = worldSettings?._source?.find(s => s.key === `${MODULE_ID}.tools`)?.value;
+	const oldValue = worldSettings?._source?.find((s) => s.key === `${MODULE_ID}.tools`)?.value;
 	if (oldValue === undefined) return;
 
-
-	if ((oldValue === "false" || oldValue === false || oldValue === "true" || oldValue === true) && !game.settings.get(MODULE_ID, "toolsMigration")) {
+	if (
+		(oldValue === "false" || oldValue === false || oldValue === "true" || oldValue === true) &&
+		!game.settings.get(MODULE_ID, "toolsMigration")
+	) {
 		console.log(`Elkan 5e | Migrating setting \"tools\" from to new settings`);
 		let convertedValue = 0;
 		if (oldValue === "false" || oldValue === false) {
 			convertedValue = 2;
-		}
-		else if (oldValue === "true" || oldValue === true) {
+		} else if (oldValue === "true" || oldValue === true) {
 			convertedValue = 1;
 		}
-		console.log(`Elkan 5e | Migrating setting "tools" from boolean to number (${oldValue} -> ${convertedValue})`);
+		console.log(
+			`Elkan 5e | Migrating setting "tools" from boolean to number (${oldValue} -> ${convertedValue})`,
+		);
 		await game.settings.set(MODULE_ID, "tool", convertedValue);
 		await game.settings.set(MODULE_ID, "toolsMigration", true);
 	}
-
 }
