@@ -1,5 +1,58 @@
 # Changelog
 
+# v1.13.4
+
+## Bug Fixes
+
+- Cover status now work appropriately.
+- Fixed Adantage and Disadvantage Conditions.
+
+## Ancestry
+
+- Genasi now properly count as elementals.
+
+## Conditions
+- Blinded Condition no longer affects Tremorsense and Blindsight.
+
+## Equipment
+
+- Removed redundant dart and torch class equipment bundles from the compendium.
+- Corrected Padded Armor to AC 11 to match the Elkan 5e gear rules.
+
+## Feats
+
+- _[Phantom Steed](https://www.elkan5e.com/feat/phantom-steed)_ now creates a summoned creature and includes a dedicated summon entry for automation.
+
+## Game Rules
+
+- Replaced the Tools setting with Elkan, Legacy, and SRD list options and added an automatic migration from the old boolean flag.
+- Overhauled the tool configuration to swap entire tool lists (including the legacy list that mirrors the previous behavior), align the default list with the new crafting rules, clean up legacy entries, and retag compendium tool items so their types match the selected list.
+- Reworked the Invisible condition so advantage/disadvantage now depends on whether creatures can actually see each other, and automatically set midi-qol's invisibility optional rule to vision-based handling.
+- Updated condition handling so cover effects migrate into the condition list with exclusive groups, ordering, and cover bonuses applied automatically.
+- Cover statuses now include exclusive grouping.
+- Advantage and Disadvantage statuses are now mutually exclusive.
+- Obscured statuses are now mutually exclusive.
+
+## Spells
+
+- Added the _[Barrier](https://www.elkan5e.com/spells/barrier)_ cantrip to the sorcerer, wizard, and warlock spell lists.
+
+## Monsters
+
+- Added mount stat blocks.
+- Added Unique Phantom Steed block.
+
+## Misc
+
+- Standardized class feature reference macros across the module for consistent automation.
+- Class and subclass features now rely on reference macros for conditions, damage types, and keyword tooltips to keep automation aligned.
+- Added localized strings for the new tool list options and introduced a README for the project.
+- Standardized descriptions to the streamlined reference macro format, removing redundant headers and tagging keywords.
+
+## UI
+
+- Added a "Become a Patron" button to the modules list.
+
 # v1.13.3
 
 ## Bug Fixes
@@ -55,7 +108,7 @@
 
 # v1.13.2.1
 
-# Bug Fix
+## Bug Fixes
 
 - Fixed issue where there was 2 copies of engineering
 
@@ -77,7 +130,7 @@ All classes now provide starter equipment containing mundane items.
 
 **[Barbarian](https://www.elkan5e.com/barbarian)**
 
-- Bloodrage
+- Bloodrager
     - Updated Wild bloodrager to now use _[Chromatic Orb](https://www.elkan5e.com/spell/chromatic-orb)_
     - Also made it so that you can rename your spells and not run into issues.
 
@@ -119,11 +172,13 @@ All classes now provide starter equipment containing mundane items.
 
 # v1.13.1.2
 
-- Fix issue with error from left over code
+## Bug Fixes
+
+- Fixed a startup error caused by leftover code.
 
 # v1.13.1.1
 
-- Fix so that the poll isn't spammed on screen
+## Bug Fixes
 
 # v1.13.1
 
@@ -159,7 +214,7 @@ All classes now provide starter equipment containing mundane items.
 
 - Added and reworked CR 0 creatures for familiars
 
-# Equipment
+## Equipment
 
 - Added Healing Potions
 - Added Mana Potions
@@ -179,13 +234,15 @@ All classes now provide starter equipment containing mundane items.
 - Protection from Curses now affects up to 6 creatures
 - Clarified that you know the relative position with Locate Creature
 
-# Misc
+## Misc
 
 - All Saves now have the ability to simply click on them and roll and GMs now have the ability to request a roll simply from the description
 
 # v1.13.0.5
 
-Fix to auto release
+## Misc
+
+- Adjusted the release automation job.
 
 # v1.13.0.4
 
@@ -205,20 +262,25 @@ Fix to auto release
 
 # v1.13.0.3
 
-Bug fix for Barbarian Defense so that it calculates correctly when not wearing armor and only runs once regardless of amount of GMs
-To look at release information look [here](https://github.com/etoy22/elkan5e/releases/tag/v1.13.0)
+## Bug Fixes
+
+- Fixed Barbarian Defense so it calculates correctly while unarmored and only runs once regardless of how many GMs are present; see the [v1.13.0 release notes](https://github.com/etoy22/elkan5e/releases/tag/v1.13.0) for additional details.
 
 # v1.13.0.2
 
-Bug fix for release to look at release information look [here](https://github.com/etoy22/elkan5e/releases/tag/v1.13.0)
+## Bug Fixes
+
+- Patched the v1.13.0 release package; see the [release notes](https://github.com/etoy22/elkan5e/releases/tag/v1.13.0) for context.
 
 # v1.13.0.1
 
-Bug fix for release to look at release information look [here](https://github.com/etoy22/elkan5e/releases/tag/v1.13.0)
+## Bug Fixes
+
+- Addressed earlier release packaging issues; see the [v1.13.0 release notes](https://github.com/etoy22/elkan5e/releases/tag/v1.13.0) for details.
 
 # v1.13.0
 
-## **IMPORTANT**
+## Misc
 
 - A new popup will appear on first load of Elkan, allowing you to migrate all your features. You can access it again anytime from **Elkan Settings**.
 - This system will still work if you rename the file, as long as the identifier hasn’t been changed. The only thing that might be lost is any changes made to the description.
@@ -402,7 +464,7 @@ Bug fix for release to look at release information look [here](https://github.co
 - Cover was previously listed twice under conditions — now fixed
 - Celestial Warlock's Heavenly Aspect feature has been corrected
 
-## Ancestry/Background
+## Ancestry
 
 - Flagged Soul Gem and Inorganic Form as Ancestry Features
 - Dwarf darkvision increased to 120 ft.
@@ -890,7 +952,7 @@ Bug fix for release to look at release information look [here](https://github.co
 
 # v1.12.18.1
 
-## Bug Fix
+## Bug Fixes
 
 - to get the code to work
 
@@ -1043,7 +1105,7 @@ Just updated version to work with the DND5E.
 
 - New Subclass Fey Patron
 
-# Spells
+## Spells
 
 - [Blink](https://www.elkan5e.com/spells/blink)
 - [Rend Vigor](https://www.elkan5e.com/spells/rend-vigor) now automated and upcasting does more targets
@@ -1130,7 +1192,7 @@ Just updated version to work with the DND5E.
 
 # v1.12.14
 
-## **Breaking Change**
+## Misc
 
 **Existing characters using Elkan 5e will need to be recreated to work with this update. Due to extensive changes, many old features were incompatible with v4 of DND and had to be recreated from scratch. All the new features now use the NEW Activities system.**
 
@@ -1390,7 +1452,7 @@ Stating the previous changes as they were testing updates
 
 # v1.12.13
 
-## **Breaking Change**
+## Misc
 
 **Existing characters using Elkan 5e will need to be recreated to work with this update. Due to extensive changes, many old features were incompatible with v4 of DND and had to be recreated from scratch. All the new features now use the NEW Activities system.**
 
@@ -1441,7 +1503,7 @@ Stating the previous changes as they were testing updates
 
 # v1.12.12
 
-## **Breaking Change**
+## Misc
 
 **Existing characters using Elkan 5e will need to be recreated to work with this update. Due to extensive changes, many old features were incompatible with v4 of DND and had to be recreated from scratch. All the new features now use the NEW Activities system.**
 
@@ -1492,7 +1554,7 @@ Rename Module 'Elkan 5e Automated Content'
 
 # v1.12.9
 
-## **Breaking Change**
+## Misc
 
 **Existing characters using Elkan 5e will need to be recreated to work with this update. Due to extensive changes, many old features were incompatible with v4 of DND and had to be recreated from scratch. All the new features now use the NEW Activities system.**
 
@@ -2070,11 +2132,11 @@ Made subclass names consistent in formatting
 - Cleave has been updated
 - Find Steed has become a Paladin Feat
 
-## Features
+## Misc
 
 - Standardized text for upcasting
 
-## Journals
+## Misc
 
 - Medicine Journal now has its missing text
 
@@ -2161,7 +2223,7 @@ Made subclass names consistent in formatting
 - Added a version of Combat Maneuvers with a lower level requirement for Fighters
 - Removed Supreme Might Feat
 
-## Features
+## Misc
 
 - Clicking Ancestry, Background and Class on character sheet now gives Elkan stuff
 - Changed how we do resource consumption to work with the new update since its supported by default
@@ -2176,7 +2238,7 @@ Made subclass names consistent in formatting
         - Hunter's Prey
         - Improved Fighting Style
 
-## Journals
+## Misc
 
 - Fix links to summary of changes at top of class items
 - Fixed linking to the surprised rule
@@ -2195,7 +2257,7 @@ Made subclass names consistent in formatting
 - Emergency Bug Fix
     - Temporarily put () around the damage in Dragonbreath, Sneak attack, precision attacks as it resolves a bug in the code
 
-## v1.11.6.2
+# v1.11.6.2
 
 ## Backgrounds
 
@@ -2243,11 +2305,11 @@ Made subclass names consistent in formatting
     - Fixed major error causing things not to load
         - Did the wrong type of push on Feature Type
 
-## v1.11.6.1
+# v1.11.6.1
 
 - Reverted attacks of opportunity to no longer trigger on spellcasting
 
-## v1.11.6
+# v1.11.6
 
 - Action
     - Features now have
@@ -2284,7 +2346,7 @@ Made subclass names consistent in formatting
     - New [Vine Lash](https://www.elkan5e.com/spells/vine-lash)
     - Wizards have lost [Misty Step](https://www.elkan5e.com/spells/misty-step) and now requires somatic Components
 
-## v1.11.5
+# v1.11.5
 
 - Character
     - Characters now get ASI and feats at level 4, 8, 12 and 16
@@ -2345,7 +2407,7 @@ Made subclass names consistent in formatting
     - Martial Arts now works with two-handed weapons, but not weapons with the heavy tag (allowing the adjusted quarterstaff and the shortbow and light crossbow)
   **Note that classes may need to re-added to existing player characters (especially rogue) for new features to work**
 
-## v1.11.4
+# v1.11.4
 
 - Actions
     - Applied the new terms that were put in last update
@@ -2372,11 +2434,11 @@ Made subclass names consistent in formatting
     - Some spells now grant spells to cast at-will while concentrating for automation purposes
     - Augury now explains why it has an active effect
 
-## v1.11.3.1
+# v1.11.3.1
 
 - Emegency Update to Fix the program version control issue
 
-## v1.11.3
+# v1.11.3
 
 - Actions
     - Added two new terms for when abilities occur
@@ -2404,7 +2466,7 @@ Made subclass names consistent in formatting
 - Subclasses
     - [Shadowdancer](https://www.elkan5e.com/monk) Monk now exists
 
-## v1.11.2
+# v1.11.2
 
 - Ancestries
     - Breath Weapons:
@@ -2486,7 +2548,7 @@ Made subclass names consistent in formatting
     - Some 2nd level spells have been updated
     - Changed how spells were formatted
 
-## v1.11.1
+# v1.11.1
 
 - Foundry
     - Fixes
@@ -2515,7 +2577,7 @@ Made subclass names consistent in formatting
     - Added Spell Components as a loot type
     - Added Maneuvers as a subtype of Feats
 
-## v1.11.0
+# v1.11.0
 
 - Changing style
     - Module version of module numbers where vX.Y.Z
@@ -2529,7 +2591,7 @@ Made subclass names consistent in formatting
       - Bardic Inspiration Class Features now consume uses of a meta-resource and are now automatically linked to do this properly
       - Fixed spelling in Changelog
 
-## v1.2.10
+# v1.2.10
 
 - Foundry
     - Deflect Missiles [Throw Back] Added
@@ -2537,7 +2599,7 @@ Made subclass names consistent in formatting
     - Removed redundant text explaining how to automate features
     - Fixed broken updates
 
-## v1.2.9
+# v1.2.9
 
 - Foundry Updates
     - Addition/Changes
@@ -2575,7 +2637,7 @@ Made subclass names consistent in formatting
 - Code Updates
     - Foundry Class Features that consume uses of a meta-resource are now automatically linked to do this properly
 
-## v1.2.8
+# v1.2.8
 
 - Foundry Updates
     - [Dragon Origin](https://www.elkan5e.com/sorcerer) added Sorcerer Subclass
@@ -2597,7 +2659,7 @@ Made subclass names consistent in formatting
     - Changed js files to mjs
     - Cleaned up Github tags so there are no more 1.1.2-Fixed
 
-## v1.2.7
+# v1.2.7
 
 - Added Missing Conditions (Muted and Dazed)
 - Fixed Merge Error that occurred
@@ -2622,7 +2684,7 @@ Made subclass names consistent in formatting
 - Expertise should no longer reference tools
 - Added small shields to starting equipment options for bards, rogues, and warlocks
 
-## v1.2.6
+# v1.2.6
 
 - Added New Relationships with Modules
 - Added New Condition Types
@@ -2635,7 +2697,7 @@ Made subclass names consistent in formatting
         - Tools
         - Weapons
 
-## v1.2.5
+# v1.2.5
 
 ### January 8, 2024
 
@@ -2781,24 +2843,24 @@ Made subclass names consistent in formatting
 
 - Items Update
 
-## v1.2.4
+# v1.2.4
 
 - Backgrounds in Foundry with their features
 - Added Misc
 
-## v1.2.3
+# v1.2.3
 
 - Cleaned up the code
 - Changed Elkan XXX Class or Elkan XXX Subclass to just be called the class or subclass
     - Ex. Elkan Fighter became Fighter
 
-## v1.2.2
+# v1.2.2
 
 - Added discord information for the Authors
 - Removed the old database system that Foundry used to use before V11
 - Fixed bug with the new Foundry Database so it can actually be used with GitHub
 
-## v1.2.1
+# v1.2.1
 
 ### June 2023
 
@@ -2833,7 +2895,7 @@ Made subclass names consistent in formatting
    - Animate Dead
    - Fireball
 
-## v1.1.16
+# v1.1.16
 
 - Updated Classes
     - Elkan Barbarian
@@ -2846,7 +2908,7 @@ Made subclass names consistent in formatting
 - Added/Updated Roll Tables
     - Wild Surge Table lv. 1-9
 
-## v1.1.15
+# v1.1.15
 
 - Added Label to Elkan's Background
 - Added Elkan Background Features Compendium
@@ -2869,19 +2931,19 @@ Made subclass names consistent in formatting
     - Tools
     - Weapons
 
-## v1.1.14
+# v1.1.14
 
 - Updated Classes
     - Elkan Warlock
       - Added Missing Invocations
 - Updated Religion notes
 
-## v1.1.13
+# v1.1.13
 
 - Added links to features, Elkan 5e rules, and weapons
 - Also changed the module so that the minimum compatibility with Foundry was v10
 
-## v1.1.12
+# v1.1.12
 
 - Added Commander as a Fighter Subclass
 - Updated Features
@@ -2901,7 +2963,7 @@ Made subclass names consistent in formatting
 - Fixed Mundane Item
     - Notable Error Warhammer was in Magical Item; it has been moved to Mundane Items
 
-## v1.1.11
+# v1.1.11
 
 - Changed Race Features Compendium to Ancestry Features
 - Added Background Compendium
@@ -2915,7 +2977,7 @@ Made subclass names consistent in formatting
 - Updated Ancestry Features
 - Updated Roll Table Wild Surge Cantrip
 
-## v1.1.10
+# v1.1.10
 
 - Actually updated to Foundry V10
 - Removed Elkan 5e Scene because it wasn't being used
@@ -2949,7 +3011,7 @@ Made subclass names consistent in formatting
 - Added Wild Surge Table Lv. 1 to Elkan 5e Roll Table
 - Cleaned Up Compendiums
 
-## v1.1.9
+# v1.1.9
 
 - Updated Module to Foundry V10
 - Redid module.json with the new required information
@@ -2960,7 +3022,7 @@ Made subclass names consistent in formatting
     - [College of Noise](https://www.elkan5e.com/bard)
     - [Elkan Beastmaster](https://www.elkan5e.com/ranger)
 
-## v1.1.8
+# v1.1.8
 
 - Updated Classes
     - Elkan Warlock
@@ -2971,13 +3033,13 @@ Made subclass names consistent in formatting
     - College of Noise (Bard Subclass)
     - Elkan Beastmaster
 
-## v1.1.7
+# v1.1.7
 
 - Added Elkan [Warlock](https://www.elkan5e.com/warlock)
 - Added some Invocations
 - Spell slots for Warlock need to be manually done
 
-## v1.1.6
+# v1.1.6
 
 - Added Elkan [Fighter](https://www.elkan5e.com/fighter)
 - Gave Elkan Fighter Default Save
@@ -2994,7 +3056,7 @@ Made subclass names consistent in formatting
       - Updated Elkan Paladin Notes
       - Updated Elkan Rogue Notes
 
-## v1.1.5
+# v1.1.5
 
 - Updated Classes:
     - Elkan Sorcerer (Updated Default Save)
@@ -3003,7 +3065,7 @@ Made subclass names consistent in formatting
     - Rage
     - Divine Smite
 
-## v1.1.4
+# v1.1.4
 
 - Updated Classes by giving them their default saves. This had separate instances for if it is their original class or if it is a multiclass
     - Elkan Barbarian
@@ -3014,7 +3076,7 @@ Made subclass names consistent in formatting
     - Elkan Sorcerer
     - Elkan Wizard
 
-## v1.1.3
+# v1.1.3
 
 - Updated module.json info
 - Set the system to be dnd5e only
@@ -3022,13 +3084,13 @@ Made subclass names consistent in formatting
 - Added midi-qol and dae as dependencies
 - Fixed small issues everywhere
 
-## v1.1.2
+# v1.1.2
 
 - Updated Elkan Classes
 - Updated Elkan Class Features
 - Updated Elkan Race Features
 
-## v1.1.1
+# v1.1.1
 
 - Added Compendium Elkan5e Race Features
 - Updated Elkan Classes
@@ -3042,7 +3104,7 @@ Made subclass names consistent in formatting
     - Adamantine Versions of those Weapons (Both Magical and not)
     - Silvered Versions of those Weapons (Both Magical and not)
 
-## v1.1.0
+# v1.1.0
 
 - Updated Elkan 5e in Foundry for DND 1.6.0
 - Updated Unrelenting Focus
@@ -3067,7 +3129,7 @@ Made subclass names consistent in formatting
 - New division for languages (Trade Languages, Rare Languages, Magical Languages)
 - Even more links
 
-## v1.0.9
+# v1.0.9
 
 - Created Elkan 5e version of Barbarian
      - Exceptions:
@@ -3079,45 +3141,45 @@ Made subclass names consistent in formatting
 - Added the notes that are on the [website](https://www.elkan5e.com/) for the classes that exist
 - Added a lot of links to other pages  (ex., if an ability mentions grappled, there will be a link to the grappled page)
 
-## v1.0.8
+# v1.0.8
 
 - Added a shell of all the classes to Elkan 5e classes
 - Updated spells
 
-## v1.0.7
+# v1.0.7
 
 - Updated broken spells
 
-## v1.0.6
+# v1.0.6
 
 - Cleaned up redundant information in the compendium
 - Cleaned up databases to follow the same name trend
 - Replaced an image
 - Added Spells
 
-## v1.0.5
+# v1.0.5
 
 - Updated module description
 - Updated Elkan 5e version of Ranger
     - Updated Hunter's Mark
 - Added Elkan 5e version of Sorcerer
 
-## v1.0.4
+# v1.0.4
 
 - Added Elkan Hunter
 - Added Elkan Rogue
 - Added the Elkan Religion information
 
-## v1.0.3
+# v1.0.3
 
 - Named the compendium after Elkan folders
 - Updated Conditions
 - Updated Elkan Ranger
 
-## v1.0.2
+# v1.0.2
 
 - Released
 
-## v1.0.1
+# v1.0.1
 
 - A local file
