@@ -23,7 +23,7 @@ import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
 import { conditions, conditionsReady } from "./module/rules/condition.mjs";
 import { language } from "./module/rules/language.mjs";
 import { formating } from "./module/rules/format.mjs";
-import { tools } from "./module/rules/tools.mjs";
+import { tools, updateToolTypes } from "./module/rules/tools.mjs";
 import { weapons } from "./module/rules/weapon.mjs";
 import { scroll } from "./module/rules/scroll.mjs";
 import { refs } from "./module/rules/references.mjs";
@@ -57,6 +57,7 @@ Hooks.once("ready", () => {
 	try {
 		gameSettingsMigrate();
 		conditionsReady();
+		updateToolTypes();
 		startDialog();
 	} catch (error) {
 		console.error("Elkan 5e | Ready Hook Error:", error);
