@@ -1,11 +1,5 @@
 # Changelog
 
-# v1.13.4.1
-
-# Misc
-
-- Minor change so that the grouping of tools also changes when changing the tool list
-
 # v1.13.4
 
 ## Bug Fixes
