@@ -12,7 +12,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><em>Wondrous Item - Uncommon (Requires Attunement)</em></p><p><strong>Buff</strong></p><ul><li><p>Your Intelligence is 19 while you wear this headband. It has no effect on you if your Intelligence is 19 or higher without it.</p></li></ul>",
+			"value": "<p><em>Wondrous Item - Uncommon (Requires Attunement)</em></p><p><strong>Buff</strong></p><ul><li><p>Your &amp;reference[Intelligence] is 19 while you wear this headband. It has no effect on you if your Intelligence is 19 or higher without it.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "headband-of-intellect",
@@ -68,8 +68,8 @@
 	},
 	"effects": [
 		{
-			"name": "Intelligent",
-			"img": "icons/commodities/biological/organ-brain-red.webp",
+			"name": "Headband of Intellect",
+			"img": "icons/equipment/finger/ring-cabochon-silver-gold-red.webp",
 			"_id": "qxfUe2eJtY0VBF7x",
 			"type": "base",
 			"system": {},
@@ -78,7 +78,7 @@
 					"key": "system.abilities.int.value",
 					"mode": 4,
 					"value": "19",
-					"priority": null
+					"priority": 40
 				}
 			],
 			"disabled": false,
@@ -92,10 +92,38 @@
 				"startTurn": null
 			},
 			"description": "",
-			"origin": null,
+			"origin": "Compendium.elkan5e.elkan5e-magic-items.Item.dmgHeadbandOfInt",
 			"tint": "#ffffff",
 			"transfer": true,
 			"statuses": [],
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"showIcon": false,
+					"disableIncapacitated": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "All",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
 			"_key": "!items.effects!dmgHeadbandOfInt.qxfUe2eJtY0VBF7x"
 		}
 	],
