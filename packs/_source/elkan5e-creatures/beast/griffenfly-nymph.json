@@ -612,8 +612,7 @@
 				"communication": {}
 			},
 			"important": false
-		},
-		"identifier": "griffenfly-nymph"
+		}
 	},
 	"prototypeToken": {
 		"name": "Griffenfly Nymph",
@@ -704,6 +703,7 @@
 			"disposition": false
 		},
 		"movementAction": null,
+		"flags": {},
 		"randomImg": false,
 		"appendNumber": false,
 		"prependAdjective": false
@@ -751,6 +751,7 @@
 			"effects": [],
 			"folder": null,
 			"flags": {
+				"core": {},
 				"midiProperties": {
 					"confirmTargets": "default",
 					"autoFailFriendly": false,
@@ -779,7 +780,7 @@
 			"img": "icons/creatures/abilities/mouth-teeth-sharp.webp",
 			"system": {
 				"description": {
-					"value": "<p><strong>Melee Attack</strong> - 1 Creature (10 ft.)</p><ul><li><p><strong>Attack:</strong> [[/attack]]</p></li><li><p><strong>Hit:</strong> [[/damage]] damage dama<span>ge, </span>target is &amp;reference[grappled] and pushed 5 ft. towards the griffenfly.</p></li></ul>",
+					"value": "<p><strong>Melee Attack</strong> - 1 Creature (10 ft.)</p><ul><li><p><strong>Attack:</strong> [[/attack]]</p></li><li><p><strong>Hit:</strong> [[/damage]] dama<span>ge, </span>target is &amp;reference[grappled] and pushed 5 ft. towards the griffenfly.</p></li></ul>",
 					"chat": ""
 				},
 				"source": {
@@ -1041,6 +1042,11 @@
 						"grappled"
 					],
 					"flags": {
+						"dnd5e": {
+							"riders": {
+								"statuses": []
+							}
+						},
 						"dae": {
 							"disableCondition": "",
 							"stackable": "noneName",
@@ -1053,6 +1059,9 @@
 							"selfTarget": false,
 							"selfTargetAlways": false,
 							"dontApply": false
+						},
+						"core": {
+							"overlay": false
 						},
 						"ActiveAuras": {
 							"isAura": false,
@@ -1077,6 +1086,7 @@
 			],
 			"folder": "RIC9m0I03i0YswOc",
 			"flags": {
+				"core": {},
 				"midi-qol": {
 					"fumbleThreshold": null,
 					"removeAttackDamageButtons": "default",
@@ -1106,6 +1116,16 @@
 					"idi": false,
 					"idv": false,
 					"ida": false
+				},
+				"dnd5e": {
+					"riders": {
+						"activity": [],
+						"effect": []
+					}
+				},
+				"tidy5e-sheet": {
+					"section": "",
+					"actionSection": ""
 				}
 			},
 			"_id": "sj9EOLvXzex2vcBF",
@@ -1113,5 +1133,10 @@
 		}
 	],
 	"effects": [],
+	"flags": {
+		"tidy5e-sheet": {
+			"skillsExpanded": false
+		}
+	},
 	"_key": "!actors!bTcpLLaizozSCpn0"
 }

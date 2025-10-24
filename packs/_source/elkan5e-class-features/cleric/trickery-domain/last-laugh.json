@@ -11,7 +11,7 @@
 				"activation": {
 					"type": "reaction",
 					"override": false,
-					"condition": "You succeed on a saving throw against a creature’s spell or ability. You target the creature who targeted you."
+					"condition": "You succeed on a saving throw against a creature's spell or ability. You target the creature who targeted you."
 				},
 				"consumption": {
 					"scaling": {
@@ -293,10 +293,10 @@
 		},
 		"advancement": [],
 		"description": {
-			"value": "<p><strong>Reaction</strong> - 1 Creature (200 ft.) - 3/Long Rest - Magical</p><p><em>Trigger: You succeed on a saving throw against a creature’s spell or ability. You target the creature who targeted you.</em></p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage]] damage and is either &amp;reference[charmed], &amp;reference[goaded], or &amp;reference[frightened] (your choice). Target attempts save at end of their turns, ending the condition on success.</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li></ul>",
+			"value": "<p><strong>Reaction</strong> - 1 Creature (200 ft.) - 3/Long Rest - Magical</p><br><p><em>Trigger: You succeed on a saving throw against a creature's spell or ability. You target the creature who targeted you.</em></p><br><p><strong>[[/save wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage]] damage and is either &amp;reference[charmed], &amp;reference[goaded], or &amp;reference[frightened] (your choice). Target attempts save at end of their turns, ending the condition on success.</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li></ul>",
 			"chat": ""
 		},
-		"identifier": "last-laugh",
+		"identifier": "",
 		"source": {
 			"revision": 1,
 			"rules": "2024",
@@ -352,6 +352,11 @@
 				"charmed"
 			],
 			"flags": {
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
 				"dae": {
 					"disableCondition": "target.traits.ci.value.has('charmed')",
 					"stackable": "noneName",
@@ -364,6 +369,9 @@
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false
+				},
+				"core": {
+					"overlay": false
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -416,6 +424,11 @@
 				"goaded"
 			],
 			"flags": {
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
 				"dae": {
 					"disableCondition": "",
 					"stackable": "noneName",
@@ -428,6 +441,9 @@
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false
+				},
+				"core": {
+					"overlay": false
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -481,6 +497,11 @@
 				"frightened"
 			],
 			"flags": {
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
 				"dae": {
 					"disableCondition": "",
 					"stackable": "noneName",
@@ -493,6 +514,9 @@
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false
+				},
+				"core": {
+					"overlay": false
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -516,6 +540,7 @@
 			"_key": "!items.effects!09njGBRLUSKIl0i5.tU4Z7n3zYgpmAeGA"
 		}
 	],
+	"flags": {},
 	"_id": "09njGBRLUSKIl0i5",
 	"_key": "!items!09njGBRLUSKIl0i5"
 }

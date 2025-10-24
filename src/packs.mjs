@@ -487,7 +487,7 @@ async function removePacks(packName) {
 			(!packName || entry.name === packName),
 	);
 
-	// Exit early if there’s nothing to remove
+	// Exit early if there's nothing to remove
 	if (targetFolders.length === 0) {
 		logger.info("No matching folders to remove.");
 		return;

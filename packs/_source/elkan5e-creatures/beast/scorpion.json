@@ -535,7 +535,7 @@
 		},
 		"details": {
 			"biography": {
-				"value": "<p><em>Token artwork by <a href=\"https://www.forgotten-adventures.net/\" target=\"_blank\" rel=\"noopener\">Forgotten Adventures</a>.</em></p><p><em>Token artwork by <a href=\"https://www.forgotten-adventures.net/\" target=\"_blank\" rel=\"noopener\">Forgotten Adventures</a>.</em></p>",
+				"value": "<p><em>Token artwork by <a href=\"https://www.forgotten-adventures.net/\" target=\"_blank\" rel=\"noopener\">Forgotten Adventures</a> .</em></p><br><p><em>Token artwork by <a href=\"https://www.forgotten-adventures.net/\" target=\"_blank\" rel=\"noopener\">Forgotten Adventures</a> .</em></p>",
 				"public": ""
 			},
 			"alignment": "Unaligned",
@@ -613,10 +613,9 @@
 				"communication": {}
 			},
 			"important": false
-		},
-		"identifier": "scorpion"
+		}
 	},
-	"img": "systems/dnd5e/tokens/beast/Scorpion.webp",
+	"img": "systems/dnd5e/tokens/&amp;reference[beast]/Scorpion.webp",
 	"prototypeToken": {
 		"name": "Scorpion",
 		"displayName": 0,
@@ -626,7 +625,7 @@
 		"width": 0.5,
 		"height": 0.5,
 		"texture": {
-			"src": "systems/dnd5e/tokens/beast/Scorpion.webp",
+			"src": "systems/dnd5e/tokens/&amp;reference[beast]/Scorpion.webp",
 			"anchorX": 0.5,
 			"anchorY": 0.5,
 			"offsetX": 0,
@@ -701,6 +700,7 @@
 				"texture": null
 			}
 		},
+		"flags": {},
 		"randomImg": false,
 		"turnMarker": {
 			"mode": 1,
@@ -1088,7 +1088,7 @@
 					"max": ""
 				},
 				"description": {
-					"value": "<p><strong>Melee Attack</strong> - 1 Creature (5 ft.)</p><ul><li><p><strong>Attack:</strong> [[/attack]]</p></li><li><p><strong>Hit:</strong> [[/damage]] damage. If the target is tiny, they must make a constitution save.</p></li></ul><p><strong>[[/save con 10]]{Constitution Save (DC 10)}</strong></p><ul><li><p><strong>Failure: </strong>The target is &amp;reference[poisoned]. Target attempts a save at the end of each of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+					"value": "<p><strong>Melee Attack</strong> - 1 Creature (5 ft.)</p><ul><li><p><strong>Attack:</strong> [[/attack]]</p></li><li><p><strong>Hit:</strong> [[/damage]]. If the target is tiny, they must make a constitution save.</p></li></ul><p><strong class=\"wixui-rich-text__text\">[[/save con 10]]{Constitution Save (DC 10)}</strong></p><ul class=\"font_8 wixui-rich-text__text\"><li class=\"wixui-rich-text__text\"><p><strong class=\"wixui-rich-text__text\">Failure: </strong> The target is &amp;reference[poisoned]. Target attempts a save at the end of each of their turns, ending effect on success.</p></li><li class=\"wixui-rich-text__text\"><p><strong class=\"wixui-rich-text__text\">Success:</strong> No effect.</p></li></ul>",
 					"chat": ""
 				},
 				"identifier": "sting",
@@ -1197,6 +1197,11 @@
 						"poisoned"
 					],
 					"flags": {
+						"dnd5e": {
+							"riders": {
+								"statuses": []
+							}
+						},
 						"dae": {
 							"enableCondition": "",
 							"disableCondition": "",
@@ -1209,6 +1214,9 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": []
+						},
+						"core": {
+							"overlay": false
 						},
 						"ActiveAuras": {
 							"isAura": false,
@@ -1231,6 +1239,14 @@
 					"_key": "!actors.items.effects!p7jCNcMWY2YLnye5.mmSting000000000.uHlZb9jfeJhKCcJg"
 				}
 			],
+			"flags": {
+				"dnd5e": {
+					"riders": {
+						"activity": [],
+						"effect": []
+					}
+				}
+			},
 			"_key": "!actors.items!p7jCNcMWY2YLnye5.mmSting000000000"
 		},
 		{
@@ -1380,7 +1396,7 @@
 					"max": ""
 				},
 				"description": {
-					"value": "<p><strong>Melee Attack</strong> - 1 Creature (5 ft.)</p><ul><li><p><strong>Attack:</strong> [[/attack]]</p></li><li><p><strong>Hit:</strong> [[/damage]] damage. If the target is tiny, the target is &amp;reference[grappled].</p></li></ul>",
+					"value": "<p><strong>Melee Attack</strong> - 1 Creature (5 ft.)</p><ul><li><p><strong>Attack:</strong> [[/attack]]</p></li><li><p><strong>Hit:</strong> [[/damage]]. If the target is tiny, the target is &amp;reference[grappled].</p></li></ul>",
 					"chat": ""
 				},
 				"identifier": "sting",
@@ -1482,6 +1498,11 @@
 						"grappled"
 					],
 					"flags": {
+						"dnd5e": {
+							"riders": {
+								"statuses": []
+							}
+						},
 						"dae": {
 							"enableCondition": "",
 							"disableCondition": "",
@@ -1494,6 +1515,9 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": []
+						},
+						"core": {
+							"overlay": false
 						},
 						"ActiveAuras": {
 							"isAura": false,
@@ -1516,12 +1540,25 @@
 					"_key": "!actors.items.effects!p7jCNcMWY2YLnye5.ZxNxLrcyoO8cog5e.uHlZb9jfeJhKCcJg"
 				}
 			],
+			"flags": {
+				"dnd5e": {
+					"riders": {
+						"activity": [],
+						"effect": []
+					}
+				}
+			},
 			"_id": "ZxNxLrcyoO8cog5e",
 			"_key": "!actors.items!p7jCNcMWY2YLnye5.ZxNxLrcyoO8cog5e"
 		}
 	],
 	"effects": [],
 	"folder": "g74Yk5RCg98JKk0V",
+	"flags": {
+		"tidy5e-sheet": {
+			"skillsExpanded": false
+		}
+	},
 	"_id": "p7jCNcMWY2YLnye5",
 	"_key": "!actors!p7jCNcMWY2YLnye5"
 }

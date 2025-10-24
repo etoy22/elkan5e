@@ -3,7 +3,7 @@
 	"type": "feat",
 	"system": {
 		"description": {
-			"value": "<p><strong>No Action Cost</strong> - 1 Creature (60 ft.) - Magical</p><p>Whenever you roll a @UUID[Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh]{Bardic Inspiration} die for any reason, you can make comments inciting one creature against another. Choose one creature within 60 ft. of you. That creature must succeed on a wisdom saving throw against your spellcasting DC or be &amp;reference[goaded] towards an ally of yours that is within 60 ft. of you and the target until the end of your next turn. If a creature hears your words, they magically understand them even if they could not otherwise.</p>",
+			"value": "<p><strong>No Action Cost</strong> - 1 Creature (60 ft.) - Magical</p><p><em>Trigger: Whenever you roll a @UUID[Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh]{bardic inspiration die} for any reason.</em></p><p><strong>Wisdom Save</strong></p><p>If a creature hears your words, they magically understand them even if they could not otherwise.</p><ul><li><p>Failure: Target is &amp;reference[goaded] towards an ally of yours that is within 60 ft. of you and the target until the end of your next turn.</p></li><li><p>Success: No effect.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -110,7 +110,7 @@
 				]
 			}
 		},
-		"identifier": "inciting-remarks",
+		"identifier": "",
 		"enchant": {},
 		"prerequisites": {
 			"level": null
@@ -135,6 +135,9 @@
 				"startTurn": null
 			},
 			"flags": {
+				"core": {
+					"overlay": false
+				},
 				"condition-lab-triggler": {
 					"conditionId": "Kq9PYa0G2aHGmUvc"
 				},
@@ -153,6 +156,9 @@
 					"macroRepeat": "none",
 					"enableCondition": "",
 					"disableCondition": ""
+				},
+				"times-up": {
+					"isPassive": false
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -213,6 +219,17 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"core": {},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
 		}
 	},
 	"_id": "QDGgq6r9urw1Dmtg",

@@ -6,7 +6,7 @@
 	"img": "icons/weapons/axes/axe-double-evil.webp",
 	"system": {
 		"description": {
-			"value": "<p><span>You can transform one or two weapons into your Pact Weapons by performing a special ritual while you hold the weapons. You perform the ritual over the course of 1 hour, which can be done during a short rest. You can then dismiss the weapons (no action required), shunting them into an extradimensional space. You can then use an action to summon one or both of the weapons, which appear in your hands or on your person (your choice). A weapon ceases being your Pact Weapon if you die or if you use the 1-hour ritual again and don't include the previous weapon as one of your two Pact Weapons. The weapon appears at your feet if it is in the extradimensional space when the bond breaks.</span></p><ul><li><p>Whenever you deal damage with a<strong>Pact Weapon</strong> , it counts as magical damage.</p></li><li><p>You can use a<strong>Pact Weapon</strong> as a Spellcasting<span>Focus.</span></p></li></ul>",
+			"value": "<p><span>You can transform one or two weapons into your Pact Weapons by performing a special ritual while you hold the weapons. You perform the ritual over the course of 1 hour, which can be done during a short rest. You can then dismiss the weapons (no action required), shunting them into an extradimensional space. You can then use an action to summon one or both of the weapons, which appear in your hands or on your person (your choice). A weapon ceases being your Pact Weapon if you die or if you use the 1-hour ritual again and don't include the previous weapon as one of your two Pact Weapons. The weapon appears at your feet if it is in the extradimensional space when the bond breaks.</span></p><ul><li><p>Whenever you deal damage with a <strong>Pact Weapon</strong> , it counts as magical damage.</p></li><li><p>You can use a <strong>Pact Weapon</strong> as a Spellcasting<span>Focus.</span></p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -115,13 +115,28 @@
 				}
 			}
 		},
-		"identifier": "pact-weapon",
+		"identifier": "",
 		"enchant": {}
 	},
 	"effects": [
 		{
 			"name": "Pact Weapon",
 			"flags": {
+				"dnd5e": {
+					"enchantment": {
+						"level": {
+							"min": null,
+							"max": null
+						},
+						"riders": {
+							"effect": [],
+							"item": []
+						}
+					},
+					"riders": {
+						"statuses": []
+					}
+				},
 				"dae": {
 					"disableIncapacitated": false,
 					"selfTarget": false,
@@ -151,6 +166,9 @@
 					"onlyOnce": false,
 					"wallsBlock": "system",
 					"statuses": []
+				},
+				"core": {
+					"overlay": false
 				}
 			},
 			"img": "icons/weapons/axes/axe-double-evil.webp",
@@ -213,6 +231,16 @@
 			"reactionCondition": "",
 			"removeAttackDamageButtons": "default",
 			"otherCondition": ""
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
 		}
 	},
 	"_key": "!items!69lkgPv5DA2dWxTW"

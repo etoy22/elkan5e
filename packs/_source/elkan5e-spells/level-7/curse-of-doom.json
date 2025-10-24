@@ -120,7 +120,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><strong>[[/save charisma]]{Charisma Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes 8d6 force damage* and is &amp;reference[cursed]. While cursed in this way, if the target reaches 0 hit points while under the effects of this curse, the target instantly dies, and their body and soul becomes permanently cursed, preventing them from being raised from the dead.</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p>*<strong>Upcasting:</strong> Increase damage by [[/damage 2d6 force]]{2d6} for each spell level above 7th.</p><p><em>Removing the curse on a creature slain by Curse of Doom will allow them to be raised again.</em></p>",
+			"value": "<p><strong>[[/save charisma]]{Charisma Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes 8d6 force damage* and is &amp;reference[cursed]. While cursed in this way, if the target reaches 0 hit points while under the effects of this curse, the target instantly dies, and their body and soul becomes permanently cursed, preventing them from being raised from the dead.</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p></p><br><p>* <strong>Upcasting:</strong> Increase damage by [[/damage 2d6 force]]{2d6} for each spell level above 7th.</p><br><p></p><br><p><em>Removing the curse on a creature slain by Curse of Doom will allow them to be raised again.</em></p>",
 			"chat": ""
 		},
 		"identifier": "curse-of-doom",
@@ -213,6 +213,9 @@
 					"macroRepeat": "none",
 					"specialDuration": []
 				},
+				"core": {
+					"overlay": false
+				},
 				"ActiveAuras": {
 					"isAura": false,
 					"aura": "None",
@@ -229,12 +232,21 @@
 					"onlyOnce": false,
 					"wallsBlock": "system",
 					"statuses": []
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
 				}
 			},
 			"_key": "!items.effects!pvuDBeDRGbrexK9a.zlA5PytbQkgpmI96"
 		}
 	],
 	"flags": {
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		},
 		"midi-qol": {
 			"AoETargetType": "any",
 			"autoTarget": "default",
@@ -244,6 +256,25 @@
 			"reactionCondition": "",
 			"otherCondition": "",
 			"effectCondition": ""
+		},
+		"midiProperties": {
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
 		}
 	},
 	"_id": "pvuDBeDRGbrexK9a",

@@ -1,23 +1,21 @@
 {
-	"_id": "dmgStaffOfStriki",
-	"name": "Staff of Striking",
+	"folder": "7aP1z4ARc0ZThgqp",
+	"name": "Torch",
 	"type": "weapon",
-	"img": "icons/weapons/staves/staff-ornate-purple.webp",
+	"img": "icons/sundries/lights/torch-brown-lit.webp",
 	"system": {
 		"activities": {
-			"YwtV5icC6zbGFU70": {
-				"_id": "YwtV5icC6zbGFU70",
+			"S6HOX5oWsttUCrVH": {
+				"_id": "S6HOX5oWsttUCrVH",
 				"type": "attack",
 				"activation": {
 					"type": "action",
-					"value": null,
 					"override": false,
 					"condition": ""
 				},
 				"consumption": {
 					"scaling": {
-						"allowed": false,
-						"max": ""
+						"allowed": false
 					},
 					"spellSlot": true,
 					"targets": []
@@ -32,8 +30,10 @@
 				},
 				"effects": [],
 				"range": {
-					"override": false,
-					"units": "self"
+					"units": "ft",
+					"override": true,
+					"special": "",
+					"value": "5"
 				},
 				"target": {
 					"template": {
@@ -43,11 +43,12 @@
 					},
 					"affects": {
 						"choice": false,
-						"count": "",
-						"type": ""
+						"type": "creature",
+						"count": "1",
+						"special": ""
 					},
 					"override": false,
-					"prompt": true
+					"prompt": false
 				},
 				"uses": {
 					"spent": 0,
@@ -73,7 +74,6 @@
 					"includeBase": true,
 					"parts": []
 				},
-				"name": "",
 				"useConditionText": "",
 				"useConditionReason": "",
 				"effectConditionText": "",
@@ -128,22 +128,20 @@
 				"ammunition": "",
 				"otherActivityUuid": "",
 				"attackRollPerTarget": "default",
-				"fumbleThreshold": 1
+				"fumbleThreshold": 1,
+				"name": "Attack With Lit Torch"
 			},
-			"sviFeLqVM4b4jHvc": {
-				"type": "damage",
-				"name": "Charge Damage",
-				"_id": "sviFeLqVM4b4jHvc",
+			"MHeG0bz7Cwg52ZM2": {
+				"type": "utility",
+				"name": "Light",
 				"activation": {
 					"type": "action",
-					"value": null,
 					"override": false,
 					"condition": ""
 				},
 				"consumption": {
 					"scaling": {
-						"allowed": true,
-						"max": "3"
+						"allowed": false
 					},
 					"spellSlot": true,
 					"targets": [
@@ -151,10 +149,7 @@
 							"type": "itemUses",
 							"value": "1",
 							"target": "",
-							"scaling": {
-								"mode": "amount",
-								"formula": ""
-							}
+							"scaling": {}
 						}
 					]
 				},
@@ -166,10 +161,15 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "rP9WQ5zJyiOXNNzb"
+					}
+				],
 				"range": {
+					"units": "self",
 					"override": false,
-					"units": "self"
+					"special": ""
 				},
 				"target": {
 					"template": {
@@ -179,9 +179,7 @@
 					},
 					"affects": {
 						"choice": false,
-						"count": "1",
-						"type": "creature",
-						"special": ""
+						"type": ""
 					},
 					"override": false,
 					"prompt": true
@@ -191,28 +189,11 @@
 					"recovery": [],
 					"max": ""
 				},
-				"damage": {
-					"critical": {
-						"allow": false
-					},
-					"parts": [
-						{
-							"custom": {
-								"enabled": true,
-								"formula": "(@scaling)d6"
-							},
-							"number": null,
-							"denomination": 0,
-							"bonus": "",
-							"types": [
-								"force"
-							],
-							"scaling": {
-								"mode": "",
-								"number": 1
-							}
-						}
-					]
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
 				},
 				"useConditionText": "",
 				"useConditionReason": "",
@@ -261,117 +242,199 @@
 					"saveRemoves": true,
 					"preRemoveConditionText": "",
 					"postRemoveConditionText": ""
-				}
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"_id": "MHeG0bz7Cwg52ZM2"
 			}
 		},
 		"uses": {
 			"spent": 0,
-			"recovery": [
-				{
-					"period": "dawn",
-					"type": "formula",
-					"formula": "1d6 + 4"
-				}
-			],
-			"max": "10"
+			"recovery": [],
+			"max": "1"
 		},
 		"description": {
-			"value": "<p><em>Staff, Very Rare (Requires Attunement)</em></p><p>This staff can be wielded as a magic Quarterstaff that grants a +3 bonus to attack rolls and damage rolls made with it.</p><p><strong>Activation</strong> - 10 Charges (Regains [[/r 1d6+4]] Charges at Dawn)</p><ul><li><p>While holding the staff, you can expend 1 or more charges to activate one of the following magical effects using your spell save DC:</p><ul><li><p>No Action (1 - 3 Charges) - When you hit with a melee attack using it, you can expend up to 3 charges. For each charge you expend, the target takes an extra [[/damage 1d6 Force]] damage.</p></li></ul></li><li><p>If you expend the last charge, roll [[/r 1d20]]. On a 1, the staff becomes a nonmagical @UUID[Compendium.elkan5e.elkan5e-equipment.Item.qpOD3sz47K9lnNgt]{Quarterstaff}.</p></li></ul>",
+			"value": "<p><strong>Action</strong> - 1 Hour</p><br><p><strong>Utility</strong></p><ul><li><p>The torch sheds &amp;reference[Bright Light] in a 20 ft. radius and &amp;reference[Dim Light] for an additional 20 ft.</p></li><li><p>The torch is consumed after 1 hour.</p></li></ul><p><br /></p><br><p><strong>Melee Attack</strong> - 1 Creature (5 ft.)</p><br><p>This item can be used as an improvised weapon.</p><ul><li><p><strong>Attack:</strong> [[/attack]] (strength modifier)</p></li><li><p><strong>Hit:</strong> [[/damage]] damage.</p></li></ul>",
 			"chat": ""
 		},
-		"identifier": "staff-of-striking",
+		"identifier": "torch",
 		"source": {
 			"revision": 1,
 			"rules": "2024",
-			"license": "",
 			"book": "",
 			"page": "",
-			"custom": ""
+			"custom": "elkan5e.com/items/torch",
+			"license": ""
 		},
 		"identified": true,
 		"unidentified": {
-			"description": "<p><strong>Unidentified.</strong></p><p><em>This staff is between 6 and 9 ft. in length, and is used by travelers and adventurers to defend themselves. It can be effectively wielded in combat with two hands.</em></p><p>Properties:</p><p>&amp;Reference[Reach] (10ft.), &amp;Reference[Handed]</p>",
-			"name": "Unidentified Quarterstaff"
+			"description": ""
 		},
-		"container": null,
-		"quantity": 1,
+		"container": "doM3T11rt1lg3Rdr",
+		"quantity": 5,
 		"weight": {
-			"value": 4,
+			"value": 1,
 			"units": "lb"
 		},
 		"price": {
-			"value": 40000,
-			"denomination": "gp"
+			"value": 1,
+			"denomination": "cp"
 		},
-		"rarity": "veryRare",
-		"attunement": "required",
-		"attuned": false,
-		"equipped": false,
-		"armor": {
-			"value": null
-		},
-		"cover": null,
+		"rarity": "common",
+		"attunement": "",
 		"crewed": false,
-		"hp": {
-			"value": null,
-			"max": null,
-			"dt": null,
-			"conditions": ""
-		},
-		"type": {
-			"value": "simpleM",
-			"baseItem": "quarterstaff"
-		},
 		"ammunition": {},
+		"armor": {},
 		"damage": {
 			"base": {
-				"number": 1,
-				"denomination": 6,
 				"types": [
-					"bludgeoning"
+					"fire"
 				],
 				"custom": {
-					"enabled": false
+					"enabled": true,
+					"formula": "1"
 				},
 				"scaling": {
 					"number": 1
 				},
+				"number": null,
+				"denomination": null,
 				"bonus": ""
 			},
 			"versatile": {
-				"number": null,
-				"denomination": null,
 				"types": [],
 				"custom": {
 					"enabled": false
 				},
 				"scaling": {
 					"number": 1
-				},
-				"bonus": ""
+				}
 			}
 		},
-		"magicalBonus": 3,
-		"properties": [
-			"mgc",
-			"ver"
-		],
+		"properties": [],
 		"proficient": null,
 		"range": {
+			"reach": 5,
+			"units": "",
 			"value": null,
-			"long": null,
-			"reach": null,
-			"units": ""
+			"long": null
 		},
-		"mastery": "topple"
+		"type": {
+			"value": "improv",
+			"baseItem": ""
+		},
+		"mastery": "",
+		"attuned": false,
+		"equipped": true
 	},
-	"effects": [],
-	"folder": "5p9KrkF39e6vFO4g",
+	"effects": [
+		{
+			"_id": "rP9WQ5zJyiOXNNzb",
+			"flags": {
+				"dae": {
+					"stackable": "noneName",
+					"specialDuration": [
+						"None"
+					],
+					"transfer": true,
+					"macroRepeat": "none",
+					"disableCondition": "",
+					"showIcon": false,
+					"disableIncapacitated": false,
+					"durationExpression": "",
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"radius": "",
+					"aura": "Enemy",
+					"alignment": "",
+					"type": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"nameOverride": "",
+					"customCheck": "",
+					"displayTemp": false,
+					"wallsBlock": "system",
+					"statuses": []
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"core": {
+					"overlay": false
+				}
+			},
+			"changes": [
+				{
+					"key": "ATL.light.dim",
+					"mode": 2,
+					"value": "40",
+					"priority": 20
+				},
+				{
+					"key": "ATL.light.bright",
+					"mode": 2,
+					"value": "20",
+					"priority": 20
+				},
+				{
+					"key": "ATL.light.animation",
+					"mode": 5,
+					"value": "{type: \"torch\", speed: 2, intensity: 2}",
+					"priority": 50
+				},
+				{
+					"key": "ATL.light.color",
+					"mode": 5,
+					"value": "#f8c377",
+					"priority": 50
+				},
+				{
+					"key": "ATL.light.alpha",
+					"mode": 5,
+					"value": "0.4",
+					"priority": 50
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": 676050533,
+				"seconds": 3600,
+				"rounds": 1,
+				"combat": null,
+				"turns": null,
+				"startRound": 0,
+				"startTurn": null
+			},
+			"origin": "Compendium.elkan5e.elkan5e-equipment.Item.pULRx2Zi5CWcbI59",
+			"tint": "#ffffff",
+			"transfer": false,
+			"name": "Torch",
+			"img": "icons/sundries/lights/torch-brown-lit.webp",
+			"type": "base",
+			"system": {},
+			"description": "",
+			"statuses": [],
+			"_key": "!items.effects!dtlFHfec4YSFHOFP.rP9WQ5zJyiOXNNzb"
+		}
+	],
 	"flags": {
-		"midiProperties": {
-			"magicdam": true,
-			"magiceffect": true
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
 		}
 	},
-	"_key": "!items!dmgStaffOfStriki"
+	"_id": "dtlFHfec4YSFHOFP",
+	"_key": "!items!dtlFHfec4YSFHOFP"
 }

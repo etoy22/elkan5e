@@ -406,10 +406,10 @@
 			"max": "1"
 		},
 		"description": {
-			"value": "<p><strong>Bonus Action</strong> - Self - Permanent - 1/Short Rest - Magical</p><p>You attune yourself to &amp;reference[elemental] air, earth, fire, or water. You lose any previous attunement and gain other magical abilities while attuned in this way.</p><p>You can use this feature during a short or long rest without expending a use of the ability.</p><p><strong>This feature requires the actor to be placed on the canvas, or it will have no effect.</strong> </p>",
+			"value": "<p><strong>Bonus Action</strong> - Self - Permanent - 1/Short Rest - Magical</p><br><p>You attune yourself to &amp;reference[elemental] air, earth, fire, or water. You lose any previous attunement and gain other magical abilities while attuned in this way.</p><br><p>You can use this feature during a short or long rest without expending a use of the ability.</p><br><p></p><br><p><strong>This feature requires the actor to be placed on the canvas, or it will have no effect.</strong></p>",
 			"chat": ""
 		},
-		"identifier": "elemental-attunement",
+		"identifier": "",
 		"source": {
 			"revision": 1,
 			"rules": "",
@@ -479,6 +479,14 @@
 					"macroRepeat": "none",
 					"specialDuration": []
 				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"core": {
+					"overlay": false
+				},
 				"ActiveAuras": {
 					"isAura": false,
 					"aura": "None",
@@ -540,6 +548,14 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
+				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"core": {
+					"overlay": false
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -604,6 +620,14 @@
 					"macroRepeat": "none",
 					"specialDuration": []
 				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"core": {
+					"overlay": false
+				},
 				"ActiveAuras": {
 					"isAura": false,
 					"aura": "None",
@@ -667,6 +691,14 @@
 					"macroRepeat": "none",
 					"specialDuration": []
 				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"core": {
+					"overlay": false
+				},
 				"ActiveAuras": {
 					"isAura": false,
 					"aura": "None",
@@ -690,6 +722,10 @@
 		}
 	],
 	"flags": {
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		},
 		"midi-qol": {
 			"rollAttackPerTarget": "default",
 			"removeAttackDamageButtons": "default",
@@ -697,6 +733,21 @@
 			"reactionCondition": "",
 			"otherCondition": "",
 			"effectCondition": ""
+		},
+		"midiProperties": {
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
 		},
 		"dae": {
 			"macro": {
@@ -707,7 +758,8 @@
 				"command": "return elkan5e.macros.features.elementalAttunement(args);",
 				"author": "3Yi0HjF4PKCA4vX0",
 				"_id": null,
-				"folder": null
+				"folder": null,
+				"flags": {}
 			}
 		}
 	},

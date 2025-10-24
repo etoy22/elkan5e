@@ -152,7 +152,7 @@
 			"max": "1"
 		},
 		"description": {
-			"value": "<p><strong>Bonus Action</strong> - Injury - 1 Object - 1 Minute <span>- Consumed (1 Charge)</span></p><ul><li><p>Next hit that deals damage also do the Constitution Save.</p></li><li><p>Poison is expended after it deals damage once or after 1 minute.</p></li></ul><p><strong>[[/save constitution dc13]]{Constitution Save DC 13}</strong></p><ul><li><p><strong>Failure:</strong> &amp;reference[poisoned]. If failed by 5+: also &amp;reference[unconscious].</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"value": "<p>Injury Poison</p><br><p><strong>Bonus Action</strong> - 1 Object (Touch) - 1 Minute</p><br><p>The next time you deal damage with the object, apply this poison to the damaged creature, and end this effect on the object.</p><br><p><strong>[[/save constitution dc13]]{Constitution Save DC 13}</strong></p><ul><li><p><strong>Failure:</strong> &amp;reference[poisoned]. If failed by 5+: also &amp;reference[unconscious].</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "spiders-sting",
@@ -166,8 +166,7 @@
 		},
 		"identified": true,
 		"unidentified": {
-			"description": "",
-			"name": "Unidentified Liquid"
+			"description": ""
 		},
 		"container": null,
 		"quantity": 1,
@@ -230,6 +229,11 @@
 				"poisoned"
 			],
 			"flags": {
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
 				"dae": {
 					"enableCondition": "",
 					"disableCondition": "",
@@ -242,6 +246,9 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
+				},
+				"core": {
+					"overlay": false
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -287,6 +294,11 @@
 				"unconscious"
 			],
 			"flags": {
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
 				"dae": {
 					"enableCondition": "",
 					"disableCondition": "",
@@ -299,6 +311,9 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
+				},
+				"core": {
+					"overlay": false
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -323,6 +338,14 @@
 		}
 	],
 	"folder": "oiZn37v9LcHK7Dsi",
+	"flags": {
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		}
+	},
 	"_id": "G9eqEeYGhykBZmDu",
 	"_key": "!items!G9eqEeYGhykBZmDu"
 }

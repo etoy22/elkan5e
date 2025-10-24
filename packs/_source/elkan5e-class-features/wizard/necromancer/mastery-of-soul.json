@@ -1,18 +1,18 @@
 {
 	"folder": "45nJjAnFwni76P4o",
-	"name": "Mastery of Soul",
+	"name": "Soul Conduit",
 	"type": "feat",
 	"_id": "8KhA4zHjC79O8OXP",
 	"img": "icons/magic/life/heart-cross-strong-purple-orange.webp",
 	"system": {
 		"description": {
-			"value": "<p><strong>No Action Cost</strong> - Self or Graveguard (120 ft.) - 1 Minute - Magical</p><p><em>Trigger:</em> <em>You cast a necromancy spell of 1st level or higher.</em></p><ul><li><p>You give temporary hit points to either yourself or your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.cHeoheBxXYSmJfbv]{graveguard}.</p></li><li><p>This temporarily revives your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.cHeoheBxXYSmJfbv]{graveguard} if they are dead.</p></li><li><p>The temporary hit points equal three times the spell's level, to a maximum total of 15. These temporary hit points last for 1 minute.</p></li></ul>",
+			"value": "<p><strong style=\"font-weight:700\">No Action Cost</strong> - Graveguard (120 ft.) - 1 Minute - Magical</p><br><p>Trigger: <em style=\"font-style:italic\">You cast a necromancy spell of 1st level or higher.</em></p><div><ul class=\"iQtqn\" id=\"alb6627006\"><li class=\"YCJuP\" dir=\"auto\" id=\"rx6lb27007\"><p>You restore hit points to your graveguard equal to three times the spell's level.</p></li><li class=\"YCJuP\" dir=\"auto\" id=\"teus118277\"><p>This revives your graveguard if they are dead.</p></li></ul></div>",
 			"chat": ""
 		},
 		"source": {
 			"custom": "elkan5e.com/wizard",
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
 			"license": ""
@@ -23,7 +23,7 @@
 			"spent": 0
 		},
 		"type": {
-			"value": "",
+			"value": "subclass",
 			"subtype": ""
 		},
 		"prerequisites": {
@@ -32,7 +32,7 @@
 		"properties": [
 			"mgc"
 		],
-		"requirements": "Necromancer 10",
+		"requirements": "Necromancer 6",
 		"activities": {
 			"dnd5eactivity000": {
 				"_id": "dnd5eactivity000",
@@ -47,7 +47,7 @@
 					"targets": [],
 					"scaling": {
 						"allowed": true,
-						"max": "5"
+						"max": "9"
 					},
 					"spellSlot": true
 				},
@@ -63,9 +63,10 @@
 				},
 				"effects": [],
 				"range": {
-					"units": "self",
+					"units": "ft",
 					"special": "",
-					"override": false
+					"override": false,
+					"value": "120"
 				},
 				"target": {
 					"template": {
@@ -96,7 +97,7 @@
 					"denomination": null,
 					"bonus": "",
 					"types": [
-						"temphp"
+						"healing"
 					],
 					"custom": {
 						"enabled": true,
@@ -113,7 +114,7 @@
 				"appliedEffects": []
 			}
 		},
-		"identifier": "mastery-of-soul",
+		"identifier": "",
 		"enchant": {}
 	},
 	"effects": [],
@@ -124,8 +125,8 @@
 			"autoSaveFriendly": false,
 			"critOther": false,
 			"offHandWeapon": false,
-			"magicdam": true,
-			"magiceffect": true,
+			"magicdam": false,
+			"magiceffect": false,
 			"noConcentrationCheck": false,
 			"toggleEffect": false,
 			"ignoreTotalCover": false,
@@ -133,6 +134,19 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"removeAttackDamageButtons": "default",
+			"reactionCondition": "",
+			"otherCondition": ""
+		},
+		"dnd5e": {},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
 		}
 	},
 	"_key": "!items!8KhA4zHjC79O8OXP"

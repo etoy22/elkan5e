@@ -4,6 +4,7 @@
 	"img": "icons/tools/hand/brush-paint-brown-tan.webp",
 	"effects": [],
 	"flags": {
+		"core": {},
 		"midi-qol": {
 			"effectActivation": false,
 			"rollAttackPerTarget": "default",
@@ -16,11 +17,11 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>Might be a generalized set or a specialized set of tools for a particular medium, such as oil painting or charcoal drawing. While an artist may not be experiences with all form of visual art, they can typically pick up other forms quickly. On the other hand, a charcoal artist may need to practice first before comfortably using watercolor paint.</em></p><p>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.SySQiDfSWcSRUCFN.JournalEntryPage.wuMEnZz82yY02Dok#artists-tools]{Artist's Tools} are used primarily by characters to create art.</p>",
+			"value": "<p>Might be a generalized set or a specialized set of tools for a particular medium, such as oil painting or charcoal drawing. While an artist may not be experiences with all form of visual art, they can typically pick up other forms quickly. On the other hand, a charcoal artist may need to practice first before comfortably using watercolor paint.</p><ul><li><p><strong>Skill Advantage:</strong> A skilled artist has &amp;reference[advantage] on checks involving visual art, including &amp;reference[performance] or &amp;reference[sleight of hand] checks to paint or draw, as well as some history and religion checks.</p></li><li><p><strong>Reproduce Likeness:</strong> With 1 hour and a [[/skill per 12]]{DC 12 perception skill check}, an artist can create a recognizable portrait of someone they've seen at least once. If the subject sits to be painted or drawn, the check automatically succeeds.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
-			"custom": "elkan5e.com/items/painting-and-drawing-supplies",
+			"custom": "elkan5e.com/tools",
 			"revision": 1,
 			"rules": "",
 			"book": "Elkan 5e",
@@ -57,13 +58,15 @@
 			"description": ""
 		},
 		"activities": {
-			"sVGGlUabgsQaBH1f": {
-				"_id": "sVGGlUabgsQaBH1f",
+			"TiY4dSXiMtfroVQB": {
 				"type": "check",
+				"name": "Reproduce Likeness",
+				"_id": "TiY4dSXiMtfroVQB",
 				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
+					"type": "hour",
+					"override": false,
+					"condition": "",
+					"value": 1
 				},
 				"consumption": {
 					"scaling": {
@@ -72,7 +75,9 @@
 					"spellSlot": true,
 					"targets": []
 				},
-				"description": {},
+				"description": {
+					"chatFlavor": ""
+				},
 				"duration": {
 					"units": "inst",
 					"concentration": false,
@@ -80,27 +85,98 @@
 				},
 				"effects": [],
 				"range": {
-					"override": false
+					"units": "self",
+					"override": false,
+					"special": ""
 				},
 				"target": {
 					"template": {
 						"contiguous": false,
-						"units": "ft"
+						"units": "ft",
+						"type": ""
 					},
 					"affects": {
-						"choice": false
+						"choice": false,
+						"type": ""
 					},
 					"override": false,
 					"prompt": true
 				},
 				"uses": {
 					"spent": 0,
-					"recovery": []
+					"recovery": [],
+					"max": ""
 				},
 				"check": {
-					"associated": [],
-					"dc": {}
-				}
+					"associated": [
+						"prc"
+					],
+					"dc": {
+						"calculation": "",
+						"formula": "12"
+					},
+					"ability": ""
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"damage": {
+					"onSave": "half",
+					"parts": [],
+					"critical": {
+						"allow": false
+					}
+				},
+				"friendlySave": "default",
+				"img": "",
+				"appliedEffects": []
 			}
 		},
 		"identifier": "painting-and-drawing-supplies",

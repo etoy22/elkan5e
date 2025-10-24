@@ -534,7 +534,7 @@
 		},
 		"details": {
 			"biography": {
-				"value": "<p><em>Token artwork by <a href=\"https://www.forgotten-adventures.net/\" target=\"_blank\" rel=\"noopener\">Forgotten Adventures</a>.</em></p><p><em>Token artwork by <a href=\"https://www.forgotten-adventures.net/\" target=\"_blank\" rel=\"noopener\">Forgotten Adventures</a>.</em></p>",
+				"value": "<p><em>Token artwork by <a href=\"https://www.forgotten-adventures.net/\" target=\"_blank\" rel=\"noopener\">Forgotten Adventures</a> .</em></p><br><p><em>Token artwork by <a href=\"https://www.forgotten-adventures.net/\" target=\"_blank\" rel=\"noopener\">Forgotten Adventures</a> .</em></p>",
 				"public": ""
 			},
 			"alignment": "Unaligned",
@@ -618,10 +618,9 @@
 				"communication": {}
 			},
 			"important": false
-		},
-		"identifier": "brown-bear"
+		}
 	},
-	"img": "systems/dnd5e/tokens/beast/BrownBear.webp",
+	"img": "systems/dnd5e/tokens/&amp;reference[beast]/BrownBear.webp",
 	"prototypeToken": {
 		"name": "Brown Bear",
 		"displayName": 0,
@@ -631,7 +630,7 @@
 		"width": 2,
 		"height": 2,
 		"texture": {
-			"src": "systems/dnd5e/tokens/beast/BrownBear.webp",
+			"src": "systems/dnd5e/tokens/&amp;reference[beast]/BrownBear.webp",
 			"anchorX": 0.5,
 			"anchorY": 0.5,
 			"offsetX": 0,
@@ -706,6 +705,7 @@
 				"texture": null
 			}
 		},
+		"flags": {},
 		"randomImg": false,
 		"turnMarker": {
 			"mode": 1,
@@ -867,6 +867,14 @@
 			"folder": "4T18pEvubPMQLzvD",
 			"img": "icons/skills/melee/strike-weapons-orange.webp",
 			"effects": [],
+			"flags": {
+				"dnd5e": {
+					"riders": {
+						"activity": [],
+						"effect": []
+					}
+				}
+			},
 			"_key": "!actors.items!cvyjw4Qdc9s8kptp.mmMultiattack000"
 		},
 		{
@@ -995,7 +1003,7 @@
 					"max": ""
 				},
 				"description": {
-					"value": "<p><strong>Melee Attack</strong> - 1 Creature (5 ft.)</p><ul><li><p><strong>Attack:</strong> [[/attack]]</p></li><li><p><strong>Hit:</strong> [[/damage]] damage</p></li></ul>",
+					"value": "<p><strong>Melee Attack</strong> - 1 Creature (5 ft.)</p><ul><li><p><strong>Attack:</strong> [[/attack]]</p></li><li><p><strong>Hit:</strong> [[/damage]]</p></li></ul>",
 					"chat": ""
 				},
 				"identifier": "bite",
@@ -1073,6 +1081,14 @@
 			"folder": "pSCWWdqMX9eUATRJ",
 			"img": "icons/creatures/abilities/fangs-teeth-bite.webp",
 			"effects": [],
+			"flags": {
+				"dnd5e": {
+					"riders": {
+						"activity": [],
+						"effect": []
+					}
+				}
+			},
 			"_key": "!actors.items!cvyjw4Qdc9s8kptp.mmBite0000000000"
 		},
 		{
@@ -1219,7 +1235,7 @@
 					"max": ""
 				},
 				"description": {
-					"value": "<p>[[/attack extended]]. [[/damage average extended]]. If the target is a Large or smaller creature, it has the &amp;Reference[Prone apply=false] condition.</p>",
+					"value": "<p>[[/attack extended]]. [[/damage average extended]]. If the target is a Large or smaller creature, it has the &amp;reference[Prone] apply=false condition.</p>",
 					"chat": ""
 				},
 				"identifier": "claw",
@@ -1318,15 +1334,24 @@
 						"startRound": null,
 						"startTurn": null
 					},
-					"description": "<p>If the target is a Large or smaller creature, it has the &amp;Reference[Prone apply=false] condition.</p>",
+					"description": "<p>If the target is a Large or smaller creature, it has the &amp;reference[Prone] apply=false condition.</p>",
 					"tint": "#ffffff",
 					"transfer": false,
 					"statuses": [
 						"prone"
 					],
+					"flags": {},
 					"_key": "!actors.items.effects!cvyjw4Qdc9s8kptp.mmClaw0000000000.5q1vcRvzYS3N0DhQ"
 				}
 			],
+			"flags": {
+				"dnd5e": {
+					"riders": {
+						"activity": [],
+						"effect": []
+					}
+				}
+			},
 			"_key": "!actors.items!cvyjw4Qdc9s8kptp.mmClaw0000000000"
 		},
 		{
@@ -1369,6 +1394,9 @@
 							"showIcon": false,
 							"macroRepeat": "none"
 						},
+						"core": {
+							"statusId": ""
+						},
 						"ActiveAuras": {
 							"isAura": false,
 							"aura": "None",
@@ -1397,6 +1425,7 @@
 			],
 			"folder": "Omb39b8uQV9RHg1y",
 			"flags": {
+				"core": {},
 				"midiProperties": {
 					"confirmTargets": "default",
 					"autoFailFriendly": false,
@@ -1457,6 +1486,7 @@
 	],
 	"effects": [],
 	"folder": "g74Yk5RCg98JKk0V",
+	"flags": {},
 	"_id": "cvyjw4Qdc9s8kptp",
 	"_key": "!actors!cvyjw4Qdc9s8kptp"
 }

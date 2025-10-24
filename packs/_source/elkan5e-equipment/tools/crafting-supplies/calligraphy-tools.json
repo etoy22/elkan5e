@@ -4,6 +4,7 @@
 	"img": "icons/tools/scribal/pen-steel-grey-brown.webp",
 	"effects": [],
 	"flags": {
+		"core": {},
 		"midi-qol": {
 			"effectActivation": false,
 			"rollAttackPerTarget": "default",
@@ -12,15 +13,16 @@
 		},
 		"midiProperties": {
 			"confirmTargets": "default"
-		}
+		},
+		"dnd5e": {}
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>A calligrapher can write fancy letters, but with a little magic can create magical scrolls that can be used to cast spells.</em></p><p>A calligrapher can write fancy letters, but with a little magic can create @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.WNUKlF5W2996Gu9G]{magical scrolls} that can be used to cast spells.</p><p><strong>Note: To create a scroll in Foundry, you can drag the spell from the spells compendium into your inventory.</strong> </p><p>You can scribe a spell you can cast. You must cast the spell as part of scribing the scroll and you must have a piece of parchment to scribe the scroll on. The spell does not take effect, instead becoming a spell scroll.</p><p>Scribing scrolls takes 1 hour plus the casting time of the chosen spell. You do not need the spell's components, but you will need the components to cast the spell from the scroll.</p><p>You require magic ink and other materials to scribe scrolls. The value of these scribing components depends on the level of the scroll you're scribing. The cost of scribing a scroll is half the cost of buying a scroll. These components can typically be purchased in large towns or from specialized magic component traders.</p><p>You cannot scribe @UUID[Compendium.elkan5e.elkan5e-class-features.Item.u7aPgi0U1YedIg3K]{Divine Smite} or other spells granted as class features.</p><ul><li><p>Cantrip Scroll: 5 gold (to scribe) 10 gold (to purchase)</p></li><li><p>1st Level Scroll: 15 gold (to scribe) 30 gold (to purchase)</p></li><li><p>2nd Level Scroll: 50 gold (to scribe) 100 gold (to purchase)</p></li><li><p>3rd Level Scroll: 100 gold (to scribe) 200 gold (to purchase)</p></li><li><p>4th Level Scroll: 150 gold (to scribe) 300 gold (to purchase)</p></li><li><p>5th Level Scroll: 350 gold (to scribe) 700 gold (to purchase)</p></li><li><p>6th Level Scroll: 750 gold (to scribe) 1500 gold (to purchase)</p></li><li><p>7th Level Scroll: 1400 gold (to scribe) 2800 gold (to purchase)</p></li><li><p>8th Level Scroll: 2250 gold (to scribe) 4500 gold (to purchase)</p></li><li><p>9th Level Scroll: 3500 gold (to scribe) 7000 gold (to purchase)</p></li></ul>",
+			"value": "<p>A calligrapher can write fancy letters, but with a little magic can create magical scrolls that can be used to cast spells.</p><ul><li><p><strong>Skill Advantage:</strong> A calligrapher has &amp;reference[advantage] on checks involving scripts, including but not limited to some &amp;reference[arcana], &amp;reference[history], and &amp;reference[investigation] checks.</p></li><li><p><strong>Copy Document:</strong> With 1 hour and a &amp;reference[sleight of hand] skill check, a calligrapher can attempt to duplicate a document exactly, down to the handwriting.</p><ul><li><p>An item they wrote [[/check slt 0]]{(DC 0)},</p></li><li><p>A mundane message [[/check slt 10]]{DC 10)},</p></li><li><p>A signed message or message written by a calligrapher [[/check slt 15]]{(DC 15)},</p></li><li><p>A sealed or stamped document [[/check slt 20]]{(DC 20)}.</p></li><li><p>A failed document might still trick an untrained observer with a &amp;reference[deception] check when presented.</p></li></ul></li><li><p><strong>Craft:</strong> A calligrapher can craft magic scrolls.</p><ul><li><p>You can only scribe a spell you can cast.</p></li><li><p>Scribing scrolls takes 1 hour plus the casting time of the chosen spell. You do not need the spell's components, but you will need the components to cast the spell from the scroll.</p></li><li><p>You require magic ink and other materials to scribe scrolls. The value of these scribing components depends on the level of the scroll you're scribing. The cost of scribing a scroll is half the cost of buying a scroll. These components can typically be purchased in large towns or from specialized magic component traders.</p></li><li><p>You cannot scribe Divine Smite or other spells granted as class features.</p><ul><li><p>Cantrip Scroll: 10 gold (to scribe) 20 gold (to purchase)</p></li><li><p>1st Level Scroll: 25 gold (to scribe) 50 gold (to purchase)</p></li><li><p>2nd Level Scroll: 50 gold (to scribe) 100 gold (to purchase)</p></li><li><p>3rd Level Scroll: 100 gold (to scribe) 200 gold (to purchase)</p></li><li><p>4th Level Scroll: 150 gold (to scribe) 300 gold (to purchase)</p></li><li><p>5th Level Scroll: 350 gold (to scribe) 700 gold (to purchase)</p></li><li><p>6th Level Scroll: 750 gold (to scribe) 1500 gold (to purchase)</p></li><li><p>7th Level Scroll: 1400 gold (to scribe) 2800 gold (to purchase)</p></li><li><p>8th Level Scroll: 2250 gold (to scribe) 4500 gold (to purchase)</p></li><li><p>9th Level Scroll: 3500 gold (to scribe) 7000 gold (to purchase)</p></li></ul></li></ul></li></ul><p><strong>Note: To create a scroll in Foundry, you can drag the spell from the spells compendium into your inventory or right click on a spell you know and click create scroll.</strong></p><p></p>",
 			"chat": ""
 		},
 		"source": {
-			"custom": "elkan5e.com/items/calligraphy-tools",
+			"custom": "elkan5e.com/tools",
 			"revision": 1,
 			"rules": "",
 			"book": "Elkan 5e",
@@ -70,7 +72,7 @@
 					"spellSlot": true
 				},
 				"description": {
-					"chatFlavor": ""
+					"chatFlavor": "An item they wrote [[/check slt 0]]{(DC 0)},  A mundane message [[/check slt 10]]{DC 10)},  A signed message or message written by a calligrapher [[/check slt 15]]{(DC 15)},  A sealed or stamped document [[/check slt 20]]{(DC 20)}.  A failed document might still trick an untrained observer with a &reference[deception] check when presented."
 				},
 				"duration": {
 					"concentration": false,
@@ -110,9 +112,17 @@
 				},
 				"check": {
 					"ability": "dex",
-					"associated": [],
-					"dc": {}
-				}
+					"associated": [
+						"slt"
+					],
+					"dc": {
+						"calculation": "",
+						"formula": "20"
+					}
+				},
+				"name": "Copy Document",
+				"img": "",
+				"appliedEffects": []
 			}
 		},
 		"uses": {

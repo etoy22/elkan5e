@@ -536,7 +536,7 @@
 		},
 		"details": {
 			"biography": {
-				"value": "<p><em>Token artwork by <a href=\"https://www.forgotten-adventures.net/\" target=\"_blank\" rel=\"noopener\">Forgotten Adventures</a>.</em></p><p><em>Token artwork by <a href=\"https://www.forgotten-adventures.net/\" target=\"_blank\" rel=\"noopener\">Forgotten Adventures</a>.</em></p>",
+				"value": "<p><em>Token artwork by <a href=\"https://www.forgotten-adventures.net/\" target=\"_blank\" rel=\"noopener\">Forgotten Adventures</a> .</em></p><br><p><em>Token artwork by <a href=\"https://www.forgotten-adventures.net/\" target=\"_blank\" rel=\"noopener\">Forgotten Adventures</a> .</em></p>",
 				"public": ""
 			},
 			"alignment": "Unaligned",
@@ -623,8 +623,7 @@
 				"communication": {}
 			},
 			"important": false
-		},
-		"identifier": "crocolisk"
+		}
 	},
 	"prototypeToken": {
 		"name": "&amp;reference[giant] Crocodile",
@@ -635,7 +634,7 @@
 		"width": 2,
 		"height": 2,
 		"texture": {
-			"src": "systems/dnd5e/tokens/beast/GiantCrocodile.webp",
+			"src": "systems/dnd5e/tokens/&amp;reference[beast]/GiantCrocodile.webp",
 			"anchorX": 0.5,
 			"anchorY": 0.5,
 			"offsetX": 0,
@@ -710,6 +709,7 @@
 				"texture": null
 			}
 		},
+		"flags": {},
 		"randomImg": false,
 		"turnMarker": {
 			"mode": 1,
@@ -867,7 +867,7 @@
 					"max": ""
 				},
 				"description": {
-					"value": "<p><strong>Melee Attack</strong> - 1 Creature (5 ft.)</p><ul><li><p><strong>Attack:</strong> [[/attack]]</p></li><li><p><strong>Hit:</strong> [[/damage]] damage, and the target is &amp;reference[grappled]. If the target is large or smaller, it is also &amp;reference[restrained]. If the crocodile attacks again with its bite, the grappled creature is released.</p></li></ul>",
+					"value": "<p><strong>Melee Attack</strong> - 1 Creature (5 ft.)</p><ul><li><p><strong>Attack:</strong> [[/attack]]</p></li><li><p><strong>Hit:</strong> [[/damage]], and the target is &amp;reference[grappled]. If the target is large or smaller, it is also &amp;reference[restrained]. If the crocodile attacks again with its bite, the grappled creature is released.</p></li></ul>",
 					"chat": ""
 				},
 				"identifier": "bite",
@@ -970,6 +970,11 @@
 						"grappled"
 					],
 					"flags": {
+						"dnd5e": {
+							"riders": {
+								"statuses": []
+							}
+						},
 						"dae": {
 							"enableCondition": "",
 							"disableCondition": "",
@@ -982,6 +987,9 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": []
+						},
+						"core": {
+							"overlay": false
 						},
 						"ActiveAuras": {
 							"isAura": false,
@@ -1026,6 +1034,11 @@
 					"tint": "#ffffff",
 					"statuses": [],
 					"flags": {
+						"dnd5e": {
+							"riders": {
+								"statuses": []
+							}
+						},
 						"dae": {
 							"enableCondition": "[\"lg\", \"med\", \"sm\", \"tiny\"].includes(target.traits.size)",
 							"disableCondition": "",
@@ -1038,6 +1051,9 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": []
+						},
+						"core": {
+							"overlay": false
 						},
 						"ActiveAuras": {
 							"isAura": false,
@@ -1060,6 +1076,14 @@
 					"_key": "!actors.items.effects!2NbUwMqIXe6TsxT3.fQ3EtDxFCBfPfii3.CpSRHJDSpfOfiWE7"
 				}
 			],
+			"flags": {
+				"dnd5e": {
+					"riders": {
+						"activity": [],
+						"effect": []
+					}
+				}
+			},
 			"_key": "!actors.items!2NbUwMqIXe6TsxT3.fQ3EtDxFCBfPfii3"
 		},
 		{
@@ -1215,7 +1239,7 @@
 					"max": ""
 				},
 				"description": {
-					"value": "<p><strong>Action</strong> - 1 Creature (5 ft.)</p><p>The crocolisk can use this ability on a creature it has &amp;reference[grappled].</p><p><strong>[[/save str 15]]{Strength Save (DC 15)}</strong></p><ul><li><p><strong>Failure:</strong> [[/damage]] damage, and the target is &amp;reference[prone].</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li></ul>",
+					"value": "<p><strong class=\"wixui-rich-text__text\">Action</strong> - 1 Creature (5 ft.)</p><br><p>The crocolisk can use this ability on a creature it has &amp;reference[grappled].</p><br><p><strong class=\"wixui-rich-text__text\">[[/save str 15]]{Strength Save (DC 15)}</strong></p><ul class=\"font_8 wixui-rich-text__text\"><li class=\"wixui-rich-text__text\"><p><strong class=\"wixui-rich-text__text\">Failure:</strong> [[/damage]], and the target is &amp;reference[prone].</p></li><li class=\"wixui-rich-text__text\"><p><strong class=\"wixui-rich-text__text\">Success:</strong> Half damage, no other effect.</p></li></ul>",
 					"chat": ""
 				},
 				"identifier": "bite",
@@ -1318,6 +1342,11 @@
 						"prone"
 					],
 					"flags": {
+						"dnd5e": {
+							"riders": {
+								"statuses": []
+							}
+						},
 						"dae": {
 							"enableCondition": "",
 							"disableCondition": "",
@@ -1330,6 +1359,9 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": []
+						},
+						"core": {
+							"overlay": false
 						},
 						"ActiveAuras": {
 							"isAura": false,
@@ -1352,6 +1384,14 @@
 					"_key": "!actors.items.effects!2NbUwMqIXe6TsxT3.X7GHWQrqTpehsgex.2rdG3AHe5m9mKcKu"
 				}
 			],
+			"flags": {
+				"dnd5e": {
+					"riders": {
+						"activity": [],
+						"effect": []
+					}
+				}
+			},
 			"_id": "X7GHWQrqTpehsgex",
 			"_key": "!actors.items!2NbUwMqIXe6TsxT3.X7GHWQrqTpehsgex"
 		},
@@ -1400,6 +1440,14 @@
 			"folder": "L9Zgr8qAPc3ngKhb",
 			"img": "icons/magic/water/bubbles-air-water-light.webp",
 			"effects": [],
+			"flags": {
+				"dnd5e": {
+					"riders": {
+						"activity": [],
+						"effect": []
+					}
+				}
+			},
 			"_key": "!actors.items!2NbUwMqIXe6TsxT3.Y4D29kevHHjQWxSb"
 		},
 		{
@@ -1683,7 +1731,7 @@
 				},
 				"advancement": [],
 				"description": {
-					"value": "<p><em>The crocolisk's eyes glow green as its magic gaze attacks the bodies of all creatures it can see.</em></p><p><strong>Action</strong> - 30 ft. Emanation (Self) - Recharge 5-6</p><p>The crocolisk must be able to see the target. A hidden creature or creature behind the crocolisk may not be affected. If a mirror is present, the crocolisk will also target itself.</p><p><strong>Constitution Save (DC 14)</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage]] damage and is &amp;reference[poisoned]. Target rolls save against the poisoned condition again at the end of each of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li></ul>",
+					"value": "<p><em class=\"wixui-rich-text__text\">The crocolisk's eyes glow green as its magic gaze attacks the bodies of all creatures it can see.</em></p><br><p><strong class=\"wixui-rich-text__text\">Action</strong> - 30 ft. Emanation (Self) - Recharge 5-6</p><br><p>The crocolisk must be able to see the target. A hidden creature or creature behind the crocolisk may not be affected. If a mirror is present, the crocolisk will also target itself.</p><br><p><strong class=\"wixui-rich-text__text\">Constitution Save (DC 14)</strong></p><ul class=\"font_8 wixui-rich-text__text\"><li class=\"wixui-rich-text__text\"><p><strong class=\"wixui-rich-text__text\">Failure:</strong> Target takes [[/damage]] and is &amp;reference[poisoned]. Target rolls save against the poisoned condition again at the end of each of their turns, ending effect on success.</p></li><li class=\"wixui-rich-text__text\"><p><strong class=\"wixui-rich-text__text\">Success:</strong> Half damage, no other effect.</p></li></ul>",
 					"chat": ""
 				},
 				"identifier": "new-feature",
@@ -1740,6 +1788,11 @@
 						"poisoned"
 					],
 					"flags": {
+						"dnd5e": {
+							"riders": {
+								"statuses": []
+							}
+						},
 						"dae": {
 							"enableCondition": "",
 							"disableCondition": "",
@@ -1752,6 +1805,9 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": []
+						},
+						"core": {
+							"overlay": false
 						},
 						"ActiveAuras": {
 							"isAura": false,
@@ -1775,11 +1831,24 @@
 				}
 			],
 			"folder": null,
+			"flags": {
+				"dnd5e": {
+					"riders": {
+						"activity": [],
+						"effect": []
+					}
+				}
+			},
 			"_key": "!actors.items!2NbUwMqIXe6TsxT3.3rmRN1sSgLwnHkms"
 		}
 	],
 	"effects": [],
 	"folder": "RqdpT79oZ43srWxv",
+	"flags": {
+		"tidy5e-sheet": {
+			"skillsExpanded": false
+		}
+	},
 	"_id": "2NbUwMqIXe6TsxT3",
 	"_key": "!actors!2NbUwMqIXe6TsxT3"
 }

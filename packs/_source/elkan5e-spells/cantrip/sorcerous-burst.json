@@ -107,7 +107,7 @@
 				"midiProperties": {
 					"ignoreTraits": [],
 					"triggeredActivityId": "exploding-attack",
-					"triggeredActivityConditionText": "workflow.hitTargets.size > 0 && workflow?.damageRoll?.dice  .filter(d => d.faces === 8)  .flatMap(d => d.results.map(r => r.result))  .filter((v, i, a) => a.indexOf(v) !== i).length > 0",
+					"triggeredActivityConditionText": "workflow.hitTargets.size > 0 && workflow?.damageRoll?.dice   .filter(d => d.faces === 8)   .flatMap(d => d.results.map(r => r.result))   .filter((v, i, a) => a.indexOf(v) !== i).length > 0",
 					"triggeredActivityTargets": "targets",
 					"triggeredActivityRollAs": "self",
 					"forceDialog": false,
@@ -266,7 +266,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><em>You unleash the sorcerous energy within you, which manifests in the way you choose.</em></p><p><strong>Ranged Spell Attack</strong></p><ul><li><p><strong>Hit:</strong> [[/damage]] damage.*</p></li><li><p>If you roll an 8 on a [[/r 1d8]] for this spell, you can roll another d8, and add it to the damage. The maximum number of these d8s you can add to the spell's damage equals your spellcasting ability modifier.</p></li></ul><p><strong>*At Higher Levels:</strong> This spell's damage increases by [[/damage 1d8 type=acid/cold/lightning/fire/poison/psychic/thunder]]{1d8} when you reach a total character or creature level of 5th level ([[/damage 2d8 type=acid/cold/lightning/fire/poison/psychic/thunder]]{2d8}), 11th level ([[/damage 3d8 type=acid/cold/lightning/fire/poison/psychic/thunder]]{3d8}), and 17th level ([[/damage 4d8 type=acid/cold/lightning/fire/poison/psychic/thunder]]{4d8}).</p>",
+			"value": "<p><em>You unleash the sorcerous energy within you, which manifests in the way you choose.</em></p><br><p><strong>Ranged Spell Attack</strong></p><ul><li><p><strong>Hit:</strong> [[/damage]] damage.*</p></li><li><p>If you roll an 8 on a [[/r 1d8]] for this spell, you can roll another d8, and add it to the damage. The maximum number of these d8s you can add to the spell's damage equals your spellcasting ability modifier.</p><br><p></p></li></ul><p><strong>*At Higher Levels:</strong> This spell's damage increases by [[/damage 1d8 type=acid/cold/lightning/fire/poison/psychic/thunder]]{1d8} when you reach a total character or creature level of 5th level ([[/damage 2d8 type=acid/cold/lightning/fire/poison/psychic/thunder]]{2d8}), 11th level ([[/damage 3d8 type=acid/cold/lightning/fire/poison/psychic/thunder]]{3d8}), and 17th level ([[/damage 4d8 type=acid/cold/lightning/fire/poison/psychic/thunder]]{4d8}).</p>",
 			"chat": ""
 		},
 		"identifier": "sorcerous-burst",
@@ -322,6 +322,10 @@
 	},
 	"effects": [],
 	"flags": {
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
+		},
 		"midi-qol": {
 			"rollAttackPerTarget": "default",
 			"removeAttackDamageButtons": "default",
@@ -332,16 +336,32 @@
 			"fumbleThreshold": null,
 			"onUseMacroName": "[postActiveEffects]ItemMacro"
 		},
+		"midiProperties": {
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [],
+				"effect": []
+			}
+		},
 		"dae": {
 			"macro": {
 				"name": "Sorcerous Burst",
 				"img": "icons/magic/lightning/bolt-strike-embers-teal.webp",
 				"type": "script",
 				"scope": "global",
-				"command": "// Sorcerous Burst - Recursive exploding d8s (applies to hit targets)\n// Foundry VTT v13 + DND5e v5.x + Midi-QOL\n\nif (args[0].item.name !== \"Sorcerous Burst\") return {};\n\nconst workflow = args[0].workflow;\nconst actor = workflow.actor;\nconst ability = actor.system.attributes.spellcasting;\nconst abilityMod = actor.system.abilities[ability]?.mod ?? 0;\n\nconst dmgRoll = args[0].damageRoll;\nif (!dmgRoll) return {};\n\nlet dmgType = \"acid\";\ntry {\n if (workflow.damageDetail?.length) {\n  dmgType = workflow.damageDetail[0].type ?? \"acid\";\n }\n} catch (err) {\n console.warn(\"Could not determine damage type, using acid\");\n}\n\n// Count how many 8s appeared in the original roll\nlet bursts = 0;\nfor (const die of dmgRoll.dice) {\n if (die.faces === 8) {\n  bursts += die.results.filter(r => r.result === 8).length;\n }\n}\n\n// Nothing happens if no 8s\nif (bursts === 0) return {};\n\n// Cap by spellcasting mod, minimum 1\nconst totalAllowed = Math.max(abilityMod, 1);\nlet totalRolled = 0;\nlet totalDamage = 0;\n\n// Recursive explosion loop\nwhile (bursts > 0 && totalRolled < totalAllowed) {\n const toRoll = Math.min(bursts, totalAllowed - totalRolled);\n const burstRoll = await (new Roll(`${toRoll}d8[${dmgType}]`)).roll({async: true});\n await burstRoll.toMessage({flavor: `Sorcerous Burst - Exploding d8s (${toRoll})`});\n\n totalDamage += burstRoll.total;\n totalRolled += toRoll;\n\n // Count new 8s for further bursts\n bursts = 0;\n for (const die of burstRoll.dice) {\n  if (die.faces === 8) {\n   bursts += die.results.filter(r => r.result === 8).length;\n  }\n }\n}\n\nif (totalDamage > 0) {\n await new MidiQOL.DamageOnlyWorkflow(\n  actor,\n  workflow.token,\n  totalDamage,\n  dmgType,\n  workflow.hitTargets,\n  workflow.item,\n  {\n   flavor: `Sorcerous Burst - Extra Exploding Damage`,\n   itemCardId: workflow.itemCardId,\n   useOther: false\n  }\n );\n}\n\nreturn {};",
+				"command": "// Sorcerous Burst - Recursive exploding d8s (applies to hit targets)\n// Foundry VTT v13 + DND5e v5.x + Midi-QOL\n\nif (args[0].item.name !== \"Sorcerous Burst\") return {};\n\nconst workflow = args[0].workflow;\nconst actor = workflow.actor;\nconst ability = actor.system.attributes.spellcasting;\nconst abilityMod = actor.system.abilities[ability]?.mod ?? 0;\n\nconst dmgRoll = args[0].damageRoll;\nif (!dmgRoll) return {};\n\nlet dmgType = \"acid\";\ntry {\n  if (workflow.damageDetail?.length) {\n    dmgType = workflow.damageDetail[0].type ?? \"acid\";\n  }\n} catch (err) {\n  console.warn(\"Could not determine damage type, using acid\");\n}\n\n// Count how many 8s appeared in the original roll\nlet bursts = 0;\nfor (const die of dmgRoll.dice) {\n  if (die.faces === 8) {\n    bursts += die.results.filter(r => r.result === 8).length;\n  }\n}\n\n// Nothing happens if no 8s\nif (bursts === 0) return {};\n\n// Cap by spellcasting mod, minimum 1\nconst totalAllowed = Math.max(abilityMod, 1);\nlet totalRolled = 0;\nlet totalDamage = 0;\n\n// Recursive explosion loop\nwhile (bursts > 0 && totalRolled < totalAllowed) {\n  const toRoll = Math.min(bursts, totalAllowed - totalRolled);\n  const burstRoll = await (new Roll(`${toRoll}d8[${dmgType}]`)).roll({async: true});\n  await burstRoll.toMessage({flavor: `Sorcerous Burst - Exploding d8s (${toRoll})`});\n\n  totalDamage += burstRoll.total;\n  totalRolled += toRoll;\n\n  // Count new 8s for further bursts\n  bursts = 0;\n  for (const die of burstRoll.dice) {\n    if (die.faces === 8) {\n      bursts += die.results.filter(r => r.result === 8).length;\n    }\n  }\n}\n\nif (totalDamage > 0) {\n  await new MidiQOL.DamageOnlyWorkflow(\n    actor,\n    workflow.token,\n    totalDamage,\n    dmgType,\n    workflow.hitTargets,\n    workflow.item,\n    {\n      flavor: `Sorcerous Burst - Extra Exploding Damage`,\n      itemCardId: workflow.itemCardId,\n      useOther: false\n    }\n  );\n}\n\nreturn {};",
 				"author": "3Yi0HjF4PKCA4vX0",
 				"_id": null,
-				"folder": null
+				"folder": null,
+				"flags": {}
 			}
 		}
 	},
