@@ -3,7 +3,8 @@
 # v1.13.4.1
 
 # Misc
-- Minor change so that grouping of tools also change when changing tool list
+
+- Minor change so that the grouping of tools also changes when changing the tool list
 
 # v1.13.4
 
@@ -17,6 +18,7 @@
 - Genasi now properly count as elementals.
 
 ## Conditions
+
 - Blinded Condition no longer affects Tremorsense and Blindsight.
 
 ## Equipment

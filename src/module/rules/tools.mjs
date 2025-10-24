@@ -12,8 +12,8 @@ const TOOLS_TO_REMOVE_SRD = [
 	"string",
 	"wind",
 	"vocal",
-	"fashion"
-]
+	"fashion",
+];
 const TOOLS_TO_REMOVE_LEGACY = [
 	"carpenter",
 	"card",
@@ -30,7 +30,7 @@ const TOOLS_TO_REMOVE_LEGACY = [
 	"string",
 	"wind",
 	"vocal",
-	"fashion"
+	"fashion",
 ];
 
 const TOOLS_TO_REMOVE = [
@@ -56,10 +56,8 @@ const TOOLS_TO_REMOVE = [
 	"lyre",
 	"panflute",
 	"shawm",
-	"viol"
+	"viol",
 ];
-
-
 
 const TOOLS = {
 	alchemist: { id: "Compendium.elkan5e.elkan5e-equipment.Item.5TRgfcXqzHRvcYql" },
@@ -98,52 +96,115 @@ const TOOLS = {
 	thief: { id: "Compendium.elkan5e.elkan5e-equipment.Item.LMnHshpVe3ciVIwF" },
 	tinker: { id: "Compendium.elkan5e.elkan5e-equipment.Item.2Yeb51C04CmAhbsv" },
 	viol: { id: "Compendium.elkan5e.elkan5e-equipment.Item.rrNz3sZQQdb8ygRW" },
-	woodcarver: { id: "Compendium.elkan5e.elkan5e-equipment.Item.FDsEsGSSPWhqwjlE" }
+	woodcarver: { id: "Compendium.elkan5e.elkan5e-equipment.Item.FDsEsGSSPWhqwjlE" },
 };
 
 const SRD_TOOL_TYPES = {
-	alchemist: "art", brewer: "art", calligrapher: "art", carpenter: "art", cartographer: "art", cobbler: "art",
-	cook: "art", glassblower: "art", jeweler: "art", leatherworker: "art", mason: "art", painter: "art",
-	potter: "art", smith: "art", tinker: "art", weaver: "art", woodcarver: "art",
-	dice: "game", dragonchess: "game", card: "game", threedragonante: "game",
-	bagpipes: "music", drum: "music", dulcimer: "music", flute: "music", lute: "music", lyre: "music",
-	horn: "music", panflute: "music", shawm: "music", viol: "music",
-	disg: "", forg: "", herb: "", navg: "", pois: "", thief: ""
+	alchemist: "art",
+	brewer: "art",
+	calligrapher: "art",
+	carpenter: "art",
+	cartographer: "art",
+	cobbler: "art",
+	cook: "art",
+	glassblower: "art",
+	jeweler: "art",
+	leatherworker: "art",
+	mason: "art",
+	painter: "art",
+	potter: "art",
+	smith: "art",
+	tinker: "art",
+	weaver: "art",
+	woodcarver: "art",
+	dice: "game",
+	dragonchess: "game",
+	card: "game",
+	threedragonante: "game",
+	bagpipes: "music",
+	drum: "music",
+	dulcimer: "music",
+	flute: "music",
+	lute: "music",
+	lyre: "music",
+	horn: "music",
+	panflute: "music",
+	shawm: "music",
+	viol: "music",
+	disg: "",
+	forg: "",
+	herb: "",
+	navg: "",
+	pois: "",
+	thief: "",
 };
 
 const LEGACY_TOOL_TYPES = {
-	painter: "art", sculpt: "art",
-	alchemist: "craft", brewer: "craft", calligrapher: "craft", herb: "craft", jeweler: "craft", leatherworker: "craft", mason: "craft",
-	pois: "craft", smith: "craft", tailor: "craft", tinker: "craft", woodcarver: "craft",
-	disg: "explore", navg: "explore", thief: "explore",
-	forg: "", game: ""
+	painter: "art",
+	sculpt: "art",
+	alchemist: "craft",
+	brewer: "craft",
+	calligrapher: "craft",
+	herb: "craft",
+	jeweler: "craft",
+	leatherworker: "craft",
+	mason: "craft",
+	pois: "craft",
+	smith: "craft",
+	tailor: "craft",
+	tinker: "craft",
+	woodcarver: "craft",
+	disg: "explore",
+	navg: "explore",
+	thief: "explore",
+	forg: "",
+	game: "",
 };
 
 const ELKAN_TOOL_TYPES = {
-	disg: "art", painter: "art", sculpt: "art",
-	brass: "music", keyboard: "music", percussion: "music", string: "music", wind: "music", vocal: "music",
+	disg: "art",
+	painter: "art",
+	sculpt: "art",
+	brass: "music",
+	keyboard: "music",
+	percussion: "music",
+	string: "music",
+	wind: "music",
+	vocal: "music",
 
 	// Craft
-	alchemist: "craft", calligrapher: "craft", cook: "craft", jeweler: "craft", leatherworker: "craft", mason: "craft", pois: "craft",
-	smith: "craft", tinker: "craft", woodcarver: "craft",
-	game: "", navg: "", thief: ""
+	alchemist: "craft",
+	calligrapher: "craft",
+	cook: "craft",
+	jeweler: "craft",
+	leatherworker: "craft",
+	mason: "craft",
+	pois: "craft",
+	smith: "craft",
+	tinker: "craft",
+	woodcarver: "craft",
+	game: "",
+	navg: "",
+	thief: "",
 };
 
 function getToolType(key, toolSetting) {
 	switch (toolSetting) {
-		case 2: return SRD_TOOL_TYPES[key] ?? "";
-		case 1: return LEGACY_TOOL_TYPES[key] ?? "";
-		case 0: return ELKAN_TOOL_TYPES[key] ?? "";
-		default: return "";
+		case 2:
+			return SRD_TOOL_TYPES[key] ?? "";
+		case 1:
+			return LEGACY_TOOL_TYPES[key] ?? "";
+		case 0:
+			return ELKAN_TOOL_TYPES[key] ?? "";
+		default:
+			return "";
 	}
 }
-
 
 export function tools() {
 	const TOOL_SETTING = game.settings.get("elkan5e", "tool");
 
 	console.log("Elkan 5e  |  Initializing Tools");
-
 
 	// ------------------------------
 	// REGISTER TOOLS AND UPDATE TYPE VALUES
@@ -155,7 +216,8 @@ export function tools() {
 	// ------------------------------
 	// APPLY CONFIG CHANGES BY SETTING
 	// ------------------------------
-	if (TOOL_SETTING === 0) { // Elkan Tools
+	if (TOOL_SETTING === 0) {
+		// Elkan Tools
 		CONFIG.DND5E.toolTypes.craft = "Crafting Tools";
 		CONFIG.DND5E.toolProficiencies.craft = "Crafting Tools";
 		delete CONFIG.DND5E.toolTypes.game;
@@ -163,7 +225,8 @@ export function tools() {
 		for (const tool of TOOLS_TO_REMOVE) delete CONFIG.DND5E.tools[tool];
 	}
 
-	if (TOOL_SETTING === 1) { // Legacy Tools
+	if (TOOL_SETTING === 1) {
+		// Legacy Tools
 		CONFIG.DND5E.toolTypes.craft = "Crafting Tools";
 		CONFIG.DND5E.toolTypes.explore = "Exploration Tools";
 		CONFIG.DND5E.toolProficiencies.craft = "Crafting Tools";
@@ -173,10 +236,11 @@ export function tools() {
 		for (const tool of TOOLS_TO_REMOVE_LEGACY) delete CONFIG.DND5E.tools[tool];
 	}
 
-	if (TOOL_SETTING === 2) { // SRD Tools
+	if (TOOL_SETTING === 2) {
+		// SRD Tools
 		for (const tool of TOOLS_TO_REMOVE_SRD) delete CONFIG.DND5E.tools[tool];
 	}
-};
+}
 
 export async function updateToolTypes() {
 	const TOOL_SETTING = game.settings.get("elkan5e", "tool");
@@ -217,7 +281,6 @@ export async function updateToolTypes() {
 		const desiredType = getToolType(key, TOOL_SETTING);
 		const currentType = foundry.utils.getProperty(item, "system.type.value") ?? "";
 
-
 		if (!desiredType) {
 			console.warn(`Elkan 5e | ⚠ getToolType() returned empty for ${key}. Check mapping.`);
 		}
@@ -229,6 +292,6 @@ export async function updateToolTypes() {
 			} catch (err) {
 				console.error(`Elkan 5e | Failed to update ${item.name}`, err);
 			}
-		} 
+		}
 	}
 }

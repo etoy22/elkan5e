@@ -7,8 +7,8 @@ export function refs() {
 	setupMovementRefs();
 	setupActionsRefs();
 	setupVisionLightRefs();
-	setupSizeTagsItemRefs()
-	setupPoisonsRef();;
+	setupSizeTagsItemRefs();
+	setupPoisonsRef();
 	setupD20Refs();
 	setupConditionRefs();
 	setupRestRefs();
@@ -67,16 +67,26 @@ function addPluralAliasesForReferenceField(dict) {
 }
 
 function addPluralReferenceAliases() {
-	try { addPluralAliasesForRules(CONFIG.DND5E?.rules); } catch { }
-	try { addPluralAliasesForReferenceField(CONFIG.DND5E?.damageTypes); } catch { }
-	try { addPluralAliasesForReferenceField(CONFIG.DND5E?.creatureTypes); } catch { }
-	try { addPluralAliasesForReferenceField(CONFIG.DND5E?.itemProperties); } catch { }
-	try { addPluralAliasesForReferenceField(CONFIG.DND5E?.rules); } catch { }
+	try {
+		addPluralAliasesForRules(CONFIG.DND5E?.rules);
+	} catch {}
+	try {
+		addPluralAliasesForReferenceField(CONFIG.DND5E?.damageTypes);
+	} catch {}
+	try {
+		addPluralAliasesForReferenceField(CONFIG.DND5E?.creatureTypes);
+	} catch {}
+	try {
+		addPluralAliasesForReferenceField(CONFIG.DND5E?.itemProperties);
+	} catch {}
+	try {
+		addPluralAliasesForReferenceField(CONFIG.DND5E?.rules);
+	} catch {}
 	try {
 		// skills: use enrichmentLookup.skills if present
 		const skills = CONFIG.DND5E?.enrichmentLookup?.skills;
 		if (skills) addPluralAliasesForReferenceField(skills);
-	} catch { }
+	} catch {}
 }
 
 function setupCombatRefs() {
@@ -267,7 +277,6 @@ function setupSpellRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.866461c483944840";
 	CONFIG.DND5E.rules.itemspells =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.f384b82c33db4306";
-
 }
 
 function setupCreatureTypeRefs() {
@@ -301,7 +310,6 @@ function setupCreatureTypeRefs() {
 	});
 	CONFIG.DND5E.rules.creaturetags =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.ZJX2hgglCq6NyNSD.JournalEntryPage.1ZgNrOURIMuR0CnH";
-
 }
 
 function setupMovementRefs() {
@@ -353,7 +361,6 @@ function setupMovementRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.1241fb5536814f78";
 	CONFIG.DND5E.rules.controllingamount =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.555721e2247340e7";
-
 }
 
 function setupVisionLightRefs() {
@@ -405,8 +412,6 @@ function setupGeneralRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.7fed5c6f267248d7";
 	CONFIG.DND5E.rules.telepathy =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.5l8QNlgPDPOHpGID.JournalEntryPage.f17e4a3b7e024eb0";
-
-
 }
 
 function setupActionsRefs() {
@@ -416,8 +421,7 @@ function setupActionsRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.EkKBA3oaiy1Kvs3c";
 }
 
-function setupSizeTagsItemRefs() {
-}
+function setupSizeTagsItemRefs() {}
 
 function setupPoisonsRef() {
 	CONFIG.DND5E.rules.contactpoison =
@@ -458,8 +462,6 @@ function setupConditionRefs() {
 	CONFIG.DND5E.rules.concentrating =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.4ZOHN6tGvj54J6Kv";
 
-
-
 	CONFIG.DND5E.rules.disease =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.232cb157e7054330";
 }
@@ -480,7 +482,6 @@ function setupHazardRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.e7rUhwl4HkTVE0Qs.JournalEntryPage.BIlnr0xYhqt4TGsi";
 	CONFIG.DND5E.rules.hazards =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.e7rUhwl4HkTVE0Qs.JournalEntryPage.5hyEitPd1Kb27fP5";
-
 }
 
 function setupRestRefs() {
@@ -533,7 +534,6 @@ function setupMonsterRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.37314e78a083463d";
 	CONFIG.DND5E.rules.challengerating =
 		"Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.BMoxmXB8pX6bOBus";
-
 }
 
 function setuptrapsRefs() {
@@ -542,4 +542,3 @@ function setuptrapsRefs() {
 	CONFIG.DND5E.rules.disablingtraps =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.7aedb0661422480a";
 }
-
