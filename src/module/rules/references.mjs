@@ -138,26 +138,26 @@ function setupCombatRefs() {
 	CONFIG.DND5E.rules.resistance =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.MGw7hOo14k9MWvyy";
 
-	// CONFIG.DND5E.rules.attackrolls =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.5wkqEqhbBD5kDeE7";
-	// CONFIG.DND5E.rules.unseenattackers =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.5ZJNwEPlsGurecg5";
-	// CONFIG.DND5E.rules.unseentargets =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.5ZJNwEPlsGurecg5";
-	// CONFIG.DND5E.rules.rangedattacks =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.S9aclVOCbusLE3kC";
-	// CONFIG.DND5E.rules.range =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.HjKXuB8ndjcqOds7";
-	// CONFIG.DND5E.rules.rangedattacksinclosecombat =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.qEZvxW0NM7ixSQP5";
-	// CONFIG.DND5E.rules.meleeattacks =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.GTk6emvzNxl8Oosl";
-	// CONFIG.DND5E.rules.underwatercombat =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.6zVOeLyq4iMnrQT4";
-	// CONFIG.DND5E.rules.shoving =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.hrdqMF8hRXJdNzJx";
-	// CONFIG.DND5E.rules.damagethreshold =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.9LJZhqvCburpags3";
+	CONFIG.DND5E.rules.attackrolls =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.U0l9yEH5nKJLmEk4";
+	CONFIG.DND5E.rules.unseenattackers =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.957495fd15c2442c";
+	CONFIG.DND5E.rules.unseentargets =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.42024d517ed74343";
+	CONFIG.DND5E.rules.rangedattacks =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.968ecabc00da46a6";
+	CONFIG.DND5E.rules.range =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.bb8bf45ae58b4b93";
+	CONFIG.DND5E.rules.rangedattacksinclosecombat =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.8b81f04c94844fe8";
+	CONFIG.DND5E.rules.meleeattacks =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.b8dedcdc5391436e";
+	CONFIG.DND5E.rules.underwatercombat =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.4431441097204ba4";
+	CONFIG.DND5E.rules.shoving =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.f8e1abf1567a428d";
+	CONFIG.DND5E.rules.damagethreshold =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.e177956853ce4a88";
 }
 
 function setupDamageRefs() {
@@ -247,26 +247,26 @@ function setupSpellRefs() {
 	CONFIG.DND5E.rules.schoolsofmagic =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.sCJqoQlaDzseYmXn";
 
-	// CONFIG.DND5E.rules.castaspell =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.GLwN36E4WXn3Cp4Z";
-	// CONFIG.DND5E.rules.bonusactioncasting =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.RP1WL9FXI3aknlxZ";
-	// CONFIG.DND5E.rules.reactioncasting =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.t62lCfinwU9H7Lji";
-	// CONFIG.DND5E.rules.longercastingtimes =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.gOAIRFCyPUx42axn";
-	// CONFIG.DND5E.rules.instantaneous =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.kdlgZOpRMB6bGCod";
-	// CONFIG.DND5E.rules.areaofeffect =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.wvtCeGHgnUmh0cuj";
-	// CONFIG.DND5E.rules.pointoforigin =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.8HxbRceQQUAhyWRt";
-	// CONFIG.DND5E.rules.spellsavingthrows =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.8DajfNll90eeKcmB";
-	// CONFIG.DND5E.rules.spellattackrolls =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.qAFzmGZKhVvAEUF3";
-	// CONFIG.DND5E.rules.itemspells =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.DABoaeeF6w31UCsj";
+	CONFIG.DND5E.rules.castaspell =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.0d24b4fb97474b46";
+	CONFIG.DND5E.rules.bonusactioncasting =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.ca46818b814b4230";
+	CONFIG.DND5E.rules.reactioncasting =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.8890d648939f48c3";
+	CONFIG.DND5E.rules.longercastingtimes =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.0dba9c2f39cc4c36";
+	CONFIG.DND5E.rules.instantaneous =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.6ead8f1dc3494671";
+	CONFIG.DND5E.rules.areaofeffect =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.abaacfa0616747f7";
+	CONFIG.DND5E.rules.pointoforigin =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.9783eb8afabd41a3";
+	CONFIG.DND5E.rules.spellsavingthrows =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.595aa92cc860476c";
+	CONFIG.DND5E.rules.spellattackrolls =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.866461c483944840";
+	CONFIG.DND5E.rules.itemspells =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.f384b82c33db4306";
 
 }
 
@@ -347,17 +347,12 @@ function setupMovementRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.zaI1nuc41wANKoFX";
 	CONFIG.DND5E.rules.squeezing =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.wKtOwagDAiNfVoPS";
-	// CONFIG.DND5E.rules.mounting =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.MFpyvUIdcBpC9kIE";
-	// CONFIG.DND5E.rules.dismounting =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.MFpyvUIdcBpC9kIE";
-	// CONFIG.DND5E.rules.controllingamount =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.khmR2xFk1NxoQUgZ";
-	// CONFIG.DND5E.rules.curingmadness =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.6Icem7G3CICdNOkM";
-	// CONFIG.DND5E.rules.telepathy =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.geTidcFIYWuUvD2L";
-
+	CONFIG.DND5E.rules.mounting =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.b6a50ab6c1d64da7";
+	CONFIG.DND5E.rules.dismounting =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.1241fb5536814f78";
+	CONFIG.DND5E.rules.controllingamount =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.555721e2247340e7";
 
 }
 
@@ -406,6 +401,11 @@ function setupGeneralRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.HWHRQVBVG7K0RVVW";
 	CONFIG.DND5E.rules.space =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.WIA5bs3P45PmO3OS";
+	CONFIG.DND5E.rules.curingmadness =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.7fed5c6f267248d7";
+	CONFIG.DND5E.rules.telepathy =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.5l8QNlgPDPOHpGID.JournalEntryPage.f17e4a3b7e024eb0";
+
 
 }
 
@@ -460,19 +460,19 @@ function setupConditionRefs() {
 
 
 
-	// CONFIG.DND5E.rules.disease =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.oNQWvyRZkTOJ8PBq";
+	CONFIG.DND5E.rules.disease =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.232cb157e7054330";
 }
 
 function setupD20Refs() {
-	// CONFIG.DND5E.rules.d20test =
-	// 	"Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.nxPH59t3iNtWJxnU";
-	// CONFIG.DND5E.rules.difficultyclass =
-	// 	"Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.afnB0KZZk2hKtjv4";
-	// CONFIG.DND5E.rules.abilitycheck =
-	// 	"Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.XBQqXCoTbvp5Dika";
-	// CONFIG.DND5E.rules.savingthrow =
-	// 	"Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.Vlri6Mp6grn9wt3g";
+	CONFIG.DND5E.rules.d20test =
+		"Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.nxPH59t3iNtWJxnU";
+	CONFIG.DND5E.rules.difficultyclass =
+		"Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.afnB0KZZk2hKtjv4";
+	CONFIG.DND5E.rules.abilitycheck =
+		"Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.XBQqXCoTbvp5Dika";
+	CONFIG.DND5E.rules.savingthrow =
+		"Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.Vlri6Mp6grn9wt3g";
 }
 
 function setupHazardRefs() {
@@ -508,38 +508,38 @@ function setupItemsRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.uWa3L8lGJKgICYHt";
 	CONFIG.DND5E.rules.attunement =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.CpD1zLLviYjS9FBX";
-	// CONFIG.DND5E.rules.useanobject =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.ljqhJx8Qxu2ivo69";
-	// CONFIG.DND5E.rules.wearingitems =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.iPB8mGKuQx3X0Z2J";
-	// CONFIG.DND5E.rules.wieldingitems =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.iPB8mGKuQx3X0Z2J";
-	// CONFIG.DND5E.rules.paireditems =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.rd9pCH8yFraSGN34";
-	// CONFIG.DND5E.rules.commandword =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.HiXixxLYesv6Ff3t";
-	// CONFIG.DND5E.rules.consumables =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.UEPAcZFzQ5x196zE";
-	// CONFIG.DND5E.rules.charges =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.NLRXcgrpRCfsA5mO";
+	CONFIG.DND5E.rules.useanobject =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.df09b63cc4f8464f";
+	CONFIG.DND5E.rules.wearingitems =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.cbdf17feb97b49a1";
+	CONFIG.DND5E.rules.wieldingitems =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.f6319443ed9c44f9";
+	CONFIG.DND5E.rules.paireditems =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.00b91c78dd7f40ec";
+	CONFIG.DND5E.rules.commandword =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.2f08e5b6b2ba41ab";
+	CONFIG.DND5E.rules.consumables =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.f780b8ec78d64aef";
+	CONFIG.DND5E.rules.charges =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.54d76ac4c4974cde";
 }
 
 function setupMonsterRefs() {
-	// CONFIG.DND5E.rules.legendaryactions =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.C1awOyZh78pq1xmY";
-	// CONFIG.DND5E.rules.lairactions =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.07PtjpMxiRIhkBEp";
-	// CONFIG.DND5E.rules.regionaleffects =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.uj8W27NKFyzygPUd";
-	// CONFIG.DND5E.rules.challengerating =
-	// 	"Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.BMoxmXB8pX6bOBus";
+	CONFIG.DND5E.rules.legendaryactions =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.08674a167b3642fa";
+	CONFIG.DND5E.rules.lairactions =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.d8706d05b4cd48b1";
+	CONFIG.DND5E.rules.regionaleffects =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.37314e78a083463d";
+	CONFIG.DND5E.rules.challengerating =
+		"Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.BMoxmXB8pX6bOBus";
 
 }
 
 function setuptrapsRefs() {
-	// CONFIG.DND5E.rules.detectingtraps =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.DZ7AhdQ94xggG4bj";
-	// CONFIG.DND5E.rules.disablingtraps =
-	// 	"Compendium.dnd5e.rules.JournalEntry.NizgRXLNUqtdlC1s.JournalEntryPage.DZ7AhdQ94xggG4bj";
-
+	CONFIG.DND5E.rules.detectingtraps =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.aa9a40780c7346db";
+	CONFIG.DND5E.rules.disablingtraps =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.7aedb0661422480a";
 }
+
