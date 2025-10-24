@@ -26,12 +26,7 @@ import { formating } from "./module/rules/format.mjs";
 import { tools } from "./module/rules/tools.mjs";
 import { weapons } from "./module/rules/weapon.mjs";
 import { scroll } from "./module/rules/scroll.mjs";
-import {
-	setupCombatReferences,
-	setupDamageReferences,
-	setupSpellcastingReferences,
-	setupCreatureTypeReferences,
-} from "./module/rules/references.mjs";
+import { refs } from "./module/rules/references.mjs";
 
 import * as Spells from "./module/spells.mjs";
 import * as Feats from "./module/feats.mjs";
@@ -52,11 +47,7 @@ Hooks.once("init", async () => {
 		formating();
 		scroll();
 		skills();
-		// Setup references
-		setupCombatReferences();
-		setupDamageReferences();
-		setupSpellcastingReferences();
-		setupCreatureTypeReferences();
+		refs();
 	} catch (error) {
 		console.error("Elkan 5e  |  Initialization Error:", error);
 	}
