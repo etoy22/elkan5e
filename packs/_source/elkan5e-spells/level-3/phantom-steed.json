@@ -40,10 +40,6 @@
 			"ida": false
 		},
 		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
 			"migratedProperties": [
 				"vocal",
 				"somatic",
@@ -57,7 +53,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You shape the air before you with your hands, creating a dull gray mist. You sketch a horse-like creature of your choice in the air, then give the creature a name, granting it a semblance of life. The creature fades to mist when the spell ends.</em></p><br><p><strong>Ritual Casting Time:</strong> 1 Minute</p><br><p><strong>Summoning Spell</strong></p><br><p>A Large quasi-real, horselike creature appears on the ground in an unoccupied space of your choice within range.</p><ul><li><p>It is a Large &amp;reference[Construct]{Construct}. It has 16 Strength, 10 Dexterity, 12 Constitution, 2 Int, 11 Wisdom and 7 Charisma. It has a speed of 100 ft. and can travel 10 miles in an hour, or 13 miles at a fast pace. The Construct cannot attack.</p></li><li><p>The horse-like creature has 1 hit point. If the steed takes any damage, the spell ends. When the spell ends the steed gradually fades in place, giving the rider 1 minute to dismount.</p></li></ul><p></p><br><p><em>You decide the creature's appearance, but it is equipped with a saddle, bit, and bridle. Any of the equipment created by the spell vanishes in a puff of smoke if it is carried more than 10 feet away from the steed.</em></p>",
+			"value": "<p><em>You shape the air before you with your hands, creating a dull gray mist. You sketch a horse-like creature of your choice in the air, then give the creature a name, granting it a semblance of life. The creature fades to mist when the spell ends.</em></p><p><strong>Ritual Casting Time:</strong> 1 Minute</p><p><strong>Summoning Spell</strong></p><p>A Large quasi-real, horselike creature appears on the ground in an unoccupied space of your choice within range.</p><ul><li><p>It is a Large &amp;reference[Construct]{Construct}. It has 16 Strength, 10 Dexterity, 12 Constitution, 2 Int, 11 Wisdom and 7 Charisma. It has a speed of 100 ft. and can travel 10 miles in an hour, or 13 miles at a fast pace. The Construct cannot attack.</p></li><li><p>The horse-like creature has 1 hit point. If the steed takes any damage, the spell ends. When the spell ends the steed gradually fades in place, giving the rider 1 minute to dismount.</p></li></ul><p></p><p><em>You decide the creature's appearance, but it is equipped with a saddle, bit, and bridle. Any of the equipment created by the spell vanishes in a puff of smoke if it is carried more than 10 feet away from the steed.</em></p>",
 			"chat": ""
 		},
 		"source": {
@@ -119,20 +115,19 @@
 			"ritual"
 		],
 		"activities": {
-			"mwJLmWLyeqj6Q3Qr": {
-				"type": "utility",
+			"paNZIxavGZSfjMr3": {
+				"type": "summon",
+				"_id": "paNZIxavGZSfjMr3",
 				"activation": {
 					"type": "action",
-					"value": null,
 					"override": false
 				},
 				"consumption": {
-					"targets": [],
 					"scaling": {
-						"allowed": false,
-						"max": ""
+						"allowed": false
 					},
-					"spellSlot": true
+					"spellSlot": true,
+					"targets": []
 				},
 				"description": {
 					"chatFlavor": ""
@@ -144,27 +139,225 @@
 				},
 				"effects": [],
 				"range": {
+					"units": "self",
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
 					"override": false,
 					"prompt": true
 				},
-				"roll": {
-					"formula": "",
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"bonuses": {
+					"ac": "",
+					"hd": "",
+					"hp": "",
+					"attackDamage": "",
+					"saveDamage": "",
+					"healing": ""
+				},
+				"creatureSizes": [],
+				"creatureTypes": [],
+				"match": {
+					"attacks": false,
+					"proficiency": false,
+					"saves": false,
+					"ability": ""
+				},
+				"profiles": [
+					{
+						"uuid": "Compendium.elkan5e.elkan5e-summoned-creatures.Actor.pTJ9aZQH3ZxFDd5q"
+					}
+				],
+				"summon": {
+					"prompt": true,
+					"mode": ""
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
 					"name": "",
-					"prompt": false,
-					"visible": false
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"friendlySummon": false,
+				"name": "",
+				"img": "",
+				"appliedEffects": []
+			},
+			"V1QuV1XXYshLkLSq": {
+				"type": "summon",
+				"activation": {
+					"type": "minute",
+					"override": true,
+					"condition": "",
+					"value": 1
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": false,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "self",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false,
+					"prompt": true
 				},
 				"uses": {
 					"spent": 0,
-					"recovery": []
+					"recovery": [],
+					"max": ""
 				},
-				"_id": "mwJLmWLyeqj6Q3Qr"
+				"bonuses": {
+					"ac": "",
+					"hd": "",
+					"hp": "",
+					"attackDamage": "",
+					"saveDamage": "",
+					"healing": ""
+				},
+				"creatureSizes": [],
+				"creatureTypes": [],
+				"match": {
+					"attacks": false,
+					"proficiency": false,
+					"saves": false,
+					"ability": ""
+				},
+				"profiles": [
+					{
+						"uuid": "Compendium.elkan5e.elkan5e-summoned-creatures.Actor.pTJ9aZQH3ZxFDd5q"
+					}
+				],
+				"summon": {
+					"prompt": true,
+					"mode": ""
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"friendlySummon": false,
+				"name": "Ritual (1 Minute)",
+				"_id": "V1QuV1XXYshLkLSq",
+				"img": "",
+				"appliedEffects": []
 			}
 		},
 		"identifier": "phantom-steed"

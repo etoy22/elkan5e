@@ -1,4 +1,7 @@
-import { gameSettingRegister } from "./module/gameSettings/gameSettingRegister.mjs";
+import {
+	gameSettingRegister,
+	gameSettingsMigrate,
+} from "./module/gameSettings/gameSettingRegister.mjs";
 import { startDialog } from "./module/gameSettings/dialog.mjs";
 import { initWarlockSpellSlot } from "./module/classes/warlock.mjs";
 import { secondWind } from "./module/classes/fighter.mjs";
@@ -29,23 +32,10 @@ import * as Spells from "./module/spells.mjs";
 import * as Feats from "./module/feats.mjs";
 import { skills } from "./module/rules/skills.mjs";
 
-
-// Attach click handler when chat message is rendered
-Hooks.on("renderChatMessage", (message, html) => {
-	if (!message.flags?.elkan5e?.poll) return;
-
-	html.find(".elkan5e-poll-btn").on("click", (ev) => {
-		ev.preventDefault();
-		const url = ev.currentTarget.dataset.url || POLL_URL;
-		if (url) window.open(url, "_blank", "noopener");
-	});
-});
-
 Hooks.once("init", async () => {
 	try {
 		console.log("Elkan 5e | Initializing Elkan 5e");
 		await gameSettingRegister();
-
 		initWarlockSpellSlot();
 
 		// Initialize rule systems
@@ -65,6 +55,7 @@ Hooks.once("init", async () => {
 
 Hooks.once("ready", () => {
 	try {
+		gameSettingsMigrate();
 		conditionsReady();
 		startDialog();
 	} catch (error) {

@@ -10,9 +10,13 @@ const CONDITIONS_TYPES = [
 		key: "blinded",
 		id: "SXTqmewRrCwPS8yW",
 		changes: [
-			{ key: "flags.midi-qol.disadvantage.attack.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.disadvantage.ability.save.dex", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.grants.advantage.attack.all", mode: 5, value: "1" },
+			{ key: "flags.midi-qol.disadvantage.attack.all", mode: 5, value: "!Boolean(canSense)" },
+			{ key: "system.abilities.dex.save.roll.mode", mode: 5, value: "-1" },
+			{
+				key: "flags.midi-qol.grants.advantage.attack.all",
+				mode: 5,
+				value: "!Boolean(target?.canSense)",
+			},
 			{ key: "flags.midi-qol.noOpportunityAttack", mode: 5, value: "1" },
 		],
 	},
@@ -33,10 +37,7 @@ const CONDITIONS_TYPES = [
 	{
 		key: "deafened",
 		id: "AHgIwuNdpp0wKF2y",
-		changes: [
-			{ key: "flags.midi-qol.disadvantage.ability.save.dex", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.disadvantage.skill.all", mode: 5, value: "1" },
-		],
+		changes: [{ key: "system.abilities.dex.save.roll.mode", mode: 5, value: "-1" }],
 	},
 	{ key: "diseased" },
 	{ key: "drained", id: "ZnhMIMgPZv1QDxzZ" },
@@ -63,10 +64,11 @@ const CONDITIONS_TYPES = [
 	{
 		key: "obscuredheavily",
 		id: "UC5VK6i6vqWEUfMn",
+		exclusiveGroup: "obscured",
 		changes: [
 			{ key: "flags.midi-qol.advantage.attack.all", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.grants.disadvantage.attack.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.advantage.skill.stealth", mode: 5, value: "1" },
+			{ key: "system.skills.ste.roll.mode", mode: 5, value: "1" },
 		],
 	},
 	{
@@ -101,14 +103,15 @@ const CONDITIONS_TYPES = [
 				mode: 5,
 				value: "!Boolean(canSee)",
 			},
-			{ key: "flags.midi-qol.advantage.skill.stealth", mode: 5, value: "1" },
+			{ key: "system.skills.ste.roll.mode", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.noOpportunityAttack", mode: 5, value: "!Boolean(canSee)" },
 		],
 	},
 	{
 		key: "obscuredlightly",
 		id: "Jq7kMUlHodqSbYDD",
-		changes: [{ key: "flags.midi-qol.advantage.skill.stealth", mode: 5, value: "1" }],
+		exclusiveGroup: "obscured",
+		changes: [{ key: "system.skills.ste.roll.mode", mode: 5, value: "1" }],
 	},
 	{
 		key: "paralyzed",
@@ -156,7 +159,7 @@ const CONDITIONS_TYPES = [
 		changes: [
 			{ key: "flags.midi-qol.disadvantage.attack.all", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.grants.advantage.attack.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.disadvantage.ability.save.dex", mode: 5, value: "1" },
+			{ key: "system.abilities.dex.save.roll.mode", mode: 5, value: "-1" },
 			{ key: "flags.midi-qol.fail.spell.somatic", mode: 5, value: "1" },
 		],
 	},
@@ -203,7 +206,7 @@ const CONDITIONS_TYPES = [
 		id: "QOZeW0m8RCdVg6UE",
 		changes: [
 			{ key: "flags.midi-qol.noReactions", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.disadvantage.ability.save.dex", mode: 5, value: "1" },
+			{ key: "system.abilities.dex.save.roll.mode", mode: 5, value: "-1" },
 			{ key: "system.attributes.init.bonus", mode: 2, value: "-20" },
 		],
 		flags: {
@@ -231,10 +234,10 @@ const CONDITIONS_TYPES = [
 		key: "weakened",
 		id: "iJT3cWvyTNBv1L5h",
 		changes: [
-			{ key: "flags.midi-qol.disadvantage.ability.check.dex", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.disadvantage.ability.save.dex", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.disadvantage.ability.check.str", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.disadvantage.ability.save.str", mode: 5, value: "1" },
+			{ key: "system.abilities.dex.check.roll.mode", mode: 5, value: "-1" },
+			{ key: "system.abilities.dex.save.roll.mode", mode: 5, value: "-1" },
+			{ key: "system.abilities.str.check.roll.mode", mode: 5, value: "-1" },
+			{ key: "system.abilities.str.save.roll.mode", mode: 5, value: "-1" },
 			{
 				key: "flags.midi-qol.onUseMacroName",
 				mode: 0,
@@ -248,15 +251,33 @@ const CONDITIONS_TYPES = [
 const se_rmv = ["burrowing", "ethereal", "flying", "hovering", "marked", "sleeping"];
 const STATUS_EFFECTS = [
 	{ key: "concentrating", id: "4ZOHN6tGvj54J6Kv" },
-	{ key: "coverHalf", id: "1BmTbnT3xDPqv9dq" },
-	{ key: "coverThreeQuarters", id: "1BmTbnT3xDPqv9dq" },
-	{ key: "coverTotal", id: "hY5s70xMeG5ISFUA" },
+	{
+		key: "coverHalf",
+		id: "1BmTbnT3xDPqv9dq",
+		order: 2,
+		exclusiveGroup: "cover",
+		coverBonus: 2,
+	},
+	{
+		key: "coverThreeQuarters",
+		id: "1BmTbnT3xDPqv9dq",
+		order: 3,
+		exclusiveGroup: "cover",
+		coverBonus: 5,
+	},
+	{
+		key: "coverTotal",
+		id: "hY5s70xMeG5ISFUA",
+		order: 4,
+		exclusiveGroup: "cover",
+	},
 	{ key: "dead" },
 	{
 		key: "dodging",
 		changes: [
 			{ key: "flags.midi-qol.grants.disadvantage.attack.all", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.advantage.ability.save.dex", mode: 5, value: "1" },
+			{ key: "system.abilities.dex.save.roll.mode", mode: 5, value: "1" },
 		],
 		flags: {
 			dae: {
@@ -290,6 +311,40 @@ const COVER_IMG_MAP = {
 	coverThreeQuarters: "cover-three-quarters.svg",
 	coverTotal: "cover-full.svg",
 };
+const ADVANTAGE_STATUS_DEFS = [
+	{
+		key: "advantage",
+		fallbackName: "Advantage",
+		img: "icons/svg/upgrade.svg",
+		order: 998,
+		exclusiveGroup: "elkan-advantage-mode",
+		changes: [
+			{ key: "flags.midi-qol.advantage.attack.all", mode: 5, value: "1" },
+			{ key: "flags.midi-qol.advantage.ability.check.all", mode: 5, value: "1" },
+			{ key: "flags.midi-qol.advantage.ability.save.all", mode: 5, value: "1" },
+			{ key: "flags.midi-qol.advantage.skill.all", mode: 5, value: "1" },
+		],
+		flags: {
+			core: { statusId: "advantage" },
+		},
+	},
+	{
+		key: "disadvantage",
+		fallbackName: "Disadvantage",
+		img: "icons/svg/downgrade.svg",
+		order: 999,
+		exclusiveGroup: "elkan-advantage-mode",
+		changes: [
+			{ key: "flags.midi-qol.disadvantage.attack.all", mode: 5, value: "1" },
+			{ key: "flags.midi-qol.disadvantage.ability.check.all", mode: 5, value: "1" },
+			{ key: "flags.midi-qol.disadvantage.ability.save.all", mode: 5, value: "1" },
+			{ key: "flags.midi-qol.disadvantage.skill.all", mode: 5, value: "1" },
+		],
+		flags: {
+			core: { statusId: "disadvantage" },
+		},
+	},
+];
 
 const ensureMidiInvisibleVisionRule = () => {
 	const midiModule = game.modules.get("midi-qol");
@@ -355,6 +410,9 @@ export function conditions() {
 		if (def.image !== false) ct.img = imgFor(def.key);
 		if (def.changes?.length) ct.changes = mergeChanges(ct.changes, def.changes);
 		if (def.flags) ct.flags = mergeFlags(ct.flags, def.flags);
+		if (def.order != null && ct.order == null) ct.order = def.order;
+		if (def.exclusiveGroup != null) ct.exclusiveGroup = def.exclusiveGroup;
+		if (def.coverBonus != null) ct.coverBonus = def.coverBonus;
 	};
 
 	// Move statusEffects[key] -> conditionTypes[key], preserving SE props, then apply our def & i18n
@@ -373,6 +431,9 @@ export function conditions() {
 		}
 		if (def.changes?.length) merged.changes = mergeChanges(existingCT.changes, def.changes);
 		if (def.flags) merged.flags = mergeFlags(existingCT.flags, def.flags);
+		if (def.order != null && merged.order == null) merged.order = def.order;
+		if (def.exclusiveGroup != null) merged.exclusiveGroup = def.exclusiveGroup;
+		if (def.coverBonus != null) merged.coverBonus = def.coverBonus;
 
 		CONFIG.DND5E.conditionTypes[def.key] = merged;
 		delete CONFIG.DND5E.statusEffects[def.key];
@@ -439,30 +500,46 @@ export function conditions() {
 			if (def.changes?.length) se.changes = mergeChanges(se.changes, def.changes);
 			if (def.flags) se.flags = mergeFlags(se.flags, def.flags);
 			if (def.order != null && se.order == null) se.order = def.order;
+			if (def.exclusiveGroup != null) se.exclusiveGroup = def.exclusiveGroup;
+			if (def.coverBonus != null) se.coverBonus = def.coverBonus;
 		}
 
 		// Migrate these SE -> CT
 		const MOVE_TO_CONDITIONS = [
 			{ key: "concentrating", id: "4ZOHN6tGvj54J6Kv" },
-			{ key: "coverHalf", id: "1BmTbnT3xDPqv9dq" },
-			{ key: "coverThreeQuarters", id: "1BmTbnT3xDPqv9dq" },
-			{ key: "coverTotal", id: "hY5s70xMeG5ISFUA" },
+			{
+				key: "coverHalf",
+				id: "1BmTbnT3xDPqv9dq",
+				order: 2,
+				exclusiveGroup: "cover",
+				coverBonus: 2,
+			},
+			{
+				key: "coverThreeQuarters",
+				id: "1BmTbnT3xDPqv9dq",
+				order: 3,
+				exclusiveGroup: "cover",
+				coverBonus: 5,
+			},
+			{
+				key: "coverTotal",
+				id: "hY5s70xMeG5ISFUA",
+				order: 4,
+				exclusiveGroup: "cover",
+			},
 		];
 		for (const def of MOVE_TO_CONDITIONS) migrateStatusToCondition(def);
 
-		// Advantage & Disadvantage at end of statusEffects
-		CONFIG.DND5E.statusEffects["advantage"] = {
-			name: game.i18n.localize("elkan5e.conditions.advantage") || "Advantage",
-			key: "advantage",
-			img: "icons/svg/upgrade.svg",
-			order: 998,
-		};
-		CONFIG.DND5E.statusEffects["disadvantage"] = {
-			name: game.i18n.localize("elkan5e.conditions.disadvantage") || "Disadvantage",
-			key: "disadvantage",
-			img: "icons/svg/downgrade.svg",
-			order: 999,
-		};
+		for (const def of ADVANTAGE_STATUS_DEFS) {
+			const se = (CONFIG.DND5E.statusEffects[def.key] ??= {});
+			se.name = game.i18n.localize(`elkan5e.conditions.${def.key}`) || def.fallbackName;
+			se.key = def.key;
+			se.img = def.img;
+			if (def.order != null && se.order == null) se.order = def.order;
+			if (def.exclusiveGroup != null) se.exclusiveGroup = def.exclusiveGroup;
+			if (def.changes?.length) se.changes = mergeChanges(se.changes, def.changes);
+			if (def.flags) se.flags = mergeFlags(se.flags, def.flags);
+		}
 	}
 }
 
@@ -496,6 +573,9 @@ export function conditionsReady() {
 		if (def.image !== false) ct.img = imgFor(def.key);
 		if (def.changes?.length) ct.changes = mergeChanges(ct.changes, def.changes);
 		if (def.flags) ct.flags = mergeFlags(ct.flags, def.flags);
+		if (def.order != null && ct.order == null) ct.order = def.order;
+		if (def.exclusiveGroup != null) ct.exclusiveGroup = def.exclusiveGroup;
+		if (def.coverBonus != null) ct.coverBonus = def.coverBonus;
 
 		// Also mirror into statusEffects for backwards compat
 		CONFIG.DND5E.statusEffects[def.key] = {
@@ -514,6 +594,19 @@ export function conditionsReady() {
 				? `modules/elkan5e/icons/conditions/${COVER_IMG_MAP[def.key]}`
 				: imgFor(def.key);
 		}
+		if (def.changes?.length) se.changes = mergeChanges(se.changes, def.changes);
+		if (def.flags) se.flags = mergeFlags(se.flags, def.flags);
+		if (def.order != null && se.order == null) se.order = def.order;
+		if (def.exclusiveGroup != null) se.exclusiveGroup = def.exclusiveGroup;
+		if (def.coverBonus != null) se.coverBonus = def.coverBonus;
+	}
+	for (const def of ADVANTAGE_STATUS_DEFS) {
+		const se = (CONFIG.DND5E.statusEffects[def.key] ??= {});
+		se.name = game.i18n.localize(`elkan5e.conditions.${def.key}`) || def.fallbackName;
+		se.key = def.key;
+		se.img = def.img;
+		if (def.order != null && se.order == null) se.order = def.order;
+		if (def.exclusiveGroup != null) se.exclusiveGroup = def.exclusiveGroup;
 		if (def.changes?.length) se.changes = mergeChanges(se.changes, def.changes);
 		if (def.flags) se.flags = mergeFlags(se.flags, def.flags);
 	}
