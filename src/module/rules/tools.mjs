@@ -252,9 +252,6 @@ export async function updateToolTypes() {
 		return;
 	}
 
-	let updatedCount = 0;
-	let missingCount = 0;
-
 	for (const [key, value] of Object.entries(TOOLS)) {
 		const uuid = value.id;
 
@@ -273,7 +270,6 @@ export async function updateToolTypes() {
 
 		if (!item) {
 			console.warn(`Elkan 5e | Could not find item for ${key} (${uuid})`);
-			missingCount++;
 			continue;
 		}
 
@@ -288,7 +284,6 @@ export async function updateToolTypes() {
 		if (currentType !== desiredType) {
 			try {
 				await item.update({ "system.type.value": desiredType });
-				updatedCount++;
 			} catch (err) {
 				console.error(`Elkan 5e | Failed to update ${item.name}`, err);
 			}

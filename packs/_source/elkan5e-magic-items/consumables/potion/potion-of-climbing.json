@@ -1,0 +1,210 @@
+{
+	"_id": "dmgPotionOfClimb",
+	"name": "Potion of Climbing",
+	"type": "consumable",
+	"folder": "MCDkPm6xibc3rF7y",
+	"img": "icons/consumables/potions/potion-vial-corked-labeled-purple.webp",
+	"system": {
+		"activities": {
+			"RwfSYL6yjdvldoIH": {
+				"type": "utility",
+				"name": "Drink",
+				"_id": "RwfSYL6yjdvldoIH",
+				"activation": {
+					"type": "bonus",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"scaling": {}
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "D6fYii3nkDC4Tsbi"
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"img": "",
+				"appliedEffects": [
+					"D6fYii3nkDC4Tsbi"
+				]
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"autoDestroy": true,
+			"max": "1"
+		},
+		"description": {
+			"value": "<p><em>Potion - Common</em></p><p><em>This potion is separated into brown, silver, and gray layers resembling bands of stone. Shaking the bottle fails to mix the colors.</em></p><p><strong>Action</strong> - 1 Creature (Touch) - 1 Hour</p><p><strong>Buff</strong></p><ul><li><p>Target gains a Climb Speed equal to their Speed for 1 hour. During this time, you have &amp;reference[Advantage] on &amp;reference[Athletics] checks to climb.</p></li></ul>",
+			"chat": ""
+		},
+		"identifier": "potion-of-climbing",
+		"source": {
+			"revision": 2,
+			"rules": "2024",
+			"license": "",
+			"book": "",
+			"page": "",
+			"custom": ""
+		},
+		"identified": true,
+		"unidentified": {
+			"description": "",
+			"name": "Unidentified Liquid"
+		},
+		"container": null,
+		"quantity": 1,
+		"weight": {
+			"value": 0.5,
+			"units": "lb"
+		},
+		"price": {
+			"value": 50,
+			"denomination": "gp"
+		},
+		"rarity": "common",
+		"attunement": "",
+		"attuned": false,
+		"equipped": false,
+		"type": {
+			"value": "potion",
+			"subtype": ""
+		},
+		"damage": {
+			"base": {
+				"number": null,
+				"denomination": null,
+				"types": [],
+				"custom": {
+					"enabled": false
+				},
+				"scaling": {
+					"number": 1
+				}
+			},
+			"replace": false
+		},
+		"magicalBonus": null,
+		"properties": [
+			"mgc"
+		]
+	},
+	"effects": [
+		{
+			"name": "Potion of Climbing",
+			"img": "icons/consumables/potions/potion-vial-corked-labeled-purple.webp",
+			"_id": "D6fYii3nkDC4Tsbi",
+			"type": "base",
+			"system": {},
+			"changes": [
+				{
+					"key": "system.attributes.movement.climb",
+					"mode": 4,
+					"value": "@attributes.movement.walk",
+					"priority": 20
+				},
+				{
+					"key": "system.attributes.death.roll.mode",
+					"mode": 2,
+					"value": "1",
+					"priority": 20
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 3600,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"origin": "Compendium.elkan5e.elkan5e-magic-items.Item.dmgPotionOfClimb",
+			"tint": "#ffffff",
+			"transfer": true,
+			"statuses": [],
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"showIcon": false,
+					"disableIncapacitated": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "All",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!dmgPotionOfClimb.D6fYii3nkDC4Tsbi"
+		}
+	],
+	"_key": "!items!dmgPotionOfClimb"
+}
