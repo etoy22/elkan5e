@@ -1,4 +1,7 @@
-import { gameSettingRegister, gameSettingsMigrate } from "./module/gameSettings/gameSettingRegister.mjs";
+import {
+	gameSettingRegister,
+	gameSettingsMigrate,
+} from "./module/gameSettings/gameSettingRegister.mjs";
 import { startDialog } from "./module/gameSettings/dialog.mjs";
 import { initWarlockSpellSlot } from "./module/classes/warlock.mjs";
 import { secondWind } from "./module/classes/fighter.mjs";
@@ -20,68 +23,14 @@ import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
 import { conditions, conditionsReady } from "./module/rules/condition.mjs";
 import { language } from "./module/rules/language.mjs";
 import { formating } from "./module/rules/format.mjs";
-import { tools } from "./module/rules/tools.mjs";
+import { tools, updateToolTypes } from "./module/rules/tools.mjs";
 import { weapons } from "./module/rules/weapon.mjs";
 import { scroll } from "./module/rules/scroll.mjs";
-import {
-	setupCombatReferences,
-	setupDamageReferences,
-	setupSpellcastingReferences,
-	setupCreatureTypeReferences,
-} from "./module/rules/references.mjs";
+import { refs } from "./module/rules/references.mjs";
 
 import * as Spells from "./module/spells.mjs";
 import * as Feats from "./module/feats.mjs";
 import { skills } from "./module/rules/skills.mjs";
-
-//Remove this text when poll is over
-const POLL_URL =
-	"https://docs.google.com/forms/d/e/1FAIpQLSdl_E6udYqbRS_KJ0eLta1mIS54yCWUNiOQUTJwFZ9TR7CcNA/viewform?usp=dialog";
-
-Hooks.once("ready", async () => {
-	// Only the first active GM should run this
-	if (!game.user.isGM) return;
-
-	// Remove any previous poll messages so the latest one is shown every load
-	const previousPolls = (game.messages?.contents ?? []).filter((m) => m.flags?.elkan5e?.poll);
-	if (previousPolls.length) {
-		try {
-			await ChatMessage.deleteDocuments(previousPolls.map((m) => m.id));
-		} catch (error) {
-			console.warn("Elkan 5e | Failed to clear previous poll messages", error);
-		}
-	}
-
-	// Create the poll message
-	await ChatMessage.create({
-		speaker: {
-			alias: "Elkan 5e - Poll",
-			icon: "modules/elkan5e/images/ElkanLogo.webp",
-		},
-		content: `
-      <div class="elkan5e-poll-card">
-		<h4>We'd love your input!</h4>
-		<p>We're looking at restructuring our Foundry VTT Compendiums. Some of these changes may be disruptive, so your feedback is especially valuable. Please take this quick poll to share your opinion.</p>
-		<button type="button" class="elkan5e-poll-btn" data-url="${POLL_URL}">
-			Open Poll
-		</button>
-	</div>
-
-    `,
-		flags: { elkan5e: { poll: true } },
-	});
-});
-
-// Attach click handler when chat message is rendered
-Hooks.on("renderChatMessage", (message, html) => {
-	if (!message.flags?.elkan5e?.poll) return;
-
-	html.find(".elkan5e-poll-btn").on("click", (ev) => {
-		ev.preventDefault();
-		const url = ev.currentTarget.dataset.url || POLL_URL;
-		if (url) window.open(url, "_blank", "noopener");
-	});
-});
 
 Hooks.once("init", async () => {
 	try {
@@ -98,11 +47,7 @@ Hooks.once("init", async () => {
 		formating();
 		scroll();
 		skills();
-		// Setup references
-		setupCombatReferences();
-		setupDamageReferences();
-		setupSpellcastingReferences();
-		setupCreatureTypeReferences();
+		refs();
 	} catch (error) {
 		console.error("Elkan 5e  |  Initialization Error:", error);
 	}
@@ -112,6 +57,7 @@ Hooks.once("ready", () => {
 	try {
 		gameSettingsMigrate();
 		conditionsReady();
+		updateToolTypes();
 		startDialog();
 	} catch (error) {
 		console.error("Elkan 5e | Ready Hook Error:", error);
