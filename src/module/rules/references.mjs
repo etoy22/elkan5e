@@ -71,9 +71,6 @@ function addPluralReferenceAliases() {
 		addPluralAliasesForRules(CONFIG.DND5E?.rules);
 	} catch {}
 	try {
-		addPluralAliasesForReferenceField(CONFIG.DND5E?.damageTypes);
-	} catch {}
-	try {
 		addPluralAliasesForReferenceField(CONFIG.DND5E?.creatureTypes);
 	} catch {}
 	try {
