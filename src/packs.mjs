@@ -62,7 +62,22 @@ function cleanHtml(html) {
 	// Strip noisy attributes (id, class, style, dir, role, tabindex, contenteditable, aria-*, data-*)
 	out = out.replace(
 		/\s+(id|class|style|dir|role|tabindex|contenteditable|aria-[^=\s]+|data-[^=\s]+)=("[^"]*"|'[^']*'|[^\s>]+)/gi,
-		"",
+		(match, attr, value) => {
+			const lowerAttr = String(attr).toLowerCase();
+			const lowerValue = String(value).toLowerCase();
+			// Preserve explicit secret markers
+			if (
+				lowerAttr === "class" &&
+				/\bsecret\b/.test(lowerValue.replace(/['"]/g, ""))
+			)
+				return ` ${attr}=${value}`;
+			if (
+				lowerAttr === "id" &&
+				/\bsecret\b/.test(lowerValue.replace(/['"]/g, ""))
+			)
+				return ` ${attr}=${value}`;
+			return "";
+		},
 	);
 	// Remove boolean aria/data attributes without explicit values (e.g., aria-label)
 	out = out.replace(/\s+(aria-[^\s=>]+|data-[^\s=>]+)(?!\s*=)/gi, "");
@@ -72,6 +87,7 @@ function cleanHtml(html) {
 	out = out.replace(/<p>\s*<\/p>/g, "");
 	// Collapse redundant whitespace
 	out = out.replace(/\s+/g, " ").replace(/\s{2,}/g, " ");
+	out = collapseRedundantSections(out);
 	return out.trim();
 }
 
@@ -99,6 +115,17 @@ function replaceSpellRefsInHtml(html) {
 	return out;
 }
 
+function collapseRedundantSections(html) {
+	if (!html || typeof html !== "string") return html;
+	let out = html;
+	let prev;
+	do {
+		prev = out;
+		out = out.replace(/<section>\s*<section>/gi, "<section>");
+		out = out.replace(/<\/section>\s*<\/section>/gi, "</section>");
+	} while (out !== prev);
+	return out;
+}
 function sanitizeDescriptions(entry) {
 	// system.description
 	if (entry?.system?.description) {
