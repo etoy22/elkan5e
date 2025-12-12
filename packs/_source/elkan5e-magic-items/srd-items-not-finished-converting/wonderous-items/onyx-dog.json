@@ -1,0 +1,253 @@
+{
+	"name": "Onyx Dog",
+	"system": {
+		"description": {
+			"value": "<p><strong>Action</strong> - 6 Hours - 1/7 Days</p><p><strong>Summoning</strong></p><ul><li><p>The statue becomes a Medium Construct using the<strong>@UUID[Compendium.elkan5e.elkan5e-summoned-creatures.Actor.IzDEZws3cNws9Z0v]{Large Dog} </strong>stat block with 8 Intelligence and can speak Common.</p></li><li><p>The Large Dog also has Blindsight with a range of 60 feet.</p></li></ul><section class=\"secret\" id=\"foundry-secret-1\"><p><strong>Foundry Note</strong></p><p>This item's limited uses represent the 7 days required before the figurine can be used again.</p></section>",
+			"chat": ""
+		},
+		"price": {
+			"value": 4000,
+			"denomination": "gp"
+		},
+		"activities": {
+			"kwirfY43jrRg2LTe": {
+				"type": "summon",
+				"_id": "kwirfY43jrRg2LTe",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "7",
+							"target": ""
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "hour",
+					"concentration": false,
+					"override": false,
+					"value": "6"
+				},
+				"effects": [
+					{
+						"_id": "fMC3o8l8D2GamPbU"
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "ft",
+					"special": "",
+					"value": "60"
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": "space",
+						"special": "unoccupied space"
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"bonuses": {
+					"ac": "",
+					"hd": "",
+					"hp": "",
+					"attackDamage": "",
+					"saveDamage": "",
+					"healing": ""
+				},
+				"creatureSizes": [],
+				"creatureTypes": [
+					"construct"
+				],
+				"match": {
+					"attacks": false,
+					"proficiency": false,
+					"saves": false,
+					"ability": ""
+				},
+				"profiles": [
+					{
+						"count": "",
+						"name": "",
+						"_id": "EgCV0cs5EPQgUJOh",
+						"uuid": "Compendium.elkan5e.elkan5e-summoned-creatures.Actor.IzDEZws3cNws9Z0v",
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
+				"summon": {
+					"prompt": true,
+					"mode": "",
+					"identifier": ""
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"fMC3o8l8D2GamPbU"
+				]
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [
+				{
+					"period": "day",
+					"type": "formula",
+					"formula": "1"
+				}
+			],
+			"max": "7"
+		},
+		"identifier": "onyx-dog",
+		"source": {
+			"revision": 1,
+			"rules": "2024",
+			"book": "",
+			"license": "",
+			"page": "",
+			"custom": ""
+		},
+		"identified": true,
+		"unidentified": {
+			"description": "",
+			"name": "Unidentified Onyx Dog"
+		},
+		"container": null,
+		"quantity": 1,
+		"weight": {
+			"value": 0,
+			"units": "lb"
+		},
+		"rarity": "rare",
+		"attunement": "",
+		"attuned": false,
+		"equipped": false,
+		"armor": {
+			"value": null,
+			"magicalBonus": null,
+			"dex": null
+		},
+		"cover": null,
+		"crewed": false,
+		"hp": {
+			"value": null,
+			"max": null,
+			"dt": null,
+			"conditions": ""
+		},
+		"type": {
+			"value": "wondrous",
+			"baseItem": ""
+		},
+		"properties": [
+			"mgc"
+		],
+		"strength": null,
+		"proficient": null
+	},
+	"_id": "dmgFwpOnyxDogRar",
+	"type": "equipment",
+	"img": "icons/sundries/misc/pet-collar-red.webp",
+	"effects": [
+		{
+			"name": "Onyx Dog",
+			"img": "icons/sundries/misc/pet-collar-red.webp",
+			"_id": "fMC3o8l8D2GamPbU",
+			"type": "base",
+			"system": {},
+			"changes": [
+				{
+					"key": "system.abilities.int.value",
+					"mode": 4,
+					"value": "8",
+					"priority": 40
+				},
+				{
+					"key": "system.traits.languages.value",
+					"mode": 2,
+					"value": "common",
+					"priority": 20
+				},
+				{
+					"key": "system.attributes.senses.blindsight",
+					"mode": 4,
+					"value": "60",
+					"priority": 40
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": null,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "<p>The mastiff has an Intelligence of 8 and can speak Common. It also has &amp;Reference[Blindsight] with a range of 60 feet.</p>",
+			"origin": "Compendium.elkan5e.elkan5e-magic-items.Item.dmgFwpOnyxDogRar",
+			"tint": "#ffffff",
+			"transfer": true,
+			"statuses": [],
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"showIcon": false,
+					"disableIncapacitated": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "All",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!dmgFwpOnyxDogRar.fMC3o8l8D2GamPbU"
+		}
+	],
+	"folder": "X9UDqCLlOxB9DI9n",
+	"_key": "!items!dmgFwpOnyxDogRar"
+}

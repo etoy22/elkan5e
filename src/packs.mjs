@@ -66,15 +66,9 @@ function cleanHtml(html) {
 			const lowerAttr = String(attr).toLowerCase();
 			const lowerValue = String(value).toLowerCase();
 			// Preserve explicit secret markers
-			if (
-				lowerAttr === "class" &&
-				/\bsecret\b/.test(lowerValue.replace(/['"]/g, ""))
-			)
+			if (lowerAttr === "class" && /\bsecret\b/.test(lowerValue.replace(/['"]/g, "")))
 				return ` ${attr}=${value}`;
-			if (
-				lowerAttr === "id" &&
-				/\bsecret\b/.test(lowerValue.replace(/['"]/g, ""))
-			)
+			if (lowerAttr === "id" && /\bsecret\b/.test(lowerValue.replace(/['"]/g, "")))
 				return ` ${attr}=${value}`;
 			return "";
 		},
@@ -331,7 +325,7 @@ async function cleanPacks(packName, entryName) {
 			if (outPath !== src) {
 				try {
 					await fsp.unlink(src);
-				} catch { }
+				} catch {}
 			}
 		}
 	}
@@ -438,7 +432,7 @@ async function extractPacks(packName, entryName) {
 		let existingFiles = [];
 		try {
 			existingFiles = await listAllFiles(dest);
-		} catch { }
+		} catch {}
 
 		const existingFilesSet = new Set(existingFiles.map((f) => path.normalize(f)));
 		const writtenFiles = new Set();
