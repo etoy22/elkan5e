@@ -91,9 +91,13 @@ export async function soulConduit(workflow) {
 
 		const actor = workflow.actor ?? (workflow.token ? workflow.token.actor : null);
 		if (!actor) return;
-		const hasSoul = actor.items.find((i) => i.system?.identifier === "soul-conduit" || i.name === "Soul Conduit");
+		const hasSoul = actor.items.find(
+			(i) => i.system?.identifier === "soul-conduit" || i.name === "Soul Conduit",
+		);
 		if (hasSoul && actor.isOwner) {
-			ui.notifications.notify(game.i18n.format("elkan5e.notifications.SoulConduitReminder", { name: actor.name }));
+			ui.notifications.notify(
+				game.i18n.format("elkan5e.notifications.SoulConduitReminder", { name: actor.name }),
+			);
 		}
 	} catch (err) {
 		console.error("elkan5e | soulConduit error:", err);
@@ -112,13 +116,21 @@ export async function necromanticSurge(workflow) {
 
 		const actor = workflow.actor ?? (workflow.token ? workflow.token.actor : null);
 		if (!actor) return;
-		const hasSurge = actor.items.find((i) => i.system?.identifier === "necromantic-surge" || i.name === "Necromantic Surge");
+		const hasSurge = actor.items.find(
+			(i) => i.system?.identifier === "necromantic-surge" || i.name === "Necromantic Surge",
+		);
 		if (hasSurge && actor.isOwner) {
-			ui.notifications.notify(game.i18n.format("elkan5e.notifications.NecromanticSurgeReminder", { name: actor.name }));
+			ui.notifications.notify(
+				game.i18n.format("elkan5e.notifications.NecromanticSurgeReminder", {
+					name: actor.name,
+				}),
+			);
 			try {
 				const content = `<p>${game.i18n.localize("elkan5e.notifications.NecromanticSurgeOptions") || "Choose an additional Necromantic Surge effect."}</p>`;
 				const dialog = new Dialog({
-					title: game.i18n.localize("elkan5e.notifications.NecromanticSurgeReminderTitle") || "Necromantic Surge",
+					title:
+						game.i18n.localize("elkan5e.notifications.NecromanticSurgeReminderTitle") ||
+						"Necromantic Surge",
 					content,
 					buttons: {
 						ok: { label: game.i18n.localize("OK") || "OK" },

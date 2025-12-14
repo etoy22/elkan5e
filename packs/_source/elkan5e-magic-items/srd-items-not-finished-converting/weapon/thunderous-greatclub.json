@@ -1,623 +1,623 @@
 {
-	"_id": "dmgThunderousGre",
-	"name": "Thunderous Greatclub",
-	"type": "weapon",
-	"img": "icons/weapons/clubs/club-spiked-glowing.webp",
-	"system": {
-		"activities": {
-			"uLBFDoBMkuXKTafj": {
-				"_id": "uLBFDoBMkuXKTafj",
-				"type": "attack",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false,
-					"condition": ""
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": "Bonus Damage: 2d8 Thunder vs loose object"
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"template": {
-						"contiguous": false,
-						"units": "ft",
-						"type": ""
-					},
-					"affects": {
-						"choice": false,
-						"count": "",
-						"type": ""
-					},
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"attack": {
-					"critical": {
-						"threshold": null
-					},
-					"flat": false,
-					"type": {
-						"value": "",
-						"classification": ""
-					},
-					"ability": "",
-					"bonus": ""
-				},
-				"damage": {
-					"critical": {
-						"bonus": ""
-					},
-					"includeBase": true,
-					"parts": [
-						{
-							"custom": {
-								"enabled": false,
-								"formula": ""
-							},
-							"number": 1,
-							"denomination": 8,
-							"bonus": "",
-							"types": [
-								"thunder"
-							],
-							"scaling": {
-								"number": 1
-							}
-						}
-					]
-				},
-				"name": "",
-				"img": "",
-				"appliedEffects": []
-			},
-			"hNFnYyOWBXKE6KAm": {
-				"type": "save",
-				"name": "Clap of Thunder",
-				"_id": "hNFnYyOWBXKE6KAm",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false,
-					"condition": ""
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "Rg9qnmIespepasJN",
-						"onSave": false
-					}
-				],
-				"range": {
-					"override": false,
-					"units": "self",
-					"special": ""
-				},
-				"target": {
-					"template": {
-						"contiguous": false,
-						"units": "ft",
-						"type": "cone",
-						"size": "30",
-						"count": ""
-					},
-					"affects": {
-						"choice": false,
-						"count": "",
-						"type": "creature",
-						"special": ""
-					},
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"damage": {
-					"parts": [],
-					"onSave": "half"
-				},
-				"save": {
-					"ability": "str",
-					"dc": {
-						"calculation": "",
-						"formula": "15"
-					}
-				},
-				"img": "",
-				"appliedEffects": []
-			},
-			"qBF3OnmfMzdXgxM8": {
-				"type": "save",
-				"name": "Earthquake: Save",
-				"_id": "qBF3OnmfMzdXgxM8",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false,
-					"condition": ""
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": [
-						{
-							"type": "itemUses",
-							"value": "1",
-							"target": ""
-						}
-					]
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "Rg9qnmIespepasJN",
-						"onSave": false
-					}
-				],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"template": {
-						"contiguous": false,
-						"units": "ft",
-						"type": "emanationNoTemplate",
-						"size": "50",
-						"count": ""
-					},
-					"affects": {
-						"choice": false,
-						"count": "",
-						"type": "creature",
-						"special": ""
-					},
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"damage": {
-					"parts": [],
-					"onSave": "half"
-				},
-				"save": {
-					"ability": "dex",
-					"dc": {
-						"calculation": "",
-						"formula": "20"
-					}
-				},
-				"img": "",
-				"appliedEffects": [
-					"Rg9qnmIespepasJN"
-				]
-			},
-			"4bCa4M3YWvFBx4Hz": {
-				"type": "damage",
-				"name": "Earthquake: Object Damage",
-				"_id": "4bCa4M3YWvFBx4Hz",
-				"activation": {
-					"type": "",
-					"value": null,
-					"override": false,
-					"condition": ""
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": false,
-					"units": "self",
-					"special": "",
-					"value": ""
-				},
-				"target": {
-					"template": {
-						"contiguous": false,
-						"units": "",
-						"type": "",
-						"size": "",
-						"count": ""
-					},
-					"affects": {
-						"choice": false,
-						"count": "",
-						"type": "object",
-						"special": ""
-					},
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"damage": {
-					"critical": {
-						"allow": false
-					},
-					"parts": [
-						{
-							"custom": {
-								"enabled": true,
-								"formula": "50"
-							},
-							"number": null,
-							"denomination": 0,
-							"bonus": "",
-							"types": [
-								"bludgeoning"
-							],
-							"scaling": {
-								"number": 1
-							}
-						}
-					]
-				},
-				"img": "",
-				"appliedEffects": []
-			},
-			"hCBV3X0BsH2JPEJr": {
-				"type": "save",
-				"name": "Earthquake: Fissure",
-				"_id": "hCBV3X0BsH2JPEJr",
-				"activation": {
-					"type": "",
-					"value": null,
-					"override": false,
-					"condition": ""
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "Rg9qnmIespepasJN",
-						"onSave": false
-					}
-				],
-				"range": {
-					"override": true,
-					"units": "ft",
-					"special": "",
-					"value": "50"
-				},
-				"target": {
-					"template": {
-						"contiguous": false,
-						"units": "ft",
-						"type": "radius",
-						"size": "10",
-						"width": "",
-						"count": ""
-					},
-					"affects": {
-						"choice": false,
-						"count": "",
-						"type": "creature",
-						"special": ""
-					},
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"damage": {
-					"parts": [],
-					"onSave": "none"
-				},
-				"save": {
-					"ability": "dex",
-					"dc": {
-						"calculation": "",
-						"formula": "20"
-					}
-				},
-				"img": "",
-				"appliedEffects": [
-					"Rg9qnmIespepasJN"
-				]
-			},
-			"yLcHX3mcjhGVnbPj": {
-				"type": "save",
-				"name": "Earthquake: Concentration Save",
-				"_id": "yLcHX3mcjhGVnbPj",
-				"activation": {
-					"type": "",
-					"value": null,
-					"override": false,
-					"condition": ""
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"template": {
-						"contiguous": false,
-						"units": "ft",
-						"type": ""
-					},
-					"affects": {
-						"choice": false,
-						"count": "",
-						"type": "creature",
-						"special": ""
-					},
-					"override": false,
-					"prompt": false
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"damage": {
-					"parts": [],
-					"onSave": "none"
-				},
-				"save": {
-					"ability": "con",
-					"dc": {
-						"calculation": "",
-						"formula": "20"
-					}
-				},
-				"img": "",
-				"appliedEffects": []
-			}
-		},
-		"uses": {
-			"spent": 0,
-			"recovery": [
-				{
-					"period": "dawn",
-					"type": "recoverAll"
-				}
-			],
-			"max": "1"
-		},
-		"description": {
-			"value": "<p><em>Weapon (@UUID[Compendium.elkan5e.elkan5e-equipment.Item.yWjRA9RARTDSbAfU]{Greatclub}) - Very Rare (Requires Attunement)</em></p><p><em>Greatclubs are the same as a club, but built to be wielded with two hands, and too large to do otherwise. Large blunt improvised weapons fall into this category.</em></p><p>While attuned, your Strength is 20 unless already higher. </p><p><strong>Attack:</strong></p><ul><li><p>The weapon deals an extra 1d8 Thunder damage to creatures and an extra 3d8 Thunder damage to objects not being worn or carried.</p></li></ul><p><strong>Clap of Thunder</strong></p><p><strong>Action</strong> - 30 ft. Cone (Self)</p><p>[[/save STR 15]]{Strength Save (DC 15)}</p><ul><li><p><strong>Failure:</strong> Targets become &amp;reference[Prone]. Nonmagical objects in the Cone that aren't being worn or carried take [[/damage 3d8 type=thunder]] damage.</p></li><li><p><strong>Success: </strong>No effect.</p></li></ul><p><strong>Earthquake</strong></p><p><strong>Action</strong> - 50 ft. Emanation (Self) - 1/Dawn</p><p>Structures in contact with the ground take 50 Bludgeoning damage.</p><p><strong>[[/save DEX 20]]{Dexterity Save (DC 20)}</strong></p><p>Creatures not on the ground automatically succeed.</p><ul><li><p><strong>Failure: </strong>Targets becomes &amp;reference[Prone] condition. If concentrating, they must also succeed on a [[/save con 20]] save or lose Concentration.</p></li><li><p><strong>Success: </strong>No effect.</p></li><li><p>Optionally open a 30-foot-deep, 10-foot-wide fissure anywhere in the area. Creatures on the fissure space make the next Dexterity Save. Structures on the fissure collapse into it.</p></li></ul><p><strong>[[/save DEX 20]]{Dexterity Save (DC 20)}</strong></p><ul><li><p><strong>Failure: </strong>Creature falls into the whole.</p></li><li><p><strong>Success:</strong> Creature moving with the edge on a success.</p></li></ul><p>Properties:</p><p>&amp;reference[magic weapon], &amp;Reference[Handed]</p>",
-			"chat": ""
-		},
-		"identifier": "thunderous-greatclub",
-		"source": {
-			"revision": 1,
-			"rules": "2024",
-			"book": "",
-			"license": "",
-			"page": "",
-			"custom": ""
-		},
-		"identified": true,
-		"unidentified": {
-			"description": "<p><em><strong>Unidentified</strong></em></p><p><em>This weapon is unusually keen and easy to handle. It is most likely a magic weapon, though you can't identify the specific enchantment.</em></p><p><em>Greatclubs are the same as a club, but built to be wielded with two hands, and too large to do otherwise. Large blunt improvised weapons fall into this category.</em></p><p>Properties:</p><p>&amp;Reference[Handed]</p>",
-			"name": "Unidentified Thunderous Greatclub"
-		},
-		"container": null,
-		"quantity": 1,
-		"weight": {
-			"value": 10,
-			"units": "lb"
-		},
-		"price": {
-			"value": 40000,
-			"denomination": "gp"
-		},
-		"rarity": "veryRare",
-		"attunement": "required",
-		"attuned": false,
-		"equipped": false,
-		"armor": {
-			"value": null
-		},
-		"cover": null,
-		"crewed": false,
-		"hp": {
-			"value": null,
-			"max": null,
-			"dt": null,
-			"conditions": ""
-		},
-		"type": {
-			"value": "simpleM",
-			"baseItem": "greatclub"
-		},
-		"ammunition": {},
-		"damage": {
-			"base": {
-				"number": 1,
-				"denomination": 8,
-				"types": [
-					"bludgeoning"
-				],
-				"custom": {
-					"enabled": false
-				},
-				"scaling": {
-					"number": 1
-				},
-				"bonus": ""
-			},
-			"versatile": {
-				"number": null,
-				"denomination": null,
-				"types": [],
-				"custom": {
-					"enabled": false
-				},
-				"scaling": {
-					"number": 1
-				}
-			}
-		},
-		"magicalBonus": null,
-		"properties": [
-			"mgc",
-			"two"
-		],
-		"proficient": null,
-		"range": {
-			"value": null,
-			"long": null,
-			"reach": null,
-			"units": "ft"
-		},
-		"mastery": "push"
-	},
-	"effects": [
-		{
-			"name": "Thunderous Greatclub",
-			"img": "icons/weapons/clubs/club-spiked-glowing.webp",
-			"_id": "c8qf2gTNGwdg4hTP",
-			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.abilities.str.value",
-					"mode": 4,
-					"value": "20",
-					"priority": null
-				}
-			],
-			"disabled": false,
-			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
-			},
-			"description": "",
-			"origin": null,
-			"tint": "#ffffff",
-			"transfer": true,
-			"statuses": [],
-			"_key": "!items.effects!dmgThunderousGre.c8qf2gTNGwdg4hTP"
-		},
-		{
-			"name": "Thunderous Greatclub",
-			"img": "icons/weapons/clubs/club-spiked-glowing.webp",
-			"origin": "Compendium.dnd5e.equipment24.Item.dmgThunderousGre",
-			"transfer": false,
-			"_id": "Rg9qnmIespepasJN",
-			"type": "base",
-			"system": {},
-			"changes": [],
-			"disabled": false,
-			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"statuses": [
-				"prone"
-			],
-			"_key": "!items.effects!dmgThunderousGre.Rg9qnmIespepasJN"
-		}
-	],
-	"folder": "JM0XiozTSpvugM4m",
-	"_key": "!items!dmgThunderousGre"
+ "_id": "dmgThunderousGre",
+ "name": "Thunderous Greatclub",
+ "type": "weapon",
+ "img": "icons/weapons/clubs/club-spiked-glowing.webp",
+ "system": {
+  "activities": {
+   "uLBFDoBMkuXKTafj": {
+    "_id": "uLBFDoBMkuXKTafj",
+    "type": "attack",
+    "activation": {
+     "type": "action",
+     "value": null,
+     "override": false,
+     "condition": ""
+    },
+    "consumption": {
+     "scaling": {
+      "allowed": false
+     },
+     "spellSlot": true,
+     "targets": []
+    },
+    "description": {
+     "chatFlavor": "Bonus Damage: 2d8 Thunder vs loose object"
+    },
+    "duration": {
+     "units": "inst",
+     "concentration": false,
+     "override": false
+    },
+    "effects": [],
+    "range": {
+     "override": false
+    },
+    "target": {
+     "template": {
+      "contiguous": false,
+      "units": "ft",
+      "type": ""
+     },
+     "affects": {
+      "choice": false,
+      "count": "",
+      "type": ""
+     },
+     "override": false,
+     "prompt": true
+    },
+    "uses": {
+     "spent": 0,
+     "recovery": [],
+     "max": ""
+    },
+    "attack": {
+     "critical": {
+      "threshold": null
+     },
+     "flat": false,
+     "type": {
+      "value": "",
+      "classification": ""
+     },
+     "ability": "",
+     "bonus": ""
+    },
+    "damage": {
+     "critical": {
+      "bonus": ""
+     },
+     "includeBase": true,
+     "parts": [
+      {
+       "custom": {
+        "enabled": false,
+        "formula": ""
+       },
+       "number": 1,
+       "denomination": 8,
+       "bonus": "",
+       "types": [
+        "thunder"
+       ],
+       "scaling": {
+        "number": 1
+       }
+      }
+     ]
+    },
+    "name": "",
+    "img": "",
+    "appliedEffects": []
+   },
+   "hNFnYyOWBXKE6KAm": {
+    "type": "save",
+    "name": "Clap of Thunder",
+    "_id": "hNFnYyOWBXKE6KAm",
+    "activation": {
+     "type": "action",
+     "value": null,
+     "override": false,
+     "condition": ""
+    },
+    "consumption": {
+     "scaling": {
+      "allowed": false
+     },
+     "spellSlot": true,
+     "targets": []
+    },
+    "description": {
+     "chatFlavor": ""
+    },
+    "duration": {
+     "units": "inst",
+     "concentration": false,
+     "override": false
+    },
+    "effects": [
+     {
+      "_id": "Rg9qnmIespepasJN",
+      "onSave": false
+     }
+    ],
+    "range": {
+     "override": false,
+     "units": "self",
+     "special": ""
+    },
+    "target": {
+     "template": {
+      "contiguous": false,
+      "units": "ft",
+      "type": "cone",
+      "size": "30",
+      "count": ""
+     },
+     "affects": {
+      "choice": false,
+      "count": "",
+      "type": "creature",
+      "special": ""
+     },
+     "override": false,
+     "prompt": true
+    },
+    "uses": {
+     "spent": 0,
+     "recovery": [],
+     "max": ""
+    },
+    "damage": {
+     "parts": [],
+     "onSave": "half"
+    },
+    "save": {
+     "ability": "str",
+     "dc": {
+      "calculation": "",
+      "formula": "15"
+     }
+    },
+    "img": "",
+    "appliedEffects": []
+   },
+   "qBF3OnmfMzdXgxM8": {
+    "type": "save",
+    "name": "Earthquake: Save",
+    "_id": "qBF3OnmfMzdXgxM8",
+    "activation": {
+     "type": "action",
+     "value": null,
+     "override": false,
+     "condition": ""
+    },
+    "consumption": {
+     "scaling": {
+      "allowed": false
+     },
+     "spellSlot": true,
+     "targets": [
+      {
+       "type": "itemUses",
+       "value": "1",
+       "target": ""
+      }
+     ]
+    },
+    "description": {
+     "chatFlavor": ""
+    },
+    "duration": {
+     "units": "inst",
+     "concentration": false,
+     "override": false
+    },
+    "effects": [
+     {
+      "_id": "Rg9qnmIespepasJN",
+      "onSave": false
+     }
+    ],
+    "range": {
+     "override": false
+    },
+    "target": {
+     "template": {
+      "contiguous": false,
+      "units": "ft",
+      "type": "emanationNoTemplate",
+      "size": "50",
+      "count": ""
+     },
+     "affects": {
+      "choice": false,
+      "count": "",
+      "type": "creature",
+      "special": ""
+     },
+     "override": false,
+     "prompt": true
+    },
+    "uses": {
+     "spent": 0,
+     "recovery": [],
+     "max": ""
+    },
+    "damage": {
+     "parts": [],
+     "onSave": "half"
+    },
+    "save": {
+     "ability": "dex",
+     "dc": {
+      "calculation": "",
+      "formula": "20"
+     }
+    },
+    "img": "",
+    "appliedEffects": [
+     "Rg9qnmIespepasJN"
+    ]
+   },
+   "4bCa4M3YWvFBx4Hz": {
+    "type": "damage",
+    "name": "Earthquake: Object Damage",
+    "_id": "4bCa4M3YWvFBx4Hz",
+    "activation": {
+     "type": "",
+     "value": null,
+     "override": false,
+     "condition": ""
+    },
+    "consumption": {
+     "scaling": {
+      "allowed": false
+     },
+     "spellSlot": true,
+     "targets": []
+    },
+    "description": {
+     "chatFlavor": ""
+    },
+    "duration": {
+     "units": "inst",
+     "concentration": false,
+     "override": false
+    },
+    "effects": [],
+    "range": {
+     "override": false,
+     "units": "self",
+     "special": "",
+     "value": ""
+    },
+    "target": {
+     "template": {
+      "contiguous": false,
+      "units": "",
+      "type": "",
+      "size": "",
+      "count": ""
+     },
+     "affects": {
+      "choice": false,
+      "count": "",
+      "type": "object",
+      "special": ""
+     },
+     "override": false,
+     "prompt": true
+    },
+    "uses": {
+     "spent": 0,
+     "recovery": [],
+     "max": ""
+    },
+    "damage": {
+     "critical": {
+      "allow": false
+     },
+     "parts": [
+      {
+       "custom": {
+        "enabled": true,
+        "formula": "50"
+       },
+       "number": null,
+       "denomination": 0,
+       "bonus": "",
+       "types": [
+        "bludgeoning"
+       ],
+       "scaling": {
+        "number": 1
+       }
+      }
+     ]
+    },
+    "img": "",
+    "appliedEffects": []
+   },
+   "hCBV3X0BsH2JPEJr": {
+    "type": "save",
+    "name": "Earthquake: Fissure",
+    "_id": "hCBV3X0BsH2JPEJr",
+    "activation": {
+     "type": "",
+     "value": null,
+     "override": false,
+     "condition": ""
+    },
+    "consumption": {
+     "scaling": {
+      "allowed": false
+     },
+     "spellSlot": true,
+     "targets": []
+    },
+    "description": {
+     "chatFlavor": ""
+    },
+    "duration": {
+     "units": "inst",
+     "concentration": false,
+     "override": false
+    },
+    "effects": [
+     {
+      "_id": "Rg9qnmIespepasJN",
+      "onSave": false
+     }
+    ],
+    "range": {
+     "override": true,
+     "units": "ft",
+     "special": "",
+     "value": "50"
+    },
+    "target": {
+     "template": {
+      "contiguous": false,
+      "units": "ft",
+      "type": "radius",
+      "size": "10",
+      "width": "",
+      "count": ""
+     },
+     "affects": {
+      "choice": false,
+      "count": "",
+      "type": "creature",
+      "special": ""
+     },
+     "override": false,
+     "prompt": true
+    },
+    "uses": {
+     "spent": 0,
+     "recovery": [],
+     "max": ""
+    },
+    "damage": {
+     "parts": [],
+     "onSave": "none"
+    },
+    "save": {
+     "ability": "dex",
+     "dc": {
+      "calculation": "",
+      "formula": "20"
+     }
+    },
+    "img": "",
+    "appliedEffects": [
+     "Rg9qnmIespepasJN"
+    ]
+   },
+   "yLcHX3mcjhGVnbPj": {
+    "type": "save",
+    "name": "Earthquake: Concentration Save",
+    "_id": "yLcHX3mcjhGVnbPj",
+    "activation": {
+     "type": "",
+     "value": null,
+     "override": false,
+     "condition": ""
+    },
+    "consumption": {
+     "scaling": {
+      "allowed": false
+     },
+     "spellSlot": true,
+     "targets": []
+    },
+    "description": {
+     "chatFlavor": ""
+    },
+    "duration": {
+     "units": "inst",
+     "concentration": false,
+     "override": false
+    },
+    "effects": [],
+    "range": {
+     "override": false
+    },
+    "target": {
+     "template": {
+      "contiguous": false,
+      "units": "ft",
+      "type": ""
+     },
+     "affects": {
+      "choice": false,
+      "count": "",
+      "type": "creature",
+      "special": ""
+     },
+     "override": false,
+     "prompt": false
+    },
+    "uses": {
+     "spent": 0,
+     "recovery": [],
+     "max": ""
+    },
+    "damage": {
+     "parts": [],
+     "onSave": "none"
+    },
+    "save": {
+     "ability": "con",
+     "dc": {
+      "calculation": "",
+      "formula": "20"
+     }
+    },
+    "img": "",
+    "appliedEffects": []
+   }
+  },
+  "uses": {
+   "spent": 0,
+   "recovery": [
+    {
+     "period": "dawn",
+     "type": "recoverAll"
+    }
+   ],
+   "max": "1"
+  },
+  "description": {
+   "value": "<p><em>Weapon (@UUID[Compendium.elkan5e.elkan5e-equipment.Item.yWjRA9RARTDSbAfU]{Greatclub}) - Very Rare (Requires Attunement)</em></p><p><em>Greatclubs are the same as a club, but built to be wielded with two hands, and too large to do otherwise. Large blunt improvised weapons fall into this category.</em></p><p>While attuned, your Strength is 20 unless already higher. </p><p><strong>Attack:</strong></p><p>The weapon deals an extra 1d8 Thunder damage to creatures and an extra 3d8 Thunder damage to objects not being worn or carried.</p><p><strong>Clap of Thunder</strong></p><p><strong>Action</strong> - 30 ft. Cone (Self)</p><p>[[/save STR 15]]{Strength Save (DC 15)}</p><p><strong>Failure:</strong> Targets become &amp;reference[Prone]. Nonmagical objects in the Cone that aren't being worn or carried take [[/damage 3d8 type=thunder]] damage.</p><p><strong>Success: </strong>No effect.</p><p><strong>Earthquake</strong></p><p><strong>Action</strong> - 50 ft. Emanation (Self) - 1/Dawn</p><p>Structures in contact with the ground take 50 Bludgeoning damage.</p><p><strong>[[/save DEX 20]]{Dexterity Save (DC 20)}</strong></p><p>Creatures not on the ground automatically succeed.</p><p><strong>Failure: </strong>Targets becomes &amp;reference[Prone] condition. If concentrating, they must also succeed on a [[/save con 20]] save or lose Concentration.</p><p><strong>Success: </strong>No effect.</p><p>Optionally open a 30-foot-deep, 10-foot-wide fissure anywhere in the area. Creatures on the fissure space make the next Dexterity Save. Structures on the fissure collapse into it.</p><p><strong>[[/save DEX 20]]{Dexterity Save (DC 20)}</strong></p><p><strong>Failure: </strong>Creature falls into the whole.</p><p><strong>Success:</strong> Creature moving with the edge on a success.</p><p><strong>Properties:</strong></p><p>&amp;reference[magic weapon], &amp;Reference[Handed]</p>",
+   "chat": ""
+  },
+  "identifier": "thunderous-greatclub",
+  "source": {
+   "revision": 1,
+   "rules": "2024",
+   "book": "",
+   "license": "",
+   "page": "",
+   "custom": ""
+  },
+  "identified": true,
+  "unidentified": {
+   "description": "<p><em><strong>Unidentified</strong></em></p><p><em>This weapon is unusually keen and easy to handle. It is most likely a magic weapon, though you can't identify the specific enchantment.</em></p><p><em>Greatclubs are the same as a club, but built to be wielded with two hands, and too large to do otherwise. Large blunt improvised weapons fall into this category.</em></p><p><strong>Properties:</strong></p><p>&amp;Reference[Handed]</p>",
+   "name": "Unidentified Thunderous Greatclub"
+  },
+  "container": null,
+  "quantity": 1,
+  "weight": {
+   "value": 10,
+   "units": "lb"
+  },
+  "price": {
+   "value": 40000,
+   "denomination": "gp"
+  },
+  "rarity": "veryRare",
+  "attunement": "required",
+  "attuned": false,
+  "equipped": false,
+  "armor": {
+   "value": null
+  },
+  "cover": null,
+  "crewed": false,
+  "hp": {
+   "value": null,
+   "max": null,
+   "dt": null,
+   "conditions": ""
+  },
+  "type": {
+   "value": "simpleM",
+   "baseItem": "greatclub"
+  },
+  "ammunition": {},
+  "damage": {
+   "base": {
+    "number": 1,
+    "denomination": 8,
+    "types": [
+     "bludgeoning"
+    ],
+    "custom": {
+     "enabled": false
+    },
+    "scaling": {
+     "number": 1
+    },
+    "bonus": ""
+   },
+   "versatile": {
+    "number": null,
+    "denomination": null,
+    "types": [],
+    "custom": {
+     "enabled": false
+    },
+    "scaling": {
+     "number": 1
+    }
+   }
+  },
+  "magicalBonus": null,
+  "properties": [
+   "mgc",
+   "two"
+  ],
+  "proficient": null,
+  "range": {
+   "value": null,
+   "long": null,
+   "reach": null,
+   "units": "ft"
+  },
+  "mastery": "push"
+ },
+ "effects": [
+  {
+   "name": "Thunderous Greatclub",
+   "img": "icons/weapons/clubs/club-spiked-glowing.webp",
+   "_id": "c8qf2gTNGwdg4hTP",
+   "type": "base",
+   "system": {},
+   "changes": [
+    {
+     "key": "system.abilities.str.value",
+     "mode": 4,
+     "value": "20",
+     "priority": null
+    }
+   ],
+   "disabled": false,
+   "duration": {
+    "startTime": null,
+    "seconds": null,
+    "combat": null,
+    "rounds": null,
+    "turns": null,
+    "startRound": null,
+    "startTurn": null
+   },
+   "description": "",
+   "origin": null,
+   "tint": "#ffffff",
+   "transfer": true,
+   "statuses": [],
+   "_key": "!items.effects!dmgThunderousGre.c8qf2gTNGwdg4hTP"
+  },
+  {
+   "name": "Thunderous Greatclub",
+   "img": "icons/weapons/clubs/club-spiked-glowing.webp",
+   "origin": "Compendium.dnd5e.equipment24.Item.dmgThunderousGre",
+   "transfer": false,
+   "_id": "Rg9qnmIespepasJN",
+   "type": "base",
+   "system": {},
+   "changes": [],
+   "disabled": false,
+   "duration": {
+    "startTime": null,
+    "seconds": null,
+    "combat": null,
+    "rounds": null,
+    "turns": null,
+    "startRound": null,
+    "startTurn": null
+   },
+   "description": "",
+   "tint": "#ffffff",
+   "statuses": [
+    "prone"
+   ],
+   "_key": "!items.effects!dmgThunderousGre.Rg9qnmIespepasJN"
+  }
+ ],
+ "folder": "JM0XiozTSpvugM4m",
+ "_key": "!items!dmgThunderousGre"
 }

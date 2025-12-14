@@ -17,7 +17,12 @@ import {
 	rmvhijackShadow,
 } from "./module/classes/monk.mjs";
 import { slicingBlow } from "./module/classes/rogue.mjs";
-import { lifeDrainGraveguard, spectralEmpowerment, soulConduit, necromanticSurge } from "./module/classes/wizard.mjs";
+import {
+	lifeDrainGraveguard,
+	spectralEmpowerment,
+	soulConduit,
+	necromanticSurge,
+} from "./module/classes/wizard.mjs";
 import { shadowRefuge, healingOverflow, infusedHealer } from "./module/classes/cleric.mjs";
 
 import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
@@ -178,7 +183,7 @@ globalThis.elkan5e = {
 			soulConduit,
 			necromanticSurge,
 			shadowRefuge,
-            
+
 			infusedHealer,
 			healingOverflow,
 			wildBlood,
