@@ -5,7 +5,7 @@ import {
 import { startDialog } from "./module/gameSettings/dialog.mjs";
 import { initWarlockSpellSlot } from "./module/classes/warlock.mjs";
 import { secondWind } from "./module/classes/fighter.mjs";
-import { healingOverflow, infusedHealer } from "./module/classes/cleric.mjs";
+
 import { archDruid } from "./module/classes/druid.mjs";
 import { rage, wildBlood } from "./module/classes/barbarian.mjs";
 import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
@@ -17,7 +17,8 @@ import {
 	rmvhijackShadow,
 } from "./module/classes/monk.mjs";
 import { slicingBlow } from "./module/classes/rogue.mjs";
-import { lifeDrainGraveguard, spectralEmpowerment } from "./module/classes/wizard.mjs";
+import { lifeDrainGraveguard, spectralEmpowerment, soulConduit, necromanticSurge } from "./module/classes/wizard.mjs";
+import { shadowRefuge, healingOverflow, infusedHealer } from "./module/classes/cleric.mjs";
 
 import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
 import { conditions, conditionsReady } from "./module/rules/condition.mjs";
@@ -174,6 +175,10 @@ globalThis.elkan5e = {
 		spells: Spells,
 		features: {
 			rage,
+			soulConduit,
+			necromanticSurge,
+			shadowRefuge,
+            
 			infusedHealer,
 			healingOverflow,
 			wildBlood,
