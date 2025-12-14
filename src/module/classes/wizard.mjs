@@ -127,7 +127,7 @@ export async function necromanticSurge(workflow) {
 			);
 			try {
 				const content = `<p>${game.i18n.localize("elkan5e.notifications.NecromanticSurgeOptions") || "Choose an additional Necromantic Surge effect."}</p>`;
-				const dialog = new Dialog({
+				const dialog = new globalThis.Dialog({
 					title:
 						game.i18n.localize("elkan5e.notifications.NecromanticSurgeReminderTitle") ||
 						"Necromantic Surge",
@@ -137,7 +137,7 @@ export async function necromanticSurge(workflow) {
 					},
 				});
 				dialog.render(true);
-			} catch (e) {
+			} catch {
 				// ignore dialog failures
 			}
 		}
