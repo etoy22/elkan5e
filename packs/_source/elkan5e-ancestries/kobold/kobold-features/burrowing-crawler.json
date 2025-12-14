@@ -6,7 +6,7 @@
 	"img": "icons/creatures/reptiles/lizard-iguana-green.webp",
 	"system": {
 		"description": {
-			"value": "<p><strong>&amp;reference[Crawling]{Crawling Speed}:</strong> equal to walking speed. You use this speed when &amp;reference[prone] apply=false.</p><p><strong>Burrowing Speed (5 ft.):</strong> When you burrow, you can only burrow through dirt or other loose material, not hard materials like stone or wood. You leave a tunnel behind you, which you can crawl through with ease while &reference[crawling] but a medium creature has to squeeze into.</p>",
+			"value": "<p><strong>&amp;reference[Crawling]{Crawling Speed}:</strong> equal to walking speed. You use this speed when &amp;reference[prone apply=false].</p><br><p><strong>Burrowing Speed (5 ft.):</strong> When you burrow, you can only burrow through dirt or other loose material, not hard materials like stone or wood. You leave a tunnel behind you, which you can crawl through with ease while &reference[crawling] but a medium creature has to squeeze into.</p>",
 			"chat": ""
 		},
 		"prerequisites": {
@@ -15,8 +15,7 @@
 		"uses": {
 			"max": ""
 		},
-		"requirements": "Kobold",
-		"identifier": "burrowing-crawler"
+		"requirements": "Kobold"
 	},
 	"effects": [
 		{
@@ -62,6 +61,14 @@
 					"macroRepeat": "none",
 					"specialDuration": []
 				},
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"core": {
+					"overlay": false
+				},
 				"ActiveAuras": {
 					"isAura": false,
 					"aura": "None",
@@ -104,6 +111,10 @@
 			"removeAttackDamageButtons": "default",
 			"reactionCondition": "",
 			"otherCondition": ""
+		},
+		"tidy5e-sheet": {
+			"section": "",
+			"actionSection": ""
 		}
 	},
 	"_key": "!items!hrgRDcPgwSwuaHmr"
