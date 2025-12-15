@@ -1,0 +1,291 @@
+{
+	"name": "Deck of Illusions",
+	"type": "equipment",
+	"folder": "AHdcu2sVDdMyInz3",
+	"img": "icons/sundries/gaming/playing-cards-black.webp",
+	"system": {
+		"activities": {
+			"FE7gpKlVdto3qvBT": {
+				"type": "utility",
+				"name": "Count Number of Cards",
+				"_id": "FE7gpKlVdto3qvBT",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1d20 - 1",
+							"target": "",
+							"scaling": {}
+						},
+						{
+							"type": "activityUses",
+							"value": "1",
+							"scaling": {}
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": "You find the deck missing some cards."
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"units": "touch",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "1",
+						"type": "object",
+						"special": "The Deck of Illusions"
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": "1"
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"img": "",
+				"appliedEffects": []
+			},
+			"MLOgyKzX7bYibzpV": {
+				"type": "summon",
+				"name": "Draw Card",
+				"_id": "MLOgyKzX7bYibzpV",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"units": "ft",
+					"special": "",
+					"value": "30"
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "1",
+						"type": "space",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"bonuses": {
+					"ac": "",
+					"hd": "",
+					"hp": "",
+					"attackDamage": "",
+					"saveDamage": "",
+					"healing": ""
+				},
+				"creatureSizes": [
+					"tiny",
+					"sm",
+					"med",
+					"lg",
+					"huge"
+				],
+				"creatureTypes": [],
+				"match": {
+					"attacks": false,
+					"proficiency": false,
+					"saves": false
+				},
+				"profiles": [
+					{
+						"count": "",
+						"name": "",
+						"_id": "VP2dV3II1UkimGJz",
+						"uuid": "Compendium.dnd5e.actors24.Actor.dmgIllusoryCreat",
+						"level": {
+							"min": null,
+							"max": null
+						},
+						"types": []
+					}
+				],
+				"summon": {
+					"prompt": true,
+					"mode": "",
+					"identifier": ""
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"friendlySummon": false
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"max": "34"
+		},
+		"description": {
+			"value": "<p><em>Wondrous Item - Uncommon</em></p><p>This box contains a set of 34 cards: 32 depict specific creatures and two feature mirrored surfaces. A deck found as treasure is usually missing [[/r 1d20 - 1#Missing cards]] cards.</p><p><br /></p><p><strong>Action</strong> - 30 ft.</p><p><strong>Utility</strong></p><ul><li><p>Draw a card at random and throw it to the ground within 30 feet. An illusion described on the Deck of Illusions table appears over the thrown card and remains until dispelled. While you are within 120 feet of the illusion and can see it, you can take a Action to move it up to 30 feet from the card.</p></li><li><p>The illusion is harmless. Physical interaction reveals the illusion, and a creature that studies it identifies the illusion with a successful [[/check ability=int skill=inv dc=15 format=long]].</p></li><li><p>The illusion ends if its card moves or if it is dispelled (such as with <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.oZwKW3I3yzrSdpLE]{Dispel Magic}</em>). When the illusion ends, the image on its card disappears and the card can't be used again.</p></li></ul><p>@Embed[Compendium.dnd5e.tables24.RollTable.dmgDeckOfIllusio rollable]</p><section id=\"foundry-secret-1\" class=\"secret\"><p><strong>Foundry Note</strong></p><p>Due to the single-use nature of each card, import a copy of the @UUID[Compendium.dnd5e.tables24.RollTable.dmgDeckOfIllusio]{table} and update the @Embed enricher above with its UUID.</p><p>When first obtained, use the <strong>Count Number of Cards</strong> activity to determine the remaining cards. After one use, the activity can be deleted.</p></section>",
+			"chat": ""
+		},
+		"identifier": "deck-of-illusions",
+		"source": {
+			"revision": 1,
+			"rules": "2024",
+			"license": "",
+			"book": "",
+			"page": "",
+			"custom": ""
+		},
+		"identified": true,
+		"unidentified": {
+			"description": "<p><em>This box contains a set of 34 cards set however some are missing.</em></p>",
+			"name": "Unidentified Deck"
+		},
+		"container": null,
+		"quantity": 1,
+		"weight": {
+			"value": 0.1,
+			"units": "lb"
+		},
+		"price": {
+			"value": 400,
+			"denomination": "gp"
+		},
+		"rarity": "uncommon",
+		"attunement": "",
+		"attuned": false,
+		"equipped": false,
+		"armor": {
+			"value": null,
+			"magicalBonus": null,
+			"dex": null
+		},
+		"cover": null,
+		"crewed": false,
+		"hp": {
+			"value": null,
+			"max": null,
+			"dt": null,
+			"conditions": ""
+		},
+		"type": {
+			"value": "wondrous",
+			"baseItem": ""
+		},
+		"properties": [
+			"mgc"
+		],
+		"strength": null,
+		"proficient": null
+	},
+	"effects": [],
+	"flags": {
+		"midiProperties": {
+			"magicdam": true,
+			"magiceffect": true
+		}
+	},
+	"_id": "XkFvizo9N5cdvbGV",
+	"_key": "!items!XkFvizo9N5cdvbGV"
+}
