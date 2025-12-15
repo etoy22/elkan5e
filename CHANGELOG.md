@@ -1,7 +1,6 @@
 # Changelog
 
 # v1.13.5
-
 ## Bug Fixes
 
 - Well of Corruption now applies drained to all targets with safer token resolution; halves on successful saves.
@@ -30,11 +29,6 @@
 - Pack extraction/cleaning now sanitizes HTML, italicizes spell references, prunes empty flags, backfills identifiers, and skips folder metadata.
 - Containers are renamed on extract to slugged filenames; folder metadata retained but excluded from clean.
 
-## Spells
-
-- Well of Corruption drain application fixed (see Bug Fixes).
-- Broad spell data refresh (levels 0–9) for identifiers, references, and formatting; component items normalized.
-
 ## UI
 
 - Added localized notification strings for Soul Conduit, Necromantic Surge, and Shadow Refuge reminders.
@@ -47,7 +41,7 @@
 - Removed legacy helper scripts, logs, caches, and shell helpers.
 - Repository now contains `elkan5e-1.0.0.tgz` (release artifact placeholder; do not publish/build here).
 - General JSON formatting/description cleanup to strip redundant `<br>` and noisy attributes across packs.
-- Formatting/identifier cleanup only.
+- Formatting/identifier cleanup to all features.
 
 # v1.13.4
 
