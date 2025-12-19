@@ -1,2420 +1,2420 @@
 {
-	"_id": "h4Aud0lG4mNU1RFg",
-	"name": "Mutant Wizard",
-	"type": "npc",
-	"img": "icons/magic/unholy/hand-grasping-green.webp",
-	"items": [
-		{
-			"name": "Rend the Veil (Recharge 6)",
-			"flags": {
-				"midi-qol": {
-					"effectActivation": false
-				},
-				"midiProperties": {
-					"nodam": false,
-					"fulldam": false,
-					"halfdam": false,
-					"rollOther": false,
-					"critOther": false,
-					"magicdam": false,
-					"magiceffect": false,
-					"concentration": false,
-					"toggleEffect": false,
-					"autoFailFriendly": false,
-					"autoSaveFriendly": false,
-					"offHandWeapon": false,
-					"ignoreTotalCover": false
-				},
-				"core": {},
-				"dnd5e": {
-					"migratedUses": 0
-				}
-			},
-			"type": "feat",
-			"img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
-			"effects": [],
-			"_id": "wvV53ECWcVifop42",
-			"folder": null,
-			"system": {
-				"description": {
-					"value": "<p></p><br><p><strong></strong> .</p><br><p>The lizard-orc wizard attempts to rip open the fabric of reality, creating a wave of unstable energy at point it can see within 60 ft. All creatures in a 20 ft. radius of that point must make a DC 15 constitution saving throw, taking 6d8 force damage on a failure, and half as much on a success. If a target fails this save, it must make a DC 15 wisdom saving throw to avoid being frightened of the space where the wave originated. The creature can attempt another save when the lizard-orc wizard dies, or when 1 hour has passed.</p><br><p></p>",
-					"chat": ""
-				},
-				"source": {
-					"custom": "",
-					"revision": 1,
-					"rules": "2014"
-				},
-				"uses": {
-					"max": "1",
-					"recovery": [
-						{
-							"period": "recharge",
-							"formula": "6",
-							"type": "recoverAll"
-						}
-					],
-					"spent": 1
-				},
-				"type": {
-					"value": "",
-					"subtype": ""
-				},
-				"requirements": "",
-				"activities": {
-					"dnd5eactivity000": {
-						"_id": "dnd5eactivity000",
-						"type": "save",
-						"activation": {
-							"type": "action",
-							"value": 1,
-							"condition": "",
-							"override": false
-						},
-						"consumption": {
-							"targets": [
-								{
-									"type": "itemUses",
-									"target": "",
-									"value": "1",
-									"scaling": {
-										"mode": "",
-										"formula": ""
-									}
-								}
-							],
-							"scaling": {
-								"allowed": false,
-								"max": ""
-							},
-							"spellSlot": true
-						},
-						"description": {
-							"chatFlavor": ""
-						},
-						"duration": {
-							"concentration": false,
-							"value": "",
-							"units": "",
-							"special": "",
-							"override": false
-						},
-						"effects": [],
-						"range": {
-							"units": "",
-							"special": "",
-							"override": false
-						},
-						"target": {
-							"template": {
-								"count": "",
-								"contiguous": false,
-								"type": "radius",
-								"size": "20",
-								"width": "",
-								"height": "",
-								"units": "ft"
-							},
-							"affects": {
-								"count": "",
-								"type": "",
-								"choice": false,
-								"special": ""
-							},
-							"prompt": true,
-							"override": false
-						},
-						"uses": {
-							"spent": 0,
-							"max": "",
-							"recovery": []
-						},
-						"damage": {
-							"onSave": "half",
-							"parts": [
-								{
-									"number": 6,
-									"denomination": 8,
-									"bonus": "",
-									"types": [
-										"force"
-									],
-									"custom": {
-										"enabled": false,
-										"formula": ""
-									},
-									"scaling": {
-										"mode": "whole",
-										"number": null,
-										"formula": ""
-									}
-								}
-							]
-						},
-						"save": {
-							"ability": "con",
-							"dc": {
-								"calculation": "int",
-								"formula": "15"
-							}
-						}
-					}
-				},
-				"identifier": "rend-the-veil-recharge-6",
-				"enchant": {},
-				"prerequisites": {
-					"level": null
-				},
-				"properties": []
-			},
-			"_key": "!actors.items!h4Aud0lG4mNU1RFg.wvV53ECWcVifop42"
-		},
-		{
-			"name": "Toxic Regeneration",
-			"type": "feat",
-			"system": {
-				"description": {
-					"value": "<p>When the mutant warrior has fewer than all of its hit points, its flesh attempts to knit itself together, spewing volatile organic compounds as it does so.</p><br><p>All creatures within 5 ft. of the mutant warrior, including the mutant warrior, must succeed on a DC 13 contitution saving throw or take 2d6 poison damage (which the mutant warrior is resistant to). Then, if this doesn't kill the mutant warrior, the mutant warrior regains 5 hit points.</p><br><p>If the mutant warrior isn't in danger and is at 15 hit points or greater, assume that it can regain all hit points over the course of 10 minutes without any danger.</p>",
-					"chat": ""
-				},
-				"source": {
-					"custom": "Elkan 5e",
-					"revision": 1,
-					"rules": "2014"
-				},
-				"uses": {
-					"max": "",
-					"recovery": [],
-					"spent": 0
-				},
-				"type": {
-					"value": "monster",
-					"subtype": ""
-				},
-				"requirements": "",
-				"activities": {
-					"dnd5eactivity000": {
-						"_id": "dnd5eactivity000",
-						"type": "save",
-						"activation": {
-							"type": "bonus",
-							"value": 1,
-							"condition": "",
-							"override": false
-						},
-						"consumption": {
-							"targets": [],
-							"scaling": {
-								"allowed": false,
-								"max": ""
-							},
-							"spellSlot": true
-						},
-						"description": {
-							"chatFlavor": "If the Mutant Warrior is still alive after using this ability, they regain 5 hit points."
-						},
-						"duration": {
-							"concentration": false,
-							"value": "",
-							"units": "inst",
-							"special": "",
-							"override": false
-						},
-						"effects": [],
-						"range": {
-							"value": "5",
-							"units": "ft",
-							"special": "",
-							"override": false
-						},
-						"target": {
-							"template": {
-								"count": "",
-								"contiguous": false,
-								"type": "",
-								"size": "",
-								"width": "",
-								"height": "",
-								"units": "ft"
-							},
-							"affects": {
-								"count": "5",
-								"type": "creature",
-								"choice": false,
-								"special": ""
-							},
-							"prompt": true,
-							"override": false
-						},
-						"uses": {
-							"spent": 0,
-							"max": "",
-							"recovery": []
-						},
-						"damage": {
-							"onSave": "half",
-							"parts": [
-								{
-									"number": 2,
-									"denomination": 6,
-									"bonus": "",
-									"types": [
-										"poison"
-									],
-									"custom": {
-										"enabled": false,
-										"formula": ""
-									},
-									"scaling": {
-										"mode": "whole",
-										"number": null,
-										"formula": ""
-									}
-								}
-							]
-						},
-						"save": {
-							"ability": "con",
-							"dc": {
-								"calculation": "",
-								"formula": "13"
-							}
-						}
-					}
-				},
-				"identifier": "toxic-regeneration",
-				"enchant": {},
-				"prerequisites": {
-					"level": null
-				},
-				"properties": []
-			},
-			"_id": "yfxJaMXpsZ6H6jEt",
-			"img": "icons/skills/toxins/cauldron-bubbles-overflow-green.webp",
-			"effects": [],
-			"folder": null,
-			"flags": {
-				"midi-qol": {
-					"effectActivation": false
-				},
-				"midiProperties": {
-					"nodam": false,
-					"fulldam": false,
-					"halfdam": false,
-					"autoFailFriendly": false,
-					"autoSaveFriendly": false,
-					"rollOther": false,
-					"critOther": false,
-					"offHandWeapon": false,
-					"magicdam": false,
-					"magiceffect": false,
-					"concentration": false,
-					"toggleEffect": false,
-					"ignoreTotalCover": false
-				},
-				"core": {},
-				"dnd5e": {}
-			},
-			"_key": "!actors.items!h4Aud0lG4mNU1RFg.yfxJaMXpsZ6H6jEt"
-		},
-		{
-			"name": "Volatile Creation",
-			"flags": {
-				"midi-qol": {
-					"effectActivation": false
-				},
-				"midiProperties": {
-					"nodam": false,
-					"fulldam": false,
-					"halfdam": false,
-					"autoFailFriendly": false,
-					"autoSaveFriendly": false,
-					"rollOther": false,
-					"critOther": false,
-					"offHandWeapon": false,
-					"magicdam": false,
-					"magiceffect": false,
-					"concentration": false,
-					"toggleEffect": false,
-					"ignoreTotalCover": false
-				},
-				"core": {},
-				"dnd5e": {}
-			},
-			"type": "feat",
-			"img": "icons/skills/toxins/cauldron-pot-bubbles-green.webp",
-			"effects": [
-				{
-					"flags": {
-						"ActiveAuras": {
-							"isAura": false,
-							"radius": "null",
-							"aura": "None",
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"displayTemp": false,
-							"nameOverride": ""
-						},
-						"core": {
-							"statusId": "combat-utility-belt.poisoned"
-						},
-						"combat-utility-belt": {
-							"conditionId": "poisoned",
-							"overlay": false
-						},
-						"dae": {
-							"selfTarget": false,
-							"selfTargetAlways": false,
-							"stackable": "none",
-							"durationExpression": "",
-							"macroRepeat": "none",
-							"specialDuration": [],
-							"dontApply": false,
-							"showIcon": false
-						},
-						"times-up": {
-							"isPassive": false
-						}
-					},
-					"changes": [
-						{
-							"key": "flags.midi-qol.disadvantage.attack.all",
-							"mode": 5,
-							"value": "1",
-							"priority": 50
-						},
-						{
-							"key": "flags.midi-qol.disadvantage.ability.check.all",
-							"mode": 5,
-							"value": "1",
-							"priority": 50
-						},
-						{
-							"key": "flags.midi-qol.OverTime",
-							"mode": 2,
-							"value": "turn=end,\nsaveAbility=con,\nsaveDC=13",
-							"priority": 20
-						}
-					],
-					"duration": {
-						"seconds": 60,
-						"startTime": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null,
-						"combat": null
-					},
-					"_id": "usTKhpcA1Usb0yTP",
-					"disabled": false,
-					"origin": "Compendium.elkan5e.elkan5e-creatures.Actor.6q9IkifzuxdGRDaW.Item.ODEzNTYwODIzYzFk",
-					"tint": "#ffffff",
-					"transfer": false,
-					"name": "Poisoned",
-					"description": "",
-					"statuses": [],
-					"img": "modules/elkan5e/icons/conditions/poisoned.svg",
-					"type": "base",
-					"system": {},
-					"_key": "!actors.items.effects!h4Aud0lG4mNU1RFg.6tvJNE655GX8f4ZU.usTKhpcA1Usb0yTP"
-				}
-			],
-			"_id": "6tvJNE655GX8f4ZU",
-			"folder": null,
-			"system": {
-				"description": {
-					"value": "<p>The mutant warrior was created through unstable magic. When it dies, all creatures within 10 ft. of the mutant must make a DC 13 constitution saving throw or take 4d10 poison damage and be poisoned for one minute (save for half damage) (save ends).</p>",
-					"chat": ""
-				},
-				"source": {
-					"custom": "Elkan 5e",
-					"revision": 1,
-					"rules": "2014"
-				},
-				"uses": {
-					"max": "",
-					"recovery": [],
-					"spent": 0
-				},
-				"type": {
-					"value": "monster",
-					"subtype": ""
-				},
-				"requirements": "",
-				"activities": {
-					"dnd5eactivity000": {
-						"_id": "dnd5eactivity000",
-						"type": "damage",
-						"activation": {
-							"type": "special",
-							"value": 1,
-							"condition": "",
-							"override": false
-						},
-						"consumption": {
-							"targets": [],
-							"scaling": {
-								"allowed": false,
-								"max": ""
-							},
-							"spellSlot": true
-						},
-						"description": {
-							"chatFlavor": ""
-						},
-						"duration": {
-							"concentration": false,
-							"value": "",
-							"units": "",
-							"special": "",
-							"override": false
-						},
-						"effects": [
-							{
-								"_id": "usTKhpcA1Usb0yTP"
-							}
-						],
-						"range": {
-							"units": "",
-							"special": "",
-							"override": false
-						},
-						"target": {
-							"template": {
-								"count": "",
-								"contiguous": false,
-								"type": "",
-								"size": "",
-								"width": "",
-								"height": "",
-								"units": "ft"
-							},
-							"affects": {
-								"count": "10",
-								"type": "creature",
-								"choice": false,
-								"special": ""
-							},
-							"prompt": true,
-							"override": false
-						},
-						"uses": {
-							"spent": 0,
-							"max": "",
-							"recovery": []
-						},
-						"damage": {
-							"critical": {
-								"allow": false,
-								"bonus": ""
-							},
-							"parts": [
-								{
-									"number": 4,
-									"denomination": 10,
-									"bonus": "",
-									"types": [
-										"poison"
-									],
-									"custom": {
-										"enabled": false,
-										"formula": ""
-									},
-									"scaling": {
-										"mode": "whole",
-										"number": null,
-										"formula": ""
-									}
-								}
-							]
-						}
-					},
-					"dnd5eactivity100": {
-						"_id": "dnd5eactivity100",
-						"type": "save",
-						"activation": {
-							"type": "special",
-							"value": 1,
-							"condition": "",
-							"override": false
-						},
-						"consumption": {
-							"targets": [],
-							"scaling": {
-								"allowed": false,
-								"max": ""
-							},
-							"spellSlot": true
-						},
-						"description": {
-							"chatFlavor": ""
-						},
-						"duration": {
-							"concentration": false,
-							"value": "",
-							"units": "",
-							"special": "",
-							"override": false
-						},
-						"effects": [
-							{
-								"_id": "usTKhpcA1Usb0yTP",
-								"onSave": false
-							}
-						],
-						"range": {
-							"units": "",
-							"special": "",
-							"override": false
-						},
-						"target": {
-							"template": {
-								"count": "",
-								"contiguous": false,
-								"type": "",
-								"size": "",
-								"width": "",
-								"height": "",
-								"units": "ft"
-							},
-							"affects": {
-								"count": "10",
-								"type": "creature",
-								"choice": false,
-								"special": ""
-							},
-							"prompt": true,
-							"override": false
-						},
-						"uses": {
-							"spent": 0,
-							"max": "",
-							"recovery": []
-						},
-						"damage": {
-							"onSave": "half",
-							"parts": [
-								{
-									"number": 4,
-									"denomination": 10,
-									"bonus": "",
-									"types": [
-										"poison"
-									],
-									"custom": {
-										"enabled": false,
-										"formula": ""
-									},
-									"scaling": {
-										"mode": "whole",
-										"number": null,
-										"formula": ""
-									}
-								}
-							]
-						},
-						"save": {
-							"ability": "con",
-							"dc": {
-								"calculation": "",
-								"formula": "13"
-							}
-						}
-					}
-				},
-				"identifier": "volatile-creation",
-				"enchant": {},
-				"prerequisites": {
-					"level": null
-				},
-				"properties": []
-			},
-			"_key": "!actors.items!h4Aud0lG4mNU1RFg.6tvJNE655GX8f4ZU"
-		},
-		{
-			"folder": "KW6BGl3Q4MI91gEa",
-			"name": "Burning Beam",
-			"type": "spell",
-			"_id": "utdBEnHDSIHXGXcY",
-			"img": "icons/magic/fire/blast-jet-stream-splash.webp",
-			"system": {
-				"description": {
-					"value": "<p><em>Stretching out your hands, crackling flames extend between your fingertips, then strike outwards in a beam to burn everything in its path.</em></p><br><p>1 Action - 30 ft. Line (5 ft. Radius) - 2nd Level - VS</p><br><p><strong>Dexterity</strong> Save</p><ul><li><p><strong>Failure:</strong> Target takes 4d6 fire damage. <strong>*</strong></p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p></p><br><p><strong>*At Higher Levels:</strong> For every spell slot level above 2nd, the damage increases by 1d6.</p>",
-					"chat": "1 Action - 30 ft. Line (5 ft. Radius) - 2nd Level - VS</p><br><p><strong>Dexterity</strong> Save</p><ul><li><p><strong>Failure:</strong> Target takes 4d6 fire damage. <strong>*</strong></p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p></p><br><p><strong>*At Higher Levels:</strong> For every spell slot level above 2nd, the damage increases by 1d6.</p>"
-				},
-				"source": {
-					"custom": "Elkan 5e",
-					"revision": 1,
-					"rules": "2014"
-				},
-				"activation": {
-					"type": "action",
-					"condition": "",
-					"value": 1
-				},
-				"duration": {
-					"value": "",
-					"units": "inst"
-				},
-				"target": {
-					"affects": {
-						"choice": false
-					},
-					"template": {
-						"units": "ft",
-						"width": "5",
-						"type": "line",
-						"size": "30",
-						"contiguous": false
-					}
-				},
-				"range": {
-					"units": ""
-				},
-				"uses": {
-					"max": "2",
-					"recovery": [
-						{
-							"period": "lr",
-							"type": "recoverAll"
-						}
-					],
-					"spent": 0
-				},
-				"ability": "",
-				"level": 2,
-				"school": "evo",
-				"materials": {
-					"value": "",
-					"consumed": false,
-					"cost": 0,
-					"supply": 0
-				},
-				"preparation": {
-					"mode": "innate",
-					"prepared": true
-				},
-				"activities": {
-					"dnd5eactivity000": {
-						"_id": "dnd5eactivity000",
-						"type": "save",
-						"activation": {
-							"type": "action",
-							"value": null,
-							"override": false
-						},
-						"consumption": {
-							"targets": [
-								{
-									"type": "itemUses",
-									"target": "",
-									"value": "1",
-									"scaling": {
-										"mode": "",
-										"formula": ""
-									}
-								}
-							],
-							"scaling": {
-								"allowed": false,
-								"max": ""
-							},
-							"spellSlot": true
-						},
-						"description": {
-							"chatFlavor": ""
-						},
-						"duration": {
-							"units": "inst",
-							"concentration": false,
-							"override": false
-						},
-						"effects": [],
-						"range": {
-							"override": false
-						},
-						"target": {
-							"prompt": true,
-							"template": {
-								"contiguous": false,
-								"units": "ft"
-							},
-							"affects": {
-								"choice": false
-							},
-							"override": false
-						},
-						"uses": {
-							"spent": 0,
-							"max": "",
-							"recovery": []
-						},
-						"damage": {
-							"onSave": "half",
-							"parts": [
-								{
-									"number": 4,
-									"denomination": 6,
-									"bonus": "",
-									"types": [
-										"fire"
-									],
-									"custom": {
-										"enabled": false,
-										"formula": ""
-									},
-									"scaling": {
-										"mode": "whole",
-										"number": 1,
-										"formula": ""
-									}
-								}
-							]
-						},
-						"save": {
-							"ability": "dex",
-							"dc": {
-								"calculation": "spellcasting",
-								"formula": ""
-							}
-						}
-					}
-				},
-				"identifier": "burning-beam",
-				"properties": [
-					"vocal",
-					"somatic"
-				]
-			},
-			"effects": [],
-			"flags": {
-				"midi-qol": {
-					"effectActivation": false
-				},
-				"midiProperties": {
-					"nodam": false,
-					"fulldam": false,
-					"halfdam": false,
-					"autoFailFriendly": false,
-					"autoSaveFriendly": false,
-					"rollOther": false,
-					"critOther": false,
-					"offHandWeapon": false,
-					"magicdam": false,
-					"magiceffect": false,
-					"concentration": false,
-					"toggleEffect": false,
-					"ignoreTotalCover": false
-				},
-				"core": {},
-				"dnd5e": {
-					"migratedUses": 2,
-					"migratedProperties": [
-						"vocal",
-						"somatic"
-					]
-				}
-			},
-			"_key": "!actors.items!h4Aud0lG4mNU1RFg.utdBEnHDSIHXGXcY"
-		},
-		{
-			"folder": "KW6BGl3Q4MI91gEa",
-			"name": "Rend the Veil [Frighten]",
-			"type": "spell",
-			"img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
-			"system": {
-				"description": {
-					"value": "<p><strong>This ability is meant to be used after casting Rend the Veil to automate the frightened effect it causes.</strong></p><br><p>60 ft. Radius</p><br><p><strong>Wisdom</strong> Save</p><ul><li><p><strong>Failure:</strong> Target is frightened of the center of this effect for 1 minute (save ends).</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
-					"chat": ""
-				},
-				"source": {
-					"custom": "Elkan 5e",
-					"revision": 1,
-					"rules": "2014"
-				},
-				"activation": {
-					"type": "action",
-					"condition": "",
-					"value": 1
-				},
-				"duration": {
-					"value": "1",
-					"units": "minute"
-				},
-				"target": {
-					"affects": {
-						"type": "enemy",
-						"count": "60",
-						"choice": false
-					},
-					"template": {
-						"units": "ft",
-						"contiguous": false
-					}
-				},
-				"range": {
-					"value": "60",
-					"units": "ft"
-				},
-				"uses": {
-					"max": "",
-					"recovery": [],
-					"spent": 0
-				},
-				"ability": "",
-				"level": 5,
-				"school": "con",
-				"materials": {
-					"value": "A warped tuning fork meant for teleportation to another plane",
-					"consumed": false,
-					"cost": 50,
-					"supply": 1
-				},
-				"preparation": {
-					"mode": "innate",
-					"prepared": true
-				},
-				"activities": {
-					"dnd5eactivity000": {
-						"_id": "dnd5eactivity000",
-						"type": "save",
-						"activation": {
-							"type": "action",
-							"value": null,
-							"override": false
-						},
-						"consumption": {
-							"targets": [],
-							"scaling": {
-								"allowed": false,
-								"max": ""
-							},
-							"spellSlot": true
-						},
-						"description": {
-							"chatFlavor": ""
-						},
-						"duration": {
-							"units": "inst",
-							"concentration": false,
-							"override": false
-						},
-						"effects": [
-							{
-								"_id": "oVgZ9K0cjp3TL672",
-								"onSave": false
-							}
-						],
-						"range": {
-							"override": false
-						},
-						"target": {
-							"prompt": true,
-							"template": {
-								"contiguous": false,
-								"units": "ft"
-							},
-							"affects": {
-								"choice": false
-							},
-							"override": false
-						},
-						"uses": {
-							"spent": 0,
-							"max": "",
-							"recovery": []
-						},
-						"damage": {
-							"onSave": "half",
-							"parts": []
-						},
-						"save": {
-							"ability": "wis",
-							"dc": {
-								"calculation": "spellcasting",
-								"formula": ""
-							}
-						}
-					}
-				},
-				"identifier": "rend-the-veil-frighten",
-				"properties": [
-					"vocal",
-					"somatic",
-					"material"
-				]
-			},
-			"effects": [
-				{
-					"name": "Frightened",
-					"origin": "Item.NzNj8PEe2lqrzjEC",
-					"duration": {
-						"rounds": null,
-						"startTime": null,
-						"seconds": 60,
-						"combat": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
-					},
-					"transfer": false,
-					"disabled": false,
-					"_id": "oVgZ9K0cjp3TL672",
-					"changes": [
-						{
-							"key": "flags.midi-qol.disadvantage.attack.all",
-							"mode": 5,
-							"value": "1",
-							"priority": 50
-						},
-						{
-							"key": "flags.midi-qol.disadvantage.ability.check.all",
-							"mode": 5,
-							"value": "1",
-							"priority": 50
-						},
-						{
-							"key": "flags.midi-qol.OverTime",
-							"mode": 2,
-							"value": "turn=end,\nsaveAbility=wis,",
-							"priority": 20
-						}
-					],
-					"description": "",
-					"statuses": [],
-					"flags": {
-						"times-up": {
-							"isPassive": false
-						},
-						"dae": {
-							"selfTarget": false,
-							"selfTargetAlways": false,
-							"dontApply": false,
-							"stackable": "noneName",
-							"showIcon": false,
-							"durationExpression": "",
-							"macroRepeat": "none",
-							"specialDuration": []
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"nameOverride": "",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false
-						}
-					},
-					"tint": "#ffffff",
-					"img": "modules/elkan5e/icons/conditions/frightened.svg",
-					"type": "base",
-					"system": {},
-					"_key": "!actors.items.effects!h4Aud0lG4mNU1RFg.vt7werShZeikFFCM.oVgZ9K0cjp3TL672"
-				}
-			],
-			"flags": {
-				"midi-qol": {
-					"effectActivation": false
-				},
-				"midiProperties": {
-					"nodam": false,
-					"fulldam": false,
-					"halfdam": false,
-					"autoFailFriendly": false,
-					"autoSaveFriendly": false,
-					"rollOther": false,
-					"critOther": false,
-					"offHandWeapon": false,
-					"magicdam": false,
-					"magiceffect": false,
-					"concentration": false,
-					"toggleEffect": false,
-					"ignoreTotalCover": false
-				},
-				"core": {},
-				"dnd5e": {
-					"migratedProperties": [
-						"vocal",
-						"somatic",
-						"material"
-					]
-				}
-			},
-			"_id": "vt7werShZeikFFCM",
-			"_key": "!actors.items!h4Aud0lG4mNU1RFg.vt7werShZeikFFCM"
-		},
-		{
-			"folder": "KW6BGl3Q4MI91gEa",
-			"name": "Rend the Veil",
-			"type": "spell",
-			"_id": "ox73A21S9eX0mNSo",
-			"img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
-			"system": {
-				"description": {
-					"value": "<p><strong>Note: casting this spell requires a damaged tuning fork, typically valued at 50 gold. The tuning fork is not consumed by the spell.</strong></p><br><p><em>You hold out a damaged tuning fork attuned to another plane. You utter a corrupted version of the incantation needed to teleport to another plane, instead ripping a hole in space. All creatures you choose within 60 ft. of the tear are compelled to flee from it, and the area around the rip is twisted.</em></p><br><p>1 Action - 20 ft. Radius (60 ft.) - 5th Level - VSM</p><br><p><strong>Constitution</strong> Save</p><ul><li><p><strong>Failure:</strong> Target takes 4d8 force damage. <strong>*</strong></p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p>Additionally, all creatures who can see the rip in reality when it is formed must attempt a wisdom saving throw. See the Rend the Veil [Frighten] action for the second half of this ability's automation.</p><br><p>60 ft. Radius</p><br><p><strong>Wisdom</strong> Save</p><ul><li><p><strong>Failure:</strong> Target is frightened of the center of this effect for 1 minute (save ends).</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><br><p><strong>*At Higher Levels:</strong> For every spell slot level above 5th, the damage increases by 2d8.</p>",
-					"chat": ""
-				},
-				"source": {
-					"custom": "Elkan 5e",
-					"revision": 1,
-					"rules": "2014"
-				},
-				"activation": {
-					"type": "action",
-					"condition": "",
-					"value": 1
-				},
-				"duration": {
-					"value": "1",
-					"units": "minute"
-				},
-				"target": {
-					"affects": {
-						"choice": false
-					},
-					"template": {
-						"units": "ft",
-						"type": "sphere",
-						"size": "20",
-						"contiguous": false
-					}
-				},
-				"range": {
-					"value": "60",
-					"units": "ft"
-				},
-				"uses": {
-					"max": "1",
-					"recovery": [
-						{
-							"period": "lr",
-							"type": "recoverAll"
-						}
-					],
-					"spent": 0
-				},
-				"ability": "",
-				"level": 5,
-				"school": "con",
-				"materials": {
-					"value": "A warped tuning fork meant for teleportation to another plane",
-					"consumed": false,
-					"cost": 50,
-					"supply": 1
-				},
-				"preparation": {
-					"mode": "innate",
-					"prepared": true
-				},
-				"activities": {
-					"dnd5eactivity000": {
-						"_id": "dnd5eactivity000",
-						"type": "save",
-						"activation": {
-							"type": "action",
-							"value": null,
-							"override": false
-						},
-						"consumption": {
-							"targets": [
-								{
-									"type": "itemUses",
-									"target": "",
-									"value": "1",
-									"scaling": {
-										"mode": "",
-										"formula": ""
-									}
-								}
-							],
-							"scaling": {
-								"allowed": false,
-								"max": ""
-							},
-							"spellSlot": true
-						},
-						"description": {
-							"chatFlavor": "Use the Rend the Veil [Frighten] action to automate the second half of the spell."
-						},
-						"duration": {
-							"units": "inst",
-							"concentration": false,
-							"override": false
-						},
-						"effects": [],
-						"range": {
-							"override": false
-						},
-						"target": {
-							"prompt": true,
-							"template": {
-								"contiguous": false,
-								"units": "ft"
-							},
-							"affects": {
-								"choice": false
-							},
-							"override": false
-						},
-						"uses": {
-							"spent": 0,
-							"max": "",
-							"recovery": []
-						},
-						"damage": {
-							"onSave": "half",
-							"parts": [
-								{
-									"number": 4,
-									"denomination": 8,
-									"bonus": "",
-									"types": [
-										"force"
-									],
-									"custom": {
-										"enabled": false,
-										"formula": ""
-									},
-									"scaling": {
-										"mode": "whole",
-										"number": 2,
-										"formula": ""
-									}
-								}
-							]
-						},
-						"save": {
-							"ability": "con",
-							"dc": {
-								"calculation": "spellcasting",
-								"formula": ""
-							}
-						}
-					}
-				},
-				"identifier": "rend-the-veil",
-				"properties": [
-					"vocal",
-					"somatic",
-					"material"
-				]
-			},
-			"effects": [],
-			"flags": {
-				"midi-qol": {
-					"effectActivation": false
-				},
-				"midiProperties": {
-					"nodam": false,
-					"fulldam": false,
-					"halfdam": false,
-					"autoFailFriendly": false,
-					"autoSaveFriendly": false,
-					"rollOther": false,
-					"critOther": false,
-					"offHandWeapon": false,
-					"magicdam": false,
-					"magiceffect": false,
-					"concentration": false,
-					"toggleEffect": false,
-					"ignoreTotalCover": false
-				},
-				"core": {},
-				"dnd5e": {
-					"migratedUses": 1,
-					"migratedProperties": [
-						"vocal",
-						"somatic",
-						"material"
-					]
-				}
-			},
-			"_key": "!actors.items!h4Aud0lG4mNU1RFg.ox73A21S9eX0mNSo"
-		},
-		{
-			"name": "Toxic Sting",
-			"type": "spell",
-			"img": "icons/magic/acid/dissolve-pool-bubbles.webp",
-			"effects": [],
-			"folder": "SjVk5lAwzIpqSBbH",
-			"flags": {
-				"srd5e": {
-					"page": "spells.html",
-					"source": "PHB",
-					"hash": "poison%20spray_phb"
-				},
-				"betterRolls5e": {
-					"critRange": {
-						"type": "String",
-						"value": ""
-					},
-					"critDamage": {
-						"type": "String",
-						"value": ""
-					},
-					"quickDesc": {
-						"type": "Boolean",
-						"value": true,
-						"altValue": true
-					},
-					"quickAttack": {
-						"type": "Boolean",
-						"value": true,
-						"altValue": true
-					},
-					"quickSave": {
-						"type": "Boolean",
-						"value": true,
-						"altValue": true
-					},
-					"quickDamage": {
-						"type": "Array",
-						"value": [
-							true
-						],
-						"altValue": [
-							true
-						],
-						"context": []
-					},
-					"quickVersatile": {
-						"type": "Boolean",
-						"value": false,
-						"altValue": false
-					},
-					"quickProperties": {
-						"type": "Boolean",
-						"value": true,
-						"altValue": true
-					},
-					"quickCharges": {
-						"type": "Boolean",
-						"value": {
-							"use": false,
-							"resource": true
-						},
-						"altValue": {
-							"use": false,
-							"resource": true
-						}
-					},
-					"quickTemplate": {
-						"type": "Boolean",
-						"value": true,
-						"altValue": true
-					},
-					"quickOther": {
-						"type": "Boolean",
-						"value": true,
-						"altValue": true,
-						"context": ""
-					},
-					"quickFlavor": {
-						"type": "Boolean",
-						"value": true,
-						"altValue": true
-					},
-					"quickPrompt": {
-						"type": "Boolean",
-						"value": false,
-						"altValue": false
-					}
-				},
-				"core": {},
-				"midi-qol": {
-					"effectActivation": false
-				},
-				"midiProperties": {
-					"nodam": false,
-					"fulldam": false,
-					"halfdam": false,
-					"rollOther": false,
-					"critOther": false,
-					"magicdam": false,
-					"magiceffect": false,
-					"concentration": false,
-					"toggleEffect": false,
-					"ignoreTotalCover": false,
-					"autoFailFriendly": false,
-					"autoSaveFriendly": false,
-					"offHandWeapon": false
-				},
-				"dnd5e": {
-					"migratedProperties": [
-						"vocal",
-						"somatic"
-					]
-				}
-			},
-			"system": {
-				"description": {
-					"value": "<p><em>You reach out as if to grasp your target, conjuring toxic mist around them.</em></p><br><p>1 Action - 1 Creature (30 ft.) - Cantrip - VS</p><br><p><strong>Consitution</strong> Save</p><ul><li><p><strong>Failure:</strong> Target takes 1d12 poison damage. <strong>*</strong></p></li><li><p><strong>Success:</strong> No damage.</p></li></ul><p></p><br><p><strong>*At Higher Levels:</strong> This spell's damage increases by 1d12 when you reach a total character or creature level of 5th level (2d12), 11th level (3d12), and 17th level (4d12).</p>",
-					"chat": "1 Action - 1 Creature (30 ft.) - Cantrip - VS</p><br><p><strong>Consitution</strong> Save</p><ul><li><p><strong>Failure:</strong> Target takes 1d12 poison damage. <strong>*</strong></p></li><li><p><strong>Success:</strong> No damage.</p></li></ul><p></p><br><p><strong>*At Higher Levels:</strong> This spell's damage increases by 1d12 when you reach a total character or creature level of 5th level (2d12), 11th level (3d12), and 17th level (4d12).</p>"
-				},
-				"source": {
-					"custom": "Elkan 5e",
-					"revision": 1,
-					"rules": "2014"
-				},
-				"activation": {
-					"type": "action",
-					"condition": "",
-					"value": 1
-				},
-				"duration": {
-					"value": "",
-					"units": "inst"
-				},
-				"target": {
-					"affects": {
-						"type": "creature",
-						"count": "1",
-						"choice": false
-					},
-					"template": {
-						"units": "",
-						"contiguous": false
-					}
-				},
-				"range": {
-					"value": "30",
-					"units": "ft"
-				},
-				"uses": {
-					"max": "",
-					"recovery": [],
-					"spent": 0
-				},
-				"ability": "",
-				"level": 0,
-				"school": "con",
-				"materials": {
-					"value": "",
-					"consumed": false,
-					"cost": 0,
-					"supply": 0
-				},
-				"preparation": {
-					"mode": "always",
-					"prepared": true
-				},
-				"activities": {
-					"dnd5eactivity000": {
-						"_id": "dnd5eactivity000",
-						"type": "save",
-						"activation": {
-							"type": "action",
-							"value": null,
-							"override": false
-						},
-						"consumption": {
-							"targets": [],
-							"scaling": {
-								"allowed": false,
-								"max": ""
-							},
-							"spellSlot": true
-						},
-						"description": {
-							"chatFlavor": ""
-						},
-						"duration": {
-							"units": "inst",
-							"concentration": false,
-							"override": false
-						},
-						"effects": [],
-						"range": {
-							"override": false
-						},
-						"target": {
-							"prompt": true,
-							"template": {
-								"contiguous": false,
-								"units": "ft"
-							},
-							"affects": {
-								"choice": false
-							},
-							"override": false
-						},
-						"uses": {
-							"spent": 0,
-							"max": "",
-							"recovery": []
-						},
-						"damage": {
-							"onSave": "none",
-							"parts": [
-								{
-									"number": 3,
-									"denomination": 12,
-									"bonus": "",
-									"types": [
-										"poison"
-									],
-									"custom": {
-										"enabled": false,
-										"formula": ""
-									},
-									"scaling": {
-										"mode": "whole",
-										"number": 1,
-										"formula": ""
-									}
-								}
-							]
-						},
-						"save": {
-							"ability": "con",
-							"dc": {
-								"calculation": "spellcasting",
-								"formula": ""
-							}
-						}
-					}
-				},
-				"identifier": "toxic-sting",
-				"properties": [
-					"vocal",
-					"somatic"
-				]
-			},
-			"_id": "GFxjOvMqHq7g2v83",
-			"_key": "!actors.items!h4Aud0lG4mNU1RFg.GFxjOvMqHq7g2v83"
-		},
-		{
-			"name": "Greatsword",
-			"type": "weapon",
-			"img": "icons/weapons/swords/greatsword-guard-gem-blue.webp",
-			"effects": [],
-			"flags": {
-				"core": {},
-				"betterRolls5e": {
-					"quickDamage": {
-						"context": {
-							"0": ""
-						},
-						"value": {
-							"0": true
-						},
-						"altValue": {
-							"0": true
-						}
-					},
-					"quickOther": {
-						"context": "",
-						"value": true,
-						"altValue": true
-					},
-					"quickDesc": {
-						"value": false,
-						"altValue": false
-					},
-					"quickAttack": {
-						"value": true,
-						"altValue": true
-					},
-					"quickProperties": {
-						"value": true,
-						"altValue": true
-					},
-					"quickVersatile": {
-						"value": false,
-						"altValue": false
-					},
-					"quickFlavor": {
-						"value": true,
-						"altValue": true
-					},
-					"quickCharges": {
-						"value": {
-							"quantity": false
-						},
-						"altValue": {
-							"quantity": false
-						}
-					}
-				},
-				"midi-qol": {
-					"effectActivation": false,
-					"fumbleThreshold": null,
-					"removeAttackDamageButtons": "default",
-					"rollAttackPerTarget": "default",
-					"itemCondition": "",
-					"effectCondition": ""
-				},
-				"midiProperties": {
-					"nodam": false,
-					"fulldam": false,
-					"halfdam": false,
-					"rollOther": false,
-					"critOther": false,
-					"magicdam": false,
-					"magiceffect": false,
-					"concentration": false,
-					"toggleEffect": false,
-					"autoFailFriendly": false,
-					"offHandWeapon": false,
-					"ignoreTotalCover": false,
-					"autoSaveFriendly": false,
-					"noConcentrationCheck": false,
-					"confirmTargets": "never"
-				},
-				"dnd5e": {}
-			},
-			"system": {
-				"description": {
-					"value": "<p><em>Greatswords are heavy two-handed sword designed for slashing.</em></p><br><p>Properties:</p><br><p>&amp;Reference[Heavy], &amp;Reference[Handed]</p>",
-					"chat": ""
-				},
-				"source": {
-					"custom": "elkan5e.com/weapons",
-					"revision": 1,
-					"rules": "2014"
-				},
-				"quantity": 1,
-				"weight": {
-					"value": 6,
-					"units": "lb"
-				},
-				"price": {
-					"value": 50,
-					"denomination": "gp"
-				},
-				"attunement": "",
-				"rarity": "common",
-				"identified": true,
-				"cover": null,
-				"crewed": false,
-				"range": {
-					"value": null,
-					"long": null,
-					"units": "ft",
-					"reach": null
-				},
-				"uses": {
-					"max": "",
-					"recovery": [],
-					"spent": 0
-				},
-				"damage": {
-					"versatile": {
-						"number": null,
-						"denomination": null,
-						"bonus": "",
-						"types": [],
-						"custom": {
-							"enabled": false,
-							"formula": ""
-						},
-						"scaling": {
-							"mode": "",
-							"number": null,
-							"formula": ""
-						}
-					},
-					"base": {
-						"number": 2,
-						"denomination": 6,
-						"bonus": "",
-						"types": [
-							"slashing"
-						],
-						"custom": {
-							"enabled": false,
-							"formula": ""
-						},
-						"scaling": {
-							"mode": "",
-							"number": null,
-							"formula": ""
-						}
-					}
-				},
-				"armor": {
-					"value": 10
-				},
-				"hp": {
-					"value": 0,
-					"max": 0,
-					"dt": null,
-					"conditions": ""
-				},
-				"properties": [
-					"hvy",
-					"two"
-				],
-				"unidentified": {
-					"description": ""
-				},
-				"type": {
-					"value": "martialM",
-					"baseItem": "greatsword"
-				},
-				"container": null,
-				"equipped": true,
-				"proficient": null,
-				"activities": {
-					"dnd5eactivity000": {
-						"_id": "dnd5eactivity000",
-						"type": "attack",
-						"activation": {
-							"type": "action",
-							"value": 1,
-							"condition": "",
-							"override": false
-						},
-						"consumption": {
-							"targets": [],
-							"scaling": {
-								"allowed": false,
-								"max": ""
-							},
-							"spellSlot": true
-						},
-						"description": {
-							"chatFlavor": ""
-						},
-						"duration": {
-							"concentration": false,
-							"value": "",
-							"units": "",
-							"special": "",
-							"override": false
-						},
-						"effects": [],
-						"range": {
-							"units": "ft",
-							"special": "",
-							"override": false
-						},
-						"target": {
-							"template": {
-								"count": "",
-								"contiguous": false,
-								"type": "",
-								"size": "",
-								"width": "",
-								"height": "",
-								"units": ""
-							},
-							"affects": {
-								"count": "",
-								"type": "",
-								"choice": false,
-								"special": ""
-							},
-							"prompt": true,
-							"override": false
-						},
-						"uses": {
-							"spent": 0,
-							"max": "",
-							"recovery": []
-						},
-						"attack": {
-							"ability": "",
-							"bonus": "",
-							"critical": {
-								"threshold": null
-							},
-							"flat": false,
-							"type": {
-								"value": "melee",
-								"classification": "weapon"
-							}
-						},
-						"damage": {
-							"critical": {
-								"bonus": ""
-							},
-							"includeBase": true,
-							"parts": []
-						}
-					}
-				},
-				"identifier": "greatsword",
-				"attuned": false,
-				"ammunition": {},
-				"magicalBonus": null
-			},
-			"folder": "l4LrhKIKQ5ca1N2r",
-			"_id": "qFVLg2DfWIuwi6Qg",
-			"_key": "!actors.items!h4Aud0lG4mNU1RFg.qFVLg2DfWIuwi6Qg"
-		}
-	],
-	"effects": [],
-	"folder": "WaHQ0Hz787wfUXDl",
-	"flags": {
-		"core": {},
-		"tidy5e-sheet": {
-			"allow-edit": true,
-			"death": {
-				"success": 0,
-				"failure": 0
-			},
-			"maxPreparedSpells": null,
-			"gender": "",
-			"age": "",
-			"height": "",
-			"weight": "",
-			"eyes": "",
-			"skin": "",
-			"hair": "",
-			"notes1": {
-				"name": ""
-			},
-			"notes2": {
-				"name": ""
-			},
-			"notes3": {
-				"name": ""
-			},
-			"notes4": {
-				"name": ""
-			}
-		},
-		"midi-qol": {
-			"concentration-damage": 0
-		}
-	},
-	"system": {
-		"abilities": {
-			"str": {
-				"value": 18,
-				"proficient": 0,
-				"max": null,
-				"bonuses": {
-					"check": "",
-					"save": ""
-				}
-			},
-			"dex": {
-				"value": 16,
-				"proficient": 0,
-				"max": null,
-				"bonuses": {
-					"check": "",
-					"save": ""
-				}
-			},
-			"con": {
-				"value": 16,
-				"proficient": 0,
-				"max": null,
-				"bonuses": {
-					"check": "",
-					"save": ""
-				}
-			},
-			"int": {
-				"value": 16,
-				"proficient": 0,
-				"max": null,
-				"bonuses": {
-					"check": "",
-					"save": ""
-				}
-			},
-			"wis": {
-				"value": 11,
-				"proficient": 0,
-				"max": null,
-				"bonuses": {
-					"check": "",
-					"save": ""
-				}
-			},
-			"cha": {
-				"value": 12,
-				"proficient": 0,
-				"max": null,
-				"bonuses": {
-					"check": "",
-					"save": ""
-				}
-			}
-		},
-		"attributes": {
-			"ac": {
-				"flat": 17,
-				"calc": "natural",
-				"formula": ""
-			},
-			"hp": {
-				"value": 78,
-				"max": 78,
-				"temp": null,
-				"tempmax": null,
-				"formula": "15d8+45"
-			},
-			"init": {
-				"ability": "",
-				"bonus": "0",
-				"roll": {
-					"min": null,
-					"max": null,
-					"mode": 0
-				}
-			},
-			"movement": {
-				"burrow": 0,
-				"climb": 0,
-				"fly": 0,
-				"swim": 0,
-				"walk": 30,
-				"units": "ft",
-				"hover": false
-			},
-			"attunement": {
-				"max": 3
-			},
-			"senses": {
-				"darkvision": 60,
-				"blindsight": 0,
-				"tremorsense": 0,
-				"truesight": 0,
-				"units": "ft",
-				"special": ""
-			},
-			"spellcasting": "",
-			"exhaustion": 0,
-			"concentration": {
-				"ability": "",
-				"roll": {
-					"min": null,
-					"max": null,
-					"mode": 0
-				},
-				"bonuses": {
-					"save": ""
-				},
-				"limit": 1
-			},
-			"hd": {
-				"spent": 0
-			},
-			"death": {
-				"ability": "",
-				"roll": {
-					"min": null,
-					"max": null,
-					"mode": 0
-				},
-				"success": 0,
-				"failure": 0
-			}
-		},
-		"details": {
-			"biography": {
-				"value": "",
-				"public": ""
-			},
-			"alignment": "",
-			"race": null,
-			"type": {
-				"value": "monstrosity",
-				"subtype": "",
-				"swarm": "",
-				"custom": ""
-			},
-			"environment": "",
-			"cr": 9,
-			"spellLevel": 0,
-			"ideal": "",
-			"bond": "",
-			"flaw": ""
-		},
-		"traits": {
-			"size": "lg",
-			"di": {
-				"value": [],
-				"bypasses": [],
-				"custom": ""
-			},
-			"dr": {
-				"value": [
-					"poison"
-				],
-				"bypasses": [],
-				"custom": ""
-			},
-			"dv": {
-				"value": [],
-				"bypasses": [],
-				"custom": ""
-			},
-			"ci": {
-				"value": [],
-				"custom": ""
-			},
-			"languages": {
-				"value": [
-					"draconic",
-					"orc"
-				],
-				"custom": ""
-			},
-			"dm": {
-				"amount": {},
-				"bypasses": []
-			}
-		},
-		"currency": {
-			"pp": 0,
-			"gp": 0,
-			"ep": 0,
-			"sp": 0,
-			"cp": 0
-		},
-		"skills": {
-			"acr": {
-				"value": 0,
-				"ability": "dex",
-				"bonuses": {
-					"check": "",
-					"passive": ""
-				},
-				"roll": {
-					"min": null,
-					"max": null,
-					"mode": 0
-				}
-			},
-			"ani": {
-				"value": 0,
-				"ability": "wis",
-				"bonuses": {
-					"check": "",
-					"passive": ""
-				},
-				"roll": {
-					"min": null,
-					"max": null,
-					"mode": 0
-				}
-			},
-			"arc": {
-				"value": 1,
-				"ability": "int",
-				"bonuses": {
-					"check": "",
-					"passive": ""
-				},
-				"roll": {
-					"min": null,
-					"max": null,
-					"mode": 0
-				}
-			},
-			"ath": {
-				"value": 0,
-				"ability": "str",
-				"bonuses": {
-					"check": "",
-					"passive": ""
-				},
-				"roll": {
-					"min": null,
-					"max": null,
-					"mode": 0
-				}
-			},
-			"dec": {
-				"value": 0,
-				"ability": "cha",
-				"bonuses": {
-					"check": "",
-					"passive": ""
-				},
-				"roll": {
-					"min": null,
-					"max": null,
-					"mode": 0
-				}
-			},
-			"his": {
-				"value": 0,
-				"ability": "int",
-				"bonuses": {
-					"check": "",
-					"passive": ""
-				},
-				"roll": {
-					"min": null,
-					"max": null,
-					"mode": 0
-				}
-			},
-			"ins": {
-				"value": 0,
-				"ability": "wis",
-				"bonuses": {
-					"check": "",
-					"passive": ""
-				},
-				"roll": {
-					"min": null,
-					"max": null,
-					"mode": 0
-				}
-			},
-			"itm": {
-				"value": 0,
-				"ability": "cha",
-				"bonuses": {
-					"check": "",
-					"passive": ""
-				},
-				"roll": {
-					"min": null,
-					"max": null,
-					"mode": 0
-				}
-			},
-			"inv": {
-				"value": 0,
-				"ability": "int",
-				"bonuses": {
-					"check": "",
-					"passive": ""
-				},
-				"roll": {
-					"min": null,
-					"max": null,
-					"mode": 0
-				}
-			},
-			"med": {
-				"value": 1,
-				"ability": "wis",
-				"bonuses": {
-					"check": "",
-					"passive": ""
-				},
-				"roll": {
-					"min": null,
-					"max": null,
-					"mode": 0
-				}
-			},
-			"nat": {
-				"value": 0,
-				"ability": "int",
-				"bonuses": {
-					"check": "",
-					"passive": ""
-				},
-				"roll": {
-					"min": null,
-					"max": null,
-					"mode": 0
-				}
-			},
-			"prc": {
-				"value": 0,
-				"ability": "wis",
-				"bonuses": {
-					"check": "",
-					"passive": ""
-				},
-				"roll": {
-					"min": null,
-					"max": null,
-					"mode": 0
-				}
-			},
-			"prf": {
-				"value": 0,
-				"ability": "cha",
-				"bonuses": {
-					"check": "",
-					"passive": ""
-				},
-				"roll": {
-					"min": null,
-					"max": null,
-					"mode": 0
-				}
-			},
-			"per": {
-				"value": 0,
-				"ability": "cha",
-				"bonuses": {
-					"check": "",
-					"passive": ""
-				},
-				"roll": {
-					"min": null,
-					"max": null,
-					"mode": 0
-				}
-			},
-			"rel": {
-				"value": 0,
-				"ability": "int",
-				"bonuses": {
-					"check": "",
-					"passive": ""
-				},
-				"roll": {
-					"min": null,
-					"max": null,
-					"mode": 0
-				}
-			},
-			"slt": {
-				"value": 0,
-				"ability": "dex",
-				"bonuses": {
-					"check": "",
-					"passive": ""
-				},
-				"roll": {
-					"min": null,
-					"max": null,
-					"mode": 0
-				}
-			},
-			"ste": {
-				"value": 0,
-				"ability": "dex",
-				"bonuses": {
-					"check": "",
-					"passive": ""
-				},
-				"roll": {
-					"min": null,
-					"max": null,
-					"mode": 0
-				}
-			},
-			"sur": {
-				"value": 0,
-				"ability": "wis",
-				"bonuses": {
-					"check": "",
-					"passive": ""
-				},
-				"roll": {
-					"min": null,
-					"max": null,
-					"mode": 0
-				}
-			}
-		},
-		"tools": {},
-		"spells": {
-			"spell1": {
-				"value": 0,
-				"override": null
-			},
-			"spell2": {
-				"value": 0,
-				"override": null
-			},
-			"spell3": {
-				"value": 0,
-				"override": null
-			},
-			"spell4": {
-				"value": 0,
-				"override": null
-			},
-			"spell5": {
-				"value": 0,
-				"override": null
-			},
-			"spell6": {
-				"value": 0,
-				"override": null
-			},
-			"spell7": {
-				"value": 0,
-				"override": null
-			},
-			"spell8": {
-				"value": 0,
-				"override": null
-			},
-			"spell9": {
-				"value": 0,
-				"override": null
-			},
-			"pact": {
-				"value": 0,
-				"override": null
-			},
-			"spell0": {
-				"value": 0,
-				"override": null
-			}
-		},
-		"bonuses": {
-			"mwak": {
-				"attack": "",
-				"damage": ""
-			},
-			"rwak": {
-				"attack": "",
-				"damage": ""
-			},
-			"msak": {
-				"attack": "",
-				"damage": ""
-			},
-			"rsak": {
-				"attack": "",
-				"damage": ""
-			},
-			"abilities": {
-				"check": "",
-				"save": "",
-				"skill": ""
-			},
-			"spell": {
-				"dc": ""
-			}
-		},
-		"resources": {
-			"legact": {
-				"value": 0,
-				"max": 0
-			},
-			"legres": {
-				"value": 0,
-				"max": 0
-			},
-			"lair": {
-				"value": false,
-				"initiative": 0
-			}
-		},
-		"source": {
-			"revision": 1,
-			"rules": "",
-			"book": "Elkan 5e",
-			"page": "",
-			"license": ""
-		}
-	},
-	"prototypeToken": {
-		"name": "Mutant Wizard",
-		"displayName": 50,
-		"actorLink": false,
-		"width": 2,
-		"height": 2,
-		"lockRotation": false,
-		"rotation": 0,
-		"alpha": 1,
-		"light": {
-			"alpha": 0.5,
-			"angle": 360,
-			"bright": 0,
-			"coloration": 1,
-			"dim": 0,
-			"luminosity": 0.5,
-			"saturation": 0,
-			"contrast": 0,
-			"shadows": 0,
-			"animation": {
-				"speed": 5,
-				"intensity": 5,
-				"reverse": false,
-				"type": null
-			},
-			"darkness": {
-				"min": 0,
-				"max": 1
-			},
-			"attenuation": 0.5,
-			"color": null,
-			"negative": false,
-			"priority": 0
-		},
-		"disposition": -1,
-		"displayBars": 50,
-		"bar1": {
-			"attribute": "attributes.hp"
-		},
-		"bar2": {
-			"attribute": null
-		},
-		"flags": {
-			"token-z": {
-				"zIndex": 0
-			},
-			"monks-enhanced-journal": {
-				"chatbubble": ""
-			},
-			"elevation-drag-ruler": {
-				"selectedSpeed": "auto",
-				"hasBonusDash": false,
-				"hideSpeedButton": false
-			}
-		},
-		"randomImg": false,
-		"texture": {
-			"src": "icons/magic/unholy/hand-grasping-green.webp",
-			"tint": "#ffffff",
-			"scaleX": 1,
-			"scaleY": 1,
-			"offsetX": 0,
-			"offsetY": 0,
-			"rotation": 0,
-			"anchorX": 0.5,
-			"anchorY": 0.5,
-			"fit": "contain",
-			"alphaThreshold": 0.75
-		},
-		"sight": {
-			"angle": 360,
-			"enabled": true,
-			"range": 60,
-			"brightness": 1,
-			"visionMode": "basic",
-			"color": null,
-			"attenuation": 0.1,
-			"saturation": 0,
-			"contrast": 0
-		},
-		"detectionModes": [],
-		"appendNumber": false,
-		"prependAdjective": false,
-		"occludable": {
-			"radius": 0
-		},
-		"ring": {
-			"enabled": false,
-			"colors": {
-				"ring": null,
-				"background": null
-			},
-			"effects": 1,
-			"subject": {
-				"scale": 1,
-				"texture": null
-			}
-		},
-		"turnMarker": {
-			"mode": 1,
-			"animation": null,
-			"src": null,
-			"disposition": false
-		},
-		"movementAction": null
-	},
-	"_key": "!actors!h4Aud0lG4mNU1RFg"
+  "_id": "h4Aud0lG4mNU1RFg",
+  "name": "Mutant Wizard",
+  "type": "npc",
+  "img": "icons/magic/unholy/hand-grasping-green.webp",
+  "items": [
+    {
+      "name": "Rend the Veil (Recharge 6)",
+      "flags": {
+        "midi-qol": {
+          "effectActivation": false
+        },
+        "midiProperties": {
+          "nodam": false,
+          "fulldam": false,
+          "halfdam": false,
+          "rollOther": false,
+          "critOther": false,
+          "magicdam": false,
+          "magiceffect": false,
+          "concentration": false,
+          "toggleEffect": false,
+          "autoFailFriendly": false,
+          "autoSaveFriendly": false,
+          "offHandWeapon": false,
+          "ignoreTotalCover": false
+        },
+        "core": {},
+        "dnd5e": {
+          "migratedUses": 0
+        }
+      },
+      "type": "feat",
+      "img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
+      "effects": [],
+      "_id": "wvV53ECWcVifop42",
+      "folder": null,
+      "system": {
+        "description": {
+          "value": "<p></p><br><p><strong></strong> .</p><br><p>The lizard-orc wizard attempts to rip open the fabric of reality, creating a wave of unstable energy at point it can see within 60 ft. All creatures in a 20 ft. radius of that point must make a DC 15 constitution saving throw, taking 6d8 force damage on a failure, and half as much on a success. If a target fails this save, it must make a DC 15 wisdom saving throw to avoid being frightened of the space where the wave originated. The creature can attempt another save when the lizard-orc wizard dies, or when 1 hour has passed.</p><br><p></p>",
+          "chat": ""
+        },
+        "source": {
+          "custom": "",
+          "revision": 1,
+          "rules": "2014"
+        },
+        "uses": {
+          "max": "1",
+          "recovery": [
+            {
+              "period": "recharge",
+              "formula": "6",
+              "type": "recoverAll"
+            }
+          ],
+          "spent": 1
+        },
+        "type": {
+          "value": "",
+          "subtype": ""
+        },
+        "requirements": "",
+        "activities": {
+          "dnd5eactivity000": {
+            "_id": "dnd5eactivity000",
+            "type": "save",
+            "activation": {
+              "type": "action",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [
+                {
+                  "type": "itemUses",
+                  "target": "",
+                  "value": "1",
+                  "scaling": {
+                    "mode": "",
+                    "formula": ""
+                  }
+                }
+              ],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": true
+            },
+            "description": {
+              "chatFlavor": ""
+            },
+            "duration": {
+              "concentration": false,
+              "value": "",
+              "units": "",
+              "special": "",
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "units": "",
+              "special": "",
+              "override": false
+            },
+            "target": {
+              "template": {
+                "count": "",
+                "contiguous": false,
+                "type": "radius",
+                "size": "20",
+                "width": "",
+                "height": "",
+                "units": "ft"
+              },
+              "affects": {
+                "count": "",
+                "type": "",
+                "choice": false,
+                "special": ""
+              },
+              "prompt": true,
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "max": "",
+              "recovery": []
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 6,
+                  "denomination": 8,
+                  "bonus": "",
+                  "types": [
+                    "force"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "whole",
+                    "number": null,
+                    "formula": ""
+                  }
+                }
+              ]
+            },
+            "save": {
+              "ability": "con",
+              "dc": {
+                "calculation": "int",
+                "formula": "15"
+              }
+            }
+          }
+        },
+        "identifier": "rend-the-veil-recharge-6",
+        "enchant": {},
+        "prerequisites": {
+          "level": null
+        },
+        "properties": []
+      },
+      "_key": "!actors.items!h4Aud0lG4mNU1RFg.wvV53ECWcVifop42"
+    },
+    {
+      "name": "Toxic Regeneration",
+      "type": "feat",
+      "system": {
+        "description": {
+          "value": "<p>When the mutant warrior has fewer than all of its hit points, its flesh attempts to knit itself together, spewing volatile organic compounds as it does so.</p><br><p>All creatures within 5 ft. of the mutant warrior, including the mutant warrior, must succeed on a DC 13 contitution saving throw or take 2d6 poison damage (which the mutant warrior is resistant to). Then, if this doesn't kill the mutant warrior, the mutant warrior regains 5 hit points.</p><br><p>If the mutant warrior isn't in danger and is at 15 hit points or greater, assume that it can regain all hit points over the course of 10 minutes without any danger.</p>",
+          "chat": ""
+        },
+        "source": {
+          "custom": "Elkan 5e",
+          "revision": 1,
+          "rules": "2014"
+        },
+        "uses": {
+          "max": "",
+          "recovery": [],
+          "spent": 0
+        },
+        "type": {
+          "value": "monster",
+          "subtype": ""
+        },
+        "requirements": "",
+        "activities": {
+          "dnd5eactivity000": {
+            "_id": "dnd5eactivity000",
+            "type": "save",
+            "activation": {
+              "type": "bonus",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": true
+            },
+            "description": {
+              "chatFlavor": "If the Mutant Warrior is still alive after using this ability, they regain 5 hit points."
+            },
+            "duration": {
+              "concentration": false,
+              "value": "",
+              "units": "inst",
+              "special": "",
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "value": "5",
+              "units": "ft",
+              "special": "",
+              "override": false
+            },
+            "target": {
+              "template": {
+                "count": "",
+                "contiguous": false,
+                "type": "",
+                "size": "",
+                "width": "",
+                "height": "",
+                "units": "ft"
+              },
+              "affects": {
+                "count": "5",
+                "type": "creature",
+                "choice": false,
+                "special": ""
+              },
+              "prompt": true,
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "max": "",
+              "recovery": []
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 2,
+                  "denomination": 6,
+                  "bonus": "",
+                  "types": [
+                    "poison"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "whole",
+                    "number": null,
+                    "formula": ""
+                  }
+                }
+              ]
+            },
+            "save": {
+              "ability": "con",
+              "dc": {
+                "calculation": "",
+                "formula": "13"
+              }
+            }
+          }
+        },
+        "identifier": "toxic-regeneration",
+        "enchant": {},
+        "prerequisites": {
+          "level": null
+        },
+        "properties": []
+      },
+      "_id": "yfxJaMXpsZ6H6jEt",
+      "img": "icons/skills/toxins/cauldron-bubbles-overflow-green.webp",
+      "effects": [],
+      "folder": null,
+      "flags": {
+        "midi-qol": {
+          "effectActivation": false
+        },
+        "midiProperties": {
+          "nodam": false,
+          "fulldam": false,
+          "halfdam": false,
+          "autoFailFriendly": false,
+          "autoSaveFriendly": false,
+          "rollOther": false,
+          "critOther": false,
+          "offHandWeapon": false,
+          "magicdam": false,
+          "magiceffect": false,
+          "concentration": false,
+          "toggleEffect": false,
+          "ignoreTotalCover": false
+        },
+        "core": {},
+        "dnd5e": {}
+      },
+      "_key": "!actors.items!h4Aud0lG4mNU1RFg.yfxJaMXpsZ6H6jEt"
+    },
+    {
+      "name": "Volatile Creation",
+      "flags": {
+        "midi-qol": {
+          "effectActivation": false
+        },
+        "midiProperties": {
+          "nodam": false,
+          "fulldam": false,
+          "halfdam": false,
+          "autoFailFriendly": false,
+          "autoSaveFriendly": false,
+          "rollOther": false,
+          "critOther": false,
+          "offHandWeapon": false,
+          "magicdam": false,
+          "magiceffect": false,
+          "concentration": false,
+          "toggleEffect": false,
+          "ignoreTotalCover": false
+        },
+        "core": {},
+        "dnd5e": {}
+      },
+      "type": "feat",
+      "img": "icons/skills/toxins/cauldron-pot-bubbles-green.webp",
+      "effects": [
+        {
+          "flags": {
+            "ActiveAuras": {
+              "isAura": false,
+              "radius": "null",
+              "aura": "None",
+              "alignment": "",
+              "type": "",
+              "ignoreSelf": false,
+              "height": false,
+              "hidden": false,
+              "hostile": false,
+              "onlyOnce": false,
+              "displayTemp": false,
+              "nameOverride": ""
+            },
+            "core": {
+              "statusId": "combat-utility-belt.poisoned"
+            },
+            "combat-utility-belt": {
+              "conditionId": "poisoned",
+              "overlay": false
+            },
+            "dae": {
+              "selfTarget": false,
+              "selfTargetAlways": false,
+              "stackable": "none",
+              "durationExpression": "",
+              "macroRepeat": "none",
+              "specialDuration": [],
+              "dontApply": false,
+              "showIcon": false
+            },
+            "times-up": {
+              "isPassive": false
+            }
+          },
+          "changes": [
+            {
+              "key": "flags.midi-qol.disadvantage.attack.all",
+              "mode": 5,
+              "value": "1",
+              "priority": 50
+            },
+            {
+              "key": "flags.midi-qol.disadvantage.ability.check.all",
+              "mode": 5,
+              "value": "1",
+              "priority": 50
+            },
+            {
+              "key": "flags.midi-qol.OverTime",
+              "mode": 2,
+              "value": "turn=end,\nsaveAbility=con,\nsaveDC=13",
+              "priority": 20
+            }
+          ],
+          "duration": {
+            "seconds": 60,
+            "startTime": null,
+            "rounds": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null,
+            "combat": null
+          },
+          "_id": "usTKhpcA1Usb0yTP",
+          "disabled": false,
+          "origin": "Compendium.elkan5e.elkan5e-creatures.Actor.6q9IkifzuxdGRDaW.Item.ODEzNTYwODIzYzFk",
+          "tint": "#ffffff",
+          "transfer": false,
+          "name": "Poisoned",
+          "description": "",
+          "statuses": [],
+          "img": "modules/elkan5e/icons/conditions/poisoned.svg",
+          "type": "base",
+          "system": {},
+          "_key": "!actors.items.effects!h4Aud0lG4mNU1RFg.6tvJNE655GX8f4ZU.usTKhpcA1Usb0yTP"
+        }
+      ],
+      "_id": "6tvJNE655GX8f4ZU",
+      "folder": null,
+      "system": {
+        "description": {
+          "value": "<p>The [[lookup @name lowercase]] was created through unstable magic. When it dies, all creatures within 10 ft. of the [[lookup @name lowercase]] must make a DC 13 constitution saving throw or take 4d10 poison damage and be poisoned for one minute (save for half damage) (save ends).</p>",
+          "chat": ""
+        },
+        "source": {
+          "custom": "Elkan 5e",
+          "revision": 1,
+          "rules": "2014"
+        },
+        "uses": {
+          "max": "",
+          "recovery": [],
+          "spent": 0
+        },
+        "type": {
+          "value": "monster",
+          "subtype": ""
+        },
+        "requirements": "",
+        "activities": {
+          "dnd5eactivity000": {
+            "_id": "dnd5eactivity000",
+            "type": "damage",
+            "activation": {
+              "type": "special",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": true
+            },
+            "description": {
+              "chatFlavor": ""
+            },
+            "duration": {
+              "concentration": false,
+              "value": "",
+              "units": "",
+              "special": "",
+              "override": false
+            },
+            "effects": [
+              {
+                "_id": "usTKhpcA1Usb0yTP"
+              }
+            ],
+            "range": {
+              "units": "",
+              "special": "",
+              "override": false
+            },
+            "target": {
+              "template": {
+                "count": "",
+                "contiguous": false,
+                "type": "",
+                "size": "",
+                "width": "",
+                "height": "",
+                "units": "ft"
+              },
+              "affects": {
+                "count": "10",
+                "type": "creature",
+                "choice": false,
+                "special": ""
+              },
+              "prompt": true,
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "max": "",
+              "recovery": []
+            },
+            "damage": {
+              "critical": {
+                "allow": false,
+                "bonus": ""
+              },
+              "parts": [
+                {
+                  "number": 4,
+                  "denomination": 10,
+                  "bonus": "",
+                  "types": [
+                    "poison"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "whole",
+                    "number": null,
+                    "formula": ""
+                  }
+                }
+              ]
+            }
+          },
+          "dnd5eactivity100": {
+            "_id": "dnd5eactivity100",
+            "type": "save",
+            "activation": {
+              "type": "special",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": true
+            },
+            "description": {
+              "chatFlavor": ""
+            },
+            "duration": {
+              "concentration": false,
+              "value": "",
+              "units": "",
+              "special": "",
+              "override": false
+            },
+            "effects": [
+              {
+                "_id": "usTKhpcA1Usb0yTP",
+                "onSave": false
+              }
+            ],
+            "range": {
+              "units": "",
+              "special": "",
+              "override": false
+            },
+            "target": {
+              "template": {
+                "count": "",
+                "contiguous": false,
+                "type": "",
+                "size": "",
+                "width": "",
+                "height": "",
+                "units": "ft"
+              },
+              "affects": {
+                "count": "10",
+                "type": "creature",
+                "choice": false,
+                "special": ""
+              },
+              "prompt": true,
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "max": "",
+              "recovery": []
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 4,
+                  "denomination": 10,
+                  "bonus": "",
+                  "types": [
+                    "poison"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "whole",
+                    "number": null,
+                    "formula": ""
+                  }
+                }
+              ]
+            },
+            "save": {
+              "ability": "con",
+              "dc": {
+                "calculation": "",
+                "formula": "13"
+              }
+            }
+          }
+        },
+        "identifier": "volatile-creation",
+        "enchant": {},
+        "prerequisites": {
+          "level": null
+        },
+        "properties": []
+      },
+      "_key": "!actors.items!h4Aud0lG4mNU1RFg.6tvJNE655GX8f4ZU"
+    },
+    {
+      "folder": "KW6BGl3Q4MI91gEa",
+      "name": "Burning Beam",
+      "type": "spell",
+      "_id": "utdBEnHDSIHXGXcY",
+      "img": "icons/magic/fire/blast-jet-stream-splash.webp",
+      "system": {
+        "description": {
+          "value": "<p><em>Stretching out your hands, crackling flames extend between your fingertips, then strike outwards in a beam to burn everything in its path.</em></p><br><p>1 Action - 30 ft. Line (5 ft. Radius) - 2nd Level - VS</p><br><p><strong>Dexterity</strong> Save</p><ul><li><p><strong>Failure:</strong> Target takes 4d6 fire damage. <strong>*</strong></p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p></p><br><p><strong>*At Higher Levels:</strong> For every spell slot level above 2nd, the damage increases by 1d6.</p>",
+          "chat": "1 Action - 30 ft. Line (5 ft. Radius) - 2nd Level - VS</p><br><p><strong>Dexterity</strong> Save</p><ul><li><p><strong>Failure:</strong> Target takes 4d6 fire damage. <strong>*</strong></p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p></p><br><p><strong>*At Higher Levels:</strong> For every spell slot level above 2nd, the damage increases by 1d6.</p>"
+        },
+        "source": {
+          "custom": "Elkan 5e",
+          "revision": 1,
+          "rules": "2014"
+        },
+        "activation": {
+          "type": "action",
+          "condition": "",
+          "value": 1
+        },
+        "duration": {
+          "value": "",
+          "units": "inst"
+        },
+        "target": {
+          "affects": {
+            "choice": false
+          },
+          "template": {
+            "units": "ft",
+            "width": "5",
+            "type": "line",
+            "size": "30",
+            "contiguous": false
+          }
+        },
+        "range": {
+          "units": ""
+        },
+        "uses": {
+          "max": "2",
+          "recovery": [
+            {
+              "period": "lr",
+              "type": "recoverAll"
+            }
+          ],
+          "spent": 0
+        },
+        "ability": "",
+        "level": 2,
+        "school": "evo",
+        "materials": {
+          "value": "",
+          "consumed": false,
+          "cost": 0,
+          "supply": 0
+        },
+        "preparation": {
+          "mode": "innate",
+          "prepared": true
+        },
+        "activities": {
+          "dnd5eactivity000": {
+            "_id": "dnd5eactivity000",
+            "type": "save",
+            "activation": {
+              "type": "action",
+              "value": null,
+              "override": false
+            },
+            "consumption": {
+              "targets": [
+                {
+                  "type": "itemUses",
+                  "target": "",
+                  "value": "1",
+                  "scaling": {
+                    "mode": "",
+                    "formula": ""
+                  }
+                }
+              ],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": true
+            },
+            "description": {
+              "chatFlavor": ""
+            },
+            "duration": {
+              "units": "inst",
+              "concentration": false,
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "override": false
+            },
+            "target": {
+              "prompt": true,
+              "template": {
+                "contiguous": false,
+                "units": "ft"
+              },
+              "affects": {
+                "choice": false
+              },
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "max": "",
+              "recovery": []
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 4,
+                  "denomination": 6,
+                  "bonus": "",
+                  "types": [
+                    "fire"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "whole",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            },
+            "save": {
+              "ability": "dex",
+              "dc": {
+                "calculation": "spellcasting",
+                "formula": ""
+              }
+            }
+          }
+        },
+        "identifier": "burning-beam",
+        "properties": [
+          "vocal",
+          "somatic"
+        ]
+      },
+      "effects": [],
+      "flags": {
+        "midi-qol": {
+          "effectActivation": false
+        },
+        "midiProperties": {
+          "nodam": false,
+          "fulldam": false,
+          "halfdam": false,
+          "autoFailFriendly": false,
+          "autoSaveFriendly": false,
+          "rollOther": false,
+          "critOther": false,
+          "offHandWeapon": false,
+          "magicdam": false,
+          "magiceffect": false,
+          "concentration": false,
+          "toggleEffect": false,
+          "ignoreTotalCover": false
+        },
+        "core": {},
+        "dnd5e": {
+          "migratedUses": 2,
+          "migratedProperties": [
+            "vocal",
+            "somatic"
+          ]
+        }
+      },
+      "_key": "!actors.items!h4Aud0lG4mNU1RFg.utdBEnHDSIHXGXcY"
+    },
+    {
+      "folder": "KW6BGl3Q4MI91gEa",
+      "name": "Rend the Veil [Frighten]",
+      "type": "spell",
+      "img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
+      "system": {
+        "description": {
+          "value": "<p><strong>This ability is meant to be used after casting Rend the Veil to automate the frightened effect it causes.</strong></p><br><p>60 ft. Radius</p><br><p><strong>Wisdom</strong> Save</p><ul><li><p><strong>Failure:</strong> Target is frightened of the center of this effect for 1 minute (save ends).</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+          "chat": ""
+        },
+        "source": {
+          "custom": "Elkan 5e",
+          "revision": 1,
+          "rules": "2014"
+        },
+        "activation": {
+          "type": "action",
+          "condition": "",
+          "value": 1
+        },
+        "duration": {
+          "value": "1",
+          "units": "minute"
+        },
+        "target": {
+          "affects": {
+            "type": "enemy",
+            "count": "60",
+            "choice": false
+          },
+          "template": {
+            "units": "ft",
+            "contiguous": false
+          }
+        },
+        "range": {
+          "value": "60",
+          "units": "ft"
+        },
+        "uses": {
+          "max": "",
+          "recovery": [],
+          "spent": 0
+        },
+        "ability": "",
+        "level": 5,
+        "school": "con",
+        "materials": {
+          "value": "A warped tuning fork meant for teleportation to another plane",
+          "consumed": false,
+          "cost": 50,
+          "supply": 1
+        },
+        "preparation": {
+          "mode": "innate",
+          "prepared": true
+        },
+        "activities": {
+          "dnd5eactivity000": {
+            "_id": "dnd5eactivity000",
+            "type": "save",
+            "activation": {
+              "type": "action",
+              "value": null,
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": true
+            },
+            "description": {
+              "chatFlavor": ""
+            },
+            "duration": {
+              "units": "inst",
+              "concentration": false,
+              "override": false
+            },
+            "effects": [
+              {
+                "_id": "oVgZ9K0cjp3TL672",
+                "onSave": false
+              }
+            ],
+            "range": {
+              "override": false
+            },
+            "target": {
+              "prompt": true,
+              "template": {
+                "contiguous": false,
+                "units": "ft"
+              },
+              "affects": {
+                "choice": false
+              },
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "max": "",
+              "recovery": []
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": []
+            },
+            "save": {
+              "ability": "wis",
+              "dc": {
+                "calculation": "spellcasting",
+                "formula": ""
+              }
+            }
+          }
+        },
+        "identifier": "rend-the-veil-frighten",
+        "properties": [
+          "vocal",
+          "somatic",
+          "material"
+        ]
+      },
+      "effects": [
+        {
+          "name": "Frightened",
+          "origin": "Item.NzNj8PEe2lqrzjEC",
+          "duration": {
+            "rounds": null,
+            "startTime": null,
+            "seconds": 60,
+            "combat": null,
+            "turns": null,
+            "startRound": null,
+            "startTurn": null
+          },
+          "transfer": false,
+          "disabled": false,
+          "_id": "oVgZ9K0cjp3TL672",
+          "changes": [
+            {
+              "key": "flags.midi-qol.disadvantage.attack.all",
+              "mode": 5,
+              "value": "1",
+              "priority": 50
+            },
+            {
+              "key": "flags.midi-qol.disadvantage.ability.check.all",
+              "mode": 5,
+              "value": "1",
+              "priority": 50
+            },
+            {
+              "key": "flags.midi-qol.OverTime",
+              "mode": 2,
+              "value": "turn=end,\nsaveAbility=wis,",
+              "priority": 20
+            }
+          ],
+          "description": "",
+          "statuses": [],
+          "flags": {
+            "times-up": {
+              "isPassive": false
+            },
+            "dae": {
+              "selfTarget": false,
+              "selfTargetAlways": false,
+              "dontApply": false,
+              "stackable": "noneName",
+              "showIcon": false,
+              "durationExpression": "",
+              "macroRepeat": "none",
+              "specialDuration": []
+            },
+            "ActiveAuras": {
+              "isAura": false,
+              "aura": "None",
+              "nameOverride": "",
+              "radius": "",
+              "alignment": "",
+              "type": "",
+              "ignoreSelf": false,
+              "height": false,
+              "hidden": false,
+              "displayTemp": false,
+              "hostile": false,
+              "onlyOnce": false
+            }
+          },
+          "tint": "#ffffff",
+          "img": "modules/elkan5e/icons/conditions/frightened.svg",
+          "type": "base",
+          "system": {},
+          "_key": "!actors.items.effects!h4Aud0lG4mNU1RFg.vt7werShZeikFFCM.oVgZ9K0cjp3TL672"
+        }
+      ],
+      "flags": {
+        "midi-qol": {
+          "effectActivation": false
+        },
+        "midiProperties": {
+          "nodam": false,
+          "fulldam": false,
+          "halfdam": false,
+          "autoFailFriendly": false,
+          "autoSaveFriendly": false,
+          "rollOther": false,
+          "critOther": false,
+          "offHandWeapon": false,
+          "magicdam": false,
+          "magiceffect": false,
+          "concentration": false,
+          "toggleEffect": false,
+          "ignoreTotalCover": false
+        },
+        "core": {},
+        "dnd5e": {
+          "migratedProperties": [
+            "vocal",
+            "somatic",
+            "material"
+          ]
+        }
+      },
+      "_id": "vt7werShZeikFFCM",
+      "_key": "!actors.items!h4Aud0lG4mNU1RFg.vt7werShZeikFFCM"
+    },
+    {
+      "folder": "KW6BGl3Q4MI91gEa",
+      "name": "Rend the Veil",
+      "type": "spell",
+      "_id": "ox73A21S9eX0mNSo",
+      "img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
+      "system": {
+        "description": {
+          "value": "<p><strong>Note: casting this spell requires a damaged tuning fork, typically valued at 50 gold. The tuning fork is not consumed by the spell.</strong></p><br><p><em>You hold out a damaged tuning fork attuned to another plane. You utter a corrupted version of the incantation needed to teleport to another plane, instead ripping a hole in space. All creatures you choose within 60 ft. of the tear are compelled to flee from it, and the area around the rip is twisted.</em></p><br><p>1 Action - 20 ft. Radius (60 ft.) - 5th Level - VSM</p><br><p><strong>Constitution</strong> Save</p><ul><li><p><strong>Failure:</strong> Target takes 4d8 force damage. <strong>*</strong></p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p>Additionally, all creatures who can see the rip in reality when it is formed must attempt a wisdom saving throw. See the Rend the Veil [Frighten] action for the second half of this ability's automation.</p><br><p>60 ft. Radius</p><br><p><strong>Wisdom</strong> Save</p><ul><li><p><strong>Failure:</strong> Target is frightened of the center of this effect for 1 minute (save ends).</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><br><p><strong>*At Higher Levels:</strong> For every spell slot level above 5th, the damage increases by 2d8.</p>",
+          "chat": ""
+        },
+        "source": {
+          "custom": "Elkan 5e",
+          "revision": 1,
+          "rules": "2014"
+        },
+        "activation": {
+          "type": "action",
+          "condition": "",
+          "value": 1
+        },
+        "duration": {
+          "value": "1",
+          "units": "minute"
+        },
+        "target": {
+          "affects": {
+            "choice": false
+          },
+          "template": {
+            "units": "ft",
+            "type": "sphere",
+            "size": "20",
+            "contiguous": false
+          }
+        },
+        "range": {
+          "value": "60",
+          "units": "ft"
+        },
+        "uses": {
+          "max": "1",
+          "recovery": [
+            {
+              "period": "lr",
+              "type": "recoverAll"
+            }
+          ],
+          "spent": 0
+        },
+        "ability": "",
+        "level": 5,
+        "school": "con",
+        "materials": {
+          "value": "A warped tuning fork meant for teleportation to another plane",
+          "consumed": false,
+          "cost": 50,
+          "supply": 1
+        },
+        "preparation": {
+          "mode": "innate",
+          "prepared": true
+        },
+        "activities": {
+          "dnd5eactivity000": {
+            "_id": "dnd5eactivity000",
+            "type": "save",
+            "activation": {
+              "type": "action",
+              "value": null,
+              "override": false
+            },
+            "consumption": {
+              "targets": [
+                {
+                  "type": "itemUses",
+                  "target": "",
+                  "value": "1",
+                  "scaling": {
+                    "mode": "",
+                    "formula": ""
+                  }
+                }
+              ],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": true
+            },
+            "description": {
+              "chatFlavor": "Use the Rend the Veil [Frighten] action to automate the second half of the spell."
+            },
+            "duration": {
+              "units": "inst",
+              "concentration": false,
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "override": false
+            },
+            "target": {
+              "prompt": true,
+              "template": {
+                "contiguous": false,
+                "units": "ft"
+              },
+              "affects": {
+                "choice": false
+              },
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "max": "",
+              "recovery": []
+            },
+            "damage": {
+              "onSave": "half",
+              "parts": [
+                {
+                  "number": 4,
+                  "denomination": 8,
+                  "bonus": "",
+                  "types": [
+                    "force"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "whole",
+                    "number": 2,
+                    "formula": ""
+                  }
+                }
+              ]
+            },
+            "save": {
+              "ability": "con",
+              "dc": {
+                "calculation": "spellcasting",
+                "formula": ""
+              }
+            }
+          }
+        },
+        "identifier": "rend-the-veil",
+        "properties": [
+          "vocal",
+          "somatic",
+          "material"
+        ]
+      },
+      "effects": [],
+      "flags": {
+        "midi-qol": {
+          "effectActivation": false
+        },
+        "midiProperties": {
+          "nodam": false,
+          "fulldam": false,
+          "halfdam": false,
+          "autoFailFriendly": false,
+          "autoSaveFriendly": false,
+          "rollOther": false,
+          "critOther": false,
+          "offHandWeapon": false,
+          "magicdam": false,
+          "magiceffect": false,
+          "concentration": false,
+          "toggleEffect": false,
+          "ignoreTotalCover": false
+        },
+        "core": {},
+        "dnd5e": {
+          "migratedUses": 1,
+          "migratedProperties": [
+            "vocal",
+            "somatic",
+            "material"
+          ]
+        }
+      },
+      "_key": "!actors.items!h4Aud0lG4mNU1RFg.ox73A21S9eX0mNSo"
+    },
+    {
+      "name": "Toxic Sting",
+      "type": "spell",
+      "img": "icons/magic/acid/dissolve-pool-bubbles.webp",
+      "effects": [],
+      "folder": "SjVk5lAwzIpqSBbH",
+      "flags": {
+        "srd5e": {
+          "page": "spells.html",
+          "source": "PHB",
+          "hash": "poison%20spray_phb"
+        },
+        "betterRolls5e": {
+          "critRange": {
+            "type": "String",
+            "value": ""
+          },
+          "critDamage": {
+            "type": "String",
+            "value": ""
+          },
+          "quickDesc": {
+            "type": "Boolean",
+            "value": true,
+            "altValue": true
+          },
+          "quickAttack": {
+            "type": "Boolean",
+            "value": true,
+            "altValue": true
+          },
+          "quickSave": {
+            "type": "Boolean",
+            "value": true,
+            "altValue": true
+          },
+          "quickDamage": {
+            "type": "Array",
+            "value": [
+              true
+            ],
+            "altValue": [
+              true
+            ],
+            "context": []
+          },
+          "quickVersatile": {
+            "type": "Boolean",
+            "value": false,
+            "altValue": false
+          },
+          "quickProperties": {
+            "type": "Boolean",
+            "value": true,
+            "altValue": true
+          },
+          "quickCharges": {
+            "type": "Boolean",
+            "value": {
+              "use": false,
+              "resource": true
+            },
+            "altValue": {
+              "use": false,
+              "resource": true
+            }
+          },
+          "quickTemplate": {
+            "type": "Boolean",
+            "value": true,
+            "altValue": true
+          },
+          "quickOther": {
+            "type": "Boolean",
+            "value": true,
+            "altValue": true,
+            "context": ""
+          },
+          "quickFlavor": {
+            "type": "Boolean",
+            "value": true,
+            "altValue": true
+          },
+          "quickPrompt": {
+            "type": "Boolean",
+            "value": false,
+            "altValue": false
+          }
+        },
+        "core": {},
+        "midi-qol": {
+          "effectActivation": false
+        },
+        "midiProperties": {
+          "nodam": false,
+          "fulldam": false,
+          "halfdam": false,
+          "rollOther": false,
+          "critOther": false,
+          "magicdam": false,
+          "magiceffect": false,
+          "concentration": false,
+          "toggleEffect": false,
+          "ignoreTotalCover": false,
+          "autoFailFriendly": false,
+          "autoSaveFriendly": false,
+          "offHandWeapon": false
+        },
+        "dnd5e": {
+          "migratedProperties": [
+            "vocal",
+            "somatic"
+          ]
+        }
+      },
+      "system": {
+        "description": {
+          "value": "<p><em>You reach out as if to grasp your target, conjuring toxic mist around them.</em></p><br><p>1 Action - 1 Creature (30 ft.) - Cantrip - VS</p><br><p><strong>Consitution</strong> Save</p><ul><li><p><strong>Failure:</strong> Target takes 1d12 poison damage. <strong>*</strong></p></li><li><p><strong>Success:</strong> No damage.</p></li></ul><p></p><br><p><strong>*At Higher Levels:</strong> This spell's damage increases by 1d12 when you reach a total character or creature level of 5th level (2d12), 11th level (3d12), and 17th level (4d12).</p>",
+          "chat": "1 Action - 1 Creature (30 ft.) - Cantrip - VS</p><br><p><strong>Consitution</strong> Save</p><ul><li><p><strong>Failure:</strong> Target takes 1d12 poison damage. <strong>*</strong></p></li><li><p><strong>Success:</strong> No damage.</p></li></ul><p></p><br><p><strong>*At Higher Levels:</strong> This spell's damage increases by 1d12 when you reach a total character or creature level of 5th level (2d12), 11th level (3d12), and 17th level (4d12).</p>"
+        },
+        "source": {
+          "custom": "Elkan 5e",
+          "revision": 1,
+          "rules": "2014"
+        },
+        "activation": {
+          "type": "action",
+          "condition": "",
+          "value": 1
+        },
+        "duration": {
+          "value": "",
+          "units": "inst"
+        },
+        "target": {
+          "affects": {
+            "type": "creature",
+            "count": "1",
+            "choice": false
+          },
+          "template": {
+            "units": "",
+            "contiguous": false
+          }
+        },
+        "range": {
+          "value": "30",
+          "units": "ft"
+        },
+        "uses": {
+          "max": "",
+          "recovery": [],
+          "spent": 0
+        },
+        "ability": "",
+        "level": 0,
+        "school": "con",
+        "materials": {
+          "value": "",
+          "consumed": false,
+          "cost": 0,
+          "supply": 0
+        },
+        "preparation": {
+          "mode": "always",
+          "prepared": true
+        },
+        "activities": {
+          "dnd5eactivity000": {
+            "_id": "dnd5eactivity000",
+            "type": "save",
+            "activation": {
+              "type": "action",
+              "value": null,
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": true
+            },
+            "description": {
+              "chatFlavor": ""
+            },
+            "duration": {
+              "units": "inst",
+              "concentration": false,
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "override": false
+            },
+            "target": {
+              "prompt": true,
+              "template": {
+                "contiguous": false,
+                "units": "ft"
+              },
+              "affects": {
+                "choice": false
+              },
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "max": "",
+              "recovery": []
+            },
+            "damage": {
+              "onSave": "none",
+              "parts": [
+                {
+                  "number": 3,
+                  "denomination": 12,
+                  "bonus": "",
+                  "types": [
+                    "poison"
+                  ],
+                  "custom": {
+                    "enabled": false,
+                    "formula": ""
+                  },
+                  "scaling": {
+                    "mode": "whole",
+                    "number": 1,
+                    "formula": ""
+                  }
+                }
+              ]
+            },
+            "save": {
+              "ability": "con",
+              "dc": {
+                "calculation": "spellcasting",
+                "formula": ""
+              }
+            }
+          }
+        },
+        "identifier": "toxic-sting",
+        "properties": [
+          "vocal",
+          "somatic"
+        ]
+      },
+      "_id": "GFxjOvMqHq7g2v83",
+      "_key": "!actors.items!h4Aud0lG4mNU1RFg.GFxjOvMqHq7g2v83"
+    },
+    {
+      "name": "Greatsword",
+      "type": "weapon",
+      "img": "icons/weapons/swords/greatsword-guard-gem-blue.webp",
+      "effects": [],
+      "flags": {
+        "core": {},
+        "betterRolls5e": {
+          "quickDamage": {
+            "context": {
+              "0": ""
+            },
+            "value": {
+              "0": true
+            },
+            "altValue": {
+              "0": true
+            }
+          },
+          "quickOther": {
+            "context": "",
+            "value": true,
+            "altValue": true
+          },
+          "quickDesc": {
+            "value": false,
+            "altValue": false
+          },
+          "quickAttack": {
+            "value": true,
+            "altValue": true
+          },
+          "quickProperties": {
+            "value": true,
+            "altValue": true
+          },
+          "quickVersatile": {
+            "value": false,
+            "altValue": false
+          },
+          "quickFlavor": {
+            "value": true,
+            "altValue": true
+          },
+          "quickCharges": {
+            "value": {
+              "quantity": false
+            },
+            "altValue": {
+              "quantity": false
+            }
+          }
+        },
+        "midi-qol": {
+          "effectActivation": false,
+          "fumbleThreshold": null,
+          "removeAttackDamageButtons": "default",
+          "rollAttackPerTarget": "default",
+          "itemCondition": "",
+          "effectCondition": ""
+        },
+        "midiProperties": {
+          "nodam": false,
+          "fulldam": false,
+          "halfdam": false,
+          "rollOther": false,
+          "critOther": false,
+          "magicdam": false,
+          "magiceffect": false,
+          "concentration": false,
+          "toggleEffect": false,
+          "autoFailFriendly": false,
+          "offHandWeapon": false,
+          "ignoreTotalCover": false,
+          "autoSaveFriendly": false,
+          "noConcentrationCheck": false,
+          "confirmTargets": "never"
+        },
+        "dnd5e": {}
+      },
+      "system": {
+        "description": {
+          "value": "<p><em>Greatswords are heavy two-handed sword designed for slashing.</em></p><br><p>Properties:</p><br><p>&amp;Reference[Heavy], &amp;Reference[Handed]</p>",
+          "chat": ""
+        },
+        "source": {
+          "custom": "elkan5e.com/weapons",
+          "revision": 1,
+          "rules": "2014"
+        },
+        "quantity": 1,
+        "weight": {
+          "value": 6,
+          "units": "lb"
+        },
+        "price": {
+          "value": 50,
+          "denomination": "gp"
+        },
+        "attunement": "",
+        "rarity": "common",
+        "identified": true,
+        "cover": null,
+        "crewed": false,
+        "range": {
+          "value": null,
+          "long": null,
+          "units": "ft",
+          "reach": null
+        },
+        "uses": {
+          "max": "",
+          "recovery": [],
+          "spent": 0
+        },
+        "damage": {
+          "versatile": {
+            "number": null,
+            "denomination": null,
+            "bonus": "",
+            "types": [],
+            "custom": {
+              "enabled": false,
+              "formula": ""
+            },
+            "scaling": {
+              "mode": "",
+              "number": null,
+              "formula": ""
+            }
+          },
+          "base": {
+            "number": 2,
+            "denomination": 6,
+            "bonus": "",
+            "types": [
+              "slashing"
+            ],
+            "custom": {
+              "enabled": false,
+              "formula": ""
+            },
+            "scaling": {
+              "mode": "",
+              "number": null,
+              "formula": ""
+            }
+          }
+        },
+        "armor": {
+          "value": 10
+        },
+        "hp": {
+          "value": 0,
+          "max": 0,
+          "dt": null,
+          "conditions": ""
+        },
+        "properties": [
+          "hvy",
+          "two"
+        ],
+        "unidentified": {
+          "description": ""
+        },
+        "type": {
+          "value": "martialM",
+          "baseItem": "greatsword"
+        },
+        "container": null,
+        "equipped": true,
+        "proficient": null,
+        "activities": {
+          "dnd5eactivity000": {
+            "_id": "dnd5eactivity000",
+            "type": "attack",
+            "activation": {
+              "type": "action",
+              "value": 1,
+              "condition": "",
+              "override": false
+            },
+            "consumption": {
+              "targets": [],
+              "scaling": {
+                "allowed": false,
+                "max": ""
+              },
+              "spellSlot": true
+            },
+            "description": {
+              "chatFlavor": ""
+            },
+            "duration": {
+              "concentration": false,
+              "value": "",
+              "units": "",
+              "special": "",
+              "override": false
+            },
+            "effects": [],
+            "range": {
+              "units": "ft",
+              "special": "",
+              "override": false
+            },
+            "target": {
+              "template": {
+                "count": "",
+                "contiguous": false,
+                "type": "",
+                "size": "",
+                "width": "",
+                "height": "",
+                "units": ""
+              },
+              "affects": {
+                "count": "",
+                "type": "",
+                "choice": false,
+                "special": ""
+              },
+              "prompt": true,
+              "override": false
+            },
+            "uses": {
+              "spent": 0,
+              "max": "",
+              "recovery": []
+            },
+            "attack": {
+              "ability": "",
+              "bonus": "",
+              "critical": {
+                "threshold": null
+              },
+              "flat": false,
+              "type": {
+                "value": "melee",
+                "classification": "weapon"
+              }
+            },
+            "damage": {
+              "critical": {
+                "bonus": ""
+              },
+              "includeBase": true,
+              "parts": []
+            }
+          }
+        },
+        "identifier": "greatsword",
+        "attuned": false,
+        "ammunition": {},
+        "magicalBonus": null
+      },
+      "folder": "l4LrhKIKQ5ca1N2r",
+      "_id": "qFVLg2DfWIuwi6Qg",
+      "_key": "!actors.items!h4Aud0lG4mNU1RFg.qFVLg2DfWIuwi6Qg"
+    }
+  ],
+  "effects": [],
+  "folder": "WaHQ0Hz787wfUXDl",
+  "flags": {
+    "core": {},
+    "tidy5e-sheet": {
+      "allow-edit": true,
+      "death": {
+        "success": 0,
+        "failure": 0
+      },
+      "maxPreparedSpells": null,
+      "gender": "",
+      "age": "",
+      "height": "",
+      "weight": "",
+      "eyes": "",
+      "skin": "",
+      "hair": "",
+      "notes1": {
+        "name": ""
+      },
+      "notes2": {
+        "name": ""
+      },
+      "notes3": {
+        "name": ""
+      },
+      "notes4": {
+        "name": ""
+      }
+    },
+    "midi-qol": {
+      "concentration-damage": 0
+    }
+  },
+  "system": {
+    "abilities": {
+      "str": {
+        "value": 18,
+        "proficient": 0,
+        "max": null,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        }
+      },
+      "dex": {
+        "value": 16,
+        "proficient": 0,
+        "max": null,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        }
+      },
+      "con": {
+        "value": 16,
+        "proficient": 0,
+        "max": null,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        }
+      },
+      "int": {
+        "value": 16,
+        "proficient": 0,
+        "max": null,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        }
+      },
+      "wis": {
+        "value": 11,
+        "proficient": 0,
+        "max": null,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        }
+      },
+      "cha": {
+        "value": 12,
+        "proficient": 0,
+        "max": null,
+        "bonuses": {
+          "check": "",
+          "save": ""
+        }
+      }
+    },
+    "attributes": {
+      "ac": {
+        "flat": 17,
+        "calc": "natural",
+        "formula": ""
+      },
+      "hp": {
+        "value": 78,
+        "max": 78,
+        "temp": null,
+        "tempmax": null,
+        "formula": "15d8+45"
+      },
+      "init": {
+        "ability": "",
+        "bonus": "0",
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "movement": {
+        "burrow": 0,
+        "climb": 0,
+        "fly": 0,
+        "swim": 0,
+        "walk": 30,
+        "units": "ft",
+        "hover": false
+      },
+      "attunement": {
+        "max": 3
+      },
+      "senses": {
+        "darkvision": 60,
+        "blindsight": 0,
+        "tremorsense": 0,
+        "truesight": 0,
+        "units": "ft",
+        "special": ""
+      },
+      "spellcasting": "",
+      "exhaustion": 0,
+      "concentration": {
+        "ability": "",
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        },
+        "bonuses": {
+          "save": ""
+        },
+        "limit": 1
+      },
+      "hd": {
+        "spent": 0
+      },
+      "death": {
+        "ability": "",
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        },
+        "success": 0,
+        "failure": 0
+      }
+    },
+    "details": {
+      "biography": {
+        "value": "",
+        "public": ""
+      },
+      "alignment": "",
+      "race": null,
+      "type": {
+        "value": "monstrosity",
+        "subtype": "",
+        "swarm": "",
+        "custom": ""
+      },
+      "environment": "",
+      "cr": 9,
+      "spellLevel": 0,
+      "ideal": "",
+      "bond": "",
+      "flaw": ""
+    },
+    "traits": {
+      "size": "lg",
+      "di": {
+        "value": [],
+        "bypasses": [],
+        "custom": ""
+      },
+      "dr": {
+        "value": [
+          "poison"
+        ],
+        "bypasses": [],
+        "custom": ""
+      },
+      "dv": {
+        "value": [],
+        "bypasses": [],
+        "custom": ""
+      },
+      "ci": {
+        "value": [],
+        "custom": ""
+      },
+      "languages": {
+        "value": [
+          "draconic",
+          "orc"
+        ],
+        "custom": ""
+      },
+      "dm": {
+        "amount": {},
+        "bypasses": []
+      }
+    },
+    "currency": {
+      "pp": 0,
+      "gp": 0,
+      "ep": 0,
+      "sp": 0,
+      "cp": 0
+    },
+    "skills": {
+      "acr": {
+        "value": 0,
+        "ability": "dex",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "ani": {
+        "value": 0,
+        "ability": "wis",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "arc": {
+        "value": 1,
+        "ability": "int",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "ath": {
+        "value": 0,
+        "ability": "str",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "dec": {
+        "value": 0,
+        "ability": "cha",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "his": {
+        "value": 0,
+        "ability": "int",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "ins": {
+        "value": 0,
+        "ability": "wis",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "itm": {
+        "value": 0,
+        "ability": "cha",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "inv": {
+        "value": 0,
+        "ability": "int",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "med": {
+        "value": 1,
+        "ability": "wis",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "nat": {
+        "value": 0,
+        "ability": "int",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "prc": {
+        "value": 0,
+        "ability": "wis",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "prf": {
+        "value": 0,
+        "ability": "cha",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "per": {
+        "value": 0,
+        "ability": "cha",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "rel": {
+        "value": 0,
+        "ability": "int",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "slt": {
+        "value": 0,
+        "ability": "dex",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "ste": {
+        "value": 0,
+        "ability": "dex",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      },
+      "sur": {
+        "value": 0,
+        "ability": "wis",
+        "bonuses": {
+          "check": "",
+          "passive": ""
+        },
+        "roll": {
+          "min": null,
+          "max": null,
+          "mode": 0
+        }
+      }
+    },
+    "tools": {},
+    "spells": {
+      "spell1": {
+        "value": 0,
+        "override": null
+      },
+      "spell2": {
+        "value": 0,
+        "override": null
+      },
+      "spell3": {
+        "value": 0,
+        "override": null
+      },
+      "spell4": {
+        "value": 0,
+        "override": null
+      },
+      "spell5": {
+        "value": 0,
+        "override": null
+      },
+      "spell6": {
+        "value": 0,
+        "override": null
+      },
+      "spell7": {
+        "value": 0,
+        "override": null
+      },
+      "spell8": {
+        "value": 0,
+        "override": null
+      },
+      "spell9": {
+        "value": 0,
+        "override": null
+      },
+      "pact": {
+        "value": 0,
+        "override": null
+      },
+      "spell0": {
+        "value": 0,
+        "override": null
+      }
+    },
+    "bonuses": {
+      "mwak": {
+        "attack": "",
+        "damage": ""
+      },
+      "rwak": {
+        "attack": "",
+        "damage": ""
+      },
+      "msak": {
+        "attack": "",
+        "damage": ""
+      },
+      "rsak": {
+        "attack": "",
+        "damage": ""
+      },
+      "abilities": {
+        "check": "",
+        "save": "",
+        "skill": ""
+      },
+      "spell": {
+        "dc": ""
+      }
+    },
+    "resources": {
+      "legact": {
+        "value": 0,
+        "max": 0
+      },
+      "legres": {
+        "value": 0,
+        "max": 0
+      },
+      "lair": {
+        "value": false,
+        "initiative": 0
+      }
+    },
+    "source": {
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    }
+  },
+  "prototypeToken": {
+    "name": "Mutant Wizard",
+    "displayName": 50,
+    "actorLink": false,
+    "width": 2,
+    "height": 2,
+    "lockRotation": false,
+    "rotation": 0,
+    "alpha": 1,
+    "light": {
+      "alpha": 0.5,
+      "angle": 360,
+      "bright": 0,
+      "coloration": 1,
+      "dim": 0,
+      "luminosity": 0.5,
+      "saturation": 0,
+      "contrast": 0,
+      "shadows": 0,
+      "animation": {
+        "speed": 5,
+        "intensity": 5,
+        "reverse": false,
+        "type": null
+      },
+      "darkness": {
+        "min": 0,
+        "max": 1
+      },
+      "attenuation": 0.5,
+      "color": null,
+      "negative": false,
+      "priority": 0
+    },
+    "disposition": -1,
+    "displayBars": 50,
+    "bar1": {
+      "attribute": "attributes.hp"
+    },
+    "bar2": {
+      "attribute": null
+    },
+    "flags": {
+      "token-z": {
+        "zIndex": 0
+      },
+      "monks-enhanced-journal": {
+        "chatbubble": ""
+      },
+      "elevation-drag-ruler": {
+        "selectedSpeed": "auto",
+        "hasBonusDash": false,
+        "hideSpeedButton": false
+      }
+    },
+    "randomImg": false,
+    "texture": {
+      "src": "icons/magic/unholy/hand-grasping-green.webp",
+      "tint": "#ffffff",
+      "scaleX": 1,
+      "scaleY": 1,
+      "offsetX": 0,
+      "offsetY": 0,
+      "rotation": 0,
+      "anchorX": 0.5,
+      "anchorY": 0.5,
+      "fit": "contain",
+      "alphaThreshold": 0.75
+    },
+    "sight": {
+      "angle": 360,
+      "enabled": true,
+      "range": 60,
+      "brightness": 1,
+      "visionMode": "basic",
+      "color": null,
+      "attenuation": 0.1,
+      "saturation": 0,
+      "contrast": 0
+    },
+    "detectionModes": [],
+    "appendNumber": false,
+    "prependAdjective": false,
+    "occludable": {
+      "radius": 0
+    },
+    "ring": {
+      "enabled": false,
+      "colors": {
+        "ring": null,
+        "background": null
+      },
+      "effects": 1,
+      "subject": {
+        "scale": 1,
+        "texture": null
+      }
+    },
+    "turnMarker": {
+      "mode": 1,
+      "animation": null,
+      "src": null,
+      "disposition": false
+    },
+    "movementAction": null
+  },
+  "_key": "!actors!h4Aud0lG4mNU1RFg"
 }

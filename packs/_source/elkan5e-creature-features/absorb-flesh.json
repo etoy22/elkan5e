@@ -1,0 +1,143 @@
+{
+	"name": "Absorb Flesh",
+	"type": "feat",
+	"system": {
+		"description": {
+			"value": "<p>The [[lookup @name lowercase]] touches one other malakai or an intact corpse, absorbing either extraneous flesh from a fellow drone or taking what it needs from the corpse.</p><br><p>The [[lookup @name lowercase]] regains 10 hit points. If the target was another malakai, that malakai loses 10 hit points. If the target was a corpse, part of the corpse is destroyed.</p><br><p>A tiny creature can only be absorbed once. A small or medium creature can be absorbed twice, a large creature four times, a huge creature eight times, and a gargantuan creature 16 times.</p><br><p>The [[lookup @name lowercase]] can more efficiently absorb corpses if they take a minute for each absorption. In that case, they get 20 hit points each time they use this ability.</p><br><p>Once the corpse has been absorbed once, it is no longer intact for the purposes of Revivify or Raise Dead.</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "Elkan 5e",
+			"revision": 1,
+			"rules": "2014"
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"type": {
+			"value": "monster",
+			"subtype": ""
+		},
+		"requirements": "Malakai",
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "heal",
+				"activation": {
+					"type": "action",
+					"value": 1,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "",
+					"units": "",
+					"special": "",
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"value": "5",
+					"units": "ft",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": ""
+					},
+					"affects": {
+						"count": "1",
+						"type": "creature",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"healing": {
+					"number": null,
+					"denomination": null,
+					"bonus": "",
+					"types": [
+						"healing"
+					],
+					"custom": {
+						"enabled": true,
+						"formula": "10"
+					},
+					"scaling": {
+						"mode": "whole",
+						"number": null,
+						"formula": ""
+					}
+				}
+			}
+		},
+		"identifier": "absorb-flesh",
+		"enchant": {},
+		"prerequisites": {
+			"level": null
+		},
+		"properties": []
+	},
+	"img": "icons/skills/wounds/blood-cells-red.webp",
+	"effects": [],
+	"folder": null,
+	"flags": {
+		"midi-qol": {
+			"effectActivation": false,
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"effectCondition": ""
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"rollOther": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"confirmTargets": "default",
+			"noConcentrationCheck": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {}
+	}
+}
