@@ -488,7 +488,9 @@ export async function wellOfCorruption(workflow) {
 		const targetToken =
 			typeof targetEntry === "string"
 				? canvas.tokens.get(targetEntry)
-				: targetEntry.document?.object ?? targetEntry.object ?? canvas.tokens.get(tokenId);
+				: (targetEntry.document?.object ??
+					targetEntry.object ??
+					canvas.tokens.get(tokenId));
 		if (!targetToken) {
 			console.warn(`Well of Corruption: Token with ID ${tokenId} not found on canvas`);
 			continue;
