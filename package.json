@@ -5,7 +5,11 @@
 	"main": "elkan5e.mjs",
 	"type": "module",
 	"scripts": {
-		"pack": "npm run build:clean && npm run build:db",
+		"update": "npm run prep:data && npm run clean",
+		"prep:data": "npm run update:spelllists && npm run update:summoned",
+		"update:spelllists": "node ./src/tools/update-spell-lists.mjs",
+		"update:summoned": "node ./src/tools/sync-summoned.mjs",
+		"pack": "npm run prep:data && npm run fix && npm run build:clean && npm run build:db",
 		"clean": "npm run fix && npm run build:clean",
 		"unpack": "node ./src/packs.mjs package unpack",
 		"build:clean": "node ./src/packs.mjs package clean",

@@ -294,4 +294,8 @@ export async function updateToolTypes() {
 			}
 		}
 	}
+
+	console.log(
+		`Elkan 5e | Tool type sync complete. Updated ${updatedCount}, missing ${missingCount}.`,
+	);
 }
