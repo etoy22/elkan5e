@@ -3,7 +3,7 @@
 	"type": "feat",
 	"system": {
 		"description": {
-			"value": "<p><em>You present your holy symbol and speak a prayer censuring creatures anathema to you.</em></p><br><p><strong>Action</strong> - 30 ft. Emanation (Self) - 1 Minute - Magical</p><br><p>This consumes one use of your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.WKKAHUBp42287xui]{Channel Divinity} feature.</p><br><p><strong>[[/save wisdom]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Any &amp;reference[aberration], &amp;reference[celestial], &amp;reference[fey], &amp;reference[fiend], or &amp;reference[undead] of your choice are &amp;reference[frightened] for 1 minute. Target rolls again at end of their turns, ending effect on success. While frightened in this way:</p><ul><li><p>They must spend all of their movement trying to move as far away from you as it can.</p></li><li><p>They can't take &amp;reference[reaction].</p></li><li><p>They can use their action and &amp;reference[bonus action] normally before, during, or after moving.</p></li></ul></li><li><p><strong>Failure:</strong> If a target of one of the above creature type's hit point maximum is equal to or less than three times your cleric level, it is destroyed.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"value": "<p><em>You present your holy symbol and speak a prayer censuring creatures anathema to you.</em></p><p><strong>Action</strong> - 30 ft. Emanation (Self) - 1 Minute - Magical</p><p>This consumes one use of your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.WKKAHUBp42287xui]{Channel Divinity} feature.</p><p><strong>[[/save wisdom]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Any &amp;reference[aberration], &amp;reference[celestial], &amp;reference[fey], &amp;reference[fiend], or &amp;reference[undead] of your choice are &amp;reference[frightened] for 1 minute. Target rolls again at end of their turns, ending effect on success. While frightened in this way:</p><ul><li><p>They must spend all of their movement trying to move as far away from you as it can.</p></li><li><p>They can't take &amp;reference[reaction].</p></li><li><p>They can use their action and &amp;reference[bonus action] normally before, during, or after moving.</p></li></ul></li><li><p><strong>Failure:</strong> If a target of one of the above creature type's hit point maximum is equal to or less than three times your cleric level, it is destroyed.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -135,7 +135,7 @@
 				"effectConditionText": "!target.traits.ci.value.has('frightened') && raceOrType.includes(\"undead\"))"
 			}
 		},
-		"identifier": "",
+		"identifier": "turn-the-unholy-cleric",
 		"enchant": {},
 		"advancement": [
 			{
@@ -164,7 +164,6 @@
 		]
 	},
 	"flags": {
-		"core": {},
 		"midi-qol": {
 			"effectActivation": false,
 			"rollAttackPerTarget": "default",
@@ -194,16 +193,6 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			}
-		},
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
 		}
 	},
 	"img": "icons/magic/fire/flame-burning-creature-skeleton.webp",
@@ -251,14 +240,6 @@
 					"onlyOnce": false,
 					"wallsBlock": "system",
 					"statuses": []
-				},
-				"core": {
-					"overlay": false
-				},
-				"dnd5e": {
-					"riders": {
-						"statuses": []
-					}
 				}
 			},
 			"img": "icons/magic/fire/flame-burning-creature-skeleton.webp",

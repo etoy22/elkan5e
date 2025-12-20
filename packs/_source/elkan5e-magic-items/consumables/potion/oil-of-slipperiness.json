@@ -1,0 +1,196 @@
+{
+	"_id": "dmgOilOfSlipperi",
+	"name": "Oil of Slipperiness",
+	"type": "consumable",
+	"folder": "MCDkPm6xibc3rF7y",
+	"img": "icons/consumables/potions/bottle-circular-corked-labeled-green.webp",
+	"system": {
+		"description": {
+			"value": "<p><em>Potion - Uncommon</em></p><p><strong>10 Minutes</strong> - 1 Creature (Touch) - 8 Hour - Consumed (1 Charge)</p><p><span><strong>Potion</strong></span></p><p>Target must be Medium or Smaller.</p><ul><li><p>Target gain the effects of <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.Y24nyCt4lQreT5aH]{Freedom of Movement}</em>.</em></p></li><li><p>Alternatively, the oil can be poured on the ground as a Action, where it covers a 10-foot square, duplicating the effect of the <em><em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.AymsSXnrNy6KbHkY]{Grease}</em> spell in that area for 8 hours.</p></li></ul>",
+			"chat": ""
+		},
+		"identifier": "oil-of-slipperiness",
+		"source": {
+			"revision": 1,
+			"rules": "2024",
+			"book": "",
+			"license": "",
+			"page": "",
+			"custom": ""
+		},
+		"identified": true,
+		"unidentified": {
+			"description": "",
+			"name": "Unidentified Liquid"
+		},
+		"container": null,
+		"quantity": 1,
+		"weight": {
+			"value": 0,
+			"units": "lb"
+		},
+		"price": {
+			"value": 200,
+			"denomination": "gp"
+		},
+		"rarity": "uncommon",
+		"attunement": "",
+		"attuned": false,
+		"equipped": false,
+		"currency": {
+			"pp": 0,
+			"gp": 0,
+			"ep": 0,
+			"sp": 0,
+			"cp": 0
+		},
+		"properties": [
+			"mgc"
+		],
+		"capacity": {
+			"type": "weight",
+			"value": null
+		},
+		"uses": {
+			"max": "1",
+			"autoDestroy": true
+		},
+		"type": {
+			"value": "potion"
+		},
+		"activities": {
+			"dgp4czAiBiwgDJ2X": {
+				"type": "cast",
+				"spell": {
+					"uuid": "Compendium.dnd5e.spells24.Item.phbsplFreedomofM",
+					"challenge": {
+						"attack": null,
+						"save": null,
+						"override": false
+					},
+					"level": "4",
+					"properties": [
+						"vocal",
+						"somatic",
+						"material"
+					],
+					"spellbook": false
+				},
+				"_id": "dgp4czAiBiwgDJ2X",
+				"activation": {
+					"type": "minute",
+					"value": 10,
+					"override": true,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "",
+							"scaling": {}
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"range": {
+					"override": true,
+					"units": "touch",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"name": "Cover Creature",
+				"img": ""
+			},
+			"IQsAg45adQPcbS86": {
+				"type": "cast",
+				"spell": {
+					"uuid": "Compendium.elkan5e.elkan5e-spells.Item.AymsSXnrNy6KbHkY",
+					"challenge": {
+						"attack": null,
+						"save": null,
+						"override": false
+					},
+					"level": "1",
+					"properties": [
+						"vocal",
+						"somatic",
+						"material"
+					],
+					"spellbook": false
+				},
+				"_id": "IQsAg45adQPcbS86",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"range": {
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"name": "Pour on Ground",
+				"img": ""
+			}
+		}
+	},
+	"effects": [],
+	"_key": "!items!dmgOilOfSlipperi"
+}

@@ -6,11 +6,12 @@
 	"img": "icons/skills/ranged/arrows-flying-salvo-blue-light.webp",
 	"system": {
 		"activities": {
-			"6Di4koa9TUDqfPhb": {
-				"type": "utility",
-				"_id": "6Di4koa9TUDqfPhb",
+			"kRgP8ciGK4SbgmKH": {
+				"type": "save",
+				"_id": "kRgP8ciGK4SbgmKH",
 				"activation": {
-					"type": "nocost",
+					"type": "once",
+					"value": null,
 					"override": false,
 					"condition": ""
 				},
@@ -19,33 +20,26 @@
 						"allowed": false
 					},
 					"spellSlot": true,
-					"targets": [
-						{
-							"type": "itemUses",
-							"value": "1",
-							"target": ""
-						}
-					]
+					"targets": []
 				},
 				"description": {
 					"chatFlavor": ""
 				},
 				"duration": {
-					"units": "minute",
+					"units": "round",
 					"concentration": false,
 					"override": false,
 					"value": "1"
 				},
 				"effects": [
 					{
-						"_id": "sEQhs1SYmeKSwv2N"
+						"_id": "Bw1gXIPxBLCuGXzs"
 					}
 				],
 				"range": {
-					"units": "ft",
 					"override": false,
-					"special": "",
-					"value": "120"
+					"units": "spec",
+					"special": ""
 				},
 				"target": {
 					"template": {
@@ -67,11 +61,34 @@
 					"recovery": [],
 					"max": ""
 				},
-				"roll": {
-					"prompt": false,
-					"visible": false,
-					"name": "",
-					"formula": ""
+				"damage": {
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 1,
+							"denomination": "10",
+							"bonus": "",
+							"types": [
+								"force"
+							]
+						}
+					],
+					"critical": {
+						"allow": false
+					},
+					"onSave": "full"
+				},
+				"save": {
+					"ability": [
+						"con"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
 				},
 				"useConditionText": "",
 				"useConditionReason": "",
@@ -84,8 +101,7 @@
 					"idi": false,
 					"idr": false,
 					"idv": false,
-					"ida": false,
-					"idm": false
+					"ida": false
 				},
 				"midiProperties": {
 					"ignoreTraits": [],
@@ -93,27 +109,18 @@
 					"triggeredActivityConditionText": "",
 					"triggeredActivityTargets": "targets",
 					"triggeredActivityRollAs": "self",
-					"autoConsume": false,
-					"forceConsumeDialog": "default",
-					"forceRollDialog": "default",
-					"forceDamageDialog": "default",
+					"forceDialog": false,
 					"confirmTargets": "default",
 					"autoTargetType": "any",
 					"autoTargetAction": "default",
 					"automationOnly": false,
 					"otherActivityCompatible": true,
-					"otherActivityAsParentType": true,
 					"identifier": "",
 					"displayActivityName": false,
 					"rollMode": "default",
 					"chooseEffects": false,
 					"toggleEffect": false,
-					"ignoreFullCover": false,
-					"removeChatButtons": "default",
-					"magicEffect": false,
-					"magicDamage": false,
-					"noConcentrationCheck": false,
-					"autoCEEffects": "default"
+					"ignoreFullCover": false
 				},
 				"isOverTimeFlag": false,
 				"overTimeProperties": {
@@ -121,25 +128,21 @@
 					"preRemoveConditionText": "",
 					"postRemoveConditionText": ""
 				},
-				"otherActivityId": "none",
-				"otherActivityAsParentType": true,
-				"name": "Rend Magic",
+				"otherActivityId": "",
+				"name": "",
 				"img": "",
-				"appliedEffects": []
+				"appliedEffects": [
+					"Bw1gXIPxBLCuGXzs"
+				]
 			}
 		},
 		"uses": {
 			"spent": 0,
-			"recovery": [
-				{
-					"period": "sr",
-					"type": "recoverAll"
-				}
-			],
-			"max": "1"
+			"recovery": [],
+			"max": ""
 		},
 		"description": {
-			"value": "<p><em style=\"font-style:italic\">Your magic blasts a creature, ripping away their connection to mana.</em></p><p class=\"_6piER SDzel\" id=\"8xhfs20893\"><strong style=\"font-weight:700\">No Action Cost</strong> - 1 Creature (120 ft.) - 1 Minute - 1/Short Rest - Magical</p><p class=\"_6piER SDzel\" id=\"0di6p16000\"><em style=\"font-style:italic\">Trigger: A creature fails their save against Magic Shackles.</em></p><p class=\"_6piER SDzel\" id=\"841jd34668\">For the duration of the Magic Shackles effect:</p><div><ul class=\"_1V3UY\" id=\"r6emy29547\"><li class=\"_2se73\" dir=\"auto\" id=\"nncka29548\"><p class=\"_6piER SDzel\" id=\"k8zle29549\">Target is blinded.</p></li><li class=\"_2se73\" dir=\"auto\" id=\"rybqd35269\"><p class=\"_6piER SDzel\" id=\"cpn3935270\">Target cannot cast a spell requiring concentration and loses concentration if they were concentrating.</p></li><li class=\"_2se73\" dir=\"auto\" id=\"yisuz33566\"><p class=\"_6piER SDzel\" id=\"cedbb33567\">Target becomes unable to teleport.</p></li></ul></div>",
+			"value": "<p><strong>Once Per Turn</strong> - 1 Creature - 1 Round - Magical</p><p>When you hit a creature with a weapon attack, you can use this ability on your target. This damage counts as part of your weapon's damage for the sake of calculating the DC for concentration checks, and this damage is doubled on a critical hit.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 1d10 force]] damage and is &amp;reference[silenced].</p></li><li><p><strong>Success:</strong> [[/damage 1d10 force]], no other effect.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "rend-magic",
@@ -174,22 +177,15 @@
 			"img": "icons/skills/ranged/arrows-flying-salvo-blue-light.webp",
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.Xe51IME6ys6WoC9f",
 			"transfer": false,
-			"_id": "sEQhs1SYmeKSwv2N",
+			"_id": "Bw1gXIPxBLCuGXzs",
 			"type": "base",
 			"system": {},
-			"changes": [
-				{
-					"key": "system.traits.ci.value",
-					"mode": 2,
-					"value": "concentrating",
-					"priority": 20
-				}
-			],
+			"changes": [],
 			"disabled": false,
 			"duration": {
 				"startTime": null,
+				"seconds": 7,
 				"combat": null,
-				"seconds": 60,
 				"rounds": null,
 				"turns": null,
 				"startRound": null,
@@ -198,33 +194,27 @@
 			"description": "",
 			"tint": "#ffffff",
 			"statuses": [
-				"blinded"
+				"silenced"
 			],
 			"flags": {
-				"dnd5e": {
-					"riders": {
-						"statuses": []
-					}
-				},
 				"dae": {
 					"enableCondition": "",
 					"disableCondition": "",
-					"stackable": "noneName",
-					"showIcon": false,
 					"disableIncapacitated": false,
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false,
+					"stackable": "multi",
+					"showIcon": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
-				},
-				"core": {
-					"overlay": false
+					"specialDuration": [
+						"turnEnd"
+					]
 				},
 				"ActiveAuras": {
 					"isAura": false,
-					"aura": "All",
+					"aura": "None",
 					"nameOverride": "",
 					"radius": "",
 					"alignment": "",
@@ -240,14 +230,10 @@
 					"statuses": []
 				}
 			},
-			"_key": "!items.effects!Xe51IME6ys6WoC9f.sEQhs1SYmeKSwv2N"
+			"_key": "!items.effects!Xe51IME6ys6WoC9f.Bw1gXIPxBLCuGXzs"
 		}
 	],
 	"flags": {
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
-		},
 		"midi-qol": {
 			"rollAttackPerTarget": "default",
 			"removeAttackDamageButtons": "default",
@@ -255,17 +241,7 @@
 			"reactionCondition": "",
 			"otherCondition": "",
 			"effectCondition": ""
-		},
-		"midiProperties": {
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"noConcentrationCheck": false,
-			"toggleEffect": false,
-			"ignoreTotalCover": false
-		},
-		"dnd5e": {}
+		}
 	},
 	"_key": "!items!Xe51IME6ys6WoC9f"
 }
