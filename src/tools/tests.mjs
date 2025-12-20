@@ -4,12 +4,15 @@ import { readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parse } from "yaml";
-import { buildPayload, releaseToFoundry } from "../.github/workflows/scripts/release-foundry.js";
-import { updateModuleJson } from "../.github/workflows/scripts/update-module.js";
+import {
+	buildPayload,
+	releaseToFoundry,
+} from "../../.github/workflows/scripts/release-foundry.js";
+import { updateModuleJson } from "../../.github/workflows/scripts/update-module.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const workflowPath = resolve(__dirname, "../.github/workflows/main.yml");
+const workflowPath = resolve(__dirname, "../../.github/workflows/main.yml");
 const workflow = parse(readFileSync(workflowPath, "utf8"));
 
 const baseEnv = Object.freeze({
