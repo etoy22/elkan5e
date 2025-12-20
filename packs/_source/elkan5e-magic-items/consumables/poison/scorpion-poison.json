@@ -265,7 +265,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p>Injury Poison</p><p><strong>Bonus Action</strong> - 1 Object (Touch) - 1 Minute</p><p>The next time you deal damage with the object, apply this poison to the damaged creature, and end this effect on the object. If the target is tiny, they must make a constitution save.</p><p><strong class=\"wixui-rich-text__text\">[[/save con 10]]{Constitution Save (DC 10)}</strong></p><ul class=\"font_8 wixui-rich-text__text\"><li class=\"wixui-rich-text__text\"><p class=\"font_8 wixui-rich-text__text\"><strong class=\"wixui-rich-text__text\">Failure: </strong>The target is &amp;reference[poisoned]. Target attempts a save at the end of each of their turns, ending effect on success.</p></li><li class=\"wixui-rich-text__text\"><p class=\"font_8 wixui-rich-text__text\"><strong class=\"wixui-rich-text__text\">Success:</strong> No effect.</p></li></ul>",
+			"value": "<p>Injury Poison</p><p><strong>Bonus Action</strong> - 1 Object (Touch) - 1 Minute</p><p>The next time you deal damage with the object, apply this poison to the damaged creature, and end this effect on the object. If the target is tiny, they must make a constitution save.</p><p><strong>[[/save con 10]]{Constitution Save (DC 10)}</strong></p><ul><li><p><strong>Failure: </strong> The target is &amp;reference[poisoned]. Target attempts a save at the end of each of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "scorpion-poison",
@@ -311,7 +311,7 @@
 	},
 	"effects": [
 		{
-			"name": "Scorpian Poison",
+			"name": "Scorpion Poison",
 			"img": "icons/creatures/abilities/stinger-poison-green.webp",
 			"origin": "Compendium.elkan5e.elkan5e-magic-items.Item.DjmbffJ2Tt5O3ukB",
 			"transfer": false,
@@ -342,11 +342,6 @@
 				"poisoned"
 			],
 			"flags": {
-				"dnd5e": {
-					"riders": {
-						"statuses": []
-					}
-				},
 				"dae": {
 					"enableCondition": "[\"tiny\"].includes(target.traits.size)",
 					"disableCondition": "",
@@ -359,9 +354,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"core": {
-					"overlay": false
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -384,13 +376,5 @@
 			"_key": "!items.effects!DjmbffJ2Tt5O3ukB.3d8aW8G7Km0hKrTG"
 		}
 	],
-	"flags": {
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			}
-		}
-	},
 	"_key": "!items!DjmbffJ2Tt5O3ukB"
 }

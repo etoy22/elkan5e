@@ -195,9 +195,15 @@ export async function shadowRefuge(workflow) {
 
 		const actor = workflow.actor ?? (workflow.token ? workflow.token.actor : null);
 		if (!actor) return;
-		const hasShadow = actor.items.find((i) => i.system?.identifier === "shadow-refuge" || i.name === "Shadow Refuge");
+		const hasShadow = actor.items.find(
+			(i) => i.system?.identifier === "shadow-refuge" || i.name === "Shadow Refuge",
+		);
 		if (hasShadow && actor.isOwner) {
-			ui.notifications.notify(game.i18n.format("elkan5e.notifications.ShadowRefugeReminder", { name: actor.name }));
+			ui.notifications.notify(
+				game.i18n.format("elkan5e.notifications.ShadowRefugeReminder", {
+					name: actor.name,
+				}),
+			);
 		}
 	} catch (err) {
 		console.error("elkan5e | shadowRefuge error:", err);

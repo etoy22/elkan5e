@@ -55,6 +55,140 @@ function packageCommand() {
 	};
 }
 
+// --- Wix/Ricos HTML cleanup + spell italics helpers ---
+function cleanHtml(html) {
+	if (!html || typeof html !== "string") return html;
+	let out = html;
+	// Strip noisy attributes (id, class, style, dir, role, tabindex, contenteditable, aria-*, data-*)
+	out = out.replace(
+		/\s+(id|class|style|dir|role|tabindex|contenteditable|aria-[^=\s]+|data-[^=\s]+)=("[^"]*"|'[^']*'|[^\s>]+)/gi,
+		(match, attr, value) => {
+			const lowerAttr = String(attr).toLowerCase();
+			const lowerValue = String(value).toLowerCase();
+			// Preserve explicit secret markers
+			if (lowerAttr === "class" && /\bsecret\b/.test(lowerValue.replace(/['"]/g, "")))
+				return ` ${attr}=${value}`;
+			if (lowerAttr === "id" && /\bsecret\b/.test(lowerValue.replace(/['"]/g, "")))
+				return ` ${attr}=${value}`;
+			return "";
+		},
+	);
+	// Remove boolean aria/data attributes without explicit values (e.g., aria-label)
+	out = out.replace(/\s+(aria-[^\s=>]+|data-[^\s=>]+)(?!\s*=)/gi, "");
+	// Drop div wrappers
+	out = out.replace(/<\/?div>/g, "");
+	// Remove empty paragraphs
+	out = out.replace(/<p>\s*<\/p>/g, "");
+	// Collapse redundant whitespace
+	out = out.replace(/\s+/g, " ").replace(/\s{2,}/g, " ");
+	out = collapseRedundantSections(out);
+	return out.trim();
+}
+
+function replaceSpellRefsInHtml(html) {
+	if (!html || typeof html !== "string") return html;
+	let out = html;
+	// Unwrap existing emphasis around macros to avoid double wrapping
+	out = out.replace(/<em>\s*(@UUID\[[^\]]+\]\{[\s\S]*?\})\s*<\/em>/g, "$1");
+	// Italicize all spell @UUID macros (any pack containing "spells")
+	out = out.replace(/@UUID\[(Compendium\.[^\]]+)\]\{([\s\S]*?)\}/g, (m, pack, label) => {
+		if (!/spells/i.test(pack)) return m;
+		const plainLabel = String(label).replace(/<\/?em>/g, "");
+		const macro = `@UUID[${pack}]{${plainLabel}}`;
+		return `<em>${macro}</em>`;
+	});
+	// Italicize anchor labels and keep UUID; no remap here
+	out = out.replace(
+		/<a([^>]*?)\sdata-uuid=\"(Compendium\.[^\"]+)\"([^>]*)>([\s\S]*?)<\/a>/g,
+		(m, pre, uuid, post, inner) => {
+			if (!/spells/i.test(uuid)) return m;
+			const innerItal = /<\/?em>/.test(inner) ? inner : `<em>${inner}</em>`;
+			return `<a${pre} data-uuid="${uuid}"${post}>${innerItal}</a>`;
+		},
+	);
+	return out;
+}
+
+function collapseRedundantSections(html) {
+	if (!html || typeof html !== "string") return html;
+	let out = html;
+	let prev;
+	do {
+		prev = out;
+		out = out.replace(/<section>\s*<section>/gi, "<section>");
+		out = out.replace(/<\/section>\s*<\/section>/gi, "</section>");
+	} while (out !== prev);
+	return out;
+}
+function sanitizeDescriptions(entry) {
+	// system.description
+	if (entry?.system?.description) {
+		if (typeof entry.system.description.value === "string") {
+			let v = entry.system.description.value;
+			v = replaceSpellRefsInHtml(v);
+			entry.system.description.value = cleanHtml(v);
+		}
+		if (typeof entry.system.description.chat === "string" && entry.system.description.chat) {
+			entry.system.description.chat = cleanHtml(
+				replaceSpellRefsInHtml(entry.system.description.chat),
+			);
+		}
+	}
+	// effect descriptions
+	if (Array.isArray(entry?.effects)) {
+		for (const eff of entry.effects) {
+			if (eff && typeof eff.description === "string" && eff.description) {
+				eff.description = cleanHtml(replaceSpellRefsInHtml(eff.description));
+			}
+		}
+	}
+	// nested embedded items (e.g., actor.items[])
+	if (Array.isArray(entry?.items)) {
+		for (const it of entry.items) {
+			if (it?.system?.description) {
+				if (
+					typeof it.system.description.value === "string" &&
+					it.system.description.value
+				) {
+					let v = it.system.description.value;
+					v = replaceSpellRefsInHtml(v);
+					it.system.description.value = cleanHtml(v);
+				}
+				if (typeof it.system.description.chat === "string" && it.system.description.chat) {
+					it.system.description.chat = cleanHtml(
+						replaceSpellRefsInHtml(it.system.description.chat),
+					);
+				}
+			}
+			if (Array.isArray(it?.effects)) {
+				for (const eff of it.effects) {
+					if (eff && typeof eff.description === "string" && eff.description) {
+						eff.description = cleanHtml(replaceSpellRefsInHtml(eff.description));
+					}
+				}
+			}
+		}
+	}
+	// journal pages (Foundry JournalEntryV10+): sanitize HTML content and tooltips
+	if (Array.isArray(entry?.pages)) {
+		for (const page of entry.pages) {
+			// Page textual content
+			if (page?.text && typeof page.text.content === "string" && page.text.content) {
+				let v = page.text.content;
+				v = replaceSpellRefsInHtml(v);
+				page.text.content = cleanHtml(v);
+			}
+
+			// Rule/tooltips or similar HTML-bearing fields
+			if (page?.system && typeof page.system.tooltip === "string" && page.system.tooltip) {
+				let v = page.system.tooltip;
+				v = replaceSpellRefsInHtml(v);
+				page.system.tooltip = cleanHtml(v);
+			}
+		}
+	}
+}
+
 function cleanPackEntry(data, { clearSourceId = true, ownership = 0 } = {}) {
 	const preservedIdentifier = data?.system?.identifier ?? null;
 	// Your existing top-level cleanup
@@ -62,6 +196,28 @@ function cleanPackEntry(data, { clearSourceId = true, ownership = 0 } = {}) {
 	if (data.ownership) data.ownership = { default: ownership };
 
 	// Recursive deep cleaner for _stats and other keys
+	function isEmptyDeep(v) {
+		if (v == null) return true;
+		if (typeof v === "boolean") return v === false;
+		if (typeof v === "string") return v.trim() === "";
+		if (Array.isArray(v)) return v.every(isEmptyDeep);
+		if (typeof v === "object") {
+			const keys = Object.keys(v);
+			if (keys.length === 0) return true;
+			return keys.every((k) => isEmptyDeep(v[k]));
+		}
+		return false;
+	}
+
+	function pruneUnusedFlags(obj) {
+		if (!obj || typeof obj !== "object" || !obj.flags) return;
+		const flags = obj.flags;
+		for (const k of Object.keys(flags)) {
+			if (isEmptyDeep(flags[k])) delete flags[k];
+		}
+		if (Object.keys(flags).length === 0) delete obj.flags;
+	}
+
 	function recursiveClean(obj) {
 		if (!obj || typeof obj !== "object") return;
 
@@ -69,6 +225,8 @@ function cleanPackEntry(data, { clearSourceId = true, ownership = 0 } = {}) {
 		if ("_stats" in obj) delete obj._stats;
 		if ("sort" in obj) delete obj.sort;
 		if ("ownership" in obj) delete obj.ownership;
+		// Prune unused flags blocks
+		pruneUnusedFlags(obj);
 
 		// Recursively clean nested objects/arrays
 		for (const key of Object.keys(obj)) {
@@ -82,8 +240,38 @@ function cleanPackEntry(data, { clearSourceId = true, ownership = 0 } = {}) {
 	}
 	recursiveClean(data);
 
-	if (data.system && preservedIdentifier !== null && preservedIdentifier !== undefined) {
-		data.system.identifier = preservedIdentifier;
+	// Apply Wix cleanup + spell italics on descriptions
+	sanitizeDescriptions(data);
+
+	// Ensure system.identifier exists for all entry types; preserve if already present.
+	// If identifier exists but no longer matches the current name (common after duplicating
+	// and renaming an entry), update it ONCE to the slug of the current name and mark
+	// a flag so it won't be auto-changed again.
+	// Ensure system.identifier exists; preserve existing values without replacement.
+	try {
+		if (data.system || typeof data.system === "object") {
+			const currentSlug = slugify(String(data.name || ""));
+			const hasId =
+				typeof data.system.identifier === "string" &&
+				data.system.identifier.trim().length > 0;
+
+			// Only assign a new identifier if one does not already exist
+			if (
+				!hasId &&
+				currentSlug &&
+				(data.type !== "folder" ||
+					data.type !== "script" ||
+					data.pages !== null ||
+					data.results.length() < 0)
+			) {
+				data.system = data.system ?? {};
+				data.system.identifier = currentSlug;
+			}
+		}
+	} catch (err) {
+		logger.warn(
+			`Failed to set identifier for ${data?.name ?? "unknown entry"}: ${err.message}`,
+		);
 	}
 }
 
@@ -121,9 +309,24 @@ async function cleanPacks(packName, entryName) {
 				console.log(`Failed to clean \x1b[31m${src}\x1b[0m, must have _id and _key.`);
 				continue;
 			}
+			// Skip folder metadata files entirely during clean
+			if (path.basename(src) === "_folder.json") continue;
 			cleanPackEntry(data);
-			// Write back JSON with tab indentation and overwrite original
-			await writeFile(src, JSON.stringify(data, null, "\t"), { mode: 0o664 });
+			// Determine output path (rename _container.json -> <slug>.json)
+			let outPath = src;
+			if (path.basename(src) === "_container.json") {
+				const newName = `${slugify(data.name)}.json`;
+				const candidate = path.join(path.dirname(src), newName);
+				outPath = candidate;
+			}
+			// Write back JSON with tab indentation
+			await writeFile(outPath, JSON.stringify(data, null, "\t"), { mode: 0o664 });
+			// If we renamed, remove the old file
+			if (outPath !== src) {
+				try {
+					await fsp.unlink(src);
+				} catch {}
+			}
 		}
 	}
 }
@@ -255,10 +458,12 @@ async function extractPacks(packName, entryName) {
 				if (entry.system?.materials?.value) entry.system.materials.value = "";
 
 				let filename;
-				if (entry._id in folders)
+				if (entry._id in folders) {
+					// For folder metadata files, drop top-level system if present
+					if (Object.prototype.hasOwnProperty.call(entry, "system")) delete entry.system;
 					filename = path.join(folders[entry._id].path, "_folder.json");
-				else if (entry._id in containers)
-					filename = path.join(containers[entry._id].path, "_container.json");
+				} else if (entry._id in containers)
+					filename = path.join(containers[entry._id].path, `${slugify(entry.name)}.json`);
 				else {
 					const outputName = slugify(entry.name);
 					const parent = containers[entry.system?.container] ?? folders[entry.folder];
@@ -303,7 +508,7 @@ async function removePacks(packName) {
 			(!packName || entry.name === packName),
 	);
 
-	// Exit early if there’s nothing to remove
+	// Exit early if there's nothing to remove
 	if (targetFolders.length === 0) {
 		logger.info("No matching folders to remove.");
 		return;

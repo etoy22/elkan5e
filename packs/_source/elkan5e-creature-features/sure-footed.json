@@ -1,0 +1,104 @@
+{
+	"name": "Sure-Footed",
+	"type": "feat",
+	"_id": "5w4B1nK9aRUsVnrP",
+	"img": "icons/creatures/mammals/deer-antlers-glowing-blue.webp",
+	"system": {
+		"activities": {},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"max": ""
+		},
+		"advancement": [],
+		"description": {
+			"value": "<p>This creature has &amp;reference[advantage] on saves against being pushed or knocked &amp;reference[prone].</p>",
+			"chat": ""
+		},
+		"identifier": "sure-footed",
+		"source": {
+			"revision": 1,
+			"rules": "2024"
+		},
+		"crewed": false,
+		"enchant": {},
+		"prerequisites": {
+			"items": [],
+			"repeatable": false,
+			"level": null
+		},
+		"properties": [],
+		"requirements": "",
+		"type": {
+			"value": "",
+			"subtype": ""
+		}
+	},
+	"effects": [
+		{
+			"name": "Sure-Footed",
+			"changes": [
+				{
+					"key": "flags.midi-qol.advantage.ability.save.all",
+					"mode": 0,
+					"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"prone\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"prone\") || ef.name == 'Prone');",
+					"priority": 20
+				}
+			],
+			"transfer": true,
+			"img": "icons/creatures/mammals/deer-antlers-glowing-blue.webp",
+			"_id": "beH8X4Y4KxxJDMtH",
+			"type": "base",
+			"system": {},
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": null,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"origin": "Compendium.elkan5e.elkan5e-creature-features.Item.5w4B1nK9aRUsVnrP",
+			"tint": "#ffffff",
+			"statuses": [],
+			"flags": {
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "multi",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "Enemy",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!5w4B1nK9aRUsVnrP.beH8X4Y4KxxJDMtH"
+		}
+	],
+	"folder": null,
+	"_key": "!items!5w4B1nK9aRUsVnrP"
+}

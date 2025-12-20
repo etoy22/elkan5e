@@ -180,7 +180,7 @@ export async function forEachDamagedTarget(workflow, callback) {
 		const parts = targetUuid.split(".");
 		const token = canvas.tokens.get(parts.at(-1));
 		if (!token) continue;
-		// Guarantee we’re awaiting a Promise
+		// Guarantee we're awaiting a Promise
 		await Promise.resolve(callback(token, dmg, saved));
 	}
 }

@@ -5,7 +5,7 @@
 	"img": "icons/commodities/treasure/mask-wood-tan.webp",
 	"system": {
 		"description": {
-			"value": "<p><strong>No Action Cost</strong></p><p><em>Trigger: You use @UUID[Compendium.elkan5e.elkan5e-spells.Item.Gm7eVG59Om6KG3aM]{Vicious Mockery} and your target fails their save or you deal damage with @UUID[Compendium.elkan5e.elkan5e-class-features.Item.f71fyym4jcBrftdZ]{Jester's Aspersion}.</em></p><ul><li><p>You can choose to &amp;reference[charmed]{charm} the creature until you damage them or until the end of your next turn. Note that this charm does not protect your allies from the target.</p></li></ul>",
+			"value": "<p><strong>No Action Cost</strong></p><p><em>Trigger: You use <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.Gm7eVG59Om6KG3aM]{Vicious Mockery}</em> and your target fails their save or you deal damage with @UUID[Compendium.elkan5e.elkan5e-class-features.Item.f71fyym4jcBrftdZ]{Jester's Aspersion}.</em></p><ul><li><p>You can choose to &amp;reference[charmed]{charm} the creature until you damage them or until the end of your next turn. Note that this charm does not protect your allies from the target.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -117,7 +117,7 @@
 				"effectConditionText": "!target.traits.ci.value.has('charmed')"
 			}
 		},
-		"identifier": "",
+		"identifier": "harmless-act",
 		"enchant": {},
 		"prerequisites": {
 			"level": null
@@ -142,9 +142,6 @@
 				"startTurn": null
 			},
 			"flags": {
-				"core": {
-					"overlay": false
-				},
 				"condition-lab-triggler": {
 					"conditionId": "charmed"
 				},
@@ -163,9 +160,6 @@
 					"macroRepeat": "none",
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"times-up": {
-					"isPassive": false
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -228,17 +222,6 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
-		},
-		"core": {},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			}
-		},
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
 		}
 	},
 	"_id": "dYaT9G9IRgBi3z7G",

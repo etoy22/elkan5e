@@ -1,0 +1,199 @@
+{
+	"name": "Dust of Sneezing and Choking",
+	"type": "consumable",
+	"folder": "rtyAJXS22crdDCWj",
+	"img": "icons/magic/water/bubbles-air-water-light.webp",
+	"system": {
+		"activities": {
+			"GDzbsjaVxNM7nnBu": {
+				"type": "save",
+				"_id": "GDzbsjaVxNM7nnBu",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": ""
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "AZcO17cLsTHbb0P9",
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": "radius",
+						"size": "30",
+						"count": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": "creature",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"parts": [],
+					"onSave": "none"
+				},
+				"save": {
+					"ability": "con",
+					"dc": {
+						"calculation": "",
+						"formula": "15"
+					}
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": [
+					"AZcO17cLsTHbb0P9"
+				],
+				"visibility": {
+					"requireMagic": true,
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": ""
+				}
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"autoDestroy": true,
+			"max": "1"
+		},
+		"description": {
+			"value": "<p>Wondrous Item - Uncommon</p><p><em>This deceptive dust looks identical to @UUID[Compendium.dnd5e.equipment24.Item.dmgDustOfDisappe]{Dust of Disappearance}, but it seizes the lungs of nearby creatures.</em></p><p><strong>Action</strong> - 30 ft Emanation (Self) - Consumed</p><p><strong>[[/save CON 15]]{Constitution Save (DC 15)}</strong></p><p>&amp;reference[Constructs], &amp;reference[Elementals], &amp;reference[Oozes], &amp;reference[Plants], and &amp;reference[Undead] automatically succeed. Creature who used is rolls the save as well.</p><ul><li><p><strong>Failure:</strong> The creature starts violently sneezing, becoming &amp;reference[Incapacitated] and beginning to suffocate. An affected creature repeats the saving throw at the end of each of its turns, ending the effect on itself on a success. The effect ends early if the creature receives a <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.gQCBKxTyZeqCvy0D]{Lesser Restoration}</em> spell.</p></li><li><p><strong>Success:</strong> The creature is unaffected.</p></li></ul>",
+			"chat": ""
+		},
+		"identifier": "dust-of-sneezing-and-choking",
+		"source": {
+			"revision": 1,
+			"rules": "2024",
+			"book": "",
+			"license": "",
+			"page": "",
+			"custom": ""
+		},
+		"identified": true,
+		"unidentified": {
+			"description": "",
+			"name": "Unidentified Dust"
+		},
+		"container": null,
+		"quantity": 1,
+		"weight": {
+			"value": 0.1,
+			"units": "lb"
+		},
+		"price": {
+			"value": 200,
+			"denomination": "gp"
+		},
+		"rarity": "uncommon",
+		"attunement": "",
+		"attuned": false,
+		"equipped": false,
+		"type": {
+			"value": "",
+			"subtype": ""
+		},
+		"damage": {
+			"base": {
+				"number": null,
+				"denomination": null,
+				"types": [],
+				"custom": {
+					"enabled": false
+				},
+				"scaling": {
+					"number": 1
+				}
+			},
+			"replace": false
+		},
+		"magicalBonus": null,
+		"properties": [
+			"mgc"
+		]
+	},
+	"effects": [
+		{
+			"name": "Dust of Sneezing and Choking",
+			"img": "icons/magic/water/bubbles-air-water-light.webp",
+			"origin": "Compendium.dnd5e.equipment24.Item.dmgDustOfSneezin",
+			"transfer": false,
+			"_id": "AZcO17cLsTHbb0P9",
+			"type": "base",
+			"system": {},
+			"changes": [],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": null,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "<p><em>Source: @UUID[Compendium.dnd5e.equipment24.Item.dmgDustOfSneezin]<br /></em>The creature has the Incapacitated condition and is suffocating. The creature [[/save ability=con dc=15]]{repeats the save} at the end of each of its turns, ending the effect on itself on a success. The effect also ends on any creature targeted by a <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.gQCBKxTyZeqCvy0D]{Lesser Restoration}</em> spell.</p>",
+			"tint": "#ffffff",
+			"statuses": [
+				"incapacitated",
+				"suffocation"
+			],
+			"_key": "!items.effects!AeP4MhLEd93r1Cvz.AZcO17cLsTHbb0P9"
+		}
+	],
+	"flags": {
+		"midiProperties": {
+			"magicdam": true,
+			"magiceffect": true
+		}
+	},
+	"_id": "AeP4MhLEd93r1Cvz",
+	"_key": "!items!AeP4MhLEd93r1Cvz"
+}

@@ -1,0 +1,235 @@
+{
+	"folder": "QotZw9XuOJW7qRqy",
+	"name": "Shroud of Darkness",
+	"type": "feat",
+	"img": "icons/commodities/cloth/cloth-bolt-purple.webp",
+	"system": {
+		"activities": {
+			"EBDhRhgKrBbboe4m": {
+				"type": "heal",
+				"_id": "EBDhRhgKrBbboe4m",
+				"activation": {
+					"type": "reaction",
+					"override": false,
+					"condition": "You roll initiative"
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "Compendium.elkan5e.elkan5e-class-features.Item.WKKAHUBp42287xui"
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "tHvXNtpBFu3D27Rs"
+					}
+				],
+				"range": {
+					"units": "ft",
+					"override": false,
+					"special": "",
+					"value": "90"
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"type": "ally",
+						"count": "6",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"healing": {
+					"types": [
+						"temphp"
+					],
+					"custom": {
+						"enabled": true,
+						"formula": "@classes.cleric.level"
+					},
+					"scaling": {
+						"number": 1
+					},
+					"number": null,
+					"denomination": null,
+					"bonus": ""
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": []
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"max": ""
+		},
+		"advancement": [],
+		"description": {
+			"value": "<p><em>You shroud yourself and your allies from view.</em></p><p><strong>Reaction</strong> - 6 Allies (90 ft.) - 1 Round - @UUID[Compendium.elkan5e.elkan5e-class-features.Item.WKKAHUBp42287xui]{Channel Divinity} - Magical</p><p><em>Trigger: you roll initiative.</em></p><p>You expend a use of your Channel Divinity feature.</p><ul><li><p>Targets turn &amp;reference[invisible].</p></li><li><p>Targets gain &amp;reference[temphp] equal to your @UUID[Compendium.elkan5e.elkan5e-class.Item.Z68Q5K5fejrVQZAy]{cleric} level.</p></li></ul>",
+			"chat": ""
+		},
+		"identifier": "shroud-of-darkness",
+		"source": {
+			"revision": 1,
+			"rules": "2024",
+			"book": "Elkan 5e",
+			"page": "",
+			"custom": "elkan5e.com/cleric",
+			"license": ""
+		},
+		"crewed": false,
+		"enchant": {},
+		"prerequisites": {
+			"items": [],
+			"repeatable": false,
+			"level": null
+		},
+		"properties": [
+			"mgc"
+		],
+		"requirements": "Trickery 3",
+		"type": {
+			"value": "subclass",
+			"subtype": "channelDivinity"
+		}
+	},
+	"effects": [
+		{
+			"name": "Shroud of Darkness",
+			"img": "icons/commodities/cloth/cloth-bolt-purple.webp",
+			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.gyrFVTCBibVA2z1S",
+			"transfer": false,
+			"_id": "tHvXNtpBFu3D27Rs",
+			"type": "base",
+			"system": {},
+			"changes": [],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"combat": null,
+				"seconds": 7,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [
+				"invisible"
+			],
+			"flags": {
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"stackable": "noneName",
+					"showIcon": false,
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [
+						"turnEndSource"
+					]
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "All",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!gyrFVTCBibVA2z1S.tHvXNtpBFu3D27Rs"
+		}
+	],
+	"_id": "gyrFVTCBibVA2z1S",
+	"_key": "!items!gyrFVTCBibVA2z1S"
+}

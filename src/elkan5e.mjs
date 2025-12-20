@@ -17,22 +17,22 @@ import {
 	rmvhijackShadow,
 } from "./module/classes/monk.mjs";
 import { slicingBlow } from "./module/classes/rogue.mjs";
-import { lifeDrainGraveguard, spectralEmpowerment, soulConduit, necromanticSurge } from "./module/classes/wizard.mjs";
+import {
+	lifeDrainGraveguard,
+	spectralEmpowerment,
+	soulConduit,
+	necromanticSurge,
+} from "./module/classes/wizard.mjs";
 import { shadowRefuge, healingOverflow, infusedHealer } from "./module/classes/cleric.mjs";
 
 import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
 import { conditions, conditionsReady } from "./module/rules/condition.mjs";
 import { language } from "./module/rules/language.mjs";
 import { formating } from "./module/rules/format.mjs";
-import { tools } from "./module/rules/tools.mjs";
+import { tools, updateToolTypes } from "./module/rules/tools.mjs";
 import { weapons } from "./module/rules/weapon.mjs";
 import { scroll } from "./module/rules/scroll.mjs";
-import {
-	setupCombatReferences,
-	setupDamageReferences,
-	setupSpellcastingReferences,
-	setupCreatureTypeReferences,
-} from "./module/rules/references.mjs";
+import { refs } from "./module/rules/references.mjs";
 
 import * as Spells from "./module/spells.mjs";
 import * as Feats from "./module/feats.mjs";
@@ -53,11 +53,7 @@ Hooks.once("init", async () => {
 		formating();
 		scroll();
 		skills();
-		// Setup references
-		setupCombatReferences();
-		setupDamageReferences();
-		setupSpellcastingReferences();
-		setupCreatureTypeReferences();
+		refs();
 	} catch (error) {
 		console.error("Elkan 5e  |  Initialization Error:", error);
 	}
@@ -67,6 +63,7 @@ Hooks.once("ready", () => {
 	try {
 		gameSettingsMigrate();
 		conditionsReady();
+		updateToolTypes();
 		startDialog();
 	} catch (error) {
 		console.error("Elkan 5e | Ready Hook Error:", error);
@@ -186,7 +183,7 @@ globalThis.elkan5e = {
 			soulConduit,
 			necromanticSurge,
 			shadowRefuge,
-            
+
 			infusedHealer,
 			healingOverflow,
 			wildBlood,
