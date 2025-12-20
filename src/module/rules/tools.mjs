@@ -290,6 +290,9 @@ export async function updateToolTypes() {
 
 	console.log("Elkan 5e | Starting updateToolTypes()");
 
+	let updatedCount = 0;
+	let missingCount = 0;
+
 	if (!TOOLS || Object.keys(TOOLS).length === 0) {
 		console.warn("Elkan 5e | TOOLS object is empty or undefined!");
 		return;
@@ -300,6 +303,7 @@ export async function updateToolTypes() {
 
 		if (!uuid) {
 			console.warn(`Elkan 5e | No UUID defined for ${key}`);
+			missingCount += 1;
 			continue;
 		}
 
@@ -313,6 +317,7 @@ export async function updateToolTypes() {
 
 		if (!item) {
 			console.warn(`Elkan 5e | Could not find item for ${key} (${uuid})`);
+			missingCount += 1;
 			continue;
 		}
 
@@ -327,6 +332,7 @@ export async function updateToolTypes() {
 		if (currentType !== desiredType) {
 			try {
 				await item.update({ "system.type.value": desiredType });
+				updatedCount += 1;
 			} catch (err) {
 				console.error(`Elkan 5e | Failed to update ${item.name}`, err);
 			}
