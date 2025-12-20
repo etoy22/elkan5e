@@ -10,7 +10,7 @@
 				"type": "save",
 				"_id": "dDQyaL14AyTmOKyn",
 				"activation": {
-					"type": "bonus",
+					"type": "once",
 					"value": null,
 					"override": false,
 					"condition": ""
@@ -20,13 +20,7 @@
 						"allowed": false
 					},
 					"spellSlot": true,
-					"targets": [
-						{
-							"type": "itemUses",
-							"value": "1",
-							"target": ""
-						}
-					]
+					"targets": []
 				},
 				"description": {
 					"chatFlavor": ""
@@ -46,7 +40,7 @@
 					"override": false,
 					"units": "ft",
 					"special": "",
-					"value": "60"
+					"value": "120"
 				},
 				"target": {
 					"template": {
@@ -69,15 +63,28 @@
 					"max": ""
 				},
 				"damage": {
-					"parts": [],
+					"parts": [
+						{
+							"custom": {
+								"enabled": true,
+								"formula": "@scale.spellbreaker.shackles"
+							},
+							"number": 1,
+							"denomination": 6,
+							"bonus": "",
+							"types": [
+								"force"
+							]
+						}
+					],
 					"critical": {
 						"allow": false
 					},
-					"onSave": "none"
+					"onSave": "full"
 				},
 				"save": {
 					"ability": [
-						"dex"
+						"con"
 					],
 					"dc": {
 						"calculation": "spellcasting",
@@ -132,16 +139,11 @@
 		},
 		"uses": {
 			"spent": 0,
-			"recovery": [
-				{
-					"period": "sr",
-					"type": "recoverAll"
-				}
-			],
-			"max": "3"
+			"recovery": [],
+			"max": ""
 		},
 		"description": {
-			"value": "<p><strong>Bonus Action</strong> - 1 Creature (60 ft.) - 1 Minute - 3/Short Rest - Magical</p><br><p><strong>[[/save dexterity]]{Dexterity Save}</strong></p><ul><li><p><strong>Failure:</strong> Target's speed is halved, and they cannot teleport. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"value": "<p><em>Your magic drains the magic from your target and slows their movement.</em></p><p><strong>Once Per Turn</strong> - 1 Creature (120 ft.) - 1 Minute - Magical</p><p><em>Trigger: You damage a creature who you have marked with Mark for Death.</em><br /></p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes 1d6 force damage*, their speed is halved, and they are &amp;reference[siphoned]. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> Target takes 1d6 force damage.</p></li></ul><p></p><p>*At level 11, this damage increases to 1d12.</p>",
 			"chat": ""
 		},
 		"identifier": "",
@@ -219,14 +221,14 @@
 				{
 					"key": "flags.midi-qol.ActivityOverTime",
 					"mode": 5,
-					"value": "turn=end,\nsaveAbility=dex,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\ndamageType=none,\nname=Magic Shackles",
+					"value": "turn=end,\nsaveAbility=con,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\ndamageType=none,\nname=Magic Shackles",
 					"priority": 20
 				}
 			],
 			"disabled": false,
 			"duration": {
 				"startTime": null,
-				"seconds": null,
+				"seconds": 60,
 				"combat": null,
 				"rounds": null,
 				"turns": null,
@@ -235,7 +237,9 @@
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"statuses": [],
+			"statuses": [
+				"siphoned"
+			],
 			"flags": {
 				"dae": {
 					"enableCondition": "",
@@ -260,7 +264,7 @@
 				},
 				"ActiveAuras": {
 					"isAura": false,
-					"aura": "None",
+					"aura": "Enemy",
 					"nameOverride": "",
 					"radius": "",
 					"alignment": "",

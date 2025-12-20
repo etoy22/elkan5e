@@ -12,7 +12,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p>You master using death magic to harm others, and gain defenses against it as well.</p><ul><li><p>When you deal &amp;reference[necrotic] damage, you ignore resistance to necrotic damage.</p></li><li><p>You are immune to &amp;reference[disease] and the &amp;reference[drained] apply=false condition.</p></li></ul><p>You also gain one of:</p><ul><li><p>Resistance to necrotic damage.</p></li><li><p>Resistance to poison damage.</p></li></ul>",
+			"value": "<p>You master using death magic to harm others, and gain defenses against it as well.</p><ul><li><p>When you deal &amp;reference[necrotic] damage, you ignore resistance to necrotic damage.</p></li><li><p>You are immune to &amp;reference[diseased apply=false] and the &amp;reference[drained apply=false] condition.</p></li></ul><p>You also gain one of:</p><ul><li><p>Resistance to &amp;reference[necrotic] damage.</p></li><li><p>Resistance to &amp;reference[poison] damage.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "",
@@ -35,7 +35,75 @@
 		"properties": [],
 		"requirements": "Death Domain 10"
 	},
-	"effects": [],
+	"effects": [
+		{
+			"name": "Death Touched",
+			"img": "icons/magic/unholy/hand-fire-skeleton-pink.webp",
+			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.lLzDS5oK69UvlRJ5",
+			"_id": "LzAHIIg75s79RCXh",
+			"type": "base",
+			"system": {},
+			"changes": [
+				{
+					"key": "system.traits.idr.value",
+					"mode": 2,
+					"value": "necrotic",
+					"priority": 20
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"combat": null,
+				"seconds": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"transfer": true,
+			"statuses": [],
+			"flags": {
+				"dnd5e": {
+					"riders": {
+						"statuses": []
+					}
+				},
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"showIcon": false,
+					"disableIncapacitated": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"core": {
+					"overlay": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "All",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!lLzDS5oK69UvlRJ5.LzAHIIg75s79RCXh"
+		}
+	],
 	"flags": {
 		"midiProperties": {
 			"confirmTargets": "default",
