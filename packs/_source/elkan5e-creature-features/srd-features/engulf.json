@@ -1,0 +1,190 @@
+{
+	"name": "Engulf",
+	"type": "feat",
+	"img": "icons/magic/water/pseudopod-swirl-blue.webp",
+	"system": {
+		"description": {
+			"value": "<p>The cube moves up to its speed. While doing so, it can enter Large or smaller creatures' spaces. Whenever the cube enters a creature's space, the creature must make a <strong>DC 12 Dexterity</strong> saving throw.On a successful save, the creature can choose to be pushed 5 feet back or to the side of the cube. A creature that chooses not to be pushed suffers the consequences of a failed saving throw.</p><p>On a failed save, the cube enters the creature's space, and the creature takes <strong>10 (3d6) <em>acid damage</em></strong> and is engulfed. The engulfed creature can't breathe, is restrained, and takes <strong>21 (6d6) <em>acid damage</em></strong> at the start of each of the cube's turns. When the cube moves, the engulfed creature moves with it.An engulfed creature can try to escape by taking an action to make a DC 12 Strength check. On a success, the creature escapes and enters a space of its choice within 5 feet of the cube.</p>",
+			"chat": "<p>Whenever the cube enters a creature's space, the creature must make a <strong>Dexterity</strong> saving throw. On a successful save, the creature can choose to be pushed 5 feet back or to the side of the cube. A creature that chooses not to be pushed suffers the consequences of a failed saving throw.</p>"
+		},
+		"source": {
+			"custom": "",
+			"book": "",
+			"page": "",
+			"license": "CC-BY-4.0",
+			"rules": "2014",
+			"revision": 1
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"type": {
+			"value": "",
+			"subtype": ""
+		},
+		"requirements": "",
+		"properties": [],
+		"activities": {
+			"dnd5eactivity000": {
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": 1,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "",
+					"units": "",
+					"special": "",
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "touch",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": ""
+					},
+					"affects": {
+						"count": "",
+						"type": "",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": [
+						{
+							"number": 3,
+							"denomination": 6,
+							"bonus": "",
+							"types": [
+								"acid"
+							],
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"scaling": {
+								"mode": "whole",
+								"number": null,
+								"formula": ""
+							}
+						}
+					]
+				},
+				"save": {
+					"ability": "dex",
+					"dc": {
+						"calculation": "",
+						"formula": "12"
+					}
+				}
+			},
+			"dnd5eactivity300": {
+				"type": "utility",
+				"activation": {
+					"type": "action",
+					"value": 1,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "",
+					"units": "",
+					"special": "",
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "touch",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": ""
+					},
+					"affects": {
+						"count": "",
+						"type": "",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"roll": {
+					"formula": "6d6",
+					"name": "",
+					"prompt": false,
+					"visible": false
+				}
+			}
+		},
+		"enchant": {},
+		"prerequisites": {
+			"level": null
+		},
+		"identifier": "engulf"
+	},
+	"effects": [],
+	"_id": "xb7JpTrqL_bUiDLT",
+	"_key": "!items!xb7JpTrqL_bUiDLT",
+	"folder": "SRDFeature000001"
+}

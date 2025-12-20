@@ -1,0 +1,109 @@
+{
+	"name": "Stench",
+	"type": "feat",
+	"img": "icons/commodities/tech/smoke-bomb-purple.webp",
+	"system": {
+		"description": {
+			"value": "<p>Any creature that starts its turn within <strong>5 ft.</strong> of the ghast must succeed on a <strong>DC 10 Constitution saving throw</strong> or be poisoned until the start of its next turn. On a successful saving throw, the creature is immune to the ghast's Stench for 24 hours.</p>",
+			"chat": "<p>Any creature that starts its turn within <strong>5 ft.</strong> of the ghast must succeed on a Constitution saving throw.</p>"
+		},
+		"source": {
+			"custom": "",
+			"book": "",
+			"page": "",
+			"license": "CC-BY-4.0",
+			"rules": "2014",
+			"revision": 1
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"type": {
+			"value": "",
+			"subtype": ""
+		},
+		"requirements": "",
+		"properties": [],
+		"activities": {
+			"dnd5eactivity000": {
+				"type": "save",
+				"activation": {
+					"type": "",
+					"value": null,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "1",
+					"units": "turn",
+					"special": "",
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "self",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "radius",
+						"size": "5",
+						"width": "",
+						"height": "",
+						"units": "ft"
+					},
+					"affects": {
+						"count": "",
+						"type": "",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": []
+				},
+				"save": {
+					"ability": "con",
+					"dc": {
+						"calculation": "",
+						"formula": "10"
+					}
+				}
+			}
+		},
+		"enchant": {},
+		"prerequisites": {
+			"level": null
+		},
+		"identifier": "stench"
+	},
+	"effects": [],
+	"_id": "CLlAr4sSPftmxKy2",
+	"_key": "!items!CLlAr4sSPftmxKy2",
+	"folder": "SRDFeature000001"
+}

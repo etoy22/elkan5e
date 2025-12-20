@@ -1,0 +1,143 @@
+{
+	"name": "Fire Breath",
+	"type": "feat",
+	"img": "icons/creatures/abilities/dragon-fire-breath-orange.webp",
+	"system": {
+		"description": {
+			"value": "<p>The veteran exhales fire in a 15-foot cone. Each creature in that area must make a [[/save]] saving throw, taking [[/damage average]] damage on a failed save, or half as much damage on a successful one.</p>",
+			"chat": "<p>The veteran exhales fire in a 15-foot cone. Each creature in that area must make a <strong>Dexterity</strong> saving throw.</p>"
+		},
+		"source": {
+			"custom": "",
+			"book": "",
+			"page": "",
+			"license": "CC-BY-4.0",
+			"rules": "2014",
+			"revision": 1
+		},
+		"uses": {
+			"max": "1",
+			"recovery": [
+				{
+					"period": "recharge",
+					"formula": "5",
+					"type": "recoverAll"
+				}
+			],
+			"spent": 0
+		},
+		"type": {
+			"value": "",
+			"subtype": ""
+		},
+		"requirements": "",
+		"properties": [],
+		"activities": {
+			"dnd5eactivity000": {
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": 1,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [
+						{
+							"type": "itemUses",
+							"target": "",
+							"value": "1",
+							"scaling": {
+								"mode": "",
+								"formula": ""
+							}
+						}
+					],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "",
+					"units": "",
+					"special": "",
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "cone",
+						"size": "15",
+						"width": "",
+						"height": "",
+						"units": "ft"
+					},
+					"affects": {
+						"count": "",
+						"type": "",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": [
+						{
+							"number": 7,
+							"denomination": 6,
+							"bonus": "",
+							"types": [
+								"fire"
+							],
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"scaling": {
+								"mode": "whole",
+								"number": null,
+								"formula": ""
+							}
+						}
+					]
+				},
+				"save": {
+					"ability": "dex",
+					"dc": {
+						"calculation": "",
+						"formula": "15"
+					}
+				}
+			}
+		},
+		"enchant": {},
+		"prerequisites": {
+			"level": null
+		},
+		"identifier": "fire-breath"
+	},
+	"effects": [],
+	"_id": "6KiSbfyFuFo_UNXW",
+	"_key": "!items!6KiSbfyFuFo_UNXW",
+	"folder": "SRDFeature000001"
+}

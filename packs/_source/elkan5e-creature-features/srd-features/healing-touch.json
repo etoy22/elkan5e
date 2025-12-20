@@ -1,0 +1,130 @@
+{
+	"name": "Healing Touch",
+	"type": "feat",
+	"img": "icons/magic/light/explosion-star-glow-blue-purple.webp",
+	"system": {
+		"description": {
+			"value": "<p>The [[lookup @name lowercase]] touches another creature. The target magically regains 30 ([[/heal]]{2d8 + 2}) hit points. In addition, the touch removes all diseases and neutralizes all poisons afflicting the target.</p>",
+			"chat": "<section class=\"secret\"></section><p>The unicorn touches another creature with its horn. The target magically regains 11 (2d8 + 2) hit points. In addition, the touch removes all diseases and neutralizes all poisons afflicting the target.</p>"
+		},
+		"source": {
+			"custom": "",
+			"book": "",
+			"page": "",
+			"license": "CC-BY-4.0",
+			"rules": "2014",
+			"revision": 1
+		},
+		"uses": {
+			"max": "3",
+			"recovery": [
+				{
+					"period": "day",
+					"type": "recoverAll"
+				}
+			],
+			"spent": 0
+		},
+		"type": {
+			"value": "",
+			"subtype": ""
+		},
+		"requirements": "",
+		"properties": [],
+		"activities": {
+			"dnd5eactivity000": {
+				"type": "heal",
+				"activation": {
+					"type": "action",
+					"value": 1,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [
+						{
+							"type": "itemUses",
+							"target": "",
+							"value": "1",
+							"scaling": {
+								"mode": "",
+								"formula": ""
+							}
+						}
+					],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "",
+					"units": "",
+					"special": "",
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "touch",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": ""
+					},
+					"affects": {
+						"count": "1",
+						"type": "creature",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"healing": {
+					"number": 2,
+					"denomination": 8,
+					"bonus": "2",
+					"types": [
+						"healing"
+					],
+					"custom": {
+						"enabled": false,
+						"formula": ""
+					},
+					"scaling": {
+						"mode": "whole",
+						"number": null,
+						"formula": ""
+					}
+				}
+			}
+		},
+		"enchant": {},
+		"prerequisites": {
+			"level": null
+		},
+		"identifier": "healing-touch"
+	},
+	"effects": [],
+	"_id": "TvxjLblhqATSZ53o",
+	"_key": "!items!TvxjLblhqATSZ53o",
+	"folder": "SRDFeature000001"
+}

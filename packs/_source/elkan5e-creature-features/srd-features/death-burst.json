@@ -1,0 +1,125 @@
+{
+	"name": "Death Burst",
+	"type": "feat",
+	"img": "icons/magic/light/explosion-star-glow-yellow.webp",
+	"system": {
+		"description": {
+			"value": "<p>When the magmin dies, it explodes in a burst of fire and magma. Each creature within 10 ft. of it must make a [[/save]] saving throw, taking [[/damage average]] damage on a failed save, or half as much damage on a successful one. Flammable objects that aren't being worn or carried in that area are ignited.</p>",
+			"chat": "<p>When the magmin dies, it explodes in a burst of fire and magma. Each creature within 10 ft. of it must make a <strong>Dexterity</strong> saving throw. Flammable objects that aren't being worn or carried in that area are ignited.</p>"
+		},
+		"source": {
+			"custom": "",
+			"book": "",
+			"page": "",
+			"license": "CC-BY-4.0",
+			"rules": "2014",
+			"revision": 1
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"type": {
+			"value": "",
+			"subtype": ""
+		},
+		"requirements": "",
+		"properties": [],
+		"activities": {
+			"dnd5eactivity000": {
+				"type": "save",
+				"activation": {
+					"type": "",
+					"value": null,
+					"condition": "death",
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "",
+					"units": "",
+					"special": "",
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "self",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "radius",
+						"size": "10",
+						"width": "",
+						"height": "",
+						"units": "ft"
+					},
+					"affects": {
+						"count": "",
+						"type": "creature",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 2,
+							"denomination": 6,
+							"bonus": "",
+							"types": [
+								"fire"
+							]
+						}
+					]
+				},
+				"save": {
+					"ability": "dex",
+					"dc": {
+						"calculation": "",
+						"formula": "11"
+					}
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": []
+			}
+		},
+		"enchant": {},
+		"prerequisites": {
+			"level": null
+		},
+		"identifier": "death-burst"
+	},
+	"effects": [],
+	"_id": "BzuvzcsblzmIowkt",
+	"_key": "!items!BzuvzcsblzmIowkt",
+	"folder": "SRDFeature000001"
+}
