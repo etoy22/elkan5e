@@ -57,6 +57,9 @@ function packageCommand() {
 
 function cleanPackEntry(data, { clearSourceId = true, ownership = 0 } = {}) {
 	const preservedIdentifier = data?.system?.identifier ?? null;
+	const preservedFolder = Object.prototype.hasOwnProperty.call(data, "folder")
+		? data.folder
+		: undefined;
 	// Your existing top-level cleanup
 	if (clearSourceId && data.flags?.core?.sourceId) delete data.flags.core.sourceId;
 	if (data.ownership) data.ownership = { default: ownership };
@@ -85,6 +88,7 @@ function cleanPackEntry(data, { clearSourceId = true, ownership = 0 } = {}) {
 	if (data.system && preservedIdentifier !== null && preservedIdentifier !== undefined) {
 		data.system.identifier = preservedIdentifier;
 	}
+	if (preservedFolder !== undefined) data.folder = preservedFolder;
 }
 
 async function cleanPacks(packName, entryName) {

@@ -4,10 +4,7 @@ import { readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parse } from "yaml";
-import {
-	buildPayload,
-	releaseToFoundry,
-} from "../../.github/workflows/scripts/release-foundry.js";
+import { buildPayload, releaseToFoundry } from "../../.github/workflows/scripts/release-foundry.js";
 import { updateModuleJson } from "../../.github/workflows/scripts/update-module.js";
 
 const __filename = fileURLToPath(import.meta.url);

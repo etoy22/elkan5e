@@ -644,13 +644,16 @@
 			"img": "icons/magic/fire/blast-jet-stream-splash.webp",
 			"system": {
 				"description": {
-					"value": "<p><em>Stretching out your hands, crackling flames extend between your fingertips, then strike outwards in a beam to burn everything in its path.</em></p><br><p>1 Action - 30 ft. Line (5 ft. Radius) - 2nd Level - VS</p><br><p><strong>Dexterity</strong> Save</p><ul><li><p><strong>Failure:</strong> Target takes 4d6 fire damage. <strong>*</strong></p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p></p><br><p><strong>*At Higher Levels:</strong> For every spell slot level above 2nd, the damage increases by 1d6.</p>",
-					"chat": "1 Action - 30 ft. Line (5 ft. Radius) - 2nd Level - VS</p><br><p><strong>Dexterity</strong> Save</p><ul><li><p><strong>Failure:</strong> Target takes 4d6 fire damage. <strong>*</strong></p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p></p><br><p><strong>*At Higher Levels:</strong> For every spell slot level above 2nd, the damage increases by 1d6.</p>"
+					"value": "<p><em>Stretching out your hands, crackling flames extend between your fingertips, then strike outwards in a beam to burn everything in its path.</em></p><br><p><strong>[[/save dex]]{Dexterity Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d6 fire]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p></p><br><p><strong>*Upcasting:</strong> Increase damage by [[/damage 2d6 fire]]{2d6} for each spell level above 2nd.</p>",
+					"chat": ""
 				},
 				"source": {
-					"custom": "Elkan 5e",
+					"custom": "elkan5e.com/spells/burning-beam",
 					"revision": 1,
-					"rules": "2024"
+					"rules": "",
+					"book": "Elkan 5e",
+					"page": "",
+					"license": ""
 				},
 				"activation": {
 					"type": "action",
@@ -663,18 +666,23 @@
 				},
 				"target": {
 					"affects": {
-						"choice": false
+						"choice": false,
+						"count": "",
+						"type": "any",
+						"special": ""
 					},
 					"template": {
 						"units": "ft",
 						"width": "5",
 						"type": "line",
-						"size": "30",
-						"contiguous": false
+						"size": "45",
+						"contiguous": false,
+						"count": ""
 					}
 				},
 				"range": {
-					"units": ""
+					"units": "self",
+					"special": ""
 				},
 				"uses": {
 					"max": "2",
@@ -699,6 +707,11 @@
 					"mode": "innate",
 					"prepared": true
 				},
+				"properties": [
+					"vocal",
+					"somatic",
+					"mgc"
+				],
 				"activities": {
 					"dnd5eactivity000": {
 						"_id": "dnd5eactivity000",
@@ -739,15 +752,12 @@
 							"override": false
 						},
 						"target": {
-							"prompt": true,
-							"template": {
-								"contiguous": false,
-								"units": "ft"
-							},
-							"affects": {
-								"choice": false
-							},
-							"override": false
+							"type": "creature",
+							"value": 1,
+							"units": "ft",
+							"width": null,
+							"override": false,
+							"prompt": true
 						},
 						"uses": {
 							"spent": 0,
@@ -770,7 +780,7 @@
 									},
 									"scaling": {
 										"mode": "whole",
-										"number": 1,
+										"number": 2,
 										"formula": ""
 									}
 								}
@@ -785,11 +795,7 @@
 						}
 					}
 				},
-				"identifier": "burning-beam",
-				"properties": [
-					"vocal",
-					"somatic"
-				]
+				"identifier": "burning-beam"
 			},
 			"effects": [],
 			"flags": {
@@ -1062,13 +1068,16 @@
 			"img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
 			"system": {
 				"description": {
-					"value": "<p><strong>Note: casting this spell requires a damaged tuning fork, typically valued at 50 gold. The tuning fork is not consumed by the spell.</strong></p><br><p><em>You hold out a damaged tuning fork attuned to another plane. You utter a corrupted version of the incantation needed to teleport to another plane, instead ripping a hole in space. All creatures you choose within 60 ft. of the tear are compelled to flee from it, and the area around the rip is twisted.</em></p><br><p>1 Action - 20 ft. Radius (60 ft.) - 5th Level - VSM</p><br><p><strong>Constitution</strong> Save</p><ul><li><p><strong>Failure:</strong> Target takes 4d8 force damage. <strong>*</strong></p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p>Additionally, all creatures who can see the rip in reality when it is formed must attempt a wisdom saving throw. See the Rend the Veil [Frighten] action for the second half of this ability's automation.</p><br><p>60 ft. Radius</p><br><p><strong>Wisdom</strong> Save</p><ul><li><p><strong>Failure:</strong> Target is frightened of the center of this effect for 1 minute (save ends).</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><br><p><strong>*At Higher Levels:</strong> For every spell slot level above 5th, the damage increases by 2d8.</p>",
+					"value": "<p><em>You hold out a damaged tuning fork attuned to another plane. You utter a corrupted version of the incantation needed to teleport to another plane, instead ripping a hole in space. All unsuspecting creatures are compelled to flee from it, and the area around the rip is twisted.</em></p><p><br /></p><p><strong>Materials:</strong> Casting this spell requires a @UUID[Compendium.elkan5e.elkan5e-spells.Item.tSdm8nQQqxsKBOnk]{damaged tuning fork}, typically valued at 50 gold. The tuning fork is not consumed by the spell.</p><p><br /></p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d8 force]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><hr /><p>Additionally, all creatures who are not your allies who can see the rip in reality when it is formed must attempt a wisdom saving throw.</p><p><br /></p><p><strong>[[/save Wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[frightened] of the center of this effect for 1 minute. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><br /></p><p><strong>*Upcasting:</strong> Increase damage by [[/damage 2d8 force]] for each spell level above 5th.</p>",
 					"chat": ""
 				},
 				"source": {
-					"custom": "Elkan 5e",
+					"custom": "elkan5e.com/spells/rend-the-veil",
 					"revision": 1,
-					"rules": "2024"
+					"rules": "",
+					"book": "Elkan 5e",
+					"page": "",
+					"license": ""
 				},
 				"activation": {
 					"type": "action",
@@ -1081,18 +1090,22 @@
 				},
 				"target": {
 					"affects": {
-						"choice": false
+						"choice": false,
+						"count": "",
+						"type": ""
 					},
 					"template": {
 						"units": "ft",
 						"type": "sphere",
 						"size": "20",
-						"contiguous": false
+						"contiguous": false,
+						"count": ""
 					}
 				},
 				"range": {
 					"value": "60",
-					"units": "ft"
+					"units": "ft",
+					"special": ""
 				},
 				"uses": {
 					"max": "1",
@@ -1108,7 +1121,7 @@
 				"level": 5,
 				"school": "con",
 				"materials": {
-					"value": "A warped tuning fork meant for teleportation to another plane",
+					"value": "",
 					"consumed": false,
 					"cost": 50,
 					"supply": 1
@@ -1117,6 +1130,11 @@
 					"mode": "innate",
 					"prepared": true
 				},
+				"properties": [
+					"vocal",
+					"somatic",
+					"material"
+				],
 				"activities": {
 					"dnd5eactivity000": {
 						"_id": "dnd5eactivity000",
@@ -1145,7 +1163,7 @@
 							"spellSlot": true
 						},
 						"description": {
-							"chatFlavor": "Use the Rend the Veil [Frighten] action to automate the second half of the spell."
+							"chatFlavor": ""
 						},
 						"duration": {
 							"units": "inst",
@@ -1157,15 +1175,12 @@
 							"override": false
 						},
 						"target": {
-							"prompt": true,
-							"template": {
-								"contiguous": false,
-								"units": "ft"
-							},
-							"affects": {
-								"choice": false
-							},
-							"override": false
+							"type": "creature",
+							"value": 1,
+							"units": "ft",
+							"width": null,
+							"override": false,
+							"prompt": true
 						},
 						"uses": {
 							"spent": 0,
@@ -1176,16 +1191,16 @@
 							"onSave": "half",
 							"parts": [
 								{
-									"number": 4,
-									"denomination": 8,
-									"bonus": "",
-									"types": [
-										"force"
-									],
 									"custom": {
 										"enabled": false,
 										"formula": ""
 									},
+									"number": 4,
+									"denomination": "8",
+									"bonus": "",
+									"types": [
+										"force"
+									],
 									"scaling": {
 										"mode": "whole",
 										"number": 2,
@@ -1200,15 +1215,200 @@
 								"calculation": "spellcasting",
 								"formula": ""
 							}
-						}
+						},
+						"name": "Initial Casting (Use First)",
+						"img": "",
+						"appliedEffects": [],
+						"midiProperties": {
+							"triggeredActivityId": "initial-casting-(use-second)",
+							"triggeredActivityTargets": "self"
+						},
+						"otherActivityId": "none"
+					},
+					"1mL8muqBPuqOW8Ec": {
+						"type": "save",
+						"_id": "1mL8muqBPuqOW8Ec",
+						"activation": {
+							"type": "action",
+							"value": null,
+							"override": false
+						},
+						"consumption": {
+							"scaling": {
+								"allowed": false
+							},
+							"spellSlot": false,
+							"targets": []
+						},
+						"description": {
+							"chatFlavor": ""
+						},
+						"duration": {
+							"units": "inst",
+							"concentration": false,
+							"override": false
+						},
+						"effects": [
+							{
+								"_id": "LrRnZx9GBeTa8y76",
+								"onSave": false
+							}
+						],
+						"range": {
+							"override": false
+						},
+						"target": {
+							"type": "creature",
+							"value": 1,
+							"units": "ft",
+							"width": null,
+							"override": false,
+							"prompt": true
+						},
+						"uses": {
+							"spent": 0,
+							"recovery": [],
+							"max": ""
+						},
+						"damage": {
+							"parts": [],
+							"onSave": "none"
+						},
+						"save": {
+							"ability": "wis",
+							"dc": {
+								"calculation": "spellcasting",
+								"formula": ""
+							}
+						},
+						"useConditionText": "",
+						"forceDialog": false,
+						"effectConditionText": "!target.traits.ci.value.has('frightened')",
+						"name": "Initial Casting (Use Second)",
+						"img": "",
+						"appliedEffects": [
+							"LrRnZx9GBeTa8y76"
+						],
+						"otherActivityId": "none",
+						"otherActivityAsParentType": false
+					},
+					"u5vIV4FNysgfABJa": {
+						"type": "save",
+						"name": "Overtime",
+						"_id": "u5vIV4FNysgfABJa",
+						"activation": {
+							"type": "action",
+							"override": false
+						},
+						"consumption": {
+							"scaling": {
+								"allowed": false
+							},
+							"spellSlot": true,
+							"targets": []
+						},
+						"description": {
+							"chatFlavor": ""
+						},
+						"duration": {
+							"units": "inst",
+							"concentration": false,
+							"override": false
+						},
+						"effects": [],
+						"range": {
+							"units": "self",
+							"override": false
+						},
+						"target": {
+							"template": {
+								"contiguous": false,
+								"units": "ft"
+							},
+							"affects": {
+								"choice": false
+							},
+							"override": false,
+							"prompt": true
+						},
+						"uses": {
+							"spent": 0,
+							"recovery": [],
+							"max": ""
+						},
+						"damage": {
+							"onSave": "half",
+							"critical": {
+								"allow": false
+							},
+							"parts": []
+						},
+						"save": {
+							"ability": [
+								"wis"
+							],
+							"dc": {
+								"calculation": "spellcasting",
+								"formula": ""
+							}
+						},
+						"useConditionText": "",
+						"useConditionReason": "",
+						"effectConditionText": "",
+						"macroData": {
+							"name": "",
+							"command": ""
+						},
+						"ignoreTraits": {
+							"idi": false,
+							"idr": false,
+							"idv": false,
+							"ida": false,
+							"idm": false
+						},
+						"midiProperties": {
+							"ignoreTraits": [],
+							"triggeredActivityId": "none",
+							"triggeredActivityConditionText": "",
+							"triggeredActivityTargets": "targets",
+							"triggeredActivityRollAs": "self",
+							"autoConsume": false,
+							"forceConsumeDialog": "default",
+							"forceRollDialog": "default",
+							"forceDamageDialog": "default",
+							"confirmTargets": "default",
+							"autoTargetType": "any",
+							"autoTargetAction": "default",
+							"automationOnly": true,
+							"otherActivityCompatible": true,
+							"otherActivityAsParentType": true,
+							"identifier": "",
+							"displayActivityName": false,
+							"rollMode": "default",
+							"chooseEffects": false,
+							"toggleEffect": false,
+							"ignoreFullCover": false,
+							"removeChatButtons": "default",
+							"magicEffect": false,
+							"magicDamage": false,
+							"noConcentrationCheck": false,
+							"autoCEEffects": "default"
+						},
+						"isOverTimeFlag": true,
+						"overTimeProperties": {
+							"saveRemoves": true,
+							"preRemoveConditionText": "false",
+							"postRemoveConditionText": "alse",
+							"turnChoice": "end"
+						},
+						"otherActivityId": "none",
+						"otherActivityAsParentType": true,
+						"friendlySave": "default",
+						"img": "",
+						"appliedEffects": []
 					}
 				},
-				"identifier": "rend-the-veil",
-				"properties": [
-					"vocal",
-					"somatic",
-					"material"
-				]
+				"identifier": "rend-the-veil"
 			},
 			"effects": [],
 			"flags": {
@@ -1249,94 +1449,20 @@
 			"effects": [],
 			"folder": "SjVk5lAwzIpqSBbH",
 			"flags": {
-				"srd5e": {
-					"page": "spells.html",
-					"source": "PHB",
-					"hash": "poison%20spray_phb"
-				},
-				"betterRolls5e": {
-					"critRange": {
-						"type": "String",
-						"value": ""
-					},
-					"critDamage": {
-						"type": "String",
-						"value": ""
-					},
-					"quickDesc": {
-						"type": "Boolean",
-						"value": true,
-						"altValue": true
-					},
-					"quickAttack": {
-						"type": "Boolean",
-						"value": true,
-						"altValue": true
-					},
-					"quickSave": {
-						"type": "Boolean",
-						"value": true,
-						"altValue": true
-					},
-					"quickDamage": {
-						"type": "Array",
-						"value": [
-							true
-						],
-						"altValue": [
-							true
-						],
-						"context": []
-					},
-					"quickVersatile": {
-						"type": "Boolean",
-						"value": false,
-						"altValue": false
-					},
-					"quickProperties": {
-						"type": "Boolean",
-						"value": true,
-						"altValue": true
-					},
-					"quickCharges": {
-						"type": "Boolean",
-						"value": {
-							"use": false,
-							"resource": true
-						},
-						"altValue": {
-							"use": false,
-							"resource": true
-						}
-					},
-					"quickTemplate": {
-						"type": "Boolean",
-						"value": true,
-						"altValue": true
-					},
-					"quickOther": {
-						"type": "Boolean",
-						"value": true,
-						"altValue": true,
-						"context": ""
-					},
-					"quickFlavor": {
-						"type": "Boolean",
-						"value": true,
-						"altValue": true
-					},
-					"quickPrompt": {
-						"type": "Boolean",
-						"value": false,
-						"altValue": false
-					}
-				},
 				"core": {},
 				"midi-qol": {
-					"effectActivation": false
+					"effectActivation": false,
+					"removeAttackDamageButtons": "default",
+					"itemCondition": "",
+					"reactionCondition": "",
+					"otherCondition": "",
+					"effectCondition": "",
+					"rollAttackPerTarget": "default",
+					"AoETargetType": "any",
+					"autoTarget": "default"
 				},
 				"midiProperties": {
-					"nodam": false,
+					"nodam": true,
 					"fulldam": false,
 					"halfdam": false,
 					"rollOther": false,
@@ -1348,24 +1474,43 @@
 					"ignoreTotalCover": false,
 					"autoFailFriendly": false,
 					"autoSaveFriendly": false,
-					"offHandWeapon": false
+					"offHandWeapon": false,
+					"noConcentrationCheck": false,
+					"confirmTargets": "default",
+					"saveDamage": "nodam",
+					"bonusSaveDamage": "default",
+					"idr": false,
+					"idi": false,
+					"idv": false,
+					"ida": false
 				},
 				"dnd5e": {
+					"riders": {
+						"activity": [],
+						"effect": []
+					},
 					"migratedProperties": [
 						"vocal",
 						"somatic"
 					]
+				},
+				"tidy5e-sheet": {
+					"section": "",
+					"actionSection": ""
 				}
 			},
 			"system": {
 				"description": {
-					"value": "<p><em>You reach out as if to grasp your target, conjuring toxic mist around them.</em></p><br><p>1 Action - 1 Creature (30 ft.) - Cantrip - VS</p><br><p><strong>Consitution</strong> Save</p><ul><li><p><strong>Failure:</strong> Target takes 1d12 poison damage. <strong>*</strong></p></li><li><p><strong>Success:</strong> No damage.</p></li></ul><p></p><br><p><strong>*At Higher Levels:</strong> This spell's damage increases by 1d12 when you reach a total character or creature level of 5th level (2d12), 11th level (3d12), and 17th level (4d12).</p>",
-					"chat": "1 Action - 1 Creature (30 ft.) - Cantrip - VS</p><br><p><strong>Consitution</strong> Save</p><ul><li><p><strong>Failure:</strong> Target takes 1d12 poison damage. <strong>*</strong></p></li><li><p><strong>Success:</strong> No damage.</p></li></ul><p></p><br><p><strong>*At Higher Levels:</strong> This spell's damage increases by 1d12 when you reach a total character or creature level of 5th level (2d12), 11th level (3d12), and 17th level (4d12).</p>"
+					"value": "<p><em>You reach out as if to grasp your target, conjuring toxic mist around them.</em></p><br><p><strong>Consitution Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 1d12 poison]] damage.*</p></li><li><p><strong>Success:</strong> No damage.</p></li></ul><p></p><br><p><strong>*At Higher Levels:</strong> This spell's damage increases by [[/damage 1d12 poison]] when you reach a total character or creature level of 5th level ([[/damage 2d12 poison]]), 11th level ([[/damage 3d12 poison]]), and 17th level ([[/damage 4d12 poison]]).</p>",
+					"chat": ""
 				},
 				"source": {
-					"custom": "Elkan 5e",
+					"custom": "elkan5e.com/spells/toxic-sting",
 					"revision": 1,
-					"rules": "2024"
+					"rules": "",
+					"book": "Elkan 5e",
+					"page": "",
+					"license": ""
 				},
 				"activation": {
 					"type": "action",
@@ -1378,18 +1523,21 @@
 				},
 				"target": {
 					"affects": {
+						"special": "",
 						"type": "creature",
 						"count": "1",
 						"choice": false
 					},
 					"template": {
+						"type": "",
 						"units": "",
 						"contiguous": false
 					}
 				},
 				"range": {
 					"value": "30",
-					"units": "ft"
+					"units": "ft",
+					"special": ""
 				},
 				"uses": {
 					"max": "",
@@ -1409,6 +1557,11 @@
 					"mode": "always",
 					"prepared": true
 				},
+				"properties": [
+					"vocal",
+					"somatic",
+					"mgc"
+				],
 				"activities": {
 					"dnd5eactivity000": {
 						"_id": "dnd5eactivity000",
@@ -1439,15 +1592,12 @@
 							"override": false
 						},
 						"target": {
-							"prompt": true,
-							"template": {
-								"contiguous": false,
-								"units": "ft"
-							},
-							"affects": {
-								"choice": false
-							},
-							"override": false
+							"type": "creature",
+							"value": 1,
+							"units": "ft",
+							"width": null,
+							"override": false,
+							"prompt": true
 						},
 						"uses": {
 							"spent": 0,
@@ -1458,7 +1608,7 @@
 							"onSave": "none",
 							"parts": [
 								{
-									"number": 3,
+									"number": 1,
 									"denomination": 12,
 									"bonus": "",
 									"types": [
@@ -1485,11 +1635,7 @@
 						}
 					}
 				},
-				"identifier": "toxic-sting",
-				"properties": [
-					"vocal",
-					"somatic"
-				]
+				"identifier": "toxic-sting"
 			},
 			"_id": "GFxjOvMqHq7g2v83",
 			"_key": "!actors.items!h4Aud0lG4mNU1RFg.GFxjOvMqHq7g2v83"

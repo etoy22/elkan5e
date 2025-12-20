@@ -860,13 +860,16 @@
 			"_id": "APXKmz8guBwZBVku",
 			"system": {
 				"description": {
-					"value": "<p>A line of strong wind 60 feet long and 10 feet wide blasts from you in a direction you choose for the spell's duration. Each creature that starts its turn in the line must succeed on a Strength saving throw or be pushed 15 feet away from you in a direction following the line.</p><br><p>Any creature in the line must spend 2 feet of movement for every 1 foot it moves when moving closer to you.</p><br><p>The gust disperses gas or vapor, and it extinguishes candles, torches, and similar unprotected flames in the area. It causes protected flames, such as those of lanterns, to dance wildly and has a [[/r 1d100]] (50 percent) chance to extinguish them.</p><br><p>As a bonus action on each of your turns before the spell ends, you can change the direction in which the line blasts from you.</p>",
+					"value": "<p><em>You exhale, pushing all the air in your lungs forward in the direction of your outstretched hand. Your breath becomes a strong gust that throws objects and creatures around.</em></p><br><p>Candles, torches, and similar unprotected flames in range of the wind are extinguished.</p><br><p><strong>[[/save str]]{Strength Save}</strong></p><ul><li><p><strong>Failure:</strong> Targets are pushed 15 feet away from you in a direction following the line.</p></li><li><p><strong>Success:</strong> Nothing</p></li><li><p><strong>Area Hazard:</strong> Any movement going towards you against the direction of the latest gust of wind counts as movement through &amp;reference[difficultterrain].</p></li><li><p><strong>Concentration:</strong> On each of your subsequent turns, you can use a bonus action to both change the direction of the wind and have the spell occur again.</p></li></ul>",
 					"chat": ""
 				},
 				"source": {
-					"custom": "PHB",
+					"custom": "elkan5e.com/spells/gust-of-wind",
 					"revision": 1,
-					"rules": "2024"
+					"rules": "",
+					"book": "Elkan 5e",
+					"page": "",
+					"license": ""
 				},
 				"activation": {
 					"type": "action",
@@ -879,18 +882,23 @@
 				},
 				"target": {
 					"affects": {
-						"choice": false
+						"choice": false,
+						"count": "",
+						"type": ""
 					},
 					"template": {
 						"units": "ft",
+						"width": "10",
 						"type": "line",
 						"size": "60",
-						"contiguous": false
+						"contiguous": false,
+						"count": ""
 					}
 				},
 				"range": {
 					"value": "0",
-					"units": ""
+					"units": "self",
+					"special": ""
 				},
 				"uses": {
 					"max": "1",
@@ -906,7 +914,7 @@
 				"level": 2,
 				"school": "evo",
 				"materials": {
-					"value": "a legume seed",
+					"value": "",
 					"consumed": false,
 					"cost": 0,
 					"supply": 0
@@ -915,36 +923,29 @@
 					"mode": "innate",
 					"prepared": true
 				},
+				"properties": [
+					"vocal",
+					"somatic",
+					"material",
+					"concentration"
+				],
 				"activities": {
-					"dnd5eactivity000": {
-						"_id": "dnd5eactivity000",
+					"QZjNiAgzu1Tz9hsX": {
 						"type": "save",
+						"_id": "QZjNiAgzu1Tz9hsX",
 						"activation": {
 							"type": "action",
 							"value": null,
 							"override": false
 						},
 						"consumption": {
-							"targets": [
-								{
-									"type": "itemUses",
-									"target": "",
-									"value": "1",
-									"scaling": {
-										"mode": "",
-										"formula": ""
-									}
-								}
-							],
 							"scaling": {
-								"allowed": false,
-								"max": ""
+								"allowed": false
 							},
-							"spellSlot": true
+							"spellSlot": true,
+							"targets": []
 						},
-						"description": {
-							"chatFlavor": ""
-						},
+						"description": {},
 						"duration": {
 							"units": "inst",
 							"concentration": false,
@@ -955,24 +956,75 @@
 							"override": false
 						},
 						"target": {
-							"prompt": true,
-							"template": {
-								"contiguous": false,
-								"units": "ft"
-							},
-							"affects": {
-								"choice": false
-							},
-							"override": false
+							"type": "creature",
+							"value": 1,
+							"units": "ft",
+							"width": null,
+							"override": false,
+							"prompt": true
 						},
 						"uses": {
 							"spent": 0,
-							"max": "",
 							"recovery": []
 						},
 						"damage": {
-							"onSave": "half",
 							"parts": []
+						},
+						"save": {
+							"ability": "str",
+							"dc": {
+								"calculation": "initial"
+							}
+						},
+						"useConditionText": "",
+						"forceDialog": false,
+						"effectConditionText": ""
+					},
+					"3tGFHZoP80cPEUOe": {
+						"type": "save",
+						"name": "Continous Effect",
+						"_id": "3tGFHZoP80cPEUOe",
+						"activation": {
+							"type": "action",
+							"value": null,
+							"override": false
+						},
+						"consumption": {
+							"scaling": {
+								"allowed": false
+							},
+							"spellSlot": false,
+							"targets": []
+						},
+						"description": {
+							"chatFlavor": ""
+						},
+						"duration": {
+							"units": "minute",
+							"concentration": false,
+							"override": true,
+							"value": "1"
+						},
+						"effects": [],
+						"range": {
+							"override": false
+						},
+						"target": {
+							"type": "creature",
+							"value": 1,
+							"units": "ft",
+							"width": null,
+							"override": false,
+							"prompt": true
+						},
+						"uses": {
+							"spent": 0,
+							"recovery": [],
+							"max": ""
+						},
+						"damage": {
+							"parts": [],
+							"onSave": "half"
 						},
 						"save": {
 							"ability": "str",
@@ -980,16 +1032,15 @@
 								"calculation": "spellcasting",
 								"formula": ""
 							}
-						}
+						},
+						"useConditionText": "",
+						"forceDialog": false,
+						"effectConditionText": "",
+						"img": "",
+						"appliedEffects": []
 					}
 				},
-				"identifier": "gust-of-wind",
-				"properties": [
-					"vocal",
-					"somatic",
-					"material",
-					"concentration"
-				]
+				"identifier": "gust-of-wind"
 			},
 			"_key": "!actors.items!ESJNty3xNEKGJygP.APXKmz8guBwZBVku"
 		},
@@ -1002,7 +1053,15 @@
 			"flags": {
 				"core": {},
 				"midi-qol": {
-					"effectActivation": false
+					"effectActivation": false,
+					"itemCondition": "",
+					"reactionCondition": "",
+					"otherCondition": "",
+					"effectCondition": "",
+					"rollAttackPerTarget": "default",
+					"AoETargetType": "any",
+					"autoTarget": "default",
+					"removeAttackDamageButtons": "default"
 				},
 				"midiProperties": {
 					"nodam": false,
@@ -1014,24 +1073,44 @@
 					"magiceffect": false,
 					"concentration": false,
 					"toggleEffect": false,
-					"ignoreTotalCover": false
+					"ignoreTotalCover": false,
+					"autoFailFriendly": false,
+					"autoSaveFriendly": false,
+					"offHandWeapon": false,
+					"confirmTargets": "default",
+					"noConcentrationCheck": false,
+					"idr": false,
+					"idi": false,
+					"idv": false,
+					"ida": false
 				},
 				"dnd5e": {
+					"riders": {
+						"activity": [],
+						"effect": []
+					},
 					"migratedProperties": [
 						"vocal"
 					]
+				},
+				"tidy5e-sheet": {
+					"section": "",
+					"actionSection": ""
 				}
 			},
 			"_id": "nLnQtlpd5s2pMt2p",
 			"system": {
 				"description": {
-					"value": "<p>You create one of the following magical effects within range:</p><ul><li>Your voice booms up to three times as loud as normal for 1 minute.</li><li>You cause flames to flicker, brighten, dim, or change color for 1 minute.</li><li>You cause harmless tremors in the ground for 1 minute.</li><li>You create a sound that originates from a point of your choice within range.</li><li>You cause an unlocked door or window to fly open or slam shut.</li><li>You alter the appearance of your eyes for 1 minute.</li></ul><p>If you cast this spell multiple times, you can have up to three of its 1-minute effects active at a time, and you can dismiss such an effect as an action.</p>",
+					"value": "<p><em>Your magical power manifests in various dramatic, but ultimately harmless ways. Whether by invoking forgotten magic, or simply by saying a few emotional words, you can create supernatural effects.</em></p><br><p><strong>Utility Spell</strong></p><br><p>You create one of the following effects:</p><ul><li>Your voice booms up to three times as loud as normal for 1 minute.</li><li>You cause flames to flicker, brighten, dim, or change color for 1 minute.</li><li>You cause harmless tremors in the ground for 1 minute.</li><li>You create a sound that originates from a point of your choice within range. If you want, this sound can be a message of up to 6 seconds in length in your own voice, but not someone else's voice.</li><li>You alter the appearance of your eyes for 1 minute.</li></ul><p></p><br><p><em>With your GM's permission, you can do a similar, harmless illusory effect.</em></p>",
 					"chat": ""
 				},
 				"source": {
-					"custom": "PHB pg. 282",
+					"custom": "elkan5e.com/spells/thaumaturgy",
 					"revision": 1,
-					"rules": "2024"
+					"rules": "",
+					"book": "Elkan 5e",
+					"page": "",
+					"license": ""
 				},
 				"activation": {
 					"type": "action",
@@ -1044,16 +1123,20 @@
 				},
 				"target": {
 					"affects": {
+						"count": "",
+						"type": "",
 						"choice": false
 					},
 					"template": {
+						"type": "",
 						"units": "",
 						"contiguous": false
 					}
 				},
 				"range": {
 					"value": "30",
-					"units": "ft"
+					"units": "ft",
+					"special": ""
 				},
 				"uses": {
 					"max": "",
@@ -1073,6 +1156,9 @@
 					"mode": "always",
 					"prepared": true
 				},
+				"properties": [
+					"vocal"
+				],
 				"activities": {
 					"dnd5eactivity000": {
 						"_id": "dnd5eactivity000",
@@ -1103,15 +1189,12 @@
 							"override": false
 						},
 						"target": {
-							"prompt": true,
-							"template": {
-								"contiguous": false,
-								"units": "ft"
-							},
-							"affects": {
-								"choice": false
-							},
-							"override": false
+							"type": "creature",
+							"value": 1,
+							"units": "ft",
+							"width": null,
+							"override": false,
+							"prompt": true
 						},
 						"uses": {
 							"spent": 0,
@@ -1126,10 +1209,7 @@
 						}
 					}
 				},
-				"identifier": "thaumaturgy",
-				"properties": [
-					"vocal"
-				]
+				"identifier": "thaumaturgy"
 			},
 			"_key": "!actors.items!ESJNty3xNEKGJygP.nLnQtlpd5s2pMt2p"
 		},
@@ -1140,87 +1220,15 @@
 			"effects": [],
 			"folder": null,
 			"flags": {
-				"srd5e": {
-					"page": "spells.html",
-					"source": "PHB",
-					"hash": "mending_phb"
-				},
-				"betterRolls5e": {
-					"critRange": {
-						"type": "String",
-						"value": ""
-					},
-					"critDamage": {
-						"type": "String",
-						"value": ""
-					},
-					"quickDesc": {
-						"type": "Boolean",
-						"value": true,
-						"altValue": true
-					},
-					"quickAttack": {
-						"type": "Boolean",
-						"value": true,
-						"altValue": true
-					},
-					"quickSave": {
-						"type": "Boolean",
-						"value": true,
-						"altValue": true
-					},
-					"quickDamage": {
-						"type": "Array",
-						"value": [],
-						"altValue": [],
-						"context": []
-					},
-					"quickVersatile": {
-						"type": "Boolean",
-						"value": false,
-						"altValue": false
-					},
-					"quickProperties": {
-						"type": "Boolean",
-						"value": true,
-						"altValue": true
-					},
-					"quickCharges": {
-						"type": "Boolean",
-						"value": {
-							"use": false,
-							"resource": true
-						},
-						"altValue": {
-							"use": false,
-							"resource": true
-						}
-					},
-					"quickTemplate": {
-						"type": "Boolean",
-						"value": true,
-						"altValue": true
-					},
-					"quickOther": {
-						"type": "Boolean",
-						"value": true,
-						"altValue": true,
-						"context": ""
-					},
-					"quickFlavor": {
-						"type": "Boolean",
-						"value": true,
-						"altValue": true
-					},
-					"quickPrompt": {
-						"type": "Boolean",
-						"value": false,
-						"altValue": false
-					}
-				},
 				"core": {},
 				"midi-qol": {
-					"effectActivation": false
+					"effectActivation": false,
+					"itemCondition": "",
+					"reactionCondition": "",
+					"otherCondition": "",
+					"effectCondition": "",
+					"rollAttackPerTarget": "default",
+					"removeAttackDamageButtons": "default"
 				},
 				"midiProperties": {
 					"nodam": false,
@@ -1232,26 +1240,46 @@
 					"magiceffect": false,
 					"concentration": false,
 					"toggleEffect": false,
-					"ignoreTotalCover": false
+					"ignoreTotalCover": false,
+					"autoFailFriendly": false,
+					"autoSaveFriendly": false,
+					"offHandWeapon": false,
+					"noConcentrationCheck": false,
+					"confirmTargets": "default",
+					"idr": false,
+					"idi": false,
+					"idv": false,
+					"ida": false
 				},
 				"dnd5e": {
+					"riders": {
+						"activity": [],
+						"effect": []
+					},
 					"migratedProperties": [
 						"vocal",
 						"somatic",
 						"material"
 					]
+				},
+				"tidy5e-sheet": {
+					"section": "",
+					"actionSection": ""
 				}
 			},
 			"_id": "BszXOnyfaE8R4xex",
 			"system": {
 				"description": {
-					"value": "<p>This spell repairs a single break or tear in an object you touch, such as broken chain link, two halves of a broken key, a torn cloak, or a leaking wineskin. As long as the break or tear is no larger than 1 foot in any dimension, you mend it, leaving no trace of the former damage.</p><br><p>This spell can physically repair a magic item or &amp;reference[construct], but the spell can't restore magic to such an object.</p>",
+					"value": "<p><em>You place two lodestones on either side of a broken object, then hold the broken object or its pieces together as you chant your spell, slowly joining the object back together.</em></p><br><p><strong>Utility Spell</strong></p><ul><li><p>This spell repairs a single break or tear in an object you touch, such as broken chain link, two halves of a broken key, a torn cloak, or a leaking wineskin. As long as the break or tear is no larger than 1 foot in any dimension, and you have all the pieces, you mend it, leaving no trace of the former damage.</p></li></ul><p></p><br><p><em>This spell cannot restore hit points to a &amp;reference[construct]{construct}, vehicle, or object, and can only repair physical damage (&amp;reference[bludgeoning], &amp;reference[piercing], or &amp;reference[slashing] damage). If used to reattach a body part, the body part is non-functional, as if the nervous system or circulatory system failed to connect properly.</em></p><br><p><em>You could put a shredded piece of paper back together, but you couldn't restore a burned note.</em></p>",
 					"chat": ""
 				},
 				"source": {
-					"custom": "PHB",
+					"custom": "elkan5e.com/spells/mending",
 					"revision": 1,
-					"rules": "2024"
+					"rules": "",
+					"book": "Elkan 5e",
+					"page": "",
+					"license": ""
 				},
 				"activation": {
 					"type": "minute",
@@ -1264,16 +1292,20 @@
 				},
 				"target": {
 					"affects": {
+						"special": "",
 						"type": "object",
-						"choice": false
+						"choice": false,
+						"count": ""
 					},
 					"template": {
-						"units": "touch",
+						"type": "",
+						"units": "ft",
 						"contiguous": false
 					}
 				},
 				"range": {
-					"units": "touch"
+					"units": "touch",
+					"special": ""
 				},
 				"uses": {
 					"max": "",
@@ -1284,7 +1316,7 @@
 				"level": 0,
 				"school": "trs",
 				"materials": {
-					"value": "two lodestones",
+					"value": "",
 					"consumed": false,
 					"cost": 0,
 					"supply": 0
@@ -1293,6 +1325,11 @@
 					"mode": "always",
 					"prepared": true
 				},
+				"properties": [
+					"vocal",
+					"somatic",
+					"material"
+				],
 				"activities": {
 					"dnd5eactivity000": {
 						"_id": "dnd5eactivity000",
@@ -1323,15 +1360,12 @@
 							"override": false
 						},
 						"target": {
-							"prompt": true,
-							"template": {
-								"contiguous": false,
-								"units": "ft"
-							},
-							"affects": {
-								"choice": false
-							},
-							"override": false
+							"type": "creature",
+							"value": 1,
+							"units": "ft",
+							"width": null,
+							"override": false,
+							"prompt": true
 						},
 						"uses": {
 							"spent": 0,
@@ -1346,12 +1380,7 @@
 						}
 					}
 				},
-				"identifier": "mending",
-				"properties": [
-					"vocal",
-					"somatic",
-					"material"
-				]
+				"identifier": "mending"
 			},
 			"_key": "!actors.items!ESJNty3xNEKGJygP.BszXOnyfaE8R4xex"
 		},
@@ -1488,13 +1517,16 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p>You can blind or deafen a foe. Choose one creature that you can see within range to make a Constitution saving throw. If it fails, the target is either blinded or deafened (your choice) for the duration. At the end of each of its turns, the target can make a Constitution saving throw. On a success, the spell ends.</p><br><p><strong>At Higher Levels.</strong> When you cast this spell using a spell slot of 3rd level or higher, you can target one additional creature for each slot level above 2nd.</p>",
+					"value": "<p><em>You call upon the power of darkness to isolate your target as they lose both sight and hearing.</em></p><br><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[blinded] and &amp;reference[deafened]. If you want, you can cause only one of the conditions to take effect. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><br><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 2nd.</p>",
 					"chat": ""
 				},
 				"source": {
-					"custom": "PHB pg. 219",
+					"custom": "elkan5e.com/spells/blindness%2Fdeafness",
 					"revision": 1,
-					"rules": "2024"
+					"rules": "",
+					"book": "Elkan 5e",
+					"page": "",
+					"license": ""
 				},
 				"activation": {
 					"type": "action",
@@ -1507,18 +1539,21 @@
 				},
 				"target": {
 					"affects": {
+						"special": "",
 						"type": "creature",
 						"count": "1",
 						"choice": false
 					},
 					"template": {
+						"type": "",
 						"units": "",
 						"contiguous": false
 					}
 				},
 				"range": {
 					"value": "30",
-					"units": "ft"
+					"units": "ft",
+					"special": ""
 				},
 				"uses": {
 					"max": "1",
@@ -1532,7 +1567,7 @@
 				},
 				"ability": "",
 				"level": 2,
-				"school": "nec",
+				"school": "ill",
 				"materials": {
 					"value": "",
 					"consumed": false,
@@ -1543,32 +1578,25 @@
 					"mode": "innate",
 					"prepared": true
 				},
+				"properties": [
+					"vocal",
+					"concentration"
+				],
 				"activities": {
-					"dnd5eactivity000": {
-						"_id": "dnd5eactivity000",
+					"YyVBBTIHhDBYpYSP": {
 						"type": "save",
+						"_id": "YyVBBTIHhDBYpYSP",
 						"activation": {
 							"type": "action",
 							"value": null,
 							"override": false
 						},
 						"consumption": {
-							"targets": [
-								{
-									"type": "itemUses",
-									"target": "",
-									"value": "1",
-									"scaling": {
-										"mode": "",
-										"formula": ""
-									}
-								}
-							],
 							"scaling": {
-								"allowed": false,
-								"max": ""
+								"allowed": false
 							},
-							"spellSlot": true
+							"spellSlot": true,
+							"targets": []
 						},
 						"description": {
 							"chatFlavor": ""
@@ -1578,12 +1606,16 @@
 							"concentration": false,
 							"override": false
 						},
-						"effects": [],
+						"effects": [
+							{
+								"_id": "euxD3H8QtSNEsBWw",
+								"onSave": false
+							}
+						],
 						"range": {
 							"override": false
 						},
 						"target": {
-							"prompt": true,
 							"template": {
 								"contiguous": false,
 								"units": "ft"
@@ -1591,16 +1623,17 @@
 							"affects": {
 								"choice": false
 							},
-							"override": false
+							"override": false,
+							"prompt": true
 						},
 						"uses": {
 							"spent": 0,
-							"max": "",
-							"recovery": []
+							"recovery": [],
+							"max": ""
 						},
 						"damage": {
-							"onSave": "half",
-							"parts": []
+							"parts": [],
+							"onSave": "none"
 						},
 						"save": {
 							"ability": "con",
@@ -1608,13 +1641,16 @@
 								"calculation": "spellcasting",
 								"formula": ""
 							}
-						}
+						},
+						"name": "",
+						"img": "",
+						"appliedEffects": [
+							"euxD3H8QtSNEsBWw"
+						],
+						"effectConditionText": "!target.traits.ci.value.has('blinded') && !target.traits.ci.value.has('deafened')"
 					}
 				},
-				"identifier": "blindness-deafness",
-				"properties": [
-					"vocal"
-				]
+				"identifier": "blindness-deafness"
 			},
 			"_key": "!actors.items!ESJNty3xNEKGJygP.01fKr5PPD3Px4JWb"
 		},
@@ -1733,13 +1769,16 @@
 			"_id": "71Mr4oU8pCVUdoDN",
 			"system": {
 				"description": {
-					"value": "<p>A creature of your choice that you can see within range regains hit points equal to [[/r 1d4]] + your spellcasting ability modifier. This spell has no effect on &amp;reference[undead] or constructs.</p>At Higher Levels.<p>When you cast this spell using a spell slot of 2nd level or higher, the healing increases by [[/r 1d4]] for each slot level above 1st.</p>",
+					"value": "<p><em>Calling out a word of power, you invigorate your target's spirit and bolster their life energy.</em></p><br><p><strong>Healing</strong></p><br><p>This spell has no effect on &amp;reference[construct].</p><ul><li><p>Target gains hit points equal to [[/healing 1d6 + @attributes.spellmod]]{1d6 + your spellcasting ability modifier} .</p><br><p></p></li></ul><p><strong>*Upcasting:</strong> Increase healing by [[/healing 1d6]]{1d6} for each spell level above 1st.</p>",
 					"chat": ""
 				},
 				"source": {
-					"custom": "PHB",
+					"custom": "elkan5e.com/spells/healing-word",
 					"revision": 1,
-					"rules": "2024"
+					"rules": "",
+					"book": "Elkan 5e",
+					"page": "",
+					"license": ""
 				},
 				"activation": {
 					"type": "bonus",
@@ -1752,18 +1791,21 @@
 				},
 				"target": {
 					"affects": {
+						"special": "",
 						"type": "creature",
 						"count": "1",
 						"choice": false
 					},
 					"template": {
+						"type": "",
 						"units": "",
 						"contiguous": false
 					}
 				},
 				"range": {
 					"value": "60",
-					"units": "ft"
+					"units": "ft",
+					"special": ""
 				},
 				"uses": {
 					"max": "1",
@@ -1777,7 +1819,7 @@
 				},
 				"ability": "",
 				"level": 1,
-				"school": "evo",
+				"school": "nec",
 				"materials": {
 					"value": "",
 					"consumed": false,
@@ -1788,32 +1830,24 @@
 					"mode": "innate",
 					"prepared": true
 				},
+				"properties": [
+					"vocal"
+				],
 				"activities": {
-					"dnd5eactivity000": {
-						"_id": "dnd5eactivity000",
+					"zxECUOwP9cQiM1r2": {
 						"type": "heal",
+						"_id": "zxECUOwP9cQiM1r2",
 						"activation": {
 							"type": "action",
 							"value": null,
 							"override": false
 						},
 						"consumption": {
-							"targets": [
-								{
-									"type": "itemUses",
-									"target": "",
-									"value": "1",
-									"scaling": {
-										"mode": "",
-										"formula": ""
-									}
-								}
-							],
 							"scaling": {
-								"allowed": false,
-								"max": ""
+								"allowed": false
 							},
-							"spellSlot": true
+							"spellSlot": true,
+							"targets": []
 						},
 						"description": {
 							"chatFlavor": ""
@@ -1828,44 +1862,42 @@
 							"override": false
 						},
 						"target": {
-							"prompt": true,
-							"template": {
-								"contiguous": false,
-								"units": "ft"
-							},
-							"affects": {
-								"choice": false
-							},
-							"override": false
+							"type": "creature",
+							"value": 1,
+							"units": "ft",
+							"width": null,
+							"override": false,
+							"prompt": true
 						},
 						"uses": {
 							"spent": 0,
-							"max": "",
-							"recovery": []
+							"recovery": [],
+							"max": ""
 						},
 						"healing": {
 							"number": 1,
-							"denomination": 4,
-							"bonus": "@mod",
+							"denomination": "6",
 							"types": [
 								"healing"
 							],
 							"custom": {
-								"enabled": false,
-								"formula": ""
+								"enabled": false
 							},
 							"scaling": {
-								"mode": "whole",
 								"number": 1,
+								"mode": "whole",
 								"formula": ""
-							}
-						}
+							},
+							"bonus": "@mod"
+						},
+						"name": "",
+						"img": "",
+						"appliedEffects": [],
+						"effectConditionText": "",
+						"useConditionText": "target.details.type?.subtype=== \"Soul Gem\" || !(target.details.type?.value === \"construct\")"
 					}
 				},
-				"identifier": "healing-word",
-				"properties": [
-					"vocal"
-				]
+				"identifier": "healing-word"
 			},
 			"_key": "!actors.items!ESJNty3xNEKGJygP.71Mr4oU8pCVUdoDN"
 		},
@@ -1910,13 +1942,16 @@
 			"_id": "V9xsdbnMPG4XQYrU",
 			"system": {
 				"description": {
-					"value": "<p>You create a 20-foot-radius sphere of fog centered on a point within range. The sphere spreads around corners, and its area is heavily obscured. It lasts for the duration or until a wind of moderate or greater speed (at least 10 miles per hour) disperses it.</p>At Higher Levels. When you cast this spell using a spell slot of 2nd level or higher, the radius of the fog increases by 20 feet for each slot level above 1st.",
+					"value": "<p><em>You call upon the power of water, forming a fog cloud where you reach out your hand.</em></p><br><p><strong>Utility Spell</strong></p><ul><li><p>You create a 20-foot-radius sphere of fog centered on a point within range. The sphere spreads around corners.</p></li><li><p><strong>Area Hazard:</strong> The area is &amp;reference[heavilyobscured]. It lasts for the duration or until a wind of moderate or greater speed (at least 10 miles per hour) disperses it. This spell also doesn't function underwater.</p></li></ul><p></p><br><p><strong>Upcasting:</strong> The radius of the spell increases by 20 ft. for each spell level above 1st level.</p>",
 					"chat": ""
 				},
 				"source": {
-					"custom": "",
+					"custom": "elkan5e.com/spells/fog-cloud",
 					"revision": 1,
-					"rules": "2024"
+					"rules": "",
+					"book": "Elkan 5e",
+					"page": "",
+					"license": ""
 				},
 				"activation": {
 					"type": "action",
@@ -1924,23 +1959,27 @@
 					"value": 1
 				},
 				"duration": {
-					"value": "",
-					"units": ""
+					"value": "1",
+					"units": "minute"
 				},
 				"target": {
 					"affects": {
+						"count": "",
+						"type": "",
 						"choice": false
 					},
 					"template": {
+						"count": "",
 						"units": "ft",
-						"type": "radius",
+						"type": "sphere",
 						"size": "20",
 						"contiguous": false
 					}
 				},
 				"range": {
 					"value": "120",
-					"units": "ft"
+					"units": "ft",
+					"special": ""
 				},
 				"uses": {
 					"max": "1",
@@ -1964,32 +2003,27 @@
 					"mode": "innate",
 					"prepared": true
 				},
+				"properties": [
+					"vocal",
+					"somatic",
+					"concentration",
+					"mgc"
+				],
 				"activities": {
-					"dnd5eactivity000": {
-						"_id": "dnd5eactivity000",
+					"jXI9EuFuUj76VceW": {
 						"type": "utility",
+						"_id": "jXI9EuFuUj76VceW",
 						"activation": {
 							"type": "action",
 							"value": null,
 							"override": false
 						},
 						"consumption": {
-							"targets": [
-								{
-									"type": "itemUses",
-									"target": "",
-									"value": "1",
-									"scaling": {
-										"mode": "",
-										"formula": ""
-									}
-								}
-							],
 							"scaling": {
-								"allowed": false,
-								"max": ""
+								"allowed": false
 							},
-							"spellSlot": true
+							"spellSlot": true,
+							"targets": []
 						},
 						"description": {
 							"chatFlavor": ""
@@ -1999,36 +2033,41 @@
 							"concentration": false,
 							"override": false
 						},
-						"effects": [],
+						"effects": [
+							{
+								"_id": "va7C2o5SAi8gAqYF"
+							}
+						],
 						"range": {
 							"override": false
 						},
 						"target": {
-							"prompt": true,
-							"template": {
-								"contiguous": false,
-								"units": "ft"
-							},
-							"affects": {
-								"choice": false
-							},
-							"override": false
+							"type": "creature",
+							"value": 1,
+							"units": "ft",
+							"width": null,
+							"override": false,
+							"prompt": true
 						},
 						"uses": {
 							"spent": 0,
-							"max": "",
-							"recovery": []
+							"recovery": [],
+							"max": ""
 						},
 						"roll": {
-							"formula": "",
-							"name": "",
 							"prompt": false,
-							"visible": false
-						}
+							"visible": false,
+							"name": "",
+							"formula": ""
+						},
+						"name": "",
+						"img": "",
+						"appliedEffects": [
+							"va7C2o5SAi8gAqYF"
+						]
 					}
 				},
-				"identifier": "fog-cloud",
-				"properties": []
+				"identifier": "fog-cloud"
 			},
 			"_key": "!actors.items!ESJNty3xNEKGJygP.V9xsdbnMPG4XQYrU"
 		},

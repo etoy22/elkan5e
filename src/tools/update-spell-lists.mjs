@@ -21,6 +21,11 @@ const SPELL_LEVEL_DIRS = [
 	["level-9", 9],
 ];
 
+// Foundry-style short ID for new pages (16 chars, URL-safe)
+function randomId() {
+	return crypto.randomBytes(9).toString("base64url").slice(0, 16);
+}
+
 function loadJson(file) {
 	return JSON.parse(fs.readFileSync(file, "utf8"));
 }
@@ -99,7 +104,7 @@ function ensurePage(data, name, identifier) {
 					appendix: false,
 				},
 			},
-			_id: crypto.randomUUID(),
+			_id: randomId(),
 		};
 		data.pages.push(page);
 	}
@@ -130,7 +135,7 @@ function ensureSchoolPage(data, name, identifier) {
 					appendix: false,
 				},
 			},
-			_id: crypto.randomUUID(),
+			_id: randomId(),
 		};
 		data.pages.push(page);
 	}
