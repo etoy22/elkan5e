@@ -182,3 +182,30 @@ export async function healingOverflow(workflow) {
 		],
 	}).render(true);
 }
+
+export async function shadowRefuge(workflow) {
+	try {
+		console.log("Elkan 5e | Shadow Refuge check");
+		const item = workflow.item ?? workflow;
+		if (!item || item.type !== "spell") return;
+
+		const school = (item.system?.school || "").toLowerCase();
+		const level = Number(item.system?.level ?? 0);
+		if (school !== "illusion" || level < 1) return;
+
+		const actor = workflow.actor ?? (workflow.token ? workflow.token.actor : null);
+		if (!actor) return;
+		const hasShadow = actor.items.find(
+			(i) => i.system?.identifier === "shadow-refuge" || i.name === "Shadow Refuge",
+		);
+		if (hasShadow && actor.isOwner) {
+			ui.notifications.notify(
+				game.i18n.format("elkan5e.notifications.ShadowRefugeReminder", {
+					name: actor.name,
+				}),
+			);
+		}
+	} catch (err) {
+		console.error("elkan5e | shadowRefuge error:", err);
+	}
+}

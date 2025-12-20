@@ -5,7 +5,7 @@
 	"img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
 	"system": {
 		"description": {
-			"value": "<p><em>You hold out a damaged tuning fork attuned to another plane. You utter a corrupted version of the incantation needed to teleport to another plane, instead ripping a hole in space. All unsuspecting creatures are compelled to flee from it, and the area around the rip is twisted.</em></p><p><br /></p><p><strong>Materials:</strong> Casting this spell requires a @UUID[Compendium.elkan5e.elkan5e-spells.Item.tSdm8nQQqxsKBOnk]{damaged tuning fork}, typically valued at 50 gold. The tuning fork is not consumed by the spell.</p><p><br /></p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d8 force]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><hr /><p>Additionally, all creatures who are not your allies who can see the rip in reality when it is formed must attempt a wisdom saving throw.</p><p><br /></p><p><strong>[[/save Wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[frightened] of the center of this effect for 1 minute. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><br /></p><p><strong>*Upcasting:</strong> Increase damage by [[/damage 2d8 force]] for each spell level above 5th.</p>",
+			"value": "<p><em>You hold out a damaged tuning fork attuned to another plane. You utter a corrupted version of the incantation needed to teleport to another plane, instead ripping a hole in space. All unsuspecting creatures are compelled to flee from it, and the area around the rip is twisted.</em></p><p><strong>Materials:</strong> Casting this spell requires a <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.tSdm8nQQqxsKBOnk]{damaged tuning fork}</em>, typically valued at 50 gold. The tuning fork is not consumed by the spell.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d8 force]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><hr /><p>Additionally, all creatures who are not your allies who can see the rip in reality when it is formed must attempt a wisdom saving throw.</p><p><strong>Wisdom</strong> <strong>Save</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[frightened] of the center of this effect for 1 minute. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 2d8 force]] for each spell level above 5th.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -194,7 +194,7 @@
 				},
 				"damage": {
 					"parts": [],
-					"onSave": "none"
+					"onSave": "half"
 				},
 				"save": {
 					"ability": "wis",
@@ -361,9 +361,6 @@
 				"frightened"
 			],
 			"flags": {
-				"times-up": {
-					"isPassive": false
-				},
 				"dae": {
 					"selfTarget": false,
 					"selfTargetAlways": false,
@@ -393,14 +390,6 @@
 					"customCheck": "",
 					"wallsBlock": "system",
 					"statuses": []
-				},
-				"core": {
-					"overlay": false
-				},
-				"dnd5e": {
-					"riders": {
-						"statuses": []
-					}
 				}
 			},
 			"tint": "#ffffff",
@@ -446,17 +435,12 @@
 			"idv": false,
 			"ida": false
 		},
-		"core": {},
 		"dnd5e": {
 			"migratedProperties": [
 				"vocal",
 				"somatic",
 				"material"
 			]
-		},
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
 		}
 	},
 	"_id": "NWlrz1hV8joL8aaR",

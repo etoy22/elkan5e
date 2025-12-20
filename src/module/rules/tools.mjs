@@ -101,27 +101,37 @@ const TOOLS = {
 
 const SRD_TOOL_TYPES = {
 	alchemist: "art",
+	bagpipes: "music",
+	brass: "music",
 	brewer: "art",
 	calligrapher: "art",
 	carpenter: "art",
 	cartographer: "art",
 	cobbler: "art",
 	cook: "art",
+	fashion: "art",
 	glassblower: "art",
+	game: "game",
 	jeweler: "art",
+	keyboard: "music",
 	leatherworker: "art",
 	mason: "art",
 	painter: "art",
 	potter: "art",
+	sculpt: "art",
 	smith: "art",
+	tailor: "art",
 	tinker: "art",
 	weaver: "art",
+	wind: "music",
+	vocal: "music",
 	woodcarver: "art",
 	dice: "game",
 	dragonchess: "game",
 	card: "game",
 	threedragonante: "game",
-	bagpipes: "music",
+	percussion: "music",
+	string: "music",
 	drum: "music",
 	dulcimer: "music",
 	flute: "music",
@@ -131,20 +141,38 @@ const SRD_TOOL_TYPES = {
 	panflute: "music",
 	shawm: "music",
 	viol: "music",
-	disg: "",
-	forg: "",
-	herb: "",
-	navg: "",
-	pois: "",
-	thief: "",
+	disg: "art",
+	forg: "art",
+	herb: "art",
+	navg: "art",
+	pois: "art",
+	thief: "art",
 };
 
 const LEGACY_TOOL_TYPES = {
 	painter: "art",
 	sculpt: "art",
+	bagpipes: "music",
+	brass: "music",
+	drum: "music",
+	dulcimer: "music",
+	flute: "music",
+	horn: "music",
+	keyboard: "music",
+	lute: "music",
+	lyre: "music",
+	panflute: "music",
+	percussion: "music",
+	shawm: "music",
+	string: "music",
+	viol: "music",
+	vocal: "music",
+	wind: "music",
 	alchemist: "craft",
 	brewer: "craft",
 	calligrapher: "craft",
+	cook: "craft",
+	fashion: "craft",
 	herb: "craft",
 	jeweler: "craft",
 	leatherworker: "craft",
@@ -157,8 +185,8 @@ const LEGACY_TOOL_TYPES = {
 	disg: "explore",
 	navg: "explore",
 	thief: "explore",
-	forg: "",
-	game: "",
+	forg: "craft",
+	game: "craft",
 };
 
 const ELKAN_TOOL_TYPES = {
@@ -166,26 +194,41 @@ const ELKAN_TOOL_TYPES = {
 	painter: "art",
 	sculpt: "art",
 	brass: "music",
+	bagpipes: "music",
 	keyboard: "music",
 	percussion: "music",
 	string: "music",
 	wind: "music",
 	vocal: "music",
+	drum: "music",
+	dulcimer: "music",
+	flute: "music",
+	horn: "music",
+	lute: "music",
+	lyre: "music",
+	panflute: "music",
+	shawm: "music",
+	viol: "music",
 
 	// Craft
 	alchemist: "craft",
+	brewer: "craft",
 	calligrapher: "craft",
 	cook: "craft",
+	fashion: "craft",
+	forg: "craft",
+	herb: "craft",
 	jeweler: "craft",
 	leatherworker: "craft",
 	mason: "craft",
 	pois: "craft",
 	smith: "craft",
+	tailor: "craft",
 	tinker: "craft",
 	woodcarver: "craft",
-	game: "",
-	navg: "",
-	thief: "",
+	game: "craft",
+	navg: "craft",
+	thief: "craft",
 };
 
 function getToolType(key, toolSetting) {
@@ -252,9 +295,6 @@ export async function updateToolTypes() {
 		return;
 	}
 
-	let updatedCount = 0;
-	let missingCount = 0;
-
 	for (const [key, value] of Object.entries(TOOLS)) {
 		const uuid = value.id;
 
@@ -273,7 +313,6 @@ export async function updateToolTypes() {
 
 		if (!item) {
 			console.warn(`Elkan 5e | Could not find item for ${key} (${uuid})`);
-			missingCount++;
 			continue;
 		}
 
@@ -288,7 +327,6 @@ export async function updateToolTypes() {
 		if (currentType !== desiredType) {
 			try {
 				await item.update({ "system.type.value": desiredType });
-				updatedCount++;
 			} catch (err) {
 				console.error(`Elkan 5e | Failed to update ${item.name}`, err);
 			}

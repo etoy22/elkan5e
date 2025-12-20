@@ -52,8 +52,8 @@ export async function showV13UpdateDialog() {
 	const form = await getForm();
 	const content = `<div class="elkan-update-text-v13">
 			<p>
-				${game.i18n.localize("elkan5e.updateElkan.descriptionV13.initial")} <br>
-			 	${game.i18n.localize("elkan5e.updateElkan.descriptionV13.manually")} <br>
+				${game.i18n.localize("elkan5e.updateElkan.descriptionV13.initial")} 
+			 	${game.i18n.localize("elkan5e.updateElkan.descriptionV13.manually")} 
 				${game.i18n.localize("elkan5e.updateElkan.descriptionV13.previous")}
 				<ul>
 					<li> ${game.i18n.localize("elkan5e.updateElkan.descriptionV13.listItems.neverSeeAgain")}</li>
@@ -178,7 +178,7 @@ export async function getForm() {
 		<label><strong>${game.i18n.localize("elkan5e.updateElkan.form.spellsLabel")}</strong></label>
 		<label><input type='radio' name='actor-spells' value='none' checked> ${game.i18n.localize("elkan5e.updateElkan.form.options.none")}</label>
 		<label><input type='radio' name='actor-spells' value='update-All'> ${game.i18n.localize("elkan5e.updateElkan.form.options.updateAll")}</label>
-		<label><input type='radio' name='actor-spells' value='update-Elkan'> ${game.i18n.localize("elkan5e.updateElkan.form.options.replaceElkan")}</label><br>
+		<label><input type='radio' name='actor-spells' value='update-Elkan'> ${game.i18n.localize("elkan5e.updateElkan.form.options.replaceElkan")}</label>
   		<h4>${game.i18n.localize("elkan5e.updateElkan.form.npcTitle")}</h4>
 	    <label><strong>${game.i18n.localize("elkan5e.updateElkan.form.itemsLabel")}</strong></label>
 		<label><input type='radio' name='npc-items' value='none' checked> ${game.i18n.localize("elkan5e.updateElkan.form.options.none")}</label>
@@ -187,7 +187,7 @@ export async function getForm() {
 		<label><strong> ${game.i18n.localize("elkan5e.updateElkan.form.spellsLabel")}</strong></label>
 		<label><input type='radio' name='npc-spells' value='none' checked> ${game.i18n.localize("elkan5e.updateElkan.form.options.none")}</label>
 		<label><input type='radio' name='npc-spells' value='update-All'> ${game.i18n.localize("elkan5e.updateElkan.form.options.updateAll")}</label>
-		<label><input type='radio' name='npc-spells' value='update-Elkan'> ${game.i18n.localize("elkan5e.updateElkan.form.options.replaceElkan")}</label><br>
+		<label><input type='radio' name='npc-spells' value='update-Elkan'> ${game.i18n.localize("elkan5e.updateElkan.form.options.replaceElkan")}</label>
 	</form>
 	`;
 }
