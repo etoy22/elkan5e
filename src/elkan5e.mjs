@@ -26,7 +26,7 @@ import {
 import { shadowRefuge, healingOverflow, infusedHealer } from "./module/classes/cleric.mjs";
 
 import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
-import { conditions, conditionsReady } from "./module/rules/condition.mjs";
+import { conditions, conditionsReady, hazards, hazardsReady } from "./module/rules/condition.mjs";
 import { language } from "./module/rules/language.mjs";
 import { formating } from "./module/rules/format.mjs";
 import { tools, updateToolTypes } from "./module/rules/tools.mjs";
@@ -46,6 +46,7 @@ Hooks.once("init", async () => {
 
 		// Initialize rule systems
 		conditions();
+		hazards();
 		tools();
 		weapons();
 		armor();
@@ -63,6 +64,7 @@ Hooks.once("ready", () => {
 	try {
 		gameSettingsMigrate();
 		conditionsReady();
+		hazardsReady();
 		updateToolTypes();
 		startDialog();
 	} catch (error) {

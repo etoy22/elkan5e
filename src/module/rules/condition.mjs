@@ -18,7 +18,7 @@ const FILENAME_OVERRIDE = {
 };
 
 
-function imgFor(key, originalPath) {
+function imgFor(key, originalPath, folder = "conditions") {
 	// normalize once
 	const k = String(key ?? "").trim();
 
@@ -36,12 +36,14 @@ function imgFor(key, originalPath) {
 		FILENAME_OVERRIDE[lower] ??
 		`${lower}.svg`;
 
-	return `modules/elkan5e/icons/conditions/${filename}`;
+	return `modules/elkan5e/icons/${folder}/${filename}`;
 }
 
 
 const RULES_REF = (id) =>
 	`Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.${id}`;
+const HAZARD_RULES_REF = (id) =>
+	`Compendium.elkan5e.elkan5e-rules.JournalEntry.e7rUhwl4HkTVE0Qs.JournalEntryPage.${id}`;
 
 // You can add `changes` to any of these.
 const CONDITION_DEFS = [
@@ -240,7 +242,7 @@ const CONDITION_DEFS = [
 			core: { statusId: "surprised" },
 		},
 	},
-	{ key: "transformed" },
+	{ key: "transformed", id: "transformed" },
 	{
 		key: "unconscious",
 		id: "ZwhWWUPJvpFCz8sK",
@@ -267,6 +269,7 @@ const CONDITION_DEFS = [
 	{ key: "concentrating", id: "4ZOHN6tGvj54J6Kv" },
 	{
 		key: "dodging",
+		pseudo: true,
 		changes: [
 			{ key: "flags.midi-qol.grants.disadvantage.attack.all", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.advantage.ability.save.dex", mode: 5, value: "1" },
@@ -286,34 +289,6 @@ const CONDITION_DEFS = [
 	{ key: "dead", pseudo: true },
 	{ key: "hiding", pseudo: true },
 	{ key: "squeezing", pseudo: true },
-	{
-		key: "burning",
-		pseudo: true,
-		changes: [
-			{
-				key: "flags.midi-qol.OverTime",
-				mode: 2,
-				value: "turn=start, label=Fire Damage (Burning), macro=Compendium.elkan5e.elkan5e-macros.Macro.bOwWbVCVSw2VRVKT",
-			},
-		],
-	},
-	{
-		key: "ethereal",
-		changes: [{ key: "system.traits.senses.truesight.value", mode: 0, value: "9999" }],
-		flags: { "midi-qol": { ethereal: true } },
-	},
-	{
-		key: "dehydration",
-		pseudo: true,
-		selectable: false,
-		changes: [
-			{
-				key: "flags.midi-qol.OverTime",
-				mode: 2,
-				value: "turn=start, label=Dehydration Damage, macro=Compendium.elkan5e.elkan5e-macros.Macro.VPKm7C7z1TLQQx0P",
-			},
-		],
-	},
 	{
 		key: "coverHalf",
 		id: "1BmTbnT3xDPqv9dq",
@@ -361,6 +336,55 @@ const CONDITION_DEFS = [
 		flags: { core: { statusId: "disadvantage" } },
 	},
 ];
+//TODO [EE-841]: Set up overtime effects
+const HAZARD_DEFS = [
+	{
+		key: "burning",
+		pseudo: true,
+		id: "znHHmhO6vGjmeugR",
+		changes: [
+			{
+				key: "flags.midi-qol.OverTime",
+				mode: 2,
+				value: "turn=start, label=Fire Damage (Burning), macro=Compendium.elkan5e.elkan5e-macros.Macro.bOwWbVCVSw2VRVKT",
+			},
+		],
+	},
+	{
+		key: "ethereal",
+		pseudo: true,
+		id: "ethereal",
+		changes: [{ key: "system.traits.senses.truesight.value", mode: 0, value: "9999" }],
+		flags: { "midi-qol": { ethereal: true } },
+	},
+	{
+		key: "dehydration",
+		pseudo: true,
+		id: "xZRo576gFkVzqTAA",
+		changes: [
+			{
+				key: "flags.midi-qol.OverTime",
+				mode: 2,
+				value: "turn=start, label=Dehydration Damage, macro=Compendium.elkan5e.elkan5e-macros.Macro.VPKm7C7z1TLQQx0P",
+			},
+		],
+	},
+	{
+		key: "malnutrition",
+		pseudo: true,
+		id: "IxUkC78G9mRb3xQO",
+	},
+	{
+		key: "suffocation",
+		pseudo: true,
+		id: "NJdquJJIddZbeKdw",
+	},
+	{
+		key: "falling",
+		pseudo: true,
+		id: "TDbwlHfW1Kd4sLIZ",
+	},
+];
 
 
 function mergeChanges(existing = [], incoming = []) {
@@ -379,6 +403,17 @@ function mergeFlags(a = {}, b = {}) {
 		insertKeys: true,
 		overwrite: true,
 	});
+}
+
+function mirrorStatusEffect(def, ct) {
+	const existingStatus = CONFIG.DND5E.statusEffects[def.key];
+	const normalized =
+		typeof existingStatus === "string" ? { key: existingStatus } : existingStatus ?? {};
+	CONFIG.DND5E.statusEffects[def.key] = {
+		...normalized,
+		...ct,
+		key: def.key,
+	};
 }
 
 function initDnd5eConfig() {
@@ -403,14 +438,19 @@ function initDnd5eConfig() {
 	}
 }
 
-function applyConditionDef(def) {
+function applyConditionDef(def, folder = "conditions") {
 	const ct = (CONFIG.DND5E.conditionTypes[def.key] ??= {});
 	ct.name = game.i18n.localize(`elkan5e.conditions.${def.key}`);
 
-	if (def.id) ct.reference = RULES_REF(def.id);
-	if (def.image !== false) ct.img = imgFor(def.key, ct.img);
+	const reference =
+		def.reference ??
+		(def.id ? (folder === "hazards" ? HAZARD_RULES_REF(def.id) : RULES_REF(def.id)) : undefined);
+	if (reference) ct.reference = reference;
+	if (def.image !== false) ct.img = imgFor(def.key, ct.img, folder);
 	if (def.changes?.length) ct.changes = mergeChanges(ct.changes, def.changes);
 	if (def.flags) ct.flags = mergeFlags(ct.flags, def.flags);
+
+	if (def.pseudo != null) ct.pseudo = def.pseudo;
 
 	if (def.order != null && ct.order == null) ct.order = def.order;
 	if (def.exclusiveGroup != null) ct.exclusiveGroup = def.exclusiveGroup;
@@ -460,18 +500,16 @@ export function conditions() {
 	const conditionsSetting = game.settings.get("elkan5e", "conditionsSettings");
 
 	// Remove extras (a|d)
-	if (conditionsSetting === "a" || conditionsSetting === "d") {
+	const removeExtras = conditionsSetting === "a" || conditionsSetting === "d";
+	const applyElkan = conditionsSetting === "a" || conditionsSetting === "b";
+
+	if (removeExtras) {
 		for (const key of CONDITION_TYPE_REMOVE) delete CONFIG.DND5E.conditionTypes[key];
 		for (const key of STATUS_EFFECT_REMOVE) delete CONFIG.DND5E.statusEffects[key];
 	}
 
 	// Augment/tweak (a|b)
-	if (conditionsSetting === "a" || conditionsSetting === "b") {
-		// Ensure these aren't treated as pseudo in core when you want them selectable
-		for (const key of ["transformed", "cursed", "silenced", "surprised"]) {
-			if (CONFIG.DND5E.conditionTypes[key]) CONFIG.DND5E.conditionTypes[key].pseudo = false;
-		}
-
+	if (applyElkan) {
 		// Adjust exhaustion
 		if (CONFIG.DND5E.conditionTypes.exhaustion) {
 			CONFIG.DND5E.conditionTypes.exhaustion.pseudo = false;
@@ -489,7 +527,10 @@ export function conditions() {
 		CONFIG.DND5E.conditionEffects.halfMovement.delete("blinded");
 		CONFIG.DND5E.conditionEffects.dexteritySaveDisadvantage.delete("deafened");
 
-		for (const def of CONDITION_DEFS) applyConditionDef(def);
+		for (const def of CONDITION_DEFS) {
+			const ct = applyConditionDef(def);
+			mirrorStatusEffect(def, ct);
+		}
 	}
 }
 
@@ -500,12 +541,26 @@ export function conditionsReady() {
 		const ct = applyConditionDef(def);
 
 		// Mirror into statusEffects for backwards compat
-		CONFIG.DND5E.statusEffects[def.key] = {
-			...CONFIG.DND5E.statusEffects[def.key],
-			...ct,
-			key: def.key,
-		};
+		mirrorStatusEffect(def, ct);
 	}
 
 	ensureMidiInvisibleVisionRule();
+	registerFullCoverMidiBlock();
+	registerEtherealMidiHooks();
+}
+
+export function hazards() {
+	initDnd5eConfig();
+	for (const def of HAZARD_DEFS) {
+		const ct = applyConditionDef(def, "hazards");
+		mirrorStatusEffect(def, ct);
+	}
+}
+
+export function hazardsReady() {
+	initDnd5eConfig();
+	for (const def of HAZARD_DEFS) {
+		const ct = applyConditionDef(def, "hazards");
+		mirrorStatusEffect(def, ct);
+	}
 }
