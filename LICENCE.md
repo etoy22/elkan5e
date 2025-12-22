@@ -70,6 +70,20 @@ The SRD 5.1 is licensed under the Creative Commons Attribution 4.0 International
 /icons/conditions/cursed.svg - Voodoo doll icon
 <br>
 /icons/conditions/transformed.svg - Flat paw print icon
+<br>
+/icons/conditions/ethereal.svg - Spirit columns icon
+<br>
+/icons/conditions/bloodied.svg - Bleeding drop icon
+<br>
+/icons/conditions/burning.svg - Flame icon
+<br>
+/icons/conditions/dehydration.svg - Cracked droplet icon
+<br>
+/icons/conditions/falling.svg - Falling figure icon
+<br>
+/icons/conditions/malnutrition.svg - Withered leaf icon
+<br>
+/icons/conditions/suffocation.svg - Gasping face icon
 </details>
 
 ## Flaticon

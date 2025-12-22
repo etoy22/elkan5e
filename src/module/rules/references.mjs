@@ -408,10 +408,50 @@ function setupD20Refs() {
 }
 
 function setupHazardRefs() {
-	CONFIG.DND5E.rules.suffocating =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.e7rUhwl4HkTVE0Qs.JournalEntryPage.BIlnr0xYhqt4TGsi";
-	CONFIG.DND5E.rules.hazards =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.e7rUhwl4HkTVE0Qs.JournalEntryPage.5hyEitPd1Kb27fP5";
+	const base = "Compendium.elkan5e.elkan5e-rules.JournalEntry.e7rUhwl4HkTVE0Qs.JournalEntryPage.";
+	const HAZARD_PAGES = [
+		{ key: "hazards", id: "hazardsOverview" },
+		{ key: "environmentaleffects", id: "environmentalOverview" },
+		{ key: "environmentaleffectsindex", id: "environmentalIndex" },
+		{ key: "terraineffects", id: "terrainEffects" },
+		{ key: "hazardsindex", id: "hazardsIndex" },
+		{ key: "blizzard", id: "blizzard" },
+		{ key: "burning", id: "burning" },
+		{ key: "dehydration", id: "dehydration" },
+		{ key: "deepsnow", id: "deepSnow" },
+		{ key: "deepwater", id: "deepWater" },
+		{ key: "denseforest", id: "denseForest" },
+		{ key: "exposedlava", id: "exposedLava" },
+		{ key: "extremecold", id: "extremeCold" },
+		{ key: "extremeheat", id: "extremeHeat" },
+		{ key: "falling", id: "falling" },
+		{ key: "frigidwater", id: "frigidWater" },
+		{ key: "heavyfog", id: "heavyFog" },
+		{ key: "heavyprecipitation", id: "heavyPrecipitation" },
+		{ key: "highaltitude", id: "highAltitude" },
+		{ key: "lightfog", id: "lightFog" },
+		{ key: "loosesand", id: "looseSand" },
+		{ key: "malnutrition", id: "malnutrition" },
+		{ key: "muddyterrain", id: "muddyTerrain" },
+		{ key: "plantsundergrowth", id: "plantsUndergrowth" },
+		{ key: "poisonousfumes", id: "poisonousFumes" },
+		{ key: "pollutedwater", id: "pollutedWaterHazPg" },
+		{ key: "rubblerocks", id: "rubbleRocks" },
+		{ key: "rockyterrain", id: "rockyTerrain" },
+		{ key: "sandstorm", id: "sandstorm" },
+		{ key: "shallowbog", id: "shallowBog" },
+		{ key: "slipperyice", id: "slipperyIce" },
+		{ key: "strongwind", id: "strongWind" },
+		{ key: "suffocating", id: "suffocating" },
+		{ key: "suckingground", id: "suckingGroundHazPg" },
+		{ key: "thinice", id: "thinIce" },
+		{ key: "thornbush", id: "thornBush" },
+		{ key: "thunderstorm", id: "thunderstorm" },
+	];
+	if (!CONFIG.DND5E.rules) CONFIG.DND5E.rules = {};
+	for (const { key, id } of HAZARD_PAGES) {
+		CONFIG.DND5E.rules[key] = `${base}${id}`;
+	}
 }
 
 function setupRestRefs() {
