@@ -20,6 +20,7 @@ const SPELL_LEVEL_DIRS = [
 	["level-8", 8],
 	["level-9", 9],
 ];
+const CLASS_SPECIFIC_DIR = path.join(SPELLS_ROOT, "spells-class-specific-versions");
 
 // Foundry-style short ID for new pages (16 chars, URL-safe)
 function randomId() {
@@ -155,17 +156,23 @@ function updateSpellswordAndMysticTrickster(data, classSpellMap, levelMap) {
 	}
 }
 
-function updateWizardSchools(data, classSpellMap, schoolMap) {
+function updateWizardSchools(data, classSpellMap, schoolMap, excludedSpellUuids = new Set()) {
 	const wizardSpells = new Set(classSpellMap.get("wizard") || []);
 	const subclasses = [
 		["Abjurer", "abjuration spells", "abjurer"],
+		["Conjurer", "conjuration spells", "conjurer"],
+		["Diviner", "divination spells", "diviner"],
+		["Enchanter", "enchantment spells", "enchanter"],
 		["Evoker", "evocation spells", "evoker"],
 		["Illusionist", "illusion spells", "illusionist"],
 		["Necromancer", "necromancy spells", "necromancer"],
+		["Transmuter", "transmutation spells", "transmuter"],
 	];
 	for (const [name, schoolKey, identifier] of subclasses) {
 		const schoolSpells = schoolMap.get(schoolKey) || [];
-		const filtered = schoolSpells.filter((uuid) => !wizardSpells.has(uuid));
+		const filtered = schoolSpells.filter(
+			(uuid) => !wizardSpells.has(uuid) && !excludedSpellUuids.has(uuid),
+		);
 		const page = ensurePage(data, name, identifier);
 		page.system.spells = filtered;
 	}
@@ -180,7 +187,19 @@ function walkJsonFiles(dir, list = []) {
 	}, list);
 }
 
-function updateSchools(data) {
+function buildClassSpecificSpellSet() {
+	if (!fs.existsSync(CLASS_SPECIFIC_DIR)) return new Set();
+	const set = new Set();
+	for (const file of walkJsonFiles(CLASS_SPECIFIC_DIR)) {
+		const json = loadJson(file);
+		if (json?._id) {
+			set.add(`Compendium.elkan5e.elkan5e-spells.Item.${json._id}`);
+		}
+	}
+	return set;
+}
+
+function updateSchools(data, excludedSpellUuids = new Set()) {
 	const schoolNames = {
 		abj: "Abjuration Spells",
 		con: "Conjuration Spells",
@@ -204,6 +223,7 @@ function updateSchools(data) {
 			if (!school || !schoolLists[school]) continue;
 			if (!spell._id) continue;
 			const uuid = `Compendium.elkan5e.elkan5e-spells.Item.${spell._id}`;
+			if (excludedSpellUuids.has(uuid)) continue;
 			schoolLists[school].push(uuid);
 		}
 	}
@@ -217,9 +237,13 @@ function updateSchools(data) {
 function updateSubclassGrantPages(subclassData) {
 	const skipNames = new Set([
 		"Abjurer",
+		"Conjurer",
+		"Diviner",
+		"Enchanter",
 		"Evoker",
 		"Illusionist",
 		"Necromancer",
+		"Transmuter",
 		"Spellsword (Bard)",
 		"Spellsword (Cleric)",
 		"Spellsword (Druid)",
@@ -261,13 +285,14 @@ function run() {
 	const levelMap = buildSpellLevelMap();
 	const classSpellMap = buildClassSpellMap();
 	const schoolMap = buildSchoolSpellMap();
+	const excludedSpellUuids = buildClassSpecificSpellSet();
 	const subclassData = loadJson(SPELLS_BY_SUBCLASS_PATH);
 	const schoolData = loadJson(SPELLS_BY_SCHOOL_PATH);
 
 	updateSpellswordAndMysticTrickster(subclassData, classSpellMap, levelMap);
-	updateWizardSchools(subclassData, classSpellMap, schoolMap);
+	updateWizardSchools(subclassData, classSpellMap, schoolMap, excludedSpellUuids);
 	updateSubclassGrantPages(subclassData, classSpellMap);
-	updateSchools(schoolData);
+	updateSchools(schoolData, excludedSpellUuids);
 
 	saveJson(SPELLS_BY_SUBCLASS_PATH, subclassData);
 	saveJson(SPELLS_BY_SCHOOL_PATH, schoolData);
