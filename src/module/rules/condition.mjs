@@ -308,6 +308,7 @@ const CONDITION_DEFS = [
 		id: "hY5s70xMeG5ISFUA",
 		order: 4,
 		exclusiveGroup: "cover",
+		changes: [{ key: "flags.midi-qol.neverTarget", mode: 2, value: "10" }],
 	},
 	{
 		key: "advantage",
@@ -346,17 +347,33 @@ const HAZARD_DEFS = [
 			{
 				key: "flags.midi-qol.OverTime",
 				mode: 2,
-				value: "turn=start, label=Fire Damage (Burning), macro=Compendium.elkan5e.elkan5e-macros.Macro.bOwWbVCVSw2VRVKT",
+				value:
+					"turn=start,\nlabel=burning,\nactionSave=dialog,\nmacro=Compendium.elkan5e.elkan5e-macros.Macro.g6P9Rkg63Rz74KNe",
+			},
+			{
+				key: "flags.elkan5e.burning",
+				mode: 0,
+				value: "1d8",
 			},
 		],
+		flags: {
+			dae: {
+				transfer: false,
+				stackable: "none",
+				showIcon: true,
+			},
+			core: {
+				statusId: "burning",
+			}
+		},
 	},
-	{
-		key: "ethereal",
-		pseudo: true,
-		id: "ethereal",
-		changes: [{ key: "system.traits.senses.truesight.value", mode: 0, value: "9999" }],
-		flags: { "midi-qol": { ethereal: true } },
-	},
+	// {
+	// 	key: "ethereal",
+	// 	pseudo: true,
+	// 	id: "ethereal",
+	// 	changes: [{ key: "system.traits.senses.truesight.value", mode: 0, value: "9999" }],
+	// 	flags: { "midi-qol": { ethereal: true } },
+	// },
 	{
 		key: "dehydration",
 		pseudo: true,
@@ -396,6 +413,16 @@ function mergeChanges(existing = [], incoming = []) {
 }
 
 function mergeFlags(a = {}, b = {}) {
+	const out = foundry.utils.duplicate(a);
+	return foundry.utils.mergeObject(out, b, {
+		inplace: true,
+		recursive: true,
+		insertKeys: true,
+		overwrite: true,
+	});
+}
+
+function mergeAttributes(a = {}, b = {}) {
 	const out = foundry.utils.duplicate(a);
 	return foundry.utils.mergeObject(out, b, {
 		inplace: true,
@@ -449,6 +476,7 @@ function applyConditionDef(def, folder = "conditions") {
 	if (def.image !== false) ct.img = imgFor(def.key, ct.img, folder);
 	if (def.changes?.length) ct.changes = mergeChanges(ct.changes, def.changes);
 	if (def.flags) ct.flags = mergeFlags(ct.flags, def.flags);
+	if (def.attributes) ct.attributes = mergeAttributes(ct.attributes, def.attributes);
 
 	if (def.pseudo != null) ct.pseudo = def.pseudo;
 
@@ -492,6 +520,20 @@ function ensureMidiInvisibleVisionRule() {
 			.set("midi-qol", "ConfigSettings", storedConfig)
 			.catch((err) => console.warn("Elkan 5e | Failed to persist midi invisibility override", err));
 	}
+}
+
+function registerFullCoverMidiBlock() {
+	const midiModule = game.modules.get("midi-qol");
+	if (!midiModule?.active) return;
+
+	// Placeholder: no operational hooks yet, but the stub prevents Ready hook errors.
+}
+
+function registerEtherealMidiHooks() {
+	const midiModule = game.modules.get("midi-qol");
+	if (!midiModule?.active) return;
+
+	// Placeholder for future ethereal-specific midi-qol hooks.
 }
 
 export function conditions() {

@@ -5,7 +5,7 @@
 	"main": "elkan5e.mjs",
 	"type": "module",
 	"scripts": {
-		"pack": "npm run build:clean && npm run build:db",
+		"pack": "node ./scripts/pack-chain.mjs",
 		"clean": "npm run fix && npm run build:clean",
 		"unpack": "node ./src/packs.mjs package unpack",
 		"build:clean": "node ./src/packs.mjs package clean",
