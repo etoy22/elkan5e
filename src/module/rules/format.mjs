@@ -13,6 +13,12 @@ export function ruleType() {
 	CONFIG.DND5E.ruleTypes.weaponProperty = {
 		label: "Weapon Property",
 	};
+	CONFIG.DND5E.ruleTypes.hazard = {
+		label: "Hazards",
+	};
+	CONFIG.DND5E.ruleTypes.environment = {
+		label: "Environments",
+	};
 }
 
 /*
