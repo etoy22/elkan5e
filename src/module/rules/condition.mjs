@@ -242,7 +242,7 @@ const CONDITION_DEFS = [
 			core: { statusId: "surprised" },
 		},
 	},
-	{ key: "transformed", id: "transformed" },
+	{ key: "transformed", id: "2kJ5SzS51DN33kWJ" },
 	{
 		key: "unconscious",
 		id: "ZwhWWUPJvpFCz8sK",
@@ -378,13 +378,7 @@ const HAZARD_DEFS = [
 		key: "dehydration",
 		pseudo: true,
 		id: "xZRo576gFkVzqTAA",
-		changes: [
-			{
-				key: "flags.midi-qol.OverTime",
-				mode: 2,
-				value: "turn=start, label=Dehydration Damage, macro=Compendium.elkan5e.elkan5e-macros.Macro.VPKm7C7z1TLQQx0P",
-			},
-		],
+		statuses: ["exhaustion"],
 	},
 	{
 		key: "malnutrition",
@@ -432,6 +426,7 @@ function mergeAttributes(a = {}, b = {}) {
 	});
 }
 
+
 function mirrorStatusEffect(def, ct) {
 	const existingStatus = CONFIG.DND5E.statusEffects[def.key];
 	const normalized =
@@ -477,6 +472,9 @@ function applyConditionDef(def, folder = "conditions") {
 	if (def.changes?.length) ct.changes = mergeChanges(ct.changes, def.changes);
 	if (def.flags) ct.flags = mergeFlags(ct.flags, def.flags);
 	if (def.attributes) ct.attributes = mergeAttributes(ct.attributes, def.attributes);
+	if (Array.isArray(def.statuses) && def.statuses.length) {
+		ct.statuses = foundry.utils.duplicate(def.statuses);
+	}
 
 	if (def.pseudo != null) ct.pseudo = def.pseudo;
 
@@ -556,6 +554,7 @@ export function conditions() {
 		if (CONFIG.DND5E.conditionTypes.exhaustion) {
 			CONFIG.DND5E.conditionTypes.exhaustion.pseudo = false;
 			CONFIG.DND5E.conditionTypes.exhaustion.reduction = { rolls: 2, speed: 5 };
+			CONFIG.DND5E.conditionTypes.exhaustion.changes = [{ key: "system.bonuses.spell.dc", mode: 0, value: "-2" }];
 		}
 
 		// Undo some core effects you override with midi flags
@@ -569,11 +568,11 @@ export function conditions() {
 		CONFIG.DND5E.conditionEffects.halfMovement.delete("blinded");
 		CONFIG.DND5E.conditionEffects.dexteritySaveDisadvantage.delete("deafened");
 
-		for (const def of CONDITION_DEFS) {
-			const ct = applyConditionDef(def);
-			mirrorStatusEffect(def, ct);
-		}
+	for (const def of CONDITION_DEFS) {
+		const ct = applyConditionDef(def);
+		mirrorStatusEffect(def, ct);
 	}
+}
 }
 
 export function conditionsReady() {
