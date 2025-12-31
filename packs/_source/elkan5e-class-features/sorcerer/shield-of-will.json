@@ -65,7 +65,7 @@
 				"activation": {
 					"type": "reaction",
 					"value": 1,
-					"condition": "",
+					"condition": "reaction === 'isSave' && ['int','wis','cha'].includes(workflow?.save?.ability) && !workflow?.save?.success && !workflow?.save?.proficient",
 					"override": false
 				},
 				"consumption": {
