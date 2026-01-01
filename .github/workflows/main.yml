@@ -132,7 +132,10 @@ jobs:
     create-github-release:
         runs-on: ubuntu-latest
         needs: [version-check, extract-release-notes, build-and-pack]
-        if: needs.version-check.outputs.should_continue == 'true' && needs.build-and-pack.result == 'success'
+        if: >
+            needs.version-check.outputs.should_continue == 'true' &&
+            needs.build-and-pack.result == 'success' &&
+            (needs.version-check.outputs.test == 'true' || github.ref == 'refs/heads/main')
         env:
             DRY_RUN: ${{ needs.version-check.outputs.test }}
         steps:
@@ -152,7 +155,7 @@ jobs:
                   echo "EOF" >> $GITHUB_OUTPUT
 
             - name: Show release notes content before release
-              run: echo "${{ steps.read_release_notes.outputs.release_notes }}"
+              run: cat release-notes.md
 
             - name: Download build artifacts
               uses: actions/download-artifact@v4
