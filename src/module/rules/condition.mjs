@@ -4,7 +4,9 @@
 
 // Remove these in certain settings
 const CONDITION_TYPE_REMOVE = ["bleeding"];
-const STATUS_EFFECT_REMOVE = ["burrowing", "flying", "hovering", "marked", "sleeping"];
+const STATUS_EFFECT_REMOVE = ["burrowing", "flying", "hovering", "marked", "sleeping", "ethereal"];
+const STATUS_ICON_KEYS = ["burrowing", "flying", "hovering", "marked", "bleeding", "sleeping", "ethereal"];
+const STATUS_ICON_FOLDER = "statuses";
 
 // Icons
 const IMAGE_EXCLUSIONS = new Set(["stable"]);
@@ -40,6 +42,27 @@ function imgFor(key, originalPath, folder = "conditions") {
 }
 
 
+function statusIconPath(key) {
+	return `modules/elkan5e/icons/${STATUS_ICON_FOLDER}/${key}.svg`;
+}
+
+function applyStatusIcons() {
+	for (const key of STATUS_ICON_KEYS) {
+		const icon = statusIconPath(key);
+		const conditionType = CONFIG.DND5E.conditionTypes?.[key];
+		if (conditionType) conditionType.img = icon;
+		const existingStatus = CONFIG.DND5E.statusEffects?.[key];
+		if (!existingStatus) continue;
+		const normalized = typeof existingStatus === "string" ? { key: existingStatus } : existingStatus;
+		CONFIG.DND5E.statusEffects[key] = {
+			...normalized,
+			key,
+			img: icon,
+		};
+	}
+}
+
+
 const RULES_REF = (id) =>
 	`Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.${id}`;
 const HAZARD_RULES_REF = (id) =>
@@ -56,6 +79,44 @@ const CONDITION_DEFS = [
 			{ key: "flags.midi-qol.grants.advantage.attack.all", mode: 5, value: "!Boolean(target?.canSense)" },
 			{ key: "flags.midi-qol.noOpportunityAttack", mode: 5, value: "1" },
 		],
+	},
+	{
+		key: "bleeding",
+		pseudo: true,
+		icon: "modules/elkan5e/icons/statuses/bleeding.svg",
+		flags: {
+			core: { statusId: "bleeding" },
+		},
+	},
+	{
+		key: "burning",
+		pseudo: true,
+		id: "znHHmhO6vGjmeugR",
+		reference: HAZARD_RULES_REF("znHHmhO6vGjmeugR"),
+		icon: "modules/elkan5e/icons/hazards/burning.svg",
+		changes: [
+			{
+				key: "flags.midi-qol.OverTime",
+				mode: 2,
+				value:
+					"turn=start,\nlabel=burning,\nactionSave=dialog,\nmacro=Compendium.elkan5e.elkan5e-macros.Macro.g6P9Rkg63Rz74KNe",
+			},
+			{
+				key: "flags.elkan5e.burning",
+				mode: 0,
+				value: "1d8",
+			},
+		],
+		flags: {
+			dae: {
+				transfer: false,
+				stackable: "none",
+				showIcon: true,
+			},
+			core: {
+				statusId: "burning",
+			},
+		},
 	},
 	{ name: "Charmed", key: "charmed", id: "ieDILSkRbu9r8pmZ" },
 	{
@@ -78,6 +139,22 @@ const CONDITION_DEFS = [
 	},
 	{ key: "diseased", id: "diseasedRule" },
 	{ key: "drained", id: "ZnhMIMgPZv1QDxzZ" },
+	{
+		key: "dehydration",
+		pseudo: true,
+		id: "xZRo576gFkVzqTAA",
+		reference: HAZARD_RULES_REF("xZRo576gFkVzqTAA"),
+		icon: "modules/elkan5e/icons/hazards/dehydration.svg",
+		statuses: ["exhaustion"],
+	},
+	{
+		key: "malnutrition",
+		pseudo: true,
+		id: "IxUkC78G9mRb3xQO",
+		reference: HAZARD_RULES_REF("IxUkC78G9mRb3xQO"),
+		icon: "modules/elkan5e/icons/hazards/malnutrition.svg",
+		statuses: ["exhaustion"],
+	},
 	{ key: "exhaustion", id: "mPzXN6MW8L6ePFmq", image: false },
 	{
 		key: "frightened",
@@ -86,6 +163,13 @@ const CONDITION_DEFS = [
 			{ key: "flags.midi-qol.disadvantage.attack.all", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.disadvantage.ability.check.all", mode: 5, value: "1" },
 		],
+	},
+	{
+		key: "falling",
+		pseudo: true,
+		id: "TDbwlHfW1Kd4sLIZ",
+		reference: HAZARD_RULES_REF("TDbwlHfW1Kd4sLIZ"),
+		icon: "modules/elkan5e/icons/hazards/falling.svg",
 	},
 	{ key: "goaded", id: "IVZ318d1P8WBcDxN" },
 	{ key: "grappled", id: "zaI1nuc41wANKoFX" },
@@ -208,6 +292,25 @@ const CONDITION_DEFS = [
 				value: "Compendium.elkan5e.elkan5e-macros.Macro.4X80aHI9r8I9aSKG, preDamageApplication",
 			},
 		],
+	},
+	{
+		key: "suffocation",
+		pseudo: true,
+		id: "NJdquJJIddZbeKdw",
+		reference: HAZARD_RULES_REF("NJdquJJIddZbeKdw"),
+		icon: "modules/elkan5e/icons/hazards/suffocation.svg",
+		changes: [
+			{
+				key: "flags.midi-qol.OverTime",
+				mode: 2,
+				value: "turn=end,label=Suffocating,macro=Compendium.elkan5e.elkan5e-macros.Macro.H5g2Kf9b8VqL4tYc",
+			},
+		],
+		flags: {
+			elkan5e: {
+				suffocation: true,
+			},
+		},
 	},
 	{
 		key: "slowed",
@@ -337,67 +440,6 @@ const CONDITION_DEFS = [
 		flags: { core: { statusId: "disadvantage" } },
 	},
 ];
-//TODO [EE-841]: Set up overtime effects
-const HAZARD_DEFS = [
-	{
-		key: "burning",
-		pseudo: true,
-		id: "znHHmhO6vGjmeugR",
-		changes: [
-			{
-				key: "flags.midi-qol.OverTime",
-				mode: 2,
-				value:
-					"turn=start,\nlabel=burning,\nactionSave=dialog,\nmacro=Compendium.elkan5e.elkan5e-macros.Macro.g6P9Rkg63Rz74KNe",
-			},
-			{
-				key: "flags.elkan5e.burning",
-				mode: 0,
-				value: "1d8",
-			},
-		],
-		flags: {
-			dae: {
-				transfer: false,
-				stackable: "none",
-				showIcon: true,
-			},
-			core: {
-				statusId: "burning",
-			}
-		},
-	},
-	// {
-	// 	key: "ethereal",
-	// 	pseudo: true,
-	// 	id: "ethereal",
-	// 	changes: [{ key: "system.traits.senses.truesight.value", mode: 0, value: "9999" }],
-	// 	flags: { "midi-qol": { ethereal: true } },
-	// },
-	{
-		key: "dehydration",
-		pseudo: true,
-		id: "xZRo576gFkVzqTAA",
-		statuses: ["exhaustion"],
-	},
-	{
-		key: "malnutrition",
-		pseudo: true,
-		id: "IxUkC78G9mRb3xQO",
-	},
-	{
-		key: "suffocation",
-		pseudo: true,
-		id: "NJdquJJIddZbeKdw",
-	},
-	{
-		key: "falling",
-		pseudo: true,
-		id: "TDbwlHfW1Kd4sLIZ",
-	},
-];
-
-
 function mergeChanges(existing = [], incoming = []) {
 	const sig = (c) => `${c.key}|${c.mode}|${c.value}`;
 	const map = new Map();
@@ -460,15 +502,18 @@ function initDnd5eConfig() {
 	}
 }
 
-function applyConditionDef(def, folder = "conditions") {
+function applyConditionDef(def) {
 	const ct = (CONFIG.DND5E.conditionTypes[def.key] ??= {});
 	ct.name = game.i18n.localize(`elkan5e.conditions.${def.key}`);
 
 	const reference =
-		def.reference ??
-		(def.id ? (folder === "hazards" ? HAZARD_RULES_REF(def.id) : RULES_REF(def.id)) : undefined);
+		def.reference ?? (def.id ? RULES_REF(def.id) : undefined);
 	if (reference) ct.reference = reference;
-	if (def.image !== false) ct.img = imgFor(def.key, ct.img, folder);
+	if (def.icon) {
+		ct.img = def.icon;
+	} else if (def.image !== false) {
+		ct.img = imgFor(def.key, ct.img);
+	}
 	if (def.changes?.length) ct.changes = mergeChanges(ct.changes, def.changes);
 	if (def.flags) ct.flags = mergeFlags(ct.flags, def.flags);
 	if (def.attributes) ct.attributes = mergeAttributes(ct.attributes, def.attributes);
@@ -520,19 +565,7 @@ function ensureMidiInvisibleVisionRule() {
 	}
 }
 
-function registerFullCoverMidiBlock() {
-	const midiModule = game.modules.get("midi-qol");
-	if (!midiModule?.active) return;
 
-	// Placeholder: no operational hooks yet, but the stub prevents Ready hook errors.
-}
-
-function registerEtherealMidiHooks() {
-	const midiModule = game.modules.get("midi-qol");
-	if (!midiModule?.active) return;
-
-	// Placeholder for future ethereal-specific midi-qol hooks.
-}
 
 export function conditions() {
 	initDnd5eConfig();
@@ -567,12 +600,14 @@ export function conditions() {
 		CONFIG.DND5E.conditionEffects.dexteritySaveDisadvantage.delete("blinded");
 		CONFIG.DND5E.conditionEffects.halfMovement.delete("blinded");
 		CONFIG.DND5E.conditionEffects.dexteritySaveDisadvantage.delete("deafened");
+	}
 
 	for (const def of CONDITION_DEFS) {
+		if (removeExtras && REMOVABLE_CONDITION_KEYS.has(def.key)) continue;
 		const ct = applyConditionDef(def);
 		mirrorStatusEffect(def, ct);
 	}
-}
+	applyStatusIcons();
 }
 
 export function conditionsReady() {
@@ -584,24 +619,8 @@ export function conditionsReady() {
 		// Mirror into statusEffects for backwards compat
 		mirrorStatusEffect(def, ct);
 	}
+	applyStatusIcons();
 
 	ensureMidiInvisibleVisionRule();
-	registerFullCoverMidiBlock();
-	registerEtherealMidiHooks();
 }
 
-export function hazards() {
-	initDnd5eConfig();
-	for (const def of HAZARD_DEFS) {
-		const ct = applyConditionDef(def, "hazards");
-		mirrorStatusEffect(def, ct);
-	}
-}
-
-export function hazardsReady() {
-	initDnd5eConfig();
-	for (const def of HAZARD_DEFS) {
-		const ct = applyConditionDef(def, "hazards");
-		mirrorStatusEffect(def, ct);
-	}
-}

@@ -484,6 +484,13 @@ async function extractPacks(packName, entryName) {
 			yaml: false,
 		});
 
+		if (writtenFiles.size === 0) {
+			logger.info(
+				`No entries extracted for ${packInfo.name}; skipping stale cleanup to preserve existing files.`,
+			);
+			continue;
+		}
+
 		for (const file of existingFilesSet) {
 			if (!writtenFiles.has(file)) {
 				try {

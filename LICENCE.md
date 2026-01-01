@@ -39,9 +39,11 @@ The SRD 5.1 is licensed under the Creative Commons Attribution 4.0 International
 <br>
 /icons/conditions/squeezing.svg - Spiked wall icon
 <br>
-/icons/hazards/dehydration.svg - Waterskin icon (<https://game-icons.net/delapouite/waterskin.html>)
+/icons/hazards/dehydration.svg - Waterskin icon
 <br>
-/icons/hazards/suffocation.svg - Lungs icon (<https://game-icons.net/delapouite/lungs.html>)
+/icons/hazards/suffocation.svg - Lungs icon
+<br>
+/icons/statuses/sleeping.svg - Night sleep icon
 </details>
 
 ## Lorc under CC BY 3.0
@@ -75,9 +77,25 @@ The SRD 5.1 is licensed under the Creative Commons Attribution 4.0 International
 <br>
 /icons/conditions/transformed.svg - Flat paw print icon
 <br>
-/icons/hazards/ethereal.svg - Ghost Ally icon (<https://game-icons.net/lorc/ghost-ally.html>)
+/icons/statuses/burrowing.svg - Spade icon
 <br>
-/icons/hazards/falling.svg - Falling Boulder icon (<https://game-icons.net/lorc/falling-boulder.html>)
+/icons/statuses/flying.svg - Feathered wing icon
+<br>
+/icons/statuses/hovering.svg - Wingfoot icon
+<br>
+/icons/statuses/ethereal.svg - Ghost Ally icon
+<br>
+/icons/hazards/falling.svg - Falling Boulder icon
+</details>
+
+## Mikiko under CC BY-NC-SA 4.0
+
+This work includes icons from mikiko.art under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License, available at https://creativecommons.org/licenses/by-nc-sa/4.0/.
+
+<details>
+/icons/statuses/marked.svg - Target icon
+<br>
+/icons/statuses/bleeding.svg - Blood droplet icon
 </details>
 
 ## Skoll under CC BY 3.0
@@ -97,13 +115,13 @@ The SRD 5.1 is licensed under the Creative Commons Attribution 4.0 International
 <br>
 /icons/conditions/prone.svg - Falling icon
 <br>
-/icons/hazards/burning.svg - Flamer icon (<https://game-icons.net/sbed/flamer.html>)
+/icons/hazards/burning.svg - Flamer icon
 </details>
 
 ## Caro Asercion under CC BY 3.0
 
 <details>
-/icons/hazards/malnutrition.svg - Bowl of Rice icon (<https://game-icons.net/caro-asercion/bowl-of-rice.html>)
+/icons/hazards/malnutrition.svg - Bowl of Rice icon
 </details>
 
 ## Flaticon
