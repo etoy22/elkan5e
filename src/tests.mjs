@@ -66,9 +66,10 @@ test("notify-discord job publishes release details to Discord", () => {
 		"build-and-pack",
 		"create-github-release",
 	]);
+	const notifyIf = (job.if ?? "").trim();
 	assert.equal(
-		job.if,
-		"needs.version-check.outputs.should_continue == 'true' && needs.create-github-release.result == 'success' && needs.version-check.outputs.test != 'true'",
+		notifyIf,
+		"needs.version-check.outputs.should_continue == 'true' && needs.create-github-release.result == 'success' && needs.version-check.outputs.test != 'true' && secrets.DISCORD_WEBHOOK",
 	);
 	assert.deepEqual(job.env, {
 		DISCORD_WEBHOOK: "${{ secrets.DISCORD_WEBHOOK }}",
@@ -98,6 +99,22 @@ test("notify-discord job publishes release details to Discord", () => {
 		),
 		"post step should invoke curl with payload and webhook",
 	);
+});
+
+test("update-jira job requires Jira secrets before running", () => {
+	const job = workflow.jobs?.["update-jira"];
+	assert.ok(job, "update-jira job should exist");
+
+	assert.deepEqual(job.needs, ["version-check", "extract-release-notes", "create-github-release"]);
+	const updateIf = (job.if ?? "").trim();
+	assert.equal(
+		updateIf,
+		"needs.version-check.outputs.should_continue == 'true' && needs.create-github-release.result == 'success' && secrets.JIRA_BASE_URL && secrets.JIRA_USER_EMAIL && secrets.JIRA_API_TOKEN",
+	);
+
+	assert.equal(job.env.JIRA_BASE_URL, "${{ secrets.JIRA_BASE_URL }}");
+	assert.equal(job.env.JIRA_USER_EMAIL, "${{ secrets.JIRA_USER_EMAIL }}");
+	assert.equal(job.env.JIRA_API_TOKEN, "${{ secrets.JIRA_API_TOKEN }}");
 });
 
 test("buildPayload includes repository links and compatibility", () => {
