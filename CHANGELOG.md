@@ -39,7 +39,6 @@
 - New actor pack: `elkan5e-summoned-creatures` with supporting items/spells/folders.
 - Added `scripts/validate-packs-json.js` helper.
 - Removed legacy helper scripts, logs, caches, and shell helpers.
-- Repository now contains `elkan5e-1.0.0.tgz` (release artifact placeholder; do not publish/build here).
 - General JSON formatting/description cleanup to strip redundant `<br>` and noisy attributes across packs.
 - Formatting/identifier cleanup to all features.
 
