@@ -13,7 +13,14 @@ try {
 	const nextVersionChunk = lines.slice(startIndex + 1).findIndex((line) => line.startsWith('# v'));
 	const endIndex =
 		nextVersionChunk !== -1 ? startIndex + 1 + nextVersionChunk : lines.length;
-	const releaseNotesLines = lines.slice(startIndex, endIndex);
+	let releaseNotesLines = lines.slice(startIndex, endIndex);
+
+	if (releaseNotesLines[0]?.startsWith('# v')) {
+		releaseNotesLines = releaseNotesLines.slice(1);
+		while (releaseNotesLines[0] === '') {
+			releaseNotesLines = releaseNotesLines.slice(1);
+		}
+	}
 
 	const formattedNotes = releaseNotesLines.join('\n').trimEnd();
 

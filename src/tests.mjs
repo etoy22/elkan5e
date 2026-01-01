@@ -99,6 +99,14 @@ test("notify-discord job publishes release details to Discord", () => {
 		),
 		"post step should invoke curl with payload and webhook",
 	);
+	assert.ok(
+		postStep.includes('if [ -z "${DISCORD_WEBHOOK:-}" ]; then'),
+		"post step should detect missing webhook",
+	);
+	assert.ok(
+		postStep.includes("DISCORD_WEBHOOK secret is not configured; skipping Discord notification."),
+		"post step should log why GitHub Actions is skipping posting",
+	);
 });
 
 test("buildPayload includes repository links and compatibility", () => {

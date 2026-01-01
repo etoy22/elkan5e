@@ -188,10 +188,11 @@ jobs:
                   prerelease: ${{ needs.version-check.outputs.prerelease }}
                   body: ${{ steps.read_release_notes.outputs.release_notes }}
                   token: ${{ secrets.GITHUB_TOKEN }}
-                  artifacts: |
-                      module.zip
-                      module.json
-                  tag: "${{ needs.version-check.outputs.version }}"
+              artifacts: |
+                  module.zip
+                  module.json
+              tag: "${{ needs.version-check.outputs.version }}"
+              latest_release: true
 
     release-foundry-package:
         runs-on: ubuntu-latest
@@ -257,6 +258,8 @@ jobs:
                   const env = process.env;
                   const releaseNotes = (env.RELEASE_NOTES || '').replace(/\r?\n/g, '\n').trim();
                   const trimmedNotes = releaseNotes.length > 3900 ? `${releaseNotes.slice(0, 3897)}...` : releaseNotes;
+                  const releaseNotesField =
+                    trimmedNotes.length > 1024 ? `${trimmedNotes.slice(0, 1021)}...` : trimmedNotes;
                   const payload = {
                     embeds: [
                       {
@@ -267,7 +270,11 @@ jobs:
                           { name: 'Foundry Package', value: 'https://foundryvtt.com/packages/elkan5e', inline: false },
                           { name: 'Release Tag', value: `${env.REPO_URL}/releases/tag/${env.VERSION}`, inline: false },
                           { name: 'Manual Download', value: `${env.REPO_URL}/releases/download/${env.VERSION}/module.zip`, inline: false },
-                          { name: 'Release Notes', value: trimmedNotes || 'See release notes artifact.', inline: false }
+                          {
+                            name: 'Release Notes',
+                            value: releaseNotesField || 'See release notes artifact.',
+                            inline: false,
+                          }
                         ]
                       }
                     ]
