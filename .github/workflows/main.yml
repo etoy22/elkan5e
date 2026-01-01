@@ -188,11 +188,11 @@ jobs:
                   prerelease: ${{ needs.version-check.outputs.prerelease }}
                   body: ${{ steps.read_release_notes.outputs.release_notes }}
                   token: ${{ secrets.GITHUB_TOKEN }}
-              artifacts: |
-                  module.zip
-                  module.json
-              tag: "${{ needs.version-check.outputs.version }}"
-              latest_release: true
+                  artifacts: |
+                      module.zip
+                      module.json
+                  tag: "${{ needs.version-check.outputs.version }}"
+                  latest_release: true
 
     release-foundry-package:
         runs-on: ubuntu-latest
