@@ -7,6 +7,20 @@ const CONDITION_TYPE_REMOVE = ["bleeding"];
 const STATUS_EFFECT_REMOVE = ["burrowing", "flying", "hovering", "marked", "sleeping", "ethereal"];
 const STATUS_ICON_KEYS = ["burrowing", "flying", "hovering", "marked", "bleeding", "sleeping", "ethereal"];
 const STATUS_ICON_FOLDER = "statuses";
+const REMOVABLE_CONDITION_KEYS = new Set([
+	"bleeding",
+	"burning",
+	"dehydration",
+	"malnutrition",
+	"falling",
+	"suffocation",
+	"dodging",
+	"dead",
+	"hiding",
+	"squeezing",
+	"advantage",
+	"disadvantage",
+]);
 
 // Icons
 const IMAGE_EXCLUSIONS = new Set(["stable"]);
@@ -80,44 +94,6 @@ const CONDITION_DEFS = [
 			{ key: "flags.midi-qol.noOpportunityAttack", mode: 5, value: "1" },
 		],
 	},
-	{
-		key: "bleeding",
-		pseudo: true,
-		icon: "modules/elkan5e/icons/statuses/bleeding.svg",
-		flags: {
-			core: { statusId: "bleeding" },
-		},
-	},
-	{
-		key: "burning",
-		pseudo: true,
-		id: "znHHmhO6vGjmeugR",
-		reference: HAZARD_RULES_REF("znHHmhO6vGjmeugR"),
-		icon: "modules/elkan5e/icons/hazards/burning.svg",
-		changes: [
-			{
-				key: "flags.midi-qol.OverTime",
-				mode: 2,
-				value:
-					"turn=start,\nlabel=burning,\nactionSave=dialog,\nmacro=Compendium.elkan5e.elkan5e-macros.Macro.g6P9Rkg63Rz74KNe",
-			},
-			{
-				key: "flags.elkan5e.burning",
-				mode: 0,
-				value: "1d8",
-			},
-		],
-		flags: {
-			dae: {
-				transfer: false,
-				stackable: "none",
-				showIcon: true,
-			},
-			core: {
-				statusId: "burning",
-			},
-		},
-	},
 	{ name: "Charmed", key: "charmed", id: "ieDILSkRbu9r8pmZ" },
 	{
 		key: "confused",
@@ -139,22 +115,6 @@ const CONDITION_DEFS = [
 	},
 	{ key: "diseased", id: "diseasedRule" },
 	{ key: "drained", id: "ZnhMIMgPZv1QDxzZ" },
-	{
-		key: "dehydration",
-		pseudo: true,
-		id: "xZRo576gFkVzqTAA",
-		reference: HAZARD_RULES_REF("xZRo576gFkVzqTAA"),
-		icon: "modules/elkan5e/icons/hazards/dehydration.svg",
-		statuses: ["exhaustion"],
-	},
-	{
-		key: "malnutrition",
-		pseudo: true,
-		id: "IxUkC78G9mRb3xQO",
-		reference: HAZARD_RULES_REF("IxUkC78G9mRb3xQO"),
-		icon: "modules/elkan5e/icons/hazards/malnutrition.svg",
-		statuses: ["exhaustion"],
-	},
 	{ key: "exhaustion", id: "mPzXN6MW8L6ePFmq", image: false },
 	{
 		key: "frightened",
@@ -163,13 +123,6 @@ const CONDITION_DEFS = [
 			{ key: "flags.midi-qol.disadvantage.attack.all", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.disadvantage.ability.check.all", mode: 5, value: "1" },
 		],
-	},
-	{
-		key: "falling",
-		pseudo: true,
-		id: "TDbwlHfW1Kd4sLIZ",
-		reference: HAZARD_RULES_REF("TDbwlHfW1Kd4sLIZ"),
-		icon: "modules/elkan5e/icons/hazards/falling.svg",
 	},
 	{ key: "goaded", id: "IVZ318d1P8WBcDxN" },
 	{ key: "grappled", id: "zaI1nuc41wANKoFX" },
@@ -180,16 +133,6 @@ const CONDITION_DEFS = [
 			{ key: "system.attributes.ac.bonus", mode: 2, value: "+2" },
 			{ key: "system.abilities.dex.bonuses.save", mode: 2, value: "+2" },
 			{ key: "system.attributes.movement.all", mode: 0, value: "*2" },
-		],
-	},
-	{
-		key: "obscuredheavily",
-		id: "UC5VK6i6vqWEUfMn",
-		exclusiveGroup: "obscured",
-		changes: [
-			{ key: "flags.midi-qol.advantage.attack.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.grants.disadvantage.attack.all", mode: 5, value: "1" },
-			{ key: "system.skills.ste.roll.mode", mode: 5, value: "1" },
 		],
 	},
 	{
@@ -219,12 +162,6 @@ const CONDITION_DEFS = [
 			{ key: "system.skills.ste.roll.mode", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.noOpportunityAttack", mode: 5, value: "!Boolean(canSee)" },
 		],
-	},
-	{
-		key: "obscuredlightly",
-		id: "Jq7kMUlHodqSbYDD",
-		exclusiveGroup: "obscured",
-		changes: [{ key: "system.skills.ste.roll.mode", mode: 5, value: "1" }],
 	},
 	{
 		key: "paralyzed",
@@ -294,25 +231,6 @@ const CONDITION_DEFS = [
 		],
 	},
 	{
-		key: "suffocation",
-		pseudo: true,
-		id: "NJdquJJIddZbeKdw",
-		reference: HAZARD_RULES_REF("NJdquJJIddZbeKdw"),
-		icon: "modules/elkan5e/icons/hazards/suffocation.svg",
-		changes: [
-			{
-				key: "flags.midi-qol.OverTime",
-				mode: 2,
-				value: "turn=end,label=Suffocating,macro=Compendium.elkan5e.elkan5e-macros.Macro.H5g2Kf9b8VqL4tYc",
-			},
-		],
-		flags: {
-			elkan5e: {
-				suffocation: true,
-			},
-		},
-	},
-	{
 		key: "slowed",
 		id: "kkbgHooTzrtu4q8T",
 		changes: [
@@ -371,28 +289,6 @@ const CONDITION_DEFS = [
 	},
 	{ key: "concentrating", id: "4ZOHN6tGvj54J6Kv" },
 	{
-		key: "dodging",
-		pseudo: true,
-		changes: [
-			{ key: "flags.midi-qol.grants.disadvantage.attack.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.advantage.ability.save.dex", mode: 5, value: "1" },
-			{ key: "system.abilities.dex.save.roll.mode", mode: 5, value: "1" },
-		],
-		flags: {
-			dae: {
-				transfer: false,
-				stackable: "none",
-				specialDuration: ["turnStart"],
-				disableIncapacitated: true,
-				showIcon: true,
-			},
-			core: { statusId: "dodging" },
-		},
-	},
-	{ key: "dead", pseudo: true },
-	{ key: "hiding", pseudo: true },
-	{ key: "squeezing", pseudo: true },
-	{
 		key: "coverHalf",
 		id: "1BmTbnT3xDPqv9dq",
 		order: 2,
@@ -413,11 +309,125 @@ const CONDITION_DEFS = [
 		exclusiveGroup: "cover",
 		changes: [{ key: "flags.midi-qol.neverTarget", mode: 2, value: "10" }],
 	},
+];
+
+const STATUS_DEFS = [
+	{
+		key: "bleeding",
+		pseudo: true,
+		statusOnly: true,
+		icon: "modules/elkan5e/icons/statuses/bleeding.svg",
+		flags: {
+			core: { statusId: "bleeding" },
+		},
+	},
+	{
+		key: "burning",
+		pseudo: true,
+		statusOnly: true,
+		id: "znHHmhO6vGjmeugR",
+		reference: HAZARD_RULES_REF("znHHmhO6vGjmeugR"),
+		icon: "modules/elkan5e/icons/hazards/burning.svg",
+		changes: [
+			{
+				key: "flags.midi-qol.OverTime",
+				mode: 2,
+				value:
+					"turn=start,\nlabel=burning,\nactionSave=dialog,\nmacro=Compendium.elkan5e.elkan5e-macros.Macro.g6P9Rkg63Rz74KNe",
+			},
+			{
+				key: "flags.elkan5e.burning",
+				mode: 0,
+				value: "1d8",
+			},
+		],
+		flags: {
+			dae: {
+				transfer: false,
+				stackable: "none",
+				showIcon: true,
+			},
+			core: {
+				statusId: "burning",
+			},
+		},
+	},
+	{
+		key: "dehydration",
+		pseudo: true,
+		statusOnly: true,
+		id: "xZRo576gFkVzqTAA",
+		reference: HAZARD_RULES_REF("xZRo576gFkVzqTAA"),
+		icon: "modules/elkan5e/icons/hazards/dehydration.svg",
+		statuses: ["exhaustion"],
+	},
+	{
+		key: "malnutrition",
+		pseudo: true,
+		statusOnly: true,
+		id: "IxUkC78G9mRb3xQO",
+		reference: HAZARD_RULES_REF("IxUkC78G9mRb3xQO"),
+		icon: "modules/elkan5e/icons/hazards/malnutrition.svg",
+		statuses: ["exhaustion"],
+	},
+	{
+		key: "falling",
+		pseudo: true,
+		statusOnly: true,
+		id: "TDbwlHfW1Kd4sLIZ",
+		reference: HAZARD_RULES_REF("TDbwlHfW1Kd4sLIZ"),
+		icon: "modules/elkan5e/icons/hazards/falling.svg",
+	},
+	{
+		key: "suffocation",
+		pseudo: true,
+		statusOnly: true,
+		id: "NJdquJJIddZbeKdw",
+		reference: HAZARD_RULES_REF("NJdquJJIddZbeKdw"),
+		icon: "modules/elkan5e/icons/hazards/suffocation.svg",
+		changes: [
+			{
+				key: "flags.midi-qol.OverTime",
+				mode: 2,
+				value: "turn=end,label=Suffocating,macro=Compendium.elkan5e.elkan5e-macros.Macro.H5g2Kf9b8VqL4tYc",
+			},
+		],
+		flags: {
+			elkan5e: {
+				suffocation: true,
+			},
+		},
+	},
+	{
+		key: "dodging",
+		pseudo: true,
+		statusOnly: true,
+		changes: [
+			{ key: "flags.midi-qol.grants.disadvantage.attack.all", mode: 5, value: "1" },
+			{ key: "flags.midi-qol.advantage.ability.save.dex", mode: 5, value: "1" },
+			{ key: "system.abilities.dex.save.roll.mode", mode: 5, value: "1" },
+		],
+		flags: {
+			dae: {
+				transfer: false,
+				stackable: "none",
+				specialDuration: ["turnStart"],
+				disableIncapacitated: true,
+				showIcon: true,
+			},
+			core: { statusId: "dodging" },
+		},
+	},
+	{ key: "dead", pseudo: true, statusOnly: true },
+	{ key: "hiding", pseudo: true, statusOnly: true },
+	{ key: "squeezing", pseudo: true, statusOnly: true },
 	{
 		key: "advantage",
 		img: "icons/svg/upgrade.svg",
 		pseudo: true,
+		statusOnly: true,
 		exclusiveGroup: "elkan-advantage-mode",
+		order: 9998,
 		changes: [
 			{ key: "flags.midi-qol.advantage.attack.all", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.advantage.ability.check.all", mode: 5, value: "1" },
@@ -430,7 +440,9 @@ const CONDITION_DEFS = [
 		key: "disadvantage",
 		img: "icons/svg/downgrade.svg",
 		pseudo: true,
+		statusOnly: true,
 		exclusiveGroup: "elkan-advantage-mode",
+		order: 9999,
 		changes: [
 			{ key: "flags.midi-qol.disadvantage.attack.all", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.disadvantage.ability.check.all", mode: 5, value: "1" },
@@ -470,6 +482,7 @@ function mergeAttributes(a = {}, b = {}) {
 
 
 function mirrorStatusEffect(def, ct) {
+	if (!def.statusOnly) return;
 	const existingStatus = CONFIG.DND5E.statusEffects[def.key];
 	const normalized =
 		typeof existingStatus === "string" ? { key: existingStatus } : existingStatus ?? {};
@@ -503,7 +516,9 @@ function initDnd5eConfig() {
 }
 
 function applyConditionDef(def) {
-	const ct = (CONFIG.DND5E.conditionTypes[def.key] ??= {});
+	const statusOnly = def.statusOnly ?? Boolean(def.pseudo);
+	const registerConditionType = !statusOnly;
+	const ct = registerConditionType ? (CONFIG.DND5E.conditionTypes[def.key] ??= {}) : {};
 	ct.name = game.i18n.localize(`elkan5e.conditions.${def.key}`);
 
 	const reference =
@@ -526,6 +541,12 @@ function applyConditionDef(def) {
 	if (def.order != null && ct.order == null) ct.order = def.order;
 	if (def.exclusiveGroup != null) ct.exclusiveGroup = def.exclusiveGroup;
 	if (def.coverBonus != null) ct.coverBonus = def.coverBonus;
+
+	if (!registerConditionType) {
+		if (CONFIG.DND5E.conditionTypes?.[def.key]) {
+			delete CONFIG.DND5E.conditionTypes[def.key];
+		}
+	}
 
 	return ct;
 }
@@ -607,6 +628,10 @@ export function conditions() {
 		const ct = applyConditionDef(def);
 		mirrorStatusEffect(def, ct);
 	}
+	for (const def of STATUS_DEFS) {
+		const ct = applyConditionDef(def);
+		mirrorStatusEffect(def, ct);
+	}
 	applyStatusIcons();
 }
 
@@ -617,6 +642,10 @@ export function conditionsReady() {
 		const ct = applyConditionDef(def);
 
 		// Mirror into statusEffects for backwards compat
+		mirrorStatusEffect(def, ct);
+	}
+	for (const def of STATUS_DEFS) {
+		const ct = applyConditionDef(def);
 		mirrorStatusEffect(def, ct);
 	}
 	applyStatusIcons();
