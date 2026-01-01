@@ -69,7 +69,7 @@ test("notify-discord job publishes release details to Discord", () => {
 	const notifyIf = (job.if ?? "").trim();
 	assert.equal(
 		notifyIf,
-		"needs.version-check.outputs.should_continue == 'true' && needs.create-github-release.result == 'success' && needs.version-check.outputs.test != 'true' && secrets.DISCORD_WEBHOOK",
+		"needs.version-check.outputs.should_continue == 'true' && needs.create-github-release.result == 'success' && needs.version-check.outputs.test != 'true' && env.DISCORD_WEBHOOK",
 	);
 	assert.deepEqual(job.env, {
 		DISCORD_WEBHOOK: "${{ secrets.DISCORD_WEBHOOK }}",
@@ -109,7 +109,7 @@ test("update-jira job requires Jira secrets before running", () => {
 	const updateIf = (job.if ?? "").trim();
 	assert.equal(
 		updateIf,
-		"needs.version-check.outputs.should_continue == 'true' && needs.create-github-release.result == 'success' && secrets.JIRA_BASE_URL && secrets.JIRA_USER_EMAIL && secrets.JIRA_API_TOKEN",
+		"needs.version-check.outputs.should_continue == 'true' && needs.create-github-release.result == 'success' && env.JIRA_BASE_URL && env.JIRA_USER_EMAIL && env.JIRA_API_TOKEN",
 	);
 
 	assert.equal(job.env.JIRA_BASE_URL, "${{ secrets.JIRA_BASE_URL }}");
