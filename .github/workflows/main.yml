@@ -219,8 +219,7 @@ jobs:
         if: >
             needs.version-check.outputs.should_continue == 'true' &&
             needs.create-github-release.result == 'success' &&
-            needs.version-check.outputs.test != 'true' &&
-            env.DISCORD_WEBHOOK
+            needs.version-check.outputs.test != 'true'
         env:
             DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
             REPO_URL: "https://github.com/${{ github.repository }}"
@@ -312,10 +311,7 @@ jobs:
         needs: [version-check, extract-release-notes, create-github-release]
         if: >
             needs.version-check.outputs.should_continue == 'true' &&
-            needs.create-github-release.result == 'success' &&
-            env.JIRA_BASE_URL &&
-            env.JIRA_USER_EMAIL &&
-            env.JIRA_API_TOKEN
+            needs.create-github-release.result == 'success'
         env:
             JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
             JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
