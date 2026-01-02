@@ -287,7 +287,7 @@ const CONDITION_DEFS = [
 			},
 		],
 	},
-	{ key: "concentrating", id: "4ZOHN6tGvj54J6Kv" },
+	{ key: "concentrating", id: "4ZOHN6tGvj54J6Kv", special: "CONCENTRATING" },
 	{
 		key: "coverHalf",
 		id: "1BmTbnT3xDPqv9dq",
@@ -315,7 +315,6 @@ const STATUS_DEFS = [
 	{
 		key: "bleeding",
 		pseudo: true,
-		statusOnly: true,
 		icon: "modules/elkan5e/icons/statuses/bleeding.svg",
 		flags: {
 			core: { statusId: "bleeding" },
@@ -324,7 +323,6 @@ const STATUS_DEFS = [
 	{
 		key: "burning",
 		pseudo: true,
-		statusOnly: true,
 		id: "znHHmhO6vGjmeugR",
 		reference: HAZARD_RULES_REF("znHHmhO6vGjmeugR"),
 		icon: "modules/elkan5e/icons/hazards/burning.svg",
@@ -355,7 +353,6 @@ const STATUS_DEFS = [
 	{
 		key: "dehydration",
 		pseudo: true,
-		statusOnly: true,
 		id: "xZRo576gFkVzqTAA",
 		reference: HAZARD_RULES_REF("xZRo576gFkVzqTAA"),
 		icon: "modules/elkan5e/icons/hazards/dehydration.svg",
@@ -364,7 +361,6 @@ const STATUS_DEFS = [
 	{
 		key: "malnutrition",
 		pseudo: true,
-		statusOnly: true,
 		id: "IxUkC78G9mRb3xQO",
 		reference: HAZARD_RULES_REF("IxUkC78G9mRb3xQO"),
 		icon: "modules/elkan5e/icons/hazards/malnutrition.svg",
@@ -373,7 +369,6 @@ const STATUS_DEFS = [
 	{
 		key: "falling",
 		pseudo: true,
-		statusOnly: true,
 		id: "TDbwlHfW1Kd4sLIZ",
 		reference: HAZARD_RULES_REF("TDbwlHfW1Kd4sLIZ"),
 		icon: "modules/elkan5e/icons/hazards/falling.svg",
@@ -381,7 +376,6 @@ const STATUS_DEFS = [
 	{
 		key: "suffocation",
 		pseudo: true,
-		statusOnly: true,
 		id: "NJdquJJIddZbeKdw",
 		reference: HAZARD_RULES_REF("NJdquJJIddZbeKdw"),
 		icon: "modules/elkan5e/icons/hazards/suffocation.svg",
@@ -401,7 +395,6 @@ const STATUS_DEFS = [
 	{
 		key: "dodging",
 		pseudo: true,
-		statusOnly: true,
 		changes: [
 			{ key: "flags.midi-qol.grants.disadvantage.attack.all", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.advantage.ability.save.dex", mode: 5, value: "1" },
@@ -418,14 +411,13 @@ const STATUS_DEFS = [
 			core: { statusId: "dodging" },
 		},
 	},
-	{ key: "dead", pseudo: true, statusOnly: true },
-	{ key: "hiding", pseudo: true, statusOnly: true },
-	{ key: "squeezing", pseudo: true, statusOnly: true },
+	{ key: "dead", pseudo: true, special: "DEFEATED" },
+	{ key: "hiding", pseudo: true },
+	{ key: "squeezing", pseudo: true },
 	{
 		key: "advantage",
 		img: "icons/svg/upgrade.svg",
 		pseudo: true,
-		statusOnly: true,
 		exclusiveGroup: "elkan-advantage-mode",
 		order: 9998,
 		changes: [
@@ -440,7 +432,6 @@ const STATUS_DEFS = [
 		key: "disadvantage",
 		img: "icons/svg/downgrade.svg",
 		pseudo: true,
-		statusOnly: true,
 		exclusiveGroup: "elkan-advantage-mode",
 		order: 9999,
 		changes: [
@@ -482,7 +473,7 @@ function mergeAttributes(a = {}, b = {}) {
 
 
 function mirrorStatusEffect(def, ct) {
-	if (!def.statusOnly) return;
+	if (!ct.statusOnly) return;
 	const existingStatus = CONFIG.DND5E.statusEffects[def.key];
 	const normalized =
 		typeof existingStatus === "string" ? { key: existingStatus } : existingStatus ?? {};
@@ -515,11 +506,11 @@ function initDnd5eConfig() {
 	}
 }
 
-function applyConditionDef(def) {
-	const statusOnly = def.statusOnly ?? Boolean(def.pseudo);
-	const registerConditionType = !statusOnly;
-	const ct = registerConditionType ? (CONFIG.DND5E.conditionTypes[def.key] ??= {}) : {};
-	ct.name = game.i18n.localize(`elkan5e.conditions.${def.key}`);
+	function applyConditionDef(def, { statusOnly: forcedStatusOnly } = {}) {
+		const statusOnly = forcedStatusOnly ?? def.statusOnly ?? Boolean(def.pseudo);
+		const registerConditionType = !statusOnly;
+		const ct = registerConditionType ? (CONFIG.DND5E.conditionTypes[def.key] ??= {}) : {};
+		ct.name = game.i18n.localize(`elkan5e.conditions.${def.key}`);
 
 	const reference =
 		def.reference ?? (def.id ? RULES_REF(def.id) : undefined);
@@ -536,7 +527,8 @@ function applyConditionDef(def) {
 		ct.statuses = foundry.utils.duplicate(def.statuses);
 	}
 
-	if (def.pseudo != null) ct.pseudo = def.pseudo;
+		if (def.pseudo != null) ct.pseudo = def.pseudo;
+		if (statusOnly) ct.statusOnly = true;
 
 	if (def.order != null && ct.order == null) ct.order = def.order;
 	if (def.exclusiveGroup != null) ct.exclusiveGroup = def.exclusiveGroup;
@@ -629,7 +621,7 @@ export function conditions() {
 		mirrorStatusEffect(def, ct);
 	}
 	for (const def of STATUS_DEFS) {
-		const ct = applyConditionDef(def);
+		const ct = applyConditionDef(def, { statusOnly: true });
 		mirrorStatusEffect(def, ct);
 	}
 	applyStatusIcons();
