@@ -415,7 +415,6 @@ export function conditions() {
 		if (def.coverBonus != null) ct.coverBonus = def.coverBonus;
 	};
 
-	// Move statusEffects[key] -> conditionTypes[key], preserving SE props, then apply our def & i18n
 	const migrateStatusToCondition = (def) => {
 		const se = { ...(CONFIG.DND5E.statusEffects?.[def.key] ?? {}) };
 		const existingCT = { ...(CONFIG.DND5E.conditionTypes?.[def.key] ?? {}) };
