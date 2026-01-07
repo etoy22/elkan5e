@@ -1,0 +1,366 @@
+{
+	"name": "Dire Transformation",
+	"type": "feat",
+	"system": {
+		"description": {
+			"value": "<p>The dire animal's skeleton suddenly grows spikes and other protrusions, which shoot out of the animal's flesh. The dire animal enters a frenzy. While in a frenzy, the dire animal gains temporary hit points equal to its hit point maximum, and can use its multiattack as a bonus action.</p><p>The frenzy lasts 1 minute. When the frenzy ends, the animal takes damage equal to its hit point maximum as its skeleton resets. This damage cannot be reduced in any way.</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"uses": {
+			"max": "1",
+			"recovery": [
+				{
+					"period": "lr",
+					"type": "recoverAll"
+				}
+			],
+			"spent": 0
+		},
+		"type": {
+			"value": "",
+			"subtype": ""
+		},
+		"requirements": "",
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "heal",
+				"activation": {
+					"type": "action",
+					"value": 1,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": ""
+						}
+					],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "",
+					"units": "",
+					"special": "",
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "UTNbL6L8sc0b9lwb",
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
+				"range": {
+					"units": "",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": ""
+					},
+					"affects": {
+						"count": "",
+						"type": "self",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"healing": {
+					"number": null,
+					"denomination": null,
+					"bonus": "",
+					"types": [
+						"temphp"
+					],
+					"custom": {
+						"enabled": true,
+						"formula": "@attributes.hp.max"
+					},
+					"scaling": {
+						"mode": "whole",
+						"number": null,
+						"formula": ""
+					}
+				},
+				"name": "Transform",
+				"img": "",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": ""
+				}
+			},
+			"pmGurB7MPWF2seSS": {
+				"type": "damage",
+				"activation": {
+					"type": "special",
+					"value": 1,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "",
+					"units": "inst",
+					"special": "",
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "UTNbL6L8sc0b9lwb",
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
+				"range": {
+					"units": "self",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": "ft"
+					},
+					"affects": {
+						"count": "",
+						"type": "self",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"critical": {
+						"allow": false,
+						"bonus": ""
+					},
+					"parts": [
+						{
+							"custom": {
+								"enabled": true,
+								"formula": "@attributes.hp.max"
+							},
+							"number": null,
+							"denomination": null,
+							"bonus": "",
+							"types": []
+						}
+					]
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false,
+					"identifier": ""
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"skipConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"_id": "pmGurB7MPWF2seSS",
+				"name": "Reset",
+				"img": ""
+			}
+		},
+		"identifier": "dire-transformation",
+		"enchant": {},
+		"prerequisites": {
+			"level": null
+		},
+		"properties": []
+	},
+	"img": "icons/commodities/bones/teeth-sharp-white.webp",
+	"effects": [
+		{
+			"origin": "Actor.KIewrqqhytG321Ra.Item.TaOLtdlqBRLZwsAN",
+			"duration": {
+				"rounds": 10,
+				"startTime": null,
+				"seconds": 60,
+				"combat": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"disabled": false,
+			"_id": "UTNbL6L8sc0b9lwb",
+			"changes": [],
+			"tint": "#ffffff",
+			"transfer": false,
+			"flags": {
+				"dae": {
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"stackable": "none",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"radius": "undefined",
+					"alignment": "",
+					"type": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false
+				}
+			},
+			"name": "Dire Transformation",
+			"description": "",
+			"statuses": [],
+			"img": "icons/commodities/bones/teeth-sharp-white.webp",
+			"type": "base",
+			"system": {},
+			"_key": "!items.effects!p4CDaS9clkqfa0nb.UTNbL6L8sc0b9lwb"
+		}
+	],
+	"folder": null,
+	"flags": {
+		"midi-qol": {
+			"effectActivation": false,
+			"removeAttackDamageButtons": "default",
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": ""
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"rollOther": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"noConcentrationCheck": false,
+			"confirmTargets": "default"
+		},
+		"dnd5e": {
+			"migratedUses": 1
+		}
+	},
+	"_id": "p4CDaS9clkqfa0nb",
+	"_key": "!items!p4CDaS9clkqfa0nb"
+}
