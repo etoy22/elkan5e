@@ -1,5 +1,44 @@
 # Changelog
 
+# v1.13.6
+
+## Classes
+
+**[Bard](https://www.elkan5e.com/classes/bard)**
+- Switched to two instrument proficiencies to reflect that instrument proficiencies are now by instrument category.
+ **[Druid](https://www.elkan5e.com/classes/druid)**
+  - Chthonic:
+    - Level 1 spells swapped to Color Spray and Dissonant Whispers. Otherworldly Veil replaces Passwall at level 5.
+
+**[Ranger](https://www.elkan5e.com/classes/ranger)**
+- Ranger tool/vehicle options expanded to the whole list.
+
+**[Rogue](https://www.elkan5e.com/classes/rouge)**
+- Ranger tool/vehicle options expanded to the whole list.
+ **[Warlock](https://www.elkan5e.com/classes/warlock)**
+  - Fiend: 
+    - Dark One's Own Luck is no longer consumed when it fails.
+
+## Equipment
+- Instruments are grouped into one of five categories, some crafting tools were combined, and all references to gaining tools are now consistent with these changes
+  - Fleshed out items for the various instrument types.
+**Feat**
+- Turn the Unholy now ends early if the cleric becomes incapacitated.
+
+## Spells
+- Otherworldly Veil reworked as a level 5 spell that prevents several targets from seeing any creature you choose to shield from them.
+- Snowball Swarm reworked as a cantrip that scales to larger sizes.
+- Spook reworked as a cantrip with a casting time of 1 action.
+- Some new Artificer spells:
+  - Master's Touch spell for artificers and diviners.
+  - Metalline Weapon spell (3rd level) for artificers and transmuters.
+  - Reconstruct spell for artificers and transmuters.
+  - Touch of Corrosion spell for artificers, transmuters, and water savants.
+
+## Rules
+- Updated Wild Surge tables to have the same updated spells as Wild Mages at levels 1 and 2.
+- Update Faerie Fire Wild Surge for non-sorcerers.
+
 # v1.13.5
 ## Bug Fixes
 
