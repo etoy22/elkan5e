@@ -132,7 +132,10 @@ jobs:
     create-github-release:
         runs-on: ubuntu-latest
         needs: [version-check, extract-release-notes, build-and-pack]
-        if: needs.version-check.outputs.should_continue == 'true' && needs.build-and-pack.result == 'success'
+        if: >
+            needs.version-check.outputs.should_continue == 'true' &&
+            needs.build-and-pack.result == 'success' &&
+            (needs.version-check.outputs.test == 'true' || github.ref == 'refs/heads/main')
         env:
             DRY_RUN: ${{ needs.version-check.outputs.test }}
         steps:
@@ -152,7 +155,7 @@ jobs:
                   echo "EOF" >> $GITHUB_OUTPUT
 
             - name: Show release notes content before release
-              run: echo "${{ steps.read_release_notes.outputs.release_notes }}"
+              run: cat release-notes.md
 
             - name: Download build artifacts
               uses: actions/download-artifact@v4
@@ -213,7 +216,10 @@ jobs:
     notify-discord:
         runs-on: ubuntu-latest
         needs: [version-check, extract-release-notes, build-and-pack, create-github-release]
-        if: needs.version-check.outputs.should_continue == 'true' && needs.create-github-release.result == 'success' && needs.version-check.outputs.test != 'true'
+        if: >
+            needs.version-check.outputs.should_continue == 'true' &&
+            needs.create-github-release.result == 'success' &&
+            needs.version-check.outputs.test != 'true'
         env:
             DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
             REPO_URL: "https://github.com/${{ github.repository }}"
@@ -233,7 +239,7 @@ jobs:
             - name: Read release notes content
               id: read_release_notes
               run: |
-                  echo "release_notes<<EOF" >> $GITHUB_OUTPUT
+                  echo "release_notes<<EOF" >> $GITHUB_OUTPUT 
                   cat release-notes.md >> $GITHUB_OUTPUT
                   echo "EOF" >> $GITHUB_OUTPUT
 
@@ -303,7 +309,9 @@ jobs:
     update-jira:
         runs-on: ubuntu-latest
         needs: [version-check, extract-release-notes, create-github-release]
-        if: needs.version-check.outputs.should_continue == 'true' && needs.create-github-release.result == 'success'
+        if: >
+            needs.version-check.outputs.should_continue == 'true' &&
+            needs.create-github-release.result == 'success'
         env:
             JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
             JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
