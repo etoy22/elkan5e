@@ -5,6 +5,7 @@
 ## Bug Fix
 - Restored Vocals as a choice
 - Removed broken links from gaming set
+- Cleaned up some formatting inconsistencies in spells
 
 # v1.13.6
 
