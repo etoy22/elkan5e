@@ -1,7 +1,7 @@
 import { test } from "node:test";
 import assert from "node:assert/strict";
-import { readFileSync } from "node:fs";
-import { dirname, resolve } from "node:path";
+import { readFileSync, readdirSync } from "node:fs";
+import { dirname, extname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parse } from "yaml";
 import { buildPayload, releaseToFoundry } from "../.github/workflows/scripts/release-foundry.js";
@@ -11,6 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const workflowPath = resolve(__dirname, "../.github/workflows/main.yml");
 const workflow = parse(readFileSync(workflowPath, "utf8"));
+const packsRoot = resolve(__dirname, "../packs/_source");
 
 const baseEnv = Object.freeze({
 	FOUNDRY_API_TOKEN: "token-123",
@@ -28,6 +29,49 @@ function createConsoleMock() {
 			this.logCalls.push(args.join(" "));
 		},
 	};
+}
+
+function walkJsonFiles(dir) {
+	const out = [];
+	for (const entry of readdirSync(dir, { withFileTypes: true })) {
+		const entryPath = join(dir, entry.name);
+		if (entry.isDirectory()) out.push(...walkJsonFiles(entryPath));
+		else if (extname(entry.name) === ".json") out.push(entryPath);
+	}
+	return out;
+}
+
+function formatJsonParseError(filePath, err) {
+	const message = err && err.message ? err.message : String(err);
+	let details = `PARSE ERROR: ${filePath}\n${message}`;
+
+	try {
+		const content = readFileSync(filePath, "utf8");
+		const match = /position (\d+)|line (\d+) column (\d+)/i.exec(message);
+		if (match?.[1]) {
+			const pos = Number(match[1]);
+			const start = Math.max(0, pos - 80);
+			const end = Math.min(content.length, pos + 80);
+			details += `\n\n--- context ---\n${content.slice(start, end)}\n--- end ---`;
+		} else if (match?.[2]) {
+			const lineNumber = Number(match[2]);
+			const lines = content.split(/\r?\n/);
+			const start = Math.max(0, lineNumber - 3);
+			const end = Math.min(lines.length, lineNumber + 2);
+			const excerpt = lines
+				.slice(start, end)
+				.map((line, idx) => {
+					const n = String(start + idx + 1).padStart(4, " ");
+					return `${n}: ${line}`;
+				})
+				.join("\n");
+			details += `\n\n--- context ---\n${excerpt}\n--- end ---`;
+		} else {
+			details += `\n\n--- file start ---\n${content.slice(0, 400)}\n--- end ---`;
+		}
+	} catch {}
+
+	return details;
 }
 
 test("release-foundry-package job is wired to the release script", () => {
@@ -269,4 +313,20 @@ test("updateModuleJson synchronises manifest and download URLs with the version"
 		written.download,
 		"https://github.com/etoy22/elkan5e/releases/download/v1.2.3/module.zip",
 	);
+});
+
+test("pack source JSON files parse cleanly", () => {
+	const files = walkJsonFiles(packsRoot);
+	const errors = [];
+
+	for (const filePath of files) {
+		try {
+			const content = readFileSync(filePath, "utf8");
+			JSON.parse(content);
+		} catch (err) {
+			errors.push(formatJsonParseError(filePath, err));
+		}
+	}
+
+	assert.equal(errors.length, 0, errors.join("\n\n"));
 });
