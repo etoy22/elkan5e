@@ -4,7 +4,7 @@
 
 ## Bug Fix
 - Restored Vocals as a choice
-- Removed broken links
+- Removed broken links from gaming set
 
 # v1.13.6
 
