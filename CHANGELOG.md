@@ -1,12 +1,19 @@
 # Changelog
 
+# v1.13.6.1
+
+## Bug Fix
+- Restored Vocals as a choice
+- Removed broken links
+
 # v1.13.6
 
 ## Classes
 
 **[Bard](https://www.elkan5e.com/classes/bard)**
 - Switched to two instrument proficiencies to reflect that instrument proficiencies are now by instrument category.
- **[Druid](https://www.elkan5e.com/classes/druid)**
+
+**[Druid](https://www.elkan5e.com/classes/druid)**
   - Chthonic:
     - Level 1 spells swapped to Color Spray and Dissonant Whispers. Otherworldly Veil replaces Passwall at level 5.
 
@@ -15,14 +22,16 @@
 
 **[Rogue](https://www.elkan5e.com/classes/rouge)**
 - Ranger tool/vehicle options expanded to the whole list.
- **[Warlock](https://www.elkan5e.com/classes/warlock)**
+
+**[Warlock](https://www.elkan5e.com/classes/warlock)**
   - Fiend: 
     - Dark One's Own Luck is no longer consumed when it fails.
 
 ## Equipment
 - Instruments are grouped into one of five categories, some crafting tools were combined, and all references to gaining tools are now consistent with these changes
   - Fleshed out items for the various instrument types.
-**Feat**
+
+## Feat
 - Turn the Unholy now ends early if the cleric becomes incapacitated.
 
 ## Spells
