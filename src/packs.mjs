@@ -295,7 +295,8 @@ async function cleanPacks(packName, entryName) {
 		for await (const src of _walkDir(path.join(PACK_SRC, folder.name))) {
 			let data;
 			try {
-				const content = await readFile(src, { encoding: "utf8" });
+				let content = await readFile(src, { encoding: "utf8" });
+				if (content.charCodeAt(0) === 0xfeff) content = content.slice(1);
 				data = JSON.parse(content);
 			} catch (err) {
 				logger.error(`Failed to parse JSON in file: ${src}`);
@@ -482,6 +483,13 @@ async function extractPacks(packName, entryName) {
 			},
 			yaml: false,
 		});
+
+		if (writtenFiles.size === 0) {
+			logger.info(
+				`No entries extracted for ${packInfo.name}; skipping stale cleanup to preserve existing files.`,
+			);
+			continue;
+		}
 
 		for (const file of existingFilesSet) {
 			if (!writtenFiles.has(file)) {
