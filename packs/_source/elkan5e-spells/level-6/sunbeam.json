@@ -181,18 +181,6 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedProperties": [
-				"vocal",
-				"somatic",
-				"material",
-				"concentration"
-			]
 		}
 	},
 	"system": {
@@ -201,7 +189,7 @@
 			"chat": ""
 		},
 		"source": {
-			"custom": "Elkan 5e",
+			"custom": "elkan5e.com/spells/sunbeam",
 			"revision": 1,
 			"rules": "",
 			"book": "Elkan 5e",
@@ -347,7 +335,8 @@
 				"appliedEffects": [
 					"UipbqM1ltYhrzFnJ",
 					"blKszWgnHgQS6Ny7"
-				]
+				],
+				"effectConditionText": "!target.traits.ci.value.has('blinded')"
 			},
 			"SknNCnaBTOZIPofn": {
 				"type": "save",
@@ -425,7 +414,7 @@
 				"name": "",
 				"useConditionText": "",
 				"forceDialog": false,
-				"effectConditionText": "",
+				"effectConditionText": "!target.traits.ci.value.has('blinded')",
 				"_id": "SknNCnaBTOZIPofn",
 				"img": "",
 				"appliedEffects": [

@@ -5,7 +5,7 @@
 	"main": "elkan5e.mjs",
 	"type": "module",
 	"scripts": {
-		"pack": "npm run build:clean && npm run build:db",
+		"pack": "node ./scripts/pack-chain.mjs",
 		"clean": "npm run fix && npm run build:clean",
 		"unpack": "node ./src/packs.mjs package unpack",
 		"build:clean": "node ./src/packs.mjs package clean",
@@ -29,6 +29,7 @@
 	"dependencies": {
 		"@foundryvtt/foundryvtt-cli": "^1.0.3",
 		"fancy-log": "^2.0.0",
+		"level": "^10.0.0",
 		"yargs": "^17.7.2"
 	},
 	"repository": {

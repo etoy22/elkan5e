@@ -394,6 +394,12 @@ function setupConditionRefs() {
 
 	CONFIG.DND5E.rules.disease =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.232cb157e7054330";
+	CONFIG.DND5E.rules.bloodied = 
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.2YZgnTbeQ4rGG6t9"
+	CONFIG.DND5E.rules.obscurred = 
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.FuFWdz6zw9P9VrON"
+	CONFIG.DND5E.rules.diseased = CONFIG.DND5E.rules.disease = 
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.C1uE5H2DfghUGEID"
 }
 
 function setupD20Refs() {
@@ -408,10 +414,47 @@ function setupD20Refs() {
 }
 
 function setupHazardRefs() {
-	CONFIG.DND5E.rules.suffocating =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.e7rUhwl4HkTVE0Qs.JournalEntryPage.BIlnr0xYhqt4TGsi";
-	CONFIG.DND5E.rules.hazards =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.e7rUhwl4HkTVE0Qs.JournalEntryPage.5hyEitPd1Kb27fP5";
+	const base = "Compendium.elkan5e.elkan5e-rules.JournalEntry.e7rUhwl4HkTVE0Qs.JournalEntryPage.";
+	const HAZARD_PAGES = [
+		{ key: "hazards", id: "WEVQOPQ2c5j0bSTD" },
+		{ key: "environmentaleffects", id: "ZMfiHUPKTh8oYnk5" },
+		{ key: "blizzard", id: "dzPV4R746FCId3fb" },
+		{ key: "burning", id: "znHHmhO6vGjmeugR" },
+		{ key: "dehydration", id: "xZRo576gFkVzqTAA" },
+		{ key: "deepsnow", id: "XccX8ApfoV0pLjBN" },
+		{ key: "deepwater", id: "0i25Urgz8wWCf02q" },
+		{ key: "denseforest", id: "XxWh2q3PQ74ozzZb" },
+		{ key: "exposedlava", id: "N8OF4NNXEILTxSh0" },
+		{ key: "extremecold", id: "99czUtGCZD2ZTXVy" },
+		{ key: "extremeheat", id: "jXNT3HSmoecSmE47" },
+		{ key: "falling", id: "TDbwlHfW1Kd4sLIZ" },
+		{ key: "frigidwater", id: "VainaneWo3z1UvdD" },
+		{ key: "heavyfog", id: "UCIP87y4WF8mZZaM" },
+		{ key: "heavyprecipitation", id: "Cxrt8iQnflR7rNXu" },
+		{ key: "highaltitude", id: "y1BYEyDSsWcCxd9l" },
+		{ key: "lightfog", id: "vFzSsBIlzNASDVMg" },
+		{ key: "loosesand", id: "C6U0KPMCU05Q6LpC" },
+		{ key: "malnutrition", id: "IxUkC78G9mRb3xQO" },
+		{ key: "muddyterrain", id: "Q5mBAYRUw8Xbb6fj" },
+		{ key: "plantsundergrowth", id: "vHkK402DiJ3WS956" },
+		{ key: "poisonousfumes", id: "nXrA1SrhzvFfERkH" },
+		{ key: "pollutedwater", id: "ujicgbpVFbZ9XMfo" },
+		{ key: "rubblerocks", id: "ZftAr7nx6CNMxyCS" },
+		{ key: "rockyterrain", id: "hrFhtm1nUpBCE4us" },
+		{ key: "sandstorm", id: "u5ugGezm5QzpDOC6" },
+		{ key: "shallowbog", id: "sanzrKa5XI3QToAU" },
+		{ key: "slipperyice", id: "X8bksncR7EcaV0ov" },
+		{ key: "strongwind", id: "BsWkNDqruDAuGwZU" },
+		{ key: "suffocating", id: "NJdquJJIddZbeKdw" },
+		{ key: "suckingground", id: "Ar30uhkDfcespn3h" },
+		{ key: "thinice", id: "xK13cz7y8NL4nKk5" },
+		{ key: "thornbush", id: "R2sqqN0gWw8XKR47" },
+		{ key: "thunderstorm", id: "EtQNW6ECR6xpGsjk" },
+	];
+	if (!CONFIG.DND5E.rules) CONFIG.DND5E.rules = {};
+	for (const { key, id } of HAZARD_PAGES) {
+		CONFIG.DND5E.rules[key] = `${base}${id}`;
+	}
 }
 
 function setupRestRefs() {

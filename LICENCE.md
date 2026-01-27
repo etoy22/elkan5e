@@ -38,6 +38,12 @@ The SRD 5.1 is licensed under the Creative Commons Attribution 4.0 International
 /icons/conditions/unconscious.svg - Night sleep icon
 <br>
 /icons/conditions/squeezing.svg - Spiked wall icon
+<br>
+/icons/hazards/dehydration.svg - Waterskin icon
+<br>
+/icons/hazards/suffocation.svg - Lungs icon
+<br>
+/icons/statuses/sleeping.svg - Night sleep icon
 </details>
 
 ## Lorc under CC BY 3.0
@@ -70,12 +76,26 @@ The SRD 5.1 is licensed under the Creative Commons Attribution 4.0 International
 /icons/conditions/cursed.svg - Voodoo doll icon
 <br>
 /icons/conditions/transformed.svg - Flat paw print icon
+<br>
+/icons/statuses/burrowing.svg - Spade icon
+<br>
+/icons/statuses/flying.svg - Feathered wing icon
+<br>
+/icons/statuses/hovering.svg - Wingfoot icon
+<br>
+/icons/statuses/ethereal.svg - Ghost Ally icon
+<br>
+/icons/hazards/falling.svg - Falling Boulder icon
 </details>
 
-## Flaticon
+## Mikiko under CC BY-NC-SA 4.0
+
+This work includes icons from mikiko.art under the Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License, available at https://creativecommons.org/licenses/by-nc-sa/4.0/.
 
 <details>
-<a href="https://www.flaticon.com/free-icons/remember" title="remember icons">Remember icons created by Freepik - Flaticon</a> <br>
+/icons/statuses/marked.svg - Target icon
+<br>
+/icons/statuses/bleeding.svg - Blood droplet icon
 </details>
 
 ## Skoll under CC BY 3.0
@@ -94,14 +114,20 @@ The SRD 5.1 is licensed under the Creative Commons Attribution 4.0 International
 /icons/conditions/dead.svg - Death skull icon
 <br>
 /icons/conditions/prone.svg - Falling icon
+<br>
+/icons/hazards/burning.svg - Flamer icon
 </details>
 
-## DarkZaitzev under CC BY 3.0
+## Caro Asercion under CC BY 3.0
 
 <details>
-/icons/conditions/hiding.svg - Ninja head icon
-<br>
-/icons/conditions/dodging.svg - Acrobatic icon
+/icons/hazards/malnutrition.svg - Bowl of Rice icon
+</details>
+
+## Flaticon
+
+<details>
+<a href="https://www.flaticon.com/free-icons/remember" title="remember icons">Remember icons created by Freepik - Flaticon</a> <br>
 </details>
 
 Weapon icons by Ulisses Klysman: https://www.instagram.com/klysman37/
