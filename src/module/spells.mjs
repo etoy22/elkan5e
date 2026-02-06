@@ -1,6 +1,4 @@
-import { drainedEffect, forEachDamagedTarget } from "./global.mjs";
-
-const SIZE_ORDER = ["tiny", "sm", "med", "lg", "huge", "grg"];
+import { drainedEffect, forEachDamagedTarget, SIZE_ORDER } from "./global.mjs";
 const SIZE_TO_GRID = {
 	tiny: 0.5,
 	sm: 1,

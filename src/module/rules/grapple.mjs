@@ -1,32 +1,14 @@
-const getSkillTotal = (actor, key) =>
-	Number(actor?.system?.skills?.[key]?.total ?? actor?.system?.skills?.[key]?.mod ?? 0);
-
-const chooseDefenderSkill = (actor) => {
-	const ath = getSkillTotal(actor, "ath");
-	const acr = getSkillTotal(actor, "acr");
-	return acr > ath ? "acr" : "ath";
-};
+import { chooseDefenderSkill, sizeIndex } from "../global.mjs";
 
 const imgForCondition = (key) => `modules/elkan5e/icons/conditions/${key}.svg`;
+const t = (key, data) => (data ? game.i18n.format(key, data) : game.i18n.localize(key));
 
-const SIZE_ORDER = ["tiny", "sm", "med", "lg", "huge", "grg"];
-
-const hasPowerfulBuild = (actor) =>
-	actor?.items?.some(
-		(i) =>
-			i?.system?.identifier === "powerful-build" ||
-			i?.identity === "powerful-build" ||
-			i?.name?.toLowerCase() === "powerful build",
-	);
-
-const sizeIndex = (actor) => {
-	const size = actor?.system?.traits?.size ?? "med";
-	const idx = SIZE_ORDER.indexOf(size);
-	const base = idx === -1 ? SIZE_ORDER.indexOf("med") : idx;
-	if (!hasPowerfulBuild(actor)) return base;
-	return Math.min(base + 1, SIZE_ORDER.length - 1);
-};
-
+/**
+ * Check whether an ActiveEffect includes a given status id.
+ * @param {ActiveEffect} effect
+ * @param {string} statusId
+ * @returns {boolean}
+ */
 const hasStatus = (effect, statusId) => {
 	const statuses = effect?.statuses;
 	if (!statuses) return false;
@@ -35,6 +17,11 @@ const hasStatus = (effect, statusId) => {
 	return false;
 };
 
+/**
+ * Clone the condition changes for a DND5E condition type.
+ * @param {string} key
+ * @returns {Array<object>}
+ */
 const getConditionChanges = (key) => {
 	const cond = CONFIG.DND5E?.conditionTypes?.[key];
 	return cond?.changes ? foundry.utils.duplicate(cond.changes) : [];
@@ -42,9 +29,20 @@ const getConditionChanges = (key) => {
 
 const DRAG_IGNORE = new Set();
 
+/**
+ * Get an actor's climb speed (0 if missing).
+ * @param {Actor} actor
+ * @returns {number}
+ */
 const getClimbSpeed = (actor) =>
 	Number(actor?.system?.attributes?.movement?.climb ?? 0);
 
+/**
+ * Remove the temporary climber advantage effect from the grappler.
+ * @param {Actor} grapplerActor
+ * @param {Actor} grappledActor
+ * @returns {Promise<void>}
+ */
 const removeClimberEffect = async (grapplerActor, grappledActor) => {
 	if (!grapplerActor || !grappledActor) return;
 	const effect = grapplerActor.effects.find(
@@ -60,12 +58,96 @@ const removeClimberEffect = async (grapplerActor, grappledActor) => {
 	}
 };
 
+/**
+ * Collect all active grapple effects created by the grappler on scene tokens.
+ * @param {Actor} grapplerActor
+ * @returns {Array<{token: Token, actor: Actor, effects: ActiveEffect[]}>}
+ */
+const getActiveGrapples = (grapplerActor) => {
+	if (!canvas?.tokens?.placeables || !grapplerActor) return [];
+	const grapples = [];
+	for (const token of canvas.tokens.placeables) {
+		const actor = token?.actor;
+		if (!actor) continue;
+		const effects = actor.effects.filter(
+			(e) => e?.origin === grapplerActor.uuid && hasStatus(e, "grappled"),
+		);
+		if (!effects.length) continue;
+		grapples.push({ token, actor, effects });
+	}
+	return grapples;
+};
+
+/**
+ * Prompt the grappler to select which existing grapples to release.
+ * @param {Actor} grapplerActor
+ * @param {Array<{token: Token, actor: Actor, effects: ActiveEffect[]}>} active
+ * @returns {Promise<number[]>}
+ */
+const chooseGrapplesToRelease = async (grapplerActor, active) => {
+	if (!active?.length) return [];
+	if (!grapplerActor?.isOwner && !game.user?.isGM) return [];
+	const DialogV2 = foundry.applications.api.DialogV2;
+	return new Promise((resolve) => {
+		const options = active
+			.map(
+				(g, idx) => `
+					<div class="form-group">
+						<label>
+							<input type="checkbox" name="release" value="${idx}">
+							${g.actor?.name ?? t("elkan5e.grapple.releaseDialog.target", { index: idx + 1 })}
+						</label>
+					</div>
+				`,
+			)
+			.join("");
+		new DialogV2({
+			window: { title: t("elkan5e.grapple.releaseDialog.title") },
+			content: `
+				<form>
+					<p>${t("elkan5e.grapple.releaseDialog.prompt")}</p>
+					${options}
+				</form>
+			`,
+			buttons: [
+				{
+					action: "ok",
+					label: t("elkan5e.grapple.releaseDialog.releaseSelected"),
+					callback: (_event, button) => {
+						const selected = Array.from(
+							button.form.querySelectorAll("input[name='release']:checked"),
+						).map((el) => Number(el.value));
+						resolve(selected.filter((v) => Number.isFinite(v)));
+					},
+				},
+				{
+					action: "skip",
+					label: t("elkan5e.grapple.releaseDialog.keepAll"),
+					callback: () => resolve([]),
+				},
+			],
+			default: "skip",
+		}).render(true);
+	});
+};
+
+/**
+ * Resolve the grapple range from the item's range or default to 5 ft.
+ * @param {object} workflow
+ * @returns {number}
+ */
 const getGrappleRange = (workflow) => {
 	const raw = workflow?.item?.system?.range?.value;
 	const range = Number(raw);
 	return Number.isFinite(range) && range > 0 ? range : 5;
 };
 
+/**
+ * Maintain grapple movement rules when either token moves.
+ * @param {TokenDocument} tokenDoc
+ * @param {object} changes
+ * @returns {Promise<void>}
+ */
 export async function handleGrapplerMove(tokenDoc, changes) {
 	if (!game.user?.isGM) return;
 	if (!canvas?.tokens) return;
@@ -164,11 +246,19 @@ export async function handleGrapplerMove(tokenDoc, changes) {
 	}
 }
 
+/**
+ * Perform a contested grapple against each targeted creature.
+ * @param {object} workflow
+ * @param {boolean} [acr=false] - If true, use Acrobatics instead of Athletics.
+ * @returns {Promise<void>}
+ */
 export async function grapple(workflow, acr = false) {
 	if (!workflow?.actor) return;
 	const token = workflow.token ?? MidiQOL.tokenForActor(workflow.actor);
 	if (!token) {
-		ui.notifications.warn(`${workflow.actor.name} does not have a token on the canvas`);
+		ui.notifications.warn(
+			t("elkan5e.grapple.notifications.noToken", { name: workflow.actor.name }),
+		);
 		return;
 	}
 	if (!workflow.targets || workflow.targets.size === 0) {
@@ -178,11 +268,31 @@ export async function grapple(workflow, acr = false) {
 
 	const grappler = workflow.actor;
 	const grapplerSkillKey = acr ? "acr" : "ath";
-	const grapplerAbility = grapplerSkillKey === "acr" ? "Acrobatics" : "Athletics";
+	const grapplerAbility =
+		grapplerSkillKey === "acr"
+			? t("elkan5e.skills.acrobatics")
+			: t("elkan5e.skills.athletics");
 	const grapplerSize = sizeIndex(grappler);
-	const flavor = workflow.item?.name ?? "Grapple";
+	const flavor = workflow.item?.name ?? t("elkan5e.grapple.name");
 	const range = getGrappleRange(workflow);
 	const icon = workflow.item?.img ?? imgForCondition("grappled");
+
+	const activeGrapples = getActiveGrapples(grappler);
+	const releaseIndexes = await chooseGrapplesToRelease(grappler, activeGrapples);
+	if (releaseIndexes.length) {
+		for (const idx of releaseIndexes) {
+			const entry = activeGrapples[idx];
+			if (!entry) continue;
+			for (const effect of entry.effects) {
+				try {
+					await effect.delete();
+				} catch (error) {
+					console.warn("Elkan 5e | Failed to release grapple", error);
+				}
+			}
+			await removeClimberEffect(grappler, entry.actor);
+		}
+	}
 
 	const applyGrapple = async (_sourceToken, targetToken, sizeDiff, grappleRange) => {
 		const targetActor = targetToken?.actor;
@@ -222,7 +332,7 @@ export async function grapple(workflow, acr = false) {
 				if (!existingClimber) {
 					await grappler.createEmbeddedDocuments("ActiveEffect", [
 						{
-							name: "Grappling (Climber)",
+							name: t("elkan5e.grapple.climberEffect"),
 							icon,
 							origin: targetActor.uuid,
 							flags: {
@@ -262,7 +372,7 @@ export async function grapple(workflow, acr = false) {
 				if (!existingClimber) {
 					await grappler.createEmbeddedDocuments("ActiveEffect", [
 						{
-							name: "Grappling (Climber)",
+							name: t("elkan5e.grapple.climberEffect"),
 							icon,
 							origin: targetActor.uuid,
 							flags: {
@@ -289,7 +399,7 @@ export async function grapple(workflow, acr = false) {
 			}
 		}
 		const effect = {
-			name: game.i18n.localize("elkan5e.conditions.grappled") || "Grappled",
+			name: game.i18n.localize("elkan5e.conditions.grappled") || t("elkan5e.grapple.grappled"),
 			icon,
 			origin: grappler.uuid,
 			flags: {
@@ -307,7 +417,12 @@ export async function grapple(workflow, acr = false) {
 			statuses,
 		};
 		await targetActor.createEmbeddedDocuments("ActiveEffect", [effect]);
-		ui.notifications.info(`${grappler.name} grapples ${targetActor.name}.`);
+		ui.notifications.info(
+			t("elkan5e.grapple.notifications.grappled", {
+				grappler: grappler.name,
+				target: targetActor.name,
+			}),
+		);
 	};
 
 	for (const targetToken of workflow.targets) {
@@ -321,7 +436,10 @@ export async function grapple(workflow, acr = false) {
 		const grapplerAdv = grapplerSize > targetSize;
 		const targetAdv = targetSize > grapplerSize;
 
-		const targetAbility = targetSkill === "acr" ? "Acrobatics" : "Athletics";
+		const targetAbility =
+			targetSkill === "acr"
+				? t("elkan5e.skills.acrobatics")
+				: t("elkan5e.skills.athletics");
 
 		await MidiQOL.contestedRoll({
 			source: {

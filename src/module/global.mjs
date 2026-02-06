@@ -184,3 +184,74 @@ export async function forEachDamagedTarget(workflow, callback) {
 		await Promise.resolve(callback(token, dmg, saved));
 	}
 }
+
+export const SIZE_ORDER = ["tiny", "sm", "med", "lg", "huge", "grg"];
+
+const hasPowerfulBuild = (actor) =>
+	actor?.items?.some(
+		(i) =>
+			i?.system?.identifier === "powerful-build" ||
+			i?.identity === "powerful-build" ||
+			i?.name?.toLowerCase() === "powerful build",
+	);
+
+/**
+ * Get a skill total or fallback modifier for a skill key.
+ * @param {Actor} actor
+ * @param {string} key
+ * @returns {number}
+ */
+export const getSkillTotal = (actor, key) =>
+	Number(actor?.system?.skills?.[key]?.total ?? actor?.system?.skills?.[key]?.mod ?? 0);
+
+/**
+ * Choose the defender's better skill between Athletics and Acrobatics.
+ * @param {Actor} actor
+ * @returns {"ath"|"acr"}
+ */
+export const chooseDefenderSkill = (actor) => {
+	const ath = getSkillTotal(actor, "ath");
+	const acr = getSkillTotal(actor, "acr");
+	return acr > ath ? "acr" : "ath";
+};
+
+/**
+ * Get size index for an actor, applying Powerful Build if present.
+ * @param {Actor} actor
+ * @returns {number}
+ */
+export const sizeIndex = (actor) => {
+	const size = actor?.system?.traits?.size ?? "med";
+	const idx = SIZE_ORDER.indexOf(size);
+	const base = idx === -1 ? SIZE_ORDER.indexOf("med") : idx;
+	if (!hasPowerfulBuild(actor)) return base;
+	return Math.min(base + 1, SIZE_ORDER.length - 1);
+};
+
+/**
+ * Check whether an actor has a special trait by name.
+ * Supports system traits, custom text, or module flags.
+ * @param {Actor} actor
+ * @param {string} trait
+ * @returns {boolean}
+ */
+export const hasSpecialTrait = (actor, trait) => {
+	const key = String(trait ?? "").trim().toLowerCase();
+	if (!key || !actor) return false;
+
+	const traits = actor.system?.traits ?? {};
+	const special = traits.special ?? traits.specialTraits ?? null;
+	const values =
+		Array.isArray(special?.value) ? special.value : Array.isArray(special) ? special : [];
+	if (values.some((v) => String(v).toLowerCase() === key)) return true;
+
+	const custom = `${special?.custom ?? ""} ${traits?.custom ?? ""}`.toLowerCase();
+	if (custom.includes(key)) return true;
+
+	const flags = actor.flags?.elkan5e ?? {};
+	if (flags?.traits?.[key]) return true;
+	if (flags?.[key]) return true;
+	if (actor.flags?.dnd5e?.[key]) return true;
+
+	return false;
+};

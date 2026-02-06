@@ -1,42 +1,35 @@
-const getSkillTotal = (actor, key) =>
-	Number(actor?.system?.skills?.[key]?.total ?? actor?.system?.skills?.[key]?.mod ?? 0);
+import { chooseDefenderSkill, sizeIndex, hasSpecialTrait } from "../global.mjs";
 
-const chooseDefenderSkill = (actor) => {
-	const ath = getSkillTotal(actor, "ath");
-	const acr = getSkillTotal(actor, "acr");
-	return acr > ath ? "acr" : "ath";
-};
+const t = (key, data) => (data ? game.i18n.format(key, data) : game.i18n.localize(key));
 
-const SIZE_ORDER = ["tiny", "sm", "med", "lg", "huge", "grg"];
-
-const hasPowerfulBuild = (actor) =>
-	actor?.items?.some(
-		(i) =>
-			i?.system?.identifier === "powerful-build" ||
-			i?.identity === "powerful-build" ||
-			i?.name?.toLowerCase() === "powerful build",
-	);
-
-const sizeIndex = (actor) => {
-	const size = actor?.system?.traits?.size ?? "med";
-	const idx = SIZE_ORDER.indexOf(size);
-	const base = idx === -1 ? SIZE_ORDER.indexOf("med") : idx;
-	if (!hasPowerfulBuild(actor)) return base;
-	return Math.min(base + 1, SIZE_ORDER.length - 1);
-};
-
+/**
+ * Convert a distance in feet to grid pixels.
+ * @param {number} distance
+ * @returns {number}
+ */
 const getGridStep = (distance) => {
 	const gridDistance = canvas.grid?.distance ?? 5;
 	const gridSize = canvas.grid?.size ?? 1;
 	return (distance / gridDistance) * gridSize;
 };
 
+/**
+ * Compute how many grid steps fit inside a distance.
+ * @param {number} distance
+ * @returns {number}
+ */
 const getStepCount = (distance) => {
 	const gridDistance = canvas.grid?.distance ?? 5;
 	if (!Number.isFinite(distance) || distance <= 0) return 0;
 	return Math.max(Math.floor(distance / gridDistance), 0);
 };
 
+/**
+ * Compute a token's top-left position from a desired center.
+ * @param {TokenDocument} tokenDoc
+ * @param {{x:number, y:number}} center
+ * @returns {{x:number, y:number}}
+ */
 const getTokenTopLeftFromCenter = (tokenDoc, center) => {
 	const gridSize = canvas.grid?.size ?? 1;
 	return {
@@ -45,6 +38,13 @@ const getTokenTopLeftFromCenter = (tokenDoc, center) => {
 	};
 };
 
+/**
+ * Get a rectangle for a token at a specific top-left.
+ * @param {TokenDocument} tokenDoc
+ * @param {number} x
+ * @param {number} y
+ * @returns {{x:number, y:number, w:number, h:number}}
+ */
 const getTokenRectAt = (tokenDoc, x, y) => {
 	const gridSize = canvas.grid?.size ?? 1;
 	return {
@@ -55,9 +55,22 @@ const getTokenRectAt = (tokenDoc, x, y) => {
 	};
 };
 
+/**
+ * AABB collision test.
+ * @param {{x:number, y:number, w:number, h:number}} a
+ * @param {{x:number, y:number, w:number, h:number}} b
+ * @returns {boolean}
+ */
 const rectsIntersect = (a, b) =>
 	a.x < b.x + b.w && a.x + a.w > b.x && a.y < b.y + b.h && a.y + a.h > b.y;
 
+/**
+ * Check if a token would overlap any other token at a position.
+ * @param {TokenDocument} tokenDoc
+ * @param {number} x
+ * @param {number} y
+ * @returns {boolean}
+ */
 const isOccupied = (tokenDoc, x, y) => {
 	const rect = getTokenRectAt(tokenDoc, x, y);
 	return canvas.tokens.placeables.some((t) => {
@@ -67,6 +80,10 @@ const isOccupied = (tokenDoc, x, y) => {
 	});
 };
 
+/**
+ * Get the scene bounds rectangle.
+ * @returns {{x:number, y:number, w:number, h:number}|null}
+ */
 const getSceneBounds = () => {
 	const dims = canvas.dimensions;
 	if (!dims) return null;
@@ -78,6 +95,12 @@ const getSceneBounds = () => {
 	};
 };
 
+/**
+ * Check if a rectangle lies fully within the scene bounds.
+ * @param {{x:number, y:number, w:number, h:number}} rect
+ * @param {{x:number, y:number, w:number, h:number}|null} bounds
+ * @returns {boolean}
+ */
 const withinBounds = (rect, bounds) => {
 	if (!bounds) return true;
 	return (
@@ -88,16 +111,23 @@ const withinBounds = (rect, bounds) => {
 	);
 };
 
+/**
+ * Build candidate push directions, optionally requiring "away" from the source.
+ * @param {Token} targetToken
+ * @param {Token} sourceToken
+ * @param {boolean} requireAway
+ * @returns {Array<{dx:number, dy:number, label:string}>}
+ */
 const getPushDirections = (targetToken, sourceToken, requireAway) => {
 	const dirs = [
-		{ dx: 1, dy: 0, label: "East" },
-		{ dx: -1, dy: 0, label: "West" },
-		{ dx: 0, dy: 1, label: "South" },
-		{ dx: 0, dy: -1, label: "North" },
-		{ dx: 1, dy: 1, label: "Southeast" },
-		{ dx: 1, dy: -1, label: "Northeast" },
-		{ dx: -1, dy: 1, label: "Southwest" },
-		{ dx: -1, dy: -1, label: "Northwest" },
+		{ dx: 1, dy: 0, label: t("elkan5e.directions.east") },
+		{ dx: -1, dy: 0, label: t("elkan5e.directions.west") },
+		{ dx: 0, dy: 1, label: t("elkan5e.directions.south") },
+		{ dx: 0, dy: -1, label: t("elkan5e.directions.north") },
+		{ dx: 1, dy: 1, label: t("elkan5e.directions.southeast") },
+		{ dx: 1, dy: -1, label: t("elkan5e.directions.northeast") },
+		{ dx: -1, dy: 1, label: t("elkan5e.directions.southwest") },
+		{ dx: -1, dy: -1, label: t("elkan5e.directions.northwest") },
 	];
 
 	const candidates = [];
@@ -119,6 +149,13 @@ const getPushDirections = (targetToken, sourceToken, requireAway) => {
 	return candidates;
 };
 
+/**
+ * Prompt the target to choose a direction.
+ * @param {Actor} actor
+ * @param {string} title
+ * @param {Array<{dx:number, dy:number, label:string}>} directions
+ * @returns {Promise<{dx:number, dy:number, label:string}|null>}
+ */
 const chooseDirection = async (actor, title, directions) => {
 	const candidates = directions ?? [];
 	if (!candidates.length) return null;
@@ -133,7 +170,7 @@ const chooseDirection = async (actor, title, directions) => {
 			content: `
 				<form>
 					<div class="form-group">
-						<label>Direction</label>
+						<label>${t("elkan5e.push.directionLabel")}</label>
 						<select id="push-direction">${options}</select>
 					</div>
 				</form>
@@ -141,7 +178,7 @@ const chooseDirection = async (actor, title, directions) => {
 			buttons: [
 				{
 					action: "ok",
-					label: "Push",
+					label: t("elkan5e.push.dialogPush"),
 					callback: (_event, button) => {
 						const idx = Number(button.form.querySelector("#push-direction")?.value ?? 0);
 						resolve(candidates[idx] ?? candidates[0]);
@@ -153,10 +190,19 @@ const chooseDirection = async (actor, title, directions) => {
 	});
 };
 
+/**
+ * Find the farthest unoccupied, in-bounds position along a direction.
+ * @param {Token} targetToken
+ * @param {Token} sourceToken
+ * @param {number} distance
+ * @param {{dx:number, dy:number}} dir
+ * @param {boolean} requireAway
+ * @returns {{x:number, y:number}|null}
+ */
 const getFarthestValidPosition = (targetToken, sourceToken, distance, dir, requireAway) => {
 	const stepCount = getStepCount(distance);
 	if (stepCount <= 0) return null;
-	const step = getGridStep(canvas.grid?.distance ?? 5);
+	const step = getGridStep(distance);
 	const bounds = getSceneBounds();
 	const startDistance = canvas.grid.measureDistance(sourceToken.center, targetToken.center);
 
@@ -177,6 +223,14 @@ const getFarthestValidPosition = (targetToken, sourceToken, distance, dir, requi
 	return lastValid;
 };
 
+/**
+ * Push a token using the configured choice mode.
+ * @param {Token} targetToken
+ * @param {Token} sourceToken
+ * @param {number} distance
+ * @param {number} choice
+ * @returns {Promise<void>}
+ */
 const pushByChoice = async (targetToken, sourceToken, distance, choice) => {
 	if (choice === 0) {
 		const dx = targetToken.center.x - sourceToken.center.x;
@@ -194,7 +248,7 @@ const pushByChoice = async (targetToken, sourceToken, distance, choice) => {
 	if (!directions.length) return;
 
 	const picker = targetToken.actor;
-	const selected = await chooseDirection(picker, "Push Direction", directions);
+	const selected = await chooseDirection(picker, t("elkan5e.push.directionTitle"), directions);
 	if (!selected) return;
 	const pos = getFarthestValidPosition(
 		targetToken,
@@ -207,11 +261,21 @@ const pushByChoice = async (targetToken, sourceToken, distance, choice) => {
 	await targetToken.document.update(pos);
 };
 
+/**
+ * Perform a contested shove against each targeted creature and move it on success.
+ * @param {object} workflow
+ * @param {boolean} [acr=false] - If true, use Acrobatics instead of Athletics.
+ * @param {number} [distance=5]
+ * @param {number} [choice=0]
+ * @returns {Promise<void>}
+ */
 export async function push(workflow, acr = false, distance = 5, choice = 0) {
 	if (!workflow?.actor) return;
 	const token = workflow.token ?? MidiQOL.tokenForActor(workflow.actor);
 	if (!token) {
-		ui.notifications.warn(`${workflow.actor.name} does not have a token on the canvas`);
+		ui.notifications.warn(
+			t("elkan5e.push.notifications.noToken", { name: workflow.actor.name }),
+		);
 		return;
 	}
 	if (!workflow.targets || workflow.targets.size === 0) {
@@ -221,9 +285,12 @@ export async function push(workflow, acr = false, distance = 5, choice = 0) {
 
 	const pusher = workflow.actor;
 	const pusherSkillKey = acr ? "acr" : "ath";
-	const pusherAbility = pusherSkillKey === "acr" ? "Acrobatics" : "Athletics";
+	const pusherAbility =
+		pusherSkillKey === "acr"
+			? t("elkan5e.skills.acrobatics")
+			: t("elkan5e.skills.athletics");
 	const pusherSize = sizeIndex(pusher);
-	const flavor = workflow.item?.name ?? "Push";
+	const flavor = workflow.item?.name ?? t("elkan5e.push.name");
 
 	const onSuccess = async (_sourceToken, targetToken) => {
 		await pushByChoice(targetToken, token, distance, choice);
@@ -232,13 +299,22 @@ export async function push(workflow, acr = false, distance = 5, choice = 0) {
 	for (const targetToken of workflow.targets) {
 		const targetActor = targetToken?.actor;
 		if (!targetActor) continue;
+		if (hasSpecialTrait(targetActor, "unpushable")) {
+			ui.notifications.info(
+				t("elkan5e.push.notifications.unpushable", { name: targetActor.name }),
+			);
+			continue;
+		}
 		const targetSkill = chooseDefenderSkill(targetActor);
 		const targetSize = sizeIndex(targetActor);
 
 		const pusherAdv = pusherSize > targetSize;
 		const targetAdv = targetSize > pusherSize;
 
-		const targetAbility = targetSkill === "acr" ? "Acrobatics" : "Athletics";
+		const targetAbility =
+			targetSkill === "acr"
+				? t("elkan5e.skills.acrobatics")
+				: t("elkan5e.skills.athletics");
 
 		await MidiQOL.contestedRoll({
 			source: {

@@ -3,6 +3,7 @@ export function formating() {
 	activation();
 	mats();
 	subFeatures();
+	traits();
 	sheets();
 }
 
@@ -85,6 +86,18 @@ export function subFeatures() {
 			manuevers: "Manuevers",
 		},
 	};
+}
+
+export function traits() {
+	CONFIG.DND5E.characterFlags ??= {};
+	if (!CONFIG.DND5E.characterFlags.unpushable) {
+		CONFIG.DND5E.characterFlags.unpushable = {
+			name: "elkan5e.traits.unpushable.name",
+			hint: "elkan5e.traits.unpushable.hint",
+			section: "DND5E.SpecialTraits",
+			type: Boolean,
+		};
+	}
 }
 
 export function sheets() {
