@@ -26,7 +26,9 @@ import {
 import { shadowRefuge, healingOverflow, infusedHealer } from "./module/classes/cleric.mjs";
 
 import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
-import { conditions, conditionsReady, grapple, push } from "./module/rules/condition.mjs";
+import { conditions, conditionsReady } from "./module/rules/condition.mjs";
+import { grapple, handleGrapplerMove } from "./module/rules/grapple.mjs";
+import { push } from "./module/rules/push.mjs";
 import { language } from "./module/rules/language.mjs";
 import { formating } from "./module/rules/format.mjs";
 import { tools, updateToolTypes } from "./module/rules/tools.mjs";
@@ -141,6 +143,14 @@ Hooks.on("updateActor", async (actor) => {
 		await updateBarbarianDefense(actor, "updateActor");
 	} catch (error) {
 		console.error("Elkan 5e | Error in updateActor hook:", error);
+	}
+});
+
+Hooks.on("updateToken", async (tokenDoc, changes) => {
+	try {
+		await handleGrapplerMove(tokenDoc, changes);
+	} catch (error) {
+		console.error("Elkan 5e | Error in updateToken grapple hook:", error);
 	}
 });
 
