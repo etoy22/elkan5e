@@ -1,0 +1,278 @@
+{
+	"_id": "dmgRopeOfClimbin",
+	"name": "Rope of Climbing",
+	"type": "equipment",
+	"folder": "AHdcu2sVDdMyInz3",
+	"img": "icons/sundries/survival/rope-wrapped-red.webp",
+	"system": {
+		"activities": {
+			"JH4C7mTutLBmBJyi": {
+				"type": "utility",
+				"name": "Damage Rope",
+				"activation": {
+					"type": "",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": true,
+						"max": "20"
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "",
+							"scaling": {
+								"mode": "amount",
+								"formula": ""
+							}
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": ""
+					},
+					"override": false,
+					"prompt": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"formula": "",
+					"name": ""
+				},
+				"_id": "JH4C7mTutLBmBJyi",
+				"img": "systems/dnd5e/icons/svg/activity/damage.svg",
+				"appliedEffects": []
+			},
+			"1zQvPyT12aIg017J": {
+				"type": "utility",
+				"name": "Repair Rope",
+				"activation": {
+					"type": "",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": true,
+						"max": "20"
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "-1",
+							"target": "",
+							"scaling": {
+								"mode": "amount",
+								"formula": "-1"
+							}
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"formula": "",
+					"name": ""
+				},
+				"_id": "1zQvPyT12aIg017J",
+				"img": "systems/dnd5e/icons/svg/activity/heal.svg",
+				"appliedEffects": []
+			},
+			"0QUTFIBynESqw7XZ": {
+				"type": "utility",
+				"name": "Command",
+				"_id": "0QUTFIBynESqw7XZ",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"type": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"img": "",
+				"visibility": {
+					"requireMagic": true,
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": "",
+					"requireIdentification": true
+				},
+				"appliedEffects": []
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"max": "20"
+		},
+		"description": {
+			"value": "<p><em>Wondrous Item - Uncommon</em></p><p><em>This 60-foot length of rope can hold up to 3,000 pounds.</em></p><p><em>A magic item like this counts as magical for overcoming effects.</em></p><p><strong>Action</strong></p><ul><li><p>While holding one end, command the other end to animate and move toward a destination up to the rope's length. It moves 10 feet when first commanded and 10 feet at the start of each of your turns until it reaches the destination or you tell it to stop.</p></li><li><p>AC 20, HP 20, Immunity to Poison and Psychic damage. Regains 1 HP every 5 minutes while above 0 HP. Destroyed at 0 HP.</p></li><li><p>You can command it to fasten or unfasten, knot or unknot, or coil itself.</p><ul><li><p>If you tell the rope to knot, large knots appear at 1-foot intervals; the rope shortens to 50 feet and grants Advantage on checks to climb using it.</p></li></ul></li></ul><section class=\"secret\" id=\"foundry-secret-1\"><p><strong>Foundry Note</strong></p><p>Includes 20 uses for tracking HP. Use <strong>Damage Rope</strong> to apply damage and <strong>Repair Rope</strong> to restore HP.</p></section>",
+			"chat": ""
+		},
+		"identifier": "rope-of-climbing",
+		"source": {
+			"revision": 1,
+			"rules": "2024",
+			"license": "",
+			"book": "",
+			"page": "",
+			"custom": ""
+		},
+		"identified": true,
+		"unidentified": {
+			"description": "<p><em><strong>Unidentified</strong></em></p><p><em>Rope, usually used for securing objects, vehicles, or creatures, this rope is 60 ft. in length.</em></p>",
+			"name": "Unidentified Rope"
+		},
+		"container": null,
+		"quantity": 1,
+		"weight": {
+			"value": 5,
+			"units": "lb"
+		},
+		"price": {
+			"value": 400,
+			"denomination": "gp"
+		},
+		"rarity": "uncommon",
+		"attunement": "",
+		"attuned": false,
+		"equipped": false,
+		"armor": {
+			"value": null,
+			"magicalBonus": null,
+			"dex": null
+		},
+		"cover": null,
+		"crewed": false,
+		"hp": {
+			"value": null,
+			"max": null,
+			"dt": null,
+			"conditions": ""
+		},
+		"type": {
+			"value": "wondrous",
+			"baseItem": ""
+		},
+		"properties": [
+			"mgc"
+		],
+		"strength": null,
+		"proficient": null
+	},
+	"effects": [],
+	"_key": "!items!dmgRopeOfClimbin"
+}

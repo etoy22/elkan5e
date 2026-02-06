@@ -10,10 +10,10 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p>You are &amp;reference[undead]. Most often, that means a necromancer raised you from the dead in a way that didn't entirely restore your life.</p><ul><li><p>You count as undead in addition to your normal type, as determined by your ancestry (usually &amp;reference[humanoid]).</p></li><li><p>You have resistance to either &amp;reference[poison] or &amp;reference[necrotic] damage (your choice).</p></li><li><p>When you roll a hit die to regain hit points during a short rest, you do not add your consititution bonus unless you are under the effects of the<em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.sYbLjB4sgonDhJYr]{Gentle Repose} </em>spell.</p></li></ul><p></p><p><em>If your character dies and is brought back from the dead in a way that would leave them undead, your DM may allow you to switch a feat for this one, or gain this feat as an extra feat.</em></p>",
+			"value": "<p>You are &amp;reference[undead]. Most often, that means a necromancer raised you from the dead in a way that didn't entirely restore your life.</p><ul><li><p>You count as &amp;reference[undead] in addition to your normal type, as determined by your ancestry (usually &amp;reference[humanoid]).</p></li><li><p>You have resistance to either &amp;reference[poison] or &amp;reference[necrotic] damage (your choice).</p></li><li><p>When you roll a hit die to regain hit points during a short rest, you do not add your consititution bonus unless you are under the effects of the <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.sYbLjB4sgonDhJYr]{Gentle Repose}</em> spell.</p></li></ul><p><em>If your character dies and is brought back from the dead in a way that would leave them &amp;reference[undead], your DM may allow you to switch a feat for this one, or gain this feat as an extra feat.</em></p>",
 			"chat": ""
 		},
-		"identifier": "",
+		"identifier": "undead-nature",
 		"source": {
 			"revision": 1,
 			"rules": "",
@@ -47,7 +47,8 @@
 						"cha": 0
 					},
 					"locked": [],
-					"points": 2
+					"points": 2,
+					"recommendation": null
 				},
 				"value": {
 					"type": "asi"
@@ -55,6 +56,28 @@
 				"level": 0,
 				"title": "",
 				"hint": ""
+			},
+			{
+				"type": "Trait",
+				"_id": "le0j9oaPBCv0caTp",
+				"configuration": {
+					"allowReplacements": false,
+					"choices": [
+						{
+							"count": 1,
+							"pool": [
+								"dr:necrotic",
+								"dr:poison"
+							]
+						}
+					],
+					"grants": [],
+					"mode": "default"
+				},
+				"level": 0,
+				"title": "",
+				"hint": "",
+				"value": {}
 			}
 		]
 	},
@@ -62,7 +85,7 @@
 		{
 			"name": "Undead Nature",
 			"img": "icons/magic/death/skeleton-worn-skull-tan.webp",
-			"origin": "Item.ZuSow6oqxXHoj7Mg",
+			"origin": "Compendium.elkan5e.elkan5e-feats.Item.XEq3S4popmzrJUfw",
 			"_id": "raLLSvpvw2nkDR2G",
 			"type": "base",
 			"system": {},
@@ -104,12 +127,9 @@
 					"macroRepeat": "none",
 					"specialDuration": []
 				},
-				"core": {
-					"overlay": false
-				},
 				"ActiveAuras": {
 					"isAura": false,
-					"aura": "None",
+					"aura": "Enemy",
 					"nameOverride": "",
 					"radius": "",
 					"alignment": "",
@@ -121,7 +141,8 @@
 					"displayTemp": false,
 					"hostile": false,
 					"onlyOnce": false,
-					"wallsBlock": "system"
+					"wallsBlock": "system",
+					"statuses": []
 				}
 			},
 			"_key": "!items.effects!XEq3S4popmzrJUfw.raLLSvpvw2nkDR2G"
@@ -152,10 +173,6 @@
 			"effectCondition": "",
 			"removeAttackDamageButtons": "default",
 			"otherCondition": ""
-		},
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
 		}
 	},
 	"_id": "XEq3S4popmzrJUfw",

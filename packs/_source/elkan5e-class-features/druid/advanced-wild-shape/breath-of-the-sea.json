@@ -6,7 +6,7 @@
 	"img": "icons/creatures/fish/fish-bluefin-yellow-blue.webp",
 	"system": {
 		"description": {
-			"value": "<p><strong>Bonus Action</strong> - 6 Creatures (60 ft.) - 1 Hour - Magical</p><ul><li><p>Targets have a swimming speed equal to their walking speed.</p></li><li><p>Targets can breathe underwater.</p></li></ul>",
+			"value": "<p><strong>Bonus Action</strong> - 6 Creatures (60 ft.) - 1 Hour - Magical</p><ul><li><p>Targets have a &reference[swimming]{Swimming} speed equal to their walking speed.</p></li><li><p>Targets can breathe underwater.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -112,10 +112,10 @@
 				]
 			}
 		},
-		"identifier": "",
+		"identifier": "breath-of-the-sea",
 		"enchant": {},
 		"prerequisites": {
-			"level": null
+			"level": 5
 		}
 	},
 	"effects": [
@@ -145,9 +145,6 @@
 			"origin": null,
 			"statuses": [],
 			"flags": {
-				"times-up": {
-					"isPassive": false
-				},
 				"dae": {
 					"disableIncapacitated": false,
 					"selfTarget": false,
@@ -177,14 +174,6 @@
 					"onlyOnce": false,
 					"wallsBlock": "system",
 					"statuses": []
-				},
-				"dnd5e": {
-					"riders": {
-						"statuses": []
-					}
-				},
-				"core": {
-					"overlay": false
 				}
 			},
 			"tint": "#ffffff",
@@ -220,16 +209,6 @@
 			"autoTarget": "default",
 			"removeAttackDamageButtons": "default",
 			"otherCondition": ""
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			}
-		},
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
 		}
 	},
 	"_key": "!items!fOYbPE3EWebPkJoZ"

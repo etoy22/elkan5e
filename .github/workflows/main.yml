@@ -132,7 +132,10 @@ jobs:
     create-github-release:
         runs-on: ubuntu-latest
         needs: [version-check, extract-release-notes, build-and-pack]
-        if: needs.version-check.outputs.should_continue == 'true' && needs.build-and-pack.result == 'success'
+        if: >
+            needs.version-check.outputs.should_continue == 'true' &&
+            needs.build-and-pack.result == 'success' &&
+            (needs.version-check.outputs.test == 'true' || github.ref == 'refs/heads/main')
         env:
             DRY_RUN: ${{ needs.version-check.outputs.test }}
         steps:
@@ -152,7 +155,7 @@ jobs:
                   echo "EOF" >> $GITHUB_OUTPUT
 
             - name: Show release notes content before release
-              run: echo "${{ steps.read_release_notes.outputs.release_notes }}"
+              run: cat release-notes.md
 
             - name: Download build artifacts
               uses: actions/download-artifact@v4
@@ -189,6 +192,7 @@ jobs:
                       module.zip
                       module.json
                   tag: "${{ needs.version-check.outputs.version }}"
+                  latest_release: true
 
     release-foundry-package:
         runs-on: ubuntu-latest
@@ -213,7 +217,10 @@ jobs:
     notify-discord:
         runs-on: ubuntu-latest
         needs: [version-check, extract-release-notes, build-and-pack, create-github-release]
-        if: needs.version-check.outputs.should_continue == 'true' && needs.create-github-release.result == 'success' && needs.version-check.outputs.test != 'true'
+        if: >
+            needs.version-check.outputs.should_continue == 'true' &&
+            needs.create-github-release.result == 'success' &&
+            needs.version-check.outputs.test != 'true'
         env:
             DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
             REPO_URL: "https://github.com/${{ github.repository }}"
@@ -233,80 +240,76 @@ jobs:
             - name: Read release notes content
               id: read_release_notes
               run: |
-                  echo "release_notes<<EOF" >> $GITHUB_OUTPUT
+                  echo "release_notes<<EOF" >> $GITHUB_OUTPUT 
                   cat release-notes.md >> $GITHUB_OUTPUT
                   echo "EOF" >> $GITHUB_OUTPUT
 
             - name: Prepare Discord payload
               id: prepare_discord_payload
+              env:
+                  RELEASE_NOTES: ${{ steps.read_release_notes.outputs.release_notes }}
+                  VERSION: ${{ needs.version-check.outputs.version }}
+                  MINIMUM: ${{ needs.version-check.outputs.minimum }}
+                  VERIFIED: ${{ needs.version-check.outputs.verified }}
+                  REPO_URL: https://github.com/${{ github.repository }}
               run: |
-                  RELEASE_NOTES="${{ steps.read_release_notes.outputs.release_notes }}"
-                  CLEAN_RELEASE_NOTES=$(echo -e "$RELEASE_NOTES")
-
-                  PAYLOAD=$(jq -n \
-                    --arg title "Elkan 5e Release" \
-                    --arg version "$VERSION" \
-                    --arg compatibility "Core: $MINIMUM +" \
-                    --arg foundry_url "https://foundryvtt.com/packages/elkan5e" \
-                    --arg release_url "$REPO_URL/releases/tag/$VERSION" \
-                    --arg download_url "$REPO_URL/releases/download/$VERSION/module.zip" \
-                    --arg release_notes "$CLEAN_RELEASE_NOTES" \
-                    '{embeds: [{
-                      title: $title,
-                      fields: [
-                        {name: "Version", value: $version, inline: true},
-                        {name: "Compatibility", value: $compatibility, inline: true},
-                        {name: "Foundry Package", value: $foundry_url, inline: false},
-                        {name: "Release Tag", value: $release_url, inline: false},
-                        {name: "Manual Download", value: $download_url, inline: false},
-                        {name: "Release Notes", value: $release_notes, inline: false}
-                      ]
-                    }]}')
-                  echo "$PAYLOAD"
-                  printf '%s' "$PAYLOAD" > discord-payload.json
+                  node <<'NODE'
+                  const fs = require('fs');
+                  const env = process.env;
+                  const releaseNotes = (env.RELEASE_NOTES || '').replace(/\r?\n/g, '\n').trim();
+                  const trimmedNotes = releaseNotes.length > 3900 ? `${releaseNotes.slice(0, 3897)}...` : releaseNotes;
+                  const releaseNotesField =
+                    trimmedNotes.length > 1024 ? `${trimmedNotes.slice(0, 1021)}...` : trimmedNotes;
+                  const payload = {
+                    embeds: [
+                      {
+                        title: 'Elkan 5e Release',
+                        fields: [
+                          { name: 'Version', value: env.VERSION || 'unknown', inline: true },
+                          { name: 'Compatibility', value: `Core: ${(env.MINIMUM || 'unknown')} +`, inline: true },
+                          { name: 'Foundry Package', value: 'https://foundryvtt.com/packages/elkan5e', inline: false },
+                          { name: 'Release Tag', value: `${env.REPO_URL}/releases/tag/${env.VERSION}`, inline: false },
+                          { name: 'Manual Download', value: `${env.REPO_URL}/releases/download/${env.VERSION}/module.zip`, inline: false },
+                          {
+                            name: 'Release Notes',
+                            value: releaseNotesField || 'See release notes artifact.',
+                            inline: false,
+                          }
+                        ]
+                      }
+                    ]
+                  };
+                  fs.writeFileSync('discord-payload.json', JSON.stringify(payload));
+                  NODE
                   echo "payload_path=discord-payload.json" >> $GITHUB_OUTPUT
 
             - name: Post to Discord
               run: |
-                  echo "Posting to Discord..."
-                  curl -H "Content-Type: application/json" -X POST -d @${{ steps.prepare_discord_payload.outputs.payload_path }} "$DISCORD_WEBHOOK"
-    update-jira:
-        runs-on: ubuntu-latest
-        needs: [version-check, extract-release-notes, create-github-release]
-        if: needs.version-check.outputs.should_continue == 'true' && needs.create-github-release.result == 'success'
-        env:
-            JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-            JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-            JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
-            JIRA_DRY_RUN: ${{ needs.version-check.outputs.test }}
-            RELEASE_VERSION: ${{ needs.version-check.outputs.version }}
-            RELEASE_URL: https://github.com/${{ github.repository }}/releases/tag/${{ needs.version-check.outputs.version }}
-            DEPLOYMENT_ENVIRONMENT_ID: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
-            DEPLOYMENT_ENVIRONMENT_NAME: ${{ github.ref == 'refs/heads/main' && 'Production' || 'Staging' }}
-            DEPLOYMENT_ENVIRONMENT_TYPE: ${{ github.ref == 'refs/heads/main' && 'production' || 'staging' }}
-        steps:
-            - uses: actions/checkout@v4
+                  set -eo pipefail
+                  if [ -z "${DISCORD_WEBHOOK:-}" ]; then
+                    echo "::warning::DISCORD_WEBHOOK secret is not configured; skipping Discord notification."
+                    exit 0
+                  fi
 
-            - name: Download release notes artifact
-              uses: actions/download-artifact@v4
-              with:
-                  name: release-notes
-                  path: .
+                  payload_path='${{ steps.prepare_discord_payload.outputs.payload_path }}'
+                  echo "Posting to Discord with payload ${payload_path}..."
 
-            - name: Read release notes content
-              id: read_release_notes
-              run: |
-                  echo "release_notes<<EOF" >> $GITHUB_OUTPUT
-                  cat release-notes.md >> $GITHUB_OUTPUT
-                  echo "EOF" >> $GITHUB_OUTPUT
+                  response_file="$(mktemp)"
+                  status="$(curl -sS -H 'Content-Type: application/json' -X POST -d @"${payload_path}" "$DISCORD_WEBHOOK" -o "${response_file}" -w "%{http_code}")"
 
-            - name: Send deployment and release info to Jira
-              env:
-                  RELEASE_NOTES: ${{ steps.read_release_notes.outputs.release_notes }}
-                  PIPELINE_URL: https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}
-                  PIPELINE_ID: ${{ format('{0}/{1}', github.repository, github.workflow) }}
-                  PIPELINE_NAME: ${{ github.workflow }}
-                  DEPLOYMENT_SEQUENCE_NUMBER: ${{ github.run_number }}
-                  DEPLOYMENT_UPDATE_SEQUENCE_NUMBER: ${{ github.run_number }}
-                  RELEASE_STATE: ${{ needs.version-check.outputs.test == 'true' && 'unreleased' || 'released' }}
-              run: node .github/workflows/scripts/update-jira.mjs
+                  if [ "${status}" -ge 200 ] && [ "${status}" -lt 300 ]; then
+                    echo "Discord webhook responded with HTTP ${status}"
+                    if [ -s "${response_file}" ]; then
+                      echo "Response:"
+                      cat "${response_file}"
+                    fi
+                    rm -f "${response_file}"
+                  else
+                    echo "::error::Discord webhook failed with HTTP ${status}"
+                    if [ -s "${response_file}" ]; then
+                      echo "Response:"
+                      cat "${response_file}"
+                    fi
+                    rm -f "${response_file}"
+                    exit 1
+                  fi

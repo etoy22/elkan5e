@@ -1,0 +1,219 @@
+{
+	"folder": "SjVk5lAwzIpqSBbH",
+	"name": "Explosive Shot",
+	"type": "spell",
+	"_id": "xTZ7DvHYrtkJiIcz",
+	"img": "icons/weapons/thrown/bomb-purple.webp",
+	"system": {
+		"activities": {
+			"Zzd18BzHv1xKt6rS": {
+				"type": "save",
+				"_id": "Zzd18BzHv1xKt6rS",
+				"activation": {
+					"type": "action",
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "self",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"onSave": "none",
+					"critical": {
+						"allow": false
+					},
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 1,
+							"denomination": 4,
+							"bonus": "",
+							"types": [
+								"fire"
+							],
+							"scaling": {
+								"mode": "whole",
+								"number": 1,
+								"formula": ""
+							}
+						},
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 1,
+							"denomination": 4,
+							"bonus": "",
+							"types": [
+								"bludgeoning"
+							],
+							"scaling": {
+								"mode": "whole",
+								"number": 1,
+								"formula": ""
+							}
+						}
+					]
+				},
+				"save": {
+					"ability": [],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "",
+				"otherActivityAsParentType": true,
+				"friendlySave": "default",
+				"name": "",
+				"img": "",
+				"appliedEffects": []
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"max": ""
+		},
+		"description": {
+			"value": "<p><em>Through a spell or technical know-how, you prepare a piece of ammunition to explode upon connecting with its target, then launch it.</em></p><p><strong>[[/save dex]]{DexterityÂ Save}</strong></p><ul><li><p><span><strong>Failure:</strong>Â Target takes [[/damage]].*</span></p></li><li><p><span><strong>Success:</strong>Â No damage.</span></p></li></ul><p>[[/damage 1d6 bludgeoning &amp; 1d4 fire]]</p><p><span><strong>*At Higher Levels:</strong>Â This spell's </span>damage increases by [[/damage]]{1d4 bludgeoning and 1d4 fire} when you reach aÂ total character or creature level of 5th level ([[/damage 2d4 bludgeoning &amp; 2d4 fire]]{2d4 each}), 11th level ([[/damage 3d4 bludgeoning &amp; 3d4 fire]]{3d4 each}), and 17th level ([[/damage 4d4 bludgeoning &amp; 4d4 fire]]{4d4 each}).</p>",
+			"chat": ""
+		},
+		"identifier": "explosive-shot",
+		"source": {
+			"revision": 1,
+			"rules": "2024",
+			"book": "Elkan 5e",
+			"page": "",
+			"custom": "https://www.elkan5e.com/spells/explosive-shot",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": ""
+		},
+		"duration": {
+			"units": "inst"
+		},
+		"level": 0,
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"method": "spell",
+		"prepared": 2,
+		"properties": [
+			"somatic",
+			"material"
+		],
+		"range": {
+			"units": "ft",
+			"special": "",
+			"value": "60"
+		},
+		"school": "evo",
+		"target": {
+			"template": {
+				"contiguous": false,
+				"units": "ft",
+				"type": "sphere",
+				"size": "5",
+				"count": ""
+			},
+			"affects": {
+				"choice": false,
+				"type": "",
+				"count": "",
+				"special": ""
+			}
+		}
+	},
+	"effects": [],
+	"_key": "!items!xTZ7DvHYrtkJiIcz"
+}

@@ -1,0 +1,262 @@
+{
+	"_id": "dmgJavelinOfLigh",
+	"name": "Javelin of Lightning",
+	"type": "weapon",
+	"img": "icons/weapons/polearms/spear-barbed-silver.webp",
+	"system": {
+		"activities": {
+			"i20Sq0KrXu1Cu54H": {
+				"_id": "i20Sq0KrXu1Cu54H",
+				"type": "attack",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": []
+				},
+				"attack": {
+					"critical": {
+						"threshold": null
+					},
+					"flat": false,
+					"type": {}
+				},
+				"damage": {
+					"critical": {},
+					"includeBase": true,
+					"parts": []
+				}
+			},
+			"mfPMOlnJzaaNBdd2": {
+				"type": "save",
+				"name": "Lightning Bolt",
+				"_id": "mfPMOlnJzaaNBdd2",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "activityUses",
+							"value": "1"
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": true,
+					"units": "ft",
+					"special": "",
+					"value": "120"
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": "line",
+						"size": "120",
+						"width": "5",
+						"count": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": "creature",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [
+						{
+							"period": "dawn",
+							"type": "recoverAll"
+						}
+					],
+					"max": "1"
+				},
+				"damage": {
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 4,
+							"denomination": 6,
+							"bonus": "",
+							"types": [
+								"lightning"
+							]
+						}
+					],
+					"onSave": "half"
+				},
+				"save": {
+					"ability": "dex",
+					"dc": {
+						"calculation": "",
+						"formula": "13"
+					}
+				},
+				"img": "",
+				"appliedEffects": [],
+				"visibility": {
+					"requireMagic": true,
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": "",
+					"requireIdentification": true
+				}
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"max": ""
+		},
+		"description": {
+			"value": "<p><em>Weapon (@UUID[Compendium.elkan5e.elkan5e-equipment.Item.pM8eu7VlKCHmEi3N]{Javelin}) - Uncommon</em></p><p><em>Javelins are long, thin spears. They can be used for thrusting attacks, but are designed to be thrown great distances.</em></p><p>When you hit with this magic weapon, you can choose for it to deal Lightning damage instead of Piercing.</p><p><strong>Action</strong> - 120 ft. Line (5 ft. wide) - 1/Dawn</p><p>[[/save DEX 13]]{DC 13 Dexterity Save}</p><p><strong>Failure: </strong>Targets take[[/damage 4d6 Lightning]].</p><p><strong>Success: </strong>Half damage.</p><p><strong>Properties:</strong></p><p>&amp;reference[magic weapon], &amp;Reference[Thrown] (30/120), &amp;Reference[Retain]</p><p>Foundry Note</p><p>The <strong>Attack</strong> activity lets you pick Lightning or Piercing damage and remembers your last choice.</p>",
+			"chat": ""
+		},
+		"identifier": "javelin-of-lightning",
+		"source": {
+			"revision": 1,
+			"rules": "2024",
+			"book": "",
+			"license": "",
+			"page": "",
+			"custom": ""
+		},
+		"identified": true,
+		"unidentified": {
+			"description": "<p><em><strong>Unidentified</strong></em></p><p><em>This weapon is unusually keen and easy to handle. It is most likely a magic weapon, though you can't identify the specific enchantment.</em></p><p><em>Javelins are long, thin spears. They can be used for thrusting attacks, but are designed to be thrown great distances.</em></p><p><strong>Properties:</strong></p><p>&amp;Reference[Thrown]</p>",
+			"name": "Unidentified Javelin of Lightning"
+		},
+		"container": null,
+		"quantity": 1,
+		"weight": {
+			"value": 2,
+			"units": "lb"
+		},
+		"price": {
+			"value": 0,
+			"denomination": "gp"
+		},
+		"rarity": "uncommon",
+		"attunement": "",
+		"attuned": false,
+		"equipped": false,
+		"armor": {
+			"value": null
+		},
+		"cover": null,
+		"crewed": false,
+		"hp": {
+			"value": null,
+			"max": null,
+			"dt": null,
+			"conditions": ""
+		},
+		"type": {
+			"value": "simpleM",
+			"baseItem": "javelin"
+		},
+		"ammunition": {},
+		"damage": {
+			"base": {
+				"number": 1,
+				"denomination": 6,
+				"types": [
+					"lightning",
+					"piercing"
+				],
+				"custom": {
+					"enabled": false
+				},
+				"scaling": {
+					"number": 1
+				},
+				"bonus": ""
+			},
+			"versatile": {
+				"number": null,
+				"denomination": null,
+				"types": [],
+				"custom": {
+					"enabled": false
+				},
+				"scaling": {
+					"number": 1
+				}
+			}
+		},
+		"magicalBonus": null,
+		"properties": [
+			"mgc",
+			"ret",
+			"thr"
+		],
+		"proficient": null,
+		"range": {
+			"value": 30,
+			"long": 120,
+			"reach": null,
+			"units": "ft"
+		},
+		"mastery": "slow"
+	},
+	"effects": [],
+	"folder": "6Glc0xFoDvY8BJYX",
+	"_key": "!items!dmgJavelinOfLigh"
+}

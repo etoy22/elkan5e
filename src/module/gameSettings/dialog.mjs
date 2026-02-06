@@ -52,8 +52,8 @@ export async function showV13UpdateDialog() {
 	const form = await getForm();
 	const content = `<div class="elkan-update-text-v13">
 			<p>
-				${game.i18n.localize("elkan5e.updateElkan.descriptionV13.initial")} <br>
-			 	${game.i18n.localize("elkan5e.updateElkan.descriptionV13.manually")} <br>
+				${game.i18n.localize("elkan5e.updateElkan.descriptionV13.initial")} 
+			 	${game.i18n.localize("elkan5e.updateElkan.descriptionV13.manually")} 
 				${game.i18n.localize("elkan5e.updateElkan.descriptionV13.previous")}
 				<ul>
 					<li> ${game.i18n.localize("elkan5e.updateElkan.descriptionV13.listItems.neverSeeAgain")}</li>
@@ -117,20 +117,6 @@ export async function startDialog() {
 				<p>${game.i18n.localize("elkan5e.dialog.content.headerText")}</p>
 			`;
 
-		const showUntil = new Date("2025-06-22T23:59:59"); // Target cutoff date
-		const now = new Date();
-
-		if (now < showUntil) {
-			content += `
-					<h4 style="font-weight: 800;">Elkan 5e Survey on 2024 Changes</h4>
-					<p>We have been going through the new 5e 2024 SRD and picking out our favorite changes to include in the Elkan 5e system.
-					We've put together a form here. We'd appreciate you all weighing in and helping us decide what to do about a few possible changes to Elkan 5e:
-					<a href="https://forms.gle/k6yYNFR6z5djgttk7" target="_blank" title="https://forms.gle/k6yYNFR6z5djgttk7">
-						click here to fill out the form
-					</a></p>
-				`;
-		}
-
 		if (parseInt(saved_version[1]) <= 12 && parseInt(saved_version[2]) < 9) {
 			content += `
 					<h4>${game.i18n.localize("elkan5e.dialog.content.update")}</h4>
@@ -192,7 +178,7 @@ export async function getForm() {
 		<label><strong>${game.i18n.localize("elkan5e.updateElkan.form.spellsLabel")}</strong></label>
 		<label><input type='radio' name='actor-spells' value='none' checked> ${game.i18n.localize("elkan5e.updateElkan.form.options.none")}</label>
 		<label><input type='radio' name='actor-spells' value='update-All'> ${game.i18n.localize("elkan5e.updateElkan.form.options.updateAll")}</label>
-		<label><input type='radio' name='actor-spells' value='update-Elkan'> ${game.i18n.localize("elkan5e.updateElkan.form.options.replaceElkan")}</label><br>
+		<label><input type='radio' name='actor-spells' value='update-Elkan'> ${game.i18n.localize("elkan5e.updateElkan.form.options.replaceElkan")}</label>
   		<h4>${game.i18n.localize("elkan5e.updateElkan.form.npcTitle")}</h4>
 	    <label><strong>${game.i18n.localize("elkan5e.updateElkan.form.itemsLabel")}</strong></label>
 		<label><input type='radio' name='npc-items' value='none' checked> ${game.i18n.localize("elkan5e.updateElkan.form.options.none")}</label>
@@ -201,7 +187,7 @@ export async function getForm() {
 		<label><strong> ${game.i18n.localize("elkan5e.updateElkan.form.spellsLabel")}</strong></label>
 		<label><input type='radio' name='npc-spells' value='none' checked> ${game.i18n.localize("elkan5e.updateElkan.form.options.none")}</label>
 		<label><input type='radio' name='npc-spells' value='update-All'> ${game.i18n.localize("elkan5e.updateElkan.form.options.updateAll")}</label>
-		<label><input type='radio' name='npc-spells' value='update-Elkan'> ${game.i18n.localize("elkan5e.updateElkan.form.options.replaceElkan")}</label><br>
+		<label><input type='radio' name='npc-spells' value='update-Elkan'> ${game.i18n.localize("elkan5e.updateElkan.form.options.replaceElkan")}</label>
 	</form>
 	`;
 }

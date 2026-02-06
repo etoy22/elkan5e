@@ -1,0 +1,746 @@
+{
+	"_id": "dmgStaffOfThunde",
+	"name": "Staff of Thunder and Lightning",
+	"type": "weapon",
+	"img": "icons/weapons/staves/staff-ornate-teal.webp",
+	"system": {
+		"activities": {
+			"hamXh7gqVGNUIcjA": {
+				"_id": "hamXh7gqVGNUIcjA",
+				"type": "attack",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"attack": {
+					"critical": {
+						"threshold": null
+					},
+					"flat": false,
+					"type": {
+						"value": "",
+						"classification": ""
+					},
+					"ability": "",
+					"bonus": ""
+				},
+				"damage": {
+					"critical": {
+						"bonus": ""
+					},
+					"includeBase": true,
+					"parts": []
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": []
+			},
+			"7gbLqdYFIJ1QabDq": {
+				"type": "save",
+				"name": "Thunder",
+				"_id": "7gbLqdYFIJ1QabDq",
+				"activation": {
+					"type": "",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "activityUses",
+							"value": "1"
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "UTstWNbk0NXrKgS6",
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "1",
+						"type": "creature",
+						"special": ""
+					},
+					"override": false,
+					"prompt": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [
+						{
+							"period": "dawn",
+							"type": "recoverAll"
+						}
+					],
+					"max": "1"
+				},
+				"damage": {
+					"parts": [],
+					"onSave": "half"
+				},
+				"save": {
+					"ability": "con",
+					"dc": {
+						"calculation": "",
+						"formula": "17"
+					}
+				},
+				"img": "",
+				"appliedEffects": [
+					"UTstWNbk0NXrKgS6"
+				],
+				"visibility": {
+					"requireIdentification": true,
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": "",
+					"requireMagic": true
+				}
+			},
+			"npfuUn0YaFlIYyD1": {
+				"type": "damage",
+				"name": "Lightning",
+				"_id": "npfuUn0YaFlIYyD1",
+				"activation": {
+					"type": "",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "activityUses",
+							"value": "1"
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "1",
+						"type": "creature",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [
+						{
+							"period": "dawn",
+							"type": "recoverAll"
+						}
+					],
+					"max": "1"
+				},
+				"damage": {
+					"critical": {
+						"allow": false
+					},
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 2,
+							"denomination": 6,
+							"bonus": "",
+							"types": [
+								"lightning"
+							]
+						}
+					]
+				},
+				"img": "",
+				"appliedEffects": [],
+				"visibility": {
+					"requireIdentification": true,
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": "",
+					"requireMagic": true
+				}
+			},
+			"EtOETCHaEK0mcw03": {
+				"type": "save",
+				"name": "Thunder & Lightning",
+				"_id": "EtOETCHaEK0mcw03",
+				"activation": {
+					"type": "bonus",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "activityUses",
+							"value": "1"
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "UTstWNbk0NXrKgS6",
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "1",
+						"type": "creature",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [
+						{
+							"period": "dawn",
+							"type": "recoverAll"
+						}
+					],
+					"max": "1"
+				},
+				"damage": {
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 2,
+							"denomination": 6,
+							"bonus": "",
+							"types": [
+								"lightning"
+							]
+						},
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": null,
+							"denomination": null,
+							"bonus": "",
+							"types": []
+						}
+					],
+					"onSave": "full"
+				},
+				"save": {
+					"ability": "con",
+					"dc": {
+						"calculation": "",
+						"formula": "17"
+					}
+				},
+				"img": "",
+				"appliedEffects": [
+					"UTstWNbk0NXrKgS6"
+				],
+				"visibility": {
+					"requireMagic": true,
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": "",
+					"requireIdentification": true
+				}
+			},
+			"hjxRfoWyCUGCMbMr": {
+				"type": "save",
+				"name": "Lightning Strike",
+				"_id": "hjxRfoWyCUGCMbMr",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "activityUses",
+							"value": "1"
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": "line",
+						"size": "120",
+						"width": "5",
+						"count": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": "creature",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [
+						{
+							"period": "dawn",
+							"type": "recoverAll"
+						}
+					],
+					"max": "1"
+				},
+				"damage": {
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 9,
+							"denomination": 6,
+							"bonus": "",
+							"types": [
+								"lightning"
+							]
+						}
+					],
+					"onSave": "half"
+				},
+				"save": {
+					"ability": "dex",
+					"dc": {
+						"calculation": "",
+						"formula": "17"
+					}
+				},
+				"img": "",
+				"appliedEffects": [],
+				"visibility": {
+					"requireMagic": true,
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": "",
+					"requireIdentification": true
+				}
+			},
+			"CnEqIoGzAUahrQIH": {
+				"type": "save",
+				"name": "Thunderclap",
+				"_id": "CnEqIoGzAUahrQIH",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "activityUses",
+							"value": "1"
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "VdYJQUJUwgsuptnY",
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": "radius",
+						"size": "60",
+						"count": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": "creature",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [
+						{
+							"period": "dawn",
+							"type": "recoverAll"
+						}
+					],
+					"max": "1"
+				},
+				"damage": {
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 2,
+							"denomination": 6,
+							"bonus": "",
+							"types": [
+								"thunder"
+							]
+						}
+					],
+					"onSave": "half"
+				},
+				"save": {
+					"ability": "con",
+					"dc": {
+						"calculation": "",
+						"formula": "17"
+					}
+				},
+				"img": "",
+				"appliedEffects": [
+					"VdYJQUJUwgsuptnY"
+				],
+				"visibility": {
+					"requireMagic": true,
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": "",
+					"requireIdentification": true
+				}
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [
+				{
+					"period": "dawn",
+					"type": "recoverAll"
+				}
+			],
+			"max": "1"
+		},
+		"description": {
+			"value": "<p><em>Staff, Very Rare (Requires Attunement)</em></p><p>This staff can be wielded as a magic Quarterstaff that grants a +2 bonus to attack rolls and damage rolls made with it. It also has the following additional properties. Once one of these properties is used, it can't be used again until the next dawn.</p><p><strong>Activation</strong></p><ul><li><p>While holding the staff, you can do one of the following abilities.</p><ul><li><p><strong>Lightning</strong><br /><br />No Action - 1/Dawn<br /><em>Trigger: When you hit with a melee attack using the staff</em></p><ul><li><p><strong>Hit:</strong> [[/damage 2d6 Lightning]] damage.</p></li></ul></li><li><p><strong>Thunder<br /></strong><br />No Action - 1 Round - 1/Dawn<br /><em>Trigger: When you hit with a melee attack using the staff<br /></em><strong>[[/save CON 17]]{Constitution Save (DC 17)}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[Stunned] until the end of your next turn.</p></li><li><p><strong>Success: </strong>No effect.</p></li></ul></li><li><p><strong>Thunder and Lightning<br /><br />Bonus Action</strong> - 1/Dawn<br /><em>Trigger: When you hit with a melee attack using the staff<br /></em>Use Lightning and Thunder properties at the same time.</p></li><li><p><strong>Lightning Strike<br />Action</strong> - 120 ft. Long 5 ft. Wide - 1/Dawn<br /><strong>[[/save DEX 17]]{Dexterity Save (DC 17)}</strong></p><ul><li><p><strong>Failure:</strong> [[/damage 9d6 Lightning]] damage.</p></li><li><p><strong>Success: </strong>Half damage.</p></li></ul></li><li><p><strong>Thunderclap<br /></strong><br /><strong>Action</strong> - 60 ft. Emenation (Self) - 1 Minute - 1/Dawn</p><ul><li><p><strong>Failure:</strong> [[/damage 2d6 Thunder]] damage and &amp;reference[Deafened].</p></li><li><p><strong>Success:</strong> Half Damage</p></li></ul></li></ul></li></ul>",
+			"chat": ""
+		},
+		"identifier": "staff-of-thunder-and-lightning",
+		"source": {
+			"revision": 1,
+			"rules": "2024",
+			"book": "",
+			"license": "",
+			"page": "",
+			"custom": ""
+		},
+		"identified": true,
+		"unidentified": {
+			"description": "<p><em><strong>Unidentified</strong></em></p><p><em>This weapon is unusually keen and easy to handle. It is most likely a magic weapon, though you can't identify the specific enchantment.</em></p><p><em>This staff is between 6 and 9 ft. in length, and is used by travelers and adventurers to defend themselves. It can be effectively wielded in combat with two hands.</em></p><p><strong>Properties:</strong></p><p>&amp;Reference[Reach] (10ft.), &amp;Reference[Handed]</p>",
+			"name": "Unidentified Staff of Thunder and Lightning"
+		},
+		"container": null,
+		"quantity": 1,
+		"weight": {
+			"value": 4,
+			"units": "lb"
+		},
+		"price": {
+			"value": 40000,
+			"denomination": "gp"
+		},
+		"rarity": "veryRare",
+		"attunement": "required",
+		"attuned": false,
+		"equipped": false,
+		"armor": {
+			"value": null
+		},
+		"cover": null,
+		"crewed": false,
+		"hp": {
+			"value": null,
+			"max": null,
+			"dt": null,
+			"conditions": ""
+		},
+		"type": {
+			"value": "simpleM",
+			"baseItem": "quarterstaff"
+		},
+		"ammunition": {},
+		"damage": {
+			"base": {
+				"number": 1,
+				"denomination": 6,
+				"types": [
+					"bludgeoning"
+				],
+				"custom": {
+					"enabled": false
+				},
+				"scaling": {
+					"number": 1
+				},
+				"bonus": ""
+			},
+			"versatile": {
+				"number": null,
+				"denomination": null,
+				"types": [],
+				"custom": {
+					"enabled": false
+				},
+				"scaling": {
+					"number": 1
+				},
+				"bonus": ""
+			}
+		},
+		"magicalBonus": 2,
+		"properties": [
+			"mgc",
+			"ver"
+		],
+		"proficient": null,
+		"range": {
+			"value": null,
+			"long": null,
+			"reach": null,
+			"units": ""
+		},
+		"mastery": "topple"
+	},
+	"effects": [
+		{
+			"name": "Staff of Thunder and Lightning",
+			"img": "icons/weapons/staves/staff-ornate-teal.webp",
+			"origin": "Compendium.dnd5e.equipment24.Item.dmgStaffOfThunde",
+			"transfer": false,
+			"_id": "UTstWNbk0NXrKgS6",
+			"type": "base",
+			"system": {},
+			"changes": [],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": null,
+				"combat": null,
+				"rounds": null,
+				"turns": 1,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [
+				"stunned"
+			],
+			"_key": "!items.effects!dmgStaffOfThunde.UTstWNbk0NXrKgS6"
+		},
+		{
+			"name": "Staff of Thunder and Lightning",
+			"img": "icons/weapons/staves/staff-ornate-teal.webp",
+			"origin": "Compendium.dnd5e.equipment24.Item.dmgStaffOfThunde",
+			"transfer": false,
+			"_id": "VdYJQUJUwgsuptnY",
+			"type": "base",
+			"system": {},
+			"changes": [],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"seconds": 60,
+				"combat": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [
+				"deafened"
+			],
+			"_key": "!items.effects!dmgStaffOfThunde.VdYJQUJUwgsuptnY"
+		}
+	],
+	"folder": "wOOpAd4ww6yESowq",
+	"flags": {
+		"midiProperties": {
+			"magicdam": true,
+			"magiceffect": true
+		}
+	},
+	"_key": "!items!dmgStaffOfThunde"
+}

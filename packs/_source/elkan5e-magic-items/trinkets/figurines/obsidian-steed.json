@@ -1,0 +1,175 @@
+{
+	"name": "Obsidian Steed",
+	"system": {
+		"description": {
+			"value": "<p><strong>Action</strong> - 24 Hours - 1/5 Days</p><p><strong>Summoning</strong></p><ul><li><p>The statue becomes a Large Construct using the <strong>@UUID[Compendium.elkan5e.elkan5e-summoned-creatures.Actor.1yrFD9ap2q6C6mS2]{Nightmare} </strong>stat block.</p></li><li><p>The Nightmare has a [[/r 1d10cs1]]{10 percent chance} each time you use it to ignore your orders, including a command to revert to figurine form. If you mount the nightmare while it is ignoring your orders, you and the nightmare are instantly transported to a random location on the plane of Hades, where the nightmare reverts to figurine form.</p></li></ul><section class=\"secret\" id=\"foundry-secret-1\"><p><strong>Foundry Note</strong></p><p>This item's limited uses represent the 5 days required before the figurine can be used again.</p></section>",
+			"chat": ""
+		},
+		"price": {
+			"value": 40000,
+			"denomination": "gp"
+		},
+		"activities": {
+			"ZJRIEbHTFlc0XIHv": {
+				"type": "summon",
+				"_id": "ZJRIEbHTFlc0XIHv",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "@item.uses.max",
+							"target": ""
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": " [[/r 1d10cs1]]{10 percent chance} of ignoring your orders."
+				},
+				"duration": {
+					"units": "hour",
+					"concentration": false,
+					"override": false,
+					"value": "24"
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"units": "ft",
+					"special": "",
+					"value": "60"
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "1",
+						"type": "space",
+						"special": "unoccupied space"
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"bonuses": {
+					"ac": "",
+					"hd": "",
+					"hp": "",
+					"attackDamage": "",
+					"saveDamage": "",
+					"healing": ""
+				},
+				"creatureSizes": [],
+				"creatureTypes": [
+					"construct"
+				],
+				"match": {
+					"attacks": false,
+					"proficiency": false,
+					"saves": false,
+					"ability": ""
+				},
+				"profiles": [
+					{
+						"count": "",
+						"name": "",
+						"_id": "LW2oFsJxrujNmv6Q",
+						"uuid": "Compendium.elkan5e.elkan5e-summoned-creatures.Actor.1yrFD9ap2q6C6mS2",
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
+				"summon": {
+					"prompt": true,
+					"mode": "",
+					"identifier": ""
+				},
+				"name": "",
+				"img": "",
+				"appliedEffects": []
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [
+				{
+					"period": "day",
+					"type": "formula",
+					"formula": "1"
+				}
+			],
+			"max": "5"
+		},
+		"identifier": "obsidian-steed",
+		"source": {
+			"revision": 1,
+			"rules": "2024",
+			"book": "",
+			"license": "",
+			"page": "",
+			"custom": ""
+		},
+		"identified": true,
+		"unidentified": {
+			"description": "",
+			"name": "Unidentified Obsidian Steed"
+		},
+		"container": null,
+		"quantity": 1,
+		"weight": {
+			"value": 5,
+			"units": "lb"
+		},
+		"rarity": "veryRare",
+		"attunement": "",
+		"attuned": false,
+		"equipped": false,
+		"armor": {
+			"value": null,
+			"magicalBonus": null,
+			"dex": null
+		},
+		"cover": null,
+		"crewed": false,
+		"hp": {
+			"value": null,
+			"max": null,
+			"dt": null,
+			"conditions": ""
+		},
+		"type": {
+			"value": "wondrous",
+			"baseItem": ""
+		},
+		"properties": [
+			"mgc"
+		],
+		"strength": null,
+		"proficient": null
+	},
+	"_id": "dmgFwpObsidianSt",
+	"type": "equipment",
+	"img": "icons/commodities/bones/hooves-cloven-brown.webp",
+	"effects": [],
+	"folder": "E1ANvmuBoFynkksM",
+	"_key": "!items!dmgFwpObsidianSt"
+}

@@ -78,3 +78,70 @@ export async function spectralEmpowerment(workflow) {
 		);
 	}
 }
+
+export async function soulConduit(workflow) {
+	try {
+		console.log("Elkan 5e | Soul Conduit check");
+		const item = workflow.item ?? workflow;
+		if (!item || item.type !== "spell") return;
+
+		const school = (item.system?.school || "").toLowerCase();
+		const level = Number(item.system?.level ?? 0);
+		if (school !== "necromancy" || level < 1) return;
+
+		const actor = workflow.actor ?? (workflow.token ? workflow.token.actor : null);
+		if (!actor) return;
+		const hasSoul = actor.items.find(
+			(i) => i.system?.identifier === "soul-conduit" || i.name === "Soul Conduit",
+		);
+		if (hasSoul && actor.isOwner) {
+			ui.notifications.notify(
+				game.i18n.format("elkan5e.notifications.SoulConduitReminder", { name: actor.name }),
+			);
+		}
+	} catch (err) {
+		console.error("elkan5e | soulConduit error:", err);
+	}
+}
+
+export async function necromanticSurge(workflow) {
+	try {
+		console.log("Elkan 5e | Necromantic Surge check");
+		const item = workflow.item ?? workflow;
+		if (!item || item.type !== "spell") return;
+
+		const school = (item.system?.school || "").toLowerCase();
+		const level = Number(item.system?.level ?? 0);
+		if (school !== "necromancy" || level < 3) return;
+
+		const actor = workflow.actor ?? (workflow.token ? workflow.token.actor : null);
+		if (!actor) return;
+		const hasSurge = actor.items.find(
+			(i) => i.system?.identifier === "necromantic-surge" || i.name === "Necromantic Surge",
+		);
+		if (hasSurge && actor.isOwner) {
+			ui.notifications.notify(
+				game.i18n.format("elkan5e.notifications.NecromanticSurgeReminder", {
+					name: actor.name,
+				}),
+			);
+			try {
+				const content = `<p>${game.i18n.localize("elkan5e.notifications.NecromanticSurgeOptions") || "Choose an additional Necromantic Surge effect."}</p>`;
+				const dialog = new globalThis.Dialog({
+					title:
+						game.i18n.localize("elkan5e.notifications.NecromanticSurgeReminderTitle") ||
+						"Necromantic Surge",
+					content,
+					buttons: {
+						ok: { label: game.i18n.localize("OK") || "OK" },
+					},
+				});
+				dialog.render(true);
+			} catch {
+				// ignore dialog failures
+			}
+		}
+	} catch (err) {
+		console.error("elkan5e | necromanticSurge error:", err);
+	}
+}

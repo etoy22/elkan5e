@@ -1,0 +1,263 @@
+{
+	"_id": "dmgRodOfAbsorpti",
+	"name": "Rod of Absorption",
+	"type": "equipment",
+	"img": "icons/weapons/wands/wand-carved-fire.webp",
+	"system": {
+		"activities": {
+			"wgsdcPGuk1yY5gIG": {
+				"type": "utility",
+				"name": "Restore Slots",
+				"_id": "wgsdcPGuk1yY5gIG",
+				"activation": {
+					"type": "",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": true,
+						"max": "5"
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "spellSlots",
+							"value": "-1",
+							"target": "1",
+							"scaling": {
+								"mode": "level",
+								"formula": ""
+							}
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"img": "",
+				"appliedEffects": [],
+				"visibility": {
+					"requireMagic": true,
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": "",
+					"requireIdentification": true
+				}
+			},
+			"y66MTczY5BQfIonF": {
+				"type": "utility",
+				"name": "Absorb Spell",
+				"_id": "y66MTczY5BQfIonF",
+				"activation": {
+					"type": "reaction",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": true,
+						"max": ""
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "",
+							"scaling": {
+								"mode": "amount",
+								"formula": ""
+							}
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"img": "",
+				"appliedEffects": [],
+				"visibility": {
+					"requireMagic": true,
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": "",
+					"requireIdentification": true
+				}
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"max": "50"
+		},
+		"description": {
+			"value": "<p><em>Rod - Very Rare (Requires Attunement)</em></p><p><strong>Buff</strong></p><ul><li><p>When you attune to the rod, you learn how many levels of energy it has absorbed overall and how many levels remain stored.</p></li><li><p>If you're a spellcaster, you can convert stored energy into spell slots you have prepared or know, creating slots up to level 5 and no higher than your normal slot maximum (for example, spend 3 levels to cast a level 3 spell).</p></li><li><p>A newly discovered rod typically holds [[/r 1d10]] levels of energy. A rod that can neither absorb further energy nor has energy remaining becomes nonmagical.</p></li></ul><p><strong>Reaction</strong></p><ul><li><p>When a spell targets only you and creates no area of effect, you can absorb it. The spell is canceled and its energy--not the spell itself--is stored in the rod at the spell's level. The rod can store up to 50 levels of energy over its lifetime; spells it cannot store are unaffected.</p></li></ul><section class=\"secret\" id=\"foundry-secret-1\"><p><strong>Foundry Note</strong></p><p>This item has a max of 50 uses for tracking the total <strong>energy absorbed</strong>. You can roll 1d10 and update the expended uses and the <strong>Available</strong> energy in the description above as desired.</p><p>The <strong>Absorb Spell</strong> activity allows you to select the spell level you're absorbing and expends a number of uses. You should then manually update the <strong>Available</strong> amount of energy in the description above.</p><p>The <strong>Restore Slot</strong> activity allows you to restore a spell slot. You should then manually update the <strong>Available</strong> amount of energy in the description above.</p></section>",
+			"chat": ""
+		},
+		"identifier": "rod-of-absorption",
+		"source": {
+			"revision": 1,
+			"rules": "2024",
+			"license": "",
+			"book": "",
+			"page": "",
+			"custom": ""
+		},
+		"identified": true,
+		"unidentified": {
+			"description": "",
+			"name": "Unidentified Rod"
+		},
+		"container": null,
+		"quantity": 1,
+		"weight": {
+			"value": 3,
+			"units": "lb"
+		},
+		"price": {
+			"value": 40000,
+			"denomination": "gp"
+		},
+		"rarity": "veryRare",
+		"attunement": "required",
+		"attuned": false,
+		"equipped": false,
+		"armor": {
+			"value": null,
+			"magicalBonus": null
+		},
+		"cover": null,
+		"crewed": false,
+		"hp": {
+			"value": null,
+			"max": null,
+			"dt": null,
+			"conditions": ""
+		},
+		"type": {
+			"value": "rod",
+			"baseItem": ""
+		},
+		"ammunition": {},
+		"damage": {
+			"base": {
+				"number": null,
+				"denomination": 0,
+				"types": [],
+				"custom": {
+					"enabled": false
+				},
+				"scaling": {
+					"number": 1
+				},
+				"bonus": ""
+			},
+			"versatile": {
+				"number": null,
+				"denomination": null,
+				"types": [],
+				"custom": {
+					"enabled": false
+				},
+				"scaling": {
+					"number": 1
+				}
+			}
+		},
+		"magicalBonus": null,
+		"properties": [
+			"foc",
+			"mgc"
+		],
+		"proficient": null,
+		"range": {
+			"value": null,
+			"long": null,
+			"reach": null,
+			"units": ""
+		},
+		"mastery": ""
+	},
+	"effects": [],
+	"folder": "FAen0Qw4L2z4U7Lg",
+	"_key": "!items!dmgRodOfAbsorpti"
+}

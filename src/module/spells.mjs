@@ -413,48 +413,93 @@ export async function sappingSmite(workflow) {
 }
 
 /**
- * Applies the "Well of Corruption" drained effect to each target damaged by the spell.
+ * Applies the "Well of Corruption" drained effect to each targeted creature even without damage rolls.
  *
- * Iterates over each damage entry in the workflow's damage list. For each valid target
- * that received damage, applies the drainedEffect with the "Well of Corruption" effect.
+ * Each failed save takes the full drain amount while successful saves take half.
+ * Damage equals 4d8 at 2nd level (or when unidentified) plus 2d8 per slot above 2nd.
  *
- * @param {object} workflow - The workflow object representing the spell's damage application.
+ * @param {object} workflow - The workflow object representing the spell use.
  * @param {Actor} workflow.actor - The caster actor of the Well of Corruption spell.
  * @param {Token} workflow.token - The token representing the caster.
  * @param {string} workflow.token.actor.uuid - The caster's actor UUID, used as effect origin.
- * @param {Array<object>} workflow.damageList - List of damage entries with damage amounts and target UUIDs.
+ * @param {Set<Token|TokenDocument|string>} workflow.targets - Set of targeted tokens.
+ * @param {Set<Token|TokenDocument|string>} [workflow.failedSaves] - Targets that failed the save.
+ * @param {Set<Token|TokenDocument|string>} [workflow.saves] - Targets that succeeded on the save.
  *
  * @returns {Promise<void>} Resolves after applying drained effects to all valid targets.
  */
 export async function wellOfCorruption(workflow) {
 	const caster = workflow.actor;
 	const casterToken = workflow.token;
-	const casterUuid = workflow.token.actor.uuid;
-	if (!caster || !casterToken) {
+	const casterUuid = workflow.token.actor?.uuid;
+	if (!caster || !casterToken || !casterUuid) {
 		console.warn("Well of Corruption aborted: missing caster or casterToken");
 		return;
 	}
 
-	for (const dmgEntry of workflow.damageList) {
-		const damage = (dmgEntry.tempDamage ?? 0) + (dmgEntry.hpDamage ?? 0);
-		if (damage <= 0) continue;
+	const targetEntries = Array.from(workflow.targets ?? []);
+	if (targetEntries.length === 0) {
+		console.warn("Well of Corruption: No targets to affect");
+		return;
+	}
 
-		if (!dmgEntry.targetUuid) {
-			console.warn("Well of Corruption: damageList entry missing targetUuid", dmgEntry);
+	const workflowCastLevel = Number(workflow.castData?.castLevel);
+	const itemCastLevel = Number(workflow.item?.system?.level);
+	const effectiveCastLevel = Math.max(
+		Number.isFinite(workflowCastLevel)
+			? workflowCastLevel
+			: Number.isFinite(itemCastLevel)
+				? itemCastLevel
+				: 2,
+		2,
+	);
+	const totalDice = 4 + Math.max(effectiveCastLevel - 2, 0) * 2;
+	const damageRoll = await new Roll(`${totalDice}d8`).evaluate({ async: true });
+
+	const tokenIdFromEntry = (entry) => {
+		if (!entry) return null;
+		if (typeof entry === "string") return entry;
+		if (entry.document?.id) return entry.document.id;
+		if (entry.id) return entry.id;
+		if (entry.object?.document?.id) return entry.object.document.id;
+		return null;
+	};
+
+	const buildIdSet = (collection) => {
+		const ids = new Set();
+		if (!collection) return ids;
+		for (const entry of collection) {
+			const id = tokenIdFromEntry(entry);
+			if (id) ids.add(id);
+		}
+		return ids;
+	};
+
+	const failedSaveIds = buildIdSet(workflow.failedSaves);
+	const successfulSaveIds = buildIdSet(workflow.saves);
+
+	for (const targetEntry of targetEntries) {
+		const tokenId = tokenIdFromEntry(targetEntry);
+		if (!tokenId) {
+			console.warn("Well of Corruption: Unable to resolve target token ID", targetEntry);
 			continue;
 		}
 
-		const parts = dmgEntry.targetUuid.split(".");
-		if (parts.length < 4) {
-			console.warn("Well of Corruption: Invalid targetUuid format", dmgEntry.targetUuid);
-			continue;
-		}
-		const tokenId = parts[3];
-		const targetToken = canvas.tokens.get(tokenId);
+		const targetToken =
+			typeof targetEntry === "string"
+				? canvas.tokens.get(targetEntry)
+				: (targetEntry.document?.object ??
+					targetEntry.object ??
+					canvas.tokens.get(tokenId));
 		if (!targetToken) {
 			console.warn(`Well of Corruption: Token with ID ${tokenId} not found on canvas`);
 			continue;
 		}
+
+		const failedSave = failedSaveIds.has(tokenId);
+		const saved = !failedSave && successfulSaveIds.has(tokenId);
+		const damage = saved ? Math.floor(damageRoll.total / 2) : damageRoll.total;
+		if (damage <= 0) continue;
 
 		await drainedEffect(
 			targetToken.actor,

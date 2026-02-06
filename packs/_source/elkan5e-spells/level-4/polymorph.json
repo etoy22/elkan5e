@@ -5,7 +5,6 @@
 	"effects": [],
 	"folder": "90eJtrVwLFIxcWJw",
 	"flags": {
-		"core": {},
 		"midi-qol": {
 			"effectActivation": false,
 			"itemCondition": "",
@@ -40,25 +39,17 @@
 			"ida": false
 		},
 		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
 			"migratedProperties": [
 				"vocal",
 				"somatic",
 				"material",
 				"concentration"
 			]
-		},
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
 		}
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You hold up a cocoon containing a metamorphizing pupa and, with a whisper, rotate it, and as you do, your target is transformed into a different species.</em></p><p><strong>[[/save wisdom]]{Wisdom Save}</strong></p><p>This spell has no effect on a shapeshifter or a creature with 0 hit points.</p><ul><li><p><strong>Failure:</strong> The target is transformed into the form of a CR 0 &amp;reference[beast].</p><ul><li><p>The target's statistics are replaced by the new form, including their ability scores, armor class, skills, movement, and actions they can perform.</p></li><li><p>The target's personality and memories are partially intact, but their intelligence is low enough that they cannot read, write, or speak.</p></li><li><p>The target's gear melds into the new form, and they cannot use any of their equipment.</p></li><li><p>The target gains 10 temporary hit points*. When they lose all temporary hit points, they revert to their original form and any excess damage is applied to the original form's hit points.</p></li></ul></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p></p><p><strong>*Upcasting:</strong> Increase temporary hit points by 10 for each spell level above 4th.</p><p></p><p><strong>Note: This spell is not automated, but it should be in an upcoming update. Currently it only rolls the save and adds temporary hit points.</strong></p>",
+			"value": "<p><em>You hold up a cocoon containing a metamorphizing pupa and, with a whisper, rotate it, and as you do, your target is transformed into a different species.</em></p><p><strong>[[/save wisdom]]{Wisdom Save}</strong></p><p>This spell has no effect on a shapeshifter or a creature with 0 hit points.</p><ul><li><p><strong>Failure:</strong> The target is transformed into the form of a CR 0 &amp;reference[beast].</p><ul><li><p>The target's statistics are replaced by the new form, including their ability scores, armor class, skills, movement, and actions they can perform.</p></li><li><p>The target's personality and memories are partially intact, but their intelligence is low enough that they cannot read, write, or speak.</p></li><li><p>The target's gear melds into the new form, and they cannot use any of their equipment.</p></li><li><p>The target gains 10 temporary hit points*. When they lose all temporary hit points, they revert to their original form and any excess damage is applied to the original form's hit points.</p></li></ul></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p><strong>*Upcasting:</strong> Increase temporary hit points by 10 for each spell level above 4th.</p><p><strong>Note: This spell is not automated, but it should be in an upcoming update. Currently it only rolls the save and adds temporary hit points.</strong></p>",
 			"chat": ""
 		},
 		"source": {
@@ -192,7 +183,7 @@
 				},
 				"midiProperties": {
 					"ignoreTraits": [],
-					"triggeredActivityId": "cxteBlYyLUgO0bZx",
+					"triggeredActivityId": "transform-creature",
 					"triggeredActivityConditionText": "",
 					"triggeredActivityTargets": "failedSaves",
 					"triggeredActivityRollAs": "self",
@@ -216,40 +207,164 @@
 				},
 				"name": "",
 				"img": "",
-				"appliedEffects": []
+				"appliedEffects": [],
+				"otherActivityId": "",
+				"friendlySave": "friendlyFail"
 			},
-			"cxteBlYyLUgO0bZx": {
-				"type": "heal",
-				"_id": "cxteBlYyLUgO0bZx",
+			"VSYGhazHFOLSiAeS": {
+				"type": "transform",
+				"_id": "VSYGhazHFOLSiAeS",
 				"activation": {
 					"type": "action",
-					"value": null,
 					"override": false
 				},
 				"consumption": {
 					"scaling": {
 						"allowed": false
 					},
-					"spellSlot": true,
+					"spellSlot": false,
 					"targets": []
 				},
 				"description": {
 					"chatFlavor": ""
 				},
 				"duration": {
-					"units": "inst",
+					"units": "hour",
 					"concentration": false,
-					"override": false
+					"override": true,
+					"value": "1"
 				},
 				"effects": [],
 				"range": {
+					"units": "self",
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"profiles": [
+					{
+						"cr": "0",
+						"name": "",
+						"_id": "ot1abU3rOF3VGZN4",
+						"uuid": "",
+						"sizes": [],
+						"types": [
+							"beast"
+						],
+						"movement": [],
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
+				"settings": null,
+				"transform": {
+					"customize": false,
+					"mode": "cr",
+					"preset": "polymorph"
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "give-temporary-hp",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": true,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"name": "Transform Creature",
+				"img": ""
+			},
+			"aAtXJUnoHxl5yyhK": {
+				"type": "heal",
+				"_id": "aAtXJUnoHxl5yyhK",
+				"activation": {
+					"type": "action",
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": false,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "hour",
+					"concentration": false,
+					"override": true,
+					"value": "1"
+				},
+				"effects": [],
+				"range": {
+					"units": "self",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -259,8 +374,6 @@
 					"max": ""
 				},
 				"healing": {
-					"number": null,
-					"denomination": "",
 					"types": [
 						"temphp"
 					],
@@ -269,9 +382,12 @@
 						"formula": "10"
 					},
 					"scaling": {
-						"number": 1,
-						"mode": "whole"
+						"number": null,
+						"mode": "whole",
+						"formula": "10"
 					},
+					"number": null,
+					"denomination": null,
 					"bonus": ""
 				},
 				"useConditionText": "",
@@ -285,7 +401,8 @@
 					"idi": false,
 					"idr": false,
 					"idv": false,
-					"ida": false
+					"ida": false,
+					"idm": false
 				},
 				"midiProperties": {
 					"ignoreTraits": [],
@@ -293,16 +410,27 @@
 					"triggeredActivityConditionText": "",
 					"triggeredActivityTargets": "targets",
 					"triggeredActivityRollAs": "self",
-					"forceDialog": false,
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
 					"confirmTargets": "default",
 					"autoTargetType": "any",
 					"autoTargetAction": "default",
-					"automationOnly": false,
-					"otherActivityCompatible": true,
+					"automationOnly": true,
+					"otherActivityCompatible": false,
+					"otherActivityAsParentType": true,
 					"identifier": "",
 					"displayActivityName": false,
 					"rollMode": "default",
-					"chooseEffects": false
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
 				},
 				"isOverTimeFlag": false,
 				"overTimeProperties": {
@@ -310,7 +438,7 @@
 					"preRemoveConditionText": "",
 					"postRemoveConditionText": ""
 				},
-				"name": "Temp Hit Points",
+				"name": "Give Temporary HP",
 				"img": "",
 				"appliedEffects": []
 			}

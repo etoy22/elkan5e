@@ -6,7 +6,7 @@
 	"img": "icons/creatures/claws/claw-curved-jagged-gray.webp",
 	"system": {
 		"description": {
-			"value": "<p><strong>Bonus Action</strong> - 6 Creatures (60 ft.) - 1 Hour - Magical</p><ul><li><p>Targets have a climbing and crawling speed equal to their walking speed. You use a crawling speed while prone.</p></li></ul>",
+			"value": "<p><strong>Bonus Action</strong> - 6 Creatures (60 ft.) - 1 Hour - Magical</p><ul><li><p>Targets have a &amp;reference[climbing]{Climbing} and &amp;reference[crawling] speed equal to their walking speed. You use a crawling speed while &amp;reference[prone apply=false].</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -112,10 +112,10 @@
 				]
 			}
 		},
-		"identifier": "",
+		"identifier": "crawlers-claws",
 		"enchant": {},
 		"prerequisites": {
-			"level": null
+			"level": 5
 		}
 	},
 	"effects": [
@@ -145,9 +145,6 @@
 			"origin": null,
 			"statuses": [],
 			"flags": {
-				"times-up": {
-					"isPassive": false
-				},
 				"dae": {
 					"disableIncapacitated": false,
 					"selfTarget": false,
@@ -177,14 +174,6 @@
 					"onlyOnce": false,
 					"wallsBlock": "system",
 					"statuses": []
-				},
-				"dnd5e": {
-					"riders": {
-						"statuses": []
-					}
-				},
-				"core": {
-					"overlay": false
 				}
 			},
 			"tint": "#ffffff",
@@ -220,16 +209,6 @@
 			"autoTarget": "default",
 			"removeAttackDamageButtons": "default",
 			"otherCondition": ""
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			}
-		},
-		"tidy5e-sheet": {
-			"section": "",
-			"actionSection": ""
 		}
 	},
 	"_key": "!items!qYQRKHYiyUp4WTIU"

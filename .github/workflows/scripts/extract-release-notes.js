@@ -10,34 +10,21 @@ try {
 	const startIndex = lines.findIndex((line) => line.startsWith('# v'));
 	if (startIndex === -1) throw new Error('No version section found.');
 
-	const versionLines = lines.slice(startIndex + 1);
-	const nextVersionIndex = versionLines.findIndex((line) => line.startsWith('# v'));
-	const releaseNotes =
-		nextVersionIndex !== -1 ? versionLines.slice(0, nextVersionIndex) : versionLines;
+	const nextVersionChunk = lines.slice(startIndex + 1).findIndex((line) => line.startsWith('# v'));
+	const endIndex =
+		nextVersionChunk !== -1 ? startIndex + 1 + nextVersionChunk : lines.length;
+	let releaseNotesLines = lines.slice(startIndex, endIndex);
 
-	const formattedNotes = [];
-	let inClassesSection = false; 
-
-	releaseNotes.forEach((line) => {
-		if (line.startsWith('## ')) {
-			formattedNotes.push(`**${line.slice(3).trim()}**`);
-			inClassesSection = line.toLowerCase().includes('classes');
-		} else if (inClassesSection && line.startsWith('**[')) {
-			formattedNotes.push(`* ${line.slice(2, -3)}`);
-		} else if (inClassesSection && line.startsWith('  -')) {
-			formattedNotes.push(`  *${line.trim().slice(1)}`);
-		} else if (inClassesSection && line.startsWith('-')) {
-			formattedNotes.push(`  *${line.trim().slice(1)}`);
-		} else if (line.startsWith('-')) {
-			formattedNotes.push(`*${line.slice(1)}`);
-		} else if (line.trim() === '') {
-			formattedNotes.push('');
-		} else {
-			formattedNotes.push(line);
+	if (releaseNotesLines[0]?.startsWith('# v')) {
+		releaseNotesLines = releaseNotesLines.slice(1);
+		while (releaseNotesLines[0] === '') {
+			releaseNotesLines = releaseNotesLines.slice(1);
 		}
-	});
+	}
 
-	fs.writeFileSync(outputPath, formattedNotes.join('\n'), 'utf8');
+	const formattedNotes = releaseNotesLines.join('\n').trimEnd();
+
+	fs.writeFileSync(outputPath, `${formattedNotes}\n`, 'utf8');
 	console.error('Release notes written to release-notes.md');
 } catch (error) {
 	console.warn(`Failed to extract release notes: ${error.message}`);

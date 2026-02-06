@@ -1,0 +1,333 @@
+{
+	"name": "Metalline Weapon",
+	"type": "spell",
+	"img": "icons/weapons/axes/axe-double-blue.webp",
+	"effects": [
+		{
+			"type": "enchantment",
+			"name": "Metalline Weapon",
+			"img": "icons/weapons/axes/axe-double-blue.webp",
+			"disabled": true,
+			"_id": "RpsQY5bpmOT9C4F5",
+			"system": {},
+			"changes": [
+				{
+					"key": "system.properties",
+					"mode": 2,
+					"value": "sil",
+					"priority": 20
+				},
+				{
+					"key": "system.properties",
+					"mode": 2,
+					"value": "ada",
+					"priority": 20
+				},
+				{
+					"key": "system.properties",
+					"mode": 2,
+					"value": "coldiron",
+					"priority": 20
+				}
+			],
+			"duration": {
+				"startTime": null,
+				"combat": null,
+				"seconds": 28800,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"origin": null,
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [],
+			"flags": {
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"specialDuration": []
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "All",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!d5tbkV3nSxyFB4mu.RpsQY5bpmOT9C4F5"
+		}
+	],
+	"folder": "Tf2FNuyyu2gEaYOF",
+	"flags": {
+		"dynamiceffects": {
+			"equipActive": true,
+			"alwaysActive": false,
+			"effects": [
+				{
+					"modSpecKey": "macro.execute",
+					"value": "\"Magic Weapon\" @target @item.level",
+					"mode": "+",
+					"targetSpecific": false,
+					"id": 1,
+					"itemId": "f1nQIsVPzwoUTqOt",
+					"active": true,
+					"_targets": []
+				}
+			]
+		},
+		"dae": {
+			"activeEquipped": false,
+			"alwaysActive": false,
+			"macro": {
+				"name": "Magic Weapon",
+				"img": "icons/magic/fire/dagger-rune-enchant-flame-blue.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "",
+				"author": "vHqSHJMdmEO6Mk2C",
+				"_id": null,
+				"folder": null
+			}
+		},
+		"midi-qol": {
+			"onUseMacroName": "",
+			"effectActivation": false,
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default",
+			"removeAttackDamageButtons": "default"
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": false,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"ignoreTotalCover": false,
+			"confirmTargets": "default",
+			"noConcentrationCheck": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"dnd5e": {
+			"migratedProperties": [
+				"vocal",
+				"somatic",
+				"concentration"
+			]
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>You touch a weapon, adjusting its composition to be made of a complicated and normally unstable alloy of different metals.</em></p><p><strong>Enchant Item</strong></p><ul><li><p>The chosen weapon now counts as adamantine, cold iron, and silver.</p></li></ul>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/metalline-weapon",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "bonus",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "8",
+			"units": "hour"
+		},
+		"target": {
+			"affects": {
+				"type": "object",
+				"count": "1",
+				"choice": false,
+				"special": ""
+			},
+			"template": {
+				"units": "ft",
+				"contiguous": false,
+				"type": ""
+			}
+		},
+		"range": {
+			"units": "touch",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 3,
+		"school": "trs",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"properties": [
+			"vocal",
+			"somatic"
+		],
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "enchant",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "RpsQY5bpmOT9C4F5",
+						"level": {},
+						"riders": {
+							"activity": [],
+							"effect": [],
+							"item": []
+						}
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "self"
+				},
+				"target": {
+					"override": false,
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					}
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"enchant": {
+					"self": false
+				},
+				"restrictions": {
+					"allowMagical": false,
+					"type": "weapon",
+					"categories": [],
+					"properties": []
+				},
+				"visibility": {
+					"level": {},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"skipConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				}
+			}
+		},
+		"identifier": "metalline-weapon",
+		"method": "spell",
+		"prepared": 1
+	},
+	"_id": "d5tbkV3nSxyFB4mu",
+	"_key": "!items!d5tbkV3nSxyFB4mu"
+}

@@ -1,0 +1,222 @@
+{
+	"_id": "dmgUniversalSolv",
+	"name": "Universal Solvent",
+	"type": "equipment",
+	"folder": "rtyAJXS22crdDCWj",
+	"img": "icons/consumables/potions/potion-bottle-corked-white.webp",
+	"system": {
+		"activities": {
+			"zLSDeTP2AoZlrhAj": {
+				"type": "utility",
+				"name": "Determine Ounces",
+				"activation": {
+					"type": "",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1d6 - 2",
+							"target": "",
+							"scaling": {}
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": ""
+					},
+					"override": false,
+					"prompt": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"formula": "",
+					"name": ""
+				},
+				"_id": "zLSDeTP2AoZlrhAj"
+			},
+			"29Jn4qIeO3YkUZhG": {
+				"type": "utility",
+				"name": "Apply Glue",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": true,
+						"max": "@item.uses.value"
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "",
+							"scaling": {
+								"mode": "amount",
+								"formula": ""
+							}
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "minute",
+					"concentration": false,
+					"override": false,
+					"value": "@scaling"
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"count": "",
+						"type": "square",
+						"size": "@scaling"
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": "space",
+						"special": ""
+					},
+					"override": false,
+					"prompt": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"formula": "",
+					"name": ""
+				},
+				"_id": "29Jn4qIeO3YkUZhG",
+				"img": "",
+				"visibility": {
+					"requireMagic": true,
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": ""
+				},
+				"appliedEffects": []
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"autoDestroy": true,
+			"max": "7"
+		},
+		"description": {
+			"value": "<p><em>Wondrous Item - Legendary</em></p><p><em>This tube holds a milky liquid with a strong alcohol smell. When found, a tube contains 1d6 + 1 ounces.</em></p><p><em>A magic item like this counts as magical for overcoming effects.</em></p><p><strong>Action</strong></p><ul><li><p>Pour 1 or more ounces onto a surface within reach. Each ounce instantly dissolves up to a 1-foot square of adhesive it touches, including @UUID[Compendium.elkan5e.elkan5e-magic-items.Item.dmgSovereignGlue]{Sovereign Glue}.</p></li></ul><section class=\"secret\" id=\"foundry-secret-1\"><p><strong>Foundry Note</strong></p><p>This item includes 7 limited uses. The <strong>Determine Ounces</strong> activity can be used to determine the number of ounces equivalent to 1d6 + 1.</p><p>The <strong>Apply Solvent</strong> activity allows you to select the number of ounces you're applying.</p></section>",
+			"chat": ""
+		},
+		"identifier": "universal-solvent",
+		"source": {
+			"revision": 1,
+			"rules": "2024",
+			"book": "",
+			"license": "",
+			"page": "",
+			"custom": ""
+		},
+		"identified": true,
+		"unidentified": {
+			"description": "<p><em><strong>Unidentified</strong></em></p><p><em>This tube holds milky liquid with a strong alcohol smell.</em></p>",
+			"name": "Unidentified Universal Solvent"
+		},
+		"container": null,
+		"quantity": 1,
+		"weight": {
+			"value": 0.1,
+			"units": "lb"
+		},
+		"price": {
+			"value": 100000,
+			"denomination": "gp"
+		},
+		"rarity": "legendary",
+		"attunement": "",
+		"attuned": false,
+		"equipped": false,
+		"type": {
+			"value": "wondrous",
+			"subtype": ""
+		},
+		"damage": {
+			"base": {
+				"number": null,
+				"denomination": null,
+				"types": [],
+				"custom": {
+					"enabled": false
+				},
+				"scaling": {
+					"number": 1
+				}
+			},
+			"replace": false
+		},
+		"magicalBonus": null,
+		"properties": [
+			"mgc"
+		],
+		"armor": {
+			"magicalBonus": null
+		}
+	},
+	"effects": [],
+	"_key": "!items!dmgUniversalSolv"
+}
