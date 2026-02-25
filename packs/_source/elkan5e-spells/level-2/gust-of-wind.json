@@ -6,7 +6,7 @@
 	"folder": "6J3i75lfD1J0xYwA",
 	"flags": {
 		"midi-qol": {
-			"onUseMacroName": "",
+			"onUseMacroName": "[postActiveEffects]ItemMacro",
 			"effectActivation": false,
 			"AoETargetType": "any",
 			"AoETargetTypeIncludeSelf": true,
@@ -38,6 +38,11 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"dae": {
+			"macro": {
+				"command": "const targets = workflow?.failedSaves ?? workflow?.targets ?? new Set(); if (!targets?.size) return; const tpl = workflow?.template; const sourcePoint = tpl ? { x: tpl.x, y: tpl.y } : null; return await elkan5e.macros.features.push({ ...workflow, targets }, false, 15, 0, sourcePoint, true);"
+			}
 		}
 	},
 	"system": {

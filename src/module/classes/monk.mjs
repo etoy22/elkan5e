@@ -1,15 +1,11 @@
-import { deleteEffectRemoveEffect } from "../global.mjs";
+import { deleteEffectRemoveEffect } from "../shared/effects.mjs";
 const DialogV2 = foundry.applications.api.DialogV2;
 
 /**
- * Handle the "Meld with Shadows" effect for the given actor.
+ * Runs rmv Meld Shadow class feature automation.
  *
- * This function checks if the actor has the "Meld with Shadows [Effect]" active.
- * If the actor also has any other effect that is not "Meld with Shadows [Attacks]",
- * the "Meld with Shadows [Effect]" will be deleted.
- *
- * @param {Actor} actor - The actor object to be processed.
- * @returns {Promise<void>} A promise that resolves when the effect has been processed.
+ * @param {*} actor - Actor document to process.
+ * @returns {Promise<void>} Promise resolution result.
  */
 export async function rmvMeldShadow(actor) {
 	await deleteEffectRemoveEffect(
@@ -21,14 +17,10 @@ export async function rmvMeldShadow(actor) {
 }
 
 /**
- * Handle the "Hijack Shadow" effect for the given actor.
+ * Runs rmvhijack Shadow class feature automation.
  *
- * This function checks if the actor has the "Hijack Shadow [Effect]" active.
- * If the actor also has any other effect that is not "Hijack Shadow [Attacks]",
- * the "Hijack Shadow [Effect]" will be deleted.
- *
- * @param {Actor} actor - The actor object to be processed.
- * @returns {Promise<void>} A promise that resolves when the effect has been processed.
+ * @param {*} actor - Actor document to process.
+ * @returns {Promise<void>} Promise resolution result.
  */
 export async function rmvhijackShadow(actor) {
 	await deleteEffectRemoveEffect(
@@ -39,16 +31,34 @@ export async function rmvhijackShadow(actor) {
 	);
 }
 
+/**
+ * Runs hijack Shadow class feature automation.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function hijackShadow(workflow) {
 	const actor = workflow.actor;
 	emptyBody(actor);
 }
 
+/**
+ * Runs meld With Shadows class feature automation.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function meldWithShadows(workflow) {
 	const actor = workflow.actor;
 	emptyBody(actor);
 }
 
+/**
+ * Runs empty Body class feature automation.
+ *
+ * @param {*} actor - Actor document to process.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function emptyBody(actor) {
 	if (!actor.isOwner) return;
 	if (actor.items.find((i) => i.system.identifier === "empty-body")) {
@@ -100,6 +110,12 @@ export async function emptyBody(actor) {
 	}
 }
 
+/**
+ * Runs elemental Attunement class feature automation.
+ *
+ * @param {*} args - Arguments passed by the caller.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function elementalAttunement(args) {
 	if (args[0] == "on") {
 		const actor = await game.actors.get(args[1]);

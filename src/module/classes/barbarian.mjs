@@ -8,6 +8,12 @@ const WILD_BLOOD_SPELL_IDENTIFIERS = new Set([
 	"prismatic-spray",
 ]);
 
+/**
+ * Runs rage class feature automation.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function rage(workflow) {
 	console.log("Elkan 5e | Rage triggered");
 	const actor = workflow.actor;
@@ -27,6 +33,12 @@ export async function rage(workflow) {
 	}
 }
 
+/**
+ * Runs wild Blood class feature automation.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function wildBlood(workflow) {
 	const item = workflow.item;
 	const scope = workflow.scope;

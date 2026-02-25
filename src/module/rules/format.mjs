@@ -1,13 +1,25 @@
+/**
+ * Applies formating rule behavior.
+ *
+ * @returns {void} Operation result.
+ */
 export function formating() {
 	ruleType();
 	activation();
 	mats();
 	subFeatures();
+	traits();
+	registerCustomEffectFields();
 	sheets();
 }
 
 /*
  * Adds different rule types to Foundry
+ */
+/**
+ * Applies rule Type rule behavior.
+ *
+ * @returns {void} Operation result.
  */
 export function ruleType() {
 	CONFIG.DND5E.ruleTypes.weaponProperty = {
@@ -23,6 +35,11 @@ export function ruleType() {
 
 /*
  * Adds new activation types that are used in Elkan 5e
+ */
+/**
+ * Applies activation rule behavior.
+ *
+ * @returns {void} Operation result.
  */
 export function activation() {
 	const ACTIVATION_TYPES = {
@@ -62,6 +79,11 @@ export function activation() {
 /*
  * Adds spell Components to a type of Loot Types
  */
+/**
+ * Applies mats rule behavior.
+ *
+ * @returns {void} Operation result.
+ */
 export function mats() {
 	CONFIG.DND5E.lootTypes.spellComponents = {
 		label: "Spell Components",
@@ -70,6 +92,11 @@ export function mats() {
 
 /*
  * Adds Manuevers as a subtype of classes
+ */
+/**
+ * Applies sub Features rule behavior.
+ *
+ * @returns {void} Operation result.
  */
 export function subFeatures() {
 	CONFIG.DND5E.featureTypes.class.subtypes.precision = "Precision Attack";
@@ -93,6 +120,61 @@ export function subFeatures() {
 	};
 }
 
+/**
+ * Applies traits rule behavior.
+ *
+ * @returns {void} Operation result.
+ */
+export function traits() {
+	CONFIG.DND5E.characterFlags ??= {};
+	if (!CONFIG.DND5E.characterFlags.unpushable) {
+		CONFIG.DND5E.characterFlags.unpushable = {
+			name: "elkan5e.traits.unpushable.name",
+			hint: "elkan5e.traits.unpushable.hint",
+			section: game.i18n.localize("elkan5e.traits.section"),
+			type: Boolean,
+		};
+	}
+}
+
+/**
+ * Registers register Custom Effect Fields configuration.
+ *
+ * @returns {void} Operation result.
+ */
+function registerCustomEffectFields() {
+	Hooks.on("dae.modifySpecials", (_actorType, specials) => {
+		const BooleanField = foundry.data.fields.BooleanField;
+		const StringField = foundry.data.fields.StringField;
+		specials["flags.elkan5e.pushResist"] = [
+			new BooleanField({
+				label: game.i18n.localize("elkan5e.push.effects.pushResist"),
+				hint: game.i18n.localize("elkan5e.push.effects.pushResistDescription"),
+			}),
+			CONST.ACTIVE_EFFECT_MODES.CUSTOM,
+		];
+		specials["system.traits.dm.amount.fire"] = [
+			new StringField({
+				label: game.i18n.localize("elkan5e.burning.effects.fireDamageTaken"),
+				hint: game.i18n.localize("elkan5e.burning.effects.fireDamageTakenDescription"),
+			}),
+			CONST.ACTIVE_EFFECT_MODES.CUSTOM,
+		];
+	});
+
+	Hooks.once("ready", () => {
+		globalThis.DAE?.addAutoFields?.([
+			"flags.elkan5e.pushResist",
+			"system.traits.dm.amount.fire",
+		]);
+	});
+}
+
+/**
+ * Applies sheets rule behavior.
+ *
+ * @returns {void} Operation result.
+ */
 export function sheets() {
 	CONFIG.DND5E.sourcePacks.BACKGROUNDS = "elkan5e.elkan5e-background";
 	CONFIG.DND5E.sourcePacks.CLASSES = "elkan5e.elkan5e-class";

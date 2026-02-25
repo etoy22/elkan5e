@@ -1,3 +1,8 @@
+/**
+ * Applies refs rule behavior.
+ *
+ * @returns {void} Operation result.
+ */
 export function refs() {
 	setupGeneralRefs();
 	setupCombatRefs();
@@ -19,6 +24,11 @@ export function refs() {
 	setupMonsterRefs();
 }
 
+/**
+ * Registers setup Combat Refs configuration.
+ *
+ * @returns {void} Operation result.
+ */
 function setupCombatRefs() {
 	const base = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.";
 	const COMBAT_REFS = [
@@ -100,6 +110,11 @@ function setupCombatRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.e177956853ce4a88";
 }
 
+/**
+ * Registers setup Damage Refs configuration.
+ *
+ * @returns {void} Operation result.
+ */
 function setupDamageRefs() {
 	const base = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.";
 	const DAMAGE_TYPES = [
@@ -127,6 +142,11 @@ function setupDamageRefs() {
 	});
 }
 
+/**
+ * Registers setup Spell Refs configuration.
+ *
+ * @returns {void} Operation result.
+ */
 function setupSpellRefs() {
 	const base = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.";
 	const SPELL_REFS = [
@@ -209,6 +229,11 @@ function setupSpellRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.f384b82c33db4306";
 }
 
+/**
+ * Registers setup Creature Type Refs configuration.
+ *
+ * @returns {void} Operation result.
+ */
 function setupCreatureTypeRefs() {
 	const base = "Compendium.elkan5e.elkan5e-rules.JournalEntry.ZJX2hgglCq6NyNSD.JournalEntryPage.";
 	const CREATURE_REFS = [
@@ -242,6 +267,11 @@ function setupCreatureTypeRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.ZJX2hgglCq6NyNSD.JournalEntryPage.1ZgNrOURIMuR0CnH";
 }
 
+/**
+ * Registers setup Movement Refs configuration.
+ *
+ * @returns {void} Operation result.
+ */
 function setupMovementRefs() {
 	// Travel and movement
 
@@ -293,6 +323,11 @@ function setupMovementRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.555721e2247340e7";
 }
 
+/**
+ * Registers setup Vision Light Refs configuration.
+ *
+ * @returns {void} Operation result.
+ */
 function setupVisionLightRefs() {
 	// Vision and light
 	CONFIG.DND5E.rules.vision =
@@ -315,6 +350,11 @@ function setupVisionLightRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.tF77rxp5fPPbE6Vx.JournalEntryPage.4dfREIDjG5N4fvxd";
 }
 
+/**
+ * Registers setup General Refs configuration.
+ *
+ * @returns {void} Operation result.
+ */
 function setupGeneralRefs() {
 	CONFIG.DND5E.rules.inspiration =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.nkEPI89CiQnOaLYh";
@@ -344,6 +384,11 @@ function setupGeneralRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.5l8QNlgPDPOHpGID.JournalEntryPage.f17e4a3b7e024eb0";
 }
 
+/**
+ * Registers setup Actions Refs configuration.
+ *
+ * @returns {void} Operation result.
+ */
 function setupActionsRefs() {
 	CONFIG.DND5E.rules.bonusaction =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.Cx12WCR9KlNL9o8d";
@@ -351,8 +396,18 @@ function setupActionsRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.EkKBA3oaiy1Kvs3c";
 }
 
+/**
+ * Registers setup Size Tags Item Refs configuration.
+ *
+ * @returns {void} Operation result.
+ */
 function setupSizeTagsItemRefs() {}
 
+/**
+ * Registers setup Poisons Ref configuration.
+ *
+ * @returns {void} Operation result.
+ */
 function setupPoisonsRef() {
 	CONFIG.DND5E.rules.contactpoison =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.kXnCEqqGUWRZeZDj";
@@ -366,6 +421,11 @@ function setupPoisonsRef() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.I6OMMWUaYCWR9xip";
 }
 
+/**
+ * Registers setup Condition Refs configuration.
+ *
+ * @returns {void} Operation result.
+ */
 function setupConditionRefs() {
 	CONFIG.DND5E.rules.beingprone =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.bV8akkBdVUUG21CO";
@@ -394,14 +454,19 @@ function setupConditionRefs() {
 
 	CONFIG.DND5E.rules.disease =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.232cb157e7054330";
-	CONFIG.DND5E.rules.bloodied = 
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.2YZgnTbeQ4rGG6t9"
-	CONFIG.DND5E.rules.obscurred = 
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.FuFWdz6zw9P9VrON"
-	CONFIG.DND5E.rules.diseased = CONFIG.DND5E.rules.disease = 
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.C1uE5H2DfghUGEID"
+	CONFIG.DND5E.rules.bloodied =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.2YZgnTbeQ4rGG6t9";
+	CONFIG.DND5E.rules.obscurred =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.FuFWdz6zw9P9VrON";
+	CONFIG.DND5E.rules.diseased = CONFIG.DND5E.rules.disease =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.C1uE5H2DfghUGEID";
 }
 
+/**
+ * Registers setup D20 Refs configuration.
+ *
+ * @returns {void} Operation result.
+ */
 function setupD20Refs() {
 	CONFIG.DND5E.rules.d20test =
 		"Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.nxPH59t3iNtWJxnU";
@@ -413,6 +478,11 @@ function setupD20Refs() {
 		"Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.Vlri6Mp6grn9wt3g";
 }
 
+/**
+ * Registers setup Hazard Refs configuration.
+ *
+ * @returns {void} Operation result.
+ */
 function setupHazardRefs() {
 	const base = "Compendium.elkan5e.elkan5e-rules.JournalEntry.e7rUhwl4HkTVE0Qs.JournalEntryPage.";
 	const HAZARD_PAGES = [
@@ -457,6 +527,11 @@ function setupHazardRefs() {
 	}
 }
 
+/**
+ * Registers setup Rest Refs configuration.
+ *
+ * @returns {void} Operation result.
+ */
 function setupRestRefs() {
 	CONFIG.DND5E.rules.resting =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.dpHJXYLigIdEseIb";
@@ -466,6 +541,11 @@ function setupRestRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.6cLtjbHn4KV2R7G9";
 }
 
+/**
+ * Registers setup Social Mechanics Refs configuration.
+ *
+ * @returns {void} Operation result.
+ */
 function setupSocialMechanicsRefs() {
 	CONFIG.DND5E.rules.attitude =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.ahMxQJTGDhq08GWQ";
@@ -477,6 +557,11 @@ function setupSocialMechanicsRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.BNxLbtJofbNGzjsp";
 }
 
+/**
+ * Registers setup Items Refs configuration.
+ *
+ * @returns {void} Operation result.
+ */
 function setupItemsRefs() {
 	CONFIG.DND5E.rules.multipleitemsofthesamekind = CONFIG.DND5E.rules.combiningmagicaleffects =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.uWa3L8lGJKgICYHt";
@@ -498,6 +583,11 @@ function setupItemsRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.54d76ac4c4974cde";
 }
 
+/**
+ * Registers setup Monster Refs configuration.
+ *
+ * @returns {void} Operation result.
+ */
 function setupMonsterRefs() {
 	CONFIG.DND5E.rules.legendaryactions =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.08674a167b3642fa";
@@ -509,6 +599,11 @@ function setupMonsterRefs() {
 		"Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.BMoxmXB8pX6bOBus";
 }
 
+/**
+ * Registers setuptraps Refs configuration.
+ *
+ * @returns {void} Operation result.
+ */
 function setuptrapsRefs() {
 	CONFIG.DND5E.rules.detectingtraps =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.aa9a40780c7346db";

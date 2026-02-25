@@ -1,9 +1,7 @@
 /**
- * Add additional movement types to the DND5E system.
+ * Applies speed rule behavior.
  *
- * Currently registers crawl, long jump, and high jump movement options.
- *
- * @returns {void}
+ * @returns {void} Operation result.
  */
 export function speed() {
 	console.log("Elkan 5e  |  Initializing Speed");

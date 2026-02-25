@@ -196,7 +196,8 @@
 			"effectCondition": "",
 			"reactionCondition": "",
 			"removeAttackDamageButtons": "default",
-			"otherCondition": ""
+			"otherCondition": "",
+			"onUseMacroName": "[postActiveEffects]ItemMacro"
 		},
 		"midiProperties": {
 			"nodam": false,
@@ -218,6 +219,11 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"dae": {
+			"macro": {
+				"command": "const targets = workflow?.failedSaves ?? new Set(); if (!targets?.size) return; return await elkan5e.macros.features.push({ ...workflow, targets }, false, 10, 0, true);"
+			}
 		}
 	},
 	"_key": "!items!ecHupkSSAus3eGjy"

@@ -256,7 +256,8 @@
 			"AoETargetType": "any",
 			"AoETargetTypeIncludeSelf": true,
 			"autoTarget": "default",
-			"otherCondition": ""
+			"otherCondition": "",
+			"onUseMacroName": "[postActiveEffects]ItemMacro"
 		},
 		"midiProperties": {
 			"confirmTargets": "default",
@@ -276,6 +277,11 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"dae": {
+			"macro": {
+				"command": "const rawTargets = workflow?.failedSaves ?? new Set(); const targets = new Set([...rawTargets].filter((t) => ![\"huge\", \"grg\"].includes(t?.actor?.system?.traits?.size))); if (!targets.size) return; return await elkan5e.macros.features.push({ ...workflow, targets }, false, 5, 2, true);"
+			}
 		}
 	},
 	"_id": "r1f5PNRlgEs33Kwh",

@@ -1,5 +1,7 @@
 /**
- * All the changes of Elkan 5e in Foundry.
+ * Applies weapons rule behavior.
+ *
+ * @returns {void} Operation result.
  */
 export function weapons() {
 	console.log("Elkan 5e  |  Initializing Weapons");

@@ -1,5 +1,11 @@
 const DialogV2 = foundry.applications.api.DialogV2;
 
+/**
+ * Runs infused Healer class feature automation.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function infusedHealer(workflow) {
 	// Bail if not a healing spell of 1st level or higher
 	let item = workflow.item;
@@ -38,9 +44,11 @@ export async function infusedHealer(workflow) {
 }
 
 /**
- * Adds functionality to Healing Overflow.
- * @param {Item} item - The item used.
- * @param {Roll} roll - The resulting roll.
+ * Runs heal Over class feature automation.
+ *
+ * @param {*} item - Item document to process.
+ * @param {*} roll - Roll.
+ * @returns {void} Operation result.
  */
 export function healOver(item, roll) {
 	if (
@@ -79,6 +87,12 @@ export function healOver(item, roll) {
 	}
 }
 
+/**
+ * Runs healing Overflow class feature automation.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<unknown>} Promise resolution result.
+ */
 export async function healingOverflow(workflow) {
 	const [workflowData] = workflow.args;
 	if (
@@ -183,6 +197,12 @@ export async function healingOverflow(workflow) {
 	}).render(true);
 }
 
+/**
+ * Runs shadow Refuge class feature automation.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function shadowRefuge(workflow) {
 	try {
 		console.log("Elkan 5e | Shadow Refuge check");
