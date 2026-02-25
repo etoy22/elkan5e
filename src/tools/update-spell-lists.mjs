@@ -22,6 +22,17 @@ const SPELL_LEVEL_DIRS = [
 ];
 const CLASS_SPECIFIC_DIR = path.join(SPELLS_ROOT, "spells-class-specific-versions");
 
+function normalizeSpellLevel(rawLevel) {
+	const level = Number(rawLevel);
+	if (!Number.isInteger(level)) return null;
+	if (level < 0 || level > 9) return null;
+	return level;
+}
+
+function getExpectedSpellDir(level) {
+	return level === 0 ? "cantrip" : `level-${level}`;
+}
+
 // Foundry-style short ID for new pages (16 chars, URL-safe)
 function randomId() {
 	return crypto.randomBytes(9).toString("base64url").slice(0, 16);
@@ -43,7 +54,19 @@ function buildSpellLevelMap() {
 		for (const file of fs.readdirSync(dirPath)) {
 			if (!file.endsWith(".json")) continue;
 			const json = loadJson(path.join(dirPath, file));
-			if (json?._id) map.set(json._id, lvl);
+			if (!json?._id) continue;
+
+			const jsonLevel = normalizeSpellLevel(json?.system?.level);
+			const resolvedLevel = jsonLevel ?? lvl;
+
+			// Source of truth: level 0 spells are always cantrips.
+			if (jsonLevel !== null && getExpectedSpellDir(jsonLevel) !== dir) {
+				console.warn(
+					`Spell directory mismatch for "${json.name ?? json._id}": expected ${getExpectedSpellDir(jsonLevel)}, found ${dir}`,
+				);
+			}
+
+			map.set(json._id, resolvedLevel);
 		}
 	}
 	return map;

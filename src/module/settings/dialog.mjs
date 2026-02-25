@@ -1,4 +1,4 @@
-import { processElkanUpdateForm } from "./replaceItems.mjs";
+import { processElkanUpdateForm } from "./replace-items.mjs";
 const DialogV2 = foundry.applications.api.DialogV2;
 
 export async function getModuleVersion() {

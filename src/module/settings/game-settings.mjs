@@ -1,6 +1,7 @@
-import { UpdateElkanRunner } from "./UpdateElkanRunner.mjs";
+import { UpdateElkanRunner } from "./update-elkan-runner.mjs";
 const MODULE_ID = "elkan5e";
-export async function gameSettingRegister() {
+
+export async function registerGameSettings() {
 	// Convert Game settings
 
 	//Set game settings
@@ -125,7 +126,7 @@ export async function gameSettingRegister() {
 	});
 }
 
-export async function gameSettingsMigrate() {
+export async function migrateGameSettings() {
 	const worldSettings = game.settings.storage.get("world");
 	const oldValue = worldSettings?._source?.find((s) => s.key === `${MODULE_ID}.tools`)?.value;
 	if (oldValue === undefined) return;
@@ -148,3 +149,6 @@ export async function gameSettingsMigrate() {
 		await game.settings.set(MODULE_ID, "toolsMigration", true);
 	}
 }
+
+export const gameSettingRegister = registerGameSettings;
+export const gameSettingsMigrate = migrateGameSettings;
