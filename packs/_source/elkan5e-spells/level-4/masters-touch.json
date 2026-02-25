@@ -1,0 +1,244 @@
+{
+	"folder": "90eJtrVwLFIxcWJw",
+	"name": "Master's Touch",
+	"type": "spell",
+	"_id": "imRzGQUedMDpOvgW",
+	"img": "icons/skills/melee/hand-grip-sword-strike-orange.webp",
+	"system": {
+		"activities": {
+			"wojHn5q9fJ71SQUY": {
+				"type": "utility",
+				"_id": "wojHn5q9fJ71SQUY",
+				"activation": {
+					"type": "action",
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "self",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": []
+				},
+				"visibility": {
+					"level": {},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"skipConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"max": ""
+		},
+		"description": {
+			"value": "<p><em>You touch a creature, whispering and encouraging them to wield the knowledge and skills necessary for all manner of weapons and gadgets.</em></p><p><strong>Buff</strong></p><ul><li><p>The target has proficiency with all weapons, crafting tools, and vehicles.</p></li></ul>",
+			"chat": ""
+		},
+		"identifier": "spell",
+		"source": {
+			"revision": 1,
+			"rules": "2024"
+		},
+		"activation": {
+			"type": "action",
+			"condition": ""
+		},
+		"duration": {
+			"units": "hour",
+			"value": "8"
+		},
+		"level": 4,
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"method": "spell",
+		"prepared": 1,
+		"properties": [
+			"vocal",
+			"somatic"
+		],
+		"range": {
+			"units": "ft",
+			"special": "",
+			"value": "5"
+		},
+		"school": "div",
+		"target": {
+			"template": {
+				"contiguous": false,
+				"units": "ft",
+				"type": ""
+			},
+			"affects": {
+				"choice": false,
+				"type": "creature",
+				"count": "1",
+				"special": ""
+			}
+		}
+	},
+	"effects": [
+		{
+			"name": "Master's Touch",
+			"img": "icons/skills/melee/hand-grip-sword-strike-orange.webp",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.imRzGQUedMDpOvgW",
+			"_id": "mMDHIHAmvbqccVk9",
+			"type": "base",
+			"system": {},
+			"changes": [
+				{
+					"key": "system.traits.weaponProf.all",
+					"mode": 0,
+					"value": "1",
+					"priority": 20
+				},
+				{
+					"key": "system.tools.craft.prof",
+					"mode": 5,
+					"value": "1",
+					"priority": 20
+				},
+				{
+					"key": "system.tools.vehicle.prof",
+					"mode": 5,
+					"value": "1",
+					"priority": 20
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"combat": null,
+				"seconds": 28800,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [],
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"showIcon": false,
+					"disableIncapacitated": false,
+					"durationExpression": "",
+					"specialDuration": [],
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "All",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!imRzGQUedMDpOvgW.mMDHIHAmvbqccVk9"
+		}
+	],
+	"_key": "!items!imRzGQUedMDpOvgW"
+}

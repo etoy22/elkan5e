@@ -1,21 +1,80 @@
 # Changelog
 
+# v1.13.6.1
+
+## Bug Fix
+- Restored Vocals as a choice
+- Removed broken links from gaming set
+- Cleaned up some formatting inconsistencies in spells
+
+# v1.13.6
+
+## Classes
+
+**[Bard](https://www.elkan5e.com/classes/bard)**
+- Switched to two instrument proficiencies to reflect that instrument proficiencies are now by instrument category.
+
+**[Druid](https://www.elkan5e.com/classes/druid)**
+  - Chthonic:
+    - Level 1 spells swapped to Color Spray and Dissonant Whispers. Otherworldly Veil replaces Passwall at level 5.
+
+**[Ranger](https://www.elkan5e.com/classes/ranger)**
+- Ranger tool/vehicle options expanded to the whole list.
+
+**[Rogue](https://www.elkan5e.com/classes/rouge)**
+- Ranger tool/vehicle options expanded to the whole list.
+
+**[Warlock](https://www.elkan5e.com/classes/warlock)**
+  - Fiend: 
+    - Dark One's Own Luck is no longer consumed when it fails.
+
+## Equipment
+- Instruments are grouped into one of five categories, some crafting tools were combined, and all references to gaining tools are now consistent with these changes
+  - Fleshed out items for the various instrument types.
+
+## Feat
+- Turn the Unholy now ends early if the cleric becomes incapacitated.
+
+## Spells
+- Otherworldly Veil reworked as a level 5 spell that prevents several targets from seeing any creature you choose to shield from them.
+- Snowball Swarm reworked as a cantrip that scales to larger sizes.
+- Spook reworked as a cantrip with a casting time of 1 action.
+- Some new Artificer spells:
+  - Master's Touch spell for artificers and diviners.
+  - Metalline Weapon spell (3rd level) for artificers and transmuters.
+  - Reconstruct spell for artificers and transmuters.
+  - Touch of Corrosion spell for artificers, transmuters, and water savants.
+
+## Rules
+- Updated Wild Surge tables to have the same updated spells as Wild Mages at levels 1 and 2.
+- Update Faerie Fire Wild Surge for non-sorcerers.
+
 # v1.13.5
 ## Bug Fixes
 
 - Well of Corruption now applies drained to all targets with safer token resolution; halves on successful saves.
 - v13 update dialog spacing/line breaks cleaned to avoid stray `<br>` artifacts.
+- Fixed issues casting Warlock spells.
 
 ## Classes
+- Made Mounted Combat a fighting style
 
 **[Cleric](https://www.elkan5e.com/cleric)**
 
-- Added Shadow Refuge reminder on qualifying illusion spells.
+- Trickery Domain
+    - Added Shadow Refuge reminder on qualifying illusion spells.
 
 **[Wizard](https://www.elkan5e.com/wizard)**
 
-- Added Soul Conduit reminder for necromancy spells (level ≥1).
-- Added Necromantic Surge reminder for necromancy spells (level ≥3) with optional dialog prompt.
+- Necromancer: 
+    - Added Soul Conduit reminder for necromancy spells (level >=1).
+    - Added Necromantic Surge reminder for necromancy spells (level >=3) with optional dialog prompt.
+
+**[Ranger](https://www.elkan5e.com/ranger)**
+
+- Spellbreaker: 
+    - Reworked level 3 features into a single Magic Shackles feature that marks a target and applies half speed, siphoned, and damage effects against that target.
+    - Reworked Rend Magic to break concentration, impose blind, and prevent teleportation with a 1/short rest recovery.
 
 ## Equipment
 
@@ -25,9 +84,16 @@
 
 ## Game Rules
 
+- Revised Mount Rules
 - Expanded tool type mappings across SRD/legacy/Elkan modes; retagging utility (`updateToolTypes`) tidied.
 - Pack extraction/cleaning now sanitizes HTML, italicizes spell references, prunes empty flags, backfills identifiers, and skips folder metadata.
 - Containers are renamed on extract to slugged filenames; folder metadata retained but excluded from clean.
+- Aligned the creature workflows with the summoned-creatures updates.
+- Updated class spell advancements so subclass spell lists and School of Magic spell lists automatically refresh when their sources change.
+
+## Monsters
+
+- Added new mounts and monsters, keeping their stat blocks synchronized with the summon machinery.
 
 ## UI
 
@@ -39,9 +105,9 @@
 - New actor pack: `elkan5e-summoned-creatures` with supporting items/spells/folders.
 - Added `scripts/validate-packs-json.js` helper.
 - Removed legacy helper scripts, logs, caches, and shell helpers.
-- Repository now contains `elkan5e-1.0.0.tgz` (release artifact placeholder; do not publish/build here).
 - General JSON formatting/description cleanup to strip redundant `<br>` and noisy attributes across packs.
 - Formatting/identifier cleanup to all features.
+- Added name lookups to generic creature features, automated Creature Feature updates so changes cascade to every creature entry, and ensured creatures copied into the summoned-creatures pack stay synchronized with their source data.
 
 # v1.13.4
 
