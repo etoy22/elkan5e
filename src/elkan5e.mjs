@@ -21,7 +21,7 @@ import {
 	wildBlood,
 	wildSurge,
 } from "./module/classes/index.mjs";
-import { undeadNature } from "./module/feats/index.mjs";
+import { relentlessEndurance, undeadNature } from "./module/feats/index.mjs";
 import {
 	armor,
 	conditions,
@@ -137,7 +137,13 @@ function registerHooks() {
 		}
 	});
 
-	Hooks.on("updateActor", async (actor) => {
+	Hooks.on("updateActor", async (actor, changes) => {
+		try {
+			await relentlessEndurance(actor, changes);
+		} catch (error) {
+			console.error("Elkan 5e | Error in relentlessEndurance hook:", error);
+		}
+
 		try {
 			await updateBarbarianDefense(actor, "updateActor");
 		} catch (error) {
