@@ -4,12 +4,12 @@ import { readFileSync, readdirSync } from "node:fs";
 import { dirname, extname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { parse } from "yaml";
-import { buildPayload, releaseToFoundry } from "../../.github/workflows/scripts/release-foundry.js";
-import { updateModuleJson } from "../../.github/workflows/scripts/update-module.js";
+import { buildPayload, releaseToFoundry } from "../.github/workflows/scripts/release-foundry.js";
+import { updateModuleJson } from "../.github/workflows/scripts/update-module.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const workflowPath = resolve(__dirname, "../../.github/workflows/main.yml");
+const workflowPath = resolve(__dirname, "../.github/workflows/main.yml");
 const workflow = parse(readFileSync(workflowPath, "utf8"));
 const packsRoot = resolve(__dirname, "../packs/_source");
 
@@ -69,7 +69,9 @@ function formatJsonParseError(filePath, err) {
 		} else {
 			details += `\n\n--- file start ---\n${content.slice(0, 400)}\n--- end ---`;
 		}
-	} catch {}
+	} catch (readErr) {
+		void readErr;
+	}
 
 	return details;
 }
@@ -127,15 +129,17 @@ test("notify-discord job publishes release details to Discord", () => {
 	assert.deepEqual(stepNames, [
 		"Download release notes artifact",
 		"Show release notes in logs",
-		"Read release notes content",
+		"Format release notes for Discord",
+		"Show formatted release notes in logs",
+		"Read formatted release notes content",
 		"Prepare Discord payload",
 		"Post to Discord",
 	]);
 
 	assert.equal(job.steps[0].uses, "actions/download-artifact@v4");
-	assert.equal(job.steps[2].id, "read_release_notes");
-	assert.equal(job.steps[3].id, "prepare_discord_payload");
-	const postStep = job.steps[4].run ?? "";
+	assert.equal(job.steps[4].id, "read_release_notes");
+	assert.equal(job.steps[5].id, "prepare_discord_payload");
+	const postStep = job.steps[6].run ?? "";
 	assert.ok(postStep.includes("set -eo pipefail"), "post step should enable pipefail");
 	assert.ok(
 		postStep.includes(
