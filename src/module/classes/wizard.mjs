@@ -1,4 +1,4 @@
-import { drainedEffect } from "../global.mjs";
+import { drainedEffect } from "../shared/effects.mjs";
 
 export async function lifeDrainGraveguard(workflow) {
 	const caster = workflow.actor;

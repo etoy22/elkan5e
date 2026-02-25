@@ -1,4 +1,4 @@
-import { drainedEffect, forEachDamagedTarget } from "../global.mjs";
+import { drainedEffect, forEachDamagedTarget } from "../shared/effects.mjs";
 
 export async function slicingBlow(workflow) {
 	const casterUuid = workflow.token?.actor?.uuid;

@@ -1,4 +1,4 @@
-import { deleteEffectRemoveEffect } from "../global.mjs";
+import { deleteEffectRemoveEffect } from "../shared/effects.mjs";
 const DialogV2 = foundry.applications.api.DialogV2;
 
 /**

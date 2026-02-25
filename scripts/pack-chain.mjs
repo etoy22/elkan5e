@@ -4,7 +4,7 @@ import { spawn } from "node:child_process";
 const args = process.argv.slice(2);
 
 function runStage(stage) {
-	const cmdArgs = ["./src/packs.mjs", "package", stage, ...args];
+	const cmdArgs = ["./scripts/packs.mjs", "package", stage, ...args];
 	const child = spawn(process.execPath, cmdArgs, { stdio: "inherit" });
 
 	return new Promise((resolve, reject) => {

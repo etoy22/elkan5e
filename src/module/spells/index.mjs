@@ -1,4 +1,4 @@
-import { drainedEffect, forEachDamagedTarget } from "./global.mjs";
+import { drainedEffect, forEachDamagedTarget } from "../shared/effects.mjs";
 
 const SIZE_ORDER = ["tiny", "sm", "med", "lg", "huge", "grg"];
 const SIZE_TO_GRID = {
