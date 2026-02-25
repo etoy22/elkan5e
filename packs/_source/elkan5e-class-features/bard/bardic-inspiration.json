@@ -82,7 +82,7 @@
 				"activation": {
 					"type": "reaction",
 					"value": null,
-					"condition": "",
+					"condition": "['isMissed','isSave','isSkill'].includes(reaction) && tokenUuid && workflow?.token?.uuid && tokenUuid !== workflow?.token?.uuid",
 					"override": false
 				},
 				"consumption": {

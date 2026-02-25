@@ -13,7 +13,7 @@
 					"type": "reaction",
 					"value": null,
 					"override": false,
-					"condition": ""
+					"condition": "reaction === 'isMoved' && computeDistance(tokenUuid, targetUuid) <= 60 && canvas?.tokens?.get(targetUuid)?.document?.disposition === -1"
 				},
 				"consumption": {
 					"scaling": {
