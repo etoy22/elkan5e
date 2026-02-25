@@ -39,28 +39,9 @@
 			"idv": false,
 			"ida": false
 		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedProperties": [
-				"vocal",
-				"somatic",
-				"material",
-				"concentration"
-			]
-		},
 		"dae": {
 			"macro": {
-				"name": "Gust of Wind",
-				"img": "icons/magic/air/wind-vortex-swirl-purple.webp",
-				"type": "script",
-				"scope": "global",
-				"command": "const targets = workflow?.failedSaves ?? new Set(); if (!targets?.size) return; const tpl = workflow?.template; const sourcePoint = tpl ? { x: tpl.x, y: tpl.y } : null; return await elkan5e.macros.features.push({ ...workflow, targets }, false, 15, 0, sourcePoint);",
-				"author": "vHqSHJMdmEO6Mk2C",
-				"_id": null,
-				"folder": null
+				"command": "const targets = workflow?.failedSaves ?? workflow?.targets ?? new Set(); if (!targets?.size) return; const tpl = workflow?.template; const sourcePoint = tpl ? { x: tpl.x, y: tpl.y } : null; return await elkan5e.macros.features.push({ ...workflow, targets }, false, 15, 0, sourcePoint);"
 			}
 		}
 	},
