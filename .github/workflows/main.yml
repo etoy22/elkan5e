@@ -243,8 +243,8 @@ jobs:
       - name: Show release notes in logs
         run: cat release-notes.md
 
-            - name: Format release notes for Discord
-              run: node .github/workflows/scripts/format-discord-notes.cjs release-notes.md release-notes-discord.txt
+      - name: Format release notes for Discord
+        run: node .github/workflows/scripts/format-discord-notes.cjs release-notes.md release-notes-discord.txt
 
       - name: Show formatted release notes in logs
         run: cat release-notes-discord.txt
