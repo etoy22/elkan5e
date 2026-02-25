@@ -191,6 +191,9 @@ function sanitizeDescriptions(entry) {
 
 function cleanPackEntry(data, { clearSourceId = true, ownership = 0 } = {}) {
 	const preservedIdentifier = data?.system?.identifier ?? null;
+	const preservedFolder = Object.prototype.hasOwnProperty.call(data, "folder")
+		? data.folder
+		: undefined;
 	// Your existing top-level cleanup
 	if (clearSourceId && data.flags?.core?.sourceId) delete data.flags.core.sourceId;
 	if (data.ownership) data.ownership = { default: ownership };
@@ -273,6 +276,7 @@ function cleanPackEntry(data, { clearSourceId = true, ownership = 0 } = {}) {
 			`Failed to set identifier for ${data?.name ?? "unknown entry"}: ${err.message}`,
 		);
 	}
+	if (preservedFolder !== undefined) data.folder = preservedFolder;
 }
 
 async function cleanPacks(packName, entryName) {
