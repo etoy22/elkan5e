@@ -2,6 +2,7 @@ import { chooseDefenderSkill, sizeIndex } from "../global.mjs";
 
 const imgForCondition = (key) => `modules/elkan5e/icons/conditions/${key}.svg`;
 const t = (key, data) => (data ? game.i18n.format(key, data) : game.i18n.localize(key));
+const DEAD_PROMPT_FLAG = "grappleDeadPrompted";
 
 /**
  * Check whether an ActiveEffect includes a given status id.
@@ -56,6 +57,103 @@ const removeClimberEffect = async (grapplerActor, grappledActor) => {
 	} catch (error) {
 		console.warn("Elkan 5e | Failed to remove climber advantage effect", error);
 	}
+};
+
+/**
+ * Check whether an actor is currently dead.
+ * @param {Actor} actor
+ * @returns {boolean}
+ */
+const isActorDead = (actor) => {
+	if (!actor) return false;
+	const defeatedId = CONFIG.specialStatusEffects?.DEFEATED ?? "defeated";
+	if (
+		typeof actor.statuses?.has === "function" &&
+		(actor.statuses.has("dead") || actor.statuses.has(defeatedId))
+	) {
+		return true;
+	}
+	if (actor.effects.some((e) => hasStatus(e, "dead") || hasStatus(e, defeatedId))) return true;
+	const hp = Number(actor.system?.attributes?.hp?.value);
+	return Number.isFinite(hp) && hp <= 0;
+};
+
+/**
+ * Collect grapple links involving an actor.
+ * @param {Actor} actor
+ * @returns {Promise<Array<{effect: ActiveEffect, grappler: Actor, grappled: Actor}>>}
+ */
+const getGrappleLinks = async (actor) => {
+	const links = [];
+	if (!actor || !canvas?.tokens?.placeables) return links;
+
+	// Actor is grappled by others.
+	const grappledEffects = actor.effects.filter((e) => e?.flags?.elkan5e?.grapple?.grapplerUuid);
+	for (const effect of grappledEffects) {
+		const grappler = await fromUuid(effect.flags.elkan5e.grapple.grapplerUuid);
+		if (!grappler) continue;
+		links.push({ effect, grappler, grappled: actor });
+	}
+
+	// Actor is grappling others.
+	for (const token of canvas.tokens.placeables) {
+		const targetActor = token?.actor;
+		if (!targetActor) continue;
+		const effects = targetActor.effects.filter(
+			(e) =>
+				e?.flags?.elkan5e?.grapple?.grapplerUuid === actor.uuid && hasStatus(e, "grappled"),
+		);
+		for (const effect of effects) {
+			links.push({ effect, grappler: actor, grappled: targetActor });
+		}
+	}
+
+	return links;
+};
+
+/**
+ * Prompt whether to clear grapples involving a dead creature.
+ * @param {Actor} deadActor
+ * @param {Array<{effect: ActiveEffect, grappler: Actor, grappled: Actor}>} links
+ * @returns {Promise<boolean>}
+ */
+const promptDeadUngrapple = async (deadActor, links) => {
+	if (!deadActor || !links?.length) return false;
+	const partners = [
+		...new Set(
+			links
+				.map((link) =>
+					link.grappler?.uuid === deadActor.uuid ? link.grappled?.name : link.grappler?.name,
+				)
+				.filter(Boolean),
+		),
+	];
+	const DialogV2 = foundry.applications.api.DialogV2;
+	return new Promise((resolve) => {
+		const partnerList = partners.map((name) => `<li>${foundry.utils.escapeHTML(name)}</li>`).join("");
+		new DialogV2({
+			window: { title: t("elkan5e.grapple.deadDialog.title") },
+			content: `
+				<form>
+					<p>${t("elkan5e.grapple.deadDialog.prompt", { name: deadActor.name })}</p>
+					${partners.length ? `<p>${t("elkan5e.grapple.deadDialog.partners")}</p><ul>${partnerList}</ul>` : ""}
+				</form>
+			`,
+			buttons: [
+				{
+					action: "release",
+					label: t("elkan5e.grapple.deadDialog.release"),
+					callback: () => resolve(true),
+				},
+				{
+					action: "keep",
+					label: t("elkan5e.grapple.deadDialog.keep"),
+					callback: () => resolve(false),
+				},
+			],
+			default: "release",
+		}).render(true);
+	});
 };
 
 /**
@@ -142,6 +240,58 @@ const getGrappleRange = (workflow) => {
 	return Number.isFinite(range) && range > 0 ? range : 5;
 };
 
+const measureRangeDistance = (from, to) => {
+	if (!canvas?.grid) return Number.POSITIVE_INFINITY;
+	if (typeof canvas.grid.measurePath === "function") {
+		try {
+			const path = canvas.grid.measurePath([from, to], {});
+			if (Number.isFinite(path?.distance)) return path.distance;
+		} catch (_error) {
+			// Fallback below for older grid APIs or unexpected measurePath signatures.
+		}
+	}
+	return canvas.grid.measureDistance(from, to);
+};
+
+const getTokenRect = (tokenDoc, x = tokenDoc.x, y = tokenDoc.y) => {
+	const gridSize = canvas.grid?.size ?? 1;
+	return {
+		x,
+		y,
+		w: tokenDoc.width * gridSize,
+		h: tokenDoc.height * gridSize,
+	};
+};
+
+const nearest1D = (aMin, aMax, bMin, bMax) => {
+	if (aMax < bMin) return [aMax, bMin];
+	if (bMax < aMin) return [aMin, bMax];
+	const p = Math.max(aMin, bMin);
+	return [p, p];
+};
+
+const measureTokenDistance = (aDoc, aX, aY, bDoc, bX = bDoc.x, bY = bDoc.y) => {
+	const a = getTokenRect(aDoc, aX, aY);
+	const b = getTokenRect(bDoc, bX, bY);
+	const [ax, bx] = nearest1D(a.x, a.x + a.w, b.x, b.x + b.w);
+	const [ay, by] = nearest1D(a.y, a.y + a.h, b.y, b.y + b.h);
+	return measureRangeDistance({ x: ax, y: ay }, { x: bx, y: by });
+};
+
+const getFirstFullSpacePosition = (token, dx, dy) => {
+	const gridSize = canvas.grid?.size ?? 1;
+	const desiredX = token.x + dx;
+	const desiredY = token.y + dy;
+	if (!Number.isFinite(gridSize) || gridSize <= 0) return { x: desiredX, y: desiredY };
+	const snap = (value, delta) => {
+		const scaled = value / gridSize;
+		if (delta > 0) return Math.ceil(scaled) * gridSize;
+		if (delta < 0) return Math.floor(scaled) * gridSize;
+		return Math.round(scaled) * gridSize;
+	};
+	return { x: snap(desiredX, dx), y: snap(desiredY, dy) };
+};
+
 /**
  * Maintain grapple movement rules when either token moves.
  * @param {TokenDocument} tokenDoc
@@ -173,22 +323,30 @@ export async function handleGrapplerMove(tokenDoc, changes) {
 		if (!targetActor) continue;
 		const effects = targetActor.effects.filter((e) => {
 			const g = e?.flags?.elkan5e?.grapple;
-			return g?.grapplerUuid === grapplerUuid && g?.sizeDiff === 0;
+			return g?.grapplerUuid === grapplerUuid;
 		});
 		if (!effects.length) continue;
-
-		const storedRange = Number(effects[0]?.flags?.elkan5e?.grapple?.range);
-		const reach = Number(tokenDoc?.actor?.system?.attributes?.reach);
-		const range =
-			Number.isFinite(storedRange) && storedRange > 0
-				? storedRange
-				: Number.isFinite(reach) && reach > 0
-					? reach
-					: 5;
-		const distance = canvas.grid.measureDistance(center, targetToken.center);
-		if (distance <= range) continue;
-
 		for (const effect of effects) {
+			const sizeDiff = Number(effect?.flags?.elkan5e?.grapple?.sizeDiff ?? 0);
+			// If grappler is larger, target movement is resolved in the drag section below.
+			if (sizeDiff > 0) continue;
+			const storedRange = Number(effect?.flags?.elkan5e?.grapple?.range);
+			const reach = Number(tokenDoc?.actor?.system?.attributes?.reach);
+			const range =
+				Number.isFinite(storedRange) && storedRange > 0
+					? storedRange
+					: Number.isFinite(reach) && reach > 0
+						? reach
+						: 5;
+			const distance = measureTokenDistance(
+				tokenDoc,
+				newX,
+				newY,
+				targetToken.document,
+				targetToken.document.x,
+				targetToken.document.y,
+			);
+			if (distance <= range) continue;
 			try {
 				await effect.delete();
 				await removeClimberEffect(actor, targetActor);
@@ -205,11 +363,6 @@ export async function handleGrapplerMove(tokenDoc, changes) {
 		const grapplerToken = grapplerActor?.getActiveTokens?.()[0] ?? null;
 		if (!grapplerToken) continue;
 		const sizeDiff = Number(effect.flags.elkan5e.grapple.sizeDiff ?? 0);
-		if ((dx !== 0 || dy !== 0) && sizeDiff <= -1) {
-			DRAG_IGNORE.add(grapplerToken.id);
-			await grapplerToken.document.update({ x: grapplerToken.x + dx, y: grapplerToken.y + dy });
-			setTimeout(() => DRAG_IGNORE.delete(grapplerToken.id), 0);
-		}
 		const storedRange = Number(effect.flags.elkan5e.grapple.range);
 		const reach = Number(grapplerActor?.system?.attributes?.reach);
 		const range =
@@ -218,7 +371,25 @@ export async function handleGrapplerMove(tokenDoc, changes) {
 				: Number.isFinite(reach) && reach > 0
 					? reach
 					: 5;
-		const distance = canvas.grid.measureDistance(center, grapplerToken.center);
+		const distance = measureTokenDistance(
+			tokenDoc,
+			newX,
+			newY,
+			grapplerToken.document,
+			grapplerToken.document.x,
+			grapplerToken.document.y,
+		);
+		let movedTogether = false;
+		if ((dx !== 0 || dy !== 0) && sizeDiff <= -1 && distance > range) {
+			DRAG_IGNORE.add(grapplerToken.id);
+			const pos = getFirstFullSpacePosition(grapplerToken.document, dx, dy);
+			await grapplerToken.document.update(pos);
+			setTimeout(() => DRAG_IGNORE.delete(grapplerToken.id), 0);
+			movedTogether = true;
+		}
+		// If the larger grappled creature moved and the smaller grappler was moved with it,
+		// do not end the grapple on range in this update.
+		if (movedTogether) continue;
 		if (distance > range) {
 			try {
 				await effect.delete();
@@ -239,11 +410,120 @@ export async function handleGrapplerMove(tokenDoc, changes) {
 				return g?.grapplerUuid === grapplerUuid && g?.sizeDiff >= 1;
 			});
 			if (!effects.length) continue;
+			const storedRange = Number(effects[0]?.flags?.elkan5e?.grapple?.range);
+			const reach = Number(actor?.system?.attributes?.reach);
+			const range =
+				Number.isFinite(storedRange) && storedRange > 0
+					? storedRange
+					: Number.isFinite(reach) && reach > 0
+						? reach
+						: 5;
+			const distance = measureTokenDistance(
+				tokenDoc,
+				newX,
+				newY,
+				targetToken.document,
+				targetToken.document.x,
+				targetToken.document.y,
+			);
+			// If movement keeps the pair within grapple range, do not force-move the other token.
+			if (distance <= range) continue;
 			DRAG_IGNORE.add(targetToken.id);
-			await targetToken.document.update({ x: targetToken.x + dx, y: targetToken.y + dy });
+			const pos = getFirstFullSpacePosition(targetToken.document, dx, dy);
+			await targetToken.document.update(pos);
 			setTimeout(() => DRAG_IGNORE.delete(targetToken.id), 0);
 		}
 	}
+}
+
+/**
+ * End all grapples involving an actor (as grappler and as grappled).
+ * Used when forced movement (like push) should break grapples immediately.
+ * @param {Actor} actor
+ * @returns {Promise<void>}
+ */
+export async function endAllGrapplesForActor(actor) {
+	if (!actor || !canvas?.tokens?.placeables) return;
+
+	// Actor is grappled by someone else.
+	const grappledEffects = actor.effects.filter((e) => e?.flags?.elkan5e?.grapple?.grapplerUuid);
+	for (const effect of grappledEffects) {
+		const grapplerActor = await fromUuid(effect.flags.elkan5e.grapple.grapplerUuid);
+		try {
+			await effect.delete();
+			await removeClimberEffect(grapplerActor, actor);
+		} catch (error) {
+			console.warn("Elkan 5e | Failed to clear grappled effect", error);
+		}
+	}
+
+	// Actor is grappling others.
+	for (const targetToken of canvas.tokens.placeables) {
+		const targetActor = targetToken?.actor;
+		if (!targetActor) continue;
+		const effects = targetActor.effects.filter(
+			(e) =>
+				e?.flags?.elkan5e?.grapple?.grapplerUuid === actor.uuid &&
+				hasStatus(e, "grappled"),
+		);
+		if (!effects.length) continue;
+		for (const effect of effects) {
+			try {
+				await effect.delete();
+			} catch (error) {
+				console.warn("Elkan 5e | Failed to clear grappler effect", error);
+			}
+		}
+		await removeClimberEffect(actor, targetActor);
+	}
+
+	// Cleanup any remaining climber effects on this actor.
+	const ownClimberEffects = actor.effects.filter(
+		(e) => e?.flags?.elkan5e?.grapple?.type === "climber-adv",
+	);
+	for (const effect of ownClimberEffects) {
+		try {
+			await effect.delete();
+		} catch (error) {
+			console.warn("Elkan 5e | Failed to clear climber effect", error);
+		}
+	}
+}
+
+/**
+ * Ask whether grapples involving a dead creature should end.
+ * The prompt is shown once per dead state and resets when revived.
+ * @param {Actor} actor
+ * @returns {Promise<void>}
+ */
+export async function handleDeadGrapplePrompt(actor) {
+	if (!game.user?.isGM || !actor) return;
+
+	const dead = isActorDead(actor);
+	const prompted = Boolean(actor.getFlag("elkan5e", DEAD_PROMPT_FLAG));
+
+	if (!dead) {
+		if (prompted) await actor.unsetFlag("elkan5e", DEAD_PROMPT_FLAG);
+		return;
+	}
+	if (prompted) return;
+
+	const links = await getGrappleLinks(actor);
+	if (!links.length) return;
+
+	const shouldRelease = await promptDeadUngrapple(actor, links);
+	if (shouldRelease) {
+		for (const { effect, grappler, grappled } of links) {
+			try {
+				if (!effect?.deleted) await effect.delete();
+				await removeClimberEffect(grappler, grappled);
+			} catch (error) {
+				console.warn("Elkan 5e | Failed to clear dead-creature grapple", error);
+			}
+		}
+	}
+
+	await actor.setFlag("elkan5e", DEAD_PROMPT_FLAG, true);
 }
 
 /**
@@ -268,10 +548,6 @@ export async function grapple(workflow, acr = false) {
 
 	const grappler = workflow.actor;
 	const grapplerSkillKey = acr ? "acr" : "ath";
-	const grapplerAbility =
-		grapplerSkillKey === "acr"
-			? t("elkan5e.skills.acrobatics")
-			: t("elkan5e.skills.athletics");
 	const grapplerSize = sizeIndex(grappler);
 	const flavor = workflow.item?.name ?? t("elkan5e.grapple.name");
 	const range = getGrappleRange(workflow);
@@ -436,23 +712,30 @@ export async function grapple(workflow, acr = false) {
 		const grapplerAdv = grapplerSize > targetSize;
 		const targetAdv = targetSize > grapplerSize;
 
-		const targetAbility =
-			targetSkill === "acr"
-				? t("elkan5e.skills.acrobatics")
-				: t("elkan5e.skills.athletics");
+		console.log("Elkan 5e | grapple contestedRoll", {
+			grappler: grappler.name,
+			target: targetActor.name,
+			grapplerSize,
+			targetSize,
+			sizeDiff,
+			grapplerAdv,
+			targetAdv,
+			sourceAbility: grapplerSkillKey,
+			targetAbility: targetSkill,
+		});
 
 		await MidiQOL.contestedRoll({
 			source: {
 				token,
 				rollType: "skill",
-				ability: grapplerAbility,
-				options: { advantage: grapplerAdv },
+				ability: grapplerSkillKey,
+				rollOptions: { advantage: grapplerAdv },
 			},
 			target: {
 				token: targetToken,
 				rollType: "skill",
-				ability: targetAbility,
-				options: { advantage: targetAdv },
+				ability: targetSkill,
+				rollOptions: { advantage: targetAdv },
 			},
 			flavor,
 			success: applyGrapple.bind(null, token, targetToken, sizeDiff, range),

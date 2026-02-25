@@ -27,7 +27,11 @@ import { shadowRefuge, healingOverflow, infusedHealer } from "./module/classes/c
 
 import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
 import { conditions, conditionsReady } from "./module/rules/condition.mjs";
-import { grapple, handleGrapplerMove } from "./module/rules/grapple.mjs";
+import {
+	grapple,
+	handleDeadGrapplePrompt,
+	handleGrapplerMove,
+} from "./module/rules/grapple.mjs";
 import { push } from "./module/rules/push.mjs";
 import { language } from "./module/rules/language.mjs";
 import { formating } from "./module/rules/format.mjs";
@@ -141,6 +145,7 @@ Hooks.on("updateItem", (item) => {
 Hooks.on("updateActor", async (actor) => {
 	try {
 		await updateBarbarianDefense(actor, "updateActor");
+		await handleDeadGrapplePrompt(actor);
 	} catch (error) {
 		console.error("Elkan 5e | Error in updateActor hook:", error);
 	}

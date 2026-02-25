@@ -187,13 +187,11 @@ export async function forEachDamagedTarget(workflow, callback) {
 
 export const SIZE_ORDER = ["tiny", "sm", "med", "lg", "huge", "grg"];
 
-const hasPowerfulBuild = (actor) =>
-	actor?.items?.some(
-		(i) =>
-			i?.system?.identifier === "powerful-build" ||
-			i?.identity === "powerful-build" ||
-			i?.name?.toLowerCase() === "powerful build",
-	);
+const hasCaseInsensitiveFlag = (obj, key) => {
+	if (!obj || !key) return false;
+	const target = String(key).toLowerCase();
+	return Object.keys(obj).some((k) => k.toLowerCase() === target && Boolean(obj[k]));
+};
 
 /**
  * Get a skill total or fallback modifier for a skill key.
@@ -224,8 +222,12 @@ export const sizeIndex = (actor) => {
 	const size = actor?.system?.traits?.size ?? "med";
 	const idx = SIZE_ORDER.indexOf(size);
 	const base = idx === -1 ? SIZE_ORDER.indexOf("med") : idx;
-	if (!hasPowerfulBuild(actor)) return base;
-	return Math.min(base + 1, SIZE_ORDER.length - 1);
+	const powerfulBuild = hasSpecialTrait(actor, "powerful build");
+	const result = powerfulBuild ? Math.min(base + 1, SIZE_ORDER.length - 1) : base;
+	console.log(
+		`Elkan 5e | sizeIndex actor="${actor?.name ?? "Unknown"}" size="${size}" base=${base} powerfulBuild=${powerfulBuild} result=${result}`,
+	);
+	return result;
 };
 
 /**
@@ -235,7 +237,7 @@ export const sizeIndex = (actor) => {
  * @param {string} trait
  * @returns {boolean}
  */
-export const hasSpecialTrait = (actor, trait) => {
+export function hasSpecialTrait(actor, trait) {
 	const key = String(trait ?? "").trim().toLowerCase();
 	if (!key || !actor) return false;
 
@@ -243,15 +245,47 @@ export const hasSpecialTrait = (actor, trait) => {
 	const special = traits.special ?? traits.specialTraits ?? null;
 	const values =
 		Array.isArray(special?.value) ? special.value : Array.isArray(special) ? special : [];
-	if (values.some((v) => String(v).toLowerCase() === key)) return true;
+	const valueMatch = values.some((v) => String(v).toLowerCase() === key);
 
 	const custom = `${special?.custom ?? ""} ${traits?.custom ?? ""}`.toLowerCase();
-	if (custom.includes(key)) return true;
+	const customMatch = custom.includes(key);
 
 	const flags = actor.flags?.elkan5e ?? {};
-	if (flags?.traits?.[key]) return true;
-	if (flags?.[key]) return true;
-	if (actor.flags?.dnd5e?.[key]) return true;
+	const elkanTraitFlag = Boolean(flags?.traits?.[key]);
+	const elkanDirectFlag = Boolean(flags?.[key]);
+	const elkanCaseInsensitive = hasCaseInsensitiveFlag(flags, key);
 
-	return false;
-};
+	const dnd5eFlags = actor.flags?.dnd5e ?? {};
+	const dndDirectFlag = Boolean(dnd5eFlags?.[key]);
+	const dndCaseInsensitive = hasCaseInsensitiveFlag(dnd5eFlags, key);
+
+	const matched =
+		valueMatch ||
+		customMatch ||
+		elkanTraitFlag ||
+		elkanDirectFlag ||
+		elkanCaseInsensitive ||
+		dndDirectFlag ||
+		dndCaseInsensitive;
+
+	if (key === "powerful build") {
+		console.log(
+			`Elkan 5e | hasSpecialTrait("${key}") actor="${actor?.name ?? "Unknown"}" matched=${matched}`,
+			{
+				valueMatch,
+				customMatch,
+				elkanTraitFlag,
+				elkanDirectFlag,
+				elkanCaseInsensitive,
+				dndDirectFlag,
+				dndCaseInsensitive,
+				specialValues: values,
+				specialCustom: special?.custom ?? "",
+				traitsCustom: traits?.custom ?? "",
+				dnd5eFlagKeys: Object.keys(dnd5eFlags ?? {}),
+			},
+		);
+	}
+
+	return matched;
+}

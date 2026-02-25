@@ -1,4 +1,5 @@
 import { chooseDefenderSkill, sizeIndex, hasSpecialTrait } from "../global.mjs";
+import { endAllGrapplesForActor } from "./grapple.mjs";
 
 const t = (key, data) => (data ? game.i18n.format(key, data) : game.i18n.localize(key));
 
@@ -236,20 +237,20 @@ const pushByChoice = async (targetToken, sourceToken, distance, choice) => {
 		const dx = targetToken.center.x - sourceToken.center.x;
 		const dy = targetToken.center.y - sourceToken.center.y;
 		const dir = { dx: Math.sign(dx), dy: Math.sign(dy) };
-		if (dir.dx === 0 && dir.dy === 0) return;
+		if (dir.dx === 0 && dir.dy === 0) return false;
 		const pos = getFarthestValidPosition(targetToken, sourceToken, distance, dir, true);
-		if (!pos) return;
+		if (!pos) return false;
 		await targetToken.document.update(pos);
-		return;
+		return true;
 	}
 
 	const requireAway = choice === 1;
 	const directions = getPushDirections(targetToken, sourceToken, requireAway);
-	if (!directions.length) return;
+	if (!directions.length) return false;
 
 	const picker = targetToken.actor;
 	const selected = await chooseDirection(picker, t("elkan5e.push.directionTitle"), directions);
-	if (!selected) return;
+	if (!selected) return false;
 	const pos = getFarthestValidPosition(
 		targetToken,
 		sourceToken,
@@ -257,8 +258,9 @@ const pushByChoice = async (targetToken, sourceToken, distance, choice) => {
 		selected,
 		requireAway,
 	);
-	if (!pos) return;
+	if (!pos) return false;
 	await targetToken.document.update(pos);
+	return true;
 };
 
 /**
@@ -285,15 +287,12 @@ export async function push(workflow, acr = false, distance = 5, choice = 0) {
 
 	const pusher = workflow.actor;
 	const pusherSkillKey = acr ? "acr" : "ath";
-	const pusherAbility =
-		pusherSkillKey === "acr"
-			? t("elkan5e.skills.acrobatics")
-			: t("elkan5e.skills.athletics");
 	const pusherSize = sizeIndex(pusher);
 	const flavor = workflow.item?.name ?? t("elkan5e.push.name");
 
 	const onSuccess = async (_sourceToken, targetToken) => {
-		await pushByChoice(targetToken, token, distance, choice);
+		const moved = await pushByChoice(targetToken, token, distance, choice);
+		if (moved && targetToken?.actor) await endAllGrapplesForActor(targetToken.actor);
 	};
 
 	for (const targetToken of workflow.targets) {
@@ -311,23 +310,29 @@ export async function push(workflow, acr = false, distance = 5, choice = 0) {
 		const pusherAdv = pusherSize > targetSize;
 		const targetAdv = targetSize > pusherSize;
 
-		const targetAbility =
-			targetSkill === "acr"
-				? t("elkan5e.skills.acrobatics")
-				: t("elkan5e.skills.athletics");
+		console.log("Elkan 5e | push contestedRoll", {
+			pusher: pusher.name,
+			target: targetActor.name,
+			pusherSize,
+			targetSize,
+			pusherAdv,
+			targetAdv,
+			sourceAbility: pusherSkillKey,
+			targetAbility: targetSkill,
+		});
 
 		await MidiQOL.contestedRoll({
 			source: {
 				token,
 				rollType: "skill",
-				ability: pusherAbility,
-				options: { advantage: pusherAdv },
+				ability: pusherSkillKey,
+				rollOptions: { advantage: pusherAdv },
 			},
 			target: {
 				token: targetToken,
 				rollType: "skill",
-				ability: targetAbility,
-				options: { advantage: targetAdv },
+				ability: targetSkill,
+				rollOptions: { advantage: targetAdv },
 			},
 			flavor,
 			success: onSuccess.bind(null, token, targetToken),

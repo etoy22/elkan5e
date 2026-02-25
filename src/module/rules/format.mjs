@@ -94,7 +94,7 @@ export function traits() {
 		CONFIG.DND5E.characterFlags.unpushable = {
 			name: "elkan5e.traits.unpushable.name",
 			hint: "elkan5e.traits.unpushable.hint",
-			section: "DND5E.SpecialTraits",
+			section: game.i18n.localize("elkan5e.traits.section"),
 			type: Boolean,
 		};
 	}
