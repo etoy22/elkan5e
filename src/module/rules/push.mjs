@@ -294,10 +294,18 @@ const pushByChoice = async (targetToken, sourcePoint, distance, choice) => {
  * @param {boolean} [acr=false] - If true, use Acrobatics instead of Athletics.
  * @param {number} [distance=5]
  * @param {number} [choice=0]
- * @param {{x:number, y:number}|Token|null} [sourcePoint=null] - Optional point used as push origin.
+ * @param {{x:number, y:number}|Token|boolean|null} [sourcePointOrSkiped=null] - Optional point used as push origin, or `skiped` when passed as 5th arg.
+ * @param {boolean} [skiped=false] - When true, skip contested roll and directly apply push.
  * @returns {Promise<void>}
  */
-export async function push(workflow, acr = false, distance = 5, choice = 0, sourcePoint = null) {
+export async function push(
+	workflow,
+	acr = false,
+	distance = 5,
+	choice = 0,
+	sourcePointOrSkiped = null,
+	skiped = false,
+) {
 	if (!workflow?.actor) return;
 	const token = workflow.token ?? MidiQOL.tokenForActor(workflow.actor);
 	if (!token) {
@@ -315,7 +323,14 @@ export async function push(workflow, acr = false, distance = 5, choice = 0, sour
 	const pusherSkillKey = acr ? "acr" : "ath";
 	const pusherSize = sizeIndex(pusher);
 	const flavor = workflow.item?.name ?? t("elkan5e.push.name");
-	const resolvedSourcePoint = resolveSourcePoint(sourcePoint ?? workflow?.pushSourcePoint, token);
+	const sourcePointInput =
+		typeof sourcePointOrSkiped === "boolean" ? null : sourcePointOrSkiped;
+	const skipContestedRoll =
+		typeof sourcePointOrSkiped === "boolean" ? sourcePointOrSkiped : skiped;
+	const resolvedSourcePoint = resolveSourcePoint(
+		sourcePointInput ?? workflow?.pushSourcePoint,
+		token,
+	);
 
 	const onSuccess = async (_sourceToken, targetToken) => {
 		const moved = await pushByChoice(targetToken, resolvedSourcePoint, distance, choice);
@@ -329,6 +344,10 @@ export async function push(workflow, acr = false, distance = 5, choice = 0, sour
 			ui.notifications.info(
 				t("elkan5e.push.notifications.unpushable", { name: targetActor.name }),
 			);
+			continue;
+		}
+		if (skipContestedRoll) {
+			await onSuccess(token, targetToken);
 			continue;
 		}
 		const targetSkill = chooseDefenderSkill(targetActor);
