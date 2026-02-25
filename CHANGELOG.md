@@ -1,5 +1,26 @@
 # Changelog
 
+## Unreleased
+
+### Automation & Rules
+- Consolidated module hook registration into `src/elkan5e.mjs` and removed split hook entry files.
+- Wired Relentless Endurance into actor update handling and kept Orc ancestry automation support in place.
+- Flattened `rules/references/index.mjs` into `rules/references.mjs` and updated rule exports.
+- Added spell-level safety mapping in tooling so level `0` is always treated as cantrip.
+
+### Spells
+- Reorganized spell pack source files to align with level folders (including cantrip handling and flattened nested level folders).
+- Split spell macro implementation into level-based modules under `src/module/spells/`:
+  - `cantrip.mjs`, `level-1.mjs`, `level-2.mjs`, `level-3.mjs`, `level-4.mjs`, `level-5.mjs`, `level-9.mjs`, and `index.mjs`.
+- Updated module imports to target the new spell module layout.
+
+### Project Structure
+- Normalized settings module filenames to kebab-case and added `src/module/settings/index.mjs` barrel exports.
+- Flattened single-file module directories where applicable (`feats`, `spells`, `references` patterns).
+
+### Documentation
+- Added/standardized JSDoc coverage across named functions in `src` for consistent inline API documentation.
+
 # v1.13.6.1
 
 ## Bug Fix

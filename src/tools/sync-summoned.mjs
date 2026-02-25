@@ -5,19 +5,44 @@ import crypto from "node:crypto";
 const CREATURES_ROOT = "packs/_source/elkan5e-creatures";
 const SUMMONED_ROOT = "packs/_source/elkan5e-summoned-creatures";
 
+/**
+ * Utility function for random Id.
+ *
+ * @returns {unknown} Operation result.
+ */
 function randomId() {
 	return crypto.randomBytes(9).toString("base64url").slice(0, 16);
 }
 
+/**
+ * Utility function for load Json.
+ *
+ * @param {*} file - Filesystem path to process.
+ * @returns {unknown} Operation result.
+ */
 function loadJson(file) {
 	const text = fs.readFileSync(file, "utf8").replace(/^\uFEFF/, "");
 	return JSON.parse(text);
 }
 
+/**
+ * Utility function for save Json.
+ *
+ * @param {*} file - Filesystem path to process.
+ * @param {*} data - Data object used for processing.
+ * @returns {void} Operation result.
+ */
 function saveJson(file, data) {
 	fs.writeFileSync(file, JSON.stringify(data, null, "\t"));
 }
 
+/**
+ * Utility function for walk Json Files.
+ *
+ * @param {*} dir - Directory path to process.
+ * @param {*} list - List.
+ * @returns {unknown} Operation result.
+ */
 function walkJsonFiles(dir, list = []) {
 	return fs.readdirSync(dir, { withFileTypes: true }).reduce((acc, entry) => {
 		const full = path.join(dir, entry.name);
@@ -27,6 +52,11 @@ function walkJsonFiles(dir, list = []) {
 	}, list);
 }
 
+/**
+ * Utility function for sync Summoned Creatures.
+ *
+ * @returns {unknown} Operation result.
+ */
 function syncSummonedCreatures() {
 	const baseFiles = walkJsonFiles(CREATURES_ROOT);
 	const summonedFiles = walkJsonFiles(SUMMONED_ROOT);

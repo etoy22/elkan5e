@@ -1,5 +1,11 @@
 import { createLightFromTemplate } from "./level-2.mjs";
 
+/**
+ * Runs light spell automation.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<unknown>} Promise resolution result.
+ */
 export async function light(workflow) {
 	return createLightFromTemplate(
 		workflow,

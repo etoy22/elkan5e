@@ -10,6 +10,12 @@ const SIZE_TO_GRID = {
 	grg: 4,
 };
 
+/**
+ * Runs well Of Corruption spell automation.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<unknown>} Promise resolution result.
+ */
 export async function wellOfCorruption(workflow) {
 	const caster = workflow.actor;
 	const casterToken = workflow.token;
@@ -94,24 +100,11 @@ export async function wellOfCorruption(workflow) {
 }
 
 /**
- * Applies the "Wrath of the Reaper" effect during a damage workflow.
+ * Runs enlarge spell automation.
  *
- * For each target damaged by the triggering workflow, this function:
- * - Validates and retrieves the target token from the canvas.
- * - Calculates damage as half the target's max HP, capped at 100.
- * - Rolls the calculated damage as force damage.
- * - Applies the damage to the target via MidiQOL's DamageOnlyWorkflow.
- * - If the target failed a save (dmgEntry.saved is false), applies the "drainedEffect" to the target.
- *
- * @param {object} workflow - The workflow object representing the triggering action.
- * @param {Actor} workflow.actor - The caster actor applying Wrath of the Reaper.
- * @param {Token} workflow.token - The token representing the caster.
- * @param {string} workflow.token.actor.uuid - The caster's actor UUID for effect origin.
- * @param {Array<object>} workflow.damageList - List of damage entries with target info.
- *
- * @returns {Promise<void>} Resolves once all damage and effects are applied.
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
  */
-
 export async function enlarge(workflow) {
 	if (!workflow._failedSaves || workflow._failedSaves.size === 0) {
 		ui.notifications.warn("No targets failed the roll — cannot apply enlarge.");
@@ -171,12 +164,11 @@ export async function enlarge(workflow) {
 }
 
 /**
- * Automation for the Reduce spell: decreases the size of failed targets by one step.
+ * Runs reduce spell automation.
  *
- * @param {object} workflow - Workflow containing `_failedSaves` from the cast.
- * @returns {Promise<void>}
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
  */
-
 export async function reduce(workflow) {
 	if (!workflow._failedSaves || workflow._failedSaves.size === 0) {
 		ui.notifications.warn("No targets failed the roll — cannot apply reduce.");
@@ -235,12 +227,11 @@ export async function reduce(workflow) {
 }
 
 /**
- * Restores a token to its original dimensions when an enlarge or reduce effect ends.
+ * Runs return To Normal Size spell automation.
  *
- * @param {ActiveEffect} effect - The size-changing effect being removed.
- * @returns {Promise<void>}
+ * @param {*} effect - Active effect being handled.
+ * @returns {Promise<void>} Promise resolution result.
  */
-
 export async function returnToNormalSize(effect) {
 	const actor = effect.parent;
 
@@ -301,14 +292,13 @@ export async function returnToNormalSize(effect) {
 }
 
 /**
- * Creates an ambient light at the position of the last measured template.
+ * Runs create Light From Template spell automation.
  *
- * @param {object} workflow - Workflow containing spell casting data.
- * @param {object} config - Base light configuration.
- * @param {number} [minLevel=1] - Minimum spell level used for light priority.
- * @returns {Promise<void>}
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @param {*} config - Configuration object.
+ * @param {*} minLevel - Min Level.
+ * @returns {Promise<void>} Promise resolution result.
  */
-
 export async function createLightFromTemplate(workflow, config, minLevel = 1) {
 	const lastTemplate = canvas.templates.placeables.at(-1);
 	if (!lastTemplate) {
@@ -337,12 +327,11 @@ export async function createLightFromTemplate(workflow, config, minLevel = 1) {
 }
 
 /**
- * Creates a darkness light effect from the last measured template.
+ * Runs darkness spell automation.
  *
- * @param {object} workflow - Workflow for the spell cast.
- * @returns {Promise<void>}
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<unknown>} Promise resolution result.
  */
-
 export async function darkness(workflow) {
 	return createLightFromTemplate(
 		workflow,
@@ -367,12 +356,11 @@ export async function darkness(workflow) {
 }
 
 /**
- * Creates a standard light effect from the last measured template.
+ * Runs continual Flame spell automation.
  *
- * @param {object} workflow - Workflow for the spell cast.
- * @returns {Promise<void>}
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<unknown>} Promise resolution result.
  */
-
 export async function continualFlame(workflow) {
 	return createLightFromTemplate(
 		workflow,
@@ -397,12 +385,11 @@ export async function continualFlame(workflow) {
 }
 
 /**
- * Creates a moonbeam light source from the last measured template.
+ * Runs moon Beam spell automation.
  *
- * @param {object} workflow - Workflow for the spell cast.
- * @returns {Promise<void>}
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<unknown>} Promise resolution result.
  */
-
 export async function moonBeam(workflow) {
 	return createLightFromTemplate(
 		workflow,

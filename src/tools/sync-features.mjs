@@ -9,30 +9,67 @@ const EQUIPMENT_ROOTS = ["packs/_source/elkan5e-equipment", "packs/_source/elkan
 const SPELL_ROOT = "packs/_source/elkan5e-spells";
 const REPORT_PATH = "helperCode/logs/sync-features-report.log";
 
+/**
+ * Utility function for random Id.
+ *
+ * @returns {unknown} Operation result.
+ */
 function randomId() {
 	return crypto.randomBytes(9).toString("base64url").slice(0, 16);
 }
 
+/**
+ * Utility function for ensure Item Identity.
+ *
+ * @param {*} item - Item document to process.
+ * @returns {unknown} Operation result.
+ */
 function ensureItemIdentity(item) {
 	const id = item?._id && item._id.length <= 16 ? item._id : item?._id || randomId();
 	const key = item?._key || (id ? `!items!${id}` : undefined);
 	return { id, key };
 }
 
+/**
+ * Utility function for load Json.
+ *
+ * @param {*} file - Filesystem path to process.
+ * @returns {unknown} Operation result.
+ */
 function loadJson(file) {
 	const text = fs.readFileSync(file, "utf8").replace(/^\uFEFF/, "");
 	return JSON.parse(text);
 }
 
+/**
+ * Utility function for save Json.
+ *
+ * @param {*} file - Filesystem path to process.
+ * @param {*} data - Data object used for processing.
+ * @returns {void} Operation result.
+ */
 function saveJson(file, data) {
 	fs.writeFileSync(file, JSON.stringify(data, null, "\t"));
 }
 
+/**
+ * Utility function for ensure Dir For.
+ *
+ * @param {*} file - Filesystem path to process.
+ * @returns {void} Operation result.
+ */
 function ensureDirFor(file) {
 	const dir = path.dirname(file);
 	fs.mkdirSync(dir, { recursive: true });
 }
 
+/**
+ * Utility function for walk Json Files.
+ *
+ * @param {*} dir - Directory path to process.
+ * @param {*} list - List.
+ * @returns {unknown} Operation result.
+ */
 function walkJsonFiles(dir, list = []) {
 	return fs.readdirSync(dir, { withFileTypes: true }).reduce((acc, entry) => {
 		const full = path.join(dir, entry.name);
@@ -44,6 +81,11 @@ function walkJsonFiles(dir, list = []) {
 
 const clone = (v) => JSON.parse(JSON.stringify(v));
 
+/**
+ * Utility function for build Feature Descriptions.
+ *
+ * @returns {unknown} Operation result.
+ */
 function buildFeatureDescriptions() {
 	const files = walkJsonFiles(FEATURE_ROOT);
 	const byKey = new Map();
@@ -63,6 +105,11 @@ function buildFeatureDescriptions() {
 	return byKey;
 }
 
+/**
+ * Utility function for build Base Items.
+ *
+ * @returns {unknown} Operation result.
+ */
 function buildBaseItems() {
 	const files = EQUIPMENT_ROOTS.flatMap((r) => walkJsonFiles(r));
 	const byId = new Map();
@@ -74,6 +121,11 @@ function buildBaseItems() {
 	return byId;
 }
 
+/**
+ * Utility function for build Cantrips.
+ *
+ * @returns {unknown} Operation result.
+ */
 function buildCantrips() {
 	const files = walkJsonFiles(SPELL_ROOT);
 	const byKey = new Map();
@@ -87,6 +139,11 @@ function buildCantrips() {
 	return byKey;
 }
 
+/**
+ * Utility function for build Spell Index.
+ *
+ * @returns {unknown} Operation result.
+ */
 function buildSpellIndex() {
 	const files = walkJsonFiles(SPELL_ROOT);
 	const byKey = new Map();
@@ -99,6 +156,11 @@ function buildSpellIndex() {
 	return byKey;
 }
 
+/**
+ * Utility function for sync Features.
+ *
+ * @returns {unknown} Operation result.
+ */
 function syncFeatures() {
 	const featureMap = buildFeatureDescriptions();
 	const BASE_ITEMS = buildBaseItems();

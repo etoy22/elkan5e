@@ -6,6 +6,12 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const PACK_SOURCE_ROOT = path.resolve(__dirname, "..", "..", "packs", "_source");
 
+/**
+ * Utility function for walk.
+ *
+ * @param {*} dir - Directory path to process.
+ * @returns {unknown} Operation result.
+ */
 function walk(dir) {
 	const out = [];
 	for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -16,6 +22,14 @@ function walk(dir) {
 	return out;
 }
 
+/**
+ * Utility function for log Parse Error.
+ *
+ * @param {*} filePath - Filesystem path to process.
+ * @param {*} err - Err.
+ * @param {*} consoleImpl - Console Impl.
+ * @returns {void} Operation result.
+ */
 function logParseError(filePath, err, consoleImpl) {
 	consoleImpl.error("PARSE ERROR:", filePath);
 	consoleImpl.error(err?.message ?? String(err));
@@ -42,6 +56,12 @@ function logParseError(filePath, err, consoleImpl) {
 	}
 }
 
+/**
+ * Utility function for validate Packs Json.
+ *
+ * @param {*} options1 - Options object.
+ * @returns {unknown} Operation result.
+ */
 export function validatePacksJson({ root = PACK_SOURCE_ROOT, consoleImpl = console } = {}) {
 	const files = walk(root);
 	let errorCount = 0;

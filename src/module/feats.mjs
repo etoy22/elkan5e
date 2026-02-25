@@ -38,11 +38,11 @@ const getRemainingUses = (item) => {
 };
 
 /**
- * Prompt and apply Relentless Endurance when an actor reaches 0 HP.
+ * Handles relentless Endurance.
  *
- * @param {Actor} actor - The actor being updated.
- * @param {object} changes - The update payload for the actor.
- * @returns {Promise<void>}
+ * @param {*} actor - Actor document to process.
+ * @param {*} changes - Update payload containing changed fields.
+ * @returns {Promise<void>} Promise resolution result.
  */
 export async function relentlessEndurance(actor, changes) {
 	if (!actor || !changes) return;
@@ -87,14 +87,10 @@ export async function relentlessEndurance(actor, changes) {
 }
 
 /**
- * Modify hit die rolls for characters with Undead Nature.
+ * Handles undead Nature.
  *
- * Subtracts the Constitution modifier from the first hit die roll when the
- * actor has the Undead Nature feature but not the Gentle Repose effect.
- *
- * @param {object} config - The hit die roll configuration.
- * @param {Actor} config.subject - The actor rolling the hit die.
- * @returns {Promise<void>} Resolves once the configuration is updated.
+ * @param {*} config - Configuration object.
+ * @returns {Promise<void>} Promise resolution result.
  */
 export async function undeadNature(config) {
 	const actor = config.subject;

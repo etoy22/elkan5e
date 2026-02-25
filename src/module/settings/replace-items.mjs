@@ -1,6 +1,12 @@
 const { getProperty, setProperty } = foundry.utils;
 
 // Process the form selections from the Elkan update dialog
+/**
+ * Handles process Elkan Update Form for module settings.
+ *
+ * @param {*} updates - Updates.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function processElkanUpdateForm(updates) {
 	migrateActorItems({
 		players: updates.actorItems,
@@ -95,6 +101,12 @@ class MigrationProgress {
 	}
 }
 
+/**
+ * Handles get Actors To Process for module settings.
+ *
+ * @param {*} updateMode - Update Mode.
+ * @returns {Promise<unknown>} Promise resolution result.
+ */
 export async function getActorsToProcess(updateMode) {
 	return game.actors.filter((actor) => {
 		if (actor.type === "character" && updateMode.players !== "none") return true;
@@ -103,6 +115,13 @@ export async function getActorsToProcess(updateMode) {
 	});
 }
 
+/**
+ * Handles filter Docs By Mode for module settings.
+ *
+ * @param {*} docs - Docs.
+ * @param {*} mode - Mode.
+ * @returns {unknown} Operation result.
+ */
 export function filterDocsByMode(docs, mode) {
 	if (mode === "update-All") return docs;
 	if (mode === "update-Elkan") return docs.filter((d) => d.system.source?.book === "Elkan 5e");
@@ -110,6 +129,12 @@ export function filterDocsByMode(docs, mode) {
 }
 
 // Helper to get the identifier for an item or doc
+/**
+ * Handles get Item Identifier for module settings.
+ *
+ * @param {*} item - Item document to process.
+ * @returns {unknown} Operation result.
+ */
 function getItemIdentifier(item) {
 	const id = item.system?.identifier;
 	if (id && id.trim().length > 0) return id.trim();
@@ -120,6 +145,14 @@ function getItemIdentifier(item) {
 	return generated;
 }
 
+/**
+ * Handles save Properties For Transfer for module settings.
+ *
+ * @param {*} items - Items.
+ * @param {*} mode - Mode.
+ * @param {*} propKeys - Prop Keys.
+ * @returns {Promise<unknown>} Promise resolution result.
+ */
 export async function savePropertiesForTransfer(items, mode, propKeys) {
 	const saved = {};
 	for (let item of items) {
@@ -140,6 +173,15 @@ export async function savePropertiesForTransfer(items, mode, propKeys) {
 	return saved;
 }
 
+/**
+ * Handles restore Properties To Data for module settings.
+ *
+ * @param {*} newData - New Data.
+ * @param {*} savedProps - Saved Props.
+ * @param {*} mode - Mode.
+ * @param {*} preserveProperties - Preserve Properties.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function restorePropertiesToData(newData, savedProps, mode, preserveProperties = []) {
 	if (!savedProps) return;
 
@@ -172,6 +214,13 @@ export async function restorePropertiesToData(newData, savedProps, mode, preserv
 
 // ---------- helpers used by migrateActorByType ----------
 
+/**
+ * Handles get Key By Value for module settings.
+ *
+ * @param {*} obj - Obj.
+ * @param {*} value - Value.
+ * @returns {unknown} Operation result.
+ */
 function getKeyByValue(obj, value) {
 	for (const key in obj) {
 		if (Object.prototype.hasOwnProperty.call(obj, key) && obj[key]?.name === value) {
@@ -182,8 +231,11 @@ function getKeyByValue(obj, value) {
 }
 
 /**
- * Deep compare that ignores _stats and ownership everywhere.
- * NOTE: DOES NOT ignore identifier — differences in system.identifier will count.
+ * Handles deep Equal Ignoring Meta for module settings.
+ *
+ * @param {*} a - A.
+ * @param {*} b - B.
+ * @returns {unknown} Operation result.
  */
 function deepEqualIgnoringMeta(a, b) {
 	if (a === b) return true;
@@ -238,6 +290,13 @@ function deepEqualIgnoringMeta(a, b) {
 	return a === b;
 }
 
+/**
+ * Handles items Are Fully Identical for module settings.
+ *
+ * @param {*} oldItem - Old Item.
+ * @param {*} newItem - New Item.
+ * @returns {unknown} Operation result.
+ */
 function itemsAreFullyIdentical(oldItem, newItem) {
 	// If the only difference is the identifier being assigned to the compendium item, treat as identical
 	const oldObj = oldItem.toObject();
@@ -247,6 +306,12 @@ function itemsAreFullyIdentical(oldItem, newItem) {
 
 // ---------- main migration ----------
 
+/**
+ * Handles migrate Actor By Type for module settings.
+ *
+ * @param {*} options1 - Options object.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function migrateActorByType({
 	compendiums,
 	types,
@@ -580,6 +645,12 @@ export async function migrateActorByType({
 	);
 }
 
+/**
+ * Handles migrate Actor Spells for module settings.
+ *
+ * @param {*} updateMode - Update Mode.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function migrateActorSpells(
 	updateMode = { players: "update-Elkan", npcs: "update-Elkan" },
 ) {
@@ -597,6 +668,12 @@ export async function migrateActorSpells(
 	});
 }
 
+/**
+ * Handles migrate Actor Items for module settings.
+ *
+ * @param {*} updateMode - Update Mode.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function migrateActorItems(
 	updateMode = { players: "update-All", npcs: "update-Elkan" },
 ) {
@@ -623,6 +700,12 @@ export async function migrateActorItems(
 	});
 }
 
+/**
+ * Handles migrate Actor Features for module settings.
+ *
+ * @param {*} updateMode - Update Mode.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function migrateActorFeatures(updateMode = { players: "update-Elkan", npcs: "none" }) {
 	if (updateMode.players === "none" && updateMode.npcs === "none") return;
 	const compFeatures = game.packs.get("elkan5e.elkan5e-class-features");

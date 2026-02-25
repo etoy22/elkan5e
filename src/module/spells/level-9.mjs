@@ -1,5 +1,11 @@
 import { drainedEffect, forEachDamagedTarget } from "../shared/effects.mjs";
 
+/**
+ * Runs wrath Of The Reaper spell automation.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function wrathOfTheReaper(workflow) {
 	const caster = workflow.actor;
 	const casterToken = workflow.token;

@@ -1,5 +1,11 @@
 import { drainedEffect, forEachDamagedTarget } from "../shared/effects.mjs";
 
+/**
+ * Runs enervate spell automation.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function enervate(workflow) {
 	const casterUuid = workflow.token.actor.uuid;
 	await forEachDamagedTarget(workflow, (targetToken, damage) =>
@@ -14,19 +20,11 @@ export async function enervate(workflow) {
 }
 
 /**
- * Applies the ongoing "Enervate" effect (e.g., for sustained or repeated necrotic damage).
+ * Runs enervate Ongoing spell automation.
  *
- * Similar to {@link enervate}, but can be triggered during subsequent rounds or turns.
- * Intended for ongoing damage processing hooks like `midi-qol.damageApplied` or custom macros.
- *
- * @param {object} workflow - The workflow object from MidiQOL or similar automation.
- * @param {Actor} workflow.actor - The caster of the spell.
- * @param {Token} workflow.token - The token representing the caster.
- * @param {string} workflow.token.actor.uuid - UUID for tracking origin of the effect.
- * @param {Array<object>} workflow.damageList - List of damage entries by target.
- * @returns {Promise<void>}
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
  */
-
 export async function enervateOngoing(workflow) {
 	const casterUuid = workflow.token.actor.uuid;
 	await forEachDamagedTarget(workflow, (targetToken, damage) =>

@@ -1,5 +1,11 @@
 import { drainedEffect, forEachDamagedTarget } from "../shared/effects.mjs";
 
+/**
+ * Runs goodberry spell automation.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function goodberry(workflow) {
 	const actor = workflow.actor;
 	const item = workflow.item;
@@ -192,15 +198,11 @@ export async function goodberry(workflow) {
 }
 
 /**
- * Handles cleanup when a Goodberry duration active effect is deleted.
- * It reduces the uses of the linked Goodberry consumable item accordingly or deletes it if depleted.
+ * Runs goodberry Delete Active spell automation.
  *
- * @param {ActiveEffect} deletedEffect - The active effect being deleted.
- *   Must have a flag `flags.elkan5e.goodberryItemId` linking to the consumable item.
- *
- * @returns {Promise<void>} Resolves when cleanup is complete or if no action is needed.
+ * @param {*} deletedEffect - Deleted Effect.
+ * @returns {Promise<void>} Promise resolution result.
  */
-
 export async function goodberryDeleteActive(deletedEffect) {
 	const actor = deletedEffect.parent;
 	if (!actor) {
@@ -245,15 +247,11 @@ export async function goodberryDeleteActive(deletedEffect) {
 }
 
 /**
- * Handles cleanup when a Goodberry consumable item is deleted.
- * It deletes all active effects on the actor that reference the deleted item's UUID via the flag `flags.elkan5e.goodberryItemId`.
+ * Runs goodberry Delete Item spell automation.
  *
- * @param {Item} deletedItem - The consumable item that was deleted.
- *   Must have `system.identifier` set to `"goodberry-item"` to trigger cleanup.
- *
- * @returns {Promise<void>} Resolves when all linked effects are deleted.
+ * @param {*} deletedItem - Deleted Item.
+ * @returns {Promise<void>} Promise resolution result.
  */
-
 export async function goodberryDeleteItem(deletedItem) {
 	const actor = deletedItem.parent;
 	if (!actor) return;
@@ -278,20 +276,11 @@ export async function goodberryDeleteItem(deletedItem) {
 }
 
 /**
- * Applies the "Life Drain" drained effect to each damaged target and heals the caster.
+ * Runs sapping Smite spell automation.
  *
- * Processes each damage entry in the workflow's damage list, applying the drainedEffect
- * to targets that took damage. The caster is then healed for half the total damage dealt.
- *
- * @param {object} workflow - The workflow object representing the damage event.
- * @param {Actor} workflow.actor - The caster actor who is healed by the life drain.
- * @param {Token} workflow.token - The token representing the caster.
- * @param {string} workflow.token.actor.uuid - The caster's actor UUID for effect origin.
- * @param {Array<object>} workflow.damageList - List of damage entries including damage amounts and target UUIDs.
- *
- * @returns {Promise<void>} Resolves once all effects and healing are applied.
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
  */
-
 export async function sappingSmite(workflow) {
 	const originUuid = workflow.token.actor.uuid;
 	const icon = "icons/weapons/polearms/spear-flared-silver-pink.webp";
@@ -301,22 +290,11 @@ export async function sappingSmite(workflow) {
 }
 
 /**
- * Applies the "Well of Corruption" drained effect to each targeted creature even without damage rolls.
+ * Runs rend Vigor spell automation.
  *
- * Each failed save takes the full drain amount while successful saves take half.
- * Damage equals 4d8 at 2nd level (or when unidentified) plus 2d8 per slot above 2nd.
- *
- * @param {object} workflow - The workflow object representing the spell use.
- * @param {Actor} workflow.actor - The caster actor of the Well of Corruption spell.
- * @param {Token} workflow.token - The token representing the caster.
- * @param {string} workflow.token.actor.uuid - The caster's actor UUID, used as effect origin.
- * @param {Set<Token|TokenDocument|string>} workflow.targets - Set of targeted tokens.
- * @param {Set<Token|TokenDocument|string>} [workflow.failedSaves] - Targets that failed the save.
- * @param {Set<Token|TokenDocument|string>} [workflow.saves] - Targets that succeeded on the save.
- *
- * @returns {Promise<void>} Resolves after applying drained effects to all valid targets.
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
  */
-
 export async function rendVigor(workflow) {
 	let saves = workflow.saves;
 	let failed = workflow.failedSaves;
@@ -337,12 +315,11 @@ export async function rendVigor(workflow) {
 }
 
 /**
- * Scales a Fog Cloud template's radius based on spell level.
+ * Runs fog Cloud spell automation.
  *
- * @param {object} workflow - Workflow providing template and cast level information.
- * @returns {Promise<void>}
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
  */
-
 export async function fogCloud(workflow) {
 	const template = workflow.template;
 
@@ -360,12 +337,11 @@ export async function fogCloud(workflow) {
 }
 
 /**
- * Heals the caster for half the necrotic damage dealt when a single target is hit.
+ * Runs shield spell automation.
  *
- * @param {object} workflow - Damage workflow containing result information.
- * @returns {Promise<void>}
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
  */
-
 export async function shield(workflow) {
 	const actor = workflow.actor;
 	const item = workflow.item;

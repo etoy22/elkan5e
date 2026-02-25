@@ -1,5 +1,11 @@
 import { drainedEffect } from "../shared/effects.mjs";
 
+/**
+ * Runs life Drain Graveguard class feature automation.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function lifeDrainGraveguard(workflow) {
 	const caster = workflow.actor;
 	const casterToken = workflow.token;
@@ -39,6 +45,12 @@ export async function lifeDrainGraveguard(workflow) {
 		);
 	}
 }
+/**
+ * Runs spectral Empowerment class feature automation.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function spectralEmpowerment(workflow) {
 	const caster = workflow.actor;
 	const casterToken = workflow.token;
@@ -79,6 +91,12 @@ export async function spectralEmpowerment(workflow) {
 	}
 }
 
+/**
+ * Runs soul Conduit class feature automation.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function soulConduit(workflow) {
 	try {
 		console.log("Elkan 5e | Soul Conduit check");
@@ -104,6 +122,12 @@ export async function soulConduit(workflow) {
 	}
 }
 
+/**
+ * Runs necromantic Surge class feature automation.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function necromanticSurge(workflow) {
 	try {
 		console.log("Elkan 5e | Necromantic Surge check");

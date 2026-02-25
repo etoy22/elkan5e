@@ -1,12 +1,22 @@
 import { processElkanUpdateForm } from "./replace-items.mjs";
 const DialogV2 = foundry.applications.api.DialogV2;
 
+/**
+ * Handles get Module Version for module settings.
+ *
+ * @returns {Promise<unknown>} Promise resolution result.
+ */
 export async function getModuleVersion() {
 	const response = await fetch("modules/elkan5e/module.json");
 	const moduleData = await response.json();
 	return moduleData.version;
 }
 
+/**
+ * Handles show Update Dialog for module settings.
+ *
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function showUpdateDialog() {
 	const form = await getForm();
 	const content = `<div class="elkan-update-text">
@@ -47,6 +57,11 @@ export async function showUpdateDialog() {
 	}).render(true);
 }
 
+/**
+ * Handles show V13 Update Dialog for module settings.
+ *
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function showV13UpdateDialog() {
 	if (!game.user.isGM) return;
 	const form = await getForm();
@@ -106,6 +121,11 @@ export async function showV13UpdateDialog() {
 	}).render(true);
 }
 
+/**
+ * Handles start Dialog for module settings.
+ *
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function startDialog() {
 	const SAVED_VERSION = game.settings.get("elkan5e", "moduleVersion");
 	const DIALOG_SHOWN = game.settings.get("elkan5e", "dialogShown");
@@ -164,6 +184,11 @@ export async function startDialog() {
 	}
 }
 
+/**
+ * Handles get Form for module settings.
+ *
+ * @returns {Promise<unknown>} Promise resolution result.
+ */
 export async function getForm() {
 	return `
 	<form class="form">

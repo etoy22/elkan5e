@@ -37,8 +37,13 @@ import {
 	weapons,
 } from "./module/rules/index.mjs";
 import { gameSettingRegister, gameSettingsMigrate, startDialog } from "./module/settings/index.mjs";
-import * as Spells from "./module/spells.mjs";
+import * as Spells from "./module/spells/index.mjs";
 
+/**
+ * Registers Hooks.
+ *
+ * @returns {void} Operation result.
+ */
 function registerHooks() {
 	Hooks.once("init", async () => {
 		try {

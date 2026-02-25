@@ -1,3 +1,8 @@
+/**
+ * Applies formating rule behavior.
+ *
+ * @returns {void} Operation result.
+ */
 export function formating() {
 	ruleType();
 	activation();
@@ -10,6 +15,11 @@ export function formating() {
 
 /*
  * Adds different rule types to Foundry
+ */
+/**
+ * Applies rule Type rule behavior.
+ *
+ * @returns {void} Operation result.
  */
 export function ruleType() {
 	CONFIG.DND5E.ruleTypes.weaponProperty = {
@@ -25,6 +35,11 @@ export function ruleType() {
 
 /*
  * Adds new activation types that are used in Elkan 5e
+ */
+/**
+ * Applies activation rule behavior.
+ *
+ * @returns {void} Operation result.
  */
 export function activation() {
 	const ACTIVATION_TYPES = {
@@ -64,6 +79,11 @@ export function activation() {
 /*
  * Adds spell Components to a type of Loot Types
  */
+/**
+ * Applies mats rule behavior.
+ *
+ * @returns {void} Operation result.
+ */
 export function mats() {
 	CONFIG.DND5E.lootTypes.spellComponents = {
 		label: "Spell Components",
@@ -72,6 +92,11 @@ export function mats() {
 
 /*
  * Adds Manuevers as a subtype of classes
+ */
+/**
+ * Applies sub Features rule behavior.
+ *
+ * @returns {void} Operation result.
  */
 export function subFeatures() {
 	CONFIG.DND5E.featureTypes.class.subtypes.precision = "Precision Attack";
@@ -95,6 +120,11 @@ export function subFeatures() {
 	};
 }
 
+/**
+ * Applies traits rule behavior.
+ *
+ * @returns {void} Operation result.
+ */
 export function traits() {
 	CONFIG.DND5E.characterFlags ??= {};
 	if (!CONFIG.DND5E.characterFlags.unpushable) {
@@ -107,6 +137,11 @@ export function traits() {
 	}
 }
 
+/**
+ * Registers register Custom Effect Fields configuration.
+ *
+ * @returns {void} Operation result.
+ */
 function registerCustomEffectFields() {
 	Hooks.on("dae.modifySpecials", (_actorType, specials) => {
 		const BooleanField = foundry.data.fields.BooleanField;
@@ -135,6 +170,11 @@ function registerCustomEffectFields() {
 	});
 }
 
+/**
+ * Applies sheets rule behavior.
+ *
+ * @returns {void} Operation result.
+ */
 export function sheets() {
 	CONFIG.DND5E.sourcePacks.BACKGROUNDS = "elkan5e.elkan5e-background";
 	CONFIG.DND5E.sourcePacks.CLASSES = "elkan5e.elkan5e-class";

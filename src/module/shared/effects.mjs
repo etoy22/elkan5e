@@ -1,12 +1,12 @@
 /**
- * Handle the removal of an effect and its associated item.
+ * Shared helper for deleted Effect Removes Item.
  *
- * @param {ActiveEffect} effect - The effect object to be processed.
- * @param {string} effectName - The localized name of the effect to check.
- * @param {string} itemName - The localized name of the item to find.
- * @param {string} descriptionPrefix - The prefix to remove from the item's description.
- * @param {string} endMessage - The message to display when the effect ends.
- * @returns {Promise<void>} A promise that resolves when the effect has been processed.
+ * @param {*} effect - Active effect being handled.
+ * @param {*} effectName - Effect Name.
+ * @param {*} itemName - Item Name.
+ * @param {*} descriptionPrefix - Description Prefix.
+ * @param {*} endMessage - End Message.
+ * @returns {Promise<void>} Promise resolution result.
  */
 export async function deletedEffectRemovesItem(
 	effect,
@@ -34,12 +34,12 @@ export async function deletedEffectRemovesItem(
 }
 
 /**
- * Handle the removal of an effect associated with an item.
+ * Shared helper for deleted Item Removes Effect.
  *
- * @param {Item} item - The item object to be processed.
- * @param {string} itemName - The localized name of the item to check.
- * @param {string} effectName - The localized name of the effect to find.
- * @returns {Promise<void>} A promise that resolves when the item has been processed.
+ * @param {*} item - Item document to process.
+ * @param {*} itemName - Item Name.
+ * @param {*} effectName - Effect Name.
+ * @returns {Promise<void>} Promise resolution result.
  */
 export async function deletedItemRemovesEffect(item, itemName, effectName) {
 	if (item.name === game.i18n.localize(itemName)) {
@@ -52,18 +52,13 @@ export async function deletedItemRemovesEffect(item, itemName, effectName) {
 }
 
 /**
- * Handle the removal of a specific effect if another effect is present.
+ * Shared helper for delete Effect Remove Effect.
  *
- * This function checks if the actor has the `effectToRemove` active.
- * If the actor also has any other effect that is not `effectToIgnore`,
- * the `effectToRemove` will be deleted. Additionally, if the actor has
- * any of the `additionalEffectsToRemove`, they will also be deleted.
- *
- * @param {Actor} actor - The actor object to be processed.
- * @param {string} effectToRemove - The localized name of the effect to remove.
- * @param {string} effectToIgnore - The localized name of the effect to ignore.
- * @param {string[]} additionalEffectsToRemove - An array of localized names of additional effects to remove.
- * @returns {Promise<void>} A promise that resolves when the effects have been processed.
+ * @param {*} actor - Actor document to process.
+ * @param {*} effectToRemove - Effect To Remove.
+ * @param {*} effectToIgnore - Effect To Ignore.
+ * @param {*} additionalEffectsToRemove - Additional Effects To Remove.
+ * @returns {Promise<void>} Promise resolution result.
  */
 export async function deleteEffectRemoveEffect(
 	actor,
@@ -94,13 +89,14 @@ export async function deleteEffectRemoveEffect(
 }
 
 /**
- * Apply or update a drained effect on an actor, reducing temp HP maximum.
+ * Shared helper for drained Effect.
  *
- * @param {Actor} actor - The actor receiving the drained effect.
- * @param {number} damage - Amount of damage to convert into temp HP reduction.
- * @param {string} [name="Drained"] - Optional custom effect name.
- * @param {string} [img="modules/elkan5e/icons/drained.svg"] - Effect image path.
- * @param {string} [uuid] - Origin UUID for the effect.
+ * @param {*} actor - Actor document to process.
+ * @param {*} damage - Damage.
+ * @param {*} name - Name value used by the operation.
+ * @param {*} img - Img.
+ * @param {*} uuid - Identifier value.
+ * @returns {Promise<unknown>} Promise resolution result.
  */
 export async function drainedEffect(actor, damage, name, img, uuid) {
 	const effectName = name || "Drained";
@@ -167,11 +163,11 @@ export async function drainedEffect(actor, damage, name, img, uuid) {
 }
 
 /**
- * Loop every entry in workflow.damageList, skip non-damage or missing targets,
- * resolve each Token, and invoke your callback(token, damage, savedFlag).
+ * Shared helper for for Each Damaged Target.
  *
- * @param {object} workflow - Workflow containing damageList entries.
- * @param {(token: Token, damage: number, saved: boolean) => Promise<void>|void} callback - Function executed for each damaged target.
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @param {*} callback - Callback.
+ * @returns {Promise<void>} Promise resolution result.
  */
 export async function forEachDamagedTarget(workflow, callback) {
 	for (const { targetUuid, tempDamage = 0, hpDamage = 0, saved = false } of workflow.damageList) {
@@ -204,48 +200,11 @@ const valueIsTruthy = (value) => {
 };
 
 /**
- * Get a skill total or fallback modifier for a skill key.
- * @param {Actor} actor
- * @param {string} key
- * @returns {number}
- */
-export const getSkillTotal = (actor, key) =>
-	Number(actor?.system?.skills?.[key]?.total ?? actor?.system?.skills?.[key]?.mod ?? 0);
-
-/**
- * Choose the defender's better skill between Athletics and Acrobatics.
- * @param {Actor} actor
- * @returns {"ath"|"acr"}
- */
-export const chooseDefenderSkill = (actor) => {
-	const ath = getSkillTotal(actor, "ath");
-	const acr = getSkillTotal(actor, "acr");
-	return acr > ath ? "acr" : "ath";
-};
-
-/**
- * Get size index for an actor, applying Powerful Build if present.
- * @param {Actor} actor
- * @returns {number}
- */
-export const sizeIndex = (actor) => {
-	const size = actor?.system?.traits?.size ?? "med";
-	const idx = SIZE_ORDER.indexOf(size);
-	const base = idx === -1 ? SIZE_ORDER.indexOf("med") : idx;
-	const powerfulBuild = hasSpecialTrait(actor, "powerful build");
-	const result = powerfulBuild ? Math.min(base + 1, SIZE_ORDER.length - 1) : base;
-	console.log(
-		`Elkan 5e | sizeIndex actor="${actor?.name ?? "Unknown"}" size="${size}" base=${base} powerfulBuild=${powerfulBuild} result=${result}`,
-	);
-	return result;
-};
-
-/**
- * Check whether an actor has a special trait by name.
- * Supports system traits, custom text, or module flags.
- * @param {Actor} actor
- * @param {string} trait
- * @returns {boolean}
+ * Shared helper for has Special Trait.
+ *
+ * @param {*} actor - Actor document to process.
+ * @param {*} trait - Trait.
+ * @returns {unknown} Operation result.
  */
 export function hasSpecialTrait(actor, trait) {
 	const key = String(trait ?? "")
@@ -306,10 +265,10 @@ export function hasSpecialTrait(actor, trait) {
 }
 
 /**
- * Check whether an actor is currently blocked from being pushed.
- * Supports actor flags and ActiveEffect changes.
- * @param {Actor} actor
- * @returns {boolean}
+ * Shared helper for is Push Blocked.
+ *
+ * @param {*} actor - Actor document to process.
+ * @returns {unknown} Operation result.
  */
 export function isPushBlocked(actor) {
 	if (!actor) return false;
@@ -338,10 +297,10 @@ export function isPushBlocked(actor) {
 }
 
 /**
- * Check whether an actor has resistance to push contests.
- * `flags.elkan5e.pushResist` grants advantage when resisting `push(...)`.
- * @param {Actor} actor
- * @returns {boolean}
+ * Shared helper for has Push Resist.
+ *
+ * @param {*} actor - Actor document to process.
+ * @returns {unknown} Operation result.
  */
 export function hasPushResist(actor) {
 	if (!actor) return false;

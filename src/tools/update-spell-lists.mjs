@@ -22,6 +22,12 @@ const SPELL_LEVEL_DIRS = [
 ];
 const CLASS_SPECIFIC_DIR = path.join(SPELLS_ROOT, "spells-class-specific-versions");
 
+/**
+ * Utility function for normalize Spell Level.
+ *
+ * @param {*} rawLevel - Raw Level.
+ * @returns {unknown} Operation result.
+ */
 function normalizeSpellLevel(rawLevel) {
 	const level = Number(rawLevel);
 	if (!Number.isInteger(level)) return null;
@@ -29,23 +35,52 @@ function normalizeSpellLevel(rawLevel) {
 	return level;
 }
 
+/**
+ * Utility function for get Expected Spell Dir.
+ *
+ * @param {*} level - Level.
+ * @returns {unknown} Operation result.
+ */
 function getExpectedSpellDir(level) {
 	return level === 0 ? "cantrip" : `level-${level}`;
 }
 
 // Foundry-style short ID for new pages (16 chars, URL-safe)
+/**
+ * Utility function for random Id.
+ *
+ * @returns {unknown} Operation result.
+ */
 function randomId() {
 	return crypto.randomBytes(9).toString("base64url").slice(0, 16);
 }
 
+/**
+ * Utility function for load Json.
+ *
+ * @param {*} file - Filesystem path to process.
+ * @returns {unknown} Operation result.
+ */
 function loadJson(file) {
 	return JSON.parse(fs.readFileSync(file, "utf8"));
 }
 
+/**
+ * Utility function for save Json.
+ *
+ * @param {*} file - Filesystem path to process.
+ * @param {*} data - Data object used for processing.
+ * @returns {void} Operation result.
+ */
 function saveJson(file, data) {
 	fs.writeFileSync(file, JSON.stringify(data, null, "\t"));
 }
 
+/**
+ * Utility function for build Spell Level Map.
+ *
+ * @returns {unknown} Operation result.
+ */
 function buildSpellLevelMap() {
 	const map = new Map();
 	for (const [dir, lvl] of SPELL_LEVEL_DIRS) {
@@ -72,6 +107,11 @@ function buildSpellLevelMap() {
 	return map;
 }
 
+/**
+ * Utility function for build Class Spell Map.
+ *
+ * @returns {unknown} Operation result.
+ */
 function buildClassSpellMap() {
 	const data = loadJson(SPELLS_BY_CLASS_PATH);
 	const map = new Map();
@@ -82,6 +122,11 @@ function buildClassSpellMap() {
 	return map;
 }
 
+/**
+ * Utility function for build School Spell Map.
+ *
+ * @returns {unknown} Operation result.
+ */
 function buildSchoolSpellMap() {
 	const data = loadJson(SPELLS_BY_SCHOOL_PATH);
 	const map = new Map();
@@ -92,11 +137,25 @@ function buildSchoolSpellMap() {
 	return map;
 }
 
+/**
+ * Utility function for uuid To Id.
+ *
+ * @param {*} uuid - Identifier value.
+ * @returns {unknown} Operation result.
+ */
 function uuidToId(uuid) {
 	const parts = uuid.split(".");
 	return parts[parts.length - 1];
 }
 
+/**
+ * Utility function for filter By Level.
+ *
+ * @param {*} spells - Spells.
+ * @param {*} levelMap - Level Map.
+ * @param {*} maxLevel - Max Level.
+ * @returns {unknown} Operation result.
+ */
 function filterByLevel(spells, levelMap, maxLevel) {
 	return spells.filter((uuid) => {
 		const lvl = levelMap.get(uuidToId(uuid));
@@ -104,6 +163,14 @@ function filterByLevel(spells, levelMap, maxLevel) {
 	});
 }
 
+/**
+ * Utility function for ensure Page.
+ *
+ * @param {*} data - Data object used for processing.
+ * @param {*} name - Name value used by the operation.
+ * @param {*} identifier - Identifier.
+ * @returns {unknown} Operation result.
+ */
 function ensurePage(data, name, identifier) {
 	let page = data.pages.find((p) => p.name === name && p.type === "spells");
 	if (!page) {
@@ -135,6 +202,14 @@ function ensurePage(data, name, identifier) {
 	return page;
 }
 
+/**
+ * Utility function for ensure School Page.
+ *
+ * @param {*} data - Data object used for processing.
+ * @param {*} name - Name value used by the operation.
+ * @param {*} identifier - Identifier.
+ * @returns {unknown} Operation result.
+ */
 function ensureSchoolPage(data, name, identifier) {
 	let page = data.pages.find((p) => p.name === name && p.type === "spells");
 	if (!page) {
@@ -166,6 +241,14 @@ function ensureSchoolPage(data, name, identifier) {
 	return page;
 }
 
+/**
+ * Utility function for update Spellsword And Mystic Trickster.
+ *
+ * @param {*} data - Data object used for processing.
+ * @param {*} classSpellMap - Class Spell Map.
+ * @param {*} levelMap - Level Map.
+ * @returns {void} Operation result.
+ */
 function updateSpellswordAndMysticTrickster(data, classSpellMap, levelMap) {
 	for (const page of data.pages || []) {
 		if (page.type !== "spells") continue;
@@ -179,6 +262,15 @@ function updateSpellswordAndMysticTrickster(data, classSpellMap, levelMap) {
 	}
 }
 
+/**
+ * Utility function for update Wizard Schools.
+ *
+ * @param {*} data - Data object used for processing.
+ * @param {*} classSpellMap - Class Spell Map.
+ * @param {*} schoolMap - School Map.
+ * @param {*} excludedSpellUuids - Excluded Spell Uuids.
+ * @returns {void} Operation result.
+ */
 function updateWizardSchools(data, classSpellMap, schoolMap, excludedSpellUuids = new Set()) {
 	const wizardSpells = new Set(classSpellMap.get("wizard") || []);
 	const subclasses = [
@@ -201,6 +293,13 @@ function updateWizardSchools(data, classSpellMap, schoolMap, excludedSpellUuids 
 	}
 }
 
+/**
+ * Utility function for walk Json Files.
+ *
+ * @param {*} dir - Directory path to process.
+ * @param {*} list - List.
+ * @returns {unknown} Operation result.
+ */
 function walkJsonFiles(dir, list = []) {
 	return fs.readdirSync(dir, { withFileTypes: true }).reduce((acc, entry) => {
 		const full = path.join(dir, entry.name);
@@ -210,6 +309,11 @@ function walkJsonFiles(dir, list = []) {
 	}, list);
 }
 
+/**
+ * Utility function for build Class Specific Spell Set.
+ *
+ * @returns {unknown} Operation result.
+ */
 function buildClassSpecificSpellSet() {
 	if (!fs.existsSync(CLASS_SPECIFIC_DIR)) return new Set();
 	const set = new Set();
@@ -222,6 +326,13 @@ function buildClassSpecificSpellSet() {
 	return set;
 }
 
+/**
+ * Utility function for update Schools.
+ *
+ * @param {*} data - Data object used for processing.
+ * @param {*} excludedSpellUuids - Excluded Spell Uuids.
+ * @returns {void} Operation result.
+ */
 function updateSchools(data, excludedSpellUuids = new Set()) {
 	const schoolNames = {
 		abj: "Abjuration Spells",
@@ -257,6 +368,12 @@ function updateSchools(data, excludedSpellUuids = new Set()) {
 	}
 }
 
+/**
+ * Utility function for update Subclass Grant Pages.
+ *
+ * @param {*} subclassData - Subclass Data.
+ * @returns {void} Operation result.
+ */
 function updateSubclassGrantPages(subclassData) {
 	const skipNames = new Set([
 		"Abjurer",
@@ -304,6 +421,11 @@ function updateSubclassGrantPages(subclassData) {
 	}
 }
 
+/**
+ * Utility function for run.
+ *
+ * @returns {void} Operation result.
+ */
 function run() {
 	const levelMap = buildSpellLevelMap();
 	const classSpellMap = buildClassSpellMap();

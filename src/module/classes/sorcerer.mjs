@@ -2,8 +2,11 @@ import { deletedEffectRemovesItem, deletedItemRemovesEffect } from "../shared/ef
 const DialogV2 = foundry.applications.api.DialogV2;
 
 /**
- * Handle the wild surge effect after casting a spell.
- * @param {Activity} activity - The activity performed.
+ * Runs wild Surge class feature automation.
+ *
+ * @param {*} activity - Activity.
+ * @param {*} usageConfig - Usage configuration passed by the activity workflow.
+ * @returns {Promise<void>} Promise resolution result.
  */
 export async function wildSurge(activity, usageConfig) {
 	const item = activity.item;
@@ -202,11 +205,11 @@ export async function wildSurge(activity, usageConfig) {
 }
 
 /**
- * Creates a delay button for the actor's "Delayed Surge" item.
+ * Runs create Delay Button class feature automation.
  *
- * @param {Actor} actor - The actor object containing the items.
- * @param {number} rollResult - The result of the roll to be used in the delayed surge description.
- * @returns {Promise<object|null>} A promise that resolves to the button configuration object or null if the "Delayed Surge" item is not found.
+ * @param {*} actor - Actor document to process.
+ * @param {*} rollResult - Roll Result.
+ * @returns {Promise<unknown>} Promise resolution result.
  */
 async function createDelayButton(actor, rollResult) {
 	const delay = actor.items.find((i) => i.system.identifier === "delayed-surge");
@@ -353,8 +356,9 @@ async function createDelayButton(actor, rollResult) {
 	};
 }
 /**
- * Creates a cancel button for the actor
+ * Runs create Cancel Button class feature automation.
  *
+ * @returns {Promise<unknown>} Promise resolution result.
  */
 async function createCancelButton() {
 	return {
@@ -364,10 +368,10 @@ async function createCancelButton() {
 }
 
 /**
- * Handle the delayed wild surge duration effect.
+ * Runs delayed Duration class feature automation.
  *
- * @param {ActiveEffect} effect - The effect object to be processed.
- * @returns {Promise<void>} A promise that resolves when the effect has been processed.
+ * @param {*} effect - Active effect being handled.
+ * @returns {Promise<void>} Promise resolution result.
  */
 export async function delayedDuration(effect) {
 	if (effect.name === game.i18n.localize("elkan5e.wildMage.delayedWildSurgeDuration")) {
@@ -379,10 +383,10 @@ export async function delayedDuration(effect) {
 }
 
 /**
- * Handle the delayed wild surge item.
+ * Runs delayed Item class feature automation.
  *
- * @param {Item} item - The item object to be processed.
- * @returns {Promise<void>} A promise that resolves when the item has been processed.
+ * @param {*} item - Item document to process.
+ * @returns {Promise<void>} Promise resolution result.
  */
 export async function delayedItem(item) {
 	if (item.name === game.i18n.localize("elkan5e.wildMage.delayedWildSurge")) {

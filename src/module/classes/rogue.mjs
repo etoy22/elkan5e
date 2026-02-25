@@ -1,5 +1,11 @@
 import { drainedEffect, forEachDamagedTarget } from "../shared/effects.mjs";
 
+/**
+ * Runs slicing Blow class feature automation.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function slicingBlow(workflow) {
 	const casterUuid = workflow.token?.actor?.uuid;
 	if (!workflow.actor || !workflow.token) {

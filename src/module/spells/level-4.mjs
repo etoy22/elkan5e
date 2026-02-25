@@ -1,3 +1,9 @@
+/**
+ * Runs vampiric Smite spell automation.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function vampiricSmite(workflow) {
 	const { damage, damageMultiplier } =
 		workflow.damageItem.damageDetail[0].find((d) => d.type === "necrotic") || {};

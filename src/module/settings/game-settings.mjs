@@ -1,6 +1,11 @@
 import { UpdateElkanRunner } from "./update-elkan-runner.mjs";
 const MODULE_ID = "elkan5e";
 
+/**
+ * Handles register Game Settings for module settings.
+ *
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function registerGameSettings() {
 	// Convert Game settings
 
@@ -126,6 +131,11 @@ export async function registerGameSettings() {
 	});
 }
 
+/**
+ * Handles migrate Game Settings for module settings.
+ *
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function migrateGameSettings() {
 	const worldSettings = game.settings.storage.get("world");
 	const oldValue = worldSettings?._source?.find((s) => s.key === `${MODULE_ID}.tools`)?.value;
