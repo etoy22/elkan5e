@@ -21,7 +21,7 @@ import {
 	wildBlood,
 	wildSurge,
 } from "./module/classes/index.mjs";
-import { relentlessEndurance, undeadNature } from "./module/feats/index.mjs";
+import { relentlessEndurance, undeadNature } from "./module/feats.mjs";
 import {
 	armor,
 	conditions,
@@ -37,7 +37,7 @@ import {
 	weapons,
 } from "./module/rules/index.mjs";
 import { gameSettingRegister, gameSettingsMigrate, startDialog } from "./module/settings/index.mjs";
-import * as Spells from "./module/spells/index.mjs";
+import * as Spells from "./module/spells.mjs";
 
 function registerHooks() {
 	Hooks.once("init", async () => {
