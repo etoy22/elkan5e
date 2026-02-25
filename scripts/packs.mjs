@@ -540,7 +540,8 @@ async function removePacks(packName) {
 
 /**
  * Slugify names for safe file or folder names.
- * Allows folder paths by allowing slashes.
+ * Disallows slashes so names like "Enlarge/Reduce" become "enlarge-reduce.json"
+ * instead of nested directories.
  *
  * @param {string} name - Name to convert to a slug.
  * @returns {string} The slugified name.
@@ -549,7 +550,7 @@ function slugify(name) {
 	return name
 		.toLowerCase()
 		.replace(/'/g, "")
-		.replace(/[^a-z0-9\/]+/gi, " ")
+		.replace(/[^a-z0-9]+/gi, " ")
 		.trim()
 		.replace(/\s+/g, "-");
 }
