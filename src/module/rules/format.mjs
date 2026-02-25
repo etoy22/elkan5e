@@ -3,6 +3,8 @@ export function formating() {
 	activation();
 	mats();
 	subFeatures();
+	traits();
+	registerCustomEffectFields();
 	sheets();
 }
 
@@ -91,6 +93,46 @@ export function subFeatures() {
 			manuevers: "Manuevers",
 		},
 	};
+}
+
+export function traits() {
+	CONFIG.DND5E.characterFlags ??= {};
+	if (!CONFIG.DND5E.characterFlags.unpushable) {
+		CONFIG.DND5E.characterFlags.unpushable = {
+			name: "elkan5e.traits.unpushable.name",
+			hint: "elkan5e.traits.unpushable.hint",
+			section: game.i18n.localize("elkan5e.traits.section"),
+			type: Boolean,
+		};
+	}
+}
+
+function registerCustomEffectFields() {
+	Hooks.on("dae.modifySpecials", (_actorType, specials) => {
+		const BooleanField = foundry.data.fields.BooleanField;
+		const StringField = foundry.data.fields.StringField;
+		specials["flags.elkan5e.pushResist"] = [
+			new BooleanField({
+				label: game.i18n.localize("elkan5e.push.effects.pushResist"),
+				hint: game.i18n.localize("elkan5e.push.effects.pushResistDescription"),
+			}),
+			CONST.ACTIVE_EFFECT_MODES.CUSTOM,
+		];
+		specials["system.traits.dm.amount.fire"] = [
+			new StringField({
+				label: game.i18n.localize("elkan5e.burning.effects.fireDamageTaken"),
+				hint: game.i18n.localize("elkan5e.burning.effects.fireDamageTakenDescription"),
+			}),
+			CONST.ACTIVE_EFFECT_MODES.CUSTOM,
+		];
+	});
+
+	Hooks.once("ready", () => {
+		globalThis.DAE?.addAutoFields?.([
+			"flags.elkan5e.pushResist",
+			"system.traits.dm.amount.fire",
+		]);
+	});
 }
 
 export function sheets() {

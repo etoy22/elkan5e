@@ -184,3 +184,168 @@ export async function forEachDamagedTarget(workflow, callback) {
 		await Promise.resolve(callback(token, dmg, saved));
 	}
 }
+
+export const SIZE_ORDER = ["tiny", "sm", "med", "lg", "huge", "grg"];
+const TRUE_VALUES = new Set(["1", "true", "yes", "on"]);
+
+const hasCaseInsensitiveFlag = (obj, key) => {
+	if (!obj || !key) return false;
+	const target = String(key).toLowerCase();
+	return Object.keys(obj).some((k) => k.toLowerCase() === target && Boolean(obj[k]));
+};
+
+const valueIsTruthy = (value) => {
+	if (typeof value === "boolean") return value;
+	if (typeof value === "number") return value !== 0;
+	const normalized = String(value ?? "").trim().toLowerCase();
+	return TRUE_VALUES.has(normalized);
+};
+
+/**
+ * Get a skill total or fallback modifier for a skill key.
+ * @param {Actor} actor
+ * @param {string} key
+ * @returns {number}
+ */
+export const getSkillTotal = (actor, key) =>
+	Number(actor?.system?.skills?.[key]?.total ?? actor?.system?.skills?.[key]?.mod ?? 0);
+
+/**
+ * Choose the defender's better skill between Athletics and Acrobatics.
+ * @param {Actor} actor
+ * @returns {"ath"|"acr"}
+ */
+export const chooseDefenderSkill = (actor) => {
+	const ath = getSkillTotal(actor, "ath");
+	const acr = getSkillTotal(actor, "acr");
+	return acr > ath ? "acr" : "ath";
+};
+
+/**
+ * Get size index for an actor, applying Powerful Build if present.
+ * @param {Actor} actor
+ * @returns {number}
+ */
+export const sizeIndex = (actor) => {
+	const size = actor?.system?.traits?.size ?? "med";
+	const idx = SIZE_ORDER.indexOf(size);
+	const base = idx === -1 ? SIZE_ORDER.indexOf("med") : idx;
+	const powerfulBuild = hasSpecialTrait(actor, "powerful build");
+	const result = powerfulBuild ? Math.min(base + 1, SIZE_ORDER.length - 1) : base;
+	console.log(
+		`Elkan 5e | sizeIndex actor="${actor?.name ?? "Unknown"}" size="${size}" base=${base} powerfulBuild=${powerfulBuild} result=${result}`,
+	);
+	return result;
+};
+
+/**
+ * Check whether an actor has a special trait by name.
+ * Supports system traits, custom text, or module flags.
+ * @param {Actor} actor
+ * @param {string} trait
+ * @returns {boolean}
+ */
+export function hasSpecialTrait(actor, trait) {
+	const key = String(trait ?? "").trim().toLowerCase();
+	if (!key || !actor) return false;
+
+	const traits = actor.system?.traits ?? {};
+	const special = traits.special ?? traits.specialTraits ?? null;
+	const values =
+		Array.isArray(special?.value) ? special.value : Array.isArray(special) ? special : [];
+	const valueMatch = values.some((v) => String(v).toLowerCase() === key);
+
+	const custom = `${special?.custom ?? ""} ${traits?.custom ?? ""}`.toLowerCase();
+	const customMatch = custom.includes(key);
+
+	const flags = actor.flags?.elkan5e ?? {};
+	const elkanTraitFlag = Boolean(flags?.traits?.[key]);
+	const elkanDirectFlag = Boolean(flags?.[key]);
+	const elkanCaseInsensitive = hasCaseInsensitiveFlag(flags, key);
+
+	const dnd5eFlags = actor.flags?.dnd5e ?? {};
+	const dndDirectFlag = Boolean(dnd5eFlags?.[key]);
+	const dndCaseInsensitive = hasCaseInsensitiveFlag(dnd5eFlags, key);
+
+	const matched =
+		valueMatch ||
+		customMatch ||
+		elkanTraitFlag ||
+		elkanDirectFlag ||
+		elkanCaseInsensitive ||
+		dndDirectFlag ||
+		dndCaseInsensitive;
+
+	if (key === "powerful build") {
+		console.log(
+			`Elkan 5e | hasSpecialTrait("${key}") actor="${actor?.name ?? "Unknown"}" matched=${matched}`,
+			{
+				valueMatch,
+				customMatch,
+				elkanTraitFlag,
+				elkanDirectFlag,
+				elkanCaseInsensitive,
+				dndDirectFlag,
+				dndCaseInsensitive,
+				specialValues: values,
+				specialCustom: special?.custom ?? "",
+				traitsCustom: traits?.custom ?? "",
+				dnd5eFlagKeys: Object.keys(dnd5eFlags ?? {}),
+			},
+		);
+	}
+
+	return matched;
+}
+
+/**
+ * Check whether an actor is currently blocked from being pushed.
+ * Supports actor flags and ActiveEffect changes.
+ * @param {Actor} actor
+ * @returns {boolean}
+ */
+export function isPushBlocked(actor) {
+	if (!actor) return false;
+	const unpushableName = game.i18n.localize("elkan5e.traits.unpushable.name").toLowerCase();
+	const traitMatch = hasSpecialTrait(actor, "unpushable");
+	if (traitMatch) return true;
+
+	const namedEffect = actor.effects.some(
+		(effect) => {
+			const name = String(effect?.name ?? "").trim().toLowerCase();
+			return name === unpushableName;
+		},
+	);
+	if (namedEffect) return true;
+
+	const blockedByEffect = actor.effects.some((effect) =>
+		(effect?.changes ?? []).some((change) => {
+			const key = String(change?.key ?? "").toLowerCase();
+			if (!key) return false;
+			const pushBlockKey = key === "flags.dnd5e.unpushable";
+			return pushBlockKey && valueIsTruthy(change?.value);
+		}),
+	);
+
+	return blockedByEffect;
+}
+
+/**
+ * Check whether an actor has resistance to push contests.
+ * `flags.elkan5e.pushResist` grants advantage when resisting `push(...)`.
+ * @param {Actor} actor
+ * @returns {boolean}
+ */
+export function hasPushResist(actor) {
+	if (!actor) return false;
+
+	const actorFlag = actor.flags?.elkan5e?.pushResist ?? actor.flags?.elkan5e?.pushresist;
+	if (valueIsTruthy(actorFlag)) return true;
+
+	return actor.effects.some((effect) =>
+		(effect?.changes ?? []).some((change) => {
+			const key = String(change?.key ?? "").toLowerCase();
+			return key === "flags.elkan5e.pushresist" && valueIsTruthy(change?.value);
+		}),
+	);
+}

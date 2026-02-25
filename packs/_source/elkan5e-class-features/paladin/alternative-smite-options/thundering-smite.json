@@ -241,7 +241,20 @@
 			"effectCondition": "",
 			"removeAttackDamageButtons": "default",
 			"reactionCondition": "",
-			"otherCondition": ""
+			"otherCondition": "",
+			"onUseMacroName": "[postActiveEffects]ItemMacro"
+		},
+		"dae": {
+			"macro": {
+				"name": "Thundering Smite",
+				"img": "icons/skills/melee/strike-hammer-destructive-orange.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "const targets = workflow?.failedSaves ?? new Set(); if (!targets?.size) return; return await elkan5e.macros.features.push({ ...workflow, targets }, false, 5, 2, true);",
+				"author": "vHqSHJMdmEO6Mk2C",
+				"_id": null,
+				"folder": null
+			}
 		}
 	},
 	"_key": "!items!0ucfEAdZzHZaqREC"
