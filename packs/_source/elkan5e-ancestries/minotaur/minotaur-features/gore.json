@@ -12,7 +12,8 @@
 			"removeAttackDamageButtons": "default",
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
-			"effectCondition": ""
+			"effectCondition": "",
+			"onUseMacroName": "[postActiveEffects]ItemMacro"
 		},
 		"midiProperties": {
 			"nodam": false,
@@ -30,6 +31,18 @@
 			"offHandWeapon": false,
 			"noConcentrationCheck": false,
 			"confirmTargets": "default"
+		},
+		"dae": {
+			"macro": {
+				"name": "Gore",
+				"img": "icons/skills/wounds/bone-broken-tooth-fang-red.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "const actor = workflow?.actor; if (!actor) return; const combat = game.combat; if (combat) { const turnKey = `${combat.id}:${combat.round}:${combat.turn}`; const lastTurn = actor.getFlag(\"elkan5e\", \"gorePushTurn\"); if (lastTurn === turnKey) return; await actor.setFlag(\"elkan5e\", \"gorePushTurn\", turnKey); } const targets = workflow?.hitTargets ?? new Set(); if (!targets?.size) return; const first = targets.first?.() ?? [...targets][0]; if (!first) return; return await elkan5e.macros.features.push({ ...workflow, targets: new Set([first]) }, false, 5, 0);",
+				"author": "vHqSHJMdmEO6Mk2C",
+				"_id": null,
+				"folder": null
+			}
 		}
 	},
 	"system": {

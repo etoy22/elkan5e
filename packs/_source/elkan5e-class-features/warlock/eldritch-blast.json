@@ -144,7 +144,8 @@
 			"reactionCondition": "",
 			"otherCondition": "",
 			"effectCondition": "",
-			"rollAttackPerTarget": "default"
+			"rollAttackPerTarget": "default",
+			"onUseMacroName": "[postActiveEffects]ItemMacro"
 		},
 		"midiProperties": {
 			"nodam": false,
@@ -166,6 +167,18 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"dae": {
+			"macro": {
+				"name": "Eldritch Blast",
+				"img": "icons/magic/light/explosion-impact-purple.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "const actor = workflow?.actor; if (!actor) return; const hasRepelling = actor.items?.some((i) => i?.system?.identifier === \"repelling-blast\" || i?.name === \"Repelling Blast\"); if (!hasRepelling) return; const combat = game.combat; if (combat) { const turnKey = `${combat.id}:${combat.round}:${combat.turn}`; const lastTurn = actor.getFlag(\"elkan5e\", \"repellingBlastTurn\"); if (lastTurn === turnKey) return; await actor.setFlag(\"elkan5e\", \"repellingBlastTurn\", turnKey); } const targets = workflow?.hitTargets ?? new Set(); if (!targets?.size) return; const first = targets.first?.() ?? [...targets][0]; if (!first) return; return await elkan5e.macros.features.push({ ...workflow, targets: new Set([first]) }, false, 10, 0);",
+				"author": "vHqSHJMdmEO6Mk2C",
+				"_id": null,
+				"folder": null
+			}
 		}
 	},
 	"_key": "!items!FHiTJvr5Nbb7HsgX"

@@ -6,7 +6,7 @@
 	"folder": "6J3i75lfD1J0xYwA",
 	"flags": {
 		"midi-qol": {
-			"onUseMacroName": "",
+			"onUseMacroName": "[postActiveEffects]ItemMacro",
 			"effectActivation": false,
 			"AoETargetType": "any",
 			"AoETargetTypeIncludeSelf": true,
@@ -40,6 +40,18 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"dae": {
+			"macro": {
+				"name": "Crushing Wave",
+				"img": "icons/magic/water/wave-water-blue.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "const targets = workflow?.failedSaves ?? new Set(); if (!targets?.size) return; return await elkan5e.macros.features.push({ ...workflow, targets }, false, 10, 0);",
+				"author": "vHqSHJMdmEO6Mk2C",
+				"_id": null,
+				"folder": null
+			}
 		}
 	},
 	"system": {

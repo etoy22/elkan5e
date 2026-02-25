@@ -405,7 +405,6 @@ export function conditions() {
 			overwrite: true,
 		});
 	};
-
 	const ensureConditionEntry = (def) => {
 		const ct = (CONFIG.DND5E.conditionTypes[def.key] ??= {});
 		// Localized name always wins
@@ -545,6 +544,7 @@ export function conditions() {
 			if (def.flags) se.flags = mergeFlags(se.flags, def.flags);
 		}
 	}
+
 }
 
 export function conditionsReady() {
@@ -569,7 +569,6 @@ export function conditionsReady() {
 			overwrite: true,
 		});
 	};
-
 	for (const def of CONDITIONS_TYPES) {
 		const ct = (CONFIG.DND5E.conditionTypes[def.key] ??= {});
 		ct.name = locCond(def.key);

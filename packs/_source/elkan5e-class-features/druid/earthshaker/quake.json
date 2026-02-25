@@ -258,7 +258,20 @@
 			"reactionCondition": "",
 			"effectCondition": "",
 			"removeAttackDamageButtons": "default",
-			"otherCondition": ""
+			"otherCondition": "",
+			"onUseMacroName": "[postActiveEffects]ItemMacro"
+		},
+		"dae": {
+			"macro": {
+				"name": "Quake",
+				"img": "icons/magic/earth/barrier-stone-explosion-red.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "const id = workflow?.activity?._id ?? workflow?.activity?.id; if (id !== \"yYP8LofL6SINqBW3\") return; const targets = workflow?.targets ?? workflow?.hitTargets ?? new Set(); if (!targets?.size) return; const tpl = workflow?.template; const sourcePoint = tpl ? (tpl.center ?? { x: tpl.x, y: tpl.y }) : null; return await elkan5e.macros.features.push({ ...workflow, targets }, false, 10, 2, sourcePoint);",
+				"author": "vHqSHJMdmEO6Mk2C",
+				"_id": null,
+				"folder": null
+			}
 		}
 	},
 	"_key": "!items!lnIHwujrZdItRoKO"

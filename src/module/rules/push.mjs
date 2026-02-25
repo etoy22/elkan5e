@@ -1,4 +1,9 @@
-import { chooseDefenderSkill, sizeIndex, hasSpecialTrait } from "../global.mjs";
+import {
+	chooseDefenderSkill,
+	sizeIndex,
+	isPushBlocked,
+	hasPushResist,
+} from "../global.mjs";
 import { endAllGrapplesForActor } from "./grapple.mjs";
 
 const t = (key, data) => (data ? game.i18n.format(key, data) : game.i18n.localize(key));
@@ -119,7 +124,7 @@ const withinBounds = (rect, bounds) => {
  * @param {boolean} requireAway
  * @returns {Array<{dx:number, dy:number, label:string}>}
  */
-const getPushDirections = (targetToken, sourceToken, requireAway) => {
+const getPushDirections = (targetToken, sourcePoint, requireAway) => {
 	const dirs = [
 		{ dx: 1, dy: 0, label: t("elkan5e.directions.east") },
 		{ dx: -1, dy: 0, label: t("elkan5e.directions.west") },
@@ -135,14 +140,14 @@ const getPushDirections = (targetToken, sourceToken, requireAway) => {
 	for (const dir of dirs) {
 		if (requireAway) {
 			const currentDistance = canvas.grid.measureDistance(
-				sourceToken.center,
+				sourcePoint,
 				targetToken.center,
 			);
 			const probe = {
 				x: targetToken.center.x + dir.dx,
 				y: targetToken.center.y + dir.dy,
 			};
-			const probeDistance = canvas.grid.measureDistance(sourceToken.center, probe);
+			const probeDistance = canvas.grid.measureDistance(sourcePoint, probe);
 			if (probeDistance <= currentDistance) continue;
 		}
 		candidates.push(dir);
@@ -200,12 +205,12 @@ const chooseDirection = async (actor, title, directions) => {
  * @param {boolean} requireAway
  * @returns {{x:number, y:number}|null}
  */
-const getFarthestValidPosition = (targetToken, sourceToken, distance, dir, requireAway) => {
+const getFarthestValidPosition = (targetToken, sourcePoint, distance, dir, requireAway) => {
 	const stepCount = getStepCount(distance);
 	if (stepCount <= 0) return null;
 	const step = getGridStep(distance);
 	const bounds = getSceneBounds();
-	const startDistance = canvas.grid.measureDistance(sourceToken.center, targetToken.center);
+	const startDistance = canvas.grid.measureDistance(sourcePoint, targetToken.center);
 
 	let lastValid = null;
 	for (let i = 1; i <= stepCount; i += 1) {
@@ -217,11 +222,30 @@ const getFarthestValidPosition = (targetToken, sourceToken, distance, dir, requi
 		const rect = getTokenRectAt(targetToken.document, x, y);
 		if (!withinBounds(rect, bounds)) break;
 		if (isOccupied(targetToken.document, x, y)) break;
-		const dist = canvas.grid.measureDistance(sourceToken.center, center);
+		const dist = canvas.grid.measureDistance(sourcePoint, center);
 		if (requireAway && dist <= startDistance) continue;
 		lastValid = { x, y };
 	}
 	return lastValid;
+};
+
+/**
+ * Resolve a point used as push origin.
+ * @param {{x:number,y:number}|Token|null|undefined} source
+ * @param {Token} fallbackToken
+ * @returns {{x:number,y:number}|null}
+ */
+const resolveSourcePoint = (source, fallbackToken) => {
+	if (source?.center && Number.isFinite(source.center.x) && Number.isFinite(source.center.y)) {
+		return { x: source.center.x, y: source.center.y };
+	}
+	if (Number.isFinite(source?.x) && Number.isFinite(source?.y)) {
+		return { x: source.x, y: source.y };
+	}
+	if (fallbackToken?.center) {
+		return { x: fallbackToken.center.x, y: fallbackToken.center.y };
+	}
+	return null;
 };
 
 /**
@@ -232,20 +256,21 @@ const getFarthestValidPosition = (targetToken, sourceToken, distance, dir, requi
  * @param {number} choice
  * @returns {Promise<void>}
  */
-const pushByChoice = async (targetToken, sourceToken, distance, choice) => {
+const pushByChoice = async (targetToken, sourcePoint, distance, choice) => {
+	if (!sourcePoint) return false;
 	if (choice === 0) {
-		const dx = targetToken.center.x - sourceToken.center.x;
-		const dy = targetToken.center.y - sourceToken.center.y;
+		const dx = targetToken.center.x - sourcePoint.x;
+		const dy = targetToken.center.y - sourcePoint.y;
 		const dir = { dx: Math.sign(dx), dy: Math.sign(dy) };
 		if (dir.dx === 0 && dir.dy === 0) return false;
-		const pos = getFarthestValidPosition(targetToken, sourceToken, distance, dir, true);
+		const pos = getFarthestValidPosition(targetToken, sourcePoint, distance, dir, true);
 		if (!pos) return false;
 		await targetToken.document.update(pos);
 		return true;
 	}
 
 	const requireAway = choice === 1;
-	const directions = getPushDirections(targetToken, sourceToken, requireAway);
+	const directions = getPushDirections(targetToken, sourcePoint, requireAway);
 	if (!directions.length) return false;
 
 	const picker = targetToken.actor;
@@ -253,7 +278,7 @@ const pushByChoice = async (targetToken, sourceToken, distance, choice) => {
 	if (!selected) return false;
 	const pos = getFarthestValidPosition(
 		targetToken,
-		sourceToken,
+		sourcePoint,
 		distance,
 		selected,
 		requireAway,
@@ -269,9 +294,10 @@ const pushByChoice = async (targetToken, sourceToken, distance, choice) => {
  * @param {boolean} [acr=false] - If true, use Acrobatics instead of Athletics.
  * @param {number} [distance=5]
  * @param {number} [choice=0]
+ * @param {{x:number, y:number}|Token|null} [sourcePoint=null] - Optional point used as push origin.
  * @returns {Promise<void>}
  */
-export async function push(workflow, acr = false, distance = 5, choice = 0) {
+export async function push(workflow, acr = false, distance = 5, choice = 0, sourcePoint = null) {
 	if (!workflow?.actor) return;
 	const token = workflow.token ?? MidiQOL.tokenForActor(workflow.actor);
 	if (!token) {
@@ -289,16 +315,17 @@ export async function push(workflow, acr = false, distance = 5, choice = 0) {
 	const pusherSkillKey = acr ? "acr" : "ath";
 	const pusherSize = sizeIndex(pusher);
 	const flavor = workflow.item?.name ?? t("elkan5e.push.name");
+	const resolvedSourcePoint = resolveSourcePoint(sourcePoint ?? workflow?.pushSourcePoint, token);
 
 	const onSuccess = async (_sourceToken, targetToken) => {
-		const moved = await pushByChoice(targetToken, token, distance, choice);
+		const moved = await pushByChoice(targetToken, resolvedSourcePoint, distance, choice);
 		if (moved && targetToken?.actor) await endAllGrapplesForActor(targetToken.actor);
 	};
 
 	for (const targetToken of workflow.targets) {
 		const targetActor = targetToken?.actor;
 		if (!targetActor) continue;
-		if (hasSpecialTrait(targetActor, "unpushable")) {
+		if (isPushBlocked(targetActor)) {
 			ui.notifications.info(
 				t("elkan5e.push.notifications.unpushable", { name: targetActor.name }),
 			);
@@ -306,9 +333,10 @@ export async function push(workflow, acr = false, distance = 5, choice = 0) {
 		}
 		const targetSkill = chooseDefenderSkill(targetActor);
 		const targetSize = sizeIndex(targetActor);
+		const pushResist = hasPushResist(targetActor);
 
 		const pusherAdv = pusherSize > targetSize;
-		const targetAdv = targetSize > pusherSize;
+		const targetAdv = targetSize > pusherSize || pushResist;
 
 		console.log("Elkan 5e | push contestedRoll", {
 			pusher: pusher.name,
@@ -317,6 +345,7 @@ export async function push(workflow, acr = false, distance = 5, choice = 0) {
 			targetSize,
 			pusherAdv,
 			targetAdv,
+			pushResist,
 			sourceAbility: pusherSkillKey,
 			targetAbility: targetSkill,
 		});

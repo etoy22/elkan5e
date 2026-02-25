@@ -3,6 +3,13 @@ import { chooseDefenderSkill, sizeIndex } from "../global.mjs";
 const imgForCondition = (key) => `modules/elkan5e/icons/conditions/${key}.svg`;
 const t = (key, data) => (data ? game.i18n.format(key, data) : game.i18n.localize(key));
 const DEAD_PROMPT_FLAG = "grappleDeadPrompted";
+const PUSH_TRUE_VALUES = new Set(["1", "true", "yes", "on"]);
+const normalizeStatus = (value) => String(value ?? "").trim().toLowerCase();
+const statusMatches = (candidate, wanted) => {
+	const cand = normalizeStatus(candidate);
+	const want = normalizeStatus(wanted);
+	return cand === want || cand.endsWith(`.${want}`);
+};
 
 /**
  * Check whether an ActiveEffect includes a given status id.
@@ -13,9 +20,52 @@ const DEAD_PROMPT_FLAG = "grappleDeadPrompted";
 const hasStatus = (effect, statusId) => {
 	const statuses = effect?.statuses;
 	if (!statuses) return false;
-	if (typeof statuses.has === "function") return statuses.has(statusId);
-	if (Array.isArray(statuses)) return statuses.includes(statusId);
+	if (typeof statuses.has === "function") {
+		if (statuses.has(statusId)) return true;
+		return [...statuses].some((entry) => statusMatches(entry, statusId));
+	}
+	if (Array.isArray(statuses)) return statuses.some((entry) => statusMatches(entry, statusId));
 	return false;
+};
+
+const isGrappledEffect = (effect) => {
+	if (hasStatus(effect, "grappled")) return true;
+	if (statusMatches(effect?.flags?.core?.statusId, "grappled")) return true;
+	const localized = normalizeStatus(game.i18n.localize("elkan5e.conditions.grappled"));
+	const name = normalizeStatus(effect?.name);
+	return Boolean(name) && (name === "grappled" || (localized && name === localized));
+};
+
+const isTruthy = (value) => {
+	if (typeof value === "boolean") return value;
+	if (typeof value === "number") return value !== 0;
+	return PUSH_TRUE_VALUES.has(String(value ?? "").trim().toLowerCase());
+};
+
+const hasTruthyChange = (effect, key) =>
+	(effect?.changes ?? []).some(
+		(change) => change?.key === key && isTruthy(change?.value),
+	);
+
+const isPushedEffect = (effect, changes = {}) => {
+	if (!effect) return false;
+	if (effect?.flags?.elkan5e?.push?.pushed === true) return true;
+	if (hasTruthyChange(effect, "flags.elkan5e.push.pushed")) return true;
+	if (hasTruthyChange(effect, "flags.elkan5e.pushed")) return true;
+	if (hasTruthyChange(effect, "flags.midi-qol.pushed")) return true;
+
+	const incomingPushFlag =
+		changes?.["flags.elkan5e.push.pushed"] ??
+		changes?.flags?.elkan5e?.push?.pushed ??
+		changes?.["flags.elkan5e.pushed"] ??
+		changes?.flags?.elkan5e?.pushed ??
+		changes?.["flags.midi-qol.pushed"] ??
+		changes?.flags?.["midi-qol"]?.pushed;
+	if (incomingPushFlag != null && isTruthy(incomingPushFlag)) return true;
+
+	const pushedName = t("elkan5e.push.effects.pushed").toLowerCase();
+	const name = String(effect?.name ?? "").trim().toLowerCase();
+	return Boolean(name) && (name === "pushed" || name === pushedName);
 };
 
 /**
@@ -168,7 +218,10 @@ const getActiveGrapples = (grapplerActor) => {
 		const actor = token?.actor;
 		if (!actor) continue;
 		const effects = actor.effects.filter(
-			(e) => e?.origin === grapplerActor.uuid && hasStatus(e, "grappled"),
+			(e) =>
+				hasStatus(e, "grappled") &&
+				(e?.flags?.elkan5e?.grapple?.grapplerUuid === grapplerActor.uuid ||
+					e?.origin === grapplerActor.uuid),
 		);
 		if (!effects.length) continue;
 		grapples.push({ token, actor, effects });
@@ -253,6 +306,16 @@ const measureRangeDistance = (from, to) => {
 	return canvas.grid.measureDistance(from, to);
 };
 
+const mergeUniqueChanges = (existing = [], incoming = []) => {
+	const sig = (c) => `${c?.key}|${c?.mode}|${c?.value}|${c?.priority ?? ""}`;
+	const map = new Map();
+	for (const c of existing || []) map.set(sig(c), c);
+	for (const c of incoming || []) map.set(sig(c), c);
+	return [...map.values()];
+};
+
+const changeSignature = (c) => `${c?.key}|${c?.mode}|${c?.value}|${c?.priority ?? ""}`;
+
 const getTokenRect = (tokenDoc, x = tokenDoc.x, y = tokenDoc.y) => {
 	const gridSize = canvas.grid?.size ?? 1;
 	return {
@@ -290,6 +353,202 @@ const getFirstFullSpacePosition = (token, dx, dy) => {
 		return Math.round(scaled) * gridSize;
 	};
 	return { x: snap(desiredX, dx), y: snap(desiredY, dy) };
+};
+
+/**
+ * Apply (or upgrade) an Elkan grapple effect without a contested roll.
+ * @param {object} options
+ * @param {Actor} options.grappler
+ * @param {Actor} options.targetActor
+ * @param {Token} options.targetToken
+ * @param {number} options.sizeDiff
+ * @param {number} options.grappleRange
+ * @param {string} options.icon
+ * @param {ActiveEffect|null} [options.existingEffect=null]
+ * @param {string|null} [options.originOverride=null]
+ * @param {boolean} [options.notify=true]
+ * @returns {Promise<void>}
+ */
+const applyElkanGrapple = async ({
+	grappler,
+	targetActor,
+	targetToken,
+	sizeDiff,
+	grappleRange,
+	icon,
+	existingEffect = null,
+	originOverride = null,
+	notify = true,
+}) => {
+	if (!grappler || !targetActor || !targetToken) return;
+	const current = existingEffect ? foundry.utils.duplicate(existingEffect) : {};
+	const currentStatuses = Array.isArray(current?.statuses)
+		? current.statuses
+		: typeof current?.statuses?.values === "function"
+			? [...current.statuses.values()]
+			: [];
+	const statuses = new Set(
+		currentStatuses.filter(
+			(statusId) => !statusMatches(statusId, "grappled") && !statusMatches(statusId, "restrained"),
+		),
+	);
+	statuses.add("grappled");
+	const restrainedBaseChanges = getConditionChanges("restrained");
+	const restrainedSigs = new Set(restrainedBaseChanges.map(changeSignature));
+	let changes = foundry.utils
+		.duplicate(current?.changes ?? [])
+		.filter((change) => {
+			if (change?.key === "system.attributes.movement.all") return false;
+			if (
+				change?.key === "flags.midi-qol.disadvantage.attack.all" &&
+				String(change?.value ?? "").includes(grappler.uuid)
+			) {
+				return false;
+			}
+			return !restrainedSigs.has(changeSignature(change));
+		});
+
+	const addChanges = (incoming) => {
+		changes = mergeUniqueChanges(changes, incoming);
+	};
+	await removeClimberEffect(grappler, targetActor);
+
+	if (sizeDiff >= 0) {
+		addChanges([
+			{
+				key: "system.attributes.movement.all",
+				mode: 0,
+				value: "0",
+				priority: 60,
+			},
+		]);
+	} else if (sizeDiff === -1) {
+		addChanges([
+			{
+				key: "system.attributes.movement.all",
+				mode: 0,
+				value: "*0.5",
+				priority: 60,
+			},
+		]);
+	}
+
+	if (sizeDiff >= 2) {
+		statuses.add("restrained");
+		addChanges(restrainedBaseChanges);
+	} else if (sizeDiff <= -2) {
+		const climb = getClimbSpeed(grappler);
+		if (!Number.isFinite(climb) || climb <= 0) {
+			const existingClimber = grappler.effects.find(
+				(e) =>
+					e?.flags?.elkan5e?.grapple?.type === "climber-adv" &&
+					e?.flags?.elkan5e?.grapple?.targetUuid === targetActor.uuid,
+			);
+			if (!existingClimber) {
+				await grappler.createEmbeddedDocuments("ActiveEffect", [
+					{
+						name: t("elkan5e.grapple.climberEffect"),
+						icon,
+						origin: targetActor.uuid,
+						flags: {
+							elkan5e: {
+								grapple: {
+									type: "climber-adv",
+									targetUuid: targetActor.uuid,
+								},
+							},
+						},
+						changes: [
+							{
+								key: "system.attributes.movement.all",
+								mode: 0,
+								value: "0",
+								priority: 60,
+							},
+						],
+						disabled: false,
+						type: "base",
+					},
+				]);
+			}
+		} else {
+			addChanges([
+				{
+					key: "flags.midi-qol.disadvantage.attack.all",
+					mode: 5,
+					value: `target?.actor?.uuid === \"${grappler.uuid}\"`,
+					priority: 50,
+				},
+			]);
+
+			const existingClimber = grappler.effects.find(
+				(e) =>
+					e?.flags?.elkan5e?.grapple?.type === "climber-adv" &&
+					e?.flags?.elkan5e?.grapple?.targetUuid === targetActor.uuid,
+			);
+			if (!existingClimber) {
+				await grappler.createEmbeddedDocuments("ActiveEffect", [
+					{
+						name: t("elkan5e.grapple.climberEffect"),
+						icon,
+						origin: targetActor.uuid,
+						flags: {
+							elkan5e: {
+								grapple: {
+									type: "climber-adv",
+									targetUuid: targetActor.uuid,
+								},
+							},
+						},
+						changes: [
+							{
+								key: "flags.midi-qol.advantage.attack.all",
+								mode: 5,
+								value: `target?.actor?.uuid === \"${targetActor.uuid}\"`,
+								priority: 50,
+							},
+						],
+						disabled: false,
+						type: "base",
+					},
+				]);
+			}
+		}
+	}
+
+	const flags = foundry.utils.duplicate(current?.flags ?? {});
+	flags.elkan5e ??= {};
+	flags.elkan5e.grapple = {
+		grapplerUuid: grappler.uuid,
+		sizeDiff,
+		range: grappleRange,
+	};
+
+	const payload = {
+		name:
+			current?.name ??
+			game.i18n.localize("elkan5e.conditions.grappled") ??
+			t("elkan5e.grapple.grappled"),
+		icon: current?.icon ?? icon,
+		origin: originOverride ?? grappler.uuid,
+		flags,
+		changes,
+		disabled: false,
+		type: "base",
+		statuses: [...statuses],
+	};
+
+	if (existingEffect) await existingEffect.update(payload);
+	else await targetActor.createEmbeddedDocuments("ActiveEffect", [payload]);
+
+	if (notify) {
+		ui.notifications.info(
+			t("elkan5e.grapple.notifications.grappled", {
+				grappler: grappler.name,
+				target: targetActor.name,
+			}),
+		);
+	}
 };
 
 /**
@@ -491,6 +750,21 @@ export async function endAllGrapplesForActor(actor) {
 }
 
 /**
+ * End grapple links when a pushed effect is applied to an actor.
+ * @param {ActiveEffect} effect
+ * @param {object} [changes={}]
+ * @returns {Promise<void>}
+ */
+export async function handlePushedEffect(effect, changes = {}) {
+	if (!game.user?.isGM) return;
+	if (!effect?.parent) return;
+	const actor = effect.parent;
+	if (actor.documentName !== "Actor") return;
+	if (!isPushedEffect(effect, changes)) return;
+	await endAllGrapplesForActor(actor);
+}
+
+/**
  * Ask whether grapples involving a dead creature should end.
  * The prompt is shown once per dead state and resets when revived.
  * @param {Actor} actor
@@ -530,9 +804,10 @@ export async function handleDeadGrapplePrompt(actor) {
  * Perform a contested grapple against each targeted creature.
  * @param {object} workflow
  * @param {boolean} [acr=false] - If true, use Acrobatics instead of Athletics.
+ * @param {boolean} [skipRoll=false] - If true, apply grapple directly without contested roll.
  * @returns {Promise<void>}
  */
-export async function grapple(workflow, acr = false) {
+export async function grapple(workflow, acr = false, skipRoll = false) {
 	if (!workflow?.actor) return;
 	const token = workflow.token ?? MidiQOL.tokenForActor(workflow.actor);
 	if (!token) {
@@ -573,141 +848,38 @@ export async function grapple(workflow, acr = false) {
 	const applyGrapple = async (_sourceToken, targetToken, sizeDiff, grappleRange) => {
 		const targetActor = targetToken?.actor;
 		if (!targetActor) return;
+		const sourceItemUuid = workflow.item?.uuid ?? null;
 		const existing = targetActor.effects.find(
-			(e) => e?.origin === grappler.uuid && hasStatus(e, "grappled"),
+			(e) =>
+				(e?.flags?.elkan5e?.grapple?.grapplerUuid === grappler.uuid ||
+					e?.origin === grappler.uuid ||
+					(sourceItemUuid && e?.origin === sourceItemUuid)) &&
+				isGrappledEffect(e),
 		);
-		if (existing) return;
-		const statuses = ["grappled"];
-		const changes = [];
-		if (sizeDiff >= 0) {
-			changes.push({
-				key: "system.attributes.movement.all",
-				mode: 0,
-				value: "0",
-				priority: 60,
-			});
-		} else if (sizeDiff === -1) {
-			changes.push({
-				key: "system.attributes.movement.all",
-				mode: 0,
-				value: "*0.5",
-				priority: 60,
-			});
-		}
-		if (sizeDiff >= 2) {
-			statuses.push("restrained");
-			changes.push(...getConditionChanges("restrained"));
-		} else if (sizeDiff <= -2) {
-			const climb = getClimbSpeed(grappler);
-			if (!Number.isFinite(climb) || climb <= 0) {
-				const existingClimber = grappler.effects.find(
-					(e) =>
-						e?.flags?.elkan5e?.grapple?.type === "climber-adv" &&
-						e?.flags?.elkan5e?.grapple?.targetUuid === targetActor.uuid,
-				);
-				if (!existingClimber) {
-					await grappler.createEmbeddedDocuments("ActiveEffect", [
-						{
-							name: t("elkan5e.grapple.climberEffect"),
-							icon,
-							origin: targetActor.uuid,
-							flags: {
-								elkan5e: {
-									grapple: {
-										type: "climber-adv",
-										targetUuid: targetActor.uuid,
-									},
-								},
-							},
-							changes: [
-								{
-									key: "system.attributes.movement.all",
-									mode: 0,
-									value: "0",
-									priority: 60,
-								},
-							],
-							disabled: false,
-							type: "base",
-						},
-					]);
-				}
-			} else {
-				changes.push({
-					key: "flags.midi-qol.disadvantage.attack.all",
-					mode: 5,
-					value: `target?.actor?.uuid === \"${grappler.uuid}\"`,
-					priority: 50,
-				});
-
-				const existingClimber = grappler.effects.find(
-					(e) =>
-						e?.flags?.elkan5e?.grapple?.type === "climber-adv" &&
-						e?.flags?.elkan5e?.grapple?.targetUuid === targetActor.uuid,
-				);
-				if (!existingClimber) {
-					await grappler.createEmbeddedDocuments("ActiveEffect", [
-						{
-							name: t("elkan5e.grapple.climberEffect"),
-							icon,
-							origin: targetActor.uuid,
-							flags: {
-								elkan5e: {
-									grapple: {
-										type: "climber-adv",
-										targetUuid: targetActor.uuid,
-									},
-								},
-							},
-							changes: [
-								{
-									key: "flags.midi-qol.advantage.attack.all",
-									mode: 5,
-									value: `target?.actor?.uuid === \"${targetActor.uuid}\"`,
-									priority: 50,
-								},
-							],
-							disabled: false,
-							type: "base",
-						},
-					]);
-				}
-			}
-		}
-		const effect = {
-			name: game.i18n.localize("elkan5e.conditions.grappled") || t("elkan5e.grapple.grappled"),
+		await applyElkanGrapple({
+			grappler,
+			targetActor,
+			targetToken,
+			sizeDiff,
+			grappleRange,
 			icon,
-			origin: grappler.uuid,
-			flags: {
-				elkan5e: {
-					grapple: {
-						grapplerUuid: grappler.uuid,
-						sizeDiff,
-						range: grappleRange,
-					},
-				},
-			},
-			changes,
-			disabled: false,
-			type: "base",
-			statuses,
-		};
-		await targetActor.createEmbeddedDocuments("ActiveEffect", [effect]);
-		ui.notifications.info(
-			t("elkan5e.grapple.notifications.grappled", {
-				grappler: grappler.name,
-				target: targetActor.name,
-			}),
-		);
+			existingEffect: existing ?? null,
+		});
 	};
 
-	for (const targetToken of workflow.targets) {
+	const resolvedTargets =
+		skipRoll && workflow?.hitTargets?.size ? workflow.hitTargets : workflow.targets;
+	for (const targetToken of resolvedTargets) {
 		const targetActor = targetToken?.actor;
 		if (!targetActor) continue;
 
 		const targetSkill = chooseDefenderSkill(targetActor);
 		const targetSize = sizeIndex(targetActor);
 		const sizeDiff = grapplerSize - targetSize;
+		if (skipRoll) {
+			await applyGrapple(token, targetToken, sizeDiff, range);
+			continue;
+		}
 
 		const grapplerAdv = grapplerSize > targetSize;
 		const targetAdv = targetSize > grapplerSize;

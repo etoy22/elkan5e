@@ -186,11 +186,19 @@ export async function forEachDamagedTarget(workflow, callback) {
 }
 
 export const SIZE_ORDER = ["tiny", "sm", "med", "lg", "huge", "grg"];
+const TRUE_VALUES = new Set(["1", "true", "yes", "on"]);
 
 const hasCaseInsensitiveFlag = (obj, key) => {
 	if (!obj || !key) return false;
 	const target = String(key).toLowerCase();
 	return Object.keys(obj).some((k) => k.toLowerCase() === target && Boolean(obj[k]));
+};
+
+const valueIsTruthy = (value) => {
+	if (typeof value === "boolean") return value;
+	if (typeof value === "number") return value !== 0;
+	const normalized = String(value ?? "").trim().toLowerCase();
+	return TRUE_VALUES.has(normalized);
 };
 
 /**
@@ -288,4 +296,56 @@ export function hasSpecialTrait(actor, trait) {
 	}
 
 	return matched;
+}
+
+/**
+ * Check whether an actor is currently blocked from being pushed.
+ * Supports actor flags and ActiveEffect changes.
+ * @param {Actor} actor
+ * @returns {boolean}
+ */
+export function isPushBlocked(actor) {
+	if (!actor) return false;
+	const unpushableName = game.i18n.localize("elkan5e.traits.unpushable.name").toLowerCase();
+	const traitMatch = hasSpecialTrait(actor, "unpushable");
+	if (traitMatch) return true;
+
+	const namedEffect = actor.effects.some(
+		(effect) => {
+			const name = String(effect?.name ?? "").trim().toLowerCase();
+			return name === unpushableName;
+		},
+	);
+	if (namedEffect) return true;
+
+	const blockedByEffect = actor.effects.some((effect) =>
+		(effect?.changes ?? []).some((change) => {
+			const key = String(change?.key ?? "").toLowerCase();
+			if (!key) return false;
+			const pushBlockKey = key === "flags.dnd5e.unpushable";
+			return pushBlockKey && valueIsTruthy(change?.value);
+		}),
+	);
+
+	return blockedByEffect;
+}
+
+/**
+ * Check whether an actor has resistance to push contests.
+ * `flags.elkan5e.pushResist` grants advantage when resisting `push(...)`.
+ * @param {Actor} actor
+ * @returns {boolean}
+ */
+export function hasPushResist(actor) {
+	if (!actor) return false;
+
+	const actorFlag = actor.flags?.elkan5e?.pushResist ?? actor.flags?.elkan5e?.pushresist;
+	if (valueIsTruthy(actorFlag)) return true;
+
+	return actor.effects.some((effect) =>
+		(effect?.changes ?? []).some((change) => {
+			const key = String(change?.key ?? "").toLowerCase();
+			return key === "flags.elkan5e.pushresist" && valueIsTruthy(change?.value);
+		}),
+	);
 }

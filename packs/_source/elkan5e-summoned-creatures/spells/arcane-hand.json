@@ -1136,7 +1136,20 @@
 					"itemCondition": "",
 					"reactionCondition": "",
 					"otherCondition": "",
-					"effectCondition": ""
+					"effectCondition": "",
+					"onUseMacroName": "[postActiveEffects]ItemMacro"
+				},
+				"dae": {
+					"macro": {
+						"name": "Slam",
+						"img": "icons/magic/lightning/fist-unarmed-strike-blue.webp",
+						"type": "script",
+						"scope": "global",
+						"command": "const id = workflow?.activity?._id ?? workflow?.activity?.id; if (id !== \"L0pUdYydGKyrwSjn\") return; const targets = workflow?.hitTargets ?? new Set(); if (!targets?.size) return; return await elkan5e.macros.features.push({ ...workflow, targets }, false, 15, 0);",
+						"author": "vHqSHJMdmEO6Mk2C",
+						"_id": null,
+						"folder": null
+					}
 				}
 			},
 			"_key": "!actors.items!yuqcvbP1hIrDoMJy.CizP8XKvnM1SwmdJ"

@@ -144,7 +144,20 @@
 			"AoETargetType": "any",
 			"AoETargetTypeIncludeSelf": true,
 			"autoTarget": "default",
-			"otherCondition": ""
+			"otherCondition": "",
+			"onUseMacroName": "[postActiveEffects]ItemMacro"
+		},
+		"dae": {
+			"macro": {
+				"name": "Stampede [Damage]",
+				"img": "icons/environment/people/charge.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "const targets = workflow?.targets ?? workflow?.hitTargets ?? new Set(); if (!targets?.size) return; return await elkan5e.macros.features.push({ ...workflow, targets }, false, 10, 2);",
+				"author": "vHqSHJMdmEO6Mk2C",
+				"_id": null,
+				"folder": null
+			}
 		}
 	},
 	"_key": "!items!2pDyRxV3mP5pCGpD"

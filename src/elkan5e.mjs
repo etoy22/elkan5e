@@ -31,6 +31,7 @@ import {
 	grapple,
 	handleDeadGrapplePrompt,
 	handleGrapplerMove,
+	handlePushedEffect,
 } from "./module/rules/grapple.mjs";
 import { push } from "./module/rules/push.mjs";
 import { language } from "./module/rules/language.mjs";
@@ -112,6 +113,22 @@ Hooks.on("deleteActiveEffect", async (effect) => {
 	}
 });
 
+Hooks.on("createActiveEffect", async (effect) => {
+	try {
+		await handlePushedEffect(effect);
+	} catch (error) {
+		console.error("Elkan 5e | Error in createActiveEffect pushed hook:", error);
+	}
+});
+
+Hooks.on("updateActiveEffect", async (effect, changes) => {
+	try {
+		await handlePushedEffect(effect, changes);
+	} catch (error) {
+		console.error("Elkan 5e | Error in updateActiveEffect pushed hook:", error);
+	}
+});
+
 // Item deletion hooks
 Hooks.on("deleteItem", async (item) => {
 	try {
@@ -142,8 +159,9 @@ Hooks.on("updateItem", (item) => {
 });
 
 // Actor update (Barbarian defense update)
-Hooks.on("updateActor", async (actor) => {
+Hooks.on("updateActor", async (actor, changes) => {
 	try {
+		await Feats.relentlessEndurance(actor, changes);
 		await updateBarbarianDefense(actor, "updateActor");
 		await handleDeadGrapplePrompt(actor);
 	} catch (error) {
