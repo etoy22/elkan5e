@@ -39,7 +39,7 @@
 
 ## Equipment
 
-- Added a large temporary tool/instrument content set under `packs/_source/elkan5e-equipment/temp/` (28 new entries).
+- Added a large temporary tool/instrument content set under `packs/_source/elkan5e-equipment/temp/` (27 new entries).
 - Updated hunting/trap items and spellcasting focus entries.
 - Refreshed multiple magic item entries (armor, rings, gloves, staves, rods, weapon tiers) and related folder metadata files.
 - Updated potion/resistance item records and related spell-potion data.
