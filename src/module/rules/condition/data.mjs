@@ -3,7 +3,15 @@
 // Remove these in certain settings
 const CONDITION_TYPE_REMOVE = ["bleeding"];
 const STATUS_EFFECT_REMOVE = ["burrowing", "flying", "hovering", "marked", "sleeping", "ethereal"];
-const STATUS_ICON_KEYS = ["burrowing", "flying", "hovering", "marked", "bleeding", "sleeping", "ethereal"];
+const STATUS_ICON_KEYS = [
+	"burrowing",
+	"flying",
+	"hovering",
+	"marked",
+	"bleeding",
+	"sleeping",
+	"ethereal",
+];
 const STATUS_ICON_FOLDER = "statuses";
 const REMOVABLE_CONDITION_KEYS = new Set([
 	"bleeding",
@@ -37,7 +45,6 @@ const HAZARD_RULES_REF = (id) =>
 
 // You can add `changes` to any of these.
 const CONDITION_DEFS = [
-
 	{
 		_id: "dnd5eblinded0000",
 		id: "blinded",
@@ -45,10 +52,20 @@ const CONDITION_DEFS = [
 		changes: [
 			{ key: "flags.midi-qol.disadvantage.attack.all", mode: 5, value: "!Boolean(canSense)" },
 			{ key: "system.abilities.dex.save.roll.mode", mode: 5, value: "-1" },
-			{ key: "flags.midi-qol.grants.advantage.attack.all", mode: 5, value: "!Boolean(target?.canSense)" },
+			{
+				key: "flags.midi-qol.grants.advantage.attack.all",
+				mode: 5,
+				value: "!Boolean(target?.canSense)",
+			},
 			{ key: "flags.midi-qol.noOpportunityAttack", mode: 5, value: "1" },
-		]},
-	{ name: "Charmed", id: "charmed", reference: RULES_REF("ieDILSkRbu9r8pmZ"), _id: "dnd5echarmed0000"},
+		],
+	},
+	{
+		name: "Charmed",
+		id: "charmed",
+		reference: RULES_REF("ieDILSkRbu9r8pmZ"),
+		_id: "dnd5echarmed0000",
+	},
 	{
 		_id: "dnd5econfused000",
 		id: "confused",
@@ -59,17 +76,24 @@ const CONDITION_DEFS = [
 				mode: 2,
 				value: "turn=start, label=Confused Effect, macro=Compendium.elkan5e.elkan5e-macros.Macro.HW9jG0cdn6BmhzyE",
 			},
-		]},
-	{ id: "cursed", reference: RULES_REF("Vpwu9GQC6HVNZFze"), _id: "dnd5ecursed00000"},
-	{ id: "dazed", reference: RULES_REF("0BYyVwipnS55gVFq"), _id: "dnd5edazed000000"},
+		],
+	},
+	{ id: "cursed", reference: RULES_REF("Vpwu9GQC6HVNZFze"), _id: "dnd5ecursed00000" },
+	{ id: "dazed", reference: RULES_REF("0BYyVwipnS55gVFq"), _id: "dnd5edazed000000" },
 	{
 		_id: "dnd5edeafened000",
 		id: "deafened",
 		reference: RULES_REF("AHgIwuNdpp0wKF2y"),
-		changes: [{ key: "system.abilities.dex.save.roll.mode", mode: 5, value: "-1" }]},
-	{ id: "diseased", reference: RULES_REF("diseasedRule"), _id: "dnd5ediseased000"},
-	{ id: "drained", reference: RULES_REF("ZnhMIMgPZv1QDxzZ"), _id: "dnd5edrained0000"},
-	{ id: "exhaustion", reference: RULES_REF("mPzXN6MW8L6ePFmq"), image: false, _id: "dnd5eexhaustion0"},
+		changes: [{ key: "system.abilities.dex.save.roll.mode", mode: 5, value: "-1" }],
+	},
+	{ id: "diseased", reference: RULES_REF("diseasedRule"), _id: "dnd5ediseased000" },
+	{ id: "drained", reference: RULES_REF("ZnhMIMgPZv1QDxzZ"), _id: "dnd5edrained0000" },
+	{
+		id: "exhaustion",
+		reference: RULES_REF("mPzXN6MW8L6ePFmq"),
+		image: false,
+		_id: "dnd5eexhaustion0",
+	},
 	{
 		_id: "dnd5efrightened0",
 		id: "frightened",
@@ -77,9 +101,10 @@ const CONDITION_DEFS = [
 		changes: [
 			{ key: "flags.midi-qol.disadvantage.attack.all", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.disadvantage.ability.check.all", mode: 5, value: "1" },
-		]},
-	{ id: "goaded", reference: RULES_REF("IVZ318d1P8WBcDxN"), _id: "dnd5egoaded00000"},
-	{ id: "grappled", reference: RULES_REF("zaI1nuc41wANKoFX"), _id: "dnd5egrappled000"},
+		],
+	},
+	{ id: "goaded", reference: RULES_REF("IVZ318d1P8WBcDxN"), _id: "dnd5egoaded00000" },
+	{ id: "grappled", reference: RULES_REF("zaI1nuc41wANKoFX"), _id: "dnd5egrappled000" },
 	{
 		_id: "dnd5ehasted00000",
 		id: "hasted",
@@ -88,7 +113,8 @@ const CONDITION_DEFS = [
 			{ key: "system.attributes.ac.bonus", mode: 2, value: "+2" },
 			{ key: "system.abilities.dex.bonuses.save", mode: 2, value: "+2" },
 			{ key: "system.attributes.movement.all", mode: 0, value: "*2" },
-		]},
+		],
+	},
 	{
 		_id: "dnd5eincapacitat",
 		id: "incapacitated",
@@ -113,11 +139,20 @@ const CONDITION_DEFS = [
 		id: "invisible",
 		reference: RULES_REF("GfTD899cLRZxGG1H"),
 		changes: [
-			{ key: "flags.midi-qol.advantage.attack.all", mode: 5, value: "!Boolean(target?.canSee)" },
-			{ key: "flags.midi-qol.grants.disadvantage.attack.all", mode: 5, value: "!Boolean(canSee)" },
+			{
+				key: "flags.midi-qol.advantage.attack.all",
+				mode: 5,
+				value: "!Boolean(target?.canSee)",
+			},
+			{
+				key: "flags.midi-qol.grants.disadvantage.attack.all",
+				mode: 5,
+				value: "!Boolean(canSee)",
+			},
 			{ key: "system.skills.ste.roll.mode", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.noOpportunityAttack", mode: 5, value: "!Boolean(canSee)" },
-		]},
+		],
+	},
 	{
 		_id: "dnd5eparalyzed00",
 		id: "paralyzed",
@@ -126,7 +161,8 @@ const CONDITION_DEFS = [
 			{ key: "flags.midi-qol.grants.advantage.attack.all", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.grants.critical.mwak", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.grants.critical.msak", mode: 5, value: "1" },
-		]},
+		],
+	},
 	{
 		_id: "dnd5epetrified00",
 		id: "petrified",
@@ -138,7 +174,8 @@ const CONDITION_DEFS = [
 			{ key: "system.traits.di.value", mode: 2, value: "poison" },
 			{ key: "system.traits.ci.value", mode: 2, value: "poisoned" },
 			{ key: "system.traits.ci.value", mode: 2, value: "diseased" },
-		]},
+		],
+	},
 	{
 		_id: "dnd5epoisoned000",
 		id: "poisoned",
@@ -146,7 +183,8 @@ const CONDITION_DEFS = [
 		changes: [
 			{ key: "flags.midi-qol.disadvantage.attack.all", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.disadvantage.ability.check.all", mode: 5, value: "1" },
-		]},
+		],
+	},
 	{
 		_id: "dnd5eprone000000",
 		id: "prone",
@@ -157,7 +195,8 @@ const CONDITION_DEFS = [
 			{ key: "flags.midi-qol.grants.advantage.attack.msak", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.grants.disadvantage.attack.rwak", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.grants.disadvantage.attack.rsak", mode: 5, value: "1" },
-		]},
+		],
+	},
 	{
 		_id: "dnd5erestrained0",
 		id: "restrained",
@@ -167,12 +206,14 @@ const CONDITION_DEFS = [
 			{ key: "flags.midi-qol.grants.advantage.attack.all", mode: 5, value: "1" },
 			{ key: "system.abilities.dex.save.roll.mode", mode: 5, value: "-1" },
 			{ key: "flags.midi-qol.fail.spell.somatic", mode: 5, value: "1" },
-		]},
+		],
+	},
 	{
 		_id: "dnd5esilenced000",
 		id: "silenced",
 		reference: RULES_REF("F51xrE7Mj8VeM3b8"),
-		changes: [{ key: "flags.midi-qol.fail.spell.verbal", mode: 5, value: "1" }]},
+		changes: [{ key: "flags.midi-qol.fail.spell.verbal", mode: 5, value: "1" }],
+	},
 	{
 		_id: "dnd5esiphoned000",
 		id: "siphoned",
@@ -184,7 +225,8 @@ const CONDITION_DEFS = [
 				mode: 0,
 				value: "Compendium.elkan5e.elkan5e-macros.Macro.4X80aHI9r8I9aSKG, preDamageApplication",
 			},
-		]},
+		],
+	},
 	{
 		_id: "dnd5eslowed00000",
 		id: "slowed",
@@ -194,12 +236,14 @@ const CONDITION_DEFS = [
 			{ key: "flags.midi-qol.noReactions", mode: 5, value: "1" },
 			{ key: "system.attributes.ac.bonus", mode: 2, value: "-2" },
 			{ key: "system.abilities.dex.bonuses.save", mode: 2, value: "-2" },
-		]},
+		],
+	},
 	{
 		_id: "dnd5estunned0000",
 		id: "stunned",
 		reference: RULES_REF("JV8kbMo0p5S1YXUR"),
-		changes: [{ key: "flags.midi-qol.grants.advantage.attack.all", mode: 5, value: "1" }]},
+		changes: [{ key: "flags.midi-qol.grants.advantage.attack.all", mode: 5, value: "1" }],
+	},
 	{
 		_id: "dnd5esurprised00",
 		id: "surprised",
@@ -214,9 +258,12 @@ const CONDITION_DEFS = [
 				transfer: false,
 				stackable: "none",
 				specialDuration: ["turnEnd"],
-				showIcon: true},
-			core: { statusId: "surprised" }}},
-	{ id: "transformed", reference: RULES_REF("2kJ5SzS51DN33kWJ"), _id: "dnd5etransformed"},
+				showIcon: true,
+			},
+			core: { statusId: "surprised" },
+		},
+	},
+	{ id: "transformed", reference: RULES_REF("2kJ5SzS51DN33kWJ"), _id: "dnd5etransformed" },
 	{
 		_id: "dnd5eunconscious",
 		id: "unconscious",
@@ -224,7 +271,8 @@ const CONDITION_DEFS = [
 		changes: [
 			{ key: "flags.midi-qol.grants.advantage.attack.all", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.noReactions", mode: 5, value: "1" },
-		]},
+		],
+	},
 	{
 		_id: "dnd5eweakened000",
 		id: "weakened",
@@ -239,20 +287,26 @@ const CONDITION_DEFS = [
 				mode: 0,
 				value: "Compendium.elkan5e.elkan5e-macros.Macro.1NtnoPvTQj1IEHCa, preDamageApplication",
 			},
-		]},
-	{ id: "concentrating", reference: RULES_REF("4ZOHN6tGvj54J6Kv"), special: "CONCENTRATING", _id: "dnd5econcentrati"},
+		],
+	},
+	{
+		id: "concentrating",
+		reference: RULES_REF("4ZOHN6tGvj54J6Kv"),
+		special: "CONCENTRATING",
+		_id: "dnd5econcentrati",
+	},
 ];
 
-
 const STATUS_DEFS = [
-
 	{
 		id: "bleeding",
 		_id: "dnd5ebleeding000",
 		pseudo: true,
 		icon: "modules/elkan5e/icons/statuses/bleeding.svg",
 		flags: {
-			core: { statusId: "bleeding" }}},
+			core: { statusId: "bleeding" },
+		},
+	},
 	{
 		_id: "dnd5eburning0000",
 		pseudo: true,
@@ -263,8 +317,7 @@ const STATUS_DEFS = [
 			{
 				key: "flags.midi-qol.OverTime",
 				mode: 2,
-				value:
-					"turn=start,\nlabel=burning,\nactionSave=dialog,\nmacro=Compendium.elkan5e.elkan5e-macros.Macro.g6P9Rkg63Rz74KNe",
+				value: "turn=start,\nlabel=burning,\nactionSave=dialog,\nmacro=Compendium.elkan5e.elkan5e-macros.Macro.g6P9Rkg63Rz74KNe",
 			},
 			{
 				key: "flags.elkan5e.burning",
@@ -276,29 +329,36 @@ const STATUS_DEFS = [
 			dae: {
 				transfer: false,
 				stackable: "none",
-				showIcon: true},
+				showIcon: true,
+			},
 			core: {
-				statusId: "burning"}}},
+				statusId: "burning",
+			},
+		},
+	},
 	{
 		_id: "dnd5edehydration",
 		pseudo: true,
 		id: "dehydration",
 		reference: HAZARD_RULES_REF("xZRo576gFkVzqTAA"),
 		icon: "modules/elkan5e/icons/hazards/dehydration.svg",
-		statuses: ["exhaustion"]},
+		statuses: ["exhaustion"],
+	},
 	{
 		_id: "dnd5emalnutritio",
 		pseudo: true,
 		id: "malnutrition",
 		reference: HAZARD_RULES_REF("IxUkC78G9mRb3xQO"),
 		icon: "modules/elkan5e/icons/hazards/malnutrition.svg",
-		statuses: ["exhaustion"]},
+		statuses: ["exhaustion"],
+	},
 	{
 		_id: "dnd5efalling0000",
 		pseudo: true,
 		id: "falling",
 		reference: HAZARD_RULES_REF("TDbwlHfW1Kd4sLIZ"),
-		icon: "modules/elkan5e/icons/hazards/falling.svg"},
+		icon: "modules/elkan5e/icons/hazards/falling.svg",
+	},
 	{
 		_id: "dnd5esuffocation",
 		pseudo: true,
@@ -314,7 +374,10 @@ const STATUS_DEFS = [
 		],
 		flags: {
 			elkan5e: {
-				suffocation: true}}},
+				suffocation: true,
+			},
+		},
+	},
 	{
 		_id: "dnd5ecoverHalf00",
 		pseudo: true,
@@ -323,7 +386,8 @@ const STATUS_DEFS = [
 		icon: "modules/elkan5e/icons/conditions/cover-half.svg",
 		order: 2,
 		exclusiveGroup: "cover",
-		coverBonus: 2},
+		coverBonus: 2,
+	},
 	{
 		_id: "dnd5ecoverThreeQ",
 		pseudo: true,
@@ -332,7 +396,8 @@ const STATUS_DEFS = [
 		icon: "modules/elkan5e/icons/conditions/cover-three-quarters.svg",
 		order: 3,
 		exclusiveGroup: "cover",
-		coverBonus: 5},
+		coverBonus: 5,
+	},
 	{
 		_id: "dnd5ecoverTotal0",
 		pseudo: true,
@@ -341,7 +406,8 @@ const STATUS_DEFS = [
 		icon: "modules/elkan5e/icons/conditions/cover-full.svg",
 		order: 4,
 		exclusiveGroup: "cover",
-		changes: [{ key: "flags.midi-qol.neverTarget", mode: 2, value: "10" }]},
+		changes: [{ key: "flags.midi-qol.neverTarget", mode: 2, value: "10" }],
+	},
 	{
 		_id: "dnd5eobscuredlig",
 		pseudo: true,
@@ -349,7 +415,8 @@ const STATUS_DEFS = [
 		reference: RULES_REF("Jq7kMUlHodqSbYDD"),
 		exclusiveGroup: "obscured",
 		order: 5,
-		changes: [{ key: "system.skills.ste.roll.mode", mode: 5, value: "1" }]},
+		changes: [{ key: "system.skills.ste.roll.mode", mode: 5, value: "1" }],
+	},
 	{
 		_id: "dnd5eobscuredhea",
 		pseudo: true,
@@ -362,7 +429,8 @@ const STATUS_DEFS = [
 			{ key: "flags.midi-qol.advantage.ability.check.all", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.advantage.ability.save.all", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.advantage.skill.all", mode: 5, value: "1" },
-		]},
+		],
+	},
 	{
 		id: "dodging",
 		_id: "dnd5edodging0000",
@@ -379,17 +447,22 @@ const STATUS_DEFS = [
 				stackable: "none",
 				specialDuration: ["turnStart"],
 				disableIncapacitated: true,
-				showIcon: true},
-			core: { statusId: "dodging" }}},
+				showIcon: true,
+			},
+			core: { statusId: "dodging" },
+		},
+	},
 	{
 		id: "concentrating",
 		_id: "dnd5econcentrati",
 		pseudo: true,
 		icon: "modules/elkan5e/icons/conditions/concentrating.svg",
 		flags: {
-			core: { statusId: "concentrating" }}},
-	{ id: "dead", pseudo: true, special: "DEFEATED", _id: "dnd5edead0000000"},
-	{ id: "hiding", pseudo: true, _id: "dnd5ehiding00000"},
+			core: { statusId: "concentrating" },
+		},
+	},
+	{ id: "dead", pseudo: true, special: "DEFEATED", _id: "dnd5edead0000000" },
+	{ id: "hiding", pseudo: true, _id: "dnd5ehiding00000" },
 	{
 		id: "squeezing",
 		_id: "dnd5esqueezing00",
@@ -399,7 +472,8 @@ const STATUS_DEFS = [
 			{ key: "system.abilities.dex.save.roll.mode", mode: 5, value: "-1" },
 			{ key: "flags.midi-qol.grants.advantage.attack.all", mode: 5, value: "1" },
 			{ key: "system.attributes.movement.all", mode: 0, value: "*0.5" },
-		]},
+		],
+	},
 	{
 		id: "advantage",
 		_id: "dnd5eadvantage00",
@@ -413,7 +487,8 @@ const STATUS_DEFS = [
 			{ key: "flags.midi-qol.advantage.ability.save.all", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.advantage.skill.all", mode: 5, value: "1" },
 		],
-		flags: { core: { statusId: "advantage" } }},
+		flags: { core: { statusId: "advantage" } },
+	},
 	{
 		id: "disadvantage",
 		_id: "dnd5edisadvantag",
@@ -427,7 +502,8 @@ const STATUS_DEFS = [
 			{ key: "flags.midi-qol.disadvantage.ability.save.all", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.disadvantage.skill.all", mode: 5, value: "1" },
 		],
-		flags: { core: { statusId: "disadvantage" } }},
+		flags: { core: { statusId: "disadvantage" } },
+	},
 ];
 
 export {

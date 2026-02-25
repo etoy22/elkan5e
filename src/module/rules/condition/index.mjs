@@ -28,14 +28,10 @@ function imgFor(key, originalPath, folder = "conditions") {
 	if (IMAGE_EXCLUSIONS.has(lower)) return originalPath;
 
 	// allow override lookup by exact key OR lowercase key
-	const filename =
-		FILENAME_OVERRIDE[k] ??
-		FILENAME_OVERRIDE[lower] ??
-		`${lower}.svg`;
+	const filename = FILENAME_OVERRIDE[k] ?? FILENAME_OVERRIDE[lower] ?? `${lower}.svg`;
 
 	return `modules/elkan5e/icons/${folder}/${filename}`;
 }
-
 
 function statusIconPath(key) {
 	return `modules/elkan5e/icons/${STATUS_ICON_FOLDER}/${key}.svg`;
@@ -108,7 +104,6 @@ function applyStatusIcons() {
 	}
 }
 
-
 function mergeChanges(existing = [], incoming = []) {
 	const sig = (c) => `${c.key}|${c.mode}|${c.value}`;
 	const map = new Map();
@@ -144,8 +139,7 @@ function applyConditionDef(def, { statusOnly: forcedStatusOnly } = {}) {
 	const ct = registerConditionType ? (CONFIG.DND5E.conditionTypes[key] ??= {}) : {};
 	ct.name = game.i18n.localize(`elkan5e.conditions.${key}`);
 
-	const reference =
-		def.reference ?? (def.id ? RULES_REF(def.id) : undefined);
+	const reference = def.reference ?? (def.id ? RULES_REF(def.id) : undefined);
 	if (reference) ct.reference = reference;
 	if (def.icon) {
 		ct.img = def.icon;
@@ -223,11 +217,11 @@ function ensureMidiInvisibleVisionRule() {
 	if (storedConfig && game.user?.isGM && typeof game.settings?.set === "function") {
 		game.settings
 			.set("midi-qol", "ConfigSettings", storedConfig)
-			.catch((err) => console.warn("Elkan 5e | Failed to persist midi invisibility override", err));
+			.catch((err) =>
+				console.warn("Elkan 5e | Failed to persist midi invisibility override", err),
+			);
 	}
 }
-
-
 
 export function conditions() {
 	const conditionsSetting = game.settings.get("elkan5e", "conditionsSettings");
@@ -247,7 +241,9 @@ export function conditions() {
 		if (CONFIG.DND5E.conditionTypes.exhaustion) {
 			CONFIG.DND5E.conditionTypes.exhaustion.pseudo = false;
 			CONFIG.DND5E.conditionTypes.exhaustion.reduction = { rolls: 2, speed: 5 };
-			CONFIG.DND5E.conditionTypes.exhaustion.changes = [{ key: "system.bonuses.spell.dc", mode: 0, value: "-2" }];
+			CONFIG.DND5E.conditionTypes.exhaustion.changes = [
+				{ key: "system.bonuses.spell.dc", mode: 0, value: "-2" },
+			];
 		}
 
 		// Undo some core effects you override with midi flags
@@ -296,4 +292,3 @@ export function conditionsReady() {
 
 	ensureMidiInvisibleVisionRule();
 }
-

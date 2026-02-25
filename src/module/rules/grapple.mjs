@@ -4,7 +4,10 @@ const imgForCondition = (key) => `modules/elkan5e/icons/conditions/${key}.svg`;
 const t = (key, data) => (data ? game.i18n.format(key, data) : game.i18n.localize(key));
 const DEAD_PROMPT_FLAG = "grappleDeadPrompted";
 const PUSH_TRUE_VALUES = new Set(["1", "true", "yes", "on"]);
-const normalizeStatus = (value) => String(value ?? "").trim().toLowerCase();
+const normalizeStatus = (value) =>
+	String(value ?? "")
+		.trim()
+		.toLowerCase();
 const statusMatches = (candidate, wanted) => {
 	const cand = normalizeStatus(candidate);
 	const want = normalizeStatus(wanted);
@@ -39,13 +42,15 @@ const isGrappledEffect = (effect) => {
 const isTruthy = (value) => {
 	if (typeof value === "boolean") return value;
 	if (typeof value === "number") return value !== 0;
-	return PUSH_TRUE_VALUES.has(String(value ?? "").trim().toLowerCase());
+	return PUSH_TRUE_VALUES.has(
+		String(value ?? "")
+			.trim()
+			.toLowerCase(),
+	);
 };
 
 const hasTruthyChange = (effect, key) =>
-	(effect?.changes ?? []).some(
-		(change) => change?.key === key && isTruthy(change?.value),
-	);
+	(effect?.changes ?? []).some((change) => change?.key === key && isTruthy(change?.value));
 
 const isPushedEffect = (effect, changes = {}) => {
 	if (!effect) return false;
@@ -64,7 +69,9 @@ const isPushedEffect = (effect, changes = {}) => {
 	if (incomingPushFlag != null && isTruthy(incomingPushFlag)) return true;
 
 	const pushedName = t("elkan5e.push.effects.pushed").toLowerCase();
-	const name = String(effect?.name ?? "").trim().toLowerCase();
+	const name = String(effect?.name ?? "")
+		.trim()
+		.toLowerCase();
 	return Boolean(name) && (name === "pushed" || name === pushedName);
 };
 
@@ -85,8 +92,7 @@ const DRAG_IGNORE = new Set();
  * @param {Actor} actor
  * @returns {number}
  */
-const getClimbSpeed = (actor) =>
-	Number(actor?.system?.attributes?.movement?.climb ?? 0);
+const getClimbSpeed = (actor) => Number(actor?.system?.attributes?.movement?.climb ?? 0);
 
 /**
  * Remove the temporary climber advantage effect from the grappler.
@@ -173,14 +179,18 @@ const promptDeadUngrapple = async (deadActor, links) => {
 		...new Set(
 			links
 				.map((link) =>
-					link.grappler?.uuid === deadActor.uuid ? link.grappled?.name : link.grappler?.name,
+					link.grappler?.uuid === deadActor.uuid
+						? link.grappled?.name
+						: link.grappler?.name,
 				)
 				.filter(Boolean),
 		),
 	];
 	const DialogV2 = foundry.applications.api.DialogV2;
 	return new Promise((resolve) => {
-		const partnerList = partners.map((name) => `<li>${foundry.utils.escapeHTML(name)}</li>`).join("");
+		const partnerList = partners
+			.map((name) => `<li>${foundry.utils.escapeHTML(name)}</li>`)
+			.join("");
 		new DialogV2({
 			window: { title: t("elkan5e.grapple.deadDialog.title") },
 			content: `
@@ -389,24 +399,23 @@ const applyElkanGrapple = async ({
 			: [];
 	const statuses = new Set(
 		currentStatuses.filter(
-			(statusId) => !statusMatches(statusId, "grappled") && !statusMatches(statusId, "restrained"),
+			(statusId) =>
+				!statusMatches(statusId, "grappled") && !statusMatches(statusId, "restrained"),
 		),
 	);
 	statuses.add("grappled");
 	const restrainedBaseChanges = getConditionChanges("restrained");
 	const restrainedSigs = new Set(restrainedBaseChanges.map(changeSignature));
-	let changes = foundry.utils
-		.duplicate(current?.changes ?? [])
-		.filter((change) => {
-			if (change?.key === "system.attributes.movement.all") return false;
-			if (
-				change?.key === "flags.midi-qol.disadvantage.attack.all" &&
-				String(change?.value ?? "").includes(grappler.uuid)
-			) {
-				return false;
-			}
-			return !restrainedSigs.has(changeSignature(change));
-		});
+	let changes = foundry.utils.duplicate(current?.changes ?? []).filter((change) => {
+		if (change?.key === "system.attributes.movement.all") return false;
+		if (
+			change?.key === "flags.midi-qol.disadvantage.attack.all" &&
+			String(change?.value ?? "").includes(grappler.uuid)
+		) {
+			return false;
+		}
+		return !restrainedSigs.has(changeSignature(change));
+	});
 
 	const addChanges = (incoming) => {
 		changes = mergeUniqueChanges(changes, incoming);
@@ -722,8 +731,7 @@ export async function endAllGrapplesForActor(actor) {
 		if (!targetActor) continue;
 		const effects = targetActor.effects.filter(
 			(e) =>
-				e?.flags?.elkan5e?.grapple?.grapplerUuid === actor.uuid &&
-				hasStatus(e, "grappled"),
+				e?.flags?.elkan5e?.grapple?.grapplerUuid === actor.uuid && hasStatus(e, "grappled"),
 		);
 		if (!effects.length) continue;
 		for (const effect of effects) {

@@ -394,12 +394,12 @@ function setupConditionRefs() {
 
 	CONFIG.DND5E.rules.disease =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.232cb157e7054330";
-	CONFIG.DND5E.rules.bloodied = 
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.2YZgnTbeQ4rGG6t9"
-	CONFIG.DND5E.rules.obscurred = 
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.FuFWdz6zw9P9VrON"
-	CONFIG.DND5E.rules.diseased = CONFIG.DND5E.rules.disease = 
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.C1uE5H2DfghUGEID"
+	CONFIG.DND5E.rules.bloodied =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.2YZgnTbeQ4rGG6t9";
+	CONFIG.DND5E.rules.obscurred =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.FuFWdz6zw9P9VrON";
+	CONFIG.DND5E.rules.diseased = CONFIG.DND5E.rules.disease =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.C1uE5H2DfghUGEID";
 }
 
 function setupD20Refs() {

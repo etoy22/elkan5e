@@ -1,9 +1,4 @@
-import {
-	chooseDefenderSkill,
-	sizeIndex,
-	isPushBlocked,
-	hasPushResist,
-} from "../global.mjs";
+import { chooseDefenderSkill, sizeIndex, isPushBlocked, hasPushResist } from "../global.mjs";
 import { endAllGrapplesForActor } from "./grapple.mjs";
 
 const t = (key, data) => (data ? game.i18n.format(key, data) : game.i18n.localize(key));
@@ -139,10 +134,7 @@ const getPushDirections = (targetToken, sourcePoint, requireAway) => {
 	const candidates = [];
 	for (const dir of dirs) {
 		if (requireAway) {
-			const currentDistance = canvas.grid.measureDistance(
-				sourcePoint,
-				targetToken.center,
-			);
+			const currentDistance = canvas.grid.measureDistance(sourcePoint, targetToken.center);
 			const probe = {
 				x: targetToken.center.x + dir.dx,
 				y: targetToken.center.y + dir.dy,
@@ -186,7 +178,9 @@ const chooseDirection = async (actor, title, directions) => {
 					action: "ok",
 					label: t("elkan5e.push.dialogPush"),
 					callback: (_event, button) => {
-						const idx = Number(button.form.querySelector("#push-direction")?.value ?? 0);
+						const idx = Number(
+							button.form.querySelector("#push-direction")?.value ?? 0,
+						);
 						resolve(candidates[idx] ?? candidates[0]);
 					},
 				},
@@ -276,13 +270,7 @@ const pushByChoice = async (targetToken, sourcePoint, distance, choice) => {
 	const picker = targetToken.actor;
 	const selected = await chooseDirection(picker, t("elkan5e.push.directionTitle"), directions);
 	if (!selected) return false;
-	const pos = getFarthestValidPosition(
-		targetToken,
-		sourcePoint,
-		distance,
-		selected,
-		requireAway,
-	);
+	const pos = getFarthestValidPosition(targetToken, sourcePoint, distance, selected, requireAway);
 	if (!pos) return false;
 	await targetToken.document.update(pos);
 	return true;
@@ -323,8 +311,7 @@ export async function push(
 	const pusherSkillKey = acr ? "acr" : "ath";
 	const pusherSize = sizeIndex(pusher);
 	const flavor = workflow.item?.name ?? t("elkan5e.push.name");
-	const sourcePointInput =
-		typeof sourcePointOrSkiped === "boolean" ? null : sourcePointOrSkiped;
+	const sourcePointInput = typeof sourcePointOrSkiped === "boolean" ? null : sourcePointOrSkiped;
 	const skipContestedRoll =
 		typeof sourcePointOrSkiped === "boolean" ? sourcePointOrSkiped : skiped;
 	const resolvedSourcePoint = resolveSourcePoint(

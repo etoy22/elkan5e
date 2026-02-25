@@ -197,7 +197,9 @@ const hasCaseInsensitiveFlag = (obj, key) => {
 const valueIsTruthy = (value) => {
 	if (typeof value === "boolean") return value;
 	if (typeof value === "number") return value !== 0;
-	const normalized = String(value ?? "").trim().toLowerCase();
+	const normalized = String(value ?? "")
+		.trim()
+		.toLowerCase();
 	return TRUE_VALUES.has(normalized);
 };
 
@@ -246,13 +248,18 @@ export const sizeIndex = (actor) => {
  * @returns {boolean}
  */
 export function hasSpecialTrait(actor, trait) {
-	const key = String(trait ?? "").trim().toLowerCase();
+	const key = String(trait ?? "")
+		.trim()
+		.toLowerCase();
 	if (!key || !actor) return false;
 
 	const traits = actor.system?.traits ?? {};
 	const special = traits.special ?? traits.specialTraits ?? null;
-	const values =
-		Array.isArray(special?.value) ? special.value : Array.isArray(special) ? special : [];
+	const values = Array.isArray(special?.value)
+		? special.value
+		: Array.isArray(special)
+			? special
+			: [];
 	const valueMatch = values.some((v) => String(v).toLowerCase() === key);
 
 	const custom = `${special?.custom ?? ""} ${traits?.custom ?? ""}`.toLowerCase();
@@ -310,12 +317,12 @@ export function isPushBlocked(actor) {
 	const traitMatch = hasSpecialTrait(actor, "unpushable");
 	if (traitMatch) return true;
 
-	const namedEffect = actor.effects.some(
-		(effect) => {
-			const name = String(effect?.name ?? "").trim().toLowerCase();
-			return name === unpushableName;
-		},
-	);
+	const namedEffect = actor.effects.some((effect) => {
+		const name = String(effect?.name ?? "")
+			.trim()
+			.toLowerCase();
+		return name === unpushableName;
+	});
 	if (namedEffect) return true;
 
 	const blockedByEffect = actor.effects.some((effect) =>

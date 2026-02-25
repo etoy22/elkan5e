@@ -148,7 +148,9 @@ test("notify-discord job publishes release details to Discord", () => {
 		"post step should detect missing webhook",
 	);
 	assert.ok(
-		postStep.includes("DISCORD_WEBHOOK secret is not configured; skipping Discord notification."),
+		postStep.includes(
+			"DISCORD_WEBHOOK secret is not configured; skipping Discord notification.",
+		),
 		"post step should log why GitHub Actions is skipping posting",
 	);
 });
