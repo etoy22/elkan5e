@@ -644,6 +644,19 @@ function ensureMidiInvisibleVisionRule() {
 	}
 }
 
+function ensureDaeAutoFields() {
+	const daeModule = game.modules.get("dae");
+	if (!daeModule?.active) return;
+	const addAutoFields = globalThis.DAE?.addAutoFields;
+	if (typeof addAutoFields !== "function") return;
+
+	try {
+		addAutoFields(["flags.elkan5e.burning"]);
+	} catch (err) {
+		console.warn("Elkan 5e | Failed to register DAE auto fields", err);
+	}
+}
+
 
 
 export function conditions() {
@@ -712,5 +725,6 @@ export function conditionsReady() {
 	applyStatusIcons();
 
 	ensureMidiInvisibleVisionRule();
+	ensureDaeAutoFields();
 }
 
