@@ -121,12 +121,12 @@ const withinBounds = (rect, bounds) => {
  */
 const getPushDirections = (targetToken, sourcePoint, requireAway) => {
 	const dirs = [
-		{ dx: 1, dy: 0, label: t("elkan5e.directions.east") },
-		{ dx: -1, dy: 0, label: t("elkan5e.directions.west") },
-		{ dx: 0, dy: 1, label: t("elkan5e.directions.south") },
 		{ dx: 0, dy: -1, label: t("elkan5e.directions.north") },
-		{ dx: 1, dy: 1, label: t("elkan5e.directions.southeast") },
+		{ dx: 0, dy: 1, label: t("elkan5e.directions.south") },
+		{ dx: -1, dy: 0, label: t("elkan5e.directions.west") },
+		{ dx: 1, dy: 0, label: t("elkan5e.directions.east") },
 		{ dx: 1, dy: -1, label: t("elkan5e.directions.northeast") },
+		{ dx: 1, dy: 1, label: t("elkan5e.directions.southeast") },
 		{ dx: -1, dy: 1, label: t("elkan5e.directions.southwest") },
 		{ dx: -1, dy: -1, label: t("elkan5e.directions.northwest") },
 	];
@@ -161,15 +161,22 @@ const chooseDirection = async (actor, title, directions) => {
 	const DialogV2 = foundry.applications.api.DialogV2;
 	return new Promise((resolve) => {
 		const options = candidates
-			.map((c, idx) => `<option value="${idx}">${c.label}</option>`)
+			.map(
+				(c, idx) => `
+					<label style="display:block; margin:0.25rem 0;">
+						<input type="radio" name="push-direction" value="${idx}" ${idx === 0 ? "checked" : ""}>
+						${c.label}
+					</label>
+				`,
+			)
 			.join("");
 		new DialogV2({
 			window: { title },
 			content: `
 				<form>
 					<div class="form-group">
-						<label>${t("elkan5e.push.directionLabel")}</label>
-						<select id="push-direction">${options}</select>
+						<label style="display:block; margin-bottom:0.25rem;">${t("elkan5e.push.directionLabel")}</label>
+						<div id="push-direction">${options}</div>
 					</div>
 				</form>
 			`,
@@ -178,9 +185,10 @@ const chooseDirection = async (actor, title, directions) => {
 					action: "ok",
 					label: t("elkan5e.push.dialogPush"),
 					callback: (_event, button) => {
-						const idx = Number(
-							button.form.querySelector("#push-direction")?.value ?? 0,
+						const selected = button.form.querySelector(
+							'input[name="push-direction"]:checked',
 						);
+						const idx = Number(selected?.value ?? 0);
 						resolve(candidates[idx] ?? candidates[0]);
 					},
 				},

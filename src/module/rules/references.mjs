@@ -516,6 +516,7 @@ function setupHazardRefs() {
 		{ key: "slipperyice", id: "X8bksncR7EcaV0ov" },
 		{ key: "strongwind", id: "BsWkNDqruDAuGwZU" },
 		{ key: "suffocating", id: "NJdquJJIddZbeKdw" },
+		{ key: "suffocation", id: "NJdquJJIddZbeKdw" },
 		{ key: "suckingground", id: "Ar30uhkDfcespn3h" },
 		{ key: "thinice", id: "xK13cz7y8NL4nKk5" },
 		{ key: "thornbush", id: "R2sqqN0gWw8XKR47" },

@@ -298,6 +298,128 @@ function ensureMidiInvisibleVisionRule() {
 	}
 }
 
+const HAZARD_EXHAUSTION_FLAG = "hazardExhaustionContribution";
+const HAZARD_STATUS_IDS = ["dehydration", "malnutrition"];
+
+/**
+ * Checks whether a status entry matches a requested status id.
+ *
+ * @param {*} entry - Status entry.
+ * @param {*} statusId - Status id.
+ * @returns {boolean} Match result.
+ */
+function statusMatches(entry, statusId) {
+	if (entry == null) return false;
+	const target = String(statusId ?? "").toLowerCase();
+	if (!target) return false;
+	if (typeof entry === "string") return entry.toLowerCase() === target;
+	if (typeof entry === "object") {
+		const id = entry.id ?? entry.statusId ?? entry.name;
+		return String(id ?? "").toLowerCase() === target;
+	}
+	return false;
+}
+
+/**
+ * Checks whether an effect carries a status id.
+ *
+ * @param {*} effect - Active effect.
+ * @param {*} statusId - Status id.
+ * @returns {boolean} Match result.
+ */
+function effectHasStatus(effect, statusId) {
+	if (statusMatches(effect?.flags?.core?.statusId, statusId)) return true;
+
+	const statuses = effect?.statuses;
+	if (typeof statuses?.has === "function") {
+		if (statuses.has(statusId)) return true;
+		for (const entry of statuses.values()) {
+			if (statusMatches(entry, statusId)) return true;
+		}
+	}
+	if (Array.isArray(statuses)) {
+		return statuses.some((entry) => statusMatches(entry, statusId));
+	}
+	return false;
+}
+
+/**
+ * Counts active hazard statuses for an actor (0-2).
+ *
+ * @param {*} actor - Actor.
+ * @returns {number} Number of active hazard statuses.
+ */
+function getActorHazardCount(actor) {
+	if (!actor?.effects) return 0;
+
+	let count = 0;
+	for (const statusId of HAZARD_STATUS_IDS) {
+		const found = [...actor.effects].some((effect) => !effect.disabled && effectHasStatus(effect, statusId));
+		if (found) count += 1;
+	}
+	return count;
+}
+
+/**
+ * Syncs hazard-based exhaustion contribution by delta-tracking actor flag state.
+ *
+ * @param {*} actor - Actor.
+ * @returns {Promise<void>} Completion.
+ */
+async function syncHazardExhaustion(actor) {
+	if (!game.user?.isGM || !actor) return;
+
+	const nextContribution = getActorHazardCount(actor);
+	const priorContribution = Math.max(0, Number((await actor.getFlag("elkan5e", HAZARD_EXHAUSTION_FLAG)) ?? 0));
+	const delta = nextContribution - priorContribution;
+
+	if (delta) {
+		const current = Number(actor.system?.attributes?.exhaustion ?? 0);
+		const target = Math.clamped(current + delta, 0, 6);
+		if (target !== current) {
+			await actor.update({ "system.attributes.exhaustion": target });
+		}
+	}
+
+	if (nextContribution !== priorContribution) {
+		await actor.setFlag("elkan5e", HAZARD_EXHAUSTION_FLAG, nextContribution);
+	}
+}
+
+/**
+ * Hook handler for active effect lifecycle to keep hazard exhaustion in sync.
+ *
+ * @param {*} effect - Active effect.
+ * @returns {Promise<void>} Completion.
+ */
+export async function handleHazardExhaustion(effect) {
+	const actor = effect?.parent;
+	if (!actor || actor.documentName !== "Actor") return;
+	await syncHazardExhaustion(actor);
+}
+
+/**
+ * Performs a one-time sync for all actors on ready.
+ *
+ * @returns {Promise<void>} Completion.
+ */
+async function syncAllHazardExhaustion() {
+	if (!game.user?.isGM) return;
+
+	const actorMap = new Map();
+	for (const actor of game.actors?.contents ?? []) {
+		actorMap.set(actor.uuid, actor);
+	}
+	for (const token of canvas?.tokens?.placeables ?? []) {
+		const actor = token?.actor;
+		if (actor) actorMap.set(actor.uuid, actor);
+	}
+
+	for (const actor of actorMap.values()) {
+		await syncHazardExhaustion(actor);
+	}
+}
+
 /**
  * Applies conditions rule behavior.
  *
@@ -376,4 +498,7 @@ export function conditionsReady() {
 	applyStatusIcons();
 
 	ensureMidiInvisibleVisionRule();
+	void syncAllHazardExhaustion().catch((error) =>
+		console.error("Elkan 5e | Failed to sync hazard exhaustion", error),
+	);
 }

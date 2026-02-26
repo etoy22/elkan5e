@@ -352,6 +352,14 @@ const measureTokenDistance = (aDoc, aX, aY, bDoc, bX = bDoc.x, bY = bDoc.y) => {
 	return measureRangeDistance({ x: ax, y: ay }, { x: bx, y: by });
 };
 
+const isWithinGrappleRange = (distance, range) => {
+	if (!Number.isFinite(distance)) return false;
+	if (!Number.isFinite(range) || range <= 0) return false;
+	// We measure token edge-to-edge distance; use strict comparison so 5 ft reach
+	// does not allow an extra empty square.
+	return distance < range;
+};
+
 const getFirstFullSpacePosition = (token, dx, dy) => {
 	const gridSize = canvas.grid?.size ?? 1;
 	const desiredX = token.x + dx;
@@ -610,7 +618,7 @@ export async function handleGrapplerMove(tokenDoc, changes) {
 				targetToken.document.x,
 				targetToken.document.y,
 			);
-			if (distance <= range) continue;
+			if (isWithinGrappleRange(distance, range)) continue;
 			try {
 				await effect.delete();
 				await removeClimberEffect(actor, targetActor);
@@ -644,7 +652,7 @@ export async function handleGrapplerMove(tokenDoc, changes) {
 			grapplerToken.document.y,
 		);
 		let movedTogether = false;
-		if ((dx !== 0 || dy !== 0) && sizeDiff <= -1 && distance > range) {
+		if ((dx !== 0 || dy !== 0) && sizeDiff <= -1 && !isWithinGrappleRange(distance, range)) {
 			DRAG_IGNORE.add(grapplerToken.id);
 			const pos = getFirstFullSpacePosition(grapplerToken.document, dx, dy);
 			await grapplerToken.document.update(pos);
@@ -654,7 +662,7 @@ export async function handleGrapplerMove(tokenDoc, changes) {
 		// If the larger grappled creature moved and the smaller grappler was moved with it,
 		// do not end the grapple on range in this update.
 		if (movedTogether) continue;
-		if (distance > range) {
+		if (!isWithinGrappleRange(distance, range)) {
 			try {
 				await effect.delete();
 				await removeClimberEffect(grapplerActor, actor);
@@ -691,7 +699,7 @@ export async function handleGrapplerMove(tokenDoc, changes) {
 				targetToken.document.y,
 			);
 			// If movement keeps the pair within grapple range, do not force-move the other token.
-			if (distance <= range) continue;
+			if (isWithinGrappleRange(distance, range)) continue;
 			DRAG_IGNORE.add(targetToken.id);
 			const pos = getFirstFullSpacePosition(targetToken.document, dx, dy);
 			await targetToken.document.update(pos);
@@ -876,6 +884,23 @@ export async function grapple(workflow, acr = false, skipRoll = false) {
 	for (const targetToken of resolvedTargets) {
 		const targetActor = targetToken?.actor;
 		if (!targetActor) continue;
+		const targetDistance = measureTokenDistance(
+			token.document,
+			token.document.x,
+			token.document.y,
+			targetToken.document,
+			targetToken.document.x,
+			targetToken.document.y,
+		);
+		if (!isWithinGrappleRange(targetDistance, range)) {
+			console.warn("Elkan 5e | Grapple target out of range", {
+				grappler: grappler.name,
+				target: targetActor.name,
+				distance: targetDistance,
+				range,
+			});
+			continue;
+		}
 
 		const targetSkill = chooseDefenderSkill(targetActor);
 		const targetSize = sizeIndex(targetActor);

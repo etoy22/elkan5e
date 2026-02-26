@@ -27,7 +27,13 @@ import {
 	conditions,
 	conditionsReady,
 	formating,
+	grapple,
+	handleHazardExhaustion,
+	handleDeadGrapplePrompt,
+	handleGrapplerMove,
+	handlePushedEffect,
 	language,
+	push,
 	refs,
 	scroll,
 	skills,
@@ -108,6 +114,12 @@ function registerHooks() {
 		}
 
 		try {
+			await handleHazardExhaustion(effect);
+		} catch (error) {
+			console.error("Elkan 5e | Error in deleteActiveEffect hazard exhaustion hook:", error);
+		}
+
+		try {
 			await Promise.resolve(Spells.goodberryDeleteActive(effect));
 		} catch (error) {
 			console.error("Elkan 5e | Error cleaning goodberry effect:", error);
@@ -134,6 +146,34 @@ function registerHooks() {
 		}
 	});
 
+	Hooks.on("createActiveEffect", async (effect) => {
+		try {
+			await handlePushedEffect(effect);
+		} catch (error) {
+			console.error("Elkan 5e | Error in createActiveEffect pushed hook:", error);
+		}
+
+		try {
+			await handleHazardExhaustion(effect);
+		} catch (error) {
+			console.error("Elkan 5e | Error in createActiveEffect hazard exhaustion hook:", error);
+		}
+	});
+
+	Hooks.on("updateActiveEffect", async (effect, changes) => {
+		try {
+			await handlePushedEffect(effect, changes);
+		} catch (error) {
+			console.error("Elkan 5e | Error in updateActiveEffect pushed hook:", error);
+		}
+
+		try {
+			await handleHazardExhaustion(effect);
+		} catch (error) {
+			console.error("Elkan 5e | Error in updateActiveEffect hazard exhaustion hook:", error);
+		}
+	});
+
 	Hooks.on("updateItem", (item) => {
 		try {
 			updateBarbarianDefense(item.parent, "updateItem");
@@ -153,6 +193,20 @@ function registerHooks() {
 			await updateBarbarianDefense(actor, "updateActor");
 		} catch (error) {
 			console.error("Elkan 5e | Error in updateActor hook:", error);
+		}
+
+		try {
+			await handleDeadGrapplePrompt(actor);
+		} catch (error) {
+			console.error("Elkan 5e | Error in dead grapple prompt hook:", error);
+		}
+	});
+
+	Hooks.on("updateToken", async (tokenDoc, changes) => {
+		try {
+			await handleGrapplerMove(tokenDoc, changes);
+		} catch (error) {
+			console.error("Elkan 5e | Error in updateToken grapple hook:", error);
 		}
 	});
 
@@ -189,6 +243,8 @@ function registerHooks() {
 		macros: {
 			spells: Spells,
 			features: {
+				grapple,
+				push,
 				rage,
 				soulConduit,
 				necromanticSurge,

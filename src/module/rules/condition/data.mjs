@@ -342,7 +342,11 @@ const STATUS_DEFS = [
 		id: "dehydration",
 		reference: HAZARD_RULES_REF("xZRo576gFkVzqTAA"),
 		icon: "modules/elkan5e/icons/hazards/dehydration.svg",
-		statuses: ["exhaustion"],
+		flags: {
+			core: {
+				statusId: "dehydration",
+			},
+		},
 	},
 	{
 		_id: "dnd5emalnutritio",
@@ -350,7 +354,11 @@ const STATUS_DEFS = [
 		id: "malnutrition",
 		reference: HAZARD_RULES_REF("IxUkC78G9mRb3xQO"),
 		icon: "modules/elkan5e/icons/hazards/malnutrition.svg",
-		statuses: ["exhaustion"],
+		flags: {
+			core: {
+				statusId: "malnutrition",
+			},
+		},
 	},
 	{
 		_id: "dnd5efalling0000",
