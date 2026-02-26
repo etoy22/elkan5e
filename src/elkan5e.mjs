@@ -28,6 +28,7 @@ import {
 	conditionsReady,
 	formating,
 	grapple,
+	handleHazardExhaustion,
 	handleDeadGrapplePrompt,
 	handleGrapplerMove,
 	handlePushedEffect,
@@ -113,6 +114,12 @@ function registerHooks() {
 		}
 
 		try {
+			await handleHazardExhaustion(effect);
+		} catch (error) {
+			console.error("Elkan 5e | Error in deleteActiveEffect hazard exhaustion hook:", error);
+		}
+
+		try {
 			await Promise.resolve(Spells.goodberryDeleteActive(effect));
 		} catch (error) {
 			console.error("Elkan 5e | Error cleaning goodberry effect:", error);
@@ -145,6 +152,12 @@ function registerHooks() {
 		} catch (error) {
 			console.error("Elkan 5e | Error in createActiveEffect pushed hook:", error);
 		}
+
+		try {
+			await handleHazardExhaustion(effect);
+		} catch (error) {
+			console.error("Elkan 5e | Error in createActiveEffect hazard exhaustion hook:", error);
+		}
 	});
 
 	Hooks.on("updateActiveEffect", async (effect, changes) => {
@@ -152,6 +165,12 @@ function registerHooks() {
 			await handlePushedEffect(effect, changes);
 		} catch (error) {
 			console.error("Elkan 5e | Error in updateActiveEffect pushed hook:", error);
+		}
+
+		try {
+			await handleHazardExhaustion(effect);
+		} catch (error) {
+			console.error("Elkan 5e | Error in updateActiveEffect hazard exhaustion hook:", error);
 		}
 	});
 
