@@ -1,8 +1,66 @@
 # Changelog
 
+# v1.13.7
+
+## Bug Fixes
+
+- Rewired Relentless Endurance into actor update flow so the automation triggers again.
+- Corrected spell placement/path issues in pack source:
+    - `otherworldly-veil.json` moved to `level-5`
+    - consolidated slash-named spell files to stable hyphenated files:
+        - `level-2/blindness-deafness.json`
+        - `level-2/enlarge-reduce.json`
+        - `level-8/antipathy-sympathy.json`
+
+## Classes
+
+- **[Bard](https://www.elkan5e.com/classes/bard)**
+    - Jester features updated, including `cutting-words` automation/reference alignment.
+- **[Cleric](https://www.elkan5e.com/classes/cleric)**
+    - Domain feature updates synchronized for `reaper` and `tricksters-misdirection`.
+- **[Druid](https://www.elkan5e.com/classes/druid)**
+    - Subclass feature updates applied to `unseen-menace`, `quake`, and shepherd features.
+- **[Fighter](https://www.elkan5e.com/classes/fighter)**
+    - Maneuver/feature updates synced for `brace`, `parry`, `tide-of-iron`, and `indomitable-squad`.
+- **[Monk](https://www.elkan5e.com/classes/monk)**
+    - Feature updates synchronized for `deflect-attack`, `deflect-elements`, `slow-fall`, and `sweep`.
+- **[Paladin](https://www.elkan5e.com/classes/paladin)**
+    - Avenger features and alternative smite options updated for automation consistency.
+
+## Equipment
+
+- Added a large temporary tool/instrument content set under `packs/_source/elkan5e-equipment/temp/`.
+- Updated hunting/trap items and spellcasting focus entries.
+- Refreshed multiple magic item entries (armor, rings, gloves, staves, rods, weapon tiers) and related folder metadata files.
+- Updated potion/resistance item records and related spell-potion data.
+
+## Feats
+
+- Updated feat and maneuver files for reaction handling and automation consistency (for example protection, bodyblock, brace, parry, ambush leader, quick wit).
+
+## Game Rules
+
+- Added full grapple/push automation modules.
+- Expanded grapple/push behavior with size rules, contest handling, dead-creature handling, and skip-contest support.
+- Split conditions into structured modules.
+- Consolidated rule exports and flattened references module paths.
+- Added/updated custom effect field wiring for push resist and burning-related fields in rules formatting setup.
+
+## Spells
+
+- Updated spell data entries across cantrip/level folders (including `vine-lash`, `thunderwave`, `crushing-wave`, `gust-of-wind`, `control-water`, and elementalist monk thunderwave variants).
+
+## Monsters
+
+- Added and updated many creature features (for example absorb flesh, agile, hold breath, leap, shapechanger, shared mind/senses, smoke form, toxic regeneration, undead fortitude, volatile creation).
+- Refactored dire transformation feature layout by flattening the foldered structure and removing obsolete nested files.
+- Synced multiple creature entries across aberration/beast/humanoid/ooze/plant/undead sources.
+- Updated summoned-creature spell actor entries (`arcane-hand`, `arcane-sword`, `faithful-hound`, `flaming-sphere`, `rope-trick`, `spiritual-weapon`) and graveguard data.
+
 # v1.13.6.1
 
 ## Bug Fix
+
 - Restored Vocals as a choice
 - Removed broken links from gaming set
 - Cleaned up some formatting inconsistencies in spells
@@ -12,44 +70,54 @@
 ## Classes
 
 **[Bard](https://www.elkan5e.com/classes/bard)**
+
 - Switched to two instrument proficiencies to reflect that instrument proficiencies are now by instrument category.
 
 **[Druid](https://www.elkan5e.com/classes/druid)**
-  - Chthonic:
+
+- Chthonic:
     - Level 1 spells swapped to Color Spray and Dissonant Whispers. Otherworldly Veil replaces Passwall at level 5.
 
 **[Ranger](https://www.elkan5e.com/classes/ranger)**
+
 - Ranger tool/vehicle options expanded to the whole list.
 
 **[Rogue](https://www.elkan5e.com/classes/rouge)**
+
 - Ranger tool/vehicle options expanded to the whole list.
 
 **[Warlock](https://www.elkan5e.com/classes/warlock)**
-  - Fiend: 
+
+- Fiend:
     - Dark One's Own Luck is no longer consumed when it fails.
 
 ## Equipment
+
 - Instruments are grouped into one of five categories, some crafting tools were combined, and all references to gaining tools are now consistent with these changes
-  - Fleshed out items for the various instrument types.
+    - Fleshed out items for the various instrument types.
 
 ## Feat
+
 - Turn the Unholy now ends early if the cleric becomes incapacitated.
 
 ## Spells
+
 - Otherworldly Veil reworked as a level 5 spell that prevents several targets from seeing any creature you choose to shield from them.
 - Snowball Swarm reworked as a cantrip that scales to larger sizes.
 - Spook reworked as a cantrip with a casting time of 1 action.
 - Some new Artificer spells:
-  - Master's Touch spell for artificers and diviners.
-  - Metalline Weapon spell (3rd level) for artificers and transmuters.
-  - Reconstruct spell for artificers and transmuters.
-  - Touch of Corrosion spell for artificers, transmuters, and water savants.
+    - Master's Touch spell for artificers and diviners.
+    - Metalline Weapon spell (3rd level) for artificers and transmuters.
+    - Reconstruct spell for artificers and transmuters.
+    - Touch of Corrosion spell for artificers, transmuters, and water savants.
 
 ## Rules
+
 - Updated Wild Surge tables to have the same updated spells as Wild Mages at levels 1 and 2.
 - Update Faerie Fire Wild Surge for non-sorcerers.
 
 # v1.13.5
+
 ## Bug Fixes
 
 - Well of Corruption now applies drained to all targets with safer token resolution; halves on successful saves.
@@ -57,6 +125,7 @@
 - Fixed issues casting Warlock spells.
 
 ## Classes
+
 - Made Mounted Combat a fighting style
 
 **[Cleric](https://www.elkan5e.com/cleric)**
@@ -66,13 +135,13 @@
 
 **[Wizard](https://www.elkan5e.com/wizard)**
 
-- Necromancer: 
+- Necromancer:
     - Added Soul Conduit reminder for necromancy spells (level >=1).
     - Added Necromantic Surge reminder for necromancy spells (level >=3) with optional dialog prompt.
 
 **[Ranger](https://www.elkan5e.com/ranger)**
 
-- Spellbreaker: 
+- Spellbreaker:
     - Reworked level 3 features into a single Magic Shackles feature that marks a target and applies half speed, siphoned, and damage effects against that target.
     - Reworked Rend Magic to break concentration, impose blind, and prevent teleportation with a 1/short rest recovery.
 

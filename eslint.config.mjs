@@ -3,11 +3,11 @@ import eslintPluginPrettier from "eslint-plugin-prettier";
 import eslintConfigPrettier from "eslint-config-prettier";
 
 export default [
-  { ignores: ["src/packs.mjs"] }, // or "**/src/packs.mjs" if needed
+  { ignores: ["scripts/packs.mjs"] }, // or "**/scripts/packs.mjs" if needed
   js.configs.recommended,
   eslintConfigPrettier,
   {
-    files: ["src/**/*.mjs"],
+    files: ["src/**/*.mjs", "scripts/**/*.mjs"],
     languageOptions: {
       ecmaVersion: 2021,
       sourceType: "module",

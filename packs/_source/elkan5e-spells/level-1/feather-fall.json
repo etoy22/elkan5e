@@ -88,17 +88,6 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedProperties": [
-				"vocal",
-				"somatic",
-				"material"
-			]
 		}
 	},
 	"system": {
@@ -171,7 +160,8 @@
 				"activation": {
 					"type": "action",
 					"value": null,
-					"override": false
+					"override": true,
+					"condition": "reaction !== 'isHit' && actor.items.some(i => i.system?.equipped && ((i.type === 'equipment' && i.system?.type?.value === 'shield') || (i.type === 'weapon' && ['mwak','msak'].includes(i.system?.actionType))))"
 				},
 				"consumption": {
 					"scaling": {
@@ -190,7 +180,11 @@
 				},
 				"effects": [
 					{
-						"_id": "Eczq1E4JmCFq4fBY"
+						"_id": "Eczq1E4JmCFq4fBY",
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -219,7 +213,13 @@
 				"img": "",
 				"appliedEffects": [
 					"Eczq1E4JmCFq4fBY"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				}
 			}
 		},
 		"identifier": "feather-fall"

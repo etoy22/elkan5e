@@ -1,5 +1,7 @@
 /**
- * Changes Foundry's armor types to that of Elkan 5e.
+ * Applies armor rule behavior.
+ *
+ * @returns {void} Operation result.
  */
 export function armor() {
 	const armor = game.settings.get("elkan5e", "armor");
@@ -37,6 +39,12 @@ export function armor() {
 	}
 }
 
+/**
+ * Applies calculate Ac Bonus rule behavior.
+ *
+ * @param {*} actor - Actor document to process.
+ * @returns {unknown} Operation result.
+ */
 function calculateAcBonus(actor) {
 	const dex = actor.system.abilities.dex.mod;
 	const con = actor.system.abilities.con.mod;
@@ -71,6 +79,12 @@ function calculateAcBonus(actor) {
 	return Math.max(dex, con);
 }
 
+/**
+ * Updates update Barbarian Defense state.
+ *
+ * @param {*} actor - Actor document to process.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function updateBarbarianDefense(actor) {
 	if (!actor || !actor.system) return; // Prevents error if actor is null/undefined
 	const firstActiveGM = game.users.find((u) => u.isGM && u.active);

@@ -5,16 +5,16 @@
 	"main": "elkan5e.mjs",
 	"type": "module",
 	"scripts": {
-		"pack": "npm run build:clean && npm run build:db",
+		"pack": "node ./scripts/pack-chain.mjs",
 		"clean": "npm run fix && npm run build:clean",
-		"unpack": "node ./src/packs.mjs package unpack",
-		"build:clean": "node ./src/packs.mjs package clean",
-		"build:db": "node ./src/packs.mjs package pack",
-		"remove": "node ./src/packs.mjs package remove",
-		"lint": "eslint \"src/**/*.mjs\"",
-		"lint:fix": "eslint --fix \"src/**/*.mjs\"",
-		"format": "prettier --config .prettierrc.json --write \"src/**/*.{js,mjs,json,md}\"",
-		"test": "node --test src/tests.mjs",
+		"unpack": "node ./scripts/packs.mjs package unpack",
+		"build:clean": "node ./scripts/packs.mjs package clean",
+		"build:db": "node ./scripts/packs.mjs package pack",
+		"remove": "node ./scripts/packs.mjs package remove",
+		"lint": "eslint \"src/**/*.mjs\" \"scripts/**/*.mjs\"",
+		"lint:fix": "eslint --fix \"src/**/*.mjs\" \"scripts/**/*.mjs\"",
+		"format": "prettier --config .prettierrc.json --write \"src/**/*.{js,mjs,json,md}\" \"scripts/**/*.{js,mjs,json,md}\"",
+		"test": "node --test scripts/tests.mjs",
 		"fix": "npm run lint:fix && npm run format"
 	},
 	"devDependencies": {
@@ -29,6 +29,7 @@
 	"dependencies": {
 		"@foundryvtt/foundryvtt-cli": "^1.0.3",
 		"fancy-log": "^2.0.0",
+		"level": "^10.0.0",
 		"yargs": "^17.7.2"
 	},
 	"repository": {

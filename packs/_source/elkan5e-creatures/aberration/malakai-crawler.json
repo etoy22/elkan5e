@@ -608,11 +608,6 @@
 		"flags": {
 			"token-z": {
 				"zIndex": 0
-			},
-			"elevation-drag-ruler": {
-				"selectedSpeed": "auto",
-				"hasBonusDash": false,
-				"hideSpeedButton": false
 			}
 		},
 		"randomImg": false,
@@ -701,26 +696,6 @@
 				}
 			],
 			"folder": "l7f5m3qKNPTxwDpN",
-			"flags": {
-				"betterRolls5e": {
-					"quickDesc": {
-						"value": true,
-						"altValue": true
-					},
-					"quickProperties": {
-						"value": true,
-						"altValue": true
-					},
-					"quickOther": {
-						"value": true,
-						"altValue": true
-					},
-					"quickFlavor": {
-						"value": true,
-						"altValue": true
-					}
-				}
-			},
 			"system": {
 				"description": {
 					"value": "<p>While this malakai have at least one other malakai drone nearby, they have advantage on perception checks. They can be blinded, but can effectively fight through the eyes of another malakai nearby, seeing everything they can see.</p><p>Note that when they have advantage on perception, their passive perception increases by 5. We have not marked them as immune to the blinded condition, but this isn't entirely true. A lone drone can be blinded, but if there are only two drones and one is blinded, they can both see what the unblinded one can see. They still suffer the normal effects of the blinded condition, but can use the perceptions of other malakai for perception checks.</p>",
@@ -1758,7 +1733,8 @@
 					"itemCondition": "",
 					"reactionCondition": "",
 					"otherCondition": "",
-					"effectCondition": ""
+					"effectCondition": "",
+					"onUseMacroName": "[postActiveEffects]ItemMacro"
 				},
 				"midiProperties": {
 					"nodam": false,
@@ -1780,6 +1756,11 @@
 					"idi": false,
 					"idv": false,
 					"ida": false
+				},
+				"dae": {
+					"macro": {
+						"command": "await elkan5e.macros.features.grapple(workflow, false, true);"
+					}
 				}
 			},
 			"_key": "!actors.items!trzFb9QLrHcxqVTu.nBbelgGzzgLmkAPa"

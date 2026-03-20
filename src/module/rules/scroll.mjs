@@ -1,10 +1,7 @@
 /**
- * Initialize custom spell scroll references for Elkan 5e.
+ * Applies scroll rule behavior.
  *
- * Updates the DND5E system with IDs pointing to the module's compendium
- * entries so that scrolls are properly recognized.
- *
- * @returns {void}
+ * @returns {void} Operation result.
  */
 export function scroll() {
 	console.log("Elkan 5e  |  Initializing Scrolls");
