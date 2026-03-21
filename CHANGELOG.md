@@ -1,6 +1,6 @@
 # Changelog
 
-# Unpublished
+# v1.13.7
 
 ## Bug Fixes
 
@@ -26,20 +26,10 @@
     - Feature updates synchronized for `deflect-attack`, `deflect-elements`, `slow-fall`, and `sweep`.
 - **[Paladin](https://www.elkan5e.com/classes/paladin)**
     - Avenger features and alternative smite options updated for automation consistency.
-- **[Ranger](https://www.elkan5e.com/classes/ranger)**
-    - Class feature files updated and synced with the new formatting and automation references.
-- **[Rogue](https://www.elkan5e.com/classes/rouge)**
-    - Class feature files updated and synced with the new formatting and automation references.
-- **[Sorcerer](https://www.elkan5e.com/classes/sorcerer)**
-    - Class feature files updated and synced with the new formatting and automation references.
-- **[Warlock](https://www.elkan5e.com/classes/warlock)**
-    - Class feature files updated and synced with the new formatting and automation references.
-- **[Wizard](https://www.elkan5e.com/classes/wizard)**
-    - Class feature files updated and synced with the new formatting and automation references.
 
 ## Equipment
 
-- Added a large temporary tool/instrument content set under `packs/_source/elkan5e-equipment/temp/` (27 new entries).
+- Added a large temporary tool/instrument content set under `packs/_source/elkan5e-equipment/temp/`.
 - Updated hunting/trap items and spellcasting focus entries.
 - Refreshed multiple magic item entries (armor, rings, gloves, staves, rods, weapon tiers) and related folder metadata files.
 - Updated potion/resistance item records and related spell-potion data.
@@ -59,10 +49,6 @@
 ## Spells
 
 - Updated spell data entries across cantrip/level folders (including `vine-lash`, `thunderwave`, `crushing-wave`, `gust-of-wind`, `control-water`, and elementalist monk thunderwave variants).
-- Enforced spell level mapping logic in tooling so level `0` is always treated as cantrip.
-- Split runtime spell automation into level-based modules.
-- Removed the legacy single-file spell runtime implementation.
-- Re-ran spell pack extraction/clean so slash-named entries now persist in normalized hyphenated filenames.
 
 ## Monsters
 
@@ -70,41 +56,6 @@
 - Refactored dire transformation feature layout by flattening the foldered structure and removing obsolete nested files.
 - Synced multiple creature entries across aberration/beast/humanoid/ooze/plant/undead sources.
 - Updated summoned-creature spell actor entries (`arcane-hand`, `arcane-sword`, `faithful-hound`, `flaming-sphere`, `rope-trick`, `spiritual-weapon`) and graveguard data.
-
-## Tooling & Documentation
-
-- Added `src/module/classes/index.mjs` to centralize class feature exports used by hook wiring.
-- Moved script entrypoints from `src/` to `scripts/`:
-    - `src/packs.mjs` -> `scripts/packs.mjs`
-    - `src/tests.mjs` -> `scripts/tests.mjs`
-- Resolved merge path conflicts by standardizing test/pack tooling into `scripts/tests.mjs` and `scripts/packs.mjs`.
-- Removed stale `src/module/global.mjs` and replaced shared logic with explicit module imports.
-- Updated `scripts/packs.mjs` `slugify()` to disallow `/` in generated names, preventing nested directory output from entries like `Enlarge/Reduce`.
-- Added/organized rules runtime files:
-    - `src/module/rules/grapple.mjs`
-    - `src/module/rules/push.mjs`
-    - `src/module/rules/condition/data.mjs`
-    - `src/module/rules/condition/index.mjs`
-    - `src/module/rules/index.mjs`
-    - `src/module/rules/references.mjs`
-- Split spell runtime into level files and added a barrel export:
-    - `src/module/spells/cantrip.mjs`
-    - `src/module/spells/level-1.mjs`
-    - `src/module/spells/level-2.mjs`
-    - `src/module/spells/level-3.mjs`
-    - `src/module/spells/level-4.mjs`
-    - `src/module/spells/level-5.mjs`
-    - `src/module/spells/level-9.mjs`
-    - `src/module/spells/index.mjs`
-- Removed legacy `src/module/spells.mjs`.
-- Added tooling modules under `src/tools/`:
-    - `sync-features.mjs`
-    - `sync-summoned.mjs`
-    - `update-spell-lists.mjs`
-    - `validate-packs-json.mjs`
-- Updated `package.json` and script chain files to align with new script/module layout.
-- Added sync reporting output log at `helperCode/logs/sync-features-report.log`.
-- Normalized settings modules into `src/module/settings/` with renamed files and `index.mjs` barrel exports.
 
 # v1.13.6.1
 
