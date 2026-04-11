@@ -1,7 +1,6 @@
 /**
  * Applies refs rule behavior.
  *
- * @returns {void} Operation result.
  */
 export function refs() {
 	setupGeneralRefs();
@@ -27,7 +26,6 @@ export function refs() {
 /**
  * Registers setup Combat Refs configuration.
  *
- * @returns {void} Operation result.
  */
 function setupCombatRefs() {
 	const base = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.";
@@ -113,7 +111,6 @@ function setupCombatRefs() {
 /**
  * Registers setup Damage Refs configuration.
  *
- * @returns {void} Operation result.
  */
 function setupDamageRefs() {
 	const base = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.";
@@ -145,7 +142,6 @@ function setupDamageRefs() {
 /**
  * Registers setup Spell Refs configuration.
  *
- * @returns {void} Operation result.
  */
 function setupSpellRefs() {
 	const base = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.";
@@ -232,7 +228,6 @@ function setupSpellRefs() {
 /**
  * Registers setup Creature Type Refs configuration.
  *
- * @returns {void} Operation result.
  */
 function setupCreatureTypeRefs() {
 	const base = "Compendium.elkan5e.elkan5e-rules.JournalEntry.ZJX2hgglCq6NyNSD.JournalEntryPage.";
@@ -270,7 +265,6 @@ function setupCreatureTypeRefs() {
 /**
  * Registers setup Movement Refs configuration.
  *
- * @returns {void} Operation result.
  */
 function setupMovementRefs() {
 	// Travel and movement
@@ -326,7 +320,6 @@ function setupMovementRefs() {
 /**
  * Registers setup Vision Light Refs configuration.
  *
- * @returns {void} Operation result.
  */
 function setupVisionLightRefs() {
 	// Vision and light
@@ -353,7 +346,6 @@ function setupVisionLightRefs() {
 /**
  * Registers setup General Refs configuration.
  *
- * @returns {void} Operation result.
  */
 function setupGeneralRefs() {
 	CONFIG.DND5E.rules.inspiration =
@@ -387,7 +379,6 @@ function setupGeneralRefs() {
 /**
  * Registers setup Actions Refs configuration.
  *
- * @returns {void} Operation result.
  */
 function setupActionsRefs() {
 	CONFIG.DND5E.rules.bonusaction =
@@ -399,14 +390,12 @@ function setupActionsRefs() {
 /**
  * Registers setup Size Tags Item Refs configuration.
  *
- * @returns {void} Operation result.
  */
 function setupSizeTagsItemRefs() {}
 
 /**
  * Registers setup Poisons Ref configuration.
  *
- * @returns {void} Operation result.
  */
 function setupPoisonsRef() {
 	CONFIG.DND5E.rules.contactpoison =
@@ -424,7 +413,6 @@ function setupPoisonsRef() {
 /**
  * Registers setup Condition Refs configuration.
  *
- * @returns {void} Operation result.
  */
 function setupConditionRefs() {
 	CONFIG.DND5E.rules.beingprone =
@@ -465,7 +453,6 @@ function setupConditionRefs() {
 /**
  * Registers setup D20 Refs configuration.
  *
- * @returns {void} Operation result.
  */
 function setupD20Refs() {
 	CONFIG.DND5E.rules.d20test =
@@ -481,7 +468,6 @@ function setupD20Refs() {
 /**
  * Registers setup Hazard Refs configuration.
  *
- * @returns {void} Operation result.
  */
 function setupHazardRefs() {
 	const base = "Compendium.elkan5e.elkan5e-rules.JournalEntry.e7rUhwl4HkTVE0Qs.JournalEntryPage.";
@@ -531,7 +517,6 @@ function setupHazardRefs() {
 /**
  * Registers setup Rest Refs configuration.
  *
- * @returns {void} Operation result.
  */
 function setupRestRefs() {
 	CONFIG.DND5E.rules.resting =
@@ -545,7 +530,6 @@ function setupRestRefs() {
 /**
  * Registers setup Social Mechanics Refs configuration.
  *
- * @returns {void} Operation result.
  */
 function setupSocialMechanicsRefs() {
 	CONFIG.DND5E.rules.attitude =
@@ -561,7 +545,6 @@ function setupSocialMechanicsRefs() {
 /**
  * Registers setup Items Refs configuration.
  *
- * @returns {void} Operation result.
  */
 function setupItemsRefs() {
 	CONFIG.DND5E.rules.multipleitemsofthesamekind = CONFIG.DND5E.rules.combiningmagicaleffects =
@@ -587,7 +570,6 @@ function setupItemsRefs() {
 /**
  * Registers setup Monster Refs configuration.
  *
- * @returns {void} Operation result.
  */
 function setupMonsterRefs() {
 	CONFIG.DND5E.rules.legendaryactions =
@@ -603,7 +585,6 @@ function setupMonsterRefs() {
 /**
  * Registers setuptraps Refs configuration.
  *
- * @returns {void} Operation result.
  */
 function setuptrapsRefs() {
 	CONFIG.DND5E.rules.detectingtraps =

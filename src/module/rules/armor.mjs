@@ -1,7 +1,6 @@
 /**
  * Applies armor rule behavior.
  *
- * @returns {void} Operation result.
  */
 export function armor() {
 	const armor = game.settings.get("elkan5e", "armor");
@@ -43,7 +42,7 @@ export function armor() {
  * Applies calculate Ac Bonus rule behavior.
  *
  * @param {*} actor - Actor document to process.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function calculateAcBonus(actor) {
 	const dex = actor.system.abilities.dex.mod;

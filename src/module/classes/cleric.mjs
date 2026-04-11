@@ -48,7 +48,6 @@ export async function infusedHealer(workflow) {
  *
  * @param {*} item - Item document to process.
  * @param {*} roll - Roll.
- * @returns {void} Operation result.
  */
 export function healOver(item, roll) {
 	if (

@@ -17,7 +17,7 @@ import {
  * @param {*} key - Key.
  * @param {*} originalPath - Original Path.
  * @param {*} folder - Folder.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function imgFor(key, originalPath, folder = "conditions") {
 	// normalize once
@@ -41,7 +41,7 @@ function imgFor(key, originalPath, folder = "conditions") {
  * Applies status Icon Path rule behavior.
  *
  * @param {*} key - Key.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function statusIconPath(key) {
 	return `modules/elkan5e/icons/${STATUS_ICON_FOLDER}/${key}.svg`;
@@ -52,7 +52,7 @@ function statusIconPath(key) {
  *
  * @param {*} key - Key.
  * @param {*} existingStatus - Existing Status.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function normalizeStatusEffectEntry(key, existingStatus) {
 	if (!existingStatus) return { id: key };
@@ -66,7 +66,7 @@ function normalizeStatusEffectEntry(key, existingStatus) {
  * Applies get Status Effect Entry rule behavior.
  *
  * @param {*} key - Key.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function getStatusEffectEntry(key) {
 	const list = CONFIG.DND5E.statusEffects;
@@ -85,7 +85,7 @@ function getStatusEffectEntry(key) {
  *
  * @param {*} key - Key.
  * @param {*} data - Data object used for processing.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function setStatusEffectEntry(key, data) {
 	const list = CONFIG.DND5E.statusEffects;
@@ -106,7 +106,6 @@ function setStatusEffectEntry(key, data) {
  * Applies remove Status Effect Entry rule behavior.
  *
  * @param {*} key - Key.
- * @returns {void} Operation result.
  */
 function removeStatusEffectEntry(key) {
 	const list = CONFIG.DND5E.statusEffects;
@@ -128,7 +127,6 @@ function removeStatusEffectEntry(key) {
 /**
  * Applies apply Status Icons rule behavior.
  *
- * @returns {void} Operation result.
  */
 function applyStatusIcons() {
 	for (const key of STATUS_ICON_KEYS) {
@@ -150,7 +148,7 @@ function applyStatusIcons() {
  *
  * @param {*} existing - Existing.
  * @param {*} incoming - Incoming.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function mergeChanges(existing = [], incoming = []) {
 	const sig = (c) => `${c.key}|${c.mode}|${c.value}`;
@@ -165,7 +163,7 @@ function mergeChanges(existing = [], incoming = []) {
  *
  * @param {*} a - A.
  * @param {*} b - B.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function mergeFlags(a = {}, b = {}) {
 	const out = foundry.utils.duplicate(a);
@@ -183,7 +181,6 @@ function mergeFlags(a = {}, b = {}) {
  * @param {*} key - Key.
  * @param {*} def - Def.
  * @param {*} ct - Ct.
- * @returns {void} Operation result.
  */
 function mirrorStatusEffect(key, def, ct) {
 	if (!ct.statusOnly && !def.mirrorStatusEffect) return;
@@ -200,7 +197,7 @@ function mirrorStatusEffect(key, def, ct) {
  *
  * @param {*} def - Def.
  * @param {*} options2 - Options object.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function applyConditionDef(def, { statusOnly: forcedStatusOnly } = {}) {
 	const key = def.id;
@@ -259,7 +256,7 @@ function applyConditionDef(def, { statusOnly: forcedStatusOnly } = {}) {
 /**
  * Applies ensure Midi Invisible Vision Rule rule behavior.
  *
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function ensureMidiInvisibleVisionRule() {
 	const midiModule = game.modules.get("midi-qol");
@@ -423,7 +420,6 @@ async function syncAllHazardExhaustion() {
 /**
  * Applies conditions rule behavior.
  *
- * @returns {void} Operation result.
  */
 export function conditions() {
 	const conditionsSetting = game.settings.get("elkan5e", "conditionsSettings");
@@ -480,7 +476,6 @@ export function conditions() {
 /**
  * Applies conditions Ready rule behavior.
  *
- * @returns {void} Operation result.
  */
 export function conditionsReady() {
 	for (const def of CONDITION_DEFS) {

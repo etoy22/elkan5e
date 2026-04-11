@@ -1,7 +1,6 @@
 /**
  * Applies speed rule behavior.
  *
- * @returns {void} Operation result.
  */
 export function speed() {
 	console.log("Elkan 5e  |  Initializing Speed");

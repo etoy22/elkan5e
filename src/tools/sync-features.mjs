@@ -12,7 +12,7 @@ const REPORT_PATH = "helperCode/logs/sync-features-report.log";
 /**
  * Utility function for random Id.
  *
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function randomId() {
 	return crypto.randomBytes(9).toString("base64url").slice(0, 16);
@@ -22,7 +22,7 @@ function randomId() {
  * Utility function for ensure Item Identity.
  *
  * @param {*} item - Item document to process.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function ensureItemIdentity(item) {
 	const id = item?._id && item._id.length <= 16 ? item._id : item?._id || randomId();
@@ -34,7 +34,7 @@ function ensureItemIdentity(item) {
  * Utility function for load Json.
  *
  * @param {*} file - Filesystem path to process.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function loadJson(file) {
 	const text = fs.readFileSync(file, "utf8").replace(/^\uFEFF/, "");
@@ -46,7 +46,6 @@ function loadJson(file) {
  *
  * @param {*} file - Filesystem path to process.
  * @param {*} data - Data object used for processing.
- * @returns {void} Operation result.
  */
 function saveJson(file, data) {
 	fs.writeFileSync(file, JSON.stringify(data, null, "\t"));
@@ -56,7 +55,6 @@ function saveJson(file, data) {
  * Utility function for ensure Dir For.
  *
  * @param {*} file - Filesystem path to process.
- * @returns {void} Operation result.
  */
 function ensureDirFor(file) {
 	const dir = path.dirname(file);
@@ -68,7 +66,7 @@ function ensureDirFor(file) {
  *
  * @param {*} dir - Directory path to process.
  * @param {*} list - List.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function walkJsonFiles(dir, list = []) {
 	return fs.readdirSync(dir, { withFileTypes: true }).reduce((acc, entry) => {
@@ -84,7 +82,7 @@ const clone = (v) => JSON.parse(JSON.stringify(v));
 /**
  * Utility function for build Feature Descriptions.
  *
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function buildFeatureDescriptions() {
 	const files = walkJsonFiles(FEATURE_ROOT);
@@ -108,7 +106,7 @@ function buildFeatureDescriptions() {
 /**
  * Utility function for build Base Items.
  *
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function buildBaseItems() {
 	const files = EQUIPMENT_ROOTS.flatMap((r) => walkJsonFiles(r));
@@ -124,7 +122,7 @@ function buildBaseItems() {
 /**
  * Utility function for build Cantrips.
  *
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function buildCantrips() {
 	const files = walkJsonFiles(SPELL_ROOT);
@@ -142,7 +140,7 @@ function buildCantrips() {
 /**
  * Utility function for build Spell Index.
  *
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function buildSpellIndex() {
 	const files = walkJsonFiles(SPELL_ROOT);
@@ -159,7 +157,7 @@ function buildSpellIndex() {
 /**
  * Utility function for sync Features.
  *
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function syncFeatures() {
 	const featureMap = buildFeatureDescriptions();

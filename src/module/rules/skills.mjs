@@ -1,7 +1,6 @@
 /**
  * Applies skills rule behavior.
  *
- * @returns {void} Operation result.
  */
 export function skills() {
 	engineering();
@@ -11,7 +10,6 @@ export function skills() {
 /**
  * Applies engineering rule behavior.
  *
- * @returns {void} Operation result.
  */
 export function engineering() {
 	CONFIG.DND5E.skills.eng = {
@@ -26,7 +24,6 @@ export function engineering() {
 /**
  * Registers setup Skill References configuration.
  *
- * @returns {void} Operation result.
  */
 export function setupSkillReferences() {
 	const base = "Compendium.elkan5e.elkan5e-rules.JournalEntry.rv19GFzEa0nMTuAF.JournalEntryPage.";

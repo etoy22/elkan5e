@@ -1,7 +1,6 @@
 /**
  * Runs init Warlock Spell Slot class feature automation.
  *
- * @returns {void} Operation result.
  */
 export function initWarlockSpellSlot() {
 	CONFIG.DND5E.spellcasting.elkanWarlock = {
