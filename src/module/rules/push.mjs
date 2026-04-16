@@ -3,6 +3,16 @@ import { endAllGrapplesForActor } from "./grapple.mjs";
 
 const t = (key, data) => (data ? game.i18n.format(key, data) : game.i18n.localize(key));
 
+const resolveCanvasToken = (entry) => {
+	if (!entry) return null;
+	if (entry.document?.object) return entry.document.object;
+	if (entry.object?.document) return entry.object;
+	if (entry.center && entry.document) return entry;
+	const tokenId = entry.document?.id ?? entry.id ?? entry.object?.document?.id ?? null;
+	if (!tokenId) return null;
+	return canvas.tokens.get(tokenId) ?? null;
+};
+
 /**
  * Convert a distance in feet to grid pixels.
  * @param {number} distance
@@ -314,6 +324,13 @@ export async function push(
 		console.warn("Push requires at least one target");
 		return;
 	}
+	const targets = new Set(
+		[...workflow.targets].map(resolveCanvasToken).filter((targetToken) => Boolean(targetToken)),
+	);
+	if (targets.size === 0) {
+		console.warn("Push could not resolve any targeted canvas tokens");
+		return;
+	}
 
 	const pusher = workflow.actor;
 	const pusherSkillKey = acr ? "acr" : "ath";
@@ -332,7 +349,7 @@ export async function push(
 		if (moved && targetToken?.actor) await endAllGrapplesForActor(targetToken.actor);
 	};
 
-	for (const targetToken of workflow.targets) {
+	for (const targetToken of targets) {
 		const targetActor = targetToken?.actor;
 		if (!targetActor) continue;
 		if (isPushBlocked(targetActor)) {

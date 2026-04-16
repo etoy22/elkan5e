@@ -392,77 +392,78 @@
 			"img": "icons/weapons/hammers/hammer-double-glowing-yellow.webp",
 			"disabled": true,
 			"_id": "RSpASIW4HbToM7yC",
-			"system": {},
-			"changes": [
-				{
-					"key": "name",
-					"mode": 5,
-					"value": "{} of Thunderbolts",
-					"priority": null
-				},
-				{
-					"key": "system.rarity",
-					"mode": 5,
-					"value": "legendary",
-					"priority": null
-				},
-				{
-					"key": "system.attunement",
-					"mode": 5,
-					"value": "required",
-					"priority": null
-				},
-				{
-					"key": "system.properties",
-					"mode": 2,
-					"value": "mgc",
-					"priority": null
-				},
-				{
-					"key": "system.magicalBonus",
-					"mode": 4,
-					"value": "1",
-					"priority": null
-				},
-				{
-					"key": "system.description.value",
-					"mode": 5,
-					"value": "{}<p>@Embed[Compendium.dnd5e.equipment24.Item.dmgHammerOfThund caption=false]</p>",
-					"priority": null
-				},
-				{
-					"key": "system.price.value",
-					"mode": 2,
-					"value": "200000",
-					"priority": null
-				},
-				{
-					"key": "system.price.denomination",
-					"mode": 5,
-					"value": "gp",
-					"priority": null
-				},
-				{
-					"key": "img",
-					"mode": 5,
-					"value": "icons/weapons/hammers/hammer-double-glowing-yellow.webp",
-					"priority": null
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "name",
+						"value": "{} of Thunderbolts",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.rarity",
+						"value": "legendary",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.attunement",
+						"value": "required",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.properties",
+						"value": "mgc",
+						"priority": null,
+						"type": "add"
+					},
+					{
+						"key": "system.magicalBonus",
+						"value": 1,
+						"priority": null,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.description.value",
+						"value": "{}<p>@Embed[Compendium.dnd5e.equipment24.Item.dmgHammerOfThund caption=false]</p>",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.price.value",
+						"value": 200000,
+						"priority": null,
+						"type": "add"
+					},
+					{
+						"key": "system.price.denomination",
+						"value": "gp",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "img",
+						"value": "icons/weapons/hammers/hammer-double-glowing-yellow.webp",
+						"priority": null,
+						"type": "override"
+					}
+				]
+			},
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
 			"tint": "#ffffff",
 			"transfer": true,
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!dmgHammerOfThund.RSpASIW4HbToM7yC"
 		},
 		{
@@ -472,23 +473,24 @@
 			"transfer": false,
 			"_id": "4awBYMh85YMXFJDS",
 			"type": "base",
-			"system": {},
-			"changes": [],
+			"system": {
+				"changes": []
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": 1,
-				"turns": 1,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "turns",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "<p>The target has the &amp;Reference[Stunned apply=false] condition until the end of your next turn.</p>",
 			"tint": "#ffffff",
 			"statuses": [
 				"stunned"
 			],
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!dmgHammerOfThund.4awBYMh85YMXFJDS"
 		},
 		{
@@ -497,29 +499,30 @@
 			"img": "icons/weapons/hammers/hammer-double-glowing-yellow.webp",
 			"disabled": true,
 			"_id": "NpHh40FxvJqKojsI",
-			"system": {},
-			"changes": [
-				{
-					"key": "name",
-					"mode": 2,
-					"value": ", Giant's Bane",
-					"priority": null
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "name",
+						"value": ", Giant's Bane",
+						"priority": null,
+						"type": "add"
+					}
+				]
+			},
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "<p><strong>Giant’s Bane.</strong> While you are attuned to the weapon and wearing either a <em>Belt of Giant Strength</em> or <em>Gauntlets of Ogre Power</em> to which you are also attuned, you gain the following benefits:</p><ul><li><p><strong>Giants’ Bane.</strong> When you roll a 20 on the d20 for an attack roll made with this weapon against a Giant, the creature must succeed on a DC 17 Constitution saving throw or die.</p></li><li><p><strong>Might of Giants.</strong> The Strength score bestowed by your <em>Belt of Giant Strength</em> or <em>Gauntlets of Ogre Power</em> increases by 4, to a maximum of 30.</p></li></ul>",
 			"origin": null,
 			"tint": "#11358d",
 			"transfer": true,
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!dmgHammerOfThund.NpHh40FxvJqKojsI"
 		},
 		{
@@ -527,36 +530,37 @@
 			"img": "icons/weapons/hammers/hammer-double-glowing-yellow.webp",
 			"_id": "dC3xorzL0AAgy7y1",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.abilities.str.value",
-					"mode": 2,
-					"value": "4",
-					"priority": null
-				},
-				{
-					"key": "system.abilities.str.value",
-					"mode": 3,
-					"value": "30",
-					"priority": null
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.abilities.str.value",
+						"value": 4,
+						"priority": null,
+						"type": "add"
+					},
+					{
+						"key": "system.abilities.str.value",
+						"value": 30,
+						"priority": null,
+						"type": "downgrade"
+					}
+				]
+			},
 			"disabled": true,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "<p>The Strength score bestowed by your <em>Belt of Giant Strength</em> or <em>Gauntlets of Ogre Power</em> increases by 4, to a maximum of 30.</p>",
 			"origin": null,
 			"tint": "#ffffff",
 			"transfer": true,
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!dmgHammerOfThund.dC3xorzL0AAgy7y1"
 		}
 	],

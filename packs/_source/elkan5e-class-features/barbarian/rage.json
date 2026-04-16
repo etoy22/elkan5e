@@ -41,53 +41,12 @@
 					"statuses": []
 				}
 			},
-			"changes": [
-				{
-					"key": "system.bonuses.mwak.damage",
-					"mode": 0,
-					"value": "@scale.barbarian.rage-bonus",
-					"priority": 2
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 0,
-					"value": "piercing",
-					"priority": 2
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 0,
-					"value": "slashing",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 0,
-					"value": "bludgeoning",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.advantage.ability.save.str",
-					"mode": 2,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.advantage.ability.check.str",
-					"mode": 2,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"tint": "#ffffff",
 			"transfer": false,
@@ -97,7 +56,49 @@
 			"statuses": [],
 			"img": "icons/creatures/abilities/mouth-teeth-human.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.bonuses.mwak.damage",
+						"value": "@scale.barbarian.rage-bonus",
+						"priority": 2,
+						"type": "custom"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "piercing",
+						"priority": 2,
+						"type": "custom"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "slashing",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "bludgeoning",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "flags.midi-qol.advantage.ability.save.str",
+						"value": 1,
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "flags.midi-qol.advantage.ability.check.str",
+						"value": 1,
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!W6yKtk7Svvy9dIq9.BYhd3G9CUPq0cWn6"
 		}
 	],

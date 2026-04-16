@@ -181,77 +181,83 @@
 			"img": "icons/weapons/swords/greatsword-guard-gem-blue.webp",
 			"disabled": true,
 			"_id": "I7Iwl7awPq2wftoF",
-			"system": {},
-			"changes": [
-				{
-					"key": "name",
-					"mode": 5,
-					"value": "Holy Avenger {}",
-					"priority": null
-				},
-				{
-					"key": "system.description.value",
-					"mode": 5,
-					"value": "{}<p>@Embed[Compendium.dnd5e.equipment24.Item.dmgHolyAvenger00 caption=false]</p>",
-					"priority": null
-				},
-				{
-					"key": "system.rarity",
-					"mode": 5,
-					"value": "legendary",
-					"priority": null
-				},
-				{
-					"key": "system.attunement",
-					"mode": 5,
-					"value": "required",
-					"priority": null
-				},
-				{
-					"key": "system.properties",
-					"mode": 2,
-					"value": "mgc",
-					"priority": null
-				},
-				{
-					"key": "system.magicalBonus",
-					"mode": 4,
-					"value": "3",
-					"priority": null
-				},
-				{
-					"key": "img",
-					"mode": 5,
-					"value": "icons/weapons/swords/greatsword-guard-gem-blue.webp",
-					"priority": null
-				},
-				{
-					"key": "activities[attack].description.chatFlavor",
-					"mode": 5,
-					"value": "{} Bonus Damage: 2d10 Radiant vs Fiend/Undead",
-					"priority": null
-				},
-				{
-					"key": "system.damage.parts",
-					"mode": 2,
-					"value": "[[\"0\", \"radiant\"]]",
-					"priority": null
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "name",
+						"value": "Holy Avenger {}",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.description.value",
+						"value": "{}<p>@Embed[Compendium.dnd5e.equipment24.Item.dmgHolyAvenger00 caption=false]</p>",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.rarity",
+						"value": "legendary",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.attunement",
+						"value": "required",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.properties",
+						"value": "mgc",
+						"priority": null,
+						"type": "add"
+					},
+					{
+						"key": "system.magicalBonus",
+						"value": 3,
+						"priority": null,
+						"type": "upgrade"
+					},
+					{
+						"key": "img",
+						"value": "icons/weapons/swords/greatsword-guard-gem-blue.webp",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "activities[attack].description.chatFlavor",
+						"value": "{} Bonus Damage: 2d10 Radiant vs Fiend/Undead",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.damage.parts",
+						"value": [
+							[
+								"0",
+								"radiant"
+							]
+						],
+						"priority": null,
+						"type": "add"
+					}
+				]
+			},
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
 			"tint": "#ffffff",
 			"transfer": true,
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!dmgHolyAvenger00.I7Iwl7awPq2wftoF"
 		}
 	],

@@ -38,28 +38,26 @@
 	"effects": [
 		{
 			"name": "Second Story Work",
-			"changes": [
-				{
-					"key": "system.attributes.movement.climb",
-					"mode": 2,
-					"value": "@attributes.movement.walk",
-					"priority": 25
-				}
-			],
 			"transfer": true,
 			"img": "icons/sundries/survival/rope-coiled-thick-yellow.webp",
 			"_id": "MX4ufUpdU1JtKxom",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.climb",
+						"value": "@attributes.movement.walk",
+						"priority": 25,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.JOsnnFLT5oszfOx1",
@@ -78,6 +76,9 @@
 					"specialDuration": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!JOsnnFLT5oszfOx1.MX4ufUpdU1JtKxom"
 		}
 	],

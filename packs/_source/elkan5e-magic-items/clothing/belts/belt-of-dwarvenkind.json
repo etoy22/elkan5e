@@ -69,54 +69,52 @@
 			"name": "Belt of Dwarvenkind",
 			"img": "icons/equipment/waist/belt-armored-steel.webp",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.traits.languages.value",
-					"mode": 2,
-					"value": "ALL",
-					"priority": 20
-				},
-				{
-					"key": "system.abilities.con.value",
-					"mode": 2,
-					"value": "2",
-					"priority": 20
-				},
-				{
-					"key": "system.attributes.senses.darkvision",
-					"mode": 4,
-					"value": "60",
-					"priority": 40
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 2,
-					"value": "poison",
-					"priority": 20
-				},
-				{
-					"key": "system.abilities.con.value",
-					"mode": 3,
-					"value": "20",
-					"priority": 30
-				},
-				{
-					"key": "flags.midi-qol.advantage.ability.save.all",
-					"mode": 0,
-					"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"poisoned\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"poisoned\") || ef.name == 'Poisoned');",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.languages.value",
+						"value": "ALL",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.abilities.con.value",
+						"value": 2,
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.attributes.senses.darkvision",
+						"value": 60,
+						"priority": 40,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "poison",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.abilities.con.value",
+						"value": 20,
+						"priority": 30,
+						"type": "downgrade"
+					},
+					{
+						"key": "flags.midi-qol.advantage.ability.save.all",
+						"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"poisoned\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"poisoned\") || ef.name == 'Poisoned');",
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
 			"disabled": true,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"origin": "Compendium.elkan5e.elkan5e-magic-items.Item.uZs7odPsz9xSXbNl",
@@ -152,6 +150,9 @@
 				}
 			},
 			"_id": "HNruvcSEl25DRvjj",
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!uZs7odPsz9xSXbNl.HNruvcSEl25DRvjj"
 		}
 	],

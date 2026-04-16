@@ -70,24 +70,13 @@
 		{
 			"origin": "Item.P5AAl3C6hKce12UF",
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"disabled": false,
 			"_id": "Sb3PKDEAq6NWx2TT",
-			"changes": [
-				{
-					"key": "system.attributes.hp.max",
-					"mode": 2,
-					"value": "2 * @details.level",
-					"priority": null
-				}
-			],
 			"tint": "#ffffff",
 			"transfer": true,
 			"flags": {
@@ -121,7 +110,19 @@
 			"statuses": [],
 			"img": "icons/equipment/finger/ring-cabochon-notched-silver-red.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.hp.max",
+						"value": "2 * @details.level",
+						"priority": null,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!4NbQtlGO2OrRT74q.Sb3PKDEAq6NWx2TT"
 		}
 	],

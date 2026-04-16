@@ -132,23 +132,12 @@
 				"frightened"
 			],
 			"name": "Frightful Gaze",
-			"changes": [
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 2,
-					"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@abilities.cha.dc,\nlabel=Frightful Gaze",
-					"priority": 20
-				}
-			],
 			"description": "",
 			"duration": {
-				"seconds": 60,
-				"startTime": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null,
-				"combat": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"flags": {
 				"ActiveAuras": {
@@ -188,7 +177,19 @@
 			"tint": "#ffffff",
 			"img": "icons/creatures/eyes/humanoid-single-purple-blue.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@abilities.cha.dc,\nlabel=Frightful Gaze",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!87UBpH3dq0GLt31o.HSC28t8Qs182EGKK"
 		}
 	],

@@ -214,23 +214,12 @@
 				"grappled"
 			],
 			"name": "Rising Mud",
-			"changes": [
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 2,
-					"value": "turn=end,\nsaveAbility=str,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Rising Mud (On Fail First Time Give Restrained)",
-					"priority": 20
-				}
-			],
 			"description": "",
 			"duration": {
-				"seconds": 60,
-				"startTime": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null,
-				"combat": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"flags": {
 				"ActiveAuras": {
@@ -270,7 +259,19 @@
 			"tint": "#ffffff",
 			"img": "icons/magic/earth/explosion-lava-stone-yellow.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end,\nsaveAbility=str,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Rising Mud (On Fail First Time Give Restrained)",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!ZZGvyz7WRJ8VfBSb.9sbEP7kJCkRTEMIX"
 		}
 	],

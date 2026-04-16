@@ -634,12 +634,9 @@
 			"src": "systems/dnd5e/tokens/beast/Weasel.webp",
 			"anchorX": 0.5,
 			"anchorY": 0.5,
-			"offsetX": 0,
-			"offsetY": 0,
 			"fit": "contain",
 			"scaleX": 0.8,
 			"scaleY": 0.8,
-			"rotation": 0,
 			"tint": "#ffffff",
 			"alphaThreshold": 0.75
 		},
@@ -690,7 +687,7 @@
 			"saturation": 0,
 			"contrast": 0
 		},
-		"detectionModes": [],
+		"detectionModes": {},
 		"occludable": {
 			"radius": 0
 		},
@@ -713,7 +710,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 0.5
 	},
 	"items": [
 		{
@@ -956,25 +954,14 @@
 			"img": "icons/creatures/mammals/wolf-howl-moon-gray.webp",
 			"effects": [
 				{
-					"changes": [
-						{
-							"key": "flags.midi-qol.advantage.skill.prc",
-							"mode": 5,
-							"value": "1",
-							"priority": 20
-						}
-					],
 					"transfer": true,
 					"_id": "LWHLArqPtzqymV0F",
 					"disabled": false,
 					"duration": {
-						"startTime": 676043365,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": 0,
-						"startTurn": 0
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"origin": null,
 					"tint": "#ffffff",
@@ -1012,7 +999,26 @@
 					"statuses": [],
 					"img": "icons/creatures/mammals/wolf-howl-moon-gray.webp",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": [
+							{
+								"key": "flags.midi-qol.advantage.skill.prc",
+								"value": 1,
+								"priority": 20,
+								"type": "override"
+							}
+						]
+					},
+					"start": {
+						"combat": null,
+						"round": 0,
+						"time": 676043365,
+						"turn": 0,
+						"combatant": null,
+						"initiative": null
+					},
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!m1D4g4bn1IfQAZov.5jyzZeATqEjRLbA0.LWHLArqPtzqymV0F"
 				}
 			],

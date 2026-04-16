@@ -206,24 +206,22 @@
 			"transfer": false,
 			"_id": "H7Tj4zegHob4FhDP",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "flags.midi-qol.ActivityOverTime",
-					"mode": 2,
-					"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\ndamageType=none,\nname=Intercession",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.ActivityOverTime",
+						"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\ndamageType=none,\nname=Intercession",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -262,6 +260,9 @@
 					"statuses": []
 				}
 			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!3URtFYL4DElhR4Jr.H7Tj4zegHob4FhDP"
 		}
 	],

@@ -636,12 +636,9 @@
 			"src": "systems/dnd5e/tokens/plant/AwakenedShrub.webp",
 			"anchorX": 0.5,
 			"anchorY": 0.5,
-			"offsetX": 0,
-			"offsetY": 0,
 			"fit": "contain",
 			"scaleX": 0.8,
 			"scaleY": 0.8,
-			"rotation": 0,
 			"tint": "#ffffff",
 			"alphaThreshold": 0.75
 		},
@@ -692,13 +689,12 @@
 			"saturation": 0,
 			"contrast": 0
 		},
-		"detectionModes": [
-			{
-				"id": "feelTremor",
+		"detectionModes": {
+			"feelTremor": {
 				"range": 60,
 				"enabled": true
 			}
-		],
+		},
 		"occludable": {
 			"radius": 0
 		},
@@ -721,7 +717,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 1
 	},
 	"items": [
 		{
@@ -1532,18 +1529,14 @@
 				{
 					"origin": "Compendium.elkan5e.elkan5e-creatures.Actor.86fxDHxiBRmfzohH.Item.vVus098u4dBZcz8U",
 					"duration": {
-						"rounds": null,
-						"startTime": null,
-						"seconds": null,
-						"combat": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"disabled": false,
 					"name": "Rooted",
 					"_id": "72GarVwWDCJvwAXW",
-					"changes": [],
 					"description": "",
 					"transfer": false,
 					"statuses": [],
@@ -1582,7 +1575,12 @@
 					"tint": "#ffffff",
 					"img": "icons/magic/nature/barrier-shield-wood-vines.webp",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": []
+					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!86fxDHxiBRmfzohH.vVus098u4dBZcz8U.72GarVwWDCJvwAXW"
 				}
 			],
@@ -1813,24 +1811,22 @@
 					"transfer": false,
 					"_id": "uHlZb9jfeJhKCcJg",
 					"type": "base",
-					"system": {},
-					"changes": [
-						{
-							"key": "macro.activityMacro",
-							"mode": 0,
-							"value": "poison",
-							"priority": 20
-						}
-					],
+					"system": {
+						"changes": [
+							{
+								"key": "macro.activityMacro",
+								"value": "poison",
+								"priority": 20,
+								"type": "custom"
+							}
+						]
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"combat": null,
-						"seconds": 60,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": 60,
+						"units": "seconds",
+						"expiry": "turnStart",
+						"expired": false
 					},
 					"description": "",
 					"tint": "#ffffff",
@@ -1869,6 +1865,9 @@
 							"statuses": []
 						}
 					},
+					"showIcon": 2,
+					"start": null,
+					"folder": null,
 					"_key": "!actors.items.effects!86fxDHxiBRmfzohH.nKmazX1Ks0rRwMc2.uHlZb9jfeJhKCcJg"
 				}
 			],

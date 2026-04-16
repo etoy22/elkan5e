@@ -160,36 +160,34 @@
 			"transfer": false,
 			"_id": "KMI5FtxEq1qGANBl",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.traits.dr.custom",
-					"mode": 0,
-					"value": "nonMagicalPhysical",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 0,
-					"value": "poison",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 2,
-					"value": "acid",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.dr.custom",
+						"value": "nonMagicalPhysical",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "poison",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "acid",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"combat": null,
-				"seconds": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -226,6 +224,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!NFqUYBFWbYHqAaxG.KMI5FtxEq1qGANBl"
 		}
 	],

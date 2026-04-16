@@ -583,9 +583,6 @@
 			"tint": "#ffffff",
 			"scaleX": 1,
 			"scaleY": 1,
-			"offsetX": 0,
-			"offsetY": 0,
-			"rotation": 0,
 			"anchorX": 0.5,
 			"anchorY": 0.5,
 			"fit": "contain",
@@ -602,13 +599,12 @@
 			"saturation": -1,
 			"contrast": 0
 		},
-		"detectionModes": [
-			{
-				"id": "blindsight",
+		"detectionModes": {
+			"blindsight": {
 				"range": 60,
 				"enabled": true
 			}
-		],
+		},
 		"appendNumber": false,
 		"prependAdjective": false,
 		"occludable": {
@@ -632,7 +628,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 1
 	},
 	"items": [
 		{
@@ -970,24 +967,13 @@
 				{
 					"origin": "Actor.Kwcii8LmUZ0Tw8eL.Item.KO4qRywgiEQ3F004",
 					"duration": {
-						"rounds": null,
-						"startTime": null,
-						"seconds": null,
-						"combat": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"disabled": false,
 					"_id": "RRqusMY4JQ14TivJ",
-					"changes": [
-						{
-							"key": "system.attributes.movement.all",
-							"mode": 0,
-							"value": "0",
-							"priority": 50
-						}
-					],
 					"tint": "#ffffff",
 					"transfer": false,
 					"flags": {
@@ -1021,7 +1007,19 @@
 					"statuses": [],
 					"img": "modules/combat-utility-belt/icons/grappled.svg",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": [
+							{
+								"key": "system.attributes.movement.all",
+								"value": 0,
+								"priority": 50,
+								"type": "custom"
+							}
+						]
+					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!3u2giLGrznREpjIV.KO4qRywgiEQ3F004.RRqusMY4JQ14TivJ"
 				}
 			],
@@ -1159,17 +1157,13 @@
 				{
 					"origin": "Actor.Kwcii8LmUZ0Tw8eL.Item.HHGzjfWe0xkzww1h",
 					"duration": {
-						"rounds": null,
-						"startTime": null,
-						"seconds": null,
-						"combat": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"disabled": false,
 					"_id": "eiGJiZW9Fl1LA2D1",
-					"changes": [],
 					"tint": "#ffffff",
 					"transfer": false,
 					"flags": {
@@ -1203,7 +1197,12 @@
 					"statuses": [],
 					"img": "modules/combat-utility-belt/icons/incapacitated.svg",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": []
+					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!3u2giLGrznREpjIV.HHGzjfWe0xkzww1h.eiGJiZW9Fl1LA2D1"
 				}
 			],

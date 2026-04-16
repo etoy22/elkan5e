@@ -433,23 +433,12 @@
 			"effects": [
 				{
 					"_id": "xvgdbskjzi8vtfi5",
-					"changes": [
-						{
-							"key": "system.bonuses.abilities.save",
-							"mode": 2,
-							"value": "+2",
-							"priority": 20
-						}
-					],
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"origin": "Scene.3T2wHyISkVY8QnUv.Token.QDVHh3UJnRAGPYbT.Item.0ocy1a80k4aximla",
 					"transfer": true,
@@ -484,7 +473,19 @@
 					"statuses": [],
 					"img": "icons/skills/melee/weapons-crossed-swords-white-blue.webp",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": [
+							{
+								"key": "system.bonuses.abilities.save",
+								"value": "+2",
+								"priority": 20,
+								"type": "add"
+							}
+						]
+					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!JgezEoVspmsBwvpT.aFT7KJ8Jvt0TpR0b.xvgdbskjzi8vtfi5"
 				}
 			],
@@ -832,23 +833,12 @@
 	"effects": [
 		{
 			"_id": "T3gQqUV3yTerb7I0",
-			"changes": [
-				{
-					"key": "system.bonuses.abilities.save",
-					"mode": 2,
-					"value": "+2",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": 1577836800,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"origin": "Actor.mvX30LexYPOATDGm.Item.aFT7KJ8Jvt0TpR0b",
 			"tint": "#ffffff",
@@ -883,7 +873,26 @@
 			"statuses": [],
 			"img": "icons/skills/melee/weapons-crossed-swords-white-blue.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.bonuses.abilities.save",
+						"value": "+2",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": {
+				"combat": null,
+				"round": null,
+				"time": 1577836800,
+				"turn": null,
+				"combatant": null,
+				"initiative": null
+			},
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!actors.effects!JgezEoVspmsBwvpT.T3gQqUV3yTerb7I0"
 		}
 	],
@@ -1505,9 +1514,6 @@
 			"tint": "#ffffff",
 			"scaleX": 1,
 			"scaleY": 1,
-			"offsetX": 0,
-			"offsetY": 0,
-			"rotation": 0,
 			"anchorX": 0.5,
 			"anchorY": 0.5,
 			"fit": "contain",
@@ -1524,7 +1530,7 @@
 			"saturation": -1,
 			"contrast": 0
 		},
-		"detectionModes": [],
+		"detectionModes": {},
 		"appendNumber": false,
 		"prependAdjective": false,
 		"occludable": {
@@ -1548,7 +1554,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 2
 	},
 	"folder": "wnXeG9UQbQm24NJB",
 	"_id": "JgezEoVspmsBwvpT",

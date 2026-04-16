@@ -259,25 +259,14 @@
 			"name": "Bloodlust",
 			"origin": "Item.Xoqflq6rzbyuX30P",
 			"duration": {
-				"rounds": null,
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"transfer": false,
 			"disabled": false,
 			"_id": "g02foCT34SklETUD",
-			"changes": [
-				{
-					"key": "flags.midi-qol.advantage.attack.all",
-					"mode": 0,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"description": "",
 			"statuses": [
 				"goaded"
@@ -316,7 +305,19 @@
 			"tint": "#ffffff",
 			"img": "icons/skills/melee/strike-axe-red.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.advantage.attack.all",
+						"value": 1,
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!q7llCYymIoKel6j0.g02foCT34SklETUD"
 		}
 	],

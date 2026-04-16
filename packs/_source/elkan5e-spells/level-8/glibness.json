@@ -5,28 +5,26 @@
 	"effects": [
 		{
 			"name": "Glibness",
-			"changes": [
-				{
-					"key": "flags.midi-qol.min.ability.check.cha",
-					"mode": 2,
-					"value": "15",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"img": "icons/creatures/slimes/slime-face-teeth-purple.webp",
 			"_id": "3kHBhdWiIlEq4Vqx",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.min.ability.check.cha",
+						"value": 15,
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -61,6 +59,9 @@
 					"wallsBlock": "system"
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!MepkqMc4ldZA10m0.3kHBhdWiIlEq4Vqx"
 		}
 	],

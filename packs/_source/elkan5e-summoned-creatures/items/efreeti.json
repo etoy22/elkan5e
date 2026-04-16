@@ -639,12 +639,9 @@
 			"src": "systems/dnd5e/tokens/elemental/Efreeti.webp",
 			"anchorX": 0.5,
 			"anchorY": 0.5,
-			"offsetX": 0,
-			"offsetY": 0,
 			"fit": "contain",
 			"scaleX": 2,
 			"scaleY": 2,
-			"rotation": 0,
 			"tint": "#ffffff",
 			"alphaThreshold": 0.75
 		},
@@ -695,7 +692,7 @@
 			"saturation": 0,
 			"contrast": 0
 		},
-		"detectionModes": [],
+		"detectionModes": {},
 		"occludable": {
 			"radius": 0
 		},
@@ -718,7 +715,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 2
 	},
 	"items": [
 		{
@@ -1149,28 +1147,29 @@
 					"transfer": false,
 					"_id": "f16Ek2U8XKeGL7vB",
 					"type": "base",
-					"system": {},
-					"changes": [
-						{
-							"key": "system.abilities.str.value",
-							"mode": 3,
-							"value": "3",
-							"priority": null
-						}
-					],
+					"system": {
+						"changes": [
+							{
+								"key": "system.abilities.str.value",
+								"value": 3,
+								"priority": null,
+								"type": "downgrade"
+							}
+						]
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"description": "<p>Each time you cast a spell until you finish a Long Rest, you take [[/damage 1d10 type=necrotic]] damage per level of that spell. This damage can’t be reduced or prevented in any way. In addition, your Strength score becomes 3 for [[/r 2d4]] days.</p>",
 					"tint": "#ffffff",
 					"statuses": [],
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!IIFGO5eTsQ43Lm4n.3RHFSrgTRVm6qg4U.f16Ek2U8XKeGL7vB"
 				},
 				{
@@ -1178,42 +1177,55 @@
 					"type": "enchantment",
 					"name": "Spell Changes",
 					"img": "systems/dnd5e/icons/svg/activity/cast.svg",
-					"origin": "Compendium.dnd5e.actors24.Actor.mmEfreeti0000000.Item.mmWishes00000000.Activity.A8OOJwSm8E8QPzkX",
-					"changes": [
-						{
-							"key": "system.properties",
-							"mode": 2,
-							"value": "-vocal",
-							"priority": null
-						},
-						{
-							"key": "system.properties",
-							"mode": 2,
-							"value": "-somatic",
-							"priority": null
-						},
-						{
-							"key": "system.properties",
-							"mode": 2,
-							"value": "-material",
-							"priority": null
-						}
-					],
-					"system": {},
+					"origin": null,
+					"system": {
+						"changes": [
+							{
+								"key": "system.properties",
+								"value": "-vocal",
+								"priority": null,
+								"type": "add"
+							},
+							{
+								"key": "system.properties",
+								"value": "-somatic",
+								"priority": null,
+								"type": "add"
+							},
+							{
+								"key": "system.properties",
+								"value": "-material",
+								"priority": null,
+								"type": "add"
+							}
+						]
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": 0,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"description": "",
 					"tint": "#ffffff",
 					"transfer": true,
 					"statuses": [],
+					"flags": {
+						"core": {
+							"originText": "Compendium.dnd5e.actors24.Actor.mmEfreeti0000000.Item.mmWishes00000000.Activity.A8OOJwSm8E8QPzkX"
+						}
+					},
+					"start": {
+						"combat": null,
+						"round": null,
+						"time": 0,
+						"turn": null,
+						"combatant": null,
+						"initiative": null
+					},
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!IIFGO5eTsQ43Lm4n.3RHFSrgTRVm6qg4U.dnd5espellchange"
 				}
 			],
@@ -2992,24 +3004,25 @@
 					"name": "Detect Magic",
 					"origin": "Compendium.dnd5e.spells24.Item.phbsplDetectMagi",
 					"duration": {
-						"rounds": null,
-						"startTime": null,
-						"seconds": 600,
-						"combat": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": 600,
+						"units": "seconds",
+						"expiry": "turnStart",
+						"expired": false
 					},
 					"disabled": false,
 					"img": "icons/magic/symbols/runes-carved-stone-green.webp",
 					"_id": "BHw91lQmVgdx39WZ",
 					"type": "base",
-					"system": {},
-					"changes": [],
+					"system": {
+						"changes": []
+					},
 					"description": "",
 					"tint": "#ffffff",
 					"transfer": false,
 					"statuses": [],
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!IIFGO5eTsQ43Lm4n.AARLCuxCB9gvuyL8.BHw91lQmVgdx39WZ"
 				},
 				{
@@ -3017,30 +3030,43 @@
 					"type": "enchantment",
 					"name": "Spell Changes",
 					"img": "systems/dnd5e/icons/svg/activity/cast.svg",
-					"origin": "Compendium.dnd5e.actors24.Actor.mmEfreeti0000000.Item.mmSpellcasting00.Activity.lPZh7nbUiBkH3zWh",
-					"changes": [
-						{
-							"key": "system.properties",
-							"mode": 2,
-							"value": "-material",
-							"priority": null
-						}
-					],
-					"system": {},
+					"origin": null,
+					"system": {
+						"changes": [
+							{
+								"key": "system.properties",
+								"value": "-material",
+								"priority": null,
+								"type": "add"
+							}
+						]
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": 0,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"description": "",
 					"tint": "#ffffff",
 					"transfer": true,
 					"statuses": [],
+					"flags": {
+						"core": {
+							"originText": "Compendium.dnd5e.actors24.Actor.mmEfreeti0000000.Item.mmSpellcasting00.Activity.lPZh7nbUiBkH3zWh"
+						}
+					},
+					"start": {
+						"combat": null,
+						"round": null,
+						"time": 0,
+						"turn": null,
+						"combatant": null,
+						"initiative": null
+					},
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!IIFGO5eTsQ43Lm4n.AARLCuxCB9gvuyL8.dnd5espellchange"
 				}
 			],
@@ -3344,30 +3370,43 @@
 					"type": "enchantment",
 					"name": "Spell Changes",
 					"img": "systems/dnd5e/icons/svg/activity/cast.svg",
-					"origin": "Compendium.dnd5e.actors24.Actor.mmEfreeti0000000.Item.mmSpellcasting00.Activity.QXl820gBMbCu09Is",
-					"changes": [
-						{
-							"key": "system.properties",
-							"mode": 2,
-							"value": "-material",
-							"priority": null
-						}
-					],
-					"system": {},
+					"origin": null,
+					"system": {
+						"changes": [
+							{
+								"key": "system.properties",
+								"value": "-material",
+								"priority": null,
+								"type": "add"
+							}
+						]
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": 0,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"description": "",
 					"tint": "#ffffff",
 					"transfer": true,
 					"statuses": [],
+					"flags": {
+						"core": {
+							"originText": "Compendium.dnd5e.actors24.Actor.mmEfreeti0000000.Item.mmSpellcasting00.Activity.QXl820gBMbCu09Is"
+						}
+					},
+					"start": {
+						"combat": null,
+						"round": null,
+						"time": 0,
+						"turn": null,
+						"combatant": null,
+						"initiative": null
+					},
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!IIFGO5eTsQ43Lm4n.8OFkcAgYkcWB3OTz.dnd5espellchange"
 				}
 			],
@@ -3554,69 +3593,70 @@
 					"name": "Gaseous Form",
 					"origin": "Compendium.dnd5e.spells24.Item.phbsplGaseousFor",
 					"duration": {
-						"rounds": null,
-						"startTime": null,
-						"seconds": 3600,
-						"combat": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": 3600,
+						"units": "seconds",
+						"expiry": "turnStart",
+						"expired": false
 					},
 					"disabled": false,
 					"img": "icons/magic/air/wind-vortex-swirl-blue-purple.webp",
 					"_id": "QeYsfnjEj2T9A3C8",
 					"type": "base",
-					"system": {},
-					"changes": [
-						{
-							"key": "system.attributes.movement.fly",
-							"mode": 5,
-							"value": "10",
-							"priority": null
-						},
-						{
-							"key": "system.attributes.movement.hover",
-							"mode": 5,
-							"value": "true",
-							"priority": null
-						},
-						{
-							"key": "system.traits.dr.value",
-							"mode": 2,
-							"value": "bludgeoning",
-							"priority": null
-						},
-						{
-							"key": "system.traits.dr.value",
-							"mode": 2,
-							"value": "piercing",
-							"priority": null
-						},
-						{
-							"key": "system.traits.dr.value",
-							"mode": 2,
-							"value": "slashing",
-							"priority": null
-						},
-						{
-							"key": "system.traits.ci.value",
-							"mode": 2,
-							"value": "prone",
-							"priority": null
-						},
-						{
-							"key": "img",
-							"mode": 5,
-							"value": "icons/magic/air/wind-vortex-swirl-blue-purple.webp",
-							"priority": null
-						}
-					],
+					"system": {
+						"changes": [
+							{
+								"key": "system.attributes.movement.fly",
+								"value": 10,
+								"priority": null,
+								"type": "override"
+							},
+							{
+								"key": "system.attributes.movement.hover",
+								"value": true,
+								"priority": null,
+								"type": "override"
+							},
+							{
+								"key": "system.traits.dr.value",
+								"value": "bludgeoning",
+								"priority": null,
+								"type": "add"
+							},
+							{
+								"key": "system.traits.dr.value",
+								"value": "piercing",
+								"priority": null,
+								"type": "add"
+							},
+							{
+								"key": "system.traits.dr.value",
+								"value": "slashing",
+								"priority": null,
+								"type": "add"
+							},
+							{
+								"key": "system.traits.ci.value",
+								"value": "prone",
+								"priority": null,
+								"type": "add"
+							},
+							{
+								"key": "img",
+								"value": "icons/magic/air/wind-vortex-swirl-blue-purple.webp",
+								"priority": null,
+								"type": "override"
+							}
+						]
+					},
 					"description": "<p>The target’s only method of movement is a Fly Speed of 10 feet, and it can hover. The target can enter and occupy the space of another creature. The target has Resistance to Bludgeoning, Piercing, and Slashing damage; it has Immunity to the &amp;Reference[prone apply=false] condition; and it has Advantage on Strength, Dexterity, and Constitution saving throws. The target can pass through narrow openings, but it treats liquids as though they were solid surfaces.</p><p>The target can’t talk or manipulate objects, and any objects it was carrying or holding can’t be dropped, used, or otherwise interacted with. Finally, the target can’t attack or cast spells.</p>",
 					"tint": "#ffffff",
 					"transfer": false,
 					"statuses": [
 						"transformed"
 					],
+					"showIcon": 2,
+					"start": null,
+					"folder": null,
 					"_key": "!actors.items.effects!IIFGO5eTsQ43Lm4n.0PLY67QvZNu1t5g0.QeYsfnjEj2T9A3C8"
 				},
 				{
@@ -3624,30 +3664,43 @@
 					"type": "enchantment",
 					"name": "Spell Changes",
 					"img": "systems/dnd5e/icons/svg/activity/cast.svg",
-					"origin": "Compendium.dnd5e.actors24.Actor.mmEfreeti0000000.Item.mmSpellcasting00.Activity.6612SaPmOuc8arHs",
-					"changes": [
-						{
-							"key": "system.properties",
-							"mode": 2,
-							"value": "-material",
-							"priority": null
-						}
-					],
-					"system": {},
+					"origin": null,
+					"system": {
+						"changes": [
+							{
+								"key": "system.properties",
+								"value": "-material",
+								"priority": null,
+								"type": "add"
+							}
+						]
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": 0,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"description": "",
 					"tint": "#ffffff",
 					"transfer": true,
 					"statuses": [],
+					"flags": {
+						"core": {
+							"originText": "Compendium.dnd5e.actors24.Actor.mmEfreeti0000000.Item.mmSpellcasting00.Activity.6612SaPmOuc8arHs"
+						}
+					},
+					"start": {
+						"combat": null,
+						"round": null,
+						"time": 0,
+						"turn": null,
+						"combatant": null,
+						"initiative": null
+					},
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!IIFGO5eTsQ43Lm4n.0PLY67QvZNu1t5g0.dnd5espellchange"
 				}
 			],
@@ -3837,26 +3890,27 @@
 					"name": "Invisible",
 					"origin": "Compendium.dnd5e.spells24.Item.phbsplInvisibili",
 					"duration": {
-						"rounds": null,
-						"startTime": null,
-						"seconds": 3600,
-						"combat": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": 3600,
+						"units": "seconds",
+						"expiry": "turnStart",
+						"expired": false
 					},
 					"disabled": false,
 					"img": "systems/dnd5e/icons/svg/statuses/invisible.svg",
 					"_id": "9svfDetqjhsFP3ey",
 					"type": "base",
-					"system": {},
-					"changes": [],
+					"system": {
+						"changes": []
+					},
 					"description": "<p>The spell ends early immediately after the target makes an attack roll, deals damage, or casts a spell.</p>",
 					"tint": "#ffffff",
 					"transfer": false,
 					"statuses": [
 						"invisible"
 					],
+					"showIcon": 2,
+					"start": null,
+					"folder": null,
 					"_key": "!actors.items.effects!IIFGO5eTsQ43Lm4n.aDInRtd983tifrXD.9svfDetqjhsFP3ey"
 				},
 				{
@@ -3864,30 +3918,43 @@
 					"type": "enchantment",
 					"name": "Spell Changes",
 					"img": "systems/dnd5e/icons/svg/activity/cast.svg",
-					"origin": "Compendium.dnd5e.actors24.Actor.mmEfreeti0000000.Item.mmSpellcasting00.Activity.ptEbDiuFS4GinBar",
-					"changes": [
-						{
-							"key": "system.properties",
-							"mode": 2,
-							"value": "-material",
-							"priority": null
-						}
-					],
-					"system": {},
+					"origin": null,
+					"system": {
+						"changes": [
+							{
+								"key": "system.properties",
+								"value": "-material",
+								"priority": null,
+								"type": "add"
+							}
+						]
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": 0,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"description": "",
 					"tint": "#ffffff",
 					"transfer": true,
 					"statuses": [],
+					"flags": {
+						"core": {
+							"originText": "Compendium.dnd5e.actors24.Actor.mmEfreeti0000000.Item.mmSpellcasting00.Activity.ptEbDiuFS4GinBar"
+						}
+					},
+					"start": {
+						"combat": null,
+						"round": null,
+						"time": 0,
+						"turn": null,
+						"combatant": null,
+						"initiative": null
+					},
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!IIFGO5eTsQ43Lm4n.aDInRtd983tifrXD.dnd5espellchange"
 				}
 			],
@@ -4127,30 +4194,43 @@
 					"type": "enchantment",
 					"name": "Spell Changes",
 					"img": "systems/dnd5e/icons/svg/activity/cast.svg",
-					"origin": "Compendium.dnd5e.actors24.Actor.mmEfreeti0000000.Item.mmSpellcasting00.Activity.KBZO3wAhSz8eHhnI",
-					"changes": [
-						{
-							"key": "system.properties",
-							"mode": 2,
-							"value": "-material",
-							"priority": null
-						}
-					],
-					"system": {},
+					"origin": null,
+					"system": {
+						"changes": [
+							{
+								"key": "system.properties",
+								"value": "-material",
+								"priority": null,
+								"type": "add"
+							}
+						]
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": 0,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"description": "",
 					"tint": "#ffffff",
 					"transfer": true,
 					"statuses": [],
+					"flags": {
+						"core": {
+							"originText": "Compendium.dnd5e.actors24.Actor.mmEfreeti0000000.Item.mmSpellcasting00.Activity.KBZO3wAhSz8eHhnI"
+						}
+					},
+					"start": {
+						"combat": null,
+						"round": null,
+						"time": 0,
+						"turn": null,
+						"combatant": null,
+						"initiative": null
+					},
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!IIFGO5eTsQ43Lm4n.sMeC6D0sckQCpKZZ.dnd5espellchange"
 				}
 			],
@@ -4338,30 +4418,43 @@
 					"type": "enchantment",
 					"name": "Spell Changes",
 					"img": "systems/dnd5e/icons/svg/activity/cast.svg",
-					"origin": "Compendium.dnd5e.actors24.Actor.mmEfreeti0000000.Item.mmSpellcasting00.Activity.lqST9PO0hs2Ji4u7",
-					"changes": [
-						{
-							"key": "system.properties",
-							"mode": 2,
-							"value": "-material",
-							"priority": null
-						}
-					],
-					"system": {},
+					"origin": null,
+					"system": {
+						"changes": [
+							{
+								"key": "system.properties",
+								"value": "-material",
+								"priority": null,
+								"type": "add"
+							}
+						]
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": 0,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"description": "",
 					"tint": "#ffffff",
 					"transfer": true,
 					"statuses": [],
+					"flags": {
+						"core": {
+							"originText": "Compendium.dnd5e.actors24.Actor.mmEfreeti0000000.Item.mmSpellcasting00.Activity.lqST9PO0hs2Ji4u7"
+						}
+					},
+					"start": {
+						"combat": null,
+						"round": null,
+						"time": 0,
+						"turn": null,
+						"combatant": null,
+						"initiative": null
+					},
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!IIFGO5eTsQ43Lm4n.ndzmsLuNebehyo3i.dnd5espellchange"
 				}
 			],
@@ -4546,31 +4639,32 @@
 					"name": "Universal Communication",
 					"origin": "Compendium.dnd5e.spells24.Item.phbsplTongues000",
 					"duration": {
-						"rounds": null,
-						"startTime": null,
-						"seconds": 3600,
-						"combat": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": 3600,
+						"units": "seconds",
+						"expiry": "turnStart",
+						"expired": false
 					},
 					"disabled": false,
 					"img": "icons/environment/settlement/pyramid.webp",
 					"_id": "bmESvtHHL0Su7gn4",
 					"type": "base",
-					"system": {},
-					"changes": [
-						{
-							"key": "system.traits.languages.custom",
-							"mode": 2,
-							"value": ";all spoken or signed languages",
-							"priority": null
-						}
-					],
+					"system": {
+						"changes": [
+							{
+								"key": "system.traits.languages.custom",
+								"value": ";all spoken or signed languages",
+								"priority": null,
+								"type": "add"
+							}
+						]
+					},
 					"description": "",
 					"tint": "#ffffff",
 					"transfer": false,
 					"statuses": [],
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!IIFGO5eTsQ43Lm4n.v3qfyzDskfnhgYm9.bmESvtHHL0Su7gn4"
 				},
 				{
@@ -4578,30 +4672,43 @@
 					"type": "enchantment",
 					"name": "Spell Changes",
 					"img": "systems/dnd5e/icons/svg/activity/cast.svg",
-					"origin": "Compendium.dnd5e.actors24.Actor.mmEfreeti0000000.Item.mmSpellcasting00.Activity.yn3Z1Eo2bQwXAB1S",
-					"changes": [
-						{
-							"key": "system.properties",
-							"mode": 2,
-							"value": "-material",
-							"priority": null
-						}
-					],
-					"system": {},
+					"origin": null,
+					"system": {
+						"changes": [
+							{
+								"key": "system.properties",
+								"value": "-material",
+								"priority": null,
+								"type": "add"
+							}
+						]
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": 0,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"description": "",
 					"tint": "#ffffff",
 					"transfer": true,
 					"statuses": [],
+					"flags": {
+						"core": {
+							"originText": "Compendium.dnd5e.actors24.Actor.mmEfreeti0000000.Item.mmSpellcasting00.Activity.yn3Z1Eo2bQwXAB1S"
+						}
+					},
+					"start": {
+						"combat": null,
+						"round": null,
+						"time": 0,
+						"turn": null,
+						"combatant": null,
+						"initiative": null
+					},
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!IIFGO5eTsQ43Lm4n.v3qfyzDskfnhgYm9.dnd5espellchange"
 				}
 			],
@@ -5099,30 +5206,43 @@
 					"type": "enchantment",
 					"name": "Spell Changes",
 					"img": "systems/dnd5e/icons/svg/activity/cast.svg",
-					"origin": "Compendium.dnd5e.actors24.Actor.mmEfreeti0000000.Item.mmSpellcasting00.Activity.fZ6TmsFbHnqAI4I4",
-					"changes": [
-						{
-							"key": "system.properties",
-							"mode": 2,
-							"value": "-material",
-							"priority": null
-						}
-					],
-					"system": {},
+					"origin": null,
+					"system": {
+						"changes": [
+							{
+								"key": "system.properties",
+								"value": "-material",
+								"priority": null,
+								"type": "add"
+							}
+						]
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": 0,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"description": "",
 					"tint": "#ffffff",
 					"transfer": true,
 					"statuses": [],
+					"flags": {
+						"core": {
+							"originText": "Compendium.dnd5e.actors24.Actor.mmEfreeti0000000.Item.mmSpellcasting00.Activity.fZ6TmsFbHnqAI4I4"
+						}
+					},
+					"start": {
+						"combat": null,
+						"round": null,
+						"time": 0,
+						"turn": null,
+						"combatant": null,
+						"initiative": null
+					},
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!IIFGO5eTsQ43Lm4n.Ks8BqKrODweOeMkF.dnd5espellchange"
 				}
 			],

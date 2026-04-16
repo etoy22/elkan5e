@@ -5,29 +5,12 @@
 	"effects": [
 		{
 			"_id": "x152kl9rltd5qjvy",
-			"changes": [
-				{
-					"key": "system.attributes.movement.fly",
-					"mode": 4,
-					"value": "300",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.dr.custom",
-					"mode": 0,
-					"value": "physical",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 28800,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 28800,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"transfer": false,
 			"flags": {
@@ -67,7 +50,25 @@
 			"statuses": [],
 			"img": "icons/skills/movement/feet-winged-boots-blue.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.fly",
+						"value": 300,
+						"priority": 20,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.traits.dr.custom",
+						"value": "physical",
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!IoNXtrLjopDydTzI.x152kl9rltd5qjvy"
 		}
 	],

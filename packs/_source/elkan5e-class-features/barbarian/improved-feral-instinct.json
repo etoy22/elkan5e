@@ -6,23 +6,12 @@
 	"effects": [
 		{
 			"_id": "nws2sershqwhj1xa",
-			"changes": [
-				{
-					"key": "system.attributes.init.bonus",
-					"mode": 2,
-					"value": "(floor(abs((@classes.elkan-barbarian.levels)/7))+2)",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"transfer": false,
 			"flags": {
@@ -65,7 +54,19 @@
 			"statuses": [],
 			"img": "icons/skills/wounds/anatomy-organ-heart-red.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.init.bonus",
+						"value": "(floor(abs((@classes.elkan-barbarian.levels)/7))+2)",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!VxTrLwZy38JDC5Ku.nws2sershqwhj1xa"
 		}
 	],

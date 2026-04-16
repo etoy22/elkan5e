@@ -180,30 +180,31 @@
 			"img": "icons/weapons/axes/axe-battle-skull-black.webp",
 			"_id": "7W0LDyDY0mcAVS1J",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.attributes.hp.bonuses.level",
-					"mode": 2,
-					"value": "1",
-					"priority": null
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.hp.bonuses.level",
+						"value": 1,
+						"priority": null,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "<p>While you are attuned to this weapon, your Hit Point maximum increases by 1 for each level you have attained.</p>",
 			"origin": null,
 			"tint": "#ffffff",
 			"transfer": true,
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!IvVEyjgrygqfy592.7W0LDyDY0mcAVS1J"
 		},
 		{
@@ -212,59 +213,60 @@
 			"img": "icons/weapons/axes/axe-battle-skull-black.webp",
 			"disabled": true,
 			"_id": "J4bEaPvFwAGKSrPm",
-			"system": {},
-			"changes": [
-				{
-					"key": "name",
-					"mode": 5,
-					"value": "Berserker {}",
-					"priority": 50
-				},
-				{
-					"key": "system.rarity",
-					"mode": 5,
-					"value": "rare",
-					"priority": 50
-				},
-				{
-					"key": "system.attunement",
-					"mode": 5,
-					"value": "required",
-					"priority": 50
-				},
-				{
-					"key": "system.description.value",
-					"mode": 5,
-					"value": "{}<p>@Embed[Compendium.dnd5e.equipment24.Item.dmgBerserkerAxe0 caption=false]</p>",
-					"priority": 50
-				},
-				{
-					"key": "system.magicalBonus",
-					"mode": 4,
-					"value": "1",
-					"priority": 40
-				},
-				{
-					"key": "system.properties",
-					"mode": 2,
-					"value": "mgc",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "name",
+						"value": "Berserker {}",
+						"priority": 50,
+						"type": "override"
+					},
+					{
+						"key": "system.rarity",
+						"value": "rare",
+						"priority": 50,
+						"type": "override"
+					},
+					{
+						"key": "system.attunement",
+						"value": "required",
+						"priority": 50,
+						"type": "override"
+					},
+					{
+						"key": "system.description.value",
+						"value": "{}<p>@Embed[Compendium.dnd5e.equipment24.Item.dmgBerserkerAxe0 caption=false]</p>",
+						"priority": 50,
+						"type": "override"
+					},
+					{
+						"key": "system.magicalBonus",
+						"value": 1,
+						"priority": 40,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.properties",
+						"value": "mgc",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
 			"tint": "#ffffff",
 			"transfer": false,
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!IvVEyjgrygqfy592.J4bEaPvFwAGKSrPm"
 		}
 	],

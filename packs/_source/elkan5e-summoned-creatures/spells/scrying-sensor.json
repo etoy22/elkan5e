@@ -674,12 +674,9 @@
 			"src": "icons/magic/perception/orb-crystal-ball-scrying.webp",
 			"anchorX": 0.5,
 			"anchorY": 0.5,
-			"offsetX": 0,
-			"offsetY": 0,
 			"fit": "contain",
 			"scaleX": 1,
 			"scaleY": 1,
-			"rotation": 0,
 			"tint": "#ffffff",
 			"alphaThreshold": 0.75
 		},
@@ -730,18 +727,16 @@
 			"saturation": -1,
 			"contrast": 0
 		},
-		"detectionModes": [
-			{
-				"id": "basicSight",
+		"detectionModes": {
+			"basicSight": {
 				"range": 0,
 				"enabled": true
 			},
-			{
-				"id": "lightPerception",
+			"lightPerception": {
 				"range": 0,
 				"enabled": true
 			}
-		],
+		},
 		"occludable": {
 			"radius": 0
 		},
@@ -769,7 +764,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 0.5
 	},
 	"items": [],
 	"effects": [
@@ -777,45 +773,53 @@
 			"name": "Invisible",
 			"_id": "dnd5einvisible00",
 			"img": "modules/elkan5e/icons/conditions/invisible.svg",
-			"changes": [
-				{
-					"key": "flags.midi-qol.advantage.attack.all",
-					"mode": 5,
-					"value": "1",
-					"priority": null
-				},
-				{
-					"key": "flags.midi-qol.grants.disadvantage.attack.all",
-					"mode": 5,
-					"value": "1",
-					"priority": null
-				},
-				{
-					"key": "flags.midi-qol.advantage.skill.ste",
-					"mode": 2,
-					"value": "1",
-					"priority": null
-				}
-			],
 			"statuses": [
 				"invisible"
 			],
 			"description": "@Embed[Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.GfTD899cLRZxGG1H inline]",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.advantage.attack.all",
+						"value": 1,
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "flags.midi-qol.grants.disadvantage.attack.all",
+						"value": 1,
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "flags.midi-qol.advantage.skill.ste",
+						"value": 1,
+						"priority": null,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": 660430074,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": 5,
-				"startTurn": 0
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"origin": null,
 			"tint": "#ffffff",
 			"transfer": false,
+			"showIcon": 2,
+			"start": {
+				"combat": null,
+				"round": 5,
+				"time": 660430074,
+				"turn": 0,
+				"combatant": null,
+				"initiative": null
+			},
+			"folder": null,
 			"_key": "!actors.effects!kGS0cb4DAkTThUfa.dnd5einvisible00"
 		}
 	],

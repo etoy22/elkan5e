@@ -6,29 +6,12 @@
 	"effects": [
 		{
 			"_id": "ke4w7tyvkxlobint",
-			"changes": [
-				{
-					"key": "flags.midi-qol.advantage.attack.mwak",
-					"mode": 0,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.grants.advantage.attack.all",
-					"mode": 0,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 7,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 7,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"transfer": false,
 			"flags": {
@@ -69,10 +52,28 @@
 			"name": "Reckless Attack",
 			"img": "icons/skills/melee/blade-tips-triple-bent-white.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.advantage.attack.mwak",
+						"value": 1,
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "flags.midi-qol.grants.advantage.attack.all",
+						"value": 1,
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
 			"description": "",
 			"origin": null,
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!MeEsp47HF9ncap5J.ke4w7tyvkxlobint"
 		}
 	],

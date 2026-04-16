@@ -338,24 +338,22 @@
 			"transfer": false,
 			"_id": "o47DBCTq476VGEhd",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "flags.midi-qol.ActivityOverTime",
-					"mode": 0,
-					"value": "overtime",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.ActivityOverTime",
+						"value": "overtime",
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"combat": null,
-				"seconds": 60,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -394,6 +392,9 @@
 					"statuses": []
 				}
 			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!fosWpD16XnqN4ANt.o47DBCTq476VGEhd"
 		}
 	],

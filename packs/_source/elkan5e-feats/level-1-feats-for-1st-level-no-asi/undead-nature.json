@@ -67,30 +67,28 @@
 			"origin": "Item.ZuSow6oqxXHoj7Mg",
 			"_id": "raLLSvpvw2nkDR2G",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.details.type.value",
-					"mode": 5,
-					"value": "undead",
-					"priority": 20
-				},
-				{
-					"key": "system.details.type.subtype",
-					"mode": 5,
-					"value": "dae.eval(details.type.value)",
-					"priority": 1
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.details.type.value",
+						"value": "undead",
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "system.details.type.subtype",
+						"value": "dae.eval(details.type.value)",
+						"priority": 1,
+						"type": "override"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -123,6 +121,9 @@
 					"wallsBlock": "system"
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!vD4YDmh5jhgDkaE5.raLLSvpvw2nkDR2G"
 		}
 	],

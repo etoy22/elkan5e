@@ -171,36 +171,34 @@
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.imRzGQUedMDpOvgW",
 			"_id": "mMDHIHAmvbqccVk9",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.traits.weaponProf.all",
-					"mode": 0,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "system.tools.craft.prof",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "system.tools.vehicle.prof",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.weaponProf.all",
+						"value": 1,
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "system.tools.craft.prof",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "system.tools.vehicle.prof",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"combat": null,
-				"seconds": 28800,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 28800,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -237,6 +235,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!imRzGQUedMDpOvgW.mMDHIHAmvbqccVk9"
 		}
 	],

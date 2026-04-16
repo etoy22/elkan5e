@@ -210,25 +210,14 @@
 	"effects": [
 		{
 			"name": "Herd's Swiftness",
-			"changes": [
-				{
-					"key": "system.attributes.movement.walk",
-					"mode": 2,
-					"value": "+15",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"_id": "3VuRSSYTwwl7CwX5",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -267,7 +256,19 @@
 			"tint": "#ffffff",
 			"img": "icons/creatures/mammals/deer-movement-leap-green.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.walk",
+						"value": "+15",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!rEgvy8ZFH9bI19ym.3VuRSSYTwwl7CwX5"
 		}
 	],

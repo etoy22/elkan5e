@@ -598,9 +598,6 @@
 			"tint": "#ffffff",
 			"scaleX": 1,
 			"scaleY": 1,
-			"offsetX": 0,
-			"offsetY": 0,
-			"rotation": 0,
 			"anchorX": 0.5,
 			"anchorY": 0.5,
 			"fit": "contain",
@@ -617,13 +614,12 @@
 			"saturation": -1,
 			"contrast": 0
 		},
-		"detectionModes": [
-			{
-				"id": "basicSight",
+		"detectionModes": {
+			"basicSight": {
 				"range": 60,
 				"enabled": true
 			}
-		],
+		},
 		"appendNumber": false,
 		"prependAdjective": false,
 		"occludable": {
@@ -647,7 +643,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 1
 	},
 	"items": [
 		{
@@ -1079,17 +1076,15 @@
 					"origin": "Compendium.elkan5e.elkan5e-summoned-creatures.Actor.cpIgcOpmk6YiimMw.Item.L4qItZ7kCk7qMc4R",
 					"_id": "rMcHeZ7n9q5yEOhW",
 					"type": "base",
-					"system": {},
-					"changes": [],
+					"system": {
+						"changes": []
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"combat": null,
-						"seconds": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"description": "",
 					"tint": "#ffffff",
@@ -1131,6 +1126,9 @@
 							"statuses": []
 						}
 					},
+					"showIcon": 2,
+					"start": null,
+					"folder": null,
 					"_key": "!actors.items.effects!cpIgcOpmk6YiimMw.L4qItZ7kCk7qMc4R.rMcHeZ7n9q5yEOhW"
 				}
 			],
@@ -1554,31 +1552,14 @@
 			"effects": [
 				{
 					"name": "Dodge",
-					"changes": [
-						{
-							"key": "flags.midi-qol.grants.disadvantage.attack.all",
-							"mode": 2,
-							"value": "1",
-							"priority": 20
-						},
-						{
-							"key": "flags.midi-qol.grants.advantage.save.dex",
-							"mode": 2,
-							"value": "1",
-							"priority": 20
-						}
-					],
 					"transfer": false,
 					"_id": "Skkg4pjt8ngEDIf0",
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"seconds": 7,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": 7,
+						"units": "seconds",
+						"expiry": "turnStart",
+						"expired": false
 					},
 					"description": "",
 					"origin": null,
@@ -1619,7 +1600,25 @@
 					"tint": "#ffffff",
 					"img": "icons/skills/melee/shield-block-gray-orange.webp",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": [
+							{
+								"key": "flags.midi-qol.grants.disadvantage.attack.all",
+								"value": 1,
+								"priority": 20,
+								"type": "add"
+							},
+							{
+								"key": "flags.midi-qol.grants.advantage.save.dex",
+								"value": 1,
+								"priority": 20,
+								"type": "add"
+							}
+						]
+					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!cpIgcOpmk6YiimMw.tJqNs2IuURXKKw67.Skkg4pjt8ngEDIf0"
 				}
 			],
@@ -1796,25 +1795,14 @@
 			"effects": [
 				{
 					"name": "Help (Advantage to Attack)",
-					"changes": [
-						{
-							"key": "flags.midi-qol.grants.advantage.attack.all",
-							"mode": 2,
-							"value": "1",
-							"priority": 20
-						}
-					],
 					"transfer": false,
 					"_id": "RtfHAqxapytOhPO7",
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"seconds": 7,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": 7,
+						"units": "seconds",
+						"expiry": "turnStart",
+						"expired": false
 					},
 					"description": "",
 					"origin": null,
@@ -1856,30 +1844,31 @@
 					"tint": "#ffffff",
 					"img": "icons/skills/social/diplomacy-handshake.webp",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": [
+							{
+								"key": "flags.midi-qol.grants.advantage.attack.all",
+								"value": 1,
+								"priority": 20,
+								"type": "add"
+							}
+						]
+					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!cpIgcOpmk6YiimMw.r6Ue0yH5lacatHZ0.RtfHAqxapytOhPO7"
 				},
 				{
 					"name": "Help (Advantage on Next Ability Check)",
-					"changes": [
-						{
-							"key": "flags.midi-qol.advantage.ability.check.all",
-							"mode": 2,
-							"value": "1",
-							"priority": 20
-						}
-					],
 					"transfer": false,
 					"_id": "gmcy8fl1b02f84pX",
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"seconds": 7,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": 7,
+						"units": "seconds",
+						"expiry": "turnStart",
+						"expired": false
 					},
 					"description": "",
 					"origin": null,
@@ -1921,7 +1910,19 @@
 					"tint": "#ffffff",
 					"img": "icons/skills/social/diplomacy-handshake.webp",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": [
+							{
+								"key": "flags.midi-qol.advantage.ability.check.all",
+								"value": 1,
+								"priority": 20,
+								"type": "add"
+							}
+						]
+					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!cpIgcOpmk6YiimMw.r6Ue0yH5lacatHZ0.gmcy8fl1b02f84pX"
 				}
 			],
@@ -1968,17 +1969,15 @@
 			],
 			"description": "@Embed[Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.ZnhMIMgPZv1QDxzZ inline]",
 			"type": "base",
-			"system": {},
-			"changes": [],
+			"system": {
+				"changes": []
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": 659315822,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": 5,
-				"startTurn": 0
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"origin": "Compendium.elkan5e.elkan5e-creatures.Actor.cpIgcOpmk6YiimMw.Item.L4qItZ7kCk7qMc4R.ActiveEffect.derUyYkWvF5CSMcI",
 			"tint": "#ffffff",
@@ -1989,6 +1988,16 @@
 					"specialDuration": []
 				}
 			},
+			"showIcon": 2,
+			"start": {
+				"combat": null,
+				"round": 5,
+				"time": 659315822,
+				"turn": 0,
+				"combatant": null,
+				"initiative": null
+			},
+			"folder": null,
 			"_key": "!actors.effects!cpIgcOpmk6YiimMw.dnd5edrained0000"
 		}
 	],

@@ -576,9 +576,6 @@
 			"tint": "#ffffff",
 			"scaleX": 1,
 			"scaleY": 1,
-			"offsetX": 0,
-			"offsetY": 0,
-			"rotation": 0,
 			"anchorX": 0.5,
 			"anchorY": 0.5,
 			"fit": "contain",
@@ -595,7 +592,7 @@
 			"saturation": 0,
 			"contrast": 0
 		},
-		"detectionModes": [],
+		"detectionModes": {},
 		"appendNumber": false,
 		"prependAdjective": false,
 		"occludable": {
@@ -619,7 +616,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 1
 	},
 	"items": [
 		{
@@ -1312,31 +1310,14 @@
 			"effects": [
 				{
 					"name": "Dodge",
-					"changes": [
-						{
-							"key": "flags.midi-qol.grants.disadvantage.attack.all",
-							"mode": 2,
-							"value": "1",
-							"priority": 20
-						},
-						{
-							"key": "flags.midi-qol.grants.advantage.save.dex",
-							"mode": 2,
-							"value": "1",
-							"priority": 20
-						}
-					],
 					"transfer": false,
 					"_id": "Skkg4pjt8ngEDIf0",
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"seconds": 7,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": 7,
+						"units": "seconds",
+						"expiry": "turnStart",
+						"expired": false
 					},
 					"description": "",
 					"origin": null,
@@ -1377,7 +1358,25 @@
 					"tint": "#ffffff",
 					"img": "icons/skills/melee/shield-block-gray-orange.webp",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": [
+							{
+								"key": "flags.midi-qol.grants.disadvantage.attack.all",
+								"value": 1,
+								"priority": 20,
+								"type": "add"
+							},
+							{
+								"key": "flags.midi-qol.grants.advantage.save.dex",
+								"value": 1,
+								"priority": 20,
+								"type": "add"
+							}
+						]
+					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!A0daIcZf4gqLTxQx.xUyN840FyYpcU7Wz.Skkg4pjt8ngEDIf0"
 				}
 			],
@@ -1554,25 +1553,14 @@
 			"effects": [
 				{
 					"name": "Help (Advantage to Attack)",
-					"changes": [
-						{
-							"key": "flags.midi-qol.grants.advantage.attack.all",
-							"mode": 2,
-							"value": "1",
-							"priority": 20
-						}
-					],
 					"transfer": false,
 					"_id": "RtfHAqxapytOhPO7",
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"seconds": 7,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": 7,
+						"units": "seconds",
+						"expiry": "turnStart",
+						"expired": false
 					},
 					"description": "",
 					"origin": null,
@@ -1614,30 +1602,31 @@
 					"tint": "#ffffff",
 					"img": "icons/skills/social/diplomacy-handshake.webp",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": [
+							{
+								"key": "flags.midi-qol.grants.advantage.attack.all",
+								"value": 1,
+								"priority": 20,
+								"type": "add"
+							}
+						]
+					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!A0daIcZf4gqLTxQx.tW8wAiymjZUB9Qt0.RtfHAqxapytOhPO7"
 				},
 				{
 					"name": "Help (Advantage on Next Ability Check)",
-					"changes": [
-						{
-							"key": "flags.midi-qol.advantage.ability.check.all",
-							"mode": 2,
-							"value": "1",
-							"priority": 20
-						}
-					],
 					"transfer": false,
 					"_id": "gmcy8fl1b02f84pX",
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"seconds": 7,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": 7,
+						"units": "seconds",
+						"expiry": "turnStart",
+						"expired": false
 					},
 					"description": "",
 					"origin": null,
@@ -1679,7 +1668,19 @@
 					"tint": "#ffffff",
 					"img": "icons/skills/social/diplomacy-handshake.webp",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": [
+							{
+								"key": "flags.midi-qol.advantage.ability.check.all",
+								"value": 1,
+								"priority": 20,
+								"type": "add"
+							}
+						]
+					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!A0daIcZf4gqLTxQx.tW8wAiymjZUB9Qt0.gmcy8fl1b02f84pX"
 				}
 			],

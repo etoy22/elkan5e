@@ -5,35 +5,12 @@
 	"effects": [
 		{
 			"_id": "7k2e5sbq9xcjrtu7",
-			"changes": [
-				{
-					"key": "system.traits.ci.value",
-					"mode": 2,
-					"value": "charmed",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.ci.value",
-					"mode": 2,
-					"value": "frightened",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.ci.value",
-					"mode": 2,
-					"value": "goaded",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"transfer": false,
 			"flags": {
@@ -75,20 +52,40 @@
 			"statuses": [],
 			"img": "icons/magic/nature/instrument-recorder-leaves.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.ci.value",
+						"value": "charmed",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.ci.value",
+						"value": "frightened",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.ci.value",
+						"value": "goaded",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!BOEHQcNx7kBjJZXN.7k2e5sbq9xcjrtu7"
 		},
 		{
-			"changes": [],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"transfer": false,
 			"flags": {
@@ -132,8 +129,13 @@
 			],
 			"img": "icons/magic/nature/instrument-recorder-leaves.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": []
+			},
 			"_id": "B8n28rSjMCwkD6wk",
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!BOEHQcNx7kBjJZXN.B8n28rSjMCwkD6wk"
 		}
 	],

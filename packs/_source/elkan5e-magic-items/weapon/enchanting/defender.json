@@ -183,40 +183,41 @@
 			"transfer": true,
 			"_id": "4l1ngEyNnOxpfTGs",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.attributes.ac.bonus",
-					"mode": 2,
-					"value": "1",
-					"priority": null
-				},
-				{
-					"key": "system.bonuses.mwak.damage",
-					"mode": 2,
-					"value": "-1",
-					"priority": null
-				},
-				{
-					"key": "system.bonuses.mwak.attack",
-					"mode": 2,
-					"value": "-1",
-					"priority": null
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.ac.bonus",
+						"value": 1,
+						"priority": null,
+						"type": "add"
+					},
+					{
+						"key": "system.bonuses.mwak.damage",
+						"value": -1,
+						"priority": null,
+						"type": "add"
+					},
+					{
+						"key": "system.bonuses.mwak.attack",
+						"value": -1,
+						"priority": null,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": true,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": 1,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "<p>The adjusted bonuses remain in effect until the start of your next turn, although you must hold the weapon to gain a bonus to AC from it.</p>",
 			"tint": "#ffffff",
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!WkhuRZnCyZIEmFUU.4l1ngEyNnOxpfTGs"
 		},
 		{
@@ -225,77 +226,78 @@
 			"img": "icons/weapons/swords/greatsword-guard-jewel-green.webp",
 			"disabled": true,
 			"_id": "yBwZfNAoRtuUk5mz",
-			"system": {},
-			"changes": [
-				{
-					"key": "name",
-					"mode": 5,
-					"value": "Defender {}",
-					"priority": 50
-				},
-				{
-					"key": "system.description.value",
-					"mode": 5,
-					"value": "{}<p>@Embed[Compendium.dnd5e.equipment24.Item.dmgDefender00000 caption=false]</p>",
-					"priority": 50
-				},
-				{
-					"key": "system.properties",
-					"mode": 2,
-					"value": "mgc",
-					"priority": 20
-				},
-				{
-					"key": "system.attunement",
-					"mode": 5,
-					"value": "required",
-					"priority": 50
-				},
-				{
-					"key": "system.magicalBonus",
-					"mode": 4,
-					"value": "3",
-					"priority": 40
-				},
-				{
-					"key": "system.rarity",
-					"mode": 5,
-					"value": "legendary",
-					"priority": 50
-				},
-				{
-					"key": "img",
-					"mode": 5,
-					"value": "icons/weapons/swords/greatsword-guard-jewel-green.webp",
-					"priority": 50
-				},
-				{
-					"key": "system.price.value",
-					"mode": 2,
-					"value": "200000",
-					"priority": 20
-				},
-				{
-					"key": "system.price.denomination",
-					"mode": 5,
-					"value": "gp",
-					"priority": 50
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "name",
+						"value": "Defender {}",
+						"priority": 50,
+						"type": "override"
+					},
+					{
+						"key": "system.description.value",
+						"value": "{}<p>@Embed[Compendium.dnd5e.equipment24.Item.dmgDefender00000 caption=false]</p>",
+						"priority": 50,
+						"type": "override"
+					},
+					{
+						"key": "system.properties",
+						"value": "mgc",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.attunement",
+						"value": "required",
+						"priority": 50,
+						"type": "override"
+					},
+					{
+						"key": "system.magicalBonus",
+						"value": 3,
+						"priority": 40,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.rarity",
+						"value": "legendary",
+						"priority": 50,
+						"type": "override"
+					},
+					{
+						"key": "img",
+						"value": "icons/weapons/swords/greatsword-guard-jewel-green.webp",
+						"priority": 50,
+						"type": "override"
+					},
+					{
+						"key": "system.price.value",
+						"value": 200000,
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.price.denomination",
+						"value": "gp",
+						"priority": 50,
+						"type": "override"
+					}
+				]
+			},
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
 			"tint": "#ffffff",
 			"transfer": false,
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!WkhuRZnCyZIEmFUU.yBwZfNAoRtuUk5mz"
 		},
 		{
@@ -304,41 +306,42 @@
 			"origin": "Compendium.dnd5e.equipment24.Item.dmgDefender00000",
 			"transfer": true,
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.attributes.ac.bonus",
-					"mode": 2,
-					"value": "2",
-					"priority": null
-				},
-				{
-					"key": "system.bonuses.mwak.damage",
-					"mode": 2,
-					"value": "-2",
-					"priority": null
-				},
-				{
-					"key": "system.bonuses.mwak.attack",
-					"mode": 2,
-					"value": "-2",
-					"priority": null
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.ac.bonus",
+						"value": 2,
+						"priority": null,
+						"type": "add"
+					},
+					{
+						"key": "system.bonuses.mwak.damage",
+						"value": -2,
+						"priority": null,
+						"type": "add"
+					},
+					{
+						"key": "system.bonuses.mwak.attack",
+						"value": -2,
+						"priority": null,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": true,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": 1,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "<p>The adjusted bonuses remain in effect until the start of your next turn, although you must hold the weapon to gain a bonus to AC from it.</p>",
 			"tint": "#ffffff",
 			"statuses": [],
 			"_id": "jiyXZKFtvIRlZfh2",
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!WkhuRZnCyZIEmFUU.jiyXZKFtvIRlZfh2"
 		},
 		{
@@ -347,41 +350,42 @@
 			"origin": "Compendium.dnd5e.equipment24.Item.dmgDefender00000",
 			"transfer": true,
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.attributes.ac.bonus",
-					"mode": 2,
-					"value": "3",
-					"priority": null
-				},
-				{
-					"key": "system.bonuses.mwak.damage",
-					"mode": 2,
-					"value": "-3",
-					"priority": null
-				},
-				{
-					"key": "system.bonuses.mwak.attack",
-					"mode": 2,
-					"value": "-3",
-					"priority": null
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.ac.bonus",
+						"value": 3,
+						"priority": null,
+						"type": "add"
+					},
+					{
+						"key": "system.bonuses.mwak.damage",
+						"value": -3,
+						"priority": null,
+						"type": "add"
+					},
+					{
+						"key": "system.bonuses.mwak.attack",
+						"value": -3,
+						"priority": null,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": true,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": 1,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "<p>The adjusted bonuses remain in effect until the start of your next turn, although you must hold the weapon to gain a bonus to AC from it.</p>",
 			"tint": "#ffffff",
 			"statuses": [],
 			"_id": "v3JBpJJorZfV3fXj",
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!WkhuRZnCyZIEmFUU.v3JBpJJorZfV3fXj"
 		}
 	],

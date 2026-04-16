@@ -5,28 +5,26 @@
 	"effects": [
 		{
 			"name": "Black Tentacles",
-			"changes": [
-				{
-					"key": "flags.midi-qol.ActivityOverTime",
-					"mode": 2,
-					"value": "target-enters/ends-Turn",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"img": "icons/creatures/tentacles/tentacles-octopus-black-pink.webp",
 			"_id": "ChKeNNwKeJ4uxPFQ",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.ActivityOverTime",
+						"value": "target-enters/ends-Turn",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -66,6 +64,9 @@
 					"statuses": []
 				}
 			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!beDRhRoHbFjUJ11k.ChKeNNwKeJ4uxPFQ"
 		}
 	],

@@ -36,23 +36,12 @@
 					"wallsBlock": "system"
 				}
 			},
-			"changes": [
-				{
-					"key": "system.attributes.ac.calc",
-					"mode": 5,
-					"value": "mage",
-					"priority": 5
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 28800,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 28800,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"tint": "#ffffff",
 			"transfer": false,
@@ -62,7 +51,19 @@
 			"statuses": [],
 			"img": "icons/magic/defensive/shield-barrier-glowing-triangle-blue.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.ac.calc",
+						"value": "mage",
+						"priority": 5,
+						"type": "override"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!3fVnKST3p10nK5v1.XRkvYT9cV0BX5oJc"
 		}
 	],

@@ -195,29 +195,27 @@
 			"img": "icons/consumables/potions/potion-bottle-skull-label-poison-teal.webp",
 			"disabled": true,
 			"_id": "VvzoVU938DSp3Dl3",
-			"system": {},
-			"changes": [
-				{
-					"key": "activities[damage].damage.parts",
-					"mode": 2,
-					"value": "+1d4 [Poison]",
-					"priority": 20
-				},
-				{
-					"key": "activities[attack].name",
-					"mode": 2,
-					"value": "Basic Poison, {}",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "activities[damage].damage.parts",
+						"value": "+1d4 [Poison]",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "activities[attack].name",
+						"value": "Basic Poison, {}",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"duration": {
-				"startTime": null,
-				"combat": null,
-				"seconds": 60,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -254,6 +252,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!1WvyksL97WzoKbAC.VvzoVU938DSp3Dl3"
 		}
 	],

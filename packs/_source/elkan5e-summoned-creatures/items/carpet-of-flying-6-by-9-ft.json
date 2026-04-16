@@ -623,12 +623,9 @@
 			"src": "icons/svg/mystery-man.svg",
 			"anchorX": 0.5,
 			"anchorY": 0.5,
-			"offsetX": 0,
-			"offsetY": 0,
 			"fit": "contain",
 			"scaleX": 1,
 			"scaleY": 1,
-			"rotation": 0,
 			"tint": "#ffffff",
 			"alphaThreshold": 0.75
 		},
@@ -679,7 +676,7 @@
 			"saturation": 0,
 			"contrast": 0
 		},
-		"detectionModes": [],
+		"detectionModes": {},
 		"occludable": {
 			"radius": 0
 		},
@@ -702,7 +699,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 2
 	},
 	"items": [
 		{
@@ -754,30 +752,38 @@
 			"img": "icons/tools/smithing/anvil.webp",
 			"_id": "XDasfDlazbjtYP26",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.attributes.movement.fly",
-					"mode": 1,
-					"value": "0.5",
-					"priority": null
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.fly",
+						"value": 0.5,
+						"priority": null,
+						"type": "multiply"
+					}
+				]
+			},
 			"disabled": true,
 			"duration": {
-				"startTime": 0,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "<p>The carpet's Fly Speed is halved when carrying more than its normal capacity.</p>",
 			"origin": null,
 			"tint": "#ffffff",
 			"transfer": false,
 			"statuses": [],
+			"start": {
+				"combat": null,
+				"round": null,
+				"time": 0,
+				"turn": null,
+				"combatant": null,
+				"initiative": null
+			},
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!actors.effects!XDlTYIHg5pKWfxO1.XDasfDlazbjtYP26"
 		}
 	],

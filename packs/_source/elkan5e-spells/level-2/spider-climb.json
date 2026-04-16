@@ -31,23 +31,12 @@
 					"onlyOnce": false
 				}
 			},
-			"changes": [
-				{
-					"key": "system.attributes.movement.climb",
-					"value": "@attributes.movement.walk",
-					"mode": 4,
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"tint": "#ffffff",
 			"transfer": false,
@@ -57,7 +46,19 @@
 			"statuses": [],
 			"img": "icons/creatures/invertebrates/spider-striped-web-red.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.climb",
+						"value": "@attributes.movement.walk",
+						"priority": 20,
+						"type": "upgrade"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!mGEvLVu25XKdfgsq.B1Ms7nmQEQssY0ZY"
 		}
 	],

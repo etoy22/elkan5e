@@ -277,30 +277,28 @@
 			"transfer": false,
 			"_id": "Z49QSPjltZ1NT28K",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "ATL.light.bright",
-					"mode": 4,
-					"value": "20",
-					"priority": 20
-				},
-				{
-					"key": "ATL.light.dim",
-					"mode": 4,
-					"value": "40",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "ATL.light.bright",
+						"value": 20,
+						"priority": 20,
+						"type": "upgrade"
+					},
+					{
+						"key": "ATL.light.dim",
+						"value": 40,
+						"priority": 20,
+						"type": "upgrade"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": 1,
-				"turns": 1,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "turns",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "<p>On a successful save, the creature has the &amp;Reference[Frightened apply=false] condition until the end of your next turn.</p>",
 			"tint": "#ffffff",
@@ -339,6 +337,9 @@
 					"statuses": []
 				}
 			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!dmgMaceOfDisrupt.Z49QSPjltZ1NT28K"
 		}
 	],

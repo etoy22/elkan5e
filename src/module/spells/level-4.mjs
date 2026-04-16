@@ -5,24 +5,28 @@
  * @returns {Promise<void>} Promise resolution result.
  */
 export async function vampiricSmite(workflow) {
-	const { damage, damageMultiplier } =
-		workflow.damageItem.damageDetail[0].find((d) => d.type === "necrotic") || {};
-	if (damage && workflow.hitTargets.size === 1) {
-		const dmgToApply = Math.floor((damage * damageMultiplier) / 2);
-		await MidiQOL.applyTokenDamage(
-			[
-				{
-					damage: dmgToApply,
-					type: "healing",
-					flavor: "Life Steal",
-				},
-			],
-			dmgToApply,
-			new Set([token]),
-			null,
-			null,
-		);
-	}
+	const caster = workflow.actor;
+	const casterToken = workflow.token;
+	const damageDetail = workflow.damageItem?.damageDetail ?? [];
+	const flatDamageDetail = Array.isArray(damageDetail[0]) ? damageDetail.flat() : damageDetail;
+	const necroticEntry = flatDamageDetail.find((d) => d.type === "necrotic");
+	const necroticDamage = Number(necroticEntry?.damage ?? necroticEntry?.value ?? 0);
+	const damageMultiplier = Number(necroticEntry?.damageMultiplier ?? 1);
+	if (!caster || !casterToken || necroticDamage <= 0 || workflow.hitTargets.size !== 1) return;
+
+	const healAmount = Math.floor(necroticDamage * damageMultiplier * 0.5);
+	if (healAmount <= 0) return;
+
+	const healingRoll = await new Roll(`${healAmount}`).evaluate({ async: true });
+	new MidiQOL.DamageOnlyWorkflow(
+		caster,
+		casterToken,
+		healingRoll.total,
+		"healing",
+		[casterToken],
+		healingRoll,
+		{ flavor: "Life Steal" },
+	);
 }
 
 /**

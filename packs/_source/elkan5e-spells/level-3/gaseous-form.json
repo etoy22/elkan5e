@@ -4,139 +4,14 @@
 	"img": "icons/magic/air/fog-gas-smoke-dense-white.webp",
 	"effects": [
 		{
-			"changes": [
-				{
-					"key": "system.attributes.movement.walk",
-					"mode": 3,
-					"value": "0",
-					"priority": 20
-				},
-				{
-					"key": "system.attributes.movement.swim",
-					"mode": 3,
-					"value": "0",
-					"priority": 20
-				},
-				{
-					"key": "system.attributes.movement.climb",
-					"mode": 3,
-					"value": "0",
-					"priority": 20
-				},
-				{
-					"key": "system.attributes.movement.burrow",
-					"mode": 3,
-					"value": "0",
-					"priority": 20
-				},
-				{
-					"key": "system.attributes.movement.fly",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "system.attributes.movement.hover",
-					"mode": 0,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 2,
-					"value": "acid",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 2,
-					"value": "cold",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 2,
-					"value": "fire",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 2,
-					"value": "necrotic",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 2,
-					"value": "poison",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 2,
-					"value": "thunder",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 2,
-					"value": "bludgeoning",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 2,
-					"value": "piercing",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 2,
-					"value": "slashing",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.dr.bypasses",
-					"mode": 0,
-					"value": "mgc",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.ci.value",
-					"mode": 2,
-					"value": "grappled",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.ci.value",
-					"mode": 2,
-					"value": "paralyzed",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.ci.value",
-					"mode": 2,
-					"value": "petrified",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.ci.value",
-					"mode": 2,
-					"value": "restrained",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"_id": "SK8uhjbcHcxWzlxB",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"origin": null,
 			"tint": "#ffffff",
@@ -176,7 +51,133 @@
 			"statuses": [],
 			"img": "icons/magic/air/fog-gas-smoke-dense-white.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.walk",
+						"value": 0,
+						"priority": 20,
+						"type": "downgrade"
+					},
+					{
+						"key": "system.attributes.movement.swim",
+						"value": 0,
+						"priority": 20,
+						"type": "downgrade"
+					},
+					{
+						"key": "system.attributes.movement.climb",
+						"value": 0,
+						"priority": 20,
+						"type": "downgrade"
+					},
+					{
+						"key": "system.attributes.movement.burrow",
+						"value": 0,
+						"priority": 20,
+						"type": "downgrade"
+					},
+					{
+						"key": "system.attributes.movement.fly",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "system.attributes.movement.hover",
+						"value": 1,
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "acid",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "cold",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "fire",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "necrotic",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "poison",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "thunder",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "bludgeoning",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "piercing",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "slashing",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.dr.bypasses",
+						"value": "mgc",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "system.traits.ci.value",
+						"value": "grappled",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.ci.value",
+						"value": "paralyzed",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.ci.value",
+						"value": "petrified",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.ci.value",
+						"value": "restrained",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!s9yP2fTX15pSkCZM.SK8uhjbcHcxWzlxB"
 		}
 	],

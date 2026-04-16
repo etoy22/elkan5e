@@ -10,6 +10,32 @@ const SIZE_TO_GRID = {
 	grg: 4,
 };
 
+function tokenIdFromEntry(entry) {
+	if (!entry) return null;
+	if (typeof entry === "string") return entry;
+	if (entry.document?.id) return entry.document.id;
+	if (entry.id) return entry.id;
+	if (entry.object?.document?.id) return entry.object.document.id;
+	return null;
+}
+
+function buildIdSet(collection) {
+	const ids = new Set();
+	if (!collection) return ids;
+	for (const entry of collection) {
+		const id = tokenIdFromEntry(entry);
+		if (id) ids.add(id);
+	}
+	return ids;
+}
+
+function resolveCanvasToken(entry) {
+	const tokenId = tokenIdFromEntry(entry);
+	if (!tokenId) return null;
+	if (typeof entry === "string") return canvas.tokens.get(entry) ?? null;
+	return entry.document?.object ?? entry.object ?? canvas.tokens.get(tokenId) ?? null;
+}
+
 /**
  * Runs well Of Corruption spell automation.
  *
@@ -44,25 +70,6 @@ export async function wellOfCorruption(workflow) {
 	const totalDice = 4 + Math.max(effectiveCastLevel - 2, 0) * 2;
 	const damageRoll = await new Roll(`${totalDice}d8`).evaluate({ async: true });
 
-	const tokenIdFromEntry = (entry) => {
-		if (!entry) return null;
-		if (typeof entry === "string") return entry;
-		if (entry.document?.id) return entry.document.id;
-		if (entry.id) return entry.id;
-		if (entry.object?.document?.id) return entry.object.document.id;
-		return null;
-	};
-
-	const buildIdSet = (collection) => {
-		const ids = new Set();
-		if (!collection) return ids;
-		for (const entry of collection) {
-			const id = tokenIdFromEntry(entry);
-			if (id) ids.add(id);
-		}
-		return ids;
-	};
-
 	const failedSaveIds = buildIdSet(workflow.failedSaves);
 	const successfulSaveIds = buildIdSet(workflow.saves);
 
@@ -73,12 +80,7 @@ export async function wellOfCorruption(workflow) {
 			continue;
 		}
 
-		const targetToken =
-			typeof targetEntry === "string"
-				? canvas.tokens.get(targetEntry)
-				: (targetEntry.document?.object ??
-					targetEntry.object ??
-					canvas.tokens.get(tokenId));
+		const targetToken = resolveCanvasToken(targetEntry);
 		if (!targetToken) {
 			console.warn(`Well of Corruption: Token with ID ${tokenId} not found on canvas`);
 			continue;
@@ -106,18 +108,14 @@ export async function wellOfCorruption(workflow) {
  * @returns {Promise<void>} Promise resolution result.
  */
 export async function enlarge(workflow) {
-	if (!workflow._failedSaves || workflow._failedSaves.size === 0) {
+	const failedTargets = Array.from(workflow.failedSaves ?? workflow._failedSaves ?? []);
+	if (failedTargets.length === 0) {
 		ui.notifications.warn("No targets failed the roll — cannot apply enlarge.");
 		return;
 	}
 
-	for (const failedToken of workflow._failedSaves) {
-		let token;
-		if (typeof failedToken === "string") {
-			token = canvas.tokens.get(failedToken);
-		} else {
-			token = failedToken;
-		}
+	for (const failedToken of failedTargets) {
+		const token = resolveCanvasToken(failedToken);
 		if (!token) continue;
 
 		const actor = token.actor;
@@ -170,18 +168,14 @@ export async function enlarge(workflow) {
  * @returns {Promise<void>} Promise resolution result.
  */
 export async function reduce(workflow) {
-	if (!workflow._failedSaves || workflow._failedSaves.size === 0) {
+	const failedTargets = Array.from(workflow.failedSaves ?? workflow._failedSaves ?? []);
+	if (failedTargets.length === 0) {
 		ui.notifications.warn("No targets failed the roll — cannot apply reduce.");
 		return;
 	}
 
-	for (const failedToken of workflow._failedSaves) {
-		let token;
-		if (typeof failedToken === "string") {
-			token = canvas.tokens.get(failedToken);
-		} else {
-			token = failedToken;
-		}
+	for (const failedToken of failedTargets) {
+		const token = resolveCanvasToken(failedToken);
 		if (!token) continue;
 
 		const actor = token.actor;

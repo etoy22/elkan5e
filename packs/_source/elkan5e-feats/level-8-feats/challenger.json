@@ -158,23 +158,12 @@
 				"condition-lab-triggler.Kq9PYa0G2aHGmUvc"
 			],
 			"name": "Goaded",
-			"changes": [
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 5,
-					"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@abilities.cha.dc,\nsaveMagic=false,\nlabel=Challenger",
-					"priority": 20
-				}
-			],
 			"description": "",
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"flags": {
 				"dae": {
@@ -212,7 +201,19 @@
 			"tint": "#ffffff",
 			"img": "modules/elkan5e/icons/conditions/goaded.svg",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@abilities.cha.dc,\nsaveMagic=false,\nlabel=Challenger",
+						"priority": 20,
+						"type": "override"
+					}
+				]
+			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!DYz1uFlSNv13lYwt.okPy9tHwmybvkB4c"
 		}
 	],

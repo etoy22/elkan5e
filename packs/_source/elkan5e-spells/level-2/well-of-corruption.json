@@ -153,24 +153,13 @@
 		{
 			"origin": "Item.L4KMwQX53QUeTQFf",
 			"duration": {
-				"rounds": null,
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"disabled": false,
 			"_id": "B87Jb1X0vnCBBTa9",
-			"changes": [
-				{
-					"key": "system.traits.di.value",
-					"mode": 0,
-					"value": "healing",
-					"priority": 50
-				}
-			],
 			"tint": "#ffffff",
 			"transfer": false,
 			"flags": {
@@ -209,7 +198,19 @@
 			"statuses": [],
 			"img": "icons/magic/unholy/orb-swirling-teal.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.di.value",
+						"value": "healing",
+						"priority": 50,
+						"type": "custom"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!cHIuORdoA1WnHfmK.B87Jb1X0vnCBBTa9"
 		}
 	],

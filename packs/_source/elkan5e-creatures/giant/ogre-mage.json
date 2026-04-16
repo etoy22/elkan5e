@@ -99,65 +99,12 @@
 							"onlyOnce": false
 						}
 					},
-					"changes": [
-						{
-							"key": "system.attributes.ac.value",
-							"mode": 2,
-							"value": "2",
-							"priority": 20
-						},
-						{
-							"key": "flags.midi-qol.advantage.ability.save.dex",
-							"mode": 2,
-							"value": "2",
-							"priority": 20
-						},
-						{
-							"key": "system.attributes.movement.burrow",
-							"mode": 1,
-							"value": "2",
-							"priority": 10
-						},
-						{
-							"key": "system.attributes.movement.climb",
-							"mode": 1,
-							"value": "2",
-							"priority": 10
-						},
-						{
-							"key": "system.attributes.movement.fly",
-							"mode": 1,
-							"value": "2",
-							"priority": 10
-						},
-						{
-							"key": "system.attributes.movement.hover",
-							"mode": 0,
-							"value": "2",
-							"priority": 10
-						},
-						{
-							"key": "system.attributes.movement.swim",
-							"mode": 1,
-							"value": "2",
-							"priority": 10
-						},
-						{
-							"key": "system.attributes.movement.walk",
-							"mode": 1,
-							"value": "2",
-							"priority": 10
-						}
-					],
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"tint": "#ffffff",
 					"transfer": false,
@@ -167,7 +114,61 @@
 					"statuses": [],
 					"img": "icons/magic/control/buff-flight-wings-runes-purple.webp",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": [
+							{
+								"key": "system.attributes.ac.value",
+								"value": 2,
+								"priority": 20,
+								"type": "add"
+							},
+							{
+								"key": "flags.midi-qol.advantage.ability.save.dex",
+								"value": 2,
+								"priority": 20,
+								"type": "add"
+							},
+							{
+								"key": "system.attributes.movement.burrow",
+								"value": 2,
+								"priority": 10,
+								"type": "multiply"
+							},
+							{
+								"key": "system.attributes.movement.climb",
+								"value": 2,
+								"priority": 10,
+								"type": "multiply"
+							},
+							{
+								"key": "system.attributes.movement.fly",
+								"value": 2,
+								"priority": 10,
+								"type": "multiply"
+							},
+							{
+								"key": "system.attributes.movement.hover",
+								"value": 2,
+								"priority": 10,
+								"type": "custom"
+							},
+							{
+								"key": "system.attributes.movement.swim",
+								"value": 2,
+								"priority": 10,
+								"type": "multiply"
+							},
+							{
+								"key": "system.attributes.movement.walk",
+								"value": 2,
+								"priority": 10,
+								"type": "multiply"
+							}
+						]
+					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!Q72xYCeg6x0nm7vt.VnQilHWGK09n1Mos.0VoBuTMoLbqIwtJJ"
 				}
 			],
@@ -1571,9 +1572,6 @@
 			"tint": "#ffffff",
 			"scaleX": 1,
 			"scaleY": 1,
-			"offsetX": 0,
-			"offsetY": 0,
-			"rotation": 0,
 			"anchorX": 0.5,
 			"anchorY": 0.5,
 			"fit": "contain",
@@ -1590,7 +1588,7 @@
 			"saturation": -1,
 			"contrast": 0
 		},
-		"detectionModes": [],
+		"detectionModes": {},
 		"appendNumber": false,
 		"prependAdjective": false,
 		"occludable": {
@@ -1614,7 +1612,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 2
 	},
 	"folder": "wnXeG9UQbQm24NJB",
 	"_id": "Q72xYCeg6x0nm7vt",

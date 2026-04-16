@@ -220,23 +220,12 @@
 					"statuses": []
 				}
 			},
-			"changes": [
-				{
-					"key": "ATL.preset",
-					"mode": 0,
-					"value": "candle",
-					"priority": 50
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"origin": "Compendium.elkan5e.elkan5e-equipment.Item.sQujPblMfVbLMldS",
 			"tint": "#ffffff",
@@ -244,9 +233,21 @@
 			"name": "Candle",
 			"img": "icons/sundries/lights/candle-unlit-tan.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "ATL.preset",
+						"value": "candle",
+						"priority": 50,
+						"type": "custom"
+					}
+				]
+			},
 			"description": "",
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!sQujPblMfVbLMldS.FP4hCh1vhCUl5X35"
 		}
 	],

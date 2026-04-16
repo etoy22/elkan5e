@@ -155,48 +155,46 @@
 			"transfer": true,
 			"_id": "XP45fDHAojcVjDc0",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.attributes.movement.walk",
-					"mode": 1,
-					"value": "2",
-					"priority": 10
-				},
-				{
-					"key": "system.attributes.movement.fly",
-					"mode": 1,
-					"value": "2",
-					"priority": 10
-				},
-				{
-					"key": "system.attributes.movement.climb",
-					"mode": 1,
-					"value": "2",
-					"priority": 10
-				},
-				{
-					"key": "system.attributes.movement.burrow",
-					"mode": 1,
-					"value": "2",
-					"priority": 10
-				},
-				{
-					"key": "system.attributes.movement.swim",
-					"mode": 1,
-					"value": "2",
-					"priority": 10
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.walk",
+						"value": 2,
+						"priority": 10,
+						"type": "multiply"
+					},
+					{
+						"key": "system.attributes.movement.fly",
+						"value": 2,
+						"priority": 10,
+						"type": "multiply"
+					},
+					{
+						"key": "system.attributes.movement.climb",
+						"value": 2,
+						"priority": 10,
+						"type": "multiply"
+					},
+					{
+						"key": "system.attributes.movement.burrow",
+						"value": 2,
+						"priority": 10,
+						"type": "multiply"
+					},
+					{
+						"key": "system.attributes.movement.swim",
+						"value": 2,
+						"priority": 10,
+						"type": "multiply"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "<p>The boots double your Speed, and any creature that makes an Opportunity Attack against you has Disadvantage on the attack roll. If you click your heels together again, you end the effect.</p>",
 			"tint": "#ffffff",
@@ -229,6 +227,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!c5cwEmVvqeiIMVXR.XP45fDHAojcVjDc0"
 		}
 	],

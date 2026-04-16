@@ -38,29 +38,12 @@
 					"statuses": []
 				}
 			},
-			"changes": [
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 0,
-					"value": "turn=start,\ndamageRoll=@attributes.spellmod,\ndamageType=temphp,\nlabel=Heroism [Temp Hp]",
-					"priority": 0
-				},
-				{
-					"key": "system.traits.ci.value",
-					"mode": 0,
-					"value": "frightened",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"tint": "#ffffff",
 			"transfer": false,
@@ -70,7 +53,25 @@
 			"statuses": [],
 			"img": "icons/skills/melee/weapons-crossed-swords-purple.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=start,\ndamageRoll=@attributes.spellmod,\ndamageType=temphp,\nlabel=Heroism [Temp Hp]",
+						"priority": 0,
+						"type": "custom"
+					},
+					{
+						"key": "system.traits.ci.value",
+						"value": "frightened",
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!Vw4A99WE03c7r6RO.ofPxOG62bxg60zIO"
 		}
 	],

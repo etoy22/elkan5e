@@ -4,91 +4,14 @@
 	"img": "icons/magic/control/silhouette-hold-change-green.webp",
 	"effects": [
 		{
-			"changes": [
-				{
-					"key": "system.bonuses.mwak.damage",
-					"mode": 1,
-					"value": "1/2",
-					"priority": 20
-				},
-				{
-					"key": "system.bonuses.rwak.damage",
-					"mode": 1,
-					"value": "1/2",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.dr.custom",
-					"mode": 0,
-					"value": "Non-Magical Physical",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 0,
-					"value": "acid",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 0,
-					"value": "cold",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 0,
-					"value": "fire",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 0,
-					"value": "lightning",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.di.value",
-					"mode": 0,
-					"value": "necrotic",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.di.value",
-					"mode": 0,
-					"value": "poison",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.ci.value",
-					"mode": 0,
-					"value": "poisoned",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.ci.value",
-					"mode": 0,
-					"value": "petrified",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.ci.value",
-					"mode": 0,
-					"value": "restrained",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"_id": "4lOzG9ipdkDBPANR",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"origin": null,
 			"tint": "#ffffff",
@@ -118,9 +41,87 @@
 			"name": "Discorporate",
 			"img": "icons/magic/control/silhouette-hold-change-green.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.bonuses.mwak.damage",
+						"value": "1/2",
+						"priority": 20,
+						"type": "multiply"
+					},
+					{
+						"key": "system.bonuses.rwak.damage",
+						"value": "1/2",
+						"priority": 20,
+						"type": "multiply"
+					},
+					{
+						"key": "system.traits.dr.custom",
+						"value": "Non-Magical Physical",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "acid",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "cold",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "fire",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "lightning",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "system.traits.di.value",
+						"value": "necrotic",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "system.traits.di.value",
+						"value": "poison",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "system.traits.ci.value",
+						"value": "poisoned",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "system.traits.ci.value",
+						"value": "petrified",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "system.traits.ci.value",
+						"value": "restrained",
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
 			"description": "",
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!G8Z7DOwP559PZFLE.4lOzG9ipdkDBPANR"
 		}
 	],

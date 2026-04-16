@@ -274,28 +274,26 @@
 	"effects": [
 		{
 			"name": "Malignant Shroud",
-			"changes": [
-				{
-					"key": "macro.createItem",
-					"mode": 0,
-					"value": "Compendium.elkan5e.elkan5e-class-features.Item.KLStuM6oKRvHj9gA",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"img": "icons/magic/unholy/silhouette-light-fire-blue.webp",
 			"_id": "sKL0vCL746xJiHwb",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "macro.createItem",
+						"value": "Compendium.elkan5e.elkan5e-class-features.Item.KLStuM6oKRvHj9gA",
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -335,6 +333,9 @@
 					"statuses": []
 				}
 			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!PI3Er54p3hKxvsUh.sKL0vCL746xJiHwb"
 		}
 	],

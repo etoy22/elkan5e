@@ -1,12 +1,12 @@
-# Elkan5e Updates
+# Elkan5e Updates TODO
 
 1. Set up overtime effects for AOE
 
-2. Merge Subclass and Class Compendiums
+2. Merge Subclass and Class Compendiums (Done)
 
 3. Make it so compendium browser by default shows Elkan Spells only
 
-4. Merge the Ancestry and Backgrounds Compendium
+4. Merge the Ancestry and Backgrounds Compendium (Done)
 
 5. Merge Magical Equipment + Items Compendium
 
@@ -14,75 +14,25 @@
 
 7. Make it so abilities that have Enraged Presence (Barbarian) simply look for the fact that you have the feature and apply it to the main ability
 
+8. Look at MidiQOL sample items
 
 # Low Priority
 
-8. Foundry add new speed types
+1. Foundry add new speed types
 
-9. Make Scrolls use the right DC
+2. Make Scrolls use the right DC
+
+3. Make sure push and grapple are on all class lists.
 
 # Elkan5e Issues From Full Scan
 
 ## Critical
 
-1. Hit-die hook is obsolete and handler shape is incompatible
-- File: src/elkan5e.mjs:74
-- Current: `Hooks.on("dnd5e.preRollHitDieV2", (config) => ...)`
-- dnd5e 5.3.0 calls `dnd5e.rollHitDieV2` with `(rolls, data)` instead.
-- Impact: Undead Nature logic does not execute correctly.
-- References:
-  - Data/systems/dnd5e/module/documents/actor/actor.mjs:2044
-  - src/module/feats.mjs:10
-
-2. Graveguard monster macro name mismatch
-- Files:
-  - packs/_source/elkan5e-summoned-creatures/graveguards/spectral-graveguard.json:1015,1059,1174 calls `elkan5e.macros.monsterFeatures.lifeDrain(...)`
-  - src/elkan5e.mjs:197 exports `lifeDrainGraveguard`
-- Impact: runtime macro failure when triggered.
-
 ## High
-
-3. Cleric healing checks depend on legacy `system.actionType`
-- Files: src/module/classes/cleric.mjs:6,87
-- Problem: activity-era items may not reliably use this field as primary source.
-- Impact: healing feature automations can fail or miss valid casts.
-- Reference: Data/systems/dnd5e/module/data/item/templates/activities.mjs:248
-
-4. Removed/changed grid API usage
-- File: src/module/classes/cleric.mjs:123
-- Current: `canvas.grid.measureDistance(casterToken, token)`
-- Reference API: `measurePath(...)`.
-- Impact: overflow-healing range logic can fail in Foundry 14.
-- Reference: App/resources/app/common/grid/base.mjs:398
-
-5. Environment/dependency mismatch: automation depends on Midi-QOL, but module does not require it and it is not installed
-- Evidence:
-  - Installed modules in this folder: only `elkan5e`
-  - module.json has empty `relationships.requires` (module.json:387)
-  - Code/packs heavily use Midi-QOL APIs and flags (`MidiQOL.DamageOnlyWorkflow`, `flags.midi-qol.*`)
-- Impact: large parts of automation/features/conditions will not function in this install.
-
-6. Delayed Surge cleanup calls helper functions with wrong arguments
-- Files:
-  - src/module/classes/sorcerer.mjs:374,389
-  - src/module/global.mjs:11,44 (expected helper signatures)
-- Problem: passed values do not match helper parameter order/count.
-- Impact: delayed surge effect/item cleanup logic can silently fail.
 
 ## Medium
 
-7. Wrong source pack id for ancestries/races
-- File: src/module/rules/format.mjs:93
-- Current: `CONFIG.DND5E.sourcePacks.RACES = "elkan5e.elkan-5e-ancestries"`
-- Actual pack id: `elkan5e.elkan5e-ancestries` (module.json:247)
-- Impact: source-pack based lookups for races/ancestries can fail.
-
-8. `healOver` contains undefined symbols if executed
-- File: src/module/classes/cleric.mjs:45
-- Problem: references `activity` and `actor` without local definitions.
-- Impact: direct runtime error if this function is wired/used.
-
-9. Additional broken rules references in creature content
+1. Additional broken rules references in creature content
 - Files:
   - packs/_source/elkan5e-creatures/aberration/malakai-hound.json:1254 (`JournalEntry.Gdiv5lbHEyL4G8E5`)
   - packs/_source/elkan5e-creatures/humanoid/assassin.json:520 (`JournalEntry.lYS9gLJUyCp7cKzX`, `JournalEntry.svcJ1yGovpUs0jLJ`)
@@ -90,11 +40,6 @@
 - Impact: some condition/property links in creature abilities do not resolve.
 
 ## Low
-
-10. Module compatibility metadata is still v13-targeted
-- File: module.json:6-8
-- Current: `"minimum": "13"`, `"verified": "13.350"`
-- Impact: not always fatal, but mismatched expectations/warnings in a Foundry 14 install.
 
 ## MIDI To dnd5e Replacement Scan (Verified In `Data/systems/dnd5e`)
 
@@ -205,7 +150,7 @@ System verification:
 5. Verify spell component restrictions (verbal/somatic) and forced-fail save/check behaviors
 - Current MIDI `fail.*` flags have no direct native equivalent
 
-## Resolved In This Pass
+# Resolved
 
 1. Fixed malformed rules UUID strings missing `JournalEntry` in pack content
 - Scope: 14 files updated
@@ -238,3 +183,28 @@ System verification:
   - `elkan5e` sets `CONFIG.DND5E.spellcasting.elkanWarlock` in `Hooks.once("init", ...)`.
   - dnd5e builds spellcasting models at `Hooks.once("i18nInit", ...)` via `SpellcastingModel.fromConfig()`.
 - Result: `elkanWarlock` is available before model construction in this environment.
+
+7. Fixed Graveguard monster macro name mismatch with a compatibility alias
+- File: src/elkan5e.mjs
+- Change: added `elkan5e.macros.monsterFeatures.lifeDrain = lifeDrainGraveguard`
+- Result: existing graveguard pack macros calling `lifeDrain(...)` now resolve at runtime.
+
+8. Fixed cleric healing feature checks to support activity-era healing uses
+- File: src/module/classes/cleric.mjs
+- Change: added a workflow action-type resolver that prefers modern `workflow.activity` data before falling back to legacy `item.system.actionType`.
+- Result: `Infused Healer` and `Healing Overflow` no longer depend on legacy action type data as the primary source.
+
+9. Fixed cleric overflow-healing range measurement for Foundry 14 grid APIs
+- File: src/module/classes/cleric.mjs
+- Change: replaced direct token-to-token `canvas.grid.measureDistance(...)` use with a helper that prefers `measurePath(...)` and falls back safely.
+- Result: overflow-healing candidate range checks now work against the v14 grid API shape.
+
+10. Fixed Delayed Surge cleanup logic
+- File: src/module/classes/sorcerer.mjs
+- Change: replaced bad helper calls with direct item/effect cleanup by localized name on the owning actor.
+- Result: deleting the delayed duration effect removes the item, and deleting the item removes the duration effect.
+
+11. Fixed `healOver` compatibility helper so it no longer throws if invoked
+- File: src/module/classes/cleric.mjs
+- Change: replaced references to undefined `activity` and `actor` symbols with a safe compatibility shim that can forward workflow-shaped calls to `healingOverflow(...)` and otherwise exits cleanly.
+- Result: `healOver` no longer causes an immediate runtime error when executed.

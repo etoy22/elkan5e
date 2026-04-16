@@ -111,28 +111,26 @@
 	"effects": [
 		{
 			"name": "Wreathing Flames",
-			"changes": [
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 2,
-					"value": "turn=end,\ndamageType=fire,\nallowIncapacitated=true,\ndamageRoll=1d8\nlabel=Wreathing Flames",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"img": "icons/magic/fire/flame-burning-tree-face.webp",
 			"_id": "fYI0LnpZNuarM2F2",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end,\ndamageType=fire,\nallowIncapacitated=true,\ndamageRoll=1d8\nlabel=Wreathing Flames",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -167,6 +165,9 @@
 					"wallsBlock": "system"
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!VbLYqCgcsK2lp4ZH.fYI0LnpZNuarM2F2"
 		}
 	],

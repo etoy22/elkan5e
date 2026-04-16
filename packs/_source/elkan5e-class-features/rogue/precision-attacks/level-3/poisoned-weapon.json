@@ -6,14 +6,6 @@
 		{
 			"name": "Poisoned Weapon [Dex Based]",
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.iGHV6CxDU172zR4o",
-			"changes": [
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 2,
-					"value": "turn=end,\nsaveAbility=con,\nsaveDC=@abilities.dex.dc,\nlabel=Poisoned Weapon",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"flags": {
 				"dae": {
@@ -53,13 +45,10 @@
 			"_id": "kRknZSEtFZDUg55G",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 7,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 7,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"statuses": [
@@ -68,20 +57,24 @@
 			"tint": "#ffffff",
 			"img": "icons/skills/melee/blade-tip-acid-poison-green.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end,\nsaveAbility=con,\nsaveDC=@abilities.dex.dc,\nlabel=Poisoned Weapon",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!iGHV6CxDU172zR4o.kRknZSEtFZDUg55G"
 		},
 		{
 			"name": "Poisoned Weapon [Str Based]",
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.iGHV6CxDU172zR4o",
-			"changes": [
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 2,
-					"value": "turn=end,\nsaveAbility=con,\nsaveDC=@abilities.str.dc,\nlabel=Poisoned Weapon",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"flags": {
 				"dae": {
@@ -120,13 +113,10 @@
 			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 7,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 7,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"statuses": [
@@ -135,8 +125,20 @@
 			"tint": "#ffffff",
 			"img": "icons/skills/melee/blade-tip-acid-poison-green.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end,\nsaveAbility=con,\nsaveDC=@abilities.str.dc,\nlabel=Poisoned Weapon",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"_id": "4YHcJzurOdMXZKy1",
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!iGHV6CxDU172zR4o.4YHcJzurOdMXZKy1"
 		}
 	],

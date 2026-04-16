@@ -5,28 +5,26 @@
 	"effects": [
 		{
 			"name": "Whirlwind",
-			"changes": [
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 2,
-					"value": "turn=end,\nsaveAbility=str,\nsaveDC=@attributes.spell.dc,\ndamageType=bludgeoning,\nsaveDamage=halfdamage,\ndamageRoll = 4d6 + ((@spell.level - 5)*2)d6),\nsaveMagic=true,\nlabel=Whirlwind",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"img": "icons/magic/air/wind-tornado-funnel-blue-grey.webp",
 			"_id": "p4VvJpYMpbb4Htk3",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end,\nsaveAbility=str,\nsaveDC=@attributes.spell.dc,\ndamageType=bludgeoning,\nsaveDamage=halfdamage,\ndamageRoll = 4d6 + ((@spell.level - 5)*2)d6),\nsaveMagic=true,\nlabel=Whirlwind",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -65,19 +63,14 @@
 					"wallsBlock": "system"
 				}
 			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!zI81EiDs2vyozitg.p4VvJpYMpbb4Htk3"
 		},
 		{
 			"name": "Prone",
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.zI81EiDs2vyozitg",
-			"changes": [
-				{
-					"key": "macro.StatusEffect",
-					"mode": 0,
-					"value": "prone",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"flags": {
 				"dae": {
@@ -114,20 +107,29 @@
 			"img": "modules/elkan5e/icons/conditions/prone.svg",
 			"_id": "Ckfan4ziiarHWxGF",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"value": "prone",
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 0,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 0,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!zI81EiDs2vyozitg.Ckfan4ziiarHWxGF"
 		}
 	],

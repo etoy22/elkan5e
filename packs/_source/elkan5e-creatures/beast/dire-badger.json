@@ -572,9 +572,6 @@
 			"tint": "#ffffff",
 			"scaleX": 1.1,
 			"scaleY": 1.1,
-			"offsetX": 0,
-			"offsetY": 0,
-			"rotation": 0,
 			"anchorX": 0.5,
 			"anchorY": 0.5,
 			"fit": "contain",
@@ -591,7 +588,7 @@
 			"saturation": -1,
 			"contrast": 0
 		},
-		"detectionModes": [],
+		"detectionModes": {},
 		"appendNumber": false,
 		"prependAdjective": false,
 		"occludable": {
@@ -615,7 +612,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 1
 	},
 	"items": [
 		{
@@ -1160,25 +1158,14 @@
 			"img": "icons/creatures/mammals/wolf-howl-moon-gray.webp",
 			"effects": [
 				{
-					"changes": [
-						{
-							"key": "flags.midi-qol.advantage.skill.prc",
-							"mode": 5,
-							"value": "1",
-							"priority": 20
-						}
-					],
 					"transfer": true,
 					"_id": "LWHLArqPtzqymV0F",
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"origin": null,
 					"tint": "#ffffff",
@@ -1216,7 +1203,19 @@
 					"statuses": [],
 					"img": "icons/creatures/mammals/wolf-howl-moon-gray.webp",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": [
+							{
+								"key": "flags.midi-qol.advantage.skill.prc",
+								"value": 1,
+								"priority": 20,
+								"type": "override"
+							}
+						]
+					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!H8DoNmKrQMfM7ERE.lQsbGZKM3YW7Z0VU.LWHLArqPtzqymV0F"
 				}
 			],
@@ -1476,17 +1475,13 @@
 				{
 					"origin": "Actor.KIewrqqhytG321Ra.Item.TaOLtdlqBRLZwsAN",
 					"duration": {
-						"rounds": 10,
-						"startTime": null,
-						"seconds": 60,
-						"combat": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": 60,
+						"units": "seconds",
+						"expiry": "turnStart",
+						"expired": false
 					},
 					"disabled": false,
 					"_id": "UTNbL6L8sc0b9lwb",
-					"changes": [],
 					"tint": "#ffffff",
 					"transfer": false,
 					"flags": {
@@ -1517,7 +1512,12 @@
 					"statuses": [],
 					"img": "icons/commodities/bones/teeth-sharp-white.webp",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": []
+					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!H8DoNmKrQMfM7ERE.RvlYUjicxlwO4c8u.UTNbL6L8sc0b9lwb"
 				}
 			],
@@ -1569,25 +1569,14 @@
 	],
 	"effects": [
 		{
-			"changes": [
-				{
-					"key": "flags.midi-qol.advantage.skill.prc",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"_id": "qJA7ltzBVgYqAbpC",
 			"disabled": false,
 			"duration": {
-				"startTime": 1688256169,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"origin": "Actor.SzutssJaGZyNS8LW.Item.lQsbGZKM3YW7Z0VU",
 			"tint": "#ffffff",
@@ -1622,29 +1611,37 @@
 			"statuses": [],
 			"img": "icons/creatures/eyes/human-single-brown.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.advantage.skill.prc",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					}
+				]
+			},
+			"start": {
+				"combat": null,
+				"round": null,
+				"time": 1688256169,
+				"turn": null,
+				"combatant": null,
+				"initiative": null
+			},
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!actors.effects!H8DoNmKrQMfM7ERE.qJA7ltzBVgYqAbpC"
 		},
 		{
-			"changes": [
-				{
-					"key": "flags.midi-qol.advantage.skill.prc",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"_id": "EcyO0jVYwnaW92HZ",
 			"disabled": false,
 			"duration": {
-				"startTime": 658504883,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"origin": "Compendium.elkan5e.elkan5e-creatures.Actor.H8DoNmKrQMfM7ERE.Item.lQsbGZKM3YW7Z0VU",
 			"tint": "#ffffff",
@@ -1686,7 +1683,26 @@
 			"statuses": [],
 			"img": "icons/creatures/mammals/wolf-howl-moon-gray.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.advantage.skill.prc",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					}
+				]
+			},
+			"start": {
+				"combat": null,
+				"round": null,
+				"time": 658504883,
+				"turn": null,
+				"combatant": null,
+				"initiative": null
+			},
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!actors.effects!H8DoNmKrQMfM7ERE.EcyO0jVYwnaW92HZ"
 		}
 	],

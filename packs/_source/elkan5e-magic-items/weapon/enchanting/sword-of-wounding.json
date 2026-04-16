@@ -268,71 +268,77 @@
 			"img": "icons/skills/melee/strike-sword-blood-red.webp",
 			"disabled": true,
 			"_id": "tuFnPbghL64ioL04",
-			"system": {},
-			"changes": [
-				{
-					"key": "name",
-					"mode": 5,
-					"value": "{} of Wounding",
-					"priority": null
-				},
-				{
-					"key": "system.rarity",
-					"mode": 5,
-					"value": "rare",
-					"priority": null
-				},
-				{
-					"key": "system.attunement",
-					"mode": 5,
-					"value": "required",
-					"priority": null
-				},
-				{
-					"key": "system.properties",
-					"mode": 2,
-					"value": "mgc",
-					"priority": null
-				},
-				{
-					"key": "system.damage.parts",
-					"mode": 2,
-					"value": "[[\"2d6\", \"necrotic\"]]",
-					"priority": null
-				},
-				{
-					"key": "system.description.value",
-					"mode": 5,
-					"value": "{}<p>@Embed[Compendium.dnd5e.equipment24.Item.dmgSwordOfWoundi caption=false]</p>",
-					"priority": null
-				},
-				{
-					"key": "system.price.value",
-					"mode": 2,
-					"value": "4000",
-					"priority": null
-				},
-				{
-					"key": "system.price.denomination",
-					"mode": 5,
-					"value": "gp",
-					"priority": null
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "name",
+						"value": "{} of Wounding",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.rarity",
+						"value": "rare",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.attunement",
+						"value": "required",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.properties",
+						"value": "mgc",
+						"priority": null,
+						"type": "add"
+					},
+					{
+						"key": "system.damage.parts",
+						"value": [
+							[
+								"2d6",
+								"necrotic"
+							]
+						],
+						"priority": null,
+						"type": "add"
+					},
+					{
+						"key": "system.description.value",
+						"value": "{}<p>@Embed[Compendium.dnd5e.equipment24.Item.dmgSwordOfWoundi caption=false]</p>",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.price.value",
+						"value": 4000,
+						"priority": null,
+						"type": "add"
+					},
+					{
+						"key": "system.price.denomination",
+						"value": "gp",
+						"priority": null,
+						"type": "override"
+					}
+				]
+			},
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
 			"tint": "#ffffff",
 			"transfer": true,
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!dmgSwordOfWoundi.tuFnPbghL64ioL04"
 		},
 		{
@@ -342,21 +348,22 @@
 			"transfer": false,
 			"_id": "UeuDQeM3fRIB0aMN",
 			"type": "base",
-			"system": {},
-			"changes": [],
+			"system": {
+				"changes": []
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!dmgSwordOfWoundi.UeuDQeM3fRIB0aMN"
 		}
 	],

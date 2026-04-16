@@ -130,30 +130,28 @@
 			"transfer": false,
 			"_id": "6khsQIwSt0q2R5Jd",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.traits.di.value",
-					"mode": 2,
-					"value": "healing",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.di.value",
-					"mode": 2,
-					"value": "temphp",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.di.value",
+						"value": "healing",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.di.value",
+						"value": "temphp",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 7,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 7,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -191,6 +189,9 @@
 					"wallsBlock": "system"
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!oKEsTn9Jw7Whmyo9.6khsQIwSt0q2R5Jd"
 		}
 	],

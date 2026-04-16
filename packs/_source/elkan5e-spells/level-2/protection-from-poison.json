@@ -38,28 +38,11 @@
 					"statuses": []
 				}
 			},
-			"changes": [
-				{
-					"key": "system.traits.dr.value",
-					"mode": 0,
-					"value": "poison",
-					"priority": 0
-				},
-				{
-					"key": "flags.midi-qol.grants.advantage.save.all",
-					"mode": 0,
-					"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"poisoned\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"poisoned\") || ef.name == 'Poisoned')",
-					"priority": 20
-				}
-			],
 			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"transfer": false,
 			"disabled": false,
@@ -70,7 +53,25 @@
 			"statuses": [],
 			"img": "icons/magic/defensive/shield-barrier-glowing-triangle-green.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.dr.value",
+						"value": "poison",
+						"priority": 0,
+						"type": "custom"
+					},
+					{
+						"key": "flags.midi-qol.grants.advantage.save.all",
+						"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"poisoned\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"poisoned\") || ef.name == 'Poisoned')",
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!TjQaL5lRbogCKUWa.KVURJew2xJb5OH6P"
 		}
 	],

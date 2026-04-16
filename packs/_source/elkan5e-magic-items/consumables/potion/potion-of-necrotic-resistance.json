@@ -200,24 +200,22 @@
 			"transfer": false,
 			"_id": "28x7nDpppmU0LlOn",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.traits.dr.value",
-					"mode": 2,
-					"value": "necrotic",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.dr.value",
+						"value": "necrotic",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"combat": null,
-				"seconds": 3600,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -254,6 +252,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!SzN6lC4beNrse7F3.28x7nDpppmU0LlOn"
 		}
 	],

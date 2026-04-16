@@ -42,30 +42,28 @@
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.gOWxeTbJgZYukJbg",
 			"_id": "2CXJTOni61LuJ2BC",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.attributes.hp.max",
-					"mode": 2,
-					"value": "@scale.pact-of-the-chain.hp",
-					"priority": 20
-				},
-				{
-					"key": "system.attributes.ac.flat",
-					"mode": 2,
-					"value": "10 + @attributes.prof",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.hp.max",
+						"value": "@scale.pact-of-the-chain.hp",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.attributes.ac.flat",
+						"value": "10 + @attributes.prof",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"combat": null,
-				"seconds": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -99,6 +97,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!gOWxeTbJgZYukJbg.2CXJTOni61LuJ2BC"
 		}
 	],

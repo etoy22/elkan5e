@@ -4,25 +4,14 @@
 	"img": "icons/creatures/mammals/ox-buffalo-horned-green.webp",
 	"effects": [
 		{
-			"changes": [
-				{
-					"key": "system.traits.languages.custom",
-					"mode": 2,
-					"value": ";comprehend and verbally communicate with Beasts",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"_id": "2cxPSaKCNusaNeV2",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"origin": null,
 			"tint": "#ffffff",
@@ -63,7 +52,19 @@
 			"statuses": [],
 			"img": "icons/creatures/mammals/ox-buffalo-horned-green.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.languages.custom",
+						"value": ";comprehend and verbally communicate with Beasts",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!K9TCdZs4SV9PqI2i.2cxPSaKCNusaNeV2"
 		}
 	],

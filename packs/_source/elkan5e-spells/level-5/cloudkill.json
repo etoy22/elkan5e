@@ -10,24 +10,22 @@
 			"transfer": false,
 			"_id": "IKuTictLfDcVRIpO",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "flags.midi-qol.ActivityOverTime",
-					"mode": 2,
-					"value": "target-enters/ends-turn",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.ActivityOverTime",
+						"value": "target-enters/ends-turn",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -66,19 +64,14 @@
 					"statuses": []
 				}
 			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!EuVC53keqdJq1LTn.IKuTictLfDcVRIpO"
 		},
 		{
 			"name": "Lightly Obscured",
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.EuVC53keqdJq1LTn",
-			"changes": [
-				{
-					"key": "macro.StatusEffect",
-					"mode": 0,
-					"value": "obscuredlightly",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"flags": {
 				"dae": {
@@ -116,20 +109,29 @@
 			"img": "modules/elkan5e/icons/conditions/obscured-lightly.svg",
 			"_id": "2u9mvanLfZM9xaCQ",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"value": "obscuredlightly",
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 0,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 0,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!EuVC53keqdJq1LTn.2u9mvanLfZM9xaCQ"
 		}
 	],

@@ -154,30 +154,13 @@
 		{
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.cUZFvfqNa3nidrFs",
 			"duration": {
-				"rounds": null,
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"disabled": false,
 			"_id": "r9EFw5aAIeaNpIpE",
-			"changes": [
-				{
-					"key": "system.attributes.movement.all",
-					"mode": 0,
-					"value": "0",
-					"priority": 0
-				},
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 5,
-					"value": "turn=end,\nsaveAbility=str,\nsaveDC=@attributes.spell.dc,\ndamageRoll= (1+@spell.level)d6,\nsaveDamage=halfdamage,\ndamageType=bludgeoning,\nsaveMagic=true,\nlabel=Arms of Earth",
-					"priority": 50
-				}
-			],
 			"tint": "#ffffff",
 			"transfer": false,
 			"flags": {
@@ -219,7 +202,25 @@
 			],
 			"img": "icons/magic/earth/barrier-stone-explosion-debris.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.all",
+						"value": 0,
+						"priority": 0,
+						"type": "custom"
+					},
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end,\nsaveAbility=str,\nsaveDC=@attributes.spell.dc,\ndamageRoll= (1+@spell.level)d6,\nsaveDamage=halfdamage,\ndamageType=bludgeoning,\nsaveMagic=true,\nlabel=Arms of Earth",
+						"priority": 50,
+						"type": "override"
+					}
+				]
+			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!cUZFvfqNa3nidrFs.r9EFw5aAIeaNpIpE"
 		}
 	],

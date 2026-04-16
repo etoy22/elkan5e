@@ -4,18 +4,14 @@
 	"img": "icons/magic/perception/eye-ringed-glow-angry-teal.webp",
 	"effects": [
 		{
-			"changes": [],
 			"transfer": false,
 			"_id": "omqS8IbthU23gRo9",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"origin": null,
 			"tint": "#ffffff",
@@ -59,21 +55,22 @@
 			],
 			"img": "icons/magic/perception/eye-ringed-glow-angry-teal.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": []
+			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!4MRjvM6DSMIgYqKG.omqS8IbthU23gRo9"
 		},
 		{
-			"changes": [],
 			"transfer": false,
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"origin": null,
 			"tint": "#ffffff",
@@ -115,41 +112,23 @@
 			],
 			"img": "icons/magic/perception/eye-ringed-glow-angry-teal.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": []
+			},
 			"_id": "bOs0G0NkPTmlvdSS",
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!4MRjvM6DSMIgYqKG.bOs0G0NkPTmlvdSS"
 		},
 		{
-			"changes": [
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 2,
-					"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Sickened (Eye Bite)",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.disadvantage.attack.all",
-					"mode": 2,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.disadvantage.ability.all",
-					"mode": 2,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"origin": null,
 			"tint": "#ffffff",
@@ -189,8 +168,32 @@
 			"statuses": [],
 			"img": "icons/magic/perception/eye-ringed-glow-angry-teal.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Sickened (Eye Bite)",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "flags.midi-qol.disadvantage.attack.all",
+						"value": 1,
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "flags.midi-qol.disadvantage.ability.all",
+						"value": 1,
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"_id": "OrBuAPTNoPzxfAba",
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!4MRjvM6DSMIgYqKG.OrBuAPTNoPzxfAba"
 		}
 	],

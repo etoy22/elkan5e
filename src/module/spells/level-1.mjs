@@ -168,7 +168,7 @@ export async function goodberry(workflow) {
 	}
 
 	// Check if the item already exists on the actor
-	const existingItem = actor.items.find((i) => i.identifier === "goodberry-item");
+	const existingItem = actor.items.find((i) => i.system.identifier === "goodberry-item");
 	if (existingItem) {
 		// Update the existing item's maximum uses
 		await existingItem.update({
@@ -180,7 +180,11 @@ export async function goodberry(workflow) {
 
 	// Create an active effect to track the spell's duration
 	const linkedItem =
-		existingItem ?? (await actor.items.find((i) => i.system.identifier === "goodberry-item"));
+		existingItem ?? actor.items.find((i) => i.system.identifier === "goodberry-item");
+	if (!linkedItem) {
+		console.error("Goodberry item was not found after creation.");
+		return;
+	}
 	const effectData = {
 		name: `${item.name} Duration (Level ${level})`, // Added required name property
 		label: `${item.name} Duration (Level ${level})`,
@@ -296,22 +300,23 @@ export async function sappingSmite(workflow) {
  * @returns {Promise<void>} Promise resolution result.
  */
 export async function rendVigor(workflow) {
-	let saves = workflow.saves;
-	let failed = workflow.failedSaves;
+	const resolveActor = (entry) =>
+		entry?.actor ?? entry?.document?.actor ?? entry?.object?.actor ?? null;
+	const savedTargets = Array.from(workflow.saves ?? []);
+	const failedTargets = Array.from(workflow.failedSaves ?? []);
 
-	saves.forEach((save) => {
-		let target = save.actor;
-		if (target.system.attributes.hp.temp != null) {
-			target.system.attributes.hp.temp = Math.floor(target.system.attributes.hp.temp / 2);
-		}
-	});
+	for (const save of savedTargets) {
+		const target = resolveActor(save);
+		const tempHp = target?.system?.attributes?.hp?.temp;
+		if (!target || tempHp == null) continue;
+		await target.update({ "system.attributes.hp.temp": Math.floor(tempHp / 2) });
+	}
 
-	failed.forEach((fail) => {
-		let target = fail.actor;
-		if (target.system.attributes.hp.temp != null) {
-			target.system.attributes.hp.temp = null;
-		}
-	});
+	for (const fail of failedTargets) {
+		const target = resolveActor(fail);
+		if (!target || target.system?.attributes?.hp?.temp == null) continue;
+		await target.update({ "system.attributes.hp.temp": null });
+	}
 }
 
 /**

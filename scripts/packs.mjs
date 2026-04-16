@@ -10,7 +10,7 @@ import { compilePack, extractPack } from "@foundryvtt/foundryvtt-cli";
 const PACK_DEST = "packs";
 const PACK_SRC = "packs/_source";
 const PACK_SOURCE_NAME_OVERRIDES = {
-	"elkan5e-background": "elkan5e-backgrounds",
+	"elkan5e-ancestry-background": "elkan5e-ancestry-background",
 };
 
 // Ensure base folders exist

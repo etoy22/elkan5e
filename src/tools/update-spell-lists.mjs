@@ -7,7 +7,7 @@ const SPELLS_BY_CLASS_PATH = "packs/_source/elkan5e-rules/spell-lists/spells-by-
 const SPELLS_BY_SCHOOL_PATH =
 	"packs/_source/elkan5e-rules/spell-lists/spells-by-school-of-magic.json";
 const SPELLS_BY_SUBCLASS_PATH = "packs/_source/elkan5e-rules/spell-lists/spells-by-subclass.json";
-const SUBCLASS_ROOT = "packs/_source/elkan5e-subclass";
+const SUBCLASS_ROOT = "packs/_source/elkan5e-class";
 const SPELL_LEVEL_DIRS = [
 	["cantrip", 0],
 	["level-1", 1],
@@ -397,6 +397,7 @@ function updateSubclassGrantPages(subclassData) {
 	for (const file of subclassFiles) {
 		if (path.basename(file) === "_folder.json") continue;
 		const data = loadJson(file);
+		if (data.type !== "subclass") continue;
 		const spells = new Set();
 		for (const adv of Object.values(data.system?.advancement ?? {})) {
 			for (const item of adv.configuration?.items || []) {

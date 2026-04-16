@@ -572,9 +572,6 @@
 			"tint": "#ffffff",
 			"scaleX": 1,
 			"scaleY": 1,
-			"offsetX": 0,
-			"offsetY": 0,
-			"rotation": 0,
 			"anchorX": 0.5,
 			"anchorY": 0.5,
 			"fit": "contain",
@@ -591,7 +588,7 @@
 			"saturation": 0,
 			"contrast": 0
 		},
-		"detectionModes": [],
+		"detectionModes": {},
 		"appendNumber": false,
 		"prependAdjective": false,
 		"occludable": {
@@ -615,7 +612,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 2
 	},
 	"items": [
 		{
@@ -726,24 +724,22 @@
 					"transfer": false,
 					"_id": "8iGg0XGQiwMXtmeY",
 					"type": "base",
-					"system": {},
-					"changes": [
-						{
-							"key": "flags.midi-qol.advantage.attack.all",
-							"mode": 2,
-							"value": "1",
-							"priority": 20
-						}
-					],
+					"system": {
+						"changes": [
+							{
+								"key": "flags.midi-qol.advantage.attack.all",
+								"value": 1,
+								"priority": 20,
+								"type": "add"
+							}
+						]
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": 1,
-						"startRound": null,
-						"startTurn": null
+						"value": 1,
+						"units": "turns",
+						"expiry": "turnStart",
+						"expired": false
 					},
 					"description": "",
 					"tint": "#ffffff",
@@ -781,6 +777,9 @@
 							"wallsBlock": "system"
 						}
 					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!75pLiFnGNZh0VPPx.weFcATmtqqUJ39Pw.8iGg0XGQiwMXtmeY"
 				}
 			],
@@ -824,23 +823,12 @@
 			"effects": [
 				{
 					"_id": "gcxgylisuj21fpt3",
-					"changes": [
-						{
-							"key": "macro.StatusEffect",
-							"mode": 0,
-							"value": "prone",
-							"priority": 20
-						}
-					],
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"transfer": false,
 					"flags": {
@@ -882,7 +870,19 @@
 					"statuses": [],
 					"img": "modules/elkan5e/icons/conditions/prone.svg",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": [
+							{
+								"key": "macro.StatusEffect",
+								"value": "prone",
+								"priority": 20,
+								"type": "custom"
+							}
+						]
+					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!75pLiFnGNZh0VPPx.5mMxxeqKYaNE4Cto.gcxgylisuj21fpt3"
 				}
 			],
@@ -1189,23 +1189,12 @@
 			"effects": [
 				{
 					"_id": "xvgdbskjzi8vtfi5",
-					"changes": [
-						{
-							"key": "system.bonuses.abilities.save",
-							"mode": 2,
-							"value": "+2",
-							"priority": 20
-						}
-					],
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"origin": "Actor.KIewrqqhytG321Ra.Item.1lefsFZzosTFi4Zo",
 					"transfer": true,
@@ -1241,7 +1230,19 @@
 					"statuses": [],
 					"img": "icons/skills/melee/weapons-crossed-swords-white-blue.webp",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": [
+							{
+								"key": "system.bonuses.abilities.save",
+								"value": "+2",
+								"priority": 20,
+								"type": "add"
+							}
+						]
+					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!75pLiFnGNZh0VPPx.1lefsFZzosTFi4Zo.xvgdbskjzi8vtfi5"
 				}
 			],
@@ -1282,25 +1283,14 @@
 			"img": "icons/creatures/mammals/wolf-howl-moon-gray.webp",
 			"effects": [
 				{
-					"changes": [
-						{
-							"key": "flags.midi-qol.advantage.skill.prc",
-							"mode": 5,
-							"value": "1",
-							"priority": 20
-						}
-					],
 					"transfer": true,
 					"_id": "LWHLArqPtzqymV0F",
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"origin": null,
 					"tint": "#ffffff",
@@ -1331,7 +1321,19 @@
 					"statuses": [],
 					"img": "icons/creatures/eyes/human-single-brown.webp",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": [
+							{
+								"key": "flags.midi-qol.advantage.skill.prc",
+								"value": 1,
+								"priority": 20,
+								"type": "override"
+							}
+						]
+					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!75pLiFnGNZh0VPPx.I6bHtt5fcI9YO9w1.LWHLArqPtzqymV0F"
 				}
 			],
@@ -1603,17 +1605,13 @@
 				{
 					"origin": "Actor.KIewrqqhytG321Ra.Item.TaOLtdlqBRLZwsAN",
 					"duration": {
-						"rounds": 10,
-						"startTime": null,
-						"seconds": 60,
-						"combat": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": 60,
+						"units": "seconds",
+						"expiry": "turnStart",
+						"expired": false
 					},
 					"disabled": false,
 					"_id": "UTNbL6L8sc0b9lwb",
-					"changes": [],
 					"tint": "#ffffff",
 					"transfer": false,
 					"flags": {
@@ -1644,7 +1642,12 @@
 					"statuses": [],
 					"img": "icons/commodities/bones/teeth-sharp-white.webp",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": []
+					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!75pLiFnGNZh0VPPx.uMPIQCbXgRWiW97f.UTNbL6L8sc0b9lwb"
 				}
 			],
@@ -1697,23 +1700,12 @@
 	"effects": [
 		{
 			"_id": "K64Uluy0vWcR7gtW",
-			"changes": [
-				{
-					"key": "system.bonuses.abilities.save",
-					"value": "+2",
-					"mode": 2,
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": 642584893,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"origin": "Actor.KIewrqqhytG321Ra.Item.1lefsFZzosTFi4Zo",
 			"transfer": false,
@@ -1752,29 +1744,37 @@
 			"statuses": [],
 			"img": "icons/skills/melee/weapons-crossed-swords-white-blue.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.bonuses.abilities.save",
+						"value": "+2",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": {
+				"combat": null,
+				"round": null,
+				"time": 642584893,
+				"turn": null,
+				"combatant": null,
+				"initiative": null
+			},
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!actors.effects!75pLiFnGNZh0VPPx.K64Uluy0vWcR7gtW"
 		},
 		{
-			"changes": [
-				{
-					"key": "flags.midi-qol.advantage.skill.prc",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"_id": "vNxsV52Ngm5zfRpa",
 			"disabled": false,
 			"duration": {
-				"startTime": 1688256319,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"origin": "Compendium.elkan5e.elkan5e-creatures.Actor.75pLiFnGNZh0VPPx.Item.I6bHtt5fcI9YO9w1",
 			"tint": "#ffffff",
@@ -1809,7 +1809,26 @@
 			"statuses": [],
 			"img": "icons/creatures/eyes/human-single-brown.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.advantage.skill.prc",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					}
+				]
+			},
+			"start": {
+				"combat": null,
+				"round": null,
+				"time": 1688256319,
+				"turn": null,
+				"combatant": null,
+				"initiative": null
+			},
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!actors.effects!75pLiFnGNZh0VPPx.vNxsV52Ngm5zfRpa"
 		}
 	],

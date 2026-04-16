@@ -170,14 +170,18 @@ export async function drainedEffect(actor, damage, name, img, uuid) {
  * @returns {Promise<void>} Promise resolution result.
  */
 export async function forEachDamagedTarget(workflow, callback) {
-	for (const { targetUuid, tempDamage = 0, hpDamage = 0, saved = false } of workflow.damageList) {
+	for (const dmgEntry of workflow.damageList ?? []) {
+		const { targetUuid, tempDamage = 0, hpDamage = 0 } = dmgEntry;
 		const dmg = tempDamage + hpDamage;
 		if (dmg <= 0 || !targetUuid) continue;
-		const parts = targetUuid.split(".");
-		const token = canvas.tokens.get(parts.at(-1));
+		const targetDoc = await fromUuid(targetUuid).catch(() => null);
+		const token =
+			targetDoc?.object ??
+			(targetDoc?.id ? canvas.tokens.get(targetDoc.id) : null) ??
+			canvas.tokens.get(targetUuid.split(".").at(-1));
 		if (!token) continue;
 		// Guarantee we're awaiting a Promise
-		await Promise.resolve(callback(token, dmg, saved));
+		await Promise.resolve(callback(token, dmg, dmgEntry));
 	}
 }
 

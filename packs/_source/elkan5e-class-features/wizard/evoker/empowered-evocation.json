@@ -5,25 +5,14 @@
 	"effects": [
 		{
 			"name": "Empowered Evocation",
-			"changes": [
-				{
-					"key": "system.bonuses.spell.damage",
-					"mode": 2,
-					"value": "+@abilities.int.mod",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"_id": "seh18IJFRt7teI88",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": 1,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -64,7 +53,19 @@
 			"tint": "#ffffff",
 			"img": "icons/magic/earth/projectiles-fire-stone-salvo.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.bonuses.spell.damage",
+						"value": "+@abilities.int.mod",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!VSfuD4F1S2tHKbUw.seh18IJFRt7teI88"
 		}
 	],

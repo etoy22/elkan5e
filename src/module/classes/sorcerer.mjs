@@ -1,4 +1,3 @@
-import { deletedEffectRemovesItem, deletedItemRemovesEffect } from "../shared/effects.mjs";
 const DialogV2 = foundry.applications.api.DialogV2;
 
 /**
@@ -375,10 +374,12 @@ async function createCancelButton() {
  */
 export async function delayedDuration(effect) {
 	if (effect.name === game.i18n.localize("elkan5e.wildMage.delayedWildSurgeDuration")) {
-		await deletedEffectRemovesItem(
-			effect,
-			game.i18n.localize("elkan5e.wildMage.delayedWildSurge"),
+		const actor = effect.parent;
+		if (!actor) return;
+		const item = actor.items.find(
+			(entry) => entry.name === game.i18n.localize("elkan5e.wildMage.delayedWildSurge"),
 		);
+		if (item) await item.delete();
 	}
 }
 
@@ -390,9 +391,12 @@ export async function delayedDuration(effect) {
  */
 export async function delayedItem(item) {
 	if (item.name === game.i18n.localize("elkan5e.wildMage.delayedWildSurge")) {
-		await deletedItemRemovesEffect(
-			item,
-			game.i18n.localize("elkan5e.wildMage.delayedWildSurgeDuration"),
+		const actor = item.parent;
+		if (!actor) return;
+		const effect = actor.effects.find(
+			(entry) =>
+				entry.name === game.i18n.localize("elkan5e.wildMage.delayedWildSurgeDuration"),
 		);
+		if (effect) await effect.delete();
 	}
 }

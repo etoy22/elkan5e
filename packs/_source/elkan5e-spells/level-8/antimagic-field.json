@@ -5,35 +5,12 @@
 	"effects": [
 		{
 			"_id": "q3k8qax0v18ac3uz",
-			"changes": [
-				{
-					"key": "flags.midi-qol.fail.spell.vocal",
-					"mode": 2,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.fail.spell.somatic",
-					"mode": 2,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.fail.spell.material",
-					"mode": 2,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"transfer": false,
 			"flags": {
@@ -67,7 +44,31 @@
 			"statuses": [],
 			"img": "icons/magic/lightning/barrier-shield-crackling-orb-pink.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.fail.spell.vocal",
+						"value": 1,
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "flags.midi-qol.fail.spell.somatic",
+						"value": 1,
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "flags.midi-qol.fail.spell.material",
+						"value": 1,
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!Ay9J4z6Zf9hl6d4w.q3k8qax0v18ac3uz"
 		}
 	],

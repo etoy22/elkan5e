@@ -337,25 +337,14 @@
 			"name": "Rend the Veil",
 			"origin": "Item.NzNj8PEe2lqrzjEC",
 			"duration": {
-				"rounds": null,
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"transfer": false,
 			"disabled": false,
 			"_id": "LrRnZx9GBeTa8y76",
-			"changes": [
-				{
-					"key": "flags.midi-qol.ActivityOverTime",
-					"mode": 0,
-					"value": "overtime",
-					"priority": 20
-				}
-			],
 			"description": "",
 			"statuses": [
 				"frightened"
@@ -395,7 +384,19 @@
 			"tint": "#ffffff",
 			"img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.ActivityOverTime",
+						"value": "overtime",
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!NWlrz1hV8joL8aaR.LrRnZx9GBeTa8y76"
 		}
 	],

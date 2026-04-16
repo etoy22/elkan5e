@@ -1,5 +1,29 @@
 const DialogV2 = foundry.applications.api.DialogV2;
 
+const getWorkflowActionType = (workflow) =>
+	workflow?.activity?.actionType ??
+	workflow?.activity?.type ??
+	workflow?.item?.system?.actionType ??
+	null;
+
+const getWorkflowTargets = (workflow) =>
+	Array.from(workflow?.targets ?? workflow?.hitTargets ?? []);
+
+const measureRangeDistance = (from, to) => {
+	if (!canvas?.grid) return Number.POSITIVE_INFINITY;
+	const origin = from?.center ?? from;
+	const destination = to?.center ?? to;
+	if (typeof canvas.grid.measurePath === "function") {
+		try {
+			const path = canvas.grid.measurePath([origin, destination], {});
+			if (Number.isFinite(path?.distance)) return path.distance;
+		} catch (error) {
+			void error;
+		}
+	}
+	return canvas.grid.measureDistance(origin, destination);
+};
+
 /**
  * Runs infused Healer class feature automation.
  *
@@ -9,7 +33,12 @@ const DialogV2 = foundry.applications.api.DialogV2;
 export async function infusedHealer(workflow) {
 	// Bail if not a healing spell of 1st level or higher
 	let item = workflow.item;
-	if (item.type !== "spell" || item.system.level < 1 || item.system.actionType !== "heal") return;
+	if (
+		item.type !== "spell" ||
+		item.system.level < 1 ||
+		getWorkflowActionType(workflow) !== "heal"
+	)
+		return;
 
 	// Get caster's token and actor
 	let casterToken = workflow.token ?? canvas.tokens.get(workflow.actor.token?.id);
@@ -19,7 +48,7 @@ export async function infusedHealer(workflow) {
 		return;
 	}
 
-	const targets = [...workflow.targets];
+	const targets = getWorkflowTargets(workflow);
 	if (targets.some((t) => t.actor.id === caster.id)) return;
 
 	const healAmount = "" + (2 + item.system.level);
@@ -46,44 +75,44 @@ export async function infusedHealer(workflow) {
 /**
  * Runs heal Over class feature automation.
  *
- * @param {*} item - Item document to process.
- * @param {*} roll - Roll.
+ * @param {*} itemOrWorkflow - Legacy item document or workflow-like payload.
+ * @param {*} roll - Legacy roll payload.
  */
-export function healOver(item, roll) {
+export async function healOver(itemOrWorkflow, roll) {
+	const workflow =
+		itemOrWorkflow?.item && itemOrWorkflow?.actor && itemOrWorkflow?.args
+			? itemOrWorkflow
+			: null;
+	if (workflow) return healingOverflow(workflow);
+
+	const item = itemOrWorkflow?.item ?? itemOrWorkflow;
+	const actor = itemOrWorkflow?.actor ?? item?.actor ?? null;
+	const actionType =
+		itemOrWorkflow?.activity?.actionType ??
+		itemOrWorkflow?.activity?.type ??
+		item?.system?.actionType ??
+		null;
 	if (
-		activity.type === "heal" &&
-		actor.items.find((i) => i.system.identifier === "healing-overflow")
-	) {
-		const remainingHealth =
-			item.actor.system.attributes.hp.max - item.actor.system.attributes.hp.value;
-		const overflow = roll.total - remainingHealth;
-		if (overflow > 0) {
-			const targets = item.actor
-				.getActiveTokens()
-				.map((token) => token.actor)
-				.filter(
-					(target) =>
-						target !== item.actor &&
-						target.system.attributes.hp.value < target.system.attributes.hp.max,
-				);
-			if (targets.length > 0) {
-				const target = targets[0]; // Example: apply to the first valid target
-				target.update({
-					"system.attributes.hp.value": Math.min(
-						target.system.attributes.hp.value + overflow,
-						target.system.attributes.hp.max,
-					),
-				});
-				ui.notifications.notify(
-					game.i18n.format("elkan5e.notifications.HealingOverflow", {
-						name: actor.name,
-						overflow: overflow,
-						target: target.name,
-					}),
-				);
-			}
-		}
-	}
+		actionType !== "heal" ||
+		!actor?.items?.find((i) => i.system.identifier === "healing-overflow")
+	)
+		return;
+
+	const healingTotal = Number(roll?.total ?? 0);
+	if (!Number.isFinite(healingTotal) || healingTotal <= 0) return;
+
+	const hp = actor.system?.attributes?.hp;
+	const remainingHealth = Number(hp?.max ?? 0) - Number(hp?.value ?? 0);
+	const overflow = healingTotal - remainingHealth;
+	if (overflow <= 0) return;
+
+	ui.notifications.notify(
+		game.i18n.format("elkan5e.notifications.HealingOverflow", {
+			name: actor.name,
+			overflow,
+			target: actor.name,
+		}),
+	);
 }
 
 /**
@@ -97,7 +126,7 @@ export async function healingOverflow(workflow) {
 	if (
 		!workflow.item ||
 		workflow.item.type !== "spell" ||
-		workflow.item.system.actionType !== "heal" ||
+		getWorkflowActionType(workflow) !== "heal" ||
 		workflow.item.system.level < 1
 	)
 		return;
@@ -133,7 +162,7 @@ export async function healingOverflow(workflow) {
 		const actor = token.actor;
 		if (!actor || token.document.hidden) return false;
 		const hp = actor.system.attributes.hp;
-		const inRange = canvas.grid.measureDistance(casterToken, token) <= range;
+		const inRange = measureRangeDistance(casterToken, token) <= range;
 		return hp.value < hp.max && inRange;
 	});
 	if (candidates.length === 0) return;

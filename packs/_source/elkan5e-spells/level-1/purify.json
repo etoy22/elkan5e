@@ -5,28 +5,26 @@
 	"effects": [
 		{
 			"name": "Purify",
-			"changes": [
-				{
-					"key": "flags.midi-qol.grants.advantage.save.all",
-					"mode": 0,
-					"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"poisoned\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"poisoned\") || ef.name == 'Poisoned' || ef.statuses?.has(\"diseased\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"diseased\") || ef.name == 'Diseased')",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"img": "icons/skills/toxins/bottle-open-vapors-pink.webp",
 			"_id": "Cfb46rVl7NYRmM10",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.grants.advantage.save.all",
+						"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"poisoned\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"poisoned\") || ef.name == 'Poisoned' || ef.statuses?.has(\"diseased\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"diseased\") || ef.name == 'Diseased')",
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -64,6 +62,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!IVdLf4tdmOfA3W6w.Cfb46rVl7NYRmM10"
 		}
 	],

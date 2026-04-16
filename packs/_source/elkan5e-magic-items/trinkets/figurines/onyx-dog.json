@@ -181,36 +181,34 @@
 			"img": "icons/sundries/misc/pet-collar-red.webp",
 			"_id": "fMC3o8l8D2GamPbU",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.abilities.int.value",
-					"mode": 4,
-					"value": "8",
-					"priority": 40
-				},
-				{
-					"key": "system.traits.languages.value",
-					"mode": 2,
-					"value": "common",
-					"priority": 20
-				},
-				{
-					"key": "system.attributes.senses.blindsight",
-					"mode": 4,
-					"value": "60",
-					"priority": 40
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.abilities.int.value",
+						"value": 8,
+						"priority": 40,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.traits.languages.value",
+						"value": "common",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.attributes.senses.blindsight",
+						"value": 60,
+						"priority": 40,
+						"type": "upgrade"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "<p>The mastiff has an Intelligence of 8 and can speak Common. It also has &amp;Reference[Blindsight] with a range of 60 feet.</p>",
 			"origin": "Compendium.elkan5e.elkan5e-magic-items.Item.dmgFwpOnyxDogRar",
@@ -245,6 +243,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!dmgFwpOnyxDogRar.fMC3o8l8D2GamPbU"
 		}
 	],

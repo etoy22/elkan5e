@@ -43,34 +43,32 @@
 	"effects": [
 		{
 			"name": "Animal Companion Automation",
-			"changes": [
-				{
-					"key": "system.attributes.hp.max",
-					"mode": 4,
-					"value": "(5 + @system.abilities.con.mod) * @classes.animal-companion-class.levels",
-					"priority": 20
-				},
-				{
-					"key": "system.attributes.ac.flat",
-					"mode": 4,
-					"value": "10 + @attributes.prof",
-					"priority": 20
-				}
-			],
 			"transfer": true,
 			"img": "icons/creatures/mammals/deer-movement-leap-green.webp",
 			"_id": "NaY0y1zIvP7Faw5E",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.hp.max",
+						"value": "(5 + @system.abilities.con.mod) * @classes.animal-companion-class.levels",
+						"priority": 20,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.attributes.ac.flat",
+						"value": "10 + @attributes.prof",
+						"priority": 20,
+						"type": "upgrade"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.pXUfNWkcLOGsZxIf",
@@ -108,6 +106,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!pXUfNWkcLOGsZxIf.NaY0y1zIvP7Faw5E"
 		}
 	],

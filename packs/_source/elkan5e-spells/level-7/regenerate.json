@@ -39,23 +39,12 @@
 					"wallsBlock": "system"
 				}
 			},
-			"changes": [
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 0,
-					"value": "turn=start,\napplyCondition=@attributes.hp.value >= 0 && @attributes.hp.value != @attributes.hp.max,\ndamageRoll = 1,\ndamageType = healing",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"tint": "#ffffff",
 			"transfer": false,
@@ -65,7 +54,19 @@
 			"statuses": [],
 			"img": "icons/magic/life/cross-beam-green.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=start,\napplyCondition=@attributes.hp.value >= 0 && @attributes.hp.value != @attributes.hp.max,\ndamageRoll = 1,\ndamageType = healing",
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!CrRJUlDGltHJnc7c.gMvUlhgIUWdHEJ6r"
 		}
 	],

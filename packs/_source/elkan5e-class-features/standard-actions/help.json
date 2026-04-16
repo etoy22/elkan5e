@@ -110,25 +110,14 @@
 	"effects": [
 		{
 			"name": "Help (Advantage to Attack)",
-			"changes": [
-				{
-					"key": "flags.midi-qol.grants.advantage.attack.all",
-					"mode": 2,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"_id": "RtfHAqxapytOhPO7",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 7,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 7,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -170,30 +159,31 @@
 			"tint": "#ffffff",
 			"img": "icons/skills/social/diplomacy-handshake.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.grants.advantage.attack.all",
+						"value": 1,
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!gR13n0dtX2w8sazy.RtfHAqxapytOhPO7"
 		},
 		{
 			"name": "Help (Advantage on Next Ability Check)",
-			"changes": [
-				{
-					"key": "flags.midi-qol.advantage.ability.check.all",
-					"mode": 2,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"_id": "gmcy8fl1b02f84pX",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 7,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 7,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -235,7 +225,19 @@
 			"tint": "#ffffff",
 			"img": "icons/skills/social/diplomacy-handshake.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.advantage.ability.check.all",
+						"value": 1,
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!gR13n0dtX2w8sazy.gmcy8fl1b02f84pX"
 		}
 	],

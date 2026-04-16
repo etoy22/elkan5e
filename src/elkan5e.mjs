@@ -260,6 +260,7 @@ function registerHooks() {
 				elementalAttunement,
 			},
 			monsterFeatures: {
+				lifeDrain: lifeDrainGraveguard,
 				lifeDrainGraveguard,
 				spectralEmpowerment,
 			},

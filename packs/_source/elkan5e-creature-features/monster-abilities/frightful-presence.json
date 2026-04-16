@@ -114,35 +114,12 @@
 			"statuses": [
 				"condition-lab-triggler.frightened"
 			],
-			"changes": [
-				{
-					"key": "flags.midi-qol.disadvantage.attack.all",
-					"mode": 5,
-					"value": "1",
-					"priority": 50
-				},
-				{
-					"key": "flags.midi-qol.disadvantage.ability.check.all",
-					"mode": 5,
-					"value": "1",
-					"priority": 50
-				},
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 2,
-					"value": "turn=end,\nlabel=\"Frightful Presence\",\nallowIncapacitated = False,\nsaveAbility=wis,\nsaveDC = 16",
-					"priority": 20
-				}
-			],
 			"description": "",
 			"duration": {
-				"seconds": null,
-				"startTime": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null,
-				"combat": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"flags": {
 				"ActiveAuras": {
@@ -180,7 +157,31 @@
 			"tint": "#ffffff",
 			"img": "modules/elkan5e/icons/conditions/frightened.svg",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.disadvantage.attack.all",
+						"value": 1,
+						"priority": 50,
+						"type": "override"
+					},
+					{
+						"key": "flags.midi-qol.disadvantage.ability.check.all",
+						"value": 1,
+						"priority": 50,
+						"type": "override"
+					},
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end,\nlabel=\"Frightful Presence\",\nallowIncapacitated = False,\nsaveAbility=wis,\nsaveDC = 16",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!75G0Pxl3HPWYmRYz.QGITrQQP2CHqhkNo"
 		}
 	],

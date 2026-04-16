@@ -4,31 +4,14 @@
 	"img": "icons/magic/perception/eye-ringed-glow-angry-large-teal.webp",
 	"effects": [
 		{
-			"changes": [
-				{
-					"key": "flags.midi-qol.grants.disadvantage.attack.all",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.advantage.all",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"_id": "RwADECbOXUNdA4Tk",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 28800,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 28800,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"origin": null,
 			"tint": "#ffffff",
@@ -59,7 +42,25 @@
 			"statuses": [],
 			"img": "icons/magic/perception/eye-ringed-glow-angry-large-teal.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.grants.disadvantage.attack.all",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "flags.midi-qol.advantage.all",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!Cii0FzQ0LiMsZqrT.RwADECbOXUNdA4Tk"
 		}
 	],

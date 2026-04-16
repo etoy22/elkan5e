@@ -178,60 +178,58 @@
 			"transfer": false,
 			"_id": "BuHWEcTMu6q3qmld",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.attributes.movement.walk",
-					"mode": 1,
-					"value": "1/2",
-					"priority": 20
-				},
-				{
-					"key": "system.attributes.movement.air",
-					"mode": 1,
-					"value": "1/2",
-					"priority": 20
-				},
-				{
-					"key": "system.attributes.movement.burrow",
-					"mode": 1,
-					"value": "1/2",
-					"priority": 20
-				},
-				{
-					"key": "system.attributes.movement.climb",
-					"mode": 1,
-					"value": "1/2",
-					"priority": 20
-				},
-				{
-					"key": "system.attributes.movement.land",
-					"mode": 1,
-					"value": "1/2",
-					"priority": 20
-				},
-				{
-					"key": "system.attributes.movement.swim",
-					"mode": 1,
-					"value": "1/2",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.ActivityOverTime",
-					"mode": 5,
-					"value": "turn=end,\nsaveAbility=dex,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\ndamageType=none,\nname=Magic Shackles",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.walk",
+						"value": "1/2",
+						"priority": 20,
+						"type": "multiply"
+					},
+					{
+						"key": "system.attributes.movement.air",
+						"value": "1/2",
+						"priority": 20,
+						"type": "multiply"
+					},
+					{
+						"key": "system.attributes.movement.burrow",
+						"value": "1/2",
+						"priority": 20,
+						"type": "multiply"
+					},
+					{
+						"key": "system.attributes.movement.climb",
+						"value": "1/2",
+						"priority": 20,
+						"type": "multiply"
+					},
+					{
+						"key": "system.attributes.movement.land",
+						"value": "1/2",
+						"priority": 20,
+						"type": "multiply"
+					},
+					{
+						"key": "system.attributes.movement.swim",
+						"value": "1/2",
+						"priority": 20,
+						"type": "multiply"
+					},
+					{
+						"key": "flags.midi-qol.ActivityOverTime",
+						"value": "turn=end,\nsaveAbility=dex,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\ndamageType=none,\nname=Magic Shackles",
+						"priority": 20,
+						"type": "override"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -268,6 +266,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!DTO0IEWtZxQvqJrP.BuHWEcTMu6q3qmld"
 		}
 	],

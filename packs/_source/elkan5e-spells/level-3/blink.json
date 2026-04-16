@@ -5,23 +5,12 @@
 	"effects": [
 		{
 			"_id": "70dkhcbophahhp1t",
-			"changes": [
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 2,
-					"value": "turn=end,\nsaveRemove=false,\nrollType=check,\nsaveDC=10,\nname=Blink",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"transfer": false,
 			"flags": {
@@ -63,7 +52,19 @@
 			"statuses": [],
 			"img": "icons/magic/control/debuff-energy-hold-levitate-blue-yellow.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end,\nsaveRemove=false,\nrollType=check,\nsaveDC=10,\nname=Blink",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!BnfcbtYsHn4lyXML.70dkhcbophahhp1t"
 		}
 	],

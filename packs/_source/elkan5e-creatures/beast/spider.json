@@ -640,12 +640,9 @@
 			"src": "systems/dnd5e/tokens/beast/Spider.webp",
 			"anchorX": 0.5,
 			"anchorY": 0.5,
-			"offsetX": 0,
-			"offsetY": 0,
 			"fit": "contain",
 			"scaleX": 0.8,
 			"scaleY": 0.8,
-			"rotation": 0,
 			"tint": "#ffffff",
 			"alphaThreshold": 0.75
 		},
@@ -696,7 +693,7 @@
 			"saturation": 0,
 			"contrast": 0
 		},
-		"detectionModes": [],
+		"detectionModes": {},
 		"occludable": {
 			"radius": 0
 		},
@@ -719,7 +716,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 0.5
 	},
 	"items": [
 		{
@@ -1178,24 +1176,22 @@
 					"transfer": false,
 					"_id": "uHlZb9jfeJhKCcJg",
 					"type": "base",
-					"system": {},
-					"changes": [
-						{
-							"key": "macro.activityMacro",
-							"mode": 0,
-							"value": "poison",
-							"priority": 20
-						}
-					],
+					"system": {
+						"changes": [
+							{
+								"key": "macro.activityMacro",
+								"value": "poison",
+								"priority": 20,
+								"type": "custom"
+							}
+						]
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"combat": null,
-						"seconds": 60,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": 60,
+						"units": "seconds",
+						"expiry": "turnStart",
+						"expired": false
 					},
 					"description": "",
 					"tint": "#ffffff",
@@ -1234,6 +1230,9 @@
 							"statuses": []
 						}
 					},
+					"showIcon": 2,
+					"start": null,
+					"folder": null,
 					"_key": "!actors.items.effects!TyXKC9MCrjtVspWO.wZU08iqp6605VKve.uHlZb9jfeJhKCcJg"
 				}
 			],

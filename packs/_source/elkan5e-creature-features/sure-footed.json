@@ -37,34 +37,32 @@
 	"effects": [
 		{
 			"name": "Sure-Footed",
-			"changes": [
-				{
-					"key": "flags.midi-qol.advantage.ability.save.all",
-					"mode": 0,
-					"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"prone\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"prone\") || ef.name == 'Prone');",
-					"priority": 20
-				},
-				{
-					"key": "flags.elkan5e.pushResist",
-					"mode": 0,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"transfer": true,
 			"img": "icons/creatures/mammals/deer-antlers-glowing-blue.webp",
 			"_id": "beH8X4Y4KxxJDMtH",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.advantage.ability.save.all",
+						"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"prone\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"prone\") || ef.name == 'Prone');",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "flags.elkan5e.pushResist",
+						"value": 1,
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"origin": "Compendium.elkan5e.elkan5e-creature-features.Item.5w4B1nK9aRUsVnrP",
@@ -102,6 +100,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!5w4B1nK9aRUsVnrP.beH8X4Y4KxxJDMtH"
 		}
 	],

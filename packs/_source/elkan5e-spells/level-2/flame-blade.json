@@ -37,29 +37,12 @@
 					"wallsBlock": "system"
 				}
 			},
-			"changes": [
-				{
-					"key": "ATL.light.bright",
-					"mode": 2,
-					"value": "10",
-					"priority": null
-				},
-				{
-					"key": "ATL.light.dim",
-					"mode": 2,
-					"value": "20",
-					"priority": null
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"tint": "#ffffff",
 			"transfer": false,
@@ -69,7 +52,25 @@
 			"statuses": [],
 			"img": "icons/magic/fire/dagger-rune-enchant-flame-orange.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "ATL.light.bright",
+						"value": 10,
+						"priority": null,
+						"type": "add"
+					},
+					{
+						"key": "ATL.light.dim",
+						"value": 20,
+						"priority": null,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!v95pdXrd54cNPEgV.Hbbgg0VPMOMqUVyZ"
 		},
 		{
@@ -118,60 +119,63 @@
 			"img": "icons/magic/fire/dagger-rune-enchant-flame-orange.webp",
 			"_id": "0JUsfKJexB6J6Wr7",
 			"type": "enchantment",
-			"system": {},
-			"changes": [
-				{
-					"key": "name",
-					"mode": 5,
-					"value": "Flame Blade, {}",
-					"priority": null
-				},
-				{
-					"key": "system.ability",
-					"mode": 5,
-					"value": "wis",
-					"priority": null
-				},
-				{
-					"key": "system.properties",
-					"mode": 2,
-					"value": "mgc",
-					"priority": null
-				},
-				{
-					"key": "system.damage.base.number",
-					"mode": 5,
-					"value": "3",
-					"priority": null
-				},
-				{
-					"key": "system.damage.base.denomination",
-					"mode": 5,
-					"value": "6",
-					"priority": null
-				},
-				{
-					"key": "system.damage.base.types",
-					"mode": 5,
-					"value": "[\"fire\"]",
-					"priority": null
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "name",
+						"value": "Flame Blade, {}",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.ability",
+						"value": "wis",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.properties",
+						"value": "mgc",
+						"priority": null,
+						"type": "add"
+					},
+					{
+						"key": "system.damage.base.number",
+						"value": 3,
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.damage.base.denomination",
+						"value": 6,
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.damage.base.types",
+						"value": [
+							"fire"
+						],
+						"priority": null,
+						"type": "override"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
 			"tint": "#ffffff",
 			"transfer": false,
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!v95pdXrd54cNPEgV.0JUsfKJexB6J6Wr7"
 		},
 		{
@@ -220,60 +224,63 @@
 			"img": "icons/magic/fire/dagger-rune-enchant-flame-orange.webp",
 			"_id": "LJX6kZfKnaAR8fL5",
 			"type": "enchantment",
-			"system": {},
-			"changes": [
-				{
-					"key": "name",
-					"mode": 5,
-					"value": "Flame Blade, {}",
-					"priority": null
-				},
-				{
-					"key": "system.ability",
-					"mode": 5,
-					"value": "wis",
-					"priority": null
-				},
-				{
-					"key": "system.properties",
-					"mode": 2,
-					"value": "mgc",
-					"priority": null
-				},
-				{
-					"key": "system.damage.base.number",
-					"mode": 5,
-					"value": "4",
-					"priority": null
-				},
-				{
-					"key": "system.damage.base.denomination",
-					"mode": 5,
-					"value": "6",
-					"priority": null
-				},
-				{
-					"key": "system.damage.base.types",
-					"mode": 5,
-					"value": "[\"fire\"]",
-					"priority": null
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "name",
+						"value": "Flame Blade, {}",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.ability",
+						"value": "wis",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.properties",
+						"value": "mgc",
+						"priority": null,
+						"type": "add"
+					},
+					{
+						"key": "system.damage.base.number",
+						"value": 4,
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.damage.base.denomination",
+						"value": 6,
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.damage.base.types",
+						"value": [
+							"fire"
+						],
+						"priority": null,
+						"type": "override"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
 			"tint": "#ffffff",
 			"transfer": false,
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!v95pdXrd54cNPEgV.LJX6kZfKnaAR8fL5"
 		},
 		{
@@ -322,66 +329,74 @@
 			"img": "icons/magic/fire/dagger-rune-enchant-flame-orange.webp",
 			"_id": "EUJi5ifukXLjebTR",
 			"type": "enchantment",
-			"system": {},
-			"changes": [
-				{
-					"key": "name",
-					"mode": 5,
-					"value": "Flame Blade, {}",
-					"priority": null
-				},
-				{
-					"key": "system.damage.parts",
-					"mode": 5,
-					"value": "[[\"5d6\", \"fire\"]]",
-					"priority": null
-				},
-				{
-					"key": "system.ability",
-					"mode": 5,
-					"value": "wis",
-					"priority": null
-				},
-				{
-					"key": "system.properties",
-					"mode": 2,
-					"value": "mgc",
-					"priority": null
-				},
-				{
-					"key": "system.damage.base.number",
-					"mode": 5,
-					"value": "5",
-					"priority": null
-				},
-				{
-					"key": "system.damage.base.denomination",
-					"mode": 5,
-					"value": "6",
-					"priority": null
-				},
-				{
-					"key": "system.damage.base.types",
-					"mode": 5,
-					"value": "[\"fire\"]",
-					"priority": null
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "name",
+						"value": "Flame Blade, {}",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.damage.parts",
+						"value": [
+							[
+								"5d6",
+								"fire"
+							]
+						],
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.ability",
+						"value": "wis",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.properties",
+						"value": "mgc",
+						"priority": null,
+						"type": "add"
+					},
+					{
+						"key": "system.damage.base.number",
+						"value": 5,
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.damage.base.denomination",
+						"value": 6,
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.damage.base.types",
+						"value": [
+							"fire"
+						],
+						"priority": null,
+						"type": "override"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
 			"tint": "#ffffff",
 			"transfer": false,
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!v95pdXrd54cNPEgV.EUJi5ifukXLjebTR"
 		},
 		{
@@ -430,60 +445,63 @@
 			"img": "icons/magic/fire/dagger-rune-enchant-flame-orange.webp",
 			"_id": "lieJNok9uiST3OMn",
 			"type": "enchantment",
-			"system": {},
-			"changes": [
-				{
-					"key": "name",
-					"mode": 5,
-					"value": "Flame Blade, {}",
-					"priority": null
-				},
-				{
-					"key": "system.ability",
-					"mode": 5,
-					"value": "wis",
-					"priority": null
-				},
-				{
-					"key": "system.properties",
-					"mode": 2,
-					"value": "mgc",
-					"priority": null
-				},
-				{
-					"key": "system.damage.base.number",
-					"mode": 5,
-					"value": "6",
-					"priority": null
-				},
-				{
-					"key": "system.damage.base.denomination",
-					"mode": 5,
-					"value": "6",
-					"priority": null
-				},
-				{
-					"key": "system.damage.base.types",
-					"mode": 5,
-					"value": "[\"fire\"]",
-					"priority": null
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "name",
+						"value": "Flame Blade, {}",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.ability",
+						"value": "wis",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.properties",
+						"value": "mgc",
+						"priority": null,
+						"type": "add"
+					},
+					{
+						"key": "system.damage.base.number",
+						"value": 6,
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.damage.base.denomination",
+						"value": 6,
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.damage.base.types",
+						"value": [
+							"fire"
+						],
+						"priority": null,
+						"type": "override"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
 			"tint": "#ffffff",
 			"transfer": false,
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!v95pdXrd54cNPEgV.lieJNok9uiST3OMn"
 		}
 	],

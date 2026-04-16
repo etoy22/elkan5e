@@ -335,24 +335,22 @@
 			"transfer": false,
 			"_id": "WPsCu3vohbfLyPbz",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.traits.dm.amount.fire",
-					"mode": 2,
-					"value": "5",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.dm.amount.fire",
+						"value": 5,
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"combat": null,
-				"seconds": 60,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -389,6 +387,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!GJ2Y6dxmMU4lWtlO.WPsCu3vohbfLyPbz"
 		}
 	],

@@ -259,12 +259,9 @@
 			"src": "icons/containers/barrels/barrel-walnut-steel-brown.webp",
 			"anchorX": 0.5,
 			"anchorY": 0.5,
-			"offsetX": 0,
-			"offsetY": 0,
 			"fit": "contain",
 			"scaleX": 1,
 			"scaleY": 1,
-			"rotation": 0,
 			"tint": "#ffffff",
 			"alphaThreshold": 0.75
 		},
@@ -315,7 +312,7 @@
 			"saturation": 0,
 			"contrast": 0
 		},
-		"detectionModes": [],
+		"detectionModes": {},
 		"occludable": {
 			"radius": 0
 		},
@@ -338,7 +335,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 2
 	},
 	"items": [
 		{
@@ -3009,38 +3007,46 @@
 			"name": "Legs Extended",
 			"origin": "Actor.dmgApparatusofKw",
 			"duration": {
-				"rounds": null,
-				"startTime": 0,
-				"seconds": null,
-				"combat": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"disabled": true,
 			"img": "icons/commodities/tech/transmission.webp",
 			"_id": "D6TOlFQbOM6V0Jv8",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.attributes.movement.walk",
-					"mode": 4,
-					"value": "30",
-					"priority": null
-				},
-				{
-					"key": "system.attributes.movement.swim",
-					"mode": 4,
-					"value": "30",
-					"priority": null
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.walk",
+						"value": 30,
+						"priority": null,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.attributes.movement.swim",
+						"value": 30,
+						"priority": null,
+						"type": "upgrade"
+					}
+				]
+			},
 			"description": "",
 			"tint": "#ffffff",
 			"transfer": false,
 			"statuses": [
 				"transformed"
 			],
+			"showIcon": 2,
+			"start": {
+				"combat": null,
+				"round": null,
+				"time": 0,
+				"turn": null,
+				"combatant": null,
+				"initiative": null
+			},
+			"folder": null,
 			"_key": "!actors.effects!mpdJBLAu02Z1g0py.D6TOlFQbOM6V0Jv8"
 		},
 		{
@@ -3048,25 +3054,33 @@
 			"name": "Claws Extended",
 			"origin": "Actor.dmgApparatusofKw",
 			"duration": {
-				"rounds": null,
-				"startTime": 0,
-				"seconds": null,
-				"combat": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"disabled": true,
 			"img": "icons/commodities/tech/coil-steel-grey.webp",
 			"_id": "9Sxe5orNBLhYpDwz",
-			"system": {},
-			"changes": [],
+			"system": {
+				"changes": []
+			},
 			"description": "",
 			"tint": "#ffffff",
 			"transfer": false,
 			"statuses": [
 				"transformed"
 			],
+			"showIcon": 2,
+			"start": {
+				"combat": null,
+				"round": null,
+				"time": 0,
+				"turn": null,
+				"combatant": null,
+				"initiative": null
+			},
+			"folder": null,
 			"_key": "!actors.effects!mpdJBLAu02Z1g0py.9Sxe5orNBLhYpDwz"
 		},
 		{
@@ -3074,18 +3088,16 @@
 			"name": "Forward Shutter Open",
 			"origin": "Actor.dmgApparatusofKw",
 			"duration": {
-				"rounds": null,
-				"startTime": 0,
-				"seconds": null,
-				"combat": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"disabled": true,
 			"img": "icons/commodities/tech/metal-blue.webp",
-			"system": {},
-			"changes": [],
+			"system": {
+				"changes": []
+			},
 			"description": "",
 			"tint": "#ffffff",
 			"transfer": false,
@@ -3093,6 +3105,16 @@
 				"transformed"
 			],
 			"_id": "xIiZeSr9KPqMrDFq",
+			"showIcon": 2,
+			"start": {
+				"combat": null,
+				"round": null,
+				"time": 0,
+				"turn": null,
+				"combatant": null,
+				"initiative": null
+			},
+			"folder": null,
 			"_key": "!actors.effects!mpdJBLAu02Z1g0py.xIiZeSr9KPqMrDFq"
 		},
 		{
@@ -3100,18 +3122,16 @@
 			"name": "Side Shutters Open",
 			"origin": "Actor.dmgApparatusofKw",
 			"duration": {
-				"rounds": null,
-				"startTime": 0,
-				"seconds": null,
-				"combat": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"disabled": true,
 			"img": "icons/commodities/tech/metal-panel.webp",
-			"system": {},
-			"changes": [],
+			"system": {
+				"changes": []
+			},
 			"description": "",
 			"tint": "#ffffff",
 			"transfer": false,
@@ -3119,6 +3139,16 @@
 				"transformed"
 			],
 			"_id": "sj7HGYh5KeLlZhfr",
+			"showIcon": 2,
+			"start": {
+				"combat": null,
+				"round": null,
+				"time": 0,
+				"turn": null,
+				"combatant": null,
+				"initiative": null
+			},
+			"folder": null,
 			"_key": "!actors.effects!mpdJBLAu02Z1g0py.sj7HGYh5KeLlZhfr"
 		},
 		{
@@ -3126,18 +3156,16 @@
 			"name": "Rear Hatch Open",
 			"origin": "Actor.dmgApparatusofKw",
 			"duration": {
-				"rounds": null,
-				"startTime": 0,
-				"seconds": null,
-				"combat": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"disabled": true,
 			"img": "icons/commodities/tech/frame-copper.webp",
-			"system": {},
-			"changes": [],
+			"system": {
+				"changes": []
+			},
 			"description": "",
 			"tint": "#ffffff",
 			"transfer": false,
@@ -3145,6 +3173,16 @@
 				"transformed"
 			],
 			"_id": "pvJazR3MqOCj5fq8",
+			"showIcon": 2,
+			"start": {
+				"combat": null,
+				"round": null,
+				"time": 0,
+				"turn": null,
+				"combatant": null,
+				"initiative": null
+			},
+			"folder": null,
 			"_key": "!actors.effects!mpdJBLAu02Z1g0py.pvJazR3MqOCj5fq8"
 		},
 		{
@@ -3152,23 +3190,31 @@
 			"name": "Lights Activated",
 			"origin": "Actor.dmgApparatusofKw",
 			"duration": {
-				"rounds": null,
-				"startTime": 0,
-				"seconds": null,
-				"combat": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"disabled": true,
 			"img": "icons/magic/light/light-lantern-lit-white.webp",
 			"_id": "rBFF2F7IQteiU8kL",
-			"system": {},
-			"changes": [],
+			"system": {
+				"changes": []
+			},
 			"description": "<p>Eyelike fixtures emit Bright Light in a 30-foot radius and Dim Light for an additional 30 feet.</p>",
 			"tint": "#ffffff",
 			"transfer": false,
 			"statuses": [],
+			"start": {
+				"combat": null,
+				"round": null,
+				"time": 0,
+				"turn": null,
+				"combatant": null,
+				"initiative": null
+			},
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!actors.effects!mpdJBLAu02Z1g0py.rBFF2F7IQteiU8kL"
 		}
 	],

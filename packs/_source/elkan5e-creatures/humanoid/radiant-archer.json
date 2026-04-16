@@ -315,28 +315,11 @@
 					"statuses": [
 						"condition-lab-triggler.blinded"
 					],
-					"changes": [
-						{
-							"key": "flags.midi-qol.disadvantage.attack.all",
-							"mode": 5,
-							"value": "1",
-							"priority": null
-						},
-						{
-							"key": "flags.midi-qol.grants.advantage.attack.all",
-							"mode": 5,
-							"value": "1",
-							"priority": null
-						}
-					],
 					"duration": {
-						"seconds": null,
-						"startTime": 1688256169,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null,
-						"combat": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"flags": {
 						"ActiveAuras": {
@@ -369,8 +352,33 @@
 					"transfer": false,
 					"img": "modules/condition-lab-triggler/icons/blinded.svg",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": [
+							{
+								"key": "flags.midi-qol.disadvantage.attack.all",
+								"value": 1,
+								"priority": null,
+								"type": "override"
+							},
+							{
+								"key": "flags.midi-qol.grants.advantage.attack.all",
+								"value": 1,
+								"priority": null,
+								"type": "override"
+							}
+						]
+					},
 					"tint": "#ffffff",
+					"showIcon": 2,
+					"start": {
+						"combat": null,
+						"round": null,
+						"time": 1688256169,
+						"turn": null,
+						"combatant": null,
+						"initiative": null
+					},
+					"folder": null,
 					"_key": "!actors.items.effects!owYPTwZRgGvaaIcc.yFXuw6RZNEpYxI9S.n1JtVUeu2kn66FRM"
 				}
 			],
@@ -1204,9 +1212,6 @@
 			"tint": "#ffffff",
 			"scaleX": 1,
 			"scaleY": 1,
-			"offsetX": 0,
-			"offsetY": 0,
-			"rotation": 0,
 			"anchorX": 0.5,
 			"anchorY": 0.5,
 			"fit": "contain",
@@ -1223,7 +1228,7 @@
 			"saturation": 0,
 			"contrast": 0
 		},
-		"detectionModes": [],
+		"detectionModes": {},
 		"appendNumber": false,
 		"prependAdjective": false,
 		"occludable": {
@@ -1247,7 +1252,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 1
 	},
 	"folder": "7CxetSc3gdsUyFOc",
 	"_id": "owYPTwZRgGvaaIcc",

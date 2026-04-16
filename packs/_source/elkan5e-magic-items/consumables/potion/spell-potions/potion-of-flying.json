@@ -196,30 +196,28 @@
 			"transfer": false,
 			"_id": "GIybtF2qEmtPCOZj",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.attributes.movement.hover",
-					"mode": 0,
-					"value": "true",
-					"priority": 50
-				},
-				{
-					"key": "system.attributes.movement.fly",
-					"mode": 4,
-					"value": "@attributes.movement.walk",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.hover",
+						"value": true,
+						"priority": 50,
+						"type": "custom"
+					},
+					{
+						"key": "system.attributes.movement.fly",
+						"value": "@attributes.movement.walk",
+						"priority": 20,
+						"type": "upgrade"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -256,6 +254,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!9N2bGe8TzLe33rWB.GIybtF2qEmtPCOZj"
 		}
 	],

@@ -40,23 +40,12 @@
 					"statuses": []
 				}
 			},
-			"changes": [
-				{
-					"key": "flags.midi-qol.grants.disadvantage.save.all",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 604800,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 604800,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"tint": "#ffffff",
 			"transfer": false,
@@ -69,7 +58,19 @@
 			],
 			"img": "icons/skills/wounds/illness-disease-glowing-green.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.grants.disadvantage.save.all",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					}
+				]
+			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!hEovVr2onzAqoTbz.Podq2B0qNxTBlH0c"
 		}
 	],

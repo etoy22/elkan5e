@@ -635,12 +635,9 @@
 			"src": "systems/dnd5e/tokens/beast/Lion.webp",
 			"anchorX": 0.5,
 			"anchorY": 0.5,
-			"offsetX": 0,
-			"offsetY": 0,
 			"fit": "contain",
 			"scaleX": 1.5,
 			"scaleY": 1.5,
-			"rotation": 0,
 			"tint": "#ffffff",
 			"alphaThreshold": 0.75
 		},
@@ -691,7 +688,7 @@
 			"saturation": 0,
 			"contrast": 0
 		},
-		"detectionModes": [],
+		"detectionModes": {},
 		"occludable": {
 			"radius": 0
 		},
@@ -714,7 +711,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 2
 	},
 	"items": [
 		{
@@ -1333,17 +1331,15 @@
 					"origin": "Item.mmRoar0000000000",
 					"_id": "jcp949sl7JYRdhdB",
 					"type": "base",
-					"system": {},
-					"changes": [],
+					"system": {
+						"changes": []
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": 1,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"description": "<p>The target has the &amp;Reference[Frightened apply=false] condition until the start of the attacking creature’s next turn.</p>",
 					"tint": "#ffffff",
@@ -1361,6 +1357,9 @@
 							"specialDuration": []
 						}
 					},
+					"showIcon": 2,
+					"start": null,
+					"folder": null,
 					"_key": "!actors.items.effects!M0QlmdMlZoaWIsPZ.mmRoar0000000000.jcp949sl7JYRdhdB"
 				},
 				{
@@ -1369,17 +1368,15 @@
 					"origin": "Item.mmRoar0000000000",
 					"_id": "sbId6Nv8mOtH5EKR",
 					"type": "base",
-					"system": {},
-					"changes": [],
+					"system": {
+						"changes": []
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": 0,
-						"seconds": 60,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": 60,
+						"units": "seconds",
+						"expiry": "turnStart",
+						"expired": false
 					},
 					"description": "<p>The target has the &amp;Reference[Paralyzed apply=false] condition, and it repeats the save at the end of each of its turns, ending the effect on itself on a success. After 1 minute, it succeeds automatically.</p>",
 					"tint": "#ffffff",
@@ -1397,6 +1394,16 @@
 							"enableCondition": ""
 						}
 					},
+					"showIcon": 2,
+					"start": {
+						"combat": null,
+						"round": null,
+						"time": 0,
+						"turn": null,
+						"combatant": null,
+						"initiative": null
+					},
+					"folder": null,
 					"_key": "!actors.items.effects!M0QlmdMlZoaWIsPZ.mmRoar0000000000.sbId6Nv8mOtH5EKR"
 				},
 				{
@@ -1405,17 +1412,15 @@
 					"origin": "Item.mmRoar0000000000",
 					"_id": "UUPAry5ZunpEnKkn",
 					"type": "base",
-					"system": {},
-					"changes": [],
+					"system": {
+						"changes": []
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"description": "<p>The target has the &amp;Reference[Prone apply=false] condition.</p>",
 					"tint": "#ffffff",
@@ -1433,6 +1438,9 @@
 							"specialDuration": []
 						}
 					},
+					"showIcon": 2,
+					"start": null,
+					"folder": null,
 					"_key": "!actors.items.effects!M0QlmdMlZoaWIsPZ.mmRoar0000000000.UUPAry5ZunpEnKkn"
 				}
 			],

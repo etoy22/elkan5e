@@ -168,9 +168,9 @@ function registerCustomEffectFields() {
  *
  */
 export function sheets() {
-	CONFIG.DND5E.sourcePacks.BACKGROUNDS = "elkan5e.elkan5e-background";
+	CONFIG.DND5E.sourcePacks.BACKGROUNDS = "elkan5e.elkan5e-ancestry-background";
 	CONFIG.DND5E.sourcePacks.CLASSES = "elkan5e.elkan5e-class";
-	CONFIG.DND5E.sourcePacks.RACES = "elkan5e.elkan-5e-ancestries";
+	CONFIG.DND5E.sourcePacks.RACES = "elkan5e.elkan5e-ancestry-background";
 
 	// Below breaks everything
 	// CONFIG.DND5E.sourcePacks.ITEMS = "elkan5e.elkan5e-equipment";

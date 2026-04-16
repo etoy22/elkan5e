@@ -4,18 +4,14 @@
 	"img": "icons/magic/earth/lava-stone-fire-eye.webp",
 	"effects": [
 		{
-			"changes": [],
 			"transfer": false,
 			"_id": "zFKNndjZPbV3376s",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 28800,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 28800,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"origin": null,
 			"tint": "#ffffff",
@@ -47,20 +43,17 @@
 			"statuses": [],
 			"img": "icons/magic/earth/lava-stone-fire-eye.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": []
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!l3PBmfstaAN5ybn3.zFKNndjZPbV3376s"
 		},
 		{
 			"name": "Prone",
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.l3PBmfstaAN5ybn3",
-			"changes": [
-				{
-					"key": "macro.StatusEffect",
-					"mode": 0,
-					"value": "prone",
-					"priority": 0
-				}
-			],
 			"transfer": false,
 			"flags": {
 				"dae": {
@@ -97,20 +90,29 @@
 			"img": "modules/elkan5e/icons/conditions/prone.svg",
 			"_id": "FqcVt8S2jVm9jFmj",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"value": "prone",
+						"priority": 0,
+						"type": "custom"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 0,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 0,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!l3PBmfstaAN5ybn3.FqcVt8S2jVm9jFmj"
 		}
 	],

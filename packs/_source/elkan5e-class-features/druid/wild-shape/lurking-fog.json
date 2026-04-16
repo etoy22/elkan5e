@@ -198,7 +198,6 @@
 		{
 			"name": "Lightly Obscured",
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.lrCo3T7H91Z8yCqg",
-			"changes": [],
 			"transfer": false,
 			"flags": {
 				"dae": {
@@ -236,33 +235,27 @@
 			"img": "modules/elkan5e/icons/conditions/obscured-lightly.svg",
 			"_id": "tj1Gtwz2P0pJUeSI",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": []
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!lrCo3T7H91Z8yCqg.tj1Gtwz2P0pJUeSI"
 		},
 		{
 			"name": "Heavily Obscured",
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.lrCo3T7H91Z8yCqg",
-			"changes": [
-				{
-					"key": "macro.StatusEffect",
-					"mode": 0,
-					"value": "obscuredheavily",
-					"priority": 0
-				}
-			],
 			"transfer": false,
 			"flags": {
 				"dae": {
@@ -299,20 +292,29 @@
 			"img": "modules/elkan5e/icons/conditions/obscured-heavily.svg",
 			"_id": "WBsl11ZFaHjxjAoB",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"value": "obscuredheavily",
+						"priority": 0,
+						"type": "custom"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!lrCo3T7H91Z8yCqg.WBsl11ZFaHjxjAoB"
 		}
 	],

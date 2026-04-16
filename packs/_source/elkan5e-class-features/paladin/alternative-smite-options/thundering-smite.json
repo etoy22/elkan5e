@@ -154,14 +154,6 @@
 		{
 			"name": "Prone",
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.0ucfEAdZzHZaqREC",
-			"changes": [
-				{
-					"key": "macro.StatusEffect",
-					"mode": 0,
-					"value": "prone",
-					"priority": 0
-				}
-			],
 			"transfer": false,
 			"flags": {
 				"dae": {
@@ -198,20 +190,29 @@
 			"_id": "RCT3XI1gcKIuebNF",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"statuses": [],
 			"tint": "#ffffff",
 			"img": "modules/elkan5e/icons/conditions/prone.svg",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"value": "prone",
+						"priority": 0,
+						"type": "custom"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!0ucfEAdZzHZaqREC.RCT3XI1gcKIuebNF"
 		}
 	],

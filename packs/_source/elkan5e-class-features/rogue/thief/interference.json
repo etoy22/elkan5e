@@ -112,34 +112,32 @@
 	"effects": [
 		{
 			"name": "Interference",
-			"changes": [
-				{
-					"key": "flags.midi-qol.disadvantage.concentration",
-					"mode": 2,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.advantage.all",
-					"mode": 5,
-					"value": "0",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"img": "icons/equipment/head/mask-carved-gargoyle-grey.webp",
 			"_id": "c3qpeueDiGsOgQUX",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.disadvantage.concentration",
+						"value": 1,
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "flags.midi-qol.advantage.all",
+						"value": 0,
+						"priority": 20,
+						"type": "override"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 7,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 7,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -178,6 +176,9 @@
 					"wallsBlock": "system"
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!k6X1hbsP2BxX11sq.c3qpeueDiGsOgQUX"
 		}
 	],

@@ -232,47 +232,12 @@
 					"statuses": []
 				}
 			},
-			"changes": [
-				{
-					"key": "ATL.light.dim",
-					"value": "45",
-					"mode": 2,
-					"priority": 40
-				},
-				{
-					"key": "ATL.light.bright",
-					"value": "15",
-					"mode": 2,
-					"priority": 40
-				},
-				{
-					"key": "ATL.light.animation",
-					"value": "{type: \"torch\", speed: 2, intensity: 2}",
-					"mode": 2,
-					"priority": 40
-				},
-				{
-					"key": "ATL.light.color",
-					"value": "#f8c377",
-					"mode": 5,
-					"priority": 40
-				},
-				{
-					"key": "ATL.light.alpha",
-					"value": "0.4",
-					"mode": 5,
-					"priority": 40
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 21600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 21600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"origin": "Compendium.elkan5e.elkan5e-equipment.Item.awbDqEGrcXCCwsr1",
 			"tint": "#ffffff",
@@ -280,9 +245,45 @@
 			"name": "Lantern",
 			"img": "icons/sundries/lights/lantern-iron-yellow.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "ATL.light.dim",
+						"value": 45,
+						"priority": 40,
+						"type": "add"
+					},
+					{
+						"key": "ATL.light.bright",
+						"value": 15,
+						"priority": 40,
+						"type": "add"
+					},
+					{
+						"key": "ATL.light.animation",
+						"value": "{type: \"torch\", speed: 2, intensity: 2}",
+						"priority": 40,
+						"type": "add"
+					},
+					{
+						"key": "ATL.light.color",
+						"value": "#f8c377",
+						"priority": 40,
+						"type": "override"
+					},
+					{
+						"key": "ATL.light.alpha",
+						"value": 0.4,
+						"priority": 40,
+						"type": "override"
+					}
+				]
+			},
 			"description": "",
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!awbDqEGrcXCCwsr1.LrInbjNDUIyEZCEH"
 		}
 	],

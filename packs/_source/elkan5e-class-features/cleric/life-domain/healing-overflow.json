@@ -40,28 +40,26 @@
 	"effects": [
 		{
 			"name": "Healing Overflow",
-			"changes": [
-				{
-					"key": "flags.midi-qol.onUseMacroName",
-					"mode": 0,
-					"value": "function.elkan5e.macros.features.healingOverflow, postDamageRoll",
-					"priority": 20
-				}
-			],
 			"transfer": true,
 			"img": "icons/magic/light/explosion-star-glow-silhouette.webp",
 			"_id": "nzuSkyG9x1G8tfvC",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.onUseMacroName",
+						"value": "function.elkan5e.macros.features.healingOverflow, postDamageRoll",
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.43O2lpH8Va14CKr9",
@@ -99,6 +97,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!43O2lpH8Va14CKr9.nzuSkyG9x1G8tfvC"
 		}
 	],

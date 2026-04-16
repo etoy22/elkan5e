@@ -4,37 +4,14 @@
 	"img": "icons/skills/movement/ball-spinning-blue.webp",
 	"effects": [
 		{
-			"changes": [
-				{
-					"key": "system.traits.ci.value",
-					"mode": 2,
-					"value": "paralyzed",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.ci.value",
-					"mode": 2,
-					"value": "restrained",
-					"priority": 20
-				},
-				{
-					"key": "system.attributes.movement.swim",
-					"mode": 4,
-					"value": "@attributes.movement.walk",
-					"priority": 25
-				}
-			],
 			"transfer": false,
 			"_id": "f4sMWSTGRVjOhRas",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"origin": null,
 			"tint": "#ffffff",
@@ -74,7 +51,31 @@
 			"statuses": [],
 			"img": "icons/skills/movement/ball-spinning-blue.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.ci.value",
+						"value": "paralyzed",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.ci.value",
+						"value": "restrained",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.attributes.movement.swim",
+						"value": "@attributes.movement.walk",
+						"priority": 25,
+						"type": "upgrade"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!Y24nyCt4lQreT5aH.f4sMWSTGRVjOhRas"
 		}
 	],
