@@ -102,16 +102,6 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedProperties": [
-				"vocal",
-				"somatic"
-			]
 		}
 	},
 	"system": {
@@ -200,7 +190,8 @@
 					},
 					"spellSlot": true,
 					"targets": []
-				}
+				},
+				"effectConditionText": "!target.traits.ci.value.has('poisoned')"
 			},
 			"3xWR9XSyZvMiNe82": {
 				"type": "save",
@@ -228,7 +219,11 @@
 				"effects": [
 					{
 						"_id": "arW8u7ZVD2YaZuUO",
-						"onSave": false
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -270,7 +265,9 @@
 					"onSave": "half"
 				},
 				"save": {
-					"ability": "str",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -281,7 +278,13 @@
 				"appliedEffects": [
 					"arW8u7ZVD2YaZuUO"
 				],
-				"effectConditionText": "!target.traits.ci.value.has('poisoned')"
+				"effectConditionText": "!target.traits.ci.value.has('poisoned')",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				}
 			}
 		},
 		"identifier": "ray-of-sickness"

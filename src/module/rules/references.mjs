@@ -1,3 +1,7 @@
+/**
+ * Applies refs rule behavior.
+ *
+ */
 export function refs() {
 	setupGeneralRefs();
 	setupCombatRefs();
@@ -19,6 +23,10 @@ export function refs() {
 	setupMonsterRefs();
 }
 
+/**
+ * Registers setup Combat Refs configuration.
+ *
+ */
 function setupCombatRefs() {
 	const base = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.";
 	const COMBAT_REFS = [
@@ -100,6 +108,10 @@ function setupCombatRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.e177956853ce4a88";
 }
 
+/**
+ * Registers setup Damage Refs configuration.
+ *
+ */
 function setupDamageRefs() {
 	const base = "Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.";
 	const DAMAGE_TYPES = [
@@ -127,6 +139,10 @@ function setupDamageRefs() {
 	});
 }
 
+/**
+ * Registers setup Spell Refs configuration.
+ *
+ */
 function setupSpellRefs() {
 	const base = "Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.";
 	const SPELL_REFS = [
@@ -209,6 +225,10 @@ function setupSpellRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.Vb2ZZXVGAa2KkPrG.JournalEntryPage.224baeb99c3b48a7";
 }
 
+/**
+ * Registers setup Creature Type Refs configuration.
+ *
+ */
 function setupCreatureTypeRefs() {
 	const base = "Compendium.elkan5e.elkan5e-rules.JournalEntry.ZJX2hgglCq6NyNSD.JournalEntryPage.";
 	const CREATURE_REFS = [
@@ -242,6 +262,10 @@ function setupCreatureTypeRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.ZJX2hgglCq6NyNSD.JournalEntryPage.1ZgNrOURIMuR0CnH";
 }
 
+/**
+ * Registers setup Movement Refs configuration.
+ *
+ */
 function setupMovementRefs() {
 	// Travel and movement
 
@@ -293,6 +317,10 @@ function setupMovementRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.f6db56ff5ad94d85";
 }
 
+/**
+ * Registers setup Vision Light Refs configuration.
+ *
+ */
 function setupVisionLightRefs() {
 	// Vision and light
 	CONFIG.DND5E.rules.vision =
@@ -315,6 +343,10 @@ function setupVisionLightRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.tF77rxp5fPPbE6Vx.JournalEntryPage.4dfREIDjG5N4fvxd";
 }
 
+/**
+ * Registers setup General Refs configuration.
+ *
+ */
 function setupGeneralRefs() {
 	CONFIG.DND5E.rules.inspiration =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.nkEPI89CiQnOaLYh";
@@ -344,6 +376,10 @@ function setupGeneralRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.5l8QNlgPDPOHpGID.JournalEntryPage.f17e4a3b7e024eb0";
 }
 
+/**
+ * Registers setup Actions Refs configuration.
+ *
+ */
 function setupActionsRefs() {
 	CONFIG.DND5E.rules.bonusaction =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.Cx12WCR9KlNL9o8d";
@@ -351,8 +387,16 @@ function setupActionsRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.EkKBA3oaiy1Kvs3c";
 }
 
+/**
+ * Registers setup Size Tags Item Refs configuration.
+ *
+ */
 function setupSizeTagsItemRefs() {}
 
+/**
+ * Registers setup Poisons Ref configuration.
+ *
+ */
 function setupPoisonsRef() {
 	CONFIG.DND5E.rules.contactpoison =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.kXnCEqqGUWRZeZDj";
@@ -366,6 +410,10 @@ function setupPoisonsRef() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.I6OMMWUaYCWR9xip";
 }
 
+/**
+ * Registers setup Condition Refs configuration.
+ *
+ */
 function setupConditionRefs() {
 	CONFIG.DND5E.rules.beingprone =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.bV8akkBdVUUG21CO";
@@ -393,9 +441,19 @@ function setupConditionRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.4ZOHN6tGvj54J6Kv";
 
 	CONFIG.DND5E.rules.disease =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.9b22fc59774a47f3";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.232cb157e7054330";
+	CONFIG.DND5E.rules.bloodied =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.2YZgnTbeQ4rGG6t9";
+	CONFIG.DND5E.rules.obscurred =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.FuFWdz6zw9P9VrON";
+	CONFIG.DND5E.rules.diseased = CONFIG.DND5E.rules.disease =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.C1uE5H2DfghUGEID";
 }
 
+/**
+ * Registers setup D20 Refs configuration.
+ *
+ */
 function setupD20Refs() {
 	CONFIG.DND5E.rules.d20test =
 		"Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.nxPH59t3iNtWJxnU";
@@ -407,13 +465,59 @@ function setupD20Refs() {
 		"Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.Vlri6Mp6grn9wt3g";
 }
 
+/**
+ * Registers setup Hazard Refs configuration.
+ *
+ */
 function setupHazardRefs() {
-	CONFIG.DND5E.rules.suffocating =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.e7rUhwl4HkTVE0Qs.JournalEntryPage.BIlnr0xYhqt4TGsi";
-	CONFIG.DND5E.rules.hazards =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.e7rUhwl4HkTVE0Qs.JournalEntryPage.5hyEitPd1Kb27fP5";
+	const base = "Compendium.elkan5e.elkan5e-rules.JournalEntry.e7rUhwl4HkTVE0Qs.JournalEntryPage.";
+	const HAZARD_PAGES = [
+		{ key: "hazards", id: "WEVQOPQ2c5j0bSTD" },
+		{ key: "environmentaleffects", id: "ZMfiHUPKTh8oYnk5" },
+		{ key: "blizzard", id: "dzPV4R746FCId3fb" },
+		{ key: "burning", id: "znHHmhO6vGjmeugR" },
+		{ key: "dehydration", id: "xZRo576gFkVzqTAA" },
+		{ key: "deepsnow", id: "XccX8ApfoV0pLjBN" },
+		{ key: "deepwater", id: "0i25Urgz8wWCf02q" },
+		{ key: "denseforest", id: "XxWh2q3PQ74ozzZb" },
+		{ key: "exposedlava", id: "N8OF4NNXEILTxSh0" },
+		{ key: "extremecold", id: "99czUtGCZD2ZTXVy" },
+		{ key: "extremeheat", id: "jXNT3HSmoecSmE47" },
+		{ key: "falling", id: "TDbwlHfW1Kd4sLIZ" },
+		{ key: "frigidwater", id: "VainaneWo3z1UvdD" },
+		{ key: "heavyfog", id: "UCIP87y4WF8mZZaM" },
+		{ key: "heavyprecipitation", id: "Cxrt8iQnflR7rNXu" },
+		{ key: "highaltitude", id: "y1BYEyDSsWcCxd9l" },
+		{ key: "lightfog", id: "vFzSsBIlzNASDVMg" },
+		{ key: "loosesand", id: "C6U0KPMCU05Q6LpC" },
+		{ key: "malnutrition", id: "IxUkC78G9mRb3xQO" },
+		{ key: "muddyterrain", id: "Q5mBAYRUw8Xbb6fj" },
+		{ key: "plantsundergrowth", id: "vHkK402DiJ3WS956" },
+		{ key: "poisonousfumes", id: "nXrA1SrhzvFfERkH" },
+		{ key: "pollutedwater", id: "ujicgbpVFbZ9XMfo" },
+		{ key: "rubblerocks", id: "ZftAr7nx6CNMxyCS" },
+		{ key: "rockyterrain", id: "hrFhtm1nUpBCE4us" },
+		{ key: "sandstorm", id: "u5ugGezm5QzpDOC6" },
+		{ key: "shallowbog", id: "sanzrKa5XI3QToAU" },
+		{ key: "slipperyice", id: "X8bksncR7EcaV0ov" },
+		{ key: "strongwind", id: "BsWkNDqruDAuGwZU" },
+		{ key: "suffocating", id: "NJdquJJIddZbeKdw" },
+		{ key: "suffocation", id: "NJdquJJIddZbeKdw" },
+		{ key: "suckingground", id: "Ar30uhkDfcespn3h" },
+		{ key: "thinice", id: "xK13cz7y8NL4nKk5" },
+		{ key: "thornbush", id: "R2sqqN0gWw8XKR47" },
+		{ key: "thunderstorm", id: "EtQNW6ECR6xpGsjk" },
+	];
+	if (!CONFIG.DND5E.rules) CONFIG.DND5E.rules = {};
+	for (const { key, id } of HAZARD_PAGES) {
+		CONFIG.DND5E.rules[key] = `${base}${id}`;
+	}
 }
 
+/**
+ * Registers setup Rest Refs configuration.
+ *
+ */
 function setupRestRefs() {
 	CONFIG.DND5E.rules.resting =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.dpHJXYLigIdEseIb";
@@ -423,6 +527,10 @@ function setupRestRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.6cLtjbHn4KV2R7G9";
 }
 
+/**
+ * Registers setup Social Mechanics Refs configuration.
+ *
+ */
 function setupSocialMechanicsRefs() {
 	CONFIG.DND5E.rules.attitude =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.ahMxQJTGDhq08GWQ";
@@ -434,6 +542,10 @@ function setupSocialMechanicsRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.BNxLbtJofbNGzjsp";
 }
 
+/**
+ * Registers setup Items Refs configuration.
+ *
+ */
 function setupItemsRefs() {
 	CONFIG.DND5E.rules.multipleitemsofthesamekind = CONFIG.DND5E.rules.combiningmagicaleffects =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.uWa3L8lGJKgICYHt";
@@ -455,6 +567,10 @@ function setupItemsRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.Vb2ZZXVGAa2KkPrG.JournalEntryPage.cc2f4f7442e84939";
 }
 
+/**
+ * Registers setup Monster Refs configuration.
+ *
+ */
 function setupMonsterRefs() {
 	CONFIG.DND5E.rules.legendaryactions =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.ZJX2hgglCq6NyNSD.JournalEntryPage.d653531e5e58444e";
@@ -466,6 +582,10 @@ function setupMonsterRefs() {
 		"Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.BMoxmXB8pX6bOBus";
 }
 
+/**
+ * Registers setuptraps Refs configuration.
+ *
+ */
 function setuptrapsRefs() {
 	CONFIG.DND5E.rules.detectingtraps =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.0df9567e7f23426a";

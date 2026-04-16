@@ -1,3 +1,7 @@
+/**
+ * Runs init Warlock Spell Slot class feature automation.
+ *
+ */
 export function initWarlockSpellSlot() {
 	CONFIG.DND5E.spellcasting.elkanWarlock = {
 		label: "Spellcasting (Elkan Warlock)",

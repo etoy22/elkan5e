@@ -316,7 +316,6 @@ export async function updateToolTypes() {
 			continue;
 		}
 
-		console.log(`Elkan 5e | Item found: ${item.name}`);
 		const desiredType = getToolType(key, TOOL_SETTING);
 		const currentType = foundry.utils.getProperty(item, "system.type.value") ?? "";
 

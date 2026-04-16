@@ -15,7 +15,8 @@
 			"reactionCondition": "",
 			"otherCondition": "",
 			"effectCondition": "",
-			"rollAttackPerTarget": "default"
+			"rollAttackPerTarget": "default",
+			"onUseMacroName": "[postActiveEffects]ItemMacro"
 		},
 		"midiProperties": {
 			"nodam": false,
@@ -40,15 +41,10 @@
 			"idv": false,
 			"ida": false
 		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedProperties": [
-				"vocal",
-				"somatic"
-			]
+		"dae": {
+			"macro": {
+				"command": "const targets = workflow?.failedSaves ?? new Set(); if (!targets?.size) return; return await elkan5e.macros.features.push({ ...workflow, targets }, false, 10, 0, true);"
+			}
 		}
 	},
 	"system": {
@@ -65,7 +61,7 @@
 			"license": ""
 		},
 		"activation": {
-			"type": "action",
+			"type": "bonus",
 			"condition": "",
 			"value": 1
 		},
@@ -113,8 +109,7 @@
 		},
 		"properties": [
 			"vocal",
-			"somatic",
-			"mgc"
+			"somatic"
 		],
 		"activities": {
 			"oxpi8Zjhluobe4k5": {
@@ -230,7 +225,8 @@
 				"name": ""
 			}
 		},
-		"identifier": "thunderwave-(1-ki)"
+		"identifier": "thunderwave-(1-ki)",
+		"method": "innate"
 	},
 	"_id": "MKvNn3Q5xPa0vEK2",
 	"_key": "!items!MKvNn3Q5xPa0vEK2"

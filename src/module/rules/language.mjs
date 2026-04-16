@@ -1,5 +1,6 @@
 /**
- * Changes Foundry's languages to fit that of Elkan 5e.
+ * Applies language rule behavior.
+ *
  */
 export function language() {
 	let lang = game.settings.get("elkan5e", "languageSystem");

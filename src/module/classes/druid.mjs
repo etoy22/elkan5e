@@ -1,6 +1,7 @@
 /**
- * Adds functionality to Archdruid.
- * @param {Actor} actor - The actor instance.
+ * Runs arch Druid class feature automation.
+ *
+ * @param {*} actor - Actor document to process.
  */
 export function archDruid(actor) {
 	if (

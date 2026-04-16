@@ -1,0 +1,287 @@
+{
+	"name": "Volatile Creation",
+	"type": "feat",
+	"img": "icons/skills/toxins/cauldron-pot-bubbles-green.webp",
+	"effects": [
+		{
+			"flags": {
+				"ActiveAuras": {
+					"isAura": false,
+					"radius": "null",
+					"aura": "None",
+					"alignment": "",
+					"type": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"displayTemp": false,
+					"nameOverride": ""
+				},
+				"dae": {
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"stackable": "none",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"dontApply": false,
+					"showIcon": false
+				}
+			},
+			"changes": [
+				{
+					"key": "flags.midi-qol.disadvantage.attack.all",
+					"mode": 5,
+					"value": "1",
+					"priority": 50
+				},
+				{
+					"key": "flags.midi-qol.disadvantage.ability.check.all",
+					"mode": 5,
+					"value": "1",
+					"priority": 50
+				},
+				{
+					"key": "flags.midi-qol.OverTime",
+					"mode": 2,
+					"value": "turn=end,\\nsaveAbility=con,\\nsaveDC=13",
+					"priority": 20
+				}
+			],
+			"duration": {
+				"seconds": 60,
+				"startTime": null,
+				"rounds": null,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null,
+				"combat": null
+			},
+			"_id": "ZcfVtDTeUnYRQIjY",
+			"disabled": false,
+			"origin": null,
+			"tint": "#ffffff",
+			"transfer": false,
+			"name": "Poisoned",
+			"description": "",
+			"statuses": [],
+			"img": "modules/elkan5e/icons/conditions/poisoned.svg",
+			"type": "base",
+			"system": {},
+			"_key": "!items.effects!FDhep4CajGft1kq6.ZcfVtDTeUnYRQIjY"
+		}
+	],
+	"folder": null,
+	"system": {
+		"description": {
+			"value": "<p>The [[lookup @name lowercase]] was created through unstable magic. When it dies, all creatures within 10 ft. of the [[lookup @name lowercase]] must make a DC 13 constitution saving throw or take 4d10 poison damage and be poisoned for one minute (save for half damage) (save ends).</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "Elkan 5e",
+			"revision": 1,
+			"rules": "2024"
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"type": {
+			"value": "monster",
+			"subtype": ""
+		},
+		"requirements": "",
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "damage",
+				"activation": {
+					"type": "special",
+					"value": 1,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "",
+					"units": "",
+					"special": "",
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "ZcfVtDTeUnYRQIjY"
+					}
+				],
+				"range": {
+					"units": "",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": "ft"
+					},
+					"affects": {
+						"count": "10",
+						"type": "creature",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"critical": {
+						"allow": false,
+						"bonus": ""
+					},
+					"parts": [
+						{
+							"number": 4,
+							"denomination": 10,
+							"bonus": "",
+							"types": [
+								"poison"
+							],
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"scaling": {
+								"mode": "whole",
+								"number": null,
+								"formula": ""
+							}
+						}
+					]
+				}
+			},
+			"dnd5eactivity100": {
+				"_id": "dnd5eactivity100",
+				"type": "save",
+				"activation": {
+					"type": "special",
+					"value": 1,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "",
+					"units": "",
+					"special": "",
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "ZcfVtDTeUnYRQIjY",
+						"onSave": false
+					}
+				],
+				"range": {
+					"units": "",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": "ft"
+					},
+					"affects": {
+						"count": "10",
+						"type": "creature",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": [
+						{
+							"number": 4,
+							"denomination": 10,
+							"bonus": "",
+							"types": [
+								"poison"
+							],
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"scaling": {
+								"mode": "whole",
+								"number": null,
+								"formula": ""
+							}
+						}
+					]
+				},
+				"save": {
+					"ability": "con",
+					"dc": {
+						"calculation": "",
+						"formula": "13"
+					}
+				}
+			}
+		},
+		"identifier": "volatile-creation",
+		"enchant": {},
+		"prerequisites": {
+			"level": null
+		},
+		"properties": []
+	},
+	"_id": "FDhep4CajGft1kq6",
+	"_key": "!items!FDhep4CajGft1kq6"
+}

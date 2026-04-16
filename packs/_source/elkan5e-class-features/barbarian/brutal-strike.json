@@ -284,7 +284,7 @@
 			"disabled": false,
 			"duration": {
 				"startTime": null,
-				"seconds": null,
+				"seconds": 7,
 				"combat": null,
 				"rounds": null,
 				"turns": null,
@@ -336,7 +336,13 @@
 			"itemCondition": "",
 			"reactionCondition": "",
 			"otherCondition": "",
-			"effectCondition": ""
+			"effectCondition": "",
+			"onUseMacroName": "[postActiveEffects]ItemMacro"
+		},
+		"dae": {
+			"macro": {
+				"command": "const id = workflow?.activity?._id ?? workflow?.activity?.id; if (id !== \"zDepr4MhHiVTNY0E\") return; const targets = workflow?.targets ?? workflow?.hitTargets ?? new Set(); if (!targets?.size) return; return await elkan5e.macros.features.push({ ...workflow, targets }, false, 15, 0, true);"
+			}
 		}
 	},
 	"_key": "!items!k0AQeuGS4dz9D6XY"

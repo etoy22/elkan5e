@@ -8,6 +8,12 @@ const WILD_BLOOD_SPELL_IDENTIFIERS = new Set([
 	"prismatic-spray",
 ]);
 
+/**
+ * Runs rage class feature automation.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function rage(workflow) {
 	console.log("Elkan 5e | Rage triggered");
 	const actor = workflow.actor;
@@ -27,6 +33,12 @@ export async function rage(workflow) {
 	}
 }
 
+/**
+ * Runs wild Blood class feature automation.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function wildBlood(workflow) {
 	const item = workflow.item;
 	const scope = workflow.scope;
@@ -35,7 +47,12 @@ export async function wildBlood(workflow) {
 	if (item.type !== "spell" || !item.system.activities) return;
 
 	const activityId = scope.workflow.uuid?.split(".").pop();
-	let type = item.system.activities.find((a) => a.id === activityId).type;
+	const activity =
+		item.system.activities?.[activityId] ??
+		Object.values(item.system.activities ?? {}).find((a) => a?.id === activityId);
+	if (!activity) return;
+
+	const type = activity.type;
 	const level = item.system.level;
 	const TABLE_UUIDS = [
 		null, // No table for level 0 spells

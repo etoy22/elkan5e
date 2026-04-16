@@ -13,7 +13,7 @@
 					"type": "reaction",
 					"value": null,
 					"override": false,
-					"condition": ""
+					"condition": "computeDistance(tokenUuid, targetUuid) <= 60 && workflow?.damageItem?.damageDetail?.some(detail => ['healing','temphp'].includes(detail.type))"
 				},
 				"consumption": {
 					"scaling": {

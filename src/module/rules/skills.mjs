@@ -1,8 +1,16 @@
+/**
+ * Applies skills rule behavior.
+ *
+ */
 export function skills() {
 	engineering();
 	setupSkillReferences();
 }
 
+/**
+ * Applies engineering rule behavior.
+ *
+ */
 export function engineering() {
 	CONFIG.DND5E.skills.eng = {
 		label: "Engineering",
@@ -13,6 +21,10 @@ export function engineering() {
 	};
 }
 
+/**
+ * Registers setup Skill References configuration.
+ *
+ */
 export function setupSkillReferences() {
 	const base = "Compendium.elkan5e.elkan5e-rules.JournalEntry.rv19GFzEa0nMTuAF.JournalEntryPage.";
 	const SKILLS = [

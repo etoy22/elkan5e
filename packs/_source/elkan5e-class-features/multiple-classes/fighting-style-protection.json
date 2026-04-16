@@ -32,10 +32,6 @@
 			"otherCondition": ""
 		},
 		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
 			"migratedUses": 0
 		}
 	},
@@ -69,19 +65,15 @@
 				"activation": {
 					"type": "reaction",
 					"value": 1,
-					"condition": "Must be wearing a shield.",
+					"condition": "reaction !== 'isHit' && actor.items.some(i => i.system?.equipped && ((i.type === 'equipment' && i.system?.type?.value === 'shield') || (i.type === 'weapon' && ['mwak','msak'].includes(i.system?.actionType))))",
 					"override": false
 				},
 				"consumption": {
 					"targets": [
 						{
 							"type": "itemUses",
-							"target": "",
 							"value": "1",
-							"scaling": {
-								"mode": "",
-								"formula": ""
-							}
+							"target": ""
 						}
 					],
 					"scaling": {
@@ -135,6 +127,15 @@
 					"name": "",
 					"prompt": false,
 					"visible": false
+				},
+				"name": "",
+				"img": "",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": ""
 				}
 			}
 		},

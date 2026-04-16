@@ -1,0 +1,250 @@
+{
+	"folder": "i2AqXxSEvV5le2VH",
+	"name": "Channel Conviction: Expose Weakness",
+	"type": "feat",
+	"_id": "0ZGg51hvC0shFDzx",
+	"img": "icons/skills/trades/academics-investigation-study-blue.webp",
+	"system": {
+		"activities": {
+			"HMCjMHjHHByjfT2H": {
+				"type": "utility",
+				"_id": "HMCjMHjHHByjfT2H",
+				"activation": {
+					"type": "bonus",
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": ""
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "TXmTDjsHc5DPs2wc"
+					}
+				],
+				"range": {
+					"units": "self",
+					"override": false,
+					"special": "",
+					"value": "30"
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": "radius",
+						"size": "30",
+						"count": ""
+					},
+					"affects": {
+						"choice": false,
+						"type": "enemy",
+						"count": "",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false,
+					"identifier": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"skipConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"rollAs": "target",
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"name": "",
+				"img": ""
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [
+				{
+					"period": "sr",
+					"type": "recoverAll"
+				}
+			],
+			"max": "1"
+		},
+		"advancement": [],
+		"description": {
+			"value": "<p><strong>Bonus Action </strong>- 1 Creature (90 ft.) - 1 Round - 1/Short Rest -Magical</p><p>Unlike other abilities, you do not need to be able to see your target to use this ability. If you use this ability when your supposed target is not actually in range, the ability has no effect.</p><ul><li><p>Your attacks against the creature have advantage.</p></li><li><p>You temporarily remove all of the target's damage resistances.</p></li><li><p>You remove all temporary hit points, illusory image effects, the &amp;reference[invisible] condition, and transformations affecting the target.</p></li></ul><p><em>Creatures that are permanently invisible, such as invisible stalkers, begin to glow for 1 minute and return to invisibility afterwards.</em></p>",
+			"chat": ""
+		},
+		"identifier": "expose-weakness",
+		"source": {
+			"revision": 1,
+			"rules": "2024",
+			"book": "",
+			"page": "",
+			"custom": "elkan5e.com/paladin",
+			"license": ""
+		},
+		"crewed": false,
+		"enchant": {},
+		"prerequisites": {
+			"items": [],
+			"repeatable": false,
+			"level": null
+		},
+		"properties": [
+			"mgc"
+		],
+		"requirements": "Inquisitor 3/10",
+		"type": {
+			"value": "subclass",
+			"subtype": ""
+		}
+	},
+	"effects": [
+		{
+			"name": "Expose Weakness",
+			"img": "icons/skills/trades/academics-investigation-study-blue.webp",
+			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.0ZGg51hvC0shFDzx",
+			"_id": "TXmTDjsHc5DPs2wc",
+			"type": "base",
+			"system": {},
+			"changes": [
+				{
+					"key": "flags.midi-qol.grants.advantage.attack.all",
+					"mode": 2,
+					"value": "1",
+					"priority": 20
+				}
+			],
+			"disabled": false,
+			"duration": {
+				"startTime": null,
+				"combat": null,
+				"seconds": 7,
+				"rounds": 1,
+				"turns": null,
+				"startRound": null,
+				"startTurn": null
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [],
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"showIcon": true,
+					"disableIncapacitated": false,
+					"durationExpression": "",
+					"specialDuration": [
+						"isHit"
+					],
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "All",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"_key": "!items.effects!0ZGg51hvC0shFDzx.TXmTDjsHc5DPs2wc"
+		}
+	],
+	"_key": "!items!0ZGg51hvC0shFDzx"
+}
