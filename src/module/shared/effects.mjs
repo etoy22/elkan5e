@@ -204,7 +204,7 @@ const valueIsTruthy = (value) => {
  *
  * @param {*} actor - Actor document to process.
  * @param {*} trait - Trait.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 export function hasSpecialTrait(actor, trait) {
 	const key = String(trait ?? "")
@@ -268,7 +268,7 @@ export function hasSpecialTrait(actor, trait) {
  * Shared helper for is Push Blocked.
  *
  * @param {*} actor - Actor document to process.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 export function isPushBlocked(actor) {
 	if (!actor) return false;
@@ -300,7 +300,7 @@ export function isPushBlocked(actor) {
  * Shared helper for has Push Resist.
  *
  * @param {*} actor - Actor document to process.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 export function hasPushResist(actor) {
 	if (!actor) return false;

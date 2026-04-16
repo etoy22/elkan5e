@@ -26,7 +26,7 @@ const CLASS_SPECIFIC_DIR = path.join(SPELLS_ROOT, "spells-class-specific-version
  * Utility function for normalize Spell Level.
  *
  * @param {*} rawLevel - Raw Level.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function normalizeSpellLevel(rawLevel) {
 	const level = Number(rawLevel);
@@ -39,7 +39,7 @@ function normalizeSpellLevel(rawLevel) {
  * Utility function for get Expected Spell Dir.
  *
  * @param {*} level - Level.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function getExpectedSpellDir(level) {
 	return level === 0 ? "cantrip" : `level-${level}`;
@@ -49,7 +49,7 @@ function getExpectedSpellDir(level) {
 /**
  * Utility function for random Id.
  *
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function randomId() {
 	return crypto.randomBytes(9).toString("base64url").slice(0, 16);
@@ -59,7 +59,7 @@ function randomId() {
  * Utility function for load Json.
  *
  * @param {*} file - Filesystem path to process.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function loadJson(file) {
 	return JSON.parse(fs.readFileSync(file, "utf8"));
@@ -70,7 +70,6 @@ function loadJson(file) {
  *
  * @param {*} file - Filesystem path to process.
  * @param {*} data - Data object used for processing.
- * @returns {void} Operation result.
  */
 function saveJson(file, data) {
 	fs.writeFileSync(file, JSON.stringify(data, null, "\t"));
@@ -79,7 +78,7 @@ function saveJson(file, data) {
 /**
  * Utility function for build Spell Level Map.
  *
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function buildSpellLevelMap() {
 	const map = new Map();
@@ -110,7 +109,7 @@ function buildSpellLevelMap() {
 /**
  * Utility function for build Class Spell Map.
  *
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function buildClassSpellMap() {
 	const data = loadJson(SPELLS_BY_CLASS_PATH);
@@ -125,7 +124,7 @@ function buildClassSpellMap() {
 /**
  * Utility function for build School Spell Map.
  *
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function buildSchoolSpellMap() {
 	const data = loadJson(SPELLS_BY_SCHOOL_PATH);
@@ -141,7 +140,7 @@ function buildSchoolSpellMap() {
  * Utility function for uuid To Id.
  *
  * @param {*} uuid - Identifier value.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function uuidToId(uuid) {
 	const parts = uuid.split(".");
@@ -154,7 +153,7 @@ function uuidToId(uuid) {
  * @param {*} spells - Spells.
  * @param {*} levelMap - Level Map.
  * @param {*} maxLevel - Max Level.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function filterByLevel(spells, levelMap, maxLevel) {
 	return spells.filter((uuid) => {
@@ -169,7 +168,7 @@ function filterByLevel(spells, levelMap, maxLevel) {
  * @param {*} data - Data object used for processing.
  * @param {*} name - Name value used by the operation.
  * @param {*} identifier - Identifier.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function ensurePage(data, name, identifier) {
 	let page = data.pages.find((p) => p.name === name && p.type === "spells");
@@ -208,7 +207,7 @@ function ensurePage(data, name, identifier) {
  * @param {*} data - Data object used for processing.
  * @param {*} name - Name value used by the operation.
  * @param {*} identifier - Identifier.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function ensureSchoolPage(data, name, identifier) {
 	let page = data.pages.find((p) => p.name === name && p.type === "spells");
@@ -247,7 +246,6 @@ function ensureSchoolPage(data, name, identifier) {
  * @param {*} data - Data object used for processing.
  * @param {*} classSpellMap - Class Spell Map.
  * @param {*} levelMap - Level Map.
- * @returns {void} Operation result.
  */
 function updateSpellswordAndMysticTrickster(data, classSpellMap, levelMap) {
 	for (const page of data.pages || []) {
@@ -269,7 +267,6 @@ function updateSpellswordAndMysticTrickster(data, classSpellMap, levelMap) {
  * @param {*} classSpellMap - Class Spell Map.
  * @param {*} schoolMap - School Map.
  * @param {*} excludedSpellUuids - Excluded Spell Uuids.
- * @returns {void} Operation result.
  */
 function updateWizardSchools(data, classSpellMap, schoolMap, excludedSpellUuids = new Set()) {
 	const wizardSpells = new Set(classSpellMap.get("wizard") || []);
@@ -298,7 +295,7 @@ function updateWizardSchools(data, classSpellMap, schoolMap, excludedSpellUuids 
  *
  * @param {*} dir - Directory path to process.
  * @param {*} list - List.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function walkJsonFiles(dir, list = []) {
 	return fs.readdirSync(dir, { withFileTypes: true }).reduce((acc, entry) => {
@@ -312,7 +309,7 @@ function walkJsonFiles(dir, list = []) {
 /**
  * Utility function for build Class Specific Spell Set.
  *
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function buildClassSpecificSpellSet() {
 	if (!fs.existsSync(CLASS_SPECIFIC_DIR)) return new Set();
@@ -331,7 +328,6 @@ function buildClassSpecificSpellSet() {
  *
  * @param {*} data - Data object used for processing.
  * @param {*} excludedSpellUuids - Excluded Spell Uuids.
- * @returns {void} Operation result.
  */
 function updateSchools(data, excludedSpellUuids = new Set()) {
 	const schoolNames = {
@@ -372,7 +368,6 @@ function updateSchools(data, excludedSpellUuids = new Set()) {
  * Utility function for update Subclass Grant Pages.
  *
  * @param {*} subclassData - Subclass Data.
- * @returns {void} Operation result.
  */
 function updateSubclassGrantPages(subclassData) {
 	const skipNames = new Set([
@@ -403,7 +398,7 @@ function updateSubclassGrantPages(subclassData) {
 		if (path.basename(file) === "_folder.json") continue;
 		const data = loadJson(file);
 		const spells = new Set();
-		for (const adv of data.system?.advancement || []) {
+		for (const adv of Object.values(data.system?.advancement ?? {})) {
 			for (const item of adv.configuration?.items || []) {
 				if (typeof item?.uuid === "string" && item.uuid.includes("elkan5e-spells")) {
 					spells.add(item.uuid);
@@ -424,7 +419,6 @@ function updateSubclassGrantPages(subclassData) {
 /**
  * Utility function for run.
  *
- * @returns {void} Operation result.
  */
 function run() {
 	const levelMap = buildSpellLevelMap();

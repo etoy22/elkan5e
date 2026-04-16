@@ -1,7 +1,6 @@
 /**
  * Applies formating rule behavior.
  *
- * @returns {void} Operation result.
  */
 export function formating() {
 	ruleType();
@@ -19,7 +18,6 @@ export function formating() {
 /**
  * Applies rule Type rule behavior.
  *
- * @returns {void} Operation result.
  */
 export function ruleType() {
 	CONFIG.DND5E.ruleTypes.weaponProperty = {
@@ -39,7 +37,6 @@ export function ruleType() {
 /**
  * Applies activation rule behavior.
  *
- * @returns {void} Operation result.
  */
 export function activation() {
 	const ACTIVATION_TYPES = {
@@ -82,7 +79,6 @@ export function activation() {
 /**
  * Applies mats rule behavior.
  *
- * @returns {void} Operation result.
  */
 export function mats() {
 	CONFIG.DND5E.lootTypes.spellComponents = {
@@ -96,7 +92,6 @@ export function mats() {
 /**
  * Applies sub Features rule behavior.
  *
- * @returns {void} Operation result.
  */
 export function subFeatures() {
 	CONFIG.DND5E.featureTypes.class.subtypes.precision = "Precision Attack";
@@ -123,7 +118,6 @@ export function subFeatures() {
 /**
  * Applies traits rule behavior.
  *
- * @returns {void} Operation result.
  */
 export function traits() {
 	CONFIG.DND5E.characterFlags ??= {};
@@ -140,7 +134,6 @@ export function traits() {
 /**
  * Registers register Custom Effect Fields configuration.
  *
- * @returns {void} Operation result.
  */
 function registerCustomEffectFields() {
 	Hooks.on("dae.modifySpecials", (_actorType, specials) => {
@@ -173,7 +166,6 @@ function registerCustomEffectFields() {
 /**
  * Applies sheets rule behavior.
  *
- * @returns {void} Operation result.
  */
 export function sheets() {
 	CONFIG.DND5E.sourcePacks.BACKGROUNDS = "elkan5e.elkan5e-background";

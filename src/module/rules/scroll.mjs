@@ -1,7 +1,6 @@
 /**
  * Applies scroll rule behavior.
  *
- * @returns {void} Operation result.
  */
 export function scroll() {
 	console.log("Elkan 5e  |  Initializing Scrolls");

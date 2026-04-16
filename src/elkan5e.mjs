@@ -48,7 +48,6 @@ import * as Spells from "./module/spells/index.mjs";
 /**
  * Registers Hooks.
  *
- * @returns {void} Operation result.
  */
 function registerHooks() {
 	Hooks.once("init", async () => {
@@ -72,14 +71,16 @@ function registerHooks() {
 	});
 
 	Hooks.once("ready", () => {
-		try {
-			gameSettingsMigrate();
-			conditionsReady();
-			updateToolTypes();
-			startDialog();
-		} catch (error) {
-			console.error("Elkan 5e | Ready Hook Error:", error);
-		}
+		void (async () => {
+			try {
+				await gameSettingsMigrate();
+				conditionsReady();
+				updateToolTypes();
+				await startDialog();
+			} catch (error) {
+				console.error("Elkan 5e | Ready Hook Error:", error);
+			}
+		})();
 	});
 
 	Hooks.on("dnd5e.preRollHitDieV2", (config) => {

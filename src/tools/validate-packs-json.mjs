@@ -10,7 +10,7 @@ const PACK_SOURCE_ROOT = path.resolve(__dirname, "..", "..", "packs", "_source")
  * Utility function for walk.
  *
  * @param {*} dir - Directory path to process.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function walk(dir) {
 	const out = [];
@@ -28,7 +28,6 @@ function walk(dir) {
  * @param {*} filePath - Filesystem path to process.
  * @param {*} err - Err.
  * @param {*} consoleImpl - Console Impl.
- * @returns {void} Operation result.
  */
 function logParseError(filePath, err, consoleImpl) {
 	consoleImpl.error("PARSE ERROR:", filePath);
@@ -60,7 +59,7 @@ function logParseError(filePath, err, consoleImpl) {
  * Utility function for validate Packs Json.
  *
  * @param {*} options1 - Options object.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 export function validatePacksJson({ root = PACK_SOURCE_ROOT, consoleImpl = console } = {}) {
 	const files = walk(root);
