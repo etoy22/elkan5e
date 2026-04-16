@@ -62,7 +62,7 @@ function setupCombatRefs() {
 	CONFIG.DND5E.rules.instantdeath =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.EmlapwlGtPJP8US0";
 	CONFIG.DND5E.rules.knockingacreatureout =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.Fwd3U6gs6IAybt7Q";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.unGgf3TA3iSawYAn";
 	CONFIG.DND5E.rules.temporaryhitpoints = CONFIG.DND5E.rules.temphp =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.77jn4POOPOWB3Iq8";
 	CONFIG.DND5E.rules.deathsavingthrows = CONFIG.DND5E.rules.deathsaves =
@@ -188,25 +188,25 @@ function setupSpellRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.sCJqoQlaDzseYmXn";
 
 	CONFIG.DND5E.rules.castaspell =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.0d24b4fb97474b46";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.828ee027436f41bc";
 	CONFIG.DND5E.rules.bonusactioncasting =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.ca46818b814b4230";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.bc1522abf9ea49e6";
 	CONFIG.DND5E.rules.reactioncasting =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.8890d648939f48c3";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.469656e160c446ef";
 	CONFIG.DND5E.rules.longercastingtimes =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.0dba9c2f39cc4c36";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.28a57fd736314002";
 	CONFIG.DND5E.rules.instantaneous =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.6ead8f1dc3494671";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.b2ddf771c3224652";
 	CONFIG.DND5E.rules.areaofeffect =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.abaacfa0616747f7";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.6cd6ae7b9a85475e";
 	CONFIG.DND5E.rules.pointoforigin =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.9783eb8afabd41a3";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.c4e7fedf8c704a64";
 	CONFIG.DND5E.rules.spellsavingthrows =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.595aa92cc860476c";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.00913e9d018149d8";
 	CONFIG.DND5E.rules.spellattackrolls =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.866461c483944840";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.9c41fb3701a043f8";
 	CONFIG.DND5E.rules.itemspells =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.f384b82c33db4306";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.Vb2ZZXVGAa2KkPrG.JournalEntryPage.224baeb99c3b48a7";
 }
 
 function setupCreatureTypeRefs() {
@@ -286,11 +286,11 @@ function setupMovementRefs() {
 	CONFIG.DND5E.rules.squeezing =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.wKtOwagDAiNfVoPS";
 	CONFIG.DND5E.rules.mounting =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.b6a50ab6c1d64da7";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.bcd53499242f4261";
 	CONFIG.DND5E.rules.dismounting =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.1241fb5536814f78";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.b8e2f49414f542e2";
 	CONFIG.DND5E.rules.controllingamount =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.555721e2247340e7";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.f6db56ff5ad94d85";
 }
 
 function setupVisionLightRefs() {
@@ -339,7 +339,7 @@ function setupGeneralRefs() {
 	CONFIG.DND5E.rules.space =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.WIA5bs3P45PmO3OS";
 	CONFIG.DND5E.rules.curingmadness =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.7fed5c6f267248d7";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.2d4693dfe3114873";
 	CONFIG.DND5E.rules.telepathy =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.5l8QNlgPDPOHpGID.JournalEntryPage.f17e4a3b7e024eb0";
 }
@@ -393,7 +393,7 @@ function setupConditionRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.4ZOHN6tGvj54J6Kv";
 
 	CONFIG.DND5E.rules.disease =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.232cb157e7054330";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.9b22fc59774a47f3";
 }
 
 function setupD20Refs() {
@@ -440,35 +440,35 @@ function setupItemsRefs() {
 	CONFIG.DND5E.rules.attunement =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.CpD1zLLviYjS9FBX";
 	CONFIG.DND5E.rules.useanobject =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.df09b63cc4f8464f";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.c08aeaf7c9e04e98";
 	CONFIG.DND5E.rules.wearingitems =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.cbdf17feb97b49a1";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.Vb2ZZXVGAa2KkPrG.JournalEntryPage.429ea2f1cf784a3b";
 	CONFIG.DND5E.rules.wieldingitems =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.f6319443ed9c44f9";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.Vb2ZZXVGAa2KkPrG.JournalEntryPage.cc60f237b5754854";
 	CONFIG.DND5E.rules.paireditems =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.00b91c78dd7f40ec";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.Vb2ZZXVGAa2KkPrG.JournalEntryPage.041d0dedb4e14ca2";
 	CONFIG.DND5E.rules.commandword =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.2f08e5b6b2ba41ab";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.Vb2ZZXVGAa2KkPrG.JournalEntryPage.916a18cd4a4e4319";
 	CONFIG.DND5E.rules.consumables =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.f780b8ec78d64aef";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.Vb2ZZXVGAa2KkPrG.JournalEntryPage.f900894c7bb5404d";
 	CONFIG.DND5E.rules.charges =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.54d76ac4c4974cde";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.Vb2ZZXVGAa2KkPrG.JournalEntryPage.cc2f4f7442e84939";
 }
 
 function setupMonsterRefs() {
 	CONFIG.DND5E.rules.legendaryactions =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.08674a167b3642fa";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.ZJX2hgglCq6NyNSD.JournalEntryPage.d653531e5e58444e";
 	CONFIG.DND5E.rules.lairactions =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.d8706d05b4cd48b1";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.ZJX2hgglCq6NyNSD.JournalEntryPage.e0929bd8b30f4f03";
 	CONFIG.DND5E.rules.regionaleffects =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.37314e78a083463d";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.ZJX2hgglCq6NyNSD.JournalEntryPage.1c29183561314620";
 	CONFIG.DND5E.rules.challengerating =
 		"Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.BMoxmXB8pX6bOBus";
 }
 
 function setuptrapsRefs() {
 	CONFIG.DND5E.rules.detectingtraps =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.aa9a40780c7346db";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.0df9567e7f23426a";
 	CONFIG.DND5E.rules.disablingtraps =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.7aedb0661422480a";
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.e85ccb217b174ae8";
 }
