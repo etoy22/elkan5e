@@ -23,6 +23,6 @@ export function scroll() {
 	}
 
 	SCROLLS.forEach((id, index) => {
-		CONFIG.DND5E.spellScrollIds[index] = `Compendium.elkan5e.elkan5e-magic-items.Item.${id}`;
+		CONFIG.DND5E.spellScrollIds[index] = `Compendium.elkan5e.elkan5e-equipment.Item.${id}`;
 	});
 }

@@ -678,12 +678,11 @@ export async function migrateActorItems(
 	updateMode = { players: "update-All", npcs: "update-Elkan" },
 ) {
 	if (updateMode.players === "none" && updateMode.npcs === "none") return;
-	const compMagic = game.packs.get("elkan5e.elkan5e-magic-items");
 	const compEquip = game.packs.get("elkan5e.elkan5e-equipment");
-	if (!compMagic || !compEquip) return;
+	if (!compEquip) return;
 
 	await migrateActorByType({
-		compendiums: [compMagic, compEquip],
+		compendiums: [compEquip],
 		types: ["consumable", "equipment", "loot", "tool", "weapon"],
 		updateMode,
 		preserveProperties: [

@@ -5,7 +5,7 @@ import crypto from "node:crypto";
 const FEATURE_ROOT = "packs/_source/elkan5e-creature-features";
 const CREATURE_ROOT = "packs/_source/elkan5e-creatures";
 const EXCLUDED_NAMES = new Set(["Shapechanger", "Multiattack", "Slam", "Claws", "Charge"]);
-const EQUIPMENT_ROOTS = ["packs/_source/elkan5e-equipment", "packs/_source/elkan5e-magic-items"];
+const EQUIPMENT_ROOTS = ["packs/_source/elkan5e-equipment"];
 const SPELL_ROOT = "packs/_source/elkan5e-spells";
 const REPORT_PATH = "helperCode/logs/sync-features-report.log";
 
