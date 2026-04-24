@@ -7,9 +7,9 @@
 			"name": "Blasting Volume",
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.MfhfSzLQbJqLCZ6q",
 			"duration": {
-				"value": 7,
-				"units": "seconds",
-				"expiry": "turnStart",
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
 				"expired": false
 			},
 			"transfer": false,
@@ -28,12 +28,11 @@
 					"showIcon": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"turnEndSource"
-					],
+					"specialDuration": [],
 					"disableIncapacitated": false,
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -106,7 +105,7 @@
 	"_id": "MfhfSzLQbJqLCZ6q",
 	"system": {
 		"description": {
-			"value": "<p><em>You blast nearby creatures with magical and extremely loud noise.</em></p><p><strong>Action</strong> - 30 ft. Cone - Magical - 1 Round</p><p>You expend a @UUID[Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh]{bardic inspiration} die to use this ability.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><strong>Failure:</strong> Thunder damage equal to three rolls of your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh]{bardic inspiration} die and target is deafened.</li><li><strong>Success:</strong> Half damage.</li></ul>",
+			"value": "<p><em>You blast nearby creatures with magical and extremely loud noise.</em></p><p><strong>Action</strong> - 30 ft. Cone - Magical - 1 Round</p><p>You expend a @UUID[Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh]{bardic inspiration} die to use this ability.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Thunder damage equal to three rolls of your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh]{bardic inspiration} die and target is &amp;reference[deafened].</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {

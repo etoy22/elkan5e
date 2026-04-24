@@ -11,7 +11,7 @@
 			"duration": {
 				"value": 7,
 				"units": "seconds",
-				"expiry": "turnStart",
+				"expiry": "sourceEnd",
 				"expired": false
 			},
 			"description": "",
@@ -23,12 +23,13 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"stackable": "noneName",
-					"showIcon": true,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"turnEndSource"
-					]
+					"specialDuration": [],
+					"enableCondition": "",
+					"disableCondition": "",
+					"expiryMode": "default",
+					"disableIncapacitated": false
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -51,10 +52,18 @@
 			"img": "icons/creatures/abilities/mouth-teeth-fire-orange.webp",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [
+					{
+						"key": "flags.midi-qol.neverTarget",
+						"type": "custom",
+						"value": true,
+						"phase": "initial",
+						"priority": null
+					}
+				]
 			},
 			"start": null,
-			"showIcon": 1,
+			"showIcon": 2,
 			"folder": null,
 			"_key": "!items.effects!mHPM9z4TIVNJwfJ7.yrC0b7KcQLWTsF02"
 		}

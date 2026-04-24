@@ -200,23 +200,25 @@
 				"changes": [
 					{
 						"key": "system.attributes.movement.walk",
+						"type": "add",
 						"value": "+15",
-						"priority": 20,
-						"type": "add"
+						"phase": "initial",
+						"priority": 20
 					},
 					{
 						"key": "macro.createItem",
+						"type": "custom",
 						"value": "Compendium.elkan5e.elkan5e-class-features.Item.2pDyRxV3mP5pCGpD",
-						"priority": 20,
-						"type": "custom"
+						"phase": "final",
+						"priority": 20
 					}
 				]
 			},
 			"disabled": false,
 			"duration": {
-				"value": null,
-				"units": "seconds",
-				"expiry": null,
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
 				"expired": false
 			},
 			"description": "",
@@ -234,7 +236,8 @@
 					"showIcon": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
+					"specialDuration": [],
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,

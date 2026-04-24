@@ -6,9 +6,9 @@
 		{
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.c1EHOsBmEepJ1Xyz",
 			"duration": {
-				"value": 7,
-				"units": "seconds",
-				"expiry": "turnStart",
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
 				"expired": false
 			},
 			"disabled": false,
@@ -24,14 +24,12 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"stackable": "noneName",
-					"showIcon": true,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"turnEndSource"
-					],
+					"specialDuration": [],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -57,14 +55,15 @@
 				"changes": [
 					{
 						"key": "system.attributes.movement.all",
+						"type": "custom",
 						"value": "/2",
-						"priority": 50,
-						"type": "custom"
+						"phase": "final",
+						"priority": 50
 					}
 				]
 			},
 			"start": null,
-			"showIcon": 1,
+			"showIcon": 2,
 			"folder": null,
 			"_key": "!items.effects!p1LH0pSeB685EF94.uzspA9O1tO57yMzt"
 		}

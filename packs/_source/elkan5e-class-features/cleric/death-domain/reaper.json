@@ -134,23 +134,25 @@
 				"changes": [
 					{
 						"key": "system.traits.di.value",
-						"value": "healing",
-						"priority": 20,
-						"type": "add"
+						"type": "add",
+						"value": "ALL",
+						"phase": "final",
+						"priority": 20
 					},
 					{
 						"key": "system.traits.di.value",
-						"value": "temphp",
-						"priority": 20,
-						"type": "add"
+						"type": "add",
+						"value": "ALL",
+						"phase": "final",
+						"priority": 20
 					}
 				]
 			},
 			"disabled": false,
 			"duration": {
-				"value": 7,
-				"units": "seconds",
-				"expiry": "turnStart",
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
 				"expired": false
 			},
 			"description": "",
@@ -168,9 +170,8 @@
 					"showIcon": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"turnEndSource"
-					]
+					"specialDuration": [],
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,

@@ -125,9 +125,9 @@
 			"name": "Distracting Strike",
 			"origin": "Compendium.elkan5e.elkan5e-feats.Item.8eWqDueYXQnYaY6T",
 			"duration": {
-				"value": 7,
-				"units": "seconds",
-				"expiry": "turnStart",
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
 				"expired": false
 			},
 			"transfer": false,
@@ -142,15 +142,14 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"stackable": "noneNameOnly",
-					"showIcon": true,
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": [
-						"isAttacked",
-						"turnEndSource"
+						"isAttacked"
 					],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -183,7 +182,7 @@
 				]
 			},
 			"start": null,
-			"showIcon": 1,
+			"showIcon": 2,
 			"folder": null,
 			"_key": "!items.effects!8eWqDueYXQnYaY6T.UttoCznS25zlIZWh"
 		}

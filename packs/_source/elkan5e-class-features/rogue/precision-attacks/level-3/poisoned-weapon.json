@@ -4,7 +4,7 @@
 	"img": "icons/skills/melee/blade-tip-acid-poison-green.webp",
 	"effects": [
 		{
-			"name": "Poisoned Weapon [Dex Based]",
+			"name": "Poisoned Weapon",
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.iGHV6CxDU172zR4o",
 			"transfer": false,
 			"flags": {
@@ -15,14 +15,12 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"stackable": "noneName",
-					"showIcon": true,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"turnEndSource"
-					],
+					"specialDuration": [],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -45,9 +43,9 @@
 			"_id": "kRknZSEtFZDUg55G",
 			"disabled": false,
 			"duration": {
-				"value": 7,
+				"value": 60,
 				"units": "seconds",
-				"expiry": "turnStart",
+				"expiry": "updateWorldTime",
 				"expired": false
 			},
 			"description": "",
@@ -61,9 +59,10 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.OverTime",
-						"value": "turn=end,\nsaveAbility=con,\nsaveDC=@abilities.dex.dc,\nlabel=Poisoned Weapon",
-						"priority": 20,
-						"type": "add"
+						"type": "add",
+						"value": "turn=end,saveAbility=con,saveDC=@abilities.dex.dc,label=Poisoned Weapon",
+						"phase": "initial",
+						"priority": 20
 					}
 				]
 			},
@@ -71,75 +70,6 @@
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!iGHV6CxDU172zR4o.kRknZSEtFZDUg55G"
-		},
-		{
-			"name": "Poisoned Weapon [Str Based]",
-			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.iGHV6CxDU172zR4o",
-			"transfer": false,
-			"flags": {
-				"dae": {
-					"itemName": "Poisoned Weapon (Dexterity)",
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"stackable": "noneName",
-					"showIcon": true,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": [
-						"turnEndSource"
-					],
-					"enableCondition": "",
-					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
-				}
-			},
-			"disabled": false,
-			"duration": {
-				"value": 7,
-				"units": "seconds",
-				"expiry": "turnStart",
-				"expired": false
-			},
-			"description": "",
-			"statuses": [
-				"poisoned"
-			],
-			"tint": "#ffffff",
-			"img": "icons/skills/melee/blade-tip-acid-poison-green.webp",
-			"type": "base",
-			"system": {
-				"changes": [
-					{
-						"key": "flags.midi-qol.OverTime",
-						"value": "turn=end,\nsaveAbility=con,\nsaveDC=@abilities.str.dc,\nlabel=Poisoned Weapon",
-						"priority": 20,
-						"type": "add"
-					}
-				]
-			},
-			"_id": "4YHcJzurOdMXZKy1",
-			"showIcon": 2,
-			"start": null,
-			"folder": null,
-			"_key": "!items.effects!iGHV6CxDU172zR4o.4YHcJzurOdMXZKy1"
 		}
 	],
 	"folder": "g6svgOX6AsUIjZW3",
@@ -236,7 +166,11 @@
 				"effects": [
 					{
 						"_id": "kRknZSEtFZDUg55G",
-						"onSave": false
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -285,119 +219,30 @@
 						}
 					],
 					"critical": {
-						"allow": true
+						"allow": true,
+						"bonus": ""
 					}
 				},
 				"save": {
 					"ability": "con",
 					"dc": {
-						"calculation": "dex",
-						"formula": ""
+						"calculation": "",
+						"formula": "8 + max(@abilities.dex.mod, @abilities.str.mod) + @prof"
 					}
 				},
-				"name": "Save (Dexterity)",
+				"name": "",
 				"img": "",
 				"appliedEffects": [
 					"kRknZSEtFZDUg55G"
 				],
-				"effectConditionText": "!target.traits.ci.value.has('poisoned')"
-			},
-			"hwzOroQJpYD6QUgx": {
-				"type": "save",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"condition": "",
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"concentration": false,
-					"value": "1",
-					"units": "round",
-					"special": "",
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "4YHcJzurOdMXZKy1"
-					}
-				],
-				"range": {
-					"units": "self",
-					"special": "",
-					"override": false
-				},
-				"target": {
-					"template": {
-						"count": "",
-						"contiguous": false,
-						"type": "",
-						"size": "",
-						"width": "",
-						"height": "",
-						"units": ""
-					},
-					"affects": {
-						"count": "1",
-						"type": "creature",
-						"choice": false,
-						"special": ""
-					},
-					"prompt": true,
-					"override": false
-				},
-				"uses": {
-					"spent": 0,
-					"max": "",
-					"recovery": []
-				},
-				"damage": {
-					"onSave": "full",
-					"parts": [
-						{
-							"custom": {
-								"enabled": true,
-								"formula": "(@scale.rogue.sneak-attack - 2)d6"
-							},
-							"number": null,
-							"denomination": null,
-							"bonus": "",
-							"types": [
-								"poison"
-							]
-						}
-					],
-					"critical": {
-						"allow": true
-					}
-				},
-				"save": {
-					"ability": "con",
-					"dc": {
-						"calculation": "str",
-						"formula": ""
-					}
-				},
-				"name": "Save (Strength)",
-				"useConditionText": "",
-				"forceDialog": false,
 				"effectConditionText": "!target.traits.ci.value.has('poisoned')",
-				"_id": "hwzOroQJpYD6QUgx",
-				"img": "",
-				"appliedEffects": [
-					"4YHcJzurOdMXZKy1"
-				]
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": ""
+				}
 			}
 		},
 		"identifier": "poisoned-weapon",

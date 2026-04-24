@@ -119,17 +119,18 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.OverTime",
-						"value": "turn=end,\ndamageType=fire,\nallowIncapacitated=true,\ndamageRoll=1d8\nlabel=Wreathing Flames",
-						"priority": 20,
-						"type": "add"
+						"type": "add",
+						"value": "turn=end,damageType=fire,allowIncapacitated=true,damageRoll=1d8label=Wreathing Flames",
+						"phase": "initial",
+						"priority": 20
 					}
 				]
 			},
 			"disabled": false,
 			"duration": {
-				"value": null,
-				"units": "seconds",
-				"expiry": null,
+				"value": 1,
+				"units": "rounds",
+				"expiry": "targetEnd",
 				"expired": false
 			},
 			"description": "",
@@ -146,7 +147,10 @@
 					"showIcon": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
+					"specialDuration": [],
+					"enableCondition": "",
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,

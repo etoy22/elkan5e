@@ -44,12 +44,9 @@
 					"targets": [
 						{
 							"type": "itemUses",
-							"target": "Compendium.elkan5e.elkan5e-class-features.Item.3Dlq6orj97yca72n",
 							"value": "1",
-							"scaling": {
-								"mode": "",
-								"formula": ""
-							}
+							"target": "Compendium.elkan5e.elkan5e-class-features.Item.3Dlq6orj97yca72n",
+							"scaling": {}
 						}
 					],
 					"scaling": {
@@ -70,7 +67,11 @@
 				},
 				"effects": [
 					{
-						"_id": "mksvcdnhp5WNrbdG"
+						"_id": "mksvcdnhp5WNrbdG",
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -82,20 +83,20 @@
 					"template": {
 						"count": "",
 						"contiguous": false,
-						"type": "",
-						"size": "",
+						"type": "radius",
+						"size": "60",
 						"width": "",
 						"height": "",
 						"units": "ft"
 					},
 					"affects": {
 						"count": "",
-						"type": "self",
+						"type": "",
 						"choice": false,
 						"special": ""
 					},
 					"prompt": true,
-					"override": false
+					"override": true
 				},
 				"uses": {
 					"spent": 0,
@@ -107,6 +108,34 @@
 					"name": "",
 					"prompt": false,
 					"visible": false
+				},
+				"name": "",
+				"img": "",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": ""
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"dispositionFilter": 1,
+					"excludeSource": false,
+					"oncePerTurn": false,
+					"wallRestriction": "move",
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "mksvcdnhp5WNrbdG"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "mksvcdnhp5WNrbdG"
+						}
+					]
 				}
 			}
 		},

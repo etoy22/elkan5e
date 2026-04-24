@@ -15,12 +15,12 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"stackable": "noneName",
-					"showIcon": true,
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -42,9 +42,9 @@
 			"_id": "AiGa0rdRXypJYKEr",
 			"disabled": false,
 			"duration": {
-				"value": 0,
+				"value": null,
 				"units": "seconds",
-				"expiry": "turnStart",
+				"expiry": null,
 				"expired": false
 			},
 			"description": "",
@@ -56,14 +56,15 @@
 				"changes": [
 					{
 						"key": "macro.StatusEffect",
+						"type": "custom",
 						"value": "prone",
-						"priority": 0,
-						"type": "custom"
+						"phase": "final",
+						"priority": 0
 					}
 				]
 			},
 			"start": null,
-			"showIcon": 1,
+			"showIcon": 2,
 			"folder": null,
 			"_key": "!items.effects!Wc6cYdVgmi7eIfTG.AiGa0rdRXypJYKEr"
 		}
@@ -132,102 +133,6 @@
 			"level": 3
 		},
 		"activities": {
-			"dnd5eactivity000": {
-				"_id": "dnd5eactivity000",
-				"type": "save",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"condition": "",
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"concentration": false,
-					"value": "",
-					"units": "inst",
-					"special": "",
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "AiGa0rdRXypJYKEr",
-						"onSave": false
-					}
-				],
-				"range": {
-					"value": "",
-					"units": "ft",
-					"special": "",
-					"override": false
-				},
-				"target": {
-					"template": {
-						"count": "",
-						"contiguous": false,
-						"type": "",
-						"size": "",
-						"width": "",
-						"height": "",
-						"units": ""
-					},
-					"affects": {
-						"count": "1",
-						"type": "creature",
-						"choice": false,
-						"special": ""
-					},
-					"prompt": true,
-					"override": false
-				},
-				"uses": {
-					"spent": 0,
-					"max": "",
-					"recovery": []
-				},
-				"damage": {
-					"onSave": "full",
-					"parts": [
-						{
-							"custom": {
-								"enabled": true,
-								"formula": "(@scale.rogue.sneak-attack - 1)d6"
-							},
-							"number": null,
-							"denomination": null,
-							"bonus": "",
-							"types": [
-								"bludgeoning"
-							]
-						}
-					],
-					"critical": {
-						"allow": true
-					}
-				},
-				"save": {
-					"ability": "str",
-					"dc": {
-						"calculation": "dex",
-						"formula": ""
-					}
-				},
-				"name": "Save (Dexterity)",
-				"img": "",
-				"appliedEffects": [
-					"AiGa0rdRXypJYKEr"
-				]
-			},
 			"VcZqggaNRcc7KiVU": {
 				"type": "save",
 				"activation": {
@@ -257,7 +162,11 @@
 				"effects": [
 					{
 						"_id": "AiGa0rdRXypJYKEr",
-						"onSave": false
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -307,17 +216,18 @@
 						}
 					],
 					"critical": {
-						"allow": true
+						"allow": true,
+						"bonus": ""
 					}
 				},
 				"save": {
 					"ability": "str",
 					"dc": {
-						"calculation": "str",
-						"formula": ""
+						"calculation": "",
+						"formula": "8 + max(@abilities.dex.mod, @abilities.str.mod) + @prof"
 					}
 				},
-				"name": "Save (Strength)",
+				"name": "",
 				"useConditionText": "",
 				"forceDialog": false,
 				"effectConditionText": "",
@@ -325,7 +235,14 @@
 				"img": "",
 				"appliedEffects": [
 					"AiGa0rdRXypJYKEr"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": ""
+				}
 			}
 		},
 		"identifier": "knockdown",

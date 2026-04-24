@@ -26,7 +26,8 @@
 					"dontApply": false,
 					"showIcon": false,
 					"macroRepeat": "none",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": true,
@@ -55,15 +56,23 @@
 				"changes": [
 					{
 						"key": "system.traits.ci.value",
-						"value": "charmed",
-						"priority": 20,
-						"type": "custom"
+						"type": "custom",
+						"value": "blinded",
+						"phase": "initial",
+						"priority": 20
 					},
 					{
 						"key": "system.traits.ci.value",
-						"value": "goaded",
-						"priority": 20,
-						"type": "add"
+						"type": "add",
+						"value": "blinded",
+						"phase": "initial",
+						"priority": 20
+					},
+					{
+						"key": "",
+						"type": "add",
+						"value": "",
+						"phase": "initial"
 					}
 				]
 			},
@@ -105,7 +114,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><strong>Permanent</strong> - 10 ft. Emanation (Self) - Magical</p><ul><li><p>You and allies can't be affected by the &amp;reference[charmed] or &amp;reference[goaded] conditions.</p></li><li><p>If a creature who is already charmed or goaded comes within 10 ft. of you, this does not end the condition, but does grant the creature advantage on saves to end the condition.</p></li><li><p>This ability does not function when you are &amp;reference[Petrified] or &amp;reference[Unconscious].</p></li></ul><p>At 18th level, the range of this aura increases to 30 feet (also listed below).</p>",
+			"value": "<p><strong>Permanent</strong> - 10 ft. Emanation (Self) - Magical</p><ul><li><p>You and allies can't be affected by the &amp;reference[charmed apply=false] or &amp;reference[goaded apply=false] conditions.</p></li><li><p>If a creature who is already charmed or goaded comes within 10 ft. of you, this does not end the condition, but does grant the creature &amp;reference[advantage] on saves to end the condition.</p></li><li><p>This ability does not function when you are &amp;reference[Petrified apply=false] or &amp;reference[Unconscious apply=false].</p></li></ul><p>At 18th level, the range of this aura increases to 30 feet (also listed below).</p>",
 			"chat": ""
 		},
 		"source": {
