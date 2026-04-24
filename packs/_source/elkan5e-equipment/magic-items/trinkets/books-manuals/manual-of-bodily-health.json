@@ -221,15 +221,17 @@
 				"changes": [
 					{
 						"key": "system.abilities.con.value",
+						"type": "add",
 						"value": 2,
-						"priority": 20,
-						"type": "add"
+						"phase": "initial",
+						"priority": 20
 					},
 					{
 						"key": "system.abilities.con.max",
+						"type": "upgrade",
 						"value": 30,
-						"priority": 40,
-						"type": "upgrade"
+						"phase": "final",
+						"priority": 40
 					}
 				]
 			},
@@ -255,7 +257,8 @@
 					"dontApply": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
+					"specialDuration": [],
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
