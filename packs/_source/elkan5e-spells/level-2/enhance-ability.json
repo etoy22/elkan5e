@@ -13,9 +13,10 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.advantage.concentration",
+						"type": "add",
 						"value": 1,
 						"priority": 20,
-						"type": "add"
+						"phase": "initial"
 					}
 				]
 			},
@@ -42,7 +43,9 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default",
+					"combatActorOverride": "source"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -536,7 +539,7 @@
 		"target": {
 			"affects": {
 				"type": "creature",
-				"count": "1",
+				"count": "@item.level - 1",
 				"choice": false,
 				"special": ""
 			},

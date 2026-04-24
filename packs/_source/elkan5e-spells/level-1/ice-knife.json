@@ -52,7 +52,7 @@
 					},
 					"flat": false,
 					"type": {
-						"value": "melee",
+						"value": "ranged",
 						"classification": ""
 					},
 					"ability": "",
@@ -97,9 +97,9 @@
 				"midiProperties": {
 					"ignoreTraits": [],
 					"triggeredActivityId": "save",
-					"triggeredActivityConditionText": "",
-					"triggeredActivityTargets": "retarget",
-					"triggeredActivityRollAs": "self",
+					"triggeredActivityConditionText": "true",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "firstTarget",
 					"forceDialog": false,
 					"confirmTargets": "default",
 					"autoTargetType": "any",
@@ -125,15 +125,22 @@
 				"otherActivityUuid": "",
 				"name": "",
 				"img": "",
-				"appliedEffects": []
+				"appliedEffects": [],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				}
 			},
 			"fCQ9UdcG03s4PeZa": {
 				"type": "save",
 				"_id": "fCQ9UdcG03s4PeZa",
 				"activation": {
-					"type": "action",
+					"type": "",
 					"value": null,
-					"override": false
+					"override": true,
+					"condition": ""
 				},
 				"consumption": {
 					"scaling": {
@@ -152,15 +159,26 @@
 				},
 				"effects": [],
 				"range": {
-					"override": false
+					"override": true,
+					"special": ""
 				},
 				"target": {
 					"type": "creature",
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": "ally",
+						"count": "",
+						"special": ""
+					},
+					"template": {
+						"type": "radius",
+						"size": "5",
+						"count": ""
+					}
 				},
 				"uses": {
 					"spent": 0,
@@ -224,10 +242,10 @@
 					"confirmTargets": "default",
 					"autoTargetType": "any",
 					"autoTargetAction": "default",
-					"automationOnly": false,
-					"otherActivityCompatible": true,
+					"automationOnly": true,
+					"otherActivityCompatible": false,
 					"identifier": "",
-					"displayActivityName": false,
+					"displayActivityName": true,
 					"rollMode": "default",
 					"chooseEffects": false,
 					"toggleEffect": false,
@@ -239,10 +257,16 @@
 					"preRemoveConditionText": "",
 					"postRemoveConditionText": ""
 				},
-				"otherActivityId": "",
+				"otherActivityId": "none",
 				"name": "",
 				"img": "",
-				"appliedEffects": []
+				"appliedEffects": [],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				}
 			}
 		},
 		"uses": {

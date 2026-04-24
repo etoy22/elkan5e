@@ -20,7 +20,8 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -47,9 +48,10 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.OverTime",
-						"value": "turn=end,\nsaveAbility=con,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Ray of Enfeeblement",
-						"priority": 20,
-						"type": "add"
+						"type": "add",
+						"value": "turn=end, label=Ray of Enfeeblement, saveAbility=con, saveDC=@attributes.spell.dc, saveMagic=true",
+						"phase": "initial",
+						"priority": 20
 					}
 				]
 			},
@@ -145,7 +147,7 @@
 		"target": {
 			"affects": {
 				"type": "creature",
-				"count": "1",
+				"count": "@item.level - 1",
 				"choice": false,
 				"special": ""
 			},
@@ -181,8 +183,7 @@
 		"properties": [
 			"vocal",
 			"somatic",
-			"concentration",
-			"mgc"
+			"concentration"
 		],
 		"activities": {
 			"dnd5eactivity000": {

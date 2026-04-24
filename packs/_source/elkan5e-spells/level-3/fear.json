@@ -20,7 +20,8 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -46,9 +47,10 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.OverTime",
-						"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Fear",
-						"priority": 20,
-						"type": "add"
+						"type": "add",
+						"value": "turn=end, label=Fear, saveAbility=wis, saveDC=@attributes.spell.dc, saveMagic=true",
+						"phase": "initial",
+						"priority": 20
 					}
 				]
 			},

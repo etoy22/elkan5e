@@ -110,19 +110,21 @@
 		},
 		"target": {
 			"affects": {
-				"type": "self",
+				"type": "",
 				"choice": false,
 				"special": ""
 			},
 			"template": {
 				"units": "",
 				"contiguous": false,
-				"type": ""
+				"type": "emanationNoTemplate",
+				"size": "@item.level * 500",
+				"count": ""
 			}
 		},
 		"range": {
-			"value": "1000",
-			"units": "ft",
+			"value": "",
+			"units": "self",
 			"special": ""
 		},
 		"uses": {
@@ -176,7 +178,11 @@
 				},
 				"effects": [
 					{
-						"_id": "dgVA117cahwMM7RW"
+						"_id": "dgVA117cahwMM7RW",
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -188,7 +194,15 @@
 					"units": "ft",
 					"width": null,
 					"override": false,
-					"prompt": true
+					"prompt": true,
+					"affects": {
+						"type": ""
+					},
+					"template": {
+						"type": "radius",
+						"size": "",
+						"count": ""
+					}
 				},
 				"uses": {
 					"spent": 0,
@@ -200,6 +214,14 @@
 					"name": "",
 					"prompt": false,
 					"visible": false
+				},
+				"name": "",
+				"img": "",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
 				}
 			}
 		},

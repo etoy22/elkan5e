@@ -18,7 +18,8 @@
 					"dontApply": false,
 					"showIcon": false,
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -66,7 +67,7 @@
 				]
 			},
 			"start": null,
-			"showIcon": 1,
+			"showIcon": 2,
 			"folder": null,
 			"_key": "!items.effects!ynE0kLi6F2AdqnR7.iufZU12yslQQSskX"
 		}
@@ -294,7 +295,12 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "iufZU12yslQQSskX",
+						"level": {}
+					}
+				],
 				"range": {
 					"override": false
 				},
@@ -335,7 +341,7 @@
 				},
 				"useConditionText": "",
 				"useConditionReason": "",
-				"effectConditionText": "",
+				"effectConditionText": "target.attributes.hp.value === 0",
 				"macroData": {
 					"name": "",
 					"command": ""
@@ -373,7 +379,13 @@
 				},
 				"name": "",
 				"img": "",
-				"appliedEffects": []
+				"appliedEffects": [],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				}
 			}
 		},
 		"identifier": "banishment"

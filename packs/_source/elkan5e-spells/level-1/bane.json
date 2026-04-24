@@ -16,7 +16,10 @@
 					"durationExpression": "",
 					"disableIncapacitated": false,
 					"dontApply": false,
-					"showIcon": false
+					"showIcon": false,
+					"enableCondition": "",
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -38,7 +41,7 @@
 			"duration": {
 				"value": 60,
 				"units": "seconds",
-				"expiry": "turnStart",
+				"expiry": "sourceEnd",
 				"expired": false
 			},
 			"transfer": false,
@@ -180,7 +183,7 @@
 			"affects": {
 				"special": "",
 				"type": "creature",
-				"count": "3",
+				"count": "@item.level + 2",
 				"choice": false
 			},
 			"template": {

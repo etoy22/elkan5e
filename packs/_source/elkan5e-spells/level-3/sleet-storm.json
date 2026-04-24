@@ -68,7 +68,7 @@
 			"_key": "!items.effects!9Jv3Nf3iGiDcSgWZ.PCHF09ufm1Jah40g"
 		},
 		{
-			"name": "Heavily Obscured",
+			"name": "Sleet Storm - Effects",
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.9Jv3Nf3iGiDcSgWZ",
 			"transfer": false,
 			"flags": {
@@ -84,7 +84,8 @@
 					"enableCondition": "",
 					"selfTarget": false,
 					"selfTargetAlways": false,
-					"dontApply": false
+					"dontApply": false,
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -103,29 +104,32 @@
 					"wallsBlock": "system"
 				}
 			},
-			"img": "modules/elkan5e/icons/conditions/obscured-heavily.svg",
+			"img": "icons/magic/water/projectile-ice-teardrops-salvo.webp",
 			"_id": "ZXuLiNdOMp3LSQzy",
 			"type": "base",
 			"system": {
 				"changes": [
 					{
-						"key": "macro.StatusEffect",
-						"value": "obscuredheavily",
-						"priority": 0,
-						"type": "custom"
+						"key": "system.attributes.movement.all",
+						"type": "custom",
+						"value": "/2",
+						"phase": "final",
+						"priority": 0
 					}
 				]
 			},
 			"disabled": false,
 			"duration": {
-				"value": 0,
+				"value": null,
 				"units": "seconds",
-				"expiry": "turnStart",
+				"expiry": null,
 				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"statuses": [],
+			"statuses": [
+				"obscuredheavily"
+			],
 			"start": null,
 			"showIcon": 1,
 			"folder": null,
@@ -262,11 +266,19 @@
 				"effects": [
 					{
 						"_id": "PCHF09ufm1Jah40g",
-						"onSave": false
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					},
 					{
 						"_id": "ZXuLiNdOMp3LSQzy",
-						"onSave": true
+						"onSave": true,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -277,8 +289,17 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": ""
+					},
+					"template": {
+						"type": "cylinder",
+						"size": "40",
+						"height": "20",
+						"count": ""
+					}
 				},
 				"damage": {
 					"onSave": "none",
@@ -302,7 +323,40 @@
 				"appliedEffects": [
 					"PCHF09ufm1Jah40g",
 					"ZXuLiNdOMp3LSQzy"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"dispositionFilter": 0,
+					"wallRestriction": "move",
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "initial-casting-(use-first)"
+						},
+						{
+							"trigger": "turnEnd",
+							"action": "useActivity",
+							"targetId": "initial-casting-(use-first)"
+						},
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "ZXuLiNdOMp3LSQzy"
+						},
+						{
+							"trigger": "turnEnd",
+							"action": "removeEffect",
+							"targetId": "ZXuLiNdOMp3LSQzy"
+						}
+					]
+				}
 			},
 			"D2fVBJcVhFxgyht5": {
 				"type": "save",

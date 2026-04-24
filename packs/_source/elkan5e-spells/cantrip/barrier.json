@@ -144,7 +144,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><em>With your left index finger, you trace a rune of power upon your skin and speak a word of Primordial, warding yourself momentarily against &amp;reference[elemental] harm.</em></p><p><span> <strong>Buff</strong></span></p><ul><li><p><span>You gain resistance to one type of damage: &amp;reference[acid], &amp;reference[cold], &amp;reference[lightning], &amp;reference[fire], &amp;reference[thunder], or non-magical physical damage.</span></p></li></ul>",
+			"value": "<p><em>With your left index finger, you trace a rune of power upon your skin and speak a word of Primordial, warding yourself momentarily against elemental harm.</em></p><p><span><strong>Buff</strong></span></p><ul><li><p><span>You gain resistance to one type of damage: &amp;reference[acid], &amp;reference[cold], &amp;reference[lightning], &amp;reference[fire], &amp;reference[thunder], or non-magical physical damage.</span></p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "barrier",
@@ -526,7 +526,7 @@
 			"_key": "!items.effects!TLgcAjeqMjXgy04c.o5WI02jJuVFLAAPI"
 		},
 		{
-			"name": "Barrier [Non-magical physical]",
+			"name": "Barrier [Non-magical Physical]",
 			"img": "icons/magic/defensive/barrier-shield-dome-pink.webp",
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.TLgcAjeqMjXgy04c",
 			"transfer": false,
@@ -535,9 +535,10 @@
 				"changes": [
 					{
 						"key": "system.traits.dr.custom",
+						"type": "custom",
 						"value": "nonMagicalPhysical",
 						"priority": 20,
-						"type": "custom"
+						"phase": "final"
 					}
 				]
 			},
@@ -564,8 +565,10 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": [
-						"turnEndSource"
-					]
+						"None"
+					],
+					"expiryMode": "default",
+					"combatActorOverride": "source"
 				},
 				"ActiveAuras": {
 					"isAura": false,

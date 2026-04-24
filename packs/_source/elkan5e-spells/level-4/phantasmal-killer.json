@@ -18,7 +18,8 @@
 					"showIcon": false,
 					"enableCondition": "",
 					"disableCondition": "",
-					"disableIncapacitated": false
+					"disableIncapacitated": false,
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -59,15 +60,17 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.OverTime",
-						"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\ndamageType=psychic,\ndamageRoll=(@spell.level)d10,\nlabel=Phantasmal Killer",
-						"priority": 20,
-						"type": "add"
+						"type": "add",
+						"value": "turn=end, label=Phantasmal Killer, saveAbility=wis, saveDC=@attributes.spell.dc, damageRoll=(@spell.level)d10, damageType=psychic",
+						"phase": "initial",
+						"priority": 20
 					},
 					{
 						"key": "system.attributes.movement.all",
+						"type": "custom",
 						"value": 0,
-						"priority": 20,
-						"type": "custom"
+						"phase": "final",
+						"priority": 20
 					}
 				]
 			},

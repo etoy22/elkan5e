@@ -18,9 +18,9 @@
 					"durationExpression": "",
 					"disableIncapacitated": false,
 					"dontApply": false,
-					"showIcon": true,
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": true,
@@ -43,7 +43,7 @@
 			"duration": {
 				"value": 60,
 				"units": "seconds",
-				"expiry": "turnStart",
+				"expiry": "sourceEnd",
 				"expired": false
 			},
 			"tint": "#ffffff",
@@ -77,7 +77,7 @@
 				]
 			},
 			"start": null,
-			"showIcon": 1,
+			"showIcon": 2,
 			"folder": null,
 			"_key": "!items.effects!Y9ujzi4f01yflTyj.RtkJJbNnHgYVRGhK"
 		}
@@ -121,7 +121,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You hum a soft chant that magically carries over your surroundings, emboldening your allies and allowing them to recover quickly.</em></p><p><strong>Buff</strong></p><ul><li><p>Allies in radius have advantage on wisdom saving throws and death saving throws.</p></li><li><p>Allies regain the maximum number of hit points possible from any healing.</p></li></ul>",
+			"value": "<p><em>You hum a soft chant that magically carries over your surroundings, emboldening your allies and allowing them to recover quickly.</em></p><p><strong>Buff</strong></p><ul><li><p>Allies in radius have &amp;reference[advantage] on wisdom saving throws and &amp;reference[death saving throws].</p></li><li><p>Allies regain the maximum number of hit points possible from any healing.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -210,7 +210,11 @@
 				},
 				"effects": [
 					{
-						"_id": "RtkJJbNnHgYVRGhK"
+						"_id": "RtkJJbNnHgYVRGhK",
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -221,8 +225,17 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": "self",
+						"special": ""
+					},
+					"template": {
+						"type": "radius",
+						"size": "30",
+						"count": ""
+					}
 				},
 				"roll": {
 					"formula": "",
@@ -240,7 +253,29 @@
 				"img": "",
 				"appliedEffects": [
 					"RtkJJbNnHgYVRGhK"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"regionBehavior": {
+					"dispositionFilter": 0,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "RtkJJbNnHgYVRGhK"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "RtkJJbNnHgYVRGhK"
+						}
+					],
+					"enabled": true
+				}
 			}
 		},
 		"identifier": "beacon-of-hope"

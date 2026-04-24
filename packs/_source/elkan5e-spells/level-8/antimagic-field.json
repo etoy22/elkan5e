@@ -21,7 +21,12 @@
 					"specialDuration": [],
 					"transfer": false,
 					"selfTarget": false,
-					"selfTargetAlways": false
+					"selfTargetAlways": false,
+					"enableCondition": "",
+					"disableCondition": "",
+					"expiryMode": "default",
+					"disableIncapacitated": false,
+					"dontApply": false
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -48,21 +53,24 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.fail.spell.vocal",
+						"type": "add",
 						"value": 1,
-						"priority": 20,
-						"type": "add"
+						"phase": "initial",
+						"priority": 20
 					},
 					{
 						"key": "flags.midi-qol.fail.spell.somatic",
+						"type": "add",
 						"value": 1,
-						"priority": 20,
-						"type": "add"
+						"phase": "initial",
+						"priority": 20
 					},
 					{
 						"key": "flags.midi-qol.fail.spell.material",
+						"type": "add",
 						"value": 1,
-						"priority": 20,
-						"type": "add"
+						"phase": "initial",
+						"priority": 20
 					}
 				]
 			},
@@ -191,11 +199,7 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [
-					{
-						"_id": "q3k8qax0v18ac3uz"
-					}
-				],
+				"effects": [],
 				"range": {
 					"override": false
 				},
@@ -204,8 +208,16 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": ""
+					},
+					"template": {
+						"type": "radius",
+						"size": "10",
+						"count": ""
+					}
 				},
 				"roll": {
 					"formula": "",
@@ -223,7 +235,33 @@
 				"img": "",
 				"appliedEffects": [
 					"q3k8qax0v18ac3uz"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"dispositionFilter": 0,
+					"wallRestriction": "move",
+					"regionVisibility": 3,
+					"excludeSource": false,
+					"oncePerTurn": false,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "q3k8qax0v18ac3uz"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "q3k8qax0v18ac3uz"
+						}
+					]
+				}
 			}
 		},
 		"identifier": "antimagic-field"

@@ -20,7 +20,8 @@
 					"dontApply": false,
 					"showIcon": false,
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -113,7 +114,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>Your touch afflicts your victim with a magical disease.</em></p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 8d10 poison]] damage and gains the &amp;reference[diseased]{diseased} condition. While diseased in this way:</p><ul><li><p>The target is &amp;reference[poisoned]{poisoned} and has disadvantage on saving throws.</p></li></ul></li><li><p><strong>Success:</strong> Half damage.</p></li></ul>",
+			"value": "<p><em>Your touch afflicts your victim with a magical disease.</em></p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 8d10 poison]] damage and gains the &amp;reference[diseased] condition. While diseased in this way:</p><ul><li><p>The target is &amp;reference[poisoned] and has &amp;reference[disadvantage] on saving throws.</p></li></ul></li><li><p><strong>Success:</strong> Half damage.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -199,7 +200,11 @@
 				"effects": [
 					{
 						"_id": "Podq2B0qNxTBlH0c",
-						"onSave": false
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -249,7 +254,13 @@
 				"appliedEffects": [
 					"Podq2B0qNxTBlH0c"
 				],
-				"effectConditionText": "!target.traits.ci.value.has('diseased') && !target.traits.ci.value.has('poisoned')"
+				"effectConditionText": "!target.traits.ci.value.has('diseased') && !!target.traits.ci.value.has('poisoned')",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				}
 			}
 		},
 		"identifier": "contagion"

@@ -249,7 +249,11 @@
 				},
 				"effects": [
 					{
-						"_id": "bV9gcOUvMMCULD96"
+						"_id": "bV9gcOUvMMCULD96",
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -260,8 +264,16 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": ""
+					},
+					"template": {
+						"type": "radius",
+						"size": "30",
+						"count": ""
+					}
 				},
 				"roll": {
 					"formula": "",
@@ -275,18 +287,43 @@
 					"max": ""
 				},
 				"_id": "4uOTL2qBXui5lLH2",
-				"name": "",
+				"name": "Initial Cast",
 				"img": "",
 				"appliedEffects": [
 					"bV9gcOUvMMCULD96"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"dispositionFilter": 1,
+					"excludeSource": false,
+					"oncePerTurn": false,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "bV9gcOUvMMCULD96"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "bV9gcOUvMMCULD96"
+						}
+					]
+				}
 			},
 			"E2ivSzN4y8PIUG4d": {
 				"type": "save",
 				"activation": {
-					"type": "action",
+					"type": "",
 					"value": null,
-					"override": false
+					"override": true,
+					"condition": ""
 				},
 				"consumption": {
 					"targets": [],
@@ -302,24 +339,38 @@
 				"duration": {
 					"units": "inst",
 					"concentration": false,
-					"override": false
+					"override": true
 				},
 				"effects": [
 					{
 						"_id": "4GSDd3tmZ1jW2Q87",
-						"onSave": false
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
-					"override": false
+					"override": true,
+					"units": "ft",
+					"special": ""
 				},
 				"target": {
 					"type": "creature",
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": "creature",
+						"count": "",
+						"special": ""
+					},
+					"template": {
+						"type": ""
+					}
 				},
 				"damage": {
 					"onSave": "none",
@@ -343,7 +394,13 @@
 				"appliedEffects": [
 					"4GSDd3tmZ1jW2Q87"
 				],
-				"effectConditionText": "!target.traits.ci.value.has('blinded')"
+				"effectConditionText": "!target.traits.ci.value.has('blinded')",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				}
 			}
 		},
 		"identifier": "holy-aura"

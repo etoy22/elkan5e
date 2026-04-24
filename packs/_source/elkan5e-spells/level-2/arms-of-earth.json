@@ -98,7 +98,11 @@
 				"effects": [
 					{
 						"_id": "r9EFw5aAIeaNpIpE",
-						"onSave": false
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -109,8 +113,17 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": "creature",
+						"choice": true
+					},
+					"template": {
+						"type": "circle",
+						"size": "5",
+						"count": "@item.level"
+					}
 				},
 				"uses": {
 					"spent": 0,
@@ -121,20 +134,19 @@
 					"onSave": "half",
 					"parts": [
 						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
 							"number": 2,
 							"denomination": 6,
 							"bonus": "",
 							"types": [
 								"bludgeoning"
 							],
-							"custom": {
-								"enabled": false,
-								"formula": ""
-							},
 							"scaling": {
 								"mode": "",
-								"number": null,
-								"formula": ""
+								"number": 1
 							}
 						}
 					]
@@ -145,6 +157,32 @@
 						"calculation": "spellcasting",
 						"formula": ""
 					}
+				},
+				"name": "",
+				"img": "",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "Zskfvlkg7Juopfr0"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "Zskfvlkg7Juopfr0"
+						}
+					],
+					"dispositionFilter": 0,
+					"oncePerTurn": false,
+					"wallRestriction": "move"
 				}
 			}
 		},
@@ -175,7 +213,9 @@
 					"dontApply": false,
 					"showIcon": false,
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default",
+					"combatActorOverride": "source"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -205,16 +245,11 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.movement.all",
-						"value": 0,
-						"priority": 0,
-						"type": "custom"
-					},
-					{
 						"key": "flags.midi-qol.OverTime",
+						"type": "override",
 						"value": "turn=end,\nsaveAbility=str,\nsaveDC=@attributes.spell.dc,\ndamageRoll= (1+@spell.level)d6,\nsaveDamage=halfdamage,\ndamageType=bludgeoning,\nsaveMagic=true,\nlabel=Arms of Earth",
 						"priority": 50,
-						"type": "override"
+						"phase": "initial"
 					}
 				]
 			},
@@ -222,6 +257,54 @@
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!cUZFvfqNa3nidrFs.r9EFw5aAIeaNpIpE"
+		},
+		{
+			"name": "Arms of Earth - Slowed",
+			"img": "icons/magic/earth/barrier-stone-explosion-debris.webp",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.cUZFvfqNa3nidrFs",
+			"type": "base",
+			"_id": "Zskfvlkg7Juopfr0",
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.all",
+						"type": "custom",
+						"value": "/2",
+						"priority": 20,
+						"phase": "final"
+					}
+				]
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [],
+			"showIcon": 1,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"disableIncapacitated": false,
+					"expiryMode": "default",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": true
+				}
+			},
+			"_key": "!items.effects!cUZFvfqNa3nidrFs.Zskfvlkg7Juopfr0"
 		}
 	],
 	"flags": {

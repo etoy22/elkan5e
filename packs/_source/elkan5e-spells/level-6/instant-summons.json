@@ -2,7 +2,42 @@
 	"name": "Instant Summons",
 	"type": "spell",
 	"img": "icons/skills/melee/hand-grip-staff-teal.webp",
-	"effects": [],
+	"effects": [
+		{
+			"type": "enchantment",
+			"name": "Instant Summons",
+			"img": "icons/skills/melee/hand-grip-staff-teal.webp",
+			"disabled": false,
+			"_id": "ubo4OeeCdSYN1ulj",
+			"system": {
+				"changes": []
+			},
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"origin": null,
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [],
+			"showIcon": 1,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"expiryMode": "default",
+					"macroRepeat": "none",
+					"specialDuration": []
+				}
+			},
+			"_key": "!items.effects!hOwawMqUo97aVZ6y.ubo4OeeCdSYN1ulj"
+		}
+	],
 	"folder": "sDaRY0H81UTha6hq",
 	"flags": {
 		"midi-qol": {
@@ -101,20 +136,20 @@
 			"ritual"
 		],
 		"activities": {
-			"wPxEC7sUWYB4qyYr": {
-				"type": "utility",
+			"IH2BcTvxZD682Sqm": {
+				"type": "enchant",
+				"_id": "IH2BcTvxZD682Sqm",
+				"img": "",
 				"activation": {
 					"type": "action",
-					"value": null,
 					"override": false
 				},
 				"consumption": {
-					"targets": [],
 					"scaling": {
-						"allowed": false,
-						"max": ""
+						"allowed": false
 					},
-					"spellSlot": true
+					"spellSlot": true,
+					"targets": []
 				},
 				"description": {
 					"chatFlavor": ""
@@ -124,29 +159,129 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "ubo4OeeCdSYN1ulj",
+						"level": {},
+						"riders": {
+							"activity": [],
+							"effect": [],
+							"item": []
+						}
+					}
+				],
 				"range": {
+					"units": "self",
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"template": {
+						"contiguous": false,
+						"stationary": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
 					"override": false,
 					"prompt": true
 				},
-				"roll": {
-					"formula": "",
-					"name": "",
-					"prompt": false,
-					"visible": false
-				},
 				"uses": {
 					"spent": 0,
-					"recovery": []
+					"recovery": [],
+					"max": ""
 				},
-				"_id": "wPxEC7sUWYB4qyYr"
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false
+				},
+				"enchant": {
+					"self": false
+				},
+				"restrictions": {
+					"allowMagical": true,
+					"categories": [],
+					"properties": [],
+					"type": ""
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"triggeredActivityConsume": true,
+					"triggeredActivityConfigure": true,
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"skipConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"rollAs": "target",
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"regionBehavior": {
+					"enabled": false,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": []
+				},
+				"regionLight": {
+					"enabled": false,
+					"dim": 0,
+					"bright": 0,
+					"color": null,
+					"alpha": 0.5,
+					"luminosity": 0.5,
+					"animationType": "",
+					"animationSpeed": 5,
+					"animationIntensity": 5
+				},
+				"name": ""
 			}
 		},
 		"identifier": "instant-summons"

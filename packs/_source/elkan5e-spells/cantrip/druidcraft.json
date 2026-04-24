@@ -41,7 +41,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You whisper to the spirits of nature, calling upon their power to perform a simple magical task.</em></p><p><strong>Utility Spell</strong></p><p>You create one of the following effects.</p><ul><li>You change a 5 ft. cube of difficult terrain caused by &amp;reference[plant] growth or uneven terrain to no longer count as difficult terrain. This can free a target grappled by the <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.cUZFvfqNa3nidrFs]{Arms of Earth}</em> or <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.x76d4kCFyMIc6wQZ]{Entangle}</em> spell.</li><li>You predict what the weather will be at your location for the next 24 hours.</li><li>You instantly make a flower blossom, a seed pod open, or a leaf bud bloom.</li><li>You conjure a harmless ambient effect in a 30 ft. radius around yourself, such as falling leaves or a gentle breeze, which persists for up to 1 minute.</li><li>You create an instantaneous, harmless sensory effect, such as the sound of a small animal, or the faint odor of skunk.</li><li>You instantly light or snuff out a candle, a torch, or a small campfire.</li></ul>",
+			"value": "<p><em>You whisper to the spirits of nature, calling upon their power to perform a simple magical task.</em></p><p><strong>Utility</strong></p><p>You create one of the following effects.</p><ul><li><p>You change a 5 ft. cube of &amp;reference[difficult terrain] caused by <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.2oT2CvtPPtpZOJyL]{plant growth}</em> or uneven terrain to no longer count as difficult terrain. This can free a target &amp;reference[grappled apply=false] by the <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.cUZFvfqNa3nidrFs]{Arms of Earth}</em> or <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.x76d4kCFyMIc6wQZ]{Entangle}</em> spell.</p></li><li><p>You predict what the weather will be at your location for the next 24 hours.</p></li><li><p>You instantly make a flower blossom, a seed pod open, or a leaf bud bloom.</p></li><li><p>You conjure a harmless ambient effect in a 30 ft. radius around yourself, such as falling leaves or a gentle breeze, which persists for up to 1 minute.</p></li><li><p>You create an instantaneous, harmless sensory effect, such as the sound of a small animal, or the faint odor of skunk.</p></li><li><p>You instantly light or snuff out a candle, a torch, or a small campfire.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -65,12 +65,14 @@
 			"affects": {
 				"count": "",
 				"type": "",
-				"choice": false
+				"choice": true
 			},
 			"template": {
-				"type": "",
+				"type": "cube",
 				"units": "ft",
-				"contiguous": false
+				"contiguous": false,
+				"size": "5",
+				"count": ""
 			}
 		},
 		"range": {
@@ -98,8 +100,7 @@
 		},
 		"properties": [
 			"vocal",
-			"somatic",
-			"mgc"
+			"somatic"
 		],
 		"activities": {
 			"dnd5eactivity000": {
@@ -135,8 +136,16 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": ""
+					},
+					"template": {
+						"type": "cube",
+						"size": "5",
+						"count": ""
+					}
 				},
 				"uses": {
 					"spent": 0,
@@ -148,6 +157,14 @@
 					"name": "",
 					"prompt": false,
 					"visible": false
+				},
+				"name": "",
+				"img": "",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
 				}
 			}
 		},

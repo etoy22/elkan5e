@@ -127,7 +127,9 @@
 					"spellSlot": true,
 					"targets": []
 				},
-				"description": {},
+				"description": {
+					"chatFlavor": ""
+				},
 				"duration": {
 					"units": "inst",
 					"concentration": false,
@@ -142,12 +144,19 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": ""
+					},
+					"template": {
+						"type": "line"
+					}
 				},
 				"uses": {
 					"spent": 0,
-					"recovery": []
+					"recovery": [],
+					"max": ""
 				},
 				"damage": {
 					"parts": []
@@ -155,12 +164,21 @@
 				"save": {
 					"ability": "str",
 					"dc": {
-						"calculation": "initial"
+						"calculation": "spellcasting",
+						"formula": ""
 					}
 				},
 				"useConditionText": "",
 				"forceDialog": false,
-				"effectConditionText": ""
+				"effectConditionText": "",
+				"name": "",
+				"img": "",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				}
 			},
 			"3tGFHZoP80cPEUOe": {
 				"type": "save",

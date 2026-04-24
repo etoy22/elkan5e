@@ -24,7 +24,11 @@
 					"selfTargetAlways": false,
 					"disableIncapacitated": false,
 					"dontApply": false,
-					"showIcon": false
+					"showIcon": false,
+					"enableCondition": "",
+					"disableCondition": "",
+					"expiryMode": "default",
+					"combatActorOverride": "source"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -54,15 +58,17 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.grants.disadvantage.attack.all",
-						"value": 1,
+						"type": "override",
+						"value": "!(target.actor.system.attributes.senses.blindsight || target.actor.system.attributes.senses.truesight)",
 						"priority": 20,
-						"type": "override"
+						"phase": "initial"
 					},
 					{
 						"key": "macro.tokenMagic",
-						"value": "bevel",
+						"type": "custom",
+						"value": "invalid",
 						"priority": 20,
-						"type": "custom"
+						"phase": "initial"
 					}
 				]
 			},
@@ -109,7 +115,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You make a strange warbling sound with your mouth as your body becomes blurry, shifting, and wavering, even to yourself.</em></p><p><strong>Buff</strong></p><ul><li><p>Creatures have disadvantage on attack rolls against you. An attacker is immune to this effect if it has &amp;reference[blindsight], &amp;reference[truesight], or can otherwise see through illusions.</p></li></ul>",
+			"value": "<p><em>You make a strange warbling sound with your mouth as your body becomes blurry, shifting, and wavering, even to yourself.</em></p><p><strong>Buff</strong></p><ul><li><p>Creatures have &amp;reference[disadvantage] on &amp;reference[attack rolls]{attack rolls} against you. An attacker is immune to this effect if it has &amp;reference[blindsight], &amp;reference[truesight], or can otherwise see through illusions.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -165,8 +171,7 @@
 		},
 		"properties": [
 			"vocal",
-			"concentration",
-			"mgc"
+			"concentration"
 		],
 		"activities": {
 			"dnd5eactivity000": {

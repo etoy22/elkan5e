@@ -178,7 +178,15 @@
 				"name": "",
 				"img": "",
 				"appliedEffects": [],
-				"otherActivityId": "none"
+				"otherActivityId": "none",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"useConditionText": "![\"plant\"].includes(raceOrType)",
+				"useConditionReason": "Creature is a Plant use Other Activity"
 			},
 			"LjKvMoSDAbaFgjMZ": {
 				"type": "save",
@@ -249,13 +257,20 @@
 					"recovery": [],
 					"max": ""
 				},
-				"useConditionText": "",
+				"useConditionText": "[\"plant\"].includes(raceOrType)",
 				"forceDialog": false,
 				"effectConditionText": "",
 				"_id": "LjKvMoSDAbaFgjMZ",
 				"name": "Save (Against Plant)",
 				"img": "",
-				"appliedEffects": []
+				"appliedEffects": [],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"useConditionReason": "Creature is not a Plant use Other Activity"
 			}
 		},
 		"identifier": "blight"

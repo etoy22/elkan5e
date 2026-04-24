@@ -4,7 +4,7 @@
 	"img": "icons/creatures/magical/spirit-earth-stone-magma-yellow.webp",
 	"system": {
 		"description": {
-			"value": "<p><em>Conducting a silent orchestra with a baton, you overwhelm your target with deafening noise coming from nowhere. The sound can take any form: a roaring orchestra, deafening chattering, or even just white noise.</em></p><p><strong>Wisdom</strong> <strong>Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d6 psychic]] damage* and is &amp;reference[deafened]. Target rolls again at end of their turns, taking damage again and ending effect on success.</p></li><li><p><strong>Success:</strong> Half initial damage, no other effect.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d6 psychic]]{1d6} for each spell level above 3rd.</p><p><em>Unlike most illusions, &amp;reference[truesight] does not help defend against Silent Cacophony.</em></p>",
+			"value": "<p><em>Conducting a silent orchestra with a baton, you overwhelm your target with deafening noise coming from nowhere. The sound can take any form: a roaring orchestra, deafening chattering, or even just white noise.</em></p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d6 psychic]] damage* and is &amp;reference[deafened]. Target rolls again at end of their turns, taking damage again and ending effect on success.</p></li><li><p><strong>Success:</strong> Half initial damage, no other effect.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d6 psychic]]{1d6} for each spell level above 3rd.</p><p><em>Unlike most illusions, &amp;reference[truesight] does not help defend against Silent Cacophony.</em></p>",
 			"chat": ""
 		},
 		"source": {
@@ -160,15 +160,10 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.OverTime",
-						"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveDamage=halfdamage,\nsaveMagic=true,\ndamageRoll=(@item.level)d4,\ndamageType=psychic,\nlabel=Silent Cacophony",
-						"priority": 20,
-						"type": "add"
-					},
-					{
-						"key": "macro.StatusEffect",
-						"value": "deafened",
-						"priority": 20,
-						"type": "custom"
+						"type": "add",
+						"value": "turn=end, label=Silent Cacophony, saveAbility=wis, saveDC=@attributes.spell.dc, saveMagic=true, damageRoll=(@item.level)d4, damageType=psychic, saveDamage=halfdamage",
+						"phase": "initial",
+						"priority": 20
 					}
 				]
 			},
@@ -182,7 +177,9 @@
 			"description": "",
 			"origin": null,
 			"tint": "#ffffff",
-			"statuses": [],
+			"statuses": [
+				"deafened"
+			],
 			"flags": {
 				"dae": {
 					"enableCondition": "",
@@ -195,7 +192,8 @@
 					"showIcon": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
+					"specialDuration": [],
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,

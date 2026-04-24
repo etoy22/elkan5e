@@ -2,7 +2,56 @@
 	"name": "Wall of Fire",
 	"type": "spell",
 	"img": "icons/magic/fire/barrier-wall-explosion-orange.webp",
-	"effects": [],
+	"effects": [
+		{
+			"name": "Heavily Obscurred",
+			"img": "modules/elkan5e/icons/conditions/obscured-heavily.svg",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.zQ7lBRzId8peTjor",
+			"type": "base",
+			"_id": "rcZKlNLU33j9DOsW",
+			"system": {
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "obscuredheavily",
+						"phase": "final",
+						"priority": null
+					}
+				]
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [],
+			"showIcon": 1,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"expiryMode": "default",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"disableIncapacitated": false,
+					"specialDuration": [],
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
+				}
+			},
+			"_key": "!items.effects!zQ7lBRzId8peTjor.rcZKlNLU33j9DOsW"
+		}
+	],
 	"folder": "90eJtrVwLFIxcWJw",
 	"flags": {
 		"midi-qol": {
@@ -43,7 +92,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You toss phosphorus down at your feet, and a moment later, a wall of flames flashes into existence where you will it.</em></p><p><strong>[[/save dexterity]]{Dexterity Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 5d8 fire]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li><li><p><strong>Area Hazard:</strong> The area covered by the wall is &amp;reference[obscuredheavily]. Targets roll a save when they enter or when they end their turn in the wall (but only once per turn).</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d8 fire]]{1d8} for each spell level above 4th.</p>",
+			"value": "<p><em>You toss phosphorus down at your feet, and a moment later, a wall of flames flashes into existence where you will it.</em></p><p><strong>[[/save dexterity]]{Dexterity Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 5d8 fire]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li><li><p><strong>Area Hazard:</strong> The area covered by the wall is &amp;reference[heavily obscured]. Targets roll a save when they enter or when they end their turn in the wall (but only once per turn).</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d8 fire]]{1d8} for each spell level above 4th.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -132,7 +181,16 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "rcZKlNLU33j9DOsW",
+						"onSave": true,
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
 				"range": {
 					"override": false
 				},
@@ -141,8 +199,18 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": ""
+					},
+					"template": {
+						"type": "wall",
+						"size": "60",
+						"width": "10",
+						"height": "20",
+						"count": ""
+					}
 				},
 				"damage": {
 					"onSave": "half",
@@ -175,93 +243,46 @@
 				},
 				"uses": {
 					"spent": 0,
-					"recovery": []
-				},
-				"_id": "uKgd8XsMvGM1IbmS"
-			},
-			"ZiK0uvuhfodT9M0m": {
-				"type": "save",
-				"_id": "ZiK0uvuhfodT9M0m",
-				"activation": {
-					"type": "nocost",
-					"value": null,
-					"override": true,
-					"condition": ""
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": false,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": true,
-					"units": "spec",
-					"special": ""
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
 					"recovery": [],
 					"max": ""
 				},
-				"damage": {
-					"parts": [
-						{
-							"custom": {
-								"enabled": false,
-								"formula": ""
-							},
-							"number": 5,
-							"denomination": 8,
-							"bonus": "",
-							"types": [
-								"fire"
-							],
-							"scaling": {
-								"mode": "",
-								"number": 1
-							}
-						}
-					],
-					"critical": {
-						"allow": false
-					},
-					"onSave": "half"
-				},
-				"save": {
-					"ability": [
-						"dex"
-					],
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
+				"_id": "uKgd8XsMvGM1IbmS",
+				"name": "",
+				"img": "",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
 					}
 				},
-				"useConditionText": "",
-				"forceDialog": false,
-				"effectConditionText": "",
-				"midiAutomationOnly": false,
-				"name": "Target Enters/Ends Turn",
-				"img": "",
-				"appliedEffects": []
+				"regionBehavior": {
+					"enabled": true,
+					"dispositionFilter": 0,
+					"excludeSource": false,
+					"wallRestriction": "move",
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "save"
+						},
+						{
+							"trigger": "turnEnd",
+							"action": "useActivity",
+							"targetId": "save"
+						},
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "rcZKlNLU33j9DOsW"
+						},
+						{
+							"trigger": "turnEnd",
+							"action": "removeEffect",
+							"targetId": "rcZKlNLU33j9DOsW"
+						}
+					]
+				}
 			}
 		},
 		"identifier": "wall-of-fire"

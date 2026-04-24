@@ -105,11 +105,11 @@
 				"effects": [
 					{
 						"_id": "B87Jb1X0vnCBBTa9",
-						"onSave": false
-					},
-					{
-						"_id": "APojk4ffrGfsIbbZ",
-						"onSave": true
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -120,8 +120,16 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": ""
+					},
+					"template": {
+						"type": "circle",
+						"size": "20",
+						"count": ""
+					}
 				},
 				"uses": {
 					"spent": 0,
@@ -144,7 +152,28 @@
 				"appliedEffects": [
 					"B87Jb1X0vnCBBTa9",
 					"APojk4ffrGfsIbbZ"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "B87Jb1X0vnCBBTa9"
+						},
+						{
+							"trigger": "entry",
+							"action": "removeEffect",
+							"targetId": "B87Jb1X0vnCBBTa9"
+						}
+					]
+				}
 			}
 		},
 		"identifier": "well-of-corruption"
@@ -174,7 +203,8 @@
 					"dontApply": false,
 					"showIcon": false,
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -202,9 +232,17 @@
 				"changes": [
 					{
 						"key": "system.traits.di.value",
-						"value": "healing",
-						"priority": 50,
-						"type": "custom"
+						"type": "custom",
+						"value": "ALL",
+						"phase": "final",
+						"priority": 50
+					},
+					{
+						"key": "system.traits.di.value",
+						"type": "add",
+						"value": "temphp",
+						"phase": "final",
+						"priority": null
 					}
 				]
 			},

@@ -29,7 +29,7 @@
 			"duration": {
 				"value": 7,
 				"units": "seconds",
-				"expiry": "turnStart",
+				"expiry": "sourceEnd",
 				"expired": false
 			},
 			"description": "",
@@ -43,12 +43,9 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"stackable": "noneName",
-					"showIcon": true,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"turnEndSource"
-					]
+					"specialDuration": []
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -68,7 +65,7 @@
 				}
 			},
 			"start": null,
-			"showIcon": 1,
+			"showIcon": 2,
 			"folder": null,
 			"_key": "!items.effects!sZREhsiZMPrT6xdI.TBQgVX9k7l0QnUqE"
 		}
@@ -262,9 +259,10 @@
 			"s5rDfcHRmM6WHnnP": {
 				"type": "save",
 				"activation": {
-					"type": "action",
+					"type": "bonus",
 					"value": null,
-					"override": false
+					"override": true,
+					"condition": ""
 				},
 				"consumption": {
 					"scaling": {
@@ -284,7 +282,11 @@
 				"effects": [
 					{
 						"_id": "TBQgVX9k7l0QnUqE",
-						"onSave": false
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -340,7 +342,13 @@
 				"img": "",
 				"appliedEffects": [
 					"TBQgVX9k7l0QnUqE"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				}
 			}
 		},
 		"identifier": "heat-metal"

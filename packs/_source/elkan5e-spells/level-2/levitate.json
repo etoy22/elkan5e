@@ -16,7 +16,10 @@
 					"durationExpression": "",
 					"disableIncapacitated": false,
 					"dontApply": false,
-					"showIcon": false
+					"showIcon": false,
+					"enableCondition": "",
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -54,15 +57,17 @@
 				"changes": [
 					{
 						"key": "system.attributes.movement.fly",
+						"type": "upgrade",
 						"value": 20,
-						"priority": 20,
-						"type": "upgrade"
+						"phase": "initial",
+						"priority": 20
 					},
 					{
 						"key": "system.attributes.movement.hover",
+						"type": "custom",
 						"value": 1,
-						"priority": 20,
-						"type": "custom"
+						"phase": "final",
+						"priority": 20
 					}
 				]
 			},
@@ -161,7 +166,7 @@
 		"target": {
 			"affects": {
 				"type": "creatureOrObject",
-				"count": "1",
+				"count": "@item.level - 1",
 				"choice": false,
 				"special": ""
 			},
@@ -259,6 +264,151 @@
 				"appliedEffects": [
 					"6BMAKrzsDsynMYBZ"
 				]
+			},
+			"CAkueRFmzDrvsgyM": {
+				"type": "utility",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": false,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [
+					{
+						"_id": "6BMAKrzsDsynMYBZ",
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "self"
+				},
+				"target": {
+					"override": false,
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"stationary": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					}
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"useConditionText": "",
+				"effectConditionText": "",
+				"name": "Overtime",
+				"img": "",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false
+				},
+				"useConditionReason": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"triggeredActivityConsume": true,
+					"triggeredActivityConfigure": true,
+					"autoConsume": true,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"skipConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"rollAs": "target",
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"regionBehavior": {
+					"enabled": false,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": []
+				},
+				"regionLight": {
+					"enabled": false,
+					"dim": 0,
+					"bright": 0,
+					"color": null,
+					"alpha": 0.5,
+					"luminosity": 0.5,
+					"animationType": "",
+					"animationSpeed": 5,
+					"animationIntensity": 5
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"_id": "CAkueRFmzDrvsgyM"
 			}
 		},
 		"identifier": "levitate"

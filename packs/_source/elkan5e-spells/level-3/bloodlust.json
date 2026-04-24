@@ -5,7 +5,7 @@
 	"img": "icons/skills/melee/strike-axe-red.webp",
 	"system": {
 		"description": {
-			"value": "<p><em>Pricking your finger, you draw blood. You address your target, reminding them of how much they want to fight their enemies. Your target is overwhelmed by anger, mindlessly focused on their enemies, unwilling to flee from conflict.</em></p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[Goaded] by the nearest creature they are hostile towards at any given time, and they have advantage on all attack rolls. An unwilling target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 3rd.</p>",
+			"value": "<p><em>Pricking your finger, you draw blood. You address your target, reminding them of how much they want to fight their enemies. Your target is overwhelmed by anger, mindlessly focused on their enemies, unwilling to flee from conflict.</em></p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[Goaded] by the nearest creature they are hostile towards at any given time, and they have &amp;reference[advantage] on all &amp;reference[attack rolls]{attack rolls}. An unwilling target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 3rd.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -28,7 +28,7 @@
 		"target": {
 			"affects": {
 				"type": "creature",
-				"count": "1",
+				"count": "@item.level - 2",
 				"choice": false,
 				"special": ""
 			},
@@ -131,125 +131,6 @@
 				"appliedEffects": [
 					"g02foCT34SklETUD"
 				]
-			},
-			"WKRAyr1w0UoJmgZB": {
-				"type": "utility",
-				"_id": "WKRAyr1w0UoJmgZB",
-				"activation": {
-					"type": "action",
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "g02foCT34SklETUD"
-					}
-				],
-				"range": {
-					"units": "self",
-					"override": false
-				},
-				"target": {
-					"template": {
-						"contiguous": false,
-						"units": "ft"
-					},
-					"affects": {
-						"choice": false
-					},
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"visibility": {
-					"level": {
-						"min": null,
-						"max": null
-					},
-					"requireAttunement": false,
-					"requireIdentification": false,
-					"requireMagic": false
-				},
-				"roll": {
-					"prompt": false,
-					"visible": false,
-					"name": "",
-					"formula": ""
-				},
-				"useConditionText": "",
-				"useConditionReason": "",
-				"effectConditionText": "",
-				"macroData": {
-					"name": "",
-					"command": ""
-				},
-				"ignoreTraits": {
-					"idi": false,
-					"idr": false,
-					"idv": false,
-					"ida": false,
-					"idm": false
-				},
-				"midiProperties": {
-					"ignoreTraits": [],
-					"triggeredActivityId": "none",
-					"triggeredActivityConditionText": "",
-					"triggeredActivityTargets": "targets",
-					"triggeredActivityRollAs": "self",
-					"triggeredActivityConsume": true,
-					"triggeredActivityConfigure": true,
-					"autoConsume": false,
-					"forceConsumeDialog": "default",
-					"forceRollDialog": "default",
-					"forceDamageDialog": "default",
-					"confirmTargets": "default",
-					"autoTargetType": "any",
-					"autoTargetAction": "default",
-					"automationOnly": false,
-					"otherActivityCompatible": true,
-					"otherActivityAsParentType": true,
-					"identifier": "",
-					"displayActivityName": false,
-					"rollMode": "default",
-					"chooseEffects": false,
-					"toggleEffect": false,
-					"ignoreFullCover": false,
-					"removeChatButtons": "default",
-					"magicEffect": false,
-					"magicDamage": false,
-					"noConcentrationCheck": false,
-					"skipConcentrationCheck": false,
-					"autoCEEffects": "default"
-				},
-				"isOverTimeFlag": false,
-				"overTimeProperties": {
-					"saveRemoves": true,
-					"rollAs": "target",
-					"preRemoveConditionText": "",
-					"postRemoveConditionText": ""
-				},
-				"otherActivityId": "none",
-				"otherActivityAsParentType": true,
-				"name": "Apply to Ally",
-				"img": ""
 			}
 		},
 		"identifier": "bloodlust"
@@ -283,7 +164,8 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -309,9 +191,17 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.advantage.attack.all",
+						"type": "custom",
 						"value": 1,
-						"priority": 20,
-						"type": "custom"
+						"phase": "initial",
+						"priority": 20
+					},
+					{
+						"key": "flags.midi-qol.OverTime",
+						"type": "add",
+						"value": "turn=end, label=Bloodlust, saveAbility=wis, saveDC=@attributes.spell.dc, saveMagic=true",
+						"phase": "initial",
+						"priority": null
 					}
 				]
 			},

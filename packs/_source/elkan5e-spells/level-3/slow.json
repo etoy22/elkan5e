@@ -20,7 +20,8 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -43,7 +44,15 @@
 			"_id": "QQszvyLvFF7SBY4D",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "slowed",
+						"phase": "final",
+						"priority": null
+					}
+				]
 			},
 			"disabled": false,
 			"duration": {
@@ -152,7 +161,7 @@
 		"target": {
 			"affects": {
 				"type": "creature",
-				"count": "3",
+				"count": "@item.level",
 				"choice": false,
 				"special": ""
 			},

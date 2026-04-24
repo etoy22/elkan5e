@@ -27,7 +27,8 @@
 					"showIcon": false,
 					"durationExpression": "",
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": true,
@@ -56,9 +57,10 @@
 				"changes": [
 					{
 						"key": "system.attributes.movement.all",
+						"type": "custom",
 						"value": "/2",
-						"priority": 20,
-						"type": "custom"
+						"phase": "final",
+						"priority": 20
 					}
 				]
 			},
@@ -194,12 +196,7 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [
-					{
-						"_id": "dBqSu3oo9ohtwG39",
-						"onSave": false
-					}
-				],
+				"effects": [],
 				"range": {
 					"override": false
 				},
@@ -208,8 +205,18 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": "enemy",
+						"count": "",
+						"special": ""
+					},
+					"template": {
+						"type": "radius",
+						"size": "15",
+						"count": ""
+					}
 				},
 				"damage": {
 					"onSave": "half",
@@ -250,12 +257,35 @@
 				"img": "",
 				"appliedEffects": [
 					"dBqSu3oo9ohtwG39"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"excludeSource": false,
+					"oncePerTurn": false,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "dBqSu3oo9ohtwG39"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "dBqSu3oo9ohtwG39"
+						}
+					]
+				}
 			},
 			"R5qQqN1bY6kOoFOB": {
 				"type": "save",
 				"activation": {
-					"type": "nocost",
+					"type": "",
 					"value": null,
 					"override": true,
 					"condition": ""
@@ -328,7 +358,13 @@
 				"effectConditionText": "",
 				"_id": "R5qQqN1bY6kOoFOB",
 				"img": "",
-				"appliedEffects": []
+				"appliedEffects": [],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				}
 			}
 		},
 		"identifier": "spirit-guardians"

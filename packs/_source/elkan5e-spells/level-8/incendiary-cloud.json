@@ -2,7 +2,50 @@
 	"name": "Incendiary Cloud",
 	"type": "spell",
 	"img": "icons/magic/air/fog-gas-smoke-swirling-orange.webp",
-	"effects": [],
+	"effects": [
+		{
+			"name": "Incendiary Cloud - Effects",
+			"img": "icons/magic/air/fog-gas-smoke-swirling-orange.webp",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.bHXVSjD1iSj6Le7d",
+			"type": "base",
+			"_id": "dDH0UzEqdnH5tHvc",
+			"system": {
+				"changes": []
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [
+				"obscuredheavily"
+			],
+			"showIcon": 1,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"expiryMode": "default",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"disableIncapacitated": false,
+					"specialDuration": [],
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
+				}
+			},
+			"_key": "!items.effects!bHXVSjD1iSj6Le7d.dDH0UzEqdnH5tHvc"
+		}
+	],
 	"folder": "TOjvTMaQMAMN24MV",
 	"flags": {
 		"midi-qol": {
@@ -42,7 +85,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><strong>[[/save DEX]]{Dexterity Save}</strong></p><p>The cloud spreads around corners and the area is &amp;reference[Heavily Obscured].</p><ul><li><p><strong>Failure:</strong> Target takes [[/damage]] damage.</p></li><li><p><strong>Success:</strong> Half damage.</p></li><li><p><strong>Area Hazard:</strong> The area covered by the wall is &amp;reference[obscuredheavily]. Targets roll a save when they enter or when they end their turn in the wall (but only once per turn).</p></li><li><p><strong>Concentration:</strong> At the start of each of your turns, the cloud moves 10 ft. directly away from you in a direction you choose.</p></li></ul><p><em>The cloud can be dispersed by a moderate or stronger wind (at least 10 mph).</em></p>",
+			"value": "<p><strong>[[/save DEX]]{Dexterity Save}</strong></p><p>The cloud spreads around corners and the area is &amp;reference[Heavily Obscured].</p><ul><li><p><strong>Failure:</strong> Target takes [[/damage]] damage.</p></li><li><p><strong>Success:</strong> Half damage.</p></li><li><p><strong>Area Hazard:</strong> The area covered by the wall is &amp;reference[Heavily Obscured]. Targets roll a save when they enter or when they end their turn in the wall (but only once per turn).</p></li><li><p><strong>Concentration:</strong> At the start of each of your turns, the cloud moves 10 ft. directly away from you in a direction you choose.</p></li></ul><p><em>The cloud can be dispersed by a moderate or stronger wind (at least 10 mph).</em></p>",
 			"chat": ""
 		},
 		"source": {
@@ -128,7 +171,16 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "dDH0UzEqdnH5tHvc",
+						"onSave": true,
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
 				"range": {
 					"override": false
 				},
@@ -137,27 +189,34 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": ""
+					},
+					"template": {
+						"type": "sphere",
+						"size": "20",
+						"count": ""
+					}
 				},
 				"damage": {
 					"onSave": "half",
 					"parts": [
 						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
 							"number": 10,
 							"denomination": 8,
 							"bonus": "",
 							"types": [
 								"fire"
 							],
-							"custom": {
-								"enabled": false,
-								"formula": ""
-							},
 							"scaling": {
 								"mode": "",
-								"number": null,
-								"formula": ""
+								"number": 1
 							}
 						}
 					]
@@ -171,9 +230,35 @@
 				},
 				"uses": {
 					"spent": 0,
-					"recovery": []
+					"recovery": [],
+					"max": ""
 				},
-				"_id": "3CY2vTCkhdYppfyY"
+				"_id": "3CY2vTCkhdYppfyY",
+				"name": "",
+				"img": "",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"dispositionFilter": 0,
+					"excludeSource": false,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "save"
+						},
+						{
+							"trigger": "turnEnd",
+							"action": "useActivity",
+							"targetId": "save"
+						}
+					]
+				}
 			}
 		},
 		"identifier": "incendiary-cloud"

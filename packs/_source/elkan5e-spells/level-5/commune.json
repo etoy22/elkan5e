@@ -32,12 +32,12 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"stackable": "count",
-					"showIcon": true,
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": [
 						"longRest"
-					]
+					],
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -58,7 +58,7 @@
 				}
 			},
 			"start": null,
-			"showIcon": 1,
+			"showIcon": 2,
 			"folder": null,
 			"_key": "!items.effects!3cY7WOkURuISX8fc.MrRJZ8VF2rQ0ioVz"
 		}
@@ -99,7 +99,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You rinse your face with blessed water, burn incense and breathe in the fumes, and open your mind to the presence of divinity for a brief chat.</em></p><p><strong>Ritual Casting Time:</strong> 10 Minutes</p><p><strong>Utility Spell</strong></p><p>You contact a powerful spirit or divine entity.</p><ul><li><p>You ask the creature <strong>three questions</strong> . The creature responds however they like, giving you answers no longer than one minute each.</p></li><li><p>Even divine beings aren't necessarily omniscient, so they might not be able to answer your question.</p></li></ul><p>If you cast the spell two or more times before finishing your next long rest, there is a cumulative [[/r 1d100]] (25 percent) chance for each casting after the first that you get no answer. The DM makes this roll in secret.</p><p><em>The chosen creature you commune with must be willing to receive your requests. In most settings, deities have servants who answer their commune spells for them. Spirits of the land are also valid targets, and they may not have a physical body.</em></p>",
+			"value": "<p><em>You rinse your face with blessed water, burn incense and breathe in the fumes, and open your mind to the presence of divinity for a brief chat.</em></p><p><strong>Ritual Casting Time:</strong> 10 Minutes</p><p><strong>Utility</strong></p><p>You contact a powerful spirit or divine entity.</p><ul><li><p>You ask the creature <strong>three questions</strong> . The creature responds however they like, giving you answers no longer than one minute each.</p></li><li><p>Even divine beings aren't necessarily omniscient, so they might not be able to answer your question.</p></li></ul><p>If you cast the spell two or more times before finishing your next long rest, there is a cumulative [[/r 1d100]] (25 percent) chance for each casting after the first that you get no answer. The DM makes this roll in secret.</p><p><em>The chosen creature you commune with must be willing to receive your requests. In most settings, deities have servants who answer their commune spells for them. Spirits of the land are also valid targets, and they may not have a physical body.</em></p>",
 			"chat": ""
 		},
 		"source": {
@@ -185,7 +185,11 @@
 				},
 				"effects": [
 					{
-						"_id": "MrRJZ8VF2rQ0ioVz"
+						"_id": "MrRJZ8VF2rQ0ioVz",
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -215,7 +219,157 @@
 				"img": "",
 				"appliedEffects": [
 					"MrRJZ8VF2rQ0ioVz"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"midiProperties": {
+					"triggeredActivityId": "roll-for-no-answer",
+					"triggeredActivityConditionText": "target.effects.some(e=>e.name == 'Commune (Counting Uses)')",
+					"triggeredActivityTargets": "self",
+					"triggeredActivityConsume": false,
+					"triggeredActivityConfigure": false
+				}
+			},
+			"Ku0Rps6qE1KT9Y6O": {
+				"type": "utility",
+				"name": "Roll for No Answer",
+				"_id": "Ku0Rps6qE1KT9Y6O",
+				"img": "",
+				"activation": {
+					"type": "",
+					"override": true,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": false,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "self",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"stationary": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "Roll for No Answer",
+					"formula": "1d100"
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"triggeredActivityConsume": true,
+					"triggeredActivityConfigure": true,
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": true,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "blindroll",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"skipConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"rollAs": "target",
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"regionBehavior": {
+					"enabled": false,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": []
+				},
+				"regionLight": {
+					"enabled": false,
+					"dim": 0,
+					"bright": 0,
+					"color": null,
+					"alpha": 0.5,
+					"luminosity": 0.5,
+					"animationType": "",
+					"animationSpeed": 5,
+					"animationIntensity": 5
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true
 			}
 		},
 		"identifier": "commune"

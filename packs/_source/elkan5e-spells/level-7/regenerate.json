@@ -20,7 +20,8 @@
 					"disableCondition": "",
 					"disableIncapacitated": false,
 					"dontApply": false,
-					"showIcon": false
+					"showIcon": false,
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -58,9 +59,10 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.OverTime",
-						"value": "turn=start,\napplyCondition=@attributes.hp.value >= 0 && @attributes.hp.value != @attributes.hp.max,\ndamageRoll = 1,\ndamageType = healing",
-						"priority": 20,
-						"type": "custom"
+						"type": "custom",
+						"value": "turn=start, label=Regenerate, rollType=damage, damageRoll=1, damageType=healing, applyCondition=@attributes.hp.value >=0 && @attributes.hp.value !=@attributes.hp.max",
+						"phase": "initial",
+						"priority": 20
 					}
 				]
 			},

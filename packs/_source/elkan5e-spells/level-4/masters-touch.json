@@ -115,7 +115,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><em>You touch a creature, whispering and encouraging them to wield the knowledge and skills necessary for all manner of weapons and gadgets.</em></p><p><strong>Buff</strong></p><ul><li><p>The target has proficiency with all weapons, crafting tools, and vehicles.</p></li></ul>",
+			"value": "<p><em>You touch a creature, whispering and encouraging them to wield the knowledge and skills necessary for all manner of weapons and gadgets.</em></p><p><strong>Buff</strong></p><ul><li><p>The target has &amp;reference[proficiency] with all weapons, crafting tools, and vehicles.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "spell",
@@ -175,21 +175,24 @@
 				"changes": [
 					{
 						"key": "system.traits.weaponProf.all",
+						"type": "custom",
 						"value": 1,
-						"priority": 20,
-						"type": "custom"
+						"phase": "initial",
+						"priority": 20
 					},
 					{
 						"key": "system.tools.craft.prof",
-						"value": 1,
-						"priority": 20,
-						"type": "override"
+						"type": "override",
+						"value": 0,
+						"phase": "initial",
+						"priority": 20
 					},
 					{
 						"key": "system.tools.vehicle.prof",
-						"value": 1,
-						"priority": 20,
-						"type": "override"
+						"type": "override",
+						"value": 0,
+						"phase": "initial",
+						"priority": 20
 					}
 				]
 			},
@@ -215,7 +218,9 @@
 					"enableCondition": "",
 					"selfTarget": false,
 					"selfTargetAlways": false,
-					"dontApply": false
+					"dontApply": false,
+					"expiryMode": "default",
+					"macroRepeat": "none"
 				},
 				"ActiveAuras": {
 					"isAura": false,

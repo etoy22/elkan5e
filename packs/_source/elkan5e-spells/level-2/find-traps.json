@@ -13,15 +13,38 @@
 				"changes": [
 					{
 						"key": "system.skills.prc.bonuses.passive",
+						"type": "add",
 						"value": 5,
-						"priority": null,
-						"type": "add"
+						"phase": "initial",
+						"priority": null
 					},
 					{
 						"key": "system.traits.ci.value",
-						"value": "surprised",
-						"priority": null,
-						"type": "custom"
+						"type": "custom",
+						"value": "blinded",
+						"phase": "initial",
+						"priority": null
+					},
+					{
+						"key": "system.skills.prc.roll.mode",
+						"type": "add",
+						"value": 1,
+						"phase": "initial",
+						"priority": null
+					},
+					{
+						"key": "system.skills.inv.roll.mode",
+						"type": "add",
+						"value": 1,
+						"phase": "initial",
+						"priority": null
+					},
+					{
+						"key": "system.skills.sur.roll.mode",
+						"type": "add",
+						"value": 1,
+						"phase": "initial",
+						"priority": null
 					}
 				]
 			},
@@ -46,7 +69,10 @@
 					"showIcon": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
+					"specialDuration": [],
+					"enableCondition": "",
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -110,7 +136,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You ask whoever might be listening to help protect you from unseen danger. Your senses hone in to your surroundings and you feel a creeping sense of paranoia. Your reaction time improves when faced with unseen danger.</em></p><p><strong>Buff</strong></p><p>You become more attuned to unseen dangers.</p><ul><li><p>Your &amp;reference[passive perception] increases by 5.</p></li><li><p>You have advantage on &amp;reference[perception], &amp;reference[investigation], or &amp;reference[survival] checks to discover natural hazards, traps, or ambushes.</p></li><li><p>You cannot be &amp;reference[surprised].</p></li></ul>",
+			"value": "<p><em>You ask whoever might be listening to help protect you from unseen danger. Your senses hone in to your surroundings and you feel a creeping sense of paranoia. Your reaction time improves when faced with unseen danger.</em></p><p><strong>Buff</strong></p><p>You become more attuned to unseen dangers.</p><ul><li><p>Your &amp;reference[passive perception] increases by 5.</p></li><li><p>You have advantage on &amp;reference[perception], &amp;reference[investigation], or &amp;reference[survival] checks to discover natural hazards, traps, or ambushes.</p></li><li><p>You cannot be &amp;reference[surprised apply=false].</p></li></ul>",
 			"chat": ""
 		},
 		"source": {

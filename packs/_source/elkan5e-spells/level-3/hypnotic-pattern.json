@@ -20,7 +20,8 @@
 					],
 					"disableIncapacitated": false,
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -61,9 +62,10 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.OverTime",
-						"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,",
-						"priority": 20,
-						"type": "add"
+						"type": "add",
+						"value": "turn=end,saveAbility=wis,saveDC=@attributes.spell.dc,saveMagic=true,",
+						"phase": "initial",
+						"priority": 20
 					}
 				]
 			},

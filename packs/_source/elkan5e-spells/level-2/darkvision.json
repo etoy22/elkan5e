@@ -18,7 +18,10 @@
 					"durationExpression": "",
 					"disableIncapacitated": false,
 					"dontApply": false,
-					"showIcon": false
+					"showIcon": false,
+					"enableCondition": "",
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -56,21 +59,24 @@
 				"changes": [
 					{
 						"key": "system.attributes.senses.darkvision",
+						"type": "upgrade",
 						"value": 60,
-						"priority": 20,
-						"type": "upgrade"
+						"phase": "initial",
+						"priority": 20
 					},
 					{
 						"key": "ATL.sight.visionMode",
+						"type": "custom",
 						"value": "darkvision",
-						"priority": 20,
-						"type": "custom"
+						"phase": "final",
+						"priority": 20
 					},
 					{
 						"key": "ATL.sight.range",
+						"type": "add",
 						"value": 60,
-						"priority": 20,
-						"type": "add"
+						"phase": "final",
+						"priority": 20
 					}
 				]
 			},
@@ -156,7 +162,7 @@
 		"target": {
 			"affects": {
 				"type": "creature",
-				"count": "6",
+				"count": "(2 * @item.level) + 2",
 				"choice": false,
 				"special": ""
 			},

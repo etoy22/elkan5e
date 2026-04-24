@@ -16,7 +16,10 @@
 					"selfTargetAlways": false,
 					"disableIncapacitated": false,
 					"dontApply": false,
-					"showIcon": false
+					"showIcon": false,
+					"enableCondition": "",
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -42,7 +45,7 @@
 			"duration": {
 				"value": 60,
 				"units": "seconds",
-				"expiry": "turnStart",
+				"expiry": "sourceEnd",
 				"expired": false
 			},
 			"tint": "#ffffff",
@@ -57,39 +60,45 @@
 				"changes": [
 					{
 						"key": "system.bonuses.abilities.save",
+						"type": "add",
 						"value": "+1d4",
-						"priority": null,
-						"type": "add"
+						"phase": "initial",
+						"priority": null
 					},
 					{
 						"key": "system.bonuses.mwak.attack",
+						"type": "custom",
 						"value": "+1d4",
-						"priority": null,
-						"type": "custom"
+						"phase": "initial",
+						"priority": null
 					},
 					{
 						"key": "macro.tokenMagic",
-						"value": "bevel",
-						"priority": null,
-						"type": "custom"
+						"type": "custom",
+						"value": "invalid",
+						"phase": "initial",
+						"priority": null
 					},
 					{
 						"key": "system.bonuses.rsak.attack",
+						"type": "add",
 						"value": "+1d4",
-						"priority": null,
-						"type": "add"
+						"phase": "initial",
+						"priority": null
 					},
 					{
 						"key": "system.bonuses.msak.attack",
+						"type": "add",
 						"value": "+1d4",
-						"priority": null,
-						"type": "add"
+						"phase": "initial",
+						"priority": null
 					},
 					{
 						"key": "system.bonuses.rwak.attack",
+						"type": "add",
 						"value": "+1d4",
-						"priority": null,
-						"type": "add"
+						"phase": "initial",
+						"priority": null
 					}
 				]
 			},
@@ -185,7 +194,7 @@
 			"affects": {
 				"special": "",
 				"type": "creature",
-				"count": "3",
+				"count": "@item.level + 2",
 				"choice": false
 			},
 			"template": {

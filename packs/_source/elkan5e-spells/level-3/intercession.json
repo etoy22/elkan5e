@@ -29,12 +29,9 @@
 				},
 				"effects": [
 					{
-						"_id": "H7Tj4zegHob4FhDP",
-						"onSave": false,
-						"level": {
-							"min": null,
-							"max": null
-						}
+						"_id": "k8bhB8KOZbN0Qtw4",
+						"level": {},
+						"onSave": false
 					}
 				],
 				"range": {
@@ -192,7 +189,7 @@
 			},
 			"affects": {
 				"choice": false,
-				"count": "1",
+				"count": "@item.level - 2",
 				"type": "creature",
 				"special": ""
 			}
@@ -203,67 +200,51 @@
 			"name": "Intercession",
 			"img": "icons/magic/symbols/triangle-glow-purple.webp",
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.3URtFYL4DElhR4Jr",
-			"transfer": false,
-			"_id": "H7Tj4zegHob4FhDP",
 			"type": "base",
+			"_id": "k8bhB8KOZbN0Qtw4",
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.ActivityOverTime",
-						"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\ndamageType=none,\nname=Intercession",
-						"priority": 20,
-						"type": "add"
+						"key": "flags.midi-qol.OverTime",
+						"type": "add",
+						"value": "turn=start, label=Intercession, saveAbility=cha, saveDC=@attributes.spell.dc, chatFlavor=Intercession",
+						"phase": "initial",
+						"priority": null
 					}
 				]
 			},
 			"disabled": false,
+			"start": null,
 			"duration": {
 				"value": 60,
 				"units": "seconds",
-				"expiry": "turnStart",
+				"expiry": "sourceEnd",
 				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
+			"transfer": false,
 			"statuses": [
 				"siphoned"
 			],
+			"showIcon": 1,
+			"folder": null,
 			"flags": {
 				"dae": {
-					"enableCondition": "",
 					"disableCondition": "",
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"stackable": "multi",
-					"showIcon": false,
+					"stackable": "noneName",
+					"expiryMode": "default",
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
+					"disableIncapacitated": false,
+					"specialDuration": [],
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
 				}
 			},
-			"showIcon": 2,
-			"start": null,
-			"folder": null,
-			"_key": "!items.effects!3URtFYL4DElhR4Jr.H7Tj4zegHob4FhDP"
+			"_key": "!items.effects!3URtFYL4DElhR4Jr.k8bhB8KOZbN0Qtw4"
 		}
 	],
 	"folder": "Tf2FNuyyu2gEaYOF",

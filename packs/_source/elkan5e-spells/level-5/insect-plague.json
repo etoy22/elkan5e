@@ -2,7 +2,58 @@
 	"name": "Insect Plague",
 	"type": "spell",
 	"img": "icons/creatures/invertebrates/wasp-swarm-movement.webp",
-	"effects": [],
+	"effects": [
+		{
+			"name": "Insect Plague - Effects",
+			"img": "icons/creatures/invertebrates/wasp-swarm-movement.webp",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.BKC4Pg549XFFbfA0",
+			"type": "base",
+			"_id": "2DB2Blx5YOv2kc8F",
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.all",
+						"type": "custom",
+						"value": "/2",
+						"phase": "final",
+						"priority": null
+					}
+				]
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [
+				"obscuredlightly"
+			],
+			"showIcon": 1,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"expiryMode": "default",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"disableIncapacitated": false,
+					"specialDuration": [],
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
+				}
+			},
+			"_key": "!items.effects!BKC4Pg549XFFbfA0.2DB2Blx5YOv2kc8F"
+		}
+	],
 	"folder": "PnZJTE6T4UQY81Pm",
 	"flags": {
 		"midi-qol": {
@@ -42,7 +93,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>Scattering a bit of sugary food, you conjure swarming, biting locusts.</em></p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d10 piercing]] damage.</p></li><li><p><strong>Success:</strong> Half damage.</p></li><li><p><strong>Area Hazard:</strong> The area is &amp;reference[obscuredlightly] and is &amp;reference[difficult terrain]. Targets roll a save when they enter or when they end their turn in the area (but only once per turn).</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d10 piercing]]{1d10} for each spell level above 5th.</p>",
+			"value": "<p><em>Scattering a bit of sugary food, you conjure swarming, biting locusts.</em></p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d10 piercing]] damage.</p></li><li><p><strong>Success:</strong> Half damage.</p></li><li><p><strong>Area Hazard:</strong> The area is &amp;reference[lightly obscured] and is &amp;reference[difficult terrain]. Targets roll a save when they enter or when they end their turn in the area (but only once per turn).</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d10 piercing]]{1d10} for each spell level above 5th.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -129,7 +180,16 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "2DB2Blx5YOv2kc8F",
+						"onSave": true,
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
 				"range": {
 					"override": false
 				},
@@ -138,8 +198,16 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": ""
+					},
+					"template": {
+						"type": "sphere",
+						"size": "20",
+						"count": ""
+					}
 				},
 				"damage": {
 					"onSave": "half",
@@ -172,9 +240,41 @@
 				},
 				"uses": {
 					"spent": 0,
-					"recovery": []
+					"recovery": [],
+					"max": ""
 				},
-				"_id": "YOMXWZnGjTNoLP3h"
+				"_id": "YOMXWZnGjTNoLP3h",
+				"name": "",
+				"img": "",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"dispositionFilter": 0,
+					"excludeSource": false,
+					"wallRestriction": "move",
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "save"
+						},
+						{
+							"trigger": "turnEnd",
+							"action": "useActivity",
+							"targetId": "save"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "2DB2Blx5YOv2kc8F"
+						}
+					]
+				}
 			}
 		},
 		"identifier": "insect-plague"

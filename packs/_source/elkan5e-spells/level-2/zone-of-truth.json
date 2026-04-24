@@ -187,7 +187,11 @@
 				"effects": [
 					{
 						"_id": "zWrpJyjS76bHij3n",
-						"onSave": false
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -198,8 +202,16 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": ""
+					},
+					"template": {
+						"type": "sphere",
+						"size": "15",
+						"count": ""
+					}
 				},
 				"uses": {
 					"spent": 0,
@@ -221,74 +233,23 @@
 				"img": "",
 				"appliedEffects": [
 					"zWrpJyjS76bHij3n"
-				]
-			},
-			"kTV5C3SYT4S3xYmZ": {
-				"type": "save",
-				"name": "New Creature Enters",
-				"_id": "kTV5C3SYT4S3xYmZ",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": false,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "zWrpJyjS76bHij3n",
-						"onSave": false
-					}
 				],
-				"range": {
-					"override": true,
-					"units": "any",
-					"special": ""
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"damage": {
-					"parts": [],
-					"onSave": "half"
-				},
-				"save": {
-					"ability": "wis",
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
 					}
 				},
-				"useConditionText": "",
-				"forceDialog": false,
-				"effectConditionText": "",
-				"img": "",
-				"appliedEffects": [
-					"zWrpJyjS76bHij3n"
-				]
+				"regionBehavior": {
+					"enabled": true,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "save"
+						}
+					]
+				}
 			}
 		},
 		"identifier": "zone-of-truth"

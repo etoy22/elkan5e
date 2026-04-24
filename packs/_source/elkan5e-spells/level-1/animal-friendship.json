@@ -17,7 +17,11 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -46,7 +50,7 @@
 			"duration": {
 				"value": 28800,
 				"units": "seconds",
-				"expiry": "turnStart",
+				"expiry": "sourceEnd",
 				"expired": false
 			},
 			"description": "",
@@ -138,7 +142,7 @@
 		"target": {
 			"affects": {
 				"special": "",
-				"count": "1",
+				"count": "@item.level",
 				"type": "creature",
 				"choice": false
 			},

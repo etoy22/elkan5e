@@ -140,27 +140,36 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": ""
+					},
+					"template": {
+						"type": "wall",
+						"size": "100",
+						"width": "5",
+						"height": "10",
+						"count": ""
+					}
 				},
 				"damage": {
 					"onSave": "half",
 					"parts": [
 						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
 							"number": 6,
 							"denomination": 10,
 							"bonus": "",
 							"types": [
 								"slashing"
 							],
-							"custom": {
-								"enabled": false,
-								"formula": ""
-							},
 							"scaling": {
 								"mode": "",
-								"number": null,
-								"formula": ""
+								"number": 1
 							}
 						}
 					]
@@ -174,9 +183,36 @@
 				},
 				"uses": {
 					"spent": 0,
-					"recovery": []
+					"recovery": [],
+					"max": ""
 				},
-				"_id": "KgrpzhjXA92octUe"
+				"_id": "KgrpzhjXA92octUe",
+				"name": "",
+				"img": "",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"dispositionFilter": 0,
+					"excludeSource": false,
+					"wallRestriction": "move",
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "save"
+						},
+						{
+							"trigger": "turnEnd",
+							"action": "useActivity",
+							"targetId": "save"
+						}
+					]
+				}
 			}
 		},
 		"identifier": "blade-barrier"
