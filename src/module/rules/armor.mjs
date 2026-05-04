@@ -1,4 +1,14 @@
 /**
+ * Foundry VTT Module
+ * Elkan's 5e Classes, Spells, and Rules
+ *
+ * Copyright (C) 2024 by @etoy22 / @elkan5e
+ * All rights reserved.
+ */
+
+import { createBarbarianDefenseEffect } from "../shared/useFoundryEffects.mjs";
+
+/**
  * Applies armor rule behavior.
  *
  */
@@ -124,13 +134,7 @@ export async function updateBarbarianDefense(actor) {
 			await existing.update({ changes });
 		}
 	} else {
-		const effectData = {
-			name: "Barbarian Defense Bonus",
-			icon: "icons/commodities/biological/shell-tan.webp", // Change this to fit your module style
-			origin: actor.uuid,
-			disabled: false,
-			changes,
-		};
+		const effectData = await createBarbarianDefenseEffect(actor, changes);
 		// console.log(`Applying new Fortitude Bonus of ${bonus} for ${actor.name}`);
 		await actor.createEmbeddedDocuments("ActiveEffect", [effectData]);
 	}

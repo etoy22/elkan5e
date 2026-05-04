@@ -1,4 +1,5 @@
-import { chooseDefenderSkill, sizeIndex } from "../global.mjs";
+import { chooseDefenderSkill, sizeIndex } from "../../global.mjs";
+import { createClimberEffect, createGrappledEffect } from "../../shared/useFoundryEffects.mjs";
 
 const imgForCondition = (key) => `modules/elkan5e/icons/conditions/${key}.svg`;
 const t = (key, data) => (data ? game.i18n.format(key, data) : game.i18n.localize(key));
@@ -463,31 +464,25 @@ const applyElkanGrapple = async ({
 					e?.flags?.elkan5e?.grapple?.targetUuid === targetActor.uuid,
 			);
 			if (!existingClimber) {
-				await grappler.createEmbeddedDocuments("ActiveEffect", [
-					{
-						name: t("elkan5e.grapple.climberEffect"),
-						icon,
-						origin: targetActor.uuid,
-						flags: {
-							elkan5e: {
-								grapple: {
-									type: "climber-adv",
-									targetUuid: targetActor.uuid,
-								},
+				const climberEffect = await createClimberEffect(targetActor, grappler, {
+					changes: [
+						{
+							key: "system.attributes.movement.all",
+							mode: 0,
+							value: "0",
+							priority: 60,
+						},
+					],
+					flags: {
+						elkan5e: {
+							grapple: {
+								type: "climber-adv",
+								targetUuid: targetActor.uuid,
 							},
 						},
-						changes: [
-							{
-								key: "system.attributes.movement.all",
-								mode: 0,
-								value: "0",
-								priority: 60,
-							},
-						],
-						disabled: false,
-						type: "base",
 					},
-				]);
+				});
+				await grappler.createEmbeddedDocuments("ActiveEffect", [climberEffect]);
 			}
 		} else {
 			addChanges([
@@ -505,31 +500,25 @@ const applyElkanGrapple = async ({
 					e?.flags?.elkan5e?.grapple?.targetUuid === targetActor.uuid,
 			);
 			if (!existingClimber) {
-				await grappler.createEmbeddedDocuments("ActiveEffect", [
-					{
-						name: t("elkan5e.grapple.climberEffect"),
-						icon,
-						origin: targetActor.uuid,
-						flags: {
-							elkan5e: {
-								grapple: {
-									type: "climber-adv",
-									targetUuid: targetActor.uuid,
-								},
+				const climberEffect = await createClimberEffect(targetActor, grappler, {
+					changes: [
+						{
+							key: "flags.midi-qol.advantage.attack.all",
+							mode: 5,
+							value: `target?.actor?.uuid === "${targetActor.uuid}"`,
+							priority: 50,
+						},
+					],
+					flags: {
+						elkan5e: {
+							grapple: {
+								type: "climber-adv",
+								targetUuid: targetActor.uuid,
 							},
 						},
-						changes: [
-							{
-								key: "flags.midi-qol.advantage.attack.all",
-								mode: 5,
-								value: `target?.actor?.uuid === "${targetActor.uuid}"`,
-								priority: 50,
-							},
-						],
-						disabled: false,
-						type: "base",
 					},
-				]);
+				});
+				await grappler.createEmbeddedDocuments("ActiveEffect", [climberEffect]);
 			}
 		}
 	}
@@ -542,19 +531,15 @@ const applyElkanGrapple = async ({
 		range: grappleRange,
 	};
 
-	const payload = {
+	const payload = await createGrappledEffect(grappler, targetActor, changes, flags, {
 		name:
 			current?.name ??
 			game.i18n.localize("elkan5e.conditions.grappled") ??
 			t("elkan5e.grapple.grappled"),
 		icon: current?.icon ?? icon,
 		origin: originOverride ?? grappler.uuid,
-		flags,
-		changes,
-		disabled: false,
-		type: "base",
 		statuses: [...statuses],
-	};
+	});
 
 	if (existingEffect) await existingEffect.update(payload);
 	else await targetActor.createEmbeddedDocuments("ActiveEffect", [payload]);

@@ -1,4 +1,4 @@
-import { chooseDefenderSkill, sizeIndex, isPushBlocked, hasPushResist } from "../global.mjs";
+import { chooseDefenderSkill, sizeIndex, isPushBlocked, hasPushResist } from "../../global.mjs";
 import { endAllGrapplesForActor } from "./grapple.mjs";
 
 const t = (key, data) => (data ? game.i18n.format(key, data) : game.i18n.localize(key));

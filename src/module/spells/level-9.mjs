@@ -39,10 +39,3 @@ export async function wrathOfTheReaper(workflow) {
 		}
 	});
 }
-
-/**
- * Automation for the Enlarge spell: increases the size of each failed target by one step.
- *
- * @param {object} workflow - Workflow containing `_failedSaves` from the cast.
- * @returns {Promise<void>}
- */

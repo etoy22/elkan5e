@@ -2,11 +2,56 @@
 	"name": "Shield",
 	"type": "spell",
 	"img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
-	"effects": [],
+	"effects": [
+		{
+			"name": "Shield",
+			"img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.k6lJOHWJa0XF2zCb",
+			"type": "base",
+			"_id": "9hRjjxOWJ7hyMdiH",
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.ac.bonus",
+						"type": "add",
+						"value": 3,
+						"phase": "initial",
+						"priority": null
+					}
+				]
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceStart",
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"transfer": true,
+			"statuses": [],
+			"showIcon": 1,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"expiryMode": "default",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"disableIncapacitated": false,
+					"specialDuration": []
+				}
+			},
+			"_key": "!items.effects!k6lJOHWJa0XF2zCb.9hRjjxOWJ7hyMdiH"
+		}
+	],
 	"folder": "U0k4VGG6bziqf3oH",
 	"flags": {
 		"midi-qol": {
-			"onUseMacroName": "[postActiveEffects]ItemMacro",
+			"onUseMacroName": "[preCheckHits]ItemMacro",
 			"effectActivation": false,
 			"forceCEOff": false,
 			"itemCondition": "",

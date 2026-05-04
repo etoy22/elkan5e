@@ -96,11 +96,11 @@
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"transfer": true,
+			"transfer": false,
 			"statuses": [
 				"obscuredlightly"
 			],
-			"showIcon": 1,
+			"showIcon": 2,
 			"folder": null,
 			"flags": {
 				"dae": {
@@ -110,7 +110,11 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"disableIncapacitated": false,
-					"specialDuration": []
+					"specialDuration": [],
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
 				}
 			},
 			"_key": "!items.effects!QbacOEHBdmvlUYl8.KAUyanTSUHe8xL9Z"
@@ -316,13 +320,13 @@
 					"rules": [
 						{
 							"trigger": "entry",
-							"action": "applyEffect",
-							"targetId": "mtqZzXvzGon8D751"
+							"action": "useActivity",
+							"targetId": "save"
 						},
 						{
 							"trigger": "exit",
 							"action": "removeEffect",
-							"targetId": "mtqZzXvzGon8D751"
+							"targetId": "KAUyanTSUHe8xL9Z"
 						}
 					],
 					"wallRestriction": "none"

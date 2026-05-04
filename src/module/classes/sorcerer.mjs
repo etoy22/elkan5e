@@ -1,4 +1,5 @@
 const DialogV2 = foundry.applications.api.DialogV2;
+import { createDelayedSurgeEffect } from "../shared/useFoundryEffects.mjs";
 
 /**
  * Runs wild Surge class feature automation.
@@ -8,7 +9,9 @@ const DialogV2 = foundry.applications.api.DialogV2;
  * @returns {Promise<void>} Promise resolution result.
  */
 export async function wildSurge(activity, usageConfig) {
-	const item = activity.item;
+	const actor = activity?.actor;
+	const item = activity?.item;
+	if (!actor || !item) return;
 
 	let rawSlot = usageConfig?.spell?.slot;
 	let level = null;
@@ -27,13 +30,13 @@ export async function wildSurge(activity, usageConfig) {
 		level = activity.item?.system?.level ?? 0;
 	}
 
-	if (
-		(item.type === "spell" &&
-			level > 0 &&
-			(activity.name === "Ritual" || activity.consumption.spellSlot)) ||
-		item.system.type.value === "scroll"
-	) {
-		const actor = activity.actor;
+	const isScroll = item.type === "consumable" && item.system?.type?.value === "scroll";
+	const isLeveledSpellCast =
+		item.type === "spell" &&
+		level > 0 &&
+		(activity.name === "Ritual" || Boolean(activity.consumption?.spellSlot));
+
+	if (isLeveledSpellCast || isScroll) {
 		const WILD_SURGE_THRESHOLD = 5;
 		const MAX_TABLE_LEVEL = 10;
 		const TABLE_UUIDS = [
@@ -332,21 +335,12 @@ async function createDelayButton(actor, rollResult) {
 				},
 			};
 
-			const delayedSurgeEffect = {
+			const delayedSurgeEffect = await createDelayedSurgeEffect({
 				name: game.i18n.localize("elkan5e.wildMage.delayedWildSurgeDuration"),
 				transfer: false,
 				img: "icons/magic/defensive/barrier-shield-dome-deflect-blue.webp",
-				duration: {
-					seconds: 3600,
-				},
-				flags: {
-					dae: {
-						selfTarget: true,
-						stackable: "multi",
-						specialDuration: ["shortRest"],
-					},
-				},
-			};
+				origin: actor.uuid,
+			});
 
 			await actor.createEmbeddedDocuments("Item", [delayedSurge]);
 			await actor.createEmbeddedDocuments("ActiveEffect", [delayedSurgeEffect]);

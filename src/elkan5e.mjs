@@ -22,18 +22,14 @@ import {
 	wildSurge,
 } from "./module/classes/index.mjs";
 import { relentlessEndurance, undeadNature } from "./module/feats.mjs";
+import { grapple, handleDeadGrapplePrompt, handleGrapplerMove, handlePushedEffect, push } from "./module/rules/condition/index.mjs";
 import {
 	armor,
 	conditions,
 	conditionsReady,
 	formating,
-	grapple,
 	handleHazardExhaustion,
-	handleDeadGrapplePrompt,
-	handleGrapplerMove,
-	handlePushedEffect,
 	language,
-	push,
 	refs,
 	scroll,
 	skills,
@@ -43,7 +39,9 @@ import {
 	weapons,
 } from "./module/rules/index.mjs";
 import { gameSettingRegister, gameSettingsMigrate, startDialog } from "./module/settings/index.mjs";
+import { deleteRegionLights, syncRegionLightSort } from "./module/shared/effects.mjs";
 import * as Spells from "./module/spells/index.mjs";
+
 
 /**
  * Registers Hooks.
@@ -238,6 +236,30 @@ function registerHooks() {
 		if (!lights.length) return;
 		const ids = lights.map((light) => light.id);
 		await canvas.scene.deleteEmbeddedDocuments("AmbientLight", ids);
+	});
+
+	Hooks.on("deleteRegion", async (region) => {
+		try {
+			await deleteRegionLights(region);
+		} catch (error) {
+			console.error("Elkan 5e | Error in deleteRegion light cleanup hook:", error);
+		}
+	});
+
+	Hooks.on("createRegionBehavior", async (behavior) => {
+		try {
+			await syncRegionLightSort(behavior);
+		} catch (error) {
+			console.error("Elkan 5e | Error in createRegionBehavior light sort hook:", error);
+		}
+	});
+
+	Hooks.on("updateRegionBehavior", async (behavior) => {
+		try {
+			await syncRegionLightSort(behavior);
+		} catch (error) {
+			console.error("Elkan 5e | Error in updateRegionBehavior light sort hook:", error);
+		}
 	});
 
 	globalThis.elkan5e = {

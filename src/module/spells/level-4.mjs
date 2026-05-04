@@ -28,12 +28,3 @@ export async function vampiricSmite(workflow) {
 		{ flavor: "Life Steal" },
 	);
 }
-
-/**
- * Grants an AC bonus based on spell level and the caster's equipped shield.
- *
- * @param {object} workflow - Workflow containing actor and item data.
- * @param {Actor} workflow.actor - The actor casting the spell.
- * @param {Item} workflow.item - The Shield spell item.
- * @returns {Promise<void>}
- */

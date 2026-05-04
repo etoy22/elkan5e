@@ -497,3 +497,11 @@ export function conditionsReady() {
 		console.error("Elkan 5e | Failed to sync hazard exhaustion", error),
 	);
 }
+
+export {
+	grapple,
+	handleDeadGrapplePrompt,
+	handleGrapplerMove,
+	handlePushedEffect,
+} from "./grapple.mjs";
+export { push } from "./push.mjs";

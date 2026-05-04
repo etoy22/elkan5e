@@ -35,17 +35,3 @@ export async function lifeDrain(workflow) {
 		{ flavor: "Life Drain Healing" },
 	);
 }
-/**
- * Applies the "Sapping Smite" drained effect to each target damaged by the smite.
- *
- * Iterates through the damage entries in the workflow, and for each valid damage
- * instance on a valid target token, applies the drainedEffect with the "Sapping Smite" effect.
- *
- * @param {object} workflow - The workflow object containing spell and damage details.
- * @param {Actor} workflow.actor - The caster of the Sapping Smite spell.
- * @param {Token} workflow.token - The token representing the caster.
- * @param {string} workflow.token.actor.uuid - The UUID of the caster actor, used as effect origin.
- * @param {Array<object>} workflow.damageList - Array of damage entries detailing damage dealt per target.
- *
- * @returns {Promise<void>} Resolves after all drained effects have been applied.
- */

@@ -37,7 +37,7 @@ function resolveCanvasToken(entry) {
 }
 
 /**
- * Runs well Of Corruption spell automation.
+ * Runs Well Of Corruption spell automation.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
  * @returns {Promise<unknown>} Promise resolution result.
@@ -102,7 +102,7 @@ export async function wellOfCorruption(workflow) {
 }
 
 /**
- * Runs enlarge spell automation.
+ * Runs Enlarge spell automation.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
  * @returns {Promise<void>} Promise resolution result.
@@ -285,132 +285,90 @@ export async function returnToNormalSize(effect) {
 	}
 }
 
-/**
- * Runs create Light From Template spell automation.
- *
- * @param {*} workflow - Workflow payload from the triggering item or activity.
- * @param {*} config - Configuration object.
- * @param {*} minLevel - Min Level.
- * @returns {Promise<void>} Promise resolution result.
- */
-export async function createLightFromTemplate(workflow, config, minLevel = 1) {
-	const lastTemplate = canvas.templates.placeables.at(-1);
-	if (!lastTemplate) {
-		ui.notifications.warn("No measured template found.");
-		return;
-	}
-
-	const { x, y, id: templateId } = lastTemplate;
-	const spellLevel = Math.max(workflow.castData.castLevel - 1, minLevel);
-
-	const lightData = {
-		x,
-		y,
-		config: {
-			priority: spellLevel,
-			...config,
-		},
-		flags: {
-			elkan5e: {
-				linkedTemplate: templateId,
-			},
-		},
-	};
-
-	await canvas.scene.createEmbeddedDocuments("AmbientLight", [lightData]);
-}
 
 /**
- * Runs darkness spell automation.
+ * Runs Darkness spell automation.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
  * @returns {Promise<unknown>} Promise resolution result.
  */
 export async function darkness(workflow) {
-	return createLightFromTemplate(
-		workflow,
-		{
-			dim: 0,
-			bright: 15,
-			alpha: 0.3,
-			angle: 360,
-			luminosity: 0.5,
-			saturation: 0,
-			contrast: 0,
-			shadows: 0,
-			negative: true,
-			animation: {
-				type: "",
-				speed: 2,
-				intensity: 5,
+	for (const region of workflow.templateUuids ?? []) {
+		const regionTemplate = typeof region === "string" ? await fromUuid(region) : region;
+		const regionRadius = regionTemplate?.document?.distance ?? regionTemplate?.distance ?? 0;
+
+		await createLightRegion(
+			region,
+			{
+				dim: 0,
+				bright: regionRadius,
+				alpha: 0.3,
+				luminosity: 0.5,
+				negative: true,
+				animation: {
+					type: "",
+					speed: 2,
+					intensity: 5,
+				},
+				sort: spellLevel - 1,
 			},
-		},
-		1,
-	);
+			"Darkness"
+		);
+	}
 }
 
 /**
- * Runs continual Flame spell automation.
+ * Runs Continual Flame spell automation.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
  * @returns {Promise<unknown>} Promise resolution result.
  */
 export async function continualFlame(workflow) {
-	return createLightFromTemplate(
-		workflow,
-		{
-			dim: 60,
-			bright: 30,
-			alpha: 0.3,
-			angle: 360,
-			luminosity: 0.5,
-			saturation: 0,
-			contrast: 0,
-			shadows: 0,
-			negative: false,
-			animation: {
-				type: "torch",
-				speed: 2,
-				intensity: 5,
+	for (const region of workflow.templateUuids ?? []) {
+		await createLightRegion(
+			region,
+			{
+				dim: 60,
+				bright: 30,
+				alpha: 0.3,
+				luminosity: 0.5,
+				color: "#e25822",
+				animation: {
+					type: "torch",
+					speed: 2,
+					intensity: 5,
+				},
+				sort: spellLevel,
 			},
-		},
-		2,
-	);
+			"Continual Flame"
+		);
+	}
 }
 
 /**
- * Runs moon Beam spell automation.
+ * Runs Moon Beam spell automation.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
  * @returns {Promise<unknown>} Promise resolution result.
  */
 export async function moonBeam(workflow) {
-	return createLightFromTemplate(
-		workflow,
-		{
-			dim: 5,
-			bright: 0,
-			alpha: 0.3,
-			angle: 360,
-			luminosity: 0.5,
-			saturation: 0,
-			contrast: 0,
-			shadows: 0,
-			negative: false,
-			color: "#587BA5",
-			animation: {
-				type: "",
-				speed: 2,
-				intensity: 5,
+	for (const region of workflow.templateUuids ?? []) {
+		await createLightRegion(
+			region,
+			{
+				dim: 60,
+				bright: 30,
+				alpha: 0.3,
+				luminosity: 0.5,
+				color: "#587BA5",
+				animation: {
+					type: "starlight",
+					speed: 2,
+					intensity: 5,
+				},
+				sort: spellLevel,
 			},
-		},
-		2,
-	);
+			"Moon Beam"
+		);
+	}
 }
-
-/**
- * Adjusts temporary hit points based on save results of the Rend Vigor spell.
- *
- * @param {object} workflow - Workflow containing `saves` and `failedSaves` collections.
- * @returns {Promise<void>}
- */

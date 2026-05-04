@@ -1,205 +1,80 @@
-# Elkan5e Updates TODO
+# Foundry Elkan5e Updates TODO
 
-1. Set up overtime effects for Hazards, etc. **PRORITY**
+## High Priortiy
 
-2. Make it so compendium browser by default shows Elkan Spells only
+- Set up overtime effects for Hazards
 
-3. Make it so abilities that have Enraged Presence (Barbarian) simply look for the fact that you have the feature and apply it to the main ability
+- Figure out what to do with adamantine, cold iron and silver magic weapons
 
-4. Look at MidiQOL sample items for examples
+- AOE spells
+  - Gust of Wind (not done)
+
+## Priority
+
+- Make it so abilities that have Enraged Presence (Barbarian) simply look for the fact that you have the feature and apply it to the main ability
+
+- Make it so compendium browser by default shows Elkan Spells only
+
+- Look how Midi handles and implement
+  - Divine Smite
+  - Hunter's Mark
+  - Sneak Attack
+  - Delayed Blast Fire (Get David's Thoughts)
+
+- Lighting AOE abilities
+  - Light
+  - Continual Flame
+  - Darkness
+  - etc.
+
+- Spells to double check
+  - Mirror Image
+  - Moon Beam (Also talk with David)
+  - Wrath of the Reaper
+  - Web
+  - Plant Growth
+
+- Paladin Auras (All passive auras)
+*Not sure if this is possible to do*
+
+- Flaming Sphere (Make attack magical)
+
+## Low Priority 
+*Nice to have but not neccessary for update*
+
+- Foundry add new speed types
+
+- Make Scrolls use the right DC
+
+- Make sure push and grapple are on all class lists.
+
+- Spells to automate
+  - Sanctuary
+  - Protection from Poison
+  - Mirror Image
+  - Lesser Restoration
+  - Spirit Link
+  - Death Ward
+  - Fire Shield
+  - Divine Word
+  - Reverse Gravity
 
 
-# Low Priority
+- Difficult Terrain automation
+- Cragged Path
+- Twisted Terrain
+- Spells
+  - Web
+  - Plant Growth
+  - etc.
 
-1. Foundry add new speed types
 
-2. Make Scrolls use the right DC
+---
 
-3. Make sure push and grapple are on all class lists.
+# Seperate thoughts
 
-4. Fix elementalist element switching
+Thoughts on Knocking Unconscious - I like the disadvantage for Ranged not so much for Melee
 
-# Elkan5e Issues From Full Scan
-
-## Critical
-
-## High
-
-## Medium
-
-1. Additional broken rules references in creature content
-- Files:
-  - packs/_source/elkan5e-creatures/aberration/malakai-hound.json:1254 (`JournalEntry.Gdiv5lbHEyL4G8E5`)
-  - packs/_source/elkan5e-creatures/humanoid/assassin.json:520 (`JournalEntry.lYS9gLJUyCp7cKzX`, `JournalEntry.svcJ1yGovpUs0jLJ`)
-- Problem: target journal IDs are not present in `elkan5e-rules` source pack.
-- Impact: some condition/property links in creature abilities do not resolve.
-
-## Low
-
-## MIDI To dnd5e Replacement Scan (Verified In `Data/systems/dnd5e`)
-
-Scope counts from this module scan (`src` + `packs/_source`):
-- `MidiQOL.DamageOnlyWorkflow`: 5 hits across 3 files
-- `MidiQOL.applyTokenDamage`: 1 hit across 1 file
-- `flags.midi-qol.OverTime`: 44 hits across 41 files
-- `flags.midi-qol.ActivityOverTime`: 14 hits across 12 files
-- `flags.midi-qol.onUseMacroName`: 4 hits across 3 files
-- `flags.midi-qol.(advantage|disadvantage|grants.)`: 250 hits across 114 files
-- `flags.midi-qol.noActions/noBonusActions/noReactions/noOpportunityAttack`: 8 hits across 1 file
-- `flags.midi-qol.fail.*`: 9 hits across 2 files
-- `flags.midi-qol.ignoreNearbyFoes`: 2 hits across 2 files
-
-System verification:
-- No native `midi-qol` compatibility layer in dnd5e v14 code: `OverTime`, `ActivityOverTime`, `onUseMacroName`, `flags.midi-qol`, and `MidiQOL` all return `0` hits in `Data/systems/dnd5e`.
-
-1. [High] MIDI damage workflow calls can be replaced with native dnd5e damage/heal flow
-- Module usage:
-  - `src/module/spells.mjs:383`, `:544`, `:968`
-  - `src/module/classes/cleric.mjs:29`, `:166`
-- Verified native replacement in dnd5e:
-  - `module/documents/actor/actor.mjs:762` (`applyDamage`)
-  - `module/documents/activity/attack.mjs:85` (`rollAttack`), `module/documents/activity/damage.mjs:54`, `module/documents/activity/heal.mjs:63`
-  - `module/documents/chat-message.mjs:810` applies damage to target actors via actor `applyDamage`
-- Replacement status: `Yes` (requires refactor from MIDI workflow calls to dnd5e activity + actor APIs)
-
-2. [High] Ability/save/skill advantage-disadvantage MIDI flags have native dnd5e effect-key replacements
-- Module usage examples:
-  - `src/module/rules/condition.mjs:49-51`, `:141-143`, `:322-341`
-- Verified native replacement in dnd5e:
-  - Actor models use roll-mode fields: `module/data/actor/templates/common.mjs:168-174`, `module/data/actor/templates/attributes.mjs:168`
-  - Roll pipeline consumes those fields: `module/documents/actor/actor.mjs:1522-1525`
-  - Official dnd5e content uses these keys in effects:
-    - `packs/_source/spells/3rd-level/bestow-curse.yml:195-200`
-    - `packs/_source/spells/3rd-level/beacon-of-hope.yml:121-127`
-- Replacement status: `Yes` for self roll-mode effects (`system.abilities.*.check.roll.mode`, `system.abilities.*.save.roll.mode`, `system.skills.*.roll.mode`)
-
-3. [High] Target-side granted attack advantage/disadvantage and crit flags are only partially replaceable
-- Module usage examples:
-  - `flags.midi-qol.grants.advantage.attack.*`, `flags.midi-qol.grants.disadvantage.attack.*`, `flags.midi-qol.grants.critical.*` in `src/module/rules/condition.mjs`
-- Verified native dnd5e behavior:
-  - Condition/status framework exists: `module/config.mjs:3618-3788`, `module/documents/actor/actor.mjs:485-495`
-  - But no direct generic equivalents to MIDI `grants.*attack.*` / `grants.critical.*` keys in dnd5e code
-- Replacement status: `Partial` (can use native statuses/effects for many cases, but not one-for-one for all target-granted attack modifiers)
-
-4. [Critical] MIDI `OverTime` / `ActivityOverTime` has no direct dnd5e active-effect equivalent
-- Module usage examples:
-  - `src/module/rules/condition.mjs:29-32`
-  - many pack entries (44 `OverTime`, 14 `ActivityOverTime`)
-- Verified in dnd5e:
-  - no `OverTime`/`ActivityOverTime` key support in system code
-  - region behaviors shipped by dnd5e are limited to:
-    - `module/data/region-behavior/_module.mjs` (`dnd5e.difficultTerrain`, `dnd5e.rotateArea`)
-- Replacement status: `No` direct equivalent (requires custom hooks/scripts or redesign)
-
-5. [High] MIDI `onUseMacroName` has no direct dnd5e effect-key replacement
-- Module usage examples:
-  - `src/module/rules/condition.mjs:183-186`, `:242-245`
-  - pack items with `midi-qol.onUseMacroName`
-- Verified in dnd5e:
-  - no `onUseMacroName` field support
-  - native hook points do exist for code-level replacement:
-    - `module/documents/activity/mixin.mjs:221` (`dnd5e.preUseActivity`)
-    - `module/documents/activity/mixin.mjs:271` (`dnd5e.postUseActivity`)
-    - `module/dice/basic-roll.mjs:100-103` (`dnd5e.preRoll*`)
-- Replacement status: `Partial` (replacement exists only as custom hook code, not as a drop-in data flag)
-
-6. [High] MIDI action-economy blocking flags have no direct dnd5e effect-key equivalent
-- Module usage examples:
-  - `flags.midi-qol.noActions`, `noBonusActions`, `noReactions`, `noOpportunityAttack` in `src/module/rules/condition.mjs:78-80`, `:107`, `:194`, `:208`, `:230`
-- Verified in dnd5e:
-  - activity activation taxonomy exists (`action`, `bonus`, `reaction`): `module/config.mjs:992-1007`
-  - no generic actor-side effect keys matching `noActions/noBonusActions/noReactions/noOpportunityAttack`
-  - consumption tracking is implemented for specific activation configs; not a global status-block key path: `module/documents/activity/mixin.mjs:426-440`, `:538-560`
-- Replacement status: `No` direct equivalent
-
-7. [High] MIDI auto-fail flags (`fail.ability.*`, `fail.spell.verbal/somatic`) have no direct dnd5e effect-key equivalent
-- Module usage examples:
-  - `src/module/rules/condition.mjs:86-89`, `:163`, `:171`
-- Verified in dnd5e:
-  - save/check rolls use roll mode/min/max fields: `module/documents/actor/actor.mjs:1522-1525`
-  - no native effect keys for "automatic fail this save/check" or "block verbal/somatic casting" found in system code
-- Replacement status: `No` direct equivalent
-
-8. [Medium] MIDI `ignoreNearbyFoes` has no direct dnd5e equivalent
-- Module usage examples:
-  - `packs/_source/elkan5e-feats/level-8-feats/marksman.json:73`
-  - `packs/_source/elkan5e-feats/level-8-feats/close-shot.json:73`
-- Verified in dnd5e:
-  - no matching key/API in system code for this MIDI behavior
-- Replacement status: `No` direct equivalent
-
-## v14 Manual Check List (MIDI Migration)
-
-1. Verify all converted healing/damage features apply correct target and source in chat cards
-- Focus files: `src/module/spells.mjs`, `src/module/classes/cleric.mjs`
-
-2. Verify every condition from `src/module/rules/condition.mjs` still enforces expected behavior after MIDI key removal
-- Especially: blinded, invisible, prone, restrained, incapacitated, slowed, surprised, unconscious
-
-3. Verify features relying on turn-based overtime still trigger each turn
-- Focus on all `OverTime`/`ActivityOverTime` usages in packs and `condition.mjs`
-
-4. Verify reaction/opportunity suppression logic in combat still works where expected
-- Current MIDI flags have no direct native equivalent; likely needs custom hook logic
-
-5. Verify spell component restrictions (verbal/somatic) and forced-fail save/check behaviors
-- Current MIDI `fail.*` flags have no direct native equivalent
-
-# Resolved
-
-1. Fixed malformed rules UUID strings missing `JournalEntry` in pack content
-- Scope: 14 files updated
-- Validation: no remaining matches for `Compendium.elkan5e.elkan5e-rules.(?!JournalEntry)` in `packs/_source` and `src`.
-
-2. Fixed Flood hazard text malformed nested reference token
-- File: packs/_source/elkan5e-spells/level-6/flood.json:205
-- Changed from: `&amp;reference[&reference[swimming]{Swimming}]{swim speed}`
-- Changed to: `&amp;reference[swimming]{swim speed}`
-
-3. Fixed `knockingacreatureout` rules reference to a valid page ID
-- File: src/module/rules/references.mjs:65
-- Changed from: `JournalEntryPage.Fwd3U6gs6IAybt7Q` (missing)
-- Changed to: `JournalEntryPage.unGgf3TA3iSawYAn` (`Dropping to 0 Hit Points`)
-
-4. Fixed stale `JournalEntry.8344a52d39b0429a` references in `references.mjs`
-- File: src/module/rules/references.mjs:190-473
-- Updated 27 rule mappings to valid live pages in current packs.
-- Validation: `references.mjs` now has `0` missing `elkan5e-rules` journal/page references.
-
-5. Fixed Moonbeam macro name mismatch
-- Files:
-  - packs/_source/elkan5e-spells/level-2/moonbeam.json now calls `elkan5e.macros.spells.moonBeam(...)`
-  - src/module/spells.mjs exports `moonBeam`
-- Validation: pack macro calls match exported function name/casing.
-
-6. Verified warlock spellcasting registration timing is valid in current Foundry 14 flow
-- Evidence:
-  - Core hook order is `init` then `i18nInit` (`App/resources/app/client/hooks.mjs`).
-  - `elkan5e` sets `CONFIG.DND5E.spellcasting.elkanWarlock` in `Hooks.once("init", ...)`.
-  - dnd5e builds spellcasting models at `Hooks.once("i18nInit", ...)` via `SpellcastingModel.fromConfig()`.
-- Result: `elkanWarlock` is available before model construction in this environment.
-
-7. Fixed Graveguard monster macro name mismatch with a compatibility alias
-- File: src/elkan5e.mjs
-- Change: added `elkan5e.macros.monsterFeatures.lifeDrain = lifeDrainGraveguard`
-- Result: existing graveguard pack macros calling `lifeDrain(...)` now resolve at runtime.
-
-8. Fixed cleric healing feature checks to support activity-era healing uses
-- File: src/module/classes/cleric.mjs
-- Change: added a workflow action-type resolver that prefers modern `workflow.activity` data before falling back to legacy `item.system.actionType`.
-- Result: `Infused Healer` and `Healing Overflow` no longer depend on legacy action type data as the primary source.
-
-9. Fixed cleric overflow-healing range measurement for Foundry 14 grid APIs
-- File: src/module/classes/cleric.mjs
-- Change: replaced direct token-to-token `canvas.grid.measureDistance(...)` use with a helper that prefers `measurePath(...)` and falls back safely.
-- Result: overflow-healing candidate range checks now work against the v14 grid API shape.
-
-10. Fixed Delayed Surge cleanup logic
-- File: src/module/classes/sorcerer.mjs
-- Change: replaced bad helper calls with direct item/effect cleanup by localized name on the owning actor.
-- Result: deleting the delayed duration effect removes the item, and deleting the item removes the duration effect.
-
-11. Fixed `healOver` compatibility helper so it no longer throws if invoked
-- File: src/module/classes/cleric.mjs
-- Change: replaced references to undefined `activity` and `actor` symbols with a safe compatibility shim that can forward workflow-shaped calls to `healingOverflow(...)` and otherwise exits cleanly.
-- Result: `healOver` no longer causes an immediate runtime error when executed.
+Abilities thats text should just say Emanation
+- Shifting Sands
+- Holy Nimbus

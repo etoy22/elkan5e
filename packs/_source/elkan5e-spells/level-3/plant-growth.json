@@ -30,9 +30,9 @@
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"transfer": true,
+			"transfer": false,
 			"statuses": [],
-			"showIcon": 1,
+			"showIcon": 2,
 			"folder": null,
 			"flags": {
 				"dae": {
@@ -42,7 +42,11 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"disableIncapacitated": false,
-					"specialDuration": []
+					"specialDuration": [],
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
 				}
 			},
 			"_key": "!items.effects!2oT2CvtPPtpZOJyL.sAeUfv6Lfvi4RQab"
@@ -228,14 +232,16 @@
 						{
 							"trigger": "entry",
 							"action": "applyEffect",
-							"targetId": ""
+							"targetId": "sAeUfv6Lfvi4RQab"
 						},
 						{
-							"trigger": "exit",
+							"trigger": "entry",
 							"action": "removeEffect",
-							"targetId": ""
+							"targetId": "sAeUfv6Lfvi4RQab"
 						}
-					]
+					],
+					"excludeSource": false,
+					"oncePerTurn": false
 				}
 			}
 		},

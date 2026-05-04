@@ -154,7 +154,6 @@ export async function drainedEffect(actor, damage, name, img, uuid) {
 					showIcon: false,
 					durationExpression: "",
 					macroRepeat: "none",
-					specialDuration: ["longRest"],
 				},
 			},
 		};
@@ -207,8 +206,8 @@ const valueIsTruthy = (value) => {
  * Shared helper for has Special Trait.
  *
  * @param {*} actor - Actor document to process.
- * @param {*} trait - Trait.
- * @returns Operation result.
+ * @param {*} trait - Trait to check for.
+ * @returns {boolean} Status of whether the actor has the trait.
  */
 export function hasSpecialTrait(actor, trait) {
 	const key = String(trait ?? "")
@@ -272,7 +271,7 @@ export function hasSpecialTrait(actor, trait) {
  * Shared helper for is Push Blocked.
  *
  * @param {*} actor - Actor document to process.
- * @returns Operation result.
+ * @returns Status of whether the actor is push blocked.
  */
 export function isPushBlocked(actor) {
 	if (!actor) return false;
@@ -304,7 +303,7 @@ export function isPushBlocked(actor) {
  * Shared helper for has Push Resist.
  *
  * @param {*} actor - Actor document to process.
- * @returns Operation result.
+ * @returns Status of whether the actor has push resist.
  */
 export function hasPushResist(actor) {
 	if (!actor) return false;
@@ -318,4 +317,110 @@ export function hasPushResist(actor) {
 			return key === "flags.elkan5e.pushresist" && valueIsTruthy(change?.value);
 		}),
 	);
+}
+
+export function difficultTerrainEffect() {
+
+}
+
+function randomString(length = 16) {
+	const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	return Array.from({ length }, () => chars[Math.floor(Math.random() * chars.length)]).join("");
+}
+
+export async function syncRegionLightSort(behaviorRef, explicitSort = null) {
+	if (!game.user?.isGM || game.users.activeGM?.id !== game.user.id) return false;
+
+	const behaviorDoc =
+		typeof behaviorRef === "string" ? await fromUuid(behaviorRef).catch(() => null) : behaviorRef;
+	if (!behaviorDoc || behaviorDoc.type !== "midi-qol.regionLight") return false;
+
+	const sortValue =
+		explicitSort ?? getRegionLightSort({ sort: behaviorDoc.getFlag("elkan5e", "lightSort") });
+	if (!Number.isFinite(sortValue)) return false;
+
+	const lightDocId = behaviorDoc.system?.lightDocId;
+	if (!lightDocId) return false;
+
+	const scene = behaviorDoc.parent?.parent ?? canvas.scene;
+	const lightDoc = scene?.lights?.get(lightDocId);
+	if (!lightDoc) return false;
+	if (lightDoc.sort === sortValue) return true;
+
+	await scene.updateEmbeddedDocuments("AmbientLight", [{ _id: lightDocId, sort: sortValue }]);
+	return true;
+}
+
+export async function deleteRegionLights(regionRef) {
+	if (!game.user?.isGM) return;
+
+	const regionDoc =
+		typeof regionRef === "string" ? await fromUuid(regionRef).catch(() => null) : regionRef;
+	if (!regionDoc) return;
+
+	const lightIds = regionDoc.behaviors
+		.filter((behavior) => behavior.type === "midi-qol.regionLight")
+		.map((behavior) => behavior.system.lightDocId)
+		.filter((lightId) => !!lightId);
+	if (!lightIds.length) return;
+
+	const scene = regionDoc.parent ?? canvas.scene;
+	const existingLightIds = lightIds.filter((lightId) => scene?.lights?.has(lightId));
+	if (!existingLightIds.length) return;
+
+	await scene.deleteEmbeddedDocuments("AmbientLight", existingLightIds);
+}
+
+
+export async function createLightRegion(regionRef, config, name = "Midi Region Light") {
+	const regionDoc =
+		typeof regionRef === "string" ? await fromUuid(regionRef).catch(() => null) : regionRef;
+	if (!regionDoc) {
+		ui.notifications.warn("No region found to attach a light behavior.");
+		return null;
+	}
+
+	const existingBehavior = regionDoc.behaviors.find(
+		(behavior) =>
+			behavior.type === "midi-qol.regionLight" &&
+			(behavior.getFlag("elkan5e", "createLightRegion") || behavior.name === name),
+	);
+	const behaviorId = existingBehavior?.id ?? randomString();
+	const sortValue = config.sort ?? 0;
+	const behaviorData = {
+		_id: behaviorId,
+		name,
+		type: "midi-qol.regionLight",
+		flags: {
+			elkan5e: {
+				createLightRegion: true,
+				lightSort: sortValue,
+			},
+		},
+		system: {
+			dim: config.dim ?? 20,
+			bright: config.bright ?? 10,
+			color: config.color ?? null,
+			alpha: config.alpha ?? 0.5,
+			luminosity: config.luminosity ?? 0.5,
+			animationType: config.animation?.type ?? config.animationType ?? null,
+			animationSpeed: config.animation?.speed ?? config.animationSpeed ?? 5,
+			animationIntensity: config.animation?.intensity ?? config.animationIntensity ?? 5,
+		}
+	};
+
+	if (existingBehavior) {
+		const [updatedBehavior] = await regionDoc.updateEmbeddedDocuments("RegionBehavior", [behaviorData]);
+		if (Number.isFinite(sortValue)) {
+			await syncRegionLightSort(createdBehavior, sortValue);
+
+		}
+		return updatedBehavior;
+	}
+
+	const [createdBehavior] = await regionDoc.createEmbeddedDocuments("RegionBehavior", [behaviorData]);
+	if (Number.isFinite(sortValue)) {
+		await syncRegionLightSort(createdBehavior, sortValue);
+	}
+	return createdBehavior;
 }

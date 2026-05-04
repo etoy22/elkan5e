@@ -1,4 +1,5 @@
 import { drainedEffect, forEachDamagedTarget } from "../shared/effects.mjs";
+import { createGoodberryDurationEffect } from "../shared/useFoundryEffects.mjs";
 
 /**
  * Runs goodberry spell automation.
@@ -185,18 +186,7 @@ export async function goodberry(workflow) {
 		console.error("Goodberry item was not found after creation.");
 		return;
 	}
-	const effectData = {
-		name: `${item.name} Duration (Level ${level})`, // Added required name property
-		label: `${item.name} Duration (Level ${level})`,
-		icon: `${img}`,
-		origin: item.uuid,
-		duration: { seconds: 3600 }, // 1 hour duration
-		changes: [],
-		flags: {
-			dae: { specialDuration: ["longRest"] },
-			elkan5e: { goodberryItemId: linkedItem.uuid },
-		},
-	};
+	const effectData = await createGoodberryDurationEffect(item, level, linkedItem.uuid);
 
 	await actor.createEmbeddedDocuments("ActiveEffect", [effectData]);
 }
@@ -320,28 +310,6 @@ export async function rendVigor(workflow) {
 }
 
 /**
- * Runs fog Cloud spell automation.
- *
- * @param {*} workflow - Workflow payload from the triggering item or activity.
- * @returns {Promise<void>} Promise resolution result.
- */
-export async function fogCloud(workflow) {
-	const template = workflow.template;
-
-	if (!template) {
-		ui.notifications.warn("No template ID found in workflow.");
-		return;
-	}
-
-	const baseRadius = 20;
-	const spellLevel = Math.max(workflow.castData.castLevel, 1);
-	const radius = baseRadius + (spellLevel - 1) * 20;
-
-	await template.update({ distance: radius });
-	ui.notifications.info(`Fog Cloud radius set to ${radius} ft.`);
-}
-
-/**
  * Runs shield spell automation.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
@@ -358,9 +326,10 @@ export async function shield(workflow) {
 
 	// Spell level (minimum 1)
 	const level = Math.max(item.system.level ?? 1, 1);
+	if (level === 0 || level === 1) return;
 
-	// Spell bonus: level + 2 capped at 5
-	const spellBonus = Math.min(level + 2, 5);
+	// Spell bonus: Just the bonnus from the spell level
+	const spellBonus = Math.min(level - 1, 2);
 
 	// Find equipped shield
 	const shield = actor.items.find(
@@ -382,13 +351,14 @@ export async function shield(workflow) {
 	// Calculate net bonus to AC
 	const bonus = spellBonus - shieldBonus;
 
+	if (bonus <= 0) return;
 	// Prepare active effect data
 	const effectData = {
-		name: item.name,
+		name: item.name + " Level Bonus",
 		label: item.name,
 		icon: item.img,
 		origin: item.uuid,
-		duration: { seconds: 7 },
+		duration: { value: 1, units: "round" },
 		changes: [
 			{
 				key: "system.attributes.ac.bonus",
@@ -397,9 +367,6 @@ export async function shield(workflow) {
 				priority: 20,
 			},
 		],
-		flags: {
-			dae: { specialDuration: ["turnEndSource"] },
-		},
 	};
 
 	await actor.createEmbeddedDocuments("ActiveEffect", [effectData]);

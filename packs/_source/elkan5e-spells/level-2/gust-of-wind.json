@@ -2,7 +2,56 @@
 	"name": "Gust of Wind",
 	"type": "spell",
 	"img": "icons/magic/air/wind-swirl-gray-blue.webp",
-	"effects": [],
+	"effects": [
+		{
+			"name": "Gust of Wind - Effect",
+			"img": "icons/magic/air/wind-swirl-gray-blue.webp",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.G1qQZd6IkSfweHlE",
+			"type": "base",
+			"_id": "XT5XRocS1PtMu7D1",
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.all",
+						"type": "custom",
+						"value": "/2",
+						"phase": "final",
+						"priority": null
+					}
+				]
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [],
+			"showIcon": 1,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"expiryMode": "default",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"disableIncapacitated": false,
+					"specialDuration": [],
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
+				}
+			},
+			"_key": "!items.effects!G1qQZd6IkSfweHlE.XT5XRocS1PtMu7D1"
+		}
+	],
 	"folder": "6J3i75lfD1J0xYwA",
 	"flags": {
 		"midi-qol": {
@@ -150,7 +199,10 @@
 						"type": ""
 					},
 					"template": {
-						"type": "line"
+						"type": "line",
+						"size": "60",
+						"width": "10",
+						"count": ""
 					}
 				},
 				"uses": {
@@ -178,6 +230,24 @@
 						"min": null,
 						"max": null
 					}
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"dispositionFilter": 0,
+					"excludeSource": false,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "XT5XRocS1PtMu7D1"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "XT5XRocS1PtMu7D1"
+						}
+					],
+					"wallRestriction": "move"
 				}
 			},
 			"3tGFHZoP80cPEUOe": {
@@ -214,8 +284,17 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": ""
+					},
+					"template": {
+						"type": "line",
+						"size": "60",
+						"width": "10",
+						"count": ""
+					}
 				},
 				"uses": {
 					"spent": 0,
@@ -237,7 +316,32 @@
 				"forceDialog": false,
 				"effectConditionText": "",
 				"img": "",
-				"appliedEffects": []
+				"appliedEffects": [],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"dispositionFilter": 0,
+					"excludeSource": false,
+					"oncePerTurn": false,
+					"wallRestriction": "move",
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "XT5XRocS1PtMu7D1"
+						},
+						{
+							"trigger": "entry",
+							"action": "removeEffect",
+							"targetId": "XT5XRocS1PtMu7D1"
+						}
+					]
+				}
 			}
 		},
 		"identifier": "gust-of-wind"

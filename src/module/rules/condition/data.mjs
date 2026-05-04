@@ -257,7 +257,6 @@ const CONDITION_DEFS = [
 			dae: {
 				transfer: false,
 				stackable: "none",
-				specialDuration: ["turnEnd"],
 				showIcon: true,
 			},
 			core: { statusId: "surprised" },
@@ -453,7 +452,6 @@ const STATUS_DEFS = [
 			dae: {
 				transfer: false,
 				stackable: "none",
-				specialDuration: ["turnStart"],
 				disableIncapacitated: true,
 				showIcon: true,
 			},
