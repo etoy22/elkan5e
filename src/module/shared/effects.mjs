@@ -98,7 +98,7 @@ export async function deleteEffectRemoveEffect(
  * @param {*} uuid - Identifier value.
  * @returns {Promise<unknown>} Promise resolution result.
  */
-export async function drainedEffect(actor, damage, name, img, uuid) {
+export async function drainedEffect(actor, damage, name, img, uuid, missing = false) {
 	const effectName = name || "Drained";
 	const effectImg = img || "modules/elkan5e/icons/drained.svg";
 	const effectOrigin = uuid || null;
@@ -108,7 +108,12 @@ export async function drainedEffect(actor, damage, name, img, uuid) {
 	);
 
 	const newValue = -Math.abs(damage); // Ensure negative number
-
+	if (missing){
+		const difference = actor.system.attributes.hp.max - actor.system.attributes.hp.value;
+		if (difference <= 0) return;
+		newValue = -Math.min(difference, Math.abs(damage));
+	}
+	
 	if (existingEffect) {
 		const updatedChanges = existingEffect.changes.map((change) => {
 			if (change.key === "system.attributes.hp.tempmax") {

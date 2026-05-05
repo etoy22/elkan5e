@@ -97,6 +97,7 @@ export async function wellOfCorruption(workflow) {
 			"Well of Corruption",
 			"icons/magic/unholy/orb-swirling-teal.webp",
 			casterUuid,
+			true,
 		);
 	}
 }
