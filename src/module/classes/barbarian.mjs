@@ -47,7 +47,12 @@ export async function wildBlood(workflow) {
 	if (item.type !== "spell" || !item.system.activities) return;
 
 	const activityId = scope.workflow.uuid?.split(".").pop();
-	let type = item.system.activities.find((a) => a.id === activityId).type;
+	const activity =
+		item.system.activities?.[activityId] ??
+		Object.values(item.system.activities ?? {}).find((a) => a?.id === activityId);
+	if (!activity) return;
+
+	const type = activity.type;
 	const level = item.system.level;
 	const TABLE_UUIDS = [
 		null, // No table for level 0 spells

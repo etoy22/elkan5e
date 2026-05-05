@@ -2,6 +2,28 @@ import { UpdateElkanRunner } from "./update-elkan-runner.mjs";
 const MODULE_ID = "elkan5e";
 
 /**
+ * Waits until Foundry has fully marked the game as ready.
+ *
+ * @returns {Promise<void>} Promise resolution result.
+ */
+async function waitForGameReady() {
+	if (game.ready) return;
+
+	await new Promise((resolve) => {
+		const checkReady = () => {
+			if (game.ready) {
+				resolve();
+				return;
+			}
+
+			globalThis.setTimeout(checkReady, 0);
+		};
+
+		checkReady();
+	});
+}
+
+/**
  * Handles register Game Settings for module settings.
  *
  * @returns {Promise<void>} Promise resolution result.
@@ -145,6 +167,7 @@ export async function migrateGameSettings() {
 		(oldValue === "false" || oldValue === false || oldValue === "true" || oldValue === true) &&
 		!game.settings.get(MODULE_ID, "toolsMigration")
 	) {
+		await waitForGameReady();
 		console.log(`Elkan 5e | Migrating setting "tools" from to new settings`);
 		let convertedValue = 0;
 		if (oldValue === "false" || oldValue === false) {

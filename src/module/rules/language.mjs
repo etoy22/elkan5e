@@ -1,7 +1,6 @@
 /**
  * Applies language rule behavior.
  *
- * @returns {void} Operation result.
  */
 export function language() {
 	let lang = game.settings.get("elkan5e", "languageSystem");

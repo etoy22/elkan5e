@@ -120,7 +120,7 @@ export async function getActorsToProcess(updateMode) {
  *
  * @param {*} docs - Docs.
  * @param {*} mode - Mode.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 export function filterDocsByMode(docs, mode) {
 	if (mode === "update-All") return docs;
@@ -133,7 +133,7 @@ export function filterDocsByMode(docs, mode) {
  * Handles get Item Identifier for module settings.
  *
  * @param {*} item - Item document to process.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function getItemIdentifier(item) {
 	const id = item.system?.identifier;
@@ -219,7 +219,7 @@ export async function restorePropertiesToData(newData, savedProps, mode, preserv
  *
  * @param {*} obj - Obj.
  * @param {*} value - Value.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function getKeyByValue(obj, value) {
 	for (const key in obj) {
@@ -235,7 +235,7 @@ function getKeyByValue(obj, value) {
  *
  * @param {*} a - A.
  * @param {*} b - B.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function deepEqualIgnoringMeta(a, b) {
 	if (a === b) return true;
@@ -295,7 +295,7 @@ function deepEqualIgnoringMeta(a, b) {
  *
  * @param {*} oldItem - Old Item.
  * @param {*} newItem - New Item.
- * @returns {unknown} Operation result.
+ * @returns Operation result.
  */
 function itemsAreFullyIdentical(oldItem, newItem) {
 	// If the only difference is the identifier being assigned to the compendium item, treat as identical
