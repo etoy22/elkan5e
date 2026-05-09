@@ -51,7 +51,9 @@ export async function createEffect(effectId, customOptions = {}) {
 			// If not found by ID, try by name
 			if (!doc) {
 				const index = await compendium.getIndex();
-				const foundEntry = index.find((entry) => entry.name === effectId || entry._id === effectId);
+				const foundEntry = index.find(
+					(entry) => entry.name === effectId || entry._id === effectId,
+				);
 				if (foundEntry) {
 					doc = await compendium.getDocument(foundEntry._id);
 				}
@@ -98,7 +100,12 @@ export async function createEmptyBodyEffect(customOptions = {}) {
  * @param {Object} customOptions - Additional options
  * @returns {Promise<Object>} The effect data
  */
-export async function createGoodberryDurationEffect(item, level, linkedItemUuid, customOptions = {}) {
+export async function createGoodberryDurationEffect(
+	item,
+	level,
+	linkedItemUuid,
+	customOptions = {},
+) {
 	const defaultOptions = {
 		name: `${item.name} Duration (Level ${level})`,
 		label: `${item.name} Duration (Level ${level})`,

@@ -351,7 +351,9 @@ function getActorHazardCount(actor) {
 
 	let count = 0;
 	for (const statusId of HAZARD_STATUS_IDS) {
-		const found = [...actor.effects].some((effect) => !effect.disabled && effectHasStatus(effect, statusId));
+		const found = [...actor.effects].some(
+			(effect) => !effect.disabled && effectHasStatus(effect, statusId),
+		);
 		if (found) count += 1;
 	}
 	return count;
@@ -367,7 +369,10 @@ async function syncHazardExhaustion(actor) {
 	if (!game.user?.isGM || !actor) return;
 
 	const nextContribution = getActorHazardCount(actor);
-	const priorContribution = Math.max(0, Number((await actor.getFlag("elkan5e", HAZARD_EXHAUSTION_FLAG)) ?? 0));
+	const priorContribution = Math.max(
+		0,
+		Number((await actor.getFlag("elkan5e", HAZARD_EXHAUSTION_FLAG)) ?? 0),
+	);
 	const delta = nextContribution - priorContribution;
 
 	if (delta) {

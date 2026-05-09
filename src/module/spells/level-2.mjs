@@ -1,4 +1,4 @@
-import { drainedEffect } from "../shared/effects.mjs";
+import { createLightRegion, drainedEffect } from "../shared/effects.mjs";
 
 const SIZE_ORDER = ["tiny", "sm", "med", "lg", "huge", "grg"];
 const SIZE_TO_GRID = {
@@ -286,7 +286,6 @@ export async function returnToNormalSize(effect) {
 	}
 }
 
-
 /**
  * Runs Darkness spell automation.
  *
@@ -311,9 +310,9 @@ export async function darkness(workflow) {
 					speed: 2,
 					intensity: 5,
 				},
-				sort: spellLevel - 1,
+				sort: workflow.spellLevel - 1,
 			},
-			"Darkness"
+			"Darkness",
 		);
 	}
 }
@@ -339,9 +338,9 @@ export async function continualFlame(workflow) {
 					speed: 2,
 					intensity: 5,
 				},
-				sort: spellLevel,
+				sort: workflow.spellLevel,
 			},
-			"Continual Flame"
+			"Continual Flame",
 		);
 	}
 }
@@ -367,9 +366,9 @@ export async function moonBeam(workflow) {
 					speed: 2,
 					intensity: 5,
 				},
-				sort: spellLevel,
+				sort: workflow.spellLevel,
 			},
-			"Moon Beam"
+			"Moon Beam",
 		);
 	}
 }

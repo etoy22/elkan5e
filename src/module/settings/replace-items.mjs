@@ -1,5 +1,4 @@
 const { getProperty, setProperty } = foundry.utils;
-
 // Process the form selections from the Elkan update dialog
 /**
  * Handles process Elkan Update Form for module settings.
@@ -23,6 +22,7 @@ export async function processElkanUpdateForm(updates) {
 		npcs: updates.npcFeatures,
 	});
 
+	removeDuplicateItems({ actor: updates.actorDuplicate, npc: updates.npcDuplicate });
 	ui.notifications.info("Elkan 5e update process started. See console for details.");
 }
 
@@ -99,6 +99,17 @@ class MigrationProgress {
 			setTimeout(() => this.progressBar.remove(), 4000);
 		}
 	}
+}
+
+async function removeDuplicateItems({ actor = false, npc = false }) {
+	if (!actor && !npc) return;
+	const actors = await getActorsToProcess({
+		players: actor ? "update-All" : "none",
+		npcs: npc ? "update-All" : "none",
+	});
+	if (actors.length === 0) return;
+
+	//TODO:Finish implementation to remove duplicate items based on identifier, then name if no identifier. This would be separate from the above migration processes.
 }
 
 /**

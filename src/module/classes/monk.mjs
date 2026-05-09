@@ -125,7 +125,12 @@ export async function elementalAttunement(args) {
 			itemsToAdd: ["RFs2JK8U1HWwRtRy"],
 			spellsToAdd:
 				monkLevel >= 14
-					? ["MKvNn3Q5xPa0vEK2", "Q6y7fBSwRIUMChVh", "ZRsOGTOZI6aksC85", "efO0uhdOJ89v9RKL"]
+					? [
+							"MKvNn3Q5xPa0vEK2",
+							"Q6y7fBSwRIUMChVh",
+							"ZRsOGTOZI6aksC85",
+							"efO0uhdOJ89v9RKL",
+						]
 					: monkLevel >= 6
 						? ["MKvNn3Q5xPa0vEK2", "Q6y7fBSwRIUMChVh", "ZRsOGTOZI6aksC85"]
 						: [],
@@ -142,7 +147,12 @@ export async function elementalAttunement(args) {
 			itemsToAdd: ["UE1CR9GhnUHA8W3v"],
 			spellsToAdd:
 				monkLevel >= 14
-					? ["8iOXbBYr8peoRGtp", "QNa2AQVdnwGihVCe", "yJX39WZzkHIvxhVv", "i8ASCHhH1r6NHPPy"]
+					? [
+							"8iOXbBYr8peoRGtp",
+							"QNa2AQVdnwGihVCe",
+							"yJX39WZzkHIvxhVv",
+							"i8ASCHhH1r6NHPPy",
+						]
 					: monkLevel >= 6
 						? ["8iOXbBYr8peoRGtp", "QNa2AQVdnwGihVCe", "yJX39WZzkHIvxhVv"]
 						: [],
@@ -159,7 +169,12 @@ export async function elementalAttunement(args) {
 			itemsToAdd: ["MRDsf3PEbZ89LXAP"],
 			spellsToAdd:
 				monkLevel >= 14
-					? ["FQa89kp1ChIK9CZi", "5rlXmCb6DTBy3YHa", "wVs9K6vtsN4TFuXD", "4ySODrSdwd6MCKCH"]
+					? [
+							"FQa89kp1ChIK9CZi",
+							"5rlXmCb6DTBy3YHa",
+							"wVs9K6vtsN4TFuXD",
+							"4ySODrSdwd6MCKCH",
+						]
 					: monkLevel >= 6
 						? ["FQa89kp1ChIK9CZi", "5rlXmCb6DTBy3YHa", "wVs9K6vtsN4TFuXD"]
 						: [],
@@ -176,7 +191,12 @@ export async function elementalAttunement(args) {
 			itemsToAdd: ["78p6Y6A3i9DWvUj3"],
 			spellsToAdd:
 				monkLevel >= 14
-					? ["kSTZBRIi9DuHuA4h", "eeaEt3KwnC1sWXUX", "tr8hhpZg8jrGA6rp", "SZ7WREA5tz4LLrOL"]
+					? [
+							"kSTZBRIi9DuHuA4h",
+							"eeaEt3KwnC1sWXUX",
+							"tr8hhpZg8jrGA6rp",
+							"SZ7WREA5tz4LLrOL",
+						]
 					: monkLevel >= 6
 						? ["kSTZBRIi9DuHuA4h", "eeaEt3KwnC1sWXUX", "tr8hhpZg8jrGA6rp"]
 						: [],
@@ -194,7 +214,12 @@ export async function elementalAttunement(args) {
 		const config = attunementConfig[element];
 
 		// Remove all previous attunement effects and items
-		for (const effectLabel of ["Air Attunement", "Earth Attunement", "Fire Attunement", "Water Attunement"]) {
+		for (const effectLabel of [
+			"Air Attunement",
+			"Earth Attunement",
+			"Fire Attunement",
+			"Water Attunement",
+		]) {
 			const effect = actor.effects.find((i) => i.label === effectLabel);
 			if (effect) await effect.delete();
 		}
@@ -215,7 +240,9 @@ export async function elementalAttunement(args) {
 
 		// Add new feature
 		for (const featureId of config.itemsToAdd) {
-			const feature = await game.packs.get("elkan5e.elkan5e-class-features").getDocument(featureId);
+			const feature = await game.packs
+				.get("elkan5e.elkan5e-class-features")
+				.getDocument(featureId);
 			await actor.createEmbeddedDocuments("Item", [feature.toObject()]);
 		}
 	} else if (action === "off") {

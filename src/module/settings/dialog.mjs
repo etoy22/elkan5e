@@ -34,10 +34,22 @@ export async function showUpdateDialog() {
 			{
 				label: "Update",
 				action: "update",
-				callback: (_event, button, _dialog) => {
+				callback: (_event, button, dialog) => {
 					game.settings.set("elkan5e", "v13Show", false);
-					const form = button.form;
+					const form =
+						button.form ??
+						dialog?.element?.querySelector?.("#elkan-update-form") ??
+						dialog?.element?.querySelector?.("form");
+					if (!form) {
+						ui.notifications.error("Update form not found.");
+						return;
+					}
+
 					const data = new FormData(form);
+					const updateModeSelect = form.querySelector('[name="update-mode"]');
+					const removeDuplicatesCheckbox = form.querySelector(
+						'[name="remove-duplicates"]',
+					);
 					const formProcessing = {
 						actorFeatures: data.get("actor-features") ?? "none",
 						actorItems: data.get("actor-items") ?? "none",
@@ -45,77 +57,31 @@ export async function showUpdateDialog() {
 						npcFeatures: data.get("npc-features") ?? "none",
 						npcItems: data.get("npc-items") ?? "none",
 						npcSpells: data.get("npc-spells") ?? "none",
+						actorDuplicate: removeDuplicatesCheckbox?.checked,
+						npcDuplicate: removeDuplicatesCheckbox?.checked,
 					};
+					const selectedModes = [
+						formProcessing.actorFeatures,
+						formProcessing.actorItems,
+						formProcessing.actorSpells,
+						formProcessing.npcFeatures,
+						formProcessing.npcItems,
+						formProcessing.npcSpells,
+					];
+					if (
+						selectedModes.every((value) => value === "none") &&
+						formProcessing.actorDuplicate === false &&
+						formProcessing.npcDuplicate === false
+					) {
+						ui.notifications.info("No Update Process Set.");
+						return;
+					}
 					processElkanUpdateForm(formProcessing);
 				},
 			},
 			{
 				label: "Close",
 				action: "close",
-			},
-		],
-	}).render(true);
-}
-
-/**
- * Handles show V13 Update Dialog for module settings.
- *
- * @returns {Promise<void>} Promise resolution result.
- */
-export async function showV13UpdateDialog() {
-	if (!game.user.isGM) return;
-	const form = await getForm();
-	const content = `<div class="elkan-update-text-v13">
-			<p>
-				${game.i18n.localize("elkan5e.updateElkan.descriptionV13.initial")} 
-			 	${game.i18n.localize("elkan5e.updateElkan.descriptionV13.manually")} 
-				${game.i18n.localize("elkan5e.updateElkan.descriptionV13.previous")}
-				<ul>
-					<li> ${game.i18n.localize("elkan5e.updateElkan.descriptionV13.listItems.neverSeeAgain")}</li>
-					<li> ${game.i18n.localize("elkan5e.updateElkan.descriptionV13.listItems.updateLater")}</li>
-					<li> ${game.i18n.localize("elkan5e.updateElkan.descriptionV13.listItems.updateNow")}</li>
-				</ul>
-			</p>
-			<p> ${game.i18n.localize("elkan5e.updateElkan.descriptionV13.footer")}</p>
-			${form}
-		</div>`;
-
-	new DialogV2({
-		window: { title: "Elkan 5e V13 Update" },
-		content: content,
-		buttons: [
-			{
-				action: "never",
-				label: "Never See Again",
-				callback: (_event, _button, _dialog) => {
-					game.settings.set("elkan5e", "v13Show", false);
-				},
-			},
-			{
-				action: "updateLater",
-				label: "Update Later",
-				default: true,
-				callback: (_event, _button, _dialog) => {
-					game.settings.set("elkan5e", "v13Show", true);
-				},
-			},
-			{
-				action: "update",
-				label: "Update",
-				callback: (_event, button, _dialog) => {
-					game.settings.set("elkan5e", "v13Show", false);
-					const form = button.form;
-					const data = new FormData(form);
-					const formProcessing = {
-						actorFeatures: data.get("actor-features") ?? "none",
-						actorItems: data.get("actor-items") ?? "none",
-						actorSpells: data.get("actor-spells") ?? "none",
-						npcFeatures: data.get("npc-features") ?? "none",
-						npcItems: data.get("npc-items") ?? "none",
-						npcSpells: data.get("npc-spells") ?? "none",
-					};
-					processElkanUpdateForm(formProcessing);
-				},
 			},
 		],
 	}).render(true);
@@ -165,21 +131,8 @@ export async function startDialog() {
 
 		console.log("Elkan 5e dialog shown:", entryDialog);
 		await game.settings.set("elkan5e", "dialogShown", entryDialog);
-
-		if (
-			(saved_version[0] < 13 && MODULE_VERSION.split(".")[0] >= 13) ||
-			game.settings.get("elkan5e", "v13Show")
-		) {
-			showV13UpdateDialog();
-		}
 		await game.settings.set("elkan5e", "moduleVersion", MODULE_VERSION);
 	} else {
-		if (
-			(saved_version[0] < 13 && MODULE_VERSION.split(".")[0] >= 13) ||
-			game.settings.get("elkan5e", "v13Show")
-		) {
-			showV13UpdateDialog();
-		}
 		await game.settings.set("elkan5e", "moduleVersion", MODULE_VERSION);
 	}
 }
@@ -191,28 +144,74 @@ export async function startDialog() {
  */
 export async function getForm() {
 	return `
-	<form class="form">
-		<h4>${game.i18n.localize("elkan5e.updateElkan.form.playerTitle")}</h4>
-		<label><strong>${game.i18n.localize("elkan5e.updateElkan.form.featuresLabel")}</strong></label>
-		<label><input type="radio" name="actor-features" value="none" checked> ${game.i18n.localize("elkan5e.updateElkan.form.options.none")}</label>
-		<label><input type="radio" name="actor-features" value="update-Elkan"> ${game.i18n.localize("elkan5e.updateElkan.form.options.replaceFeatures")}</label><br>
-		<label><strong>${game.i18n.localize("elkan5e.updateElkan.form.itemsLabel")}</strong></label>
-		<label><input type='radio' name='actor-items' value='none' checked> ${game.i18n.localize("elkan5e.updateElkan.form.options.none")}</label>
-		<label><input type='radio' name='actor-items' value='update-All'> ${game.i18n.localize("elkan5e.updateElkan.form.options.updateAll")}</label>
-		<label><input type='radio' name='actor-items' value='update-Elkan'> ${game.i18n.localize("elkan5e.updateElkan.form.options.replaceElkan")}</label><br>
-		<label><strong>${game.i18n.localize("elkan5e.updateElkan.form.spellsLabel")}</strong></label>
-		<label><input type='radio' name='actor-spells' value='none' checked> ${game.i18n.localize("elkan5e.updateElkan.form.options.none")}</label>
-		<label><input type='radio' name='actor-spells' value='update-All'> ${game.i18n.localize("elkan5e.updateElkan.form.options.updateAll")}</label>
-		<label><input type='radio' name='actor-spells' value='update-Elkan'> ${game.i18n.localize("elkan5e.updateElkan.form.options.replaceElkan")}</label>
-  		<h4>${game.i18n.localize("elkan5e.updateElkan.form.npcTitle")}</h4>
-	    <label><strong>${game.i18n.localize("elkan5e.updateElkan.form.itemsLabel")}</strong></label>
-		<label><input type='radio' name='npc-items' value='none' checked> ${game.i18n.localize("elkan5e.updateElkan.form.options.none")}</label>
-		<label><input type='radio' name='npc-items' value='update-All'> ${game.i18n.localize("elkan5e.updateElkan.form.options.updateAll")}</label>
-		<label><input type='radio' name='npc-items' value='update-Elkan'> ${game.i18n.localize("elkan5e.updateElkan.form.options.replaceElkan")}</label><br>
-		<label><strong> ${game.i18n.localize("elkan5e.updateElkan.form.spellsLabel")}</strong></label>
-		<label><input type='radio' name='npc-spells' value='none' checked> ${game.i18n.localize("elkan5e.updateElkan.form.options.none")}</label>
-		<label><input type='radio' name='npc-spells' value='update-All'> ${game.i18n.localize("elkan5e.updateElkan.form.options.updateAll")}</label>
-		<label><input type='radio' name='npc-spells' value='update-Elkan'> ${game.i18n.localize("elkan5e.updateElkan.form.options.replaceElkan")}</label>
-	</form>
-	`;
+<form id="elkan-update-form" class="form">
+
+<table style="width:100%; text-align:center;">
+	<tr>
+		<th></th>
+		<th>${game.i18n.localize("elkan5e.updateElkan.form.options.none")}</th>
+		<th>${game.i18n.localize("elkan5e.updateElkan.form.options.updateAll")}</th>
+		<th>${game.i18n.localize("elkan5e.updateElkan.form.options.replaceElkan")}</th>
+	</tr>
+
+	<tr>
+		<td colspan="4"><strong>${game.i18n.localize("elkan5e.updateElkan.form.playerTitle")}</strong></td>
+	</tr>
+
+	<tr>
+		<td>${game.i18n.localize("elkan5e.updateElkan.form.featuresLabel")}</td>
+		<td><input type="radio" name="actor-features" value="none" checked></td>
+		<td>-</td>
+		<td><input type="radio" name="actor-features" value="update-Elkan"></td>
+	</tr>
+
+	<tr>
+		<td>${game.i18n.localize("elkan5e.updateElkan.form.itemsLabel")}</td>
+		<td><input type="radio" name="actor-items" value="none" checked></td>
+		<td><input type="radio" name="actor-items" value="update-All"></td>
+		<td><input type="radio" name="actor-items" value="update-Elkan"></td>
+	</tr>
+
+	<tr>
+		<td>${game.i18n.localize("elkan5e.updateElkan.form.spellsLabel")}</td>
+		<td><input type="radio" name="actor-spells" value="none" checked></td>
+		<td><input type="radio" name="actor-spells" value="update-All"></td>
+		<td><input type="radio" name="actor-spells" value="update-Elkan"></td>
+	</tr>
+
+	<tr>
+		<td colspan="4"><strong>${game.i18n.localize("elkan5e.updateElkan.form.npcTitle")}</strong></td>
+	</tr>
+
+	<tr>
+		<td>${game.i18n.localize("elkan5e.updateElkan.form.itemsLabel")}</td>
+		<td><input type="radio" name="npc-items" value="none" checked></td>
+		<td><input type="radio" name="npc-items" value="update-All"></td>
+		<td><input type="radio" name="npc-items" value="update-Elkan"></td>
+	</tr>
+
+	<tr>
+		<td>${game.i18n.localize("elkan5e.updateElkan.form.spellsLabel")}</td>
+		<td><input type="radio" name="npc-spells" value="none" checked></td>
+		<td><input type="radio" name="npc-spells" value="update-All"></td>
+		<td><input type="radio" name="npc-spells" value="update-Elkan"></td>
+	</tr>
+</table>
+<table style="width:100%; text-align:center; margin-top:10px;">
+	<tr>
+		<th>Remove Duplicate Features and Spells</th>
+		<th>Value</th>
+	</tr>
+
+	<tr>
+		<td><strong>Players</strong></td>
+		<td><input type="checkbox" name="remove-duplicates"></td>
+	</tr>
+	<tr>
+		<td><strong>NPC</strong></td>
+		<td><input type="checkbox" name="remove-duplicates-npc"></td>
+	</tr>
+</table>
+</form>
+`;
 }

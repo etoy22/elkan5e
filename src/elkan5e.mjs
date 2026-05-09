@@ -22,7 +22,13 @@ import {
 	wildSurge,
 } from "./module/classes/index.mjs";
 import { relentlessEndurance, undeadNature } from "./module/feats.mjs";
-import { grapple, handleDeadGrapplePrompt, handleGrapplerMove, handlePushedEffect, push } from "./module/rules/condition/index.mjs";
+import {
+	grapple,
+	handleDeadGrapplePrompt,
+	handleGrapplerMove,
+	handlePushedEffect,
+	push,
+} from "./module/rules/condition/index.mjs";
 import {
 	armor,
 	conditions,
@@ -41,7 +47,6 @@ import {
 import { gameSettingRegister, gameSettingsMigrate, startDialog } from "./module/settings/index.mjs";
 import { deleteRegionLights, syncRegionLightSort } from "./module/shared/effects.mjs";
 import * as Spells from "./module/spells/index.mjs";
-
 
 /**
  * Registers Hooks.

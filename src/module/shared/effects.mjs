@@ -8,6 +8,7 @@
  * @param {*} endMessage - End Message.
  * @returns {Promise<void>} Promise resolution result.
  */
+
 export async function deletedEffectRemovesItem(
 	effect,
 	effectName,
@@ -107,13 +108,13 @@ export async function drainedEffect(actor, damage, name, img, uuid, missing = fa
 		(e) => e.name === effectName && e.img === effectImg && e.origin === effectOrigin,
 	);
 
-	const newValue = -Math.abs(damage); // Ensure negative number
-	if (missing){
+	let newValue = -Math.abs(damage); // Ensure negative number
+	if (missing) {
 		const difference = actor.system.attributes.hp.max - actor.system.attributes.hp.value;
 		if (difference <= 0) return;
 		newValue = -Math.min(difference, Math.abs(damage));
 	}
-	
+
 	if (existingEffect) {
 		const updatedChanges = existingEffect.changes.map((change) => {
 			if (change.key === "system.attributes.hp.tempmax") {
@@ -324,9 +325,7 @@ export function hasPushResist(actor) {
 	);
 }
 
-export function difficultTerrainEffect() {
-
-}
+export function difficultTerrainEffect() {}
 
 function randomString(length = 16) {
 	const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -337,7 +336,9 @@ export async function syncRegionLightSort(behaviorRef, explicitSort = null) {
 	if (!game.user?.isGM || game.users.activeGM?.id !== game.user.id) return false;
 
 	const behaviorDoc =
-		typeof behaviorRef === "string" ? await fromUuid(behaviorRef).catch(() => null) : behaviorRef;
+		typeof behaviorRef === "string"
+			? await fromUuid(behaviorRef).catch(() => null)
+			: behaviorRef;
 	if (!behaviorDoc || behaviorDoc.type !== "midi-qol.regionLight") return false;
 
 	const sortValue =
@@ -376,7 +377,6 @@ export async function deleteRegionLights(regionRef) {
 	await scene.deleteEmbeddedDocuments("AmbientLight", existingLightIds);
 }
 
-
 export async function createLightRegion(regionRef, config, name = "Midi Region Light") {
 	const regionDoc =
 		typeof regionRef === "string" ? await fromUuid(regionRef).catch(() => null) : regionRef;
@@ -411,19 +411,22 @@ export async function createLightRegion(regionRef, config, name = "Midi Region L
 			animationType: config.animation?.type ?? config.animationType ?? null,
 			animationSpeed: config.animation?.speed ?? config.animationSpeed ?? 5,
 			animationIntensity: config.animation?.intensity ?? config.animationIntensity ?? 5,
-		}
+		},
 	};
 
 	if (existingBehavior) {
-		const [updatedBehavior] = await regionDoc.updateEmbeddedDocuments("RegionBehavior", [behaviorData]);
+		const [updatedBehavior] = await regionDoc.updateEmbeddedDocuments("RegionBehavior", [
+			behaviorData,
+		]);
 		if (Number.isFinite(sortValue)) {
 			await syncRegionLightSort(createdBehavior, sortValue);
-
 		}
 		return updatedBehavior;
 	}
 
-	const [createdBehavior] = await regionDoc.createEmbeddedDocuments("RegionBehavior", [behaviorData]);
+	const [createdBehavior] = await regionDoc.createEmbeddedDocuments("RegionBehavior", [
+		behaviorData,
+	]);
 	if (Number.isFinite(sortValue)) {
 		await syncRegionLightSort(createdBehavior, sortValue);
 	}
