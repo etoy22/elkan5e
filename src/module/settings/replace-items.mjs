@@ -6,7 +6,146 @@ const { getProperty, setProperty } = foundry.utils;
  * @param {*} updates - Updates.
  * @returns {Promise<void>} Promise resolution result.
  */
+
+/**
+ * Handles get Actors To Process for module settings.
+ *
+ * @param {*} updateMode - Update Mode.
+ * @returns {Promise<unknown>} Promise resolution result.
+ */
+async function removeDuplicateItems({ actor = false, npc = false }) {
+	if (!actor && !npc) return;
+
+	const actors = await getActorsToProcess({ players: actor ? "update-All" : "none", npcs: npc ? "update-All" : "none" });
+
+	if (actors.length === 0) return;
+
+	const progress = new MigrationProgress("Duplicate Items");
+	progress.init(actors.length);
+
+	const totalChars = actors.filter((a) => a.type === "character").length;
+	const totalNPCs = actors.filter((a) => a.type === "npc").length;
+
+	let currentChar = 0;
+	let currentNPC = 0;
+
+	const report = {
+		actorsProcessed: 0,
+		duplicatesRemoved: 0,
+		actorsChanged: [],
+	};
+
+	for (const actorDoc of actors) {
+		report.actorsProcessed++;
+
+		// Only process spells and features
+		const relevantItems = actorDoc.items.filter((i) => ["spell", "feat"].includes(i.type));
+
+		// Group by identifier first, fallback to name
+		const groupedItems = new Map();
+
+		for (const item of relevantItems) {
+			const identifier = item.system?.identifier?.trim();
+
+			const key =
+				identifier && identifier.length > 0
+					? `id:${identifier.toLowerCase()}`
+					: `name:${item.name.trim().toLowerCase()}`;
+
+			if (!groupedItems.has(key)) groupedItems.set(key, []);
+			groupedItems.get(key).push(item);
+		}
+
+		const itemsToDelete = [];
+		const removedDetails = [];
+
+		for (const [key, items] of groupedItems.entries()) {
+			if (items.length <= 1) continue;
+
+			const keptItems = [];
+
+			for (const item of items) {
+				const itemObj = item.toObject();
+
+				const existingMatch = keptItems.find((kept) => {
+					const keptObj = kept.toObject();
+					return deepEqualIgnoringMeta(keptObj, itemObj);
+				});
+
+				if (existingMatch) {
+					itemsToDelete.push(item.id);
+
+					removedDetails.push({
+						name: item.name,
+						id: item.id,
+						matchedWith: existingMatch.id,
+						key,
+					});
+				} else {
+					keptItems.push(item);
+				}
+			}
+		}
+
+		if (itemsToDelete.length > 0) {
+			await actorDoc.deleteEmbeddedDocuments("Item", itemsToDelete);
+
+			report.duplicatesRemoved += itemsToDelete.length;
+
+			report.actorsChanged.push({
+				name: actorDoc.name,
+				type: actorDoc.type,
+				removed: removedDetails,
+			});
+		}
+
+		// Progress
+		if (actorDoc.type === "character") currentChar++;
+		else currentNPC++;
+
+		progress.tick(actorDoc.type, currentChar, totalChars, currentNPC, totalNPCs);
+	}
+
+	progress.done();
+
+	// ---- Console Reporting ----
+	console.groupCollapsed("[Elkan 5e] Duplicate Item Removal Summary");
+
+	console.log(`Actors processed: ${report.actorsProcessed}`);
+	console.log(`Duplicate items removed: ${report.duplicatesRemoved}`);
+
+	if (report.actorsChanged.length > 0) {
+		console.log(`Actors with duplicates removed (${report.actorsChanged.length})`);
+
+		for (const actorReport of report.actorsChanged) {
+			console.log(
+				`${actorReport.name} [${actorReport.type}] - Removed ${actorReport.removed.length}`,
+			);
+
+			for (const removed of actorReport.removed) {
+				console.log(
+					`${removed.name} | duplicate id: ${removed.id} | matched with: ${removed.matchedWith} | key: ${removed.key}`,
+				);
+			}
+
+		}
+
+		console.groupEnd();
+	} else {
+		console.log("No duplicate items found.");
+	}
+
+	console.groupEnd();
+
+	ui.notifications.info(
+		`Duplicate removal finished — Removed ${report.duplicatesRemoved} duplicate items.`,
+	);
+}
+
 export async function processElkanUpdateForm(updates) {
+	ui.notifications.info("Elkan 5e update process started. See console for details.");
+	await removeDuplicateItems({ actor: updates.actorDuplicate, npc: updates.npcDuplicate });
+
 	migrateActorItems({
 		players: updates.actorItems,
 		npcs: updates.npcItems,
@@ -21,9 +160,6 @@ export async function processElkanUpdateForm(updates) {
 		players: updates.actorFeatures,
 		npcs: updates.npcFeatures,
 	});
-
-	removeDuplicateItems({ actor: updates.actorDuplicate, npc: updates.npcDuplicate });
-	ui.notifications.info("Elkan 5e update process started. See console for details.");
 }
 
 class MigrationProgress {
@@ -99,31 +235,6 @@ class MigrationProgress {
 			setTimeout(() => this.progressBar.remove(), 4000);
 		}
 	}
-}
-
-async function removeDuplicateItems({ actor = false, npc = false }) {
-	if (!actor && !npc) return;
-	const actors = await getActorsToProcess({
-		players: actor ? "update-All" : "none",
-		npcs: npc ? "update-All" : "none",
-	});
-	if (actors.length === 0) return;
-
-	//TODO:Finish implementation to remove duplicate items based on identifier, then name if no identifier. This would be separate from the above migration processes.
-}
-
-/**
- * Handles get Actors To Process for module settings.
- *
- * @param {*} updateMode - Update Mode.
- * @returns {Promise<unknown>} Promise resolution result.
- */
-export async function getActorsToProcess(updateMode) {
-	return game.actors.filter((actor) => {
-		if (actor.type === "character" && updateMode.players !== "none") return true;
-		if (actor.type === "npc" && updateMode.npcs !== "none") return true;
-		return false;
-	});
 }
 
 /**
@@ -317,6 +428,14 @@ function itemsAreFullyIdentical(oldItem, newItem) {
 
 // ---------- main migration ----------
 
+export async function getActorsToProcess(updateMode) {
+	return game.actors.filter((actor) => {
+		if (actor.type === "character" && updateMode.players !== "none") return true;
+		if (actor.type === "npc" && updateMode.npcs !== "none") return true;
+		return false;
+	});
+}
+
 /**
  * Handles migrate Actor By Type for module settings.
  *
@@ -502,13 +621,13 @@ export async function migrateActorByType({
 							if (oldActivity && newActivity) {
 								const same =
 									oldActivity.consumption.targets.length ===
-										newActivity.consumption.targets.length &&
+									newActivity.consumption.targets.length &&
 									oldActivity.consumption.scaling.allowed ===
-										newActivity.consumption.scaling.allowed &&
+									newActivity.consumption.scaling.allowed &&
 									oldActivity.consumption.scaling.max ===
-										newActivity.consumption.scaling.max &&
+									newActivity.consumption.scaling.max &&
 									oldActivity.consumption.spellSlot ===
-										newActivity.consumption.spellSlot;
+									newActivity.consumption.spellSlot;
 
 								if (!same) newActivity.consumption = { ...oldActivity.consumption };
 							}
