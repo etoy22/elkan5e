@@ -1,4 +1,40 @@
 /**
+ * Localize or format an i18n key. Pass `data` to use format(), otherwise localize().
+ *
+ * @param {string} key - i18n key.
+ * @param {object} [data] - Optional format() substitution data.
+ * @returns {string}
+ */
+export const t = (key, data) => (data ? game.i18n.format(key, data) : game.i18n.localize(key));
+
+/**
+ * Measure distance between two points using the v13+ measurePath API,
+ * falling back to the legacy measureDistance method on older grids.
+ * Returns Number.POSITIVE_INFINITY when no grid measurement is available.
+ *
+ * @param {{x:number,y:number}|Token} from
+ * @param {{x:number,y:number}|Token} to
+ * @returns {number}
+ */
+export const measureRangeDistance = (from, to) => {
+	if (!canvas?.grid) return Number.POSITIVE_INFINITY;
+	const origin = from?.center ?? from;
+	const destination = to?.center ?? to;
+	if (typeof canvas.grid.measurePath === "function") {
+		try {
+			const path = canvas.grid.measurePath([origin, destination], {});
+			if (Number.isFinite(path?.distance)) return path.distance;
+		} catch (error) {
+			void error;
+		}
+	}
+	if (typeof canvas.grid.measureDistance === "function") {
+		return canvas.grid.measureDistance(origin, destination);
+	}
+	return Number.POSITIVE_INFINITY;
+};
+
+/**
  * Shared helper for deleted Effect Removes Item.
  *
  * @param {*} effect - Active effect being handled.
@@ -332,6 +368,18 @@ function randomString(length = 16) {
 	return Array.from({ length }, () => chars[Math.floor(Math.random() * chars.length)]).join("");
 }
 
+/**
+ * Converts a stored lightSort flag value into the numeric sort value applied to the AmbientLight.
+ * Higher spell-level lights get a higher sort so they take precedence in rendering.
+ *
+ * @param {object} options
+ * @param {number} [options.sort] - Raw sort value stored on the behavior flag (spell level).
+ * @returns {number} The sort value for the AmbientLight document.
+ */
+function getRegionLightSort({ sort } = {}) {
+	return sort ?? 0;
+}
+
 export async function syncRegionLightSort(behaviorRef, explicitSort = null) {
 	if (!game.user?.isGM || game.users.activeGM?.id !== game.user.id) return false;
 
@@ -408,6 +456,7 @@ export async function createLightRegion(regionRef, config, name = "Midi Region L
 			color: config.color ?? null,
 			alpha: config.alpha ?? 0.5,
 			luminosity: config.luminosity ?? 0.5,
+			negative: config.negative ?? false,
 			animationType: config.animation?.type ?? config.animationType ?? null,
 			animationSpeed: config.animation?.speed ?? config.animationSpeed ?? 5,
 			animationIntensity: config.animation?.intensity ?? config.animationIntensity ?? 5,
@@ -419,7 +468,7 @@ export async function createLightRegion(regionRef, config, name = "Midi Region L
 			behaviorData,
 		]);
 		if (Number.isFinite(sortValue)) {
-			await syncRegionLightSort(createdBehavior, sortValue);
+			await syncRegionLightSort(updatedBehavior, sortValue);
 		}
 		return updatedBehavior;
 	}

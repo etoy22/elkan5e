@@ -1,8 +1,9 @@
 import { chooseDefenderSkill, sizeIndex } from "../../global.mjs";
-import { createClimberEffect, createGrappledEffect } from "../../shared/useFoundryEffects.mjs";
+import { createClimberEffect, createGrappledEffect } from "../../shared/effect-factories.mjs";
+import { measureRangeDistance, t } from "../../shared/helpers.mjs";
 
+const DialogV2 = foundry.applications.api.DialogV2;
 const imgForCondition = (key) => `modules/elkan5e/icons/conditions/${key}.svg`;
-const t = (key, data) => (data ? game.i18n.format(key, data) : game.i18n.localize(key));
 const DEAD_PROMPT_FLAG = "grappleDeadPrompted";
 const PUSH_TRUE_VALUES = new Set(["1", "true", "yes", "on"]);
 const normalizeStatus = (value) =>
@@ -187,7 +188,6 @@ const promptDeadUngrapple = async (deadActor, links) => {
 				.filter(Boolean),
 		),
 	];
-	const DialogV2 = foundry.applications.api.DialogV2;
 	return new Promise((resolve) => {
 		const partnerList = partners
 			.map((name) => `<li>${foundry.utils.escapeHTML(name)}</li>`)
@@ -249,7 +249,6 @@ const getActiveGrapples = (grapplerActor) => {
 const chooseGrapplesToRelease = async (grapplerActor, active) => {
 	if (!active?.length) return [];
 	if (!grapplerActor?.isOwner && !game.user?.isGM) return [];
-	const DialogV2 = foundry.applications.api.DialogV2;
 	return new Promise((resolve) => {
 		const options = active
 			.map(
@@ -302,20 +301,6 @@ const getGrappleRange = (workflow) => {
 	const raw = workflow?.item?.system?.range?.value;
 	const range = Number(raw);
 	return Number.isFinite(range) && range > 0 ? range : 5;
-};
-
-const measureRangeDistance = (from, to) => {
-	if (!canvas?.grid) return Number.POSITIVE_INFINITY;
-	if (typeof canvas.grid.measurePath === "function") {
-		try {
-			const path = canvas.grid.measurePath([from, to], {});
-			if (Number.isFinite(path?.distance)) return path.distance;
-		} catch (error) {
-			// Fallback below for older grid APIs or unexpected measurePath signatures.
-			void error;
-		}
-	}
-	return canvas.grid.measureDistance(from, to);
 };
 
 const mergeUniqueChanges = (existing = [], incoming = []) => {

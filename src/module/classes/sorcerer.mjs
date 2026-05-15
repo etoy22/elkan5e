@@ -1,5 +1,5 @@
 const DialogV2 = foundry.applications.api.DialogV2;
-import { createDelayedSurgeEffect } from "../shared/useFoundryEffects.mjs";
+import { createDelayedSurgeEffect } from "../shared/effect-factories.mjs";
 
 /**
  * Runs wild Surge class feature automation.

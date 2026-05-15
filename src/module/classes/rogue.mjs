@@ -1,4 +1,4 @@
-import { drainedEffect, forEachDamagedTarget } from "../shared/effects.mjs";
+import { drainedEffect, forEachDamagedTarget } from "../shared/helpers.mjs";
 
 /**
  * Runs slicing Blow class feature automation.

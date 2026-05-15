@@ -1,52 +1,64 @@
+import { rage, wildBlood } from "./module/classes/barbarian.mjs";
+import { healingOverflow, infusedHealer, shadowRefuge } from "./module/classes/cleric.mjs";
+import { archDruid } from "./module/classes/druid.mjs";
+import { secondWind } from "./module/classes/fighter.mjs";
 import {
-	archDruid,
-	delayedDuration,
-	delayedItem,
 	elementalAttunement,
-	healingOverflow,
 	hijackShadow,
-	infusedHealer,
-	initWarlockSpellSlot,
-	lifeDrainGraveguard,
 	meldWithShadows,
-	necromanticSurge,
-	rage,
-	rmvMeldShadow,
 	rmvhijackShadow,
-	secondWind,
-	shadowRefuge,
-	slicingBlow,
+	rmvMeldShadow,
+} from "./module/classes/monk.mjs";
+import { slicingBlow } from "./module/classes/rogue.mjs";
+import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
+import { initWarlockSpellSlot } from "./module/classes/warlock.mjs";
+import {
+	lifeDrainGraveguard,
+	necromanticSurge,
 	soulConduit,
 	spectralEmpowerment,
-	wildBlood,
-	wildSurge,
-} from "./module/classes/index.mjs";
+} from "./module/classes/wizard.mjs";
 import { relentlessEndurance, undeadNature } from "./module/feats.mjs";
+import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
+import {
+	conditions,
+	conditionsReady,
+	handleHazardExhaustion,
+} from "./module/rules/condition/setup.mjs";
 import {
 	grapple,
 	handleDeadGrapplePrompt,
 	handleGrapplerMove,
 	handlePushedEffect,
-	push,
-} from "./module/rules/condition/index.mjs";
-import {
-	armor,
-	conditions,
-	conditionsReady,
-	formating,
-	handleHazardExhaustion,
-	language,
-	refs,
-	scroll,
-	skills,
-	tools,
-	updateBarbarianDefense,
-	updateToolTypes,
-	weapons,
-} from "./module/rules/index.mjs";
-import { gameSettingRegister, gameSettingsMigrate, startDialog } from "./module/settings/index.mjs";
-import { deleteRegionLights, syncRegionLightSort } from "./module/shared/effects.mjs";
-import * as Spells from "./module/spells/index.mjs";
+} from "./module/rules/condition/grapple.mjs";
+import { push } from "./module/rules/condition/push.mjs";
+import { formating } from "./module/rules/format.mjs";
+import { language } from "./module/rules/language.mjs";
+import { refs } from "./module/rules/references.mjs";
+import { scroll } from "./module/rules/scroll.mjs";
+import { skills } from "./module/rules/skills.mjs";
+import { tools, updateToolTypes } from "./module/rules/tools.mjs";
+import { weapons } from "./module/rules/weapon.mjs";
+import { startDialog } from "./module/settings/dialog.mjs";
+import { gameSettingRegister, gameSettingsMigrate } from "./module/settings/game-settings.mjs";
+import { deleteRegionLights, syncRegionLightSort } from "./module/shared/helpers.mjs";
+import * as Cantrip from "./module/spells/cantrip.mjs";
+import * as Level1 from "./module/spells/level-1.mjs";
+import * as Level2 from "./module/spells/level-2.mjs";
+import * as Level3 from "./module/spells/level-3.mjs";
+import * as Level4 from "./module/spells/level-4.mjs";
+import * as Level5 from "./module/spells/level-5.mjs";
+import * as Level9 from "./module/spells/level-9.mjs";
+
+const Spells = {
+	...Cantrip,
+	...Level1,
+	...Level2,
+	...Level3,
+	...Level4,
+	...Level5,
+	...Level9,
+};
 
 /**
  * Registers Hooks.
@@ -216,7 +228,10 @@ function registerHooks() {
 
 	Hooks.on("combatTurnChange", (combat, prior) => {
 		try {
-			const lastActor = combat.combatants.get(prior.combatantId).actor;
+			const priorCombatantId = prior?.combatantId;
+			if (!priorCombatantId) return;
+			const lastActor = combat?.combatants?.get(priorCombatantId)?.actor;
+			if (!lastActor) return;
 			rmvMeldShadow(lastActor);
 			rmvhijackShadow(lastActor);
 		} catch (error) {

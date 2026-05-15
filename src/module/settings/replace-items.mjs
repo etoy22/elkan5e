@@ -16,7 +16,10 @@ const { getProperty, setProperty } = foundry.utils;
 async function removeDuplicateItems({ actor = false, npc = false }) {
 	if (!actor && !npc) return;
 
-	const actors = await getActorsToProcess({ players: actor ? "update-All" : "none", npcs: npc ? "update-All" : "none" });
+	const actors = await getActorsToProcess({
+		players: actor ? "update-All" : "none",
+		npcs: npc ? "update-All" : "none",
+	});
 
 	if (actors.length === 0) return;
 
@@ -127,7 +130,6 @@ async function removeDuplicateItems({ actor = false, npc = false }) {
 					`${removed.name} | duplicate id: ${removed.id} | matched with: ${removed.matchedWith} | key: ${removed.key}`,
 				);
 			}
-
 		}
 
 		console.groupEnd();
@@ -283,6 +285,9 @@ export async function savePropertiesForTransfer(items, mode, propKeys) {
 			sourceBook: item.system.source?.book ?? null,
 			img: item.img,
 			identifier: item.system?.identifier ?? id,
+			// Preserve dnd5e relationship flags (e.g. advancementOrigin) so the
+			// advancement system keeps tracking this item after it is recreated.
+			dnd5eFlags: foundry.utils.deepClone(item.flags?.dnd5e ?? {}),
 		};
 		for (const key of propKeys) {
 			if (key === "name") {
@@ -309,6 +314,18 @@ export async function restorePropertiesToData(newData, savedProps, mode, preserv
 
 	newData.img = savedProps.img ?? newData.img;
 	newData.system.identifier = savedProps.identifier ?? newData.system?.identifier;
+
+	// Always re-attach dnd5e relationship flags from the old item (e.g. advancementOrigin).
+	// These are actor-specific and are not present on the compendium copy.
+	if (savedProps.dnd5eFlags && Object.keys(savedProps.dnd5eFlags).length > 0) {
+		if (!newData.flags) newData.flags = {};
+		newData.flags.dnd5e = foundry.utils.mergeObject(
+			newData.flags.dnd5e ?? {},
+			savedProps.dnd5eFlags,
+			{ inplace: false },
+		);
+	}
+
 	const originalSource = savedProps.sourceBook ?? null;
 
 	if (
@@ -334,7 +351,6 @@ export async function restorePropertiesToData(newData, savedProps, mode, preserv
 	}
 }
 
-// ---------- helpers used by migrateActorByType ----------
 
 /**
  * Handles get Key By Value for module settings.
@@ -621,13 +637,13 @@ export async function migrateActorByType({
 							if (oldActivity && newActivity) {
 								const same =
 									oldActivity.consumption.targets.length ===
-									newActivity.consumption.targets.length &&
+										newActivity.consumption.targets.length &&
 									oldActivity.consumption.scaling.allowed ===
-									newActivity.consumption.scaling.allowed &&
+										newActivity.consumption.scaling.allowed &&
 									oldActivity.consumption.scaling.max ===
-									newActivity.consumption.scaling.max &&
+										newActivity.consumption.scaling.max &&
 									oldActivity.consumption.spellSlot ===
-									newActivity.consumption.spellSlot;
+										newActivity.consumption.spellSlot;
 
 								if (!same) newActivity.consumption = { ...oldActivity.consumption };
 							}

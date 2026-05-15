@@ -1,3 +1,5 @@
+import { measureRangeDistance } from "../shared/helpers.mjs";
+
 const DialogV2 = foundry.applications.api.DialogV2;
 
 const getWorkflowActionType = (workflow) =>
@@ -8,21 +10,6 @@ const getWorkflowActionType = (workflow) =>
 
 const getWorkflowTargets = (workflow) =>
 	Array.from(workflow?.targets ?? workflow?.hitTargets ?? []);
-
-const measureRangeDistance = (from, to) => {
-	if (!canvas?.grid) return Number.POSITIVE_INFINITY;
-	const origin = from?.center ?? from;
-	const destination = to?.center ?? to;
-	if (typeof canvas.grid.measurePath === "function") {
-		try {
-			const path = canvas.grid.measurePath([origin, destination], {});
-			if (Number.isFinite(path?.distance)) return path.distance;
-		} catch (error) {
-			void error;
-		}
-	}
-	return canvas.grid.measureDistance(origin, destination);
-};
 
 /**
  * Runs infused Healer class feature automation.

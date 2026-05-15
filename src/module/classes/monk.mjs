@@ -1,5 +1,5 @@
-import { deleteEffectRemoveEffect } from "../shared/effects.mjs";
-import { createEmptyBodyEffect } from "../shared/useFoundryEffects.mjs";
+import { deleteEffectRemoveEffect } from "../shared/helpers.mjs";
+import { createEmptyBodyEffect } from "../shared/effect-factories.mjs";
 const DialogV2 = foundry.applications.api.DialogV2;
 
 /**

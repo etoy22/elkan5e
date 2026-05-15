@@ -1,4 +1,4 @@
-import { createLightRegion } from "../shared/effects.mjs";
+import { createLightRegion } from "../shared/helpers.mjs";
 
 /**
  * Runs light spell automation.

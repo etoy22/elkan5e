@@ -1,5 +1,5 @@
-import { drainedEffect, forEachDamagedTarget } from "../shared/effects.mjs";
-import { createGoodberryDurationEffect } from "../shared/useFoundryEffects.mjs";
+import { drainedEffect, forEachDamagedTarget } from "../shared/helpers.mjs";
+import { createGoodberryDurationEffect } from "../shared/effect-factories.mjs";
 
 /**
  * Runs goodberry spell automation.

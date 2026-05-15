@@ -1,4 +1,4 @@
-import { createLightRegion, drainedEffect } from "../shared/effects.mjs";
+import { createLightRegion, drainedEffect } from "../shared/helpers.mjs";
 
 const SIZE_ORDER = ["tiny", "sm", "med", "lg", "huge", "grg"];
 const SIZE_TO_GRID = {
@@ -293,6 +293,14 @@ export async function returnToNormalSize(effect) {
  * @returns {Promise<unknown>} Promise resolution result.
  */
 export async function darkness(workflow) {
+	const castLevel = Number(workflow.castData?.castLevel);
+	const itemLevel = Number(workflow.item?.system?.level);
+	const spellLevel = Number.isFinite(castLevel)
+		? castLevel
+		: Number.isFinite(itemLevel)
+			? itemLevel
+			: 2;
+
 	for (const region of workflow.templateUuids ?? []) {
 		const regionTemplate = typeof region === "string" ? await fromUuid(region) : region;
 		const regionRadius = regionTemplate?.document?.distance ?? regionTemplate?.distance ?? 0;
@@ -310,7 +318,7 @@ export async function darkness(workflow) {
 					speed: 2,
 					intensity: 5,
 				},
-				sort: workflow.spellLevel - 1,
+				sort: spellLevel - 1,
 			},
 			"Darkness",
 		);
@@ -324,6 +332,14 @@ export async function darkness(workflow) {
  * @returns {Promise<unknown>} Promise resolution result.
  */
 export async function continualFlame(workflow) {
+	const castLevel = Number(workflow.castData?.castLevel);
+	const itemLevel = Number(workflow.item?.system?.level);
+	const spellLevel = Number.isFinite(castLevel)
+		? castLevel
+		: Number.isFinite(itemLevel)
+			? itemLevel
+			: 2;
+
 	for (const region of workflow.templateUuids ?? []) {
 		await createLightRegion(
 			region,
@@ -338,7 +354,7 @@ export async function continualFlame(workflow) {
 					speed: 2,
 					intensity: 5,
 				},
-				sort: workflow.spellLevel,
+				sort: spellLevel,
 			},
 			"Continual Flame",
 		);
@@ -352,6 +368,14 @@ export async function continualFlame(workflow) {
  * @returns {Promise<unknown>} Promise resolution result.
  */
 export async function moonBeam(workflow) {
+	const castLevel = Number(workflow.castData?.castLevel);
+	const itemLevel = Number(workflow.item?.system?.level);
+	const spellLevel = Number.isFinite(castLevel)
+		? castLevel
+		: Number.isFinite(itemLevel)
+			? itemLevel
+			: 2;
+
 	for (const region of workflow.templateUuids ?? []) {
 		await createLightRegion(
 			region,
@@ -366,7 +390,7 @@ export async function moonBeam(workflow) {
 					speed: 2,
 					intensity: 5,
 				},
-				sort: workflow.spellLevel,
+				sort: spellLevel,
 			},
 			"Moon Beam",
 		);

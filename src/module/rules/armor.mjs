@@ -1,12 +1,4 @@
-/**
- * Foundry VTT Module
- * Elkan's 5e Classes, Spells, and Rules
- *
- * Copyright (C) 2024 by @etoy22 / @elkan5e
- * All rights reserved.
- */
-
-import { createBarbarianDefenseEffect } from "../shared/useFoundryEffects.mjs";
+import { createBarbarianDefenseEffect } from "../shared/effect-factories.mjs";
 
 /**
  * Applies armor rule behavior.
@@ -57,34 +49,21 @@ export function armor() {
 function calculateAcBonus(actor) {
 	const dex = actor.system.abilities.dex.mod;
 	const con = actor.system.abilities.con.mod;
+
+	// Only light/medium armor modifies the bonus; heavy armor and unarmored are handled below.
 	const armor = actor.items.find(
 		(i) =>
 			i.type === "equipment" &&
 			i.system.equipped &&
-			(i.system.type.value == "medium" || i.system.type.value == "light"),
+			(i.system.type.value === "light" || i.system.type.value === "medium"),
 	);
 
-	if (!armor) {
-		// console.log(`Unarmored: ${actor.name}, Dex: ${dex}, Con: ${con}`);
-		return con + dex;
-	}
-	const armorType = armor.system.armor.type;
+	// Unarmored — full Dex + Con bonus.
+	if (!armor) return dex + con;
 
-	// console.log(`Calculating AC Bonus for ${actor.name} with armor type: ${armor}`);
-	// console.log(`Dexterity: ${dex}, Constitution: ${con}, Armor: ${armor?.name ?? "None"}, Armor Data: ${armor} Dex Cap (if any): ${armor.system.armor.dex}`);
-
-	if (armorType === "unarmored") {
-		return con + dex;
-	}
-
+	// Armored — best of Dex or Con, each capped by the armor's dex limit (if any).
 	const dexCap = armor.system.armor.dex ?? null;
-	// console.log(`Dexterity Cap: ${dexCap}`);
-	if (dexCap !== null) {
-		const effectiveDex = Math.min(dex, dexCap);
-		const effectiveCon = Math.min(con, dexCap);
-		// console.log(`Effective Dexterity: ${effectiveDex}, Effective Constitution: ${effectiveCon}`);
-		return Math.max(effectiveDex, effectiveCon);
-	}
+	if (dexCap !== null) return Math.max(Math.min(dex, dexCap), Math.min(con, dexCap));
 	return Math.max(dex, con);
 }
 
@@ -95,26 +74,23 @@ function calculateAcBonus(actor) {
  * @returns {Promise<void>} Promise resolution result.
  */
 export async function updateBarbarianDefense(actor) {
-	if (!actor || !actor.system) return; // Prevents error if actor is null/undefined
-	const firstActiveGM = game.users.find((u) => u.isGM && u.active);
-	if (!firstActiveGM || firstActiveGM.id !== game.user.id) return;
+	if (!actor?.system) return;
+	if (game.users.activeGM?.id !== game.user.id) return;
 
 	const isUsingBarbarianDefense = actor.system.attributes.ac.calc === "barbarianDefense";
-	// console.log(`Actor ${actor.name} is using barbarianDefense AC`);
 	const existing = actor.effects.find((e) => e.name === "Barbarian Defense Bonus");
+
+	// Not using Barbarian Defense — remove the effect if it exists and bail.
 	if (!isUsingBarbarianDefense) {
-		if (existing) {
-			// console.log(`Removing Barbarian Fortitude Bonus: ${actor.name} no longer uses barbarianDefense AC`);
-			await existing.delete();
-		}
+		await existing?.delete();
 		return;
 	}
 
 	const bonus = calculateAcBonus(actor);
 
-	if (bonus === 0 && existing) {
-		// console.log(`Removing zero-value Fortitude Bonus for ${actor.name}`);
-		await existing.delete();
+	// Zero bonus — remove any stale effect and bail without creating a pointless +0 entry.
+	if (bonus === 0) {
+		await existing?.delete();
 		return;
 	}
 
@@ -126,16 +102,12 @@ export async function updateBarbarianDefense(actor) {
 			priority: 20,
 		},
 	];
-	// console.log(`Barbarian Defense Bonus for ${actor.name}: ${bonus}`);
+
 	if (existing) {
 		const current = Number(existing.changes?.[0]?.value ?? 0);
-		if (current !== bonus) {
-			// console.log(`Updating Fortitude Bonus from ${current} to ${bonus} for ${actor.name}`);
-			await existing.update({ changes });
-		}
+		if (current !== bonus) await existing.update({ changes });
 	} else {
 		const effectData = await createBarbarianDefenseEffect(actor, changes);
-		// console.log(`Applying new Fortitude Bonus of ${bonus} for ${actor.name}`);
 		await actor.createEmbeddedDocuments("ActiveEffect", [effectData]);
 	}
 }

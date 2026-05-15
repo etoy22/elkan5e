@@ -1,7 +1,8 @@
 import { chooseDefenderSkill, sizeIndex, isPushBlocked, hasPushResist } from "../../global.mjs";
+import { measureRangeDistance, t } from "../../shared/helpers.mjs";
 import { endAllGrapplesForActor } from "./grapple.mjs";
 
-const t = (key, data) => (data ? game.i18n.format(key, data) : game.i18n.localize(key));
+const DialogV2 = foundry.applications.api.DialogV2;
 
 const resolveCanvasToken = (entry) => {
 	if (!entry) return null;
@@ -144,12 +145,12 @@ const getPushDirections = (targetToken, sourcePoint, requireAway) => {
 	const candidates = [];
 	for (const dir of dirs) {
 		if (requireAway) {
-			const currentDistance = canvas.grid.measureDistance(sourcePoint, targetToken.center);
+			const currentDistance = measureRangeDistance(sourcePoint, targetToken.center);
 			const probe = {
 				x: targetToken.center.x + dir.dx,
 				y: targetToken.center.y + dir.dy,
 			};
-			const probeDistance = canvas.grid.measureDistance(sourcePoint, probe);
+			const probeDistance = measureRangeDistance(sourcePoint, probe);
 			if (probeDistance <= currentDistance) continue;
 		}
 		candidates.push(dir);
@@ -168,7 +169,6 @@ const chooseDirection = async (actor, title, directions) => {
 	const candidates = directions ?? [];
 	if (!candidates.length) return null;
 	if (!actor?.isOwner) return candidates[0];
-	const DialogV2 = foundry.applications.api.DialogV2;
 	return new Promise((resolve) => {
 		const options = candidates
 			.map(
@@ -222,7 +222,7 @@ const getFarthestValidPosition = (targetToken, sourcePoint, distance, dir, requi
 	if (stepCount <= 0) return null;
 	const step = getGridStep(distance);
 	const bounds = getSceneBounds();
-	const startDistance = canvas.grid.measureDistance(sourcePoint, targetToken.center);
+	const startDistance = measureRangeDistance(sourcePoint, targetToken.center);
 
 	let lastValid = null;
 	for (let i = 1; i <= stepCount; i += 1) {
@@ -234,7 +234,7 @@ const getFarthestValidPosition = (targetToken, sourcePoint, distance, dir, requi
 		const rect = getTokenRectAt(targetToken.document, x, y);
 		if (!withinBounds(rect, bounds)) break;
 		if (isOccupied(targetToken.document, x, y)) break;
-		const dist = canvas.grid.measureDistance(sourcePoint, center);
+		const dist = measureRangeDistance(sourcePoint, center);
 		if (requireAway && dist <= startDistance) continue;
 		lastValid = { x, y };
 	}
