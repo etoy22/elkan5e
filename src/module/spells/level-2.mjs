@@ -396,3 +396,101 @@ export async function moonBeam(workflow) {
 		);
 	}
 }
+
+/**
+ * Runs Mirror Image spell automation.
+ * Wire this up at postAttackRollComplete so workflow.attackTotal is available.
+ * Returning false aborts the attack on the real target when an image is hit.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<false|void>} false if the attack is absorbed by a duplicate, void otherwise.
+ */
+export async function mirrorImage(workflow) {
+	try {
+		// Only intercept direct targeted attacks — area effects are ignored by duplicates.
+		if (workflow.template) return;
+		if (!["mwak", "rwak", "msak", "rsak"].includes(workflow.activity?.actionType)) return;
+
+		// Find the target carrying a Mirror Image effect.
+		const target = Array.from(workflow.targets ?? []).find(t => {
+			const actor = t.actor ?? t.document?.actor;
+			return actor?.effects?.some(e => /^Mirror Image \(\d+\)$/.test(e.name) && !e.disabled);
+		});
+		if (!target) return;
+
+		const actor = target.actor ?? target.document?.actor;
+		const effect = actor.effects.find(e => /^Mirror Image \(\d+\)$/.test(e.name) && !e.disabled);
+		const duplicates = parseInt(effect.name.match(/\((\d+)\)/)[1]);
+
+		// Threshold based on remaining duplicates.
+		const threshold = duplicates >= 3 ? 4 : duplicates === 2 ? 5 : 7;
+
+		// Roll 1d12 to see if the attack hits a duplicate.
+		const roll = await new Roll("1d12").evaluate();
+		await roll.toMessage({
+			flavor: `Mirror Image Check — need ${threshold}+ to hit a duplicate`,
+			speaker: ChatMessage.getSpeaker({ token: target.document ?? target }),
+		});
+
+		// Below threshold → attack hits the real target, proceed normally.
+		if (roll.total < threshold) return;
+
+		// Attack redirected to a duplicate — check against the duplicate's AC 15.
+		const attackTotal = workflow.attackTotal ?? workflow.attackRoll?.total ?? 0;
+		const hitsDuplicate = attackTotal >= 15;
+		const speakerToken = target.document ?? target;
+
+		if (hitsDuplicate) {
+			const newCount = duplicates - 1;
+			if (newCount <= 0) {
+				await effect.delete();
+				await ChatMessage.create({
+					content: `<p><strong>${actor.name}'s</strong> final Mirror Image duplicate was destroyed — the spell ends!</p>`,
+					speaker: ChatMessage.getSpeaker({ token: speakerToken }),
+				});
+			} else {
+				await effect.update({ name: `Mirror Image (${newCount})` });
+				await ChatMessage.create({
+					content: `<p>A <strong>Mirror Image</strong> duplicate of ${actor.name} was destroyed! <em>${newCount} duplicate${newCount === 1 ? "" : "s"} remain.</em></p>`,
+					speaker: ChatMessage.getSpeaker({ token: speakerToken }),
+				});
+			}
+		} else {
+			await ChatMessage.create({
+				content: `<p>An attack targeted a <strong>Mirror Image</strong> duplicate of ${actor.name} but missed! (AC 15)</p>`,
+				speaker: ChatMessage.getSpeaker({ token: speakerToken }),
+			});
+		}
+
+		// Return false to abort the attack on the real target.
+		return false;
+	} catch (err) {
+		console.error("Mirror Image |", err);
+	}
+}
+
+/**
+ * Runs Shatter spell automation.
+ * Constructs have disadvantage on the Constitution saving throw.
+ * Wire this up at the preambleComplete phase so it runs before saves are rolled.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
+ */
+export async function shatter(workflow) {
+	try {
+		if (!workflow.targets?.size) return;
+
+		for (const target of workflow.targets) {
+			const actor = target.actor ?? target.document?.actor;
+			if (!actor) continue;
+
+			if (actor.system.details.type?.value === "construct") {
+				const tokenId = target.document?.id ?? target.id;
+				if (tokenId) workflow.disadvantageSaves.add(tokenId);
+			}
+		}
+	} catch (err) {
+		console.error("Shatter |", err);
+	}
+}
