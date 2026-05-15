@@ -6,7 +6,7 @@
 	"img": "icons/skills/targeting/crosshair-scope-sniper-green.webp",
 	"system": {
 		"description": {
-			"value": "<p><strong>Note: this feat's effects are not automated in Foundry.</strong></p><p>You gain the following benefits when using weapons you are proficient with:</p><ul><li><p>When you attack a creature in cover with a ranged or thrown weapon, they are less able to benefit from &amp;reference[cover]. If they are in &amp;reference[half-cover], they gain no bonus, and if they are in &amp;reference[three-quarters-cover], they instead gain the benefits of half-cover.</p></li><li><p>Additionally, you do not suffer disadvantage for attacking at long range. You still cannot fire at long range when you have disadvantage.</p></li></ul>",
+			"value": "<p>You gain the following benefits when using weapons you are proficient with:</p><ul><li><p>When you attack a creature in cover with a ranged or thrown weapon, they are less able to benefit from &amp;reference[cover]. If they are in &amp;reference[half-cover], they gain no bonus, and if they are in &amp;reference[three-quarters-cover], they instead gain the benefits of half-cover.</p></li><li><p>Additionally, you do not suffer disadvantage for attacking at long range. You still cannot fire at long range when you have disadvantage.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -71,9 +71,17 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.ignoreNearbyFoes",
+						"type": "add",
 						"value": 1,
-						"priority": 20,
-						"type": "add"
+						"phase": "initial",
+						"priority": 20
+					},
+					{
+						"key": "flags.dnd5e.sharpShooter",
+						"type": "add",
+						"value": 1,
+						"phase": "initial",
+						"priority": null
 					}
 				]
 			},
@@ -100,7 +108,8 @@
 					"showIcon": false,
 					"durationExpression": "",
 					"specialDuration": [],
-					"macroRepeat": "none"
+					"macroRepeat": "none",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
