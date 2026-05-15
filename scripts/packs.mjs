@@ -1,8 +1,7 @@
-import fs from "fs";
-import fsp from "fs/promises"; // for async writeFile
-import { readdir, readFile, writeFile } from "node:fs/promises";
+import { mkdirSync, readdirSync, readFileSync } from "node:fs";
+import { readdir, readFile, unlink, rm, writeFile } from "node:fs/promises";
+import path from "node:path";
 import logger from "fancy-log";
-import path from "path";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
 import { compilePack, extractPack } from "@foundryvtt/foundryvtt-cli";
@@ -14,8 +13,8 @@ const PACK_SOURCE_NAME_OVERRIDES = {
 };
 
 // Ensure base folders exist
-fs.mkdirSync(PACK_SRC, { recursive: true });
-fs.mkdirSync(PACK_DEST, { recursive: true });
+mkdirSync(PACK_SRC, { recursive: true });
+mkdirSync(PACK_DEST, { recursive: true });
 
 const argv = yargs(hideBin(process.argv)).command(packageCommand()).help().alias("help", "h").argv;
 
@@ -55,7 +54,8 @@ function packageCommand() {
 	};
 }
 
-// --- Wix/Ricos HTML cleanup + spell italics helpers ---
+// --- HTML cleanup helpers ---
+
 function cleanHtml(html) {
 	if (!html || typeof html !== "string") return html;
 	let out = html;
@@ -73,14 +73,14 @@ function cleanHtml(html) {
 			return "";
 		},
 	);
-	// Remove boolean aria/data attributes without explicit values (e.g., aria-label)
+	// Remove boolean aria/data attributes without explicit values
 	out = out.replace(/\s+(aria-[^\s=>]+|data-[^\s=>]+)(?!\s*=)/gi, "");
 	// Drop div wrappers
 	out = out.replace(/<\/?div>/g, "");
 	// Remove empty paragraphs
 	out = out.replace(/<p>\s*<\/p>/g, "");
 	// Collapse redundant whitespace
-	out = out.replace(/\s+/g, " ").replace(/\s{2,}/g, " ");
+	out = out.replace(/\s+/g, " ");
 	out = collapseRedundantSections(out);
 	return out.trim();
 }
@@ -94,10 +94,9 @@ function replaceSpellRefsInHtml(html) {
 	out = out.replace(/@UUID\[(Compendium\.[^\]]+)\]\{([\s\S]*?)\}/g, (m, pack, label) => {
 		if (!/spells/i.test(pack)) return m;
 		const plainLabel = String(label).replace(/<\/?em>/g, "");
-		const macro = `@UUID[${pack}]{${plainLabel}}`;
-		return `<em>${macro}</em>`;
+		return `<em>@UUID[${pack}]{${plainLabel}}</em>`;
 	});
-	// Italicize anchor labels and keep UUID; no remap here
+	// Italicize anchor labels and keep UUID
 	out = out.replace(
 		/<a([^>]*?)\sdata-uuid=\"(Compendium\.[^\"]+)\"([^>]*)>([\s\S]*?)<\/a>/g,
 		(m, pre, uuid, post, inner) => {
@@ -120,13 +119,14 @@ function collapseRedundantSections(html) {
 	} while (out !== prev);
 	return out;
 }
-function sanitizeDescriptions(entry) {
-	// system.description
+
+/** Sanitize description and effects fields on a single entry or embedded item. */
+function sanitizeHtmlFields(entry) {
 	if (entry?.system?.description) {
 		if (typeof entry.system.description.value === "string") {
-			let v = entry.system.description.value;
-			v = replaceSpellRefsInHtml(v);
-			entry.system.description.value = cleanHtml(v);
+			entry.system.description.value = cleanHtml(
+				replaceSpellRefsInHtml(entry.system.description.value),
+			);
 		}
 		if (typeof entry.system.description.chat === "string" && entry.system.description.chat) {
 			entry.system.description.chat = cleanHtml(
@@ -134,7 +134,6 @@ function sanitizeDescriptions(entry) {
 			);
 		}
 	}
-	// effect descriptions
 	if (Array.isArray(entry?.effects)) {
 		for (const eff of entry.effects) {
 			if (eff && typeof eff.description === "string" && eff.description) {
@@ -142,63 +141,39 @@ function sanitizeDescriptions(entry) {
 			}
 		}
 	}
-	// nested embedded items (e.g., actor.items[])
+}
+
+function sanitizeDescriptions(entry) {
+	sanitizeHtmlFields(entry);
+
+	// Nested embedded items (e.g., actor.items[])
 	if (Array.isArray(entry?.items)) {
-		for (const it of entry.items) {
-			if (it?.system?.description) {
-				if (
-					typeof it.system.description.value === "string" &&
-					it.system.description.value
-				) {
-					let v = it.system.description.value;
-					v = replaceSpellRefsInHtml(v);
-					it.system.description.value = cleanHtml(v);
-				}
-				if (typeof it.system.description.chat === "string" && it.system.description.chat) {
-					it.system.description.chat = cleanHtml(
-						replaceSpellRefsInHtml(it.system.description.chat),
-					);
-				}
-			}
-			if (Array.isArray(it?.effects)) {
-				for (const eff of it.effects) {
-					if (eff && typeof eff.description === "string" && eff.description) {
-						eff.description = cleanHtml(replaceSpellRefsInHtml(eff.description));
-					}
-				}
-			}
+		for (const item of entry.items) {
+			sanitizeHtmlFields(item);
 		}
 	}
-	// journal pages (Foundry JournalEntryV10+): sanitize HTML content and tooltips
+
+	// Journal pages (Foundry JournalEntryV10+)
 	if (Array.isArray(entry?.pages)) {
 		for (const page of entry.pages) {
-			// Page textual content
 			if (page?.text && typeof page.text.content === "string" && page.text.content) {
-				let v = page.text.content;
-				v = replaceSpellRefsInHtml(v);
-				page.text.content = cleanHtml(v);
+				page.text.content = cleanHtml(replaceSpellRefsInHtml(page.text.content));
 			}
-
-			// Rule/tooltips or similar HTML-bearing fields
 			if (page?.system && typeof page.system.tooltip === "string" && page.system.tooltip) {
-				let v = page.system.tooltip;
-				v = replaceSpellRefsInHtml(v);
-				page.system.tooltip = cleanHtml(v);
+				page.system.tooltip = cleanHtml(replaceSpellRefsInHtml(page.system.tooltip));
 			}
 		}
 	}
 }
 
 function cleanPackEntry(data, { clearSourceId = true, ownership = 0 } = {}) {
-	const preservedIdentifier = data?.system?.identifier ?? null;
-	const preservedFolder = Object.prototype.hasOwnProperty.call(data, "folder")
-		? data.folder
-		: undefined;
-	// Your existing top-level cleanup
 	if (clearSourceId && data.flags?.core?.sourceId) delete data.flags.core.sourceId;
 	if (data.ownership) data.ownership = { default: ownership };
 
-	// Recursive deep cleaner for _stats and other keys
+	const preservedFolder = Object.prototype.hasOwnProperty.call(data, "folder")
+		? data.folder
+		: undefined;
+
 	function isEmptyDeep(v) {
 		if (v == null) return true;
 		if (typeof v === "boolean") return v === false;
@@ -206,69 +181,43 @@ function cleanPackEntry(data, { clearSourceId = true, ownership = 0 } = {}) {
 		if (Array.isArray(v)) return v.every(isEmptyDeep);
 		if (typeof v === "object") {
 			const keys = Object.keys(v);
-			if (keys.length === 0) return true;
-			return keys.every((k) => isEmptyDeep(v[k]));
+			return keys.length === 0 || keys.every((k) => isEmptyDeep(v[k]));
 		}
 		return false;
 	}
 
 	function pruneUnusedFlags(obj) {
-		if (!obj || typeof obj !== "object" || !obj.flags) return;
-		const flags = obj.flags;
-		for (const k of Object.keys(flags)) {
-			if (isEmptyDeep(flags[k])) delete flags[k];
+		if (!obj?.flags) return;
+		for (const k of Object.keys(obj.flags)) {
+			if (isEmptyDeep(obj.flags[k])) delete obj.flags[k];
 		}
-		if (Object.keys(flags).length === 0) delete obj.flags;
+		if (Object.keys(obj.flags).length === 0) delete obj.flags;
 	}
 
 	function recursiveClean(obj) {
 		if (!obj || typeof obj !== "object") return;
-
-		// Delete these keys if present
-		if ("_stats" in obj) delete obj._stats;
-		if ("sort" in obj) delete obj.sort;
-		if ("ownership" in obj) delete obj.ownership;
-		// Prune unused flags blocks
+		delete obj._stats;
+		delete obj.sort;
+		delete obj.ownership;
 		pruneUnusedFlags(obj);
-
-		// Recursively clean nested objects/arrays
 		for (const key of Object.keys(obj)) {
 			const val = obj[key];
-			if (Array.isArray(val)) {
-				val.forEach(recursiveClean);
-			} else if (val && typeof val === "object") {
-				recursiveClean(val);
-			}
+			if (Array.isArray(val)) val.forEach(recursiveClean);
+			else if (val && typeof val === "object") recursiveClean(val);
 		}
 	}
 	recursiveClean(data);
 
-	// Apply Wix cleanup + spell italics on descriptions
 	sanitizeDescriptions(data);
 
-	// Ensure system.identifier exists for all entry types; preserve if already present.
-	// If identifier exists but no longer matches the current name (common after duplicating
-	// and renaming an entry), update it ONCE to the slug of the current name and mark
-	// a flag so it won't be auto-changed again.
-	// Ensure system.identifier exists; preserve existing values without replacement.
+	// Assign a slug-based identifier if one doesn't exist yet
 	try {
-		if (data.system || typeof data.system === "object") {
-			const currentSlug = slugify(String(data.name || ""));
+		if (data.system && data.type !== "folder" && data.type !== "script") {
 			const hasId =
-				typeof data.system.identifier === "string" &&
-				data.system.identifier.trim().length > 0;
-
-			// Only assign a new identifier if one does not already exist
-			if (
-				!hasId &&
-				currentSlug &&
-				(data.type !== "folder" ||
-					data.type !== "script" ||
-					data.pages !== null ||
-					data.results.length() < 0)
-			) {
-				data.system = data.system ?? {};
-				data.system.identifier = currentSlug;
+				typeof data.system.identifier === "string" && data.system.identifier.trim().length > 0;
+			if (!hasId) {
+				const slug = slugify(String(data.name ?? ""));
+				if (slug) data.system.identifier = slug;
 			}
 		}
 	} catch (err) {
@@ -276,36 +225,40 @@ function cleanPackEntry(data, { clearSourceId = true, ownership = 0 } = {}) {
 			`Failed to set identifier for ${data?.name ?? "unknown entry"}: ${err.message}`,
 		);
 	}
+
 	if (preservedFolder !== undefined) data.folder = preservedFolder;
+}
+
+// --- Utility: async generator that yields all .json file paths under a directory ---
+
+async function* walkDir(directoryPath) {
+	for (const entry of await readdir(directoryPath, { withFileTypes: true })) {
+		const entryPath = path.join(directoryPath, entry.name);
+		if (entry.isDirectory()) yield* walkDir(entryPath);
+		else if (path.extname(entry.name) === ".json") yield entryPath;
+	}
 }
 
 async function cleanPacks(packName, entryName) {
 	entryName = entryName?.toLowerCase();
-	const folders = fs
-		.readdirSync(PACK_SRC, { withFileTypes: true })
-		.filter((file) => file.isDirectory() && (!packName || packName === file.name));
-
-	async function* _walkDir(directoryPath) {
-		const directory = await readdir(directoryPath, { withFileTypes: true });
-		for (const entry of directory) {
-			const entryPath = path.join(directoryPath, entry.name);
-			if (entry.isDirectory()) yield* _walkDir(entryPath);
-			else if (path.extname(entry.name) === ".json") yield entryPath;
-		}
-	}
+	const folders = readdirSync(PACK_SRC, { withFileTypes: true }).filter(
+		(file) => file.isDirectory() && (!packName || packName === file.name),
+	);
 
 	for (const folder of folders) {
 		logger.info(`Cleaning pack ${folder.name}`);
-		for await (const src of _walkDir(path.join(PACK_SRC, folder.name))) {
+		for await (const src of walkDir(path.join(PACK_SRC, folder.name))) {
+			// Skip folder metadata files
+			if (path.basename(src) === "_folder.json") continue;
+
 			let data;
 			try {
 				let content = await readFile(src, { encoding: "utf8" });
-				if (content.charCodeAt(0) === 0xfeff) content = content.slice(1);
+				if (content.charCodeAt(0) === 0xfeff) content = content.slice(1); // strip BOM
 				data = JSON.parse(content);
 			} catch (err) {
 				logger.error(`Failed to parse JSON in file: ${src}`);
 				logger.error(err.message);
-				// Stop execution after logging
 				throw err;
 			}
 
@@ -314,22 +267,20 @@ async function cleanPacks(packName, entryName) {
 				console.log(`Failed to clean \x1b[31m${src}\x1b[0m, must have _id and _key.`);
 				continue;
 			}
-			// Skip folder metadata files entirely during clean
-			if (path.basename(src) === "_folder.json") continue;
+
 			cleanPackEntry(data);
-			// Determine output path (rename _container.json -> <slug>.json)
+
+			// Rename _container.json -> <slug>.json if needed
 			let outPath = src;
 			if (path.basename(src) === "_container.json") {
-				const newName = `${slugify(data.name)}.json`;
-				const candidate = path.join(path.dirname(src), newName);
-				outPath = candidate;
+				outPath = path.join(path.dirname(src), `${slugify(data.name)}.json`);
 			}
-			// Write back JSON with tab indentation
+
 			await writeFile(outPath, JSON.stringify(data, null, "\t"), { mode: 0o664 });
-			// If we renamed, remove the old file
+
 			if (outPath !== src) {
 				try {
-					await fsp.unlink(src);
+					await unlink(src);
 				} catch {}
 			}
 		}
@@ -337,18 +288,16 @@ async function cleanPacks(packName, entryName) {
 }
 
 async function compilePacks(packName) {
-	const folders = fs
-		.readdirSync(PACK_SRC, { withFileTypes: true })
-		.filter((file) => file.isDirectory() && (!packName || packName === file.name));
+	const folders = readdirSync(PACK_SRC, { withFileTypes: true }).filter(
+		(file) => file.isDirectory() && (!packName || packName === file.name),
+	);
 
 	for (const folder of folders) {
-		const folderName = PACK_SOURCE_NAME_OVERRIDES[folder.name] || folder.name;
+		const folderName = PACK_SOURCE_NAME_OVERRIDES[folder.name] ?? folder.name;
 		const src = path.join(PACK_SRC, folderName);
 		const dest = path.join(PACK_DEST, folder.name);
 
-		// Create destination folder if missing
-		fs.mkdirSync(dest, { recursive: true });
-
+		mkdirSync(dest, { recursive: true });
 		logger.info(`Compiling pack ${folder.name}`);
 		await compilePack(src, dest, {
 			recursive: true,
@@ -359,38 +308,22 @@ async function compilePacks(packName) {
 	}
 }
 
-async function listAllFiles(dir) {
-	let results = [];
-	const list = await fsp.readdir(dir, { withFileTypes: true });
-	for (const file of list) {
-		const fullPath = path.join(dir, file.name);
-		if (file.isDirectory()) {
-			results = results.concat(await listAllFiles(fullPath));
-		} else {
-			results.push(fullPath);
-		}
-	}
-	return results;
-}
-
 async function extractPacks(packName, entryName) {
 	entryName = entryName?.toLowerCase();
-
-	const module = JSON.parse(fs.readFileSync("./module.json", { encoding: "utf8" }));
-
+	const module = JSON.parse(readFileSync("./module.json", { encoding: "utf8" }));
 	const packs = module.packs.filter((p) => !packName || p.name === packName);
 
 	for (const packInfo of packs) {
-		const folderName = PACK_SOURCE_NAME_OVERRIDES[packInfo.name] || packInfo.name;
+		const folderName = PACK_SOURCE_NAME_OVERRIDES[packInfo.name] ?? packInfo.name;
 		const dest = path.join(PACK_SRC, folderName);
 
-		fs.mkdirSync(dest, { recursive: true });
-
+		mkdirSync(dest, { recursive: true });
 		logger.info(`Extracting pack ${packInfo.name}`);
 
 		const folders = {};
 		const containers = {};
 
+		// First pass: collect folder and container metadata for path resolution
 		await extractPack(packInfo.path, dest, {
 			log: false,
 			transformEntry: (e) => {
@@ -398,9 +331,7 @@ async function extractPacks(packName, entryName) {
 				delete e.sort;
 				delete e.ownership;
 				if (Array.isArray(e.effects)) {
-					for (const effect of e.effects) {
-						if (effect._stats) delete effect._stats;
-					}
+					for (const effect of e.effects) delete effect._stats;
 				}
 				if (e.system?.source?.sourceClass) delete e.system.source.sourceClass;
 				if (e.flags?.core?.sourceId) delete e.flags.core.sourceId;
@@ -419,8 +350,8 @@ async function extractPacks(packName, entryName) {
 		});
 
 		const buildPath = (collection, entry, parentKey) => {
-			let parent = collection[entry[parentKey]];
 			entry.path = slugify(entry.name);
+			let parent = collection[entry[parentKey]];
 			while (parent) {
 				entry.path = path.join(parent.name, entry.path);
 				parent = collection[parent[parentKey]];
@@ -434,53 +365,42 @@ async function extractPacks(packName, entryName) {
 			if (folder) c.path = path.join(folder.path, c.path);
 		});
 
+		// Snapshot existing files before extraction
 		let existingFiles = [];
 		try {
-			existingFiles = await listAllFiles(dest);
+			for await (const f of walkDir(dest)) existingFiles.push(f);
 		} catch {}
-
 		const existingFilesSet = new Set(existingFiles.map((f) => path.normalize(f)));
 		const writtenFiles = new Set();
 
+		// Second pass: extract, clean, and write entries
 		await extractPack(packInfo.path, dest, {
 			log: true,
 			transformEntry: async (entry) => {
 				if (entryName && entry.name?.toLowerCase() !== entryName) return false;
 
 				cleanPackEntry(entry);
-				delete entry._stats;
-				delete entry.sort;
-				delete entry.ownership;
-
-				if (Array.isArray(entry.effects)) {
-					for (const effect of entry.effects) {
-						delete effect._stats;
-					}
-				}
-
 				if (entry.system?.source?.sourceClass) delete entry.system.source.sourceClass;
-				if (entry.flags?.core?.sourceId) delete entry.flags.core.sourceId;
 				if (entry.system?.materials?.value) entry.system.materials.value = "";
 
 				let filename;
 				if (entry._id in folders) {
-					// For folder metadata files, drop top-level system if present
 					if (Object.prototype.hasOwnProperty.call(entry, "system")) delete entry.system;
 					filename = path.join(folders[entry._id].path, "_folder.json");
-				} else if (entry._id in containers)
-					filename = path.join(containers[entry._id].path, `${slugify(entry.name)}.json`);
-				else {
+				} else if (entry._id in containers) {
+					filename = path.join(
+						containers[entry._id].path,
+						`${slugify(entry.name)}.json`,
+					);
+				} else {
 					const outputName = slugify(entry.name);
 					const parent = containers[entry.system?.container] ?? folders[entry.folder];
 					filename = path.join(parent?.path ?? "", `${outputName}.json`);
 				}
 
 				const filePath = path.join(dest, filename);
-
-				fs.mkdirSync(path.dirname(filePath), { recursive: true });
-
-				await fsp.writeFile(filePath, JSON.stringify(entry, null, "\t"), "utf8");
-
+				mkdirSync(path.dirname(filePath), { recursive: true });
+				await writeFile(filePath, JSON.stringify(entry, null, "\t"), "utf8");
 				writtenFiles.add(path.normalize(filePath));
 
 				return false;
@@ -495,10 +415,11 @@ async function extractPacks(packName, entryName) {
 			continue;
 		}
 
+		// Remove stale files not written in this extraction
 		for (const file of existingFilesSet) {
 			if (!writtenFiles.has(file)) {
 				try {
-					await fsp.unlink(file);
+					await unlink(file);
 					logger.info(`Deleted stale file ${file}`);
 				} catch (e) {
 					logger.warn(`Failed to delete file ${file}: ${e.message}`);
@@ -509,28 +430,20 @@ async function extractPacks(packName, entryName) {
 }
 
 async function removePacks(packName) {
-	const packDir = PACK_DEST;
-	const entries = await fsp.readdir(packDir, { withFileTypes: true });
-
-	// Filter out only the folders (excluding _source)
-	const targetFolders = entries.filter(
-		(entry) =>
-			entry.isDirectory() &&
-			entry.name !== "_source" &&
-			(!packName || entry.name === packName),
+	const entries = await readdir(PACK_DEST, { withFileTypes: true });
+	const targets = entries.filter(
+		(e) => e.isDirectory() && e.name !== "_source" && (!packName || e.name === packName),
 	);
 
-	// Exit early if there's nothing to remove
-	if (targetFolders.length === 0) {
+	if (targets.length === 0) {
 		logger.info("No matching folders to remove.");
 		return;
 	}
 
-	// Proceed with deletion
-	for (const entry of targetFolders) {
-		const fullPath = path.join(packDir, entry.name);
+	for (const entry of targets) {
+		const fullPath = path.join(PACK_DEST, entry.name);
 		try {
-			await fsp.rm(fullPath, { recursive: true, force: true });
+			await rm(fullPath, { recursive: true, force: true });
 			logger.info(`Removed folder: ${fullPath}`);
 		} catch (err) {
 			logger.warn(`Failed to remove folder ${fullPath}: ${err.message}`);
@@ -539,11 +452,10 @@ async function removePacks(packName) {
 }
 
 /**
- * Slugify names for safe file or folder names.
- * Disallows slashes so names like "Enlarge/Reduce" become "enlarge-reduce.json"
- * instead of nested directories.
+ * Convert a name to a URL/file-safe slug.
+ * Slashes (e.g. "Enlarge/Reduce") become dashes, not nested dirs.
  *
- * @param {string} name - Name to convert to a slug.
+ * @param {string} name - Name to slugify.
  * @returns {string} The slugified name.
  */
 function slugify(name) {

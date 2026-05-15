@@ -1,4 +1,4 @@
-import { rage, wildBlood } from "./module/classes/barbarian.mjs";
+import { rage, wildBlood, registerBloodragerHooks } from "./module/classes/barbarian.mjs";
 import { healingOverflow, infusedHealer, shadowRefuge, holyStrike } from "./module/classes/cleric.mjs";
 import { archDruid } from "./module/classes/druid.mjs";
 import { secondWind } from "./module/classes/fighter.mjs";
@@ -81,6 +81,7 @@ function registerHooks() {
 			scroll();
 			skills();
 			refs();
+			registerBloodragerHooks();
 		} catch (error) {
 			console.error("Elkan 5e  |  Initialization Error:", error);
 		}
