@@ -21,7 +21,7 @@ export function registerSkillCriticalRule() {
 			const roll = rolls?.[0];
 			if (!roll) return;
 
-			const d20 = roll.dice?.find(d => d.faces === 20);
+			const d20 = roll.dice?.find((d) => d.faces === 20);
 			if (!d20) return;
 
 			const natural = d20.results?.[0]?.result;
@@ -34,7 +34,7 @@ export function registerSkillCriticalRule() {
 			if (adjustment === 0) return;
 
 			const flavor = adjustment > 0 ? "Natural 20 Bonus" : "Natural 1 Penalty";
-			const sign   = adjustment > 0 ? "+" : "-";
+			const sign = adjustment > 0 ? "+" : "-";
 
 			// Append the adjustment as visible terms so it appears in the roll breakdown.
 			const operator = new foundry.dice.terms.OperatorTerm({ operator: sign });
@@ -49,7 +49,7 @@ export function registerSkillCriticalRule() {
 			// Update both the cached formula string and the cached total so the card
 			// header and total both reflect the adjustment.
 			roll._formula = `${roll._formula} ${sign} ${Math.abs(adjustment)}[${flavor}]`;
-			roll._total   = (roll._total ?? roll.total) + adjustment;
+			roll._total = (roll._total ?? roll.total) + adjustment;
 		} catch (err) {
 			console.error("Elkan 5e | Skill critical adjustment error:", err);
 		}

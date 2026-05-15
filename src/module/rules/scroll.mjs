@@ -31,7 +31,6 @@ export function scroll() {
 	// registerScrollRules();
 }
 
-
 // TODO: implement the off-list scroll check and modifiers as described in the scroll rules doc. This will require both a pre-use hook to prompt the user and potentially cancel the activity, and a MidiQOL hook to apply the attack/DC modifiers if the check was passed.
 /**
  * Determines whether the scroll's spell appears on any of the actor's class spell lists.
@@ -45,7 +44,7 @@ function isSpellOnActorClassList(actor, scrollItem) {
 	if (!spellUuid) return false;
 
 	const actorClasses = actor.items.filter(
-		i =>
+		(i) =>
 			i.type === "class" &&
 			i.system.spellcasting?.progression &&
 			i.system.spellcasting.progression !== "none",
@@ -64,7 +63,7 @@ function isSpellOnActorClassList(actor, scrollItem) {
 
 	// Fallback: check whether the actor already has this spell prepared/known.
 	const spellName = scrollItem.system.spell?.name ?? "";
-	return actor.items.some(i => i.type === "spell" && i.name === spellName);
+	return actor.items.some((i) => i.type === "spell" && i.name === spellName);
 }
 
 /**
@@ -79,7 +78,7 @@ async function promptScrollSkillCheck(dc) {
 		{ key: "rel", label: "Religion" },
 		{ key: "nat", label: "Nature" },
 	]
-		.map(s => `<option value="${s.key}">${s.label}</option>`)
+		.map((s) => `<option value="${s.key}">${s.label}</option>`)
 		.join("");
 
 	const chosen = await DialogV2.prompt({
@@ -121,9 +120,7 @@ export function registerScrollRules() {
 			if (!actor) return;
 
 			// Must be a spellcaster with at least one spell slot.
-			const hasSlots = Object.values(actor.system.spells ?? {}).some(
-				s => (s.max ?? 0) > 0,
-			);
+			const hasSlots = Object.values(actor.system.spells ?? {}).some((s) => (s.max ?? 0) > 0);
 			if (!hasSlots) {
 				ui.notifications.warn(
 					`${actor.name} must be a spellcaster with spell slots to use a spell scroll.`,
@@ -133,7 +130,7 @@ export function registerScrollRules() {
 
 			// Scroll Expert bypasses all further checks.
 			const hasScrollExpert = actor.items.some(
-				i => i.type === "feat" && i.system?.identifier === "scroll-expert",
+				(i) => i.type === "feat" && i.system?.identifier === "scroll-expert",
 			);
 			if (hasScrollExpert) return;
 

@@ -58,7 +58,7 @@ const BLOODRAGER_ORIGIN_CONFIG = {
 		name: "Air Savant",
 		seethingBloodId: "RKDK2wY0gQ5AZwhl", // Electric
 	},
-	"draconic": {
+	draconic: {
 		name: "Draconic",
 		seethingBloodChoices: [
 			{ label: "Acid (Black Dragon / Copper Dragon)", id: "5F1s1v4KV38cuGGc" },
@@ -137,7 +137,9 @@ export function registerBloodragerHooks() {
 		// --- 1. Build dynamic origin list from compendium ---
 		const origins = await getSorcererSubclasses();
 		if (!origins.length) {
-			console.warn("Elkan 5e | No sorcerer subclasses found; skipping Bloodrager origin setup.");
+			console.warn(
+				"Elkan 5e | No sorcerer subclasses found; skipping Bloodrager origin setup.",
+			);
 			return;
 		}
 
@@ -212,7 +214,9 @@ export function registerBloodragerHooks() {
 			}
 		}
 
-		ui.notifications.info(`Bloodrager origin set — subclass renamed to "${newName}" and Seething Blood granted.`);
+		ui.notifications.info(
+			`Bloodrager origin set — subclass renamed to "${newName}" and Seething Blood granted.`,
+		);
 	});
 }
 

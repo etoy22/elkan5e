@@ -412,14 +412,18 @@ export async function mirrorImage(workflow) {
 		if (!["mwak", "rwak", "msak", "rsak"].includes(workflow.activity?.actionType)) return;
 
 		// Find the target carrying a Mirror Image effect.
-		const target = Array.from(workflow.targets ?? []).find(t => {
+		const target = Array.from(workflow.targets ?? []).find((t) => {
 			const actor = t.actor ?? t.document?.actor;
-			return actor?.effects?.some(e => /^Mirror Image \(\d+\)$/.test(e.name) && !e.disabled);
+			return actor?.effects?.some(
+				(e) => /^Mirror Image \(\d+\)$/.test(e.name) && !e.disabled,
+			);
 		});
 		if (!target) return;
 
 		const actor = target.actor ?? target.document?.actor;
-		const effect = actor.effects.find(e => /^Mirror Image \(\d+\)$/.test(e.name) && !e.disabled);
+		const effect = actor.effects.find(
+			(e) => /^Mirror Image \(\d+\)$/.test(e.name) && !e.disabled,
+		);
 		const duplicates = parseInt(effect.name.match(/\((\d+)\)/)[1]);
 
 		// Threshold based on remaining duplicates.

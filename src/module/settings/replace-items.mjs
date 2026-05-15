@@ -351,7 +351,6 @@ export async function restorePropertiesToData(newData, savedProps, mode, preserv
 	}
 }
 
-
 /**
  * Handles get Key By Value for module settings.
  *

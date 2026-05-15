@@ -214,7 +214,8 @@ function cleanPackEntry(data, { clearSourceId = true, ownership = 0 } = {}) {
 	try {
 		if (data.system && data.type !== "folder" && data.type !== "script") {
 			const hasId =
-				typeof data.system.identifier === "string" && data.system.identifier.trim().length > 0;
+				typeof data.system.identifier === "string" &&
+				data.system.identifier.trim().length > 0;
 			if (!hasId) {
 				const slug = slugify(String(data.name ?? ""));
 				if (slug) data.system.identifier = slug;
@@ -388,10 +389,7 @@ async function extractPacks(packName, entryName) {
 					if (Object.prototype.hasOwnProperty.call(entry, "system")) delete entry.system;
 					filename = path.join(folders[entry._id].path, "_folder.json");
 				} else if (entry._id in containers) {
-					filename = path.join(
-						containers[entry._id].path,
-						`${slugify(entry.name)}.json`,
-					);
+					filename = path.join(containers[entry._id].path, `${slugify(entry.name)}.json`);
 				} else {
 					const outputName = slugify(entry.name);
 					const parent = containers[entry.system?.container] ?? folders[entry.folder];

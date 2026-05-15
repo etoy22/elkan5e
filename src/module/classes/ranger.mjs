@@ -2,7 +2,7 @@ export async function markForDeath(workflow) {
 	try {
 		if (workflow.hitTargets.size === 0) return {};
 		const target = workflow.hitTargets.first();
-		const isMarked = target.actor?.effects?.find(ef => {
+		const isMarked = target.actor?.effects?.find((ef) => {
 			const byName = ef.name === "Mark for Death";
 			if (!byName) return false;
 			const sourceItem = MidiQOL.getItemFromEffectOrigin(ef.origin ?? "");
@@ -17,11 +17,15 @@ export async function markForDeath(workflow) {
 		let damageType = "slashing";
 
 		if (base?.types instanceof Set && base.types.size > 0) {
-			[damageType] = [...base.types];                     // dnd5e v4 / Foundry v14
-		} 
+			[damageType] = [...base.types]; // dnd5e v4 / Foundry v14
+		}
 
 		const isCritical = workflow.isCritical;
-		return await new CONFIG.Dice.DamageRoll(formula, {}, { type: damageType, isCritical, flavor: macroItem.name }).evaluate();
+		return await new CONFIG.Dice.DamageRoll(
+			formula,
+			{},
+			{ type: damageType, isCritical, flavor: macroItem.name },
+		).evaluate();
 	} catch (err) {
 		console.error("markForDeath |", err);
 		return {};

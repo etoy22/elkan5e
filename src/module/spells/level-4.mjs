@@ -22,7 +22,7 @@ export async function fireShield(workflow) {
 		}
 
 		// Temporarily target the attacker so the activity fires on them.
-		const previousTargets = Array.from(game.user.targets).map(t => t.id);
+		const previousTargets = Array.from(game.user.targets).map((t) => t.id);
 		game.user.updateTokenTargets([attackerToken.id]);
 
 		await activity.use({ event: workflow.event });
