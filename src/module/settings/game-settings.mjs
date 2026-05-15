@@ -143,6 +143,16 @@ export async function registerGameSettings() {
 		restricted: true,
 	});
 
+	game.settings.register(MODULE_ID, "skillCriticalAdjustment", {
+		name: "elkan5e.skillCriticalAdjustment.name",
+		hint: "elkan5e.skillCriticalAdjustment.hint",
+		scope: "world",
+		config: true,
+		default: true,
+		type: Boolean,
+		restricted: true,
+	});
+
 	game.settings.registerMenu(MODULE_ID, "updateElkanMenu", {
 		name: "elkan5e.updateElkan.name",
 		label: "elkan5e.updateElkan.label", // Text on the button
