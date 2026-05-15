@@ -282,7 +282,7 @@ async function cleanPacks(packName, entryName) {
 			if (outPath !== src) {
 				try {
 					await unlink(src);
-				} catch {}
+				} catch { }
 			}
 		}
 	}
@@ -370,7 +370,7 @@ async function extractPacks(packName, entryName) {
 		let existingFiles = [];
 		try {
 			for await (const f of walkDir(dest)) existingFiles.push(f);
-		} catch {}
+		} catch { }
 		const existingFilesSet = new Set(existingFiles.map((f) => path.normalize(f)));
 		const writtenFiles = new Set();
 
