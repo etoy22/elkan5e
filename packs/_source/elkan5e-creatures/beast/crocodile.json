@@ -222,7 +222,7 @@
 					"max": null,
 					"mode": 0
 				},
-				"value": 0,
+				"value": 1,
 				"bonuses": {
 					"check": "",
 					"passive": ""
@@ -621,17 +621,17 @@
 		},
 		"identifier": "crocodile"
 	},
-	"img": "systems/dnd5e/tokens/&amp;reference[beast]/Crocodile.webp",
+	"img": "icons/commodities/biological/tail-scaled-green.webp",
 	"prototypeToken": {
 		"name": "Crocodile",
-		"displayName": 0,
+		"displayName": 50,
 		"actorLink": false,
 		"appendNumber": false,
 		"prependAdjective": false,
 		"width": 2,
 		"height": 2,
 		"texture": {
-			"src": "systems/dnd5e/tokens/&amp;reference[beast]/Crocodile.webp",
+			"src": "icons/commodities/biological/tail-scaled-green.webp",
 			"anchorX": 0.5,
 			"anchorY": 0.5,
 			"fit": "contain",
@@ -644,7 +644,7 @@
 		"rotation": 0,
 		"alpha": 1,
 		"disposition": -1,
-		"displayBars": 0,
+		"displayBars": 50,
 		"bar1": {
 			"attribute": "attributes.hp"
 		},
@@ -1405,9 +1405,125 @@
 			],
 			"_id": "OasrN9J4l2uNX5Z5",
 			"_key": "!actors.items!mLh381cfvEmIs3xh.OasrN9J4l2uNX5Z5"
+		},
+		{
+			"name": "Strong Jaws",
+			"type": "feat",
+			"_id": "zccAd3NatUi9sV9I",
+			"img": "icons/creatures/reptiles/dragon-winged-blue.webp",
+			"system": {
+				"activities": {},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"advancement": {},
+				"description": {
+					"value": "<p>The crocodile has advantage on athletics checks to prevent a creature from escaping a grapple.</p>",
+					"chat": ""
+				},
+				"identifier": "strong-jaws",
+				"source": {
+					"revision": 1,
+					"rules": "2024",
+					"book": "Elkan 5e",
+					"page": "",
+					"custom": "",
+					"license": ""
+				},
+				"crewed": false,
+				"enchant": {},
+				"prerequisites": {
+					"items": [],
+					"repeatable": false,
+					"level": null
+				},
+				"properties": [],
+				"requirements": "Crocodile",
+				"type": {
+					"value": "monster",
+					"subtype": ""
+				}
+			},
+			"effects": [],
+			"folder": null,
+			"_key": "!actors.items!mLh381cfvEmIs3xh.zccAd3NatUi9sV9I"
 		}
 	],
-	"effects": [],
+	"effects": [
+		{
+			"name": "Prone",
+			"img": "modules/elkan5e/icons/conditions/prone.svg",
+			"_id": "dnd5eprone000000",
+			"statuses": [
+				"prone"
+			],
+			"showIcon": 2,
+			"description": "@Embed[Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.y8L5Uq1jMVDsQjaS inline]",
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.disadvantage.attack.all",
+						"value": 1,
+						"type": "override",
+						"phase": "initial"
+					},
+					{
+						"key": "flags.midi-qol.grants.advantage.attack.mwak",
+						"value": 1,
+						"type": "override",
+						"phase": "initial"
+					},
+					{
+						"key": "flags.midi-qol.grants.advantage.attack.msak",
+						"value": 1,
+						"type": "override",
+						"phase": "initial"
+					},
+					{
+						"key": "flags.midi-qol.grants.disadvantage.attack.rwak",
+						"value": 1,
+						"type": "override",
+						"phase": "initial"
+					},
+					{
+						"key": "flags.midi-qol.grants.disadvantage.attack.rsak",
+						"value": 1,
+						"type": "override",
+						"phase": "initial"
+					}
+				]
+			},
+			"type": "base",
+			"disabled": false,
+			"start": {
+				"time": 680014952,
+				"combat": null,
+				"combatant": null,
+				"initiative": null,
+				"round": null,
+				"turn": null
+			},
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"origin": null,
+			"tint": "#ffffff",
+			"transfer": false,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"autoCreated": true,
+					"specialDuration": []
+				}
+			},
+			"_key": "!actors.effects!mLh381cfvEmIs3xh.dnd5eprone000000"
+		}
+	],
 	"folder": "g74Yk5RCg98JKk0V",
 	"_id": "mLh381cfvEmIs3xh",
 	"_key": "!actors!mLh381cfvEmIs3xh"
