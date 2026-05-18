@@ -1,5 +1,5 @@
 import { rage, wildBlood } from "./module/classes/barbarian.mjs";
-import { healingOverflow, infusedHealer, shadowRefuge } from "./module/classes/cleric.mjs";
+import { healingOverflow, infusedHealer, shadowRefuge, holyStrike } from "./module/classes/cleric.mjs";
 import { archDruid } from "./module/classes/druid.mjs";
 import { secondWind } from "./module/classes/fighter.mjs";
 import {
@@ -9,9 +9,10 @@ import {
 	rmvhijackShadow,
 	rmvMeldShadow,
 } from "./module/classes/monk.mjs";
-import { slicingBlow } from "./module/classes/rogue.mjs";
+import { slicingBlow, sneakAttack } from "./module/classes/rogue.mjs";
 import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
 import { initWarlockSpellSlot } from "./module/classes/warlock.mjs";
+import { markForDeath } from "./module/classes/ranger.mjs";
 import {
 	lifeDrainGraveguard,
 	necromanticSurge,
@@ -300,6 +301,11 @@ function registerHooks() {
 				meldWithShadows,
 				slicingBlow,
 				elementalAttunement,
+				markForDeath,
+				sneakAttack,
+			},
+			feats:{
+				holyStrike,
 			},
 			monsterFeatures: {
 				lifeDrain: lifeDrainGraveguard,

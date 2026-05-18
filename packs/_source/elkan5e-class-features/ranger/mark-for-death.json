@@ -27,7 +27,8 @@
 					"dontApply": false,
 					"showIcon": false,
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -48,7 +49,7 @@
 			},
 			"tint": "#ffffff",
 			"origin": null,
-			"name": "Mark for Death (Uses)",
+			"name": "Mark for Death",
 			"description": "",
 			"statuses": [],
 			"img": "icons/magic/death/projectile-skull-fire-purple.webp",
@@ -60,6 +61,54 @@
 			"showIcon": 1,
 			"folder": null,
 			"_key": "!items.effects!HPrjgPXLsDRBbfsD.7jw1gxiuvosibvcs"
+		},
+		{
+			"name": "Mark for Death",
+			"img": "icons/magic/death/projectile-skull-fire-purple.webp",
+			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.HPrjgPXLsDRBbfsD",
+			"type": "base",
+			"_id": "MehX2OXUbBtGDhto",
+			"system": {
+				"changes": [
+					{
+						"key": "flags.dnd5e.DamageBonusMacro",
+						"type": "custom",
+						"value": "ItemMacro",
+						"phase": "initial",
+						"priority": null
+					}
+				]
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"transfer": true,
+			"statuses": [],
+			"showIcon": 1,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"expiryMode": "default",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"disableIncapacitated": false,
+					"specialDuration": [],
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
+				}
+			},
+			"_key": "!items.effects!HPrjgPXLsDRBbfsD.MehX2OXUbBtGDhto"
 		}
 	],
 	"folder": "k63aDnjqpB2qe9Nr",
@@ -74,7 +123,8 @@
 			"AoETargetType": "any",
 			"AoETargetTypeIncludeSelf": true,
 			"autoTarget": "default",
-			"removeAttackDamageButtons": "default"
+			"removeAttackDamageButtons": "default",
+			"onUseMacroName": "[preActiveEffects]ItemMacro"
 		},
 		"midiProperties": {
 			"nodam": false,
@@ -98,11 +148,19 @@
 			"ida": false
 		},
 		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
 			"migratedUses": 2
+		},
+		"dae": {
+			"macro": {
+				"name": "Mark for Death",
+				"img": "icons/magic/death/projectile-skull-fire-purple.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "return elkan5e.macro.features.markForDeath(workflow);",
+				"author": "JfIFUEeTlOfdxqPQ",
+				"_id": null,
+				"folder": null
+			}
 		}
 	},
 	"system": {
@@ -169,7 +227,11 @@
 				},
 				"effects": [
 					{
-						"_id": "7jw1gxiuvosibvcs"
+						"_id": "7jw1gxiuvosibvcs",
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -207,11 +269,18 @@
 					"prompt": false,
 					"visible": false
 				},
-				"name": "Mark for Death (Uses)",
+				"name": "Mark for Creature",
 				"img": "",
 				"appliedEffects": [
 					"7jw1gxiuvosibvcs"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": ""
+				}
 			},
 			"bobYmKmFZnvu5mK0": {
 				"type": "damage",
@@ -292,6 +361,134 @@
 				"name": "",
 				"img": "",
 				"appliedEffects": []
+			},
+			"YGN1b1FwiRe0gMZh": {
+				"type": "utility",
+				"name": "Move Mark",
+				"_id": "YGN1b1FwiRe0gMZh",
+				"img": null,
+				"activation": {
+					"type": "action",
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "self",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"stationary": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": []
+				},
+				"visibility": {
+					"level": {},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"triggeredActivityConsume": true,
+					"triggeredActivityConfigure": true,
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"skipConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"rollAs": "target",
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"regionBehavior": {
+					"enabled": false,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": []
+				},
+				"regionLight": {
+					"enabled": false,
+					"dim": 0,
+					"bright": 0,
+					"color": null,
+					"alpha": 0.5,
+					"luminosity": 0.5,
+					"animationType": "",
+					"animationSpeed": 5,
+					"animationIntensity": 5
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true
 			}
 		},
 		"identifier": "mark-for-death",

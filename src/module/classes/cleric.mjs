@@ -213,6 +213,34 @@ export async function healingOverflow(workflow) {
 }
 
 /**
+ * Runs Holy Strike class feature automation.
+ * Fires the Holy Strike activity once per turn, on the first hit only.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
+ */
+export async function holyStrike(workflow) {
+	try {
+		if (!workflow.actor || workflow.hitTargets.size === 0) return;
+		if (!["mwak", "rwak"].includes(workflow.activity?.actionType)) return;
+
+		const actor = workflow.actor;
+
+		// Only fires on the first hit of the turn.
+		if (game.combat) {
+			const combatTime = `${game.combat.id}-${game.combat.round + game.combat.turn / 100}`;
+			if (actor.getFlag("elkan5e", "holyStrikeTime") === combatTime) return;
+			await actor.setFlag("elkan5e", "holyStrikeTime", combatTime);
+		}
+
+		const activity = macroItem.system.activities.contents[0];
+		if (activity) await activity.use({ event: workflow.event });
+	} catch (err) {
+		console.error("Holy Strike |", err);
+	}
+}
+
+/**
  * Runs shadow Refuge class feature automation.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.

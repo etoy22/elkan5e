@@ -20,7 +20,8 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -44,7 +45,15 @@
 			"_id": "TtnAWxKQzAQ1mBIL",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [
+					{
+						"key": "macro.execute",
+						"type": "custom",
+						"value": "ItemMacro args",
+						"phase": "final",
+						"priority": null
+					}
+				]
 			},
 			"disabled": false,
 			"duration": {
@@ -126,6 +135,18 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"dae": {
+			"macro": {
+				"name": "Haste",
+				"img": "icons/magic/control/buff-flight-wings-runes-purple.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "if (args[0] === \"off\") {\n   return await elkan5e.macros.spells.hasteLethargy(effect);\n}",
+				"author": "JfIFUEeTlOfdxqPQ",
+				"_id": null,
+				"folder": null
+			}
 		}
 	},
 	"system": {
