@@ -16,7 +16,7 @@ import {
 } from "./module/classes/monk.mjs";
 import { slicingBlow, sneakAttack } from "./module/classes/rogue.mjs";
 import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
-import { initWarlockSpellSlot } from "./module/classes/warlock.mjs";
+import { initWarlockSpellSlot, filterWarlockInvocations } from "./module/classes/warlock.mjs";
 import { markForDeath } from "./module/classes/ranger.mjs";
 import {
 	lifeDrainGraveguard,
@@ -24,7 +24,8 @@ import {
 	soulConduit,
 	spectralEmpowerment,
 } from "./module/classes/wizard.mjs";
-import { relentlessEndurance, undeadNature } from "./module/feats.mjs";
+import { relentlessEndurance, undeadNature, initFeatIdentifierMap, filterAlreadyOwnedFeats } from "./module/feats.mjs";
+import { registerConcentrationProficiency } from "./module/rules/concentration.mjs";
 import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
 import {
 	conditions,
@@ -37,6 +38,11 @@ import {
 	handleGrapplerMove,
 	handlePushedEffect,
 } from "./module/rules/condition/grapple.mjs";
+import {
+	handleBurningCreate,
+	handleBurningDelete,
+	quenchBurning,
+} from "./module/rules/condition/burning.mjs";
 import { push } from "./module/rules/condition/push.mjs";
 import { formating } from "./module/rules/format.mjs";
 import { language } from "./module/rules/language.mjs";
@@ -76,6 +82,8 @@ function registerHooks() {
 			console.log("Elkan 5e | Initializing Elkan 5e");
 			await gameSettingRegister();
 			initWarlockSpellSlot();
+			filterWarlockInvocations();
+			filterAlreadyOwnedFeats();
 
 			conditions();
 			tools();
@@ -87,6 +95,7 @@ function registerHooks() {
 			skills();
 			refs();
 			registerBloodragerHooks();
+			registerConcentrationProficiency();
 		} catch (error) {
 			console.error("Elkan 5e  |  Initialization Error:", error);
 		}
@@ -96,6 +105,7 @@ function registerHooks() {
 		void (async () => {
 			try {
 				await gameSettingsMigrate();
+				await initFeatIdentifierMap();
 				conditionsReady();
 				updateToolTypes();
 				await startDialog();
@@ -143,6 +153,12 @@ function registerHooks() {
 		}
 
 		try {
+			await handleBurningDelete(effect);
+		} catch (error) {
+			console.error("Elkan 5e | Error in deleteActiveEffect burning hook:", error);
+		}
+
+		try {
 			await Promise.resolve(Spells.goodberryDeleteActive(effect));
 		} catch (error) {
 			console.error("Elkan 5e | Error cleaning goodberry effect:", error);
@@ -180,6 +196,12 @@ function registerHooks() {
 			await handleHazardExhaustion(effect);
 		} catch (error) {
 			console.error("Elkan 5e | Error in createActiveEffect hazard exhaustion hook:", error);
+		}
+
+		try {
+			await handleBurningCreate(effect);
+		} catch (error) {
+			console.error("Elkan 5e | Error in createActiveEffect burning hook:", error);
 		}
 	});
 
@@ -309,6 +331,7 @@ function registerHooks() {
 				elementalAttunement,
 				markForDeath,
 				sneakAttack,
+				quenchBurning,
 			},
 			feats: {
 				holyStrike,

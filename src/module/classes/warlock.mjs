@@ -1,4 +1,83 @@
 /**
+ * Maps each pact identifier to the item IDs of invocations that require it.
+ * Used to hide wrong-pact invocations from the advancement choice dialog.
+ */
+const PACT_INVOCATION_IDS = {
+	"pact-of-the-chain": new Set([
+		"W35yiXw2c7pP9VYq", // Bonded Transposition (Chain)
+		"0DujGo03Z1E18c7A", // Familiar's Blast (Chain)
+		"oQk819H0v53a3xQB", // Familiar's Cloak (Chain)
+		"mfq3bMMSsxv64kM0", // Shared Life (Chain)
+		"h8zo2cifVsE9X8Uy", // Voice of the Chain Master (Chain)
+	]),
+	"pact-of-the-tome": new Set([
+		"Eoy9E4sb8gMSxi03", // Book of Magical Secrets (Tome)
+		"vINGSaFuXG5d8FhS", // Book of Rituals (Tome)
+	]),
+	"pact-of-the-warrior": new Set([
+		"c1lEKIaiHk8rQNMa", // Eldritch Weapon (Warrior)
+		"QC6cUJbTMX1ZX2LK", // Extra Attack (Warrior)
+		"f9RrkxWmBTX6uLSm", // Pact Armor (Warrior)
+	]),
+};
+
+/**
+ * Registers a hook that hides pact-specific invocations from the advancement
+ * dialog when the actor doesn't have the required pact boon. Runs on every
+ * renderApplication so it catches both the initial render and any re-renders
+ * as the player navigates through advancement steps.
+ */
+export function filterWarlockInvocations() {
+	Hooks.on("renderApplication", (app, html) => {
+		try {
+			const actor = app.actor;
+			if (!actor) return;
+
+			// Only apply to warlocks
+			const isWarlock = actor.items.some(
+				(i) => i.type === "class" && i.system?.identifier === "warlock",
+			);
+			if (!isWarlock) return;
+
+			// Find which pact (if any) the actor currently has
+			const actorPact = Object.keys(PACT_INVOCATION_IDS).find((pact) =>
+				actor.items.some((i) => i.system?.identifier === pact),
+			);
+
+			// Collect all item IDs that belong to a pact the actor does NOT have
+			const idsToHide = new Set();
+			for (const [pact, ids] of Object.entries(PACT_INVOCATION_IDS)) {
+				if (pact !== actorPact) {
+					for (const id of ids) idsToHide.add(id);
+				}
+			}
+			if (idsToHide.size === 0) return;
+
+			// Support both HTMLElement (FoundryVTT v12+ ApplicationV2) and jQuery
+			const root = html instanceof HTMLElement ? html : html[0];
+			if (!root) return;
+
+			// dnd5e renders advancement pool items with data-uuid containing the
+			// item id, or data-item-id set to the bare id. Try both patterns.
+			for (const id of idsToHide) {
+				const matches = root.querySelectorAll(
+					`[data-uuid*="${id}"], [data-item-id="${id}"]`,
+				);
+				for (const el of matches) {
+					// Walk up to the list row / card container so the whole entry
+					// is hidden rather than just an inner element
+					const row =
+						el.closest("li, .item, tr, [class*='item-choice']") ?? el;
+					row.style.display = "none";
+				}
+			}
+		} catch (error) {
+			console.error("Elkan 5e | Error filtering warlock invocations:", error);
+		}
+	});
+}
+
+/**
  * Runs init Warlock Spell Slot class feature automation.
  *
  */
