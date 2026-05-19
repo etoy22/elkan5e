@@ -4,6 +4,84 @@ const SEETHING_BLOOD_PACK = "Compendium.elkan5e.elkan5e-class-features.Item.";
 const WILD_BLOOD_UUID = "Compendium.elkan5e.elkan5e-class-features.Item.KQRBbG42MjUiR6im";
 
 /**
+ * Maps sorcerer subclass "Origin Spells" level → Bloodrager spell ItemChoice advancement ID.
+ *
+ * Sorcerer subclasses grant origin spells at sorcerer levels 1, 3, 5, (7), and 9.
+ * These map directly to spell levels 1–5 and to the corresponding Bloodrager
+ * ItemChoice advancements that are unlocked at barbarian levels 3, 3, 6, 10, and 14.
+ *
+ * @type {Record<number, string>}
+ */
+const SORC_LEVEL_TO_ADV_ID = {
+	1: "PMJ0bGS8Uu1A5A9T", // Barbarian 3  — 1st-level spell
+	3: "JB55YY5KxtyBr1BL", // Barbarian 3  — 2nd-level spell
+	5: "iqPa7l0unpdAf8dD", // Barbarian 6  — 3rd-level spell
+	7: "yCEOFfmapnP9nnTm", // Barbarian 10 — 4th-level spell
+	9: "nH3gtuDMDUPnHECo", // Barbarian 14 — 5th-level spell
+};
+
+/**
+ * Maps barbarian class level to the sorcerer origin level whose spell pool should be
+ * populated at that barbarian level-up.  Used by the level-up hook for late-level spells.
+ *
+ * @type {Record<number, number>}
+ */
+const BARB_LEVEL_TO_SORC_ORIGIN_LEVEL = {
+	6: 5,
+	10: 7,
+	14: 9,
+};
+
+/**
+ * Extracts origin spell UUIDs from a sorcerer subclass document, keyed by sorcerer level.
+ *
+ * @param {Item5e} subclassDoc - Fully-loaded sorcerer subclass item from the compendium.
+ * @returns {Record<number, string>} e.g. { 1: "Compendium.…", 3: "Compendium.…", … }
+ */
+function extractOriginSpells(subclassDoc) {
+	const result = {};
+	for (const adv of subclassDoc.system?.advancement ?? []) {
+		if (adv.title !== "Origin Spells" || adv.type !== "ItemGrant") continue;
+		const uuid = adv.configuration?.items?.[0]?.uuid;
+		if (uuid) result[adv.level] = uuid;
+	}
+	return result;
+}
+
+/**
+ * Writes spell UUIDs into the matching ItemChoice advancement pools on the Bloodrager
+ * subclass item that lives on an actor.
+ *
+ * @param {Item5e}               bloodragerItem - The bloodrager subclass item on the actor.
+ * @param {Record<number,string>} originSpells  - { sorcLevel: uuid } map.
+ * @param {number[]}             [sorcLevels]   - Subset of levels to update; defaults to all.
+ * @returns {Promise<void>}
+ */
+async function populateBloodragerSpellPools(bloodragerItem, originSpells, sorcLevels) {
+	const levels = sorcLevels ?? Object.keys(SORC_LEVEL_TO_ADV_ID).map(Number);
+	const advancements = bloodragerItem.system.advancement.map((a) =>
+		foundry.utils.deepClone(a),
+	);
+
+	let changed = false;
+	for (const sorcLevel of levels) {
+		const uuid = originSpells[sorcLevel];
+		const advId = SORC_LEVEL_TO_ADV_ID[sorcLevel];
+		if (!uuid || !advId) continue;
+
+		const idx = advancements.findIndex((a) => a._id === advId);
+		if (idx === -1) continue;
+
+		advancements[idx].configuration.pool = [{ uuid, optional: false }];
+		changed = true;
+	}
+
+	if (changed) {
+		await bloodragerItem.update({ "system.advancement": advancements });
+	}
+}
+
+/**
  * Returns every sorcerer subclass in the elkan5e-class compendium, sorted by name.
  * Includes _id, name, and system.identifier so callers never need to load full documents.
  *
@@ -103,121 +181,163 @@ const WILD_BLOOD_SPELL_IDENTIFIERS = new Set([
 ]);
 
 /**
- * Registers Bloodrager-specific hooks.
+ * Hook callback for "createItem". Fires when the Bloodrager subclass item is
+ * created on an actor and handles origin selection, subclass rename, spell pool
+ * population, and Seething Blood / Wild Blood grants.
  *
- * Fires when the Bloodrager subclass item itself is created on an actor
- * (i.e. the player just picked Bloodrager during advancement or dragged it
- * onto the sheet).  The hook then:
- *
- *   1. Queries the elkan5e-class compendium at runtime for every sorcerer
- *      subclass and presents a live origin picker — so any new sorcerer
- *      subclass you add to the module appears automatically with no extra
- *      configuration needed.
- *
- *   2. Renames the Bloodrager subclass item to "<Origin> Bloodrager".
- *
- *   3. Auto-grants the correct Seething Blood feat.
- *      - Known origins with one damage type: granted immediately.
- *      - Known origins with multiple types (Draconic, Water Savant): a short
- *        element picker appears.
- *      - Unknown origins: falls back to a full picker built dynamically from
- *        every "seething-blood-*" item in the elkan5e-class-features compendium.
- *
- *   4. Auto-grants Wild Blood for Wild Mage origins.
+ * @param {Item5e} item      - The newly created item document.
+ * @param {object} _options  - Creation options (unused).
+ * @param {string} userId    - The ID of the user who triggered the creation.
+ * @returns {Promise<void>}
  */
-export function registerBloodragerHooks() {
-	Hooks.on("createItem", async (item, _options, userId) => {
-		if (game.user.id !== userId) return;
-		const actor = item.parent;
-		if (!actor || actor.documentName !== "Actor") return;
+export async function onBloodragerCreateItem(item, _options, userId) {
+	if (game.user.id !== userId) return;
+	const actor = item.parent;
+	if (!actor || actor.documentName !== "Actor") return;
 
-		// Only trigger when the Bloodrager subclass item is added.
-		if (item.type !== "subclass" || item.system?.identifier !== "bloodrager") return;
+	// Only trigger when the Bloodrager subclass item is added.
+	if (item.type !== "subclass" || item.system?.identifier !== "bloodrager") return;
 
-		// --- 1. Build dynamic origin list from compendium ---
-		const origins = await getSorcererSubclasses();
-		if (!origins.length) {
-			console.warn(
-				"Elkan 5e | No sorcerer subclasses found; skipping Bloodrager origin setup.",
-			);
-			return;
-		}
-
-		// --- 2. Show origin picker ---
-		const originOptions = origins
-			.map((o) => `<option value="${o._id}">${o.name}</option>`)
-			.join("");
-		const chosenId = await DialogV2.prompt({
-			window: { title: "Bloodrager — Choose Sorcerous Origin" },
-			content: `<p>Choose the Sorcerous Origin that flows through your blood.
-			           This determines your Seething Blood damage, your spells, and
-			           whether you gain Wild Blood at level 6.</p>
-			          <select name="origin" style="width:100%;margin-top:4px">${originOptions}</select>`,
-			ok: {
-				label: "Confirm",
-				callback: (_event, button) => button.form.elements.origin.value,
-			},
-			rejectClose: false,
-		});
-		if (!chosenId) return;
-
-		const chosenOrigin = origins.find((o) => o._id === chosenId);
-		if (!chosenOrigin) return;
-
-		// --- 3. Rename subclass ---
-		const newName = `${chosenOrigin.name} Bloodrager`;
-		await item.update({ name: newName });
-
-		// --- 4. Determine and grant Seething Blood ---
-		const config = BLOODRAGER_ORIGIN_CONFIG[chosenOrigin.identifier];
-		let seethingBloodId = config?.seethingBloodId;
-
-		if (!seethingBloodId) {
-			// Build option list: narrowed for known multi-type origins, full list for unknowns.
-			const choices = config?.seethingBloodChoices?.length
-				? config.seethingBloodChoices.map((c) => ({ _id: c.id, name: c.label }))
-				: await getSeethingBloodVariants();
-
-			if (choices.length) {
-				const sbOptions = choices
-					.map((c) => `<option value="${c._id}">${c.name}</option>`)
-					.join("");
-				seethingBloodId = await DialogV2.prompt({
-					window: { title: `${chosenOrigin.name} Bloodrager — Choose Element` },
-					content: `<p>Choose the damage type for your Seething Blood:</p>
-					          <select name="element" style="width:100%;margin-top:4px">${sbOptions}</select>`,
-					ok: {
-						label: "Confirm",
-						callback: (_event, button) => button.form.elements.element.value,
-					},
-					rejectClose: false,
-				});
-			}
-		}
-
-		if (seethingBloodId) {
-			try {
-				const sbItem = await fromUuid(`${SEETHING_BLOOD_PACK}${seethingBloodId}`);
-				if (sbItem) await actor.createEmbeddedDocuments("Item", [sbItem.toObject()]);
-			} catch (err) {
-				console.error("Elkan 5e | Error granting Seething Blood:", err);
-			}
-		}
-
-		// --- 5. Wild Mage: auto-grant Wild Blood ---
-		if (config?.wildBlood) {
-			try {
-				const wbItem = await fromUuid(WILD_BLOOD_UUID);
-				if (wbItem) await actor.createEmbeddedDocuments("Item", [wbItem.toObject()]);
-			} catch (err) {
-				console.error("Elkan 5e | Error granting Wild Blood:", err);
-			}
-		}
-
-		ui.notifications.info(
-			`Bloodrager origin set — subclass renamed to "${newName}" and Seething Blood granted.`,
+	// --- 1. Build dynamic origin list from compendium ---
+	const origins = await getSorcererSubclasses();
+	if (!origins.length) {
+		console.warn(
+			"Elkan 5e | No sorcerer subclasses found; skipping Bloodrager origin setup.",
 		);
+		return;
+	}
+
+	// --- 2. Show origin picker (modal so AdvancementManager is blocked until confirmed) ---
+	const originOptions = origins
+		.map((o) => `<option value="${o._id}">${o.name}</option>`)
+		.join("");
+	const chosenId = await DialogV2.prompt({
+		window: { title: "Bloodrager — Choose Sorcerous Origin" },
+		content: `<p>Choose the Sorcerous Origin that flows through your blood.
+		           This determines your Seething Blood damage, your spells, and
+		           whether you gain Wild Blood at level 6.</p>
+		          <select name="origin" style="width:100%;margin-top:4px">${originOptions}</select>`,
+		ok: {
+			label: "Confirm",
+			callback: (_event, button) => button.form.elements.origin.value,
+		},
+		rejectClose: false,
+		modal: true,
 	});
+	if (!chosenId) return;
+
+	const chosenOrigin = origins.find((o) => o._id === chosenId);
+	if (!chosenOrigin) return;
+
+	// --- 3. Rename subclass ---
+	const newName = `${chosenOrigin.name} Bloodrager`;
+	await item.update({ name: newName });
+
+	// --- 4. Populate spell pools from origin's "Origin Spells" advancements ---
+	try {
+		const pack = game.packs.get("elkan5e.elkan5e-class");
+		if (pack) {
+			const subclassDoc = await pack.getDocument(chosenOrigin._id);
+			if (subclassDoc) {
+				const originSpells = extractOriginSpells(subclassDoc);
+				// Store on actor so the level-up hook can access them later.
+				await actor.update({
+					"flags.elkan5e.bloodrager": { originSpells },
+				});
+				// Pre-populate all pools now (covers levels 3, 6, 10, 14 in one shot).
+				await populateBloodragerSpellPools(item, originSpells);
+			}
+		}
+	} catch (err) {
+		console.error("Elkan 5e | Error populating Bloodrager spell pools:", err);
+	}
+
+	// --- 5. Determine and grant Seething Blood ---
+	const config = BLOODRAGER_ORIGIN_CONFIG[chosenOrigin.identifier];
+	let seethingBloodId = config?.seethingBloodId;
+
+	if (!seethingBloodId) {
+		// Build option list: narrowed for known multi-type origins, full list for unknowns.
+		const choices = config?.seethingBloodChoices?.length
+			? config.seethingBloodChoices.map((c) => ({ _id: c.id, name: c.label }))
+			: await getSeethingBloodVariants();
+
+		if (choices.length) {
+			const sbOptions = choices
+				.map((c) => `<option value="${c._id}">${c.name}</option>`)
+				.join("");
+			seethingBloodId = await DialogV2.prompt({
+				window: { title: `${chosenOrigin.name} Bloodrager — Choose Element` },
+				content: `<p>Choose the damage type for your Seething Blood:</p>
+				          <select name="element" style="width:100%;margin-top:4px">${sbOptions}</select>`,
+				ok: {
+					label: "Confirm",
+					callback: (_event, button) => button.form.elements.element.value,
+				},
+				rejectClose: false,
+				modal: true,
+			});
+		}
+	}
+
+	if (seethingBloodId) {
+		try {
+			const sbItem = await fromUuid(`${SEETHING_BLOOD_PACK}${seethingBloodId}`);
+			if (sbItem) await actor.createEmbeddedDocuments("Item", [sbItem.toObject()]);
+		} catch (err) {
+			console.error("Elkan 5e | Error granting Seething Blood:", err);
+		}
+	}
+
+	// --- 6. Wild Mage: auto-grant Wild Blood ---
+	if (config?.wildBlood) {
+		try {
+			const wbItem = await fromUuid(WILD_BLOOD_UUID);
+			if (wbItem) await actor.createEmbeddedDocuments("Item", [wbItem.toObject()]);
+		} catch (err) {
+			console.error("Elkan 5e | Error granting Wild Blood:", err);
+		}
+	}
+
+	ui.notifications.info(
+		`Bloodrager origin set — subclass renamed to "${newName}" and Seething Blood granted.`,
+	);
+}
+
+/**
+ * Called from the updateActor hook.  When a Bloodrager's barbarian level reaches
+ * 6, 10, or 14, re-verifies (and if needed re-populates) the spell pool for that
+ * level's ItemChoice advancement using the origin spells stored on the actor.
+ *
+ * This acts as a safety net: the createItem hook pre-populates all pools, but this
+ * ensures pools are correct even if the character was created before this feature
+ * existed or if the flag was set in a previous session.
+ *
+ * @param {Actor5e} actor   - Updated actor document.
+ * @param {object}  changes - Delta object passed by the updateActor hook.
+ * @returns {Promise<void>}
+ */
+export async function updateBloodragerOnLevelup(actor, changes) {
+	const newBarbLevel = changes.system?.classes?.barbarian?.levels;
+	if (!newBarbLevel) return; // barbarian level didn't change in this update
+
+	const sorcOriginLevel = BARB_LEVEL_TO_SORC_ORIGIN_LEVEL[newBarbLevel];
+	if (!sorcOriginLevel) return; // not a level that unlocks a new spell pool
+
+	// Only applies to Bloodrager subclass.
+	const bloodragerItem = actor.items.find(
+		(i) => i.type === "subclass" && i.system?.identifier === "bloodrager",
+	);
+	if (!bloodragerItem) return;
+
+	const originSpells = actor.flags?.elkan5e?.bloodrager?.originSpells;
+	if (!originSpells) return; // origin was never set (shouldn't happen in normal use)
+
+	try {
+		await populateBloodragerSpellPools(bloodragerItem, originSpells, [sorcOriginLevel]);
+	} catch (err) {
+		console.error("Elkan 5e | Error updating Bloodrager spell pool on level-up:", err);
+	}
 }
 
 /**
@@ -306,5 +426,96 @@ export async function wildBlood(workflow) {
 				console.error("Error drawing from Wild Blood table: ", error);
 			}
 		}
+	}
+}
+
+/**
+ * Called from the deleteItem hook.  When the Bloodrager subclass item is removed from
+ * an actor (e.g. the player delevels below 3 or uses the advancement manager to undo),
+ * this function:
+ *
+ *   1. Removes the stored origin data from the actor's flags so a fresh origin can be
+ *      chosen the next time the Bloodrager subclass is added.
+ *
+ *   2. Removes any Seething Blood item that was auto-granted by the module
+ *      (identified by a "seething-blood-" identifier prefix).
+ *
+ *   3. Removes the Wild Blood item if it was auto-granted (identifier "wild-blood").
+ *
+ * Items that were granted through the AdvancementManager's own tracking are left to
+ * the system to handle; only the hook-granted items need manual cleanup here.
+ *
+ * @param {Item5e} item    - The item being deleted.
+ * @param {object} _options
+ * @param {string} userId  - ID of the user performing the deletion.
+ * @returns {Promise<void>}
+ */
+export async function handleBloodragerDelete(item, _options, userId) {
+	if (game.user.id !== userId) return;
+	const actor = item.parent;
+	if (!actor || actor.documentName !== "Actor") return;
+	if (item.type !== "subclass" || item.system?.identifier !== "bloodrager") return;
+
+	// --- 1. Clear stored origin flag so the next subclass add starts fresh ---
+	try {
+		await actor.unsetFlag("elkan5e", "bloodrager");
+	} catch (err) {
+		console.error("Elkan 5e | Error clearing Bloodrager origin flag:", err);
+	}
+
+	// Collect actor item IDs to delete.
+	const toDelete = [];
+
+	// --- 2. Remove all Seething Blood variants (any "seething-blood-*" identifier) ---
+	for (const i of actor.items) {
+		if (i.system?.identifier?.startsWith("seething-blood-")) toDelete.push(i.id);
+	}
+
+	// --- 3. Remove Wild Blood if present ---
+	const wildBloodItem = actor.items.find((i) => i.system?.identifier === "wild-blood");
+	if (wildBloodItem) toDelete.push(wildBloodItem.id);
+
+	if (toDelete.length) {
+		try {
+			await actor.deleteEmbeddedDocuments("Item", toDelete);
+		} catch (err) {
+			console.error("Elkan 5e | Error removing Bloodrager granted items:", err);
+		}
+	}
+
+	if (actor.isOwner) {
+		ui.notifications.info(
+			`${actor.name}'s Bloodrager origin has been cleared. Seething Blood and Wild Blood removed.`,
+		);
+	}
+}
+
+/**
+ * Called from the preDeleteItem hook (fires BEFORE the item is removed from the DB).
+ * Resets the Bloodrager subclass name back to "Bloodrager" so that if the document
+ * object is cached or re-used anywhere after deletion it carries the canonical name,
+ * and so any advancement-manager redo path that clones the existing item gets the
+ * clean base name rather than the origin-prefixed one.
+ *
+ * In normal play the re-created compendium copy already has the base name, so this
+ * is a defensive belt-and-braces step.
+ *
+ * @param {Item5e} item    - The item about to be deleted.
+ * @param {object} _options
+ * @param {string} userId  - ID of the user performing the deletion.
+ * @returns {Promise<void>}
+ */
+export async function preHandleBloodragerDelete(item, _options, userId) {
+	if (game.user.id !== userId) return;
+	const actor = item.parent;
+	if (!actor || actor.documentName !== "Actor") return;
+	if (item.type !== "subclass" || item.system?.identifier !== "bloodrager") return;
+	if (item.name === "Bloodrager") return; // already clean
+
+	try {
+		await item.update({ name: "Bloodrager" });
+	} catch (err) {
+		// Non-fatal — item is being deleted anyway.
+		console.warn("Elkan 5e | Could not reset Bloodrager name before deletion:", err);
 	}
 }

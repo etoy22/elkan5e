@@ -1,4 +1,4 @@
-import { rage, wildBlood, registerBloodragerHooks } from "./module/classes/barbarian.mjs";
+import { rage, wildBlood, onBloodragerCreateItem, updateBloodragerOnLevelup, handleBloodragerDelete, preHandleBloodragerDelete } from "./module/classes/barbarian.mjs";
 import {
 	healingOverflow,
 	infusedHealer,
@@ -16,7 +16,7 @@ import {
 } from "./module/classes/monk.mjs";
 import { slicingBlow, sneakAttack } from "./module/classes/rogue.mjs";
 import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
-import { initWarlockSpellSlot, filterWarlockInvocations } from "./module/classes/warlock.mjs";
+import { initWarlockSpellSlot, onWarlockFilterInvocations } from "./module/classes/warlock.mjs";
 import { markForDeath } from "./module/classes/ranger.mjs";
 import {
 	lifeDrainGraveguard,
@@ -24,8 +24,7 @@ import {
 	soulConduit,
 	spectralEmpowerment,
 } from "./module/classes/wizard.mjs";
-import { relentlessEndurance, undeadNature, initFeatIdentifierMap, filterAlreadyOwnedFeats } from "./module/feats.mjs";
-import { registerConcentrationProficiency } from "./module/rules/concentration.mjs";
+import { relentlessEndurance, undeadNature, initFeatIdentifierMap, onFilterOwnedFeats } from "./module/feats.mjs";
 import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
 import {
 	conditions,
@@ -77,13 +76,48 @@ const Spells = {
  *
  */
 function registerHooks() {
+	// Wraps prepareDerivedData to inject concentration save bonuses from the
+	// flags.elkan5e.concentration.bonuses.save flag set by active effects.
+	// Must run during setup (after init, before ready) so the prototype is in place.
+	Hooks.once("setup", () => {
+		const ActorClass = CONFIG.Actor?.documentClass;
+		if (!ActorClass?.prototype?.prepareDerivedData) {
+			console.warn("Elkan 5e | Could not wrap prepareDerivedData for concentration proficiency.");
+			return;
+		}
+
+		const original = ActorClass.prototype.prepareDerivedData;
+
+		ActorClass.prototype.prepareDerivedData = function (...args) {
+			// Read the flag set by active effects (applyActiveEffects has already run).
+			const level = Number(this.flags?.elkan5e?.concentration?.bonuses?.save ?? 0);
+
+			if (level > 0) {
+				const bonuses = this.system?.attributes?.concentration?.bonuses;
+				if (bonuses !== undefined) {
+					const prof = this.system?.attributes?.prof ?? 0;
+					const bonus = level * prof;
+					const existing = bonuses.save;
+
+					if (typeof existing === "number") {
+						bonuses.save = existing + bonus;
+					} else if (typeof existing === "string" && existing.trim()) {
+						bonuses.save = `${existing} + ${bonus}`;
+					} else {
+						bonuses.save = bonus;
+					}
+				}
+			}
+
+			return original.apply(this, args);
+		};
+	});
+
 	Hooks.once("init", async () => {
 		try {
 			console.log("Elkan 5e | Initializing Elkan 5e");
 			await gameSettingRegister();
 			initWarlockSpellSlot();
-			filterWarlockInvocations();
-			filterAlreadyOwnedFeats();
 
 			conditions();
 			tools();
@@ -94,8 +128,85 @@ function registerHooks() {
 			scroll();
 			skills();
 			refs();
-			registerBloodragerHooks();
-			registerConcentrationProficiency();
+
+			// Hides pact-specific invocations from advancement dialogs for actors
+			// that don't have the corresponding pact boon.
+			Hooks.on("renderApplication", onWarlockFilterInvocations);
+
+			// Hides already-owned (non-repeatable) feats from advancement dialogs.
+			Hooks.on("renderApplication", onFilterOwnedFeats);
+
+			// Handles Bloodrager origin selection, subclass rename, spell pool
+			// population, and Seething Blood / Wild Blood grants when the subclass
+			// item is first added to an actor.
+			Hooks.on("createItem", async (item, options, userId) => {
+				try {
+					await onBloodragerCreateItem(item, options, userId);
+				} catch (error) {
+					console.error("Elkan 5e | Error in createItem Bloodrager hook:", error);
+				}
+			});
+
+			// Registers custom DAE effect fields for push resistance and fire damage.
+			Hooks.on("dae.modifySpecials", (_actorType, specials) => {
+				const BooleanField = foundry.data.fields.BooleanField;
+				const StringField = foundry.data.fields.StringField;
+				specials["flags.elkan5e.pushResist"] = [
+					new BooleanField({
+						label: game.i18n.localize("elkan5e.push.effects.pushResist"),
+						hint: game.i18n.localize("elkan5e.push.effects.pushResistDescription"),
+					}),
+					CONST.ACTIVE_EFFECT_MODES.CUSTOM,
+				];
+				specials["system.traits.dm.amount.fire"] = [
+					new StringField({
+						label: game.i18n.localize("elkan5e.burning.effects.fireDamageTaken"),
+						hint: game.i18n.localize("elkan5e.burning.effects.fireDamageTakenDescription"),
+					}),
+					CONST.ACTIVE_EFFECT_MODES.CUSTOM,
+				];
+			});
+
+			// Applies ±5 adjustment to skill rolls on a natural 20 / natural 1
+			// when the skillCriticalAdjustment setting is enabled.
+			Hooks.on("dnd5e.rollSkillV2", (rolls, _data) => {
+				try {
+					const roll = rolls?.[0];
+					if (!roll) return;
+
+					const d20 = roll.dice?.find((d) => d.faces === 20);
+					if (!d20) return;
+
+					const natural = d20.results?.[0]?.result;
+					if (!natural) return;
+					if (!game.settings.get("elkan5e", "skillCriticalAdjustment")) return;
+
+					let adjustment = 0;
+					if (natural === 1) adjustment = -5;
+					else if (natural === 20) adjustment = 5;
+					if (adjustment === 0) return;
+
+					const flavor = adjustment > 0 ? "Natural 20 Bonus" : "Natural 1 Penalty";
+					const sign = adjustment > 0 ? "+" : "-";
+
+					// Append the adjustment as visible terms so it appears in the roll breakdown.
+					const operator = new foundry.dice.terms.OperatorTerm({ operator: sign });
+					const bonus = new foundry.dice.terms.NumericTerm({
+						number: Math.abs(adjustment),
+						options: { flavor },
+					});
+					operator._evaluated = true;
+					bonus._evaluated = true;
+					roll.terms.push(operator, bonus);
+
+					// Update both the cached formula string and the cached total so the card
+					// header and total both reflect the adjustment.
+					roll._formula = `${roll._formula} ${sign} ${Math.abs(adjustment)}[${flavor}]`;
+					roll._total = (roll._total ?? roll.total) + adjustment;
+				} catch (err) {
+					console.error("Elkan 5e | Skill critical adjustment error:", err);
+				}
+			});
 		} catch (error) {
 			console.error("Elkan 5e  |  Initialization Error:", error);
 		}
@@ -109,6 +220,12 @@ function registerHooks() {
 				conditionsReady();
 				updateToolTypes();
 				await startDialog();
+
+				// Registers custom DAE auto-fields so they appear in the DAE field picker.
+				globalThis.DAE?.addAutoFields?.([
+					"flags.elkan5e.pushResist",
+					"system.traits.dm.amount.fire",
+				]);
 			} catch (error) {
 				console.error("Elkan 5e | Ready Hook Error:", error);
 			}
@@ -171,7 +288,15 @@ function registerHooks() {
 		}
 	});
 
-	Hooks.on("deleteItem", async (item) => {
+	Hooks.on("preDeleteItem", async (item, options, userId) => {
+		try {
+			await preHandleBloodragerDelete(item, options, userId);
+		} catch (error) {
+			console.error("Elkan 5e | Error in preDeleteItem Bloodrager name reset hook:", error);
+		}
+	});
+
+	Hooks.on("deleteItem", async (item, options, userId) => {
 		try {
 			await delayedItem(item);
 		} catch (error) {
@@ -182,6 +307,12 @@ function registerHooks() {
 			await Promise.resolve(Spells.goodberryDeleteItem(item));
 		} catch (error) {
 			console.error("Elkan 5e | Error cleaning goodberry item:", error);
+		}
+
+		try {
+			await handleBloodragerDelete(item, options, userId);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Bloodrager delete cleanup hook:", error);
 		}
 	});
 
@@ -244,6 +375,12 @@ function registerHooks() {
 			await handleDeadGrapplePrompt(actor);
 		} catch (error) {
 			console.error("Elkan 5e | Error in dead grapple prompt hook:", error);
+		}
+
+		try {
+			await updateBloodragerOnLevelup(actor, changes);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Bloodrager level-up spell pool hook:", error);
 		}
 	});
 

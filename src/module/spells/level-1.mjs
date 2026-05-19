@@ -310,6 +310,82 @@ export async function rendVigor(workflow) {
 }
 
 /**
+ * Runs Sanctuary spell automation (midi-qol postAttackRollComplete phase).
+ *
+ * Triggered via the `flags.midi-qol.postAttackRollComplete = "ItemMacro"` change
+ * on the Sanctuary active effect. After an attacker's roll resolves, any hit
+ * against a Sanctuary-protected creature requires a Wisdom saving throw (DC =
+ * the original caster's spell save DC). On a failed save the hit is cancelled
+ * and a chat message instructs the attacker to choose a new target.
+ *
+ * Per the spell text, no save is needed when the protected creature is not the
+ * sole target of an area-of-effect ability.
+ *
+ * @param {object} workflow - midi-qol workflow at postAttackRollComplete.
+ * @returns {Promise<void>} Promise resolution result.
+ */
+export async function sanctuary(workflow) {
+	console.log("Sanctuary automation triggered at postAttackRollComplete", workflow);
+	if (!workflow?.hitTargets?.size) return;
+
+	const attackerActor = workflow.actor;
+	if (!attackerActor) return;
+
+	for (const token of Array.from(workflow.hitTargets)) {
+		const defenderActor = token.actor;
+		if (!defenderActor) continue;
+
+		const sanctuaryEffect = defenderActor.effects.find(
+			(e) => !e.disabled && e.name === "Sanctuary",
+		);
+		if (!sanctuaryEffect) continue;
+
+		// AoE exception: no save when the protected creature is not the only target
+		if (workflow.targets.size > 1) continue;
+
+		// Resolve the original caster's spell save DC from the effect origin
+		const originItem = sanctuaryEffect.origin
+			? await fromUuid(sanctuaryEffect.origin).catch(() => null)
+			: null;
+		const casterActor = originItem?.parent ?? null;
+		const spellDC = casterActor?.system?.attributes?.spelldc ?? 13;
+
+		// Roll Wisdom saving throw for the attacker
+		const saveRoll = await attackerActor.rollAbilitySave("wis", {
+			targetValue: spellDC,
+			chatMessage: true,
+			messageData: {
+				flavor: `Wisdom Save vs. Sanctuary (DC ${spellDC}) — targeting ${defenderActor.name}`,
+			},
+		});
+
+		if (!saveRoll) continue;
+
+		const passed = saveRoll.total >= spellDC;
+
+		if (!passed) {
+			// Failed — cancel the hit; attacker must choose a new target
+			workflow.hitTargets.delete(token);
+			workflow.targets.delete(token);
+		}
+
+		const content = passed
+			? `<p><strong>${attackerActor.name}</strong> passed the Wisdom saving throw `
+			  + `<strong>(${saveRoll.total} vs. DC ${spellDC})</strong> and may target `
+			  + `<strong>${defenderActor.name}</strong>.</p>`
+			: `<p><strong>${attackerActor.name}</strong> failed the Wisdom saving throw `
+			  + `<strong>(${saveRoll.total} vs. DC ${spellDC})</strong> — `
+			  + `<strong>${defenderActor.name}</strong> is protected by <em>Sanctuary</em>. `
+			  + `The attack is negated; choose a new target.</p>`;
+
+		await ChatMessage.create({
+			content,
+			speaker: ChatMessage.getSpeaker({ actor: attackerActor }),
+		});
+	}
+}
+
+/**
  * Runs shield spell automation.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.

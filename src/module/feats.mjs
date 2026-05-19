@@ -37,55 +37,57 @@ export async function initFeatIdentifierMap() {
 }
 
 /**
- * Registers a hook that hides already-owned feats from advancement choice
- * dialogs.  A feat is considered owned if the actor already holds any item
- * with the same system.identifier, whether or not it came with an ASI.
- * Feats marked repeatable in their prerequisites are always left visible.
+ * Hook callback for "renderApplication". Hides already-owned feats from
+ * advancement choice dialogs. A feat is considered owned if the actor already
+ * holds any item with the same system.identifier. Feats marked repeatable in
+ * their prerequisites are always left visible.
+ *
+ * @param {Application} app  - The rendered application.
+ * @param {HTMLElement|jQuery} html - The rendered HTML.
  */
-export function filterAlreadyOwnedFeats() {
-	Hooks.on("renderApplication", (app, html) => {
-		try {
-			const actor = app.actor;
-			if (!actor) return;
+export function onFilterOwnedFeats(app, html) {
+	try {
+		const actor = app.actor;
+		if (!actor) return;
 
-			// Build the set of feat identifiers already on this actor
-			const ownedIdentifiers = new Set(
-				actor.items
-					.filter((i) => i.type === "feat")
-					.map((i) => i.system?.identifier)
-					.filter(Boolean),
-			);
-			if (ownedIdentifiers.size === 0) return;
+		// Build the set of feat identifiers already on this actor
+		const ownedIdentifiers = new Set(
+			actor.items
+				.filter((i) => i.type === "feat")
+				.map((i) => i.system?.identifier)
+				.filter(Boolean),
+		);
+		if (ownedIdentifiers.size === 0) return;
 
-			// Support both HTMLElement (FoundryVTT v12+ ApplicationV2) and jQuery
-			const root = html instanceof HTMLElement ? html : html[0];
-			if (!root) return;
+		// Support both HTMLElement (FoundryVTT v12+ ApplicationV2) and jQuery
+		const root = html instanceof HTMLElement ? html : html[0];
+		if (!root) return;
 
-			// dnd5e renders each pool item with a data-uuid attribute
-			for (const el of root.querySelectorAll("[data-uuid]")) {
-				const uuid = el.dataset.uuid;
-				if (!uuid) continue;
+		// dnd5e renders each pool item with a data-uuid attribute
+		for (const el of root.querySelectorAll("[data-uuid]")) {
+			const uuid = el.dataset.uuid;
+			if (!uuid) continue;
 
-				// The item ID is the last segment of the UUID
-				const id = uuid.split(".").pop();
-				const info = FEAT_INFO_MAP.get(id);
-				if (!info) continue;
+			// The item ID is the last segment of the UUID
+			const id = uuid.split(".").pop();
+			const info = FEAT_INFO_MAP.get(id);
+			if (!info) continue;
 
-				// Skip feats that are explicitly marked as repeatable
-				if (info.repeatable) continue;
+			// Skip feats that are explicitly marked as repeatable
+			if (info.repeatable) continue;
 
-				if (ownedIdentifiers.has(info.identifier)) {
-					// Hide the whole row / card rather than just the anchor
-					const row =
-						el.closest("li, .item, tr, [class*='item-choice']") ?? el;
-					row.style.display = "none";
-				}
+			if (ownedIdentifiers.has(info.identifier)) {
+				// Hide the whole row / card rather than just the anchor
+				const row =
+					el.closest("li, .item, tr, [class*='item-choice']") ?? el;
+				row.style.display = "none";
 			}
-		} catch (error) {
-			console.error("Elkan 5e | Error filtering owned feats:", error);
 		}
-	});
+	} catch (error) {
+		console.error("Elkan 5e | Error filtering owned feats:", error);
+	}
 }
+
 const RELENTLESS_IDENTIFIER = "relentless-endurance";
 const RELENTLESS_PROMPTED = new Set();
 
