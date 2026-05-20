@@ -1,5 +1,10 @@
 import { rage, wildBlood } from "./module/classes/barbarian.mjs";
-import { healingOverflow, infusedHealer, shadowRefuge, holyStrike } from "./module/classes/cleric.mjs";
+import {
+	healingOverflow,
+	infusedHealer,
+	shadowRefuge,
+	holyStrike,
+} from "./module/classes/cleric.mjs";
 import { archDruid } from "./module/classes/druid.mjs";
 import { secondWind } from "./module/classes/fighter.mjs";
 import {
@@ -304,7 +309,7 @@ function registerHooks() {
 				markForDeath,
 				sneakAttack,
 			},
-			feats:{
+			feats: {
 				holyStrike,
 			},
 			monsterFeatures: {

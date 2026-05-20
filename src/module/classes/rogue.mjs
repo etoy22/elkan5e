@@ -24,21 +24,15 @@ export async function slicingBlow(workflow) {
 	});
 }
 
-
 export async function sneakAttack(workflow) {
 	try {
 		if (!["mwak", "rwak"].includes(workflow.activity.actionType)) return {};
-		if (workflow.activity.actionType === "mwak" && !workflow.rolledItem?.system.properties?.has("heavy")) return {};
+		if ((!workflow.activity.actionType === "mwak" || workflow.activity.actionType === "rwak")  && workflow.iWtem.system.properties.has("heavy")) return {};
 		if (workflow.hitTargets.size < 1) return {};
 		if (!workflow.actor || !workflow.token) return {};
 
 		const actor = workflow.actor;
 
-		const rogueLevels = actor.getRollData().classes?.rogue?.levels;
-		if (!rogueLevels) {
-			console.warn("Sneak Attack: actor is not a rogue");
-			return {};
-		}
 
 		const target = workflow.hitTargets.first();
 		if (!target) {
@@ -60,15 +54,18 @@ export async function sneakAttack(workflow) {
 		let isSneak = workflow.advantage;
 
 		if (!isSneak) {
-			const nearbyTokens = canvas.tokens.placeables.filter(t =>
-				t.actor &&
-				t.actor.id !== actor.id &&
-				t.id !== target.id &&
-				t.actor.system.attributes?.hp?.value > 0 &&
-				t.document.disposition !== target.document.disposition &&
-				MidiQOL.computeDistance(t, target, { wallsBlock: false }) <= 5
+			const nearbyTokens = canvas.tokens.placeables.filter(
+				(t) =>
+					t.actor &&
+					t.actor.id !== actor.id &&
+					t.id !== target.id &&
+					t.actor.system.attributes?.hp?.value > 0 &&
+					t.document.disposition !== target.document.disposition &&
+					MidiQOL.computeDistance(t, target, { wallsBlock: false }) <= 5,
 			);
-			foundEnemy = nearbyTokens.some(t => t.document.disposition === -target.document.disposition);
+			foundEnemy = nearbyTokens.some(
+				(t) => t.document.disposition === -target.document.disposition,
+			);
 			isSneak = nearbyTokens.length > 0;
 		}
 
@@ -76,7 +73,6 @@ export async function sneakAttack(workflow) {
 			console.warn("Sneak Attack: no advantage or qualifying ally adjacent to target");
 			return {};
 		}
-
 
 		// Record the turn so sneak attack can't fire twice.
 		if (game.combat) {
@@ -86,8 +82,7 @@ export async function sneakAttack(workflow) {
 			}
 		}
 
-		
-		const base  = workflow.item?.system?.damage?.base;
+		const base = workflow.item?.system?.damage?.base;
 		const parts = workflow.item?.system?.damage?.parts;
 		let damageType = "piercing";
 		if (base?.types instanceof Set && base.types.size > 0) {
@@ -95,22 +90,24 @@ export async function sneakAttack(workflow) {
 		} else if (Array.isArray(parts) && parts[0]?.[1]) {
 			damageType = parts[0][1];
 		}
-
 		// Check for other precision-strike features on the actor.
-		const precisionFeatures = actor.items.filter(i => i.system?.type?.subtype === "precision");
-
-		if (precisionFeatures.length === 0) {
-			// No other precision strikes — fire the sneak attack activity directly.
-			const activity = macroItem.system.activities.contents[0];
-			if (activity) await activity.use({ damage: { type: damageType } }, { event: workflow.event });
+		const precisionFeatures = actor.items.filter(
+			(i) => i.system?.type?.subtype === "precision",
+		);
+		const macroItem = actor.items.filter(
+			(i) => i.system.identifier === "sneak-attack",
+		);
+		if (precisionFeatures.length === 1) {
+			const activity = macroItem[0].system.activities.contents[0];
+			if (activity)
+				await activity.use({ damage: { type: damageType } }, { event: workflow.event });
 		} else {
 			// Let the player pick: Sneak Attack or any precision feature.
 			const choices = [
-				{ label: macroItem.name, value: "sneak" },
-				...precisionFeatures.map(f => ({ label: f.name, value: f.uuid }))
+				...precisionFeatures.map((f) => ({ label: f.name, value: f.uuid })),
 			];
 			const optionsHtml = choices
-				.map(c => `<option value="${c.value}">${c.label}</option>`)
+				.map((c) => `<option value="${c.value}">${c.label}</option>`)
 				.join("");
 
 			const chosen = await foundry.applications.api.DialogV2.prompt({
@@ -119,7 +116,7 @@ export async function sneakAttack(workflow) {
 				          <select name="choice" style="width:100%">${optionsHtml}</select>`,
 				ok: { label: "Use", callback: (_ev, btn) => btn.form.elements.choice.value },
 				rejectClose: false,
-				modal: true
+				modal: true,
 			});
 			if (!chosen) return {};
 
@@ -131,7 +128,6 @@ export async function sneakAttack(workflow) {
 			const useConfig = chosen === "sneak" ? { damage: { type: damageType } } : {};
 			if (activity) await activity.use(useConfig, { event: workflow.event });
 		}
-
 	} catch (err) {
 		console.error("Sneak Attack |", err);
 	}
