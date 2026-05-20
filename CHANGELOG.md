@@ -51,6 +51,8 @@
 
 - Automated the following spells: Continual Flame, Darkness, Enlarge, Fire Shield (reflects damage to melee attacker), Haste (applies Incapacitated for 1 turn when the effect expires), Mirror Image (absorbs hits on a d20 roll, canceling attacks against the real target), Moon Beam, Shatter (constructs have disadvantage on the Con save), Vampiric Smite, Well of Corruption.
 - Cleaned up language and references across spell entries.
+- Made Emanation Spells work
+- Made Ongoing Spells Work
 
 ## UI
 
@@ -60,6 +62,7 @@
 
 - Added GitHub Actions workflow for automated releases.
 - Refactored pack build script (`packs.mjs`) for cleaner output handling.
+- Merge Ancestry and Background Compendium Folders
 
 # v1.13.8
 
