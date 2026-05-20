@@ -35,12 +35,14 @@
 			"template": {
 				"units": "",
 				"contiguous": false,
-				"type": ""
+				"type": "emanationNoTemplate",
+				"size": "@item.level * 250",
+				"count": ""
 			}
 		},
 		"range": {
 			"value": "250",
-			"units": "ft",
+			"units": "self",
 			"special": ""
 		},
 		"uses": {
@@ -126,18 +128,14 @@
 			"name": "Primeval Awareness",
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.tCmJrYx7G0AB0JZu",
 			"duration": {
-				"rounds": null,
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"transfer": false,
 			"disabled": false,
 			"_id": "m9ksEVsY6e6O78ZW",
-			"changes": [],
 			"description": "",
 			"statuses": [],
 			"flags": {
@@ -171,7 +169,12 @@
 			"tint": "#ffffff",
 			"img": "icons/magic/perception/eye-slit-pink.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": []
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!tCmJrYx7G0AB0JZu.m9ksEVsY6e6O78ZW"
 		}
 	],

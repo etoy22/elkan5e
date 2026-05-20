@@ -6,7 +6,6 @@
 		{
 			"name": "Haste",
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.lul0V4xIEqxIhJaZ",
-			"changes": [],
 			"transfer": false,
 			"flags": {
 				"dae": {
@@ -21,7 +20,8 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -44,22 +44,32 @@
 			"img": "icons/magic/control/buff-flight-wings-runes-purple.webp",
 			"_id": "TtnAWxKQzAQ1mBIL",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "macro.execute",
+						"type": "custom",
+						"value": "ItemMacro args",
+						"phase": "final",
+						"priority": null
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
 			"statuses": [
 				"hasted"
 			],
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!lul0V4xIEqxIhJaZ.TtnAWxKQzAQ1mBIL"
 		}
 	],
@@ -125,11 +135,23 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"dae": {
+			"macro": {
+				"name": "Haste",
+				"img": "icons/magic/control/buff-flight-wings-runes-purple.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "if (args[0] === \"off\") {\n   return await elkan5e.macros.spells.hasteLethargy(effect);\n}",
+				"author": "JfIFUEeTlOfdxqPQ",
+				"_id": null,
+				"folder": null
+			}
 		}
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You count to three while bending a licorice root, granting an ally supernatural speed. When the spell ends, the licorice root springs back to its original shape and you are struck by magical backlash.</em></p><p><strong>Buff</strong></p><ul><li><p>Your target is &amp;reference[hasted].</p></li><li><p>When the spell ends, either because the duration expires or you lose concentration, you freeze as your control of the flow of time backfires. You are &amp;reference[incapacitated] until the end of your next turn.</p></li></ul>",
+			"value": "<p><em>You count to three while bending a licorice root, granting an ally supernatural speed. When the spell ends, the licorice root springs back to its original shape and you are struck by magical backlash.</em></p><p><strong>Buff</strong></p><ul><li><p>Your target is &amp;reference[hasted].</p></li><li><p>When the spell ends, either because the duration expires or you lose &amp;reference[concentration], you freeze as your control of the flow of time backfires. You are &amp;reference[incapacitated] until the end of your next turn.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {

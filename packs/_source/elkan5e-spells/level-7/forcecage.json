@@ -41,7 +41,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><strong>Materials:</strong> You require ruby dust worth at least 1,500 gp, which the spell consumes.</p><p><strong>Utility</strong></p><ul><li><p>You create an immobile, invisible, cube-shaped prison of magical force. The prison may be either a cage or a solid box. The cage extends into the Ethereal Plane, blocking ethereal travel.</p><ul><li><p><strong>Cage:</strong> Up to 20 ft. on a side, formed by 1/2-inch diameter bars spaced 1/2 inch apart. A creature inside the cage cannot leave by nonmagical means.</p></li><li><p><strong>Box:</strong> Up to 10 ft. on a side, a solid barrier that blocks matter and prevents spells from passing into or out of the area.</p></li></ul></li><li><p>Creatures fully inside the area are trapped. Creatures partially inside, or too large to fit, are pushed outward until completely outside the area. If a creature attempts to teleport or use interplanar travel, it must first succeed on a Charisma saving throw.</p></li><li><p>This spell cannot be dispelled by <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.oZwKW3I3yzrSdpLE]{Dispel Magic}</em>.</p></li></ul><p><strong>[[/save CHA]]{Charisma Save}</strong></p><ul><li><p><strong>Failure:</strong> The attempt fails, the magic is wasted, and the creature remains trapped.</p></li><li><p><strong>Success:</strong> The creature may exit the forcecage using that magic.</p></li></ul>",
+			"value": "<p><strong>Materials:</strong> You require <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.pmDylz7l2oUKRatH]{Ruby Dust}</em> worth at least 1,500 gp, which the spell consumes.</p><p><strong>Utility</strong></p><ul><li><p>You create an immobile, invisible, cube-shaped prison of magical force. The prison may be either a cage or a solid box. The cage extends into the Ethereal Plane, blocking ethereal travel.</p><ul><li><p><strong>Cage:</strong> Up to 20 ft. on a side, formed by 1/2-inch diameter bars spaced 1/2 inch apart. A creature inside the cage cannot leave by nonmagical means.</p></li><li><p><strong>Box:</strong> Up to 10 ft. on a side, a solid barrier that blocks matter and prevents spells from passing into or out of the area.</p></li></ul></li><li><p>Creatures fully inside the area are trapped. Creatures partially inside, or too large to fit, are pushed outward until completely outside the area. If a creature attempts to teleport or use interplanar travel, it must first succeed on a Charisma saving throw.</p></li><li><p>This spell cannot be dispelled by <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.oZwKW3I3yzrSdpLE]{Dispel Magic}</em>.</p></li></ul><p><strong>[[/save CHA]]{Charisma Save}</strong></p><ul><li><p><strong>Failure:</strong> The attempt fails, the magic is wasted, and the creature remains trapped.</p></li><li><p><strong>Success:</strong> The creature may exit the forcecage using that magic.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -152,9 +152,171 @@
 				},
 				"uses": {
 					"spent": 0,
-					"recovery": []
+					"recovery": [],
+					"max": ""
 				},
-				"_id": "Xic3FescGv2Vq0NN"
+				"_id": "Xic3FescGv2Vq0NN",
+				"name": "Cage",
+				"img": "",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				}
+			},
+			"7w0yPm6FP3n0Ovmw": {
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"units": "self"
+				},
+				"target": {
+					"override": true,
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"stationary": false,
+						"units": "ft",
+						"type": "cube",
+						"size": "10",
+						"count": ""
+					},
+					"affects": {
+						"choice": false,
+						"type": ""
+					}
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": [],
+					"critical": {
+						"allow": false
+					}
+				},
+				"save": {
+					"ability": [
+						"cha"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"img": "",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"triggeredActivityConsume": true,
+					"triggeredActivityConfigure": true,
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"skipConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"rollAs": "target",
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"regionBehavior": {
+					"enabled": false,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": []
+				},
+				"regionLight": {
+					"enabled": false,
+					"dim": 0,
+					"bright": 0,
+					"color": null,
+					"alpha": 0.5,
+					"luminosity": 0.5,
+					"animationType": "",
+					"animationSpeed": 5,
+					"animationIntensity": 5
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"friendlySave": "default",
+				"_id": "7w0yPm6FP3n0Ovmw",
+				"name": "Box"
 			}
 		},
 		"identifier": "forcecage"

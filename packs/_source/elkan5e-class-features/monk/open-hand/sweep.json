@@ -126,23 +126,12 @@
 	"effects": [
 		{
 			"_id": "lvI9Pmwxb1rN95qt",
-			"changes": [
-				{
-					"key": "macro.StatusEffect",
-					"mode": 0,
-					"value": "prone",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 0,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 0,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"transfer": false,
 			"flags": {
@@ -171,10 +160,10 @@
 					"transfer": false,
 					"selfTargetAlways": false,
 					"dontApply": false,
-					"showIcon": true,
 					"enableCondition": "-1",
 					"disableCondition": "",
-					"disableIncapacitated": false
+					"disableIncapacitated": false,
+					"expiryMode": "default"
 				}
 			},
 			"tint": "#ffffff",
@@ -184,7 +173,20 @@
 			"statuses": [],
 			"img": "modules/elkan5e/icons/conditions/prone.svg",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "prone",
+						"phase": "final",
+						"priority": 20
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 2,
+			"folder": null,
 			"_key": "!items.effects!ecHupkSSAus3eGjy.lvI9Pmwxb1rN95qt"
 		}
 	],

@@ -108,18 +108,14 @@
 	"effects": [
 		{
 			"name": "Iron Wall",
-			"changes": [],
 			"transfer": false,
 			"_id": "Ng976NMHdBR6IUDA",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 7,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -137,11 +133,11 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": [
-						"isMoved",
-						"turnEndSource"
+						"isMoved"
 					],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -163,7 +159,12 @@
 			"tint": "#ffffff",
 			"img": "icons/commodities/stone/paver-brick-brown.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": []
+			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!jJpgBeSAhrFbGibx.Ng976NMHdBR6IUDA"
 		}
 	],

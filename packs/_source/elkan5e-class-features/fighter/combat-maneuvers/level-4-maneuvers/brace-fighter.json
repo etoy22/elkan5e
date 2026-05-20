@@ -121,25 +121,14 @@
 	"effects": [
 		{
 			"name": "Brace",
-			"changes": [
-				{
-					"key": "flags.midi-qol.grants.disadvantage.attack.all",
-					"mode": 2,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"_id": "UzfqSEvAugprw9Nk",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": 1,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -180,7 +169,19 @@
 			"tint": "#ffffff",
 			"img": "icons/skills/melee/shield-block-bash-blue.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.grants.disadvantage.attack.all",
+						"value": 1,
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!IyTu3qiMNHY9pAes.UzfqSEvAugprw9Nk"
 		}
 	],

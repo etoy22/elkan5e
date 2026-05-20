@@ -5,35 +5,12 @@
 	"effects": [
 		{
 			"_id": "q3k8qax0v18ac3uz",
-			"changes": [
-				{
-					"key": "flags.midi-qol.fail.spell.vocal",
-					"mode": 2,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.fail.spell.somatic",
-					"mode": 2,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.fail.spell.material",
-					"mode": 2,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"transfer": false,
 			"flags": {
@@ -44,7 +21,12 @@
 					"specialDuration": [],
 					"transfer": false,
 					"selfTarget": false,
-					"selfTargetAlways": false
+					"selfTargetAlways": false,
+					"enableCondition": "",
+					"disableCondition": "",
+					"expiryMode": "default",
+					"disableIncapacitated": false,
+					"dontApply": false
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -67,7 +49,34 @@
 			"statuses": [],
 			"img": "icons/magic/lightning/barrier-shield-crackling-orb-pink.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.fail.spell.vocal",
+						"type": "add",
+						"value": 1,
+						"phase": "initial",
+						"priority": 20
+					},
+					{
+						"key": "flags.midi-qol.fail.spell.somatic",
+						"type": "add",
+						"value": 1,
+						"phase": "initial",
+						"priority": 20
+					},
+					{
+						"key": "flags.midi-qol.fail.spell.material",
+						"type": "add",
+						"value": 1,
+						"phase": "initial",
+						"priority": 20
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!Ay9J4z6Zf9hl6d4w.q3k8qax0v18ac3uz"
 		}
 	],
@@ -104,7 +113,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><strong>Utility</strong></p><ul><li><p>An invisible sphere of antimagic surrounds and moves with you. Within the sphere, spells cannot be cast, summoned creatures disappear, and magic items become mundane.</p></li><li><p>Spells and magical effects are suppressed within the sphere unless created by an artifact or deity. A slot expended to cast a suppressed spell is consumed, and suppression counts against the effect’s duration.</p><ul><li><p><strong>Targeted Effects:</strong> Spells and magical effects that directly target creatures or objects in the sphere (e.g., <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.wZJ04LVK8K0jSm1B]{Magic Missile}</em>, <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.4LmfNXTDDG0fITnF]{Charm}</em>) have no effect.</p></li><li><p><strong>Areas of Magic:</strong> The area of another spell cannot extend into the sphere. Overlapping areas are suppressed. Example: flames from <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.zQ7lBRzId8peTjor]{Wall of Fire}</em> are suppressed within the sphere, creating a gap.</p></li><li><p><strong>Active Spells:</strong> Ongoing spells or magical effects on creatures or objects are suppressed while inside the sphere.</p></li><li><p><strong>Magic Items:</strong> Properties and powers of magic items are suppressed in the sphere. Example: a @UUID[Compendium.elkan5e.elkan5e-magic-items.Item.AFJ7OYKW8Uz7QCWx]{longsword +1} functions as a mundane @UUID[Compendium.elkan5e.elkan5e-equipment.Item.ZOyejSDAVAH74Z4u]{longsword}. Magic resumes if the item leaves the sphere.</p></li><li><p><strong>Magical Weapons:</strong> If used against a target in the sphere, or wielded by a creature inside, a weapon’s magical properties are suppressed. If the weapon leaves the sphere (e.g., a fired arrow), its magic resumes immediately.</p></li><li><p><strong>Magical Travel:</strong> Teleportation and planar travel fail if the sphere is the origin or destination. Portals and extradimensional openings (e.g., <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.sJ4UNpnxQJttNXu9]{Gate}</em>) close while within the sphere.</p><p><strong>Summoned Creatures:</strong> A creature or object created or summoned by magic vanishes while inside the sphere, reappearing once its space is no longer covered by it.</p></li><li><p><strong>Dispel Magic:</strong> Effects such as <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.oZwKW3I3yzrSdpLE]{Dispel Magic}</em> cannot end or suppress an <em>Antimagic Field</em>. Multiple <em>Antimagic Fields</em> do not nullify each other.</p></li></ul></li></ul>",
+			"value": "<p><strong>Utility</strong></p><ul><li><p>An invisible sphere of antimagic surrounds and moves with you. Within the sphere, spells cannot be cast, summoned creatures disappear, and magic items become mundane.</p></li><li><p>Spells and magical effects are suppressed within the sphere unless created by an artifact or deity. A slot expended to cast a suppressed spell is consumed, and suppression counts against the effect’s duration.</p><ul><li><p><strong>Targeted Effects:</strong> Spells and magical effects that directly target creatures or objects in the sphere (e.g., <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.wZJ04LVK8K0jSm1B]{Magic Missile}</em>, <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.4LmfNXTDDG0fITnF]{Charm}</em>) have no effect.</p></li><li><p><strong>Areas of Magic:</strong> The area of another spell cannot extend into the sphere. Overlapping areas are suppressed. Example: flames from <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.zQ7lBRzId8peTjor]{Wall of Fire}</em> are suppressed within the sphere, creating a gap.</p></li><li><p><strong>Active Spells:</strong> Ongoing spells or magical effects on creatures or objects are suppressed while inside the sphere.</p></li><li><p><strong>Magic Items:</strong> Properties and powers of magic items are suppressed in the sphere. Example: a @UUID[Compendium.elkan5e.elkan5e-equipment.Item.AFJ7OYKW8Uz7QCWx]{longsword +1} functions as a mundane @UUID[Compendium.elkan5e.elkan5e-equipment.Item.ZOyejSDAVAH74Z4u]{longsword}. Magic resumes if the item leaves the sphere.</p></li><li><p><strong>Magical Weapons:</strong> If used against a target in the sphere, or wielded by a creature inside, a weapon’s magical properties are suppressed. If the weapon leaves the sphere (e.g., a fired arrow), its magic resumes immediately.</p></li><li><p><strong>Magical Travel:</strong> Teleportation and planar travel fail if the sphere is the origin or destination. Portals and extradimensional openings (e.g., <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.sJ4UNpnxQJttNXu9]{Gate}</em>) close while within the sphere.</p><p><strong>Summoned Creatures:</strong> A creature or object created or summoned by magic vanishes while inside the sphere, reappearing once its space is no longer covered by it.</p></li><li><p><strong>Dispel Magic:</strong> Effects such as <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.oZwKW3I3yzrSdpLE]{Dispel Magic}</em> cannot end or suppress an <em>Antimagic Field</em>. Multiple <em>Antimagic Fields</em> do not nullify each other.</p></li></ul></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -190,11 +199,7 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [
-					{
-						"_id": "q3k8qax0v18ac3uz"
-					}
-				],
+				"effects": [],
 				"range": {
 					"override": false
 				},
@@ -203,8 +208,16 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": ""
+					},
+					"template": {
+						"type": "radius",
+						"size": "10",
+						"count": ""
+					}
 				},
 				"roll": {
 					"formula": "",
@@ -222,7 +235,33 @@
 				"img": "",
 				"appliedEffects": [
 					"q3k8qax0v18ac3uz"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"dispositionFilter": 0,
+					"wallRestriction": "move",
+					"regionVisibility": 3,
+					"excludeSource": false,
+					"oncePerTurn": false,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "q3k8qax0v18ac3uz"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "q3k8qax0v18ac3uz"
+						}
+					]
+				}
 			}
 		},
 		"identifier": "antimagic-field"

@@ -157,23 +157,12 @@
 		{
 			"statuses": [],
 			"name": "Prone",
-			"changes": [
-				{
-					"key": "macro.StatusEffect",
-					"mode": 0,
-					"value": "prone",
-					"priority": 20
-				}
-			],
 			"description": "",
 			"duration": {
-				"seconds": null,
-				"startTime": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null,
-				"combat": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"flags": {
 				"ActiveAuras": {
@@ -204,7 +193,8 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				}
 			},
 			"_id": "GKmFTdJLLasHSUmk",
@@ -214,7 +204,20 @@
 			"tint": "#ffffff",
 			"img": "modules/elkan5e/icons/conditions/prone.svg",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "prone",
+						"phase": "final",
+						"priority": 20
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!CaKyglOP54Fd7ibt.GKmFTdJLLasHSUmk"
 		}
 	],

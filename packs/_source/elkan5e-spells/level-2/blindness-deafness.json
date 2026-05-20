@@ -5,25 +5,14 @@
 	"effects": [
 		{
 			"name": "Blindness/Deafness",
-			"changes": [
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 2,
-					"value": "turn = end,saveAbility=con,saveDC=@attributes.spell.dc,saveMagic=true",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"_id": "euxD3H8QtSNEsBWw",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -65,7 +54,19 @@
 			"tint": "#ffffff",
 			"img": "icons/magic/perception/silhouette-stealth-shadow.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn = end,saveAbility=con,saveDC=@attributes.spell.dc,saveMagic=true",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!56KyqRJhW1cM3JaF.euxD3H8QtSNEsBWw"
 		}
 	],
@@ -159,7 +160,7 @@
 			"affects": {
 				"special": "",
 				"type": "creature",
-				"count": "1",
+				"count": "@item.level - 1",
 				"choice": false
 			},
 			"template": {
@@ -169,7 +170,7 @@
 			}
 		},
 		"range": {
-			"value": "30",
+			"value": "120",
 			"units": "ft",
 			"special": ""
 		},

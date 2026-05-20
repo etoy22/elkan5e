@@ -636,12 +636,9 @@
 			"src": null,
 			"anchorX": 0.5,
 			"anchorY": 0.5,
-			"offsetX": 0,
-			"offsetY": 0,
 			"fit": "contain",
 			"scaleX": 1,
 			"scaleY": 1,
-			"rotation": 0,
 			"tint": "#ffffff",
 			"alphaThreshold": 0.75
 		},
@@ -692,7 +689,7 @@
 			"saturation": 0,
 			"contrast": 0
 		},
-		"detectionModes": [],
+		"detectionModes": {},
 		"occludable": {
 			"radius": 0
 		},
@@ -715,7 +712,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 1
 	},
 	"items": [
 		{
@@ -998,25 +996,14 @@
 				{
 					"origin": "Compendium.elkan5e.elkan5e-class-features.Item.c1EHOsBmEepJ1Xyz",
 					"duration": {
-						"rounds": null,
-						"startTime": null,
-						"seconds": 7,
-						"combat": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": 7,
+						"units": "seconds",
+						"expiry": "turnStart",
+						"expired": false
 					},
 					"disabled": false,
 					"name": "Hamstring Strike",
 					"_id": "uzspA9O1tO57yMzt",
-					"changes": [
-						{
-							"key": "system.attributes.movement.all",
-							"mode": 0,
-							"value": "/2",
-							"priority": 50
-						}
-					],
 					"description": "",
 					"transfer": false,
 					"statuses": [],
@@ -1057,7 +1044,19 @@
 					"tint": "#ffffff",
 					"img": "icons/skills/melee/strike-blade-blood-red.webp",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": [
+							{
+								"key": "system.attributes.movement.all",
+								"value": "/2",
+								"priority": 50,
+								"type": "custom"
+							}
+						]
+					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!7RXY9cV3IQDmW7l3.XSFg5oaGN4x3EUNJ.uzspA9O1tO57yMzt"
 				}
 			],

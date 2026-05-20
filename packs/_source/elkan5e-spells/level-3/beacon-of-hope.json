@@ -18,9 +18,9 @@
 					"durationExpression": "",
 					"disableIncapacitated": false,
 					"dontApply": false,
-					"showIcon": true,
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": true,
@@ -39,35 +39,12 @@
 					"wallsBlock": "system"
 				}
 			},
-			"changes": [
-				{
-					"key": "flags.midi-qol.advantage.ability.save.wis",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.advantage.deathSave",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.max.damage.heal",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"tint": "#ffffff",
 			"transfer": false,
@@ -77,7 +54,31 @@
 			"statuses": [],
 			"img": "icons/magic/light/explosion-star-large-orange.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.advantage.ability.save.wis",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "flags.midi-qol.advantage.deathSave",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "flags.midi-qol.max.damage.heal",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 2,
+			"folder": null,
 			"_key": "!items.effects!Y9ujzi4f01yflTyj.RtkJJbNnHgYVRGhK"
 		}
 	],
@@ -120,7 +121,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You hum a soft chant that magically carries over your surroundings, emboldening your allies and allowing them to recover quickly.</em></p><p><strong>Buff</strong></p><ul><li><p>Allies in radius have advantage on wisdom saving throws and death saving throws.</p></li><li><p>Allies regain the maximum number of hit points possible from any healing.</p></li></ul>",
+			"value": "<p><em>You hum a soft chant that magically carries over your surroundings, emboldening your allies and allowing them to recover quickly.</em></p><p><strong>Buff</strong></p><ul><li><p>Allies in radius have &amp;reference[advantage] on wisdom saving throws and &amp;reference[death saving throws].</p></li><li><p>Allies regain the maximum number of hit points possible from any healing.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -209,7 +210,11 @@
 				},
 				"effects": [
 					{
-						"_id": "RtkJJbNnHgYVRGhK"
+						"_id": "RtkJJbNnHgYVRGhK",
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -220,8 +225,17 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": "self",
+						"special": ""
+					},
+					"template": {
+						"type": "radius",
+						"size": "30",
+						"count": ""
+					}
 				},
 				"roll": {
 					"formula": "",
@@ -239,7 +253,29 @@
 				"img": "",
 				"appliedEffects": [
 					"RtkJJbNnHgYVRGhK"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"regionBehavior": {
+					"dispositionFilter": 0,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "RtkJJbNnHgYVRGhK"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "RtkJJbNnHgYVRGhK"
+						}
+					],
+					"enabled": true
+				}
 			}
 		},
 		"identifier": "beacon-of-hope"

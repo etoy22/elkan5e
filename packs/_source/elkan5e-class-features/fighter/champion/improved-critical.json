@@ -63,31 +63,14 @@
 	"img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
 	"effects": [
 		{
-			"changes": [
-				{
-					"key": "flags.dnd5e.weaponCriticalThreshold",
-					"mode": 2,
-					"value": "@scale.champion.critical",
-					"priority": 20
-				},
-				{
-					"key": "flags.dnd5e.meleeCriticalDamageDice",
-					"mode": 2,
-					"value": "+@scale.champion.extra",
-					"priority": 20
-				}
-			],
 			"transfer": true,
 			"_id": "L4fsYJ4Bw7ac7zf1",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.8G382ny1UlNbo3RO",
 			"tint": "#ffffff",
@@ -123,9 +106,27 @@
 			"name": "Improved Critical",
 			"img": "icons/skills/melee/blade-tip-chipped-blood-red.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.dnd5e.weaponCriticalThreshold",
+						"value": "@scale.champion.critical",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "flags.dnd5e.meleeCriticalDamageDice",
+						"value": "+@scale.champion.extra",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"description": "",
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!8G382ny1UlNbo3RO.L4fsYJ4Bw7ac7zf1"
 		}
 	],

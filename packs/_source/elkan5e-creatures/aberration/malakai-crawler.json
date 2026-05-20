@@ -546,9 +546,6 @@
 			"src": "icons/commodities/biological/pustules-red.webp",
 			"scaleX": 1,
 			"scaleY": 1,
-			"offsetX": 0,
-			"offsetY": 0,
-			"rotation": 0,
 			"tint": "#ffffff",
 			"anchorX": 0.5,
 			"anchorY": 0.5,
@@ -604,7 +601,7 @@
 			"contrast": 0,
 			"color": null
 		},
-		"detectionModes": [],
+		"detectionModes": {},
 		"flags": {
 			"token-z": {
 				"zIndex": 0
@@ -632,7 +629,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 2
 	},
 	"items": [
 		{
@@ -642,25 +640,14 @@
 			"img": "icons/creatures/eyes/human-single-brown.webp",
 			"effects": [
 				{
-					"changes": [
-						{
-							"key": "flags.midi-qol.advantage.skill.prc",
-							"mode": 5,
-							"value": "1",
-							"priority": 20
-						}
-					],
 					"transfer": true,
 					"_id": "LWHLArqPtzqymV0F",
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"origin": null,
 					"tint": "#ffffff",
@@ -691,7 +678,19 @@
 					"statuses": [],
 					"img": "icons/creatures/eyes/human-single-brown.webp",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": [
+							{
+								"key": "flags.midi-qol.advantage.skill.prc",
+								"value": 1,
+								"priority": 20,
+								"type": "override"
+							}
+						]
+					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!trzFb9QLrHcxqVTu.C8XbK9I4REwZF1Gk.LWHLArqPtzqymV0F"
 				}
 			],
@@ -1660,25 +1659,14 @@
 				{
 					"origin": "Actor.vdgQuH6ZGXMLdm2S.Item.nBbelgGzzgLmkAPa",
 					"duration": {
-						"rounds": null,
-						"startTime": null,
-						"seconds": null,
-						"combat": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"disabled": false,
 					"name": "Grappled",
 					"_id": "enPDOzVyGkAle0Tr",
-					"changes": [
-						{
-							"key": "macro.StatusEffect",
-							"mode": 0,
-							"value": "grappled",
-							"priority": 50
-						}
-					],
 					"description": "",
 					"transfer": false,
 					"statuses": [],
@@ -1716,7 +1704,19 @@
 					"tint": "#ffffff",
 					"img": "modules/elkan5e/icons/conditions/grappled.svg",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": [
+							{
+								"key": "macro.StatusEffect",
+								"value": "grappled",
+								"priority": 50,
+								"type": "custom"
+							}
+						]
+					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!trzFb9QLrHcxqVTu.nBbelgGzzgLmkAPa.enPDOzVyGkAle0Tr"
 				}
 			],
@@ -2006,25 +2006,14 @@
 	],
 	"effects": [
 		{
-			"changes": [
-				{
-					"key": "flags.midi-qol.advantage.skill.prc",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"_id": "YMblNeX7rdcyFQGn",
 			"disabled": false,
 			"duration": {
-				"startTime": 1688256169,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"origin": "Actor.DrbD4AZTwJuYSKlD.Item.C8XbK9I4REwZF1Gk",
 			"tint": "#ffffff",
@@ -2059,7 +2048,26 @@
 			"statuses": [],
 			"img": "icons/creatures/eyes/human-single-brown.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.advantage.skill.prc",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					}
+				]
+			},
+			"start": {
+				"combat": null,
+				"round": null,
+				"time": 1688256169,
+				"turn": null,
+				"combatant": null,
+				"initiative": null
+			},
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!actors.effects!trzFb9QLrHcxqVTu.YMblNeX7rdcyFQGn"
 		}
 	],

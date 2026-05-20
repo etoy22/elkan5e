@@ -6,24 +6,13 @@
 		{
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.bMieP6ykkdm9Vp1x",
 			"duration": {
-				"rounds": null,
-				"startTime": null,
-				"seconds": 7,
-				"combat": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"disabled": false,
 			"_id": "IYgFd6lLaZ3A92Xu",
-			"changes": [
-				{
-					"key": "flags.midi-qol.disadvantage.skill.all",
-					"mode": 2,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"tint": "#ffffff",
 			"transfer": false,
 			"flags": {
@@ -33,14 +22,13 @@
 					"stackable": "none",
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"turnEndSource"
-					],
+					"specialDuration": [],
 					"disableIncapacitated": false,
 					"dontApply": false,
 					"showIcon": false,
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -64,7 +52,19 @@
 			"statuses": [],
 			"img": "icons/magic/lightning/projectile-tendrils-teal.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.disadvantage.skill.all",
+						"value": 1,
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!bMieP6ykkdm9Vp1x.IYgFd6lLaZ3A92Xu"
 		}
 	],

@@ -5,21 +5,19 @@
 	"effects": [
 		{
 			"name": "Divination (Counter)",
-			"changes": [],
 			"transfer": false,
 			"img": "icons/magic/perception/orb-eye-scrying.webp",
 			"_id": "G2ZygjclGC61O1Jv",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": []
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -34,7 +32,6 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"stackable": "count",
-					"showIcon": true,
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": [
@@ -58,6 +55,9 @@
 					"wallsBlock": "system"
 				}
 			},
+			"start": null,
+			"showIcon": 2,
+			"folder": null,
 			"_key": "!items.effects!Uk7KCJxvdKj8QYEa.G2ZygjclGC61O1Jv"
 		}
 	],
@@ -97,7 +97,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You burn incense, present a small offering, and pose a question to spirits, messengers of the divine, or fate itself.</em></p><p><strong>Ritual Casting Time:</strong> 1 Minute</p><p><strong>Utility Spell</strong></p><ul><li><p><strong>You ask a yes/no question</strong> that has a factual answer. You can ask about events that have happened in the past, but not future events.</p></li><li><p>The GM gives you a yes/no answer if possible, or saying unknown if the answer is unknowable.</p></li><li><p>If the subject of your question is protected from divination, the answer will be unknown. A subject can fool this spell with a <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.2Mx5Oepf9nzyPKQG]{Magic Aura}</em> spell.</p></li><li><p>The spell doesn't take into account any possible circumstances that might change the outcome, such as the casting of additional spells or the loss or gain of a companion.</p></li></ul><p><em>If you cast the spell two or more times before completing your next long rest, there is a cumulative [[/r 1d100]]{25} percent chance for each casting after the first that you get a random reading. The GM makes this roll in secret.</em></p><p><strong>Note: This spell grants your character an 'divination' active effect solely to track how many times you've cast the spell since your last long rest.</strong></p>",
+			"value": "<p><em>You burn incense, present a small offering, and pose a question to spirits, messengers of the divine, or fate itself.</em></p><p><strong>Ritual Casting Time:</strong> 1 Minute</p><p><strong>Utility</strong></p><ul><li><p><strong>You ask a yes/no question</strong> that has a factual answer. You can ask about events that have happened in the past, but not future events.</p></li><li><p>The GM gives you a yes/no answer if possible, or saying unknown if the answer is unknowable.</p></li><li><p>If the subject of your question is protected from divination, the answer will be unknown. A subject can fool this spell with a <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.2Mx5Oepf9nzyPKQG]{Magic Aura}</em> spell.</p></li><li><p>The spell doesn't take into account any possible circumstances that might change the outcome, such as the casting of additional spells or the loss or gain of a companion.</p></li></ul><p><em>If you cast the spell two or more times before completing your next long rest, there is a cumulative [[/r 1d100]]{25} percent chance for each casting after the first that you get a random reading. The GM makes this roll in secret.</em></p><p><strong>Note: This spell grants your character an 'divination' active effect solely to track how many times you've cast the spell since your last long rest.</strong></p>",
 			"chat": ""
 		},
 		"source": {
@@ -183,7 +183,11 @@
 				},
 				"effects": [
 					{
-						"_id": "G2ZygjclGC61O1Jv"
+						"_id": "G2ZygjclGC61O1Jv",
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -213,7 +217,21 @@
 				"img": "",
 				"appliedEffects": [
 					"G2ZygjclGC61O1Jv"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"midiProperties": {
+					"triggeredActivityId": "random-reading",
+					"triggeredActivityConditionText": "target.appliedEffects.some((e) => e.name == \"Divination (Counter)\")",
+					"triggeredActivityTargets": "self",
+					"triggeredActivityConsume": false,
+					"triggeredActivityConfigure": false
+				},
+				"effectConditionText": ""
 			},
 			"6331H4l8jfhQc64N": {
 				"type": "utility",
@@ -240,7 +258,11 @@
 				},
 				"effects": [
 					{
-						"_id": "G2ZygjclGC61O1Jv"
+						"_id": "G2ZygjclGC61O1Jv",
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -281,8 +303,8 @@
 				},
 				"midiProperties": {
 					"ignoreTraits": [],
-					"triggeredActivityId": "none",
-					"triggeredActivityConditionText": "",
+					"triggeredActivityId": "random-reading",
+					"triggeredActivityConditionText": "target.appliedEffects.some((e) => e.name == \"Divination (Counter)\")",
 					"triggeredActivityTargets": "targets",
 					"triggeredActivityRollAs": "self",
 					"forceDialog": false,
@@ -294,7 +316,9 @@
 					"identifier": "",
 					"displayActivityName": false,
 					"rollMode": "default",
-					"chooseEffects": false
+					"chooseEffects": false,
+					"triggeredActivityConsume": false,
+					"triggeredActivityConfigure": false
 				},
 				"isOverTimeFlag": false,
 				"overTimeProperties": {
@@ -306,7 +330,150 @@
 				"img": "",
 				"appliedEffects": [
 					"G2ZygjclGC61O1Jv"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				}
+			},
+			"IWkqi77eEpgvEVi3": {
+				"type": "utility",
+				"_id": "IWkqi77eEpgvEVi3",
+				"img": "",
+				"activation": {
+					"type": "",
+					"override": true,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": false,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "self",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"stationary": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "Random Reading",
+					"formula": "1d100"
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"triggeredActivityConsume": true,
+					"triggeredActivityConfigure": true,
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": true,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "blindroll",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"skipConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"rollAs": "target",
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"regionBehavior": {
+					"enabled": false,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": []
+				},
+				"regionLight": {
+					"enabled": false,
+					"dim": 0,
+					"bright": 0,
+					"color": null,
+					"alpha": 0.5,
+					"luminosity": 0.5,
+					"animationType": "",
+					"animationSpeed": 5,
+					"animationIntensity": 5
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"name": "Random Reading"
 			}
 		},
 		"identifier": "divination"

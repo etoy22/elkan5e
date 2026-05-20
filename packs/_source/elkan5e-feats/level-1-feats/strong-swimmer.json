@@ -61,25 +61,14 @@
 	},
 	"effects": [
 		{
-			"changes": [
-				{
-					"key": "system.attributes.movement.swim",
-					"mode": 4,
-					"value": "@attributes.movement.walk",
-					"priority": 20
-				}
-			],
 			"transfer": true,
 			"_id": "fzKpCcgSQVK5Y9E8",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"origin": "Compendium.elkan5e.elkan5e-feats.Item.R0iU0b2is9caAWoQ",
 			"tint": "#ffffff",
@@ -119,7 +108,19 @@
 			"statuses": [],
 			"img": "icons/magic/water/wave-water-blue.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.swim",
+						"value": "@attributes.movement.walk",
+						"priority": 20,
+						"type": "upgrade"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!R0iU0b2is9caAWoQ.fzKpCcgSQVK5Y9E8"
 		}
 	],

@@ -5,23 +5,12 @@
 	"effects": [
 		{
 			"_id": "70dkhcbophahhp1t",
-			"changes": [
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 2,
-					"value": "turn=end,\nsaveRemove=false,\nrollType=check,\nsaveDC=10,\nname=Blink",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"transfer": false,
 			"flags": {
@@ -37,7 +26,8 @@
 					"disableCondition": "",
 					"disableIncapacitated": false,
 					"dontApply": false,
-					"showIcon": false
+					"showIcon": false,
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -63,8 +53,87 @@
 			"statuses": [],
 			"img": "icons/magic/control/debuff-energy-hold-levitate-blue-yellow.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.neverTarget",
+						"type": "custom",
+						"value": true,
+						"phase": "initial",
+						"priority": 20
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!BnfcbtYsHn4lyXML.70dkhcbophahhp1t"
+		},
+		{
+			"disabled": false,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": "sourceStart",
+				"expired": false
+			},
+			"transfer": false,
+			"flags": {
+				"dae": {
+					"stackable": "none",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"transfer": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"enableCondition": "",
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"dontApply": false,
+					"showIcon": false,
+					"expiryMode": "default"
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"nameOverride": "",
+					"customCheck": "",
+					"wallsBlock": "system"
+				}
+			},
+			"tint": "#ffffff",
+			"origin": null,
+			"name": "Blink - Can't Target",
+			"description": "",
+			"statuses": [],
+			"img": "icons/magic/control/debuff-energy-hold-levitate-blue-yellow.webp",
+			"type": "base",
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.neverTarget",
+						"type": "add",
+						"value": true,
+						"phase": "initial",
+						"priority": 20
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
+			"_id": "5AnsKwlnKXCdetlt",
+			"_key": "!items.effects!BnfcbtYsHn4lyXML.5AnsKwlnKXCdetlt"
 		}
 	],
 	"folder": "Tf2FNuyyu2gEaYOF",

@@ -48,42 +48,40 @@
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.SoP28NqZhoDIQPBN",
 			"_id": "52sYMQTBUNEoyX6P",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.attributes.senses.darkvision",
-					"mode": 2,
-					"value": "60",
-					"priority": 20
-				},
-				{
-					"key": "ATL.sight.visionMode",
-					"mode": 0,
-					"value": "darkvision",
-					"priority": 20
-				},
-				{
-					"key": "ATL.sight.range",
-					"mode": 2,
-					"value": "60",
-					"priority": 20
-				},
-				{
-					"key": "ATL.detectionModes.seeInvisibility.range",
-					"mode": 2,
-					"value": "5",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.senses.ranges.darkvision",
+						"value": 60,
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "ATL.sight.visionMode",
+						"value": "darkvision",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "ATL.sight.range",
+						"value": 60,
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "ATL.detectionModes.seeInvisibility.range",
+						"value": 5,
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"combat": null,
-				"seconds": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -117,6 +115,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!SoP28NqZhoDIQPBN.52sYMQTBUNEoyX6P"
 		}
 	],

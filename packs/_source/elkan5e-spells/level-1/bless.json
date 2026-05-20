@@ -16,7 +16,10 @@
 					"selfTargetAlways": false,
 					"disableIncapacitated": false,
 					"dontApply": false,
-					"showIcon": false
+					"showIcon": false,
+					"enableCondition": "",
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -38,53 +41,12 @@
 					"wallsBlock": "system"
 				}
 			},
-			"changes": [
-				{
-					"key": "system.bonuses.abilities.save",
-					"mode": 2,
-					"value": "+1d4",
-					"priority": null
-				},
-				{
-					"key": "system.bonuses.mwak.attack",
-					"mode": 0,
-					"value": "+1d4",
-					"priority": null
-				},
-				{
-					"key": "macro.tokenMagic",
-					"mode": 0,
-					"value": "bevel",
-					"priority": null
-				},
-				{
-					"key": "system.bonuses.rsak.attack",
-					"mode": 2,
-					"value": "+1d4",
-					"priority": null
-				},
-				{
-					"key": "system.bonuses.msak.attack",
-					"mode": 2,
-					"value": "+1d4",
-					"priority": null
-				},
-				{
-					"key": "system.bonuses.rwak.attack",
-					"mode": 2,
-					"value": "+1d4",
-					"priority": null
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"tint": "#ffffff",
 			"transfer": false,
@@ -94,7 +56,55 @@
 			"statuses": [],
 			"img": "icons/magic/holy/prayer-hands-glowing-yellow-green.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.bonuses.abilities.save",
+						"type": "add",
+						"value": "+1d4",
+						"phase": "initial",
+						"priority": null
+					},
+					{
+						"key": "system.bonuses.mwak.attack",
+						"type": "custom",
+						"value": "+1d4",
+						"phase": "initial",
+						"priority": null
+					},
+					{
+						"key": "macro.tokenMagic",
+						"type": "custom",
+						"value": "invalid",
+						"phase": "initial",
+						"priority": null
+					},
+					{
+						"key": "system.bonuses.rsak.attack",
+						"type": "add",
+						"value": "+1d4",
+						"phase": "initial",
+						"priority": null
+					},
+					{
+						"key": "system.bonuses.msak.attack",
+						"type": "add",
+						"value": "+1d4",
+						"phase": "initial",
+						"priority": null
+					},
+					{
+						"key": "system.bonuses.rwak.attack",
+						"type": "add",
+						"value": "+1d4",
+						"phase": "initial",
+						"priority": null
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!NpFvVJ2qYoRpDAw8.lsEz6wG7eXIutwZI"
 		}
 	],
@@ -184,7 +194,7 @@
 			"affects": {
 				"special": "",
 				"type": "creature",
-				"count": "3",
+				"count": "@item.level + 2",
 				"choice": false
 			},
 			"template": {

@@ -64,7 +64,15 @@
 					"special": "",
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "u0OEHqtST3LTBCTo",
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
 				"range": {
 					"value": "100",
 					"units": "ft",
@@ -88,7 +96,7 @@
 						"special": ""
 					},
 					"prompt": true,
-					"override": false
+					"override": true
 				},
 				"uses": {
 					"spent": 0,
@@ -103,7 +111,31 @@
 				},
 				"name": "",
 				"img": "",
-				"appliedEffects": []
+				"appliedEffects": [],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": ""
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"dispositionFilter": 0,
+					"wallRestriction": "move",
+					"rules": [
+						{
+							"trigger": "turnStart",
+							"action": "applyEffect",
+							"targetId": "u0OEHqtST3LTBCTo"
+						},
+						{
+							"trigger": "turnEnd",
+							"action": "removeEffect",
+							"targetId": "u0OEHqtST3LTBCTo"
+						}
+					]
+				}
 			}
 		},
 		"identifier": "howling-storm",
@@ -112,7 +144,70 @@
 			"level": null
 		}
 	},
-	"effects": [],
+	"effects": [
+		{
+			"name": "Howling Storm",
+			"img": "icons/magic/air/wind-weather-snow-gusts.webp",
+			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.egJvmduymeZBW7Uf",
+			"transfer": false,
+			"_id": "u0OEHqtST3LTBCTo",
+			"type": "base",
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.disadvantage.attack.rwak",
+						"type": "add",
+						"value": 1,
+						"phase": "initial",
+						"priority": null
+					},
+					{
+						"key": "flags.midi-qol.disadvantage.attack.mwak",
+						"type": "add",
+						"value": 1,
+						"phase": "initial",
+						"priority": null
+					},
+					{
+						"key": "system.attributes.movement.all",
+						"type": "custom",
+						"value": "/2",
+						"phase": "final",
+						"priority": null
+					}
+				]
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [],
+			"showIcon": 1,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"stackable": "noneName",
+					"expiryMode": "default",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"specialDuration": []
+				}
+			},
+			"_key": "!items.effects!egJvmduymeZBW7Uf.u0OEHqtST3LTBCTo"
+		}
+	],
 	"flags": {
 		"midi-qol": {
 			"AoETargetType": "any",

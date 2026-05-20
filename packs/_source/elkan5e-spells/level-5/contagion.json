@@ -20,7 +20,8 @@
 					"dontApply": false,
 					"showIcon": false,
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -40,23 +41,12 @@
 					"statuses": []
 				}
 			},
-			"changes": [
-				{
-					"key": "flags.midi-qol.grants.disadvantage.save.all",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 604800,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 604800,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"tint": "#ffffff",
 			"transfer": false,
@@ -69,7 +59,19 @@
 			],
 			"img": "icons/skills/wounds/illness-disease-glowing-green.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.grants.disadvantage.save.all",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					}
+				]
+			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!hEovVr2onzAqoTbz.Podq2B0qNxTBlH0c"
 		}
 	],
@@ -112,7 +114,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>Your touch afflicts your victim with a magical disease.</em></p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 8d10 poison]] damage and gains the &amp;reference[diseased]{diseased} condition. While diseased in this way:</p><ul><li><p>The target is &amp;reference[poisoned]{poisoned} and has disadvantage on saving throws.</p></li></ul></li><li><p><strong>Success:</strong> Half damage.</p></li></ul>",
+			"value": "<p><em>Your touch afflicts your victim with a magical disease.</em></p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 8d10 poison]] damage and gains the &amp;reference[diseased] condition. While diseased in this way:</p><ul><li><p>The target is &amp;reference[poisoned] and has &amp;reference[disadvantage] on saving throws.</p></li></ul></li><li><p><strong>Success:</strong> Half damage.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -198,7 +200,11 @@
 				"effects": [
 					{
 						"_id": "Podq2B0qNxTBlH0c",
-						"onSave": false
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -248,7 +254,13 @@
 				"appliedEffects": [
 					"Podq2B0qNxTBlH0c"
 				],
-				"effectConditionText": "!target.traits.ci.value.has('diseased') && !target.traits.ci.value.has('poisoned')"
+				"effectConditionText": "!target.traits.ci.value.has('diseased') && !!target.traits.ci.value.has('poisoned')",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				}
 			}
 		},
 		"identifier": "contagion"

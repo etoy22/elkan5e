@@ -6,14 +6,6 @@
 		{
 			"name": "Hold Creature",
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.2S4Lb8HB2ukb7uBT",
-			"changes": [
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 2,
-					"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Hold Creature",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"flags": {
 				"dae": {
@@ -51,13 +43,10 @@
 			"_id": "BlR3RwWY9dQO7qQd",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"statuses": [
@@ -66,7 +55,19 @@
 			"tint": "#ffffff",
 			"img": "icons/magic/control/debuff-chains-shackle-movement-red.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Hold Creature",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!2S4Lb8HB2ukb7uBT.BlR3RwWY9dQO7qQd"
 		}
 	],
@@ -130,7 +131,7 @@
 		"target": {
 			"affects": {
 				"type": "creature",
-				"count": "1",
+				"count": "@item.level -1",
 				"choice": false,
 				"special": ""
 			},
@@ -167,8 +168,7 @@
 			"vocal",
 			"somatic",
 			"material",
-			"concentration",
-			"mgc"
+			"concentration"
 		],
 		"activities": {
 			"dnd5eactivity000": {

@@ -106,7 +106,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><em>You mock your target's life choices, muddying their thoughts and self-control.</em></p><p><strong>[[/save charisma]]{Charisma Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[cursed]. While cursed in this way, target has disadvantage on wisdom skill checks and wisdom saving throws.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"value": "<p><em>You mock your target's life choices, muddying their thoughts and self-control.</em></p><p><strong>[[/save charisma]]{Charisma Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[cursed]{Cursed}. While cursed in this way, target has &amp;reference[disadvantage] on wisdom skill checks and wisdom saving throws.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "curse-of-foolishness",
@@ -169,58 +169,58 @@
 			"transfer": false,
 			"_id": "AIyGkkusuydujD4G",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "flags.midi-qol.disadvantage.ability.save.wis",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.disadvantage.skill.ani",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.disadvantage.skill.ins",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.disadvantage.skill.med",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.disadvantage.skill.per",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.disadvantage.skill.sur",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.disadvantage.ability.save.wis",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "flags.midi-qol.disadvantage.skill.ani",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "flags.midi-qol.disadvantage.skill.ins",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "flags.midi-qol.disadvantage.skill.med",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "flags.midi-qol.disadvantage.skill.per",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "flags.midi-qol.disadvantage.skill.sur",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"statuses": [],
+			"statuses": [
+				"cursed"
+			],
 			"flags": {
 				"dae": {
 					"enableCondition": "",
@@ -230,10 +230,10 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"stackable": "multi",
-					"showIcon": true,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
+					"specialDuration": [],
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -253,6 +253,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 2,
+			"folder": null,
 			"_key": "!items.effects!KWIPK2i6jZE5F2zD.AIyGkkusuydujD4G"
 		}
 	],

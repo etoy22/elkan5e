@@ -65,31 +65,14 @@
 	"effects": [
 		{
 			"name": "Danger Sense",
-			"changes": [
-				{
-					"key": "system.attributes.init.bonus",
-					"mode": 2,
-					"value": "+@attributes.prof",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.ci.value",
-					"mode": 0,
-					"value": "surprised",
-					"priority": 20
-				}
-			],
 			"transfer": true,
 			"_id": "PZ7ZJGKYN1mP8wHk",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"origin": "Compendium.elkan5e.elkan5e-feats.Item.k4Lf8VZtlESUaz24",
@@ -128,7 +111,25 @@
 			"tint": "#ffffff",
 			"img": "icons/creatures/eyes/lizard-single-slit-pink.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.init.bonus",
+						"value": "+@attributes.prof",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.ci.value",
+						"value": "surprised",
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!k4Lf8VZtlESUaz24.PZ7ZJGKYN1mP8wHk"
 		}
 	],

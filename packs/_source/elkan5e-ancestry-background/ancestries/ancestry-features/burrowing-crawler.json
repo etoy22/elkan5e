@@ -1,0 +1,111 @@
+{
+	"folder": "AMu6lwiHJpe8mwA8",
+	"name": "Burrowing Crawler",
+	"type": "feat",
+	"_id": "hrgRDcPgwSwuaHmr",
+	"img": "icons/creatures/reptiles/lizard-iguana-green.webp",
+	"system": {
+		"description": {
+			"value": "<p><strong>&amp;reference[Crawling]{Crawling Speed}:</strong> equal to walking speed. You use this speed when &amp;reference[prone apply=false].</p><p><strong>Burrowing Speed (5 ft.):</strong> When you burrow, you can only burrow through dirt or other loose material, not hard materials like stone or wood. You leave a tunnel behind you, which you can crawl through with ease while &reference[crawling] but a medium creature has to squeeze into.</p>",
+			"chat": ""
+		},
+		"prerequisites": {
+			"level": null
+		},
+		"uses": {
+			"max": ""
+		},
+		"requirements": "Kobold",
+		"identifier": "burrowing-crawler"
+	},
+	"effects": [
+		{
+			"name": "Burrowing Crawler",
+			"transfer": true,
+			"img": "icons/creatures/reptiles/lizard-iguana-green.webp",
+			"_id": "CbtdLFBCdLdFQQ2a",
+			"type": "base",
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.climb",
+						"value": "@attributes.movement.walk",
+						"priority": 20,
+						"type": "upgrade"
+					}
+				]
+			},
+			"disabled": false,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"origin": "Compendium.elkan5e.elkan5e-ancestries.Item.hrgRDcPgwSwuaHmr",
+			"tint": "#ffffff",
+			"statuses": [],
+			"flags": {
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "multi",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
+			"_key": "!items.effects!hrgRDcPgwSwuaHmr.CbtdLFBCdLdFQQ2a"
+		}
+	],
+	"flags": {
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"removeAttackDamageButtons": "default",
+			"reactionCondition": "",
+			"otherCondition": ""
+		}
+	},
+	"_key": "!items!hrgRDcPgwSwuaHmr"
+}

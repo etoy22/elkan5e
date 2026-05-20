@@ -557,9 +557,6 @@
 			"src": "icons/magic/perception/eye-winged-pink.webp",
 			"scaleX": 1,
 			"scaleY": 1,
-			"offsetX": 0,
-			"offsetY": 0,
-			"rotation": 0,
 			"tint": "#ffffff",
 			"anchorX": 0.5,
 			"anchorY": 0.5,
@@ -615,13 +612,12 @@
 			"contrast": 0,
 			"color": null
 		},
-		"detectionModes": [
-			{
-				"id": "basicSight",
+		"detectionModes": {
+			"basicSight": {
 				"range": 60,
 				"enabled": true
 			}
-		],
+		},
 		"flags": {
 			"token-z": {
 				"zIndex": 0
@@ -649,7 +645,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 0.5
 	},
 	"items": [
 		{
@@ -779,41 +776,39 @@
 			"name": "Invisible",
 			"_id": "dnd5einvisible00",
 			"img": "modules/elkan5e/icons/conditions/invisible.svg",
-			"changes": [
-				{
-					"key": "flags.midi-qol.advantage.attack.all",
-					"mode": 5,
-					"value": "1",
-					"priority": null
-				},
-				{
-					"key": "flags.midi-qol.grants.disadvantage.attack.all",
-					"mode": 5,
-					"value": "1",
-					"priority": null
-				},
-				{
-					"key": "flags.midi-qol.advantage.skill.ste",
-					"mode": 2,
-					"value": "1",
-					"priority": null
-				}
-			],
 			"statuses": [
 				"invisible"
 			],
 			"description": "@Embed[Compendium.dnd5e.rules.JournalEntry.w7eitkpD7QQTB6j0.JournalEntryPage.3UU5GCTVeRDbZy9u inline]",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.advantage.attack.all",
+						"value": 1,
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "flags.midi-qol.grants.disadvantage.attack.all",
+						"value": 1,
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "flags.midi-qol.advantage.skill.ste",
+						"value": 1,
+						"priority": null,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": 659296206,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"origin": "Compendium.elkan5e.elkan5e-creatures.Actor.2zFPDI9k7ScaqVfo",
 			"tint": "#ffffff",
@@ -824,6 +819,16 @@
 					"specialDuration": []
 				}
 			},
+			"showIcon": 2,
+			"start": {
+				"combat": null,
+				"round": null,
+				"time": 659296206,
+				"turn": null,
+				"combatant": null,
+				"initiative": null
+			},
+			"folder": null,
 			"_key": "!actors.effects!2zFPDI9k7ScaqVfo.dnd5einvisible00"
 		}
 	],

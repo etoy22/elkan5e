@@ -1,4 +1,4 @@
-import { drainedEffect } from "../shared/effects.mjs";
+import { createLightRegion, drainedEffect } from "../shared/helpers.mjs";
 
 const SIZE_ORDER = ["tiny", "sm", "med", "lg", "huge", "grg"];
 const SIZE_TO_GRID = {
@@ -10,8 +10,34 @@ const SIZE_TO_GRID = {
 	grg: 4,
 };
 
+function tokenIdFromEntry(entry) {
+	if (!entry) return null;
+	if (typeof entry === "string") return entry;
+	if (entry.document?.id) return entry.document.id;
+	if (entry.id) return entry.id;
+	if (entry.object?.document?.id) return entry.object.document.id;
+	return null;
+}
+
+function buildIdSet(collection) {
+	const ids = new Set();
+	if (!collection) return ids;
+	for (const entry of collection) {
+		const id = tokenIdFromEntry(entry);
+		if (id) ids.add(id);
+	}
+	return ids;
+}
+
+function resolveCanvasToken(entry) {
+	const tokenId = tokenIdFromEntry(entry);
+	if (!tokenId) return null;
+	if (typeof entry === "string") return canvas.tokens.get(entry) ?? null;
+	return entry.document?.object ?? entry.object ?? canvas.tokens.get(tokenId) ?? null;
+}
+
 /**
- * Runs well Of Corruption spell automation.
+ * Runs Well Of Corruption spell automation.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
  * @returns {Promise<unknown>} Promise resolution result.
@@ -44,25 +70,6 @@ export async function wellOfCorruption(workflow) {
 	const totalDice = 4 + Math.max(effectiveCastLevel - 2, 0) * 2;
 	const damageRoll = await new Roll(`${totalDice}d8`).evaluate({ async: true });
 
-	const tokenIdFromEntry = (entry) => {
-		if (!entry) return null;
-		if (typeof entry === "string") return entry;
-		if (entry.document?.id) return entry.document.id;
-		if (entry.id) return entry.id;
-		if (entry.object?.document?.id) return entry.object.document.id;
-		return null;
-	};
-
-	const buildIdSet = (collection) => {
-		const ids = new Set();
-		if (!collection) return ids;
-		for (const entry of collection) {
-			const id = tokenIdFromEntry(entry);
-			if (id) ids.add(id);
-		}
-		return ids;
-	};
-
 	const failedSaveIds = buildIdSet(workflow.failedSaves);
 	const successfulSaveIds = buildIdSet(workflow.saves);
 
@@ -73,12 +80,7 @@ export async function wellOfCorruption(workflow) {
 			continue;
 		}
 
-		const targetToken =
-			typeof targetEntry === "string"
-				? canvas.tokens.get(targetEntry)
-				: (targetEntry.document?.object ??
-					targetEntry.object ??
-					canvas.tokens.get(tokenId));
+		const targetToken = resolveCanvasToken(targetEntry);
 		if (!targetToken) {
 			console.warn(`Well of Corruption: Token with ID ${tokenId} not found on canvas`);
 			continue;
@@ -95,29 +97,26 @@ export async function wellOfCorruption(workflow) {
 			"Well of Corruption",
 			"icons/magic/unholy/orb-swirling-teal.webp",
 			casterUuid,
+			true,
 		);
 	}
 }
 
 /**
- * Runs enlarge spell automation.
+ * Runs Enlarge spell automation.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
  * @returns {Promise<void>} Promise resolution result.
  */
 export async function enlarge(workflow) {
-	if (!workflow._failedSaves || workflow._failedSaves.size === 0) {
+	const failedTargets = Array.from(workflow.failedSaves ?? workflow._failedSaves ?? []);
+	if (failedTargets.length === 0) {
 		ui.notifications.warn("No targets failed the roll — cannot apply enlarge.");
 		return;
 	}
 
-	for (const failedToken of workflow._failedSaves) {
-		let token;
-		if (typeof failedToken === "string") {
-			token = canvas.tokens.get(failedToken);
-		} else {
-			token = failedToken;
-		}
+	for (const failedToken of failedTargets) {
+		const token = resolveCanvasToken(failedToken);
 		if (!token) continue;
 
 		const actor = token.actor;
@@ -170,18 +169,14 @@ export async function enlarge(workflow) {
  * @returns {Promise<void>} Promise resolution result.
  */
 export async function reduce(workflow) {
-	if (!workflow._failedSaves || workflow._failedSaves.size === 0) {
+	const failedTargets = Array.from(workflow.failedSaves ?? workflow._failedSaves ?? []);
+	if (failedTargets.length === 0) {
 		ui.notifications.warn("No targets failed the roll — cannot apply reduce.");
 		return;
 	}
 
-	for (const failedToken of workflow._failedSaves) {
-		let token;
-		if (typeof failedToken === "string") {
-			token = canvas.tokens.get(failedToken);
-		} else {
-			token = failedToken;
-		}
+	for (const failedToken of failedTargets) {
+		const token = resolveCanvasToken(failedToken);
 		if (!token) continue;
 
 		const actor = token.actor;
@@ -292,131 +287,214 @@ export async function returnToNormalSize(effect) {
 }
 
 /**
- * Runs create Light From Template spell automation.
- *
- * @param {*} workflow - Workflow payload from the triggering item or activity.
- * @param {*} config - Configuration object.
- * @param {*} minLevel - Min Level.
- * @returns {Promise<void>} Promise resolution result.
- */
-export async function createLightFromTemplate(workflow, config, minLevel = 1) {
-	const lastTemplate = canvas.templates.placeables.at(-1);
-	if (!lastTemplate) {
-		ui.notifications.warn("No measured template found.");
-		return;
-	}
-
-	const { x, y, id: templateId } = lastTemplate;
-	const spellLevel = Math.max(workflow.castData.castLevel - 1, minLevel);
-
-	const lightData = {
-		x,
-		y,
-		config: {
-			priority: spellLevel,
-			...config,
-		},
-		flags: {
-			elkan5e: {
-				linkedTemplate: templateId,
-			},
-		},
-	};
-
-	await canvas.scene.createEmbeddedDocuments("AmbientLight", [lightData]);
-}
-
-/**
- * Runs darkness spell automation.
+ * Runs Darkness spell automation.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
  * @returns {Promise<unknown>} Promise resolution result.
  */
 export async function darkness(workflow) {
-	return createLightFromTemplate(
-		workflow,
-		{
-			dim: 0,
-			bright: 15,
-			alpha: 0.3,
-			angle: 360,
-			luminosity: 0.5,
-			saturation: 0,
-			contrast: 0,
-			shadows: 0,
-			negative: true,
-			animation: {
-				type: "",
-				speed: 2,
-				intensity: 5,
+	const castLevel = Number(workflow.castData?.castLevel);
+	const itemLevel = Number(workflow.item?.system?.level);
+	const spellLevel = Number.isFinite(castLevel)
+		? castLevel
+		: Number.isFinite(itemLevel)
+			? itemLevel
+			: 2;
+
+	for (const region of workflow.templateUuids ?? []) {
+		const regionTemplate = typeof region === "string" ? await fromUuid(region) : region;
+		const regionRadius = regionTemplate?.document?.distance ?? regionTemplate?.distance ?? 0;
+
+		await createLightRegion(
+			region,
+			{
+				dim: 0,
+				bright: regionRadius,
+				alpha: 0.3,
+				luminosity: 0.5,
+				negative: true,
+				animation: {
+					type: "",
+					speed: 2,
+					intensity: 5,
+				},
+				sort: spellLevel - 1,
 			},
-		},
-		1,
-	);
+			"Darkness",
+		);
+	}
 }
 
 /**
- * Runs continual Flame spell automation.
+ * Runs Continual Flame spell automation.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
  * @returns {Promise<unknown>} Promise resolution result.
  */
 export async function continualFlame(workflow) {
-	return createLightFromTemplate(
-		workflow,
-		{
-			dim: 60,
-			bright: 30,
-			alpha: 0.3,
-			angle: 360,
-			luminosity: 0.5,
-			saturation: 0,
-			contrast: 0,
-			shadows: 0,
-			negative: false,
-			animation: {
-				type: "torch",
-				speed: 2,
-				intensity: 5,
+	const castLevel = Number(workflow.castData?.castLevel);
+	const itemLevel = Number(workflow.item?.system?.level);
+	const spellLevel = Number.isFinite(castLevel)
+		? castLevel
+		: Number.isFinite(itemLevel)
+			? itemLevel
+			: 2;
+
+	for (const region of workflow.templateUuids ?? []) {
+		await createLightRegion(
+			region,
+			{
+				dim: 60,
+				bright: 30,
+				alpha: 0.3,
+				luminosity: 0.5,
+				color: "#e25822",
+				animation: {
+					type: "torch",
+					speed: 2,
+					intensity: 5,
+				},
+				sort: spellLevel,
 			},
-		},
-		2,
-	);
+			"Continual Flame",
+		);
+	}
 }
 
 /**
- * Runs moon Beam spell automation.
+ * Runs Moon Beam spell automation.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
  * @returns {Promise<unknown>} Promise resolution result.
  */
 export async function moonBeam(workflow) {
-	return createLightFromTemplate(
-		workflow,
-		{
-			dim: 5,
-			bright: 0,
-			alpha: 0.3,
-			angle: 360,
-			luminosity: 0.5,
-			saturation: 0,
-			contrast: 0,
-			shadows: 0,
-			negative: false,
-			color: "#587BA5",
-			animation: {
-				type: "",
-				speed: 2,
-				intensity: 5,
+	const castLevel = Number(workflow.castData?.castLevel);
+	const itemLevel = Number(workflow.item?.system?.level);
+	const spellLevel = Number.isFinite(castLevel)
+		? castLevel
+		: Number.isFinite(itemLevel)
+			? itemLevel
+			: 2;
+
+	for (const region of workflow.templateUuids ?? []) {
+		await createLightRegion(
+			region,
+			{
+				dim: 60,
+				bright: 30,
+				alpha: 0.3,
+				luminosity: 0.5,
+				color: "#587BA5",
+				animation: {
+					type: "starlight",
+					speed: 2,
+					intensity: 5,
+				},
+				sort: spellLevel,
 			},
-		},
-		2,
-	);
+			"Moon Beam",
+		);
+	}
 }
 
 /**
- * Adjusts temporary hit points based on save results of the Rend Vigor spell.
+ * Runs Mirror Image spell automation.
+ * Wire this up at postAttackRollComplete so workflow.attackTotal is available.
+ * Returning false aborts the attack on the real target when an image is hit.
  *
- * @param {object} workflow - Workflow containing `saves` and `failedSaves` collections.
- * @returns {Promise<void>}
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<false|void>} false if the attack is absorbed by a duplicate, void otherwise.
  */
+export async function mirrorImage(workflow) {
+	try {
+		// Only intercept direct targeted attacks — area effects are ignored by duplicates.
+		if (workflow.template) return;
+		if (!["mwak", "rwak", "msak", "rsak"].includes(workflow.activity?.actionType)) return;
+
+		// Find the target carrying a Mirror Image effect.
+		const target = Array.from(workflow.targets ?? []).find((t) => {
+			const actor = t.actor ?? t.document?.actor;
+			return actor?.effects?.some(
+				(e) => /^Mirror Image \(\d+\)$/.test(e.name) && !e.disabled,
+			);
+		});
+		if (!target) return;
+
+		const actor = target.actor ?? target.document?.actor;
+		const effect = actor.effects.find(
+			(e) => /^Mirror Image \(\d+\)$/.test(e.name) && !e.disabled,
+		);
+		const duplicates = parseInt(effect.name.match(/\((\d+)\)/)[1]);
+
+		// Threshold based on remaining duplicates.
+		const threshold = duplicates >= 3 ? 4 : duplicates === 2 ? 5 : 7;
+
+		// Roll 1d12 to see if the attack hits a duplicate.
+		const roll = await new Roll("1d12").evaluate();
+		await roll.toMessage({
+			flavor: `Mirror Image Check — need ${threshold}+ to hit a duplicate`,
+			speaker: ChatMessage.getSpeaker({ token: target.document ?? target }),
+		});
+
+		// Below threshold → attack hits the real target, proceed normally.
+		if (roll.total < threshold) return;
+
+		// Attack redirected to a duplicate — check against the duplicate's AC 15.
+		const attackTotal = workflow.attackTotal ?? workflow.attackRoll?.total ?? 0;
+		const hitsDuplicate = attackTotal >= 15;
+		const speakerToken = target.document ?? target;
+
+		if (hitsDuplicate) {
+			const newCount = duplicates - 1;
+			if (newCount <= 0) {
+				await effect.delete();
+				await ChatMessage.create({
+					content: `<p><strong>${actor.name}'s</strong> final Mirror Image duplicate was destroyed — the spell ends!</p>`,
+					speaker: ChatMessage.getSpeaker({ token: speakerToken }),
+				});
+			} else {
+				await effect.update({ name: `Mirror Image (${newCount})` });
+				await ChatMessage.create({
+					content: `<p>A <strong>Mirror Image</strong> duplicate of ${actor.name} was destroyed! <em>${newCount} duplicate${newCount === 1 ? "" : "s"} remain.</em></p>`,
+					speaker: ChatMessage.getSpeaker({ token: speakerToken }),
+				});
+			}
+		} else {
+			await ChatMessage.create({
+				content: `<p>An attack targeted a <strong>Mirror Image</strong> duplicate of ${actor.name} but missed! (AC 15)</p>`,
+				speaker: ChatMessage.getSpeaker({ token: speakerToken }),
+			});
+		}
+
+		// Return false to abort the attack on the real target.
+		return false;
+	} catch (err) {
+		console.error("Mirror Image |", err);
+	}
+}
+
+/**
+ * Runs Shatter spell automation.
+ * Constructs have disadvantage on the Constitution saving throw.
+ * Wire this up at the preambleComplete phase so it runs before saves are rolled.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
+ */
+export async function shatter(workflow) {
+	try {
+		if (!workflow.targets?.size) return;
+
+		for (const target of workflow.targets) {
+			const actor = target.actor ?? target.document?.actor;
+			if (!actor) continue;
+
+			if (actor.system.details.type?.value === "construct") {
+				const tokenId = target.document?.id ?? target.id;
+				if (tokenId) workflow.disadvantageSaves.add(tokenId);
+			}
+		}
+	} catch (err) {
+		console.error("Shatter |", err);
+	}
+}

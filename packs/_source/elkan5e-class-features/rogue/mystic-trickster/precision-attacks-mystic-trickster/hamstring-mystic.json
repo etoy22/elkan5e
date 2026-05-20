@@ -6,25 +6,14 @@
 		{
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.c1EHOsBmEepJ1Xyz",
 			"duration": {
-				"rounds": null,
-				"startTime": null,
-				"seconds": 7,
-				"combat": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"disabled": false,
 			"name": "Hamstring",
 			"_id": "uzspA9O1tO57yMzt",
-			"changes": [
-				{
-					"key": "system.attributes.movement.all",
-					"mode": 0,
-					"value": "/2",
-					"priority": 50
-				}
-			],
 			"description": "",
 			"transfer": false,
 			"statuses": [],
@@ -35,14 +24,12 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"stackable": "noneName",
-					"showIcon": true,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"turnEndSource"
-					],
+					"specialDuration": [],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -64,7 +51,20 @@
 			"tint": "#ffffff",
 			"img": "icons/skills/melee/strike-blade-blood-red.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.all",
+						"type": "custom",
+						"value": "/2",
+						"phase": "final",
+						"priority": 50
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 2,
+			"folder": null,
 			"_key": "!items.effects!p1LH0pSeB685EF94.uzspA9O1tO57yMzt"
 		}
 	],

@@ -6,14 +6,6 @@
 		{
 			"name": "Web",
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.QbacOEHBdmvlUYl8",
-			"changes": [
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 2,
-					"value": "turn=end,\nsaveAbility=str,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Web",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"flags": {
 				"dae": {
@@ -50,23 +42,82 @@
 			"img": "icons/commodities/materials/material-webbing.webp",
 			"_id": "mtqZzXvzGon8D751",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end,\nsaveAbility=str,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Web",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
 			"statuses": [
 				"restrained"
 			],
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!QbacOEHBdmvlUYl8.mtqZzXvzGon8D751"
+		},
+		{
+			"name": "Web - Effects",
+			"img": "icons/commodities/materials/material-webbing.webp",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.QbacOEHBdmvlUYl8",
+			"type": "base",
+			"_id": "KAUyanTSUHe8xL9Z",
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.all",
+						"type": "custom",
+						"value": "/2",
+						"phase": "final",
+						"priority": null
+					}
+				]
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [
+				"obscuredlightly"
+			],
+			"showIcon": 2,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"expiryMode": "default",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"disableIncapacitated": false,
+					"specialDuration": [],
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
+				}
+			},
+			"_key": "!items.effects!QbacOEHBdmvlUYl8.KAUyanTSUHe8xL9Z"
 		}
 	],
 	"folder": "6J3i75lfD1J0xYwA",
@@ -110,7 +161,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You touch a bit of spiderweb with your fingers, muttering strange spider-like sounds and stretching your fingers slightly as you focus on the area where your magical spiderweb spontaneously appears.</em></p><p>If the webs aren't anchored between two solid masses (such as walls or trees) or layered across a floor, wall, or ceiling, the conjured web collapses on itself and the spell ends. Webs layered over a flat surface have a height or depth of 5 ft. rather than the full 20 ft.*</p><p><strong>[[/save dexterity]]{Dexterity Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[restrained]. Target rolls a <strong>[[/save str]]</strong> <strong>Save</strong> at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li><li><p><strong>Area Hazard:</strong> Once per turn, when a target moves at least 5 ft. into a webbed square, they roll a save. The web is &amp;reference[difficultterrain] and &amp;reference[lightlyobscured] the area. The webs are flammable. If the webs or a creature inside the webs takes fire damage, the web will rapidly and harmlessly burn away after 1 round.</p></li></ul><p><strong>*Upcasting:</strong> The size of the cube increases by 5 ft. for each spell level above 2nd level.</p>",
+			"value": "<p><em>You touch a bit of spiderweb with your fingers, muttering strange spider-like sounds and stretching your fingers slightly as you focus on the area where your magical spiderweb spontaneously appears.</em></p><p>If the webs aren't anchored between two solid masses (such as walls or trees) or layered across a floor, wall, or ceiling, the conjured web collapses on itself and the spell ends. Webs layered over a flat surface have a height or depth of 5 ft. rather than the full 20 ft.*</p><p><strong>[[/save dexterity]]{Dexterity Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[restrained]. Target rolls a <strong>[[/save str]]{Strength Save}</strong> at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li><li><p><strong>Area Hazard:</strong> Once per turn, when a target moves at least 5 ft. into a webbed square, they roll a save. The web is &amp;reference[difficultterrain] and &amp;reference[lightlyobscured] the area. The webs are flammable. If the webs or a creature inside the webs takes fire damage, the web will rapidly and harmlessly burn away after 1 round.</p></li></ul><p><strong>*Upcasting:</strong> The size of the cube increases by 5 ft. for each spell level above 2nd level.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -139,7 +190,7 @@
 			"template": {
 				"units": "ft",
 				"type": "cube",
-				"size": "20",
+				"size": "(@item.level * 5) + 10",
 				"contiguous": false,
 				"count": ""
 			}
@@ -201,7 +252,19 @@
 				"effects": [
 					{
 						"_id": "mtqZzXvzGon8D751",
-						"onSave": false
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
+					},
+					{
+						"_id": "KAUyanTSUHe8xL9Z",
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -212,8 +275,16 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": ""
+					},
+					"template": {
+						"type": "cube",
+						"size": "(@item.level * 5) + 10",
+						"count": ""
+					}
 				},
 				"uses": {
 					"spent": 0,
@@ -236,7 +307,30 @@
 				"appliedEffects": [
 					"mtqZzXvzGon8D751"
 				],
-				"effectConditionText": "!target.traits.ci.value.has('restrained')"
+				"effectConditionText": "!target.traits.ci.value.has('restrained')",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"dispositionFilter": 0,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "save"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "KAUyanTSUHe8xL9Z"
+						}
+					],
+					"wallRestriction": "none"
+				}
 			}
 		},
 		"identifier": "web"

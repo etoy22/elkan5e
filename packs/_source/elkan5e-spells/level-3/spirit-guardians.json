@@ -5,23 +5,12 @@
 	"effects": [
 		{
 			"_id": "dBqSu3oo9ohtwG39",
-			"changes": [
-				{
-					"key": "system.attributes.movement.all",
-					"mode": 0,
-					"value": "/2",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.u3P0ZaZDFF06QsAy",
 			"transfer": false,
@@ -38,7 +27,8 @@
 					"showIcon": false,
 					"durationExpression": "",
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": true,
@@ -63,7 +53,20 @@
 			"statuses": [],
 			"img": "icons/magic/symbols/mask-yellow-orange.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.all",
+						"type": "custom",
+						"value": "/2",
+						"phase": "final",
+						"priority": 20
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!u3P0ZaZDFF06QsAy.dBqSu3oo9ohtwG39"
 		}
 	],
@@ -193,12 +196,7 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [
-					{
-						"_id": "dBqSu3oo9ohtwG39",
-						"onSave": false
-					}
-				],
+				"effects": [],
 				"range": {
 					"override": false
 				},
@@ -207,8 +205,18 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": "enemy",
+						"count": "",
+						"special": ""
+					},
+					"template": {
+						"type": "radius",
+						"size": "15",
+						"count": ""
+					}
 				},
 				"damage": {
 					"onSave": "half",
@@ -249,12 +257,35 @@
 				"img": "",
 				"appliedEffects": [
 					"dBqSu3oo9ohtwG39"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"excludeSource": false,
+					"oncePerTurn": false,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "dBqSu3oo9ohtwG39"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "dBqSu3oo9ohtwG39"
+						}
+					]
+				}
 			},
 			"R5qQqN1bY6kOoFOB": {
 				"type": "save",
 				"activation": {
-					"type": "nocost",
+					"type": "",
 					"value": null,
 					"override": true,
 					"condition": ""
@@ -327,7 +358,13 @@
 				"effectConditionText": "",
 				"_id": "R5qQqN1bY6kOoFOB",
 				"img": "",
-				"appliedEffects": []
+				"appliedEffects": [],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				}
 			}
 		},
 		"identifier": "spirit-guardians"

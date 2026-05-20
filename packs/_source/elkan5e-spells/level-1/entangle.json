@@ -6,14 +6,6 @@
 		{
 			"name": "Entangle",
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.x76d4kCFyMIc6wQZ",
-			"changes": [
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 2,
-					"value": "turn=end,\nsaveAbility=str,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Entangle",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"flags": {
 				"dae": {
@@ -50,23 +42,101 @@
 			"img": "icons/magic/nature/root-vine-entangle-foot-green.webp",
 			"_id": "OPOIjeSC7TbTC1Ul",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end,\nsaveAbility=str,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Entangle",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
 			"statuses": [
 				"grappled"
 			],
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!x76d4kCFyMIc6wQZ.OPOIjeSC7TbTC1Ul"
+		},
+		{
+			"name": "Entangle - Slowed",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.x76d4kCFyMIc6wQZ",
+			"transfer": false,
+			"flags": {
+				"dae": {
+					"itemName": "Entangle",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": true,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"enableCondition": "",
+					"disableCondition": "",
+					"expiryMode": "default",
+					"combatActorOverride": "source"
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
+				}
+			},
+			"img": "icons/magic/nature/root-vine-entangle-foot-green.webp",
+			"type": "base",
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.all",
+						"type": "custom",
+						"value": "/2",
+						"priority": 20,
+						"phase": "final"
+					}
+				]
+			},
+			"disabled": false,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [
+				"grappled"
+			],
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
+			"_id": "EnhV5nWU6qgNc1XA",
+			"_key": "!items.effects!x76d4kCFyMIc6wQZ.EnhV5nWU6qgNc1XA"
 		}
 	],
 	"folder": "U0k4VGG6bziqf3oH",
@@ -108,7 +178,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>Reaching out to your foes, you call upon nature to spring forth and hold them in place.</em></p><p><strong>[[/save str]]{Strength Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[grappled] by the entangling plants until the spell ends. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li><li><p><strong>Area Hazard:</strong> The area is &amp;reference[difficult terrain]. Creatures who enter the area are not &amp;reference[grappled].</p></li></ul>",
+			"value": "<p><em>Reaching out to your foes, you call upon nature to spring forth and hold them in place.</em></p><p><strong>[[/save str]]{Strength Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[grappled] by the entangling plants until the spell ends. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li><li><p><strong>Area Hazard:</strong> The area is &amp;reference[difficult terrain]. Creatures who enter the area are not &amp;reference[grappled apply=false].</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -131,7 +201,7 @@
 		"target": {
 			"affects": {
 				"count": "",
-				"type": "",
+				"type": "creature",
 				"choice": false
 			},
 			"template": {
@@ -168,8 +238,7 @@
 		"properties": [
 			"vocal",
 			"somatic",
-			"concentration",
-			"mgc"
+			"concentration"
 		],
 		"activities": {
 			"griwcW3Xtxr9o2sf": {
@@ -198,7 +267,11 @@
 				"effects": [
 					{
 						"_id": "OPOIjeSC7TbTC1Ul",
-						"onSave": false
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -209,8 +282,18 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": "creature",
+						"count": "",
+						"special": ""
+					},
+					"template": {
+						"type": "sphere",
+						"size": "20",
+						"count": ""
+					}
 				},
 				"uses": {
 					"spent": 0,
@@ -235,7 +318,30 @@
 				"img": "",
 				"appliedEffects": [
 					"OPOIjeSC7TbTC1Ul"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"dispositionFilter": 0,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "EnhV5nWU6qgNc1XA"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "EnhV5nWU6qgNc1XA"
+						}
+					],
+					"wallRestriction": "move"
+				}
 			}
 		},
 		"identifier": "entangle"

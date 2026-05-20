@@ -5,28 +5,27 @@
 	"effects": [
 		{
 			"name": "Enhance Ability [Bear's Endurance]",
-			"changes": [
-				{
-					"key": "flags.midi-qol.advantage.concentration",
-					"mode": 2,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"img": "icons/creatures/abilities/wolf-heads-swirl-purple.webp",
 			"_id": "zlt1x0TaaBXeHDkI",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.advantage.concentration",
+						"type": "add",
+						"value": 1,
+						"priority": 20,
+						"phase": "initial"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -44,7 +43,9 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default",
+					"combatActorOverride": "source"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -64,32 +65,33 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!gBuyXKNpNTF8i2Q8.zlt1x0TaaBXeHDkI"
 		},
 		{
 			"name": "Enhance Ability [Bull's Strength]",
-			"changes": [
-				{
-					"key": "system.skills.ath.value",
-					"mode": 4,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"img": "icons/creatures/abilities/wolf-heads-swirl-purple.webp",
 			"_id": "q7YfxlkP3FqrZY32",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.skills.ath.value",
+						"value": 1,
+						"priority": 20,
+						"type": "upgrade"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -124,44 +126,45 @@
 					"wallsBlock": "system"
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!gBuyXKNpNTF8i2Q8.q7YfxlkP3FqrZY32"
 		},
 		{
 			"name": "Enhance Ability [Cat's Grace]",
-			"changes": [
-				{
-					"key": "system.skills.ath.value",
-					"mode": 4,
-					"value": "1",
-					"priority": null
-				},
-				{
-					"key": "system.skills.slt.value",
-					"mode": 4,
-					"value": "1",
-					"priority": null
-				},
-				{
-					"key": "system.skills.ste.value",
-					"mode": 4,
-					"value": "1",
-					"priority": null
-				}
-			],
 			"transfer": false,
 			"img": "icons/creatures/abilities/wolf-heads-swirl-purple.webp",
 			"_id": "kjGsj0JBfniRRqwQ",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.skills.ath.value",
+						"value": 1,
+						"priority": null,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.skills.slt.value",
+						"value": 1,
+						"priority": null,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.skills.ste.value",
+						"value": 1,
+						"priority": null,
+						"type": "upgrade"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -196,50 +199,51 @@
 					"wallsBlock": "system"
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!gBuyXKNpNTF8i2Q8.kjGsj0JBfniRRqwQ"
 		},
 		{
 			"name": "Enhance Ability [Eagle's Spelndor]",
-			"changes": [
-				{
-					"key": "system.skills.dec.value",
-					"mode": 4,
-					"value": "1",
-					"priority": null
-				},
-				{
-					"key": "system.skills.itm.value",
-					"mode": 4,
-					"value": "1",
-					"priority": null
-				},
-				{
-					"key": "system.skills.per.value",
-					"mode": 4,
-					"value": "1",
-					"priority": null
-				},
-				{
-					"key": "system.skills.prf.value",
-					"mode": 4,
-					"value": "1",
-					"priority": null
-				}
-			],
 			"transfer": false,
 			"img": "icons/creatures/abilities/wolf-heads-swirl-purple.webp",
 			"_id": "l05a2Y4ceCdFVYjX",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.skills.dec.value",
+						"value": 1,
+						"priority": null,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.skills.itm.value",
+						"value": 1,
+						"priority": null,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.skills.per.value",
+						"value": 1,
+						"priority": null,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.skills.prf.value",
+						"value": 1,
+						"priority": null,
+						"type": "upgrade"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -274,56 +278,57 @@
 					"wallsBlock": "system"
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!gBuyXKNpNTF8i2Q8.l05a2Y4ceCdFVYjX"
 		},
 		{
 			"name": "Enhance Ability [Fox Cunning]",
-			"changes": [
-				{
-					"key": "system.skills.arc.value",
-					"mode": 4,
-					"value": "1",
-					"priority": null
-				},
-				{
-					"key": "system.skills.his.value",
-					"mode": 4,
-					"value": "1",
-					"priority": null
-				},
-				{
-					"key": "system.skills.inv.value",
-					"mode": 4,
-					"value": "1",
-					"priority": null
-				},
-				{
-					"key": "system.skills.nat.value",
-					"mode": 4,
-					"value": "1",
-					"priority": null
-				},
-				{
-					"key": "system.skills.rel.value",
-					"mode": 4,
-					"value": "1",
-					"priority": null
-				}
-			],
 			"transfer": false,
 			"img": "icons/creatures/abilities/wolf-heads-swirl-purple.webp",
 			"_id": "Q1TECcQ6PKBZv7aa",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.skills.arc.value",
+						"value": 1,
+						"priority": null,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.skills.his.value",
+						"value": 1,
+						"priority": null,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.skills.inv.value",
+						"value": 1,
+						"priority": null,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.skills.nat.value",
+						"value": 1,
+						"priority": null,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.skills.rel.value",
+						"value": 1,
+						"priority": null,
+						"type": "upgrade"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -358,56 +363,57 @@
 					"wallsBlock": "system"
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!gBuyXKNpNTF8i2Q8.Q1TECcQ6PKBZv7aa"
 		},
 		{
 			"name": "Enhance Ability [Owl's Wisdom]",
-			"changes": [
-				{
-					"key": "system.skills.ani.value",
-					"mode": 4,
-					"value": "1",
-					"priority": null
-				},
-				{
-					"key": "system.skills.ins.value",
-					"mode": 4,
-					"value": "1",
-					"priority": null
-				},
-				{
-					"key": "system.skills.med.value",
-					"mode": 4,
-					"value": "1",
-					"priority": null
-				},
-				{
-					"key": "system.skills.prc.value",
-					"mode": 4,
-					"value": "1",
-					"priority": null
-				},
-				{
-					"key": "system.skills.sur.value",
-					"mode": 4,
-					"value": "1",
-					"priority": null
-				}
-			],
 			"transfer": false,
 			"img": "icons/creatures/abilities/wolf-heads-swirl-purple.webp",
 			"_id": "XhlqP9XipGRUm8nr",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.skills.ani.value",
+						"value": 1,
+						"priority": null,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.skills.ins.value",
+						"value": 1,
+						"priority": null,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.skills.med.value",
+						"value": 1,
+						"priority": null,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.skills.prc.value",
+						"value": 1,
+						"priority": null,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.skills.sur.value",
+						"value": 1,
+						"priority": null,
+						"type": "upgrade"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -442,6 +448,9 @@
 					"wallsBlock": "system"
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!gBuyXKNpNTF8i2Q8.XhlqP9XipGRUm8nr"
 		}
 	],
@@ -530,7 +539,7 @@
 		"target": {
 			"affects": {
 				"type": "creature",
-				"count": "1",
+				"count": "@item.level - 1",
 				"choice": false,
 				"special": ""
 			},

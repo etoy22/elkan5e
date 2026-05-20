@@ -6,7 +6,7 @@
 	"img": "icons/weapons/swords/sword-winged-pink.webp",
 	"system": {
 		"description": {
-			"value": "<p><em>You imbue the weapons you are holding with radiant energy.</em></p><p><strong>Bonus Action</strong> - Self - 1 Minute - 1/Short Rest - Magical</p><p><strong>Buff</strong></p><ul><li><p>You add your charisma modifier to your attack rolls with weapons, and deal extra radiant damage equal to your charisma modifier.</p></li><li><p>Any weapon you are wielding glows, shedding &amp;rerefence[dim light] in a 40 ft. radius and &amp;reference[bright light] in a 20 ft. radius.</p></li></ul>",
+			"value": "<p><em>You imbue the weapons you are holding with radiant energy.</em></p><p><strong>Bonus Action</strong> - Self - 1 Minute - 1/Short Rest - Magical</p><p><strong>Buff</strong></p><ul><li><p>You add your charisma modifier to your attack rolls with weapons, and deal extra radiant damage equal to your charisma modifier.</p></li><li><p>Any weapon you are wielding glows, shedding &amp;reference[dim light] in a 40 ft. radius and &amp;reference[bright light] in a 20 ft. radius.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -127,43 +127,14 @@
 		{
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.1h1j8h29V9gDtlMD",
 			"duration": {
-				"rounds": 10,
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"disabled": false,
 			"name": "Sacred Weapon",
 			"_id": "O6MzZzjEQgSCWY8D",
-			"changes": [
-				{
-					"key": "system.bonuses.weapon.attack",
-					"mode": 2,
-					"value": "+max(1,@abilities.cha.mod)",
-					"priority": 20
-				},
-				{
-					"key": "system.bonuses.weapon.damage",
-					"mode": 2,
-					"value": "+max(1,@abilities.cha.mod)[Radiant]",
-					"priority": 20
-				},
-				{
-					"key": "ATL.light.bright",
-					"mode": 2,
-					"value": "20",
-					"priority": 20
-				},
-				{
-					"key": "ATL.light.dim",
-					"mode": 2,
-					"value": "40",
-					"priority": 20
-				}
-			],
 			"description": "",
 			"transfer": false,
 			"statuses": [],
@@ -202,7 +173,37 @@
 			"tint": "#ffffff",
 			"img": "icons/weapons/swords/sword-winged-pink.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.bonuses.weapon.attack",
+						"value": "+max(1,@abilities.cha.mod)",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.bonuses.weapon.damage",
+						"value": "+max(1,@abilities.cha.mod)[Radiant]",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "ATL.light.bright",
+						"value": 20,
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "ATL.light.dim",
+						"value": 40,
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!1h1j8h29V9gDtlMD.O6MzZzjEQgSCWY8D"
 		}
 	],

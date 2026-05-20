@@ -35,45 +35,46 @@
 					"wallsBlock": "system"
 				}
 			},
-			"changes": [
-				{
-					"key": "system.attributes.movement.walk",
-					"mode": 2,
-					"value": "10",
-					"priority": 20
-				},
-				{
-					"key": "system.attributes.movement.swim",
-					"mode": 4,
-					"value": "@attributes.movement.walk",
-					"priority": 25
-				},
-				{
-					"key": "system.attributes.movement.climb",
-					"mode": 4,
-					"value": "@attributes.movement.walk",
-					"priority": 25
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"tint": "#ffffff",
 			"transfer": true,
 			"name": "Ranger's Mobility",
 			"img": "icons/magic/movement/trail-streak-zigzag-teal.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.walk",
+						"value": 10,
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.attributes.movement.swim",
+						"value": "@attributes.movement.walk",
+						"priority": 25,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.attributes.movement.climb",
+						"value": "@attributes.movement.walk",
+						"priority": 25,
+						"type": "upgrade"
+					}
+				]
+			},
 			"description": "",
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.mZZCG1jdZ4bZF50Z",
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!mZZCG1jdZ4bZF50Z.9uv2HRTq6p2HWgwH"
 		}
 	],

@@ -6,7 +6,7 @@
 	"img": "icons/magic/earth/construct-stone.webp",
 	"system": {
 		"description": {
-			"value": "<p>You transform into an hybrid &amp;reference[humanoid] and earth &amp;reference[elemental] form, your skin made from soil and rocks which slowly shift across your body.</p><p><span> <strong>Bonus Action</strong> </span>- Self - 10 Minutes -<span></span>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.Ik6ei7V7ryr5XVoe]{3 Sorcery Points} - Magical</p><p>You choose whether your equipment falls to the ground in your space, merges into your new form, or if you continue to visibly wear it.</p><ul><li><p>You have &amp;reference[tremorsense] with a radius of 60 ft.</p></li><li><p>You are resistant to &amp;Reference[Adamantine]{non-adamantine} &amp;reference[bludgeoning], &amp;reference[piercing], and &amp;reference[slashing] damage.</p></li><li><p>You are immune to &amp;reference[poison] damage and the &amp;reference[poisoned] condition.</p></li><li><p>You are immune to the &amp;reference[petrified] condition.</p></li><li><p>You weigh twice as much.</p></li><li><p>You no longer have normal bodily functions. You don't breathe, can't bleed, be magically aged, or otherwise do anything that relies on your normal biological functions.</p></li></ul><p>You can revert to your normal form using a bonus action. You also revert to your normal form if you are reduced to 0 hit points.</p>",
+			"value": "<p>You transform into an hybrid &amp;reference[humanoid] and earth &amp;reference[elemental] form, your skin made from soil and rocks which slowly shift across your body.</p><p><span><strong>Bonus Action</strong> </span>- Self - 10 Minutes -@UUID[Compendium.elkan5e.elkan5e-class-features.Item.Ik6ei7V7ryr5XVoe]{3 Sorcery Points} - Magical</p><p>You choose whether your equipment falls to the ground in your space, merges into your new form, or if you continue to visibly wear it.</p><ul><li><p>You have &amp;reference[tremorsense] with a radius of 60 ft.</p></li><li><p>You are resistant to &amp;Reference[Adamantine]{non-adamantine} &amp;reference[bludgeoning], &amp;reference[piercing], and &amp;reference[slashing] damage.</p></li><li><p>You are immune to &amp;reference[poison] damage and the &amp;reference[poisoned apply=false] condition.</p></li><li><p>You are immune to the &amp;reference[petrified apply=false] condition.</p></li><li><p>You weigh twice as much.</p></li><li><p>You no longer have normal bodily functions. You don't breathe, can't bleed, be magically aged, or otherwise do anything that relies on your normal biological functions.</p></li></ul><p>You can revert to your normal form using a bonus action. You also revert to your normal form if you are reduced to 0 hit points.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -121,64 +121,62 @@
 	"effects": [
 		{
 			"name": "Earth Elemental Form",
-			"changes": [
-				{
-					"key": "system.traits.dr.bypasses",
-					"mode": 0,
-					"value": "adamantine",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 0,
-					"value": "bludgeoning",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 2,
-					"value": "piercing",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 2,
-					"value": "slashing",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.di.value",
-					"mode": 2,
-					"value": "poison",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.ci.value",
-					"mode": 0,
-					"value": "petrified",
-					"priority": 20
-				},
-				{
-					"key": "ATL.detectionModes.feelTremor.range",
-					"mode": 4,
-					"value": "60",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"img": "icons/magic/earth/construct-stone.webp",
 			"_id": "HIgza3WCu0mZCrsE",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.dr.bypasses",
+						"value": "adamantine",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "bludgeoning",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "piercing",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "slashing",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.di.value",
+						"value": "poison",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.ci.value",
+						"value": "petrified",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "ATL.detectionModes.feelTremor.range",
+						"value": 60,
+						"priority": 20,
+						"type": "upgrade"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -215,6 +213,9 @@
 					"wallsBlock": "system"
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!nwKGf0KGVZrOY2kr.HIgza3WCu0mZCrsE"
 		}
 	],

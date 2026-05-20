@@ -6,7 +6,7 @@
 	"img": "icons/magic/fire/elemental-fire-humanoid.webp",
 	"system": {
 		"description": {
-			"value": "<p>You transform into an hybrid &amp;reference[humanoid] and fire &amp;reference[elemental] form, your body made of (mostly) harmless flames that dance in the air.</p><p><span> <strong>Bonus Action</strong> </span>- Self - 10 Minutes -<span></span>@UUID[Compendium.elkan5e.elkan5e-class-features.Item.Ik6ei7V7ryr5XVoe]{3 Sorcery Points} - Magical</p><p>You choose whether your equipment falls to the ground in your space, merges into your new form, or if you continue to visibly wear it.</p><ul><li><p>You are immune to &amp;reference[fire] damage and resistant to &amp;reference[radiant] damage.</p></li><li><p>You are immune to &amp;reference[poison] damage and the &amp;reference[poisoned] condition.</p></li><li><p>You are immune to the &amp;reference[grappled], &amp;reference[petrified], and &amp;reference[restrained] conditions.</p></li><li><p>You shed bright light in a 30 ft. radius and dim light in a 60 ft. radius.</p></li><li><p>You can squeeze through gaps as small as 1 inch wide.</p></li><li><p>You no longer have normal bodily functions. You don't breathe, can't bleed, be magically aged, or otherwise do anything that relies on your normal biological functions.</p></li></ul><p>You can revert to your normal form using a bonus action. You also revert to your normal form if you are reduced to 0 hit points.</p>",
+			"value": "<p>You transform into an hybrid &amp;reference[humanoid] and fire &amp;reference[elemental] form, your body made of (mostly) harmless flames that dance in the air.</p><p><span><strong>Bonus Action</strong> </span>- Self - 10 Minutes -@UUID[Compendium.elkan5e.elkan5e-class-features.Item.Ik6ei7V7ryr5XVoe]{3 Sorcery Points} - Magical</p><p>You choose whether your equipment falls to the ground in your space, merges into your new form, or if you continue to visibly wear it.</p><ul><li><p>You are immune to &amp;reference[fire] damage and resistant to &amp;reference[radiant] damage.</p></li><li><p>You are immune to &amp;reference[poison] damage and the &amp;reference[poisoned apply=false] condition.</p></li><li><p>You are immune to the &amp;reference[grappled], &amp;reference[petrified], and &amp;reference[restrained apply=false] conditions.</p></li><li><p>You shed bright light in a 30 ft. radius and dim light in a 60 ft. radius.</p></li><li><p>You can squeeze through gaps as small as 1 inch wide.</p></li><li><p>You no longer have normal bodily functions. You don't breathe, can't bleed, be magically aged, or otherwise do anything that relies on your normal biological functions.</p></li></ul><p>You can revert to your normal form using a bonus action. You also revert to your normal form if you are reduced to 0 hit points.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -121,76 +121,74 @@
 	"effects": [
 		{
 			"name": "Fire Element Form",
-			"changes": [
-				{
-					"key": "ATL.light.bright",
-					"mode": 4,
-					"value": "30",
-					"priority": 20
-				},
-				{
-					"key": "ATL.light.dim",
-					"mode": 4,
-					"value": "60",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.di.value",
-					"mode": 2,
-					"value": "fire",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 2,
-					"value": "radiant",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.di.value",
-					"mode": 2,
-					"value": "poison",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.ci.value",
-					"mode": 2,
-					"value": "poisoned",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.ci.value",
-					"mode": 2,
-					"value": "grappled",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.ci.value",
-					"mode": 2,
-					"value": "petrified",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.ci.value",
-					"mode": 2,
-					"value": "restrained",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"img": "icons/magic/fire/elemental-fire-humanoid.webp",
 			"_id": "0a2ALMi4AomzfZoG",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "ATL.light.bright",
+						"value": 30,
+						"priority": 20,
+						"type": "upgrade"
+					},
+					{
+						"key": "ATL.light.dim",
+						"value": 60,
+						"priority": 20,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.traits.di.value",
+						"value": "fire",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "radiant",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.di.value",
+						"value": "poison",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.ci.value",
+						"value": "poisoned",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.ci.value",
+						"value": "grappled",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.ci.value",
+						"value": "petrified",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.ci.value",
+						"value": "restrained",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -227,6 +225,9 @@
 					"wallsBlock": "system"
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!Nh8sq9EtMjMjux4F.0a2ALMi4AomzfZoG"
 		}
 	],

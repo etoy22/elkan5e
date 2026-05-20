@@ -1,5 +1,4 @@
 const { getProperty, setProperty } = foundry.utils;
-
 // Process the form selections from the Elkan update dialog
 /**
  * Handles process Elkan Update Form for module settings.
@@ -7,7 +6,148 @@ const { getProperty, setProperty } = foundry.utils;
  * @param {*} updates - Updates.
  * @returns {Promise<void>} Promise resolution result.
  */
+
+/**
+ * Handles get Actors To Process for module settings.
+ *
+ * @param {*} updateMode - Update Mode.
+ * @returns {Promise<unknown>} Promise resolution result.
+ */
+async function removeDuplicateItems({ actor = false, npc = false }) {
+	if (!actor && !npc) return;
+
+	const actors = await getActorsToProcess({
+		players: actor ? "update-All" : "none",
+		npcs: npc ? "update-All" : "none",
+	});
+
+	if (actors.length === 0) return;
+
+	const progress = new MigrationProgress("Duplicate Items");
+	progress.init(actors.length);
+
+	const totalChars = actors.filter((a) => a.type === "character").length;
+	const totalNPCs = actors.filter((a) => a.type === "npc").length;
+
+	let currentChar = 0;
+	let currentNPC = 0;
+
+	const report = {
+		actorsProcessed: 0,
+		duplicatesRemoved: 0,
+		actorsChanged: [],
+	};
+
+	for (const actorDoc of actors) {
+		report.actorsProcessed++;
+
+		// Only process spells and features
+		const relevantItems = actorDoc.items.filter((i) => ["spell", "feat"].includes(i.type));
+
+		// Group by identifier first, fallback to name
+		const groupedItems = new Map();
+
+		for (const item of relevantItems) {
+			const identifier = item.system?.identifier?.trim();
+
+			const key =
+				identifier && identifier.length > 0
+					? `id:${identifier.toLowerCase()}`
+					: `name:${item.name.trim().toLowerCase()}`;
+
+			if (!groupedItems.has(key)) groupedItems.set(key, []);
+			groupedItems.get(key).push(item);
+		}
+
+		const itemsToDelete = [];
+		const removedDetails = [];
+
+		for (const [key, items] of groupedItems.entries()) {
+			if (items.length <= 1) continue;
+
+			const keptItems = [];
+
+			for (const item of items) {
+				const itemObj = item.toObject();
+
+				const existingMatch = keptItems.find((kept) => {
+					const keptObj = kept.toObject();
+					return deepEqualIgnoringMeta(keptObj, itemObj);
+				});
+
+				if (existingMatch) {
+					itemsToDelete.push(item.id);
+
+					removedDetails.push({
+						name: item.name,
+						id: item.id,
+						matchedWith: existingMatch.id,
+						key,
+					});
+				} else {
+					keptItems.push(item);
+				}
+			}
+		}
+
+		if (itemsToDelete.length > 0) {
+			await actorDoc.deleteEmbeddedDocuments("Item", itemsToDelete);
+
+			report.duplicatesRemoved += itemsToDelete.length;
+
+			report.actorsChanged.push({
+				name: actorDoc.name,
+				type: actorDoc.type,
+				removed: removedDetails,
+			});
+		}
+
+		// Progress
+		if (actorDoc.type === "character") currentChar++;
+		else currentNPC++;
+
+		progress.tick(actorDoc.type, currentChar, totalChars, currentNPC, totalNPCs);
+	}
+
+	progress.done();
+
+	// ---- Console Reporting ----
+	console.groupCollapsed("[Elkan 5e] Duplicate Item Removal Summary");
+
+	console.log(`Actors processed: ${report.actorsProcessed}`);
+	console.log(`Duplicate items removed: ${report.duplicatesRemoved}`);
+
+	if (report.actorsChanged.length > 0) {
+		console.log(`Actors with duplicates removed (${report.actorsChanged.length})`);
+
+		for (const actorReport of report.actorsChanged) {
+			console.log(
+				`${actorReport.name} [${actorReport.type}] - Removed ${actorReport.removed.length}`,
+			);
+
+			for (const removed of actorReport.removed) {
+				console.log(
+					`${removed.name} | duplicate id: ${removed.id} | matched with: ${removed.matchedWith} | key: ${removed.key}`,
+				);
+			}
+		}
+
+		console.groupEnd();
+	} else {
+		console.log("No duplicate items found.");
+	}
+
+	console.groupEnd();
+
+	ui.notifications.info(
+		`Duplicate removal finished — Removed ${report.duplicatesRemoved} duplicate items.`,
+	);
+}
+
 export async function processElkanUpdateForm(updates) {
+	ui.notifications.info("Elkan 5e update process started. See console for details.");
+	await removeDuplicateItems({ actor: updates.actorDuplicate, npc: updates.npcDuplicate });
+
 	migrateActorItems({
 		players: updates.actorItems,
 		npcs: updates.npcItems,
@@ -22,8 +162,6 @@ export async function processElkanUpdateForm(updates) {
 		players: updates.actorFeatures,
 		npcs: updates.npcFeatures,
 	});
-
-	ui.notifications.info("Elkan 5e update process started. See console for details.");
 }
 
 class MigrationProgress {
@@ -102,20 +240,6 @@ class MigrationProgress {
 }
 
 /**
- * Handles get Actors To Process for module settings.
- *
- * @param {*} updateMode - Update Mode.
- * @returns {Promise<unknown>} Promise resolution result.
- */
-export async function getActorsToProcess(updateMode) {
-	return game.actors.filter((actor) => {
-		if (actor.type === "character" && updateMode.players !== "none") return true;
-		if (actor.type === "npc" && updateMode.npcs !== "none") return true;
-		return false;
-	});
-}
-
-/**
  * Handles filter Docs By Mode for module settings.
  *
  * @param {*} docs - Docs.
@@ -161,6 +285,9 @@ export async function savePropertiesForTransfer(items, mode, propKeys) {
 			sourceBook: item.system.source?.book ?? null,
 			img: item.img,
 			identifier: item.system?.identifier ?? id,
+			// Preserve dnd5e relationship flags (e.g. advancementOrigin) so the
+			// advancement system keeps tracking this item after it is recreated.
+			dnd5eFlags: foundry.utils.deepClone(item.flags?.dnd5e ?? {}),
 		};
 		for (const key of propKeys) {
 			if (key === "name") {
@@ -187,6 +314,18 @@ export async function restorePropertiesToData(newData, savedProps, mode, preserv
 
 	newData.img = savedProps.img ?? newData.img;
 	newData.system.identifier = savedProps.identifier ?? newData.system?.identifier;
+
+	// Always re-attach dnd5e relationship flags from the old item (e.g. advancementOrigin).
+	// These are actor-specific and are not present on the compendium copy.
+	if (savedProps.dnd5eFlags && Object.keys(savedProps.dnd5eFlags).length > 0) {
+		if (!newData.flags) newData.flags = {};
+		newData.flags.dnd5e = foundry.utils.mergeObject(
+			newData.flags.dnd5e ?? {},
+			savedProps.dnd5eFlags,
+			{ inplace: false },
+		);
+	}
+
 	const originalSource = savedProps.sourceBook ?? null;
 
 	if (
@@ -211,8 +350,6 @@ export async function restorePropertiesToData(newData, savedProps, mode, preserv
 		}
 	}
 }
-
-// ---------- helpers used by migrateActorByType ----------
 
 /**
  * Handles get Key By Value for module settings.
@@ -305,6 +442,14 @@ function itemsAreFullyIdentical(oldItem, newItem) {
 }
 
 // ---------- main migration ----------
+
+export async function getActorsToProcess(updateMode) {
+	return game.actors.filter((actor) => {
+		if (actor.type === "character" && updateMode.players !== "none") return true;
+		if (actor.type === "npc" && updateMode.npcs !== "none") return true;
+		return false;
+	});
+}
 
 /**
  * Handles migrate Actor By Type for module settings.
@@ -678,12 +823,11 @@ export async function migrateActorItems(
 	updateMode = { players: "update-All", npcs: "update-Elkan" },
 ) {
 	if (updateMode.players === "none" && updateMode.npcs === "none") return;
-	const compMagic = game.packs.get("elkan5e.elkan5e-magic-items");
 	const compEquip = game.packs.get("elkan5e.elkan5e-equipment");
-	if (!compMagic || !compEquip) return;
+	if (!compEquip) return;
 
 	await migrateActorByType({
-		compendiums: [compMagic, compEquip],
+		compendiums: [compEquip],
 		types: ["consumable", "equipment", "loot", "tool", "weapon"],
 		updateMode,
 		preserveProperties: [

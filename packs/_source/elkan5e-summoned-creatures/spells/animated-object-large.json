@@ -514,8 +514,8 @@
 			"hp": {
 				"value": 60,
 				"max": 60,
-				"temp": 0,
-				"tempmax": 0,
+				"temp": null,
+				"tempmax": null,
 				"formula": ""
 			},
 			"death": {
@@ -637,12 +637,9 @@
 			"src": "icons/weapons/staves/broom-yellow-purple.webp",
 			"anchorX": 0.5,
 			"anchorY": 0.5,
-			"offsetX": 0,
-			"offsetY": 0,
 			"fit": "contain",
 			"scaleX": 1,
 			"scaleY": 1,
-			"rotation": 0,
 			"tint": "#ffffff",
 			"alphaThreshold": 0.75
 		},
@@ -693,18 +690,20 @@
 			"saturation": -1,
 			"contrast": 0
 		},
-		"detectionModes": [
-			{
-				"id": "basicSight",
+		"detectionModes": {
+			"basicSight": {
 				"range": 0,
 				"enabled": true
 			},
-			{
-				"id": "lightPerception",
-				"range": 0,
+			"lightPerception": {
+				"range": 60,
+				"enabled": true
+			},
+			"blindsight": {
+				"range": 60,
 				"enabled": true
 			}
-		],
+		},
 		"occludable": {
 			"radius": 0
 		},
@@ -732,7 +731,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 2
 	},
 	"items": [
 		{

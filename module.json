@@ -1,11 +1,11 @@
 {
   "id": "elkan5e",
   "title": "Elkan 5e Automated Content",
-  "description": "A set of compendiums for adding Elkan 5e content to your Foundry VTT games using the DND5E game system. Contains classes, subclasses, a new ancestry and background system, items, and more.",
-  "version": "v1.13.8",
+  "description": "<p>A set of compendiums for adding Elkan 5e content to your Foundry VTT games using the DND5E game system. Contains classes, subclasses, a new ancestry and background system, items, and more.</p>",
+  "version": "v1.14.0",
   "compatibility": {
     "minimum": "13",
-    "verified": "13.350"
+    "verified": "14.350"
   },
   "authors": [
     {
@@ -23,15 +23,16 @@
   ],
   "packs": [
     {
-      "name": "elkan5e-background",
-      "label": "Backgrounds",
-      "path": "packs/elkan5e-backgrounds",
+      "name": "elkan5e-ancestry-background",
+      "label": "Ancestry/Background",
+      "path": "packs/elkan5e-ancestry-background",
       "type": "Item",
       "system": "dnd5e",
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
-      }
+      },
+      "flags": {}
     },
     {
       "name": "elkan5e-class",
@@ -42,7 +43,8 @@
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
-      }
+      },
+      "flags": {}
     },
     {
       "name": "elkan5e-class-features",
@@ -53,7 +55,8 @@
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
-      }
+      },
+      "flags": {}
     },
     {
       "name": "elkan5e-creatures",
@@ -101,7 +104,8 @@
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
-      }
+      },
+      "flags": {}
     },
     {
       "name": "elkan5e-macros",
@@ -112,30 +116,8 @@
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
-      }
-    },
-    {
-      "name": "elkan5e-magic-items",
-      "label": "Magic Items",
-      "path": "packs/elkan5e-magic-items",
-      "type": "Item",
-      "system": "dnd5e",
-      "ownership": {
-        "PLAYER": "LIMITED",
-        "ASSISTANT": "OWNER"
       },
-      "flags": {
-        "dnd5e": {
-          "types": [
-            "weapon",
-            "equipment",
-            "consumable",
-            "tool",
-            "loot",
-            "container"
-          ]
-        }
-      }
+      "flags": {}
     },
     {
       "name": "elkan5e-equipment",
@@ -162,25 +144,27 @@
     },
     {
       "name": "elkan5e-roll-tables",
-      "label": "Elkan 5e Roll Tables",
+      "label": "Roll Tables",
       "path": "packs/elkan5e-roll-tables",
       "type": "RollTable",
       "system": "dnd5e",
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
-      }
+      },
+      "flags": {}
     },
     {
       "name": "elkan5e-rules",
-      "label": "Elkan 5e Rules",
+      "label": "Rules",
       "path": "packs/elkan5e-rules",
       "type": "JournalEntry",
       "system": "dnd5e",
       "ownership": {
         "PLAYER": "OBSERVER",
         "ASSISTANT": "OWNER"
-      }
+      },
+      "flags": {}
     },
     {
       "name": "elkan5e-spells",
@@ -196,24 +180,6 @@
         "dnd5e": {
           "types": [
             "spell"
-          ]
-        }
-      }
-    },
-    {
-      "name": "elkan5e-subclass",
-      "label": "Subclasses",
-      "path": "packs/elkan5e-subclass",
-      "type": "Item",
-      "system": "dnd5e",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      },
-      "flags": {
-        "dnd5e": {
-          "types": [
-            "subclass"
           ]
         }
       }
@@ -237,25 +203,6 @@
       }
     },
     {
-      "name": "elkan5e-ancestries",
-      "label": "Ancestries",
-      "path": "packs/elkan5e-ancestries",
-      "type": "Item",
-      "system": "dnd5e",
-      "ownership": {
-        "PLAYER": "OBSERVER",
-        "ASSISTANT": "OWNER"
-      },
-      "flags": {
-        "dnd5e": {
-          "types": [
-            "race",
-            "feat"
-          ]
-        }
-      }
-    },
-    {
       "name": "elkan5e-summoned-creatures",
       "label": "Summoned Creatures",
       "path": "packs/elkan5e-summoned-creatures",
@@ -272,6 +219,18 @@
           ]
         }
       }
+    },
+    {
+      "name": "elkan5e-effects",
+      "label": "Active Effects",
+      "path": "packs/elkan5e-effects",
+      "type": "ActiveEffect",
+      "ownership": {
+        "PLAYER": "OBSERVER",
+        "ASSISTANT": "OWNER"
+      },
+      "system": "dnd5e",
+      "flags": {}
     }
   ],
   "packFolders": [
@@ -288,12 +247,10 @@
           "sorting": "a",
           "color": "#512323",
           "packs": [
-            "elkan5e-ancestries",
-            "elkan5e-background",
+            "elkan5e-ancestry-background",
             "elkan5e-class-features",
             "elkan5e-class",
-            "elkan5e-feats",
-            "elkan5e-subclass"
+            "elkan5e-feats"
           ],
           "folders": []
         },
@@ -314,7 +271,6 @@
           "color": "#512323",
           "packs": [
             "elkan5e-equipment",
-            "elkan5e-magic-items",
             "elkan5e-spells"
           ],
           "folders": []
@@ -326,7 +282,8 @@
           "packs": [
             "elkan5e-macros",
             "elkan5e-lore",
-            "elkan5e-roll-tables"
+            "elkan5e-roll-tables",
+            "elkan5e-effects"
           ],
           "folders": []
         }
@@ -335,11 +292,6 @@
   ],
   "relationships": {
     "recommends": [
-      {
-        "id": "ActiveAuras",
-        "type": "module",
-        "compatibility": {}
-      },
       {
         "id": "ATL",
         "type": "module",
@@ -410,6 +362,6 @@
   "changelog": "https://github.com/etoy22/elkan5e/blob/main/CHANGELOG.md",
   "url": "https://github.com/etoy22/elkan5e",
   "bugs": "https://github.com/etoy22/elkan5e/issues",
-  "manifest": "https://github.com/etoy22/elkan5e/releases/download/v1.13.8/module.json",
-  "download": "https://github.com/etoy22/elkan5e/releases/download/v1.13.8/module.zip" 
+  "manifest": "https://github.com/etoy22/elkan5e/releases/download/v1.14.0/module.json",
+  "download": "https://github.com/etoy22/elkan5e/releases/download/v1.14.0/module.zip"
 }

@@ -18,7 +18,8 @@
 					"dontApply": false,
 					"showIcon": false,
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -40,23 +41,12 @@
 					"statuses": []
 				}
 			},
-			"changes": [
-				{
-					"key": "flags.midi-qol.neverTarget",
-					"mode": 0,
-					"value": "true",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"origin": "Actor.DMTSWfQs8whM5FtE.Item.cPJGG9KDdaYy3RTU",
 			"tint": "#ffffff",
@@ -66,7 +56,19 @@
 			"statuses": [],
 			"img": "icons/magic/air/wind-vortex-swirl-red.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.neverTarget",
+						"value": true,
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 2,
+			"folder": null,
 			"_key": "!items.effects!ynE0kLi6F2AdqnR7.iufZU12yslQQSskX"
 		}
 	],
@@ -293,7 +295,12 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "iufZU12yslQQSskX",
+						"level": {}
+					}
+				],
 				"range": {
 					"override": false
 				},
@@ -334,7 +341,7 @@
 				},
 				"useConditionText": "",
 				"useConditionReason": "",
-				"effectConditionText": "",
+				"effectConditionText": "target.attributes.hp.value === 0",
 				"macroData": {
 					"name": "",
 					"command": ""
@@ -372,7 +379,13 @@
 				},
 				"name": "",
 				"img": "",
-				"appliedEffects": []
+				"appliedEffects": [],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				}
 			}
 		},
 		"identifier": "banishment"

@@ -6,7 +6,7 @@
 	"img": "icons/magic/perception/eye-ringed-glow-angry-small-teal.webp",
 	"system": {
 		"description": {
-			"value": "<p>You gain darkvision up to 60 ft., or your darkvision increases in distance by 60 ft. You can also see through magical darkness, such as with the <em> <a draggable=\"true\"><em><i></i>Darkness</em></a></em> spell, within the range of your darkvision.</p>",
+			"value": "<p>You gain &amp;reference[darkvision] up to 60 ft., or your darkvision increases in distance by 60 ft. You can also see through magical darkness, such as with the <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.7dewwmP7KmxvlfKf]{Darkness}</em> spell, within the range of your darkvision.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -38,25 +38,14 @@
 	"effects": [
 		{
 			"name": "Eyes of Shade",
-			"changes": [
-				{
-					"key": "system.attributes.senses.darkvision",
-					"mode": 4,
-					"value": "60",
-					"priority": 20
-				}
-			],
 			"transfer": true,
 			"_id": "UXalcNOsFBvpmtgS",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.PfakcO5lEiPbsaun",
@@ -93,7 +82,19 @@
 			"tint": "#ffffff",
 			"img": "icons/magic/perception/eye-ringed-glow-angry-small-teal.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.senses.ranges.darkvision",
+						"value": 60,
+						"priority": 20,
+						"type": "upgrade"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!PfakcO5lEiPbsaun.UXalcNOsFBvpmtgS"
 		}
 	],

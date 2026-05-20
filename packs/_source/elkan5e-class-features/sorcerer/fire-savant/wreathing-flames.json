@@ -111,28 +111,27 @@
 	"effects": [
 		{
 			"name": "Wreathing Flames",
-			"changes": [
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 2,
-					"value": "turn=end,\ndamageType=fire,\nallowIncapacitated=true,\ndamageRoll=1d8\nlabel=Wreathing Flames",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"img": "icons/magic/fire/flame-burning-tree-face.webp",
 			"_id": "fYI0LnpZNuarM2F2",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"type": "add",
+						"value": "turn=end,damageType=fire,allowIncapacitated=true,damageRoll=1d8label=Wreathing Flames",
+						"phase": "initial",
+						"priority": 20
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "targetEnd",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -148,7 +147,10 @@
 					"showIcon": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
+					"specialDuration": [],
+					"enableCondition": "",
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -167,6 +169,9 @@
 					"wallsBlock": "system"
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!VbLYqCgcsK2lp4ZH.fYI0LnpZNuarM2F2"
 		}
 	],

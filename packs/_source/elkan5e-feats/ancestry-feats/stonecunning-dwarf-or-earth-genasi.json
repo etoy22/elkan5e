@@ -11,7 +11,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><em>Prerequisite: @UUID[Compendium.elkan5e.elkan5e-ancestries.Item.b9xYzvFOcKfQ8nuA]{Dwarf} or @UUID[Compendium.elkan5e.elkan5e-ancestries.Item.2dpWmAkT2Simv1Lh]{Earth Genasi}</em></p><ul><li><p>You gain &amp;reference[tremorsense] with a range of 60 ft.</p></li></ul>",
+			"value": "<p><em>Prerequisite: @UUID[Compendium.elkan5e.elkan5e-ancestry-background.Item.b9xYzvFOcKfQ8nuA]{Dwarf} or @UUID[Compendium.elkan5e.elkan5e-ancestry-background.Item.2dpWmAkT2Simv1Lh]{Earth Genasi}</em></p><ul><li><p>You gain &amp;reference[tremorsense] with a range of 60 ft.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "stonecunning",
@@ -69,30 +69,28 @@
 			"origin": "Item.miKhM1LG0cKpbsLX",
 			"_id": "x1jAjRJ0cgwkbGHY",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.attributes.senses.tremorsense",
-					"mode": 2,
-					"value": "60",
-					"priority": 20
-				},
-				{
-					"key": "ATL.detectionModes.feelTremor.range",
-					"mode": 2,
-					"value": "60",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.senses.tremorsense",
+						"value": 60,
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "ATL.detectionModes.feelTremor.range",
+						"value": 60,
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -126,6 +124,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!z2ObcYCCX8aPJBnJ.x1jAjRJ0cgwkbGHY"
 		}
 	],

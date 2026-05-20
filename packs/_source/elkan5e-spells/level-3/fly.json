@@ -29,23 +29,12 @@
 					"onlyOnce": false
 				}
 			},
-			"changes": [
-				{
-					"key": "system.attributes.movement.fly",
-					"value": "60",
-					"mode": 4,
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"tint": "#ffffff",
 			"transfer": false,
@@ -55,7 +44,19 @@
 			"statuses": [],
 			"img": "icons/magic/holy/angel-wings-gray.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.fly",
+						"value": 60,
+						"priority": 20,
+						"type": "upgrade"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!tsIwqzrHhbBDkkx5.VVu9uaQR0UaAvbBr"
 		}
 	],
@@ -136,7 +137,7 @@
 		"target": {
 			"affects": {
 				"type": "creature",
-				"count": "1",
+				"count": "@item.level - 2",
 				"choice": false,
 				"special": ""
 			},

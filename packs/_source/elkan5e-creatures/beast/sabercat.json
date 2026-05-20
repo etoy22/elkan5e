@@ -571,9 +571,6 @@
 			"tint": "#ffffff",
 			"scaleX": 1,
 			"scaleY": 1,
-			"offsetX": 0,
-			"offsetY": 0,
-			"rotation": 0,
 			"anchorX": 0.5,
 			"anchorY": 0.5,
 			"fit": "contain",
@@ -590,7 +587,7 @@
 			"saturation": 0,
 			"contrast": 0
 		},
-		"detectionModes": [],
+		"detectionModes": {},
 		"appendNumber": false,
 		"prependAdjective": false,
 		"occludable": {
@@ -614,7 +611,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 2
 	},
 	"items": [
 		{
@@ -767,48 +765,13 @@
 				{
 					"origin": "Actor.kjRFUdNi31RYsILK.Item.6f3yWYLcONtKe72e",
 					"duration": {
-						"startTime": null,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"disabled": false,
 					"_id": "8XWWKwZEcsl5pir3",
-					"changes": [
-						{
-							"key": "flags.midi-qol.grants.advantage.attack.mwak",
-							"mode": 5,
-							"value": "1",
-							"priority": 50
-						},
-						{
-							"key": "flags.midi-qol.grants.advantage.attack.msak",
-							"mode": 5,
-							"value": "1",
-							"priority": 50
-						},
-						{
-							"key": "flags.midi-qol.grants.disadvantage.attack.rwak",
-							"mode": 5,
-							"value": "1",
-							"priority": 50
-						},
-						{
-							"key": "flags.midi-qol.grants.disadvantage.attack.rsak",
-							"mode": 5,
-							"value": "1",
-							"priority": 50
-						},
-						{
-							"key": "flags.midi-qol.disadvantage.attack.all",
-							"mode": 5,
-							"value": "1",
-							"priority": 50
-						}
-					],
 					"tint": "#ffffff",
 					"transfer": false,
 					"flags": {
@@ -842,7 +805,43 @@
 					"statuses": [],
 					"img": "modules/combat-utility-belt/icons/prone.svg",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": [
+							{
+								"key": "flags.midi-qol.grants.advantage.attack.mwak",
+								"value": 1,
+								"priority": 50,
+								"type": "override"
+							},
+							{
+								"key": "flags.midi-qol.grants.advantage.attack.msak",
+								"value": 1,
+								"priority": 50,
+								"type": "override"
+							},
+							{
+								"key": "flags.midi-qol.grants.disadvantage.attack.rwak",
+								"value": 1,
+								"priority": 50,
+								"type": "override"
+							},
+							{
+								"key": "flags.midi-qol.grants.disadvantage.attack.rsak",
+								"value": 1,
+								"priority": 50,
+								"type": "override"
+							},
+							{
+								"key": "flags.midi-qol.disadvantage.attack.all",
+								"value": 1,
+								"priority": 50,
+								"type": "override"
+							}
+						]
+					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!srXQOghxqSE4KTBl.6f3yWYLcONtKe72e.8XWWKwZEcsl5pir3"
 				}
 			],

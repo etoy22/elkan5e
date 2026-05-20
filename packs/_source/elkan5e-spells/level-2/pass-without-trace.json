@@ -37,23 +37,12 @@
 					"wallsBlock": "system"
 				}
 			},
-			"changes": [
-				{
-					"key": "flags.midi-qol.advantage.skill.ste",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"tint": "#ffffff",
 			"transfer": false,
@@ -63,7 +52,19 @@
 			"statuses": [],
 			"img": "icons/magic/nature/plant-bamboo-green.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.advantage.skill.ste",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!9euw3Uj4JcV3GnaP.WMMaGX3qaYqlEMlZ"
 		}
 	],
@@ -129,7 +130,7 @@
 		"target": {
 			"affects": {
 				"type": "creature",
-				"count": "6",
+				"count": "(@item.level * 2)  +2",
 				"choice": false,
 				"special": ""
 			},

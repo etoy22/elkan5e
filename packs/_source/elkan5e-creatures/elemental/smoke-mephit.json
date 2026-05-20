@@ -643,12 +643,9 @@
 			"src": "systems/dnd5e/tokens/elemental/SteamMephit.webp",
 			"anchorX": 0.5,
 			"anchorY": 0.5,
-			"offsetX": 0,
-			"offsetY": 0,
 			"fit": "contain",
 			"scaleX": 2,
 			"scaleY": 2,
-			"rotation": 0,
 			"tint": "#ffffff",
 			"alphaThreshold": 0.75
 		},
@@ -699,7 +696,7 @@
 			"saturation": 0,
 			"contrast": 0
 		},
-		"detectionModes": [],
+		"detectionModes": {},
 		"occludable": {
 			"radius": 0
 		},
@@ -722,7 +719,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 1
 	},
 	"items": [
 		{
@@ -966,17 +964,15 @@
 					"origin": "Compendium.elkan5e.elkan5e-creatures.Actor.LM3XXXtJ2LxuaW8D.Item.mmDeathBurst0000",
 					"_id": "pkTPnlnh26FJzsyk",
 					"type": "base",
-					"system": {},
-					"changes": [],
+					"system": {
+						"changes": []
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"combat": null,
-						"seconds": 7,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": 7,
+						"units": "seconds",
+						"expiry": "turnStart",
+						"expired": false
 					},
 					"description": "",
 					"tint": "#ffffff",
@@ -1016,6 +1012,9 @@
 							"statuses": []
 						}
 					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!LM3XXXtJ2LxuaW8D.mmDeathBurst0000.pkTPnlnh26FJzsyk"
 				}
 			],

@@ -5,29 +5,12 @@
 	"effects": [
 		{
 			"_id": "FmZPYy70rk7Joc2z",
-			"changes": [
-				{
-					"key": "flags.midi-qol.grants.disadvantage.attack.all",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "macro.tokenMagic",
-					"mode": 0,
-					"value": "bevel",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"transfer": false,
 			"flags": {
@@ -41,7 +24,11 @@
 					"selfTargetAlways": false,
 					"disableIncapacitated": false,
 					"dontApply": false,
-					"showIcon": false
+					"showIcon": false,
+					"enableCondition": "",
+					"disableCondition": "",
+					"expiryMode": "default",
+					"combatActorOverride": "source"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -67,7 +54,27 @@
 			"statuses": [],
 			"img": "icons/creatures/magical/humanoid-silhoette-alien-gray.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.grants.disadvantage.attack.all",
+						"type": "override",
+						"value": "!(target.actor.system.attributes.senses.ranges.blindsight || target.actor.system.attributes.senses.ranges.truesight)",
+						"priority": 20,
+						"phase": "initial"
+					},
+					{
+						"key": "macro.tokenMagic",
+						"type": "custom",
+						"value": "invalid",
+						"priority": 20,
+						"phase": "initial"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!X7Sz7jtAMAodAfty.FmZPYy70rk7Joc2z"
 		}
 	],
@@ -108,7 +115,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You make a strange warbling sound with your mouth as your body becomes blurry, shifting, and wavering, even to yourself.</em></p><p><strong>Buff</strong></p><ul><li><p>Creatures have disadvantage on attack rolls against you. An attacker is immune to this effect if it has &amp;reference[blindsight], &amp;reference[truesight], or can otherwise see through illusions.</p></li></ul>",
+			"value": "<p><em>You make a strange warbling sound with your mouth as your body becomes blurry, shifting, and wavering, even to yourself.</em></p><p><strong>Buff</strong></p><ul><li><p>Creatures have &amp;reference[disadvantage] on &amp;reference[attack rolls]{attack rolls} against you. An attacker is immune to this effect if it has &amp;reference[blindsight], &amp;reference[truesight], or can otherwise see through illusions.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -164,8 +171,7 @@
 		},
 		"properties": [
 			"vocal",
-			"concentration",
-			"mgc"
+			"concentration"
 		],
 		"activities": {
 			"dnd5eactivity000": {

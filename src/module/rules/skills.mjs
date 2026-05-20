@@ -5,6 +5,55 @@
 export function skills() {
 	engineering();
 	setupSkillReferences();
+	registerSkillCriticalRule();
+}
+
+/**
+ * Registers the critical skill check adjustment rule.
+ * Natural 1 → −5 to the final total. Natural 20 → +5 to the final total.
+ * Modifies the roll in-place before the chat message is created so the
+ * adjustment shows in the formula and total on the original roll card.
+ *
+ */
+export function registerSkillCriticalRule() {
+	Hooks.on("dnd5e.rollSkillV2", (rolls, data) => {
+		try {
+			const roll = rolls?.[0];
+			if (!roll) return;
+
+			const d20 = roll.dice?.find((d) => d.faces === 20);
+			if (!d20) return;
+
+			const natural = d20.results?.[0]?.result;
+			if (!natural) return;
+			if (!game.settings.get("elkan5e", "skillCriticalAdjustment")) return;
+
+			let adjustment = 0;
+			if (natural === 1) adjustment = -5;
+			else if (natural === 20) adjustment = 5;
+			if (adjustment === 0) return;
+
+			const flavor = adjustment > 0 ? "Natural 20 Bonus" : "Natural 1 Penalty";
+			const sign = adjustment > 0 ? "+" : "-";
+
+			// Append the adjustment as visible terms so it appears in the roll breakdown.
+			const operator = new foundry.dice.terms.OperatorTerm({ operator: sign });
+			const bonus = new foundry.dice.terms.NumericTerm({
+				number: Math.abs(adjustment),
+				options: { flavor },
+			});
+			operator._evaluated = true;
+			bonus._evaluated = true;
+			roll.terms.push(operator, bonus);
+
+			// Update both the cached formula string and the cached total so the card
+			// header and total both reflect the adjustment.
+			roll._formula = `${roll._formula} ${sign} ${Math.abs(adjustment)}[${flavor}]`;
+			roll._total = (roll._total ?? roll.total) + adjustment;
+		} catch (err) {
+			console.error("Elkan 5e | Skill critical adjustment error:", err);
+		}
+	});
 }
 
 /**

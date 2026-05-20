@@ -179,7 +179,7 @@
 		},
 		"advancement": [],
 		"description": {
-			"value": "<p><strong>Bonus Action</strong> - 1 Creature (90 ft.) - 1 Round - 1/Short Rest - Magical</p><p><strong>Charisma Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes 3d10 psychic damage and is &amp;reference[dazed].</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li></ul>",
+			"value": "<p><strong>Bonus Action</strong> - 1 Creature (90 ft.) - 1 Round - 1/Short Rest - Magical</p><p><strong>Charisma Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 3d10 psychic]] damage and is &amp;reference[dazed].</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "judgement",
@@ -215,17 +215,15 @@
 			"transfer": false,
 			"_id": "qBgkrNV06myJDn1O",
 			"type": "base",
-			"system": {},
-			"changes": [],
+			"system": {
+				"changes": []
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"combat": null,
-				"seconds": 7,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -243,7 +241,9 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"durationExpression": "",
-					"specialDuration": []
+					"specialDuration": [],
+					"expiryMode": "default",
+					"macroRepeat": "none"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -263,6 +263,9 @@
 					"statuses": []
 				}
 			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!QSiA5ovOgSx7yyR2.qBgkrNV06myJDn1O"
 		}
 	],

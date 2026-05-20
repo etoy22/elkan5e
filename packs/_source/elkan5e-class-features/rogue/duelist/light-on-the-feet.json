@@ -39,31 +39,14 @@
 			"name": "Light on the Feet",
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.IXJgGYsnnqO8qi4o",
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"transfer": true,
 			"disabled": false,
 			"_id": "Vr1KhTwT4rkbqu4S",
-			"changes": [
-				{
-					"key": "system.attributes.movement.walk",
-					"mode": 2,
-					"value": "+10",
-					"priority": 5
-				},
-				{
-					"key": "system.attributes.ac.bonus",
-					"mode": 2,
-					"value": "+1",
-					"priority": 5
-				}
-			],
 			"description": "",
 			"statuses": [],
 			"flags": {
@@ -102,7 +85,25 @@
 			"tint": "#ffffff",
 			"img": "icons/skills/movement/feet-winged-sandals-tan.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.walk",
+						"value": "+10",
+						"priority": 5,
+						"type": "add"
+					},
+					{
+						"key": "system.attributes.ac.bonus",
+						"value": "+1",
+						"priority": 5,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!IXJgGYsnnqO8qi4o.Vr1KhTwT4rkbqu4S"
 		}
 	],

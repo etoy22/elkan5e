@@ -1,4 +1,48 @@
-import { drainedEffect, forEachDamagedTarget } from "../shared/effects.mjs";
+import { drainedEffect, forEachDamagedTarget } from "../shared/helpers.mjs";
+import { createEffect } from "../shared/effect-factories.mjs";
+
+/**
+ * Runs Haste lethargy automation.
+ * Call this from the Haste effect's "off" (onDelete) DAE macro.
+ * Applies Incapacitated to the caster for 1 turn when the Haste effect expires.
+ *
+ * @param {ActiveEffect} effect - The Haste effect that just ended.
+ * @returns {Promise<void>} Promise resolution result.
+ */
+export async function hasteLethargy(effect) {
+	try {
+		const actor = effect.parent;
+		if (!actor) {
+			console.warn("Haste Lethargy: could not resolve actor from effect");
+			return;
+		}
+
+		const effectData = await createEffect("incapacitated", {
+			name: "Haste Lethargy",
+			img: "icons/magic/time/clock-analog-gray.webp",
+			origin: effect.origin ?? effect.uuid,
+			disabled: false,
+			statuses: ["incapacitated"],
+			duration: {
+				rounds: 1,
+				turns: 0,
+				startRound: game.combat?.round ?? null,
+				startTurn: game.combat?.turn ?? null,
+			},
+			flags: {
+				dae: {
+					specialDuration: ["turnEnd"],
+					stackable: "noneName",
+					macroRepeat: "none",
+				},
+			},
+		});
+
+		await actor.createEmbeddedDocuments("ActiveEffect", [effectData]);
+	} catch (err) {
+		console.error("Haste Lethargy |", err);
+	}
+}
 
 /**
  * Runs life Drain spell automation.
@@ -35,17 +79,3 @@ export async function lifeDrain(workflow) {
 		{ flavor: "Life Drain Healing" },
 	);
 }
-/**
- * Applies the "Sapping Smite" drained effect to each target damaged by the smite.
- *
- * Iterates through the damage entries in the workflow, and for each valid damage
- * instance on a valid target token, applies the drainedEffect with the "Sapping Smite" effect.
- *
- * @param {object} workflow - The workflow object containing spell and damage details.
- * @param {Actor} workflow.actor - The caster of the Sapping Smite spell.
- * @param {Token} workflow.token - The token representing the caster.
- * @param {string} workflow.token.actor.uuid - The UUID of the caster actor, used as effect origin.
- * @param {Array<object>} workflow.damageList - Array of damage entries detailing damage dealt per target.
- *
- * @returns {Promise<void>} Resolves after all drained effects have been applied.
- */

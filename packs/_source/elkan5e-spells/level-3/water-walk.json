@@ -5,16 +5,12 @@
 	"effects": [
 		{
 			"_id": "qvyoi7quh5qiq67x",
-			"changes": [],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"transfer": false,
 			"flags": {
@@ -48,7 +44,12 @@
 			"statuses": [],
 			"img": "icons/equipment/feet/shoes-leather-simple-brown.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": []
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!KzFHf1TlgQnjbvII.qvyoi7quh5qiq67x"
 		}
 	],
@@ -114,7 +115,7 @@
 		"target": {
 			"affects": {
 				"type": "creatureOrObject",
-				"count": "10",
+				"count": "(@item.level - 1) * 5",
 				"choice": false,
 				"special": ""
 			},

@@ -9,35 +9,33 @@
 			"img": "icons/weapons/axes/axe-double-blue.webp",
 			"disabled": true,
 			"_id": "RpsQY5bpmOT9C4F5",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.properties",
-					"mode": 2,
-					"value": "sil",
-					"priority": 20
-				},
-				{
-					"key": "system.properties",
-					"mode": 2,
-					"value": "ada",
-					"priority": 20
-				},
-				{
-					"key": "system.properties",
-					"mode": 2,
-					"value": "coldiron",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.properties",
+						"value": "sil",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.properties",
+						"value": "ada",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.properties",
+						"value": "coldiron",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"duration": {
-				"startTime": null,
-				"combat": null,
-				"seconds": 28800,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 28800,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -51,7 +49,9 @@
 					"stackable": "noneName",
 					"showIcon": false,
 					"durationExpression": "",
-					"specialDuration": []
+					"specialDuration": [],
+					"expiryMode": "default",
+					"macroRepeat": "none"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -71,6 +71,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!d5tbkV3nSxyFB4mu.RpsQY5bpmOT9C4F5"
 		}
 	],
@@ -147,7 +150,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You touch a weapon, adjusting its composition to be made of a complicated and normally unstable alloy of different metals.</em></p><p><strong>Enchant Item</strong></p><ul><li><p>The chosen weapon now counts as adamantine, cold iron, and silver.</p></li></ul>",
+			"value": "<p><em>You touch a weapon, adjusting its composition to be made of a complicated and normally unstable alloy of different metals.</em></p><p><strong>Enchant Item</strong></p><ul><li><p>The chosen weapon now counts as &amp;reference[adamantine], &amp;reference[cold iron], and &amp;reference[silver].</p></li></ul>",
 			"chat": ""
 		},
 		"source": {

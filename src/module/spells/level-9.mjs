@@ -1,4 +1,4 @@
-import { drainedEffect, forEachDamagedTarget } from "../shared/effects.mjs";
+import { drainedEffect, forEachDamagedTarget } from "../shared/helpers.mjs";
 
 /**
  * Runs wrath Of The Reaper spell automation.
@@ -39,10 +39,3 @@ export async function wrathOfTheReaper(workflow) {
 		}
 	});
 }
-
-/**
- * Automation for the Enlarge spell: increases the size of each failed target by one step.
- *
- * @param {object} workflow - Workflow containing `_failedSaves` from the cast.
- * @returns {Promise<void>}
- */

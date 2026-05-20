@@ -4,25 +4,14 @@
 	"img": "icons/magic/life/heart-glowing-red.webp",
 	"effects": [
 		{
-			"changes": [
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 2,
-					"value": "turn=start,\napplyCondition=@attributes.hp.value > 0 && @attributes.hp.value <= @attributes.hp.max/2,\ndamageRoll=5+@abilities.con.mod,\ndamageType=healing",
-					"priority": 20
-				}
-			],
 			"transfer": true,
 			"_id": "4VqImnsFQHf7wKmj",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.SjY0CQtBO51uq1ll",
 			"tint": "#ffffff",
@@ -58,9 +47,21 @@
 			"name": "Survivor",
 			"img": "icons/magic/life/heart-glowing-red.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=start,\napplyCondition=@attributes.hp.value > 0 && @attributes.hp.value <= @attributes.hp.max/2,\ndamageRoll=5+@abilities.con.mod,\ndamageType=healing",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"description": "",
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!SjY0CQtBO51uq1ll.4VqImnsFQHf7wKmj"
 		}
 	],

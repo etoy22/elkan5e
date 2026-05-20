@@ -130,31 +130,14 @@
 	},
 	"effects": [
 		{
-			"changes": [
-				{
-					"key": "flags.midi-qol.advantage.attack.all",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.advantage.ability.save.all",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"_id": "GEDwcauPfxGe8cBd",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 7,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 7,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"origin": null,
 			"tint": "#ffffff",
@@ -196,9 +179,27 @@
 			"name": "Rally",
 			"img": "icons/environment/people/charge.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.advantage.attack.all",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "flags.midi-qol.advantage.ability.save.all",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					}
+				]
+			},
 			"description": "",
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!z8eHITlFixyLyZPT.GEDwcauPfxGe8cBd"
 		}
 	],

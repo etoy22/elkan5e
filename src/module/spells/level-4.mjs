@@ -1,35 +1,66 @@
 /**
+ * Runs Fire Shield spell automation.
+ * Triggers when the Fire Shield holder is damaged by a melee attack.
+ * Fires activity 66Qhs5vOSnBGeqBW on the attacker.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
+ */
+export async function fireShield(workflow) {
+	try {
+		// Only retaliate against melee weapon attacks.
+		if (workflow.activity?.actionType !== "mwak") return;
+		if (workflow.hitTargets.size === 0) return;
+
+		const attackerToken = workflow.token;
+		if (!attackerToken) return;
+
+		const activity = macroItem.system.activities.get("66Qhs5vOSnBGeqBW");
+		if (!activity) {
+			console.warn("Fire Shield: activity 66Qhs5vOSnBGeqBW not found on item");
+			return;
+		}
+
+		// Temporarily target the attacker so the activity fires on them.
+		const previousTargets = Array.from(game.user.targets).map((t) => t.id);
+		game.user.updateTokenTargets([attackerToken.id]);
+
+		await activity.use({ event: workflow.event });
+
+		// Restore whatever the user had targeted before.
+		game.user.updateTokenTargets(previousTargets);
+	} catch (err) {
+		console.error("Fire Shield |", err);
+	}
+}
+
+/**
  * Runs vampiric Smite spell automation.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
  * @returns {Promise<void>} Promise resolution result.
  */
 export async function vampiricSmite(workflow) {
-	const { damage, damageMultiplier } =
-		workflow.damageItem.damageDetail[0].find((d) => d.type === "necrotic") || {};
-	if (damage && workflow.hitTargets.size === 1) {
-		const dmgToApply = Math.floor((damage * damageMultiplier) / 2);
-		await MidiQOL.applyTokenDamage(
-			[
-				{
-					damage: dmgToApply,
-					type: "healing",
-					flavor: "Life Steal",
-				},
-			],
-			dmgToApply,
-			new Set([token]),
-			null,
-			null,
-		);
-	}
-}
+	const caster = workflow.actor;
+	const casterToken = workflow.token;
+	const damageDetail = workflow.damageItem?.damageDetail ?? [];
+	const flatDamageDetail = Array.isArray(damageDetail[0]) ? damageDetail.flat() : damageDetail;
+	const necroticEntry = flatDamageDetail.find((d) => d.type === "necrotic");
+	const necroticDamage = Number(necroticEntry?.damage ?? necroticEntry?.value ?? 0);
+	const damageMultiplier = Number(necroticEntry?.damageMultiplier ?? 1);
+	if (!caster || !casterToken || necroticDamage <= 0 || workflow.hitTargets.size !== 1) return;
 
-/**
- * Grants an AC bonus based on spell level and the caster's equipped shield.
- *
- * @param {object} workflow - Workflow containing actor and item data.
- * @param {Actor} workflow.actor - The actor casting the spell.
- * @param {Item} workflow.item - The Shield spell item.
- * @returns {Promise<void>}
- */
+	const healAmount = Math.floor(necroticDamage * damageMultiplier * 0.5);
+	if (healAmount <= 0) return;
+
+	const healingRoll = await new Roll(`${healAmount}`).evaluate({ async: true });
+	new MidiQOL.DamageOnlyWorkflow(
+		caster,
+		casterToken,
+		healingRoll.total,
+		"healing",
+		[casterToken],
+		healingRoll,
+		{ flavor: "Life Steal" },
+	);
+}

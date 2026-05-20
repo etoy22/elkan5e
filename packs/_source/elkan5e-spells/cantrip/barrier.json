@@ -144,7 +144,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><em>With your left index finger, you trace a rune of power upon your skin and speak a word of Primordial, warding yourself momentarily against &amp;reference[elemental] harm.</em></p><p><span> <strong>Buff</strong></span></p><ul><li><p><span>You gain resistance to one type of damage: &amp;reference[acid], &amp;reference[cold], &amp;reference[lightning], &amp;reference[fire], &amp;reference[thunder], or non-magical physical damage.</span></p></li></ul>",
+			"value": "<p><em>With your left index finger, you trace a rune of power upon your skin and speak a word of Primordial, warding yourself momentarily against elemental harm.</em></p><p><span><strong>Buff</strong></span></p><ul><li><p><span>You gain resistance to one type of damage: &amp;reference[acid], &amp;reference[cold], &amp;reference[lightning], &amp;reference[fire], &amp;reference[thunder], or non-magical physical damage.</span></p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "barrier",
@@ -202,24 +202,23 @@
 			"transfer": false,
 			"_id": "yNT9qtZ9cVgFPYD1",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.traits.dr.value",
-					"mode": 2,
-					"value": "acid",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.dr.value",
+						"type": "add",
+						"value": "ALL",
+						"phase": "final",
+						"priority": 20
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"combat": null,
-				"seconds": 7,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -236,9 +235,8 @@
 					"dontApply": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"turnEndSource"
-					]
+					"specialDuration": [],
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -258,6 +256,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!TLgcAjeqMjXgy04c.yNT9qtZ9cVgFPYD1"
 		},
 		{
@@ -266,24 +267,23 @@
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.TLgcAjeqMjXgy04c",
 			"transfer": false,
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.traits.dr.value",
-					"mode": 2,
-					"value": "cold",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.dr.value",
+						"type": "add",
+						"value": "ALL",
+						"phase": "final",
+						"priority": 20
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"combat": null,
-				"seconds": 7,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -300,9 +300,8 @@
 					"dontApply": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"turnEndSource"
-					]
+					"specialDuration": [],
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -323,6 +322,9 @@
 				}
 			},
 			"_id": "l2i9wELpo60rINnx",
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!TLgcAjeqMjXgy04c.l2i9wELpo60rINnx"
 		},
 		{
@@ -331,24 +333,23 @@
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.TLgcAjeqMjXgy04c",
 			"transfer": false,
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.traits.dr.value",
-					"mode": 2,
-					"value": "lightning",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.dr.value",
+						"type": "add",
+						"value": "ALL",
+						"phase": "final",
+						"priority": 20
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"combat": null,
-				"seconds": 7,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -365,9 +366,8 @@
 					"dontApply": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"turnEndSource"
-					]
+					"specialDuration": [],
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -388,6 +388,9 @@
 				}
 			},
 			"_id": "xNmIMvfz7tnOR7fM",
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!TLgcAjeqMjXgy04c.xNmIMvfz7tnOR7fM"
 		},
 		{
@@ -396,24 +399,23 @@
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.TLgcAjeqMjXgy04c",
 			"transfer": false,
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.traits.dr.value",
-					"mode": 2,
-					"value": "fire",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.dr.value",
+						"type": "add",
+						"value": "ALL",
+						"phase": "final",
+						"priority": 20
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"combat": null,
-				"seconds": 7,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -430,9 +432,8 @@
 					"dontApply": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"turnEndSource"
-					]
+					"specialDuration": [],
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -453,6 +454,9 @@
 				}
 			},
 			"_id": "VCeilKbcJwMCJEZ1",
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!TLgcAjeqMjXgy04c.VCeilKbcJwMCJEZ1"
 		},
 		{
@@ -461,24 +465,23 @@
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.TLgcAjeqMjXgy04c",
 			"transfer": false,
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.traits.dr.value",
-					"mode": 2,
-					"value": "thunder",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.dr.value",
+						"type": "add",
+						"value": "ALL",
+						"phase": "final",
+						"priority": 20
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"combat": null,
-				"seconds": 7,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -495,9 +498,8 @@
 					"dontApply": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"turnEndSource"
-					]
+					"specialDuration": [],
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -518,32 +520,34 @@
 				}
 			},
 			"_id": "o5WI02jJuVFLAAPI",
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!TLgcAjeqMjXgy04c.o5WI02jJuVFLAAPI"
 		},
 		{
-			"name": "Barrier [Non-magical physical]",
+			"name": "Barrier [Non-magical Physical]",
 			"img": "icons/magic/defensive/barrier-shield-dome-pink.webp",
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.TLgcAjeqMjXgy04c",
 			"transfer": false,
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.traits.dr.custom",
-					"mode": 0,
-					"value": "nonMagicalPhysical",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.dr.custom",
+						"type": "custom",
+						"value": "spell",
+						"phase": "final",
+						"priority": 20
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"combat": null,
-				"seconds": 7,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -561,8 +565,10 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": [
-						"turnEndSource"
-					]
+						"None"
+					],
+					"expiryMode": "default",
+					"combatActorOverride": "source"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -583,6 +589,9 @@
 				}
 			},
 			"_id": "lGsXYOo057qvTl3C",
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!TLgcAjeqMjXgy04c.lGsXYOo057qvTl3C"
 		}
 	],

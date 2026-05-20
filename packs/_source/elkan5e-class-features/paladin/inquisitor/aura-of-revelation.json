@@ -38,29 +38,12 @@
 					"disableCondition": ""
 				}
 			},
-			"changes": [
-				{
-					"key": "system.traits.ci.value",
-					"mode": 0,
-					"value": "blinded",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.ci.value",
-					"mode": 0,
-					"value": "deafened",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"tint": "#ffffff",
 			"transfer": true,
@@ -70,7 +53,25 @@
 			"statuses": [],
 			"img": "icons/magic/light/beams-strike-blue.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.ci.value",
+						"value": "blinded",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "system.traits.ci.value",
+						"value": "deafened",
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!FIy35pfzsDkO7jmK.jqyEv4x6Yz5NcW9F"
 		}
 	],
@@ -108,7 +109,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><strong>Permanent</strong> - 10 ft. Emanation (Self) - Magical</p><ul><li><p>Allies in the aura are immune to &amp;reference[blinded] and &amp;reference[deafened] conditions. Zones that silence sound also do not function in this aura.</p></li><li><p>If a creature who is already blinded or deafened comes within 10 ft. of you, this does not end the condition, but does grant the creature advantage on saves to end the condition.</p></li><li><p>This ability does not function when you are &amp;reference[Petrified] or &amp;reference[Unconscious].</p></li></ul><p>At 18th level, the range of this aura increases to 30 feet.</p><p><em>A physical barrier, including an object or effect covering the eyes, can still impose blindness, at the GM's discretion.</em></p>",
+			"value": "<p><strong>Permanent</strong> - 10 ft. Emanation (Self) - Magical</p><ul><li><p>Allies in the aura are immune to &amp;reference[blinded apply=false] and &amp;reference[deafened apply=false] conditions. Zones that silence sound also do not function in this aura.</p></li><li><p>If a creature who is already blinded or deafened comes within 10 ft. of you, this does not end the condition, but does grant the creature &amp;reference[advantage] on saves to end the condition.</p></li><li><p>This ability does not function when you are &amp;reference[Petrified apply=false] or &amp;reference[Unconscious apply=false].</p></li></ul><p>At 18th level, the range of this aura increases to 30 feet.</p><p><em>A physical barrier, including an object or effect covering the eyes, can still impose blindness, at the GM's discretion.</em></p>",
 			"chat": ""
 		},
 		"source": {

@@ -64,7 +64,12 @@
 					"special": "",
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "kYWT6zrRmNZa5fec",
+						"level": {}
+					}
+				],
 				"range": {
 					"value": "100",
 					"units": "ft",
@@ -88,7 +93,7 @@
 						"special": ""
 					},
 					"prompt": true,
-					"override": false
+					"override": true
 				},
 				"uses": {
 					"spent": 0,
@@ -103,7 +108,33 @@
 				},
 				"name": "",
 				"img": "",
-				"appliedEffects": []
+				"appliedEffects": [],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": ""
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"dispositionFilter": 0,
+					"excludeSource": false,
+					"oncePerTurn": false,
+					"wallRestriction": "move",
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "kYWT6zrRmNZa5fec"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "kYWT6zrRmNZa5fec"
+						}
+					]
+				}
 			}
 		},
 		"identifier": "twisted-terrain",
@@ -112,7 +143,56 @@
 			"level": null
 		}
 	},
-	"effects": [],
+	"effects": [
+		{
+			"name": "Twisted Terrain - Slowed",
+			"img": "icons/magic/nature/root-vine-leaves-green.webp",
+			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.uoC72nGV3Bs1wBV0",
+			"type": "base",
+			"_id": "kYWT6zrRmNZa5fec",
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.walk",
+						"type": "custom",
+						"value": "/2",
+						"phase": "initial",
+						"priority": null
+					}
+				]
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [],
+			"showIcon": 1,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"expiryMode": "default",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"disableIncapacitated": false,
+					"specialDuration": [],
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
+				}
+			},
+			"_key": "!items.effects!uoC72nGV3Bs1wBV0.kYWT6zrRmNZa5fec"
+		}
+	],
 	"flags": {
 		"midi-qol": {
 			"AoETargetType": "any",

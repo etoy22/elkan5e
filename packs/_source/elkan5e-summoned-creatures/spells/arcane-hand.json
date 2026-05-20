@@ -633,12 +633,9 @@
 			"src": "icons/weapons/staves/broom-yellow-purple.webp",
 			"anchorX": 0.5,
 			"anchorY": 0.5,
-			"offsetX": 0,
-			"offsetY": 0,
 			"fit": "contain",
 			"scaleX": 1,
 			"scaleY": 1,
-			"rotation": 0,
 			"tint": "#ffffff",
 			"alphaThreshold": 0.75
 		},
@@ -689,18 +686,16 @@
 			"saturation": -1,
 			"contrast": 0
 		},
-		"detectionModes": [
-			{
-				"id": "basicSight",
+		"detectionModes": {
+			"basicSight": {
 				"range": 0,
 				"enabled": true
 			},
-			{
-				"id": "lightPerception",
+			"lightPerception": {
 				"range": 0,
 				"enabled": true
 			}
-		],
+		},
 		"occludable": {
 			"radius": 0
 		},
@@ -728,7 +723,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 2
 	},
 	"items": [
 		{
@@ -1078,17 +1074,15 @@
 					"origin": "Actor.1yiYOIlNKc6ufjYk.Item.CizP8XKvnM1SwmdJ",
 					"_id": "SHvuO17gcBZw2AOG",
 					"type": "base",
-					"system": {},
-					"changes": [],
+					"system": {
+						"changes": []
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"description": "",
 					"tint": "#ffffff",
@@ -1124,6 +1118,9 @@
 							"statuses": []
 						}
 					},
+					"showIcon": 2,
+					"start": null,
+					"folder": null,
 					"_key": "!actors.items.effects!yuqcvbP1hIrDoMJy.CizP8XKvnM1SwmdJ.SHvuO17gcBZw2AOG"
 				}
 			],

@@ -4,18 +4,14 @@
 	"img": "icons/skills/melee/strike-dagger-white-orange.webp",
 	"effects": [
 		{
-			"changes": [],
 			"transfer": false,
 			"_id": "dgVA117cahwMM7RW",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"origin": null,
 			"tint": "#ffffff",
@@ -47,7 +43,12 @@
 			"statuses": [],
 			"img": "icons/skills/melee/strike-dagger-white-orange.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": []
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!2UpbjReIH8Eij7jo.dgVA117cahwMM7RW"
 		}
 	],
@@ -109,19 +110,21 @@
 		},
 		"target": {
 			"affects": {
-				"type": "self",
+				"type": "",
 				"choice": false,
 				"special": ""
 			},
 			"template": {
 				"units": "",
 				"contiguous": false,
-				"type": ""
+				"type": "emanationNoTemplate",
+				"size": "@item.level * 500",
+				"count": ""
 			}
 		},
 		"range": {
-			"value": "1000",
-			"units": "ft",
+			"value": "",
+			"units": "self",
 			"special": ""
 		},
 		"uses": {
@@ -175,7 +178,11 @@
 				},
 				"effects": [
 					{
-						"_id": "dgVA117cahwMM7RW"
+						"_id": "dgVA117cahwMM7RW",
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -187,7 +194,15 @@
 					"units": "ft",
 					"width": null,
 					"override": false,
-					"prompt": true
+					"prompt": true,
+					"affects": {
+						"type": ""
+					},
+					"template": {
+						"type": "radius",
+						"size": "",
+						"count": ""
+					}
 				},
 				"uses": {
 					"spent": 0,
@@ -199,6 +214,14 @@
 					"name": "",
 					"prompt": false,
 					"visible": false
+				},
+				"name": "",
+				"img": "",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
 				}
 			}
 		},

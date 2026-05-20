@@ -524,9 +524,6 @@
 			"src": "icons/tools/hand/broom-straw-brown.webp",
 			"scaleX": 1,
 			"scaleY": 1,
-			"offsetX": 0,
-			"offsetY": 0,
-			"rotation": 0,
 			"tint": "#ffffff",
 			"anchorX": 0.5,
 			"anchorY": 0.5,
@@ -582,13 +579,12 @@
 			"contrast": 0,
 			"color": null
 		},
-		"detectionModes": [
-			{
-				"id": "basicSight",
+		"detectionModes": {
+			"basicSight": {
 				"range": 0,
 				"enabled": true
 			}
-		],
+		},
 		"flags": {
 			"token-z": {
 				"zIndex": 0
@@ -616,7 +612,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 1
 	},
 	"items": [
 		{
@@ -658,7 +655,6 @@
 				{
 					"name": "Permanent Invisibility",
 					"origin": "Compendium.elkan5e.elkan5e-creatures.Actor.QHbbzyqIbYaekjXY.Item.pjsDjq659zi4zCUc",
-					"changes": [],
 					"transfer": true,
 					"flags": {
 						"dae": {
@@ -668,22 +664,24 @@
 					"img": "icons/svg/invisible.svg",
 					"_id": "lCY931D0Ks5MfEnf",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": []
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"description": "",
 					"tint": "#ffffff",
 					"statuses": [
 						"invisible"
 					],
+					"showIcon": 2,
+					"start": null,
+					"folder": null,
 					"_key": "!actors.items.effects!QHbbzyqIbYaekjXY.pjsDjq659zi4zCUc.lCY931D0Ks5MfEnf"
 				}
 			],

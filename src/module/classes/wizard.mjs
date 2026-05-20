@@ -1,4 +1,6 @@
-import { drainedEffect } from "../shared/effects.mjs";
+import { drainedEffect } from "../shared/helpers.mjs";
+
+const DialogV2 = foundry.applications.api.DialogV2;
 
 /**
  * Runs life Drain Graveguard class feature automation.
@@ -151,16 +153,22 @@ export async function necromanticSurge(workflow) {
 			);
 			try {
 				const content = `<p>${game.i18n.localize("elkan5e.notifications.NecromanticSurgeOptions") || "Choose an additional Necromantic Surge effect."}</p>`;
-				const dialog = new globalThis.Dialog({
-					title:
-						game.i18n.localize("elkan5e.notifications.NecromanticSurgeReminderTitle") ||
-						"Necromantic Surge",
-					content,
-					buttons: {
-						ok: { label: game.i18n.localize("OK") || "OK" },
+				new DialogV2({
+					window: {
+						title:
+							game.i18n.localize(
+								"elkan5e.notifications.NecromanticSurgeReminderTitle",
+							) || "Necromantic Surge",
 					},
-				});
-				dialog.render(true);
+					content,
+					buttons: [
+						{
+							action: "ok",
+							label: game.i18n.localize("OK") || "OK",
+							default: true,
+						},
+					],
+				}).render(true);
 			} catch {
 				// ignore dialog failures
 			}

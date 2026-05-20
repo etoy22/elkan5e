@@ -6,7 +6,6 @@
 		{
 			"name": "Blinded",
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.ABHn2WLXhBoSTYRl",
-			"changes": [],
 			"transfer": false,
 			"flags": {
 				"dae": {
@@ -18,10 +17,15 @@
 					"macroRepeat": "none",
 					"specialDuration": [
 						"None",
-						"turnEndSource"
+						"None"
 					],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"expiryMode": "default",
+					"combatActorOverride": "source"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -43,22 +47,24 @@
 			"img": "icons/magic/light/hand-sparks-smoke-green.webp",
 			"_id": "tIWcLT9k1c4eycvc",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": []
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 7,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
 			"statuses": [
 				"blinded"
 			],
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!ABHn2WLXhBoSTYRl.tIWcLT9k1c4eycvc"
 		}
 	],

@@ -184,24 +184,22 @@
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.EzkHQiJMIadTqy47",
 			"_id": "n6zx5clyT8MF8E1o",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "flags.midi-qol.advantage.attack.all",
-					"mode": 2,
-					"value": "1",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.advantage.attack.all",
+						"value": 1,
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"combat": null,
-				"seconds": 2,
-				"rounds": null,
-				"turns": 1,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "turns",
+				"expiry": "targetEnd",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -211,7 +209,6 @@
 				"dae": {
 					"disableCondition": "",
 					"stackable": "noneName",
-					"showIcon": true,
 					"disableIncapacitated": false,
 					"durationExpression": "",
 					"specialDuration": [
@@ -220,7 +217,9 @@
 					"enableCondition": "",
 					"selfTarget": false,
 					"selfTargetAlways": false,
-					"dontApply": false
+					"dontApply": false,
+					"expiryMode": "default",
+					"macroRepeat": "none"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -240,6 +239,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 2,
+			"folder": null,
 			"_key": "!items.effects!EzkHQiJMIadTqy47.n6zx5clyT8MF8E1o"
 		}
 	],

@@ -332,7 +332,6 @@
 		"identifier": "caltrops"
 	},
 	"type": "consumable",
-	"folder": "Qjhe0eLLeK89MVke",
 	"img": "icons/weapons/thrown/bomb-spiked-purple.webp",
 	"effects": [
 		{
@@ -342,48 +341,46 @@
 			"transfer": false,
 			"_id": "HsbtDDdiWhk4d7WB",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.attributes.movement.walk",
-					"mode": 5,
-					"value": "0",
-					"priority": 50
-				},
-				{
-					"key": "system.attributes.movement.fly",
-					"mode": 5,
-					"value": "0",
-					"priority": 50
-				},
-				{
-					"key": "system.attributes.movement.swim",
-					"mode": 5,
-					"value": "0",
-					"priority": 50
-				},
-				{
-					"key": "system.attributes.movement.climb",
-					"mode": 5,
-					"value": "0",
-					"priority": 50
-				},
-				{
-					"key": "system.attributes.movement.burrow",
-					"mode": 5,
-					"value": "0",
-					"priority": 50
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.walk",
+						"value": 0,
+						"priority": 50,
+						"type": "override"
+					},
+					{
+						"key": "system.attributes.movement.fly",
+						"value": 0,
+						"priority": 50,
+						"type": "override"
+					},
+					{
+						"key": "system.attributes.movement.swim",
+						"value": 0,
+						"priority": 50,
+						"type": "override"
+					},
+					{
+						"key": "system.attributes.movement.climb",
+						"value": 0,
+						"priority": 50,
+						"type": "override"
+					},
+					{
+						"key": "system.attributes.movement.burrow",
+						"value": 0,
+						"priority": 50,
+						"type": "override"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 7,
-				"combat": null,
-				"rounds": null,
-				"turns": 1,
-				"startRound": null,
-				"startTurn": null
+				"value": 7,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -422,9 +419,13 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!OJ4aG94WMMHPZuIF.HsbtDDdiWhk4d7WB"
 		}
 	],
 	"_id": "OJ4aG94WMMHPZuIF",
+	"folder": "Qjhe0eLLeK89MVke",
 	"_key": "!items!OJ4aG94WMMHPZuIF"
 }

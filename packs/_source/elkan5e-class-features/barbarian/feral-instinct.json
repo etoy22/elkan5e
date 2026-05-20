@@ -7,28 +7,26 @@
 		{
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.U9gWmCLuh1XMMWZQ",
 			"duration": {
-				"rounds": null,
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"disabled": false,
 			"name": "Feral Instinct",
 			"img": "icons/creatures/eyes/human-single-blue.webp",
 			"_id": "4KBcuRlq5NhOM6wF",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.attributes.init.bonus",
-					"mode": 2,
-					"value": "(floor(abs((@classes.elkan-barbarian.levels)/7))+2)",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.init.bonus",
+						"value": "(floor(abs((@classes.elkan-barbarian.levels)/7))+2)",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"description": "",
 			"tint": "#ffffff",
 			"transfer": true,
@@ -61,6 +59,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!U9gWmCLuh1XMMWZQ.4KBcuRlq5NhOM6wF"
 		}
 	],

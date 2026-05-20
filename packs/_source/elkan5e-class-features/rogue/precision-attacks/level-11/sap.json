@@ -8,17 +8,15 @@
 			"img": "icons/weapons/clubs/club-bone-blue.webp",
 			"_id": "uwSypIPbXyCLDiXY",
 			"type": "base",
-			"system": {},
-			"changes": [],
+			"system": {
+				"changes": []
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 7,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"description": "",
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.Bo8uEAWKOvzFsnli",
@@ -35,9 +33,8 @@
 					"showIcon": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"turnEndSource"
-					]
+					"specialDuration": [],
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -56,6 +53,9 @@
 					"wallsBlock": "system"
 				}
 			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!Bo8uEAWKOvzFsnli.uwSypIPbXyCLDiXY"
 		}
 	],
@@ -123,95 +123,6 @@
 			"level": 11
 		},
 		"activities": {
-			"dnd5eactivity000": {
-				"_id": "dnd5eactivity000",
-				"type": "save",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"condition": "",
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"concentration": false,
-					"value": "1",
-					"units": "round",
-					"special": "",
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"units": "self",
-					"special": "",
-					"override": false
-				},
-				"target": {
-					"template": {
-						"count": "",
-						"contiguous": false,
-						"type": "",
-						"size": "",
-						"width": "",
-						"height": "",
-						"units": ""
-					},
-					"affects": {
-						"count": "1",
-						"type": "creature",
-						"choice": false,
-						"special": ""
-					},
-					"prompt": true,
-					"override": false
-				},
-				"uses": {
-					"spent": 0,
-					"max": "",
-					"recovery": []
-				},
-				"damage": {
-					"onSave": "full",
-					"parts": [
-						{
-							"custom": {
-								"enabled": true,
-								"formula": "(@scale.rogue.sneak-attack - 3)d6"
-							},
-							"number": null,
-							"denomination": null,
-							"bonus": "",
-							"types": [
-								"bludgeoning"
-							]
-						}
-					],
-					"critical": {
-						"allow": true
-					}
-				},
-				"save": {
-					"ability": "con",
-					"dc": {
-						"calculation": "dex",
-						"formula": ""
-					}
-				},
-				"name": "Save (Dexterity)",
-				"img": "",
-				"appliedEffects": [],
-				"effectConditionText": "!target.traits.ci.value.has('dazed')"
-			},
 			"YmYEhgQXiJwVP4pQ": {
 				"type": "save",
 				"activation": {
@@ -241,7 +152,11 @@
 				"effects": [
 					{
 						"_id": "uwSypIPbXyCLDiXY",
-						"onSave": false
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -290,17 +205,18 @@
 						}
 					],
 					"critical": {
-						"allow": true
+						"allow": true,
+						"bonus": ""
 					}
 				},
 				"save": {
 					"ability": "con",
 					"dc": {
-						"calculation": "str",
-						"formula": ""
+						"calculation": "",
+						"formula": "8 + max(@abilities.dex.mod, @abilities.str.mod) + @prof"
 					}
 				},
-				"name": "Save (Strength)",
+				"name": "",
 				"useConditionText": "",
 				"forceDialog": false,
 				"effectConditionText": "!target.traits.ci.value.has('dazed')",
@@ -308,7 +224,14 @@
 				"img": "",
 				"appliedEffects": [
 					"uwSypIPbXyCLDiXY"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": ""
+				}
 			}
 		},
 		"identifier": "sap",

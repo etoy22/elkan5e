@@ -6,7 +6,6 @@
 		{
 			"name": "Slow",
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.HAvT3aakGxIuH4kH",
-			"changes": [],
 			"transfer": false,
 			"flags": {
 				"dae": {
@@ -21,7 +20,8 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -43,22 +43,32 @@
 			"img": "icons/magic/time/hourglass-brown-orange.webp",
 			"_id": "QQszvyLvFF7SBY4D",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "slowed",
+						"phase": "final",
+						"priority": null
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
 			"statuses": [
 				"slowed"
 			],
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!HAvT3aakGxIuH4kH.QQszvyLvFF7SBY4D"
 		}
 	],
@@ -151,7 +161,7 @@
 		"target": {
 			"affects": {
 				"type": "creature",
-				"count": "3",
+				"count": "@item.level",
 				"choice": false,
 				"special": ""
 			},

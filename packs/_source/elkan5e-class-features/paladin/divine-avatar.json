@@ -164,30 +164,28 @@
 			"transfer": false,
 			"_id": "eLYt4ftuIMZJjeZ1",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.bonuses.mwak.damage",
-					"mode": 2,
-					"value": "+2d8[Radiant]",
-					"priority": 20
-				},
-				{
-					"key": "system.bonuses.rwak.damage",
-					"mode": 2,
-					"value": "+2d8[Radiant]",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.bonuses.mwak.damage",
+						"value": "+2d8[Radiant]",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.bonuses.rwak.damage",
+						"value": "+2d8[Radiant]",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -224,6 +222,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!fliH2ub4KtFOh0KU.eLYt4ftuIMZJjeZ1"
 		}
 	],

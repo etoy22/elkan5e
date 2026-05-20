@@ -4,18 +4,14 @@
 	"img": "icons/magic/earth/lava-stone-fire-eye.webp",
 	"effects": [
 		{
-			"changes": [],
 			"transfer": false,
 			"_id": "zFKNndjZPbV3376s",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 28800,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 28800,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"origin": null,
 			"tint": "#ffffff",
@@ -47,20 +43,17 @@
 			"statuses": [],
 			"img": "icons/magic/earth/lava-stone-fire-eye.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": []
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!l3PBmfstaAN5ybn3.zFKNndjZPbV3376s"
 		},
 		{
 			"name": "Prone",
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.l3PBmfstaAN5ybn3",
-			"changes": [
-				{
-					"key": "macro.StatusEffect",
-					"mode": 0,
-					"value": "prone",
-					"priority": 0
-				}
-			],
 			"transfer": false,
 			"flags": {
 				"dae": {
@@ -97,20 +90,29 @@
 			"img": "modules/elkan5e/icons/conditions/prone.svg",
 			"_id": "FqcVt8S2jVm9jFmj",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"value": "prone",
+						"priority": 0,
+						"type": "custom"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 0,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 0,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!l3PBmfstaAN5ybn3.FqcVt8S2jVm9jFmj"
 		}
 	],
@@ -153,7 +155,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>In a solemn tone you speak the word 'enter' in Primordial and walk into a stone surface large enough to hold your form. The stone surface turns to powder and ripples as it parts before you, then reforms behind you.</em></p><p><strong>Ritual Casting Time:</strong> 1 Minute</p><p><strong>Utility Spell</strong></p><ul><li><p>You step into a stone object or surface large enough to fully contain your body, melding yourself and all the equipment you carry with the stone for the duration. You spend movement for entering and exiting. You must exit at the same point, and exiting the stone ends the spell.</p></li><li><p>While merged with the stone, you can't see what occurs outside it and outside sound is muffled. Any &amp;reference[perception] checks you make to hear sounds outside it are made with disadvantage.</p></li><li><p>You can breathe within the stone but not speak (limiting most spells). You can adjust equipment you're carrying.</p></li><li><p>Physical damage to the stone usually doesn't harm you, but if the stone is damaged to the point you can no longer fit within it, or the spell ends with you still inside the stone, you take [[/damage 6d6 bludgeoning]] damage and fall &amp;reference[Prone] in the nearest unoccupied space to where you first entered.</p></li><li><p>A creature with &amp;reference[tremorsense] can detect your location.</p></li></ul>",
+			"value": "<p><em>In a solemn tone you speak the word 'enter' in Primordial and walk into a stone surface large enough to hold your form. The stone surface turns to powder and ripples as it parts before you, then reforms behind you.</em></p><p><strong>Ritual Casting Time:</strong> 1 Minute</p><p><strong>Utility</strong></p><ul><li><p>You step into a stone object or surface large enough to fully contain your body, melding yourself and all the equipment you carry with the stone for the duration. You spend movement for entering and exiting. You must exit at the same point, and exiting the stone ends the spell.</p></li><li><p>While merged with the stone, you can't see what occurs outside it and outside sound is muffled. Any &amp;reference[perception] checks you make to hear sounds outside it are made with disadvantage.</p></li><li><p>You can breathe within the stone but not speak (limiting most spells). You can adjust equipment you're carrying.</p></li><li><p>Physical damage to the stone usually doesn't harm you, but if the stone is damaged to the point you can no longer fit within it, or the spell ends with you still inside the stone, you take [[/damage 6d6 bludgeoning]] damage and fall &amp;reference[Prone] in the nearest unoccupied space to where you first entered.</p></li><li><p>A creature with &amp;reference[tremorsense] can detect your location.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {

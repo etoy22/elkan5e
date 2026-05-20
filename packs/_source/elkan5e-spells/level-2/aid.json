@@ -38,23 +38,12 @@
 					"statuses": []
 				}
 			},
-			"changes": [
-				{
-					"key": "system.attributes.hp.tempmax",
-					"mode": 2,
-					"value": "5 * (max(@spell.level,2) - 1)",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 28800,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 28800,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"tint": "#ffffff",
 			"transfer": false,
@@ -64,7 +53,19 @@
 			"statuses": [],
 			"img": "icons/magic/life/heart-hand-gold-green-light.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.hp.tempmax",
+						"value": "5 * (max(@spell.level,2) - 1)",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!c9SfIJndbbCZK2Le.9lafpgID8ffkvJ9q"
 		}
 	],

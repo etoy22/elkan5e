@@ -6,7 +6,7 @@
 	"img": "icons/magic/perception/eye-ringed-glow-angry-red.webp",
 	"system": {
 		"description": {
-			"value": "<p><em>You grant creatures, most often including yourself, the ability to see without your eyes.</em></p><p><strong>Bonus Action</strong> - 6 Creatures (60 ft.) - 10 Minute - Magical</p><ul><li><p>Targets gain blindsight of 60 ft. for the duration.</p></li></ul>",
+			"value": "<p><em>You grant creatures, most often including yourself, the ability to see without your eyes.</em></p><p><strong>Bonus Action</strong> - 6 Creatures (60 ft.) - 10 Minute - Magical</p><ul><li><p>Targets gain &amp;reference[blindsight] of 60 ft. for the duration.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -121,31 +121,14 @@
 	"effects": [
 		{
 			"name": "Underworld Eyes",
-			"changes": [
-				{
-					"key": "system.attributes.senses.blindsight",
-					"mode": 4,
-					"value": "60",
-					"priority": 20
-				},
-				{
-					"key": "ATL.detectionModes.blindsight.range",
-					"mode": 4,
-					"value": "60",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"_id": "KhtwUVqllsf7eyVz",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -185,7 +168,25 @@
 			"tint": "#ffffff",
 			"img": "icons/magic/perception/eye-ringed-glow-angry-red.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.senses.ranges.blindsight",
+						"value": 60,
+						"priority": 20,
+						"type": "upgrade"
+					},
+					{
+						"key": "ATL.detectionModes.blindsight.range",
+						"value": 60,
+						"priority": 20,
+						"type": "upgrade"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!LsbceZDIv0Opf29G.KhtwUVqllsf7eyVz"
 		}
 	],

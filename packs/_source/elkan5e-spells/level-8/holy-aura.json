@@ -31,29 +31,12 @@
 					"displayTemp": false
 				}
 			},
-			"changes": [
-				{
-					"key": "flags.midi-qol.advantage.ability.save.all",
-					"mode": 2,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.grants.disadvantage.attack.all",
-					"mode": 2,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"tint": "#ffffff",
 			"transfer": false,
@@ -63,7 +46,25 @@
 			"statuses": [],
 			"img": "icons/magic/control/buff-flight-wings-runes-blue-white.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.advantage.ability.save.all",
+						"value": 1,
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "flags.midi-qol.grants.disadvantage.attack.all",
+						"value": 1,
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!zKJ6ia0SOCrIEGQn.bV9gcOUvMMCULD96"
 		},
 		{
@@ -73,17 +74,15 @@
 			"transfer": false,
 			"_id": "4GSDd3tmZ1jW2Q87",
 			"type": "base",
-			"system": {},
-			"changes": [],
+			"system": {
+				"changes": []
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -121,6 +120,9 @@
 					"wallsBlock": "system"
 				}
 			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!zKJ6ia0SOCrIEGQn.4GSDd3tmZ1jW2Q87"
 		}
 	],
@@ -158,7 +160,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><strong>Utility</strong></p><ul><li><p>Choose creatures within 30 ft. of you when you cast the spell. Each chosen creature sheds dim light in a 5 ft. radius.</p></li><li><p>Affected creatures have Advantage on all saving throws.</p></li><li><p>Other creatures have Disadvantage on attack rolls against affected creatures.</p></li></ul><p><strong>No Action</strong></p><p><em>Trigger: When a &amp;reference[Fiend] or &amp;reference[Undead] hits an affected creature with a melee attack, the aura flashes with divine light.</em></p><p><strong>[[/save CON]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> The attacker is &amp;reference[Blinded] until the spell ends.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"value": "<p><strong>Materials: </strong>You require a <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.Br0OgH1fZxLYPrby]{Reliquary}</em>, typically valued at 1000 gold.</p><p><strong>Utility</strong></p><ul><li><p>Choose creatures within 30 ft. of you when you cast the spell. Each chosen creature sheds dim light in a 5 ft. radius.</p></li><li><p>Affected creatures have Advantage on all saving throws.</p></li><li><p>Other creatures have Disadvantage on attack rolls against affected creatures.</p></li></ul><p><strong>No Action</strong></p><p><em>Trigger: When a &amp;reference[Fiend] or &amp;reference[Undead] hits an affected creature with a melee attack, the aura flashes with divine light.</em></p><p><strong>[[/save CON]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> The attacker is &amp;reference[Blinded] until the spell ends.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -247,7 +249,11 @@
 				},
 				"effects": [
 					{
-						"_id": "bV9gcOUvMMCULD96"
+						"_id": "bV9gcOUvMMCULD96",
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -258,8 +264,16 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": ""
+					},
+					"template": {
+						"type": "radius",
+						"size": "30",
+						"count": ""
+					}
 				},
 				"roll": {
 					"formula": "",
@@ -273,18 +287,43 @@
 					"max": ""
 				},
 				"_id": "4uOTL2qBXui5lLH2",
-				"name": "",
+				"name": "Initial Cast",
 				"img": "",
 				"appliedEffects": [
 					"bV9gcOUvMMCULD96"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"dispositionFilter": 1,
+					"excludeSource": false,
+					"oncePerTurn": false,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "bV9gcOUvMMCULD96"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "bV9gcOUvMMCULD96"
+						}
+					]
+				}
 			},
 			"E2ivSzN4y8PIUG4d": {
 				"type": "save",
 				"activation": {
-					"type": "action",
+					"type": "",
 					"value": null,
-					"override": false
+					"override": true,
+					"condition": ""
 				},
 				"consumption": {
 					"targets": [],
@@ -300,24 +339,38 @@
 				"duration": {
 					"units": "inst",
 					"concentration": false,
-					"override": false
+					"override": true
 				},
 				"effects": [
 					{
 						"_id": "4GSDd3tmZ1jW2Q87",
-						"onSave": false
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
-					"override": false
+					"override": true,
+					"units": "ft",
+					"special": ""
 				},
 				"target": {
 					"type": "creature",
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": "creature",
+						"count": "",
+						"special": ""
+					},
+					"template": {
+						"type": ""
+					}
 				},
 				"damage": {
 					"onSave": "none",
@@ -341,7 +394,13 @@
 				"appliedEffects": [
 					"4GSDd3tmZ1jW2Q87"
 				],
-				"effectConditionText": "!target.traits.ci.value.has('blinded')"
+				"effectConditionText": "!target.traits.ci.value.has('blinded')",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				}
 			}
 		},
 		"identifier": "holy-aura"

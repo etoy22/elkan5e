@@ -638,12 +638,9 @@
 			"src": "systems/dnd5e/tokens/monstrosity/Griffon.webp",
 			"anchorX": 0.5,
 			"anchorY": 0.5,
-			"offsetX": 0,
-			"offsetY": 0,
 			"fit": "contain",
 			"scaleX": 2.8,
 			"scaleY": 2.8,
-			"rotation": 0,
 			"tint": "#ffffff",
 			"alphaThreshold": 0.75
 		},
@@ -694,7 +691,7 @@
 			"saturation": 0,
 			"contrast": 0
 		},
-		"detectionModes": [],
+		"detectionModes": {},
 		"occludable": {
 			"radius": 0
 		},
@@ -717,7 +714,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 2
 	},
 	"items": [
 		{
@@ -1221,17 +1219,15 @@
 					"origin": "Compendium.dnd5e.actors24.Actor.mmGriffon0000000.Item.mmRend0000000000",
 					"_id": "FqB7QZZZTiN3trAC",
 					"type": "base",
-					"system": {},
-					"changes": [],
+					"system": {
+						"changes": []
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"description": "<p>If the target is a Medium or smaller creature, it has the &amp;Reference[Grappled apply=false] condition (escape DC [[/check ability=str skill=ath format=long]], see source item for DC) from both of the attacking creature's front claws.</p>",
 					"tint": "#ffffff",
@@ -1239,6 +1235,9 @@
 					"statuses": [
 						"grappled"
 					],
+					"showIcon": 2,
+					"start": null,
+					"folder": null,
 					"_key": "!actors.items.effects!hfjUgL6nyrzGeggX.mmRend0000000000.FqB7QZZZTiN3trAC"
 				}
 			],

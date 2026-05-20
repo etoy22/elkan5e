@@ -5,16 +5,12 @@
 	"effects": [
 		{
 			"_id": "9uh8ncvvtdlfzqxx",
-			"changes": [],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 86400,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 86400,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"transfer": false,
 			"flags": {
@@ -46,7 +42,12 @@
 			"statuses": [],
 			"img": "icons/magic/water/pseudopod-swirl-blue.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": []
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!nr1SaOIIpI3fbZxp.9uh8ncvvtdlfzqxx"
 		}
 	],
@@ -112,7 +113,7 @@
 		"target": {
 			"affects": {
 				"type": "creature",
-				"count": "10",
+				"count": "(@item.level - 1) * 5",
 				"choice": false,
 				"special": ""
 			},

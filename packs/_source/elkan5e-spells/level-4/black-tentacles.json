@@ -4,69 +4,107 @@
 	"img": "icons/creatures/tentacles/tentacles-octopus-black-pink.webp",
 	"effects": [
 		{
-			"name": "Black Tentacles",
-			"changes": [
-				{
-					"key": "flags.midi-qol.ActivityOverTime",
-					"mode": 2,
-					"value": "target-enters/ends-Turn",
-					"priority": 20
-				}
-			],
-			"transfer": false,
+			"name": "Black Tentacles - Slowed",
 			"img": "icons/creatures/tentacles/tentacles-octopus-black-pink.webp",
-			"_id": "ChKeNNwKeJ4uxPFQ",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.beDRhRoHbFjUJ11k",
 			"type": "base",
-			"system": {},
+			"_id": "HLVD4W1YRdYOQACd",
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.walk",
+						"type": "custom",
+						"value": "/2",
+						"phase": "initial",
+						"priority": null
+					}
+				]
+			},
 			"disabled": false,
+			"start": null,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
-			"origin": null,
 			"tint": "#ffffff",
-			"statuses": [
-				"restrained"
-			],
+			"transfer": false,
+			"statuses": [],
+			"showIcon": 1,
+			"folder": null,
 			"flags": {
 				"dae": {
-					"enableCondition": "",
 					"disableCondition": "",
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
 					"stackable": "noneName",
-					"showIcon": false,
+					"expiryMode": "default",
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "Enemy",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
+					"disableIncapacitated": false,
+					"specialDuration": [],
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
 				}
 			},
-			"_key": "!items.effects!beDRhRoHbFjUJ11k.ChKeNNwKeJ4uxPFQ"
+			"_key": "!items.effects!beDRhRoHbFjUJ11k.HLVD4W1YRdYOQACd"
+		},
+		{
+			"name": "Black Tentacles",
+			"img": "icons/creatures/tentacles/tentacles-octopus-black-pink.webp",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.beDRhRoHbFjUJ11k",
+			"type": "base",
+			"_id": "9zJmAJvjeY1F3Rw5",
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"type": "custom",
+						"value": "turn=end, label=Black Tentacles, saveAbility=dex, saveDC=@attributes.spell.dc, damageRoll=(@item.level)d6, damageType=bludgeoning, allowIncapacitated=true",
+						"phase": "initial",
+						"priority": null
+					}
+				]
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [],
+			"showIcon": 1,
+			"folder": null,
+			"flags": {
+				"dnd5e": {
+					"riders": {
+						"statuses": [
+							"restrained"
+						]
+					}
+				},
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"expiryMode": "default",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"disableIncapacitated": false,
+					"specialDuration": [],
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
+				}
+			},
+			"_key": "!items.effects!beDRhRoHbFjUJ11k.9zJmAJvjeY1F3Rw5"
 		}
 	],
 	"folder": "90eJtrVwLFIxcWJw",
@@ -108,7 +146,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You gently stroke a severed piece of a tentacle or tendril of a &amp;reference[giant] cephalopod, and it begins to wriggle and writhe in your hand as if alive. Moments later, squirming ebony tentacles spring up from the ground.</em></p><p><strong>[[/save dex]]{Dexterity Save}</strong></p><ul><li><p><strong>Failure:</strong> [[/damage 3d6 bludgeoning]] damage*, and target is &amp;reference[restrained]. Target rolls again at end of their turns: taking full damage on a failure or taking half damage and ending effect on success.</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li><li><p><strong>Area Hazard:</strong> The area is &amp;reference[difficultterrain]. Targets roll a save when they enter or when they end their turn in the tentacles (but only once per turn).</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d6 bludgeoning]]{1d6} for each spell level above 2nd.</p>",
+			"value": "<p><em>You gently stroke a severed piece of a tentacle or tendril of a giant cephalopod, and it begins to wriggle and writhe in your hand as if alive. Moments later, squirming ebony tentacles spring up from the ground.</em></p><p><strong>[[/save dex]]{Dexterity Save}</strong></p><ul><li><p><strong>Failure:</strong> [[/damage 3d6 bludgeoning]] damage*, and target is &amp;reference[restrained]. Target rolls again at end of their turns: taking full damage on a failure or taking half damage and ending effect on success.</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li><li><p><strong>Area Hazard:</strong> The area is &amp;reference[difficultterrain]. Targets roll a save when they enter or when they end their turn in the tentacles (but only once per turn).</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d6 bludgeoning]]{1d6} for each spell level above 2nd.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -197,8 +235,20 @@
 				},
 				"effects": [
 					{
-						"_id": "ChKeNNwKeJ4uxPFQ",
-						"onSave": false
+						"_id": "HLVD4W1YRdYOQACd",
+						"onSave": true,
+						"level": {
+							"min": null,
+							"max": null
+						}
+					},
+					{
+						"_id": "9zJmAJvjeY1F3Rw5",
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -209,8 +259,16 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": ""
+					},
+					"template": {
+						"type": "square",
+						"size": "20",
+						"count": ""
+					}
 				},
 				"damage": {
 					"onSave": "none",
@@ -251,88 +309,35 @@
 				"appliedEffects": [
 					"ChKeNNwKeJ4uxPFQ"
 				],
-				"effectConditionText": "!target.traits.ci.value.has('restrained')"
-			},
-			"VHqIkT5lS1OypgOo": {
-				"type": "save",
-				"_id": "VHqIkT5lS1OypgOo",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": false,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"damage": {
-					"parts": [
-						{
-							"custom": {
-								"enabled": false,
-								"formula": ""
-							},
-							"number": 3,
-							"denomination": 6,
-							"bonus": "",
-							"types": [
-								"bludgeoning"
-							],
-							"scaling": {
-								"mode": ""
-							}
-						}
-					],
-					"onSave": "none"
-				},
-				"save": {
-					"ability": "dex",
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
+				"effectConditionText": "!target.traits.ci.value.has('restrained')",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
 					}
 				},
-				"useConditionText": "",
-				"forceDialog": false,
-				"effectConditionText": "!target.traits.ci.value.has('restrained')",
-				"name": "Target Enters/Ends Turn",
-				"img": "",
-				"appliedEffects": [
-					"ChKeNNwKeJ4uxPFQ"
-				],
-				"isOverTimeFlag": true,
-				"overTimeProperties": {
-					"turnChoice": "end",
-					"preRemoveConditionText": "false",
-					"postRemoveConditionText": "false"
+				"regionBehavior": {
+					"enabled": true,
+					"excludeSource": false,
+					"dispositionFilter": 0,
+					"wallRestriction": "move",
+					"rules": [
+						{
+							"trigger": "turnEnd",
+							"action": "useActivity",
+							"targetId": "save"
+						},
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "HLVD4W1YRdYOQACd"
+						},
+						{
+							"trigger": "exit",
+							"action": "applyEffect",
+							"targetId": "HLVD4W1YRdYOQACd"
+						}
+					]
 				}
 			}
 		},

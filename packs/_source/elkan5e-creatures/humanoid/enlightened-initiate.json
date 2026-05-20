@@ -445,23 +445,12 @@
 			"effects": [
 				{
 					"_id": "R5ro4AuNjcdWD56O",
-					"changes": [
-						{
-							"key": "system.attributes.ac.calc",
-							"mode": 5,
-							"value": "unarmoredMonk",
-							"priority": null
-						}
-					],
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"origin": "Item.cOdcNWy4hII029DT",
 					"transfer": true,
@@ -471,7 +460,19 @@
 					"statuses": [],
 					"img": "icons/magic/control/silhouette-hold-change-blue.webp",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": [
+							{
+								"key": "system.attributes.ac.calc",
+								"value": "unarmoredMonk",
+								"priority": null,
+								"type": "override"
+							}
+						]
+					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!vkQjwNZ5jtuPwmLi.SM1v40a4020THm4T.R5ro4AuNjcdWD56O"
 				}
 			],
@@ -509,23 +510,12 @@
 	"effects": [
 		{
 			"_id": "fSWczVFnlJc9gCwj",
-			"changes": [
-				{
-					"key": "system.attributes.ac.calc",
-					"mode": 5,
-					"value": "unarmoredMonk",
-					"priority": null
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": 658229725,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"origin": "Compendium.elkan5e.elkan5e-creatures.Actor.vkQjwNZ5jtuPwmLi.Item.SM1v40a4020THm4T",
 			"transfer": false,
@@ -544,7 +534,26 @@
 			"statuses": [],
 			"img": "icons/magic/control/silhouette-hold-change-blue.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.ac.calc",
+						"value": "unarmoredMonk",
+						"priority": null,
+						"type": "override"
+					}
+				]
+			},
+			"start": {
+				"combat": null,
+				"round": null,
+				"time": 658229725,
+				"turn": null,
+				"combatant": null,
+				"initiative": null
+			},
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!actors.effects!vkQjwNZ5jtuPwmLi.fSWczVFnlJc9gCwj"
 		}
 	],
@@ -1169,9 +1178,6 @@
 			"tint": "#ffffff",
 			"scaleX": 1,
 			"scaleY": 1,
-			"offsetX": 0,
-			"offsetY": 0,
-			"rotation": 0,
 			"anchorX": 0.5,
 			"anchorY": 0.5,
 			"fit": "contain",
@@ -1188,7 +1194,7 @@
 			"saturation": 0,
 			"contrast": 0
 		},
-		"detectionModes": [],
+		"detectionModes": {},
 		"appendNumber": false,
 		"prependAdjective": false,
 		"occludable": {
@@ -1212,7 +1218,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 1
 	},
 	"_key": "!actors!vkQjwNZ5jtuPwmLi"
 }

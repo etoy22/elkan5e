@@ -1,4 +1,4 @@
-import { drainedEffect, forEachDamagedTarget } from "../shared/effects.mjs";
+import { drainedEffect, forEachDamagedTarget } from "../shared/helpers.mjs";
 
 /**
  * Runs enervate spell automation.
@@ -37,14 +37,3 @@ export async function enervateOngoing(workflow) {
 		),
 	);
 }
-
-/**
- * Creates or updates a Goodberry consumable item on the actor based on spell level,
- * and applies a duration effect linked to the consumable.
- *
- * @param {object} workflow - The workflow object from the spell use containing actor and item.
- * @param {Actor} workflow.actor - The actor casting the spell.
- * @param {Item} workflow.item - The spell item being cast.
- *
- * @returns {Promise<void>} Resolves when item creation/update and effect creation are complete.
- */

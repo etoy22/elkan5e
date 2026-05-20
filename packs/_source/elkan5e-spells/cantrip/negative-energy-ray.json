@@ -40,28 +40,11 @@
 					"statuses": []
 				}
 			},
-			"changes": [
-				{
-					"key": "system.traits.di.value",
-					"mode": 0,
-					"value": "healing",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.disadvantage.attack.all",
-					"mode": 0,
-					"value": "['undead'].includes(raceOrType)",
-					"priority": 20
-				}
-			],
 			"duration": {
-				"startTime": null,
-				"seconds": 7,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 7,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"transfer": false,
 			"disabled": false,
@@ -72,7 +55,25 @@
 			"statuses": [],
 			"img": "icons/magic/light/beam-rays-red-small.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.di.value",
+						"value": "healing",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "flags.midi-qol.disadvantage.attack.all",
+						"value": "['undead'].includes(raceOrType)",
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!cgM2ice2dC7Fh4G6.vkK7IUfwc6iHS1im"
 		}
 	],

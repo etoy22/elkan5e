@@ -652,12 +652,9 @@
 			"src": "systems/dnd5e/tokens/elemental/WaterElemental.webp",
 			"anchorX": 0.5,
 			"anchorY": 0.5,
-			"offsetX": 0,
-			"offsetY": 0,
 			"fit": "contain",
 			"scaleX": 2,
 			"scaleY": 2,
-			"rotation": 0,
 			"tint": "#ffffff",
 			"alphaThreshold": 0.75
 		},
@@ -708,7 +705,7 @@
 			"saturation": 0,
 			"contrast": 0
 		},
-		"detectionModes": [],
+		"detectionModes": {},
 		"occludable": {
 			"radius": 0
 		},
@@ -731,7 +728,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 2
 	},
 	"items": [
 		{
@@ -894,35 +892,43 @@
 					"origin": "Compendium.dnd-monster-manual.features.Item.mmFreeze00000000",
 					"_id": "B3otZdkyUcUlgrmk",
 					"type": "base",
-					"system": {},
-					"changes": [
-						{
-							"key": "system.attributes.movement.walk",
-							"mode": 2,
-							"value": "-20",
-							"priority": null
-						},
-						{
-							"key": "system.attributes.movement.swim",
-							"mode": 2,
-							"value": "-20",
-							"priority": null
-						}
-					],
+					"system": {
+						"changes": [
+							{
+								"key": "system.attributes.movement.walk",
+								"value": -20,
+								"priority": null,
+								"type": "add"
+							},
+							{
+								"key": "system.attributes.movement.swim",
+								"value": -20,
+								"priority": null,
+								"type": "add"
+							}
+						]
+					},
 					"disabled": true,
 					"duration": {
-						"startTime": 0,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": 1,
-						"startRound": null,
-						"startTurn": null
+						"value": 1,
+						"units": "turns",
+						"expiry": "turnStart",
+						"expired": false
 					},
 					"description": "<p>If the attacking creature takes Cold damage, its Speed decreases by 20 feet until the end of its next turn.</p>",
 					"tint": "#ffffff",
 					"transfer": true,
 					"statuses": [],
+					"start": {
+						"combat": null,
+						"round": null,
+						"time": 0,
+						"turn": null,
+						"combatant": null,
+						"initiative": null
+					},
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!LbbYdqIaHVe6ExsR.mmFreeze00000000.B3otZdkyUcUlgrmk"
 				}
 			],
@@ -1768,17 +1774,15 @@
 					"origin": "Item.mmWhelm000000000",
 					"_id": "rN76liiHkUoMRMJN",
 					"type": "base",
-					"system": {},
-					"changes": [],
+					"system": {
+						"changes": []
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"description": "<p>If the target is a Large or smaller creature, it has the &amp;Reference[Grappled apply=false] condition (see source item for the escape DC). Until the grapple ends, the target has the &amp;Reference[Restrained apply=false] condition, is &amp;Reference[Suffocating]{suffocating} unless it can breathe water, and takes damage (see source for damage) at the start of each of the attacking creature's turns.</p>",
 					"tint": "#ffffff",
@@ -1797,6 +1801,9 @@
 							"specialDuration": []
 						}
 					},
+					"showIcon": 2,
+					"start": null,
+					"folder": null,
 					"_key": "!actors.items.effects!LbbYdqIaHVe6ExsR.mmWhelm000000000.rN76liiHkUoMRMJN"
 				}
 			],

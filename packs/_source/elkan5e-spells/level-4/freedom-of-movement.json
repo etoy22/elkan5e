@@ -4,37 +4,14 @@
 	"img": "icons/skills/movement/ball-spinning-blue.webp",
 	"effects": [
 		{
-			"changes": [
-				{
-					"key": "system.traits.ci.value",
-					"mode": 2,
-					"value": "paralyzed",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.ci.value",
-					"mode": 2,
-					"value": "restrained",
-					"priority": 20
-				},
-				{
-					"key": "system.attributes.movement.swim",
-					"mode": 4,
-					"value": "@attributes.movement.walk",
-					"priority": 25
-				}
-			],
 			"transfer": false,
 			"_id": "f4sMWSTGRVjOhRas",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"origin": null,
 			"tint": "#ffffff",
@@ -74,7 +51,31 @@
 			"statuses": [],
 			"img": "icons/skills/movement/ball-spinning-blue.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.ci.value",
+						"value": "paralyzed",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.ci.value",
+						"value": "restrained",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.attributes.movement.swim",
+						"value": "@attributes.movement.walk",
+						"priority": 25,
+						"type": "upgrade"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!Y24nyCt4lQreT5aH.f4sMWSTGRVjOhRas"
 		}
 	],
@@ -115,7 +116,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You wrap a leather strap around the limb of a creature, warding it against all else that would restrain or bind its movement.</em></p><p><strong>Buff</strong></p><ul><li><p>Target's movement is unaffected by &amp;reference[difficult terrain].</p></li><li><p>The target gains a swim speed equal to their walking speed.</p></li><li><p>Spells and other magical effects can't reduce the target's speed or &amp;reference[Paralyzed]{paralyze} or &amp;reference[Restrained]{restrain} the target.</p></li><li><p>The target can spend 5 feet of movement to automatically escape from nonmagical restraints, such as manacles or a creature that has it &amp;reference[Grappled].</p></li></ul>",
+			"value": "<p><em>You wrap a leather strap around the limb of a creature, warding it against all else that would restrain or bind its movement.</em></p><p><strong>Buff</strong></p><ul><li><p>Target's movement is unaffected by &amp;reference[difficult terrain].</p></li><li><p>The target gains a swim speed equal to their walking speed.</p></li><li><p>Spells and other magical effects can't reduce the target's speed or &amp;reference[Paralyzed apply=false]{Paralyze} or &amp;reference[Restrained apply=false]{Restrain} the target.</p></li><li><p>The target can spend 5 feet of movement to automatically escape from nonmagical restraints, such as @UUID[Compendium.elkan5e.elkan5e-equipment.Item.gQdHSGV1mNemrUFV]{manacles} or a creature that has it &amp;reference[Grappled apply=false].</p></li></ul>",
 			"chat": ""
 		},
 		"source": {

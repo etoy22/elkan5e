@@ -177,132 +177,6 @@
 			"_key": "!actors.items!RPJnsAEXEcDdgVFJ.l7cd1xvteXitU0ec"
 		},
 		{
-			"name": "Martial Command",
-			"type": "feat",
-			"img": "icons/creatures/abilities/mouth-teeth-human.webp",
-			"effects": [],
-			"folder": null,
-			"flags": {
-				"core": {
-					"sheetClass": "dnd5e.Tidy5eItemSheet"
-				},
-				"dnd5e": {
-					"migratedUses": 1
-				}
-			},
-			"system": {
-				"description": {
-					"value": "<p>Once per long rest, as a bonus action, you can command up to 5 allies of your choice within 60 ft. of you, allowing them to immediately move up to their speed using their reaction.</p>",
-					"chat": ""
-				},
-				"source": {
-					"custom": "",
-					"revision": 1,
-					"rules": "2014"
-				},
-				"uses": {
-					"max": "1",
-					"recovery": [
-						{
-							"period": "lr",
-							"type": "recoverAll"
-						}
-					],
-					"spent": 0
-				},
-				"type": {
-					"value": "",
-					"subtype": ""
-				},
-				"requirements": "",
-				"activities": {
-					"dnd5eactivity000": {
-						"_id": "dnd5eactivity000",
-						"type": "utility",
-						"activation": {
-							"type": "bonus",
-							"value": 1,
-							"condition": "",
-							"override": false
-						},
-						"consumption": {
-							"targets": [
-								{
-									"type": "itemUses",
-									"target": "",
-									"value": "1",
-									"scaling": {
-										"mode": "",
-										"formula": ""
-									}
-								}
-							],
-							"scaling": {
-								"allowed": false,
-								"max": ""
-							},
-							"spellSlot": true
-						},
-						"description": {
-							"chatFlavor": ""
-						},
-						"duration": {
-							"concentration": false,
-							"value": "",
-							"units": "",
-							"special": "",
-							"override": false
-						},
-						"effects": [],
-						"range": {
-							"value": "60",
-							"units": "ft",
-							"special": "",
-							"override": false
-						},
-						"target": {
-							"template": {
-								"count": "",
-								"contiguous": false,
-								"type": "",
-								"size": "",
-								"width": "",
-								"height": "",
-								"units": "none"
-							},
-							"affects": {
-								"count": "",
-								"type": "",
-								"choice": false,
-								"special": ""
-							},
-							"prompt": true,
-							"override": false
-						},
-						"uses": {
-							"spent": 0,
-							"max": "",
-							"recovery": []
-						},
-						"roll": {
-							"formula": "",
-							"name": "",
-							"prompt": false,
-							"visible": false
-						}
-					}
-				},
-				"identifier": "martial-command",
-				"enchant": {},
-				"prerequisites": {
-					"level": null
-				},
-				"properties": []
-			},
-			"_id": "eZduhhc95q3L5wQE",
-			"_key": "!actors.items!RPJnsAEXEcDdgVFJ.eZduhhc95q3L5wQE"
-		},
-		{
 			"_id": "1YJHMBaYJiabcA0i",
 			"name": "Commanding Surge",
 			"type": "feat",
@@ -435,23 +309,12 @@
 			"effects": [
 				{
 					"_id": "xvgdbskjzi8vtfi5",
-					"changes": [
-						{
-							"key": "system.bonuses.abilities.save",
-							"mode": 2,
-							"value": "+2",
-							"priority": 20
-						}
-					],
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"origin": "Scene.3T2wHyISkVY8QnUv.Token.QDVHh3UJnRAGPYbT.Item.0ocy1a80k4aximla",
 					"transfer": true,
@@ -487,7 +350,19 @@
 					"statuses": [],
 					"img": "icons/skills/melee/weapons-crossed-swords-white-blue.webp",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": [
+							{
+								"key": "system.bonuses.abilities.save",
+								"value": "+2",
+								"priority": 20,
+								"type": "add"
+							}
+						]
+					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!RPJnsAEXEcDdgVFJ.i60X4XbQtwJxuVcF.xvgdbskjzi8vtfi5"
 				}
 			],
@@ -520,42 +395,6 @@
 				"properties": []
 			},
 			"_key": "!actors.items!RPJnsAEXEcDdgVFJ.i60X4XbQtwJxuVcF"
-		},
-		{
-			"name": "Mounted Warrior",
-			"type": "feat",
-			"img": "icons/environment/creatures/horse-brown.webp",
-			"effects": [],
-			"_id": "JIgz0Qw0W7MHwi3M",
-			"folder": null,
-			"system": {
-				"description": {
-					"value": "<p>The knight's horse is counted as part of the knight. If 20 damage is done specifically to the horse, it dies, and the knight is knocked prone. If an area of effect spell does at least 20 damage to the knight, the horse also dies. The knight's speed is now 30 ft. The horse has an AC of 11.</p>",
-					"chat": ""
-				},
-				"source": {
-					"rules": "2014",
-					"revision": 1
-				},
-				"uses": {
-					"max": "",
-					"spent": 0,
-					"recovery": []
-				},
-				"type": {
-					"value": "",
-					"subtype": ""
-				},
-				"requirements": "",
-				"identifier": "mounted-warrior",
-				"activities": {},
-				"enchant": {},
-				"prerequisites": {
-					"level": null
-				},
-				"properties": []
-			},
-			"_key": "!actors.items!RPJnsAEXEcDdgVFJ.JIgz0Qw0W7MHwi3M"
 		},
 		{
 			"name": "Battleaxe",
@@ -980,28 +819,260 @@
 			"folder": "MOTIBBOBycuJqtPv",
 			"_id": "3v8OwgE2LMwOKzKj",
 			"_key": "!actors.items!RPJnsAEXEcDdgVFJ.3v8OwgE2LMwOKzKj"
+		},
+		{
+			"name": "Martial Command",
+			"type": "feat",
+			"img": "icons/weapons/swords/swords-short.webp",
+			"effects": [],
+			"folder": "8TdNVUtlOTsUcDDC",
+			"flags": {
+				"core": {
+					"sheetClass": "dnd5e.Tidy5eItemSheet"
+				},
+				"dnd5e": {
+					"riders": {
+						"activity": [],
+						"effect": []
+					},
+					"migratedUses": 1
+				},
+				"midiProperties": {
+					"confirmTargets": "default",
+					"autoFailFriendly": false,
+					"autoSaveFriendly": false,
+					"critOther": false,
+					"offHandWeapon": false,
+					"magicdam": false,
+					"magiceffect": false,
+					"noConcentrationCheck": false,
+					"toggleEffect": false,
+					"ignoreTotalCover": false,
+					"idr": false,
+					"idi": false,
+					"idv": false,
+					"ida": false
+				},
+				"midi-qol": {
+					"rollAttackPerTarget": "default",
+					"itemCondition": "",
+					"reactionCondition": "",
+					"effectCondition": "",
+					"removeAttackDamageButtons": "default",
+					"otherCondition": ""
+				}
+			},
+			"system": {
+				"description": {
+					"value": "<p><em>You shout a command to an ally to get moving.</em></p><p><strong>Bonus Action</strong> - 60 ft. Ally - 1/Short Rest</p><ul><li><p>Your chosen ally can immediately move up to their speed using their reaction.</p></li></ul>",
+					"chat": ""
+				},
+				"source": {
+					"custom": "elkan5e.com/ancestrybackground",
+					"revision": 1,
+					"rules": "",
+					"book": "Elkan 5e",
+					"page": "",
+					"license": ""
+				},
+				"uses": {
+					"max": "1",
+					"recovery": [
+						{
+							"period": "sr",
+							"type": "recoverAll"
+						}
+					],
+					"spent": 0
+				},
+				"type": {
+					"value": "background",
+					"subtype": ""
+				},
+				"requirements": "Militant",
+				"properties": [],
+				"activities": {
+					"dnd5eactivity000": {
+						"_id": "dnd5eactivity000",
+						"type": "utility",
+						"activation": {
+							"type": "bonus",
+							"value": 1,
+							"condition": "",
+							"override": false
+						},
+						"consumption": {
+							"targets": [
+								{
+									"type": "itemUses",
+									"target": "",
+									"value": "1",
+									"scaling": {
+										"mode": "",
+										"formula": ""
+									}
+								}
+							],
+							"scaling": {
+								"allowed": false,
+								"max": ""
+							},
+							"spellSlot": true
+						},
+						"description": {
+							"chatFlavor": ""
+						},
+						"duration": {
+							"concentration": false,
+							"value": "",
+							"units": "inst",
+							"special": "",
+							"override": false
+						},
+						"effects": [],
+						"range": {
+							"value": "60",
+							"units": "ft",
+							"special": "",
+							"override": false
+						},
+						"target": {
+							"template": {
+								"count": "",
+								"contiguous": false,
+								"type": "",
+								"size": "",
+								"width": "",
+								"height": "",
+								"units": "ft",
+								"stationary": false
+							},
+							"affects": {
+								"count": "",
+								"type": "",
+								"choice": false,
+								"special": ""
+							},
+							"prompt": true,
+							"override": false
+						},
+						"uses": {
+							"spent": 0,
+							"max": "",
+							"recovery": []
+						},
+						"roll": {
+							"formula": "",
+							"name": "",
+							"prompt": false,
+							"visible": false
+						},
+						"img": null,
+						"visibility": {
+							"level": {},
+							"requireAttunement": false,
+							"requireIdentification": false,
+							"requireMagic": false
+						},
+						"useConditionText": "",
+						"useConditionReason": "",
+						"effectConditionText": "",
+						"macroData": {
+							"name": "",
+							"command": ""
+						},
+						"ignoreTraits": {
+							"idi": false,
+							"idr": false,
+							"idv": false,
+							"ida": false,
+							"idm": false
+						},
+						"midiProperties": {
+							"ignoreTraits": [],
+							"triggeredActivityId": "none",
+							"triggeredActivityConditionText": "",
+							"triggeredActivityTargets": "targets",
+							"triggeredActivityRollAs": "self",
+							"triggeredActivityConsume": true,
+							"triggeredActivityConfigure": true,
+							"autoConsume": false,
+							"forceConsumeDialog": "default",
+							"forceRollDialog": "default",
+							"forceDamageDialog": "default",
+							"confirmTargets": "default",
+							"autoTargetType": "any",
+							"autoTargetAction": "default",
+							"automationOnly": false,
+							"otherActivityCompatible": true,
+							"otherActivityAsParentType": true,
+							"identifier": "",
+							"displayActivityName": false,
+							"rollMode": "default",
+							"chooseEffects": false,
+							"toggleEffect": false,
+							"ignoreFullCover": false,
+							"removeChatButtons": "default",
+							"magicEffect": false,
+							"magicDamage": false,
+							"noConcentrationCheck": false,
+							"skipConcentrationCheck": false,
+							"autoCEEffects": "default"
+						},
+						"isOverTimeFlag": false,
+						"overTimeProperties": {
+							"saveRemoves": true,
+							"rollAs": "target",
+							"preRemoveConditionText": "",
+							"postRemoveConditionText": ""
+						},
+						"regionBehavior": {
+							"enabled": false,
+							"dispositionFilter": -1,
+							"excludeSource": true,
+							"oncePerTurn": true,
+							"wallRestriction": "none",
+							"regionVisibility": 2,
+							"rules": []
+						},
+						"regionLight": {
+							"enabled": false,
+							"dim": 0,
+							"bright": 0,
+							"color": null,
+							"alpha": 0.5,
+							"luminosity": 0.5,
+							"animationType": "",
+							"animationSpeed": 5,
+							"animationIntensity": 5
+						},
+						"otherActivityId": "none",
+						"otherActivityAsParentType": true
+					}
+				},
+				"identifier": "martial-command",
+				"enchant": {},
+				"prerequisites": {
+					"level": null,
+					"items": [],
+					"repeatable": false
+				},
+				"advancement": {},
+				"crewed": false
+			},
+			"_id": "kRP4a4HiFiMTAqHF",
+			"_key": "!actors.items!RPJnsAEXEcDdgVFJ.kRP4a4HiFiMTAqHF"
 		}
 	],
 	"effects": [
 		{
 			"_id": "IpdOUtAbIMDBCJls",
-			"changes": [
-				{
-					"key": "system.bonuses.abilities.save",
-					"value": "+2",
-					"mode": 2,
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": 642433056,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"origin": "Actor.kM8oiWa8seyu4r5Z.Item.i60X4XbQtwJxuVcF",
 			"transfer": false,
@@ -1040,7 +1111,26 @@
 			"statuses": [],
 			"img": "icons/skills/melee/weapons-crossed-swords-white-blue.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.bonuses.abilities.save",
+						"value": "+2",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": {
+				"combat": null,
+				"round": null,
+				"time": 642433056,
+				"turn": null,
+				"combatant": null,
+				"initiative": null
+			},
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!actors.effects!RPJnsAEXEcDdgVFJ.IpdOUtAbIMDBCJls"
 		}
 	],
@@ -1161,9 +1251,11 @@
 				"climb": 0,
 				"fly": 0,
 				"swim": 0,
-				"walk": 60,
+				"walk": "30",
 				"units": "ft",
-				"hover": false
+				"hover": false,
+				"bonus": "",
+				"special": ""
 			},
 			"attunement": {
 				"max": 3
@@ -1654,9 +1746,6 @@
 			"tint": "#ffffff",
 			"scaleX": 1,
 			"scaleY": 1,
-			"offsetX": 0,
-			"offsetY": 0,
-			"rotation": 0,
 			"anchorX": 0.5,
 			"anchorY": 0.5,
 			"fit": "contain",
@@ -1673,7 +1762,7 @@
 			"saturation": 0,
 			"contrast": 0
 		},
-		"detectionModes": [],
+		"detectionModes": {},
 		"appendNumber": false,
 		"prependAdjective": false,
 		"occludable": {
@@ -1697,7 +1786,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 1
 	},
 	"folder": "7CxetSc3gdsUyFOc",
 	"_id": "RPJnsAEXEcDdgVFJ",

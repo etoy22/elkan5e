@@ -123,25 +123,14 @@
 	"effects": [
 		{
 			"name": "Harrying Blow",
-			"changes": [
-				{
-					"key": "system.attributes.movement.all",
-					"mode": 0,
-					"value": "/2",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"_id": "K66hfGN5qMk9HWOA",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 7,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -156,11 +145,10 @@
 					"showIcon": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"turnEndSource"
-					],
+					"specialDuration": [],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -182,7 +170,20 @@
 			"tint": "#ffffff",
 			"img": "icons/skills/melee/strikes-sword-triple-gray.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.all",
+						"type": "custom",
+						"value": "/2",
+						"phase": "final",
+						"priority": 20
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!EqA3m6smVsTig8Xo.K66hfGN5qMk9HWOA"
 		}
 	],

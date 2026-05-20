@@ -4,25 +4,14 @@
 	"img": "icons/magic/unholy/orb-rays-blue.webp",
 	"effects": [
 		{
-			"changes": [
-				{
-					"key": "system.traits.di.value",
-					"mode": 0,
-					"value": "thunder",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"_id": "iPmhsqkpCJruiGzi",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.BVd4kOcKeN5hvGk2",
 			"tint": "#ffffff",
@@ -62,7 +51,19 @@
 			"statuses": [],
 			"img": "icons/magic/unholy/orb-rays-blue.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.di.value",
+						"value": "thunder",
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!BVd4kOcKeN5hvGk2.iPmhsqkpCJruiGzi"
 		}
 	],
@@ -105,7 +106,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You hold your hand in front of you as if holding a ball and hum a single low note. Creatures within the area of silence hear ringing in their ears and then nothing.</em></p><p><strong>Utility Spell</strong></p><ul><li><p><strong>Area Hazard:</strong> No sound can enter or escape the zone of silence and no sound can be heard within. Any creature or object within the sphere is immune to &amp;reference[thunder] damage. All creatures are &amp;reference[deafened] and &amp;reference[silenced] while inside. Casting a spell that includes a verbal component is impossible there.</p></li></ul><p><strong>Upcasting:</strong> The radius of the spell increases by 5 ft. for each spell level above 2nd level.</p>",
+			"value": "<p><em>You hold your hand in front of you as if holding a ball and hum a single low note. Creatures within the area of silence hear ringing in their ears and then nothing.</em></p><p><strong>Utility</strong></p><ul><li><p><strong>Area Hazard:</strong> No sound can enter or escape the zone of silence and no sound can be heard within. Any creature or object within the sphere is immune to &amp;reference[thunder] damage. All creatures are &amp;reference[deafened] and &amp;reference[silenced] while inside. Casting a spell that includes a verbal component is impossible there.</p></li></ul><p><strong>Upcasting:</strong> The radius of the spell increases by 5 ft. for each spell level above 2nd level.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -194,7 +195,11 @@
 				},
 				"effects": [
 					{
-						"_id": "iPmhsqkpCJruiGzi"
+						"_id": "iPmhsqkpCJruiGzi",
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -205,8 +210,16 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": ""
+					},
+					"template": {
+						"type": "sphere",
+						"size": "20",
+						"count": ""
+					}
 				},
 				"uses": {
 					"spent": 0,
@@ -218,68 +231,31 @@
 					"name": "",
 					"prompt": false,
 					"visible": false
-				}
-			},
-			"zMUbWH2iCng7Q3j9": {
-				"type": "utility",
-				"name": "Moved in after Cast",
-				"_id": "zMUbWH2iCng7Q3j9",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
 				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": false,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "iPmhsqkpCJruiGzi"
-					}
-				],
-				"range": {
-					"override": true,
-					"units": "any",
-					"special": ""
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"roll": {
-					"prompt": false,
-					"visible": false,
-					"name": "",
-					"formula": ""
-				},
-				"useConditionText": "",
-				"forceDialog": false,
-				"effectConditionText": "",
+				"name": "",
 				"img": "",
-				"appliedEffects": [
-					"iPmhsqkpCJruiGzi"
-				]
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "iPmhsqkpCJruiGzi"
+						},
+						{
+							"trigger": "exit",
+							"action": "applyEffect",
+							"targetId": "iPmhsqkpCJruiGzi"
+						}
+					],
+					"dispositionFilter": 0
+				}
 			}
 		},
 		"identifier": "silence"

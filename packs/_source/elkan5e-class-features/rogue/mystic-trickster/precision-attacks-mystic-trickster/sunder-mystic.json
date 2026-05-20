@@ -5,25 +5,14 @@
 	"effects": [
 		{
 			"name": "Sunder",
-			"changes": [
-				{
-					"key": "flags.midi-qol.grants.advantage.attack.all",
-					"mode": 2,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"_id": "f50C6nYFPvs8Vzqs",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 7,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"description": "",
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.kzoSpwhx6d3aPXtl",
@@ -35,14 +24,12 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"stackable": "noneName",
-					"showIcon": true,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"turnEndSource"
-					],
+					"specialDuration": [],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -64,7 +51,19 @@
 			"tint": "#ffffff",
 			"img": "icons/skills/melee/shield-damaged-broken-orange.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.grants.advantage.attack.all",
+						"value": 1,
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 2,
+			"folder": null,
 			"_key": "!items.effects!LaArhGwzpzu7sRoR.f50C6nYFPvs8Vzqs"
 		}
 	],

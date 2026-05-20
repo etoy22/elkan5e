@@ -20,7 +20,8 @@
 					],
 					"disableIncapacitated": false,
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -39,23 +40,12 @@
 					"wallsBlock": "system"
 				}
 			},
-			"changes": [
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 2,
-					"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"tint": "#ffffff",
 			"transfer": false,
@@ -68,7 +58,20 @@
 			],
 			"img": "icons/magic/control/hypnosis-mesmerism-swirl.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"type": "add",
+						"value": "turn=end,saveAbility=wis,saveDC=@attributes.spell.dc,saveMagic=true,",
+						"phase": "initial",
+						"priority": 20
+					}
+				]
+			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!TmZ22s2pzXuzMX7n.vf8qXWho8hhViUVl"
 		}
 	],

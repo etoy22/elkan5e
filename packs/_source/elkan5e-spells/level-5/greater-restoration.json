@@ -38,7 +38,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You touch a willing creature, crying out for all afflictions to be driven and cast out of them.</em></p><p><strong>Healing</strong></p><p>You remove debilitating effects from the target. You remove:</p><ul><li>One level of &amp;reference[exhaustion],</li><li>One &amp;reference[disease]{disease},</li><li>The &amp;reference[blinded], &amp;reference[dazed], &amp;reference[deafened], &amp;reference[drained], &amp;reference[paralyzed], &amp;reference[stunned], &amp;reference[poisoned], and &amp;reference[weakened] conditions.</li></ul><p><em>This spell cannot remove a condition caused by a &amp;reference[cursed]{curse} or another condition not listed (eg. a version of &amp;reference[frightened] that causes creatures to also be &amp;reference[weakened]).</em></p>",
+			"value": "<p><em>You touch a willing creature, crying out for all afflictions to be driven and cast out of them.</em></p><p><strong>Healing</strong></p><p>You remove debilitating effects from the target. You remove:</p><ul><li><p>One level of &amp;reference[exhaustion apply=false],</p></li><li><p>One &amp;reference[disease],</p></li><li><p>The &amp;reference[blinded apply=false], &amp;reference[dazed apply=false], &amp;reference[deafened apply=false], &amp;reference[drained apply=false], &amp;reference[paralyzed apply=false], &amp;reference[stunned apply=false], &amp;reference[poisoned apply=false], and &amp;reference[weakened apply=false] conditions.</p></li></ul><p><em>This spell cannot remove a condition caused by a &amp;reference[cursed]{Curse} or another condition not listed (eg. a version of &amp;reference[frightened apply=false] that causes creatures to also be &amp;reference[weakened apply=false]).</em></p>",
 			"chat": ""
 		},
 		"source": {
@@ -50,7 +50,7 @@
 			"license": ""
 		},
 		"activation": {
-			"type": "action",
+			"type": "bonus",
 			"condition": "",
 			"value": 1
 		},
@@ -60,7 +60,7 @@
 		},
 		"target": {
 			"affects": {
-				"type": "creature",
+				"type": "ally",
 				"choice": false,
 				"count": "1",
 				"special": ""

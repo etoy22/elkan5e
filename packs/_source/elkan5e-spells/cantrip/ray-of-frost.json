@@ -12,13 +12,14 @@
 					"selfTarget": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"turnStartSource"
-					],
+					"specialDuration": [],
 					"selfTargetAlways": false,
 					"enableCondition": "",
 					"disableCondition": "",
-					"showIcon": false
+					"showIcon": false,
+					"expiryMode": "default",
+					"disableIncapacitated": false,
+					"dontApply": false
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -37,23 +38,12 @@
 					"wallsBlock": "system"
 				}
 			},
-			"changes": [
-				{
-					"key": "system.attributes.movement.walk",
-					"mode": 2,
-					"value": "-10",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 7,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"tint": "#ffffff",
 			"transfer": false,
@@ -63,7 +53,19 @@
 			"statuses": [],
 			"img": "icons/magic/light/beam-rays-blue.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.walk",
+						"value": -10,
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!3wT0BXLrGDEtFkUP.dNFOxJA3UGDHtSmJ"
 		}
 	],

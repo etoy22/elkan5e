@@ -199,36 +199,36 @@
 	},
 	"effects": [
 		{
-			"name": "Starry Wisp",
-			"img": "icons/magic/light/orb-hand-green.webp",
+			"name": "Celestial Bolt",
+			"img": "icons/magic/light/projectile-stars-blue.webp",
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.a1CjGU1Cr8r5q9vF",
 			"transfer": false,
 			"_id": "EX8IsrjXlg6hjPVt",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "ATL.light.dim",
-					"mode": 2,
-					"value": "10",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.ci.value",
-					"mode": 2,
-					"value": "invisible",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "ATL.light.dim",
+						"type": "add",
+						"value": 10,
+						"phase": "final",
+						"priority": 20
+					},
+					{
+						"key": "system.traits.ci.value",
+						"type": "add",
+						"value": "blinded",
+						"phase": "initial",
+						"priority": 20
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"combat": null,
-				"seconds": 7,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -246,8 +246,10 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": [
-						"turnEndSource"
-					]
+						"None"
+					],
+					"expiryMode": "default",
+					"combatActorOverride": "source"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -267,6 +269,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!a1CjGU1Cr8r5q9vF.EX8IsrjXlg6hjPVt"
 		}
 	],

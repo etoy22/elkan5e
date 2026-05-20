@@ -214,18 +214,14 @@
 	"effects": [
 		{
 			"name": "Mark of Affliction",
-			"changes": [],
 			"transfer": false,
 			"_id": "8e1fUpb3psM0UzkV",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -264,26 +260,17 @@
 			"tint": "#ffffff",
 			"img": "icons/skills/toxins/symbol-poison-drop-skull-green.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": []
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!v4I2jKOQ4pCIetja.8e1fUpb3psM0UzkV"
 		},
 		{
 			"name": "Poisoned",
 			"origin": "Compendium.elkan5e.elkan5e-feats.Item.Kb50Xn83LKmo9PB0",
-			"changes": [
-				{
-					"key": "macro.StatusEffect",
-					"mode": 0,
-					"value": "poisoned",
-					"priority": 0
-				},
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 2,
-					"value": "turn=end,\nsaveAbility=con,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Mark of Affliction",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"flags": {
 				"dae": {
@@ -320,20 +307,35 @@
 			"_id": "fZaBbTUxBpfQqEw7",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"statuses": [],
 			"tint": "#ffffff",
 			"img": "modules/elkan5e/icons/conditions/poisoned.svg",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"value": "poisoned",
+						"priority": 0,
+						"type": "custom"
+					},
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end,\nsaveAbility=con,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Mark of Affliction",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!v4I2jKOQ4pCIetja.fZaBbTUxBpfQqEw7"
 		}
 	],

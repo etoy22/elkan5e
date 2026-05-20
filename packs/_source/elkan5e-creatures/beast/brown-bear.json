@@ -634,12 +634,9 @@
 			"src": "systems/dnd5e/tokens/beast/BrownBear.webp",
 			"anchorX": 0.5,
 			"anchorY": 0.5,
-			"offsetX": 0,
-			"offsetY": 0,
 			"fit": "contain",
 			"scaleX": 1.5,
 			"scaleY": 1.5,
-			"rotation": 0,
 			"tint": "#ffffff",
 			"alphaThreshold": 0.75
 		},
@@ -690,7 +687,7 @@
 			"saturation": 0,
 			"contrast": 0
 		},
-		"detectionModes": [],
+		"detectionModes": {},
 		"occludable": {
 			"radius": 0
 		},
@@ -713,7 +710,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 2
 	},
 	"items": [
 		{
@@ -1306,17 +1304,15 @@
 					"origin": "Compendium.dnd5e.actors24.Actor.mmBrownBear00000.Item.mmClaw0000000000",
 					"_id": "5q1vcRvzYS3N0DhQ",
 					"type": "base",
-					"system": {},
-					"changes": [],
+					"system": {
+						"changes": []
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"description": "<p>If the target is a Large or smaller creature, it has the &amp;reference[Prone apply=false] condition.</p>",
 					"tint": "#ffffff",
@@ -1324,6 +1320,9 @@
 					"statuses": [
 						"prone"
 					],
+					"showIcon": 2,
+					"start": null,
+					"folder": null,
 					"_key": "!actors.items.effects!cvyjw4Qdc9s8kptp.mmClaw0000000000.5q1vcRvzYS3N0DhQ"
 				}
 			],
@@ -1335,25 +1334,14 @@
 			"img": "icons/creatures/abilities/wolf-howl-moon-white.webp",
 			"effects": [
 				{
-					"changes": [
-						{
-							"key": "flags.midi-qol.advantage.skill.prc",
-							"mode": 5,
-							"value": "1",
-							"priority": 20
-						}
-					],
 					"transfer": true,
 					"_id": "LWHLArqPtzqymV0F",
 					"disabled": false,
 					"duration": {
-						"startTime": 676043365,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": 0,
-						"startTurn": 0
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"origin": null,
 					"tint": "#ffffff",
@@ -1391,7 +1379,26 @@
 					"statuses": [],
 					"img": "icons/creatures/abilities/wolf-howl-moon-white.webp",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": [
+							{
+								"key": "flags.midi-qol.advantage.skill.prc",
+								"value": 1,
+								"priority": 20,
+								"type": "override"
+							}
+						]
+					},
+					"start": {
+						"combat": null,
+						"round": 0,
+						"time": 676043365,
+						"turn": 0,
+						"combatant": null,
+						"initiative": null
+					},
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!cvyjw4Qdc9s8kptp.jHOEIt31IiFbIj0Y.LWHLArqPtzqymV0F"
 				}
 			],

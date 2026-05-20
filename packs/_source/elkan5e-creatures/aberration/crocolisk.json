@@ -638,12 +638,9 @@
 			"src": "systems/dnd5e/tokens/&amp;reference[beast]/GiantCrocodile.webp",
 			"anchorX": 0.5,
 			"anchorY": 0.5,
-			"offsetX": 0,
-			"offsetY": 0,
 			"fit": "contain",
 			"scaleX": 1.5,
 			"scaleY": 1.5,
-			"rotation": 0,
 			"tint": "#ffffff",
 			"alphaThreshold": 0.75
 		},
@@ -694,7 +691,7 @@
 			"saturation": -1,
 			"contrast": 0
 		},
-		"detectionModes": [],
+		"detectionModes": {},
 		"occludable": {
 			"radius": 0
 		},
@@ -717,7 +714,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 2
 	},
 	"items": [
 		{
@@ -952,17 +950,15 @@
 					"transfer": false,
 					"_id": "AvjAIQgudhl4w7PW",
 					"type": "base",
-					"system": {},
-					"changes": [],
+					"system": {
+						"changes": []
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"combat": null,
-						"seconds": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"description": "",
 					"tint": "#ffffff",
@@ -1001,6 +997,9 @@
 							"statuses": []
 						}
 					},
+					"showIcon": 2,
+					"start": null,
+					"folder": null,
 					"_key": "!actors.items.effects!2NbUwMqIXe6TsxT3.fQ3EtDxFCBfPfii3.AvjAIQgudhl4w7PW"
 				},
 				{
@@ -1010,17 +1009,15 @@
 					"transfer": false,
 					"_id": "CpSRHJDSpfOfiWE7",
 					"type": "base",
-					"system": {},
-					"changes": [],
+					"system": {
+						"changes": []
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"combat": null,
-						"seconds": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"description": "",
 					"tint": "#ffffff",
@@ -1057,6 +1054,9 @@
 							"statuses": []
 						}
 					},
+					"start": null,
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!2NbUwMqIXe6TsxT3.fQ3EtDxFCBfPfii3.CpSRHJDSpfOfiWE7"
 				}
 			],
@@ -1310,17 +1310,15 @@
 					"transfer": true,
 					"_id": "2rdG3AHe5m9mKcKu",
 					"type": "base",
-					"system": {},
-					"changes": [],
+					"system": {
+						"changes": []
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": 676043365,
-						"combat": null,
-						"seconds": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": 0,
-						"startTurn": 0
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"description": "",
 					"tint": "#ffffff",
@@ -1359,6 +1357,16 @@
 							"statuses": []
 						}
 					},
+					"showIcon": 2,
+					"start": {
+						"combat": null,
+						"round": 0,
+						"time": 676043365,
+						"turn": 0,
+						"combatant": null,
+						"initiative": null
+					},
+					"folder": null,
 					"_key": "!actors.items.effects!2NbUwMqIXe6TsxT3.X7GHWQrqTpehsgex.2rdG3AHe5m9mKcKu"
 				}
 			],
@@ -1725,24 +1733,22 @@
 					"transfer": false,
 					"_id": "kza3tOhYhPS1Eyj3",
 					"type": "base",
-					"system": {},
-					"changes": [
-						{
-							"key": "flags.midi-qol.ActivityOverTime",
-							"mode": 2,
-							"value": "overtime-save",
-							"priority": 20
-						}
-					],
+					"system": {
+						"changes": [
+							{
+								"key": "flags.midi-qol.ActivityOverTime",
+								"value": "overtime-save",
+								"priority": 20,
+								"type": "add"
+							}
+						]
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": null,
-						"combat": null,
-						"seconds": 60,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": 60,
+						"units": "seconds",
+						"expiry": "turnStart",
+						"expired": false
 					},
 					"description": "",
 					"tint": "#ffffff",
@@ -1781,6 +1787,9 @@
 							"statuses": []
 						}
 					},
+					"showIcon": 2,
+					"start": null,
+					"folder": null,
 					"_key": "!actors.items.effects!2NbUwMqIXe6TsxT3.3rmRN1sSgLwnHkms.kza3tOhYhPS1Eyj3"
 				}
 			],

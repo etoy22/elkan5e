@@ -1,4 +1,4 @@
-import { createLightFromTemplate } from "./level-2.mjs";
+import { createLightRegion } from "../shared/helpers.mjs";
 
 /**
  * Runs light spell automation.
@@ -7,31 +7,30 @@ import { createLightFromTemplate } from "./level-2.mjs";
  * @returns {Promise<unknown>} Promise resolution result.
  */
 export async function light(workflow) {
-	return createLightFromTemplate(
-		workflow,
-		{
-			dim: 40,
-			bright: 20,
-			alpha: 0.3,
-			angle: 360,
-			luminosity: 0.5,
-			saturation: 0,
-			contrast: 0,
-			shadows: 0,
-			negative: false,
-			animation: {
-				type: "",
-				speed: 2,
-				intensity: 5,
-			},
-		},
-		1,
-	);
-}
+	const workflowCastLevel = Number(workflow.castData?.castLevel);
+	const itemSpellLevel = Number(workflow.item?.system?.level);
+	const spellLevel = Number.isFinite(workflowCastLevel)
+		? workflowCastLevel
+		: Number.isFinite(itemSpellLevel)
+			? itemSpellLevel
+			: 0;
 
-/**
- * Creates a continual flame light source from the last measured template.
- *
- * @param {object} workflow - Workflow for the spell cast.
- * @returns {Promise<void>}
- */
+	for (const region of workflow.templateUuids ?? []) {
+		await createLightRegion(
+			region,
+			{
+				dim: 40,
+				bright: 20,
+				alpha: 0.3,
+				luminosity: 0.5,
+				animation: {
+					type: "",
+					speed: 2,
+					intensity: 5,
+				},
+				sort: spellLevel,
+			},
+			"Light",
+		);
+	}
+}

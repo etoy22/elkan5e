@@ -30,34 +30,11 @@
 					"showIcon": false
 				}
 			},
-			"changes": [
-				{
-					"key": "flags.midi-qol.disadvantage.attack.all",
-					"mode": 5,
-					"value": "1",
-					"priority": 50
-				},
-				{
-					"key": "flags.midi-qol.disadvantage.ability.check.all",
-					"mode": 5,
-					"value": "1",
-					"priority": 50
-				},
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 2,
-					"value": "turn=end,\\nsaveAbility=con,\\nsaveDC=13",
-					"priority": 20
-				}
-			],
 			"duration": {
-				"seconds": 60,
-				"startTime": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null,
-				"combat": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"_id": "ZcfVtDTeUnYRQIjY",
 			"disabled": false,
@@ -69,7 +46,31 @@
 			"statuses": [],
 			"img": "modules/elkan5e/icons/conditions/poisoned.svg",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.disadvantage.attack.all",
+						"value": 1,
+						"priority": 50,
+						"type": "override"
+					},
+					{
+						"key": "flags.midi-qol.disadvantage.ability.check.all",
+						"value": 1,
+						"priority": 50,
+						"type": "override"
+					},
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end,\\nsaveAbility=con,\\nsaveDC=13",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!FDhep4CajGft1kq6.ZcfVtDTeUnYRQIjY"
 		}
 	],

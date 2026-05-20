@@ -37,41 +37,12 @@
 					"wallsBlock": "system"
 				}
 			},
-			"changes": [
-				{
-					"key": "system.traits.di.value",
-					"mode": 0,
-					"value": "poison",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.ci.value",
-					"mode": 0,
-					"value": "frightened",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.advantage.ability.save.wis",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "system.attributes.hp.tempmax",
-					"mode": 2,
-					"value": "[[2d6]]",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 86400,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 86400,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"tint": "#ffffff",
 			"transfer": false,
@@ -81,7 +52,37 @@
 			"statuses": [],
 			"img": "icons/consumables/food/plate-chicken-grilled-mushroom-brown.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.di.value",
+						"value": "poison",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "system.traits.ci.value",
+						"value": "frightened",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "flags.midi-qol.advantage.ability.save.wis",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "system.attributes.hp.tempmax",
+						"value": "[[2d6]]",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!ADa7282v0F99gpTE.dUhuzikjyBLRoari"
 		}
 	],
@@ -135,7 +136,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><strong>Materials:</strong> You require a gem-encrusted bowl worth at least 1,000 gp, which the spell consumes.</p><p><strong>Summoning/Utility</strong></p><p>You bring forth a magnificent feast of food and drink. The feast takes 1 hour to consume, and if they do they get the benefits below. The feast disappears at the end of the hour. Up to 12 creatures can partake.</p><p><strong>1 Hour</strong> - 24 Hours</p><p><strong>Buff</strong></p><ul><li><p>Cured of all Diseases and &amp;reference[Poisoned]{Poisons}.</p></li><li><p>Immune to &amp;reference[Poison] and the &amp;reference[Frightened] condition.</p></li><li><p>Advantage on all Wisdom Saving Throws.</p></li><li><p>Hit Point maximum increases by [[/r 2d10]], and you gain the same number of Hit Points.</p></li></ul>",
+			"value": "<p><strong>Materials:</strong> You require a gem-encrusted bowl worth at least 1,000 gp, which the spell consumes.</p><p><strong>Summoning/Utility</strong></p><p>You bring forth a magnificent feast of food and drink. The feast takes 1 hour to consume, and if they do they get the benefits below. The feast disappears at the end of the hour. Up to 12 creatures can partake.</p><p><strong>1 Hour</strong> - 24 Hours</p><p><strong>Buff</strong></p><ul><li><p>Cured of all Diseases and &amp;reference[Poisoned apply=false]{Poisons}.</p></li><li><p>Immune to &amp;reference[Poison] and the &amp;reference[Frightened apply=false] condition.</p></li><li><p>&amp;reference[Advantage] on all Wisdom Saving Throws.</p></li><li><p>Hit Point maximum increases by [[/r 2d10]], and you gain the same number of Hit Points.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {

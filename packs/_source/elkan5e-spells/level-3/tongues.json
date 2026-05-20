@@ -4,31 +4,14 @@
 	"img": "icons/commodities/treasure/totem-wood-face-brown.webp",
 	"effects": [
 		{
-			"changes": [
-				{
-					"key": "system.traits.languages.custom",
-					"mode": 0,
-					"value": "Understands and Can Speak All Spoken Language",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.languages.all",
-					"mode": 0,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"_id": "7BrF0zZXR8mjsZ1N",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"origin": null,
 			"tint": "#ffffff",
@@ -66,7 +49,25 @@
 			"statuses": [],
 			"img": "icons/commodities/treasure/totem-wood-face-brown.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.languages.custom",
+						"value": "Understands and Can Speak All Spoken Language",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "system.traits.languages.all",
+						"value": 1,
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!yJzrgvxa2QVSAr6z.7BrF0zZXR8mjsZ1N"
 		}
 	],
@@ -109,7 +110,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>Holding a small clay model of a ziggurat inscribed with glyphs, you speak a simple phrase in a language you know well. Your words echo through the clay ziggurat in a thousand languages before settling into the target's mind.</em></p><p><strong>Utility Spell</strong></p><ul><li><p>The target understands any spoken language it hears.</p></li><li><p>When the target speaks, they can be understood by any creature that can hear them and knows at least one language.</p></li></ul>",
+			"value": "<p><em>Holding a small clay model of a ziggurat inscribed with glyphs, you speak a simple phrase in a language you know well. Your words echo through the clay ziggurat in a thousand languages before settling into the target's mind.</em></p><p><strong>Utility</strong></p><ul><li><p>The target understands any spoken language it hears.</p></li><li><p>When the target speaks, they can be understood by any creature that can hear them and knows at least one language.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {

@@ -2,7 +2,92 @@
 	"name": "Antipathy/Sympathy",
 	"type": "spell",
 	"img": "icons/skills/social/diplomacy-unity-alliance.webp",
-	"effects": [],
+	"effects": [
+		{
+			"name": "Antipathy",
+			"img": "icons/skills/social/diplomacy-unity-alliance.webp",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.3HtSvzBBjKnnRtLv",
+			"transfer": false,
+			"_id": "2JNwxYNVGwndVqCa",
+			"type": "base",
+			"system": {
+				"changes": []
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [
+				"falling"
+			],
+			"showIcon": 2,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"stackable": "noneName",
+					"expiryMode": "default",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"specialDuration": []
+				}
+			},
+			"_key": "!items.effects!3HtSvzBBjKnnRtLv.2JNwxYNVGwndVqCa"
+		},
+		{
+			"name": "Sympathy",
+			"img": "icons/skills/social/diplomacy-unity-alliance.webp",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.3HtSvzBBjKnnRtLv",
+			"transfer": false,
+			"type": "base",
+			"system": {
+				"changes": []
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [
+				"frightened"
+			],
+			"showIcon": 2,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"stackable": "noneName",
+					"expiryMode": "default",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"specialDuration": []
+				}
+			},
+			"_id": "FAWrIPiOVRkmVZ95",
+			"_key": "!items.effects!3HtSvzBBjKnnRtLv.FAWrIPiOVRkmVZ95"
+		}
+	],
 	"folder": "TOjvTMaQMAMN24MV",
 	"flags": {
 		"midi-qol": {
@@ -61,7 +146,7 @@
 		"target": {
 			"affects": {
 				"type": "creature",
-				"count": "1",
+				"count": "",
 				"choice": false,
 				"special": ""
 			},
@@ -127,8 +212,12 @@
 				},
 				"effects": [
 					{
-						"_id": "Cz824xQ2Z4BYuSa9",
-						"onSave": false
+						"_id": "2JNwxYNVGwndVqCa",
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -138,12 +227,16 @@
 					"prompt": true,
 					"template": {
 						"contiguous": false,
-						"units": "ft"
+						"units": "ft",
+						"type": "cube",
+						"size": "200",
+						"count": ""
 					},
 					"affects": {
-						"choice": false
+						"choice": false,
+						"type": ""
 					},
-					"override": false
+					"override": true
 				},
 				"damage": {
 					"onSave": "half",
@@ -158,9 +251,193 @@
 				},
 				"uses": {
 					"spent": 0,
-					"recovery": []
+					"recovery": [],
+					"max": ""
 				},
-				"_id": "RHIoQSzYHVjbOMR0"
+				"_id": "RHIoQSzYHVjbOMR0",
+				"name": "Antipathy",
+				"img": "",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "antipathy"
+						}
+					]
+				}
+			},
+			"pDIGi7FyPjUmGClU": {
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "FAWrIPiOVRkmVZ95",
+						"level": {},
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "self"
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"count": "",
+						"stationary": false,
+						"type": "cube",
+						"size": "200"
+					},
+					"affects": {
+						"choice": false,
+						"type": ""
+					},
+					"override": true
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": [],
+					"critical": {
+						"allow": false
+					}
+				},
+				"save": {
+					"ability": [
+						"wis"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"name": "Sympathy",
+				"img": "",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"triggeredActivityConsume": true,
+					"triggeredActivityConfigure": true,
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"skipConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"rollAs": "target",
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "sympathy"
+						}
+					]
+				},
+				"regionLight": {
+					"enabled": false,
+					"dim": 0,
+					"bright": 0,
+					"color": null,
+					"alpha": 0.5,
+					"luminosity": 0.5,
+					"animationType": "",
+					"animationSpeed": 5,
+					"animationIntensity": 5
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"friendlySave": "default",
+				"_id": "pDIGi7FyPjUmGClU"
 			}
 		},
 		"identifier": "antipathy-sympathy"

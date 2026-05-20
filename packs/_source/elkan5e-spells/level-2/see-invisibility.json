@@ -4,25 +4,14 @@
 	"img": "icons/magic/perception/hand-eye-fire-blue.webp",
 	"effects": [
 		{
-			"changes": [
-				{
-					"key": "ATL.detectionModes.seeInvisibility.range",
-					"mode": 4,
-					"value": "60",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"_id": "jDirJRcaaZoqEhx7",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"origin": null,
 			"tint": "#ffffff",
@@ -38,7 +27,8 @@
 					"dontApply": false,
 					"showIcon": false,
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -63,7 +53,19 @@
 			"statuses": [],
 			"img": "icons/magic/perception/hand-eye-fire-blue.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "ATL.detectionModes.seeInvisibility.range",
+						"value": 60,
+						"priority": 20,
+						"type": "upgrade"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!Wp9ckwdiUpIuPE5l.jDirJRcaaZoqEhx7"
 		}
 	],
@@ -105,7 +107,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You rub a mixture of talc and silver powder onto your eyelids or above your eyes. You ask for permission to see the unseen, and your vision shifts slightly to show you not only invisible creatures, but also those on the ethereal plane.</em></p><p><strong>Buff</strong></p><ul><li><p>You see &amp;reference[Invisible] creatures and objects as if they were visible, and you can see into the Ethereal Plane. Ethereal creatures and objects appear ghostly and translucent.</p></li></ul>",
+			"value": "<p><em>You rub a mixture of talc and silver powder onto your eyelids or above your eyes. You ask for permission to see the unseen, and your vision shifts slightly to show you not only invisible creatures, but also those on the ethereal plane.</em></p><p><strong>Buff</strong></p><ul><li><p>You see &amp;reference[Invisible apply=false] creatures and objects as if they were visible, and you can see into the Ethereal Plane. Ethereal creatures and objects appear ghostly and translucent.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {

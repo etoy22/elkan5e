@@ -152,7 +152,7 @@
 		},
 		"advancement": [],
 		"description": {
-			"value": "<p><strong>Bonus Action </strong>- 1 Creature (90 ft.) - 1 Round - 1/Short Rest -Magical</p><p>Unlike other abilities, you do not need to be able to see your target to use this ability. If you use this ability when your supposed target is not actually in range, the ability has no effect.</p><ul><li><p>Your attacks against the creature have advantage.</p></li><li><p>You temporarily remove all of the target's damage resistances.</p></li><li><p>You remove all temporary hit points, illusory image effects, the &amp;reference[invisible] condition, and transformations affecting the target.</p></li></ul><p><em>Creatures that are permanently invisible, such as invisible stalkers, begin to glow for 1 minute and return to invisibility afterwards.</em></p>",
+			"value": "<p><strong>Bonus Action </strong>- 1 Creature (90 ft.) - 1 Round - 1/Short Rest -Magical</p><p>Unlike other abilities, you do not need to be able to see your target to use this ability. If you use this ability when your supposed target is not actually in range, the ability has no effect.</p><ul><li><p>Your attacks against the creature have &amp;reference[advantage].</p></li><li><p>You temporarily remove all of the target's damage resistances.</p></li><li><p>You remove all temporary hit points, illusory image effects, the &amp;reference[invisible] condition, and transformations affecting the target.</p></li></ul><p><em>Creatures that are permanently invisible, such as invisible stalkers, begin to glow for 1 minute and return to invisibility afterwards.</em></p>",
 			"chat": ""
 		},
 		"identifier": "expose-weakness",
@@ -187,24 +187,22 @@
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.0ZGg51hvC0shFDzx",
 			"_id": "TXmTDjsHc5DPs2wc",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "flags.midi-qol.grants.advantage.attack.all",
-					"mode": 2,
-					"value": "1",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.grants.advantage.attack.all",
+						"value": 1,
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"combat": null,
-				"seconds": 7,
-				"rounds": 1,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -214,7 +212,6 @@
 				"dae": {
 					"disableCondition": "",
 					"stackable": "noneName",
-					"showIcon": true,
 					"disableIncapacitated": false,
 					"durationExpression": "",
 					"specialDuration": [
@@ -223,7 +220,9 @@
 					"enableCondition": "",
 					"selfTarget": false,
 					"selfTargetAlways": false,
-					"dontApply": false
+					"dontApply": false,
+					"expiryMode": "default",
+					"macroRepeat": "none"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -243,6 +242,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 2,
+			"folder": null,
 			"_key": "!items.effects!0ZGg51hvC0shFDzx.TXmTDjsHc5DPs2wc"
 		}
 	],

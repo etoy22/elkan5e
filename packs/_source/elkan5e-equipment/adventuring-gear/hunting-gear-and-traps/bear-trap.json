@@ -437,7 +437,6 @@
 		"identifier": "bear-trap"
 	},
 	"type": "consumable",
-	"folder": "Qjhe0eLLeK89MVke",
 	"img": "icons/environment/traps/trap-jaw-steel.webp",
 	"effects": [
 		{
@@ -447,30 +446,28 @@
 			"transfer": false,
 			"_id": "9jl46RZ5GOjs9QlJ",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "system.attributes.movement.all",
-					"mode": 0,
-					"value": "*0",
-					"priority": 20
-				},
-				{
-					"key": "flags.dnd5e.unpushable",
-					"mode": 0,
-					"value": "1",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.all",
+						"value": "*0",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "flags.dnd5e.unpushable",
+						"value": 1,
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
@@ -507,9 +504,13 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!6feFbcgaZMorx6j6.9jl46RZ5GOjs9QlJ"
 		}
 	],
 	"_id": "6feFbcgaZMorx6j6",
+	"folder": "Qjhe0eLLeK89MVke",
 	"_key": "!items!6feFbcgaZMorx6j6"
 }

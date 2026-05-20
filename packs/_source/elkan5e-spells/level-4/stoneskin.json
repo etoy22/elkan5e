@@ -38,40 +38,11 @@
 					"statuses": []
 				}
 			},
-			"changes": [
-				{
-					"key": "system.traits.dr.bypasses",
-					"mode": 0,
-					"value": "ada",
-					"priority": 0
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 0,
-					"value": "bludgeoning",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 2,
-					"value": "piercing",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.dr.value",
-					"mode": 2,
-					"value": "slashing",
-					"priority": 20
-				}
-			],
 			"duration": {
-				"startTime": null,
-				"seconds": 3600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"transfer": false,
 			"disabled": false,
@@ -82,7 +53,37 @@
 			"statuses": [],
 			"img": "icons/magic/defensive/armor-stone-skin.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.dr.bypasses",
+						"value": "ada",
+						"priority": 0,
+						"type": "custom"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "bludgeoning",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "piercing",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "slashing",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!8Yd24rEnI9QvQgMo.fhvmjRblnjrDRxWO"
 		}
 	],

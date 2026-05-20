@@ -6,14 +6,6 @@
 		{
 			"name": "Ray of Enfeeblement",
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.OGR7tJU7gq9xwsiU",
-			"changes": [
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 2,
-					"value": "turn=end,\nsaveAbility=con,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Ray of Enfeeblement",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"flags": {
 				"dae": {
@@ -28,7 +20,8 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -51,22 +44,32 @@
 			"img": "icons/magic/unholy/projectile-smoke-trail-pink.webp",
 			"_id": "YT2fdYZvaFwOTsbf",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"type": "add",
+						"value": "turn=end, label=Ray of Enfeeblement, saveAbility=con, saveDC=@attributes.spell.dc, saveMagic=true",
+						"phase": "initial",
+						"priority": 20
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
 			"statuses": [
 				"weakened"
 			],
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!OGR7tJU7gq9xwsiU.YT2fdYZvaFwOTsbf"
 		}
 	],
@@ -144,7 +147,7 @@
 		"target": {
 			"affects": {
 				"type": "creature",
-				"count": "1",
+				"count": "@item.level - 1",
 				"choice": false,
 				"special": ""
 			},
@@ -180,8 +183,7 @@
 		"properties": [
 			"vocal",
 			"somatic",
-			"concentration",
-			"mgc"
+			"concentration"
 		],
 		"activities": {
 			"dnd5eactivity000": {

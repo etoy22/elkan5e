@@ -5,23 +5,12 @@
 	"effects": [
 		{
 			"_id": "Pftobi9A6TklEmRY",
-			"changes": [
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 2,
-					"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel= Compulsion",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"transfer": false,
 			"flags": {
@@ -66,7 +55,19 @@
 			],
 			"img": "icons/magic/control/energy-stream-link-large-teal.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel= Compulsion",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!iNGwtsRanzFolbVW.Pftobi9A6TklEmRY"
 		}
 	],
@@ -131,7 +132,7 @@
 		"target": {
 			"affects": {
 				"type": "creature",
-				"count": "1",
+				"count": "@item.level - 3",
 				"choice": false,
 				"special": ""
 			},

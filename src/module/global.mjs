@@ -1,6 +1,6 @@
-import { SIZE_ORDER, hasSpecialTrait } from "./shared/effects.mjs";
+import { SIZE_ORDER, hasSpecialTrait } from "./shared/helpers.mjs";
 
-export { hasPushResist, isPushBlocked } from "./shared/effects.mjs";
+export { hasPushResist, isPushBlocked } from "./shared/helpers.mjs";
 
 /**
  * Get a skill total or fallback modifier for a skill key.

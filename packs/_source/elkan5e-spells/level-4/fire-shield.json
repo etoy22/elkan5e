@@ -4,26 +4,15 @@
 	"img": "icons/magic/defensive/shield-barrier-flaming-pentagon-red.webp",
 	"effects": [
 		{
-			"changes": [
-				{
-					"key": "system.traits.dr.value",
-					"mode": 0,
-					"value": "fire",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"name": "Fire Shield [Cold]",
 			"_id": "lDDFI8gNCEdRT4c5",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -40,7 +29,8 @@
 					"showIcon": false,
 					"macroRepeat": "none",
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -63,30 +53,39 @@
 			"tint": "#ffffff",
 			"img": "icons/magic/defensive/shield-barrier-flaming-pentagon-blue.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.dr.value",
+						"type": "custom",
+						"value": "fire",
+						"phase": "final",
+						"priority": 20
+					},
+					{
+						"key": "flags.midi-qol.postDamageRollComplete",
+						"type": "custom",
+						"value": "ItemMacro",
+						"phase": "initial",
+						"priority": null
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!IXTamgZ9OiDPEu0v.lDDFI8gNCEdRT4c5"
 		},
 		{
-			"changes": [
-				{
-					"key": "system.traits.dr.value",
-					"mode": 0,
-					"value": "cold",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"name": "Fire Shield [Hot]",
 			"_id": "tgVvX1WeJRclANpe",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -103,7 +102,8 @@
 					"showIcon": false,
 					"macroRepeat": "none",
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -126,7 +126,27 @@
 			"tint": "#ffffff",
 			"img": "icons/magic/defensive/shield-barrier-flaming-pentagon-red.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.dr.value",
+						"type": "custom",
+						"value": "cold",
+						"phase": "final",
+						"priority": 20
+					},
+					{
+						"key": "flags.midi-qol.postDamageRollComplete",
+						"type": "custom",
+						"value": "ItemMacro",
+						"phase": "initial",
+						"priority": null
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!IXTamgZ9OiDPEu0v.tgVvX1WeJRclANpe"
 		}
 	],
@@ -188,8 +208,8 @@
 				"img": "icons/magic/defensive/shield-barrier-flaming-pentagon-red.webp",
 				"type": "script",
 				"scope": "global",
-				"command": "",
-				"author": "3Yi0HjF4PKCA4vX0",
+				"command": "return elkan5e.spells.fireShield(workflow)",
+				"author": "JfIFUEeTlOfdxqPQ",
 				"_id": null,
 				"folder": null
 			}
@@ -327,7 +347,16 @@
 				"_id": "66Qhs5vOSnBGeqBW",
 				"name": "",
 				"img": "",
-				"appliedEffects": []
+				"appliedEffects": [],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"midiProperties": {
+					"automationOnly": true
+				}
 			},
 			"uTaT0Zc20SKnjwec": {
 				"type": "utility",

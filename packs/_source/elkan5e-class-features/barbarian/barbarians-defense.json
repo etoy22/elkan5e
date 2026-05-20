@@ -6,28 +6,26 @@
 	"effects": [
 		{
 			"name": "Barbarian's Defense",
-			"changes": [
-				{
-					"key": "system.attributes.ac.calc",
-					"mode": 5,
-					"value": "barbarianDefense",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"img": "icons/commodities/biological/shell-tan.webp",
 			"_id": "3ovxmyzWkCd8CxCU",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.ac.calc",
+						"value": "barbarianDefense",
+						"priority": 20,
+						"type": "override"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.SiFbbYFCzUdNf54R",
@@ -65,6 +63,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!SiFbbYFCzUdNf54R.3ovxmyzWkCd8CxCU"
 		}
 	],

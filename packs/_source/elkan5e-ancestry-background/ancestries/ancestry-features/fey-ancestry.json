@@ -1,0 +1,127 @@
+{
+	"_id": "uS8jFHnYNWmcERX3",
+	"name": "Fey Ancestry",
+	"type": "feat",
+	"img": "icons/creatures/mammals/elk-moose-marked-green.webp",
+	"effects": [
+		{
+			"transfer": true,
+			"_id": "qwImKIm6zKOiS0M1",
+			"disabled": false,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"origin": "Compendium.elkan5e.elkan5e-ancestries.Item.uS8jFHnYNWmcERX3",
+			"tint": "#ffffff",
+			"flags": {
+				"dae": {
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"stackable": "none",
+					"durationExpression": "",
+					"specialDuration": [],
+					"disableIncapacitated": false,
+					"dontApply": false,
+					"showIcon": false,
+					"macroRepeat": "none",
+					"disableCondition": ""
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "Enemy",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"nameOverride": "",
+					"customCheck": "",
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"name": "Fey Ancestry",
+			"description": "",
+			"statuses": [],
+			"img": "icons/creatures/mammals/elk-moose-marked-green.webp",
+			"type": "base",
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.grants.advantage.save.all",
+						"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"charmed\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"charmed\") || ef.name == 'Charmed');",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
+			"_key": "!items.effects!uS8jFHnYNWmcERX3.qwImKIm6zKOiS0M1"
+		}
+	],
+	"folder": "AMu6lwiHJpe8mwA8",
+	"flags": {
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"removeAttackDamageButtons": "default",
+			"reactionCondition": "",
+			"otherCondition": ""
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p>You have &amp;reference[advantage] on &amp;reference[saving throw]{Saving Throws} against being &amp;reference[charmed apply=false], and magic can't put you to sleep.</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/ancestrybackground",
+			"rules": "",
+			"revision": 1,
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"uses": {
+			"max": "",
+			"spent": 0,
+			"recovery": []
+		},
+		"type": {
+			"value": "race",
+			"subtype": ""
+		},
+		"requirements": "Elf",
+		"properties": [],
+		"identifier": "fey-ancestry",
+		"activities": {},
+		"enchant": {},
+		"prerequisites": {
+			"level": null
+		}
+	},
+	"_key": "!items!uS8jFHnYNWmcERX3"
+}

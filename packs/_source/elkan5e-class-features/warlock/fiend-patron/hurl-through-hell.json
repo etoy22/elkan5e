@@ -5,18 +5,14 @@
 	"effects": [
 		{
 			"name": "Hurl Through Hell",
-			"changes": [],
 			"transfer": false,
 			"_id": "yrC0b7KcQLWTsF02",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 7,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 7,
+				"units": "seconds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -27,12 +23,13 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"stackable": "noneName",
-					"showIcon": true,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"turnEndSource"
-					]
+					"specialDuration": [],
+					"enableCondition": "",
+					"disableCondition": "",
+					"expiryMode": "default",
+					"disableIncapacitated": false
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -54,7 +51,20 @@
 			"tint": "#ffffff",
 			"img": "icons/creatures/abilities/mouth-teeth-fire-orange.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.neverTarget",
+						"type": "custom",
+						"value": true,
+						"phase": "initial",
+						"priority": null
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 2,
+			"folder": null,
 			"_key": "!items.effects!mHPM9z4TIVNJwfJ7.yrC0b7KcQLWTsF02"
 		}
 	],

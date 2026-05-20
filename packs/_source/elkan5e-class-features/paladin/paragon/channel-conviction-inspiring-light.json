@@ -5,7 +5,7 @@
 	"img": "icons/magic/light/explosion-star-blue-yellow.webp",
 	"system": {
 		"description": {
-			"value": "<p><em>A burst of light shines from you, empowering your allies.</em></p><p><strong>Bonus Action</strong> - 6 Creatures (60 ft.) - 1/Short Rest - Magical</p><ul><li><p>Targets gain [[/healing 2d8 temp]]{2d8 temporary hit points}, which last you or they finish a &amp;reference[short rest]{short} or &amp;reference[long rest].</p></li><li><p>Targets have advantage on the first saving throw they make before the end of your next turn.</p></li><li><p>You shed &amp;reference[bright light] in a 60 ft. radius until the end of this turn.</p></li></ul>",
+			"value": "<p><em>A burst of light shines from you, empowering your allies.</em></p><p><strong>Bonus Action</strong> - 6 Creatures (60 ft.) - 1/Short Rest - Magical</p><ul><li><p>Targets gain [[/healing 2d8 temp]]{2d8 temporary hit points}, which last you or they finish a &amp;reference[short rest]{short} or &amp;reference[long rest].</p></li><li><p>Targets have &amp;reference[advantage] on the first saving throw they make before the end of your next turn.</p></li><li><p>You shed &amp;reference[bright light] in a 60 ft. radius until the end of this turn.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -139,25 +139,14 @@
 		{
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.1h1j8h29V9gDtlMD",
 			"duration": {
-				"rounds": null,
-				"startTime": null,
-				"seconds": 7,
-				"combat": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"disabled": false,
 			"name": "Inspiring Light (Target)",
 			"_id": "Q7slROouWJTS0OAN",
-			"changes": [
-				{
-					"key": "flags.midi-qol.advantage.ability.save.all",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"description": "",
 			"transfer": false,
 			"statuses": [],
@@ -172,11 +161,11 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": [
-						"turnEndSource",
 						"isSave"
 					],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -198,31 +187,32 @@
 			"tint": "#ffffff",
 			"img": "icons/magic/light/explosion-star-blue-yellow.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.advantage.ability.save.all",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!eEEEvZIs5DK6LLic.Q7slROouWJTS0OAN"
 		},
 		{
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.1h1j8h29V9gDtlMD",
 			"duration": {
-				"rounds": null,
-				"startTime": null,
-				"seconds": 7,
-				"combat": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"disabled": false,
 			"name": "Inspiring Light (Caster)",
 			"_id": "mD8Bg4LzYQC5awa7",
-			"changes": [
-				{
-					"key": "ATL.light.bright",
-					"mode": 2,
-					"value": "60",
-					"priority": 20
-				}
-			],
 			"description": "",
 			"transfer": false,
 			"statuses": [],
@@ -233,14 +223,12 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"stackable": "noneName",
-					"showIcon": true,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"turnEndSource"
-					],
+					"specialDuration": [],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -262,7 +250,20 @@
 			"tint": "#ffffff",
 			"img": "icons/magic/light/explosion-star-blue-yellow.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "ATL.light.bright",
+						"type": "add",
+						"value": 60,
+						"phase": "final",
+						"priority": 20
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 2,
+			"folder": null,
 			"_key": "!items.effects!eEEEvZIs5DK6LLic.mD8Bg4LzYQC5awa7"
 		}
 	],

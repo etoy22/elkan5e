@@ -5,7 +5,7 @@
 	"img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
 	"system": {
 		"description": {
-			"value": "<p><em>You hold out a damaged tuning fork attuned to another plane. You utter a corrupted version of the incantation needed to teleport to another plane, instead ripping a hole in space. All unsuspecting creatures are compelled to flee from it, and the area around the rip is twisted.</em></p><p><strong>Materials:</strong> Casting this spell requires a <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.tSdm8nQQqxsKBOnk]{damaged tuning fork}</em>, typically valued at 50 gold. The tuning fork is not consumed by the spell.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d8 force]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><hr /><p>Additionally, all creatures who are not your allies who can see the rip in reality when it is formed must attempt a wisdom saving throw.</p><p><strong>Wisdom</strong> <strong>Save</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[frightened] of the center of this effect for 1 minute. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 2d8 force]] for each spell level above 5th.</p>",
+			"value": "<p><em>You hold out a damaged tuning fork attuned to another plane. You utter a corrupted version of the incantation needed to teleport to another plane, instead ripping a hole in space. All unsuspecting creatures are compelled to flee from it, and the area around the rip is twisted.</em></p><p><strong>Materials:</strong> Casting this spell requires a <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.tSdm8nQQqxsKBOnk]{damaged tuning fork}</em>, typically valued at 50 gold. The tuning fork is not consumed by the spell.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d8 force]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><hr><p>Additionally, all creatures who are not your allies who can see the rip in reality when it is formed must attempt a wisdom saving throw.</p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[frightened] of the center of this effect for 1 minute. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 2d8 force]] for each spell level above 5th.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -143,17 +143,26 @@
 				"appliedEffects": [],
 				"midiProperties": {
 					"triggeredActivityId": "initial-casting-(use-second)",
-					"triggeredActivityTargets": "self"
+					"triggeredActivityTargets": "retarget",
+					"triggeredActivityConsume": false,
+					"triggeredActivityConfigure": false
 				},
-				"otherActivityId": "none"
+				"otherActivityId": "none",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				}
 			},
 			"1mL8muqBPuqOW8Ec": {
 				"type": "save",
 				"_id": "1mL8muqBPuqOW8Ec",
 				"activation": {
-					"type": "action",
+					"type": "",
 					"value": null,
-					"override": false
+					"override": true,
+					"condition": ""
 				},
 				"consumption": {
 					"scaling": {
@@ -168,11 +177,12 @@
 				"duration": {
 					"units": "inst",
 					"concentration": false,
-					"override": false
+					"override": true
 				},
 				"effects": [
 					{
-						"_id": "LrRnZx9GBeTa8y76",
+						"_id": "sry75IDMkhCZtmNg",
+						"level": {},
 						"onSave": false
 					}
 				],
@@ -184,8 +194,18 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": "enemy",
+						"count": "",
+						"special": ""
+					},
+					"template": {
+						"type": "sphere",
+						"size": "60",
+						"count": ""
+					}
 				},
 				"uses": {
 					"spent": 0,
@@ -197,7 +217,9 @@
 					"onSave": "half"
 				},
 				"save": {
-					"ability": "wis",
+					"ability": [
+						"wis"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -212,122 +234,13 @@
 					"LrRnZx9GBeTa8y76"
 				],
 				"otherActivityId": "none",
-				"otherActivityAsParentType": false
-			},
-			"u5vIV4FNysgfABJa": {
-				"type": "save",
-				"name": "Overtime",
-				"_id": "u5vIV4FNysgfABJa",
-				"activation": {
-					"type": "action",
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"units": "self",
-					"override": false
-				},
-				"target": {
-					"template": {
-						"contiguous": false,
-						"units": "ft"
-					},
-					"affects": {
-						"choice": false
-					},
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"damage": {
-					"onSave": "half",
-					"critical": {
-						"allow": false
-					},
-					"parts": []
-				},
-				"save": {
-					"ability": [
-						"wis"
-					],
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
+				"otherActivityAsParentType": false,
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
 					}
-				},
-				"useConditionText": "",
-				"useConditionReason": "",
-				"effectConditionText": "",
-				"macroData": {
-					"name": "",
-					"command": ""
-				},
-				"ignoreTraits": {
-					"idi": false,
-					"idr": false,
-					"idv": false,
-					"ida": false,
-					"idm": false
-				},
-				"midiProperties": {
-					"ignoreTraits": [],
-					"triggeredActivityId": "none",
-					"triggeredActivityConditionText": "",
-					"triggeredActivityTargets": "targets",
-					"triggeredActivityRollAs": "self",
-					"autoConsume": false,
-					"forceConsumeDialog": "default",
-					"forceRollDialog": "default",
-					"forceDamageDialog": "default",
-					"confirmTargets": "default",
-					"autoTargetType": "any",
-					"autoTargetAction": "default",
-					"automationOnly": true,
-					"otherActivityCompatible": true,
-					"otherActivityAsParentType": true,
-					"identifier": "",
-					"displayActivityName": false,
-					"rollMode": "default",
-					"chooseEffects": false,
-					"toggleEffect": false,
-					"ignoreFullCover": false,
-					"removeChatButtons": "default",
-					"magicEffect": false,
-					"magicDamage": false,
-					"noConcentrationCheck": false,
-					"autoCEEffects": "default"
-				},
-				"isOverTimeFlag": true,
-				"overTimeProperties": {
-					"saveRemoves": true,
-					"preRemoveConditionText": "false",
-					"postRemoveConditionText": "alse",
-					"turnChoice": "end"
-				},
-				"otherActivityId": "none",
-				"otherActivityAsParentType": true,
-				"friendlySave": "default",
-				"img": "",
-				"appliedEffects": []
+				}
 			}
 		},
 		"identifier": "rend-the-veil"
@@ -335,68 +248,49 @@
 	"effects": [
 		{
 			"name": "Rend the Veil",
-			"origin": "Item.NzNj8PEe2lqrzjEC",
-			"duration": {
-				"rounds": null,
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+			"img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.NWlrz1hV8joL8aaR",
+			"type": "base",
+			"_id": "sry75IDMkhCZtmNg",
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"type": "add",
+						"value": "",
+						"phase": "initial",
+						"priority": null
+					}
+				]
 			},
-			"transfer": false,
 			"disabled": false,
-			"_id": "LrRnZx9GBeTa8y76",
-			"changes": [
-				{
-					"key": "flags.midi-qol.ActivityOverTime",
-					"mode": 0,
-					"value": "overtime",
-					"priority": 20
-				}
-			],
+			"start": null,
+			"duration": {
+				"value": 60,
+				"units": "seconds",
+				"expiry": "sourceEnd",
+				"expired": false
+			},
 			"description": "",
+			"tint": "#ffffff",
+			"transfer": true,
 			"statuses": [
 				"frightened"
 			],
+			"showIcon": 2,
+			"folder": null,
 			"flags": {
 				"dae": {
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
+					"disableCondition": "",
 					"stackable": "noneName",
-					"showIcon": false,
+					"expiryMode": "default",
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [],
-					"enableCondition": "",
-					"disableCondition": "",
-					"disableIncapacitated": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "Enemy",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"customCheck": "",
-					"wallsBlock": "system",
-					"statuses": []
+					"disableIncapacitated": false,
+					"specialDuration": []
 				}
 			},
-			"tint": "#ffffff",
-			"img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
-			"type": "base",
-			"system": {},
-			"_key": "!items.effects!NWlrz1hV8joL8aaR.LrRnZx9GBeTa8y76"
+			"_key": "!items.effects!NWlrz1hV8joL8aaR.sry75IDMkhCZtmNg"
 		}
 	],
 	"flags": {

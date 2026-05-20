@@ -110,7 +110,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><em>You lock eyes with your victim, and with a curse twist the future between you in your favor.</em></p><p><strong>[[/save charisma]]{Charisma Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[cursed]. While cursed in this way, target has disadvantage on attacks against a creature you choose, and disadvantage on skill checks meant to directly oppose the chosen creature.*</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p><em>*For example, if you are cursed to have disadvantage against a corrupt noble, you would not have disadvantage on investigation checks to go through the noble's belongings. You would, however, have disadvantage on athletics checks to grapple the noble, or persuasion checks to outperform the noble in a public debate.</em></p><p><em> <strong>This spell applies an active effect that has no effect in Foundry. You will need to manually apply disadvantage to attacks and skill checks affected by this curse.</strong></em></p>",
+			"value": "<p><em>You lock eyes with your victim, and with a curse twist the future between you in your favor.</em></p><p><strong>[[/save charisma]]{Charisma Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[cursed]{Cursed}. While cursed in this way, target has &amp;reference[disadvantage] on attacks against a creature you choose, and &amp;reference[disadvantage] on skill checks meant to directly oppose the chosen creature.*</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p><em>*For example, if you are cursed to have disadvantage against a corrupt noble, you would not have disadvantage on investigation checks to go through the noble's belongings. You would, however, have disadvantage on athletics checks to grapple the noble, or persuasion checks to outperform the noble in a public debate.</em></p><p><em><strong>This spell applies an active effect that has no effect in Foundry. You will need to manually apply disadvantage to attacks and skill checks affected by this curse.</strong></em></p>",
 			"chat": ""
 		},
 		"identifier": "curse-of-fate",
@@ -173,21 +173,21 @@
 			"transfer": false,
 			"_id": "UKAU6NlV0XnUxLi0",
 			"type": "base",
-			"system": {},
-			"changes": [],
+			"system": {
+				"changes": []
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"statuses": [],
+			"statuses": [
+				"cursed"
+			],
 			"flags": {
 				"dae": {
 					"enableCondition": "",
@@ -197,10 +197,10 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"stackable": "multi",
-					"showIcon": true,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
+					"specialDuration": [],
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -220,6 +220,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 2,
+			"folder": null,
 			"_key": "!items.effects!cf5JlnZd4C09IWa0.UKAU6NlV0XnUxLi0"
 		}
 	],

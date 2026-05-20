@@ -4,18 +4,14 @@
 	"img": "icons/magic/defensive/illusion-evasion-echo-purple.webp",
 	"effects": [
 		{
-			"changes": [],
 			"transfer": false,
 			"_id": "Pun0tmp3uHZpt1Lf",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"origin": null,
 			"tint": "#ffffff",
@@ -26,7 +22,12 @@
 					"stackable": "multi",
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
+					"specialDuration": [],
+					"enableCondition": "",
+					"disableCondition": "",
+					"expiryMode": "default",
+					"disableIncapacitated": false,
+					"dontApply": false
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -42,107 +43,26 @@
 					"onlyOnce": false
 				}
 			},
-			"name": "Mirror Image",
+			"name": "Mirror Image (3)",
 			"description": "",
 			"statuses": [],
 			"img": "icons/magic/defensive/illusion-evasion-echo-purple.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.postAttackRollComplete",
+						"type": "custom",
+						"value": "ItemMacro",
+						"phase": "final",
+						"priority": null
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!PTAk4NGn6oIrRq1A.Pun0tmp3uHZpt1Lf"
-		},
-		{
-			"changes": [],
-			"transfer": false,
-			"_id": "XhNRdiRd16Wt99W9",
-			"disabled": false,
-			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
-			},
-			"origin": null,
-			"tint": "#ffffff",
-			"flags": {
-				"dae": {
-					"selfTarget": true,
-					"selfTargetAlways": false,
-					"stackable": "multi",
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": null,
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false
-				}
-			},
-			"name": "Mirror Image",
-			"description": "",
-			"statuses": [],
-			"img": "icons/magic/defensive/illusion-evasion-echo-purple.webp",
-			"type": "base",
-			"system": {},
-			"_key": "!items.effects!PTAk4NGn6oIrRq1A.XhNRdiRd16Wt99W9"
-		},
-		{
-			"changes": [],
-			"transfer": false,
-			"_id": "vJmyhcrazjatk5ss",
-			"disabled": false,
-			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
-			},
-			"origin": null,
-			"tint": "#ffffff",
-			"flags": {
-				"dae": {
-					"selfTarget": true,
-					"selfTargetAlways": false,
-					"stackable": "multi",
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": null,
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false
-				}
-			},
-			"name": "Mirror Image",
-			"description": "",
-			"statuses": [],
-			"img": "icons/magic/defensive/illusion-evasion-echo-purple.webp",
-			"type": "base",
-			"system": {},
-			"_key": "!items.effects!PTAk4NGn6oIrRq1A.vJmyhcrazjatk5ss"
 		}
 	],
 	"folder": "6J3i75lfD1J0xYwA",
@@ -179,6 +99,18 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"dae": {
+			"macro": {
+				"name": "Mirror Image",
+				"img": "icons/magic/defensive/illusion-evasion-echo-purple.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "return elkan5e.spells.mirrorImage(workflow)",
+				"author": "JfIFUEeTlOfdxqPQ",
+				"_id": null,
+				"folder": null
+			}
 		}
 	},
 	"system": {
@@ -240,8 +172,7 @@
 		"properties": [
 			"vocal",
 			"somatic",
-			"concentration",
-			"mgc"
+			"concentration"
 		],
 		"activities": {
 			"dnd5eactivity000": {

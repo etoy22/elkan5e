@@ -5,28 +5,26 @@
 	"effects": [
 		{
 			"name": "Stinking Cloud",
-			"changes": [
-				{
-					"key": "",
-					"mode": 2,
-					"value": "",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"img": "icons/magic/air/fog-gas-smoke-green.webp",
 			"_id": "YCDb9GgKexYINtMW",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "",
+						"value": "",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 7,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 7,
+				"units": "seconds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -36,54 +34,6 @@
 			],
 			"flags": {
 				"dae": {
-					"enableCondition": "",
-					"disableCondition": "",
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"stackable": "noneName",
-					"showIcon": false,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": [
-						"turnEndSource"
-					]
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
-				}
-			},
-			"_key": "!items.effects!14B8dD9iTLSb2nRc.YCDb9GgKexYINtMW"
-		},
-		{
-			"name": "Lightly Obscured",
-			"origin": "Compendium.elkan5e.elkan5e-spells.Item.14B8dD9iTLSb2nRc",
-			"changes": [
-				{
-					"key": "macro.StatusEffect",
-					"mode": 0,
-					"value": "obscuredlightly",
-					"priority": 20
-				}
-			],
-			"transfer": false,
-			"flags": {
-				"dae": {
-					"itemName": "Stinking Cloud",
 					"enableCondition": "",
 					"disableCondition": "",
 					"disableIncapacitated": false,
@@ -110,6 +60,48 @@
 					"displayTemp": false,
 					"hostile": false,
 					"onlyOnce": false,
+					"wallsBlock": "system"
+				}
+			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
+			"_key": "!items.effects!14B8dD9iTLSb2nRc.YCDb9GgKexYINtMW"
+		},
+		{
+			"name": "Lightly Obscured",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.14B8dD9iTLSb2nRc",
+			"transfer": false,
+			"flags": {
+				"dae": {
+					"itemName": "Stinking Cloud",
+					"enableCondition": "",
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"expiryMode": "default"
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
 					"wallsBlock": "system",
 					"statuses": []
 				}
@@ -117,20 +109,30 @@
 			"img": "modules/elkan5e/icons/conditions/obscured-lightly.svg",
 			"_id": "XcJR61RRWF8X9Ne2",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "obscuredlightly",
+						"phase": "final",
+						"priority": 20
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 0,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 0,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!14B8dD9iTLSb2nRc.XcJR61RRWF8X9Ne2"
 		}
 	],
@@ -172,7 +174,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You hold a handful of something smelling like rot and death, squeezing until drops of semi-liquid filth begins dripping from your fist. As you speak a word of power, the drops suddenly dart away from you, boiling in midair and expanding into turgid yellow clouds of choking gas.</em></p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><p>Creatures who don't need to breathe are immune to this spell.</p><ul><li><p><strong>Failure:</strong> Targets gain the &amp;reference[poisoned] condition for 1 round; while poisoned in this way, the target must spend their action retching.</p></li><li><p><strong>Success:</strong> No effect.</p></li><li><p><strong>Hazard:</strong> The area covered by the cloud is &amp;reference[obscuredlightly]. Targets roll a save when they enter or when they end their turn in the cloud (but only once per turn).</p></li></ul><p><em>A moderate wind (at least 10 miles per hour) can move the cloud 10 ft. per round. A strong wind (at least 20 miles per hour) disperses the cloud after 1 round.</em></p>",
+			"value": "<p><em>You hold a handful of something smelling like rot and death, squeezing until drops of semi-liquid filth begins dripping from your fist. As you speak a word of power, the drops suddenly dart away from you, boiling in midair and expanding into turgid yellow clouds of choking gas.</em></p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><p>Creatures who don't need to breathe are immune to this spell.</p><ul><li><p><strong>Failure:</strong> Targets gain the &amp;reference[poisoned] condition for 1 round; while poisoned in this way, the target must spend their action retching.</p></li><li><p><strong>Success:</strong> No effect.</p></li><li><p><strong>Hazard:</strong> The area covered by the cloud is &amp;reference[lightly obscured]. Targets roll a save when they enter or when they end their turn in the cloud (but only once per turn).</p></li></ul><p><em>A moderate wind (at least 10 miles per hour) can move the cloud 10 ft. per round. A strong wind (at least 20 miles per hour) disperses the cloud after 1 round.</em></p>",
 			"chat": ""
 		},
 		"source": {
@@ -262,11 +264,19 @@
 				"effects": [
 					{
 						"_id": "YCDb9GgKexYINtMW",
-						"onSave": false
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					},
 					{
 						"_id": "XcJR61RRWF8X9Ne2",
-						"onSave": true
+						"onSave": true,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -277,8 +287,16 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": ""
+					},
+					"template": {
+						"type": "sphere",
+						"size": "20",
+						"count": ""
+					}
 				},
 				"damage": {
 					"onSave": "none",
@@ -303,86 +321,41 @@
 					"YCDb9GgKexYINtMW",
 					"XcJR61RRWF8X9Ne2"
 				],
-				"effectConditionText": "!target.traits.ci.value.has('poisoned')"
-			},
-			"4SryWbTaC662WHnf": {
-				"type": "save",
-				"name": "Target Enters/Ends Turn",
-				"_id": "4SryWbTaC662WHnf",
-				"activation": {
-					"type": "nocost",
-					"value": null,
-					"override": true,
-					"condition": ""
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": false,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "YCDb9GgKexYINtMW",
-						"onSave": false
-					},
-					{
-						"_id": "XcJR61RRWF8X9Ne2",
-						"onSave": true
-					}
-				],
-				"range": {
-					"override": true,
-					"units": "spec",
-					"special": ""
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"damage": {
-					"parts": [],
-					"critical": {
-						"allow": false
-					},
-					"onSave": "none"
-				},
-				"save": {
-					"ability": [
-						"con"
-					],
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
-					}
-				},
-				"useConditionText": "",
-				"forceDialog": false,
 				"effectConditionText": "!target.traits.ci.value.has('poisoned')",
-				"midiAutomationOnly": false,
-				"img": "",
-				"appliedEffects": [
-					"YCDb9GgKexYINtMW",
-					"XcJR61RRWF8X9Ne2"
-				]
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"dispositionFilter": 0,
+					"excludeSource": false,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "XcJR61RRWF8X9Ne2"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "XcJR61RRWF8X9Ne2"
+						},
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "save"
+						},
+						{
+							"trigger": "turnEnd",
+							"action": "useActivity",
+							"targetId": "save"
+						}
+					],
+					"wallRestriction": "none"
+				}
 			}
 		},
 		"identifier": "stinking-cloud"

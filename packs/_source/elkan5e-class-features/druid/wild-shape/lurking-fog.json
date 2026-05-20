@@ -6,7 +6,7 @@
 	"img": "icons/magic/air/fog-gas-smoke-dense-gray.webp",
 	"system": {
 		"description": {
-			"value": "<p><em>Fog appears around you.</em></p><p><strong>Bonus Action</strong> - 50 ft. Radius (30 ft.) - 1 Minute - Magical</p><ul><li><p>This fog &amp;reference[obscuredlightly]{lightly obscures} all creatures in the radius.</p></li><li><p>At the end of each of your turns when this fog is active, you can &amp;reference[obscuredheavily]{heavily obscure} a 15 ft. radius centered on a point within the fog, which lasts until the end of your next turn, when you can use this ability again.</p></li></ul>",
+			"value": "<p><em>Fog appears around you.</em></p><p><strong>Bonus Action</strong> - 50 ft. Radius (30 ft.) - 1 Minute - Magical</p><ul><li><p>This fog &amp;reference[lightly obscured]{lightly obscures} all creatures in the radius.</p></li><li><p>At the end of each of your turns when this fog is active, you can &amp;reference[heavily obscured]{heavily obscure} a 15 ft. radius centered on a point within the fog, which lasts until the end of your next turn, when you can use this ability again.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -66,7 +66,11 @@
 				},
 				"effects": [
 					{
-						"_id": "tj1Gtwz2P0pJUeSI"
+						"_id": "tj1Gtwz2P0pJUeSI",
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -92,7 +96,7 @@
 						"special": ""
 					},
 					"prompt": true,
-					"override": false
+					"override": true
 				},
 				"uses": {
 					"spent": 0,
@@ -109,7 +113,37 @@
 				"img": "",
 				"appliedEffects": [
 					"tj1Gtwz2P0pJUeSI"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": ""
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"dispositionFilter": 0,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "tj1Gtwz2P0pJUeSI"
+						},
+						{
+							"trigger": "turnStart",
+							"action": "applyEffect",
+							"targetId": "tj1Gtwz2P0pJUeSI"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "tj1Gtwz2P0pJUeSI"
+						}
+					],
+					"excludeSource": false,
+					"oncePerTurn": false
+				}
 			},
 			"55aOg5aKVGMnMVxK": {
 				"type": "utility",
@@ -139,7 +173,11 @@
 				},
 				"effects": [
 					{
-						"_id": "WBsl11ZFaHjxjAoB"
+						"_id": "WBsl11ZFaHjxjAoB",
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -164,7 +202,7 @@
 						"special": ""
 					},
 					"prompt": true,
-					"override": false
+					"override": true
 				},
 				"uses": {
 					"spent": 0,
@@ -185,7 +223,37 @@
 				"img": "",
 				"appliedEffects": [
 					"WBsl11ZFaHjxjAoB"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": ""
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"dispositionFilter": 0,
+					"excludeSource": false,
+					"oncePerTurn": false,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "WBsl11ZFaHjxjAoB"
+						},
+						{
+							"trigger": "turnStart",
+							"action": "applyEffect",
+							"targetId": "WBsl11ZFaHjxjAoB"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "WBsl11ZFaHjxjAoB"
+						}
+					]
+				}
 			}
 		},
 		"identifier": "lurking-fog",
@@ -198,7 +266,6 @@
 		{
 			"name": "Lightly Obscured",
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.lrCo3T7H91Z8yCqg",
-			"changes": [],
 			"transfer": false,
 			"flags": {
 				"dae": {
@@ -213,7 +280,8 @@
 					"showIcon": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
+					"specialDuration": [],
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -236,33 +304,35 @@
 			"img": "modules/elkan5e/icons/conditions/obscured-lightly.svg",
 			"_id": "tj1Gtwz2P0pJUeSI",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "obscuredlightly",
+						"phase": "final",
+						"priority": null
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!lrCo3T7H91Z8yCqg.tj1Gtwz2P0pJUeSI"
 		},
 		{
 			"name": "Heavily Obscured",
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.lrCo3T7H91Z8yCqg",
-			"changes": [
-				{
-					"key": "macro.StatusEffect",
-					"mode": 0,
-					"value": "obscuredheavily",
-					"priority": 0
-				}
-			],
 			"transfer": false,
 			"flags": {
 				"dae": {
@@ -277,7 +347,8 @@
 					"showIcon": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
+					"specialDuration": [],
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -299,20 +370,30 @@
 			"img": "modules/elkan5e/icons/conditions/obscured-heavily.svg",
 			"_id": "WBsl11ZFaHjxjAoB",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "obscuredheavily",
+						"phase": "final",
+						"priority": 0
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!lrCo3T7H91Z8yCqg.WBsl11ZFaHjxjAoB"
 		}
 	],

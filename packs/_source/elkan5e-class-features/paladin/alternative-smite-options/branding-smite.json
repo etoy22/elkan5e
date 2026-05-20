@@ -148,37 +148,14 @@
 	"effects": [
 		{
 			"name": "Branding Smite",
-			"changes": [
-				{
-					"key": "macro.tokenMagic",
-					"mode": 0,
-					"value": "bevel",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.ci.value",
-					"mode": 2,
-					"value": "invisible",
-					"priority": 20
-				},
-				{
-					"key": "ATL.light.dim",
-					"mode": 4,
-					"value": "5",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"_id": "TXm0TI6R1uKL4SdQ",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -217,7 +194,31 @@
 			"tint": "#ffffff",
 			"img": "icons/weapons/axes/axe-broad-chipped-glow-yellow.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "macro.tokenMagic",
+						"value": "bevel",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "system.traits.ci.value",
+						"value": "invisible",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "ATL.light.dim",
+						"value": 5,
+						"priority": 20,
+						"type": "upgrade"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!L6MgA7thuskmnw5q.TXm0TI6R1uKL4SdQ"
 		}
 	],

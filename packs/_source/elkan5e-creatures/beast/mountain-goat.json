@@ -634,12 +634,9 @@
 			"src": "systems/dnd5e/tokens/beast/Goat.webp",
 			"anchorX": 0.5,
 			"anchorY": 0.5,
-			"offsetX": 0,
-			"offsetY": 0,
 			"fit": "contain",
 			"scaleX": 1,
 			"scaleY": 1,
-			"rotation": 0,
 			"tint": "#ffffff",
 			"alphaThreshold": 0.75
 		},
@@ -690,7 +687,7 @@
 			"saturation": 0,
 			"contrast": 0
 		},
-		"detectionModes": [],
+		"detectionModes": {},
 		"occludable": {
 			"radius": 0
 		},
@@ -713,7 +710,8 @@
 			"src": null,
 			"disposition": false
 		},
-		"movementAction": null
+		"movementAction": null,
+		"depth": 1
 	},
 	"items": [
 		{
@@ -984,28 +982,26 @@
 			"effects": [
 				{
 					"name": "Sure-Footed",
-					"changes": [
-						{
-							"key": "flags.midi-qol.advantage.ability.save.all",
-							"mode": 0,
-							"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"prone\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"prone\") || ef.name == 'Prone');",
-							"priority": 20
-						}
-					],
 					"transfer": true,
 					"img": "icons/creatures/mammals/deer-antlers-glowing-blue.webp",
 					"_id": "beH8X4Y4KxxJDMtH",
 					"type": "base",
-					"system": {},
+					"system": {
+						"changes": [
+							{
+								"key": "flags.midi-qol.advantage.ability.save.all",
+								"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"prone\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"prone\") || ef.name == 'Prone');",
+								"priority": 20,
+								"type": "custom"
+							}
+						]
+					},
 					"disabled": false,
 					"duration": {
-						"startTime": 676057202,
-						"seconds": null,
-						"combat": null,
-						"rounds": null,
-						"turns": null,
-						"startRound": null,
-						"startTurn": null
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
 					},
 					"description": "",
 					"origin": "Compendium.elkan5e.elkan5e-creature-features.Item.5w4B1nK9aRUsVnrP",
@@ -1043,6 +1039,16 @@
 							"statuses": []
 						}
 					},
+					"start": {
+						"combat": null,
+						"round": null,
+						"time": 676057202,
+						"turn": null,
+						"combatant": null,
+						"initiative": null
+					},
+					"showIcon": 1,
+					"folder": null,
 					"_key": "!actors.items.effects!sSutR9W3dliZGFkf.KKvaTRi2p6h0MfjN.beH8X4Y4KxxJDMtH"
 				}
 			],

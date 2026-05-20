@@ -11,15 +11,17 @@
 					"transfer": false,
 					"macroRepeat": "none",
 					"specialDuration": [
-						"None",
-						"turnEndSource"
+						"None"
 					],
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"durationExpression": "",
 					"enableCondition": "",
 					"disableCondition": "",
-					"showIcon": false
+					"showIcon": false,
+					"expiryMode": "default",
+					"disableIncapacitated": false,
+					"dontApply": false
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -38,23 +40,12 @@
 					"wallsBlock": "system"
 				}
 			},
-			"changes": [
-				{
-					"key": "flags.midi-qol.advantage.attack.all",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"rounds": null,
-				"seconds": 7,
-				"combat": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"tint": "#ffffff",
 			"transfer": false,
@@ -64,7 +55,19 @@
 			"statuses": [],
 			"img": "icons/skills/targeting/target-strike-gray.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.advantage.attack.all",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!bUcGdKMh18yrVyLX.780yFebseo6lzDq5"
 		}
 	],

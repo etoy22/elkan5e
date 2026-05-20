@@ -2,7 +2,56 @@
 	"name": "Plant Growth",
 	"type": "spell",
 	"img": "icons/magic/nature/trap-spikes-thorns-green.webp",
-	"effects": [],
+	"effects": [
+		{
+			"name": "Plant Growth - Slowed",
+			"img": "icons/magic/nature/trap-spikes-thorns-green.webp",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.2oT2CvtPPtpZOJyL",
+			"type": "base",
+			"_id": "sAeUfv6Lfvi4RQab",
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.walk",
+						"type": "custom",
+						"value": "/2",
+						"phase": "initial",
+						"priority": null
+					}
+				]
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [],
+			"showIcon": 2,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"expiryMode": "default",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"disableIncapacitated": false,
+					"specialDuration": [],
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
+				}
+			},
+			"_key": "!items.effects!2oT2CvtPPtpZOJyL.sAeUfv6Lfvi4RQab"
+		}
+	],
 	"folder": "Tf2FNuyyu2gEaYOF",
 	"flags": {
 		"midi-qol": {
@@ -42,7 +91,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You thrust both of your hands into the ground, and sing a short paean to the primal forest. As your words echo and fade, plants in a wide radius are vitalized and grow rapidly as the land is enriched.</em></p><p><strong>Utility Spell</strong></p><ul><li><p>All normal plants become thick and overgrown. Any space that was within 5 ft. of a &amp;reference[plant] is now covered in plant life and counts as difficult terrain. You can exclude one or more areas of any size within the spell's area from being affected.</p></li><li><p>The plants double in volume, and yield twice the food or other produce when harvested, if applicable.</p></li><li><p>If these plants are affected by this spell a second time in a growing season, the food or produce spoils, but the plants still grow and create more difficult terrain.</p></li></ul>",
+			"value": "<p><em>You thrust both of your hands into the ground, and sing a short paean to the primal forest. As your words echo and fade, plants in a wide radius are vitalized and grow rapidly as the land is enriched.</em></p><p><strong>Utility</strong></p><ul><li><p>All normal plants become thick and overgrown. Any space that was within 5 ft. of a &amp;reference[plant] is now covered in plant life and counts as &amp;reference[difficult terrain]. You can exclude one or more areas of any size within the spell's area from being affected.</p></li><li><p>The plants double in volume, and yield twice the food or other produce when harvested, if applicable.</p></li><li><p>If these plants are affected by this spell a second time in a growing season, the food or produce spoils, but the plants still grow and create more &amp;reference[difficult terrain].</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -127,7 +176,15 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "sAeUfv6Lfvi4RQab",
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
 				"range": {
 					"override": false
 				},
@@ -136,8 +193,16 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": ""
+					},
+					"template": {
+						"type": "circle",
+						"size": "100",
+						"count": ""
+					}
 				},
 				"roll": {
 					"formula": "",
@@ -147,9 +212,37 @@
 				},
 				"uses": {
 					"spent": 0,
-					"recovery": []
+					"recovery": [],
+					"max": ""
 				},
-				"_id": "D1f2U19XMC0Y0e4A"
+				"_id": "D1f2U19XMC0Y0e4A",
+				"name": "",
+				"img": "",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"dispositionFilter": 0,
+					"wallRestriction": "move",
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "sAeUfv6Lfvi4RQab"
+						},
+						{
+							"trigger": "entry",
+							"action": "removeEffect",
+							"targetId": "sAeUfv6Lfvi4RQab"
+						}
+					],
+					"excludeSource": false,
+					"oncePerTurn": false
+				}
 			}
 		},
 		"identifier": "plant-growth"

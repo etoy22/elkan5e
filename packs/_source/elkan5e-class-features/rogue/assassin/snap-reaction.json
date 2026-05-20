@@ -6,7 +6,7 @@
 	"img": "icons/magic/symbols/symbol-lightning-bolt.webp",
 	"system": {
 		"description": {
-			"value": "<p>Your initiative increases by 5.</p><p><strong>No Action Cost</strong> - Self</p><p>When you roll initiative, you can immediately move up to your speed without triggering @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.5zEWVU1yw2Sv3hSI]{attacks of opportunity}.</p>",
+			"value": "<p>Your &amp;reference[initiative] increases by 5.</p><p><strong>No Action Cost</strong> - Self</p><p>When you roll initiative, you can immediately move up to your speed without triggering @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.5zEWVU1yw2Sv3hSI]{attacks of opportunity}.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -101,25 +101,14 @@
 	"effects": [
 		{
 			"name": "Snap Reaction",
-			"changes": [
-				{
-					"key": "system.attributes.init.bonus",
-					"mode": 2,
-					"value": "+5",
-					"priority": 20
-				}
-			],
 			"transfer": true,
 			"_id": "qQ1t7GXzN2JoO7v1",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -156,7 +145,19 @@
 			"tint": "#ffffff",
 			"img": "icons/magic/symbols/symbol-lightning-bolt.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.init.bonus",
+						"value": "+5",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!iOVIwVBweeL1f3Dn.qQ1t7GXzN2JoO7v1"
 		}
 	],

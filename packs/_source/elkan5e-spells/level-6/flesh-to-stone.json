@@ -20,7 +20,8 @@
 					"disableCondition": "",
 					"disableIncapacitated": false,
 					"dontApply": false,
-					"showIcon": false
+					"showIcon": false,
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -39,26 +40,37 @@
 					"wallsBlock": "system"
 				}
 			},
-			"changes": [],
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"tint": "#ffffff",
 			"transfer": false,
 			"origin": null,
 			"name": "Flesh to Stone",
 			"description": "",
-			"statuses": [],
+			"statuses": [
+				"restrained"
+			],
 			"img": "icons/magic/earth/strike-fist-stone-gray.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"type": "add",
+						"value": "turn=start, label=Flesh to Stone, saveAbility=con, saveDC=@attributes.spell.dc, saveCount=3c-, failCount=3c-petrified",
+						"phase": "initial",
+						"priority": null
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 2,
+			"folder": null,
 			"_key": "!items.effects!KHqVYnaRXB51vO6G.rcvkBwQW0yl4arjK"
 		}
 	],

@@ -37,78 +37,83 @@
 			"img": "icons/weapons/staves/staff-vines-green.webp",
 			"_id": "WAz2KeNm0Do9ykPj",
 			"type": "enchantment",
-			"system": {},
-			"changes": [
-				{
-					"key": "name",
-					"mode": 5,
-					"value": "Shillelagh, {}",
-					"priority": null
-				},
-				{
-					"key": "system.properties",
-					"mode": 2,
-					"value": "mgc",
-					"priority": null
-				},
-				{
-					"key": "system.ability",
-					"mode": 5,
-					"value": "wis",
-					"priority": null
-				},
-				{
-					"key": "system.damage.base.number",
-					"mode": 5,
-					"value": "1",
-					"priority": null
-				},
-				{
-					"key": "system.damage.base.denomination",
-					"mode": 5,
-					"value": "8",
-					"priority": null
-				},
-				{
-					"key": "system.damage.base.types",
-					"mode": 5,
-					"value": "[\"bludgeoning\"]",
-					"priority": null
-				},
-				{
-					"key": "system.damage.versatile.number",
-					"mode": 5,
-					"value": "1",
-					"priority": null
-				},
-				{
-					"key": "system.damage.versatile.denomination",
-					"mode": 5,
-					"value": "10",
-					"priority": null
-				},
-				{
-					"key": "system.damage.versatile.types",
-					"mode": 5,
-					"value": "[\"bludgeoning\"]",
-					"priority": null
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "name",
+						"value": "Shillelagh, {}",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.properties",
+						"value": "mgc",
+						"priority": null,
+						"type": "add"
+					},
+					{
+						"key": "system.ability",
+						"value": "wis",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.damage.base.number",
+						"value": 1,
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.damage.base.denomination",
+						"value": 8,
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.damage.base.types",
+						"value": [
+							"bludgeoning"
+						],
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.damage.versatile.number",
+						"value": 1,
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.damage.versatile.denomination",
+						"value": 10,
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.damage.versatile.types",
+						"value": [
+							"bludgeoning"
+						],
+						"priority": null,
+						"type": "override"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 60,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
 			"tint": "#ffffff",
 			"transfer": false,
 			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!FkPsaMlXfJwLngaX.WAz2KeNm0Do9ykPj"
 		}
 	],

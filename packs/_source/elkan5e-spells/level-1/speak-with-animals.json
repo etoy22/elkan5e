@@ -4,25 +4,14 @@
 	"img": "icons/creatures/mammals/ox-buffalo-horned-green.webp",
 	"effects": [
 		{
-			"changes": [
-				{
-					"key": "system.traits.languages.custom",
-					"mode": 2,
-					"value": ";comprehend and verbally communicate with Beasts",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"_id": "2cxPSaKCNusaNeV2",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 600,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"origin": null,
 			"tint": "#ffffff",
@@ -63,7 +52,19 @@
 			"statuses": [],
 			"img": "icons/creatures/mammals/ox-buffalo-horned-green.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.languages.custom",
+						"value": ";comprehend and verbally communicate with Beasts",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!K9TCdZs4SV9PqI2i.2cxPSaKCNusaNeV2"
 		}
 	],
@@ -106,7 +107,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You mutter a few nonsensical sounds, which start to sound like words as you cast the spell.</em></p><p><strong>Ritual Casting Time:</strong> 1 Minute</p><p><strong>Buff</strong></p><ul><li><p>You gain the ability to comprehend and verbally communicate with beasts for the duration. The knowledge and awareness of many beasts is limited by their intelligence, but at minimum, beasts can give you information about nearby locations and monsters, including whatever they can perceive or have perceived within the past day.</p></li></ul><p><em>You might be able to persuade a &amp;reference[beast] to perform a small favor for you, at the GM's discretion.</em></p>",
+			"value": "<p><em>You mutter a few nonsensical sounds, which start to sound like words as you cast the spell.</em></p><p><strong>Ritual Casting Time:</strong> 1 Minute</p><p><strong>Buff</strong></p><ul><li><p>You gain the ability to comprehend and verbally communicate with creatures with the beast or plant creatures types for the duration. </p></li><li><p>The knowledge and awareness of many beasts is limited by their intelligence, but at minimum, beasts can give you information about nearby locations and monsters, including whatever they can perceive or have perceived within the past day.</p></li><li><p>This doesn't function on plants or animals that are too weak or inanimate to have statistics. </p></li></ul><p><em>You might be able to persuade a &amp;reference[beast] to perform a small favor for you, at the GM's discretion.</em></p>",
 			"chat": ""
 		},
 		"source": {
@@ -163,8 +164,7 @@
 		"properties": [
 			"vocal",
 			"somatic",
-			"ritual",
-			"mgc"
+			"ritual"
 		],
 		"activities": {
 			"vVca4LYSgPBEa4BM": {

@@ -21,8 +21,8 @@
 			"value": 1
 		},
 		"duration": {
-			"value": "",
-			"units": "spec",
+			"value": "1",
+			"units": "round",
 			"special": ""
 		},
 		"target": {
@@ -135,14 +135,6 @@
 		{
 			"name": "Spook",
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.CmSMaOFx3F2fa4gg",
-			"changes": [
-				{
-					"key": "flags.midi-qol.disadvantage.concentration",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"flags": {
 				"dae": {
@@ -153,13 +145,12 @@
 					"showIcon": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"turnEndSource"
-					],
+					"specialDuration": [],
 					"enableCondition": "",
 					"selfTarget": false,
 					"selfTargetAlways": false,
-					"dontApply": false
+					"dontApply": false,
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -182,22 +173,31 @@
 			"img": "icons/creatures/magical/spirit-fear-energy-pink.webp",
 			"_id": "5SuoRBUBfu3ron2h",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.disadvantage.concentration",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 7,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
 			"statuses": [
 				"frightened"
 			],
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!CmSMaOFx3F2fa4gg.5SuoRBUBfu3ron2h"
 		}
 	],

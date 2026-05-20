@@ -8,23 +8,12 @@
 				"confused"
 			],
 			"name": "Confusion",
-			"changes": [
-				{
-					"key": "flags.midi-qol.OverTime",
-					"mode": 2,
-					"value": "turn=end, label=Confused Save, saveAbility=wis, saveDC=@attributes.spell.dc,\nlabel=Confusion Save",
-					"priority": 20
-				}
-			],
 			"description": "",
 			"duration": {
-				"seconds": 60,
-				"startTime": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null,
-				"combat": null
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
 			},
 			"flags": {
 				"ActiveAuras": {
@@ -64,7 +53,19 @@
 			"tint": "#ffffff",
 			"img": "icons/magic/air/wind-tornado-cyclone-purple-pink.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end, label=Confused Save, saveAbility=wis, saveDC=@attributes.spell.dc,\nlabel=Confusion Save",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
 			"_key": "!items.effects!qiyNsnKPpmPRjvtv.DyN0npqi5Se0CpOm"
 		}
 	],
@@ -151,7 +152,7 @@
 			"template": {
 				"units": "ft",
 				"type": "sphere",
-				"size": "10",
+				"size": "(@item.level - 2) * 5",
 				"contiguous": false,
 				"count": ""
 			}

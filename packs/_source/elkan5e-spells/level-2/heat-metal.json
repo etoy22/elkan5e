@@ -5,34 +5,32 @@
 	"effects": [
 		{
 			"name": "Heat Metal [Disadvantage]",
-			"changes": [
-				{
-					"key": "flags.midi-qol.disadvantage.skill.all",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.disadvantage.attack.all",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				}
-			],
 			"transfer": false,
 			"img": "icons/tools/smithing/crucible.webp",
 			"_id": "TBQgVX9k7l0QnUqE",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.disadvantage.skill.all",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "flags.midi-qol.disadvantage.attack.all",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": 7,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": 7,
+				"units": "seconds",
+				"expiry": "sourceEnd",
+				"expired": false
 			},
 			"description": "",
 			"origin": null,
@@ -45,12 +43,9 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"stackable": "noneName",
-					"showIcon": true,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"turnEndSource"
-					]
+					"specialDuration": []
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -69,6 +64,9 @@
 					"wallsBlock": "system"
 				}
 			},
+			"start": null,
+			"showIcon": 2,
+			"folder": null,
 			"_key": "!items.effects!sZREhsiZMPrT6xdI.TBQgVX9k7l0QnUqE"
 		}
 	],
@@ -261,9 +259,10 @@
 			"s5rDfcHRmM6WHnnP": {
 				"type": "save",
 				"activation": {
-					"type": "action",
+					"type": "bonus",
 					"value": null,
-					"override": false
+					"override": true,
+					"condition": ""
 				},
 				"consumption": {
 					"scaling": {
@@ -283,7 +282,11 @@
 				"effects": [
 					{
 						"_id": "TBQgVX9k7l0QnUqE",
-						"onSave": false
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -339,7 +342,13 @@
 				"img": "",
 				"appliedEffects": [
 					"TBQgVX9k7l0QnUqE"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				}
 			}
 		},
 		"identifier": "heat-metal"

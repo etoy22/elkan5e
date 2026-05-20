@@ -102,7 +102,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><em>You disparage your target with a supernaturally dexterous flourish. Stiff by comparison, your target's movements become disjointed and wavering.</em></p><p><strong>[[/save charisma]]{Charisma Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[cursed]. While cursed in this way, target has disadvantage on strength and dexterity skill checks, as well as strength and dexterity saving throws.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"value": "<p><em>You disparage your target with a supernaturally dexterous flourish. Stiff by comparison, your target's movements become disjointed and wavering.</em></p><p><strong>[[/save charisma]]{Charisma Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[cursed]{Cursed}. While cursed in this way, target has &amp;reference[disadvantage] on strength and dexterity skill checks, as well as strength and dexterity saving throws.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "curse-of-clumsiness",
@@ -165,58 +165,58 @@
 			"transfer": false,
 			"_id": "x0kQP33fYoo6A7xV",
 			"type": "base",
-			"system": {},
-			"changes": [
-				{
-					"key": "flags.midi-qol.disadvantage.skill.ath",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.disadvantage.skill.acr",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.disadvantage.skill.slt",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.disadvantage.skill.ste",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.grants.disadvantage.save.dex",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				},
-				{
-					"key": "flags.midi-qol.grants.disadvantage.save.str",
-					"mode": 5,
-					"value": "1",
-					"priority": 20
-				}
-			],
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.disadvantage.skill.ath",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "flags.midi-qol.disadvantage.skill.acr",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "flags.midi-qol.disadvantage.skill.slt",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "flags.midi-qol.disadvantage.skill.ste",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "flags.midi-qol.grants.disadvantage.save.dex",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "flags.midi-qol.grants.disadvantage.save.str",
+						"value": 1,
+						"priority": 20,
+						"type": "override"
+					}
+				]
+			},
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"statuses": [],
+			"statuses": [
+				"cursed"
+			],
 			"flags": {
 				"dae": {
 					"enableCondition": "",
@@ -226,10 +226,10 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"stackable": "multi",
-					"showIcon": true,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
+					"specialDuration": [],
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -249,6 +249,9 @@
 					"statuses": []
 				}
 			},
+			"start": null,
+			"showIcon": 2,
+			"folder": null,
 			"_key": "!items.effects!Qm8h4UEelnlfW5MC.x0kQP33fYoo6A7xV"
 		}
 	],

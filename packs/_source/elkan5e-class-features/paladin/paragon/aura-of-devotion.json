@@ -4,31 +4,14 @@
 	"img": "icons/magic/life/heart-glowing-red.webp",
 	"effects": [
 		{
-			"changes": [
-				{
-					"key": "system.traits.ci.value",
-					"mode": 0,
-					"value": "charmed",
-					"priority": 20
-				},
-				{
-					"key": "system.traits.ci.value",
-					"mode": 2,
-					"value": "goaded",
-					"priority": 20
-				}
-			],
 			"transfer": true,
 			"_id": "sPVvPCoGKCqTFA5g",
 			"disabled": false,
 			"duration": {
-				"startTime": null,
-				"seconds": null,
-				"combat": null,
-				"rounds": null,
-				"turns": null,
-				"startRound": null,
-				"startTurn": null
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
 			},
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.uBu2SZwTE3OR9C7g",
 			"tint": "#ffffff",
@@ -43,7 +26,8 @@
 					"dontApply": false,
 					"showIcon": false,
 					"macroRepeat": "none",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": true,
@@ -68,7 +52,33 @@
 			"statuses": [],
 			"img": "icons/magic/life/heart-glowing-red.webp",
 			"type": "base",
-			"system": {},
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.ci.value",
+						"type": "custom",
+						"value": "blinded",
+						"phase": "initial",
+						"priority": 20
+					},
+					{
+						"key": "system.traits.ci.value",
+						"type": "add",
+						"value": "blinded",
+						"phase": "initial",
+						"priority": 20
+					},
+					{
+						"key": "",
+						"type": "add",
+						"value": "",
+						"phase": "initial"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
 			"_key": "!items.effects!uBu2SZwTE3OR9C7g.sPVvPCoGKCqTFA5g"
 		}
 	],
@@ -104,7 +114,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><strong>Permanent</strong> - 10 ft. Emanation (Self) - Magical</p><ul><li><p>You and allies can't be affected by the &amp;reference[charmed] or &amp;reference[goaded] conditions.</p></li><li><p>If a creature who is already charmed or goaded comes within 10 ft. of you, this does not end the condition, but does grant the creature advantage on saves to end the condition.</p></li><li><p>This ability does not function when you are &amp;reference[Petrified] or &amp;reference[Unconscious].</p></li></ul><p>At 18th level, the range of this aura increases to 30 feet (also listed below).</p>",
+			"value": "<p><strong>Permanent</strong> - 10 ft. Emanation (Self) - Magical</p><ul><li><p>You and allies can't be affected by the &amp;reference[charmed apply=false] or &amp;reference[goaded apply=false] conditions.</p></li><li><p>If a creature who is already charmed or goaded comes within 10 ft. of you, this does not end the condition, but does grant the creature &amp;reference[advantage] on saves to end the condition.</p></li><li><p>This ability does not function when you are &amp;reference[Petrified apply=false] or &amp;reference[Unconscious apply=false].</p></li></ul><p>At 18th level, the range of this aura increases to 30 feet (also listed below).</p>",
 			"chat": ""
 		},
 		"source": {

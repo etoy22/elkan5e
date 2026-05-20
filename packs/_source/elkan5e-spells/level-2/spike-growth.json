@@ -2,7 +2,52 @@
 	"name": "Spike Growth",
 	"type": "spell",
 	"img": "icons/magic/nature/root-vines-grow-brown.webp",
-	"effects": [],
+	"effects": [
+		{
+			"name": "Spike Growth - Slowed",
+			"img": "icons/magic/nature/root-vines-grow-brown.webp",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.pvaTvkG3eFu2qojR",
+			"type": "base",
+			"_id": "4DhLcnjX5GHMfWDp",
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.walk",
+						"type": "custom",
+						"value": "/2",
+						"phase": "initial",
+						"priority": null
+					}
+				]
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [],
+			"showIcon": 1,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"expiryMode": "default",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"disableIncapacitated": false,
+					"specialDuration": []
+				}
+			},
+			"_key": "!items.effects!pvaTvkG3eFu2qojR.4DhLcnjX5GHMfWDp"
+		}
+	],
 	"folder": "6J3i75lfD1J0xYwA",
 	"flags": {
 		"midi-qol": {
@@ -42,7 +87,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You drop seven sharp thorns or sticks to the ground, asking the land to obey your will. You gesture over the area and spikes sprout forth, blending in with their surroundings.</em></p><p><strong>Area Hazard</strong></p><ul><li><p>The spikes are camouflaged to look natural. Any creature that can't see the area at the time the spell is cast rolls a [[/check Perception]] check against your spell save DC right before they would step into the spikes to notice the danger. Creatures who witness the spell can see the danger.</p></li><li><p>When a creature moves into a space occupied by the spikes, they take [[/damage 2d4 piercing]] damage for every 5 feet they travel.</p></li><li><p>The spikes create &amp;reference[difficultterrain].</p></li></ul><p><strong>Upcasting:</strong> The radius of the spell increases by 5 ft. for each spell level above 2nd level.</p>",
+			"value": "<p><em>You drop seven sharp thorns or sticks to the ground, asking the land to obey your will. You gesture over the area and spikes sprout forth, blending in with their surroundings.</em></p><p><strong>Area Hazard</strong></p><ul><li><p>The spikes are camouflaged to look natural. Any creature that can't see the area at the time the spell is cast rolls a [[/check Perception]]{Perception} check against your spell save DC right before they would step into the spikes to notice the danger. Creatures who witness the spell can see the danger.</p></li><li><p>When a creature moves into a space occupied by the spikes, they take [[/damage 2d4 piercing]] damage for every 5 feet they travel.</p></li><li><p>The spikes create &amp;reference[difficultterrain].</p></li></ul><p><strong>Upcasting:</strong> The radius of the spell increases by 5 ft. for each spell level above 2nd level.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -64,14 +109,14 @@
 		},
 		"target": {
 			"affects": {
-				"choice": false,
+				"choice": true,
 				"count": "",
 				"type": ""
 			},
 			"template": {
 				"units": "ft",
 				"type": "circle",
-				"size": "20",
+				"size": "(@item.level * 5) + 10",
 				"contiguous": false,
 				"count": ""
 			}
@@ -130,7 +175,15 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "4DhLcnjX5GHMfWDp",
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
 				"range": {
 					"override": false
 				},
@@ -139,8 +192,17 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": ""
+					},
+					"template": {
+						"type": "circle",
+						"size": "(@item.level * 5) + 10",
+						"height": "",
+						"count": ""
+					}
 				},
 				"uses": {
 					"spent": 0,
@@ -155,7 +217,30 @@
 				},
 				"name": "Initial Casting (Use First)",
 				"img": "",
-				"appliedEffects": []
+				"appliedEffects": [],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"regionBehavior": {
+					"enabled": true,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "4DhLcnjX5GHMfWDp"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "4DhLcnjX5GHMfWDp"
+						}
+					],
+					"dispositionFilter": 0,
+					"regionVisibility": 3
+				}
 			},
 			"RMaFSkHQ59YBoS8F": {
 				"type": "damage",
@@ -192,8 +277,14 @@
 					"value": 1,
 					"units": "ft",
 					"width": null,
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": true,
+					"affects": {
+						"type": "creature"
+					},
+					"template": {
+						"type": ""
+					}
 				},
 				"uses": {
 					"spent": 0,
@@ -227,7 +318,13 @@
 				"forceDialog": false,
 				"effectConditionText": "",
 				"img": "",
-				"appliedEffects": []
+				"appliedEffects": [],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				}
 			}
 		},
 		"identifier": "spike-growth"
