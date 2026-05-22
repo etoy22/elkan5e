@@ -1,4 +1,4 @@
-import { rage, wildBlood, onBloodragerCreateItem, updateBloodragerOnLevelup, handleBloodragerDelete, preHandleBloodragerDelete } from "./module/classes/barbarian.mjs";
+import { rage, wildBlood, onBloodragerRenderAdvancementManager, preBloodragerCreateItem, onBloodragerCreateItem, updateBloodragerOnLevelup, handleBloodragerDelete, preHandleBloodragerDelete } from "./module/classes/barbarian.mjs";
 import {
 	healingOverflow,
 	infusedHealer,
@@ -17,7 +17,7 @@ import {
 import { slicingBlow, sneakAttack } from "./module/classes/rogue.mjs";
 import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
 import { initWarlockSpellSlot, onWarlockFilterInvocations } from "./module/classes/warlock.mjs";
-import { markForDeath } from "./module/classes/ranger.mjs";
+import { markForDeath, markOfAffliction, markOfThorns } from "./module/classes/ranger.mjs";
 import {
 	lifeDrainGraveguard,
 	necromanticSurge,
@@ -26,6 +26,7 @@ import {
 } from "./module/classes/wizard.mjs";
 import { relentlessEndurance, undeadNature, initFeatIdentifierMap, onFilterOwnedFeats } from "./module/feats.mjs";
 import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
+import { speed, wrapJumpCalculation } from "./module/rules/speed.mjs";
 import {
 	conditions,
 	conditionsReady,
@@ -80,6 +81,9 @@ function registerHooks() {
 	// flags.elkan5e.concentration.bonuses.save flag set by active effects.
 	// Must run during setup (after init, before ready) so the prototype is in place.
 	Hooks.once("setup", () => {
+		// Auto-calculate Long Jump, High Jump, and Crawl speeds.
+		// wrapJumpCalculation();
+
 		const ActorClass = CONFIG.Actor?.documentClass;
 		if (!ActorClass?.prototype?.prepareDerivedData) {
 			console.warn("Elkan 5e | Could not wrap prepareDerivedData for concentration proficiency.");
@@ -128,6 +132,7 @@ function registerHooks() {
 			scroll();
 			skills();
 			refs();
+			speed();
 
 			// Hides pact-specific invocations from advancement dialogs for actors
 			// that don't have the corresponding pact boon.
@@ -136,9 +141,30 @@ function registerHooks() {
 			// Hides already-owned (non-repeatable) feats from advancement dialogs.
 			Hooks.on("renderApplication", onFilterOwnedFeats);
 
-			// Handles Bloodrager origin selection, subclass rename, spell pool
-			// population, and Seething Blood / Wild Blood grants when the subclass
-			// item is first added to an actor.
+			// PRIMARY: Shows origin picker the moment the AdvancementManager opens
+			// for a Bloodrager subclass, modifies spell pools in the AM's working
+			// clone in-memory, and stores the choice as actor flags.
+			Hooks.on("renderAdvancementManager", async (app, ...rest) => {
+				try {
+					await onBloodragerRenderAdvancementManager(app);
+				} catch (error) {
+					console.error("Elkan 5e | Error in renderAdvancementManager Bloodrager hook:", error);
+				}
+			});
+
+			// FALLBACK for programmatic creation (no AM open): cancels item creation,
+			// shows picker, and re-creates the item with pre-populated spell pools.
+			Hooks.on("preCreateItem", (item, data, options, userId) => {
+				try {
+					return preBloodragerCreateItem(item, data, options, userId);
+				} catch (error) {
+					console.error("Elkan 5e | Error in preCreateItem Bloodrager hook:", error);
+				}
+			});
+
+			// POST-CREATION: After the AM commits the Bloodrager item, grants
+			// Seething Blood and Wild Blood using flags set by renderAdvancementManager.
+			// Also handles the fallback path (macro creation via _doBloodragerSetup).
 			Hooks.on("createItem", async (item, options, userId) => {
 				try {
 					await onBloodragerCreateItem(item, options, userId);
@@ -164,6 +190,15 @@ function registerHooks() {
 						hint: game.i18n.localize("elkan5e.burning.effects.fireDamageTakenDescription"),
 					}),
 					CONST.ACTIVE_EFFECT_MODES.CUSTOM,
+				];
+				// Jump spell: triples Long Jump and High Jump distances.
+				// Set this flag to 1 (Override mode) on the spell's Active Effect.
+				specials["flags.elkan5e.movement.tripleJump"] = [
+					new BooleanField({
+						label: "Triple Jump Distance (Jump spell)",
+						hint: "When enabled, triples the actor's Long Jump and High Jump distances.",
+					}),
+					CONST.ACTIVE_EFFECT_MODES.OVERRIDE,
 				];
 			});
 
@@ -245,6 +280,36 @@ function registerHooks() {
 			wildSurge(activity, usageConfig);
 		} catch (error) {
 			console.error("Elkan 5e | Error in postUseActivity hook:", error);
+		}
+	});
+
+	// Sanctuary — before an attack roll is made, checks whether any target bears
+	// the Sanctuary effect. If so, the attacker must pass a Wisdom save or the
+	// target is removed from the workflow before the roll fires.
+	Hooks.on("midi-qol.preAttackRoll", async (workflow) => {
+		try {
+			await Spells.sanctuary(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Sanctuary hook:", error);
+		}
+	});
+
+	Hooks.on("midi-qol.RollComplete", async (workflow) => {
+		try {
+			await markOfAffliction(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Mark of Affliction hook:", error);
+		}
+
+		try {
+			await markOfThorns(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Mark of Thorns hook:", error);
+		}
+		try {
+			await Spells.fireShield(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Fire Shield hook:", error);
 		}
 	});
 
@@ -390,6 +455,7 @@ function registerHooks() {
 		} catch (error) {
 			console.error("Elkan 5e | Error in updateToken grapple hook:", error);
 		}
+
 	});
 
 	Hooks.on("combatTurnChange", (combat, prior) => {
@@ -403,6 +469,10 @@ function registerHooks() {
 		} catch (error) {
 			console.error("Elkan 5e | Error in combatTurnChange hook:", error);
 		}
+
+		// Clear the Sanctuary success cache at the start of each new turn so
+		// attackers must re-roll the save against any still-warded creature.
+		Level1.sanctuarySuccessCache.clear();
 	});
 
 	Hooks.on("updateMeasuredTemplate", async (template) => {

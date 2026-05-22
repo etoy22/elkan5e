@@ -1,34 +1,56 @@
 /**
  * Runs Fire Shield spell automation.
- * Triggers when the Fire Shield holder is damaged by a melee attack.
- * Fires activity 66Qhs5vOSnBGeqBW on the attacker.
+ * Triggered globally at midi-qol.RollComplete whenever a melee weapon attack
+ * lands. Checks each hit target for an active Fire Shield effect and fires the
+ * retaliatory damage activity on the attacker.
  *
- * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @param {*} workflow - midi-qol workflow at RollComplete.
  * @returns {Promise<void>} Promise resolution result.
  */
 export async function fireShield(workflow) {
 	try {
 		// Only retaliate against melee weapon attacks.
-		if (workflow.activity?.actionType !== "mwak") return;
-		if (workflow.hitTargets.size === 0) return;
+		if ((workflow.activity?.actionType !== "mwak" && workflow.activity?.actionType !== "msak") || !workflow.hitTargets?.size) return;
 
 		const attackerToken = workflow.token;
 		if (!attackerToken) return;
 
-		const activity = macroItem.system.activities.get("66Qhs5vOSnBGeqBW");
-		if (!activity) {
-			console.warn("Fire Shield: activity 66Qhs5vOSnBGeqBW not found on item");
-			return;
+		for (const targetToken of Array.from(workflow.hitTargets)) {
+			const defenderActor = targetToken.actor;
+			if (!defenderActor) continue;
+
+			// Check if this target has an active Fire Shield effect (Hot or Cold).
+			const shieldEffect = defenderActor.effects.find(
+				(e) => !e.disabled && (e.name === "Fire Shield [Hot]" || e.name === "Fire Shield [Cold]"),
+			);
+			if (!shieldEffect) continue;
+
+			// Find the Fire Shield item on the defender and get the damage formula
+			// from its damage activity so it stays in sync with the item data.
+			const shieldItem = defenderActor.items.find((i) => i.system.identifier === "fire-shield");
+			const shieldActivity = shieldItem?.system.activities.find((a) => a.type === "damage");
+			const damagePart = shieldActivity?.damage?.parts?.[0];
+			const damageFormula = damagePart
+				? `${damagePart.number}d${damagePart.denomination}[${damagePart.types?.[0] ?? "fire"}]`
+				: "2d8[fire]";
+			const damageType = damagePart?.types?.[0] ?? "fire";
+
+			const damageRoll = await new Roll(damageFormula).evaluate();
+
+			await new MidiQOL.DamageOnlyWorkflow(
+				defenderActor,
+				targetToken,
+				damageRoll.total,
+				damageType,
+				[{ token: attackerToken, actor: attackerToken.actor }],
+				{
+					flavor: "Fire Shield",
+					itemCardId: "new",
+					isCritical: false,
+					damageRoll,
+				},
+			);
 		}
-
-		// Temporarily target the attacker so the activity fires on them.
-		const previousTargets = Array.from(game.user.targets).map((t) => t.id);
-		game.user.updateTokenTargets([attackerToken.id]);
-
-		await activity.use({ event: workflow.event });
-
-		// Restore whatever the user had targeted before.
-		game.user.updateTokenTargets(previousTargets);
 	} catch (err) {
 		console.error("Fire Shield |", err);
 	}
@@ -53,7 +75,7 @@ export async function vampiricSmite(workflow) {
 	const healAmount = Math.floor(necroticDamage * damageMultiplier * 0.5);
 	if (healAmount <= 0) return;
 
-	const healingRoll = await new Roll(`${healAmount}`).evaluate({ async: true });
+	const healingRoll = await new Roll(`${healAmount}`).evaluate();
 	new MidiQOL.DamageOnlyWorkflow(
 		caster,
 		casterToken,

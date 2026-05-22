@@ -9,6 +9,9 @@ on:
 permissions:
   contents: write
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   version-check:
     runs-on: ubuntu-latest
@@ -216,6 +219,7 @@ jobs:
     if: >
       needs.version-check.outputs.should_continue == 'true' &&
       needs.create-github-release.result == 'success' &&
+      (needs.extract-release-notes.result == 'success' || needs.extract-release-notes.result == 'skipped') &&
       needs.version-check.outputs.test != 'true'
     env:
       JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
@@ -231,6 +235,7 @@ jobs:
       DEPLOYMENT_ENVIRONMENT_ID: production
       DEPLOYMENT_ENVIRONMENT_NAME: Production
       DEPLOYMENT_ENVIRONMENT_TYPE: production
+      EXTRACT_NOTES_RESULT: ${{ needs.extract-release-notes.result }}
     steps:
       - uses: actions/checkout@v4
 
@@ -249,14 +254,14 @@ jobs:
         run: node .github/workflows/scripts/check-jira-connection.mjs
 
       - name: Download release notes artifact
-        if: steps.jira_check.outputs.skip != 'true'
+        if: steps.jira_check.outputs.skip != 'true' && env.EXTRACT_NOTES_RESULT == 'success'
         uses: actions/download-artifact@v4
         with:
           name: release-notes
           path: .
 
       - name: Read release notes
-        if: steps.jira_check.outputs.skip != 'true'
+        if: steps.jira_check.outputs.skip != 'true' && env.EXTRACT_NOTES_RESULT == 'success'
         id: read_notes
         run: |
           echo "release_notes<<EOF" >> $GITHUB_OUTPUT
@@ -291,6 +296,8 @@ jobs:
       MINIMUM: ${{ needs.version-check.outputs.minimum }}
       VERIFIED: ${{ needs.version-check.outputs.verified }}
     steps:
+      - uses: actions/checkout@v4
+
       - name: Download release notes artifact
         uses: actions/download-artifact@v4
         with:

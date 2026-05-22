@@ -2,6 +2,13 @@ import { drainedEffect, forEachDamagedTarget } from "../shared/helpers.mjs";
 import { createGoodberryDurationEffect } from "../shared/effect-factories.mjs";
 
 /**
+ * Tracks attacker-defender pairs that have already passed a Sanctuary save
+ * this combat turn. Keys are `${attackerActorId}-${defenderActorId}`.
+ * Cleared by the combatTurnChange hook in elkan5e.mjs each turn.
+ */
+export const sanctuarySuccessCache = new Set();
+
+/**
  * Runs goodberry spell automation.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
@@ -310,28 +317,21 @@ export async function rendVigor(workflow) {
 }
 
 /**
- * Runs Sanctuary spell automation (midi-qol postAttackRollComplete phase).
+ * Runs Sanctuary spell automation (midi-qol preWaitForAttackRoll phase).
+ * Triggered via flags.midi-qol.preWaitForAttackRoll = "ItemMacro" on the
+ * warded creature's Sanctuary effect. Fires before the attack roll so the
+ * attacker must succeed on a Wisdom save before committing to the attack.
  *
- * Triggered via the `flags.midi-qol.postAttackRollComplete = "ItemMacro"` change
- * on the Sanctuary active effect. After an attacker's roll resolves, any hit
- * against a Sanctuary-protected creature requires a Wisdom saving throw (DC =
- * the original caster's spell save DC). On a failed save the hit is cancelled
- * and a chat message instructs the attacker to choose a new target.
- *
- * Per the spell text, no save is needed when the protected creature is not the
- * sole target of an area-of-effect ability.
- *
- * @param {object} workflow - midi-qol workflow at postAttackRollComplete.
+ * @param {object} workflow - midi-qol workflow at preWaitForAttackRoll.
  * @returns {Promise<void>} Promise resolution result.
  */
 export async function sanctuary(workflow) {
-	console.log("Sanctuary automation triggered at postAttackRollComplete", workflow);
-	if (!workflow?.hitTargets?.size) return;
+	if (!workflow?.targets?.size) return;
 
 	const attackerActor = workflow.actor;
 	if (!attackerActor) return;
 
-	for (const token of Array.from(workflow.hitTargets)) {
+	for (const token of Array.from(workflow.targets)) {
 		const defenderActor = token.actor;
 		if (!defenderActor) continue;
 
@@ -343,45 +343,47 @@ export async function sanctuary(workflow) {
 		// AoE exception: no save when the protected creature is not the only target
 		if (workflow.targets.size > 1) continue;
 
-		// Resolve the original caster's spell save DC from the effect origin
-		const originItem = sanctuaryEffect.origin
+		// If the attacker already passed the save against this creature this turn,
+		// they can attack freely without rolling again.
+		const cacheKey = `${attackerActor.id}-${defenderActor.id}`;
+		if (sanctuarySuccessCache.has(cacheKey)) continue;
+
+		// Resolve the original caster's spell save DC from the effect origin.
+		// In dnd5e v5 the origin UUID points to the Activity, so step up to
+		// the Item and then to the actor.
+		const originDoc = sanctuaryEffect.origin
 			? await fromUuid(sanctuaryEffect.origin).catch(() => null)
 			: null;
+		const originItem = originDoc ? (originDoc.item ?? originDoc.parent ?? originDoc) : null;
 		const casterActor = originItem?.parent ?? null;
 		const spellDC = casterActor?.system?.attributes?.spelldc ?? 13;
 
-		// Roll Wisdom saving throw for the attacker
-		const saveRoll = await attackerActor.rollAbilitySave("wis", {
+		// Roll Wisdom saving throw for the attacker.
+		const saveRolls = await attackerActor.rollSavingThrow({
+			ability: "wis",
 			targetValue: spellDC,
-			chatMessage: true,
-			messageData: {
-				flavor: `Wisdom Save vs. Sanctuary (DC ${spellDC}) — targeting ${defenderActor.name}`,
-			},
+			flavor: `Wisdom Save vs. Sanctuary (DC ${spellDC}) — targeting ${defenderActor.name}`,
 		});
+		const saveRoll = Array.isArray(saveRolls) ? saveRolls[0] : saveRolls;
 
 		if (!saveRoll) continue;
 
 		const passed = saveRoll.total >= spellDC;
 
-		if (!passed) {
-			// Failed — cancel the hit; attacker must choose a new target
-			workflow.hitTargets.delete(token);
+		if (passed) {
+			// Remember this success so further attacks this turn skip the save.
+			sanctuarySuccessCache.add(cacheKey);
+		} else {
+			// Failed — remove the target before the attack roll so the attack never fires.
 			workflow.targets.delete(token);
 		}
 
-		const content = passed
-			? `<p><strong>${attackerActor.name}</strong> passed the Wisdom saving throw `
-			  + `<strong>(${saveRoll.total} vs. DC ${spellDC})</strong> and may target `
-			  + `<strong>${defenderActor.name}</strong>.</p>`
-			: `<p><strong>${attackerActor.name}</strong> failed the Wisdom saving throw `
-			  + `<strong>(${saveRoll.total} vs. DC ${spellDC})</strong> — `
-			  + `<strong>${defenderActor.name}</strong> is protected by <em>Sanctuary</em>. `
-			  + `The attack is negated; choose a new target.</p>`;
 
-		await ChatMessage.create({
-			content,
-			speaker: ChatMessage.getSpeaker({ actor: attackerActor }),
-		});
+	}
+
+	// If every target was removed by failed saves, abort the attack entirely.
+	if (workflow.targets.size === 0) {
+		workflow.aborted = true;
 	}
 }
 
@@ -400,9 +402,9 @@ export async function shield(workflow) {
 		return;
 	}
 
-	// Spell level (minimum 1)
+	// Spell level (minimum 1); no bonus when cast at base level.
 	const level = Math.max(item.system.level ?? 1, 1);
-	if (level === 0 || level === 1) return;
+	if (level === 1) return;
 
 	// Spell bonus: Just the bonnus from the spell level
 	const spellBonus = Math.min(level - 1, 2);
