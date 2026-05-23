@@ -31,6 +31,7 @@ import {
 	necromanticSurge,
 	soulConduit,
 	spectralEmpowerment,
+	onWizardRenderAdvancementManager,
 } from "./module/classes/wizard.mjs";
 import {
 	relentlessEndurance,
@@ -123,12 +124,22 @@ function registerHooks() {
 			// PRIMARY: Shows origin picker the moment the AdvancementManager opens
 			// for a Bloodrager subclass, modifies spell pools in the AM's working
 			// clone in-memory, and stores the choice as actor flags.
+			// Also pre-populates Wizard Spells Known pools with school-appropriate
+			// spells when a school-specialisation subclass is present.
 			Hooks.on("renderAdvancementManager", async (app, ..._rest) => {
 				try {
 					await onBloodragerRenderAdvancementManager(app);
 				} catch (error) {
 					console.error(
 						"Elkan 5e | Error in renderAdvancementManager Bloodrager hook:",
+						error,
+					);
+				}
+				try {
+					await onWizardRenderAdvancementManager(app);
+				} catch (error) {
+					console.error(
+						"Elkan 5e | Error in renderAdvancementManager Wizard hook:",
 						error,
 					);
 				}
