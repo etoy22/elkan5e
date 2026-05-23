@@ -178,9 +178,7 @@ export async function necromanticSurge(workflow) {
 	}
 }
 
-
 // --- Wizard school spell-pool automation (disabled) ---
-
 
 // Wizard school spell-pool automation -- commented out, revisit later
 
@@ -453,4 +451,6 @@ export async function necromanticSurge(workflow) {
 // 	}
 // }
 /** No-op stub -- automation above is disabled. */
-export async function onWizardRenderAdvancementManager(_app) { /* disabled */ }
+export async function onWizardRenderAdvancementManager(_app) {
+	/* disabled */
+}

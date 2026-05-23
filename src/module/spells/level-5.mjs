@@ -1,6 +1,5 @@
 import { drainedEffect, forEachDamagedTarget } from "../shared/helpers.mjs";
 
-
 /**
  * Runs Greater Restoration spell automation.
  * Automatically removes all listed conditions from the target, removes one level

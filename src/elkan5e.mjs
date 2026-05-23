@@ -54,6 +54,13 @@ import {
 	handlePushedEffect,
 } from "./module/rules/condition/grapple.mjs";
 import {
+	ride,
+	dismountAction,
+	handleMountMove,
+	handleMountedEffectDelete,
+	endAllRidesForActor,
+} from "./module/rules/condition/ride.mjs";
+import {
 	handleBurningCreate,
 	handleBurningDelete,
 	quenchBurning,
@@ -336,6 +343,12 @@ function registerHooks() {
 		}
 
 		try {
+			await handleMountedEffectDelete(effect);
+		} catch (error) {
+			console.error("Elkan 5e | Error in deleteActiveEffect mounted cleanup hook:", error);
+		}
+
+		try {
 			await Promise.resolve(Spells.goodberryDeleteActive(effect));
 		} catch (error) {
 			console.error("Elkan 5e | Error cleaning goodberry effect:", error);
@@ -430,6 +443,16 @@ function registerHooks() {
 		}
 
 		try {
+			// End ride relationships when an actor reaches 0 hp.
+			const hp = Number(actor?.system?.attributes?.hp?.value);
+			if (Number.isFinite(hp) && hp <= 0) {
+				await endAllRidesForActor(actor);
+			}
+		} catch (error) {
+			console.error("Elkan 5e | Error in dead ride cleanup hook:", error);
+		}
+
+		try {
 			await updateBloodragerOnLevelup(actor, changes);
 		} catch (error) {
 			console.error("Elkan 5e | Error in Bloodrager level-up spell pool hook:", error);
@@ -441,6 +464,12 @@ function registerHooks() {
 			await handleGrapplerMove(tokenDoc, changes);
 		} catch (error) {
 			console.error("Elkan 5e | Error in updateToken grapple hook:", error);
+		}
+
+		try {
+			await handleMountMove(tokenDoc, changes);
+		} catch (error) {
+			console.error("Elkan 5e | Error in updateToken mount hook:", error);
 		}
 	});
 
@@ -509,6 +538,8 @@ function registerHooks() {
 			spells: Spells,
 			features: {
 				grapple,
+				ride,
+				dismountAction,
 				push,
 				rage,
 				soulConduit,

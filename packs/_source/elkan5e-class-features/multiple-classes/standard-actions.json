@@ -6,7 +6,7 @@
 	"img": "icons/skills/trades/academics-investigation-puzzles.webp",
 	"system": {
 		"description": {
-			"value": "<p>For a full explanation, see @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7]{Standard Actions}. Many of these standard actions, as well as grappling and shoving (which take the place of one of your weapon attacks), are listed as activities on this feature.</p><h2><strong>Actions</strong></h2><p><strong>&amp;reference[Attack]</strong></p><p><strong>&amp;reference[Dash]</strong></p><p><strong>&amp;reference[Disengage]</strong></p><p><strong>&amp;reference[Hide]</strong></p><p><strong>&amp;reference[Influence]</strong></p><p><strong>&amp;reference[Ready]</strong></p><p><strong>&amp;reference[Search]</strong></p><p><strong>&amp;reference[Study]</strong></p><h2>Reactions</h2><p><strong>&amp;reference[opportunityattacks]</strong></p>",
+			"value": "<p>For a full explanation, see @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7]{Standard Actions}. Many of these standard actions, as well as grappling, shoving, and mounting (which take the place of one of your weapon attacks or half your movement), are listed as activities on this feature.</p><h2><strong>Actions</strong></h2><p><strong>&amp;reference[Attack]</strong></p><p><strong>&amp;reference[Dash]</strong></p><p><strong>&amp;reference[Disengage]</strong></p><p><strong>&amp;reference[Hide]</strong></p><p><strong>&amp;reference[Influence]</strong></p><p><strong>&amp;reference[Ready]</strong></p><p><strong>&amp;reference[Search]</strong></p><p><strong>&amp;reference[Study]</strong></p><h2>Reactions</h2><p><strong>&amp;reference[opportunityattacks]</strong></p>",
 			"chat": ""
 		},
 		"source": {
@@ -123,7 +123,6 @@
 					"automationOnly": false,
 					"otherActivityCompatible": true,
 					"otherActivityAsParentType": true,
-					"identifier": "",
 					"displayActivityName": false,
 					"rollMode": "default",
 					"chooseEffects": false,
@@ -282,7 +281,6 @@
 					"automationOnly": false,
 					"otherActivityCompatible": true,
 					"otherActivityAsParentType": true,
-					"identifier": "",
 					"displayActivityName": false,
 					"rollMode": "default",
 					"chooseEffects": false,
@@ -438,7 +436,6 @@
 					"automationOnly": false,
 					"otherActivityCompatible": true,
 					"otherActivityAsParentType": true,
-					"identifier": "",
 					"displayActivityName": false,
 					"rollMode": "default",
 					"chooseEffects": false,
@@ -579,7 +576,6 @@
 					"automationOnly": false,
 					"otherActivityCompatible": true,
 					"otherActivityAsParentType": true,
-					"identifier": "",
 					"displayActivityName": false,
 					"rollMode": "default",
 					"chooseEffects": false,
@@ -738,7 +734,6 @@
 					"automationOnly": false,
 					"otherActivityCompatible": true,
 					"otherActivityAsParentType": true,
-					"identifier": "",
 					"displayActivityName": false,
 					"rollMode": "default",
 					"chooseEffects": false,
@@ -885,7 +880,6 @@
 					"automationOnly": false,
 					"otherActivityCompatible": true,
 					"otherActivityAsParentType": true,
-					"identifier": "",
 					"displayActivityName": false,
 					"rollMode": "default",
 					"chooseEffects": false,
@@ -1040,7 +1034,6 @@
 					"automationOnly": false,
 					"otherActivityCompatible": true,
 					"otherActivityAsParentType": true,
-					"identifier": "",
 					"displayActivityName": false,
 					"rollMode": "default",
 					"chooseEffects": false,
@@ -1090,6 +1083,290 @@
 					}
 				},
 				"friendlySave": "default"
+			},
+			"ElkMountAct00001": {
+				"type": "utility",
+				"activation": {
+					"type": "special",
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": "Mounting uses half your movement. The target must be a willing creature at least one size larger than you."
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "ft",
+					"value": "5",
+					"override": false,
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"stationary": false,
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"type": "creature",
+						"count": "1",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false,
+					"identifier": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "Mount",
+					"command": "return await elkan5e.macros.features.ride(workflow, true);"
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"skipConcentrationCheck": false,
+					"autoCEEffects": "default",
+					"triggeredActivityConsume": true,
+					"triggeredActivityConfigure": true
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"rollAs": "target",
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"img": "icons/svg/horse.svg",
+				"regionBehavior": {
+					"enabled": false,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": []
+				},
+				"regionLight": {
+					"enabled": false,
+					"dim": 0,
+					"bright": 0,
+					"color": null,
+					"alpha": 0.5,
+					"luminosity": 0.5,
+					"animationType": "",
+					"animationSpeed": 5,
+					"animationIntensity": 5
+				},
+				"_id": "ElkMountAct00001",
+				"name": "Mount"
+			},
+			"ElkDismountAct01": {
+				"type": "utility",
+				"activation": {
+					"type": "special",
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": "Dismounting uses half your movement."
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "self",
+					"override": false,
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"stationary": false,
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"type": "self",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false,
+					"identifier": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "Dismount",
+					"command": "return await elkan5e.macros.features.dismountAction(workflow);"
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"skipConcentrationCheck": false,
+					"autoCEEffects": "default",
+					"triggeredActivityConsume": true,
+					"triggeredActivityConfigure": true
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"rollAs": "target",
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"img": "icons/svg/mountain.svg",
+				"regionBehavior": {
+					"enabled": false,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": []
+				},
+				"regionLight": {
+					"enabled": false,
+					"dim": 0,
+					"bright": 0,
+					"color": null,
+					"alpha": 0.5,
+					"luminosity": 0.5,
+					"animationType": "",
+					"animationSpeed": 5,
+					"animationIntensity": 5
+				},
+				"_id": "ElkDismountAct01",
+				"name": "Dismount"
 			}
 		},
 		"enchant": {},
@@ -1330,7 +1607,7 @@
 			"reactionCondition": "",
 			"removeAttackDamageButtons": "default",
 			"otherCondition": "",
-			"onUseMacroName": "[postActiveEffects]ActivityMacro-pKmBlJTm9DtNuzxH,[postActiveEffects]ActivityMacro-UPoTs0u8K2IrztQN"
+			"onUseMacroName": "[postActiveEffects]ActivityMacro-pKmBlJTm9DtNuzxH,[postActiveEffects]ActivityMacro-UPoTs0u8K2IrztQN,[postActiveEffects]ActivityMacro-ElkMountAct00001,[postActiveEffects]ActivityMacro-ElkDismountAct01"
 		},
 		"dae": {
 			"macro": {

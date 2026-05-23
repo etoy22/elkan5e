@@ -59,9 +59,7 @@ function extractOriginSpells(subclassDoc) {
  */
 async function populateBloodragerSpellPools(bloodragerItem, originSpells, sorcLevels) {
 	const levels = sorcLevels ?? Object.keys(SORC_LEVEL_TO_ADV_ID).map(Number);
-	const advancements = bloodragerItem.system.advancement.map((a) =>
-		foundry.utils.deepClone(a),
-	);
+	const advancements = bloodragerItem.system.advancement.map((a) => foundry.utils.deepClone(a));
 
 	let changed = false;
 	for (const sorcLevel of levels) {
@@ -301,7 +299,8 @@ export async function onBloodragerRenderAdvancementManager(app) {
 			!!_dbgRealItem,
 			"| bloodragerItem same as real?",
 			_dbgRealItem && bloodragerItem === _dbgRealItem ? "YES" : "NO",
-			"| app.steps count:", (app.steps ?? []).length,
+			"| app.steps count:",
+			(app.steps ?? []).length,
 		);
 
 		// --- 5a. DB write on real actor item ---
@@ -358,7 +357,9 @@ export async function onBloodragerRenderAdvancementManager(app) {
 				if (!uuid) continue;
 				const pool = [{ uuid, optional: false }];
 				// Patch derived configuration (read by apply())
-				try { if (adv.configuration) adv.configuration.pool = pool; } catch (_) {
+				try {
+					if (adv.configuration) adv.configuration.pool = pool;
+				} catch (_) {
 					// non-fatal: derived config may be read-only
 				}
 				// Patch source configuration (may be used to regenerate derived config)
@@ -367,7 +368,9 @@ export async function onBloodragerRenderAdvancementManager(app) {
 				} catch (_) {
 					// non-fatal: source config may be read-only
 				}
-				console.log(`Elkan 5e | Bloodrager: patched step advancement ${advId} pool in-place.`);
+				console.log(
+					`Elkan 5e | Bloodrager: patched step advancement ${advId} pool in-place.`,
+				);
 			}
 		}
 	} catch (err) {
@@ -399,7 +402,9 @@ async function _doBloodragerSetup(actor, originalData) {
 	// --- 1. Build origin list ---
 	const origins = await getSorcererSubclasses();
 	if (!origins.length) {
-		console.warn("Elkan 5e | No sorcerer subclasses found; adding Bloodrager without origin setup.");
+		console.warn(
+			"Elkan 5e | No sorcerer subclasses found; adding Bloodrager without origin setup.",
+		);
 		await actor.createEmbeddedDocuments("Item", [originalData], { skipBloodragerSetup: true });
 		return;
 	}
@@ -554,9 +559,7 @@ export function preBloodragerCreateItem(item, data, options, userId) {
 
 	// AM is open: renderAdvancementManager is handling this - stand aside.
 	const amIsOpen =
-		Object.values(ui.windows ?? {}).some(
-			(w) => w.constructor?.name === "AdvancementManager",
-		) ||
+		Object.values(ui.windows ?? {}).some((w) => w.constructor?.name === "AdvancementManager") ||
 		[...(foundry.applications?.instances?.values?.() ?? [])].some(
 			(a) => a.constructor?.name === "AdvancementManager",
 		);
@@ -650,9 +653,7 @@ export async function onBloodragerCreateItem(item, options, userId) {
 			}
 		}
 
-		ui.notifications.info(
-			`Bloodrager origin set — ${item.name} with Seething Blood granted.`,
-		);
+		ui.notifications.info(`Bloodrager origin set — ${item.name} with Seething Blood granted.`);
 		return;
 	}
 
