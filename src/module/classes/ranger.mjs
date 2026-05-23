@@ -29,7 +29,9 @@ export async function markOfAffliction(workflow) {
 		// Require the "Mark of Affliction" effect to be active on the ranger.
 		// (When called via DamageBonusMacro the effect is guaranteed to be present,
 		// but we still guard for the hook-call path.)
-		const markEffect = actor.effects.find((ef) => ef.name === "Mark of Affliction" && !ef.disabled);
+		const markEffect = actor.effects.find(
+			(ef) => ef.name === "Mark of Affliction" && !ef.disabled,
+		);
 		if (!markEffect) return;
 
 		// Once-per-turn guard
@@ -49,7 +51,9 @@ export async function markOfAffliction(workflow) {
 		});
 		if (!confirmed) return;
 
-		const markItem = actor.items.find((i) => i.system?.identifier === "mark-of-affliction-ranger");
+		const markItem = actor.items.find(
+			(i) => i.system?.identifier === "mark-of-affliction-ranger",
+		);
 		if (!markItem) {
 			ui.notifications.warn("Mark of Affliction | Feat item not found on actor.");
 			return;
@@ -102,7 +106,9 @@ export async function markOfThorns(workflow) {
 			let casterActor = null;
 			if (thornsEffect.origin) {
 				const originDoc = await fromUuid(thornsEffect.origin).catch(() => null);
-				const originItem = originDoc ? (originDoc.item ?? originDoc.parent ?? originDoc) : null;
+				const originItem = originDoc
+					? (originDoc.item ?? originDoc.parent ?? originDoc)
+					: null;
 				casterActor = originItem?.parent ?? null;
 			}
 
@@ -121,7 +127,9 @@ export async function markOfThorns(workflow) {
 			// Get the thorn damage formula from the ranger's Mark for Death scale value
 			const scaleEntry = casterActor.system?.scale?.ranger?.["mark-for-death"];
 			const formula =
-				scaleEntry?.formula ?? (typeof scaleEntry === "string" ? scaleEntry : null) ?? "1d4";
+				scaleEntry?.formula ??
+				(typeof scaleEntry === "string" ? scaleEntry : null) ??
+				"1d4";
 
 			const casterToken = casterActor.getActiveTokens()?.[0] ?? attackerToken;
 
@@ -165,8 +173,8 @@ export async function markForDeath(workflow) {
 
 		// ── Damage formula: prefer the ranger scale value, fall back to 1d4 ─────────
 		const scaleValue = workflow.actor?.system?.scale?.ranger?.["mark-for-death"];
+		const formula = scaleValue?.formula ?? "1d4";
 		const base = workflow.item?.system?.damage?.base;
-		const parts = workflow.item?.system?.damage?.parts;
 		let damageType = "slashing";
 
 		if (base?.types instanceof Set && base.types.size > 0) {

@@ -59,7 +59,6 @@ export async function sneakAttack(workflow) {
 		}
 
 		// Eligible if we have advantage OR a qualifying enemy is adjacent to the target.
-		let foundEnemy = false;
 		let isSneak = workflow.advantage;
 
 		if (!isSneak) {
@@ -71,9 +70,6 @@ export async function sneakAttack(workflow) {
 					t.actor.system.attributes?.hp?.value > 0 &&
 					t.document.disposition !== target.document.disposition &&
 					MidiQOL.computeDistance(t, target, { wallsBlock: false }) <= 5,
-			);
-			foundEnemy = nearbyTokens.some(
-				(t) => t.document.disposition === -target.document.disposition,
 			);
 			isSneak = nearbyTokens.length > 0;
 		}

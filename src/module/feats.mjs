@@ -23,7 +23,9 @@ export async function initFeatIdentifierMap() {
 	}
 	try {
 		// Include system.prerequisites so we can read the repeatable flag
-		const index = await pack.getIndex({ fields: ["system.identifier", "system.prerequisites"] });
+		const index = await pack.getIndex({
+			fields: ["system.identifier", "system.prerequisites"],
+		});
 		for (const entry of index) {
 			const identifier = entry.system?.identifier;
 			if (!identifier) continue;
@@ -78,8 +80,7 @@ export function onFilterOwnedFeats(app, html) {
 
 			if (ownedIdentifiers.has(info.identifier)) {
 				// Hide the whole row / card rather than just the anchor
-				const row =
-					el.closest("li, .item, tr, [class*='item-choice']") ?? el;
+				const row = el.closest("li, .item, tr, [class*='item-choice']") ?? el;
 				row.style.display = "none";
 			}
 		}

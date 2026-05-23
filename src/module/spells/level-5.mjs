@@ -1,3 +1,5 @@
+import { drainedEffect, forEachDamagedTarget } from "../shared/helpers.mjs";
+
 
 /**
  * Runs Greater Restoration spell automation.

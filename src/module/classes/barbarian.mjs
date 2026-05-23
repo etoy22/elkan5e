@@ -245,7 +245,7 @@ export async function onBloodragerRenderAdvancementManager(app) {
 		window: { title: "Bloodrager — Choose Sorcerous Origin" },
 		content: `<p>Choose the Sorcerous Origin that flows through your blood.
 		           This determines your Seething Blood damage, your spells, and
-		           whether you gain Wild Blood at level 6.</p>
+		           whether you gain Wild Blood at level 6.</p>
 		          <select name="origin" style="width:100%;margin-top:4px">${originOptions}</select>`,
 		ok: {
 			label: "Confirm",
@@ -358,9 +358,15 @@ export async function onBloodragerRenderAdvancementManager(app) {
 				if (!uuid) continue;
 				const pool = [{ uuid, optional: false }];
 				// Patch derived configuration (read by apply())
-				try { if (adv.configuration) adv.configuration.pool = pool; } catch (_) {}
+				try { if (adv.configuration) adv.configuration.pool = pool; } catch (_) {
+					// non-fatal: derived config may be read-only
+				}
 				// Patch source configuration (may be used to regenerate derived config)
-				try { if (adv._source?.configuration) adv._source.configuration.pool = pool; } catch (_) {}
+				try {
+					if (adv._source?.configuration) adv._source.configuration.pool = pool;
+				} catch (_) {
+					// non-fatal: source config may be read-only
+				}
 				console.log(`Elkan 5e | Bloodrager: patched step advancement ${advId} pool in-place.`);
 			}
 		}
@@ -406,7 +412,7 @@ async function _doBloodragerSetup(actor, originalData) {
 		window: { title: "Bloodrager — Choose Sorcerous Origin" },
 		content: `<p>Choose the Sorcerous Origin that flows through your blood.
 		           This determines your Seething Blood damage, your spells, and
-		           whether you gain Wild Blood at level 6.</p>
+		           whether you gain Wild Blood at level 6.</p>
 		          <select name="origin" style="width:100%;margin-top:4px">${originOptions}</select>`,
 		ok: {
 			label: "Confirm",

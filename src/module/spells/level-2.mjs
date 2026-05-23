@@ -498,11 +498,11 @@ export async function lesserRestoration(workflow) {
 		}
 
 		const REMOVABLE = [
-			{ id: "blinded",   label: "Blinded" },
-			{ id: "deafened",  label: "Deafened" },
+			{ id: "blinded", label: "Blinded" },
+			{ id: "deafened", label: "Deafened" },
 			{ id: "paralyzed", label: "Paralyzed" },
-			{ id: "poisoned",  label: "Poisoned" },
-			{ id: "weakened",  label: "Weakened" },
+			{ id: "poisoned", label: "Poisoned" },
+			{ id: "weakened", label: "Weakened" },
 		];
 
 		const present = REMOVABLE.filter((c) => actor.statuses.has(c.id));

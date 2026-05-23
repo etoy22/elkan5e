@@ -377,8 +377,6 @@ export async function sanctuary(workflow) {
 			// Failed — remove the target before the attack roll so the attack never fires.
 			workflow.targets.delete(token);
 		}
-
-
 	}
 
 	// If every target was removed by failed saves, abort the attack entirely.

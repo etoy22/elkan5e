@@ -15,7 +15,10 @@ export function speed() {
 	};
 
 	Object.assign(CONFIG.DND5E.movementTypes, MOVEMENT_TYPES);
-	console.log("Elkan 5e  |  movementTypes after assign:", JSON.stringify(CONFIG.DND5E.movementTypes));
+	console.log(
+		"Elkan 5e  |  movementTypes after assign:",
+		JSON.stringify(CONFIG.DND5E.movementTypes),
+	);
 }
 
 /**
@@ -46,7 +49,10 @@ export function wrapJumpCalculation() {
 		const str = this.system?.abilities?.str;
 		const movement = this.system?.attributes?.movement;
 
-		console.log(`Elkan 5e  |  prepareDerivedData for ${this.name} | type=${this.type} | str=${str?.value} | movement keys:`, movement ? Object.keys(movement) : "none");
+		console.log(
+			`Elkan 5e  |  prepareDerivedData for ${this.name} | type=${this.type} | str=${str?.value} | movement keys:`,
+			movement ? Object.keys(movement) : "none",
+		);
 
 		if (!str || !movement) return result;
 
@@ -65,7 +71,9 @@ export function wrapJumpCalculation() {
 			movement.highJump *= 3;
 		}
 
-		console.log(`Elkan 5e  |  After calc: longJump=${movement.longJump} highJump=${movement.highJump} crawl=${movement.crawl}`);
+		console.log(
+			`Elkan 5e  |  After calc: longJump=${movement.longJump} highJump=${movement.highJump} crawl=${movement.crawl}`,
+		);
 
 		return result;
 	};

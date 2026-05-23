@@ -1,4 +1,12 @@
-import { rage, wildBlood, onBloodragerRenderAdvancementManager, preBloodragerCreateItem, onBloodragerCreateItem, updateBloodragerOnLevelup, handleBloodragerDelete, preHandleBloodragerDelete } from "./module/classes/barbarian.mjs";
+import {
+	rage,
+	wildBlood,
+	onBloodragerRenderAdvancementManager,
+	preBloodragerCreateItem,
+	onBloodragerCreateItem,
+	updateBloodragerOnLevelup,
+	handleBloodragerDelete,
+} from "./module/classes/barbarian.mjs";
 import {
 	healingOverflow,
 	infusedHealer,
@@ -24,9 +32,15 @@ import {
 	soulConduit,
 	spectralEmpowerment,
 } from "./module/classes/wizard.mjs";
-import { relentlessEndurance, undeadNature, initFeatIdentifierMap, onFilterOwnedFeats } from "./module/feats.mjs";
+import {
+	relentlessEndurance,
+	undeadNature,
+	initFeatIdentifierMap,
+	onFilterOwnedFeats,
+} from "./module/feats.mjs";
 import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
-import { speed, wrapJumpCalculation } from "./module/rules/speed.mjs";
+import { registerConcentrationProficiency } from "./module/rules/concentration.mjs";
+import { speed } from "./module/rules/speed.mjs";
 import {
 	conditions,
 	conditionsReady,
@@ -80,42 +94,7 @@ function registerHooks() {
 	// Wraps prepareDerivedData to inject concentration save bonuses from the
 	// flags.elkan5e.concentration.bonuses.save flag set by active effects.
 	// Must run during setup (after init, before ready) so the prototype is in place.
-	Hooks.once("setup", () => {
-		// Auto-calculate Long Jump, High Jump, and Crawl speeds.
-		// wrapJumpCalculation();
-
-		const ActorClass = CONFIG.Actor?.documentClass;
-		if (!ActorClass?.prototype?.prepareDerivedData) {
-			console.warn("Elkan 5e | Could not wrap prepareDerivedData for concentration proficiency.");
-			return;
-		}
-
-		const original = ActorClass.prototype.prepareDerivedData;
-
-		ActorClass.prototype.prepareDerivedData = function (...args) {
-			// Read the flag set by active effects (applyActiveEffects has already run).
-			const level = Number(this.flags?.elkan5e?.concentration?.bonuses?.save ?? 0);
-
-			if (level > 0) {
-				const bonuses = this.system?.attributes?.concentration?.bonuses;
-				if (bonuses !== undefined) {
-					const prof = this.system?.attributes?.prof ?? 0;
-					const bonus = level * prof;
-					const existing = bonuses.save;
-
-					if (typeof existing === "number") {
-						bonuses.save = existing + bonus;
-					} else if (typeof existing === "string" && existing.trim()) {
-						bonuses.save = `${existing} + ${bonus}`;
-					} else {
-						bonuses.save = bonus;
-					}
-				}
-			}
-
-			return original.apply(this, args);
-		};
-	});
+	registerConcentrationProficiency();
 
 	Hooks.once("init", async () => {
 		try {
@@ -144,11 +123,14 @@ function registerHooks() {
 			// PRIMARY: Shows origin picker the moment the AdvancementManager opens
 			// for a Bloodrager subclass, modifies spell pools in the AM's working
 			// clone in-memory, and stores the choice as actor flags.
-			Hooks.on("renderAdvancementManager", async (app, ...rest) => {
+			Hooks.on("renderAdvancementManager", async (app, ..._rest) => {
 				try {
 					await onBloodragerRenderAdvancementManager(app);
 				} catch (error) {
-					console.error("Elkan 5e | Error in renderAdvancementManager Bloodrager hook:", error);
+					console.error(
+						"Elkan 5e | Error in renderAdvancementManager Bloodrager hook:",
+						error,
+					);
 				}
 			});
 
@@ -187,7 +169,9 @@ function registerHooks() {
 				specials["system.traits.dm.amount.fire"] = [
 					new StringField({
 						label: game.i18n.localize("elkan5e.burning.effects.fireDamageTaken"),
-						hint: game.i18n.localize("elkan5e.burning.effects.fireDamageTakenDescription"),
+						hint: game.i18n.localize(
+							"elkan5e.burning.effects.fireDamageTakenDescription",
+						),
 					}),
 					CONST.ACTIVE_EFFECT_MODES.CUSTOM,
 				];
@@ -353,14 +337,6 @@ function registerHooks() {
 		}
 	});
 
-	Hooks.on("preDeleteItem", async (item, options, userId) => {
-		try {
-			await preHandleBloodragerDelete(item, options, userId);
-		} catch (error) {
-			console.error("Elkan 5e | Error in preDeleteItem Bloodrager name reset hook:", error);
-		}
-	});
-
 	Hooks.on("deleteItem", async (item, options, userId) => {
 		try {
 			await delayedItem(item);
@@ -455,7 +431,6 @@ function registerHooks() {
 		} catch (error) {
 			console.error("Elkan 5e | Error in updateToken grapple hook:", error);
 		}
-
 	});
 
 	Hooks.on("combatTurnChange", (combat, prior) => {

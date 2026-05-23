@@ -14,7 +14,10 @@ export async function hasteLethargy(effect) {
 	try {
 		const actor = await fromUuid(casterUuid);
 		if (!actor) {
-			console.warn("Haste Lethargy: could not resolve caster actor from effect.origin", effect.origin);
+			console.warn(
+				"Haste Lethargy: could not resolve caster actor from effect.origin",
+				effect.origin,
+			);
 			return;
 		}
 
@@ -60,6 +63,8 @@ export async function lifeDrain(workflow) {
 		);
 	});
 
-	if (totalHealing <= 0) return
-	await casterToken.actor.update({ "system.attributes.hp.value": caster.system.attributes.hp.value + totalHealing });
+	if (totalHealing <= 0) return;
+	await casterToken.actor.update({
+		"system.attributes.hp.value": caster.system.attributes.hp.value + totalHealing,
+	});
 }

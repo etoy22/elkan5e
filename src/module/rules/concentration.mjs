@@ -17,7 +17,9 @@ export function registerConcentrationProficiency() {
 	Hooks.once("setup", () => {
 		const ActorClass = CONFIG.Actor?.documentClass;
 		if (!ActorClass?.prototype?.prepareDerivedData) {
-			console.warn("Elkan 5e | Could not wrap prepareDerivedData for concentration proficiency.");
+			console.warn(
+				"Elkan 5e | Could not wrap prepareDerivedData for concentration proficiency.",
+			);
 			return;
 		}
 

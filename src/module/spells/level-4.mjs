@@ -10,7 +10,12 @@
 export async function fireShield(workflow) {
 	try {
 		// Only retaliate against melee weapon attacks.
-		if ((workflow.activity?.actionType !== "mwak" && workflow.activity?.actionType !== "msak") || !workflow.hitTargets?.size) return;
+		if (
+			(workflow.activity?.actionType !== "mwak" &&
+				workflow.activity?.actionType !== "msak") ||
+			!workflow.hitTargets?.size
+		)
+			return;
 
 		const attackerToken = workflow.token;
 		if (!attackerToken) return;
@@ -21,13 +26,17 @@ export async function fireShield(workflow) {
 
 			// Check if this target has an active Fire Shield effect (Hot or Cold).
 			const shieldEffect = defenderActor.effects.find(
-				(e) => !e.disabled && (e.name === "Fire Shield [Hot]" || e.name === "Fire Shield [Cold]"),
+				(e) =>
+					!e.disabled &&
+					(e.name === "Fire Shield [Hot]" || e.name === "Fire Shield [Cold]"),
 			);
 			if (!shieldEffect) continue;
 
 			// Find the Fire Shield item on the defender and get the damage formula
 			// from its damage activity so it stays in sync with the item data.
-			const shieldItem = defenderActor.items.find((i) => i.system.identifier === "fire-shield");
+			const shieldItem = defenderActor.items.find(
+				(i) => i.system.identifier === "fire-shield",
+			);
 			const shieldActivity = shieldItem?.system.activities.find((a) => a.type === "damage");
 			const damagePart = shieldActivity?.damage?.parts?.[0];
 			const damageFormula = damagePart
