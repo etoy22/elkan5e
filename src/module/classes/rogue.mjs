@@ -27,12 +27,15 @@ export async function slicingBlow(workflow) {
 export async function sneakAttack(workflow) {
 	try {
 		if (!["mwak", "rwak"].includes(workflow.activity.actionType)) return {};
-		if ((!workflow.activity.actionType === "mwak" || workflow.activity.actionType === "rwak")  && workflow.iWtem.system.properties.has("heavy")) return {};
+		if (
+			(!workflow.activity.actionType === "mwak" || workflow.activity.actionType === "rwak") &&
+			workflow.iWtem.system.properties.has("heavy")
+		)
+			return {};
 		if (workflow.hitTargets.size < 1) return {};
 		if (!workflow.actor || !workflow.token) return {};
 
 		const actor = workflow.actor;
-
 
 		const target = workflow.hitTargets.first();
 		if (!target) {
@@ -94,18 +97,14 @@ export async function sneakAttack(workflow) {
 		const precisionFeatures = actor.items.filter(
 			(i) => i.system?.type?.subtype === "precision",
 		);
-		const macroItem = actor.items.filter(
-			(i) => i.system.identifier === "sneak-attack",
-		);
+		const macroItem = actor.items.filter((i) => i.system.identifier === "sneak-attack");
 		if (precisionFeatures.length === 1) {
 			const activity = macroItem[0].system.activities.contents[0];
 			if (activity)
 				await activity.use({ damage: { type: damageType } }, { event: workflow.event });
 		} else {
 			// Let the player pick: Sneak Attack or any precision feature.
-			const choices = [
-				...precisionFeatures.map((f) => ({ label: f.name, value: f.uuid })),
-			];
+			const choices = [...precisionFeatures.map((f) => ({ label: f.name, value: f.uuid }))];
 			const optionsHtml = choices
 				.map((c) => `<option value="${c.value}">${c.label}</option>`)
 				.join("");
