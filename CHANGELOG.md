@@ -1,5 +1,12 @@
 # Changelog
 
+# v1.14.0.2
+
+## Bug Fix
+- Minor fixes to prices
+- Fixed Tool Tips
+- Removed Redudant Flags
+
 # v1.14.0.1
 
 ## Bug Fixes
