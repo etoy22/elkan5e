@@ -1,245 +1,244 @@
 {
-	"folder": "dqN1OSiHa3McvNxD",
-	"name": "Channel Conviction: Sacred Weapon",
-	"type": "feat",
-	"_id": "1h1j8h29V9gDtlMD",
-	"img": "icons/weapons/swords/sword-winged-pink.webp",
-	"system": {
-		"description": {
-			"value": "<p><em>You imbue the weapons you are holding with radiant energy.</em></p><p><strong>Bonus Action</strong> - Self - 1 Minute - 1/Short Rest - Magical</p><p><strong>Buff</strong></p><ul><li><p>You add your charisma modifier to your attack rolls with weapons, and deal extra radiant damage equal to your charisma modifier.</p></li><li><p>Any weapon you are wielding glows, shedding &amp;reference[dim light] in a 40 ft. radius and &amp;reference[bright light] in a 20 ft. radius.</p></li></ul>",
-			"chat": ""
-		},
-		"source": {
-			"custom": "elkan5e.com/paladin",
-			"revision": 1,
-			"rules": "",
-			"book": "Elkan 5e",
-			"page": "",
-			"license": ""
-		},
-		"uses": {
-			"max": "1",
-			"recovery": [
-				{
-					"period": "sr",
-					"type": "recoverAll"
-				}
-			],
-			"spent": 0
-		},
-		"type": {
-			"value": "subclass",
-			"subtype": ""
-		},
-		"properties": [
-			"mgc"
-		],
-		"requirements": "Paragon 3/10",
-		"activities": {
-			"dnd5eactivity000": {
-				"_id": "dnd5eactivity000",
-				"type": "utility",
-				"activation": {
-					"type": "bonus",
-					"value": 1,
-					"condition": "",
-					"override": false
-				},
-				"consumption": {
-					"targets": [
-						{
-							"type": "itemUses",
-							"value": "1",
-							"target": "",
-							"scaling": {}
-						}
-					],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"concentration": false,
-					"value": "1",
-					"units": "minute",
-					"special": "",
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "O6MzZzjEQgSCWY8D"
-					}
-				],
-				"range": {
-					"units": "self",
-					"special": "",
-					"override": false
-				},
-				"target": {
-					"template": {
-						"count": "",
-						"contiguous": false,
-						"type": "",
-						"size": "",
-						"width": "",
-						"height": "",
-						"units": "ft"
-					},
-					"affects": {
-						"count": "",
-						"type": "self",
-						"choice": false,
-						"special": ""
-					},
-					"prompt": true,
-					"override": false
-				},
-				"uses": {
-					"spent": 0,
-					"max": "",
-					"recovery": []
-				},
-				"roll": {
-					"formula": "",
-					"name": "",
-					"prompt": false,
-					"visible": false
-				},
-				"name": "",
-				"img": "",
-				"appliedEffects": [
-					"O6MzZzjEQgSCWY8D"
-				]
-			}
-		},
-		"identifier": "sacred-weapon",
-		"enchant": {},
-		"prerequisites": {
-			"level": null
-		}
-	},
-	"effects": [
-		{
-			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.1h1j8h29V9gDtlMD",
-			"duration": {
-				"value": 60,
-				"units": "seconds",
-				"expiry": "turnStart",
-				"expired": false
-			},
-			"disabled": false,
-			"name": "Sacred Weapon",
-			"_id": "O6MzZzjEQgSCWY8D",
-			"description": "",
-			"transfer": false,
-			"statuses": [],
-			"flags": {
-				"dae": {
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"stackable": "noneName",
-					"showIcon": false,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": [],
-					"disableCondition": "",
-					"enableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "Enemy",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
-				}
-			},
-			"tint": "#ffffff",
-			"img": "icons/weapons/swords/sword-winged-pink.webp",
-			"type": "base",
-			"system": {
-				"changes": [
-					{
-						"key": "system.bonuses.weapon.attack",
-						"value": "+max(1,@abilities.cha.mod)",
-						"priority": 20,
-						"type": "add"
-					},
-					{
-						"key": "system.bonuses.weapon.damage",
-						"value": "+max(1,@abilities.cha.mod)[Radiant]",
-						"priority": 20,
-						"type": "add"
-					},
-					{
-						"key": "ATL.light.bright",
-						"value": 20,
-						"priority": 20,
-						"type": "add"
-					},
-					{
-						"key": "ATL.light.dim",
-						"value": 40,
-						"priority": 20,
-						"type": "add"
-					}
-				]
-			},
-			"start": null,
-			"showIcon": 1,
-			"folder": null,
-			"_key": "!items.effects!1h1j8h29V9gDtlMD.O6MzZzjEQgSCWY8D"
-		}
-	],
-	"flags": {
-		"midiProperties": {
-			"confirmTargets": "default",
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"critOther": false,
-			"offHandWeapon": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"concentration": false,
-			"noConcentrationCheck": false,
-			"toggleEffect": false,
-			"ignoreTotalCover": false,
-			"idr": false,
-			"idi": false,
-			"idv": false,
-			"ida": false
-		},
-		"midi-qol": {
-			"rollAttackPerTarget": "default",
-			"itemCondition": "",
-			"effectCondition": "",
-			"removeAttackDamageButtons": "default",
-			"reactionCondition": "",
-			"otherCondition": ""
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedUses": 1
-		}
-	},
-	"_key": "!items!1h1j8h29V9gDtlMD"
+  "folder": "dqN1OSiHa3McvNxD",
+  "name": "Channel Conviction: Sacred Weapon",
+  "type": "feat",
+  "_id": "1h1j8h29V9gDtlMD",
+  "img": "icons/weapons/swords/sword-winged-pink.webp",
+  "system": {
+    "description": {
+      "value": "<p><em>You imbue the weapons you are holding with radiant energy.</em></p><p><strong>Bonus Action</strong> - Self - 1 Minute - 1/Short Rest - Magical</p><p><strong>Buff</strong></p><ul><li><p>You add your charisma modifier to your attack rolls with weapons, and deal extra radiant damage equal to your charisma modifier.</p></li><li><p>Any weapon you are wielding glows, shedding &amp;reference[dim light] in a 40 ft. radius and &amp;reference[bright light] in a 20 ft. radius.</p></li></ul>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "elkan5e.com/paladin",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "uses": {
+      "max": "1",
+      "recovery": [
+        {
+          "period": "sr",
+          "type": "recoverAll"
+        }
+      ],
+      "spent": 0
+    },
+    "type": {
+      "value": "subclass",
+      "subtype": ""
+    },
+    "properties": [
+      "mgc"
+    ],
+    "requirements": "Paragon 3/10",
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "utility",
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "1",
+          "units": "minute",
+          "special": "",
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "O6MzZzjEQgSCWY8D"
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": "ft"
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
+        },
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "O6MzZzjEQgSCWY8D"
+        ]
+      }
+    },
+    "identifier": "sacred-weapon",
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    }
+  },
+  "effects": [
+    {
+      "origin": "Compendium.elkan5e.elkan5e-class-features.Item.1h1j8h29V9gDtlMD",
+      "duration": {
+        "value": 60,
+        "units": "seconds",
+        "expiry": "turnStart",
+        "expired": false
+      },
+      "disabled": false,
+      "name": "Sacred Weapon",
+      "_id": "O6MzZzjEQgSCWY8D",
+      "description": "",
+      "transfer": false,
+      "statuses": [],
+      "flags": {
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [],
+          "disableCondition": "",
+          "enableCondition": ""
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "Enemy",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system",
+          "statuses": []
+        }
+      },
+      "tint": "#ffffff",
+      "img": "icons/weapons/swords/sword-winged-pink.webp",
+      "type": "base",
+      "system": {
+        "changes": [
+          {
+            "key": "system.bonuses.weapon.attack",
+            "value": "+max(1,@abilities.cha.mod)",
+            "priority": 20,
+            "type": "add"
+          },
+          {
+            "key": "system.bonuses.weapon.damage",
+            "value": "+max(1,@abilities.cha.mod)[Radiant]",
+            "priority": 20,
+            "type": "add"
+          },
+          {
+            "key": "ATL.light.bright",
+            "value": 20,
+            "priority": 20,
+            "type": "add"
+          },
+          {
+            "key": "ATL.light.dim",
+            "value": 40,
+            "priority": 20,
+            "type": "add"
+          }
+        ]
+      },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
+      "_key": "!items.effects!1h1j8h29V9gDtlMD.O6MzZzjEQgSCWY8D"
+    }
+  ],
+  "flags": {
+    "midiProperties": {
+      "confirmTargets": "default",
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "removeAttackDamageButtons": "default",
+      "reactionCondition": "",
+      "otherCondition": ""
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    }
+  },
+  "_key": "!items!1h1j8h29V9gDtlMD"
 }

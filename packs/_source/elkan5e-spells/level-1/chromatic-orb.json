@@ -1,375 +1,374 @@
 {
-	"folder": "U0k4VGG6bziqf3oH",
-	"name": "Chromatic Orb",
-	"type": "spell",
-	"_id": "EBXbuU6UgNza87rc",
-	"img": "icons/magic/light/explosion-star-small-teal-purple.webp",
-	"system": {
-		"activities": {
-			"gh7D74wQYRsoqzqG": {
-				"type": "attack",
-				"_id": "gh7D74wQYRsoqzqG",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": [
-						{
-							"type": "itemUses",
-							"value": "0",
-							"target": "Compendium.elkan5e.elkan5e-spells.Item.FePPX5VU9YzmXpdU",
-							"scaling": {
-								"mode": ""
-							}
-						}
-					]
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"attack": {
-					"critical": {
-						"threshold": null
-					},
-					"flat": false,
-					"type": {
-						"value": "ranged",
-						"classification": ""
-					},
-					"ability": "",
-					"bonus": ""
-				},
-				"damage": {
-					"critical": {
-						"bonus": ""
-					},
-					"includeBase": true,
-					"parts": [
-						{
-							"custom": {
-								"enabled": false,
-								"formula": ""
-							},
-							"number": 3,
-							"denomination": 8,
-							"bonus": "",
-							"types": [
-								"acid",
-								"cold",
-								"fire",
-								"force",
-								"lightning",
-								"necrotic",
-								"thunder"
-							],
-							"scaling": {
-								"mode": "whole",
-								"number": 1,
-								"formula": ""
-							}
-						}
-					]
-				},
-				"useConditionText": "",
-				"useConditionReason": "",
-				"effectConditionText": "",
-				"macroData": {
-					"name": "",
-					"command": ""
-				},
-				"ignoreTraits": {
-					"idi": false,
-					"idr": false,
-					"idv": false,
-					"ida": false
-				},
-				"midiProperties": {
-					"ignoreTraits": [],
-					"triggeredActivityId": "bouncing-attack",
-					"triggeredActivityConditionText": "workflow.hitTargets.size > 0 && workflow?.damageRoll?.dice   .filter(d => d.faces === 8)   .flatMap(d => d.results.map(r => r.result))   .filter((v, i, a) => a.indexOf(v) !== i).length > 0",
-					"triggeredActivityTargets": "retarget",
-					"triggeredActivityRollAs": "self",
-					"forceDialog": false,
-					"confirmTargets": "default",
-					"autoTargetType": "any",
-					"autoTargetAction": "default",
-					"automationOnly": false,
-					"otherActivityCompatible": true,
-					"identifier": "",
-					"displayActivityName": false,
-					"rollMode": "default",
-					"chooseEffects": false,
-					"toggleEffect": false,
-					"ignoreFullCover": false
-				},
-				"isOverTimeFlag": false,
-				"overTimeProperties": {
-					"saveRemoves": true,
-					"preRemoveConditionText": "",
-					"postRemoveConditionText": ""
-				},
-				"otherActivityId": "none",
-				"attackMode": "",
-				"ammunition": "",
-				"otherActivityUuid": "",
-				"name": "",
-				"img": "",
-				"appliedEffects": [],
-				"visibility": {
-					"level": {
-						"min": null,
-						"max": null
-					}
-				}
-			},
-			"gSW2bOpIshDzQnJ9": {
-				"type": "attack",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": false,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": false,
-					"units": "self"
-				},
-				"target": {
-					"override": false,
-					"prompt": true,
-					"template": {
-						"contiguous": false,
-						"units": "ft"
-					},
-					"affects": {
-						"choice": false
-					}
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"attack": {
-					"critical": {
-						"threshold": null
-					},
-					"flat": false,
-					"type": {
-						"value": "ranged",
-						"classification": ""
-					},
-					"ability": "",
-					"bonus": ""
-				},
-				"damage": {
-					"critical": {
-						"bonus": ""
-					},
-					"includeBase": true,
-					"parts": [
-						{
-							"custom": {
-								"enabled": false,
-								"formula": ""
-							},
-							"number": 3,
-							"denomination": 8,
-							"bonus": "",
-							"types": [
-								"acid",
-								"cold",
-								"lightning",
-								"fire",
-								"necrotic",
-								"thunder",
-								"force"
-							],
-							"scaling": {
-								"mode": "whole",
-								"number": 1,
-								"formula": ""
-							}
-						}
-					]
-				},
-				"useConditionText": "",
-				"useConditionReason": "",
-				"effectConditionText": "",
-				"macroData": {
-					"name": "",
-					"command": ""
-				},
-				"ignoreTraits": {
-					"idi": false,
-					"idr": false,
-					"idv": false,
-					"ida": false,
-					"idm": false
-				},
-				"midiProperties": {
-					"ignoreTraits": [],
-					"triggeredActivityId": "none",
-					"triggeredActivityConditionText": "",
-					"triggeredActivityTargets": "targets",
-					"triggeredActivityRollAs": "self",
-					"confirmTargets": "default",
-					"autoTargetType": "any",
-					"autoTargetAction": "default",
-					"automationOnly": false,
-					"otherActivityCompatible": true,
-					"identifier": "",
-					"displayActivityName": false,
-					"rollMode": "default",
-					"chooseEffects": false,
-					"toggleEffect": false,
-					"ignoreFullCover": false,
-					"autoConsume": false,
-					"forceConsumeDialog": "default",
-					"forceRollDialog": "default",
-					"forceDamageDialog": "default",
-					"otherActivityAsParentType": true,
-					"removeChatButtons": "default",
-					"magicEffect": false,
-					"magicDamage": false,
-					"noConcentrationCheck": false,
-					"autoCEEffects": "default"
-				},
-				"isOverTimeFlag": false,
-				"overTimeProperties": {
-					"saveRemoves": true,
-					"preRemoveConditionText": "",
-					"postRemoveConditionText": ""
-				},
-				"otherActivityId": "none",
-				"attackMode": "",
-				"ammunition": "",
-				"otherActivityUuid": "",
-				"name": "Bouncing Attack",
-				"otherActivityAsParentType": true,
-				"attackRollPerTarget": "default",
-				"fumbleThreshold": 1,
-				"_id": "gSW2bOpIshDzQnJ9",
-				"img": "",
-				"appliedEffects": []
-			}
-		},
-		"uses": {
-			"spent": 0,
-			"recovery": [],
-			"max": ""
-		},
-		"description": {
-			"value": "<p><em>You spin a tiny prismatic diamond in your hand, catching the light and refracting its many colors to generate a flying sphere of energy.</em></p><p><strong>Materials</strong> : You require a <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.FePPX5VU9YzmXpdU]{Tiny Prismatic Diamond}</em>, typically valued at 5 gold.</p><p><strong>Ranged Spell Attack</strong></p><ul><li><p><strong>Hit:</strong> Target takes [[/damage]] damage.* You choose the damage type.</p></li><li><p>If two or more of the damage d8s show the same number, the orb leaps to another creature of your choice within 30 ft. of the target. Make a new attack and damage roll for that creature. A creature can be targeted only once by each casting.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d8 type=acid/cold/lightning/fire/poison/thunder]] for each spell slot level above 1st. </p>",
-			"chat": ""
-		},
-		"identifier": "chromatic-orb",
-		"source": {
-			"revision": 1,
-			"rules": "2024",
-			"book": "",
-			"page": "",
-			"custom": "elkan5e.com/spells/chromatic-orb",
-			"license": ""
-		},
-		"activation": {
-			"type": "action",
-			"value": null,
-			"condition": ""
-		},
-		"duration": {
-			"units": "inst"
-		},
-		"level": 1,
-		"materials": {
-			"value": "",
-			"consumed": false,
-			"cost": 5,
-			"supply": 0
-		},
-		"preparation": {
-			"mode": "prepared",
-			"prepared": true
-		},
-		"properties": [
-			"vocal",
-			"somatic",
-			"material"
-		],
-		"range": {
-			"units": "ft",
-			"special": "",
-			"value": "90"
-		},
-		"school": "evo",
-		"target": {
-			"template": {
-				"contiguous": false,
-				"units": "ft",
-				"type": ""
-			},
-			"affects": {
-				"choice": false,
-				"type": "creature",
-				"count": "1",
-				"special": ""
-			}
-		}
-	},
-	"effects": [],
-	"flags": {
-		"midi-qol": {
-			"rollAttackPerTarget": "default",
-			"removeAttackDamageButtons": "default",
-			"itemCondition": "",
-			"reactionCondition": "",
-			"otherCondition": "",
-			"effectCondition": "",
-			"fumbleThreshold": null
-		}
-	},
-	"_key": "!items!EBXbuU6UgNza87rc"
+  "folder": "U0k4VGG6bziqf3oH",
+  "name": "Chromatic Orb",
+  "type": "spell",
+  "_id": "EBXbuU6UgNza87rc",
+  "img": "icons/magic/light/explosion-star-small-teal-purple.webp",
+  "system": {
+    "activities": {
+      "gh7D74wQYRsoqzqG": {
+        "type": "attack",
+        "_id": "gh7D74wQYRsoqzqG",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "0",
+              "target": "Compendium.elkan5e.elkan5e-spells.Item.FePPX5VU9YzmXpdU",
+              "scaling": {
+                "mode": ""
+              }
+            }
+          ]
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "attack": {
+          "critical": {
+            "threshold": null
+          },
+          "flat": false,
+          "type": {
+            "value": "ranged",
+            "classification": ""
+          },
+          "ability": "",
+          "bonus": ""
+        },
+        "damage": {
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true,
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 3,
+              "denomination": 8,
+              "bonus": "",
+              "types": [
+                "acid",
+                "cold",
+                "fire",
+                "force",
+                "lightning",
+                "necrotic",
+                "thunder"
+              ],
+              "scaling": {
+                "mode": "whole",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "bouncing-attack",
+          "triggeredActivityConditionText": "workflow.hitTargets.size > 0 && workflow?.damageRoll?.dice   .filter(d => d.faces === 8)   .flatMap(d => d.results.map(r => r.result))   .filter((v, i, a) => a.indexOf(v) !== i).length > 0",
+          "triggeredActivityTargets": "retarget",
+          "triggeredActivityRollAs": "self",
+          "forceDialog": false,
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "attackMode": "",
+        "ammunition": "",
+        "otherActivityUuid": "",
+        "name": "",
+        "img": "",
+        "appliedEffects": [],
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          }
+        }
+      },
+      "gSW2bOpIshDzQnJ9": {
+        "type": "attack",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": false,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "self"
+        },
+        "target": {
+          "override": false,
+          "prompt": true,
+          "template": {
+            "contiguous": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          }
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "attack": {
+          "critical": {
+            "threshold": null
+          },
+          "flat": false,
+          "type": {
+            "value": "ranged",
+            "classification": ""
+          },
+          "ability": "",
+          "bonus": ""
+        },
+        "damage": {
+          "critical": {
+            "bonus": ""
+          },
+          "includeBase": true,
+          "parts": [
+            {
+              "custom": {
+                "enabled": false,
+                "formula": ""
+              },
+              "number": 3,
+              "denomination": 8,
+              "bonus": "",
+              "types": [
+                "acid",
+                "cold",
+                "lightning",
+                "fire",
+                "necrotic",
+                "thunder",
+                "force"
+              ],
+              "scaling": {
+                "mode": "whole",
+                "number": 1,
+                "formula": ""
+              }
+            }
+          ]
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "otherActivityAsParentType": true,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "otherActivityId": "none",
+        "attackMode": "",
+        "ammunition": "",
+        "otherActivityUuid": "",
+        "name": "Bouncing Attack",
+        "otherActivityAsParentType": true,
+        "attackRollPerTarget": "default",
+        "fumbleThreshold": 1,
+        "_id": "gSW2bOpIshDzQnJ9",
+        "img": "",
+        "appliedEffects": []
+      }
+    },
+    "uses": {
+      "spent": 0,
+      "recovery": [],
+      "max": ""
+    },
+    "description": {
+      "value": "<p><em>You spin a tiny prismatic diamond in your hand, catching the light and refracting its many colors to generate a flying sphere of energy.</em></p><p><strong>Materials</strong> : You require a <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.FePPX5VU9YzmXpdU]{Tiny Prismatic Diamond}</em>, typically valued at 5 gold.</p><p><strong>Ranged Spell Attack</strong></p><ul><li><p><strong>Hit:</strong> Target takes [[/damage]] damage.* You choose the damage type.</p></li><li><p>If two or more of the damage d8s show the same number, the orb leaps to another creature of your choice within 30 ft. of the target. Make a new attack and damage roll for that creature. A creature can be targeted only once by each casting.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d8 type=acid/cold/lightning/fire/poison/thunder]] for each spell slot level above 1st. </p>",
+      "chat": ""
+    },
+    "identifier": "chromatic-orb",
+    "source": {
+      "revision": 1,
+      "rules": "2024",
+      "book": "",
+      "page": "",
+      "custom": "elkan5e.com/spells/chromatic-orb",
+      "license": ""
+    },
+    "activation": {
+      "type": "action",
+      "value": null,
+      "condition": ""
+    },
+    "duration": {
+      "units": "inst"
+    },
+    "level": 1,
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 5,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "material"
+    ],
+    "range": {
+      "units": "ft",
+      "special": "",
+      "value": "90"
+    },
+    "school": "evo",
+    "target": {
+      "template": {
+        "contiguous": false,
+        "units": "ft",
+        "type": ""
+      },
+      "affects": {
+        "choice": false,
+        "type": "creature",
+        "count": "1",
+        "special": ""
+      }
+    }
+  },
+  "effects": [],
+  "flags": {
+    "midi-qol": {
+      "rollAttackPerTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": ""
+    }
+  },
+  "_key": "!items!EBXbuU6UgNza87rc"
 }

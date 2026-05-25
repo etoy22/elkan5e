@@ -1,502 +1,499 @@
 {
-	"_id": "HPrjgPXLsDRBbfsD",
-	"name": "Mark for Death",
-	"type": "feat",
-	"img": "icons/magic/death/projectile-skull-fire-purple.webp",
-	"effects": [
-		{
-			"_id": "7jw1gxiuvosibvcs",
-			"disabled": false,
-			"duration": {
-				"value": 60,
-				"units": "seconds",
-				"expiry": "turnStart",
-				"expired": false
-			},
-			"transfer": false,
-			"flags": {
-				"dae": {
-					"stackable": "none",
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": [],
-					"transfer": false,
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"showIcon": false,
-					"enableCondition": "",
-					"disableCondition": "",
-					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
-				}
-			},
-			"tint": "#ffffff",
-			"origin": null,
-			"name": "Mark for Death",
-			"description": "",
-			"statuses": [],
-			"img": "icons/magic/death/projectile-skull-fire-purple.webp",
-			"type": "base",
-			"system": {
-				"changes": []
-			},
-			"start": null,
-			"showIcon": 1,
-			"folder": null,
-			"_key": "!items.effects!HPrjgPXLsDRBbfsD.7jw1gxiuvosibvcs"
-		},
-		{
-			"name": "Mark for Death",
-			"img": "icons/magic/death/projectile-skull-fire-purple.webp",
-			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.HPrjgPXLsDRBbfsD",
-			"type": "base",
-			"_id": "MehX2OXUbBtGDhto",
-			"system": {
-				"changes": [
-					{
-						"key": "flags.dnd5e.DamageBonusMacro",
-						"type": "custom",
-						"value": "ItemMacro",
-						"phase": "initial",
-						"priority": null
-					}
-				]
-			},
-			"disabled": false,
-			"start": null,
-			"duration": {
-				"value": null,
-				"units": "seconds",
-				"expiry": null,
-				"expired": false
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"transfer": true,
-			"statuses": [],
-			"showIcon": 1,
-			"folder": null,
-			"flags": {
-				"dae": {
-					"disableCondition": "",
-					"stackable": "noneName",
-					"expiryMode": "default",
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"disableIncapacitated": false,
-					"specialDuration": [],
-					"enableCondition": "",
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false
-				}
-			},
-			"_key": "!items.effects!HPrjgPXLsDRBbfsD.MehX2OXUbBtGDhto"
-		}
-	],
-	"folder": "k63aDnjqpB2qe9Nr",
-	"flags": {
-		"midi-qol": {
-			"effectActivation": false,
-			"itemCondition": "",
-			"reactionCondition": "",
-			"otherCondition": "",
-			"effectCondition": "",
-			"rollAttackPerTarget": "default",
-			"AoETargetType": "any",
-			"AoETargetTypeIncludeSelf": true,
-			"autoTarget": "default",
-			"removeAttackDamageButtons": "default",
-			"onUseMacroName": "[preActiveEffects]ItemMacro"
-		},
-		"midiProperties": {
-			"nodam": false,
-			"fulldam": false,
-			"halfdam": false,
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"rollOther": false,
-			"critOther": false,
-			"offHandWeapon": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"concentration": false,
-			"toggleEffect": false,
-			"ignoreTotalCover": false,
-			"confirmTargets": "default",
-			"noConcentrationCheck": false,
-			"idr": false,
-			"idi": false,
-			"idv": false,
-			"ida": false
-		},
-		"dnd5e": {
-			"migratedUses": 2
-		},
-		"dae": {
-			"macro": {
-				"name": "Mark for Death",
-				"img": "icons/magic/death/projectile-skull-fire-purple.webp",
-				"type": "script",
-				"scope": "global",
-				"command": "return elkan5e.macro.features.markForDeath(workflow);",
-				"author": "JfIFUEeTlOfdxqPQ",
-				"_id": null,
-				"folder": null
-			}
-		}
-	},
-	"system": {
-		"description": {
-			"value": "<p><strong>Bonus Action</strong> - Self - 1 Minute - 2/Long Rest*</p><p>You enter a state of heightened focus during combat where you focus on one target.</p><p>You can mark a creature you can see when you take the &amp;reference[Attack] action. You deal an extra [[/r 1d4]]* damage with your weapons when you hit a marked target with a weapon attack. This damage is of the same type as your weapon. You can shift your mark to a new target every time you take the Attack action. You can only have one marked target at a time. If you kill your marked target (or knock them unconscious), you won't be able to deal this extra damage until your next turn.</p><p>This ability ends early if you become incapacitated.</p><p>*Your Mark for Death die changes from a d4 to larger dice and you get more uses of this ability when you reach certain levels in this class, as shown in the @UUID[Compendium.elkan5e.elkan5e-class.Item.t9qEzMyJh0kg5Djk]{Ranger Progression Table}.</p><p><em>This ability is meant to replace the hunter's mark spell. You cannot benefit from the hunter's mark spell while using this ability.</em></p>",
-			"chat": ""
-		},
-		"source": {
-			"custom": "elkan5e.com/ranger",
-			"revision": 1,
-			"rules": "",
-			"book": "Elkan 5e",
-			"page": "",
-			"license": ""
-		},
-		"uses": {
-			"max": "@scale.ranger.mark-for-death-uses",
-			"recovery": [
-				{
-					"period": "lr",
-					"type": "recoverAll"
-				}
-			],
-			"spent": 0
-		},
-		"type": {
-			"value": "class",
-			"subtype": ""
-		},
-		"requirements": "Ranger 2",
-		"activities": {
-			"dnd5eactivity000": {
-				"_id": "dnd5eactivity000",
-				"type": "utility",
-				"activation": {
-					"type": "bonus",
-					"value": 1,
-					"condition": "",
-					"override": false
-				},
-				"consumption": {
-					"targets": [
-						{
-							"type": "itemUses",
-							"value": "1",
-							"target": "",
-							"scaling": {}
-						}
-					],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"concentration": false,
-					"units": "inst",
-					"special": "",
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "7jw1gxiuvosibvcs",
-						"level": {
-							"min": null,
-							"max": null
-						}
-					}
-				],
-				"range": {
-					"units": "self",
-					"special": "",
-					"override": false
-				},
-				"target": {
-					"template": {
-						"count": "",
-						"contiguous": false,
-						"type": "",
-						"size": "",
-						"width": "",
-						"height": "",
-						"units": ""
-					},
-					"affects": {
-						"count": "",
-						"type": "self",
-						"choice": false,
-						"special": ""
-					},
-					"prompt": true,
-					"override": false
-				},
-				"uses": {
-					"spent": 0,
-					"max": "",
-					"recovery": []
-				},
-				"roll": {
-					"formula": "",
-					"name": "",
-					"prompt": false,
-					"visible": false
-				},
-				"name": "Mark for Creature",
-				"img": "",
-				"appliedEffects": [
-					"7jw1gxiuvosibvcs"
-				],
-				"visibility": {
-					"level": {
-						"min": null,
-						"max": null
-					},
-					"identifier": ""
-				}
-			},
-			"bobYmKmFZnvu5mK0": {
-				"type": "damage",
-				"_id": "bobYmKmFZnvu5mK0",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false,
-					"condition": ""
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": false,
-					"units": "self",
-					"special": ""
-				},
-				"target": {
-					"template": {
-						"contiguous": false,
-						"units": "ft",
-						"type": ""
-					},
-					"affects": {
-						"choice": false,
-						"count": "",
-						"type": ""
-					},
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"damage": {
-					"critical": {
-						"allow": false
-					},
-					"parts": [
-						{
-							"custom": {
-								"enabled": true,
-								"formula": "@scale.ranger.mark-for-death"
-							},
-							"number": null,
-							"denomination": 0,
-							"bonus": "",
-							"types": [
-								"bludgeoning",
-								"piercing",
-								"slashing"
-							],
-							"scaling": {
-								"number": 1
-							}
-						}
-					]
-				},
-				"useConditionText": "",
-				"forceDialog": false,
-				"effectConditionText": "",
-				"name": "",
-				"img": "",
-				"appliedEffects": []
-			},
-			"YGN1b1FwiRe0gMZh": {
-				"type": "utility",
-				"name": "Move Mark",
-				"_id": "YGN1b1FwiRe0gMZh",
-				"img": null,
-				"activation": {
-					"type": "action",
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"description": {},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"units": "self",
-					"override": false
-				},
-				"target": {
-					"template": {
-						"contiguous": false,
-						"stationary": false,
-						"units": "ft"
-					},
-					"affects": {
-						"choice": false
-					},
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": []
-				},
-				"visibility": {
-					"level": {},
-					"requireAttunement": false,
-					"requireIdentification": false,
-					"requireMagic": false
-				},
-				"roll": {
-					"prompt": false,
-					"visible": false
-				},
-				"useConditionText": "",
-				"useConditionReason": "",
-				"effectConditionText": "",
-				"macroData": {
-					"name": "",
-					"command": ""
-				},
-				"ignoreTraits": {
-					"idi": false,
-					"idr": false,
-					"idv": false,
-					"ida": false,
-					"idm": false
-				},
-				"midiProperties": {
-					"ignoreTraits": [],
-					"triggeredActivityId": "none",
-					"triggeredActivityConditionText": "",
-					"triggeredActivityTargets": "targets",
-					"triggeredActivityRollAs": "self",
-					"triggeredActivityConsume": true,
-					"triggeredActivityConfigure": true,
-					"autoConsume": false,
-					"forceConsumeDialog": "default",
-					"forceRollDialog": "default",
-					"forceDamageDialog": "default",
-					"confirmTargets": "default",
-					"autoTargetType": "any",
-					"autoTargetAction": "default",
-					"automationOnly": false,
-					"otherActivityCompatible": true,
-					"otherActivityAsParentType": true,
-					"identifier": "",
-					"displayActivityName": false,
-					"rollMode": "default",
-					"chooseEffects": false,
-					"toggleEffect": false,
-					"ignoreFullCover": false,
-					"removeChatButtons": "default",
-					"magicEffect": false,
-					"magicDamage": false,
-					"noConcentrationCheck": false,
-					"skipConcentrationCheck": false,
-					"autoCEEffects": "default"
-				},
-				"isOverTimeFlag": false,
-				"overTimeProperties": {
-					"saveRemoves": true,
-					"rollAs": "target",
-					"preRemoveConditionText": "",
-					"postRemoveConditionText": ""
-				},
-				"regionBehavior": {
-					"enabled": false,
-					"dispositionFilter": -1,
-					"excludeSource": true,
-					"oncePerTurn": true,
-					"wallRestriction": "none",
-					"regionVisibility": 2,
-					"rules": []
-				},
-				"regionLight": {
-					"enabled": false,
-					"dim": 0,
-					"bright": 0,
-					"color": null,
-					"alpha": 0.5,
-					"luminosity": 0.5,
-					"animationType": "",
-					"animationSpeed": 5,
-					"animationIntensity": 5
-				},
-				"otherActivityId": "none",
-				"otherActivityAsParentType": true
-			}
-		},
-		"identifier": "mark-for-death",
-		"enchant": {},
-		"prerequisites": {
-			"level": null
-		},
-		"properties": []
-	},
-	"_key": "!items!HPrjgPXLsDRBbfsD"
+  "_id": "HPrjgPXLsDRBbfsD",
+  "name": "Mark for Death",
+  "type": "feat",
+  "img": "icons/magic/death/projectile-skull-fire-purple.webp",
+  "effects": [
+    {
+      "_id": "7jw1gxiuvosibvcs",
+      "disabled": false,
+      "duration": {
+        "value": 60,
+        "units": "seconds",
+        "expiry": "turnStart",
+        "expired": false
+      },
+      "transfer": false,
+      "flags": {
+        "dae": {
+          "stackable": "none",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [],
+          "transfer": false,
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "showIcon": false,
+          "enableCondition": "",
+          "disableCondition": "",
+          "expiryMode": "default"
+        },
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "nameOverride": "",
+          "customCheck": "",
+          "wallsBlock": "system"
+        }
+      },
+      "tint": "#ffffff",
+      "origin": null,
+      "name": "Mark for Death",
+      "description": "",
+      "statuses": [],
+      "img": "icons/magic/death/projectile-skull-fire-purple.webp",
+      "type": "base",
+      "system": {
+        "changes": []
+      },
+      "start": null,
+      "showIcon": 1,
+      "folder": null,
+      "_key": "!items.effects!HPrjgPXLsDRBbfsD.7jw1gxiuvosibvcs"
+    },
+    {
+      "name": "Mark for Death",
+      "img": "icons/magic/death/projectile-skull-fire-purple.webp",
+      "origin": "Compendium.elkan5e.elkan5e-class-features.Item.HPrjgPXLsDRBbfsD",
+      "type": "base",
+      "_id": "MehX2OXUbBtGDhto",
+      "system": {
+        "changes": [
+          {
+            "key": "flags.dnd5e.DamageBonusMacro",
+            "type": "custom",
+            "value": "ItemMacro",
+            "phase": "initial",
+            "priority": null
+          }
+        ]
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": null,
+        "units": "seconds",
+        "expiry": null,
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "flags": {
+        "dae": {
+          "disableCondition": "",
+          "stackable": "noneName",
+          "expiryMode": "default",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "specialDuration": [],
+          "enableCondition": "",
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false
+        }
+      },
+      "_key": "!items.effects!HPrjgPXLsDRBbfsD.MehX2OXUbBtGDhto"
+    }
+  ],
+  "folder": "k63aDnjqpB2qe9Nr",
+  "flags": {
+    "midi-qol": {
+      "effectActivation": false,
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "rollAttackPerTarget": "default",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default",
+      "onUseMacroName": "[preActiveEffects]ItemMacro"
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "confirmTargets": "default",
+      "noConcentrationCheck": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dae": {
+      "macro": {
+        "name": "Mark for Death",
+        "img": "icons/magic/death/projectile-skull-fire-purple.webp",
+        "type": "script",
+        "scope": "global",
+        "command": "return elkan5e.macro.features.markForDeath(workflow);",
+        "author": "JfIFUEeTlOfdxqPQ",
+        "_id": null,
+        "folder": null
+      }
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><strong>Bonus Action</strong> - Self - 1 Minute - 2/Long Rest*</p><p>You enter a state of heightened focus during combat where you focus on one target.</p><p>You can mark a creature you can see when you take the &amp;reference[Attack] action. You deal an extra [[/r 1d4]]* damage with your weapons when you hit a marked target with a weapon attack. This damage is of the same type as your weapon. You can shift your mark to a new target every time you take the Attack action. You can only have one marked target at a time. If you kill your marked target (or knock them unconscious), you won't be able to deal this extra damage until your next turn.</p><p>This ability ends early if you become incapacitated.</p><p>*Your Mark for Death die changes from a d4 to larger dice and you get more uses of this ability when you reach certain levels in this class, as shown in the @UUID[Compendium.elkan5e.elkan5e-class.Item.t9qEzMyJh0kg5Djk]{Ranger Progression Table}.</p><p><em>This ability is meant to replace the hunter's mark spell. You cannot benefit from the hunter's mark spell while using this ability.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "elkan5e.com/ranger",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "uses": {
+      "max": "@scale.ranger.mark-for-death-uses",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
+      "spent": 0
+    },
+    "type": {
+      "value": "class",
+      "subtype": ""
+    },
+    "requirements": "Ranger 2",
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "utility",
+        "activation": {
+          "type": "bonus",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": "",
+              "scaling": {}
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "units": "inst",
+          "special": "",
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "7jw1gxiuvosibvcs",
+            "level": {
+              "min": null,
+              "max": null
+            }
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": ""
+          },
+          "affects": {
+            "count": "",
+            "type": "self",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "roll": {
+          "formula": "",
+          "name": "",
+          "prompt": false,
+          "visible": false
+        },
+        "name": "Mark for Creature",
+        "img": "",
+        "appliedEffects": [
+          "7jw1gxiuvosibvcs"
+        ],
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          },
+          "identifier": ""
+        }
+      },
+      "bobYmKmFZnvu5mK0": {
+        "type": "damage",
+        "_id": "bobYmKmFZnvu5mK0",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false,
+          "condition": ""
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false,
+          "units": "self",
+          "special": ""
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "units": "ft",
+            "type": ""
+          },
+          "affects": {
+            "choice": false,
+            "count": "",
+            "type": ""
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "damage": {
+          "critical": {
+            "allow": false
+          },
+          "parts": [
+            {
+              "custom": {
+                "enabled": true,
+                "formula": "@scale.ranger.mark-for-death"
+              },
+              "number": null,
+              "denomination": 0,
+              "bonus": "",
+              "types": [
+                "bludgeoning",
+                "piercing",
+                "slashing"
+              ],
+              "scaling": {
+                "number": 1
+              }
+            }
+          ]
+        },
+        "useConditionText": "",
+        "forceDialog": false,
+        "effectConditionText": "",
+        "name": "",
+        "img": "",
+        "appliedEffects": []
+      },
+      "YGN1b1FwiRe0gMZh": {
+        "type": "utility",
+        "name": "Move Mark",
+        "_id": "YGN1b1FwiRe0gMZh",
+        "img": null,
+        "activation": {
+          "type": "action",
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {},
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "units": "self",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "contiguous": false,
+            "stationary": false,
+            "units": "ft"
+          },
+          "affects": {
+            "choice": false
+          },
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": []
+        },
+        "visibility": {
+          "level": {},
+          "requireAttunement": false,
+          "requireIdentification": false,
+          "requireMagic": false
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false
+        },
+        "useConditionText": "",
+        "useConditionReason": "",
+        "effectConditionText": "",
+        "macroData": {
+          "name": "",
+          "command": ""
+        },
+        "ignoreTraits": {
+          "idi": false,
+          "idr": false,
+          "idv": false,
+          "ida": false,
+          "idm": false
+        },
+        "midiProperties": {
+          "ignoreTraits": [],
+          "triggeredActivityId": "none",
+          "triggeredActivityConditionText": "",
+          "triggeredActivityTargets": "targets",
+          "triggeredActivityRollAs": "self",
+          "triggeredActivityConsume": true,
+          "triggeredActivityConfigure": true,
+          "autoConsume": false,
+          "forceConsumeDialog": "default",
+          "forceRollDialog": "default",
+          "forceDamageDialog": "default",
+          "confirmTargets": "default",
+          "autoTargetType": "any",
+          "autoTargetAction": "default",
+          "automationOnly": false,
+          "otherActivityCompatible": true,
+          "otherActivityAsParentType": true,
+          "identifier": "",
+          "displayActivityName": false,
+          "rollMode": "default",
+          "chooseEffects": false,
+          "toggleEffect": false,
+          "ignoreFullCover": false,
+          "removeChatButtons": "default",
+          "magicEffect": false,
+          "magicDamage": false,
+          "noConcentrationCheck": false,
+          "skipConcentrationCheck": false,
+          "autoCEEffects": "default"
+        },
+        "isOverTimeFlag": false,
+        "overTimeProperties": {
+          "saveRemoves": true,
+          "rollAs": "target",
+          "preRemoveConditionText": "",
+          "postRemoveConditionText": ""
+        },
+        "regionBehavior": {
+          "enabled": false,
+          "dispositionFilter": -1,
+          "excludeSource": true,
+          "oncePerTurn": true,
+          "wallRestriction": "none",
+          "regionVisibility": 2,
+          "rules": []
+        },
+        "regionLight": {
+          "enabled": false,
+          "dim": 0,
+          "bright": 0,
+          "color": null,
+          "alpha": 0.5,
+          "luminosity": 0.5,
+          "animationType": "",
+          "animationSpeed": 5,
+          "animationIntensity": 5
+        },
+        "otherActivityId": "none",
+        "otherActivityAsParentType": true
+      }
+    },
+    "identifier": "mark-for-death",
+    "enchant": {},
+    "prerequisites": {
+      "level": null
+    },
+    "properties": []
+  },
+  "_key": "!items!HPrjgPXLsDRBbfsD"
 }

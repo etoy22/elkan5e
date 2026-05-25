@@ -1,227 +1,226 @@
 {
-	"name": "Shield",
-	"type": "spell",
-	"img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
-	"effects": [
-		{
-			"name": "Shield",
-			"img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
-			"origin": "Compendium.elkan5e.elkan5e-spells.Item.k6lJOHWJa0XF2zCb",
-			"type": "base",
-			"_id": "9hRjjxOWJ7hyMdiH",
-			"system": {
-				"changes": [
-					{
-						"key": "system.attributes.ac.bonus",
-						"type": "add",
-						"value": 3,
-						"phase": "initial",
-						"priority": null
-					}
-				]
-			},
-			"disabled": false,
-			"start": null,
-			"duration": {
-				"value": 1,
-				"units": "rounds",
-				"expiry": "sourceStart",
-				"expired": false
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"transfer": true,
-			"statuses": [],
-			"showIcon": 1,
-			"folder": null,
-			"flags": {
-				"dae": {
-					"disableCondition": "",
-					"stackable": "noneName",
-					"expiryMode": "default",
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"disableIncapacitated": false,
-					"specialDuration": []
-				}
-			},
-			"_key": "!items.effects!k6lJOHWJa0XF2zCb.9hRjjxOWJ7hyMdiH"
-		}
-	],
-	"folder": "U0k4VGG6bziqf3oH",
-	"flags": {
-		"midi-qol": {
-			"onUseMacroName": "[preCheckHits]ItemMacro",
-			"effectActivation": false,
-			"forceCEOff": false,
-			"itemCondition": "",
-			"reactionCondition": "",
-			"otherCondition": "",
-			"effectCondition": "",
-			"rollAttackPerTarget": "default",
-			"AoETargetType": "any",
-			"AoETargetTypeIncludeSelf": true,
-			"autoTarget": "default",
-			"removeAttackDamageButtons": "default"
-		},
-		"midiProperties": {
-			"nodam": false,
-			"fulldam": false,
-			"halfdam": false,
-			"rollOther": false,
-			"critOther": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"concentration": false,
-			"toggleEffect": false,
-			"ignoreTotalCover": false,
-			"autoFailFriendly": false,
-			"offHandWeapon": false,
-			"autoSaveFriendly": false,
-			"noConcentrationCheck": false,
-			"confirmTargets": "default",
-			"idr": false,
-			"idi": false,
-			"idv": false,
-			"ida": false
-		},
-		"dae": {
-			"macro": {
-				"name": "Shield",
-				"img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
-				"type": "script",
-				"scope": "global",
-				"command": "return elkan5e.macros.spells.shield(workflow)",
-				"author": "vHqSHJMdmEO6Mk2C",
-				"_id": null,
-				"folder": null
-			}
-		}
-	},
-	"system": {
-		"description": {
-			"value": "<p><em>A shimmering shield forms around one of your arms, allowing you to block incoming attacks.</em></p><p><strong>Buff</strong></p><p><em>Trigger:</em> <em>You cast this spell when you can use it to turn a hit against you into a miss.</em></p><p>If you are holding a shield, you cannot gain the benefits of your shield and this spell at the same time.</p><ul><li><p>You have a +3* bonus to AC for 1 round, including against the triggering attack, and you take no damage from magic missile.</p></li></ul><p><strong>*Upcasting:</strong> The bonus to AC increases by 1 for each spell level above 1st, to a maximum of +5 to AC.</p><p><em>If your character is equipping a shield when they cast this spell, they will not gain the AC bonus from this spell until they unequip their normal shield.</em></p>",
-			"chat": ""
-		},
-		"source": {
-			"custom": "elkan5e.com/spells/shield",
-			"revision": 1,
-			"rules": "",
-			"book": "Elkan 5e",
-			"page": "",
-			"license": ""
-		},
-		"activation": {
-			"type": "reaction",
-			"condition": "when you are hit by an attack or targeted by the magic missile spell",
-			"value": 1
-		},
-		"duration": {
-			"value": "1",
-			"units": "round"
-		},
-		"target": {
-			"affects": {
-				"special": "",
-				"type": "self",
-				"choice": false
-			},
-			"template": {
-				"type": "",
-				"units": "",
-				"contiguous": false
-			}
-		},
-		"range": {
-			"units": "self",
-			"special": ""
-		},
-		"uses": {
-			"max": "",
-			"recovery": [],
-			"spent": 0
-		},
-		"ability": "",
-		"level": 1,
-		"school": "abj",
-		"materials": {
-			"value": "",
-			"consumed": false,
-			"cost": 0,
-			"supply": 0
-		},
-		"preparation": {
-			"mode": "prepared",
-			"prepared": true
-		},
-		"properties": [
-			"vocal",
-			"somatic",
-			"mgc"
-		],
-		"activities": {
-			"NTFhQ3vQNBtt6ZAr": {
-				"type": "utility",
-				"_id": "NTFhQ3vQNBtt6ZAr",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"roll": {
-					"prompt": false,
-					"visible": false,
-					"name": "",
-					"formula": ""
-				},
-				"name": "",
-				"img": "",
-				"appliedEffects": [
-					"6pbotGIvqQkraPva"
-				],
-				"visibility": {
-					"level": {
-						"min": null,
-						"max": null
-					}
-				},
-				"useConditionText": "reaction == \"isHit\""
-			}
-		},
-		"identifier": "shield"
-	},
-	"_id": "k6lJOHWJa0XF2zCb",
-	"_key": "!items!k6lJOHWJa0XF2zCb"
+  "name": "Shield",
+  "type": "spell",
+  "img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
+  "effects": [
+    {
+      "name": "Shield",
+      "img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
+      "origin": "Compendium.elkan5e.elkan5e-spells.Item.k6lJOHWJa0XF2zCb",
+      "type": "base",
+      "_id": "9hRjjxOWJ7hyMdiH",
+      "system": {
+        "changes": [
+          {
+            "key": "system.attributes.ac.bonus",
+            "type": "add",
+            "value": 3,
+            "phase": "initial",
+            "priority": null
+          }
+        ]
+      },
+      "disabled": false,
+      "start": null,
+      "duration": {
+        "value": 1,
+        "units": "rounds",
+        "expiry": "sourceStart",
+        "expired": false
+      },
+      "description": "",
+      "tint": "#ffffff",
+      "transfer": true,
+      "statuses": [],
+      "showIcon": 1,
+      "folder": null,
+      "flags": {
+        "dae": {
+          "disableCondition": "",
+          "stackable": "noneName",
+          "expiryMode": "default",
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "disableIncapacitated": false,
+          "specialDuration": []
+        }
+      },
+      "_key": "!items.effects!k6lJOHWJa0XF2zCb.9hRjjxOWJ7hyMdiH"
+    }
+  ],
+  "folder": "U0k4VGG6bziqf3oH",
+  "flags": {
+    "midi-qol": {
+      "onUseMacroName": "[preCheckHits]ItemMacro",
+      "effectActivation": false,
+      "itemCondition": "",
+      "reactionCondition": "",
+      "otherCondition": "",
+      "effectCondition": "",
+      "rollAttackPerTarget": "default",
+      "AoETargetType": "any",
+      "AoETargetTypeIncludeSelf": true,
+      "autoTarget": "default",
+      "removeAttackDamageButtons": "default"
+    },
+    "midiProperties": {
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "rollOther": false,
+      "critOther": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "autoFailFriendly": false,
+      "offHandWeapon": false,
+      "autoSaveFriendly": false,
+      "noConcentrationCheck": false,
+      "confirmTargets": "default",
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dae": {
+      "macro": {
+        "name": "Shield",
+        "img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
+        "type": "script",
+        "scope": "global",
+        "command": "return elkan5e.macros.spells.shield(workflow)",
+        "author": "vHqSHJMdmEO6Mk2C",
+        "_id": null,
+        "folder": null
+      }
+    }
+  },
+  "system": {
+    "description": {
+      "value": "<p><em>A shimmering shield forms around one of your arms, allowing you to block incoming attacks.</em></p><p><strong>Buff</strong></p><p><em>Trigger:</em> <em>You cast this spell when you can use it to turn a hit against you into a miss.</em></p><p>If you are holding a shield, you cannot gain the benefits of your shield and this spell at the same time.</p><ul><li><p>You have a +3* bonus to AC for 1 round, including against the triggering attack, and you take no damage from magic missile.</p></li></ul><p><strong>*Upcasting:</strong> The bonus to AC increases by 1 for each spell level above 1st, to a maximum of +5 to AC.</p><p><em>If your character is equipping a shield when they cast this spell, they will not gain the AC bonus from this spell until they unequip their normal shield.</em></p>",
+      "chat": ""
+    },
+    "source": {
+      "custom": "elkan5e.com/spells/shield",
+      "revision": 1,
+      "rules": "",
+      "book": "Elkan 5e",
+      "page": "",
+      "license": ""
+    },
+    "activation": {
+      "type": "reaction",
+      "condition": "when you are hit by an attack or targeted by the magic missile spell",
+      "value": 1
+    },
+    "duration": {
+      "value": "1",
+      "units": "round"
+    },
+    "target": {
+      "affects": {
+        "special": "",
+        "type": "self",
+        "choice": false
+      },
+      "template": {
+        "type": "",
+        "units": "",
+        "contiguous": false
+      }
+    },
+    "range": {
+      "units": "self",
+      "special": ""
+    },
+    "uses": {
+      "max": "",
+      "recovery": [],
+      "spent": 0
+    },
+    "ability": "",
+    "level": 1,
+    "school": "abj",
+    "materials": {
+      "value": "",
+      "consumed": false,
+      "cost": 0,
+      "supply": 0
+    },
+    "preparation": {
+      "mode": "prepared",
+      "prepared": true
+    },
+    "properties": [
+      "vocal",
+      "somatic",
+      "mgc"
+    ],
+    "activities": {
+      "NTFhQ3vQNBtt6ZAr": {
+        "type": "utility",
+        "_id": "NTFhQ3vQNBtt6ZAr",
+        "activation": {
+          "type": "action",
+          "value": null,
+          "override": false
+        },
+        "consumption": {
+          "scaling": {
+            "allowed": false
+          },
+          "spellSlot": true,
+          "targets": []
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "units": "inst",
+          "concentration": false,
+          "override": false
+        },
+        "effects": [],
+        "range": {
+          "override": false
+        },
+        "target": {
+          "type": "creature",
+          "value": 1,
+          "units": "ft",
+          "width": null,
+          "override": false,
+          "prompt": true
+        },
+        "uses": {
+          "spent": 0,
+          "recovery": [],
+          "max": ""
+        },
+        "roll": {
+          "prompt": false,
+          "visible": false,
+          "name": "",
+          "formula": ""
+        },
+        "name": "",
+        "img": "",
+        "appliedEffects": [
+          "6pbotGIvqQkraPva"
+        ],
+        "visibility": {
+          "level": {
+            "min": null,
+            "max": null
+          }
+        },
+        "useConditionText": "reaction == \"isHit\""
+      }
+    },
+    "identifier": "shield"
+  },
+  "_id": "k6lJOHWJa0XF2zCb",
+  "_key": "!items!k6lJOHWJa0XF2zCb"
 }

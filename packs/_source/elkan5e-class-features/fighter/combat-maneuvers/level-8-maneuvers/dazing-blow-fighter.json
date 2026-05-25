@@ -1,231 +1,230 @@
 {
-	"folder": "arbeIFN3TOtTkIOz",
-	"name": "Dazing Blow (Fighter)",
-	"type": "feat",
-	"img": "icons/skills/melee/strike-morningstar-gray.webp",
-	"system": {
-		"description": {
-			"value": "<p><em>Your attack scrambles your target's senses and leaves them slow to react.</em></p><p><strong>Once Per Turn</strong> - Melee/Ranged - 1 Creature - 1 Round - Uses Equal to Proficiency Bonus/Long Rest</p><p><em>Trigger: You damage a creature with a weapon.</em></p><p>You try to daze your target. Your DC for this ability equals 8 + your proficiency bonus + your STR or DEX modifier (your choice).</p><p><strong>[[/save con]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[dazed].</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
-			"chat": ""
-		},
-		"source": {
-			"book": "Elkan 5e",
-			"page": "",
-			"custom": "elkan5e.com/feats",
-			"license": "",
-			"revision": 1,
-			"rules": ""
-		},
-		"uses": {
-			"max": "@attributes.prof",
-			"recovery": [
-				{
-					"period": "lr",
-					"type": "recoverAll"
-				}
-			],
-			"spent": 0
-		},
-		"type": {
-			"value": "feat",
-			"subtype": "manuevers"
-		},
-		"requirements": "Maneuver (Level 8)",
-		"prerequisites": {
-			"level": 7
-		},
-		"properties": [],
-		"activities": {
-			"dnd5eactivity000": {
-				"_id": "dnd5eactivity000",
-				"type": "save",
-				"activation": {
-					"type": "once",
-					"value": 1,
-					"condition": "",
-					"override": false
-				},
-				"consumption": {
-					"targets": [
-						{
-							"type": "itemUses",
-							"value": "1",
-							"target": ""
-						}
-					],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"concentration": false,
-					"value": "",
-					"units": "inst",
-					"special": "",
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "d77AXyp8Re5GN0y4",
-						"onSave": false
-					}
-				],
-				"range": {
-					"units": "self",
-					"special": "",
-					"override": false
-				},
-				"target": {
-					"template": {
-						"count": "",
-						"contiguous": false,
-						"type": "",
-						"size": "",
-						"width": "",
-						"height": "",
-						"units": ""
-					},
-					"affects": {
-						"count": "",
-						"type": "",
-						"choice": false,
-						"special": ""
-					},
-					"prompt": true,
-					"override": false
-				},
-				"uses": {
-					"spent": 0,
-					"max": "",
-					"recovery": []
-				},
-				"damage": {
-					"onSave": "none",
-					"parts": []
-				},
-				"save": {
-					"ability": "con",
-					"dc": {
-						"calculation": "",
-						"formula": "8 + max(@abilities.str.mod, @abilities.dex.mod) + @prof"
-					}
-				},
-				"name": "",
-				"img": "",
-				"effectConditionText": "!target.traits.ci.value.has('dazed')",
-				"appliedEffects": [
-					"d77AXyp8Re5GN0y4"
-				]
-			}
-		},
-		"identifier": "dazing-blow-fighter",
-		"enchant": {}
-	},
-	"effects": [
-		{
-			"statuses": [
-				"dazed"
-			],
-			"name": "Dazing Blow",
-			"description": "",
-			"duration": {
-				"value": 1,
-				"units": "rounds",
-				"expiry": "sourceEnd",
-				"expired": false
-			},
-			"flags": {
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
-				},
-				"dae": {
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"stackable": "noneName",
-					"showIcon": false,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": [],
-					"enableCondition": "",
-					"disableCondition": "",
-					"expiryMode": "default"
-				}
-			},
-			"_id": "d77AXyp8Re5GN0y4",
-			"disabled": false,
-			"origin": "Compendium.elkan5e.elkan5e-feats.Item.ACnpE4RJYyX6El8Q",
-			"transfer": false,
-			"tint": "#ffffff",
-			"img": "icons/skills/melee/strike-morningstar-gray.webp",
-			"type": "base",
-			"system": {
-				"changes": []
-			},
-			"showIcon": 2,
-			"start": null,
-			"folder": null,
-			"_key": "!items.effects!ACnpE4RJYyX6El8Q.d77AXyp8Re5GN0y4"
-		}
-	],
-	"flags": {
-		"midi-qol": {
-			"effectActivation": false,
-			"rollAttackPerTarget": "default",
-			"itemCondition": "",
-			"effectCondition": "",
-			"reactionCondition": "",
-			"removeAttackDamageButtons": "default",
-			"otherCondition": ""
-		},
-		"midiProperties": {
-			"confirmTargets": "default",
-			"nodam": false,
-			"fulldam": false,
-			"halfdam": false,
-			"autoFailFriendly": false,
-			"autoSaveFriendly": false,
-			"rollOther": false,
-			"critOther": false,
-			"offHandWeapon": false,
-			"magicdam": false,
-			"magiceffect": false,
-			"concentration": false,
-			"noConcentrationCheck": false,
-			"toggleEffect": false,
-			"ignoreTotalCover": false,
-			"idr": false,
-			"idi": false,
-			"idv": false,
-			"ida": false
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedUses": 3
-		}
-	},
-	"_id": "ACnpE4RJYyX6El8Q",
-	"_key": "!items!ACnpE4RJYyX6El8Q"
+  "folder": "arbeIFN3TOtTkIOz",
+  "name": "Dazing Blow (Fighter)",
+  "type": "feat",
+  "img": "icons/skills/melee/strike-morningstar-gray.webp",
+  "system": {
+    "description": {
+      "value": "<p><em>Your attack scrambles your target's senses and leaves them slow to react.</em></p><p><strong>Once Per Turn</strong> - Melee/Ranged - 1 Creature - 1 Round - Uses Equal to Proficiency Bonus/Long Rest</p><p><em>Trigger: You damage a creature with a weapon.</em></p><p>You try to daze your target. Your DC for this ability equals 8 + your proficiency bonus + your STR or DEX modifier (your choice).</p><p><strong>[[/save con]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[dazed].</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+      "chat": ""
+    },
+    "source": {
+      "book": "Elkan 5e",
+      "page": "",
+      "custom": "elkan5e.com/feats",
+      "license": "",
+      "revision": 1,
+      "rules": ""
+    },
+    "uses": {
+      "max": "@attributes.prof",
+      "recovery": [
+        {
+          "period": "lr",
+          "type": "recoverAll"
+        }
+      ],
+      "spent": 0
+    },
+    "type": {
+      "value": "feat",
+      "subtype": "manuevers"
+    },
+    "requirements": "Maneuver (Level 8)",
+    "prerequisites": {
+      "level": 7
+    },
+    "properties": [],
+    "activities": {
+      "dnd5eactivity000": {
+        "_id": "dnd5eactivity000",
+        "type": "save",
+        "activation": {
+          "type": "once",
+          "value": 1,
+          "condition": "",
+          "override": false
+        },
+        "consumption": {
+          "targets": [
+            {
+              "type": "itemUses",
+              "value": "1",
+              "target": ""
+            }
+          ],
+          "scaling": {
+            "allowed": false,
+            "max": ""
+          },
+          "spellSlot": true
+        },
+        "description": {
+          "chatFlavor": ""
+        },
+        "duration": {
+          "concentration": false,
+          "value": "",
+          "units": "inst",
+          "special": "",
+          "override": false
+        },
+        "effects": [
+          {
+            "_id": "d77AXyp8Re5GN0y4",
+            "onSave": false
+          }
+        ],
+        "range": {
+          "units": "self",
+          "special": "",
+          "override": false
+        },
+        "target": {
+          "template": {
+            "count": "",
+            "contiguous": false,
+            "type": "",
+            "size": "",
+            "width": "",
+            "height": "",
+            "units": ""
+          },
+          "affects": {
+            "count": "",
+            "type": "",
+            "choice": false,
+            "special": ""
+          },
+          "prompt": true,
+          "override": false
+        },
+        "uses": {
+          "spent": 0,
+          "max": "",
+          "recovery": []
+        },
+        "damage": {
+          "onSave": "none",
+          "parts": []
+        },
+        "save": {
+          "ability": "con",
+          "dc": {
+            "calculation": "",
+            "formula": "8 + max(@abilities.str.mod, @abilities.dex.mod) + @prof"
+          }
+        },
+        "name": "",
+        "img": "",
+        "effectConditionText": "!target.traits.ci.value.has('dazed')",
+        "appliedEffects": [
+          "d77AXyp8Re5GN0y4"
+        ]
+      }
+    },
+    "identifier": "dazing-blow-fighter",
+    "enchant": {}
+  },
+  "effects": [
+    {
+      "statuses": [
+        "dazed"
+      ],
+      "name": "Dazing Blow",
+      "description": "",
+      "duration": {
+        "value": 1,
+        "units": "rounds",
+        "expiry": "sourceEnd",
+        "expired": false
+      },
+      "flags": {
+        "ActiveAuras": {
+          "isAura": false,
+          "aura": "None",
+          "nameOverride": "",
+          "radius": "",
+          "alignment": "",
+          "type": "",
+          "customCheck": "",
+          "ignoreSelf": false,
+          "height": false,
+          "hidden": false,
+          "displayTemp": false,
+          "hostile": false,
+          "onlyOnce": false,
+          "wallsBlock": "system"
+        },
+        "dae": {
+          "disableIncapacitated": false,
+          "selfTarget": false,
+          "selfTargetAlways": false,
+          "dontApply": false,
+          "stackable": "noneName",
+          "showIcon": false,
+          "durationExpression": "",
+          "macroRepeat": "none",
+          "specialDuration": [],
+          "enableCondition": "",
+          "disableCondition": "",
+          "expiryMode": "default"
+        }
+      },
+      "_id": "d77AXyp8Re5GN0y4",
+      "disabled": false,
+      "origin": "Compendium.elkan5e.elkan5e-feats.Item.ACnpE4RJYyX6El8Q",
+      "transfer": false,
+      "tint": "#ffffff",
+      "img": "icons/skills/melee/strike-morningstar-gray.webp",
+      "type": "base",
+      "system": {
+        "changes": []
+      },
+      "showIcon": 2,
+      "start": null,
+      "folder": null,
+      "_key": "!items.effects!ACnpE4RJYyX6El8Q.d77AXyp8Re5GN0y4"
+    }
+  ],
+  "flags": {
+    "midi-qol": {
+      "effectActivation": false,
+      "rollAttackPerTarget": "default",
+      "itemCondition": "",
+      "effectCondition": "",
+      "reactionCondition": "",
+      "removeAttackDamageButtons": "default",
+      "otherCondition": ""
+    },
+    "midiProperties": {
+      "confirmTargets": "default",
+      "nodam": false,
+      "fulldam": false,
+      "halfdam": false,
+      "autoFailFriendly": false,
+      "autoSaveFriendly": false,
+      "rollOther": false,
+      "critOther": false,
+      "offHandWeapon": false,
+      "magicdam": false,
+      "magiceffect": false,
+      "concentration": false,
+      "noConcentrationCheck": false,
+      "toggleEffect": false,
+      "ignoreTotalCover": false,
+      "idr": false,
+      "idi": false,
+      "idv": false,
+      "ida": false
+    },
+    "dnd5e": {
+      "riders": {
+        "activity": [],
+        "effect": []
+      }
+    }
+  },
+  "_id": "ACnpE4RJYyX6El8Q",
+  "_key": "!items!ACnpE4RJYyX6El8Q"
 }
