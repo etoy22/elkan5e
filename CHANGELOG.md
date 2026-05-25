@@ -1,5 +1,12 @@
 # Changelog
 
+# v1.14.0.1
+
+## Bug Fixes
+
+- Minor bug fixes and stability improvements.
+- Fixed broken identifiers
+
 # v1.14.0
 
 ## Bug Fixes
