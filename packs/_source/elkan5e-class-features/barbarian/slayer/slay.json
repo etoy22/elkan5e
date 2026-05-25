@@ -1,0 +1,228 @@
+{
+	"folder": "2Ob0MjPR5LkATwfK",
+	"name": "Slay",
+	"type": "feat",
+	"img": "icons/skills/melee/strike-dagger-skull-white.webp",
+	"system": {
+		"description": {
+			"value": "<p><strong>Bonus Action</strong> - 1 Creature - 2/Short Rest</p><p>Your target must be &amp;reference[bloodied], &amp;reference[incapacitated], &amp;reference[prone], or &amp;reference[restrained].</p><ul><li><p>You make a <strong>single attack</strong> with a weapon. <strong>If you hit</strong>, you can then attack the same target <strong>a second time</strong>.</p></li><li><p>If you reduce a creature to 0 hit points with either attack, you ignore any effect or ability the creature has that would prevent them from reaching 0, such as an orc's @UUID[Compendium.elkan5e.elkan5e-ancestry-background.Item.iM3hmD5dtPEsv6UA]{Relentless Endurance} or the <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.3Dpyp708Lxvq4niO]{Death Ward}</em> spell.</p></li></ul>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/barbarian",
+			"rules": "",
+			"revision": 1,
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"uses": {
+			"max": "2",
+			"spent": 0,
+			"recovery": [
+				{
+					"period": "sr",
+					"type": "recoverAll"
+				}
+			]
+		},
+		"type": {
+			"value": "subclass",
+			"subtype": ""
+		},
+		"prerequisites": {
+			"level": null,
+			"items": [],
+			"repeatable": false
+		},
+		"properties": [],
+		"requirements": "Slayer 6",
+		"identifier": "slay",
+		"activities": {
+			"FtuYq8jUDgL2W2AJ": {
+				"type": "utility",
+				"_id": "FtuYq8jUDgL2W2AJ",
+				"img": "",
+				"activation": {
+					"type": "bonus",
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "",
+							"scaling": {}
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "any",
+					"override": false,
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"stationary": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "1",
+						"type": "creature",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false,
+					"identifier": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"formula": "",
+					"name": ""
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"triggeredActivityConsume": true,
+					"triggeredActivityConfigure": true,
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"skipConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"rollAs": "target",
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"regionBehavior": {
+					"enabled": false,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": []
+				},
+				"regionLight": {
+					"enabled": false,
+					"dim": 0,
+					"bright": 0,
+					"color": null,
+					"alpha": 0.5,
+					"luminosity": 0.5,
+					"animationType": "",
+					"animationSpeed": 5,
+					"animationIntensity": 5
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"name": ""
+			}
+		},
+		"enchant": {},
+		"advancement": {},
+		"crewed": false
+	},
+	"effects": [],
+	"flags": {
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"AoETargetType": "any",
+			"autoTarget": "default",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		}
+	},
+	"_id": "9vv6bcyW2jc0wDBj",
+	"_key": "!items!9vv6bcyW2jc0wDBj"
+}

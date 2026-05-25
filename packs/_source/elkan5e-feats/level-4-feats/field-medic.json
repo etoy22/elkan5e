@@ -6,7 +6,7 @@
 	"img": "icons/commodities/cloth/cloth-roll-gold-green.webp",
 	"system": {
 		"description": {
-			"value": "<p><em> <strong>Prerequisite: Proficiency in @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.rv19GFzEa0nMTuAF.JournalEntryPage.A5vSPTTu7J1k8HA9#medicine]{Medicine}</strong> </em></p><p><em>You spend time during your rest tending to the wounds of your allies.</em></p><p><strong>During a Short Rest</strong> - 6 Creatures</p><p>When you and your allies take a short rest, you choose up to 6 allied creatures who expend at least one hit die to heal, including yourself.</p><ul><li><p>The chosen creatures regain additional hit points equal to your level.</p></li></ul>",
+			"value": "<p><em><strong>Prerequisite: Proficiency in @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.rv19GFzEa0nMTuAF.JournalEntryPage.A5vSPTTu7J1k8HA9#medicine]{Medicine}</strong></em></p><p><em>You spend time during your rest tending to the wounds of your allies.</em></p><p><strong>During a Short Rest</strong> - 1 Creature</p><p>When you and your allies take a short rest, choose one creature who expended at least one hit die to heal, including yourself.</p><ul><li><p>You roll a &amp;reference[medicine] check.</p></li><li><p>The chosen creature regains additional hit points equal to your medicine check total.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -31,80 +31,152 @@
 			"level": 4
 		},
 		"activities": {
-			"dnd5eactivity000": {
-				"_id": "dnd5eactivity000",
+			"5oqOUEC5wzlXiMXs": {
 				"type": "heal",
+				"_id": "5oqOUEC5wzlXiMXs",
+				"img": "",
 				"activation": {
-					"type": "shortrest",
-					"value": null,
-					"condition": "",
-					"override": false
+					"type": "action",
+					"override": false,
+					"condition": ""
 				},
 				"consumption": {
-					"targets": [],
 					"scaling": {
-						"allowed": false,
-						"max": ""
+						"allowed": false
 					},
-					"spellSlot": true
+					"spellSlot": true,
+					"targets": []
 				},
 				"description": {
 					"chatFlavor": ""
 				},
 				"duration": {
+					"units": "inst",
 					"concentration": false,
-					"value": "",
-					"units": "",
-					"special": "",
 					"override": false
 				},
 				"effects": [],
 				"range": {
-					"units": "",
-					"special": "",
-					"override": false
+					"units": "self",
+					"override": false,
+					"special": ""
 				},
 				"target": {
 					"template": {
-						"count": "",
 						"contiguous": false,
-						"type": "",
-						"size": "",
-						"width": "",
-						"height": "",
-						"units": ""
+						"stationary": false,
+						"units": "ft",
+						"type": ""
 					},
 					"affects": {
-						"count": "",
-						"type": "",
 						"choice": false,
-						"special": ""
+						"type": ""
 					},
-					"prompt": true,
-					"override": false
+					"override": false,
+					"prompt": true
 				},
 				"uses": {
 					"spent": 0,
-					"max": "",
-					"recovery": []
+					"recovery": [],
+					"max": ""
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false,
+					"identifier": ""
 				},
 				"healing": {
-					"number": null,
-					"denomination": null,
-					"bonus": "",
 					"types": [
 						"healing"
 					],
 					"custom": {
-						"enabled": true,
-						"formula": "@details.level"
+						"enabled": false
 					},
 					"scaling": {
-						"mode": "whole",
-						"number": null,
-						"formula": ""
-					}
-				}
+						"number": 1
+					},
+					"number": 1,
+					"denomination": 20,
+					"bonus": "@skills.med.mod"
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"triggeredActivityConsume": true,
+					"triggeredActivityConfigure": true,
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"skipConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"rollAs": "target",
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"regionBehavior": {
+					"enabled": false,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": []
+				},
+				"regionLight": {
+					"enabled": false,
+					"dim": 0,
+					"bright": 0,
+					"color": null,
+					"alpha": 0.5,
+					"luminosity": 0.5,
+					"animationType": "",
+					"animationSpeed": 5,
+					"animationIntensity": 5
+				},
+				"name": "Medicine Check"
 			}
 		},
 		"identifier": "field-medic",

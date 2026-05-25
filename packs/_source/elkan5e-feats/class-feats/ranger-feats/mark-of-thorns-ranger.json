@@ -6,7 +6,7 @@
 	"img": "icons/magic/nature/beam-hand-leaves-green.webp",
 	"system": {
 		"description": {
-			"value": "<p><strong>Bonus Action</strong> - 1 Ally (60 ft.) - 1 Minute - Magical</p><p>Using this ability consumes a use of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.HPrjgPXLsDRBbfsD]{Mark for Death}. You cannot use this ability alongside Mark for Death or any other ranger mark.</p><p><strong>Buff</strong></p><ul><li><p>You surround your target with magical thorns. Whenever your target is struck by a melee attack, their attacker takes [[/r 1d4 magical piercing]] damage*. This ability ends early if you become &amp;reference[incapacitated apply=false].</p></li></ul><p>*This extra damage increases as you gain ranger levels. The damage dealt by this ability is equal to your Mark for Death damage.</p><p><strong>Note: You'll need to manually deal damage using Mark of Thorns using the ranger who created it.</strong></p>",
+			"value": "<p><strong>Bonus Action</strong> - 1 Ally (60 ft.) - 10 Minutes - Magical</p><p>Using this ability consumes a use of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.HPrjgPXLsDRBbfsD]{Mark for Death}. You cannot use this ability alongside Mark for Death or any other ranger mark.</p><p><strong>Buff</strong></p><ul><li><p>You surround your target with magical thorns. Whenever your target is struck by a melee attack, their attacker takes [[/r 1d4 magical piercing]] damage*. This ability ends early if you become &amp;reference[incapacitated apply=false].</p></li></ul><p>*This extra damage increases as you gain ranger levels. The damage dealt by this ability is equal to your Mark for Death damage.</p><p><strong>Note: You'll need to manually deal damage using Mark of Thorns using the ranger who created it.</strong></p>",
 			"chat": ""
 		},
 		"source": {
@@ -41,7 +41,7 @@
 				"type": "utility",
 				"name": "Mark of Thorns (Uses)",
 				"activation": {
-					"type": "special",
+					"type": "bonus",
 					"value": null,
 					"override": false,
 					"condition": ""
@@ -67,14 +67,22 @@
 					"units": "minute",
 					"concentration": false,
 					"override": false,
-					"value": "1"
+					"value": "10"
 				},
 				"effects": [
 					{
-						"_id": "mtC9YRFZeGMdIpXp"
+						"_id": "mtC9YRFZeGMdIpXp",
+						"level": {
+							"min": null,
+							"max": null
+						}
 					},
 					{
-						"_id": "5wewm9mUphsdtJWZ"
+						"_id": "5wewm9mUphsdtJWZ",
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -114,7 +122,14 @@
 				"appliedEffects": [
 					"5wewm9mUphsdtJWZ",
 					"mtC9YRFZeGMdIpXp"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": ""
+				}
 			},
 			"mk8Xj3iT4xYBA9Oq": {
 				"type": "damage",
@@ -225,8 +240,8 @@
 			"_id": "5wewm9mUphsdtJWZ",
 			"disabled": false,
 			"duration": {
-				"value": 60,
-				"units": "seconds",
+				"value": 10,
+				"units": "minutes",
 				"expiry": "turnStart",
 				"expired": false
 			},
@@ -245,7 +260,8 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -296,7 +312,6 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"stackable": "noneName",
-					"showIcon": true,
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": [],
@@ -327,7 +342,7 @@
 				"changes": []
 			},
 			"start": null,
-			"showIcon": 1,
+			"showIcon": 2,
 			"folder": null,
 			"_key": "!items.effects!2F7ey4ojkStp5ry7.mtC9YRFZeGMdIpXp"
 		}
