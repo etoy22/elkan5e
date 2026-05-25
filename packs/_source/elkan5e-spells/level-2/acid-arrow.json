@@ -1,483 +1,483 @@
 {
-  "name": "Acid Arrow",
-  "type": "spell",
-  "img": "icons/weapons/ammunition/arrow-broadhead-bent-teal.webp",
-  "effects": [
-    {
-      "name": "Acid Arrow",
-      "img": "icons/weapons/ammunition/arrow-broadhead-bent-teal.webp",
-      "origin": "Compendium.elkan5e.elkan5e-spells.Item.xZu2pzKegvWyGnKo",
-      "transfer": false,
-      "_id": "WBIvDzj1NiSog2Ys",
-      "type": "base",
-      "system": {
-        "changes": [
-          {
-            "key": "flags.midi-qol.ActivityOverTime",
-            "value": "damage-(end-of-target's-turn)",
-            "priority": 20,
-            "type": "add"
-          }
-        ]
-      },
-      "disabled": false,
-      "duration": {
-        "value": null,
-        "units": "seconds",
-        "expiry": null,
-        "expired": false
-      },
-      "description": "",
-      "tint": "#ffffff",
-      "statuses": [],
-      "flags": {
-        "ActiveAuras": {
-          "isAura": false,
-          "aura": "Enemy",
-          "nameOverride": "",
-          "radius": "",
-          "alignment": "",
-          "type": "",
-          "customCheck": "",
-          "ignoreSelf": false,
-          "height": false,
-          "hidden": false,
-          "displayTemp": false,
-          "hostile": false,
-          "onlyOnce": false,
-          "wallsBlock": "system",
-          "statuses": []
-        },
-        "dae": {
-          "enableCondition": "",
-          "disableCondition": "",
-          "stackable": "noneName",
-          "durationExpression": "",
-          "specialDuration": [],
-          "disableIncapacitated": false,
-          "selfTarget": false,
-          "selfTargetAlways": false,
-          "dontApply": false,
-          "macroRepeat": "none"
-        }
-      },
-      "start": null,
-      "showIcon": 2,
-      "folder": null,
-      "_key": "!items.effects!xZu2pzKegvWyGnKo.WBIvDzj1NiSog2Ys"
-    }
-  ],
-  "folder": "6J3i75lfD1J0xYwA",
-  "flags": {
-    "midi-qol": {
-      "effectActivation": false,
-      "removeAttackDamageButtons": "default",
-      "itemCondition": "",
-      "reactionCondition": "",
-      "otherCondition": "",
-      "effectCondition": "",
-      "rollAttackPerTarget": "default",
-      "AoETargetType": "any",
-      "AoETargetTypeIncludeSelf": true,
-      "autoTarget": "default"
-    },
-    "midiProperties": {
-      "nodam": false,
-      "halfdam": true,
-      "fulldam": false,
-      "rollOther": false,
-      "critOther": false,
-      "concentration": false,
-      "magicdam": false,
-      "magiceffect": false,
-      "toggleEffect": false,
-      "ignoreTotalCover": false,
-      "autoFailFriendly": false,
-      "autoSaveFriendly": false,
-      "offHandWeapon": false,
-      "noConcentrationCheck": false,
-      "confirmTargets": "default",
-      "idr": false,
-      "idi": false,
-      "idv": false,
-      "ida": false
-    }
-  },
-  "system": {
-    "description": {
-      "value": "<p><em>Saying a command phrase, you dab your hand on a wet adder's stomach stuffed with rhubarb leaves. A shimmering green arrow streaks toward your target and bursts in a spray of acid.</em></p><p><strong>Ranged Spell Attack</strong></p><ul><li><p><strong>Hit:</strong> Target takes [[/damage 4d4 acid]] damage* immediately and [[/damage 4d4 acid]] damage* at the end of their next turn.</p></li><li><p><strong>Miss:</strong> [[/damage 2d4 acid]] initial damage, no damage on your next turn.</p></li></ul><p><strong>*Upcasting:</strong> Increase initial damage and damage on target's next turn by [[/damage 1d4 acid]] for each spell level above 2nd.</p>",
-      "chat": ""
-    },
-    "source": {
-      "custom": "elkan5e.com/spells/acid-arrow",
-      "revision": 1,
-      "rules": "",
-      "book": "Elkan 5e",
-      "page": "",
-      "license": ""
-    },
-    "activation": {
-      "type": "action",
-      "condition": "",
-      "value": 1
-    },
-    "duration": {
-      "value": "",
-      "units": "inst"
-    },
-    "target": {
-      "affects": {
-        "special": "",
-        "type": "creature",
-        "count": "1",
-        "choice": false
-      },
-      "template": {
-        "type": "",
-        "units": "",
-        "contiguous": false
-      }
-    },
-    "range": {
-      "value": "90",
-      "units": "ft",
-      "special": ""
-    },
-    "uses": {
-      "max": "",
-      "recovery": [],
-      "spent": 0
-    },
-    "ability": "",
-    "level": 2,
-    "school": "evo",
-    "materials": {
-      "value": "",
-      "consumed": false,
-      "cost": 0,
-      "supply": 0
-    },
-    "preparation": {
-      "mode": "prepared",
-      "prepared": true
-    },
-    "properties": [
-      "vocal",
-      "somatic",
-      "material"
-    ],
-    "activities": {
-      "qQMmBmz5yS6t8eZ6": {
-        "type": "attack",
-        "_id": "qQMmBmz5yS6t8eZ6",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": true,
-          "targets": []
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [
-          {
-            "_id": "WBIvDzj1NiSog2Ys",
-            "level": {
-              "min": null,
-              "max": null
-            }
-          }
-        ],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "type": "creature",
-          "value": 1,
-          "units": "ft",
-          "width": null,
-          "override": false,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "attack": {
-          "critical": {
-            "threshold": null
-          },
-          "flat": false,
-          "type": {
-            "value": "ranged",
-            "classification": ""
-          },
-          "ability": "",
-          "bonus": ""
-        },
-        "damage": {
-          "critical": {
-            "bonus": ""
-          },
-          "includeBase": true,
-          "parts": [
-            {
-              "custom": {
-                "enabled": false,
-                "formula": ""
-              },
-              "number": 4,
-              "denomination": 4,
-              "bonus": "",
-              "types": [
-                "acid"
-              ],
-              "scaling": {
-                "mode": "whole",
-                "number": 1,
-                "formula": ""
-              }
-            }
-          ]
-        },
-        "name": "",
-        "img": "",
-        "attackMode": "",
-        "otherActivityId": "none",
-        "appliedEffects": [
-          "WBIvDzj1NiSog2Ys"
-        ],
-        "midiProperties": {
-          "magicDamage": false,
-          "triggeredActivityId": "missed-damage",
-          "triggeredActivityTargets": "missedTargets"
-        },
-        "isOverTimeFlag": false,
-        "overTimeProperties": {
-          "turnChoice": "end",
-          "saveRemoves": false,
-          "postRemoveConditionText": "true"
-        },
-        "otherActivityAsParentType": true,
-        "visibility": {
-          "level": {
-            "min": null,
-            "max": null
-          }
-        }
-      },
-      "7rpm5ijXMVnwjx8v": {
-        "type": "damage",
-        "name": "Damage (End of Target's Turn)",
-        "_id": "7rpm5ijXMVnwjx8v",
-        "activation": {
-          "type": "action",
-          "value": null,
-          "override": false
-        },
-        "consumption": {
-          "scaling": {
-            "allowed": false
-          },
-          "spellSlot": false,
-          "targets": []
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false
-        },
-        "target": {
-          "type": "creature",
-          "value": 1,
-          "units": "ft",
-          "width": null,
-          "override": false,
-          "prompt": true
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "damage": {
-          "critical": {
-            "allow": false
-          },
-          "parts": [
-            {
-              "custom": {
-                "enabled": false,
-                "formula": ""
-              },
-              "number": 4,
-              "denomination": 4,
-              "bonus": "",
-              "types": [],
-              "scaling": {
-                "mode": "whole",
-                "number": 1,
-                "formula": ""
-              }
-            }
-          ]
-        },
-        "img": "",
-        "appliedEffects": [],
-        "midiProperties": {
-          "otherActivityCompatible": false
-        },
-        "isOverTimeFlag": true,
-        "overTimeProperties": {
-          "turnChoice": "end",
-          "preRemoveConditionText": "false",
-          "postRemoveConditionText": "true"
-        }
-      },
-      "Oigwuq6k8SPZIqNz": {
-        "type": "damage",
-        "activation": {
-          "type": "special",
-          "value": null,
-          "override": true,
-          "condition": ""
-        },
-        "consumption": {
-          "targets": [],
-          "scaling": {
-            "allowed": false,
-            "max": ""
-          },
-          "spellSlot": false
-        },
-        "description": {
-          "chatFlavor": ""
-        },
-        "duration": {
-          "units": "inst",
-          "concentration": false,
-          "override": false
-        },
-        "effects": [],
-        "range": {
-          "override": false,
-          "units": "self"
-        },
-        "target": {
-          "prompt": true,
-          "template": {
-            "contiguous": false,
-            "units": "ft"
-          },
-          "affects": {
-            "choice": false
-          },
-          "override": false
-        },
-        "damage": {
-          "critical": {
-            "allow": false,
-            "bonus": ""
-          },
-          "parts": [
-            {
-              "custom": {
-                "enabled": false,
-                "formula": ""
-              },
-              "number": 2,
-              "denomination": 4,
-              "bonus": "",
-              "types": [
-                "acid"
-              ],
-              "scaling": {
-                "mode": "whole",
-                "number": 1,
-                "formula": ""
-              }
-            }
-          ]
-        },
-        "uses": {
-          "spent": 0,
-          "recovery": [],
-          "max": ""
-        },
-        "useConditionText": "",
-        "effectConditionText": "",
-        "macroData": {
-          "name": "",
-          "command": ""
-        },
-        "ignoreTraits": {
-          "idi": false,
-          "idr": false,
-          "idv": false,
-          "ida": false,
-          "idm": false
-        },
-        "midiProperties": {
-          "ignoreTraits": [],
-          "triggeredActivityId": "none",
-          "triggeredActivityConditionText": "",
-          "triggeredActivityTargets": "targets",
-          "triggeredActivityRollAs": "self",
-          "confirmTargets": "never",
-          "autoTargetType": "any",
-          "autoTargetAction": "default",
-          "automationOnly": true,
-          "otherActivityCompatible": false,
-          "identifier": "",
-          "displayActivityName": true,
-          "rollMode": "default",
-          "chooseEffects": false,
-          "autoConsume": false,
-          "forceConsumeDialog": "default",
-          "forceRollDialog": "default",
-          "forceDamageDialog": "default",
-          "otherActivityAsParentType": true,
-          "toggleEffect": false,
-          "ignoreFullCover": false,
-          "removeChatButtons": "default",
-          "magicEffect": false,
-          "magicDamage": false,
-          "noConcentrationCheck": false,
-          "autoCEEffects": "default"
-        },
-        "name": "Missed Damage",
-        "isOverTimeFlag": false,
-        "overTimeProperties": {
-          "turnChoice": "start",
-          "saveRemoves": true,
-          "preRemoveConditionText": "",
-          "postRemoveConditionText": ""
-        },
-        "useConditionReason": "",
-        "_id": "Oigwuq6k8SPZIqNz"
-      }
-    },
-    "identifier": "acid-arrow"
-  },
-  "_id": "xZu2pzKegvWyGnKo",
-  "_key": "!items!xZu2pzKegvWyGnKo"
+	"name": "Acid Arrow",
+	"type": "spell",
+	"img": "icons/weapons/ammunition/arrow-broadhead-bent-teal.webp",
+	"effects": [
+		{
+			"name": "Acid Arrow",
+			"img": "icons/weapons/ammunition/arrow-broadhead-bent-teal.webp",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.xZu2pzKegvWyGnKo",
+			"transfer": false,
+			"_id": "WBIvDzj1NiSog2Ys",
+			"type": "base",
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.ActivityOverTime",
+						"value": "damage-(end-of-target's-turn)",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"disabled": false,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [],
+			"flags": {
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "Enemy",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				},
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"stackable": "noneName",
+					"durationExpression": "",
+					"specialDuration": [],
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"macroRepeat": "none"
+				}
+			},
+			"start": null,
+			"showIcon": 2,
+			"folder": null,
+			"_key": "!items.effects!xZu2pzKegvWyGnKo.WBIvDzj1NiSog2Ys"
+		}
+	],
+	"folder": "6J3i75lfD1J0xYwA",
+	"flags": {
+		"midi-qol": {
+			"effectActivation": false,
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": "",
+			"rollAttackPerTarget": "default",
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default"
+		},
+		"midiProperties": {
+			"nodam": false,
+			"halfdam": true,
+			"fulldam": false,
+			"rollOther": false,
+			"critOther": false,
+			"concentration": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"noConcentrationCheck": false,
+			"confirmTargets": "default",
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><em>Saying a command phrase, you dab your hand on a wet adder's stomach stuffed with rhubarb leaves. A shimmering green arrow streaks toward your target and bursts in a spray of acid.</em></p><p><strong>Ranged Spell Attack</strong></p><ul><li><p><strong>Hit:</strong> Target takes [[/damage 4d4 acid]] damage* immediately and [[/damage 4d4 acid]] damage* at the end of their next turn.</p></li><li><p><strong>Miss:</strong> [[/damage 2d4 acid]] initial damage, no damage on your next turn.</p></li></ul><p><strong>*Upcasting:</strong> Increase initial damage and damage on target's next turn by [[/damage 1d4 acid]] for each spell level above 2nd.</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/acid-arrow",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"condition": "",
+			"value": 1
+		},
+		"duration": {
+			"value": "",
+			"units": "inst"
+		},
+		"target": {
+			"affects": {
+				"special": "",
+				"type": "creature",
+				"count": "1",
+				"choice": false
+			},
+			"template": {
+				"type": "",
+				"units": "",
+				"contiguous": false
+			}
+		},
+		"range": {
+			"value": "90",
+			"units": "ft",
+			"special": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"ability": "",
+		"level": 2,
+		"school": "evo",
+		"materials": {
+			"value": "",
+			"consumed": false,
+			"cost": 0,
+			"supply": 0
+		},
+		"preparation": {
+			"mode": "prepared",
+			"prepared": true
+		},
+		"properties": [
+			"vocal",
+			"somatic",
+			"material"
+		],
+		"activities": {
+			"qQMmBmz5yS6t8eZ6": {
+				"type": "attack",
+				"_id": "qQMmBmz5yS6t8eZ6",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "WBIvDzj1NiSog2Ys",
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"attack": {
+					"critical": {
+						"threshold": null
+					},
+					"flat": false,
+					"type": {
+						"value": "ranged",
+						"classification": ""
+					},
+					"ability": "",
+					"bonus": ""
+				},
+				"damage": {
+					"critical": {
+						"bonus": ""
+					},
+					"includeBase": true,
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 4,
+							"denomination": 4,
+							"bonus": "",
+							"types": [
+								"acid"
+							],
+							"scaling": {
+								"mode": "whole",
+								"number": 1,
+								"formula": ""
+							}
+						}
+					]
+				},
+				"name": "",
+				"img": "",
+				"attackMode": "",
+				"otherActivityId": "none",
+				"appliedEffects": [
+					"WBIvDzj1NiSog2Ys"
+				],
+				"midiProperties": {
+					"magicDamage": false,
+					"triggeredActivityId": "missed-damage",
+					"triggeredActivityTargets": "missedTargets"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"turnChoice": "end",
+					"saveRemoves": false,
+					"postRemoveConditionText": "true"
+				},
+				"otherActivityAsParentType": true,
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				}
+			},
+			"7rpm5ijXMVnwjx8v": {
+				"type": "damage",
+				"name": "Damage (End of Target's Turn)",
+				"_id": "7rpm5ijXMVnwjx8v",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": false,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"type": "creature",
+					"value": 1,
+					"units": "ft",
+					"width": null,
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"critical": {
+						"allow": false
+					},
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 4,
+							"denomination": 4,
+							"bonus": "",
+							"types": [],
+							"scaling": {
+								"mode": "whole",
+								"number": 1,
+								"formula": ""
+							}
+						}
+					]
+				},
+				"img": "",
+				"appliedEffects": [],
+				"midiProperties": {
+					"otherActivityCompatible": false
+				},
+				"isOverTimeFlag": true,
+				"overTimeProperties": {
+					"turnChoice": "end",
+					"preRemoveConditionText": "false",
+					"postRemoveConditionText": "true"
+				}
+			},
+			"Oigwuq6k8SPZIqNz": {
+				"type": "damage",
+				"activation": {
+					"type": "special",
+					"value": null,
+					"override": true,
+					"condition": ""
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false,
+					"units": "self"
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false
+				},
+				"damage": {
+					"critical": {
+						"allow": false,
+						"bonus": ""
+					},
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 2,
+							"denomination": 4,
+							"bonus": "",
+							"types": [
+								"acid"
+							],
+							"scaling": {
+								"mode": "whole",
+								"number": 1,
+								"formula": ""
+							}
+						}
+					]
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"useConditionText": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"confirmTargets": "never",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": true,
+					"otherActivityCompatible": false,
+					"identifier": "",
+					"displayActivityName": true,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"otherActivityAsParentType": true,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"name": "Missed Damage",
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"turnChoice": "start",
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"useConditionReason": "",
+				"_id": "Oigwuq6k8SPZIqNz"
+			}
+		},
+		"identifier": "acid-arrow"
+	},
+	"_id": "xZu2pzKegvWyGnKo",
+	"_key": "!items!xZu2pzKegvWyGnKo"
 }
