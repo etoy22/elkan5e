@@ -32,7 +32,7 @@
 				"activation": {
 					"type": "reaction",
 					"value": 1,
-					"condition": "reaction === 'isSave' && !workflow?.save?.success",
+					"condition": "",
 					"override": false
 				},
 				"consumption": {
@@ -199,7 +199,7 @@
 		"midi-qol": {
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
-			"reactionCondition": "",
+			"reactionCondition": "reaction === 'isSave' && !workflow?.save?.success",
 			"effectCondition": "",
 			"otherCondition": "",
 			"removeAttackDamageButtons": "default"
