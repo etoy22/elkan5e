@@ -59,13 +59,9 @@ export function onWarlockFilterInvocations(app, html) {
 		const root = html instanceof HTMLElement ? html : html[0];
 		if (!root) return;
 
-		// dnd5e renders advancement pool items with data-uuid containing the
-		// item id, or data-item-id set to the bare id. Try both patterns.
 		for (const id of idsToHide) {
 			const matches = root.querySelectorAll(`[data-uuid*="${id}"], [data-item-id="${id}"]`);
 			for (const el of matches) {
-				// Walk up to the list row / card container so the whole entry
-				// is hidden rather than just an inner element
 				const row = el.closest("li, .item, tr, [class*='item-choice']") ?? el;
 				row.style.display = "none";
 			}

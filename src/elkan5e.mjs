@@ -31,7 +31,6 @@ import {
 	necromanticSurge,
 	soulConduit,
 	spectralEmpowerment,
-	onWizardRenderAdvancementManager,
 } from "./module/classes/wizard.mjs";
 import {
 	relentlessEndurance,
@@ -40,7 +39,6 @@ import {
 	onFilterOwnedFeats,
 } from "./module/feats.mjs";
 import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
-import { registerConcentrationProficiency } from "./module/rules/concentration.mjs";
 import { speed } from "./module/rules/speed.mjs";
 import {
 	conditions,
@@ -53,13 +51,6 @@ import {
 	handleGrapplerMove,
 	handlePushedEffect,
 } from "./module/rules/condition/grapple.mjs";
-import {
-	ride,
-	dismountAction,
-	handleMountMove,
-	handleMountedEffectDelete,
-	endAllRidesForActor,
-} from "./module/rules/condition/ride.mjs";
 import {
 	handleBurningCreate,
 	handleBurningDelete,
@@ -99,11 +90,6 @@ const Spells = {
  *
  */
 function registerHooks() {
-	// Wraps prepareDerivedData to inject concentration save bonuses from the
-	// flags.elkan5e.concentration.bonuses.save flag set by active effects.
-	// Must run during setup (after init, before ready) so the prototype is in place.
-	registerConcentrationProficiency();
-
 	Hooks.once("init", async () => {
 		try {
 			console.log("Elkan 5e | Initializing Elkan 5e");
@@ -293,6 +279,17 @@ function registerHooks() {
 			await Spells.sanctuary(workflow);
 		} catch (error) {
 			console.error("Elkan 5e | Error in Sanctuary hook:", error);
+		}
+	});
+
+	// Mirror Image — after the attack roll is known, checks whether any target
+	// carries a Mirror Image effect. Redirects the attack to a duplicate and
+	// returns false to abort damage on the real target if a duplicate is hit.
+	Hooks.on("midi-qol.AttackRollComplete", async (workflow) => {
+		try {
+			await Spells.mirrorImage(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Mirror Image hook:", error);
 		}
 	});
 

@@ -1,16 +1,6 @@
 /**
  * Runs Mark of Affliction class feature automation.
  *
- * Once per turn, when the ranger hits with a weapon attack or damages a creature
- * with a ranger spell while the "Mark of Affliction" active effect is on them,
- * prompts the player and then triggers a Constitution save against the target.
- * On a failed save the target becomes Poisoned until the mark ends.
- *
- * Primary trigger: the DamageBonusMacro change on the "Mark of Affliction" self-effect
- * injects this as an ItemMacro, supplying `macroItem` (the feat) automatically.
- * Fallback: also callable from the midi-qol.RollComplete hook in elkan5e.mjs,
- * where it resolves the feat by identifier instead.
- *
  * @param {object} workflow - MIDI-QOL workflow.
  * @returns {Promise<void>}
  */
@@ -26,9 +16,6 @@ export async function markOfAffliction(workflow) {
 
 		const actor = workflow.actor;
 
-		// Require the "Mark of Affliction" effect to be active on the ranger.
-		// (When called via DamageBonusMacro the effect is guaranteed to be present,
-		// but we still guard for the hook-call path.)
 		const markEffect = actor.effects.find(
 			(ef) => ef.name === "Mark of Affliction" && !ef.disabled,
 		);
@@ -69,13 +56,6 @@ export async function markOfAffliction(workflow) {
 
 /**
  * Runs Mark of Thorns class feature automation.
- *
- * Whenever an ally bearing the "Mark of Thorns (Target)" active effect is struck
- * by a melee attack, the ranger who cast the mark automatically deals thorn
- * damage (equal to Mark for Death scale) to the attacker.
- *
- * Designed to be called from a midi-qol.RollComplete hook so it fires on any
- * combatant's melee attack, not just the ranger's.
  *
  * @param {object} workflow - MIDI-QOL workflow.
  * @returns {Promise<void>}
@@ -171,7 +151,7 @@ export async function markForDeath(workflow) {
 		});
 		if (!isMarked) return {};
 
-		// ── Damage formula: prefer the ranger scale value, fall back to 1d4 ─────────
+		// ── Damage formula: prefer the ranger scale value, fall back to 1d4
 		const scaleValue = workflow.actor?.system?.scale?.ranger?.["mark-for-death"];
 		const formula = scaleValue?.formula ?? "1d4";
 		const base = workflow.item?.system?.damage?.base;

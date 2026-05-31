@@ -466,8 +466,9 @@ export async function mirrorImage(workflow) {
 			});
 		}
 
-		// Return false to abort the attack on the real target.
-		return false;
+		// Remove the real target from the workflow so damage is never applied.
+		workflow.targets.delete(target);
+		if (workflow.targets.size === 0) workflow.aborted = true;
 	} catch (err) {
 		console.error("Mirror Image |", err);
 	}
@@ -505,7 +506,11 @@ export async function lesserRestoration(workflow) {
 			{ id: "weakened", label: "Weakened" },
 		];
 
-		const present = REMOVABLE.filter((c) => actor.statuses.has(c.id));
+		const present = REMOVABLE.filter(
+			(c) =>
+				actor.statuses.has(c.id) ||
+				actor.effects.some((e) => !e.disabled && e.statuses.has(c.id)),
+		);
 
 		if (present.length === 0) {
 			ui.notifications.info(
@@ -515,26 +520,18 @@ export async function lesserRestoration(workflow) {
 		}
 
 		// Build one button per present condition, plus Cancel.
-		const chosen = await new Promise((resolve) => {
-			const buttons = {};
-			for (const cond of present) {
-				buttons[cond.id] = {
-					label: cond.label,
-					callback: () => resolve(cond.id),
-				};
-			}
-			buttons.cancel = { label: "Cancel", callback: () => resolve(null) };
-
-			new Dialog({
-				title: "Lesser Restoration",
-				content: `<p>Which condition on <strong>${actor.name}</strong> do you want to remove?</p>`,
-				buttons,
-				default: present[0].id,
-				close: () => resolve(null),
-			}).render(true);
+		const chosen = await foundry.applications.api.DialogV2.wait({
+			window: { title: "Lesser Restoration" },
+			content: `<p>Which condition on <strong>${actor.name}</strong> do you want to remove?</p>`,
+			buttons: [
+				...present.map((cond) => ({ label: cond.label, action: cond.id })),
+				{ label: "Cancel", action: "cancel" },
+			],
+			default: present[0].id,
+			rejectClose: false,
 		});
 
-		if (!chosen) return;
+		if (!chosen || chosen === "cancel") return;
 
 		// Remove every active effect that carries this status (handles stacked effects).
 		const toDelete = actor.effects

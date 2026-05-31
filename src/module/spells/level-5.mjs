@@ -46,7 +46,10 @@ export async function greaterRestoration(workflow) {
 		if (effectIdsToDelete.length) {
 			// Track which condition labels were actually present for the chat message.
 			for (const condId of CONDITION_IDS) {
-				if (actor.statuses.has(condId)) {
+				if (
+					actor.statuses.has(condId) ||
+					actor.effects.some((e) => !e.disabled && e.statuses.has(condId))
+				) {
 					removed.push(
 						condId === "diseased"
 							? "disease"
