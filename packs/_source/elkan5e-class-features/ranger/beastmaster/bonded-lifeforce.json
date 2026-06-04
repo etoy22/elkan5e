@@ -35,7 +35,7 @@
 				"activation": {
 					"type": "reaction",
 					"value": 1,
-					"condition": "reaction === 'isDamaged' && computeDistance(tokenUuid, targetUuid) <= 1000",
+					"condition": "",
 					"override": false
 				},
 				"consumption": {
@@ -122,7 +122,7 @@
 		"midi-qol": {
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
-			"reactionCondition": "",
+			"reactionCondition": "reaction === 'isDamaged' && computeDistance(tokenUuid, targetUuid) <= 1000",
 			"effectCondition": "",
 			"removeAttackDamageButtons": "default",
 			"otherCondition": ""
