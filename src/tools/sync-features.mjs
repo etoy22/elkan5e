@@ -131,8 +131,10 @@ function buildCantrips() {
 		const data = loadJson(file);
 		if (data?.type !== "spell") continue;
 		if (data?.system?.level !== 0) continue;
-		const key = data?.system?.identifier || data?.name;
-		if (key) byKey.set(key, data);
+		const identifier = data?.system?.identifier;
+		const name = data?.name;
+		if (identifier && !byKey.has(identifier)) byKey.set(identifier, data);
+		if (name && !byKey.has(name)) byKey.set(name, data);
 	}
 	return byKey;
 }
@@ -148,8 +150,10 @@ function buildSpellIndex() {
 	for (const file of files) {
 		const data = loadJson(file);
 		if (data?.type !== "spell") continue;
-		const key = data?.system?.identifier || data?.name;
-		if (key && !byKey.has(key)) byKey.set(key, data);
+		const identifier = data?.system?.identifier;
+		const name = data?.name;
+		if (identifier && !byKey.has(identifier)) byKey.set(identifier, data);
+		if (name && !byKey.has(name)) byKey.set(name, data);
 	}
 	return byKey;
 }

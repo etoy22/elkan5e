@@ -16,7 +16,7 @@ export function skills() {
  *
  */
 export function registerSkillCriticalRule() {
-	Hooks.on("dnd5e.rollSkillV2", (rolls, data) => {
+	Hooks.on("dnd5e.rollSkillV2", (rolls, _data) => {
 		try {
 			const roll = rolls?.[0];
 			if (!roll) return;

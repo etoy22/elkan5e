@@ -28,8 +28,8 @@ export async function sneakAttack(workflow) {
 	try {
 		if (!["mwak", "rwak"].includes(workflow.activity.actionType)) return {};
 		if (
-			(!workflow.activity.actionType === "mwak" || workflow.activity.actionType === "rwak") &&
-			workflow.iWtem.system.properties.has("heavy")
+			workflow.activity.actionType === "mwak" &&
+			!workflow.rolledItem?.system.properties?.has("heavy")
 		)
 			return {};
 		if (workflow.hitTargets.size < 1) return {};
@@ -53,21 +53,16 @@ export async function sneakAttack(workflow) {
 		}
 
 		// Eligible if we have advantage OR a qualifying enemy is adjacent to the target.
-		let foundEnemy = false;
 		let isSneak = workflow.advantage;
 
 		if (!isSneak) {
-			const nearbyTokens = canvas.tokens.placeables.filter(
-				(t) =>
-					t.actor &&
-					t.actor.id !== actor.id &&
-					t.id !== target.id &&
-					t.actor.system.attributes?.hp?.value > 0 &&
-					t.document.disposition !== target.document.disposition &&
-					MidiQOL.computeDistance(t, target, { wallsBlock: false }) <= 5,
-			);
-			foundEnemy = nearbyTokens.some(
-				(t) => t.document.disposition === -target.document.disposition,
+			const nearbyTokens = canvas.tokens.placeables.filter(t =>
+				t.actor &&
+				t.actor.id !== actor.id &&
+				t.id !== target.id &&
+				t.actor.system.attributes?.hp?.value > 0 &&
+				t.document.disposition !== target.document.disposition &&
+				MidiQOL.computeDistance(t, target, { wallsBlock: false }) <= 5
 			);
 			isSneak = nearbyTokens.length > 0;
 		}
@@ -94,17 +89,18 @@ export async function sneakAttack(workflow) {
 			damageType = parts[0][1];
 		}
 		// Check for other precision-strike features on the actor.
-		const precisionFeatures = actor.items.filter(
-			(i) => i.system?.type?.subtype === "precision",
-		);
-		const macroItem = actor.items.filter((i) => i.system.identifier === "sneak-attack");
-		if (precisionFeatures.length === 1) {
-			const activity = macroItem[0].system.activities.contents[0];
-			if (activity)
-				await activity.use({ damage: { type: damageType } }, { event: workflow.event });
+		const precisionFeatures = actor.items.filter(i => i.system?.type?.subtype === "precision");
+
+		if (precisionFeatures.length === 0) {
+			// No other precision strikes — fire the sneak attack activity directly.
+			const activity = macroItem.system.activities.contents[0];
+			if (activity) await activity.use({ damage: { type: damageType } }, { event: workflow.event });
 		} else {
 			// Let the player pick: Sneak Attack or any precision feature.
-			const choices = [...precisionFeatures.map((f) => ({ label: f.name, value: f.uuid }))];
+			const choices = [
+				{ label: macroItem.name, value: "sneak" },
+				...precisionFeatures.map(f => ({ label: f.name, value: f.uuid }))
+			];
 			const optionsHtml = choices
 				.map((c) => `<option value="${c.value}">${c.label}</option>`)
 				.join("");
