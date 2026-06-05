@@ -33,16 +33,12 @@
 			"ida": false
 		},
 		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
 			"migratedUses": 3
 		}
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>Your will to destroy your enemies is so great that you break through effects meant to hold you back.</em></p><p><strong>No Action Cost</strong> - Self - 3/Long Rest</p><p><em>Trigger: You fail a saving throw while &amp;reference[goaded apply=false] by an enemy you can see.</em></p><ul><li><p>You can reroll the &amp;reference[saving throw].</p></li></ul>",
+			"value": "<p><em>Your will to destroy your enemies is so great that you break through effects meant to hold you back.</em></p><p><strong>Once Per Turn</strong> - Self - 3/Long Rest</p><p><em>Trigger: You fail a saving throw while &amp;reference[goaded apply=false] by an enemy you can see.</em></p><ul><li><p>You can reroll the &amp;reference[saving throw].</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -73,7 +69,7 @@
 				"_id": "dnd5eactivity000",
 				"type": "utility",
 				"activation": {
-					"type": "nocost",
+					"type": "once",
 					"value": null,
 					"condition": "",
 					"override": false
@@ -142,7 +138,14 @@
 				},
 				"name": "",
 				"img": "",
-				"appliedEffects": []
+				"appliedEffects": [],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": ""
+				}
 			}
 		},
 		"identifier": "bloodthirsty-focus",

@@ -1,0 +1,319 @@
+{
+	"folder": "2Ob0MjPR5LkATwfK",
+	"name": "Death Curse",
+	"type": "feat",
+	"img": "icons/magic/death/undead-mammal-fire-breath-pink.webp",
+	"system": {
+		"description": {
+			"value": "<p><strong>No Action Cost </strong>- 1 Creature - Permanent - 3/Long Rest</p><p><em>Trigger: You use @UUID[Compendium.elkan5e.elkan5e-class-features.Item.cPayfG1ZskRXod73]{Life Tap}.</em></p><p>You target the same creature, potentially making your Life Tap permanent.</p><p><strong>Charisma Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes 3d8 necrotic damage and is &amp;reference[cursed]{Cursed}. While cursed in this way, the target cannot gain temporary hit points or regain lost hit points.</p></li><li><p><strong>Success:</strong> Target takes 3d8 necrotic damage, no other effect.</p></li></ul>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/barbarian",
+			"rules": "",
+			"revision": 1,
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"uses": {
+			"max": "3",
+			"spent": 0,
+			"recovery": [
+				{
+					"period": "lr",
+					"type": "recoverAll"
+				}
+			]
+		},
+		"type": {
+			"value": "subclass",
+			"subtype": ""
+		},
+		"prerequisites": {
+			"level": null,
+			"items": [],
+			"repeatable": false
+		},
+		"properties": [
+			"mgc"
+		],
+		"requirements": "Slayer 10",
+		"identifier": "death-curse",
+		"activities": {
+			"3C8jcI7eLgmTaBqv": {
+				"type": "save",
+				"_id": "3C8jcI7eLgmTaBqv",
+				"img": "",
+				"activation": {
+					"type": "nocost",
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "",
+							"scaling": {}
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "perm",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "wqmmU71SwVpJHMcZ",
+						"level": {},
+						"onSave": false
+					}
+				],
+				"range": {
+					"units": "any",
+					"override": false,
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"stationary": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "1",
+						"type": "creature",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false,
+					"identifier": ""
+				},
+				"damage": {
+					"onSave": "full",
+					"critical": {
+						"allow": false
+					},
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 3,
+							"denomination": 8,
+							"bonus": "",
+							"types": [],
+							"scaling": {
+								"number": 1
+							}
+						}
+					]
+				},
+				"save": {
+					"ability": [
+						"cha"
+					],
+					"dc": {
+						"calculation": "",
+						"formula": "8 + max(@abilities.str.mod, @abilities.dex.mod) + @prof"
+					}
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"triggeredActivityConsume": true,
+					"triggeredActivityConfigure": true,
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"skipConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"rollAs": "target",
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"regionBehavior": {
+					"enabled": false,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": []
+				},
+				"regionLight": {
+					"enabled": false,
+					"dim": 0,
+					"bright": 0,
+					"color": null,
+					"alpha": 0.5,
+					"luminosity": 0.5,
+					"animationType": "",
+					"animationSpeed": 5,
+					"animationIntensity": 5
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"friendlySave": "default",
+				"name": "Death Curse"
+			}
+		},
+		"enchant": {},
+		"advancement": {},
+		"crewed": false
+	},
+	"effects": [
+		{
+			"name": "Death Curse",
+			"img": "icons/magic/death/undead-mammal-fire-breath-pink.webp",
+			"origin": "Item.lLgu2bCjjAHwPddP",
+			"transfer": false,
+			"_id": "wqmmU71SwVpJHMcZ",
+			"type": "base",
+			"system": {
+				"changes": [
+					{
+						"key": "system.traits.di.value",
+						"type": "custom",
+						"value": "healing",
+						"phase": "final",
+						"priority": null
+					},
+					{
+						"key": "system.traits.di.value",
+						"type": "add",
+						"value": "temphp",
+						"phase": "final",
+						"priority": null
+					}
+				]
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [
+				"cursed"
+			],
+			"showIcon": 2,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"stackable": "noneName",
+					"expiryMode": "default",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"specialDuration": []
+				}
+			},
+			"_key": "!items.effects!7NrOEx1GXG74mFZj.wqmmU71SwVpJHMcZ"
+		}
+	],
+	"flags": {
+		"midiProperties": {
+			"confirmTargets": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"noConcentrationCheck": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"idr": false,
+			"idi": false,
+			"idv": false,
+			"ida": false
+		},
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"itemCondition": "",
+			"effectCondition": "",
+			"reactionCondition": "",
+			"AoETargetType": "any",
+			"autoTarget": "default",
+			"removeAttackDamageButtons": "default",
+			"otherCondition": ""
+		}
+	},
+	"_id": "7NrOEx1GXG74mFZj",
+	"_key": "!items!7NrOEx1GXG74mFZj"
+}

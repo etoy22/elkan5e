@@ -1,5 +1,83 @@
 # Changelog
 
+# v1.14.0.2
+
+## Bug Fix
+- Minor fixes to prices
+- Fixed Tool Tips
+- Removed Redudant Flags
+
+# v1.14.0.1
+
+## Bug Fixes
+
+- Minor bug fixes and stability improvements.
+- Fixed broken identifiers
+
+# v1.14.0
+
+## Bug Fixes
+
+- Fixed Drained condition effect not applying correctly.
+
+- Standardized effect timing across all ancestries, backgrounds, and class features — duration units changed from seconds to rounds, expiry set to `sourceEnd`, and `expiryMode: default` added where missing.
+
+## Classes
+
+[Barbarian](https://www.elkan5e.com/barbarian)
+
+- Barbarian Defense bonus is now applied as a live active effect, updating dynamically when armor or ability scores change.
+
+[Cleric](https://www.elkan5e.com/cleric)
+
+- Automated Holy Strike — fires once per turn on the first hit, consistent with other on-hit class features.
+
+[Ranger](https://www.elkan5e.com/ranger)
+
+- Automated Mark for Death — applies bonus damage on hit using the ranger's scale value, with critical hit support.
+
+[Rogue](https://www.elkan5e.com/rogue)
+
+- Automated Sneak Attack — enforces once-per-turn usage, checks for advantage or a qualifying adjacent enemy, and scales damage by rogue level.
+
+[Sorcerer](https://www.elkan5e.com/sorcerer)
+
+- Wild Mage
+    - Delayed Wild Surge effect and item now clean up correctly after a leveled spell cast or scroll use.
+
+## Equipment
+
+- Removed individual +1, +2, and +3 Adamantine, Cold Iron, and Silver weapon entries. These are now handled via enchantment effects, reducing compendium bloat.
+- Merged Equipment and Magic Items compendium into a unified structure.
+- Sorted and cleaned up compendium folder organization.
+
+## Feats
+
+- Updated Marksman feat.
+
+## Game Rules
+
+- Added Skill Critical Adjustment rule (toggle in settings): rolling a natural 1 on a skill check applies −5 to the total; rolling a natural 20 applies +5.
+- Added Concentration Proficiency system: active effects can now grant proficiency or expertise on concentration saves via a flag, with no additional effect changes required.
+- Added Burning condition automation: creatures that gain the Burning condition automatically receive a "Quench Burning" action item, which is removed when the condition ends.
+
+## Spells
+
+- Automated the following spells: Continual Flame, Darkness, Enlarge, Fire Shield (reflects damage to melee attacker), Haste (applies Incapacitated for 1 turn when the effect expires), Mirror Image (absorbs hits on a d20 roll, canceling attacks against the real target), Moon Beam, Shatter (constructs have disadvantage on the Con save), Vampiric Smite, Well of Corruption.
+- Cleaned up language and references across spell entries.
+- Made Emanation Spells work
+- Made Ongoing Spells Work
+
+## UI
+
+- Update Dialog form rebuilt with improved validation — warns the user when no update options are selected before running.
+
+## Misc
+
+- Added GitHub Actions workflow for automated releases.
+- Refactored pack build script (`packs.mjs`) for cleaner output handling.
+- Merge Ancestry and Background Compendium Folders
+
 # v1.13.8
 
 - Update to dnd 5.3.0 in v13
