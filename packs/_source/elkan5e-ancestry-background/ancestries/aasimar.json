@@ -4,7 +4,7 @@
 	"img": "icons/magic/holy/saint-glass-portrait-halo.webp",
 	"system": {
 		"description": {
-			"value": "<p>Aasimar are mortals with a parent or ancestor who is an angel or other &amp;reference[celestial] creature. Usually, an aasimar looks most like their mortal ancestry, but with yellow glowing eyes and shiny skin. Sometimes, an aasimar has a halo or vestigial wings too weak too allow the aasimar to fly.</p><p><strong>Type:</strong> &amp;Reference[Celestial]</p><p><strong>Size:</strong> Medium or Small</p><p><strong>Walking Speed:</strong> 30 ft.</p><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.5l8QNlgPDPOHpGID]{Language}:</strong> &amp;reference[celestial]</p><p><strong>Senses:</strong> &amp;Reference[Darkvision] 60 ft.</p><p><strong>Cantrips:</strong> <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.vRUeWAv7ZesZ1Tzj]{Thaumaturgy}</em></p><p><strong>Damage Resistance:</strong> &amp;Reference[Necrotic] and &amp;Reference[Radiant]</p><p><em>In the world of Elkan, aasimar are rare. The largest population of aasimar are human aasimar, and live with their angelic parents or ancestors in lands controlled by the Solar Hegemony. People usually assume aasimar are trustworthy people, but this trust is unearned. Those who know better view aasimar as being closer to their mortal heritage than anything else.</em></p>",
+			"value": "<p>Aasimar are mortals with a parent or ancestor who is an angel or other &amp;reference[celestial] creature. Usually, an aasimar looks most like their mortal ancestry, but with yellow glowing eyes and shiny skin. Sometimes, an aasimar has a halo or vestigial wings too weak too allow the aasimar to fly.</p><p><strong>Type:</strong> &amp;Reference[Celestial]</p><p><strong>Size:</strong> Medium or Small</p><p><strong>Walking Speed:</strong> 30 ft.</p><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.5l8QNlgPDPOHpGID]{Language}:</strong> &amp;reference[celestial]</p><p><strong>Senses:</strong> &amp;Reference[Darkvision] 60 ft.</p><p><strong>Cantrips:</strong> <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.vRUeWAv7ZesZ1Tzj]{Thaumaturgy}</em></p><p><strong>Advantage:</strong> vs. the &amp;Reference[Frightened] condition</p><p><strong>@UUID[Compendium.elkan5e.elkan5e-ancestry-background.Item.QxAavGTGf3UHLUBs]{Steadfast}</strong></p><p><em>In the world of Elkan, aasimar are rare. The largest population of aasimar are human aasimar, and live with their angelic parents or ancestors in lands controlled by the Solar Hegemony. People usually assume aasimar are trustworthy people, but this trust is unearned. Those who know better view aasimar as being closer to their mortal heritage than anything else.</em></p>",
 			"chat": ""
 		},
 		"source": {
@@ -15,8 +15,8 @@
 			"rules": "",
 			"revision": 1
 		},
-		"advancement": [
-			{
+		"advancement": {
+			"zvXgP3aWY3ZU24oY": {
 				"type": "Size",
 				"_id": "zvXgP3aWY3ZU24oY",
 				"configuration": {
@@ -31,7 +31,7 @@
 				"value": {},
 				"hint": "Aasimar are mortals with a parent or ancestor who is an angel or other celestial creature. Usually, an aasimar looks most like their mortal ancestry, but with yellow glowing eyes and shiny skin. Sometimes, an aasimar has a halo or vestigial wings too weak too allow the aasimar to fly."
 			},
-			{
+			"SAyaaWrAWcfr32Wz": {
 				"_id": "SAyaaWrAWcfr32Wz",
 				"type": "Trait",
 				"configuration": {
@@ -47,28 +47,28 @@
 				"icon": null,
 				"value": {
 					"chosen": []
-				}
+				},
+				"hint": ""
 			},
-			{
+			"H8owKRaxigEfibhn": {
 				"_id": "H8owKRaxigEfibhn",
 				"type": "Trait",
 				"configuration": {
 					"mode": "default",
 					"allowReplacements": false,
 					"grants": [
-						"dr:necrotic",
-						"dr:radiant"
+						"ci:frightened"
 					],
 					"choices": []
 				},
 				"level": 0,
 				"title": "",
-				"icon": null,
 				"value": {
 					"chosen": []
-				}
+				},
+				"hint": ""
 			},
-			{
+			"LU19YOpPXNzSZRbG": {
 				"_id": "LU19YOpPXNzSZRbG",
 				"type": "ItemGrant",
 				"configuration": {
@@ -81,20 +81,39 @@
 					"optional": false,
 					"spell": {
 						"ability": [],
-						"preparation": "innate",
 						"uses": {
 							"max": "",
 							"per": "",
 							"requireSlot": false
-						}
+						},
+						"method": "innate",
+						"prepared": 0
 					}
 				},
 				"value": {},
 				"level": 0,
 				"title": "Cantrip",
 				"hint": ""
+			},
+			"cxPy6J2IQYLbwKXA": {
+				"type": "ItemGrant",
+				"_id": "cxPy6J2IQYLbwKXA",
+				"configuration": {
+					"items": [
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-ancestry-background.Item.QxAavGTGf3UHLUBs",
+							"optional": false
+						}
+					],
+					"optional": false,
+					"spell": null
+				},
+				"value": {},
+				"level": 0,
+				"hint": "",
+				"title": "Aasimar Feature"
 			}
-		],
+		},
 		"movement": {
 			"burrow": null,
 			"climb": null,

@@ -26,7 +26,7 @@
 		"midi-qol": {
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
-			"reactionCondition": "",
+			"reactionCondition": "reaction === 'isMissed' && ['mwak','msak'].includes(item.actionType)",
 			"effectCondition": "",
 			"AoETargetType": "any",
 			"autoTarget": "default",
@@ -64,7 +64,7 @@
 				"activation": {
 					"type": "reaction",
 					"value": 1,
-					"condition": "reaction === 'isMissed' && ['mwak','msak'].includes(item.actionType)",
+					"condition": "",
 					"override": false
 				},
 				"consumption": {

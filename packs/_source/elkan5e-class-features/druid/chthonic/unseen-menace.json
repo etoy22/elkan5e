@@ -13,7 +13,7 @@
 					"type": "reaction",
 					"value": null,
 					"override": false,
-					"condition": "reaction === 'isDamaged' && computeDistance(tokenUuid, targetUuid) <= 90 && !canvas.tokens.get(targetUuid)?.canSee(canvas.tokens.get(tokenUuid))"
+					"condition": ""
 				},
 				"consumption": {
 					"scaling": {
@@ -201,7 +201,7 @@
 		"midi-qol": {
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
-			"reactionCondition": "",
+			"reactionCondition": "reaction === 'isDamaged' && computeDistance(tokenUuid, targetUuid) <= 90 && !canvas.tokens.get(targetUuid)?.canSee(canvas.tokens.get(tokenUuid))",
 			"effectCondition": "",
 			"removeAttackDamageButtons": "default",
 			"otherCondition": ""

@@ -1,8 +1,109 @@
 # Changelog
 
+# v1.14.1
+
+## Bug Fixes
+
+- Fixed Sneak Attack heavy weapon check logic (was incorrectly blocking finesse weapons) and improved nearby-enemy detection for qualifying adjacency.
+- Fixed [Haste](https://www.elkan5e.com/spells/haste) Lethargy — now correctly resolves the caster actor from the effect origin UUID instead of the effect parent.
+- Fixed [Life Drain](https://www.elkan5e.com/spells/life-drain) healing — now directly updates actor HP instead of using DamageOnlyWorkflow.
+- Fixed [Mirror Image](https://www.elkan5e.com/spells/mirror-image) — now removes the real target from the workflow so damage is never applied, rather than returning false.
+- Fixed [Shield](https://www.elkan5e.com/spells/shield) — bonus now correctly applies only when cast above base level.
+- Fixed [Shield](https://www.elkan5e.com/spells/shield) — spell no longer adds an active effect when added to a character's sheet.
+- Fixed [Extra Precision Attack (Rogue)](https://www.elkan5e.com/feats/extra-precision-attack) wording — "you can the level 7 or 11" corrected to "you can choose a level 7 or 11".
+- Fixed [Extra Metamagic (Sorcerer)](https://www.elkan5e.com/feats/extra-metamagic) — feat no longer presents too many choice options at higher levels.
+- Fixed [Prismatic Bolt](https://www.elkan5e.com/spells/prismatic-bolt) — correctly placed at spell level 1.
+- Fixed migration issue.
+- Fixed reaction handling.
+
+## Ancestries
+
+### Aasimar
+
+- Replaced Radiant damage resistance with immunity to the Frightened condition.
+
+## Classes
+
+### Barbarian
+
+- **Swarmhost (New Subclass)**:
+    - Added features: Critical Mass, Disperse, Gather Swarm, Legion, Swarm Form, and Whirling Form (bludgeoning, piercing, and slashing variants).
+- **Slayer (New Subclass)**:
+    - Added features: Death Curse, Death Haze, Life Tap, Rampage, and Slay.
+- Bloodrager:
+    - Fully automated — spell pools are now populated automatically from the chosen sorcerer subclass's origin spells, including late-level spells unlocked at barbarian levels 6, 10, and 14.
+- Berserker:
+    - Frenzy and Seeing Red: Description reformatted to bulleted lists (no mechanical changes).
+
+### Cleric
+
+- Deceiver (renamed from Trickery Domain)
+- Lifebinder (renamed from Life Domain)
+- Reaper (renamed from Death Domain)
+
+### Monk
+
+- Open Hand renamed to Windwalker.
+
+### Paladin
+
+- Avenger, Inquisitor, and Paragon:
+    - Oath spells restructured to grant one spell per level (3rd, 5th, 9th, 13th, 17th) instead of all at 3rd level.
+    - Spell lists trimmed to remove redundant entries.
+
+### Rogue
+
+- Sneak Attack automation improvements — see Bug Fixes.
+
+### Warlock
+
+- Fey Patron renamed to Dreamweaver, Fiend Patron renamed to Hellcaller, Celestial Patron renamed to Radiant Servant.
+- Advancement dialog now filters pact-specific invocations based on the actor's current pact boon, hiding Chain, Tome, and Warrior invocations that do not apply.
+- Pact of the Chain: Familiar hit points now explicitly scale to Warlock class level instead of total character level.
+
+### Ranger
+
+- Beastmaster: Companion hit points now explicitly scale to Ranger class level instead of total character level.
+
+## Equipment
+
+- Re-added spell scrolls for Cantrip through 9th level.
+- Added Halberd +2 magic weapon.
+
+## Feats
+
+- [Mark of Affliction](https://www.elkan5e.com/feats/mark-of-affliction):
+    - Automated — prompts the player to optionally poison a hit target, then fires a Constitution save against the ranger's spell DC.
+- [Mark of Thorns](https://www.elkan5e.com/feats/mark-of-thorns):
+    - Automated — retaliates against melee attackers who hit the ranger, dealing thorn damage via the feat item.
+    - Duration increased from 1 minute to 10 minutes.
+- [Field Medic](https://www.elkan5e.com/feats/field-medic): Changed to affect only one creature — you roll a Medicine check and heal the target by that amount.
+- [Inspiring Performance](https://www.elkan5e.com/feats/inspiring-performance): Temporary hit points granted increased from your proficiency bonus to twice your proficiency bonus.
+- [Opportunistic Strike](https://www.elkan5e.com/feats/opportunistic-strike): Changed from "No Action Cost" to "Once Per Turn".
+- [Fey Step](https://www.elkan5e.com/feats/fey-step): Changed from 1/Long Rest to 1/Short Rest.
+- [Bloodthirsty Focus](https://www.elkan5e.com/feats/bloodthirsty-focus): Changed from "No Action Cost" to "Once Per Turn".
+- Various feats: Description formatting cleanup (no mechanical changes).
+
+## Spells
+
+- Automated [Sanctuary](https://www.elkan5e.com/spells/sanctuary) — attacker must succeed on a Wisdom save before attacking a warded creature; successes are cached per turn so repeated attacks against the same creature don't re-roll.
+- Automated [Lesser Restoration](https://www.elkan5e.com/spells/lesser-restoration) — presents a dialog listing the target's removable conditions (blinded, deafened, paralyzed, poisoned, weakened) and removes the chosen one.
+- Automated [Greater Restoration](https://www.elkan5e.com/spells/greater-restoration) — automatically removes all applicable conditions (blinded, dazed, deafened, drained, paralyzed, stunned, poisoned, weakened, diseased) and one level of exhaustion.
+- Updated [Fire Shield](https://www.elkan5e.com/spells/fire-shield) — now also retaliates against melee spell attacks in addition to melee weapon attacks.
+- Updated [Spirit Guardian](https://www.elkan5e.com/spells/spirit-guardians) spell.
+- Removed deprecated `async: true` from `Roll.evaluate()` calls in [Well of Corruption](https://www.elkan5e.com/spells/well-of-corruption), [Vampiric Smite](https://www.elkan5e.com/spells/vampiric-smite), and [Wrath of the Reaper](https://www.elkan5e.com/spells/wrath-of-the-reaper).
+
+## Misc
+
+- Added system identifiers to items across the compendium for consistent targeting by automation and migrations.
+- Added weapon properties support.
+- Movement type labels (Crawl, Long Jump, High Jump) now exist for later use in `lang/en.json`.
+- Code cleanup and edge case handling.
+
 # v1.14.0.2
 
 ## Bug Fix
+
 - Minor fixes to prices
 - Fixed Tool Tips
 - Removed Redudant Flags
@@ -2589,7 +2690,7 @@ Made subclass names consistent in formatting
     - [Sorcerer](https://www.elkan5e.com/sorcerer)
         - Magic Coalescence now allows Sorcerers to regain some metamagics (automated)
 - Feats
-    - Mark of Thorns now hjas a blank active effect to indicate who its affecting
+    - Mark of Thorns now has a blank active effect to indicate who its affecting
 - Features
     - Added Feature Type Precision Attack as a subtype of Class Feature
 - Language

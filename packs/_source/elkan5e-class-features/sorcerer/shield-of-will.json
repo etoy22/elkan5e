@@ -27,7 +27,7 @@
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
 			"effectCondition": "",
-			"reactionCondition": "",
+			"reactionCondition": "reaction === 'isSave' && ['int','wis','cha'].includes(workflow?.save?.ability) && !workflow?.save?.success && !workflow?.save?.proficient",
 			"AoETargetType": "any",
 			"AoETargetTypeIncludeSelf": true,
 			"autoTarget": "default",
@@ -65,7 +65,7 @@
 				"activation": {
 					"type": "reaction",
 					"value": 1,
-					"condition": "reaction === 'isSave' && ['int','wis','cha'].includes(workflow?.save?.ability) && !workflow?.save?.success && !workflow?.save?.proficient",
+					"condition": "",
 					"override": false
 				},
 				"consumption": {

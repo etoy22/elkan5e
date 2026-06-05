@@ -46,7 +46,7 @@ export async function showUpdateDialog() {
 					}
 
 					const data = new FormData(form);
-					const updateModeSelect = form.querySelector('[name="update-mode"]');
+					const _updateModeSelect = form.querySelector('[name="update-mode"]');
 					const removeDuplicatesCheckbox = form.querySelector(
 						'[name="remove-duplicates"]',
 					);

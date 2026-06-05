@@ -12,7 +12,7 @@
 					"type": "reaction",
 					"value": null,
 					"override": false,
-					"condition": "reaction === 'isSave' && ['int','wis','cha'].includes(workflow?.save?.ability) && !workflow?.save?.success"
+					"condition": ""
 				},
 				"consumption": {
 					"scaling": {
@@ -94,7 +94,6 @@
 					"autoTargetAction": "default",
 					"automationOnly": false,
 					"otherActivityCompatible": true,
-					"identifier": "",
 					"displayActivityName": false,
 					"rollMode": "default",
 					"chooseEffects": false,
@@ -175,7 +174,7 @@
 		"midi-qol": {
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
-			"reactionCondition": "",
+			"reactionCondition": "reaction === 'isSave' && ['int','wis','cha'].includes(workflow?.save?.ability) && !workflow?.save?.success",
 			"effectCondition": "",
 			"removeAttackDamageButtons": "default",
 			"AoETargetType": "any",

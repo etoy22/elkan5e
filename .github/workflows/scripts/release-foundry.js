@@ -1,4 +1,3 @@
-import fetch from 'node-fetch';
 import { pathToFileURL } from 'url';
 
 export function buildPayload({ repo, version, minimum, verified, maximum }) {
@@ -31,7 +30,7 @@ export function buildPayload({ repo, version, minimum, verified, maximum }) {
 
 export async function releaseToFoundry({
 	env = process.env,
-	fetchImpl = fetch,
+	fetchImpl = globalThis.fetch,
 	consoleImpl = console,
 } = {}) {
 	const token = env.FOUNDRY_API_TOKEN;
