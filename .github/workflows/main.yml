@@ -144,7 +144,7 @@ jobs:
       - uses: actions/checkout@v5
 
       - name: Download release notes artifact
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: release-notes
           path: .
@@ -160,7 +160,7 @@ jobs:
         run: cat release-notes.md
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: elkan5e-build
           path: .
@@ -258,7 +258,7 @@ jobs:
 
       - name: Download release notes artifact
         if: steps.jira_check.outputs.skip != 'true' && env.EXTRACT_NOTES_RESULT == 'success'
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: release-notes
           path: .
@@ -295,7 +295,7 @@ jobs:
       VERIFIED: ${{ needs.version-check.outputs.verified }}
     steps:
       - name: Download release notes artifact
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: release-notes
           path: .
@@ -304,7 +304,23 @@ jobs:
         run: cat release-notes.md
 
       - name: Format release notes for Discord
-        run: node .github/workflows/scripts/format-discord-notes.cjs release-notes.md release-notes-discord.txt
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const raw = fs.readFileSync('release-notes.md', 'utf8');
+          const lines = raw.replace(/\r\n/g, '\n').split('\n');
+          const output = [];
+          for (const line of lines) {
+            const trimmed = line.trim();
+            if (!trimmed) { output.push(''); continue; }
+            const headingMatch = trimmed.match(/^#{2,6}\s+(.+)/);
+            if (headingMatch) { output.push(`**${headingMatch[1].trim()}**`); continue; }
+            const boldLinkMatch = trimmed.match(/^\*\*\[[^\]]+\]\([^)]+\)\*\*$/);
+            if (boldLinkMatch) { output.push(`- ${trimmed}`); continue; }
+            output.push(line.replace(/\s+$/, ''));
+          }
+          fs.writeFileSync('release-notes-discord.txt', output.join('\n'));
+          NODE
 
       - name: Show formatted release notes in logs
         run: cat release-notes-discord.txt

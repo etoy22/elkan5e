@@ -136,7 +136,7 @@ test("notify-discord job publishes release details to Discord", () => {
 		"Post to Discord",
 	]);
 
-	assert.equal(job.steps[0].uses, "actions/download-artifact@v6");
+	assert.equal(job.steps[0].uses, "actions/download-artifact@v7");
 	assert.equal(job.steps[4].id, "read_release_notes");
 	assert.equal(job.steps[5].id, "prepare_discord_payload");
 	const postStep = job.steps[6].run ?? "";
