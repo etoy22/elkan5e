@@ -35,7 +35,7 @@
 				"activation": {
 					"type": "reaction",
 					"value": 1,
-					"condition": "reaction === 'isSave' && !workflow?.save?.success",
+					"condition": "",
 					"override": false
 				},
 				"consumption": {
@@ -110,7 +110,7 @@
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
 			"effectCondition": "",
-			"reactionCondition": "",
+			"reactionCondition": "reaction === 'isSave' && !workflow?.save?.success",
 			"removeAttackDamageButtons": "default",
 			"otherCondition": ""
 		},

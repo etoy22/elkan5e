@@ -39,7 +39,7 @@
 				"activation": {
 					"type": "reaction",
 					"value": 1,
-					"condition": "reaction === 'isSkill' && tokenUuid && workflow?.token?.uuid && tokenUuid !== workflow?.token?.uuid",
+					"condition": "",
 					"override": false
 				},
 				"consumption": {
@@ -137,18 +137,11 @@
 		"midi-qol": {
 			"effectActivation": false,
 			"itemCondition": "",
-			"reactionCondition": "",
+			"reactionCondition": "reaction === 'isSkill' && tokenUuid && workflow?.token?.uuid && tokenUuid !== workflow?.token?.uuid",
 			"otherCondition": "",
 			"effectCondition": "",
 			"rollAttackPerTarget": "default",
 			"removeAttackDamageButtons": "default"
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedUses": 1
 		}
 	},
 	"_id": "xWXxDVeqNj6bPqoi",

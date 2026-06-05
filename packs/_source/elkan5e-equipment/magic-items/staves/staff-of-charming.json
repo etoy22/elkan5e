@@ -291,7 +291,7 @@
 					"type": "reaction",
 					"value": null,
 					"override": false,
-					"condition": "reaction === 'isSave' && workflow?.save?.success && (workflow?.item?.flags?.midi-qol?.school === 'enchantment' || workflow?.item?.system?.school === 'enchantment')"
+					"condition": ""
 				},
 				"consumption": {
 					"scaling": {
@@ -540,6 +540,9 @@
 		"midiProperties": {
 			"magicdam": true,
 			"magiceffect": true
+		},
+		"midi-qol": {
+			"reactionCondition": "reaction === 'isSave' && workflow?.save?.success && (workflow?.item?.flags?.midi-qol?.school === 'enchantment' || workflow?.item?.system?.school === 'enchantment')"
 		}
 	},
 	"_key": "!items!dmgStaffOfCharmi"

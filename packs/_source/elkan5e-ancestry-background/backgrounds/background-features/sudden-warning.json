@@ -39,7 +39,7 @@
 				"activation": {
 					"type": "reaction",
 					"value": 1,
-					"condition": "reaction === 'isSave' && workflow?.save?.ability === 'dex' && !workflow?.save?.success",
+					"condition": "",
 					"override": false
 				},
 				"consumption": {
@@ -137,20 +137,13 @@
 		"midi-qol": {
 			"effectActivation": false,
 			"itemCondition": "",
-			"reactionCondition": "",
+			"reactionCondition": "reaction === 'isSave' && workflow?.save?.ability === 'dex' && !workflow?.save?.success",
 			"otherCondition": "",
 			"effectCondition": "",
 			"rollAttackPerTarget": "default",
 			"AoETargetType": "any",
 			"autoTarget": "default",
 			"removeAttackDamageButtons": "default"
-		},
-		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
-			"migratedUses": 1
 		}
 	},
 	"_id": "vWyKAQLCByU7pdUU",
