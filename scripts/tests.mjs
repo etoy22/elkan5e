@@ -87,7 +87,7 @@ test("release-foundry-package job is wired to the release script", () => {
 	);
 
 	assert.equal(job.steps?.length, 3);
-	assert.equal(job.steps[0].uses, "actions/checkout@v4");
+	assert.equal(job.steps[0].uses, "actions/checkout@v5");
 	assert.equal(job.steps[1].name, "Install node dependencies");
 	assert.equal(job.steps[1].run, "npm install node-fetch@2");
 	assert.equal(job.steps[2].name, "Release Foundry Package");
@@ -136,7 +136,7 @@ test("notify-discord job publishes release details to Discord", () => {
 		"Post to Discord",
 	]);
 
-	assert.equal(job.steps[0].uses, "actions/download-artifact@v4");
+	assert.equal(job.steps[0].uses, "actions/download-artifact@v6");
 	assert.equal(job.steps[4].id, "read_release_notes");
 	assert.equal(job.steps[5].id, "prepare_discord_payload");
 	const postStep = job.steps[6].run ?? "";

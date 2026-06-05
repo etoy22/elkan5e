@@ -23,7 +23,7 @@ jobs:
       minimum: ${{ steps.get_version.outputs.minimum }}
       verified: ${{ steps.get_version.outputs.verified }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - id: get_version
         name: Run get-version-info script
@@ -60,7 +60,7 @@ jobs:
     needs: version-check
     if: needs.version-check.outputs.should_continue == 'true' && (needs.version-check.outputs.test == 'true' || github.ref == 'refs/heads/main')
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Extract release notes from CHANGELOG.md
         run: node .github/workflows/scripts/extract-release-notes.js > release-notes.md
@@ -68,7 +68,7 @@ jobs:
       - name: Show extracted release notes
         run: cat release-notes.md
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: release-notes
           path: release-notes.md
@@ -79,7 +79,7 @@ jobs:
     needs: version-check
     if: needs.version-check.outputs.should_continue == 'true' && (needs.version-check.outputs.test == 'true' || github.ref == 'refs/heads/main')
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install dependencies
         run: npm ci
@@ -123,7 +123,7 @@ jobs:
         run: unzip -l module.zip
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: elkan5e-build
           path: |
@@ -141,10 +141,10 @@ jobs:
     env:
       DRY_RUN: ${{ needs.version-check.outputs.test }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Download release notes artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: release-notes
           path: .
@@ -160,7 +160,7 @@ jobs:
         run: cat release-notes.md
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: elkan5e-build
           path: .
@@ -201,7 +201,10 @@ jobs:
     needs: [version-check, create-github-release]
     if: needs.version-check.outputs.should_continue == 'true' && needs.create-github-release.result == 'success' && needs.version-check.outputs.test != 'true'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
+
+      - name: Install node dependencies
+        run: npm install node-fetch@2
 
       - name: Release Foundry Package
         env:
@@ -237,7 +240,7 @@ jobs:
       DEPLOYMENT_ENVIRONMENT_TYPE: production
       EXTRACT_NOTES_RESULT: ${{ needs.extract-release-notes.result }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Skip if Jira not configured
         id: jira_check
@@ -255,7 +258,7 @@ jobs:
 
       - name: Download release notes artifact
         if: steps.jira_check.outputs.skip != 'true' && env.EXTRACT_NOTES_RESULT == 'success'
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: release-notes
           path: .
@@ -282,13 +285,8 @@ jobs:
         extract-release-notes,
         build-and-pack,
         create-github-release,
-        release-foundry-package,
       ]
-    if: >
-      needs.version-check.outputs.should_continue == 'true' &&
-      needs.create-github-release.result == 'success' &&
-      needs.release-foundry-package.result == 'success' &&
-      needs.version-check.outputs.test != 'true'
+    if: needs.version-check.outputs.should_continue == 'true' && needs.create-github-release.result == 'success' && needs.version-check.outputs.test != 'true'
     env:
       DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
       REPO_URL: "https://github.com/${{ github.repository }}"
@@ -296,10 +294,8 @@ jobs:
       MINIMUM: ${{ needs.version-check.outputs.minimum }}
       VERIFIED: ${{ needs.version-check.outputs.verified }}
     steps:
-      - uses: actions/checkout@v4
-
       - name: Download release notes artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v6
         with:
           name: release-notes
           path: .
