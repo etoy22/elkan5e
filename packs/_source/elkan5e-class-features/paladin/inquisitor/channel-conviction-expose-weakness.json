@@ -37,27 +37,31 @@
 				},
 				"effects": [
 					{
-						"_id": "TXmTDjsHc5DPs2wc"
+						"_id": "TXmTDjsHc5DPs2wc",
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
-					"units": "self",
+					"units": "ft",
 					"override": false,
 					"special": "",
-					"value": "30"
+					"value": "90"
 				},
 				"target": {
 					"template": {
 						"contiguous": false,
 						"units": "ft",
-						"type": "radius",
+						"type": "",
 						"size": "30",
 						"count": ""
 					},
 					"affects": {
 						"choice": false,
-						"type": "enemy",
-						"count": "",
+						"type": "creature",
+						"count": "1",
 						"special": ""
 					},
 					"override": false,
@@ -114,7 +118,6 @@
 					"automationOnly": false,
 					"otherActivityCompatible": true,
 					"otherActivityAsParentType": true,
-					"identifier": "",
 					"displayActivityName": false,
 					"rollMode": "default",
 					"chooseEffects": false,
@@ -152,7 +155,7 @@
 		},
 		"advancement": [],
 		"description": {
-			"value": "<p><strong>Bonus Action </strong>- 1 Creature (90 ft.) - 1 Round - 1/Short Rest -Magical</p><p>Unlike other abilities, you do not need to be able to see your target to use this ability. If you use this ability when your supposed target is not actually in range, the ability has no effect.</p><ul><li><p>Your attacks against the creature have &amp;reference[advantage].</p></li><li><p>You temporarily remove all of the target's damage resistances.</p></li><li><p>You remove all temporary hit points, illusory image effects, the &amp;reference[invisible] condition, and transformations affecting the target.</p></li></ul><p><em>Creatures that are permanently invisible, such as invisible stalkers, begin to glow for 1 minute and return to invisibility afterwards.</em></p>",
+			"value": "<p><strong>Bonus Action </strong>- 1 Creature (90 ft.) - 1 Round - 1/Short Rest - Magical</p><p>Unlike other abilities, you do not need to be able to see your target to use this ability. If you use this ability when your supposed target is not actually in range, the ability has no effect.</p><ul><li><p>Your attacks against the creature have &amp;reference[advantage].</p></li><li><p>You temporarily remove all of the target's damage resistances.</p></li><li><p>You remove all temporary hit points, illusory image effects, the &amp;reference[invisible apply=false] condition, and transformations affecting the target.</p></li></ul><p><em>Creatures that are permanently invisible, such as invisible stalkers, begin to glow for 1 minute and return to invisibility afterwards.</em></p>",
 			"chat": ""
 		},
 		"identifier": "expose-weakness",
@@ -177,7 +180,7 @@
 		"requirements": "Inquisitor 3/10",
 		"type": {
 			"value": "subclass",
-			"subtype": ""
+			"subtype": "channelDivinity"
 		}
 	},
 	"effects": [
@@ -191,9 +194,17 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.grants.advantage.attack.all",
+						"type": "add",
 						"value": 1,
-						"priority": 20,
-						"type": "add"
+						"phase": "initial",
+						"priority": 20
+					},
+					{
+						"key": "system.traits.dr.value",
+						"type": "add",
+						"value": "-ALL",
+						"phase": "final",
+						"priority": null
 					}
 				]
 			},

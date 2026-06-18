@@ -47,9 +47,9 @@
 			"system": {
 				"changes": [
 					{
-						"key": "macro.execute",
+						"key": "macro.itemMacro",
 						"type": "custom",
-						"value": "ItemMacro args",
+						"value": "args",
 						"phase": "final",
 						"priority": null
 					}
@@ -142,7 +142,7 @@
 				"img": "icons/magic/control/buff-flight-wings-runes-purple.webp",
 				"type": "script",
 				"scope": "global",
-				"command": "if (args[0] === \"off\") {\n   return await elkan5e.macros.spells.hasteLethargy(effect);\n}",
+				"command": "if (args[0] === \"off\") {\n   return await elkan5e.macros.spells.hasteLethargy(args[2]);\n}",
 				"author": "JfIFUEeTlOfdxqPQ",
 				"_id": null,
 				"folder": null

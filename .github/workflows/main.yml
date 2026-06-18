@@ -4,11 +4,13 @@ on:
   push:
     branches:
       - main
-      - "**"
   workflow_dispatch:
 
 permissions:
   contents: write
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
   version-check:
@@ -21,7 +23,7 @@ jobs:
       minimum: ${{ steps.get_version.outputs.minimum }}
       verified: ${{ steps.get_version.outputs.verified }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - id: get_version
         name: Run get-version-info script
@@ -58,7 +60,7 @@ jobs:
     needs: version-check
     if: needs.version-check.outputs.should_continue == 'true' && (needs.version-check.outputs.test == 'true' || github.ref == 'refs/heads/main')
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Extract release notes from CHANGELOG.md
         run: node .github/workflows/scripts/extract-release-notes.js > release-notes.md
@@ -66,7 +68,7 @@ jobs:
       - name: Show extracted release notes
         run: cat release-notes.md
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v6
         with:
           name: release-notes
           path: release-notes.md
@@ -77,7 +79,7 @@ jobs:
     needs: version-check
     if: needs.version-check.outputs.should_continue == 'true' && (needs.version-check.outputs.test == 'true' || github.ref == 'refs/heads/main')
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install dependencies
         run: npm ci
@@ -121,7 +123,7 @@ jobs:
         run: unzip -l module.zip
 
       - name: Upload build artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6
         with:
           name: elkan5e-build
           path: |
@@ -139,10 +141,10 @@ jobs:
     env:
       DRY_RUN: ${{ needs.version-check.outputs.test }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Download release notes artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: release-notes
           path: .
@@ -158,7 +160,7 @@ jobs:
         run: cat release-notes.md
 
       - name: Download build artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: elkan5e-build
           path: .
@@ -199,7 +201,7 @@ jobs:
     needs: [version-check, create-github-release]
     if: needs.version-check.outputs.should_continue == 'true' && needs.create-github-release.result == 'success' && needs.version-check.outputs.test != 'true'
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - name: Install node dependencies
         run: npm install node-fetch@2
@@ -214,6 +216,67 @@ jobs:
           TEST: ${{ needs.version-check.outputs.test }}
         run: node .github/workflows/scripts/release-foundry.js
 
+  update-jira:
+    runs-on: ubuntu-latest
+    needs: [version-check, extract-release-notes, create-github-release]
+    if: >
+      needs.version-check.outputs.should_continue == 'true' &&
+      needs.create-github-release.result == 'success' &&
+      (needs.extract-release-notes.result == 'success' || needs.extract-release-notes.result == 'skipped') &&
+      needs.version-check.outputs.test != 'true'
+    env:
+      JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
+      JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
+      JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+      JIRA_DRY_RUN: ${{ secrets.JIRA_DRY_RUN }}
+      RELEASE_VERSION: ${{ needs.version-check.outputs.version }}
+      RELEASE_URL: "https://github.com/${{ github.repository }}/releases/tag/${{ needs.version-check.outputs.version }}"
+      RELEASE_STATE: released
+      PIPELINE_URL: "https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}"
+      PIPELINE_ID: "${{ github.repository }}/pipeline"
+      PIPELINE_NAME: "Elkan 5e Release Pipeline"
+      DEPLOYMENT_ENVIRONMENT_ID: production
+      DEPLOYMENT_ENVIRONMENT_NAME: Production
+      DEPLOYMENT_ENVIRONMENT_TYPE: production
+      EXTRACT_NOTES_RESULT: ${{ needs.extract-release-notes.result }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Skip if Jira not configured
+        id: jira_check
+        run: |
+          if [ -z "${JIRA_BASE_URL:-}" ] || [ -z "${JIRA_USER_EMAIL:-}" ] || [ -z "${JIRA_API_TOKEN:-}" ]; then
+            echo "::warning::Jira secrets not configured (JIRA_BASE_URL, JIRA_USER_EMAIL, JIRA_API_TOKEN); skipping Jira update."
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Check Jira connection
+        if: steps.jira_check.outputs.skip != 'true'
+        run: node .github/workflows/scripts/check-jira-connection.mjs
+
+      - name: Download release notes artifact
+        if: steps.jira_check.outputs.skip != 'true' && env.EXTRACT_NOTES_RESULT == 'success'
+        uses: actions/download-artifact@v7
+        with:
+          name: release-notes
+          path: .
+
+      - name: Read release notes
+        if: steps.jira_check.outputs.skip != 'true' && env.EXTRACT_NOTES_RESULT == 'success'
+        id: read_notes
+        run: |
+          echo "release_notes<<EOF" >> $GITHUB_OUTPUT
+          cat release-notes.md >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+
+      - name: Update Jira deployment and release
+        if: steps.jira_check.outputs.skip != 'true'
+        env:
+          RELEASE_NOTES: ${{ steps.read_notes.outputs.release_notes }}
+        run: node .github/workflows/scripts/update-jira.mjs
+
   notify-discord:
     runs-on: ubuntu-latest
     needs:
@@ -223,10 +286,7 @@ jobs:
         build-and-pack,
         create-github-release,
       ]
-    if: >
-      needs.version-check.outputs.should_continue == 'true' &&
-      needs.create-github-release.result == 'success' &&
-      needs.version-check.outputs.test != 'true'
+    if: needs.version-check.outputs.should_continue == 'true' && needs.create-github-release.result == 'success' && needs.version-check.outputs.test != 'true'
     env:
       DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
       REPO_URL: "https://github.com/${{ github.repository }}"
@@ -235,7 +295,7 @@ jobs:
       VERIFIED: ${{ needs.version-check.outputs.verified }}
     steps:
       - name: Download release notes artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v7
         with:
           name: release-notes
           path: .
@@ -244,7 +304,23 @@ jobs:
         run: cat release-notes.md
 
       - name: Format release notes for Discord
-        run: node .github/workflows/scripts/format-discord-notes.cjs release-notes.md release-notes-discord.txt
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const raw = fs.readFileSync('release-notes.md', 'utf8');
+          const lines = raw.replace(/\r\n/g, '\n').split('\n');
+          const output = [];
+          for (const line of lines) {
+            const trimmed = line.trim();
+            if (!trimmed) { output.push(''); continue; }
+            const headingMatch = trimmed.match(/^#{2,6}\s+(.+)/);
+            if (headingMatch) { output.push(`**${headingMatch[1].trim()}**`); continue; }
+            const boldLinkMatch = trimmed.match(/^\*\*\[[^\]]+\]\([^)]+\)\*\*$/);
+            if (boldLinkMatch) { output.push(`- ${trimmed}`); continue; }
+            output.push(line.replace(/\s+$/, ''));
+          }
+          fs.writeFileSync('release-notes-discord.txt', output.join('\n'));
+          NODE
 
       - name: Show formatted release notes in logs
         run: cat release-notes-discord.txt

@@ -51,7 +51,7 @@
 	"folder": "6J3i75lfD1J0xYwA",
 	"flags": {
 		"midi-qol": {
-			"onUseMacroName": "[postActiveEffects]AA ApplyEffectsToTemplate",
+			"onUseMacroName": "[postActiveEffects]AA ApplyEffectsToTemplate,[postActiveEffects]ItemMacro",
 			"effectActivation": false,
 			"AoETargetType": "any",
 			"AoETargetTypeIncludeSelf": true,
@@ -83,6 +83,18 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"dae": {
+			"macro": {
+				"name": "Spike Growth",
+				"img": "icons/magic/nature/root-vines-grow-brown.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "if (!game.user?.isGM) return;\nconst src = \"if (!game.user?.isGM) return;\\nconst { token, segments, teleport } = event.data;\\nif (teleport) return;\\nconst actor = token.actor;\\nif (!actor) return;\\nconst totalFt = (segments ?? []).reduce((acc, s) => acc + (s.distance ?? 0), 0);\\nconst numDice = Math.floor(totalFt / 5) * 2;\\nif (numDice <= 0) return;\\nconst roll = await new Roll(numDice + \\\"d4\\\").evaluate();\\nconst feetLabel = Math.floor(totalFt / 5) * 5;\\nconst flavor = \\\"Spike Growth \\u2014 \\\" + numDice + \\\"d4 piercing (\\\" + feetLabel + \\\" ft through spikes)\\\";\\nif (typeof MidiQOL !== \\\"undefined\\\" && MidiQOL.DamageOnlyWorkflow) {\\n  new MidiQOL.DamageOnlyWorkflow(actor, token.object, roll.total, \\\"piercing\\\", [token.object], roll, { flavor });\\n} else {\\n  await roll.toMessage({ flavor, speaker: ChatMessage.getSpeaker({ token }) });\\n  await actor.applyDamage([{ type: \\\"piercing\\\", value: roll.total }]);\\n}\";\nfor (const ref of workflow.templateUuids ?? []) {\n  const region = typeof ref === \"string\" ? await fromUuid(ref).catch(() => null) : ref;\n  if (!region) continue;\n  if (region.behaviors.find(b => b.name === \"Spike Growth — Movement Damage\")) continue;\n  await region.createEmbeddedDocuments(\"RegionBehavior\", [{\n    name: \"Spike Growth — Movement Damage\",\n    type: \"executeScript\",\n    system: { events: [\"tokenMove\"], source: src },\n    disabled: false,\n  }]);\n}",
+				"author": "vHqSHJMdmEO6Mk2C",
+				"_id": null,
+				"folder": null
+			}
 		}
 	},
 	"system": {

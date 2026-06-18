@@ -6,35 +6,31 @@ import { createEffect } from "../shared/effect-factories.mjs";
  * Call this from the Haste effect's "off" (onDelete) DAE macro.
  * Applies Incapacitated to the caster for 1 turn when the Haste effect expires.
  *
- * @param {ActiveEffect} effect - The Haste effect that just ended.
+ * @param {object} effect - The DAE expiry payload for the Haste effect that just ended.
  * @returns {Promise<void>} Promise resolution result.
  */
 export async function hasteLethargy(effect) {
+	const casterUuid = effect.origin?.split(".ActiveEffect.")[0];
 	try {
-		const actor = effect.parent;
+		const actor = await fromUuid(casterUuid);
 		if (!actor) {
-			console.warn("Haste Lethargy: could not resolve actor from effect");
+			console.warn(
+				"Haste Lethargy: could not resolve caster actor from effect.origin",
+				effect.origin,
+			);
 			return;
 		}
 
 		const effectData = await createEffect("incapacitated", {
 			name: "Haste Lethargy",
 			img: "icons/magic/time/clock-analog-gray.webp",
-			origin: effect.origin ?? effect.uuid,
+			origin: effect.origin ?? effect.effectUuid,
 			disabled: false,
 			statuses: ["incapacitated"],
 			duration: {
 				rounds: 1,
-				turns: 0,
 				startRound: game.combat?.round ?? null,
 				startTurn: game.combat?.turn ?? null,
-			},
-			flags: {
-				dae: {
-					specialDuration: ["turnEnd"],
-					stackable: "noneName",
-					macroRepeat: "none",
-				},
 			},
 		});
 
@@ -68,14 +64,7 @@ export async function lifeDrain(workflow) {
 	});
 
 	if (totalHealing <= 0) return;
-	const healingRoll = await new Roll(`${totalHealing}`).evaluate({ async: true });
-	new MidiQOL.DamageOnlyWorkflow(
-		caster,
-		casterToken,
-		healingRoll.total,
-		"healing",
-		[casterToken],
-		healingRoll,
-		{ flavor: "Life Drain Healing" },
-	);
+	await casterToken.actor.update({
+		"system.attributes.hp.value": caster.system.attributes.hp.value + totalHealing,
+	});
 }

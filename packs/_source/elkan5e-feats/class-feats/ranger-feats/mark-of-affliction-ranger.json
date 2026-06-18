@@ -261,7 +261,15 @@
 			"img": "icons/skills/toxins/symbol-poison-drop-skull-green.webp",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [
+					{
+						"key": "flags.dnd5e.DamageBonusMacro",
+						"type": "custom",
+						"value": "ItemMacro",
+						"phase": "initial",
+						"priority": null
+					}
+				]
 			},
 			"start": null,
 			"showIcon": 1,
@@ -364,6 +372,18 @@
 			"reactionCondition": "",
 			"removeAttackDamageButtons": "default",
 			"otherCondition": ""
+		},
+		"dae": {
+			"macro": {
+				"name": "Mark of Affliction (Ranger)",
+				"img": "icons/skills/toxins/symbol-poison-drop-skull-green.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "return await elkan5e.macros.features.markOfAffliction(workflow);",
+				"author": "",
+				"_id": null,
+				"folder": null
+			}
 		}
 	},
 	"_key": "!items!v4I2jKOQ4pCIetja"

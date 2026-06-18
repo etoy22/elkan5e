@@ -68,7 +68,7 @@ export async function wellOfCorruption(workflow) {
 		2,
 	);
 	const totalDice = 4 + Math.max(effectiveCastLevel - 2, 0) * 2;
-	const damageRoll = await new Roll(`${totalDice}d8`).evaluate({ async: true });
+	const damageRoll = await new Roll(`${totalDice}d8`).evaluate();
 
 	const failedSaveIds = buildIdSet(workflow.failedSaves);
 	const successfulSaveIds = buildIdSet(workflow.saves);
@@ -466,10 +466,86 @@ export async function mirrorImage(workflow) {
 			});
 		}
 
-		// Return false to abort the attack on the real target.
-		return false;
+		// Remove the real target from the workflow so damage is never applied.
+		workflow.targets.delete(target);
+		if (workflow.targets.size === 0) workflow.aborted = true;
 	} catch (err) {
 		console.error("Mirror Image |", err);
+	}
+}
+
+/**
+ * Runs Lesser Restoration spell automation.
+ * Presents a dialog showing which removable conditions the target currently has,
+ * lets the caster pick one, then removes it.
+ *
+ * Removable conditions: blinded, deafened, paralyzed, poisoned, weakened.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
+ */
+export async function lesserRestoration(workflow) {
+	try {
+		const targetEntry = Array.from(workflow.targets ?? [])[0];
+		if (!targetEntry) {
+			ui.notifications.warn("Lesser Restoration: No target selected.");
+			return;
+		}
+
+		const actor = targetEntry.actor ?? targetEntry.document?.actor;
+		if (!actor) {
+			ui.notifications.warn("Lesser Restoration: Could not resolve target actor.");
+			return;
+		}
+
+		const REMOVABLE = [
+			{ id: "blinded", label: "Blinded" },
+			{ id: "deafened", label: "Deafened" },
+			{ id: "paralyzed", label: "Paralyzed" },
+			{ id: "poisoned", label: "Poisoned" },
+			{ id: "weakened", label: "Weakened" },
+		];
+
+		const present = REMOVABLE.filter(
+			(c) =>
+				actor.statuses.has(c.id) ||
+				actor.effects.some((e) => !e.disabled && e.statuses.has(c.id)),
+		);
+
+		if (present.length === 0) {
+			ui.notifications.info(
+				`${actor.name} has none of the conditions Lesser Restoration can remove.`,
+			);
+			return;
+		}
+
+		// Build one button per present condition, plus Cancel.
+		const chosen = await foundry.applications.api.DialogV2.wait({
+			window: { title: "Lesser Restoration" },
+			content: `<p>Which condition on <strong>${actor.name}</strong> do you want to remove?</p>`,
+			buttons: [
+				...present.map((cond) => ({ label: cond.label, action: cond.id })),
+				{ label: "Cancel", action: "cancel" },
+			],
+			default: present[0].id,
+			rejectClose: false,
+		});
+
+		if (!chosen || chosen === "cancel") return;
+
+		// Remove every active effect that carries this status (handles stacked effects).
+		const toDelete = actor.effects
+			.filter((e) => e.statuses.has(chosen) && !e.disabled)
+			.map((e) => e.id);
+		if (toDelete.length) await actor.deleteEmbeddedDocuments("ActiveEffect", toDelete);
+
+		const label = REMOVABLE.find((c) => c.id === chosen)?.label ?? chosen;
+		await ChatMessage.create({
+			content: `<p><strong>Lesser Restoration</strong> removes the <em>${label}</em> condition from <strong>${actor.name}</strong>.</p>`,
+			speaker: ChatMessage.getSpeaker({ actor: workflow.actor }),
+		});
+	} catch (err) {
+		console.error("Lesser Restoration |", err);
 	}
 }
 
@@ -491,7 +567,11 @@ export async function shatter(workflow) {
 
 			if (actor.system.details.type?.value === "construct") {
 				const tokenId = target.document?.id ?? target.id;
-				if (tokenId) workflow.disadvantageSaves.add(tokenId);
+				if (tokenId) {
+					// Safely initialize the set if midi-qol hasn't populated it yet,
+					// then mark this construct for disadvantage on the Con save.
+					(workflow.disadvantageSaves ??= new Set()).add(tokenId);
+				}
 			}
 		}
 	} catch (err) {

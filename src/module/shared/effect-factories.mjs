@@ -280,6 +280,35 @@ export async function createGrappledEffect(
 	return createEffect("grappled", { ...defaultOptions, ...customOptions });
 }
 
+/**
+ * Create the Mounted effect applied to a rider.
+ *
+ * @param {Object} mountActor  - The mount (the creature being ridden)
+ * @param {Object} riderActor  - The rider
+ * @param {Array}  changes     - The effect changes (e.g. zero movement)
+ * @param {Object} flags       - Custom flags (must include elkan5e.ride.mountUuid)
+ * @param {Object} customOptions - Additional options
+ * @returns {Promise<Object>} The effect data
+ */
+export async function createMountedEffect(
+	mountActor,
+	riderActor,
+	changes = [],
+	flags = {},
+	customOptions = {},
+) {
+	const defaultOptions = {
+		name: game.i18n.localize("elkan5e.conditions.mounted") || "Mounted",
+		icon: "icons/svg/horse.svg",
+		origin: mountActor.uuid,
+		flags,
+		changes,
+		disabled: false,
+		statuses: ["mounted"],
+	};
+	return createEffect("mounted", { ...defaultOptions, ...customOptions });
+}
+
 export default {
 	createEffect,
 	createEmptyBodyEffect,
@@ -289,4 +318,5 @@ export default {
 	createDrainedEffect,
 	createClimberEffect,
 	createGrappledEffect,
+	createMountedEffect,
 };

@@ -3,7 +3,7 @@ import eslintPluginPrettier from "eslint-plugin-prettier";
 import eslintConfigPrettier from "eslint-config-prettier";
 
 export default [
-  { ignores: ["scripts/packs.mjs"] }, // or "**/scripts/packs.mjs" if needed
+  { ignores: ["scripts/packs.mjs"] },
   js.configs.recommended,
   eslintConfigPrettier,
   {
@@ -37,9 +37,11 @@ export default [
         fetch: "readonly",
         FormApplication: "readonly",
         window: "readonly",
+        macroItem: "readonly",
+        HTMLElement: "readonly",
+        Dialog: "readonly",
       },
     },
-
     plugins: {
       prettier: eslintPluginPrettier,
     },
@@ -51,6 +53,7 @@ export default [
         {
           argsIgnorePattern: "^_",
           varsIgnorePattern: "^_",
+          caughtErrorsIgnorePattern: "^_",
           ignoreRestSiblings: true,
         },
       ],

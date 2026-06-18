@@ -13,7 +13,7 @@
 					"type": "reaction",
 					"value": null,
 					"override": false,
-					"condition": ""
+					"condition": "reaction === 'isMoved' && computeDistance(tokenUuid, targetUuid) <= 60 && canvas?.tokens?.get(targetUuid)?.document?.disposition === -1"
 				},
 				"consumption": {
 					"scaling": {
@@ -94,7 +94,6 @@
 					"autoTargetAction": "default",
 					"automationOnly": false,
 					"otherActivityCompatible": true,
-					"identifier": "",
 					"displayActivityName": false,
 					"rollMode": "default",
 					"chooseEffects": false,
@@ -159,7 +158,7 @@
 			"rollAttackPerTarget": "default",
 			"removeAttackDamageButtons": "default",
 			"itemCondition": "",
-			"reactionCondition": "reaction === 'isMoved' && computeDistance(tokenUuid, targetUuid) <= 60 && canvas?.tokens?.get(targetUuid)?.document?.disposition === -1",
+			"reactionCondition": "",
 			"otherCondition": "",
 			"effectCondition": ""
 		}

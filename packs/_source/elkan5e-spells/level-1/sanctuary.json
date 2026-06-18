@@ -74,6 +74,18 @@
 	],
 	"folder": "U0k4VGG6bziqf3oH",
 	"flags": {
+		"dae": {
+			"macro": {
+				"name": "Sanctuary",
+				"img": "icons/equipment/shield/heater-crystal-blue.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "return elkan5e.macros.spells.sanctuary(workflow)",
+				"author": null,
+				"_id": null,
+				"folder": null
+			}
+		},
 		"midi-qol": {
 			"onUseMacroName": "",
 			"effectActivation": false,
@@ -174,24 +186,6 @@
 			"concentration"
 		],
 		"activities": {
-			"dnd5eactivity100": {
-				"effects": [],
-				"name": "Save (For Enemies)",
-				"img": "",
-				"consumption": {
-					"spellSlot": false,
-					"targets": []
-				},
-				"appliedEffects": [],
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				}
-			},
 			"hRLvIkdmv7Jg5L2i": {
 				"type": "utility",
 				"_id": "hRLvIkdmv7Jg5L2i",
@@ -242,60 +236,10 @@
 					"name": "",
 					"formula": ""
 				},
-				"name": ""
-			},
-			"qEEAdmwfIyPO6QDv": {
-				"type": "save",
-				"name": "Save (When enemies attack)",
-				"_id": "qEEAdmwfIyPO6QDv",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"damage": {
-					"parts": [],
-					"onSave": "none"
-				},
-				"save": {
-					"ability": "wis",
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
-					}
-				}
+				"name": "",
+				"appliedEffects": [
+					"dFcjDXIDNHbBMyq2"
+				]
 			}
 		},
 		"identifier": "sanctuary"

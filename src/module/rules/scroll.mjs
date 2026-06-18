@@ -109,7 +109,7 @@ async function promptScrollSkillCheck(dc) {
  */
 export function registerScrollRules() {
 	// Gate: runs before the scroll activity fires so we can cancel if needed.
-	Hooks.on("dnd5e.preUseActivity", async (activity, config, options) => {
+	Hooks.on("dnd5e.preUseActivity", async (activity, _config, _options) => {
 		try {
 			const item = activity.item;
 			if (!item || item.type !== "consumable") return;

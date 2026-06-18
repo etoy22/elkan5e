@@ -18,7 +18,7 @@ Unchecked items still need automation or macro support. Remove entries here as y
 - [ ] Darkness - enforce vision blocking and light suppression
 - [ ] Darkness (Shadow Casting) - mirror Darkness automation for class version
 - [ ] Dancing Lights - orchestrate configurable floating lights and follow behaviours
-- [ ] Detect Poison and Disease - automate detection output or status tagging
+- [x] Detect Poison and Disease - automate detection output or status tagging
 - [ ] Dimension Door - resolve mishap damage when the arrival point is occupied
 - [ ] Earthquake - handle area tremors, prone checks, and fissure hazards
 - [ ] Entangle - apply difficult terrain and restrained checks each round
@@ -101,9 +101,9 @@ Unchecked items still need automation or macro support. Remove entries here as y
 - [ ] Sneak Attack (Rogue) - once-per-turn bonus damage automation
 - [ ] Sneak Attack Precision Choice - prompt for precision attack selection when applying Sneak Attack
 - [ ] Holy Strike (Cleric) - per-strike rider similar to Sneak Attack
-- [ ] Mark of Affliction (Ranger) - prompt for once-per-turn damage after a hit
+- [x] Mark of Affliction (Ranger) - prompt for once-per-turn damage after a hit
 - [ ] Mark of Breaking (Spellbreaker) - automate armor break rider
-- [ ] Mark of Thorns (Ranger) - automatic retaliation damage
+- [x] Mark of Thorns (Ranger) - automatic retaliation damage
 - [ ] Marksman (Ranger) - remove cover benefits and long-range disadvantage
 - [ ] Large Frame - apply grapple/push bonuses via macro
 - [ ] Living Lantern - toggle lighting and aura effects on demand
@@ -133,7 +133,6 @@ Unchecked items still need automation or macro support. Remove entries here as y
 - [ ] Lifedrinker (Warlock) - automatic bonus damage rider
 - [ ] Lifedrinker (Warrior) - ensure pact-of-the-warrior version adds damage properly
 - [ ] Malignant Shroud - share damage when struck
-- [ ] Mark for Death - port automation from legacy actor reference
 - [ ] Mastery of Soul (Necromancer) - design soul tether automation
 - [ ] Overchannel (Evoker) - automate increased damage and caster backlash
 - [ ] Rend Magic - automate ranger spell disruption rider after a hit

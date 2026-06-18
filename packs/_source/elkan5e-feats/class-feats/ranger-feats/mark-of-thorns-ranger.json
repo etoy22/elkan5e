@@ -41,7 +41,7 @@
 				"type": "utility",
 				"name": "Mark of Thorns (Uses)",
 				"activation": {
-					"type": "bonus",
+					"type": "special",
 					"value": null,
 					"override": false,
 					"condition": ""
@@ -71,18 +71,10 @@
 				},
 				"effects": [
 					{
-						"_id": "mtC9YRFZeGMdIpXp",
-						"level": {
-							"min": null,
-							"max": null
-						}
+						"_id": "mtC9YRFZeGMdIpXp"
 					},
 					{
-						"_id": "5wewm9mUphsdtJWZ",
-						"level": {
-							"min": null,
-							"max": null
-						}
+						"_id": "5wewm9mUphsdtJWZ"
 					}
 				],
 				"range": {
@@ -122,14 +114,7 @@
 				"appliedEffects": [
 					"5wewm9mUphsdtJWZ",
 					"mtC9YRFZeGMdIpXp"
-				],
-				"visibility": {
-					"level": {
-						"min": null,
-						"max": null
-					},
-					"identifier": ""
-				}
+				]
 			},
 			"mk8Xj3iT4xYBA9Oq": {
 				"type": "damage",
@@ -240,8 +225,8 @@
 			"_id": "5wewm9mUphsdtJWZ",
 			"disabled": false,
 			"duration": {
-				"value": 10,
-				"units": "minutes",
+				"value": 600,
+				"units": "seconds",
 				"expiry": "turnStart",
 				"expired": false
 			},
@@ -260,8 +245,7 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"enableCondition": "",
-					"disableCondition": "",
-					"expiryMode": "default"
+					"disableCondition": ""
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -294,7 +278,7 @@
 		{
 			"origin": "Compendium.elkan5e.elkan5e-feats.Item.2F7ey4ojkStp5ry7",
 			"duration": {
-				"value": 60,
+				"value": 600,
 				"units": "seconds",
 				"expiry": "turnStart",
 				"expired": false
@@ -312,6 +296,7 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"stackable": "noneName",
+					"showIcon": true,
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": [],
@@ -342,7 +327,7 @@
 				"changes": []
 			},
 			"start": null,
-			"showIcon": 2,
+			"showIcon": 1,
 			"folder": null,
 			"_key": "!items.effects!2F7ey4ojkStp5ry7.mtC9YRFZeGMdIpXp"
 		}
@@ -372,6 +357,18 @@
 			"removeAttackDamageButtons": "default",
 			"reactionCondition": "",
 			"otherCondition": ""
+		},
+		"dae": {
+			"macro": {
+				"name": "Mark of Thorns (Ranger)",
+				"img": "icons/magic/nature/beam-hand-leaves-green.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "return await elkan5e.macros.features.markOfThorns(workflow);",
+				"author": "",
+				"_id": null,
+				"folder": null
+			}
 		}
 	},
 	"_key": "!items!2F7ey4ojkStp5ry7"

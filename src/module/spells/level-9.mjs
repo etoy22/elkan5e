@@ -17,7 +17,7 @@ export async function wrathOfTheReaper(workflow) {
 		const forceDamage = Math.min(Math.floor(maxHp / 2), 100);
 		if (forceDamage <= 0) return;
 
-		const damageRoll = await new Roll(`${forceDamage}`).evaluate({ async: true });
+		const damageRoll = await new Roll(`${forceDamage}`).evaluate();
 		new MidiQOL.DamageOnlyWorkflow(
 			caster,
 			casterToken,
