@@ -89,91 +89,47 @@ export function onFilterOwnedFeats(app, html) {
 	}
 }
 
-const RELENTLESS_IDENTIFIER = "relentless-endurance";
-const RELENTLESS_PROMPTED = new Set();
+/**
+ * Handles Relentless Endurance.
+ * Triggered by the dnd5e.damageActor hook after damage has been applied.
+ *
+ * @param {Actor5e} actor - Actor document that was damaged.
+ * @returns {Promise<void>}
+ */
+export async function relentlessEndurance(actor) {
+	if (!actor) return;
+	if (Number(actor.system?.attributes?.hp?.value) !== 0) return;
 
-const getUpdatedHpValue = (changes) => {
-	const directValue = foundry.utils.getProperty(changes, "system.attributes.hp.value");
-	if (directValue !== undefined) return directValue;
+	const feature = actor.items.find(
+		(item) =>
+			item.system?.identifier === "relentless-endurance" &&
+			item.system?.source?.book === "Elkan 5e",
+	);
+	if (!feature) return;
 
-	const hpUpdate = foundry.utils.getProperty(changes, "system.attributes.hp");
-	if (hpUpdate && typeof hpUpdate === "object" && hpUpdate.value !== undefined) {
-		return hpUpdate.value;
-	}
-
-	return undefined;
-};
-
-const getPromptUser = (actor) => {
-	if (!actor) return null;
+	const max = Number(feature.system?.uses?.max ?? 0);
+	const spent = Number(feature.system?.uses?.spent ?? 0);
+	const remaining = max > 0 ? Math.max(max - spent, 0) : 0;
+	if (remaining <= 0) return;
 
 	const ownerLevel = CONST.DOCUMENT_OWNERSHIP_LEVELS.OWNER;
-	const activeOwners = game.users.filter(
-		(user) => user.active && !user.isGM && actor.testUserPermission(user, ownerLevel),
-	);
-	if (activeOwners.length) return activeOwners[0];
-
-	return game.users.find((user) => user.active && user.isGM) ?? null;
-};
-
-const getRelentlessFeature = (actor) =>
-	actor?.items?.find((item) => item?.system?.identifier === RELENTLESS_IDENTIFIER);
-
-const getRemainingUses = (item) => {
-	const max = Number(item?.system?.uses?.max ?? 0);
-	const spent = Number(item?.system?.uses?.spent ?? 0);
-	if (!Number.isFinite(max) || max <= 0) return 0;
-	if (!Number.isFinite(spent)) return 0;
-	return Math.max(max - spent, 0);
-};
-
-/**
- * Handles relentless Endurance.
- *
- * @param {*} actor - Actor document to process.
- * @param {*} changes - Update payload containing changed fields.
- * @returns {Promise<void>} Promise resolution result.
- */
-export async function relentlessEndurance(actor, changes) {
-	if (!actor || !changes) return;
-
-	const updatedHp = getUpdatedHpValue(changes);
-	if (updatedHp === undefined) return;
-
-	const hpValue = Number(updatedHp);
-	if (!Number.isFinite(hpValue)) return;
-
-	if (hpValue > 0) {
-		RELENTLESS_PROMPTED.delete(actor.uuid);
-		return;
-	}
-
-	if (RELENTLESS_PROMPTED.has(actor.uuid)) return;
-
-	const feature = getRelentlessFeature(actor);
-	if (!feature || getRemainingUses(feature) <= 0) return;
-
-	const promptUser = getPromptUser(actor);
+	const promptUser =
+		game.users.find((u) => u.active && !u.isGM && actor.testUserPermission(u, ownerLevel)) ??
+		game.users.find((u) => u.active && u.isGM) ??
+		null;
 	if (!promptUser || promptUser.id !== game.user?.id) return;
 
-	RELENTLESS_PROMPTED.add(actor.uuid);
-
 	const confirmed = await DialogV2.confirm({
-		window: { title: game.i18n.localize("elkan5e.relentlessEndurance.title") },
-		content: `<p>${game.i18n.format("elkan5e.relentlessEndurance.prompt", { name: actor.name })}</p>`,
+		window: { title: "Relentless Endurance" },
+		content: `<p><strong>${actor.name}</strong> would drop to 0 HP. Use Relentless Endurance to drop to 1 HP instead? (${remaining} use${remaining === 1 ? "" : "s"} remaining)</p>`,
 		rejectClose: false,
 		modal: true,
 	});
 
 	if (!confirmed) return;
 
-	const max = Number(feature.system?.uses?.max ?? 0);
-	const spent = Number(feature.system?.uses?.spent ?? 0);
-	const nextSpent =
-		Number.isFinite(max) && max > 0 ? Math.min(spent + 1, max) : Math.max(spent + 1, 1);
-
 	await actor.update({ "system.attributes.hp.value": 1 });
-	await feature.update({ "system.uses.spent": nextSpent });
+	await feature.update({ "system.uses.spent": Math.min(spent + 1, max) });
 }
 
 /**

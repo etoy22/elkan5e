@@ -1,5 +1,6 @@
 import {
 	rage,
+	relentlessRage,
 	wildBlood,
 	onBloodragerRenderAdvancementManager,
 	preBloodragerCreateItem,
@@ -7,6 +8,7 @@ import {
 	updateBloodragerOnLevelup,
 	handleBloodragerDelete,
 } from "./module/classes/barbarian.mjs";
+import { undeadFortitude } from "./module/creatures/undead.mjs";
 import {
 	healingOverflow,
 	infusedHealer,
@@ -19,8 +21,7 @@ import {
 	elementalAttunement,
 	hijackShadow,
 	meldWithShadows,
-	rmvhijackShadow,
-	rmvMeldShadow,
+	onCombatTurnChange,
 } from "./module/classes/monk.mjs";
 import { slicingBlow, sneakAttack } from "./module/classes/rogue.mjs";
 import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
@@ -64,9 +65,20 @@ import { scroll } from "./module/rules/scroll.mjs";
 import { skills } from "./module/rules/skills.mjs";
 import { tools, updateToolTypes } from "./module/rules/tools.mjs";
 import { weapons } from "./module/rules/weapon.mjs";
+import {
+	onPreRestCompleted,
+	onRestCompleted,
+	onPreUpdateActorDeathSaves,
+} from "./module/rules/death-saves.mjs";
 import { startDialog } from "./module/settings/dialog.mjs";
 import { gameSettingRegister, gameSettingsMigrate } from "./module/settings/game-settings.mjs";
-import { deleteRegionLights, syncRegionLightSort } from "./module/shared/helpers.mjs";
+import {
+	deleteRegionLights,
+	handleDeleteMeasuredTemplate,
+	handleUpdateMeasuredTemplate,
+	registerDaeSpecials,
+	syncRegionLightSort,
+} from "./module/shared/helpers.mjs";
 import * as Cantrip from "./module/spells/cantrip.mjs";
 import * as Level1 from "./module/spells/level-1.mjs";
 import * as Level2 from "./module/spells/level-2.mjs";
@@ -114,11 +126,6 @@ function registerHooks() {
 			// Hides already-owned (non-repeatable) feats from advancement dialogs.
 			Hooks.on("renderApplication", onFilterOwnedFeats);
 
-			// PRIMARY: Shows origin picker the moment the AdvancementManager opens
-			// for a Bloodrager subclass, modifies spell pools in the AM's working
-			// clone in-memory, and stores the choice as actor flags.
-			// Also pre-populates Wizard Spells Known pools with school-appropriate
-			// spells when a school-specialisation subclass is present.
 			Hooks.on("renderAdvancementManager", async (app, ..._rest) => {
 				try {
 					await onBloodragerRenderAdvancementManager(app);
@@ -128,18 +135,8 @@ function registerHooks() {
 						error,
 					);
 				}
-				try {
-					await onWizardRenderAdvancementManager(app);
-				} catch (error) {
-					console.error(
-						"Elkan 5e | Error in renderAdvancementManager Wizard hook:",
-						error,
-					);
-				}
 			});
 
-			// FALLBACK for programmatic creation (no AM open): cancels item creation,
-			// shows picker, and re-creates the item with pre-populated spell pools.
 			Hooks.on("preCreateItem", (item, data, options, userId) => {
 				try {
 					return preBloodragerCreateItem(item, data, options, userId);
@@ -148,9 +145,6 @@ function registerHooks() {
 				}
 			});
 
-			// POST-CREATION: After the AM commits the Bloodrager item, grants
-			// Seething Blood and Wild Blood using flags set by renderAdvancementManager.
-			// Also handles the fallback path (macro creation via _doBloodragerSetup).
 			Hooks.on("createItem", async (item, options, userId) => {
 				try {
 					await onBloodragerCreateItem(item, options, userId);
@@ -159,77 +153,8 @@ function registerHooks() {
 				}
 			});
 
-			// Registers custom DAE effect fields for push resistance and fire damage.
-			Hooks.on("dae.modifySpecials", (_actorType, specials) => {
-				const BooleanField = foundry.data.fields.BooleanField;
-				const StringField = foundry.data.fields.StringField;
-				specials["flags.elkan5e.pushResist"] = [
-					new BooleanField({
-						label: game.i18n.localize("elkan5e.push.effects.pushResist"),
-						hint: game.i18n.localize("elkan5e.push.effects.pushResistDescription"),
-					}),
-					CONST.ACTIVE_EFFECT_MODES.CUSTOM,
-				];
-				specials["system.traits.dm.amount.fire"] = [
-					new StringField({
-						label: game.i18n.localize("elkan5e.burning.effects.fireDamageTaken"),
-						hint: game.i18n.localize(
-							"elkan5e.burning.effects.fireDamageTakenDescription",
-						),
-					}),
-					CONST.ACTIVE_EFFECT_MODES.CUSTOM,
-				];
-				// Jump spell: triples Long Jump and High Jump distances.
-				// Set this flag to 1 (Override mode) on the spell's Active Effect.
-				specials["flags.elkan5e.movement.tripleJump"] = [
-					new BooleanField({
-						label: "Triple Jump Distance (Jump spell)",
-						hint: "When enabled, triples the actor's Long Jump and High Jump distances.",
-					}),
-					CONST.ACTIVE_EFFECT_MODES.OVERRIDE,
-				];
-			});
-
-			// Applies ±5 adjustment to skill rolls on a natural 20 / natural 1
-			// when the skillCriticalAdjustment setting is enabled.
-			Hooks.on("dnd5e.rollSkillV2", (rolls, _data) => {
-				try {
-					const roll = rolls?.[0];
-					if (!roll) return;
-
-					const d20 = roll.dice?.find((d) => d.faces === 20);
-					if (!d20) return;
-
-					const natural = d20.results?.[0]?.result;
-					if (!natural) return;
-					if (!game.settings.get("elkan5e", "skillCriticalAdjustment")) return;
-
-					let adjustment = 0;
-					if (natural === 1) adjustment = -5;
-					else if (natural === 20) adjustment = 5;
-					if (adjustment === 0) return;
-
-					const flavor = adjustment > 0 ? "Natural 20 Bonus" : "Natural 1 Penalty";
-					const sign = adjustment > 0 ? "+" : "-";
-
-					// Append the adjustment as visible terms so it appears in the roll breakdown.
-					const operator = new foundry.dice.terms.OperatorTerm({ operator: sign });
-					const bonus = new foundry.dice.terms.NumericTerm({
-						number: Math.abs(adjustment),
-						options: { flavor },
-					});
-					operator._evaluated = true;
-					bonus._evaluated = true;
-					roll.terms.push(operator, bonus);
-
-					// Update both the cached formula string and the cached total so the card
-					// header and total both reflect the adjustment.
-					roll._formula = `${roll._formula} ${sign} ${Math.abs(adjustment)}[${flavor}]`;
-					roll._total = (roll._total ?? roll.total) + adjustment;
-				} catch (err) {
-					console.error("Elkan 5e | Skill critical adjustment error:", err);
-				}
-			});
+			// Registers custom DAE effect fields for push resistance.
+			Hooks.on("dae.modifySpecials", registerDaeSpecials);
 		} catch (error) {
 			console.error("Elkan 5e  |  Initialization Error:", error);
 		}
@@ -245,10 +170,7 @@ function registerHooks() {
 				await startDialog();
 
 				// Registers custom DAE auto-fields so they appear in the DAE field picker.
-				globalThis.DAE?.addAutoFields?.([
-					"flags.elkan5e.pushResist",
-					"system.traits.dm.amount.fire",
-				]);
+				globalThis.DAE?.addAutoFields?.(["flags.elkan5e.pushResist"]);
 			} catch (error) {
 				console.error("Elkan 5e | Ready Hook Error:", error);
 			}
@@ -271,9 +193,6 @@ function registerHooks() {
 		}
 	});
 
-	// Sanctuary — before an attack roll is made, checks whether any target bears
-	// the Sanctuary effect. If so, the attacker must pass a Wisdom save or the
-	// target is removed from the workflow before the roll fires.
 	Hooks.on("midi-qol.preAttackRoll", async (workflow) => {
 		try {
 			await Spells.sanctuary(workflow);
@@ -282,9 +201,6 @@ function registerHooks() {
 		}
 	});
 
-	// Mirror Image — after the attack roll is known, checks whether any target
-	// carries a Mirror Image effect. Redirects the attack to a duplicate and
-	// returns false to abort damage on the real target if a duplicate is hit.
 	Hooks.on("midi-qol.AttackRollComplete", async (workflow) => {
 		try {
 			await Spells.mirrorImage(workflow);
@@ -337,12 +253,6 @@ function registerHooks() {
 			await handleBurningDelete(effect);
 		} catch (error) {
 			console.error("Elkan 5e | Error in deleteActiveEffect burning hook:", error);
-		}
-
-		try {
-			await handleMountedEffectDelete(effect);
-		} catch (error) {
-			console.error("Elkan 5e | Error in deleteActiveEffect mounted cleanup hook:", error);
 		}
 
 		try {
@@ -420,13 +330,65 @@ function registerHooks() {
 		}
 	});
 
-	Hooks.on("updateActor", async (actor, changes) => {
+	Hooks.on("dnd5e.preApplyDamage", (actor, amount, updates, options) => {
 		try {
-			await relentlessEndurance(actor, changes);
+			return undeadFortitude(actor, amount, updates, options);
+		} catch (error) {
+			console.error("Elkan 5e | Error in undeadFortitude hook:", error);
+		}
+
+		try {
+			return relentlessRage(actor, amount, updates, options);
+		} catch (error) {
+			console.error("Elkan 5e | Error in relentlessRage hook:", error);
+		}
+	});
+
+	Hooks.on("dnd5e.damageActor", async (actor, changes, update, userId) => {
+		try {
+			await relentlessEndurance(actor, changes, update, userId);
 		} catch (error) {
 			console.error("Elkan 5e | Error in relentlessEndurance hook:", error);
 		}
 
+		try {
+			await Level4.deathWard(actor, changes, update, userId);
+		} catch (error) {
+			console.error("Elkan 5e | Error in deathWard hook:", error);
+		}
+	});
+
+	Hooks.on("preUpdateActor", (actor, changes, options) => {
+		try {
+			onPreUpdateActorDeathSaves(actor, changes, options);
+		} catch (error) {
+			console.error("Elkan 5e | Error in preUpdateActor death save hook:", error);
+		}
+	});
+
+	Hooks.on("dnd5e.preRestCompleted", (actor, result) => {
+		try {
+			onPreRestCompleted(actor, result);
+		} catch (error) {
+			console.error("Elkan 5e | Error in preRestCompleted death save hook:", error);
+		}
+	});
+
+	Hooks.on("dnd5e.restCompleted", async (actor, result) => {
+		try {
+			await onRestCompleted(actor, result);
+		} catch (error) {
+			console.error("Elkan 5e | Error in restCompleted death save hook:", error);
+		}
+
+		try {
+			await actor.unsetFlag("elkan5e", "relentlessRageUses");
+		} catch (error) {
+			console.error("Elkan 5e | Error resetting Relentless Rage uses:", error);
+		}
+	});
+
+	Hooks.on("updateActor", async (actor, changes) => {
 		try {
 			await updateBarbarianDefense(actor, "updateActor");
 		} catch (error) {
@@ -437,16 +399,6 @@ function registerHooks() {
 			await handleDeadGrapplePrompt(actor);
 		} catch (error) {
 			console.error("Elkan 5e | Error in dead grapple prompt hook:", error);
-		}
-
-		try {
-			// End ride relationships when an actor reaches 0 hp.
-			const hp = Number(actor?.system?.attributes?.hp?.value);
-			if (Number.isFinite(hp) && hp <= 0) {
-				await endAllRidesForActor(actor);
-			}
-		} catch (error) {
-			console.error("Elkan 5e | Error in dead ride cleanup hook:", error);
 		}
 
 		try {
@@ -462,48 +414,32 @@ function registerHooks() {
 		} catch (error) {
 			console.error("Elkan 5e | Error in updateToken grapple hook:", error);
 		}
-
-		try {
-			await handleMountMove(tokenDoc, changes);
-		} catch (error) {
-			console.error("Elkan 5e | Error in updateToken mount hook:", error);
-		}
 	});
 
 	Hooks.on("combatTurnChange", (combat, prior) => {
 		try {
-			const priorCombatantId = prior?.combatantId;
-			if (!priorCombatantId) return;
-			const lastActor = combat?.combatants?.get(priorCombatantId)?.actor;
-			if (!lastActor) return;
-			rmvMeldShadow(lastActor);
-			rmvhijackShadow(lastActor);
+			onCombatTurnChange(combat, prior);
 		} catch (error) {
 			console.error("Elkan 5e | Error in combatTurnChange hook:", error);
 		}
 
-		// Clear the Sanctuary success cache at the start of each new turn so
-		// attackers must re-roll the save against any still-warded creature.
 		Level1.sanctuarySuccessCache.clear();
 	});
 
 	Hooks.on("updateMeasuredTemplate", async (template) => {
-		const lights = canvas.lighting.placeables.filter(
-			(light) => light.document.getFlag("elkan5e", "linkedTemplate") === template.id,
-		);
-		if (!lights.length) return;
-		for (const light of lights) {
-			await light.document.update({ x: template.x, y: template.y });
+		try {
+			await handleUpdateMeasuredTemplate(template);
+		} catch (error) {
+			console.error("Elkan 5e | Error in updateMeasuredTemplate hook:", error);
 		}
 	});
 
 	Hooks.on("deleteMeasuredTemplate", async (template) => {
-		const lights = canvas.lighting.placeables.filter(
-			(light) => light.document.getFlag("elkan5e", "linkedTemplate") === template.id,
-		);
-		if (!lights.length) return;
-		const ids = lights.map((light) => light.id);
-		await canvas.scene.deleteEmbeddedDocuments("AmbientLight", ids);
+		try {
+			await handleDeleteMeasuredTemplate(template);
+		} catch (error) {
+			console.error("Elkan 5e | Error in deleteMeasuredTemplate hook:", error);
+		}
 	});
 
 	Hooks.on("deleteRegion", async (region) => {
@@ -535,8 +471,6 @@ function registerHooks() {
 			spells: Spells,
 			features: {
 				grapple,
-				ride,
-				dismountAction,
 				push,
 				rage,
 				soulConduit,

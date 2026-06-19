@@ -481,15 +481,6 @@ const STATUS_DEFS = [
 		],
 	},
 	{
-		id: "mounted",
-		_id: "dnd5emounted00000",
-		pseudo: true,
-		icon: "icons/svg/horse.svg",
-		flags: {
-			core: { statusId: "mounted" },
-		},
-	},
-	{
 		id: "advantage",
 		_id: "dnd5eadvantage00",
 		img: "icons/svg/upgrade.svg",
