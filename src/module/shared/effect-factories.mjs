@@ -290,24 +290,6 @@ export async function createGrappledEffect(
  * @param {Object} customOptions - Additional options
  * @returns {Promise<Object>} The effect data
  */
-export async function createMountedEffect(
-	mountActor,
-	riderActor,
-	changes = [],
-	flags = {},
-	customOptions = {},
-) {
-	const defaultOptions = {
-		name: game.i18n.localize("elkan5e.conditions.mounted") || "Mounted",
-		icon: "icons/svg/horse.svg",
-		origin: mountActor.uuid,
-		flags,
-		changes,
-		disabled: false,
-		statuses: ["mounted"],
-	};
-	return createEffect("mounted", { ...defaultOptions, ...customOptions });
-}
 
 export default {
 	createEffect,
@@ -318,5 +300,4 @@ export default {
 	createDrainedEffect,
 	createClimberEffect,
 	createGrappledEffect,
-	createMountedEffect,
 };

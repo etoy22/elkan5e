@@ -104,6 +104,21 @@ export async function emptyBody(actor) {
 }
 
 /**
+ * Clears shadow/hijack effects from the actor whose turn just ended.
+ *
+ * @param {*} combat - Current combat document.
+ * @param {*} prior - Prior turn data.
+ */
+export function onCombatTurnChange(combat, prior) {
+	const priorCombatantId = prior?.combatantId;
+	if (!priorCombatantId) return;
+	const lastActor = combat?.combatants?.get(priorCombatantId)?.actor;
+	if (!lastActor) return;
+	rmvMeldShadow(lastActor);
+	rmvhijackShadow(lastActor);
+}
+
+/**
  * Runs elemental Attunement class feature automation.
  *
  * @param {*} args - Arguments passed by the caller.

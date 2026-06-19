@@ -188,7 +188,7 @@ const _bloodragerManagerSetup = new WeakSet();
 /**
  * Hook callback for "renderAdvancementManager".  Fires when the dnd5e
  * AdvancementManager renders.
- * 
+ *
  * @param {Application} app - The AdvancementManager instance.
  * @returns {Promise<void>}
  */
@@ -750,6 +750,50 @@ export async function updateBloodragerOnLevelup(actor, changes) {
 }
 
 /**
+ * Handles Relentless Rage.
+ *
+ * @param {Actor5e} actor
+ * @param {number} amount - Net damage amount to be applied.
+ * @param {object} _updates
+ * @param {DamageApplicationOptions} _options
+ * @returns {false|void}
+ */
+export async function relentlessRage(actor, amount, _updates, _options) {
+	if (!actor) return;
+
+	const currentHp = Number(actor.system?.attributes?.hp?.value ?? 0);
+	if (currentHp - amount > 0) return;
+
+	const hasFeature = actor.items.some(
+		(i) =>
+			i.system?.identifier === RELENTLESS_RAGE_IDENTIFIER &&
+			i.system?.source?.book === "Elkan 5e",
+	);
+	if (!hasFeature) return;
+
+	const isRaging = actor.effects.some((e) => e.name?.toLowerCase() === "rage" && !e.disabled);
+	if (!isRaging) return;
+
+	const uses = Number(actor.getFlag("elkan5e", "relentlessRageUses") ?? 0);
+	const conDC = 10 + uses * 5;
+
+	const saveRolls = await actor.rollSavingThrow({
+		ability: "con",
+		target: conDC,
+		midiOptions: { fastForward: true },
+	});
+	await actor.setFlag("elkan5e", "relentlessRageUses", uses + 1);
+
+	if (saveRolls?.[0]?.total < conDC) {
+		await actor.update({ "system.attributes.hp.value": 0 });
+		return;
+	}
+
+	await actor.update({ "system.attributes.hp.value": 1 });
+	return false;
+}
+
+/**
  * Runs rage class feature automation.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
@@ -842,14 +886,6 @@ export async function wildBlood(workflow) {
  * an actor (e.g. the player delevels below 3 or uses the advancement manager to undo),
  * this function:
  *
- *   1. Removes the stored origin data from the actor's flags so a fresh origin can be
- *      chosen the next time the Bloodrager subclass is added.
- *
- *   2. Removes any Seething Blood item that was auto-granted by the module
- *      (identified by a "seething-blood-" identifier prefix).
- *
- *   3. Removes the Wild Blood item if it was auto-granted (identifier "wild-blood").
- *
  * Items that were granted through the AdvancementManager's own tracking are left to
  * the system to handle; only the hook-granted items need manual cleanup here.
  *
@@ -904,9 +940,6 @@ export async function handleBloodragerDelete(item, _options, userId) {
  * object is cached or re-used anywhere after deletion it carries the canonical name,
  * and so any advancement-manager redo path that clones the existing item gets the
  * clean base name rather than the origin-prefixed one.
- *
- * In normal play the re-created compendium copy already has the base name, so this
- * is a defensive belt-and-braces step.
  *
  * @param {Item5e} item    - The item about to be deleted.
  * @param {object} _options

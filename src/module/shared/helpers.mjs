@@ -425,6 +425,37 @@ export async function deleteRegionLights(regionRef) {
 	await scene.deleteEmbeddedDocuments("AmbientLight", existingLightIds);
 }
 
+export function registerDaeSpecials(_actorType, specials) {
+	const BooleanField = foundry.data.fields.BooleanField;
+	const StringField = foundry.data.fields.StringField;
+	specials["flags.elkan5e.pushResist"] = [
+		new BooleanField({
+			label: game.i18n.localize("elkan5e.push.effects.pushResist"),
+			hint: game.i18n.localize("elkan5e.push.effects.pushResistDescription"),
+		}),
+		CONST.ACTIVE_EFFECT_MODES.CUSTOM,
+	];
+}
+
+export async function handleUpdateMeasuredTemplate(template) {
+	const lights = canvas.lighting.placeables.filter(
+		(light) => light.document.getFlag("elkan5e", "linkedTemplate") === template.id,
+	);
+	if (!lights.length) return;
+	for (const light of lights) {
+		await light.document.update({ x: template.x, y: template.y });
+	}
+}
+
+export async function handleDeleteMeasuredTemplate(template) {
+	const lights = canvas.lighting.placeables.filter(
+		(light) => light.document.getFlag("elkan5e", "linkedTemplate") === template.id,
+	);
+	if (!lights.length) return;
+	const ids = lights.map((light) => light.id);
+	await canvas.scene.deleteEmbeddedDocuments("AmbientLight", ids);
+}
+
 export async function createLightRegion(regionRef, config, name = "Midi Region Light") {
 	const regionDoc =
 		typeof regionRef === "string" ? await fromUuid(regionRef).catch(() => null) : regionRef;

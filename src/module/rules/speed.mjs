@@ -20,4 +20,3 @@ export function speed() {
 		JSON.stringify(CONFIG.DND5E.movementTypes),
 	);
 }
-
