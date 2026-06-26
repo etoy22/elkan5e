@@ -895,6 +895,8 @@ export async function grapple(workflow, acr = false, skipRoll = false) {
 			targetAbility: targetSkill,
 		});
 
+		const fastForward =
+			game.settings.get("midi-qol", "ConfigSettings")?.fastForwardAbility ?? false;
 		await MidiQOL.contestedRoll({
 			source: {
 				token,
@@ -912,7 +914,7 @@ export async function grapple(workflow, acr = false, skipRoll = false) {
 			success: applyGrapple.bind(null, token, targetToken, sizeDiff, range),
 			displayResults: true,
 			itemCardId: workflow.itemCardId,
-			rollOptions: { fastForward: false, chatMessage: true, rollMode: "publicroll" },
+			rollOptions: { fastForward, chatMessage: true, rollMode: "publicroll" },
 		});
 	}
 }
