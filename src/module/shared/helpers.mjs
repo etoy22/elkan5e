@@ -427,13 +427,29 @@ export async function deleteRegionLights(regionRef) {
 
 export function registerDaeSpecials(_actorType, specials) {
 	const BooleanField = foundry.data.fields.BooleanField;
-	const StringField = foundry.data.fields.StringField;
+	const NumberField = foundry.data.fields.NumberField;
 	specials["flags.elkan5e.pushResist"] = [
 		new BooleanField({
 			label: game.i18n.localize("elkan5e.push.effects.pushResist"),
 			hint: game.i18n.localize("elkan5e.push.effects.pushResistDescription"),
 		}),
 		CONST.ACTIVE_EFFECT_MODES.CUSTOM,
+	];
+	specials["flags.elkan5e.undeadFortitude"] = [
+		new BooleanField({
+			label: "Undead Fortitude",
+			hint: "When enabled, this creature rolls a Constitution saving throw (DC 5 + damage taken) when reduced to 0 HP, dropping to 1 HP on a success.",
+		}),
+		CONST.ACTIVE_EFFECT_MODES.CUSTOM,
+	];
+	specials["flags.elkan5e.undeadFortitudeDCModifier"] = [
+		new NumberField({
+			label: "Undead Fortitude DC Modifier",
+			hint: "Added to the Undead Fortitude save DC. Use a negative number to lower the DC.",
+			integer: true,
+			initial: 0,
+		}),
+		CONST.ACTIVE_EFFECT_MODES.ADD,
 	];
 }
 

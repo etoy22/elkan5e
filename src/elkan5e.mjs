@@ -170,7 +170,11 @@ function registerHooks() {
 				await startDialog();
 
 				// Registers custom DAE auto-fields so they appear in the DAE field picker.
-				globalThis.DAE?.addAutoFields?.(["flags.elkan5e.pushResist"]);
+				globalThis.DAE?.addAutoFields?.([
+					"flags.elkan5e.pushResist",
+					"flags.elkan5e.undeadFortitude",
+					"flags.elkan5e.undeadFortitudeDCModifier",
+				]);
 			} catch (error) {
 				console.error("Elkan 5e | Ready Hook Error:", error);
 			}
@@ -255,7 +259,7 @@ function registerHooks() {
 			console.error("Elkan 5e | Error in deleteActiveEffect burning hook:", error);
 		}
 
-		try {
+try {
 			await Promise.resolve(Spells.goodberryDeleteActive(effect));
 		} catch (error) {
 			console.error("Elkan 5e | Error cleaning goodberry effect:", error);
@@ -379,12 +383,6 @@ function registerHooks() {
 			await onRestCompleted(actor, result);
 		} catch (error) {
 			console.error("Elkan 5e | Error in restCompleted death save hook:", error);
-		}
-
-		try {
-			await actor.unsetFlag("elkan5e", "relentlessRageUses");
-		} catch (error) {
-			console.error("Elkan 5e | Error resetting Relentless Rage uses:", error);
 		}
 	});
 
