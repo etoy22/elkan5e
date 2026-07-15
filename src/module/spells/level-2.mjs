@@ -301,11 +301,9 @@ export async function darkness(workflow) {
 	// 	: Number.isFinite(itemLevel)
 	// 		? itemLevel
 	// 		: 2;
-
 	// for (const region of workflow.templateUuids ?? []) {
 	// 	const regionTemplate = typeof region === "string" ? await fromUuid(region) : region;
 	// 	const regionRadius = regionTemplate?.document?.distance ?? regionTemplate?.distance ?? 0;
-
 	// 	await createLightRegion(
 	// 		region,
 	// 		{

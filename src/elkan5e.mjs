@@ -259,7 +259,7 @@ function registerHooks() {
 			console.error("Elkan 5e | Error in deleteActiveEffect burning hook:", error);
 		}
 
-try {
+		try {
 			await Promise.resolve(Spells.goodberryDeleteActive(effect));
 		} catch (error) {
 			console.error("Elkan 5e | Error cleaning goodberry effect:", error);
