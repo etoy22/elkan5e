@@ -46,11 +46,7 @@ import {
 	conditionsReady,
 	handleHazardExhaustion,
 } from "./module/rules/condition/setup.mjs";
-import {
-	darknessAttackDisadvantage,
-	queueBlindedByDarknessSync,
-	tokenCanSeeOwnSpace,
-} from "./module/rules/condition/vision.mjs";
+import { darknessAttackDisadvantage } from "./module/rules/condition/vision.mjs";
 import {
 	grapple,
 	handleDeadGrapplePrompt,
@@ -242,15 +238,7 @@ function registerHooks() {
 		}
 	});
 
-	Hooks.on("sightRefresh", () => {
-		try {
-			queueBlindedByDarknessSync();
-		} catch (error) {
-			console.error("Elkan 5e | Error in sightRefresh blinded-by-darkness hook:", error);
-		}
-	});
-
-	Hooks.on("midi-qol.AttackRollComplete", async (workflow) => {
+Hooks.on("midi-qol.AttackRollComplete", async (workflow) => {
 		try {
 			await Spells.mirrorImage(workflow);
 		} catch (error) {
@@ -546,7 +534,6 @@ function registerHooks() {
 				spectralEmpowerment,
 			},
 		},
-		tokenCanSeeOwnSpace,
 	};
 }
 
