@@ -47,6 +47,11 @@ import {
 	handleHazardExhaustion,
 } from "./module/rules/condition/setup.mjs";
 import {
+	darknessAttackDisadvantage,
+	queueBlindedByDarknessSync,
+	tokenCanSeeOwnSpace,
+} from "./module/rules/condition/vision.mjs";
+import {
 	grapple,
 	handleDeadGrapplePrompt,
 	handleGrapplerMove,
@@ -70,6 +75,10 @@ import {
 	onRestCompleted,
 	onPreUpdateActorDeathSaves,
 } from "./module/rules/death-saves.mjs";
+import {
+	onRenderShortRestDialog,
+	onShortRestCompleted,
+} from "./module/rules/short-rest-activations.mjs";
 import { startDialog } from "./module/settings/dialog.mjs";
 import { gameSettingRegister, gameSettingsMigrate } from "./module/settings/game-settings.mjs";
 import {
@@ -77,7 +86,8 @@ import {
 	handleDeleteMeasuredTemplate,
 	handleUpdateMeasuredTemplate,
 	registerDaeSpecials,
-	syncRegionLightSort,
+	registerElkan5eSocket,
+	syncRegionLightExtras,
 } from "./module/shared/helpers.mjs";
 import * as Cantrip from "./module/spells/cantrip.mjs";
 import * as Level1 from "./module/spells/level-1.mjs";
@@ -102,6 +112,14 @@ const Spells = {
  *
  */
 function registerHooks() {
+	Hooks.once("socketlib.ready", () => {
+		try {
+			registerElkan5eSocket();
+		} catch (error) {
+			console.error("Elkan 5e | Error registering socketlib socket:", error);
+		}
+	});
+
 	Hooks.once("init", async () => {
 		try {
 			console.log("Elkan 5e | Initializing Elkan 5e");
@@ -155,6 +173,15 @@ function registerHooks() {
 
 			// Registers custom DAE effect fields for push resistance.
 			Hooks.on("dae.modifySpecials", registerDaeSpecials);
+
+			// Lets players opt in to using short-rest-triggered features from the Short Rest dialog.
+			Hooks.on("renderShortRestDialog", (app, html) => {
+				try {
+					onRenderShortRestDialog(app, html);
+				} catch (error) {
+					console.error("Elkan 5e | Error in renderShortRestDialog hook:", error);
+				}
+			});
 		} catch (error) {
 			console.error("Elkan 5e  |  Initialization Error:", error);
 		}
@@ -202,6 +229,20 @@ function registerHooks() {
 			await Spells.sanctuary(workflow);
 		} catch (error) {
 			console.error("Elkan 5e | Error in Sanctuary hook:", error);
+		}
+
+		try {
+			await darknessAttackDisadvantage(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in darknessAttackDisadvantage hook:", error);
+		}
+	});
+
+	Hooks.on("sightRefresh", () => {
+		try {
+			queueBlindedByDarknessSync();
+		} catch (error) {
+			console.error("Elkan 5e | Error in sightRefresh blinded-by-darkness hook:", error);
 		}
 	});
 
@@ -378,11 +419,17 @@ function registerHooks() {
 		}
 	});
 
-	Hooks.on("dnd5e.restCompleted", async (actor, result) => {
+	Hooks.on("dnd5e.restCompleted", async (actor, result, config) => {
 		try {
 			await onRestCompleted(actor, result);
 		} catch (error) {
 			console.error("Elkan 5e | Error in restCompleted death save hook:", error);
+		}
+
+		try {
+			await onShortRestCompleted(actor, result, config);
+		} catch (error) {
+			console.error("Elkan 5e | Error in restCompleted short rest activation hook:", error);
 		}
 	});
 
@@ -450,17 +497,17 @@ function registerHooks() {
 
 	Hooks.on("createRegionBehavior", async (behavior) => {
 		try {
-			await syncRegionLightSort(behavior);
+			await syncRegionLightExtras(behavior);
 		} catch (error) {
-			console.error("Elkan 5e | Error in createRegionBehavior light sort hook:", error);
+			console.error("Elkan 5e | Error in createRegionBehavior light sync hook:", error);
 		}
 	});
 
 	Hooks.on("updateRegionBehavior", async (behavior) => {
 		try {
-			await syncRegionLightSort(behavior);
+			await syncRegionLightExtras(behavior);
 		} catch (error) {
-			console.error("Elkan 5e | Error in updateRegionBehavior light sort hook:", error);
+			console.error("Elkan 5e | Error in updateRegionBehavior light sync hook:", error);
 		}
 	});
 
@@ -495,6 +542,7 @@ function registerHooks() {
 				spectralEmpowerment,
 			},
 		},
+		tokenCanSeeOwnSpace,
 	};
 }
 

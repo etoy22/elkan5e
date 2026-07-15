@@ -174,7 +174,7 @@
 			"folder": null,
 			"system": {
 				"description": {
-					"value": "<p>An Elite creature counts as two monsters of a given level. It has +2 to all saves, as well as twice as many hit points and twice as much damage as a typical monster of its level.</p>",
+					"value": "<p>An Elite creature counts as two monsters of a given level for the purposes of XP and encounter difficulty. It has +2 to all saves, as well as twice as many hit points and twice as much damage as a typical monster of its level.</p>",
 					"chat": ""
 				},
 				"source": {
@@ -814,11 +814,11 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p>You touch a creature and grant it a measure of protection from death. The first time the target would drop to 0 hit points as a result of taking damage, the target instead drops to 1 hit point, and the spell ends. If the spell is still in effect when the target is subjected to an effect that would kill it instantaneously without dealing damage, that effect is instead negated against the target, and the spells ends.</p>",
+					"value": "<p><em>You grant one creature a measure of protection against death.</em></p><p><strong>Buff</strong></p><ul><li><p>When the target drops to 0 hit points, they instead drop to 1 hit point, and the spell ends.</p></li><li><p>When the target is subjected to an effect that would kill them instantly (without necessarily dealing damage), that effect is instead negated, and the spell ends.</p></li></ul>",
 					"chat": ""
 				},
 				"source": {
-					"custom": "Elkan 5e",
+					"custom": "elkan5e.com/spells/death-ward",
 					"revision": 1,
 					"rules": "",
 					"book": "Elkan 5e",
@@ -918,15 +918,12 @@
 							"override": false
 						},
 						"target": {
-							"prompt": true,
-							"template": {
-								"contiguous": false,
-								"units": "ft"
-							},
-							"affects": {
-								"choice": false
-							},
-							"override": false
+							"type": "creature",
+							"value": 1,
+							"units": "ft",
+							"width": null,
+							"override": false,
+							"prompt": true
 						},
 						"roll": {
 							"formula": "",
@@ -941,43 +938,13 @@
 						},
 						"_id": "pFeUcggOmpfHJOOu",
 						"name": "",
-						"useConditionText": "",
-						"effectConditionText": "",
-						"macroData": {
-							"name": "",
-							"command": ""
-						},
-						"ignoreTraits": {
-							"idi": false,
-							"idr": false,
-							"idv": false,
-							"ida": false
-						},
-						"midiProperties": {
-							"ignoreTraits": [],
-							"triggeredActivityId": "none",
-							"triggeredActivityConditionText": "",
-							"triggeredActivityTargets": "targets",
-							"triggeredActivityRollAs": "self",
-							"forceDialog": false,
-							"confirmTargets": "default",
-							"autoTargetType": "any",
-							"autoTargetAction": "default",
-							"automationOnly": false,
-							"otherActivityCompatible": true,
-							"displayActivityName": false,
-							"rollMode": "default"
-						},
-						"isOverTimeFlag": false,
-						"overTimeProperties": {
-							"saveRemoves": true,
-							"preRemoveConditionText": "",
-							"postRemoveConditionText": ""
-						}
+						"img": "",
+						"appliedEffects": [
+							"VFYefGTgagaYttLd"
+						]
 					}
 				},
-				"identifier": "death-ward",
-				"sourceClass": ""
+				"identifier": "death-ward"
 			},
 			"_id": "N2iZw9PZdSUzslg8",
 			"_key": "!actors.items!uszmtXaLOXkYmV8m.N2iZw9PZdSUzslg8"
@@ -1098,8 +1065,8 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p><em>You command a mote of light to seek your target. Upon contact, the bolt sears flesh and causes the creature's weak spots to glitter.</em></p><p><strong>Ranged Spell Attack</strong></p><ul><li><p><strong>Hit:</strong> [[/damage 4d6 radiant]] damage* and the next attack roll made against this target has advantage.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d6 radiant]] for each spell level above 1st.</p>",
-					"chat": "<strong>Ranged Spell Attack</strong></p><ul><li><p><strong>Hit:</strong> [[/damage 4d6 radiant]] damage* and the next attack roll made against this target has advantage.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d6 radiant]] for each spell level above 1st.</p>"
+					"value": "<p><em>You command a mote of light to seek your target. Upon contact, the bolt sears flesh and causes the creature's weak spots to glitter.</em></p><p><strong>Ranged Spell Attack</strong></p><ul><li><p><strong>Hit:</strong> Target takes [[/damage 4d6 radiant]] damage* and the next attack roll made against this target has advantage.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d6 radiant]] for each spell level above 1st.</p>",
+					"chat": ""
 				},
 				"source": {
 					"custom": "elkan5e.com/spells/guiding-bolt",
@@ -1192,13 +1159,10 @@
 							"override": false
 						},
 						"target": {
-							"template": {
-								"contiguous": false,
-								"units": "ft"
-							},
-							"affects": {
-								"choice": false
-							},
+							"type": "creature",
+							"value": 1,
+							"units": "ft",
+							"width": null,
 							"override": false,
 							"prompt": true
 						},
@@ -1245,43 +1209,10 @@
 							]
 						},
 						"name": "",
-						"useConditionText": "",
-						"effectConditionText": "",
-						"macroData": {
-							"name": "",
-							"command": ""
-						},
-						"ignoreTraits": {
-							"idi": false,
-							"idr": false,
-							"idv": false,
-							"ida": false
-						},
-						"midiProperties": {
-							"ignoreTraits": [],
-							"triggeredActivityId": "none",
-							"triggeredActivityConditionText": "",
-							"triggeredActivityTargets": "targets",
-							"triggeredActivityRollAs": "self",
-							"forceDialog": false,
-							"confirmTargets": "default",
-							"autoTargetType": "any",
-							"autoTargetAction": "default",
-							"automationOnly": false,
-							"otherActivityCompatible": true,
-							"displayActivityName": false,
-							"rollMode": "default"
-						},
-						"isOverTimeFlag": false,
-						"overTimeProperties": {
-							"saveRemoves": true,
-							"preRemoveConditionText": "",
-							"postRemoveConditionText": ""
-						},
-						"attackMode": "oneHanded",
-						"ammunition": "",
-						"otherActivityId": "",
-						"otherActivityUuid": ""
+						"img": "",
+						"appliedEffects": [
+							"rj47kgdHd8JD4hSD"
+						]
 					}
 				},
 				"identifier": "guiding-bolt"
@@ -1533,7 +1464,7 @@
 							"disableCondition": ""
 						},
 						"ActiveAuras": {
-							"isAura": true,
+							"isAura": false,
 							"radius": "30",
 							"aura": "Allies",
 							"alignment": "",
@@ -1631,8 +1562,8 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p><em>You hum a soft chant that magically carries over your surroundings, emboldening your allies and allowing them to recover quickly.</em></p><p><strong>Buff</strong></p><ul><li><p>Target has advantage on wisdom saving throws and death saving throws.</p></li><li><p>Target regains the maximum number of hit points possible from any healing.</p></li></ul>",
-					"chat": "<strong>Buff</strong></p><ul><li><p>Target has advantage on wisdom saving throws and death saving throws.</p></li><li><p>Target regains the maximum number of hit points possible from any healing.</p></li></ul>"
+					"value": "<p><em>You hum a soft chant that magically carries over your surroundings, emboldening your allies and allowing them to recover quickly.</em></p><p><strong>Buff</strong></p><ul><li><p>Allies in radius have &amp;reference[advantage] on wisdom saving throws and &amp;reference[death saving throws].</p></li><li><p>Allies regain the maximum number of hit points possible from any healing.</p></li></ul>",
+					"chat": ""
 				},
 				"source": {
 					"book": "Elkan 5e",
@@ -1725,25 +1656,32 @@
 						},
 						"effects": [
 							{
-								"_id": "RtkJJbNnHgYVRGhK"
+								"_id": "RtkJJbNnHgYVRGhK",
+								"level": {
+									"min": null,
+									"max": null
+								}
 							}
 						],
 						"range": {
 							"override": false
 						},
 						"target": {
+							"type": "creature",
+							"value": 1,
+							"units": "ft",
+							"width": null,
+							"override": true,
 							"prompt": true,
-							"template": {
-								"contiguous": false,
-								"units": "ft",
-								"type": ""
-							},
 							"affects": {
-								"choice": false,
-								"count": "",
-								"type": "self"
+								"type": "self",
+								"special": ""
 							},
-							"override": true
+							"template": {
+								"type": "radius",
+								"size": "30",
+								"count": ""
+							}
 						},
 						"roll": {
 							"formula": "",
@@ -1758,43 +1696,35 @@
 						},
 						"_id": "a58J4HPZRQKaOaYr",
 						"name": "",
-						"useConditionText": "",
-						"effectConditionText": "",
-						"macroData": {
-							"name": "",
-							"command": ""
+						"img": "",
+						"appliedEffects": [
+							"RtkJJbNnHgYVRGhK"
+						],
+						"visibility": {
+							"level": {
+								"min": null,
+								"max": null
+							}
 						},
-						"ignoreTraits": {
-							"idi": false,
-							"idr": false,
-							"idv": false,
-							"ida": false
-						},
-						"midiProperties": {
-							"ignoreTraits": [],
-							"triggeredActivityId": "none",
-							"triggeredActivityConditionText": "",
-							"triggeredActivityTargets": "targets",
-							"triggeredActivityRollAs": "self",
-							"forceDialog": false,
-							"confirmTargets": "default",
-							"autoTargetType": "any",
-							"autoTargetAction": "default",
-							"automationOnly": false,
-							"otherActivityCompatible": true,
-							"displayActivityName": false,
-							"rollMode": "default"
-						},
-						"isOverTimeFlag": false,
-						"overTimeProperties": {
-							"saveRemoves": true,
-							"preRemoveConditionText": "",
-							"postRemoveConditionText": ""
+						"regionBehavior": {
+							"dispositionFilter": 0,
+							"rules": [
+								{
+									"trigger": "entry",
+									"action": "applyEffect",
+									"targetId": "RtkJJbNnHgYVRGhK"
+								},
+								{
+									"trigger": "exit",
+									"action": "removeEffect",
+									"targetId": "RtkJJbNnHgYVRGhK"
+								}
+							],
+							"enabled": true
 						}
 					}
 				},
-				"identifier": "beacon-of-hope",
-				"sourceClass": ""
+				"identifier": "beacon-of-hope"
 			},
 			"_id": "03vRWXwmAMTvoNmw",
 			"_key": "!actors.items!uszmtXaLOXkYmV8m.03vRWXwmAMTvoNmw"
@@ -1846,7 +1776,7 @@
 					"chat": ""
 				},
 				"source": {
-					"custom": "Elkan 5e",
+					"custom": "elkan5e.com/spells/mass-cure-wounds",
 					"revision": 1,
 					"rules": "",
 					"book": "Elkan 5e",
@@ -1944,19 +1874,16 @@
 							"override": false
 						},
 						"target": {
-							"prompt": true,
-							"template": {
-								"contiguous": false,
-								"units": "ft"
-							},
-							"affects": {
-								"choice": false
-							},
-							"override": false
+							"type": "creature",
+							"value": 1,
+							"units": "ft",
+							"width": null,
+							"override": false,
+							"prompt": true
 						},
 						"healing": {
 							"number": 4,
-							"denomination": 6,
+							"denomination": "6",
 							"bonus": "@mod",
 							"types": [
 								"healing"
@@ -1978,43 +1905,12 @@
 						},
 						"_id": "wASZ6b4LRZWIjBmc",
 						"name": "",
-						"useConditionText": "",
-						"effectConditionText": "",
-						"macroData": {
-							"name": "",
-							"command": ""
-						},
-						"ignoreTraits": {
-							"idi": false,
-							"idr": false,
-							"idv": false,
-							"ida": false
-						},
-						"midiProperties": {
-							"ignoreTraits": [],
-							"triggeredActivityId": "none",
-							"triggeredActivityConditionText": "",
-							"triggeredActivityTargets": "targets",
-							"triggeredActivityRollAs": "self",
-							"forceDialog": false,
-							"confirmTargets": "default",
-							"autoTargetType": "any",
-							"autoTargetAction": "default",
-							"automationOnly": false,
-							"otherActivityCompatible": true,
-							"displayActivityName": false,
-							"rollMode": "default"
-						},
-						"isOverTimeFlag": false,
-						"overTimeProperties": {
-							"saveRemoves": true,
-							"preRemoveConditionText": "",
-							"postRemoveConditionText": ""
-						}
+						"img": "",
+						"appliedEffects": [],
+						"useConditionText": "target.details.type?.subtype=== \"Soul Gem\" || !(target.details.type?.value === \"construct\")"
 					}
 				},
-				"identifier": "mass-cure-wounds",
-				"sourceClass": ""
+				"identifier": "mass-cure-wounds"
 			},
 			"_id": "mYvfHy9dFpHXeHkb",
 			"_key": "!actors.items!uszmtXaLOXkYmV8m.mYvfHy9dFpHXeHkb"
@@ -2183,7 +2079,7 @@
 			"system": {
 				"description": {
 					"value": "<p><em>Holding out a holy or profane symbol, you call upon its power to empower your allies.</em></p><p><strong>Buff</strong></p><ul><li><p>The targets can roll [[/r 1d4]] and add the number rolled to all attack rolls and saving throws, rolling 1d4 again for every roll.</p></li></ul><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 1st.</p>",
-					"chat": "<strong>Buff</strong></p><ul><li><p>The targets can roll [[/r 1d4]] and add the number rolled to all attack rolls and saving throws, rolling 1d4 again for every roll.</p></li></ul><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 1st.</p>"
+					"chat": ""
 				},
 				"source": {
 					"custom": "elkan5e.com/spells/bless",
@@ -2206,7 +2102,7 @@
 					"affects": {
 						"special": "",
 						"type": "creature",
-						"count": "3",
+						"count": "@item.level + 2",
 						"choice": false
 					},
 					"template": {
@@ -2234,7 +2130,7 @@
 				"level": 1,
 				"school": "enc",
 				"materials": {
-					"value": "A sprinkling of holy water",
+					"value": "",
 					"consumed": false,
 					"cost": 0,
 					"supply": 0
@@ -2247,8 +2143,7 @@
 					"vocal",
 					"somatic",
 					"material",
-					"concentration",
-					"mgc"
+					"concentration"
 				],
 				"activities": {
 					"ZjUyByA0Hx2AEYv9": {
@@ -2291,13 +2186,10 @@
 							"override": false
 						},
 						"target": {
-							"template": {
-								"contiguous": false,
-								"units": "ft"
-							},
-							"affects": {
-								"choice": false
-							},
+							"type": "creature",
+							"value": 1,
+							"units": "ft",
+							"width": null,
 							"override": false,
 							"prompt": true
 						},
@@ -2313,43 +2205,13 @@
 							"formula": ""
 						},
 						"name": "",
-						"useConditionText": "",
-						"effectConditionText": "",
-						"macroData": {
-							"name": "",
-							"command": ""
-						},
-						"ignoreTraits": {
-							"idi": false,
-							"idr": false,
-							"idv": false,
-							"ida": false
-						},
-						"midiProperties": {
-							"ignoreTraits": [],
-							"triggeredActivityId": "none",
-							"triggeredActivityConditionText": "",
-							"triggeredActivityTargets": "targets",
-							"triggeredActivityRollAs": "self",
-							"forceDialog": false,
-							"confirmTargets": "default",
-							"autoTargetType": "any",
-							"autoTargetAction": "default",
-							"automationOnly": false,
-							"otherActivityCompatible": true,
-							"displayActivityName": false,
-							"rollMode": "default"
-						},
-						"isOverTimeFlag": false,
-						"overTimeProperties": {
-							"saveRemoves": true,
-							"preRemoveConditionText": "",
-							"postRemoveConditionText": ""
-						}
+						"img": "",
+						"appliedEffects": [
+							"lsEz6wG7eXIutwZI"
+						]
 					}
 				},
-				"identifier": "bless",
-				"sourceClass": ""
+				"identifier": "bless"
 			},
 			"_id": "D1X7N1fBcv37OKWL",
 			"_key": "!actors.items!uszmtXaLOXkYmV8m.D1X7N1fBcv37OKWL"
@@ -2394,7 +2256,7 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p>You touch a willing creature, calling for their affliction to be drawn out of them and cast out.</p><p><strong>Healing</strong></p><ul><li><p>You end either one disease or one of the following conditions afflicting them: &amp;reference[Blinded], &amp;reference[Deafened], &amp;reference[Paralyzed], or &amp;reference[Poisoned].</p></li></ul>",
+					"value": "<p><em>You touch a willing creature, calling for their affliction to be drawn out of them and cast out.</em></p><p><strong>Healing</strong></p><ul><li><p>You end one of the following conditions afflicting a creature: &amp;reference[Blinded apply=false], &amp;reference[Deafened apply=false], &amp;reference[Paralyzed apply=false], or &amp;reference[Poisoned apply=false], or &amp;reference[weakened apply=false].</p></li></ul>",
 					"chat": ""
 				},
 				"source": {
@@ -2406,7 +2268,7 @@
 					"license": ""
 				},
 				"activation": {
-					"type": "action",
+					"type": "bonus",
 					"condition": "",
 					"value": 1
 				},
@@ -2416,9 +2278,9 @@
 				},
 				"target": {
 					"affects": {
-						"type": "creature",
+						"type": "ally",
 						"choice": false,
-						"count": "",
+						"count": "1",
 						"special": ""
 					},
 					"template": {
@@ -2456,8 +2318,7 @@
 				},
 				"properties": [
 					"vocal",
-					"somatic",
-					"mgc"
+					"somatic"
 				],
 				"activities": {
 					"dnd5eactivity000": {
@@ -2497,15 +2358,12 @@
 							"override": false
 						},
 						"target": {
-							"prompt": true,
-							"template": {
-								"contiguous": false,
-								"units": "ft"
-							},
-							"affects": {
-								"choice": false
-							},
-							"override": false
+							"type": "creature",
+							"value": 1,
+							"units": "ft",
+							"width": null,
+							"override": false,
+							"prompt": true
 						},
 						"uses": {
 							"spent": 0,
@@ -2518,44 +2376,30 @@
 							"prompt": false,
 							"visible": false
 						},
-						"useConditionText": "",
-						"effectConditionText": "",
 						"macroData": {
-							"name": "",
-							"command": ""
+							"name": "Lesser Restoration",
+							"command": "return await elkan5e.macros.spells.lesserRestoration(workflow);"
 						},
-						"ignoreTraits": {
-							"idi": false,
-							"idr": false,
-							"idv": false,
-							"ida": false
+						"flags": {
+							"dae": {
+								"macro": {
+									"name": "Lesser Restoration",
+									"img": "icons/magic/life/heart-cross-blue.webp",
+									"type": "script",
+									"scope": "global",
+									"command": "return await elkan5e.macros.spells.lesserRestoration(workflow);",
+									"author": "vHqSHJMdmEO6Mk2C",
+									"_id": null,
+									"folder": null
+								}
+							}
 						},
-						"midiProperties": {
-							"ignoreTraits": [],
-							"triggeredActivityId": "none",
-							"triggeredActivityConditionText": "",
-							"triggeredActivityTargets": "targets",
-							"triggeredActivityRollAs": "self",
-							"forceDialog": false,
-							"confirmTargets": "default",
-							"autoTargetType": "any",
-							"autoTargetAction": "default",
-							"automationOnly": false,
-							"otherActivityCompatible": true,
-							"displayActivityName": false,
-							"rollMode": "default"
-						},
-						"isOverTimeFlag": false,
-						"overTimeProperties": {
-							"saveRemoves": true,
-							"preRemoveConditionText": "",
-							"postRemoveConditionText": ""
-						},
-						"name": ""
+						"name": "",
+						"img": "",
+						"appliedEffects": []
 					}
 				},
-				"identifier": "lesser-restoration",
-				"sourceClass": ""
+				"identifier": "lesser-restoration"
 			},
 			"_id": "5dX4Hy44zqTVAwpY",
 			"_key": "!actors.items!uszmtXaLOXkYmV8m.5dX4Hy44zqTVAwpY"

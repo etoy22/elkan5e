@@ -293,35 +293,33 @@ export async function returnToNormalSize(effect) {
  * @returns {Promise<unknown>} Promise resolution result.
  */
 export async function darkness(workflow) {
-	// TODO: Fix this spell automation. The following code is commented out because it may not work as intended and needs to be reviewed and tested.
-	// const castLevel = Number(workflow.castData?.castLevel);
-	// const itemLevel = Number(workflow.item?.system?.level);
-	// const spellLevel = Number.isFinite(castLevel)
-	// 	? castLevel
-	// 	: Number.isFinite(itemLevel)
-	// 		? itemLevel
-	// 		: 2;
-	// for (const region of workflow.templateUuids ?? []) {
-	// 	const regionTemplate = typeof region === "string" ? await fromUuid(region) : region;
-	// 	const regionRadius = regionTemplate?.document?.distance ?? regionTemplate?.distance ?? 0;
-	// 	await createLightRegion(
-	// 		region,
-	// 		{
-	// 			dim: 0,
-	// 			bright: regionRadius,
-	// 			alpha: 0.3,
-	// 			luminosity: 0.5,
-	// 			negative: true,
-	// 			animation: {
-	// 				type: "",
-	// 				speed: 2,
-	// 				intensity: 5,
-	// 			},
-	// 			sort: spellLevel - 1,
-	// 		},
-	// 		"Darkness",
-	// 	);
-	// }
+	const castLevel = Number(workflow.castData?.castLevel);
+	const itemLevel = Number(workflow.item?.system?.level);
+	const spellLevel = Number.isFinite(castLevel)
+		? castLevel
+		: Number.isFinite(itemLevel)
+			? itemLevel
+			: 2;
+
+	for (const region of workflow.templateUuids ?? []) {
+		await createLightRegion(
+			region,
+			{
+				dim: 0,
+				bright: 15,
+				alpha: 0.3,
+				luminosity: 0.5,
+				negative: true,
+				animation: {
+					type: "",
+					speed: 2,
+					intensity: 5,
+				},
+				priority: spellLevel - 1,
+			},
+			"Darkness",
+		);
+	}
 }
 
 /**
@@ -353,7 +351,7 @@ export async function continualFlame(workflow) {
 					speed: 2,
 					intensity: 5,
 				},
-				sort: spellLevel,
+				priority: spellLevel,
 			},
 			"Continual Flame",
 		);
@@ -389,7 +387,7 @@ export async function moonBeam(workflow) {
 					speed: 2,
 					intensity: 5,
 				},
-				sort: spellLevel,
+				priority: spellLevel,
 			},
 			"Moon Beam",
 		);

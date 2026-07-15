@@ -30,7 +30,7 @@
 					"disableCondition": ""
 				},
 				"ActiveAuras": {
-					"isAura": true,
+					"isAura": false,
 					"aura": "None",
 					"radius": "0",
 					"alignment": "",
@@ -241,7 +241,13 @@
 					}
 				},
 				"regionBehavior": {
+					"attachToken": "default",
 					"enabled": true,
+					"dispositionFilter": -1,
+					"excludeSource": false,
+					"oncePerTurn": false,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
 					"rules": [
 						{
 							"trigger": "entry",
@@ -250,11 +256,10 @@
 						},
 						{
 							"trigger": "exit",
-							"action": "applyEffect",
+							"action": "removeEffect",
 							"targetId": "iPmhsqkpCJruiGzi"
 						}
-					],
-					"dispositionFilter": 0
+					]
 				}
 			}
 		},
