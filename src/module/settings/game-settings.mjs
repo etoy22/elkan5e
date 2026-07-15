@@ -168,16 +168,6 @@ export async function registerGameSettings() {
 		restricted: true,
 	});
 
-	game.settings.register(MODULE_ID, "darknessVisionRules", {
-		name: "elkan5e.darknessVisionRules.name",
-		hint: "elkan5e.darknessVisionRules.hint",
-		scope: "world",
-		config: true,
-		default: true,
-		type: Boolean,
-		restricted: true,
-	});
-
 	game.settings.registerMenu(MODULE_ID, "updateElkanMenu", {
 		name: "elkan5e.updateElkan.name",
 		label: "elkan5e.updateElkan.label", // Text on the button

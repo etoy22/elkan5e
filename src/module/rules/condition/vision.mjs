@@ -19,14 +19,17 @@ export function tokenCanSeeOwnSpace(token) {
 	const visionSources = canvas.effects?.visionSources;
 	if (!vision || !visionSources) return true;
 
-	const backup = new Map(visionSources);
+	const backup = new Map(visionSources.entries());
 	try {
 		visionSources.clear();
 		visionSources.set(token.sourceId, vision);
-		return canvas.effects.visibility.testVisibility(token.center, {
+		return canvas.visibility.testVisibility(token.center, {
 			tolerance: 0,
 			object: token,
 		});
+	} catch (error) {
+		console.error("Elkan 5e | Error testing token's own vision:", error);
+		return true;
 	} finally {
 		visionSources.clear();
 		for (const [key, value] of backup) visionSources.set(key, value);
@@ -46,10 +49,9 @@ export async function syncBlindedByDarkness(token) {
 	const actor = token?.actor;
 	if (!actor || !token.document?.sight?.enabled) return;
 
-	const rulesEnabled = game.settings.get("elkan5e", "darknessVisionRules");
 	const blindedAlready = actor.statuses?.has("blinded");
 	const appliedByUs = Boolean(actor.getFlag("elkan5e", BLINDED_BY_DARKNESS_FLAG));
-	const blindNow = rulesEnabled && !tokenCanSeeOwnSpace(token);
+	const blindNow = !tokenCanSeeOwnSpace(token);
 
 	if (blindNow && !blindedAlready) {
 		await actor.toggleStatusEffect("blinded", { active: true });
@@ -81,7 +83,8 @@ export function queueBlindedByDarknessSync() {
 }
 
 /**
- * Runs on midi-qol.preAttackRoll: forces disadvantage on the attack whenever
+ * Runs on midi-qol.preAttackRollConfig (after midi-qol's own advantage/disadvantage
+ * recompute, so this isn't reset): forces disadvantage on the attack whenever
  * the attacker cannot see the target (per midi-qol's vision-based canSee,
  * which accounts for darkvision, magical darkness, and walls).
  *
@@ -90,8 +93,6 @@ export function queueBlindedByDarknessSync() {
  */
 export async function darknessAttackDisadvantage(workflow) {
 	try {
-		if (!game.settings.get("elkan5e", "darknessVisionRules")) return;
-
 		const canSee = globalThis.MidiQOL?.canSee;
 		if (typeof canSee !== "function") return;
 
@@ -103,8 +104,7 @@ export async function darknessAttackDisadvantage(workflow) {
 			if (!targetToken) continue;
 			if (canSee(attackerToken, targetToken)) continue;
 
-			workflow.disadvantage = true;
-			workflow.attackAdvAttribution?.add?.("Elkan 5e: target obscured by darkness");
+			workflow.attackRollModifierTracker?.disadvantage?.add("Unseen Target");
 		}
 	} catch (error) {
 		console.error("Elkan 5e | Error in darknessAttackDisadvantage:", error);

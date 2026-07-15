@@ -230,7 +230,11 @@ function registerHooks() {
 		} catch (error) {
 			console.error("Elkan 5e | Error in Sanctuary hook:", error);
 		}
+	});
 
+	// Fires after midi-qol's own checkAttackAdvantage() resets and recomputes
+	// the attack roll modifier tracker, so our disadvantage isn't wiped out.
+	Hooks.on("midi-qol.preAttackRollConfig", async (workflow) => {
 		try {
 			await darknessAttackDisadvantage(workflow);
 		} catch (error) {

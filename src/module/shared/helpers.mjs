@@ -526,6 +526,10 @@ export function registerElkan5eSocket() {
 		return;
 	}
 	elkan5eSocket = socketlib.registerModule("elkan5e");
+	if (!elkan5eSocket) {
+		console.warn("Elkan 5e | socketlib failed to register module socket; light spells will require GM ownership.");
+		return;
+	}
 	elkan5eSocket.register("createLightRegion", applyLightRegion);
 }
 
