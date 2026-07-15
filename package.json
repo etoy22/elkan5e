@@ -8,7 +8,7 @@
     "pack": "npm run clean && npm run pack:raw",
     "pack:raw": "node ./scripts/packs.mjs package pack",
     "clean": "node ./scripts/packs.mjs package clean",
-    "unpack": "npm run unpack:raw && node ./src/tools/sync-features.mjs && node ./src/tools/sync-summoned.mjs && node ./src/tools/update-spell-lists.mjs",
+    "unpack": "npm run unpack:raw && node ./scripts/sync-features.mjs && node ./scripts/sync-summoned.mjs && node ./scripts/update-spell-lists.mjs",
     "unpack:raw": "node ./scripts/packs.mjs package unpack",
     "remove": "node ./scripts/packs.mjs package remove",
     "lint": "eslint \"src/**/*.mjs\" \"scripts/**/*.mjs\"",
