@@ -69,125 +69,10 @@
 				"useConditionText": "",
 				"forceDialog": false,
 				"effectConditionText": "",
-				"name": "Light Up",
+				"name": "Toggle Light",
 				"img": "",
 				"appliedEffects": [
 					"L3W2haymY7EetW1k"
-				]
-			},
-			"SUhCqli2WXbZP724": {
-				"type": "utility",
-				"activation": {
-					"type": "bonus",
-					"value": null,
-					"override": false,
-					"condition": ""
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "VtNqkAe2qFVBVv7I"
-					}
-				],
-				"range": {
-					"override": false,
-					"units": "self",
-					"special": ""
-				},
-				"target": {
-					"template": {
-						"contiguous": false,
-						"units": "ft",
-						"type": ""
-					},
-					"affects": {
-						"choice": false,
-						"count": "",
-						"type": "self",
-						"special": ""
-					},
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"roll": {
-					"prompt": false,
-					"visible": false,
-					"name": "",
-					"formula": ""
-				},
-				"useConditionText": "",
-				"effectConditionText": "",
-				"name": "Turn off the Light",
-				"useConditionReason": "",
-				"macroData": {
-					"name": "",
-					"command": ""
-				},
-				"ignoreTraits": {
-					"idi": false,
-					"idr": false,
-					"idv": false,
-					"ida": false,
-					"idm": false
-				},
-				"midiProperties": {
-					"ignoreTraits": [],
-					"triggeredActivityId": "none",
-					"triggeredActivityConditionText": "",
-					"triggeredActivityTargets": "targets",
-					"triggeredActivityRollAs": "self",
-					"autoConsume": false,
-					"forceConsumeDialog": "default",
-					"forceRollDialog": "default",
-					"forceDamageDialog": "default",
-					"confirmTargets": "default",
-					"autoTargetType": "any",
-					"autoTargetAction": "default",
-					"automationOnly": false,
-					"otherActivityCompatible": true,
-					"otherActivityAsParentType": true,
-					"displayActivityName": false,
-					"rollMode": "default",
-					"chooseEffects": false,
-					"toggleEffect": false,
-					"ignoreFullCover": false,
-					"removeChatButtons": "default",
-					"magicEffect": false,
-					"magicDamage": false,
-					"noConcentrationCheck": false,
-					"autoCEEffects": "default"
-				},
-				"isOverTimeFlag": false,
-				"overTimeProperties": {
-					"saveRemoves": true,
-					"preRemoveConditionText": "",
-					"postRemoveConditionText": ""
-				},
-				"otherActivityId": "none",
-				"otherActivityAsParentType": true,
-				"_id": "SUhCqli2WXbZP724",
-				"img": "",
-				"appliedEffects": [
-					"VtNqkAe2qFVBVv7I"
 				]
 			}
 		},
@@ -224,7 +109,7 @@
 	},
 	"effects": [
 		{
-			"name": "Living Lantern (On)",
+			"name": "Living Lantern",
 			"img": "icons/magic/fire/elemental-fire-humanoid.webp",
 			"origin": "Compendium.elkan5e.elkan5e-ancestries.Item.0yUHgRecCacVW5Jn",
 			"transfer": false,
@@ -292,63 +177,6 @@
 			"showIcon": 1,
 			"folder": null,
 			"_key": "!items.effects!0yUHgRecCacVW5Jn.L3W2haymY7EetW1k"
-		},
-		{
-			"name": "Living Lantern (Off)",
-			"img": "icons/magic/fire/elemental-fire-humanoid.webp",
-			"origin": "Compendium.elkan5e.elkan5e-ancestries.Item.0yUHgRecCacVW5Jn",
-			"transfer": false,
-			"type": "base",
-			"system": {
-				"changes": []
-			},
-			"disabled": false,
-			"duration": {
-				"value": null,
-				"units": "seconds",
-				"expiry": null,
-				"expired": false
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"statuses": [],
-			"flags": {
-				"dae": {
-					"enableCondition": "",
-					"disableCondition": "",
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"stackable": "noneName",
-					"showIcon": true,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "Enemy",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
-				}
-			},
-			"_id": "VtNqkAe2qFVBVv7I",
-			"start": null,
-			"showIcon": 1,
-			"folder": null,
-			"_key": "!items.effects!0yUHgRecCacVW5Jn.VtNqkAe2qFVBVv7I"
 		}
 	],
 	"flags": {
@@ -361,7 +189,7 @@
 			"magicdam": false,
 			"magiceffect": false,
 			"noConcentrationCheck": false,
-			"toggleEffect": false,
+			"toggleEffect": true,
 			"ignoreTotalCover": false,
 			"idr": false,
 			"idi": false,
