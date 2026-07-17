@@ -463,9 +463,9 @@ export async function mirrorImage(workflow) {
 			});
 		}
 
-		// Remove the real target from the workflow so damage is never applied.
+		// Remove the real target from the workflow so damage is never applied,
+		// without aborting the whole roll (which would delete the attack roll card).
 		workflow.targets.delete(target);
-		if (workflow.targets.size === 0) workflow.aborted = true;
 	} catch (err) {
 		console.error("Mirror Image |", err);
 	}
