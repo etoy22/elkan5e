@@ -12,18 +12,19 @@ const FLAG_NAME = "shortRestActivations";
 /**
  * Collects activities on the actor usable during a short rest.
  * @param {Actor5e} actor
- * @returns {{activity: Activity, item: Item5e, hasUses: boolean}[]}
+ * @returns {{activity: Activity, item: Item5e, hasUses: boolean, uses: {value: number, max: number}|null}[]}
  */
 function getShortRestActivities(actor) {
 	const results = [];
 	for (const item of actor.items) {
 		for (const activity of item.system?.activities ?? []) {
 			if (
-				activity.activation?.type === "shortRest" &&
+				activity.activation?.type?.toLowerCase() === "shortrest" &&
 				activity.canUse &&
 				activity.target?.affects?.type === "self"
 			) {
-				results.push({ activity, item, hasUses: activityHasUses(activity) });
+				const uses = getActivityUses(activity);
+				results.push({ activity, item, hasUses: uses ? uses.value > 0 : true, uses });
 			}
 		}
 	}
@@ -33,14 +34,13 @@ function getShortRestActivities(actor) {
 /* -------------------------------------------- */
 
 /**
- * Determines whether an activity still has a use available to spend,
- * checking either its own limited-use pool or, if it consumes the parent
- * item's uses, the item's pool.
+ * Determines the limited-use pool spent by an activity, checking either its
+ * own uses or, if it consumes the parent item's uses, the item's pool.
  * @param {Activity} activity
- * @returns {boolean}
+ * @returns {{value: number, max: number}|null} Null if the activity isn't limited-use.
  */
-function activityHasUses(activity) {
-	if (activity.uses?.max) return activity.uses.value > 0;
+function getActivityUses(activity) {
+	if (activity.uses?.max) return { value: activity.uses.value, max: activity.uses.max };
 
 	// Some activities also grant uses to other items (e.g. Rumination feeding
 	// Rage); only a target with an empty/self "target" spends the item's own charge.
@@ -48,10 +48,10 @@ function activityHasUses(activity) {
 		(target) => target.type === "itemUses" && !target.target,
 	);
 	if (consumesOwnItemUses && activity.item.system.uses?.max) {
-		return activity.item.system.uses.value > 0;
+		return { value: activity.item.system.uses.value, max: activity.item.system.uses.max };
 	}
 
-	return true;
+	return null;
 }
 
 /* -------------------------------------------- */
@@ -85,19 +85,31 @@ export function onRenderShortRestDialog(app, html) {
 		legend.textContent = "Use on Short Rest";
 		fieldset.appendChild(legend);
 
-		for (const { activity, item, hasUses } of activities) {
-			const label = document.createElement("label");
-			label.className = "checkbox";
-			if (!hasUses) label.classList.add("disabled");
+		for (const { activity, item, hasUses, uses } of activities) {
+			const formGroup = document.createElement("div");
+			formGroup.className = "form-group";
 
+			const label = document.createElement("label");
+			label.textContent = item.name;
+			formGroup.appendChild(label);
+
+			const formFields = document.createElement("div");
+			formFields.className = "form-fields";
 			const input = document.createElement("input");
 			input.type = "checkbox";
 			input.name = `flags.elkan5e.${FLAG_NAME}.${activity.id}`;
 			input.disabled = !hasUses;
+			formFields.appendChild(input);
+			formGroup.appendChild(formFields);
 
-			label.appendChild(input);
-			label.append(hasUses ? ` ${item.name}` : ` ${item.name} (no uses remaining)`);
-			fieldset.appendChild(label);
+			if (uses) {
+				const hint = document.createElement("p");
+				hint.className = "hint";
+				hint.textContent = hasUses ? `${uses.value} available.` : "Unavailable.";
+				formGroup.appendChild(hint);
+			}
+
+			fieldset.appendChild(formGroup);
 		}
 
 		const footer = form.querySelector(".form-footer, button[type='submit']");
