@@ -1,5 +1,87 @@
 # Changelog
 
+# v1.14.2
+
+## Bug Fixes
+
+- Fixed [Black Tentacles](https://www.elkan5e.com/spells/black-tentacles) — now correctly says upcasting from 4th level instead of 2nd in Foundry. ([EE-981](https://ethanleider.atlassian.net/browse/EE-981))
+- Fixed [Stinking Cloud](https://www.elkan5e.com/spells/stinking-cloud). ([EE-990](https://ethanleider.atlassian.net/browse/EE-990))
+- Fixed Standard Actions Grapple and Push — contested rolls now respect the midi-qol "fast forward ability checks" setting instead of always forcing a prompt. ([EE-975](https://ethanleider.atlassian.net/browse/EE-975))
+- Fixed Rumination (Barbarian), Meditation (Monk), and Plan the Hunt (Ranger) formulas. ([EE-974](https://ethanleider.atlassian.net/browse/EE-974))
+- Fixed ancestry and background stat inaccuracies. ([EE-1002](https://ethanleider.atlassian.net/browse/EE-1002))
+- Fixed Abbot and Touch of Corrosion content errors. ([EE-1001](https://ethanleider.atlassian.net/browse/EE-1001))
+- Fixed Elemental Attunement effect lookup (effects are matched by name, not label) and guarded against a bad element key. ([EE-997](https://ethanleider.atlassian.net/browse/EE-997))
+
+## Classes
+
+### Barbarian
+
+- Relentless Rage now tracks uses via effect names instead of flags, so players can manually edit the count. ([EE-987](https://ethanleider.atlassian.net/browse/EE-987))
+- Wild Blood: 
+    - Keyed off `postUseActivity` and the feature identifier instead of a workflow/scope lookup that broke when the activity id didn't round-trip; dropped the redundant on-use active effect. ([EE-991](https://ethanleider.atlassian.net/browse/EE-991))
+
+### Fighter
+
+- [Bodyblock](https://www.elkan5e.com/feats/bodyblock) can now be picked by level 2 fighters. ([EE-973](https://ethanleider.atlassian.net/browse/EE-973))
+
+### Paladin
+
+- Holy Nimbus: now deals damage effect similar to spirit guardians  ([EE-1000](https://ethanleider.atlassian.net/browse/EE-1000))
+
+### Cleric
+
+- Deceiver: 
+    - Shroud of Darkness updated to match the website — invisibility now ends on an attack or spell cast by the target. ([EE-977](https://ethanleider.atlassian.net/browse/EE-977))
+
+### Ranger
+
+- Unrelenting Focus: now automatically also deals Mark for Death damage when the ranger isn't maintaining any ranger mark, not just when the specific target lacks the effect.
+- Precise Hunter: now automatically grants advantage on attack rolls against any creature carrying Mark for Death. ([EE-994](https://ethanleider.atlassian.net/browse/EE-994))
+
+### Sorcerer
+
+- Added Careful Spell Automation: Lets the sorcerer pick up to their Charisma modifier of targets to auto-succeed a save-forcing spell's save. ([EE-992](https://ethanleider.atlassian.net/browse/EE-992))
+
+### Wizard
+
+- Evoker
+    - Automatted Overchannel: an arm-only utility that forces max damage on the next qualifying spell-slot cast (up to 5th level), with escalating self-damage for repeat uses before a long rest. ([EE-993](https://ethanleider.atlassian.net/browse/EE-993))
+- Necromancer: 
+    - Necromantic Surge: reworked into a condition picker that lists which removable conditions the caster actually has, gated on self-targeting.
+
+## Ancestries
+
+### Orc
+
+- Relentless Endurance automated — prompts to drop to 1 HP instead of 0 when reduced to 0 HP, tracking remaining uses automatically. ([EE-986](https://ethanleider.atlassian.net/browse/EE-986))
+
+## Creature Features
+
+- Added a new Undead creatures module. ([EE-986](https://ethanleider.atlassian.net/browse/EE-986))
+- Automatted Undead Fortitude: Can be added as a special property or by adding the feature to the creature ([EE-987](https://ethanleider.atlassian.net/browse/EE-987))
+- Creature stat blocks: upcast spell-like abilities (e.g. "Fireball (5th Level)") now correctly scale their healing/damage dice relative to the base spell instead of being skipped during sync.
+
+## Spells
+
+- [Blight](https://www.elkan5e.com/spells/blight): added plant-damage automation — flags plant/magical-plant targets for disadvantage on their save and tops up their damage to the maximized shared-formula amount. ([EE-995](https://ethanleider.atlassian.net/browse/EE-995))
+- [Detect Evil and Good](https://www.elkan5e.com/spells/detect-evil-and-good), [Detect Magic](https://www.elkan5e.com/spells/detect-magic), and [Detect Poison and Disease](https://www.elkan5e.com/spells/detect-poison-and-disease) converted to use emanation regions. ([EE-998](https://ethanleider.atlassian.net/browse/EE-998))
+- [Death Ward](https://www.elkan5e.com/spells/death-ward) automated — consumes the effect and sets HP to 1 instead of 0 when the warded creature would otherwise drop. ([EE-986](https://ethanleider.atlassian.net/browse/EE-986))
+- Changed [Sanctuary](https://www.elkan5e.com/spells/sanctuary)/[Mirror Image](https://www.elkan5e.com/spells/mirror-image) — removing a saved/failed target from the workflow no longer aborts the whole attack, so the roll chat card still shows for every other target. ([EE-996](https://ethanleider.atlassian.net/browse/EE-996))
+
+## Equipment
+
+- Added a Magic property to items. ([EE-985](https://ethanleider.atlassian.net/browse/EE-985))
+
+## Systems & Automation
+
+- Added darkness vision automation — attacking unseen targets, being blinded by darkness, and the Vision condition applying correctly — and routed the Darkness spell's light creation through socketlib so players can trigger it. ([EE-988](https://ethanleider.atlassian.net/browse/EE-988), [EE-989](https://ethanleider.atlassian.net/browse/EE-989))
+- Added a configurable Death Save Reset Timing setting — controls when accumulated death save successes/failures are cleared (on HP recovery, at a short rest, or at a long rest). ([EE-986](https://ethanleider.atlassian.net/browse/EE-986))
+- Added a Short Rest dialog prompt for short-rest-activation features, showing remaining uses and matching activation type case-insensitively. ([EE-988](https://ethanleider.atlassian.net/browse/EE-988))
+- Wired `reactionCondition` automation across reaction-granting items. ([EE-999](https://ethanleider.atlassian.net/browse/EE-999))
+- Wired up additional automation hooks across items.
+- Cleaned up leftover references to old subclass names (pre-rename) across several subclass features and Hold Creature.
+- Temporarily disabled custom movement type registration (crawl/long jump/high jump) pending further work.
+
 # v1.14.1
 
 ## Bug Fixes
