@@ -3,7 +3,49 @@
 	"name": "Careful Spell",
 	"type": "feat",
 	"img": "icons/magic/nature/beam-hand-leaves-green.webp",
-	"effects": [],
+	"effects": [
+		{
+			"name": "Careful Spell",
+			"transfer": false,
+			"_id": "cfsp1MetaArmedAA",
+			"disabled": false,
+			"duration": {
+				"expiry": null,
+				"expired": false,
+				"value": 1,
+				"units": "turns"
+			},
+			"description": "",
+			"origin": null,
+			"statuses": [],
+			"flags": {
+				"dae": {
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "none",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"enableCondition": "",
+					"disableCondition": "",
+					"expiryMode": "default"
+				}
+			},
+			"tint": "#ffffff",
+			"img": "icons/magic/nature/beam-hand-leaves-green.webp",
+			"type": "base",
+			"system": {
+				"changes": []
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
+			"_key": "!items.effects!XyqMCVF15WXp6BCj.cfsp1MetaArmedAA"
+		}
+	],
 	"folder": "nRAfhdIMck1WSQAE",
 	"flags": {
 		"midiProperties": {
@@ -92,7 +134,12 @@
 					"special": "",
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "cfsp1MetaArmedAA",
+						"onSave": false
+					}
+				],
 				"range": {
 					"units": "self",
 					"special": "",
@@ -110,7 +157,7 @@
 					},
 					"affects": {
 						"count": "",
-						"type": "",
+						"type": "self",
 						"choice": false,
 						"special": ""
 					},
@@ -130,7 +177,9 @@
 				},
 				"name": "",
 				"img": "",
-				"appliedEffects": []
+				"appliedEffects": [
+					"cfsp1MetaArmedAA"
+				]
 			}
 		},
 		"identifier": "careful-spell",

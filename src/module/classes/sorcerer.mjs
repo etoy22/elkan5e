@@ -394,3 +394,61 @@ export async function delayedItem(item) {
 		if (effect) await effect.delete();
 	}
 }
+
+/**
+ * Runs Careful Spell class feature automation: while armed, lets the
+ * sorcerer choose up to their Charisma modifier of targets on a
+ * save-forcing spell to automatically succeed (taking no damage at all,
+ * even from spells that deal half on a success). The Careful Spell effect
+ * expires once used.
+ *
+ * @param {object} workflow - MIDI-QOL workflow.
+ * @returns {Promise<void>} Promise resolution result.
+ */
+export async function carefulSpell(workflow) {
+	try {
+		const actor = workflow.actor;
+		if (!actor) return;
+
+		const carefulEffect = actor.effects.find(
+			(ef) => ef.name === "Careful Spell" && !ef.disabled,
+		);
+		if (!carefulEffect) return;
+
+		if (workflow.activity?.type !== "save") return;
+
+		const targets = [...(workflow.targets ?? [])];
+		if (!targets.length) return;
+
+		const chaMod = actor.system?.abilities?.cha?.mod ?? 0;
+		const maxProtect = Math.max(1, chaMod);
+
+		const chosen = [];
+		for (const targetToken of targets) {
+			if (chosen.length >= maxProtect) break;
+			const targetActor = targetToken?.actor;
+			const confirmed = await DialogV2.confirm({
+				window: { title: "Careful Spell" },
+				content: `<p>Protect <strong>${targetActor?.name ?? targetToken?.name}</strong> from this spell? (${chosen.length}/${maxProtect} used)</p>`,
+				rejectClose: false,
+				modal: true,
+			});
+			if (confirmed) chosen.push(targetToken);
+		}
+
+		if (!chosen.length) return;
+
+		for (const targetToken of chosen) {
+			workflow.targets?.delete(targetToken);
+			workflow.hitTargets?.delete(targetToken);
+		}
+
+		ui.notifications.info(
+			`Careful Spell: ${chosen.map((t) => t.actor?.name ?? t.name).join(", ")} automatically succeed their save.`,
+		);
+
+		await carefulEffect.delete();
+	} catch (err) {
+		console.error("Careful Spell |", err);
+	}
+}
