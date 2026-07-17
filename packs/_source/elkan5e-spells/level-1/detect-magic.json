@@ -63,7 +63,7 @@
 			"itemCondition": "",
 			"reactionCondition": "",
 			"otherCondition": "",
-			"effectCondition": "",
+			"effectCondition": "target.actor.items.some(i => { const p = i.system?.properties; return !!p && (p.has ? p.has('mgc') : Array.from(p).includes('mgc')); })",
 			"rollAttackPerTarget": "default",
 			"removeAttackDamageButtons": "default"
 		},
@@ -113,18 +113,17 @@
 		},
 		"target": {
 			"affects": {
-				"special": "",
 				"type": "self",
-				"count": "30",
-				"choice": false
+				"count": "",
+				"choice": false,
+				"special": ""
 			},
 			"template": {
 				"type": "radius",
 				"units": "ft",
 				"contiguous": false,
 				"size": "30",
-				"count": "",
-				"stationary": false
+				"count": ""
 			}
 		},
 		"range": {
@@ -179,21 +178,25 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [
-					{
-						"_id": "bhgxa3G06NV8jWNt"
-					}
-				],
 				"range": {
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"type": "radius",
+						"size": "30",
+						"units": "ft",
+						"count": ""
+					},
+					"affects": {
+						"type": "self",
+						"count": "",
+						"choice": false,
+						"special": ""
+					},
+					"override": false
 				},
 				"uses": {
 					"spent": 0,
@@ -208,9 +211,29 @@
 				},
 				"name": "",
 				"img": "",
-				"appliedEffects": [
-					"bhgxa3G06NV8jWNt"
-				]
+				"appliedEffects": [],
+				"effects": [],
+				"regionBehavior": {
+					"attachToken": "caster",
+					"enabled": true,
+					"dispositionFilter": 0,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "detectMagicAura"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "bhgxa3G06NV8jWNt"
+						}
+					]
+				}
 			},
 			"EV4BgTZsNA3h70VT": {
 				"type": "utility",
@@ -235,21 +258,25 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [
-					{
-						"_id": "bhgxa3G06NV8jWNt"
-					}
-				],
 				"range": {
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"type": "radius",
+						"size": "30",
+						"units": "ft",
+						"count": ""
+					},
+					"affects": {
+						"type": "self",
+						"count": "",
+						"choice": false,
+						"special": ""
+					},
+					"override": false
 				},
 				"uses": {
 					"spent": 0,
@@ -265,9 +292,107 @@
 				"name": "Ritual",
 				"_id": "EV4BgTZsNA3h70VT",
 				"img": "",
+				"appliedEffects": [],
+				"effects": [],
+				"regionBehavior": {
+					"attachToken": "caster",
+					"enabled": true,
+					"dispositionFilter": 0,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "detectMagicAura"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "bhgxa3G06NV8jWNt"
+						}
+					]
+				}
+			},
+			"dmDetectMagic001": {
+				"type": "utility",
+				"activation": {
+					"type": "",
+					"value": null,
+					"override": true,
+					"condition": ""
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [
+					{
+						"_id": "bhgxa3G06NV8jWNt"
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"type": "",
+						"units": "ft",
+						"stationary": false
+					},
+					"affects": {
+						"type": "self"
+					},
+					"override": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"_id": "dmDetectMagic001",
+				"name": "Detect Magic (Emanation)",
+				"img": "",
 				"appliedEffects": [
 					"bhgxa3G06NV8jWNt"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"midiProperties": {
+					"identifier": "detectMagicAura",
+					"automationOnly": true,
+					"confirmTargets": "never"
+				},
+				"regionBehavior": {
+					"enabled": false,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"attachToken": "default",
+					"rules": []
+				}
 			}
 		},
 		"identifier": "detect-magic"

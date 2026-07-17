@@ -100,7 +100,7 @@
 			"itemCondition": "",
 			"reactionCondition": "",
 			"otherCondition": "",
-			"effectCondition": "target.actor.statuses.has('poisoned') || target.actor.statuses.has('diseased')",
+			"effectCondition": "(() => { const a = target.actor; if (a.statuses.has('poisoned') || a.statuses.has('diseased')) return true; const has = (c, v) => !!c && (c.has ? c.has(v) : Array.from(c).includes(v)); for (const i of a.items) { for (const act of (i.system?.activities ?? [])) { for (const p of (act.damage?.parts ?? [])) { if (has(p.types, 'poison')) return true; } } for (const e of (i.effects ?? [])) { if (has(e.statuses, 'poisoned') || has(e.statuses, 'diseased')) return true; } } return false; })()",
 			"rollAttackPerTarget": "default",
 			"removeAttackDamageButtons": "default",
 			"onUseMacroName": ""
@@ -151,7 +151,7 @@
 		},
 		"target": {
 			"affects": {
-				"type": "any",
+				"type": "self",
 				"count": "",
 				"choice": false,
 				"special": ""
@@ -161,8 +161,7 @@
 				"contiguous": false,
 				"type": "radius",
 				"size": "30",
-				"count": "",
-				"stationary": true
+				"count": ""
 			}
 		},
 		"range": {
@@ -224,34 +223,27 @@
 				"effects": [
 					{
 						"_id": "72t5JqrWlQPwUk2A"
-					},
-					{
-						"_id": "PqX7nRvTm3ZcWkYb"
 					}
 				],
 				"range": {
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": null,
-					"units": "ft",
-					"width": null,
-					"override": true,
-					"prompt": false,
-					"affects": {
-						"type": "any",
-						"count": "",
-						"special": ""
-					},
+					"prompt": true,
 					"template": {
+						"contiguous": false,
 						"type": "radius",
 						"size": "30",
 						"units": "ft",
-						"contiguous": false,
+						"count": ""
+					},
+					"affects": {
+						"type": "self",
 						"count": "",
-						"stationary": true
-					}
+						"choice": false,
+						"special": ""
+					},
+					"override": false
 				},
 				"uses": {
 					"spent": 0,
@@ -265,9 +257,29 @@
 					"visible": false
 				},
 				"appliedEffects": [
-					"72t5JqrWlQPwUk2A",
-					"PqX7nRvTm3ZcWkYb"
-				]
+					"72t5JqrWlQPwUk2A"
+				],
+				"regionBehavior": {
+					"attachToken": "caster",
+					"enabled": true,
+					"dispositionFilter": 0,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "detectPoisonDisease"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "PqX7nRvTm3ZcWkYb"
+						}
+					]
+				}
 			},
 			"KsMRobgCTPVFf2dE": {
 				"_id": "KsMRobgCTPVFf2dE",
@@ -299,34 +311,27 @@
 				"effects": [
 					{
 						"_id": "72t5JqrWlQPwUk2A"
-					},
-					{
-						"_id": "PqX7nRvTm3ZcWkYb"
 					}
 				],
 				"range": {
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": null,
-					"units": "ft",
-					"width": null,
-					"override": true,
-					"prompt": false,
-					"affects": {
-						"type": "any",
-						"count": "",
-						"special": ""
-					},
+					"prompt": true,
 					"template": {
+						"contiguous": false,
 						"type": "radius",
 						"size": "30",
 						"units": "ft",
-						"contiguous": false,
+						"count": ""
+					},
+					"affects": {
+						"type": "self",
 						"count": "",
-						"stationary": true
-					}
+						"choice": false,
+						"special": ""
+					},
+					"override": false
 				},
 				"uses": {
 					"spent": 0,
@@ -340,9 +345,107 @@
 					"visible": false
 				},
 				"appliedEffects": [
-					"72t5JqrWlQPwUk2A",
+					"72t5JqrWlQPwUk2A"
+				],
+				"regionBehavior": {
+					"attachToken": "caster",
+					"enabled": true,
+					"dispositionFilter": 0,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "detectPoisonDisease"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "PqX7nRvTm3ZcWkYb"
+						}
+					]
+				}
+			},
+			"pdDetectPnD0001": {
+				"type": "utility",
+				"activation": {
+					"type": "",
+					"value": null,
+					"override": true,
+					"condition": ""
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [
+					{
+						"_id": "PqX7nRvTm3ZcWkYb"
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"type": "",
+						"units": "ft",
+						"stationary": false
+					},
+					"affects": {
+						"type": "self"
+					},
+					"override": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"_id": "pdDetectPnD0001",
+				"name": "Detect Poison/Disease (Emanation)",
+				"img": "",
+				"appliedEffects": [
 					"PqX7nRvTm3ZcWkYb"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"midiProperties": {
+					"identifier": "detectPoisonDisease",
+					"automationOnly": true,
+					"confirmTargets": "never"
+				},
+				"regionBehavior": {
+					"enabled": false,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"attachToken": "default",
+					"rules": []
+				}
 			}
 		},
 		"identifier": "detect-poison-and-disease"
