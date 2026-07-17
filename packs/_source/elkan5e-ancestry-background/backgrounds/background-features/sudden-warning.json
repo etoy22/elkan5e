@@ -137,7 +137,7 @@
 		"midi-qol": {
 			"effectActivation": false,
 			"itemCondition": "",
-			"reactionCondition": "reaction === 'isSave' && workflow?.save?.ability === 'dex' && !workflow?.save?.success",
+			"reactionCondition": "reaction === 'isSave' && workflow?.save?.ability === 'dex' && !workflow?.save?.success && tokenUuid && workflow?.token?.uuid && tokenUuid !== workflow?.token?.uuid",
 			"otherCondition": "",
 			"effectCondition": "",
 			"rollAttackPerTarget": "default",

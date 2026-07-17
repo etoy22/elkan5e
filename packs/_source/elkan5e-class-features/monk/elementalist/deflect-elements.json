@@ -235,7 +235,7 @@
 			"rollAttackPerTarget": "default",
 			"removeAttackDamageButtons": "default",
 			"itemCondition": "",
-			"reactionCondition": "",
+			"reactionCondition": "reaction === 'isDamaged' && workflow?.damageItem?.damageDetail?.some(d => ['acid','cold','fire','lightning','thunder'].includes(d.type))",
 			"otherCondition": "",
 			"effectCondition": ""
 		}
