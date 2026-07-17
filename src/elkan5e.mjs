@@ -24,12 +24,25 @@ import {
 	onCombatTurnChange,
 } from "./module/classes/monk.mjs";
 import { slicingBlow, sneakAttack } from "./module/classes/rogue.mjs";
-import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
+import {
+	carefulSpell,
+	delayedDuration,
+	delayedItem,
+	wildSurge,
+} from "./module/classes/sorcerer.mjs";
 import { initWarlockSpellSlot, onWarlockFilterInvocations } from "./module/classes/warlock.mjs";
-import { markForDeath, markOfAffliction, markOfThorns } from "./module/classes/ranger.mjs";
+import {
+	markForDeath,
+	markOfAffliction,
+	markOfThorns,
+	preciseHunterAdvantage,
+} from "./module/classes/ranger.mjs";
 import {
 	lifeDrainGraveguard,
 	necromanticSurge,
+	overchannelArm,
+	overchannelOnDamageRoll,
+	overchannelOnLongRest,
 	soulConduit,
 	spectralEmpowerment,
 } from "./module/classes/wizard.mjs";
@@ -218,6 +231,44 @@ function registerHooks() {
 		} catch (error) {
 			console.error("Elkan 5e | Error in postUseActivity hook:", error);
 		}
+		try {
+			wildBlood(activity, usageConfig);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Wild Blood postUseActivity hook:", error);
+		}
+		try {
+			overchannelArm(activity);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Overchannel postUseActivity hook:", error);
+		}
+	});
+
+	Hooks.on("midi-qol.preambleComplete", async (workflow) => {
+		try {
+			await carefulSpell(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Careful Spell preambleComplete hook:", error);
+		}
+
+		try {
+			await necromanticSurge(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Necromantic Surge preambleComplete hook:", error);
+		}
+
+		try {
+			await Level4.blight(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Blight preambleComplete hook:", error);
+		}
+	});
+
+	Hooks.on("dnd5e.preRollDamageV2", async (rollConfig) => {
+		try {
+			await overchannelOnDamageRoll(rollConfig);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Overchannel preRollDamageV2 hook:", error);
+		}
 	});
 
 	Hooks.on("midi-qol.preAttackRoll", async (workflow) => {
@@ -236,9 +287,15 @@ function registerHooks() {
 		} catch (error) {
 			console.error("Elkan 5e | Error in darknessAttackDisadvantage hook:", error);
 		}
+
+		try {
+			await preciseHunterAdvantage(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in preciseHunterAdvantage hook:", error);
+		}
 	});
 
-Hooks.on("midi-qol.AttackRollComplete", async (workflow) => {
+	Hooks.on("midi-qol.AttackRollComplete", async (workflow) => {
 		try {
 			await Spells.mirrorImage(workflow);
 		} catch (error) {
@@ -262,6 +319,12 @@ Hooks.on("midi-qol.AttackRollComplete", async (workflow) => {
 			await Spells.fireShield(workflow);
 		} catch (error) {
 			console.error("Elkan 5e | Error in Fire Shield hook:", error);
+		}
+
+		try {
+			await Level4.blightMaximizePlantDamage(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Blight RollComplete hook:", error);
 		}
 	});
 
@@ -423,6 +486,12 @@ Hooks.on("midi-qol.AttackRollComplete", async (workflow) => {
 		} catch (error) {
 			console.error("Elkan 5e | Error in restCompleted short rest activation hook:", error);
 		}
+
+		try {
+			await overchannelOnLongRest(actor, result);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Overchannel long rest reset hook:", error);
+		}
 	});
 
 	Hooks.on("updateActor", async (actor, changes) => {
@@ -515,7 +584,6 @@ Hooks.on("midi-qol.AttackRollComplete", async (workflow) => {
 				shadowRefuge,
 				infusedHealer,
 				healingOverflow,
-				wildBlood,
 				secondWind,
 				hijackShadow,
 				meldWithShadows,
