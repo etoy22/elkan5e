@@ -969,7 +969,6 @@
 							"enableCondition": "",
 							"disableCondition": "",
 							"stackable": "noneName",
-							"showIcon": false,
 							"disableIncapacitated": false,
 							"selfTarget": false,
 							"selfTargetAlways": false,
@@ -1026,7 +1025,6 @@
 							"enableCondition": "[\"lg\", \"med\", \"sm\", \"tiny\"].includes(target.traits.size)",
 							"disableCondition": "",
 							"stackable": "noneName",
-							"showIcon": true,
 							"disableIncapacitated": false,
 							"selfTarget": false,
 							"selfTargetAlways": false,
@@ -1328,7 +1326,6 @@
 							"enableCondition": "",
 							"disableCondition": "",
 							"stackable": "noneName",
-							"showIcon": false,
 							"disableIncapacitated": false,
 							"selfTarget": false,
 							"selfTargetAlways": false,
@@ -1757,7 +1754,6 @@
 							"enableCondition": "",
 							"disableCondition": "",
 							"stackable": "noneName",
-							"showIcon": false,
 							"disableIncapacitated": false,
 							"selfTarget": false,
 							"selfTargetAlways": false,
@@ -1794,7 +1790,79 @@
 			"_key": "!actors.items!2NbUwMqIXe6TsxT3.3rmRN1sSgLwnHkms"
 		}
 	],
-	"effects": [],
+	"effects": [
+		{
+			"name": "Prone",
+			"img": "modules/elkan5e/icons/conditions/prone.svg",
+			"_id": "dnd5eprone000000",
+			"statuses": [
+				"prone"
+			],
+			"showIcon": 2,
+			"description": "@Embed[Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.y8L5Uq1jMVDsQjaS inline]",
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.disadvantage.attack.all",
+						"value": 1,
+						"type": "override",
+						"phase": "initial"
+					},
+					{
+						"key": "flags.midi-qol.grants.advantage.attack.mwak",
+						"value": 1,
+						"type": "override",
+						"phase": "initial"
+					},
+					{
+						"key": "flags.midi-qol.grants.advantage.attack.msak",
+						"value": 1,
+						"type": "override",
+						"phase": "initial"
+					},
+					{
+						"key": "flags.midi-qol.grants.disadvantage.attack.rwak",
+						"value": 1,
+						"type": "override",
+						"phase": "initial"
+					},
+					{
+						"key": "flags.midi-qol.grants.disadvantage.attack.rsak",
+						"value": 1,
+						"type": "override",
+						"phase": "initial"
+					}
+				]
+			},
+			"type": "base",
+			"disabled": false,
+			"start": {
+				"time": 680087366,
+				"combat": null,
+				"combatant": null,
+				"initiative": null,
+				"round": null,
+				"turn": null
+			},
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"origin": null,
+			"tint": "#ffffff",
+			"transfer": false,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"autoCreated": true,
+					"specialDuration": []
+				}
+			},
+			"_key": "!actors.effects!2NbUwMqIXe6TsxT3.dnd5eprone000000"
+		}
+	],
 	"folder": "RqdpT79oZ43srWxv",
 	"_id": "2NbUwMqIXe6TsxT3",
 	"_key": "!actors!2NbUwMqIXe6TsxT3"

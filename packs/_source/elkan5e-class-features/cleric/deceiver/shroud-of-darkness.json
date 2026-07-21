@@ -139,7 +139,7 @@
 		},
 		"advancement": [],
 		"description": {
-			"value": "<p><em>You shroud yourself and your allies from view.</em></p><p><strong>Reaction</strong> - 6 Allies (90 ft.) - 1 Round - @UUID[Compendium.elkan5e.elkan5e-class-features.Item.WKKAHUBp42287xui]{Channel Divinity} - Magical</p><p><em>Trigger: you roll initiative.</em></p><p>You expend a use of your Channel Divinity feature.</p><ul><li><p>Targets turn &amp;reference[invisible].</p></li><li><p>Targets gain &amp;reference[temphp] equal to your @UUID[Compendium.elkan5e.elkan5e-class.Item.Z68Q5K5fejrVQZAy]{cleric} level.</p></li></ul>",
+			"value": "<p><em>You shroud yourself and your allies from view.</em></p><p><strong>Reaction</strong> - 6 Allies (90 ft.) - 1 Round - @UUID[Compendium.elkan5e.elkan5e-class-features.Item.WKKAHUBp42287xui]{Channel Divinity} - Magical</p><p><em>Trigger: you roll initiative.</em></p><p>You expend a use of your Channel Divinity feature.</p><ul><li><p>Targets turn &amp;reference[invisible]. Anything the target is wearing or carrying that is at least half their size or smaller is invisible as long as it is on the target's person. After the target makes an attack roll, uses an action that deals damage, or casts a spell, the effect ends.</p></li><li><p>Targets gain &amp;reference[temphp] equal to your @UUID[Compendium.elkan5e.elkan5e-class.Item.Z68Q5K5fejrVQZAy]{cleric} level. As usual, these temporary hit points persist until your next short or long rest.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "shroud-of-darkness",
@@ -195,14 +195,16 @@
 					"enableCondition": "",
 					"disableCondition": "",
 					"stackable": "noneName",
-					"showIcon": false,
 					"disableIncapacitated": false,
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [],
+					"specialDuration": [
+						"1Attack",
+						"1Spell"
+					],
 					"expiryMode": "default"
 				},
 				"ActiveAuras": {
