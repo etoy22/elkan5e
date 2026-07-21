@@ -81,14 +81,15 @@ export function onPreUpdateActorDeathSaves(actor, changes, options) {
 		return;
 	}
 
-	// Normal (non-rest) update: only act when HP is going from ≤ 0 to positive,
+	// Normal (non-rest) update: only act when HP is going from <= 0 to positive,
 	// which is the same condition dnd5e's preUpdateHP uses to inject the clear.
 	const currentHp = actor.system?.attributes?.hp?.value ?? 0;
 	const newHp = foundry.utils.getProperty(changes, "system.attributes.hp.value");
 	if (currentHp > 0 || newHp === undefined || newHp <= 0) return;
 
-	_stripDeathSaveFields(changes);
-	console.log(`Elkan 5e | Death saves preserved on HP recovery (setting: ${setting})`);
+	// Successes are always cleared on HP recovery; only preserve failures until rest.
+	_stripDeathSaveFailureField(changes);
+	console.log(`Elkan 5e | Death save failures preserved on HP recovery (setting: ${setting})`);
 }
 
 /* -------------------------------------------- */
@@ -105,6 +106,15 @@ function _stripDeathSaveFields(changes) {
 	}
 	if ("system.attributes.death.success" in changes) {
 		delete changes["system.attributes.death.success"];
+	}
+	if ("system.attributes.death.failure" in changes) {
+		delete changes["system.attributes.death.failure"];
+	}
+}
+
+function _stripDeathSaveFailureField(changes) {
+	if (changes?.system?.attributes?.death !== undefined) {
+		delete changes.system.attributes.death.failure;
 	}
 	if ("system.attributes.death.failure" in changes) {
 		delete changes["system.attributes.death.failure"];

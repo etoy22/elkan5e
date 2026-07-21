@@ -381,6 +381,8 @@ export async function push(
 			targetAbility: targetSkill,
 		});
 
+		const fastForward =
+			game.settings.get("midi-qol", "ConfigSettings")?.fastForwardAbility ?? false;
 		await MidiQOL.contestedRoll({
 			source: {
 				token,
@@ -398,7 +400,7 @@ export async function push(
 			success: onSuccess.bind(null, token, targetToken),
 			displayResults: true,
 			itemCardId: workflow.itemCardId,
-			rollOptions: { fastForward: false, chatMessage: true, rollMode: "publicroll" },
+			rollOptions: { fastForward, chatMessage: true, rollMode: "publicroll" },
 		});
 	}
 }
