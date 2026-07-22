@@ -120,22 +120,25 @@
 					"identifier": ""
 				},
 				"regionBehavior": {
+					"attachToken": "default",
 					"enabled": true,
-					"dispositionFilter": 0,
+					"dispositionFilter": -1,
 					"excludeSource": false,
-					"wallRestriction": "move",
+					"oncePerTurn": true,
 					"rules": [
 						{
 							"trigger": "turnStart",
 							"action": "useActivity",
-							"targetId": "save-vs-prone"
+							"targetId": "saveVsProne"
 						},
 						{
 							"trigger": "entry",
 							"action": "useActivity",
-							"targetId": "save-vs-prone"
+							"targetId": "saveVsProne"
 						}
-					]
+					],
+					"wallRestriction": "move",
+					"regionVisibility": 2
 				}
 			},
 			"U3fycRAcJLyDVjgv": {
@@ -179,18 +182,18 @@
 					"special": ""
 				},
 				"target": {
+					"prompt": true,
 					"template": {
 						"contiguous": false,
-						"stationary": false,
+						"type": "",
 						"units": "ft",
-						"type": ""
+						"stationary": false
 					},
 					"affects": {
 						"choice": false,
-						"type": ""
+						"type": "self"
 					},
-					"override": false,
-					"prompt": true
+					"override": false
 				},
 				"uses": {
 					"spent": 0,
@@ -238,6 +241,7 @@
 					"idm": false
 				},
 				"midiProperties": {
+					"identifier": "saveVsProne",
 					"ignoreTraits": [],
 					"triggeredActivityId": "none",
 					"triggeredActivityConditionText": "",
@@ -249,7 +253,7 @@
 					"forceConsumeDialog": "default",
 					"forceRollDialog": "default",
 					"forceDamageDialog": "default",
-					"confirmTargets": "default",
+					"confirmTargets": "never",
 					"autoTargetType": "any",
 					"autoTargetAction": "default",
 					"automationOnly": true,
@@ -267,8 +271,9 @@
 					"skipConcentrationCheck": false,
 					"autoCEEffects": "default"
 				},
-				"isOverTimeFlag": false,
+				"isOverTimeFlag": true,
 				"overTimeProperties": {
+					"turnChoice": "start",
 					"saveRemoves": true,
 					"rollAs": "target",
 					"preRemoveConditionText": "",

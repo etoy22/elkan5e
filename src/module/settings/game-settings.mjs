@@ -41,6 +41,21 @@ export async function registerGameSettings() {
 		default: false,
 	});
 
+	game.settings.register(MODULE_ID, "deathSaveClear", {
+		name: "elkan5e.deathSaveClear.name",
+		hint: "elkan5e.deathSaveClear.hint",
+		scope: "world",
+		config: true,
+		type: String,
+		default: "immediate",
+		choices: {
+			immediate: "elkan5e.deathSaveClear.choiceImmediate",
+			shortRest: "elkan5e.deathSaveClear.choiceShortRest",
+			longRest: "elkan5e.deathSaveClear.choiceLongRest",
+		},
+		restricted: true,
+	});
+
 	game.settings.register(MODULE_ID, "conditionsSettings", {
 		name: "elkan5e.conditionsSettings.name",
 		hint: "elkan5e.conditionsSettings.hint",

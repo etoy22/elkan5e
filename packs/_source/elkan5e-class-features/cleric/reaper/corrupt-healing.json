@@ -167,7 +167,6 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"stackable": "noneName",
-					"showIcon": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": [],
@@ -216,7 +215,7 @@
 		"midi-qol": {
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
-			"reactionCondition": "",
+			"reactionCondition": "computeDistance(tokenUuid, targetUuid) <= 60 && workflow?.damageItem?.damageDetail?.some(detail => ['healing','temphp'].includes(detail.type))",
 			"effectCondition": "",
 			"removeAttackDamageButtons": "default",
 			"AoETargetType": "any",

@@ -12,7 +12,6 @@
 					"itemName": "Web",
 					"disableIncapacitated": false,
 					"stackable": "noneName",
-					"showIcon": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": [],
@@ -315,21 +314,33 @@
 					}
 				},
 				"regionBehavior": {
+					"attachToken": "default",
 					"enabled": true,
-					"dispositionFilter": 0,
+					"dispositionFilter": -1,
+					"excludeSource": false,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
 					"rules": [
 						{
 							"trigger": "entry",
 							"action": "useActivity",
-							"targetId": "save"
+							"targetId": "webSave"
+						},
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "KAUyanTSUHe8xL9Z"
 						},
 						{
 							"trigger": "exit",
 							"action": "removeEffect",
 							"targetId": "KAUyanTSUHe8xL9Z"
 						}
-					],
-					"wallRestriction": "none"
+					]
+				},
+				"midiProperties": {
+					"identifier": "webSave"
 				}
 			}
 		},

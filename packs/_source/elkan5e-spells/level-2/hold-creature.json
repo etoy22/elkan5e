@@ -15,12 +15,12 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"stackable": "noneName",
-					"showIcon": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default"
 				},
 				"ActiveAuras": {
 					"isAura": false,
@@ -45,7 +45,7 @@
 			"duration": {
 				"value": 60,
 				"units": "seconds",
-				"expiry": "turnStart",
+				"expiry": null,
 				"expired": false
 			},
 			"description": "",
@@ -59,9 +59,10 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.OverTime",
-						"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Hold Creature",
-						"priority": 20,
-						"type": "add"
+						"type": "add",
+						"value": "turn=end, label=Hold Creature, saveAbility=wis, saveDC=@attributes.spell.dc, saveMagic=true",
+						"phase": "initial",
+						"priority": 20
 					}
 				]
 			},
@@ -197,7 +198,11 @@
 				"effects": [
 					{
 						"_id": "BlR3RwWY9dQO7qQd",
-						"onSave": false
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -229,10 +234,16 @@
 				},
 				"name": "",
 				"img": "",
-				"effectConditionText": "!target.traits.ci.value.has('dazed') && !target.traits.ci.value.has('restrained')",
+				"effectConditionText": "!target.traits.ci.value.has('restrained')",
 				"appliedEffects": [
 					"BlR3RwWY9dQO7qQd"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				}
 			}
 		},
 		"identifier": "hold-creature"

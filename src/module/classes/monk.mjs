@@ -104,6 +104,21 @@ export async function emptyBody(actor) {
 }
 
 /**
+ * Clears shadow/hijack effects from the actor whose turn just ended.
+ *
+ * @param {*} combat - Current combat document.
+ * @param {*} prior - Prior turn data.
+ */
+export function onCombatTurnChange(combat, prior) {
+	const priorCombatantId = prior?.combatantId;
+	if (!priorCombatantId) return;
+	const lastActor = combat?.combatants?.get(priorCombatantId)?.actor;
+	if (!lastActor) return;
+	rmvMeldShadow(lastActor);
+	rmvhijackShadow(lastActor);
+}
+
+/**
  * Runs elemental Attunement class feature automation.
  *
  * @param {*} args - Arguments passed by the caller.
@@ -210,21 +225,17 @@ export async function elementalAttunement(args) {
 		},
 	};
 
-	if (action === "on") {
-		const config = attunementConfig[element];
+	const config = attunementConfig[element];
+	if (!config) return;
 
-		// Remove all previous attunement effects and items
-		for (const effectLabel of [
-			"Air Attunement",
-			"Earth Attunement",
-			"Fire Attunement",
-			"Water Attunement",
-		]) {
-			const effect = actor.effects.find((i) => i.label === effectLabel);
+	if (action === "on") {
+		// Remove the other three attunement effects (leaves the one just applied intact)
+		for (const effectLabel of config.effectsToRemove) {
+			const effect = actor.effects.find((i) => i.name === effectLabel);
 			if (effect) await effect.delete();
 		}
 
-		// Remove all previous attunement items from all elements
+		// Remove attunement items from every element, in case the actor was previously attuned
 		for (const elem of Object.keys(attunementConfig)) {
 			for (const itemName of attunementConfig[elem].itemsToRemoveOnDisable) {
 				const item = actor.items.find((i) => i.name === itemName);
@@ -246,11 +257,9 @@ export async function elementalAttunement(args) {
 			await actor.createEmbeddedDocuments("Item", [feature.toObject()]);
 		}
 	} else if (action === "off") {
-		const config = attunementConfig[element];
-
 		// Remove attunement effects and items
 		for (const effectLabel of config.effectsToRemove) {
-			const effect = actor.effects.find((i) => i.label === effectLabel);
+			const effect = actor.effects.find((i) => i.name === effectLabel);
 			if (effect) await effect.delete();
 		}
 

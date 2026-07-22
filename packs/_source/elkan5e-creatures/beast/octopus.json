@@ -609,7 +609,7 @@
 			"revision": 2,
 			"rules": "2024",
 			"license": "",
-			"book": ""
+			"book": "Elkan 5e"
 		},
 		"identifier": "octopus"
 	},
@@ -716,7 +716,7 @@
 				"source": {
 					"custom": "",
 					"rules": "2024",
-					"book": "",
+					"book": "Elkan 5e",
 					"revision": 1,
 					"license": ""
 				},
@@ -949,7 +949,6 @@
 							"enableCondition": "",
 							"disableCondition": "",
 							"stackable": "noneName",
-							"showIcon": false,
 							"disableIncapacitated": false,
 							"selfTarget": false,
 							"selfTargetAlways": false,
@@ -985,6 +984,21 @@
 				}
 			],
 			"folder": null,
+			"flags": {
+				"midi-qol": {
+					"onUseMacroName": "",
+					"effectActivation": false,
+					"itemCondition": "",
+					"reactionCondition": "reaction === 'isMoved' && computeDistance(tokenUuid, targetUuid) <= 5",
+					"otherCondition": "",
+					"effectCondition": "",
+					"rollAttackPerTarget": "default",
+					"AoETargetType": "any",
+					"AoETargetTypeIncludeSelf": true,
+					"autoTarget": "default",
+					"removeAttackDamageButtons": "default"
+				}
+			},
 			"_key": "!actors.items!w0WwAXJFaQP6BSf9.phbaoiInkCloud1D"
 		},
 		{
@@ -1281,7 +1295,7 @@
 			"img": "icons/magic/water/projectile-water-ice-orb.webp",
 			"system": {
 				"description": {
-					"value": "<p>The creature can breathe only underwater.</p>",
+					"value": "<p>The [[lookup @name lowercase]] can breathe only underwater.</p>",
 					"chat": ""
 				},
 				"source": {

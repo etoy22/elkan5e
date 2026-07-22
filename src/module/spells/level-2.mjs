@@ -302,14 +302,11 @@ export async function darkness(workflow) {
 			: 2;
 
 	for (const region of workflow.templateUuids ?? []) {
-		const regionTemplate = typeof region === "string" ? await fromUuid(region) : region;
-		const regionRadius = regionTemplate?.document?.distance ?? regionTemplate?.distance ?? 0;
-
 		await createLightRegion(
 			region,
 			{
 				dim: 0,
-				bright: regionRadius,
+				bright: 15,
 				alpha: 0.3,
 				luminosity: 0.5,
 				negative: true,
@@ -318,7 +315,7 @@ export async function darkness(workflow) {
 					speed: 2,
 					intensity: 5,
 				},
-				sort: spellLevel - 1,
+				priority: spellLevel - 1,
 			},
 			"Darkness",
 		);
@@ -354,7 +351,7 @@ export async function continualFlame(workflow) {
 					speed: 2,
 					intensity: 5,
 				},
-				sort: spellLevel,
+				priority: spellLevel,
 			},
 			"Continual Flame",
 		);
@@ -390,7 +387,7 @@ export async function moonBeam(workflow) {
 					speed: 2,
 					intensity: 5,
 				},
-				sort: spellLevel,
+				priority: spellLevel,
 			},
 			"Moon Beam",
 		);
@@ -466,9 +463,9 @@ export async function mirrorImage(workflow) {
 			});
 		}
 
-		// Remove the real target from the workflow so damage is never applied.
+		// Remove the real target from the workflow so damage is never applied,
+		// without aborting the whole roll (which would delete the attack roll card).
 		workflow.targets.delete(target);
-		if (workflow.targets.size === 0) workflow.aborted = true;
 	} catch (err) {
 		console.error("Mirror Image |", err);
 	}

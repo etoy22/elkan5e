@@ -369,18 +369,39 @@ function randomString(length = 16) {
 }
 
 /**
- * Converts a stored lightSort flag value into the numeric sort value applied to the AmbientLight.
- * Higher spell-level lights get a higher sort so they take precedence in rendering.
- *
- * @param {object} options
- * @param {number} [options.sort] - Raw sort value stored on the behavior flag (spell level).
- * @returns {number} The sort value for the AmbientLight document.
+ * AmbientLight properties that live at the top level of the document.
+ * None of these are part of the midi-qol `regionLight` RegionBehavior
+ * schema, so midi-qol never touches them once the light is created.
  */
-function getRegionLightSort({ sort } = {}) {
-	return sort ?? 0;
-}
+const LIGHT_TOP_LEVEL_EXTRA_KEYS = ["sort", "walls", "elevation", "rotation", "vision"];
 
-export async function syncRegionLightSort(behaviorRef, explicitSort = null) {
+/**
+ * AmbientLight properties that live under `config` (LightData). midi-qol's
+ * `MidiRegionLightBehaviorType._onUpdate` rebuilds `config` from scratch
+ * (dim/bright/color/alpha/luminosity/animation only) every time the
+ * behavior's `system` data changes, which would silently wipe any of these
+ * out — so they must be re-applied after every create/update, not just once.
+ */
+const LIGHT_CONFIG_EXTRA_KEYS = ["negative", "priority", "angle", "darkness"];
+
+/**
+ * Pushes AmbientLight-only properties that the midi-qol `regionLight`
+ * RegionBehavior schema can't express (sort, negative/darkness-source,
+ * priority, emission angle, darkness activation range, walls, elevation,
+ * rotation, vision) onto the light document that behavior created.
+ *
+ * Only keys present on `extras` are considered, so a caller can update a
+ * subset without disturbing the rest. The merged result is stored on the
+ * behavior as a flag so it can be re-applied whenever midi-qol rebuilds the
+ * light's `config` in response to a later `system` update on the behavior
+ * (see {@link applyLightRegion}, and the `createRegionBehavior` /
+ * `updateRegionBehavior` hooks in elkan5e.mjs).
+ *
+ * @param {string|object} behaviorRef - RegionBehavior document or its UUID.
+ * @param {object} [extras] - Subset of the extra keys above to apply/store.
+ * @returns {Promise<boolean>} Whether the light was found and processed.
+ */
+export async function syncRegionLightExtras(behaviorRef, extras = {}) {
 	if (!game.user?.isGM || game.users.activeGM?.id !== game.user.id) return false;
 
 	const behaviorDoc =
@@ -389,9 +410,9 @@ export async function syncRegionLightSort(behaviorRef, explicitSort = null) {
 			: behaviorRef;
 	if (!behaviorDoc || behaviorDoc.type !== "midi-qol.regionLight") return false;
 
-	const sortValue =
-		explicitSort ?? getRegionLightSort({ sort: behaviorDoc.getFlag("elkan5e", "lightSort") });
-	if (!Number.isFinite(sortValue)) return false;
+	const storedExtras = behaviorDoc.getFlag("elkan5e", "lightExtras") ?? {};
+	const resolvedExtras = { ...storedExtras, ...extras };
+	if (!Object.keys(resolvedExtras).length) return false;
 
 	const lightDocId = behaviorDoc.system?.lightDocId;
 	if (!lightDocId) return false;
@@ -399,9 +420,29 @@ export async function syncRegionLightSort(behaviorRef, explicitSort = null) {
 	const scene = behaviorDoc.parent?.parent ?? canvas.scene;
 	const lightDoc = scene?.lights?.get(lightDocId);
 	if (!lightDoc) return false;
-	if (lightDoc.sort === sortValue) return true;
 
-	await scene.updateEmbeddedDocuments("AmbientLight", [{ _id: lightDocId, sort: sortValue }]);
+	const update = { _id: lightDocId };
+	for (const key of LIGHT_TOP_LEVEL_EXTRA_KEYS) {
+		if (!(key in resolvedExtras)) continue;
+		if (foundry.utils.objectsEqual(lightDoc[key], resolvedExtras[key])) continue;
+		update[key] = resolvedExtras[key];
+	}
+
+	const configUpdate = {};
+	for (const key of LIGHT_CONFIG_EXTRA_KEYS) {
+		if (!(key in resolvedExtras)) continue;
+		if (foundry.utils.objectsEqual(lightDoc.config?.[key], resolvedExtras[key])) continue;
+		configUpdate[key] = resolvedExtras[key];
+	}
+	if (Object.keys(configUpdate).length) update.config = configUpdate;
+
+	if (Object.keys(update).length > 1) {
+		await scene.updateEmbeddedDocuments("AmbientLight", [update]);
+	}
+
+	if (!foundry.utils.objectsEqual(storedExtras, resolvedExtras)) {
+		await behaviorDoc.setFlag("elkan5e", "lightExtras", resolvedExtras);
+	}
 	return true;
 }
 
@@ -425,9 +466,89 @@ export async function deleteRegionLights(regionRef) {
 	await scene.deleteEmbeddedDocuments("AmbientLight", existingLightIds);
 }
 
-export async function createLightRegion(regionRef, config, name = "Midi Region Light") {
-	const regionDoc =
-		typeof regionRef === "string" ? await fromUuid(regionRef).catch(() => null) : regionRef;
+export function registerDaeSpecials(_actorType, specials) {
+	const BooleanField = foundry.data.fields.BooleanField;
+	const NumberField = foundry.data.fields.NumberField;
+	specials["flags.elkan5e.pushResist"] = [
+		new BooleanField({
+			label: game.i18n.localize("elkan5e.push.effects.pushResist"),
+			hint: game.i18n.localize("elkan5e.push.effects.pushResistDescription"),
+		}),
+		CONST.ACTIVE_EFFECT_MODES.CUSTOM,
+	];
+	specials["flags.elkan5e.undeadFortitude"] = [
+		new BooleanField({
+			label: "Undead Fortitude",
+			hint: "When enabled, this creature rolls a Constitution saving throw (DC 5 + damage taken) when reduced to 0 HP, dropping to 1 HP on a success.",
+		}),
+		CONST.ACTIVE_EFFECT_MODES.CUSTOM,
+	];
+	specials["flags.elkan5e.undeadFortitudeDCModifier"] = [
+		new NumberField({
+			label: "Undead Fortitude DC Modifier",
+			hint: "Added to the Undead Fortitude save DC. Use a negative number to lower the DC.",
+			integer: true,
+			initial: 0,
+		}),
+		CONST.ACTIVE_EFFECT_MODES.ADD,
+	];
+}
+
+export async function handleUpdateMeasuredTemplate(template) {
+	const lights = canvas.lighting.placeables.filter(
+		(light) => light.document.getFlag("elkan5e", "linkedTemplate") === template.id,
+	);
+	if (!lights.length) return;
+	for (const light of lights) {
+		await light.document.update({ x: template.x, y: template.y });
+	}
+}
+
+export async function handleDeleteMeasuredTemplate(template) {
+	const lights = canvas.lighting.placeables.filter(
+		(light) => light.document.getFlag("elkan5e", "linkedTemplate") === template.id,
+	);
+	if (!lights.length) return;
+	const ids = lights.map((light) => light.id);
+	await canvas.scene.deleteEmbeddedDocuments("AmbientLight", ids);
+}
+
+let elkan5eSocket = null;
+
+/**
+ * Registers the socketlib socket used to relay GM-only scene mutations
+ * (e.g. RegionBehavior creation) from players who lack Scene ownership.
+ *
+ */
+export function registerElkan5eSocket() {
+	if (!globalThis.socketlib) {
+		console.warn("Elkan 5e | socketlib not found; light spells will require GM ownership.");
+		return;
+	}
+	elkan5eSocket = socketlib.registerModule("elkan5e");
+	if (!elkan5eSocket) {
+		console.warn(
+			"Elkan 5e | socketlib failed to register module socket; light spells will require GM ownership.",
+		);
+		return;
+	}
+	elkan5eSocket.register("createLightRegion", applyLightRegion);
+}
+
+/**
+ * Creates or updates a `midi-qol.regionLight` behavior on the given region.
+ * Players don't have owner permission on Scene-embedded documents
+ * (Region/RegionBehavior/AmbientLight) by default, so this must run on the
+ * GM's client. Callers should use {@link createLightRegion} instead, which
+ * relays to the GM via socketlib when the current user isn't one.
+ *
+ * @param {string} regionUuid - UUID of the Region document.
+ * @param {object} config - Light configuration (dim, bright, alpha, etc.).
+ * @param {string} name - Behavior name.
+ * @returns {Promise<unknown>} The created/updated RegionBehavior document.
+ */
+async function applyLightRegion(regionUuid, config, name = "Midi Region Light") {
+	const regionDoc = await fromUuid(regionUuid).catch(() => null);
 	if (!regionDoc) {
 		ui.notifications.warn("No region found to attach a light behavior.");
 		return null;
@@ -439,7 +560,23 @@ export async function createLightRegion(regionRef, config, name = "Midi Region L
 			(behavior.getFlag("elkan5e", "createLightRegion") || behavior.name === name),
 	);
 	const behaviorId = existingBehavior?.id ?? randomString();
-	const sortValue = config.sort ?? 0;
+
+	const newExtras = {};
+	for (const key of [...LIGHT_TOP_LEVEL_EXTRA_KEYS, ...LIGHT_CONFIG_EXTRA_KEYS]) {
+		if (config[key] !== undefined) newExtras[key] = config[key];
+	}
+	const storedExtras = existingBehavior?.getFlag("elkan5e", "lightExtras") ?? {};
+	const extras = { ...storedExtras, ...newExtras };
+
+	// Only dim/bright/color/alpha/luminosity/animation* are part of midi-qol's
+	// regionLight behavior schema; everything else the caller wants on the
+	// resulting light (sort, negative, priority, angle, darkness range, walls,
+	// elevation, rotation, vision) must be stashed as a flag here and pushed
+	// onto the AmbientLight by syncRegionLightExtras below — midi-qol silently
+	// drops unknown system fields, and the light itself often doesn't exist
+	// yet at this point (it's only created once the GM's canvas actually
+	// views the region), so the flag is what lets the createRegionBehavior /
+	// updateRegionBehavior hooks in elkan5e.mjs re-apply it once it does.
 	const behaviorData = {
 		_id: behaviorId,
 		name,
@@ -447,7 +584,7 @@ export async function createLightRegion(regionRef, config, name = "Midi Region L
 		flags: {
 			elkan5e: {
 				createLightRegion: true,
-				lightSort: sortValue,
+				lightExtras: extras,
 			},
 		},
 		system: {
@@ -456,28 +593,50 @@ export async function createLightRegion(regionRef, config, name = "Midi Region L
 			color: config.color ?? null,
 			alpha: config.alpha ?? 0.5,
 			luminosity: config.luminosity ?? 0.5,
-			negative: config.negative ?? false,
 			animationType: config.animation?.type ?? config.animationType ?? null,
 			animationSpeed: config.animation?.speed ?? config.animationSpeed ?? 5,
 			animationIntensity: config.animation?.intensity ?? config.animationIntensity ?? 5,
 		},
 	};
 
-	if (existingBehavior) {
-		const [updatedBehavior] = await regionDoc.updateEmbeddedDocuments("RegionBehavior", [
-			behaviorData,
-		]);
-		if (Number.isFinite(sortValue)) {
-			await syncRegionLightSort(updatedBehavior, sortValue);
-		}
-		return updatedBehavior;
+	const behaviorDoc = existingBehavior
+		? (await regionDoc.updateEmbeddedDocuments("RegionBehavior", [behaviorData]))[0]
+		: (await regionDoc.createEmbeddedDocuments("RegionBehavior", [behaviorData]))[0];
+
+	if (Object.keys(extras).length) {
+		await syncRegionLightExtras(behaviorDoc, extras);
+	}
+	return behaviorDoc;
+}
+
+/**
+ * Creates or updates a light-emitting RegionBehavior on a Region, e.g. for
+ * the Light and Daylight spells. Non-GM callers (most players) don't have
+ * owner permission on Scene-embedded documents, so this relays the mutation
+ * to the active GM's client via socketlib instead of running it locally.
+ *
+ * @param {string|object} regionRef - Region document or its UUID.
+ * @param {object} config - Light configuration (dim, bright, alpha, etc.).
+ * @param {string} [name] - Behavior name.
+ * @returns {Promise<unknown>} The created/updated RegionBehavior document.
+ */
+export async function createLightRegion(regionRef, config, name = "Midi Region Light") {
+	const regionUuid = typeof regionRef === "string" ? regionRef : regionRef?.uuid;
+	if (!regionUuid) {
+		ui.notifications.warn("No region found to attach a light behavior.");
+		return null;
 	}
 
-	const [createdBehavior] = await regionDoc.createEmbeddedDocuments("RegionBehavior", [
-		behaviorData,
-	]);
-	if (Number.isFinite(sortValue)) {
-		await syncRegionLightSort(createdBehavior, sortValue);
+	if (game.user?.isGM) {
+		return applyLightRegion(regionUuid, config, name);
 	}
-	return createdBehavior;
+
+	if (!elkan5eSocket) {
+		ui.notifications.warn(
+			"Elkan 5e | A GM must be online to apply this light effect (socketlib unavailable).",
+		);
+		return null;
+	}
+
+	return elkan5eSocket.executeAsGM("createLightRegion", regionUuid, config, name);
 }

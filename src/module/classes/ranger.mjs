@@ -139,17 +139,39 @@ export async function markOfThorns(workflow) {
 	}
 }
 
+// Self-effect names that indicate the ranger is currently maintaining a
+// ranger mark other than (or including) Mark for Death. Unrelenting Focus
+// only auto-applies Mark for Death damage when none of these are active.
+const RANGER_MARK_SELF_EFFECTS = [
+	"Mark for Death",
+	"Mark of Affliction",
+	"Mark of Thorns (Caster)",
+];
+
 export async function markForDeath(workflow) {
 	try {
 		if (workflow.hitTargets.size === 0) return {};
 		const target = workflow.hitTargets.first();
+		const actor = workflow.actor;
 		const isMarked = target.actor?.effects?.find((ef) => {
 			const byName = ef.name === "Mark for Death";
 			if (!byName) return false;
 			const sourceItem = MidiQOL.getItemFromEffectOrigin(ef.origin ?? "");
 			return sourceItem?.uuid === macroItem.uuid;
 		});
-		if (!isMarked) return {};
+
+		// Unrelenting Focus: if the ranger isn't currently using Mark for Death
+		// or a different ranger mark, they deal Mark for Death damage on every
+		// attack regardless of whether this particular target is marked.
+		const hasUnrelentingFocus = actor?.items?.find(
+			(i) => i.system?.identifier === "unrelenting-focus",
+		);
+		const isUsingAnyMark = actor?.effects?.some((ef) =>
+			RANGER_MARK_SELF_EFFECTS.includes(ef.name),
+		);
+		const unrelentingFocusApplies = hasUnrelentingFocus && !isUsingAnyMark;
+
+		if (!isMarked && !unrelentingFocusApplies) return {};
 
 		// ── Damage formula: prefer the ranger scale value, fall back to 1d4
 		const scaleValue = workflow.actor?.system?.scale?.ranger?.["mark-for-death"];
@@ -170,5 +192,36 @@ export async function markForDeath(workflow) {
 	} catch (err) {
 		console.error("markForDeath |", err);
 		return {};
+	}
+}
+
+/**
+ * Runs Precise Hunter class feature automation: grants advantage on attack
+ * rolls made against a creature currently marked by Mark for Death.
+ *
+ * @param {object} workflow - MIDI-QOL workflow.
+ * @returns {Promise<void>}
+ */
+export async function preciseHunterAdvantage(workflow) {
+	try {
+		const actor = workflow.actor;
+		if (!actor) return;
+
+		const hasPreciseHunter = actor.items.find((i) => i.system?.identifier === "precise-hunter");
+		if (!hasPreciseHunter) return;
+
+		for (const targetEntry of workflow.targets ?? []) {
+			const targetToken = targetEntry?.document?.object ?? targetEntry?.object ?? targetEntry;
+			const targetActor = targetToken?.actor;
+			if (!targetActor) continue;
+
+			const isMarked = targetActor.effects?.some((ef) => ef.name === "Mark for Death");
+			if (isMarked) {
+				workflow.attackRollModifierTracker?.advantage?.add("Precise Hunter");
+				break;
+			}
+		}
+	} catch (err) {
+		console.error("Precise Hunter |", err);
 	}
 }

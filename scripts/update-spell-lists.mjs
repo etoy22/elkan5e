@@ -173,6 +173,7 @@ function filterByLevel(spells, levelMap, maxLevel) {
 function ensurePage(data, name, identifier) {
 	let page = data.pages.find((p) => p.name === name && p.type === "spells");
 	if (!page) {
+		const id = randomId();
 		page = {
 			name,
 			type: "spells",
@@ -194,10 +195,12 @@ function ensurePage(data, name, identifier) {
 					appendix: false,
 				},
 			},
-			_id: randomId(),
+			_id: id,
+			_key: `!journal.pages!${data._id}.${id}`,
 		};
 		data.pages.push(page);
 	}
+	if (!page._key) page._key = `!journal.pages!${data._id}.${page._id}`;
 	return page;
 }
 
@@ -212,6 +215,7 @@ function ensurePage(data, name, identifier) {
 function ensureSchoolPage(data, name, identifier) {
 	let page = data.pages.find((p) => p.name === name && p.type === "spells");
 	if (!page) {
+		const id = randomId();
 		page = {
 			name,
 			type: "spells",
@@ -233,10 +237,12 @@ function ensureSchoolPage(data, name, identifier) {
 					appendix: false,
 				},
 			},
-			_id: randomId(),
+			_id: id,
+			_key: `!journal.pages!${data._id}.${id}`,
 		};
 		data.pages.push(page);
 	}
+	if (!page._key) page._key = `!journal.pages!${data._id}.${page._id}`;
 	return page;
 }
 

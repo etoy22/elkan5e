@@ -12,7 +12,6 @@
 					"itemName": "Grease",
 					"disableCondition": "",
 					"stackable": "noneName",
-					"showIcon": false,
 					"durationExpression": "",
 					"specialDuration": [],
 					"enableCondition": "",
@@ -112,7 +111,7 @@
 					"enableCondition": "",
 					"selfTarget": false,
 					"selfTargetAlways": false,
-					"dontApply": false
+					"dontApply": true
 				}
 			},
 			"_key": "!items.effects!AymsSXnrNy6KbHkY.O6w3Tx0rPhdFkHNe"
@@ -341,17 +340,21 @@
 					}
 				},
 				"regionBehavior": {
+					"attachToken": "default",
 					"enabled": true,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": false,
 					"rules": [
 						{
 							"trigger": "entry",
 							"action": "useActivity",
-							"targetId": "overtime"
+							"targetId": "greaseFall"
 						},
 						{
 							"trigger": "exit",
 							"action": "useActivity",
-							"targetId": "overtime"
+							"targetId": "greaseFall"
 						},
 						{
 							"trigger": "entry",
@@ -363,7 +366,9 @@
 							"action": "removeEffect",
 							"targetId": "O6w3Tx0rPhdFkHNe"
 						}
-					]
+					],
+					"wallRestriction": "move",
+					"regionVisibility": 2
 				}
 			},
 			"ztPgyD7Qd32MQn8y": {
@@ -404,19 +409,19 @@
 					"units": "self"
 				},
 				"target": {
-					"override": true,
 					"prompt": true,
 					"template": {
 						"contiguous": false,
-						"stationary": false,
+						"type": "",
 						"units": "ft",
-						"type": ""
+						"stationary": false
 					},
 					"affects": {
 						"choice": false,
 						"type": "self",
 						"special": ""
-					}
+					},
+					"override": true
 				},
 				"uses": {
 					"spent": 0,
@@ -476,7 +481,8 @@
 					"forceConsumeDialog": "default",
 					"forceRollDialog": "default",
 					"forceDamageDialog": "default",
-					"confirmTargets": "default",
+					"confirmTargets": "never",
+					"identifier": "greaseFall",
 					"autoTargetType": "any",
 					"autoTargetAction": "default",
 					"automationOnly": true,

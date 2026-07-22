@@ -24,7 +24,8 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014"
+					"rules": "2014",
+					"book": "Elkan 5e"
 				},
 				"uses": {
 					"max": "1",
@@ -155,13 +156,14 @@
 			"type": "feat",
 			"system": {
 				"description": {
-					"value": "<p>When the mutant warrior has fewer than all of its hit points, its flesh attempts to knit itself together, spewing volatile organic compounds as it does so.</p><p>All creatures within 5 ft. of the mutant warrior, including the mutant warrior, must succeed on a DC 13 contitution saving throw or take 2d6 poison damage (which the mutant warrior is resistant to). Then, if this doesn't kill the mutant warrior, the mutant warrior regains 5 hit points.</p><p>If the mutant warrior isn't in danger and is at 15 hit points or greater, assume that it can regain all hit points over the course of 10 minutes without any danger.</p>",
+					"value": "<p>When the mutant warrior has fewer than all of its hit points, its flesh attempts to knit itself together, spewing volatile organic compounds as it does so.</p><br><p>All creatures within 5 ft. of the mutant warrior, including the mutant warrior, must succeed on a DC 13 contitution saving throw or take 2d6 poison damage (which the mutant warrior is resistant to). Then, if this doesn't kill the mutant warrior, the mutant warrior regains 5 hit points.</p><br><p>If the mutant warrior isn't in danger and is at 15 hit points or greater, assume that it can regain all hit points over the course of 10 minutes without any danger.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "Elkan 5e",
 					"revision": 1,
-					"rules": "2014"
+					"rules": "2014",
+					"book": "Elkan 5e"
 				},
 				"uses": {
 					"max": "",
@@ -307,8 +309,7 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": [],
-							"dontApply": false,
-							"showIcon": false
+							"dontApply": false
 						}
 					},
 					"duration": {
@@ -359,13 +360,14 @@
 			"folder": null,
 			"system": {
 				"description": {
-					"value": "<p>The mutant warrior was created through unstable magic. When it dies, all creatures within 10 ft. of the mutant must make a DC 13 constitution saving throw or take 4d10 poison damage and be poisoned for one minute (save for half damage) (save ends).</p>",
+					"value": "<p>The [[lookup @name lowercase]] was created through unstable magic. When it dies, all creatures within 10 ft. of the [[lookup @name lowercase]] must make a DC 13 constitution saving throw or take 4d10 poison damage and be poisoned for one minute (save for half damage) (save ends).</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "Elkan 5e",
 					"revision": 1,
-					"rules": "2014"
+					"rules": "2014",
+					"book": "Elkan 5e"
 				},
 				"uses": {
 					"max": "",
@@ -575,13 +577,16 @@
 			"img": "icons/magic/fire/blast-jet-stream-splash.webp",
 			"system": {
 				"description": {
-					"value": "<p><em>Stretching out your hands, crackling flames extend between your fingertips, then strike outwards in a beam to burn everything in its path.</em></p><p>1 Action - 30 ft. Line (5 ft. Radius) - 2nd Level - VS</p><p><strong>Dexterity</strong> Save</p><ul><li><p><strong>Failure:</strong> Target takes 4d6 fire damage. <strong>*</strong></p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p><strong>*At Higher Levels:</strong> For every spell slot level above 2nd, the damage increases by 1d6.</p>",
-					"chat": "1 Action - 30 ft. Line (5 ft. Radius) - 2nd Level - VS</p><p><strong>Dexterity</strong> Save</p><ul><li><p><strong>Failure:</strong> Target takes 4d6 fire damage. <strong>*</strong></p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p><strong>*At Higher Levels:</strong> For every spell slot level above 2nd, the damage increases by 1d6.</p>"
+					"value": "<p><em>Stretching out your hands, crackling flames extend between your fingertips, then strike outwards in a beam to burn everything in its path.</em></p><p><strong>[[/save dex]]{Dexterity Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d6 fire]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 2d6 fire]]{2d6} for each spell level above 2nd.</p>",
+					"chat": ""
 				},
 				"source": {
-					"custom": "Elkan 5e",
+					"custom": "elkan5e.com/spells/burning-beam",
 					"revision": 1,
-					"rules": "2014"
+					"rules": "",
+					"book": "Elkan 5e",
+					"page": "",
+					"license": ""
 				},
 				"activation": {
 					"type": "action",
@@ -594,18 +599,23 @@
 				},
 				"target": {
 					"affects": {
-						"choice": false
+						"choice": false,
+						"count": "",
+						"type": "any",
+						"special": ""
 					},
 					"template": {
 						"units": "ft",
 						"width": "5",
 						"type": "line",
-						"size": "30",
-						"contiguous": false
+						"size": "45",
+						"contiguous": false,
+						"count": ""
 					}
 				},
 				"range": {
-					"units": ""
+					"units": "self",
+					"special": ""
 				},
 				"uses": {
 					"max": "2",
@@ -630,6 +640,11 @@
 					"mode": "innate",
 					"prepared": true
 				},
+				"properties": [
+					"vocal",
+					"somatic",
+					"mgc"
+				],
 				"activities": {
 					"dnd5eactivity000": {
 						"_id": "dnd5eactivity000",
@@ -670,15 +685,12 @@
 							"override": false
 						},
 						"target": {
-							"prompt": true,
-							"template": {
-								"contiguous": false,
-								"units": "ft"
-							},
-							"affects": {
-								"choice": false
-							},
-							"override": false
+							"type": "creature",
+							"value": 1,
+							"units": "ft",
+							"width": null,
+							"override": false,
+							"prompt": true
 						},
 						"uses": {
 							"spent": 0,
@@ -701,7 +713,7 @@
 									},
 									"scaling": {
 										"mode": "whole",
-										"number": 1,
+										"number": 2,
 										"formula": ""
 									}
 								}
@@ -716,11 +728,7 @@
 						}
 					}
 				},
-				"identifier": "burning-beam",
-				"properties": [
-					"vocal",
-					"somatic"
-				]
+				"identifier": "burning-beam"
 			},
 			"effects": [],
 			"flags": {
@@ -743,7 +751,8 @@
 				"source": {
 					"custom": "Elkan 5e",
 					"revision": 1,
-					"rules": "2014"
+					"rules": "2014",
+					"book": "Elkan 5e"
 				},
 				"activation": {
 					"type": "action",
@@ -878,7 +887,6 @@
 							"selfTargetAlways": false,
 							"dontApply": false,
 							"stackable": "noneName",
-							"showIcon": false,
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": []
@@ -940,13 +948,16 @@
 			"img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
 			"system": {
 				"description": {
-					"value": "<p><strong>Note: casting this spell requires a damaged tuning fork, typically valued at 50 gold. The tuning fork is not consumed by the spell.</strong></p><p><em>You hold out a damaged tuning fork attuned to another plane. You utter a corrupted version of the incantation needed to teleport to another plane, instead ripping a hole in space. All creatures you choose within 60 ft. of the tear are compelled to flee from it, and the area around the rip is twisted.</em></p><p>1 Action - 20 ft. Radius (60 ft.) - 5th Level - VSM</p><p><strong>Constitution</strong> Save</p><ul><li><p><strong>Failure:</strong> Target takes 4d8 force damage. <strong>*</strong></p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p>Additionally, all creatures who can see the rip in reality when it is formed must attempt a wisdom saving throw. See the Rend the Veil [Frighten] action for the second half of this ability's automation.</p><p>60 ft. Radius</p><p><strong>Wisdom</strong> Save</p><ul><li><p><strong>Failure:</strong> Target is frightened of the center of this effect for 1 minute (save ends).</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p><strong>*At Higher Levels:</strong> For every spell slot level above 5th, the damage increases by 2d8.</p>",
+					"value": "<p><em>You hold out a damaged tuning fork attuned to another plane. You utter a corrupted version of the incantation needed to teleport to another plane, instead ripping a hole in space. All unsuspecting creatures are compelled to flee from it, and the area around the rip is twisted.</em></p><p><strong>Materials:</strong> Casting this spell requires a <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.tSdm8nQQqxsKBOnk]{damaged tuning fork}</em>, typically valued at 50 gold. The tuning fork is not consumed by the spell.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d8 force]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><hr><p>Additionally, all creatures who are not your allies who can see the rip in reality when it is formed must attempt a wisdom saving throw.</p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[frightened] of the center of this effect for 1 minute. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 2d8 force]] for each spell level above 5th.</p>",
 					"chat": ""
 				},
 				"source": {
-					"custom": "Elkan 5e",
+					"custom": "elkan5e.com/spells/rend-the-veil",
 					"revision": 1,
-					"rules": "2014"
+					"rules": "",
+					"book": "Elkan 5e",
+					"page": "",
+					"license": ""
 				},
 				"activation": {
 					"type": "action",
@@ -959,18 +970,22 @@
 				},
 				"target": {
 					"affects": {
-						"choice": false
+						"choice": false,
+						"count": "",
+						"type": ""
 					},
 					"template": {
 						"units": "ft",
 						"type": "sphere",
 						"size": "20",
-						"contiguous": false
+						"contiguous": false,
+						"count": ""
 					}
 				},
 				"range": {
 					"value": "60",
-					"units": "ft"
+					"units": "ft",
+					"special": ""
 				},
 				"uses": {
 					"max": "1",
@@ -986,7 +1001,7 @@
 				"level": 5,
 				"school": "con",
 				"materials": {
-					"value": "A warped tuning fork meant for teleportation to another plane",
+					"value": "",
 					"consumed": false,
 					"cost": 50,
 					"supply": 1
@@ -995,6 +1010,11 @@
 					"mode": "innate",
 					"prepared": true
 				},
+				"properties": [
+					"vocal",
+					"somatic",
+					"material"
+				],
 				"activities": {
 					"dnd5eactivity000": {
 						"_id": "dnd5eactivity000",
@@ -1023,7 +1043,7 @@
 							"spellSlot": true
 						},
 						"description": {
-							"chatFlavor": "Use the Rend the Veil [Frighten] action to automate the second half of the spell."
+							"chatFlavor": ""
 						},
 						"duration": {
 							"units": "inst",
@@ -1035,15 +1055,12 @@
 							"override": false
 						},
 						"target": {
-							"prompt": true,
-							"template": {
-								"contiguous": false,
-								"units": "ft"
-							},
-							"affects": {
-								"choice": false
-							},
-							"override": false
+							"type": "creature",
+							"value": 1,
+							"units": "ft",
+							"width": null,
+							"override": false,
+							"prompt": true
 						},
 						"uses": {
 							"spent": 0,
@@ -1054,16 +1071,16 @@
 							"onSave": "half",
 							"parts": [
 								{
-									"number": 4,
-									"denomination": 8,
-									"bonus": "",
-									"types": [
-										"force"
-									],
 									"custom": {
 										"enabled": false,
 										"formula": ""
 									},
+									"number": 4,
+									"denomination": "8",
+									"bonus": "",
+									"types": [
+										"force"
+									],
 									"scaling": {
 										"mode": "whole",
 										"number": 2,
@@ -1078,15 +1095,113 @@
 								"calculation": "spellcasting",
 								"formula": ""
 							}
+						},
+						"name": "Initial Casting (Use First)",
+						"img": "",
+						"appliedEffects": [],
+						"midiProperties": {
+							"triggeredActivityId": "initial-casting-(use-second)",
+							"triggeredActivityTargets": "retarget",
+							"triggeredActivityConsume": false,
+							"triggeredActivityConfigure": false
+						},
+						"otherActivityId": "none",
+						"visibility": {
+							"level": {
+								"min": null,
+								"max": null
+							}
+						}
+					},
+					"1mL8muqBPuqOW8Ec": {
+						"type": "save",
+						"_id": "1mL8muqBPuqOW8Ec",
+						"activation": {
+							"type": "",
+							"value": null,
+							"override": true,
+							"condition": ""
+						},
+						"consumption": {
+							"scaling": {
+								"allowed": false
+							},
+							"spellSlot": false,
+							"targets": []
+						},
+						"description": {
+							"chatFlavor": ""
+						},
+						"duration": {
+							"units": "inst",
+							"concentration": false,
+							"override": true
+						},
+						"effects": [
+							{
+								"_id": "sry75IDMkhCZtmNg",
+								"level": {},
+								"onSave": false
+							}
+						],
+						"range": {
+							"override": false
+						},
+						"target": {
+							"type": "creature",
+							"value": 1,
+							"units": "ft",
+							"width": null,
+							"override": true,
+							"prompt": true,
+							"affects": {
+								"type": "enemy",
+								"count": "",
+								"special": ""
+							},
+							"template": {
+								"type": "sphere",
+								"size": "60",
+								"count": ""
+							}
+						},
+						"uses": {
+							"spent": 0,
+							"recovery": [],
+							"max": ""
+						},
+						"damage": {
+							"parts": [],
+							"onSave": "half"
+						},
+						"save": {
+							"ability": [
+								"wis"
+							],
+							"dc": {
+								"calculation": "spellcasting",
+								"formula": ""
+							}
+						},
+						"useConditionText": "",
+						"forceDialog": false,
+						"effectConditionText": "!target.traits.ci.value.has('frightened')",
+						"name": "Initial Casting (Use Second)",
+						"img": "",
+						"appliedEffects": [
+							"LrRnZx9GBeTa8y76"
+						],
+						"otherActivityId": "none",
+						"otherActivityAsParentType": false,
+						"visibility": {
+							"level": {
+								"min": null,
+								"max": null
+							}
 						}
 					}
 				},
-				"identifier": "rend-the-veil",
-				"properties": [
-					"vocal",
-					"somatic",
-					"material"
-				]
+				"identifier": "rend-the-veil"
 			},
 			"effects": [],
 			"flags": {
@@ -1103,21 +1218,53 @@
 			"effects": [],
 			"folder": "SjVk5lAwzIpqSBbH",
 			"flags": {
-				"srd5e": {
-					"page": "spells.html",
-					"source": "PHB",
-					"hash": "poison%20spray_phb"
+				"midi-qol": {
+					"effectActivation": false,
+					"removeAttackDamageButtons": "default",
+					"itemCondition": "",
+					"reactionCondition": "",
+					"otherCondition": "",
+					"effectCondition": "",
+					"rollAttackPerTarget": "default",
+					"AoETargetType": "any",
+					"autoTarget": "default"
+				},
+				"midiProperties": {
+					"nodam": true,
+					"fulldam": false,
+					"halfdam": false,
+					"rollOther": false,
+					"critOther": false,
+					"magicdam": false,
+					"magiceffect": false,
+					"concentration": false,
+					"toggleEffect": false,
+					"ignoreTotalCover": false,
+					"autoFailFriendly": false,
+					"autoSaveFriendly": false,
+					"offHandWeapon": false,
+					"noConcentrationCheck": false,
+					"confirmTargets": "default",
+					"saveDamage": "nodam",
+					"bonusSaveDamage": "default",
+					"idr": false,
+					"idi": false,
+					"idv": false,
+					"ida": false
 				}
 			},
 			"system": {
 				"description": {
-					"value": "<p><em>You reach out as if to grasp your target, conjuring toxic mist around them.</em></p><p>1 Action - 1 Creature (30 ft.) - Cantrip - VS</p><p><strong>Consitution</strong> Save</p><ul><li><p><strong>Failure:</strong> Target takes 1d12 poison damage. <strong>*</strong></p></li><li><p><strong>Success:</strong> No damage.</p></li></ul><p><strong>*At Higher Levels:</strong> This spell's damage increases by 1d12 when you reach a total character or creature level of 5th level (2d12), 11th level (3d12), and 17th level (4d12).</p>",
-					"chat": "1 Action - 1 Creature (30 ft.) - Cantrip - VS</p><p><strong>Consitution</strong> Save</p><ul><li><p><strong>Failure:</strong> Target takes 1d12 poison damage. <strong>*</strong></p></li><li><p><strong>Success:</strong> No damage.</p></li></ul><p><strong>*At Higher Levels:</strong> This spell's damage increases by 1d12 when you reach a total character or creature level of 5th level (2d12), 11th level (3d12), and 17th level (4d12).</p>"
+					"value": "<p><em>You reach out as if to grasp your target, conjuring toxic mist around them.</em></p><p><strong>Consitution Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 1d12 poison]] damage.*</p></li><li><p><strong>Success:</strong> No damage.</p></li></ul><p><strong>*At Higher Levels:</strong> This spell's damage increases by [[/damage 1d12 poison]] when you reach a total character or creature level of 5th level ([[/damage 2d12 poison]]), 11th level ([[/damage 3d12 poison]]), and 17th level ([[/damage 4d12 poison]]).</p>",
+					"chat": ""
 				},
 				"source": {
-					"custom": "Elkan 5e",
+					"custom": "elkan5e.com/spells/toxic-sting",
 					"revision": 1,
-					"rules": "2014"
+					"rules": "",
+					"book": "Elkan 5e",
+					"page": "",
+					"license": ""
 				},
 				"activation": {
 					"type": "action",
@@ -1130,18 +1277,21 @@
 				},
 				"target": {
 					"affects": {
+						"special": "",
 						"type": "creature",
 						"count": "1",
 						"choice": false
 					},
 					"template": {
+						"type": "",
 						"units": "",
 						"contiguous": false
 					}
 				},
 				"range": {
 					"value": "30",
-					"units": "ft"
+					"units": "ft",
+					"special": ""
 				},
 				"uses": {
 					"max": "",
@@ -1161,6 +1311,11 @@
 					"mode": "always",
 					"prepared": true
 				},
+				"properties": [
+					"vocal",
+					"somatic",
+					"mgc"
+				],
 				"activities": {
 					"dnd5eactivity000": {
 						"_id": "dnd5eactivity000",
@@ -1191,15 +1346,12 @@
 							"override": false
 						},
 						"target": {
-							"prompt": true,
-							"template": {
-								"contiguous": false,
-								"units": "ft"
-							},
-							"affects": {
-								"choice": false
-							},
-							"override": false
+							"type": "creature",
+							"value": 1,
+							"units": "ft",
+							"width": null,
+							"override": false,
+							"prompt": true
 						},
 						"uses": {
 							"spent": 0,
@@ -1210,7 +1362,7 @@
 							"onSave": "none",
 							"parts": [
 								{
-									"number": 3,
+									"number": 1,
 									"denomination": 12,
 									"bonus": "",
 									"types": [
@@ -1237,11 +1389,7 @@
 						}
 					}
 				},
-				"identifier": "toxic-sting",
-				"properties": [
-					"vocal",
-					"somatic"
-				]
+				"identifier": "toxic-sting"
 			},
 			"_id": "GFxjOvMqHq7g2v83",
 			"_key": "!actors.items!h4Aud0lG4mNU1RFg.GFxjOvMqHq7g2v83"
@@ -1286,7 +1434,8 @@
 				"source": {
 					"custom": "elkan5e.com/weapons",
 					"revision": 1,
-					"rules": "2014"
+					"rules": "2014",
+					"book": "Elkan 5e"
 				},
 				"quantity": 1,
 				"weight": {

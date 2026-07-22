@@ -90,13 +90,16 @@
 			"_id": "nRWexAkBMv07jqbd",
 			"system": {
 				"description": {
-					"value": "<p>You touch a willing creature who isn't wearing armor, and a protective magical force surrounds it until the spell ends. The target's base AC becomes 13 + its Dexterity modifier. The spell ends if the target dons armor or if you dismiss the spell as an action.</p>",
+					"value": "<p><em>You touch a creature who isn't wearing armor, and a protective magical force surrounds them, appearing as a glowing, translucent suit of padded or leather armor.</em></p><p><strong>Buff</strong></p><p>The spell has no effect if the target is wearing armor or later puts on armor - the magical armor flickers and disappears.</p><ul><li><p>The target's AC becomes 13 + its Dexterity modifier if it wasn't already higher.</p></li></ul>",
 					"chat": ""
 				},
 				"source": {
-					"custom": "PHB pg. 256",
+					"custom": "elkan5e.com/spells/mage-armor",
 					"revision": 1,
-					"rules": "2014"
+					"rules": "",
+					"book": "Elkan 5e",
+					"page": "",
+					"license": ""
 				},
 				"activation": {
 					"type": "action",
@@ -109,17 +112,20 @@
 				},
 				"target": {
 					"affects": {
+						"special": "",
 						"type": "creature",
 						"count": "1",
 						"choice": false
 					},
 					"template": {
+						"type": "",
 						"units": "",
 						"contiguous": false
 					}
 				},
 				"range": {
-					"units": "touch"
+					"units": "touch",
+					"special": ""
 				},
 				"uses": {
 					"max": "1",
@@ -135,7 +141,7 @@
 				"level": 1,
 				"school": "abj",
 				"materials": {
-					"value": "A piece of cured leather",
+					"value": "",
 					"consumed": false,
 					"cost": 0,
 					"supply": 0
@@ -144,32 +150,26 @@
 					"mode": "innate",
 					"prepared": true
 				},
+				"properties": [
+					"vocal",
+					"somatic",
+					"material"
+				],
 				"activities": {
-					"dnd5eactivity000": {
-						"_id": "dnd5eactivity000",
+					"KizNIN0vYpdGWcEh": {
 						"type": "utility",
+						"_id": "KizNIN0vYpdGWcEh",
 						"activation": {
 							"type": "action",
 							"value": null,
 							"override": false
 						},
 						"consumption": {
-							"targets": [
-								{
-									"type": "itemUses",
-									"target": "",
-									"value": "1",
-									"scaling": {
-										"mode": "",
-										"formula": ""
-									}
-								}
-							],
 							"scaling": {
-								"allowed": false,
-								"max": ""
+								"allowed": false
 							},
-							"spellSlot": true
+							"spellSlot": true,
+							"targets": []
 						},
 						"description": {
 							"chatFlavor": ""
@@ -188,35 +188,32 @@
 							"override": false
 						},
 						"target": {
-							"prompt": true,
-							"template": {
-								"contiguous": false,
-								"units": "ft"
-							},
-							"affects": {
-								"choice": false
-							},
-							"override": false
+							"type": "creature",
+							"value": 1,
+							"units": "ft",
+							"width": null,
+							"override": false,
+							"prompt": true
 						},
 						"uses": {
 							"spent": 0,
-							"max": "",
-							"recovery": []
+							"recovery": [],
+							"max": ""
 						},
 						"roll": {
-							"formula": "",
-							"name": "",
 							"prompt": false,
-							"visible": false
-						}
+							"visible": false,
+							"name": "",
+							"formula": ""
+						},
+						"name": "",
+						"img": "",
+						"appliedEffects": [
+							"XRkvYT9cV0BX5oJc"
+						]
 					}
 				},
-				"identifier": "mage-armor",
-				"properties": [
-					"vocal",
-					"somatic",
-					"material"
-				]
+				"identifier": "mage-armor"
 			},
 			"_key": "!actors.items!ODZtWObKUQPRtVYf.nRWexAkBMv07jqbd"
 		},
@@ -282,7 +279,8 @@
 				"source": {
 					"custom": "PHB pg. 219",
 					"revision": 1,
-					"rules": "2014"
+					"rules": "2014",
+					"book": "Elkan 5e"
 				},
 				"activation": {
 					"type": "action",
@@ -498,7 +496,8 @@
 				"source": {
 					"custom": "PHB pg. 221",
 					"revision": 1,
-					"rules": "2014"
+					"rules": "2014",
+					"book": "Elkan 5e"
 				},
 				"activation": {
 					"type": "action",
@@ -723,13 +722,16 @@
 			"_id": "85AoYvgvKP6B9ikx",
 			"system": {
 				"description": {
-					"value": "<p>You or a creature you touch becomes Invisible until the spell ends. Anything the target is wearing or carrying is Invisible as long as it is on the target's person.</p>",
+					"value": "<p><em>As you chant a short magical phrase and make a motion with your arm as if covering your target with an invisible cloak, your target(s) vanish from view. For an unknown reason, this spell fails to function if a single eyelash encased in gum arabic isn't on your person.</em></p><p><strong>Buff</strong></p><ul><li><p>The target becomes &amp;reference[invisible] until the spell ends. Anything the target is wearing or carrying that is at least half their size or smaller is invisible as long as it is on the target's person.</p></li></ul><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 4th.</p>",
 					"chat": ""
 				},
 				"source": {
-					"custom": "PHB pg. 246",
+					"custom": "elkan5e.com/spells/greater-invisibility",
 					"revision": 1,
-					"rules": "2014"
+					"rules": "",
+					"book": "Elkan 5e",
+					"page": "",
+					"license": ""
 				},
 				"activation": {
 					"type": "action",
@@ -743,16 +745,19 @@
 				"target": {
 					"affects": {
 						"type": "creature",
-						"count": "1",
-						"choice": false
+						"count": "@item.level -3",
+						"choice": false,
+						"special": ""
 					},
 					"template": {
 						"units": "",
-						"contiguous": false
+						"contiguous": false,
+						"type": ""
 					}
 				},
 				"range": {
-					"units": "touch"
+					"units": "touch",
+					"special": ""
 				},
 				"uses": {
 					"max": "1",
@@ -777,9 +782,14 @@
 					"mode": "innate",
 					"prepared": true
 				},
+				"properties": [
+					"vocal",
+					"somatic",
+					"material",
+					"concentration"
+				],
 				"activities": {
-					"dnd5eactivity000": {
-						"_id": "dnd5eactivity000",
+					"AiC6ywSsg8YSm4me": {
 						"type": "utility",
 						"activation": {
 							"type": "action",
@@ -787,17 +797,7 @@
 							"override": false
 						},
 						"consumption": {
-							"targets": [
-								{
-									"type": "itemUses",
-									"target": "",
-									"value": "1",
-									"scaling": {
-										"mode": "",
-										"formula": ""
-									}
-								}
-							],
+							"targets": [],
 							"scaling": {
 								"allowed": false,
 								"max": ""
@@ -814,42 +814,41 @@
 						},
 						"effects": [
 							{
-								"_id": "bwqojHrJfXaFUJnf"
+								"_id": "zwfg5OEIkYAOsgQl"
 							}
 						],
 						"range": {
 							"override": false
 						},
 						"target": {
-							"prompt": true,
-							"template": {
-								"contiguous": false,
-								"units": "ft"
-							},
-							"affects": {
-								"choice": false
-							},
-							"override": false
-						},
-						"uses": {
-							"spent": 0,
-							"max": "",
-							"recovery": []
+							"type": "creature",
+							"value": 1,
+							"units": "ft",
+							"width": null,
+							"override": false,
+							"prompt": true
 						},
 						"roll": {
 							"formula": "",
 							"name": "",
 							"prompt": false,
 							"visible": false
-						}
+						},
+						"uses": {
+							"spent": 0,
+							"recovery": [],
+							"max": ""
+						},
+						"_id": "AiC6ywSsg8YSm4me",
+						"name": "",
+						"img": "",
+						"appliedEffects": [
+							"zwfg5OEIkYAOsgQl"
+						],
+						"effectConditionText": "!target.traits.ci.value.has('invisible')"
 					}
 				},
-				"identifier": "greater-invisibility",
-				"properties": [
-					"vocal",
-					"somatic",
-					"concentration"
-				]
+				"identifier": "greater-invisibility"
 			},
 			"_key": "!actors.items!ODZtWObKUQPRtVYf.85AoYvgvKP6B9ikx"
 		},
@@ -864,7 +863,8 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014"
+					"rules": "2014",
+					"book": "Elkan 5e"
 				},
 				"quantity": 1,
 				"weight": {
@@ -1080,7 +1080,8 @@
 				"source": {
 					"custom": "elkan5e.com/weapons",
 					"revision": 1,
-					"rules": "2014"
+					"rules": "2014",
+					"book": "Elkan 5e"
 				},
 				"quantity": 1,
 				"weight": {
