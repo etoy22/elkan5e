@@ -159,7 +159,7 @@
 		],
 		"activities": {
 			"uKgd8XsMvGM1IbmS": {
-				"type": "save",
+				"type": "utility",
 				"activation": {
 					"type": "action",
 					"value": null,
@@ -181,36 +181,120 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [
-					{
-						"_id": "rcZKlNLU33j9DOsW",
-						"onSave": true,
-						"level": {
-							"min": null,
-							"max": null
-						}
-					}
-				],
+				"effects": [],
 				"range": {
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": true,
 					"prompt": true,
-					"affects": {
-						"type": ""
-					},
 					"template": {
 						"type": "wall",
 						"size": "60",
 						"width": "10",
 						"height": "20",
 						"count": ""
+					},
+					"affects": {
+						"type": "",
+						"count": "",
+						"choice": false,
+						"special": ""
+					},
+					"override": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"_id": "uKgd8XsMvGM1IbmS",
+				"name": "",
+				"img": "",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
 					}
+				},
+				"regionBehavior": {
+					"attachToken": "default",
+					"enabled": true,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "wallOfFireDamage"
+						},
+						{
+							"trigger": "turnEnd",
+							"action": "useActivity",
+							"targetId": "wallOfFireDamage"
+						},
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "rcZKlNLU33j9DOsW"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "rcZKlNLU33j9DOsW"
+						}
+					]
+				},
+				"appliedEffects": [],
+				"roll": {
+					"formula": "",
+					"name": "",
+					"prompt": false,
+					"visible": false
+				}
+			},
+			"woFDmgActivity01": {
+				"type": "save",
+				"activation": {
+					"type": "",
+					"value": null,
+					"override": true,
+					"condition": ""
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"type": "",
+						"units": "ft",
+						"stationary": false
+					},
+					"affects": {
+						"type": "self"
+					},
+					"override": true
 				},
 				"damage": {
 					"onSave": "half",
@@ -246,8 +330,8 @@
 					"recovery": [],
 					"max": ""
 				},
-				"_id": "uKgd8XsMvGM1IbmS",
-				"name": "",
+				"_id": "woFDmgActivity01",
+				"name": "Wall of Fire Damage",
 				"img": "",
 				"visibility": {
 					"level": {
@@ -255,33 +339,25 @@
 						"max": null
 					}
 				},
+				"midiProperties": {
+					"identifier": "wallOfFireDamage",
+					"automationOnly": true,
+					"confirmTargets": "never"
+				},
+				"isOverTimeFlag": true,
+				"overTimeProperties": {
+					"turnChoice": "end",
+					"saveRemoves": false
+				},
 				"regionBehavior": {
-					"enabled": true,
-					"dispositionFilter": 0,
-					"excludeSource": false,
-					"wallRestriction": "move",
-					"rules": [
-						{
-							"trigger": "entry",
-							"action": "useActivity",
-							"targetId": "save"
-						},
-						{
-							"trigger": "turnEnd",
-							"action": "useActivity",
-							"targetId": "save"
-						},
-						{
-							"trigger": "entry",
-							"action": "applyEffect",
-							"targetId": "rcZKlNLU33j9DOsW"
-						},
-						{
-							"trigger": "turnEnd",
-							"action": "removeEffect",
-							"targetId": "rcZKlNLU33j9DOsW"
-						}
-					]
+					"enabled": false,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"attachToken": "default",
+					"rules": []
 				}
 			}
 		},

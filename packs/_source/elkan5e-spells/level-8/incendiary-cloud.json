@@ -40,7 +40,7 @@
 					"enableCondition": "",
 					"selfTarget": false,
 					"selfTargetAlways": false,
-					"dontApply": false
+					"dontApply": true
 				}
 			},
 			"_key": "!items.effects!bHXVSjD1iSj6Le7d.dDH0UzEqdnH5tHvc"
@@ -149,7 +149,7 @@
 		],
 		"activities": {
 			"3CY2vTCkhdYppfyY": {
-				"type": "save",
+				"type": "utility",
 				"activation": {
 					"type": "action",
 					"value": null,
@@ -171,34 +171,118 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [
-					{
-						"_id": "dDH0UzEqdnH5tHvc",
-						"onSave": true,
-						"level": {
-							"min": null,
-							"max": null
-						}
-					}
-				],
+				"effects": [],
 				"range": {
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": true,
 					"prompt": true,
-					"affects": {
-						"type": ""
-					},
 					"template": {
 						"type": "sphere",
 						"size": "20",
 						"count": ""
+					},
+					"affects": {
+						"type": "",
+						"count": "",
+						"choice": false,
+						"special": ""
+					},
+					"override": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"_id": "3CY2vTCkhdYppfyY",
+				"name": "",
+				"img": "",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
 					}
+				},
+				"regionBehavior": {
+					"attachToken": "default",
+					"enabled": true,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "cloudDamage"
+						},
+						{
+							"trigger": "turnEnd",
+							"action": "useActivity",
+							"targetId": "cloudDamage"
+						},
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "dDH0UzEqdnH5tHvc"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "dDH0UzEqdnH5tHvc"
+						}
+					]
+				},
+				"appliedEffects": [],
+				"roll": {
+					"formula": "",
+					"name": "",
+					"prompt": false,
+					"visible": false
+				}
+			},
+			"icRecurDamage001": {
+				"type": "save",
+				"activation": {
+					"type": "",
+					"value": null,
+					"override": true,
+					"condition": ""
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"type": "",
+						"units": "ft",
+						"stationary": false
+					},
+					"affects": {
+						"type": "self"
+					},
+					"override": true
 				},
 				"damage": {
 					"onSave": "half",
@@ -233,8 +317,8 @@
 					"recovery": [],
 					"max": ""
 				},
-				"_id": "3CY2vTCkhdYppfyY",
-				"name": "",
+				"_id": "icRecurDamage001",
+				"name": "Cloud Damage",
 				"img": "",
 				"visibility": {
 					"level": {
@@ -242,22 +326,25 @@
 						"max": null
 					}
 				},
+				"midiProperties": {
+					"identifier": "cloudDamage",
+					"automationOnly": true,
+					"confirmTargets": "never"
+				},
+				"isOverTimeFlag": true,
+				"overTimeProperties": {
+					"turnChoice": "end",
+					"saveRemoves": false
+				},
 				"regionBehavior": {
-					"enabled": true,
-					"dispositionFilter": 0,
+					"enabled": false,
+					"dispositionFilter": -1,
 					"excludeSource": false,
-					"rules": [
-						{
-							"trigger": "entry",
-							"action": "useActivity",
-							"targetId": "save"
-						},
-						{
-							"trigger": "turnEnd",
-							"action": "useActivity",
-							"targetId": "save"
-						}
-					]
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"attachToken": "default",
+					"rules": []
 				}
 			}
 		},

@@ -151,7 +151,7 @@
 			"duration": {
 				"value": 7,
 				"units": "seconds",
-				"expiry": "turnStart",
+				"expiry": "sourceEnd",
 				"expired": false
 			},
 			"flags": {
@@ -178,12 +178,11 @@
 					"stackable": "noneName",
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"turnEndSource"
-					],
+					"specialDuration": [],
 					"enableCondition": "",
 					"disableCondition": "",
-					"disableIncapacitated": false
+					"disableIncapacitated": false,
+					"expiryMode": "default"
 				}
 			},
 			"name": "Breath Weapon (Copper)",
@@ -198,27 +197,31 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.disadvantage.attack.all",
+						"type": "override",
 						"value": 1,
-						"priority": 50,
-						"type": "override"
+						"phase": "initial",
+						"priority": 50
 					},
 					{
 						"key": "system.attributes.ac.bonus",
+						"type": "add",
 						"value": -2,
-						"priority": 20,
-						"type": "add"
+						"phase": "initial",
+						"priority": 20
 					},
 					{
 						"key": "system.abilities.dex.bonuses.save",
+						"type": "add",
 						"value": -2,
-						"priority": 20,
-						"type": "add"
+						"phase": "initial",
+						"priority": 20
 					},
 					{
 						"key": "system.attributes.movement.all",
+						"type": "custom",
 						"value": "/2",
-						"priority": 0,
-						"type": "custom"
+						"phase": "final",
+						"priority": 0
 					}
 				]
 			},

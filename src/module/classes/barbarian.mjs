@@ -765,16 +765,16 @@ export async function relentlessRage(actor, amount, _updates, _options) {
 	if (currentHp - amount > 0) return;
 
 	const hasFeature = actor.items.some(
-		(i) =>
-			i.system?.identifier === RELENTLESS_RAGE_IDENTIFIER &&
-			i.system?.source?.book === "Elkan 5e",
+		(i) => i.system?.identifier === "relentless-rage" && i.system?.source?.book === "Elkan 5e",
 	);
 	if (!hasFeature) return;
 
 	const isRaging = actor.effects.some((e) => e.name?.toLowerCase() === "rage" && !e.disabled);
 	if (!isRaging) return;
 
-	const uses = Number(actor.getFlag("elkan5e", "relentlessRageUses") ?? 0);
+	// Read the current use count from the existing effect name so players can edit it manually.
+	const existing = actor.effects.find((e) => e.flags?.elkan5e?.relentlessRage);
+	const uses = existing ? Number(existing.name.match(/\((\d+)\)/)?.[1] ?? 0) : 0;
 	const conDC = 10 + uses * 5;
 
 	const saveRolls = await actor.rollSavingThrow({
@@ -782,11 +782,30 @@ export async function relentlessRage(actor, amount, _updates, _options) {
 		target: conDC,
 		midiOptions: { fastForward: true },
 	});
-	await actor.setFlag("elkan5e", "relentlessRageUses", uses + 1);
 
 	if (saveRolls?.[0]?.total < conDC) {
 		await actor.update({ "system.attributes.hp.value": 0 });
 		return;
+	}
+
+	const newName = `Relentless Rage (${uses + 1})`;
+	if (existing) {
+		await existing.update({ name: newName });
+	} else {
+		await actor.createEmbeddedDocuments("ActiveEffect", [
+			{
+				name: newName,
+				img: "icons/skills/melee/blade-tips-triple-orange.webp",
+				origin: actor.uuid,
+				transfer: false,
+				changes: [],
+				disabled: false,
+				flags: {
+					elkan5e: { relentlessRage: true },
+					dae: { specialDuration: ["shortRest"] },
+				},
+			},
+		]);
 	}
 
 	await actor.update({ "system.attributes.hp.value": 1 });
@@ -820,21 +839,20 @@ export async function rage(workflow) {
 /**
  * Runs wild Blood class feature automation.
  *
- * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @param {*} activity - Activity.
+ * @param {*} usageConfig - Usage configuration passed by the activity workflow.
  * @returns {Promise<void>} Promise resolution result.
  */
-export async function wildBlood(workflow) {
-	const item = workflow.item;
-	const scope = workflow.scope;
+export async function wildBlood(activity, _usageConfig) {
+	const actor = activity?.actor;
+	const item = activity?.item;
+	if (!actor || !item) return;
 	if (!game.modules.get("elkan5e")?.active) return;
 
 	if (item.type !== "spell" || !item.system.activities) return;
 
-	const activityId = scope.workflow.uuid?.split(".").pop();
-	const activity =
-		item.system.activities?.[activityId] ??
-		Object.values(item.system.activities ?? {}).find((a) => a?.id === activityId);
-	if (!activity) return;
+	const hasWildBlood = actor.items.find((i) => i.system?.identifier === "wild-blood");
+	if (!hasWildBlood) return;
 
 	const type = activity.type;
 	const level = item.system.level;

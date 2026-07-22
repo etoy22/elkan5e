@@ -1,3 +1,3 @@
 export async function sailorVigilance() {
-    // Implementation for sailor's vigilance ability
+	// Implementation for sailor's vigilance ability
 }

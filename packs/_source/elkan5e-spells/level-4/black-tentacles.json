@@ -58,22 +58,14 @@
 			"type": "base",
 			"_id": "9zJmAJvjeY1F3Rw5",
 			"system": {
-				"changes": [
-					{
-						"key": "flags.midi-qol.OverTime",
-						"type": "custom",
-						"value": "turn=end, label=Black Tentacles, saveAbility=dex, saveDC=@attributes.spell.dc, damageRoll=(@item.level)d6, damageType=bludgeoning, allowIncapacitated=true",
-						"phase": "initial",
-						"priority": null
-					}
-				]
+				"changes": []
 			},
 			"disabled": false,
 			"start": null,
 			"duration": {
-				"value": null,
+				"value": 6,
 				"units": "seconds",
-				"expiry": null,
+				"expiry": "sourceEnd",
 				"expired": false
 			},
 			"description": "",
@@ -211,7 +203,7 @@
 		],
 		"activities": {
 			"6tyXheicKsRLruio": {
-				"type": "save",
+				"type": "utility",
 				"activation": {
 					"type": "action",
 					"value": null,
@@ -233,15 +225,103 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [
-					{
-						"_id": "HLVD4W1YRdYOQACd",
-						"onSave": true,
-						"level": {
-							"min": null,
-							"max": null
-						}
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"type": "square",
+						"size": "20",
+						"count": ""
 					},
+					"affects": {
+						"type": "",
+						"count": "",
+						"choice": false,
+						"special": ""
+					},
+					"override": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"_id": "6tyXheicKsRLruio",
+				"name": "",
+				"img": "",
+				"appliedEffects": [],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"regionBehavior": {
+					"attachToken": "default",
+					"enabled": true,
+					"dispositionFilter": -1,
+					"excludeSource": false,
+					"oncePerTurn": true,
+					"wallRestriction": "move",
+					"regionVisibility": 2,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "tentaclesDamage"
+						},
+						{
+							"trigger": "turnEnd",
+							"action": "useActivity",
+							"targetId": "tentaclesDamage"
+						},
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "HLVD4W1YRdYOQACd"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "HLVD4W1YRdYOQACd"
+						}
+					]
+				},
+				"roll": {
+					"formula": "",
+					"name": "",
+					"prompt": false,
+					"visible": false
+				}
+			},
+			"btTentacleDmg001": {
+				"type": "save",
+				"activation": {
+					"type": "",
+					"value": null,
+					"override": true,
+					"condition": ""
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [
 					{
 						"_id": "9zJmAJvjeY1F3Rw5",
 						"onSave": false,
@@ -255,23 +335,20 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": true,
 					"prompt": true,
-					"affects": {
-						"type": ""
-					},
 					"template": {
-						"type": "square",
-						"size": "20",
-						"count": ""
-					}
+						"contiguous": false,
+						"type": "",
+						"units": "ft",
+						"stationary": false
+					},
+					"affects": {
+						"type": "self"
+					},
+					"override": true
 				},
 				"damage": {
-					"onSave": "none",
+					"onSave": "half",
 					"parts": [
 						{
 							"custom": {
@@ -303,13 +380,10 @@
 					"recovery": [],
 					"max": ""
 				},
-				"_id": "6tyXheicKsRLruio",
-				"name": "",
+				"_id": "btTentacleDmg001",
+				"name": "Tentacle Grip",
 				"img": "",
-				"appliedEffects": [
-					"ChKeNNwKeJ4uxPFQ"
-				],
-				"effectConditionText": "!target.traits.ci.value.has('restrained')",
+				"appliedEffects": [],
 				"visibility": {
 					"level": {
 						"min": null,
@@ -317,27 +391,19 @@
 					}
 				},
 				"regionBehavior": {
-					"enabled": true,
+					"enabled": false,
+					"dispositionFilter": -1,
 					"excludeSource": false,
-					"dispositionFilter": 0,
+					"oncePerTurn": true,
 					"wallRestriction": "move",
-					"rules": [
-						{
-							"trigger": "turnEnd",
-							"action": "useActivity",
-							"targetId": "save"
-						},
-						{
-							"trigger": "entry",
-							"action": "applyEffect",
-							"targetId": "HLVD4W1YRdYOQACd"
-						},
-						{
-							"trigger": "exit",
-							"action": "applyEffect",
-							"targetId": "HLVD4W1YRdYOQACd"
-						}
-					]
+					"regionVisibility": 2,
+					"attachToken": "default",
+					"rules": []
+				},
+				"midiProperties": {
+					"identifier": "tentaclesDamage",
+					"automationOnly": true,
+					"confirmTargets": "never"
 				}
 			}
 		},

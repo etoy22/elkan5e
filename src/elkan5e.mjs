@@ -24,12 +24,25 @@ import {
 	onCombatTurnChange,
 } from "./module/classes/monk.mjs";
 import { slicingBlow, sneakAttack } from "./module/classes/rogue.mjs";
-import { delayedDuration, delayedItem, wildSurge } from "./module/classes/sorcerer.mjs";
+import {
+	carefulSpell,
+	delayedDuration,
+	delayedItem,
+	wildSurge,
+} from "./module/classes/sorcerer.mjs";
 import { initWarlockSpellSlot, onWarlockFilterInvocations } from "./module/classes/warlock.mjs";
-import { markForDeath, markOfAffliction, markOfThorns } from "./module/classes/ranger.mjs";
+import {
+	markForDeath,
+	markOfAffliction,
+	markOfThorns,
+	preciseHunterAdvantage,
+} from "./module/classes/ranger.mjs";
 import {
 	lifeDrainGraveguard,
 	necromanticSurge,
+	overchannelArm,
+	overchannelOnDamageRoll,
+	overchannelOnLongRest,
 	soulConduit,
 	spectralEmpowerment,
 } from "./module/classes/wizard.mjs";
@@ -46,6 +59,7 @@ import {
 	conditionsReady,
 	handleHazardExhaustion,
 } from "./module/rules/condition/setup.mjs";
+import { darknessAttackDisadvantage } from "./module/rules/condition/vision.mjs";
 import {
 	grapple,
 	handleDeadGrapplePrompt,
@@ -70,6 +84,10 @@ import {
 	onRestCompleted,
 	onPreUpdateActorDeathSaves,
 } from "./module/rules/death-saves.mjs";
+import {
+	onRenderShortRestDialog,
+	onShortRestCompleted,
+} from "./module/rules/short-rest-activations.mjs";
 import { startDialog } from "./module/settings/dialog.mjs";
 import { gameSettingRegister, gameSettingsMigrate } from "./module/settings/game-settings.mjs";
 import {
@@ -77,7 +95,8 @@ import {
 	handleDeleteMeasuredTemplate,
 	handleUpdateMeasuredTemplate,
 	registerDaeSpecials,
-	syncRegionLightSort,
+	registerElkan5eSocket,
+	syncRegionLightExtras,
 } from "./module/shared/helpers.mjs";
 import * as Cantrip from "./module/spells/cantrip.mjs";
 import * as Level1 from "./module/spells/level-1.mjs";
@@ -102,6 +121,14 @@ const Spells = {
  *
  */
 function registerHooks() {
+	Hooks.once("socketlib.ready", () => {
+		try {
+			registerElkan5eSocket();
+		} catch (error) {
+			console.error("Elkan 5e | Error registering socketlib socket:", error);
+		}
+	});
+
 	Hooks.once("init", async () => {
 		try {
 			console.log("Elkan 5e | Initializing Elkan 5e");
@@ -155,6 +182,15 @@ function registerHooks() {
 
 			// Registers custom DAE effect fields for push resistance.
 			Hooks.on("dae.modifySpecials", registerDaeSpecials);
+
+			// Lets players opt in to using short-rest-triggered features from the Short Rest dialog.
+			Hooks.on("renderShortRestDialog", (app, html) => {
+				try {
+					onRenderShortRestDialog(app, html);
+				} catch (error) {
+					console.error("Elkan 5e | Error in renderShortRestDialog hook:", error);
+				}
+			});
 		} catch (error) {
 			console.error("Elkan 5e  |  Initialization Error:", error);
 		}
@@ -170,7 +206,11 @@ function registerHooks() {
 				await startDialog();
 
 				// Registers custom DAE auto-fields so they appear in the DAE field picker.
-				globalThis.DAE?.addAutoFields?.(["flags.elkan5e.pushResist"]);
+				globalThis.DAE?.addAutoFields?.([
+					"flags.elkan5e.pushResist",
+					"flags.elkan5e.undeadFortitude",
+					"flags.elkan5e.undeadFortitudeDCModifier",
+				]);
 			} catch (error) {
 				console.error("Elkan 5e | Ready Hook Error:", error);
 			}
@@ -191,6 +231,44 @@ function registerHooks() {
 		} catch (error) {
 			console.error("Elkan 5e | Error in postUseActivity hook:", error);
 		}
+		try {
+			wildBlood(activity, usageConfig);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Wild Blood postUseActivity hook:", error);
+		}
+		try {
+			overchannelArm(activity);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Overchannel postUseActivity hook:", error);
+		}
+	});
+
+	Hooks.on("midi-qol.preambleComplete", async (workflow) => {
+		try {
+			await carefulSpell(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Careful Spell preambleComplete hook:", error);
+		}
+
+		try {
+			await necromanticSurge(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Necromantic Surge preambleComplete hook:", error);
+		}
+
+		try {
+			await Level4.blight(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Blight preambleComplete hook:", error);
+		}
+	});
+
+	Hooks.on("dnd5e.preRollDamageV2", async (rollConfig) => {
+		try {
+			await overchannelOnDamageRoll(rollConfig);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Overchannel preRollDamageV2 hook:", error);
+		}
 	});
 
 	Hooks.on("midi-qol.preAttackRoll", async (workflow) => {
@@ -198,6 +276,22 @@ function registerHooks() {
 			await Spells.sanctuary(workflow);
 		} catch (error) {
 			console.error("Elkan 5e | Error in Sanctuary hook:", error);
+		}
+	});
+
+	// Fires after midi-qol's own checkAttackAdvantage() resets and recomputes
+	// the attack roll modifier tracker, so our disadvantage isn't wiped out.
+	Hooks.on("midi-qol.preAttackRollConfig", async (workflow) => {
+		try {
+			await darknessAttackDisadvantage(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in darknessAttackDisadvantage hook:", error);
+		}
+
+		try {
+			await preciseHunterAdvantage(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in preciseHunterAdvantage hook:", error);
 		}
 	});
 
@@ -225,6 +319,12 @@ function registerHooks() {
 			await Spells.fireShield(workflow);
 		} catch (error) {
 			console.error("Elkan 5e | Error in Fire Shield hook:", error);
+		}
+
+		try {
+			await Level4.blightMaximizePlantDamage(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Blight RollComplete hook:", error);
 		}
 	});
 
@@ -374,7 +474,7 @@ function registerHooks() {
 		}
 	});
 
-	Hooks.on("dnd5e.restCompleted", async (actor, result) => {
+	Hooks.on("dnd5e.restCompleted", async (actor, result, config) => {
 		try {
 			await onRestCompleted(actor, result);
 		} catch (error) {
@@ -382,9 +482,15 @@ function registerHooks() {
 		}
 
 		try {
-			await actor.unsetFlag("elkan5e", "relentlessRageUses");
+			await onShortRestCompleted(actor, result, config);
 		} catch (error) {
-			console.error("Elkan 5e | Error resetting Relentless Rage uses:", error);
+			console.error("Elkan 5e | Error in restCompleted short rest activation hook:", error);
+		}
+
+		try {
+			await overchannelOnLongRest(actor, result);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Overchannel long rest reset hook:", error);
 		}
 	});
 
@@ -452,17 +558,17 @@ function registerHooks() {
 
 	Hooks.on("createRegionBehavior", async (behavior) => {
 		try {
-			await syncRegionLightSort(behavior);
+			await syncRegionLightExtras(behavior);
 		} catch (error) {
-			console.error("Elkan 5e | Error in createRegionBehavior light sort hook:", error);
+			console.error("Elkan 5e | Error in createRegionBehavior light sync hook:", error);
 		}
 	});
 
 	Hooks.on("updateRegionBehavior", async (behavior) => {
 		try {
-			await syncRegionLightSort(behavior);
+			await syncRegionLightExtras(behavior);
 		} catch (error) {
-			console.error("Elkan 5e | Error in updateRegionBehavior light sort hook:", error);
+			console.error("Elkan 5e | Error in updateRegionBehavior light sync hook:", error);
 		}
 	});
 
@@ -478,7 +584,6 @@ function registerHooks() {
 				shadowRefuge,
 				infusedHealer,
 				healingOverflow,
-				wildBlood,
 				secondWind,
 				hijackShadow,
 				meldWithShadows,

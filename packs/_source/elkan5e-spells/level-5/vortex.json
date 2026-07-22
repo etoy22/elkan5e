@@ -10,15 +10,7 @@
 			"_id": "p4VvJpYMpbb4Htk3",
 			"type": "base",
 			"system": {
-				"changes": [
-					{
-						"key": "flags.midi-qol.OverTime",
-						"type": "add",
-						"value": "turn=end,saveAbility=str,saveDC=@attributes.spell.dc,damageType=bludgeoning,saveDamage=halfdamage,damageRoll = 4d6 + ((@spell.level - 5)*2)d6),saveMagic=true,label=Whirlwind",
-						"phase": "initial",
-						"priority": 20
-					}
-				]
+				"changes": []
 			},
 			"disabled": false,
 			"duration": {
@@ -349,16 +341,152 @@
 					}
 				},
 				"regionBehavior": {
+					"attachToken": "default",
 					"enabled": true,
-					"dispositionFilter": 0,
-					"excludeSource": false,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "move",
+					"regionVisibility": 2,
 					"rules": [
 						{
 							"trigger": "entry",
 							"action": "useActivity",
-							"targetId": "initial-casting"
+							"targetId": "vortexDamage"
+						},
+						{
+							"trigger": "turnEnd",
+							"action": "useActivity",
+							"targetId": "vortexDamage"
 						}
 					]
+				}
+			},
+			"vortexDmgSaveAc1": {
+				"type": "save",
+				"activation": {
+					"type": "",
+					"value": null,
+					"override": true,
+					"condition": ""
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [
+					{
+						"_id": "p4VvJpYMpbb4Htk3",
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
+					},
+					{
+						"_id": "Ckfan4ziiarHWxGF",
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"type": "",
+						"units": "ft",
+						"stationary": false
+					},
+					"affects": {
+						"type": "self"
+					},
+					"override": true
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": [
+						{
+							"number": 4,
+							"denomination": 6,
+							"bonus": "",
+							"types": [
+								"bludgeoning"
+							],
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"scaling": {
+								"mode": "whole",
+								"number": 2,
+								"formula": ""
+							}
+						}
+					]
+				},
+				"save": {
+					"ability": "str",
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"name": "Vortex Damage",
+				"img": "",
+				"appliedEffects": [
+					"p4VvJpYMpbb4Htk3",
+					"Ckfan4ziiarHWxGF"
+				],
+				"effectConditionText": "!target.traits.ci.value.has('restrained')",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"_id": "vortexDmgSaveAc1",
+				"midiProperties": {
+					"identifier": "vortexDamage",
+					"automationOnly": true,
+					"confirmTargets": "never"
+				},
+				"isOverTimeFlag": true,
+				"overTimeProperties": {
+					"turnChoice": "end",
+					"saveRemoves": true
+				},
+				"regionBehavior": {
+					"enabled": false,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "move",
+					"regionVisibility": 2,
+					"attachToken": "default",
+					"rules": []
 				}
 			}
 		},

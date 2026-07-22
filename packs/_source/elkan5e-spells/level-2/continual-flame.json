@@ -192,22 +192,25 @@
 					"otherActivityCompatible": false
 				},
 				"regionBehavior": {
+					"attachToken": "default",
 					"enabled": true,
 					"rules": [
 						{
 							"trigger": "entry",
 							"action": "useActivity",
-							"targetId": "save-(creature-standing-in-fire)"
+							"targetId": "flameDamage"
 						},
 						{
 							"trigger": "turnEnd",
 							"action": "useActivity",
-							"targetId": "save-(creature-standing-in-fire)"
+							"targetId": "flameDamage"
 						}
 					],
-					"dispositionFilter": 0,
+					"dispositionFilter": -1,
 					"excludeSource": false,
-					"wallRestriction": "move"
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2
 				}
 			},
 			"ifwbRsZPRHELb0Oa": {
@@ -241,18 +244,17 @@
 					"special": ""
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": true,
 					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"type": "",
+						"units": "ft",
+						"stationary": false
+					},
 					"affects": {
 						"type": "self"
 					},
-					"template": {
-						"type": ""
-					}
+					"override": true
 				},
 				"uses": {
 					"spent": 0,
@@ -301,12 +303,24 @@
 					}
 				},
 				"midiProperties": {
-					"automationOnly": true
+					"identifier": "flameDamage",
+					"automationOnly": true,
+					"confirmTargets": "never"
 				},
 				"isOverTimeFlag": true,
 				"overTimeProperties": {
 					"turnChoice": "end",
 					"saveRemoves": false
+				},
+				"regionBehavior": {
+					"attachToken": "default",
+					"enabled": false,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": []
 				}
 			}
 		},

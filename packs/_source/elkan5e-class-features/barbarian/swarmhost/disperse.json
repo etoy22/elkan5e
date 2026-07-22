@@ -330,7 +330,7 @@
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
 			"effectCondition": "",
-			"reactionCondition": "",
+			"reactionCondition": "reaction === 'isDamaged' && actor.statuses?.has('raging') && workflow?.damageItem?.damageDetail?.some(d => ['acid','cold','fire','force','lightning','necrotic','radiant','thunder'].includes(d.type))",
 			"AoETargetType": "any",
 			"autoTarget": "default",
 			"removeAttackDamageButtons": "default",

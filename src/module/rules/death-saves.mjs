@@ -59,7 +59,7 @@ export async function onRestCompleted(actor, _result) {
 
 /**
  * Called from preUpdateActor.
-* @param {Actor5e} actor
+ * @param {Actor5e} actor
  * @param {object} changes - Mutable update data passed to actor.update().
  * @param {object} options - Update options from actor.update().
  */

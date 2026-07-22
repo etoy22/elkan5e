@@ -28,7 +28,7 @@ export async function light(workflow) {
 					speed: 2,
 					intensity: 5,
 				},
-				sort: spellLevel,
+				priority: spellLevel,
 			},
 			"Light",
 		);
