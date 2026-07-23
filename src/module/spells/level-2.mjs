@@ -547,6 +547,97 @@ export async function lesserRestoration(workflow) {
 }
 
 /**
+ * Pairs the two Active Effects created by a single Spirit Link casting using the dnd5e
+ * `dependentOn` flag, so deleting one (separation, death, dismissal) cascades to the other.
+ *
+ * @param {ActiveEffect5e} effect - Newly-created active effect.
+ * @returns {Promise<void>} Promise resolution result.
+ */
+export async function spiritLinkPair(effect) {
+	if (effect?.name !== "Spirit Link") return;
+	if (effect.getFlag("dnd5e", "dependentOn")) return;
+
+	const partner = game.actors.contents
+		.flatMap((actor) => actor.appliedEffects)
+		.find(
+			(candidate) =>
+				candidate.id !== effect.id &&
+				candidate.name === "Spirit Link" &&
+				candidate.origin === effect.origin &&
+				!candidate.getFlag("dnd5e", "dependentOn"),
+		);
+	if (!partner) return;
+
+	await partner.setFlag("dnd5e", "dependentOn", effect.uuid);
+	await effect.setFlag("dnd5e", "dependentOn", partner.uuid);
+}
+
+/**
+ * Runs Spirit Link spell automation on actor HP changes: mirrors half the damage taken to
+ * the linked partner (the caster's own effect grants resistance to all damage, so the HP
+ * already lost here is exactly the other half). Ends the bond if either linked creature
+ * drops to 0 HP or the two become separated by more than 60 feet.
+ *
+ * @param {Actor5e} actor - Actor about to be updated.
+ * @param {object} updates - Pending update diff.
+ * @param {object} options - Update options.
+ * @returns {Promise<void>} Promise resolution result.
+ */
+export async function spiritLinkUpdate(actor, updates, options) {
+	if (options.onUpdateCalled) return;
+	const newHp = foundry.utils.getProperty(updates, "system.attributes.hp.value");
+	if (newHp === undefined) return;
+
+	const thisEffect = actor.appliedEffects.find((candidate) => candidate.name === "Spirit Link");
+	if (!thisEffect) return;
+
+	const partnerUuid = thisEffect.getFlag("dnd5e", "dependentOn");
+	const partnerEffect = partnerUuid ? fromUuidSync(partnerUuid) : null;
+	const partnerActor = partnerEffect?.parent;
+	if (!partnerActor) return;
+
+	const thisToken = actor.getActiveTokens()[0];
+	const partnerToken = partnerActor.getActiveTokens()[0];
+
+	if (thisToken && partnerToken) {
+		const distance = MidiQOL.computeDistance(thisToken, partnerToken, { wallsBlock: false });
+		if (distance > 60) {
+			await ChatMessage.create({
+				content: `Spirit Link ends — ${actor.name} and ${partnerActor.name} are more than 60 feet apart (${distance} ft).`,
+			});
+			await thisEffect.delete();
+			return;
+		}
+	}
+
+	const oldHp = actor.system.attributes.hp.value;
+	if (newHp <= 0) {
+		await thisEffect.delete();
+		return;
+	}
+	if (newHp < oldHp && partnerToken) {
+		const damage = oldHp - newHp;
+		await ChatMessage.create({
+			content: `Spirit Link: ${damage} damage is shared from ${actor.name} to ${partnerActor.name}.`,
+		});
+		await MidiQOL.applyTokenDamage(
+			[{ damage, type: "none" }],
+			damage,
+			new Set([partnerToken]),
+			undefined,
+			new Set(),
+			{
+				existingDamage: [],
+				superSavers: new Set(),
+				semiSuperSavers: new Set(),
+				workflow: undefined,
+				updateContext: { onUpdateCalled: true },
+			},
+		);
+	}
+}
+
+/**
  * Runs Shatter spell automation.
  * Constructs have disadvantage on the Constitution saving throw.
  * Wire this up at the preambleComplete phase so it runs before saves are rolled.

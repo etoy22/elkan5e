@@ -279,6 +279,14 @@ function registerHooks() {
 		}
 	});
 
+	Hooks.on("midi-qol.preDamageRoll", async (workflow, activity, config, dialog) => {
+		try {
+			await Spells.prismaticBolt(workflow, activity, config, dialog);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Prismatic Bolt hook:", error);
+		}
+	});
+
 	// Fires after midi-qol's own checkAttackAdvantage() resets and recomputes
 	// the attack roll modifier tracker, so our disadvantage isn't wiped out.
 	Hooks.on("midi-qol.preAttackRollConfig", async (workflow) => {
@@ -406,6 +414,12 @@ function registerHooks() {
 		} catch (error) {
 			console.error("Elkan 5e | Error in createActiveEffect burning hook:", error);
 		}
+
+		try {
+			await Spells.spiritLinkPair(effect);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Spirit Link pairing hook:", error);
+		}
 	});
 
 	Hooks.on("updateActiveEffect", async (effect, changes) => {
@@ -458,11 +472,17 @@ function registerHooks() {
 		}
 	});
 
-	Hooks.on("preUpdateActor", (actor, changes, options) => {
+	Hooks.on("preUpdateActor", async (actor, changes, options) => {
 		try {
 			onPreUpdateActorDeathSaves(actor, changes, options);
 		} catch (error) {
 			console.error("Elkan 5e | Error in preUpdateActor death save hook:", error);
+		}
+
+		try {
+			await Spells.spiritLinkUpdate(actor, changes, options);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Spirit Link update hook:", error);
 		}
 	});
 

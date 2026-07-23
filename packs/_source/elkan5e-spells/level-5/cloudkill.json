@@ -45,12 +45,12 @@
 			"_key": "!items.effects!EuVC53keqdJq1LTn.IKuTictLfDcVRIpO"
 		},
 		{
-			"name": "Lightly Obscured",
+			"name": "Heavily Obscured",
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.EuVC53keqdJq1LTn",
 			"transfer": false,
 			"flags": {
 				"dae": {
-					"itemName": "Stinking Cloud",
+					"itemName": "Cloudkill",
 					"enableCondition": "",
 					"disableCondition": "",
 					"disableIncapacitated": false,
@@ -64,7 +64,7 @@
 					"expiryMode": "default"
 				}
 			},
-			"img": "modules/elkan5e/icons/conditions/obscured-lightly.svg",
+			"img": "modules/elkan5e/icons/conditions/obscured-heavily.svg",
 			"_id": "2u9mvanLfZM9xaCQ",
 			"type": "base",
 			"system": {
@@ -72,9 +72,9 @@
 					{
 						"key": "macro.StatusEffect",
 						"type": "custom",
-						"value": "advantage",
+						"value": "obscuredheavily",
 						"phase": "final",
-						"priority": 20
+						"priority": 0
 					}
 				]
 			},
@@ -197,7 +197,7 @@
 		],
 		"activities": {
 			"5bcj1twVtsdWaeHn": {
-				"type": "save",
+				"type": "utility",
 				"activation": {
 					"type": "action",
 					"value": null,
@@ -219,71 +219,24 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [
-					{
-						"_id": "IKuTictLfDcVRIpO",
-						"onSave": false,
-						"level": {
-							"min": null,
-							"max": null
-						}
-					},
-					{
-						"_id": "2u9mvanLfZM9xaCQ",
-						"onSave": true,
-						"level": {
-							"min": null,
-							"max": null
-						}
-					}
-				],
+				"effects": [],
 				"range": {
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": true,
 					"prompt": true,
-					"affects": {
-						"type": ""
-					},
 					"template": {
 						"type": "sphere",
 						"size": "20",
 						"count": ""
-					}
-				},
-				"damage": {
-					"onSave": "half",
-					"parts": [
-						{
-							"custom": {
-								"enabled": false,
-								"formula": ""
-							},
-							"number": 5,
-							"denomination": "8",
-							"bonus": "",
-							"types": [
-								"poison"
-							],
-							"scaling": {
-								"mode": "whole",
-								"number": 1,
-								"formula": ""
-							}
-						}
-					]
-				},
-				"save": {
-					"ability": "con",
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
-					}
+					},
+					"affects": {
+						"type": "",
+						"count": "",
+						"choice": false,
+						"special": ""
+					},
+					"override": true
 				},
 				"uses": {
 					"spent": 0,
@@ -293,17 +246,18 @@
 				"_id": "5bcj1twVtsdWaeHn",
 				"name": "",
 				"img": "",
-				"appliedEffects": [
-					"IKuTictLfDcVRIpO",
-					"2u9mvanLfZM9xaCQ"
-				],
-				"otherActivityId": "none",
-				"effectConditionText": "!target.traits.ci.value.has('poisoned')",
+				"appliedEffects": [],
 				"visibility": {
 					"level": {
 						"min": null,
 						"max": null
 					}
+				},
+				"roll": {
+					"formula": "",
+					"name": "",
+					"prompt": false,
+					"visible": false
 				},
 				"regionBehavior": {
 					"attachToken": "default",
@@ -340,9 +294,10 @@
 			"hW3AAcNpcKKgS57i": {
 				"type": "save",
 				"activation": {
-					"type": "action",
+					"type": "",
 					"value": null,
-					"override": false
+					"override": true,
+					"condition": ""
 				},
 				"consumption": {
 					"targets": [],
@@ -358,9 +313,14 @@
 				"duration": {
 					"units": "inst",
 					"concentration": false,
-					"override": false
+					"override": true
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "IKuTictLfDcVRIpO",
+						"onSave": false
+					}
+				],
 				"range": {
 					"override": false
 				},
@@ -375,7 +335,7 @@
 					"affects": {
 						"type": "self"
 					},
-					"override": false
+					"override": true
 				},
 				"damage": {
 					"onSave": "half",
@@ -416,7 +376,7 @@
 					"recovery": [],
 					"max": ""
 				},
-				"name": "Target Enters/Ends Turn",
+				"name": "Cloudkill Damage",
 				"useConditionText": "",
 				"useConditionReason": "",
 				"effectConditionText": "",
@@ -459,7 +419,9 @@
 				"otherActivityId": "none",
 				"_id": "hW3AAcNpcKKgS57i",
 				"img": "",
-				"appliedEffects": [],
+				"appliedEffects": [
+					"IKuTictLfDcVRIpO"
+				],
 				"regionBehavior": {
 					"enabled": false,
 					"dispositionFilter": -1,

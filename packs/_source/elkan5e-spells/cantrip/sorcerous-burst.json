@@ -106,7 +106,7 @@
 				},
 				"midiProperties": {
 					"ignoreTraits": [],
-					"triggeredActivityId": "exploding-attack",
+					"triggeredActivityId": "none",
 					"triggeredActivityConditionText": "workflow.hitTargets.size > 0 && workflow?.damageRoll?.dice   .filter(d => d.faces === 8)   .flatMap(d => d.results.map(r => r.result))   .filter((v, i, a) => a.indexOf(v) !== i).length > 0",
 					"triggeredActivityTargets": "targets",
 					"triggeredActivityRollAs": "self",
@@ -132,128 +132,6 @@
 				"attackMode": "",
 				"ammunition": "",
 				"otherActivityUuid": "",
-				"img": "",
-				"appliedEffects": []
-			},
-			"gz1mc22uRprTfUaM": {
-				"type": "damage",
-				"name": "Exploding Attack",
-				"_id": "gz1mc22uRprTfUaM",
-				"activation": {
-					"type": "action",
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"units": "self",
-					"override": false
-				},
-				"target": {
-					"template": {
-						"contiguous": false,
-						"units": "ft"
-					},
-					"affects": {
-						"choice": false
-					},
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"damage": {
-					"critical": {
-						"allow": false
-					},
-					"parts": [
-						{
-							"custom": {
-								"enabled": false,
-								"formula": ""
-							},
-							"number": 1,
-							"denomination": 8,
-							"bonus": "",
-							"types": [
-								"acid",
-								"cold",
-								"lightning",
-								"fire",
-								"poison",
-								"psychic",
-								"thunder"
-							],
-							"scaling": {
-								"mode": ""
-							}
-						}
-					]
-				},
-				"useConditionText": "",
-				"useConditionReason": "",
-				"effectConditionText": "",
-				"macroData": {
-					"name": "",
-					"command": ""
-				},
-				"ignoreTraits": {
-					"idi": false,
-					"idr": false,
-					"idv": false,
-					"ida": false,
-					"idm": false
-				},
-				"midiProperties": {
-					"ignoreTraits": [],
-					"triggeredActivityId": "none",
-					"triggeredActivityConditionText": "",
-					"triggeredActivityTargets": "targets",
-					"triggeredActivityRollAs": "self",
-					"autoConsume": false,
-					"forceConsumeDialog": "default",
-					"forceRollDialog": "default",
-					"forceDamageDialog": "default",
-					"confirmTargets": "default",
-					"autoTargetType": "any",
-					"autoTargetAction": "default",
-					"automationOnly": false,
-					"otherActivityCompatible": true,
-					"otherActivityAsParentType": true,
-					"displayActivityName": false,
-					"rollMode": "default",
-					"chooseEffects": false,
-					"toggleEffect": false,
-					"ignoreFullCover": false,
-					"removeChatButtons": "default",
-					"magicEffect": false,
-					"magicDamage": false,
-					"noConcentrationCheck": false,
-					"autoCEEffects": "default"
-				},
-				"isOverTimeFlag": false,
-				"overTimeProperties": {
-					"saveRemoves": true,
-					"preRemoveConditionText": "",
-					"postRemoveConditionText": ""
-				},
 				"img": "",
 				"appliedEffects": []
 			}
