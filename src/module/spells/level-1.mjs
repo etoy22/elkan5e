@@ -1,5 +1,38 @@
-import { drainedEffect, forEachDamagedTarget } from "../shared/helpers.mjs";
+import {
+	createLightRegion,
+	drainedEffect,
+	forEachDamagedTarget,
+} from "../shared/helpers.mjs";
 import { createGoodberryDurationEffect } from "../shared/effect-factories.mjs";
+
+/**
+ * Runs Fog Cloud spell automation: a pale, drifting mist that blocks vision.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<unknown>} Promise resolution result.
+ */
+export async function fogCloudDarkness(workflow) {
+	for (const region of workflow.templateUuids ?? []) {
+		await createLightRegion(
+			region,
+			{
+				dim: 0,
+				bright: 15,
+				alpha: 0.3,
+				luminosity: 0.5,
+				negative: true,
+				color: "#c9d6dd",
+				animation: {
+					type: "fog",
+					speed: 2,
+					intensity: 5,
+				},
+				priority: 30,
+			},
+			"Darkness",
+		);
+	}
+}
 
 /**
  * Tracks attacker-defender pairs that have already passed a Sanctuary save

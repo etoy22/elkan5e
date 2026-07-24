@@ -15,7 +15,7 @@ import {
 	shadowRefuge,
 	holyStrike,
 } from "./module/classes/cleric.mjs";
-import { archDruid } from "./module/classes/druid.mjs";
+import { archDruid, lurkingFogDarkness } from "./module/classes/druid.mjs";
 import { secondWind } from "./module/classes/fighter.mjs";
 import {
 	elementalAttunement,
@@ -104,6 +104,7 @@ import * as Level2 from "./module/spells/level-2.mjs";
 import * as Level3 from "./module/spells/level-3.mjs";
 import * as Level4 from "./module/spells/level-4.mjs";
 import * as Level5 from "./module/spells/level-5.mjs";
+import * as Level8 from "./module/spells/level-8.mjs";
 import * as Level9 from "./module/spells/level-9.mjs";
 
 const Spells = {
@@ -113,6 +114,7 @@ const Spells = {
 	...Level3,
 	...Level4,
 	...Level5,
+	...Level8,
 	...Level9,
 };
 
@@ -599,6 +601,7 @@ function registerHooks() {
 				grapple,
 				push,
 				rage,
+				lurkingFogDarkness,
 				soulConduit,
 				necromanticSurge,
 				shadowRefuge,
