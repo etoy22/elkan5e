@@ -1,0 +1,294 @@
+{
+	"folder": "soYIW7zWGL65byQn",
+	"name": "Channel Conviction: Howl of Terror",
+	"type": "feat",
+	"img": "icons/commodities/bones/skull-bat-grey.webp",
+	"system": {
+		"activities": {
+			"kyuzDyuG9oUf81LH": {
+				"type": "save",
+				"_id": "kyuzDyuG9oUf81LH",
+				"img": "",
+				"activation": {
+					"type": "bonus",
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "",
+							"scaling": {}
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "minute",
+					"concentration": false,
+					"override": false,
+					"value": "1"
+				},
+				"effects": [
+					{
+						"_id": "ohbhpvUWu0RpHDvM",
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
+				"range": {
+					"units": "self",
+					"override": false,
+					"value": "30",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"stationary": false,
+						"units": "ft",
+						"type": "radius",
+						"size": "30",
+						"count": ""
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": "enemy",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": true,
+					"identifier": ""
+				},
+				"damage": {
+					"onSave": "half",
+					"critical": {
+						"allow": false
+					},
+					"parts": []
+				},
+				"save": {
+					"ability": [
+						"wis"
+					],
+					"dc": {
+						"calculation": "cha",
+						"formula": ""
+					}
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "!target.traits.ci.value.has('charmed') && !target.traits.ci.value.has('goaded)",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"triggeredActivityConsume": true,
+					"triggeredActivityConfigure": true,
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"skipConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"rollAs": "target",
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"regionBehavior": {
+					"enabled": false,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": [],
+					"attachToken": "default"
+				},
+				"regionLight": {
+					"enabled": false,
+					"dim": 0,
+					"bright": 0,
+					"color": null,
+					"alpha": 0.5,
+					"luminosity": 0.5,
+					"animationType": "",
+					"animationSpeed": 5,
+					"animationIntensity": 5
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"friendlySave": "default",
+				"name": ""
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [
+				{
+					"period": "sr",
+					"type": "recoverAll"
+				}
+			],
+			"max": "1"
+		},
+		"description": {
+			"value": "<p><strong>Bonus Action</strong> - All Enemies in a 30 ft. Emanation (Self) - 1 Minute - Magical - 1/Short Rest</p><p><strong>Wisdom Save</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[frightened]. While frightened in this way, their speed is halved. Target rolls another save at the end of each of their turns, ending the effect on a success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"chat": ""
+		},
+		"identifier": "avengers-leap",
+		"source": {
+			"revision": 1,
+			"rules": "2024",
+			"book": "",
+			"page": "",
+			"custom": "elkan5e.com/paladin",
+			"license": ""
+		},
+		"advancement": {},
+		"cover": null,
+		"crewed": false,
+		"enchant": {},
+		"prerequisites": {
+			"level": null,
+			"repeatable": false,
+			"items": []
+		},
+		"properties": [
+			"mgc"
+		],
+		"requirements": "Blackguard 3/10",
+		"type": {
+			"value": "subclass",
+			"subtype": ""
+		}
+	},
+	"effects": [
+		{
+			"name": "Howl of Terror",
+			"img": "icons/commodities/bones/skull-bat-grey.webp",
+			"origin": "Item.wjflquP9J7ItZqny",
+			"type": "base",
+			"_id": "ohbhpvUWu0RpHDvM",
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"type": "add",
+						"value": "turn=end, label=Howl of Terror, saveAbility=wis, saveDC=@attributes.cha.dc, saveMagic=true",
+						"phase": "initial",
+						"priority": null
+					}
+				]
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": 60,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [
+				"frightened"
+			],
+			"showIcon": 1,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"expiryMode": "default",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"disableIncapacitated": false,
+					"specialDuration": [],
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
+				}
+			},
+			"_key": "!items.effects!9K1Vge7T7DvnjSFH.ohbhpvUWu0RpHDvM"
+		}
+	],
+	"flags": {
+		"midi-qol": {
+			"rollAttackPerTarget": "default",
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"reactionCondition": "reaction === 'isMoved' && computeDistance(tokenUuid, targetUuid) <= 60 && canvas?.tokens?.get(targetUuid)?.document?.disposition === -1",
+			"otherCondition": "",
+			"effectCondition": ""
+		},
+		"dnd5e": {
+			"sourceId": "Item.wjflquP9J7ItZqny",
+			"advancementOrigin": "puDpSuG2LsZrOYBp.8tzErdD7oLPPSifH",
+			"advancementRoot": "puDpSuG2LsZrOYBp.8tzErdD7oLPPSifH"
+		}
+	},
+	"_id": "9K1Vge7T7DvnjSFH",
+	"_key": "!items!9K1Vge7T7DvnjSFH"
+}
