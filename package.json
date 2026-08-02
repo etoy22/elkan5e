@@ -5,9 +5,11 @@
   "main": "elkan5e.mjs",
   "type": "module",
   "scripts": {
-    "pack": "node ./scripts/pack-chain.mjs",
+    "pack": "npm run clean && npm run pack:raw",
+    "pack:raw": "node ./scripts/packs.mjs package pack",
     "clean": "node ./scripts/packs.mjs package clean",
-    "unpack": "node ./scripts/packs.mjs package unpack",
+    "unpack": "npm run unpack:raw && node ./scripts/sync-features.mjs && node ./scripts/sync-summoned.mjs && node ./scripts/update-spell-lists.mjs",
+    "unpack:raw": "node ./scripts/packs.mjs package unpack",
     "remove": "node ./scripts/packs.mjs package remove",
     "lint": "eslint \"src/**/*.mjs\" \"scripts/**/*.mjs\"",
     "lint:fix": "eslint --fix \"src/**/*.mjs\" \"scripts/**/*.mjs\"",

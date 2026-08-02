@@ -70,6 +70,53 @@
 			"showIcon": 1,
 			"folder": null,
 			"_key": "!items.effects!YgcUx6NPNxsin7NR.2vhmo2cElDdW3n71"
+		},
+		{
+			"name": "Holy Nimbus (Burning)",
+			"transfer": false,
+			"_id": "hNimbusBurn1234A",
+			"disabled": false,
+			"duration": {
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "",
+			"origin": null,
+			"statuses": [],
+			"flags": {
+				"dae": {
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"showIcon": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"enableCondition": "",
+					"disableCondition": ""
+				}
+			},
+			"tint": "#ffffff",
+			"img": "icons/magic/light/explosion-star-glow-blue-purple.webp",
+			"type": "base",
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=start,\nlabel=Holy Nimbus,\nsaveAbility=con,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\ndamageRoll=20,\ndamageType=radiant,\nsaveDamage=halfdam",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
+			"_key": "!items.effects!YgcUx6NPNxsin7NR.hNimbusBurn1234A"
 		}
 	],
 	"folder": "dqN1OSiHa3McvNxD",
@@ -177,6 +224,10 @@
 					{
 						"_id": "2vhmo2cElDdW3n71",
 						"onSave": false
+					},
+					{
+						"_id": "hNimbusBurn1234A",
+						"onSave": false
 					}
 				],
 				"range": {
@@ -239,7 +290,8 @@
 				"name": "",
 				"img": "",
 				"appliedEffects": [
-					"2vhmo2cElDdW3n71"
+					"2vhmo2cElDdW3n71",
+					"hNimbusBurn1234A"
 				]
 			},
 			"NwMS3N29GSRfKJOf": {

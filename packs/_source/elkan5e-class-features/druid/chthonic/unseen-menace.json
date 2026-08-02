@@ -202,7 +202,7 @@
 		"midi-qol": {
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
-			"reactionCondition": "reaction === 'isDamaged' && computeDistance(tokenUuid, targetUuid) <= 90 && !canvas.tokens.get(targetUuid)?.canSee(canvas.tokens.get(tokenUuid))",
+			"reactionCondition": "reaction === 'isDamaged' && computeDistance(tokenUuid, targetUuid) <= 90 && !canvas.tokens.get(targetUuid)?.canSee(canvas.tokens.get(workflow?.token?.uuid))",
 			"effectCondition": "",
 			"removeAttackDamageButtons": "default",
 			"otherCondition": ""

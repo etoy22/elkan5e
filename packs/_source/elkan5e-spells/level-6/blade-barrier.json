@@ -196,22 +196,131 @@
 					}
 				},
 				"regionBehavior": {
+					"attachToken": "default",
 					"enabled": true,
-					"dispositionFilter": 0,
-					"excludeSource": false,
-					"wallRestriction": "move",
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
 					"rules": [
 						{
 							"trigger": "entry",
 							"action": "useActivity",
-							"targetId": "save"
+							"targetId": "bladeBarrierDamage"
 						},
 						{
-							"trigger": "turnEnd",
+							"trigger": "turnStart",
 							"action": "useActivity",
-							"targetId": "save"
+							"targetId": "bladeBarrierDamage"
 						}
 					]
+				}
+			},
+			"bBDmgSaveActv001": {
+				"type": "save",
+				"activation": {
+					"type": "",
+					"value": null,
+					"override": true,
+					"condition": ""
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"type": "",
+						"units": "ft",
+						"stationary": false
+					},
+					"affects": {
+						"type": "self"
+					},
+					"override": true
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 6,
+							"denomination": 10,
+							"bonus": "",
+							"types": [
+								"slashing"
+							],
+							"scaling": {
+								"mode": "",
+								"number": 1
+							}
+						}
+					]
+				},
+				"save": {
+					"ability": "dex",
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"name": "Blade Barrier Damage",
+				"useConditionText": "",
+				"effectConditionText": "",
+				"_id": "bBDmgSaveActv001",
+				"img": "",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"midiProperties": {
+					"identifier": "bladeBarrierDamage",
+					"automationOnly": true,
+					"confirmTargets": "never"
+				},
+				"isOverTimeFlag": true,
+				"overTimeProperties": {
+					"turnChoice": "start",
+					"saveRemoves": false
+				},
+				"regionBehavior": {
+					"enabled": false,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"attachToken": "default",
+					"rules": []
 				}
 			}
 		},

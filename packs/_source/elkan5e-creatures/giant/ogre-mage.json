@@ -208,14 +208,16 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p>Choose a willing creature that you can see within range. Until the spell ends, the target's speed is doubled, it gains a +2 bonus to AC, it has advantage on Dexterity Saving Throws, and it gains an additional action on each of its turns. That action can be used only to take the Attack (one weapon attack only), Dash, Disengage, Hide, or Use an Object action.</p><p>When the spell ends, the target can't move or take Actions until after its next turn, as a wave of lethargy sweeps over it.</p>",
+					"value": "<p><em>You count to three while bending a licorice root, granting an ally supernatural speed. When the spell ends, the licorice root springs back to its original shape and you are struck by magical backlash.</em></p><p><strong>Buff</strong></p><ul><li><p>Your target is &amp;reference[hasted].</p></li><li><p>When the spell ends, either because the duration expires or you lose &amp;reference[concentration], you freeze as your control of the flow of time backfires. You are &amp;reference[incapacitated] until the end of your next turn.</p></li></ul>",
 					"chat": ""
 				},
 				"source": {
-					"custom": "PHB pg. 250",
+					"custom": "elkan5e.com/spells/haste",
 					"revision": 1,
-					"rules": "2024",
-					"book": "Elkan 5e"
+					"rules": "",
+					"book": "Elkan 5e",
+					"page": "",
+					"license": ""
 				},
 				"activation": {
 					"type": "action",
@@ -230,16 +232,19 @@
 					"affects": {
 						"type": "creature",
 						"count": "1",
-						"choice": false
+						"choice": false,
+						"special": ""
 					},
 					"template": {
 						"units": "",
-						"contiguous": false
+						"contiguous": false,
+						"type": ""
 					}
 				},
 				"range": {
 					"value": "30",
-					"units": "ft"
+					"units": "ft",
+					"special": ""
 				},
 				"uses": {
 					"max": "2",
@@ -255,7 +260,7 @@
 				"level": 3,
 				"school": "trs",
 				"materials": {
-					"value": "A shaving of licorice root",
+					"value": "",
 					"consumed": false,
 					"cost": 0,
 					"supply": 0
@@ -264,9 +269,14 @@
 					"mode": "innate",
 					"prepared": true
 				},
+				"properties": [
+					"vocal",
+					"somatic",
+					"material",
+					"concentration"
+				],
 				"activities": {
-					"dnd5eactivity000": {
-						"_id": "dnd5eactivity000",
+					"2bQopVatZWyjK05l": {
 						"type": "utility",
 						"activation": {
 							"type": "action",
@@ -274,17 +284,7 @@
 							"override": false
 						},
 						"consumption": {
-							"targets": [
-								{
-									"type": "itemUses",
-									"target": "",
-									"value": "1",
-									"scaling": {
-										"mode": "",
-										"formula": ""
-									}
-								}
-							],
+							"targets": [],
 							"scaling": {
 								"allowed": false,
 								"max": ""
@@ -301,43 +301,41 @@
 						},
 						"effects": [
 							{
-								"_id": "0VoBuTMoLbqIwtJJ"
+								"_id": "TtnAWxKQzAQ1mBIL"
 							}
 						],
 						"range": {
 							"override": false
 						},
 						"target": {
-							"prompt": true,
-							"template": {
-								"contiguous": false,
-								"units": "ft"
-							},
-							"affects": {
-								"choice": false
-							},
-							"override": false
-						},
-						"uses": {
-							"spent": 0,
-							"max": "",
-							"recovery": []
+							"type": "creature",
+							"value": 1,
+							"units": "ft",
+							"width": null,
+							"override": false,
+							"prompt": true
 						},
 						"roll": {
 							"formula": "",
 							"name": "",
 							"prompt": false,
 							"visible": false
-						}
+						},
+						"uses": {
+							"spent": 0,
+							"recovery": [],
+							"max": ""
+						},
+						"_id": "2bQopVatZWyjK05l",
+						"name": "",
+						"img": "",
+						"effectConditionText": "!target.traits.ci.value.has('hasted')",
+						"appliedEffects": [
+							"TtnAWxKQzAQ1mBIL"
+						]
 					}
 				},
-				"identifier": "haste",
-				"properties": [
-					"vocal",
-					"somatic",
-					"material",
-					"concentration"
-				]
+				"identifier": "haste"
 			},
 			"_key": "!actors.items!Q72xYCeg6x0nm7vt.VnQilHWGK09n1Mos"
 		},

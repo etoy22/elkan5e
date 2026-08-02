@@ -129,6 +129,14 @@ export function traits() {
 			type: Boolean,
 		};
 	}
+	if (!CONFIG.DND5E.characterFlags.undeadFortitude) {
+		CONFIG.DND5E.characterFlags.undeadFortitude = {
+			name: "Undead Fortitude",
+			hint: "When reduced to 0 HP, this creature rolls a Constitution saving throw (DC 5 + damage taken), dropping to 1 HP on a success. Bypassed by radiant damage and critical hits.",
+			section: game.i18n.localize("elkan5e.traits.section"),
+			type: Boolean,
+		};
+	}
 }
 
 /**

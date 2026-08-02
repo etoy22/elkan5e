@@ -17,9 +17,14 @@
 			"license": ""
 		},
 		"uses": {
-			"max": "",
+			"max": "1",
 			"spent": 0,
-			"recovery": []
+			"recovery": [
+				{
+					"period": "sr",
+					"type": "recoverAll"
+				}
+			]
 		},
 		"type": {
 			"value": "background",
@@ -36,7 +41,7 @@
 					"type": "nocost",
 					"value": null,
 					"override": false,
-					"condition": ""
+					"condition": "reaction === 'isSkill' && !['deception','intimidation','performance','persuasion'].includes(workflow?.skill)"
 				},
 				"consumption": {
 					"scaling": {
@@ -106,7 +111,7 @@
 	},
 	"effects": [
 		{
-			"origin": "Item.OXoZNlYho8h16Kau",
+			"origin": "Compendium.elkan5e.elkan5e-ancestry-background.Item.TCOc8XypKyuxvv1t",
 			"duration": {
 				"value": 1,
 				"units": "rounds",

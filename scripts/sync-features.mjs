@@ -7,7 +7,7 @@ const CREATURE_ROOT = "packs/_source/elkan5e-creatures";
 const EXCLUDED_NAMES = new Set(["Shapechanger", "Multiattack", "Slam", "Claws", "Charge"]);
 const EQUIPMENT_ROOTS = ["packs/_source/elkan5e-equipment"];
 const SPELL_ROOT = "packs/_source/elkan5e-spells";
-const REPORT_PATH = "helperCode/logs/sync-features-report.log";
+const REPORT_PATH = "scripts/logs/sync-features-report.log";
 
 /**
  * Utility function for random Id.
@@ -140,6 +140,37 @@ function buildCantrips() {
 }
 
 /**
+ * Scales a spell's activities (healing/damage dice) up to reflect casting
+ * it at a higher slot level than the canonical base spell.
+ *
+ * @param {*} activities - Activities object to mutate in place.
+ * @param {*} levelDiff - Whole slot levels above the base spell's level.
+ */
+function applySpellLevelScaling(activities, levelDiff) {
+	if (!levelDiff || levelDiff <= 0) return;
+	for (const act of Object.values(activities || {})) {
+		const healingScaling = act?.healing?.scaling;
+		if (healingScaling?.mode === "whole" && healingScaling.number) {
+			act.healing.number = (act.healing.number || 0) + healingScaling.number * levelDiff;
+		} else if (healingScaling?.mode === "half" && healingScaling.number) {
+			act.healing.number =
+				(act.healing.number || 0) + healingScaling.number * Math.floor(levelDiff / 2);
+		}
+
+		const parts = act?.damage?.parts;
+		if (!Array.isArray(parts)) continue;
+		for (const part of parts) {
+			const scaling = part?.scaling;
+			if (scaling?.mode === "whole" && scaling.number) {
+				part.number = (part.number || 0) + scaling.number * levelDiff;
+			} else if (scaling?.mode === "half" && scaling.number) {
+				part.number = (part.number || 0) + scaling.number * Math.floor(levelDiff / 2);
+			}
+		}
+	}
+}
+
+/**
  * Utility function for build Spell Index.
  *
  * @returns Operation result.
@@ -175,6 +206,7 @@ function syncFeatures() {
 	let updatedWeapons = 0;
 	let updatedArmor = 0;
 	let updatedCantrips = 0;
+	let updatedSpells = 0;
 	const skipped = [];
 
 	for (const file of creatureFiles) {
@@ -245,38 +277,54 @@ function syncFeatures() {
 			Object.assign(newItem, keepFields);
 			newItem._id = keepFields._id;
 			newItem._key = keepFields._key;
+			// Keep the creature's prepared/known mode regardless of the base cantrip's own setting.
+			newItem.system.preparation = clone(
+				item?.system?.preparation ?? newItem.system?.preparation ?? {},
+			);
 
-			item._id = newItem._id;
-			item._key = newItem._key;
-			item.folder = newItem.folder;
-			item.name = newItem.name;
-			item.type = newItem.type;
-			item.img = newItem.img;
-			item.flags = newItem.flags;
-			item.effects = newItem.effects;
-			item.system = newItem.system;
-			changed = true;
-			updatedCantrips++;
+			const current = {
+				name: item.name,
+				type: item.type,
+				img: item.img,
+				flags: item.flags,
+				effects: item.effects,
+				system: item.system,
+			};
+			const replacement = {
+				name: newItem.name,
+				type: newItem.type,
+				img: newItem.img,
+				flags: newItem.flags,
+				effects: newItem.effects,
+				system: newItem.system,
+			};
+
+			if (JSON.stringify(current) !== JSON.stringify(replacement)) {
+				item._id = newItem._id;
+				item._key = newItem._key;
+				item.folder = newItem.folder;
+				item.name = newItem.name;
+				item.type = newItem.type;
+				item.img = newItem.img;
+				item.flags = newItem.flags;
+				item.effects = newItem.effects;
+				item.system = newItem.system;
+				changed = true;
+				updatedCantrips++;
+			}
 		}
 
-		// Spells (non-cantrip): merging is deferred for now.
-		// Spells (non-cantrip): merge with canonical spell pack using configured rules
+		// Spells (non-cantrip): merge with canonical spell pack using configured rules.
+		// Two shapes are expected here: the regular spell, and an upcast variant whose
+		// name carries a "(Nth Level)" suffix (e.g. "Fireball (5th Level)") - both merge
+		// against the same canonical base spell, keeping their own name/level.
 		for (const item of data?.items || []) {
 			if (!item || item?.type !== "spell") continue;
 			if (item?.system?.level === 0) continue;
 
-			// Skip Level-tagged variants
-			if (/\(Level\s+\d+\)/i.test(item?.name || "")) {
-				skipped.push({
-					file,
-					name: item?.name,
-					type: "spell",
-					reason: "level-tagged variant - skip merge",
-				});
-				continue;
-			}
-
-			const ident = item?.system?.identifier || item?.name;
+			const LEVEL_SUFFIX = /[-\s]?\(?(?:\d+(?:st|nd|rd|th)[-\s]+level|level[-\s]+\d+)\)?$/i;
+			const rawIdent = item?.system?.identifier || item?.name || "";
+			const ident = rawIdent.replace(LEVEL_SUFFIX, "");
 			let lookupKey = ident;
 			if (!lookupKey) {
 				skipped.push({
@@ -323,9 +371,16 @@ function syncFeatures() {
 				merged.system.uses = clone(item.system.uses);
 			}
 			if (item?.system?.level !== undefined) merged.system.level = item.system.level;
+			// Keep the creature's own identifier (e.g. "cure-wounds-(3rd-level)") rather
+			// than the canonical base spell's plain identifier.
+			if (item?.system?.identifier) merged.system.identifier = item.system.identifier;
 
 			// Canonical targets/helper fields/consumption/materials/properties/itemCondition
 			if (base?.system?.activities) merged.system.activities = clone(base.system.activities);
+			// Cast at a higher slot level than the base spell: scale healing/damage dice up.
+			const levelDiff =
+				(item?.system?.level ?? base?.system?.level ?? 0) - (base?.system?.level ?? 0);
+			applySpellLevelScaling(merged.system.activities, levelDiff);
 			if (base?.system?.materials) merged.system.materials = clone(base.system.materials);
 			if (base?.system?.properties) merged.system.properties = clone(base.system.properties);
 			if (base?.system?.itemCondition)
@@ -367,14 +422,32 @@ function syncFeatures() {
 				}
 			}
 
-			item._id = merged._id;
-			item._key = merged._key;
-			item.img = merged.img;
-			item.flags = merged.flags;
-			item.folder = merged.folder;
-			item.name = merged.name;
-			item.system = merged.system;
-			changed = true;
+			const current = {
+				img: item.img,
+				flags: item.flags,
+				folder: item.folder,
+				name: item.name,
+				system: item.system,
+			};
+			const replacement = {
+				img: merged.img,
+				flags: merged.flags,
+				folder: merged.folder,
+				name: merged.name,
+				system: merged.system,
+			};
+
+			if (JSON.stringify(current) !== JSON.stringify(replacement)) {
+				item._id = merged._id;
+				item._key = merged._key;
+				item.img = merged.img;
+				item.flags = merged.flags;
+				item.folder = merged.folder;
+				item.name = merged.name;
+				item.system = merged.system;
+				changed = true;
+				updatedSpells++;
+			}
 		}
 
 		// Weapons: copy over from equipment if identifiers match and damage/range/activities match
@@ -504,14 +577,14 @@ function syncFeatures() {
 	}
 
 	console.log(
-		`Feature descriptions synced on ${updatedItems} items; cantrips synced on ${updatedCantrips} items; weapons synced on ${updatedWeapons} items; armor synced on ${updatedArmor} items across ${updatedFiles} creature files.`,
+		`Feature descriptions synced on ${updatedItems} items; cantrips synced on ${updatedCantrips} items; spells synced on ${updatedSpells} items; weapons synced on ${updatedWeapons} items; armor synced on ${updatedArmor} items across ${updatedFiles} creature files.`,
 	);
 
 	// Report skipped
 	const lines = [];
 	lines.push(`Feature sync report ${new Date().toISOString()}`);
 	lines.push(
-		`Feature descriptions synced: ${updatedItems}, cantrips synced: ${updatedCantrips}, weapons synced: ${updatedWeapons}, armor synced: ${updatedArmor}, creature files touched: ${updatedFiles}`,
+		`Feature descriptions synced: ${updatedItems}, cantrips synced: ${updatedCantrips}, spells synced: ${updatedSpells}, weapons synced: ${updatedWeapons}, armor synced: ${updatedArmor}, creature files touched: ${updatedFiles}`,
 	);
 	if (skipped.length) {
 		lines.push("Skipped items:");
@@ -542,7 +615,8 @@ function syncFeatures() {
 	}
 	const report = lines.join("\n") + "\n";
 	ensureDirFor(REPORT_PATH);
-	fs.writeFileSync(REPORT_PATH, report, "utf8");
+	const previous = fs.existsSync(REPORT_PATH) ? fs.readFileSync(REPORT_PATH, "utf8") : "";
+	fs.writeFileSync(REPORT_PATH, report + (previous ? "\n" + previous : ""), "utf8");
 }
 
 syncFeatures();

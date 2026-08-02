@@ -215,7 +215,7 @@
 		"midi-qol": {
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
-			"reactionCondition": "",
+			"reactionCondition": "computeDistance(tokenUuid, targetUuid) <= 60 && workflow?.damageItem?.damageDetail?.some(detail => ['healing','temphp'].includes(detail.type))",
 			"effectCondition": "",
 			"removeAttackDamageButtons": "default",
 			"AoETargetType": "any",

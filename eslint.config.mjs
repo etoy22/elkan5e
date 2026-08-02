@@ -20,6 +20,7 @@ export default [
         CONST: "readonly",
         Roll: "readonly",
         MidiQOL: "readonly",
+        socketlib: "readonly",
         Token: "readonly",
         fromUuid: "readonly",
         console: "readonly",

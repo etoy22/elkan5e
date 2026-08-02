@@ -110,3 +110,94 @@ export async function vampiricSmite(workflow) {
 		{ flavor: "Life Steal" },
 	);
 }
+
+/**
+ * Runs Blight spell automation. Wired at preambleComplete, before saves and
+ * damage are rolled. Any targeted creature that is a plant creature or
+ * magical plant saves with disadvantage.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
+ */
+export async function blight(workflow) {
+	try {
+		for (const target of workflow.targets ?? []) {
+			const targetActor = target?.actor ?? target?.document?.actor;
+			if (!targetActor) continue;
+
+			if (targetActor.system?.details?.type?.value !== "plant") continue;
+
+			const tokenId = target?.document?.id ?? target?.id;
+			if (tokenId) {
+				(workflow.disadvantageSaves ??= new Set()).add(tokenId);
+			}
+		}
+	} catch (err) {
+		console.error("Blight |", err);
+	}
+}
+
+/**
+ * Runs Blight spell automation: tops up damage for any plant/magical-plant
+ * target to the maximum the shared damage roll's formula could have dealt
+ * (halved if that target succeeded its save, matching the normal onSave
+ * rule), without affecting damage already dealt to other targets in the
+ * same cast.
+ *
+ * @param {object} workflow - MIDI-QOL workflow at RollComplete.
+ * @returns {Promise<void>} Promise resolution result.
+ */
+export async function blightMaximizePlantDamage(workflow) {
+	try {
+		const item = workflow.item;
+		if (item?.system?.identifier !== "blight") return;
+
+		const damageRoll = workflow.damageRoll;
+		if (!damageRoll?.formula) return;
+
+		const caster = workflow.actor;
+		const casterToken = workflow.token;
+		if (!caster || !casterToken) return;
+
+		const maxRoll = await new Roll(damageRoll.formula, damageRoll.data).evaluate({
+			maximize: true,
+		});
+		const maxTotal = maxRoll.total;
+		if (!maxTotal) return;
+
+		const failedSaveIds = new Set(
+			[...(workflow.failedSaves ?? [])].map((e) => e?.document?.id ?? e?.id ?? e),
+		);
+
+		for (const dmgEntry of workflow.damageList ?? []) {
+			if (!dmgEntry.targetUuid) continue;
+
+			const targetDoc = await fromUuid(dmgEntry.targetUuid).catch(() => null);
+			const targetActor = targetDoc?.actor ?? targetDoc;
+			if (!targetActor || targetActor.system?.details?.type?.value !== "plant") continue;
+
+			const tokenId = dmgEntry.targetUuid.split(".").at(-1);
+			const targetToken = canvas.tokens.get(tokenId);
+			if (!targetToken) continue;
+
+			const failed = failedSaveIds.has(tokenId);
+			const effectiveMax = failed ? maxTotal : Math.floor(maxTotal / 2);
+			const actualDamage = (dmgEntry.hpDamage ?? 0) + (dmgEntry.tempDamage ?? 0);
+			const shortfall = effectiveMax - actualDamage;
+			if (shortfall <= 0) continue;
+
+			const topUpRoll = await new Roll(`${shortfall}`).evaluate();
+			new MidiQOL.DamageOnlyWorkflow(
+				caster,
+				casterToken,
+				topUpRoll.total,
+				"necrotic",
+				[targetToken],
+				topUpRoll,
+				{ flavor: "Blight (maximized)" },
+			);
+		}
+	} catch (err) {
+		console.error("Blight |", err);
+	}
+}

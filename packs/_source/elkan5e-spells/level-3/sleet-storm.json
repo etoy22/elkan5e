@@ -239,7 +239,7 @@
 		],
 		"activities": {
 			"dClJa4oGtdtQLuwp": {
-				"type": "save",
+				"type": "utility",
 				"activation": {
 					"type": "action",
 					"value": null,
@@ -261,54 +261,25 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [
-					{
-						"_id": "PCHF09ufm1Jah40g",
-						"onSave": false,
-						"level": {
-							"min": null,
-							"max": null
-						}
-					},
-					{
-						"_id": "ZXuLiNdOMp3LSQzy",
-						"onSave": true,
-						"level": {
-							"min": null,
-							"max": null
-						}
-					}
-				],
+				"effects": [],
 				"range": {
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": true,
 					"prompt": true,
-					"affects": {
-						"type": ""
-					},
 					"template": {
 						"type": "cylinder",
 						"size": "40",
 						"height": "20",
 						"count": ""
-					}
-				},
-				"damage": {
-					"onSave": "none",
-					"parts": []
-				},
-				"save": {
-					"ability": "dex",
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
-					}
+					},
+					"affects": {
+						"type": "",
+						"count": "",
+						"choice": false,
+						"special": ""
+					},
+					"override": true
 				},
 				"uses": {
 					"spent": 0,
@@ -318,10 +289,7 @@
 				"_id": "dClJa4oGtdtQLuwp",
 				"name": "Initial Casting (Use First)",
 				"img": "",
-				"appliedEffects": [
-					"PCHF09ufm1Jah40g",
-					"ZXuLiNdOMp3LSQzy"
-				],
+				"appliedEffects": [],
 				"visibility": {
 					"level": {
 						"min": null,
@@ -329,19 +297,18 @@
 					}
 				},
 				"regionBehavior": {
+					"attachToken": "default",
 					"enabled": true,
-					"dispositionFilter": 0,
+					"dispositionFilter": -1,
+					"excludeSource": false,
+					"oncePerTurn": true,
 					"wallRestriction": "move",
+					"regionVisibility": 2,
 					"rules": [
 						{
 							"trigger": "entry",
 							"action": "useActivity",
-							"targetId": "initial-casting-(use-first)"
-						},
-						{
-							"trigger": "turnEnd",
-							"action": "useActivity",
-							"targetId": "initial-casting-(use-first)"
+							"targetId": "sleetStormSave"
 						},
 						{
 							"trigger": "entry",
@@ -349,11 +316,17 @@
 							"targetId": "ZXuLiNdOMp3LSQzy"
 						},
 						{
-							"trigger": "turnEnd",
+							"trigger": "exit",
 							"action": "removeEffect",
 							"targetId": "ZXuLiNdOMp3LSQzy"
 						}
 					]
+				},
+				"roll": {
+					"formula": "",
+					"name": "",
+					"prompt": false,
+					"visible": false
 				}
 			},
 			"D2fVBJcVhFxgyht5": {
@@ -395,12 +368,17 @@
 					"special": ""
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"type": "",
+						"units": "ft",
+						"stationary": false
+					},
+					"affects": {
+						"type": "self"
+					},
+					"override": false
 				},
 				"damage": {
 					"onSave": "none",
@@ -428,7 +406,27 @@
 				"appliedEffects": [
 					"PCHF09ufm1Jah40g",
 					"ZXuLiNdOMp3LSQzy"
-				]
+				],
+				"midiProperties": {
+					"identifier": "sleetStormSave",
+					"automationOnly": true,
+					"confirmTargets": "never"
+				},
+				"isOverTimeFlag": true,
+				"overTimeProperties": {
+					"turnChoice": "end",
+					"saveRemoves": false
+				},
+				"regionBehavior": {
+					"enabled": false,
+					"dispositionFilter": -1,
+					"excludeSource": false,
+					"oncePerTurn": true,
+					"wallRestriction": "move",
+					"regionVisibility": 2,
+					"attachToken": "default",
+					"rules": []
+				}
 			}
 		},
 		"identifier": "sleet-storm"

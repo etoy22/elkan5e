@@ -12,7 +12,7 @@
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
 			"effectCondition": "",
-			"reactionCondition": "",
+			"reactionCondition": "['isMissed','isSave','isSkill'].includes(reaction) && tokenUuid && workflow?.token?.uuid && tokenUuid !== workflow?.token?.uuid",
 			"AoETargetType": "any",
 			"AoETargetTypeIncludeSelf": true,
 			"autoTarget": "default",

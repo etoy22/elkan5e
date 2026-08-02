@@ -133,8 +133,10 @@ function syncSummonedCreatures() {
 			});
 		}
 
-		saveJson(file, merged);
-		synced++;
+		if (JSON.stringify(merged) !== JSON.stringify(summoned)) {
+			saveJson(file, merged);
+			synced++;
+		}
 	}
 
 	console.log(`Summoned creatures synced: ${synced}`);
