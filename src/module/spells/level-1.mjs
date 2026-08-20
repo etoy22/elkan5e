@@ -1,8 +1,4 @@
-import {
-	createLightRegion,
-	drainedEffect,
-	forEachDamagedTarget,
-} from "../shared/helpers.mjs";
+import { createLightRegion, drainedEffect, forEachDamagedTarget } from "../shared/helpers.mjs";
 import { createGoodberryDurationEffect } from "../shared/effect-factories.mjs";
 
 /**
@@ -456,7 +452,7 @@ export async function prismaticBolt(workflow, activity, _config, dialog) {
 		const part = activity.damage.parts[0];
 		part.types = new Set([type]);
 		part.bonus = type === "radiant" ? "10" : "";
- 
+
 		if (dialog) dialog.configure = false;
 	} catch (err) {
 		console.error("Prismatic Bolt |", err);

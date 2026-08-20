@@ -1,8 +1,4 @@
-import {
-	createLightRegion,
-	drainedEffect,
-	forEachDamagedTarget,
-} from "../shared/helpers.mjs";
+import { createLightRegion, drainedEffect, forEachDamagedTarget } from "../shared/helpers.mjs";
 import { createEffect } from "../shared/effect-factories.mjs";
 
 /**
