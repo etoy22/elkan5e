@@ -132,11 +132,6 @@
 							"targetId": "tj1Gtwz2P0pJUeSI"
 						},
 						{
-							"trigger": "turnStart",
-							"action": "applyEffect",
-							"targetId": "tj1Gtwz2P0pJUeSI"
-						},
-						{
 							"trigger": "exit",
 							"action": "removeEffect",
 							"targetId": "tj1Gtwz2P0pJUeSI"
@@ -177,6 +172,13 @@
 				"effects": [
 					{
 						"_id": "WBsl11ZFaHjxjAoB",
+						"level": {
+							"min": null,
+							"max": null
+						}
+					},
+					{
+						"_id": "fR7pXcKm5dLt2Vqz",
 						"level": {
 							"min": null,
 							"max": null
@@ -225,7 +227,8 @@
 				"_id": "55aOg5aKVGMnMVxK",
 				"img": "",
 				"appliedEffects": [
-					"WBsl11ZFaHjxjAoB"
+					"WBsl11ZFaHjxjAoB",
+					"fR7pXcKm5dLt2Vqz"
 				],
 				"visibility": {
 					"level": {
@@ -249,14 +252,19 @@
 							"targetId": "WBsl11ZFaHjxjAoB"
 						},
 						{
-							"trigger": "turnStart",
-							"action": "applyEffect",
+							"trigger": "exit",
+							"action": "removeEffect",
 							"targetId": "WBsl11ZFaHjxjAoB"
+						},
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "fR7pXcKm5dLt2Vqz"
 						},
 						{
 							"trigger": "exit",
 							"action": "removeEffect",
-							"targetId": "WBsl11ZFaHjxjAoB"
+							"targetId": "fR7pXcKm5dLt2Vqz"
 						}
 					]
 				}
@@ -399,10 +407,77 @@
 			"showIcon": 1,
 			"folder": null,
 			"_key": "!items.effects!lrCo3T7H91Z8yCqg.WBsl11ZFaHjxjAoB"
+		},
+		{
+			"name": "Blinded",
+			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.lrCo3T7H91Z8yCqg",
+			"transfer": false,
+			"flags": {
+				"dae": {
+					"itemName": "Lurking Fog",
+					"enableCondition": "",
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": true,
+					"stackable": "noneName",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"expiryMode": "default"
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system",
+					"statuses": []
+				}
+			},
+			"img": "modules/elkan5e/icons/conditions/blinded.svg",
+			"_id": "fR7pXcKm5dLt2Vqz",
+			"type": "base",
+			"system": {
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "blinded",
+						"phase": "final",
+						"priority": 0
+					}
+				]
+			},
+			"disabled": false,
+			"duration": {
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
+			"_key": "!items.effects!lrCo3T7H91Z8yCqg.fR7pXcKm5dLt2Vqz"
 		}
 	],
 	"flags": {
 		"midi-qol": {
+			"onUseMacroName": "[postActiveEffects]ItemMacro",
 			"AoETargetType": "any",
 			"AoETargetTypeIncludeSelf": true,
 			"autoTarget": "default",
@@ -429,6 +504,18 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"dae": {
+			"macro": {
+				"name": "Lurking Fog",
+				"img": "icons/magic/air/fog-gas-smoke-dense-gray.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "return await elkan5e.macros.features.lurkingFogDarkness(workflow)",
+				"author": "3Yi0HjF4PKCA4vX0",
+				"_id": null,
+				"folder": null
+			}
 		}
 	},
 	"_key": "!items!lrCo3T7H91Z8yCqg"

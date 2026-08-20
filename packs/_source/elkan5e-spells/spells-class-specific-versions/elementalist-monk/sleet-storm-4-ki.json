@@ -128,12 +128,75 @@
 			"showIcon": 1,
 			"folder": null,
 			"_key": "!items.effects!SZ7WREA5tz4LLrOL.ZXuLiNdOMp3LSQzy"
+		},
+		{
+			"name": "Blinded",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.9Jv3Nf3iGiDcSgWZ",
+			"transfer": false,
+			"flags": {
+				"dae": {
+					"itemName": "Sleet Storm",
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"stackable": "noneName",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"nameOverride": "",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"customCheck": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false,
+					"wallsBlock": "system"
+				}
+			},
+			"img": "icons/magic/light/hand-sparks-smoke-green.webp",
+			"_id": "nB3xLmQ7fWk2VcYp",
+			"type": "base",
+			"system": {
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"value": "blinded",
+						"priority": 0,
+						"type": "custom"
+					}
+				]
+			},
+			"disabled": false,
+			"duration": {
+				"value": 0,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
+			"_key": "!items.effects!SZ7WREA5tz4LLrOL.nB3xLmQ7fWk2VcYp"
 		}
 	],
 	"folder": "sYfrVzIx61tmIQZm",
 	"flags": {
 		"midi-qol": {
-			"onUseMacroName": "[postActiveEffects]AA ApplyEffectsToTemplate",
+			"onUseMacroName": "[postActiveEffects]ItemMacro",
 			"effectActivation": false,
 			"AoETargetType": "any",
 			"AoETargetTypeIncludeSelf": true,
@@ -165,6 +228,18 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"dae": {
+			"macro": {
+				"name": "Sleet Storm",
+				"img": "icons/magic/water/projectile-ice-teardrops-salvo.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "return await elkan5e.macros.spells.sleetStormDarkness(workflow)",
+				"author": "3Yi0HjF4PKCA4vX0",
+				"_id": null,
+				"folder": null
+			}
 		}
 	},
 	"system": {
@@ -274,6 +349,10 @@
 					{
 						"_id": "ZXuLiNdOMp3LSQzy",
 						"onSave": true
+					},
+					{
+						"_id": "nB3xLmQ7fWk2VcYp",
+						"onSave": true
 					}
 				],
 				"range": {
@@ -341,8 +420,45 @@
 				"img": "",
 				"appliedEffects": [
 					"PCHF09ufm1Jah40g",
-					"ZXuLiNdOMp3LSQzy"
-				]
+					"ZXuLiNdOMp3LSQzy",
+					"nB3xLmQ7fWk2VcYp"
+				],
+				"regionBehavior": {
+					"attachToken": "default",
+					"enabled": true,
+					"dispositionFilter": -1,
+					"excludeSource": false,
+					"oncePerTurn": true,
+					"wallRestriction": "move",
+					"regionVisibility": 2,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "sleetStormKiSave"
+						},
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "ZXuLiNdOMp3LSQzy"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "ZXuLiNdOMp3LSQzy"
+						},
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "nB3xLmQ7fWk2VcYp"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "nB3xLmQ7fWk2VcYp"
+						}
+					]
+				}
 			},
 			"D2fVBJcVhFxgyht5": {
 				"type": "save",
@@ -375,6 +491,10 @@
 					},
 					{
 						"_id": "ZXuLiNdOMp3LSQzy",
+						"onSave": true
+					},
+					{
+						"_id": "nB3xLmQ7fWk2VcYp",
 						"onSave": true
 					}
 				],
@@ -442,7 +562,18 @@
 					"autoTargetType": "any",
 					"autoTargetAction": "default",
 					"automationOnly": false,
-					"otherActivityCompatible": true
+					"otherActivityCompatible": true,
+					"identifier": "sleetStormKiSave"
+				},
+				"appliedEffects": [
+					"PCHF09ufm1Jah40g",
+					"ZXuLiNdOMp3LSQzy",
+					"nB3xLmQ7fWk2VcYp"
+				],
+				"isOverTimeFlag": true,
+				"overTimeProperties": {
+					"turnChoice": "end",
+					"saveRemoves": false
 				}
 			}
 		},

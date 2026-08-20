@@ -24,7 +24,8 @@
 			"tint": "#ffffff",
 			"transfer": false,
 			"statuses": [
-				"obscuredheavily"
+				"obscuredheavily",
+				"blinded"
 			],
 			"showIcon": 2,
 			"folder": null,
@@ -49,7 +50,7 @@
 	"folder": "TOjvTMaQMAMN24MV",
 	"flags": {
 		"midi-qol": {
-			"onUseMacroName": "[postActiveEffects]AA ApplyEffectsToTemplate",
+			"onUseMacroName": "[postActiveEffects]ItemMacro",
 			"effectActivation": false,
 			"AoETargetType": "any",
 			"AoETargetTypeIncludeSelf": true,
@@ -81,6 +82,18 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"dae": {
+			"macro": {
+				"name": "Incendiary Cloud",
+				"img": "icons/magic/air/fog-gas-smoke-swirling-orange.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "return await elkan5e.macros.spells.incendiaryCloudDarkness(workflow)",
+				"author": "3Yi0HjF4PKCA4vX0",
+				"_id": null,
+				"folder": null
+			}
 		}
 	},
 	"system": {
@@ -232,6 +245,16 @@
 							"trigger": "exit",
 							"action": "removeEffect",
 							"targetId": "dDH0UzEqdnH5tHvc"
+						},
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "qT8mWzRj2vNc6uLp"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "qT8mWzRj2vNc6uLp"
 						}
 					]
 				},

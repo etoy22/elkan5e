@@ -126,7 +126,8 @@
 			"description": "",
 			"tint": "#ffffff",
 			"statuses": [
-				"obscuredheavily"
+				"obscuredheavily",
+				"blinded"
 			],
 			"start": null,
 			"showIcon": 2,
@@ -137,7 +138,7 @@
 	"folder": "Tf2FNuyyu2gEaYOF",
 	"flags": {
 		"midi-qol": {
-			"onUseMacroName": "[postActiveEffects]AA ApplyEffectsToTemplate",
+			"onUseMacroName": "[postActiveEffects]ItemMacro",
 			"effectActivation": false,
 			"AoETargetType": "any",
 			"AoETargetTypeIncludeSelf": true,
@@ -169,6 +170,18 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"dae": {
+			"macro": {
+				"name": "Sleet Storm",
+				"img": "icons/magic/water/projectile-ice-teardrops-salvo.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "return await elkan5e.macros.spells.sleetStormDarkness(workflow)",
+				"author": "3Yi0HjF4PKCA4vX0",
+				"_id": null,
+				"folder": null
+			}
 		}
 	},
 	"system": {
@@ -319,6 +332,16 @@
 							"trigger": "exit",
 							"action": "removeEffect",
 							"targetId": "ZXuLiNdOMp3LSQzy"
+						},
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "nB3xLmQ7fWk2VcYp"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "nB3xLmQ7fWk2VcYp"
 						}
 					]
 				},
@@ -359,6 +382,10 @@
 					},
 					{
 						"_id": "ZXuLiNdOMp3LSQzy",
+						"onSave": true
+					},
+					{
+						"_id": "nB3xLmQ7fWk2VcYp",
 						"onSave": true
 					}
 				],
@@ -405,7 +432,8 @@
 				"img": "",
 				"appliedEffects": [
 					"PCHF09ufm1Jah40g",
-					"ZXuLiNdOMp3LSQzy"
+					"ZXuLiNdOMp3LSQzy",
+					"nB3xLmQ7fWk2VcYp"
 				],
 				"midiProperties": {
 					"identifier": "sleetStormSave",
