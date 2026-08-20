@@ -1,5 +1,31 @@
 # Changelog
 
+# v1.14.3
+## Bug Fixes
+
+- Fixed minor content inaccuracies across zombie-family creatures and the spells-by-subclass spell list.
+
+## Ancestries
+
+- Added Merfolk.
+
+## Classes
+
+### Paladin
+
+- NEW: Blackguard subclass.
+
+## Formatting
+- Updated Potions formatting to be clearer about their effects — potions now indicate Buff, Healing, or Utility depending on their effect instead of just saying "Potion", and "Consumed (1 Charge)" was changed to "Consumed on Use".
+
+## Spells
+
+- [Prismatic Bolt](https://www.elkan5e.com/spells/prismatic-bolt): now automated — rolls the beam's damage type on 1d8 and applies the +10 bonus on a radiant result instead of prompting a manual damage type choice.
+- [Spirit Link](https://www.elkan5e.com/spells/spirit-link): now automated — links the two affected creatures so half of any damage taken by one is mirrored to the other, and ends the bond automatically on death, dismissal, or separation beyond 60 feet.
+- Added dynamic lighting/darkness effects to Fog Cloud, Smoke Field, Sleet Storm, Incendiary Cloud, and the Druid's Lurking Fog wild shape, so their obscuring clouds now visually darken the area on the canvas.
+- Changed [Wall of Fire](https://www.elkan5e.com/spells/wall-of-fire) — removed "Heavily Obscured" active effect and its description reference;  the wall no longer obscures vision.
+
+
 # v1.14.2
 
 ## Bug Fixes
