@@ -1,5 +1,35 @@
-import { drainedEffect, forEachDamagedTarget } from "../shared/helpers.mjs";
+import { createLightRegion, drainedEffect, forEachDamagedTarget } from "../shared/helpers.mjs";
 import { createEffect } from "../shared/effect-factories.mjs";
+
+/**
+ * Runs Sleet Storm spell automation (shared by the base spell and the
+ * elementalist monk's 4-Ki version): an icy, wind-driven curtain of sleet.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<unknown>} Promise resolution result.
+ */
+export async function sleetStormDarkness(workflow) {
+	for (const region of workflow.templateUuids ?? []) {
+		await createLightRegion(
+			region,
+			{
+				dim: 0,
+				bright: 15,
+				alpha: 0.3,
+				luminosity: 0.5,
+				negative: true,
+				color: "#b8d4e3",
+				animation: {
+					type: "smokepatch",
+					speed: 3,
+					intensity: 5,
+				},
+				priority: 30,
+			},
+			"Darkness",
+		);
+	}
+}
 
 /**
  * Runs Haste lethargy automation.

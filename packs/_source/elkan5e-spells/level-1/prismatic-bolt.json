@@ -5,9 +5,9 @@
 	"img": "icons/magic/light/beams-rays-orange-purple-small.webp",
 	"system": {
 		"activities": {
-			"OzCzhnOlF5nb2rAY": {
-				"type": "utility",
-				"_id": "OzCzhnOlF5nb2rAY",
+			"8XQXG2nwqU16uU2d": {
+				"type": "attack",
+				"_id": "8XQXG2nwqU16uU2d",
 				"activation": {
 					"type": "action",
 					"value": null,
@@ -45,71 +45,13 @@
 					"recovery": [],
 					"max": ""
 				},
-				"roll": {
-					"prompt": false,
-					"visible": true,
-					"name": "Damage Type Roll",
-					"formula": "1d8"
-				},
-				"useConditionText": "",
-				"forceDialog": false,
-				"effectConditionText": "",
-				"midiAutomationOnly": false,
-				"name": "Roll for Damage Type",
-				"img": "",
-				"appliedEffects": [],
-				"midiProperties": {
-					"triggeredActivityId": "attack"
-				},
-				"otherActivityId": "none"
-			},
-			"8XQXG2nwqU16uU2d": {
-				"type": "attack",
-				"_id": "8XQXG2nwqU16uU2d",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": false,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
 				"attack": {
 					"critical": {
 						"threshold": null
 					},
 					"flat": false,
 					"type": {
-						"value": "melee",
+						"value": "ranged",
 						"classification": ""
 					},
 					"ability": "",
@@ -157,129 +99,7 @@
 				"name": "",
 				"img": "",
 				"appliedEffects": [],
-				"otherActivityId": "radient-damage",
-				"midiProperties": {
-					"triggeredActivityId": "none",
-					"triggeredActivityConditionText": "workflow?.damageRoll?.options?.flavor?.includes(\"radiant\")",
-					"automationOnly": true
-				}
-			},
-			"CHnyGwrfRWhsxnr6": {
-				"type": "damage",
-				"name": "Radiant Damage",
-				"_id": "CHnyGwrfRWhsxnr6",
-				"activation": {
-					"type": "action",
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": false,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"units": "self",
-					"override": false
-				},
-				"target": {
-					"template": {
-						"contiguous": false,
-						"units": "ft"
-					},
-					"affects": {
-						"choice": false
-					},
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"damage": {
-					"critical": {
-						"allow": true,
-						"bonus": ""
-					},
-					"parts": [
-						{
-							"custom": {
-								"enabled": true,
-								"formula": "10"
-							},
-							"number": null,
-							"denomination": null,
-							"bonus": "5",
-							"types": [
-								"radiant"
-							],
-							"scaling": {
-								"mode": ""
-							}
-						}
-					]
-				},
-				"useConditionText": "workflow?.damageRoll?.formula?.includes(\"[radiant]\")",
-				"useConditionReason": "Not Radient",
-				"effectConditionText": "",
-				"macroData": {
-					"name": "",
-					"command": ""
-				},
-				"ignoreTraits": {
-					"idi": false,
-					"idr": false,
-					"idv": false,
-					"ida": false,
-					"idm": false
-				},
-				"midiProperties": {
-					"ignoreTraits": [],
-					"triggeredActivityId": "none",
-					"triggeredActivityConditionText": "",
-					"triggeredActivityTargets": "targets",
-					"triggeredActivityRollAs": "self",
-					"autoConsume": false,
-					"forceConsumeDialog": "default",
-					"forceRollDialog": "default",
-					"forceDamageDialog": "default",
-					"confirmTargets": "default",
-					"autoTargetType": "any",
-					"autoTargetAction": "default",
-					"automationOnly": true,
-					"otherActivityCompatible": true,
-					"otherActivityAsParentType": true,
-					"displayActivityName": false,
-					"rollMode": "default",
-					"chooseEffects": false,
-					"toggleEffect": false,
-					"ignoreFullCover": false,
-					"removeChatButtons": "default",
-					"magicEffect": false,
-					"magicDamage": false,
-					"noConcentrationCheck": false,
-					"autoCEEffects": "default"
-				},
-				"isOverTimeFlag": false,
-				"overTimeProperties": {
-					"saveRemoves": true,
-					"preRemoveConditionText": "",
-					"postRemoveConditionText": ""
-				},
-				"img": "",
-				"appliedEffects": []
+				"otherActivityId": "none"
 			}
 		},
 		"uses": {

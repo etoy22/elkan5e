@@ -1,5 +1,34 @@
-import { drainedEffect, forEachDamagedTarget } from "../shared/helpers.mjs";
+import { createLightRegion, drainedEffect, forEachDamagedTarget } from "../shared/helpers.mjs";
 import { createGoodberryDurationEffect } from "../shared/effect-factories.mjs";
+
+/**
+ * Runs Fog Cloud spell automation: a pale, drifting mist that blocks vision.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<unknown>} Promise resolution result.
+ */
+export async function fogCloudDarkness(workflow) {
+	for (const region of workflow.templateUuids ?? []) {
+		await createLightRegion(
+			region,
+			{
+				dim: 0,
+				bright: 15,
+				alpha: 0.3,
+				luminosity: 0.5,
+				negative: true,
+				color: "#c9d6dd",
+				animation: {
+					type: "fog",
+					speed: 2,
+					intensity: 5,
+				},
+				priority: 30,
+			},
+			"Darkness",
+		);
+	}
+}
 
 /**
  * Tracks attacker-defender pairs that have already passed a Sanctuary save
@@ -377,6 +406,56 @@ export async function sanctuary(workflow) {
 			// Failed — remove the target before the attack roll so the attack never fires.
 			workflow.targets.delete(token);
 		}
+	}
+}
+
+const PRISMATIC_BOLT_DAMAGE_TYPES = [
+	"fire",
+	"thunder",
+	"lightning",
+	"acid",
+	"cold",
+	"force",
+	"necrotic",
+	"radiant",
+];
+
+/**
+ * Runs Prismatic Bolt spell automation (midi-qol preDamageRoll phase).
+ * Rolls 1d8 to pick the beam's damage type per the spell's table, forces the attack's
+ * damage roll to use that single type instead of prompting a manual choice, and adds the
+ * +10 bonus when an 8 (radiant) is rolled.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @param {*} activity - Activity about to roll damage.
+ * @param {*} _config - Damage roll configuration being built (unused).
+ * @param {*} dialog - Damage roll dialog configuration being built.
+ * @returns {Promise<void>} Promise resolution result.
+ */
+export async function prismaticBolt(workflow, activity, _config, dialog) {
+	try {
+		if (workflow?.item?.system?.identifier !== "prismatic-bolt") return;
+		if (activity?.type !== "attack" || !activity.damage?.parts?.length) return;
+
+		let type = workflow.elkan5ePrismaticBoltType;
+		if (!type) {
+			const roll = await new Roll("1d8").evaluate();
+			type = PRISMATIC_BOLT_DAMAGE_TYPES[roll.total - 1];
+			workflow.elkan5ePrismaticBoltType = type;
+
+			await roll.toMessage({
+				flavor: `Prismatic Bolt — the beam flares ${type[0].toUpperCase()}${type.slice(1)}!`,
+				speaker: ChatMessage.getSpeaker({ actor: workflow.actor }),
+			});
+		}
+
+		const part = activity.damage.parts[0];
+		part.types = new Set([type]);
+		part.bonus = type === "radiant" ? "10" : "";
+
+		if (dialog) dialog.configure = false;
+	} catch (err) {
+		console.error("Prismatic Bolt |", err);
 	}
 }
 

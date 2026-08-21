@@ -4,6 +4,23 @@
 	"type": "spell",
 	"_id": "7vHoMJ8cm6hr9fKP",
 	"img": "icons/magic/air/fog-gas-smoke-brown.webp",
+	"flags": {
+		"midi-qol": {
+			"onUseMacroName": "[postActiveEffects]ItemMacro"
+		},
+		"dae": {
+			"macro": {
+				"name": "Smoke Field",
+				"img": "icons/magic/air/fog-gas-smoke-brown.webp",
+				"type": "script",
+				"scope": "global",
+				"command": "return await elkan5e.macros.spells.smokeFieldDarkness(workflow)",
+				"author": "3Yi0HjF4PKCA4vX0",
+				"_id": null,
+				"folder": null
+			}
+		}
+	},
 	"system": {
 		"activities": {
 			"wiCAb0N0jzLpvdK9": {
@@ -28,28 +45,48 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [
-					{
-						"_id": "va7C2o5SAi8gAqYF"
-					},
-					{
-						"_id": "ctmRlnsg8FV7Sdf5"
-					}
-				],
+				"effects": [],
 				"range": {
 					"override": false,
 					"units": "self"
 				},
 				"target": {
-					"override": false,
+					"override": true,
 					"prompt": true,
 					"template": {
 						"contiguous": false,
-						"units": "ft"
+						"units": "ft",
+						"type": "sphere",
+						"size": "5",
+						"count": ""
 					},
 					"affects": {
-						"choice": false
+						"choice": false,
+						"type": "",
+						"count": "",
+						"special": ""
 					}
+				},
+				"regionBehavior": {
+					"attachToken": "default",
+					"enabled": true,
+					"dispositionFilter": -1,
+					"excludeSource": false,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "applyEffect",
+							"targetId": "ctmRlnsg8FV7Sdf5"
+						},
+						{
+							"trigger": "exit",
+							"action": "removeEffect",
+							"targetId": "ctmRlnsg8FV7Sdf5"
+						}
+					]
 				},
 				"uses": {
 					"spent": 0,
@@ -195,7 +232,8 @@
 			"description": "",
 			"tint": "#ffffff",
 			"statuses": [
-				"obscuredheavily"
+				"obscuredheavily",
+				"blinded"
 			],
 			"flags": {
 				"dae": {

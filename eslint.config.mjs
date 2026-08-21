@@ -23,6 +23,7 @@ export default [
         socketlib: "readonly",
         Token: "readonly",
         fromUuid: "readonly",
+        fromUuidSync: "readonly",
         console: "readonly",
         token: "readonly",
         process: "readonly",

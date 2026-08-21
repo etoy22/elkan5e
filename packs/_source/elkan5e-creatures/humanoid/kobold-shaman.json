@@ -1648,7 +1648,7 @@
 			"_id": "V9xsdbnMPG4XQYrU",
 			"system": {
 				"description": {
-					"value": "<p><em>You call upon the power of water, forming a fog cloud where you reach out your hand.</em></p><p><strong>Utility Spell</strong></p><ul><li><p>You create a 20-foot-radius sphere of fog centered on a point within range. The sphere spreads around corners.</p></li><li><p><strong>Area Hazard:</strong> The area is &amp;reference[heavilyobscured]. It lasts for the duration or until a wind of moderate or greater speed (at least 10 miles per hour) disperses it. This spell also doesn't function underwater.</p></li></ul><p><strong>Upcasting:</strong> The radius of the spell increases by 20 ft. for each spell level above 1st level.</p>",
+					"value": "<p><em>You call upon the power of water, forming a fog cloud where you reach out your hand.</em></p><p><strong>Utility</strong></p><ul><li><p>You create a 20-foot-radius sphere of fog centered on a point within range. The sphere spreads around corners.</p></li><li><p><strong>Area Hazard:</strong> The area is &amp;reference[heavilyobscured]. It lasts for the duration or until a wind of moderate or greater speed (at least 10 miles per hour) disperses it. This spell also doesn't function underwater.</p></li></ul><p><strong>Upcasting:</strong> The radius of the spell increases by 20 ft. for each spell level above 1st level.</p>",
 					"chat": ""
 				},
 				"source": {
@@ -1738,21 +1738,24 @@
 							"concentration": false,
 							"override": false
 						},
-						"effects": [
-							{
-								"_id": "va7C2o5SAi8gAqYF"
-							}
-						],
+						"effects": [],
 						"range": {
 							"override": false
 						},
 						"target": {
-							"type": "creature",
-							"value": 1,
-							"units": "ft",
-							"width": null,
-							"override": false,
-							"prompt": true
+							"prompt": true,
+							"template": {
+								"type": "sphere",
+								"size": "@item.level * 20",
+								"count": ""
+							},
+							"affects": {
+								"type": "",
+								"count": "",
+								"choice": false,
+								"special": ""
+							},
+							"override": true
 						},
 						"uses": {
 							"spent": 0,
@@ -1767,9 +1770,34 @@
 						},
 						"name": "",
 						"img": "",
-						"appliedEffects": [
-							"va7C2o5SAi8gAqYF"
-						]
+						"appliedEffects": [],
+						"visibility": {
+							"level": {
+								"min": null,
+								"max": null
+							}
+						},
+						"regionBehavior": {
+							"attachToken": "default",
+							"enabled": true,
+							"dispositionFilter": -1,
+							"excludeSource": false,
+							"oncePerTurn": true,
+							"wallRestriction": "none",
+							"regionVisibility": 2,
+							"rules": [
+								{
+									"trigger": "entry",
+									"action": "applyEffect",
+									"targetId": "6506NgHZlWKm6PWV"
+								},
+								{
+									"trigger": "exit",
+									"action": "removeEffect",
+									"targetId": "6506NgHZlWKm6PWV"
+								}
+							]
+						}
 					}
 				},
 				"identifier": "fog-cloud"
