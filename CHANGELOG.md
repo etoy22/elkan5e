@@ -9,6 +9,10 @@
 
 - Added Merfolk.
 
+## Background
+
+- Maritime Background now grants a choice of three feats rather than just Strong Swimmer.
+
 ## Classes
 
 ### Paladin
