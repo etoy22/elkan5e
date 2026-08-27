@@ -2,12 +2,62 @@
 	"name": "Throw Target",
 	"type": "feat",
 	"img": "icons/magic/control/silhouette-fall-slip-prone.webp",
-	"effects": [],
+	"effects": [
+		{
+			"name": "Prone",
+			"img": "modules/elkan5e/icons/conditions/prone.svg",
+			"origin": "Compendium.elkan5e.elkan5e-creature-features.Item.0PEsbLimxTAgT3Bq",
+			"type": "base",
+			"_id": "r9IS5lHviZWZwSIk",
+			"system": {
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "prone",
+						"phase": "final",
+						"priority": null
+					}
+				]
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [],
+			"showIcon": 1,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"expiryMode": "default",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"disableIncapacitated": false,
+					"specialDuration": [],
+					"phaseStamped": true,
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
+				}
+			},
+			"_key": "!items.effects!0PEsbLimxTAgT3Bq.r9IS5lHviZWZwSIk"
+		}
+	],
 	"_id": "0PEsbLimxTAgT3Bq",
 	"folder": "RbPY5GIuzA7tYu52",
 	"system": {
 		"description": {
-			"value": "<p><strong>Action</strong></p><ul><li><p>The [[lookup @name lowercase]] throws a creature it is grappling of Medium size or smaller up to 20 feet away, off ledges if possible. The target takes [[/damage 2d6 bludgeoning]] damage and has the &amp;Reference[Prone apply=false] condition at the end of this movement.</p></li></ul><p>If the thrown target strikes another creature during this movement, that creature is affected:</p><p><strong>[[/save dexterity]]{Dexterity Save}</strong></p><ul><li><p><strong>Failure:</strong> [[/damage 2d6 bludgeoning]] damage, and the creature has the &amp;Reference[Prone apply=false] condition.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"value": "<p><strong>Action</strong></p><ul><li><p>The [[lookup @name lowercase]] throws a creature it is grappling of Medium size or smaller up to 20 feet away, off ledges if possible. The target takes [[/damage 2d6 bludgeoning]] damage and becomes &amp;Reference[Prone] at the end of this movement.</p></li></ul><p>If the thrown target strikes another creature during this movement, that creature is affected:</p><p><strong>[[/save dexterity]]{Dexterity Save}</strong></p><ul><li><p><strong>Failure:</strong> [[/damage 2d6 bludgeoning]] damage, and the creature becomes &amp;Reference[Prone].</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -31,152 +81,6 @@
 		},
 		"requirements": "",
 		"activities": {
-			"dnd5eactivity000": {
-				"_id": "dnd5eactivity000",
-				"type": "utility",
-				"activation": {
-					"type": "action",
-					"value": 1,
-					"condition": "",
-					"override": false
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"concentration": false,
-					"value": "",
-					"units": "inst",
-					"special": "",
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"units": "self",
-					"special": "",
-					"override": false
-				},
-				"target": {
-					"template": {
-						"count": "",
-						"contiguous": false,
-						"type": "",
-						"size": "",
-						"width": "",
-						"height": "",
-						"units": "ft",
-						"stationary": false
-					},
-					"affects": {
-						"count": "",
-						"type": "",
-						"choice": false,
-						"special": ""
-					},
-					"prompt": true,
-					"override": false
-				},
-				"uses": {
-					"spent": 0,
-					"max": "",
-					"recovery": []
-				},
-				"roll": {
-					"formula": "",
-					"name": "",
-					"prompt": false,
-					"visible": false
-				},
-				"img": null,
-				"visibility": {
-					"level": {},
-					"requireAttunement": false,
-					"requireIdentification": false,
-					"requireMagic": false
-				},
-				"useConditionText": "",
-				"useConditionReason": "",
-				"effectConditionText": "",
-				"macroData": {
-					"name": "",
-					"command": ""
-				},
-				"ignoreTraits": {
-					"idi": false,
-					"idr": false,
-					"idv": false,
-					"ida": false,
-					"idm": false
-				},
-				"midiProperties": {
-					"ignoreTraits": [],
-					"triggeredActivityId": "none",
-					"triggeredActivityConditionText": "",
-					"triggeredActivityTargets": "targets",
-					"triggeredActivityRollAs": "self",
-					"triggeredActivityConsume": true,
-					"triggeredActivityConfigure": true,
-					"autoConsume": false,
-					"forceConsumeDialog": "default",
-					"forceRollDialog": "default",
-					"forceDamageDialog": "default",
-					"confirmTargets": "default",
-					"autoTargetType": "any",
-					"autoTargetAction": "default",
-					"automationOnly": false,
-					"otherActivityCompatible": true,
-					"otherActivityAsParentType": true,
-					"identifier": "",
-					"displayActivityName": false,
-					"rollMode": "default",
-					"chooseEffects": false,
-					"toggleEffect": false,
-					"ignoreFullCover": false,
-					"removeChatButtons": "default",
-					"magicEffect": false,
-					"magicDamage": false,
-					"noConcentrationCheck": false,
-					"skipConcentrationCheck": false,
-					"autoCEEffects": "default"
-				},
-				"isOverTimeFlag": false,
-				"overTimeProperties": {
-					"saveRemoves": true,
-					"rollAs": "target",
-					"preRemoveConditionText": "",
-					"postRemoveConditionText": ""
-				},
-				"regionBehavior": {
-					"enabled": false,
-					"dispositionFilter": -1,
-					"excludeSource": true,
-					"oncePerTurn": true,
-					"wallRestriction": "none",
-					"regionVisibility": 2,
-					"rules": []
-				},
-				"regionLight": {
-					"enabled": false,
-					"dim": 0,
-					"bright": 0,
-					"color": null,
-					"alpha": 0.5,
-					"luminosity": 0.5,
-					"animationType": "",
-					"animationSpeed": 5,
-					"animationIntensity": 5
-				},
-				"otherActivityId": "none",
-				"otherActivityAsParentType": true
-			},
 			"dnd5eactivity100": {
 				"_id": "dnd5eactivity100",
 				"type": "save",
@@ -204,7 +108,13 @@
 					"special": "",
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "r9IS5lHviZWZwSIk",
+						"level": {},
+						"onSave": false
+					}
+				],
 				"range": {
 					"units": "self",
 					"special": "",
@@ -237,7 +147,21 @@
 				},
 				"damage": {
 					"onSave": "half",
-					"parts": [],
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 2,
+							"denomination": 6,
+							"bonus": "",
+							"types": [],
+							"scaling": {
+								"number": 1
+							}
+						}
+					],
 					"critical": {
 						"allow": false
 					}
@@ -251,12 +175,16 @@
 						"formula": "14"
 					}
 				},
-				"img": null,
+				"img": "",
 				"visibility": {
-					"level": {},
+					"level": {
+						"min": null,
+						"max": null
+					},
 					"requireAttunement": false,
 					"requireIdentification": false,
-					"requireMagic": false
+					"requireMagic": false,
+					"identifier": ""
 				},
 				"useConditionText": "",
 				"useConditionReason": "",
@@ -332,7 +260,8 @@
 				},
 				"otherActivityId": "none",
 				"otherActivityAsParentType": true,
-				"friendlySave": "default"
+				"friendlySave": "default",
+				"name": ""
 			}
 		},
 		"identifier": "throw-target",

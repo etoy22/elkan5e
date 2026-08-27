@@ -28,7 +28,8 @@
 					"enableCondition": "",
 					"disableCondition": "",
 					"expiryMode": "default",
-					"combatActorOverride": "source"
+					"combatActorOverride": "source",
+					"phaseStamped": true
 				}
 			},
 			"tint": "#ffffff",
@@ -67,17 +68,18 @@
 					"transfer": false,
 					"disableIncapacitated": false,
 					"dontApply": false,
-					"enableCondition": "",
+					"enableCondition": "!actor?.statuses.has(\"poisoned\")",
 					"disableCondition": "",
 					"expiryMode": "default",
-					"combatActorOverride": "source"
+					"combatActorOverride": "source",
+					"phaseStamped": true
 				}
 			},
 			"tint": "#ffffff",
 			"name": "Detected (Poison/Disease)",
 			"description": "",
 			"statuses": [],
-			"img": "icons/conditions/poisoned.svg",
+			"img": "modules/elkan5e/icons/conditions/poisoned.svg",
 			"type": "base",
 			"system": {
 				"changes": []
@@ -444,6 +446,88 @@
 					"attachToken": "default",
 					"rules": []
 				}
+			},
+			"El767yjvVYijtW34": {
+				"name": "Detect Poison/Disease (Emanation)",
+				"img": "",
+				"description": {
+					"chatFlavor": ""
+				},
+				"target": {
+					"prompt": true,
+					"override": true,
+					"affects": {
+						"type": "self",
+						"special": ""
+					},
+					"template": {
+						"type": ""
+					}
+				},
+				"roll": {
+					"prompt": false,
+					"name": "",
+					"formula": "",
+					"visible": false
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"activation": {
+					"override": true,
+					"type": "",
+					"condition": ""
+				},
+				"duration": {
+					"override": true,
+					"units": "inst",
+					"concentration": false
+				},
+				"consumption": {
+					"spellSlot": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": ""
+				},
+				"range": {
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "PqX7nRvTm3ZcWkYb",
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"midiProperties": {
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"noConcentrationCheck": false,
+					"rollMode": "default",
+					"removeChatButtons": "default",
+					"displayActivityName": false,
+					"identifier": "detectPoisonDisease",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "never",
+					"automationOnly": true,
+					"otherActivityCompatible": true,
+					"triggeredActivityId": "none"
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"isOverTimeFlag": false
 			}
 		},
 		"identifier": "detect-poison-and-disease"

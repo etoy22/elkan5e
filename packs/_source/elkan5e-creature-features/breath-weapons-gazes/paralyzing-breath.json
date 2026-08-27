@@ -35,14 +35,9 @@
 				},
 				"effects": [
 					{
-						"_id": "MML0hjuixzKZ61FT",
-						"onSave": false,
-						"level": {}
-					},
-					{
-						"_id": "qHhQi1VSyVic0Z22",
-						"onSave": false,
-						"level": {}
+						"_id": "0OKwvw2pvAYqZqRD",
+						"level": {},
+						"onSave": false
 					}
 				],
 				"range": {
@@ -86,12 +81,16 @@
 					}
 				},
 				"name": "Save",
-				"img": null,
+				"img": "",
 				"visibility": {
-					"level": {},
+					"level": {
+						"min": null,
+						"max": null
+					},
 					"requireAttunement": false,
 					"requireIdentification": false,
-					"requireMagic": false
+					"requireMagic": false,
+					"identifier": ""
 				}
 			}
 		},
@@ -101,7 +100,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><strong>Action</strong> - [[lookup @target.template.size activity=r4MGqEq5U9aaseBh]] ft. [[lookup @target.template.type capitalize activity=r4MGqEq5U9aaseBh]]</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>First Failure:</strong> The target has the &amp;Reference[Incapacitated apply=false] condition until the end of its next turn, when it repeats the save.</p></li><li><p><strong>Second Failure:</strong> The target has the &amp;Reference[Paralyzed apply=false] condition, and it repeats the save at the end of each of its turns, ending the effect on itself on a success. After 1 minute, it succeeds automatically.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"value": "<p><strong>Action</strong> - 60 ft. Cone (Self)</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>First Failure:</strong> The target has the &amp;Reference[Incapacitated apply=false] condition until the end of its next turn, when it repeats the save.</p></li><li><p><strong>Second Failure:</strong> The target has the &amp;Reference[Paralyzed apply=false] condition, and it repeats the save at the end of each of its turns, ending the effect on itself on a success. After 1 minute, it succeeds automatically.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "paralyzing-breath",
@@ -129,65 +128,55 @@
 	"img": "icons/magic/unholy/energy-smoke-pink.webp",
 	"effects": [
 		{
-			"name": "Incapacitated",
+			"name": "Paralyzing Breath",
 			"img": "icons/magic/unholy/energy-smoke-pink.webp",
 			"origin": "Compendium.elkan5e.elkan5e-creature-features.Item.iDkqWWq9Gw9Zs8Ej",
-			"_id": "MML0hjuixzKZ61FT",
 			"type": "base",
+			"_id": "0OKwvw2pvAYqZqRD",
 			"system": {
-				"changes": []
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"type": "add",
+						"value": "",
+						"phase": "initial",
+						"priority": null
+					}
+				]
 			},
 			"disabled": false,
+			"start": null,
 			"duration": {
-				"value": 1,
-				"units": "turns",
-				"expiry": "turnStart",
+				"value": 60,
+				"units": "seconds",
+				"expiry": null,
 				"expired": false
 			},
-			"description": "<p>The target has the &amp;Reference[Incapacitated apply=false] condition until the end of its next turn, when it repeats the save.</p>",
+			"description": "",
 			"tint": "#ffffff",
 			"transfer": false,
 			"statuses": [
 				"incapacitated"
 			],
-			"showIcon": 2,
-			"start": null,
+			"showIcon": 1,
 			"folder": null,
-			"_key": "!items.effects!iDkqWWq9Gw9Zs8Ej.MML0hjuixzKZ61FT"
-		},
-		{
-			"name": "Paralyzed",
-			"img": "icons/magic/unholy/energy-smoke-pink.webp",
-			"origin": "Compendium.elkan5e.elkan5e-creature-features.Item.iDkqWWq9Gw9Zs8Ej",
-			"_id": "qHhQi1VSyVic0Z22",
-			"type": "base",
-			"system": {
-				"changes": []
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"expiryMode": "default",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"disableIncapacitated": false,
+					"specialDuration": [],
+					"phaseStamped": true,
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
+				}
 			},
-			"disabled": false,
-			"duration": {
-				"value": 60,
-				"units": "seconds",
-				"expiry": "turnStart",
-				"expired": false
-			},
-			"description": "<p>The target has the &amp;Reference[Paralyzed apply=false] condition, and it repeats the save at the end of each of its turns, ending the effect on itself on a success. After 1 minute, it succeeds automatically.</p>",
-			"tint": "#ffffff",
-			"transfer": false,
-			"statuses": [
-				"paralyzed"
-			],
-			"showIcon": 2,
-			"start": {
-				"combat": null,
-				"round": null,
-				"time": 0,
-				"turn": null,
-				"combatant": null,
-				"initiative": null
-			},
-			"folder": null,
-			"_key": "!items.effects!iDkqWWq9Gw9Zs8Ej.qHhQi1VSyVic0Z22"
+			"_key": "!items.effects!iDkqWWq9Gw9Zs8Ej.0OKwvw2pvAYqZqRD"
 		}
 	],
 	"_key": "!items!iDkqWWq9Gw9Zs8Ej"

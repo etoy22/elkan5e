@@ -92,7 +92,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><strong>Action</strong> - [[lookup @target.template.size activity=teMMQNDDIE9XkPN3]] ft. [[lookup @target.template.type capitalize activity=teMMQNDDIE9XkPN3]]</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Until the end of its next turn, the target can't take Reactions, its Speed is halved, and it can take either an action or a Bonus Action on its turn, not both.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"value": "<p><strong>Action</strong> - 60 ft. Cone (Self)</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Until the end of its next turn, the target can't take Reactions, its Speed is halved, and it can take either an action or a Bonus Action on its turn, not both.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "slowing-breath",
@@ -122,7 +122,7 @@
 	},
 	"effects": [
 		{
-			"name": "1/2 Speed | Action Restrictions",
+			"name": "Slowing Breath",
 			"img": "icons/magic/movement/abstract-ribbons-red-orange.webp",
 			"origin": "Compendium.elkan5e.elkan5e-creature-features.Item.yLulEoUVrnBC6kKz",
 			"_id": "ztGUDHGfoUxlUY53",
@@ -131,33 +131,38 @@
 				"changes": [
 					{
 						"key": "system.attributes.movement.walk",
+						"type": "multiply",
 						"value": 0.5,
-						"priority": null,
-						"type": "multiply"
+						"phase": "initial",
+						"priority": null
 					},
 					{
 						"key": "system.attributes.movement.burrow",
+						"type": "multiply",
 						"value": 0.5,
-						"priority": null,
-						"type": "multiply"
+						"phase": "initial",
+						"priority": null
 					},
 					{
 						"key": "system.attributes.movement.climb",
+						"type": "multiply",
 						"value": 0.5,
-						"priority": null,
-						"type": "multiply"
+						"phase": "initial",
+						"priority": null
 					},
 					{
 						"key": "system.attributes.movement.fly",
+						"type": "multiply",
 						"value": 0.5,
-						"priority": null,
-						"type": "multiply"
+						"phase": "initial",
+						"priority": null
 					},
 					{
 						"key": "system.attributes.movement.swim",
+						"type": "multiply",
 						"value": 0.5,
-						"priority": null,
-						"type": "multiply"
+						"phase": "initial",
+						"priority": null
 					}
 				]
 			},
@@ -175,6 +180,22 @@
 			"start": null,
 			"showIcon": 1,
 			"folder": null,
+			"flags": {
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"stackable": "noneName",
+					"expiryMode": "default",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"specialDuration": [],
+					"phaseStamped": true
+				}
+			},
 			"_key": "!items.effects!yLulEoUVrnBC6kKz.ztGUDHGfoUxlUY53"
 		}
 	],

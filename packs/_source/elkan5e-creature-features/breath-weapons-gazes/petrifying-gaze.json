@@ -41,9 +41,9 @@
 				},
 				"effects": [
 					{
-						"_id": "a5kKgU7vfT0v17yF",
-						"onSave": false,
-						"level": {}
+						"_id": "Tt9lbKg24MuYwOLV",
+						"level": {},
+						"onSave": false
 					}
 				],
 				"range": {
@@ -87,12 +87,16 @@
 					}
 				},
 				"name": "First Save",
-				"img": null,
+				"img": "",
 				"visibility": {
-					"level": {},
+					"level": {
+						"min": null,
+						"max": null
+					},
 					"requireAttunement": false,
 					"requireIdentification": false,
-					"requireMagic": false
+					"requireMagic": false,
+					"identifier": ""
 				}
 			},
 			"f85JEmBaXr4A38dp": {
@@ -188,7 +192,7 @@
 			"max": "1"
 		},
 		"description": {
-			"value": "<p><strong>Bonus Action</strong> - [[lookup @target.template.size activity=mN9aF1WkHQWLIN4B]] ft. [[lookup @target.template.type capitalize activity=mN9aF1WkHQWLIN4B]] - Recharge 4-6</p><p>If the [[lookup @name lowercase]] sees its own reflection within the Cone, the [[lookup @name lowercase]] must make this save.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>First Failure:</strong> The target has the &amp;Reference[Restrained apply=false] condition and repeats the save at the end of its next turn if it is still Restrained, ending the effect on itself on a success.</p></li><li><p><strong>Second Failure:</strong> The target has the &amp;Reference[Petrified apply=false] condition instead of the Restrained condition.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"value": "<p><strong>Bonus Action</strong> - 30 ft. Cone (Self) - Recharge 4-6</p><p>If the [[lookup @name lowercase]] sees its own reflection within the Cone, the [[lookup @name lowercase]] must make this save.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>First Failure:</strong> The target has the &amp;Reference[Restrained apply=false] condition and repeats the save at the end of its next turn if it is still Restrained, ending the effect on itself on a success.</p></li><li><p><strong>Second Failure:</strong> The target has the &amp;Reference[Petrified apply=false] condition instead of the Restrained condition.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "petrifying-gaze",
@@ -275,6 +279,57 @@
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!Y9uwzdyxLy6MsUb7.YLFv2Ujss9c0vtMQ"
+		},
+		{
+			"name": "Petrifying Gaze",
+			"img": "icons/magic/defensive/armor-stone-skin.webp",
+			"origin": "Compendium.elkan5e.elkan5e-creature-features.Item.Y9uwzdyxLy6MsUb7",
+			"type": "base",
+			"_id": "Tt9lbKg24MuYwOLV",
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"type": "add",
+						"value": "turn=end, label=Petrifying Gaze, saveAbility=con, saveDC=@abilities.con.dc, applyCondition=petrified",
+						"phase": "initial",
+						"priority": null
+					}
+				]
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [
+				"restrained"
+			],
+			"showIcon": 1,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"expiryMode": "default",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"disableIncapacitated": false,
+					"specialDuration": [],
+					"phaseStamped": true,
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
+				}
+			},
+			"_key": "!items.effects!Y9uwzdyxLy6MsUb7.Tt9lbKg24MuYwOLV"
 		}
 	],
 	"_key": "!items!Y9uwzdyxLy6MsUb7"

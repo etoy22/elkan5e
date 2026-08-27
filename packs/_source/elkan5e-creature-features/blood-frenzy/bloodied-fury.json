@@ -14,7 +14,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p>While &amp;Reference[Bloodied], the [[lookup @name lowercase]]{monster} has Advantage on attack rolls.</p>",
+			"value": "<p>While &amp;Reference[Bloodied], the [[lookup @name lowercase]]{monster} has &amp;reference[Advantage] on attack rolls.</p>",
 			"chat": ""
 		},
 		"identifier": "bloodied-fury",
@@ -42,6 +42,52 @@
 	},
 	"folder": "rpdJCLqEpMx3LLo8",
 	"img": "icons/creatures/abilities/fang-tooth-blood-red.webp",
-	"effects": [],
+	"effects": [
+		{
+			"name": "Bloodied Fury",
+			"img": "icons/creatures/abilities/fang-tooth-blood-red.webp",
+			"origin": "Compendium.elkan5e.elkan5e-creature-features.Item.T4QYyi9euTyuXirr",
+			"type": "base",
+			"_id": "UkshKXyC0l0CbEHR",
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.advantage.attack.all",
+						"type": "add",
+						"value": "@target.statuses.bloodied",
+						"phase": "initial",
+						"priority": null
+					}
+				]
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"transfer": true,
+			"statuses": [],
+			"showIcon": 1,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"expiryMode": "default",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"disableIncapacitated": false,
+					"specialDuration": [],
+					"phaseStamped": true
+				}
+			},
+			"_key": "!items.effects!T4QYyi9euTyuXirr.UkshKXyC0l0CbEHR"
+		}
+	],
 	"_key": "!items!T4QYyi9euTyuXirr"
 }
