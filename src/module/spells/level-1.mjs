@@ -151,7 +151,7 @@ export async function goodberry(workflow) {
 			identifier: "goodberry-item",
 			source: {
 				revision: 1,
-				rules: "2024",
+				rules: "",
 				book: "Elkan 5e",
 				page: "",
 				custom: "",

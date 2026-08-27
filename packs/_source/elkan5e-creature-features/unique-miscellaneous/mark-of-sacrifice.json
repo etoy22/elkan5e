@@ -1,0 +1,330 @@
+{
+	"folder": "HL6oqgHTMf74LQc9",
+	"name": "Mark of Sacrifice",
+	"type": "feat",
+	"img": "icons/skills/wounds/blood-drip-droplet-red.webp",
+	"system": {
+		"description": {
+			"value": "<p><strong>Action</strong> - [[lookup @target.affects.count activity=dnd5eactivity000]] [[lookup @target.affects.type capitalize activity=dnd5eactivity000]] ([[lookup @range.value activity=dnd5eactivity000]] ft.) - 2/Long Rest</p><p>The [[lookup @name lowercase]] designates a target it is about to attack, drawing out its blood with dark magic.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> [[/damage]] damage. Until the end of the [[lookup @name lowercase]]'s next turn, melee weapon attacks against the target have Advantage.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "Elkan 5e",
+			"rules": "",
+			"revision": 1,
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"cover": null,
+		"crewed": false,
+		"uses": {
+			"max": "2",
+			"recovery": [
+				{
+					"period": "lr",
+					"type": "recoverAll"
+				}
+			],
+			"spent": 0
+		},
+		"type": {
+			"value": "",
+			"subtype": ""
+		},
+		"requirements": "",
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": 1,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [
+						{
+							"type": "itemUses",
+							"target": "",
+							"value": "1",
+							"scaling": {
+								"mode": "",
+								"formula": ""
+							}
+						}
+					],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "1",
+					"units": "minute",
+					"special": "",
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "ginqfz2CVSkOH5NX",
+						"onSave": false,
+						"level": {}
+					}
+				],
+				"range": {
+					"value": "30",
+					"units": "ft",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": "ft",
+						"stationary": false
+					},
+					"affects": {
+						"count": "1",
+						"type": "creature",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": [
+						{
+							"number": 1,
+							"denomination": 4,
+							"bonus": "",
+							"types": [
+								"slashing"
+							],
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"scaling": {
+								"mode": "whole",
+								"number": null,
+								"formula": ""
+							}
+						}
+					],
+					"critical": {
+						"allow": false
+					}
+				},
+				"save": {
+					"ability": [
+						"con"
+					],
+					"dc": {
+						"calculation": "cha",
+						"formula": ""
+					}
+				},
+				"useConditionText": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"identifier": "",
+					"autoConsume": false,
+					"forceRollDialog": "false",
+					"forceDamageDialog": "false",
+					"otherActivityAsParentType": true,
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default",
+					"triggeredActivityConsume": true,
+					"triggeredActivityConfigure": true,
+					"forceConsumeDialog": "default",
+					"skipConcentrationCheck": false
+				},
+				"useConditionReason": "",
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": "",
+					"rollAs": "target"
+				},
+				"otherActivityId": "",
+				"otherActivityAsParentType": true,
+				"friendlySave": "default",
+				"img": null,
+				"visibility": {
+					"level": {},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false
+				},
+				"regionBehavior": {
+					"enabled": false,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": []
+				},
+				"regionLight": {
+					"enabled": false,
+					"dim": 0,
+					"bright": 0,
+					"color": null,
+					"alpha": 0.5,
+					"luminosity": 0.5,
+					"animationType": "",
+					"animationSpeed": 5,
+					"animationIntensity": 5
+				}
+			}
+		},
+		"identifier": "mark-of-sacrifice",
+		"enchant": {},
+		"prerequisites": {
+			"level": null,
+			"repeatable": false,
+			"items": []
+		},
+		"properties": [],
+		"advancement": {}
+	},
+	"effects": [
+		{
+			"origin": "Compendium.elkan5e.elkan5e-creature-features.Item.b9xSQIIotqn1DBrE",
+			"duration": {
+				"value": 6,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"disabled": false,
+			"_id": "ginqfz2CVSkOH5NX",
+			"tint": "#ffffff",
+			"transfer": false,
+			"flags": {
+				"dae": {
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"stackable": "none",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [
+						"turnEndSource"
+					],
+					"showIcon": false
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"radius": "",
+					"alignment": "",
+					"type": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false
+				}
+			},
+			"name": "Sacrificial Mark",
+			"description": "",
+			"statuses": [],
+			"img": "icons/skills/wounds/blood-drip-droplet-red.webp",
+			"type": "base",
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.grants.advantage.attack.mwak",
+						"value": 1,
+						"priority": 20,
+						"type": "add",
+						"phase": "initial"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
+			"_key": "!items.effects!b9xSQIIotqn1DBrE.ginqfz2CVSkOH5NX"
+		}
+	],
+	"flags": {
+		"midi-qol": {
+			"effectActivation": false,
+			"rollAttackPerTarget": "default",
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": ""
+		},
+		"midiProperties": {
+			"nodam": true,
+			"fulldam": false,
+			"halfdam": false,
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"rollOther": false,
+			"critOther": false,
+			"offHandWeapon": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"ignoreTotalCover": false,
+			"noConcentrationCheck": false
+		}
+	},
+	"_id": "b9xSQIIotqn1DBrE",
+	"_key": "!items!b9xSQIIotqn1DBrE"
+}

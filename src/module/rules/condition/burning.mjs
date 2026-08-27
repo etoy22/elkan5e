@@ -77,7 +77,7 @@ function buildQuenchBurningItem() {
 			source: {
 				custom: "elkan5e.com/burning",
 				revision: 1,
-				rules: "2024",
+				rules: "",
 				book: "Elkan 5e",
 				page: "",
 				license: "",
