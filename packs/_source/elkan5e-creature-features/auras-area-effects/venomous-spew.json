@@ -1,0 +1,157 @@
+{
+	"name": "Venomous Spew",
+	"system": {
+		"description": {
+			"value": "<p><strong>Action</strong> - [[lookup @target.affects.count activity=dnd5eactivity000]] [[lookup @target.affects.type capitalize activity=dnd5eactivity000]] ([[lookup @range.value activity=dnd5eactivity000]] ft.)</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> The target has the &amp;Reference[Poisoned apply=false] condition until the start of the [[lookup @name lowercase]]'s next turn.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "Elkan 5e",
+			"rules": "",
+			"revision": 1,
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"type": {
+			"value": "monster",
+			"subtype": ""
+		},
+		"prerequisites": {
+			"level": null,
+			"items": [],
+			"repeatable": false
+		},
+		"properties": [],
+		"requirements": "",
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": 1,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"value": "1",
+					"units": "round",
+					"special": "",
+					"override": false,
+					"concentration": false
+				},
+				"effects": [
+					{
+						"_id": "uUvxWKSj8qQRIbTK",
+						"onSave": false,
+						"level": {}
+					}
+				],
+				"range": {
+					"value": "10",
+					"units": "ft",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": "ft"
+					},
+					"affects": {
+						"count": "1",
+						"type": "creature",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": []
+				},
+				"save": {
+					"ability": [
+						"con"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": []
+				},
+				"img": null,
+				"visibility": {
+					"level": {},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false
+				}
+			}
+		},
+		"enchant": {},
+		"identifier": "venomous-spew",
+		"advancement": {},
+		"crewed": false
+	},
+	"_id": "UOEjkkfcBvVQwx8w",
+	"type": "feat",
+	"img": "icons/magic/acid/projectile-flame-smoke-green.webp",
+	"effects": [
+		{
+			"name": "Poisoned",
+			"img": "systems/dnd5e/icons/svg/statuses/poisoned.svg",
+			"origin": "Compendium.elkan5e.elkan5e-creature-features.Item.UOEjkkfcBvVQwx8w",
+			"transfer": false,
+			"_id": "uUvxWKSj8qQRIbTK",
+			"type": "base",
+			"system": {
+				"changes": []
+			},
+			"disabled": false,
+			"duration": {
+				"value": 1,
+				"units": "rounds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "<p>The target has the &amp;Reference[Poisoned apply=false] condition until the start of the insect’s next turn.</p>",
+			"tint": "#ffffff",
+			"statuses": [
+				"poisoned"
+			],
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
+			"_key": "!items.effects!UOEjkkfcBvVQwx8w.uUvxWKSj8qQRIbTK"
+		}
+	],
+	"folder": "T6yrp2MPfjrjhJ33",
+	"_key": "!items!UOEjkkfcBvVQwx8w"
+}

@@ -1,0 +1,210 @@
+{
+	"name": "Web Bolt",
+	"system": {
+		"description": {
+			"value": "<p><strong>Ranged Attack</strong> - 1 Creature (60 ft.)</p><ul><li><p><strong>Attack:</strong> [[/attack]]</p></li><li><p><strong>Hit:</strong> [[/damage]] damage, and the target's Speed is reduced to 0 until the start of the [[lookup @name lowercase]]'s next turn.</p></li></ul>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "Elkan 5e",
+			"rules": "",
+			"revision": 1,
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"type": {
+			"value": "monster",
+			"subtype": ""
+		},
+		"prerequisites": {
+			"level": null,
+			"repeatable": false,
+			"items": []
+		},
+		"properties": [],
+		"requirements": "Spider Only",
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "attack",
+				"activation": {
+					"type": "action",
+					"value": 1,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"value": "",
+					"units": "inst",
+					"special": "",
+					"override": false,
+					"concentration": false
+				},
+				"effects": [
+					{
+						"_id": "Gvwt9wpCcJgC0yMl",
+						"level": {}
+					}
+				],
+				"range": {
+					"value": "60",
+					"units": "ft",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": "ft"
+					},
+					"affects": {
+						"count": "",
+						"type": "",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"attack": {
+					"ability": "",
+					"bonus": "",
+					"critical": {
+						"threshold": null
+					},
+					"flat": false,
+					"type": {
+						"value": "ranged",
+						"classification": "weapon"
+					}
+				},
+				"damage": {
+					"critical": {
+						"bonus": ""
+					},
+					"includeBase": true,
+					"parts": [
+						{
+							"number": 1,
+							"denomination": 10,
+							"bonus": "@mod",
+							"types": [
+								"bludgeoning"
+							],
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"scaling": {
+								"mode": "whole",
+								"number": null,
+								"formula": ""
+							}
+						}
+					]
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": []
+				},
+				"img": null,
+				"visibility": {
+					"level": {},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false
+				}
+			}
+		},
+		"enchant": {},
+		"identifier": "web-bolt",
+		"advancement": {},
+		"cover": null,
+		"crewed": false
+	},
+	"_id": "tHbKNHXvgRtDGz9Y",
+	"type": "feat",
+	"img": "icons/creatures/webs/web-spider-moving-blue.webp",
+	"effects": [
+		{
+			"name": "Webbed",
+			"origin": "Compendium.elkan5e.elkan5e-creature-features.Item.tHbKNHXvgRtDGz9Y",
+			"duration": {
+				"value": 1,
+				"units": "rounds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"disabled": false,
+			"img": "icons/creatures/invertebrates/spider-web-black.webp",
+			"_id": "Gvwt9wpCcJgC0yMl",
+			"type": "base",
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.walk",
+						"value": 0,
+						"priority": null,
+						"type": "downgrade"
+					},
+					{
+						"key": "system.attributes.movement.burrow",
+						"value": 0,
+						"priority": null,
+						"type": "downgrade"
+					},
+					{
+						"key": "system.attributes.movement.climb",
+						"value": 0,
+						"priority": null,
+						"type": "downgrade"
+					},
+					{
+						"key": "system.attributes.movement.fly",
+						"value": 0,
+						"priority": null,
+						"type": "downgrade"
+					},
+					{
+						"key": "system.attributes.movement.swim",
+						"value": 0,
+						"priority": null,
+						"type": "downgrade"
+					}
+				]
+			},
+			"description": "<p><span>The target’s Speed is reduced to 0 until the start of the insect’s next turn.</span></p>",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
+			"_key": "!items.effects!tHbKNHXvgRtDGz9Y.Gvwt9wpCcJgC0yMl"
+		}
+	],
+	"folder": "RIC9m0I03i0YswOc",
+	"_key": "!items!tHbKNHXvgRtDGz9Y"
+}

@@ -1,0 +1,183 @@
+{
+	"_id": "yLulEoUVrnBC6kKz",
+	"name": "Slowing Breath",
+	"type": "feat",
+	"img": "icons/magic/movement/abstract-ribbons-red-orange.webp",
+	"system": {
+		"activities": {
+			"teMMQNDDIE9XkPN3": {
+				"type": "save",
+				"_id": "teMMQNDDIE9XkPN3",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "ztGUDHGfoUxlUY53",
+						"onSave": false,
+						"level": {}
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"count": "",
+						"type": "cone",
+						"size": "60"
+					},
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": "creature",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"parts": [],
+					"onSave": "half"
+				},
+				"save": {
+					"ability": [
+						"con"
+					],
+					"dc": {
+						"calculation": "con",
+						"formula": "8 + @mod + @prof"
+					}
+				},
+				"name": "",
+				"img": null,
+				"visibility": {
+					"level": {},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false
+				}
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"max": ""
+		},
+		"description": {
+			"value": "<p><strong>Action</strong> - [[lookup @target.template.size activity=teMMQNDDIE9XkPN3]] ft. [[lookup @target.template.type capitalize activity=teMMQNDDIE9XkPN3]]</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Until the end of its next turn, the target can't take Reactions, its Speed is halved, and it can take either an action or a Bonus Action on its turn, not both.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"chat": ""
+		},
+		"identifier": "slowing-breath",
+		"source": {
+			"custom": "Elkan 5e",
+			"rules": "",
+			"revision": 1,
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"advancement": {},
+		"cover": null,
+		"crewed": false,
+		"enchant": {},
+		"prerequisites": {
+			"level": null,
+			"repeatable": false,
+			"items": []
+		},
+		"properties": [],
+		"requirements": "",
+		"type": {
+			"value": "",
+			"subtype": ""
+		}
+	},
+	"effects": [
+		{
+			"name": "1/2 Speed | Action Restrictions",
+			"img": "icons/magic/movement/abstract-ribbons-red-orange.webp",
+			"origin": "Compendium.elkan5e.elkan5e-creature-features.Item.yLulEoUVrnBC6kKz",
+			"_id": "ztGUDHGfoUxlUY53",
+			"type": "base",
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.walk",
+						"value": 0.5,
+						"priority": null,
+						"type": "multiply"
+					},
+					{
+						"key": "system.attributes.movement.burrow",
+						"value": 0.5,
+						"priority": null,
+						"type": "multiply"
+					},
+					{
+						"key": "system.attributes.movement.climb",
+						"value": 0.5,
+						"priority": null,
+						"type": "multiply"
+					},
+					{
+						"key": "system.attributes.movement.fly",
+						"value": 0.5,
+						"priority": null,
+						"type": "multiply"
+					},
+					{
+						"key": "system.attributes.movement.swim",
+						"value": 0.5,
+						"priority": null,
+						"type": "multiply"
+					}
+				]
+			},
+			"disabled": false,
+			"duration": {
+				"value": 1,
+				"units": "turns",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "<p>The target can’t take Reactions; its Speed is halved; and it can take either an action or a Bonus Action on its turn, not both. This effect lasts until the end of its next turn.</p>",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
+			"_key": "!items.effects!yLulEoUVrnBC6kKz.ztGUDHGfoUxlUY53"
+		}
+	],
+	"folder": "IaT9UAmwgTBItOPT",
+	"_key": "!items!yLulEoUVrnBC6kKz"
+}

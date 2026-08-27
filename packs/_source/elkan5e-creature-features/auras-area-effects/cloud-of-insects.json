@@ -1,0 +1,167 @@
+{
+	"_id": "giIeHLDnznMrjqV2",
+	"name": "Cloud of Insects",
+	"type": "feat",
+	"system": {
+		"type": {
+			"value": "monster",
+			"subtype": ""
+		},
+		"activities": {
+			"0OkFhjOM80ipoNKy": {
+				"type": "save",
+				"_id": "0OkFhjOM80ipoNKy",
+				"activation": {
+					"type": "legendary",
+					"value": 1,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "owuEyJBslYKvxqeX",
+						"onSave": false,
+						"level": {}
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "ft",
+					"special": "",
+					"value": "120"
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"type": "creature",
+						"count": "1",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 4,
+							"denomination": 10,
+							"bonus": "",
+							"types": [
+								"poison"
+							],
+							"scaling": {
+								"number": 1
+							}
+						}
+					],
+					"onSave": "none"
+				},
+				"save": {
+					"ability": [
+						"dex"
+					],
+					"dc": {
+						"calculation": "cha",
+						"formula": ""
+					}
+				},
+				"name": "",
+				"img": null,
+				"visibility": {
+					"level": {},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false
+				}
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"max": ""
+		},
+		"description": {
+			"value": "<p><strong>Legendary Action</strong> - [[lookup @target.affects.count activity=0OkFhjOM80ipoNKy]] [[lookup @target.affects.type capitalize activity=0OkFhjOM80ipoNKy]] ([[lookup @range.value activity=0OkFhjOM80ipoNKy]] ft.)</p><p><strong>[[/save dexterity]]{Dexterity Save}</strong></p><ul><li><p><strong>Failure:</strong> [[/damage]] damage, and the target has Disadvantage on saving throws to maintain &amp;Reference[Concentration] until the end of its next turn.</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p>The [[lookup @name lowercase]] can't take this action again until the start of its next turn.</p>",
+			"chat": ""
+		},
+		"identifier": "cloud-of-insects",
+		"source": {
+			"custom": "Elkan 5e",
+			"rules": "",
+			"revision": 1,
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"enchant": {},
+		"prerequisites": {
+			"level": null,
+			"repeatable": false,
+			"items": []
+		},
+		"properties": [],
+		"requirements": "",
+		"advancement": {},
+		"cover": null,
+		"crewed": false
+	},
+	"folder": "T6yrp2MPfjrjhJ33",
+	"img": "icons/creatures/invertebrates/fly-wasp-mosquito-green.webp",
+	"effects": [
+		{
+			"name": "Concentration Disadvantage",
+			"img": "icons/creatures/invertebrates/fly-wasp-mosquito-green.webp",
+			"origin": "Compendium.elkan5e.elkan5e-creature-features.Item.giIeHLDnznMrjqV2",
+			"transfer": false,
+			"_id": "owuEyJBslYKvxqeX",
+			"type": "base",
+			"system": {
+				"changes": []
+			},
+			"disabled": false,
+			"duration": {
+				"value": 1,
+				"units": "rounds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "<p>The target has Disadvantage on saving throws to maintain Concentration until the end of its next turn</p>",
+			"tint": "#ffffff",
+			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
+			"_key": "!items.effects!giIeHLDnznMrjqV2.owuEyJBslYKvxqeX"
+		}
+	],
+	"_key": "!items!giIeHLDnznMrjqV2"
+}

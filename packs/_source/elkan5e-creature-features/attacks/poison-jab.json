@@ -1,0 +1,165 @@
+{
+	"name": "Poison Jab",
+	"system": {
+		"description": {
+			"value": "<p><strong>Melee Attack</strong> - 1 Creature (10 ft.)</p><ul><li><p><strong>Attack:</strong> [[/attack]]</p></li><li><p><strong>Hit:</strong> [[/damage]] damage.</p></li></ul>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "Elkan 5e",
+			"rules": "",
+			"revision": 1,
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"type": {
+			"value": "monster",
+			"subtype": ""
+		},
+		"prerequisites": {
+			"level": null,
+			"repeatable": false,
+			"items": []
+		},
+		"properties": [],
+		"requirements": "",
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "attack",
+				"activation": {
+					"type": "action",
+					"value": 1,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"value": "",
+					"units": "inst",
+					"special": "",
+					"override": false,
+					"concentration": false
+				},
+				"effects": [],
+				"range": {
+					"value": "10",
+					"units": "ft",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": "ft"
+					},
+					"affects": {
+						"count": "",
+						"type": "",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"attack": {
+					"ability": "",
+					"bonus": "",
+					"critical": {
+						"threshold": null
+					},
+					"flat": false,
+					"type": {
+						"value": "melee",
+						"classification": "weapon"
+					}
+				},
+				"damage": {
+					"critical": {
+						"bonus": ""
+					},
+					"includeBase": true,
+					"parts": [
+						{
+							"number": 1,
+							"denomination": 6,
+							"bonus": "@mod",
+							"types": [
+								"piercing"
+							],
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"scaling": {
+								"mode": "whole",
+								"number": 1,
+								"formula": ""
+							}
+						},
+						{
+							"number": 1,
+							"denomination": 4,
+							"bonus": "",
+							"types": [
+								"poison"
+							],
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"scaling": {
+								"mode": "whole",
+								"number": 1,
+								"formula": ""
+							}
+						}
+					]
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": []
+				},
+				"img": null,
+				"visibility": {
+					"level": {},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false
+				}
+			}
+		},
+		"enchant": {},
+		"identifier": "poison-jab",
+		"advancement": {},
+		"cover": null,
+		"crewed": false
+	},
+	"_id": "HOIAObMnSfntDGv7",
+	"type": "feat",
+	"img": "icons/magic/nature/root-vine-poison-thorns-green.webp",
+	"effects": [],
+	"folder": "RIC9m0I03i0YswOc",
+	"_key": "!items!HOIAObMnSfntDGv7"
+}

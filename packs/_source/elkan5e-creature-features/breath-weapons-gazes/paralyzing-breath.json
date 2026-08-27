@@ -1,0 +1,194 @@
+{
+	"_id": "iDkqWWq9Gw9Zs8Ej",
+	"name": "Paralyzing Breath",
+	"type": "feat",
+	"system": {
+		"type": {
+			"value": "monster",
+			"subtype": ""
+		},
+		"activities": {
+			"r4MGqEq5U9aaseBh": {
+				"type": "save",
+				"_id": "r4MGqEq5U9aaseBh",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "turn",
+					"concentration": false,
+					"override": false,
+					"value": "1"
+				},
+				"effects": [
+					{
+						"_id": "MML0hjuixzKZ61FT",
+						"onSave": false,
+						"level": {}
+					},
+					{
+						"_id": "qHhQi1VSyVic0Z22",
+						"onSave": false,
+						"level": {}
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": "cone",
+						"size": "60",
+						"count": ""
+					},
+					"affects": {
+						"choice": false,
+						"type": "creature",
+						"count": "",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"parts": [],
+					"onSave": "none"
+				},
+				"save": {
+					"ability": [
+						"con"
+					],
+					"dc": {
+						"calculation": "",
+						"formula": "20"
+					}
+				},
+				"name": "Save",
+				"img": null,
+				"visibility": {
+					"level": {},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false
+				}
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"max": ""
+		},
+		"description": {
+			"value": "<p><strong>Action</strong> - [[lookup @target.template.size activity=r4MGqEq5U9aaseBh]] ft. [[lookup @target.template.type capitalize activity=r4MGqEq5U9aaseBh]]</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>First Failure:</strong> The target has the &amp;Reference[Incapacitated apply=false] condition until the end of its next turn, when it repeats the save.</p></li><li><p><strong>Second Failure:</strong> The target has the &amp;Reference[Paralyzed apply=false] condition, and it repeats the save at the end of each of its turns, ending the effect on itself on a success. After 1 minute, it succeeds automatically.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"chat": ""
+		},
+		"identifier": "paralyzing-breath",
+		"source": {
+			"custom": "Elkan 5e",
+			"rules": "",
+			"revision": 1,
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"enchant": {},
+		"prerequisites": {
+			"level": null,
+			"repeatable": false,
+			"items": []
+		},
+		"properties": [],
+		"requirements": "",
+		"advancement": {},
+		"cover": null,
+		"crewed": false
+	},
+	"folder": "IaT9UAmwgTBItOPT",
+	"img": "icons/magic/unholy/energy-smoke-pink.webp",
+	"effects": [
+		{
+			"name": "Incapacitated",
+			"img": "icons/magic/unholy/energy-smoke-pink.webp",
+			"origin": "Compendium.elkan5e.elkan5e-creature-features.Item.iDkqWWq9Gw9Zs8Ej",
+			"_id": "MML0hjuixzKZ61FT",
+			"type": "base",
+			"system": {
+				"changes": []
+			},
+			"disabled": false,
+			"duration": {
+				"value": 1,
+				"units": "turns",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "<p>The target has the &amp;Reference[Incapacitated apply=false] condition until the end of its next turn, when it repeats the save.</p>",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [
+				"incapacitated"
+			],
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
+			"_key": "!items.effects!iDkqWWq9Gw9Zs8Ej.MML0hjuixzKZ61FT"
+		},
+		{
+			"name": "Paralyzed",
+			"img": "icons/magic/unholy/energy-smoke-pink.webp",
+			"origin": "Compendium.elkan5e.elkan5e-creature-features.Item.iDkqWWq9Gw9Zs8Ej",
+			"_id": "qHhQi1VSyVic0Z22",
+			"type": "base",
+			"system": {
+				"changes": []
+			},
+			"disabled": false,
+			"duration": {
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "<p>The target has the &amp;Reference[Paralyzed apply=false] condition, and it repeats the save at the end of each of its turns, ending the effect on itself on a success. After 1 minute, it succeeds automatically.</p>",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [
+				"paralyzed"
+			],
+			"showIcon": 2,
+			"start": {
+				"combat": null,
+				"round": null,
+				"time": 0,
+				"turn": null,
+				"combatant": null,
+				"initiative": null
+			},
+			"folder": null,
+			"_key": "!items.effects!iDkqWWq9Gw9Zs8Ej.qHhQi1VSyVic0Z22"
+		}
+	],
+	"_key": "!items!iDkqWWq9Gw9Zs8Ej"
+}

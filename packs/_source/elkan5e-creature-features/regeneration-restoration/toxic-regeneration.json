@@ -1,0 +1,126 @@
+{
+	"name": "Toxic Regeneration",
+	"type": "feat",
+	"system": {
+		"description": {
+			"value": "<p><strong>Bonus Action</strong> - Self and each creature within [[lookup @range.value activity=dnd5eactivity000]] ft.</p><p>The [[lookup @name lowercase]] can use this only while it has fewer than its full Hit Points. Its flesh knits itself together, spewing volatile organic compounds.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> [[/damage]] damage. The [[lookup @name lowercase]] is resistant to this damage.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p>Then, if this doesn't reduce the [[lookup @name lowercase]] to 0 Hit Points, it regains 5 Hit Points.</p><p><em>If the [[lookup @name lowercase]] isn't in danger and is at 15 Hit Points or more, assume it can regain all its Hit Points over 10 minutes without any danger.</em></p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "Elkan 5e",
+			"revision": 1,
+			"rules": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"type": {
+			"value": "monster",
+			"subtype": ""
+		},
+		"requirements": "",
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "save",
+				"activation": {
+					"type": "bonus",
+					"value": 1,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": "If the Mutant Warrior is still alive after using this ability, they regain 5 hit points."
+				},
+				"duration": {
+					"concentration": false,
+					"value": "",
+					"units": "inst",
+					"special": "",
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"value": "5",
+					"units": "ft",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": "ft"
+					},
+					"affects": {
+						"count": "5",
+						"type": "creature",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": [
+						{
+							"number": 2,
+							"denomination": 6,
+							"bonus": "",
+							"types": [
+								"poison"
+							],
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"scaling": {
+								"mode": "whole",
+								"number": null,
+								"formula": ""
+							}
+						}
+					]
+				},
+				"save": {
+					"ability": "con",
+					"dc": {
+						"calculation": "",
+						"formula": "13"
+					}
+				}
+			}
+		},
+		"identifier": "toxic-regeneration",
+		"enchant": {},
+		"prerequisites": {
+			"level": null
+		},
+		"properties": []
+	},
+	"_id": "J4rWr3e3KUY7Rp53",
+	"img": "icons/skills/toxins/cauldron-bubbles-overflow-green.webp",
+	"effects": [],
+	"folder": "zgNZXKA7nTcc4g7m",
+	"_key": "!items!J4rWr3e3KUY7Rp53"
+}

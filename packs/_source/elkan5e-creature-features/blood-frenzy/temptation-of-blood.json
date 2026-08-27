@@ -1,0 +1,266 @@
+{
+	"_id": "EvO2DnNz3KU3tVYM",
+	"name": "Temptation of Blood",
+	"type": "feat",
+	"img": "icons/creatures/fish/fish-shark-swimming.webp",
+	"effects": [
+		{
+			"origin": "Compendium.elkan5e.elkan5e-creature-features.Item.EvO2DnNz3KU3tVYM",
+			"duration": {
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"disabled": false,
+			"_id": "Ge8ExU0ZjPfBrR7r",
+			"tint": "#ffffff",
+			"transfer": false,
+			"flags": {
+				"dae": {
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"stackable": "none",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": []
+				},
+				"ActiveAuras": {
+					"isAura": false,
+					"aura": "None",
+					"radius": null,
+					"alignment": "",
+					"type": "",
+					"ignoreSelf": false,
+					"height": false,
+					"hidden": false,
+					"displayTemp": false,
+					"hostile": false,
+					"onlyOnce": false
+				}
+			},
+			"name": "Scent of Blood",
+			"description": "",
+			"statuses": [],
+			"img": "icons/creatures/fish/fish-shark-swimming.webp",
+			"type": "base",
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.advantage.attack.all",
+						"value": 1,
+						"priority": 20,
+						"type": "custom",
+						"phase": "initial"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
+			"_key": "!items.effects!EvO2DnNz3KU3tVYM.Ge8ExU0ZjPfBrR7r"
+		}
+	],
+	"folder": "rpdJCLqEpMx3LLo8",
+	"system": {
+		"description": {
+			"value": "<p><strong>Reaction</strong></p><p><em>Trigger: the [[lookup @name lowercase]] is within 30 ft. of a creature other than itself that has blood, and that creature takes Piercing or Slashing damage.</em></p><p><strong>[[/save wisdom]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> The [[lookup @name lowercase]] goes into a blood frenzy: it has Advantage on attack rolls against creatures that have blood, but mindlessly attacks the nearest prey that isn't an ally with its bite attack until it has eaten something or until 1 minute has passed.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p>This ability doesn't function if the [[lookup @name lowercase]] can't take a Reaction.</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "Elkan 5e",
+			"rules": "",
+			"revision": 1,
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"cover": null,
+		"crewed": false,
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"type": {
+			"value": "",
+			"subtype": ""
+		},
+		"requirements": "",
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "save",
+				"activation": {
+					"type": "reactionmanual",
+					"value": 1,
+					"condition": "the murloc is within 30 ft. of a creature other than itself that has blood, and that creature takes piercing or slashing damage",
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "1",
+					"units": "minute",
+					"special": "",
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "Ge8ExU0ZjPfBrR7r",
+						"onSave": false,
+						"level": {}
+					}
+				],
+				"range": {
+					"units": "self",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": "ft",
+						"stationary": false
+					},
+					"affects": {
+						"count": "",
+						"type": "self",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": [],
+					"critical": {
+						"allow": false
+					}
+				},
+				"save": {
+					"ability": [
+						"wis"
+					],
+					"dc": {
+						"calculation": "",
+						"formula": "13"
+					}
+				},
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceRollDialog": "false",
+					"forceDamageDialog": "false",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default",
+					"triggeredActivityConsume": true,
+					"triggeredActivityConfigure": true,
+					"forceConsumeDialog": "default",
+					"skipConcentrationCheck": false
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": "",
+					"rollAs": "target"
+				},
+				"otherActivityId": "",
+				"otherActivityAsParentType": true,
+				"friendlySave": "default",
+				"img": null,
+				"visibility": {
+					"level": {},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false
+				},
+				"regionBehavior": {
+					"enabled": false,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": []
+				},
+				"regionLight": {
+					"enabled": false,
+					"dim": 0,
+					"bright": 0,
+					"color": null,
+					"alpha": 0.5,
+					"luminosity": 0.5,
+					"animationType": "",
+					"animationSpeed": 5,
+					"animationIntensity": 5
+				}
+			}
+		},
+		"identifier": "temptation-of-blood",
+		"enchant": {},
+		"prerequisites": {
+			"level": null,
+			"items": [],
+			"repeatable": false
+		},
+		"properties": [],
+		"advancement": {}
+	},
+	"_key": "!items!EvO2DnNz3KU3tVYM"
+}

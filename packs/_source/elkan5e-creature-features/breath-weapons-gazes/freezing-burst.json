@@ -1,0 +1,201 @@
+{
+	"_id": "80hcmIaxresSqsMu",
+	"name": "Freezing Burst",
+	"type": "feat",
+	"system": {
+		"type": {
+			"value": "monster",
+			"subtype": ""
+		},
+		"activities": {
+			"U2i9u4ELjeLQfePP": {
+				"type": "save",
+				"_id": "U2i9u4ELjeLQfePP",
+				"activation": {
+					"type": "legendary",
+					"value": 1,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "turn",
+					"concentration": false,
+					"override": false,
+					"value": "1"
+				},
+				"effects": [
+					{
+						"_id": "K6EbT8HrfSUSJW2F",
+						"onSave": false,
+						"level": {}
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "ft",
+					"special": "",
+					"value": "120"
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": "sphere",
+						"size": "30",
+						"count": ""
+					},
+					"affects": {
+						"choice": false,
+						"type": "creature",
+						"count": "",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 2,
+							"denomination": 6,
+							"bonus": "",
+							"types": [
+								"cold"
+							],
+							"scaling": {
+								"number": 1
+							}
+						}
+					],
+					"onSave": "none"
+				},
+				"save": {
+					"ability": [
+						"con"
+					],
+					"dc": {
+						"calculation": "",
+						"formula": "14"
+					}
+				},
+				"name": "Save",
+				"img": null,
+				"visibility": {
+					"level": {},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false
+				}
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"max": ""
+		},
+		"description": {
+			"value": "<p><strong>Legendary Action</strong> - [[lookup @target.template.size activity=U2i9u4ELjeLQfePP]] ft. [[lookup @target.template.type capitalize activity=U2i9u4ELjeLQfePP]] ([[lookup @range.value activity=U2i9u4ELjeLQfePP]] ft.)</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> [[/damage]] damage, and the target's Speed is 0 until the end of its next turn.</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p>The [[lookup @name lowercase]] can't take this action again until the start of its next turn.</p>",
+			"chat": ""
+		},
+		"identifier": "freezing-burst",
+		"source": {
+			"custom": "Elkan 5e",
+			"rules": "",
+			"revision": 1,
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"enchant": {},
+		"prerequisites": {
+			"level": null,
+			"repeatable": false,
+			"items": []
+		},
+		"properties": [],
+		"requirements": "",
+		"advancement": {},
+		"cover": null,
+		"crewed": false
+	},
+	"folder": "IaT9UAmwgTBItOPT",
+	"img": "icons/magic/water/projectile-ice-chunk-blue.webp",
+	"effects": [
+		{
+			"name": "0 ft. Speed",
+			"img": "icons/magic/water/projectile-ice-chunk-blue.webp",
+			"origin": "Compendium.elkan5e.elkan5e-creature-features.Item.80hcmIaxresSqsMu",
+			"_id": "K6EbT8HrfSUSJW2F",
+			"type": "base",
+			"system": {
+				"changes": [
+					{
+						"key": "system.attributes.movement.walk",
+						"value": 0,
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.attributes.movement.burrow",
+						"value": 0,
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.attributes.movement.climb",
+						"value": 0,
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.attributes.movement.fly",
+						"value": 0,
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "system.attributes.movement.swim",
+						"value": 0,
+						"priority": null,
+						"type": "override"
+					}
+				]
+			},
+			"disabled": false,
+			"duration": {
+				"value": 1,
+				"units": "turns",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "<p>The target’s Speed is 0 until the end of the target’s next turn.</p>",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
+			"_key": "!items.effects!80hcmIaxresSqsMu.K6EbT8HrfSUSJW2F"
+		}
+	],
+	"_key": "!items!80hcmIaxresSqsMu"
+}

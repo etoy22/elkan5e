@@ -1,0 +1,271 @@
+{
+	"_id": "HMzCyBUTTt104RTh",
+	"name": "Fire Flare",
+	"type": "feat",
+	"img": "icons/magic/fire/blast-jet-stream-embers-orange.webp",
+	"effects": [],
+	"folder": "Y4TGGc7uAvWoKAXT",
+	"flags": {
+		"midi-qol": {
+			"effectActivation": false,
+			"AoETargetType": "any",
+			"AoETargetTypeIncludeSelf": true,
+			"autoTarget": "default",
+			"rollAttackPerTarget": "default",
+			"removeAttackDamageButtons": "default",
+			"itemCondition": "",
+			"reactionCondition": "",
+			"otherCondition": "",
+			"effectCondition": ""
+		},
+		"midiProperties": {
+			"nodam": false,
+			"fulldam": false,
+			"halfdam": true,
+			"rollOther": false,
+			"critOther": false,
+			"magicdam": false,
+			"magiceffect": false,
+			"concentration": false,
+			"toggleEffect": false,
+			"confirmTargets": "default",
+			"saveDamage": "halfdam",
+			"bonusSaveDamage": "default",
+			"autoFailFriendly": false,
+			"autoSaveFriendly": false,
+			"offHandWeapon": false,
+			"noConcentrationCheck": false,
+			"ignoreTotalCover": false
+		}
+	},
+	"system": {
+		"description": {
+			"value": "<p><strong>Action</strong> - [[lookup @target.template.size activity=dnd5eactivity000]] ft. [[lookup @target.template.type capitalize activity=dnd5eactivity000]] - Recharge 4-6</p><p>The [[lookup @name lowercase]] shoots fire from its mouth.</p><p><strong>[[/save dexterity]]{Dexterity Save}</strong></p><ul><li><p><strong>Failure:</strong> [[/damage]] damage.</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "Elkan 5e",
+			"rules": "",
+			"revision": 1,
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"cover": null,
+		"crewed": false,
+		"uses": {
+			"max": "1",
+			"recovery": [
+				{
+					"period": "recharge",
+					"formula": "4",
+					"type": "recoverAll"
+				}
+			],
+			"spent": 1
+		},
+		"type": {
+			"value": "monster",
+			"subtype": ""
+		},
+		"requirements": "",
+		"prerequisites": {
+			"level": null,
+			"items": [],
+			"repeatable": false
+		},
+		"properties": [],
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "save",
+				"activation": {
+					"type": "action",
+					"value": 1,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [
+						{
+							"type": "itemUses",
+							"target": "",
+							"value": "1",
+							"scaling": {
+								"mode": "",
+								"formula": ""
+							}
+						}
+					],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"value": "",
+					"units": "inst",
+					"special": "",
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"value": "0",
+					"units": "self",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "cone",
+						"size": "20",
+						"width": "",
+						"height": "",
+						"units": "ft",
+						"stationary": false
+					},
+					"affects": {
+						"count": "",
+						"type": "",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": [
+						{
+							"number": 6,
+							"denomination": 6,
+							"bonus": "",
+							"types": [
+								"fire"
+							],
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"scaling": {
+								"mode": "whole",
+								"number": null,
+								"formula": ""
+							}
+						}
+					],
+					"critical": {
+						"allow": false
+					}
+				},
+				"save": {
+					"ability": [
+						"dex"
+					],
+					"dc": {
+						"calculation": "con",
+						"formula": "14"
+					}
+				},
+				"useConditionText": "",
+				"effectConditionText": "",
+				"useConditionReason": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceRollDialog": "false",
+					"forceDamageDialog": "false",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"identifier": "",
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"autoCEEffects": "default",
+					"triggeredActivityConsume": true,
+					"triggeredActivityConfigure": true,
+					"forceConsumeDialog": "default",
+					"skipConcentrationCheck": false
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": "",
+					"rollAs": "target"
+				},
+				"otherActivityId": "",
+				"otherActivityAsParentType": true,
+				"friendlySave": "default",
+				"img": null,
+				"visibility": {
+					"level": {},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false
+				},
+				"regionBehavior": {
+					"enabled": false,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": []
+				},
+				"regionLight": {
+					"enabled": false,
+					"dim": 0,
+					"bright": 0,
+					"color": null,
+					"alpha": 0.5,
+					"luminosity": 0.5,
+					"animationType": "",
+					"animationSpeed": 5,
+					"animationIntensity": 5
+				}
+			}
+		},
+		"identifier": "fire-flare",
+		"enchant": {},
+		"advancement": {}
+	},
+	"_key": "!items!HMzCyBUTTt104RTh"
+}

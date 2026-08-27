@@ -1,0 +1,179 @@
+{
+	"_id": "tMHfbw6cpbfiejxl",
+	"name": "Thunderclap",
+	"type": "feat",
+	"system": {
+		"type": {
+			"value": "monster",
+			"subtype": ""
+		},
+		"activities": {
+			"Lq6GexegvlEVB6Dh": {
+				"type": "save",
+				"_id": "Lq6GexegvlEVB6Dh",
+				"activation": {
+					"type": "legendary",
+					"value": 1,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "turn",
+					"concentration": false,
+					"override": false,
+					"value": "1"
+				},
+				"effects": [
+					{
+						"_id": "QyuBYDW1zznn0OS4",
+						"onSave": false,
+						"level": {}
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "ft",
+					"special": "",
+					"value": "90"
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": "sphere",
+						"size": "20",
+						"count": ""
+					},
+					"affects": {
+						"choice": false,
+						"type": "creature",
+						"count": "",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 3,
+							"denomination": 6,
+							"bonus": "",
+							"types": [
+								"thunder"
+							],
+							"scaling": {
+								"number": 1
+							}
+						}
+					],
+					"onSave": "none"
+				},
+				"save": {
+					"ability": [
+						"con"
+					],
+					"dc": {
+						"calculation": "",
+						"formula": "17"
+					}
+				},
+				"name": "Save",
+				"img": "systems/dnd5e/icons/svg/activity/save.svg",
+				"visibility": {
+					"level": {},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false
+				}
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [],
+			"max": ""
+		},
+		"description": {
+			"value": "<p><strong>Legendary Action</strong> - [[lookup @target.template.size activity=Lq6GexegvlEVB6Dh]] ft. [[lookup @target.template.type capitalize activity=Lq6GexegvlEVB6Dh]] ([[lookup @range.value activity=Lq6GexegvlEVB6Dh]] ft.)</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> [[/damage]] damage, and the target has the &amp;Reference[Deafened apply=false] condition until the end of its next turn.</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul>",
+			"chat": ""
+		},
+		"identifier": "thunderclap",
+		"source": {
+			"custom": "Elkan 5e",
+			"rules": "",
+			"revision": 1,
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"enchant": {},
+		"prerequisites": {
+			"level": null,
+			"repeatable": false,
+			"items": []
+		},
+		"properties": [],
+		"requirements": "",
+		"advancement": {},
+		"cover": null,
+		"crewed": false
+	},
+	"folder": "T6yrp2MPfjrjhJ33",
+	"img": "icons/magic/lightning/bolts-salvo-clouds-sky.webp",
+	"effects": [
+		{
+			"name": "Deafened",
+			"img": "systems/dnd5e/icons/svg/statuses/deafened.svg",
+			"origin": "Compendium.elkan5e.elkan5e-creature-features.Item.tMHfbw6cpbfiejxl",
+			"_id": "QyuBYDW1zznn0OS4",
+			"type": "base",
+			"system": {
+				"changes": []
+			},
+			"disabled": false,
+			"duration": {
+				"value": 1,
+				"units": "turns",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "<p>The target is &amp;Reference[Deafened apply=long] until the end of its next turn.</p>",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [
+				"deafened"
+			],
+			"showIcon": 2,
+			"start": {
+				"combat": null,
+				"round": null,
+				"time": 0,
+				"turn": null,
+				"combatant": null,
+				"initiative": null
+			},
+			"folder": null,
+			"_key": "!items.effects!tMHfbw6cpbfiejxl.QyuBYDW1zznn0OS4"
+		}
+	],
+	"_key": "!items!tMHfbw6cpbfiejxl"
+}

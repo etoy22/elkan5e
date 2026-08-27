@@ -1,0 +1,143 @@
+{
+	"name": "Healing Touch",
+	"system": {
+		"description": {
+			"value": "<p><strong>Bonus Action</strong> - [[lookup @target.affects.count activity=dnd5eactivity000]] [[lookup @target.affects.type capitalize activity=dnd5eactivity000]] ([[lookup @range.value activity=dnd5eactivity000]] ft.) - 1/Long Rest</p><p><strong>Healing</strong></p><ul><li><p>The target regains [[/healing 2d8]] plus the spell's level Hit Points.</p></li></ul>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "Elkan 5e",
+			"rules": "",
+			"revision": 1,
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"uses": {
+			"max": "1",
+			"recovery": [
+				{
+					"period": "lr",
+					"type": "recoverAll"
+				}
+			],
+			"spent": 0
+		},
+		"type": {
+			"value": "monster",
+			"subtype": ""
+		},
+		"prerequisites": {
+			"level": null,
+			"repeatable": false,
+			"items": []
+		},
+		"properties": [],
+		"requirements": "",
+		"activities": {
+			"dnd5eactivity000": {
+				"_id": "dnd5eactivity000",
+				"type": "heal",
+				"activation": {
+					"type": "bonus",
+					"value": 1,
+					"condition": "",
+					"override": false
+				},
+				"consumption": {
+					"targets": [
+						{
+							"type": "itemUses",
+							"target": "",
+							"value": "1",
+							"scaling": {
+								"mode": "",
+								"formula": ""
+							}
+						}
+					],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"value": "",
+					"units": "inst",
+					"special": "",
+					"override": false,
+					"concentration": false
+				},
+				"effects": [],
+				"range": {
+					"value": "5",
+					"units": "ft",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": "ft"
+					},
+					"affects": {
+						"count": "1",
+						"type": "creature",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": true,
+					"override": false
+				},
+				"healing": {
+					"number": 2,
+					"denomination": 8,
+					"bonus": "",
+					"types": [
+						"healing"
+					],
+					"custom": {
+						"enabled": false,
+						"formula": ""
+					},
+					"scaling": {
+						"mode": "whole",
+						"number": null,
+						"formula": ""
+					}
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": []
+				},
+				"img": null,
+				"visibility": {
+					"level": {},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false
+				}
+			}
+		},
+		"enchant": {},
+		"identifier": "healing-touch",
+		"advancement": {},
+		"cover": null,
+		"crewed": false
+	},
+	"_id": "cEx73269PdXuquEJ",
+	"type": "feat",
+	"img": "icons/magic/life/heart-pink.webp",
+	"effects": [],
+	"folder": "zgNZXKA7nTcc4g7m",
+	"_key": "!items!cEx73269PdXuquEJ"
+}
