@@ -18,7 +18,7 @@
 			"folder": null,
 			"system": {
 				"description": {
-					"value": "<p><strong></strong> .</p><p>The lizard-orc wizard attempts to rip open the fabric of reality, creating a wave of unstable energy at point it can see within 60 ft. All creatures in a 20 ft. radius of that point must make a DC 15 constitution saving throw, taking 6d8 force damage on a failure, and half as much on a success. If a target fails this save, it must make a DC 15 wisdom saving throw to avoid being frightened of the space where the wave originated. The creature can attempt another save when the lizard-orc wizard dies, or when 1 hour has passed.</p>",
+					"value": "<p><strong></strong> .</p><p>The lizard-orc wizard attempts to rip open the fabric of reality, creating a wave of unstable energy at point it can see within 60 ft. All creatures in a 20 ft. radius of that point must make a DC 15 constitution &amp;reference[savingthrow]{saving throw}, taking 6d8 force damage on a failure, and half as much on a success. If a target fails this save, it must make a DC 15 wisdom saving throw to avoid being &amp;reference[frightened apply=false]{frightened} of the space where the wave originated. The creature can attempt another save when the lizard-orc wizard dies, or when 1 hour has passed.</p>",
 					"chat": ""
 				},
 				"source": {
@@ -360,7 +360,7 @@
 			"folder": null,
 			"system": {
 				"description": {
-					"value": "<p><em>Trigger: the [[lookup @name lowercase]] dies.</em></p><p>Each creature within 10 ft. of the [[lookup @name lowercase]] is affected.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> [[/damage activity=dnd5eactivity100]] damage, and the target has the &amp;Reference[Poisoned apply=false] condition for 1 minute (save ends at the end of each of its turns).</p></li><li><p><strong>Success:</strong> Half damage only.</p></li></ul>",
+					"value": "<p><em>Trigger: the [[lookup @name lowercase]] dies.</em></p><p>Each creature within 10 ft. of the [[lookup @name lowercase]] is affected.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> [[/damage activity=dnd5eactivity100]] damage, and the target has the &amp;reference[Poisoned apply=false] condition for 1 minute (save ends at the end of each of its turns).</p></li><li><p><strong>Success:</strong> Half damage only.</p></li></ul>",
 					"chat": ""
 				},
 				"source": {
@@ -745,7 +745,7 @@
 			"img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
 			"system": {
 				"description": {
-					"value": "<p><strong>This ability is meant to be used after casting Rend the Veil to automate the frightened effect it causes.</strong></p><p>60 ft. Radius</p><p><strong>Wisdom</strong> Save</p><ul><li><p><strong>Failure:</strong> Target is frightened of the center of this effect for 1 minute (save ends).</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+					"value": "<p><strong>This ability is meant to be used after casting Rend the Veil to automate the &amp;reference[frightened apply=false]{frightened} effect it causes.</strong></p><p>60 ft. Radius</p><p><strong>Wisdom</strong> Save</p><ul><li><p><strong>Failure:</strong> Target is frightened of the center of this effect for 1 minute (save ends).</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 					"chat": ""
 				},
 				"source": {
@@ -948,7 +948,7 @@
 			"img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
 			"system": {
 				"description": {
-					"value": "<p><em>You hold out a damaged tuning fork attuned to another plane. You utter a corrupted version of the incantation needed to teleport to another plane, instead ripping a hole in space. All unsuspecting creatures are compelled to flee from it, and the area around the rip is twisted.</em></p><p><strong>Materials:</strong> Casting this spell requires a <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.tSdm8nQQqxsKBOnk]{damaged tuning fork}</em>, typically valued at 50 gold. The tuning fork is not consumed by the spell.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d8 force]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><hr><p>Additionally, all creatures who are not your allies who can see the rip in reality when it is formed must attempt a wisdom saving throw.</p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[frightened] of the center of this effect for 1 minute. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 2d8 force]] for each spell level above 5th.</p>",
+					"value": "<p><em>You hold out a damaged tuning fork attuned to another plane. You utter a corrupted version of the incantation needed to teleport to another plane, instead ripping a hole in space. All unsuspecting creatures are compelled to flee from it, and the area around the rip is twisted.</em></p><p><strong>Materials:</strong> Casting this spell requires a <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.tSdm8nQQqxsKBOnk]{damaged tuning fork}</em>, typically valued at 50 gold. The tuning fork is not consumed by the spell.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d8 force]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><hr><p>Additionally, all creatures who are not your allies who can see the rip in reality when it is formed must attempt a wisdom &amp;reference[savingthrow]{saving throw}.</p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[frightened] of the center of this effect for 1 minute. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 2d8 force]] for each spell level above 5th.</p>",
 					"chat": ""
 				},
 				"source": {
@@ -1428,7 +1428,7 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p><em>Greatswords are heavy two-handed sword designed for slashing.</em></p><p>Properties:</p><p>&amp;Reference[Heavy], &amp;Reference[Handed]</p>",
+					"value": "<p><em>Greatswords are heavy two-handed sword designed for slashing.</em></p><p>Properties:</p><p>&amp;reference[Heavy], &amp;reference[Handed]</p>",
 					"chat": ""
 				},
 				"source": {
