@@ -95,7 +95,12 @@
 				"effects": [
 					{
 						"_id": "zW4roNKVL8HcoNwV",
-						"onSave": false
+						"uuid": null,
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -116,7 +121,7 @@
 					},
 					"affects": {
 						"count": "",
-						"type": "",
+						"type": "creature",
 						"choice": false,
 						"special": ""
 					},
@@ -124,7 +129,7 @@
 					"override": false
 				},
 				"damage": {
-					"onSave": "half",
+					"onSave": "none",
 					"parts": [],
 					"critical": {
 						"allow": false
@@ -137,7 +142,8 @@
 					"dc": {
 						"calculation": "",
 						"formula": "10"
-					}
+					},
+					"bonus": ""
 				},
 				"uses": {
 					"spent": 0,
@@ -195,7 +201,16 @@
 				},
 				"otherActivityId": "",
 				"otherActivityAsParentType": true,
-				"friendlySave": "default"
+				"friendlySave": "default",
+				"img": "",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": ""
+				},
+				"behaviors": []
 			},
 			"IKk7iQcYsjxDfnmk": {
 				"type": "utility",
@@ -308,7 +323,15 @@
 					"postRemoveConditionText": ""
 				},
 				"otherActivityId": "none",
-				"otherActivityAsParentType": true
+				"otherActivityAsParentType": true,
+				"img": "",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": ""
+				}
 			}
 		},
 		"identifier": "ball-bearings"
@@ -317,16 +340,28 @@
 	"img": "icons/weapons/ammunition/shot-round-brown.webp",
 	"effects": [
 		{
-			"name": "Ball Bearings",
+			"name": "Recover Ball Bearings",
 			"img": "icons/weapons/ammunition/shot-round-brown.webp",
-			"origin": "Compendium.dnd5e.equipment24.Item.phbagBallBearing",
-			"transfer": false,
-			"_id": "zW4roNKVL8HcoNwV",
-			"type": "base",
 			"system": {
-				"changes": []
+				"origin": {
+					"item": "Compendium.elkan5e.elkan5e-equipment.Item.2K2AJVoCwHGMFVgq",
+					"actor": null,
+					"behavior": null,
+					"effect": null,
+					"message": null
+				},
+				"changes": [],
+				"conditions": "{}",
+				"magical": false,
+				"rider": {
+					"statuses": []
+				}
 			},
+			"transfer": false,
+			"_id": "bVqxoUnoF1fWrHP6",
+			"type": "base",
 			"disabled": false,
+			"start": null,
 			"duration": {
 				"value": null,
 				"units": "seconds",
@@ -334,45 +369,12 @@
 				"expired": false
 			},
 			"description": "",
+			"origin": null,
 			"tint": "#ffffff",
-			"statuses": [
-				"prone"
-			],
-			"flags": {
-				"dae": {
-					"enableCondition": "",
-					"disableCondition": "",
-					"stackable": "noneName",
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "All",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
-				}
-			},
-			"showIcon": 2,
-			"start": null,
+			"statuses": [],
+			"showIcon": 1,
 			"folder": null,
-			"_key": "!items.effects!2K2AJVoCwHGMFVgq.zW4roNKVL8HcoNwV"
+			"_key": "!items.effects!2K2AJVoCwHGMFVgq.bVqxoUnoF1fWrHP6"
 		}
 	],
 	"_id": "2K2AJVoCwHGMFVgq",
