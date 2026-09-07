@@ -149,7 +149,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You command a creature to dance, and they begin a comic dance in place, shuffling, tapping its feet, and capering.</em></p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure: </strong>The target is &amp;reference[Charmed] by you. While charmed:</p><ul><li><p>The target must use all their movement to dance without leaving its space.</p></li><li><p>The target has &amp;reference[disadvantage] on &amp;reference[attack rolls]{Attack rolls} and Dexterity saving throws.</p></li><li><p>Other creatures have &amp;reference[advantage] on attack rolls against the target.</p></li><li><p>As an action, the target can make a Wisdom saving throw to regain control of itself. On a successful save, the spell ends.</p></li></ul></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"value": "<p><em>You command creatures to follow your lead as you lead them in a dance.</em></p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure: </strong>The target is &amp;reference[Charmed] by you and (if charmed) moves up to 15 ft. in a direction of your choice. While charmed, the target is &amp;reference[dazed] and &amp;reference[restrained]. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li><li><p><strong>Concentration:</strong> Once on each subsequent turn, you can make all charmed targets move up to 15 ft. again.</p><ul><li><p>You lose concentration on this spell if you become &amp;reference[prone] or your speed becomes 0.</p></li></ul></li></ul><p><strong>Upcasting:</strong> Target two additional creatures for every spell level above 6th.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -172,7 +172,7 @@
 		"target": {
 			"affects": {
 				"type": "creature",
-				"count": "1",
+				"count": "4",
 				"choice": false,
 				"special": ""
 			},
@@ -207,6 +207,7 @@
 		},
 		"properties": [
 			"vocal",
+			"somatic",
 			"concentration"
 		],
 		"activities": {

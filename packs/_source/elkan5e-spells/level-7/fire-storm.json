@@ -42,7 +42,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><strong>[[/save DEX]]{Dexterity Save}</strong></p><p>Each cube must share a face with another cube.</p><ul><li><p><strong>Failure:</strong> Target takes [[/damage]] damage.</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p><em>The fire damages objects and ignites flammable items not being worn or carried. If you choose, &amp;reference[plant] life in the area is unaffected by this spell.</em></p>",
+			"value": "<p><strong>[[/save DEX]]{Dexterity Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage]] damage.</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p><em>The fire damages objects and ignites flammable items not being worn or carried. If you choose, plant life in the area is unaffected by this spell.</em></p>",
 			"chat": ""
 		},
 		"source": {
@@ -66,14 +66,15 @@
 			"affects": {
 				"choice": false,
 				"count": "",
-				"type": ""
+				"type": "enemy",
+				"special": ""
 			},
 			"template": {
 				"units": "ft",
-				"type": "cube",
-				"size": "10",
-				"contiguous": true,
-				"count": "10"
+				"type": "sphere",
+				"size": "30",
+				"contiguous": false,
+				"count": ""
 			}
 		},
 		"range": {
