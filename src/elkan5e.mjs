@@ -30,9 +30,18 @@ import {
 	carefulSpell,
 	delayedDuration,
 	delayedItem,
+	elementalInfusion,
+	markSavantFeatureUsed,
+	savantSpellReminder,
 	wildSurge,
 } from "./module/classes/sorcerer.mjs";
-import { initWarlockSpellSlot, onWarlockFilterInvocations } from "./module/classes/warlock.mjs";
+import {
+	initWarlockSpellSlot,
+	onWarlockFilterInvocations,
+	powerOfLoveAndFearApply,
+	powerOfLoveAndFearPrompt,
+	repellingBlast,
+} from "./module/classes/warlock.mjs";
 import {
 	markForDeath,
 	markOfAffliction,
@@ -256,6 +265,9 @@ function registerHooks() {
 		moveMarkForDeath(activity).catch((error) => {
 			console.error("Elkan 5e | Error in Mark for Death postUseActivity hook:", error);
 		});
+		markSavantFeatureUsed(activity).catch((error) => {
+			console.error("Elkan 5e | Error in savant feature postUseActivity hook:", error);
+		});
 	});
 
 	Hooks.on("midi-qol.preambleComplete", async (workflow) => {
@@ -263,6 +275,15 @@ function registerHooks() {
 			await carefulSpell(workflow);
 		} catch (error) {
 			console.error("Elkan 5e | Error in Careful Spell preambleComplete hook:", error);
+		}
+
+		try {
+			await powerOfLoveAndFearPrompt(workflow);
+		} catch (error) {
+			console.error(
+				"Elkan 5e | Error in Power of Love and Fear preambleComplete hook:",
+				error,
+			);
 		}
 
 		try {
@@ -307,6 +328,12 @@ function registerHooks() {
 			await Spells.prismaticBolt(workflow, activity, config, dialog);
 		} catch (error) {
 			console.error("Elkan 5e | Error in Prismatic Bolt hook:", error);
+		}
+
+		try {
+			await elementalInfusion(workflow, activity, config, dialog);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Elemental Infusion hook:", error);
 		}
 	});
 
@@ -362,6 +389,18 @@ function registerHooks() {
 			await finishingBlow(workflow);
 		} catch (error) {
 			console.error("Elkan 5e | Error in Finishing Blow RollComplete hook:", error);
+		}
+
+		try {
+			savantSpellReminder(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in savant spell reminder RollComplete hook:", error);
+		}
+
+		try {
+			await powerOfLoveAndFearApply(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Power of Love and Fear RollComplete hook:", error);
 		}
 	});
 
@@ -626,6 +665,7 @@ function registerHooks() {
 				slicingBlow,
 				elementalAttunement,
 				markForDeath,
+				repellingBlast,
 				sneakAttack,
 				quenchBurning,
 			},

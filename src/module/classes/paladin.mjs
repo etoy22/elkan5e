@@ -57,7 +57,10 @@ export async function cleansingTouch(activity, usageConfig) {
 			);
 		} else if (activity.type === "utility") {
 			ui.notifications.info(
-				t("elkan5e.paladin.cleansingTouchNothing", { name: actor.name, target: target.name }),
+				t("elkan5e.paladin.cleansingTouchNothing", {
+					name: actor.name,
+					target: target.name,
+				}),
 			);
 		}
 	}

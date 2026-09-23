@@ -6,7 +6,7 @@
 	"img": "icons/magic/control/hypnosis-mesmerism-pendulum.webp",
 	"system": {
 		"description": {
-			"value": "<p>You gain the ability to manipulate the minds of creatures at rest, causing them to act according to your interests. You know the <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.Fn71VAKQOXzIt89X]{Suggestion}</em> spell, which is an extra prepared warlock spell for you.</p><p>Any time you cast the <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.Fn71VAKQOXzIt89X]{Suggestion}</em> spell, the spell has the following modifications:</p><p>The target doesn't have to understand you if its intelligence score is 3 or lower (most beasts and unintelligent monsters).</p><p>The target can be targeted while asleep or &amp;reference[unconscious]. In this case the target has disadvantage on the &amp;reference[savingthrow]{saving throw}, and will carry out your <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.Fn71VAKQOXzIt89X]{suggestion}</em> when they awaken.</p>",
+			"value": "<p>You gain the ability to manipulate the minds of creatures at rest, causing them to act according to your interests. You know the <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.Fn71VAKQOXzIt89X]{Suggestion}</em> spell, which is an extra prepared warlock spell for you.</p><p>Any time you cast the <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.Fn71VAKQOXzIt89X]{Suggestion}</em> spell, the spell has the following modifications:</p><p>The target doesn't have to understand you if its intelligence score is 3 or lower (most beasts and unintelligent monsters).</p><p>The target can be targeted while asleep or &amp;reference[unconscious apply=false]. In this case the target has disadvantage on the &amp;reference[savingthrow]{saving throw}, and will carry out your <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.Fn71VAKQOXzIt89X]{suggestion}</em> when they awaken.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -34,93 +34,91 @@
 			"level": 5
 		},
 		"identifier": "implant-suggestion",
-		"activities": {
-			"k5lj0uIMIWF50ZHx": {
-				"type": "cast",
-				"_id": "k5lj0uIMIWF50ZHx",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"range": {
-					"override": false,
-					"units": "self",
-					"special": ""
-				},
-				"target": {
-					"template": {
-						"contiguous": false,
-						"units": "ft",
-						"type": ""
-					},
-					"affects": {
-						"choice": false,
-						"count": "",
-						"type": ""
-					},
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"spell": {
-					"challenge": {
-						"attack": null,
-						"save": null,
-						"override": false
-					},
-					"level": "2",
-					"properties": [
-						"vocal",
-						"somatic",
-						"material"
-					],
-					"spellbook": true,
-					"uuid": "Compendium.elkan5e.elkan5e-spells.Item.Fn71VAKQOXzIt89X"
-				},
+		"activities": {},
+		"enchant": {},
+		"advancement": {
+			"km5uyeCZWmzLRskt": {
 				"name": "",
-				"img": ""
+				"type": "ItemGrant",
+				"_id": "km5uyeCZWmzLRskt",
+				"configuration": {
+					"items": [
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.Fn71VAKQOXzIt89X",
+							"optional": false
+						}
+					],
+					"optional": false,
+					"sorting": "m",
+					"spell": {
+						"ability": [],
+						"method": "spell",
+						"uses": {
+							"max": "",
+							"per": "",
+							"requireSlot": false
+						},
+						"prepared": 2
+					}
+				},
+				"value": {},
+				"level": 0,
+				"hint": ""
+			},
+			"l8MUxiP5YTlWG41f": {
+				"name": "",
+				"type": "ModifyItem",
+				"_id": "l8MUxiP5YTlWG41f",
+				"configuration": {
+					"changes": [
+						{
+							"_id": "Of1xYQgNTwIuvdS4",
+							"uuid": null,
+							"identifiers": [
+								"suggestion"
+							]
+						}
+					]
+				},
+				"value": {
+					"modified": []
+				},
+				"level": 0,
+				"hint": ""
 			}
-		},
-		"enchant": {}
+		}
 	},
 	"effects": [
 		{
 			"name": "Implant Suggestion",
-			"transfer": false,
 			"img": "icons/magic/control/hypnosis-mesmerism-pendulum.webp",
-			"_id": "CunCSnkpJLlBFVEt",
-			"type": "base",
+			"type": "enchantment",
+			"transfer": false,
+			"_id": "Of1xYQgNTwIuvdS4",
 			"system": {
 				"changes": [
 					{
-						"key": "macro.itemMacro",
-						"value": "Compendium.elkan5e.elkan5e-spells.Item.Fn71VAKQOXzIt89X",
-						"priority": 20,
-						"type": "custom"
+						"key": "system.description.value",
+						"type": "override",
+						"value": "{}<p><strong>Implant Suggestion.</strong> The target doesn't have to understand you if its Intelligence score is 3 or lower. The target can be targeted while asleep or &amp;reference[unconscious apply=false]. In this case the target has disadvantage on the &amp;reference[savingthrow]{saving throw}, and will carry out your suggestion when they awaken.</p>",
+						"phase": "initial",
+						"priority": null,
+						"_id": "qcpNK9HpV7F7HhgA",
+						"conditions": "{}",
+						"replacement": ""
 					}
-				]
+				],
+				"origin": {
+					"actor": null,
+					"behavior": null,
+					"effect": null,
+					"item": null,
+					"message": null
+				},
+				"magical": true
 			},
 			"disabled": false,
+			"start": null,
 			"duration": {
 				"value": null,
 				"units": "seconds",
@@ -128,27 +126,12 @@
 				"expired": false
 			},
 			"description": "",
-			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.c65TJ5E0BSnaCAAY",
+			"origin": null,
 			"tint": "#ffffff",
 			"statuses": [],
-			"flags": {
-				"dae": {
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"stackable": "noneName",
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": [],
-					"enableCondition": "",
-					"disableCondition": ""
-				}
-			},
-			"start": null,
 			"showIcon": 1,
 			"folder": null,
-			"_key": "!items.effects!c65TJ5E0BSnaCAAY.CunCSnkpJLlBFVEt"
+			"_key": "!items.effects!c65TJ5E0BSnaCAAY.Of1xYQgNTwIuvdS4"
 		}
 	],
 	"flags": {

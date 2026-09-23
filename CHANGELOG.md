@@ -46,6 +46,7 @@
     - Blasting Volume and Improved Blasting Volume now correctly describe their damage as Sonic instead of Thunder.
     - Improved Blasting Volume now correctly adds a fourth bardic inspiration die to Blasting Volume's damage (the damage value was malformed).
 - Jester
+	- Now grants the standard Vicious Mockery and modifies it (damage equal to your bardic inspiration die) instead of granting a separate Vicious Mockery (Jester) spell.
 	- Jester's Aspersion now adds its psychic damage text to the Cutting Words description when gained (its enchantment had no changes).
 	- Harmless Act now adds its charm option to the Cutting Words and Vicious Mockery descriptions when gained (its enchantment was disabled and empty).
 - Lorekeeper
@@ -167,15 +168,38 @@
 	- Multitasking now adds its text to the Cunning Action description when gained.
 
 **[Sorcerer](https://www.elkan5e.com/sorcerer)**
-- 
+- Fire, Water, Air, and Earth Savant
+	- Empowered Cantrips now grants the standard cantrips and modifies them to use the larger damage die (or the d6 bonus for Resistance), instead of granting separate "(Savant)" copies. The copies had fallen out of date with the base spells.
+	- Fire Savant's progression table now links Fire Bolt (it linked Sacred Flame twice).
+	- Elemental Infusion now asks, when you roll damage for a spell that doesn't deal necrotic, poison, or psychic damage, whether you want to infuse it. Pick one of your savant's two damage types to spend 1 sorcery point and change the spell's damage to that type.
+	- Volatile Current, Fault Line, Wreathing Flames, and Relentless Tides now show a message after one of your spells deals a damage type that triggers them, saying whether you can still use them this turn.
+	- Wreathing Flames' ongoing fire damage now rolls correctly (its damage setting was missing a separator).
+	- Relentless Tides' ongoing damage is now 1d6, matching its description, instead of 1d8.
 
 **[Warlock](https://www.elkan5e.com/warlock)**
 - Eldritch Spear now sets Eldritch Blast's range to 300 ft. when gained.
 - Lifedrinker (Warrior) now sets Thirsting Weapon to 3 uses per short rest when gained.
+- Thirsting Weapon now grants its healing activity to Pact Weapon and adds its text to the Pact Weapon description when gained. 
+- Eldritch Weapon (Warrior) now actually makes the weapon use Charisma. It set a field weapons don't have in dnd5e 6.0; it now sets the weapon's attack ability instead. This works on weapons with a standard attack activity (all mundane weapons and most magic ones); a few special magic weapons with their own attack setup aren't affected.
+- Repelling Blast's attack now pushes the creature 10 ft. away from you when it hits, once per turn. Previously the push never happened (its macro was empty). It also grants the Repelling Blast attack to Eldritch Blast and adds its text to the Eldritch Blast description when gained, so you can choose it in place of a normal blast.
+- Implant Suggestion now adds its modifications to the Suggestion spell's description when gained, and no longer has a broken effect.
+- Sculptor of Flesh now modifies Alter Self to affect up to 5 willing creatures within 10 ft., and adds its text to the description.
+- Master of Myriad Forms now makes Alter Self castable without a spell slot and adds its text to the description, instead of having its own separate cast activity.
+- Pact of the Chain and Pact of the Tome no longer also create their item through an effect. They already grant it through their advancement, so you could end up with two.
 - Dreamweaver
     - Twisted Visions now correctly forces a Wisdom save instead of none.
+    - Twisted Visions now grants its activity to Misty Misdirect and adds its text to the Misty Misdirect description when gained. 
+    - Blessing of the Dreamer now gives you advantage on saves against effects that charm, frighten, or curse you (Midi-QOL), the same way Dwarven Resilience handles poison.
+    - Power of Love and Fear now asks, before creatures roll their Wisdom save against one of your spells of 1st level or higher, whether to charm or frighten those who fail. Creatures that fail then get the condition automatically: for 1 round if the spell is instantaneous, otherwise 1 minute.
+- Hellcaller
+    - Dark One's Blessing now adds 1d4 fire damage to your existing Eldritch Blast while it's active, instead of giving you a separate Eldritch Blast [Dark One's Blessing]. That item stays in the compendium so existing links keep working.
+- Radiant Servant
+    - Imbue Light now modifies your Eldritch Blast so you can choose radiant damage instead of force, instead of granting a separate radiant Eldritch Blast attack. The feature is renamed "Imbue Light (Eldritch Blast)".
+    - Imbue Light (Enchant Weapon) now actually makes the weapon deal radiant damage. "Radiant" was misspelled, so enchanted weapons had no valid damage type.
  
 **[Wizard](https://www.elkan5e.com/wizard)**
+- Illusionist
+	- Now grants the standard Silent Image instead of an outdated Silent Image (Illusionist) copy.
 - Evoker
 	- Overchannel's activity now applies its Overchannel effect to you directly, instead of a script creating it. The maximized damage and backlash still work the same way.
 - Necromancer

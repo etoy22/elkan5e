@@ -1,5 +1,6 @@
 const DialogV2 = foundry.applications.api.DialogV2;
 import { createDelayedSurgeEffect } from "../shared/effect-factories.mjs";
+import { markUsedThisTurn, t, usedThisTurn } from "../shared/helpers.mjs";
 
 /**
  * Runs wild Surge class feature automation.
@@ -451,4 +452,98 @@ export async function carefulSpell(workflow) {
 	} catch (err) {
 		console.error("Careful Spell |", err);
 	}
+}
+
+// Damage types Elemental Infusion can't change.
+const INFUSION_EXCLUDED = new Set(["necrotic", "poison", "psychic"]);
+
+/**
+ * Runs Elemental Infusion class feature automation (midi-qol preDamageRoll). When the sorcerer
+ * rolls damage for a spell that doesn't deal necrotic, poison, or psychic damage, asks whether to
+ * infuse it. If they pick one of their savant's damage types, uses Elemental Infusion (spending the
+ * sorcery point) and changes the spell's damage to that type for this roll.
+ *
+ * @param {object} workflow - MIDI-QOL workflow.
+ * @param {object} activity - Activity about to roll damage.
+ * @param {object} _config - Damage roll configuration (unused).
+ * @param {object} dialog - Damage roll dialog configuration.
+ * @returns {Promise<void>}
+ */
+export async function elementalInfusion(workflow, activity, _config, dialog) {
+	const actor = workflow?.actor;
+	const parts = activity?.damage?.parts;
+	if (workflow?.item?.type !== "spell" || !actor?.isOwner || !parts?.length) return;
+	const infusion = actor.items.find((i) => i.flags?.elkan5e?.infusionTypes);
+	const infuse = infusion?.system.activities.contents[0];
+	if (!infuse) return;
+
+	// Ask once per casting; later damage rolls in the same workflow reuse the answer.
+	if (workflow.elkan5eInfusionType === undefined) {
+		workflow.elkan5eInfusionType = null;
+		const types = parts.flatMap((p) => [...p.types]);
+		if (!types.length || types.some((type) => INFUSION_EXCLUDED.has(type))) return;
+
+		const choices = infusion.flags.elkan5e.infusionTypes;
+		const choice = await DialogV2.wait({
+			window: { title: infusion.name },
+			content: `<p>${t("elkan5e.sorcerer.infusionContent", { spell: workflow.item.name })}</p>`,
+			buttons: [
+				...choices.map((type) => ({
+					action: type,
+					label: CONFIG.DND5E.damageTypes[type]?.label ?? type,
+				})),
+				{ action: "none", label: t("elkan5e.sorcerer.infusionDecline"), default: true },
+			],
+			rejectClose: false,
+		});
+		if (!choices.includes(choice)) return;
+		if (!(await infuse.use({}, { configure: false }))) return;
+		workflow.elkan5eInfusionType = choice;
+	}
+
+	const type = workflow.elkan5eInfusionType;
+	if (!type) return;
+	const original = parts.map((p) => p.types);
+	for (const part of parts) part.types = new Set([type]);
+	// The activity is the item's own prepared data, so put its types back once this roll is made.
+	Hooks.once("dnd5e.rollDamageV2", () => parts.forEach((p, i) => (p.types = original[i])));
+	if (dialog) dialog.configure = false;
+}
+
+/**
+ * Shows the savant's once-per-turn spell riders (Volatile Current, Fault Line, Wreathing Flames,
+ * Relentless Tides) after a spell deals one of their damage types, saying whether each can still
+ * be used this turn. Features opt in with flags.elkan5e.spellDamageTrigger.
+ *
+ * @param {object} workflow - MIDI-QOL workflow at RollComplete.
+ */
+export function savantSpellReminder(workflow) {
+	const actor = workflow?.actor;
+	if (workflow?.item?.type !== "spell" || !actor?.isOwner) return;
+	const dealtDamage = (workflow.damageList ?? []).some(
+		(entry) => (entry.hpDamage ?? 0) + (entry.tempDamage ?? 0) > 0,
+	);
+	if (!dealtDamage) return;
+
+	const types = new Set((workflow.damageRolls ?? []).map((roll) => roll.options?.type));
+	for (const feature of actor.items) {
+		const triggers = feature.flags?.elkan5e?.spellDamageTrigger;
+		if (!triggers?.some((type) => types.has(type))) continue;
+		const used = usedThisTurn(actor, `savant.${feature.system.identifier}`);
+		const data = { name: actor.name, feature: feature.name };
+		if (used) ui.notifications.warn(t("elkan5e.sorcerer.savantUsed", data));
+		else ui.notifications.info(t("elkan5e.sorcerer.savantReady", data));
+	}
+}
+
+/**
+ * Records that a savant spell rider was used this turn, for {@link savantSpellReminder}.
+ *
+ * @param {object} activity - Activity that was used.
+ * @returns {Promise<void>}
+ */
+export async function markSavantFeatureUsed(activity) {
+	const feature = activity?.item;
+	if (!feature?.flags?.elkan5e?.spellDamageTrigger || !activity.actor) return;
+	await markUsedThisTurn(activity.actor, `savant.${feature.system.identifier}`);
 }

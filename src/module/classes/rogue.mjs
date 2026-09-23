@@ -263,6 +263,8 @@ export async function assassinsReflexesStart(combat) {
  */
 export async function assassinsReflexesEnd(combat, changes) {
 	if (!game.users.activeGM?.isSelf || !(changes.round > 1)) return;
-	const ids = combat.combatants.filter((c) => c.getFlag("elkan5e", REFLEXES_FLAG)).map((c) => c.id);
+	const ids = combat.combatants
+		.filter((c) => c.getFlag("elkan5e", REFLEXES_FLAG))
+		.map((c) => c.id);
 	if (ids.length) await combat.deleteEmbeddedDocuments("Combatant", ids);
 }

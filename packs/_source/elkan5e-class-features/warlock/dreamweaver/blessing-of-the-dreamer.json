@@ -24,7 +24,24 @@
 			"custom": "elkan5e.com/warlock",
 			"license": ""
 		},
-		"advancement": [],
+		"advancement": {
+			"fhHTcD6U54srfJJq": {
+				"name": "",
+				"type": "Trait",
+				"_id": "fhHTcD6U54srfJJq",
+				"configuration": {
+					"allowReplacements": false,
+					"choices": [],
+					"grants": [
+						"dr:psychic"
+					],
+					"mode": "default"
+				},
+				"level": 0,
+				"hint": "",
+				"value": {}
+			}
+		},
 		"cover": null,
 		"crewed": false,
 		"enchant": {},
@@ -41,7 +58,58 @@
 			"subtype": ""
 		}
 	},
-	"effects": [],
+	"effects": [
+		{
+			"name": "Blessing of the Dreamer",
+			"img": "icons/magic/nature/lotus-glow-pink.webp",
+			"type": "base",
+			"_id": "PDuDE2lYC6yaKnVr",
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.advantage.ability.save.all",
+						"type": "custom",
+						"value": "workflow?.item?.effects?.some(ef => [\"charmed\", \"frightened\", \"cursed\"].some(s => ef.statuses?.has(s) || ef.system?.rider?.statuses?.includes?.(s) || ef.flags?.dnd5e?.riders?.statuses?.includes?.(s)))",
+						"phase": "initial",
+						"priority": 20,
+						"_id": "OxDS5AScZnVnQFsp",
+						"conditions": "{}",
+						"replacement": ""
+					}
+				]
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"origin": null,
+			"tint": "#ffffff",
+			"transfer": true,
+			"statuses": [],
+			"showIcon": 1,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"stackable": "noneName",
+					"specialDuration": [],
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"macroRepeat": "none",
+					"durationExpression": "",
+					"disableCondition": "",
+					"disableIncapacitated": false,
+					"expiryMode": "default"
+				}
+			},
+			"_key": "!items.effects!WtO8MWqadaG7cxUo.PDuDE2lYC6yaKnVr"
+		}
+	],
 	"flags": {
 		"midi-qol": {
 			"rollAttackPerTarget": "default",

@@ -24,10 +24,14 @@
 						"type": "add"
 					},
 					{
-						"key": "macro.createItem",
-						"value": "Compendium.elkan5e.elkan5e-class-features.Item.ncz6URImyQtFOexw",
-						"priority": 20,
-						"type": "custom"
+						"key": "damage",
+						"type": "dnd5e.bonus",
+						"value": "1d4[fire]",
+						"phase": "initial",
+						"priority": 100,
+						"_id": "f0aD8KOtQPrO0E9X",
+						"conditions": "[{\"k\":\"item.identifier\",\"v\":\"eldritch-blast\"}]",
+						"replacement": ""
 					}
 				]
 			},
@@ -60,6 +64,50 @@
 			"showIcon": 1,
 			"folder": null,
 			"_key": "!items.effects!O1owFjLB6wfrqs0J.kbflvNVMlNexwjZE"
+		},
+		{
+			"name": "Dark One's Blessing",
+			"img": "icons/creatures/unholy/demon-horned-winged-laughing.webp",
+			"type": "enchantment",
+			"transfer": false,
+			"_id": "emc5wkuC44tik0r7",
+			"system": {
+				"changes": [
+					{
+						"key": "system.description.value",
+						"type": "override",
+						"value": "{}<p><strong>Dark One's Blessing.</strong> While your Dark One's Blessing is active, this ability deals an extra [[/damage 1d4 fire]] damage.</p>",
+						"phase": "initial",
+						"priority": null,
+						"_id": "pdC6GnDzx4VTNjZQ",
+						"conditions": "{}",
+						"replacement": ""
+					}
+				],
+				"origin": {
+					"actor": null,
+					"behavior": null,
+					"effect": null,
+					"item": null,
+					"message": null
+				},
+				"magical": true
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"origin": null,
+			"tint": "#ffffff",
+			"statuses": [],
+			"showIcon": 1,
+			"folder": null,
+			"_key": "!items.effects!O1owFjLB6wfrqs0J.emc5wkuC44tik0r7"
 		}
 	],
 	"folder": "ruoNuxxnmurwszYF",
@@ -288,6 +336,29 @@
 		"enchant": {},
 		"prerequisites": {
 			"level": null
+		},
+		"advancement": {
+			"aU7OnCfr6ym6qV40": {
+				"name": "",
+				"type": "ModifyItem",
+				"_id": "aU7OnCfr6ym6qV40",
+				"configuration": {
+					"changes": [
+						{
+							"_id": "emc5wkuC44tik0r7",
+							"uuid": null,
+							"identifiers": [
+								"eldritch-blast"
+							]
+						}
+					]
+				},
+				"value": {
+					"modified": []
+				},
+				"level": 0,
+				"hint": ""
+			}
 		}
 	},
 	"_id": "O1owFjLB6wfrqs0J",

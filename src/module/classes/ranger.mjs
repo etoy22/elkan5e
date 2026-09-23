@@ -197,7 +197,11 @@ export async function markForDeath(workflow, item) {
 		return await new CONFIG.Dice.DamageRoll(
 			formula,
 			{},
-			{ type: damageType, isCritical: workflow.isCritical, flavor: item?.name ?? MARK_FOR_DEATH },
+			{
+				type: damageType,
+				isCritical: workflow.isCritical,
+				flavor: item?.name ?? MARK_FOR_DEATH,
+			},
 		).evaluate();
 	} catch (err) {
 		console.error("markForDeath |", err);
@@ -213,7 +217,8 @@ export async function markForDeath(workflow, item) {
  * @returns {Promise<void>}
  */
 export async function moveMarkForDeath(activity) {
-	if (activity?.item?.system?.identifier !== "mark-for-death" || !activity.effects?.length) return;
+	if (activity?.item?.system?.identifier !== "mark-for-death" || !activity.effects?.length)
+		return;
 	const ranger = activity.actor;
 	const targets = game.user.targets;
 	if (!ranger || !targets.size) return;

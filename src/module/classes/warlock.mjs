@@ -1,3 +1,8 @@
+import { push } from "../rules/condition/push.mjs";
+import { markUsedThisTurn, t, usedThisTurn } from "../shared/helpers.mjs";
+
+const DialogV2 = foundry.applications.api.DialogV2;
+
 /**
  * Maps each pact identifier to the item IDs of invocations that require it.
  * Used to hide wrong-pact invocations from the advancement choice dialog.
@@ -113,4 +118,102 @@ export function initWarlockSpellSlot() {
 	};
 	// Optionally add recovery behavior
 	CONFIG.DND5E.restTypes.long.recoverSpellSlotTypes.add("elkanWarlock");
+}
+
+// Power of Love and Fear activities, by condition and whether the spell is instantaneous.
+const LOVE_AND_FEAR_ACTIVITIES = {
+	charmed: { round: "7751UYuelIlssKTJ", minute: "i299ypuHkGFuivCO" },
+	frightened: { round: "bqTbXyf3RySL4FtV", minute: "ffptSc1PjIKxJa0o" },
+};
+
+/**
+ * Runs Power of Love and Fear class feature automation (midi-qol preambleComplete). Before the
+ * targets roll their Wisdom saves against one of the warlock's spells of 1st level or higher, asks
+ * whether to also charm or frighten creatures that fail, so any advantage they have against that
+ * condition applies to the save.
+ *
+ * @param {object} workflow - MIDI-QOL workflow.
+ * @returns {Promise<void>}
+ */
+export async function powerOfLoveAndFearPrompt(workflow) {
+	const actor = workflow?.actor;
+	const item = workflow?.item;
+	if (item?.type !== "spell" || !(item.system.level >= 1) || !actor?.isOwner) return;
+	if (workflow.activity?.type !== "save" || !workflow.activity.save?.ability?.has?.("wis"))
+		return;
+	if (!actor.items.some((i) => i.system?.identifier === "power-of-love-and-fear")) return;
+
+	const choice = await DialogV2.wait({
+		window: { title: t("elkan5e.warlock.loveAndFearTitle") },
+		content: `<p>${t("elkan5e.warlock.loveAndFearContent", { spell: item.name })}</p>`,
+		buttons: [
+			{ action: "charmed", label: CONFIG.DND5E.conditionTypes.charmed?.name ?? "Charmed" },
+			{
+				action: "frightened",
+				label: CONFIG.DND5E.conditionTypes.frightened?.name ?? "Frightened",
+			},
+			{ action: "none", label: t("elkan5e.warlock.loveAndFearDecline"), default: true },
+		],
+		rejectClose: false,
+	});
+	if (choice in LOVE_AND_FEAR_ACTIVITIES) workflow.elkan5eLoveAndFear = choice;
+}
+
+/**
+ * Applies the condition chosen in {@link powerOfLoveAndFearPrompt} to every creature that failed
+ * its save (midi-qol RollComplete). It lasts 1 round for instantaneous spells, otherwise 1 minute.
+ *
+ * @param {object} workflow - MIDI-QOL workflow.
+ * @returns {Promise<void>}
+ */
+export async function powerOfLoveAndFearApply(workflow) {
+	const choice = workflow?.elkan5eLoveAndFear;
+	if (!choice || !workflow.failedSaves?.size) return;
+	const feature = workflow.actor.items.find(
+		(i) => i.system?.identifier === "power-of-love-and-fear",
+	);
+	const length = workflow.item.system.duration?.units === "inst" ? "round" : "minute";
+	const activity = feature?.system.activities.get(LOVE_AND_FEAR_ACTIVITIES[choice][length]);
+	if (!activity) return;
+
+	await MidiQOL.completeActivityUse(
+		activity,
+		{
+			midiOptions: {
+				targetUuids: [...workflow.failedSaves].map((token) => token.document.uuid),
+				ignoreUserTargets: true,
+			},
+		},
+		{ configure: false },
+	);
+}
+
+// Name of the Repelling Blast attack. Granted copies get a new activity id, so it's matched by name.
+const REPELLING_BLAST = "Repelling Blast";
+
+/**
+ * Repelling Blast (midi function macro on the Repelling Blast attack, and on Eldritch Blast once
+ * the attack is granted to it). Only the "Repelling Blast" attack pushes: once per turn, when it
+ * hits, the creature is pushed 10 feet straight away from the warlock.
+ *
+ * @param {object} context - Midi function-macro context.
+ * @param {object} context.workflow - MIDI-QOL workflow.
+ * @returns {Promise<void>}
+ */
+export async function repellingBlast({ workflow }) {
+	const actor = workflow?.actor;
+	const target = workflow?.hitTargets?.first();
+	if (workflow?.activity?.name !== REPELLING_BLAST || !actor?.isOwner || !target) return;
+	if (usedThisTurn(actor, "repellingBlastTime")) {
+		ui.notifications.warn(t("elkan5e.warlock.repellingBlastUsed", { name: actor.name }));
+		return;
+	}
+	await markUsedThisTurn(actor, "repellingBlastTime");
+	await push(
+		{ ...workflow, actor, token: workflow.token, targets: new Set([target]) },
+		false,
+		10,
+		0,
+		true,
+	);
 }

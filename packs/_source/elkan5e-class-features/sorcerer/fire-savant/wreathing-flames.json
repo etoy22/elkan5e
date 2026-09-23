@@ -120,9 +120,12 @@
 					{
 						"key": "flags.midi-qol.OverTime",
 						"type": "add",
-						"value": "turn=end,damageType=fire,allowIncapacitated=true,damageRoll=1d8label=Wreathing Flames",
+						"value": "turn=end,damageType=fire,allowIncapacitated=true,damageRoll=1d8,label=Wreathing Flames",
 						"phase": "initial",
-						"priority": 20
+						"priority": 20,
+						"_id": "tKmiON64Ym3Elc5T",
+						"conditions": "{}",
+						"replacement": ""
 					}
 				]
 			},
@@ -130,7 +133,7 @@
 			"duration": {
 				"value": 1,
 				"units": "rounds",
-				"expiry": "targetEnd",
+				"expiry": null,
 				"expired": false
 			},
 			"description": "",
@@ -149,7 +152,8 @@
 					"specialDuration": [],
 					"enableCondition": "",
 					"disableCondition": "",
-					"expiryMode": "default"
+					"expiryMode": "default",
+					"phaseStamped": true
 				}
 			},
 			"start": null,
@@ -182,6 +186,12 @@
 			"reactionCondition": "",
 			"removeAttackDamageButtons": "default",
 			"otherCondition": ""
+		},
+		"elkan5e": {
+			"spellDamageTrigger": [
+				"fire",
+				"radiant"
+			]
 		}
 	},
 	"_key": "!items!VbLYqCgcsK2lp4ZH"

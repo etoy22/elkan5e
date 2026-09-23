@@ -5,17 +5,17 @@
 	"effects": [
 		{
 			"name": "Empowered Evocation",
-			"transfer": false,
+			"transfer": true,
 			"_id": "seh18IJFRt7teI88",
 			"disabled": false,
 			"duration": {
-				"value": 1,
-				"units": "rounds",
-				"expiry": "turnStart",
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
 				"expired": false
 			},
 			"description": "",
-			"origin": null,
+			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.VSfuD4F1S2tHKbUw",
 			"statuses": [],
 			"flags": {
 				"dae": {
@@ -27,10 +27,12 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": [
-						"1Spell"
+						"None"
 					],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default",
+					"phaseStamped": true
 				}
 			},
 			"tint": "#ffffff",
@@ -40,9 +42,13 @@
 				"changes": [
 					{
 						"key": "system.bonuses.spell.damage",
+						"type": "add",
 						"value": "+@abilities.int.mod",
+						"phase": "initial",
 						"priority": 20,
-						"type": "add"
+						"_id": "31z0XBzSAtoK5XNb",
+						"conditions": "{}",
+						"replacement": ""
 					}
 				]
 			},
