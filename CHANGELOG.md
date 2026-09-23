@@ -6,9 +6,11 @@
 - Fixed Relentless Rage never triggering — the damage hook returned after checking Undead Fortitude, so Relentless Rage was never evaluated.
 - Fixed the Thunder → Sonic and Lightning → Electric damage type renaming not applying — the localization override was targeting an outdated key path, so damage type labels across the system (dropdowns, resistances/vulnerabilities/immunities, chat cards, tooltips) now correctly show Sonic and Electric.
 - Updated Undead Fortitude's attack/save detection for dnd5e's chat message data model changes (the activity type moved off `flags.dnd5e.activity` and onto `system.activity`), with fallbacks so it keeps working on older and newer dnd5e versions.
+- Fixed issue where Elemental monk switching elements causes issues
+- Fixed Mindless Rage never activating while raging.
 
 ## Compatibility
-- Updated for dnd5e system v6.0.1 (verified compatibility raised from 6.0.0).
+- Updated for dnd5e system v6.0.1
 - Migrated compendium data still on the pre-6.0 schema so nothing depends on dnd5e's backward-compatibility shims: senses, movement speeds, and initiative bonuses (and every Active Effect that targeted their old field paths) now use dnd5e's current nested format.
 - Updated every activity still using the pre-Activities targeting format (mostly single-creature attack/damage/save sub-activities on spells and feats) to the current target schema.
 - Updated Save activities' ability field to dnd5e's current format, which supports a save being tied to more than one ability.
@@ -28,9 +30,9 @@
 ## Classes
  **[Barbarian](https://www.elkan5e.com/barbarian)**
 - Rage now applies a Raging status, so features that only work while raging can reliably detect it.
-- Fixed Mindless Rage never activating while raging.
+- Rage now properly give damage bonus to thrown weapons
 - Mindless Rage now adds its text to the Rage description when gained (its Modify Items advancement pointed to an effect that didn't exist).
-- Fixed Barbarian's Defense always using the armored AC formula, even while unarmored. It now automatically switches between Unarmored Defense (10 + Dex + Con) and the armored formula (armor + higher of Dex or Con, capped by the armor's Dex limit) based on whether armor is equipped.
+- Barbarian's Defense now automatically switches between Unarmored Defense (10 + Dex + Con) and the armored formula (armor + higher of Dex or Con, capped by the armor's Dex limit) based on whether armor is equipped.
 - Brutal Strike: Hamstring Blow now actually halves flying speed too, and no longer applies its speed penalty to swimming twice — it had a leftover bogus movement key and a duplicated change.
 - Slayer
 	- Fixed Death Haze never activating while raging.
@@ -46,16 +48,22 @@
 - Jester
 	- Jester's Aspersion now adds its psychic damage text to the Cutting Words description when gained (its enchantment had no changes).
 	- Harmless Act now adds its charm option to the Cutting Words and Vicious Mockery descriptions when gained (its enchantment was disabled and empty).
+- Lorekeeper
+    - Now grants Detect Magic and Identify
 
 **[Cleric](https://www.elkan5e.com/cleric)**
-- 
+- Reaper
+    - Fixed issue where Death Touched wasnt granting resistance to either Necrotic or Poison
 
 **[Druid](https://www.elkan5e.com/druid)**
+- Cthonic
+    - Now grants invisibility spell
 - Earthshaker
 	- Fixed Quake — the push option now triggers correctly (its macro was checking the wrong activity).
 	- Ride the Mountain now grants Move Self (30 ft.) and Move Ally (15 ft.) teleport activities to Quake and Shield of the Crags, and its identifier no longer conflicts with Quake.
 	- Shield of the Crags now grants temporary hit points instead of healing, and half your druid level is now rounded down.
 	- Earth's Favored now adds its self-use benefits to the Shield of the Crags description when gained.
+    - Aspect of the Mountain: Now grants immunity to Petrified and Meld into Stone
 - Wild Shape
 	- Twisted Terrain now uses the system's Difficult Terrain region behavior instead of an active effect that halved speed.
 
