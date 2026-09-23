@@ -78,20 +78,6 @@ export async function createEffect(effectId, customOptions = {}) {
 }
 
 /**
- * Create the Empty Body effect for monks.
- *
- * @param {Object} customOptions - Options to override the template
- * @returns {Promise<Object>} The effect data
- */
-export async function createEmptyBodyEffect(customOptions = {}) {
-	const defaultOptions = {
-		name: game.i18n.localize("elkan5e.monk.emptyBody"),
-		origin: "Item.xqRleciuHDZlYCl6",
-	};
-	return createEffect("empty-body", { ...defaultOptions, ...customOptions });
-}
-
-/**
  * Create the Goodberry Duration effect.
  *
  * @param {Object} item - The spell item
@@ -274,7 +260,6 @@ export async function createGrappledEffect(
 
 export default {
 	createEffect,
-	createEmptyBodyEffect,
 	createGoodberryDurationEffect,
 	createDelayedSurgeEffect,
 	createDrainedEffect,

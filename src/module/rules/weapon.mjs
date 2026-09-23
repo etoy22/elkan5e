@@ -114,4 +114,43 @@ export function weapons() {
 			console.warn(`Elkan 5e | Failed to assign weapon rule reference for key '${key}':`, e);
 		}
 	});
+
+	// Expose wielded weapon counts as @elkan5e.weapons.* so effect conditions can check them
+	// (e.g. Single Weapon Fighting requires exactly one equipped melee weapon).
+	try {
+		const Actor5e = CONFIG.Actor.documentClass;
+		const getRollData = Actor5e.prototype.getRollData;
+		Actor5e.prototype.getRollData = function (...args) {
+			const data = getRollData.apply(this, args);
+			data.elkan5e = { ...data.elkan5e, weapons: countWieldedWeapons(this) };
+			return data;
+		};
+	} catch (e) {
+		console.warn("Elkan 5e | Failed to add wielded weapon roll data:", e);
+	}
+}
+
+const UNARMED_IDENTIFIERS = new Set([
+	"unarmed-strike",
+	"unarmed-strike-monk",
+	"ki-empowered-strikes",
+]);
+
+/**
+ * Counts the equipped manufactured weapons an actor is wielding, ignoring unarmed strikes and natural weapons.
+ *
+ * @param {*} actor - Actor document to process.
+ * @returns {{equipped: number, melee: number, ranged: number}} Wielded weapon counts.
+ */
+export function countWieldedWeapons(actor) {
+	const counts = { equipped: 0, melee: 0, ranged: 0 };
+	for (const item of actor.items ?? []) {
+		if (item.type !== "weapon" || !item.system.equipped) continue;
+		const type = item.system.type?.value ?? "";
+		if (type === "natural" || UNARMED_IDENTIFIERS.has(item.system.identifier)) continue;
+		counts.equipped++;
+		if (type.endsWith("M")) counts.melee++;
+		else if (type.endsWith("R")) counts.ranged++;
+	}
+	return counts;
 }

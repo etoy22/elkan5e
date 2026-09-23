@@ -68,13 +68,45 @@
 	- Twisted Terrain now uses the system's Difficult Terrain region behavior instead of an active effect that halved speed.
 
 **[Fighter](https://www.elkan5e.com/fighter)**
+- Extra Attack (3 Attacks) and Extra Attack (4 Attacks) now update the Extra Attack description when gained.
+- Single Weapon Fighting and Improved Single Weapon Fighting now only apply their damage bonus while you have exactly one melee weapon equipped (unarmed strikes and natural weapons don't count).
+- Fighting Style: Mounted Combat's incapacitated reference no longer applies the condition when clicked.
+- Combat Maneuvers
+	- Parry and Powerful Attack effects now last 1 turn instead of having no duration.
+- Battlemaster
+	- Now has an Enchant activity: use it on your chosen maneuver to remove its limited uses and its use consumption, and add a note to its description.
+- Commander
+	- Commander's Strike: fixed a missing space in its description.
+	- Persistent Leader now grants its activity to Second Wind and adds its text to the Second Wind description when gained.
+	- Rallying Surge now adds its text to the Action Surge description when gained.
+- Spellsword
+	- Spellsurge now adds its text to the Action Surge description when gained.
 - Bulwark
 	- Solidify Defenses: the temporary hit points (half your fighter level) are now rounded down.
 	- Solidify Defenses now adds its text to the Iron Wall description when gained.
+- Champion
+    - Improved Fighting Styles now have a hard requirement in the foundry to have the non-Improved Feature (Improved Archery now requires Fighting Style: Archery).
+    - Improved Critical now sets your critical hit range to 19–20 without stacking incorrectly with other critical range effects, and critical hits with attacks now roll three times the damage dice instead of two.
+    - Fixed the Survivor link in the Champion progression table, which pointed to another module's compendium.
 
 **[Monk](https://www.elkan5e.com/monk)**
+- Monks now get the standard Unarmed Strike instead of a separate Unarmed Strike (Monk) weapon. Martial Arts now upgrades Unarmed Strike with your Martial Arts die and the finesse and light properties.
+- Flurry of Blows, Deflect Attack, and Quivering Palm now link to the standard Unarmed Strike.
+- Ki-Empowered Strikes is now a feature that makes your Unarmed Strike magical, adamantine, cold iron, and silver, instead of a separate weapon.
+- Patient Defense now applies the Dodging status.
+- Purity of Body now grants immunity to the Diseased and Poisoned conditions and to poison damage.
+- Mentor
+	- Guiding Spirit now adds its ally option to the Flurry of Blows, Step of the Wind, and Patient Defense descriptions when gained.
+	- Inspire Greatness and Lend Expertise now link to the short rest, long rest, and expertise rules.
+- Shadowdancer
+	- Empty Body now grants its activity to Meld with Shadows and Hijack Shadow instead of using a script prompt.
+	- Shadow Form's invisible reference no longer applies the condition when clicked.
+- Windwalker
+	- Repulsion Wave now grants a multi-target version of Sweep to Sweep when gained.
+	- Twin Currents now grants its activity to Step of the Wind, its identifier is no longer a placeholder, its requirement now reads Windwalker 3 instead of Open Hand 3, and it now lists Elkan 5e as its source.
 - Elementalist
 	- Deflect Elements now spends 2 Ki as its description states, instead of only 1.
+	- Deflect Elements' effect now lasts 1 turn, ending at the end of a turn, instead of 7 seconds.
 	- Fireball (4 Ki), Fly (4 Ki), Rock Blast (4 Ki), and Sleet Storm (4 Ki) no longer also try to consume a spell slot on top of their Ki cost.
 	- Burning Hands (1/2/3 Ki) and Thunderwave (1/2/3 Ki) are properly magical again (restored the missing Magical property).
 	- Gentle Current (2 Ki) and Gentle Current (3 Ki) now actually target 2 and 3 allies respectively, instead of just 1 like the 1 Ki version.
@@ -86,7 +118,8 @@
 - 
 
 **[Ranger](https://www.elkan5e.com/ranger)**
-- 
+- Spellbreaker
+	- Magic Shackles now actually halves the target's speed — it had two leftover bogus movement keys that did nothing, so fly speed in particular was never reduced.
 
 **[Rogue](https://www.elkan5e.com/rogue)**
 - 
@@ -116,10 +149,11 @@
 ## Feats
 - Fixed Enraged Presence and Enraged Prowess never adding your rage bonus while raging. Skills you have expertise in are still correctly excluded.
 - Draconic Breath Control (Dragonborn): your Breath Weapon now recharges on a short rest when you gain the feat.
+- Fighting Style: Mounted Combat now has correct identifier
+- [Fey Step](https://www.elkan5e.com/feats/fey-step) now uses dnd5e's native Teleport activity, adding a "Plan Teleport" button to place your token directly.
 
 ## Game Rules
 - Added Crawl as a movement type (alongside Walk/Burrow/Climb/Fly/Swim), so it can be granted or set on actors and shows up in the Speed section.
-- Summary of Changes: fixed the note on the Thunder → Sonic and Lightning → Electric damage type renaming.
 
 ## Spells
 - Area spells that create difficult terrain now use the system's Difficult Terrain region behavior instead of an active effect that halved speed. Movement through the area is now measured as difficult terrain, stacks correctly, and respects features that ignore difficult terrain.
@@ -129,12 +163,14 @@
 - [Spirit Guardians](https://www.elkan5e.com/spells/spirit-guardians): the difficult terrain now only affects hostile creatures, as the spell describes.
 - [Freedom of Movement](https://www.elkan5e.com/spells/freedom-of-movement): the target now actually ignores difficult terrain.
 - [Thunderwave](https://www.elkan5e.com/spells/thunderwave): now correctly forces a Constitution save instead of none.
+- [Misty Step](https://www.elkan5e.com/spells/misty-step), [Dimension Door](https://www.elkan5e.com/spells/dimension-door), [Teleportation Circle](https://www.elkan5e.com/spells/teleportation-circle), and [Teleport](https://www.elkan5e.com/spells/teleport) now use dnd5e's native Teleport activity, adding a "Plan Teleport" button to place your token directly instead of just describing the move. Teleport's automated mishap-table roll was removed to match how the system's own 2024 version of the spell handles it (the GM still consults the table manually).
+- [Enlarge/Reduce](https://www.elkan5e.com/spells/enlarge%2Freduce) (and Potion of Growth / Potion of Shrinking) now use dnd5e's native size Active Effect instead of a custom script. The token's size now updates and reverts automatically and more reliably when the effect is applied or removed.
 
 ## UI
-- 
+- Passive features (class features, ancestry features, feats, and creature features with no activities) are now marked as Passive Traits, so they're listed under Passive Abilities on the character sheet and Traits on the NPC sheet.
 
 ## Misc
-- 
+- Actor roll data now includes `@elkan5e.weapons.equipped`, `@elkan5e.weapons.melee`, and `@elkan5e.weapons.ranged`: the number of weapons the actor has equipped, not counting unarmed strikes or natural weapons. Effect conditions and macros can use these.
 
 
 

@@ -1,6 +1,4 @@
 import { deleteEffectRemoveEffect } from "../shared/helpers.mjs";
-import { createEmptyBodyEffect } from "../shared/effect-factories.mjs";
-const DialogV2 = foundry.applications.api.DialogV2;
 
 /**
  * Runs rmv Meld Shadow class feature automation.
@@ -30,77 +28,6 @@ export async function rmvhijackShadow(actor) {
 		"elkan5e.monk.hijackShadowAttacks",
 		["elkan5e.monk.emptyBody"],
 	);
-}
-
-/**
- * Runs hijack Shadow class feature automation.
- *
- * @param {*} workflow - Workflow payload from the triggering item or activity.
- * @returns {Promise<void>} Promise resolution result.
- */
-export async function hijackShadow(workflow) {
-	const actor = workflow.actor;
-	emptyBody(actor);
-}
-
-/**
- * Runs meld With Shadows class feature automation.
- *
- * @param {*} workflow - Workflow payload from the triggering item or activity.
- * @returns {Promise<void>} Promise resolution result.
- */
-export async function meldWithShadows(workflow) {
-	const actor = workflow.actor;
-	emptyBody(actor);
-}
-
-/**
- * Runs empty Body class feature automation.
- *
- * @param {*} actor - Actor document to process.
- * @returns {Promise<void>} Promise resolution result.
- */
-export async function emptyBody(actor) {
-	if (!actor.isOwner) return;
-	if (actor.items.find((i) => i.system.identifier === "empty-body")) {
-		let confirm = await DialogV2.confirm({
-			window: { title: game.i18n.localize("elkan5e.monk.emptyBodyTitle") },
-			content: `<p>${game.i18n.localize("elkan5e.monk.emptyBodyContent")}</p>`,
-			rejectClose: false,
-			modal: true,
-		});
-		if (confirm) {
-			const emptyBody = await createEmptyBodyEffect({
-				changes: [
-					{
-						key: "system.traits.dr.value",
-						mode: 0,
-						value: "bludgeoning",
-						priority: 20,
-					},
-					{
-						key: "system.traits.dr.value",
-						mode: 0,
-						value: "piercing",
-						priority: 20,
-					},
-					{
-						key: "system.traits.dr.value",
-						mode: 0,
-						value: "slashing",
-						priority: 20,
-					},
-					{
-						key: "system.traits.dv.value",
-						mode: 0,
-						value: "radiant",
-						priority: 20,
-					},
-				],
-			});
-			await actor.createEmbeddedDocuments("ActiveEffect", [emptyBody]);
-		}
-	}
 }
 
 /**

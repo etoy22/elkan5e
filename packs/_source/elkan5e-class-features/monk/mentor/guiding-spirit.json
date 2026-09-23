@@ -145,7 +145,43 @@
 			"recovery": [],
 			"max": ""
 		},
-		"advancement": [],
+		"advancement": {
+			"wxEudujl37cAoQC5": {
+				"name": "",
+				"type": "ModifyItem",
+				"_id": "wxEudujl37cAoQC5",
+				"configuration": {
+					"changes": [
+						{
+							"_id": "yklsHuQ3R6u5aaFI",
+							"uuid": null,
+							"identifiers": [
+								"flurry-of-blows"
+							]
+						},
+						{
+							"_id": "dfAMcndG8OGXMTcE",
+							"uuid": null,
+							"identifiers": [
+								"step-of-the-wind"
+							]
+						},
+						{
+							"_id": "iVdjrjS4Hd0qBrW4",
+							"uuid": null,
+							"identifiers": [
+								"patient-defense"
+							]
+						}
+					]
+				},
+				"value": {
+					"modified": []
+				},
+				"level": 0,
+				"hint": ""
+			}
+		},
 		"description": {
 			"value": "<p><em>You stretch out, lending some of your strength to others while also channeling it to yourself.</em></p><p><strong>No Action Cost</strong> - 1 Creature (60 ft.) - 1 Ki - Magical</p><p><em>Trigger: you use @UUID[Compendium.elkan5e.elkan5e-class-features.Item.rfkAaOhAsX1HQRuo]{Flurry of Blows}, @UUID[Compendium.elkan5e.elkan5e-class-features.Item.UMZY7HTxI0EvRjsT]{Step of the Wind}, or @UUID[Compendium.elkan5e.elkan5e-class-features.Item.sRA3vPbD6QUAkFZT]{Patient Defense}.</em></p><p>Target can use their <strong>reaction</strong> to do one of the following, depending on which ability you used:</p><ul><li><p><strong>Flurry of Blows:</strong> target makes one weapon attack.</p></li><li><p><strong>Step of the Wind:</strong> target moves up to their speed without provoking &amp;reference[opportunityattacks]{attacks of opportunity}.</p></li><li><p><strong>Patient Defense:</strong> target takes the &amp;reference[dodge] action.</p></li></ul>",
 			"chat": ""
@@ -175,6 +211,139 @@
 			"subtype": "ki"
 		}
 	},
-	"effects": [],
+	"effects": [
+		{
+			"name": "Guiding Spirit (Flurry of Blows)",
+			"img": "icons/magic/light/orbs-firefly-hand-yellow.webp",
+			"type": "enchantment",
+			"transfer": false,
+			"_id": "yklsHuQ3R6u5aaFI",
+			"system": {
+				"changes": [
+					{
+						"key": "system.description.value",
+						"type": "override",
+						"value": "{}<p><strong>Guiding Spirit.</strong> When you use this ability, you can spend 1 additional ki point to let a creature within 60 ft. use their reaction to make one weapon attack.</p>",
+						"phase": "initial",
+						"priority": null,
+						"_id": "FHH0UNMRI1Tkdr4y",
+						"conditions": "{}",
+						"replacement": ""
+					}
+				],
+				"origin": {
+					"actor": null,
+					"behavior": null,
+					"effect": null,
+					"item": null,
+					"message": null
+				},
+				"magical": true
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"origin": null,
+			"tint": "#ffffff",
+			"statuses": [],
+			"showIcon": 1,
+			"folder": null,
+			"_key": "!items.effects!DmZ04cq5p8kIvZdp.yklsHuQ3R6u5aaFI"
+		},
+		{
+			"name": "Guiding Spirit (Step of the Wind)",
+			"img": "icons/magic/light/orbs-firefly-hand-yellow.webp",
+			"type": "enchantment",
+			"transfer": false,
+			"_id": "dfAMcndG8OGXMTcE",
+			"system": {
+				"changes": [
+					{
+						"key": "system.description.value",
+						"type": "override",
+						"value": "{}<p><strong>Guiding Spirit.</strong> When you use this ability, you can spend 1 additional ki point to let a creature within 60 ft. use their reaction to move up to their speed without provoking &amp;reference[opportunityattacks]{attacks of opportunity}.</p>",
+						"phase": "initial",
+						"priority": null,
+						"_id": "uny8gltn6w9J1xo1",
+						"conditions": "{}",
+						"replacement": ""
+					}
+				],
+				"origin": {
+					"actor": null,
+					"behavior": null,
+					"effect": null,
+					"item": null,
+					"message": null
+				},
+				"magical": true
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"origin": null,
+			"tint": "#ffffff",
+			"statuses": [],
+			"showIcon": 1,
+			"folder": null,
+			"_key": "!items.effects!DmZ04cq5p8kIvZdp.dfAMcndG8OGXMTcE"
+		},
+		{
+			"name": "Guiding Spirit (Patient Defense)",
+			"img": "icons/magic/light/orbs-firefly-hand-yellow.webp",
+			"type": "enchantment",
+			"transfer": false,
+			"_id": "iVdjrjS4Hd0qBrW4",
+			"system": {
+				"changes": [
+					{
+						"key": "system.description.value",
+						"type": "override",
+						"value": "{}<p><strong>Guiding Spirit.</strong> When you use this ability, you can spend 1 additional ki point to let a creature within 60 ft. use their reaction to take the &amp;reference[dodge] action.</p>",
+						"phase": "initial",
+						"priority": null,
+						"_id": "E2jrLW5eGqHzUYAB",
+						"conditions": "{}",
+						"replacement": ""
+					}
+				],
+				"origin": {
+					"actor": null,
+					"behavior": null,
+					"effect": null,
+					"item": null,
+					"message": null
+				},
+				"magical": true
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"origin": null,
+			"tint": "#ffffff",
+			"statuses": [],
+			"showIcon": 1,
+			"folder": null,
+			"_key": "!items.effects!DmZ04cq5p8kIvZdp.iVdjrjS4Hd0qBrW4"
+		}
+	],
 	"_key": "!items!DmZ04cq5p8kIvZdp"
 }

@@ -16,13 +16,8 @@ import {
 	holyStrike,
 } from "./module/classes/cleric.mjs";
 import { archDruid, lurkingFogDarkness } from "./module/classes/druid.mjs";
-import { secondWind } from "./module/classes/fighter.mjs";
-import {
-	elementalAttunement,
-	hijackShadow,
-	meldWithShadows,
-	onCombatTurnChange,
-} from "./module/classes/monk.mjs";
+import { improvedCriticalDamage, secondWind } from "./module/classes/fighter.mjs";
+import { elementalAttunement, onCombatTurnChange } from "./module/classes/monk.mjs";
 import { slicingBlow, sneakAttack } from "./module/classes/rogue.mjs";
 import {
 	carefulSpell,
@@ -262,6 +257,14 @@ function registerHooks() {
 			await Level4.blight(workflow);
 		} catch (error) {
 			console.error("Elkan 5e | Error in Blight preambleComplete hook:", error);
+		}
+	});
+
+	Hooks.on("dnd5e.preRollDamageV2", (rollConfig) => {
+		try {
+			improvedCriticalDamage(rollConfig);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Improved Critical preRollDamageV2 hook:", error);
 		}
 	});
 
@@ -586,8 +589,6 @@ function registerHooks() {
 				infusedHealer,
 				healingOverflow,
 				secondWind,
-				hijackShadow,
-				meldWithShadows,
 				slicingBlow,
 				elementalAttunement,
 				markForDeath,

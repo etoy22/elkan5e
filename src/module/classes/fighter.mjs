@@ -37,6 +37,19 @@ export async function persistentLeader(actor) {
 }
 
 /**
+ * Improved Critical: critical hits with attacks roll three times the number of damage dice instead of two.
+ * Must stay synchronous so the multiplier is set before the damage roll is built.
+ *
+ * @param {*} rollConfig - Damage roll process configuration.
+ */
+export function improvedCriticalDamage(rollConfig) {
+	const activity = rollConfig?.subject;
+	if (activity?.type !== "attack") return;
+	if (!activity.actor?.items.some((i) => i.system.identifier === "improved-critical")) return;
+	rollConfig.critical = { ...rollConfig.critical, multiplier: 3 };
+}
+
+/**
  * Runs rally Surge class feature automation.
  *
  * @param {*} actor - Actor document to process.
