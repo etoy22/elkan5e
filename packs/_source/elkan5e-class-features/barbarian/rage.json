@@ -12,7 +12,7 @@
 					"stackable": "none",
 					"macroRepeat": "none",
 					"specialDuration": [
-						"zeroHP"
+						"None"
 					],
 					"durationExpression": "",
 					"selfTarget": false,
@@ -20,24 +20,13 @@
 					"disableIncapacitated": true,
 					"dontApply": false,
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default",
+					"phaseStamped": true
 				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system",
-					"statuses": []
+				"core": {
+					"overlay": false,
+					"sheetClass": "dnd5e.ActiveEffectSheet5e"
 				}
 			},
 			"disabled": false,
@@ -59,39 +48,73 @@
 				"changes": [
 					{
 						"key": "system.bonuses.mwak.damage",
+						"type": "custom",
 						"value": "@scale.barbarian.rage-bonus",
+						"phase": "initial",
 						"priority": 2,
-						"type": "custom"
+						"_id": "MfrYOtJOBzneYN55",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "system.traits.dr.value",
+						"type": "custom",
 						"value": "piercing",
+						"phase": "final",
 						"priority": 2,
-						"type": "custom"
+						"_id": "aDyPJSBxtJKxzcRh",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "system.traits.dr.value",
+						"type": "custom",
 						"value": "slashing",
+						"phase": "final",
 						"priority": 20,
-						"type": "custom"
+						"_id": "8YN8vpyxFzJeEZmz",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "system.traits.dr.value",
+						"type": "custom",
 						"value": "bludgeoning",
+						"phase": "final",
 						"priority": 20,
-						"type": "custom"
+						"_id": "Y2o2m0TeVgQBwjIE",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
-						"key": "flags.midi-qol.advantage.ability.save.str",
+						"key": "system.abilities.str.check.roll.mode",
+						"type": "add",
 						"value": 1,
+						"phase": "initial",
 						"priority": 20,
-						"type": "add"
+						"_id": "JGeKMTNslPQyssfq",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
-						"key": "flags.midi-qol.advantage.ability.check.str",
+						"key": "system.abilities.str.save.roll.mode",
+						"type": "add",
 						"value": 1,
+						"phase": "initial",
 						"priority": 20,
-						"type": "add"
+						"_id": "X8T79UjliRyh3Kb2",
+						"conditions": "{}",
+						"replacement": ""
+					},
+					{
+						"key": "flags.elkan5e.raging",
+						"type": "override",
+						"value": 1,
+						"phase": "initial",
+						"priority": 20,
+						"_id": "lRlWRY6XhWaBm9TW",
+						"conditions": "{}",
+						"replacement": ""
 					}
 				]
 			},

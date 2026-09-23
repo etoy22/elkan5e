@@ -18,29 +18,14 @@
 					"dontApply": false,
 					"enableCondition": "",
 					"disableCondition": "",
-					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"radius": "",
-					"aura": "None",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"displayTemp": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
+					"expiryMode": "default",
+					"phaseStamped": true
 				}
 			},
 			"duration": {
 				"value": 60,
 				"units": "seconds",
-				"expiry": "sourceEnd",
+				"expiry": "turnStart",
 				"expired": false
 			},
 			"transfer": false,
@@ -56,33 +41,53 @@
 				"changes": [
 					{
 						"key": "system.bonuses.abilities.save",
+						"type": "add",
 						"value": "-1d4",
+						"phase": "initial",
 						"priority": null,
-						"type": "add"
+						"_id": "XW0TIkn0W3xeNk41",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "system.bonuses.mwak.attack",
+						"type": "add",
 						"value": "-1d4",
+						"phase": "initial",
 						"priority": null,
-						"type": "add"
+						"_id": "AUT74uLycgJRhxBA",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "system.bonuses.msak.attack",
+						"type": "add",
 						"value": "-1d4",
+						"phase": "initial",
 						"priority": null,
-						"type": "add"
+						"_id": "6qIdOrAfsIkvkaL9",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "system.bonuses.rsak.attack",
+						"type": "add",
 						"value": "-1d4",
+						"phase": "initial",
 						"priority": null,
-						"type": "add"
+						"_id": "BYXkgtae2wKk8fwv",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "system.bonuses.rwak.attack",
+						"type": "add",
 						"value": "-1d4",
+						"phase": "initial",
 						"priority": null,
-						"type": "add"
+						"_id": "JFwB182746yzOMdd",
+						"conditions": "{}",
+						"replacement": ""
 					}
 				]
 			},
@@ -254,10 +259,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -271,7 +280,9 @@
 					"onSave": "none"
 				},
 				"save": {
-					"ability": "cha",
+					"ability": [
+						"cha"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""

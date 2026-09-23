@@ -74,19 +74,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": 10,
-				"climb": 0,
-				"fly": 0,
-				"swim": 0,
-				"walk": 30,
+				"speeds": {
+					"walk": 30,
+					"burrow": 10,
+					"climb": 0,
+					"fly": 0,
+					"swim": 0
+				},
 				"units": "ft",
 				"hover": false
 			},
@@ -94,10 +96,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 60,
-				"blindsight": 0,
-				"tremorsense": 20,
-				"truesight": 0,
+				"ranges": {
+					"darkvision": 60,
+					"blindsight": 0,
+					"tremorsense": 20,
+					"truesight": 0
+				},
 				"units": "ft",
 				"special": ""
 			},
@@ -760,7 +764,9 @@
 							"parts": []
 						},
 						"save": {
-							"ability": "",
+							"ability": [
+								""
+							],
 							"dc": {
 								"calculation": "spellcasting",
 								"formula": ""
@@ -780,19 +786,6 @@
 			"effects": [
 				{
 					"flags": {
-						"ActiveAuras": {
-							"isAura": false,
-							"radius": null,
-							"aura": "None",
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"displayTemp": false
-						},
 						"core": {
 							"statusId": "combat-utility-belt.prone"
 						}

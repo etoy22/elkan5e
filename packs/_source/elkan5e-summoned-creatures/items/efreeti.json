@@ -466,11 +466,13 @@
 				"bonus": ""
 			},
 			"movement": {
-				"burrow": null,
-				"climb": null,
-				"fly": 60,
-				"swim": null,
-				"walk": 40,
+				"speeds": {
+					"walk": 40,
+					"burrow": null,
+					"climb": null,
+					"fly": 60,
+					"swim": null
+				},
 				"units": null,
 				"hover": true,
 				"ignoredDifficultTerrain": []
@@ -479,10 +481,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 120,
-				"blindsight": null,
-				"tremorsense": null,
-				"truesight": null,
+				"ranges": {
+					"darkvision": 120,
+					"blindsight": null,
+					"tremorsense": null,
+					"truesight": null
+				},
 				"units": null,
 				"special": ""
 			},
@@ -3588,7 +3592,7 @@
 					"system": {
 						"changes": [
 							{
-								"key": "system.attributes.movement.fly",
+								"key": "system.attributes.movement.speeds.fly",
 								"value": 10,
 								"priority": null,
 								"type": "override"

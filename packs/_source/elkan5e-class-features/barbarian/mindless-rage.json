@@ -32,22 +32,8 @@
 					"specialDuration": [],
 					"disableCondition": ""
 				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
+				"core": {
+					"sheetClass": "dnd5e.ActiveEffectSheet5e"
 				}
 			},
 			"tint": "#ffffff",
@@ -67,7 +53,8 @@
 						"priority": 5,
 						"type": "custom"
 					}
-				]
+				],
+				"conditions": "{ \n  \"k\": \"flags.elkan5e.raging\",\n  \"v\": 1 \n}"
 			},
 			"start": null,
 			"showIcon": 1,
@@ -134,7 +121,30 @@
 		"prerequisites": {
 			"level": null
 		},
-		"properties": []
+		"properties": [],
+		"advancement": {
+			"Kzg4GsGmd2cFteKu": {
+				"name": "",
+				"type": "ModifyItem",
+				"_id": "Kzg4GsGmd2cFteKu",
+				"configuration": {
+					"changes": [
+						{
+							"_id": "3qYGtHO4QcABtTCl",
+							"uuid": null,
+							"identifiers": [
+								"rage"
+							]
+						}
+					]
+				},
+				"value": {
+					"modified": []
+				},
+				"level": 0,
+				"hint": ""
+			}
+		}
 	},
 	"_id": "cmLoyJKOKmxasK3B",
 	"_key": "!items!cmLoyJKOKmxasK3B"

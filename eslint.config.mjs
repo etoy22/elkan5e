@@ -14,6 +14,7 @@ export default [
       globals: {
         foundry: "readonly",
         game: "readonly",
+        dnd5e: "readonly",
         canvas: "readonly",
         ui: "readonly",
         CONFIG: "readonly",

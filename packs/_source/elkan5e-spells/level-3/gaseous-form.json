@@ -27,22 +27,6 @@
 					"dontApply": false,
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"name": "Gaseous Form",
@@ -53,31 +37,31 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.movement.walk",
+						"key": "system.attributes.movement.speeds.walk",
 						"value": 0,
 						"priority": 20,
 						"type": "downgrade"
 					},
 					{
-						"key": "system.attributes.movement.swim",
+						"key": "system.attributes.movement.speeds.swim",
 						"value": 0,
 						"priority": 20,
 						"type": "downgrade"
 					},
 					{
-						"key": "system.attributes.movement.climb",
+						"key": "system.attributes.movement.speeds.climb",
 						"value": 0,
 						"priority": 20,
 						"type": "downgrade"
 					},
 					{
-						"key": "system.attributes.movement.burrow",
+						"key": "system.attributes.movement.speeds.burrow",
 						"value": 0,
 						"priority": 20,
 						"type": "downgrade"
 					},
 					{
-						"key": "system.attributes.movement.fly",
+						"key": "system.attributes.movement.speeds.fly",
 						"value": 1,
 						"priority": 20,
 						"type": "override"
@@ -312,10 +296,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},

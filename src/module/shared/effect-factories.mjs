@@ -140,25 +140,6 @@ export async function createDelayedSurgeEffect(customOptions = {}) {
 }
 
 /**
- * Create the Barbarian Defense effect.
- *
- * @param {Object} actor - The actor to apply the effect to
- * @param {Array} changes - The effect changes
- * @param {Object} customOptions - Additional options
- * @returns {Promise<Object>} The effect data
- */
-export async function createBarbarianDefenseEffect(actor, changes = [], customOptions = {}) {
-	const defaultOptions = {
-		name: "Barbarian Defense Bonus",
-		icon: "icons/commodities/biological/shell-tan.webp",
-		origin: actor.uuid,
-		disabled: false,
-		changes,
-	};
-	return createEffect("barbarian-defense", { ...defaultOptions, ...customOptions });
-}
-
-/**
  * Create the Drained effect.
  *
  * @param {Object} actor - The actor to apply the effect to
@@ -296,7 +277,6 @@ export default {
 	createEmptyBodyEffect,
 	createGoodberryDurationEffect,
 	createDelayedSurgeEffect,
-	createBarbarianDefenseEffect,
 	createDrainedEffect,
 	createClimberEffect,
 	createGrappledEffect,

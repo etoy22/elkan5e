@@ -164,15 +164,23 @@
 				"changes": [
 					{
 						"key": "system.bonuses.weapon.attack",
+						"type": "add",
 						"value": "+1@scale.bard.inspiration",
+						"phase": "initial",
 						"priority": 20,
-						"type": "add"
+						"_id": "WG52c1iTJO1yJ8Uk",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "system.bonuses.weapon.damage",
+						"type": "add",
 						"value": "+@scale.warchanter.warchant-damage-dice",
+						"phase": "initial",
 						"priority": 20,
-						"type": "add"
+						"_id": "NzqOrJTrvtGh03jv",
+						"conditions": "{}",
+						"replacement": ""
 					}
 				]
 			},
@@ -180,7 +188,7 @@
 			"duration": {
 				"value": 1,
 				"units": "rounds",
-				"expiry": "sourceEnd",
+				"expiry": null,
 				"expired": false
 			},
 			"description": "",
@@ -199,24 +207,8 @@
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false,
-					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
+					"expiryMode": "default",
+					"phaseStamped": true
 				}
 			},
 			"start": null,

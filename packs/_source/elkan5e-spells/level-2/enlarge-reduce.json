@@ -29,23 +29,6 @@
 					"specialDuration": [],
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "Enemy",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"tint": "#ffffff",
@@ -84,7 +67,7 @@
 						"type": "override"
 					},
 					{
-						"key": "system.attributes.movement.walk",
+						"key": "system.attributes.movement.speeds.walk",
 						"value": 5,
 						"priority": 20,
 						"type": "add"
@@ -100,6 +83,12 @@
 						"value": 1,
 						"priority": 20,
 						"type": "override"
+					},
+					{
+						"key": "system.traits.size",
+						"value": 1,
+						"priority": 20,
+						"type": "add"
 					}
 				]
 			},
@@ -134,23 +123,6 @@
 					"specialDuration": [],
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "Enemy",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"tint": "#ffffff",
@@ -201,8 +173,14 @@
 						"type": "multiply"
 					},
 					{
-						"key": "system.attributes.movement.walk",
+						"key": "system.attributes.movement.speeds.walk",
 						"value": -5,
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.size",
+						"value": -1,
 						"priority": 20,
 						"type": "add"
 					}
@@ -216,39 +194,8 @@
 	],
 	"folder": "6J3i75lfD1J0xYwA",
 	"flags": {
-		"dynamiceffects": {
-			"equipActive": true,
-			"alwaysActive": false,
-			"effects": [
-				{
-					"modSpecKey": "macro.execute",
-					"value": "EnlargeReduce @target",
-					"mode": "+",
-					"targetSpecific": false,
-					"id": 1,
-					"itemId": "l3i21wVEWMHVOXyj",
-					"active": true,
-					"_targets": [],
-					"label": "Macro Execute"
-				}
-			]
-		},
-		"dae": {
-			"activeEquipped": false,
-			"alwaysActive": false,
-			"macro": {
-				"name": "Enlarge/Reduce",
-				"img": "icons/magic/control/silhouette-grow-shrink-tan.webp",
-				"type": "script",
-				"scope": "global",
-				"command": "",
-				"author": "3Yi0HjF4PKCA4vX0",
-				"_id": null,
-				"folder": null
-			}
-		},
 		"midi-qol": {
-			"onUseMacroName": "[postActiveEffects]ActivityMacro-dnd5eactivity000,[postActiveEffects]ActivityMacro-bSof9ywHy23AsoJQ",
+			"onUseMacroName": "",
 			"effectActivation": false,
 			"itemCondition": "",
 			"reactionCondition": "",
@@ -402,7 +349,9 @@
 					"parts": []
 				},
 				"save": {
-					"ability": "con",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -413,24 +362,6 @@
 				"appliedEffects": [
 					"1SHg1KCgSQvbyXVw"
 				],
-				"macroData": {
-					"name": "Save (Enlarge)",
-					"command": "return await elkan5e.macros.spells.enlarge(workflow);"
-				},
-				"flags": {
-					"dae": {
-						"macro": {
-							"name": "Save (Enlarge)",
-							"img": "systems/dnd5e/icons/svg/activity/save.svg",
-							"type": "script",
-							"scope": "global",
-							"command": "return await elkan5e.macros.spells.enlarge(workflow);",
-							"author": "vHqSHJMdmEO6Mk2C",
-							"_id": null,
-							"folder": null
-						}
-					}
-				},
 				"friendlySave": "friendlyFail",
 				"otherActivityId": "none",
 				"visibility": {
@@ -496,7 +427,9 @@
 					"parts": []
 				},
 				"save": {
-					"ability": "con",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -508,24 +441,6 @@
 				"appliedEffects": [
 					"hCTBIqpD4gHYtMiB"
 				],
-				"macroData": {
-					"name": "Save (Reduce)",
-					"command": "return await elkan5e.macros.spells.reduce(workflow);"
-				},
-				"flags": {
-					"dae": {
-						"macro": {
-							"name": "Save (Reduce)",
-							"img": "systems/dnd5e/icons/svg/activity/save.svg",
-							"type": "script",
-							"scope": "global",
-							"command": "return await elkan5e.macros.spells.reduce(workflow);",
-							"author": "vHqSHJMdmEO6Mk2C",
-							"_id": null,
-							"folder": null
-						}
-					}
-				},
 				"friendlySave": "friendlyFail",
 				"otherActivityId": "none"
 			}

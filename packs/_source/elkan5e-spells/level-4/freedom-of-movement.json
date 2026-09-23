@@ -27,22 +27,6 @@
 					"disableIncapacitated": false,
 					"dontApply": false,
 					"macroRepeat": "none"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"name": "Freedom of Movement",
@@ -65,7 +49,7 @@
 						"type": "add"
 					},
 					{
-						"key": "system.attributes.movement.swim",
+						"key": "system.attributes.movement.speeds.swim",
 						"value": "@attributes.movement.walk",
 						"priority": 25,
 						"type": "upgrade"
@@ -208,10 +192,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},

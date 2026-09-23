@@ -33,45 +33,94 @@
 			"level": null
 		},
 		"properties": [],
-		"requirements": "Chthonic 14"
+		"requirements": "Chthonic 14",
+		"advancement": {
+			"5QvskjSdEZaX50ZE": {
+				"name": "",
+				"type": "ItemGrant",
+				"_id": "5QvskjSdEZaX50ZE",
+				"configuration": {
+					"items": [
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.vWQiuirTFxetH3lm",
+							"optional": false
+						}
+					],
+					"optional": false,
+					"sorting": "m",
+					"spell": {
+						"ability": [],
+						"method": "innate",
+						"uses": {
+							"max": "",
+							"per": "",
+							"requireSlot": false
+						}
+					}
+				},
+				"value": {},
+				"level": 0,
+				"hint": ""
+			}
+		}
 	},
 	"effects": [
 		{
 			"name": "Aspect of the Underworld",
-			"img": "icons/svg/aura.svg",
+			"img": "icons/environment/wilderness/statue-hound-horned.webp",
 			"_id": "LJX9XAfANj57qzWW",
 			"type": "base",
 			"system": {
 				"changes": [
 					{
 						"key": "system.attributes.senses.ranges.darkvision",
+						"type": "upgrade",
 						"value": 120,
+						"phase": "initial",
 						"priority": 20,
-						"type": "upgrade"
+						"_id": "2HPG6CrIRPTZyIa3",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "token.detectionModes.basicSight.range",
+						"type": "upgrade",
 						"value": 120,
+						"phase": "initial",
 						"priority": 20,
-						"type": "upgrade"
+						"_id": "QrgZ69JiLeWq34zT",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "system.attributes.senses.ranges.blindsight",
+						"type": "upgrade",
 						"value": 60,
+						"phase": "initial",
 						"priority": 20,
-						"type": "upgrade"
+						"_id": "fZrrbmHHJqrHPzUv",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "token.detectionModes.blindsight.range",
+						"type": "upgrade",
 						"value": 60,
+						"phase": "initial",
 						"priority": 20,
-						"type": "upgrade"
+						"_id": "Sdg0hFdTGBHldYgp",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
-						"key": "system.attributes.movement.climb",
+						"key": "system.attributes.movement.speeds.climb",
+						"type": "upgrade",
 						"value": "@attributes.movement.walk",
+						"phase": "initial",
 						"priority": 20,
-						"type": "upgrade"
+						"_id": "UatrCoj5qaLZ5M3G",
+						"conditions": "{}",
+						"replacement": ""
 					}
 				]
 			},
@@ -94,23 +143,9 @@
 					"stackable": "noneName",
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
+					"specialDuration": [],
+					"expiryMode": "default",
+					"phaseStamped": true
 				}
 			},
 			"start": null,

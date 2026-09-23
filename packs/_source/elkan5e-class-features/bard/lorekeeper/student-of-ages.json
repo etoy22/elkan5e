@@ -32,88 +32,46 @@
 			"subtype": ""
 		},
 		"requirements": "Lorekeeper 10",
-		"activities": {
-			"dnd5eactivity000": {
-				"_id": "dnd5eactivity000",
-				"type": "utility",
-				"activation": {
-					"type": "special",
-					"value": 1,
-					"condition": "",
-					"override": false
-				},
-				"consumption": {
-					"targets": [
-						{
-							"type": "itemUses",
-							"target": "",
-							"value": "1",
-							"scaling": {
-								"mode": "",
-								"formula": ""
-							}
-						}
-					],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"concentration": false,
-					"value": "",
-					"units": "",
-					"special": "",
-					"override": false
-				},
-				"effects": [],
-				"range": {
-					"units": "",
-					"special": "",
-					"override": false
-				},
-				"target": {
-					"template": {
-						"count": "",
-						"contiguous": false,
-						"type": "",
-						"size": "",
-						"width": "",
-						"height": "",
-						"units": ""
-					},
-					"affects": {
-						"count": "",
-						"type": "",
-						"choice": false,
-						"special": ""
-					},
-					"prompt": true,
-					"override": false
-				},
-				"uses": {
-					"spent": 0,
-					"max": "",
-					"recovery": []
-				},
-				"roll": {
-					"formula": "",
-					"name": "",
-					"prompt": false,
-					"visible": false
-				}
-			}
-		},
+		"activities": {},
 		"identifier": "student-of-ages",
 		"enchant": {},
 		"prerequisites": {
 			"level": null
 		},
-		"properties": []
+		"properties": [],
+		"advancement": {
+			"bCzjaeAdLt3PMajP": {
+				"name": "",
+				"type": "ItemGrant",
+				"_id": "bCzjaeAdLt3PMajP",
+				"configuration": {
+					"items": [
+						{
+							"optional": false,
+							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.zWjDq2YlL1XWOcji"
+						},
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.DtqyQCHrAX96VclO",
+							"optional": false
+						}
+					],
+					"optional": false,
+					"sorting": "m",
+					"spell": {
+						"ability": [],
+						"method": "innate",
+						"uses": {
+							"max": "",
+							"per": "",
+							"requireSlot": false
+						}
+					}
+				},
+				"value": {},
+				"level": 0,
+				"hint": ""
+			}
+		}
 	},
 	"effects": [
 		{
@@ -142,23 +100,10 @@
 					"stackable": "noneName",
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
+					"specialDuration": [],
+					"disableCondition": "",
+					"expiryMode": "default",
+					"phaseStamped": true
 				}
 			},
 			"tint": "#ffffff",
@@ -168,9 +113,13 @@
 				"changes": [
 					{
 						"key": "system.traits.languages.custom",
+						"type": "custom",
 						"value": "Understands all written language",
+						"phase": "initial",
 						"priority": 20,
-						"type": "custom"
+						"_id": "BvIcBzHJDBxFZlT8",
+						"conditions": "{}",
+						"replacement": ""
 					}
 				]
 			},

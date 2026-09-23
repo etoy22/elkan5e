@@ -4,133 +4,68 @@
 	"img": "icons/magic/sonic/explosion-shock-wave-teal.webp",
 	"effects": [
 		{
-			"name": "Deafened",
-			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.4ZjQNyTUBKeMnes4",
-			"duration": {
-				"value": 1,
-				"units": "rounds",
-				"expiry": "sourceEnd",
-				"expired": false
-			},
+			"name": "Improved  Blasting Volume",
+			"img": "icons/magic/sonic/explosion-shock-wave-teal.webp",
+			"type": "enchantment",
 			"transfer": false,
-			"disabled": false,
-			"_id": "cIBtirPciHEdsfA9",
-			"description": "",
-			"statuses": [],
-			"flags": {
-				"dae": {
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"stackable": "noneName",
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": [],
-					"disableIncapacitated": false,
-					"enableCondition": "",
-					"disableCondition": "",
-					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
-				}
-			},
-			"tint": "#ffffff",
-			"img": "modules/elkan5e/icons/conditions/deafened.svg",
-			"type": "base",
+			"_id": "TBk1b393dmSqUGlQ",
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.disadvantage.ability.check.dex",
-						"value": 1,
-						"priority": 1,
-						"type": "override"
+						"key": "activities[save].damage.parts",
+						"type": "add",
+						"value": "[[\"1@scale.bard.inspiration\"\", \"\"thunder\"\"]]",
+						"phase": "initial",
+						"priority": null,
+						"_id": "ll0nGXMw23bkDuXZ",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
-						"key": "system.abilities.dex.save.roll.mode",
-						"value": 1,
-						"priority": 1,
-						"type": "override"
+						"key": "system.description.value",
+						"type": "override",
+						"value": "<p><em>You can expend a bardic inspiration die to blast nearby creatures with magical and extremely loud noise.</em></p> <p><strong>Action</strong> - 30 ft. Cone - Magical - 1 Round</p> <p>When you use this ability, you end the silenced condition on yourself, and dispel any magical zones of silence in the area that are eligible to be dispelled by <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.oZwKW3I3yzrSdpLE]{Dispel Magic}</em> .</p> <p><strong>[[/save constitution]]{Constitution Save}</strong></p> <ul>     <li>         <p><strong>Failure:</strong> Target takes &reference[Thunder] damage equal to four rolls of your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh]{bardic inspiration} die and target is &reference[deafened].</p>     </li>     <li>         <p><strong>Success:</strong> Half damage.</p>     </li> </ul>",
+						"phase": "initial",
+						"priority": null,
+						"_id": "Sq4jIIv5vw8qsxkR",
+						"conditions": "{}",
+						"replacement": ""
 					}
-				]
+				],
+				"origin": {
+					"actor": null,
+					"behavior": null,
+					"effect": null,
+					"item": null,
+					"message": null
+				},
+				"magical": true
 			},
+			"disabled": false,
 			"start": null,
-			"showIcon": 2,
-			"folder": null,
-			"_key": "!items.effects!4ZjQNyTUBKeMnes4.cIBtirPciHEdsfA9"
-		},
-		{
-			"name": "Improved  Blasting Volume",
-			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.4ZjQNyTUBKeMnes4",
 			"duration": {
-				"value": 1,
-				"units": "rounds",
-				"expiry": "turnStart",
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
 				"expired": false
 			},
-			"transfer": false,
-			"disabled": false,
-			"_id": "aJt2jzmH7iVQdFpS",
 			"description": "",
-			"statuses": [],
-			"flags": {
-				"dae": {
-					"disableIncapacitated": false,
-					"selfTarget": true,
-					"selfTargetAlways": true,
-					"dontApply": false,
-					"stackable": "noneName",
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
-				}
-			},
+			"origin": null,
 			"tint": "#ffffff",
-			"img": "icons/magic/sonic/explosion-shock-wave-teal.webp",
-			"type": "base",
-			"system": {
-				"changes": [
-					{
-						"key": "system.traits.ci.value",
-						"value": "muted",
-						"priority": 20,
-						"type": "custom"
-					}
-				]
-			},
-			"start": null,
+			"statuses": [],
 			"showIcon": 1,
 			"folder": null,
-			"_key": "!items.effects!4ZjQNyTUBKeMnes4.aJt2jzmH7iVQdFpS"
+			"flags": {
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"expiryMode": "default",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"phaseStamped": true
+				}
+			},
+			"_key": "!items.effects!4ZjQNyTUBKeMnes4.TBk1b393dmSqUGlQ"
 		}
 	],
 	"folder": "lUVxmfQCDK9zwF5D",
@@ -195,116 +130,36 @@
 			"subtype": ""
 		},
 		"requirements": "College of Noise 10",
-		"activities": {
-			"dnd5eactivity000": {
-				"_id": "dnd5eactivity000",
-				"type": "save",
-				"activation": {
-					"type": "action",
-					"value": 1,
-					"condition": "",
-					"override": false
-				},
-				"consumption": {
-					"targets": [
-						{
-							"type": "itemUses",
-							"value": "1",
-							"target": "Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh"
-						}
-					],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": true
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"concentration": false,
-					"units": "inst",
-					"special": "",
-					"override": false
-				},
-				"effects": [
-					{
-						"_id": "cIBtirPciHEdsfA9",
-						"onSave": false
-					},
-					{
-						"_id": "aJt2jzmH7iVQdFpS",
-						"onSave": false
-					}
-				],
-				"range": {
-					"units": "self",
-					"special": "",
-					"override": false
-				},
-				"target": {
-					"template": {
-						"count": "",
-						"contiguous": false,
-						"type": "cone",
-						"size": "30",
-						"width": "",
-						"height": "",
-						"units": "ft"
-					},
-					"affects": {
-						"count": "",
-						"type": "",
-						"choice": false,
-						"special": ""
-					},
-					"prompt": true,
-					"override": false
-				},
-				"uses": {
-					"spent": 0,
-					"max": "",
-					"recovery": []
-				},
-				"damage": {
-					"onSave": "half",
-					"parts": [
-						{
-							"custom": {
-								"enabled": true,
-								"formula": "4@scale.bard.inspiration"
-							},
-							"number": null,
-							"denomination": null,
-							"bonus": "",
-							"types": [
-								"thunder"
-							]
-						}
-					]
-				},
-				"save": {
-					"ability": "con",
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
-					}
-				},
-				"name": "",
-				"img": "",
-				"appliedEffects": [
-					"cIBtirPciHEdsfA9",
-					"aJt2jzmH7iVQdFpS"
-				]
-			}
-		},
+		"activities": {},
 		"identifier": "improved-blasting-volume",
 		"enchant": {},
 		"prerequisites": {
 			"level": null
 		},
-		"properties": []
+		"properties": [],
+		"advancement": {
+			"NdRPLXAFZMg3alw2": {
+				"name": "",
+				"type": "ModifyItem",
+				"_id": "NdRPLXAFZMg3alw2",
+				"configuration": {
+					"changes": [
+						{
+							"_id": "TBk1b393dmSqUGlQ",
+							"uuid": null,
+							"identifiers": [
+								"blasting-volume"
+							]
+						}
+					]
+				},
+				"value": {
+					"modified": []
+				},
+				"level": 0,
+				"hint": ""
+			}
+		}
 	},
 	"_key": "!items!4ZjQNyTUBKeMnes4"
 }

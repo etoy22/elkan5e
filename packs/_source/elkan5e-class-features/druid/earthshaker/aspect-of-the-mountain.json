@@ -33,27 +33,79 @@
 			"level": null
 		},
 		"properties": [],
-		"requirements": "Earthshaker 14"
+		"requirements": "Earthshaker 14",
+		"advancement": {
+			"Hb4vdE3GWq3UCEhv": {
+				"name": "",
+				"type": "Trait",
+				"_id": "Hb4vdE3GWq3UCEhv",
+				"configuration": {
+					"allowReplacements": false,
+					"choices": [],
+					"grants": [
+						"ci:petrified"
+					],
+					"mode": "default"
+				},
+				"level": 0,
+				"hint": ""
+			},
+			"FtOspeMVKFIF8j1b": {
+				"name": "",
+				"type": "ItemGrant",
+				"_id": "FtOspeMVKFIF8j1b",
+				"configuration": {
+					"items": [
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.l3PBmfstaAN5ybn3",
+							"optional": false
+						}
+					],
+					"optional": false,
+					"sorting": "m",
+					"spell": {
+						"ability": [],
+						"method": "innate",
+						"uses": {
+							"max": "",
+							"per": "",
+							"requireSlot": false
+						}
+					}
+				},
+				"value": {},
+				"level": 0,
+				"hint": ""
+			}
+		}
 	},
 	"effects": [
 		{
 			"name": "Aspect of the Mountain",
-			"img": "icons/svg/aura.svg",
+			"img": "icons/environment/wilderness/cave-entrance-mountain.webp",
 			"_id": "jBSF4BE1R9gj11iC",
 			"type": "base",
 			"system": {
 				"changes": [
 					{
 						"key": "token.detectionModes.feelTremor.range",
+						"type": "upgrade",
 						"value": 60,
+						"phase": "initial",
 						"priority": 20,
-						"type": "upgrade"
+						"_id": "8mkAVRMw1if09t4m",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
-						"key": "system.attributes.movement.burrow",
+						"key": "system.attributes.movement.speeds.burrow",
+						"type": "add",
 						"value": "+5",
+						"phase": "initial",
 						"priority": 20,
-						"type": "add"
+						"_id": "HFGqh4V7NnbZvKhd",
+						"conditions": "{}",
+						"replacement": ""
 					}
 				]
 			},
@@ -76,23 +128,9 @@
 					"stackable": "noneName",
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
+					"specialDuration": [],
+					"expiryMode": "default",
+					"phaseStamped": true
 				}
 			},
 			"start": null,

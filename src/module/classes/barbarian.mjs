@@ -140,7 +140,7 @@ const BLOODRAGER_ORIGIN_CONFIG = {
 			{ label: "Acid (Black Dragon / Copper Dragon)", id: "5F1s1v4KV38cuGGc" },
 			{ label: "Cold (Silver Dragon / White Dragon)", id: "jvdWHOFY6rLvcHiF" },
 			{ label: "Fire (Red Dragon)", id: "MnbsIswRTHbhzwQf" },
-			{ label: "Lightning (Blue Dragon)", id: "RKDK2wY0gQ5AZwhl" },
+			{ label: "Electric (Blue Dragon)", id: "RKDK2wY0gQ5AZwhl" },
 			{ label: "Necrotic", id: "fYqI43veyIOTozP6" },
 			{ label: "Poison (Gold Dragon / Green Dragon)", id: "fnSUIhgUgATyzU5r" },
 			{ label: "Psychic (Brass Dragon)", id: "5ooYzCYY96MQPsOM" },

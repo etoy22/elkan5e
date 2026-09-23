@@ -52,7 +52,7 @@ import {
 	initFeatIdentifierMap,
 	onFilterOwnedFeats,
 } from "./module/feats.mjs";
-import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
+import { armor } from "./module/rules/armor.mjs";
 import { speed } from "./module/rules/speed.mjs";
 import {
 	conditions,
@@ -370,12 +370,6 @@ function registerHooks() {
 		} catch (error) {
 			console.error("Elkan 5e | Error cleaning goodberry effect:", error);
 		}
-
-		try {
-			await Promise.resolve(Spells.returnToNormalSize(effect));
-		} catch (error) {
-			console.error("Elkan 5e | Error restoring token size:", error);
-		}
 	});
 
 	Hooks.on("deleteItem", async (item, options, userId) => {
@@ -435,14 +429,6 @@ function registerHooks() {
 			await handleHazardExhaustion(effect);
 		} catch (error) {
 			console.error("Elkan 5e | Error in updateActiveEffect hazard exhaustion hook:", error);
-		}
-	});
-
-	Hooks.on("updateItem", (item) => {
-		try {
-			updateBarbarianDefense(item.parent, "updateItem");
-		} catch (error) {
-			console.error("Elkan 5e | Error in updateItem hook:", error);
 		}
 	});
 
@@ -517,12 +503,6 @@ function registerHooks() {
 	});
 
 	Hooks.on("updateActor", async (actor, changes) => {
-		try {
-			await updateBarbarianDefense(actor, "updateActor");
-		} catch (error) {
-			console.error("Elkan 5e | Error in updateActor hook:", error);
-		}
-
 		try {
 			await handleDeadGrapplePrompt(actor);
 		} catch (error) {

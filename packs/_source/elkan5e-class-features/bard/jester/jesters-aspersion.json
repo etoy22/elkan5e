@@ -25,78 +25,180 @@
 		},
 		"requirements": "Jester 10",
 		"activities": {
-			"dnd5eactivity000": {
-				"_id": "dnd5eactivity000",
-				"type": "save",
+			"IqqkyhV6UNrL6M98": {
+				"type": "damage",
+				"name": "",
+				"_id": "IqqkyhV6UNrL6M98",
+				"img": "",
 				"activation": {
-					"type": "special",
-					"value": 1,
-					"condition": "",
-					"override": false
+					"type": "action",
+					"override": false,
+					"condition": ""
 				},
+				"behaviors": [],
 				"consumption": {
-					"targets": [],
 					"scaling": {
-						"allowed": false,
-						"max": ""
+						"allowed": false
 					},
-					"spellSlot": true
+					"spellSlot": true,
+					"targets": []
 				},
 				"description": {
+					"value": "",
 					"chatFlavor": ""
 				},
 				"duration": {
+					"units": "inst",
+					"expiry": null,
 					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"units": "self",
+					"override": false,
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"stationary": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"type": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false,
+					"identifier": ""
+				},
+				"damage": {
+					"critical": {
+						"allow": false
+					},
+					"parts": [
+						{
+							"custom": {
+								"enabled": true,
+								"formula": "1@scale.bard.inspiration"
+							},
+							"number": null,
+							"denomination": null,
+							"bonus": "",
+							"modifiers": [],
+							"types": [
+								"psychic"
+							],
+							"scaling": {
+								"number": 1
+							}
+						}
+					]
+				}
+			},
+			"abgN2f2b7n0GEKKT": {
+				"type": "enchant",
+				"name": "",
+				"_id": "abgN2f2b7n0GEKKT",
+				"img": "",
+				"activation": {
+					"type": "action",
+					"override": false,
+					"condition": ""
+				},
+				"behaviors": [],
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
 					"value": "",
-					"units": "",
-					"special": "",
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"expiry": null,
+					"concentration": false,
 					"override": false
 				},
 				"effects": [
 					{
-						"_id": "6Zh1hXlobcNOmlpT",
-						"onSave": false
+						"_id": "iwBe9DwkAIryWzHs",
+						"uuid": null,
+						"level": {
+							"min": null,
+							"max": null
+						},
+						"riders": {
+							"activity": [
+								"IqqkyhV6UNrL6M98"
+							],
+							"effect": [],
+							"item": []
+						}
 					}
 				],
 				"range": {
-					"units": "",
-					"special": "",
-					"override": false
+					"units": "self",
+					"override": false,
+					"special": ""
 				},
 				"target": {
 					"template": {
-						"count": "",
 						"contiguous": false,
-						"type": "",
-						"size": "",
-						"width": "",
-						"height": "",
-						"units": ""
+						"stationary": false,
+						"units": "ft",
+						"type": ""
 					},
 					"affects": {
-						"count": "1",
-						"type": "creature",
 						"choice": false,
-						"special": ""
+						"type": ""
 					},
-					"prompt": true,
-					"override": false
+					"override": false,
+					"prompt": true
 				},
 				"uses": {
 					"spent": 0,
-					"max": "",
-					"recovery": []
+					"recovery": [],
+					"max": ""
 				},
-				"damage": {
-					"onSave": "half",
-					"parts": []
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false,
+					"identifier": ""
 				},
-				"save": {
-					"ability": "wis",
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
-					}
+				"enchant": {
+					"self": false
+				},
+				"restrictions": {
+					"allowMagical": false,
+					"categories": [],
+					"properties": [],
+					"type": ""
 				}
 			}
 		},
@@ -105,10 +207,77 @@
 		"prerequisites": {
 			"level": null
 		},
-		"properties": []
+		"properties": [],
+		"advancement": {
+			"D24WO6Gq5CMqRTls": {
+				"name": "",
+				"type": "ModifyItem",
+				"_id": "D24WO6Gq5CMqRTls",
+				"configuration": {
+					"changes": [
+						{
+							"_id": "iwBe9DwkAIryWzHs",
+							"uuid": null,
+							"identifiers": [
+								"cutting-words"
+							]
+						}
+					]
+				},
+				"value": {
+					"modified": []
+				},
+				"level": 0,
+				"hint": ""
+			}
+		}
 	},
 	"img": "icons/magic/sonic/bell-alarm-red-purple.webp",
-	"effects": [],
+	"effects": [
+		{
+			"name": "Jester's Aspersion",
+			"img": "icons/magic/sonic/bell-alarm-red-purple.webp",
+			"type": "enchantment",
+			"transfer": false,
+			"_id": "iwBe9DwkAIryWzHs",
+			"system": {
+				"changes": [],
+				"origin": {
+					"actor": null,
+					"behavior": null,
+					"effect": null,
+					"item": null,
+					"message": null
+				},
+				"magical": true
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"origin": null,
+			"tint": "#ffffff",
+			"statuses": [],
+			"showIcon": 1,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"enableCondition": "",
+					"disableCondition": "",
+					"expiryMode": "default",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"phaseStamped": true
+				}
+			},
+			"_key": "!items.effects!f71fyym4jcBrftdZ.iwBe9DwkAIryWzHs"
+		}
+	],
 	"folder": "k6HVpRgLfky7iqqr",
 	"flags": {
 		"midi-qol": {
@@ -142,6 +311,13 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [
+					"IqqkyhV6UNrL6M98"
+				]
+			}
 		}
 	},
 	"_id": "f71fyym4jcBrftdZ",

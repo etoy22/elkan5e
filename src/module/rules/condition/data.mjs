@@ -112,7 +112,7 @@ const CONDITION_DEFS = [
 		changes: [
 			{ key: "system.attributes.ac.bonus", mode: 2, value: "+2" },
 			{ key: "system.abilities.dex.bonuses.save", mode: 2, value: "+2" },
-			{ key: "system.attributes.movement.all", mode: 0, value: "*2" },
+			{ key: "system.attributes.movement.multiplier", mode: 1, value: "2" },
 		],
 	},
 	{
@@ -123,11 +123,7 @@ const CONDITION_DEFS = [
 			{ key: "flags.midi-qol.noActions", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.noBonusActions", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.noReactions", mode: 5, value: "1" },
-			{ key: "system.attributes.movement.walk", mode: 5, value: "0" },
-			{ key: "system.attributes.movement.fly", mode: 5, value: "0" },
-			{ key: "system.attributes.movement.swim", mode: 5, value: "0" },
-			{ key: "system.attributes.movement.climb", mode: 5, value: "0" },
-			{ key: "system.attributes.movement.burrow", mode: 5, value: "0" },
+			{ key: "system.attributes.movement.multiplier", mode: 1, value: "0" },
 			{ key: "flags.midi-qol.fail.ability.save.str", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.fail.ability.save.dex", mode: 5, value: "1" },
 			{ key: "flags.midi-qol.fail.ability.check.str", mode: 5, value: "1" },
@@ -477,7 +473,7 @@ const STATUS_DEFS = [
 			{ key: "flags.midi-qol.disadvantage.attack.all", mode: 5, value: "1" },
 			{ key: "system.abilities.dex.save.roll.mode", mode: 5, value: "-1" },
 			{ key: "flags.midi-qol.grants.advantage.attack.all", mode: 5, value: "1" },
-			{ key: "system.attributes.movement.all", mode: 0, value: "*0.5" },
+			{ key: "system.attributes.movement.multiplier", mode: 1, value: "0.5" },
 		],
 	},
 	{

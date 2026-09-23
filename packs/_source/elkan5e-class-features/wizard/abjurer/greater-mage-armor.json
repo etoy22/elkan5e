@@ -18,23 +18,6 @@
 					"enableCondition": "",
 					"disableCondition": "",
 					"disableIncapacitated": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"radius": "",
-					"aura": "None",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"displayTemp": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"disabled": false,
@@ -55,16 +38,14 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.ac.calc",
-						"value": "custom",
-						"priority": 5,
-						"type": "override"
-					},
-					{
 						"key": "system.attributes.ac.formula",
 						"value": "14 + @abilities.dex.mod",
 						"priority": 20,
-						"type": "override"
+						"type": "add",
+						"phase": "initial",
+						"_id": "Ozs2uKwYQ40ZcbA5",
+						"conditions": "{}",
+						"replacement": "origin"
 					}
 				]
 			},

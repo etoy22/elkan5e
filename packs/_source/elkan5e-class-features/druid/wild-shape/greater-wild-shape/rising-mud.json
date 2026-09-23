@@ -67,7 +67,12 @@
 				"effects": [
 					{
 						"_id": "9sbEP7kJCkRTEMIX",
-						"onSave": false
+						"uuid": null,
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -105,18 +110,44 @@
 					"parts": []
 				},
 				"save": {
-					"ability": "str",
+					"ability": [
+						"str"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
-					}
+					},
+					"bonus": ""
 				},
 				"name": "",
 				"img": "",
 				"appliedEffects": [
 					"9sbEP7kJCkRTEMIX"
 				],
-				"effectConditionText": "!target.traits.ci.value.has('grappled')"
+				"effectConditionText": "!target.traits.ci.value.has('grappled')",
+				"behaviors": [
+					{
+						"name": "",
+						"_id": "vnuxBE7IsGKS3eWy",
+						"type": "difficultTerrain",
+						"config": {
+							"types": [
+								"mud"
+							]
+						},
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": ""
+				}
 			},
 			"cuiYdZxwhGufdUtI": {
 				"type": "save",
@@ -147,7 +178,12 @@
 				"effects": [
 					{
 						"_id": "9sbEP7kJCkRTEMIX",
-						"onSave": false
+						"uuid": null,
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -185,11 +221,14 @@
 					"parts": []
 				},
 				"save": {
-					"ability": "str",
+					"ability": [
+						"str"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
-					}
+					},
+					"bonus": ""
 				},
 				"name": "Save (Continuous Effect)",
 				"useConditionText": "",
@@ -199,7 +238,30 @@
 				"img": "",
 				"appliedEffects": [
 					"9sbEP7kJCkRTEMIX"
-				]
+				],
+				"behaviors": [
+					{
+						"name": "",
+						"_id": "WY4P4uawNrdPMPpe",
+						"type": "difficultTerrain",
+						"config": {
+							"types": [
+								"mud"
+							]
+						},
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": ""
+				}
 			}
 		},
 		"identifier": "rising-mud",
@@ -222,22 +284,6 @@
 				"expired": false
 			},
 			"flags": {
-				"ActiveAuras": {
-					"isAura": false,
-					"radius": "",
-					"aura": "None",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"displayTemp": false,
-					"wallsBlock": "system"
-				},
 				"dae": {
 					"disableIncapacitated": false,
 					"selfTarget": false,
@@ -248,7 +294,9 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"enableCondition": "",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default",
+					"phaseStamped": true
 				}
 			},
 			"_id": "9sbEP7kJCkRTEMIX",
@@ -262,9 +310,13 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.OverTime",
+						"type": "add",
 						"value": "turn=end,\nsaveAbility=str,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Rising Mud (On Fail First Time Give Restrained)",
+						"phase": "initial",
 						"priority": 20,
-						"type": "add"
+						"_id": "q3aTNaqYcgGkdKym",
+						"conditions": "{}",
+						"replacement": ""
 					}
 				]
 			},

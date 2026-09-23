@@ -19,22 +19,6 @@
 					"enableCondition": "",
 					"disableCondition": "",
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"ignoreSelf": false,
-					"hidden": false,
-					"height": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"disabled": false,
@@ -55,7 +39,7 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.movement.fly",
+						"key": "system.attributes.movement.speeds.fly",
 						"type": "upgrade",
 						"value": 20,
 						"phase": "initial",
@@ -237,10 +221,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},

@@ -162,11 +162,13 @@
 				"bonus": ""
 			},
 			"movement": {
-				"burrow": null,
-				"climb": null,
-				"fly": null,
-				"swim": 30,
-				"walk": 30,
+				"speeds": {
+					"walk": 30,
+					"burrow": null,
+					"climb": null,
+					"fly": null,
+					"swim": 30
+				},
 				"units": "ft",
 				"hover": false,
 				"ignoredDifficultTerrain": []
@@ -2996,13 +2998,13 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.movement.walk",
+						"key": "system.attributes.movement.speeds.walk",
 						"value": 30,
 						"priority": null,
 						"type": "upgrade"
 					},
 					{
-						"key": "system.attributes.movement.swim",
+						"key": "system.attributes.movement.speeds.swim",
 						"value": 30,
 						"priority": null,
 						"type": "upgrade"

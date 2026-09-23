@@ -6,7 +6,7 @@
 	"img": "icons/magic/air/wind-weather-snow-gusts.webp",
 	"system": {
 		"description": {
-			"value": "<p><em>You create strong winds in an area.</em></p><p><strong>Bonus Action</strong> - 30 ft. Radius (100 ft.) - 10 Minute - Magical</p><ul><li><p>You control the winds to impose disadvantage on all ranged attacks that move through the storm.</p></li><li><p>If you're outside, you also create stormy clouds above the target, which count as stormy weather for the purpose of other spells.</p></li></ul>",
+			"value": "<p><em>You create strong winds in an area.</em></p><p><strong>Bonus Action</strong> - 30 ft. Radius (100 ft.) - 10 Minute - Magical</p><ul><li><p>You control the winds to impose &amp;reference[disadvantage] on all ranged attacks that move through the storm.</p></li><li><p>If you're outside, you also create stormy clouds above the target, which count as stormy weather for the purpose of other spells.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -64,15 +64,7 @@
 					"special": "",
 					"override": false
 				},
-				"effects": [
-					{
-						"_id": "u0OEHqtST3LTBCTo",
-						"level": {
-							"min": null,
-							"max": null
-						}
-					}
-				],
+				"effects": [],
 				"range": {
 					"value": "100",
 					"units": "ft",
@@ -139,7 +131,23 @@
 					],
 					"wallRestriction": "move",
 					"regionVisibility": 2
-				}
+				},
+				"behaviors": [
+					{
+						"name": "",
+						"_id": "iXYMpdafHogS5XR5",
+						"type": "applyActiveEffect",
+						"config": {
+							"effects": [],
+							"sizes": [],
+							"types": []
+						},
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				]
 			}
 		},
 		"identifier": "howling-storm",
@@ -163,29 +171,38 @@
 						"type": "add",
 						"value": 1,
 						"phase": "initial",
-						"priority": null
+						"priority": null,
+						"_id": "68QCsivnhmGHQMb5",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "flags.midi-qol.disadvantage.attack.mwak",
 						"type": "add",
 						"value": 1,
 						"phase": "initial",
-						"priority": null
+						"priority": null,
+						"_id": "hIvGOh8o3gyJcwjy",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "system.attributes.movement.all",
 						"type": "custom",
 						"value": "/2",
 						"phase": "final",
-						"priority": null
+						"priority": null,
+						"_id": "UBhQ5tbeVA4Hh0r5",
+						"conditions": "{}",
+						"replacement": ""
 					}
 				]
 			},
 			"disabled": false,
 			"start": null,
 			"duration": {
-				"value": null,
-				"units": "seconds",
+				"value": 10,
+				"units": "minutes",
 				"expiry": null,
 				"expired": false
 			},
@@ -206,7 +223,8 @@
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false,
-					"specialDuration": []
+					"specialDuration": [],
+					"phaseStamped": true
 				}
 			},
 			"_key": "!items.effects!egJvmduymeZBW7Uf.u0OEHqtST3LTBCTo"

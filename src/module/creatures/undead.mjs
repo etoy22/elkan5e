@@ -38,7 +38,10 @@ export async function undeadFortitude(actor, amount, _updates, options) {
 	const currentHp = Number(actor.system?.attributes?.hp?.value ?? 0);
 	if (currentHp - amount > 0) return;
 
-	const activityType = options?.originatingMessage?.flags?.dnd5e?.activity?.type;
+	const activityType =
+		options?.originatingMessage?.getAssociatedActivity?.()?.type ??
+		options?.originatingMessage?.system?.activity?.type ??
+		options?.originatingMessage?.flags?.dnd5e?.activity?.type;
 	const isAttackOrSave =
 		["attack", "save"].includes(activityType) ||
 		options?.midi?.isHit === true ||

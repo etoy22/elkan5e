@@ -14,21 +14,6 @@
 					"selfTargetAlways": false,
 					"durationExpression": "",
 					"macroRepeat": "none"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"ignoreSelf": false,
-					"hidden": false,
-					"height": false,
-					"alignment": "",
-					"type": "",
-					"aura": "None",
-					"radius": null,
-					"save": "",
-					"savedc": null,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false
 				}
 			},
 			"disabled": false,
@@ -49,7 +34,7 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.movement.climb",
+						"key": "system.attributes.movement.speeds.climb",
 						"value": "@attributes.movement.walk",
 						"priority": 20,
 						"type": "upgrade"
@@ -213,10 +198,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},

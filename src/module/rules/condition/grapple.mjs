@@ -94,7 +94,7 @@ const DRAG_IGNORE = new Set();
  * @param {Actor} actor
  * @returns {number}
  */
-const getClimbSpeed = (actor) => Number(actor?.system?.attributes?.movement?.climb ?? 0);
+const getClimbSpeed = (actor) => Number(actor?.system?.attributes?.movement?.speeds?.climb ?? 0);
 
 /**
  * Remove the temporary climber advantage effect from the grappler.
@@ -402,7 +402,7 @@ const applyElkanGrapple = async ({
 	const restrainedBaseChanges = getConditionChanges("restrained");
 	const restrainedSigs = new Set(restrainedBaseChanges.map(changeSignature));
 	let changes = foundry.utils.duplicate(current?.changes ?? []).filter((change) => {
-		if (change?.key === "system.attributes.movement.all") return false;
+		if (change?.key === "system.attributes.movement.multiplier") return false;
 		if (
 			change?.key === "flags.midi-qol.disadvantage.attack.all" &&
 			String(change?.value ?? "").includes(grappler.uuid)
@@ -420,8 +420,8 @@ const applyElkanGrapple = async ({
 	if (sizeDiff >= 0) {
 		addChanges([
 			{
-				key: "system.attributes.movement.all",
-				mode: 0,
+				key: "system.attributes.movement.multiplier",
+				mode: 1,
 				value: "0",
 				priority: 60,
 			},
@@ -429,9 +429,9 @@ const applyElkanGrapple = async ({
 	} else if (sizeDiff === -1) {
 		addChanges([
 			{
-				key: "system.attributes.movement.all",
-				mode: 0,
-				value: "*0.5",
+				key: "system.attributes.movement.multiplier",
+				mode: 1,
+				value: "0.5",
 				priority: 60,
 			},
 		]);
@@ -452,8 +452,8 @@ const applyElkanGrapple = async ({
 				const climberEffect = await createClimberEffect(targetActor, grappler, {
 					changes: [
 						{
-							key: "system.attributes.movement.all",
-							mode: 0,
+							key: "system.attributes.movement.multiplier",
+							mode: 1,
 							value: "0",
 							priority: 60,
 						},

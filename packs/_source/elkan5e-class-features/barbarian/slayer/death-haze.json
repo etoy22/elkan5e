@@ -5,7 +5,7 @@
 	"img": "icons/magic/unholy/beams-impact-pink.webp",
 	"system": {
 		"description": {
-			"value": "<p><em>When you enter rage, you feel as though you are dying, passing part way into the veil between life and death.</em></p><p>While raging, you gain the following benefits:</p><ul><li><p>You are resistant to &amp;reference[necrotic] damage.</p></li><li><p>You are immune to the &amp;reference[drained] and &amp;reference[exhaustion] conditions, and those conditions are removed from you when you enter rage.</p></li><li><p>You are immune to any effect that ages you or which can instantly drop you to 0 hit points. These effects, such as a ghost's horrifying visage or wail of the banshee, deal no damage to you.</p></li></ul>",
+			"value": "<p><em>When you enter rage, you feel as though you are dying, passing part way into the veil between life and death.</em></p><p>While raging, you gain the following benefits:</p><ul><li><p>You are resistant to &amp;reference[necrotic] damage.</p></li><li><p>You are immune to the &amp;reference[drained apply=false] and &amp;reference[exhaustion apply=false] conditions, and those conditions are removed from you when you enter rage.</p></li><li><p>You are immune to any effect that ages you or which can instantly drop you to 0 hit points. These effects, such as a ghost's horrifying visage or wail of the banshee, deal no damage to you.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -216,12 +216,13 @@
 						"phase": "final",
 						"priority": 20
 					}
-				]
+				],
+				"conditions": "{ \n  \"k\": \"flags.elkan5e.raging\",\n  \"v\": 1 \n}"
 			},
 			"disabled": false,
 			"start": null,
 			"duration": {
-				"value": 60,
+				"value": null,
 				"units": "seconds",
 				"expiry": null,
 				"expired": false
@@ -245,6 +246,9 @@
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false
+				},
+				"core": {
+					"sheetClass": "dnd5e.ActiveEffectSheet5e"
 				}
 			},
 			"_key": "!items.effects!camZFNOflfJrHXrF.Z2HTyQWfRdiNMH3b"
