@@ -95,9 +95,10 @@
 - 
 
 **[Warlock](https://www.elkan5e.com/warlock)**
-- Eldritch Spear now sets Eldritch Blast's range to 300 ft. when gained (its Modify Items advancement was empty).
+- Eldritch Spear now sets Eldritch Blast's range to 300 ft. when gained.
 - Lifedrinker (Warrior) now sets Thirsting Weapon to 3 uses per short rest when gained.
-- Dreamweaver: Twisted Visions now correctly forces a Wisdom save instead of none.
+- Dreamweaver
+    - Twisted Visions now correctly forces a Wisdom save instead of none.
  
 **[Wizard](https://www.elkan5e.com/wizard)**
 - 
@@ -114,7 +115,7 @@
 
 ## Feats
 - Fixed Enraged Presence and Enraged Prowess never adding your rage bonus while raging. Skills you have expertise in are still correctly excluded.
-- Draconic Breath Control (Dragonborn): your Breath Weapon now recharges on a short rest when you gain the feat (its Modify Items advancement was empty).
+- Draconic Breath Control (Dragonborn): your Breath Weapon now recharges on a short rest when you gain the feat.
 
 ## Game Rules
 - Added Crawl as a movement type (alongside Walk/Burrow/Climb/Fly/Swim), so it can be granted or set on actors and shows up in the Speed section.
