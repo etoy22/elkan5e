@@ -10,7 +10,24 @@
 			"recovery": [],
 			"max": ""
 		},
-		"advancement": [],
+		"advancement": {
+			"YjAynE13QAhvmCPo": {
+				"name": "",
+				"type": "Trait",
+				"_id": "YjAynE13QAhvmCPo",
+				"configuration": {
+					"allowReplacements": false,
+					"choices": [],
+					"grants": [
+						"dr:psychic"
+					],
+					"mode": "default"
+				},
+				"level": 0,
+				"hint": "",
+				"value": {}
+			}
+		},
 		"description": {
 			"value": "<ul><li><p>You gain &amp;reference[truesight] to a radius of 30 ft.</p></li><li><p>You are resistant to &amp;reference[psychic] damage.</p></li><li><p>You have advantage on intelligence, wisdom, and charisma &amp;reference[savingthrow]{saving throws}.*</p></li></ul><p><em>*If you already have this feature by being a gnome, you can instead choose a feat of your choice.</em></p>",
 			"chat": ""
@@ -32,7 +49,6 @@
 			"level": null
 		},
 		"properties": [
-			"mgc",
 			"trait"
 		],
 		"requirements": "Inquisitor 14",
@@ -51,34 +67,44 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.traits.dr.value",
-						"value": "psychic",
-						"priority": 20,
-						"type": "add"
-					},
-					{
 						"key": "flags.midi-qol.advantage.ability.save.int",
+						"type": "override",
 						"value": 1,
+						"phase": "initial",
 						"priority": 20,
-						"type": "override"
+						"_id": "p3ox9GKj9WpbCZVP",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "flags.midi-qol.advantage.ability.save.wis",
+						"type": "override",
 						"value": 1,
+						"phase": "initial",
 						"priority": 20,
-						"type": "override"
+						"_id": "ZFjuYuU406MHXtn2",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "flags.midi-qol.advantage.ability.save.cha",
+						"type": "override",
 						"value": 1,
+						"phase": "initial",
 						"priority": 20,
-						"type": "override"
+						"_id": "0FekKj2Ya01j2tp7",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "system.attributes.senses.ranges.truesight",
+						"type": "upgrade",
 						"value": 30,
+						"phase": "initial",
 						"priority": 20,
-						"type": "upgrade"
+						"_id": "5WsbOrLRzyyT6qRb",
+						"conditions": "{}",
+						"replacement": ""
 					}
 				]
 			},
@@ -99,7 +125,10 @@
 					"stackable": "noneName",
 					"disableIncapacitated": false,
 					"durationExpression": "",
-					"specialDuration": []
+					"specialDuration": [],
+					"expiryMode": "default",
+					"macroRepeat": "none",
+					"phaseStamped": true
 				}
 			},
 			"start": null,

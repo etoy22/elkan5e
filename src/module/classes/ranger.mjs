@@ -1,3 +1,5 @@
+import { deleteEffects } from "../shared/helpers.mjs";
+
 /**
  * Runs Mark of Affliction class feature automation.
  *
@@ -139,55 +141,63 @@ export async function markOfThorns(workflow) {
 	}
 }
 
-// Self-effect names that indicate the ranger is currently maintaining a
-// ranger mark other than (or including) Mark for Death. Unrelenting Focus
-// only auto-applies Mark for Death damage when none of these are active.
-const RANGER_MARK_SELF_EFFECTS = [
-	"Mark for Death",
-	"Mark of Affliction",
-	"Mark of Thorns (Caster)",
-];
+// Unrelenting Focus is handled in its item data: a damage rule that applies while the
+// ranger doesn't have the rangerMark status that every ranger mark's self effect carries.
+const MARK_FOR_DEATH = "Mark for Death";
 
-export async function markForDeath(workflow) {
+/**
+ * Checks whether an effect was applied by the given actor, using its origin.
+ *
+ * @param {ActiveEffect} effect - Effect to check.
+ * @param {Actor} actor - Possible source actor.
+ * @returns {boolean}
+ */
+function isEffectFrom(effect, actor) {
+	if (!effect.origin) return false;
+	const origin =
+		globalThis.MidiQOL?.getItemFromEffectOrigin?.(effect.origin) ??
+		fromUuidSync(effect.origin, { strict: false });
+	const item = origin?.item ?? origin;
+	return item?.actor?.id === actor.id;
+}
+
+/**
+ * Gets the Mark for Death effects a ranger has placed on a creature.
+ *
+ * @param {Actor} target - Creature to check.
+ * @param {Actor} ranger - Ranger who may have marked them.
+ * @returns {ActiveEffect[]}
+ */
+const marksBy = (target, ranger) =>
+	target.effects.filter(
+		(ef) => ef.name === MARK_FOR_DEATH && !ef.disabled && isEffectFrom(ef, ranger),
+	);
+
+/**
+ * Mark for Death damage bonus (DamageBonusMacro). Adds the Mark for Death die to weapon hits
+ * against the ranger's marked creature. This needs a script because dnd5e's damage rules
+ * can't see the target.
+ *
+ * @param {object} workflow - MIDI-QOL workflow.
+ * @param {Item} [item] - The Mark for Death item.
+ * @returns {Promise<Roll|object>} Bonus damage roll, or an empty object for none.
+ */
+export async function markForDeath(workflow, item) {
 	try {
-		if (workflow.hitTargets.size === 0) return {};
-		const target = workflow.hitTargets.first();
+		if (!["mwak", "rwak"].includes(workflow.activity?.actionType)) return {};
 		const actor = workflow.actor;
-		const isMarked = target.actor?.effects?.find((ef) => {
-			const byName = ef.name === "Mark for Death";
-			if (!byName) return false;
-			const sourceItem = MidiQOL.getItemFromEffectOrigin(ef.origin ?? "");
-			return sourceItem?.uuid === macroItem.uuid;
-		});
+		const target = workflow.hitTargets.first()?.actor;
+		if (!actor || !target) return {};
 
-		// Unrelenting Focus: if the ranger isn't currently using Mark for Death
-		// or a different ranger mark, they deal Mark for Death damage on every
-		// attack regardless of whether this particular target is marked.
-		const hasUnrelentingFocus = actor?.items?.find(
-			(i) => i.system?.identifier === "unrelenting-focus",
-		);
-		const isUsingAnyMark = actor?.effects?.some((ef) =>
-			RANGER_MARK_SELF_EFFECTS.includes(ef.name),
-		);
-		const unrelentingFocusApplies = hasUnrelentingFocus && !isUsingAnyMark;
+		if (!marksBy(target, actor).length) return {};
 
-		if (!isMarked && !unrelentingFocusApplies) return {};
-
-		// ── Damage formula: prefer the ranger scale value, fall back to 1d4
-		const scaleValue = workflow.actor?.system?.scale?.ranger?.["mark-for-death"];
-		const formula = scaleValue?.formula ?? "1d4";
-		const base = workflow.item?.system?.damage?.base;
-		let damageType = "slashing";
-
-		if (base?.types instanceof Set && base.types.size > 0) {
-			[damageType] = [...base.types]; // dnd5e v4 / Foundry v14
-		}
-
-		const isCritical = workflow.isCritical;
+		const formula = actor.system?.scale?.ranger?.["mark-for-death"]?.formula ?? "1d4";
+		const types = workflow.item?.system?.damage?.base?.types;
+		const damageType = types?.size ? types.first() : "slashing";
 		return await new CONFIG.Dice.DamageRoll(
 			formula,
 			{},
-			{ type: damageType, isCritical, flavor: macroItem.name },
+			{ type: damageType, isCritical: workflow.isCritical, flavor: item?.name ?? MARK_FOR_DEATH },
 		).evaluate();
 	} catch (err) {
 		console.error("markForDeath |", err);
@@ -196,8 +206,28 @@ export async function markForDeath(workflow) {
 }
 
 /**
+ * Keeps Mark for Death on one creature: when the ranger marks a new target, their mark is
+ * removed from every other creature.
+ *
+ * @param {object} activity - Activity that was used.
+ * @returns {Promise<void>}
+ */
+export async function moveMarkForDeath(activity) {
+	if (activity?.item?.system?.identifier !== "mark-for-death" || !activity.effects?.length) return;
+	const ranger = activity.actor;
+	const targets = game.user.targets;
+	if (!ranger || !targets.size) return;
+
+	for (const token of canvas.tokens.placeables) {
+		if (!token.actor || targets.has(token)) continue;
+		const marks = marksBy(token.actor, ranger);
+		if (marks.length) await deleteEffects(token.actor, marks);
+	}
+}
+
+/**
  * Runs Precise Hunter class feature automation: grants advantage on attack
- * rolls made against a creature currently marked by Mark for Death.
+ * rolls made against a creature the ranger has marked with Mark for Death.
  *
  * @param {object} workflow - MIDI-QOL workflow.
  * @returns {Promise<void>}
@@ -215,8 +245,7 @@ export async function preciseHunterAdvantage(workflow) {
 			const targetActor = targetToken?.actor;
 			if (!targetActor) continue;
 
-			const isMarked = targetActor.effects?.some((ef) => ef.name === "Mark for Death");
-			if (isMarked) {
+			if (marksBy(targetActor, actor).length) {
 				workflow.attackRollModifierTracker?.advantage?.add("Precise Hunter");
 				break;
 			}

@@ -18,7 +18,14 @@ import {
 import { archDruid, lurkingFogDarkness } from "./module/classes/druid.mjs";
 import { improvedCriticalDamage, secondWind } from "./module/classes/fighter.mjs";
 import { elementalAttunement, onCombatTurnChange } from "./module/classes/monk.mjs";
-import { slicingBlow, sneakAttack } from "./module/classes/rogue.mjs";
+import { cleansingTouch } from "./module/classes/paladin.mjs";
+import {
+	assassinsReflexesEnd,
+	assassinsReflexesStart,
+	finishingBlow,
+	slicingBlow,
+	sneakAttack,
+} from "./module/classes/rogue.mjs";
 import {
 	carefulSpell,
 	delayedDuration,
@@ -30,12 +37,12 @@ import {
 	markForDeath,
 	markOfAffliction,
 	markOfThorns,
+	moveMarkForDeath,
 	preciseHunterAdvantage,
 } from "./module/classes/ranger.mjs";
 import {
 	lifeDrainGraveguard,
 	necromanticSurge,
-	overchannelArm,
 	overchannelOnDamageRoll,
 	overchannelOnLongRest,
 	soulConduit,
@@ -234,10 +241,21 @@ function registerHooks() {
 			console.error("Elkan 5e | Error in Wild Blood postUseActivity hook:", error);
 		}
 		try {
-			overchannelArm(activity);
+			soulConduit(activity);
 		} catch (error) {
-			console.error("Elkan 5e | Error in Overchannel postUseActivity hook:", error);
+			console.error("Elkan 5e | Error in Soul Conduit postUseActivity hook:", error);
 		}
+		try {
+			shadowRefuge(activity, usageConfig);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Shadow Refuge postUseActivity hook:", error);
+		}
+		cleansingTouch(activity, usageConfig).catch((error) => {
+			console.error("Elkan 5e | Error in Cleansing Touch postUseActivity hook:", error);
+		});
+		moveMarkForDeath(activity).catch((error) => {
+			console.error("Elkan 5e | Error in Mark for Death postUseActivity hook:", error);
+		});
 	});
 
 	Hooks.on("midi-qol.preambleComplete", async (workflow) => {
@@ -338,6 +356,12 @@ function registerHooks() {
 			await Level4.blightMaximizePlantDamage(workflow);
 		} catch (error) {
 			console.error("Elkan 5e | Error in Blight RollComplete hook:", error);
+		}
+
+		try {
+			await finishingBlow(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Finishing Blow RollComplete hook:", error);
 		}
 	});
 
@@ -525,6 +549,18 @@ function registerHooks() {
 		}
 	});
 
+	Hooks.on("combatStart", (combat) => {
+		assassinsReflexesStart(combat).catch((error) => {
+			console.error("Elkan 5e | Error in Assassin's Reflexes combatStart hook:", error);
+		});
+	});
+
+	Hooks.on("updateCombat", (combat, changes) => {
+		assassinsReflexesEnd(combat, changes).catch((error) => {
+			console.error("Elkan 5e | Error in Assassin's Reflexes updateCombat hook:", error);
+		});
+	});
+
 	Hooks.on("combatTurnChange", (combat, prior) => {
 		try {
 			onCombatTurnChange(combat, prior);
@@ -583,9 +619,7 @@ function registerHooks() {
 				push,
 				rage,
 				lurkingFogDarkness,
-				soulConduit,
 				necromanticSurge,
-				shadowRefuge,
 				infusedHealer,
 				healingOverflow,
 				secondWind,

@@ -1,4 +1,13 @@
-import { drainedEffect, forEachDamagedTarget } from "../shared/helpers.mjs";
+import {
+	drainedEffect,
+	forEachDamagedTarget,
+	markUsedThisTurn,
+	t,
+	updateActorAsGM,
+	usedThisTurn,
+} from "../shared/helpers.mjs";
+
+const DialogV2 = foundry.applications.api.DialogV2;
 
 /**
  * Runs slicing Blow class feature automation.
@@ -130,4 +139,130 @@ export async function sneakAttack(workflow) {
 	} catch (err) {
 		console.error("Sneak Attack |", err);
 	}
+}
+
+const hasFeature = (actor, identifier) =>
+	Boolean(actor?.items.some((i) => i.system?.identifier === identifier));
+
+/**
+ * Runs Finishing Blow class feature automation: after a weapon hit leaves a creature with
+ * 10 hit points or fewer, prompts the assassin to reduce it to 0 hit points. Once per turn.
+ *
+ * @param {object} workflow - MIDI-QOL workflow.
+ * @returns {Promise<void>}
+ */
+export async function finishingBlow(workflow) {
+	const actor = workflow.actor;
+	if (!actor?.isOwner || !["mwak", "rwak"].includes(workflow.activity?.actionType)) return;
+	if (!hasFeature(actor, "finishing-blow")) return;
+
+	await forEachDamagedTarget(workflow, async (token) => {
+		const target = token.actor;
+		const hp = target?.system?.attributes?.hp;
+		if (!hp || usedThisTurn(actor, "finishingBlowTime")) return;
+		const remaining = (Number(hp.value) || 0) + (Number(hp.temp) || 0);
+		if (hp.value <= 0 || remaining > 10) return;
+
+		const confirmed = await DialogV2.confirm({
+			window: { title: t("elkan5e.rogue.finishingBlowTitle") },
+			content: `<p>${t("elkan5e.rogue.finishingBlowContent", { target: target.name, hp: remaining })}</p>`,
+			rejectClose: false,
+			modal: true,
+		});
+		if (!confirmed) return;
+		await markUsedThisTurn(actor, "finishingBlowTime");
+		await updateActorAsGM(target, {
+			"system.attributes.hp.value": 0,
+			"system.attributes.hp.temp": 0,
+		});
+	});
+}
+
+/**
+ * Runs Brutal Fighting class feature automation: after the rogue wins a shove or grapple
+ * contest, prompts them to deal their Brutal Fighting damage to that creature.
+ *
+ * @param {object} workflow - Workflow of the shove or grapple.
+ * @param {Token} targetToken - Creature that was shoved or grappled.
+ * @param {"shove"|"grapple"} action - Which contest was won.
+ * @returns {Promise<void>}
+ */
+export async function brutalFighting(workflow, targetToken, action) {
+	const actor = workflow?.actor;
+	if (!actor?.isOwner || !targetToken?.actor) return;
+	const feature = actor.items.find((i) => i.system?.identifier === "brutal-fighting");
+	const damage = feature?.system.activities.getByType("damage")[0];
+	if (!damage) return;
+
+	const actionLabel = t(
+		action === "grapple"
+			? "elkan5e.rogue.brutalFightingGrapple"
+			: "elkan5e.rogue.brutalFightingShove",
+	);
+	const confirmed = await DialogV2.confirm({
+		window: { title: t("elkan5e.rogue.brutalFightingTitle") },
+		content: `<p>${t("elkan5e.rogue.brutalFightingContent", { action: actionLabel, target: targetToken.actor.name })}</p>`,
+		rejectClose: false,
+		modal: true,
+	});
+	if (!confirmed) return;
+
+	if (globalThis.MidiQOL?.completeActivityUse) {
+		await MidiQOL.completeActivityUse(
+			damage,
+			{
+				midiOptions: {
+					targetUuids: [targetToken.document.uuid],
+					ignoreUserTargets: true,
+				},
+			},
+			{ configure: false },
+		);
+	} else {
+		await damage.use({}, { configure: false });
+	}
+}
+
+const REFLEXES_FLAG = "assassinsReflexes";
+
+/**
+ * Runs Assassin's Reflexes class feature automation when combat starts: every assassin who
+ * isn't surprised gets a second combatant at their initiative minus 10. Runs on the active GM.
+ *
+ * @param {Combat} combat - Combat that started.
+ * @returns {Promise<void>}
+ */
+export async function assassinsReflexesStart(combat) {
+	if (!game.users.activeGM?.isSelf) return;
+	const extraTurns = combat.combatants
+		.filter(
+			(c) =>
+				!c.getFlag("elkan5e", REFLEXES_FLAG) &&
+				c.initiative !== null &&
+				hasFeature(c.actor, "assassins-reflexes") &&
+				!c.actor.statuses.has("surprised"),
+		)
+		.map((c) => ({
+			tokenId: c.tokenId,
+			sceneId: c.sceneId,
+			actorId: c.actorId,
+			name: t("elkan5e.rogue.assassinsReflexesTurn", { name: c.name }),
+			initiative: c.initiative - 10,
+			hidden: c.hidden,
+			flags: { elkan5e: { [REFLEXES_FLAG]: c.id } },
+		}));
+	if (extraTurns.length) await combat.createEmbeddedDocuments("Combatant", extraTurns);
+}
+
+/**
+ * Removes the extra Assassin's Reflexes turns once the first round is over. Runs on the active GM.
+ *
+ * @param {Combat} combat - Combat that changed.
+ * @param {object} changes - Changes to the combat.
+ * @returns {Promise<void>}
+ */
+export async function assassinsReflexesEnd(combat, changes) {
+	if (!game.users.activeGM?.isSelf || !(changes.round > 1)) return;
+	const ids = combat.combatants.filter((c) => c.getFlag("elkan5e", REFLEXES_FLAG)).map((c) => c.id);
+	if (ids.length) await combat.deleteEmbeddedDocuments("Combatant", ids);
 }

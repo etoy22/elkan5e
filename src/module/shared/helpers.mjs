@@ -533,7 +533,128 @@ export function registerElkan5eSocket() {
 		return;
 	}
 	elkan5eSocket.register("createLightRegion", applyLightRegion);
+	elkan5eSocket.register("deleteEffects", applyDeleteEffects);
+	elkan5eSocket.register("updateActor", applyActorUpdate);
 }
+
+/**
+ * Deletes effects from an actor, skipping any that no longer exist.
+ *
+ * @param {string} actorUuid - UUID of the actor.
+ * @param {string[]} effectIds - Ids of the effects to delete.
+ * @returns {Promise<void>}
+ */
+async function applyDeleteEffects(actorUuid, effectIds) {
+	const actor = await fromUuid(actorUuid).catch(() => null);
+	const ids = effectIds.filter((id) => actor?.effects.has(id));
+	if (ids.length) await actor.deleteEmbeddedDocuments("ActiveEffect", ids);
+}
+
+/**
+ * Applies an update to an actor.
+ *
+ * @param {string} actorUuid - UUID of the actor.
+ * @param {object} data - Update data.
+ * @returns {Promise<void>}
+ */
+async function applyActorUpdate(actorUuid, data) {
+	const actor = await fromUuid(actorUuid).catch(() => null);
+	await actor?.update(data);
+}
+
+/**
+ * Runs a GM-only mutation locally when the current user owns the actor, otherwise relays it to the GM.
+ *
+ * @param {string} handler - Registered socket handler name.
+ * @param {Function} local - Local implementation.
+ * @param {Actor} actor - Actor being mutated.
+ * @param {...*} args - Extra handler arguments.
+ * @returns {Promise<*>} Handler result.
+ */
+function runForActor(handler, local, actor, ...args) {
+	if (actor.isOwner) return local(actor.uuid, ...args);
+	if (!elkan5eSocket) {
+		ui.notifications.warn(
+			`Elkan 5e | You don't own ${actor.name}, and socketlib isn't available to ask the GM.`,
+		);
+		return null;
+	}
+	return elkan5eSocket.executeAsGM(handler, actor.uuid, ...args);
+}
+
+/**
+ * Deletes effects from an actor, relaying to the GM if the user doesn't own it.
+ *
+ * @param {Actor} actor - Actor to clear.
+ * @param {ActiveEffect[]} effects - Effects on that actor to delete.
+ * @returns {Promise<void>}
+ */
+export function deleteEffects(actor, effects) {
+	return runForActor(
+		"deleteEffects",
+		applyDeleteEffects,
+		actor,
+		effects.map((e) => e.id),
+	);
+}
+
+/**
+ * Removes every effect carrying one of the given conditions from an actor, relaying to the GM
+ * if the user doesn't own it.
+ *
+ * @param {Actor} actor - Actor to clear.
+ * @param {string[]} statusIds - Status ids to remove.
+ * @returns {Promise<string[]>} Names of the removed effects.
+ */
+export async function removeStatuses(actor, statusIds) {
+	const effects = actor.effects.filter((e) => statusIds.some((id) => e.statuses?.has(id)));
+	if (effects.length) await deleteEffects(actor, effects);
+	return effects.map((e) => e.name);
+}
+
+/**
+ * Updates an actor, relaying to the GM if the user doesn't own it.
+ *
+ * @param {Actor} actor - Actor to update.
+ * @param {object} data - Update data.
+ * @returns {Promise<void>}
+ */
+export function updateActorAsGM(actor, data) {
+	return runForActor("updateActor", applyActorUpdate, actor, data);
+}
+
+const combatTurnKey = () => `${game.combat.id}-${game.combat.round + game.combat.turn / 100}`;
+
+/**
+ * Checks whether a once-per-turn feature was already used this turn. Always false outside combat.
+ *
+ * @param {Actor} actor - Actor using the feature.
+ * @param {string} flag - Flag key that stores the last turn it was used.
+ * @returns {boolean}
+ */
+export const usedThisTurn = (actor, flag) =>
+	Boolean(game.combat) && actor.getFlag("elkan5e", flag) === combatTurnKey();
+
+/**
+ * Records that a once-per-turn feature was used this turn. Does nothing outside combat.
+ *
+ * @param {Actor} actor - Actor using the feature.
+ * @param {string} flag - Flag key that stores the last turn it was used.
+ * @returns {Promise<void>}
+ */
+export async function markUsedThisTurn(actor, flag) {
+	if (game.combat) await actor.setFlag("elkan5e", flag, combatTurnKey());
+}
+
+/**
+ * Gets the token actors the current user is targeting.
+ *
+ * @returns {Actor[]} Targeted actors.
+ */
+export const targetedActors = () =>
+	Array.from(game.user?.targets ?? [])
+		.map((token) => token.actor)
+		.filter(Boolean);
 
 /**
  * Creates or updates a `midi-qol.regionLight` behavior on the given region.
@@ -568,15 +689,6 @@ async function applyLightRegion(regionUuid, config, name = "Midi Region Light") 
 	const storedExtras = existingBehavior?.getFlag("elkan5e", "lightExtras") ?? {};
 	const extras = { ...storedExtras, ...newExtras };
 
-	// Only dim/bright/color/alpha/luminosity/animation* are part of midi-qol's
-	// regionLight behavior schema; everything else the caller wants on the
-	// resulting light (sort, negative, priority, angle, darkness range, walls,
-	// elevation, rotation, vision) must be stashed as a flag here and pushed
-	// onto the AmbientLight by syncRegionLightExtras below — midi-qol silently
-	// drops unknown system fields, and the light itself often doesn't exist
-	// yet at this point (it's only created once the GM's canvas actually
-	// views the region), so the flag is what lets the createRegionBehavior /
-	// updateRegionBehavior hooks in elkan5e.mjs re-apply it once it does.
 	const behaviorData = {
 		_id: behaviorId,
 		name,

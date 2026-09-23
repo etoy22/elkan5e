@@ -64,7 +64,9 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"disableCondition": "",
-					"disableIncapacitated": false
+					"disableIncapacitated": false,
+					"expiryMode": "default",
+					"phaseStamped": true
 				}
 			},
 			"tint": "#ffffff",
@@ -74,17 +76,26 @@
 				"changes": [
 					{
 						"key": "system.attributes.movement.speeds.walk",
-						"value": "+10",
+						"type": "add",
+						"value": "10",
+						"phase": "final",
 						"priority": 5,
-						"type": "add"
+						"_id": "TtjI65CSgLwu3JHr",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
-						"key": "system.attributes.ac.bonus",
-						"value": "+1",
+						"key": "system.attributes.ac.value",
+						"type": "add",
+						"value": "1",
+						"phase": "final",
 						"priority": 5,
-						"type": "add"
+						"_id": "oBy8ljfQnChoIcE0",
+						"conditions": "{}",
+						"replacement": ""
 					}
-				]
+				],
+				"conditions": "{\"o\":\"NOT\",\"v\":{\"k\":\"attributes.ac.equippedArmor.system.type.value\",\"o\":\"in\",\"v\":[\"medium\",\"heavy\"]}}"
 			},
 			"start": null,
 			"showIcon": 1,

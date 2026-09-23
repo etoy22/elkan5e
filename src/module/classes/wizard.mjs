@@ -94,34 +94,26 @@ export async function spectralEmpowerment(workflow) {
 }
 
 /**
- * Runs soul Conduit class feature automation.
+ * Runs Soul Conduit class feature automation. When the caster casts a necromancy spell of
+ * 1st level or higher, reminds them that Soul Conduit can heal their graveguard.
  *
- * @param {*} workflow - Workflow payload from the triggering item or activity.
- * @returns {Promise<void>} Promise resolution result.
+ * @param {object} activity - Activity that was used.
  */
-export async function soulConduit(workflow) {
-	try {
-		console.log("Elkan 5e | Soul Conduit check");
-		const item = workflow.item ?? workflow;
-		if (!item || item.type !== "spell") return;
+export function soulConduit(activity) {
+	const item = activity?.item;
+	const actor = activity?.actor;
+	if (item?.type !== "spell" || item.system.school !== "nec" || !actor?.isOwner) return;
+	const level = Number(item.system.level ?? 0);
+	if (level < 1) return;
+	if (!actor.items.some((i) => i.system?.identifier === "soul-conduit")) return;
 
-		const school = (item.system?.school || "").toLowerCase();
-		const level = Number(item.system?.level ?? 0);
-		if (school !== "necromancy" || level < 1) return;
-
-		const actor = workflow.actor ?? (workflow.token ? workflow.token.actor : null);
-		if (!actor) return;
-		const hasSoul = actor.items.find(
-			(i) => i.system?.identifier === "soul-conduit" || i.name === "Soul Conduit",
-		);
-		if (hasSoul && actor.isOwner) {
-			ui.notifications.notify(
-				game.i18n.format("elkan5e.notifications.SoulConduitReminder", { name: actor.name }),
-			);
-		}
-	} catch (err) {
-		console.error("elkan5e | soulConduit error:", err);
-	}
+	ui.notifications.info(
+		game.i18n.format("elkan5e.notifications.SoulConduitReminder", {
+			name: actor.name,
+			spell: item.name,
+			healing: level * 3,
+		}),
+	);
 }
 
 /**
@@ -143,7 +135,7 @@ export async function necromanticSurge(workflow) {
 
 		const school = (item.system?.school || "").toLowerCase();
 		const level = Number(item.system?.level ?? 0);
-		if (school !== "necromancy" || level < 3) return;
+		if (school !== "nec" || level < 3) return;
 
 		const actor = workflow.actor ?? (workflow.token ? workflow.token.actor : null);
 		if (!actor || !actor.isOwner) return;
@@ -213,46 +205,6 @@ export async function necromanticSurge(workflow) {
 		});
 	} catch (err) {
 		console.error("Necromantic Surge |", err);
-	}
-}
-
-/**
- * Runs Overchannel class feature automation: arms the feature when its
- * activity is used, so the next qualifying spell can consume it.
- *
- * @param {*} activity - Activity that was just used.
- * @returns {Promise<void>} Promise resolution result.
- */
-export async function overchannelArm(activity) {
-	try {
-		if (activity?.item?.system?.identifier !== "overchannel") return;
-		const actor = activity.actor;
-		if (!actor) return;
-
-		const existing = actor.effects.find((ef) => ef.name === "Overchannel" && !ef.disabled);
-		if (existing) return;
-
-		await actor.createEmbeddedDocuments("ActiveEffect", [
-			{
-				name: "Overchannel",
-				img: activity.item.img,
-				origin: activity.item.uuid,
-				transfer: false,
-				disabled: false,
-				duration: { rounds: 1 },
-				changes: [],
-				flags: {
-					dae: {
-						stackable: "none",
-						durationExpression: "",
-						macroRepeat: "none",
-						specialDuration: [],
-					},
-				},
-			},
-		]);
-	} catch (err) {
-		console.error("Overchannel |", err);
 	}
 }
 

@@ -117,14 +117,28 @@ export function weapons() {
 
 	// Expose wielded weapon counts as @elkan5e.weapons.* so effect conditions can check them
 	// (e.g. Single Weapon Fighting requires exactly one equipped melee weapon).
+	// Registered through libWrapper when available so it chains cleanly with other modules (e.g. DAE)
+	// that also wrap getRollData.
 	try {
-		const Actor5e = CONFIG.Actor.documentClass;
-		const getRollData = Actor5e.prototype.getRollData;
-		Actor5e.prototype.getRollData = function (...args) {
-			const data = getRollData.apply(this, args);
+		const wrapper = function (wrapped, ...args) {
+			const data = wrapped(...args);
 			data.elkan5e = { ...data.elkan5e, weapons: countWieldedWeapons(this) };
 			return data;
 		};
+		if (game.modules.get("lib-wrapper")?.active && globalThis.libWrapper) {
+			globalThis.libWrapper.register(
+				"elkan5e",
+				"CONFIG.Actor.documentClass.prototype.getRollData",
+				wrapper,
+				"WRAPPER",
+			);
+		} else {
+			const Actor5e = CONFIG.Actor.documentClass;
+			const getRollData = Actor5e.prototype.getRollData;
+			Actor5e.prototype.getRollData = function (...args) {
+				return wrapper.call(this, getRollData.bind(this), ...args);
+			};
+		}
 	} catch (e) {
 		console.warn("Elkan 5e | Failed to add wielded weapon roll data:", e);
 	}

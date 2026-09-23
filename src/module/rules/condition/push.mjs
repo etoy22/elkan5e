@@ -1,5 +1,6 @@
 import { chooseDefenderSkill, sizeIndex, isPushBlocked, hasPushResist } from "../../global.mjs";
 import { measureRangeDistance, t } from "../../shared/helpers.mjs";
+import { brutalFighting } from "../../classes/rogue.mjs";
 import { endAllGrapplesForActor } from "./grapple.mjs";
 
 const DialogV2 = foundry.applications.api.DialogV2;
@@ -397,7 +398,10 @@ export async function push(
 				rollOptions: { advantage: targetAdv },
 			},
 			flavor,
-			success: onSuccess.bind(null, token, targetToken),
+			success: async () => {
+				await onSuccess(token, targetToken);
+				await brutalFighting(workflow, targetToken, "shove");
+			},
 			displayResults: true,
 			itemCardId: workflow.itemCardId,
 			rollOptions: { fastForward, chatMessage: true, rollMode: "publicroll" },

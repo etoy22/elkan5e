@@ -32,10 +32,14 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.bonuses.mwak.damage",
-						"value": "+2",
+						"key": "damage",
+						"type": "dnd5e.bonus",
+						"value": "2",
+						"phase": "initial",
 						"priority": 20,
-						"type": "add"
+						"_id": "LOSOl8oZ0ZVQPndn",
+						"conditions": "[{\"k\":\"roll.attack.type\",\"v\":\"melee\"},{\"o\":\"OR\",\"v\":[{\"o\":\"AND\",\"v\":[{\"k\":\"roll.attack.classification\",\"v\":\"weapon\"},{\"o\":\"NOT\",\"v\":{\"o\":\"OR\",\"v\":[{\"k\":\"roll.attack.classification\",\"v\":\"unarmed\"},{\"k\":\"item.type.value\",\"v\":\"natural\"},{\"k\":\"item.identifier\",\"o\":\"in\",\"v\":[\"unarmed-strike\",\"unarmed-strike-monk\",\"ki-empowered-strikes\"]}]}},{\"k\":\"elkan5e.weapons.equipped\",\"v\":1}]},{\"o\":\"AND\",\"v\":[{\"o\":\"OR\",\"v\":[{\"k\":\"roll.attack.classification\",\"v\":\"unarmed\"},{\"k\":\"item.type.value\",\"v\":\"natural\"},{\"k\":\"item.identifier\",\"o\":\"in\",\"v\":[\"unarmed-strike\",\"unarmed-strike-monk\",\"ki-empowered-strikes\"]}]},{\"k\":\"elkan5e.weapons.equipped\",\"v\":0}]}]}]",
+						"replacement": ""
 					}
 				]
 			},
@@ -77,7 +81,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em> <strong>Prerequisite: Prerequisite: Fighter level 12, Single-Weapon Fighting Style</strong></em></p><p>You add an additional +2 to your damage when wielding one melee weapon and no other weapons.</p>",
+			"value": "<p><em> <strong>Prerequisite: Fighter level 12, Single-Weapon Fighting Style</strong></em></p><p>You add an additional +2 to your damage when wielding one melee weapon and no other weapons.</p>",
 			"chat": ""
 		},
 		"source": {

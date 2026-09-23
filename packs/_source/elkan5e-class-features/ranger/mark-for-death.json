@@ -92,6 +92,49 @@
 				}
 			},
 			"_key": "!items.effects!HPrjgPXLsDRBbfsD.MehX2OXUbBtGDhto"
+		},
+		{
+			"_id": "QK1VwBuv8BKEvCQg",
+			"disabled": false,
+			"duration": {
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"transfer": false,
+			"flags": {
+				"dae": {
+					"stackable": "none",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"transfer": false,
+					"disableIncapacitated": false,
+					"selfTarget": true,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"enableCondition": "",
+					"disableCondition": "",
+					"expiryMode": "default"
+				}
+			},
+			"tint": "#ffffff",
+			"origin": null,
+			"name": "Mark for Death (Hunting)",
+			"description": "",
+			"statuses": [
+				"rangerMark"
+			],
+			"img": "icons/magic/death/projectile-skull-fire-purple.webp",
+			"type": "base",
+			"system": {
+				"changes": []
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
+			"_key": "!items.effects!HPrjgPXLsDRBbfsD.QK1VwBuv8BKEvCQg"
 		}
 	],
 	"folder": "k63aDnjqpB2qe9Nr",
@@ -139,7 +182,7 @@
 				"img": "icons/magic/death/projectile-skull-fire-purple.webp",
 				"type": "script",
 				"scope": "global",
-				"command": "return elkan5e.macro.features.markForDeath(workflow);",
+				"command": "return elkan5e.macros.features.markForDeath(workflow, macroItem);",
 				"author": "JfIFUEeTlOfdxqPQ",
 				"_id": null,
 				"folder": null
@@ -215,11 +258,18 @@
 							"min": null,
 							"max": null
 						}
+					},
+					{
+						"_id": "QK1VwBuv8BKEvCQg",
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
-					"units": "self",
-					"special": "",
+					"units": "spec",
+					"special": "A creature you can see",
 					"override": false
 				},
 				"target": {
@@ -233,8 +283,8 @@
 						"units": ""
 					},
 					"affects": {
-						"count": "",
-						"type": "self",
+						"count": "1",
+						"type": "enemy",
 						"choice": false,
 						"special": ""
 					},
@@ -367,9 +417,25 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "7jw1gxiuvosibvcs",
+						"level": {
+							"min": null,
+							"max": null
+						}
+					},
+					{
+						"_id": "QK1VwBuv8BKEvCQg",
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
 				"range": {
-					"units": "self",
+					"units": "spec",
+					"special": "A creature you can see",
 					"override": false
 				},
 				"target": {
@@ -379,7 +445,10 @@
 						"units": "ft"
 					},
 					"affects": {
-						"choice": false
+						"count": "1",
+						"type": "enemy",
+						"choice": false,
+						"special": ""
 					},
 					"override": false,
 					"prompt": true

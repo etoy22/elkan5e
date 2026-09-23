@@ -54,6 +54,8 @@
 **[Cleric](https://www.elkan5e.com/cleric)**
 - Reaper
     - Fixed issue where Death Touched wasnt granting resistance to either Necrotic or Poison
+- Deceiver
+	- Shadow Refuge now shows a reminder when you spend a spell slot on an illusion spell of 1st level or higher, telling you how many temporary hit points it can grant (2d6 per slot level). Previously the reminder never appeared because it checked for the wrong spell school name.
 
 **[Druid](https://www.elkan5e.com/druid)**
 - Cthonic
@@ -69,7 +71,7 @@
 
 **[Fighter](https://www.elkan5e.com/fighter)**
 - Extra Attack (3 Attacks) and Extra Attack (4 Attacks) now update the Extra Attack description when gained.
-- Single Weapon Fighting and Improved Single Weapon Fighting now only apply their damage bonus while you have exactly one melee weapon equipped (unarmed strikes and natural weapons don't count).
+- Single Weapon Fighting and Improved Single Weapon Fighting now only add their damage bonus to melee attacks (not thrown or spell attacks) while you're fighting with a single weapon: a manufactured weapon when it's the only weapon you have equipped, or an unarmed strike or natural weapon when you have no manufactured weapons equipped.
 - Fighting Style: Mounted Combat's incapacitated reference no longer applies the condition when clicked.
 - Combat Maneuvers
 	- Parry and Powerful Attack effects now last 1 turn instead of having no duration.
@@ -78,7 +80,7 @@
 - Commander
 	- Commander's Strike: fixed a missing space in its description.
 	- Persistent Leader now grants its activity to Second Wind and adds its text to the Second Wind description when gained.
-	- Rallying Surge now adds its text to the Action Surge description when gained.
+	- Rallying Surge now adds its text to the Action Surge description when gained, and no longer shows a notification when you use Second Wind.
 - Spellsword
 	- Spellsurge now adds its text to the Action Surge description when gained.
 - Bulwark
@@ -115,14 +117,54 @@
 	- Thunderwave (1/2/3 Ki) now correctly forces a Constitution save instead of none.
 
 **[Paladin](https://www.elkan5e.com/paladin)**
-- 
+- Aura of Courage's Frightened, Petrified, and Unconscious references no longer apply the condition when clicked.
+- Aura of Courage, Aura of Protection, Aura of Devotion, and Aura of Revelation now stop working while you're Petrified or Unconscious.
+- Cleansing Touch now grants its activities to Lay on Hands and adds its text to the Lay on Hands description when gained. 
+- Cleansing Touch is now automated: cleansing removes the Poisoned condition from your target, and spending 10 or more Lay on Hands points at once (healing or cleansing) also ends Drained. Diseases still need to be removed by hand.
+- Avenger
+	- Commanding Challenge's incapacitated reference no longer applies the condition when clicked.
+	- Avenger's Vow now grants its activity (and its effect) to Commanding Challenge, Avenger's Leap, and Searing Retribution, and adds its text to their descriptions when gained. 
+- Blackguard
+	- Aura of Corruption now has an effect that makes a creature unable to regain hit points or gain temporary hit points. Apply it to enemies within the aura.
+- Inquisitor
+	- Master Seeker now grants psychic resistance through a Trait advancement, so it shows on the character sheet, and it's no longer marked as Magical.
+	- Aura of Revelation's identifier was a copy of Aura of Courage's; it's now `aura-of-revelation`.
+- Paragon
+	- Aura of Devotion now grants immunity to Charmed and Goaded, as described. It granted Blinded immunity instead.
+	- Purity of Body and Purity of Spirit now use dnd5e's own saving throw advantage instead of Midi-QOL flags, so they work without Midi-QOL, and a source of disadvantage now cancels it out as normal.
+	- Holy Nimbus now has its 30 ft. area size set.
 
 **[Ranger](https://www.elkan5e.com/ranger)**
+- Natural Tracker now makes you ignore nonmagical difficult terrain, and its requirement reads "Ranger 1" instead of "Elkan Ranger 1".
+- Primeval Awareness now uses a radius area. Its old area type doesn't exist in dnd5e 6.0.
+- Mark for Death's extra damage now works. Its macro called a nonexistent function, so the bonus damage never rolled. It now only applies to weapon attacks.
+- Mark for Death's Mark and Move Mark activities now place the mark on the target creature instead of on you. Marking a new creature removes your mark from the previous one, so you only have one marked target at a time.
+- Precise Hunter now adds its text to the Mark for Death description when gained, and its advantage only applies against creatures you marked, not creatures marked by another ranger.
+- Unrelenting Focus now works: while you aren't using Mark for Death or another ranger mark, your weapon attacks deal your Mark for Death damage. This uses dnd5e's own damage bonus rules, so it needs no script, adds the damage to the weapon's own damage type, and doubles on a crit.
+- Mark for Death, Mark of Affliction, and Mark of Thorns now give you a "rangerMark" status while you're using them, which is how Unrelenting Focus knows you're using a mark. Mark for Death adds a "Mark for Death (Hunting)" effect on you for this.
+- Tireless now removes one level of exhaustion when used, if you have any. It spends exhaustion as part of the activity's own consumption.
 - Spellbreaker
 	- Magic Shackles now actually halves the target's speed — it had two leftover bogus movement keys that did nothing, so fly speed in particular was never reduced.
 
 **[Rogue](https://www.elkan5e.com/rogue)**
-- 
+- Elusive is now automated: creatures that would have advantage on attack rolls against you roll normally, unless you're incapacitated, paralyzed, petrified, stunned, or unconscious.
+- Assassin
+	- Assassin's Reflexes now links to the Surprised condition instead of the Surprise rule, and clicking it doesn't apply the condition.
+	- Assassin's Reflexes is now automated: when combat starts, each assassin who isn't Surprised gets a second turn at their initiative minus 10. The extra turn is removed when round 2 begins.
+	- Finishing Blow now prompts you when your weapon attack leaves a creature with 10 hit points or fewer, and reduces it to 0 hit points if you accept. Once per turn.
+- Brute
+	- Brutal Fighting and Enforcer's Training's grappled references no longer apply the condition when clicked.
+	- Overpowering Opportunist now has working Push and Grapple activities (copied from Standard Actions) as bonus actions.
+	- Brutal Fighting now adds its text to Standard Actions and Overpowering Opportunist when gained, and prompts you to deal its damage after you win a shove or grapple contest.
+	- Swift and Brutal now adds its text to the Cunning Action description when gained.
+- Duelist
+	- Lethal Opening now links to the Opportunity Attacks rule.
+	- Light on the Feet's +1 AC and +10 ft. speed now only apply while you aren't wearing medium or heavy armor.
+- Mystic Trickster
+	- Devastating Spells now adds its text to the Devastating Cantrips description when gained.
+	- Master Trickster now adds its text to the Magic Trickery description when gained.
+- Thief
+	- Multitasking now adds its text to the Cunning Action description when gained.
 
 **[Sorcerer](https://www.elkan5e.com/sorcerer)**
 - 
@@ -134,7 +176,11 @@
     - Twisted Visions now correctly forces a Wisdom save instead of none.
  
 **[Wizard](https://www.elkan5e.com/wizard)**
-- 
+- Evoker
+	- Overchannel's activity now applies its Overchannel effect to you directly, instead of a script creating it. The maximized damage and backlash still work the same way.
+- Necromancer
+	- Soul Conduit now shows a reminder when you cast a necromancy spell of 1st level or higher, telling you how many hit points it can restore to your graveguard. Previously the reminder never appeared: it wasn't hooked up and it checked for the wrong spell school name.
+	- Necromantic Surge now triggers when you target yourself with a necromancy spell of 3rd level or higher. It checked for the wrong spell school name, so it never triggered.
 
 ## Equipment
 - Ring of Electric Resistance / Ring of Sonic Resistance: fixed internal effect names that still read "Lightning Resistance" / "Thunder Resistance".
@@ -150,6 +196,9 @@
 - Fixed Enraged Presence and Enraged Prowess never adding your rage bonus while raging. Skills you have expertise in are still correctly excluded.
 - Draconic Breath Control (Dragonborn): your Breath Weapon now recharges on a short rest when you gain the feat.
 - Fighting Style: Mounted Combat now has correct identifier
+- Fighting Style: Single Weapon Fighting and Improved Single Weapon Fighting (Fighter) now work the same way as the class features: the damage bonus only applies to melee attacks (not thrown or spell attacks) with a single weapon, including an unarmed strike or natural weapon when you have no manufactured weapons equipped.
+- Improved Protection (Fighter) now requires the Fighter class in Foundry, like the other Improved Fighting Style feats.
+- Improved Archery, Defense, Protection, and Single Weapon Fighting (Fighter) no longer say "Prerequisite:" twice in their descriptions.
 - [Fey Step](https://www.elkan5e.com/feats/fey-step) now uses dnd5e's native Teleport activity, adding a "Plan Teleport" button to place your token directly.
 
 ## Game Rules
@@ -171,6 +220,9 @@
 
 ## Misc
 - Actor roll data now includes `@elkan5e.weapons.equipped`, `@elkan5e.weapons.melee`, and `@elkan5e.weapons.ranged`: the number of weapons the actor has equipped, not counting unarmed strikes or natural weapons. Effect conditions and macros can use these.
+- When libWrapper is active, the wielded-weapon roll data is now added through libWrapper, so it works alongside other modules that also change actor roll data (like DAE).
+- Features that remove conditions or set hit points on a creature you don't own (Cleansing Touch, Finishing Blow, Mark for Death) now ask the GM's client to make the change through socketlib.
+- Removed `elkan5e.macros.features.shadowRefuge` and `elkan5e.macros.features.soulConduit`. Their reminders now run on their own when you cast a spell.
 
 
 

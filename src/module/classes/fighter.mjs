@@ -7,7 +7,6 @@
 export async function secondWind(workflow) {
 	const actor = workflow.actor;
 	persistentLeader(actor);
-	rallySurge(actor);
 }
 
 /**
@@ -47,22 +46,4 @@ export function improvedCriticalDamage(rollConfig) {
 	if (activity?.type !== "attack") return;
 	if (!activity.actor?.items.some((i) => i.system.identifier === "improved-critical")) return;
 	rollConfig.critical = { ...rollConfig.critical, multiplier: 3 };
-}
-
-/**
- * Runs rally Surge class feature automation.
- *
- * @param {*} actor - Actor document to process.
- * @returns {Promise<void>} Promise resolution result.
- */
-export async function rallySurge(actor) {
-	if (actor.items.find((i) => i.system.identifier === "rallying-surge")) {
-		if (game.user.isGM || actor.isOwner) {
-			ui.notifications.notify(
-				game.i18n.format("elkan5e.notifications.RallyingSurge", {
-					name: actor.name,
-				}),
-			);
-		}
-	}
 }

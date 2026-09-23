@@ -1,6 +1,7 @@
 import { chooseDefenderSkill, sizeIndex } from "../../global.mjs";
 import { createClimberEffect, createGrappledEffect } from "../../shared/effect-factories.mjs";
 import { measureRangeDistance, t } from "../../shared/helpers.mjs";
+import { brutalFighting } from "../../classes/rogue.mjs";
 
 const DialogV2 = foundry.applications.api.DialogV2;
 const imgForCondition = (key) => `modules/elkan5e/icons/conditions/${key}.svg`;
@@ -911,7 +912,10 @@ export async function grapple(workflow, acr = false, skipRoll = false) {
 				rollOptions: { advantage: targetAdv },
 			},
 			flavor,
-			success: applyGrapple.bind(null, token, targetToken, sizeDiff, range),
+			success: async () => {
+				await applyGrapple(token, targetToken, sizeDiff, range);
+				await brutalFighting(workflow, targetToken, "grapple");
+			},
 			displayResults: true,
 			itemCardId: workflow.itemCardId,
 			rollOptions: { fastForward, chatMessage: true, rollMode: "publicroll" },
