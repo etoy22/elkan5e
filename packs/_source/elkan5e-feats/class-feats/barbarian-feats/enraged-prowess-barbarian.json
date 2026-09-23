@@ -99,30 +99,34 @@
 				"changes": [
 					{
 						"key": "system.skills.acr.bonuses.check",
-						"value": "dae.eval(@skills.acr.value < 2 ? @scale.barbarian.rage-bonus : 0)",
+						"value": "@scale.barbarian.rage-bonus",
+						"conditions": "{ \n  \"k\": \"skills.acr.value\",\n  \"o\": \"lt\",\n  \"v\": 2 \n}",
 						"priority": 20,
 						"type": "add"
 					},
 					{
 						"key": "system.skills.ath.bonuses.check",
-						"value": "dae.eval(@skills.ath.value < 2 ? @scale.barbarian.rage-bonus : 0)",
+						"value": "@scale.barbarian.rage-bonus",
+						"conditions": "{ \n  \"k\": \"skills.ath.value\",\n  \"o\": \"lt\",\n  \"v\": 2 \n}",
 						"priority": 20,
 						"type": "add"
 					},
 					{
 						"key": "system.skills.slt.bonuses.check",
-						"value": "dae.eval(@skills.slt.value < 2 ? @scale.barbarian.rage-bonus : 0)",
+						"value": "@scale.barbarian.rage-bonus",
+						"conditions": "{ \n  \"k\": \"skills.slt.value\",\n  \"o\": \"lt\",\n  \"v\": 2 \n}",
 						"priority": 20,
 						"type": "add"
 					},
 					{
 						"key": "system.skills.ste.bonuses.check",
-						"value": "dae.eval(@skills.ste.value < 2 ? @scale.barbarian.rage-bonus : 0)",
+						"value": "@scale.barbarian.rage-bonus",
+						"conditions": "{ \n  \"k\": \"skills.ste.value\",\n  \"o\": \"lt\",\n  \"v\": 2 \n}",
 						"priority": 20,
 						"type": "add"
 					}
 				],
-				"conditions": "{ \n  \"k\": \"flags.elkan5e.raging\",\n  \"v\": 1 \n}"
+				"conditions": "{ \n  \"k\": \"statuses.raging\",\n  \"v\": 1 \n}"
 			},
 			"start": null,
 			"showIcon": 1,

@@ -1,5 +1,135 @@
 # Changelog
 
+# v1.14.4
+
+## Bug Fixes
+- Fixed Relentless Rage never triggering — the damage hook returned after checking Undead Fortitude, so Relentless Rage was never evaluated.
+- Fixed the Thunder → Sonic and Lightning → Electric damage type renaming not applying — the localization override was targeting an outdated key path, so damage type labels across the system (dropdowns, resistances/vulnerabilities/immunities, chat cards, tooltips) now correctly show Sonic and Electric.
+- Updated Undead Fortitude's attack/save detection for dnd5e's chat message data model changes (the activity type moved off `flags.dnd5e.activity` and onto `system.activity`), with fallbacks so it keeps working on older and newer dnd5e versions.
+
+## Compatibility
+- Updated for dnd5e system v6.0.1 (verified compatibility raised from 6.0.0).
+- Migrated compendium data still on the pre-6.0 schema so nothing depends on dnd5e's backward-compatibility shims: senses, movement speeds, and initiative bonuses (and every Active Effect that targeted their old field paths) now use dnd5e's current nested format.
+- Updated every activity still using the pre-Activities targeting format (mostly single-creature attack/damage/save sub-activities on spells and feats) to the current target schema.
+- Updated Save activities' ability field to dnd5e's current format, which supports a save being tied to more than one ability.
+- Updated a few Enchant/Summon activities (Bladesinger, Pact Weapon, Eldritch Weapon invocation, Imbue Light, Pact of the Chain) whose identifier had moved to a new field in dnd5e 6.0.
+- Fixed the Hasted (double speed) and Squeezing (half speed) condition rules never actually changing movement speed — they targeted a movement key that dnd5e no longer recognizes.
+- Fixed grapple movement penalties never applying — being grappled by a same-or-larger creature (no movement) or a smaller one (half speed), and the climber-advantage effect against a much smaller grappler, all targeted the same non-functional movement key.
+- Fixed the grapple system always treating creatures as if they had no climb speed (it was reading an outdated data path), which affected whether a much-smaller grappler gets advantage from the target being unable to climb away.
+
+## Ancestry
+- Halfling Nimbleness: fixed a broken difficult terrain reference link in the description.
+- Breath Weapon (Blue): fixed missing maximum uses; it now has 1 use per long rest like the other colors.
+- Blue Dragonborn / Bronze Dragonborn: fixed passive feature titles that still read "Lightning Resistance" / "Thunder Resistance" instead of "Electric Resistance" / "Sonic Resistance".
+
+## Backgrounds
+- 
+
+## Classes
+ **[Barbarian](https://www.elkan5e.com/barbarian)**
+- Rage now applies a Raging status, so features that only work while raging can reliably detect it.
+- Fixed Mindless Rage never activating while raging.
+- Mindless Rage now adds its text to the Rage description when gained (its Modify Items advancement pointed to an effect that didn't exist).
+- Fixed Barbarian's Defense always using the armored AC formula, even while unarmored. It now automatically switches between Unarmored Defense (10 + Dex + Con) and the armored formula (armor + higher of Dex or Con, capped by the armor's Dex limit) based on whether armor is equipped.
+- Brutal Strike: Hamstring Blow now actually halves flying speed too, and no longer applies its speed penalty to swimming twice — it had a leftover bogus movement key and a duplicated change.
+- Slayer
+	- Fixed Death Haze never activating while raging.
+- Swarmhost
+	- Fixed Swarm Form never activating while raging (condition immunities, and the flying speed at level 6).
+	- Fixed Disperse's reaction never triggering, as it could not detect that you were raging.
+- Draconic: fixed the Seething Blood dragon-type dialog still listing "Lightning (Blue Dragon)" instead of "Electric (Blue Dragon)".
+ 
+**[Bard](https://www.elkan5e.com/bard)**
+- Cacophony
+    - Blasting Volume and Improved Blasting Volume now correctly describe their damage as Sonic instead of Thunder.
+    - Improved Blasting Volume now correctly adds a fourth bardic inspiration die to Blasting Volume's damage (the damage value was malformed).
+- Jester
+	- Jester's Aspersion now adds its psychic damage text to the Cutting Words description when gained (its enchantment had no changes).
+	- Harmless Act now adds its charm option to the Cutting Words and Vicious Mockery descriptions when gained (its enchantment was disabled and empty).
+
+**[Cleric](https://www.elkan5e.com/cleric)**
+- 
+
+**[Druid](https://www.elkan5e.com/druid)**
+- Earthshaker
+	- Fixed Quake — the push option now triggers correctly (its macro was checking the wrong activity).
+	- Ride the Mountain now grants Move Self (30 ft.) and Move Ally (15 ft.) teleport activities to Quake and Shield of the Crags, and its identifier no longer conflicts with Quake.
+	- Shield of the Crags now grants temporary hit points instead of healing, and half your druid level is now rounded down.
+	- Earth's Favored now adds its self-use benefits to the Shield of the Crags description when gained.
+- Wild Shape
+	- Twisted Terrain now uses the system's Difficult Terrain region behavior instead of an active effect that halved speed.
+
+**[Fighter](https://www.elkan5e.com/fighter)**
+- Bulwark
+	- Solidify Defenses: the temporary hit points (half your fighter level) are now rounded down.
+	- Solidify Defenses now adds its text to the Iron Wall description when gained.
+
+**[Monk](https://www.elkan5e.com/monk)**
+- Elementalist
+	- Deflect Elements now spends 2 Ki as its description states, instead of only 1.
+	- Fireball (4 Ki), Fly (4 Ki), Rock Blast (4 Ki), and Sleet Storm (4 Ki) no longer also try to consume a spell slot on top of their Ki cost.
+	- Burning Hands (1/2/3 Ki) and Thunderwave (1/2/3 Ki) are properly magical again (restored the missing Magical property).
+	- Gentle Current (2 Ki) and Gentle Current (3 Ki) now actually target 2 and 3 allies respectively, instead of just 1 like the 1 Ki version.
+	- False Life (3 Ki) is instantaneous again, instead of lasting 1 hour.
+	- Rock Blast (4 Ki)'s Dexterity save is clickable again.
+	- Thunderwave (1/2/3 Ki) now correctly forces a Constitution save instead of none.
+
+**[Paladin](https://www.elkan5e.com/paladin)**
+- 
+
+**[Ranger](https://www.elkan5e.com/ranger)**
+- 
+
+**[Rogue](https://www.elkan5e.com/rogue)**
+- 
+
+**[Sorcerer](https://www.elkan5e.com/sorcerer)**
+- 
+
+**[Warlock](https://www.elkan5e.com/warlock)**
+- Eldritch Spear now sets Eldritch Blast's range to 300 ft. when gained (its Modify Items advancement was empty).
+- Lifedrinker (Warrior) now sets Thirsting Weapon to 3 uses per short rest when gained.
+- Dreamweaver: Twisted Visions now correctly forces a Wisdom save instead of none.
+ 
+**[Wizard](https://www.elkan5e.com/wizard)**
+- 
+
+## Equipment
+- Ring of Electric Resistance / Ring of Sonic Resistance: fixed internal effect names that still read "Lightning Resistance" / "Thunder Resistance".
+- Dragon Scale Mail: fixed the dragon-type resistance table still listing "Lightning" instead of "Electric".
+- Armor of Resistance: fixed the Lightning/Thunder resistance enchantment name templates to use Electric/Sonic.
+- Javelin of Lightning: updated its damage description to Electric.
+- Thunderous Greatclub: updated its damage description to Sonic.
+- Ring of Shooting Stars: renamed the Lightning Spheres activities and damage description to Electric.
+- Re-added Flail, Trident, and War Pick as items. Each uses the proficiency and stats of the closest existing weapon it was originally removed in favor of: Flail (Martial, matches Warhammer), Trident (Simple, matches Spear), and War Pick (Martial, matches Morningstar).
+- Scorpion Poison: its recurring save to shake off the poisoned condition now correctly forces a Constitution save (DC 10) instead of none.
+
+## Feats
+- Fixed Enraged Presence and Enraged Prowess never adding your rage bonus while raging. Skills you have expertise in are still correctly excluded.
+- Draconic Breath Control (Dragonborn): your Breath Weapon now recharges on a short rest when you gain the feat (its Modify Items advancement was empty).
+
+## Game Rules
+- Added Crawl as a movement type (alongside Walk/Burrow/Climb/Fly/Swim), so it can be granted or set on actors and shows up in the Speed section.
+- Summary of Changes: fixed the note on the Thunder → Sonic and Lightning → Electric damage type renaming.
+
+## Spells
+- Area spells that create difficult terrain now use the system's Difficult Terrain region behavior instead of an active effect that halved speed. Movement through the area is now measured as difficult terrain, stacks correctly, and respects features that ignore difficult terrain.
+	- Replaced the halved-speed effect: [Entangle](https://www.elkan5e.com/spells/entangle) (plants), [Plant Growth](https://www.elkan5e.com/spells/plant-growth) (plants), [Spike Growth](https://www.elkan5e.com/spells/spike-growth) (plants), [Arms of Earth](https://www.elkan5e.com/spells/arms-of-earth) (rocks), [Grease](https://www.elkan5e.com/spells/grease), [Black Tentacles](https://www.elkan5e.com/spells/black-tentacles), and [Spirit Guardians](https://www.elkan5e.com/spells/spirit-guardians).
+	- Kept the area effect for its other conditions, but removed the halved speed: [Sleet Storm](https://www.elkan5e.com/spells/sleet-storm) (ice; still heavily obscured and blinded), [Insect Plague](https://www.elkan5e.com/spells/insect-plague) (still lightly obscured), and [Web](https://www.elkan5e.com/spells/web) (webs; still lightly obscured).
+	- Added difficult terrain to spells that described it but never applied it: [Snowball Swarm](https://www.elkan5e.com/spells/snowball-swarm) (snow), [Ice Storm](https://www.elkan5e.com/spells/ice-storm) (ice), [Earthquake](https://www.elkan5e.com/spells/earthquake) (rocks), [Vortex](https://www.elkan5e.com/spells/vortex), [Storm of Vengeance](https://www.elkan5e.com/spells/storm-of-vengeance), and Sleet Storm (4 Ki) (ice).
+- [Spirit Guardians](https://www.elkan5e.com/spells/spirit-guardians): the difficult terrain now only affects hostile creatures, as the spell describes.
+- [Freedom of Movement](https://www.elkan5e.com/spells/freedom-of-movement): the target now actually ignores difficult terrain.
+- [Thunderwave](https://www.elkan5e.com/spells/thunderwave): now correctly forces a Constitution save instead of none.
+
+## UI
+- 
+
+## Misc
+- 
+
+
+
+
 # v1.14.3
 ## Bug Fixes
 

@@ -432,18 +432,16 @@ function registerHooks() {
 		}
 	});
 
+	// Both handlers are async, so their results can't cancel the damage here; they run
+	// independently and restore HP themselves after the save resolves.
 	Hooks.on("dnd5e.preApplyDamage", (actor, amount, updates, options) => {
-		try {
-			return undeadFortitude(actor, amount, updates, options);
-		} catch (error) {
+		undeadFortitude(actor, amount, updates, options).catch((error) => {
 			console.error("Elkan 5e | Error in undeadFortitude hook:", error);
-		}
+		});
 
-		try {
-			return relentlessRage(actor, amount, updates, options);
-		} catch (error) {
+		relentlessRage(actor, amount, updates, options).catch((error) => {
 			console.error("Elkan 5e | Error in relentlessRage hook:", error);
-		}
+		});
 	});
 
 	Hooks.on("dnd5e.damageActor", async (actor, changes, update, userId) => {

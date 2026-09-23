@@ -51,58 +51,6 @@
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!x76d4kCFyMIc6wQZ.OPOIjeSC7TbTC1Ul"
-		},
-		{
-			"name": "Entangle - Slowed",
-			"origin": "Compendium.elkan5e.elkan5e-spells.Item.x76d4kCFyMIc6wQZ",
-			"transfer": false,
-			"flags": {
-				"dae": {
-					"itemName": "Entangle",
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": true,
-					"stackable": "noneName",
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": [],
-					"enableCondition": "",
-					"disableCondition": "",
-					"expiryMode": "default",
-					"combatActorOverride": "source"
-				}
-			},
-			"img": "icons/magic/nature/root-vine-entangle-foot-green.webp",
-			"type": "base",
-			"system": {
-				"changes": [
-					{
-						"key": "system.attributes.movement.all",
-						"type": "custom",
-						"value": "/2",
-						"priority": 20,
-						"phase": "final"
-					}
-				]
-			},
-			"disabled": false,
-			"duration": {
-				"value": null,
-				"units": "seconds",
-				"expiry": "turnStart",
-				"expired": false
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"statuses": [
-				"grappled"
-			],
-			"showIcon": 2,
-			"start": null,
-			"folder": null,
-			"_id": "EnhV5nWU6qgNc1XA",
-			"_key": "!items.effects!x76d4kCFyMIc6wQZ.EnhV5nWU6qgNc1XA"
 		}
 	],
 	"folder": "U0k4VGG6bziqf3oH",
@@ -299,21 +247,26 @@
 					"dispositionFilter": -1,
 					"excludeSource": true,
 					"oncePerTurn": false,
-					"rules": [
-						{
-							"trigger": "entry",
-							"action": "applyEffect",
-							"targetId": "EnhV5nWU6qgNc1XA"
-						},
-						{
-							"trigger": "exit",
-							"action": "removeEffect",
-							"targetId": "EnhV5nWU6qgNc1XA"
-						}
-					],
+					"rules": [],
 					"wallRestriction": "move",
 					"regionVisibility": 2
-				}
+				},
+				"behaviors": [
+					{
+						"name": "",
+						"_id": "4V8mX8WEvSvzpg1O",
+						"type": "difficultTerrain",
+						"config": {
+							"types": [
+								"plants"
+							]
+						},
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				]
 			}
 		},
 		"identifier": "entangle"

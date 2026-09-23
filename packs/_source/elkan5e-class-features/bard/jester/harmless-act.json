@@ -274,11 +274,22 @@
 			"type": "enchantment",
 			"name": "Harmless Act",
 			"img": "icons/commodities/treasure/mask-wood-tan.webp",
-			"disabled": true,
+			"disabled": false,
 			"transfer": false,
 			"_id": "5LcJuZ00zlsgHUhV",
 			"system": {
-				"changes": [],
+				"changes": [
+					{
+						"key": "system.description.value",
+						"type": "override",
+						"value": "{}<p><strong>Harmless Act.</strong> If your target fails their save against <em>Vicious Mockery</em> or you deal damage with Jester's Aspersion, you can choose to &amp;reference[charmed]{charm} the creature until you damage them or until the end of your next turn. This charm does not protect your allies from the target.</p>",
+						"phase": "initial",
+						"priority": null,
+						"_id": "SXcmyOgGNeXRY5Kw",
+						"conditions": "{}",
+						"replacement": ""
+					}
+				],
 				"origin": {
 					"actor": null,
 					"behavior": null,

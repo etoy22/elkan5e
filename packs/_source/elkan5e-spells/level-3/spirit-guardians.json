@@ -43,48 +43,6 @@
 			"showIcon": 1,
 			"folder": null,
 			"_key": "!items.effects!u3P0ZaZDFF06QsAy.dBqSu3oo9ohtwG39"
-		},
-		{
-			"_id": "sgSlowedEffect01",
-			"disabled": false,
-			"duration": {
-				"value": null,
-				"units": "seconds",
-				"expiry": null,
-				"expired": false
-			},
-			"origin": "Compendium.elkan5e.elkan5e-spells.Item.u3P0ZaZDFF06QsAy",
-			"transfer": false,
-			"flags": {
-				"dae": {
-					"stackable": "none",
-					"macroRepeat": "none",
-					"specialDuration": [],
-					"transfer": false,
-					"dontApply": true
-				}
-			},
-			"tint": "#ffffff",
-			"name": "Spirit Guardians - Slowed",
-			"description": "<p>Speed halved by Spirit Guardians emanation.</p>",
-			"statuses": [],
-			"img": "icons/magic/symbols/mask-yellow-orange.webp",
-			"type": "base",
-			"system": {
-				"changes": [
-					{
-						"key": "system.attributes.movement.all",
-						"type": "custom",
-						"value": "/2",
-						"phase": "final",
-						"priority": 20
-					}
-				]
-			},
-			"start": null,
-			"showIcon": 0,
-			"folder": null,
-			"_key": "!items.effects!u3P0ZaZDFF06QsAy.sgSlowedEffect01"
 		}
 	],
 	"folder": "Tf2FNuyyu2gEaYOF",
@@ -233,7 +191,7 @@
 						"count": ""
 					},
 					"affects": {
-						"type": "self",
+						"type": "enemy",
 						"count": "",
 						"choice": false,
 						"special": ""
@@ -273,21 +231,25 @@
 							"trigger": "turnEnd",
 							"action": "useActivity",
 							"targetId": "guardiansDamage"
-						},
-						{
-							"trigger": "entry",
-							"action": "applyEffect",
-							"targetId": "sgSlowedEffect01"
-						},
-						{
-							"trigger": "exit",
-							"action": "removeEffect",
-							"targetId": "sgSlowedEffect01"
 						}
 					],
 					"wallRestriction": "none",
 					"regionVisibility": 2
-				}
+				},
+				"behaviors": [
+					{
+						"name": "",
+						"_id": "FdfIhcP5QaFZ8YmR",
+						"type": "difficultTerrain",
+						"config": {
+							"types": []
+						},
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				]
 			},
 			"R5qQqN1bY6kOoFOB": {
 				"type": "save",
