@@ -5,8 +5,7 @@
   "main": "elkan5e.mjs",
   "type": "module",
   "scripts": {
-    "pack": "npm run conditions && npm run clean && npm run pack:raw",
-    "conditions": "node ./scripts/build-condition-effects.mjs",
+    "pack": "npm run clean && npm run pack:raw",
     "pack:raw": "node ./scripts/packs.mjs package pack",
     "clean": "node ./scripts/packs.mjs package clean",
     "unpack": "npm run unpack:raw && node ./scripts/sync-features.mjs && node ./scripts/sync-summoned.mjs && node ./scripts/update-spell-lists.mjs",
