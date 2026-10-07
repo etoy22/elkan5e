@@ -2,6 +2,7 @@ import {
 	drainedEffect,
 	forEachDamagedTarget,
 	markUsedThisTurn,
+	measureRangeDistance,
 	t,
 	updateActorAsGM,
 	usedThisTurn,
@@ -33,111 +34,187 @@ export async function slicingBlow(workflow) {
 	});
 }
 
-export async function sneakAttack(workflow) {
-	try {
-		if (!["mwak", "rwak"].includes(workflow.activity.actionType)) return {};
-		if (
-			workflow.activity.actionType === "mwak" &&
-			!workflow.rolledItem?.system.properties?.has("heavy")
+const SNEAK_ATTACK_FLAG = "sneakAttackTime";
+const INCAPACITATING = [
+	"incapacitated",
+	"paralyzed",
+	"petrified",
+	"stunned",
+	"unconscious",
+	"dead",
+];
+
+/**
+ * Checks whether the rogue can Sneak Attack again. After a Sneak Attack, they can't use it again
+ * until the beginning of their next turn. Always available outside combat.
+ *
+ * @param {Actor} actor - Rogue attacking.
+ * @returns {boolean}
+ */
+function sneakAttackAvailable(actor) {
+	const combat = game.combat;
+	const used = actor.getFlag("elkan5e", SNEAK_ATTACK_FLAG);
+	if (!combat?.started || used?.combatId !== combat.id) return true;
+
+	const ownTurns = combat.turns
+		.map((c, i) => (c.actor?.uuid === actor.uuid ? i : -1))
+		.filter((i) => i >= 0);
+	if (!ownTurns.length) return !(used.round === combat.round && used.turn === combat.turn);
+
+	// The first of the rogue's own turns that starts after the Sneak Attack.
+	const laterThisRound = ownTurns.find((i) => i > used.turn);
+	const next =
+		laterThisRound === undefined
+			? { round: used.round + 1, turn: ownTurns[0] }
+			: { round: used.round, turn: laterThisRound };
+	return combat.round > next.round || (combat.round === next.round && combat.turn >= next.turn);
+}
+
+/**
+ * Records a Sneak Attack. Does nothing outside combat.
+ *
+ * @param {Actor} actor - Rogue attacking.
+ * @returns {Promise<void>}
+ */
+async function markSneakAttackUsed(actor) {
+	const combat = game.combat;
+	if (!combat?.started) return;
+	await actor.setFlag("elkan5e", SNEAK_ATTACK_FLAG, {
+		combatId: combat.id,
+		round: combat.round,
+		turn: combat.turn,
+	});
+}
+
+/**
+ * Checks whether a weapon attack meets Sneak Attack's criteria: advantage on the attack, or another
+ * creature hostile to the target within 5 ft. of it that isn't incapacitated. Enforcer's Training
+ * also allows creatures the rogue is grappling, and Lethal Opening allows attacks of opportunity.
+ *
+ * @param {object} workflow - MIDI-QOL workflow of the attack.
+ * @param {Token} target - Creature that was hit.
+ * @returns {boolean}
+ */
+function meetsSneakAttackCriteria(workflow, target) {
+	const actor = workflow.actor;
+	const advantage =
+		workflow.attackRoll?.hasAdvantage ?? (workflow.advantage && !workflow.disadvantage);
+	if (advantage) return true;
+
+	const distance = (a, b) =>
+		globalThis.MidiQOL?.computeDistance
+			? MidiQOL.computeDistance(a, b, { wallsBlock: false })
+			: measureRangeDistance(a, b);
+	const flanked = canvas.tokens.placeables.some(
+		(t) =>
+			t !== target &&
+			t.document !== workflow.token?.document &&
+			t.actor &&
+			t.actor.system.attributes?.hp?.value > 0 &&
+			!INCAPACITATING.some((s) => t.actor.statuses.has(s)) &&
+			t.document.disposition !== target.document.disposition &&
+			distance(t, target) <= 5,
+	);
+	if (flanked) return true;
+
+	if (
+		hasFeature(actor, "enforcers-training") &&
+		target.actor?.effects.some(
+			(e) =>
+				e.flags?.elkan5e?.grapple?.grapplerUuid === actor.uuid &&
+				e.statuses?.has("grappled"),
 		)
-			return {};
-		if (workflow.hitTargets.size < 1) return {};
-		if (!workflow.actor || !workflow.token) return {};
+	)
+		return true;
 
-		const actor = workflow.actor;
+	// Attacks of opportunity are the melee attacks a rogue makes outside their own turn.
+	const combat = game.combat;
+	return (
+		hasFeature(actor, "lethal-opening") &&
+		workflow.activity.actionType === "mwak" &&
+		Boolean(combat?.started) &&
+		combat.combatant?.actor?.uuid !== actor.uuid
+	);
+}
 
-		const target = workflow.hitTargets.first();
-		if (!target) {
-			console.error("Sneak Attack: no target found");
-			return {};
-		}
+/**
+ * Runs Sneak Attack class feature automation as a MIDI-QOL damage bonus. When a weapon attack
+ * (not a heavy melee weapon) hits and meets the criteria, Sneak Attack's damage is added to the
+ * weapon's damage, doubled on a critical hit. Rogues with precision attacks choose between Sneak
+ * Attack and their precision attacks, which roll their own save and damage against the target.
+ *
+ * @param {object} args - MIDI-QOL macro arguments, or the workflow itself.
+ * @returns {Promise<Roll[]|{}>} Bonus damage rolls.
+ */
+export async function sneakAttack(args) {
+	try {
+		const workflow = args?.workflow ?? args;
+		const actor = workflow?.actor;
+		const weapon = workflow?.item;
+		const actionType = workflow?.activity?.actionType;
+		if (!actor?.isOwner || !workflow.token || !["mwak", "rwak"].includes(actionType)) return {};
+		if (weapon?.type !== "weapon") return {};
+		if (actionType === "mwak" && weapon.system.properties?.has("hvy")) return {};
 
-		// Once-per-turn guard — check before doing anything else.
-		if (game.combat) {
-			const combatTime = `${game.combat.id}-${game.combat.round + game.combat.turn / 100}`;
-			if (actor.getFlag("elkan5e", "sneakAttackTime") === combatTime) {
-				console.warn("Sneak Attack: already used this turn");
-				return {};
-			}
-		}
+		const target = workflow.hitTargets?.first();
+		if (!target || !sneakAttackAvailable(actor)) return {};
 
-		// Eligible if we have advantage OR a qualifying enemy is adjacent to the target.
-		let isSneak = workflow.advantage;
+		const sneakItem = actor.items.find((i) => i.system?.identifier === "sneak-attack");
+		if (!sneakItem || !meetsSneakAttackCriteria(workflow, target)) return {};
 
-		if (!isSneak) {
-			const nearbyTokens = canvas.tokens.placeables.filter(
-				(t) =>
-					t.actor &&
-					t.actor.id !== actor.id &&
-					t.id !== target.id &&
-					t.actor.system.attributes?.hp?.value > 0 &&
-					t.document.disposition !== target.document.disposition &&
-					MidiQOL.computeDistance(t, target, { wallsBlock: false }) <= 5,
-			);
-			isSneak = nearbyTokens.length > 0;
-		}
-
-		if (!isSneak) {
-			console.warn("Sneak Attack: no advantage or qualifying ally adjacent to target");
-			return {};
-		}
-
-		// Record the turn so sneak attack can't fire twice.
-		if (game.combat) {
-			const combatTime = `${game.combat.id}-${game.combat.round + game.combat.turn / 100}`;
-			if (actor.getFlag("elkan5e", "sneakAttackTime") !== combatTime) {
-				await actor.setFlag("elkan5e", "sneakAttackTime", combatTime);
-			}
-		}
-
-		const base = workflow.item?.system?.damage?.base;
-		const parts = workflow.item?.system?.damage?.parts;
-		let damageType = "piercing";
-		if (base?.types instanceof Set && base.types.size > 0) {
-			[damageType] = [...base.types];
-		} else if (Array.isArray(parts) && parts[0]?.[1]) {
-			damageType = parts[0][1];
-		}
-		// Check for other precision-strike features on the actor.
+		// Rogues with precision attacks choose which one to use.
 		const precisionFeatures = actor.items.filter(
-			(i) => i.system?.type?.subtype === "precision",
+			(i) => i !== sneakItem && i.system?.type?.subtype === "precision",
 		);
-
-		if (precisionFeatures.length === 0) {
-			// No other precision strikes — fire the sneak attack activity directly.
-			const activity = macroItem.system.activities.contents[0];
-			if (activity)
-				await activity.use({ damage: { type: damageType } }, { event: workflow.event });
-		} else {
-			// Let the player pick: Sneak Attack or any precision feature.
-			const choices = [
-				{ label: macroItem.name, value: "sneak" },
-				...precisionFeatures.map((f) => ({ label: f.name, value: f.uuid })),
-			];
-			const optionsHtml = choices
-				.map((c) => `<option value="${c.value}">${c.label}</option>`)
-				.join("");
-
-			const chosen = await foundry.applications.api.DialogV2.prompt({
-				window: { title: "Precision Strike" },
-				content: `<div style="margin-bottom:8px;">Choose which feature to use:</div>
-				          <select name="choice" style="width:100%">${optionsHtml}</select>`,
-				ok: { label: "Use", callback: (_ev, btn) => btn.form.elements.choice.value },
+		let choice = "sneak";
+		if (precisionFeatures.length) {
+			choice = await DialogV2.wait({
+				window: { title: t("elkan5e.rogue.sneakAttackTitle") },
+				content: `<p>${t("elkan5e.rogue.sneakAttackContent", { target: target.name })}</p>`,
+				buttons: [
+					{ label: sneakItem.name, action: "sneak", default: true },
+					...precisionFeatures.map((f) => ({ label: f.name, action: f.id })),
+					{ label: t("elkan5e.rogue.sneakAttackNone"), action: "none" },
+				],
 				rejectClose: false,
-				modal: true,
 			});
-			if (!chosen) return {};
-
-			const targetItem = chosen === "sneak" ? macroItem : await fromUuid(chosen);
-			if (!targetItem) return {};
-
-			const activity = targetItem.system.activities.contents[0];
-			// Sneak attack inherits the weapon's damage type; precision features define their own.
-			const useConfig = chosen === "sneak" ? { damage: { type: damageType } } : {};
-			if (activity) await activity.use(useConfig, { event: workflow.event });
+			if (!choice || choice === "none") return {};
 		}
+
+		await markSneakAttackUsed(actor);
+
+		// A precision attack rolls its own save, damage and effects against the target.
+		if (choice !== "sneak") {
+			const activity = actor.items.get(choice)?.system.activities.contents[0];
+			if (!activity) return {};
+			const midiOptions = {
+				targetUuids: [target.document.uuid],
+				ignoreUserTargets: true,
+				isCritical: workflow.isCritical,
+			};
+			const use = globalThis.MidiQOL?.completeActivityUse
+				? MidiQOL.completeActivityUse(activity, { midiOptions }, { configure: false })
+				: activity.use({}, { configure: false });
+			Promise.resolve(use).catch((error) => console.error("Sneak Attack |", error));
+			return {};
+		}
+
+		// Sneak Attack adds its damage to the weapon's, using the weapon's damage type.
+		const part = sneakItem.system.activities.getByType("damage")[0]?.damage?.parts?.[0];
+		const formula = part?.formula || "(@scale.rogue.sneak-attack)d6";
+		const type =
+			workflow.damageRolls?.[0]?.options?.type ??
+			[...(weapon.system.damage?.base?.types ?? [])][0] ??
+			"piercing";
+		const roll = new CONFIG.Dice.DamageRoll(formula, sneakItem.getRollData(), {
+			type,
+			flavor: sneakItem.name,
+			isCritical: workflow.isCritical,
+		});
+		return [await roll.evaluate()];
 	} catch (err) {
 		console.error("Sneak Attack |", err);
+		return {};
 	}
 }
 

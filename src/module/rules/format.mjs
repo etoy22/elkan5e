@@ -7,6 +7,7 @@ export function formating() {
 	activation();
 	mats();
 	subFeatures();
+	asiWithoutFeat();
 	traits();
 	registerCustomEffectFields();
 	sheets();
@@ -113,6 +114,30 @@ export function subFeatures() {
 			manuevers: "Manuevers",
 		},
 	};
+}
+
+/*
+ * Elkan 5e classes grant an Ability Score Improvement and a separate feat at the same level,
+ * so their ASI can't be swapped for a feat (which would give two feats).
+ */
+/**
+ * Applies ASI Without Feat rule behavior.
+ *
+ */
+export function asiWithoutFeat() {
+	const AsiAdvancement = CONFIG.DND5E.advancementTypes.AbilityScoreImprovement?.documentClass;
+	const allowFeat =
+		AsiAdvancement && Object.getOwnPropertyDescriptor(AsiAdvancement.prototype, "allowFeat");
+	if (!allowFeat?.get) return;
+
+	Object.defineProperty(AsiAdvancement.prototype, "allowFeat", {
+		configurable: true,
+		get() {
+			const isElkanClass =
+				this.item.type === "class" && this.item.system.source?.book === "Elkan 5e";
+			return isElkanClass ? false : allowFeat.get.call(this);
+		},
+	});
 }
 
 /**

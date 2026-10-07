@@ -125,17 +125,20 @@
 					"chatFlavor": "On Hit: [[/save ability=con dc=17]] vs Stunned"
 				},
 				"duration": {
-					"units": "inst",
+					"units": "turn",
 					"concentration": false,
-					"override": false
+					"override": false,
+					"value": "1",
+					"expiry": null
 				},
 				"effects": [
 					{
-						"_id": "4awBYMh85YMXFJDS",
 						"level": {
 							"min": null,
 							"max": null
-						}
+						},
+						"_id": "ePvIUXPusgREMOTE",
+						"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanstunned0000"
 					}
 				],
 				"range": {
@@ -192,9 +195,7 @@
 					"parts": []
 				},
 				"img": "",
-				"appliedEffects": [
-					"4awBYMh85YMXFJDS"
-				],
+				"appliedEffects": [],
 				"visibility": {
 					"requireAttunement": true,
 					"level": {
@@ -467,33 +468,6 @@
 			"showIcon": 1,
 			"folder": null,
 			"_key": "!items.effects!dmgHammerOfThund.RSpASIW4HbToM7yC"
-		},
-		{
-			"name": "Hammer of Thunderbolts",
-			"img": "icons/weapons/hammers/hammer-double-glowing-yellow.webp",
-			"origin": "Compendium.dnd5e.equipment24.Item.dmgHammerOfThund",
-			"transfer": false,
-			"_id": "4awBYMh85YMXFJDS",
-			"type": "base",
-			"system": {
-				"changes": []
-			},
-			"disabled": false,
-			"duration": {
-				"value": 1,
-				"units": "turns",
-				"expiry": "turnStart",
-				"expired": false
-			},
-			"description": "<p>The target has the &amp;reference[Stunned apply=false] condition until the end of your next turn.</p>",
-			"tint": "#ffffff",
-			"statuses": [
-				"stunned"
-			],
-			"showIcon": 2,
-			"start": null,
-			"folder": null,
-			"_key": "!items.effects!dmgHammerOfThund.4awBYMh85YMXFJDS"
 		},
 		{
 			"type": "enchantment",

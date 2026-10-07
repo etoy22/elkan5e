@@ -3,6 +3,8 @@
  * Effects are stored in the elkan5e-effects compendium and can be created with custom options.
  */
 
+import { CONDITION_EFFECT_ID } from "../rules/condition/data.mjs";
+
 /**
  * Create an active effect from the elkan5e-effects compendium and merge with custom options.
  *
@@ -47,6 +49,9 @@ export async function createEffect(effectId, customOptions = {}) {
 		if (compendium) {
 			// Get document by ID or identifier
 			let doc = await compendium.getDocument(effectId).catch(() => null);
+
+			// Condition ids (e.g. "incapacitated") resolve to the generated condition effects
+			doc ??= await compendium.getDocument(CONDITION_EFFECT_ID(effectId)).catch(() => null);
 
 			// If not found by ID, try by name
 			if (!doc) {

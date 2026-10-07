@@ -6,6 +6,7 @@ import { fileURLToPath } from "node:url";
 import { parse } from "yaml";
 import { buildPayload, releaseToFoundry } from "../.github/workflows/scripts/release-foundry.js";
 import { updateModuleJson } from "../.github/workflows/scripts/update-module.js";
+import { buildConditionEffects, conditionEffectPath } from "./build-condition-effects.mjs";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -335,4 +336,21 @@ test("pack source JSON files parse cleanly", () => {
 	}
 
 	assert.equal(errors.length, 0, errors.join("\n\n"));
+});
+
+test("condition effects in the effects pack match the condition definitions", async () => {
+	const effects = await buildConditionEffects();
+	const stale = [];
+
+	for (const [id, effect] of effects) {
+		let current;
+		try {
+			current = JSON.parse(readFileSync(conditionEffectPath(id), "utf8"));
+		} catch {
+			current = null;
+		}
+		if (JSON.stringify(current) !== JSON.stringify(effect)) stale.push(id);
+	}
+
+	assert.deepEqual(stale, [], "Run `npm run conditions` to regenerate condition effects");
 });

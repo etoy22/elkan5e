@@ -8,6 +8,7 @@ import {
 	updateBloodragerOnLevelup,
 	handleBloodragerDelete,
 } from "./module/classes/barbarian.mjs";
+import { swarmDamage } from "./module/creatures/swarm.mjs";
 import { undeadFortitude } from "./module/creatures/undead.mjs";
 import {
 	healingOverflow,
@@ -17,8 +18,18 @@ import {
 } from "./module/classes/cleric.mjs";
 import { archDruid, lurkingFogDarkness } from "./module/classes/druid.mjs";
 import { improvedCriticalDamage, secondWind } from "./module/classes/fighter.mjs";
-import { elementalAttunement, onCombatTurnChange } from "./module/classes/monk.mjs";
-import { cleansingTouch } from "./module/classes/paladin.mjs";
+import {
+	elementalAttunement,
+	meldWithShadowsBrightLight,
+	onCombatTurnChange,
+	stillnessOfMind,
+	stillnessOfMindTurnStart,
+} from "./module/classes/monk.mjs";
+import {
+	cleansingTouch,
+	strickeningGaze,
+	strickeningGazePrompt,
+} from "./module/classes/paladin.mjs";
 import {
 	assassinsReflexesEnd,
 	assassinsReflexesStart,
@@ -70,7 +81,11 @@ import {
 	conditionsReady,
 	handleHazardExhaustion,
 } from "./module/rules/condition/setup.mjs";
-import { darknessAttackDisadvantage } from "./module/rules/condition/vision.mjs";
+import {
+	darknessAttackDisadvantage,
+	refreshSeeThroughDarkness,
+	registerSeeThroughDarkness,
+} from "./module/rules/condition/vision.mjs";
 import {
 	grapple,
 	handleDeadGrapplePrompt,
@@ -147,6 +162,7 @@ function registerHooks() {
 			console.log("Elkan 5e | Initializing Elkan 5e");
 			await gameSettingRegister();
 			initWarlockSpellSlot();
+			registerSeeThroughDarkness();
 
 			conditions();
 			tools();
@@ -221,6 +237,7 @@ function registerHooks() {
 				// Registers custom DAE auto-fields so they appear in the DAE field picker.
 				globalThis.DAE?.addAutoFields?.([
 					"flags.elkan5e.pushResist",
+					"flags.elkan5e.swarm",
 					"flags.elkan5e.undeadFortitude",
 					"flags.elkan5e.undeadFortitudeDCModifier",
 				]);
@@ -261,6 +278,12 @@ function registerHooks() {
 		}
 		cleansingTouch(activity, usageConfig).catch((error) => {
 			console.error("Elkan 5e | Error in Cleansing Touch postUseActivity hook:", error);
+		});
+		strickeningGaze(activity, usageConfig).catch((error) => {
+			console.error("Elkan 5e | Error in Strickening Gaze postUseActivity hook:", error);
+		});
+		stillnessOfMind(activity).catch((error) => {
+			console.error("Elkan 5e | Error in Stillness of Mind postUseActivity hook:", error);
 		});
 		moveMarkForDeath(activity).catch((error) => {
 			console.error("Elkan 5e | Error in Mark for Death postUseActivity hook:", error);
@@ -402,6 +425,12 @@ function registerHooks() {
 		} catch (error) {
 			console.error("Elkan 5e | Error in Power of Love and Fear RollComplete hook:", error);
 		}
+
+		try {
+			await strickeningGazePrompt(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Strickening Gaze RollComplete hook:", error);
+		}
 	});
 
 	Hooks.on("dnd5e.preRollInitiative", (actor) => {
@@ -436,6 +465,12 @@ function registerHooks() {
 		} catch (error) {
 			console.error("Elkan 5e | Error cleaning goodberry effect:", error);
 		}
+
+		try {
+			refreshSeeThroughDarkness(effect);
+		} catch (error) {
+			console.error("Elkan 5e | Error in deleteActiveEffect vision hook:", error);
+		}
 	});
 
 	Hooks.on("deleteItem", async (item, options, userId) => {
@@ -458,7 +493,7 @@ function registerHooks() {
 		}
 	});
 
-	Hooks.on("createActiveEffect", async (effect) => {
+	Hooks.on("createActiveEffect", async (effect, options, userId) => {
 		try {
 			await handlePushedEffect(effect);
 		} catch (error) {
@@ -482,6 +517,13 @@ function registerHooks() {
 		} catch (error) {
 			console.error("Elkan 5e | Error in Spirit Link pairing hook:", error);
 		}
+
+		try {
+			refreshSeeThroughDarkness(effect);
+			meldWithShadowsBrightLight({ userId, effect });
+		} catch (error) {
+			console.error("Elkan 5e | Error in createActiveEffect vision hook:", error);
+		}
 	});
 
 	Hooks.on("updateActiveEffect", async (effect, changes) => {
@@ -495,6 +537,21 @@ function registerHooks() {
 			await handleHazardExhaustion(effect);
 		} catch (error) {
 			console.error("Elkan 5e | Error in updateActiveEffect hazard exhaustion hook:", error);
+		}
+
+		try {
+			refreshSeeThroughDarkness(effect);
+		} catch (error) {
+			console.error("Elkan 5e | Error in updateActiveEffect vision hook:", error);
+		}
+	});
+
+	// Halves single-target damage and doubles area damage against swarms.
+	Hooks.on("dnd5e.calculateDamage", (actor, damages, options) => {
+		try {
+			swarmDamage(actor, damages, options);
+		} catch (error) {
+			console.error("Elkan 5e | Error in swarmDamage hook:", error);
 		}
 	});
 
@@ -580,12 +637,21 @@ function registerHooks() {
 		}
 	});
 
-	Hooks.on("updateToken", async (tokenDoc, changes) => {
+	Hooks.on("updateToken", async (tokenDoc, changes, options, userId) => {
 		try {
 			await handleGrapplerMove(tokenDoc, changes);
 		} catch (error) {
 			console.error("Elkan 5e | Error in updateToken grapple hook:", error);
 		}
+
+		if (["x", "y", "elevation"].some((key) => key in changes)) {
+			meldWithShadowsBrightLight({ userId });
+		}
+	});
+
+	// Lighting refreshes after lights or light-carrying tokens change.
+	Hooks.on("lightingRefresh", () => {
+		meldWithShadowsBrightLight();
 	});
 
 	Hooks.on("combatStart", (combat) => {
@@ -606,6 +672,10 @@ function registerHooks() {
 		} catch (error) {
 			console.error("Elkan 5e | Error in combatTurnChange hook:", error);
 		}
+
+		stillnessOfMindTurnStart(combat).catch((error) => {
+			console.error("Elkan 5e | Error in Stillness of Mind combatTurnChange hook:", error);
+		});
 
 		Level1.sanctuarySuccessCache.clear();
 	});

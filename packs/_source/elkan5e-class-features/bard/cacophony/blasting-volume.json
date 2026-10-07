@@ -2,51 +2,7 @@
 	"name": "Blasting Volume",
 	"type": "feat",
 	"img": "icons/magic/sonic/explosion-shock-wave-teal.webp",
-	"effects": [
-		{
-			"name": "Blasting Volume",
-			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.MfhfSzLQbJqLCZ6q",
-			"duration": {
-				"value": 1,
-				"units": "rounds",
-				"expiry": null,
-				"expired": false
-			},
-			"transfer": false,
-			"disabled": false,
-			"_id": "EWrKBMRyzcv270DG",
-			"description": "",
-			"statuses": [
-				"deafened"
-			],
-			"flags": {
-				"dae": {
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"stackable": "noneName",
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": [],
-					"disableIncapacitated": false,
-					"enableCondition": "",
-					"disableCondition": "",
-					"expiryMode": "default",
-					"phaseStamped": true
-				}
-			},
-			"tint": "#ffffff",
-			"img": "icons/magic/sonic/explosion-shock-wave-teal.webp",
-			"type": "base",
-			"system": {
-				"changes": []
-			},
-			"showIcon": 2,
-			"start": null,
-			"folder": null,
-			"_key": "!items.effects!MfhfSzLQbJqLCZ6q.EWrKBMRyzcv270DG"
-		}
-	],
+	"effects": [],
 	"folder": "lUVxmfQCDK9zwF5D",
 	"flags": {
 		"midi-qol": {
@@ -138,14 +94,17 @@
 				},
 				"duration": {
 					"concentration": false,
-					"units": "inst",
+					"units": "round",
 					"special": "",
-					"override": false
+					"override": false,
+					"value": "1",
+					"expiry": null
 				},
 				"effects": [
 					{
-						"_id": "EWrKBMRyzcv270DG",
-						"onSave": false
+						"onSave": false,
+						"_id": "GO8egDMHEzREMOTE",
+						"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkandeafened000"
 					}
 				],
 				"range": {
@@ -206,9 +165,7 @@
 				"name": "",
 				"img": "",
 				"effectConditionText": "!target.traits.ci.value.has('deafened')",
-				"appliedEffects": [
-					"EWrKBMRyzcv270DG"
-				]
+				"appliedEffects": []
 			}
 		},
 		"identifier": "blasting-volume",

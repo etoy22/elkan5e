@@ -109,9 +109,9 @@ export async function deleteEffectRemoveEffect(
 		game.i18n.localize(effect),
 	);
 
-	// Find the effect to remove
+	// Remove the effect only once its marker effect is gone (e.g. expired after an attack)
 	const effect = actor.effects.find((i) => i.name === effectToRemoveLocalized);
-	if (effect && actor.effects.find((i) => i.name !== effectToIgnoreLocalized)) {
+	if (effect && !actor.effects.some((i) => i.name === effectToIgnoreLocalized)) {
 		// Delete the effect to remove
 		await effect.delete();
 

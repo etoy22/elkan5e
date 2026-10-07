@@ -8,6 +8,7 @@
 - Updated Undead Fortitude's attack/save detection for dnd5e's chat message data model changes (the activity type moved off `flags.dnd5e.activity` and onto `system.activity`), with fallbacks so it keeps working on older and newer dnd5e versions.
 - Fixed issue where Elemental monk switching elements causes issues
 - Fixed Mindless Rage never activating while raging.
+- Aasimar no longer incorrectly gies immunity to frightened
 
 ## Compatibility
 - Updated for dnd5e system v6.0.1
@@ -18,6 +19,9 @@
 - Fixed the Hasted (double speed) and Squeezing (half speed) condition rules never actually changing movement speed — they targeted a movement key that dnd5e no longer recognizes.
 - Fixed grapple movement penalties never applying — being grappled by a same-or-larger creature (no movement) or a smaller one (half speed), and the climber-advantage effect against a much smaller grappler, all targeted the same non-functional movement key.
 - Fixed the grapple system always treating creatures as if they had no climb speed (it was reading an outdated data path), which affected whether a much-smaller grappler gets advantage from the target being unable to climb away.
+- Elkan conditions are now in the Active Effects compendium, under Conditions, like dnd5e 6.0's own conditions. Each one includes the Elkan rules automation for that condition.
+- Features, spells, items, and creatures whose effect only gave a condition now give the condition directly. Before, they added a separate effect that had the condition, or that toggled it. The target now gets the condition itself, with its name, icon, rules text, and Elkan automation. Before, it only had a status with none of the condition's automation. This applies to 88 effects. Effects that also do something else, end on a turn boundary, or have extra rules text are unchanged.
+- Effects created by scripts for a condition, such as Haste's lethargy (Incapacitated) and grapples, now use the condition from the compendium, so they include its automation too.
 
 ## Ancestry
 - Halfling Nimbleness: fixed a broken difficult terrain reference link in the description.
@@ -28,6 +32,8 @@
 - 
 
 ## Classes
+- Every class now grants its Ability Score Improvement at levels 4, 8, 12, and 16 directly, instead of each feat granting one. You still choose a feat at those levels too. On Elkan 5e classes, the Ability Score Improvement can't be swapped for a second feat; classes from other sources still allow it. Existing characters keep the Ability Score Improvements they already got from feats.
+
  **[Barbarian](https://www.elkan5e.com/barbarian)**
 - Rage now applies a Raging status, so features that only work while raging can reliably detect it.
 - Rage now properly give damage bonus to thrown weapons
@@ -98,12 +104,16 @@
 - Ki-Empowered Strikes is now a feature that makes your Unarmed Strike magical, adamantine, cold iron, and silver, instead of a separate weapon.
 - Patient Defense now applies the Dodging status.
 - Purity of Body now grants immunity to the Diseased and Poisoned conditions and to poison damage.
+- Stillness of Mind is now automated: using it ends a charmed, confused, frightened, or goaded effect on you (you pick which one if there are several). At the start of your turn, you're asked whether to use it if you have one of those conditions.
 - Mentor
 	- Guiding Spirit now adds its ally option to the Flurry of Blows, Step of the Wind, and Patient Defense descriptions when gained.
 	- Inspire Greatness and Lend Expertise now link to the short rest, long rest, and expertise rules.
 - Shadowdancer
 	- Empty Body now grants its activity to Meld with Shadows and Hijack Shadow instead of using a script prompt.
 	- Shadow Form's invisible reference no longer applies the condition when clicked.
+	- Eyes of Shade now adds 60 ft. to your darkvision if you already have it, instead of only raising it to 60 ft. It also now lets you see through magical darkness, such as the Darkness spell, within your darkvision range.
+	- Meld with Shadows now ends when you enter bright light.
+	- Meld with Shadows and Hijack Shadow now only end at the end of your turn if you made an attack roll or cast a spell. They used to end at the end of every turn. Hijack Shadow never found its attack marker, because the marker's name was different.
 - Windwalker
 	- Repulsion Wave now grants a multi-target version of Sweep to Sweep when gained.
 	- Twin Currents now grants its activity to Step of the Wind, its identifier is no longer a placeholder, its requirement now reads Windwalker 3 instead of Open Hand 3, and it now lists Elkan 5e as its source.
@@ -127,6 +137,7 @@
 	- Avenger's Vow now grants its activity (and its effect) to Commanding Challenge, Avenger's Leap, and Searing Retribution, and adds its text to their descriptions when gained. 
 - Blackguard
 	- Aura of Corruption now has an effect that makes a creature unable to regain hit points or gain temporary hit points. Apply it to enemies within the aura.
+	- Strickening Gaze is now automated: when creatures within 120 ft. fail a saving throw against your spell or smite, you're asked whether to spend a use to give one of them 1 level of exhaustion. It now adds a real exhaustion level, which rests reduce as normal, instead of a permanent effect.
 - Inquisitor
 	- Master Seeker now grants psychic resistance through a Trait advancement, so it shows on the character sheet, and it's no longer marked as Magical.
 	- Aura of Revelation's identifier was a copy of Aura of Courage's; it's now `aura-of-revelation`.
@@ -149,6 +160,8 @@
 
 **[Rogue](https://www.elkan5e.com/rogue)**
 - Elusive is now automated: creatures that would have advantage on attack rolls against you roll normally, unless you're incapacitated, paralyzed, petrified, stunned, or unconscious.
+- Sneak Attack works again. It adds its damage to the weapon's damage roll, in the weapon's damage type, and the dice double on a critical hit. If you have precision attacks, you choose between Sneak Attack, one of your precision attacks, or not using it. A precision attack rolls its own save and damage against the target. Heavy melee weapons can't Sneak Attack, and allies within 5 ft. of the target must not be incapacitated. Once you Sneak Attack, you can't again until your next turn starts.
+- Hamstring and Hamstring (Mystic) now force a Dexterity save, as their descriptions say, instead of a Constitution save.
 - Assassin
 	- Assassin's Reflexes now links to the Surprised condition instead of the Surprise rule, and clicking it doesn't apply the condition.
 	- Assassin's Reflexes is now automated: when combat starts, each assassin who isn't Surprised gets a second turn at their initiative minus 10. The extra turn is removed when round 2 begins.
@@ -158,8 +171,10 @@
 	- Overpowering Opportunist now has working Push and Grapple activities (copied from Standard Actions) as bonus actions.
 	- Brutal Fighting now adds its text to Standard Actions and Overpowering Opportunist when gained, and prompts you to deal its damage after you win a shove or grapple contest.
 	- Swift and Brutal now adds its text to the Cunning Action description when gained.
+	- Enforcer's Training now adds its text to the Sneak Attack description when gained, and Sneak Attack works against creatures you're grappling.
 - Duelist
 	- Lethal Opening now links to the Opportunity Attacks rule.
+	- Lethal Opening now adds its text to the Sneak Attack description when gained, and Sneak Attack works with your attacks of opportunity (any melee weapon attack you make outside your own turn).
 	- Light on the Feet's +1 AC and +10 ft. speed now only apply while you aren't wearing medium or heavy armor.
 - Mystic Trickster
 	- Devastating Spells now adds its text to the Devastating Cantrips description when gained.
@@ -186,6 +201,7 @@
 - Sculptor of Flesh now modifies Alter Self to affect up to 5 willing creatures within 10 ft., and adds its text to the description.
 - Master of Myriad Forms now makes Alter Self castable without a spell slot and adds its text to the description, instead of having its own separate cast activity.
 - Pact of the Chain and Pact of the Tome no longer also create their item through an effect. They already grant it through their advancement, so you could end up with two.
+- Fiendish Sight now lets you see through magical darkness, such as the Darkness spell, within your darkvision range.
 - Dreamweaver
     - Twisted Visions now correctly forces a Wisdom save instead of none.
     - Twisted Visions now grants its activity to Misty Misdirect and adds its text to the Misty Misdirect description when gained. 
@@ -217,6 +233,10 @@
 - Scorpion Poison: its recurring save to shake off the poisoned condition now correctly forces a Constitution save (DC 10) instead of none.
 
 ## Feats
+- Feats no longer grant an Ability Score Improvement. Your class grants it instead (see Classes).
+- Removed the "Level 1 Feats (For 1st Level, no ASI)" folder. Those duplicate feats aren't needed now that no feat grants an Ability Score Improvement. The level 1 feat choice, ancestries, backgrounds, and links now use the regular versions of those feats.
+- [Brawler](https://www.elkan5e.com/feats/brawler) no longer requires level 4 in Foundry, matching its level 1 rework.
+- [Repressed Memory](https://www.elkan5e.com/feats/repressed-memory) can now be chosen as your level 1 feat. It was missing from every class's list.
 - Fixed Enraged Presence and Enraged Prowess never adding your rage bonus while raging. Skills you have expertise in are still correctly excluded.
 - Draconic Breath Control (Dragonborn): your Breath Weapon now recharges on a short rest when you gain the feat.
 - Fighting Style: Mounted Combat now has correct identifier
@@ -236,6 +256,7 @@
 - [Spirit Guardians](https://www.elkan5e.com/spells/spirit-guardians): the difficult terrain now only affects hostile creatures, as the spell describes.
 - [Freedom of Movement](https://www.elkan5e.com/spells/freedom-of-movement): the target now actually ignores difficult terrain.
 - [Thunderwave](https://www.elkan5e.com/spells/thunderwave): now correctly forces a Constitution save instead of none.
+- [Rock Blast](https://www.elkan5e.com/spells/rock-blast): a failed save now knocks the target prone, as the spell describes. Before, it gave the target advantage.
 - [Misty Step](https://www.elkan5e.com/spells/misty-step), [Dimension Door](https://www.elkan5e.com/spells/dimension-door), [Teleportation Circle](https://www.elkan5e.com/spells/teleportation-circle), and [Teleport](https://www.elkan5e.com/spells/teleport) now use dnd5e's native Teleport activity, adding a "Plan Teleport" button to place your token directly instead of just describing the move. Teleport's automated mishap-table roll was removed to match how the system's own 2024 version of the spell handles it (the GM still consults the table manually).
 - [Enlarge/Reduce](https://www.elkan5e.com/spells/enlarge%2Freduce) (and Potion of Growth / Potion of Shrinking) now use dnd5e's native size Active Effect instead of a custom script. The token's size now updates and reverts automatically and more reliably when the effect is applied or removed.
 

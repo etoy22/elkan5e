@@ -1,4 +1,10 @@
-import { removeStatuses, t, targetedActors } from "../shared/helpers.mjs";
+import {
+	measureRangeDistance,
+	removeStatuses,
+	t,
+	targetedActors,
+	updateActorAsGM,
+} from "../shared/helpers.mjs";
 
 /**
  * Counts how many Lay on Hands points an activity spent.
@@ -63,5 +69,113 @@ export async function cleansingTouch(activity, usageConfig) {
 				}),
 			);
 		}
+	}
+}
+
+const DialogV2 = foundry.applications.api.DialogV2;
+const STRICKENING_GAZE_RANGE = 120;
+
+/**
+ * Checks whether an item is one of the paladin's smites.
+ *
+ * @param {Item} item - Item to check.
+ * @returns {boolean}
+ */
+const isSmite = (item) => /(^|-)smite$/.test(item?.system?.identifier ?? "");
+
+/**
+ * Runs Strickening Gaze class feature automation: when creatures within 120 ft. fail a saving throw
+ * against the paladin's spell or smite, offers to spend a use to give one of them exhaustion.
+ *
+ * @param {object} workflow - MIDI-QOL workflow of the spell or smite.
+ * @returns {Promise<void>}
+ */
+export async function strickeningGazePrompt(workflow) {
+	const actor = workflow?.actor;
+	const item = workflow?.item;
+	if (!actor?.isOwner || !(item?.type === "spell" || isSmite(item))) return;
+
+	const gaze = actor.items.find((i) => i.system?.identifier === "strickening-gaze");
+	const activity = gaze?.system.activities.contents[0];
+	const uses = gaze?.system.uses?.value ?? 0;
+	if (!activity || uses <= 0) return;
+
+	const origin = workflow.token;
+	const targets = [...(workflow.failedSaves ?? [])].filter(
+		(token) =>
+			token.actor &&
+			token.actor !== actor &&
+			(!origin || measureRangeDistance(origin, token) <= STRICKENING_GAZE_RANGE),
+	);
+	if (!targets.length) return;
+
+	const chosen = await DialogV2.wait({
+		window: { title: gaze.name },
+		content: `<p>${t("elkan5e.paladin.strickeningGazePrompt", {
+			targets: targets.map((token) => token.name).join(", "),
+			item: item.name,
+			uses,
+		})}</p>`,
+		buttons: [
+			...targets.map((token, i) => ({
+				label: token.name,
+				action: token.document.uuid,
+				default: i === 0,
+			})),
+			{ label: t("Cancel"), action: "none" },
+		],
+		rejectClose: false,
+	});
+	if (!chosen || chosen === "none") return;
+
+	if (globalThis.MidiQOL?.completeActivityUse) {
+		await MidiQOL.completeActivityUse(
+			activity,
+			{ midiOptions: { targetUuids: [chosen], ignoreUserTargets: true } },
+			{ configure: false },
+		);
+	} else {
+		await activity.use({ strickeningGazeTargets: [chosen] }, { configure: false });
+	}
+}
+
+/**
+ * Applies Strickening Gaze's exhaustion when the feature is used, to the creature chosen by
+ * {@link strickeningGazePrompt} or, when used by hand, the user's targets.
+ *
+ * @param {object} activity - Activity that was used.
+ * @param {object} usageConfig - Usage configuration for the activation.
+ * @returns {Promise<void>}
+ */
+export async function strickeningGaze(activity, usageConfig) {
+	if (activity?.item?.system?.identifier !== "strickening-gaze") return;
+	const actor = activity.actor;
+	if (!actor?.isOwner) return;
+
+	const uuids = usageConfig?.midiOptions?.targetUuids ?? usageConfig?.strickeningGazeTargets;
+	const targets = uuids
+		? (await Promise.all(uuids.map((uuid) => fromUuid(uuid).catch(() => null))))
+				.map((doc) => doc?.actor ?? doc)
+				.filter(Boolean)
+		: targetedActors();
+
+	const maxLevel = CONFIG.DND5E.conditionTypes.exhaustion?.levels ?? 6;
+	for (const target of targets) {
+		if (target.system?.traits?.ci?.value?.has("exhaustion")) {
+			ui.notifications.info(
+				t("elkan5e.paladin.strickeningGazeImmune", {
+					name: actor.name,
+					target: target.name,
+				}),
+			);
+			continue;
+		}
+		const level = Number(target.system?.attributes?.exhaustion ?? 0);
+		await updateActorAsGM(target, {
+			"system.attributes.exhaustion": Math.min(level + 1, maxLevel),
+		});
+		ui.notifications.info(
+			t("elkan5e.paladin.strickeningGazeApplied", { name: actor.name, target: target.name }),
+		);
 	}
 }
