@@ -198,7 +198,6 @@ export async function createDrainedEffect(
 				selfTargetAlways: false,
 				dontApply: false,
 				stackable: "multi",
-				showIcon: false,
 			},
 		},
 	};

@@ -8,9 +8,7 @@
 			"flags": {
 				"dae": {
 					"stackable": "none",
-					"specialDuration": [
-						"None"
-					],
+					"specialDuration": [],
 					"transfer": false,
 					"macroRepeat": "none",
 					"selfTarget": false,
@@ -25,9 +23,9 @@
 			},
 			"disabled": false,
 			"duration": {
-				"value": 60,
+				"value": null,
 				"units": "seconds",
-				"expiry": "sourceEnd",
+				"expiry": null,
 				"expired": false
 			},
 			"tint": "#ffffff",
@@ -58,7 +56,8 @@
 						"priority": 20,
 						"type": "override"
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 2,
@@ -192,15 +191,7 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [
-					{
-						"_id": "RtkJJbNnHgYVRGhK",
-						"level": {
-							"min": null,
-							"max": null
-						}
-					}
-				],
+				"effects": [],
 				"range": {
 					"override": false
 				},
@@ -245,16 +236,11 @@
 					}
 				},
 				"regionBehavior": {
-					"dispositionFilter": 0,
+					"dispositionFilter": 1,
 					"rules": [
 						{
 							"trigger": "entry",
 							"action": "applyEffect",
-							"targetId": "RtkJJbNnHgYVRGhK"
-						},
-						{
-							"trigger": "exit",
-							"action": "removeEffect",
 							"targetId": "RtkJJbNnHgYVRGhK"
 						}
 					],

@@ -1157,7 +1157,8 @@
 								"priority": null,
 								"type": "downgrade"
 							}
-						]
+						],
+						"magical": true
 					},
 					"disabled": false,
 					"duration": {
@@ -2665,7 +2666,7 @@
 					"fZ6TmsFbHnqAI4I4": {
 						"type": "cast",
 						"spell": {
-							"uuid": "Compendium.dnd5e.spells24.Item.phbsplWallofFire",
+							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.zQ7lBRzId8peTjor",
 							"challenge": {
 								"attack": null,
 								"save": null,
@@ -3004,7 +3005,8 @@
 					"_id": "BHw91lQmVgdx39WZ",
 					"type": "base",
 					"system": {
-						"changes": []
+						"changes": [],
+						"magical": true
 					},
 					"description": "",
 					"tint": "#ffffff",
@@ -3633,7 +3635,8 @@
 								"priority": null,
 								"type": "override"
 							}
-						]
+						],
+						"magical": true
 					},
 					"description": "<p>The target’s only method of movement is a Fly Speed of 10 feet, and it can hover. The target can enter and occupy the space of another creature. The target has Resistance to Bludgeoning, Piercing, and Slashing damage; it has Immunity to the &amp;reference[prone apply=false] condition; and it has Advantage on Strength, Dexterity, and Constitution &amp;reference[savingthrow]{saving throws}. The target can pass through narrow openings, but it treats liquids as though they were solid surfaces.</p><p>The target can’t talk or manipulate objects, and any objects it was carrying or holding can’t be dropped, used, or otherwise interacted with. Finally, the target can’t attack or cast spells.</p>",
 					"tint": "#ffffff",
@@ -3886,7 +3889,8 @@
 					"_id": "9svfDetqjhsFP3ey",
 					"type": "base",
 					"system": {
-						"changes": []
+						"changes": [],
+						"magical": true
 					},
 					"description": "<p>The spell ends early immediately after the target makes an &amp;reference[attackrolls]{attack roll}, deals damage, or casts a spell.</p>",
 					"tint": "#ffffff",
@@ -4639,7 +4643,8 @@
 								"priority": null,
 								"type": "add"
 							}
-						]
+						],
+						"magical": true
 					},
 					"description": "",
 					"tint": "#ffffff",
@@ -4706,480 +4711,8 @@
 		},
 		{
 			"name": "Wall of Fire",
-			"system": {
-				"description": {
-					"value": "<p>You create a wall of fire on a solid surface within range. You can make the wall up to 60 feet long, 20 feet high, and 1 foot thick, or a ringed wall up to 20 feet in diameter, 20 feet high, and 1 foot thick. The wall is opaque and lasts for the duration.</p><p>When the wall appears, each creature in its area makes a Dexterity &amp;reference[savingthrow]{saving throw}, taking 5d8 Fire damage on a failed save or half as much damage on a successful one.</p><p>One side of the wall, selected by you when you cast this spell, deals 5d8 Fire damage to each creature that ends its turn within 10 feet of that side or inside the wall. A creature takes the same damage when it enters the wall for the first time on a turn or ends its turn there. The other side of the wall deals no damage.</p><p><strong>Using a Higher-Level Spell Slot.</strong> The damage increases by 1d8 for each spell slot level above 4.</p>",
-					"chat": ""
-				},
-				"source": {
-					"custom": "",
-					"rules": "",
-					"revision": 1,
-					"book": "Elkan 5e",
-					"license": ""
-				},
-				"activation": {
-					"type": "action",
-					"condition": "",
-					"value": null
-				},
-				"duration": {
-					"value": "1",
-					"units": "minute"
-				},
-				"target": {
-					"affects": {
-						"choice": false,
-						"count": "",
-						"type": "space",
-						"special": ""
-					},
-					"template": {
-						"units": "ft",
-						"width": "1",
-						"type": "",
-						"size": "20",
-						"contiguous": false,
-						"count": ""
-					}
-				},
-				"range": {
-					"value": "120",
-					"units": "ft",
-					"special": ""
-				},
-				"uses": {
-					"max": "",
-					"recovery": [],
-					"spent": 0
-				},
-				"level": 4,
-				"school": "evo",
-				"properties": [
-					"vocal",
-					"somatic",
-					"material",
-					"concentration"
-				],
-				"materials": {
-					"value": "a piece of charcoal",
-					"consumed": false,
-					"cost": 0,
-					"supply": 0
-				},
-				"activities": {
-					"dnd5eactivity000": {
-						"_id": "dnd5eactivity000",
-						"type": "save",
-						"activation": {
-							"type": "action",
-							"value": null,
-							"override": false
-						},
-						"consumption": {
-							"targets": [],
-							"scaling": {
-								"allowed": false,
-								"max": ""
-							},
-							"spellSlot": true
-						},
-						"description": {
-							"chatFlavor": ""
-						},
-						"duration": {
-							"units": "inst",
-							"override": false,
-							"concentration": false
-						},
-						"effects": [],
-						"range": {
-							"override": false,
-							"units": "self"
-						},
-						"target": {
-							"prompt": true,
-							"template": {
-								"contiguous": false,
-								"units": "ft",
-								"type": "wall",
-								"size": "60",
-								"width": "1",
-								"height": "20",
-								"count": ""
-							},
-							"affects": {
-								"choice": false,
-								"count": "",
-								"type": "creature",
-								"special": ""
-							},
-							"override": true
-						},
-						"damage": {
-							"onSave": "half",
-							"parts": [
-								{
-									"custom": {
-										"enabled": false,
-										"formula": ""
-									},
-									"number": 5,
-									"denomination": 8,
-									"bonus": "",
-									"types": [
-										"fire"
-									],
-									"scaling": {
-										"mode": "whole",
-										"number": 1,
-										"formula": ""
-									}
-								}
-							],
-							"critical": {
-								"allow": false
-							}
-						},
-						"save": {
-							"ability": [
-								"dex"
-							],
-							"dc": {
-								"calculation": "spellcasting",
-								"formula": ""
-							}
-						},
-						"uses": {
-							"spent": 0,
-							"recovery": [],
-							"max": ""
-						},
-						"name": "Create Wall",
-						"img": "icons/magic/fire/flame-burning-fence.webp",
-						"useConditionText": "",
-						"useConditionReason": "",
-						"effectConditionText": "",
-						"macroData": {
-							"name": "",
-							"command": ""
-						},
-						"ignoreTraits": {
-							"idi": false,
-							"idr": false,
-							"idv": false,
-							"ida": false,
-							"idm": false
-						},
-						"midiProperties": {
-							"ignoreTraits": [],
-							"triggeredActivityId": "none",
-							"triggeredActivityConditionText": "",
-							"triggeredActivityTargets": "targets",
-							"triggeredActivityRollAs": "self",
-							"autoConsume": false,
-							"forceConsumeDialog": "default",
-							"forceRollDialog": "default",
-							"forceDamageDialog": "default",
-							"confirmTargets": "default",
-							"autoTargetType": "any",
-							"autoTargetAction": "default",
-							"automationOnly": false,
-							"otherActivityCompatible": true,
-							"otherActivityAsParentType": true,
-							"displayActivityName": false,
-							"rollMode": "default",
-							"chooseEffects": false,
-							"toggleEffect": false,
-							"ignoreFullCover": false,
-							"removeChatButtons": "default",
-							"magicEffect": false,
-							"magicDamage": false,
-							"noConcentrationCheck": false,
-							"autoCEEffects": "default"
-						},
-						"isOverTimeFlag": false,
-						"overTimeProperties": {
-							"saveRemoves": true,
-							"preRemoveConditionText": "",
-							"postRemoveConditionText": ""
-						},
-						"otherActivityId": "",
-						"otherActivityAsParentType": true,
-						"friendlySave": "default"
-					},
-					"aLgpPe1PPRQ0zIrL": {
-						"type": "save",
-						"activation": {
-							"type": "action",
-							"value": null,
-							"override": false
-						},
-						"consumption": {
-							"targets": [],
-							"scaling": {
-								"allowed": false,
-								"max": ""
-							},
-							"spellSlot": true
-						},
-						"description": {
-							"chatFlavor": ""
-						},
-						"duration": {
-							"units": "inst",
-							"override": false,
-							"concentration": false
-						},
-						"effects": [],
-						"range": {
-							"override": false,
-							"units": "self"
-						},
-						"target": {
-							"prompt": true,
-							"template": {
-								"contiguous": false,
-								"units": "ft",
-								"count": "",
-								"type": "cylinder",
-								"size": "10",
-								"width": "1",
-								"height": "20"
-							},
-							"affects": {
-								"choice": false,
-								"count": "",
-								"type": "creature",
-								"special": ""
-							},
-							"override": true
-						},
-						"damage": {
-							"onSave": "half",
-							"parts": [
-								{
-									"custom": {
-										"enabled": false,
-										"formula": ""
-									},
-									"number": 5,
-									"denomination": 8,
-									"bonus": "",
-									"types": [
-										"fire"
-									],
-									"scaling": {
-										"mode": "whole",
-										"number": 1,
-										"formula": ""
-									}
-								}
-							],
-							"critical": {
-								"allow": false
-							}
-						},
-						"save": {
-							"ability": [
-								"dex"
-							],
-							"dc": {
-								"calculation": "spellcasting",
-								"formula": ""
-							}
-						},
-						"uses": {
-							"spent": 0,
-							"recovery": [],
-							"max": ""
-						},
-						"name": "Create Ring",
-						"_id": "aLgpPe1PPRQ0zIrL",
-						"img": "icons/magic/fire/barrier-wall-flame-ring-yellow.webp",
-						"useConditionText": "",
-						"useConditionReason": "",
-						"effectConditionText": "",
-						"macroData": {
-							"name": "",
-							"command": ""
-						},
-						"ignoreTraits": {
-							"idi": false,
-							"idr": false,
-							"idv": false,
-							"ida": false,
-							"idm": false
-						},
-						"midiProperties": {
-							"ignoreTraits": [],
-							"triggeredActivityId": "none",
-							"triggeredActivityConditionText": "",
-							"triggeredActivityTargets": "targets",
-							"triggeredActivityRollAs": "self",
-							"autoConsume": false,
-							"forceConsumeDialog": "default",
-							"forceRollDialog": "default",
-							"forceDamageDialog": "default",
-							"confirmTargets": "default",
-							"autoTargetType": "any",
-							"autoTargetAction": "default",
-							"automationOnly": false,
-							"otherActivityCompatible": true,
-							"otherActivityAsParentType": true,
-							"displayActivityName": false,
-							"rollMode": "default",
-							"chooseEffects": false,
-							"toggleEffect": false,
-							"ignoreFullCover": false,
-							"removeChatButtons": "default",
-							"magicEffect": false,
-							"magicDamage": false,
-							"noConcentrationCheck": false,
-							"autoCEEffects": "default"
-						},
-						"isOverTimeFlag": false,
-						"overTimeProperties": {
-							"saveRemoves": true,
-							"preRemoveConditionText": "",
-							"postRemoveConditionText": ""
-						},
-						"otherActivityId": "",
-						"otherActivityAsParentType": true,
-						"friendlySave": "default"
-					},
-					"xHKGvC597exYwpc5": {
-						"type": "damage",
-						"_id": "xHKGvC597exYwpc5",
-						"activation": {
-							"type": "",
-							"value": null,
-							"override": true,
-							"condition": ""
-						},
-						"consumption": {
-							"scaling": {
-								"allowed": false
-							},
-							"spellSlot": false,
-							"targets": []
-						},
-						"description": {
-							"chatFlavor": ""
-						},
-						"duration": {
-							"units": "inst",
-							"concentration": false,
-							"override": false
-						},
-						"effects": [],
-						"range": {
-							"override": true,
-							"units": "ft",
-							"special": "",
-							"value": "10"
-						},
-						"target": {
-							"template": {
-								"contiguous": false,
-								"units": "ft",
-								"type": ""
-							},
-							"affects": {
-								"choice": false,
-								"count": "1",
-								"type": "creature",
-								"special": ""
-							},
-							"override": true,
-							"prompt": true
-						},
-						"uses": {
-							"spent": 0,
-							"recovery": [],
-							"max": ""
-						},
-						"damage": {
-							"critical": {
-								"allow": false
-							},
-							"parts": [
-								{
-									"custom": {
-										"enabled": false,
-										"formula": ""
-									},
-									"number": 5,
-									"denomination": 8,
-									"bonus": "",
-									"types": [
-										"fire"
-									],
-									"scaling": {
-										"mode": "whole",
-										"number": 1,
-										"formula": ""
-									}
-								}
-							]
-						},
-						"name": "",
-						"img": "icons/magic/fire/flame-burning-skeleton-explosion.webp",
-						"useConditionText": "",
-						"useConditionReason": "",
-						"effectConditionText": "",
-						"macroData": {
-							"name": "",
-							"command": ""
-						},
-						"ignoreTraits": {
-							"idi": false,
-							"idr": false,
-							"idv": false,
-							"ida": false,
-							"idm": false
-						},
-						"midiProperties": {
-							"ignoreTraits": [],
-							"triggeredActivityId": "none",
-							"triggeredActivityConditionText": "",
-							"triggeredActivityTargets": "targets",
-							"triggeredActivityRollAs": "self",
-							"autoConsume": false,
-							"forceConsumeDialog": "default",
-							"forceRollDialog": "default",
-							"forceDamageDialog": "default",
-							"confirmTargets": "default",
-							"autoTargetType": "any",
-							"autoTargetAction": "default",
-							"automationOnly": false,
-							"otherActivityCompatible": true,
-							"otherActivityAsParentType": true,
-							"displayActivityName": false,
-							"rollMode": "default",
-							"chooseEffects": false,
-							"toggleEffect": false,
-							"ignoreFullCover": false,
-							"removeChatButtons": "default",
-							"magicEffect": false,
-							"magicDamage": false,
-							"noConcentrationCheck": false,
-							"autoCEEffects": "default"
-						},
-						"isOverTimeFlag": false,
-						"overTimeProperties": {
-							"saveRemoves": true,
-							"preRemoveConditionText": "",
-							"postRemoveConditionText": ""
-						}
-					}
-				},
-				"identifier": "wall-of-fire",
-				"method": "spell",
-				"prepared": 0
-			},
 			"type": "spell",
-			"img": "icons/magic/fire/flame-burning-fence.webp",
+			"img": "icons/magic/fire/barrier-wall-explosion-orange.webp",
 			"effects": [
 				{
 					"_id": "dnd5espellchange",
@@ -5228,9 +4761,312 @@
 			],
 			"folder": "qi3IbnEwap7mRw4b",
 			"flags": {
+				"midi-qol": {
+					"effectActivation": false,
+					"AoETargetType": "any",
+					"AoETargetTypeIncludeSelf": true,
+					"autoTarget": "default",
+					"rollAttackPerTarget": "default",
+					"removeAttackDamageButtons": "default",
+					"itemCondition": "",
+					"effectCondition": "",
+					"reactionCondition": "",
+					"otherCondition": ""
+				},
+				"midiProperties": {
+					"nodam": false,
+					"fulldam": false,
+					"halfdam": false,
+					"rollOther": false,
+					"critOther": false,
+					"magicdam": false,
+					"magiceffect": false,
+					"concentration": false,
+					"toggleEffect": false,
+					"autoFailFriendly": false,
+					"autoSaveFriendly": false,
+					"offHandWeapon": false,
+					"ignoreTotalCover": false,
+					"confirmTargets": "default",
+					"saveDamage": "default",
+					"bonusSaveDamage": "default",
+					"noConcentrationCheck": false,
+					"idr": false,
+					"idi": false,
+					"idv": false,
+					"ida": false
+				},
 				"dnd5e": {
 					"cachedFor": ".Item.mmSpellcasting00.Activity.fZ6TmsFbHnqAI4I4"
 				}
+			},
+			"system": {
+				"description": {
+					"value": "<p><em>You toss phosphorus down at your feet, and a moment later, a wall of flames flashes into existence where you will it.</em></p><p><strong>[[/save dexterity]]{Dexterity Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 5d8 fire]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li><li><p><strong>Area Hazard:</strong> Targets roll a save when they enter or when they end their turn in the wall (but only once per turn).</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d8 fire]]{1d8} for each spell level above 4th.</p>",
+					"chat": ""
+				},
+				"source": {
+					"custom": "elkan5e.com/spells/wall-of-fire",
+					"revision": 1,
+					"rules": "",
+					"book": "Elkan 5e",
+					"page": "",
+					"license": ""
+				},
+				"activation": {
+					"type": "action",
+					"condition": "",
+					"value": 1
+				},
+				"duration": {
+					"value": "1",
+					"units": "minute"
+				},
+				"target": {
+					"affects": {
+						"choice": false,
+						"count": "",
+						"type": ""
+					},
+					"template": {
+						"units": "ft",
+						"width": "10",
+						"type": "wall",
+						"size": "60",
+						"contiguous": false,
+						"height": "20",
+						"count": ""
+					}
+				},
+				"range": {
+					"value": "120",
+					"units": "ft",
+					"special": ""
+				},
+				"uses": {
+					"max": "",
+					"recovery": [],
+					"spent": 0
+				},
+				"ability": "",
+				"level": 4,
+				"school": "evo",
+				"materials": {
+					"value": "",
+					"consumed": false,
+					"cost": 0,
+					"supply": 0
+				},
+				"preparation": {
+					"mode": "prepared",
+					"prepared": true
+				},
+				"properties": [
+					"vocal",
+					"somatic",
+					"material",
+					"concentration"
+				],
+				"activities": {
+					"uKgd8XsMvGM1IbmS": {
+						"type": "utility",
+						"activation": {
+							"type": "action",
+							"value": null,
+							"override": false
+						},
+						"consumption": {
+							"targets": [],
+							"scaling": {
+								"allowed": false,
+								"max": ""
+							},
+							"spellSlot": true
+						},
+						"description": {
+							"chatFlavor": ""
+						},
+						"duration": {
+							"units": "inst",
+							"concentration": false,
+							"override": false
+						},
+						"effects": [],
+						"range": {
+							"override": false
+						},
+						"target": {
+							"prompt": true,
+							"template": {
+								"type": "wall",
+								"size": "60",
+								"width": "10",
+								"height": "20",
+								"count": ""
+							},
+							"affects": {
+								"type": "",
+								"count": "",
+								"choice": false,
+								"special": ""
+							},
+							"override": true
+						},
+						"uses": {
+							"spent": 0,
+							"recovery": [],
+							"max": ""
+						},
+						"_id": "uKgd8XsMvGM1IbmS",
+						"name": "",
+						"img": "",
+						"visibility": {
+							"level": {
+								"min": null,
+								"max": null
+							}
+						},
+						"regionBehavior": {
+							"attachToken": "default",
+							"enabled": true,
+							"dispositionFilter": -1,
+							"excludeSource": true,
+							"oncePerTurn": true,
+							"wallRestriction": "none",
+							"regionVisibility": 2,
+							"rules": [
+								{
+									"trigger": "entry",
+									"action": "useActivity",
+									"targetId": "wallOfFireDamage"
+								},
+								{
+									"trigger": "turnEnd",
+									"action": "useActivity",
+									"targetId": "wallOfFireDamage"
+								}
+							]
+						},
+						"appliedEffects": [],
+						"roll": {
+							"formula": "",
+							"name": "",
+							"prompt": false,
+							"visible": false
+						}
+					},
+					"woFDmgActivity01": {
+						"type": "save",
+						"activation": {
+							"type": "",
+							"value": null,
+							"override": true,
+							"condition": ""
+						},
+						"consumption": {
+							"targets": [],
+							"scaling": {
+								"allowed": false,
+								"max": ""
+							},
+							"spellSlot": false
+						},
+						"description": {
+							"chatFlavor": ""
+						},
+						"duration": {
+							"units": "inst",
+							"concentration": false,
+							"override": true
+						},
+						"effects": [],
+						"range": {
+							"override": false
+						},
+						"target": {
+							"prompt": true,
+							"template": {
+								"contiguous": false,
+								"type": "",
+								"units": "ft",
+								"stationary": false
+							},
+							"affects": {
+								"type": "self"
+							},
+							"override": true
+						},
+						"damage": {
+							"onSave": "half",
+							"parts": [
+								{
+									"number": 5,
+									"denomination": 8,
+									"bonus": "",
+									"types": [
+										"fire"
+									],
+									"custom": {
+										"enabled": false,
+										"formula": ""
+									},
+									"scaling": {
+										"mode": "whole",
+										"number": 1,
+										"formula": ""
+									}
+								}
+							]
+						},
+						"save": {
+							"ability": [
+								"dex"
+							],
+							"dc": {
+								"calculation": "spellcasting",
+								"formula": ""
+							}
+						},
+						"uses": {
+							"spent": 0,
+							"recovery": [],
+							"max": ""
+						},
+						"_id": "woFDmgActivity01",
+						"name": "Wall of Fire Damage",
+						"img": "",
+						"visibility": {
+							"level": {
+								"min": null,
+								"max": null
+							}
+						},
+						"midiProperties": {
+							"identifier": "wallOfFireDamage",
+							"automationOnly": true,
+							"confirmTargets": "never"
+						},
+						"isOverTimeFlag": true,
+						"overTimeProperties": {
+							"turnChoice": "end",
+							"saveRemoves": false
+						},
+						"regionBehavior": {
+							"enabled": false,
+							"dispositionFilter": -1,
+							"excludeSource": true,
+							"oncePerTurn": true,
+							"wallRestriction": "none",
+							"regionVisibility": 2,
+							"attachToken": "default",
+							"rules": []
+						}
+					}
+				},
+				"identifier": "wall-of-fire",
+				"method": "spell",
+				"prepared": 0,
+				"sourceItem": "feat:spellcasting"
 			},
 			"_id": "Ks8BqKrODweOeMkF",
 			"_key": "!actors.items!IIFGO5eTsQ43Lm4n.Ks8BqKrODweOeMkF"

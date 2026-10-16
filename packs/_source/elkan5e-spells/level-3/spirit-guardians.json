@@ -37,7 +37,8 @@
 			"img": "icons/magic/symbols/mask-yellow-orange.webp",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
@@ -221,18 +222,7 @@
 					"dispositionFilter": 0,
 					"excludeSource": true,
 					"oncePerTurn": true,
-					"rules": [
-						{
-							"trigger": "entry",
-							"action": "useActivity",
-							"targetId": "guardiansDamage"
-						},
-						{
-							"trigger": "turnEnd",
-							"action": "useActivity",
-							"targetId": "guardiansDamage"
-						}
-					],
+					"rules": [],
 					"wallRestriction": "none",
 					"regionVisibility": 2
 				},
@@ -288,8 +278,9 @@
 						"stationary": false
 					},
 					"affects": {
-						"type": "self",
+						"type": "creature",
 						"count": "",
+						"choice": true,
 						"special": ""
 					},
 					"override": true
@@ -348,7 +339,7 @@
 					"automationOnly": true,
 					"confirmTargets": "never"
 				},
-				"isOverTimeFlag": true,
+				"isOverTimeFlag": false,
 				"overTimeProperties": {
 					"turnChoice": "end",
 					"saveRemoves": false

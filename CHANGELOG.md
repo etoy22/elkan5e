@@ -22,6 +22,41 @@
 - Elkan conditions are now in the Active Effects compendium, under Conditions, like dnd5e 6.0's own conditions. Each one includes the Elkan rules automation for that condition.
 - Features, spells, items, and creatures whose effect only gave a condition now give the condition directly. Before, they added a separate effect that had the condition, or that toggled it. The target now gets the condition itself, with its name, icon, rules text, and Elkan automation. Before, it only had a status with none of the condition's automation. This applies to 88 effects. Effects that also do something else, end on a turn boundary, or have extra rules text are unchanged.
 - Effects created by scripts for a condition, such as Haste's lethargy (Incapacitated) and grapples, now use the condition from the compendium, so they include its automation too.
+- Updated for Midi-QOL 14.6 and DAE 14.6 (their dnd5e 6 releases):
+  - DAE now fills an applied effect's `@` values from the target unless the effect says otherwise. Effects that need the caster's values now say so: every OverTime effect (save DCs, spell modifier, spell level), Warchant's bonuses, Avenger's Vow, Aid, and Pale Tincture. Before, a creature affected by Hold Creature or Web, for example, would have rolled against its own spell save DC.
+  - Power Word Stun's 150 HP check reads the target's hit points, not the caster's.
+  - Careful Spell, Power of Love and Fear, Necromantic Surge, and Blight work again. Midi-QOL removed the hook they ran on, so they never triggered.
+  - Shatter gives constructs disadvantage on the save again.
+  - Effects that end at the start or end of the caster's or target's turn now use dnd5e's turn expiry instead of DAE's retired special durations (22 effects, such as Vicious Mockery, Shadow Strike, and the graveguards' Dodge and Help).
+  - Effects applied by an activity are no longer also marked as passive, so their durations run once applied.
+  - Updated effect keys DAE has deprecated: weapon, spell, and all-attack bonuses now use dnd5e's roll bonus fields; damage immunity/resistance to all types, Flood's Prone status, and Stonecunning's tremorsense use their current keys.
+- Effects from spells, spell scrolls, and magic items are now marked as magical, so an Antimagic Field suppresses them. dnd5e 6.0 only marks these in world data, not in module compendiums.
+- Vicious Wound and Geas give their level of exhaustion again. dnd5e 6.0 works out exhaustion from the Exhaustion condition, so the old effect that added a level did nothing. Vicious Wound's level goes away when its effect ends.
+- Shield of Faith, Barkskin, Light on the Feet, and the Ogre Mage's AC bonus use dnd5e's AC bonus and minimum AC fields instead of the deprecated AC value.
+- Fixed repeating saves and ongoing damage (Midi-QOL OverTime effects) that never worked:
+  - Magic Shackles, Rend the Veil (spell and Mutant Wizard version), Irresistible Dance, Paralyzing Breath, and Volatile Creation now roll their repeat save. Before, the save was missing, mistyped, or the effect was blank. Magic Shackles also now lasts 1 minute.
+  - Gold Breath Weapon's repeat Constitution save uses the dragonborn's breath weapon DC. Before, it was set up as the wrong roll type with a DC Midi-QOL couldn't read.
+  - Holy Nimbus deals half damage on a successful save, instead of none.
+  - Relentless Tides' lingering damage ends after 1 minute instead of lasting until removed.
+  - Flammable deals its fire damage at the end of the creature's turn, as written.
+  - Acid Arrow's follow-up damage is acid instead of untyped.
+  - Petrifying Gaze's repeat save no longer logs an error every turn, and stops after one failure so the Second Save can petrify.
+  - Liquid Fire sets the target Burning (with the Burning condition's damage and put-out action), and a successful save takes no damage.
+  - Frightful Presence applies the Frightened condition; it used a status from an old module.
+  - The Burning and Suffocation conditions damage or exhaust the creature that has the condition. Before, they used whichever token was selected.
+- Fixed area spells for dnd5e 6.0 and Midi-QOL's area behaviors:
+  - Web, Zone of Truth, and Antipathy/Sympathy no longer re-cast the spell (placing a new area and spending a spell slot) each time a creature enters the area. Entering now rolls a separate save.
+  - Fog Cloud, Sleet Storm, Insect Plague, Web, Cloudkill, Stinking Cloud, and Incendiary Cloud obscure every creature inside the area using Elkan's Obscured (and, for heavy fog, Blinded) conditions. Before, only enemies were obscured, and creatures that failed the initial save kept a copy after leaving. Cloudkill is lightly obscured, as written.
+  - Silence makes every creature inside Silenced and Deafened, as well as immune to thunder damage. Before, it only gave enemies thunder immunity.
+  - Well of Corruption stops creatures from regaining hit points. Before, it made them immune to all damage.
+  - Beacon of Hope affects allies only, and its benefits last while they stay in the area instead of ending at the caster's next turn.
+  - Antimagic Field affects every creature inside, not just enemies.
+  - Holy Aura no longer leaves a permanent copy on the creatures targeted when cast.
+  - Spirit Guardians no longer damages every creature that enters or ends its turn nearby. As written, the caster chooses creatures to target once per turn with Guardian's Damage.
+  - Wall of Thorns makes creatures save when they enter or start their turn in the wall.
+  - The Efreeti casts Elkan's Wall of Fire instead of the dnd5e version, so it uses Elkan's rules and area automation.
+  - Black Tentacles restrains on a failed save.
+  - Removed area rules that pointed at effects that no longer existed (Sleet Storm, Wall of Fire, Incendiary Cloud), and added the Kobold Shaman's missing Gust of Wind effect.
 
 ## Ancestry
 - Halfling Nimbleness: fixed a broken difficult terrain reference link in the description.

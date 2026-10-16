@@ -2,57 +2,7 @@
 	"name": "Cloudkill",
 	"type": "spell",
 	"img": "icons/magic/air/fog-gas-smoke-swirling-green.webp",
-	"effects": [
-		{
-			"name": "Heavily Obscured",
-			"origin": "Compendium.elkan5e.elkan5e-spells.Item.EuVC53keqdJq1LTn",
-			"transfer": false,
-			"flags": {
-				"dae": {
-					"itemName": "Cloudkill",
-					"enableCondition": "",
-					"disableCondition": "",
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"stackable": "noneName",
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": [],
-					"expiryMode": "default"
-				}
-			},
-			"img": "modules/elkan5e/icons/conditions/obscured-heavily.svg",
-			"_id": "2u9mvanLfZM9xaCQ",
-			"type": "base",
-			"system": {
-				"changes": [
-					{
-						"key": "macro.StatusEffect",
-						"type": "custom",
-						"value": "obscuredheavily",
-						"phase": "final",
-						"priority": 0
-					}
-				]
-			},
-			"disabled": false,
-			"duration": {
-				"value": 0,
-				"units": "seconds",
-				"expiry": "turnStart",
-				"expired": false
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"statuses": [],
-			"start": null,
-			"showIcon": 1,
-			"folder": null,
-			"_key": "!items.effects!EuVC53keqdJq1LTn.2u9mvanLfZM9xaCQ"
-		}
-	],
+	"effects": [],
 	"folder": "PnZJTE6T4UQY81Pm",
 	"flags": {
 		"midi-qol": {
@@ -236,19 +186,27 @@
 							"trigger": "turnEnd",
 							"action": "useActivity",
 							"targetId": "cloudkillDamage"
-						},
-						{
-							"trigger": "entry",
-							"action": "applyEffect",
-							"targetId": "2u9mvanLfZM9xaCQ"
-						},
-						{
-							"trigger": "exit",
-							"action": "removeEffect",
-							"targetId": "2u9mvanLfZM9xaCQ"
 						}
 					]
-				}
+				},
+				"behaviors": [
+					{
+						"name": "",
+						"_id": "f1Q2mv4tOspkLhcP",
+						"type": "applyActiveEffect",
+						"config": {
+							"effects": [
+								"Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanobscuredlig"
+							],
+							"sizes": [],
+							"types": []
+						},
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				]
 			},
 			"hW3AAcNpcKKgS57i": {
 				"type": "save",

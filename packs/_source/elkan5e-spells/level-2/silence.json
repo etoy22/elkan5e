@@ -8,9 +8,9 @@
 			"_id": "iPmhsqkpCJruiGzi",
 			"disabled": false,
 			"duration": {
-				"value": 600,
+				"value": null,
 				"units": "seconds",
-				"expiry": "turnStart",
+				"expiry": null,
 				"expired": false
 			},
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.BVd4kOcKeN5hvGk2",
@@ -42,7 +42,8 @@
 						"priority": 20,
 						"type": "custom"
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
@@ -176,15 +177,7 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [
-					{
-						"_id": "iPmhsqkpCJruiGzi",
-						"level": {
-							"min": null,
-							"max": null
-						}
-					}
-				],
+				"effects": [],
 				"range": {
 					"override": false
 				},
@@ -231,19 +224,28 @@
 					"oncePerTurn": false,
 					"wallRestriction": "none",
 					"regionVisibility": 2,
-					"rules": [
-						{
-							"trigger": "entry",
-							"action": "applyEffect",
-							"targetId": "iPmhsqkpCJruiGzi"
+					"rules": []
+				},
+				"behaviors": [
+					{
+						"name": "",
+						"_id": "YxutKcucejTuAQhZ",
+						"type": "applyActiveEffect",
+						"config": {
+							"effects": [
+								"Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkansilenced000",
+								"Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkandeafened000",
+								"Compendium.elkan5e.elkan5e-spells.Item.BVd4kOcKeN5hvGk2.ActiveEffect.iPmhsqkpCJruiGzi"
+							],
+							"sizes": [],
+							"types": []
 						},
-						{
-							"trigger": "exit",
-							"action": "removeEffect",
-							"targetId": "iPmhsqkpCJruiGzi"
+						"level": {
+							"min": null,
+							"max": null
 						}
-					]
-				}
+					}
+				]
 			}
 		},
 		"identifier": "silence"

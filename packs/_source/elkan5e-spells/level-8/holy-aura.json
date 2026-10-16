@@ -8,9 +8,7 @@
 			"flags": {
 				"dae": {
 					"stackable": "none",
-					"specialDuration": [
-						"None"
-					],
+					"specialDuration": [],
 					"macroRepeat": "none",
 					"transfer": false,
 					"selfTarget": false,
@@ -20,9 +18,9 @@
 			},
 			"disabled": false,
 			"duration": {
-				"value": 60,
+				"value": null,
 				"units": "seconds",
-				"expiry": "turnStart",
+				"expiry": null,
 				"expired": false
 			},
 			"tint": "#ffffff",
@@ -47,7 +45,8 @@
 						"priority": 20,
 						"type": "add"
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
@@ -176,15 +175,7 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [
-					{
-						"_id": "bV9gcOUvMMCULD96",
-						"level": {
-							"min": null,
-							"max": null
-						}
-					}
-				],
+				"effects": [],
 				"range": {
 					"override": false
 				},
@@ -239,11 +230,6 @@
 						{
 							"trigger": "entry",
 							"action": "applyEffect",
-							"targetId": "bV9gcOUvMMCULD96"
-						},
-						{
-							"trigger": "exit",
-							"action": "removeEffect",
 							"targetId": "bV9gcOUvMMCULD96"
 						}
 					]

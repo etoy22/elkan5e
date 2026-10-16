@@ -5,7 +5,7 @@
 	"effects": [
 		{
 			"name": "Empowered Evocation",
-			"transfer": true,
+			"transfer": false,
 			"_id": "seh18IJFRt7teI88",
 			"disabled": false,
 			"duration": {
@@ -41,7 +41,7 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.bonuses.spell.damage",
+						"key": "system.rolls.damage.spell.bonus",
 						"type": "add",
 						"value": "+@abilities.int.mod",
 						"phase": "initial",
@@ -50,7 +50,8 @@
 						"conditions": "{}",
 						"replacement": ""
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,

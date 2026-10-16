@@ -112,7 +112,7 @@ export async function vampiricSmite(workflow) {
 }
 
 /**
- * Runs Blight spell automation. Wired at preambleComplete, before saves and
+ * Runs Blight spell automation. Wired at midi-qol targetingComplete, before saves and
  * damage are rolled. Any targeted creature that is a plant creature or
  * magical plant saves with disadvantage.
  *

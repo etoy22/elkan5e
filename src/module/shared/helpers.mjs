@@ -193,7 +193,6 @@ export async function drainedEffect(actor, damage, name, img, uuid, missing = fa
 					selfTargetAlways: false,
 					dontApply: false,
 					stackable: "multi",
-					showIcon: false,
 					durationExpression: "",
 					macroRepeat: "none",
 				},

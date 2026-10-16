@@ -102,16 +102,7 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [
-					{
-						"_id": "B87Jb1X0vnCBBTa9",
-						"onSave": false,
-						"level": {
-							"min": null,
-							"max": null
-						}
-					}
-				],
+				"effects": [],
 				"range": {
 					"override": false
 				},
@@ -174,11 +165,6 @@
 							"trigger": "entry",
 							"action": "applyEffect",
 							"targetId": "B87Jb1X0vnCBBTa9"
-						},
-						{
-							"trigger": "exit",
-							"action": "removeEffect",
-							"targetId": "B87Jb1X0vnCBBTa9"
 						}
 					]
 				}
@@ -190,9 +176,9 @@
 		{
 			"origin": "Item.L4KMwQX53QUeTQFf",
 			"duration": {
-				"value": 60,
+				"value": null,
 				"units": "seconds",
-				"expiry": "turnStart",
+				"expiry": null,
 				"expired": false
 			},
 			"disabled": false,
@@ -223,8 +209,8 @@
 				"changes": [
 					{
 						"key": "system.traits.di.value",
-						"type": "custom",
-						"value": "ALL",
+						"type": "add",
+						"value": "healing",
 						"phase": "final",
 						"priority": 50
 					},
@@ -235,7 +221,8 @@
 						"phase": "final",
 						"priority": null
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,

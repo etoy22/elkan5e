@@ -127,7 +127,7 @@ const LOVE_AND_FEAR_ACTIVITIES = {
 };
 
 /**
- * Runs Power of Love and Fear class feature automation (midi-qol preambleComplete). Before the
+ * Runs Power of Love and Fear class feature automation (midi-qol targetingComplete). Before the
  * targets roll their Wisdom saves against one of the warlock's spells of 1st level or higher, asks
  * whether to also charm or frighten creatures that fail, so any advantage they have against that
  * condition applies to the save.

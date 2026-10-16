@@ -42,10 +42,11 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.OverTime",
-						"type": "add",
-						"value": "turn=start, label=Irresistible Dance, saveAbility=wis, actionSave=roll",
+						"type": "custom",
+						"value": "turn=start,\nlabel=Irresistible Dance,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nactionSave=roll",
 						"phase": "initial",
-						"priority": null
+						"priority": null,
+						"replacement": "origin"
 					},
 					{
 						"key": "flags.midi-qol.disadvantage.attack.all",
@@ -61,7 +62,8 @@
 						"phase": "initial",
 						"priority": null
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 2,

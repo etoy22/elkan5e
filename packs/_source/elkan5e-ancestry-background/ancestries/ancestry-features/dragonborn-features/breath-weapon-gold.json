@@ -182,11 +182,13 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.OverTime",
-						"value": "turn=end,\nlabel=\"Poison Breath\",\nrollType=con,\nallowIncapacitated = true,\nsaveDC=8 + Math.max(actor.system.abilities.cha.mod, actor.system.abilities.con.mod) + actor.system.attributes.prof,\nsaveMagic=true",
+						"value": "turn=end,\nlabel=\"Poison Breath\",\nsaveAbility=con,\nallowIncapacitated=true,\nsaveDC=8 + max(@abilities.cha.mod, @abilities.con.mod) + @prof,\nsaveMagic=true",
 						"priority": 20,
-						"type": "add"
+						"type": "custom",
+						"replacement": "origin"
 					}
-				]
+				],
+				"magical": true
 			},
 			"showIcon": 2,
 			"start": null,

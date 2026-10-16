@@ -7,9 +7,9 @@
 			"_id": "q3k8qax0v18ac3uz",
 			"disabled": false,
 			"duration": {
-				"value": 3600,
+				"value": null,
 				"units": "seconds",
-				"expiry": "turnStart",
+				"expiry": null,
 				"expired": false
 			},
 			"transfer": false,
@@ -59,7 +59,8 @@
 						"phase": "initial",
 						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
@@ -232,7 +233,7 @@
 				"regionBehavior": {
 					"attachToken": "caster",
 					"enabled": true,
-					"dispositionFilter": -1,
+					"dispositionFilter": 0,
 					"wallRestriction": "none",
 					"regionVisibility": 2,
 					"excludeSource": false,
@@ -241,11 +242,6 @@
 						{
 							"trigger": "entry",
 							"action": "applyEffect",
-							"targetId": "q3k8qax0v18ac3uz"
-						},
-						{
-							"trigger": "exit",
-							"action": "removeEffect",
 							"targetId": "q3k8qax0v18ac3uz"
 						}
 					]

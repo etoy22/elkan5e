@@ -444,31 +444,14 @@ export async function spiritLinkUpdate(actor, updates, options) {
 }
 
 /**
- * Runs Shatter spell automation.
- * Constructs have disadvantage on the Constitution saving throw.
- * Wire this up at the preambleComplete phase so it runs before saves are rolled.
+ * Runs Shatter spell automation (midi-qol preTargetSave): constructs have disadvantage on the
+ * Constitution saving throw. Midi rolls each target's save from the saveDetails it passes here.
  *
- * @param {*} workflow - Workflow payload from the triggering item or activity.
- * @returns {Promise<void>} Promise resolution result.
+ * @param {Token} target - Target about to roll its save.
+ * @param {*} workflow - Midi-QOL workflow for the Shatter cast.
+ * @param {object} saveDetails - Midi-QOL save request for this target.
  */
-export async function shatter(workflow) {
-	try {
-		if (!workflow.targets?.size) return;
-
-		for (const target of workflow.targets) {
-			const actor = target.actor ?? target.document?.actor;
-			if (!actor) continue;
-
-			if (actor.system.details.type?.value === "construct") {
-				const tokenId = target.document?.id ?? target.id;
-				if (tokenId) {
-					// Safely initialize the set if midi-qol hasn't populated it yet,
-					// then mark this construct for disadvantage on the Con save.
-					(workflow.disadvantageSaves ??= new Set()).add(tokenId);
-				}
-			}
-		}
-	} catch (err) {
-		console.error("Shatter |", err);
-	}
+export function shatter(target, workflow, saveDetails) {
+	if (workflow.item?.system.identifier !== "shatter") return;
+	if (target.actor?.system.details.type?.value === "construct") saveDetails.disadvantage = true;
 }

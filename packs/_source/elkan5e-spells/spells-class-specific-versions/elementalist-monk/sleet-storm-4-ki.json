@@ -2,102 +2,7 @@
 	"name": "Sleet Storm (4 Ki)",
 	"type": "spell",
 	"img": "icons/magic/water/projectile-ice-teardrops-salvo.webp",
-	"effects": [
-		{
-			"name": "Heavily Obscured",
-			"origin": "Compendium.elkan5e.elkan5e-spells.Item.9Jv3Nf3iGiDcSgWZ",
-			"transfer": false,
-			"flags": {
-				"dae": {
-					"itemName": "Sleet Storm",
-					"disableCondition": "",
-					"disableIncapacitated": false,
-					"stackable": "noneName",
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": [],
-					"enableCondition": "",
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false
-				}
-			},
-			"img": "modules/elkan5e/icons/conditions/obscured-heavily.svg",
-			"_id": "ZXuLiNdOMp3LSQzy",
-			"type": "base",
-			"system": {
-				"changes": [
-					{
-						"key": "macro.StatusEffect",
-						"value": "obscuredheavily",
-						"priority": 0,
-						"type": "custom"
-					}
-				]
-			},
-			"disabled": false,
-			"duration": {
-				"value": 0,
-				"units": "seconds",
-				"expiry": "turnStart",
-				"expired": false
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"statuses": [],
-			"start": null,
-			"showIcon": 1,
-			"folder": null,
-			"_key": "!items.effects!SZ7WREA5tz4LLrOL.ZXuLiNdOMp3LSQzy"
-		},
-		{
-			"name": "Blinded",
-			"origin": "Compendium.elkan5e.elkan5e-spells.Item.9Jv3Nf3iGiDcSgWZ",
-			"transfer": false,
-			"flags": {
-				"dae": {
-					"itemName": "Sleet Storm",
-					"disableCondition": "",
-					"disableIncapacitated": false,
-					"stackable": "noneName",
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": [],
-					"enableCondition": "",
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false
-				}
-			},
-			"img": "icons/magic/light/hand-sparks-smoke-green.webp",
-			"_id": "nB3xLmQ7fWk2VcYp",
-			"type": "base",
-			"system": {
-				"changes": [
-					{
-						"key": "macro.StatusEffect",
-						"value": "blinded",
-						"priority": 0,
-						"type": "custom"
-					}
-				]
-			},
-			"disabled": false,
-			"duration": {
-				"value": 0,
-				"units": "seconds",
-				"expiry": "turnStart",
-				"expired": false
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"statuses": [],
-			"start": null,
-			"showIcon": 1,
-			"folder": null,
-			"_key": "!items.effects!SZ7WREA5tz4LLrOL.nB3xLmQ7fWk2VcYp"
-		}
-	],
+	"effects": [],
 	"folder": "sYfrVzIx61tmIQZm",
 	"flags": {
 		"midi-qol": {
@@ -251,14 +156,6 @@
 						"onSave": false,
 						"_id": "9nuWpO9Cp2REMOTE",
 						"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanprone000000"
-					},
-					{
-						"_id": "ZXuLiNdOMp3LSQzy",
-						"onSave": true
-					},
-					{
-						"_id": "nB3xLmQ7fWk2VcYp",
-						"onSave": true
 					}
 				],
 				"range": {
@@ -324,10 +221,7 @@
 					"otherActivityCompatible": true
 				},
 				"img": "",
-				"appliedEffects": [
-					"ZXuLiNdOMp3LSQzy",
-					"nB3xLmQ7fWk2VcYp"
-				],
+				"appliedEffects": [],
 				"regionBehavior": {
 					"attachToken": "default",
 					"enabled": true,
@@ -341,26 +235,6 @@
 							"trigger": "entry",
 							"action": "useActivity",
 							"targetId": "sleetStormKiSave"
-						},
-						{
-							"trigger": "entry",
-							"action": "applyEffect",
-							"targetId": "ZXuLiNdOMp3LSQzy"
-						},
-						{
-							"trigger": "exit",
-							"action": "removeEffect",
-							"targetId": "ZXuLiNdOMp3LSQzy"
-						},
-						{
-							"trigger": "entry",
-							"action": "applyEffect",
-							"targetId": "nB3xLmQ7fWk2VcYp"
-						},
-						{
-							"trigger": "exit",
-							"action": "removeEffect",
-							"targetId": "nB3xLmQ7fWk2VcYp"
 						}
 					]
 				},
@@ -373,6 +247,23 @@
 							"types": [
 								"ice"
 							]
+						},
+						"level": {
+							"min": null,
+							"max": null
+						}
+					},
+					{
+						"name": "",
+						"_id": "5bX8eLr6mjHnqsvs",
+						"type": "applyActiveEffect",
+						"config": {
+							"effects": [
+								"Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanobscuredhea",
+								"Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanblinded0000"
+							],
+							"sizes": [],
+							"types": []
 						},
 						"level": {
 							"min": null,
@@ -410,14 +301,6 @@
 						"onSave": false,
 						"_id": "IxW4Er7RVwREMOTE",
 						"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanprone000000"
-					},
-					{
-						"_id": "ZXuLiNdOMp3LSQzy",
-						"onSave": true
-					},
-					{
-						"_id": "nB3xLmQ7fWk2VcYp",
-						"onSave": true
 					}
 				],
 				"range": {
@@ -487,10 +370,7 @@
 					"otherActivityCompatible": true,
 					"identifier": "sleetStormKiSave"
 				},
-				"appliedEffects": [
-					"ZXuLiNdOMp3LSQzy",
-					"nB3xLmQ7fWk2VcYp"
-				],
+				"appliedEffects": [],
 				"isOverTimeFlag": true,
 				"overTimeProperties": {
 					"turnChoice": "end",

@@ -2,51 +2,7 @@
 	"name": "Incendiary Cloud",
 	"type": "spell",
 	"img": "icons/magic/air/fog-gas-smoke-swirling-orange.webp",
-	"effects": [
-		{
-			"name": "Incendiary Cloud - Effects",
-			"img": "icons/magic/air/fog-gas-smoke-swirling-orange.webp",
-			"origin": "Compendium.elkan5e.elkan5e-spells.Item.bHXVSjD1iSj6Le7d",
-			"type": "base",
-			"_id": "dDH0UzEqdnH5tHvc",
-			"system": {
-				"changes": []
-			},
-			"disabled": false,
-			"start": null,
-			"duration": {
-				"value": null,
-				"units": "seconds",
-				"expiry": null,
-				"expired": false
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"transfer": false,
-			"statuses": [
-				"obscuredheavily",
-				"blinded"
-			],
-			"showIcon": 2,
-			"folder": null,
-			"flags": {
-				"dae": {
-					"disableCondition": "",
-					"stackable": "noneName",
-					"expiryMode": "default",
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"disableIncapacitated": false,
-					"specialDuration": [],
-					"enableCondition": "",
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": true
-				}
-			},
-			"_key": "!items.effects!bHXVSjD1iSj6Le7d.dDH0UzEqdnH5tHvc"
-		}
-	],
+	"effects": [],
 	"folder": "TOjvTMaQMAMN24MV",
 	"flags": {
 		"midi-qol": {
@@ -235,26 +191,6 @@
 							"trigger": "turnEnd",
 							"action": "useActivity",
 							"targetId": "cloudDamage"
-						},
-						{
-							"trigger": "entry",
-							"action": "applyEffect",
-							"targetId": "dDH0UzEqdnH5tHvc"
-						},
-						{
-							"trigger": "exit",
-							"action": "removeEffect",
-							"targetId": "dDH0UzEqdnH5tHvc"
-						},
-						{
-							"trigger": "entry",
-							"action": "applyEffect",
-							"targetId": "qT8mWzRj2vNc6uLp"
-						},
-						{
-							"trigger": "exit",
-							"action": "removeEffect",
-							"targetId": "qT8mWzRj2vNc6uLp"
 						}
 					]
 				},
@@ -264,7 +200,26 @@
 					"name": "",
 					"prompt": false,
 					"visible": false
-				}
+				},
+				"behaviors": [
+					{
+						"name": "",
+						"_id": "sQkBQnxw6p0vnIlv",
+						"type": "applyActiveEffect",
+						"config": {
+							"effects": [
+								"Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanobscuredhea",
+								"Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanblinded0000"
+							],
+							"sizes": [],
+							"types": []
+						},
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				]
 			},
 			"icRecurDamage001": {
 				"type": "save",

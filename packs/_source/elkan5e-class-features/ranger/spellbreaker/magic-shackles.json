@@ -186,18 +186,20 @@
 						"type": "multiply"
 					},
 					{
-						"key": "flags.midi-qol.ActivityOverTime",
-						"value": "turn=end,\nsaveAbility=dex,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\ndamageType=none,\nname=Magic Shackles",
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end,\nlabel=Magic Shackles,\nsaveAbility=dex,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true",
 						"priority": 20,
-						"type": "override"
+						"type": "custom",
+						"replacement": "origin"
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
-				"value": null,
+				"value": 60,
 				"units": "seconds",
-				"expiry": null,
+				"expiry": "turnStart",
 				"expired": false
 			},
 			"description": "",

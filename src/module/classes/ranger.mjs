@@ -130,7 +130,7 @@ export async function markOfThorns(workflow) {
 				[{ token: attackerToken, actor: attackerActor }],
 				{
 					flavor: "Mark of Thorns",
-					itemCardId: "new",
+					itemCardUuid: "new",
 					isCritical: false,
 					damageRoll,
 				},

@@ -10,7 +10,8 @@
 			"_id": "zWrpJyjS76bHij3n",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -237,12 +238,114 @@
 						{
 							"trigger": "entry",
 							"action": "useActivity",
-							"targetId": "zoneOfTruthSave"
+							"targetId": "zoneOfTruthEnter"
 						}
 					]
 				},
 				"midiProperties": {
 					"identifier": "zoneOfTruthSave"
+				}
+			},
+			"3rKy93gwGv79l4TB": {
+				"_id": "3rKy93gwGv79l4TB",
+				"type": "save",
+				"activation": {
+					"type": "",
+					"value": null,
+					"override": true,
+					"condition": ""
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [
+					{
+						"_id": "zWrpJyjS76bHij3n",
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"type": "",
+						"units": "ft",
+						"stationary": false
+					},
+					"affects": {
+						"type": "self"
+					},
+					"override": true
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"onSave": "none",
+					"parts": []
+				},
+				"save": {
+					"ability": [
+						"cha"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"name": "Zone of Truth (Entering)",
+				"img": "",
+				"appliedEffects": [
+					"zWrpJyjS76bHij3n"
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"regionBehavior": {
+					"attachToken": "default",
+					"enabled": false,
+					"dispositionFilter": -1,
+					"excludeSource": false,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": []
+				},
+				"midiProperties": {
+					"identifier": "zoneOfTruthEnter",
+					"automationOnly": true,
+					"confirmTargets": "never"
+				},
+				"behaviors": [],
+				"isOverTimeFlag": true,
+				"overTimeProperties": {
+					"turnChoice": "end",
+					"saveRemoves": false
 				}
 			}
 		},

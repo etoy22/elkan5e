@@ -42,11 +42,13 @@
 					{
 						"key": "flags.midi-qol.OverTime",
 						"type": "custom",
-						"value": "turn=start,applyCondition=@attributes.hp.value <= 150,saveDC=@attributes.spell.dc,saveAbility=con,saveMagic=true",
+						"value": "turn=start,applyCondition=##attributes.hp.value <= 150,saveDC=@attributes.spell.dc,saveAbility=con,saveMagic=true",
 						"phase": "initial",
-						"priority": 20
+						"priority": 20,
+						"replacement": "origin"
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 2,

@@ -293,18 +293,18 @@ function registerHooks() {
 		});
 	});
 
-	Hooks.on("midi-qol.preambleComplete", async (workflow) => {
+	Hooks.on("midi-qol.targetingComplete", async (workflow) => {
 		try {
 			await carefulSpell(workflow);
 		} catch (error) {
-			console.error("Elkan 5e | Error in Careful Spell preambleComplete hook:", error);
+			console.error("Elkan 5e | Error in Careful Spell targetingComplete hook:", error);
 		}
 
 		try {
 			await powerOfLoveAndFearPrompt(workflow);
 		} catch (error) {
 			console.error(
-				"Elkan 5e | Error in Power of Love and Fear preambleComplete hook:",
+				"Elkan 5e | Error in Power of Love and Fear targetingComplete hook:",
 				error,
 			);
 		}
@@ -312,13 +312,21 @@ function registerHooks() {
 		try {
 			await necromanticSurge(workflow);
 		} catch (error) {
-			console.error("Elkan 5e | Error in Necromantic Surge preambleComplete hook:", error);
+			console.error("Elkan 5e | Error in Necromantic Surge targetingComplete hook:", error);
 		}
 
 		try {
 			await Level4.blight(workflow);
 		} catch (error) {
-			console.error("Elkan 5e | Error in Blight preambleComplete hook:", error);
+			console.error("Elkan 5e | Error in Blight targetingComplete hook:", error);
+		}
+	});
+
+	Hooks.on("midi-qol.preTargetSave", (target, workflow, saveDetails) => {
+		try {
+			Level2.shatter(target, workflow, saveDetails);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Shatter preTargetSave hook:", error);
 		}
 	});
 
