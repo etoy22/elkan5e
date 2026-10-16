@@ -3,15 +3,17 @@
 # v1.14.4
 
 ## Bug Fixes
-- Fixed Relentless Rage never triggering — the damage hook returned after checking Undead Fortitude, so Relentless Rage was never evaluated.
-- Fixed the Thunder → Sonic and Lightning → Electric damage type renaming not applying — the localization override was targeting an outdated key path, so damage type labels across the system (dropdowns, resistances/vulnerabilities/immunities, chat cards, tooltips) now correctly show Sonic and Electric.
-- Updated Undead Fortitude's attack/save detection for dnd5e's chat message data model changes (the activity type moved off `flags.dnd5e.activity` and onto `system.activity`), with fallbacks so it keeps working on older and newer dnd5e versions.
-- Fixed issue where Elemental monk switching elements causes issues
+
+- Fixed Relentless Rage never triggering. It was skipped whenever Undead Fortitude was checked first.
+- Fixed the Thunder → Sonic and Lightning → Electric renames not showing. Damage type labels everywhere (dropdowns, resistances, vulnerabilities, immunities, chat cards, and tooltips) now read Sonic and Electric.
+- Fixed Undead Fortitude not telling attacks apart from saves on dnd5e 6.0. It still works on older dnd5e versions.
+- Fixed errors when an Elementalist monk switches elements.
 - Fixed Mindless Rage never activating while raging.
-- Aasimar no longer incorrectly gies immunity to frightened
+- Aasimar no longer gain immunity to the Frightened condition.
 
 ## Compatibility
-- Updated for dnd5e system v6.0.1
+
+- Updated for dnd5e v6.0.1.
 - Migrated compendium data still on the pre-6.0 schema so nothing depends on dnd5e's backward-compatibility shims: senses, movement speeds, and initiative bonuses (and every Active Effect that targeted their old field paths) now use dnd5e's current nested format.
 - Updated every activity still using the pre-Activities targeting format (mostly single-creature attack/damage/save sub-activities on spells and feats) to the current target schema.
 - Updated Save activities' ability field to dnd5e's current format, which supports a save being tied to more than one ability.
@@ -23,117 +25,124 @@
 - Features, spells, items, and creatures whose effect only gave a condition now give the condition directly. Before, they added a separate effect that had the condition, or that toggled it. The target now gets the condition itself, with its name, icon, rules text, and Elkan automation. Before, it only had a status with none of the condition's automation. This applies to 88 effects. Effects that also do something else, end on a turn boundary, or have extra rules text are unchanged.
 - Effects created by scripts for a condition, such as Haste's lethargy (Incapacitated) and grapples, now use the condition from the compendium, so they include its automation too.
 - Updated for Midi-QOL 14.6 and DAE 14.6 (their dnd5e 6 releases):
-  - DAE now fills an applied effect's `@` values from the target unless the effect says otherwise. Effects that need the caster's values now say so: every OverTime effect (save DCs, spell modifier, spell level), Warchant's bonuses, Avenger's Vow, Aid, and Pale Tincture. Before, a creature affected by Hold Creature or Web, for example, would have rolled against its own spell save DC.
-  - Power Word Stun's 150 HP check reads the target's hit points, not the caster's.
-  - Careful Spell, Power of Love and Fear, Necromantic Surge, and Blight work again. Midi-QOL removed the hook they ran on, so they never triggered.
-  - Shatter gives constructs disadvantage on the save again.
-  - Effects that end at the start or end of the caster's or target's turn now use dnd5e's turn expiry instead of DAE's retired special durations (22 effects, such as Vicious Mockery, Shadow Strike, and the graveguards' Dodge and Help).
-  - Effects applied by an activity are no longer also marked as passive, so their durations run once applied.
-  - Updated effect keys DAE has deprecated: weapon, spell, and all-attack bonuses now use dnd5e's roll bonus fields; damage immunity/resistance to all types, Flood's Prone status, and Stonecunning's tremorsense use their current keys.
+    - DAE now fills an applied effect's `@` values from the target unless the effect says otherwise. Effects that need the caster's values now say so: every OverTime effect (save DCs, spell modifier, spell level), Warchant's bonuses, Avenger's Vow, Aid, and Pale Tincture. Before, a creature affected by Hold Creature or Web, for example, would have rolled against its own spell save DC.
+    - Power Word Stun's 150 HP check reads the target's hit points, not the caster's.
+    - Careful Spell, Power of Love and Fear, Necromantic Surge, and Blight work again. Midi-QOL removed the hook they ran on, so they never triggered.
+    - Shatter gives constructs disadvantage on the save again.
+    - Effects that end at the start or end of the caster's or target's turn now use dnd5e's turn expiry instead of DAE's retired special durations (22 effects, such as Vicious Mockery, Shadow Strike, and the graveguards' Dodge and Help).
+    - Effects applied by an activity are no longer also marked as passive, so their durations run once applied.
+    - Updated effect keys DAE has deprecated: weapon, spell, and all-attack bonuses now use dnd5e's roll bonus fields; damage immunity/resistance to all types, Flood's Prone status, and Stonecunning's tremorsense use their current keys.
 - Effects from spells, spell scrolls, and magic items are now marked as magical, so an Antimagic Field suppresses them. dnd5e 6.0 only marks these in world data, not in module compendiums.
 - Vicious Wound and Geas give their level of exhaustion again. dnd5e 6.0 works out exhaustion from the Exhaustion condition, so the old effect that added a level did nothing. Vicious Wound's level goes away when its effect ends.
 - Shield of Faith, Barkskin, Light on the Feet, and the Ogre Mage's AC bonus use dnd5e's AC bonus and minimum AC fields instead of the deprecated AC value.
 - Fixed repeating saves and ongoing damage (Midi-QOL OverTime effects) that never worked:
-  - Magic Shackles, Rend the Veil (spell and Mutant Wizard version), Irresistible Dance, Paralyzing Breath, and Volatile Creation now roll their repeat save. Before, the save was missing, mistyped, or the effect was blank. Magic Shackles also now lasts 1 minute.
-  - Gold Breath Weapon's repeat Constitution save uses the dragonborn's breath weapon DC. Before, it was set up as the wrong roll type with a DC Midi-QOL couldn't read.
-  - Holy Nimbus deals half damage on a successful save, instead of none.
-  - Relentless Tides' lingering damage ends after 1 minute instead of lasting until removed.
-  - Flammable deals its fire damage at the end of the creature's turn, as written.
-  - Acid Arrow's follow-up damage is acid instead of untyped.
-  - Petrifying Gaze's repeat save no longer logs an error every turn, and stops after one failure so the Second Save can petrify.
-  - Liquid Fire sets the target Burning (with the Burning condition's damage and put-out action), and a successful save takes no damage.
-  - Frightful Presence applies the Frightened condition; it used a status from an old module.
-  - The Burning and Suffocation conditions damage or exhaust the creature that has the condition. Before, they used whichever token was selected.
+    - Magic Shackles, Rend the Veil (spell and Mutant Wizard version), Irresistible Dance, Paralyzing Breath, and Volatile Creation now roll their repeat save. Before, the save was missing, mistyped, or the effect was blank. Magic Shackles also now lasts 1 minute.
+    - Gold Breath Weapon's repeat Constitution save uses the dragonborn's breath weapon DC. Before, it was set up as the wrong roll type with a DC Midi-QOL couldn't read.
+    - Holy Nimbus deals half damage on a successful save, instead of none.
+    - Relentless Tides' lingering damage ends after 1 minute instead of lasting until removed.
+    - Flammable deals its fire damage at the end of the creature's turn, as written.
+    - Acid Arrow's follow-up damage is acid instead of untyped.
+    - Petrifying Gaze's repeat save no longer logs an error every turn, and stops after one failure so the Second Save can petrify.
+    - Liquid Fire sets the target Burning (with the Burning condition's damage and put-out action), and a successful save takes no damage.
+    - Frightful Presence applies the Frightened condition; it used a status from an old module.
+    - The Burning and Suffocation conditions damage or exhaust the creature that has the condition. Before, they used whichever token was selected.
 - Fixed area spells for dnd5e 6.0 and Midi-QOL's area behaviors:
-  - Web, Zone of Truth, and Antipathy/Sympathy no longer re-cast the spell (placing a new area and spending a spell slot) each time a creature enters the area. Entering now rolls a separate save.
-  - Fog Cloud, Sleet Storm, Insect Plague, Web, Cloudkill, Stinking Cloud, and Incendiary Cloud obscure every creature inside the area using Elkan's Obscured (and, for heavy fog, Blinded) conditions. Before, only enemies were obscured, and creatures that failed the initial save kept a copy after leaving. Cloudkill is lightly obscured, as written.
-  - Silence makes every creature inside Silenced and Deafened, as well as immune to thunder damage. Before, it only gave enemies thunder immunity.
-  - Well of Corruption stops creatures from regaining hit points. Before, it made them immune to all damage.
-  - Beacon of Hope affects allies only, and its benefits last while they stay in the area instead of ending at the caster's next turn.
-  - Antimagic Field affects every creature inside, not just enemies.
-  - Holy Aura no longer leaves a permanent copy on the creatures targeted when cast.
-  - Spirit Guardians no longer damages every creature that enters or ends its turn nearby. As written, the caster chooses creatures to target once per turn with Guardian's Damage.
-  - Wall of Thorns makes creatures save when they enter or start their turn in the wall.
-  - The Efreeti casts Elkan's Wall of Fire instead of the dnd5e version, so it uses Elkan's rules and area automation.
-  - Black Tentacles restrains on a failed save.
-  - Removed area rules that pointed at effects that no longer existed (Sleet Storm, Wall of Fire, Incendiary Cloud), and added the Kobold Shaman's missing Gust of Wind effect.
+    - Web, Zone of Truth, and Antipathy/Sympathy no longer re-cast the spell (placing a new area and spending a spell slot) each time a creature enters the area. Entering now rolls a separate save.
+    - Fog Cloud, Sleet Storm, Insect Plague, Web, Cloudkill, Stinking Cloud, and Incendiary Cloud obscure every creature inside the area using Elkan's Obscured (and, for heavy fog, Blinded) conditions. Before, only enemies were obscured, and creatures that failed the initial save kept a copy after leaving. Cloudkill is lightly obscured, as written.
+    - Silence makes every creature inside Silenced and Deafened, as well as immune to thunder damage. Before, it only gave enemies thunder immunity.
+    - Well of Corruption stops creatures from regaining hit points. Before, it made them immune to all damage.
+    - Beacon of Hope affects allies only, and its benefits last while they stay in the area instead of ending at the caster's next turn.
+    - Antimagic Field affects every creature inside, not just enemies.
+    - Holy Aura no longer leaves a permanent copy on the creatures targeted when cast.
+    - Spirit Guardians no longer damages every creature that enters or ends its turn nearby. As written, the caster chooses creatures to target once per turn with Guardian's Damage.
+    - Wall of Thorns makes creatures save when they enter or start their turn in the wall.
+    - The Efreeti casts Elkan's Wall of Fire instead of the dnd5e version, so it uses Elkan's rules and area automation.
+    - Black Tentacles restrains on a failed save.
+    - Removed area rules that pointed at effects that no longer existed (Sleet Storm, Wall of Fire, Incendiary Cloud), and added the Kobold Shaman's missing Gust of Wind effect.
 
-## Ancestry
-- Halfling Nimbleness: fixed a broken difficult terrain reference link in the description.
-- Breath Weapon (Blue): fixed missing maximum uses; it now has 1 use per long rest like the other colors.
-- Blue Dragonborn / Bronze Dragonborn: fixed passive feature titles that still read "Lightning Resistance" / "Thunder Resistance" instead of "Electric Resistance" / "Sonic Resistance".
+## Ancestries
 
-## Backgrounds
-- 
+- Halfling Nimbleness: fixed a broken difficult terrain link in the description.
+- Breath Weapon (Blue) now has 1 use per long rest, like the other colors. Its maximum uses were missing.
+- Blue and Bronze Dragonborn: passive features now read "Electric Resistance" and "Sonic Resistance" instead of "Lightning Resistance" and "Thunder Resistance".
+- Kobold: Burrowing Crawler now grants a crawl speed equal to your walking speed. Before, it only granted the 5 ft. burrow speed.
 
 ## Classes
+
 - Every class now grants its Ability Score Improvement at levels 4, 8, 12, and 16 directly, instead of each feat granting one. You still choose a feat at those levels too. On Elkan 5e classes, the Ability Score Improvement can't be swapped for a second feat; classes from other sources still allow it. Existing characters keep the Ability Score Improvements they already got from feats.
 
- **[Barbarian](https://www.elkan5e.com/barbarian)**
+### [Barbarian](https://www.elkan5e.com/barbarian)
+
 - Rage now applies a Raging status, so features that only work while raging can reliably detect it.
-- Rage now properly give damage bonus to thrown weapons
-- Mindless Rage now adds its text to the Rage description when gained (its Modify Items advancement pointed to an effect that didn't exist).
-- Barbarian's Defense now automatically switches between Unarmored Defense (10 + Dex + Con) and the armored formula (armor + higher of Dex or Con, capped by the armor's Dex limit) based on whether armor is equipped.
-- Brutal Strike: Hamstring Blow now actually halves flying speed too, and no longer applies its speed penalty to swimming twice — it had a leftover bogus movement key and a duplicated change.
+- Rage's damage bonus now applies to thrown weapons.
+- Mindless Rage now adds its text to the Rage description when gained.
+- Barbarian's Defense now switches automatically between Unarmored Defense (10 + Dex + Con) and the armored formula (armor + the higher of Dex or Con, capped by the armor's Dex limit), depending on whether armor is equipped.
+- Brutal Strike: Hamstring Blow now halves flying speed too, and no longer reduces swimming speed twice.
 - Slayer
-	- Fixed Death Haze never activating while raging.
+    - Fixed Death Haze never activating while raging.
 - Swarmhost
-	- Fixed Swarm Form never activating while raging (condition immunities, and the flying speed at level 6).
-	- Fixed Disperse's reaction never triggering, as it could not detect that you were raging.
-- Draconic: fixed the Seething Blood dragon-type dialog still listing "Lightning (Blue Dragon)" instead of "Electric (Blue Dragon)".
- 
-**[Bard](https://www.elkan5e.com/bard)**
+    - Fixed Swarm Form never activating while raging (condition immunities, and the flying speed at level 6).
+    - Fixed Disperse's reaction never triggering, as it could not detect that you were raging.
+- Draconic
+    - Seething Blood's dragon-type dialog now lists "Electric (Blue Dragon)" instead of "Lightning (Blue Dragon)".
+
+### [Bard](https://www.elkan5e.com/bard)
+
 - Cacophony
-    - Blasting Volume and Improved Blasting Volume now correctly describe their damage as Sonic instead of Thunder.
-    - Improved Blasting Volume now correctly adds a fourth bardic inspiration die to Blasting Volume's damage (the damage value was malformed).
+    - Blasting Volume and Improved Blasting Volume now describe their damage as Sonic instead of Thunder.
+    - Improved Blasting Volume now adds a fourth bardic inspiration die to Blasting Volume's damage.
 - Jester
-	- Now grants the standard Vicious Mockery and modifies it (damage equal to your bardic inspiration die) instead of granting a separate Vicious Mockery (Jester) spell.
-	- Jester's Aspersion now adds its psychic damage text to the Cutting Words description when gained (its enchantment had no changes).
-	- Harmless Act now adds its charm option to the Cutting Words and Vicious Mockery descriptions when gained (its enchantment was disabled and empty).
+    - Now grants the standard Vicious Mockery and modifies it (damage equal to your bardic inspiration die) instead of granting a separate Vicious Mockery (Jester) spell.
+    - Jester's Aspersion now adds its psychic damage text to the Cutting Words description when gained.
+    - Harmless Act now adds its charm option to the Cutting Words and Vicious Mockery descriptions when gained.
 - Lorekeeper
-    - Now grants Detect Magic and Identify
+    - Now grants Detect Magic and Identify.
 
-**[Cleric](https://www.elkan5e.com/cleric)**
+### [Cleric](https://www.elkan5e.com/cleric)
+
 - Reaper
-    - Fixed issue where Death Touched wasnt granting resistance to either Necrotic or Poison
+    - Death Touched now grants resistance to necrotic or poison damage. It granted neither.
 - Deceiver
-	- Shadow Refuge now shows a reminder when you spend a spell slot on an illusion spell of 1st level or higher, telling you how many temporary hit points it can grant (2d6 per slot level). Previously the reminder never appeared because it checked for the wrong spell school name.
+    - Shadow Refuge now shows a reminder when you spend a spell slot on an illusion spell of 1st level or higher, telling you how many temporary hit points it can grant (2d6 per slot level). Previously the reminder never appeared because it checked for the wrong spell school name.
 
-**[Druid](https://www.elkan5e.com/druid)**
-- Cthonic
-    - Now grants invisibility spell
+### [Druid](https://www.elkan5e.com/druid)
+
+- Chthonic
+    - Now grants the Invisibility spell.
 - Earthshaker
-	- Fixed Quake — the push option now triggers correctly (its macro was checking the wrong activity).
-	- Ride the Mountain now grants Move Self (30 ft.) and Move Ally (15 ft.) teleport activities to Quake and Shield of the Crags, and its identifier no longer conflicts with Quake.
-	- Shield of the Crags now grants temporary hit points instead of healing, and half your druid level is now rounded down.
-	- Earth's Favored now adds its self-use benefits to the Shield of the Crags description when gained.
-    - Aspect of the Mountain: Now grants immunity to Petrified and Meld into Stone
+    - Quake's push option now triggers correctly.
+    - Ride the Mountain now grants Move Self (30 ft.) and Move Ally (15 ft.) teleport activities to Quake and Shield of the Crags, and its identifier no longer conflicts with Quake.
+    - Shield of the Crags now grants temporary hit points instead of healing, and half your druid level is now rounded down.
+    - Earth's Favored now adds its self-use benefits to the Shield of the Crags description when gained.
+    - Aspect of the Mountain now grants immunity to the Petrified condition, and grants Meld into Stone.
 - Wild Shape
-	- Twisted Terrain now uses the system's Difficult Terrain region behavior instead of an active effect that halved speed.
+    - Twisted Terrain now uses the system's Difficult Terrain region behavior instead of an active effect that halved speed.
 
-**[Fighter](https://www.elkan5e.com/fighter)**
+### [Fighter](https://www.elkan5e.com/fighter)
+
 - Extra Attack (3 Attacks) and Extra Attack (4 Attacks) now update the Extra Attack description when gained.
 - Single Weapon Fighting and Improved Single Weapon Fighting now only add their damage bonus to melee attacks (not thrown or spell attacks) while you're fighting with a single weapon: a manufactured weapon when it's the only weapon you have equipped, or an unarmed strike or natural weapon when you have no manufactured weapons equipped.
 - Fighting Style: Mounted Combat's incapacitated reference no longer applies the condition when clicked.
 - Combat Maneuvers
-	- Parry and Powerful Attack effects now last 1 turn instead of having no duration.
+    - Parry and Powerful Attack effects now last 1 turn instead of having no duration.
 - Battlemaster
-	- Now has an Enchant activity: use it on your chosen maneuver to remove its limited uses and its use consumption, and add a note to its description.
+    - Now has an Enchant activity: use it on your chosen maneuver to remove its limited uses and its use consumption, and add a note to its description.
 - Commander
-	- Commander's Strike: fixed a missing space in its description.
-	- Persistent Leader now grants its activity to Second Wind and adds its text to the Second Wind description when gained.
-	- Rallying Surge now adds its text to the Action Surge description when gained, and no longer shows a notification when you use Second Wind.
+    - Commander's Strike: fixed a missing space in its description.
+    - Persistent Leader now grants its activity to Second Wind and adds its text to the Second Wind description when gained.
+    - Rallying Surge now adds its text to the Action Surge description when gained, and no longer shows a notification when you use Second Wind.
 - Spellsword
-	- Spellsurge now adds its text to the Action Surge description when gained.
+    - Spellsurge now adds its text to the Action Surge description when gained.
 - Bulwark
-	- Solidify Defenses: the temporary hit points (half your fighter level) are now rounded down.
-	- Solidify Defenses now adds its text to the Iron Wall description when gained.
+    - Solidify Defenses: the temporary hit points (half your fighter level) are now rounded down.
+    - Solidify Defenses now adds its text to the Iron Wall description when gained.
 - Champion
-    - Improved Fighting Styles now have a hard requirement in the foundry to have the non-Improved Feature (Improved Archery now requires Fighting Style: Archery).
+    - Improved Fighting Styles now require their base Fighting Style in Foundry (for example, Improved Archery requires Fighting Style: Archery).
     - Improved Critical now sets your critical hit range to 19–20 without stacking incorrectly with other critical range effects, and critical hits with attacks now roll three times the damage dice instead of two.
     - Fixed the Survivor link in the Champion progression table, which pointed to another module's compendium.
 
-**[Monk](https://www.elkan5e.com/monk)**
+### [Monk](https://www.elkan5e.com/monk)
+
 - Monks now get the standard Unarmed Strike instead of a separate Unarmed Strike (Monk) weapon. Martial Arts now upgrades Unarmed Strike with your Martial Arts die and the finesse and light properties.
 - Flurry of Blows, Deflect Attack, and Quivering Palm now link to the standard Unarmed Strike.
 - Ki-Empowered Strikes is now a feature that makes your Unarmed Strike magical, adamantine, cold iron, and silver, instead of a separate weapon.
@@ -141,47 +150,49 @@
 - Purity of Body now grants immunity to the Diseased and Poisoned conditions and to poison damage.
 - Stillness of Mind is now automated: using it ends a charmed, confused, frightened, or goaded effect on you (you pick which one if there are several). At the start of your turn, you're asked whether to use it if you have one of those conditions.
 - Mentor
-	- Guiding Spirit now adds its ally option to the Flurry of Blows, Step of the Wind, and Patient Defense descriptions when gained.
-	- Inspire Greatness and Lend Expertise now link to the short rest, long rest, and expertise rules.
+    - Guiding Spirit now adds its ally option to the Flurry of Blows, Step of the Wind, and Patient Defense descriptions when gained.
+    - Inspire Greatness and Lend Expertise now link to the short rest, long rest, and expertise rules.
 - Shadowdancer
-	- Empty Body now grants its activity to Meld with Shadows and Hijack Shadow instead of using a script prompt.
-	- Shadow Form's invisible reference no longer applies the condition when clicked.
-	- Eyes of Shade now adds 60 ft. to your darkvision if you already have it, instead of only raising it to 60 ft. It also now lets you see through magical darkness, such as the Darkness spell, within your darkvision range.
-	- Meld with Shadows now ends when you enter bright light.
-	- Meld with Shadows and Hijack Shadow now only end at the end of your turn if you made an attack roll or cast a spell. They used to end at the end of every turn. Hijack Shadow never found its attack marker, because the marker's name was different.
+    - Empty Body now grants its activity to Meld with Shadows and Hijack Shadow instead of using a script prompt.
+    - Shadow Form's invisible reference no longer applies the condition when clicked.
+    - Eyes of Shade now adds 60 ft. to your darkvision if you already have it, instead of only raising it to 60 ft. It also now lets you see through magical darkness, such as the Darkness spell, within your darkvision range.
+    - Meld with Shadows now ends when you enter bright light.
+    - Meld with Shadows and Hijack Shadow now only end at the end of your turn if you made an attack roll or cast a spell. They used to end at the end of every turn. Hijack Shadow never found its attack marker, because the marker's name was different.
 - Windwalker
-	- Repulsion Wave now grants a multi-target version of Sweep to Sweep when gained.
-	- Twin Currents now grants its activity to Step of the Wind, its identifier is no longer a placeholder, its requirement now reads Windwalker 3 instead of Open Hand 3, and it now lists Elkan 5e as its source.
+    - Repulsion Wave now grants a multi-target version of Sweep to Sweep when gained.
+    - Twin Currents now grants its activity to Step of the Wind, its identifier is no longer a placeholder, its requirement now reads Windwalker 3 instead of Open Hand 3, and it now lists Elkan 5e as its source.
 - Elementalist
-	- Deflect Elements now spends 2 Ki as its description states, instead of only 1.
-	- Deflect Elements' effect now lasts 1 turn, ending at the end of a turn, instead of 7 seconds.
-	- Fireball (4 Ki), Fly (4 Ki), Rock Blast (4 Ki), and Sleet Storm (4 Ki) no longer also try to consume a spell slot on top of their Ki cost.
-	- Burning Hands (1/2/3 Ki) and Thunderwave (1/2/3 Ki) are properly magical again (restored the missing Magical property).
-	- Gentle Current (2 Ki) and Gentle Current (3 Ki) now actually target 2 and 3 allies respectively, instead of just 1 like the 1 Ki version.
-	- False Life (3 Ki) is instantaneous again, instead of lasting 1 hour.
-	- Rock Blast (4 Ki)'s Dexterity save is clickable again.
-	- Thunderwave (1/2/3 Ki) now correctly forces a Constitution save instead of none.
+    - Deflect Elements now spends 2 Ki as its description states, instead of only 1.
+    - Deflect Elements' effect now lasts 1 turn, ending at the end of a turn, instead of 7 seconds.
+    - Fireball (4 Ki), Fly (4 Ki), Rock Blast (4 Ki), and Sleet Storm (4 Ki) no longer also try to consume a spell slot on top of their Ki cost.
+    - Burning Hands (1/2/3 Ki) and Thunderwave (1/2/3 Ki) are properly magical again (restored the missing Magical property).
+    - Gentle Current (2 Ki) and Gentle Current (3 Ki) now actually target 2 and 3 allies respectively, instead of just 1 like the 1 Ki version.
+    - False Life (3 Ki) is instantaneous again, instead of lasting 1 hour.
+    - Rock Blast (4 Ki)'s Dexterity save is clickable again.
+    - Thunderwave (1/2/3 Ki) now correctly forces a Constitution save instead of none.
 
-**[Paladin](https://www.elkan5e.com/paladin)**
+### [Paladin](https://www.elkan5e.com/paladin)
+
 - Aura of Courage's Frightened, Petrified, and Unconscious references no longer apply the condition when clicked.
 - Aura of Courage, Aura of Protection, Aura of Devotion, and Aura of Revelation now stop working while you're Petrified or Unconscious.
-- Cleansing Touch now grants its activities to Lay on Hands and adds its text to the Lay on Hands description when gained. 
+- Cleansing Touch now grants its activities to Lay on Hands and adds its text to the Lay on Hands description when gained.
 - Cleansing Touch is now automated: cleansing removes the Poisoned condition from your target, and spending 10 or more Lay on Hands points at once (healing or cleansing) also ends Drained. Diseases still need to be removed by hand.
 - Avenger
-	- Commanding Challenge's incapacitated reference no longer applies the condition when clicked.
-	- Avenger's Vow now grants its activity (and its effect) to Commanding Challenge, Avenger's Leap, and Searing Retribution, and adds its text to their descriptions when gained. 
+    - Commanding Challenge's incapacitated reference no longer applies the condition when clicked.
+    - Avenger's Vow now grants its activity (and its effect) to Commanding Challenge, Avenger's Leap, and Searing Retribution, and adds its text to their descriptions when gained.
 - Blackguard
-	- Aura of Corruption now has an effect that makes a creature unable to regain hit points or gain temporary hit points. Apply it to enemies within the aura.
-	- Strickening Gaze is now automated: when creatures within 120 ft. fail a saving throw against your spell or smite, you're asked whether to spend a use to give one of them 1 level of exhaustion. It now adds a real exhaustion level, which rests reduce as normal, instead of a permanent effect.
+    - Aura of Corruption now has an effect that makes a creature unable to regain hit points or gain temporary hit points. Apply it to enemies within the aura.
+    - Strickening Gaze is now automated: when creatures within 120 ft. fail a saving throw against your spell or smite, you're asked whether to spend a use to give one of them 1 level of exhaustion. It now adds a real exhaustion level, which rests reduce as normal, instead of a permanent effect.
 - Inquisitor
-	- Master Seeker now grants psychic resistance through a Trait advancement, so it shows on the character sheet, and it's no longer marked as Magical.
-	- Aura of Revelation's identifier was a copy of Aura of Courage's; it's now `aura-of-revelation`.
+    - Master Seeker now grants psychic resistance through a Trait advancement, so it shows on the character sheet, and it's no longer marked as Magical.
+    - Aura of Revelation's identifier was a copy of Aura of Courage's; it's now `aura-of-revelation`.
 - Paragon
-	- Aura of Devotion now grants immunity to Charmed and Goaded, as described. It granted Blinded immunity instead.
-	- Purity of Body and Purity of Spirit now use dnd5e's own saving throw advantage instead of Midi-QOL flags, so they work without Midi-QOL, and a source of disadvantage now cancels it out as normal.
-	- Holy Nimbus now has its 30 ft. area size set.
+    - Aura of Devotion now grants immunity to Charmed and Goaded, as described. It granted Blinded immunity instead.
+    - Purity of Body and Purity of Spirit now use dnd5e's own saving throw advantage instead of Midi-QOL flags, so they work without Midi-QOL, and a source of disadvantage now cancels it out as normal.
+    - Holy Nimbus now has its 30 ft. area size set.
 
-**[Ranger](https://www.elkan5e.com/ranger)**
+### [Ranger](https://www.elkan5e.com/ranger)
+
 - Natural Tracker now makes you ignore nonmagical difficult terrain, and its requirement reads "Ranger 1" instead of "Elkan Ranger 1".
 - Primeval Awareness now uses a radius area. Its old area type doesn't exist in dnd5e 6.0.
 - Mark for Death's extra damage now works. Its macro called a nonexistent function, so the bonus damage never rolled. It now only applies to weapon attacks.
@@ -191,45 +202,48 @@
 - Mark for Death, Mark of Affliction, and Mark of Thorns now give you a "rangerMark" status while you're using them, which is how Unrelenting Focus knows you're using a mark. Mark for Death adds a "Mark for Death (Hunting)" effect on you for this.
 - Tireless now removes one level of exhaustion when used, if you have any. It spends exhaustion as part of the activity's own consumption.
 - Spellbreaker
-	- Magic Shackles now actually halves the target's speed — it had two leftover bogus movement keys that did nothing, so fly speed in particular was never reduced.
+    - Magic Shackles now halves all of the target's speeds. Fly speed in particular was never reduced.
 
-**[Rogue](https://www.elkan5e.com/rogue)**
+### [Rogue](https://www.elkan5e.com/rogue)
+
 - Elusive is now automated: creatures that would have advantage on attack rolls against you roll normally, unless you're incapacitated, paralyzed, petrified, stunned, or unconscious.
 - Sneak Attack works again. It adds its damage to the weapon's damage roll, in the weapon's damage type, and the dice double on a critical hit. If you have precision attacks, you choose between Sneak Attack, one of your precision attacks, or not using it. A precision attack rolls its own save and damage against the target. Heavy melee weapons can't Sneak Attack, and allies within 5 ft. of the target must not be incapacitated. Once you Sneak Attack, you can't again until your next turn starts.
 - Hamstring and Hamstring (Mystic) now force a Dexterity save, as their descriptions say, instead of a Constitution save.
 - Assassin
-	- Assassin's Reflexes now links to the Surprised condition instead of the Surprise rule, and clicking it doesn't apply the condition.
-	- Assassin's Reflexes is now automated: when combat starts, each assassin who isn't Surprised gets a second turn at their initiative minus 10. The extra turn is removed when round 2 begins.
-	- Finishing Blow now prompts you when your weapon attack leaves a creature with 10 hit points or fewer, and reduces it to 0 hit points if you accept. Once per turn.
+    - Assassin's Reflexes now links to the Surprised condition instead of the Surprise rule, and clicking it doesn't apply the condition.
+    - Assassin's Reflexes is now automated: when combat starts, each assassin who isn't Surprised gets a second turn at their initiative minus 10. The extra turn is removed when round 2 begins.
+    - Finishing Blow now prompts you when your weapon attack leaves a creature with 10 hit points or fewer, and reduces it to 0 hit points if you accept. Once per turn.
 - Brute
-	- Brutal Fighting and Enforcer's Training's grappled references no longer apply the condition when clicked.
-	- Overpowering Opportunist now has working Push and Grapple activities (copied from Standard Actions) as bonus actions.
-	- Brutal Fighting now adds its text to Standard Actions and Overpowering Opportunist when gained, and prompts you to deal its damage after you win a shove or grapple contest.
-	- Swift and Brutal now adds its text to the Cunning Action description when gained.
-	- Enforcer's Training now adds its text to the Sneak Attack description when gained, and Sneak Attack works against creatures you're grappling.
+    - Brutal Fighting and Enforcer's Training's grappled references no longer apply the condition when clicked.
+    - Overpowering Opportunist now has working Push and Grapple activities (copied from Standard Actions) as bonus actions.
+    - Brutal Fighting now adds its text to Standard Actions and Overpowering Opportunist when gained, and prompts you to deal its damage after you win a shove or grapple contest.
+    - Swift and Brutal now adds its text to the Cunning Action description when gained.
+    - Enforcer's Training now adds its text to the Sneak Attack description when gained, and Sneak Attack works against creatures you're grappling.
 - Duelist
-	- Lethal Opening now links to the Opportunity Attacks rule.
-	- Lethal Opening now adds its text to the Sneak Attack description when gained, and Sneak Attack works with your attacks of opportunity (any melee weapon attack you make outside your own turn).
-	- Light on the Feet's +1 AC and +10 ft. speed now only apply while you aren't wearing medium or heavy armor.
+    - Lethal Opening now links to the Opportunity Attacks rule.
+    - Lethal Opening now adds its text to the Sneak Attack description when gained, and Sneak Attack works with your attacks of opportunity (any melee weapon attack you make outside your own turn).
+    - Light on the Feet's +1 AC and +10 ft. speed now only apply while you aren't wearing medium or heavy armor.
 - Mystic Trickster
-	- Devastating Spells now adds its text to the Devastating Cantrips description when gained.
-	- Master Trickster now adds its text to the Magic Trickery description when gained.
+    - Devastating Spells now adds its text to the Devastating Cantrips description when gained.
+    - Master Trickster now adds its text to the Magic Trickery description when gained.
 - Thief
-	- Multitasking now adds its text to the Cunning Action description when gained.
+    - Multitasking now adds its text to the Cunning Action description when gained.
 
-**[Sorcerer](https://www.elkan5e.com/sorcerer)**
+### [Sorcerer](https://www.elkan5e.com/sorcerer)
+
 - Fire, Water, Air, and Earth Savant
-	- Empowered Cantrips now grants the standard cantrips and modifies them to use the larger damage die (or the d6 bonus for Resistance), instead of granting separate "(Savant)" copies. The copies had fallen out of date with the base spells.
-	- Fire Savant's progression table now links Fire Bolt (it linked Sacred Flame twice).
-	- Elemental Infusion now asks, when you roll damage for a spell that doesn't deal necrotic, poison, or psychic damage, whether you want to infuse it. Pick one of your savant's two damage types to spend 1 sorcery point and change the spell's damage to that type.
-	- Volatile Current, Fault Line, Wreathing Flames, and Relentless Tides now show a message after one of your spells deals a damage type that triggers them, saying whether you can still use them this turn.
-	- Wreathing Flames' ongoing fire damage now rolls correctly (its damage setting was missing a separator).
-	- Relentless Tides' ongoing damage is now 1d6, matching its description, instead of 1d8.
+    - Empowered Cantrips now grants the standard cantrips and modifies them to use the larger damage die (or the d6 bonus for Resistance), instead of granting separate "(Savant)" copies. The copies had fallen out of date with the base spells.
+    - Fire Savant's progression table now links Fire Bolt (it linked Sacred Flame twice).
+    - Elemental Infusion now asks, when you roll damage for a spell that doesn't deal necrotic, poison, or psychic damage, whether you want to infuse it. Pick one of your savant's two damage types to spend 1 sorcery point and change the spell's damage to that type.
+    - Volatile Current, Fault Line, Wreathing Flames, and Relentless Tides now show a message after one of your spells deals a damage type that triggers them, saying whether you can still use them this turn.
+    - Wreathing Flames' ongoing fire damage now rolls correctly (its damage setting was missing a separator).
+    - Relentless Tides' ongoing damage is now 1d6, matching its description, instead of 1d8.
 
-**[Warlock](https://www.elkan5e.com/warlock)**
+### [Warlock](https://www.elkan5e.com/warlock)
+
 - Eldritch Spear now sets Eldritch Blast's range to 300 ft. when gained.
 - Lifedrinker (Warrior) now sets Thirsting Weapon to 3 uses per short rest when gained.
-- Thirsting Weapon now grants its healing activity to Pact Weapon and adds its text to the Pact Weapon description when gained. 
+- Thirsting Weapon now grants its healing activity to Pact Weapon and adds its text to the Pact Weapon description when gained.
 - Eldritch Weapon (Warrior) now actually makes the weapon use Charisma. It set a field weapons don't have in dnd5e 6.0; it now sets the weapon's attack ability instead. This works on weapons with a standard attack activity (all mundane weapons and most magic ones); a few special magic weapons with their own attack setup aren't affected.
 - Repelling Blast's attack now pushes the creature 10 ft. away from you when it hits, once per turn. Previously the push never happened (its macro was empty). It also grants the Repelling Blast attack to Eldritch Blast and adds its text to the Eldritch Blast description when gained, so you can choose it in place of a normal blast.
 - Implant Suggestion now adds its modifications to the Suggestion spell's description when gained, and no longer has a broken effect.
@@ -239,7 +253,7 @@
 - Fiendish Sight now lets you see through magical darkness, such as the Darkness spell, within your darkvision range.
 - Dreamweaver
     - Twisted Visions now correctly forces a Wisdom save instead of none.
-    - Twisted Visions now grants its activity to Misty Misdirect and adds its text to the Misty Misdirect description when gained. 
+    - Twisted Visions now grants its activity to Misty Misdirect and adds its text to the Misty Misdirect description when gained.
     - Blessing of the Dreamer now gives you advantage on saves against effects that charm, frighten, or curse you (Midi-QOL), the same way Dwarven Resilience handles poison.
     - Power of Love and Fear now asks, before creatures roll their Wisdom save against one of your spells of 1st level or higher, whether to charm or frighten those who fail. Creatures that fail then get the condition automatically: for 1 round if the spell is instantaneous, otherwise 1 minute.
 - Hellcaller
@@ -247,47 +261,52 @@
 - Radiant Servant
     - Imbue Light now modifies your Eldritch Blast so you can choose radiant damage instead of force, instead of granting a separate radiant Eldritch Blast attack. The feature is renamed "Imbue Light (Eldritch Blast)".
     - Imbue Light (Enchant Weapon) now actually makes the weapon deal radiant damage. "Radiant" was misspelled, so enchanted weapons had no valid damage type.
- 
-**[Wizard](https://www.elkan5e.com/wizard)**
+
+### [Wizard](https://www.elkan5e.com/wizard)
+
 - Illusionist
-	- Now grants the standard Silent Image instead of an outdated Silent Image (Illusionist) copy.
+    - Now grants the standard Silent Image instead of an outdated Silent Image (Illusionist) copy.
 - Evoker
-	- Overchannel's activity now applies its Overchannel effect to you directly, instead of a script creating it. The maximized damage and backlash still work the same way.
+    - Overchannel's activity now applies its Overchannel effect to you directly, instead of a script creating it. The maximized damage and backlash still work the same way.
 - Necromancer
-	- Soul Conduit now shows a reminder when you cast a necromancy spell of 1st level or higher, telling you how many hit points it can restore to your graveguard. Previously the reminder never appeared: it wasn't hooked up and it checked for the wrong spell school name.
-	- Necromantic Surge now triggers when you target yourself with a necromancy spell of 3rd level or higher. It checked for the wrong spell school name, so it never triggered.
+    - Soul Conduit now shows a reminder when you cast a necromancy spell of 1st level or higher, telling you how many hit points it can restore to your graveguard. Previously the reminder never appeared: it wasn't hooked up and it checked for the wrong spell school name.
+    - Necromantic Surge now triggers when you target yourself with a necromancy spell of 3rd level or higher. It checked for the wrong spell school name, so it never triggered.
 
 ## Equipment
-- Ring of Electric Resistance / Ring of Sonic Resistance: fixed internal effect names that still read "Lightning Resistance" / "Thunder Resistance".
-- Dragon Scale Mail: fixed the dragon-type resistance table still listing "Lightning" instead of "Electric".
-- Armor of Resistance: fixed the Lightning/Thunder resistance enchantment name templates to use Electric/Sonic.
-- Javelin of Lightning: updated its damage description to Electric.
-- Thunderous Greatclub: updated its damage description to Sonic.
-- Ring of Shooting Stars: renamed the Lightning Spheres activities and damage description to Electric.
-- Re-added Flail, Trident, and War Pick as items. Each uses the proficiency and stats of the closest existing weapon it was originally removed in favor of: Flail (Martial, matches Warhammer), Trident (Simple, matches Spear), and War Pick (Martial, matches Morningstar).
-- Scorpion Poison: its recurring save to shake off the poisoned condition now correctly forces a Constitution save (DC 10) instead of none.
+
+- Renamed remaining Lightning and Thunder references to Electric and Sonic:
+    - Ring of Electric Resistance and Ring of Sonic Resistance: effect names.
+    - Dragon Scale Mail: the dragon-type resistance table.
+    - Armor of Resistance: the resistance enchantment names.
+    - Javelin of Lightning and Ring of Shooting Stars (Lightning Spheres): damage descriptions and activities.
+    - Thunderous Greatclub: damage description.
+- Re-added Flail, Trident, and War Pick. Each uses the proficiency and stats of the weapon it was originally merged into: Flail (Martial, matches Warhammer), Trident (Simple, matches Spear), and War Pick (Martial, matches Morningstar).
+- Scorpion Poison's repeat save to end the Poisoned condition now forces a DC 10 Constitution save instead of none.
 
 ## Feats
+
 - Feats no longer grant an Ability Score Improvement. Your class grants it instead (see Classes).
 - Removed the "Level 1 Feats (For 1st Level, no ASI)" folder. Those duplicate feats aren't needed now that no feat grants an Ability Score Improvement. The level 1 feat choice, ancestries, backgrounds, and links now use the regular versions of those feats.
 - [Brawler](https://www.elkan5e.com/feats/brawler) no longer requires level 4 in Foundry, matching its level 1 rework.
 - [Repressed Memory](https://www.elkan5e.com/feats/repressed-memory) can now be chosen as your level 1 feat. It was missing from every class's list.
 - Fixed Enraged Presence and Enraged Prowess never adding your rage bonus while raging. Skills you have expertise in are still correctly excluded.
 - Draconic Breath Control (Dragonborn): your Breath Weapon now recharges on a short rest when you gain the feat.
-- Fighting Style: Mounted Combat now has correct identifier
+- Fighting Style: Mounted Combat now has the correct identifier.
 - Fighting Style: Single Weapon Fighting and Improved Single Weapon Fighting (Fighter) now work the same way as the class features: the damage bonus only applies to melee attacks (not thrown or spell attacks) with a single weapon, including an unarmed strike or natural weapon when you have no manufactured weapons equipped.
 - Improved Protection (Fighter) now requires the Fighter class in Foundry, like the other Improved Fighting Style feats.
 - Improved Archery, Defense, Protection, and Single Weapon Fighting (Fighter) no longer say "Prerequisite:" twice in their descriptions.
 - [Fey Step](https://www.elkan5e.com/feats/fey-step) now uses dnd5e's native Teleport activity, adding a "Plan Teleport" button to place your token directly.
 
 ## Game Rules
+
 - Added Crawl as a movement type (alongside Walk/Burrow/Climb/Fly/Swim), so it can be granted or set on actors and shows up in the Speed section.
 
 ## Spells
+
 - Area spells that create difficult terrain now use the system's Difficult Terrain region behavior instead of an active effect that halved speed. Movement through the area is now measured as difficult terrain, stacks correctly, and respects features that ignore difficult terrain.
-	- Replaced the halved-speed effect: [Entangle](https://www.elkan5e.com/spells/entangle) (plants), [Plant Growth](https://www.elkan5e.com/spells/plant-growth) (plants), [Spike Growth](https://www.elkan5e.com/spells/spike-growth) (plants), [Arms of Earth](https://www.elkan5e.com/spells/arms-of-earth) (rocks), [Grease](https://www.elkan5e.com/spells/grease), [Black Tentacles](https://www.elkan5e.com/spells/black-tentacles), and [Spirit Guardians](https://www.elkan5e.com/spells/spirit-guardians).
-	- Kept the area effect for its other conditions, but removed the halved speed: [Sleet Storm](https://www.elkan5e.com/spells/sleet-storm) (ice; still heavily obscured and blinded), [Insect Plague](https://www.elkan5e.com/spells/insect-plague) (still lightly obscured), and [Web](https://www.elkan5e.com/spells/web) (webs; still lightly obscured).
-	- Added difficult terrain to spells that described it but never applied it: [Snowball Swarm](https://www.elkan5e.com/spells/snowball-swarm) (snow), [Ice Storm](https://www.elkan5e.com/spells/ice-storm) (ice), [Earthquake](https://www.elkan5e.com/spells/earthquake) (rocks), [Vortex](https://www.elkan5e.com/spells/vortex), [Storm of Vengeance](https://www.elkan5e.com/spells/storm-of-vengeance), and Sleet Storm (4 Ki) (ice).
+    - Replaced the halved-speed effect: [Entangle](https://www.elkan5e.com/spells/entangle) (plants), [Plant Growth](https://www.elkan5e.com/spells/plant-growth) (plants), [Spike Growth](https://www.elkan5e.com/spells/spike-growth) (plants), [Arms of Earth](https://www.elkan5e.com/spells/arms-of-earth) (rocks), [Grease](https://www.elkan5e.com/spells/grease), [Black Tentacles](https://www.elkan5e.com/spells/black-tentacles), and [Spirit Guardians](https://www.elkan5e.com/spells/spirit-guardians).
+    - Kept the area effect for its other conditions, but removed the halved speed: [Sleet Storm](https://www.elkan5e.com/spells/sleet-storm) (ice; still heavily obscured and blinded), [Insect Plague](https://www.elkan5e.com/spells/insect-plague) (still lightly obscured), and [Web](https://www.elkan5e.com/spells/web) (webs; still lightly obscured).
+    - Added difficult terrain to spells that described it but never applied it: [Snowball Swarm](https://www.elkan5e.com/spells/snowball-swarm) (snow), [Ice Storm](https://www.elkan5e.com/spells/ice-storm) (ice), [Earthquake](https://www.elkan5e.com/spells/earthquake) (rocks), [Vortex](https://www.elkan5e.com/spells/vortex), [Storm of Vengeance](https://www.elkan5e.com/spells/storm-of-vengeance), and Sleet Storm (4 Ki) (ice).
 - [Spirit Guardians](https://www.elkan5e.com/spells/spirit-guardians): the difficult terrain now only affects hostile creatures, as the spell describes.
 - [Freedom of Movement](https://www.elkan5e.com/spells/freedom-of-movement): the target now actually ignores difficult terrain.
 - [Thunderwave](https://www.elkan5e.com/spells/thunderwave): now correctly forces a Constitution save instead of none.
@@ -296,18 +315,18 @@
 - [Enlarge/Reduce](https://www.elkan5e.com/spells/enlarge%2Freduce) (and Potion of Growth / Potion of Shrinking) now use dnd5e's native size Active Effect instead of a custom script. The token's size now updates and reverts automatically and more reliably when the effect is applied or removed.
 
 ## UI
+
 - Passive features (class features, ancestry features, feats, and creature features with no activities) are now marked as Passive Traits, so they're listed under Passive Abilities on the character sheet and Traits on the NPC sheet.
 
 ## Misc
+
 - Actor roll data now includes `@elkan5e.weapons.equipped`, `@elkan5e.weapons.melee`, and `@elkan5e.weapons.ranged`: the number of weapons the actor has equipped, not counting unarmed strikes or natural weapons. Effect conditions and macros can use these.
 - When libWrapper is active, the wielded-weapon roll data is now added through libWrapper, so it works alongside other modules that also change actor roll data (like DAE).
 - Features that remove conditions or set hit points on a creature you don't own (Cleansing Touch, Finishing Blow, Mark for Death) now ask the GM's client to make the change through socketlib.
 - Removed `elkan5e.macros.features.shadowRefuge` and `elkan5e.macros.features.soulConduit`. Their reminders now run on their own when you cast a spell.
 
-
-
-
 # v1.14.3
+
 ## Bug Fixes
 
 - Fixed minor content inaccuracies across zombie-family creatures and the spells-by-subclass spell list.
@@ -327,6 +346,7 @@
 - NEW: Blackguard subclass.
 
 ## Formatting
+
 - Updated Potions formatting to be clearer about their effects — potions now indicate Buff, Healing, or Utility depending on their effect instead of just saying "Potion", and "Consumed (1 Charge)" was changed to "Consumed on Use".
 
 ## Spells
@@ -334,8 +354,7 @@
 - [Prismatic Bolt](https://www.elkan5e.com/spells/prismatic-bolt): now automated — rolls the beam's damage type on 1d8 and applies the +10 bonus on a radiant result instead of prompting a manual damage type choice.
 - [Spirit Link](https://www.elkan5e.com/spells/spirit-link): now automated — links the two affected creatures so half of any damage taken by one is mirrored to the other, and ends the bond automatically on death, dismissal, or separation beyond 60 feet.
 - Added dynamic lighting/darkness effects to Fog Cloud, Smoke Field, Sleet Storm, Incendiary Cloud, and the Druid's Lurking Fog wild shape, so their obscuring clouds now visually darken the area on the canvas.
-- Changed [Wall of Fire](https://www.elkan5e.com/spells/wall-of-fire) — removed "Heavily Obscured" active effect and its description reference;  the wall no longer obscures vision.
-
+- Changed [Wall of Fire](https://www.elkan5e.com/spells/wall-of-fire) — removed "Heavily Obscured" active effect and its description reference; the wall no longer obscures vision.
 
 # v1.14.2
 
@@ -354,7 +373,7 @@
 ### Barbarian
 
 - Relentless Rage now tracks uses via effect names instead of flags, so players can manually edit the count.
-- Wild Blood: 
+- Wild Blood:
     - Keyed off `postUseActivity` and the feature identifier instead of a workflow/scope lookup that broke when the activity id didn't round-trip; dropped the redundant on-use active effect.
 
 ### Fighter
@@ -367,7 +386,7 @@
 
 ### Cleric
 
-- Deceiver: 
+- Deceiver:
     - Shroud of Darkness updated to match the website — invisibility now ends on an attack or spell cast by the target.
 
 ### Ranger
@@ -383,7 +402,7 @@
 
 - Evoker
     - Automatted Overchannel: an arm-only utility that forces max damage on the next qualifying spell-slot cast (up to 5th level), with escalating self-damage for repeat uses before a long rest.
-- Necromancer: 
+- Necromancer:
     - Necromantic Surge: reworked into a condition picker that lists which removable conditions the caster actually has, gated on self-targeting.
 
 ## Ancestries
@@ -3965,3 +3984,4 @@ Made subclass names consistent in formatting
 # v1.0.1
 
 - A local file
+
