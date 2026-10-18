@@ -1,4 +1,11 @@
-import { createLightRegion, drainedEffect, forEachDamagedTarget } from "../shared/helpers.mjs";
+import {
+	createLightRegion,
+	deleteEffects,
+	drainedEffect,
+	forEachDamagedTarget,
+	isIncorporeal,
+	planTeleportForOwner,
+} from "../shared/helpers.mjs";
 import { createEffect } from "../shared/effect-factories.mjs";
 
 /**
@@ -42,7 +49,12 @@ export async function sleetStormDarkness(workflow) {
 export async function hasteLethargy(effect) {
 	const casterUuid = effect.origin?.split(".ActiveEffect.")[0];
 	try {
-		const actor = await fromUuid(casterUuid);
+		// The origin is usually the Haste spell item, so resolve its owning actor.
+		const origin = casterUuid ? await fromUuid(casterUuid) : null;
+		const actor =
+			origin instanceof CONFIG.Actor.documentClass
+				? origin
+				: (origin?.actor ?? origin?.parent ?? null);
 		if (!actor) {
 			console.warn(
 				"Haste Lethargy: could not resolve caster actor from effect.origin",
@@ -57,11 +69,8 @@ export async function hasteLethargy(effect) {
 			origin: effect.origin ?? effect.effectUuid,
 			disabled: false,
 			statuses: ["incapacitated"],
-			duration: {
-				rounds: 1,
-				startRound: game.combat?.round ?? null,
-				startTurn: game.combat?.turn ?? null,
-			},
+			// Until the end of the caster's next turn.
+			duration: { value: 1, units: "rounds", expiry: "turnEnd" },
 		});
 
 		await actor.createEmbeddedDocuments("ActiveEffect", [effectData]);
@@ -97,4 +106,45 @@ export async function lifeDrain(workflow) {
 	await casterToken.actor.update({
 		"system.attributes.hp.value": caster.system.attributes.hp.value + totalHealing,
 	});
+}
+
+/**
+ * Runs Spectral Lance automation at midi-qol.preTargetSave: incorporeal
+ * creatures make the save with disadvantage.
+ *
+ * @param {Token} target - Token making the save.
+ * @param {*} workflow - midi-qol workflow.
+ * @param {object} saveDetails - Save configuration midi is about to roll.
+ */
+export function spectralLance(target, workflow, saveDetails) {
+	if (workflow.item?.system?.identifier !== "spectral-lance") return;
+	if (isIncorporeal(target.actor)) saveDetails.disadvantage = true;
+}
+
+/**
+ * Runs Blink automation at the start of a combatant's turn: if Blink made them Ethereal, they
+ * return and choose a space within 10 ft. The Ethereal effect may already be expired by dnd5e.
+ *
+ * @param {Combat} combat - Combat whose turn changed.
+ * @returns {Promise<void>}
+ */
+export async function blinkReturnTurnStart(combat) {
+	const token = combat?.combatant?.token;
+	const actor = token?.actor;
+	if (!actor) return;
+	const responsible =
+		game.users.find((u) => u.active && !u.isGM && actor.testUserPermission(u, "OWNER")) ??
+		game.users.activeGM;
+	if (!responsible?.isSelf) return;
+
+	const ethereal = actor.effects.filter((effect) => {
+		if (!effect.statuses.has("ethereal")) return false;
+		const origin = effect.origin ? fromUuidSync(effect.origin) : null;
+		const item = origin?.item ?? origin;
+		return item?.system?.identifier === "blink";
+	});
+	if (!ethereal.length) return;
+
+	await deleteEffects(actor, ethereal);
+	await planTeleportForOwner(token, 10, "blink");
 }

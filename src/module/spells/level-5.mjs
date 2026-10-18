@@ -1,4 +1,9 @@
-import { drainedEffect, forEachDamagedTarget } from "../shared/helpers.mjs";
+import {
+	drainedEffect,
+	forEachDamagedTarget,
+	removeStatuses,
+	restoreDrainedMaxHP,
+} from "../shared/helpers.mjs";
 
 /**
  * Runs Greater Restoration spell automation.
@@ -60,6 +65,10 @@ export async function greaterRestoration(workflow) {
 			await actor.deleteEmbeddedDocuments("ActiveEffect", effectIdsToDelete);
 		}
 
+		// Drain lowers temporary max HP rather than coming from an effect.
+		if ((await restoreDrainedMaxHP(actor)) && !removed.includes("Drained"))
+			removed.push("Drained");
+
 		// Remove one level of exhaustion.
 		const currentExhaustion = actor.system.attributes?.exhaustion ?? 0;
 		if (currentExhaustion > 0) {
@@ -119,4 +128,58 @@ export async function enervateOngoing(workflow) {
 			casterUuid,
 		),
 	);
+}
+
+/**
+ * Runs Break Enchantment spell automation.
+ * The caster chooses to end either all of the listed conditions or all curses on the target.
+ * Removing a possessing creature is left to the GM.
+ *
+ * Conditions removed: charmed, confused, frightened, goaded, petrified, silenced, siphoned.
+ *
+ * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @returns {Promise<void>} Promise resolution result.
+ */
+export async function breakEnchantment(workflow) {
+	try {
+		const targetEntry = Array.from(workflow.targets ?? [])[0];
+		const actor = targetEntry?.actor ?? targetEntry?.document?.actor;
+		if (!actor) {
+			ui.notifications.warn("Break Enchantment: No target selected.");
+			return;
+		}
+
+		const CONDITIONS = [
+			"charmed",
+			"confused",
+			"frightened",
+			"goaded",
+			"petrified",
+			"silenced",
+			"siphoned",
+		];
+		const has = (ids) =>
+			actor.effects.some((e) => !e.disabled && ids.some((id) => e.statuses?.has(id)));
+		const options = [];
+		if (has(CONDITIONS)) options.push({ label: "Conditions", action: "conditions" });
+		if (has(["cursed"])) options.push({ label: "Curses", action: "curses" });
+
+		if (!options.length) {
+			ui.notifications.info(`${actor.name} has nothing Break Enchantment can remove.`);
+			return;
+		}
+
+		const chosen = await foundry.applications.api.DialogV2.wait({
+			window: { title: "Break Enchantment" },
+			content: `<p>What do you want to remove from <strong>${actor.name}</strong>?</p>`,
+			buttons: [...options, { label: "Cancel", action: "cancel" }],
+			default: options[0].action,
+			rejectClose: false,
+		});
+
+		if (chosen === "conditions") await removeStatuses(actor, CONDITIONS);
+		else if (chosen === "curses") await removeStatuses(actor, ["cursed"]);
+	} catch (err) {
+		console.error("Break Enchantment |", err);
+	}
 }

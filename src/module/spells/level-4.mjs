@@ -1,3 +1,5 @@
+import { excludeTargets } from "../shared/helpers.mjs";
+
 /**
  * Handles Death Ward spell.
  * Triggered by the dnd5e.damageActor hook after damage has been applied.
@@ -111,30 +113,46 @@ export async function vampiricSmite(workflow) {
 	);
 }
 
+const BLIGHT_NO_WATER_TYPES = new Set(["construct", "undead"]);
+
 /**
- * Runs Blight spell automation. Wired at midi-qol targetingComplete, before saves and
- * damage are rolled. Any targeted creature that is a plant creature or
- * magical plant saves with disadvantage.
+ * Runs Blight spell automation at midi-qol targetingComplete: drops targets
+ * without water in their bodies (constructs and undead), which the spell can't affect.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
  * @returns {Promise<void>} Promise resolution result.
  */
 export async function blight(workflow) {
 	try {
-		for (const target of workflow.targets ?? []) {
+		if (workflow.item?.system?.identifier !== "blight") return;
+		const immune = [...(workflow.targets ?? [])].filter((target) => {
 			const targetActor = target?.actor ?? target?.document?.actor;
-			if (!targetActor) continue;
-
-			if (targetActor.system?.details?.type?.value !== "plant") continue;
-
-			const tokenId = target?.document?.id ?? target?.id;
-			if (tokenId) {
-				(workflow.disadvantageSaves ??= new Set()).add(tokenId);
-			}
-		}
+			return BLIGHT_NO_WATER_TYPES.has(targetActor?.system?.details?.type?.value);
+		});
+		if (!immune.length) return;
+		excludeTargets(workflow, immune);
+		await ChatMessage.create({
+			speaker: ChatMessage.getSpeaker({ actor: workflow.actor }),
+			content: game.i18n.format("elkan5e.spells.blightNoEffect", {
+				names: immune.map((target) => target.name).join(", "),
+			}),
+		});
 	} catch (err) {
 		console.error("Blight |", err);
 	}
+}
+
+/**
+ * Runs Blight spell automation at midi-qol.preTargetSave: plant creatures make
+ * the saving throw with disadvantage.
+ *
+ * @param {Token} target - Token making the save.
+ * @param {*} workflow - midi-qol workflow.
+ * @param {object} saveDetails - Save configuration midi is about to roll.
+ */
+export function blightPlantDisadvantage(target, workflow, saveDetails) {
+	if (workflow.item?.system?.identifier !== "blight") return;
+	if (target.actor?.system?.details?.type?.value === "plant") saveDetails.disadvantage = true;
 }
 
 /**

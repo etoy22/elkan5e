@@ -1,4 +1,14 @@
-import { createLightRegion, drainedEffect, forEachDamagedTarget } from "../shared/helpers.mjs";
+import {
+	createLightRegion,
+	deleteEffects,
+	drainedEffect,
+	excludeTargets,
+	forEachDamagedTarget,
+	planTeleportForOwner,
+	removeStatuses,
+	SIZE_ORDER,
+	t,
+} from "../shared/helpers.mjs";
 import { createGoodberryDurationEffect } from "../shared/effect-factories.mjs";
 
 /**
@@ -385,7 +395,10 @@ export async function sanctuary(workflow) {
 			: null;
 		const originItem = originDoc ? (originDoc.item ?? originDoc.parent ?? originDoc) : null;
 		const casterActor = originItem?.parent ?? null;
-		const spellDC = casterActor?.system?.attributes?.spelldc ?? 13;
+		const spellDC =
+			casterActor?.system?.attributes?.spell?.dc ??
+			casterActor?.system?.attributes?.spelldc ??
+			13;
 
 		// Roll Wisdom saving throw for the attacker.
 		const saveRolls = await attackerActor.rollSavingThrow({
@@ -404,7 +417,7 @@ export async function sanctuary(workflow) {
 			sanctuarySuccessCache.add(cacheKey);
 		} else {
 			// Failed — remove the target before the attack roll so the attack never fires.
-			workflow.targets.delete(token);
+			excludeTargets(workflow, [token]);
 		}
 	}
 }
@@ -475,7 +488,10 @@ export async function shield(workflow) {
 	}
 
 	// Spell level (minimum 1); no bonus when cast at base level.
-	const level = Math.max(item.system.level ?? 1, 1);
+	const level = Math.max(
+		Number(workflow.castData?.castLevel ?? workflow.spellLevel ?? item.system.level ?? 1),
+		1,
+	);
 	if (level === 1) return;
 
 	// Spell bonus: Just the bonnus from the spell level
@@ -505,19 +521,192 @@ export async function shield(workflow) {
 	// Prepare active effect data
 	const effectData = {
 		name: item.name + " Level Bonus",
-		label: item.name,
-		icon: item.img,
+		img: item.img,
 		origin: item.uuid,
-		duration: { value: 1, units: "round" },
-		changes: [
-			{
-				key: "system.attributes.ac.bonus",
-				mode: CONST.ACTIVE_EFFECT_MODES.ADD,
-				value: bonus,
-				priority: 20,
-			},
-		],
+		duration: { value: 1, units: "rounds" },
+		system: {
+			changes: [
+				{
+					key: "system.attributes.ac.bonus",
+					type: "add",
+					value: String(bonus),
+					priority: 20,
+				},
+			],
+		},
 	};
 
 	await actor.createEmbeddedDocuments("ActiveEffect", [effectData]);
+}
+
+const SHADOW_STRIKE_IDENTIFIERS = new Set(["shadow-strike", "shadow-strike-shadow-casting"]);
+const SHADOW_STRIKE_RETURN_ID = "shdwStrikeRetrn0";
+const SHADOW_STRIKE_FLAG = "shadowStrikeOrigin";
+
+const isShadowStrike = (activity) =>
+	SHADOW_STRIKE_IDENTIFIERS.has(activity?.item?.system?.identifier);
+
+/**
+ * Teleports a token back to its stored Shadow Strike origin and clears the flag.
+ *
+ * @param {TokenDocument} tokenDoc - Token to return.
+ * @returns {Promise<boolean>} Whether the token had an origin to return to.
+ */
+async function returnToShadowStrikeOrigin(tokenDoc) {
+	const origin = tokenDoc?.getFlag("elkan5e", SHADOW_STRIKE_FLAG);
+	if (!origin) return false;
+	const { x, y, elevation } = origin;
+	if (typeof tokenDoc.move === "function") {
+		await tokenDoc.move({ x, y, elevation, action: "blink" });
+	} else {
+		await tokenDoc.update({ x, y, elevation });
+	}
+	await tokenDoc.unsetFlag("elkan5e", SHADOW_STRIKE_FLAG);
+	return true;
+}
+
+/**
+ * Runs Shadow Strike automation at dnd5e.teleport: records each token's position
+ * before the strike teleport so the Return activity can snap back to it.
+ *
+ * @param {Activity} activity - The teleport activity being used.
+ * @param {{ token: Token }[]} plans - Planned teleport movements.
+ */
+export function shadowStrikeRecordOrigin(activity, plans) {
+	if (!isShadowStrike(activity) || activity.id === SHADOW_STRIKE_RETURN_ID) return;
+	for (const { token } of plans ?? []) {
+		const { x, y, elevation } = token.document;
+		token.document.setFlag("elkan5e", SHADOW_STRIKE_FLAG, { x, y, elevation });
+	}
+}
+
+/**
+ * Runs Shadow Strike automation at dnd5e.preTeleport: the Return activity skips
+ * manual placement when a stored origin exists.
+ *
+ * @param {Activity} activity - The teleport activity being used.
+ * @param {{ tokens: Token[] }} config - Teleport configuration.
+ * @returns {boolean|void} False to cancel manual teleport planning.
+ */
+export function shadowStrikePreReturn(activity, config) {
+	if (!isShadowStrike(activity) || activity.id !== SHADOW_STRIKE_RETURN_ID) return;
+	const tokens = (config?.tokens ?? []).filter((tk) =>
+		tk.document.getFlag("elkan5e", SHADOW_STRIKE_FLAG),
+	);
+	if (!tokens.length) return;
+	for (const token of tokens) returnToShadowStrikeOrigin(token.document);
+	return false;
+}
+
+/**
+ * Runs Shadow Strike automation at dnd5e.postUseActivity: the strike gives the caster its
+ * advantage effect. Midi-QOL doesn't apply effects from teleport activities.
+ *
+ * @param {Activity} activity - The activity that was used.
+ * @returns {Promise<void>} Promise resolution result.
+ */
+export async function shadowStrikeAdvantage(activity) {
+	if (!isShadowStrike(activity) || activity.id === SHADOW_STRIKE_RETURN_ID) return;
+	const actor = activity.actor;
+	if (!actor?.isOwner) return;
+	const origin = activity.item.uuid;
+	const effects = activity.effects
+		.map(({ effect }) => effect)
+		.filter(
+			(effect) =>
+				effect && !actor.effects.some((e) => e.origin === origin && e.name === effect.name),
+		)
+		.map((effect) => {
+			const data = effect.toObject();
+			delete data._id;
+			return { ...data, origin, transfer: false };
+		});
+	if (effects.length) await actor.createEmbeddedDocuments("ActiveEffect", effects);
+}
+
+/**
+ * Runs Shadow Strike automation at dnd5e.postUseActivity: using Return
+ * immediately snaps the caster's token back to where it started.
+ *
+ * @param {Activity} activity - The activity that was used.
+ * @returns {Promise<void>} Promise resolution result.
+ */
+export async function shadowStrikeReturn(activity) {
+	if (!isShadowStrike(activity) || activity.id !== SHADOW_STRIKE_RETURN_ID) return;
+	const actor = activity.actor;
+	let returned = false;
+	for (const token of actor?.getActiveTokens() ?? []) {
+		returned = (await returnToShadowStrikeOrigin(token.document)) || returned;
+	}
+	if (!returned) {
+		ui.notifications.warn(t("elkan5e.spells.shadowStrikeNoOrigin", { name: actor?.name }));
+	}
+}
+
+/**
+ * Runs Ensnaring Vine automation at midi-qol.preTargetSave: Large or larger
+ * creatures have advantage on the save.
+ *
+ * @param {Token} target - Token making the save.
+ * @param {*} workflow - midi-qol workflow.
+ * @param {object} saveDetails - Save configuration midi is about to roll.
+ */
+export function ensnaringVineSize(target, workflow, saveDetails) {
+	if (workflow.item?.system?.identifier !== "ensnaring-vine") return;
+	const size = SIZE_ORDER.indexOf(target.actor?.system?.traits?.size);
+	if (size >= SIZE_ORDER.indexOf("lg")) saveDetails.advantage = true;
+}
+
+/**
+ * Runs Hideous Laughter automation from the effect's midi onUse macro (isDamaged pass):
+ * a laughing creature that takes damage repeats the Wisdom save with advantage,
+ * ending the spell on a success.
+ *
+ * @param {object} scope - Function macro scope from midi.
+ * @param {Token} [scope.token] - Token midi resolved for the macro.
+ * @param {Array} [scope.args] - Macro args; args[0].options.token is the damaged target.
+ * @returns {Promise<void>} Promise resolution result.
+ */
+export async function hideousLaughterDamaged({ token, args } = {}) {
+	const target = args?.[0]?.options?.token ?? token;
+	const actor = target?.actor;
+	const effect = actor?.effects.find((e) => e.name === "Hideous Laughter" && !e.disabled);
+	if (!effect) return;
+
+	const item = effect.origin ? await fromUuid(effect.origin).catch(() => null) : null;
+	const saveActivity = item?.system?.activities?.find((a) => a.type === "save");
+	const dc = saveActivity?.save?.dc?.value ?? item?.actor?.system?.attributes?.spell?.dc ?? null;
+	if (!dc) return;
+
+	const rolls = await actor.rollSavingThrow(
+		{ ability: "wis", target: dc, advantage: true },
+		{ configure: false },
+	);
+	const roll = rolls?.[0];
+	if (!roll || (roll.isSuccess ?? roll.total >= dc) !== true) return;
+
+	await deleteEffects(actor, [effect]);
+	await ChatMessage.create({
+		speaker: ChatMessage.getSpeaker({ actor }),
+		content: t("elkan5e.spells.hideousLaughterShaken", { name: actor.name }),
+	});
+}
+
+/**
+ * Runs Gentle Current automation at midi-qol.RollComplete: frees each target from
+ * the grappled and prone conditions and moves it up to 10 feet. Restrained targets
+ * can't be moved.
+ *
+ * @param {*} workflow - midi-qol workflow.
+ * @returns {Promise<void>} Promise resolution result.
+ */
+export async function gentleCurrent(workflow) {
+	if (!workflow.item?.system?.identifier?.startsWith("gentle-current")) return;
+	for (const target of workflow.targets ?? []) {
+		const actor = target.actor;
+		if (!actor) continue;
+		await removeStatuses(actor, ["grappled", "prone"]);
+		if (actor.statuses?.has("restrained")) continue;
+		await planTeleportForOwner(target.document, 10, "displace");
+	}
 }
