@@ -48,16 +48,16 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.ignoreNearbyFoes",
-						"type": "add",
-						"value": 1,
+						"key": "flags.elkan5e.marksman",
+						"type": "custom",
+						"value": "1",
 						"phase": "initial",
-						"priority": 20
+						"priority": null
 					},
 					{
-						"key": "flags.dnd5e.sharpShooter",
-						"type": "add",
-						"value": 1,
+						"key": "flags.midi-qol.sharpShooter",
+						"type": "override",
+						"value": "(target?.attributes?.ac?.cover ?? 0) < 5",
 						"phase": "initial",
 						"priority": null
 					}

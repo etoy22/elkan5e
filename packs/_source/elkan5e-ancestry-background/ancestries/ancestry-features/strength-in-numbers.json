@@ -94,7 +94,8 @@
 				},
 				"name": "",
 				"img": "",
-				"appliedEffects": []
+				"appliedEffects": [],
+				"useConditionText": "reaction === 'isSaveFail' && [...(workflow?.saves ?? [])].some(t => t.document?.disposition === fromUuidSync(targetUuid)?.disposition)"
 			}
 		},
 		"identifier": "strength-in-numbers",
@@ -110,7 +111,6 @@
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
 			"effectCondition": "",
-			"reactionCondition": "reaction === 'isSave' && !workflow?.save?.success",
 			"removeAttackDamageButtons": "default",
 			"otherCondition": ""
 		},

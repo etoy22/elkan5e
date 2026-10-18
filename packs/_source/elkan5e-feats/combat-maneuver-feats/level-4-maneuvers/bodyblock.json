@@ -33,7 +33,16 @@
 		},
 		"requirements": "Feat (Level 4)",
 		"prerequisites": {
-			"level": 4
+			"level": 4,
+			"items": [
+				"fighting-style",
+				"fighting-style-archery",
+				"fighting-style-defense",
+				"fighting-style-mounted-combat",
+				"fighting-style-protection",
+				"fighting-style-single-weapon-fighting",
+				"fighting-style-two-weapon-fighting"
+			]
 		},
 		"activities": {
 			"KSXiWDYwenQOukyB": {
@@ -113,7 +122,7 @@
 						"formula": "8 + max(@abilities.str.mod, @abilities.dex.mod) + @prof"
 					}
 				},
-				"useConditionText": "",
+				"useConditionText": "false",
 				"useConditionReason": "",
 				"effectConditionText": "",
 				"macroData": {
@@ -233,7 +242,6 @@
 		"midi-qol": {
 			"effectActivation": false,
 			"itemCondition": "",
-			"reactionCondition": "reaction === 'isMoved' && computeDistance(tokenUuid, targetUuid) <= 5 && (() => { const order = ['tiny','sm','med','lg','huge','grg']; const actorToken = canvas?.tokens?.get(tokenUuid); const actorSize = actorToken?.actor?.system?.traits?.size?.value ?? 'med'; const pbRank = actorToken?.actor?.flags?.dnd5e?.powerfulBuild ? order.indexOf('lg') : -1; const actorRank = Math.max(order.indexOf(actorSize), pbRank); const targetSize = canvas?.tokens?.get(targetUuid)?.actor?.system?.traits?.size?.value ?? 'med'; const targetRank = order.indexOf(targetSize); return actorRank >= 0 && targetRank >= 0 && targetRank <= actorRank; })()",
 			"otherCondition": "",
 			"effectCondition": "",
 			"rollAttackPerTarget": "default",
