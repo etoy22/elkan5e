@@ -1,0 +1,176 @@
+{
+	"name": "Dragon Breath [Exhale]",
+	"type": "feat",
+	"img": "icons/creatures/abilities/dragon-fire-breath-orange.webp",
+	"system": {
+		"description": {
+			"value": "<p>You exhale draconic energy in a 15 ft. cone. Each creature in the area rolls a Dexterity save against the caster's spell save DC, taking the chosen damage type on a failure or half as much on a success.</p>",
+			"chat": ""
+		},
+		"source": {
+			"revision": 1,
+			"rules": "",
+			"book": "",
+			"page": "",
+			"custom": "elkan5e.com/spells/dragon's-breath",
+			"license": ""
+		},
+		"activation": {
+			"type": "action",
+			"value": 1,
+			"condition": ""
+		},
+		"uses": {
+			"max": "",
+			"recovery": [],
+			"spent": 0
+		},
+		"type": {
+			"value": "",
+			"subtype": ""
+		},
+		"requirements": "Dragon Breath",
+		"properties": [
+			"mgc"
+		],
+		"activities": {
+			"dnd5eactivity000": {
+				"type": "save",
+				"name": "Exhale",
+				"activation": {
+					"type": "action",
+					"value": null,
+					"override": true,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": false,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [],
+				"range": {
+					"override": true,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"affects": {
+						"type": "creature",
+						"choice": false
+					},
+					"template": {
+						"type": "cone",
+						"size": "15",
+						"units": "ft",
+						"contiguous": false,
+						"count": ""
+					},
+					"override": true,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"parts": [
+						{
+							"custom": {
+								"enabled": true,
+								"formula": "(@flags.elkan5e.dragonBreath.dice)d6"
+							},
+							"number": null,
+							"denomination": null,
+							"bonus": "",
+							"types": [
+								"acid",
+								"cold",
+								"lightning",
+								"fire",
+								"poison",
+								"psychic",
+								"thunder"
+							],
+							"scaling": {
+								"mode": "",
+								"number": null,
+								"formula": ""
+							}
+						}
+					],
+					"onSave": "half",
+					"critical": {
+						"allow": false
+					}
+				},
+				"save": {
+					"ability": [
+						"dex"
+					],
+					"dc": {
+						"calculation": "",
+						"formula": "@flags.elkan5e.dragonBreath.dc"
+					}
+				},
+				"img": "icons/creatures/abilities/dragon-fire-breath-orange.webp",
+				"_id": "dnd5eactivity000",
+				"useConditionText": "",
+				"useConditionReason": "",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"forceDialog": false,
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "",
+				"appliedEffects": []
+			}
+		},
+		"identifier": "dragon-breath-exhale"
+	},
+	"effects": [],
+	"folder": "6J3i75lfD1J0xYwA",
+	"_id": "dragonBreathExh1",
+	"_key": "!items!dragonBreathExh1"
+}

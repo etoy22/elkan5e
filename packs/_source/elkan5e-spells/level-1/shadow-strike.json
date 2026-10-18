@@ -64,7 +64,7 @@
 		],
 		"activities": {
 			"FpyQs0h6sLnf1EYv": {
-				"type": "utility",
+				"type": "teleport",
 				"_id": "FpyQs0h6sLnf1EYv",
 				"activation": {
 					"type": "action",
@@ -96,15 +96,15 @@
 				},
 				"target": {
 					"affects": {
-						"type": "creature",
-						"count": 1
+						"type": "self",
+						"choice": false
 					},
 					"template": {
 						"units": "ft",
 						"width": null
 					},
 					"override": false,
-					"prompt": true
+					"prompt": false
 				},
 				"uses": {
 					"spent": 0,
@@ -117,11 +117,70 @@
 					"name": "",
 					"formula": ""
 				},
-				"name": "",
+				"name": "Shadow Strike",
 				"img": "",
 				"appliedEffects": [
 					"SNRbXUqFvo4lRckV"
-				]
+				],
+				"teleport": {
+					"override": true,
+					"units": "ft",
+					"value": "30"
+				}
+			},
+			"shdwStrikeRetrn0": {
+				"_id": "shdwStrikeRetrn0",
+				"type": "teleport",
+				"name": "Return",
+				"img": "icons/magic/movement/trail-streak-zigzag-teal.webp",
+				"activation": {
+					"type": "special",
+					"value": null,
+					"condition": "After your attack action",
+					"override": true
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": "Teleport back to your original position."
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"affects": {
+						"type": "self",
+						"choice": false
+					},
+					"template": {
+						"units": "ft",
+						"contiguous": false
+					},
+					"override": true,
+					"prompt": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"teleport": {
+					"override": true,
+					"units": "ft",
+					"value": "30"
+				}
 			}
 		},
 		"identifier": "shadow-strike"
@@ -163,8 +222,8 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.advantage.attack.all",
-						"value": 1,
+						"key": "system.rolls.attack.mode",
+						"value": "1",
 						"priority": 50,
 						"type": "add"
 					}

@@ -2,7 +2,58 @@
 	"name": "Weird",
 	"type": "spell",
 	"img": "icons/magic/death/skull-energy-light-purple.webp",
-	"effects": [],
+	"effects": [
+		{
+			"_id": "weirdFrightened1",
+			"name": "Weird",
+			"img": "modules/elkan5e/icons/conditions/frightened.svg",
+			"type": "base",
+			"transfer": false,
+			"disabled": false,
+			"duration": {
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "",
+			"origin": null,
+			"statuses": [
+				"frightened"
+			],
+			"tint": "#ffffff",
+			"showIcon": 1,
+			"start": null,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"stackable": "noneName",
+					"specialDuration": [],
+					"macroRepeat": "none",
+					"durationExpression": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"disableIncapacitated": false,
+					"enableCondition": "",
+					"disableCondition": ""
+				}
+			},
+			"system": {
+				"magical": true,
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end, label=Weird, saveAbility=wis, saveDC=@attributes.spell.dc, saveMagic=true, damageRoll=5d10, damageType=psychic, saveDamage=nodamage, damageBeforeSave=false",
+						"priority": 20,
+						"type": "add",
+						"replacement": "origin"
+					}
+				]
+			},
+			"_key": "!items.effects!myGVqxgb7FmkOw0h.weirdFrightened1"
+		}
+	],
 	"folder": "OLc6BMEuifPnCAUH",
 	"flags": {
 		"midi-qol": {
@@ -131,9 +182,8 @@
 				},
 				"effects": [
 					{
-						"onSave": false,
-						"_id": "eIGD1EvovfREMOTE",
-						"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanfrightened0"
+						"_id": "weirdFrightened1",
+						"onSave": false
 					}
 				],
 				"range": {

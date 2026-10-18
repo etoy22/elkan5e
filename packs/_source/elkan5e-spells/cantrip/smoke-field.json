@@ -75,18 +75,7 @@
 					"oncePerTurn": true,
 					"wallRestriction": "none",
 					"regionVisibility": 2,
-					"rules": [
-						{
-							"trigger": "entry",
-							"action": "applyEffect",
-							"targetId": "ctmRlnsg8FV7Sdf5"
-						},
-						{
-							"trigger": "exit",
-							"action": "removeEffect",
-							"targetId": "ctmRlnsg8FV7Sdf5"
-						}
-					]
+					"rules": []
 				},
 				"uses": {
 					"spent": 0,
@@ -149,7 +138,26 @@
 				},
 				"otherActivityId": "none",
 				"otherActivityAsParentType": true,
-				"_id": "wiCAb0N0jzLpvdK9"
+				"_id": "wiCAb0N0jzLpvdK9",
+				"behaviors": [
+					{
+						"name": "",
+						"_id": "ChU6wNzUj4g0KRkx",
+						"type": "applyActiveEffect",
+						"config": {
+							"effects": [
+								"Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanobscuredhea",
+								"Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanblinded0000"
+							],
+							"sizes": [],
+							"types": []
+						},
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				]
 			}
 		},
 		"uses": {
@@ -211,51 +219,6 @@
 			}
 		}
 	},
-	"effects": [
-		{
-			"name": "Smoke Field",
-			"img": "icons/magic/air/fog-gas-smoke-brown.webp",
-			"origin": "Compendium.elkan5e.elkan5e-spells.Item.7vHoMJ8cm6hr9fKP",
-			"transfer": false,
-			"_id": "ctmRlnsg8FV7Sdf5",
-			"type": "base",
-			"system": {
-				"changes": [],
-				"magical": true
-			},
-			"disabled": false,
-			"duration": {
-				"value": 1,
-				"units": "rounds",
-				"expiry": "sourceEnd",
-				"expired": false
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"statuses": [
-				"obscuredheavily",
-				"blinded"
-			],
-			"flags": {
-				"dae": {
-					"enableCondition": "",
-					"disableCondition": "",
-					"stackable": "noneName",
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": [],
-					"expiryMode": "default"
-				}
-			},
-			"showIcon": 2,
-			"start": null,
-			"folder": null,
-			"_key": "!items.effects!7vHoMJ8cm6hr9fKP.ctmRlnsg8FV7Sdf5"
-		}
-	],
+	"effects": [],
 	"_key": "!items!7vHoMJ8cm6hr9fKP"
 }

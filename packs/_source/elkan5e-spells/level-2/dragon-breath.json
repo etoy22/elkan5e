@@ -27,7 +27,11 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "dragonBreathEff1"
+					}
+				],
 				"range": {
 					"override": false
 				},
@@ -89,135 +93,6 @@
 					"postRemoveConditionText": ""
 				},
 				"otherActivityId": "none"
-			},
-			"2zAMU3xiBzcUA3hs": {
-				"type": "save",
-				"name": "Exhale",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": true,
-					"condition": ""
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": false,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": true
-				},
-				"effects": [],
-				"range": {
-					"override": true,
-					"units": "self",
-					"special": ""
-				},
-				"target": {
-					"affects": {
-						"type": "creature",
-						"count": 1
-					},
-					"template": {
-						"units": "ft",
-						"width": null
-					},
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"damage": {
-					"parts": [
-						{
-							"custom": {
-								"enabled": false,
-								"formula": ""
-							},
-							"number": 3,
-							"denomination": 6,
-							"bonus": "",
-							"types": [
-								"acid",
-								"cold",
-								"lightning",
-								"fire",
-								"poison",
-								"psychic",
-								"thunder"
-							],
-							"scaling": {
-								"mode": "whole",
-								"number": 1,
-								"formula": ""
-							}
-						}
-					],
-					"onSave": "half",
-					"critical": {
-						"allow": false
-					}
-				},
-				"save": {
-					"ability": [
-						"dex"
-					],
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
-					}
-				},
-				"img": "systems/dnd5e/icons/svg/statuses/concentrating.svg",
-				"_id": "2zAMU3xiBzcUA3hs",
-				"useConditionText": "",
-				"useConditionReason": "",
-				"effectConditionText": "",
-				"macroData": {
-					"name": "",
-					"command": ""
-				},
-				"ignoreTraits": {
-					"idi": false,
-					"idr": false,
-					"idv": false,
-					"ida": false
-				},
-				"midiProperties": {
-					"ignoreTraits": [],
-					"triggeredActivityId": "none",
-					"triggeredActivityConditionText": "",
-					"triggeredActivityTargets": "targets",
-					"triggeredActivityRollAs": "self",
-					"forceDialog": false,
-					"confirmTargets": "default",
-					"autoTargetType": "any",
-					"autoTargetAction": "default",
-					"automationOnly": false,
-					"otherActivityCompatible": true,
-					"displayActivityName": false,
-					"rollMode": "default",
-					"chooseEffects": false,
-					"toggleEffect": false,
-					"ignoreFullCover": false
-				},
-				"isOverTimeFlag": false,
-				"overTimeProperties": {
-					"saveRemoves": true,
-					"preRemoveConditionText": "",
-					"postRemoveConditionText": ""
-				},
-				"otherActivityId": "",
-				"appliedEffects": []
 			}
 		},
 		"uses": {
@@ -282,7 +157,70 @@
 			}
 		}
 	},
-	"effects": [],
+	"effects": [
+		{
+			"_id": "dragonBreathEff1",
+			"name": "Dragon Breath",
+			"img": "icons/creatures/abilities/dragon-fire-breath-orange.webp",
+			"type": "base",
+			"transfer": false,
+			"disabled": false,
+			"duration": {
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "",
+			"origin": null,
+			"statuses": [],
+			"tint": "#ffffff",
+			"showIcon": 1,
+			"start": null,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"stackable": "noneName",
+					"specialDuration": [],
+					"macroRepeat": "none",
+					"durationExpression": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"disableIncapacitated": false,
+					"enableCondition": "",
+					"disableCondition": ""
+				}
+			},
+			"system": {
+				"magical": true,
+				"changes": [
+					{
+						"key": "flags.elkan5e.dragonBreath.dc",
+						"value": "@attributes.spell.dc",
+						"priority": 20,
+						"type": "override",
+						"replacement": "origin"
+					},
+					{
+						"key": "flags.elkan5e.dragonBreath.dice",
+						"value": "@spellLevel + 1",
+						"priority": 20,
+						"type": "override",
+						"replacement": "origin"
+					},
+					{
+						"key": "macro.createItem",
+						"value": "Compendium.elkan5e.elkan5e-spells.Item.dragonBreathExh1",
+						"priority": 0,
+						"type": "custom",
+						"phase": "final"
+					}
+				]
+			},
+			"_key": "!items.effects!qiiRiG2gsOxO89Jm.dragonBreathEff1"
+		}
+	],
 	"flags": {
 		"midi-qol": {
 			"rollAttackPerTarget": "default",

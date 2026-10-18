@@ -29,13 +29,22 @@
 					"disableCondition": ""
 				}
 			},
-			"name": "Silence",
-			"description": "",
-			"statuses": [],
-			"img": "icons/magic/unholy/orb-rays-blue.webp",
+			"name": "Silenced",
+			"description": "@Embed[Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.F51xrE7Mj8VeM3b8 inline]",
+			"statuses": [
+				"silenced"
+			],
+			"img": "modules/elkan5e/icons/conditions/silenced.svg",
 			"type": "base",
 			"system": {
 				"changes": [
+					{
+						"key": "flags.midi-qol.fail.spell.verbal",
+						"type": "override",
+						"value": "1",
+						"phase": "initial",
+						"priority": null
+					},
 					{
 						"key": "system.traits.di.value",
 						"value": "thunder",
@@ -233,7 +242,6 @@
 						"type": "applyActiveEffect",
 						"config": {
 							"effects": [
-								"Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkansilenced000",
 								"Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkandeafened000",
 								"Compendium.elkan5e.elkan5e-spells.Item.BVd4kOcKeN5hvGk2.ActiveEffect.iPmhsqkpCJruiGzi"
 							],

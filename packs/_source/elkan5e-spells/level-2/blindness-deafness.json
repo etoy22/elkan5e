@@ -4,7 +4,107 @@
 	"img": "icons/magic/perception/silhouette-stealth-shadow.webp",
 	"effects": [
 		{
-			"name": "Blindness/Deafness",
+			"name": "Blindness/Deafness [Blinded]",
+			"transfer": false,
+			"_id": "bdBlindedOnly001",
+			"disabled": false,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"origin": null,
+			"statuses": [
+				"blinded"
+			],
+			"flags": {
+				"dae": {
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"enableCondition": "",
+					"disableCondition": ""
+				}
+			},
+			"tint": "#ffffff",
+			"img": "icons/magic/perception/silhouette-stealth-shadow.webp",
+			"type": "base",
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn = end,saveAbility=con,saveDC=@attributes.spell.dc,saveMagic=true",
+						"priority": 20,
+						"type": "add",
+						"replacement": "origin"
+					}
+				],
+				"magical": true
+			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
+			"_key": "!items.effects!56KyqRJhW1cM3JaF.bdBlindedOnly001"
+		},
+		{
+			"name": "Blindness/Deafness [Deafened]",
+			"transfer": false,
+			"_id": "bdDeafenedOnly01",
+			"disabled": false,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"origin": null,
+			"statuses": [
+				"deafened"
+			],
+			"flags": {
+				"dae": {
+					"disableIncapacitated": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"stackable": "noneName",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"enableCondition": "",
+					"disableCondition": ""
+				}
+			},
+			"tint": "#ffffff",
+			"img": "icons/magic/perception/silhouette-stealth-shadow.webp",
+			"type": "base",
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn = end,saveAbility=con,saveDC=@attributes.spell.dc,saveMagic=true",
+						"priority": 20,
+						"type": "add",
+						"replacement": "origin"
+					}
+				],
+				"magical": true
+			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
+			"_key": "!items.effects!56KyqRJhW1cM3JaF.bdDeafenedOnly01"
+		},
+		{
+			"name": "Blindness/Deafness [Both]",
 			"transfer": false,
 			"_id": "euxD3H8QtSNEsBWw",
 			"disabled": false,
@@ -207,6 +307,14 @@
 				},
 				"effects": [
 					{
+						"_id": "bdBlindedOnly001",
+						"onSave": false
+					},
+					{
+						"_id": "bdDeafenedOnly01",
+						"onSave": false
+					},
+					{
 						"_id": "euxD3H8QtSNEsBWw",
 						"onSave": false
 					}
@@ -248,7 +356,10 @@
 				"appliedEffects": [
 					"euxD3H8QtSNEsBWw"
 				],
-				"effectConditionText": "!target.traits.ci.value.has('blinded') && !target.traits.ci.value.has('deafened')"
+				"effectConditionText": "!(target.traits.ci.value.has('blinded') && target.traits.ci.value.has('deafened'))",
+				"midiProperties": {
+					"chooseEffects": true
+				}
 			}
 		},
 		"identifier": "blindness-deafness"

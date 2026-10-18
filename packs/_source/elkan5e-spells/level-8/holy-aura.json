@@ -26,7 +26,7 @@
 			"tint": "#ffffff",
 			"transfer": false,
 			"origin": null,
-			"name": "Holy Auras",
+			"name": "Holy Aura",
 			"description": "",
 			"statuses": [],
 			"img": "icons/magic/control/buff-flight-wings-runes-blue-white.webp",
@@ -34,8 +34,8 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.advantage.ability.save.all",
-						"value": 1,
+						"key": "system.rolls.ability.save.mode",
+						"value": "1",
 						"priority": 20,
 						"type": "add"
 					},
@@ -44,6 +44,12 @@
 						"value": 1,
 						"priority": 20,
 						"type": "add"
+					},
+					{
+						"key": "token.light.dim",
+						"value": "5",
+						"priority": 20,
+						"type": "upgrade"
 					}
 				],
 				"magical": true
@@ -187,7 +193,7 @@
 					"override": true,
 					"prompt": true,
 					"affects": {
-						"type": ""
+						"type": "ally"
 					},
 					"template": {
 						"type": "radius",
@@ -226,14 +232,26 @@
 					"oncePerTurn": false,
 					"wallRestriction": "none",
 					"regionVisibility": 2,
-					"rules": [
-						{
-							"trigger": "entry",
-							"action": "applyEffect",
-							"targetId": "bV9gcOUvMMCULD96"
+					"rules": []
+				},
+				"behaviors": [
+					{
+						"name": "",
+						"_id": "nGohCekIHcHMmg8F",
+						"type": "applyActiveEffect",
+						"config": {
+							"effects": [
+								"Compendium.elkan5e.elkan5e-spells.Item.zKJ6ia0SOCrIEGQn.ActiveEffect.bV9gcOUvMMCULD96"
+							],
+							"sizes": [],
+							"types": []
+						},
+						"level": {
+							"min": null,
+							"max": null
 						}
-					]
-				}
+					}
+				]
 			},
 			"E2ivSzN4y8PIUG4d": {
 				"type": "save",

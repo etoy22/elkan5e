@@ -8,9 +8,7 @@
 			"flags": {
 				"dae": {
 					"stackable": "none",
-					"specialDuration": [
-						"None"
-					],
+					"specialDuration": [],
 					"transfer": false,
 					"macroRepeat": "none",
 					"selfTarget": false,
@@ -31,7 +29,7 @@
 				"expired": false
 			},
 			"tint": "#ffffff",
-			"transfer": false,
+			"transfer": true,
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.v95pdXrd54cNPEgV",
 			"name": "Flame Blade",
 			"description": "",
@@ -101,52 +99,47 @@
 				"changes": [
 					{
 						"key": "name",
-						"type": "override",
 						"value": "Flame Blade, {}",
-						"phase": "final",
-						"priority": null
-					},
-					{
-						"key": "system.ability",
-						"type": "override",
-						"value": "str",
-						"phase": "initial",
-						"priority": null
+						"priority": 20,
+						"type": "override"
 					},
 					{
 						"key": "system.properties",
-						"type": "add",
 						"value": "mgc",
-						"phase": "initial",
-						"priority": null
+						"priority": 20,
+						"type": "add"
 					},
 					{
 						"key": "system.damage.base.number",
-						"type": "override",
 						"value": 3,
-						"phase": "initial",
-						"priority": null
+						"priority": 20,
+						"type": "override"
 					},
 					{
 						"key": "system.damage.base.denomination",
-						"type": "override",
 						"value": 6,
-						"phase": "initial",
-						"priority": null
+						"priority": 20,
+						"type": "override"
 					},
 					{
 						"key": "system.damage.base.types",
-						"type": "override",
-						"value": "ALL",
-						"phase": "initial",
-						"priority": null
+						"value": [
+							"fire"
+						],
+						"priority": 20,
+						"type": "override"
 					},
 					{
-						"key": "",
-						"type": "add",
+						"key": "system.damage.base.bonus",
 						"value": "",
-						"phase": "initial",
-						"priority": null
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "activities[attack].attack.ability",
+						"value": "spellcasting",
+						"priority": 20,
+						"type": "override"
 					}
 				]
 			},
@@ -206,45 +199,47 @@
 				"changes": [
 					{
 						"key": "name",
-						"type": "override",
 						"value": "Flame Blade, {}",
-						"phase": "final",
-						"priority": null
-					},
-					{
-						"key": "system.ability",
-						"type": "override",
-						"value": "str",
-						"phase": "initial",
-						"priority": null
+						"priority": 20,
+						"type": "override"
 					},
 					{
 						"key": "system.properties",
-						"type": "add",
 						"value": "mgc",
-						"phase": "initial",
-						"priority": null
+						"priority": 20,
+						"type": "add"
 					},
 					{
 						"key": "system.damage.base.number",
-						"type": "override",
-						"value": 4,
-						"phase": "initial",
-						"priority": null
+						"value": 3,
+						"priority": 20,
+						"type": "override"
 					},
 					{
 						"key": "system.damage.base.denomination",
-						"type": "override",
 						"value": 6,
-						"phase": "initial",
-						"priority": null
+						"priority": 20,
+						"type": "override"
 					},
 					{
 						"key": "system.damage.base.types",
-						"type": "override",
-						"value": "ALL",
-						"phase": "initial",
-						"priority": null
+						"value": [
+							"fire"
+						],
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "system.damage.base.bonus",
+						"value": "1d8",
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "activities[attack].attack.ability",
+						"value": "spellcasting",
+						"priority": 20,
+						"type": "override"
 					}
 				]
 			},
@@ -299,42 +294,25 @@
 					{
 						"key": "name",
 						"value": "Flame Blade, {}",
-						"priority": null,
-						"type": "override"
-					},
-					{
-						"key": "system.damage.parts",
-						"value": [
-							[
-								"5d6",
-								"fire"
-							]
-						],
-						"priority": null,
-						"type": "override"
-					},
-					{
-						"key": "system.ability",
-						"value": "wis",
-						"priority": null,
+						"priority": 20,
 						"type": "override"
 					},
 					{
 						"key": "system.properties",
 						"value": "mgc",
-						"priority": null,
+						"priority": 20,
 						"type": "add"
 					},
 					{
 						"key": "system.damage.base.number",
-						"value": 5,
-						"priority": null,
+						"value": 3,
+						"priority": 20,
 						"type": "override"
 					},
 					{
 						"key": "system.damage.base.denomination",
 						"value": 6,
-						"priority": null,
+						"priority": 20,
 						"type": "override"
 					},
 					{
@@ -342,7 +320,19 @@
 						"value": [
 							"fire"
 						],
-						"priority": null,
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "system.damage.base.bonus",
+						"value": "2d8",
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "activities[attack].attack.ability",
+						"value": "spellcasting",
+						"priority": 20,
 						"type": "override"
 					}
 				]
@@ -398,31 +388,25 @@
 					{
 						"key": "name",
 						"value": "Flame Blade, {}",
-						"priority": null,
-						"type": "override"
-					},
-					{
-						"key": "system.ability",
-						"value": "wis",
-						"priority": null,
+						"priority": 20,
 						"type": "override"
 					},
 					{
 						"key": "system.properties",
 						"value": "mgc",
-						"priority": null,
+						"priority": 20,
 						"type": "add"
 					},
 					{
 						"key": "system.damage.base.number",
-						"value": 6,
-						"priority": null,
+						"value": 3,
+						"priority": 20,
 						"type": "override"
 					},
 					{
 						"key": "system.damage.base.denomination",
 						"value": 6,
-						"priority": null,
+						"priority": 20,
 						"type": "override"
 					},
 					{
@@ -430,7 +414,19 @@
 						"value": [
 							"fire"
 						],
-						"priority": null,
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "system.damage.base.bonus",
+						"value": "3d8",
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "activities[attack].attack.ability",
+						"value": "spellcasting",
+						"priority": 20,
 						"type": "override"
 					}
 				]
@@ -497,6 +493,13 @@
 			"AoETargetTypeIncludeSelf": true,
 			"autoTarget": "default",
 			"removeAttackDamageButtons": "default"
+		},
+		"dnd5e": {
+			"riders": {
+				"effect": [
+					"Hbbgg0VPMOMqUVyZ"
+				]
+			}
 		}
 	},
 	"system": {
@@ -594,7 +597,9 @@
 							"max": 3
 						},
 						"riders": {
-							"effect": [],
+							"effect": [
+								"Hbbgg0VPMOMqUVyZ"
+							],
 							"item": [],
 							"activity": []
 						}
@@ -606,7 +611,9 @@
 							"max": 5
 						},
 						"riders": {
-							"effect": [],
+							"effect": [
+								"Hbbgg0VPMOMqUVyZ"
+							],
 							"item": [],
 							"activity": []
 						}
@@ -618,7 +625,9 @@
 							"max": 7
 						},
 						"riders": {
-							"effect": [],
+							"effect": [
+								"Hbbgg0VPMOMqUVyZ"
+							],
 							"item": [],
 							"activity": []
 						}
@@ -630,7 +639,9 @@
 							"max": null
 						},
 						"riders": {
-							"effect": [],
+							"effect": [
+								"Hbbgg0VPMOMqUVyZ"
+							],
 							"item": [],
 							"activity": []
 						}

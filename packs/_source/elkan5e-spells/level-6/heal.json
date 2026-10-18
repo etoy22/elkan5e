@@ -2,63 +2,11 @@
 	"name": "Heal",
 	"type": "spell",
 	"img": "icons/magic/life/heart-cross-purple-orange.webp",
-	"effects": [
-		{
-			"_id": "mePFgECiWaaS6SuC",
-			"disabled": false,
-			"duration": {
-				"value": 1,
-				"units": "turns",
-				"expiry": "turnStart",
-				"expired": false
-			},
-			"transfer": false,
-			"flags": {
-				"dae": {
-					"stackable": "none",
-					"specialDuration": [],
-					"transfer": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"durationExpression": "",
-					"macroRepeat": "none"
-				}
-			},
-			"tint": "#ffffff",
-			"origin": null,
-			"name": "Heal",
-			"description": "",
-			"statuses": [],
-			"img": "icons/magic/life/heart-cross-purple-orange.webp",
-			"type": "base",
-			"system": {
-				"changes": [
-					{
-						"key": "system.traits.ci.value",
-						"value": "blinded",
-						"priority": 20,
-						"type": "custom"
-					},
-					{
-						"key": "system.traits.ci.value",
-						"value": "deafened",
-						"priority": 20,
-						"type": "custom"
-					}
-				],
-				"magical": true
-			},
-			"start": null,
-			"showIcon": 1,
-			"folder": null,
-			"_key": "!items.effects!6RL4h8kNHPkjQltU.mePFgECiWaaS6SuC"
-		}
-	],
+	"effects": [],
 	"folder": "sDaRY0H81UTha6hq",
 	"flags": {
 		"midi-qol": {
-			"onUseMacroName": "",
+			"onUseMacroName": "[postActiveEffects]ActivityMacro-qbxIZtsctkLhlqR0",
 			"effectActivation": false,
 			"removeAttackDamageButtons": "default",
 			"rollAttackPerTarget": "default",
@@ -178,11 +126,7 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [
-					{
-						"_id": "mePFgECiWaaS6SuC"
-					}
-				],
+				"effects": [],
 				"range": {
 					"override": false
 				},
@@ -226,7 +170,11 @@
 				"appliedEffects": [
 					"mePFgECiWaaS6SuC"
 				],
-				"useConditionText": "target.details.type?.subtype=== \"Soul Gem\" || !(target.details.type?.value === \"construct\")"
+				"useConditionText": "target.details.type?.subtype=== \"Soul Gem\" || !(target.details.type?.value === \"construct\")",
+				"macroData": {
+					"name": "Heal",
+					"command": "return await elkan5e.macros.spells.healConditions(workflow);"
+				}
 			}
 		},
 		"identifier": "heal"

@@ -2,7 +2,63 @@
 	"name": "Etherealness",
 	"type": "spell",
 	"img": "icons/magic/control/silhouette-hold-change-green.webp",
-	"effects": [],
+	"effects": [
+		{
+			"_id": "etherealnessEff1",
+			"name": "Etherealness",
+			"img": "icons/magic/control/silhouette-hold-change-green.webp",
+			"type": "base",
+			"transfer": false,
+			"disabled": false,
+			"duration": {
+				"value": 28800,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "",
+			"origin": null,
+			"statuses": [
+				"ethereal"
+			],
+			"tint": "#ffffff",
+			"showIcon": 1,
+			"start": null,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"stackable": "noneName",
+					"specialDuration": [],
+					"macroRepeat": "none",
+					"durationExpression": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"disableIncapacitated": false,
+					"enableCondition": "",
+					"disableCondition": ""
+				}
+			},
+			"system": {
+				"magical": true,
+				"changes": [
+					{
+						"key": "flags.midi-qol.neverTarget",
+						"value": "1",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "ATL.alpha",
+						"value": "0.3",
+						"priority": 20,
+						"type": "override"
+					}
+				]
+			},
+			"_key": "!items.effects!N5jLiiotmkXpx78j.etherealnessEff1"
+		}
+	],
 	"folder": "H799nI2ov6BcHwd6",
 	"flags": {
 		"midi-qol": {
@@ -120,7 +176,11 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "etherealnessEff1"
+					}
+				],
 				"range": {
 					"override": false
 				},

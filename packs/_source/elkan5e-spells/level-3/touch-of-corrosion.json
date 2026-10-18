@@ -85,8 +85,8 @@
 								"acid"
 							],
 							"scaling": {
-								"mode": "whole",
-								"number": 2,
+								"mode": "",
+								"number": null,
 								"formula": ""
 							}
 						}
@@ -103,7 +103,7 @@
 				},
 				"useConditionText": "",
 				"useConditionReason": "",
-				"effectConditionText": "!target.traits.ci.value.has('weakened')",
+				"effectConditionText": "",
 				"macroData": {
 					"name": "",
 					"command": ""
@@ -153,6 +153,155 @@
 				"otherActivityAsParentType": true,
 				"friendlySave": "default",
 				"name": "Corrode Metal Creature",
+				"img": ""
+			},
+			"o3pMwZgodLUi2rBT": {
+				"type": "save",
+				"_id": "o3pMwZgodLUi2rBT",
+				"activation": {
+					"type": "action",
+					"override": false
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "whTVRjkYPfIoBkZA",
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
+				"range": {
+					"units": "self",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false
+				},
+				"damage": {
+					"onSave": "half",
+					"critical": {
+						"allow": false
+					},
+					"parts": [
+						{
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"number": 6,
+							"denomination": 10,
+							"bonus": "",
+							"types": [
+								"acid"
+							],
+							"scaling": {
+								"mode": "whole",
+								"number": 2,
+								"formula": ""
+							}
+						}
+					]
+				},
+				"save": {
+					"ability": [
+						"dex"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"useConditionText": "target.details.type?.value === \"construct\"",
+				"useConditionReason": "Upcast damage only applies to constructs",
+				"effectConditionText": "",
+				"macroData": {
+					"name": "",
+					"command": ""
+				},
+				"ignoreTraits": {
+					"idi": false,
+					"idr": false,
+					"idv": false,
+					"ida": false,
+					"idm": false
+				},
+				"midiProperties": {
+					"ignoreTraits": [],
+					"triggeredActivityId": "none",
+					"triggeredActivityConditionText": "",
+					"triggeredActivityTargets": "targets",
+					"triggeredActivityRollAs": "self",
+					"autoConsume": false,
+					"forceConsumeDialog": "default",
+					"forceRollDialog": "default",
+					"forceDamageDialog": "default",
+					"confirmTargets": "default",
+					"autoTargetType": "any",
+					"autoTargetAction": "default",
+					"automationOnly": false,
+					"otherActivityCompatible": true,
+					"otherActivityAsParentType": true,
+					"displayActivityName": false,
+					"rollMode": "default",
+					"chooseEffects": false,
+					"toggleEffect": false,
+					"ignoreFullCover": false,
+					"removeChatButtons": "default",
+					"magicEffect": false,
+					"magicDamage": false,
+					"noConcentrationCheck": false,
+					"skipConcentrationCheck": false,
+					"autoCEEffects": "default"
+				},
+				"isOverTimeFlag": false,
+				"overTimeProperties": {
+					"saveRemoves": true,
+					"preRemoveConditionText": "",
+					"postRemoveConditionText": ""
+				},
+				"otherActivityId": "none",
+				"otherActivityAsParentType": true,
+				"friendlySave": "default",
+				"name": "Corrode Construct",
 				"img": ""
 			},
 			"TWbRUHn4UnwkwjNs": {
@@ -300,18 +449,14 @@
 					"targets": []
 				},
 				"description": {
-					"chatFlavor": ""
+					"chatFlavor": "On a failure, use Corroded Weapon and drop the weapon onto its chat card."
 				},
 				"duration": {
 					"units": "inst",
 					"concentration": false,
 					"override": false
 				},
-				"effects": [
-					{
-						"_id": "C7TxiOdo2m5G1aQw"
-					}
-				],
+				"effects": [],
 				"range": {
 					"units": "self",
 					"override": false
@@ -411,6 +556,84 @@
 				"name": "Corrode Weapon",
 				"_id": "qIHlF8d6UZoO3ehW",
 				"img": ""
+			},
+			"Qb7xeJ5hFgzCdBCE": {
+				"type": "enchant",
+				"_id": "Qb7xeJ5hFgzCdBCE",
+				"name": "Corroded Weapon",
+				"img": "",
+				"activation": {
+					"type": "special",
+					"override": true,
+					"condition": "Target failed its save against Corrode Weapon"
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": false,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "perm",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [
+					{
+						"_id": "C7TxiOdo2m5G1aQw",
+						"level": {
+							"min": null,
+							"max": null
+						},
+						"riders": {
+							"activity": [],
+							"effect": [],
+							"item": []
+						}
+					}
+				],
+				"enchant": {
+					"self": false
+				},
+				"restrictions": {
+					"allowMagical": true,
+					"type": "weapon",
+					"categories": [],
+					"properties": []
+				},
+				"range": {
+					"units": "self",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft"
+					},
+					"affects": {
+						"choice": false
+					},
+					"override": false,
+					"prompt": false
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false
+				}
 			}
 		},
 		"uses": {
@@ -419,7 +642,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><em>You rub a pinch of rust on your hand and reach out towards metal, corroding it. If the object was a creature or wasn't in motion, the corrosion lingers longer, eating away at the metal.</em></p><p><strong>[[/save dex]]{Dexterity Save}</strong></p><p>This spell targets a single object or creature made mostly or entirely from metal. A creature holding an object makes the save on behalf of the object.</p><ul><li><p><strong>Failure (Creature):</strong> If target is a creature or stationary object made of metal, target takes [[/damage 6d10 acid]] damage,* is &amp;reference[weakened], and their speed is halved.</p></li><li><p><strong>Failure (Item):</strong> If target is metal armor, the wearer has &amp;reference[disadvantage] on dexterity saves and their speed is halved. If target is a metal weapon, any attack with it is made at &amp;reference[disadvantage].</p></li><li><p>The lingering penalties can be reversed with the <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.xw35KW3YQQkg2Zn4]{Mending}</em> or <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.lgQ4kI5pafqElhex]{Reconstruct}</em> spells or by a character proficient with @UUID[Compendium.elkan5e.elkan5e-equipment.Item.aFpNp019JYV5bcgI]{smithing} or @UUID[Compendium.elkan5e.elkan5e-equipment.Item.2Yeb51C04CmAhbsv]{tinker}'s tools over 1 hour.</p></li><li><p><strong>Success:</strong> Half damage if applicable, no other effect.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage to &amp;reference[construct]{Constructs} by [[/damage 2d10 acid]]{2d6} for each spell level above 3rd.</p>",
+			"value": "<p><em>You rub a pinch of rust on your hand and reach out towards metal, corroding it. If the object was a creature or wasn't in motion, the corrosion lingers longer, eating away at the metal.</em></p><p><strong>[[/save dex]]{Dexterity Save}</strong></p><p>This spell targets a single object or creature made mostly or entirely from metal. A creature holding an object makes the save on behalf of the object.</p><ul><li><p><strong>Failure (Creature):</strong> If target is a creature or stationary object made of metal, target takes [[/damage 6d10 acid]] damage,* is &amp;reference[weakened], and their speed is halved.</p></li><li><p><strong>Failure (Item):</strong> If target is metal armor, the wearer has &amp;reference[disadvantage] on dexterity saves and their speed is halved. If target is a metal weapon, any attack with it is made at &amp;reference[disadvantage].</p></li><li><p>The lingering penalties can be reversed with the <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.xw35KW3YQQkg2Zn4]{Mending}</em> or <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.lgQ4kI5pafqElhex]{Reconstruct}</em> spells or by a character proficient with @UUID[Compendium.elkan5e.elkan5e-equipment.Item.aFpNp019JYV5bcgI]{smithing} or @UUID[Compendium.elkan5e.elkan5e-equipment.Item.2Yeb51C04CmAhbsv]{tinker}'s tools over 1 hour.</p></li><li><p><strong>Success:</strong> Half damage if applicable, no other effect.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage to &amp;reference[construct]{Constructs} by [[/damage 2d10 acid]] for each spell level above 3rd.</p>",
 			"chat": ""
 		},
 		"identifier": "touch-of-corrosion",
@@ -482,10 +705,11 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.movement.all",
-						"value": "/2",
+						"key": "system.attributes.movement.multiplier",
+						"value": "0.5",
 						"priority": 20,
-						"type": "custom"
+						"type": "multiply",
+						"phase": "initial"
 					}
 				],
 				"magical": true
@@ -497,7 +721,7 @@
 				"expiry": null,
 				"expired": false
 			},
-			"description": "",
+			"description": "<p>Corroded: speed halved. Mending, Reconstruct, or 1 hour with smithing or tinker's tools ends it.</p>",
 			"tint": "#ffffff",
 			"statuses": [
 				"weakened"
@@ -521,24 +745,27 @@
 			"_key": "!items.effects!SS4bImfG74wnGnwt.whTVRjkYPfIoBkZA"
 		},
 		{
-			"name": "Corroded Weapon",
+			"name": "Corroded Armor",
 			"img": "icons/magic/acid/dissolve-vomit-green-brown.webp",
 			"origin": "Compendium.elkan5e.elkan5e-spells.Item.SS4bImfG74wnGnwt",
 			"transfer": false,
+			"_id": "DIpYONbHUk3Bb6n0",
 			"type": "base",
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.disadvantage.attack.mwak",
-						"value": 1,
+						"key": "system.abilities.dex.save.roll.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "add"
+						"type": "add",
+						"phase": "initial"
 					},
 					{
-						"key": "flags.midi-qol.disadvantage.attack.rwak",
-						"value": 1,
+						"key": "system.attributes.movement.multiplier",
+						"value": "0.5",
 						"priority": 20,
-						"type": "add"
+						"type": "multiply",
+						"phase": "initial"
 					}
 				],
 				"magical": true
@@ -550,7 +777,7 @@
 				"expiry": null,
 				"expired": false
 			},
-			"description": "",
+			"description": "<p>Corroded armor: disadvantage on Dexterity saving throws and speed halved. Mending, Reconstruct, or 1 hour with smithing or tinker's tools ends it.</p>",
 			"tint": "#ffffff",
 			"statuses": [],
 			"flags": {
@@ -563,11 +790,47 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"durationExpression": "",
-					"specialDuration": [],
-					"expiryMode": "default",
-					"macroRepeat": "none"
+					"specialDuration": []
 				}
 			},
+			"showIcon": 2,
+			"start": null,
+			"folder": null,
+			"_key": "!items.effects!SS4bImfG74wnGnwt.DIpYONbHUk3Bb6n0"
+		},
+		{
+			"name": "Corroded Weapon",
+			"img": "icons/magic/acid/dissolve-vomit-green-brown.webp",
+			"origin": "Compendium.elkan5e.elkan5e-spells.Item.SS4bImfG74wnGnwt",
+			"transfer": false,
+			"type": "enchantment",
+			"system": {
+				"changes": [
+					{
+						"key": "name",
+						"value": "{} (Corroded)",
+						"priority": null,
+						"type": "override"
+					},
+					{
+						"key": "attack",
+						"value": "-1",
+						"priority": 100,
+						"type": "dnd5e.advantage"
+					}
+				],
+				"magical": true
+			},
+			"disabled": false,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "<p>Attacks made with this weapon have disadvantage. Mending, Reconstruct, or 1 hour with smithing or tinker's tools ends it.</p>",
+			"tint": "#ffffff",
+			"statuses": [],
 			"_id": "C7TxiOdo2m5G1aQw",
 			"start": null,
 			"showIcon": 2,

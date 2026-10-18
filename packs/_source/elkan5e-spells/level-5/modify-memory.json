@@ -2,7 +2,53 @@
 	"name": "Modify Memory",
 	"type": "spell",
 	"img": "icons/magic/control/hypnosis-mesmerism-watch.webp",
-	"effects": [],
+	"effects": [
+		{
+			"_id": "modifyMemoryChrm",
+			"name": "Modify Memory",
+			"img": "modules/elkan5e/icons/conditions/charmed.svg",
+			"type": "base",
+			"transfer": false,
+			"disabled": false,
+			"duration": {
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "",
+			"origin": null,
+			"statuses": [
+				"charmed",
+				"incapacitated"
+			],
+			"tint": "#ffffff",
+			"showIcon": 1,
+			"start": null,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"stackable": "noneName",
+					"specialDuration": [
+						"isDamaged"
+					],
+					"macroRepeat": "none",
+					"durationExpression": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"disableIncapacitated": false,
+					"enableCondition": "",
+					"disableCondition": ""
+				}
+			},
+			"system": {
+				"magical": true,
+				"changes": []
+			},
+			"_key": "!items.effects!txItvxlcpaIbIt5s.modifyMemoryChrm"
+		}
+	],
 	"folder": "PnZJTE6T4UQY81Pm",
 	"flags": {
 		"midi-qol": {
@@ -128,14 +174,8 @@
 				},
 				"effects": [
 					{
-						"onSave": false,
-						"_id": "unfRpLWsXOREMOTE",
-						"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkancharmed0000"
-					},
-					{
-						"onSave": false,
-						"_id": "qAsNEdElyeREMOTE",
-						"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanincapacitat"
+						"_id": "modifyMemoryChrm",
+						"onSave": false
 					}
 				],
 				"range": {

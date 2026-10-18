@@ -2,7 +2,55 @@
 	"name": "Resurrection",
 	"type": "spell",
 	"img": "icons/magic/unholy/strike-body-life-soul-purple.webp",
-	"effects": [],
+	"effects": [
+		{
+			"_id": "resurrectionPen1",
+			"name": "Resurrection Penalty",
+			"img": "icons/magic/unholy/strike-body-life-soul-purple.webp",
+			"type": "base",
+			"transfer": false,
+			"disabled": false,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "<p>Grants Resurrection Weakness: a penalty to attack rolls, saving throws, and ability checks that starts at -4 and drops by 1 each long rest. Remove this effect once the penalty reaches 0.</p>",
+			"origin": null,
+			"statuses": [],
+			"tint": "#ffffff",
+			"showIcon": 1,
+			"start": null,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"stackable": "noneName",
+					"specialDuration": [],
+					"macroRepeat": "none",
+					"durationExpression": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"disableIncapacitated": false,
+					"enableCondition": "",
+					"disableCondition": ""
+				}
+			},
+			"system": {
+				"magical": true,
+				"changes": [
+					{
+						"key": "macro.createItem",
+						"value": "Compendium.elkan5e.elkan5e-spells.Item.resurrectionWeak",
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
+			"_key": "!items.effects!Qj9baV1UtPqdd4P8.resurrectionPen1"
+		}
+	],
 	"folder": "H799nI2ov6BcHwd6",
 	"flags": {
 		"midi-qol": {
@@ -121,7 +169,11 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "resurrectionPen1"
+					}
+				],
 				"range": {
 					"override": false
 				},

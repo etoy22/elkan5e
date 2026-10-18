@@ -253,149 +253,61 @@
 					"6BMAKrzsDsynMYBZ"
 				]
 			},
-			"CAkueRFmzDrvsgyM": {
+			"levitateMoveAct1": {
+				"_id": "levitateMoveAct1",
 				"type": "utility",
+				"name": "Move Levitated Target",
+				"img": "icons/magic/holy/meditation-chi-focus-blue.webp",
 				"activation": {
 					"type": "action",
-					"value": null,
-					"override": false
+					"value": 1,
+					"condition": "Once per turn, while concentrating",
+					"override": true
 				},
 				"consumption": {
 					"scaling": {
-						"allowed": false
+						"allowed": false,
+						"max": ""
 					},
 					"spellSlot": false,
 					"targets": []
 				},
 				"description": {
-					"chatFlavor": ""
+					"chatFlavor": "Move the levitated target up to 20 ft., never higher than 20 ft. off the ground."
 				},
 				"duration": {
 					"units": "inst",
 					"concentration": false,
 					"override": true
 				},
-				"effects": [
-					{
-						"_id": "6BMAKrzsDsynMYBZ",
-						"level": {
-							"min": null,
-							"max": null
-						}
-					}
-				],
+				"effects": [],
 				"range": {
-					"override": false,
-					"units": "self"
+					"override": false
 				},
 				"target": {
-					"override": false,
-					"prompt": true,
-					"template": {
-						"contiguous": false,
-						"stationary": false,
-						"units": "ft"
-					},
 					"affects": {
+						"type": "creature",
+						"count": "1",
 						"choice": false
-					}
+					},
+					"template": {
+						"units": "ft",
+						"contiguous": false
+					},
+					"override": true,
+					"prompt": true
 				},
 				"uses": {
 					"spent": 0,
-					"recovery": [],
-					"max": ""
+					"max": "",
+					"recovery": []
 				},
 				"roll": {
 					"prompt": false,
 					"visible": false,
 					"name": "",
 					"formula": ""
-				},
-				"useConditionText": "",
-				"effectConditionText": "",
-				"name": "Overtime",
-				"img": "",
-				"visibility": {
-					"level": {
-						"min": null,
-						"max": null
-					},
-					"requireAttunement": false,
-					"requireIdentification": false,
-					"requireMagic": false
-				},
-				"useConditionReason": "",
-				"macroData": {
-					"name": "",
-					"command": ""
-				},
-				"ignoreTraits": {
-					"idi": false,
-					"idr": false,
-					"idv": false,
-					"ida": false,
-					"idm": false
-				},
-				"midiProperties": {
-					"ignoreTraits": [],
-					"triggeredActivityId": "none",
-					"triggeredActivityConditionText": "",
-					"triggeredActivityTargets": "targets",
-					"triggeredActivityRollAs": "self",
-					"triggeredActivityConsume": true,
-					"triggeredActivityConfigure": true,
-					"autoConsume": true,
-					"forceConsumeDialog": "default",
-					"forceRollDialog": "default",
-					"forceDamageDialog": "default",
-					"confirmTargets": "default",
-					"autoTargetType": "any",
-					"autoTargetAction": "default",
-					"automationOnly": false,
-					"otherActivityCompatible": true,
-					"otherActivityAsParentType": true,
-					"displayActivityName": false,
-					"rollMode": "default",
-					"chooseEffects": false,
-					"toggleEffect": false,
-					"ignoreFullCover": false,
-					"removeChatButtons": "default",
-					"magicEffect": false,
-					"magicDamage": false,
-					"noConcentrationCheck": false,
-					"skipConcentrationCheck": false,
-					"autoCEEffects": "default"
-				},
-				"isOverTimeFlag": false,
-				"overTimeProperties": {
-					"saveRemoves": true,
-					"rollAs": "target",
-					"preRemoveConditionText": "",
-					"postRemoveConditionText": ""
-				},
-				"regionBehavior": {
-					"enabled": false,
-					"dispositionFilter": -1,
-					"excludeSource": true,
-					"oncePerTurn": true,
-					"wallRestriction": "none",
-					"regionVisibility": 2,
-					"rules": []
-				},
-				"regionLight": {
-					"enabled": false,
-					"dim": 0,
-					"bright": 0,
-					"color": null,
-					"alpha": 0.5,
-					"luminosity": 0.5,
-					"animationType": "",
-					"animationSpeed": 5,
-					"animationIntensity": 5
-				},
-				"otherActivityId": "none",
-				"otherActivityAsParentType": true,
-				"_id": "CAkueRFmzDrvsgyM"
+				}
 			}
 		},
 		"identifier": "levitate"

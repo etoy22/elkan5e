@@ -56,10 +56,9 @@
 	"folder": "U0k4VGG6bziqf3oH",
 	"flags": {
 		"midi-qol": {
-			"onUseMacroName": "[preCheckHits]ItemMacro",
+			"onUseMacroName": "[postActiveEffects]ItemMacro",
 			"effectActivation": false,
 			"itemCondition": "",
-			"reactionCondition": "reaction === 'isHit'",
 			"otherCondition": "",
 			"effectCondition": "",
 			"rollAttackPerTarget": "default",
@@ -187,21 +186,34 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "9hRjjxOWJ7hyMdiH",
+						"level": {
+							"min": null,
+							"max": null
+						},
+						"riders": {
+							"activity": [],
+							"effect": [],
+							"item": []
+						}
+					}
+				],
 				"range": {
 					"override": false
 				},
 				"target": {
 					"affects": {
-						"type": "creature",
-						"count": 1
+						"type": "self",
+						"count": null
 					},
 					"template": {
 						"units": "ft",
 						"width": null
 					},
-					"override": false,
-					"prompt": true
+					"override": true,
+					"prompt": false
 				},
 				"uses": {
 					"spent": 0,

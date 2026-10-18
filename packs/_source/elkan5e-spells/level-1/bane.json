@@ -40,7 +40,7 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.bonuses.abilities.save",
+						"key": "system.rolls.ability.save.bonus",
 						"type": "add",
 						"value": "-1d4",
 						"phase": "initial",
@@ -50,7 +50,7 @@
 						"replacement": ""
 					},
 					{
-						"key": "system.bonuses.mwak.attack",
+						"key": "system.rolls.attack.mwak.bonus",
 						"type": "add",
 						"value": "-1d4",
 						"phase": "initial",
@@ -60,7 +60,7 @@
 						"replacement": ""
 					},
 					{
-						"key": "system.bonuses.msak.attack",
+						"key": "system.rolls.attack.msak.bonus",
 						"type": "add",
 						"value": "-1d4",
 						"phase": "initial",
@@ -70,7 +70,7 @@
 						"replacement": ""
 					},
 					{
-						"key": "system.bonuses.rsak.attack",
+						"key": "system.rolls.attack.rsak.bonus",
 						"type": "add",
 						"value": "-1d4",
 						"phase": "initial",
@@ -80,7 +80,7 @@
 						"replacement": ""
 					},
 					{
-						"key": "system.bonuses.rwak.attack",
+						"key": "system.rolls.attack.rwak.bonus",
 						"type": "add",
 						"value": "-1d4",
 						"phase": "initial",
@@ -88,6 +88,13 @@
 						"_id": "JFwB182746yzOMdd",
 						"conditions": "{}",
 						"replacement": ""
+					},
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end,\nsaveAbility=cha,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Bane",
+						"priority": 20,
+						"type": "add",
+						"replacement": "origin"
 					}
 				],
 				"magical": true

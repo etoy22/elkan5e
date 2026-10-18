@@ -33,6 +33,12 @@
 						"priority": 20,
 						"type": "add",
 						"replacement": "origin"
+					},
+					{
+						"key": "flags.midi-qol.onUseMacroName",
+						"value": "function.elkan5e.macros.spells.hideousLaughterDamaged, isDamaged",
+						"priority": 20,
+						"type": "custom"
 					}
 				],
 				"magical": true
@@ -184,47 +190,6 @@
 			"concentration"
 		],
 		"activities": {
-			"dnd5eactivity000": {
-				"name": "",
-				"img": "",
-				"appliedEffects": [
-					"SJhHRgA9h8aF4DVc"
-				],
-				"effects": [
-					{
-						"_id": "SJhHRgA9h8aF4DVc",
-						"onSave": false
-					},
-					{
-						"onSave": false,
-						"_id": "oGCKza9VQwREMOTE",
-						"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanprone000000"
-					}
-				],
-				"damage": {
-					"onSave": "none"
-				},
-				"target": {
-					"affects": {
-						"type": "creature",
-						"count": 1
-					},
-					"template": {
-						"units": "ft",
-						"width": null
-					},
-					"override": false,
-					"prompt": true
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"effectConditionText": "!target.traits.ci.value.has('dazed')"
-			},
 			"roCxqfVhViCpRcmt": {
 				"type": "save",
 				"name": "Save (If target is Damaged)",
@@ -356,7 +321,7 @@
 				"appliedEffects": [
 					"SJhHRgA9h8aF4DVc"
 				],
-				"effectConditionText": "!target.traits.ci.value.has('dazed')"
+				"effectConditionText": "!target.traits.ci.value.has('dazed') && target.abilities.int.value > 4"
 			}
 		},
 		"identifier": "hideous-laughter"

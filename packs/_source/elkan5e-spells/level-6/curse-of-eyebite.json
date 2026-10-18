@@ -8,7 +8,7 @@
 			"_id": "omqS8IbthU23gRo9",
 			"disabled": false,
 			"duration": {
-				"value": 60,
+				"value": null,
 				"units": "seconds",
 				"expiry": "turnStart",
 				"expired": false
@@ -22,9 +22,7 @@
 					"stackable": "none",
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"isDamaged"
-					],
+					"specialDuration": [],
 					"enableCondition": "",
 					"disableCondition": "",
 					"disableIncapacitated": false,
@@ -35,7 +33,8 @@
 			"name": "Curse of Eyebite",
 			"description": "",
 			"statuses": [
-				"cursed"
+				"cursed",
+				"blinded"
 			],
 			"img": "icons/magic/perception/eye-ringed-glow-angry-teal.webp",
 			"type": "base",
@@ -246,7 +245,7 @@
 				],
 				"effectConditionText": "!target.traits.ci.value.has('cursed')",
 				"midiProperties": {
-					"chooseEffects": true
+					"chooseEffects": false
 				},
 				"visibility": {
 					"level": {

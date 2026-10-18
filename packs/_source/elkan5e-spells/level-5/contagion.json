@@ -8,9 +8,7 @@
 			"flags": {
 				"dae": {
 					"stackable": "none",
-					"specialDuration": [
-						"None"
-					],
+					"specialDuration": [],
 					"transfer": false,
 					"macroRepeat": "none",
 					"selfTarget": false,
@@ -44,10 +42,10 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.grants.disadvantage.save.all",
-						"value": 1,
+						"key": "system.rolls.ability.save.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					}
 				],
 				"magical": true
@@ -213,9 +211,11 @@
 								"formula": ""
 							},
 							"number": 8,
-							"denomination": "",
+							"denomination": 10,
 							"bonus": "",
-							"types": [],
+							"types": [
+								"poison"
+							],
 							"scaling": {
 								"mode": ""
 							}
@@ -242,7 +242,7 @@
 				"appliedEffects": [
 					"Podq2B0qNxTBlH0c"
 				],
-				"effectConditionText": "!target.traits.ci.value.has('diseased') && !!target.traits.ci.value.has('poisoned')",
+				"effectConditionText": "!target.traits.ci.value.has('diseased') && !target.traits.ci.value.has('poisoned')",
 				"visibility": {
 					"level": {
 						"min": null,

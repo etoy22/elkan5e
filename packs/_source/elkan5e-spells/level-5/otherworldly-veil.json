@@ -30,13 +30,8 @@
 				},
 				"effects": [
 					{
-						"onSave": false,
-						"level": {
-							"min": null,
-							"max": null
-						},
-						"_id": "1xghGnPbidREMOTE",
-						"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkancharmed0000"
+						"_id": "otherworldlyVeil",
+						"onSave": false
 					}
 				],
 				"range": {
@@ -186,7 +181,58 @@
 			}
 		}
 	},
-	"effects": [],
+	"effects": [
+		{
+			"_id": "otherworldlyVeil",
+			"name": "Otherworldly Veil",
+			"img": "modules/elkan5e/icons/conditions/charmed.svg",
+			"type": "base",
+			"transfer": false,
+			"disabled": false,
+			"duration": {
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "",
+			"origin": null,
+			"statuses": [
+				"charmed"
+			],
+			"tint": "#ffffff",
+			"showIcon": 1,
+			"start": null,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"stackable": "noneName",
+					"specialDuration": [],
+					"macroRepeat": "none",
+					"durationExpression": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"disableIncapacitated": false,
+					"enableCondition": "",
+					"disableCondition": ""
+				}
+			},
+			"system": {
+				"magical": true,
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end, label=Otherworldly Veil, saveAbility=int, saveDC=@attributes.spell.dc, saveMagic=true",
+						"priority": 20,
+						"type": "add",
+						"replacement": "origin"
+					}
+				]
+			},
+			"_key": "!items.effects!2vgdhCRZ1oiGdyn9.otherworldlyVeil"
+		}
+	],
 	"flags": {
 		"midi-qol": {
 			"rollAttackPerTarget": "default",

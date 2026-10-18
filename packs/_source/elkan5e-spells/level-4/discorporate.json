@@ -31,22 +31,28 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.bonuses.mwak.damage",
-						"value": "1/2",
 						"priority": 20,
-						"type": "multiply"
+						"type": "add",
+						"key": "system.traits.dr.value",
+						"value": "bludgeoning"
 					},
 					{
-						"key": "system.bonuses.rwak.damage",
-						"value": "1/2",
 						"priority": 20,
-						"type": "multiply"
+						"type": "add",
+						"key": "system.traits.dr.value",
+						"value": "piercing"
 					},
 					{
-						"key": "system.traits.dr.custom",
-						"value": "Non-Magical Physical",
 						"priority": 20,
-						"type": "custom"
+						"type": "add",
+						"key": "system.traits.dr.value",
+						"value": "slashing"
+					},
+					{
+						"priority": 20,
+						"type": "add",
+						"key": "system.traits.dr.bypasses",
+						"value": "mgc"
 					},
 					{
 						"key": "system.traits.dr.value",
@@ -99,6 +105,12 @@
 					{
 						"key": "system.traits.ci.value",
 						"value": "restrained",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "flags.midi-qol.onUseMacroName",
+						"value": "Compendium.elkan5e.elkan5e-macros.Macro.1NtnoPvTQj1IEHCa, preDamageApplication",
 						"priority": 20,
 						"type": "custom"
 					}

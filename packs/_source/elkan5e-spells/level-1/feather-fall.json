@@ -47,7 +47,6 @@
 			"onUseMacroName": "",
 			"effectActivation": false,
 			"itemCondition": "",
-			"reactionCondition": "reaction === 'isDamaged'",
 			"otherCondition": "",
 			"effectCondition": "",
 			"rollAttackPerTarget": "default",
@@ -148,7 +147,7 @@
 				"activation": {
 					"type": "action",
 					"value": null,
-					"override": true,
+					"override": false,
 					"condition": "reaction !== 'isHit' && actor.items.some(i => i.system?.equipped && ((i.type === 'equipment' && i.system?.type?.value === 'shield') || (i.type === 'weapon' && ['mwak','msak'].includes(i.system?.actionType))))"
 				},
 				"consumption": {
@@ -211,7 +210,8 @@
 						"min": null,
 						"max": null
 					}
-				}
+				},
+				"useConditionText": "false"
 			}
 		},
 		"identifier": "feather-fall"
