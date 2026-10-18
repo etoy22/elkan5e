@@ -177,14 +177,14 @@ function registerCustomEffectFields() {
 				label: game.i18n.localize("elkan5e.push.effects.pushResist"),
 				hint: game.i18n.localize("elkan5e.push.effects.pushResistDescription"),
 			}),
-			CONST.ACTIVE_EFFECT_MODES.CUSTOM,
+			"custom",
 		];
 		specials["system.traits.dm.amount.fire"] = [
 			new StringField({
 				label: game.i18n.localize("elkan5e.burning.effects.fireDamageTaken"),
 				hint: game.i18n.localize("elkan5e.burning.effects.fireDamageTakenDescription"),
 			}),
-			CONST.ACTIVE_EFFECT_MODES.CUSTOM,
+			"custom",
 		];
 	});
 

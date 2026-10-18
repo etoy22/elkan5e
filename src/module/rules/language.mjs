@@ -29,6 +29,7 @@ export function language() {
 
 			CONFIG.DND5E.languages.rare = {
 				label: "Rare Languages",
+				selectable: false,
 				children: {
 					draconic: "Draconic",
 					giant: "Giant",
@@ -40,6 +41,7 @@ export function language() {
 
 			CONFIG.DND5E.languages.magic = {
 				label: "Magical Languages",
+				selectable: false,
 				children: {
 					abyssal: "Abyssal",
 					celestial: "Celestial",
@@ -61,6 +63,7 @@ export function language() {
 
 			CONFIG.DND5E.languages.other = {
 				label: "Other Languages",
+				selectable: false,
 				children: {
 					aarakocra: "Aarakocra",
 					gith: "Gith",

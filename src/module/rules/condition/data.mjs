@@ -55,14 +55,18 @@ const CONDITION_DEFS = [
 		id: "blinded",
 		reference: RULES_REF("SXTqmewRrCwPS8yW"),
 		changes: [
-			{ key: "flags.midi-qol.disadvantage.attack.all", mode: 5, value: "!Boolean(canSense)" },
-			{ key: "system.abilities.dex.save.roll.mode", mode: 5, value: "-1" },
+			{
+				key: "flags.midi-qol.disadvantage.attack.all",
+				type: "override",
+				value: "!Boolean(canSense)",
+			},
+			{ key: "system.abilities.dex.save.roll.mode", type: "add", value: "-1" },
 			{
 				key: "flags.midi-qol.grants.advantage.attack.all",
-				mode: 5,
+				type: "override",
 				value: "!Boolean(target?.canSense)",
 			},
-			{ key: "flags.midi-qol.noOpportunityAttack", mode: 5, value: "1" },
+			{ key: "flags.midi-qol.noOpportunityAttack", type: "override", value: "1" },
 		],
 	},
 	{
@@ -78,20 +82,26 @@ const CONDITION_DEFS = [
 		changes: [
 			{
 				key: "flags.midi-qol.OverTime",
-				mode: 2,
+				type: "add",
 				value: "turn=start, label=Confused Effect, macro=Compendium.elkan5e.elkan5e-macros.Macro.HW9jG0cdn6BmhzyE",
 			},
 		],
 	},
-	{ id: "cursed", reference: RULES_REF("Vpwu9GQC6HVNZFze"), _id: "dnd5ecursed00000" },
+	{
+		id: "cursed",
+		// Curses are documented in the Spellcasting journal, not Conditions.
+		reference:
+			"Compendium.elkan5e.elkan5e-rules.JournalEntry.sxKTtNPUrcDvMDFj.JournalEntryPage.Vpwu9GQC6HVNZFze",
+		_id: "dnd5ecursed00000",
+	},
 	{ id: "dazed", reference: RULES_REF("0BYyVwipnS55gVFq"), _id: "dnd5edazed000000" },
 	{
 		_id: "dnd5edeafened000",
 		id: "deafened",
 		reference: RULES_REF("AHgIwuNdpp0wKF2y"),
-		changes: [{ key: "system.abilities.dex.save.roll.mode", mode: 5, value: "-1" }],
+		changes: [{ key: "system.abilities.dex.save.roll.mode", type: "add", value: "-1" }],
 	},
-	{ id: "diseased", reference: RULES_REF("diseasedRule"), _id: "dnd5ediseased000" },
+	{ id: "diseased", reference: RULES_REF("C1uE5H2DfghUGEID"), _id: "dnd5ediseased000" },
 	{ id: "drained", reference: RULES_REF("ZnhMIMgPZv1QDxzZ"), _id: "dnd5edrained0000" },
 	{
 		id: "exhaustion",
@@ -104,8 +114,8 @@ const CONDITION_DEFS = [
 		id: "frightened",
 		reference: RULES_REF("ruwpm6lorwoPJsmt"),
 		changes: [
-			{ key: "flags.midi-qol.disadvantage.attack.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.disadvantage.ability.check.all", mode: 5, value: "1" },
+			{ key: "system.rolls.attack.mode", type: "add", value: "-1" },
+			{ key: "system.rolls.ability.check.mode", type: "add", value: "-1" },
 		],
 	},
 	{ id: "goaded", reference: RULES_REF("IVZ318d1P8WBcDxN"), _id: "dnd5egoaded00000" },
@@ -115,9 +125,9 @@ const CONDITION_DEFS = [
 		id: "hasted",
 		reference: RULES_REF("8dnyv0szJi7dCz74"),
 		changes: [
-			{ key: "system.attributes.ac.bonus", mode: 2, value: "+2" },
-			{ key: "system.abilities.dex.bonuses.save", mode: 2, value: "+2" },
-			{ key: "system.attributes.movement.multiplier", mode: 1, value: "2" },
+			{ key: "system.attributes.ac.bonus", type: "add", value: "+2" },
+			{ key: "system.abilities.dex.bonuses.save", type: "add", value: "+2" },
+			{ key: "system.attributes.movement.multiplier", type: "multiply", value: "2" },
 		],
 	},
 	{
@@ -125,14 +135,14 @@ const CONDITION_DEFS = [
 		id: "incapacitated",
 		reference: RULES_REF("PXI4uoXj7x6IsDXt"),
 		changes: [
-			{ key: "flags.midi-qol.noActions", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.noBonusActions", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.noReactions", mode: 5, value: "1" },
-			{ key: "system.attributes.movement.multiplier", mode: 1, value: "0" },
-			{ key: "flags.midi-qol.fail.ability.save.str", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.fail.ability.save.dex", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.fail.ability.check.str", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.fail.ability.check.dex", mode: 5, value: "1" },
+			{ key: "flags.midi-qol.noActions", type: "override", value: "1" },
+			{ key: "flags.midi-qol.noBonusActions", type: "override", value: "1" },
+			{ key: "flags.midi-qol.noReactions", type: "override", value: "1" },
+			{ key: "system.attributes.movement.multiplier", type: "multiply", value: "0" },
+			{ key: "flags.midi-qol.fail.ability.save.str", type: "override", value: "1" },
+			{ key: "flags.midi-qol.fail.ability.save.dex", type: "override", value: "1" },
+			{ key: "flags.midi-qol.fail.ability.check.str", type: "override", value: "1" },
+			{ key: "flags.midi-qol.fail.ability.check.dex", type: "override", value: "1" },
 		],
 	},
 	{
@@ -142,16 +152,20 @@ const CONDITION_DEFS = [
 		changes: [
 			{
 				key: "flags.midi-qol.advantage.attack.all",
-				mode: 5,
+				type: "override",
 				value: "!Boolean(target?.canSee)",
 			},
 			{
 				key: "flags.midi-qol.grants.disadvantage.attack.all",
-				mode: 5,
+				type: "override",
 				value: "!Boolean(canSee)",
 			},
-			{ key: "system.skills.ste.roll.mode", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.noOpportunityAttack", mode: 5, value: "!Boolean(canSee)" },
+			{ key: "system.skills.ste.roll.mode", type: "add", value: "1" },
+			{
+				key: "flags.midi-qol.noOpportunityAttack",
+				type: "override",
+				value: "!Boolean(canSee)",
+			},
 		],
 	},
 	{
@@ -159,9 +173,9 @@ const CONDITION_DEFS = [
 		id: "paralyzed",
 		reference: RULES_REF("w5RoCYZIujGYuiYt"),
 		changes: [
-			{ key: "flags.midi-qol.grants.advantage.attack.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.grants.critical.mwak", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.grants.critical.msak", mode: 5, value: "1" },
+			{ key: "flags.midi-qol.grants.advantage.attack.all", type: "override", value: "1" },
+			{ key: "flags.midi-qol.grants.critical.mwak", type: "override", value: "1" },
+			{ key: "flags.midi-qol.grants.critical.msak", type: "override", value: "1" },
 		],
 	},
 	{
@@ -169,12 +183,12 @@ const CONDITION_DEFS = [
 		id: "petrified",
 		reference: RULES_REF("n0BX8pLecgm7E3uH"),
 		changes: [
-			{ key: "flags.midi-qol.grants.advantage.attack.all", mode: 5, value: "1" },
-			{ key: "system.traits.dr.all", mode: 0, value: "physical" },
-			{ key: "system.traits.dr.all", mode: 0, value: "magical" },
-			{ key: "system.traits.di.value", mode: 2, value: "poison" },
-			{ key: "system.traits.ci.value", mode: 2, value: "poisoned" },
-			{ key: "system.traits.ci.value", mode: 2, value: "diseased" },
+			{ key: "flags.midi-qol.grants.advantage.attack.all", type: "override", value: "1" },
+			{ key: "system.traits.dr.all", type: "custom", value: "physical" },
+			{ key: "system.traits.dr.all", type: "custom", value: "magical" },
+			{ key: "system.traits.di.value", type: "add", value: "poison" },
+			{ key: "system.traits.ci.value", type: "add", value: "poisoned" },
+			{ key: "system.traits.ci.value", type: "add", value: "diseased" },
 		],
 	},
 	{
@@ -182,8 +196,8 @@ const CONDITION_DEFS = [
 		id: "poisoned",
 		reference: RULES_REF("fzEf89TZ1WN90bFv"),
 		changes: [
-			{ key: "flags.midi-qol.disadvantage.attack.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.disadvantage.ability.check.all", mode: 5, value: "1" },
+			{ key: "system.rolls.attack.mode", type: "add", value: "-1" },
+			{ key: "system.rolls.ability.check.mode", type: "add", value: "-1" },
 		],
 	},
 	{
@@ -191,11 +205,11 @@ const CONDITION_DEFS = [
 		id: "prone",
 		reference: RULES_REF("y8L5Uq1jMVDsQjaS"),
 		changes: [
-			{ key: "flags.midi-qol.disadvantage.attack.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.grants.advantage.attack.mwak", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.grants.advantage.attack.msak", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.grants.disadvantage.attack.rwak", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.grants.disadvantage.attack.rsak", mode: 5, value: "1" },
+			{ key: "system.rolls.attack.mode", type: "add", value: "-1" },
+			{ key: "flags.midi-qol.grants.advantage.attack.mwak", type: "override", value: "1" },
+			{ key: "flags.midi-qol.grants.advantage.attack.msak", type: "override", value: "1" },
+			{ key: "flags.midi-qol.grants.disadvantage.attack.rwak", type: "override", value: "1" },
+			{ key: "flags.midi-qol.grants.disadvantage.attack.rsak", type: "override", value: "1" },
 		],
 	},
 	{
@@ -203,27 +217,31 @@ const CONDITION_DEFS = [
 		id: "restrained",
 		reference: RULES_REF("DiWd3u4HCD7JEw8V"),
 		changes: [
-			{ key: "flags.midi-qol.disadvantage.attack.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.grants.advantage.attack.all", mode: 5, value: "1" },
-			{ key: "system.abilities.dex.save.roll.mode", mode: 5, value: "-1" },
-			{ key: "flags.midi-qol.fail.spell.somatic", mode: 5, value: "1" },
+			{ key: "system.rolls.attack.mode", type: "add", value: "-1" },
+			{ key: "flags.midi-qol.grants.advantage.attack.all", type: "override", value: "1" },
+			{ key: "system.abilities.dex.save.roll.mode", type: "add", value: "-1" },
+			{ key: "flags.midi-qol.fail.spell.somatic", type: "override", value: "1" },
 		],
 	},
 	{
 		_id: "dnd5esilenced000",
 		id: "silenced",
 		reference: RULES_REF("F51xrE7Mj8VeM3b8"),
-		changes: [{ key: "flags.midi-qol.fail.spell.verbal", mode: 5, value: "1" }],
+		changes: [{ key: "flags.midi-qol.fail.spell.verbal", type: "override", value: "1" }],
 	},
 	{
 		_id: "dnd5esiphoned000",
 		id: "siphoned",
 		reference: RULES_REF("SthB8javJuFySiBg"),
 		changes: [
-			{ key: "flags.midi-qol.grants.advantage.ability.save.all", mode: 5, value: "1" },
+			{
+				key: "flags.midi-qol.grants.advantage.ability.save.all",
+				type: "override",
+				value: "1",
+			},
 			{
 				key: "flags.midi-qol.onUseMacroName",
-				mode: 0,
+				type: "custom",
 				value: "Compendium.elkan5e.elkan5e-macros.Macro.4X80aHI9r8I9aSKG, preDamageApplication",
 			},
 		],
@@ -233,26 +251,29 @@ const CONDITION_DEFS = [
 		id: "slowed",
 		reference: RULES_REF("kkbgHooTzrtu4q8T"),
 		changes: [
-			{ key: "flags.midi-qol.disadvantage.attack.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.noReactions", mode: 5, value: "1" },
-			{ key: "system.attributes.ac.bonus", mode: 2, value: "-2" },
-			{ key: "system.abilities.dex.bonuses.save", mode: 2, value: "-2" },
+			{ key: "system.rolls.attack.mode", type: "add", value: "-1" },
+			{ key: "flags.midi-qol.noReactions", type: "override", value: "1" },
+			{ key: "system.attributes.ac.bonus", type: "add", value: "-2" },
+			{ key: "system.abilities.dex.bonuses.save", type: "add", value: "-2" },
+			{ key: "system.attributes.movement.multiplier", type: "multiply", value: "0.5" },
 		],
 	},
 	{
 		_id: "dnd5estunned0000",
 		id: "stunned",
 		reference: RULES_REF("JV8kbMo0p5S1YXUR"),
-		changes: [{ key: "flags.midi-qol.grants.advantage.attack.all", mode: 5, value: "1" }],
+		changes: [
+			{ key: "flags.midi-qol.grants.advantage.attack.all", type: "override", value: "1" },
+		],
 	},
 	{
 		_id: "dnd5esurprised00",
 		id: "surprised",
 		reference: RULES_REF("QOZeW0m8RCdVg6UE"),
 		changes: [
-			{ key: "flags.midi-qol.noReactions", mode: 5, value: "1" },
-			{ key: "system.abilities.dex.save.roll.mode", mode: 5, value: "-1" },
-			{ key: "system.attributes.init.bonus", mode: 2, value: "-20" },
+			{ key: "flags.midi-qol.noReactions", type: "override", value: "1" },
+			{ key: "system.abilities.dex.save.roll.mode", type: "add", value: "-1" },
+			{ key: "system.attributes.init.roll.bonus", type: "add", value: "-20" },
 		],
 		flags: {
 			dae: {
@@ -269,8 +290,8 @@ const CONDITION_DEFS = [
 		id: "unconscious",
 		reference: RULES_REF("ZwhWWUPJvpFCz8sK"),
 		changes: [
-			{ key: "flags.midi-qol.grants.advantage.attack.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.noReactions", mode: 5, value: "1" },
+			{ key: "flags.midi-qol.grants.advantage.attack.all", type: "override", value: "1" },
+			{ key: "flags.midi-qol.noReactions", type: "override", value: "1" },
 		],
 	},
 	{
@@ -278,22 +299,16 @@ const CONDITION_DEFS = [
 		id: "weakened",
 		reference: RULES_REF("iJT3cWvyTNBv1L5h"),
 		changes: [
-			{ key: "system.abilities.dex.check.roll.mode", mode: 5, value: "-1" },
-			{ key: "system.abilities.dex.save.roll.mode", mode: 5, value: "-1" },
-			{ key: "system.abilities.str.check.roll.mode", mode: 5, value: "-1" },
-			{ key: "system.abilities.str.save.roll.mode", mode: 5, value: "-1" },
+			{ key: "system.abilities.dex.check.roll.mode", type: "add", value: "-1" },
+			{ key: "system.abilities.dex.save.roll.mode", type: "add", value: "-1" },
+			{ key: "system.abilities.str.check.roll.mode", type: "add", value: "-1" },
+			{ key: "system.abilities.str.save.roll.mode", type: "add", value: "-1" },
 			{
 				key: "flags.midi-qol.onUseMacroName",
-				mode: 0,
+				type: "custom",
 				value: "Compendium.elkan5e.elkan5e-macros.Macro.1NtnoPvTQj1IEHCa, preDamageApplication",
 			},
 		],
-	},
-	{
-		id: "concentrating",
-		reference: RULES_REF("4ZOHN6tGvj54J6Kv"),
-		special: "CONCENTRATING",
-		_id: "dnd5econcentrati",
 	},
 ];
 
@@ -316,12 +331,12 @@ const STATUS_DEFS = [
 		changes: [
 			{
 				key: "flags.midi-qol.OverTime",
-				mode: 2,
+				type: "add",
 				value: "turn=start,\nlabel=burning,\nactionSave=dialog,\nmacro=Compendium.elkan5e.elkan5e-macros.Macro.g6P9Rkg63Rz74KNe",
 			},
 			{
 				key: "flags.elkan5e.burning",
-				mode: 0,
+				type: "custom",
 				value: "1d8",
 			},
 		],
@@ -376,7 +391,7 @@ const STATUS_DEFS = [
 		changes: [
 			{
 				key: "flags.midi-qol.OverTime",
-				mode: 2,
+				type: "add",
 				value: "turn=end,label=Suffocating,macro=Compendium.elkan5e.elkan5e-macros.Macro.H5g2Kf9b8VqL4tYc",
 			},
 		],
@@ -414,7 +429,7 @@ const STATUS_DEFS = [
 		icon: "modules/elkan5e/icons/conditions/cover-full.svg",
 		order: 4,
 		exclusiveGroup: "cover",
-		changes: [{ key: "flags.midi-qol.neverTarget", mode: 2, value: "10" }],
+		changes: [{ key: "flags.midi-qol.neverTarget", type: "add", value: "10" }],
 	},
 	{
 		_id: "dnd5eobscuredlig",
@@ -423,7 +438,7 @@ const STATUS_DEFS = [
 		reference: RULES_REF("Jq7kMUlHodqSbYDD"),
 		exclusiveGroup: "obscured",
 		order: 5,
-		changes: [{ key: "system.skills.ste.roll.mode", mode: 5, value: "1" }],
+		changes: [{ key: "system.skills.ste.roll.mode", type: "add", value: "1" }],
 	},
 	{
 		_id: "dnd5eobscuredhea",
@@ -433,21 +448,21 @@ const STATUS_DEFS = [
 		exclusiveGroup: "obscured",
 		order: 6,
 		changes: [
-			{ key: "flags.midi-qol.advantage.attack.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.advantage.ability.check.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.advantage.ability.save.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.advantage.skill.all", mode: 5, value: "1" },
+			{ key: "system.rolls.attack.mode", type: "add", value: "1" },
+			{ key: "system.rolls.ability.check.mode", type: "add", value: "1" },
+			{ key: "system.rolls.ability.save.mode", type: "add", value: "1" },
+			{ key: "system.rolls.ability.skill.mode", type: "add", value: "1" },
 		],
 	},
 	{
 		id: "dodging",
 		_id: "dnd5edodging0000",
 		pseudo: true,
+		reference:
+			"Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.2Fxm6ATuDUyDIrt7",
+		// dnd5e's dexteritySaveAdvantage condition effect gives the Dexterity save advantage.
 		changes: [
-			{ key: "flags.midi-qol.disadvantage.attack.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.disadvantage.ability.check.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.disadvantage.ability.save.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.disadvantage.skill.all", mode: 5, value: "1" },
+			{ key: "flags.midi-qol.grants.disadvantage.attack.all", type: "override", value: "1" },
 		],
 		flags: {
 			dae: {
@@ -463,22 +478,33 @@ const STATUS_DEFS = [
 		id: "concentrating",
 		_id: "dnd5econcentrati",
 		pseudo: true,
+		reference: RULES_REF("4ZOHN6tGvj54J6Kv"),
+		special: "CONCENTRATING",
 		icon: "modules/elkan5e/icons/conditions/concentrating.svg",
 		flags: {
 			core: { statusId: "concentrating" },
 		},
 	},
 	{ id: "dead", pseudo: true, special: "DEFEATED", _id: "dnd5edead0000000" },
-	{ id: "hiding", pseudo: true, _id: "dnd5ehiding00000" },
+	{
+		id: "hiding",
+		pseudo: true,
+		_id: "dnd5ehiding00000",
+		reference:
+			"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.plHuoNdS0j3umPNS",
+	},
 	{
 		id: "squeezing",
 		_id: "dnd5esqueezing00",
 		pseudo: true,
+		reference:
+			"Compendium.elkan5e.elkan5e-rules.JournalEntry.eebpST0RhXxhyCZO.JournalEntryPage.wKtOwagDAiNfVoPS",
 		changes: [
-			{ key: "flags.midi-qol.disadvantage.attack.all", mode: 5, value: "1" },
-			{ key: "system.abilities.dex.save.roll.mode", mode: 5, value: "-1" },
-			{ key: "flags.midi-qol.grants.advantage.attack.all", mode: 5, value: "1" },
-			{ key: "system.attributes.movement.multiplier", mode: 1, value: "0.5" },
+			{ key: "system.rolls.attack.mode", type: "add", value: "-1" },
+			{ key: "system.abilities.dex.save.roll.mode", type: "add", value: "-1" },
+			{ key: "flags.midi-qol.grants.advantage.attack.all", type: "override", value: "1" },
+			{ key: "system.attributes.movement.multiplier", type: "multiply", value: "0.5" },
+			{ key: "system.traits.size", type: "add", value: "-1" },
 		],
 	},
 	{
@@ -489,10 +515,10 @@ const STATUS_DEFS = [
 		exclusiveGroup: "elkan-advantage-mode",
 		order: 9998,
 		changes: [
-			{ key: "flags.midi-qol.advantage.attack.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.advantage.ability.check.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.advantage.ability.save.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.advantage.skill.all", mode: 5, value: "1" },
+			{ key: "system.rolls.attack.mode", type: "add", value: "1" },
+			{ key: "system.rolls.ability.check.mode", type: "add", value: "1" },
+			{ key: "system.rolls.ability.save.mode", type: "add", value: "1" },
+			{ key: "system.rolls.ability.skill.mode", type: "add", value: "1" },
 		],
 		flags: { core: { statusId: "advantage" } },
 	},
@@ -504,10 +530,10 @@ const STATUS_DEFS = [
 		exclusiveGroup: "elkan-advantage-mode",
 		order: 9999,
 		changes: [
-			{ key: "flags.midi-qol.disadvantage.attack.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.disadvantage.ability.check.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.disadvantage.ability.save.all", mode: 5, value: "1" },
-			{ key: "flags.midi-qol.disadvantage.skill.all", mode: 5, value: "1" },
+			{ key: "system.rolls.attack.mode", type: "add", value: "-1" },
+			{ key: "system.rolls.ability.check.mode", type: "add", value: "-1" },
+			{ key: "system.rolls.ability.save.mode", type: "add", value: "-1" },
+			{ key: "system.rolls.ability.skill.mode", type: "add", value: "-1" },
 		],
 		flags: { core: { statusId: "disadvantage" } },
 	},

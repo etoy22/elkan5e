@@ -6,7 +6,11 @@ export function weapons() {
 	console.log("Elkan 5e  |  Initializing Weapons");
 	// Weapon Properties
 	const NEW_PROPERTIES = {
-		coldIron: { label: "Cold Iron", isPhysical: true },
+		coldIron: {
+			label: "Cold Iron",
+			icon: "modules/elkan5e/icons/properties/cold-iron.svg",
+			isPhysical: true,
+		},
 		conc: { label: "Concussive" },
 		mou: { label: "Mounted" },
 		unw: { label: "Unwieldy" },
@@ -58,15 +62,16 @@ export function weapons() {
 		{ key: "sickle", id: "STRitF2wexdf7eGM" },
 		{ key: "sling", id: "Ev7JyidZMB8BA9Cn" },
 		{ key: "spear", id: "l6tAULuFVbSNewP4" },
-		{ key: "unarmed", id: "pRDNsHpNLLk1Qq58" },
+		// Unarmed Strike lives in the class features compendium, not equipment.
+		{ key: "unarmed", id: "pRDNsHpNLLk1Qq58", pack: "elkan5e-class-features" },
 		{ key: "warhammer", id: "3geQ0izotY1xNo8c" },
 		{ key: "whip", id: "GdgYGzD0cqVlYguz" },
 		{ key: "pistol", id: "O7abmlrF4raTjnkr" },
 		{ key: "musket", id: "IUIwCZtPbwMwB0b1" },
 	];
-	WEAPON_IDS.forEach(({ key, id }) => {
+	WEAPON_IDS.forEach(({ key, id, pack = "elkan5e-equipment" }) => {
 		try {
-			CONFIG.DND5E.weaponIds[key] = `Compendium.elkan5e.elkan5e-equipment.Item.${id}`;
+			CONFIG.DND5E.weaponIds[key] = `Compendium.elkan5e.${pack}.Item.${id}`;
 		} catch (e) {
 			console.warn(`Elkan 5e | Failed to assign weapon ID for '${key}':`, e);
 		}

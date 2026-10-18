@@ -28,7 +28,6 @@ export function armor() {
 		small: "elkan5e.elkan5e-equipment.OE836KUoJiAsG0IA",
 	});
 
-
 	CONFIG.DND5E.armorClasses["elkanBarbariansDefenseArmored"] = {
 		label: "Barbarian's Defense (Armored)",
 		formula:

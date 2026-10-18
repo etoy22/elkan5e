@@ -6,6 +6,7 @@ import { brutalFighting } from "../../classes/rogue.mjs";
 const DialogV2 = foundry.applications.api.DialogV2;
 const imgForCondition = (key) => `modules/elkan5e/icons/conditions/${key}.svg`;
 const DEAD_PROMPT_FLAG = "grappleDeadPrompted";
+const DEAD_PROMPT_PENDING = new Set();
 const PUSH_TRUE_VALUES = new Set(["1", "true", "yes", "on"]);
 const normalizeStatus = (value) =>
 	String(value ?? "")
@@ -53,7 +54,9 @@ const isTruthy = (value) => {
 };
 
 const hasTruthyChange = (effect, key) =>
-	(effect?.changes ?? []).some((change) => change?.key === key && isTruthy(change?.value));
+	(effect?.system?.changes ?? effect?.changes ?? []).some(
+		(change) => change?.key === key && isTruthy(change?.value),
+	);
 
 const isPushedEffect = (effect, changes = {}) => {
 	if (!effect) return false;
@@ -189,33 +192,34 @@ const promptDeadUngrapple = async (deadActor, links) => {
 				.filter(Boolean),
 		),
 	];
-	return new Promise((resolve) => {
-		const partnerList = partners
-			.map((name) => `<li>${foundry.utils.escapeHTML(name)}</li>`)
-			.join("");
-		new DialogV2({
-			window: { title: t("elkan5e.grapple.deadDialog.title") },
-			content: `
-				<form>
-					<p>${t("elkan5e.grapple.deadDialog.prompt", { name: deadActor.name })}</p>
-					${partners.length ? `<p>${t("elkan5e.grapple.deadDialog.partners")}</p><ul>${partnerList}</ul>` : ""}
-				</form>
-			`,
-			buttons: [
-				{
-					action: "release",
-					label: t("elkan5e.grapple.deadDialog.release"),
-					callback: () => resolve(true),
-				},
-				{
-					action: "keep",
-					label: t("elkan5e.grapple.deadDialog.keep"),
-					callback: () => resolve(false),
-				},
-			],
-			default: "release",
-		}).render(true);
+	const partnerList = partners
+		.map((name) => `<li>${foundry.utils.escapeHTML(name)}</li>`)
+		.join("");
+	// DialogV2.wait resolves null when closed via the X, instead of hanging forever.
+	const result = await DialogV2.wait({
+		window: { title: t("elkan5e.grapple.deadDialog.title") },
+		content: `
+			<form>
+				<p>${t("elkan5e.grapple.deadDialog.prompt", { name: deadActor.name })}</p>
+				${partners.length ? `<p>${t("elkan5e.grapple.deadDialog.partners")}</p><ul>${partnerList}</ul>` : ""}
+			</form>
+		`,
+		buttons: [
+			{
+				action: "release",
+				label: t("elkan5e.grapple.deadDialog.release"),
+				default: true,
+				callback: () => true,
+			},
+			{
+				action: "keep",
+				label: t("elkan5e.grapple.deadDialog.keep"),
+				callback: () => false,
+			},
+		],
+		rejectClose: false,
 	});
+	return result === true;
 };
 
 /**
@@ -250,47 +254,46 @@ const getActiveGrapples = (grapplerActor) => {
 const chooseGrapplesToRelease = async (grapplerActor, active) => {
 	if (!active?.length) return [];
 	if (!grapplerActor?.isOwner && !game.user?.isGM) return [];
-	return new Promise((resolve) => {
-		const options = active
-			.map(
-				(g, idx) => `
-					<div class="form-group">
-						<label>
-							<input type="checkbox" name="release" value="${idx}">
-							${g.actor?.name ?? t("elkan5e.grapple.releaseDialog.target", { index: idx + 1 })}
-						</label>
-					</div>
-				`,
-			)
-			.join("");
-		new DialogV2({
-			window: { title: t("elkan5e.grapple.releaseDialog.title") },
-			content: `
-				<form>
-					<p>${t("elkan5e.grapple.releaseDialog.prompt")}</p>
-					${options}
-				</form>
+	const options = active
+		.map(
+			(g, idx) => `
+				<div class="form-group">
+					<label>
+						<input type="checkbox" name="release" value="${idx}">
+						${g.actor?.name ?? t("elkan5e.grapple.releaseDialog.target", { index: idx + 1 })}
+					</label>
+				</div>
 			`,
-			buttons: [
-				{
-					action: "ok",
-					label: t("elkan5e.grapple.releaseDialog.releaseSelected"),
-					callback: (_event, button) => {
-						const selected = Array.from(
-							button.form.querySelectorAll("input[name='release']:checked"),
-						).map((el) => Number(el.value));
-						resolve(selected.filter((v) => Number.isFinite(v)));
-					},
-				},
-				{
-					action: "skip",
-					label: t("elkan5e.grapple.releaseDialog.keepAll"),
-					callback: () => resolve([]),
-				},
-			],
-			default: "skip",
-		}).render(true);
+		)
+		.join("");
+	// DialogV2.wait resolves null when closed via the X, instead of hanging the grapple.
+	const result = await DialogV2.wait({
+		window: { title: t("elkan5e.grapple.releaseDialog.title") },
+		content: `
+			<form>
+				<p>${t("elkan5e.grapple.releaseDialog.prompt")}</p>
+				${options}
+			</form>
+		`,
+		buttons: [
+			{
+				action: "ok",
+				label: t("elkan5e.grapple.releaseDialog.releaseSelected"),
+				callback: (_event, button) =>
+					Array.from(button.form.querySelectorAll("input[name='release']:checked"))
+						.map((el) => Number(el.value))
+						.filter((v) => Number.isFinite(v)),
+			},
+			{
+				action: "skip",
+				label: t("elkan5e.grapple.releaseDialog.keepAll"),
+				default: true,
+				callback: () => [],
+			},
+		],
+		rejectClose: false,
 	});
+	return Array.isArray(result) ? result : [];
 };
 
 /**
@@ -305,14 +308,14 @@ const getGrappleRange = (workflow) => {
 };
 
 const mergeUniqueChanges = (existing = [], incoming = []) => {
-	const sig = (c) => `${c?.key}|${c?.mode}|${c?.value}|${c?.priority ?? ""}`;
+	const sig = (c) => `${c?.key}|${c?.type}|${c?.value}|${c?.priority ?? ""}`;
 	const map = new Map();
 	for (const c of existing || []) map.set(sig(c), c);
 	for (const c of incoming || []) map.set(sig(c), c);
 	return [...map.values()];
 };
 
-const changeSignature = (c) => `${c?.key}|${c?.mode}|${c?.value}|${c?.priority ?? ""}`;
+const changeSignature = (c) => `${c?.key}|${c?.type}|${c?.value}|${c?.priority ?? ""}`;
 
 const getTokenRect = (tokenDoc, x = tokenDoc.x, y = tokenDoc.y) => {
 	const gridSize = canvas.grid?.size ?? 1;
@@ -402,7 +405,7 @@ const applyElkanGrapple = async ({
 	statuses.add("grappled");
 	const restrainedBaseChanges = getConditionChanges("restrained");
 	const restrainedSigs = new Set(restrainedBaseChanges.map(changeSignature));
-	let changes = foundry.utils.duplicate(current?.changes ?? []).filter((change) => {
+	let changes = foundry.utils.duplicate(current?.system?.changes ?? []).filter((change) => {
 		if (change?.key === "system.attributes.movement.multiplier") return false;
 		if (
 			change?.key === "flags.midi-qol.disadvantage.attack.all" &&
@@ -422,7 +425,7 @@ const applyElkanGrapple = async ({
 		addChanges([
 			{
 				key: "system.attributes.movement.multiplier",
-				mode: 1,
+				type: "multiply",
 				value: "0",
 				priority: 60,
 			},
@@ -431,7 +434,7 @@ const applyElkanGrapple = async ({
 		addChanges([
 			{
 				key: "system.attributes.movement.multiplier",
-				mode: 1,
+				type: "multiply",
 				value: "0.5",
 				priority: 60,
 			},
@@ -454,7 +457,7 @@ const applyElkanGrapple = async ({
 					changes: [
 						{
 							key: "system.attributes.movement.multiplier",
-							mode: 1,
+							type: "multiply",
 							value: "0",
 							priority: 60,
 						},
@@ -474,7 +477,7 @@ const applyElkanGrapple = async ({
 			addChanges([
 				{
 					key: "flags.midi-qol.disadvantage.attack.all",
-					mode: 5,
+					type: "override",
 					value: `target?.actor?.uuid === "${grappler.uuid}"`,
 					priority: 50,
 				},
@@ -490,7 +493,7 @@ const applyElkanGrapple = async ({
 					changes: [
 						{
 							key: "flags.midi-qol.advantage.attack.all",
-							mode: 5,
+							type: "override",
 							value: `target?.actor?.uuid === "${targetActor.uuid}"`,
 							priority: 50,
 						},
@@ -522,7 +525,7 @@ const applyElkanGrapple = async ({
 			current?.name ??
 			game.i18n.localize("elkan5e.conditions.grappled") ??
 			t("elkan5e.grapple.grappled"),
-		icon: current?.icon ?? icon,
+		icon: current?.img ?? icon,
 		origin: originOverride ?? grappler.uuid,
 		statuses: [...statuses],
 	});
@@ -547,7 +550,7 @@ const applyElkanGrapple = async ({
  * @returns {Promise<void>}
  */
 export async function handleGrapplerMove(tokenDoc, changes) {
-	if (!game.user?.isGM) return;
+	if (!game.users.activeGM?.isSelf) return;
 	if (!canvas?.tokens) return;
 	if (changes?.x == null && changes?.y == null) return;
 	if (DRAG_IGNORE.has(tokenDoc.id)) return;
@@ -739,7 +742,7 @@ export async function endAllGrapplesForActor(actor) {
  * @returns {Promise<void>}
  */
 export async function handlePushedEffect(effect, changes = {}) {
-	if (!game.user?.isGM) return;
+	if (!game.users.activeGM?.isSelf) return;
 	if (!effect?.parent) return;
 	const actor = effect.parent;
 	if (actor.documentName !== "Actor") return;
@@ -754,7 +757,7 @@ export async function handlePushedEffect(effect, changes = {}) {
  * @returns {Promise<void>}
  */
 export async function handleDeadGrapplePrompt(actor) {
-	if (!game.user?.isGM || !actor) return;
+	if (!game.users.activeGM?.isSelf || !actor) return;
 
 	const dead = isActorDead(actor);
 	const prompted = Boolean(actor.getFlag("elkan5e", DEAD_PROMPT_FLAG));
@@ -763,24 +766,31 @@ export async function handleDeadGrapplePrompt(actor) {
 		if (prompted) await actor.unsetFlag("elkan5e", DEAD_PROMPT_FLAG);
 		return;
 	}
-	if (prompted) return;
+	// The flag is only set after the dialog closes, so guard against further actor
+	// updates (e.g. the HP change and the dead status) opening a second dialog.
+	if (prompted || DEAD_PROMPT_PENDING.has(actor.uuid)) return;
 
 	const links = await getGrappleLinks(actor);
 	if (!links.length) return;
 
-	const shouldRelease = await promptDeadUngrapple(actor, links);
-	if (shouldRelease) {
-		for (const { effect, grappler, grappled } of links) {
-			try {
-				if (!effect?.deleted) await effect.delete();
-				await removeClimberEffect(grappler, grappled);
-			} catch (error) {
-				console.warn("Elkan 5e | Failed to clear dead-creature grapple", error);
+	DEAD_PROMPT_PENDING.add(actor.uuid);
+	try {
+		const shouldRelease = await promptDeadUngrapple(actor, links);
+		if (shouldRelease) {
+			for (const { effect, grappler, grappled } of links) {
+				try {
+					if (!effect?.deleted) await effect.delete();
+					await removeClimberEffect(grappler, grappled);
+				} catch (error) {
+					console.warn("Elkan 5e | Failed to clear dead-creature grapple", error);
+				}
 			}
 		}
-	}
 
-	await actor.setFlag("elkan5e", DEAD_PROMPT_FLAG, true);
+		await actor.setFlag("elkan5e", DEAD_PROMPT_FLAG, true);
+	} finally {
+		DEAD_PROMPT_PENDING.delete(actor.uuid);
+	}
 }
 
 /**
@@ -883,18 +893,6 @@ export async function grapple(workflow, acr = false, skipRoll = false) {
 
 		const grapplerAdv = grapplerSize > targetSize;
 		const targetAdv = targetSize > grapplerSize;
-
-		console.log("Elkan 5e | grapple contestedRoll", {
-			grappler: grappler.name,
-			target: targetActor.name,
-			grapplerSize,
-			targetSize,
-			sizeDiff,
-			grapplerAdv,
-			targetAdv,
-			sourceAbility: grapplerSkillKey,
-			targetAbility: targetSkill,
-		});
 
 		await MidiQOL.contestedRoll({
 			source: {

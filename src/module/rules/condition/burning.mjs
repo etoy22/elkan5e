@@ -148,7 +148,8 @@ function buildQuenchBurningItem() {
  * @returns {Promise<void>} Completion.
  */
 export async function handleBurningCreate(effect) {
-	if (!game.user?.isGM) return;
+	// Only the active GM, so multiple connected GMs don't each add a Quench Burning item.
+	if (!game.users.activeGM?.isSelf) return;
 	if (!isBurningEffect(effect)) return;
 
 	const actor = effect.parent;
@@ -172,7 +173,7 @@ export async function handleBurningCreate(effect) {
  * @returns {Promise<void>} Completion.
  */
 export async function handleBurningDelete(effect) {
-	if (!game.user?.isGM) return;
+	if (!game.users.activeGM?.isSelf) return;
 	if (!isBurningEffect(effect)) return;
 
 	const actor = effect.parent;

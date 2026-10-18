@@ -170,43 +170,45 @@ const chooseDirection = async (actor, title, directions) => {
 	const candidates = directions ?? [];
 	if (!candidates.length) return null;
 	if (!actor?.isOwner) return candidates[0];
-	return new Promise((resolve) => {
-		const options = candidates
-			.map(
-				(c, idx) => `
-					<label style="display:block; margin:0.25rem 0;">
-						<input type="radio" name="push-direction" value="${idx}" ${idx === 0 ? "checked" : ""}>
-						${c.label}
-					</label>
-				`,
-			)
-			.join("");
-		new DialogV2({
-			window: { title },
-			content: `
-				<form>
-					<div class="form-group">
-						<label style="display:block; margin-bottom:0.25rem;">${t("elkan5e.push.directionLabel")}</label>
-						<div id="push-direction">${options}</div>
-					</div>
-				</form>
+	const options = candidates
+		.map(
+			(c, idx) => `
+				<label style="display:block; margin:0.25rem 0;">
+					<input type="radio" name="push-direction" value="${idx}" ${idx === 0 ? "checked" : ""}>
+					${c.label}
+				</label>
 			`,
-			buttons: [
-				{
-					action: "ok",
-					label: t("elkan5e.push.dialogPush"),
-					callback: (_event, button) => {
-						const selected = button.form.querySelector(
-							'input[name="push-direction"]:checked',
-						);
-						const idx = Number(selected?.value ?? 0);
-						resolve(candidates[idx] ?? candidates[0]);
-					},
+		)
+		.join("");
+	// DialogV2.wait resolves null when closed via the X; fall back to the first direction
+	// so the push still resolves instead of hanging.
+	const result = await DialogV2.wait({
+		window: { title },
+		content: `
+			<form>
+				<div class="form-group">
+					<label style="display:block; margin-bottom:0.25rem;">${t("elkan5e.push.directionLabel")}</label>
+					<div id="push-direction">${options}</div>
+				</div>
+			</form>
+		`,
+		buttons: [
+			{
+				action: "ok",
+				label: t("elkan5e.push.dialogPush"),
+				default: true,
+				callback: (_event, button) => {
+					const selected = button.form.querySelector(
+						'input[name="push-direction"]:checked',
+					);
+					const idx = Number(selected?.value ?? 0);
+					return candidates[idx] ?? candidates[0];
 				},
-			],
-			default: "ok",
-		}).render(true);
+			},
+		],
+		rejectClose: false,
 	});
+	return result ?? candidates[0];
 };
 
 /**
@@ -221,7 +223,8 @@ const chooseDirection = async (actor, title, directions) => {
 const getFarthestValidPosition = (targetToken, sourcePoint, distance, dir, requireAway) => {
 	const stepCount = getStepCount(distance);
 	if (stepCount <= 0) return null;
-	const step = getGridStep(distance);
+	// One grid square per step; stepCount squares cover the full push distance.
+	const step = getGridStep(canvas.grid?.distance ?? 5);
 	const bounds = getSceneBounds();
 	const startDistance = measureRangeDistance(sourcePoint, targetToken.center);
 
@@ -369,18 +372,6 @@ export async function push(
 
 		const pusherAdv = pusherSize > targetSize;
 		const targetAdv = targetSize > pusherSize || pushResist;
-
-		console.log("Elkan 5e | push contestedRoll", {
-			pusher: pusher.name,
-			target: targetActor.name,
-			pusherSize,
-			targetSize,
-			pusherAdv,
-			targetAdv,
-			pushResist,
-			sourceAbility: pusherSkillKey,
-			targetAbility: targetSkill,
-		});
 
 		await MidiQOL.contestedRoll({
 			source: {
