@@ -11,9 +11,6 @@
 			"effects": [
 				{
 					"flags": {
-						"core": {
-							"statusId": "combat-utility-belt.poisoned"
-						},
 						"dae": {
 							"selfTarget": false,
 							"selfTargetAlways": false,
@@ -37,22 +34,24 @@
 					"transfer": false,
 					"name": "Poisoned",
 					"description": "",
-					"statuses": [],
+					"statuses": [
+						"poisoned"
+					],
 					"img": "modules/elkan5e/icons/conditions/poisoned.svg",
 					"type": "base",
 					"system": {
 						"changes": [
 							{
-								"key": "flags.midi-qol.disadvantage.attack.all",
-								"value": 1,
+								"key": "system.rolls.attack.mode",
+								"value": "-1",
 								"priority": 50,
-								"type": "override"
+								"type": "add"
 							},
 							{
-								"key": "flags.midi-qol.disadvantage.ability.check.all",
-								"value": 1,
+								"key": "system.rolls.ability.check.mode",
+								"value": "-1",
 								"priority": 50,
-								"type": "override"
+								"type": "add"
 							},
 							{
 								"key": "flags.midi-qol.OverTime",
@@ -539,7 +538,7 @@
 							"recovery": []
 						},
 						"damage": {
-							"onSave": "half",
+							"onSave": "none",
 							"parts": [
 								{
 									"number": 2,

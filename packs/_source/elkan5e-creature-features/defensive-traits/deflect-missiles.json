@@ -9,7 +9,6 @@
 		"midi-qol": {
 			"effectActivation": false,
 			"itemCondition": "",
-			"reactionCondition": "",
 			"otherCondition": "",
 			"effectCondition": "",
 			"rollAttackPerTarget": "default"
@@ -62,7 +61,7 @@
 				"_id": "dnd5eactivity000",
 				"type": "damage",
 				"activation": {
-					"type": "reactiondamage",
+					"type": "reaction",
 					"value": 1,
 					"condition": "",
 					"override": false
@@ -129,7 +128,7 @@
 							"types": [],
 							"custom": {
 								"enabled": true,
-								"formula": "1@scale.monk.die + @mod"
+								"formula": "10"
 							},
 							"scaling": {
 								"mode": "whole",
@@ -139,7 +138,7 @@
 						}
 					]
 				},
-				"useConditionText": "",
+				"useConditionText": "reaction === 'isHit' && item.actionType === 'rwak'",
 				"useConditionReason": "",
 				"effectConditionText": "",
 				"macroData": {
@@ -223,7 +222,7 @@
 				"_id": "dnd5eactivity300",
 				"type": "utility",
 				"activation": {
-					"type": "reactiondamage",
+					"type": "reaction",
 					"value": 1,
 					"condition": "",
 					"override": false
@@ -283,7 +282,7 @@
 					"prompt": false,
 					"visible": false
 				},
-				"useConditionText": "",
+				"useConditionText": "reaction === 'isHit' && item.actionType === 'rwak'",
 				"useConditionReason": "",
 				"effectConditionText": "",
 				"macroData": {

@@ -145,7 +145,7 @@
 					"system": {
 						"changes": [
 							{
-								"key": "system.bonuses.abilities.save",
+								"key": "system.rolls.ability.save.bonus",
 								"value": "+2",
 								"priority": 20,
 								"type": "add"
@@ -1401,16 +1401,16 @@
 					"system": {
 						"changes": [
 							{
-								"key": "flags.midi-qol.advantage.ability.save.wis",
-								"value": 1,
+								"key": "system.abilities.wis.save.roll.mode",
+								"value": "1",
 								"priority": 20,
-								"type": "override"
+								"type": "add"
 							},
 							{
-								"key": "flags.midi-qol.advantage.deathSave",
-								"value": 1,
+								"key": "system.attributes.death.roll.mode",
+								"value": "1",
 								"priority": 20,
-								"type": "override"
+								"type": "add"
 							},
 							{
 								"key": "flags.midi-qol.max.damage.heal",
@@ -1570,7 +1570,7 @@
 							"override": true,
 							"prompt": true,
 							"affects": {
-								"type": "self",
+								"type": "ally",
 								"special": ""
 							},
 							"template": {
@@ -1604,15 +1604,27 @@
 						},
 						"regionBehavior": {
 							"dispositionFilter": 1,
-							"rules": [
-								{
-									"trigger": "entry",
-									"action": "applyEffect",
-									"targetId": "RtkJJbNnHgYVRGhK"
-								}
-							],
+							"rules": [],
 							"enabled": true
-						}
+						},
+						"behaviors": [
+							{
+								"name": "",
+								"_id": "ry73w3Q5HnHfklOD",
+								"type": "applyActiveEffect",
+								"config": {
+									"effects": [
+										"Compendium.elkan5e.elkan5e-spells.Item.Y9ujzi4f01yflTyj.ActiveEffect.RtkJJbNnHgYVRGhK"
+									],
+									"sizes": [],
+									"types": []
+								},
+								"level": {
+									"min": null,
+									"max": null
+								}
+							}
+						]
 					}
 				},
 				"identifier": "beacon-of-hope"
@@ -1848,16 +1860,16 @@
 					"system": {
 						"changes": [
 							{
-								"key": "system.bonuses.abilities.save",
+								"key": "system.rolls.ability.save.bonus",
 								"value": "+1d4",
 								"priority": null,
 								"type": "add"
 							},
 							{
-								"key": "system.bonuses.mwak.attack",
+								"key": "system.rolls.attack.mwak.bonus",
 								"value": "+1d4",
 								"priority": null,
-								"type": "custom"
+								"type": "add"
 							},
 							{
 								"key": "macro.tokenMagic",
@@ -1866,19 +1878,19 @@
 								"type": "custom"
 							},
 							{
-								"key": "system.bonuses.rsak.attack",
+								"key": "system.rolls.attack.rsak.bonus",
 								"value": "+1d4",
 								"priority": null,
 								"type": "add"
 							},
 							{
-								"key": "system.bonuses.msak.attack",
+								"key": "system.rolls.attack.msak.bonus",
 								"value": "+1d4",
 								"priority": null,
 								"type": "add"
 							},
 							{
-								"key": "system.bonuses.rwak.attack",
+								"key": "system.rolls.attack.rwak.bonus",
 								"value": "+1d4",
 								"priority": null,
 								"type": "add"
@@ -2326,7 +2338,7 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.bonuses.abilities.save",
+						"key": "system.rolls.ability.save.bonus",
 						"value": "+2",
 						"priority": 20,
 						"type": "add"

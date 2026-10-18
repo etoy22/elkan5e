@@ -40,10 +40,10 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.advantage.attack.all",
-						"value": 1,
+						"key": "system.rolls.attack.mode",
+						"value": "1",
 						"priority": 20,
-						"type": "custom",
+						"type": "add",
 						"phase": "initial"
 					}
 				]
@@ -57,7 +57,7 @@
 	"folder": "rpdJCLqEpMx3LLo8",
 	"system": {
 		"description": {
-			"value": "<p><strong>Reaction</strong></p><p><em>Trigger: the [[lookup @name lowercase]] is within 30 ft. of a creature other than itself that has blood, and that creature takes &amp;reference[Piercing] or &amp;reference[Slashing] damage.</em></p><ul><li><p>The [[lookup @name lowercase]] goes into a blood frenzy: it has &amp;reference[Advantage] on &amp;reference[attack rolls] against creatures that have blood, but mindlessly attacks the nearest prey that isn't an ally with its bite attack until it has eaten something or until 1 minute has passed.</p></li></ul><p>This ability doesn't function if the [[lookup @name lowercase]] can't take a Reaction.</p>",
+			"value": "<p><strong>Once Per Turn</strong></p><p><em>Trigger: the [[lookup @name lowercase]] is within 30 ft. of a creature other than itself that has blood, and that creature takes &amp;reference[Piercing] or &amp;reference[Slashing] damage.</em></p><ul><li><p>The [[lookup @name lowercase]] goes into a blood frenzy: it has &amp;reference[Advantage] on &amp;reference[attack rolls] against creatures that have blood, but mindlessly attacks the nearest prey that isn't an ally with its bite attack until it has eaten something or until 1 minute has passed.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -85,7 +85,7 @@
 				"_id": "dnd5eactivity000",
 				"type": "utility",
 				"activation": {
-					"type": "reactionmanual",
+					"type": "once",
 					"value": 1,
 					"condition": "the murloc is within 30 ft. of a creature other than itself that has blood, and that creature takes piercing or slashing damage",
 					"override": false
@@ -150,7 +150,6 @@
 					"prompt": false,
 					"visible": false
 				},
-				"useConditionText": "",
 				"useConditionReason": "",
 				"effectConditionText": "",
 				"macroData": {

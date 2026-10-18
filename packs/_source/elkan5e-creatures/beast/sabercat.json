@@ -792,14 +792,13 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": []
-						},
-						"core": {
-							"statusId": "combat-utility-belt.prone"
 						}
 					},
 					"name": "Prone",
 					"description": "",
-					"statuses": [],
+					"statuses": [
+						"prone"
+					],
 					"img": "modules/elkan5e/icons/conditions/prone.svg",
 					"type": "base",
 					"system": {
@@ -829,10 +828,10 @@
 								"type": "override"
 							},
 							{
-								"key": "flags.midi-qol.disadvantage.attack.all",
-								"value": 1,
+								"key": "system.rolls.attack.mode",
+								"value": "-1",
 								"priority": 50,
-								"type": "override"
+								"type": "add"
 							}
 						]
 					},

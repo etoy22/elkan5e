@@ -83,7 +83,7 @@
 							}
 						}
 					],
-					"onSave": "none"
+					"onSave": "half"
 				},
 				"save": {
 					"ability": [
@@ -145,13 +145,20 @@
 			"_id": "owuEyJBslYKvxqeX",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [
+					{
+						"key": "system.attributes.concentration.roll.mode",
+						"value": "-1",
+						"priority": 20,
+						"type": "add"
+					}
+				]
 			},
 			"disabled": false,
 			"duration": {
 				"value": 1,
 				"units": "rounds",
-				"expiry": "turnStart",
+				"expiry": "turnEnd",
 				"expired": false
 			},
 			"description": "<p>The target has Disadvantage on &amp;reference[savingthrow]{saving throws} to maintain &amp;reference[concentration]{Concentration} until the end of its next turn</p>",
