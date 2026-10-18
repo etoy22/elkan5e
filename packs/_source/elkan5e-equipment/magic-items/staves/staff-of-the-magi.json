@@ -133,7 +133,8 @@
 					},
 					"identifier": "",
 					"requireIdentification": true
-				}
+				},
+				"useConditionText": "['isAttacked','isSave'].includes(reaction) && workflow?.item?.type === 'spell' && workflow?.targets?.size === 1 && !workflow?.activity?.target?.template?.type"
 			},
 			"yf3QuUmZ7yHBdu3l": {
 				"type": "cast",
@@ -1804,13 +1805,13 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.bonuses.msak.attack",
+						"key": "system.rolls.attack.msak.bonus",
 						"value": 2,
 						"priority": 20,
 						"type": "add"
 					},
 					{
-						"key": "system.bonuses.rsak.attack",
+						"key": "system.rolls.attack.rsak.bonus",
 						"value": 2,
 						"priority": 20,
 						"type": "add"
@@ -1841,9 +1842,6 @@
 		"midiProperties": {
 			"magicdam": true,
 			"magiceffect": true
-		},
-		"midi-qol": {
-			"reactionCondition": "reaction === 'isHit' && workflow?.item?.type === 'spell'"
 		}
 	},
 	"_key": "!items!dmgStaffOfTheMag"

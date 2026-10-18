@@ -73,7 +73,8 @@
 					},
 					"identifier": "",
 					"requireMagic": true
-				}
+				},
+				"useConditionText": "reaction === 'isSaveSuccess' && workflow?.item?.type === 'spell' && (workflow?.castData?.castLevel ?? item.level) <= 7 && workflow?.targets?.size === 1 && !workflow?.activity?.target?.template?.type"
 			}
 		},
 		"uses": {
@@ -137,10 +138,5 @@
 		"proficient": null
 	},
 	"effects": [],
-	"flags": {
-		"midi-qol": {
-			"reactionCondition": "reaction === 'isSave' && workflow?.item?.type === 'spell'"
-		}
-	},
 	"_key": "!items!dmgRingOfSpellTu"
 }

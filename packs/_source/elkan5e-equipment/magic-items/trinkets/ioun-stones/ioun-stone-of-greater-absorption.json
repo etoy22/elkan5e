@@ -84,7 +84,8 @@
 					},
 					"identifier": "",
 					"requireMagic": true
-				}
+				},
+				"useConditionText": "['isAttacked','isSave'].includes(reaction) && workflow?.item?.type === 'spell' && (workflow?.castData?.castLevel ?? item.level) <= 8"
 			}
 		},
 		"uses": {
@@ -153,7 +154,6 @@
 			"onUseMacroName": "",
 			"effectActivation": false,
 			"itemCondition": "",
-			"reactionCondition": "workflow?.item?.type === 'spell' && workflow?.item?.system?.level <= 8",
 			"otherCondition": "",
 			"effectCondition": "",
 			"rollAttackPerTarget": "default",

@@ -79,7 +79,8 @@
 					},
 					"identifier": "",
 					"requireIdentification": true
-				}
+				},
+				"useConditionText": "reaction === 'isSaveFail' && (item.school === 'nec' || fromUuidSync(tokenUuid)?.actor?.system?.details?.type?.value === 'undead')"
 			}
 		},
 		"uses": {
@@ -177,10 +178,5 @@
 			"_key": "!items.effects!dmgScarabOfProte.DipdCCMAnTnmNgpY"
 		}
 	],
-	"flags": {
-		"midi-qol": {
-			"reactionCondition": "reaction === 'isSave' && !workflow?.save?.success"
-		}
-	},
 	"_key": "!items!dmgScarabOfProte"
 }
