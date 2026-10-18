@@ -38,7 +38,7 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.grants.advantage.save.all",
-						"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"charmed\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"charmed\") || ef.name == 'Charmed' || ef.statuses?.has(\"frightened\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"frightened\") || ef.name == 'Frightened')",
+						"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"charmed\") || ef.system?.rider?.statuses?.has(\"charmed\") || ef.name == 'Charmed' || ef.statuses?.has(\"frightened\") || ef.system?.rider?.statuses?.has(\"frightened\") || ef.name == 'Frightened')",
 						"priority": 20,
 						"type": "custom"
 					}

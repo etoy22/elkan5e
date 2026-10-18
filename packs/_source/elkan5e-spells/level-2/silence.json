@@ -31,25 +31,23 @@
 			},
 			"name": "Silenced",
 			"description": "@Embed[Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.F51xrE7Mj8VeM3b8 inline]",
-			"statuses": [
-				"silenced"
-			],
+			"statuses": [],
 			"img": "modules/elkan5e/icons/conditions/silenced.svg",
 			"type": "base",
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.fail.spell.verbal",
-						"type": "override",
-						"value": "1",
-						"phase": "initial",
-						"priority": null
-					},
-					{
 						"key": "system.traits.di.value",
 						"value": "thunder",
 						"priority": 20,
 						"type": "custom"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "silenced",
+						"phase": "final",
+						"priority": 20
 					}
 				],
 				"magical": true

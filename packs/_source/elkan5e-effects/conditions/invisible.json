@@ -6,32 +6,11 @@
 	"system": {
 		"changes": [
 			{
-				"key": "flags.midi-qol.advantage.attack.all",
-				"type": "override",
-				"value": "!Boolean(target?.canSee)",
-				"phase": "initial",
-				"priority": null
-			},
-			{
-				"key": "flags.midi-qol.grants.disadvantage.attack.all",
-				"type": "override",
-				"value": "!Boolean(canSee)",
-				"phase": "initial",
-				"priority": null
-			},
-			{
-				"key": "system.skills.ste.roll.mode",
-				"type": "add",
-				"value": "1",
-				"phase": "initial",
-				"priority": null
-			},
-			{
-				"key": "flags.midi-qol.noOpportunityAttack",
-				"type": "override",
-				"value": "!Boolean(canSee)",
-				"phase": "initial",
-				"priority": null
+				"key": "macro.StatusEffect",
+				"type": "custom",
+				"value": "invisible",
+				"phase": "final",
+				"priority": 20
 			}
 		],
 		"identifier": "invisible"
@@ -48,10 +27,8 @@
 	"origin": null,
 	"tint": "#ffffff",
 	"transfer": false,
-	"statuses": [
-		"invisible"
-	],
-	"showIcon": 1,
+	"statuses": [],
+	"showIcon": 0,
 	"folder": "EjJWx7HgsvSV3TWe",
 	"_key": "!effects!elkaninvisible00"
 }

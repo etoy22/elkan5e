@@ -282,9 +282,7 @@
 			"name": "Invisible",
 			"_id": "vF4unhhaH9Oq0JuX",
 			"img": "modules/elkan5e/icons/conditions/invisible.svg",
-			"statuses": [
-				"invisible"
-			],
+			"statuses": [],
 			"description": "",
 			"type": "base",
 			"system": {
@@ -302,10 +300,11 @@
 						"type": "override"
 					},
 					{
-						"key": "system.skills.ste.roll.mode",
-						"value": "1",
-						"priority": null,
-						"type": "add"
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "invisible",
+						"phase": "final",
+						"priority": 20
 					}
 				]
 			},
@@ -329,7 +328,12 @@
 				"initiative": null
 			},
 			"folder": null,
-			"_key": "!actors.effects!qUgpNFvjjWDaDzEA.vF4unhhaH9Oq0JuX"
+			"_key": "!actors.effects!qUgpNFvjjWDaDzEA.vF4unhhaH9Oq0JuX",
+			"flags": {
+				"dae": {
+					"stackable": "none"
+				}
+			}
 		}
 	],
 	"_key": "!actors!qUgpNFvjjWDaDzEA"

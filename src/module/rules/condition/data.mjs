@@ -45,8 +45,6 @@ const HAZARD_RULES_REF = (id) =>
 
 // Condition effects in the elkan5e-effects compendium.
 const CONDITION_EFFECT_ID = (id) => `elkan${id}`.padEnd(16, "0").slice(0, 16);
-const CONDITION_EFFECT_UUID = (id) =>
-	`Compendium.elkan5e.elkan5e-effects.ActiveEffect.${CONDITION_EFFECT_ID(id)}`;
 
 // You can add `changes` to any of these.
 const CONDITION_DEFS = [
@@ -542,7 +540,6 @@ const STATUS_DEFS = [
 export {
 	CONDITION_DEFS,
 	CONDITION_EFFECT_ID,
-	CONDITION_EFFECT_UUID,
 	CONDITION_TYPE_REMOVE,
 	FILENAME_OVERRIDE,
 	HAZARD_RULES_REF,

@@ -33,9 +33,7 @@
 			"origin": null,
 			"name": "Phantasmal Killer",
 			"description": "",
-			"statuses": [
-				"frightened"
-			],
+			"statuses": [],
 			"img": "icons/magic/control/fear-fright-monster-grin-purple-blue.webp",
 			"type": "base",
 			"system": {
@@ -52,6 +50,13 @@
 						"key": "system.attributes.movement.all",
 						"type": "custom",
 						"value": 0,
+						"phase": "final",
+						"priority": 20
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "frightened",
 						"phase": "final",
 						"priority": 20
 					}

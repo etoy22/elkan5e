@@ -226,7 +226,15 @@
 			"_id": "YLFv2Ujss9c0vtMQ",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "petrified",
+						"phase": "final",
+						"priority": 20
+					}
+				]
 			},
 			"disabled": false,
 			"duration": {
@@ -238,13 +246,16 @@
 			"description": "<p>The target has the &amp;reference[Petrified apply=false] condition instead of the &amp;reference[restrained apply=false]{Restrained} condition.</p>",
 			"tint": "#ffffff",
 			"transfer": false,
-			"statuses": [
-				"petrified"
-			],
-			"showIcon": 2,
+			"statuses": [],
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
-			"_key": "!items.effects!Y9uwzdyxLy6MsUb7.YLFv2Ujss9c0vtMQ"
+			"_key": "!items.effects!Y9uwzdyxLy6MsUb7.YLFv2Ujss9c0vtMQ",
+			"flags": {
+				"dae": {
+					"stackable": "none"
+				}
+			}
 		},
 		{
 			"name": "Petrifying Gaze",
@@ -261,6 +272,13 @@
 						"phase": "initial",
 						"priority": null,
 						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "restrained",
+						"phase": "final",
+						"priority": 20
 					}
 				]
 			},
@@ -275,10 +293,8 @@
 			"description": "",
 			"tint": "#ffffff",
 			"transfer": false,
-			"statuses": [
-				"restrained"
-			],
-			"showIcon": 2,
+			"statuses": [],
+			"showIcon": 0,
 			"folder": null,
 			"flags": {
 				"dae": {

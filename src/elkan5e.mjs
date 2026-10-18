@@ -110,11 +110,6 @@ import { push } from "./module/rules/condition/push.mjs";
 import { fixRegionTurnEnd } from "./module/rules/region-turn-end.mjs";
 import { endEffectsOnRegionExit } from "./module/rules/region-exit.mjs";
 import {
-	addImpliedStatuses,
-	dedupeAutoCreatedStatus,
-	skipDuplicateCondition,
-} from "./module/rules/condition/status-dedupe.mjs";
-import {
 	applyActorModifyItemRiders,
 	applyModifyItemRiders,
 	backfillModifyItemRiders,
@@ -510,6 +505,15 @@ function registerHooks() {
 
 	Hooks.on("midi-qol.RollComplete", async (workflow) => {
 		try {
+			// Infused Healer's own item macro only runs when the feature itself is used.
+			if (workflow?.actor?.items.some((i) => i.system?.identifier === "infused-healer")) {
+				await infusedHealer(workflow);
+			}
+		} catch (error) {
+			console.error("Elkan 5e | Error in Infused Healer hook:", error);
+		}
+
+		try {
 			await markOfAffliction(workflow);
 		} catch (error) {
 			console.error("Elkan 5e | Error in Mark of Affliction hook:", error);
@@ -666,16 +670,6 @@ function registerHooks() {
 				console.error("Elkan 5e | Error in region exit hook:", error);
 			});
 		}, 500);
-	});
-
-	Hooks.on("preCreateActiveEffect", (effect) => {
-		try {
-			if (skipDuplicateCondition(effect) === false) return false;
-			addImpliedStatuses(effect);
-			if (dedupeAutoCreatedStatus(effect) === false) return false;
-		} catch (error) {
-			console.error("Elkan 5e | Error in preCreateActiveEffect status dedupe hook:", error);
-		}
 	});
 
 	Hooks.on("createActiveEffect", async (effect, options, userId) => {

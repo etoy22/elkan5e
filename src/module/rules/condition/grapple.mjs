@@ -403,8 +403,8 @@ const applyElkanGrapple = async ({
 		),
 	);
 	statuses.add("grappled");
-	const restrainedBaseChanges = getConditionChanges("restrained");
-	const restrainedSigs = new Set(restrainedBaseChanges.map(changeSignature));
+	// Older grapples copied Restrained's rules into the effect; drop them when it's updated.
+	const restrainedSigs = new Set(getConditionChanges("restrained").map(changeSignature));
 	let changes = foundry.utils.duplicate(current?.system?.changes ?? []).filter((change) => {
 		if (change?.key === "system.attributes.movement.multiplier") return false;
 		if (
@@ -441,9 +441,9 @@ const applyElkanGrapple = async ({
 		]);
 	}
 
+	// The restrained status brings the condition's rules with it.
 	if (sizeDiff >= 2) {
 		statuses.add("restrained");
-		addChanges(restrainedBaseChanges);
 	} else if (sizeDiff <= -2) {
 		const climb = getClimbSpeed(grappler);
 		if (!Number.isFinite(climb) || climb <= 0) {

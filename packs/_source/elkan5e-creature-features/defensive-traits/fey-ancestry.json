@@ -35,7 +35,53 @@
 			"trait"
 		]
 	},
-	"effects": [],
+	"effects": [
+		{
+			"transfer": true,
+			"_id": "elkFeyAncestryAE",
+			"disabled": false,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"origin": null,
+			"tint": "#ffffff",
+			"flags": {
+				"dae": {
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"stackable": "none",
+					"durationExpression": "",
+					"specialDuration": [],
+					"disableIncapacitated": false,
+					"dontApply": false,
+					"macroRepeat": "none",
+					"disableCondition": ""
+				}
+			},
+			"name": "Fey Ancestry",
+			"description": "",
+			"statuses": [],
+			"img": "icons/magic/nature/tree-elm-roots-brown.webp",
+			"type": "base",
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.advantage.ability.save.all",
+						"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"charmed\") || ef.system?.rider?.statuses?.has(\"charmed\") || ef.name == 'Charmed')",
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
+			"_key": "!items.effects!OhbVrpoiVgRV5IfL.elkFeyAncestryAE"
+		}
+	],
 	"folder": "gPJb95ldQSUoNR9d",
 	"_id": "OhbVrpoiVgRV5IfL",
 	"_key": "!items!OhbVrpoiVgRV5IfL"

@@ -34,35 +34,28 @@
 					"transfer": false,
 					"name": "Poisoned",
 					"description": "",
-					"statuses": [
-						"poisoned"
-					],
+					"statuses": [],
 					"img": "modules/elkan5e/icons/conditions/poisoned.svg",
 					"type": "base",
 					"system": {
 						"changes": [
 							{
-								"key": "system.rolls.attack.mode",
-								"value": "-1",
-								"priority": 50,
-								"type": "add"
-							},
-							{
-								"key": "system.rolls.ability.check.mode",
-								"value": "-1",
-								"priority": 50,
-								"type": "add"
-							},
-							{
 								"key": "flags.midi-qol.OverTime",
 								"value": "turn=end,\nsaveAbility=con,\nsaveDC=13",
 								"priority": 20,
 								"type": "add"
+							},
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "poisoned",
+								"phase": "final",
+								"priority": 20
 							}
 						]
 					},
 					"start": null,
-					"showIcon": 1,
+					"showIcon": 0,
 					"folder": null,
 					"_key": "!actors.items.effects!6q9IkifzuxdGRDaW.ODEzNTYwODIzYzFk.usTKhpcA1Usb0yTP"
 				}

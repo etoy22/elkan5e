@@ -1,5 +1,10 @@
 import { isInBrightLight } from "../rules/condition/vision.mjs";
-import { deleteEffectRemoveEffect, deleteEffects, t } from "../shared/helpers.mjs";
+import {
+	conditionSources,
+	deleteEffectRemoveEffect,
+	deleteEffects,
+	t,
+} from "../shared/helpers.mjs";
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -105,11 +110,8 @@ const STILLNESS_STATUSES = ["charmed", "confused", "frightened", "goaded"];
 // DAE's auto-created status copies (Dependent Conditions) are left out: they mirror another
 // effect and come back while that effect exists.
 const stillnessEffects = (actor) =>
-	actor.effects.filter(
-		(e) =>
-			e.active &&
-			!e.flags?.dae?.autoCreated &&
-			STILLNESS_STATUSES.some((id) => e.statuses?.has(id)),
+	conditionSources(actor, STILLNESS_STATUSES).filter(
+		(e) => e.active && !e.flags?.dae?.autoCreated,
 	);
 
 /**

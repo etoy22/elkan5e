@@ -684,6 +684,26 @@ export function deleteEffects(actor, effects) {
 }
 
 /**
+ * The effects giving an actor one of the given conditions. A condition switched on by another
+ * effect's macro.StatusEffect is returned as that effect, so ending it doesn't leave the source
+ * behind.
+ *
+ * @param {Actor} actor - Actor to search.
+ * @param {string[]} statusIds - Status ids to look for.
+ * @returns {ActiveEffect[]}
+ */
+export function conditionSources(actor, statusIds) {
+	const effects = new Set();
+	for (const e of actor?.effects ?? []) {
+		if (e.disabled || !statusIds.some((id) => e.statuses?.has(id))) continue;
+		const dependentOn = e.getFlag("dnd5e", "dependentOn");
+		const source = dependentOn ? fromUuidSync(dependentOn, { strict: false }) : null;
+		effects.add(source?.parent === actor ? source : e);
+	}
+	return [...effects];
+}
+
+/**
  * Removes every effect carrying one of the given conditions from an actor, relaying to the GM
  * if the user doesn't own it.
  *
@@ -692,7 +712,7 @@ export function deleteEffects(actor, effects) {
  * @returns {Promise<string[]>} Names of the removed effects.
  */
 export async function removeStatuses(actor, statusIds) {
-	const effects = actor.effects.filter((e) => statusIds.some((id) => e.statuses?.has(id)));
+	const effects = conditionSources(actor, statusIds);
 	if (effects.length) await deleteEffects(actor, effects);
 	const removed = effects.map((e) => e.name);
 	if (

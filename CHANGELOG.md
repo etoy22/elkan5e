@@ -13,7 +13,7 @@
 - Rage's melee damage bonus, [Bless](https://www.elkan5e.com/spells/bless)'s weapon damage bonus, and Jarl's Shield's bonus apply again. dnd5e 6.0 ignored them.
 - Goodberry and Delayed Surge create their duration effects again. Before, the effect failed to create with an error.
 - [Darkness](https://www.elkan5e.com/spells/darkness), [Moonbeam](https://www.elkan5e.com/spells/moonbeam), and other spells that place lights no longer show an "AmbientLight does not exist" error when they end.
-- A creature now shows one effect per condition. Before, DAE's copy of a condition appeared next to Elkan's (two Prone, or Stunned twice), and failing a save again while already prone (such as Grease's) added a second Prone. Conditions that imply Incapacitated (Stunned, Paralyzed, Petrified, Unconscious) still add it.
+- Effects that give a condition now give the actual condition, the same one the token HUD toggles (Knockdown makes the target Prone, Symbol's Fear glyph makes it Frightened). A creature shows one Prone instead of two, the condition's rules apply once instead of twice (Slowed gave -4 AC instead of -2), turning it off from the token HUD removes it, and getting it again from the same source doesn't add a second copy. The condition still ends when the effect that gave it ends.
 - Slowed now halves the creature's speed, as written.
 
 
@@ -36,6 +36,7 @@
 - Areas that affect a creature when it enters or ends its turn there "but not both" ([Cloudkill](https://www.elkan5e.com/spells/cloudkill), [Incendiary Cloud](https://www.elkan5e.com/spells/incendiary-cloud), [Stinking Cloud](https://www.elkan5e.com/spells/stinking-cloud), and others) no longer affect a creature twice on the turn it enters. Midi-QOL checked the turn after it had already ended.
 - [Grease](https://www.elkan5e.com/spells/grease), [Spike Growth](https://www.elkan5e.com/spells/spike-growth), [Cloudkill](https://www.elkan5e.com/spells/cloudkill), [Insect Plague](https://www.elkan5e.com/spells/insect-plague), and [Vortex](https://www.elkan5e.com/spells/vortex) no longer show a "Could not find macro AA ApplyEffectsToTemplate" error when cast. It came from the Automated Animations module, which isn't required.
 - Advantage and disadvantage on a creature's own rolls now use dnd5e 6.0's roll modes instead of Midi-QOL flags (about 200 effects across conditions, features, spells, items, and creatures). They work without Midi-QOL, and a source of advantage and a source of disadvantage now cancel out, as the rules say. Before, some effects forced the result and ignored every other source. Midi-QOL is still used where dnd5e has no equivalent, such as advantage on attacks against a creature, conditional effects, and auto-failing saves.
+- Advantage on saves against a condition works again when the condition comes from an enchantment's rider, such as a weapon enchantment that adds Poisoned. dnd5e 6.0 moved where those conditions are stored. Affects Fey Ancestry, Dwarven Resilience, Sturdy, Steadfast, Laborer's Endurance, Sure-Footed (including the Mountain Goat's), Countercharm (Bard), [Purify](https://www.elkan5e.com/spells/purify), [Protection from Poison](https://www.elkan5e.com/spells/protection-from-poison), Antitoxin, and the Belt of Dwarvenkind.
 
 ## Ancestries
 
@@ -105,7 +106,8 @@
 
 - Holy Strike (Cleric) now adds its damage on your first weapon hit each turn. It never triggered.
 - Lifebinder
-    - Infused Healer uses the level you cast the spell at, so upcast healing spells get the larger bonus.
+    - Infused Healer now heals you when you cast a healing spell of 1st level or higher on someone else, using the level you cast it at. Before, it only ran when you used the feature itself.
+    - Healing Overflow now offers to move extra healing to another hurt creature within the spell's range (an adjacent one for touch spells). It never found the spell's details from Midi-QOL.
     - Blessed Healing now adds 2 + the spell's level to healing spells of 1st level or higher. dnd5e 6.0 has no healing bonus its effect could use, so it never applied.
 - Reaper
     - Death Touched now grants resistance to necrotic or poison damage. It granted neither.
@@ -307,6 +309,7 @@
     - Overchannel's activity now applies its Overchannel effect to you directly, instead of a script creating it.
     - Overchannel now maximizes the spell's damage. Before, the damage was rolled normally and only the backlash applied.
     - Overchannel keeps a critical hit's extra dice when it maximizes the damage.
+    - Overchannel's backlash and its 5th-level limit use the level you cast the spell at.
 - Necromancer
     - Soul Conduit now shows a reminder when you cast a necromancy spell of 1st level or higher, telling you how many hit points it can restore to your graveguard. Before, the reminder never appeared.
     - Necromantic Surge now triggers when you target yourself with a necromancy spell of 3rd level or higher.
@@ -332,6 +335,7 @@
 - Deflect Missiles reduces the damage by 10, as written. Before, it used a monk's Martial Arts die, which creatures don't have.
 - Leap's range is 20 ft., as written. Before, it was 30 ft.
 - Keen Hearing and Keen Hearing and Sight now show their own names on their effects.
+- Fey Ancestry now gives advantage on saves against being Charmed (Midi-QOL). Before, the benefit was only in the description.
 
 ## Creatures
 
@@ -345,6 +349,7 @@
 - Raven: no longer starts with more hit points than its maximum.
 - Effects that only marked a condition through the old Combat Utility Belt module now apply the condition: grapples (Slam, the zombies, Green Slime), Prone (Sabercat, Zombie Brute), Poisoned (Zombie Plague Carrier), Charmed and Invisible (Deceiver), Incapacitated (Green Slime), and Stunned (Enlightened Monk).
 - Radiant Archer: Flash Bolt now blinds its target. Before, it used a status from the Condition Lab & Triggler module.
+- Bullywug, Bullywug Champion, and Bullywug Hunter can be placed on a scene again. They had no art, which stopped their tokens from being created.
 
 ## Equipment
 
@@ -361,6 +366,7 @@
 - Damage on a successful save now matches the description: Caltrops and Pale Tincture deal none, and a Bead of Force deals half.
 - Activation now matches the description: Basic Poison, Necklace of Prayer Beads, and Boots of Speed are bonus actions. Pipes of the Sewers, and drinking a Potion of Climbing, Diminution, or Mind Reading, are actions, like other potions.
 - The Handaxe and Staff of Thunder and Lightning no longer add an empty damage term to their damage rolls.
+- Necklace of Adaptation and Periapt of Health now give advantage on saves against being Poisoned (Midi-QOL). Before, the benefit was only in the description.
 
 ## Feats
 
@@ -418,6 +424,8 @@
 
 ## Spells
 
+- [Gaseous Form](https://www.elkan5e.com/spells/gaseous-form) now turns its targets' tokens into a cloud (with Active Token Effects installed) and ends when the target drops to 0 hit points.
+    - Gaseous Form now also makes the target immune to Prone, as written.
 - [Celestial Bolt](https://www.elkan5e.com/spells/celestial-bolt) no longer links an effect that doesn't exist.
 - Area spells that create difficult terrain now use the system's Difficult Terrain region behavior instead of an active effect that halved speed. Movement through the area is now measured as difficult terrain, stacks correctly, and respects features that ignore difficult terrain.
     - Replaced the halved-speed effect: [Entangle](https://www.elkan5e.com/spells/entangle), [Plant Growth](https://www.elkan5e.com/spells/plant-growth), [Spike Growth](https://www.elkan5e.com/spells/spike-growth), [Arms of Earth](https://www.elkan5e.com/spells/arms-of-earth), [Grease](https://www.elkan5e.com/spells/grease), [Black Tentacles](https://www.elkan5e.com/spells/black-tentacles), [Gust of Wind](https://www.elkan5e.com/spells/gust-of-wind) (including the Kobold Shaman's copy), and [Spirit Guardians](https://www.elkan5e.com/spells/spirit-guardians) (hostile creatures only, as written).
@@ -568,7 +576,7 @@
 
 ## Misc
 
-- Added `npm run audit:packs` (scripts/audit-packs.mjs), which checks the compendium source for problems that load without errors but break automation: missing effect, item and macro links, unsupported area rules, effects that can't apply, invalid keys and durations, and macros that call missing functions or removed Foundry APIs.
+- Added `npm run audit:packs` (scripts/audit-packs.mjs), which checks the compendium source for problems that load without errors but break automation: missing effect, item and macro links, unsupported area rules, effects that can't apply, invalid keys and durations, and macros that call missing functions or removed Foundry APIs. It also flags creatures with no art.
 - Removed debug messages that were written to the console on every grapple and push.
 - Added `elkan5e.macros.features.markOfThorns` and `elkan5e.macros.features.markOfAffliction`, which the Mark of Thorns and Mark of Affliction item macros call.
 - Effects can use `flags.elkan5e.endsOnRegionExit` to end when their creature leaves the area that the same item created.

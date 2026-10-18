@@ -778,29 +778,22 @@
 					"transfer": false,
 					"name": "Poisoned",
 					"description": "",
-					"statuses": [
-						"poisoned"
-					],
+					"statuses": [],
 					"img": "modules/elkan5e/icons/conditions/poisoned.svg",
 					"type": "base",
 					"system": {
 						"changes": [
 							{
-								"key": "system.rolls.attack.mode",
-								"value": "-1",
-								"priority": 50,
-								"type": "add"
-							},
-							{
-								"key": "system.rolls.ability.check.mode",
-								"value": "-1",
-								"priority": 50,
-								"type": "add"
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "poisoned",
+								"phase": "final",
+								"priority": 20
 							}
 						]
 					},
 					"start": null,
-					"showIcon": 1,
+					"showIcon": 0,
 					"folder": null,
 					"_key": "!actors.items.effects!f2fTZsBCIul02fTx.lSz4LjagQxopSXTG.tr7MaUpLGknlKgxd"
 				}
@@ -979,36 +972,29 @@
 					"transfer": false,
 					"name": "Poisoned",
 					"description": "",
-					"statuses": [
-						"poisoned"
-					],
+					"statuses": [],
 					"img": "modules/elkan5e/icons/conditions/poisoned.svg",
 					"type": "base",
 					"system": {
 						"changes": [
-							{
-								"key": "system.rolls.attack.mode",
-								"value": "-1",
-								"priority": 50,
-								"type": "add"
-							},
-							{
-								"key": "system.rolls.ability.check.mode",
-								"value": "-1",
-								"priority": 50,
-								"type": "add"
-							},
 							{
 								"key": "flags.midi-qol.OverTime",
 								"value": "turn=end,\nsaveAbility=con,\nsaveDC=@attributes.spell.dc",
 								"priority": 20,
 								"type": "add",
 								"replacement": "origin"
+							},
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "poisoned",
+								"phase": "final",
+								"priority": 20
 							}
 						]
 					},
 					"start": null,
-					"showIcon": 1,
+					"showIcon": 0,
 					"folder": null,
 					"_key": "!actors.items.effects!f2fTZsBCIul02fTx.run0fFoNXb7V9TCd.9Raufs3tLMoZI1r1"
 				}
@@ -1379,9 +1365,7 @@
 					},
 					"name": "Grappled",
 					"description": "",
-					"statuses": [
-						"grappled"
-					],
+					"statuses": [],
 					"img": "modules/elkan5e/icons/conditions/grappled.svg",
 					"type": "base",
 					"system": {
@@ -1391,6 +1375,13 @@
 								"value": 0,
 								"priority": 50,
 								"type": "custom"
+							},
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "grappled",
+								"phase": "final",
+								"priority": 20
 							}
 						]
 					},

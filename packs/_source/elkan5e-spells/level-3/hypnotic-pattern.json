@@ -35,10 +35,7 @@
 			"origin": null,
 			"name": "Hypnotic Pattern",
 			"description": "",
-			"statuses": [
-				"charmed",
-				"incapacitated"
-			],
+			"statuses": [],
 			"img": "icons/magic/control/hypnosis-mesmerism-swirl.webp",
 			"type": "base",
 			"system": {
@@ -50,11 +47,25 @@
 						"phase": "initial",
 						"priority": 20,
 						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "charmed",
+						"phase": "final",
+						"priority": 20
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "incapacitated",
+						"phase": "final",
+						"priority": 20
 					}
 				],
 				"magical": true
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!TmZ22s2pzXuzMX7n.vf8qXWho8hhViUVl"

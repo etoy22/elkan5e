@@ -434,6 +434,13 @@ function checkMacroText(text, where) {
 
 for (const { file, doc } of docs) {
 	const where = `${doc.name ?? doc._id} (${file})`;
+	if (doc.prototypeToken && (!doc.img || !doc.prototypeToken.texture?.src))
+		report(
+			"error",
+			"actor-no-art",
+			where,
+			'has no portrait or token image, so placing it fails with "texture path is empty"',
+		);
 	if (doc.system?.activities || doc.effects?.length || doc.type) auditItem(doc, where);
 	for (const it of doc.items ?? []) auditItem(it, `${doc.name} > ${it.name} (${file})`);
 }

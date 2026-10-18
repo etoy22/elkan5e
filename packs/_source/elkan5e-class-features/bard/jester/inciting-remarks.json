@@ -121,9 +121,7 @@
 	"img": "icons/magic/perception/mask-stone-eyes-orange.webp",
 	"effects": [
 		{
-			"statuses": [
-				"goaded"
-			],
+			"statuses": [],
 			"name": "Inciting Remarks",
 			"description": "",
 			"duration": {
@@ -155,10 +153,18 @@
 			"img": "icons/magic/perception/mask-stone-eyes-orange.webp",
 			"type": "base",
 			"system": {
-				"changes": [],
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "goaded",
+						"phase": "final",
+						"priority": 20
+					}
+				],
 				"magical": true
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!QDGgq6r9urw1Dmtg.4fXyx9VlIPqcVU6n"

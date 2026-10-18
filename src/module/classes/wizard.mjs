@@ -1,4 +1,4 @@
-import { drainedEffect } from "../shared/helpers.mjs";
+import { conditionSources, drainedEffect } from "../shared/helpers.mjs";
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -197,9 +197,7 @@ export async function necromanticSurge(workflow) {
 			await actor.update({ "system.attributes.exhaustion": exhaustionLevel - 1 });
 		} else {
 			// Remove every active effect that carries this status (handles stacked effects).
-			const toDelete = actor.effects
-				.filter((e) => e.statuses.has(chosen) && !e.disabled)
-				.map((e) => e.id);
+			const toDelete = conditionSources(actor, [chosen]).map((e) => e.id);
 			if (toDelete.length) await actor.deleteEmbeddedDocuments("ActiveEffect", toDelete);
 		}
 
@@ -237,7 +235,10 @@ export async function overchannelOnDamageRoll(rollConfig) {
 		const item = activity.item;
 		if (item?.type !== "spell") return;
 
-		const spellLevel = item.system?.level ?? 0;
+		// The roll data has the level the spell was cast at.
+		const spellLevel = Number(
+			rollConfig.rolls?.[0]?.data?.item?.level ?? item.system?.level ?? 0,
+		);
 		if (spellLevel < 1 || spellLevel > 5) return;
 
 		const usesSlot = Boolean(activity.consumption?.spellSlot);

@@ -113,9 +113,7 @@
 	},
 	"effects": [
 		{
-			"statuses": [
-				"frightened"
-			],
+			"statuses": [],
 			"description": "",
 			"duration": {
 				"value": null,
@@ -145,26 +143,21 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.rolls.attack.mode",
-						"value": "-1",
-						"priority": 50,
-						"type": "add"
-					},
-					{
-						"key": "system.rolls.ability.check.mode",
-						"value": "-1",
-						"priority": 50,
-						"type": "add"
-					},
-					{
 						"key": "flags.midi-qol.OverTime",
 						"value": "turn=end,\nlabel=\"Frightful Presence\",\nallowIncapacitated=false,\nsaveAbility=wis,\nsaveDC=16",
 						"priority": 20,
 						"type": "custom"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "frightened",
+						"phase": "final",
+						"priority": 20
 					}
 				]
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!75G0Pxl3HPWYmRYz.QGITrQQP2CHqhkNo"

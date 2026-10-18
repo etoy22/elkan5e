@@ -68,7 +68,6 @@ export async function hasteLethargy(effect) {
 			img: "icons/magic/time/clock-analog-gray.webp",
 			origin: effect.origin ?? effect.effectUuid,
 			disabled: false,
-			statuses: ["incapacitated"],
 			// Until the end of the caster's next turn.
 			duration: { value: 1, units: "rounds", expiry: "turnEnd" },
 		});

@@ -21,7 +21,7 @@ export async function infusedHealer(workflow) {
 	// Bail if not a healing spell of 1st level or higher
 	let item = workflow.item;
 	if (
-		item.type !== "spell" ||
+		item?.type !== "spell" ||
 		item.system.level < 1 ||
 		getWorkflowActionType(workflow) !== "heal"
 	)
@@ -111,23 +111,26 @@ export async function healOver(itemOrWorkflow, roll) {
  * @returns {Promise<unknown>} Promise resolution result.
  */
 export async function healingOverflow(workflow) {
-	const [workflowData] = workflow.args;
+	// Midi-QOL calls this as an actor on-use macro, passing its macro scope; the workflow is inside it.
+	const wf = workflow?.workflow ?? workflow;
+	const [workflowData] = workflow?.args ?? [];
+	const item = wf?.item ?? workflow?.item;
 	if (
-		!workflow.item ||
-		workflow.item.type !== "spell" ||
-		getWorkflowActionType(workflow) !== "heal" ||
-		workflow.item.system.level < 1
+		item?.type !== "spell" ||
+		getWorkflowActionType(wf) !== "heal" ||
+		Number(workflowData?.castData?.castLevel ?? wf?.castData?.castLevel ?? item.system.level) <
+			1
 	)
 		return;
 
-	const healing = workflowData.damageTotal;
-	if (!healing || healing === 0) return;
+	const healing = workflowData?.damageTotal ?? wf?.damageTotal;
+	if (!healing) return;
 
-	const caster = workflow.actor;
-	const casterToken = workflow.token;
+	const caster = wf.actor ?? workflow.actor;
+	const casterToken = wf.token ?? workflow.token;
 	if (!caster || !casterToken) return;
 
-	const targets = workflowData.targets ?? [];
+	const targets = [...(wf.targets ?? workflowData?.targets ?? [])];
 	if (targets.length === 0) return;
 
 	// Calculate max overflow healing from targets
@@ -143,13 +146,18 @@ export async function healingOverflow(workflow) {
 	}
 	if (maxOverflow <= 0) return;
 
-	// Determine range from the spell item
-	const range = workflow.item.system.range?.value ?? 0;
+	// The spell's range; touch spells reach an adjacent creature.
+	const rangeData = wf.activity?.range ?? item.system.range ?? {};
+	const range =
+		rangeData.units === "touch"
+			? (canvas.grid.distance ?? 5)
+			: Number(rangeData.value ?? 0) || (canvas.grid.distance ?? 5);
 
-	// Find tokens within range that are missing HP
+	// Find other tokens within range that are missing HP
+	const targetIds = new Set(targets.map((tk) => tk.document?.id ?? tk.id));
 	const candidates = canvas.tokens.placeables.filter((token) => {
 		const actor = token.actor;
-		if (!actor || token.document.hidden) return false;
+		if (!actor || token.document.hidden || targetIds.has(token.document.id)) return false;
 		const hp = actor.system.attributes.hp;
 		const inRange = measureRangeDistance(casterToken, token) <= range;
 		return hp.value < hp.max && inRange;

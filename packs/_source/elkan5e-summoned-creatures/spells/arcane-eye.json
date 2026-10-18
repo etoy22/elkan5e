@@ -781,9 +781,7 @@
 			"name": "Invisible",
 			"_id": "dnd5einvisible00",
 			"img": "modules/elkan5e/icons/conditions/invisible.svg",
-			"statuses": [
-				"invisible"
-			],
+			"statuses": [],
 			"description": "@Embed[Compendium.dnd5e.rules.JournalEntry.w7eitkpD7QQTB6j0.JournalEntryPage.3UU5GCTVeRDbZy9u inline]",
 			"type": "base",
 			"system": {
@@ -801,10 +799,11 @@
 						"type": "override"
 					},
 					{
-						"key": "system.skills.ste.roll.mode",
-						"value": "1",
-						"priority": null,
-						"type": "add"
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "invisible",
+						"phase": "final",
+						"priority": 20
 					}
 				]
 			},

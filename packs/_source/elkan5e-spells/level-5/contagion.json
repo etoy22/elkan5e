@@ -33,10 +33,7 @@
 			"origin": null,
 			"name": "Contagion",
 			"description": "",
-			"statuses": [
-				"diseased",
-				"poisoned"
-			],
+			"statuses": [],
 			"img": "icons/skills/wounds/illness-disease-glowing-green.webp",
 			"type": "base",
 			"system": {
@@ -46,6 +43,20 @@
 						"value": "-1",
 						"priority": 20,
 						"type": "add"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "diseased",
+						"phase": "final",
+						"priority": 20
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "poisoned",
+						"phase": "final",
+						"priority": 20
 					}
 				],
 				"magical": true

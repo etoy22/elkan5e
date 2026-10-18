@@ -1,4 +1,5 @@
 import {
+	conditionSources,
 	drainedEffect,
 	forEachDamagedTarget,
 	removeStatuses,
@@ -44,9 +45,7 @@ export async function greaterRestoration(workflow) {
 		const removed = [];
 
 		// Collect all active-effect IDs that carry any of the target statuses.
-		const effectIdsToDelete = actor.effects
-			.filter((e) => !e.disabled && CONDITION_IDS.some((id) => e.statuses.has(id)))
-			.map((e) => e.id);
+		const effectIdsToDelete = conditionSources(actor, CONDITION_IDS).map((e) => e.id);
 
 		if (effectIdsToDelete.length) {
 			// Track which condition labels were actually present for the chat message.

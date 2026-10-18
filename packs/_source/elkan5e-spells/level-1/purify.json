@@ -13,7 +13,7 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.grants.advantage.save.all",
-						"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"poisoned\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"poisoned\") || ef.name == 'Poisoned' || ef.statuses?.has(\"diseased\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"diseased\") || ef.name == 'Diseased')",
+						"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"poisoned\") || ef.system?.rider?.statuses?.has(\"poisoned\") || ef.name == 'Poisoned' || ef.statuses?.has(\"diseased\") || ef.system?.rider?.statuses?.has(\"diseased\") || ef.name == 'Diseased')",
 						"priority": 20,
 						"type": "custom"
 					}

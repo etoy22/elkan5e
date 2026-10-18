@@ -1,4 +1,5 @@
 import {
+	conditionSources,
 	createLightRegion,
 	deleteEffects,
 	drainedEffect,
@@ -376,9 +377,7 @@ export async function lesserRestoration(workflow) {
 		if (!chosen || chosen === "cancel") return;
 
 		// Remove every active effect that carries this status (handles stacked effects).
-		const toDelete = actor.effects
-			.filter((e) => e.statuses.has(chosen) && !e.disabled)
-			.map((e) => e.id);
+		const toDelete = conditionSources(actor, [chosen]).map((e) => e.id);
 		if (toDelete.length) await actor.deleteEmbeddedDocuments("ActiveEffect", toDelete);
 
 		const label = REMOVABLE.find((c) => c.id === chosen)?.label ?? chosen;

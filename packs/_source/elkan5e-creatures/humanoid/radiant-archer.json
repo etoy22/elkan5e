@@ -317,9 +317,7 @@
 			},
 			"effects": [
 				{
-					"statuses": [
-						"blinded"
-					],
+					"statuses": [],
 					"duration": {
 						"value": null,
 						"units": "seconds",
@@ -329,7 +327,8 @@
 					"flags": {
 						"dae": {
 							"specialDuration": [],
-							"transfer": true
+							"transfer": true,
+							"stackable": "none"
 						}
 					},
 					"name": "Blinded",
@@ -353,6 +352,13 @@
 								"value": 1,
 								"priority": null,
 								"type": "override"
+							},
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "blinded",
+								"phase": "final",
+								"priority": 20
 							}
 						]
 					},

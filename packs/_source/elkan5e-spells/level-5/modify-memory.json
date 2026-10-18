@@ -18,12 +18,9 @@
 			},
 			"description": "",
 			"origin": null,
-			"statuses": [
-				"charmed",
-				"incapacitated"
-			],
+			"statuses": [],
 			"tint": "#ffffff",
-			"showIcon": 1,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"flags": {
@@ -44,7 +41,22 @@
 			},
 			"system": {
 				"magical": true,
-				"changes": []
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "charmed",
+						"phase": "final",
+						"priority": 20
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "incapacitated",
+						"phase": "final",
+						"priority": 20
+					}
+				]
 			},
 			"_key": "!items.effects!txItvxlcpaIbIt5s.modifyMemoryChrm"
 		}

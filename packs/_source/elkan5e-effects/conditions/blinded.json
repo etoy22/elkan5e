@@ -6,32 +6,11 @@
 	"system": {
 		"changes": [
 			{
-				"key": "flags.midi-qol.disadvantage.attack.all",
-				"type": "override",
-				"value": "!Boolean(canSense)",
-				"phase": "initial",
-				"priority": null
-			},
-			{
-				"key": "system.abilities.dex.save.roll.mode",
-				"type": "add",
-				"value": "-1",
-				"phase": "initial",
-				"priority": null
-			},
-			{
-				"key": "flags.midi-qol.grants.advantage.attack.all",
-				"type": "override",
-				"value": "!Boolean(target?.canSense)",
-				"phase": "initial",
-				"priority": null
-			},
-			{
-				"key": "flags.midi-qol.noOpportunityAttack",
-				"type": "override",
-				"value": "1",
-				"phase": "initial",
-				"priority": null
+				"key": "macro.StatusEffect",
+				"type": "custom",
+				"value": "blinded",
+				"phase": "final",
+				"priority": 20
 			}
 		],
 		"identifier": "blinded"
@@ -48,10 +27,8 @@
 	"origin": null,
 	"tint": "#ffffff",
 	"transfer": false,
-	"statuses": [
-		"blinded"
-	],
-	"showIcon": 1,
+	"statuses": [],
+	"showIcon": 0,
 	"folder": "EjJWx7HgsvSV3TWe",
 	"_key": "!effects!elkanblinded0000"
 }

@@ -1001,9 +1001,7 @@
 					},
 					"name": "Grappled",
 					"description": "",
-					"statuses": [
-						"grappled"
-					],
+					"statuses": [],
 					"img": "modules/elkan5e/icons/conditions/grappled.svg",
 					"type": "base",
 					"system": {
@@ -1013,6 +1011,13 @@
 								"value": 0,
 								"priority": 50,
 								"type": "custom"
+							},
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "grappled",
+								"phase": "final",
+								"priority": 20
 							}
 						]
 					},
@@ -1178,16 +1183,22 @@
 					},
 					"name": "Incapacitated",
 					"description": "",
-					"statuses": [
-						"incapacitated"
-					],
+					"statuses": [],
 					"img": "modules/elkan5e/icons/conditions/incapacitated.svg",
 					"type": "base",
 					"system": {
-						"changes": []
+						"changes": [
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "incapacitated",
+								"phase": "final",
+								"priority": 20
+							}
+						]
 					},
 					"start": null,
-					"showIcon": 1,
+					"showIcon": 0,
 					"folder": null,
 					"_key": "!actors.items.effects!3u2giLGrznREpjIV.HHGzjfWe0xkzww1h.eiGJiZW9Fl1LA2D1"
 				}
