@@ -11,7 +11,7 @@
 				"activation": {
 					"type": "reaction",
 					"override": false,
-					"condition": "reaction === 'isHit' && ['mwak','msak'].includes(item.actionType)"
+					"condition": ""
 				},
 				"consumption": {
 					"scaling": {
@@ -67,7 +67,7 @@
 					"name": "",
 					"formula": ""
 				},
-				"useConditionText": "",
+				"useConditionText": "reaction === 'isHit' && ['mwak','msak'].includes(item.actionType)",
 				"useConditionReason": "",
 				"effectConditionText": "",
 				"macroData": {
@@ -175,7 +175,7 @@
 						{
 							"custom": {
 								"enabled": true,
-								"formula": "@scale.trickery-domain.misdirection"
+								"formula": "@scale.deceiver.misdirection"
 							},
 							"number": null,
 							"denomination": null,
@@ -240,7 +240,12 @@
 		},
 		"uses": {
 			"spent": 0,
-			"recovery": [],
+			"recovery": [
+				{
+					"period": "lr",
+					"type": "recoverAll"
+				}
+			],
 			"max": "3"
 		},
 		"advancement": [],
@@ -277,7 +282,6 @@
 			"onUseMacroName": "",
 			"effectActivation": false,
 			"itemCondition": "",
-			"reactionCondition": "reaction === 'isHit' && ['mwak','msak'].includes(item.actionType)",
 			"otherCondition": "",
 			"effectCondition": "",
 			"rollAttackPerTarget": "default",

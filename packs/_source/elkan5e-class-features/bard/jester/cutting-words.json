@@ -32,7 +32,7 @@
 					"type": "reaction",
 					"value": null,
 					"override": false,
-					"condition": "['isHit','isSkill'].includes(reaction)"
+					"condition": ""
 				},
 				"consumption": {
 					"scaling": {
@@ -81,7 +81,7 @@
 					"name": "Reduce Dice",
 					"formula": "1@scale.bard.inspiration"
 				},
-				"useConditionText": "",
+				"useConditionText": "reaction === 'isHit'",
 				"forceDialog": false,
 				"effectConditionText": "",
 				"name": "",
@@ -103,7 +103,6 @@
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
 			"effectCondition": "",
-			"reactionCondition": "['isHit','isSkill'].includes(reaction)",
 			"otherCondition": "",
 			"AoETargetType": "any",
 			"autoTarget": "default"

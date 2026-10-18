@@ -10,8 +10,8 @@
 				"type": "utility",
 				"_id": "gbMdBvd8cxdX7k5l",
 				"activation": {
-					"type": "action",
-					"value": null,
+					"type": "reaction",
+					"value": 1,
 					"override": false
 				},
 				"consumption": {
@@ -55,7 +55,7 @@
 					"name": "",
 					"formula": "1d20+@abilities.int.mod"
 				},
-				"useConditionText": "",
+				"useConditionText": "['isAttacked','isSave'].includes(reaction) && workflow?.item?.type === 'spell'",
 				"effectConditionText": "",
 				"macroData": {
 					"name": "",
@@ -152,7 +152,6 @@
 			"rollAttackPerTarget": "default",
 			"removeAttackDamageButtons": "default",
 			"itemCondition": "",
-			"reactionCondition": "workflow?.item?.type === 'spell'",
 			"otherCondition": "",
 			"effectCondition": ""
 		}

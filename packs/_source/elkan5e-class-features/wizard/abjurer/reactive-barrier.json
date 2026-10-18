@@ -22,8 +22,8 @@
 			},
 			"disabled": false,
 			"duration": {
-				"value": null,
-				"units": "seconds",
+				"value": 1,
+				"units": "rounds",
 				"expiry": "sourceEnd",
 				"expired": false
 			},
@@ -38,10 +38,11 @@
 			"system": {
 				"changes": [
 					{
-						"key": "macro.execute",
-						"value": "Compendium.elkan5e.elkan5e-macros.Macro.SKnbzS7hWXWrTyk1",
-						"priority": 20,
-						"type": "custom"
+						"key": "system.attributes.ac.bonus",
+						"value": "3",
+						"type": "add",
+						"phase": "initial",
+						"priority": 20
 					}
 				],
 				"magical": true
@@ -59,7 +60,6 @@
 			"effectActivation": false,
 			"forceCEOff": false,
 			"itemCondition": "",
-			"reactionCondition": "reaction === 'isHit'",
 			"otherCondition": "",
 			"effectCondition": "",
 			"rollAttackPerTarget": "default",
@@ -208,7 +208,7 @@
 					"formula": ""
 				},
 				"name": "",
-				"useConditionText": "",
+				"useConditionText": "reaction === 'isHit' || item.identifier === 'magic-missile'",
 				"effectConditionText": "",
 				"macroData": {
 					"name": "",

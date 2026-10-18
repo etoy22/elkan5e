@@ -26,7 +26,6 @@
 		"midi-qol": {
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
-			"reactionCondition": "reaction === 'isHit' && actor.items.some(i => i.system?.equipped && ((i.type === 'equipment' && i.system?.type?.value === 'shield') || (i.type === 'weapon' && ['mwak','msak'].includes(i.system?.actionType))))",
 			"effectCondition": "",
 			"removeAttackDamageButtons": "default",
 			"otherCondition": ""
@@ -62,17 +61,11 @@
 				"activation": {
 					"type": "reaction",
 					"value": 1,
-					"condition": "reaction !== 'isHit' && actor.items.some(i => i.system?.equipped && ((i.type === 'equipment' && i.system?.type?.value === 'shield') || (i.type === 'weapon' && ['mwak','msak'].includes(i.system?.actionType))))",
+					"condition": "",
 					"override": false
 				},
 				"consumption": {
-					"targets": [
-						{
-							"type": "itemUses",
-							"value": "1",
-							"target": ""
-						}
-					],
+					"targets": [],
 					"scaling": {
 						"allowed": false,
 						"max": ""
@@ -133,7 +126,8 @@
 						"max": null
 					},
 					"identifier": ""
-				}
+				},
+				"useConditionText": "false"
 			}
 		},
 		"identifier": "fighting-style-protection",

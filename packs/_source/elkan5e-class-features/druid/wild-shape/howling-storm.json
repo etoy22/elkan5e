@@ -117,18 +117,7 @@
 					"dispositionFilter": -1,
 					"excludeSource": true,
 					"oncePerTurn": false,
-					"rules": [
-						{
-							"trigger": "turnStart",
-							"action": "applyEffect",
-							"targetId": "u0OEHqtST3LTBCTo"
-						},
-						{
-							"trigger": "turnEnd",
-							"action": "removeEffect",
-							"targetId": "u0OEHqtST3LTBCTo"
-						}
-					],
+					"rules": [],
 					"wallRestriction": "move",
 					"regionVisibility": 2
 				},
@@ -138,7 +127,9 @@
 						"_id": "iXYMpdafHogS5XR5",
 						"type": "applyActiveEffect",
 						"config": {
-							"effects": [],
+							"effects": [
+								"Compendium.elkan5e.elkan5e-class-features.Item.egJvmduymeZBW7Uf.ActiveEffect.u0OEHqtST3LTBCTo"
+							],
 							"sizes": [],
 							"types": []
 						},
@@ -167,9 +158,9 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.disadvantage.attack.rwak",
+						"key": "system.rolls.attack.rwak.mode",
 						"type": "add",
-						"value": 1,
+						"value": "-1",
 						"phase": "initial",
 						"priority": null,
 						"_id": "68QCsivnhmGHQMb5",
@@ -177,9 +168,9 @@
 						"replacement": ""
 					},
 					{
-						"key": "flags.midi-qol.disadvantage.attack.mwak",
+						"key": "system.rolls.attack.mwak.mode",
 						"type": "add",
-						"value": 1,
+						"value": "-1",
 						"phase": "initial",
 						"priority": null,
 						"_id": "hIvGOh8o3gyJcwjy",
@@ -187,10 +178,10 @@
 						"replacement": ""
 					},
 					{
-						"key": "system.attributes.movement.all",
-						"type": "custom",
-						"value": "/2",
-						"phase": "final",
+						"key": "system.attributes.movement.multiplier",
+						"type": "multiply",
+						"value": "0.5",
+						"phase": "initial",
 						"priority": null,
 						"_id": "UBhQ5tbeVA4Hh0r5",
 						"conditions": "{}",

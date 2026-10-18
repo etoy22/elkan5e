@@ -122,7 +122,7 @@
 					"formula": "",
 					"name": ""
 				},
-				"useConditionText": "",
+				"useConditionText": "reaction === 'isDamaged' && fromUuidSync(targetUuid)?.actor?.statuses?.has('raging') && !workflow?.activity?.target?.template?.type && ['acid','cold','fire','force','lightning','necrotic','radiant','thunder'].some(d => damageTypes?.[d])",
 				"useConditionReason": "",
 				"effectConditionText": "",
 				"macroData": {
@@ -359,7 +359,6 @@
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
 			"effectCondition": "",
-			"reactionCondition": "reaction === 'isDamaged' && actor.statuses?.has('raging') && workflow?.damageItem?.damageDetail?.some(d => ['acid','cold','fire','force','lightning','necrotic','radiant','thunder'].includes(d.type))",
 			"AoETargetType": "any",
 			"autoTarget": "default",
 			"removeAttackDamageButtons": "default",

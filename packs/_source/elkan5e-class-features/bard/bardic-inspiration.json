@@ -12,7 +12,6 @@
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
 			"effectCondition": "",
-			"reactionCondition": "['isMissed','isSave','isSkill'].includes(reaction) && tokenUuid && workflow?.token?.uuid && tokenUuid !== workflow?.token?.uuid",
 			"AoETargetType": "any",
 			"AoETargetTypeIncludeSelf": true,
 			"autoTarget": "default",
@@ -75,7 +74,7 @@
 				"activation": {
 					"type": "reaction",
 					"value": null,
-					"condition": "['isMissed','isSave','isSkill'].includes(reaction) && tokenUuid && workflow?.token?.uuid && tokenUuid !== workflow?.token?.uuid",
+					"condition": "",
 					"override": false
 				},
 				"consumption": {
@@ -155,7 +154,8 @@
 				},
 				"name": "",
 				"img": "",
-				"appliedEffects": []
+				"appliedEffects": [],
+				"useConditionText": "false"
 			}
 		},
 		"identifier": "bardic-inspiration",

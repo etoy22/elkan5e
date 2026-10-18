@@ -27,7 +27,6 @@
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
 			"effectCondition": "",
-			"reactionCondition": "reaction === 'isSave' && ['int','wis','cha'].includes(workflow?.save?.ability) && !workflow?.save?.success && !workflow?.save?.proficient",
 			"AoETargetType": "any",
 			"AoETargetTypeIncludeSelf": true,
 			"autoTarget": "default",
@@ -57,7 +56,7 @@
 			"value": "class",
 			"subtype": ""
 		},
-		"requirements": "Sorcerer 10",
+		"requirements": "Sorcerer 9",
 		"activities": {
 			"dnd5eactivity000": {
 				"_id": "dnd5eactivity000",
@@ -130,7 +129,8 @@
 					"name": "",
 					"prompt": false,
 					"visible": false
-				}
+				},
+				"useConditionText": "reaction === 'isSaveFail' && [...(workflow?.saveActivity?.save?.ability ?? [])].some(a => ['int','wis','cha'].includes(a) && !target?.abilities?.[a]?.proficient)"
 			}
 		},
 		"identifier": "shield-of-will",
