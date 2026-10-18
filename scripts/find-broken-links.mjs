@@ -65,7 +65,9 @@ for (const filePath of files) {
 	})(json);
 }
 
-console.error(`Indexed ${files.length} files across ${idsByPack.size} packs, ${idToPacks.size} unique ids.`);
+console.error(
+	`Indexed ${files.length} files across ${idsByPack.size} packs, ${idToPacks.size} unique ids.`,
+);
 
 // Now scan every string field for @UUID[...] and @Compendium[...] references.
 const uuidRe = /@UUID\[([^\]]+)\]/g;
@@ -89,7 +91,7 @@ function parseUuidRef(ref) {
 	return { scope, packName, id, anchor, raw: ref };
 }
 
-for (const { rel, packName: sourcePack, json } of docs) {
+for (const { rel, json } of docs) {
 	const strings = [];
 	collectStrings(json, [], strings);
 	for (const { path: fieldPath, value } of strings) {
@@ -105,7 +107,12 @@ for (const { rel, packName: sourcePack, json } of docs) {
 				if (info.scope !== "elkan5e") continue; // external module reference, skip
 				const packIds = idsByPack.get(info.packName);
 				if (!packIds) {
-					broken.push({ file: rel, field: fieldPath, ref: full, reason: `unknown pack "${info.packName}"` });
+					broken.push({
+						file: rel,
+						field: fieldPath,
+						ref: full,
+						reason: `unknown pack "${info.packName}"`,
+					});
 					continue;
 				}
 				if (!packIds.has(info.id)) {
