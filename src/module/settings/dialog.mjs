@@ -7,9 +7,7 @@ const DialogV2 = foundry.applications.api.DialogV2;
  * @returns {Promise<unknown>} Promise resolution result.
  */
 export async function getModuleVersion() {
-	const response = await fetch("modules/elkan5e/module.json");
-	const moduleData = await response.json();
-	return moduleData.version;
+	return game.modules.get("elkan5e")?.version;
 }
 
 /**
@@ -35,7 +33,6 @@ export async function showUpdateDialog() {
 				label: "Update",
 				action: "update",
 				callback: (_event, button, dialog) => {
-					game.settings.set("elkan5e", "v13Show", false);
 					const form =
 						button.form ??
 						dialog?.element?.querySelector?.("#elkan-update-form") ??
@@ -46,10 +43,6 @@ export async function showUpdateDialog() {
 					}
 
 					const data = new FormData(form);
-					const _updateModeSelect = form.querySelector('[name="update-mode"]');
-					const removeDuplicatesCheckbox = form.querySelector(
-						'[name="remove-duplicates"]',
-					);
 					const formProcessing = {
 						actorFeatures: data.get("actor-features") ?? "none",
 						actorItems: data.get("actor-items") ?? "none",
@@ -57,8 +50,8 @@ export async function showUpdateDialog() {
 						npcFeatures: data.get("npc-features") ?? "none",
 						npcItems: data.get("npc-items") ?? "none",
 						npcSpells: data.get("npc-spells") ?? "none",
-						actorDuplicate: removeDuplicatesCheckbox?.checked,
-						npcDuplicate: removeDuplicatesCheckbox?.checked,
+						actorDuplicate: data.has("remove-duplicates"),
+						npcDuplicate: data.has("remove-duplicates-npc"),
 					};
 					const selectedModes = [
 						formProcessing.actorFeatures,
@@ -96,19 +89,11 @@ export async function startDialog() {
 	const SAVED_VERSION = game.settings.get("elkan5e", "moduleVersion");
 	const DIALOG_SHOWN = game.settings.get("elkan5e", "dialogShown");
 	const MODULE_VERSION = await getModuleVersion();
-	let saved_version = SAVED_VERSION.split(".");
 	if (SAVED_VERSION !== MODULE_VERSION || !DIALOG_SHOWN) {
 		let content = `
 				<h2>${game.i18n.localize("elkan5e.dialog.content.header")}</h2>
 				<p>${game.i18n.localize("elkan5e.dialog.content.headerText")}</p>
 			`;
-
-		if (parseInt(saved_version[1]) <= 12 && parseInt(saved_version[2]) < 9) {
-			content += `
-					<h4>${game.i18n.localize("elkan5e.dialog.content.update")}</h4>
-					<p>${game.i18n.localize("elkan5e.dialog.content.updateNotice")}</p>
-				`;
-		}
 
 		content += `
 				<h4>${game.i18n.localize("elkan5e.dialog.content.joinUs")}</h4>
@@ -130,7 +115,8 @@ export async function startDialog() {
 		});
 
 		console.log("Elkan 5e dialog shown:", entryDialog);
-		await game.settings.set("elkan5e", "dialogShown", entryDialog);
+		// DialogV2.confirm resolves null when closed via the X; the setting is Boolean.
+		await game.settings.set("elkan5e", "dialogShown", entryDialog === true);
 		await game.settings.set("elkan5e", "moduleVersion", MODULE_VERSION);
 	} else {
 		await game.settings.set("elkan5e", "moduleVersion", MODULE_VERSION);

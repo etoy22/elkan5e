@@ -35,11 +35,5 @@ export const sizeIndex = (actor) => {
 	const idx = SIZE_ORDER.indexOf(size);
 	const base = idx === -1 ? SIZE_ORDER.indexOf("med") : idx;
 	const powerfulBuild = hasSpecialTrait(actor, "powerful build");
-	const result = powerfulBuild ? Math.min(base + 1, SIZE_ORDER.length - 1) : base;
-
-	console.log(
-		`Elkan 5e | sizeIndex actor="${actor?.name ?? "Unknown"}" size="${size}" base=${base} powerfulBuild=${powerfulBuild} result=${result}`,
-	);
-
-	return result;
+	return powerfulBuild ? Math.min(base + 1, SIZE_ORDER.length - 1) : base;
 };

@@ -5,6 +5,31 @@
 
 import { CONDITION_EFFECT_ID } from "../rules/condition/data.mjs";
 
+const CHANGE_TYPES = ["custom", "multiply", "add", "downgrade", "upgrade", "override"];
+
+/**
+ * Converts pre-v14 effect options (top-level `changes` with numeric `mode`, `icon`, `label`) to the
+ * current fields, so they replace the template's values instead of being dropped.
+ *
+ * @param {Object} options - Effect options.
+ * @returns {Object} Options using `system.changes`, `img`, and `name`.
+ */
+function normalizeEffectOptions(options) {
+	const { changes, icon, label, ...rest } = options;
+	if (icon && !rest.img) rest.img = icon;
+	if (label && !rest.name) rest.name = label;
+	if (changes) {
+		rest.system = {
+			...(rest.system ?? {}),
+			changes: changes.map(({ mode, ...change }) => ({
+				...change,
+				type: change.type ?? CHANGE_TYPES[mode] ?? "add",
+			})),
+		};
+	}
+	return rest;
+}
+
 /**
  * Create an active effect from the elkan5e-effects compendium and merge with custom options.
  *
@@ -53,11 +78,14 @@ export async function createEffect(effectId, customOptions = {}) {
 			// Condition ids (e.g. "incapacitated") resolve to the generated condition effects
 			doc ??= await compendium.getDocument(CONDITION_EFFECT_ID(effectId)).catch(() => null);
 
-			// If not found by ID, try by name
+			// If not found by ID, try by identifier or name
 			if (!doc) {
-				const index = await compendium.getIndex();
+				const index = await compendium.getIndex({ fields: ["system.identifier"] });
 				const foundEntry = index.find(
-					(entry) => entry.name === effectId || entry._id === effectId,
+					(entry) =>
+						entry.system?.identifier === effectId ||
+						entry.name === effectId ||
+						entry._id === effectId,
 				);
 				if (foundEntry) {
 					doc = await compendium.getDocument(foundEntry._id);
@@ -77,7 +105,9 @@ export async function createEffect(effectId, customOptions = {}) {
 	delete effectData._id;
 
 	// Merge custom options
-	effectData = foundry.utils.mergeObject(effectData, customOptions, { insertKeys: true });
+	effectData = foundry.utils.mergeObject(effectData, normalizeEffectOptions(customOptions), {
+		insertKeys: true,
+	});
 
 	return effectData;
 }
@@ -102,7 +132,7 @@ export async function createGoodberryDurationEffect(
 		label: `${item.name} Duration (Level ${level})`,
 		icon: item.img,
 		origin: item.uuid,
-		duration: { value: 1, units: "hour" },
+		duration: { value: 1, units: "hours" },
 		changes: [],
 		flags: {
 			elkan5e: { goodberryItemId: linkedItemUuid },
@@ -119,7 +149,7 @@ export async function createGoodberryDurationEffect(
  */
 export async function createDelayedSurgeEffect(customOptions = {}) {
 	const defaultOptions = {
-		duration: { value: 1, units: "hour" },
+		duration: { value: 1, units: "hours" },
 		flags: {
 			dae: {
 				selfTarget: true,
@@ -128,81 +158,6 @@ export async function createDelayedSurgeEffect(customOptions = {}) {
 		},
 	};
 	return createEffect("delayed-surge", { ...defaultOptions, ...customOptions });
-}
-
-/**
- * Create the Drained effect.
- *
- * @param {Object} actor - The actor to apply the effect to
- * @param {number} damage - The damage value
- * @param {string} name - The effect name
- * @param {string} img - The effect image
- * @param {string} uuid - The origin UUID
- * @returns {Promise<Object>} The effect data
- */
-export async function createDrainedEffect(
-	actor,
-	damage,
-	name = "Drained",
-	img = "modules/elkan5e/icons/drained.svg",
-	uuid = null,
-) {
-	const effectName = name;
-	const effectImg = img;
-	const effectOrigin = uuid || null;
-
-	const existingEffect = actor.effects.find(
-		(e) => e.name === effectName && e.img === effectImg && e.origin === effectOrigin,
-	);
-
-	const newValue = -Math.abs(damage); // Ensure negative number
-
-	if (existingEffect) {
-		const updatedChanges = existingEffect.changes.map((change) => {
-			if (change.key === "system.attributes.hp.tempmax") {
-				const oldVal = parseFloat(change.value) || 0;
-				const combinedValue = oldVal + newValue;
-
-				return {
-					...change,
-					value: combinedValue.toString(),
-				};
-			}
-			return change;
-		});
-
-		await existingEffect.update({ changes: updatedChanges });
-		return null; // Return null if we updated existing effect
-	}
-
-	const defaultOptions = {
-		name: effectName,
-		img: effectImg,
-		origin: effectOrigin,
-		changes: [
-			{
-				key: "system.attributes.hp.tempmax",
-				mode: 2,
-				value: newValue.toString(),
-				priority: 20,
-			},
-		],
-		disabled: false,
-		statuses: ["drained"],
-		flags: {
-			dae: {
-				enableCondition: "",
-				disableCondition: "",
-				disableIncapacitated: false,
-				selfTarget: false,
-				selfTargetAlways: false,
-				dontApply: false,
-				stackable: "multi",
-			},
-		},
-	};
-
-	return createEffect("drained", defaultOptions);
 }
 
 /**
@@ -266,7 +221,6 @@ export default {
 	createEffect,
 	createGoodberryDurationEffect,
 	createDelayedSurgeEffect,
-	createDrainedEffect,
 	createClimberEffect,
 	createGrappledEffect,
 };

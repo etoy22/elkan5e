@@ -1,17 +1,12 @@
 const { getProperty, setProperty } = foundry.utils;
-// Process the form selections from the Elkan update dialog
-/**
- * Handles process Elkan Update Form for module settings.
- *
- * @param {*} updates - Updates.
- * @returns {Promise<void>} Promise resolution result.
- */
 
 /**
- * Handles get Actors To Process for module settings.
+ * Removes spells and features that are exact duplicates of another item on the same actor.
  *
- * @param {*} updateMode - Update Mode.
- * @returns {Promise<unknown>} Promise resolution result.
+ * @param {object} options - Which actor types to process.
+ * @param {boolean} options.actor - Process player characters.
+ * @param {boolean} options.npc - Process NPCs.
+ * @returns {Promise<void>} Promise resolution result.
  */
 async function removeDuplicateItems({ actor = false, npc = false }) {
 	if (!actor && !npc) return;
@@ -68,10 +63,11 @@ async function removeDuplicateItems({ actor = false, npc = false }) {
 			const keptItems = [];
 
 			for (const item of items) {
-				const itemObj = item.toObject();
+				// Ignore sheet order; advancement flags still count so a tracked copy isn't removed.
+				const { sort: _sort, ...itemObj } = item.toObject();
 
 				const existingMatch = keptItems.find((kept) => {
-					const keptObj = kept.toObject();
+					const { sort: _keptSort, ...keptObj } = kept.toObject();
 					return deepEqualIgnoringMeta(keptObj, itemObj);
 				});
 
@@ -131,8 +127,6 @@ async function removeDuplicateItems({ actor = false, npc = false }) {
 				);
 			}
 		}
-
-		console.groupEnd();
 	} else {
 		console.log("No duplicate items found.");
 	}
@@ -144,21 +138,28 @@ async function removeDuplicateItems({ actor = false, npc = false }) {
 	);
 }
 
+/**
+ * Processes the form selections from the Elkan update dialog.
+ *
+ * @param {*} updates - Updates.
+ * @returns {Promise<void>} Promise resolution result.
+ */
 export async function processElkanUpdateForm(updates) {
 	ui.notifications.info("Elkan 5e update process started. See console for details.");
 	await removeDuplicateItems({ actor: updates.actorDuplicate, npc: updates.npcDuplicate });
 
-	migrateActorItems({
+	// Run sequentially so migrations don't edit the same actors concurrently.
+	await migrateActorItems({
 		players: updates.actorItems,
 		npcs: updates.npcItems,
 	});
 
-	migrateActorSpells({
+	await migrateActorSpells({
 		players: updates.actorSpells,
 		npcs: updates.npcSpells,
 	});
 
-	migrateActorFeatures({
+	await migrateActorFeatures({
 		players: updates.actorFeatures,
 		npcs: updates.npcFeatures,
 	});
@@ -326,26 +327,17 @@ export async function restorePropertiesToData(newData, savedProps, mode, preserv
 		);
 	}
 
-	const originalSource = savedProps.sourceBook ?? null;
+	// Preserve actor-specific state (quantity, equipped, prepared, ...) regardless of the
+	// old item's source, so "Update All" doesn't reset non-Elkan items to compendium defaults.
+	for (const key of preserveProperties) {
+		if (key !== "img" && key !== "sourceBook" && key in savedProps) {
+			if (savedProps[key] === undefined || savedProps[key] === null || savedProps[key] === "")
+				continue;
 
-	if (
-		(mode === "update-Elkan" && originalSource === "Elkan 5e") ||
-		(mode === "update-All" && originalSource === "Elkan 5e")
-	) {
-		for (const key of preserveProperties) {
-			if (key !== "img" && key !== "sourceBook" && key in savedProps) {
-				if (
-					savedProps[key] === undefined ||
-					savedProps[key] === null ||
-					savedProps[key] === ""
-				)
-					continue;
-
-				if (key === "name") {
-					newData.name = savedProps.name;
-				} else {
-					setProperty(newData.system, key, savedProps[key]);
-				}
+			if (key === "name") {
+				newData.name = savedProps.name;
+			} else {
+				setProperty(newData.system, key, savedProps[key]);
 			}
 		}
 	}
@@ -435,14 +427,34 @@ function deepEqualIgnoringMeta(a, b) {
  * @returns Operation result.
  */
 function itemsAreFullyIdentical(oldItem, newItem) {
-	// If the only difference is the identifier being assigned to the compendium item, treat as identical
-	const oldObj = oldItem.toObject();
-	const newObj = newItem.toObject();
-	return deepEqualIgnoringMeta(oldObj, newObj);
+	return deepEqualIgnoringMeta(toComparableObject(oldItem), toComparableObject(newItem));
+}
+
+/**
+ * Item data with placement and actor-relationship fields stripped, so an actor's copy
+ * and the compendium copy compare equal when their content matches.
+ *
+ * @param {Item} item - Item document to process.
+ * @returns {object} Comparable item data.
+ */
+function toComparableObject(item) {
+	const obj = item.toObject();
+	delete obj.sort;
+	delete obj.folder;
+	delete obj.flags?.dnd5e?.advancementOrigin;
+	delete obj.flags?.dnd5e?.advancementRoot;
+	if (obj.flags?.dnd5e && Object.keys(obj.flags.dnd5e).length === 0) delete obj.flags.dnd5e;
+	return obj;
 }
 
 // ---------- main migration ----------
 
+/**
+ * Handles get Actors To Process for module settings.
+ *
+ * @param {*} updateMode - Update Mode.
+ * @returns {Promise<unknown>} Promise resolution result.
+ */
 export async function getActorsToProcess(updateMode) {
 	return game.actors.filter((actor) => {
 		if (actor.type === "character" && updateMode.players !== "none") return true;
@@ -511,99 +523,63 @@ export async function migrateActorByType({
 		});
 
 		const actorItems = actor.items.filter((i) => types.includes(i.type));
-		const itemsToRemove = [];
-		const itemsToAdd = [];
+		// Each replacement keeps its old item and saved properties together, so a name
+		// match with a different identifier (or two items sharing one) can't lose data.
+		const replacements = [];
 
 		for (const actorItem of actorItems) {
 			const actorId = getItemIdentifier(actorItem);
 			const matchedDocs = docIdMap.get(actorId) ?? [];
 
+			let matchedDoc;
 			if (matchedDocs.length === 1) {
-				const matchedDoc = matchedDocs[0];
-				if (mode === "update-Elkan" && matchedDoc.system?.source?.book !== "Elkan 5e")
-					continue;
-
-				if (itemsAreFullyIdentical(actorItem, matchedDoc)) {
-					reportByActor
-						.get(actor.id)
-						.skipped.push({ item: actorItem.name, reason: "Item is identical" });
-					totals.skipped++;
-					continue;
-				}
-
-				itemsToRemove.push(actorItem);
-				itemsToAdd.push(matchedDoc);
-			} else if (matchedDocs.length > 1) {
-				if (docNameMap.has(actorItem.name)) {
-					const docByName = docNameMap.get(actorItem.name);
-					if (mode === "update-Elkan" && docByName.system?.source?.book !== "Elkan 5e")
-						continue;
-
-					if (itemsAreFullyIdentical(actorItem, docByName)) {
-						reportByActor
-							.get(actor.id)
-							.skipped.push({ item: actorItem.name, reason: "Item is identical" });
-						totals.skipped++;
-						continue;
-					}
-
-					itemsToRemove.push(actorItem);
-					itemsToAdd.push(docByName);
-				} else {
-					reportByActor.get(actor.id).skipped.push({
-						item: actorItem.name,
-						reason: `Ambiguous identifier '${actorId}' and no name match`,
-					});
-					totals.skipped++;
-					continue;
-				}
+				matchedDoc = matchedDocs[0];
+			} else if (docNameMap.has(actorItem.name)) {
+				matchedDoc = docNameMap.get(actorItem.name);
 			} else {
-				// no identifier matches at all
-				if (docNameMap.has(actorItem.name)) {
-					const docByName = docNameMap.get(actorItem.name);
-					if (mode === "update-Elkan" && docByName.system?.source?.book !== "Elkan 5e")
-						continue;
-
-					if (itemsAreFullyIdentical(actorItem, docByName)) {
-						reportByActor
-							.get(actor.id)
-							.skipped.push({ item: actorItem.name, reason: "Item is identical" });
-						totals.skipped++;
-						continue;
-					}
-
-					itemsToRemove.push(actorItem);
-					itemsToAdd.push(docByName);
-				} else {
-					reportByActor.get(actor.id).skipped.push({
-						item: actorItem.name,
-						reason: `No matching doc by id '${actorId}' or name`,
-					});
-					totals.skipped++;
-					continue;
-				}
+				reportByActor.get(actor.id).skipped.push({
+					item: actorItem.name,
+					reason:
+						matchedDocs.length > 1
+							? `Ambiguous identifier '${actorId}' and no name match`
+							: `No matching doc by id '${actorId}' or name`,
+				});
+				totals.skipped++;
+				continue;
 			}
+
+			if (mode === "update-Elkan" && matchedDoc.system?.source?.book !== "Elkan 5e") continue;
+
+			if (itemsAreFullyIdentical(actorItem, matchedDoc)) {
+				reportByActor
+					.get(actor.id)
+					.skipped.push({ item: actorItem.name, reason: "Item is identical" });
+				totals.skipped++;
+				continue;
+			}
+
+			const [savedProps] = Object.values(
+				await savePropertiesForTransfer([actorItem], mode, preserveProperties),
+			);
+			replacements.push({ oldItem: actorItem, newItem: matchedDoc, savedProps });
 		}
 
-		// Save custom properties, then delete old items
-		const savedProps = await savePropertiesForTransfer(itemsToRemove, mode, preserveProperties);
-		if (itemsToRemove.length) {
+		// Delete old items, then re-create each replacement
+		if (replacements.length) {
 			await actor.deleteEmbeddedDocuments(
 				"Item",
-				itemsToRemove.map((i) => i.id),
+				replacements.map((r) => r.oldItem.id),
 			);
 		}
 
-		// Re-create each new item
-		for (const newItem of itemsToAdd) {
+		for (const { oldItem, newItem, savedProps } of replacements) {
 			const newData = structuredClone(newItem.toObject());
-			const id = getItemIdentifier(newItem);
-			const oldItem = itemsToRemove.find((i) => getItemIdentifier(i) === id);
+			const id = savedProps.identifier;
 
-			await restorePropertiesToData(newData, savedProps[id], mode, preserveProperties);
+			await restorePropertiesToData(newData, savedProps, mode, preserveProperties);
 
 			// === Custom 'uses' preservation ===
-			if (preserveProperties?.includes?.("uses") && oldItem) {
+			if (preserveProperties?.includes?.("uses")) {
 				const oldActivities = foundry.utils.deepClone(oldItem.system?.activities ?? {});
 				const newActivities = newData.system?.activities ?? {};
 
@@ -651,32 +627,17 @@ export async function migrateActorByType({
 				}
 			}
 
-			const createdItems = await actor.createEmbeddedDocuments("Item", [newData]);
+			// restorePropertiesToData has already applied the preserved name to newData
+			await actor.createEmbeddedDocuments("Item", [newData]);
+			const namePreserved = preserveProperties?.includes?.("name") && !!savedProps.name;
 
-			// Optional: preserve original name
-			let namePreserved = false;
-			if (preserveProperties?.includes?.("name") && savedProps[id]?.name) {
-				await createdItems[0].update({ name: savedProps[id].name });
-				namePreserved = true;
-			}
-
-			// report
-			if (oldItem) {
-				reportByActor.get(actor.id).updated.push({
-					from: oldItem.name,
-					to: namePreserved ? savedProps[id].name : newData.name,
-					id,
-					namePreserved,
-				});
-				totals.updated++;
-			} else {
-				reportByActor.get(actor.id).created.push({
-					name: namePreserved ? savedProps[id].name : newData.name,
-					id,
-					namePreserved,
-				});
-				totals.created++;
-			}
+			reportByActor.get(actor.id).updated.push({
+				from: oldItem.name,
+				to: newData.name,
+				id,
+				namePreserved,
+			});
+			totals.updated++;
 		}
 
 		// progress tick
@@ -808,7 +769,8 @@ export async function migrateActorSpells(
 		compendiums: [compFeatures, compSpells],
 		types: ["spell"],
 		updateMode,
-		preserveProperties: ["name", "system.uses", "system.preparation", "uses", "preparation"],
+		// dnd5e 5.0+ replaced system.preparation with system.method / system.prepared.
+		preserveProperties: ["name", "uses", "method", "prepared"],
 		progressLabel: "Spells",
 	});
 }
@@ -830,15 +792,7 @@ export async function migrateActorItems(
 		compendiums: [compEquip],
 		types: ["consumable", "equipment", "loot", "tool", "weapon"],
 		updateMode,
-		preserveProperties: [
-			"name",
-			"system.quantity",
-			"system.attunement",
-			"system.equipped",
-			"quantity",
-			"attunement",
-			"equipped",
-		],
+		preserveProperties: ["name", "quantity", "attunement", "attuned", "equipped"],
 
 		progressLabel: "Items",
 	});
