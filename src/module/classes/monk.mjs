@@ -102,8 +102,15 @@ const STILLNESS_STATUSES = ["charmed", "confused", "frightened", "goaded"];
  * @param {Actor} actor - Monk using the feature.
  * @returns {ActiveEffect[]}
  */
+// DAE's auto-created status copies (Dependent Conditions) are left out: they mirror another
+// effect and come back while that effect exists.
 const stillnessEffects = (actor) =>
-	actor.effects.filter((e) => e.active && STILLNESS_STATUSES.some((id) => e.statuses?.has(id)));
+	actor.effects.filter(
+		(e) =>
+			e.active &&
+			!e.flags?.dae?.autoCreated &&
+			STILLNESS_STATUSES.some((id) => e.statuses?.has(id)),
+	);
 
 /**
  * Runs Stillness of Mind class feature automation: ends one charmed, confused, frightened or
@@ -181,8 +188,10 @@ export async function stillnessOfMindTurnStart(combat) {
  */
 export async function elementalAttunement(args) {
 	const [action, actorId, element] = args;
-	const actor = await game.actors.get(actorId);
-	const monkItem = actor.items.find((i) => i.name === "Monk");
+	// DAE's last argument carries the actor's UUID, which also resolves unlinked tokens.
+	const actorUuid = args.at(-1)?.actorUuid;
+	const actor = (actorUuid ? await fromUuid(actorUuid) : null) ?? game.actors.get(actorId);
+	const monkItem = actor?.classes?.monk;
 
 	if (!monkItem) return;
 
@@ -312,12 +321,8 @@ export async function elementalAttunement(args) {
 			await actor.createEmbeddedDocuments("Item", [feature.toObject()]);
 		}
 	} else if (action === "off") {
-		// Remove attunement effects and items
-		for (const effectLabel of config.effectsToRemove) {
-			const effect = actor.effects.find((i) => i.name === effectLabel);
-			if (effect) await effect.delete();
-		}
-
+		// Remove only this element's items. Switching elements turns this attunement off while the
+		// new one is being applied, so the other attunement effects must be left alone.
 		for (const itemName of config.itemsToRemoveOnDisable) {
 			const item = actor.items.find((i) => i.name === itemName);
 			if (item) await item.delete();

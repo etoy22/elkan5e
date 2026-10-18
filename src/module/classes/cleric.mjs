@@ -38,16 +38,18 @@ export async function infusedHealer(workflow) {
 	const targets = getWorkflowTargets(workflow);
 	if (targets.some((t) => t.actor.id === caster.id)) return;
 
-	const healAmount = "" + (2 + item.system.level);
+	// Use the level the spell was cast at, not its base level.
+	const castLevel = Number(
+		workflow.castData?.castLevel ?? workflow.spellLevel ?? item.system.level,
+	);
+	const healAmount = "" + (2 + castLevel);
 
 	// Heal the caster
 	const itemData = {
 		type: "feat",
 		img: "icons/magic/light/orbs-hand-gray.webp",
 	};
-	const damageRoll = await new Roll(healAmount, {}, { type: "healing" }).evaluate({
-		async: true,
-	});
+	const damageRoll = await new Roll(healAmount, {}, { type: "healing" }).evaluate();
 	new MidiQOL.DamageOnlyWorkflow(
 		caster,
 		casterToken,
@@ -177,9 +179,7 @@ export async function healingOverflow(workflow) {
 		img: "icons/magic/light/explosion-star-glow-silhouette.webp",
 	};
 
-	const damageRoll = await new Roll(`${maxOverflow}`, {}, { type: "healing" }).evaluate({
-		async: true,
-	});
+	const damageRoll = await new Roll(`${maxOverflow}`, {}, { type: "healing" }).evaluate();
 
 	new DialogV2({
 		window: { title: "Healing Overflow" },
@@ -217,9 +217,10 @@ export async function healingOverflow(workflow) {
  * Fires the Holy Strike activity once per turn, on the first hit only.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @param {Item} macroItem - The Holy Strike item.
  * @returns {Promise<void>} Promise resolution result.
  */
-export async function holyStrike(workflow) {
+export async function holyStrike(workflow, macroItem) {
 	try {
 		if (!workflow.actor || workflow.hitTargets.size === 0) return;
 		if (!["mwak", "rwak"].includes(workflow.activity?.actionType)) return;
@@ -233,7 +234,7 @@ export async function holyStrike(workflow) {
 			await actor.setFlag("elkan5e", "holyStrikeTime", combatTime);
 		}
 
-		const activity = macroItem.system.activities.contents[0];
+		const activity = macroItem?.system.activities.contents[0];
 		if (activity) await activity.use({ event: workflow.event });
 	} catch (err) {
 		console.error("Holy Strike |", err);
@@ -267,4 +268,23 @@ export function shadowRefuge(activity, usageConfig) {
 			dice: level * 2,
 		}),
 	);
+}
+
+/**
+ * Runs Blessed Healing at dnd5e.preRollDamageV2: healing spells of 1st level or higher restore
+ * an extra 2 + the spell's level. dnd5e 6.0 has no actor healing bonus for an effect to use.
+ *
+ * @param {object} rollConfig - Damage roll configuration.
+ */
+export function blessedHealing(rollConfig) {
+	const activity = rollConfig?.subject;
+	if (activity?.type !== "heal") return;
+	const item = activity.item;
+	const roll = rollConfig.rolls?.[0];
+	if (!roll || item?.type !== "spell") return;
+	// The roll data has the level the spell was cast at.
+	const level = Number(roll.data?.item?.level ?? item.system?.level ?? 0);
+	if (level < 1) return;
+	if (!activity.actor?.items.some((i) => i.system?.identifier === "blessed-healing")) return;
+	roll.parts = [...(roll.parts ?? []), String(2 + level)];
 }

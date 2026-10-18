@@ -27,17 +27,17 @@ const PACT_INVOCATION_IDS = {
 };
 
 /**
- * Hook callback for "renderApplication". Hides pact-specific invocations from
+ * Hook callback for "renderAdvancementFlow". Hides pact-specific invocations from
  * the advancement dialog when the actor doesn't have the required pact boon.
- * Runs on every renderApplication so it catches both the initial render and any
- * re-renders as the player navigates through advancement steps.
+ * dnd5e renders each advancement step as its own flow, so this catches both the
+ * initial render and any re-renders as the player navigates through advancement steps.
  *
- * @param {Application} app  - The rendered application.
+ * @param {Application} app  - The rendered advancement flow.
  * @param {HTMLElement|jQuery} html - The rendered HTML.
  */
 export function onWarlockFilterInvocations(app, html) {
 	try {
-		const actor = app.actor;
+		const actor = app.actor ?? app.advancement?.actor;
 		if (!actor) return;
 
 		// Only apply to warlocks

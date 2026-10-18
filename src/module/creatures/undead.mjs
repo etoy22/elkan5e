@@ -64,13 +64,16 @@ export async function undeadFortitude(actor, amount, _updates, options) {
 	const conDC = Math.max(1, 5 + amount + dcModifier);
 
 	const { advantage, disadvantage } = _getSaveAdvantage(actor);
-	const saveRolls = await actor.rollSavingThrow({
-		ability: "con",
-		target: conDC,
-		advantage,
-		disadvantage,
-		midiOptions: { fastForward: true },
-	});
+	const saveRolls = await actor.rollSavingThrow(
+		{
+			ability: "con",
+			target: conDC,
+			advantage,
+			disadvantage,
+			midiOptions: { fastForward: true },
+		},
+		{ configure: false },
+	);
 	if (saveRolls?.[0]?.total < conDC) return;
 	await actor.update({ "system.attributes.hp.value": 1 });
 

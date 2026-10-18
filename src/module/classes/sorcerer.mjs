@@ -1,6 +1,6 @@
 const DialogV2 = foundry.applications.api.DialogV2;
 import { createDelayedSurgeEffect } from "../shared/effect-factories.mjs";
-import { markUsedThisTurn, t, usedThisTurn } from "../shared/helpers.mjs";
+import { excludeTargets, markUsedThisTurn, t, usedThisTurn } from "../shared/helpers.mjs";
 
 /**
  * Runs wild Surge class feature automation.
@@ -60,7 +60,7 @@ export async function wildSurge(activity, usageConfig) {
 
 		if (wild) {
 			try {
-				const roll = await new Roll("1d6").roll({ async: true });
+				const roll = await new Roll("1d6").evaluate();
 				await roll.toMessage({
 					flavor: game.i18n.localize("elkan5e.wildMage.randomWildSurge"),
 					speaker: ChatMessage.getSpeaker({ actor: actor }),
@@ -90,7 +90,7 @@ export async function wildSurge(activity, usageConfig) {
 					);
 					if (table) {
 						const results = await table.draw({ displayChat: true });
-						rollResult = results.results[0].text;
+						rollResult = results.results[0].description || results.results[0].name;
 					}
 				} catch (error) {
 					console.error("Error drawing from roll table: ", error);
@@ -114,7 +114,8 @@ export async function wildSurge(activity, usageConfig) {
 								);
 								if (table) {
 									const results = await table.draw({ displayChat: true });
-									rollResult = results.results[0].text;
+									rollResult =
+										results.results[0].description || results.results[0].name;
 								}
 							} catch (error) {
 								console.error("Error drawing from roll table: ", error);
@@ -126,7 +127,7 @@ export async function wildSurge(activity, usageConfig) {
 
 							if (
 								Object.keys(innerButtons).length > 1 &&
-								delay.system.uses.spent < delay.system.uses.max
+								delay?.system.uses.spent < delay?.system.uses.max
 							) {
 								await new DialogV2({
 									window: {
@@ -439,10 +440,7 @@ export async function carefulSpell(workflow) {
 
 		if (!chosen.length) return;
 
-		for (const targetToken of chosen) {
-			workflow.targets?.delete(targetToken);
-			workflow.hitTargets?.delete(targetToken);
-		}
+		excludeTargets(workflow, chosen);
 
 		ui.notifications.info(
 			`Careful Spell: ${chosen.map((t) => t.actor?.name ?? t.name).join(", ")} automatically succeed their save.`,
@@ -456,6 +454,8 @@ export async function carefulSpell(workflow) {
 
 // Damage types Elemental Infusion can't change.
 const INFUSION_EXCLUDED = new Set(["necrotic", "poison", "psychic"]);
+// Midi-QOL's untyped damage, used for plain rolls such as Blink's d20.
+const UNTYPED = new Set(["midi-none", "none"]);
 
 /**
  * Runs Elemental Infusion class feature automation (midi-qol preDamageRoll). When the sorcerer
@@ -481,7 +481,10 @@ export async function elementalInfusion(workflow, activity, _config, dialog) {
 	if (workflow.elkan5eInfusionType === undefined) {
 		workflow.elkan5eInfusionType = null;
 		const types = parts.flatMap((p) => [...p.types]);
-		if (!types.length || types.some((type) => INFUSION_EXCLUDED.has(type))) return;
+		// Only real damage: skip healing and untyped rolls such as Blink's d20.
+		const isDamage = (type) => type in CONFIG.DND5E.damageTypes && !UNTYPED.has(type);
+		if (!types.length || !types.every(isDamage)) return;
+		if (types.some((type) => INFUSION_EXCLUDED.has(type))) return;
 
 		const choices = infusion.flags.elkan5e.infusionTypes;
 		const choice = await DialogV2.wait({

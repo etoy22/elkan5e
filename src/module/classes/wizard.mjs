@@ -99,11 +99,13 @@ export async function spectralEmpowerment(workflow) {
  *
  * @param {object} activity - Activity that was used.
  */
-export function soulConduit(activity) {
+export function soulConduit(activity, usageConfig) {
 	const item = activity?.item;
 	const actor = activity?.actor;
 	if (item?.type !== "spell" || item.system.school !== "nec" || !actor?.isOwner) return;
-	const level = Number(item.system.level ?? 0);
+	// Use the level the spell was cast at, not its base level.
+	const slot = usageConfig?.spell?.slot;
+	const level = Number(actor.system.spells?.[slot]?.level ?? item.system.level ?? 0);
 	if (level < 1) return;
 	if (!actor.items.some((i) => i.system?.identifier === "soul-conduit")) return;
 
@@ -134,7 +136,10 @@ export async function necromanticSurge(workflow) {
 		if (!item || item.type !== "spell") return;
 
 		const school = (item.system?.school || "").toLowerCase();
-		const level = Number(item.system?.level ?? 0);
+		// Use the level the spell was cast at, not its base level.
+		const level = Number(
+			workflow.castData?.castLevel ?? workflow.spellLevel ?? item.system?.level ?? 0,
+		);
 		if (school !== "nec" || level < 3) return;
 
 		const actor = workflow.actor ?? (workflow.token ? workflow.token.actor : null);
@@ -238,8 +243,18 @@ export async function overchannelOnDamageRoll(rollConfig) {
 		const usesSlot = Boolean(activity.consumption?.spellSlot);
 		if (!usesSlot) return;
 
+		// Neither dnd5e nor midi-qol reads a roll option to maximize, so swap each part for its maximum.
+		// The parts become flat numbers, so a critical hit's extra dice are maximized here too.
 		for (const roll of rollConfig.rolls ?? []) {
-			roll.options = { ...(roll.options ?? {}), maximize: true };
+			const options = { ...(roll.options ?? {}) };
+			options.isCritical = options.isCritical ?? rollConfig.isCritical ?? false;
+			roll.parts = (roll.parts ?? []).map((part) =>
+				String(
+					new CONFIG.Dice.DamageRoll(part, roll.data, options).evaluateSync({
+						maximize: true,
+					}).total,
+				),
+			);
 		}
 
 		await overchannelEffect.delete();

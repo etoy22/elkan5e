@@ -69,7 +69,6 @@ export async function markOfThorns(workflow) {
 		// Only melee attacks trigger the retaliation
 		if (workflow.activity?.actionType !== "mwak") return;
 
-		const attackerActor = workflow.actor;
 		const attackerToken = workflow.token;
 		if (!attackerToken) return;
 
@@ -127,13 +126,9 @@ export async function markOfThorns(workflow) {
 				casterToken,
 				damageRoll.total,
 				"piercing",
-				[{ token: attackerToken, actor: attackerActor }],
-				{
-					flavor: "Mark of Thorns",
-					itemCardUuid: "new",
-					isCritical: false,
-					damageRoll,
-				},
+				[attackerToken],
+				damageRoll,
+				{ flavor: "Mark of Thorns", itemCardUuid: "new" },
 			);
 		}
 	} catch (err) {
