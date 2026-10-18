@@ -86,6 +86,8 @@ The SRD 5.1 is licensed under the Creative Commons Attribution 4.0 International
 /icons/statuses/ethereal.svg - Ghost Ally icon
 <br>
 /icons/hazards/falling.svg - Falling Boulder icon
+<br>
+/icons/properties/cold-iron.svg - Metal bar icon (https://game-icons.net/1x1/lorc/metal-bar.html)
 </details>
 
 ## Mikiko under CC BY-NC-SA 4.0
