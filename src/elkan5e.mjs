@@ -117,6 +117,7 @@ import {
 } from "./module/shared/modify-item-riders.mjs";
 import { formating } from "./module/rules/format.mjs";
 import { language } from "./module/rules/language.mjs";
+import { registerMidiFallback } from "./module/rules/midi-fallback.mjs";
 import { refs } from "./module/rules/references.mjs";
 import { scroll } from "./module/rules/scroll.mjs";
 import { skills } from "./module/rules/skills.mjs";
@@ -196,6 +197,7 @@ function registerHooks() {
 			skills();
 			refs();
 			speed();
+			registerMidiFallback();
 
 			// Hides pact-specific invocations from advancement dialogs for actors
 			// that don't have the corresponding pact boon. Advancement steps are

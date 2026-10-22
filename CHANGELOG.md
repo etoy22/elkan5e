@@ -15,10 +15,20 @@
 - [Darkness](https://www.elkan5e.com/spells/darkness), [Moonbeam](https://www.elkan5e.com/spells/moonbeam), and other spells that place lights no longer show an "AmbientLight does not exist" error when they end.
 - Effects that give a condition now give the actual condition, the same one the token HUD toggles (Knockdown makes the target Prone, Symbol's Fear glyph makes it Frightened). A creature shows one Prone instead of two, the condition's rules apply once instead of twice (Slowed gave -4 AC instead of -2), turning it off from the token HUD removes it, and getting it again from the same source doesn't add a second copy. The condition still ends when the effect that gave it ends.
 - Slowed now halves the creature's speed, as written.
+- [Fire Shield](https://www.elkan5e.com/spells/fire-shield) deals its retaliation damage again. Before, it failed with an error on Foundry 14.
 
 
 ## Compatibility
 
+- Most of the module's automation now works without Midi-QOL. When Midi-QOL isn't active, features run from dnd5e's own rolls instead:
+    - Grapple and Shove roll the contest without Midi-QOL. The target's owner rolls their side.
+    - Damage and healing dealt by features (Healing Overflow, Infused Healer, Mark of Thorns, Vampiric Smite, [Blight](https://www.elkan5e.com/spells/blight), [Pain Reflection](https://www.elkan5e.com/spells/pain-reflection), [Wrath of the Reaper](https://www.elkan5e.com/spells/wrath-of-the-reaper), [Spike Growth](https://www.elkan5e.com/spells/spike-growth)) is rolled to chat and applied. [Divine Word](https://www.elkan5e.com/spells/divine-word) and [Curse of Doom](https://www.elkan5e.com/spells/curse-of-doom) apply their effects.
+    - Before targets roll: [Sanctuary](https://www.elkan5e.com/spells/sanctuary), Careful Spell, Power of Love and Fear, and [Blight](https://www.elkan5e.com/spells/blight) prompt when the spell or attack is used. Creatures they exclude are left off the save card.
+    - Attacks: attacking a creature you can't see has disadvantage, Precise Hunter gives advantage, and [Mirror Image](https://www.elkan5e.com/spells/mirror-image) checks for a duplicate.
+    - Saves: [Shatter](https://www.elkan5e.com/spells/shatter), [Spectral Lance](https://www.elkan5e.com/spells/spectral-lance), [Sunbeam](https://www.elkan5e.com/spells/sunbeam), [Disintegrate](https://www.elkan5e.com/spells/disintegrate), [Blight](https://www.elkan5e.com/spells/blight), and [Ensnaring Vine](https://www.elkan5e.com/spells/ensnaring-vine) give advantage or disadvantage on their saves. Power of Love and Fear, Strickening Gaze, and Sudden Warning prompt when a creature fails one.
+    - Damage rolls: [Prismatic Bolt](https://www.elkan5e.com/spells/prismatic-bolt) picks its damage type and Elemental Infusion offers to change it.
+    - Damage taken: Mark of Affliction, Mark of Thorns, [Fire Shield](https://www.elkan5e.com/spells/fire-shield), Finishing Blow, [Pain Reflection](https://www.elkan5e.com/spells/pain-reflection), and the savant spell reminders run when the damage is applied. Their prompts appear for whoever applies the damage.
+    - Without Midi-QOL, features that react to failed saves prompt once per creature instead of once per spell, and creatures a spell's effects should skip after its saves are rolled are named in chat instead of removed.
 - Updated reactions for Midi-QOL 14.6, which only reads a reaction's trigger from the activity. Before, almost every reaction prompted whenever its owner was hit.
     - Reactions now prompt on their own trigger: being missed (Riposte, Misdirect), being attacked, before the roll (Brace), taking damage (Searing Retribution, Deflect Elements, Disperse, Bonded Lifeforce, [Hellish Rebuke](https://www.elkan5e.com/spells/hellish-rebuke), Gauntlets of Retribution), failing a save (Indomitable Squad, Shield of Will, Strength in Numbers, Ring of Evasion, Scarab of Protection, Four-Leaf Clover), succeeding on a save (Last Laugh, Ring of Spell Turning, Staff of Charming), or a spell targeting you (the Abjurer's Counterspell, Rod of Absorption, Staff of the Magi, Ioun Stones of Absorption).
     - Reactions Midi-QOL can't detect no longer prompt when you're hit: ones that help an ally, or that trigger on movement, skill checks, initiative, falling, or your own rolls. Use them from your sheet. These include Bardic Inspiration, Fighting Style: Protection, Improved Protection, Bodyblock, Calm the Herd, Lend Expertise, Quick Wit, Ambush Leader, Tactician, and Shroud of Darkness.
@@ -323,6 +333,7 @@
 - Damage on a successful save now matches the description: Cloud of Insects, Noxious Miasma, Thunderclap, and Freezing Burst deal half damage, and Mark of Sacrifice, Toxic Regeneration, and Throw Target deal none. Throw Target's damage is now bludgeoning.
 - Effects now last as long as their descriptions say. Noxious Miasma, Freezing Burst, Slowing Breath, Scorching Sands, and Cloud of Insects last until the end of the target's next turn. Web Bolt and Venomous Spew last until the start of the creature's next turn. Mark of Sacrifice lasts until the end of the creature's next turn, not 1 minute. Thunderclap's Deafened and Stench's Poisoned no longer end after a single turn.
 - Fixed Noxious Miasma's −2 AC penalty not applying.
+- Slowing Breath now stops its target from taking reactions, as written.
 - Cloud of Insects now gives disadvantage on concentration saves, and Vampire Weakness now gives disadvantage on attack rolls and ability checks in sunlight. Before, both effects were empty.
 - Bloodied Fury now gives advantage while the creature itself is Bloodied. Before, it checked whether its target was Bloodied.
 - Sunlight Sensitivity now gives disadvantage on ability checks in sunlight, as well as attack rolls. Before, the ability check half used a key Midi-QOL didn't recognize.
@@ -424,6 +435,10 @@
 
 ## Spells
 
+- [Barrier](https://www.elkan5e.com/spells/barrier) gives resistance to the type you choose. Before, the acid, cold, electric, fire, and sonic options gave resistance to all damage, and non-magical physical gave resistance to spell damage. Barrier and [Etherealness](https://www.elkan5e.com/spells/etherealness) now target you when cast.
+- [Shocking Grasp](https://www.elkan5e.com/spells/shocking-grasp) now stops its target from taking reactions. Midi-QOL no longer offers it reactions, and warns if it uses one from its sheet while reactions are enforced. Before, the effect had no changes.
+- [Static Charge](https://www.elkan5e.com/spells/static-charge) now gives disadvantage on the target's next saving throw as well as its next skill check, and ends after the first of them. Before, it ignored saves and stayed for the full round.
+- [Vicious Mockery](https://www.elkan5e.com/spells/vicious-mockery) now ends after the target's next attack roll, as written.
 - [Gaseous Form](https://www.elkan5e.com/spells/gaseous-form) now turns its targets' tokens into a cloud (with Active Token Effects installed) and ends when the target drops to 0 hit points.
     - Gaseous Form now also makes the target immune to Prone, as written.
 - [Celestial Bolt](https://www.elkan5e.com/spells/celestial-bolt) no longer links an effect that doesn't exist.
@@ -2967,7 +2982,7 @@ Rename Module 'Elkan 5e Automated Content'
 
 ## Bug Fixes
 
-- [Arcanist](https://www.elkan5e.com/ancestrybackground) now receive the common language by default
+- [Arcanist](https://www.elkan5e.com/background) now receive the common language by default
 - Fixed [Static Charge \[Air Savant\]](https://www.elkan5e.com/sorcerer) to deal 1d8 instead of 1d6
 - [Ray of Enfeeblement](https://www.elkan5e.com/spells/ray-of-frost) is now just be a saving throw
 

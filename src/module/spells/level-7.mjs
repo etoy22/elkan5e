@@ -1,4 +1,5 @@
-import { updateActorAsGM } from "../shared/helpers.mjs";
+import { createEffectsAsGM, updateActorAsGM } from "../shared/helpers.mjs";
+import { damageOnly } from "../shared/midi-compat.mjs";
 
 const DIVINE_WORD_BANISHED_TYPES = new Set(["celestial", "elemental", "fey", "fiend"]);
 
@@ -62,11 +63,7 @@ export async function divineWord(workflow) {
 			}
 
 			if (effects.length) {
-				await MidiQOL.createEffects({
-					actorUuid: actor.uuid,
-					effects,
-					options: { keepId: false },
-				});
+				await createEffectsAsGM(actor, effects);
 			}
 		}
 	} catch (err) {
@@ -85,18 +82,14 @@ export async function curseOfDoom(actor) {
 	if (!actor || Number(actor.system?.attributes?.hp?.value) !== 0) return;
 	const curse = actor.effects.find((e) => e.name === "Curse of Doom" && !e.disabled);
 	if (!curse || actor.statuses?.has("dead")) return;
-	await MidiQOL.createEffects({
-		actorUuid: actor.uuid,
-		effects: [
-			{
-				name: "Curse of Doom [Slain]",
-				img: curse.img,
-				origin: curse.origin,
-				statuses: ["dead"],
-			},
-		],
-		options: { keepId: false },
-	});
+	await createEffectsAsGM(actor, [
+		{
+			name: "Curse of Doom [Slain]",
+			img: curse.img,
+			origin: curse.origin,
+			statuses: ["dead"],
+		},
+	]);
 }
 
 /**
@@ -123,7 +116,7 @@ export async function painReflection(workflow) {
 	if (reflected <= 0) return;
 
 	const roll = await new Roll(`${reflected}`).evaluate();
-	new MidiQOL.DamageOnlyWorkflow(actor, token, roll.total, "psychic", [token], roll, {
+	await damageOnly(actor, token, roll.total, "psychic", [token], roll, {
 		flavor: "Pain Reflection",
 	});
 }

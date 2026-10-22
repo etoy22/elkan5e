@@ -1,5 +1,7 @@
 // Vision-based automation: attacking an unseen target imposes disadvantage.
 
+import { canSee } from "../../shared/midi-compat.mjs";
+
 /**
  * Runs on midi-qol.preAttackRollConfig (after midi-qol's own advantage/disadvantage
  * recompute, so this isn't reset): forces disadvantage on the attack whenever
@@ -11,9 +13,6 @@
  */
 export async function darknessAttackDisadvantage(workflow) {
 	try {
-		const canSee = globalThis.MidiQOL?.canSee;
-		if (typeof canSee !== "function") return;
-
 		const attackerToken = workflow?.token;
 		if (!attackerToken) return;
 

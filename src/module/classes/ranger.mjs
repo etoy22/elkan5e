@@ -1,4 +1,5 @@
 import { deleteEffects } from "../shared/helpers.mjs";
+import { damageOnly } from "../shared/midi-compat.mjs";
 
 /**
  * Runs Mark of Affliction class feature automation.
@@ -121,7 +122,7 @@ export async function markOfThorns(workflow) {
 				{ type: "piercing", isCritical: false, flavor: "Mark of Thorns" },
 			).evaluate();
 
-			await new MidiQOL.DamageOnlyWorkflow(
+			await damageOnly(
 				casterActor,
 				casterToken,
 				damageRoll.total,

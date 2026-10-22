@@ -1,4 +1,5 @@
 import { excludeTargets } from "../shared/helpers.mjs";
+import { damageOnly, withTargets } from "../shared/midi-compat.mjs";
 
 /**
  * Handles Death Ward spell.
@@ -66,13 +67,7 @@ export async function fireShield(workflow) {
 			}
 
 			// Temporarily target the attacker so the activity fires on them.
-			const previousTargets = Array.from(game.user.targets).map((t) => t.id);
-			game.user.updateTokenTargets([attackerToken.id]);
-
-			await activity.use({ event: workflow.event });
-
-			// Restore whatever the user had targeted before.
-			game.user.updateTokenTargets(previousTargets);
+			await withTargets([attackerToken.id], () => activity.use({ event: workflow.event }));
 		}
 	} catch (err) {
 		console.error("Fire Shield |", err);
@@ -102,7 +97,7 @@ export async function vampiricSmite(workflow) {
 	if (healAmount <= 0) return;
 
 	const healingRoll = await new Roll(`${healAmount}`).evaluate();
-	new MidiQOL.DamageOnlyWorkflow(
+	await damageOnly(
 		caster,
 		casterToken,
 		healingRoll.total,
@@ -205,7 +200,7 @@ export async function blightMaximizePlantDamage(workflow) {
 			if (shortfall <= 0) continue;
 
 			const topUpRoll = await new Roll(`${shortfall}`).evaluate();
-			new MidiQOL.DamageOnlyWorkflow(
+			await damageOnly(
 				caster,
 				casterToken,
 				topUpRoll.total,

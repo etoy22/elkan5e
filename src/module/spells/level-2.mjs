@@ -6,6 +6,7 @@ import {
 	updateActorAsGM,
 	withoutTokens,
 } from "../shared/helpers.mjs";
+import { computeDistance, damageOnly } from "../shared/midi-compat.mjs";
 
 function tokenIdFromEntry(entry) {
 	if (!entry) return null;
@@ -450,7 +451,7 @@ export async function spiritLinkUpdate(actor, updates, options) {
 	const partnerToken = partnerActor.getActiveTokens()[0];
 
 	if (thisToken && partnerToken) {
-		const distance = MidiQOL.computeDistance(thisToken, partnerToken, { wallsBlock: false });
+		const distance = computeDistance(thisToken, partnerToken);
 		if (distance > 60) {
 			await ChatMessage.create({
 				content: `Spirit Link ends — ${actor.name} and ${partnerActor.name} are more than 60 feet apart (${distance} ft).`,
@@ -545,20 +546,7 @@ export async function spikeGrowthMove(event) {
 	if (dice <= 0) return;
 	const roll = await new Roll(`${dice}d4`).evaluate();
 	const flavor = `Spike Growth — ${dice}d4 piercing (${Math.floor(feet / 5) * 5} ft. through spikes)`;
-	if (globalThis.MidiQOL?.DamageOnlyWorkflow) {
-		new MidiQOL.DamageOnlyWorkflow(
-			actor,
-			token.object,
-			roll.total,
-			"piercing",
-			[token.object],
-			roll,
-			{
-				flavor,
-			},
-		);
-	} else {
-		await roll.toMessage({ flavor, speaker: ChatMessage.getSpeaker({ token }) });
-		await actor.applyDamage([{ type: "piercing", value: roll.total }]);
-	}
+	await damageOnly(actor, token.object, roll.total, "piercing", [token.object ?? token], roll, {
+		flavor,
+	});
 }

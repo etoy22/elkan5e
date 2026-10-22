@@ -1,4 +1,5 @@
 import { measureRangeDistance, t } from "../shared/helpers.mjs";
+import { damageOnly } from "../shared/midi-compat.mjs";
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -50,15 +51,10 @@ export async function infusedHealer(workflow) {
 		img: "icons/magic/light/orbs-hand-gray.webp",
 	};
 	const damageRoll = await new Roll(healAmount, {}, { type: "healing" }).evaluate();
-	new MidiQOL.DamageOnlyWorkflow(
-		caster,
-		casterToken,
-		damageRoll.total,
-		"healing",
-		[casterToken],
-		damageRoll,
-		{ itemData: itemData, flavor: `Infused Healer` },
-	);
+	await damageOnly(caster, casterToken, damageRoll.total, "healing", [casterToken], damageRoll, {
+		itemData: itemData,
+		flavor: `Infused Healer`,
+	});
 }
 
 /**
@@ -200,7 +196,7 @@ export async function healingOverflow(workflow) {
 					const targetId = button.form.querySelector("#overflow-target")?.value;
 					const recipient = canvas.tokens.get(targetId);
 					if (!recipient) return;
-					new MidiQOL.DamageOnlyWorkflow(
+					await damageOnly(
 						caster,
 						casterToken,
 						damageRoll.total,

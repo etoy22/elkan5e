@@ -533,7 +533,20 @@ export function registerElkan5eSocket() {
 	elkan5eSocket.register("updateActor", applyActorUpdate);
 	elkan5eSocket.register("planTeleport", applyPlanTeleport);
 	elkan5eSocket.register("offerItemUse", applyOfferItemUse);
+	elkan5eSocket.register("applyDamage", applyActorDamage);
+	elkan5eSocket.register("createEffects", applyCreateEffects);
+	elkan5eSocket.register("rollSkill", applyRollSkill);
 }
+
+/**
+ * The active non-GM owner of an actor, or the active GM when no owning player is online.
+ *
+ * @param {Actor} actor - Actor to find an owner for.
+ * @returns {User|undefined}
+ */
+const activeOwner = (actor) =>
+	game.users.find((u) => u.active && !u.isGM && actor.testUserPermission(u, "OWNER")) ??
+	game.users.activeGM;
 
 /**
  * Asks the current user whether to use an item, and spends a use of it (and the actor's reaction,
@@ -572,9 +585,7 @@ async function applyOfferItemUse(itemUuid, content, reaction) {
 export async function offerItemUse(item, content, { reaction = false } = {}) {
 	const actor = item?.actor;
 	if (!actor) return false;
-	const user =
-		game.users.find((u) => u.active && !u.isGM && actor.testUserPermission(u, "OWNER")) ??
-		game.users.activeGM;
+	const user = activeOwner(actor);
 	if (!user) return false;
 	if (user.isSelf) return applyOfferItemUse(item.uuid, content, reaction);
 	if (!elkan5eSocket) return false;
@@ -613,9 +624,7 @@ async function applyPlanTeleport(tokenUuid, maxDistance, action = "blink") {
 export function planTeleportForOwner(tokenDoc, maxDistance, action = "blink") {
 	const actor = tokenDoc?.actor;
 	if (!actor) return null;
-	const user =
-		game.users.find((u) => u.active && !u.isGM && actor.testUserPermission(u, "OWNER")) ??
-		game.users.activeGM;
+	const user = activeOwner(actor);
 	if (!user || user.isSelf || !elkan5eSocket) {
 		return applyPlanTeleport(tokenDoc.uuid, maxDistance, action);
 	}
@@ -735,6 +744,89 @@ export async function removeStatuses(actor, statusIds) {
  */
 export function updateActorAsGM(actor, data, options = {}) {
 	return runForActor("updateActor", applyActorUpdate, actor, data, options);
+}
+
+/**
+ * Applies damage or healing to an actor.
+ *
+ * @param {string} actorUuid - UUID of the actor.
+ * @param {object[]} damages - dnd5e damage descriptions ({ value, type }).
+ * @returns {Promise<void>}
+ */
+async function applyActorDamage(actorUuid, damages) {
+	const actor = await fromUuid(actorUuid).catch(() => null);
+	await actor?.applyDamage(damages);
+}
+
+/**
+ * Applies damage or healing to an actor, relaying to the GM if the user doesn't own it.
+ *
+ * @param {Actor} actor - Actor to damage or heal.
+ * @param {object[]} damages - dnd5e damage descriptions ({ value, type }).
+ * @returns {Promise<void>}
+ */
+export function applyDamageAsGM(actor, damages) {
+	return runForActor("applyDamage", applyActorDamage, actor, damages);
+}
+
+/**
+ * Creates effects on an actor.
+ *
+ * @param {string} actorUuid - UUID of the actor.
+ * @param {object[]} effects - ActiveEffect create data.
+ * @returns {Promise<void>}
+ */
+async function applyCreateEffects(actorUuid, effects) {
+	const actor = await fromUuid(actorUuid).catch(() => null);
+	await actor?.createEmbeddedDocuments("ActiveEffect", effects);
+}
+
+/**
+ * Creates effects on an actor, relaying to the GM if the user doesn't own it.
+ *
+ * @param {Actor} actor - Actor to receive the effects.
+ * @param {object[]} effects - ActiveEffect create data.
+ * @returns {Promise<void>}
+ */
+export function createEffectsAsGM(actor, effects) {
+	return runForActor("createEffects", applyCreateEffects, actor, effects);
+}
+
+/**
+ * Rolls a skill check for an actor without a configuration dialog.
+ *
+ * @param {string} actorUuid - UUID of the actor.
+ * @param {string} skill - Skill id.
+ * @param {boolean} advantage - Whether the check has advantage.
+ * @param {string} [flavor] - Chat flavor text.
+ * @returns {Promise<number|null>} The roll total.
+ */
+async function applyRollSkill(actorUuid, skill, advantage, flavor) {
+	const actor = await fromUuid(actorUuid).catch(() => null);
+	const rolls = await actor?.rollSkill(
+		{ skill, advantage },
+		{ configure: false },
+		flavor ? { data: { flavor } } : {},
+	);
+	return rolls?.[0]?.total ?? null;
+}
+
+/**
+ * Has an actor's active owning player (or the GM) roll one of its skill checks.
+ *
+ * @param {Actor} actor - Actor rolling.
+ * @param {string} skill - Skill id.
+ * @param {object} [options]
+ * @param {boolean} [options.advantage] - Whether the check has advantage.
+ * @param {string} [options.flavor] - Chat flavor text.
+ * @returns {Promise<number|null>} The roll total.
+ */
+export function rollSkillForOwner(actor, skill, { advantage = false, flavor } = {}) {
+	const user = activeOwner(actor);
+	if (!user || user.isSelf || !elkan5eSocket) {
+		return applyRollSkill(actor.uuid, skill, advantage, flavor);
+	}
+	return elkan5eSocket.executeAsUser("rollSkill", user.id, actor.uuid, skill, advantage, flavor);
 }
 
 const combatTurnKey = () => `${game.combat.id}-${game.combat.round + game.combat.turn / 100}`;

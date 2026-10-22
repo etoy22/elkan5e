@@ -2,11 +2,11 @@ import {
 	drainedEffect,
 	forEachDamagedTarget,
 	markUsedThisTurn,
-	measureRangeDistance,
 	t,
 	updateActorAsGM,
 	usedThisTurn,
 } from "../shared/helpers.mjs";
+import { computeDistance } from "../shared/midi-compat.mjs";
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -101,10 +101,7 @@ function meetsSneakAttackCriteria(workflow, target) {
 		workflow.attackRoll?.hasAdvantage ?? (workflow.advantage && !workflow.disadvantage);
 	if (advantage) return true;
 
-	const distance = (a, b) =>
-		globalThis.MidiQOL?.computeDistance
-			? MidiQOL.computeDistance(a, b, { wallsBlock: false })
-			: measureRangeDistance(a, b);
+	const distance = computeDistance;
 	const flanked = canvas.tokens.placeables.some(
 		(t) =>
 			t !== target &&

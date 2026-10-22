@@ -1,4 +1,5 @@
 import { drainedEffect, forEachDamagedTarget } from "../shared/helpers.mjs";
+import { damageOnly } from "../shared/midi-compat.mjs";
 
 /**
  * Runs wrath Of The Reaper spell automation.
@@ -18,7 +19,7 @@ export async function wrathOfTheReaper(workflow) {
 		if (forceDamage <= 0) return;
 
 		const damageRoll = await new Roll(`${forceDamage}`).evaluate();
-		new MidiQOL.DamageOnlyWorkflow(
+		await damageOnly(
 			caster,
 			casterToken,
 			damageRoll.total,

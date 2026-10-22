@@ -2,6 +2,7 @@ import { chooseDefenderSkill, sizeIndex, isPushBlocked, hasPushResist } from "..
 import { measureRangeDistance, t } from "../../shared/helpers.mjs";
 import { brutalFighting } from "../../classes/rogue.mjs";
 import { endAllGrapplesForActor } from "./grapple.mjs";
+import { contestedRoll, tokenForActor } from "../../shared/midi-compat.mjs";
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -317,7 +318,7 @@ export async function push(
 	skiped = false,
 ) {
 	if (!workflow?.actor) return;
-	const token = workflow.token ?? MidiQOL.tokenForActor(workflow.actor);
+	const token = workflow.token ?? tokenForActor(workflow.actor);
 	if (!token) {
 		ui.notifications.warn(
 			t("elkan5e.push.notifications.noToken", { name: workflow.actor.name }),
@@ -373,7 +374,7 @@ export async function push(
 		const pusherAdv = pusherSize > targetSize;
 		const targetAdv = targetSize > pusherSize || pushResist;
 
-		await MidiQOL.contestedRoll({
+		await contestedRoll({
 			source: {
 				token,
 				rollType: "skill",

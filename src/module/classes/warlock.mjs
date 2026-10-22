@@ -1,5 +1,6 @@
 import { push } from "../rules/condition/push.mjs";
 import { markUsedThisTurn, t, usedThisTurn } from "../shared/helpers.mjs";
+import { completeActivityUse } from "../shared/midi-compat.mjs";
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -176,15 +177,9 @@ export async function powerOfLoveAndFearApply(workflow) {
 	const activity = feature?.system.activities.get(LOVE_AND_FEAR_ACTIVITIES[choice][length]);
 	if (!activity) return;
 
-	await MidiQOL.completeActivityUse(
+	await completeActivityUse(
 		activity,
-		{
-			midiOptions: {
-				targetUuids: [...workflow.failedSaves].map((token) => token.document.uuid),
-				ignoreUserTargets: true,
-			},
-		},
-		{ configure: false },
+		[...workflow.failedSaves].map((token) => token.document.uuid),
 	);
 }
 

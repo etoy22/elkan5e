@@ -2,6 +2,7 @@ import { chooseDefenderSkill, sizeIndex } from "../../global.mjs";
 import { createClimberEffect, createGrappledEffect } from "../../shared/effect-factories.mjs";
 import { measureRangeDistance, t } from "../../shared/helpers.mjs";
 import { brutalFighting } from "../../classes/rogue.mjs";
+import { contestedRoll, tokenForActor } from "../../shared/midi-compat.mjs";
 
 const DialogV2 = foundry.applications.api.DialogV2;
 const imgForCondition = (key) => `modules/elkan5e/icons/conditions/${key}.svg`;
@@ -802,7 +803,7 @@ export async function handleDeadGrapplePrompt(actor) {
  */
 export async function grapple(workflow, acr = false, skipRoll = false) {
 	if (!workflow?.actor) return;
-	const token = workflow.token ?? MidiQOL.tokenForActor(workflow.actor);
+	const token = workflow.token ?? tokenForActor(workflow.actor);
 	if (!token) {
 		ui.notifications.warn(
 			t("elkan5e.grapple.notifications.noToken", { name: workflow.actor.name }),
@@ -894,7 +895,7 @@ export async function grapple(workflow, acr = false, skipRoll = false) {
 		const grapplerAdv = grapplerSize > targetSize;
 		const targetAdv = targetSize > grapplerSize;
 
-		await MidiQOL.contestedRoll({
+		await contestedRoll({
 			source: {
 				token,
 				rollType: "skill",
