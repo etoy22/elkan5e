@@ -194,12 +194,12 @@ jobs:
             module.zip
             module.json
           tag: "${{ needs.version-check.outputs.version }}"
-          makeLatest: true
+          makeLatest: ${{ needs.version-check.outputs.prerelease != 'true' }}
 
   release-foundry-package:
     runs-on: ubuntu-latest
     needs: [version-check, create-github-release]
-    if: needs.version-check.outputs.should_continue == 'true' && needs.create-github-release.result == 'success' && needs.version-check.outputs.test != 'true'
+    if: needs.version-check.outputs.should_continue == 'true' && needs.create-github-release.result == 'success' && needs.version-check.outputs.test != 'true' && needs.version-check.outputs.prerelease != 'true'
     steps:
       - uses: actions/checkout@v5
 
@@ -264,51 +264,52 @@ jobs:
       - name: Show formatted release notes in logs
         run: cat release-notes-discord.txt
 
-      - name: Read formatted release notes content
-        id: read_release_notes
-        run: |
-          echo "release_notes<<EOF" >> $GITHUB_OUTPUT 
-          cat release-notes-discord.txt >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
-
-      - name: Prepare Discord payload
+      - name: Prepare Discord payloads
         id: prepare_discord_payload
-        env:
-          RELEASE_NOTES: ${{ steps.read_release_notes.outputs.release_notes }}
-          VERSION: ${{ needs.version-check.outputs.version }}
-          MINIMUM: ${{ needs.version-check.outputs.minimum }}
-          VERIFIED: ${{ needs.version-check.outputs.verified }}
-          REPO_URL: https://github.com/${{ github.repository }}
         run: |
           node <<'NODE'
           const fs = require('fs');
           const env = process.env;
-          const releaseNotes = (env.RELEASE_NOTES || '').replace(/\r?\n/g, '\n').trim();
-          const trimmedNotes = releaseNotes.length > 3900 ? `${releaseNotes.slice(0, 3897)}...` : releaseNotes;
-          const releaseNotesField =
-            trimmedNotes.length > 1024 ? `${trimmedNotes.slice(0, 1021)}...` : trimmedNotes;
-          const payload = {
-            embeds: [
-              {
-                title: 'Elkan 5e Release',
-                fields: [
-                  { name: 'Version', value: env.VERSION || 'unknown', inline: true },
-                  { name: 'Compatibility', value: `Core: ${(env.MINIMUM || 'unknown')} +`, inline: true },
-                  { name: 'Foundry Package', value: 'https://foundryvtt.com/packages/elkan5e', inline: false },
-                  { name: 'Release Tag', value: `${env.REPO_URL}/releases/tag/${env.VERSION}`, inline: false },
-                  { name: 'Manual Download', value: `${env.REPO_URL}/releases/download/${env.VERSION}/module.zip`, inline: false },
-                  {
-                    name: 'Release Notes',
-                    value: releaseNotesField || 'See release notes artifact.',
-                    inline: false,
-                  }
-                ]
-              }
-            ]
-          };
-          fs.writeFileSync('discord-payload.json', JSON.stringify(payload));
+          const releaseNotes = fs.readFileSync('release-notes-discord.txt', 'utf8').trim();
+
+          // Discord caps an embed description at 4096 chars and a message's embeds at 6000 total,
+          // so split the notes on line breaks and send any overflow as follow-up messages.
+          const LIMIT = 4000;
+          const chunks = [];
+          let current = '';
+          for (let line of releaseNotes.split('\n')) {
+            while (line.length > LIMIT) {
+              if (current) { chunks.push(current); current = ''; }
+              chunks.push(line.slice(0, LIMIT));
+              line = line.slice(LIMIT);
+            }
+            const next = current ? `${current}\n${line}` : line;
+            if (next.length > LIMIT) { chunks.push(current); current = line; }
+            else current = next;
+          }
+          if (current.trim()) chunks.push(current);
+          if (!chunks.length) chunks.push('See the release tag for notes.');
+
+          fs.mkdirSync('discord-payloads', { recursive: true });
+          chunks.forEach((chunk, i) => {
+            const embed = i === 0
+              ? {
+                  title: 'Elkan 5e Release',
+                  description: chunk,
+                  fields: [
+                    { name: 'Version', value: env.VERSION || 'unknown', inline: true },
+                    { name: 'Compatibility', value: `Core: ${(env.MINIMUM || 'unknown')} +`, inline: true },
+                    { name: 'Foundry Package', value: 'https://foundryvtt.com/packages/elkan5e', inline: false },
+                    { name: 'Release Tag', value: `${env.REPO_URL}/releases/tag/${env.VERSION}`, inline: false },
+                    { name: 'Manual Download', value: `${env.REPO_URL}/releases/download/${env.VERSION}/module.zip`, inline: false },
+                  ],
+                }
+              : { title: `Elkan 5e Release Notes (${i + 1}/${chunks.length})`, description: chunk };
+            const file = `discord-payloads/${String(i).padStart(2, '0')}.json`;
+            fs.writeFileSync(file, JSON.stringify({ embeds: [embed] }));
+          });
+          console.log(`Prepared ${chunks.length} Discord message(s).`);
           NODE
-          echo "payload_path=discord-payload.json" >> $GITHUB_OUTPUT
 
       - name: Post to Discord
         run: |
@@ -318,25 +319,29 @@ jobs:
             exit 0
           fi
 
-          payload_path='${{ steps.prepare_discord_payload.outputs.payload_path }}'
-          echo "Posting to Discord with payload ${payload_path}..."
+          for payload_path in discord-payloads/*.json; do
+            echo "Posting to Discord with payload ${payload_path}..."
 
-          response_file="$(mktemp)"
-          status="$(curl -sS -H 'Content-Type: application/json' -X POST -d @"${payload_path}" "$DISCORD_WEBHOOK" -o "${response_file}" -w "%{http_code}")"
+            response_file="$(mktemp)"
+            status="$(curl -sS -H 'Content-Type: application/json' -X POST -d @"${payload_path}" "$DISCORD_WEBHOOK" -o "${response_file}" -w "%{http_code}")"
 
-          if [ "${status}" -ge 200 ] && [ "${status}" -lt 300 ]; then
-            echo "Discord webhook responded with HTTP ${status}"
-            if [ -s "${response_file}" ]; then
-              echo "Response:"
-              cat "${response_file}"
+            if [ "${status}" -ge 200 ] && [ "${status}" -lt 300 ]; then
+              echo "Discord webhook responded with HTTP ${status}"
+              if [ -s "${response_file}" ]; then
+                echo "Response:"
+                cat "${response_file}"
+              fi
+              rm -f "${response_file}"
+            else
+              echo "::error::Discord webhook failed with HTTP ${status}"
+              if [ -s "${response_file}" ]; then
+                echo "Response:"
+                cat "${response_file}"
+              fi
+              rm -f "${response_file}"
+              exit 1
             fi
-            rm -f "${response_file}"
-          else
-            echo "::error::Discord webhook failed with HTTP ${status}"
-            if [ -s "${response_file}" ]; then
-              echo "Response:"
-              cat "${response_file}"
-            fi
-            rm -f "${response_file}"
-            exit 1
-          fi
+
+            # Keep messages in order and stay under the webhook rate limit
+            sleep 1
+          done
