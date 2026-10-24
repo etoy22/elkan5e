@@ -191,12 +191,20 @@ function auditItem(item, where) {
 				`triggered activity "${trig}" isn't on the item`,
 			);
 		for (const rule of a.regionBehavior?.rules ?? []) {
-			if (rule.action && rule.action !== "useActivity")
+			if (rule.action === "applyEffect") {
+				if (!effects.has(rule.targetId))
+					report(
+						"error",
+						"region-rule-target",
+						label,
+						`area rule applies effect "${rule.targetId}", which isn't on the item`,
+					);
+			} else if (rule.action && rule.action !== "useActivity")
 				report(
 					"error",
 					"region-rule-action",
 					label,
-					`area rule action "${rule.action}" isn't supported by Midi-QOL 14 (only useActivity) and is ignored; use flags.elkan5e.endsOnRegionExit to end an effect on leaving`,
+					`area rule action "${rule.action}" isn't supported by Midi-QOL 14 (only useActivity and applyEffect) and is ignored; applyEffect removes its effect when the creature leaves`,
 				);
 			else if (rule.targetId && !identifiers.has(rule.targetId))
 				report(

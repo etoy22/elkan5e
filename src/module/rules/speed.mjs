@@ -10,50 +10,8 @@ export function speed() {
 		crawl: { label: "elkan5e.movement.crawl" },
 	};
 	Object.assign(CONFIG.DND5E.movementTypes, MOVEMENT_TYPES);
-	keepCrawlSpeedWhileProne();
-	applyJumpMultiplier();
 	letElkanGrapplesSetSpeed();
 	useCrawlSpeedForCrawling();
-}
-
-/**
- * dnd5e derives the jump distance from Strength during data preparation, after active effects
- * apply, so an effect can't multiply it directly. Effects set flags.elkan5e.jumpMultiplier
- * instead (e.g. the Jump spell triples it), and it's applied once movement is prepared.
- */
-function applyJumpMultiplier() {
-	const AttributesFields = globalThis.dnd5e?.dataModels?.actor?.AttributesFields;
-	const prepareMovement = AttributesFields?.prepareMovement;
-	if (!prepareMovement) return;
-	AttributesFields.prepareMovement = function (...args) {
-		prepareMovement.apply(this, args);
-		const multiplier = Number(this.parent?.flags?.elkan5e?.jumpMultiplier);
-		if (!(multiplier > 0) || multiplier === 1) return;
-		const speeds = this.attributes.movement.speeds;
-		if (typeof speeds.jump === "number") speeds.jump *= multiplier;
-	};
-}
-
-/**
- * dnd5e sets every speed except walking to 0 while a creature is prone (its "crawl" condition
- * effect), which would also zero a crawl speed. Restores the crawl speed, capped at the
- * creature's walking speed so it keeps the same reductions.
- */
-function keepCrawlSpeedWhileProne() {
-	const AttributesFields = globalThis.dnd5e?.dataModels?.actor?.AttributesFields;
-	const prepareMovement = AttributesFields?.prepareMovement;
-	if (!prepareMovement) return;
-	AttributesFields.prepareMovement = function (rollData = this.parent.getRollData()) {
-		const crawl = this.attributes.movement.speeds.crawl;
-		prepareMovement.call(this, rollData);
-		const actor = this.parent;
-		if (!actor.hasConditionEffect("crawl") || actor.hasConditionEffect("noMovement")) return;
-		const base = dnd5e.utils.simplifyBonus(crawl, rollData);
-		if (!(base > 0)) return;
-		const movement = this.attributes.movement;
-		movement.speeds.crawl = Math.min(base, movement.speeds.walk);
-		movement.max = Math.max(movement.max, movement.speeds.crawl);
-	};
 }
 
 /**

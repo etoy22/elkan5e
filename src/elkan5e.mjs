@@ -22,7 +22,6 @@ import { archDruid, lurkingFogDarkness, shiftingSandsTurnEnd } from "./module/cl
 import { improvedCriticalDamage, secondWind } from "./module/classes/fighter.mjs";
 import {
 	elementalAttunement,
-	meldWithShadowsBrightLight,
 	onCombatTurnChange,
 	stillnessOfMind,
 	stillnessOfMindTurnStart,
@@ -78,11 +77,7 @@ import {
 	marksmanCover,
 	marksmanLongRange,
 } from "./module/feats.mjs";
-import {
-	coordinatingDirection,
-	sailorVigilance,
-	suddenWarning,
-} from "./module/origin/background.mjs";
+import { sailorVigilance } from "./module/origin/background.mjs";
 import { armor } from "./module/rules/armor.mjs";
 import { speed } from "./module/rules/speed.mjs";
 import {
@@ -401,22 +396,6 @@ function registerHooks() {
 		}
 	});
 
-	Hooks.on("midi-qol.postCheckSaves", async (workflow) => {
-		try {
-			await suddenWarning(workflow);
-		} catch (error) {
-			console.error("Elkan 5e | Error in Sudden Warning postCheckSaves hook:", error);
-		}
-	});
-
-	Hooks.on("dnd5e.rollSkillV2", async (rolls, data) => {
-		try {
-			await coordinatingDirection(rolls, data);
-		} catch (error) {
-			console.error("Elkan 5e | Error in Coordinating Direction rollSkill hook:", error);
-		}
-	});
-
 	Hooks.on("createChatMessage", async (message, options, userId) => {
 		try {
 			await sailorVigilance(message, userId);
@@ -713,7 +692,6 @@ function registerHooks() {
 
 		try {
 			refreshSeeThroughDarkness(effect);
-			meldWithShadowsBrightLight({ userId, effect });
 		} catch (error) {
 			console.error("Elkan 5e | Error in createActiveEffect vision hook:", error);
 		}
@@ -836,21 +814,12 @@ function registerHooks() {
 		}
 	});
 
-	Hooks.on("updateToken", async (tokenDoc, changes, options, userId) => {
+	Hooks.on("updateToken", async (tokenDoc, changes) => {
 		try {
 			await handleGrapplerMove(tokenDoc, changes);
 		} catch (error) {
 			console.error("Elkan 5e | Error in updateToken grapple hook:", error);
 		}
-
-		if (["x", "y", "elevation"].some((key) => key in changes)) {
-			meldWithShadowsBrightLight({ userId });
-		}
-	});
-
-	// Lighting refreshes after lights or light-carrying tokens change.
-	Hooks.on("lightingRefresh", () => {
-		meldWithShadowsBrightLight();
 	});
 
 	Hooks.on("combatStart", (combat) => {

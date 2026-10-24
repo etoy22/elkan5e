@@ -77,31 +77,3 @@ export function refreshSeeThroughDarkness(effect) {
 	if (!changes.some((c) => c.key === SEE_THROUGH_DARKNESS_KEY)) return;
 	canvas.perception.update({ initializeVision: true });
 }
-
-/**
- * Checks whether a token is standing in bright light: inside the bright radius of a light source,
- * or under bright global illumination, and not inside a darkness source.
- *
- * @param {TokenDocument} tokenDoc - Token to test.
- * @returns {boolean}
- */
-export function isInBrightLight(tokenDoc) {
-	if (!canvas?.ready || tokenDoc?.parent !== canvas.scene) return false;
-	const point = tokenDoc.getVisionOrigin();
-	const effects = canvas.effects;
-	if (effects.testInsideDarkness(point)) return false;
-
-	const GlobalLightSource = foundry.canvas.sources.GlobalLightSource;
-	for (const source of effects.lightSources) {
-		if (!source.active || !(source.data.bright > 0)) continue;
-		if (source instanceof GlobalLightSource) {
-			const { min, max } = source.data.darkness;
-			const level = effects.getDarknessLevel(point);
-			if (level >= min && level <= max) return true;
-			continue;
-		}
-		const distance = Math.hypot(point.x - source.x, point.y - source.y);
-		if (distance <= source.data.bright && source.testPoint(point)) return true;
-	}
-	return false;
-}

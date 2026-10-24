@@ -36,9 +36,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"elkan5e": {
-					"endsOnRegionExit": true
 				}
 			},
 			"start": null,
@@ -149,7 +146,7 @@
 		"activities": {
 			"dnd5eactivity000": {
 				"_id": "dnd5eactivity000",
-				"type": "save",
+				"type": "utility",
 				"activation": {
 					"type": "action",
 					"value": null,
@@ -171,32 +168,21 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [
-					{
-						"_id": "zWrpJyjS76bHij3n",
-						"onSave": false,
-						"level": {
-							"min": null,
-							"max": null
-						}
-					}
-				],
+				"effects": [],
 				"range": {
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
 					"override": true,
 					"prompt": true,
 					"affects": {
 						"type": ""
 					},
 					"template": {
+						"contiguous": false,
 						"type": "sphere",
 						"size": "15",
+						"units": "ft",
 						"count": ""
 					}
 				},
@@ -205,24 +191,15 @@
 					"max": "",
 					"recovery": []
 				},
-				"damage": {
-					"onSave": "none",
-					"parts": []
-				},
-				"save": {
-					"ability": [
-						"cha"
-					],
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
-					}
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
 				},
 				"name": "",
 				"img": "",
-				"appliedEffects": [
-					"zWrpJyjS76bHij3n"
-				],
+				"appliedEffects": [],
 				"visibility": {
 					"level": {
 						"min": null,
@@ -232,124 +209,31 @@
 				"regionBehavior": {
 					"attachToken": "default",
 					"enabled": true,
-					"dispositionFilter": -1,
-					"excludeSource": false,
-					"oncePerTurn": true,
-					"wallRestriction": "none",
-					"regionVisibility": 2,
-					"rules": [
-						{
-							"trigger": "entry",
-							"action": "useActivity",
-							"targetId": "zoneOfTruthEnter"
-						}
-					]
-				},
-				"midiProperties": {
-					"identifier": "zoneOfTruthSave"
-				}
-			},
-			"3rKy93gwGv79l4TB": {
-				"_id": "3rKy93gwGv79l4TB",
-				"type": "save",
-				"activation": {
-					"type": "",
-					"value": null,
-					"override": true,
-					"condition": ""
-				},
-				"consumption": {
-					"targets": [],
-					"scaling": {
-						"allowed": false,
-						"max": ""
-					},
-					"spellSlot": false
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": true
-				},
-				"effects": [
-					{
-						"_id": "zWrpJyjS76bHij3n",
-						"onSave": false,
-						"level": {
-							"min": null,
-							"max": null
-						}
-					}
-				],
-				"range": {
-					"override": false
-				},
-				"target": {
-					"prompt": true,
-					"template": {
-						"contiguous": false,
-						"type": "",
-						"units": "ft",
-						"stationary": false
-					},
-					"affects": {
-						"type": "self"
-					},
-					"override": true
-				},
-				"uses": {
-					"spent": 0,
-					"max": "",
-					"recovery": []
-				},
-				"damage": {
-					"onSave": "none",
-					"parts": []
-				},
-				"save": {
-					"ability": [
-						"cha"
-					],
-					"dc": {
-						"calculation": "spellcasting",
-						"formula": ""
-					}
-				},
-				"name": "Zone of Truth (Entering)",
-				"img": "",
-				"appliedEffects": [
-					"zWrpJyjS76bHij3n"
-				],
-				"visibility": {
-					"level": {
-						"min": null,
-						"max": null
-					}
-				},
-				"regionBehavior": {
-					"attachToken": "default",
-					"enabled": false,
-					"dispositionFilter": -1,
+					"dispositionFilter": 0,
 					"excludeSource": false,
 					"oncePerTurn": true,
 					"wallRestriction": "none",
 					"regionVisibility": 2,
 					"rules": []
 				},
-				"midiProperties": {
-					"identifier": "zoneOfTruthEnter",
-					"automationOnly": true,
-					"confirmTargets": "never"
-				},
-				"behaviors": [],
-				"isOverTimeFlag": true,
-				"overTimeProperties": {
-					"turnChoice": "end",
-					"saveRemoves": false
-				}
+				"behaviors": [
+					{
+						"name": "Zone of Truth",
+						"_id": "zOTaPPLYeFFECT01",
+						"type": "applyActiveEffect",
+						"config": {
+							"effects": [
+								"Compendium.elkan5e.elkan5e-spells.Item.L8vSNGiYvs5dJi64.ActiveEffect.zWrpJyjS76bHij3n"
+							],
+							"sizes": [],
+							"types": []
+						},
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				]
 			}
 		},
 		"identifier": "zone-of-truth"

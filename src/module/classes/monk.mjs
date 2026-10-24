@@ -1,4 +1,3 @@
-import { isInBrightLight } from "../rules/condition/vision.mjs";
 import {
 	conditionSources,
 	deleteEffectRemoveEffect,
@@ -52,51 +51,6 @@ export function onCombatTurnChange(combat, prior) {
 	if (!lastActor) return;
 	rmvMeldShadow(lastActor);
 	rmvhijackShadow(lastActor);
-}
-
-/**
- * Ends Meld with Shadows on every token in the scene that is standing in bright light.
- *
- * @returns {Promise<void>}
- */
-async function endMeldWithShadowsInBrightLight() {
-	const effectName = t("elkan5e.monk.meldWithShadowsEffect");
-	const endNames = new Set([
-		effectName,
-		t("elkan5e.monk.meldWithShadowsAttacks"),
-		t("elkan5e.monk.emptyBody"),
-	]);
-	for (const token of canvas?.tokens?.placeables ?? []) {
-		const actor = token.actor;
-		if (!actor?.effects.some((e) => e.name === effectName)) continue;
-		if (!isInBrightLight(token.document)) continue;
-		await deleteEffects(
-			actor,
-			actor.effects.filter((e) => endNames.has(e.name)),
-		);
-		ui.notifications.info(t("elkan5e.monk.meldWithShadowsBrightLight", { name: actor.name }));
-	}
-}
-
-const debouncedMeldCheck = foundry.utils.debounce(() => {
-	endMeldWithShadowsInBrightLight().catch((error) =>
-		console.error("Elkan 5e | Error ending Meld with Shadows in bright light:", error),
-	);
-}, 250);
-
-/**
- * Runs Meld with Shadows class feature automation: the ability ends if the monk enters bright
- * light. Checked whenever the scene's lighting refreshes (on the active GM), and whenever the
- * current user moves a token or applies the effect, so it still runs when no GM is viewing the scene.
- *
- * @param {object} [options]
- * @param {string} [options.userId] - User who made the triggering change, if any.
- * @param {ActiveEffect} [options.effect] - Effect that was just created, if any.
- */
-export function meldWithShadowsBrightLight({ userId, effect } = {}) {
-	if (effect && effect.name !== t("elkan5e.monk.meldWithShadowsEffect")) return;
-	if (userId ? userId !== game.user.id : !game.users.activeGM?.isSelf) return;
-	debouncedMeldCheck();
 }
 
 const STILLNESS_STATUSES = ["charmed", "confused", "frightened", "goaded"];

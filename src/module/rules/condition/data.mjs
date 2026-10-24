@@ -2,7 +2,7 @@
 
 // Remove these in certain settings
 const CONDITION_TYPE_REMOVE = ["bleeding"];
-const STATUS_EFFECT_REMOVE = ["burrowing", "flying", "hovering", "marked", "sleeping", "ethereal"];
+const STATUS_EFFECT_REMOVE = ["burrowing", "flying", "hovering", "marked", "sleeping"];
 const STATUS_ICON_KEYS = [
 	"burrowing",
 	"flying",
@@ -208,6 +208,10 @@ const CONDITION_DEFS = [
 			{ key: "flags.midi-qol.grants.advantage.attack.msak", type: "override", value: "1" },
 			{ key: "flags.midi-qol.grants.disadvantage.attack.rwak", type: "override", value: "1" },
 			{ key: "flags.midi-qol.grants.disadvantage.attack.rsak", type: "override", value: "1" },
+			{ key: "system.attributes.movement.speeds.burrow", type: "override", value: "0" },
+			{ key: "system.attributes.movement.speeds.climb", type: "override", value: "0" },
+			{ key: "system.attributes.movement.speeds.fly", type: "override", value: "0" },
+			{ key: "system.attributes.movement.speeds.swim", type: "override", value: "0" },
 		],
 	},
 	{
@@ -311,6 +315,16 @@ const CONDITION_DEFS = [
 ];
 
 const STATUS_DEFS = [
+	{
+		id: "ethereal",
+		_id: "dnd5eethereal000",
+		pseudo: true,
+		icon: "modules/elkan5e/icons/statuses/ethereal.svg",
+		neverBlockMovement: true,
+		flags: {
+			core: { statusId: "ethereal" },
+		},
+	},
 	{
 		id: "bleeding",
 		_id: "dnd5ebleeding000",

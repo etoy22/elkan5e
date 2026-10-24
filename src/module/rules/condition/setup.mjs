@@ -461,6 +461,8 @@ export function conditions() {
 			effects.dexteritySaveDisadvantage?.delete?.("blinded");
 			effects.halfMovement?.delete?.("blinded");
 			effects.dexteritySaveDisadvantage?.delete?.("deafened");
+			// Prone's own changes set every speed but walking and crawling to 0.
+			effects.crawl?.delete?.("prone");
 			// Elkan only changes initiative for Surprised (a -20 penalty set in its changes).
 			effects.initiativeAdvantage?.delete?.("invisible");
 			effects.initiativeDisadvantage?.delete?.("incapacitated");

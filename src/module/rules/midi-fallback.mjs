@@ -17,7 +17,6 @@ import { finishingBlow } from "../classes/rogue.mjs";
 import { carefulSpell, elementalInfusion, savantSpellReminder } from "../classes/sorcerer.mjs";
 import { powerOfLoveAndFearApply, powerOfLoveAndFearPrompt } from "../classes/warlock.mjs";
 import { necromanticSurge } from "../classes/wizard.mjs";
-import { suddenWarning } from "../origin/background.mjs";
 import { tokenForActor, withTargets } from "../shared/midi-compat.mjs";
 import {
 	ensnaringVineSize,
@@ -315,14 +314,10 @@ function onSaveMessage(message) {
 		failedSaves: new Set([token]),
 		targetSaveDetails: { [token.document.uuid]: { saveRoll: roll } },
 		elkan5eLoveAndFear: usage.getFlag("elkan5e", "loveAndFear"),
-		// Midi updates its save display after a reroll; the reroll's own chat card does that here.
-		updateSaveFailSets: () => {},
-		buildSaveDisplayEntry: async () => {},
 	});
 	for (const [name, run] of [
 		["Power of Love and Fear", powerOfLoveAndFearApply],
 		["Strickening Gaze", strickeningGazePrompt],
-		["Sudden Warning", suddenWarning],
 	]) {
 		Promise.resolve(run(workflow)).catch((error) =>
 			console.error(`Elkan 5e | Error in ${name} automation:`, error),
