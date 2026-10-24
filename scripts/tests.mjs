@@ -83,7 +83,7 @@ test("release-foundry-package job is wired to the release script", () => {
 	assert.deepEqual(job.needs, ["version-check", "create-github-release"]);
 	assert.equal(
 		job.if,
-		"needs.version-check.outputs.should_continue == 'true' && needs.create-github-release.result == 'success' && needs.version-check.outputs.test != 'true'",
+		"needs.version-check.outputs.should_continue == 'true' && needs.create-github-release.result == 'success' && needs.version-check.outputs.test != 'true' && needs.version-check.outputs.prerelease != 'true'",
 	);
 
 	assert.equal(job.steps?.length, 3);
@@ -131,15 +131,13 @@ test("notify-discord job publishes release details to Discord", () => {
 		"Show release notes in logs",
 		"Format release notes for Discord",
 		"Show formatted release notes in logs",
-		"Read formatted release notes content",
-		"Prepare Discord payload",
+		"Prepare Discord payloads",
 		"Post to Discord",
 	]);
 
 	assert.equal(job.steps[0].uses, "actions/download-artifact@v7");
-	assert.equal(job.steps[4].id, "read_release_notes");
-	assert.equal(job.steps[5].id, "prepare_discord_payload");
-	const postStep = job.steps[6].run ?? "";
+	assert.equal(job.steps[4].id, "prepare_discord_payload");
+	const postStep = job.steps[5].run ?? "";
 	assert.ok(postStep.includes("set -eo pipefail"), "post step should enable pipefail");
 	assert.ok(
 		postStep.includes(
