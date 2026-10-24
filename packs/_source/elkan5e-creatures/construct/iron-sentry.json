@@ -42,7 +42,7 @@
 				"source": {
 					"custom": "Elkan 5e",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -223,13 +223,13 @@
 			"folder": null,
 			"system": {
 				"description": {
-					"value": "<p>The [[lookup @name lowercase]] has <strong>advantage</strong> on saving throws against spells and other magical effects.</p>",
+					"value": "<p>The [[lookup @name lowercase]] has <strong>advantage</strong> on &amp;reference[savingthrow]{saving throws} against spells and other magical effects.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -248,7 +248,9 @@
 				"prerequisites": {
 					"level": null
 				},
-				"properties": []
+				"properties": [
+					"trait"
+				]
 			},
 			"_key": "!actors.items!05aauBIXRUNIGuP4.orRF3dRUO7DsYfC6"
 		},
@@ -257,17 +259,57 @@
 			"name": "Immutable Form",
 			"type": "feat",
 			"img": "icons/magic/unholy/orb-beam-pink.webp",
-			"effects": [],
+			"effects": [
+				{
+					"name": "Immutable Form",
+					"img": "icons/magic/unholy/orb-beam-pink.webp",
+					"origin": "Actor.05aauBIXRUNIGuP4.Item.GNANLBjaQ7k9oZ0w",
+					"_id": "ImmutableFormCI0",
+					"type": "base",
+					"system": {
+						"changes": [
+							{
+								"key": "system.traits.ci.value",
+								"value": "transformed",
+								"priority": null,
+								"type": "add"
+							}
+						]
+					},
+					"disabled": false,
+					"duration": {
+						"value": null,
+						"units": "seconds",
+						"expiry": null,
+						"expired": false
+					},
+					"description": "<p>The golem is immune to any spell or effect that would alter its form.</p>",
+					"tint": "#ffffff",
+					"transfer": true,
+					"statuses": [],
+					"start": {
+						"combat": null,
+						"round": null,
+						"time": 0,
+						"turn": null,
+						"combatant": null,
+						"initiative": null
+					},
+					"showIcon": 1,
+					"folder": null,
+					"_key": "!actors.items.effects!05aauBIXRUNIGuP4.GNANLBjaQ7k9oZ0w.ImmutableFormCI0"
+				}
+			],
 			"folder": null,
 			"system": {
 				"description": {
-					"value": "<p>The golem is immune to any spell or effect that would alter its form.</p>",
+					"value": "<p>The [[lookup @name lowercase]] is immune to any spell or effect that would alter its form.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -286,7 +328,9 @@
 				"prerequisites": {
 					"level": null
 				},
-				"properties": []
+				"properties": [
+					"trait"
+				]
 			},
 			"_key": "!actors.items!05aauBIXRUNIGuP4.GNANLBjaQ7k9oZ0w"
 		},
@@ -305,7 +349,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -324,7 +368,9 @@
 				"prerequisites": {
 					"level": null
 				},
-				"properties": []
+				"properties": [
+					"trait"
+				]
 			},
 			"_key": "!actors.items!05aauBIXRUNIGuP4.kH09hk2ajEGRvxn9"
 		},
@@ -359,7 +405,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -468,7 +514,9 @@
 							]
 						},
 						"save": {
-							"ability": "dex",
+							"ability": [
+								"dex"
+							],
 							"dc": {
 								"calculation": "con",
 								"formula": ""
@@ -500,7 +548,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -685,7 +733,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -880,19 +928,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": 0,
-				"climb": 0,
-				"fly": 0,
-				"swim": 0,
-				"walk": 20,
+				"speeds": {
+					"walk": 20,
+					"burrow": 0,
+					"climb": 0,
+					"fly": 0,
+					"swim": 0
+				},
 				"units": "ft",
 				"hover": false
 			},
@@ -900,10 +950,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 120,
-				"blindsight": 0,
-				"tremorsense": 0,
-				"truesight": 0,
+				"ranges": {
+					"darkvision": 120,
+					"blindsight": 0,
+					"tremorsense": 0,
+					"truesight": 0
+				},
 				"units": "ft",
 				"special": ""
 			},

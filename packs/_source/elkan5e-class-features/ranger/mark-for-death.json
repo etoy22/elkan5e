@@ -28,22 +28,6 @@
 					"enableCondition": "",
 					"disableCondition": "",
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"tint": "#ffffff",
@@ -108,6 +92,49 @@
 				}
 			},
 			"_key": "!items.effects!HPrjgPXLsDRBbfsD.MehX2OXUbBtGDhto"
+		},
+		{
+			"_id": "QK1VwBuv8BKEvCQg",
+			"disabled": false,
+			"duration": {
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"transfer": false,
+			"flags": {
+				"dae": {
+					"stackable": "none",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"transfer": false,
+					"disableIncapacitated": false,
+					"selfTarget": true,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"enableCondition": "",
+					"disableCondition": "",
+					"expiryMode": "default"
+				}
+			},
+			"tint": "#ffffff",
+			"origin": null,
+			"name": "Mark for Death (Hunting)",
+			"description": "",
+			"statuses": [
+				"rangerMark"
+			],
+			"img": "icons/magic/death/projectile-skull-fire-purple.webp",
+			"type": "base",
+			"system": {
+				"changes": []
+			},
+			"start": null,
+			"showIcon": 2,
+			"folder": null,
+			"_key": "!items.effects!HPrjgPXLsDRBbfsD.QK1VwBuv8BKEvCQg"
 		}
 	],
 	"folder": "k63aDnjqpB2qe9Nr",
@@ -155,7 +182,7 @@
 				"img": "icons/magic/death/projectile-skull-fire-purple.webp",
 				"type": "script",
 				"scope": "global",
-				"command": "return elkan5e.macro.features.markForDeath(workflow);",
+				"command": "return elkan5e.macros.features.markForDeath(workflow, macroItem);",
 				"author": "JfIFUEeTlOfdxqPQ",
 				"_id": null,
 				"folder": null
@@ -164,7 +191,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><strong>Bonus Action</strong> - Self - 1 Minute - 2/Long Rest*</p><p>You enter a state of heightened focus during combat where you focus on one target.</p><p>You can mark a creature you can see when you take the &amp;reference[Attack] action. You deal an extra [[/r 1d4]]* damage with your weapons when you hit a marked target with a weapon attack. This damage is of the same type as your weapon. You can shift your mark to a new target every time you take the Attack action. You can only have one marked target at a time. If you kill your marked target (or knock them unconscious), you won't be able to deal this extra damage until your next turn.</p><p>This ability ends early if you become incapacitated.</p><p>*Your Mark for Death die changes from a d4 to larger dice and you get more uses of this ability when you reach certain levels in this class, as shown in the @UUID[Compendium.elkan5e.elkan5e-class.Item.t9qEzMyJh0kg5Djk]{Ranger Progression Table}.</p><p><em>This ability is meant to replace the hunter's mark spell. You cannot benefit from the hunter's mark spell while using this ability.</em></p>",
+			"value": "<p><strong>Bonus Action</strong> - Self - 1 Minute - 2/Long Rest*</p><p>You enter a state of heightened focus during combat where you focus on one target.</p><p>You can mark a creature you can see when you take the &amp;reference[Attack] action. You deal an extra [[/r 1d4]]* damage with your weapons when you hit a marked target with a weapon attack. This damage is of the same type as your weapon. You can shift your mark to a new target every time you take the Attack action. You can only have one marked target at a time. If you kill your marked target (or knock them &amp;reference[unconscious apply=false]{unconscious}), you won't be able to deal this extra damage until your next turn.</p><p>This ability ends early if you become &amp;reference[incapacitated apply=false]{incapacitated}.</p><p>*Your Mark for Death die changes from a d4 to larger dice and you get more uses of this ability when you reach certain levels in this class, as shown in the @UUID[Compendium.elkan5e.elkan5e-class.Item.t9qEzMyJh0kg5Djk]{Ranger Progression Table}.</p><p><em>This ability is meant to replace the hunter's mark spell. You cannot benefit from the hunter's mark spell while using this ability.</em></p>",
 			"chat": ""
 		},
 		"source": {
@@ -231,11 +258,18 @@
 							"min": null,
 							"max": null
 						}
+					},
+					{
+						"_id": "QK1VwBuv8BKEvCQg",
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
-					"units": "self",
-					"special": "",
+					"units": "spec",
+					"special": "A creature you can see",
 					"override": false
 				},
 				"target": {
@@ -249,8 +283,8 @@
 						"units": ""
 					},
 					"affects": {
-						"count": "",
-						"type": "self",
+						"count": "1",
+						"type": "enemy",
 						"choice": false,
 						"special": ""
 					},
@@ -383,9 +417,25 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "7jw1gxiuvosibvcs",
+						"level": {
+							"min": null,
+							"max": null
+						}
+					},
+					{
+						"_id": "QK1VwBuv8BKEvCQg",
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
 				"range": {
-					"units": "self",
+					"units": "spec",
+					"special": "A creature you can see",
 					"override": false
 				},
 				"target": {
@@ -395,7 +445,10 @@
 						"units": "ft"
 					},
 					"affects": {
-						"choice": false
+						"count": "1",
+						"type": "enemy",
+						"choice": false,
+						"special": ""
 					},
 					"override": false,
 					"prompt": true

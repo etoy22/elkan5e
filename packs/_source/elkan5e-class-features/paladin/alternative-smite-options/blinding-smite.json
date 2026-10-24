@@ -135,7 +135,9 @@
 					]
 				},
 				"save": {
-					"ability": "con",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -171,22 +173,6 @@
 					"enableCondition": "",
 					"disableCondition": "",
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"_id": "SW0HZIzyLhjM79xv",
@@ -198,16 +184,23 @@
 				"expired": false
 			},
 			"description": "",
-			"statuses": [
-				"blinded"
-			],
+			"statuses": [],
 			"tint": "#ffffff",
 			"img": "icons/magic/light/projectile-beam-yellow.webp",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "blinded",
+						"phase": "final",
+						"priority": 20
+					}
+				],
+				"magical": true
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!YsAqtRP6MoiQ4Mpz.SW0HZIzyLhjM79xv"

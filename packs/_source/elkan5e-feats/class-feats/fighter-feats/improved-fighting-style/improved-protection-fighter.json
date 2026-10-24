@@ -27,7 +27,6 @@
 		"midi-qol": {
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
-			"reactionCondition": "reaction === 'isHit' && actor.items.some(i => i.system?.equipped && ((i.type === 'equipment' && i.system?.type?.value === 'shield') || (i.type === 'weapon' && ['mwak','msak'].includes(i.system?.actionType))))",
 			"effectCondition": "",
 			"removeAttackDamageButtons": "default",
 			"otherCondition": ""
@@ -35,7 +34,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em> <strong>Prerequisite: Prerequisite: Fighter level 12, Protection Fighting Style</strong></em></p><p><span> <strong>Reaction</strong> </span>- 1 Ally (5 ft.)</p><p><em>Trigger: A creature hits one of your allies within 5 ft. of you with an attack roll.</em></p><ul><li><p>You force the attacker to reroll the attack, targeting you instead. Until the end of your next turn, all attacks directed at the ally you are protecting are made against you instead. You must be holding a shield or melee weapon to use this ability.</p></li></ul>",
+			"value": "<p><em> <strong>Prerequisite: Fighter level 12, Protection Fighting Style</strong></em></p><p><span> <strong>Reaction</strong> </span>- 1 Ally (5 ft.)</p><p><em>Trigger: A creature hits one of your allies within 5 ft. of you with an &amp;reference[attackrolls]{attack roll}.</em></p><ul><li><p>You force the attacker to reroll the attack, targeting you instead. Until the end of your next turn, all attacks directed at the ally you are protecting are made against you instead. You must be holding a shield or melee weapon to use this ability.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -58,7 +57,10 @@
 		"requirements": "Feat (Fighter Level 12)",
 		"properties": [],
 		"prerequisites": {
-			"level": 12
+			"level": 12,
+			"items": [
+				"fighter"
+			]
 		},
 		"activities": {
 			"dnd5eactivity000": {
@@ -124,36 +126,13 @@
 					"name": "",
 					"prompt": false,
 					"visible": false
-				}
+				},
+				"useConditionText": "false"
 			}
 		},
 		"identifier": "improved-protection-fighter",
 		"enchant": {},
-		"advancement": [
-			{
-				"_id": "aC5HuW1uXBe16dL0",
-				"type": "AbilityScoreImprovement",
-				"configuration": {
-					"cap": 2,
-					"fixed": {
-						"str": 0,
-						"dex": 0,
-						"con": 0,
-						"int": 0,
-						"wis": 0,
-						"cha": 0
-					},
-					"locked": [],
-					"points": 2
-				},
-				"value": {
-					"type": "asi"
-				},
-				"level": 0,
-				"title": "",
-				"hint": ""
-			}
-		]
+		"advancement": []
 	},
 	"folder": "7jLpyN1aDF7GxaPb",
 	"_id": "VP4blm22Yz6kunKa",

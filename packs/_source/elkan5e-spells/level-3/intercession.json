@@ -38,10 +38,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -206,11 +210,20 @@
 					{
 						"key": "flags.midi-qol.OverTime",
 						"type": "add",
-						"value": "turn=start, label=Intercession, saveAbility=cha, saveDC=@attributes.spell.dc, chatFlavor=Intercession",
+						"value": "turn=end, label=Intercession, saveAbility=cha, saveDC=@attributes.spell.dc, chatFlavor=Intercession",
 						"phase": "initial",
-						"priority": null
+						"priority": null,
+						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "siphoned",
+						"phase": "final",
+						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"start": null,
@@ -223,10 +236,8 @@
 			"description": "",
 			"tint": "#ffffff",
 			"transfer": false,
-			"statuses": [
-				"siphoned"
-			],
-			"showIcon": 2,
+			"statuses": [],
+			"showIcon": 0,
 			"folder": null,
 			"flags": {
 				"dae": {

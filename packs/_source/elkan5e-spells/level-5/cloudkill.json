@@ -2,102 +2,11 @@
 	"name": "Cloudkill",
 	"type": "spell",
 	"img": "icons/magic/air/fog-gas-smoke-swirling-green.webp",
-	"effects": [
-		{
-			"name": "Cloudkill",
-			"img": "icons/magic/air/fog-gas-smoke-swirling-green.webp",
-			"origin": "Compendium.elkan5e.elkan5e-spells.Item.EuVC53keqdJq1LTn",
-			"transfer": false,
-			"_id": "IKuTictLfDcVRIpO",
-			"type": "base",
-			"system": {
-				"changes": []
-			},
-			"disabled": false,
-			"duration": {
-				"value": 600,
-				"units": "seconds",
-				"expiry": "turnStart",
-				"expired": false
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"statuses": [
-				"poisoned"
-			],
-			"flags": {
-				"dae": {
-					"enableCondition": "",
-					"disableCondition": "",
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"stackable": "multi",
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": []
-				}
-			},
-			"showIcon": 2,
-			"start": null,
-			"folder": null,
-			"_key": "!items.effects!EuVC53keqdJq1LTn.IKuTictLfDcVRIpO"
-		},
-		{
-			"name": "Heavily Obscured",
-			"origin": "Compendium.elkan5e.elkan5e-spells.Item.EuVC53keqdJq1LTn",
-			"transfer": false,
-			"flags": {
-				"dae": {
-					"itemName": "Cloudkill",
-					"enableCondition": "",
-					"disableCondition": "",
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"stackable": "noneName",
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": [],
-					"expiryMode": "default"
-				}
-			},
-			"img": "modules/elkan5e/icons/conditions/obscured-heavily.svg",
-			"_id": "2u9mvanLfZM9xaCQ",
-			"type": "base",
-			"system": {
-				"changes": [
-					{
-						"key": "macro.StatusEffect",
-						"type": "custom",
-						"value": "obscuredheavily",
-						"phase": "final",
-						"priority": 0
-					}
-				]
-			},
-			"disabled": false,
-			"duration": {
-				"value": 0,
-				"units": "seconds",
-				"expiry": "turnStart",
-				"expired": false
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"statuses": [],
-			"start": null,
-			"showIcon": 1,
-			"folder": null,
-			"_key": "!items.effects!EuVC53keqdJq1LTn.2u9mvanLfZM9xaCQ"
-		}
-	],
+	"effects": [],
 	"folder": "PnZJTE6T4UQY81Pm",
 	"flags": {
 		"midi-qol": {
-			"onUseMacroName": "[postActiveEffects]AA ApplyEffectsToTemplate",
+			"onUseMacroName": "",
 			"effectActivation": false,
 			"AoETargetType": "any",
 			"AoETargetTypeIncludeSelf": true,
@@ -133,7 +42,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>With a fell incantation, you conjure a drifting cloud of putrid, yellow-green poisonous fog that seeps into creatures through their skin.</em></p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><p>Creatures are affected even if they hold their breath or don't need to breathe.</p><ul><li><p><strong>Failure</strong> : Targets take [[/damage 5d8 poison]] damage and gain the &amp;reference[poisoned] condition. Targets roll again at end of their turns, ending the poisoned effect on success.</p></li><li><p><strong>Success</strong> : Half damage.</p></li><li><p><strong>Area Hazard</strong> : The area is &amp;reference[lightly obscured]. Targets roll a save when they enter or when they end their turn in the area (but only once per turn).</p></li><li><p><strong>Concentration: </strong>At the start of each of your turns, you can choose to move the area of effect up to 10 ft in any direction.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d8 poison]]{1d8} for each spell level above 5th.</p><p><em>A moderate wind (at least 10 miles per hour) can move the cloud 10 ft. per round. A strong wind (at least 20 miles per hour) disperses the cloud and ends the spell.</em></p>",
+			"value": "<p><em>With a fell incantation, you conjure a drifting cloud of putrid, yellow-green poisonous fog that seeps into creatures through their skin.</em></p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><p>Creatures are affected even if they hold their breath or don't need to breathe.</p><ul><li><p><strong>Failure</strong> : Targets take [[/damage 5d8 poison]] damage and gain the &amp;reference[poisoned] condition. Targets roll again at end of their turns, ending the poisoned effect on success.</p></li><li><p><strong>Success</strong> : Half damage.</p></li><li><p><strong>Area Hazard</strong> : The area is &amp;reference[lightly obscured]. Targets roll a save when they enter or when they end their turn in the area (but only once per turn).</p></li><li><p><strong>&amp;reference[concentration]{Concentration}: </strong>At the start of each of your turns, you can choose to move the area of effect up to 10 ft in any direction.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d8 poison]]{1d8} for each spell level above 5th.</p><p><em>A moderate wind (at least 10 miles per hour) can move the cloud 10 ft. per round. A strong wind (at least 20 miles per hour) disperses the cloud and ends the spell.</em></p>",
 			"chat": ""
 		},
 		"source": {
@@ -277,19 +186,27 @@
 							"trigger": "turnEnd",
 							"action": "useActivity",
 							"targetId": "cloudkillDamage"
-						},
-						{
-							"trigger": "entry",
-							"action": "applyEffect",
-							"targetId": "2u9mvanLfZM9xaCQ"
-						},
-						{
-							"trigger": "exit",
-							"action": "removeEffect",
-							"targetId": "2u9mvanLfZM9xaCQ"
 						}
 					]
-				}
+				},
+				"behaviors": [
+					{
+						"name": "",
+						"_id": "f1Q2mv4tOspkLhcP",
+						"type": "applyActiveEffect",
+						"config": {
+							"effects": [
+								"Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanobscuredlig"
+							],
+							"sizes": [],
+							"types": []
+						},
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				]
 			},
 			"hW3AAcNpcKKgS57i": {
 				"type": "save",
@@ -311,14 +228,17 @@
 					"chatFlavor": ""
 				},
 				"duration": {
-					"units": "inst",
+					"units": "minute",
 					"concentration": false,
-					"override": true
+					"override": true,
+					"value": "10",
+					"expiry": null
 				},
 				"effects": [
 					{
-						"_id": "IKuTictLfDcVRIpO",
-						"onSave": false
+						"onSave": false,
+						"_id": "gGtDA3unSPREMOTE",
+						"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanpoisoned000"
 					}
 				],
 				"range": {
@@ -419,9 +339,7 @@
 				"otherActivityId": "none",
 				"_id": "hW3AAcNpcKKgS57i",
 				"img": "",
-				"appliedEffects": [
-					"IKuTictLfDcVRIpO"
-				],
+				"appliedEffects": [],
 				"regionBehavior": {
 					"enabled": false,
 					"dispositionFilter": -1,

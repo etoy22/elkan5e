@@ -30,22 +30,22 @@
 				},
 				"effects": [
 					{
-						"_id": "LvbxgarlCUC19gcU",
-						"onSave": false,
-						"level": {
-							"min": null,
-							"max": null
-						}
+						"_id": "otherworldlyVeil",
+						"onSave": false
 					}
 				],
 				"range": {
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -183,58 +183,59 @@
 	},
 	"effects": [
 		{
+			"_id": "otherworldlyVeil",
 			"name": "Otherworldly Veil",
-			"img": "icons/creatures/magical/spirit-undead-masked-blue.webp",
-			"origin": "Item.WlBgPCMxkZZxFt4t",
-			"_id": "LvbxgarlCUC19gcU",
+			"img": "modules/elkan5e/icons/conditions/charmed.svg",
 			"type": "base",
-			"system": {
-				"changes": []
-			},
+			"transfer": false,
 			"disabled": false,
 			"duration": {
-				"value": null,
+				"value": 60,
 				"units": "seconds",
-				"expiry": null,
+				"expiry": "turnStart",
 				"expired": false
 			},
 			"description": "",
+			"origin": null,
+			"statuses": [],
 			"tint": "#ffffff",
-			"transfer": false,
-			"statuses": [
-				"charmed"
-			],
-			"flags": {
-				"dae": {
-					"disableCondition": "",
-					"disableIncapacitated": false,
-					"stackable": "multi",
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
-				}
-			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
-			"_key": "!items.effects!2vgdhCRZ1oiGdyn9.LvbxgarlCUC19gcU"
+			"flags": {
+				"dae": {
+					"stackable": "noneName",
+					"specialDuration": [],
+					"macroRepeat": "none",
+					"durationExpression": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"disableIncapacitated": false,
+					"enableCondition": "",
+					"disableCondition": ""
+				}
+			},
+			"system": {
+				"magical": true,
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end, label=Otherworldly Veil, saveAbility=int, saveDC=@attributes.spell.dc, saveMagic=true",
+						"priority": 20,
+						"type": "add",
+						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "charmed",
+						"phase": "final",
+						"priority": 20
+					}
+				]
+			},
+			"_key": "!items.effects!2vgdhCRZ1oiGdyn9.otherworldlyVeil"
 		}
 	],
 	"flags": {

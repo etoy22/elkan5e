@@ -12,12 +12,13 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.exhaustion",
-						"value": "+1",
+						"key": "macro.actorUpdate",
+						"value": "@targetUuid number 1 system.attributes.exhaustion +0",
 						"priority": 20,
-						"type": "add"
+						"type": "custom"
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -43,23 +44,6 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"start": null,
@@ -77,12 +61,13 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.exhaustion",
-						"value": "+1",
+						"key": "macro.actorUpdate",
+						"value": "@targetUuid number 1 system.attributes.exhaustion +0",
 						"priority": 20,
-						"type": "add"
+						"type": "custom"
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -106,23 +91,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"start": null,
@@ -138,7 +106,8 @@
 			"_id": "oGPgIxyEAmYt3LUC",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -162,23 +131,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"start": null,
@@ -345,10 +297,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -438,10 +394,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},

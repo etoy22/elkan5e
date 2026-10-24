@@ -29,22 +29,6 @@
 					"specialDuration": [],
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"tint": "#ffffff",
@@ -92,7 +76,6 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"stackable": "noneName",
-					"showIcon": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": [],
@@ -107,9 +90,10 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.OverTime",
-						"value": "turn=start,\nlabel=Holy Nimbus,\nsaveAbility=con,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\ndamageRoll=20,\ndamageType=radiant,\nsaveDamage=halfdam",
+						"value": "turn=start,\nlabel=Holy Nimbus,\nsaveAbility=con,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\ndamageRoll=20,\ndamageType=radiant,\nsaveDamage=halfdamage",
 						"priority": 20,
-						"type": "add"
+						"type": "custom",
+						"replacement": "origin"
 					}
 				]
 			},
@@ -156,10 +140,6 @@
 			"ida": false
 		},
 		"dnd5e": {
-			"riders": {
-				"activity": [],
-				"effect": []
-			},
 			"migratedUses": 1
 		}
 	},
@@ -281,7 +261,9 @@
 					]
 				},
 				"save": {
-					"ability": "con",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -327,7 +309,12 @@
 				},
 				"effects": [
 					{
-						"_id": "2vhmo2cElDdW3n71"
+						"_id": "2vhmo2cElDdW3n71",
+						"uuid": null,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -339,7 +326,9 @@
 					"template": {
 						"contiguous": false,
 						"units": "ft",
-						"type": ""
+						"type": "",
+						"size": "30",
+						"count": ""
 					},
 					"affects": {
 						"choice": false,
@@ -368,7 +357,15 @@
 				"img": "",
 				"appliedEffects": [
 					"2vhmo2cElDdW3n71"
-				]
+				],
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": ""
+				},
+				"behaviors": []
 			}
 		},
 		"identifier": "holy-nimbus",

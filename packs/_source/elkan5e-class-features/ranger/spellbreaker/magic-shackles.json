@@ -146,7 +146,7 @@
 		"identifier": "magic-shackles",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "",
 			"page": "",
 			"custom": "elkan5e.com/ranger",
@@ -180,54 +180,26 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.movement.walk",
-						"value": "1/2",
+						"key": "system.attributes.movement.multiplier",
+						"value": "0.5",
 						"priority": 20,
 						"type": "multiply"
 					},
 					{
-						"key": "system.attributes.movement.air",
-						"value": "1/2",
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end,\nlabel=Magic Shackles,\nsaveAbility=dex,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true",
 						"priority": 20,
-						"type": "multiply"
-					},
-					{
-						"key": "system.attributes.movement.burrow",
-						"value": "1/2",
-						"priority": 20,
-						"type": "multiply"
-					},
-					{
-						"key": "system.attributes.movement.climb",
-						"value": "1/2",
-						"priority": 20,
-						"type": "multiply"
-					},
-					{
-						"key": "system.attributes.movement.land",
-						"value": "1/2",
-						"priority": 20,
-						"type": "multiply"
-					},
-					{
-						"key": "system.attributes.movement.swim",
-						"value": "1/2",
-						"priority": 20,
-						"type": "multiply"
-					},
-					{
-						"key": "flags.midi-qol.ActivityOverTime",
-						"value": "turn=end,\nsaveAbility=dex,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\ndamageType=none,\nname=Magic Shackles",
-						"priority": 20,
-						"type": "override"
+						"type": "custom",
+						"replacement": "origin"
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
-				"value": null,
+				"value": 60,
 				"units": "seconds",
-				"expiry": null,
+				"expiry": "turnStart",
 				"expired": false
 			},
 			"description": "",
@@ -245,23 +217,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"start": null,

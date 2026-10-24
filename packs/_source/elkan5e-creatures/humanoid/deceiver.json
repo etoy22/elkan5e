@@ -19,19 +19,6 @@
 							"selfTargetAlways": false,
 							"durationExpression": "",
 							"macroRepeat": "none"
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"radius": null,
-							"aura": "None",
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"displayTemp": false
 						}
 					},
 					"disabled": false,
@@ -57,7 +44,8 @@
 								"priority": 5,
 								"type": "override"
 							}
-						]
+						],
+						"magical": true
 					},
 					"start": null,
 					"showIcon": 1,
@@ -188,10 +176,14 @@
 							"override": false
 						},
 						"target": {
-							"type": "creature",
-							"value": 1,
-							"units": "ft",
-							"width": null,
+							"affects": {
+								"type": "creature",
+								"count": 1
+							},
+							"template": {
+								"units": "ft",
+								"width": null
+							},
 							"override": false,
 							"prompt": true
 						},
@@ -240,7 +232,8 @@
 					"img": "icons/magic/perception/silhouette-stealth-shadow.webp",
 					"type": "base",
 					"system": {
-						"changes": []
+						"changes": [],
+						"magical": true
 					},
 					"tint": "#ffffff",
 					"start": null,
@@ -273,13 +266,13 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p>You can blind or deafen a foe. Choose one creature that you can see within range to make a Constitution saving throw. If it fails, the target is either blinded or deafened (your choice) for the duration. At the end of each of its turns, the target can make a Constitution saving throw. On a success, the spell ends.</p><p><strong>At Higher Levels.</strong> When you cast this spell using a spell slot of 3rd level or higher, you can target one additional creature for each slot level above 2nd.</p>",
+					"value": "<p>You can blind or deafen a foe. Choose one creature that you can see within range to make a Constitution &amp;reference[savingthrow]{saving throw}. If it fails, the target is either &amp;reference[blinded apply=false]{blinded} or &amp;reference[deafened apply=false]{deafened} (your choice) for the duration. At the end of each of its turns, the target can make a Constitution saving throw. On a success, the spell ends.</p><p><strong>At Higher Levels.</strong> When you cast this spell using a spell slot of 3rd level or higher, you can target one additional creature for each slot level above 2nd.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "PHB pg. 219",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"activation": {
@@ -394,7 +387,9 @@
 							"parts": []
 						},
 						"save": {
-							"ability": "con",
+							"ability": [
+								"con"
+							],
 							"dc": {
 								"calculation": "spellcasting",
 								"formula": ""
@@ -418,28 +413,11 @@
 				{
 					"_id": "nXYPxrpmwiZIH4CV",
 					"flags": {
-						"core": {
-							"statusId": "combat-utility-belt.charmed"
-						},
 						"dae": {
 							"stackable": "none",
 							"transfer": false,
 							"macroRepeat": "none",
 							"specialDuration": []
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"ignoreSelf": false,
-							"hidden": false,
-							"height": false,
-							"alignment": "",
-							"type": "",
-							"aura": "None",
-							"radius": null,
-							"save": "",
-							"savedc": null,
-							"hostile": false,
-							"onlyOnce": false
 						}
 					},
 					"disabled": false,
@@ -455,13 +433,22 @@
 					"name": "Charmed",
 					"description": "",
 					"statuses": [],
-					"img": "modules/combat-utility-belt/icons/charmed.svg",
+					"img": "modules/elkan5e/icons/conditions/charmed.svg",
 					"type": "base",
 					"system": {
-						"changes": []
+						"changes": [
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "charmed",
+								"phase": "final",
+								"priority": 20
+							}
+						],
+						"magical": true
 					},
 					"start": null,
-					"showIcon": 1,
+					"showIcon": 0,
 					"folder": null,
 					"_key": "!actors.items.effects!ODZtWObKUQPRtVYf.qdp9UX4UNAm1f59j.nXYPxrpmwiZIH4CV"
 				}
@@ -490,13 +477,13 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p>You attempt to charm a &amp;reference[humanoid] you can see within range. It must make a Wisdom saving throw, and does so with advantage if you or your companions are fighting it. If it fails the saving throw, it is Charmed by you until the spell ends or until you or your companions do anything harmful to it. The Charmed creature regards you as a friendly acquaintance. When the spell ends, the creature knows it was Charmed by you.</p>",
+					"value": "<p>You attempt to charm a &amp;reference[humanoid] you can see within range. It must make a Wisdom &amp;reference[savingthrow]{saving throw}, and does so with advantage if you or your companions are fighting it. If it fails the saving throw, it is &amp;reference[charmed apply=false]{Charmed} by you until the spell ends or until you or your companions do anything harmful to it. The Charmed creature regards you as a friendly acquaintance. When the spell ends, the creature knows it was Charmed by you.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "PHB pg. 221",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"activation": {
@@ -611,7 +598,9 @@
 							"parts": []
 						},
 						"save": {
-							"ability": "wis",
+							"ability": [
+								"wis"
+							],
 							"dc": {
 								"calculation": "spellcasting",
 								"formula": ""
@@ -634,22 +623,6 @@
 			"effects": [
 				{
 					"flags": {
-						"ActiveAuras": {
-							"isAura": false,
-							"radius": null,
-							"aura": "None",
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"displayTemp": false
-						},
-						"core": {
-							"statusId": "combat-utility-belt.invisible"
-						},
 						"dae": {
 							"selfTarget": false,
 							"selfTargetAlways": false,
@@ -673,23 +646,31 @@
 					"name": "Invisible",
 					"description": "",
 					"statuses": [],
-					"img": "modules/combat-utility-belt/icons/invisible.svg",
+					"img": "modules/elkan5e/icons/conditions/invisible.svg",
 					"type": "base",
 					"system": {
 						"changes": [
 							{
-								"key": "flags.midi-qol.advantage.attack.all",
-								"value": 1,
+								"key": "system.rolls.attack.mode",
+								"value": "1",
 								"priority": 50,
-								"type": "override"
+								"type": "add"
 							},
 							{
 								"key": "flags.midi-qol.grants.disadvantage.attack.all",
 								"value": 1,
 								"priority": 50,
 								"type": "override"
+							},
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "invisible",
+								"phase": "final",
+								"priority": 20
 							}
-						]
+						],
+						"magical": true
 					},
 					"start": null,
 					"showIcon": 1,
@@ -722,7 +703,7 @@
 			"_id": "85AoYvgvKP6B9ikx",
 			"system": {
 				"description": {
-					"value": "<p><em>As you chant a short magical phrase and make a motion with your arm as if covering your target with an invisible cloak, your target(s) vanish from view. For an unknown reason, this spell fails to function if a single eyelash encased in gum arabic isn't on your person.</em></p><p><strong>Buff</strong></p><ul><li><p>The target becomes &amp;reference[invisible] until the spell ends. Anything the target is wearing or carrying that is at least half their size or smaller is invisible as long as it is on the target's person.</p></li></ul><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 4th.</p>",
+					"value": "<p><em>As you chant a short magical phrase and make a motion with your arm as if covering your target with an &amp;reference[invisible apply=false]{invisible} cloak, your target(s) vanish from view. For an unknown reason, this spell fails to function if a single eyelash encased in gum arabic isn't on your person.</em></p><p><strong>Buff</strong></p><ul><li><p>The target becomes &amp;reference[invisible] until the spell ends. Anything the target is wearing or carrying that is at least half their size or smaller is invisible as long as it is on the target's person.</p></li></ul><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 4th.</p>",
 					"chat": ""
 				},
 				"source": {
@@ -814,17 +795,22 @@
 						},
 						"effects": [
 							{
-								"_id": "zwfg5OEIkYAOsgQl"
+								"_id": "DcZVJ63hBSREMOTE",
+								"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkaninvisible00"
 							}
 						],
 						"range": {
 							"override": false
 						},
 						"target": {
-							"type": "creature",
-							"value": 1,
-							"units": "ft",
-							"width": null,
+							"affects": {
+								"type": "creature",
+								"count": 1
+							},
+							"template": {
+								"units": "ft",
+								"width": null
+							},
 							"override": false,
 							"prompt": true
 						},
@@ -842,9 +828,7 @@
 						"_id": "AiC6ywSsg8YSm4me",
 						"name": "",
 						"img": "",
-						"appliedEffects": [
-							"zwfg5OEIkYAOsgQl"
-						],
+						"appliedEffects": [],
 						"effectConditionText": "!target.traits.ci.value.has('invisible')"
 					}
 				},
@@ -857,13 +841,13 @@
 			"type": "weapon",
 			"system": {
 				"description": {
-					"value": "<p>The Deceiver can use this attack against any creature that cannot see them. This can mean the Deceiver is hidden, invisible, or the target is blind.</p>",
+					"value": "<p>The Deceiver can use this attack against any creature that cannot see them. This can mean the Deceiver is hidden, &amp;reference[invisible apply=false]{invisible}, or the target is blind.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -1074,13 +1058,13 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p><em>A dagger is a short blade balanced both for thrusting and throwing. Daggers, as opposed to common knives, were made for combat. Many improvised weapons use the statistics of a dagger.</em></p><p>Properties:</p><p>&amp;Reference[Finesse], &amp;reference[light weapon], &amp;Reference[Thrown]</p>",
+					"value": "<p><em>A dagger is a short blade balanced both for thrusting and throwing. Daggers, as opposed to common knives, were made for combat. Many improvised weapons use the statistics of a dagger.</em></p><p>Properties:</p><p>&amp;reference[Finesse], &amp;reference[light weapon], &amp;reference[Thrown]</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "elkan5e.com/weapons",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -1363,19 +1347,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": 0,
-				"climb": 0,
-				"fly": 0,
-				"swim": 0,
-				"walk": 30,
+				"speeds": {
+					"walk": 30,
+					"burrow": 0,
+					"climb": 0,
+					"fly": 0,
+					"swim": 0
+				},
 				"units": "ft",
 				"hover": false
 			},
@@ -1383,10 +1369,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 0,
-				"blindsight": 0,
-				"tremorsense": 0,
-				"truesight": 0,
+				"ranges": {
+					"darkvision": 0,
+					"blindsight": 0,
+					"tremorsense": 0,
+					"truesight": 0
+				},
 				"units": "ft",
 				"special": ""
 			},
@@ -1870,9 +1858,6 @@
 					"distance": null,
 					"square": false
 				}
-			},
-			"smarttarget": {
-				"gmtargetimg": "worlds/w3/Tokens/Undead/Creeps/BTNDeceiver.png"
 			}
 		},
 		"randomImg": false,

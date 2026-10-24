@@ -158,19 +158,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": 0,
-				"climb": 0,
-				"fly": 40,
-				"swim": 0,
-				"walk": 10,
+				"speeds": {
+					"walk": 10,
+					"burrow": 0,
+					"climb": 0,
+					"fly": 40,
+					"swim": 0
+				},
 				"units": "ft",
 				"hover": false,
 				"ignoredDifficultTerrain": []
@@ -179,10 +181,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 0,
-				"blindsight": 0,
-				"tremorsense": 0,
-				"truesight": 0,
+				"ranges": {
+					"darkvision": 0,
+					"blindsight": 0,
+					"tremorsense": 0,
+					"truesight": 0
+				},
 				"units": "ft",
 				"special": ""
 			},
@@ -721,7 +725,7 @@
 			"img": "icons/magic/control/hypnosis-mesmerism-eye.webp",
 			"system": {
 				"description": {
-					"value": "<section><p>The sprite touches a creature and magically knows the creature's current emotional state.</p><p>If the target fails a <strong>DC 10 Charisma</strong> saving throw, the sprite also knows the creature's alignment. Celestials, fiends, and &amp;reference[undead] automatically fail the saving throw.</p></section><p>The sprite touches a creature. target must make a <strong>Charisma</strong> saving throw.</p>",
+					"value": "<section><p>The sprite touches a creature and magically knows the creature's current emotional state.</p><p>If the target fails a <strong>DC 10 Charisma</strong> &amp;reference[savingthrow]{saving throw}, the sprite also knows the creature's alignment. Celestials, fiends, and &amp;reference[undead] automatically fail the saving throw.</p></section><p>The sprite touches a creature. target must make a <strong>Charisma</strong> saving throw.</p>",
 					"chat": ""
 				},
 				"source": {
@@ -730,7 +734,7 @@
 					"page": "",
 					"license": "",
 					"revision": 1,
-					"rules": "2014"
+					"rules": ""
 				},
 				"uses": {
 					"max": "",
@@ -819,7 +823,7 @@
 							],
 							"dc": {
 								"calculation": "",
-								"formula": ""
+								"formula": "10"
 							}
 						},
 						"useConditionText": "",
@@ -911,12 +915,12 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p>The [[lookup @name lowercase]] has <strong>advantage</strong> on saving throws against spells and other magical effects.</p>",
+					"value": "<p>The [[lookup @name lowercase]] has <strong>advantage</strong> on &amp;reference[savingthrow]{saving throws} against spells and other magical effects.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "Elkan 5e",
-					"rules": "2014",
+					"rules": "",
 					"revision": 1,
 					"book": "Elkan 5e"
 				},
@@ -935,7 +939,9 @@
 					"items": [],
 					"repeatable": false
 				},
-				"properties": [],
+				"properties": [
+					"trait"
+				],
 				"identifier": "magic-resistance",
 				"activities": {},
 				"enchant": {},
@@ -961,7 +967,7 @@
 					"page": "",
 					"license": "",
 					"revision": 1,
-					"rules": "2014"
+					"rules": ""
 				},
 				"quantity": 1,
 				"weight": {

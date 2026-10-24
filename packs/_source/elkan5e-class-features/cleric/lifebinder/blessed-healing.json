@@ -25,22 +25,6 @@
 					"disableIncapacitated": false,
 					"dontApply": false,
 					"macroRepeat": "none"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"name": "Blessed Healing",
@@ -49,14 +33,7 @@
 			"img": "icons/magic/light/hand-sparks-smoke-teal.webp",
 			"type": "base",
 			"system": {
-				"changes": [
-					{
-						"key": "system.bonuses.heal.damage",
-						"value": "2 + @item.level",
-						"priority": 20,
-						"type": "add"
-					}
-				]
+				"changes": []
 			},
 			"start": null,
 			"showIcon": 1,
@@ -113,14 +90,16 @@
 			"value": "subclass",
 			"subtype": ""
 		},
-		"requirements": "Lifebinder 1",
+		"requirements": "Lifebinder 3",
 		"identifier": "blessed-healing",
 		"activities": {},
 		"enchant": {},
 		"prerequisites": {
 			"level": null
 		},
-		"properties": []
+		"properties": [
+			"trait"
+		]
 	},
 	"_id": "lazdJ4HirsqixWY8",
 	"_key": "!items!lazdJ4HirsqixWY8"

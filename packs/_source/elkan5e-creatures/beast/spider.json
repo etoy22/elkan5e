@@ -465,11 +465,13 @@
 				"bonus": ""
 			},
 			"movement": {
-				"burrow": null,
-				"climb": 20,
-				"fly": null,
-				"swim": null,
-				"walk": 20,
+				"speeds": {
+					"walk": 20,
+					"burrow": null,
+					"climb": 20,
+					"fly": null,
+					"swim": null
+				},
 				"units": null,
 				"hover": false,
 				"ignoredDifficultTerrain": []
@@ -478,10 +480,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 30,
-				"blindsight": null,
-				"tremorsense": null,
-				"truesight": null,
+				"ranges": {
+					"darkvision": 30,
+					"blindsight": null,
+					"tremorsense": null,
+					"truesight": null
+				},
 				"units": null,
 				"special": ""
 			},
@@ -587,7 +591,7 @@
 		},
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"license": "",
 			"page": "",
@@ -911,7 +915,9 @@
 							"parts": []
 						},
 						"save": {
-							"ability": [],
+							"ability": [
+								"con"
+							],
 							"dc": {
 								"calculation": "",
 								"formula": "10"
@@ -1023,10 +1029,12 @@
 							"parts": []
 						},
 						"save": {
-							"ability": [],
+							"ability": [
+								"con"
+							],
 							"dc": {
 								"calculation": "",
-								"formula": ""
+								"formula": "10"
 							}
 						},
 						"useConditionText": "",
@@ -1095,7 +1103,7 @@
 				"identifier": "sting",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",
@@ -1180,6 +1188,13 @@
 								"value": "poison",
 								"priority": 20,
 								"type": "custom"
+							},
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "poisoned",
+								"phase": "final",
+								"priority": 20
 							}
 						]
 					},
@@ -1192,9 +1207,7 @@
 					},
 					"description": "",
 					"tint": "#ffffff",
-					"statuses": [
-						"poisoned"
-					],
+					"statuses": [],
 					"flags": {
 						"dae": {
 							"enableCondition": "",
@@ -1207,23 +1220,6 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": []
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "All",
-							"nameOverride": "",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"customCheck": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"wallsBlock": "system",
-							"statuses": []
 						}
 					},
 					"showIcon": 2,
@@ -1249,13 +1245,13 @@
 					"max": ""
 				},
 				"description": {
-					"value": "<p>The [[lookup @name lowercase]] movement restrictions caused by webs, and the [[lookup @name lowercase]] knows the location of any other creature in contact with the same web.</p>",
+					"value": "<p>The [[lookup @name lowercase]] ignores movement restrictions caused by webs, and it knows the location of any other creature in contact with the same web.</p>",
 					"chat": ""
 				},
 				"identifier": "web-walker",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",
@@ -1302,7 +1298,7 @@
 				"identifier": "spider-climb",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",

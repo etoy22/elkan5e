@@ -2,66 +2,7 @@
 	"name": "Suggestion",
 	"type": "spell",
 	"img": "icons/magic/control/mouth-smile-deception-purple.webp",
-	"effects": [
-		{
-			"_id": "C0OCEM3j6nXEJeDA",
-			"disabled": false,
-			"duration": {
-				"value": 28800,
-				"units": "seconds",
-				"expiry": "turnStart",
-				"expired": false
-			},
-			"transfer": false,
-			"flags": {
-				"dae": {
-					"stackable": "none",
-					"specialDuration": [],
-					"transfer": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"disableIncapacitated": false,
-					"enableCondition": "",
-					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"radius": "",
-					"aura": "None",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"displayTemp": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
-				}
-			},
-			"tint": "#ffffff",
-			"origin": null,
-			"name": "Suggestion",
-			"description": "",
-			"statuses": [
-				"charmed"
-			],
-			"img": "icons/magic/control/mouth-smile-deception-purple.webp",
-			"type": "base",
-			"system": {
-				"changes": []
-			},
-			"showIcon": 2,
-			"start": null,
-			"folder": null,
-			"_key": "!items.effects!Fn71VAKQOXzIt89X.C0OCEM3j6nXEJeDA"
-		}
-	],
+	"effects": [],
 	"folder": "6J3i75lfD1J0xYwA",
 	"flags": {
 		"midi-qol": {
@@ -189,18 +130,23 @@
 				},
 				"effects": [
 					{
-						"_id": "C0OCEM3j6nXEJeDA",
-						"onSave": false
+						"onSave": false,
+						"_id": "48I9RNm9fIREMOTE",
+						"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkancharmed0000"
 					}
 				],
 				"range": {
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -214,7 +160,9 @@
 					"parts": []
 				},
 				"save": {
-					"ability": "wis",
+					"ability": [
+						"wis"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -222,9 +170,7 @@
 				},
 				"name": "",
 				"img": "",
-				"appliedEffects": [
-					"C0OCEM3j6nXEJeDA"
-				],
+				"appliedEffects": [],
 				"effectConditionText": "!target.traits.ci.value.has('charmed')"
 			}
 		},

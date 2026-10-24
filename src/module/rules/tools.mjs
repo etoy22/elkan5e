@@ -61,12 +61,15 @@ const TOOLS_TO_REMOVE = [
 
 const TOOLS = {
 	alchemist: { id: "Compendium.elkan5e.elkan5e-equipment.Item.5TRgfcXqzHRvcYql" },
-	brass: { id: "Compendium.elkan5e.elkan5e-equipment.Item.wYJIoj2Cc6paR1l5" },
-	keyboard: { id: "Compendium.elkan5e.elkan5e-equipment.Item.dYeakzaHyN4ajpdX" },
-	percussion: { id: "Compendium.elkan5e.elkan5e-equipment.Item.Ty9cLS7SN5YAiiES" },
-	string: { id: "Compendium.elkan5e.elkan5e-equipment.Item.kxrPi9bBrsNf7LGW" },
-	wind: { id: "Compendium.elkan5e.elkan5e-equipment.Item.XPuBMG9JIyJuqRbT" },
-	vocal: { id: "Compendium.elkan5e.elkan5e-equipment.Item.9KOZArOUMbYym1PI" },
+	brass: { ability: "cha", id: "Compendium.elkan5e.elkan5e-equipment.Item.wYJIoj2Cc6paR1l5" },
+	keyboard: { ability: "cha", id: "Compendium.elkan5e.elkan5e-equipment.Item.dYeakzaHyN4ajpdX" },
+	percussion: {
+		ability: "cha",
+		id: "Compendium.elkan5e.elkan5e-equipment.Item.Ty9cLS7SN5YAiiES",
+	},
+	string: { ability: "cha", id: "Compendium.elkan5e.elkan5e-equipment.Item.kxrPi9bBrsNf7LGW" },
+	wind: { ability: "cha", id: "Compendium.elkan5e.elkan5e-equipment.Item.XPuBMG9JIyJuqRbT" },
+	vocal: { ability: "cha", id: "Compendium.elkan5e.elkan5e-equipment.Item.9KOZArOUMbYym1PI" },
 	bagpipes: { id: "Compendium.elkan5e.elkan5e-equipment.Item.bltntEoiFJvXR939" },
 	brewer: { id: "Compendium.elkan5e.elkan5e-equipment.Item.sETCxXco4DFwc95F" },
 	calligrapher: { id: "Compendium.elkan5e.elkan5e-equipment.Item.PSBsNmH0WWBmwTMY" },
@@ -74,10 +77,10 @@ const TOOLS = {
 	disg: { id: "Compendium.elkan5e.elkan5e-equipment.Item.ArsBY1Z7YMKYCWp5" },
 	drum: { id: "Compendium.elkan5e.elkan5e-equipment.Item.VLTPhQqTAOk2LPHW" },
 	dulcimer: { id: "Compendium.elkan5e.elkan5e-equipment.Item.v72QLYutEG6w5ZRI" },
-	fashion: { id: "Compendium.elkan5e.elkan5e-equipment.Item.tRhjq67DVUwHu63D" },
+	fashion: { ability: "dex", id: "Compendium.elkan5e.elkan5e-equipment.Item.tRhjq67DVUwHu63D" },
 	flute: { id: "Compendium.elkan5e.elkan5e-equipment.Item.uDJgqlZsYrqLrNEX" },
 	forg: { id: "Compendium.elkan5e.elkan5e-equipment.Item.dFa31G5pfZ3FGcjk" },
-	game: { id: "Compendium.elkan5e.elkan5e-equipment.Item.xC669rfIiGBpAALC" },
+	game: { ability: "int", id: "Compendium.elkan5e.elkan5e-equipment.Item.xC669rfIiGBpAALC" },
 	herb: { id: "Compendium.elkan5e.elkan5e-equipment.Item.LQiHNDl73EtsWxj1" },
 	horn: { id: "Compendium.elkan5e.elkan5e-equipment.Item.PgP06DVVwXZNPMOW" },
 	jeweler: { id: "Compendium.elkan5e.elkan5e-equipment.Item.0xX2toS9DTCJapez" },
@@ -89,10 +92,10 @@ const TOOLS = {
 	painter: { id: "Compendium.elkan5e.elkan5e-equipment.Item.qZe6ua1j3TtX3QGv" },
 	panflute: { id: "Compendium.elkan5e.elkan5e-equipment.Item.VC36HOskyNfD6DXV" },
 	pois: { id: "Compendium.elkan5e.elkan5e-equipment.Item.PGHsgtscRcDrKt6j" },
-	sculpt: { id: "Compendium.elkan5e.elkan5e-equipment.Item.6x1yyzDnWGRNRwJD" },
+	sculpt: { ability: "dex", id: "Compendium.elkan5e.elkan5e-equipment.Item.6x1yyzDnWGRNRwJD" },
 	shawm: { id: "Compendium.elkan5e.elkan5e-equipment.Item.ZN6lVBJAeNqt4EE9" },
 	smith: { id: "Compendium.elkan5e.elkan5e-equipment.Item.aFpNp019JYV5bcgI" },
-	tailor: { id: "Compendium.elkan5e.elkan5e-equipment.Item.C3PHE8sJKlVZs9bH" },
+	tailor: { ability: "dex", id: "Compendium.elkan5e.elkan5e-equipment.Item.C3PHE8sJKlVZs9bH" },
 	thief: { id: "Compendium.elkan5e.elkan5e-equipment.Item.LMnHshpVe3ciVIwF" },
 	tinker: { id: "Compendium.elkan5e.elkan5e-equipment.Item.2Yeb51C04CmAhbsv" },
 	viol: { id: "Compendium.elkan5e.elkan5e-equipment.Item.rrNz3sZQQdb8ygRW" },
@@ -244,6 +247,10 @@ function getToolType(key, toolSetting) {
 	}
 }
 
+/**
+ * Registers tool definitions and adjusts tool and proficiency categories for the tool setting.
+ * Existing default abilities are retained when the Elkan definition does not replace them.
+ */
 export function tools() {
 	const TOOL_SETTING = game.settings.get("elkan5e", "tool");
 
@@ -252,8 +259,9 @@ export function tools() {
 	// ------------------------------
 	// REGISTER TOOLS AND UPDATE TYPE VALUES
 	// ------------------------------
+	// Merge so tools dnd5e already defines keep their default ability.
 	for (const [key, value] of Object.entries(TOOLS)) {
-		CONFIG.DND5E.tools[key] = value;
+		CONFIG.DND5E.tools[key] = { ...CONFIG.DND5E.tools[key], ...value };
 	}
 
 	// ------------------------------

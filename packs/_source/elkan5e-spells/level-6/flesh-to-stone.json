@@ -8,9 +8,7 @@
 			"flags": {
 				"dae": {
 					"stackable": "none",
-					"specialDuration": [
-						"None"
-					],
+					"specialDuration": [],
 					"macroRepeat": "endEveryTurn",
 					"transfer": false,
 					"selfTarget": false,
@@ -21,22 +19,6 @@
 					"disableIncapacitated": false,
 					"dontApply": false,
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"radius": "",
-					"aura": "None",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"displayTemp": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"disabled": false,
@@ -51,9 +33,7 @@
 			"origin": null,
 			"name": "Flesh to Stone",
 			"description": "",
-			"statuses": [
-				"restrained"
-			],
+			"statuses": [],
 			"img": "icons/magic/earth/strike-fist-stone-gray.webp",
 			"type": "base",
 			"system": {
@@ -61,14 +41,23 @@
 					{
 						"key": "flags.midi-qol.OverTime",
 						"type": "add",
-						"value": "turn=start, label=Flesh to Stone, saveAbility=con, saveDC=@attributes.spell.dc, saveCount=3c-, failCount=3c-petrified",
+						"value": "turn=end, label=Flesh to Stone, saveAbility=con, saveDC=@attributes.spell.dc, saveCount=3-, failCount=3-petrified, saveMagic=true",
 						"phase": "initial",
-						"priority": null
+						"priority": null,
+						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "restrained",
+						"phase": "final",
+						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
-			"showIcon": 2,
+			"showIcon": 0,
 			"folder": null,
 			"_key": "!items.effects!KHqVYnaRXB51vO6G.rcvkBwQW0yl4arjK"
 		}
@@ -121,7 +110,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><strong>Materials:</strong> You require a pinch of lime, a drop of water, and a handful of earth.</p><p><strong>[[/save CON]]{Constitution Save}</strong></p><p>Creatures with bodies not made of flesh like &amp;reference[ooze], incorporeal &amp;reference[undead] automatically succeed.</p><ul><li><p><strong>Failure: </strong>The target is &amp;reference[restrained]. While restrained:</p><ul><li><p>The Target must repeat the saving throw at the end of each of its turns. Until they meet one of the following conditions:</p></li><li><p><strong>3 Failures:</strong> The target becomes &amp;reference[Petrified]. If the creature is physically broken while petrified, it suffers corresponding deformities when it reverts to flesh. If you maintain Concentration for the full Duration, the creature remains petrified until the effect is removed.</p></li><li><p><strong>3 Successes:</strong> The spell ends.</p></li></ul></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"value": "<p><strong>Materials:</strong> You require a pinch of lime, a drop of water, and a handful of earth.</p><p><strong>[[/save CON]]{Constitution Save}</strong></p><p>Creatures with bodies not made of flesh like &amp;reference[ooze], incorporeal &amp;reference[undead] automatically succeed.</p><ul><li><p><strong>Failure: </strong>The target is &amp;reference[restrained]. While restrained:</p><ul><li><p>The Target must repeat the &amp;reference[savingthrow]{saving throw} at the end of each of its turns. Until they meet one of the following conditions:</p></li><li><p><strong>3 Failures:</strong> The target becomes &amp;reference[Petrified]. If the creature is physically broken while petrified, it suffers corresponding deformities when it reverts to flesh. If you maintain &amp;reference[concentration]{Concentration} for the full Duration, the creature remains petrified until the effect is removed.</p></li><li><p><strong>3 Successes:</strong> The spell ends.</p></li></ul></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -217,10 +206,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -229,7 +222,9 @@
 					"parts": []
 				},
 				"save": {
-					"ability": "con",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""

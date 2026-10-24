@@ -74,19 +74,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": 0,
-				"climb": 0,
-				"fly": 0,
-				"swim": 0,
-				"walk": 20,
+				"speeds": {
+					"walk": 20,
+					"burrow": 0,
+					"climb": 0,
+					"fly": 0,
+					"swim": 0
+				},
 				"units": "ft",
 				"hover": false
 			},
@@ -94,10 +96,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 60,
-				"blindsight": 0,
-				"tremorsense": 0,
-				"truesight": 0,
+				"ranges": {
+					"darkvision": 60,
+					"blindsight": 0,
+					"tremorsense": 0,
+					"truesight": 0
+				},
 				"units": "ft",
 				"special": ""
 			},
@@ -623,13 +627,13 @@
 			"img": "icons/skills/melee/unarmed-punch-fist-yellow-red.webp",
 			"system": {
 				"description": {
-					"value": "<section><p><em>Melee Weapon Attack:</em> <strong>+3 to hit,</strong> , <strong>5 ft.,</strong> one target. Hit: <strong>4 (1d6 + 1) </strong> <em> <strong>bludgeoning damage</strong></em> .</p></section><p>The Zombie attacks with its Slam. On a hit, the target is grappled.</p>",
+					"value": "<section><p><em>Melee Weapon Attack:</em> <strong>+3 to hit,</strong> , <strong>5 ft.,</strong> one target. Hit: <strong>4 (1d6 + 1) </strong> <em> <strong>bludgeoning damage</strong></em> .</p></section><p>The Zombie attacks with its Slam. On a hit, the target is &amp;reference[grappled apply=false]{grappled}.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -821,28 +825,12 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": []
-						},
-						"core": {
-							"statusId": "combat-utility-belt.grappled"
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"radius": null,
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false
 						}
 					},
 					"name": "Grappled",
 					"description": "",
 					"statuses": [],
-					"img": "modules/combat-utility-belt/icons/grappled.svg",
+					"img": "modules/elkan5e/icons/conditions/grappled.svg",
 					"type": "base",
 					"system": {
 						"changes": [
@@ -851,6 +839,13 @@
 								"value": 0,
 								"priority": 50,
 								"type": "custom"
+							},
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "grappled",
+								"phase": "final",
+								"priority": 20
 							}
 						]
 					},
@@ -880,13 +875,13 @@
 			"img": "icons/magic/acid/pouring-gas-smoke-liquid.webp",
 			"system": {
 				"description": {
-					"value": "<p>If damage reduces the [[lookup @name lowercase]] to <strong>0 hit points</strong>, it makes a <strong>Constitution</strong> saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the [[lookup @name lowercase]] drops to <strong>1 hit point</strong> instead.</p>",
+					"value": "<p>If damage reduces the [[lookup @name lowercase]] to <strong>0 hit points</strong>, it makes a <strong>Constitution</strong> &amp;reference[savingthrow]{saving throw} with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the [[lookup @name lowercase]] drops to <strong>1 hit point</strong> instead.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -905,7 +900,9 @@
 				"prerequisites": {
 					"level": null
 				},
-				"properties": []
+				"properties": [
+					"trait"
+				]
 			},
 			"effects": [],
 			"folder": null,
@@ -945,7 +942,7 @@
 				"source": {
 					"custom": "Elkan 5e",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -1044,7 +1041,7 @@
 				},
 				"source": {
 					"custom": "Elkan 5e",
-					"rules": "2014",
+					"rules": "",
 					"revision": 1,
 					"book": "Elkan 5e"
 				},
@@ -1057,7 +1054,9 @@
 					"value": "monster",
 					"subtype": ""
 				},
-				"properties": [],
+				"properties": [
+					"trait"
+				],
 				"requirements": "",
 				"identifier": "swarm-damage-resistance",
 				"activities": {},
@@ -1093,22 +1092,6 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": []
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"nameOverride": "",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"customCheck": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"wallsBlock": "system"
 						}
 					},
 					"tint": "#ffffff",
@@ -1171,12 +1154,12 @@
 			"img": "icons/creatures/mammals/bats-movement-flying-purple.webp",
 			"system": {
 				"description": {
-					"value": "<p>A swarm typically represents several dozen tiny creatures or about 4 small or medium creatures.</p><p>The swarm can occupy another creature's space and vice versa, though a swarm is counted as difficult terrain for other creatures. The swarm can move through any opening large enough for a an individual one of its creatures to fit through.</p><p>The swarm is only affected by an effect if the effect would target all members of the swarm. A DM may decide that a spell has limited effects targeting a single creature. For instance, polymorphing a member of a swarm might create one polymorphed creature but leave the swarm statistically unaffected. Grappling a member of the swarm would have little to no practical effect.</p><p>If a spell or ability requiring a saving throw, like the <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.x76d4kCFyMIc6wQZ]{Entangle}</em> spell, targets the entire swarm, the swarm rolls one saving throw for the entire swarm at once.</p><p><em>To create a swarm, increase the size of the base creature by one category, approximately double their hit points, double their basic attack damage, and give them Swarm Attack, Swarm Damage Resistance, and the Swarm ability. This assumes that the base creature has one attack. If you want, manually add \"Single Target Effects' to damage resistances and 'Area of Effect Damage' to damage vulnerabilities.</em></p>",
+					"value": "<p>A swarm typically represents several dozen tiny creatures or about 4 small or medium creatures.</p><p>The swarm can occupy another creature's space and vice versa, though a swarm is counted as &amp;reference[difficult terrain] for other creatures. The swarm can move through any opening large enough for a an individual one of its creatures to fit through.</p><p>The swarm is only affected by an effect if the effect would target all members of the swarm. A DM may decide that a spell has limited effects targeting a single creature. For instance, polymorphing a member of a swarm might create one polymorphed creature but leave the swarm statistically unaffected. Grappling a member of the swarm would have little to no practical effect.</p><p>If a spell or ability requiring a &amp;reference[savingthrow]{saving throw}, like the <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.x76d4kCFyMIc6wQZ]{Entangle}</em> spell, targets the entire swarm, the swarm rolls one saving throw for the entire swarm at once.</p><p><em>To create a swarm, increase the size of the base creature by one category, approximately double their hit points, double their basic attack damage, and give them Swarm Attack, Swarm Damage Resistance, and the Swarm ability. This assumes that the base creature has one attack. If you want, manually add \"Single Target Effects' to damage resistances and 'Area of Effect Damage' to damage vulnerabilities.</em></p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "Elkan 5e",
-					"rules": "2014",
+					"rules": "",
 					"revision": 1,
 					"book": "Elkan 5e"
 				},
@@ -1190,7 +1173,9 @@
 					"subtype": ""
 				},
 				"requirements": "",
-				"properties": [],
+				"properties": [
+					"trait"
+				],
 				"identifier": "swarm",
 				"activities": {},
 				"enchant": {},

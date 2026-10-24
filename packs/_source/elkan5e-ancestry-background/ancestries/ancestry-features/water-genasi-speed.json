@@ -12,7 +12,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p>Water genasi have a base speed of 30 ft. and a &amp;reference[Swim]{Swim} speed equal to their walking speed.</p>",
+			"value": "<p>Water genasi have a base speed of 30 ft. and a &amp;reference[swimming]{Swim} speed equal to their walking speed.</p>",
 			"chat": ""
 		},
 		"identifier": "water-genasi-speed",
@@ -31,7 +31,9 @@
 		"prerequisites": {
 			"level": null
 		},
-		"properties": [],
+		"properties": [
+			"trait"
+		],
 		"requirements": ""
 	},
 	"effects": [
@@ -44,9 +46,9 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.movement.swim",
+						"key": "system.attributes.movement.speeds.swim",
 						"type": "upgrade",
-						"value": "@attributes.movement.walk",
+						"value": "@attributes.movement.speeds.walk",
 						"priority": 20,
 						"phase": "initial"
 					}
@@ -72,22 +74,6 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"start": null,

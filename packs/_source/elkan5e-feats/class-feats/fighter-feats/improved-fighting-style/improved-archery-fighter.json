@@ -14,22 +14,6 @@
 					"specialDuration": [],
 					"disableCondition": "",
 					"macroRepeat": "none"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "undefined",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"disabled": false,
@@ -50,7 +34,7 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.bonuses.rwak.damage",
+						"key": "system.rolls.damage.rwak.bonus",
 						"value": "+2",
 						"priority": null,
 						"type": "add"
@@ -95,7 +79,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em> <strong>Prerequisite: Prerequisite: Fighter level 12, Archery Fighting Style</strong></em></p><p><span>You add +2 to your damage rolls with ranged and thrown weapons.</span></p>",
+			"value": "<p><em> <strong>Prerequisite: Fighter level 12, Archery Fighting Style</strong></em></p><p><span>You add +2 to your damage rolls with ranged and thrown weapons.</span></p>",
 			"chat": ""
 		},
 		"source": {
@@ -116,7 +100,9 @@
 			"subtype": ""
 		},
 		"requirements": "Feat (Fighter Level 12)",
-		"properties": [],
+		"properties": [
+			"trait"
+		],
 		"prerequisites": {
 			"level": 12,
 			"items": [
@@ -126,31 +112,7 @@
 		"identifier": "improved-archery-fighter",
 		"activities": {},
 		"enchant": {},
-		"advancement": [
-			{
-				"_id": "aC5HuW1uXBe16dL0",
-				"type": "AbilityScoreImprovement",
-				"configuration": {
-					"cap": 2,
-					"fixed": {
-						"str": 0,
-						"dex": 0,
-						"con": 0,
-						"int": 0,
-						"wis": 0,
-						"cha": 0
-					},
-					"locked": [],
-					"points": 2
-				},
-				"value": {
-					"type": "asi"
-				},
-				"level": 0,
-				"title": "",
-				"hint": ""
-			}
-		]
+		"advancement": []
 	},
 	"folder": "7jLpyN1aDF7GxaPb",
 	"_id": "jkechu1deb6z6LSC",

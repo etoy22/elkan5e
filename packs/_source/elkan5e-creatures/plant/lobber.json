@@ -466,11 +466,13 @@
 				"bonus": ""
 			},
 			"movement": {
-				"burrow": null,
-				"climb": 10,
-				"fly": null,
-				"swim": null,
-				"walk": 10,
+				"speeds": {
+					"walk": 10,
+					"burrow": null,
+					"climb": 10,
+					"fly": null,
+					"swim": null
+				},
 				"units": "ft",
 				"hover": false,
 				"ignoredDifficultTerrain": [],
@@ -480,10 +482,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": null,
-				"blindsight": null,
-				"tremorsense": 60,
-				"truesight": null,
+				"ranges": {
+					"darkvision": null,
+					"blindsight": null,
+					"tremorsense": 60,
+					"truesight": null
+				},
 				"units": "ft",
 				"special": "Blind"
 			},
@@ -577,7 +581,7 @@
 		},
 		"source": {
 			"revision": 2,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"license": "",
 			"page": "",
@@ -849,7 +853,7 @@
 				"identifier": "release-pod",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",
@@ -1251,7 +1255,7 @@
 				"identifier": "bite",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",
@@ -1346,7 +1350,7 @@
 				"identifier": "spider-climb",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",
@@ -1505,7 +1509,7 @@
 				"identifier": "rooted",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"crewed": false,
@@ -1549,23 +1553,6 @@
 							"specialDuration": [],
 							"enableCondition": "",
 							"disableCondition": ""
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "Enemy",
-							"nameOverride": "",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"customCheck": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"wallsBlock": "system",
-							"statuses": []
 						}
 					},
 					"tint": "#ffffff",
@@ -1676,7 +1663,7 @@
 						},
 						"midiProperties": {
 							"ignoreTraits": [],
-							"triggeredActivityId": "save",
+							"triggeredActivityId": "none",
 							"triggeredActivityConditionText": "[\"tiny\"].includes(target.traits.size)&& !target.traits.ci.value.has('poisoned')",
 							"triggeredActivityTargets": "targets",
 							"triggeredActivityRollAs": "self",
@@ -1728,7 +1715,7 @@
 				"identifier": "spit-acid",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",
@@ -1813,6 +1800,13 @@
 								"value": "poison",
 								"priority": 20,
 								"type": "custom"
+							},
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "poisoned",
+								"phase": "final",
+								"priority": 20
 							}
 						]
 					},
@@ -1825,9 +1819,7 @@
 					},
 					"description": "",
 					"tint": "#ffffff",
-					"statuses": [
-						"poisoned"
-					],
+					"statuses": [],
 					"flags": {
 						"dae": {
 							"enableCondition": "",
@@ -1840,23 +1832,6 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": []
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "All",
-							"nameOverride": "",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"customCheck": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"wallsBlock": "system",
-							"statuses": []
 						}
 					},
 					"showIcon": 2,

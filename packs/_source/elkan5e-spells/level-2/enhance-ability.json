@@ -12,13 +12,21 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.advantage.concentration",
+						"key": "system.abilities.con.check.roll.bonus",
 						"type": "add",
-						"value": 1,
-						"priority": 20,
-						"phase": "initial"
+						"value": "+ max(0, @attributes.prof - @abilities.con.check.prof.flat)",
+						"phase": "initial",
+						"priority": 20
+					},
+					{
+						"key": "system.attributes.concentration.roll.bonus",
+						"type": "add",
+						"value": "+ max(0, @attributes.prof - @abilities.con.save.prof.flat)",
+						"phase": "initial",
+						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -45,23 +53,6 @@
 					"disableCondition": "",
 					"expiryMode": "default",
 					"combatActorOverride": "source"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "Enemy",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"start": null,
@@ -83,7 +74,8 @@
 						"priority": 20,
 						"type": "upgrade"
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -106,22 +98,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"start": null,
@@ -138,7 +114,7 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.skills.ath.value",
+						"key": "system.skills.acr.value",
 						"value": 1,
 						"priority": null,
 						"type": "upgrade"
@@ -155,7 +131,8 @@
 						"priority": null,
 						"type": "upgrade"
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -178,22 +155,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"start": null,
@@ -202,7 +163,7 @@
 			"_key": "!items.effects!gBuyXKNpNTF8i2Q8.kjGsj0JBfniRRqwQ"
 		},
 		{
-			"name": "Enhance Ability [Eagle's Spelndor]",
+			"name": "Enhance Ability [Eagle's Splendor]",
 			"transfer": false,
 			"img": "icons/creatures/abilities/wolf-heads-swirl-purple.webp",
 			"_id": "l05a2Y4ceCdFVYjX",
@@ -233,7 +194,8 @@
 						"priority": null,
 						"type": "upgrade"
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -256,22 +218,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"start": null,
@@ -280,7 +226,7 @@
 			"_key": "!items.effects!gBuyXKNpNTF8i2Q8.l05a2Y4ceCdFVYjX"
 		},
 		{
-			"name": "Enhance Ability [Fox Cunning]",
+			"name": "Enhance Ability [Fox's Cunning]",
 			"transfer": false,
 			"img": "icons/creatures/abilities/wolf-heads-swirl-purple.webp",
 			"_id": "Q1TECcQ6PKBZv7aa",
@@ -317,7 +263,8 @@
 						"priority": null,
 						"type": "upgrade"
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -340,22 +287,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"start": null,
@@ -401,7 +332,8 @@
 						"priority": null,
 						"type": "upgrade"
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -424,22 +356,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"start": null,
@@ -510,7 +426,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>Holding a piece of fur or a feather from the chosen animal, you call out for the animal's blessing, asking them to grant abilities to those who lack them. A spirit responds with an animal call, enhancing your chosen target with their prowess.</em></p><p><strong>Buff</strong></p><p>This spell grants proficiency in certain skills and other checks. If the target already has proficiency on a given roll, they gain no benefit from this spell for that check. When you cast this spell, choose one of the following effects to bestow on a creature:</p><ul><li><strong>Bear's Endurance:</strong> The target gains proficiency in constitution ability checks, as well as constitution saving throws to maintain &amp;reference[Concentration].</li><li><strong>Bull's Strength:</strong> The target gains proficiency in strength ability checks (including skills).</li><li><strong>Cat's Grace</strong> : The target gains proficiency in dexterity ability checks (including skills).</li><li><strong>Eagle's Splendor:</strong> The target gains proficiency in charisma ability checks (including skills).</li><li><strong>Fox's Cunning:</strong> The target gains proficiency in intelligence ability checks (including skills).</li><li><strong>Owl's Wisdom:</strong> The target gains proficiency in wisdom ability checks (including skills).</li></ul><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 2nd.</p>",
+			"value": "<p><em>Holding a piece of fur or a feather from the chosen animal, you call out for the animal's blessing, asking them to grant abilities to those who lack them. A spirit responds with an animal call, enhancing your chosen target with their prowess.</em></p><p><strong>Buff</strong></p><p>This spell grants proficiency in certain skills and other checks. If the target already has proficiency on a given roll, they gain no benefit from this spell for that check. When you cast this spell, choose one of the following effects to bestow on a creature:</p><ul><li><strong>Bear's Endurance:</strong> The target gains proficiency in constitution &amp;reference[abilitycheck]{ability checks}, as well as constitution &amp;reference[savingthrow]{saving throws} to maintain &amp;reference[Concentration].</li><li><strong>Bull's Strength:</strong> The target gains proficiency in strength &amp;reference[abilitycheck]{ability checks} (including skills).</li><li><strong>Cat's Grace</strong> : The target gains proficiency in dexterity ability checks (including skills).</li><li><strong>Eagle's Splendor:</strong> The target gains proficiency in charisma ability checks (including skills).</li><li><strong>Fox's Cunning:</strong> The target gains proficiency in intelligence ability checks (including skills).</li><li><strong>Owl's Wisdom:</strong> The target gains proficiency in wisdom ability checks (including skills).</li></ul><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 2nd.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -621,10 +537,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},

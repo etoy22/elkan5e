@@ -2,7 +2,55 @@
 	"name": "Resurrection",
 	"type": "spell",
 	"img": "icons/magic/unholy/strike-body-life-soul-purple.webp",
-	"effects": [],
+	"effects": [
+		{
+			"_id": "resurrectionPen1",
+			"name": "Resurrection Penalty",
+			"img": "icons/magic/unholy/strike-body-life-soul-purple.webp",
+			"type": "base",
+			"transfer": false,
+			"disabled": false,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "<p>Grants Resurrection Weakness: a penalty to attack rolls, saving throws, and ability checks that starts at -4 and drops by 1 each long rest. Remove this effect once the penalty reaches 0.</p>",
+			"origin": null,
+			"statuses": [],
+			"tint": "#ffffff",
+			"showIcon": 1,
+			"start": null,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"stackable": "noneName",
+					"specialDuration": [],
+					"macroRepeat": "none",
+					"durationExpression": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"disableIncapacitated": false,
+					"enableCondition": "",
+					"disableCondition": ""
+				}
+			},
+			"system": {
+				"magical": true,
+				"changes": [
+					{
+						"key": "macro.createItem",
+						"value": "Compendium.elkan5e.elkan5e-spells.Item.resurrectionWeak",
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
+			"_key": "!items.effects!Qj9baV1UtPqdd4P8.resurrectionPen1"
+		}
+	],
 	"folder": "H799nI2ov6BcHwd6",
 	"flags": {
 		"midi-qol": {
@@ -37,7 +85,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><strong>Materials:</strong> You require a <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.ETUMvJcNH0Yz7c83]{large diamond}</em> valued at 1,000 gold. This spell consumes this material.</p><p><strong>Healing</strong></p><p>You touch a dead creature that has been dead no more than 100 years, that didn't die of old age, and that isn't &amp;reference[undead]. If its soul is free and willing, the target returns to life with full hit points.</p><ul><li><p>The creature is cured of all poisons and normal diseases it had when it died. Magical diseases, curses, and similar effects are not removed. If these remain, they continue to afflict the target upon return. The spell closes all mortal wounds and restores any missing body parts.</p></li><li><p>The resurrected creature suffers a -4 penalty to attack rolls, saving throws, and ability checks. This penalty decreases by 1 each time the creature finishes a &amp;reference[Long Rest], until it is removed.</p></li><li><p>If the creature has been dead for 1 year or longer, the strain of casting is immense. Until you finish a Long Rest, you cannot cast spells and have Disadvantage on all attack rolls, ability checks, and saving throws.</p></li></ul>",
+			"value": "<p><strong>Materials:</strong> You require a <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.ETUMvJcNH0Yz7c83]{large diamond}</em> valued at 1,000 gold. This spell consumes this material.</p><p><strong>Healing</strong></p><p>You touch a dead creature that has been dead no more than 100 years, that didn't die of old age, and that isn't &amp;reference[undead]. If its soul is free and willing, the target returns to life with full hit points.</p><ul><li><p>The creature is cured of all poisons and normal diseases it had when it died. Magical diseases, curses, and similar effects are not removed. If these remain, they continue to afflict the target upon return. The spell closes all mortal wounds and restores any missing body parts.</p></li><li><p>The resurrected creature suffers a -4 penalty to &amp;reference[attackrolls]{attack rolls}, &amp;reference[savingthrow]{saving throws}, and &amp;reference[abilitycheck]{ability checks}. This penalty decreases by 1 each time the creature finishes a &amp;reference[Long Rest], until it is removed.</p></li><li><p>If the creature has been dead for 1 year or longer, the strain of casting is immense. Until you finish a Long Rest, you cannot cast spells and have Disadvantage on all &amp;reference[attackrolls]{attack rolls}, &amp;reference[abilitycheck]{ability checks}, and &amp;reference[savingthrow]{saving throws}.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -121,15 +169,23 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "resurrectionPen1"
+					}
+				],
 				"range": {
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},

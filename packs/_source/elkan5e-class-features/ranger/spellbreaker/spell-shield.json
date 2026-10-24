@@ -18,7 +18,7 @@
 		"identifier": "spell-shield",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "",
 			"page": "",
 			"custom": "elkan5e.com/ranger",
@@ -32,7 +32,9 @@
 			"level": null,
 			"repeatable": false
 		},
-		"properties": [],
+		"properties": [
+			"trait"
+		],
 		"requirements": "Spellbreaker 14",
 		"type": {
 			"value": "subclass",
@@ -50,9 +52,13 @@
 				"changes": [
 					{
 						"key": "system.traits.dr.custom",
+						"type": "custom",
 						"value": "spell",
+						"phase": "final",
 						"priority": 20,
-						"type": "custom"
+						"_id": "eLR0I5wrFAwizhoo",
+						"conditions": "{}",
+						"replacement": ""
 					}
 				]
 			},
@@ -78,24 +84,9 @@
 					"stackable": "multi",
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
+					"specialDuration": [],
+					"expiryMode": "default",
+					"phaseStamped": true
 				}
 			},
 			"start": null,

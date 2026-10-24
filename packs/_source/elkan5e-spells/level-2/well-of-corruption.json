@@ -102,16 +102,7 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [
-					{
-						"_id": "B87Jb1X0vnCBBTa9",
-						"onSave": false,
-						"level": {
-							"min": null,
-							"max": null
-						}
-					}
-				],
+				"effects": [],
 				"range": {
 					"override": false
 				},
@@ -141,7 +132,9 @@
 					"parts": []
 				},
 				"save": {
-					"ability": "con",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -167,19 +160,26 @@
 					"oncePerTurn": false,
 					"wallRestriction": "none",
 					"regionVisibility": 2,
-					"rules": [
-						{
-							"trigger": "entry",
-							"action": "applyEffect",
-							"targetId": "B87Jb1X0vnCBBTa9"
+					"rules": []
+				},
+				"behaviors": [
+					{
+						"name": "",
+						"_id": "6IBQ1DjclV6Ehg4T",
+						"type": "applyActiveEffect",
+						"config": {
+							"effects": [
+								"Compendium.elkan5e.elkan5e-spells.Item.cHIuORdoA1WnHfmK.ActiveEffect.B87Jb1X0vnCBBTa9"
+							],
+							"sizes": [],
+							"types": []
 						},
-						{
-							"trigger": "exit",
-							"action": "removeEffect",
-							"targetId": "B87Jb1X0vnCBBTa9"
+						"level": {
+							"min": null,
+							"max": null
 						}
-					]
-				}
+					}
+				]
 			}
 		},
 		"identifier": "well-of-corruption"
@@ -188,9 +188,9 @@
 		{
 			"origin": "Item.L4KMwQX53QUeTQFf",
 			"duration": {
-				"value": 60,
+				"value": null,
 				"units": "seconds",
-				"expiry": "turnStart",
+				"expiry": null,
 				"expired": false
 			},
 			"disabled": false,
@@ -210,22 +210,6 @@
 					"enableCondition": "",
 					"disableCondition": "",
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "undefined",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"name": "Well of Corruption",
@@ -237,8 +221,8 @@
 				"changes": [
 					{
 						"key": "system.traits.di.value",
-						"type": "custom",
-						"value": "ALL",
+						"type": "add",
+						"value": "healing",
 						"phase": "final",
 						"priority": 50
 					},
@@ -249,7 +233,8 @@
 						"phase": "final",
 						"priority": null
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,

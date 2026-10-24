@@ -158,19 +158,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": 0,
-				"climb": 0,
-				"fly": 60,
-				"swim": 0,
-				"walk": 15,
+				"speeds": {
+					"walk": 15,
+					"burrow": 0,
+					"climb": 0,
+					"fly": 60,
+					"swim": 0
+				},
 				"units": "ft",
 				"hover": false,
 				"ignoredDifficultTerrain": []
@@ -179,10 +181,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 60,
-				"blindsight": 10,
-				"tremorsense": 0,
-				"truesight": 0,
+				"ranges": {
+					"darkvision": 60,
+					"blindsight": 10,
+					"tremorsense": 0,
+					"truesight": 0
+				},
 				"units": "ft",
 				"special": ""
 			},
@@ -724,7 +728,7 @@
 					"book": "Elkan 5e",
 					"page": "",
 					"license": "",
-					"rules": "2014",
+					"rules": "",
 					"revision": 1
 				},
 				"uses": {
@@ -737,7 +741,9 @@
 					"subtype": ""
 				},
 				"requirements": "",
-				"properties": [],
+				"properties": [
+					"trait"
+				],
 				"prerequisites": {
 					"level": null,
 					"items": [],
@@ -760,7 +766,7 @@
 			"img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
 			"system": {
 				"description": {
-					"value": "<p>The [[lookup @name lowercase]] has <strong>advantage</strong> on saving throws against spells and other magical effects.</p>",
+					"value": "<p>The [[lookup @name lowercase]] has <strong>advantage</strong> on &amp;reference[savingthrow]{saving throws} against spells and other magical effects.</p>",
 					"chat": ""
 				},
 				"source": {
@@ -768,7 +774,7 @@
 					"book": "Elkan 5e",
 					"page": "",
 					"license": "",
-					"rules": "2014",
+					"rules": "",
 					"revision": 1
 				},
 				"uses": {
@@ -781,7 +787,9 @@
 					"subtype": ""
 				},
 				"requirements": "",
-				"properties": [],
+				"properties": [
+					"trait"
+				],
 				"prerequisites": {
 					"level": null,
 					"items": [],
@@ -812,7 +820,7 @@
 					"book": "Elkan 5e",
 					"page": "",
 					"license": "",
-					"rules": "2014",
+					"rules": "",
 					"revision": 1
 				},
 				"uses": {
@@ -825,7 +833,9 @@
 					"subtype": ""
 				},
 				"requirements": "",
-				"properties": [],
+				"properties": [
+					"trait"
+				],
 				"prerequisites": {
 					"level": null,
 					"items": [],
@@ -857,7 +867,7 @@
 					"page": "",
 					"license": "",
 					"revision": 1,
-					"rules": "2014"
+					"rules": ""
 				},
 				"quantity": 1,
 				"weight": {

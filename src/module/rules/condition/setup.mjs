@@ -4,7 +4,6 @@ import {
 	FILENAME_OVERRIDE,
 	IMAGE_EXCLUSIONS,
 	REMOVABLE_CONDITION_KEYS,
-	RULES_REF,
 	STATUS_DEFS,
 	STATUS_EFFECT_REMOVE,
 	STATUS_ICON_FOLDER,
@@ -151,7 +150,7 @@ function applyStatusIcons() {
  * @returns Operation result.
  */
 function mergeChanges(existing = [], incoming = []) {
-	const sig = (c) => `${c.key}|${c.mode}|${c.value}`;
+	const sig = (c) => `${c.key}|${c.type}|${c.value}`;
 	const map = new Map();
 	for (const c of existing || []) map.set(sig(c), c);
 	for (const c of incoming || []) map.set(sig(c), c);
@@ -206,8 +205,8 @@ function applyConditionDef(def, { statusOnly: forcedStatusOnly } = {}) {
 	const ct = registerConditionType ? (CONFIG.DND5E.conditionTypes[key] ??= {}) : {};
 	ct.name = game.i18n.localize(`elkan5e.conditions.${key}`);
 
-	const reference = def.reference ?? (def.id ? RULES_REF(def.id) : undefined);
-	if (reference) ct.reference = reference;
+	// Only use explicit references; a condition id is not a journal page id.
+	if (def.reference) ct.reference = def.reference;
 	if (def.icon) {
 		ct.img = def.icon;
 	} else if (def.image !== false) {
@@ -366,7 +365,8 @@ function getActorHazardCount(actor) {
  * @returns {Promise<void>} Completion.
  */
 async function syncHazardExhaustion(actor) {
-	if (!game.user?.isGM || !actor) return;
+	// Only the active GM, so multiple connected GMs don't each apply the exhaustion delta.
+	if (!game.users.activeGM?.isSelf || !actor) return;
 
 	const nextContribution = getActorHazardCount(actor);
 	const priorContribution = Math.max(
@@ -377,7 +377,7 @@ async function syncHazardExhaustion(actor) {
 
 	if (delta) {
 		const current = Number(actor.system?.attributes?.exhaustion ?? 0);
-		const target = Math.clamped(current + delta, 0, 6);
+		const target = Math.clamp(current + delta, 0, 6);
 		if (target !== current) {
 			await actor.update({ "system.attributes.exhaustion": target });
 		}
@@ -406,7 +406,7 @@ export async function handleHazardExhaustion(effect) {
  * @returns {Promise<void>} Completion.
  */
 async function syncAllHazardExhaustion() {
-	if (!game.user?.isGM) return;
+	if (!game.users.activeGM?.isSelf) return;
 
 	const actorMap = new Map();
 	for (const actor of game.actors?.contents ?? []) {
@@ -445,7 +445,7 @@ export function conditions() {
 			CONFIG.DND5E.conditionTypes.exhaustion.pseudo = false;
 			CONFIG.DND5E.conditionTypes.exhaustion.reduction = { rolls: 2, speed: 5 };
 			CONFIG.DND5E.conditionTypes.exhaustion.changes = [
-				{ key: "system.bonuses.spell.dc", mode: 0, value: "-2" },
+				{ key: "system.bonuses.spell.dc", type: "add", value: "-2" },
 			];
 		}
 
@@ -461,6 +461,12 @@ export function conditions() {
 			effects.dexteritySaveDisadvantage?.delete?.("blinded");
 			effects.halfMovement?.delete?.("blinded");
 			effects.dexteritySaveDisadvantage?.delete?.("deafened");
+			// Prone's own changes set every speed but walking and crawling to 0.
+			effects.crawl?.delete?.("prone");
+			// Elkan only changes initiative for Surprised (a -20 penalty set in its changes).
+			effects.initiativeAdvantage?.delete?.("invisible");
+			effects.initiativeDisadvantage?.delete?.("incapacitated");
+			effects.initiativeDisadvantage?.delete?.("surprised");
 		}
 	}
 

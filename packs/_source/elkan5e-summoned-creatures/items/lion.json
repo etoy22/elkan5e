@@ -465,11 +465,13 @@
 				"bonus": ""
 			},
 			"movement": {
-				"burrow": null,
-				"climb": null,
-				"fly": null,
-				"swim": null,
-				"walk": 50,
+				"speeds": {
+					"walk": 50,
+					"burrow": null,
+					"climb": null,
+					"fly": null,
+					"swim": null
+				},
 				"units": null,
 				"hover": false,
 				"ignoredDifficultTerrain": []
@@ -478,10 +480,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 60,
-				"blindsight": null,
-				"tremorsense": null,
-				"truesight": null,
+				"ranges": {
+					"darkvision": 60,
+					"blindsight": null,
+					"tremorsense": null,
+					"truesight": null
+				},
 				"units": null,
 				"special": ""
 			},
@@ -584,7 +588,7 @@
 		},
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"license": ""
 		},
@@ -731,13 +735,13 @@
 					"max": ""
 				},
 				"description": {
-					"value": "<p>The [[lookup @name lowercase]] has Advantage on an attack roll against a creature if at least one of the [[lookup @name lowercase]]'s allies is within 5 feet of the creature and the ally doesn't have the Incapacitated condition.</p>",
+					"value": "<p>The [[lookup @name lowercase]] has Advantage on an &amp;reference[attackrolls]{attack roll} against a creature if at least one of the [[lookup @name lowercase]]'s allies is within 5 feet of the creature and the ally doesn't have the &amp;reference[incapacitated apply=false]{Incapacitated} condition.</p>",
 					"chat": ""
 				},
 				"identifier": "pack-tactics",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -782,7 +786,7 @@
 				"identifier": "running-leap",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -924,7 +928,7 @@
 				"identifier": "multiattack",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -1076,7 +1080,7 @@
 				"identifier": "rend",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -1297,13 +1301,13 @@
 					"max": ""
 				},
 				"description": {
-					"value": "<p><em>Wisdom Saving Throw:</em> DC [[lookup @save.dc.value activity=Igeu89TALGlNPXDg]], one creature within [[lookup @range.value activity=Igeu89TALGlNPXDg]] feet.</p><p><em>Failure</em>: The target has the &amp;Reference[Frightened apply=false] condition until the start of the [[lookup @name lowercase]]'s next turn.</p>",
+					"value": "<p><em>Wisdom &amp;reference[savingthrow]{Saving Throw}:</em> DC [[lookup @save.dc.value activity=Igeu89TALGlNPXDg]], one creature within [[lookup @range.value activity=Igeu89TALGlNPXDg]] feet.</p><p><em>Failure</em>: The target has the &amp;reference[Frightened apply=false] condition until the start of the [[lookup @name lowercase]]'s next turn.</p>",
 					"chat": ""
 				},
 				"identifier": "roar",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -1329,7 +1333,15 @@
 					"_id": "jcp949sl7JYRdhdB",
 					"type": "base",
 					"system": {
-						"changes": []
+						"changes": [
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "frightened",
+								"phase": "final",
+								"priority": 20
+							}
+						]
 					},
 					"disabled": false,
 					"duration": {
@@ -1338,12 +1350,10 @@
 						"expiry": null,
 						"expired": false
 					},
-					"description": "<p>The target has the &amp;Reference[Frightened apply=false] condition until the start of the attacking creature’s next turn.</p>",
+					"description": "<p>The target has the &amp;reference[Frightened apply=false] condition until the start of the attacking creature’s next turn.</p>",
 					"tint": "#ffffff",
 					"transfer": false,
-					"statuses": [
-						"frightened"
-					],
+					"statuses": [],
 					"flags": {
 						"dae": {
 							"enableCondition": "",
@@ -1353,7 +1363,7 @@
 							"specialDuration": []
 						}
 					},
-					"showIcon": 2,
+					"showIcon": 0,
 					"start": null,
 					"folder": null,
 					"_key": "!actors.items.effects!M0QlmdMlZoaWIsPZ.mmRoar0000000000.jcp949sl7JYRdhdB"
@@ -1365,7 +1375,15 @@
 					"_id": "sbId6Nv8mOtH5EKR",
 					"type": "base",
 					"system": {
-						"changes": []
+						"changes": [
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "paralyzed",
+								"phase": "final",
+								"priority": 20
+							}
+						]
 					},
 					"disabled": false,
 					"duration": {
@@ -1374,12 +1392,10 @@
 						"expiry": "turnStart",
 						"expired": false
 					},
-					"description": "<p>The target has the &amp;Reference[Paralyzed apply=false] condition, and it repeats the save at the end of each of its turns, ending the effect on itself on a success. After 1 minute, it succeeds automatically.</p>",
+					"description": "<p>The target has the &amp;reference[Paralyzed apply=false] condition, and it repeats the save at the end of each of its turns, ending the effect on itself on a success. After 1 minute, it succeeds automatically.</p>",
 					"tint": "#ffffff",
 					"transfer": false,
-					"statuses": [
-						"paralyzed"
-					],
+					"statuses": [],
 					"flags": {
 						"dae": {
 							"disableCondition": "",
@@ -1389,7 +1405,7 @@
 							"enableCondition": ""
 						}
 					},
-					"showIcon": 2,
+					"showIcon": 0,
 					"start": {
 						"combat": null,
 						"round": null,
@@ -1408,7 +1424,15 @@
 					"_id": "UUPAry5ZunpEnKkn",
 					"type": "base",
 					"system": {
-						"changes": []
+						"changes": [
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "prone",
+								"phase": "final",
+								"priority": 20
+							}
+						]
 					},
 					"disabled": false,
 					"duration": {
@@ -1417,12 +1441,10 @@
 						"expiry": null,
 						"expired": false
 					},
-					"description": "<p>The target has the &amp;Reference[Prone apply=false] condition.</p>",
+					"description": "<p>The target has the &amp;reference[Prone apply=false] condition.</p>",
 					"tint": "#ffffff",
 					"transfer": false,
-					"statuses": [
-						"prone"
-					],
+					"statuses": [],
 					"flags": {
 						"dae": {
 							"enableCondition": "",
@@ -1432,7 +1454,7 @@
 							"specialDuration": []
 						}
 					},
-					"showIcon": 2,
+					"showIcon": 0,
 					"start": null,
 					"folder": null,
 					"_key": "!actors.items.effects!M0QlmdMlZoaWIsPZ.mmRoar0000000000.UUPAry5ZunpEnKkn"

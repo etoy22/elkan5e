@@ -466,11 +466,13 @@
 				"bonus": ""
 			},
 			"movement": {
-				"burrow": null,
-				"climb": null,
-				"fly": 90,
-				"swim": null,
-				"walk": 10,
+				"speeds": {
+					"walk": 10,
+					"burrow": null,
+					"climb": null,
+					"fly": 90,
+					"swim": null
+				},
 				"units": null,
 				"hover": true,
 				"ignoredDifficultTerrain": []
@@ -479,10 +481,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 60,
-				"blindsight": null,
-				"tremorsense": null,
-				"truesight": null,
+				"ranges": {
+					"darkvision": 60,
+					"blindsight": null,
+					"tremorsense": null,
+					"truesight": null
+				},
 				"units": null,
 				"special": ""
 			},
@@ -583,7 +587,7 @@
 		},
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"license": ""
 		},
@@ -754,7 +758,7 @@
 				"identifier": "air-form",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -922,7 +926,7 @@
 				"identifier": "thunderous-slam",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -1118,7 +1122,7 @@
 				"identifier": "multiattack",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -1312,13 +1316,13 @@
 					"max": "1"
 				},
 				"description": {
-					"value": "<p><em>Strength Saving Throw:</em> DC [[lookup @save.dc.value activity=GQzr4EMMm6kkZVdC]], each Medium or smaller [[lookup @target.affects.type activity=GQzr4EMMm6kkZVdC]] in the [[lookup @name lowercase]]'s space.</p><p><em>Failure:</em> [[/damage average]] damage, and the target is pushed up to 20 feet straight away from the [[lookup @name lowercase]] and has the &amp;Reference[Prone apply=false] condition.</p><p><em>Success:</em> Half damage only.</p>",
+					"value": "<p><em>Strength &amp;reference[savingthrow]{Saving Throw}:</em> DC [[lookup @save.dc.value activity=GQzr4EMMm6kkZVdC]], each Medium or smaller [[lookup @target.affects.type activity=GQzr4EMMm6kkZVdC]] in the [[lookup @name lowercase]]'s space.</p><p><em>Failure:</em> [[/damage average]] damage, and the target is pushed up to 20 feet straight away from the [[lookup @name lowercase]] and has the &amp;reference[Prone apply=false] condition.</p><p><em>Success:</em> Half damage only.</p>",
 					"chat": ""
 				},
 				"identifier": "whirlwind",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -1344,7 +1348,15 @@
 					"_id": "qihlGD6RZ55pZY9n",
 					"type": "base",
 					"system": {
-						"changes": []
+						"changes": [
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "prone",
+								"phase": "final",
+								"priority": 20
+							}
+						]
 					},
 					"disabled": false,
 					"duration": {
@@ -1353,12 +1365,10 @@
 						"expiry": null,
 						"expired": false
 					},
-					"description": "<p>The target is pushed up to 20-ft. straight away from the attacking creature and has the &amp;Reference[Prone apply=false] condition.</p>",
+					"description": "<p>The target is pushed up to 20-ft. straight away from the attacking creature and has the &amp;reference[Prone apply=false] condition.</p>",
 					"tint": "#ffffff",
 					"transfer": false,
-					"statuses": [
-						"prone"
-					],
+					"statuses": [],
 					"flags": {
 						"dae": {
 							"enableCondition": "",
@@ -1368,7 +1378,7 @@
 							"specialDuration": []
 						}
 					},
-					"showIcon": 2,
+					"showIcon": 0,
 					"start": null,
 					"folder": null,
 					"_key": "!actors.items.effects!VLsdEfjh1kYYXAtk.mmWhirlwind00000.qihlGD6RZ55pZY9n"

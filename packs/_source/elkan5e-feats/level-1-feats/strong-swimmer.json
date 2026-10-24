@@ -26,38 +26,16 @@
 			"subtype": ""
 		},
 		"requirements": "Feat (Level 1)",
-		"properties": [],
+		"properties": [
+			"trait"
+		],
 		"identifier": "strong-swimmer",
 		"activities": {},
 		"enchant": {},
 		"prerequisites": {
 			"level": null
 		},
-		"advancement": [
-			{
-				"_id": "aC5HuW1uXBe16dL0",
-				"type": "AbilityScoreImprovement",
-				"configuration": {
-					"cap": 2,
-					"fixed": {
-						"str": 0,
-						"dex": 0,
-						"con": 0,
-						"int": 0,
-						"wis": 0,
-						"cha": 0
-					},
-					"locked": [],
-					"points": 2
-				},
-				"value": {
-					"type": "asi"
-				},
-				"level": 0,
-				"title": "",
-				"hint": ""
-			}
-		]
+		"advancement": []
 	},
 	"effects": [
 		{
@@ -84,22 +62,6 @@
 					"dontApply": false,
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "undefined",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"name": "Strong Swimmer",
@@ -110,8 +72,8 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.movement.swim",
-						"value": "@attributes.movement.walk",
+						"key": "system.attributes.movement.speeds.swim",
+						"value": "@attributes.movement.speeds.walk",
 						"priority": 20,
 						"type": "upgrade"
 					}

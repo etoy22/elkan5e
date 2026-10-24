@@ -22,29 +22,22 @@
 					],
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"img": "icons/creatures/mammals/unicorn-horned-white.webp",
 			"_id": "thhoBatVMtEDTUdY",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "invisible",
+						"phase": "final",
+						"priority": 20
+					}
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -55,10 +48,8 @@
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"statuses": [
-				"invisible"
-			],
-			"showIcon": 2,
+			"statuses": [],
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!oQk819H0v53a3xQB.thhoBatVMtEDTUdY"
@@ -97,7 +88,7 @@
 	"_id": "oQk819H0v53a3xQB",
 	"system": {
 		"description": {
-			"value": "<p><span> <strong>Familiar's Action</strong> </span>- Self - Concentration (1 Hour) - Magical Ability</p><p><span> <strong>Buff</strong> </span></p><p>Your familiar can use an action to magically turn &amp;reference[invisible] at will. The invisibility lasts until it attacks or until its concentration ends (as if concentrating on a spell). Any equipment the familiar wears or carries is invisible with it.</p>",
+			"value": "<p><span> <strong>Familiar's Action</strong> </span>- Self - &amp;reference[concentration]{Concentration} (1 Hour) - Magical Ability</p><p><span> <strong>Buff</strong> </span></p><p>Your familiar can use an action to magically turn &amp;reference[invisible] at will. The invisibility lasts until it attacks or until its concentration ends (as if concentrating on a spell). Any equipment the familiar wears or carries is invisible with it.</p>",
 			"chat": ""
 		},
 		"source": {

@@ -207,25 +207,6 @@
 					"specialDuration": [],
 					"disableIncapacitated": false,
 					"dontApply": false
-				},
-				"core": {
-					"statusId": "combat-utility-belt.grappled"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "null",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"name": "Grappled",
@@ -240,6 +221,13 @@
 						"value": 0,
 						"priority": 50,
 						"type": "custom"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "grappled",
+						"phase": "final",
+						"priority": 20
 					}
 				]
 			},

@@ -29,22 +29,6 @@
 					"disableIncapacitated": false,
 					"dontApply": false,
 					"macroRepeat": "none"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"name": "Uncanny Dodge",
@@ -91,7 +75,6 @@
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
 			"effectCondition": "",
-			"reactionCondition": "reaction === 'isHit'",
 			"AoETargetType": "any",
 			"autoTarget": "default",
 			"removeAttackDamageButtons": "default",
@@ -100,7 +83,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><strong>Reaction</strong> - Self</p><p><em>Trigger: You take damage from an attack.</em></p><ul><li><p>You halve the damage you take.</p></li></ul><p><em>This ability cannot be used for effects that damage you that do not require an attack roll, such as abilities that require you to roll a saving throw.</em></p>",
+			"value": "<p><strong>Reaction</strong> - Self</p><p><em>Trigger: You take damage from an attack.</em></p><ul><li><p>You halve the damage you take.</p></li></ul><p><em>This ability cannot be used for effects that damage you that do not require an &amp;reference[attackrolls]{attack roll}, such as abilities that require you to roll a &amp;reference[savingthrow]{saving throw}.</em></p>",
 			"chat": ""
 		},
 		"source": {
@@ -183,7 +166,7 @@
 					"name": "",
 					"formula": ""
 				},
-				"useConditionText": "",
+				"useConditionText": "reaction === 'isHit'",
 				"forceDialog": false,
 				"effectConditionText": "",
 				"name": "",

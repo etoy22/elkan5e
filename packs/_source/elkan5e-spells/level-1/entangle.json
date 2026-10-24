@@ -20,22 +20,6 @@
 					"specialDuration": [],
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"img": "icons/magic/nature/root-vine-entangle-foot-green.webp",
@@ -47,9 +31,18 @@
 						"key": "flags.midi-qol.OverTime",
 						"value": "turn=end,\nsaveAbility=str,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Entangle",
 						"priority": 20,
-						"type": "add"
+						"type": "add",
+						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "grappled",
+						"phase": "final",
+						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -60,81 +53,11 @@
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"statuses": [
-				"grappled"
-			],
-			"showIcon": 2,
+			"statuses": [],
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!x76d4kCFyMIc6wQZ.OPOIjeSC7TbTC1Ul"
-		},
-		{
-			"name": "Entangle - Slowed",
-			"origin": "Compendium.elkan5e.elkan5e-spells.Item.x76d4kCFyMIc6wQZ",
-			"transfer": false,
-			"flags": {
-				"dae": {
-					"itemName": "Entangle",
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": true,
-					"stackable": "noneName",
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": [],
-					"enableCondition": "",
-					"disableCondition": "",
-					"expiryMode": "default",
-					"combatActorOverride": "source"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
-				}
-			},
-			"img": "icons/magic/nature/root-vine-entangle-foot-green.webp",
-			"type": "base",
-			"system": {
-				"changes": [
-					{
-						"key": "system.attributes.movement.all",
-						"type": "custom",
-						"value": "/2",
-						"priority": 20,
-						"phase": "final"
-					}
-				]
-			},
-			"disabled": false,
-			"duration": {
-				"value": null,
-				"units": "seconds",
-				"expiry": "turnStart",
-				"expired": false
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"statuses": [
-				"grappled"
-			],
-			"showIcon": 2,
-			"start": null,
-			"folder": null,
-			"_id": "EnhV5nWU6qgNc1XA",
-			"_key": "!items.effects!x76d4kCFyMIc6wQZ.EnhV5nWU6qgNc1XA"
 		}
 	],
 	"folder": "U0k4VGG6bziqf3oH",
@@ -303,7 +226,9 @@
 					"onSave": "none"
 				},
 				"save": {
-					"ability": "str",
+					"ability": [
+						"str"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -329,21 +254,26 @@
 					"dispositionFilter": -1,
 					"excludeSource": true,
 					"oncePerTurn": false,
-					"rules": [
-						{
-							"trigger": "entry",
-							"action": "applyEffect",
-							"targetId": "EnhV5nWU6qgNc1XA"
-						},
-						{
-							"trigger": "exit",
-							"action": "removeEffect",
-							"targetId": "EnhV5nWU6qgNc1XA"
-						}
-					],
+					"rules": [],
 					"wallRestriction": "move",
 					"regionVisibility": 2
-				}
+				},
+				"behaviors": [
+					{
+						"name": "",
+						"_id": "4V8mX8WEvSvzpg1O",
+						"type": "difficultTerrain",
+						"config": {
+							"types": [
+								"plants"
+							]
+						},
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				]
 			}
 		},
 		"identifier": "entangle"

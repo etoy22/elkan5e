@@ -26,32 +26,13 @@
 					"disableIncapacitated": false,
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"radius": "",
-					"aura": "None",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"displayTemp": false,
-					"wallsBlock": "system"
 				}
 			},
 			"tint": "#ffffff",
 			"name": "Enthrall",
 			"description": "",
 			"origin": null,
-			"statuses": [
-				"charmed",
-				"goaded"
-			],
+			"statuses": [],
 			"img": "icons/environment/people/infantry-armored.webp",
 			"type": "base",
 			"system": {
@@ -60,11 +41,27 @@
 						"key": "flags.midi-qol.OverTime",
 						"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Enthrall",
 						"priority": 20,
-						"type": "add"
+						"type": "add",
+						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "charmed",
+						"phase": "final",
+						"priority": 20
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "goaded",
+						"phase": "final",
+						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!qmpljuHtwKkER2xa.jjCqYpgawBdGokkR"
@@ -205,10 +202,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -222,7 +223,9 @@
 					"parts": []
 				},
 				"save": {
-					"ability": "wis",
+					"ability": [
+						"wis"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""

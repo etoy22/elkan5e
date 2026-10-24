@@ -9,7 +9,7 @@
 			"duration": {
 				"value": null,
 				"units": "seconds",
-				"expiry": null,
+				"expiry": "targetEnd",
 				"expired": false
 			},
 			"origin": "Actor.rMccgdKBBCNbWd8m.Item.wSK4HWen5Cocfn3w",
@@ -23,29 +23,12 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": [
-						"1Attack",
-						"turnEnd"
+						"1Attack"
 					],
 					"transfer": true,
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"tint": "#ffffff",
@@ -57,12 +40,13 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.bonuses.All-Attacks",
+						"key": "system.rolls.attack.bonus",
 						"value": "+1d4",
 						"priority": 1,
-						"type": "custom"
+						"type": "add"
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
@@ -98,7 +82,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>Most such shields have a jarl's bindrune, whether or not they are carried by a dwarven jarl. Jarls are no longer a common part of dwarven society, but the practice of enchanting shields for the leaders of small warbands continues.</em></p><p>Attuning to this large shield item requires you to stand vigil to swear to become the leader or protector of a group of people, and requires you to have proficiency with medium armor.</p><p>Once per short rest, when attuned to this shield, you can use a bonus action to rally up to 6 friendly creatures within 30 ft. of you, who can then add [[/r 1d4]] to the first attack roll they make on their next turn.</p>",
+			"value": "<p><em>Most such shields have a jarl's bindrune, whether or not they are carried by a dwarven jarl. Jarls are no longer a common part of dwarven society, but the practice of enchanting shields for the leaders of small warbands continues.</em></p><p>Attuning to this large shield item requires you to stand vigil to swear to become the leader or protector of a group of people, and requires you to have proficiency with medium armor.</p><p>Once per short rest, when attuned to this shield, you can use a bonus action to rally up to 6 friendly creatures within 30 ft. of you, who can then add [[/r 1d4]] to the first &amp;reference[attackrolls]{attack roll} they make on their next turn.</p>",
 			"chat": ""
 		},
 		"source": {

@@ -134,10 +134,14 @@
 					"special": ""
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -176,7 +180,7 @@
 				"appliedEffects": []
 			},
 			"ENMFaOGE2yn0CAQu": {
-				"type": "utility",
+				"type": "teleport",
 				"_id": "ENMFaOGE2yn0CAQu",
 				"activation": {
 					"type": "nocost",
@@ -206,10 +210,14 @@
 					"special": ""
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -218,11 +226,10 @@
 					"recovery": [],
 					"max": ""
 				},
-				"roll": {
-					"prompt": false,
-					"visible": false,
-					"name": "",
-					"formula": ""
+				"teleport": {
+					"override": true,
+					"units": "ft",
+					"value": "500"
 				},
 				"useConditionText": "",
 				"forceDialog": false,

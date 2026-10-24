@@ -466,11 +466,13 @@
 				"bonus": ""
 			},
 			"movement": {
-				"burrow": null,
-				"climb": null,
-				"fly": null,
-				"swim": null,
-				"walk": 50,
+				"speeds": {
+					"walk": 50,
+					"burrow": null,
+					"climb": null,
+					"fly": null,
+					"swim": null
+				},
 				"units": null,
 				"hover": false,
 				"ignoredDifficultTerrain": []
@@ -479,10 +481,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 60,
-				"blindsight": null,
-				"tremorsense": null,
-				"truesight": null,
+				"ranges": {
+					"darkvision": 60,
+					"blindsight": null,
+					"tremorsense": null,
+					"truesight": null
+				},
 				"units": null,
 				"special": ""
 			},
@@ -580,7 +584,7 @@
 		},
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"license": ""
 		},
@@ -874,7 +878,7 @@
 				"identifier": "fire-aura",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -1039,7 +1043,7 @@
 				"identifier": "fire-form",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -1084,7 +1088,7 @@
 				"identifier": "illumination",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -1251,7 +1255,7 @@
 				"identifier": "water-susceptibility",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -1393,7 +1397,7 @@
 				"identifier": "multiattack",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -1543,13 +1547,13 @@
 					"max": ""
 				},
 				"description": {
-					"value": "<p>[[/attack extended]]. [[/damage average extended]]. If the target is a creature or a flammable object, it starts &amp;Reference[burning].</p>",
+					"value": "<p>[[/attack extended]]. [[/damage average extended]]. If the target is a creature or a flammable object, it starts &amp;reference[burning].</p>",
 					"chat": ""
 				},
 				"identifier": "burn",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -1634,7 +1638,15 @@
 					"_id": "ePppPvhLU1DnHySS",
 					"type": "base",
 					"system": {
-						"changes": []
+						"changes": [
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "burning",
+								"phase": "final",
+								"priority": 20
+							}
+						]
 					},
 					"disabled": false,
 					"duration": {
@@ -1645,13 +1657,16 @@
 					},
 					"description": "<p>@Embed[Compendium.dnd5e.content24.JournalEntry.phbAppendixCRule.JournalEntryPage.mPBGM1vguT5IPzxT caption=false]</p>",
 					"tint": "#ffffff",
-					"statuses": [
-						"burning"
-					],
-					"showIcon": 2,
+					"statuses": [],
+					"showIcon": 0,
 					"start": null,
 					"folder": null,
-					"_key": "!actors.items.effects!sDrmbYvW2Nva87Dg.mmBurn0000000000.ePppPvhLU1DnHySS"
+					"_key": "!actors.items.effects!sDrmbYvW2Nva87Dg.mmBurn0000000000.ePppPvhLU1DnHySS",
+					"flags": {
+						"dae": {
+							"stackable": "none"
+						}
+					}
 				}
 			],
 			"_key": "!actors.items!sDrmbYvW2Nva87Dg.mmBurn0000000000"

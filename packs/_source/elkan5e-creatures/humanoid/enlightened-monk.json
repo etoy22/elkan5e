@@ -19,7 +19,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -139,28 +139,12 @@
 					},
 					"transfer": false,
 					"flags": {
-						"core": {
-							"statusId": "combat-utility-belt.yc8imetluuc4wrkv"
-						},
 						"dae": {
 							"stackable": "none",
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": [],
 							"transfer": false
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"radius": null,
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false
 						}
 					},
 					"tint": "#ffffff",
@@ -168,13 +152,21 @@
 					"description": "",
 					"origin": null,
 					"statuses": [],
-					"img": "modules/5e-Automated-Spells/images/stunned.svg",
+					"img": "modules/elkan5e/icons/conditions/stunned.svg",
 					"type": "base",
 					"system": {
-						"changes": []
+						"changes": [
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "stunned",
+								"phase": "final",
+								"priority": 20
+							}
+						]
 					},
 					"start": null,
-					"showIcon": 1,
+					"showIcon": 0,
 					"folder": null,
 					"_key": "!actors.items.effects!vbD78hpBIa5HocAA.nsJBrPYxsXLxGph5.mdnu7qb2xqo57ujn"
 				}
@@ -182,13 +174,13 @@
 			"folder": "0pkJJHVz20jLFoE1",
 			"system": {
 				"description": {
-					"value": "<p>You can interfere with the flow of @UUID[Compendium.elkan5e.elkan5e-class-features.IXk7hfrAoVQU3dLJ]{Ki} in an opponent's body. When you hit another creature with a melee weapon attack, you attempt a stunning strike. The target must succeed on a constitution saving throw against your ki saving throw DC or be stunned until the end of your next turn.</p> <p>You can use this ability a number of times equal to your proficiency bonus. You regain all uses of this ability when you complete a long rest.</p>",
+					"value": "<p>You can interfere with the flow of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.IXk7hfrAoVQU3dLJ]{Ki} in an opponent's body. When you hit another creature with a melee weapon attack, you attempt a stunning strike. The target must succeed on a constitution &amp;reference[savingthrow]{saving throw} against your ki saving throw DC or be &amp;reference[stunned apply=false]{stunned} until the end of your next turn.</p> <p>You can use this ability a number of times equal to your proficiency bonus. You regain all uses of this ability when you complete a long rest.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "elkan5e.com/monk",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -284,7 +276,9 @@
 							"parts": []
 						},
 						"save": {
-							"ability": "con",
+							"ability": [
+								"con"
+							],
 							"dc": {
 								"calculation": "wis",
 								"formula": ""
@@ -339,7 +333,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -525,7 +519,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -717,19 +711,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": 0,
-				"climb": 0,
-				"fly": 0,
-				"swim": 0,
-				"walk": 30,
+				"speeds": {
+					"walk": 30,
+					"burrow": 0,
+					"climb": 0,
+					"fly": 0,
+					"swim": 0
+				},
 				"units": "ft",
 				"hover": false
 			},
@@ -737,10 +733,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 0,
-				"blindsight": 0,
-				"tremorsense": 0,
-				"truesight": 0,
+				"ranges": {
+					"darkvision": 0,
+					"blindsight": 0,
+					"tremorsense": 0,
+					"truesight": 0
+				},
 				"units": "ft",
 				"special": ""
 			},

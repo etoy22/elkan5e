@@ -198,17 +198,18 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.OverTime",
-						"value": "turn=end,\ndamageType=cold,\nallowIncapacitated=true,\ndamageRoll=1d8\nlabel=Relentless Tides",
+						"value": "turn=end,\ndamageType=cold,\nallowIncapacitated=true,\ndamageRoll=1d6,\nlabel=Relentless Tides",
 						"priority": 20,
 						"type": "add"
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
-				"value": null,
+				"value": 60,
 				"units": "seconds",
-				"expiry": null,
+				"expiry": "turnStart",
 				"expired": false
 			},
 			"description": "",
@@ -227,22 +228,6 @@
 					"specialDuration": [],
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"start": null,
@@ -259,17 +244,18 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.OverTime",
-						"value": "turn=end,\ndamageType=acid,\nallowIncapacitated=true,\ndamageRoll=1d8\nlabel=Relentless Tides",
+						"value": "turn=end,\ndamageType=acid,\nallowIncapacitated=true,\ndamageRoll=1d6,\nlabel=Relentless Tides",
 						"priority": 20,
 						"type": "add"
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
-				"value": null,
+				"value": 60,
 				"units": "seconds",
-				"expiry": null,
+				"expiry": "turnStart",
 				"expired": false
 			},
 			"description": "",
@@ -288,22 +274,6 @@
 					"specialDuration": [],
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"_id": "SUwX54EndZ6moWnQ",
@@ -337,6 +307,12 @@
 			"reactionCondition": "",
 			"removeAttackDamageButtons": "default",
 			"otherCondition": ""
+		},
+		"elkan5e": {
+			"spellDamageTrigger": [
+				"cold",
+				"acid"
+			]
 		}
 	},
 	"_key": "!items!F7uDmYfklTlsEpM3"

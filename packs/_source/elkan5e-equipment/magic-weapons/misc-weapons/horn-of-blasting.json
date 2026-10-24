@@ -27,18 +27,21 @@
 					"chatFlavor": ""
 				},
 				"duration": {
-					"units": "inst",
+					"units": "minute",
 					"concentration": false,
-					"override": false
+					"override": false,
+					"value": "1",
+					"expiry": null
 				},
 				"effects": [
 					{
-						"_id": "HREyjqFevgTvN4uC",
 						"onSave": false,
 						"level": {
 							"min": null,
 							"max": null
-						}
+						},
+						"_id": "4WhrBtJj3NREMOTE",
+						"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkandeafened000"
 					}
 				],
 				"range": {
@@ -85,16 +88,16 @@
 					"onSave": "half"
 				},
 				"save": {
-					"ability": "con",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "",
 						"formula": "15"
 					}
 				},
 				"img": "",
-				"appliedEffects": [
-					"HREyjqFevgTvN4uC"
-				],
+				"appliedEffects": [],
 				"visibility": {
 					"requireMagic": true,
 					"level": {
@@ -340,13 +343,13 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><em>Wondrous Item - Rare</em></p><p><strong>Action</strong> - 30 ft. Cone (Self) - 1 Minute</p><p><strong>[[/save CON 15]]{Constitution Save (DC 15)}</strong></p><ul><li><p><strong>Failure:</strong> [[/damage 5d8 Thunder]] damage and is &amp;Reference[Deafened]. Glass or crystal objects in the Cone that aren't being worn or carried take [[/damage 10d8 Thunder]] damage.</p></li><li><p><strong>Success: </strong>Half damage, no effect.</p></li><li><p>This emits a thunderous blast that is audible out to 600 feet.</p></li><li><p>Each use of the horn's magic has a 20 percent chance of causing the horn to explode. The explosion deals [[/damage 10d6 Force]] damage to the user and destroys the horn.</p></li></ul><section class=\"secret\" id=\"foundry-secret-1\"><p><strong>Foundry Note</strong></p><p>The <strong>Horn of Blasting</strong> activity will return 1 if it explodes otherwise it will return 0.</p></section>",
+			"value": "<p><em>Wondrous Item - Rare</em></p><p><strong>Action</strong> - 30 ft. Cone (Self) - 1 Minute</p><p><strong>[[/save CON 15]]{Constitution Save (DC 15)}</strong></p><ul><li><p><strong>Failure:</strong> [[/damage 5d8 Thunder]] damage and is &amp;reference[Deafened]. Glass or crystal objects in the Cone that aren't being worn or carried take [[/damage 10d8 Thunder]] damage.</p></li><li><p><strong>Success: </strong>Half damage, no effect.</p></li><li><p>This emits a thunderous blast that is audible out to 600 feet.</p></li><li><p>Each use of the horn's magic has a 20 percent chance of causing the horn to explode. The explosion deals [[/damage 10d6 Force]] damage to the user and destroys the horn.</p></li></ul><section class=\"secret\" id=\"foundry-secret-1\"><p><strong>Foundry Note</strong></p><p>The <strong>Horn of Blasting</strong> activity will return 1 if it explodes otherwise it will return 0.</p></section>",
 			"chat": ""
 		},
 		"identifier": "horn-of-blasting",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "",
 			"license": "",
 			"page": "",
@@ -394,65 +397,6 @@
 		"strength": null,
 		"proficient": null
 	},
-	"effects": [
-		{
-			"name": "Horn of Blasting",
-			"img": "icons/tools/instruments/flute-simple-wood.webp",
-			"origin": "Compendium.dnd5e.equipment24.Item.dmgHornOfBlastin",
-			"transfer": false,
-			"_id": "HREyjqFevgTvN4uC",
-			"type": "base",
-			"system": {
-				"changes": []
-			},
-			"disabled": false,
-			"duration": {
-				"value": 60,
-				"units": "seconds",
-				"expiry": "turnStart",
-				"expired": false
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"statuses": [
-				"deafened"
-			],
-			"flags": {
-				"dae": {
-					"enableCondition": "",
-					"disableCondition": "",
-					"stackable": "noneName",
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "All",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
-				}
-			},
-			"showIcon": 2,
-			"start": null,
-			"folder": null,
-			"_key": "!items.effects!dmgHornOfBlastin.HREyjqFevgTvN4uC"
-		}
-	],
+	"effects": [],
 	"_key": "!items!dmgHornOfBlastin"
 }

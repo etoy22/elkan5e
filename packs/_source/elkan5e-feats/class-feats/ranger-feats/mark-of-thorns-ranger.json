@@ -41,7 +41,7 @@
 				"type": "utility",
 				"name": "Mark of Thorns (Uses)",
 				"activation": {
-					"type": "special",
+					"type": "bonus",
 					"value": null,
 					"override": false,
 					"condition": ""
@@ -192,31 +192,7 @@
 		},
 		"identifier": "mark-of-thorns-ranger",
 		"enchant": {},
-		"advancement": [
-			{
-				"_id": "aC5HuW1uXBe16dL0",
-				"type": "AbilityScoreImprovement",
-				"configuration": {
-					"cap": 2,
-					"fixed": {
-						"str": 0,
-						"dex": 0,
-						"con": 0,
-						"int": 0,
-						"wis": 0,
-						"cha": 0
-					},
-					"locked": [],
-					"points": 2
-				},
-				"value": {
-					"type": "asi"
-				},
-				"level": 0,
-				"title": "",
-				"hint": ""
-			}
-		]
+		"advancement": []
 	},
 	"effects": [
 		{
@@ -232,7 +208,9 @@
 			},
 			"description": "",
 			"origin": null,
-			"statuses": [],
+			"statuses": [
+				"rangerMark"
+			],
 			"flags": {
 				"dae": {
 					"disableIncapacitated": false,
@@ -245,32 +223,17 @@
 					"specialDuration": [],
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"tint": "#ffffff",
 			"img": "icons/magic/nature/beam-hand-leaves-green.webp",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [],
+				"magical": true
 			},
 			"start": null,
-			"showIcon": 1,
+			"showIcon": 2,
 			"folder": null,
 			"_key": "!items.effects!2F7ey4ojkStp5ry7.5wewm9mUphsdtJWZ"
 		},
@@ -300,29 +263,14 @@
 					"specialDuration": [],
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"tint": "#ffffff",
 			"img": "icons/magic/nature/beam-hand-leaves-green.webp",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,

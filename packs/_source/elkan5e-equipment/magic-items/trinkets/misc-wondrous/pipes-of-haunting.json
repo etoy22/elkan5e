@@ -33,18 +33,21 @@
 					"chatFlavor": ""
 				},
 				"duration": {
-					"units": "inst",
+					"units": "minute",
 					"concentration": false,
-					"override": false
+					"override": false,
+					"value": "1",
+					"expiry": null
 				},
 				"effects": [
 					{
-						"_id": "29Rm9ru4fP60YFj3",
 						"onSave": false,
 						"level": {
 							"min": null,
 							"max": null
-						}
+						},
+						"_id": "Zkf77SH5ebREMOTE",
+						"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanfrightened0"
 					}
 				],
 				"range": {
@@ -80,16 +83,16 @@
 					"onSave": "half"
 				},
 				"save": {
-					"ability": "wis",
+					"ability": [
+						"wis"
+					],
 					"dc": {
 						"calculation": "",
 						"formula": "15"
 					}
 				},
 				"img": "",
-				"appliedEffects": [
-					"29Rm9ru4fP60YFj3"
-				],
+				"appliedEffects": [],
 				"visibility": {
 					"requireMagic": true,
 					"level": {
@@ -113,13 +116,13 @@
 			"max": "3"
 		},
 		"description": {
-			"value": "<p><em>Wondrous Item - Uncommon</em></p><p><em>A magic item like this counts as magical for overcoming effects.</em></p><p><strong>Activation</strong> - 3 Charges ([[/r 1d3]]/Dawn)</p><ul><li><p><strong>Action</strong> (1 Charge): Each creature of your choice within 30 feet must succeed on a [[/save WIS 15]]{Wisdom Save (DC 15)} or become &amp;Reference[Frightened] for 1 minute. A creature that fails repeats the save at the end of each of its turns, ending the effect on a success.</p></li><li><p>A creature that succeeds on its save is immune to these pipes for 24 hours.</p></li></ul>",
+			"value": "<p><em>Wondrous Item - Uncommon</em></p><p><em>A magic item like this counts as magical for overcoming effects.</em></p><p><strong>Activation</strong> - 3 Charges ([[/r 1d3]]/Dawn)</p><ul><li><p><strong>Action</strong> (1 Charge): Each creature of your choice within 30 feet must succeed on a [[/save WIS 15]]{Wisdom Save (DC 15)} or become &amp;reference[Frightened] for 1 minute. A creature that fails repeats the save at the end of each of its turns, ending the effect on a success.</p></li><li><p>A creature that succeeds on its save is immune to these pipes for 24 hours.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "pipes-of-haunting",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "",
 			"license": "",
 			"page": "",
@@ -167,34 +170,6 @@
 		"strength": null,
 		"proficient": null
 	},
-	"effects": [
-		{
-			"name": "Pipes of Haunting",
-			"img": "icons/tools/instruments/flute-simple-wood.webp",
-			"origin": "Compendium.dnd5e.equipment24.Item.dmgPipesOfHaunti",
-			"transfer": false,
-			"_id": "29Rm9ru4fP60YFj3",
-			"type": "base",
-			"system": {
-				"changes": []
-			},
-			"disabled": false,
-			"duration": {
-				"value": 60,
-				"units": "seconds",
-				"expiry": "turnStart",
-				"expired": false
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"statuses": [
-				"frightened"
-			],
-			"showIcon": 2,
-			"start": null,
-			"folder": null,
-			"_key": "!items.effects!dmgPipesOfHaunti.29Rm9ru4fP60YFj3"
-		}
-	],
+	"effects": [],
 	"_key": "!items!dmgPipesOfHaunti"
 }

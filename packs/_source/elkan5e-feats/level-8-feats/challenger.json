@@ -110,7 +110,9 @@
 					"parts": []
 				},
 				"save": {
-					"ability": "wis",
+					"ability": [
+						"wis"
+					],
 					"dc": {
 						"calculation": "",
 						"formula": "8 + max(@abilities.cha.mod, @abilities.str.mod) + @prof"
@@ -126,37 +128,11 @@
 		"identifier": "challenger",
 		"enchant": {},
 		"properties": [],
-		"advancement": [
-			{
-				"_id": "aC5HuW1uXBe16dL0",
-				"type": "AbilityScoreImprovement",
-				"configuration": {
-					"cap": 2,
-					"fixed": {
-						"str": 0,
-						"dex": 0,
-						"con": 0,
-						"int": 0,
-						"wis": 0,
-						"cha": 0
-					},
-					"locked": [],
-					"points": 2
-				},
-				"value": {
-					"type": "asi"
-				},
-				"level": 0,
-				"title": "",
-				"hint": ""
-			}
-		]
+		"advancement": []
 	},
 	"effects": [
 		{
-			"statuses": [
-				"condition-lab-triggler.Kq9PYa0G2aHGmUvc"
-			],
+			"statuses": [],
 			"name": "Goaded",
 			"description": "",
 			"duration": {
@@ -175,22 +151,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"_id": "okPy9tHwmybvkB4c",
@@ -204,13 +164,21 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.OverTime",
-						"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@abilities.cha.dc,\nsaveMagic=false,\nlabel=Challenger",
+						"value": "turn=end,\nsaveAbility=wis,\nsaveDC=8 + max(@abilities.cha.mod, @abilities.str.mod) + @prof,\nsaveMagic=false,\nlabel=Challenger",
 						"priority": 20,
-						"type": "override"
+						"type": "override",
+						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "goaded",
+						"phase": "final",
+						"priority": 20
 					}
 				]
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!DYz1uFlSNv13lYwt.okPy9tHwmybvkB4c"

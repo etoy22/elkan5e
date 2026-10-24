@@ -38,10 +38,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -196,7 +200,16 @@
 			"_id": "PqxhnlqCTajlDpbE",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "grappled",
+						"phase": "final",
+						"priority": 20
+					}
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -207,9 +220,7 @@
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"statuses": [
-				"grappled"
-			],
+			"statuses": [],
 			"flags": {
 				"dae": {
 					"enableCondition": "",
@@ -223,26 +234,9 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!xUZpsqNNLlRqhvXZ.PqxhnlqCTajlDpbE"

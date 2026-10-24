@@ -164,7 +164,9 @@
 					"onSave": "none"
 				},
 				"save": {
-					"ability": "str",
+					"ability": [
+						"str"
+					],
 					"dc": {
 						"calculation": "int",
 						"formula": ""
@@ -223,7 +225,15 @@
 						"key": "flags.midi-qol.OverTime",
 						"value": "turn=end,\nsaveAbility=str,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Phantom Grasp",
 						"priority": 20,
-						"type": "add"
+						"type": "add",
+						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "grappled",
+						"phase": "final",
+						"priority": 20
 					}
 				]
 			},
@@ -236,9 +246,7 @@
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"statuses": [
-				"grappled"
-			],
+			"statuses": [],
 			"flags": {
 				"dae": {
 					"enableCondition": "",
@@ -251,25 +259,9 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!8KxLYpEVn8TsAg3i.za1lCxDKHWmICJ0M"

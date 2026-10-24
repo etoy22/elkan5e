@@ -4,7 +4,11 @@
 	"img": "icons/magic/control/hypnosis-mesmerism-watch.webp",
 	"effects": [
 		{
-			"_id": "B7caBvOF9F3db87I",
+			"_id": "modifyMemoryChrm",
+			"name": "Modify Memory",
+			"img": "modules/elkan5e/icons/conditions/charmed.svg",
+			"type": "base",
+			"transfer": false,
 			"disabled": false,
 			"duration": {
 				"value": 60,
@@ -12,57 +16,49 @@
 				"expiry": "turnStart",
 				"expired": false
 			},
-			"transfer": false,
+			"description": "",
+			"origin": null,
+			"statuses": [],
+			"tint": "#ffffff",
+			"showIcon": 0,
+			"start": null,
+			"folder": null,
 			"flags": {
 				"dae": {
-					"stackable": "none",
-					"specialDuration": [],
-					"transfer": false,
+					"stackable": "noneName",
+					"specialDuration": [
+						"isDamaged"
+					],
+					"macroRepeat": "none",
+					"durationExpression": "",
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"enableCondition": "",
-					"disableCondition": "",
 					"disableIncapacitated": false,
-					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"radius": "",
-					"aura": "None",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"displayTemp": false,
-					"wallsBlock": "system",
-					"statuses": []
+					"enableCondition": "",
+					"disableCondition": ""
 				}
 			},
-			"tint": "#ffffff",
-			"origin": null,
-			"name": "Modify Memory",
-			"description": "",
-			"statuses": [
-				"charmed",
-				"incapacitated"
-			],
-			"img": "icons/magic/control/hypnosis-mesmerism-watch.webp",
-			"type": "base",
 			"system": {
-				"changes": []
+				"magical": true,
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "charmed",
+						"phase": "final",
+						"priority": 20
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "incapacitated",
+						"phase": "final",
+						"priority": 20
+					}
+				]
 			},
-			"showIcon": 2,
-			"start": null,
-			"folder": null,
-			"_key": "!items.effects!txItvxlcpaIbIt5s.B7caBvOF9F3db87I"
+			"_key": "!items.effects!txItvxlcpaIbIt5s.modifyMemoryChrm"
 		}
 	],
 	"folder": "PnZJTE6T4UQY81Pm",
@@ -190,7 +186,7 @@
 				},
 				"effects": [
 					{
-						"_id": "B7caBvOF9F3db87I",
+						"_id": "modifyMemoryChrm",
 						"onSave": false
 					}
 				],
@@ -198,10 +194,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -210,7 +210,9 @@
 					"parts": []
 				},
 				"save": {
-					"ability": "wis",
+					"ability": [
+						"wis"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -224,9 +226,7 @@
 				"_id": "fmN8BATi6XbiXhEq",
 				"name": "",
 				"img": "",
-				"appliedEffects": [
-					"B7caBvOF9F3db87I"
-				],
+				"appliedEffects": [],
 				"effectConditionText": "!target.traits.ci.value.has('charmed')"
 			}
 		},

@@ -28,22 +28,9 @@
 					"expiryMode": "default",
 					"disableIncapacitated": false,
 					"dontApply": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": null,
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false
 				}
 			},
-			"name": "Mirror Image (3)",
+			"name": "Mirror Image Duplicate A",
 			"description": "",
 			"statuses": [],
 			"img": "icons/magic/defensive/illusion-evasion-echo-purple.webp",
@@ -51,18 +38,117 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.postDamageRollComplete",
-						"type": "custom",
-						"value": "ItemMacro",
-						"phase": "final",
+						"key": "flags.elkan5e.mirrorImages",
+						"type": "add",
+						"value": "1",
+						"phase": "initial",
 						"priority": null
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
 			"folder": null,
 			"_key": "!items.effects!PTAk4NGn6oIrRq1A.Pun0tmp3uHZpt1Lf"
+		},
+		{
+			"transfer": false,
+			"_id": "mIrRoRimAgEdup02",
+			"disabled": false,
+			"duration": {
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"origin": null,
+			"tint": "#ffffff",
+			"flags": {
+				"dae": {
+					"selfTarget": true,
+					"selfTargetAlways": false,
+					"stackable": "multi",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"enableCondition": "",
+					"disableCondition": "",
+					"expiryMode": "default",
+					"disableIncapacitated": false,
+					"dontApply": false
+				}
+			},
+			"name": "Mirror Image Duplicate B",
+			"description": "",
+			"statuses": [],
+			"img": "icons/magic/defensive/illusion-evasion-echo-purple.webp",
+			"type": "base",
+			"system": {
+				"changes": [
+					{
+						"key": "flags.elkan5e.mirrorImages",
+						"type": "add",
+						"value": "1",
+						"phase": "initial",
+						"priority": null
+					}
+				],
+				"magical": true
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
+			"_key": "!items.effects!PTAk4NGn6oIrRq1A.mIrRoRimAgEdup02"
+		},
+		{
+			"transfer": false,
+			"_id": "mIrRoRimAgEdup03",
+			"disabled": false,
+			"duration": {
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"origin": null,
+			"tint": "#ffffff",
+			"flags": {
+				"dae": {
+					"selfTarget": true,
+					"selfTargetAlways": false,
+					"stackable": "multi",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"enableCondition": "",
+					"disableCondition": "",
+					"expiryMode": "default",
+					"disableIncapacitated": false,
+					"dontApply": false
+				}
+			},
+			"name": "Mirror Image Duplicate C",
+			"description": "",
+			"statuses": [],
+			"img": "icons/magic/defensive/illusion-evasion-echo-purple.webp",
+			"type": "base",
+			"system": {
+				"changes": [
+					{
+						"key": "flags.elkan5e.mirrorImages",
+						"type": "add",
+						"value": "1",
+						"phase": "initial",
+						"priority": null
+					}
+				],
+				"magical": true
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
+			"_key": "!items.effects!PTAk4NGn6oIrRq1A.mIrRoRimAgEdup03"
 		}
 	],
 	"folder": "6J3i75lfD1J0xYwA",
@@ -204,20 +290,24 @@
 						"_id": "Pun0tmp3uHZpt1Lf"
 					},
 					{
-						"_id": "XhNRdiRd16Wt99W9"
+						"_id": "mIrRoRimAgEdup02"
 					},
 					{
-						"_id": "vJmyhcrazjatk5ss"
+						"_id": "mIrRoRimAgEdup03"
 					}
 				],
 				"range": {
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -236,8 +326,8 @@
 				"img": "",
 				"appliedEffects": [
 					"Pun0tmp3uHZpt1Lf",
-					"XhNRdiRd16Wt99W9",
-					"vJmyhcrazjatk5ss"
+					"mIrRoRimAgEdup02",
+					"mIrRoRimAgEdup03"
 				]
 			}
 		},

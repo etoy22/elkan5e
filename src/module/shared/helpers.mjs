@@ -89,12 +89,13 @@ export async function deletedItemRemovesEffect(item, itemName, effectName) {
 }
 
 /**
- * Shared helper for delete Effect Remove Effect.
+ * Deletes the first named effect only when its marker effect is absent, then deletes all
+ * effects matching the additional names. Names are localized before comparison.
  *
  * @param {*} actor - Actor document to process.
- * @param {*} effectToRemove - Effect To Remove.
- * @param {*} effectToIgnore - Effect To Ignore.
- * @param {*} additionalEffectsToRemove - Additional Effects To Remove.
+ * @param {string} effectToRemove - Localization key or name of the primary effect.
+ * @param {string} effectToIgnore - Localization key or name of the marker that prevents removal.
+ * @param {string[]} additionalEffectsToRemove - Localization keys or names removed with the primary effect.
  * @returns {Promise<void>} Promise resolution result.
  */
 export async function deleteEffectRemoveEffect(
@@ -109,9 +110,9 @@ export async function deleteEffectRemoveEffect(
 		game.i18n.localize(effect),
 	);
 
-	// Find the effect to remove
+	// Remove the effect only once its marker effect is gone (e.g. expired after an attack)
 	const effect = actor.effects.find((i) => i.name === effectToRemoveLocalized);
-	if (effect && actor.effects.find((i) => i.name !== effectToIgnoreLocalized)) {
+	if (effect && !actor.effects.some((i) => i.name === effectToIgnoreLocalized)) {
 		// Delete the effect to remove
 		await effect.delete();
 
@@ -126,81 +127,45 @@ export async function deleteEffectRemoveEffect(
 }
 
 /**
- * Shared helper for drained Effect.
+ * Drains an actor: lowers its maximum hit points until it finishes a long rest, using dnd5e's
+ * temporary max HP (which a long rest resets). Current hit points drop to fit the new maximum.
  *
- * @param {*} actor - Actor document to process.
- * @param {*} damage - Damage.
- * @param {*} name - Name value used by the operation.
- * @param {*} img - Img.
- * @param {*} uuid - Identifier value.
- * @returns {Promise<unknown>} Promise resolution result.
+ * @param {Actor} actor - Actor being drained.
+ * @param {number} damage - Hit points drained.
+ * @param {string} [_name] - Unused; kept so existing callers don't change.
+ * @param {string} [_img] - Unused; kept so existing callers don't change.
+ * @param {string} [_uuid] - Unused; kept so existing callers don't change.
+ * @param {boolean} [missing=false] - Only drain up to the hit points the actor is missing.
+ * @returns {Promise<void>}
  */
-export async function drainedEffect(actor, damage, name, img, uuid, missing = false) {
-	const effectName = name || "Drained";
-	const effectImg = img || "modules/elkan5e/icons/drained.svg";
-	const effectOrigin = uuid || null;
+export async function drainedEffect(actor, damage, _name, _img, _uuid, missing = false) {
+	const hp = actor?.system?.attributes?.hp;
+	if (!hp) return;
+	let amount = Math.abs(Number(damage) || 0);
+	// Missing HP is measured from the effective maximum, so an already-drained actor isn't overcounted.
+	const currentMax = hp.effectiveMax ?? hp.max + (hp.tempmax ?? 0);
+	if (missing) amount = Math.min(amount, Math.max(0, currentMax - hp.value));
+	if (!amount) return;
+	const tempmax = (actor._source.system.attributes.hp.tempmax ?? 0) - amount;
+	const effectiveMax = Math.max(0, hp.max + tempmax);
+	await updateActorAsGM(actor, {
+		"system.attributes.hp.tempmax": tempmax,
+		"system.attributes.hp.value": Math.min(hp.value, effectiveMax),
+	});
+}
 
-	const existingEffect = actor.effects.find(
-		(e) => e.name === effectName && e.img === effectImg && e.origin === effectOrigin,
-	);
-
-	let newValue = -Math.abs(damage); // Ensure negative number
-	if (missing) {
-		const difference = actor.system.attributes.hp.max - actor.system.attributes.hp.value;
-		if (difference <= 0) return;
-		newValue = -Math.min(difference, Math.abs(damage));
-	}
-
-	if (existingEffect) {
-		const updatedChanges = existingEffect.changes.map((change) => {
-			if (change.key === "system.attributes.hp.tempmax") {
-				// Parse the old value (as string), add newValue
-				const oldVal = parseFloat(change.value) || 0;
-				const combinedValue = oldVal + newValue;
-
-				return {
-					...change,
-					value: combinedValue.toString(),
-				};
-			}
-			return change;
-		});
-
-		await existingEffect.update({ changes: updatedChanges });
-	} else {
-		const drained = {
-			_id: foundry.utils.randomID(),
-			changes: [
-				{
-					key: "system.attributes.hp.tempmax",
-					mode: 2,
-					value: newValue.toString(),
-					priority: 20,
-				},
-			],
-			disabled: false,
-			origin: effectOrigin,
-			name: effectName,
-			img: effectImg,
-			type: "base",
-			statuses: ["drained"],
-			flags: {
-				dae: {
-					enableCondition: "",
-					disableCondition: "",
-					disableIncapacitated: false,
-					selfTarget: false,
-					selfTargetAlways: false,
-					dontApply: false,
-					stackable: "multi",
-					showIcon: false,
-					durationExpression: "",
-					macroRepeat: "none",
-				},
-			},
-		};
-		await actor.createEmbeddedDocuments("ActiveEffect", [drained]);
-	}
+/**
+ * Requests a reset of an actor's negative temporary maximum-HP adjustment.
+ *
+ * @param {Actor} actor - Actor to restore.
+ * @returns {Promise<boolean>} Whether a negative temporary maximum-HP adjustment was found
+ * and a reset requested.
+ */
+export async function restoreDrainedMaxHP(actor) {
+	const tempmax = actor?._source?.system?.attributes?.hp?.tempmax ?? 0;
+	if (tempmax >= 0) return false;
+	await updateActorAsGM(actor, { "system.attributes.hp.tempmax": 0 });
+	return true;
 }
 
 /**
@@ -310,6 +275,21 @@ export function hasSpecialTrait(actor, trait) {
 }
 
 /**
+ * Whether an actor is incorporeal (has Incorporeal Movement or an incorporeal trait).
+ *
+ * @param {Actor5e} actor - Actor to check.
+ * @returns {boolean} True if incorporeal.
+ */
+export const isIncorporeal = (actor) =>
+	Boolean(
+		actor?.items?.some(
+			(i) =>
+				i.system?.identifier === "incorporeal-movement" ||
+				/incorporeal/i.test(i.name ?? ""),
+		) || hasSpecialTrait(actor, "incorporeal"),
+	);
+
+/**
  * Shared helper for is Push Blocked.
  *
  * @param {*} actor - Actor document to process.
@@ -360,8 +340,6 @@ export function hasPushResist(actor) {
 		}),
 	);
 }
-
-export function difficultTerrainEffect() {}
 
 function randomString(length = 16) {
 	const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -446,6 +424,14 @@ export async function syncRegionLightExtras(behaviorRef, extras = {}) {
 	return true;
 }
 
+/**
+ * Deletes a region's remaining Midi-QOL lights after a brief delay for its own cleanup.
+ * Runs only for a GM; missing regions and already-deleted lights are ignored.
+ *
+ * @param {RegionDocument|string} regionRef - Region document or UUID.
+ * @returns {Promise<void>}
+ * @throws {Error} If deleting lights fails for a reason other than a missing document.
+ */
 export async function deleteRegionLights(regionRef) {
 	if (!game.user?.isGM) return;
 
@@ -460,12 +446,26 @@ export async function deleteRegionLights(regionRef) {
 	if (!lightIds.length) return;
 
 	const scene = regionDoc.parent ?? canvas.scene;
+	// midi-qol's regionLight behavior usually deletes its own light when the region goes away.
+	// Wait for that, then only delete lights that are still there, so the same light isn't
+	// deleted twice ("AmbientLight ... does not exist!").
+	await new Promise((resolve) => setTimeout(resolve, 250));
 	const existingLightIds = lightIds.filter((lightId) => scene?.lights?.has(lightId));
 	if (!existingLightIds.length) return;
 
-	await scene.deleteEmbeddedDocuments("AmbientLight", existingLightIds);
+	try {
+		await scene.deleteEmbeddedDocuments("AmbientLight", existingLightIds);
+	} catch (error) {
+		if (!String(error?.message ?? error).includes("does not exist")) throw error;
+	}
 }
 
+/**
+ * Adds Elkan push resistance, Marksman, and Undead Fortitude fields to DAE's effect editor.
+ *
+ * @param {string} _actorType - Actor type supplied by DAE; unused.
+ * @param {object} specials - Field definitions to extend in place.
+ */
 export function registerDaeSpecials(_actorType, specials) {
 	const BooleanField = foundry.data.fields.BooleanField;
 	const NumberField = foundry.data.fields.NumberField;
@@ -473,6 +473,13 @@ export function registerDaeSpecials(_actorType, specials) {
 		new BooleanField({
 			label: game.i18n.localize("elkan5e.push.effects.pushResist"),
 			hint: game.i18n.localize("elkan5e.push.effects.pushResistDescription"),
+		}),
+		CONST.ACTIVE_EFFECT_MODES.CUSTOM,
+	];
+	specials["flags.elkan5e.marksman"] = [
+		new BooleanField({
+			label: game.i18n.localize("elkan5e.feats.marksman"),
+			hint: game.i18n.localize("elkan5e.feats.marksmanHint"),
 		}),
 		CONST.ACTIVE_EFFECT_MODES.CUSTOM,
 	];
@@ -504,20 +511,36 @@ export async function handleUpdateMeasuredTemplate(template) {
 	}
 }
 
+/**
+ * Deletes lights on the current canvas linked to a deleted measured template.
+ * Already-deleted lights are ignored.
+ *
+ * @param {MeasuredTemplateDocument} template - Deleted template.
+ * @returns {Promise<void>}
+ * @throws {Error} If deleting lights fails for a reason other than a missing document.
+ */
 export async function handleDeleteMeasuredTemplate(template) {
 	const lights = canvas.lighting.placeables.filter(
 		(light) => light.document.getFlag("elkan5e", "linkedTemplate") === template.id,
 	);
 	if (!lights.length) return;
-	const ids = lights.map((light) => light.id);
-	await canvas.scene.deleteEmbeddedDocuments("AmbientLight", ids);
+	// Another cleanup (e.g. a region's light behavior) may already be deleting these lights, so
+	// re-check they still exist and ignore "does not exist" races.
+	const ids = lights.map((light) => light.id).filter((id) => canvas.scene.lights.has(id));
+	if (!ids.length) return;
+	try {
+		await canvas.scene.deleteEmbeddedDocuments("AmbientLight", ids);
+	} catch (error) {
+		if (!String(error?.message ?? error).includes("does not exist")) throw error;
+	}
 }
 
 let elkan5eSocket = null;
 
 /**
- * Registers the socketlib socket used to relay GM-only scene mutations
- * (e.g. RegionBehavior creation) from players who lack Scene ownership.
+ * Registers socketlib handlers for scene and actor mutations, item-use prompts, movement,
+ * and skill rolls on the responsible GM or owning player. Returns without registering handlers
+ * if socketlib is unavailable or module registration returns no socket.
  *
  */
 export function registerElkan5eSocket() {
@@ -533,7 +556,404 @@ export function registerElkan5eSocket() {
 		return;
 	}
 	elkan5eSocket.register("createLightRegion", applyLightRegion);
+	elkan5eSocket.register("deleteEffects", applyDeleteEffects);
+	elkan5eSocket.register("updateActor", applyActorUpdate);
+	elkan5eSocket.register("planTeleport", applyPlanTeleport);
+	elkan5eSocket.register("offerItemUse", applyOfferItemUse);
+	elkan5eSocket.register("applyDamage", applyActorDamage);
+	elkan5eSocket.register("createEffects", applyCreateEffects);
+	elkan5eSocket.register("rollSkill", applyRollSkill);
+	elkan5eSocket.register("addRegionBehavior", applyRegionBehavior);
 }
+
+/**
+ * The active non-GM owner of an actor, or the active GM when no owning player is online.
+ *
+ * @param {Actor} actor - Actor to find an owner for.
+ * @returns {User|undefined}
+ */
+const activeOwner = (actor) =>
+	game.users.find((u) => u.active && !u.isGM && actor.testUserPermission(u, "OWNER")) ??
+	game.users.activeGM;
+
+/**
+ * Asks the current user whether to use an item, and spends a use of it (and the actor's reaction,
+ * when asked and in combat) if they agree.
+ *
+ * @param {string} itemUuid - UUID of the item being offered.
+ * @param {string} content - Prompt text.
+ * @param {boolean} reaction - Whether using the item spends the actor's reaction.
+ * @returns {Promise<boolean>} Whether the item was used.
+ */
+async function applyOfferItemUse(itemUuid, content, reaction) {
+	const item = await fromUuid(itemUuid).catch(() => null);
+	if (!(item?.system.uses?.value > 0)) return false;
+	const confirmed = await foundry.applications.api.DialogV2.confirm({
+		window: { title: item.name },
+		content: `<p>${content}</p>`,
+		rejectClose: false,
+		modal: true,
+	});
+	if (!confirmed) return false;
+	await item.update({ "system.uses.spent": item.system.uses.spent + 1 });
+	if (reaction && game.combat) await globalThis.MidiQOL?.setReactionUsed?.(item.actor);
+	return true;
+}
+
+/**
+ * Offers an item to its actor's active owning player (or the GM), relaying the prompt to their
+ * client when it isn't this one.
+ *
+ * @param {Item} item - Item being offered.
+ * @param {string} content - Prompt text.
+ * @param {object} [options]
+ * @param {boolean} [options.reaction] - Whether using the item spends the actor's reaction.
+ * @returns {Promise<boolean>} Whether the item was used.
+ */
+export async function offerItemUse(item, content, { reaction = false } = {}) {
+	const actor = item?.actor;
+	if (!actor) return false;
+	const user = activeOwner(actor);
+	if (!user) return false;
+	if (user.isSelf) return applyOfferItemUse(item.uuid, content, reaction);
+	if (!elkan5eSocket) return false;
+	return elkan5eSocket.executeAsUser("offerItemUse", user.id, item.uuid, content, reaction);
+}
+
+/**
+ * Lets the current user place a token anywhere within range as a blink (teleport) move.
+ *
+ * @param {string} tokenUuid - UUID of the token to move.
+ * @param {number} maxDistance - Maximum distance in scene units.
+ * @param {string} [action] - Movement action to plan with.
+ * @returns {Promise<void>}
+ */
+async function applyPlanTeleport(tokenUuid, maxDistance, action = "blink") {
+	const tokenDoc = await fromUuid(tokenUuid).catch(() => null);
+	const token = tokenDoc?.object;
+	if (!token?.planMovement) return;
+	const plan = await token.planMovement({
+		allowedActions: [action],
+		direct: true,
+		maxDistance,
+		preventDrop: true,
+	});
+	if (plan) await tokenDoc.startMovement(plan.id);
+}
+
+/**
+ * Asks the token's active owning player (or the GM) to place the token within range.
+ *
+ * @param {TokenDocument} tokenDoc - Token to move.
+ * @param {number} maxDistance - Maximum distance in scene units.
+ * @param {string} [action] - Movement action: "blink" teleports, "displace" is a forced move.
+ * @returns {Promise<void>|null} Movement completion, or null when the token has no actor.
+ */
+export function planTeleportForOwner(tokenDoc, maxDistance, action = "blink") {
+	const actor = tokenDoc?.actor;
+	if (!actor) return null;
+	const user = activeOwner(actor);
+	if (!user || user.isSelf || !elkan5eSocket) {
+		return applyPlanTeleport(tokenDoc.uuid, maxDistance, action);
+	}
+	return elkan5eSocket.executeAsUser("planTeleport", user.id, tokenDoc.uuid, maxDistance, action);
+}
+
+/**
+ * Deletes effects from an actor, skipping any that no longer exist.
+ *
+ * @param {string} actorUuid - UUID of the actor.
+ * @param {string[]} effectIds - Ids of the effects to delete.
+ * @returns {Promise<void>}
+ */
+async function applyDeleteEffects(actorUuid, effectIds) {
+	const actor = await relayedActor(this?.socketdata, actorUuid);
+	if (!actor || !Array.isArray(effectIds)) return;
+	const ids = effectIds.filter((id) => actor.effects.has(id));
+	if (ids.length) await actor.deleteEmbeddedDocuments("ActiveEffect", ids);
+}
+
+// Actor fields, and update options, a player may change through the GM relay on an actor they
+// don't own. Anything else sent over the socket is refused.
+const RELAYED_ACTOR_FIELDS = new Set([
+	"system.attributes.hp.value",
+	"system.attributes.hp.temp",
+	"system.attributes.hp.tempmax",
+	"system.attributes.exhaustion",
+]);
+const RELAYED_UPDATE_OPTIONS = new Set(["elkan5eSpiritLink"]);
+
+/**
+ * Resolves the actor a GM-side handler acts on. Requests relayed over the socket must come from
+ * an active user and name an Actor; any other document type is refused.
+ *
+ * @param {object|undefined} socketdata - socketlib caller data; undefined when run locally.
+ * @param {string} actorUuid - UUID of the actor.
+ * @returns {Promise<Actor|null>}
+ */
+async function relayedActor(socketdata, actorUuid) {
+	if (socketdata && !game.users.get(socketdata.userId)?.active) {
+		console.warn("Elkan 5e | Refused a relayed request from an unknown user.");
+		return null;
+	}
+	const doc = typeof actorUuid === "string" ? await fromUuid(actorUuid).catch(() => null) : null;
+	if (doc?.documentName === "Actor") return doc;
+	if (socketdata)
+		console.warn(`Elkan 5e | Refused a relayed request for non-actor ${actorUuid}.`);
+	return null;
+}
+
+/**
+ * Applies an update to an actor. Relayed updates may only change RELAYED_ACTOR_FIELDS.
+ *
+ * @param {string} actorUuid - UUID of the actor.
+ * @param {object} data - Update data.
+ * @param {object} [options={}] - Options forwarded to the actor update, including recursion guards.
+ * @returns {Promise<void>}
+ * @throws {Error} If the resolved actor's update fails; UUID lookup failures are ignored.
+ */
+async function applyActorUpdate(actorUuid, data, options = {}) {
+	const socketdata = this?.socketdata;
+	const actor = await relayedActor(socketdata, actorUuid);
+	if (!actor) return;
+	if (socketdata) {
+		const keys = Object.keys(foundry.utils.flattenObject(data ?? {}));
+		const optionKeys = Object.keys(options ?? {});
+		const refused = [
+			...keys.filter((k) => !RELAYED_ACTOR_FIELDS.has(k)),
+			...optionKeys.filter((k) => !RELAYED_UPDATE_OPTIONS.has(k)),
+		];
+		if (!keys.length || refused.length) {
+			console.warn(`Elkan 5e | Refused a relayed update to ${actor.name}:`, refused);
+			return;
+		}
+	}
+	await actor.update(data, options);
+}
+
+/**
+ * Runs a GM-only mutation locally when the current user owns the actor, otherwise relays it to the GM.
+ *
+ * @param {string} handler - Registered socket handler name.
+ * @param {Function} local - Local implementation.
+ * @param {Actor} actor - Actor being mutated.
+ * @param {...*} args - Extra handler arguments.
+ * @returns {Promise<*>|null} Handler result, or null after a warning if a GM relay is needed
+ * but socketlib is unavailable.
+ */
+function runForActor(handler, local, actor, ...args) {
+	if (actor.isOwner) return local(actor.uuid, ...args);
+	if (!elkan5eSocket) {
+		ui.notifications.warn(
+			`Elkan 5e | You don't own ${actor.name}, and socketlib isn't available to ask the GM.`,
+		);
+		return null;
+	}
+	return elkan5eSocket.executeAsGM(handler, actor.uuid, ...args);
+}
+
+/**
+ * Deletes effects from an actor, relaying to the GM if the user doesn't own it.
+ *
+ * @param {Actor} actor - Actor to clear.
+ * @param {ActiveEffect[]} effects - Effects on that actor to delete.
+ * @returns {Promise<void>|null} Mutation completion, or null after a warning when the user
+ * lacks ownership and socketlib is unavailable.
+ * @throws {Error} If the local mutation or GM relay fails.
+ */
+export function deleteEffects(actor, effects) {
+	return runForActor(
+		"deleteEffects",
+		applyDeleteEffects,
+		actor,
+		effects.map((e) => e.id),
+	);
+}
+
+/**
+ * The effects giving an actor one of the given conditions. A condition switched on by another
+ * effect's macro.StatusEffect is returned as that effect, so ending it doesn't leave the source
+ * behind.
+ *
+ * @param {Actor} actor - Actor to search.
+ * @param {string[]} statusIds - Status ids to look for.
+ * @returns {ActiveEffect[]}
+ */
+export function conditionSources(actor, statusIds) {
+	const effects = new Set();
+	for (const e of actor?.effects ?? []) {
+		if (e.disabled || !statusIds.some((id) => e.statuses?.has(id))) continue;
+		const dependentOn = e.getFlag("dnd5e", "dependentOn");
+		const source = dependentOn ? fromUuidSync(dependentOn, { strict: false }) : null;
+		effects.add(source?.parent === actor ? source : e);
+	}
+	return [...effects];
+}
+
+/**
+ * Requests removal of enabled condition-source effects from an actor, relaying to the GM
+ * if the user doesn't own it. Also resets negative temporary maximum HP when removing Drained.
+ *
+ * @param {Actor} actor - Actor to clear.
+ * @param {string[]} statusIds - Status ids to remove.
+ * @returns {Promise<string[]>} Names selected for removal, plus "Drained" if a maximum-HP reset
+ * was requested. A missing GM relay can prevent changes without rejecting the promise.
+ */
+export async function removeStatuses(actor, statusIds) {
+	const effects = conditionSources(actor, statusIds);
+	if (effects.length) await deleteEffects(actor, effects);
+	const removed = effects.map((e) => e.name);
+	if (
+		statusIds.includes("drained") &&
+		(await restoreDrainedMaxHP(actor)) &&
+		!removed.includes("Drained")
+	) {
+		removed.push("Drained");
+	}
+	return removed;
+}
+
+/**
+ * Updates an actor, relaying to the GM if the user doesn't own it.
+ *
+ * @param {Actor} actor - Actor to update.
+ * @param {object} data - Update data.
+ * @param {object} [options] - Update options passed to the update.
+ * @returns {Promise<void>|null} Mutation completion, or null after a warning when the user
+ * lacks ownership and socketlib is unavailable.
+ * @throws {Error} If the local mutation or GM relay fails.
+ */
+export function updateActorAsGM(actor, data, options = {}) {
+	return runForActor("updateActor", applyActorUpdate, actor, data, options);
+}
+
+/**
+ * Applies damage or healing to an actor.
+ *
+ * @param {string} actorUuid - UUID of the actor.
+ * @param {object[]} damages - dnd5e damage descriptions ({ value, type }).
+ * @returns {Promise<void>}
+ */
+async function applyActorDamage(actorUuid, damages) {
+	const actor = await relayedActor(this?.socketdata, actorUuid);
+	if (!actor || !Array.isArray(damages)) return;
+	await actor.applyDamage(damages);
+}
+
+/**
+ * Applies damage or healing to an actor, relaying to the GM if the user doesn't own it.
+ *
+ * @param {Actor} actor - Actor to damage or heal.
+ * @param {object[]} damages - dnd5e damage descriptions ({ value, type }).
+ * @returns {Promise<void>|null} Mutation completion, or null after a warning when the user
+ * lacks ownership and socketlib is unavailable.
+ * @throws {Error} If the local mutation or GM relay fails.
+ */
+export function applyDamageAsGM(actor, damages) {
+	return runForActor("applyDamage", applyActorDamage, actor, damages);
+}
+
+/**
+ * Creates effects on an actor.
+ *
+ * @param {string} actorUuid - UUID of the actor.
+ * @param {object[]} effects - ActiveEffect create data.
+ * @returns {Promise<void>}
+ */
+async function applyCreateEffects(actorUuid, effects) {
+	const actor = await relayedActor(this?.socketdata, actorUuid);
+	if (!actor || !Array.isArray(effects)) return;
+	await actor.createEmbeddedDocuments("ActiveEffect", effects);
+}
+
+/**
+ * Creates effects on an actor, relaying to the GM if the user doesn't own it.
+ *
+ * @param {Actor} actor - Actor to receive the effects.
+ * @param {object[]} effects - ActiveEffect create data.
+ * @returns {Promise<void>|null} Mutation completion, or null after a warning when the user
+ * lacks ownership and socketlib is unavailable.
+ * @throws {Error} If the local mutation or GM relay fails.
+ */
+export function createEffectsAsGM(actor, effects) {
+	return runForActor("createEffects", applyCreateEffects, actor, effects);
+}
+
+/**
+ * Rolls a skill check for an actor without a configuration dialog.
+ *
+ * @param {string} actorUuid - UUID of the actor.
+ * @param {string} skill - Skill id.
+ * @param {boolean} advantage - Whether the check has advantage.
+ * @param {string} [flavor] - Chat flavor text.
+ * @returns {Promise<number|null>} The roll total.
+ */
+async function applyRollSkill(actorUuid, skill, advantage, flavor) {
+	const actor = await fromUuid(actorUuid).catch(() => null);
+	const rolls = await actor?.rollSkill(
+		{ skill, advantage },
+		{ configure: false },
+		flavor ? { data: { flavor } } : {},
+	);
+	return rolls?.[0]?.total ?? null;
+}
+
+/**
+ * Has an actor's active owning player (or the GM) roll one of its skill checks.
+ *
+ * @param {Actor} actor - Actor rolling.
+ * @param {string} skill - Skill id.
+ * @param {object} [options]
+ * @param {boolean} [options.advantage] - Whether the check has advantage.
+ * @param {string} [options.flavor] - Chat flavor text.
+ * @returns {Promise<number|null>} The roll total.
+ */
+export function rollSkillForOwner(actor, skill, { advantage = false, flavor } = {}) {
+	const user = activeOwner(actor);
+	if (!user || user.isSelf || !elkan5eSocket) {
+		return applyRollSkill(actor.uuid, skill, advantage, flavor);
+	}
+	return elkan5eSocket.executeAsUser("rollSkill", user.id, actor.uuid, skill, advantage, flavor);
+}
+
+/**
+ * Identifies the current combat, round, and turn for once-per-turn feature flags.
+ * Requires an active `game.combat` document.
+ *
+ * @returns {string} Current turn key.
+ */
+const combatTurnKey = () => `${game.combat.id}-${game.combat.round + game.combat.turn / 100}`;
+
+/**
+ * Checks whether a once-per-turn feature was already used this turn. Always false outside combat.
+ *
+ * @param {Actor} actor - Actor using the feature.
+ * @param {string} flag - Flag key that stores the last turn it was used.
+ * @returns {boolean}
+ */
+export const usedThisTurn = (actor, flag) =>
+	Boolean(game.combat) && actor.getFlag("elkan5e", flag) === combatTurnKey();
+
+/**
+ * Records that a once-per-turn feature was used this turn. Does nothing outside combat.
+ *
+ * @param {Actor} actor - Actor using the feature.
+ * @param {string} flag - Flag key that stores the last turn it was used.
+ * @returns {Promise<void>}
+ */
+export async function markUsedThisTurn(actor, flag) {
+	if (game.combat) await actor.setFlag("elkan5e", flag, combatTurnKey());
+}
+
+/**
+ * Gets the token actors the current user is targeting.
+ *
+ * @returns {Actor[]} Targeted actors.
+ */
+export const targetedActors = () =>
+	Array.from(game.user?.targets ?? [])
+		.map((token) => token.actor)
+		.filter(Boolean);
 
 /**
  * Creates or updates a `midi-qol.regionLight` behavior on the given region.
@@ -568,15 +988,6 @@ async function applyLightRegion(regionUuid, config, name = "Midi Region Light") 
 	const storedExtras = existingBehavior?.getFlag("elkan5e", "lightExtras") ?? {};
 	const extras = { ...storedExtras, ...newExtras };
 
-	// Only dim/bright/color/alpha/luminosity/animation* are part of midi-qol's
-	// regionLight behavior schema; everything else the caller wants on the
-	// resulting light (sort, negative, priority, angle, darkness range, walls,
-	// elevation, rotation, vision) must be stashed as a flag here and pushed
-	// onto the AmbientLight by syncRegionLightExtras below — midi-qol silently
-	// drops unknown system fields, and the light itself often doesn't exist
-	// yet at this point (it's only created once the GM's canvas actually
-	// views the region), so the flag is what lets the createRegionBehavior /
-	// updateRegionBehavior hooks in elkan5e.mjs re-apply it once it does.
 	const behaviorData = {
 		_id: behaviorId,
 		name,
@@ -639,4 +1050,102 @@ export async function createLightRegion(regionRef, config, name = "Midi Region L
 	}
 
 	return elkan5eSocket.executeAsGM("createLightRegion", regionUuid, config, name);
+}
+
+// Region behaviors a player may ask the GM to add, by key. The relay only takes the key, never
+// behavior data, so it can't be used to add arbitrary scripts.
+const RELAYED_REGION_BEHAVIORS = {
+	spikeGrowth: {
+		name: "Spike Growth — Movement Damage",
+		type: "executeScript",
+		system: {
+			events: ["tokenMoveWithin"],
+			source: "await elkan5e.macros.spells.spikeGrowthMove(event, region);",
+		},
+	},
+};
+
+/**
+ * Adds one of RELAYED_REGION_BEHAVIORS to a region, unless it already has it.
+ *
+ * @param {string} regionUuid - UUID of the region.
+ * @param {string} key - Key in RELAYED_REGION_BEHAVIORS.
+ * @returns {Promise<void>}
+ */
+async function applyRegionBehavior(regionUuid, key) {
+	const data = Object.hasOwn(RELAYED_REGION_BEHAVIORS, key)
+		? RELAYED_REGION_BEHAVIORS[key]
+		: null;
+	const region =
+		typeof regionUuid === "string" ? await fromUuid(regionUuid).catch(() => null) : null;
+	if (!data || region?.documentName !== "Region") return;
+	if (region.behaviors.some((b) => b.name === data.name)) return;
+	await region.createEmbeddedDocuments("RegionBehavior", [foundry.utils.deepClone(data)]);
+}
+
+/**
+ * Adds one of RELAYED_REGION_BEHAVIORS to a region, relaying to the GM when the user can't
+ * change the scene.
+ *
+ * @param {RegionDocument|string} regionRef - Region or its UUID.
+ * @param {string} key - Key in RELAYED_REGION_BEHAVIORS.
+ * @returns {Promise<void>}
+ */
+export async function addRegionBehaviorAsGM(regionRef, key) {
+	const regionUuid = typeof regionRef === "string" ? regionRef : regionRef?.uuid;
+	if (!regionUuid) return;
+	if (game.user?.isGM) return applyRegionBehavior(regionUuid, key);
+	if (!elkan5eSocket) {
+		ui.notifications.warn(
+			"Elkan 5e | A GM must be online to apply this region effect (socketlib unavailable).",
+		);
+		return;
+	}
+	return elkan5eSocket.executeAsGM("addRegionBehavior", regionUuid, key);
+}
+
+/**
+ * Returns a copy of a set of tokens without the given tokens, matched by document uuid.
+ *
+ * @param {Iterable<Token>} tokens - Tokens to filter.
+ * @param {Token[]} remove - Tokens to leave out.
+ * @returns {Set<Token>}
+ */
+export function withoutTokens(tokens, remove) {
+	const uuids = new Set(remove.map((t) => t?.document?.uuid ?? t?.uuid));
+	return new Set([...(tokens ?? [])].filter((t) => !uuids.has(t?.document?.uuid ?? t?.uuid)));
+}
+
+/**
+ * Removes creatures from a midi-qol workflow so they don't roll saves or take its damage or
+ * effects. Midi-QOL rebuilds its target sets from stored uuids (and can re-read the user's
+ * targets) later in the workflow, so the tokens are also untargeted and remembered on the
+ * workflow; {@link enforceExcludedTargets} removes them again before saves.
+ *
+ * @param {object} workflow - MIDI-QOL workflow.
+ * @param {Token[]} tokens - Tokens to exclude.
+ * @returns {void}
+ */
+export function excludeTargets(workflow, tokens) {
+	if (!workflow || !tokens?.length) return;
+	workflow.elkan5eExcludedTargets = [...(workflow.elkan5eExcludedTargets ?? []), ...tokens];
+	for (const token of tokens) {
+		const placeable = token?.object ?? token;
+		if (placeable?.isTargeted) placeable.setTarget(false, { releaseOthers: false });
+	}
+	enforceExcludedTargets(workflow);
+}
+
+/**
+ * Re-applies {@link excludeTargets} to a workflow's target sets.
+ *
+ * @param {object} workflow - MIDI-QOL workflow.
+ * @returns {void}
+ */
+export function enforceExcludedTargets(workflow) {
+	const excluded = workflow?.elkan5eExcludedTargets;
+	if (!excluded?.length) return;
+	for (const key of ["targets", "hitTargets", "hitTargetsEC", "failedSaves"]) {
+		if (workflow[key]) workflow[key] = withoutTokens(workflow[key], excluded);
+	}
 }

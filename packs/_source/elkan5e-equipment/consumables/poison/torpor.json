@@ -152,7 +152,7 @@
 		"identifier": "torpor",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"license": "",
 			"book": "",
 			"page": "",
@@ -208,10 +208,17 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.movement.all",
-						"value": "/2",
+						"key": "system.attributes.movement.multiplier",
+						"value": "0.5",
 						"priority": 20,
-						"type": "custom"
+						"type": "multiply"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "poisoned",
+						"phase": "final",
+						"priority": 20
 					}
 				]
 			},
@@ -224,9 +231,7 @@
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"statuses": [
-				"poisoned"
-			],
+			"statuses": [],
 			"flags": {
 				"dae": {
 					"enableCondition": "",
@@ -239,23 +244,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "All",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"showIcon": 2,

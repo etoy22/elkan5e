@@ -135,10 +135,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -165,7 +169,9 @@
 					]
 				},
 				"save": {
-					"ability": "con",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -175,7 +181,21 @@
 					"spent": 0,
 					"recovery": []
 				},
-				"_id": "6CglntOs3vQiTNtB"
+				"_id": "6CglntOs3vQiTNtB",
+				"behaviors": [
+					{
+						"name": "",
+						"_id": "n6AK5eWWz0jSZxIR",
+						"type": "difficultTerrain",
+						"config": {
+							"types": []
+						},
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				]
 			},
 			"5KPgcT9vJMhlM3uI": {
 				"type": "utility",
@@ -205,10 +225,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},

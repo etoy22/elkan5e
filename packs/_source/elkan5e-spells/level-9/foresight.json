@@ -22,19 +22,6 @@
 					"stackable": "none",
 					"durationExpression": "",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": null,
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false
 				}
 			},
 			"name": "Foresight",
@@ -51,12 +38,31 @@
 						"type": "override"
 					},
 					{
-						"key": "flags.midi-qol.advantage.all",
-						"value": 1,
+						"key": "system.rolls.attack.mode",
+						"value": "1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
+					},
+					{
+						"key": "system.rolls.ability.check.mode",
+						"value": "1",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.rolls.ability.save.mode",
+						"value": "1",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.ci.value",
+						"value": "surprised",
+						"priority": 20,
+						"type": "add"
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
@@ -97,7 +103,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><strong>Buff</strong></p><ul><li><p>The target cannot be &amp;reference[surprised].</p></li><li><p>The target has Advantage on all &amp;reference[Attack Rolls], &amp;reference[Ability Check]{Ability Checks}, and &amp;reference[Saving Throw]{Saving Throws}.</p></li><li><p>Other creatures have Disadvantage on attack rolls against the target.</p></li></ul><p><em>This spell immediately ends if you cast it again before its duration ends.</em></p>",
+			"value": "<p><strong>Buff</strong></p><ul><li><p>The target cannot be &amp;reference[surprised].</p></li><li><p>The target has Advantage on all &amp;reference[Attack Rolls], &amp;reference[Ability Check]{Ability Checks}, and &amp;reference[Saving Throw]{Saving Throws}.</p></li><li><p>Other creatures have Disadvantage on &amp;reference[attackrolls]{attack rolls} against the target.</p></li></ul><p><em>This spell immediately ends if you cast it again before its duration ends.</em></p>",
 			"chat": ""
 		},
 		"source": {
@@ -190,10 +196,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},

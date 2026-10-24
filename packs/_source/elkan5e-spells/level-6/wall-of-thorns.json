@@ -137,10 +137,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -167,7 +171,9 @@
 					]
 				},
 				"save": {
-					"ability": "dex",
+					"ability": [
+						"dex"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -177,7 +183,119 @@
 					"spent": 0,
 					"recovery": []
 				},
-				"_id": "wZnYym5sPxMehKx1"
+				"_id": "wZnYym5sPxMehKx1",
+				"regionBehavior": {
+					"enabled": true,
+					"dispositionFilter": -1,
+					"excludeSource": true,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"attachToken": "default",
+					"templateOrigin": "default",
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "wallOfThornsDamage"
+						},
+						{
+							"trigger": "turnStart",
+							"action": "useActivity",
+							"targetId": "wallOfThornsDamage"
+						}
+					]
+				}
+			},
+			"9y1vsIjRL31zTzR4": {
+				"type": "save",
+				"activation": {
+					"type": "",
+					"value": null,
+					"override": true,
+					"condition": ""
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"type": "",
+						"units": "ft",
+						"stationary": false
+					},
+					"affects": {
+						"type": "self"
+					},
+					"override": true
+				},
+				"damage": {
+					"onSave": "half",
+					"parts": [
+						{
+							"number": 7,
+							"denomination": 8,
+							"bonus": "",
+							"types": [
+								"piercing"
+							],
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"scaling": {
+								"mode": "whole",
+								"number": 1,
+								"formula": ""
+							}
+						}
+					]
+				},
+				"save": {
+					"ability": [
+						"dex"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": []
+				},
+				"_id": "9y1vsIjRL31zTzR4",
+				"name": "Wall of Thorns Damage",
+				"behaviors": [],
+				"midiProperties": {
+					"identifier": "wallOfThornsDamage",
+					"automationOnly": true,
+					"confirmTargets": "never"
+				},
+				"isOverTimeFlag": true,
+				"overTimeProperties": {
+					"turnChoice": "start",
+					"saveRemoves": false
+				}
 			}
 		},
 		"identifier": "wall-of-thorns"

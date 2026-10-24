@@ -18,29 +18,14 @@
 					"dontApply": false,
 					"enableCondition": "",
 					"disableCondition": "",
-					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"radius": "",
-					"aura": "None",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"displayTemp": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
+					"expiryMode": "default",
+					"phaseStamped": true
 				}
 			},
 			"duration": {
 				"value": 60,
 				"units": "seconds",
-				"expiry": "sourceEnd",
+				"expiry": "turnStart",
 				"expired": false
 			},
 			"transfer": false,
@@ -55,36 +40,64 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.bonuses.abilities.save",
+						"key": "system.rolls.ability.save.bonus",
+						"type": "add",
 						"value": "-1d4",
+						"phase": "initial",
 						"priority": null,
-						"type": "add"
+						"_id": "XW0TIkn0W3xeNk41",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
-						"key": "system.bonuses.mwak.attack",
+						"key": "system.rolls.attack.mwak.bonus",
+						"type": "add",
 						"value": "-1d4",
+						"phase": "initial",
 						"priority": null,
-						"type": "add"
+						"_id": "AUT74uLycgJRhxBA",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
-						"key": "system.bonuses.msak.attack",
+						"key": "system.rolls.attack.msak.bonus",
+						"type": "add",
 						"value": "-1d4",
+						"phase": "initial",
 						"priority": null,
-						"type": "add"
+						"_id": "6qIdOrAfsIkvkaL9",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
-						"key": "system.bonuses.rsak.attack",
+						"key": "system.rolls.attack.rsak.bonus",
+						"type": "add",
 						"value": "-1d4",
+						"phase": "initial",
 						"priority": null,
-						"type": "add"
+						"_id": "BYXkgtae2wKk8fwv",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
-						"key": "system.bonuses.rwak.attack",
+						"key": "system.rolls.attack.rwak.bonus",
+						"type": "add",
 						"value": "-1d4",
+						"phase": "initial",
 						"priority": null,
-						"type": "add"
+						"_id": "JFwB182746yzOMdd",
+						"conditions": "{}",
+						"replacement": ""
+					},
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end,\nsaveAbility=cha,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Bane",
+						"priority": 20,
+						"type": "add",
+						"replacement": "origin"
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
@@ -158,7 +171,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>Holding out a holy or profane symbol, you call upon its power to condemn or weaken your targets.</em></p><p><strong>[[/save cha]]{Charisma Save}</strong></p><ul><li><p><strong>Failure:</strong> The target must subtract [[/r 1d4]] from all attack rolls and saving throws for the duration, rolling 1d4 again for every roll. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 1st.</p>",
+			"value": "<p><em>Holding out a holy or profane symbol, you call upon its power to condemn or weaken your targets.</em></p><p><strong>[[/save cha]]{Charisma Save}</strong></p><ul><li><p><strong>Failure:</strong> The target must subtract [[/r 1d4]] from all &amp;reference[attackrolls]{attack rolls} and &amp;reference[savingthrow]{saving throws} for the duration, rolling 1d4 again for every roll. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 1st.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -254,10 +267,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -271,7 +288,9 @@
 					"onSave": "none"
 				},
 				"save": {
-					"ability": "cha",
+					"ability": [
+						"cha"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""

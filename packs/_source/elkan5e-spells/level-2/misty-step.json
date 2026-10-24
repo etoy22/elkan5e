@@ -115,7 +115,7 @@
 		"activities": {
 			"dnd5eactivity000": {
 				"_id": "dnd5eactivity000",
-				"type": "utility",
+				"type": "teleport",
 				"activation": {
 					"type": "action",
 					"value": null,
@@ -142,10 +142,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -154,11 +158,10 @@
 					"max": "",
 					"recovery": []
 				},
-				"roll": {
-					"formula": "",
-					"name": "",
-					"prompt": false,
-					"visible": false
+				"teleport": {
+					"override": true,
+					"units": "ft",
+					"value": "30"
 				}
 			}
 		},

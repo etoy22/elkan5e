@@ -8,9 +8,7 @@
 			"flags": {
 				"dae": {
 					"stackable": "none",
-					"specialDuration": [
-						"turnEndSource"
-					],
+					"specialDuration": [],
 					"transfer": false,
 					"macroRepeat": "none",
 					"durationExpression": "",
@@ -20,30 +18,13 @@
 					"disableIncapacitated": false,
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"radius": "",
-					"aura": "None",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"displayTemp": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"disabled": false,
 			"duration": {
-				"value": 7,
-				"units": "seconds",
-				"expiry": "turnStart",
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
 				"expired": false
 			},
 			"origin": "Actor.MTJhNTdkNDlhNTI4.Item.undefined",
@@ -57,12 +38,15 @@
 			"system": {
 				"changes": [
 					{
-						"key": "macro.execute",
-						"value": "Compendium.elkan5e.elkan5e-macros.Macro.SKnbzS7hWXWrTyk1",
+						"key": "system.attributes.ac.bonus",
+						"value": "min(@spellLevel + 2, 5)",
+						"type": "add",
+						"phase": "initial",
 						"priority": 20,
-						"type": "custom"
+						"replacement": "origin"
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
@@ -77,7 +61,6 @@
 			"effectActivation": false,
 			"forceCEOff": false,
 			"itemCondition": "",
-			"reactionCondition": "reaction === 'isHit'",
 			"otherCondition": "",
 			"effectCondition": "",
 			"rollAttackPerTarget": "default",
@@ -226,7 +209,7 @@
 					"formula": ""
 				},
 				"name": "",
-				"useConditionText": "",
+				"useConditionText": "reaction === 'isHit' || item.identifier === 'magic-missile'",
 				"effectConditionText": "",
 				"macroData": {
 					"name": "",

@@ -21,22 +21,6 @@
 					"expiryMode": "default",
 					"disableIncapacitated": false,
 					"dontApply": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"radius": "",
-					"aura": "None",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"displayTemp": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"disabled": false,
@@ -57,12 +41,13 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.advantage.attack.all",
-						"value": 1,
+						"key": "system.rolls.attack.mode",
+						"value": "1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
@@ -106,7 +91,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You say a magic phrase to allow you or an ally to peer briefly into the immediate future, gaining insight into your enemy's defenses.</em></p><p><strong>Buff</strong></p><ul><li><p>Target has advantage on all attack rolls.</p></li></ul>",
+			"value": "<p><em>You say a magic phrase to allow you or an ally to peer briefly into the immediate future, gaining insight into your enemy's defenses.</em></p><p><strong>Buff</strong></p><ul><li><p>Target has advantage on all &amp;reference[attackrolls]{attack rolls}.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -200,10 +185,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},

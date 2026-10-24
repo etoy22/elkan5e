@@ -98,10 +98,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -115,7 +119,9 @@
 					"onSave": "none"
 				},
 				"save": {
-					"ability": "wis",
+					"ability": [
+						"wis"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -150,23 +156,6 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"img": "icons/creatures/magical/spirit-fear-energy-pink.webp",
@@ -175,12 +164,20 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.disadvantage.concentration",
-						"value": 1,
+						"key": "system.attributes.concentration.roll.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "frightened",
+						"phase": "final",
+						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -191,9 +188,7 @@
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"statuses": [
-				"frightened"
-			],
+			"statuses": [],
 			"showIcon": 2,
 			"start": null,
 			"folder": null,

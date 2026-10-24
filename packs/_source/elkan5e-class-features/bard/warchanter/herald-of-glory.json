@@ -125,7 +125,7 @@
 		"identifier": "warchant-copy",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
 			"custom": "elkan5e.com/bard",
@@ -142,7 +142,7 @@
 		"properties": [
 			"mgc"
 		],
-		"requirements": "Warchanter 3",
+		"requirements": "Warchanter 14",
 		"type": {
 			"value": "subclass",
 			"subtype": ""
@@ -158,24 +158,25 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.bonuses.weapon.attack",
+						"key": "system.rolls.attack.weapon.bonus",
 						"value": "1@scale.bard.inspiration",
 						"priority": 20,
 						"type": "add"
 					},
 					{
-						"key": "system.bonuses.weapon.damage",
+						"key": "system.rolls.damage.weapon.bonus",
 						"value": "@scale.warchanter.warchant-damage-dice(@scale.bard.inspiration)",
 						"priority": 20,
 						"type": "add"
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
-				"value": 7,
+				"value": null,
 				"units": "seconds",
-				"expiry": "turnStart",
+				"expiry": "sourceEnd",
 				"expired": false
 			},
 			"description": "",
@@ -189,30 +190,11 @@
 					"stackable": "multi",
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"turnEndSource"
-					],
+					"specialDuration": [],
 					"enableCondition": "",
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"start": null,

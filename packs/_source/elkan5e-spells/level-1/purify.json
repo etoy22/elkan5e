@@ -13,11 +13,12 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.grants.advantage.save.all",
-						"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"poisoned\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"poisoned\") || ef.name == 'Poisoned' || ef.statuses?.has(\"diseased\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"diseased\") || ef.name == 'Diseased')",
+						"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"poisoned\") || ef.system?.rider?.statuses?.has(\"poisoned\") || ef.name == 'Poisoned' || ef.statuses?.has(\"diseased\") || ef.system?.rider?.statuses?.has(\"diseased\") || ef.name == 'Diseased')",
 						"priority": 20,
 						"type": "custom"
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -42,23 +43,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"start": null,
@@ -201,10 +185,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -259,10 +247,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},

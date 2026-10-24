@@ -384,11 +384,13 @@
 				"bonus": ""
 			},
 			"movement": {
-				"burrow": null,
-				"climb": null,
-				"fly": null,
-				"swim": null,
-				"walk": 30,
+				"speeds": {
+					"walk": 30,
+					"burrow": null,
+					"climb": null,
+					"fly": null,
+					"swim": null
+				},
 				"units": null,
 				"hover": false
 			},
@@ -396,10 +398,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": null,
-				"blindsight": null,
-				"tremorsense": null,
-				"truesight": null,
+				"ranges": {
+					"darkvision": null,
+					"blindsight": null,
+					"tremorsense": null,
+					"truesight": null
+				},
 				"units": null,
 				"special": ""
 			},
@@ -632,7 +636,7 @@
 				"source": {
 					"custom": "elkan5e.com/spells/flaming-sphere",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -730,7 +734,9 @@
 							]
 						},
 						"save": {
-							"ability": "dex",
+							"ability": [
+								"dex"
+							],
 							"dc": {
 								"calculation": "spellcasting",
 								"formula": ""
@@ -792,7 +798,7 @@
 					"chat": ""
 				},
 				"source": {
-					"rules": "2024",
+					"rules": "",
 					"revision": 1,
 					"book": "Elkan 5e"
 				},
@@ -808,7 +814,9 @@
 				"prerequisites": {
 					"level": null
 				},
-				"properties": [],
+				"properties": [
+					"trait"
+				],
 				"requirements": "",
 				"identifier": "intangible",
 				"activities": {},
@@ -849,7 +857,7 @@
 				},
 				"source": {
 					"custom": "",
-					"rules": "2024",
+					"rules": "",
 					"revision": 1,
 					"book": "Elkan 5e"
 				},
@@ -865,7 +873,9 @@
 				"prerequisites": {
 					"level": null
 				},
-				"properties": [],
+				"properties": [
+					"trait"
+				],
 				"requirements": "",
 				"identifier": "death-burst",
 				"activities": {},

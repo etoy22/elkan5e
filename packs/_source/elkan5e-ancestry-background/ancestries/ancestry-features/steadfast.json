@@ -13,16 +13,16 @@
 		},
 		"advancement": {},
 		"description": {
-			"value": "<p>You have advantage on saving throws against the &amp;reference[frightened] condition.</p>",
+			"value": "<p>You have advantage on &amp;reference[savingthrow]{saving throws} against the &amp;reference[frightened apply=false] condition.</p>",
 			"chat": ""
 		},
 		"identifier": "steadfast",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
-			"custom": "elkan5e.com/ancestrybackground",
+			"custom": "elkan5e.com/ancestry",
 			"license": ""
 		},
 		"crewed": false,
@@ -32,7 +32,9 @@
 			"repeatable": false,
 			"level": null
 		},
-		"properties": [],
+		"properties": [
+			"trait"
+		],
 		"requirements": "Aasimar",
 		"type": {
 			"value": "",
@@ -51,9 +53,12 @@
 					{
 						"key": "flags.midi-qol.advantage.ability.save.all",
 						"type": "custom",
-						"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"frightened\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"frightened\") || ef.name == 'Frightened');",
+						"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"frightened\") || ef.system?.rider?.statuses?.has(\"frightened\") || ef.name == 'Frightened');",
 						"phase": "initial",
-						"priority": null
+						"priority": null,
+						"_id": "YlEQKPYDPkj2iwoN",
+						"conditions": "{}",
+						"replacement": ""
 					}
 				]
 			},
@@ -79,7 +84,8 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"disableIncapacitated": false,
-					"specialDuration": []
+					"specialDuration": [],
+					"phaseStamped": true
 				}
 			},
 			"_key": "!items.effects!QxAavGTGf3UHLUBs.83oEuVi0LtQAg8Tm"

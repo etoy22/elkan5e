@@ -11,7 +11,8 @@
 			"_id": "8FFE4c5PuHICu3kz",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -35,22 +36,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"start": null,
@@ -95,7 +80,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You call upon the power of disguise, and an illusory appearance settles over those you choose in your proximity.</em></p><p><strong>Illusory Image</strong></p><p>Roll an &amp;Reference[illusoryimages]{illusion check} for this spell.</p><ul><li><p>Each target you choose gets a new, illusory appearance. These can be unique or identical. The disguises include clothing, armor, weapons, and other belongings. Affected creatures can seem up to 1 foot shorter or taller but must otherwise remain in their size category. They must have the same basic arrangement of limbs. Otherwise, the extent of the illusion is up to you.</p></li><li><p>An unwilling target must make a Charisma save:</p></li></ul><p><strong>[[/save charisma]]{Charisma Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is affected by the illusion.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"value": "<p><em>You call upon the power of disguise, and an illusory appearance settles over those you choose in your proximity.</em></p><p><strong>Illusory Image</strong></p><p>Roll an &amp;reference[illusoryimages]{illusion check} for this spell.</p><ul><li><p>Each target you choose gets a new, illusory appearance. These can be unique or identical. The disguises include clothing, armor, weapons, and other belongings. Affected creatures can seem up to 1 foot shorter or taller but must otherwise remain in their size category. They must have the same basic arrangement of limbs. Otherwise, the extent of the illusion is up to you.</p></li><li><p>An unwilling target must make a Charisma save:</p></li></ul><p><strong>[[/save charisma]]{Charisma Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is affected by the illusion.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -189,10 +174,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -201,7 +190,9 @@
 					"parts": []
 				},
 				"save": {
-					"ability": "cha",
+					"ability": [
+						"cha"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""

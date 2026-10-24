@@ -37,54 +37,13 @@
 			"img": "icons/magic/symbols/mask-yellow-orange.webp",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
 			"folder": null,
 			"_key": "!items.effects!u3P0ZaZDFF06QsAy.dBqSu3oo9ohtwG39"
-		},
-		{
-			"_id": "sgSlowedEffect01",
-			"disabled": false,
-			"duration": {
-				"value": null,
-				"units": "seconds",
-				"expiry": null,
-				"expired": false
-			},
-			"origin": "Compendium.elkan5e.elkan5e-spells.Item.u3P0ZaZDFF06QsAy",
-			"transfer": false,
-			"flags": {
-				"dae": {
-					"stackable": "none",
-					"macroRepeat": "none",
-					"specialDuration": [],
-					"transfer": false,
-					"dontApply": true
-				}
-			},
-			"tint": "#ffffff",
-			"name": "Spirit Guardians - Slowed",
-			"description": "<p>Speed halved by Spirit Guardians emanation.</p>",
-			"statuses": [],
-			"img": "icons/magic/symbols/mask-yellow-orange.webp",
-			"type": "base",
-			"system": {
-				"changes": [
-					{
-						"key": "system.attributes.movement.all",
-						"type": "custom",
-						"value": "/2",
-						"phase": "final",
-						"priority": 20
-					}
-				]
-			},
-			"start": null,
-			"showIcon": 0,
-			"folder": null,
-			"_key": "!items.effects!u3P0ZaZDFF06QsAy.sgSlowedEffect01"
 		}
 	],
 	"folder": "Tf2FNuyyu2gEaYOF",
@@ -126,7 +85,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You hold forth a holy symbol or a cultural icon associated with the dead, then call forth spirits to protect you. They flit around you, striking your enemies at your direction and harrying their movement.</em></p><p>This spell targets all creatures of your choice and ignores &amp;reference[cover].</p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> <strong></strong> Targets take [[/damage 3d8 radiant]] damage* .</p></li><li><p><strong>Success:</strong> Half damage.</p></li><li><p><strong>Area Hazard:</strong> The area within 15 ft. of you is &amp;reference[difficult terrain] for hostile creatures.</p></li><li><p><strong>Concentration:</strong> Once on each subsequent turn, you can make the spirits target all creatures within 15 ft. of you again.</p></li></ul><p><strong>Upcasting:</strong> Increase damage by [[/damage 1d8 radient]]{1d8} for each spell level above 3rd.</p>",
+			"value": "<p><em>You hold forth a holy symbol or a cultural icon associated with the dead, then call forth spirits to protect you. They flit around you, striking your enemies at your direction and harrying their movement.</em></p><p>This spell targets all creatures of your choice and ignores &amp;reference[cover].</p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> <strong></strong> Targets take [[/damage 3d8 radiant]] damage* .</p></li><li><p><strong>Success:</strong> Half damage.</p></li><li><p><strong>Area Hazard:</strong> The area within 15 ft. of you is &amp;reference[difficult terrain] for hostile creatures.</p></li><li><p><strong>&amp;reference[concentration]{Concentration}:</strong> Once on each subsequent turn, you can make the spirits target all creatures within 15 ft. of you again.</p></li></ul><p><strong>Upcasting:</strong> Increase damage by [[/damage 1d8 radient]]{1d8} for each spell level above 3rd.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -233,7 +192,7 @@
 						"count": ""
 					},
 					"affects": {
-						"type": "self",
+						"type": "enemy",
 						"count": "",
 						"choice": false,
 						"special": ""
@@ -263,31 +222,25 @@
 					"dispositionFilter": 0,
 					"excludeSource": true,
 					"oncePerTurn": true,
-					"rules": [
-						{
-							"trigger": "entry",
-							"action": "useActivity",
-							"targetId": "guardiansDamage"
-						},
-						{
-							"trigger": "turnEnd",
-							"action": "useActivity",
-							"targetId": "guardiansDamage"
-						},
-						{
-							"trigger": "entry",
-							"action": "applyEffect",
-							"targetId": "sgSlowedEffect01"
-						},
-						{
-							"trigger": "exit",
-							"action": "removeEffect",
-							"targetId": "sgSlowedEffect01"
-						}
-					],
+					"rules": [],
 					"wallRestriction": "none",
 					"regionVisibility": 2
-				}
+				},
+				"behaviors": [
+					{
+						"name": "",
+						"_id": "FdfIhcP5QaFZ8YmR",
+						"type": "difficultTerrain",
+						"config": {
+							"types": []
+						},
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
+				"midiProperties": {}
 			},
 			"R5qQqN1bY6kOoFOB": {
 				"type": "save",
@@ -321,16 +274,19 @@
 					"prompt": true,
 					"template": {
 						"contiguous": false,
-						"type": "",
+						"type": "radius",
+						"size": "15",
 						"units": "ft",
+						"count": "",
 						"stationary": false
 					},
 					"affects": {
-						"type": "self",
+						"type": "enemy",
 						"count": "",
+						"choice": false,
 						"special": ""
 					},
-					"override": true
+					"override": false
 				},
 				"damage": {
 					"onSave": "half",
@@ -355,7 +311,9 @@
 					]
 				},
 				"save": {
-					"ability": "wis",
+					"ability": [
+						"wis"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -384,7 +342,7 @@
 					"automationOnly": true,
 					"confirmTargets": "never"
 				},
-				"isOverTimeFlag": true,
+				"isOverTimeFlag": false,
 				"overTimeProperties": {
 					"turnChoice": "end",
 					"saveRemoves": false

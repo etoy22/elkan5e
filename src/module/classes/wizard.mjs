@@ -1,4 +1,4 @@
-import { drainedEffect } from "../shared/helpers.mjs";
+import { conditionSources, drainedEffect } from "../shared/helpers.mjs";
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -94,34 +94,29 @@ export async function spectralEmpowerment(workflow) {
 }
 
 /**
- * Runs soul Conduit class feature automation.
+ * Runs Soul Conduit class feature automation. When the caster casts a necromancy spell of
+ * 1st level or higher, reminds them that Soul Conduit can heal their graveguard.
  *
- * @param {*} workflow - Workflow payload from the triggering item or activity.
- * @returns {Promise<void>} Promise resolution result.
+ * @param {object} activity - Activity that was used.
+ * @param {object} usageConfig - Usage configuration; the selected slot determines the healing level.
  */
-export async function soulConduit(workflow) {
-	try {
-		console.log("Elkan 5e | Soul Conduit check");
-		const item = workflow.item ?? workflow;
-		if (!item || item.type !== "spell") return;
+export function soulConduit(activity, usageConfig) {
+	const item = activity?.item;
+	const actor = activity?.actor;
+	if (item?.type !== "spell" || item.system.school !== "nec" || !actor?.isOwner) return;
+	// Use the level the spell was cast at, not its base level.
+	const slot = usageConfig?.spell?.slot;
+	const level = Number(actor.system.spells?.[slot]?.level ?? item.system.level ?? 0);
+	if (level < 1) return;
+	if (!actor.items.some((i) => i.system?.identifier === "soul-conduit")) return;
 
-		const school = (item.system?.school || "").toLowerCase();
-		const level = Number(item.system?.level ?? 0);
-		if (school !== "necromancy" || level < 1) return;
-
-		const actor = workflow.actor ?? (workflow.token ? workflow.token.actor : null);
-		if (!actor) return;
-		const hasSoul = actor.items.find(
-			(i) => i.system?.identifier === "soul-conduit" || i.name === "Soul Conduit",
-		);
-		if (hasSoul && actor.isOwner) {
-			ui.notifications.notify(
-				game.i18n.format("elkan5e.notifications.SoulConduitReminder", { name: actor.name }),
-			);
-		}
-	} catch (err) {
-		console.error("elkan5e | soulConduit error:", err);
-	}
+	ui.notifications.info(
+		game.i18n.format("elkan5e.notifications.SoulConduitReminder", {
+			name: actor.name,
+			spell: item.name,
+			healing: level * 3,
+		}),
+	);
 }
 
 /**
@@ -142,8 +137,11 @@ export async function necromanticSurge(workflow) {
 		if (!item || item.type !== "spell") return;
 
 		const school = (item.system?.school || "").toLowerCase();
-		const level = Number(item.system?.level ?? 0);
-		if (school !== "necromancy" || level < 3) return;
+		// Use the level the spell was cast at, not its base level.
+		const level = Number(
+			workflow.castData?.castLevel ?? workflow.spellLevel ?? item.system?.level ?? 0,
+		);
+		if (school !== "nec" || level < 3) return;
 
 		const actor = workflow.actor ?? (workflow.token ? workflow.token.actor : null);
 		if (!actor || !actor.isOwner) return;
@@ -200,9 +198,7 @@ export async function necromanticSurge(workflow) {
 			await actor.update({ "system.attributes.exhaustion": exhaustionLevel - 1 });
 		} else {
 			// Remove every active effect that carries this status (handles stacked effects).
-			const toDelete = actor.effects
-				.filter((e) => e.statuses.has(chosen) && !e.disabled)
-				.map((e) => e.id);
+			const toDelete = conditionSources(actor, [chosen]).map((e) => e.id);
 			if (toDelete.length) await actor.deleteEmbeddedDocuments("ActiveEffect", toDelete);
 		}
 
@@ -213,46 +209,6 @@ export async function necromanticSurge(workflow) {
 		});
 	} catch (err) {
 		console.error("Necromantic Surge |", err);
-	}
-}
-
-/**
- * Runs Overchannel class feature automation: arms the feature when its
- * activity is used, so the next qualifying spell can consume it.
- *
- * @param {*} activity - Activity that was just used.
- * @returns {Promise<void>} Promise resolution result.
- */
-export async function overchannelArm(activity) {
-	try {
-		if (activity?.item?.system?.identifier !== "overchannel") return;
-		const actor = activity.actor;
-		if (!actor) return;
-
-		const existing = actor.effects.find((ef) => ef.name === "Overchannel" && !ef.disabled);
-		if (existing) return;
-
-		await actor.createEmbeddedDocuments("ActiveEffect", [
-			{
-				name: "Overchannel",
-				img: activity.item.img,
-				origin: activity.item.uuid,
-				transfer: false,
-				disabled: false,
-				duration: { rounds: 1 },
-				changes: [],
-				flags: {
-					dae: {
-						stackable: "none",
-						durationExpression: "",
-						macroRepeat: "none",
-						specialDuration: [],
-					},
-				},
-			},
-		]);
-	} catch (err) {
-		console.error("Overchannel |", err);
 	}
 }
 
@@ -280,14 +236,27 @@ export async function overchannelOnDamageRoll(rollConfig) {
 		const item = activity.item;
 		if (item?.type !== "spell") return;
 
-		const spellLevel = item.system?.level ?? 0;
+		// The roll data has the level the spell was cast at.
+		const spellLevel = Number(
+			rollConfig.rolls?.[0]?.data?.item?.level ?? item.system?.level ?? 0,
+		);
 		if (spellLevel < 1 || spellLevel > 5) return;
 
 		const usesSlot = Boolean(activity.consumption?.spellSlot);
 		if (!usesSlot) return;
 
+		// Neither dnd5e nor midi-qol reads a roll option to maximize, so swap each part for its maximum.
+		// The parts become flat numbers, so a critical hit's extra dice are maximized here too.
 		for (const roll of rollConfig.rolls ?? []) {
-			roll.options = { ...(roll.options ?? {}), maximize: true };
+			const options = { ...(roll.options ?? {}) };
+			options.isCritical = options.isCritical ?? rollConfig.isCritical ?? false;
+			roll.parts = (roll.parts ?? []).map((part) =>
+				String(
+					new CONFIG.Dice.DamageRoll(part, roll.data, options).evaluateSync({
+						maximize: true,
+					}).total,
+				),
+			);
 		}
 
 		await overchannelEffect.delete();

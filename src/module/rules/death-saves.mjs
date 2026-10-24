@@ -1,10 +1,11 @@
 /**
- * Tracks the rest type currently being applied so preUpdateActor can
- * decide whether to allow death save clearing during a rest update.
+ * Tracks the rest type currently being applied to each actor (by UUID) so
+ * preUpdateActor can decide whether to allow death save clearing during a
+ * rest update. Keyed per actor because the GM can rest several actors at once.
  * Set by onPreRestCompleted and cleared by onRestCompleted.
- * @type {"short"|"long"|null}
+ * @type {Map<string, "short"|"long">}
  */
-let currentRestType = null;
+const currentRestTypes = new Map();
 
 /* -------------------------------------------- */
 
@@ -13,26 +14,27 @@ let currentRestType = null;
  * Records whether a short or long rest is about to be applied so the
  * preUpdateActor guard can make the right choice.
  *
- * @param {Actor5e} _actor
+ * @param {Actor5e} actor
  * @param {object} result - dnd5e rest result; result.longRest distinguishes type.
  */
-export function onPreRestCompleted(_actor, result) {
-	currentRestType = result?.longRest ? "long" : "short";
+export function onPreRestCompleted(actor, result) {
+	currentRestTypes.set(actor.uuid, result?.longRest ? "long" : "short");
 }
 
 /* -------------------------------------------- */
 
 /**
- * Called from dnd5e.restCompleted.
+ * Clears the actor's recorded rest type and, when the death-save setting allows this rest,
+ * resets both death-save successes and failures. Called from dnd5e.restCompleted.
  *
  * @param {Actor5e} actor
- * @param {object} _result
+ * @param {object} result - dnd5e rest result; result.longRest distinguishes type.
  * @returns {Promise<void>}
  */
-export async function onRestCompleted(actor, _result) {
-	const wasShortRest = currentRestType === "short";
-	const wasLongRest = currentRestType === "long";
-	currentRestType = null;
+export async function onRestCompleted(actor, result) {
+	currentRestTypes.delete(actor.uuid);
+	const wasLongRest = !!result?.longRest;
+	const wasShortRest = !wasLongRest;
 
 	const setting = game.settings.get("elkan5e", "deathSaveClear");
 	if (setting === "immediate") return;
@@ -58,7 +60,9 @@ export async function onRestCompleted(actor, _result) {
 /* -------------------------------------------- */
 
 /**
- * Called from preUpdateActor.
+ * Mutates pending actor updates to preserve death-save failures on HP recovery and both
+ * death-save counters on short rests when clearing requires a long rest. Explicit module
+ * rest-clearing updates and the "immediate" setting pass through unchanged.
  * @param {Actor5e} actor
  * @param {object} changes - Mutable update data passed to actor.update().
  * @param {object} options - Update options from actor.update().
@@ -74,7 +78,7 @@ export function onPreUpdateActorDeathSaves(actor, changes, options) {
 	if (options?.isRest) {
 		if (setting === "shortRest") return; // Both short and long rests may clear.
 		if (setting === "longRest") {
-			if (currentRestType === "long") return; // Long rest is allowed.
+			if (currentRestTypes.get(actor.uuid) === "long") return; // Long rest is allowed.
 			// Short rest with longRest setting — strip any death save clearing.
 			_stripDeathSaveFields(changes);
 		}

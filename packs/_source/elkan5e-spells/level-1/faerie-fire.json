@@ -20,23 +20,6 @@
 					"dontApply": false,
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"ignoreSelf": false,
-					"hidden": false,
-					"height": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"hostile": false,
-					"onlyOnce": false,
-					"displayTemp": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"disabled": false,
@@ -78,7 +61,8 @@
 						"key": "flags.midi-qol.OverTime",
 						"value": "turn=end,\nsaveAbility=dex,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Faerie Fire",
 						"priority": 20,
-						"type": "add"
+						"type": "add",
+						"replacement": "origin"
 					},
 					{
 						"key": "system.traits.ci.value",
@@ -92,7 +76,8 @@
 						"priority": 20,
 						"type": "add"
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
@@ -153,7 +138,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You hum an upbeat folk tune as creatures in front of you light up with vibrant color. The lights dance and lead attackers to a target's weak spots.</em></p><p><strong>[[/save dexterity]]{Dexterity Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is outlined in blue, green, or violet light (your choice), and sheds dim light in a 10-foot radius. All attack rolls against them have advantage if the attacker can see them, and they can't benefit from being &amp;reference[invisible apply=false]. Target rolls a save again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No Effect.</p></li></ul>",
+			"value": "<p><em>You hum an upbeat folk tune as creatures in front of you light up with vibrant color. The lights dance and lead attackers to a target's weak spots.</em></p><p><strong>[[/save dexterity]]{Dexterity Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is outlined in blue, green, or violet light (your choice), and sheds dim light in a 10-foot radius. All &amp;reference[attackrolls]{attack rolls} against them have advantage if the attacker can see them, and they can't benefit from being &amp;reference[invisible apply=false]. Target rolls a save again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No Effect.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -215,31 +200,6 @@
 			"concentration"
 		],
 		"activities": {
-			"dnd5eactivity000": {
-				"name": "",
-				"img": "",
-				"damage": {
-					"onSave": "none"
-				},
-				"appliedEffects": [
-					"0hz3Z5o2VSWZFDyA"
-				],
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				}
-			},
 			"8a6JXbb5vhpSYhI1": {
 				"type": "save",
 				"_id": "8a6JXbb5vhpSYhI1",
@@ -273,10 +233,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -290,7 +254,9 @@
 					"onSave": "none"
 				},
 				"save": {
-					"ability": "dex",
+					"ability": [
+						"dex"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""

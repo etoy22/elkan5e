@@ -21,23 +21,6 @@
 					"enableCondition": "",
 					"disableCondition": "",
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"_id": "BlR3RwWY9dQO7qQd",
@@ -49,9 +32,7 @@
 				"expired": false
 			},
 			"description": "",
-			"statuses": [
-				"restrained"
-			],
+			"statuses": [],
 			"tint": "#ffffff",
 			"img": "icons/magic/control/debuff-chains-shackle-movement-red.webp",
 			"type": "base",
@@ -62,11 +43,20 @@
 						"type": "add",
 						"value": "turn=end, label=Hold Creature, saveAbility=wis, saveDC=@attributes.spell.dc, saveMagic=true",
 						"phase": "initial",
+						"priority": 20,
+						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "restrained",
+						"phase": "final",
 						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!2S4Lb8HB2ukb7uBT.BlR3RwWY9dQO7qQd"
@@ -108,7 +98,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You command a creature to submit to your power, and as you worm your way into they mind, you bend a small piece of iron. As you do, your target feels as if they are unable to move more than slightly, as if chained by invisible chains.</em></p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[Restrained]. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p>* <strong>Upcasting:</strong> Target one additional creature for each spell level above 2nd.</p>",
+			"value": "<p><em>You command a creature to submit to your power, and as you worm your way into they mind, you bend a small piece of iron. As you do, your target feels as if they are unable to move more than slightly, as if chained by &amp;reference[invisible apply=false]{invisible} chains.</em></p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[Restrained]. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p>* <strong>Upcasting:</strong> Target one additional creature for each spell level above 2nd.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -209,10 +199,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -226,7 +220,9 @@
 					"parts": []
 				},
 				"save": {
-					"ability": "wis",
+					"ability": [
+						"wis"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": "18"

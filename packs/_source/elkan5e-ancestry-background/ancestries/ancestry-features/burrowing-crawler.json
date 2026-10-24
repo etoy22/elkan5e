@@ -16,7 +16,10 @@
 			"max": ""
 		},
 		"requirements": "Kobold",
-		"identifier": "burrowing-crawler"
+		"identifier": "burrowing-crawler",
+		"properties": [
+			"trait"
+		]
 	},
 	"effects": [
 		{
@@ -28,8 +31,14 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.movement.burrow",
+						"key": "system.attributes.movement.speeds.burrow",
 						"value": 5,
+						"priority": 20,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.attributes.movement.speeds.crawl",
+						"value": "@attributes.movement.speeds.walk",
 						"priority": 20,
 						"type": "upgrade"
 					}
@@ -43,7 +52,7 @@
 				"expired": false
 			},
 			"description": "",
-			"origin": "Compendium.elkan5e.elkan5e-ancestries.Item.hrgRDcPgwSwuaHmr",
+			"origin": "Compendium.elkan5e.elkan5e-ancestry-background.Item.hrgRDcPgwSwuaHmr",
 			"tint": "#ffffff",
 			"statuses": [],
 			"flags": {
@@ -58,23 +67,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"start": null,

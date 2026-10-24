@@ -10,7 +10,16 @@
 			"_id": "p4VvJpYMpbb4Htk3",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "restrained",
+						"phase": "final",
+						"priority": 20
+					}
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -22,9 +31,7 @@
 			"description": "",
 			"origin": null,
 			"tint": "#ffffff",
-			"statuses": [
-				"restrained"
-			],
+			"statuses": [],
 			"flags": {
 				"dae": {
 					"disableIncapacitated": false,
@@ -38,97 +45,18 @@
 					"enableCondition": "",
 					"disableCondition": "",
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!zI81EiDs2vyozitg.p4VvJpYMpbb4Htk3"
-		},
-		{
-			"name": "Prone",
-			"origin": "Compendium.elkan5e.elkan5e-spells.Item.zI81EiDs2vyozitg",
-			"transfer": false,
-			"flags": {
-				"dae": {
-					"itemName": "Whirlwind",
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"stackable": "noneName",
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": [],
-					"enableCondition": "",
-					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
-				}
-			},
-			"img": "modules/elkan5e/icons/conditions/prone.svg",
-			"_id": "Ckfan4ziiarHWxGF",
-			"type": "base",
-			"system": {
-				"changes": [
-					{
-						"key": "macro.StatusEffect",
-						"value": "prone",
-						"priority": 20,
-						"type": "custom"
-					}
-				]
-			},
-			"disabled": false,
-			"duration": {
-				"value": 0,
-				"units": "seconds",
-				"expiry": "turnStart",
-				"expired": false
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"statuses": [],
-			"start": null,
-			"showIcon": 1,
-			"folder": null,
-			"_key": "!items.effects!zI81EiDs2vyozitg.Ckfan4ziiarHWxGF"
 		}
 	],
 	"folder": "PnZJTE6T4UQY81Pm",
 	"flags": {
 		"midi-qol": {
-			"onUseMacroName": "[postActiveEffects]AA ApplyEffectsToTemplate",
+			"onUseMacroName": "",
 			"effectActivation": false,
 			"AoETargetType": "any",
 			"AoETargetTypeIncludeSelf": true,
@@ -166,7 +94,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You whistle, and in doing so blow a handful of dry leaves, grass, or other &amp;reference[plant] material into the air. Your breath carries forward and forms a small but powerful dust devil, waterspout, or whirlpool, capable of picking up all but the heaviest of creatures.</em></p><p><strong>[[/save str]]{Strength Save}</strong></p><p>This spell conjures a vortex of air or water 10 ft. across and 30 ft. tall. It can lift up to 1000 pounds of weight, and at your GM's discretion, may rip some objects out of the ground. Creatures of large size or larger may be too heavy to be lifted, &amp;reference[restrained apply=false], or knocked &amp;reference[prone apply=false] by this spell, but they will still take damage.</p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d6 bludgeoning]] damage, either rises 15 ft. off the ground or 15 ft. into the water, and is both &amp;reference[restrained] and &amp;reference[prone]. Target rolls again at end of their turns. On a success, they take half damage and end the restrained condition, falling to the ground prone without taking falling damage.</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li><li><p><strong>Area Hazard:</strong> The area is &amp;reference[difficultterrain]. Creatures who enter the area must save against the spell.</p></li><li><p><strong>Concentration:</strong> Once per turn, you can use your bonus action to move the vortex up to 15 ft., moving all creatures currently held by the vortex and forcing all creatures in its path who weren't already in the area to roll a save against the spell.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 2d6 bludgeoning]]{2d6} for each spell level above 5th.</p>",
+			"value": "<p><em>You whistle, and in doing so blow a handful of dry leaves, grass, or other &amp;reference[plant] material into the air. Your breath carries forward and forms a small but powerful dust devil, waterspout, or whirlpool, capable of picking up all but the heaviest of creatures.</em></p><p><strong>[[/save str]]{Strength Save}</strong></p><p>This spell conjures a vortex of air or water 10 ft. across and 30 ft. tall. It can lift up to 1000 pounds of weight, and at your GM's discretion, may rip some objects out of the ground. Creatures of large size or larger may be too heavy to be lifted, &amp;reference[restrained apply=false], or knocked &amp;reference[prone apply=false] by this spell, but they will still take damage.</p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d6 bludgeoning]] damage, either rises 15 ft. off the ground or 15 ft. into the water, and is both &amp;reference[restrained] and &amp;reference[prone]. Target rolls again at end of their turns. On a success, they take half damage and end the restrained condition, falling to the ground prone without taking falling damage.</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li><li><p><strong>Area Hazard:</strong> The area is &amp;reference[difficultterrain]. Creatures who enter the area must save against the spell.</p></li><li><p><strong>&amp;reference[concentration]{Concentration}:</strong> Once per turn, you can use your bonus action to move the vortex up to 15 ft., moving all creatures currently held by the vortex and forcing all creatures in its path who weren't already in the area to roll a save against the spell.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 2d6 bludgeoning]]{2d6} for each spell level above 5th.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -265,12 +193,13 @@
 						}
 					},
 					{
-						"_id": "Ckfan4ziiarHWxGF",
 						"onSave": false,
 						"level": {
 							"min": null,
 							"max": null
-						}
+						},
+						"_id": "AGDNkdr4MqREMOTE",
+						"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanprone000000"
 					}
 				],
 				"range": {
@@ -321,7 +250,9 @@
 					]
 				},
 				"save": {
-					"ability": "str",
+					"ability": [
+						"str"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -330,8 +261,7 @@
 				"name": "Initial Casting",
 				"img": "",
 				"appliedEffects": [
-					"p4VvJpYMpbb4Htk3",
-					"Ckfan4ziiarHWxGF"
+					"p4VvJpYMpbb4Htk3"
 				],
 				"effectConditionText": "!target.traits.ci.value.has('restrained')",
 				"visibility": {
@@ -360,7 +290,21 @@
 							"targetId": "vortexDamage"
 						}
 					]
-				}
+				},
+				"behaviors": [
+					{
+						"name": "",
+						"_id": "PJsU06mFbmPYQtR1",
+						"type": "difficultTerrain",
+						"config": {
+							"types": []
+						},
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				]
 			},
 			"vortexDmgSaveAc1": {
 				"type": "save",
@@ -396,12 +340,13 @@
 						}
 					},
 					{
-						"_id": "Ckfan4ziiarHWxGF",
 						"onSave": false,
 						"level": {
 							"min": null,
 							"max": null
-						}
+						},
+						"_id": "40Cu3Nw2KsREMOTE",
+						"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanprone000000"
 					}
 				],
 				"range": {
@@ -448,7 +393,9 @@
 					]
 				},
 				"save": {
-					"ability": "str",
+					"ability": [
+						"str"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -457,8 +404,7 @@
 				"name": "Vortex Damage",
 				"img": "",
 				"appliedEffects": [
-					"p4VvJpYMpbb4Htk3",
-					"Ckfan4ziiarHWxGF"
+					"p4VvJpYMpbb4Htk3"
 				],
 				"effectConditionText": "!target.traits.ci.value.has('restrained')",
 				"visibility": {

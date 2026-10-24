@@ -29,14 +29,6 @@
 				},
 				"effects": [
 					{
-						"_id": "8AKA0iuDZXsSnSUd",
-						"onSave": false
-					},
-					{
-						"_id": "x0kQP33fYoo6A7xV",
-						"onSave": false
-					},
-					{
 						"_id": "AIyGkkusuydujD4G",
 						"onSave": false
 					}
@@ -45,10 +37,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -105,7 +101,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><em>You mock your target's life choices, muddying their thoughts and self-control.</em></p><p><strong>[[/save charisma]]{Charisma Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[cursed]{Cursed}. While cursed in this way, target has &amp;reference[disadvantage] on wisdom skill checks and wisdom saving throws.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"value": "<p><em>You mock your target's life choices, muddying their thoughts and self-control.</em></p><p><strong>[[/save charisma]]{Charisma Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[cursed]{Cursed}. While cursed in this way, target has &amp;reference[disadvantage] on wisdom skill checks and wisdom &amp;reference[savingthrow]{saving throws}.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "curse-of-foolishness",
@@ -171,42 +167,50 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.disadvantage.ability.save.wis",
-						"value": 1,
+						"key": "system.abilities.wis.save.roll.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					},
 					{
-						"key": "flags.midi-qol.disadvantage.skill.ani",
-						"value": 1,
+						"key": "system.skills.ani.roll.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					},
 					{
-						"key": "flags.midi-qol.disadvantage.skill.ins",
-						"value": 1,
+						"key": "system.skills.ins.roll.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					},
 					{
-						"key": "flags.midi-qol.disadvantage.skill.med",
-						"value": 1,
+						"key": "system.skills.med.roll.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					},
 					{
-						"key": "flags.midi-qol.disadvantage.skill.per",
-						"value": 1,
+						"key": "system.skills.prc.roll.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					},
 					{
-						"key": "flags.midi-qol.disadvantage.skill.sur",
-						"value": 1,
+						"key": "system.skills.sur.roll.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "cursed",
+						"phase": "final",
+						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -217,9 +221,7 @@
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"statuses": [
-				"cursed"
-			],
+			"statuses": [],
 			"flags": {
 				"dae": {
 					"enableCondition": "",
@@ -233,23 +235,6 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"start": null,

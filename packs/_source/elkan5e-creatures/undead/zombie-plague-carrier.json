@@ -74,19 +74,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": null,
-				"climb": null,
-				"fly": null,
-				"swim": null,
-				"walk": 20,
+				"speeds": {
+					"walk": 20,
+					"burrow": null,
+					"climb": null,
+					"fly": null,
+					"swim": null
+				},
 				"units": "ft",
 				"hover": false
 			},
@@ -94,10 +96,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 60,
-				"blindsight": null,
-				"tremorsense": null,
-				"truesight": null,
+				"ranges": {
+					"darkvision": 60,
+					"blindsight": null,
+					"tremorsense": null,
+					"truesight": null
+				},
 				"units": "ft",
 				"special": ""
 			},
@@ -636,7 +640,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -752,22 +756,6 @@
 			"effects": [
 				{
 					"flags": {
-						"ActiveAuras": {
-							"isAura": false,
-							"radius": null,
-							"aura": "None",
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"displayTemp": false
-						},
-						"core": {
-							"statusId": "combat-utility-belt.poisoned"
-						},
 						"dae": {
 							"selfTarget": false,
 							"selfTargetAlways": false,
@@ -791,26 +779,21 @@
 					"name": "Poisoned",
 					"description": "",
 					"statuses": [],
-					"img": "modules/combat-utility-belt/icons/poisoned.svg",
+					"img": "modules/elkan5e/icons/conditions/poisoned.svg",
 					"type": "base",
 					"system": {
 						"changes": [
 							{
-								"key": "flags.midi-qol.disadvantage.attack.all",
-								"value": 1,
-								"priority": 50,
-								"type": "override"
-							},
-							{
-								"key": "flags.midi-qol.disadvantage.ability.check.all",
-								"value": 1,
-								"priority": 50,
-								"type": "override"
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "poisoned",
+								"phase": "final",
+								"priority": 20
 							}
 						]
 					},
 					"start": null,
-					"showIcon": 1,
+					"showIcon": 0,
 					"folder": null,
 					"_key": "!actors.items.effects!f2fTZsBCIul02fTx.lSz4LjagQxopSXTG.tr7MaUpLGknlKgxd"
 				}
@@ -841,7 +824,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -940,7 +923,9 @@
 							]
 						},
 						"save": {
-							"ability": "con",
+							"ability": [
+								"con"
+							],
 							"dc": {
 								"calculation": "con",
 								"formula": ""
@@ -965,22 +950,6 @@
 			"effects": [
 				{
 					"flags": {
-						"ActiveAuras": {
-							"isAura": false,
-							"radius": null,
-							"aura": "None",
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"displayTemp": false
-						},
-						"core": {
-							"statusId": "combat-utility-belt.poisoned"
-						},
 						"dae": {
 							"selfTarget": false,
 							"selfTargetAlways": false,
@@ -1004,32 +973,28 @@
 					"name": "Poisoned",
 					"description": "",
 					"statuses": [],
-					"img": "modules/combat-utility-belt/icons/poisoned.svg",
+					"img": "modules/elkan5e/icons/conditions/poisoned.svg",
 					"type": "base",
 					"system": {
 						"changes": [
 							{
-								"key": "flags.midi-qol.disadvantage.attack.all",
-								"value": 1,
-								"priority": 50,
-								"type": "override"
-							},
-							{
-								"key": "flags.midi-qol.disadvantage.ability.check.all",
-								"value": 1,
-								"priority": 50,
-								"type": "override"
-							},
-							{
 								"key": "flags.midi-qol.OverTime",
 								"value": "turn=end,\nsaveAbility=con,\nsaveDC=@attributes.spell.dc",
 								"priority": 20,
-								"type": "add"
+								"type": "add",
+								"replacement": "origin"
+							},
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "poisoned",
+								"phase": "final",
+								"priority": 20
 							}
 						]
 					},
 					"start": null,
-					"showIcon": 1,
+					"showIcon": 0,
 					"folder": null,
 					"_key": "!actors.items.effects!f2fTZsBCIul02fTx.run0fFoNXb7V9TCd.9Raufs3tLMoZI1r1"
 				}
@@ -1057,7 +1022,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -1172,7 +1137,9 @@
 							]
 						},
 						"save": {
-							"ability": "con",
+							"ability": [
+								"con"
+							],
 							"dc": {
 								"calculation": "con",
 								"formula": ""
@@ -1196,13 +1163,13 @@
 			"img": "icons/skills/melee/unarmed-punch-fist-yellow-red.webp",
 			"system": {
 				"description": {
-					"value": "<section><p><em>Melee Weapon Attack:</em> <strong>+3 to hit,</strong> , <strong>5 ft.,</strong> one target. Hit: <strong>4 (1d6 + 1) </strong> <em> <strong>bludgeoning damage</strong></em> .</p></section><p>The Zombie attacks with its Slam. On a hit, the target is grappled.</p>",
+					"value": "<section><p><em>Melee Weapon Attack:</em> <strong>+3 to hit,</strong> , <strong>5 ft.,</strong> one target. Hit: <strong>4 (1d6 + 1) </strong> <em> <strong>bludgeoning damage</strong></em> .</p></section><p>The Zombie attacks with its Slam. On a hit, the target is &amp;reference[grappled apply=false]{grappled}.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -1394,28 +1361,12 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": []
-						},
-						"core": {
-							"statusId": "combat-utility-belt.grappled"
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"radius": null,
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false
 						}
 					},
 					"name": "Grappled",
 					"description": "",
 					"statuses": [],
-					"img": "modules/combat-utility-belt/icons/grappled.svg",
+					"img": "modules/elkan5e/icons/conditions/grappled.svg",
 					"type": "base",
 					"system": {
 						"changes": [
@@ -1424,6 +1375,13 @@
 								"value": 0,
 								"priority": 50,
 								"type": "custom"
+							},
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "grappled",
+								"phase": "final",
+								"priority": 20
 							}
 						]
 					},

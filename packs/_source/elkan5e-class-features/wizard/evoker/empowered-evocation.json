@@ -9,13 +9,13 @@
 			"_id": "seh18IJFRt7teI88",
 			"disabled": false,
 			"duration": {
-				"value": 1,
-				"units": "rounds",
-				"expiry": "turnStart",
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
 				"expired": false
 			},
 			"description": "",
-			"origin": null,
+			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.VSfuD4F1S2tHKbUw",
 			"statuses": [],
 			"flags": {
 				"dae": {
@@ -27,26 +27,12 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": [
-						"1Spell"
+						"None"
 					],
 					"enableCondition": "",
-					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
+					"disableCondition": "",
+					"expiryMode": "default",
+					"phaseStamped": true
 				}
 			},
 			"tint": "#ffffff",
@@ -55,12 +41,17 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.bonuses.spell.damage",
+						"key": "system.rolls.damage.spell.bonus",
+						"type": "add",
 						"value": "+@abilities.int.mod",
+						"phase": "initial",
 						"priority": 20,
-						"type": "add"
+						"_id": "31z0XBzSAtoK5XNb",
+						"conditions": "{}",
+						"replacement": ""
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,

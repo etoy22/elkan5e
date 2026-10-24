@@ -5,7 +5,7 @@
 	"img": "icons/commodities/treasure/mask-wood-tan.webp",
 	"system": {
 		"description": {
-			"value": "<p><strong>No Action Cost</strong></p><p><em>Trigger: You use <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.Gm7eVG59Om6KG3aM]{Vicious Mockery}</em> and your target fails their save or you deal damage with @UUID[Compendium.elkan5e.elkan5e-class-features.Item.f71fyym4jcBrftdZ]{Jester's Aspersion}.</em></p><ul><li><p>You can choose to &amp;reference[charmed]{charm} the creature until you damage them or until the end of your next turn. Note that this charm does not protect your allies from the target.</p></li></ul>",
+			"value": "<p><strong>No Action Cost</strong></p><p><em>Trigger: You use <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.4rtPXHnqtH8A4LBd]{Vicious Mockery}</em> and your target fails their save or you deal damage with @UUID[Compendium.elkan5e.elkan5e-class-features.Item.f71fyym4jcBrftdZ]{Jester's Aspersion}.</em></p><ul><li><p>You can choose to &amp;reference[charmed]{charm} the creature until you damage them or until the end of your next turn. Note that this charm does not protect your allies from the target.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -27,94 +27,171 @@
 		},
 		"requirements": "Jester 14",
 		"activities": {
-			"dnd5eactivity000": {
-				"_id": "dnd5eactivity000",
-				"type": "damage",
+			"iwTi7D67Kfv2aAO2": {
+				"type": "enchant",
+				"name": "",
+				"_id": "iwTi7D67Kfv2aAO2",
+				"img": "",
 				"activation": {
-					"type": "special",
-					"value": 1,
-					"condition": "",
-					"override": false
+					"type": "action",
+					"override": false,
+					"condition": ""
 				},
+				"behaviors": [],
 				"consumption": {
-					"targets": [],
 					"scaling": {
-						"allowed": false,
-						"max": ""
+						"allowed": false
 					},
-					"spellSlot": true
+					"spellSlot": true,
+					"targets": []
 				},
 				"description": {
+					"value": "",
 					"chatFlavor": ""
 				},
 				"duration": {
-					"concentration": false,
-					"value": "",
 					"units": "inst",
-					"special": "",
+					"expiry": null,
+					"concentration": false,
 					"override": false
 				},
 				"effects": [
 					{
-						"_id": "qyguygxKDLY2YGQf"
+						"_id": "5LcJuZ00zlsgHUhV",
+						"uuid": null,
+						"level": {
+							"min": null,
+							"max": null
+						},
+						"riders": {
+							"activity": [
+								"b5Fmo4nnuWC6cLQt"
+							],
+							"effect": [],
+							"item": []
+						}
 					}
 				],
 				"range": {
 					"units": "self",
-					"special": "",
-					"override": false
+					"override": false,
+					"special": ""
 				},
 				"target": {
 					"template": {
-						"count": "",
 						"contiguous": false,
-						"type": "",
-						"size": "",
-						"width": "",
-						"height": "",
-						"units": ""
+						"stationary": false,
+						"units": "ft",
+						"type": ""
 					},
 					"affects": {
-						"count": "1",
-						"type": "creature",
 						"choice": false,
-						"special": ""
+						"type": ""
 					},
-					"prompt": true,
-					"override": false
+					"override": false,
+					"prompt": true
 				},
 				"uses": {
 					"spent": 0,
-					"max": "",
-					"recovery": []
+					"recovery": [],
+					"max": ""
 				},
-				"damage": {
-					"critical": {
-						"allow": false,
-						"bonus": ""
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
 					},
-					"parts": [
-						{
-							"custom": {
-								"enabled": true,
-								"formula": ""
-							},
-							"number": null,
-							"denomination": null,
-							"bonus": "",
-							"types": [],
-							"scaling": {
-								"number": 1
-							}
-						}
-					]
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false,
+					"identifier": ""
 				},
+				"enchant": {
+					"self": false
+				},
+				"restrictions": {
+					"allowMagical": false,
+					"categories": [],
+					"properties": [],
+					"type": ""
+				}
+			},
+			"b5Fmo4nnuWC6cLQt": {
+				"type": "utility",
 				"name": "",
+				"_id": "b5Fmo4nnuWC6cLQt",
 				"img": "",
-				"appliedEffects": [
-					"qyguygxKDLY2YGQf"
+				"activation": {
+					"type": "action",
+					"override": false,
+					"condition": ""
+				},
+				"behaviors": [],
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"value": "",
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "round",
+					"expiry": null,
+					"concentration": false,
+					"override": false,
+					"value": "1"
+				},
+				"effects": [
+					{
+						"level": {},
+						"_id": "RvVBCYBc6ZREMOTE",
+						"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkancharmed0000"
+					}
 				],
-				"effectConditionText": "!target.traits.ci.value.has('charmed')"
+				"range": {
+					"units": "self",
+					"override": false,
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"stationary": false,
+						"units": "ft",
+						"type": ""
+					},
+					"affects": {
+						"choice": false,
+						"type": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false,
+					"identifier": ""
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				}
 			}
 		},
 		"identifier": "harmless-act",
@@ -122,68 +199,76 @@
 		"prerequisites": {
 			"level": null
 		},
-		"properties": []
+		"properties": [],
+		"advancement": {
+			"F7fF9e2o31Wqn1c7": {
+				"name": "",
+				"type": "ModifyItem",
+				"_id": "F7fF9e2o31Wqn1c7",
+				"configuration": {
+					"changes": [
+						{
+							"_id": "5LcJuZ00zlsgHUhV",
+							"uuid": null,
+							"identifiers": [
+								"cutting-words",
+								"spell:vicious-mockery"
+							]
+						}
+					]
+				},
+				"value": {
+					"modified": []
+				},
+				"level": 0,
+				"hint": ""
+			}
+		}
 	},
 	"effects": [
 		{
-			"statuses": [
-				"charmed"
-			],
+			"type": "enchantment",
 			"name": "Harmless Act",
-			"description": "",
+			"img": "icons/commodities/treasure/mask-wood-tan.webp",
+			"disabled": false,
+			"transfer": false,
+			"_id": "5LcJuZ00zlsgHUhV",
+			"system": {
+				"changes": [
+					{
+						"key": "system.description.value",
+						"type": "override",
+						"value": "{}<p><strong>Harmless Act.</strong> If your target fails their save against <em>Vicious Mockery</em> or you deal damage with Jester's Aspersion, you can choose to &amp;reference[charmed]{charm} the creature until you damage them or until the end of your next turn. This charm does not protect your allies from the target.</p>",
+						"phase": "initial",
+						"priority": null,
+						"_id": "SXcmyOgGNeXRY5Kw",
+						"conditions": "{}",
+						"replacement": ""
+					}
+				],
+				"origin": {
+					"actor": null,
+					"behavior": null,
+					"effect": null,
+					"item": null,
+					"message": null
+				},
+				"magical": true
+			},
+			"start": null,
 			"duration": {
-				"value": 7,
+				"value": null,
 				"units": "seconds",
-				"expiry": "turnStart",
+				"expiry": null,
 				"expired": false
 			},
-			"flags": {
-				"dae": {
-					"specialDuration": [
-						"turnEndSource"
-					],
-					"stackable": "noneName",
-					"transfer": true,
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"enableCondition": "",
-					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
-				}
-			},
-			"_id": "qyguygxKDLY2YGQf",
-			"disabled": false,
-			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.dYaT9G9IRgBi3z7G",
-			"transfer": false,
+			"description": "",
+			"origin": null,
 			"tint": "#ffffff",
-			"img": "icons/commodities/treasure/mask-wood-tan.webp",
-			"type": "base",
-			"system": {
-				"changes": []
-			},
-			"showIcon": 2,
-			"start": null,
+			"statuses": [],
+			"showIcon": 1,
 			"folder": null,
-			"_key": "!items.effects!dYaT9G9IRgBi3z7G.qyguygxKDLY2YGQf"
+			"_key": "!items.effects!dYaT9G9IRgBi3z7G.5LcJuZ00zlsgHUhV"
 		}
 	],
 	"flags": {
@@ -219,6 +304,13 @@
 			"idi": false,
 			"idv": false,
 			"ida": false
+		},
+		"dnd5e": {
+			"riders": {
+				"activity": [
+					"b5Fmo4nnuWC6cLQt"
+				]
+			}
 		}
 	},
 	"_id": "dYaT9G9IRgBi3z7G",

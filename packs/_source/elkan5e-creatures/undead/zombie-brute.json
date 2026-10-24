@@ -74,19 +74,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": 0,
-				"climb": 0,
-				"fly": 0,
-				"swim": 0,
-				"walk": 20,
+				"speeds": {
+					"walk": 20,
+					"burrow": 0,
+					"climb": 0,
+					"fly": 0,
+					"swim": 0
+				},
 				"units": "ft",
 				"hover": false
 			},
@@ -94,10 +96,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 60,
-				"blindsight": 0,
-				"tremorsense": 0,
-				"truesight": 0,
+				"ranges": {
+					"darkvision": 60,
+					"blindsight": 0,
+					"tremorsense": 0,
+					"truesight": 0
+				},
 				"units": "ft",
 				"special": ""
 			},
@@ -625,13 +629,13 @@
 			"img": "icons/magic/acid/pouring-gas-smoke-liquid.webp",
 			"system": {
 				"description": {
-					"value": "<p>If damage reduces the [[lookup @name lowercase]] to <strong>0 hit points</strong>, it makes a <strong>Constitution</strong> saving throw with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the [[lookup @name lowercase]] drops to <strong>1 hit point</strong> instead.</p>",
+					"value": "<p>If damage reduces the [[lookup @name lowercase]] to <strong>0 hit points</strong>, it makes a <strong>Constitution</strong> &amp;reference[savingthrow]{saving throw} with a DC of 5 + the damage taken, unless the damage is radiant or from a critical hit. On a success, the [[lookup @name lowercase]] drops to <strong>1 hit point</strong> instead.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -650,7 +654,9 @@
 				"prerequisites": {
 					"level": null
 				},
-				"properties": []
+				"properties": [
+					"trait"
+				]
 			},
 			"effects": [],
 			"folder": null,
@@ -673,22 +679,6 @@
 					},
 					"transfer": false,
 					"flags": {
-						"ActiveAuras": {
-							"isAura": false,
-							"radius": "null",
-							"aura": "None",
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"displayTemp": false
-						},
-						"core": {
-							"statusId": "combat-utility-belt.prone"
-						},
 						"dae": {
 							"selfTarget": false,
 							"stackable": "none",
@@ -704,44 +694,21 @@
 					"name": "Prone",
 					"description": "",
 					"statuses": [],
-					"img": "modules/combat-utility-belt/icons/prone.svg",
+					"img": "modules/elkan5e/icons/conditions/prone.svg",
 					"type": "base",
 					"system": {
 						"changes": [
 							{
-								"key": "flags.midi-qol.grants.advantage.attack.mwak",
-								"value": 1,
-								"priority": 50,
-								"type": "override"
-							},
-							{
-								"key": "flags.midi-qol.grants.advantage.attack.msak",
-								"value": 1,
-								"priority": 50,
-								"type": "override"
-							},
-							{
-								"key": "flags.midi-qol.grants.disadvantage.attack.rwak",
-								"value": 1,
-								"priority": 50,
-								"type": "override"
-							},
-							{
-								"key": "flags.midi-qol.grants.disadvantage.attack.rsak",
-								"value": 1,
-								"priority": 50,
-								"type": "override"
-							},
-							{
-								"key": "flags.midi-qol.disadvantage.attack.all",
-								"value": 1,
-								"priority": 50,
-								"type": "override"
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "prone",
+								"phase": "final",
+								"priority": 20
 							}
 						]
 					},
 					"start": null,
-					"showIcon": 1,
+					"showIcon": 0,
 					"folder": null,
 					"_key": "!actors.items.effects!Vr2h4YX11gPMcicO.1cxfUME2AwZ42kgW.gcxgylisuj21fpt3"
 				}
@@ -782,13 +749,13 @@
 			},
 			"system": {
 				"description": {
-					"value": "<section><p><em>Melee Weapon Attack:</em> <strong>+4 to hit,</strong> , <strong>5 ft.,</strong> one target. Hit: <strong>7 (2d4 + 2) </strong> <em> <strong>piercing damage</strong></em> .</p><p>If the target is a creature, it must succeed on a <strong>DC 11 Strength</strong> saving throw or be knocked prone.</p></section><p>The zombie attacks with its slam. If the target is a creature, it must make a <strong>Strength</strong> saving throw or be knocked prone.</p>",
+					"value": "<section><p><em>Melee Weapon Attack:</em> <strong>+4 to hit,</strong> , <strong>5 ft.,</strong> one target. Hit: <strong>7 (2d4 + 2) </strong> <em> <strong>piercing damage</strong></em> .</p><p>If the target is a creature, it must succeed on a <strong>DC 11 Strength</strong> &amp;reference[savingthrow]{saving throw} or be knocked &amp;reference[prone apply=false]{prone}.</p></section><p>The zombie attacks with its slam. If the target is a creature, it must make a <strong>Strength</strong> saving throw or be knocked prone.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -1022,7 +989,9 @@
 							"parts": []
 						},
 						"save": {
-							"ability": "str",
+							"ability": [
+								"str"
+							],
 							"dc": {
 								"calculation": "str",
 								"formula": "11"

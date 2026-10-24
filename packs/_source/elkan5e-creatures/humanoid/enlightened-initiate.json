@@ -24,7 +24,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -142,7 +142,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -269,7 +269,7 @@
 				"source": {
 					"custom": "Elkan 5e",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -482,11 +482,11 @@
 			"folder": "0pkJJHVz20jLFoE1",
 			"system": {
 				"description": {
-					"value": "<p>While you are wearing no armor and not wielding a shield, your AC equals 10 + your Dexterity modifier + your Wisdom modifier if it isn't already higher. Click @UUID[Compendium.elkan5e.elkan5e-rules.2w2vPEpcH9NLYdGH.JournalEntryPage.yWhpsOxHgUePvxR1]{here }for an example (2).</p>",
+					"value": "<p>While you are wearing no armor and not wielding a shield, your AC equals 10 + your Dexterity modifier + your Wisdom modifier if it isn't already higher. Click here for an example (2).</p>",
 					"chat": ""
 				},
 				"source": {
-					"rules": "2014",
+					"rules": "",
 					"revision": 1,
 					"book": "Elkan 5e"
 				},
@@ -506,7 +506,9 @@
 				"prerequisites": {
 					"level": null
 				},
-				"properties": []
+				"properties": [
+					"trait"
+				]
 			},
 			"_key": "!actors.items!vkQjwNZ5jtuPwmLi.SM1v40a4020THm4T"
 		}
@@ -667,19 +669,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": 0,
-				"climb": 0,
-				"fly": 0,
-				"swim": 0,
-				"walk": 30,
+				"speeds": {
+					"walk": 30,
+					"burrow": 0,
+					"climb": 0,
+					"fly": 0,
+					"swim": 0
+				},
 				"units": "ft",
 				"hover": false
 			},
@@ -687,10 +691,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 0,
-				"blindsight": 0,
-				"tremorsense": 0,
-				"truesight": 0,
+				"ranges": {
+					"darkvision": 0,
+					"blindsight": 0,
+					"tremorsense": 0,
+					"truesight": 0
+				},
 				"units": "ft",
 				"special": ""
 			},

@@ -18,7 +18,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -118,7 +118,7 @@
 				"source": {
 					"custom": "PHB pg. 96",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -219,7 +219,7 @@
 					"chat": ""
 				},
 				"source": {
-					"rules": "2014",
+					"rules": "",
 					"revision": 1,
 					"book": "Elkan 5e"
 				},
@@ -312,13 +312,13 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p><em>A dagger is a short blade balanced both for thrusting and throwing. Daggers, as opposed to common knives, were made for combat. Many improvised weapons use the statistics of a dagger.</em></p><p>Properties:</p><p>&amp;Reference[Finesse], &amp;reference[light weapon], &amp;Reference[Thrown]</p>",
+					"value": "<p><em>A dagger is a short blade balanced both for thrusting and throwing. Daggers, as opposed to common knives, were made for combat. Many improvised weapons use the statistics of a dagger.</em></p><p>Properties:</p><p>&amp;reference[Finesse], &amp;reference[light weapon], &amp;reference[Thrown]</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "elkan5e.com/weapons",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 6,
@@ -600,19 +600,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": 0,
-				"climb": 0,
-				"fly": 0,
-				"swim": 0,
-				"walk": 30,
+				"speeds": {
+					"walk": 30,
+					"burrow": 0,
+					"climb": 0,
+					"fly": 0,
+					"swim": 0
+				},
 				"units": "ft",
 				"hover": false
 			},
@@ -620,10 +622,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 0,
-				"blindsight": 0,
-				"tremorsense": 0,
-				"truesight": 0,
+				"ranges": {
+					"darkvision": 0,
+					"blindsight": 0,
+					"tremorsense": 0,
+					"truesight": 0
+				},
 				"units": "ft",
 				"special": ""
 			},

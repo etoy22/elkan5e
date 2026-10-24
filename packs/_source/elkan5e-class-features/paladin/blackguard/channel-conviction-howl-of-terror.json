@@ -198,7 +198,7 @@
 		"identifier": "avengers-leap",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "",
 			"page": "",
 			"custom": "elkan5e.com/paladin",
@@ -236,9 +236,18 @@
 						"type": "add",
 						"value": "turn=end, label=Howl of Terror, saveAbility=wis, saveDC=@attributes.cha.dc, saveMagic=true",
 						"phase": "initial",
-						"priority": null
+						"priority": null,
+						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "frightened",
+						"phase": "final",
+						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"start": null,
@@ -251,10 +260,8 @@
 			"description": "",
 			"tint": "#ffffff",
 			"transfer": false,
-			"statuses": [
-				"frightened"
-			],
-			"showIcon": 2,
+			"statuses": [],
+			"showIcon": 0,
 			"folder": null,
 			"flags": {
 				"dae": {
@@ -279,7 +286,6 @@
 			"rollAttackPerTarget": "default",
 			"removeAttackDamageButtons": "default",
 			"itemCondition": "",
-			"reactionCondition": "reaction === 'isMoved' && computeDistance(tokenUuid, targetUuid) <= 60 && canvas?.tokens?.get(targetUuid)?.document?.disposition === -1",
 			"otherCondition": "",
 			"effectCondition": ""
 		},

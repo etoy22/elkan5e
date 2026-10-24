@@ -465,11 +465,13 @@
 				"bonus": ""
 			},
 			"movement": {
-				"burrow": null,
-				"climb": null,
-				"fly": null,
-				"swim": 30,
-				"walk": 20,
+				"speeds": {
+					"walk": 20,
+					"burrow": null,
+					"climb": null,
+					"fly": null,
+					"swim": 30
+				},
 				"units": null,
 				"hover": false,
 				"ignoredDifficultTerrain": []
@@ -478,10 +480,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 120,
-				"blindsight": null,
-				"tremorsense": null,
-				"truesight": null,
+				"ranges": {
+					"darkvision": 120,
+					"blindsight": null,
+					"tremorsense": null,
+					"truesight": null
+				},
 				"units": "ft",
 				"special": ""
 			},
@@ -581,7 +585,7 @@
 		},
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"license": "",
 			"page": "",
@@ -736,7 +740,7 @@
 				"identifier": "hold-breath",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",
@@ -797,7 +801,8 @@
 						},
 						"effects": [
 							{
-								"_id": "AvjAIQgudhl4w7PW"
+								"_id": "gzM0UTON8rREMOTE",
+								"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkangrappled000"
 							},
 							{
 								"_id": "CpSRHJDSpfOfiWE7"
@@ -913,7 +918,7 @@
 				"identifier": "bite",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",
@@ -986,64 +991,6 @@
 			"img": "icons/creatures/abilities/fangs-teeth-bite.webp",
 			"effects": [
 				{
-					"name": "Bite [Grappled]",
-					"img": "icons/creatures/abilities/fangs-teeth-bite.webp",
-					"origin": "Compendium.elkan5e.elkan5e-creatures.Actor.mLh381cfvEmIs3xh.Item.mmBite0000000000",
-					"transfer": false,
-					"_id": "AvjAIQgudhl4w7PW",
-					"type": "base",
-					"system": {
-						"changes": []
-					},
-					"disabled": false,
-					"duration": {
-						"value": null,
-						"units": "seconds",
-						"expiry": null,
-						"expired": false
-					},
-					"description": "",
-					"tint": "#ffffff",
-					"statuses": [
-						"grappled"
-					],
-					"flags": {
-						"dae": {
-							"enableCondition": "",
-							"disableCondition": "",
-							"stackable": "noneName",
-							"disableIncapacitated": false,
-							"selfTarget": false,
-							"selfTargetAlways": false,
-							"dontApply": false,
-							"durationExpression": "",
-							"macroRepeat": "none",
-							"specialDuration": []
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "All",
-							"nameOverride": "",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"customCheck": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"wallsBlock": "system",
-							"statuses": []
-						}
-					},
-					"showIcon": 2,
-					"start": null,
-					"folder": null,
-					"_key": "!actors.items.effects!mLh381cfvEmIs3xh.mmBite0000000000.AvjAIQgudhl4w7PW"
-				},
-				{
 					"name": "Bite [Restrained]",
 					"img": "icons/creatures/abilities/fangs-teeth-bite.webp",
 					"origin": "Compendium.elkan5e.elkan5e-creatures.Actor.mLh381cfvEmIs3xh.Item.mmBite0000000000",
@@ -1075,23 +1022,6 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": []
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "All",
-							"nameOverride": "",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"customCheck": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"wallsBlock": "system",
-							"statuses": []
 						}
 					},
 					"start": null,
@@ -1267,7 +1197,7 @@
 				"identifier": "thrash",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",
@@ -1343,11 +1273,19 @@
 					"name": "Thrash",
 					"img": "icons/creatures/abilities/tail-swipe-green.webp",
 					"origin": "Compendium.elkan5e.elkan5e-creatures.Actor.mLh381cfvEmIs3xh.Item.OasrN9J4l2uNX5Z5",
-					"transfer": true,
+					"transfer": false,
 					"_id": "2rdG3AHe5m9mKcKu",
 					"type": "base",
 					"system": {
-						"changes": []
+						"changes": [
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "prone",
+								"phase": "final",
+								"priority": 20
+							}
+						]
 					},
 					"disabled": false,
 					"duration": {
@@ -1358,9 +1296,7 @@
 					},
 					"description": "",
 					"tint": "#ffffff",
-					"statuses": [
-						"prone"
-					],
+					"statuses": [],
 					"flags": {
 						"dae": {
 							"enableCondition": "",
@@ -1373,26 +1309,9 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": []
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "All",
-							"nameOverride": "",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"customCheck": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"wallsBlock": "system",
-							"statuses": []
 						}
 					},
-					"showIcon": 2,
+					"showIcon": 0,
 					"start": null,
 					"folder": null,
 					"_key": "!actors.items.effects!mLh381cfvEmIs3xh.OasrN9J4l2uNX5Z5.2rdG3AHe5m9mKcKu"
@@ -1421,7 +1340,7 @@
 				"identifier": "strong-jaws",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"page": "",
 					"custom": "",
@@ -1434,7 +1353,9 @@
 					"repeatable": false,
 					"level": null
 				},
-				"properties": [],
+				"properties": [
+					"trait"
+				],
 				"requirements": "Crocodile",
 				"type": {
 					"value": "monster",
@@ -1459,9 +1380,9 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.disadvantage.attack.all",
-						"value": 1,
-						"type": "override",
+						"key": "system.rolls.attack.mode",
+						"value": "-1",
+						"type": "add",
 						"phase": "initial"
 					},
 					{

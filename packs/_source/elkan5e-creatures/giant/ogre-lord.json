@@ -44,13 +44,13 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p><span>The ogre swings their club in an arc. All creatures within 10 ft. of a point within reach must succeed on a dexterity saving throw or take damage.</span></p>",
+					"value": "<p><span>The ogre swings their club in an arc. All creatures within 10 ft. of a point within reach must succeed on a dexterity &amp;reference[savingthrow]{saving throw} or take damage.</span></p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "elkan5e.com/weapons",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -198,7 +198,9 @@
 							"parts": []
 						},
 						"save": {
-							"ability": "dex",
+							"ability": [
+								"dex"
+							],
 							"dc": {
 								"calculation": "str",
 								"formula": ""
@@ -229,7 +231,7 @@
 				"source": {
 					"custom": "elkan5e.com/armor",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -295,13 +297,13 @@
 			"folder": null,
 			"system": {
 				"description": {
-					"value": "<p>The Ogre Lord charges, moving through the spaces of all creatures of medium size or smaller, and ending the movement in an empty space up to 30 ft. away. All creatures in the path of the Ogre Lord must succeed on a dexterity save or take damage and be knocked prone (save for half damage).</p>",
+					"value": "<p>The Ogre Lord charges, moving through the spaces of all creatures of medium size or smaller, and ending the movement in an empty space up to 30 ft. away. All creatures in the path of the Ogre Lord must succeed on a dexterity save or take damage and be knocked &amp;reference[prone apply=false]{prone} (save for half damage).</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -411,7 +413,9 @@
 							]
 						},
 						"save": {
-							"ability": "dex",
+							"ability": [
+								"dex"
+							],
 							"dc": {
 								"calculation": "str",
 								"formula": ""
@@ -455,19 +459,6 @@
 							"macroRepeat": "none",
 							"specialDuration": [],
 							"transfer": true
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"radius": null,
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false
 						}
 					},
 					"tint": "#ffffff",
@@ -479,7 +470,7 @@
 					"system": {
 						"changes": [
 							{
-								"key": "system.bonuses.abilities.save",
+								"key": "system.rolls.ability.save.bonus",
 								"value": "+2",
 								"priority": 20,
 								"type": "add"
@@ -501,7 +492,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -520,7 +511,9 @@
 				"prerequisites": {
 					"level": null
 				},
-				"properties": []
+				"properties": [
+					"trait"
+				]
 			},
 			"_key": "!actors.items!JgezEoVspmsBwvpT.aFT7KJ8Jvt0TpR0b"
 		},
@@ -539,7 +532,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -665,13 +658,13 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p>This heavy two-handed mace crushes metal and bone with thunderous force.</p><p>Properties:</p><p>&amp;Reference[Heavy], &amp;Reference[Handed]</p>",
+					"value": "<p>This heavy two-handed mace crushes metal and bone with thunderous force.</p><p>Properties:</p><p>&amp;reference[Heavy], &amp;reference[Handed]</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "elkan5e.com/weapons",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -819,7 +812,9 @@
 							"parts": []
 						},
 						"save": {
-							"ability": "dex",
+							"ability": [
+								"dex"
+							],
 							"dc": {
 								"calculation": "str",
 								"formula": ""
@@ -859,19 +854,6 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"transfer": true
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": null,
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false
 				}
 			},
 			"name": "Elite",
@@ -882,7 +864,7 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.bonuses.abilities.save",
+						"key": "system.rolls.ability.save.bonus",
 						"value": "+2",
 						"priority": 20,
 						"type": "add"
@@ -1007,19 +989,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": 0,
-				"climb": 0,
-				"fly": 0,
-				"swim": 0,
-				"walk": 30,
+				"speeds": {
+					"walk": 30,
+					"burrow": 0,
+					"climb": 0,
+					"fly": 0,
+					"swim": 0
+				},
 				"units": "ft",
 				"hover": false
 			},
@@ -1027,10 +1011,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 60,
-				"blindsight": 0,
-				"tremorsense": 0,
-				"truesight": 0,
+				"ranges": {
+					"darkvision": 60,
+					"blindsight": 0,
+					"tremorsense": 0,
+					"truesight": 0
+				},
 				"units": "ft",
 				"special": ""
 			},

@@ -18,7 +18,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -119,7 +119,7 @@
 				"source": {
 					"custom": "elkan5e.com/armor",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -187,7 +187,7 @@
 			"folder": null,
 			"flags": {
 				"dnd5e": {
-					"sourceId": "Compendium.elkan5e.elkan5e-class-features.fZAjYSugg5JKvpgH",
+					"sourceId": "Compendium.elkan5e.elkan5e-class-features.Item.fZAjYSugg5JKvpgH",
 					"advancementOrigin": "wiRXD95GTAyRRGw4.0u1lokzkujbw3yp0"
 				}
 			},
@@ -199,7 +199,7 @@
 				"source": {
 					"custom": "elkan5e.com/fighter",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -331,19 +331,6 @@
 							"specialDuration": [],
 							"transfer": true,
 							"selfTarget": false
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"radius": null,
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false
 						}
 					},
 					"tint": "#ffffff",
@@ -355,7 +342,7 @@
 					"system": {
 						"changes": [
 							{
-								"key": "system.bonuses.abilities.save",
+								"key": "system.rolls.ability.save.bonus",
 								"value": "+2",
 								"priority": 20,
 								"type": "add"
@@ -375,7 +362,7 @@
 					"chat": ""
 				},
 				"source": {
-					"rules": "2014",
+					"rules": "",
 					"revision": 1,
 					"book": "Elkan 5e"
 				},
@@ -395,7 +382,9 @@
 				"prerequisites": {
 					"level": null
 				},
-				"properties": []
+				"properties": [
+					"trait"
+				]
 			},
 			"_key": "!actors.items!RPJnsAEXEcDdgVFJ.i60X4XbQtwJxuVcF"
 		},
@@ -432,13 +421,13 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p><em>Battleaxes are large, one or two handed axes meant for melee combat.</em></p><p>Properties:</p><p>&amp;Reference[Versatile] (1d10)</p>",
+					"value": "<p><em>Battleaxes are large, one or two handed axes meant for melee combat.</em></p><p>Properties:</p><p>&amp;reference[Versatile] (1d10)</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "elkan5e.com/weapons",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -643,13 +632,13 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p><em>Handaxes are balanced for slashing and for throwing. Designed to be wielded with one hand, they are designed for combat, rather than prolonged use as a tool.</em></p><p>Properties:</p><p>&amp;reference[light weapon], &amp;Reference[Thrown]</p>",
+					"value": "<p><em>Handaxes are balanced for slashing and for throwing. Designed to be wielded with one hand, they are designed for combat, rather than prolonged use as a tool.</em></p><p>Properties:</p><p>&amp;reference[light weapon], &amp;reference[Thrown]</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "elkan5e.com/weapons",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -864,7 +853,7 @@
 					"chat": ""
 				},
 				"source": {
-					"custom": "elkan5e.com/ancestrybackground",
+					"custom": "elkan5e.com/background",
 					"revision": 1,
 					"rules": "",
 					"book": "Elkan 5e",
@@ -1084,19 +1073,6 @@
 					"transfer": true,
 					"selfTarget": false
 				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": null,
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false
-				},
 				"times-up": {
 					"isPassive": true
 				}
@@ -1110,7 +1086,7 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.bonuses.abilities.save",
+						"key": "system.rolls.ability.save.bonus",
 						"value": "+2",
 						"priority": 20,
 						"type": "add"
@@ -1232,19 +1208,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": 0,
-				"climb": 0,
-				"fly": 0,
-				"swim": 0,
-				"walk": "30",
+				"speeds": {
+					"walk": "30",
+					"burrow": 0,
+					"climb": 0,
+					"fly": 0,
+					"swim": 0
+				},
 				"units": "ft",
 				"hover": false,
 				"bonus": "",
@@ -1254,10 +1232,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 0,
-				"blindsight": 0,
-				"tremorsense": 0,
-				"truesight": 0,
+				"ranges": {
+					"darkvision": 0,
+					"blindsight": 0,
+					"tremorsense": 0,
+					"truesight": 0
+				},
 				"units": "ft",
 				"special": ""
 			},

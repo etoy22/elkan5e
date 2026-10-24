@@ -74,19 +74,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": 0,
-				"climb": 0,
-				"fly": 0,
-				"swim": 0,
-				"walk": 20,
+				"speeds": {
+					"walk": 20,
+					"burrow": 0,
+					"climb": 0,
+					"fly": 0,
+					"swim": 0
+				},
 				"units": "ft",
 				"hover": false
 			},
@@ -94,10 +96,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 60,
-				"blindsight": 0,
-				"tremorsense": 0,
-				"truesight": 0,
+				"ranges": {
+					"darkvision": 60,
+					"blindsight": 0,
+					"tremorsense": 0,
+					"truesight": 0
+				},
 				"units": "ft",
 				"special": ""
 			},
@@ -627,12 +631,12 @@
 			"img": "icons/magic/acid/pouring-gas-smoke-liquid.webp",
 			"system": {
 				"description": {
-					"value": "<section><p>If damage reduces the zombie to <strong>0 hit points</strong>, it must make a <strong>Constitution</strong> saving throw with a DC of 5+the damage taken, unless the damage is radiant or from a critical hit. On a success, the zombie drops to <strong>1 hit point</strong> instead.</p></section><p>If damage reduces the zombie to <strong>0 hit points</strong>, it must make a <strong>Constitution</strong> saving throw.</p>",
+					"value": "<section><p>If damage reduces the zombie to <strong>0 hit points</strong>, it must make a <strong>Constitution</strong> &amp;reference[savingthrow]{saving throw} with a DC of 5+the damage taken, unless the damage is radiant or from a critical hit. On a success, the zombie drops to <strong>1 hit point</strong> instead.</p></section><p>If damage reduces the zombie to <strong>0 hit points</strong>, it must make a <strong>Constitution</strong> saving throw.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "",
-					"rules": "2014",
+					"rules": "",
 					"revision": 1,
 					"book": "Elkan 5e"
 				},
@@ -649,7 +653,9 @@
 				"prerequisites": {
 					"level": null
 				},
-				"properties": [],
+				"properties": [
+					"trait"
+				],
 				"identifier": "undead-fortitude",
 				"activities": {},
 				"enchant": {}
@@ -699,7 +705,7 @@
 				},
 				"source": {
 					"custom": "elkan5e.com/wizard",
-					"rules": "2014",
+					"rules": "",
 					"revision": 1,
 					"book": "Elkan 5e"
 				},
@@ -775,14 +781,6 @@
 								{
 									"optional": false,
 									"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.pRDNsHpNLLk1Qq58"
-								},
-								{
-									"optional": false,
-									"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.w3jjiADMUEZNKvsO"
-								},
-								{
-									"optional": false,
-									"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.gR13n0dtX2w8sazy"
 								},
 								{
 									"optional": false,
@@ -862,7 +860,7 @@
 					"book": "Elkan 5e",
 					"page": "",
 					"license": "",
-					"rules": "2014",
+					"rules": "",
 					"revision": 1
 				},
 				"quantity": 1,
@@ -1180,7 +1178,7 @@
 			"img": "icons/skills/melee/shield-block-gray-orange.webp",
 			"system": {
 				"description": {
-					"value": "<p><em>You focus entirely on avoiding attacks.</em></p><p><strong>Action</strong> - Self</p><p>Until the start of your next turn, any attack roll made against you has disadvantage if you can see the attacker, and you make dexterity saving throws with advantage. You lose this benefit if you are &amp;reference[incapacitated] or if your speed drops to 0.</p>",
+					"value": "<p><em>You focus entirely on avoiding attacks.</em></p><p><strong>Action</strong> - Self</p><p>Until the start of your next turn, any &amp;reference[attackrolls]{attack roll} made against you has disadvantage if you can see the attacker, and you make dexterity &amp;reference[savingthrow]{saving throws} with advantage. You lose this benefit if you are &amp;reference[incapacitated] or if your speed drops to 0.</p>",
 					"chat": ""
 				},
 				"source": {
@@ -1316,7 +1314,7 @@
 					"duration": {
 						"value": 7,
 						"units": "seconds",
-						"expiry": "turnStart",
+						"expiry": "sourceStart",
 						"expired": false
 					},
 					"description": "",
@@ -1331,27 +1329,9 @@
 							"stackable": "noneName",
 							"durationExpression": "",
 							"macroRepeat": "none",
-							"specialDuration": [
-								"turnStartSource"
-							],
+							"specialDuration": [],
 							"enableCondition": "",
 							"disableCondition": ""
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"nameOverride": "",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"customCheck": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"wallsBlock": "system"
 						}
 					},
 					"tint": "#ffffff",
@@ -1418,7 +1398,7 @@
 			"img": "icons/skills/social/diplomacy-handshake.webp",
 			"system": {
 				"description": {
-					"value": "<p><em>You can lend your aid to another creature in the completion of a task or help them land a devastating blow against an opponent.</em></p><p><strong>Action</strong> - 1 Creature</p><p>When you use the Help action, you choose one of two effects.</p><ul><li><p>The creature you aid gains advantage on the next skill check they make to perform the task you are helping with, provided that they make the check before the start of your next turn.</p></li><li><p>You aid a friendly creature in attacking a creature within 5 feet of you. If your ally attacks the target before your next turn, their first attack roll is made with advantage.</p></li></ul>",
+					"value": "<p><em>You can lend your aid to another creature in the completion of a task or help them land a devastating blow against an opponent.</em></p><p><strong>Action</strong> - 1 Creature</p><p>When you use the Help action, you choose one of two effects.</p><ul><li><p>The creature you aid gains advantage on the next skill check they make to perform the task you are helping with, provided that they make the check before the start of your next turn.</p></li><li><p>You aid a friendly creature in attacking a creature within 5 feet of you. If your ally attacks the target before your next turn, their first &amp;reference[attackrolls]{attack roll} is made with advantage.</p></li></ul>",
 					"chat": ""
 				},
 				"source": {
@@ -1557,7 +1537,7 @@
 					"duration": {
 						"value": 7,
 						"units": "seconds",
-						"expiry": "turnStart",
+						"expiry": "sourceStart",
 						"expired": false
 					},
 					"description": "",
@@ -1573,27 +1553,10 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": [
-								"turnStartSource",
 								"1Attack"
 							],
 							"enableCondition": "",
 							"disableCondition": ""
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"nameOverride": "",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"customCheck": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"wallsBlock": "system"
 						}
 					},
 					"tint": "#ffffff",
@@ -1622,7 +1585,7 @@
 					"duration": {
 						"value": 7,
 						"units": "seconds",
-						"expiry": "turnStart",
+						"expiry": "sourceStart",
 						"expired": false
 					},
 					"description": "",
@@ -1638,27 +1601,10 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": [
-								"turnStartSource",
 								"isCheck"
 							],
 							"enableCondition": "",
 							"disableCondition": ""
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"nameOverride": "",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"customCheck": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"wallsBlock": "system"
 						}
 					},
 					"tint": "#ffffff",
@@ -1667,8 +1613,8 @@
 					"system": {
 						"changes": [
 							{
-								"key": "flags.midi-qol.advantage.ability.check.all",
-								"value": 1,
+								"key": "system.rolls.ability.check.mode",
+								"value": "1",
 								"priority": 20,
 								"type": "add"
 							}
@@ -1720,7 +1666,7 @@
 			"img": "icons/skills/trades/academics-investigation-puzzles.webp",
 			"system": {
 				"description": {
-					"value": "<p><strong>These actions are all available to all characters, but have no effects to automate in Foundry. You can use any of them at will.</strong></p><p>For a full explanation, see @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7]{Standard Actions}. @UUID[Compendium.elkan5e.elkan5e-class-features.Item.w3jjiADMUEZNKvsO]{Dodge} and @UUID[Compendium.elkan5e.elkan5e-class-features.Item.gR13n0dtX2w8sazy]{Help} are added directly to your character.</p><h2><strong>Actions</strong></h2><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#attack]{Attack}</strong></p><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#dash]{Dash}</strong></p><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#disengage]{Disengage}</strong></p><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#hide]{Hide}</strong></p><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#influence]{Influence}</strong></p><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#ready]{Ready}</strong></p><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#search]{Search}</strong></p><h2>Reactions</h2><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#attack-of-opportunity]{Attack of Opportunity}</strong></p>",
+					"value": "<p><strong>These actions are all available to all characters, but have no effects to automate in Foundry. You can use any of them at will.</strong></p><p>For a full explanation, see @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7]{Standard Actions}. Dodge and Help are added directly to your character.</p><h2><strong>Actions</strong></h2><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#attack]{Attack}</strong></p><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#dash]{Dash}</strong></p><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#disengage]{Disengage}</strong></p><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#hide]{Hide}</strong></p><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#influence]{Influence}</strong></p><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#ready]{Ready}</strong></p><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#search]{Search}</strong></p><h2>Reactions</h2><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#attack-of-opportunity]{Attack of Opportunity}</strong></p>",
 					"chat": ""
 				},
 				"source": {
@@ -1740,7 +1686,9 @@
 					"value": "",
 					"subtype": ""
 				},
-				"properties": [],
+				"properties": [
+					"trait"
+				],
 				"requirements": "Standard Action",
 				"identifier": "standard-actions",
 				"activities": {},
@@ -1821,7 +1769,7 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p><em>Mauls are heavy two-handed crushing weapons, capable of devastating blows.</em></p><p>Properties:</p><p>&amp;Reference[Heavy], &amp;Reference[Handed]</p>",
+					"value": "<p><em>Mauls are heavy two-handed crushing weapons, capable of devastating blows.</em></p><p>Properties:</p><p>&amp;reference[Heavy], &amp;reference[Handed]</p>",
 					"chat": ""
 				},
 				"source": {

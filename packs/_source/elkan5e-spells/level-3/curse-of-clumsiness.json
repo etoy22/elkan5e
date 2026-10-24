@@ -29,10 +29,6 @@
 				},
 				"effects": [
 					{
-						"_id": "8AKA0iuDZXsSnSUd",
-						"onSave": false
-					},
-					{
 						"_id": "x0kQP33fYoo6A7xV",
 						"onSave": false
 					}
@@ -41,10 +37,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -101,7 +101,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><em>You disparage your target with a supernaturally dexterous flourish. Stiff by comparison, your target's movements become disjointed and wavering.</em></p><p><strong>[[/save charisma]]{Charisma Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[cursed]{Cursed}. While cursed in this way, target has &amp;reference[disadvantage] on strength and dexterity skill checks, as well as strength and dexterity saving throws.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"value": "<p><em>You disparage your target with a supernaturally dexterous flourish. Stiff by comparison, your target's movements become disjointed and wavering.</em></p><p><strong>[[/save charisma]]{Charisma Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[cursed]{Cursed}. While cursed in this way, target has &amp;reference[disadvantage] on strength and dexterity skill checks, as well as strength and dexterity &amp;reference[savingthrow]{saving throws}.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "curse-of-clumsiness",
@@ -167,42 +167,50 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.disadvantage.skill.ath",
-						"value": 1,
+						"key": "system.skills.ath.roll.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					},
 					{
-						"key": "flags.midi-qol.disadvantage.skill.acr",
-						"value": 1,
+						"key": "system.skills.acr.roll.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					},
 					{
-						"key": "flags.midi-qol.disadvantage.skill.slt",
-						"value": 1,
+						"key": "system.skills.slt.roll.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					},
 					{
-						"key": "flags.midi-qol.disadvantage.skill.ste",
-						"value": 1,
+						"key": "system.skills.ste.roll.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					},
 					{
-						"key": "flags.midi-qol.grants.disadvantage.save.dex",
-						"value": 1,
+						"key": "system.abilities.dex.save.roll.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					},
 					{
-						"key": "flags.midi-qol.grants.disadvantage.save.str",
-						"value": 1,
+						"key": "system.abilities.str.save.roll.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "cursed",
+						"phase": "final",
+						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -213,9 +221,7 @@
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"statuses": [
-				"cursed"
-			],
+			"statuses": [],
 			"flags": {
 				"dae": {
 					"enableCondition": "",
@@ -229,23 +235,6 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"start": null,

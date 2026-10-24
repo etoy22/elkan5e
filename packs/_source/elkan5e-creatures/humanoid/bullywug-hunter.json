@@ -1,7 +1,7 @@
 {
 	"name": "Bullywug Hunter",
 	"type": "npc",
-	"img": null,
+	"img": "systems/dnd5e/icons/svg/actors/npc.svg",
 	"system": {
 		"currency": {
 			"pp": 0,
@@ -466,11 +466,13 @@
 				"bonus": ""
 			},
 			"movement": {
-				"burrow": null,
-				"climb": null,
-				"fly": null,
-				"swim": 30,
-				"walk": 25,
+				"speeds": {
+					"walk": 25,
+					"burrow": null,
+					"climb": null,
+					"fly": null,
+					"swim": 30
+				},
 				"units": "ft",
 				"hover": false,
 				"ignoredDifficultTerrain": [],
@@ -480,10 +482,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": null,
-				"blindsight": null,
-				"tremorsense": null,
-				"truesight": null,
+				"ranges": {
+					"darkvision": null,
+					"blindsight": null,
+					"tremorsense": null,
+					"truesight": null
+				},
 				"units": null,
 				"special": ""
 			},
@@ -581,7 +585,7 @@
 		},
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"license": "Unlicensed"
 		},
@@ -633,7 +637,7 @@
 		"width": 1,
 		"height": 1,
 		"texture": {
-			"src": null,
+			"src": "systems/dnd5e/icons/svg/actors/npc.svg",
 			"anchorX": 0.5,
 			"anchorY": 0.5,
 			"fit": "contain",
@@ -752,7 +756,7 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p><em>Heavier than a javelin and with greater effective melee reach, a spear can serve as a thrown weapon or a solid melee implement, and can be wielded with two hands in melee combat, allowing for greater punching power. A trident is a kind of spear.</em></p><p>Properties:</p><p>&amp;Reference[Reach] (10 ft.), &amp;Reference[Thrown], &amp;Reference[Versatile] (1d8)</p>",
+					"value": "<p><em>Heavier than a javelin and with greater effective melee reach, a spear can serve as a thrown weapon or a solid melee implement, and can be wielded with two hands in melee combat, allowing for greater punching power. A trident is a kind of spear.</em></p><p>Properties:</p><p>&amp;reference[Reach] (10 ft.), &amp;reference[Thrown], &amp;reference[Versatile] (1d8)</p>",
 					"chat": ""
 				},
 				"source": {
@@ -997,7 +1001,7 @@
 					"duration": {
 						"value": 7,
 						"units": "seconds",
-						"expiry": "turnStart",
+						"expiry": "sourceEnd",
 						"expired": false
 					},
 					"disabled": false,
@@ -1015,28 +1019,9 @@
 							"stackable": "noneName",
 							"durationExpression": "",
 							"macroRepeat": "none",
-							"specialDuration": [
-								"turnEndSource"
-							],
+							"specialDuration": [],
 							"enableCondition": "",
 							"disableCondition": ""
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "Enemy",
-							"nameOverride": "",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"customCheck": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"wallsBlock": "system",
-							"statuses": []
 						}
 					},
 					"tint": "#ffffff",
@@ -1045,10 +1030,10 @@
 					"system": {
 						"changes": [
 							{
-								"key": "system.attributes.movement.all",
-								"value": "/2",
+								"key": "system.attributes.movement.multiplier",
+								"value": "0.5",
 								"priority": 50,
-								"type": "custom"
+								"type": "multiply"
 							}
 						]
 					},
@@ -1312,7 +1297,7 @@
 				"identifier": "amphibious",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "Unlicensed"
 				},
@@ -1354,7 +1339,7 @@
 							"type": "bonus",
 							"value": null,
 							"override": false,
-							"condition": "spending 10 feet of movement"
+							"condition": ""
 						},
 						"consumption": {
 							"scaling": {
@@ -1376,7 +1361,7 @@
 							"override": false,
 							"units": "ft",
 							"special": "",
-							"value": "30"
+							"value": "20"
 						},
 						"target": {
 							"template": {
@@ -1467,7 +1452,7 @@
 				"identifier": "leap",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",

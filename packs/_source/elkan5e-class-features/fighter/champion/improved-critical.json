@@ -30,7 +30,9 @@
 		"prerequisites": {
 			"level": null
 		},
-		"properties": []
+		"properties": [
+			"trait"
+		]
 	},
 	"flags": {
 		"midiProperties": {
@@ -83,23 +85,9 @@
 					"specialDuration": [],
 					"macroRepeat": "none",
 					"disableCondition": "",
-					"disableIncapacitated": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "undefined",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
+					"disableIncapacitated": false,
+					"expiryMode": "default",
+					"phaseStamped": true
 				}
 			},
 			"name": "Improved Critical",
@@ -109,15 +97,13 @@
 				"changes": [
 					{
 						"key": "flags.dnd5e.weaponCriticalThreshold",
-						"value": "@scale.champion.critical",
+						"type": "downgrade",
+						"value": 19,
+						"phase": "final",
 						"priority": 20,
-						"type": "add"
-					},
-					{
-						"key": "flags.dnd5e.meleeCriticalDamageDice",
-						"value": "+@scale.champion.extra",
-						"priority": 20,
-						"type": "add"
+						"_id": "AeenqTWjWtZstoiJ",
+						"conditions": "{}",
+						"replacement": ""
 					}
 				]
 			},

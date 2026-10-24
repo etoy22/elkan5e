@@ -7,6 +7,7 @@ export function formating() {
 	activation();
 	mats();
 	subFeatures();
+	asiWithoutFeat();
 	traits();
 	registerCustomEffectFields();
 	sheets();
@@ -115,6 +116,30 @@ export function subFeatures() {
 	};
 }
 
+/*
+ * Elkan 5e classes grant an Ability Score Improvement and a separate feat at the same level,
+ * so their ASI can't be swapped for a feat (which would give two feats).
+ */
+/**
+ * Prevents Elkan class Ability Score Improvements from being exchanged for a feat.
+ *
+ */
+export function asiWithoutFeat() {
+	const AsiAdvancement = CONFIG.DND5E.advancementTypes.AbilityScoreImprovement?.documentClass;
+	const allowFeat =
+		AsiAdvancement && Object.getOwnPropertyDescriptor(AsiAdvancement.prototype, "allowFeat");
+	if (!allowFeat?.get) return;
+
+	Object.defineProperty(AsiAdvancement.prototype, "allowFeat", {
+		configurable: true,
+		get() {
+			const isElkanClass =
+				this.item.type === "class" && this.item.system.source?.book === "Elkan 5e";
+			return isElkanClass ? false : allowFeat.get.call(this);
+		},
+	});
+}
+
 /**
  * Applies traits rule behavior.
  *
@@ -140,7 +165,7 @@ export function traits() {
 }
 
 /**
- * Registers register Custom Effect Fields configuration.
+ * Registers push resistance and fire damage modification fields with DAE when available.
  *
  */
 function registerCustomEffectFields() {
@@ -152,14 +177,14 @@ function registerCustomEffectFields() {
 				label: game.i18n.localize("elkan5e.push.effects.pushResist"),
 				hint: game.i18n.localize("elkan5e.push.effects.pushResistDescription"),
 			}),
-			CONST.ACTIVE_EFFECT_MODES.CUSTOM,
+			"custom",
 		];
 		specials["system.traits.dm.amount.fire"] = [
 			new StringField({
 				label: game.i18n.localize("elkan5e.burning.effects.fireDamageTaken"),
 				hint: game.i18n.localize("elkan5e.burning.effects.fireDamageTakenDescription"),
 			}),
-			CONST.ACTIVE_EFFECT_MODES.CUSTOM,
+			"custom",
 		];
 	});
 

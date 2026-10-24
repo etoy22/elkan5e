@@ -12,7 +12,7 @@
 		"source": {
 			"book": "Elkan 5e",
 			"page": "",
-			"custom": "elkan5e.com/ancestrybackground",
+			"custom": "elkan5e.com/ancestry",
 			"license": "",
 			"revision": 1,
 			"rules": ""
@@ -122,7 +122,9 @@
 					]
 				},
 				"save": {
-					"ability": "con",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "",
 						"formula": "8 + max(@abilities.cha.mod, @abilities.con.mod) + @prof"
@@ -144,33 +146,15 @@
 	},
 	"effects": [
 		{
-			"statuses": [
-				"restrained"
-			],
+			"statuses": [],
 			"description": "",
 			"duration": {
-				"value": 7,
-				"units": "seconds",
-				"expiry": "turnStart",
+				"value": 1,
+				"units": "rounds",
+				"expiry": "sourceEnd",
 				"expired": false
 			},
 			"flags": {
-				"ActiveAuras": {
-					"isAura": false,
-					"radius": "null",
-					"aura": "None",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"displayTemp": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
-				},
 				"dae": {
 					"selfTarget": false,
 					"selfTargetAlways": false,
@@ -178,9 +162,7 @@
 					"stackable": "noneName",
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"turnEndSource"
-					],
+					"specialDuration": [],
 					"enableCondition": "",
 					"disableCondition": "",
 					"disableIncapacitated": false
@@ -195,9 +177,18 @@
 			"img": "icons/magic/water/projectile-water-wave-teal.webp",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "restrained",
+						"phase": "final",
+						"priority": 20
+					}
+				],
+				"magical": true
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!GOe23WLjVp27aFZl.aTvdCZEVyBl18uoD"

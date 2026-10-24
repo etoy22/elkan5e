@@ -108,14 +108,6 @@ export async function registerGameSettings() {
 		restricted: true,
 	});
 
-	game.settings.register(MODULE_ID, "v13Show", {
-		scope: "world",
-		requiresReload: true,
-		default: true,
-		type: Boolean,
-		restricted: true,
-	});
-
 	game.settings.register(MODULE_ID, "weapons", {
 		name: "elkan5e.weapons.name",
 		hint: "elkan5e.weapons.hint",
@@ -123,6 +115,17 @@ export async function registerGameSettings() {
 		config: true,
 		requiresReload: true,
 		default: false,
+		type: Boolean,
+		restricted: true,
+	});
+
+	game.settings.register(MODULE_ID, "scrollRules", {
+		name: "elkan5e.scrolls.name",
+		hint: "elkan5e.scrolls.hint",
+		scope: "world",
+		config: true,
+		requiresReload: true,
+		default: true,
 		type: Boolean,
 		restricted: true,
 	});

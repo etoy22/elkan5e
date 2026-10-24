@@ -465,11 +465,13 @@
 				"bonus": ""
 			},
 			"movement": {
-				"burrow": null,
-				"climb": 5,
-				"fly": null,
-				"swim": null,
-				"walk": 10,
+				"speeds": {
+					"walk": 10,
+					"burrow": null,
+					"climb": 5,
+					"fly": null,
+					"swim": null
+				},
 				"units": "ft",
 				"hover": false,
 				"ignoredDifficultTerrain": [],
@@ -479,10 +481,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": null,
-				"blindsight": 10,
-				"tremorsense": null,
-				"truesight": null,
+				"ranges": {
+					"darkvision": null,
+					"blindsight": 10,
+					"tremorsense": null,
+					"truesight": null
+				},
 				"units": null,
 				"special": ""
 			},
@@ -576,7 +580,7 @@
 		},
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"license": "",
 			"page": "",
@@ -901,7 +905,9 @@
 							"parts": []
 						},
 						"save": {
-							"ability": [],
+							"ability": [
+								"con"
+							],
 							"dc": {
 								"calculation": "",
 								"formula": "10"
@@ -1015,10 +1021,12 @@
 							"parts": []
 						},
 						"save": {
-							"ability": [],
+							"ability": [
+								"con"
+							],
 							"dc": {
 								"calculation": "",
-								"formula": ""
+								"formula": "10"
 							}
 						},
 						"useConditionText": "",
@@ -1089,7 +1097,7 @@
 				"identifier": "sting",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",
@@ -1174,6 +1182,13 @@
 								"value": "poison",
 								"priority": 20,
 								"type": "custom"
+							},
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "poisoned",
+								"phase": "final",
+								"priority": 20
 							}
 						]
 					},
@@ -1186,9 +1201,7 @@
 					},
 					"description": "",
 					"tint": "#ffffff",
-					"statuses": [
-						"poisoned"
-					],
+					"statuses": [],
 					"flags": {
 						"dae": {
 							"enableCondition": "",
@@ -1201,23 +1214,6 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": []
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "All",
-							"nameOverride": "",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"customCheck": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"wallsBlock": "system",
-							"statuses": []
 						}
 					},
 					"showIcon": 2,
@@ -1263,7 +1259,8 @@
 						},
 						"effects": [
 							{
-								"_id": "uHlZb9jfeJhKCcJg"
+								"_id": "3ItHH8k4ZzREMOTE",
+								"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkangrappled000"
 							}
 						],
 						"range": {
@@ -1363,9 +1360,7 @@
 						"attackRollPerTarget": "default",
 						"fumbleThreshold": 1,
 						"img": "",
-						"appliedEffects": [
-							"uHlZb9jfeJhKCcJg"
-						]
+						"appliedEffects": []
 					}
 				},
 				"uses": {
@@ -1380,7 +1375,7 @@
 				"identifier": "pincer",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",
@@ -1450,66 +1445,7 @@
 			},
 			"folder": "pSCWWdqMX9eUATRJ",
 			"img": "icons/creatures/claws/pincer-crab-red.webp",
-			"effects": [
-				{
-					"name": "Pincer",
-					"img": "icons/creatures/claws/pincer-crab-red.webp",
-					"origin": "Compendium.elkan5e.elkan5e-creatures.Actor.p7jCNcMWY2YLnye5.Item.mmSting000000000",
-					"transfer": false,
-					"_id": "uHlZb9jfeJhKCcJg",
-					"type": "base",
-					"system": {
-						"changes": []
-					},
-					"disabled": false,
-					"duration": {
-						"value": null,
-						"units": "seconds",
-						"expiry": null,
-						"expired": false
-					},
-					"description": "",
-					"tint": "#ffffff",
-					"statuses": [
-						"grappled"
-					],
-					"flags": {
-						"dae": {
-							"enableCondition": "",
-							"disableCondition": "",
-							"stackable": "noneName",
-							"disableIncapacitated": false,
-							"selfTarget": false,
-							"selfTargetAlways": false,
-							"dontApply": false,
-							"durationExpression": "",
-							"macroRepeat": "none",
-							"specialDuration": []
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "All",
-							"nameOverride": "",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"customCheck": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"wallsBlock": "system",
-							"statuses": []
-						}
-					},
-					"showIcon": 2,
-					"start": null,
-					"folder": null,
-					"_key": "!actors.items.effects!p7jCNcMWY2YLnye5.ZxNxLrcyoO8cog5e.uHlZb9jfeJhKCcJg"
-				}
-			],
+			"effects": [],
 			"_id": "ZxNxLrcyoO8cog5e",
 			"flags": {
 				"midi-qol": {

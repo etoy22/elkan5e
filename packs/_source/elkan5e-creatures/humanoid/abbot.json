@@ -18,7 +18,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -134,19 +134,6 @@
 							"specialDuration": [],
 							"transfer": true,
 							"selfTarget": false
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"radius": null,
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false
 						}
 					},
 					"tint": "#ffffff",
@@ -158,7 +145,7 @@
 					"system": {
 						"changes": [
 							{
-								"key": "system.bonuses.abilities.save",
+								"key": "system.rolls.ability.save.bonus",
 								"value": "+2",
 								"priority": 20,
 								"type": "add"
@@ -178,7 +165,7 @@
 					"chat": ""
 				},
 				"source": {
-					"rules": "2014",
+					"rules": "",
 					"revision": 1,
 					"book": "Elkan 5e"
 				},
@@ -198,7 +185,9 @@
 				"prerequisites": {
 					"level": null
 				},
-				"properties": []
+				"properties": [
+					"trait"
+				]
 			},
 			"_key": "!actors.items!uszmtXaLOXkYmV8m.TEnlTGzOItG0tbdO"
 		},
@@ -213,7 +202,7 @@
 					"chat": ""
 				},
 				"source": {
-					"rules": "2014",
+					"rules": "",
 					"revision": 1,
 					"book": "Elkan 5e"
 				},
@@ -281,7 +270,7 @@
 					"chat": ""
 				},
 				"source": {
-					"rules": "2014",
+					"rules": "",
 					"revision": 1,
 					"book": "Elkan 5e"
 				},
@@ -360,7 +349,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -483,13 +472,13 @@
 			"img": "icons/magic/life/heart-hand-gold-green-light.webp",
 			"system": {
 				"description": {
-					"value": "<p><em>Stretching your hand towards a fallen ally, you command your ally to return to life to aid you, if only for a moment.</em></p><p>1 Action - 1 Creature <strong></strong> (30 ft.) - 4th Level -VS - Concentration (1 Minute)*</p><p>Your target must be willing to return to life, and must not have been dead for more than 1 hour.</p><p><strong>Healing</strong> Spell</p><p>Your target is immediately returned to life with half their hit point maximum. They take their turn immediately after yours. They are in full control of their actions. If you lose concentration on this spell, or a minute passes, they return to death.</p><p><strong>At Higher Levels:</strong> When you cast this spell using a spell slot of 6th level or higher, the chosen creature can remain for up to 1 hour. If you cast this spell at 8th level or higher, they can remain for 24 hours.</p><p>This spell does not restore lost limbs, and so a target's body may not be in good enough condition to be raised.</p>",
-					"chat": "1 Action - 1 Creature <strong></strong> (30 ft.) - 4th Level -VS - Concentration (1 Minute)*</p><p>Your target must be willing to return to life, and must not have been dead for more than 1 hour.</p><p><strong>Healing</strong> Spell</p><p>Your target is immediately returned to life with half their hit point maximum. They take their turn immediately after yours. They are in full control of their actions. If you lose concentration on this spell, or a minute passes, they return to death.</p><p><strong>At Higher Levels:</strong> When you cast this spell using a spell slot of 6th level or higher, the chosen creature can remain for up to 1 hour. If you cast this spell at 8th level or higher, they can remain for 24 hours.</p><p>This spell does not restore lost limbs, and so a target's body may not be in good enough condition to be raised.</p>"
+					"value": "<p><em>Stretching your hand towards a fallen ally, you command your ally to return to life to aid you, if only for a moment.</em></p><p>1 Action - 1 Creature <strong></strong> (30 ft.) - 4th Level -VS - &amp;reference[concentration]{Concentration} (1 Minute)*</p><p>Your target must be willing to return to life, and must not have been dead for more than 1 hour.</p><p><strong>Healing</strong> Spell</p><p>Your target is immediately returned to life with half their hit point maximum. They take their turn immediately after yours. They are in full control of their actions. If you lose concentration on this spell, or a minute passes, they return to death.</p><p><strong>At Higher Levels:</strong> When you cast this spell using a spell slot of 6th level or higher, the chosen creature can remain for up to 1 hour. If you cast this spell at 8th level or higher, they can remain for 24 hours.</p><p>This spell does not restore lost limbs, and so a target's body may not be in good enough condition to be raised.</p>",
+					"chat": "1 Action - 1 Creature <strong></strong> (30 ft.) - 4th Level -VS - &amp;reference[concentration]{Concentration} (1 Minute)*</p><p>Your target must be willing to return to life, and must not have been dead for more than 1 hour.</p><p><strong>Healing</strong> Spell</p><p>Your target is immediately returned to life with half their hit point maximum. They take their turn immediately after yours. They are in full control of their actions. If you lose concentration on this spell, or a minute passes, they return to death.</p><p><strong>At Higher Levels:</strong> When you cast this spell using a spell slot of 6th level or higher, the chosen creature can remain for up to 1 hour. If you cast this spell at 8th level or higher, they can remain for 24 hours.</p><p>This spell does not restore lost limbs, and so a target's body may not be in good enough condition to be raised.</p>"
 				},
 				"source": {
 					"custom": "Elkan 5e",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"activation": {
@@ -679,26 +668,14 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": []
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false
 						}
 					},
 					"tint": "#ffffff",
 					"img": "icons/magic/life/heart-hand-gold-green-light.webp",
 					"type": "base",
 					"system": {
-						"changes": []
+						"changes": [],
+						"magical": true
 					},
 					"start": null,
 					"showIcon": 1,
@@ -744,19 +721,6 @@
 							"specialDuration": [],
 							"transfer": false,
 							"durationExpression": ""
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"radius": null,
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"displayTemp": false
 						}
 					},
 					"tint": "#ffffff",
@@ -767,7 +731,8 @@
 					"img": "icons/magic/life/ankh-gold-blue.webp",
 					"type": "base",
 					"system": {
-						"changes": []
+						"changes": [],
+						"magical": true
 					},
 					"start": null,
 					"showIcon": 1,
@@ -917,10 +882,14 @@
 							"override": false
 						},
 						"target": {
-							"type": "creature",
-							"value": 1,
-							"units": "ft",
-							"width": null,
+							"affects": {
+								"type": "creature",
+								"count": 1
+							},
+							"template": {
+								"units": "ft",
+								"width": null
+							},
 							"override": false,
 							"prompt": true
 						},
@@ -960,8 +929,7 @@
 							"stackable": "none",
 							"transfer": false,
 							"specialDuration": [
-								"None",
-								"turnEndSource"
+								"None"
 							],
 							"macroRepeat": "none",
 							"selfTarget": false,
@@ -971,31 +939,13 @@
 							"disableIncapacitated": false,
 							"enableCondition": "",
 							"disableCondition": ""
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"ignoreSelf": false,
-							"hidden": false,
-							"height": false,
-							"alignment": "",
-							"type": "",
-							"aura": "None",
-							"radius": "",
-							"save": "",
-							"savedc": null,
-							"hostile": false,
-							"onlyOnce": false,
-							"displayTemp": false,
-							"nameOverride": "",
-							"customCheck": "",
-							"wallsBlock": "system"
 						}
 					},
 					"disabled": false,
 					"duration": {
 						"value": 7,
 						"units": "seconds",
-						"expiry": "turnStart",
+						"expiry": "sourceEnd",
 						"expired": false
 					},
 					"tint": "#ffffff",
@@ -1014,7 +964,8 @@
 								"priority": 20,
 								"type": "custom"
 							}
-						]
+						],
+						"magical": true
 					},
 					"start": null,
 					"showIcon": 1,
@@ -1063,7 +1014,7 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p><em>You command a mote of light to seek your target. Upon contact, the bolt sears flesh and causes the creature's weak spots to glitter.</em></p><p><strong>Ranged Spell Attack</strong></p><ul><li><p><strong>Hit:</strong> Target takes [[/damage 4d6 radiant]] damage* and the next attack roll made against this target has advantage.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d6 radiant]] for each spell level above 1st.</p>",
+					"value": "<p><em>You command a mote of light to seek your target. Upon contact, the bolt sears flesh and causes the creature's weak spots to glitter.</em></p><p><strong>Ranged Spell Attack</strong></p><ul><li><p><strong>Hit:</strong> Target takes [[/damage 4d6 radiant]] damage* and the next &amp;reference[attackrolls]{attack roll} made against this target has advantage.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d6 radiant]] for each spell level above 1st.</p>",
 					"chat": ""
 				},
 				"source": {
@@ -1157,10 +1108,14 @@
 							"override": false
 						},
 						"target": {
-							"type": "creature",
-							"value": 1,
-							"units": "ft",
-							"width": null,
+							"affects": {
+								"type": "creature",
+								"count": 1
+							},
+							"template": {
+								"units": "ft",
+								"width": null
+							},
 							"override": false,
 							"prompt": true
 						},
@@ -1363,10 +1318,14 @@
 							"override": false
 						},
 						"target": {
-							"type": "creature",
-							"value": 1,
-							"units": "ft",
-							"width": null,
+							"affects": {
+								"type": "creature",
+								"count": 1
+							},
+							"template": {
+								"units": "ft",
+								"width": null
+							},
 							"override": false,
 							"prompt": true
 						},
@@ -1412,9 +1371,7 @@
 					"flags": {
 						"dae": {
 							"stackable": "none",
-							"specialDuration": [
-								"None"
-							],
+							"specialDuration": [],
 							"transfer": false,
 							"macroRepeat": "none",
 							"selfTarget": false,
@@ -1424,29 +1381,13 @@
 							"dontApply": false,
 							"enableCondition": "",
 							"disableCondition": ""
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"radius": "30",
-							"aura": "Allies",
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": true,
-							"hidden": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"displayTemp": false,
-							"nameOverride": "",
-							"customCheck": "",
-							"wallsBlock": "system"
 						}
 					},
 					"disabled": false,
 					"duration": {
-						"value": 60,
+						"value": null,
 						"units": "seconds",
-						"expiry": "turnStart",
+						"expiry": null,
 						"expired": false
 					},
 					"tint": "#ffffff",
@@ -1460,16 +1401,16 @@
 					"system": {
 						"changes": [
 							{
-								"key": "flags.midi-qol.advantage.ability.save.wis",
-								"value": 1,
+								"key": "system.abilities.wis.save.roll.mode",
+								"value": "1",
 								"priority": 20,
-								"type": "override"
+								"type": "add"
 							},
 							{
-								"key": "flags.midi-qol.advantage.deathSave",
-								"value": 1,
+								"key": "system.attributes.death.roll.mode",
+								"value": "1",
 								"priority": 20,
-								"type": "override"
+								"type": "add"
 							},
 							{
 								"key": "flags.midi-qol.max.damage.heal",
@@ -1477,7 +1418,8 @@
 								"priority": 20,
 								"type": "override"
 							}
-						]
+						],
+						"magical": true
 					},
 					"start": null,
 					"showIcon": 1,
@@ -1524,7 +1466,7 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p><em>You hum a soft chant that magically carries over your surroundings, emboldening your allies and allowing them to recover quickly.</em></p><p><strong>Buff</strong></p><ul><li><p>Allies in radius have &amp;reference[advantage] on wisdom saving throws and &amp;reference[death saving throws].</p></li><li><p>Allies regain the maximum number of hit points possible from any healing.</p></li></ul>",
+					"value": "<p><em>You hum a soft chant that magically carries over your surroundings, emboldening your allies and allowing them to recover quickly.</em></p><p><strong>Buff</strong></p><ul><li><p>Allies in radius have &amp;reference[advantage] on wisdom &amp;reference[savingthrow]{saving throws} and &amp;reference[death saving throws].</p></li><li><p>Allies regain the maximum number of hit points possible from any healing.</p></li></ul>",
 					"chat": ""
 				},
 				"source": {
@@ -1616,15 +1558,7 @@
 							"concentration": false,
 							"override": false
 						},
-						"effects": [
-							{
-								"_id": "RtkJJbNnHgYVRGhK",
-								"level": {
-									"min": null,
-									"max": null
-								}
-							}
-						],
+						"effects": [],
 						"range": {
 							"override": false
 						},
@@ -1636,7 +1570,7 @@
 							"override": true,
 							"prompt": true,
 							"affects": {
-								"type": "self",
+								"type": "ally",
 								"special": ""
 							},
 							"template": {
@@ -1669,21 +1603,28 @@
 							}
 						},
 						"regionBehavior": {
-							"dispositionFilter": 0,
-							"rules": [
-								{
-									"trigger": "entry",
-									"action": "applyEffect",
-									"targetId": "RtkJJbNnHgYVRGhK"
-								},
-								{
-									"trigger": "exit",
-									"action": "removeEffect",
-									"targetId": "RtkJJbNnHgYVRGhK"
-								}
-							],
+							"dispositionFilter": 1,
+							"rules": [],
 							"enabled": true
-						}
+						},
+						"behaviors": [
+							{
+								"name": "",
+								"_id": "dt2TbnlqgCwSK8BN",
+								"type": "applyActiveEffect",
+								"config": {
+									"effects": [
+										"Compendium.elkan5e.elkan5e-spells.Item.Y9ujzi4f01yflTyj.ActiveEffect.RtkJJbNnHgYVRGhK"
+									],
+									"sizes": [],
+									"types": []
+								},
+								"level": {
+									"min": null,
+									"max": null
+								}
+							}
+						]
 					}
 				},
 				"identifier": "beacon-of-hope"
@@ -1836,10 +1777,14 @@
 							"override": false
 						},
 						"target": {
-							"type": "creature",
-							"value": 1,
-							"units": "ft",
-							"width": null,
+							"affects": {
+								"type": "creature",
+								"count": 1
+							},
+							"template": {
+								"units": "ft",
+								"width": null
+							},
 							"override": false,
 							"prompt": true
 						},
@@ -1895,25 +1840,6 @@
 							"selfTargetAlways": false,
 							"disableIncapacitated": false,
 							"dontApply": false
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"ignoreSelf": false,
-							"hidden": false,
-							"height": false,
-							"alignment": "",
-							"type": "",
-							"aura": "None",
-							"radius": "",
-							"save": "",
-							"savedc": null,
-							"hostile": false,
-							"onlyOnce": false,
-							"time": "None",
-							"displayTemp": false,
-							"nameOverride": "",
-							"customCheck": "",
-							"wallsBlock": "system"
 						}
 					},
 					"disabled": false,
@@ -1934,16 +1860,16 @@
 					"system": {
 						"changes": [
 							{
-								"key": "system.bonuses.abilities.save",
+								"key": "system.rolls.ability.save.bonus",
 								"value": "+1d4",
 								"priority": null,
 								"type": "add"
 							},
 							{
-								"key": "system.bonuses.mwak.attack",
+								"key": "system.rolls.attack.mwak.bonus",
 								"value": "+1d4",
 								"priority": null,
-								"type": "custom"
+								"type": "add"
 							},
 							{
 								"key": "macro.tokenMagic",
@@ -1952,24 +1878,25 @@
 								"type": "custom"
 							},
 							{
-								"key": "system.bonuses.rsak.attack",
+								"key": "system.rolls.attack.rsak.bonus",
 								"value": "+1d4",
 								"priority": null,
 								"type": "add"
 							},
 							{
-								"key": "system.bonuses.msak.attack",
+								"key": "system.rolls.attack.msak.bonus",
 								"value": "+1d4",
 								"priority": null,
 								"type": "add"
 							},
 							{
-								"key": "system.bonuses.rwak.attack",
+								"key": "system.rolls.attack.rwak.bonus",
 								"value": "+1d4",
 								"priority": null,
 								"type": "add"
 							}
-						]
+						],
+						"magical": true
 					},
 					"start": null,
 					"showIcon": 1,
@@ -2039,7 +1966,7 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p><em>Holding out a holy or profane symbol, you call upon its power to empower your allies.</em></p><p><strong>Buff</strong></p><ul><li><p>The targets can roll [[/r 1d4]] and add the number rolled to all attack rolls and saving throws, rolling 1d4 again for every roll.</p></li></ul><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 1st.</p>",
+					"value": "<p><em>Holding out a holy or profane symbol, you call upon its power to empower your allies.</em></p><p><strong>Buff</strong></p><ul><li><p>The targets can roll [[/r 1d4]] and add the number rolled to all &amp;reference[attackrolls]{attack rolls} and &amp;reference[savingthrow]{saving throws}, rolling 1d4 again for every roll.</p></li></ul><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 1st.</p>",
 					"chat": ""
 				},
 				"source": {
@@ -2147,10 +2074,14 @@
 							"override": false
 						},
 						"target": {
-							"type": "creature",
-							"value": 1,
-							"units": "ft",
-							"width": null,
+							"affects": {
+								"type": "creature",
+								"count": 1
+							},
+							"template": {
+								"units": "ft",
+								"width": null
+							},
 							"override": false,
 							"prompt": true
 						},
@@ -2319,10 +2250,14 @@
 							"override": false
 						},
 						"target": {
-							"type": "creature",
-							"value": 1,
-							"units": "ft",
-							"width": null,
+							"affects": {
+								"type": "creature",
+								"count": 1
+							},
+							"template": {
+								"units": "ft",
+								"width": null
+							},
 							"override": false,
 							"prompt": true
 						},
@@ -2390,19 +2325,6 @@
 					"transfer": true,
 					"selfTarget": false
 				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": null,
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false
-				},
 				"times-up": {
 					"isPassive": true
 				}
@@ -2416,7 +2338,7 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.bonuses.abilities.save",
+						"key": "system.rolls.ability.save.bonus",
 						"value": "+2",
 						"priority": 20,
 						"type": "add"
@@ -2541,19 +2463,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": 0,
-				"climb": 0,
-				"fly": 0,
-				"swim": 0,
-				"walk": 30,
+				"speeds": {
+					"walk": 30,
+					"burrow": 0,
+					"climb": 0,
+					"fly": 0,
+					"swim": 0
+				},
 				"units": "ft",
 				"hover": false
 			},
@@ -2561,10 +2485,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 0,
-				"blindsight": 0,
-				"tremorsense": 0,
-				"truesight": 0,
+				"ranges": {
+					"darkvision": 0,
+					"blindsight": 0,
+					"tremorsense": 0,
+					"truesight": 0
+				},
 				"units": "ft",
 				"special": ""
 			},

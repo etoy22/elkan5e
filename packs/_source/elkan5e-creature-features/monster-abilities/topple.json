@@ -3,7 +3,7 @@
 	"type": "feat",
 	"system": {
 		"description": {
-			"value": "<p>If the kobold is burrowing underneath a creature of large size or smaller, and the kobold is within 10 ft. of the surface, they can attempt to collapse the ground underneath their target's feet. The target must succeed on a dexterity saving throw or fall prone. The ground the kobold disturbed becomes difficult terrain if it wasn't already.</p><p><span>When the kobold uses Topple, they make themselves vulnerable to attacks from the surface. The kobold benefits from half-cover, but can be struck as if in the 5 ft. cube beneath the kobold's target.</span></p>",
+			"value": "<p><strong>Action</strong> - 1 Creature (10 ft.)</p><p>If the [[lookup @name lowercase]] is burrowing underneath a creature of Large size or smaller and is within 10 ft. of the surface, it can attempt to collapse the ground beneath that creature's feet.</p><p><strong>[[/save dexterity]]{Dexterity Save}</strong></p><ul><li><p><strong>Failure:</strong> The target has the &amp;reference[Prone apply=false] condition. The ground the [[lookup @name lowercase]] disturbed becomes &amp;reference[difficult terrain] if it wasn't already.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p>When the [[lookup @name lowercase]] uses Topple, it makes itself vulnerable to attacks from the surface: it benefits from &amp;reference[half cover], but can be struck as if in the 5-foot cube beneath its target.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -55,7 +55,12 @@
 				"effects": [
 					{
 						"_id": "DM6X3uYU6m0Rs3V7",
-						"onSave": false
+						"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanprone000000",
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
 					}
 				],
 				"range": {
@@ -93,7 +98,9 @@
 					"parts": []
 				},
 				"save": {
-					"ability": "",
+					"ability": [
+						"dex"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -109,82 +116,7 @@
 		"properties": []
 	},
 	"img": "icons/magic/earth/projectile-stone-landslide.webp",
-	"effects": [
-		{
-			"flags": {
-				"ActiveAuras": {
-					"isAura": false,
-					"radius": null,
-					"aura": "None",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"displayTemp": false
-				},
-				"core": {
-					"statusId": "combat-utility-belt.prone"
-				}
-			},
-			"duration": {
-				"value": null,
-				"units": "seconds",
-				"expiry": null,
-				"expired": false
-			},
-			"_id": "DM6X3uYU6m0Rs3V7",
-			"disabled": false,
-			"origin": null,
-			"tint": "#ffffff",
-			"transfer": false,
-			"name": "Prone",
-			"description": "",
-			"statuses": [],
-			"img": "modules/combat-utility-belt/icons/prone.svg",
-			"type": "base",
-			"system": {
-				"changes": [
-					{
-						"key": "flags.midi-qol.grants.advantage.attack.mwak",
-						"value": 1,
-						"priority": null,
-						"type": "override"
-					},
-					{
-						"key": "flags.midi-qol.grants.advantage.attack.msak",
-						"value": 1,
-						"priority": null,
-						"type": "override"
-					},
-					{
-						"key": "flags.midi-qol.grants.disadvantage.attack.rwak",
-						"value": 1,
-						"priority": null,
-						"type": "override"
-					},
-					{
-						"key": "flags.midi-qol.grants.disadvantage.attack.rsak",
-						"value": 1,
-						"priority": null,
-						"type": "override"
-					},
-					{
-						"key": "flags.midi-qol.disadvantage.attack.all",
-						"value": 1,
-						"priority": null,
-						"type": "override"
-					}
-				]
-			},
-			"start": null,
-			"showIcon": 1,
-			"folder": null,
-			"_key": "!items.effects!XWaqFDNXv3QbdAN5.DM6X3uYU6m0Rs3V7"
-		}
-	],
+	"effects": [],
 	"folder": "tYfPJpCdZlpfgNlV",
 	"flags": {
 		"midi-qol": {

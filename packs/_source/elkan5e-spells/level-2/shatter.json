@@ -6,7 +6,7 @@
 	"folder": "6J3i75lfD1J0xYwA",
 	"flags": {
 		"midi-qol": {
-			"onUseMacroName": "[preambleComplete]ActivityMacro-dnd5eactivity000",
+			"onUseMacroName": "",
 			"effectActivation": false,
 			"AoETargetType": "any",
 			"AoETargetTypeIncludeSelf": true,
@@ -56,7 +56,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You tap on a chip of mica and say a word of power, the tiny vibrations in the stone replicated at many times the strength at a location you choose, blasting your foes with a painfully intense ringing noise and an eruption of force.</em></p><p><strong>[[/save con]]{Constitution Save}</strong></p><p>&amp;reference[Construct]{Constructs} have &amp;reference[disadvantage] on this saving throw.</p><ul><li><p><strong>Failure:</strong> Targets take [[/damage 3d8 thunder]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d8 thunder]]{1d8} for each spell level above 2nd.</p>",
+			"value": "<p><em>You tap on a chip of mica and say a word of power, the tiny vibrations in the stone replicated at many times the strength at a location you choose, blasting your foes with a painfully intense ringing noise and an eruption of force.</em></p><p><strong>[[/save con]]{Constitution Save}</strong></p><p>&amp;reference[Construct]{Constructs} have &amp;reference[disadvantage] on this &amp;reference[savingthrow]{saving throw}.</p><ul><li><p><strong>Failure:</strong> Targets take [[/damage 3d8 thunder]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d8 thunder]]{1d8} for each spell level above 2nd.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -148,10 +148,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -183,15 +187,17 @@
 					]
 				},
 				"save": {
-					"ability": "con",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
 					}
 				},
 				"macroData": {
-					"name": "Shatter",
-					"command": "return await elkan5e.macros.spells.shatter(workflow);"
+					"name": "",
+					"command": ""
 				},
 				"flags": {
 					"dae": {
@@ -200,7 +206,7 @@
 							"img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
 							"type": "script",
 							"scope": "global",
-							"command": "return await elkan5e.macros.spells.shatter(workflow);",
+							"command": "",
 							"author": "vHqSHJMdmEO6Mk2C",
 							"_id": null,
 							"folder": null

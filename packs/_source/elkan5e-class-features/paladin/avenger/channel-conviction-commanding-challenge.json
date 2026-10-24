@@ -251,13 +251,13 @@
 			"max": "1"
 		},
 		"description": {
-			"value": "<p><strong>Bonus Action</strong> - 1 Creature (30 ft.) - 10 Minutes - 1/Short Rest - Magical</p><p><strong>[[/save wisdom]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[goaded] by you. While goaded in this way, if they damage a creature other than you, they take [[/damage 2d8 radiant]] damage. A creature can only take this damage once per turn. This effect ends if you become &amp;reference[incapacitated] or die or if you or your target move more than 30 ft. away from each other.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"value": "<p><strong>Bonus Action</strong> - 1 Creature (30 ft.) - 10 Minutes - 1/Short Rest - Magical</p><p><strong>[[/save wisdom]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[goaded] by you. While goaded in this way, if they damage a creature other than you, they take [[/damage 2d8 radiant]] damage. A creature can only take this damage once per turn. This effect ends if you become &amp;reference[incapacitated apply=false] or die or if you or your target move more than 30 ft. away from each other.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "commanding-challenge",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "",
 			"page": "",
 			"custom": "elkan5e.com/paladin",
@@ -288,7 +288,16 @@
 			"_id": "Zq28sHNQfcXAsq9I",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "goaded",
+						"phase": "final",
+						"priority": 20
+					}
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -300,9 +309,7 @@
 			"description": "",
 			"origin": null,
 			"tint": "#ffffff",
-			"statuses": [
-				"goaded"
-			],
+			"statuses": [],
 			"flags": {
 				"dae": {
 					"enableCondition": "",
@@ -316,26 +323,9 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!MUXZKqXOk5k1w8pS.Zq28sHNQfcXAsq9I"

@@ -1,4 +1,5 @@
 import {
+	deathHazeEnterRage,
 	rage,
 	relentlessRage,
 	wildBlood,
@@ -8,39 +9,61 @@ import {
 	updateBloodragerOnLevelup,
 	handleBloodragerDelete,
 } from "./module/classes/barbarian.mjs";
+import { swarmDamage } from "./module/creatures/swarm.mjs";
 import { undeadFortitude } from "./module/creatures/undead.mjs";
 import {
+	blessedHealing,
 	healingOverflow,
 	infusedHealer,
 	shadowRefuge,
 	holyStrike,
 } from "./module/classes/cleric.mjs";
-import { archDruid, lurkingFogDarkness } from "./module/classes/druid.mjs";
-import { secondWind } from "./module/classes/fighter.mjs";
+import { archDruid, lurkingFogDarkness, shiftingSandsTurnEnd } from "./module/classes/druid.mjs";
+import { improvedCriticalDamage, secondWind } from "./module/classes/fighter.mjs";
 import {
 	elementalAttunement,
-	hijackShadow,
-	meldWithShadows,
 	onCombatTurnChange,
+	stillnessOfMind,
+	stillnessOfMindTurnStart,
 } from "./module/classes/monk.mjs";
-import { slicingBlow, sneakAttack } from "./module/classes/rogue.mjs";
+import {
+	cleansingTouch,
+	strickeningGaze,
+	strickeningGazePrompt,
+} from "./module/classes/paladin.mjs";
+import {
+	assassinsReflexesEnd,
+	assassinsReflexesStart,
+	finishingBlow,
+	slicingBlow,
+	sneakAttack,
+} from "./module/classes/rogue.mjs";
 import {
 	carefulSpell,
 	delayedDuration,
 	delayedItem,
+	elementalInfusion,
+	markSavantFeatureUsed,
+	savantSpellReminder,
 	wildSurge,
 } from "./module/classes/sorcerer.mjs";
-import { initWarlockSpellSlot, onWarlockFilterInvocations } from "./module/classes/warlock.mjs";
+import {
+	initWarlockSpellSlot,
+	onWarlockFilterInvocations,
+	powerOfLoveAndFearApply,
+	powerOfLoveAndFearPrompt,
+	repellingBlast,
+} from "./module/classes/warlock.mjs";
 import {
 	markForDeath,
 	markOfAffliction,
 	markOfThorns,
+	moveMarkForDeath,
 	preciseHunterAdvantage,
 } from "./module/classes/ranger.mjs";
 import {
 	lifeDrainGraveguard,
 	necromanticSurge,
-	overchannelArm,
 	overchannelOnDamageRoll,
 	overchannelOnLongRest,
 	soulConduit,
@@ -51,15 +74,22 @@ import {
 	undeadNature,
 	initFeatIdentifierMap,
 	onFilterOwnedFeats,
+	marksmanCover,
+	marksmanLongRange,
 } from "./module/feats.mjs";
-import { armor, updateBarbarianDefense } from "./module/rules/armor.mjs";
+import { sailorVigilance } from "./module/origin/background.mjs";
+import { armor } from "./module/rules/armor.mjs";
 import { speed } from "./module/rules/speed.mjs";
 import {
 	conditions,
 	conditionsReady,
 	handleHazardExhaustion,
 } from "./module/rules/condition/setup.mjs";
-import { darknessAttackDisadvantage } from "./module/rules/condition/vision.mjs";
+import {
+	darknessAttackDisadvantage,
+	refreshSeeThroughDarkness,
+	registerSeeThroughDarkness,
+} from "./module/rules/condition/vision.mjs";
 import {
 	grapple,
 	handleDeadGrapplePrompt,
@@ -72,8 +102,20 @@ import {
 	quenchBurning,
 } from "./module/rules/condition/burning.mjs";
 import { push } from "./module/rules/condition/push.mjs";
+import { fixRegionTurnEnd } from "./module/rules/region-turn-end.mjs";
+import { endEffectsOnRegionExit } from "./module/rules/region-exit.mjs";
+import {
+	applyActorModifyItemRiders,
+	applyModifyItemRiders,
+	backfillModifyItemRiders,
+	removeModifyItemRiders,
+} from "./module/shared/modify-item-riders.mjs";
 import { formating } from "./module/rules/format.mjs";
 import { language } from "./module/rules/language.mjs";
+import {
+	registerMidiFallback,
+	registerMidiFallbackDamageHook,
+} from "./module/rules/midi-fallback.mjs";
 import { refs } from "./module/rules/references.mjs";
 import { scroll } from "./module/rules/scroll.mjs";
 import { skills } from "./module/rules/skills.mjs";
@@ -91,6 +133,7 @@ import {
 import { startDialog } from "./module/settings/dialog.mjs";
 import { gameSettingRegister, gameSettingsMigrate } from "./module/settings/game-settings.mjs";
 import {
+	enforceExcludedTargets,
 	deleteRegionLights,
 	handleDeleteMeasuredTemplate,
 	handleUpdateMeasuredTemplate,
@@ -104,6 +147,8 @@ import * as Level2 from "./module/spells/level-2.mjs";
 import * as Level3 from "./module/spells/level-3.mjs";
 import * as Level4 from "./module/spells/level-4.mjs";
 import * as Level5 from "./module/spells/level-5.mjs";
+import * as Level6 from "./module/spells/level-6.mjs";
+import * as Level7 from "./module/spells/level-7.mjs";
 import * as Level8 from "./module/spells/level-8.mjs";
 import * as Level9 from "./module/spells/level-9.mjs";
 
@@ -114,6 +159,8 @@ const Spells = {
 	...Level3,
 	...Level4,
 	...Level5,
+	...Level6,
+	...Level7,
 	...Level8,
 	...Level9,
 };
@@ -123,6 +170,9 @@ const Spells = {
  *
  */
 function registerHooks() {
+	// Must come before the other preRollDamageV2 handlers below.
+	registerMidiFallbackDamageHook();
+
 	Hooks.once("socketlib.ready", () => {
 		try {
 			registerElkan5eSocket();
@@ -136,6 +186,7 @@ function registerHooks() {
 			console.log("Elkan 5e | Initializing Elkan 5e");
 			await gameSettingRegister();
 			initWarlockSpellSlot();
+			registerSeeThroughDarkness();
 
 			conditions();
 			tools();
@@ -147,13 +198,15 @@ function registerHooks() {
 			skills();
 			refs();
 			speed();
+			registerMidiFallback();
 
 			// Hides pact-specific invocations from advancement dialogs for actors
-			// that don't have the corresponding pact boon.
-			Hooks.on("renderApplication", onWarlockFilterInvocations);
+			// that don't have the corresponding pact boon. Advancement steps are
+			// ApplicationV2 flows, which don't fire renderApplication.
+			Hooks.on("renderAdvancementFlow", onWarlockFilterInvocations);
 
 			// Hides already-owned (non-repeatable) feats from advancement dialogs.
-			Hooks.on("renderApplication", onFilterOwnedFeats);
+			Hooks.on("renderAdvancementFlow", onFilterOwnedFeats);
 
 			Hooks.on("renderAdvancementManager", async (app, ..._rest) => {
 				try {
@@ -205,11 +258,15 @@ function registerHooks() {
 				await initFeatIdentifierMap();
 				conditionsReady();
 				updateToolTypes();
+				fixRegionTurnEnd();
 				await startDialog();
+				await backfillModifyItemRiders();
 
 				// Registers custom DAE auto-fields so they appear in the DAE field picker.
 				globalThis.DAE?.addAutoFields?.([
+					"flags.elkan5e.marksman",
 					"flags.elkan5e.pushResist",
+					"flags.elkan5e.swarm",
 					"flags.elkan5e.undeadFortitude",
 					"flags.elkan5e.undeadFortitudeDCModifier",
 				]);
@@ -239,29 +296,130 @@ function registerHooks() {
 			console.error("Elkan 5e | Error in Wild Blood postUseActivity hook:", error);
 		}
 		try {
-			overchannelArm(activity);
+			soulConduit(activity, usageConfig);
 		} catch (error) {
-			console.error("Elkan 5e | Error in Overchannel postUseActivity hook:", error);
+			console.error("Elkan 5e | Error in Soul Conduit postUseActivity hook:", error);
+		}
+		try {
+			shadowRefuge(activity, usageConfig);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Shadow Refuge postUseActivity hook:", error);
+		}
+		cleansingTouch(activity, usageConfig).catch((error) => {
+			console.error("Elkan 5e | Error in Cleansing Touch postUseActivity hook:", error);
+		});
+		strickeningGaze(activity, usageConfig).catch((error) => {
+			console.error("Elkan 5e | Error in Strickening Gaze postUseActivity hook:", error);
+		});
+		stillnessOfMind(activity).catch((error) => {
+			console.error("Elkan 5e | Error in Stillness of Mind postUseActivity hook:", error);
+		});
+		moveMarkForDeath(activity).catch((error) => {
+			console.error("Elkan 5e | Error in Mark for Death postUseActivity hook:", error);
+		});
+		markSavantFeatureUsed(activity).catch((error) => {
+			console.error("Elkan 5e | Error in savant feature postUseActivity hook:", error);
+		});
+		Level1.shadowStrikeReturn(activity).catch((error) => {
+			console.error("Elkan 5e | Error in Shadow Strike postUseActivity hook:", error);
+		});
+		Level1.shadowStrikeAdvantage(activity).catch((error) => {
+			console.error("Elkan 5e | Error in Shadow Strike advantage hook:", error);
+		});
+	});
+
+	Hooks.on("dnd5e.preTeleport", (activity, config) => {
+		try {
+			return Level1.shadowStrikePreReturn(activity, config);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Shadow Strike preTeleport hook:", error);
 		}
 	});
 
-	Hooks.on("midi-qol.preambleComplete", async (workflow) => {
+	Hooks.on("dnd5e.teleport", (activity, plans) => {
+		try {
+			Level1.shadowStrikeRecordOrigin(activity, plans);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Shadow Strike teleport hook:", error);
+		}
+	});
+
+	Hooks.on("midi-qol.targetingComplete", async (workflow) => {
 		try {
 			await carefulSpell(workflow);
 		} catch (error) {
-			console.error("Elkan 5e | Error in Careful Spell preambleComplete hook:", error);
+			console.error("Elkan 5e | Error in Careful Spell targetingComplete hook:", error);
+		}
+
+		try {
+			await powerOfLoveAndFearPrompt(workflow);
+		} catch (error) {
+			console.error(
+				"Elkan 5e | Error in Power of Love and Fear targetingComplete hook:",
+				error,
+			);
 		}
 
 		try {
 			await necromanticSurge(workflow);
 		} catch (error) {
-			console.error("Elkan 5e | Error in Necromantic Surge preambleComplete hook:", error);
+			console.error("Elkan 5e | Error in Necromantic Surge targetingComplete hook:", error);
 		}
 
 		try {
 			await Level4.blight(workflow);
 		} catch (error) {
-			console.error("Elkan 5e | Error in Blight preambleComplete hook:", error);
+			console.error("Elkan 5e | Error in Blight targetingComplete hook:", error);
+		}
+	});
+
+	Hooks.on("midi-qol.preTargetSave", (target, workflow, saveDetails) => {
+		try {
+			Level2.shatter(target, workflow, saveDetails);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Shatter preTargetSave hook:", error);
+		}
+		try {
+			Level3.spectralLance(target, workflow, saveDetails);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Spectral Lance preTargetSave hook:", error);
+		}
+		try {
+			Level6.sunbeam(target, workflow, saveDetails);
+			Level6.disintegrate(target, workflow, saveDetails);
+		} catch (error) {
+			console.error("Elkan 5e | Error in level 6 spell preTargetSave hook:", error);
+		}
+		try {
+			Level4.blightPlantDisadvantage(target, workflow, saveDetails);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Blight preTargetSave hook:", error);
+		}
+		try {
+			Level1.ensnaringVineSize(target, workflow, saveDetails);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Ensnaring Vine preTargetSave hook:", error);
+		}
+	});
+
+	Hooks.on("createChatMessage", async (message, options, userId) => {
+		try {
+			await sailorVigilance(message, userId);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Sailor's Vigilance createChatMessage hook:", error);
+		}
+	});
+
+	Hooks.on("dnd5e.preRollDamageV2", (rollConfig) => {
+		try {
+			improvedCriticalDamage(rollConfig);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Improved Critical preRollDamageV2 hook:", error);
+		}
+		try {
+			blessedHealing(rollConfig);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Blessed Healing preRollDamageV2 hook:", error);
 		}
 	});
 
@@ -279,6 +437,19 @@ function registerHooks() {
 		} catch (error) {
 			console.error("Elkan 5e | Error in Sanctuary hook:", error);
 		}
+		try {
+			marksmanLongRange(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Marksman long range hook:", error);
+		}
+	});
+
+	Hooks.on("dnd5e.preRollAttackV2", (config) => {
+		try {
+			marksmanCover(config);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Marksman cover hook:", error);
+		}
 	});
 
 	Hooks.on("midi-qol.preDamageRoll", async (workflow, activity, config, dialog) => {
@@ -286,6 +457,12 @@ function registerHooks() {
 			await Spells.prismaticBolt(workflow, activity, config, dialog);
 		} catch (error) {
 			console.error("Elkan 5e | Error in Prismatic Bolt hook:", error);
+		}
+
+		try {
+			await elementalInfusion(workflow, activity, config, dialog);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Elemental Infusion hook:", error);
 		}
 	});
 
@@ -315,6 +492,15 @@ function registerHooks() {
 
 	Hooks.on("midi-qol.RollComplete", async (workflow) => {
 		try {
+			// Infused Healer's own item macro only runs when the feature itself is used.
+			if (workflow?.actor?.items.some((i) => i.system?.identifier === "infused-healer")) {
+				await infusedHealer(workflow);
+			}
+		} catch (error) {
+			console.error("Elkan 5e | Error in Infused Healer hook:", error);
+		}
+
+		try {
 			await markOfAffliction(workflow);
 		} catch (error) {
 			console.error("Elkan 5e | Error in Mark of Affliction hook:", error);
@@ -336,6 +522,42 @@ function registerHooks() {
 		} catch (error) {
 			console.error("Elkan 5e | Error in Blight RollComplete hook:", error);
 		}
+
+		try {
+			await Level1.gentleCurrent(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Gentle Current RollComplete hook:", error);
+		}
+
+		try {
+			await Level7.painReflection(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Pain Reflection RollComplete hook:", error);
+		}
+
+		try {
+			await finishingBlow(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Finishing Blow RollComplete hook:", error);
+		}
+
+		try {
+			savantSpellReminder(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in savant spell reminder RollComplete hook:", error);
+		}
+
+		try {
+			await powerOfLoveAndFearApply(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Power of Love and Fear RollComplete hook:", error);
+		}
+
+		try {
+			await strickeningGazePrompt(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Strickening Gaze RollComplete hook:", error);
+		}
 	});
 
 	Hooks.on("dnd5e.preRollInitiative", (actor) => {
@@ -346,7 +568,13 @@ function registerHooks() {
 		}
 	});
 
-	Hooks.on("deleteActiveEffect", async (effect) => {
+	Hooks.on("deleteActiveEffect", async (effect, options, userId) => {
+		try {
+			if (userId === game.user.id) await removeModifyItemRiders(effect);
+		} catch (error) {
+			console.error("Elkan 5e | Error removing Modify Item rider activities:", error);
+		}
+
 		try {
 			await delayedDuration(effect);
 		} catch (error) {
@@ -372,9 +600,9 @@ function registerHooks() {
 		}
 
 		try {
-			await Promise.resolve(Spells.returnToNormalSize(effect));
+			refreshSeeThroughDarkness(effect);
 		} catch (error) {
-			console.error("Elkan 5e | Error restoring token size:", error);
+			console.error("Elkan 5e | Error in deleteActiveEffect vision hook:", error);
 		}
 	});
 
@@ -398,7 +626,52 @@ function registerHooks() {
 		}
 	});
 
-	Hooks.on("createActiveEffect", async (effect) => {
+	Hooks.on("midi-qol.preSavesComplete", (workflow) => {
+		try {
+			enforceExcludedTargets(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in excluded targets preSavesComplete hook:", error);
+		}
+	});
+
+	Hooks.on("midi-qol.preWaitForSaves", (workflow) => {
+		try {
+			enforceExcludedTargets(workflow);
+		} catch (error) {
+			console.error("Elkan 5e | Error in excluded targets preWaitForSaves hook:", error);
+		}
+	});
+
+	Hooks.on("dnd5e.advancementManagerComplete", async (manager) => {
+		try {
+			await applyActorModifyItemRiders(manager?.actor);
+		} catch (error) {
+			console.error("Elkan 5e | Error adding Modify Item rider activities:", error);
+		}
+	});
+
+	Hooks.on("updateToken", (tokenDoc, changes) => {
+		// Wait for the move to finish so the token's final position is used.
+		setTimeout(() => {
+			endEffectsOnRegionExit(tokenDoc, changes).catch((error) => {
+				console.error("Elkan 5e | Error in region exit hook:", error);
+			});
+		}, 500);
+	});
+
+	Hooks.on("createActiveEffect", async (effect, options, userId) => {
+		try {
+			await deathHazeEnterRage(effect, userId);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Death Haze hook:", error);
+		}
+
+		try {
+			if (userId === game.user.id) await applyModifyItemRiders(effect);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Modify Item rider hook:", error);
+		}
+
 		try {
 			await handlePushedEffect(effect);
 		} catch (error) {
@@ -422,6 +695,12 @@ function registerHooks() {
 		} catch (error) {
 			console.error("Elkan 5e | Error in Spirit Link pairing hook:", error);
 		}
+
+		try {
+			refreshSeeThroughDarkness(effect);
+		} catch (error) {
+			console.error("Elkan 5e | Error in createActiveEffect vision hook:", error);
+		}
 	});
 
 	Hooks.on("updateActiveEffect", async (effect, changes) => {
@@ -436,28 +715,33 @@ function registerHooks() {
 		} catch (error) {
 			console.error("Elkan 5e | Error in updateActiveEffect hazard exhaustion hook:", error);
 		}
-	});
 
-	Hooks.on("updateItem", (item) => {
 		try {
-			updateBarbarianDefense(item.parent, "updateItem");
+			refreshSeeThroughDarkness(effect);
 		} catch (error) {
-			console.error("Elkan 5e | Error in updateItem hook:", error);
+			console.error("Elkan 5e | Error in updateActiveEffect vision hook:", error);
 		}
 	});
 
+	// Halves single-target damage and doubles area damage against swarms.
+	Hooks.on("dnd5e.calculateDamage", (actor, damages, options) => {
+		try {
+			swarmDamage(actor, damages, options);
+		} catch (error) {
+			console.error("Elkan 5e | Error in swarmDamage hook:", error);
+		}
+	});
+
+	// Both handlers are async, so their results can't cancel the damage here; they run
+	// independently and restore HP themselves after the save resolves.
 	Hooks.on("dnd5e.preApplyDamage", (actor, amount, updates, options) => {
-		try {
-			return undeadFortitude(actor, amount, updates, options);
-		} catch (error) {
+		undeadFortitude(actor, amount, updates, options).catch((error) => {
 			console.error("Elkan 5e | Error in undeadFortitude hook:", error);
-		}
+		});
 
-		try {
-			return relentlessRage(actor, amount, updates, options);
-		} catch (error) {
+		relentlessRage(actor, amount, updates, options).catch((error) => {
 			console.error("Elkan 5e | Error in relentlessRage hook:", error);
-		}
+		});
 	});
 
 	Hooks.on("dnd5e.damageActor", async (actor, changes, update, userId) => {
@@ -471,6 +755,12 @@ function registerHooks() {
 			await Level4.deathWard(actor, changes, update, userId);
 		} catch (error) {
 			console.error("Elkan 5e | Error in deathWard hook:", error);
+		}
+
+		try {
+			await Level7.curseOfDoom(actor);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Curse of Doom damageActor hook:", error);
 		}
 	});
 
@@ -518,12 +808,6 @@ function registerHooks() {
 
 	Hooks.on("updateActor", async (actor, changes) => {
 		try {
-			await updateBarbarianDefense(actor, "updateActor");
-		} catch (error) {
-			console.error("Elkan 5e | Error in updateActor hook:", error);
-		}
-
-		try {
 			await handleDeadGrapplePrompt(actor);
 		} catch (error) {
 			console.error("Elkan 5e | Error in dead grapple prompt hook:", error);
@@ -544,6 +828,18 @@ function registerHooks() {
 		}
 	});
 
+	Hooks.on("combatStart", (combat) => {
+		assassinsReflexesStart(combat).catch((error) => {
+			console.error("Elkan 5e | Error in Assassin's Reflexes combatStart hook:", error);
+		});
+	});
+
+	Hooks.on("updateCombat", (combat, changes) => {
+		assassinsReflexesEnd(combat, changes).catch((error) => {
+			console.error("Elkan 5e | Error in Assassin's Reflexes updateCombat hook:", error);
+		});
+	});
+
 	Hooks.on("combatTurnChange", (combat, prior) => {
 		try {
 			onCombatTurnChange(combat, prior);
@@ -551,7 +847,19 @@ function registerHooks() {
 			console.error("Elkan 5e | Error in combatTurnChange hook:", error);
 		}
 
+		stillnessOfMindTurnStart(combat).catch((error) => {
+			console.error("Elkan 5e | Error in Stillness of Mind combatTurnChange hook:", error);
+		});
+
 		Level1.sanctuarySuccessCache.clear();
+
+		Level3.blinkReturnTurnStart(combat).catch((error) => {
+			console.error("Elkan 5e | Error in Blink combatTurnChange hook:", error);
+		});
+
+		shiftingSandsTurnEnd(combat, prior).catch((error) => {
+			console.error("Elkan 5e | Error in Shifting Sands combatTurnChange hook:", error);
+		});
 	});
 
 	Hooks.on("updateMeasuredTemplate", async (template) => {
@@ -602,17 +910,16 @@ function registerHooks() {
 				push,
 				rage,
 				lurkingFogDarkness,
-				soulConduit,
 				necromanticSurge,
-				shadowRefuge,
 				infusedHealer,
 				healingOverflow,
 				secondWind,
-				hijackShadow,
-				meldWithShadows,
 				slicingBlow,
 				elementalAttunement,
 				markForDeath,
+				markOfAffliction,
+				markOfThorns,
+				repellingBlast,
 				sneakAttack,
 				quenchBurning,
 			},

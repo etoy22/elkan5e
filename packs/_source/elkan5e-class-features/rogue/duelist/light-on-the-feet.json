@@ -32,7 +32,9 @@
 		"prerequisites": {
 			"level": null
 		},
-		"properties": []
+		"properties": [
+			"trait"
+		]
 	},
 	"effects": [
 		{
@@ -62,23 +64,9 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"disableCondition": "",
-					"disableIncapacitated": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
+					"disableIncapacitated": false,
+					"expiryMode": "default",
+					"phaseStamped": true
 				}
 			},
 			"tint": "#ffffff",
@@ -87,18 +75,27 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.movement.walk",
-						"value": "+10",
+						"key": "system.attributes.movement.speeds.walk",
+						"type": "add",
+						"value": 10,
+						"phase": "initial",
 						"priority": 5,
-						"type": "add"
+						"_id": "TtjI65CSgLwu3JHr",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "system.attributes.ac.bonus",
-						"value": "+1",
+						"type": "add",
+						"value": 1,
+						"phase": "initial",
 						"priority": 5,
-						"type": "add"
+						"_id": "oBy8ljfQnChoIcE0",
+						"conditions": "{}",
+						"replacement": ""
 					}
-				]
+				],
+				"conditions": "{\"o\":\"NOT\",\"v\":{\"k\":\"attributes.ac.equippedArmor.system.type.value\",\"o\":\"in\",\"v\":[\"medium\",\"heavy\"]}}"
 			},
 			"start": null,
 			"showIcon": 1,

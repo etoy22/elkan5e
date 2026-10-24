@@ -14,7 +14,7 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.advantage.ability.save.all",
-						"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"poisoned\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"poisoned\") || ef.name == 'Poisoned');",
+						"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"poisoned\") || ef.system?.rider?.statuses?.has(\"poisoned\") || ef.name == 'Poisoned');",
 						"priority": 20,
 						"type": "custom"
 					}
@@ -28,7 +28,7 @@
 				"expired": false
 			},
 			"description": "",
-			"origin": "Compendium.elkan5e.elkan5e-ancestries.Item.InoiZKsErd54LfKy",
+			"origin": "Compendium.elkan5e.elkan5e-ancestry-background.Item.InoiZKsErd54LfKy",
 			"tint": "#ffffff",
 			"statuses": [],
 			"flags": {
@@ -43,23 +43,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"start": null,
@@ -102,7 +85,7 @@
 			"chat": ""
 		},
 		"source": {
-			"custom": "elkan5e.com/ancestrybackground",
+			"custom": "elkan5e.com/ancestry",
 			"rules": "",
 			"revision": 1,
 			"book": "Elkan 5e",
@@ -119,7 +102,9 @@
 			"subtype": ""
 		},
 		"requirements": "Dwarf",
-		"properties": [],
+		"properties": [
+			"trait"
+		],
 		"identifier": "dwarven-resilience",
 		"activities": {},
 		"enchant": {},

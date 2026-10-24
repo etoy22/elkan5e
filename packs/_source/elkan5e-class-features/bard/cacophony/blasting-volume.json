@@ -2,67 +2,7 @@
 	"name": "Blasting Volume",
 	"type": "feat",
 	"img": "icons/magic/sonic/explosion-shock-wave-teal.webp",
-	"effects": [
-		{
-			"name": "Blasting Volume",
-			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.MfhfSzLQbJqLCZ6q",
-			"duration": {
-				"value": 1,
-				"units": "rounds",
-				"expiry": "sourceEnd",
-				"expired": false
-			},
-			"transfer": false,
-			"disabled": false,
-			"_id": "EWrKBMRyzcv270DG",
-			"description": "",
-			"statuses": [
-				"deafened"
-			],
-			"flags": {
-				"dae": {
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"stackable": "noneName",
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": [],
-					"disableIncapacitated": false,
-					"enableCondition": "",
-					"disableCondition": "",
-					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
-				}
-			},
-			"tint": "#ffffff",
-			"img": "icons/magic/sonic/explosion-shock-wave-teal.webp",
-			"type": "base",
-			"system": {
-				"changes": []
-			},
-			"showIcon": 2,
-			"start": null,
-			"folder": null,
-			"_key": "!items.effects!MfhfSzLQbJqLCZ6q.EWrKBMRyzcv270DG"
-		}
-	],
+	"effects": [],
 	"folder": "lUVxmfQCDK9zwF5D",
 	"flags": {
 		"midi-qol": {
@@ -104,7 +44,7 @@
 	"_id": "MfhfSzLQbJqLCZ6q",
 	"system": {
 		"description": {
-			"value": "<p><em>You blast nearby creatures with magical and extremely loud noise.</em></p><p><strong>Action</strong> - 30 ft. Cone - Magical - 1 Round</p><p>You expend a @UUID[Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh]{bardic inspiration} die to use this ability.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Thunder damage equal to three rolls of your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh]{bardic inspiration} die and target is &amp;reference[deafened].</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul>",
+			"value": "<p><em>You blast nearby creatures with magical and extremely loud noise.</em></p><p><strong>Action</strong> - 30 ft. Cone - Magical - 1 Round</p><p>You expend a @UUID[Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh]{bardic inspiration} die to use this ability.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes &amp;reference[Thunder] damage equal to three rolls of your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh]{bardic inspiration} die and target is &amp;reference[deafened].</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -154,14 +94,17 @@
 				},
 				"duration": {
 					"concentration": false,
-					"units": "inst",
+					"units": "round",
 					"special": "",
-					"override": false
+					"override": false,
+					"value": "1",
+					"expiry": null
 				},
 				"effects": [
 					{
-						"_id": "EWrKBMRyzcv270DG",
-						"onSave": false
+						"onSave": false,
+						"_id": "GO8egDMHEzREMOTE",
+						"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkandeafened000"
 					}
 				],
 				"range": {
@@ -211,7 +154,9 @@
 					]
 				},
 				"save": {
-					"ability": "con",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -220,9 +165,7 @@
 				"name": "",
 				"img": "",
 				"effectConditionText": "!target.traits.ci.value.has('deafened')",
-				"appliedEffects": [
-					"EWrKBMRyzcv270DG"
-				]
+				"appliedEffects": []
 			}
 		},
 		"identifier": "blasting-volume",

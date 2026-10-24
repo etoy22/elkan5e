@@ -466,11 +466,13 @@
 				"bonus": ""
 			},
 			"movement": {
-				"burrow": 30,
-				"climb": null,
-				"fly": null,
-				"swim": null,
-				"walk": 30,
+				"speeds": {
+					"walk": 30,
+					"burrow": 30,
+					"climb": null,
+					"fly": null,
+					"swim": null
+				},
 				"units": null,
 				"hover": false,
 				"ignoredDifficultTerrain": []
@@ -479,10 +481,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 60,
-				"blindsight": null,
-				"tremorsense": 60,
-				"truesight": null,
+				"ranges": {
+					"darkvision": 60,
+					"blindsight": null,
+					"tremorsense": 60,
+					"truesight": null
+				},
 				"units": "ft",
 				"special": ""
 			},
@@ -583,7 +587,7 @@
 		},
 		"source": {
 			"revision": 2,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
 			"custom": "",
@@ -749,7 +753,7 @@
 				"identifier": "earth-glide",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -794,7 +798,7 @@
 				"identifier": "siege-monster",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -936,7 +940,7 @@
 				"identifier": "multiattack",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -1088,7 +1092,7 @@
 				"identifier": "slam",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -1201,7 +1205,8 @@
 						},
 						"effects": [
 							{
-								"_id": "fdpMlJbmkKQfJlME"
+								"_id": "IIrAnqTKX4REMOTE",
+								"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanprone000000"
 							}
 						],
 						"range": {
@@ -1308,13 +1313,13 @@
 					"max": ""
 				},
 				"description": {
-					"value": "<p>[[/attack extended]]. [[/damage average extended]]. If the target is a Large or smaller creature, it has the &amp;Reference[Prone apply=false] condition.</p>",
+					"value": "<p>[[/attack extended]]. [[/damage average extended]]. If the target is a Large or smaller creature, it has the &amp;reference[Prone apply=false] condition.</p>",
 					"chat": ""
 				},
 				"identifier": "rock-launch",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -1388,35 +1393,7 @@
 			},
 			"folder": "pSCWWdqMX9eUATRJ",
 			"img": "icons/magic/earth/projectile-boulder-debris.webp",
-			"effects": [
-				{
-					"name": "Prone",
-					"img": "systems/dnd5e/icons/svg/statuses/prone.svg",
-					"origin": "Compendium.dnd-monster-manual.features.Item.mmRockLaunch0000",
-					"_id": "fdpMlJbmkKQfJlME",
-					"type": "base",
-					"system": {
-						"changes": []
-					},
-					"disabled": false,
-					"duration": {
-						"value": null,
-						"units": "seconds",
-						"expiry": null,
-						"expired": false
-					},
-					"description": "<p>If the target is a Large or smaller creature, it has the &amp;Reference[Prone apply=false] condition.</p>",
-					"tint": "#ffffff",
-					"transfer": false,
-					"statuses": [
-						"prone"
-					],
-					"showIcon": 2,
-					"start": null,
-					"folder": null,
-					"_key": "!actors.items.effects!IcI7M6Y11SBkueni.mmRockLaunch0000.fdpMlJbmkKQfJlME"
-				}
-			],
+			"effects": [],
 			"_key": "!actors.items!IcI7M6Y11SBkueni.mmRockLaunch0000"
 		}
 	],

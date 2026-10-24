@@ -28,29 +28,11 @@
 					"enableCondition": "",
 					"disableCondition": "",
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"name": "Power Word Stun",
 			"description": "",
-			"statuses": [
-				"stunned"
-			],
+			"statuses": [],
 			"img": "icons/magic/symbols/rune-sigil-red-orange.webp",
 			"type": "base",
 			"system": {
@@ -58,14 +40,23 @@
 					{
 						"key": "flags.midi-qol.OverTime",
 						"type": "custom",
-						"value": "turn=start,applyCondition=@attributes.hp.value <= 150,saveDC=@attributes.spell.dc,saveAbility=con,saveMagic=true",
+						"value": "turn=end, label=Power Word Stun, applyCondition=##attributes.hp.value <= 150, saveAbility=con, saveDC=@attributes.spell.dc, saveMagic=true",
 						"phase": "initial",
+						"priority": 20,
+						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "stunned",
+						"phase": "final",
 						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
-			"showIcon": 2,
+			"showIcon": 0,
 			"folder": null,
 			"_key": "!items.effects!Zp5O5yAiBwwuwiOG.UlWd73A4AGXPwlEk"
 		}

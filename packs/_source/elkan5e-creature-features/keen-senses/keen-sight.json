@@ -21,7 +21,7 @@
 			"recovery": []
 		},
 		"type": {
-			"value": "",
+			"value": "monster",
 			"subtype": ""
 		},
 		"requirements": "",
@@ -31,7 +31,9 @@
 		"prerequisites": {
 			"level": null
 		},
-		"properties": []
+		"properties": [
+			"trait"
+		]
 	},
 	"effects": [
 		{
@@ -57,22 +59,6 @@
 					"dontApply": false,
 					"macroRepeat": "none"
 				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
-				},
 				"times-up": {
 					"isPassive": true
 				}
@@ -85,10 +71,10 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.advantage.skill.prc",
-						"value": 1,
+						"key": "system.skills.prc.roll.mode",
+						"value": "1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					}
 				]
 			},

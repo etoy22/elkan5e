@@ -1,7 +1,10 @@
 import { drainedEffect, forEachDamagedTarget } from "../shared/helpers.mjs";
+import { damageOnly } from "../shared/midi-compat.mjs";
 
 /**
- * Runs wrath Of The Reaper spell automation.
+ * Deals additional force damage to each target with recorded HP or temporary-HP damage:
+ * half its maximum HP, rounded down and capped at 100. Targets that did not save also lose
+ * that much maximum HP until a long rest.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
  * @returns {Promise<void>} Promise resolution result.
@@ -18,7 +21,7 @@ export async function wrathOfTheReaper(workflow) {
 		if (forceDamage <= 0) return;
 
 		const damageRoll = await new Roll(`${forceDamage}`).evaluate();
-		new MidiQOL.DamageOnlyWorkflow(
+		await damageOnly(
 			caster,
 			casterToken,
 			damageRoll.total,

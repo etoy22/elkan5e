@@ -96,7 +96,9 @@
 					"parts": []
 				},
 				"save": {
-					"ability": "wis",
+					"ability": [
+						"wis"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -119,22 +121,18 @@
 	"img": "icons/magic/perception/mask-stone-eyes-orange.webp",
 	"effects": [
 		{
-			"statuses": [
-				"goaded"
-			],
+			"statuses": [],
 			"name": "Inciting Remarks",
 			"description": "",
 			"duration": {
-				"value": 7,
+				"value": null,
 				"units": "seconds",
-				"expiry": "turnStart",
+				"expiry": "sourceEnd",
 				"expired": false
 			},
 			"flags": {
 				"dae": {
-					"specialDuration": [
-						"turnEndSource"
-					],
+					"specialDuration": [],
 					"stackable": "noneName",
 					"transfer": true,
 					"disableIncapacitated": false,
@@ -145,22 +143,6 @@
 					"macroRepeat": "none",
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"_id": "4fXyx9VlIPqcVU6n",
@@ -171,9 +153,18 @@
 			"img": "icons/magic/perception/mask-stone-eyes-orange.webp",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "goaded",
+						"phase": "final",
+						"priority": 20
+					}
+				],
+				"magical": true
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!QDGgq6r9urw1Dmtg.4fXyx9VlIPqcVU6n"

@@ -8,7 +8,7 @@
 			"chat": ""
 		},
 		"source": {
-			"custom": "elkan5e.com/ancestrybackground",
+			"custom": "elkan5e.com/ancestry",
 			"rules": "",
 			"revision": 1,
 			"book": "Elkan 5e",
@@ -25,7 +25,9 @@
 			"subtype": ""
 		},
 		"requirements": "Dwarf, Earth Genasi",
-		"properties": [],
+		"properties": [
+			"trait"
+		],
 		"identifier": "sturdy",
 		"activities": {},
 		"enchant": {},
@@ -44,7 +46,7 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.advantage.ability.save.all",
-						"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"prone\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"prone\") || ef.name == 'Prone');",
+						"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"prone\") || ef.system?.rider?.statuses?.has(\"prone\") || ef.name == 'Prone');",
 						"priority": 20,
 						"type": "custom"
 					},
@@ -64,7 +66,7 @@
 				"expired": false
 			},
 			"description": "",
-			"origin": "Compendium.elkan5e.elkan5e-ancestries.Item.5sGc2Tsu23jDaBS3",
+			"origin": "Compendium.elkan5e.elkan5e-ancestry-background.Item.5sGc2Tsu23jDaBS3",
 			"tint": "#ffffff",
 			"statuses": [],
 			"flags": {
@@ -79,23 +81,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "Enemy",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"start": null,

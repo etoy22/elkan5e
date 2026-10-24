@@ -17,22 +17,6 @@
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"disabled": false,
@@ -53,7 +37,7 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.movement.walk",
+						"key": "system.attributes.movement.speeds.walk",
 						"value": "@scale.monk.empowered-movement",
 						"priority": 20,
 						"type": "add"
@@ -100,7 +84,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p>Your walking speed increases by 10 feet. Any speed you have that is equal to your walking speed also increases by 10 ft. This bonus increases when you reach certain monk levels, as shown in the @UUID[Compendium.elkan5e.elkan5e-class.VQiQktedzIusKs4y]{Monk Table}.</p>",
+			"value": "<p>Your walking speed increases by 10 feet. Any speed you have that is equal to your walking speed also increases by 10 ft. This bonus increases when you reach certain monk levels, as shown in the @UUID[Compendium.elkan5e.elkan5e-class.Item.VQiQktedzIusKs4y]{Monk Table}.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -127,7 +111,9 @@
 		"prerequisites": {
 			"level": null
 		},
-		"properties": []
+		"properties": [
+			"trait"
+		]
 	},
 	"_key": "!items!rK2xI0jdvEIkJm7O"
 }

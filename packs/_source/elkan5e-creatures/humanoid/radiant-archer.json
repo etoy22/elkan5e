@@ -18,7 +18,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -117,7 +117,7 @@
 					"chat": ""
 				},
 				"source": {
-					"rules": "2014",
+					"rules": "",
 					"revision": 1,
 					"book": "Elkan 5e"
 				},
@@ -182,13 +182,13 @@
 			"img": "icons/magic/light/projectile-flare-expliosion-yellow.webp",
 			"system": {
 				"description": {
-					"value": "<p>When this flash bolt hits a creature, it bursts. The target and all creatures within 5 ft. of the target must succeed on a DC 13 constitution saving throw or be blinded.</p>",
+					"value": "<p>When this flash bolt hits a creature, it bursts. The target and all creatures within 5 ft. of the target must succeed on a DC 13 constitution &amp;reference[savingthrow]{saving throw} or be &amp;reference[blinded apply=false]{blinded}.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "Elkan 5e",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 2,
@@ -299,7 +299,9 @@
 							"parts": []
 						},
 						"save": {
-							"ability": "con",
+							"ability": [
+								"con"
+							],
 							"dc": {
 								"calculation": "",
 								"formula": "13"
@@ -315,9 +317,7 @@
 			},
 			"effects": [
 				{
-					"statuses": [
-						"condition-lab-triggler.blinded"
-					],
+					"statuses": [],
 					"duration": {
 						"value": null,
 						"units": "seconds",
@@ -325,26 +325,10 @@
 						"expired": false
 					},
 					"flags": {
-						"ActiveAuras": {
-							"isAura": false,
-							"radius": null,
-							"aura": "None",
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"displayTemp": false
-						},
-						"core": {
-							"statusId": "condition-lab-triggler.blinded",
-							"overlay": false
-						},
 						"dae": {
 							"specialDuration": [],
-							"transfer": true
+							"transfer": true,
+							"stackable": "none"
 						}
 					},
 					"name": "Blinded",
@@ -353,21 +337,28 @@
 					"description": "",
 					"origin": "Item.HSd3HGXLwgYkfO79",
 					"transfer": false,
-					"img": "modules/condition-lab-triggler/icons/blinded.svg",
+					"img": "modules/elkan5e/icons/conditions/blinded.svg",
 					"type": "base",
 					"system": {
 						"changes": [
 							{
-								"key": "flags.midi-qol.disadvantage.attack.all",
-								"value": 1,
+								"key": "system.rolls.attack.mode",
+								"value": "-1",
 								"priority": null,
-								"type": "override"
+								"type": "add"
 							},
 							{
 								"key": "flags.midi-qol.grants.advantage.attack.all",
 								"value": 1,
 								"priority": null,
 								"type": "override"
+							},
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "blinded",
+								"phase": "final",
+								"priority": 20
 							}
 						]
 					},
@@ -421,13 +412,13 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p><em>Heavy crossbows are large apparatuses designed to propel bolts with great speed. They are not difficult to fire, but their weight and size make them difficult to deploy for those untrained in their use.</em></p><p>Properties:</p><p>&amp;Reference[Ammunition], &amp;Reference[Heavy], &amp;Reference[Loading], &amp;Reference[Handed]</p>",
+					"value": "<p><em>Heavy crossbows are large apparatuses designed to propel bolts with great speed. They are not difficult to fire, but their weight and size make them difficult to deploy for those untrained in their use.</em></p><p>Properties:</p><p>&amp;reference[Ammunition], &amp;reference[Heavy], &amp;reference[Loading], &amp;reference[Handed]</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "elkan5e.com/weapons",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -707,19 +698,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": 0,
-				"climb": 0,
-				"fly": 0,
-				"swim": 0,
-				"walk": 30,
+				"speeds": {
+					"walk": 30,
+					"burrow": 0,
+					"climb": 0,
+					"fly": 0,
+					"swim": 0
+				},
 				"units": "ft",
 				"hover": false
 			},
@@ -727,10 +720,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 0,
-				"blindsight": 0,
-				"tremorsense": 0,
-				"truesight": 0,
+				"ranges": {
+					"darkvision": 0,
+					"blindsight": 0,
+					"tremorsense": 0,
+					"truesight": 0
+				},
 				"units": "ft",
 				"special": ""
 			},

@@ -1,3 +1,5 @@
+import { removeStatuses, updateActorAsGM } from "../shared/helpers.mjs";
+
 const DialogV2 = foundry.applications.api.DialogV2;
 
 const SEETHING_BLOOD_PACK = "Compendium.elkan5e.elkan5e-class-features.Item.";
@@ -140,7 +142,7 @@ const BLOODRAGER_ORIGIN_CONFIG = {
 			{ label: "Acid (Black Dragon / Copper Dragon)", id: "5F1s1v4KV38cuGGc" },
 			{ label: "Cold (Silver Dragon / White Dragon)", id: "jvdWHOFY6rLvcHiF" },
 			{ label: "Fire (Red Dragon)", id: "MnbsIswRTHbhzwQf" },
-			{ label: "Lightning (Blue Dragon)", id: "RKDK2wY0gQ5AZwhl" },
+			{ label: "Electric (Blue Dragon)", id: "RKDK2wY0gQ5AZwhl" },
 			{ label: "Necrotic", id: "fYqI43veyIOTozP6" },
 			{ label: "Poison (Gold Dragon / Green Dragon)", id: "fnSUIhgUgATyzU5r" },
 			{ label: "Psychic (Brass Dragon)", id: "5ooYzCYY96MQPsOM" },
@@ -429,7 +431,11 @@ async function _doBloodragerSetup(actor, originalData) {
 		const uuid = originSpells[sorcLevel];
 		const advId = SORC_LEVEL_TO_ADV_ID[sorcLevel];
 		if (!uuid || !advId) continue;
-		const adv = modifiedData.system?.advancement?.find((a) => a._id === advId);
+		// Item source data stores advancement as an object keyed by id (older data used an array).
+		const advancement = modifiedData.system?.advancement;
+		const adv = Array.isArray(advancement)
+			? advancement.find((a) => a._id === advId)
+			: advancement?.[advId];
 		if (adv) adv.configuration.pool = [{ uuid, optional: false }];
 	}
 
@@ -750,13 +756,15 @@ export async function updateBloodragerOnLevelup(actor, changes) {
 }
 
 /**
- * Handles Relentless Rage.
+ * Rolls a Constitution save when an Elkan barbarian with Relentless Rage would reach 0 HP
+ * while raging. The DC starts at 10 and rises by 5 per recorded success; success records a use
+ * and sets HP to 1, while failure sets HP to 0.
  *
  * @param {Actor5e} actor
  * @param {number} amount - Net damage amount to be applied.
  * @param {object} _updates
  * @param {DamageApplicationOptions} _options
- * @returns {false|void}
+ * @returns {Promise<false|void>} False after setting HP to 1; otherwise no value.
  */
 export async function relentlessRage(actor, amount, _updates, _options) {
 	if (!actor) return;
@@ -769,8 +777,7 @@ export async function relentlessRage(actor, amount, _updates, _options) {
 	);
 	if (!hasFeature) return;
 
-	const isRaging = actor.effects.some((e) => e.name?.toLowerCase() === "rage" && !e.disabled);
-	if (!isRaging) return;
+	if (!actor.statuses?.has("raging")) return;
 
 	// Read the current use count from the existing effect name so players can edit it manually.
 	const existing = actor.effects.find((e) => e.flags?.elkan5e?.relentlessRage);
@@ -798,11 +805,11 @@ export async function relentlessRage(actor, amount, _updates, _options) {
 				img: "icons/skills/melee/blade-tips-triple-orange.webp",
 				origin: actor.uuid,
 				transfer: false,
-				changes: [],
+				system: { changes: [] },
 				disabled: false,
 				flags: {
 					elkan5e: { relentlessRage: true },
-					dae: { specialDuration: ["shortRest"] },
+					dae: { specialDuration: ["shortRest", "longRest"] },
 				},
 			},
 		]);
@@ -837,10 +844,11 @@ export async function rage(workflow) {
 }
 
 /**
- * Runs wild Blood class feature automation.
+ * Offers a Wild Blood surge for an eligible spell, excluding synthetic and ongoing rolls.
+ * On confirmation, draws the spell's base-level surge table for non-utility activities or Blink.
  *
  * @param {*} activity - Activity.
- * @param {*} usageConfig - Usage configuration passed by the activity workflow.
+ * @param {*} _usageConfig - Usage configuration; unused.
  * @returns {Promise<void>} Promise resolution result.
  */
 export async function wildBlood(activity, _usageConfig) {
@@ -850,6 +858,8 @@ export async function wildBlood(activity, _usageConfig) {
 	if (!game.modules.get("elkan5e")?.active) return;
 
 	if (item.type !== "spell" || !item.system.activities) return;
+	// Skip midi's per-turn OverTime rolls (e.g. Blink); only the actual casting surges.
+	if (item.flags?.["midi-qol"]?.syntheticItem || activity.isOverTimeFlag) return;
 
 	const hasWildBlood = actor.items.find((i) => i.system?.identifier === "wild-blood");
 	if (!hasWildBlood) return;
@@ -876,7 +886,7 @@ export async function wildBlood(activity, _usageConfig) {
 
 	let confirmed = await DialogV2.confirm({
 		window: { title: game.i18n.localize("elkan5e.barbarian.wildBloodTitle") },
-		content: `<p>${game.i18n.localize("elkan5e.barbarian.wildBloodContent")}</p>?`,
+		content: `<p>${game.i18n.localize("elkan5e.barbarian.wildBloodContent")}</p>`,
 		rejectClose: false,
 		modal: true,
 	});
@@ -975,5 +985,24 @@ export async function preHandleBloodragerDelete(item, _options, userId) {
 		await item.update({ name: "Bloodrager" });
 	} catch (err) {
 		console.warn("Elkan 5e | Could not reset Bloodrager name before deletion:", err);
+	}
+}
+
+/**
+ * Runs Death Haze when its owner enters rage: removes Drained and all exhaustion. The resistance
+ * and immunities come from the feature's passive effect while raging.
+ *
+ * @param {ActiveEffect} effect - Effect that was just created.
+ * @param {string} userId - User who created it.
+ * @returns {Promise<void>}
+ */
+export async function deathHazeEnterRage(effect, userId) {
+	if (userId !== game.user.id || !effect?.statuses?.has("raging")) return;
+	const actor = effect.parent;
+	if (!(actor instanceof CONFIG.Actor.documentClass)) return;
+	if (!actor.items.some((i) => i.system?.identifier === "death-haze")) return;
+	await removeStatuses(actor, ["drained", "exhaustion"]);
+	if (actor.system.attributes?.exhaustion) {
+		await updateActorAsGM(actor, { "system.attributes.exhaustion": 0 });
 	}
 }

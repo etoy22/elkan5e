@@ -26,7 +26,11 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "mMDHIHAmvbqccVk9"
+					}
+				],
 				"range": {
 					"units": "self",
 					"override": false
@@ -117,10 +121,10 @@
 			"value": "<p><em>You touch a creature, whispering and encouraging them to wield the knowledge and skills necessary for all manner of weapons and gadgets.</em></p><p><strong>Buff</strong></p><ul><li><p>The target has &amp;reference[proficiency] with all weapons, crafting tools, and vehicles.</p></li></ul>",
 			"chat": ""
 		},
-		"identifier": "spell",
+		"identifier": "masters-touch",
 		"source": {
 			"revision": 1,
-			"rules": "2024"
+			"rules": ""
 		},
 		"activation": {
 			"type": "action",
@@ -173,27 +177,139 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.traits.weaponProf.all",
-						"type": "custom",
+						"key": "system.traits.weaponProf.value",
+						"value": "sim",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.weaponProf.value",
+						"value": "mar",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.tools.alchemist.value",
 						"value": 1,
-						"phase": "initial",
-						"priority": 20
+						"priority": 20,
+						"type": "upgrade"
 					},
 					{
-						"key": "system.tools.craft.prof",
-						"type": "override",
-						"value": 0,
-						"phase": "initial",
-						"priority": 20
+						"key": "system.tools.brewer.value",
+						"value": 1,
+						"priority": 20,
+						"type": "upgrade"
 					},
 					{
-						"key": "system.tools.vehicle.prof",
-						"type": "override",
-						"value": 0,
-						"phase": "initial",
-						"priority": 20
+						"key": "system.tools.calligrapher.value",
+						"value": 1,
+						"priority": 20,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.tools.cook.value",
+						"value": 1,
+						"priority": 20,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.tools.fashion.value",
+						"value": 1,
+						"priority": 20,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.tools.herb.value",
+						"value": 1,
+						"priority": 20,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.tools.jeweler.value",
+						"value": 1,
+						"priority": 20,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.tools.leatherworker.value",
+						"value": 1,
+						"priority": 20,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.tools.mason.value",
+						"value": 1,
+						"priority": 20,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.tools.pois.value",
+						"value": 1,
+						"priority": 20,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.tools.smith.value",
+						"value": 1,
+						"priority": 20,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.tools.tailor.value",
+						"value": 1,
+						"priority": 20,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.tools.tinker.value",
+						"value": 1,
+						"priority": 20,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.tools.woodcarver.value",
+						"value": 1,
+						"priority": 20,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.tools.forg.value",
+						"value": 1,
+						"priority": 20,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.tools.game.value",
+						"value": 1,
+						"priority": 20,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.tools.air.value",
+						"value": 1,
+						"priority": 20,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.tools.land.value",
+						"value": 1,
+						"priority": 20,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.tools.space.value",
+						"value": 1,
+						"priority": 20,
+						"type": "upgrade"
+					},
+					{
+						"key": "system.tools.water.value",
+						"value": 1,
+						"priority": 20,
+						"type": "upgrade"
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -219,23 +335,6 @@
 					"dontApply": false,
 					"expiryMode": "default",
 					"macroRepeat": "none"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "All",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"start": null,

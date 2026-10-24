@@ -14,24 +14,6 @@
 					"specialDuration": [],
 					"disableIncapacitated": false,
 					"durationExpression": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"ignoreSelf": false,
-					"hidden": false,
-					"height": false,
-					"alignment": "",
-					"type": "",
-					"aura": "None",
-					"radius": "",
-					"save": "",
-					"savedc": null,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"displayTemp": false,
-					"wallsBlock": "system"
 				}
 			},
 			"disabled": false,
@@ -49,20 +31,20 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.movement.walk",
+						"key": "system.attributes.movement.speeds.walk",
 						"value": 10,
 						"priority": 20,
 						"type": "add"
 					},
 					{
-						"key": "system.attributes.movement.swim",
-						"value": "@attributes.movement.walk",
+						"key": "system.attributes.movement.speeds.swim",
+						"value": "@attributes.movement.speeds.walk",
 						"priority": 25,
 						"type": "upgrade"
 					},
 					{
-						"key": "system.attributes.movement.climb",
-						"value": "@attributes.movement.walk",
+						"key": "system.attributes.movement.speeds.climb",
+						"value": "@attributes.movement.speeds.walk",
 						"priority": 25,
 						"type": "upgrade"
 					}
@@ -135,7 +117,9 @@
 		"prerequisites": {
 			"level": null
 		},
-		"properties": []
+		"properties": [
+			"trait"
+		]
 	},
 	"_key": "!items!mZZCG1jdZ4bZF50Z"
 }

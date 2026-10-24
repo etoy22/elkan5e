@@ -101,13 +101,13 @@
 			"max": "1"
 		},
 		"description": {
-			"value": "<p><em>Wondrous Item - Uncommon (Requires Attunement)</em></p><p>You have Advantage on saving throws to avoid or end the &amp;Reference[Poisoned apply=false] condition while you wear this pendant.</p><p><strong>Action</strong> - Self - 1/Dawn</p><p><strong>Healing</strong></p><ul><li><p>[[/heal 2d4 + 2]] Hit Points.</p></li></ul>",
+			"value": "<p><em>Wondrous Item - Uncommon (Requires Attunement)</em></p><p>You have Advantage on &amp;reference[savingthrow]{saving throws} to avoid or end the &amp;reference[Poisoned apply=false] condition while you wear this pendant.</p><p><strong>Action</strong> - Self - 1/Dawn</p><p><strong>Healing</strong></p><ul><li><p>[[/heal 2d4 + 2]] Hit Points.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "periapt-of-health",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "",
 			"license": "",
 			"page": "",
@@ -155,6 +155,52 @@
 		"strength": null,
 		"proficient": null
 	},
-	"effects": [],
+	"effects": [
+		{
+			"transfer": true,
+			"_id": "elkPeriaptHealAE",
+			"disabled": false,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"origin": null,
+			"tint": "#ffffff",
+			"flags": {
+				"dae": {
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"stackable": "none",
+					"durationExpression": "",
+					"specialDuration": [],
+					"disableIncapacitated": false,
+					"dontApply": false,
+					"macroRepeat": "none",
+					"disableCondition": ""
+				}
+			},
+			"name": "Periapt of Health",
+			"description": "",
+			"statuses": [],
+			"img": "icons/equipment/neck/pendant-faceted-red.webp",
+			"type": "base",
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.advantage.ability.save.all",
+						"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"poisoned\") || ef.system?.rider?.statuses?.has(\"poisoned\") || ef.name == 'Poisoned')",
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
+			"_key": "!items.effects!dmgPeriaptOfHeal.elkPeriaptHealAE"
+		}
+	],
 	"_key": "!items!dmgPeriaptOfHeal"
 }

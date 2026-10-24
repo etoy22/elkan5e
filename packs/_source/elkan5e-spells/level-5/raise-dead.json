@@ -2,7 +2,55 @@
 	"name": "Raise Dead",
 	"type": "spell",
 	"img": "icons/skills/wounds/injury-pain-body-orange.webp",
-	"effects": [],
+	"effects": [
+		{
+			"_id": "raiseDeadExhaust",
+			"name": "Raise Dead Exhaustion",
+			"img": "icons/skills/wounds/injury-pain-body-orange.webp",
+			"type": "base",
+			"transfer": false,
+			"disabled": false,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "",
+			"origin": null,
+			"statuses": [],
+			"tint": "#ffffff",
+			"showIcon": 1,
+			"start": null,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"stackable": "noneName",
+					"specialDuration": [],
+					"macroRepeat": "none",
+					"durationExpression": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"disableIncapacitated": false,
+					"enableCondition": "",
+					"disableCondition": ""
+				}
+			},
+			"system": {
+				"magical": true,
+				"changes": [
+					{
+						"key": "macro.actorUpdate",
+						"value": "@targetUuid number 2 system.attributes.exhaustion +0",
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
+			"_key": "!items.effects!rmliJsYc0Loo3Jgt.raiseDeadExhaust"
+		}
+	],
 	"folder": "PnZJTE6T4UQY81Pm",
 	"flags": {
 		"midi-qol": {
@@ -125,15 +173,23 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "raiseDeadExhaust"
+					}
+				],
 				"range": {
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},

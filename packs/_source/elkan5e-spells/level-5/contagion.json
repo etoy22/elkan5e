@@ -8,9 +8,7 @@
 			"flags": {
 				"dae": {
 					"stackable": "none",
-					"specialDuration": [
-						"None"
-					],
+					"specialDuration": [],
 					"transfer": false,
 					"macroRepeat": "none",
 					"selfTarget": false,
@@ -21,23 +19,6 @@
 					"enableCondition": "",
 					"disableCondition": "",
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"radius": "",
-					"aura": "None",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"displayTemp": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"disabled": false,
@@ -52,21 +33,33 @@
 			"origin": null,
 			"name": "Contagion",
 			"description": "",
-			"statuses": [
-				"diseased",
-				"poisoned"
-			],
+			"statuses": [],
 			"img": "icons/skills/wounds/illness-disease-glowing-green.webp",
 			"type": "base",
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.grants.disadvantage.save.all",
-						"value": 1,
+						"key": "system.rolls.ability.save.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "diseased",
+						"phase": "final",
+						"priority": 20
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "poisoned",
+						"phase": "final",
+						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"showIcon": 2,
 			"start": null,
@@ -112,7 +105,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>Your touch afflicts your victim with a magical disease.</em></p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 8d10 poison]] damage and gains the &amp;reference[diseased] condition. While diseased in this way:</p><ul><li><p>The target is &amp;reference[poisoned] and has &amp;reference[disadvantage] on saving throws.</p></li></ul></li><li><p><strong>Success:</strong> Half damage.</p></li></ul>",
+			"value": "<p><em>Your touch afflicts your victim with a magical disease.</em></p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 8d10 poison]] damage and gains the &amp;reference[diseased] condition. While diseased in this way:</p><ul><li><p>The target is &amp;reference[poisoned] and has &amp;reference[disadvantage] on &amp;reference[savingthrow]{saving throws}.</p></li></ul></li><li><p><strong>Success:</strong> Half damage.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -209,10 +202,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -225,9 +222,11 @@
 								"formula": ""
 							},
 							"number": 8,
-							"denomination": "",
+							"denomination": 10,
 							"bonus": "",
-							"types": [],
+							"types": [
+								"poison"
+							],
 							"scaling": {
 								"mode": ""
 							}
@@ -235,7 +234,9 @@
 					]
 				},
 				"save": {
-					"ability": "con",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -252,7 +253,7 @@
 				"appliedEffects": [
 					"Podq2B0qNxTBlH0c"
 				],
-				"effectConditionText": "!target.traits.ci.value.has('diseased') && !!target.traits.ci.value.has('poisoned')",
+				"effectConditionText": "!target.traits.ci.value.has('diseased') && !target.traits.ci.value.has('poisoned')",
 				"visibility": {
 					"level": {
 						"min": null,

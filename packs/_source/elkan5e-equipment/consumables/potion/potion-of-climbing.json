@@ -11,7 +11,7 @@
 				"name": "Drink",
 				"_id": "RwfSYL6yjdvldoIH",
 				"activation": {
-					"type": "bonus",
+					"type": "action",
 					"value": null,
 					"override": false,
 					"condition": ""
@@ -91,7 +91,7 @@
 		"identifier": "potion-of-climbing",
 		"source": {
 			"revision": 2,
-			"rules": "2024",
+			"rules": "",
 			"license": "",
 			"book": "",
 			"page": "",
@@ -148,18 +148,19 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.movement.climb",
-						"value": "@attributes.movement.walk",
+						"key": "system.attributes.movement.speeds.climb",
+						"value": "@attributes.movement.speeds.walk",
 						"priority": 20,
 						"type": "upgrade"
 					},
 					{
-						"key": "system.attributes.death.roll.mode",
+						"key": "system.skills.ath.roll.mode",
 						"value": 1,
 						"priority": 20,
 						"type": "add"
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -185,23 +186,6 @@
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "All",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"start": null,

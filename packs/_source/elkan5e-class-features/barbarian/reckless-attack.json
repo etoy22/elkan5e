@@ -28,22 +28,6 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"tint": "#ffffff",
@@ -53,10 +37,10 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.advantage.attack.mwak",
-						"value": 1,
+						"key": "system.rolls.attack.mwak.mode",
+						"value": "1",
 						"priority": 20,
-						"type": "custom"
+						"type": "add"
 					},
 					{
 						"key": "flags.midi-qol.grants.advantage.attack.all",
@@ -105,7 +89,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You can throw aside all concern for defense to attack with fierce desperation.</em></p><p><strong>No Action Cost</strong> - Self</p><p><em>Trigger: You make your first attack on your turn.</em></p><ul><li><p>You gain &amp;reference[advantage] on melee weapon attack rolls during this turn.</p></li><li><p>&amp;reference[Attack rolls] against you have advantage until your next turn.</p></li></ul>",
+			"value": "<p><em>You can throw aside all concern for defense to attack with fierce desperation.</em></p><p><strong>No Action Cost</strong> - Self</p><p><em>Trigger: You make your first attack on your turn.</em></p><ul><li><p>You gain &amp;reference[advantage] on melee weapon &amp;reference[attackrolls]{attack rolls} during this turn.</p></li><li><p>&amp;reference[Attack rolls] against you have advantage until your next turn.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -142,14 +126,7 @@
 					"override": false
 				},
 				"consumption": {
-					"targets": [
-						{
-							"type": "itemUses",
-							"value": "1",
-							"target": "",
-							"scaling": {}
-						}
-					],
+					"targets": [],
 					"scaling": {
 						"allowed": false,
 						"max": ""

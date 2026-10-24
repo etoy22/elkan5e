@@ -25,22 +25,6 @@
 					"specialDuration": [],
 					"dontApply": false,
 					"disableIncapacitated": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"name": "Light",
@@ -62,7 +46,8 @@
 						"priority": null,
 						"type": "add"
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
@@ -75,7 +60,6 @@
 		"midi-qol": {
 			"effectActivation": false,
 			"itemCondition": ",,,,,,,,",
-			"reactionCondition": ",,,,,,,,",
 			"otherCondition": ",,",
 			"effectCondition": ",,,,,,,,",
 			"rollAttackPerTarget": "default",
@@ -142,7 +126,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You pass your hand close to a firefly, phosphorescent moss, or other naturally glowing thing, chanting softly. You then touch an object, which then begins to glow.</em></p><p><strong>Utility Spell</strong></p><ul><li><p>You touch one object that is no larger than 10 feet in any dimension. Until the spell ends, the object sheds &amp;reference[brightlight] in a 20-foot radius and &amp;reference[dimlight] for an additional 20 feet. The light can be colored as you like. Completely covering the object with something opaque blocks the light. The spell ends if you cast it again or become &amp;reference[Incapacitated].</p></li></ul><p><em>If you target an object held or worn by a hostile creature, that creature must succeed on a Dexterity saving throw to avoid the spell.</em></p>",
+			"value": "<p><em>You pass your hand close to a firefly, phosphorescent moss, or other naturally glowing thing, chanting softly. You then touch an object, which then begins to glow.</em></p><p><strong>Utility Spell</strong></p><ul><li><p>You touch one object that is no larger than 10 feet in any dimension. Until the spell ends, the object sheds &amp;reference[brightlight] in a 20-foot radius and &amp;reference[dimlight] for an additional 20 feet. The light can be colored as you like. Completely covering the object with something opaque blocks the light. The spell ends if you cast it again or become &amp;reference[Incapacitated].</p></li></ul><p><em>If you target an object held or worn by a hostile creature, that creature must succeed on a Dexterity &amp;reference[savingthrow]{saving throw} to avoid the spell.</em></p>",
 			"chat": ""
 		},
 		"source": {
@@ -314,10 +298,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},

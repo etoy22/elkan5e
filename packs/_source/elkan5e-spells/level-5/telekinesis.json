@@ -15,9 +15,18 @@
 						"key": "flags.midi-qol.OverTime",
 						"value": "turn=end,\nsaveAbility=str,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nname=Telekinesis",
 						"priority": 20,
-						"type": "add"
+						"type": "add",
+						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "grappled",
+						"phase": "final",
+						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -29,9 +38,7 @@
 			"description": "",
 			"tint": "#ffffff",
 			"transfer": false,
-			"statuses": [
-				"grappled"
-			],
+			"statuses": [],
 			"flags": {
 				"dae": {
 					"disableCondition": "",
@@ -44,26 +51,9 @@
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!EihC0prUS7NZDdtL.77CUQ8sBVFHQGMbg"
@@ -104,7 +94,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>Holding your hands outstretched, you begin to manipulate creatures an objects from afar.</em></p><p><strong>Utility</strong></p><p>Target a huge or smaller creature or object. If your target is an object carried by a creature, that creature rolls the save for the object.</p><p><strong>[[/save strength]]{Strength Save}</strong></p><ul><li><p><strong>Failure</strong>: Target is &amp;reference[grappled] and moved up to 30 feet in any direction within the spell’s range, including into the air. If you want, you can also cause the target to become &amp;reference[prone]. Target rolls again at end of their turns, ending effect on success (falling if suspended in midair).</p><p>You can also release a target at any time.</p></li><li><p><strong>Success</strong>: No effect.</p></li><li><p><strong>Concentration:</strong> Once on each subsequent turn, you can target a different creature or object or move one previously grappled target as a bonus action. You can &amp;reference[grappled]{grapple} up to 5 creatures (including yourself) in this way.</p></li></ul><p><em>You can exert fine control on objects with your telekinetic grip, such as manipulating a simple tool, opening a door or a container, stowing or retrieving an item from an open container, or pouring the contents from a vial.</em></p>",
+			"value": "<p><em>Holding your hands outstretched, you begin to manipulate creatures an objects from afar.</em></p><p><strong>Utility</strong></p><p>Target a huge or smaller creature or object. If your target is an object carried by a creature, that creature rolls the save for the object.</p><p><strong>[[/save strength]]{Strength Save}</strong></p><ul><li><p><strong>Failure</strong>: Target is &amp;reference[grappled] and moved up to 30 feet in any direction within the spell’s range, including into the air. If you want, you can also cause the target to become &amp;reference[prone]. Target rolls again at end of their turns, ending effect on success (falling if suspended in midair).</p><p>You can also release a target at any time.</p></li><li><p><strong>Success</strong>: No effect.</p></li><li><p><strong>&amp;reference[concentration]{Concentration}:</strong> Once on each subsequent turn, you can target a different creature or object or move one previously grappled target as a bonus action. You can &amp;reference[grappled]{grapple} up to 5 creatures (including yourself) in this way.</p></li></ul><p><em>You can exert fine control on objects with your telekinetic grip, such as manipulating a simple tool, opening a door or a container, stowing or retrieving an item from an open container, or pouring the contents from a vial.</em></p>",
 			"chat": ""
 		},
 		"source": {
@@ -197,10 +187,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -301,10 +295,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},

@@ -21,23 +21,6 @@
 					"enableCondition": "",
 					"disableCondition": "",
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"_id": "kRknZSEtFZDUg55G",
@@ -49,9 +32,7 @@
 				"expired": false
 			},
 			"description": "",
-			"statuses": [
-				"poisoned"
-			],
+			"statuses": [],
 			"tint": "#ffffff",
 			"img": "icons/skills/melee/blade-tip-acid-poison-green.webp",
 			"type": "base",
@@ -62,11 +43,19 @@
 						"type": "add",
 						"value": "turn=end,saveAbility=con,saveDC=@abilities.dex.dc,label=Poisoned Weapon",
 						"phase": "initial",
+						"priority": 20,
+						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "poisoned",
+						"phase": "final",
 						"priority": 20
 					}
 				]
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!iGHV6CxDU172zR4o.kRknZSEtFZDUg55G"
@@ -110,7 +99,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p>Poisoned Weapon is a @UUID[Compendium.elkan5e.elkan5e-class-features.Item.hW3DmOPgBpa7lGU8]{Precision Attacks}.</p><p><em>Prerequisite: Proficiency with @UUID[Compendium.elkan5e.elkan5e-equipment.Item.PGHsgtscRcDrKt6j]{Poisoning Tools}</em></p><p><strong>Alternative Sneak Attack</strong> - 1 Creature - 1 Minute</p><p>You can sacrifice [[/r 2d6]] of your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{sneak attack} damage to poison them.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> @UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{Sneak Attack} (-2d6) poison damage. Target is <span>&amp;reference[Poisoned]</span>. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> @UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{Sneak Attack} (-2d6) poison damage.</p></li></ul>",
+			"value": "<p>&amp;reference[poisoned apply=false]{Poisoned} Weapon is a @UUID[Compendium.elkan5e.elkan5e-class-features.Item.hW3DmOPgBpa7lGU8]{Precision Attacks}.</p><p><em>Prerequisite: Proficiency with @UUID[Compendium.elkan5e.elkan5e-equipment.Item.PGHsgtscRcDrKt6j]{Poisoning Tools}</em></p><p><strong>Alternative Sneak Attack</strong> - 1 Creature - 1 Minute</p><p>You can sacrifice [[/r 2d6]] of your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{sneak attack} damage to poison them.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> @UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{Sneak Attack} (-2d6) poison damage. Target is <span>&amp;reference[Poisoned]</span>. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> @UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{Sneak Attack} (-2d6) poison damage.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -224,7 +213,9 @@
 					}
 				},
 				"save": {
-					"ability": "con",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "",
 						"formula": "8 + max(@abilities.dex.mod, @abilities.str.mod) + @prof"

@@ -9,7 +9,15 @@
 			"_id": "uwSypIPbXyCLDiXY",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "dazed",
+						"phase": "final",
+						"priority": 20
+					}
+				]
 			},
 			"disabled": false,
 			"duration": {
@@ -21,10 +29,8 @@
 			"description": "",
 			"origin": "Compendium.elkan5e.elkan5e-class-features.Item.Bo8uEAWKOvzFsnli",
 			"tint": "#ffffff",
-			"transfer": true,
-			"statuses": [
-				"dazed"
-			],
+			"transfer": false,
+			"statuses": [],
 			"flags": {
 				"dae": {
 					"disableCondition": "",
@@ -34,25 +40,9 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!Bo8uEAWKOvzFsnli.uwSypIPbXyCLDiXY"
@@ -96,7 +86,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p>Sap is a @UUID[Compendium.elkan5e.elkan5e-class-features.Item.hW3DmOPgBpa7lGU8]{Precision Attacks}.</p><p><strong>Alternative Sneak Attack</strong> - 1 Creature - 1 Round</p><p>You can sacrifice [[/r 3d6]] of your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{sneak attack} damage to strike your target in just the right way to disorient them.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> @UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{Sneak Attack} (-3d6) bludgeoning damage. Target is &amp;Reference[dazed].</p></li><li><p><strong>Success:</strong> @UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{Sneak Attack} (-3d6) damage.</p></li></ul>",
+			"value": "<p>Sap is a @UUID[Compendium.elkan5e.elkan5e-class-features.Item.hW3DmOPgBpa7lGU8]{Precision Attacks}.</p><p><strong>Alternative Sneak Attack</strong> - 1 Creature - 1 Round</p><p>You can sacrifice [[/r 3d6]] of your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{sneak attack} damage to strike your target in just the right way to disorient them.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> @UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{Sneak Attack} (-3d6) bludgeoning damage. Target is &amp;reference[dazed].</p></li><li><p><strong>Success:</strong> @UUID[Compendium.elkan5e.elkan5e-class-features.Item.8Ctt1vOsZuKXxAIN]{Sneak Attack} (-3d6) damage.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -209,7 +199,9 @@
 					}
 				},
 				"save": {
-					"ability": "con",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "",
 						"formula": "8 + max(@abilities.dex.mod, @abilities.str.mod) + @prof"

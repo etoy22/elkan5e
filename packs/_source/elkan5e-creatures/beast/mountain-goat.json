@@ -465,11 +465,13 @@
 				"bonus": ""
 			},
 			"movement": {
-				"burrow": null,
-				"climb": 30,
-				"fly": null,
-				"swim": null,
-				"walk": 40,
+				"speeds": {
+					"walk": 40,
+					"burrow": null,
+					"climb": 30,
+					"fly": null,
+					"swim": null
+				},
 				"units": null,
 				"hover": false,
 				"ignoredDifficultTerrain": []
@@ -478,10 +480,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 60,
-				"blindsight": null,
-				"tremorsense": null,
-				"truesight": null,
+				"ranges": {
+					"darkvision": 60,
+					"blindsight": null,
+					"tremorsense": null,
+					"truesight": null
+				},
 				"units": null,
 				"special": ""
 			},
@@ -581,7 +585,7 @@
 		},
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"license": "",
 			"page": "",
@@ -863,7 +867,7 @@
 				"identifier": "ram",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",
@@ -956,13 +960,13 @@
 				},
 				"advancement": [],
 				"description": {
-					"value": "<p>This creature has &amp;reference[advantage] on saves against being pushed or knocked &amp;reference[prone apply=false].</p>",
+					"value": "<p>The [[lookup @name lowercase]] has Advantage on &amp;reference[savingthrow]{saving throws} against being pushed or knocked &amp;reference[Prone apply=false].</p>",
 					"chat": ""
 				},
 				"identifier": "sure-footed",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"crewed": false,
@@ -972,7 +976,9 @@
 					"repeatable": false,
 					"level": null
 				},
-				"properties": [],
+				"properties": [
+					"trait"
+				],
 				"requirements": "",
 				"type": {
 					"value": "",
@@ -990,7 +996,7 @@
 						"changes": [
 							{
 								"key": "flags.midi-qol.advantage.ability.save.all",
-								"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"prone\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"prone\") || ef.name == 'Prone');",
+								"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"prone\") || ef.system?.rider?.statuses?.has(\"prone\") || ef.name == 'Prone');",
 								"priority": 20,
 								"type": "custom"
 							}
@@ -1019,23 +1025,6 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": []
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "Enemy",
-							"nameOverride": "",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"customCheck": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"wallsBlock": "system",
-							"statuses": []
 						}
 					},
 					"start": {

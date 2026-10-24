@@ -20,22 +20,6 @@
 					"specialDuration": [],
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"img": "icons/magic/light/explosion-beam-impact-silhouette.webp",
@@ -47,9 +31,18 @@
 						"key": "flags.midi-qol.OverTime",
 						"value": "turn=end,\nsaveAbility=con,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Sunburst",
 						"priority": 20,
-						"type": "add"
+						"type": "add",
+						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "blinded",
+						"phase": "final",
+						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -60,10 +53,8 @@
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"statuses": [
-				"blinded"
-			],
-			"showIcon": 2,
+			"statuses": [],
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!OLCuP074ibRMxgQf.PLSHw2TSzTcXlvtg"
@@ -205,10 +196,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -234,7 +229,9 @@
 					]
 				},
 				"save": {
-					"ability": "con",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""

@@ -102,7 +102,7 @@
 						"formula": ""
 					}
 				},
-				"useConditionText": "",
+				"useConditionText": "reaction === 'isSaveSuccess'",
 				"useConditionReason": "",
 				"effectConditionText": "",
 				"macroData": {
@@ -291,13 +291,13 @@
 		},
 		"advancement": [],
 		"description": {
-			"value": "<p><strong>Reaction</strong> - 1 Creature (200 ft.) - 3/Long Rest - Magical</p><p><em>Trigger: You succeed on a saving throw against a creature's spell or ability. You target the creature who targeted you.</em></p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage]] damage and is either &amp;reference[charmed], &amp;reference[goaded], or &amp;reference[frightened] (your choice). Target attempts save at end of their turns, ending the condition on success.</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li></ul>",
+			"value": "<p><strong>Reaction</strong> - 1 Creature (200 ft.) - 3/Long Rest - Magical</p><p><em>Trigger: You succeed on a &amp;reference[savingthrow]{saving throw} against a creature's spell or ability. You target the creature who targeted you.</em></p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage]] damage and is either &amp;reference[charmed], &amp;reference[goaded], or &amp;reference[frightened] (your choice). Target attempts save at end of their turns, ending the condition on success.</p></li><li><p><strong>Success:</strong> Half damage, no other effect.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "last-laugh",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
 			"custom": "elkan5e.com/cleric",
@@ -333,8 +333,16 @@
 						"value": "overtime",
 						"priority": 20,
 						"type": "add"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "charmed",
+						"phase": "final",
+						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -346,9 +354,7 @@
 			"description": "",
 			"tint": "#ffffff",
 			"transfer": false,
-			"statuses": [
-				"charmed"
-			],
+			"statuses": [],
 			"flags": {
 				"dae": {
 					"disableCondition": "target.traits.ci.value.has('charmed')",
@@ -361,26 +367,9 @@
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "All",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!09njGBRLUSKIl0i5.SrR1RrLZ0u1ZysPJ"
@@ -397,8 +386,16 @@
 						"value": "overtime",
 						"priority": 20,
 						"type": "add"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "goaded",
+						"phase": "final",
+						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -410,9 +407,7 @@
 			"description": "",
 			"tint": "#ffffff",
 			"transfer": false,
-			"statuses": [
-				"goaded"
-			],
+			"statuses": [],
 			"flags": {
 				"dae": {
 					"disableCondition": "",
@@ -425,27 +420,10 @@
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "All",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"_id": "f2dNR3ZfDJObOxBc",
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!09njGBRLUSKIl0i5.f2dNR3ZfDJObOxBc"
@@ -462,8 +440,16 @@
 						"value": "overtime",
 						"priority": 20,
 						"type": "add"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "frightened",
+						"phase": "final",
+						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -475,9 +461,7 @@
 			"description": "",
 			"tint": "#ffffff",
 			"transfer": false,
-			"statuses": [
-				"frightened"
-			],
+			"statuses": [],
 			"flags": {
 				"dae": {
 					"disableCondition": "",
@@ -490,27 +474,10 @@
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "All",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"_id": "tU4Z7n3zYgpmAeGA",
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!09njGBRLUSKIl0i5.tU4Z7n3zYgpmAeGA"
@@ -521,7 +488,6 @@
 			"onUseMacroName": "",
 			"effectActivation": false,
 			"itemCondition": "",
-			"reactionCondition": "reaction === 'isSave' && workflow?.save?.success",
 			"otherCondition": "",
 			"effectCondition": "",
 			"rollAttackPerTarget": "default",

@@ -19,22 +19,6 @@
 					"enableCondition": "",
 					"disableCondition": "",
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"ignoreSelf": false,
-					"hidden": false,
-					"height": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"disabled": false,
@@ -55,7 +39,7 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.movement.fly",
+						"key": "system.attributes.movement.speeds.fly",
 						"type": "upgrade",
 						"value": 20,
 						"phase": "initial",
@@ -68,7 +52,8 @@
 						"phase": "final",
 						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
@@ -142,7 +127,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>Holding a piece of wire meant to hold eggs to dip them in paint, you gesture as if lifting a creature or object from afar, calling a spirit of air. The creature or object lifts into the air and gains the ability to float above the ground.</em></p><p><strong>Buff</strong></p><p>The spell can levitate a willing creature or object that weighs up to 500 pounds.</p><ul><li><p>Target immediately rises up to 20 ft. into the air (your choice).</p></li><li><p>Target gains a fly speed of 20 ft. and can hover.</p></li><li><p><strong>Concentration:</strong> Once per turn, you can use your action to move the levitated target up to 20 ft., but never higher than 20 ft. off the ground.</p></li></ul><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 2nd.</p>",
+			"value": "<p><em>Holding a piece of wire meant to hold eggs to dip them in paint, you gesture as if lifting a creature or object from afar, calling a spirit of air. The creature or object lifts into the air and gains the ability to float above the ground.</em></p><p><strong>Buff</strong></p><p>The spell can levitate a willing creature or object that weighs up to 500 pounds.</p><ul><li><p>Target immediately rises up to 20 ft. into the air (your choice).</p></li><li><p>Target gains a fly speed of 20 ft. and can hover.</p></li><li><p><strong>&amp;reference[concentration]{Concentration}:</strong> Once per turn, you can use your action to move the levitated target up to 20 ft., but never higher than 20 ft. off the ground.</p></li></ul><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 2nd.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -237,10 +222,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -264,149 +253,61 @@
 					"6BMAKrzsDsynMYBZ"
 				]
 			},
-			"CAkueRFmzDrvsgyM": {
+			"levitateMoveAct1": {
+				"_id": "levitateMoveAct1",
 				"type": "utility",
+				"name": "Move Levitated Target",
+				"img": "icons/magic/holy/meditation-chi-focus-blue.webp",
 				"activation": {
 					"type": "action",
-					"value": null,
-					"override": false
+					"value": 1,
+					"condition": "Once per turn, while concentrating",
+					"override": true
 				},
 				"consumption": {
 					"scaling": {
-						"allowed": false
+						"allowed": false,
+						"max": ""
 					},
 					"spellSlot": false,
 					"targets": []
 				},
 				"description": {
-					"chatFlavor": ""
+					"chatFlavor": "Move the levitated target up to 20 ft., never higher than 20 ft. off the ground."
 				},
 				"duration": {
 					"units": "inst",
 					"concentration": false,
 					"override": true
 				},
-				"effects": [
-					{
-						"_id": "6BMAKrzsDsynMYBZ",
-						"level": {
-							"min": null,
-							"max": null
-						}
-					}
-				],
+				"effects": [],
 				"range": {
-					"override": false,
-					"units": "self"
+					"override": false
 				},
 				"target": {
-					"override": false,
-					"prompt": true,
-					"template": {
-						"contiguous": false,
-						"stationary": false,
-						"units": "ft"
-					},
 					"affects": {
+						"type": "creature",
+						"count": "1",
 						"choice": false
-					}
+					},
+					"template": {
+						"units": "ft",
+						"contiguous": false
+					},
+					"override": true,
+					"prompt": true
 				},
 				"uses": {
 					"spent": 0,
-					"recovery": [],
-					"max": ""
+					"max": "",
+					"recovery": []
 				},
 				"roll": {
 					"prompt": false,
 					"visible": false,
 					"name": "",
 					"formula": ""
-				},
-				"useConditionText": "",
-				"effectConditionText": "",
-				"name": "Overtime",
-				"img": "",
-				"visibility": {
-					"level": {
-						"min": null,
-						"max": null
-					},
-					"requireAttunement": false,
-					"requireIdentification": false,
-					"requireMagic": false
-				},
-				"useConditionReason": "",
-				"macroData": {
-					"name": "",
-					"command": ""
-				},
-				"ignoreTraits": {
-					"idi": false,
-					"idr": false,
-					"idv": false,
-					"ida": false,
-					"idm": false
-				},
-				"midiProperties": {
-					"ignoreTraits": [],
-					"triggeredActivityId": "none",
-					"triggeredActivityConditionText": "",
-					"triggeredActivityTargets": "targets",
-					"triggeredActivityRollAs": "self",
-					"triggeredActivityConsume": true,
-					"triggeredActivityConfigure": true,
-					"autoConsume": true,
-					"forceConsumeDialog": "default",
-					"forceRollDialog": "default",
-					"forceDamageDialog": "default",
-					"confirmTargets": "default",
-					"autoTargetType": "any",
-					"autoTargetAction": "default",
-					"automationOnly": false,
-					"otherActivityCompatible": true,
-					"otherActivityAsParentType": true,
-					"displayActivityName": false,
-					"rollMode": "default",
-					"chooseEffects": false,
-					"toggleEffect": false,
-					"ignoreFullCover": false,
-					"removeChatButtons": "default",
-					"magicEffect": false,
-					"magicDamage": false,
-					"noConcentrationCheck": false,
-					"skipConcentrationCheck": false,
-					"autoCEEffects": "default"
-				},
-				"isOverTimeFlag": false,
-				"overTimeProperties": {
-					"saveRemoves": true,
-					"rollAs": "target",
-					"preRemoveConditionText": "",
-					"postRemoveConditionText": ""
-				},
-				"regionBehavior": {
-					"enabled": false,
-					"dispositionFilter": -1,
-					"excludeSource": true,
-					"oncePerTurn": true,
-					"wallRestriction": "none",
-					"regionVisibility": 2,
-					"rules": []
-				},
-				"regionLight": {
-					"enabled": false,
-					"dim": 0,
-					"bright": 0,
-					"color": null,
-					"alpha": 0.5,
-					"luminosity": 0.5,
-					"animationType": "",
-					"animationSpeed": 5,
-					"animationIntensity": 5
-				},
-				"otherActivityId": "none",
-				"otherActivityAsParentType": true,
-				"_id": "CAkueRFmzDrvsgyM"
+				}
 			}
 		},
 		"identifier": "levitate"

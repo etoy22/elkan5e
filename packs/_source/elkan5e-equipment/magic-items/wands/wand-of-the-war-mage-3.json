@@ -4,7 +4,7 @@
 	"img": "icons/weapons/wands/wand-carved-stone-shard.webp",
 	"system": {
 		"description": {
-			"value": "<p><em>Wand (requires attunement by a spellcaster)</em></p><p>While holding this wand, you gain a bonus to spell attack rolls of +3. In addition, you ignore half cover when making a spell attack.</p>",
+			"value": "<p><em>Wand (requires attunement by a spellcaster)</em></p><p>While holding this wand, you gain a bonus to spell &amp;reference[attackrolls]{attack rolls} of +3. In addition, you ignore &amp;reference[half cover]{half cover} when making a spell attack.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -12,7 +12,7 @@
 			"book": "",
 			"page": "",
 			"license": "",
-			"rules": "2014",
+			"rules": "",
 			"revision": 1
 		},
 		"quantity": 1,
@@ -78,18 +78,19 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.bonuses.msak.attack",
+						"key": "system.rolls.attack.msak.bonus",
 						"value": 3,
 						"priority": null,
 						"type": "add"
 					},
 					{
-						"key": "system.bonuses.rsak.attack",
+						"key": "system.rolls.attack.rsak.bonus",
 						"value": 3,
 						"priority": null,
 						"type": "add"
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {

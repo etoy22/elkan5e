@@ -82,11 +82,13 @@
 				}
 			},
 			"movement": {
-				"burrow": null,
-				"climb": null,
-				"fly": null,
-				"swim": null,
-				"walk": 15,
+				"speeds": {
+					"walk": 15,
+					"burrow": null,
+					"climb": null,
+					"fly": null,
+					"swim": null
+				},
 				"units": null,
 				"hover": false
 			},
@@ -94,10 +96,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": null,
-				"blindsight": null,
-				"tremorsense": null,
-				"truesight": null,
+				"ranges": {
+					"darkvision": null,
+					"blindsight": null,
+					"tremorsense": null,
+					"truesight": null
+				},
 				"units": null,
 				"special": ""
 			},
@@ -626,7 +630,7 @@
 				},
 				"source": {
 					"custom": "",
-					"rules": "2014",
+					"rules": "",
 					"revision": 1,
 					"book": "Elkan 5e"
 				},
@@ -644,7 +648,8 @@
 					"level": null
 				},
 				"properties": [
-					"mgc"
+					"mgc",
+					"trait"
 				],
 				"identifier": "permanent-invisibility",
 				"activities": {},
@@ -659,14 +664,16 @@
 					"transfer": true,
 					"flags": {
 						"dae": {
-							"itemName": "Permanent Invisibility"
+							"itemName": "Permanent Invisibility",
+							"stackable": "none"
 						}
 					},
 					"img": "icons/svg/invisible.svg",
 					"_id": "lCY931D0Ks5MfEnf",
 					"type": "base",
 					"system": {
-						"changes": []
+						"changes": [],
+						"magical": true
 					},
 					"disabled": false,
 					"duration": {

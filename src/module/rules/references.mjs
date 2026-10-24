@@ -41,8 +41,6 @@ function setupCombatRefs() {
 		{ key: "ready", id: "Uo0qriXzk4YInJrl" },
 		{ key: "search", id: "bRo3ci56JJiuxYk8" },
 		{ key: "study", id: "LAZotCjxu5Y9BIkK" },
-		{ key: "surprise", id: "QOZeW0m8RCdVg6UE" },
-		{ key: "unarmedstrike", id: "pRDNsHpNLLk1Qq58" },
 		{ key: "twoweaponfighting", id: "XLZbNEhoayCw5bk8" },
 	];
 	if (!CONFIG.DND5E.rules) CONFIG.DND5E.rules = {};
@@ -53,6 +51,11 @@ function setupCombatRefs() {
 			console.warn(`Elkan 5e | Failed to assign combat reference for key '${key}':`, e);
 		}
 	});
+	// Surprised lives in the Conditions journal; Unarmed Strike is a class feature item.
+	CONFIG.DND5E.rules.surprise =
+		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.QOZeW0m8RCdVg6UE";
+	CONFIG.DND5E.rules.unarmedstrike =
+		"Compendium.elkan5e.elkan5e-class-features.Item.pRDNsHpNLLk1Qq58";
 	CONFIG.DND5E.rules.hitpoints =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.S6GEsFTCc9Dj8d30.JournalEntryPage.ndoKj9SzjOvxOI3J";
 	CONFIG.DND5E.rules.damagerolls =
@@ -287,8 +290,6 @@ function setupMovementRefs() {
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.1U0myNrOvIVBUdJV";
 	CONFIG.DND5E.rules.highjump =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.raPwIkqKSv60ELmy";
-	CONFIG.DND5E.rules.falling =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.e7rUhwl4HkTVE0Qs.JournalEntryPage.kREHL5pgNUOhay9f";
 	CONFIG.DND5E.rules.difficultterrain =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.zt8Y2LavXmFfCg6k.JournalEntryPage.hFW5BR2yHHwwgurD";
 	CONFIG.DND5E.rules.forcedmarch =
@@ -440,11 +441,9 @@ function setupConditionRefs() {
 	CONFIG.DND5E.rules.concentrating =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.4ZOHN6tGvj54J6Kv";
 
-	CONFIG.DND5E.rules.disease =
-		"Compendium.elkan5e.elkan5e-rules.JournalEntry.8344a52d39b0429a.JournalEntryPage.232cb157e7054330";
 	CONFIG.DND5E.rules.bloodied =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.2YZgnTbeQ4rGG6t9";
-	CONFIG.DND5E.rules.obscurred =
+	CONFIG.DND5E.rules.obscurred = CONFIG.DND5E.rules.obscured =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.FuFWdz6zw9P9VrON";
 	CONFIG.DND5E.rules.diseased = CONFIG.DND5E.rules.disease =
 		"Compendium.elkan5e.elkan5e-rules.JournalEntry.eS0uzU55fprQJqIt.JournalEntryPage.C1uE5H2DfghUGEID";

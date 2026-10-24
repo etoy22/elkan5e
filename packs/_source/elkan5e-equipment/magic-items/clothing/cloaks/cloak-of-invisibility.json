@@ -104,13 +104,13 @@
 			"max": "3"
 		},
 		"description": {
-			"value": "<p><em>Wondrous Item - Legendary (Requires Attunement)</em></p><p><strong>Action</strong> - Self - 1 Hour - 3 Charges (Regains [[/r 1d3]] Charges at Dawn)</p><p><strong>Buff</strong></p><ul><li><p>1 Charge - Target becomes &amp;Reference[Invisible] condition.</p></li><li><p>The effect ends early if you pull the hood down (no action required) or cease wearing the cloak.</p></li></ul>",
+			"value": "<p><em>Wondrous Item - Legendary (Requires Attunement)</em></p><p><strong>Action</strong> - Self - 1 Hour - 3 Charges (Regains [[/r 1d3]] Charges at Dawn)</p><p><strong>Buff</strong></p><ul><li><p>1 Charge - Target becomes &amp;reference[Invisible] condition.</p></li><li><p>The effect ends early if you pull the hood down (no action required) or cease wearing the cloak.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "cloak-of-invisibility",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "",
 			"license": "",
 			"page": "",
@@ -163,11 +163,20 @@
 			"name": "Cloak of Invisibility",
 			"img": "icons/equipment/back/cloak-hooded-blue.webp",
 			"origin": "Compendium.elkan5e.elkan5e-equipment.Item.GBYTdE1jyhmTMrpB",
-			"transfer": true,
+			"transfer": false,
 			"_id": "sSsgrnNQCK4vurTm",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "invisible",
+						"phase": "final",
+						"priority": 20
+					}
+				],
+				"magical": true
 			},
 			"disabled": true,
 			"duration": {
@@ -178,13 +187,16 @@
 			},
 			"description": "<p>The effect ends early if you pull the hood down (no action required) or cease wearing the cloak.</p>",
 			"tint": "#ffffff",
-			"statuses": [
-				"invisible"
-			],
-			"showIcon": 2,
+			"statuses": [],
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
-			"_key": "!items.effects!GBYTdE1jyhmTMrpB.sSsgrnNQCK4vurTm"
+			"_key": "!items.effects!GBYTdE1jyhmTMrpB.sSsgrnNQCK4vurTm",
+			"flags": {
+				"dae": {
+					"stackable": "none"
+				}
+			}
 		}
 	],
 	"flags": {

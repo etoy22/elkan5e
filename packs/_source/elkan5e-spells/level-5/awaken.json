@@ -27,19 +27,6 @@
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": null,
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false
 				}
 			},
 			"tint": "#ffffff",
@@ -57,7 +44,8 @@
 						"priority": 20,
 						"type": "upgrade"
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
@@ -77,22 +65,6 @@
 					"disableIncapacitated": false,
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"duration": {
@@ -108,15 +80,22 @@
 			"transfer": false,
 			"name": "Awaken (Charm)",
 			"description": "",
-			"statuses": [
-				"charmed"
-			],
+			"statuses": [],
 			"img": "icons/magic/nature/tree-animated-strike.webp",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "charmed",
+						"phase": "final",
+						"priority": 20
+					}
+				],
+				"magical": true
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!PH8IHWnZkad6jFB2.3CmIQUwZvjBIdTTo"
@@ -157,7 +136,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>After tracing magical pathways within a precious gemstone, you touch a &amp;reference[beast] or &amp;reference[plant], awakening sapience within it. Plants also become mobile.</em></p><p><strong>Materials:</strong> You require a <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.ebjwiio4y36G5pP5]{Large Agate}</em>, typically valued at 250 gold, which the spell consumes.</p><p><strong>Utility</strong></p><p>You touch a &amp;reference[beast] or &amp;reference[plant] of huge size or smaller. The target must have no &amp;reference[intelligence] score or an intelligence of 4 or lower.</p><ul><li><p>The target gains an Intelligence of 10 and the ability to speak one language you know.</p></li><li><p>The target is &amp;reference[charmed] by you for 30 days or until you or your companions do anything harmful to it. It may or may not remain friendly to you afterwards.</p></li><li><p>If the target is a &amp;reference[plant], it gains a walking speed of 30 ft. and can see like a human could.</p></li><li><p>For plants that didn't previously have statistics, your GM chooses statistics appropriate for the awakened &amp;reference[plant], such as the statistics for the awakened shrub or the awakened tree.</p></li></ul>",
+			"value": "<p><em>After tracing magical pathways within a precious gemstone, you touch a &amp;reference[beast] or &amp;reference[plant], awakening sapience within it. Plants also become mobile.</em></p><p><strong>Materials:</strong> You require a <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.ebjwiio4y36G5pP5]{Large Agate}</em>, typically valued at 250 gold, which the spell consumes.</p><p><strong>Utility</strong></p><p>You touch a &amp;reference[beast] or &amp;reference[plant] of huge size or smaller. The target must have no &amp;reference[intelligence] score or an intelligence of 4 or lower.</p><ul><li><p>The target gains an Intelligence of 10 and the ability to speak one language you know.</p></li><li><p>The target is &amp;reference[charmed] by you for 30 days or until you or your companions do anything harmful to it. It may or may not remain friendly to you afterwards.</p></li><li><p>If the target is a plant, it gains a walking speed of 30 ft. and can see like a human could.</p></li><li><p>For plants that didn't previously have statistics, your GM chooses statistics appropriate for the awakened plant, such as the statistics for the awakened shrub or the awakened tree.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -205,7 +184,7 @@
 		"materials": {
 			"value": "",
 			"consumed": true,
-			"cost": 1000,
+			"cost": 250,
 			"supply": 0
 		},
 		"preparation": {
@@ -253,10 +232,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},

@@ -21,22 +21,6 @@
 					"enableCondition": "",
 					"disableCondition": "",
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"disabled": false,
@@ -51,10 +35,7 @@
 			"origin": null,
 			"name": "Hypnotic Pattern",
 			"description": "",
-			"statuses": [
-				"charmed",
-				"incapacitated"
-			],
+			"statuses": [],
 			"img": "icons/magic/control/hypnosis-mesmerism-swirl.webp",
 			"type": "base",
 			"system": {
@@ -64,11 +45,27 @@
 						"type": "add",
 						"value": "turn=end,saveAbility=wis,saveDC=@attributes.spell.dc,saveMagic=true,",
 						"phase": "initial",
+						"priority": 20,
+						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "charmed",
+						"phase": "final",
+						"priority": 20
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "incapacitated",
+						"phase": "final",
 						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!TmZ22s2pzXuzMX7n.vf8qXWho8hhViUVl"
@@ -224,10 +221,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -236,7 +237,9 @@
 					"parts": []
 				},
 				"save": {
-					"ability": "wis",
+					"ability": [
+						"wis"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""

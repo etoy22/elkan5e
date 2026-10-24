@@ -135,7 +135,9 @@
 					]
 				},
 				"save": {
-					"ability": "wis",
+					"ability": [
+						"wis"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -170,22 +172,6 @@
 					"enableCondition": "",
 					"disableCondition": "",
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"_id": "4XvMjTzjt8Cy8YoW",
@@ -197,16 +183,23 @@
 				"expired": false
 			},
 			"description": "",
-			"statuses": [
-				"frightened"
-			],
+			"statuses": [],
 			"tint": "#ffffff",
 			"img": "icons/weapons/axes/axe-double-white-red.webp",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "frightened",
+						"phase": "final",
+						"priority": 20
+					}
+				],
+				"magical": true
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!VnFCPkYMsvuKpbkY.4XvMjTzjt8Cy8YoW"

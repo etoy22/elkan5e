@@ -4,62 +4,59 @@
 	"img": "icons/magic/death/skull-energy-light-purple.webp",
 	"effects": [
 		{
+			"_id": "weirdFrightened1",
 			"name": "Weird",
-			"origin": "Compendium.elkan5e.elkan5e-spells.Item.myGVqxgb7FmkOw0h",
-			"transfer": false,
-			"flags": {
-				"dae": {
-					"itemName": "Weird",
-					"disableIncapacitated": false,
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false,
-					"stackable": "noneName",
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"specialDuration": [],
-					"enableCondition": "",
-					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
-				}
-			},
-			"img": "icons/magic/death/skull-energy-light-purple.webp",
-			"_id": "Ii4U5SnWiH5hfbHq",
+			"img": "modules/elkan5e/icons/conditions/frightened.svg",
 			"type": "base",
-			"system": {
-				"changes": []
-			},
+			"transfer": false,
 			"disabled": false,
 			"duration": {
-				"value": null,
+				"value": 60,
 				"units": "seconds",
-				"expiry": null,
+				"expiry": "turnStart",
 				"expired": false
 			},
 			"description": "",
+			"origin": null,
+			"statuses": [],
 			"tint": "#ffffff",
-			"statuses": [
-				"frightened"
-			],
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
-			"_key": "!items.effects!myGVqxgb7FmkOw0h.Ii4U5SnWiH5hfbHq"
+			"flags": {
+				"dae": {
+					"stackable": "noneName",
+					"specialDuration": [],
+					"macroRepeat": "none",
+					"durationExpression": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"disableIncapacitated": false,
+					"enableCondition": "",
+					"disableCondition": ""
+				}
+			},
+			"system": {
+				"magical": true,
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"value": "turn=end, label=Weird, saveAbility=wis, saveDC=@attributes.spell.dc, saveMagic=true, damageRoll=5d10, damageType=psychic, saveDamage=nodamage, damageBeforeSave=false",
+						"priority": 20,
+						"type": "add",
+						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "frightened",
+						"phase": "final",
+						"priority": 20
+					}
+				]
+			},
+			"_key": "!items.effects!myGVqxgb7FmkOw0h.weirdFrightened1"
 		}
 	],
 	"folder": "OLc6BMEuifPnCAUH",
@@ -190,7 +187,7 @@
 				},
 				"effects": [
 					{
-						"_id": "Ii4U5SnWiH5hfbHq",
+						"_id": "weirdFrightened1",
 						"onSave": false
 					}
 				],
@@ -198,10 +195,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -226,7 +227,9 @@
 					]
 				},
 				"save": {
-					"ability": "wis",
+					"ability": [
+						"wis"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -240,9 +243,7 @@
 				"_id": "9s6hMCrfJGVjJY3x",
 				"name": "",
 				"img": "",
-				"appliedEffects": [
-					"Ii4U5SnWiH5hfbHq"
-				],
+				"appliedEffects": [],
 				"effectConditionText": "!target.traits.ci.value.has('frightened')"
 			}
 		},

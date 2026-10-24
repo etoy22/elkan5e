@@ -26,19 +26,6 @@
 					"disableIncapacitated": false,
 					"expiryMode": "default",
 					"macroRepeat": "none"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": null,
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false
 				}
 			},
 			"name": "Keen Smell",
@@ -49,9 +36,9 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.advantage.skill.prc",
-						"type": "override",
-						"value": 1,
+						"key": "system.skills.prc.roll.mode",
+						"type": "add",
+						"value": "1",
 						"priority": 20,
 						"phase": "initial"
 					}
@@ -97,7 +84,7 @@
 			"chat": ""
 		},
 		"source": {
-			"custom": "elkan5e.com/ancestrybackground",
+			"custom": "elkan5e.com/ancestry",
 			"rules": "",
 			"revision": 1,
 			"book": "Elkan 5e",
@@ -114,7 +101,9 @@
 			"subtype": ""
 		},
 		"requirements": "",
-		"properties": [],
+		"properties": [
+			"trait"
+		],
 		"identifier": "keen-smell",
 		"activities": {},
 		"enchant": {},

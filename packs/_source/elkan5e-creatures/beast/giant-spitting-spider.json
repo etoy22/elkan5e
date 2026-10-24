@@ -74,19 +74,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": null,
-				"climb": 30,
-				"fly": null,
-				"swim": null,
-				"walk": 30,
+				"speeds": {
+					"walk": 30,
+					"burrow": null,
+					"climb": 30,
+					"fly": null,
+					"swim": null
+				},
 				"units": "ft",
 				"hover": false
 			},
@@ -94,10 +96,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 60,
-				"blindsight": 10,
-				"tremorsense": null,
-				"truesight": null,
+				"ranges": {
+					"darkvision": 60,
+					"blindsight": 10,
+					"tremorsense": null,
+					"truesight": null
+				},
 				"units": "ft",
 				"special": ""
 			},
@@ -639,7 +643,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -658,7 +662,9 @@
 				"prerequisites": {
 					"level": null
 				},
-				"properties": []
+				"properties": [
+					"trait"
+				]
 			},
 			"effects": [],
 			"folder": null,
@@ -671,13 +677,13 @@
 			"img": "icons/creatures/webs/web-spider-glowing-purple.webp",
 			"system": {
 				"description": {
-					"value": "<p>While in contact with a web, the spider knows the exact location of any other creature in contact with the same web.</p>",
+					"value": "<p>While in contact with a web, the [[lookup @name lowercase]] knows the exact location of any other creature in contact with the same web.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -696,7 +702,9 @@
 				"prerequisites": {
 					"level": null
 				},
-				"properties": []
+				"properties": [
+					"trait"
+				]
 			},
 			"effects": [],
 			"folder": null,
@@ -709,13 +717,13 @@
 			"img": "icons/magic/nature/tree-bare-glow-yellow.webp",
 			"system": {
 				"description": {
-					"value": "<p>The [[lookup @name lowercase]] movement restrictions caused by webs, and the [[lookup @name lowercase]] knows the location of any other creature in contact with the same web.</p>",
+					"value": "<p>The [[lookup @name lowercase]] ignores movement restrictions caused by webs, and it knows the location of any other creature in contact with the same web.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -734,7 +742,9 @@
 				"prerequisites": {
 					"level": null
 				},
-				"properties": []
+				"properties": [
+					"trait"
+				]
 			},
 			"effects": [],
 			"folder": null,
@@ -747,13 +757,13 @@
 			"img": "icons/creatures/webs/web-spider-glowing-purple.webp",
 			"system": {
 				"description": {
-					"value": "<section> <p>Ranged Weapon Attack: +5 to hit, range 30/60 ft., one creature. Hit: The target is restrained by webbing.</p> <p>As an action, the restrained target can make a DC 12 Strength check, bursting the webbing on a success. The webbing can also be attacked and destroyed (AC 10; hp 5; vulnerability to <em>fire damage</em> ; immunity to bludgeoning, poison, and <em>psychic damage</em> ).</p> </section> <p>The target is restrained by webbing. As an action, the restrained target can make a Strength check, bursting the webbing on a success.</p>",
+					"value": "<section> <p>Ranged Weapon Attack: +5 to hit, range 30/60 ft., one creature. Hit: The target is &amp;reference[restrained apply=false]{restrained} by webbing.</p> <p>As an action, the restrained target can make a DC 12 Strength check, bursting the webbing on a success. The webbing can also be attacked and destroyed (AC 10; hp 5; vulnerability to <em>fire damage</em> ; immunity to bludgeoning, poison, and <em>psychic damage</em> ).</p> </section> <p>The target is restrained by webbing. As an action, the restrained target can make a Strength check, bursting the webbing on a success.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -934,7 +944,9 @@
 							"parts": []
 						},
 						"save": {
-							"ability": "str",
+							"ability": [
+								"str"
+							],
 							"dc": {
 								"calculation": "",
 								"formula": "12"
@@ -969,7 +981,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,

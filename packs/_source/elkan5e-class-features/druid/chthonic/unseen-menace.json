@@ -68,13 +68,15 @@
 					"onSave": "none"
 				},
 				"save": {
-					"ability": "wis",
+					"ability": [
+						"wis"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
 					}
 				},
-				"useConditionText": "",
+				"useConditionText": "false",
 				"forceDialog": false,
 				"effectConditionText": "!target.traits.ci.value.has('frightened')",
 				"name": "",
@@ -90,7 +92,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><em>Twisting the mind of your target, you instill fear of an unseen foe.</em></p><p><strong>Reaction</strong> - 1 Creature (90 ft.) - 1 Minute - Magical</p><p><em>Trigger: Target takes damage from a creature they cannot see.</em></p><p><strong>[[/save wisdom]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[frightened] of their unseen attacker. Target rolls again at end of their turns, ending effect on success. If the target has seen their attacker since being frightened, they roll this save with advantage. While frightened in this way:</p><ul><li><p>Target has disadvantage on attack rolls even if they cannot see their attacker.</p></li></ul></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"value": "<p><em>Twisting the mind of your target, you instill fear of an unseen foe.</em></p><p><strong>Reaction</strong> - 1 Creature (90 ft.) - 1 Minute - Magical</p><p><em>Trigger: Target takes damage from a creature they cannot see.</em></p><p><strong>[[/save wisdom]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[frightened] of their unseen attacker. Target rolls again at end of their turns, ending effect on success. If the target has seen their attacker since being frightened, they roll this save with advantage. While frightened in this way:</p><ul><li><p>Target has disadvantage on &amp;reference[attackrolls]{attack rolls} even if they cannot see their attacker.</p></li></ul></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "unseen-menace",
@@ -129,9 +131,18 @@
 						"key": "flags.midi-qol.OverTime",
 						"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Unseen Menace",
 						"priority": 20,
-						"type": "add"
+						"type": "add",
+						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "frightened",
+						"phase": "final",
+						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -142,9 +153,7 @@
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"statuses": [
-				"frightened"
-			],
+			"statuses": [],
 			"flags": {
 				"dae": {
 					"enableCondition": "",
@@ -157,26 +166,9 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!Y4ArRuSt8cFococY.eMJcl5rSb3kJkYnn"
@@ -202,7 +194,6 @@
 		"midi-qol": {
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
-			"reactionCondition": "reaction === 'isDamaged' && computeDistance(tokenUuid, targetUuid) <= 90 && !canvas.tokens.get(targetUuid)?.canSee(canvas.tokens.get(workflow?.token?.uuid))",
 			"effectCondition": "",
 			"removeAttackDamageButtons": "default",
 			"otherCondition": ""

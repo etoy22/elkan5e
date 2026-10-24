@@ -12,7 +12,8 @@
 			"_id": "RT610KvraqJNiIEU",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -36,23 +37,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"start": null,
@@ -68,12 +52,13 @@
 			"_id": "uH9g6tnwMrtWA8K2",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
-				"value": null,
-				"units": "seconds",
+				"value": 1,
+				"units": "hours",
 				"expiry": null,
 				"expired": false
 			},
@@ -91,7 +76,9 @@
 					"stackable": "multi",
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
+					"specialDuration": [],
+					"expiryMode": "default",
+					"phaseStamped": true
 				},
 				"dnd5e": {
 					"riders": {
@@ -100,23 +87,6 @@
 							"deafened"
 						]
 					}
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"start": null,
@@ -162,7 +132,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><span> <strong>Action </strong> - 1 Creature (Touch) - Concentration (1 Hour) - Magical</span></p><ul><li><p><span>You bond with a willing creature and perceive through its senses (benefitting from any special senses possessed by that creature).</span></p></li><li><p><span>While under this effect, your body is</span> &amp;reference[Blinded] and &amp;reference[Deafened], but you can see and hear whatever your bonded creature can.</p></li></ul>",
+			"value": "<p><span> <strong>Action </strong> - 1 Creature (Touch) - &amp;reference[concentration]{Concentration} (1 Hour) - Magical</span></p><ul><li><p><span>You bond with a willing creature and perceive through its senses (benefitting from any special senses possessed by that creature).</span></p></li><li><p><span>While under this effect, your body is</span> &amp;reference[Blinded] and &amp;reference[Deafened], but you can see and hear whatever your bonded creature can.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {

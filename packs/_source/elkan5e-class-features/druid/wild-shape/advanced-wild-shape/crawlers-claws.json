@@ -144,24 +144,9 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"enableCondition": "",
-					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
+					"disableCondition": "",
+					"expiryMode": "default",
+					"phaseStamped": true
 				}
 			},
 			"tint": "#ffffff",
@@ -170,12 +155,17 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.movement.climb",
-						"value": "@attributes.movement.walk",
+						"key": "system.attributes.movement.speeds.climb",
+						"type": "upgrade",
+						"value": "@attributes.movement.speeds.walk",
+						"phase": "initial",
 						"priority": 20,
-						"type": "upgrade"
+						"_id": "eGSRJQ5Illc5yKSJ",
+						"conditions": "{}",
+						"replacement": ""
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,

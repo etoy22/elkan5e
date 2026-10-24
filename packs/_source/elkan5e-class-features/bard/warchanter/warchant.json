@@ -124,13 +124,13 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><em>Your sing a song of battle or let out a war cry that empowers one of your allies to become a juggernaut of destruction.</em></p><p><strong>Bonus Action</strong> - 1 Ally (60 ft.) - 1 Round - Magical</p><p>You expend a use of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh]{Bardic Inspiration} to use this ability. This ability ends early if you use it again or become incapacitated.</p><ul><li><p>Your chosen ally adds your bardic inspiration die to all weapon attack and damage rolls.*</p></li></ul><p><em>*This feature improves at level 10, at which point it adds double your bardic inspiration die to the target's damage rolls. The bonus to attack rolls remains the same.</em></p>",
+			"value": "<p><em>Your sing a song of battle or let out a war cry that empowers one of your allies to become a juggernaut of destruction.</em></p><p><strong>Bonus Action</strong> - 1 Ally (60 ft.) - 1 Round - Magical</p><p>You expend a use of @UUID[Compendium.elkan5e.elkan5e-class-features.Item.kg7VBahhFH6gDFIh]{Bardic Inspiration} to use this ability. This ability ends early if you use it again or become &amp;reference[incapacitated apply=false]{incapacitated}.</p><ul><li><p>Your chosen ally adds your bardic inspiration die to all weapon attack and damage rolls.*</p></li></ul><p><em>*This feature improves at level 10, at which point it adds double your bardic inspiration die to the target's damage rolls. The bonus to &amp;reference[attackrolls]{attack rolls} remains the same.</em></p>",
 			"chat": ""
 		},
 		"identifier": "warchant",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
 			"custom": "elkan5e.com/bard",
@@ -163,24 +163,33 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.bonuses.weapon.attack",
+						"key": "system.rolls.attack.weapon.bonus",
+						"type": "add",
 						"value": "+1@scale.bard.inspiration",
+						"phase": "initial",
 						"priority": 20,
-						"type": "add"
+						"_id": "WG52c1iTJO1yJ8Uk",
+						"conditions": "{}",
+						"replacement": "origin"
 					},
 					{
-						"key": "system.bonuses.weapon.damage",
+						"key": "system.rolls.damage.weapon.bonus",
+						"type": "add",
 						"value": "+@scale.warchanter.warchant-damage-dice",
+						"phase": "initial",
 						"priority": 20,
-						"type": "add"
+						"_id": "NzqOrJTrvtGh03jv",
+						"conditions": "{}",
+						"replacement": "origin"
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
 				"value": 1,
 				"units": "rounds",
-				"expiry": "sourceEnd",
+				"expiry": null,
 				"expired": false
 			},
 			"description": "",
@@ -199,24 +208,8 @@
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false,
-					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
+					"expiryMode": "default",
+					"phaseStamped": true
 				}
 			},
 			"start": null,

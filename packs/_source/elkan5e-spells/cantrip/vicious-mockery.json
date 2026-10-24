@@ -10,8 +10,7 @@
 					"stackable": "none",
 					"transfer": false,
 					"specialDuration": [
-						"None",
-						"turnEndSource"
+						"1Attack"
 					],
 					"macroRepeat": "none",
 					"selfTarget": false,
@@ -19,30 +18,13 @@
 					"durationExpression": "",
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"inactive": false,
-					"hidden": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"displayTemp": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"disabled": false,
 			"duration": {
 				"value": 7,
 				"units": "seconds",
-				"expiry": "turnStart",
+				"expiry": "sourceEnd",
 				"expired": false
 			},
 			"tint": "#ffffff",
@@ -56,12 +38,13 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.disadvantage.attack.all",
-						"value": 1,
+						"key": "system.rolls.attack.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
@@ -110,7 +93,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You unleash your magic upon your target as you viciously insult them.</em></p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><p>Your target must be able to hear you, but does not need to understand you.</p><ul><li><p><strong>Failure:</strong> Target takes [[/damage]] damage,* and has &amp;reference[disadvantage] on their next attack roll.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p><strong>*At Higher Levels:</strong> This spell's damage increases by [[/damage 1d4 psychic]] when you reach a total character or creature level of 5th level ([[/damage 2d4 psychic]]), 11th level ([[/damage 3d4 psychic]]), and 17th level ([[/damage 4d4 psychic]]).</p>",
+			"value": "<p><em>You unleash your magic upon your target as you viciously insult them.</em></p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><p>Your target must be able to hear you, but does not need to understand you.</p><ul><li><p><strong>Failure:</strong> Target takes [[/damage]] damage,* and has &amp;reference[disadvantage] on their next &amp;reference[attackrolls]{attack roll}.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p><strong>*At Higher Levels:</strong> This spell's damage increases by [[/damage 1d4 psychic]] when you reach a total character or creature level of 5th level ([[/damage 2d4 psychic]]), 11th level ([[/damage 3d4 psychic]]), and 17th level ([[/damage 4d4 psychic]]).</p>",
 			"chat": ""
 		},
 		"source": {
@@ -204,10 +187,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -239,7 +226,9 @@
 					]
 				},
 				"save": {
-					"ability": "wis",
+					"ability": [
+						"wis"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""

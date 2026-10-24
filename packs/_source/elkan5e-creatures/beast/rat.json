@@ -465,11 +465,13 @@
 				"bonus": ""
 			},
 			"movement": {
-				"burrow": null,
-				"climb": 20,
-				"fly": null,
-				"swim": null,
-				"walk": 20,
+				"speeds": {
+					"walk": 20,
+					"burrow": null,
+					"climb": 20,
+					"fly": null,
+					"swim": null
+				},
 				"units": null,
 				"hover": false,
 				"ignoredDifficultTerrain": []
@@ -478,10 +480,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 30,
-				"blindsight": null,
-				"tremorsense": null,
-				"truesight": null,
+				"ranges": {
+					"darkvision": 30,
+					"blindsight": null,
+					"tremorsense": null,
+					"truesight": null
+				},
 				"units": null,
 				"special": ""
 			},
@@ -581,7 +585,7 @@
 		},
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"license": "",
 			"page": "",
@@ -730,13 +734,13 @@
 					"max": ""
 				},
 				"description": {
-					"value": "<p>The [[lookup @name lowercase]] doesn't provoke an &amp;Reference[opportunityattacks]{Opportunity Attack}.</p>",
+					"value": "<p>The [[lookup @name lowercase]] doesn't provoke an &amp;reference[opportunityattacks]{Opportunity Attack}.</p>",
 					"chat": ""
 				},
 				"identifier": "agile",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",
@@ -922,7 +926,7 @@
 				"identifier": "bite",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",
@@ -1021,22 +1025,6 @@
 							"disableIncapacitated": false,
 							"dontApply": false,
 							"macroRepeat": "none"
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"nameOverride": "",
-							"customCheck": "",
-							"wallsBlock": "system"
 						}
 					},
 					"name": "Keen Smell",
@@ -1047,10 +1035,10 @@
 					"system": {
 						"changes": [
 							{
-								"key": "flags.midi-qol.advantage.skill.prc",
-								"value": 1,
+								"key": "system.skills.prc.roll.mode",
+								"value": "1",
 								"priority": 20,
-								"type": "override"
+								"type": "add"
 							}
 						]
 					},
@@ -1119,7 +1107,9 @@
 					"items": [],
 					"repeatable": false
 				},
-				"properties": [],
+				"properties": [
+					"trait"
+				],
 				"advancement": [],
 				"crewed": false
 			},

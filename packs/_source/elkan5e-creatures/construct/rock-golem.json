@@ -42,7 +42,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -222,13 +222,13 @@
 			"folder": null,
 			"system": {
 				"description": {
-					"value": "<p>The [[lookup @name lowercase]] has <strong>advantage</strong> on saving throws against spells and other magical effects.</p>",
+					"value": "<p>The [[lookup @name lowercase]] has <strong>advantage</strong> on &amp;reference[savingthrow]{saving throws} against spells and other magical effects.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -247,7 +247,9 @@
 				"prerequisites": {
 					"level": null
 				},
-				"properties": []
+				"properties": [
+					"trait"
+				]
 			},
 			"_key": "!actors.items!pvi2b8ds4pLhiqP2.orRF3dRUO7DsYfC6"
 		},
@@ -260,13 +262,13 @@
 			"folder": null,
 			"system": {
 				"description": {
-					"value": "<p>The golem is immune to any spell or effect that would alter its form.</p>",
+					"value": "<p>The [[lookup @name lowercase]] is immune to any spell or effect that would alter its form.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -285,7 +287,9 @@
 				"prerequisites": {
 					"level": null
 				},
-				"properties": []
+				"properties": [
+					"trait"
+				]
 			},
 			"_key": "!actors.items!pvi2b8ds4pLhiqP2.GNANLBjaQ7k9oZ0w"
 		},
@@ -321,7 +325,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -432,7 +436,9 @@
 							]
 						},
 						"save": {
-							"ability": "dex",
+							"ability": [
+								"dex"
+							],
 							"dc": {
 								"calculation": "con",
 								"formula": ""
@@ -556,19 +562,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": 0,
-				"climb": 0,
-				"fly": 0,
-				"swim": 0,
-				"walk": 20,
+				"speeds": {
+					"walk": 20,
+					"burrow": 0,
+					"climb": 0,
+					"fly": 0,
+					"swim": 0
+				},
 				"units": "ft",
 				"hover": false
 			},
@@ -576,10 +584,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 120,
-				"blindsight": 0,
-				"tremorsense": 0,
-				"truesight": 0,
+				"ranges": {
+					"darkvision": 120,
+					"blindsight": 0,
+					"tremorsense": 0,
+					"truesight": 0
+				},
 				"units": "ft",
 				"special": ""
 			},

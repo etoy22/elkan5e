@@ -18,7 +18,7 @@
 				"source": {
 					"custom": "elkan5e.com/armor",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -80,97 +80,61 @@
 			"img": "icons/magic/control/buff-flight-wings-runes-purple.webp",
 			"effects": [
 				{
-					"_id": "0VoBuTMoLbqIwtJJ",
+					"name": "Haste",
+					"origin": null,
+					"transfer": false,
 					"flags": {
 						"dae": {
-							"transfer": false,
-							"stackable": "none",
-							"specialDuration": []
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"radius": null,
-							"aura": "None",
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"hostile": false,
-							"onlyOnce": false
+							"itemName": "Haste",
+							"disableIncapacitated": false,
+							"selfTarget": false,
+							"selfTargetAlways": false,
+							"dontApply": false,
+							"stackable": "noneName",
+							"durationExpression": "",
+							"macroRepeat": "none",
+							"specialDuration": [],
+							"enableCondition": "",
+							"disableCondition": "",
+							"expiryMode": "default"
 						}
 					},
-					"disabled": false,
-					"duration": {
-						"value": null,
-						"units": "seconds",
-						"expiry": null,
-						"expired": false
-					},
-					"tint": "#ffffff",
-					"transfer": false,
-					"origin": null,
-					"name": "Haste",
-					"description": "",
-					"statuses": [],
 					"img": "icons/magic/control/buff-flight-wings-runes-purple.webp",
+					"_id": "TtnAWxKQzAQ1mBIL",
 					"type": "base",
 					"system": {
 						"changes": [
 							{
-								"key": "system.attributes.ac.value",
-								"value": 2,
-								"priority": 20,
-								"type": "add"
+								"key": "macro.itemMacro",
+								"type": "custom",
+								"value": "args",
+								"phase": "final",
+								"priority": null
 							},
 							{
-								"key": "flags.midi-qol.advantage.ability.save.dex",
-								"value": 2,
-								"priority": 20,
-								"type": "add"
-							},
-							{
-								"key": "system.attributes.movement.burrow",
-								"value": 2,
-								"priority": 10,
-								"type": "multiply"
-							},
-							{
-								"key": "system.attributes.movement.climb",
-								"value": 2,
-								"priority": 10,
-								"type": "multiply"
-							},
-							{
-								"key": "system.attributes.movement.fly",
-								"value": 2,
-								"priority": 10,
-								"type": "multiply"
-							},
-							{
-								"key": "system.attributes.movement.hover",
-								"value": 2,
-								"priority": 10,
-								"type": "custom"
-							},
-							{
-								"key": "system.attributes.movement.swim",
-								"value": 2,
-								"priority": 10,
-								"type": "multiply"
-							},
-							{
-								"key": "system.attributes.movement.walk",
-								"value": 2,
-								"priority": 10,
-								"type": "multiply"
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "hasted",
+								"phase": "final",
+								"priority": 20
 							}
-						]
+						],
+						"magical": true
 					},
+					"disabled": false,
+					"duration": {
+						"value": 60,
+						"units": "seconds",
+						"expiry": "turnStart",
+						"expired": false
+					},
+					"description": "",
+					"tint": "#ffffff",
+					"statuses": [],
+					"showIcon": 2,
 					"start": null,
-					"showIcon": 1,
 					"folder": null,
-					"_key": "!actors.items.effects!Q72xYCeg6x0nm7vt.VnQilHWGK09n1Mos.0VoBuTMoLbqIwtJJ"
+					"_key": "!actors.items.effects!Q72xYCeg6x0nm7vt.VnQilHWGK09n1Mos.TtnAWxKQzAQ1mBIL"
 				}
 			],
 			"folder": null,
@@ -204,6 +168,18 @@
 				},
 				"dnd5e": {
 					"migratedUses": 2
+				},
+				"dae": {
+					"macro": {
+						"name": "Haste",
+						"img": "icons/magic/control/buff-flight-wings-runes-purple.webp",
+						"type": "script",
+						"scope": "global",
+						"command": "if (args[0] === \"off\") {\n   return await elkan5e.macros.spells.hasteLethargy(args[2]);\n}",
+						"author": "JfIFUEeTlOfdxqPQ",
+						"_id": null,
+						"folder": null
+					}
 				}
 			},
 			"system": {
@@ -308,10 +284,14 @@
 							"override": false
 						},
 						"target": {
-							"type": "creature",
-							"value": 1,
-							"units": "ft",
-							"width": null,
+							"affects": {
+								"type": "creature",
+								"count": 1
+							},
+							"template": {
+								"units": "ft",
+								"width": null
+							},
 							"override": false,
 							"prompt": true
 						},
@@ -365,13 +345,13 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p>The ogre swings their club in an arc. All creatures within 5 ft. of a point within reach must succeed on a dexterity saving throw or take damage.</p> <p>Properties:</p> <p>@Compendium[elkan5e.elkan5e-rules.3eLk2kroUUTrZiHW]{Two-handed}</p>",
+					"value": "<p>The ogre swings their club in an arc. All creatures within 5 ft. of a point within reach must succeed on a dexterity &amp;reference[savingthrow]{saving throw} or take damage.</p> <p>Properties:</p> <p>@Compendium[elkan5e.elkan5e-rules.3eLk2kroUUTrZiHW]{Two-handed}</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "elkan5e.com/weapons",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -519,7 +499,9 @@
 							"parts": []
 						},
 						"save": {
-							"ability": "dex",
+							"ability": [
+								"dex"
+							],
 							"dc": {
 								"calculation": "str",
 								"formula": ""
@@ -574,13 +556,13 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p>The ogre swings their club in an arc. All creatures within 5 ft. of a point within reach must succeed on a dexterity saving throw or take damage.</p><p>Properties:</p><p>&amp;Reference[Handed]</p>",
+					"value": "<p>The ogre swings their club in an arc. All creatures within 5 ft. of a point within reach must succeed on a dexterity &amp;reference[savingthrow]{saving throw} or take damage.</p><p>Properties:</p><p>&amp;reference[Handed]</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "elkan5e.com/weapons",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -728,7 +710,9 @@
 							"parts": []
 						},
 						"save": {
-							"ability": "dex",
+							"ability": [
+								"dex"
+							],
 							"dc": {
 								"calculation": "str",
 								"formula": ""
@@ -785,13 +769,13 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p>The ogre swings their club in an arc. All creatures within 5 ft. of a point within reach must succeed on a dexterity saving throw or take damage.</p>",
+					"value": "<p>The ogre swings their club in an arc. All creatures within 5 ft. of a point within reach must succeed on a dexterity &amp;reference[savingthrow]{saving throw} or take damage.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "elkan5e.com/weapons",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -939,7 +923,9 @@
 							"parts": []
 						},
 						"save": {
-							"ability": "dex",
+							"ability": [
+								"dex"
+							],
 							"dc": {
 								"calculation": "str",
 								"formula": ""
@@ -1062,19 +1048,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": 0,
-				"climb": 0,
-				"fly": 0,
-				"swim": 0,
-				"walk": 30,
+				"speeds": {
+					"walk": 30,
+					"burrow": 0,
+					"climb": 0,
+					"fly": 0,
+					"swim": 0
+				},
 				"units": "ft",
 				"hover": false
 			},
@@ -1082,10 +1070,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 60,
-				"blindsight": 0,
-				"tremorsense": 0,
-				"truesight": 0,
+				"ranges": {
+					"darkvision": 60,
+					"blindsight": 0,
+					"tremorsense": 0,
+					"truesight": 0
+				},
 				"units": "ft",
 				"special": ""
 			},

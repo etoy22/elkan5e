@@ -4,61 +4,54 @@
 	"img": "icons/magic/control/silhouette-hold-change-blue.webp",
 	"effects": [
 		{
-			"_id": "M9NJDZTJP5tgGgTt",
+			"_id": "sequesterInvis01",
+			"name": "Sequester",
+			"img": "modules/elkan5e/icons/conditions/invisible.svg",
+			"type": "base",
+			"transfer": false,
 			"disabled": false,
 			"duration": {
 				"value": null,
 				"units": "seconds",
-				"expiry": null,
+				"expiry": "turnStart",
 				"expired": false
 			},
-			"transfer": false,
+			"description": "",
+			"origin": null,
+			"statuses": [],
+			"tint": "#ffffff",
+			"showIcon": 0,
+			"start": null,
+			"folder": null,
 			"flags": {
-				"ActiveAuras": {
-					"isAura": false,
-					"radius": "",
-					"aura": "None",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"displayTemp": false,
-					"wallsBlock": "system"
-				},
 				"dae": {
-					"stackable": "none",
-					"specialDuration": [],
-					"transfer": false,
+					"stackable": "noneName",
+					"specialDuration": [
+						"isDamaged"
+					],
+					"macroRepeat": "none",
+					"durationExpression": "",
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false,
-					"durationExpression": "",
-					"macroRepeat": "none",
+					"disableIncapacitated": false,
 					"enableCondition": "",
 					"disableCondition": ""
 				}
 			},
-			"tint": "#ffffff",
-			"origin": null,
-			"name": "Sequester",
-			"description": "",
-			"statuses": [
-				"invisible"
-			],
-			"img": "icons/magic/control/silhouette-hold-change-blue.webp",
-			"type": "base",
 			"system": {
-				"changes": []
+				"magical": true,
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "invisible",
+						"phase": "final",
+						"priority": 20
+					}
+				]
 			},
-			"showIcon": 2,
-			"start": null,
-			"folder": null,
-			"_key": "!items.effects!8Vj5WF6JV5wCR1z7.M9NJDZTJP5tgGgTt"
+			"_key": "!items.effects!8Vj5WF6JV5wCR1z7.sequesterInvis01"
 		}
 	],
 	"folder": "H799nI2ov6BcHwd6",
@@ -186,17 +179,21 @@
 				},
 				"effects": [
 					{
-						"_id": "M9NJDZTJP5tgGgTt"
+						"_id": "sequesterInvis01"
 					}
 				],
 				"range": {
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -214,9 +211,7 @@
 				"_id": "3upL7qPY0e1YVLZ7",
 				"name": "",
 				"img": "",
-				"appliedEffects": [
-					"M9NJDZTJP5tgGgTt"
-				],
+				"appliedEffects": [],
 				"effectConditionText": "!target.traits.ci.value.has('invisible')"
 			}
 		},

@@ -466,11 +466,13 @@
 				"bonus": ""
 			},
 			"movement": {
-				"burrow": null,
-				"climb": null,
-				"fly": null,
-				"swim": null,
-				"walk": 60,
+				"speeds": {
+					"walk": 60,
+					"burrow": null,
+					"climb": null,
+					"fly": null,
+					"swim": null
+				},
 				"units": null,
 				"hover": false,
 				"ignoredDifficultTerrain": []
@@ -479,10 +481,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 60,
-				"blindsight": null,
-				"tremorsense": null,
-				"truesight": null,
+				"ranges": {
+					"darkvision": 60,
+					"blindsight": null,
+					"tremorsense": null,
+					"truesight": null
+				},
 				"units": null,
 				"special": ""
 			},
@@ -583,7 +587,7 @@
 		},
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"license": ""
 		},
@@ -1003,7 +1007,7 @@
 				"identifier": "hooves",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",
@@ -1089,14 +1093,14 @@
 			"system": {
 				"description": {
 					"value": "<p>If a target is a Large or smaller and the creature moved 20+ feet straight toward it immediately before the attack, the target becomes &amp;reference[Prone].</p>",
-					"chat": "<p>If the elephant moves at least <strong>20 ft.</strong> straight toward a creature and then hits it with a gore attack on the same turn, that target must succeed on a Strength saving throw.</p>"
+					"chat": "<p>If the elephant moves at least <strong>20 ft.</strong> straight toward a creature and then hits it with a gore attack on the same turn, that target must succeed on a Strength &amp;reference[savingthrow]{saving throw}.</p>"
 				},
 				"source": {
 					"custom": "",
 					"book": "Elkan 5e",
 					"page": "",
 					"license": "",
-					"rules": "2014",
+					"rules": "",
 					"revision": 1
 				},
 				"uses": {
@@ -1136,7 +1140,8 @@
 						},
 						"effects": [
 							{
-								"_id": "Y6f1HuaKZhYjah4p"
+								"_id": "JRCRHC7OuKREMOTE",
+								"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanprone000000"
 							}
 						],
 						"range": {
@@ -1232,66 +1237,7 @@
 				"advancement": [],
 				"crewed": false
 			},
-			"effects": [
-				{
-					"name": "Charge",
-					"img": "icons/creatures/abilities/cougar-pounce-stalk-black.webp",
-					"origin": "Compendium.elkan5e.elkan5e-creature-features.Item.V5XyOJxuHNjDWzss",
-					"transfer": false,
-					"_id": "Y6f1HuaKZhYjah4p",
-					"type": "base",
-					"system": {
-						"changes": []
-					},
-					"disabled": false,
-					"duration": {
-						"value": null,
-						"units": "seconds",
-						"expiry": null,
-						"expired": false
-					},
-					"description": "",
-					"tint": "#ffffff",
-					"statuses": [
-						"prone"
-					],
-					"flags": {
-						"dae": {
-							"enableCondition": "",
-							"disableCondition": "",
-							"stackable": "noneName",
-							"disableIncapacitated": false,
-							"selfTarget": false,
-							"selfTargetAlways": false,
-							"dontApply": false,
-							"durationExpression": "",
-							"macroRepeat": "none",
-							"specialDuration": []
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "All",
-							"nameOverride": "",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"customCheck": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"wallsBlock": "system",
-							"statuses": []
-						}
-					},
-					"showIcon": 2,
-					"start": null,
-					"folder": null,
-					"_key": "!actors.items.effects!lAl2LHNws3EPsn58.a5VyrXx7a1Ln4ZJw.Y6f1HuaKZhYjah4p"
-				}
-			],
+			"effects": [],
 			"folder": null,
 			"_id": "a5VyrXx7a1Ln4ZJw",
 			"_key": "!actors.items!lAl2LHNws3EPsn58.a5VyrXx7a1Ln4ZJw"

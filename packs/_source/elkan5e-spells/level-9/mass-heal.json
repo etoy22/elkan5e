@@ -6,7 +6,7 @@
 	"folder": "OLc6BMEuifPnCAUH",
 	"flags": {
 		"midi-qol": {
-			"onUseMacroName": "",
+			"onUseMacroName": "[postActiveEffects]ActivityMacro-X8u5IFamKryzEuOs",
 			"effectActivation": false,
 			"removeAttackDamageButtons": "default",
 			"rollAttackPerTarget": "default",
@@ -127,10 +127,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -159,8 +163,12 @@
 				"_id": "X8u5IFamKryzEuOs",
 				"name": "",
 				"img": "",
-				"useConditionText": "!target.details.type?.value === \"undead\" or !target.details.type?.value === \"construct\" or target.details.type?.subtype=== \"Soul Gem\"",
-				"appliedEffects": []
+				"useConditionText": "target.details.type?.subtype=== \"Soul Gem\" || !(target.details.type?.value === \"construct\")",
+				"appliedEffects": [],
+				"macroData": {
+					"name": "Mass Heal",
+					"command": "return await elkan5e.macros.spells.healConditions(workflow);"
+				}
 			}
 		},
 		"identifier": "mass-heal"

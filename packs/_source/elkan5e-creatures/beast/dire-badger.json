@@ -74,19 +74,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": 10,
-				"climb": 0,
-				"fly": 0,
-				"swim": 0,
-				"walk": 30,
+				"speeds": {
+					"walk": 30,
+					"burrow": 10,
+					"climb": 0,
+					"fly": 0,
+					"swim": 0
+				},
 				"units": "ft",
 				"hover": false
 			},
@@ -94,10 +96,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 30,
-				"blindsight": 0,
-				"tremorsense": 0,
-				"truesight": 0,
+				"ranges": {
+					"darkvision": 30,
+					"blindsight": 0,
+					"tremorsense": 0,
+					"truesight": 0
+				},
 				"units": "ft",
 				"special": ""
 			},
@@ -629,7 +633,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -732,7 +736,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"page": "",
 					"license": ""
@@ -949,7 +953,7 @@
 				"source": {
 					"custom": "Elkan 5e",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -1181,22 +1185,6 @@
 							"disableIncapacitated": false,
 							"dontApply": false,
 							"macroRepeat": "none"
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"nameOverride": "",
-							"customCheck": "",
-							"wallsBlock": "system"
 						}
 					},
 					"name": "Keen Sight and Hearing",
@@ -1207,10 +1195,10 @@
 					"system": {
 						"changes": [
 							{
-								"key": "flags.midi-qol.advantage.skill.prc",
-								"value": 1,
+								"key": "system.skills.prc.roll.mode",
+								"value": "1",
 								"priority": 20,
-								"type": "override"
+								"type": "add"
 							}
 						]
 					},
@@ -1227,7 +1215,7 @@
 					"chat": ""
 				},
 				"source": {
-					"rules": "2014",
+					"rules": "",
 					"revision": 1,
 					"book": "Elkan 5e"
 				},
@@ -1247,7 +1235,9 @@
 				"prerequisites": {
 					"level": null
 				},
-				"properties": []
+				"properties": [
+					"trait"
+				]
 			},
 			"_key": "!actors.items!H8DoNmKrQMfM7ERE.lQsbGZKM3YW7Z0VU"
 		},
@@ -1256,13 +1246,13 @@
 			"type": "feat",
 			"system": {
 				"description": {
-					"value": "<p>The dire animal's skeleton suddenly grows spikes and other protrusions, which shoot out of the animal's flesh. The dire animal enters a frenzy. While in a frenzy, the dire animal gains temporary hit points equal to its hit point maximum, and can use its multiattack as a bonus action.</p><p>The frenzy lasts 1 minute. When the frenzy ends, the animal takes damage equal to its hit point maximum as its skeleton resets. This damage cannot be reduced in any way.</p>",
+					"value": "<p><strong>Action</strong> - Self</p><ul><li><p>The [[lookup @name lowercase]]'s skeleton suddenly grows spikes and other protrusions, which shoot out of its flesh as it enters a frenzy. While frenzied, the [[lookup @name lowercase]] gains Temporary Hit Points equal to its Hit Point maximum and can use its Multiattack as a Bonus Action.</p></li><li><p>The frenzy lasts 1 minute. When it ends, the [[lookup @name lowercase]] takes damage equal to its Hit Point maximum as its skeleton resets. This damage can't be reduced in any way.</p></li></ul>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -1494,19 +1484,6 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": []
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"radius": "undefined",
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false
 						}
 					},
 					"name": "Dire Transformation",
@@ -1591,19 +1568,6 @@
 					"specialDuration": [],
 					"transfer": true
 				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": null,
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false
-				},
 				"times-up": {
 					"isPassive": true
 				}
@@ -1616,10 +1580,10 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.advantage.skill.prc",
-						"value": 1,
+						"key": "system.skills.prc.roll.mode",
+						"value": "1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					}
 				]
 			},
@@ -1659,22 +1623,6 @@
 					"macroRepeat": "none",
 					"transfer": true
 				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
-				},
 				"times-up": {
 					"isPassive": true
 				}
@@ -1687,10 +1635,10 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.advantage.skill.prc",
-						"value": 1,
+						"key": "system.skills.prc.roll.mode",
+						"value": "1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					}
 				]
 			},

@@ -10,7 +10,7 @@
 				"name": "Click Heels",
 				"_id": "ffXywPJdVzwe6NId",
 				"activation": {
-					"type": "action",
+					"type": "bonus",
 					"value": null,
 					"override": false,
 					"condition": ""
@@ -93,13 +93,13 @@
 			"max": "1"
 		},
 		"description": {
-			"value": "<p>Wondrous Item - Rare (Requires Attunement)</p><p><strong>Bonus Action</strong> - Self - 10 Minutes - 1/Long Rest</p><ul><li><p>Your Speed is doubled.</p></li><li><p>Creatures making &amp;reference[Opportunity Attacks] against you have Disadvantage on their attack rolls.</p></li></ul><section id=\"foundry-secret-1\" class=\"secret\"><p><strong>Foundry Note</strong></p><p>This item's Limited Uses are provided to manually track the number of <em>seconds</em> the item has been in use.</p></section>",
+			"value": "<p>Wondrous Item - Rare (Requires Attunement)</p><p><strong>Bonus Action</strong> - Self - 10 Minutes - 1/Long Rest</p><ul><li><p>Your Speed is doubled.</p></li><li><p>Creatures making &amp;reference[Opportunity Attacks] against you have Disadvantage on their &amp;reference[attackrolls]{attack rolls}.</p></li></ul><section id=\"foundry-secret-1\" class=\"secret\"><p><strong>Foundry Note</strong></p><p>This item's Limited Uses are provided to manually track the number of <em>seconds</em> the item has been in use.</p></section>",
 			"chat": ""
 		},
 		"identifier": "boots-of-speed",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"license": "",
 			"book": "",
 			"page": "",
@@ -152,42 +152,19 @@
 			"name": "Boots of Speed",
 			"img": "icons/equipment/feet/boots-leather-green.webp",
 			"origin": "Compendium.elkan5e.elkan5e-equipment.Item.c5cwEmVvqeiIMVXR",
-			"transfer": true,
+			"transfer": false,
 			"_id": "XP45fDHAojcVjDc0",
 			"type": "base",
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.movement.walk",
-						"value": 2,
-						"priority": 10,
-						"type": "multiply"
-					},
-					{
-						"key": "system.attributes.movement.fly",
-						"value": 2,
-						"priority": 10,
-						"type": "multiply"
-					},
-					{
-						"key": "system.attributes.movement.climb",
-						"value": 2,
-						"priority": 10,
-						"type": "multiply"
-					},
-					{
-						"key": "system.attributes.movement.burrow",
-						"value": 2,
-						"priority": 10,
-						"type": "multiply"
-					},
-					{
-						"key": "system.attributes.movement.swim",
+						"key": "system.attributes.movement.multiplier",
 						"value": 2,
 						"priority": 10,
 						"type": "multiply"
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -196,7 +173,7 @@
 				"expiry": "turnStart",
 				"expired": false
 			},
-			"description": "<p>The boots double your Speed, and any creature that makes an Opportunity Attack against you has Disadvantage on the attack roll. If you click your heels together again, you end the effect.</p>",
+			"description": "<p>The boots double your Speed, and any creature that makes an &amp;reference[opportunityattacks]{Opportunity Attack} against you has Disadvantage on the &amp;reference[attackrolls]{attack roll}. If you click your heels together again, you end the effect.</p>",
 			"tint": "#ffffff",
 			"statuses": [],
 			"flags": {
@@ -207,23 +184,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "All",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"start": null,

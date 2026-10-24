@@ -7,7 +7,6 @@
 export async function secondWind(workflow) {
 	const actor = workflow.actor;
 	persistentLeader(actor);
-	rallySurge(actor);
 }
 
 /**
@@ -37,19 +36,14 @@ export async function persistentLeader(actor) {
 }
 
 /**
- * Runs rally Surge class feature automation.
+ * Improved Critical: critical hits with attacks roll three times the number of damage dice instead of two.
+ * Must stay synchronous so the multiplier is set before the damage roll is built.
  *
- * @param {*} actor - Actor document to process.
- * @returns {Promise<void>} Promise resolution result.
+ * @param {*} rollConfig - Damage roll process configuration.
  */
-export async function rallySurge(actor) {
-	if (actor.items.find((i) => i.system.identifier === "rallying-surge")) {
-		if (game.user.isGM || actor.isOwner) {
-			ui.notifications.notify(
-				game.i18n.format("elkan5e.notifications.RallyingSurge", {
-					name: actor.name,
-				}),
-			);
-		}
-	}
+export function improvedCriticalDamage(rollConfig) {
+	const activity = rollConfig?.subject;
+	if (activity?.type !== "attack") return;
+	if (!activity.actor?.items.some((i) => i.system.identifier === "improved-critical")) return;
+	rollConfig.critical = { ...rollConfig.critical, multiplier: 3 };
 }

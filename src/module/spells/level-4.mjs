@@ -1,3 +1,6 @@
+import { excludeTargets } from "../shared/helpers.mjs";
+import { damageOnly, withTargets } from "../shared/midi-compat.mjs";
+
 /**
  * Handles Death Ward spell.
  * Triggered by the dnd5e.damageActor hook after damage has been applied.
@@ -21,7 +24,7 @@ export async function deathWard(actor) {
 
 /**
  * Runs Fire Shield spell automation.
- * Triggered globally at midi-qol.RollComplete whenever a melee weapon attack
+ * Triggered globally at midi-qol.RollComplete whenever a melee weapon or spell attack
  * lands. Checks each hit target for an active Fire Shield effect and fires the
  * retaliatory damage activity on the attacker.
  *
@@ -64,13 +67,7 @@ export async function fireShield(workflow) {
 			}
 
 			// Temporarily target the attacker so the activity fires on them.
-			const previousTargets = Array.from(game.user.targets).map((t) => t.id);
-			game.user.updateTokenTargets([attackerToken.id]);
-
-			await activity.use({ event: workflow.event });
-
-			// Restore whatever the user had targeted before.
-			game.user.updateTokenTargets(previousTargets);
+			await withTargets([attackerToken.id], () => activity.use({ event: workflow.event }));
 		}
 	} catch (err) {
 		console.error("Fire Shield |", err);
@@ -78,7 +75,8 @@ export async function fireShield(workflow) {
 }
 
 /**
- * Runs vampiric Smite spell automation.
+ * Heals the caster for half the first necrotic damage entry, after its damage multiplier,
+ * rounded down. Requires exactly one hit target; skips missing or non-positive damage.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
  * @returns {Promise<void>} Promise resolution result.
@@ -100,7 +98,7 @@ export async function vampiricSmite(workflow) {
 	if (healAmount <= 0) return;
 
 	const healingRoll = await new Roll(`${healAmount}`).evaluate();
-	new MidiQOL.DamageOnlyWorkflow(
+	await damageOnly(
 		caster,
 		casterToken,
 		healingRoll.total,
@@ -111,30 +109,46 @@ export async function vampiricSmite(workflow) {
 	);
 }
 
+const BLIGHT_NO_WATER_TYPES = new Set(["construct", "undead"]);
+
 /**
- * Runs Blight spell automation. Wired at preambleComplete, before saves and
- * damage are rolled. Any targeted creature that is a plant creature or
- * magical plant saves with disadvantage.
+ * Runs Blight spell automation at midi-qol targetingComplete: drops targets
+ * without water in their bodies (constructs and undead), which the spell can't affect.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
  * @returns {Promise<void>} Promise resolution result.
  */
 export async function blight(workflow) {
 	try {
-		for (const target of workflow.targets ?? []) {
+		if (workflow.item?.system?.identifier !== "blight") return;
+		const immune = [...(workflow.targets ?? [])].filter((target) => {
 			const targetActor = target?.actor ?? target?.document?.actor;
-			if (!targetActor) continue;
-
-			if (targetActor.system?.details?.type?.value !== "plant") continue;
-
-			const tokenId = target?.document?.id ?? target?.id;
-			if (tokenId) {
-				(workflow.disadvantageSaves ??= new Set()).add(tokenId);
-			}
-		}
+			return BLIGHT_NO_WATER_TYPES.has(targetActor?.system?.details?.type?.value);
+		});
+		if (!immune.length) return;
+		excludeTargets(workflow, immune);
+		await ChatMessage.create({
+			speaker: ChatMessage.getSpeaker({ actor: workflow.actor }),
+			content: game.i18n.format("elkan5e.spells.blightNoEffect", {
+				names: immune.map((target) => target.name).join(", "),
+			}),
+		});
 	} catch (err) {
 		console.error("Blight |", err);
 	}
+}
+
+/**
+ * Runs Blight spell automation at midi-qol.preTargetSave: plant creatures make
+ * the saving throw with disadvantage.
+ *
+ * @param {Token} target - Token making the save.
+ * @param {*} workflow - midi-qol workflow.
+ * @param {object} saveDetails - Save configuration midi is about to roll.
+ */
+export function blightPlantDisadvantage(target, workflow, saveDetails) {
+	if (workflow.item?.system?.identifier !== "blight") return;
+	if (target.actor?.system?.details?.type?.value === "plant") saveDetails.disadvantage = true;
 }
 
 /**
@@ -187,7 +201,7 @@ export async function blightMaximizePlantDamage(workflow) {
 			if (shortfall <= 0) continue;
 
 			const topUpRoll = await new Roll(`${shortfall}`).evaluate();
-			new MidiQOL.DamageOnlyWorkflow(
+			await damageOnly(
 				caster,
 				casterToken,
 				topUpRoll.total,

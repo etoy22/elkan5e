@@ -466,11 +466,13 @@
 				"bonus": ""
 			},
 			"movement": {
-				"burrow": null,
-				"climb": null,
-				"fly": 60,
-				"swim": null,
-				"walk": 10,
+				"speeds": {
+					"walk": 10,
+					"burrow": null,
+					"climb": null,
+					"fly": 60,
+					"swim": null
+				},
 				"units": null,
 				"hover": false,
 				"ignoredDifficultTerrain": []
@@ -479,10 +481,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": null,
-				"blindsight": null,
-				"tremorsense": null,
-				"truesight": null,
+				"ranges": {
+					"darkvision": null,
+					"blindsight": null,
+					"tremorsense": null,
+					"truesight": null
+				},
 				"units": null,
 				"special": ""
 			},
@@ -585,7 +589,7 @@
 		},
 		"source": {
 			"revision": 2,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
 			"custom": "",
@@ -862,7 +866,7 @@
 				"identifier": "talons",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",
@@ -976,7 +980,9 @@
 					"items": [],
 					"repeatable": false
 				},
-				"properties": [],
+				"properties": [
+					"trait"
+				],
 				"advancement": [],
 				"crewed": false
 			},
@@ -1004,22 +1010,6 @@
 							"dontApply": false,
 							"macroRepeat": "none"
 						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"nameOverride": "",
-							"customCheck": "",
-							"wallsBlock": "system"
-						},
 						"times-up": {
 							"isPassive": true
 						}
@@ -1032,10 +1022,10 @@
 					"system": {
 						"changes": [
 							{
-								"key": "flags.midi-qol.advantage.skill.prc",
-								"value": 1,
+								"key": "system.skills.prc.roll.mode",
+								"value": "1",
 								"priority": 20,
-								"type": "override"
+								"type": "add"
 							}
 						]
 					},

@@ -85,18 +85,21 @@
 					"chatFlavor": ""
 				},
 				"duration": {
-					"units": "inst",
+					"units": "minute",
 					"concentration": false,
-					"override": false
+					"override": false,
+					"value": "1",
+					"expiry": null
 				},
 				"effects": [
 					{
-						"_id": "amYapIKWPpJZ9EuO",
 						"onSave": false,
 						"level": {
 							"min": null,
 							"max": null
-						}
+						},
+						"_id": "2dr2qc8xMzREMOTE",
+						"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanfrightened0"
 					}
 				],
 				"range": {
@@ -129,16 +132,16 @@
 					"onSave": "half"
 				},
 				"save": {
-					"ability": "wis",
+					"ability": [
+						"wis"
+					],
 					"dc": {
 						"calculation": "",
 						"formula": "15"
 					}
 				},
 				"img": "",
-				"appliedEffects": [
-					"amYapIKWPpJZ9EuO"
-				],
+				"appliedEffects": [],
 				"visibility": {
 					"requireMagic": true,
 					"level": {
@@ -163,13 +166,13 @@
 			"max": "3"
 		},
 		"description": {
-			"value": "<p><em>Weapon (@UUID[Compendium.elkan5e.elkan5e-equipment.Item.ntmAbPMerRRj93Jy]{Mace}) - Rare (Requires Attunement)</em></p><p><em>Maces, larger than a club, tend to have a cap designed specifically for combat, and are of limited use for anything else.</em></p><p><strong>Activation</strong> - 3 Charges (Regains 1d3 Charges at Dawn)</p><p><strong>Action</strong> (1 Charge) - Release a wave of terror. Each creature of your choice within 30 feet makes a [[/save WIS 15]]{DC 15 Wisdom saving throw} or has the &amp;Reference[Frightened apply=false] condition for 1 minute. While Frightened this way, a creature must spend its turn moving as far from you as it can and can't make Opportunity Attacks. It can use only the Dash action or attempt to escape from an effect that prevents movement; if it can't move, it can take the Dodge action. Affected creatures repeat the save at the end of each of their turns, ending the effect on themselves on a success.</p><p><strong>Properties:</strong></p><p>&amp;reference[magic weapon]</p>",
+			"value": "<p><em>Weapon (@UUID[Compendium.elkan5e.elkan5e-equipment.Item.ntmAbPMerRRj93Jy]{Mace}) - Rare (Requires Attunement)</em></p><p><em>Maces, larger than a club, tend to have a cap designed specifically for combat, and are of limited use for anything else.</em></p><p><strong>Activation</strong> - 3 Charges (Regains 1d3 Charges at Dawn)</p><p><strong>Action</strong> (1 Charge) - Release a wave of terror. Each creature of your choice within 30 feet makes a [[/save WIS 15]]{DC 15 Wisdom saving throw} or has the &amp;reference[Frightened apply=false] condition for 1 minute. While Frightened this way, a creature must spend its turn moving as far from you as it can and can't make &amp;reference[opportunityattacks]{Opportunity Attacks}. It can use only the Dash action or attempt to escape from an effect that prevents movement; if it can't move, it can take the Dodge action. Affected creatures repeat the save at the end of each of their turns, ending the effect on themselves on a success.</p><p><strong>Properties:</strong></p><p>&amp;reference[magic weapon]</p>",
 			"chat": ""
 		},
 		"identifier": "mace-of-terror",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "",
 			"license": "",
 			"page": "",
@@ -250,35 +253,7 @@
 		},
 		"mastery": "sap"
 	},
-	"effects": [
-		{
-			"name": "Mace of Terror",
-			"img": "icons/weapons/maces/mace-spiked-skull.webp",
-			"origin": "Compendium.dnd5e.equipment24.Item.dmgMaceOfTerror0",
-			"transfer": false,
-			"_id": "amYapIKWPpJZ9EuO",
-			"type": "base",
-			"system": {
-				"changes": []
-			},
-			"disabled": false,
-			"duration": {
-				"value": 60,
-				"units": "seconds",
-				"expiry": "turnStart",
-				"expired": false
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"statuses": [
-				"frightened"
-			],
-			"showIcon": 2,
-			"start": null,
-			"folder": null,
-			"_key": "!items.effects!dmgMaceOfTerror0.amYapIKWPpJZ9EuO"
-		}
-	],
+	"effects": [],
 	"folder": "6Glc0xFoDvY8BJYX",
 	"_key": "!items!dmgMaceOfTerror0"
 }

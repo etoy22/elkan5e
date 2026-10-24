@@ -38,7 +38,10 @@ export async function undeadFortitude(actor, amount, _updates, options) {
 	const currentHp = Number(actor.system?.attributes?.hp?.value ?? 0);
 	if (currentHp - amount > 0) return;
 
-	const activityType = options?.originatingMessage?.flags?.dnd5e?.activity?.type;
+	const activityType =
+		options?.originatingMessage?.getAssociatedActivity?.()?.type ??
+		options?.originatingMessage?.system?.activity?.type ??
+		options?.originatingMessage?.flags?.dnd5e?.activity?.type;
 	const isAttackOrSave =
 		["attack", "save"].includes(activityType) ||
 		options?.midi?.isHit === true ||
@@ -61,13 +64,16 @@ export async function undeadFortitude(actor, amount, _updates, options) {
 	const conDC = Math.max(1, 5 + amount + dcModifier);
 
 	const { advantage, disadvantage } = _getSaveAdvantage(actor);
-	const saveRolls = await actor.rollSavingThrow({
-		ability: "con",
-		target: conDC,
-		advantage,
-		disadvantage,
-		midiOptions: { fastForward: true },
-	});
+	const saveRolls = await actor.rollSavingThrow(
+		{
+			ability: "con",
+			target: conDC,
+			advantage,
+			disadvantage,
+			midiOptions: { fastForward: true },
+		},
+		{ configure: false },
+	);
 	if (saveRolls?.[0]?.total < conDC) return;
 	await actor.update({ "system.attributes.hp.value": 1 });
 

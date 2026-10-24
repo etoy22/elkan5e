@@ -11,7 +11,7 @@
 				"_id": "zmpjUmsaOK5GlEPx",
 				"activation": {
 					"type": "bonus",
-					"value": null,
+					"value": 1,
 					"override": false,
 					"condition": ""
 				},
@@ -20,7 +20,14 @@
 						"allowed": false
 					},
 					"spellSlot": true,
-					"targets": []
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "",
+							"scaling": {}
+						}
+					]
 				},
 				"description": {
 					"chatFlavor": ""
@@ -81,8 +88,13 @@
 		},
 		"uses": {
 			"spent": 0,
-			"recovery": [],
-			"max": ""
+			"recovery": [
+				{
+					"period": "sr",
+					"type": "recoverAll"
+				}
+			],
+			"max": "1"
 		},
 		"description": {
 			"value": "<p>You awe or distract nearby creatures with a brief performance or dramatic display.</p><p><strong>Bonus Action</strong> - All Enemies (15 ft.) - 1 Round - 1/Short Rest</p><p>A creature is immune to this effect if they are immune to being &amp;reference[confused apply=false].</p><ul><li><p>Targets cannot make &amp;reference[opportunityattacks] and have disadvantage on &amp;reference[concentration] saves.</p></li></ul>",
@@ -94,7 +106,7 @@
 			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
-			"custom": "elkan5e.com/ancestrybackground",
+			"custom": "elkan5e.com/background",
 			"license": ""
 		},
 		"enchant": {},
@@ -119,10 +131,10 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.disadvantage.concentration",
-						"value": 1,
+						"key": "system.attributes.concentration.roll.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					}
 				]
 			},
@@ -149,22 +161,6 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"start": null,

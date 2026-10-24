@@ -34,10 +34,14 @@
 					"units": "self"
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -67,8 +71,8 @@
 				"useConditionReason": "",
 				"effectConditionText": "",
 				"macroData": {
-					"name": "",
-					"command": ""
+					"name": "Power Cure",
+					"command": "return await elkan5e.macros.spells.healConditions(workflow);"
 				},
 				"ignoreTraits": {
 					"idi": false,
@@ -108,13 +112,13 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><em>With a single word of power, you cure the target of nearly any ills.</em></p><p><strong>Healing</strong></p><ul><li><p>The target regains all hit points.</p></li><li><p>Remove all &amp;reference[diseased]{diseases}, as well as the &amp;reference[blinded], &amp;reference[Charmed apply=false], &amp;reference[confused], &amp;reference[dazed], &amp;reference[deafened], &amp;reference[drained], &amp;reference[Frightened apply=false], &amp;reference[goaded], &amp;reference[paralyzed], &amp;reference[petrified], &amp;reference[poisoned], &amp;reference[stunned], and &amp;reference[weakened] conditions.</p></li><li><p>Remove all levels of exhaustion.</p></li><li>Remove all curses, including the target's attunement to a &amp;reference[cursed] magic item. If a creature is possessing the target, the possession ends and the creature appears in a space of their choice within 5 ft. of the target.</li><li><p>If &amp;reference[Prone apply=false], the target can use their reaction to stand up.</p></li></ul>",
+			"value": "<p><em>With a single word of power, you cure the target of nearly any ills.</em></p><p><strong>Healing</strong></p><ul><li><p>The target regains all hit points.</p></li><li><p>Remove all &amp;reference[diseased]{diseases}, as well as the &amp;reference[blinded], &amp;reference[Charmed apply=false], &amp;reference[confused], &amp;reference[dazed], &amp;reference[deafened], &amp;reference[drained], &amp;reference[Frightened apply=false], &amp;reference[goaded], &amp;reference[paralyzed], &amp;reference[petrified], &amp;reference[poisoned], &amp;reference[stunned], and &amp;reference[weakened] conditions.</p></li><li><p>Remove all levels of &amp;reference[exhaustion]{exhaustion}.</p></li><li>Remove all curses, including the target's attunement to a &amp;reference[cursed] magic item. If a creature is possessing the target, the possession ends and the creature appears in a space of their choice within 5 ft. of the target.</li><li><p>If &amp;reference[Prone apply=false], the target can use their reaction to stand up.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "power-cure",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "",
 			"page": "",
 			"custom": "elkan5e.com/spells/power-cure",
@@ -170,7 +174,8 @@
 			"itemCondition": "",
 			"reactionCondition": "",
 			"otherCondition": "",
-			"effectCondition": ""
+			"effectCondition": "",
+			"onUseMacroName": "[postActiveEffects]ActivityMacro-mna195EBkQ5u8zEz"
 		}
 	},
 	"_key": "!items!0ehLLLWPu0NLpL1R"

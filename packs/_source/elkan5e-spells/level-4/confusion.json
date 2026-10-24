@@ -4,9 +4,7 @@
 	"img": "icons/magic/air/wind-tornado-cyclone-purple-pink.webp",
 	"effects": [
 		{
-			"statuses": [
-				"confused"
-			],
+			"statuses": [],
 			"name": "Confusion",
 			"description": "",
 			"duration": {
@@ -16,22 +14,6 @@
 				"expired": false
 			},
 			"flags": {
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
-				},
 				"dae": {
 					"disableIncapacitated": false,
 					"selfTarget": false,
@@ -56,13 +38,22 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.OverTime",
-						"value": "turn=end, label=Confused Save, saveAbility=wis, saveDC=@attributes.spell.dc,\nlabel=Confusion Save",
+						"value": "turn=end,\nlabel=Confusion Save,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc",
 						"priority": 20,
-						"type": "add"
+						"type": "custom",
+						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "confused",
+						"phase": "final",
+						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!qiyNsnKPpmPRjvtv.DyN0npqi5Se0CpOm"
@@ -219,10 +210,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -231,7 +226,9 @@
 					"parts": []
 				},
 				"save": {
-					"ability": "wis",
+					"ability": [
+						"wis"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -278,10 +275,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},

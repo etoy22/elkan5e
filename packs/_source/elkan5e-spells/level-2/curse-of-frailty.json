@@ -13,18 +13,32 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.disadvantage.ability.save.con",
-						"value": 1,
+						"key": "system.abilities.con.save.roll.mode",
+						"value": "-1",
 						"priority": 20,
 						"type": "add"
 					},
 					{
-						"key": "flags.midi-qol.disadvantage.concentration",
-						"value": 1,
+						"key": "system.attributes.concentration.roll.mode",
+						"value": "-1",
 						"priority": 20,
 						"type": "add"
+					},
+					{
+						"key": "system.attributes.death.roll.mode",
+						"value": "-1",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "cursed",
+						"phase": "final",
+						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -35,9 +49,7 @@
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"statuses": [
-				"cursed"
-			],
+			"statuses": [],
 			"flags": {
 				"dae": {
 					"enableCondition": "",
@@ -51,23 +63,6 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"start": null,
@@ -208,10 +203,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},

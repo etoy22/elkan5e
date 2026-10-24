@@ -4,9 +4,7 @@
 	"img": "icons/skills/wounds/anatomy-organ-heart-red.webp",
 	"effects": [
 		{
-			"statuses": [
-				"goaded"
-			],
+			"statuses": [],
 			"name": "Frenzy",
 			"description": "",
 			"duration": {
@@ -25,22 +23,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"_id": "ygcrAQDn3qLtxrAK",
@@ -51,9 +33,17 @@
 			"img": "icons/skills/wounds/anatomy-organ-heart-red.webp",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "goaded",
+						"phase": "final",
+						"priority": 20
+					}
+				]
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!OlP5CWXKH4mMRMsX.ygcrAQDn3qLtxrAK"

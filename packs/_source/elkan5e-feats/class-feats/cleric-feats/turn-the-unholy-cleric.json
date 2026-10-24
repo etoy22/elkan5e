@@ -3,7 +3,7 @@
 	"type": "feat",
 	"system": {
 		"description": {
-			"value": "<p><em>You present your holy symbol and speak a prayer censuring creatures anathema to you.</em></p><p><strong>Action</strong> - 30 ft. Emanation (Self) - 1 Minute - Magical</p><p>This consumes one use of your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.WKKAHUBp42287xui]{Channel Divinity} feature.</p><p><strong>[[/save wisdom]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Any &amp;reference[aberration], &amp;reference[celestial], &amp;reference[fey], &amp;reference[fiend], or &amp;reference[undead] of your choice are &amp;reference[frightened] for 1 minute. Target rolls again at end of their turns, ending effect on success. While frightened in this way:</p><ul><li><p>They must spend all of their movement trying to move as far away from you as it can.</p></li><li><p>They can't take &amp;reference[reaction].</p></li><li><p>They can use their action and &amp;reference[bonus action] normally before, during, or after moving.</p></li><li><p>This effect ends if you become incapacitated.</p></li></ul></li><li><p><strong>Failure:</strong> If a target of one of the above creature type's hit point maximum is equal to or less than three times your cleric level, it is destroyed.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"value": "<p><em>You present your holy symbol and speak a prayer censuring creatures anathema to you.</em></p><p><strong>Action</strong> - 30 ft. Emanation (Self) - 1 Minute - Magical</p><p>This consumes one use of your @UUID[Compendium.elkan5e.elkan5e-class-features.Item.WKKAHUBp42287xui]{Channel Divinity} feature.</p><p><strong>[[/save wisdom]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Any &amp;reference[aberration], &amp;reference[celestial], &amp;reference[fey], &amp;reference[fiend], or &amp;reference[undead] of your choice are &amp;reference[frightened] for 1 minute. Target rolls again at end of their turns, ending effect on success. While frightened in this way:</p><ul><li><p>They must spend all of their movement trying to move as far away from you as it can.</p></li><li><p>They can't take &amp;reference[reaction].</p></li><li><p>They can use their action and &amp;reference[bonus action] normally before, during, or after moving.</p></li><li><p>This effect ends if you become &amp;reference[incapacitated apply=false]{incapacitated}.</p></li></ul></li><li><p><strong>Failure:</strong> If a target of one of the above creature type's hit point maximum is equal to or less than three times your cleric level, it is destroyed.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -34,31 +34,6 @@
 			"mgc"
 		],
 		"activities": {
-			"dnd5eactivity000": {
-				"name": "",
-				"img": "",
-				"target": {
-					"affects": {
-						"count": ""
-					}
-				},
-				"consumption": {
-					"targets": [
-						{
-							"type": "itemUses",
-							"value": "1",
-							"target": "Compendium.elkan5e.elkan5e-class-features.Item.WKKAHUBp42287xui",
-							"scaling": {}
-						}
-					]
-				},
-				"appliedEffects": [
-					"3wxkJYzkpSdZIb5y"
-				],
-				"damage": {
-					"onSave": "none"
-				}
-			},
 			"rijRyf9emQ3kgTXO": {
 				"type": "save",
 				"_id": "rijRyf9emQ3kgTXO",
@@ -121,7 +96,9 @@
 					"onSave": "none"
 				},
 				"save": {
-					"ability": "wis",
+					"ability": [
+						"wis"
+					],
 					"dc": {
 						"calculation": "wis",
 						"formula": ""
@@ -132,36 +109,12 @@
 				"appliedEffects": [
 					"SLTwhHpsLQzYrbal"
 				],
-				"effectConditionText": "!target.traits.ci.value.has('frightened') && raceOrType.includes(\"undead\"))"
+				"effectConditionText": "!target.traits.ci.value.has('frightened') && ['aberration','celestial','fey','fiend','undead'].includes(raceOrType)"
 			}
 		},
 		"identifier": "turn-the-unholy-cleric",
 		"enchant": {},
-		"advancement": [
-			{
-				"_id": "aC5HuW1uXBe16dL0",
-				"type": "AbilityScoreImprovement",
-				"configuration": {
-					"cap": 2,
-					"fixed": {
-						"str": 0,
-						"dex": 0,
-						"con": 0,
-						"int": 0,
-						"wis": 0,
-						"cha": 0
-					},
-					"locked": [],
-					"points": 2
-				},
-				"value": {
-					"type": "asi"
-				},
-				"level": 0,
-				"title": "",
-				"hint": ""
-			}
-		]
+		"advancement": []
 	},
 	"flags": {
 		"midi-qol": {
@@ -214,23 +167,6 @@
 					"dontApply": false,
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"img": "icons/magic/fire/flame-burning-creature-skeleton.webp",
@@ -242,9 +178,18 @@
 						"key": "flags.midi-qol.OverTime",
 						"value": "turn=end,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Fear",
 						"priority": 20,
-						"type": "add"
+						"type": "add",
+						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "frightened",
+						"phase": "final",
+						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -255,10 +200,8 @@
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"statuses": [
-				"frightened"
-			],
-			"showIcon": 2,
+			"statuses": [],
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!w5k1DjgHIfs4TDRo.SLTwhHpsLQzYrbal"

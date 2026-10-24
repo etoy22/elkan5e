@@ -3,7 +3,102 @@
 	"name": "Master of Myriad Forms",
 	"type": "feat",
 	"img": "icons/creatures/abilities/cougar-pounce-stalk-black.webp",
-	"effects": [],
+	"effects": [
+		{
+			"name": "Master of Myriad Forms",
+			"img": "icons/creatures/abilities/cougar-pounce-stalk-black.webp",
+			"type": "enchantment",
+			"transfer": false,
+			"_id": "WztZnJCw9zvTH3Mj",
+			"system": {
+				"changes": [
+					{
+						"key": "system.description.value",
+						"type": "override",
+						"value": "{}<p><strong>Master of Myriad Forms.</strong> You can cast this spell at will, without expending a spell slot.</p>",
+						"phase": "initial",
+						"priority": null,
+						"_id": "SXVffDOVsk6vzjpr",
+						"conditions": "{}",
+						"replacement": ""
+					},
+					{
+						"key": "system.activities.4nIbjYsnkybgd9I9.consumption.spellSlot",
+						"type": "override",
+						"value": false,
+						"phase": "initial",
+						"priority": null,
+						"_id": "delSWB2bksPmIusY",
+						"conditions": "{}",
+						"replacement": ""
+					},
+					{
+						"key": "system.activities.OO1smnZxNXuyFhxE.consumption.spellSlot",
+						"type": "override",
+						"value": false,
+						"phase": "initial",
+						"priority": null,
+						"_id": "CeOmZUmGRj7JBE7F",
+						"conditions": "{}",
+						"replacement": ""
+					},
+					{
+						"key": "system.activities.PypTmFF56pA6LH6n.consumption.spellSlot",
+						"type": "override",
+						"value": false,
+						"phase": "initial",
+						"priority": null,
+						"_id": "jzVcusUS8sNbbPSs",
+						"conditions": "{}",
+						"replacement": ""
+					},
+					{
+						"key": "system.activities.2eMAspE4VuHfc91I.consumption.spellSlot",
+						"type": "override",
+						"value": false,
+						"phase": "initial",
+						"priority": null,
+						"_id": "P3gGRZtxc0zI6Wpd",
+						"conditions": "{}",
+						"replacement": ""
+					},
+					{
+						"key": "system.activities.4SOCa2hD8uLzZTGN.consumption.spellSlot",
+						"type": "override",
+						"value": false,
+						"phase": "initial",
+						"priority": null,
+						"_id": "94GlC12up33QEHxk",
+						"conditions": "{}",
+						"replacement": ""
+					}
+				],
+				"origin": {
+					"actor": null,
+					"behavior": null,
+					"effect": null,
+					"item": null,
+					"message": null
+				},
+				"magical": true
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"origin": null,
+			"tint": "#ffffff",
+			"statuses": [],
+			"showIcon": 1,
+			"folder": null,
+			"_key": "!items.effects!Rk1PwV8QAQEpK9jw.WztZnJCw9zvTH3Mj"
+		}
+	],
 	"folder": "LoFY7kyoO9XDIBGO",
 	"flags": {
 		"midiProperties": {
@@ -63,70 +158,59 @@
 		"prerequisites": {
 			"level": 9
 		},
-		"activities": {
-			"TEatd5r1DMU713Hb": {
-				"type": "cast",
-				"_id": "TEatd5r1DMU713Hb",
-				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				},
-				"description": {
-					"chatFlavor": ""
-				},
-				"duration": {
-					"units": "inst",
-					"concentration": false,
-					"override": false
-				},
-				"range": {
-					"override": false
-				},
-				"target": {
-					"template": {
-						"contiguous": false,
-						"units": "ft"
-					},
-					"affects": {
-						"choice": false
-					},
-					"override": false,
-					"prompt": true
-				},
-				"uses": {
-					"spent": 0,
-					"recovery": [],
-					"max": ""
-				},
-				"spell": {
-					"challenge": {
-						"attack": null,
-						"save": null,
-						"override": false
-					},
-					"level": null,
-					"properties": [
-						"vocal",
-						"somatic",
-						"material"
-					],
-					"spellbook": true,
-					"uuid": "Compendium.elkan5e.elkan5e-spells.Item.pQF7bFtH2aIv9Nyq"
-				},
-				"name": "",
-				"img": ""
-			}
-		},
+		"activities": {},
 		"identifier": "master-of-myriad-forms",
-		"enchant": {}
+		"enchant": {},
+		"advancement": {
+			"J7Yb5jJKuMOqwBrx": {
+				"name": "",
+				"type": "ItemGrant",
+				"_id": "J7Yb5jJKuMOqwBrx",
+				"configuration": {
+					"items": [
+						{
+							"uuid": "Compendium.elkan5e.elkan5e-spells.Item.pQF7bFtH2aIv9Nyq",
+							"optional": false
+						}
+					],
+					"optional": false,
+					"sorting": "m",
+					"spell": {
+						"ability": [],
+						"method": "atwill",
+						"uses": {
+							"max": "",
+							"per": "",
+							"requireSlot": false
+						}
+					}
+				},
+				"value": {},
+				"level": 0,
+				"hint": ""
+			},
+			"2rCNuCLyeIivHKIY": {
+				"name": "",
+				"type": "ModifyItem",
+				"_id": "2rCNuCLyeIivHKIY",
+				"configuration": {
+					"changes": [
+						{
+							"_id": "WztZnJCw9zvTH3Mj",
+							"uuid": null,
+							"identifiers": [
+								"alter-self"
+							]
+						}
+					]
+				},
+				"value": {
+					"modified": []
+				},
+				"level": 0,
+				"hint": ""
+			}
+		}
 	},
 	"_key": "!items!Rk1PwV8QAQEpK9jw"
 }

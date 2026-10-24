@@ -144,24 +144,9 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"enableCondition": "",
-					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
+					"disableCondition": "",
+					"expiryMode": "default",
+					"phaseStamped": true
 				}
 			},
 			"tint": "#ffffff",
@@ -170,12 +155,17 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.movement.swim",
-						"value": "@attributes.movement.walk",
+						"key": "system.attributes.movement.speeds.swim",
+						"type": "upgrade",
+						"value": "@attributes.movement.speeds.walk",
+						"phase": "initial",
 						"priority": 25,
-						"type": "upgrade"
+						"_id": "deUDXOTiEjOW4vnQ",
+						"conditions": "{}",
+						"replacement": ""
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,

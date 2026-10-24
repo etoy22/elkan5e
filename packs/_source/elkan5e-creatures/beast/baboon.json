@@ -466,11 +466,13 @@
 				"bonus": ""
 			},
 			"movement": {
-				"burrow": null,
-				"climb": 30,
-				"fly": null,
-				"swim": null,
-				"walk": 30,
+				"speeds": {
+					"walk": 30,
+					"burrow": null,
+					"climb": 30,
+					"fly": null,
+					"swim": null
+				},
 				"units": null,
 				"hover": false,
 				"ignoredDifficultTerrain": []
@@ -479,10 +481,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": null,
-				"blindsight": null,
-				"tremorsense": null,
-				"truesight": null,
+				"ranges": {
+					"darkvision": null,
+					"blindsight": null,
+					"tremorsense": null,
+					"truesight": null
+				},
 				"units": null,
 				"special": ""
 			},
@@ -576,7 +580,7 @@
 		},
 		"source": {
 			"revision": 2,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
 			"custom": "",
@@ -724,13 +728,13 @@
 					"max": ""
 				},
 				"description": {
-					"value": "<p>The [[lookup @name lowercase]] has advantage on an attack roll against a target if at least one of the [[lookup @name lowercase]]'s allies is within 5 ft. of the target and the ally isn't incapacitated.</p>",
+					"value": "<p>The [[lookup @name lowercase]] has advantage on an &amp;reference[attackrolls]{attack roll} against a target if at least one of the [[lookup @name lowercase]]'s allies is within 5 ft. of the target and the ally isn't &amp;reference[incapacitated apply=false].</p>",
 					"chat": ""
 				},
 				"identifier": "pack-tactics",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",
@@ -886,7 +890,7 @@
 				"identifier": "bite",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",

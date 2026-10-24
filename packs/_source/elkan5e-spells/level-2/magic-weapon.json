@@ -29,22 +29,6 @@
 					"specialDuration": [],
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"img": "icons/magic/fire/dagger-rune-enchant-flame-blue.webp",
@@ -292,7 +276,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You touch a weapon, instilling your magic into it so that it may strike faster and harder than before, piercing magical defenses.</em></p><p><strong>Enchant Item</strong></p><p>The chosen weapon becomes a &amp;reference[magic weapon] weapon if it wasn't already, with a +1 bonus to attack rolls and damage rolls* if it didn't already have at least a +1 bonus.</p><p><strong>*Upcasting:</strong> At spell level 3 or 4, the bonus to attack and damage becomes +2 if not already higher, and at spell level 5 or higher, the bonus becomes +3.</p>",
+			"value": "<p><em>You touch a weapon, instilling your magic into it so that it may strike faster and harder than before, piercing magical defenses.</em></p><p><strong>Enchant Item</strong></p><p>The chosen weapon becomes a &amp;reference[magic weapon] weapon if it wasn't already, with a +1 bonus to &amp;reference[attackrolls]{attack rolls} and damage rolls* if it didn't already have at least a +1 bonus.</p><p><strong>*Upcasting:</strong> At spell level 3 or 4, the bonus to attack and damage becomes +2 if not already higher, and at spell level 5 or higher, the bonus becomes +3.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -418,10 +402,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},

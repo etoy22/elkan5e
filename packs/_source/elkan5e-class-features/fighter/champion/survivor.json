@@ -25,22 +25,6 @@
 					"disableCondition": "",
 					"disableIncapacitated": true,
 					"macroRepeat": "none"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"name": "Survivor",
@@ -98,7 +82,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p>At the start of your turn when you have fewer than half your hit points (rounded down), you regain hit points equal to 5 + your constitution modifier. This feature does not function if you are unconscious.</p>",
+			"value": "<p>At the start of your turn when you have fewer than half your hit points (rounded down), you regain hit points equal to 5 + your constitution modifier. This feature does not function if you are &amp;reference[unconscious apply=false]{unconscious}.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -125,7 +109,9 @@
 		"prerequisites": {
 			"level": null
 		},
-		"properties": []
+		"properties": [
+			"trait"
+		]
 	},
 	"folder": "Jmr7C3kJih3PzzE1",
 	"_id": "SjY0CQtBO51uq1ll",

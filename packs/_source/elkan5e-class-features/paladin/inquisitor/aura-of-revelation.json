@@ -6,24 +6,6 @@
 		{
 			"_id": "jqyEv4x6Yz5NcW9F",
 			"flags": {
-				"ActiveAuras": {
-					"isAura": false,
-					"inactive": false,
-					"hidden": true,
-					"aura": "Allies",
-					"radius": "@scale.paladin.paladin-aura",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": true,
-					"displayTemp": true,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system",
-					"statuses": []
-				},
 				"dae": {
 					"stackable": "none",
 					"specialDuration": [],
@@ -34,7 +16,9 @@
 					"disableIncapacitated": false,
 					"dontApply": false,
 					"macroRepeat": "none",
-					"disableCondition": ""
+					"disableCondition": "",
+					"expiryMode": "default",
+					"phaseStamped": true
 				}
 			},
 			"disabled": false,
@@ -56,17 +40,27 @@
 				"changes": [
 					{
 						"key": "system.traits.ci.value",
+						"type": "custom",
 						"value": "blinded",
+						"phase": "initial",
 						"priority": 20,
-						"type": "custom"
+						"_id": "TxEavTBXrv50AzDH",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "system.traits.ci.value",
+						"type": "custom",
 						"value": "deafened",
+						"phase": "initial",
 						"priority": 20,
-						"type": "custom"
+						"_id": "dGnW77WQjupKYLPk",
+						"conditions": "{}",
+						"replacement": ""
 					}
-				]
+				],
+				"conditions": "{\"o\":\"NOR\",\"v\":[{\"k\":\"statuses.petrified\",\"v\":1},{\"k\":\"statuses.unconscious\",\"v\":1}]}",
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
@@ -129,7 +123,7 @@
 			"subtype": ""
 		},
 		"requirements": "Inquisitor 6",
-		"identifier": "aura-of-courage",
+		"identifier": "aura-of-revelation",
 		"activities": {},
 		"enchant": {},
 		"prerequisites": {
@@ -138,7 +132,8 @@
 			"repeatable": false
 		},
 		"properties": [
-			"mgc"
+			"mgc",
+			"trait"
 		],
 		"advancement": [],
 		"crewed": false

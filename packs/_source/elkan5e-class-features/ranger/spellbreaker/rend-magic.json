@@ -141,13 +141,13 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><strong>Once Per Turn</strong> - 1 Creature - 1 Round - Magical</p><p>When you hit a creature with a weapon attack, you can use this ability on your target. This damage counts as part of your weapon's damage for the sake of calculating the DC for concentration checks, and this damage is doubled on a critical hit.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 1d10 force]] damage and is &amp;reference[silenced].</p></li><li><p><strong>Success:</strong> [[/damage 1d10 force]], no other effect.</p></li></ul>",
+			"value": "<p><strong>Once Per Turn</strong> - 1 Creature - 1 Round - Magical</p><p>When you hit a creature with a weapon attack, you can use this ability on your target. This damage counts as part of your weapon's damage for the sake of calculating the DC for &amp;reference[concentration]{concentration} checks, and this damage is doubled on a critical hit.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 1d10 force]] damage and is &amp;reference[silenced].</p></li><li><p><strong>Success:</strong> [[/damage 1d10 force]], no other effect.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "rend-magic",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "",
 			"page": "",
 			"custom": "elkan5e.com/ranger",
@@ -179,7 +179,16 @@
 			"_id": "Bw1gXIPxBLCuGXzs",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "silenced",
+						"phase": "final",
+						"priority": 20
+					}
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -190,9 +199,7 @@
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"statuses": [
-				"silenced"
-			],
+			"statuses": [],
 			"flags": {
 				"dae": {
 					"enableCondition": "",
@@ -206,26 +213,9 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!Xe51IME6ys6WoC9f.Bw1gXIPxBLCuGXzs"

@@ -212,7 +212,7 @@
 		"identifier": "channel-conviction-lull-of-death",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "",
 			"page": "",
 			"custom": "elkan5e.com/paladin",
@@ -250,9 +250,25 @@
 						"type": "add",
 						"value": "turn=end, label=Lull of Death, saveAbility=wis, saveDC=@attributes.cha.dc, saveMagic=true",
 						"phase": "initial",
-						"priority": null
+						"priority": null,
+						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "charmed",
+						"phase": "final",
+						"priority": 20
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "goaded",
+						"phase": "final",
+						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"start": null,
@@ -265,11 +281,8 @@
 			"description": "",
 			"tint": "#ffffff",
 			"transfer": false,
-			"statuses": [
-				"charmed",
-				"goaded"
-			],
-			"showIcon": 2,
+			"statuses": [],
+			"showIcon": 0,
 			"folder": null,
 			"flags": {
 				"dae": {
@@ -294,7 +307,6 @@
 			"rollAttackPerTarget": "default",
 			"removeAttackDamageButtons": "default",
 			"itemCondition": "",
-			"reactionCondition": "reaction === 'isMoved' && computeDistance(tokenUuid, targetUuid) <= 60 && canvas?.tokens?.get(targetUuid)?.document?.disposition === -1",
 			"otherCondition": "",
 			"effectCondition": ""
 		},

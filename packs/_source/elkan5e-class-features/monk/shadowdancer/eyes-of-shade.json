@@ -26,7 +26,9 @@
 			"value": "subclass",
 			"subtype": ""
 		},
-		"properties": [],
+		"properties": [
+			"trait"
+		],
 		"requirements": "Shadowdancer 3",
 		"identifier": "eyes-of-shade",
 		"activities": {},
@@ -60,22 +62,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"tint": "#ffffff",
@@ -87,7 +73,14 @@
 						"key": "system.attributes.senses.ranges.darkvision",
 						"value": 60,
 						"priority": 20,
-						"type": "upgrade"
+						"type": "add"
+					},
+					{
+						"key": "flags.elkan5e.seeThroughDarkness",
+						"type": "override",
+						"value": "1",
+						"phase": "initial",
+						"priority": 20
 					}
 				]
 			},

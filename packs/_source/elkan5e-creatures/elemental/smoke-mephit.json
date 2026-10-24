@@ -466,11 +466,13 @@
 				"bonus": ""
 			},
 			"movement": {
-				"burrow": null,
-				"climb": null,
-				"fly": 30,
-				"swim": null,
-				"walk": 60,
+				"speeds": {
+					"walk": 60,
+					"burrow": null,
+					"climb": null,
+					"fly": 30,
+					"swim": null
+				},
 				"units": "ft",
 				"hover": false,
 				"ignoredDifficultTerrain": [],
@@ -480,10 +482,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 120,
-				"blindsight": null,
-				"tremorsense": null,
-				"truesight": null,
+				"ranges": {
+					"darkvision": 120,
+					"blindsight": null,
+					"tremorsense": null,
+					"truesight": null
+				},
 				"units": "ft",
 				"special": ""
 			},
@@ -581,7 +585,7 @@
 		},
 		"source": {
 			"revision": 2,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"license": "",
 			"page": "",
@@ -739,13 +743,13 @@
 					"max": ""
 				},
 				"description": {
-					"value": "<p>The [[lookup @name lowercase]] is made of smoke. If the [[lookup @name lowercase]] is submerged in water, trapped in an airtight container, covered with a large lid, or blown by a strong wind, it takes 10 damage, which cannot be reduced in any way. If the [[lookup @name lowercase]] is reduced to 0 hit points in this way, it does not use its @UUID[Compendium.elkan5e.elkan5e-creatures.Actor.LM3XXXtJ2LxuaW8D.Item.mmDeathBurst0000]{death burst}.</p>",
+					"value": "<p>The [[lookup @name lowercase]] is made of smoke. If the [[lookup @name lowercase]] is submerged in water, trapped in an airtight container, covered with a large lid, or blown by a strong wind, it takes [[/damage 10]] damage, which cannot be reduced in any way. If the [[lookup @name lowercase]] is reduced to 0 hit points in this way, it does not use its death burst.</p>",
 					"chat": ""
 				},
 				"identifier": "smoke-form",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",
@@ -934,7 +938,7 @@
 				"identifier": "death-burst",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",
@@ -970,7 +974,7 @@
 					"duration": {
 						"value": 7,
 						"units": "seconds",
-						"expiry": "turnStart",
+						"expiry": "sourceEnd",
 						"expired": false
 					},
 					"description": "",
@@ -984,30 +988,11 @@
 							"disableIncapacitated": false,
 							"durationExpression": "",
 							"macroRepeat": "none",
-							"specialDuration": [
-								"turnEndSource"
-							],
+							"specialDuration": [],
 							"enableCondition": "",
 							"selfTarget": false,
 							"selfTargetAlways": false,
 							"dontApply": false
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "All",
-							"nameOverride": "",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"customCheck": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"wallsBlock": "system",
-							"statuses": []
 						}
 					},
 					"start": null,
@@ -1146,7 +1131,7 @@
 				"identifier": "smoke-touch",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",

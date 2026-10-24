@@ -12,18 +12,19 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.disadvantage.skill.all",
-						"value": 1,
+						"key": "system.rolls.ability.skill.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					},
 					{
-						"key": "flags.midi-qol.disadvantage.attack.all",
-						"value": 1,
+						"key": "system.rolls.attack.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -46,22 +47,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"start": null,
@@ -110,7 +95,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You strike a piece of iron, creating a spark. The piece of iron you struck rapidly grows hot as you chant an incantation. At the same time, a metal item you can see grows just as hot, making it hard to wield if held or worn by a creature.</em></p><p>You can heat a metal weapon or armor, a 5 ft. square of metal flooring or walls, or any other metal object equal in size or smaller than a suit of plate mail. Any creature in physical contact with the heated object must make a constitution save.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage]] damage.* The target can drop the object, but if they don't or can't, they have disadvantage on attack rolls and skill checks for 1 round.</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><ul><li><p><strong>Concentration:</strong> Once on each subsequent turn, you can heat the metal object again as a bonus action.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d6 fire]] for each spell level above 2nd.</p>",
+			"value": "<p><em>You strike a piece of iron, creating a spark. The piece of iron you struck rapidly grows hot as you chant an incantation. At the same time, a metal item you can see grows just as hot, making it hard to wield if held or worn by a creature.</em></p><p>You can heat a metal weapon or armor, a 5 ft. square of metal flooring or walls, or any other metal object equal in size or smaller than a suit of plate mail. Any creature in physical contact with the heated object must make a constitution save.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage]] damage.* The target can drop the object, but if they don't or can't, they have disadvantage on &amp;reference[attackrolls]{attack rolls} and skill checks for 1 round.</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><ul><li><p><strong>&amp;reference[concentration]{Concentration}:</strong> Once on each subsequent turn, you can heat the metal object again as a bonus action.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 1d6 fire]] for each spell level above 2nd.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -206,10 +191,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -241,7 +230,9 @@
 					"onSave": "half"
 				},
 				"save": {
-					"ability": "con",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -293,10 +284,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -328,7 +323,9 @@
 					"onSave": "half"
 				},
 				"save": {
-					"ability": "con",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""

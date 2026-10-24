@@ -24,23 +24,9 @@
 					"selfTargetAlways": false,
 					"disableIncapacitated": false,
 					"dontApply": false,
-					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
+					"disableCondition": "",
+					"expiryMode": "default",
+					"phaseStamped": true
 				}
 			},
 			"tint": "#ffffff",
@@ -54,11 +40,16 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.sculptSpells",
+						"type": "override",
 						"value": 1,
+						"phase": "initial",
 						"priority": 20,
-						"type": "override"
+						"_id": "6SskKa1KUaxgwc4r",
+						"conditions": "{}",
+						"replacement": ""
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
@@ -96,7 +87,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p>You can create pockets of relative safety within the effects of your evocation spells. When you cast an evocation spell, you can choose up to five creatures. The chosen creatures automatically succeed on their saving throws against the spell, and they take no damage if they would normally take half damage on a successful save.</p>",
+			"value": "<p>You can create pockets of relative safety within the effects of your evocation spells. When you cast an evocation spell, you can choose up to five creatures. The chosen creatures automatically succeed on their &amp;reference[savingthrow]{saving throws} against the spell, and they take no damage if they would normally take half damage on a successful save.</p>",
 			"chat": ""
 		},
 		"source": {

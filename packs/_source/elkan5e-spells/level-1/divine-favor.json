@@ -24,22 +24,6 @@
 					"selfTargetAlways": false,
 					"disableIncapacitated": false,
 					"dontApply": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"radius": "",
-					"aura": "None",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"displayTemp": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"tint": "#ffffff",
@@ -52,18 +36,19 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.bonuses.mwak.damage",
+						"key": "system.rolls.damage.mwak.bonus",
 						"value": "+1d4[Radiant]",
 						"priority": 20,
 						"type": "add"
 					},
 					{
-						"key": "system.bonuses.rwak.damage",
+						"key": "system.rolls.damage.rwak.bonus",
 						"value": "+1d4[Radiant]",
 						"priority": 20,
 						"type": "add"
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
@@ -205,10 +190,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},

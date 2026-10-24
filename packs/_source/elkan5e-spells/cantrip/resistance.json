@@ -24,22 +24,6 @@
 					"macroRepeat": "none",
 					"disableIncapacitated": false,
 					"dontApply": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"radius": "",
-					"aura": "None",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"displayTemp": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"tint": "#ffffff",
@@ -87,12 +71,89 @@
 						"priority": 20,
 						"type": "add"
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
 			"folder": null,
 			"_key": "!items.effects!e213NWDPfjE5FIex.i75ZoFCZ7GhxNvsG"
+		},
+		{
+			"_id": "I9VZ1YvNaTnH7T6a",
+			"disabled": false,
+			"duration": {
+				"value": 3600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"transfer": false,
+			"flags": {
+				"dae": {
+					"stackable": "none",
+					"specialDuration": [],
+					"transfer": false,
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"disableIncapacitated": false,
+					"dontApply": false
+				}
+			},
+			"tint": "#ffffff",
+			"origin": null,
+			"name": "Resistance (Earth Savant)",
+			"description": "",
+			"statuses": [],
+			"img": "icons/magic/defensive/shield-barrier-blue.webp",
+			"type": "base",
+			"system": {
+				"changes": [
+					{
+						"key": "system.abilities.cha.bonuses.save",
+						"value": "+1d6",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.abilities.wis.bonuses.save",
+						"value": "+1d6",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.abilities.int.bonuses.save",
+						"value": "+1d6",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.abilities.dex.bonuses.save",
+						"value": "+1d6",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.abilities.con.bonuses.save",
+						"value": "+1d6",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.abilities.str.bonuses.save",
+						"value": "+1d6",
+						"priority": 20,
+						"type": "add"
+					}
+				],
+				"magical": true
+			},
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
+			"_key": "!items.effects!e213NWDPfjE5FIex.I9VZ1YvNaTnH7T6a"
 		}
 	],
 	"folder": "SjVk5lAwzIpqSBbH",
@@ -131,7 +192,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You touch a miniature cloak, thinking of a target you can see and asking for their protection. The next harmful effect that affects your target is slightly weaker.</em></p><p><strong>Buff</strong></p><ul><li><p>Target adds [[/r 1d4]] to all saving throws they make.</p></li></ul>",
+			"value": "<p><em>You touch a miniature cloak, thinking of a target you can see and asking for their protection. The next harmful effect that affects your target is slightly weaker.</em></p><p><strong>Buff</strong></p><ul><li><p>Target adds [[/r 1d4]] to all &amp;reference[savingthrow]{saving throws} they make.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -194,31 +255,6 @@
 			"concentration"
 		],
 		"activities": {
-			"dnd5eactivity000": {
-				"name": "",
-				"img": "",
-				"roll": {
-					"prompt": true
-				},
-				"appliedEffects": [
-					"i75ZoFCZ7GhxNvsG"
-				],
-				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
-				},
-				"consumption": {
-					"scaling": {
-						"allowed": false
-					},
-					"spellSlot": true,
-					"targets": []
-				}
-			},
 			"uIfyfr3RzBbzxrRv": {
 				"type": "utility",
 				"_id": "uIfyfr3RzBbzxrRv",
@@ -251,10 +287,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},

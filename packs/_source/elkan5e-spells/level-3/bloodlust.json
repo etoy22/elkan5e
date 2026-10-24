@@ -102,10 +102,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -119,7 +123,9 @@
 					"parts": []
 				},
 				"save": {
-					"ability": "wis",
+					"ability": [
+						"wis"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -149,9 +155,7 @@
 			"disabled": false,
 			"_id": "g02foCT34SklETUD",
 			"description": "",
-			"statuses": [
-				"goaded"
-			],
+			"statuses": [],
 			"flags": {
 				"dae": {
 					"disableIncapacitated": false,
@@ -165,22 +169,6 @@
 					"enableCondition": "",
 					"disableCondition": "",
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"tint": "#ffffff",
@@ -189,9 +177,9 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.advantage.attack.all",
-						"type": "custom",
-						"value": 1,
+						"key": "system.rolls.attack.mode",
+						"type": "add",
+						"value": "1",
 						"phase": "initial",
 						"priority": 20
 					},
@@ -200,9 +188,18 @@
 						"type": "add",
 						"value": "turn=end, label=Bloodlust, saveAbility=wis, saveDC=@attributes.spell.dc, saveMagic=true",
 						"phase": "initial",
-						"priority": null
+						"priority": null,
+						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "goaded",
+						"phase": "final",
+						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"showIcon": 2,
 			"start": null,

@@ -27,23 +27,6 @@
 					"macroRepeat": "none",
 					"disableCondition": "",
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "Allies",
-					"radius": "@scale.paladin.paladin-aura",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": true,
-					"hidden": false,
-					"displayTemp": true,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"name": "Aura of Devotion",
@@ -55,25 +38,27 @@
 				"changes": [
 					{
 						"key": "system.traits.ci.value",
-						"type": "custom",
-						"value": "blinded",
+						"type": "add",
+						"value": "charmed",
 						"phase": "initial",
-						"priority": 20
+						"priority": 20,
+						"_id": "PjZeN8LaiQ3QqHcL",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "system.traits.ci.value",
 						"type": "add",
-						"value": "blinded",
+						"value": "goaded",
 						"phase": "initial",
-						"priority": 20
-					},
-					{
-						"key": "",
-						"type": "add",
-						"value": "",
-						"phase": "initial"
+						"priority": 20,
+						"_id": "t80J1GWtNrl076DT",
+						"conditions": "{}",
+						"replacement": ""
 					}
-				]
+				],
+				"conditions": "{\"o\":\"NOR\",\"v\":[{\"k\":\"statuses.petrified\",\"v\":1},{\"k\":\"statuses.unconscious\",\"v\":1}]}",
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
@@ -135,7 +120,8 @@
 		},
 		"requirements": "Paragon 6",
 		"properties": [
-			"mgc"
+			"mgc",
+			"trait"
 		],
 		"identifier": "aura-of-devotion",
 		"activities": {},

@@ -18,13 +18,13 @@
 			"folder": null,
 			"system": {
 				"description": {
-					"value": "<p><strong></strong> .</p><p>The lizard-orc wizard attempts to rip open the fabric of reality, creating a wave of unstable energy at point it can see within 60 ft. All creatures in a 20 ft. radius of that point must make a DC 15 constitution saving throw, taking 6d8 force damage on a failure, and half as much on a success. If a target fails this save, it must make a DC 15 wisdom saving throw to avoid being frightened of the space where the wave originated. The creature can attempt another save when the lizard-orc wizard dies, or when 1 hour has passed.</p>",
+					"value": "<p><strong></strong> .</p><p>The lizard-orc wizard attempts to rip open the fabric of reality, creating a wave of unstable energy at point it can see within 60 ft. All creatures in a 20 ft. radius of that point must make a DC 15 constitution &amp;reference[savingthrow]{saving throw}, taking 6d8 force damage on a failure, and half as much on a success. If a target fails this save, it must make a DC 15 wisdom saving throw to avoid being &amp;reference[frightened apply=false]{frightened} of the space where the wave originated. The creature can attempt another save when the lizard-orc wizard dies, or when 1 hour has passed.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -134,7 +134,9 @@
 							]
 						},
 						"save": {
-							"ability": "con",
+							"ability": [
+								"con"
+							],
 							"dc": {
 								"calculation": "int",
 								"formula": "15"
@@ -156,13 +158,13 @@
 			"type": "feat",
 			"system": {
 				"description": {
-					"value": "<p>When the mutant warrior has fewer than all of its hit points, its flesh attempts to knit itself together, spewing volatile organic compounds as it does so.</p><br><p>All creatures within 5 ft. of the mutant warrior, including the mutant warrior, must succeed on a DC 13 contitution saving throw or take 2d6 poison damage (which the mutant warrior is resistant to). Then, if this doesn't kill the mutant warrior, the mutant warrior regains 5 hit points.</p><br><p>If the mutant warrior isn't in danger and is at 15 hit points or greater, assume that it can regain all hit points over the course of 10 minutes without any danger.</p>",
+					"value": "<p><strong>Bonus Action</strong> - Self and each creature within 5 ft.</p><p>The [[lookup @name lowercase]] can use this only while it has fewer than its full Hit Points. Its flesh knits itself together, spewing volatile organic compounds.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> [[/damage]] damage. The [[lookup @name lowercase]] is resistant to this damage.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p>Then, if this doesn't reduce the [[lookup @name lowercase]] to 0 Hit Points, it regains 5 Hit Points.</p><p><em>If the [[lookup @name lowercase]] isn't in danger and is at 15 Hit Points or more, assume it can regain all its Hit Points over 10 minutes without any danger.</em></p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "Elkan 5e",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -235,7 +237,7 @@
 							"recovery": []
 						},
 						"damage": {
-							"onSave": "half",
+							"onSave": "none",
 							"parts": [
 								{
 									"number": 2,
@@ -257,7 +259,9 @@
 							]
 						},
 						"save": {
-							"ability": "con",
+							"ability": [
+								"con"
+							],
 							"dc": {
 								"calculation": "",
 								"formula": "13"
@@ -285,23 +289,6 @@
 			"effects": [
 				{
 					"flags": {
-						"ActiveAuras": {
-							"isAura": false,
-							"radius": "null",
-							"aura": "None",
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"displayTemp": false,
-							"nameOverride": ""
-						},
-						"core": {
-							"statusId": "combat-utility-belt.poisoned"
-						},
 						"dae": {
 							"selfTarget": false,
 							"selfTargetAlways": false,
@@ -331,27 +318,22 @@
 					"system": {
 						"changes": [
 							{
-								"key": "flags.midi-qol.disadvantage.attack.all",
-								"value": 1,
-								"priority": 50,
-								"type": "override"
-							},
-							{
-								"key": "flags.midi-qol.disadvantage.ability.check.all",
-								"value": 1,
-								"priority": 50,
-								"type": "override"
-							},
-							{
 								"key": "flags.midi-qol.OverTime",
 								"value": "turn=end,\nsaveAbility=con,\nsaveDC=13",
 								"priority": 20,
 								"type": "add"
+							},
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "poisoned",
+								"phase": "final",
+								"priority": 20
 							}
 						]
 					},
 					"start": null,
-					"showIcon": 1,
+					"showIcon": 0,
 					"folder": null,
 					"_key": "!actors.items.effects!h4Aud0lG4mNU1RFg.6tvJNE655GX8f4ZU.usTKhpcA1Usb0yTP"
 				}
@@ -360,13 +342,13 @@
 			"folder": null,
 			"system": {
 				"description": {
-					"value": "<p>The [[lookup @name lowercase]] was created through unstable magic. When it dies, all creatures within 10 ft. of the [[lookup @name lowercase]] must make a DC 13 constitution saving throw or take 4d10 poison damage and be poisoned for one minute (save for half damage) (save ends).</p>",
+					"value": "<p><em>Trigger: the [[lookup @name lowercase]] dies.</em></p><p>Each creature within 10 ft. of the [[lookup @name lowercase]] is affected.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> [[/damage activity=dnd5eactivity100]] damage, and the target has the &amp;reference[Poisoned apply=false] condition for 1 minute (save ends at the end of each of its turns).</p></li><li><p><strong>Success:</strong> Half damage only.</p></li></ul>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "Elkan 5e",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -552,7 +534,9 @@
 							]
 						},
 						"save": {
-							"ability": "con",
+							"ability": [
+								"con"
+							],
 							"dc": {
 								"calculation": "",
 								"formula": "13"
@@ -685,10 +669,14 @@
 							"override": false
 						},
 						"target": {
-							"type": "creature",
-							"value": 1,
-							"units": "ft",
-							"width": null,
+							"affects": {
+								"type": "creature",
+								"count": 1
+							},
+							"template": {
+								"units": "ft",
+								"width": null
+							},
 							"override": false,
 							"prompt": true
 						},
@@ -720,7 +708,9 @@
 							]
 						},
 						"save": {
-							"ability": "dex",
+							"ability": [
+								"dex"
+							],
 							"dc": {
 								"calculation": "spellcasting",
 								"formula": ""
@@ -745,13 +735,13 @@
 			"img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
 			"system": {
 				"description": {
-					"value": "<p><strong>This ability is meant to be used after casting Rend the Veil to automate the frightened effect it causes.</strong></p><p>60 ft. Radius</p><p><strong>Wisdom</strong> Save</p><ul><li><p><strong>Failure:</strong> Target is frightened of the center of this effect for 1 minute (save ends).</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+					"value": "<p><strong>This ability is meant to be used after casting Rend the Veil to automate the &amp;reference[frightened apply=false]{frightened} effect it causes.</strong></p><p>60 ft. Radius</p><p><strong>Wisdom</strong> Save</p><ul><li><p><strong>Failure:</strong> Target is frightened of the center of this effect for 1 minute (save ends).</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "Elkan 5e",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"activation": {
@@ -851,7 +841,9 @@
 							"parts": []
 						},
 						"save": {
-							"ability": "wis",
+							"ability": [
+								"wis"
+							],
 							"dc": {
 								"calculation": "spellcasting",
 								"formula": ""
@@ -890,20 +882,6 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": []
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"nameOverride": "",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false
 						}
 					},
 					"tint": "#ffffff",
@@ -912,24 +890,26 @@
 					"system": {
 						"changes": [
 							{
-								"key": "flags.midi-qol.disadvantage.attack.all",
-								"value": 1,
+								"key": "system.rolls.attack.mode",
+								"value": "-1",
 								"priority": 50,
-								"type": "override"
+								"type": "add"
 							},
 							{
-								"key": "flags.midi-qol.disadvantage.ability.check.all",
-								"value": 1,
+								"key": "system.rolls.ability.check.mode",
+								"value": "-1",
 								"priority": 50,
-								"type": "override"
+								"type": "add"
 							},
 							{
 								"key": "flags.midi-qol.OverTime",
-								"value": "turn=end,\nsaveAbility=wis,",
+								"value": "turn=end,\nlabel=Rend the Veil,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true",
 								"priority": 20,
-								"type": "add"
+								"type": "custom",
+								"replacement": "origin"
 							}
-						]
+						],
+						"magical": true
 					},
 					"start": null,
 					"showIcon": 1,
@@ -948,7 +928,7 @@
 			"img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
 			"system": {
 				"description": {
-					"value": "<p><em>You hold out a damaged tuning fork attuned to another plane. You utter a corrupted version of the incantation needed to teleport to another plane, instead ripping a hole in space. All unsuspecting creatures are compelled to flee from it, and the area around the rip is twisted.</em></p><p><strong>Materials:</strong> Casting this spell requires a <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.tSdm8nQQqxsKBOnk]{damaged tuning fork}</em>, typically valued at 50 gold. The tuning fork is not consumed by the spell.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d8 force]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><hr><p>Additionally, all creatures who are not your allies who can see the rip in reality when it is formed must attempt a wisdom saving throw.</p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[frightened] of the center of this effect for 1 minute. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 2d8 force]] for each spell level above 5th.</p>",
+					"value": "<p><em>You hold out a damaged tuning fork attuned to another plane. You utter a corrupted version of the incantation needed to teleport to another plane, instead ripping a hole in space. All unsuspecting creatures are compelled to flee from it, and the area around the rip is twisted.</em></p><p><strong>Materials:</strong> Casting this spell requires a <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.tSdm8nQQqxsKBOnk]{damaged tuning fork}</em>, typically valued at 50 gold. The tuning fork is not consumed by the spell.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d8 force]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><hr><p>Additionally, all creatures who are not your allies who can see the rip in reality when it is formed must attempt a wisdom &amp;reference[savingthrow]{saving throw}.</p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[frightened] of the center of this effect for 1 minute. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 2d8 force]] for each spell level above 5th.</p>",
 					"chat": ""
 				},
 				"source": {
@@ -1055,10 +1035,14 @@
 							"override": false
 						},
 						"target": {
-							"type": "creature",
-							"value": 1,
-							"units": "ft",
-							"width": null,
+							"affects": {
+								"type": "creature",
+								"count": 1
+							},
+							"template": {
+								"units": "ft",
+								"width": null
+							},
 							"override": false,
 							"prompt": true
 						},
@@ -1090,7 +1074,9 @@
 							]
 						},
 						"save": {
-							"ability": "con",
+							"ability": [
+								"con"
+							],
 							"dc": {
 								"calculation": "spellcasting",
 								"formula": ""
@@ -1203,7 +1189,61 @@
 				},
 				"identifier": "rend-the-veil"
 			},
-			"effects": [],
+			"effects": [
+				{
+					"name": "Rend the Veil",
+					"img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
+					"origin": null,
+					"type": "base",
+					"_id": "sry75IDMkhCZtmNg",
+					"system": {
+						"changes": [
+							{
+								"key": "flags.midi-qol.OverTime",
+								"type": "custom",
+								"value": "turn=end,\nlabel=Rend the Veil,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true",
+								"phase": "initial",
+								"priority": null,
+								"replacement": "origin"
+							},
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "frightened",
+								"phase": "final",
+								"priority": 20
+							}
+						],
+						"magical": true
+					},
+					"disabled": false,
+					"start": null,
+					"duration": {
+						"value": 60,
+						"units": "seconds",
+						"expiry": "sourceEnd",
+						"expired": false
+					},
+					"description": "",
+					"tint": "#ffffff",
+					"transfer": false,
+					"statuses": [],
+					"showIcon": 0,
+					"folder": null,
+					"flags": {
+						"dae": {
+							"disableCondition": "",
+							"stackable": "noneName",
+							"expiryMode": "default",
+							"durationExpression": "",
+							"macroRepeat": "none",
+							"disableIncapacitated": false,
+							"specialDuration": []
+						}
+					},
+					"_key": "!actors.items.effects!h4Aud0lG4mNU1RFg.ox73A21S9eX0mNSo.sry75IDMkhCZtmNg"
+				}
+			],
 			"flags": {
 				"dnd5e": {
 					"migratedUses": 1
@@ -1255,7 +1295,7 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p><em>You reach out as if to grasp your target, conjuring toxic mist around them.</em></p><p><strong>Consitution Save</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 1d12 poison]] damage.*</p></li><li><p><strong>Success:</strong> No damage.</p></li></ul><p><strong>*At Higher Levels:</strong> This spell's damage increases by [[/damage 1d12 poison]] when you reach a total character or creature level of 5th level ([[/damage 2d12 poison]]), 11th level ([[/damage 3d12 poison]]), and 17th level ([[/damage 4d12 poison]]).</p>",
+					"value": "<p><em>You reach out as if to grasp your target, conjuring toxic mist around them.</em></p><p><strong>[[/save con]]{Consitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 1d12 poison]] damage.*</p></li><li><p><strong>Success:</strong> No damage.</p></li></ul><p><strong>*At Higher Levels:</strong> This spell's damage increases by [[/damage 1d12 poison]] when you reach a total character or creature level of 5th level ([[/damage 2d12 poison]]), 11th level ([[/damage 3d12 poison]]), and 17th level ([[/damage 4d12 poison]]).</p>",
 					"chat": ""
 				},
 				"source": {
@@ -1313,8 +1353,7 @@
 				},
 				"properties": [
 					"vocal",
-					"somatic",
-					"mgc"
+					"somatic"
 				],
 				"activities": {
 					"dnd5eactivity000": {
@@ -1346,10 +1385,14 @@
 							"override": false
 						},
 						"target": {
-							"type": "creature",
-							"value": 1,
-							"units": "ft",
-							"width": null,
+							"affects": {
+								"type": "creature",
+								"count": 1
+							},
+							"template": {
+								"units": "ft",
+								"width": null
+							},
 							"override": false,
 							"prompt": true
 						},
@@ -1381,7 +1424,9 @@
 							]
 						},
 						"save": {
-							"ability": "con",
+							"ability": [
+								"con"
+							],
 							"dc": {
 								"calculation": "spellcasting",
 								"formula": ""
@@ -1428,13 +1473,13 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p><em>Greatswords are heavy two-handed sword designed for slashing.</em></p><p>Properties:</p><p>&amp;Reference[Heavy], &amp;Reference[Handed]</p>",
+					"value": "<p><em>Greatswords are heavy two-handed sword designed for slashing.</em></p><p>Properties:</p><p>&amp;reference[Heavy], &amp;reference[Handed]</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "elkan5e.com/weapons",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -1714,19 +1759,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": 0,
-				"climb": 0,
-				"fly": 0,
-				"swim": 0,
-				"walk": 30,
+				"speeds": {
+					"walk": 30,
+					"burrow": 0,
+					"climb": 0,
+					"fly": 0,
+					"swim": 0
+				},
 				"units": "ft",
 				"hover": false
 			},
@@ -1734,14 +1781,16 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 60,
-				"blindsight": 0,
-				"tremorsense": 0,
-				"truesight": 0,
+				"ranges": {
+					"darkvision": 60,
+					"blindsight": 0,
+					"tremorsense": 0,
+					"truesight": 0
+				},
 				"units": "ft",
 				"special": ""
 			},
-			"spellcasting": "",
+			"spellcasting": "int",
 			"exhaustion": 0,
 			"concentration": {
 				"ability": "",

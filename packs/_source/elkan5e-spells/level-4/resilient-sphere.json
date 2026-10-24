@@ -13,12 +13,13 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.traits.di.all",
-						"value": 1,
+						"key": "system.traits.di.value",
+						"value": "ALL",
 						"priority": 20,
-						"type": "custom"
+						"type": "add"
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -42,22 +43,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"start": null,
@@ -197,10 +182,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -209,7 +198,9 @@
 					"parts": []
 				},
 				"save": {
-					"ability": "dex",
+					"ability": [
+						"dex"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""

@@ -23,19 +23,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "null",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false
 				}
 			},
 			"name": "Discorporate",
@@ -44,22 +31,28 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.bonuses.mwak.damage",
-						"value": "1/2",
 						"priority": 20,
-						"type": "multiply"
+						"type": "add",
+						"key": "system.traits.dr.value",
+						"value": "bludgeoning"
 					},
 					{
-						"key": "system.bonuses.rwak.damage",
-						"value": "1/2",
 						"priority": 20,
-						"type": "multiply"
+						"type": "add",
+						"key": "system.traits.dr.value",
+						"value": "piercing"
 					},
 					{
-						"key": "system.traits.dr.custom",
-						"value": "Non-Magical Physical",
 						"priority": 20,
-						"type": "custom"
+						"type": "add",
+						"key": "system.traits.dr.value",
+						"value": "slashing"
+					},
+					{
+						"priority": 20,
+						"type": "add",
+						"key": "system.traits.dr.bypasses",
+						"value": "mgc"
 					},
 					{
 						"key": "system.traits.dr.value",
@@ -114,8 +107,15 @@
 						"value": "restrained",
 						"priority": 20,
 						"type": "custom"
+					},
+					{
+						"key": "flags.midi-qol.onUseMacroName",
+						"value": "Compendium.elkan5e.elkan5e-macros.Macro.1NtnoPvTQj1IEHCa, preDamageApplication",
+						"priority": 20,
+						"type": "custom"
 					}
-				]
+				],
+				"magical": true
 			},
 			"description": "",
 			"statuses": [],
@@ -288,10 +288,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -305,7 +309,9 @@
 					"parts": []
 				},
 				"save": {
-					"ability": "cha",
+					"ability": [
+						"cha"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": "16"

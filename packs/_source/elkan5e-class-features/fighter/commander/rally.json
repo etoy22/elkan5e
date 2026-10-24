@@ -4,7 +4,7 @@
 	"img": "icons/environment/people/charge.webp",
 	"system": {
 		"description": {
-			"value": "<p><strong>Bonus Action</strong> - 1 Ally (120 ft.) - 3/Long Rest</p><p>You can say a few words to an ally, inspiring them. The first time this ally rolls an attack roll or saving throw before the end of your next turn, they do so at advantage. They also gain temporary hit points equal to [[/healing 1d10+@classes.fighter.levels temp]]{1d10 + your fighter level}. These temporary hit points last until your next short or long rest.</p>",
+			"value": "<p><strong>Bonus Action</strong> - 1 Ally (120 ft.) - 3/Long Rest</p><p>You can say a few words to an ally, inspiring them. The first time this ally rolls an &amp;reference[attackrolls]{attack roll} or &amp;reference[savingthrow]{saving throw} before the end of your next turn, they do so at advantage. They also gain temporary hit points equal to [[/healing 1d10+@classes.fighter.levels temp]]{1d10 + your fighter level}. These temporary hit points last until your next short or long rest.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -134,9 +134,9 @@
 			"_id": "GEDwcauPfxGe8cBd",
 			"disabled": false,
 			"duration": {
-				"value": 7,
+				"value": null,
 				"units": "seconds",
-				"expiry": "turnStart",
+				"expiry": "sourceEnd",
 				"expired": false
 			},
 			"origin": null,
@@ -149,30 +149,13 @@
 					"durationExpression": "",
 					"specialDuration": [
 						"1Attack",
-						"isSave",
-						"turnEndSource"
+						"isSave"
 					],
 					"enableCondition": "",
 					"disableCondition": "",
 					"disableIncapacitated": false,
 					"dontApply": false,
 					"macroRepeat": "none"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"name": "Rally",
@@ -181,16 +164,16 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.advantage.attack.all",
-						"value": 1,
+						"key": "system.rolls.attack.mode",
+						"value": "1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					},
 					{
-						"key": "flags.midi-qol.advantage.ability.save.all",
-						"value": 1,
+						"key": "system.rolls.ability.save.mode",
+						"value": "1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					}
 				]
 			},

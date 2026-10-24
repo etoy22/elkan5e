@@ -5,7 +5,7 @@
 	"img": "icons/magic/sonic/explosion-impact-shock-wave.webp",
 	"system": {
 		"description": {
-			"value": "<p><em>You hold out a damaged tuning fork attuned to another plane. You utter a corrupted version of the incantation needed to teleport to another plane, instead ripping a hole in space. All unsuspecting creatures are compelled to flee from it, and the area around the rip is twisted.</em></p><p><strong>Materials:</strong> Casting this spell requires a <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.tSdm8nQQqxsKBOnk]{damaged tuning fork}</em>, typically valued at 50 gold. The tuning fork is not consumed by the spell.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d8 force]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><hr><p>Additionally, all creatures who are not your allies who can see the rip in reality when it is formed must attempt a wisdom saving throw.</p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[frightened] of the center of this effect for 1 minute. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 2d8 force]] for each spell level above 5th.</p>",
+			"value": "<p><em>You hold out a damaged tuning fork attuned to another plane. You utter a corrupted version of the incantation needed to teleport to another plane, instead ripping a hole in space. All unsuspecting creatures are compelled to flee from it, and the area around the rip is twisted.</em></p><p><strong>Materials:</strong> Casting this spell requires a <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.tSdm8nQQqxsKBOnk]{damaged tuning fork}</em>, typically valued at 50 gold. The tuning fork is not consumed by the spell.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 4d8 force]] damage.*</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul><hr><p>Additionally, all creatures who are not your allies who can see the rip in reality when it is formed must attempt a wisdom &amp;reference[savingthrow]{saving throw}.</p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[frightened] of the center of this effect for 1 minute. Target rolls again at end of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p><strong>*Upcasting:</strong> Increase damage by [[/damage 2d8 force]] for each spell level above 5th.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -97,10 +97,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -132,7 +136,9 @@
 					]
 				},
 				"save": {
-					"ability": "con",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -256,12 +262,21 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.OverTime",
-						"type": "add",
-						"value": "",
+						"type": "custom",
+						"value": "turn=end,\nlabel=Rend the Veil,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true",
 						"phase": "initial",
-						"priority": null
+						"priority": null,
+						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "frightened",
+						"phase": "final",
+						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"start": null,
@@ -273,11 +288,9 @@
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"transfer": true,
-			"statuses": [
-				"frightened"
-			],
-			"showIcon": 2,
+			"transfer": false,
+			"statuses": [],
+			"showIcon": 0,
 			"folder": null,
 			"flags": {
 				"dae": {

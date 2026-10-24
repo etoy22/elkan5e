@@ -22,10 +22,14 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.bonuses.mwak.damage",
-						"value": "+2",
+						"key": "damage",
+						"type": "dnd5e.bonus",
+						"value": 2,
+						"phase": "initial",
 						"priority": null,
-						"type": "add"
+						"_id": "dfigHM1teOv1R19V",
+						"conditions": "[{\"k\":\"roll.attack.type\",\"v\":\"melee\"},{\"o\":\"OR\",\"v\":[{\"o\":\"AND\",\"v\":[{\"k\":\"roll.attack.classification\",\"v\":\"weapon\"},{\"o\":\"NOT\",\"v\":{\"o\":\"OR\",\"v\":[{\"k\":\"roll.attack.classification\",\"v\":\"unarmed\"},{\"k\":\"item.type.value\",\"v\":\"natural\"},{\"k\":\"item.identifier\",\"o\":\"in\",\"v\":[\"unarmed-strike\",\"unarmed-strike-monk\",\"ki-empowered-strikes\"]}]}},{\"k\":\"elkan5e.weapons.equipped\",\"v\":1}]},{\"o\":\"AND\",\"v\":[{\"o\":\"OR\",\"v\":[{\"k\":\"roll.attack.classification\",\"v\":\"unarmed\"},{\"k\":\"item.type.value\",\"v\":\"natural\"},{\"k\":\"item.identifier\",\"o\":\"in\",\"v\":[\"unarmed-strike\",\"unarmed-strike-monk\",\"ki-empowered-strikes\"]}]},{\"k\":\"elkan5e.weapons.equipped\",\"v\":0}]}]}]",
+						"replacement": ""
 					}
 				]
 			},
@@ -94,7 +98,9 @@
 		"prerequisites": {
 			"level": null
 		},
-		"properties": []
+		"properties": [
+			"trait"
+		]
 	},
 	"_key": "!items!9WjjcbJ42RyG8fw1"
 }

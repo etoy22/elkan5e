@@ -96,7 +96,9 @@
 					"parts": []
 				},
 				"save": {
-					"ability": "wis",
+					"ability": [
+						"wis"
+					],
 					"dc": {
 						"calculation": "con",
 						"formula": ""
@@ -119,9 +121,7 @@
 	},
 	"effects": [
 		{
-			"statuses": [
-				"goaded"
-			],
+			"statuses": [],
 			"name": "Overbearing Challenge",
 			"description": "",
 			"duration": {
@@ -140,22 +140,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"_id": "ebLG2pOcELyoC3ls",
@@ -171,11 +155,19 @@
 						"key": "flags.midi-qol.OverTime",
 						"value": "turn=end,saveAbility=wis,saveDC=@abilities.con.dc,label=Overbearing Challenge",
 						"priority": null,
-						"type": "add"
+						"type": "add",
+						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "goaded",
+						"phase": "final",
+						"priority": 20
 					}
 				]
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!tYr6YSe9Q6gOlfwF.ebLG2pOcELyoC3ls"

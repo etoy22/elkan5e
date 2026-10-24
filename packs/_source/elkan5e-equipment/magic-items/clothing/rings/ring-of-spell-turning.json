@@ -73,7 +73,8 @@
 					},
 					"identifier": "",
 					"requireMagic": true
-				}
+				},
+				"useConditionText": "reaction === 'isSaveSuccess' && workflow?.item?.type === 'spell' && (workflow?.castData?.castLevel ?? item.level) <= 7 && workflow?.targets?.size === 1 && !workflow?.activity?.target?.template?.type"
 			}
 		},
 		"uses": {
@@ -82,13 +83,13 @@
 			"max": ""
 		},
 		"description": {
-			"value": "<p><em>Ring - Legendary (Requires Attunement)</em></p><p><strong>Reaction</strong></p><ul><li><p>While wearing this ring, you have Advantage on saving throws against spells. If you succeed on the save for a spell of level 7 or lower, the spell has no effect on you. If that spell targeted only you and didn't create an area of effect, you can take a Reaction to deflect the spell back at the spell's caster; the caster must make a saving throw against the spell using their own spell save DC.</p></li></ul>",
+			"value": "<p><em>Ring - Legendary (Requires Attunement)</em></p><p><strong>Reaction</strong></p><ul><li><p>While wearing this ring, you have Advantage on &amp;reference[savingthrow]{saving throws} against spells. If you succeed on the save for a spell of level 7 or lower, the spell has no effect on you. If that spell targeted only you and didn't create an area of effect, you can take a Reaction to deflect the spell back at the spell's caster; the caster must make a &amp;reference[savingthrow]{saving throw} against the spell using their own spell save DC.</p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "ring-of-spell-turning",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "",
 			"license": "",
 			"page": "",
@@ -137,10 +138,5 @@
 		"proficient": null
 	},
 	"effects": [],
-	"flags": {
-		"midi-qol": {
-			"reactionCondition": "reaction === 'isSave' && workflow?.item?.type === 'spell'"
-		}
-	},
 	"_key": "!items!dmgRingOfSpellTu"
 }

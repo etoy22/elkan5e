@@ -28,23 +28,6 @@
 					"enableCondition": "",
 					"disableCondition": "",
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"name": "See Invisibility",
@@ -60,7 +43,8 @@
 						"priority": 20,
 						"type": "upgrade"
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
@@ -106,7 +90,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You rub a mixture of talc and silver powder onto your eyelids or above your eyes. You ask for permission to see the unseen, and your vision shifts slightly to show you not only invisible creatures, but also those on the ethereal plane.</em></p><p><strong>Buff</strong></p><ul><li><p>You see &amp;reference[Invisible apply=false] creatures and objects as if they were visible, and you can see into the Ethereal Plane. Ethereal creatures and objects appear ghostly and translucent.</p></li></ul>",
+			"value": "<p><em>You rub a mixture of talc and silver powder onto your eyelids or above your eyes. You ask for permission to see the unseen, and your vision shifts slightly to show you not only &amp;reference[invisible apply=false]{invisible} creatures, but also those on the ethereal plane.</em></p><p><strong>Buff</strong></p><ul><li><p>You see &amp;reference[Invisible apply=false] creatures and objects as if they were visible, and you can see into the Ethereal Plane. Ethereal creatures and objects appear ghostly and translucent.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -199,10 +183,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},

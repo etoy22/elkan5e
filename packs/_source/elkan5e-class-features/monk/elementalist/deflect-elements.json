@@ -13,7 +13,7 @@
 					"type": "reaction",
 					"value": null,
 					"override": false,
-					"condition": "reaction === 'isDamaged'"
+					"condition": ""
 				},
 				"consumption": {
 					"scaling": {
@@ -23,7 +23,7 @@
 					"targets": [
 						{
 							"type": "itemUses",
-							"value": "1",
+							"value": "2",
 							"target": "Compendium.elkan5e.elkan5e-class-features.Item.IXk7hfrAoVQU3dLJ"
 						}
 					]
@@ -71,7 +71,7 @@
 					"name": "",
 					"formula": ""
 				},
-				"useConditionText": "",
+				"useConditionText": "reaction === 'isDamaged' && ['acid','cold','fire','lightning','thunder'].some(d => damageTypes?.[d])",
 				"effectConditionText": "",
 				"macroData": {
 					"name": "",
@@ -177,13 +177,14 @@
 						"priority": 20,
 						"type": "add"
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
-				"value": 7,
-				"units": "seconds",
-				"expiry": "turnStart",
+				"value": 1,
+				"units": "turns",
+				"expiry": "turnEnd",
 				"expired": false
 			},
 			"description": "",
@@ -204,23 +205,6 @@
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"start": null,
@@ -234,7 +218,6 @@
 			"rollAttackPerTarget": "default",
 			"removeAttackDamageButtons": "default",
 			"itemCondition": "",
-			"reactionCondition": "reaction === 'isDamaged' && workflow?.damageItem?.damageDetail?.some(d => ['acid','cold','fire','lightning','thunder'].includes(d.type))",
 			"otherCondition": "",
 			"effectCondition": ""
 		}

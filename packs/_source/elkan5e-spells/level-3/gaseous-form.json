@@ -22,27 +22,13 @@
 					"stackable": "none",
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [],
+					"specialDuration": [
+						"zeroHP"
+					],
 					"disableIncapacitated": false,
 					"dontApply": false,
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"name": "Gaseous Form",
@@ -53,32 +39,32 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.movement.walk",
+						"key": "system.attributes.movement.speeds.walk",
 						"value": 0,
 						"priority": 20,
 						"type": "downgrade"
 					},
 					{
-						"key": "system.attributes.movement.swim",
+						"key": "system.attributes.movement.speeds.swim",
 						"value": 0,
 						"priority": 20,
 						"type": "downgrade"
 					},
 					{
-						"key": "system.attributes.movement.climb",
+						"key": "system.attributes.movement.speeds.climb",
 						"value": 0,
 						"priority": 20,
 						"type": "downgrade"
 					},
 					{
-						"key": "system.attributes.movement.burrow",
+						"key": "system.attributes.movement.speeds.burrow",
 						"value": 0,
 						"priority": 20,
 						"type": "downgrade"
 					},
 					{
-						"key": "system.attributes.movement.fly",
-						"value": 1,
+						"key": "system.attributes.movement.speeds.fly",
+						"value": 10,
 						"priority": 20,
 						"type": "override"
 					},
@@ -87,6 +73,12 @@
 						"value": 1,
 						"priority": 20,
 						"type": "custom"
+					},
+					{
+						"key": "system.traits.dr.value",
+						"value": "lightning",
+						"priority": 20,
+						"type": "add"
 					},
 					{
 						"key": "system.traits.dr.value",
@@ -171,8 +163,21 @@
 						"value": "restrained",
 						"priority": 20,
 						"type": "add"
+					},
+					{
+						"key": "system.traits.ci.value",
+						"value": "prone",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "ATL.texture.src",
+						"value": "icons/magic/air/fog-gas-smoke-swirling-gray.webp",
+						"priority": 20,
+						"type": "override"
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
@@ -312,10 +317,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},

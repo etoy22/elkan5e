@@ -11,7 +11,7 @@
 			"max": ""
 		},
 		"description": {
-			"value": "",
+			"value": "<p>Merflok have a base speed of 30 ft. and a swimming speed equal to their walking speed + 10 ft..</p>",
 			"chat": ""
 		},
 		"identifier": "merfolk-speed",
@@ -21,7 +21,7 @@
 			"book": "Elkan 5e",
 			"page": "",
 			"license": "",
-			"custom": "elkan5e.com/ancestrybackground"
+			"custom": "elkan5e.com/ancestry"
 		},
 		"enchant": {},
 		"type": {
@@ -33,7 +33,9 @@
 			"items": [],
 			"repeatable": false
 		},
-		"properties": [],
+		"properties": [
+			"trait"
+		],
 		"requirements": "Merfolk",
 		"advancement": {},
 		"crewed": false
@@ -48,9 +50,9 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.movement.swim",
+						"key": "system.attributes.movement.speeds.swim",
 						"type": "upgrade",
-						"value": "(@attributes.movement.walk)+10",
+						"value": "(@attributes.movement.speeds.walk)+10",
 						"phase": "initial",
 						"priority": 20
 					}
@@ -76,22 +78,6 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"start": null,

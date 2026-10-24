@@ -6,7 +6,11 @@ export function weapons() {
 	console.log("Elkan 5e  |  Initializing Weapons");
 	// Weapon Properties
 	const NEW_PROPERTIES = {
-		coldIron: { label: "Cold Iron", isPhysical: true },
+		coldIron: {
+			label: "Cold Iron",
+			icon: "modules/elkan5e/icons/properties/cold-iron.svg",
+			isPhysical: true,
+		},
 		conc: { label: "Concussive" },
 		mou: { label: "Mounted" },
 		unw: { label: "Unwieldy" },
@@ -58,15 +62,16 @@ export function weapons() {
 		{ key: "sickle", id: "STRitF2wexdf7eGM" },
 		{ key: "sling", id: "Ev7JyidZMB8BA9Cn" },
 		{ key: "spear", id: "l6tAULuFVbSNewP4" },
-		{ key: "unarmed", id: "pRDNsHpNLLk1Qq58" },
+		// Unarmed Strike lives in the class features compendium, not equipment.
+		{ key: "unarmed", id: "pRDNsHpNLLk1Qq58", pack: "elkan5e-class-features" },
 		{ key: "warhammer", id: "3geQ0izotY1xNo8c" },
 		{ key: "whip", id: "GdgYGzD0cqVlYguz" },
 		{ key: "pistol", id: "O7abmlrF4raTjnkr" },
 		{ key: "musket", id: "IUIwCZtPbwMwB0b1" },
 	];
-	WEAPON_IDS.forEach(({ key, id }) => {
+	WEAPON_IDS.forEach(({ key, id, pack = "elkan5e-equipment" }) => {
 		try {
-			CONFIG.DND5E.weaponIds[key] = `Compendium.elkan5e.elkan5e-equipment.Item.${id}`;
+			CONFIG.DND5E.weaponIds[key] = `Compendium.elkan5e.${pack}.Item.${id}`;
 		} catch (e) {
 			console.warn(`Elkan 5e | Failed to assign weapon ID for '${key}':`, e);
 		}
@@ -114,4 +119,57 @@ export function weapons() {
 			console.warn(`Elkan 5e | Failed to assign weapon rule reference for key '${key}':`, e);
 		}
 	});
+
+	// Expose wielded weapon counts as @elkan5e.weapons.* so effect conditions can check them
+	// (e.g. Single Weapon Fighting requires exactly one equipped melee weapon).
+	// Registered through libWrapper when available so it chains cleanly with other modules (e.g. DAE)
+	// that also wrap getRollData.
+	try {
+		const wrapper = function (wrapped, ...args) {
+			const data = wrapped(...args);
+			data.elkan5e = { ...data.elkan5e, weapons: countWieldedWeapons(this) };
+			return data;
+		};
+		if (game.modules.get("lib-wrapper")?.active && globalThis.libWrapper) {
+			globalThis.libWrapper.register(
+				"elkan5e",
+				"CONFIG.Actor.documentClass.prototype.getRollData",
+				wrapper,
+				"WRAPPER",
+			);
+		} else {
+			const Actor5e = CONFIG.Actor.documentClass;
+			const getRollData = Actor5e.prototype.getRollData;
+			Actor5e.prototype.getRollData = function (...args) {
+				return wrapper.call(this, getRollData.bind(this), ...args);
+			};
+		}
+	} catch (e) {
+		console.warn("Elkan 5e | Failed to add wielded weapon roll data:", e);
+	}
+}
+
+const UNARMED_IDENTIFIERS = new Set([
+	"unarmed-strike",
+	"unarmed-strike-monk",
+	"ki-empowered-strikes",
+]);
+
+/**
+ * Counts the equipped manufactured weapons an actor is wielding, ignoring unarmed strikes and natural weapons.
+ *
+ * @param {*} actor - Actor document to process.
+ * @returns {{equipped: number, melee: number, ranged: number}} Wielded weapon counts.
+ */
+export function countWieldedWeapons(actor) {
+	const counts = { equipped: 0, melee: 0, ranged: 0 };
+	for (const item of actor.items ?? []) {
+		if (item.type !== "weapon" || !item.system.equipped) continue;
+		const type = item.system.type?.value ?? "";
+		if (type === "natural" || UNARMED_IDENTIFIERS.has(item.system.identifier)) continue;
+		counts.equipped++;
+		if (type.endsWith("M")) counts.melee++;
+		else if (type.endsWith("R")) counts.ranged++;
+	}
+	return counts;
 }

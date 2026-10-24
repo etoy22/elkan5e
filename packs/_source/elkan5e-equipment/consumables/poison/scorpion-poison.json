@@ -193,10 +193,12 @@
 					"parts": []
 				},
 				"save": {
-					"ability": [],
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "",
-						"formula": ""
+						"formula": "10"
 					}
 				},
 				"useConditionText": "",
@@ -257,10 +259,10 @@
 			}
 		},
 		"uses": {
+			"max": "1",
 			"spent": 0,
 			"recovery": [],
-			"autoDestroy": false,
-			"max": ""
+			"autoDestroy": true
 		},
 		"description": {
 			"value": "<p>Injury Poison</p><p><strong>Bonus Action</strong> - 1 Object (Touch) - 1 Minute</p><p>The next time you deal damage with the object, apply this poison to the damaged creature, and end this effect on the object. If the target is tiny, they must make a constitution save.</p><p><strong>[[/save con 10]]{Constitution Save (DC 10)}</strong></p><ul><li><p><strong>Failure: </strong> The target is &amp;reference[poisoned]. Target attempts a save at the end of each of their turns, ending effect on success.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
@@ -269,7 +271,7 @@
 		"identifier": "scorpion-poison",
 		"source": {
 			"revision": 1,
-			"rules": "2024"
+			"rules": ""
 		},
 		"identified": true,
 		"unidentified": {
@@ -322,6 +324,13 @@
 						"value": "poison",
 						"priority": 20,
 						"type": "custom"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "poisoned",
+						"phase": "final",
+						"priority": 20
 					}
 				]
 			},
@@ -334,9 +343,7 @@
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"statuses": [
-				"poisoned"
-			],
+			"statuses": [],
 			"flags": {
 				"dae": {
 					"enableCondition": "[\"tiny\"].includes(target.traits.size)",
@@ -349,23 +356,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "All",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"showIcon": 2,

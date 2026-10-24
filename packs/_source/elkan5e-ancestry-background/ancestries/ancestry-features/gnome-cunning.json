@@ -27,19 +27,6 @@
 					"expiryMode": "default",
 					"macroRepeat": "none",
 					"disableIncapacitated": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": null,
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false
 				}
 			},
 			"name": "Gnome Cunning",
@@ -51,21 +38,21 @@
 				"changes": [
 					{
 						"key": "system.abilities.int.save.roll.mode",
-						"type": "override",
+						"type": "add",
 						"value": 1,
 						"phase": "initial",
 						"priority": 20
 					},
 					{
 						"key": "system.abilities.wis.save.roll.mode",
-						"type": "override",
+						"type": "add",
 						"value": 1,
 						"phase": "initial",
 						"priority": 20
 					},
 					{
 						"key": "system.abilities.cha.save.roll.mode",
-						"type": "override",
+						"type": "add",
 						"value": 1,
 						"phase": "initial",
 						"priority": 20
@@ -108,7 +95,7 @@
 			"chat": ""
 		},
 		"source": {
-			"custom": "elkan5e.com/ancestrybackground",
+			"custom": "elkan5e.com/ancestry",
 			"rules": "",
 			"revision": 1,
 			"book": "Elkan 5e",
@@ -125,7 +112,9 @@
 			"subtype": ""
 		},
 		"requirements": "Gnome",
-		"properties": [],
+		"properties": [
+			"trait"
+		],
 		"identifier": "gnome-cunning",
 		"activities": {},
 		"enchant": {},

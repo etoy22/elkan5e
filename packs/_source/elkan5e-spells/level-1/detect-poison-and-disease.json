@@ -28,7 +28,8 @@
 					"enableCondition": "",
 					"disableCondition": "",
 					"expiryMode": "default",
-					"combatActorOverride": "source"
+					"combatActorOverride": "source",
+					"phaseStamped": true
 				}
 			},
 			"tint": "#ffffff",
@@ -38,7 +39,8 @@
 			"img": "icons/magic/unholy/orb-colllecting-energy-green.webp",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
@@ -67,20 +69,25 @@
 					"transfer": false,
 					"disableIncapacitated": false,
 					"dontApply": false,
-					"enableCondition": "",
+					"enableCondition": "!actor?.statuses.has(\"poisoned\")",
 					"disableCondition": "",
 					"expiryMode": "default",
-					"combatActorOverride": "source"
+					"combatActorOverride": "source",
+					"phaseStamped": true
+				},
+				"elkan5e": {
+					"endsOnRegionExit": true
 				}
 			},
 			"tint": "#ffffff",
 			"name": "Detected (Poison/Disease)",
 			"description": "",
 			"statuses": [],
-			"img": "icons/conditions/poisoned.svg",
+			"img": "modules/elkan5e/icons/conditions/poisoned.svg",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
@@ -270,11 +277,6 @@
 							"trigger": "entry",
 							"action": "useActivity",
 							"targetId": "detectPoisonDisease"
-						},
-						{
-							"trigger": "exit",
-							"action": "removeEffect",
-							"targetId": "PqX7nRvTm3ZcWkYb"
 						}
 					]
 				}
@@ -358,11 +360,6 @@
 							"trigger": "entry",
 							"action": "useActivity",
 							"targetId": "detectPoisonDisease"
-						},
-						{
-							"trigger": "exit",
-							"action": "removeEffect",
-							"targetId": "PqX7nRvTm3ZcWkYb"
 						}
 					]
 				}

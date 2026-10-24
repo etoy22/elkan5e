@@ -24,7 +24,24 @@
 			"custom": "elkan5e.com/warlock",
 			"license": ""
 		},
-		"advancement": [],
+		"advancement": {
+			"t5dLgD8G73U24WvR": {
+				"name": "",
+				"type": "Trait",
+				"_id": "t5dLgD8G73U24WvR",
+				"configuration": {
+					"allowReplacements": false,
+					"choices": [],
+					"grants": [
+						"dr:radiant"
+					],
+					"mode": "default"
+				},
+				"level": 0,
+				"hint": "",
+				"value": {}
+			}
+		},
 		"cover": null,
 		"crewed": false,
 		"enchant": {},
@@ -32,7 +49,9 @@
 			"level": 10,
 			"repeatable": false
 		},
-		"properties": [],
+		"properties": [
+			"trait"
+		],
 		"requirements": "Radiant Servant 10",
 		"type": {
 			"value": "subclass",
@@ -49,10 +68,14 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.movement.fly",
-						"value": "@attributes.movement.walk",
+						"key": "system.attributes.movement.speeds.fly",
+						"type": "upgrade",
+						"value": "@attributes.movement.speeds.walk",
+						"phase": "initial",
 						"priority": 20,
-						"type": "upgrade"
+						"_id": "Xyf2bEIXtoitaSip",
+						"conditions": "{}",
+						"replacement": ""
 					}
 				]
 			},
@@ -78,24 +101,9 @@
 					"stackable": "multi",
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
+					"specialDuration": [],
+					"expiryMode": "default",
+					"phaseStamped": true
 				}
 			},
 			"start": null,

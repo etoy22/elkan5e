@@ -74,19 +74,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": 0,
-				"climb": 0,
-				"fly": 30,
-				"swim": 0,
-				"walk": null,
+				"speeds": {
+					"walk": null,
+					"burrow": 0,
+					"climb": 0,
+					"fly": 30,
+					"swim": 0
+				},
 				"units": "ft",
 				"hover": true
 			},
@@ -94,10 +96,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 60,
-				"blindsight": 0,
-				"tremorsense": 0,
-				"truesight": 0,
+				"ranges": {
+					"darkvision": 60,
+					"blindsight": 0,
+					"tremorsense": 0,
+					"truesight": 0
+				},
 				"units": "ft",
 				"special": ""
 			},
@@ -663,7 +667,7 @@
 					"page": "",
 					"license": "",
 					"revision": 1,
-					"rules": "2024"
+					"rules": ""
 				},
 				"uses": {
 					"max": "",
@@ -801,7 +805,7 @@
 			"img": "icons/magic/unholy/strike-hand-glow-pink.webp",
 			"system": {
 				"description": {
-					"value": "<p><em>The graveguard touches a creature, their hand moving through armor to drain the target's life force.</em></p><br><p><strong>Action</strong> - 1 Creature (5 ft.) - Magical</p><br><p>This ability counts as an attack. The DC for this ability equals 8 + proficiency bonus + charisma modifier.</p><br><p><strong>Dexterity Saving Throw</strong></p><ul><li><p><strong>Failure:</strong> Target takes 1d8 + charisma modifier force damage and their hit points are drained by the same amount.</p></li><li><p><strong>Success:</strong> No damage.</p></li></ul>",
+					"value": "<p><em>The graveguard touches a creature, their hand moving through armor to drain the target's life force.</em></p><br><p><strong>Action</strong> - 1 Creature (5 ft.) - Magical</p><br><p>This ability counts as an attack. The DC for this ability equals 8 + proficiency bonus + charisma modifier.</p><br><p><strong>Dexterity &amp;reference[savingthrow]{Saving Throw}</strong></p><ul><li><p><strong>Failure:</strong> Target takes 1d8 + charisma modifier force damage and their hit points are &amp;reference[drained apply=false]{drained} by the same amount.</p></li><li><p><strong>Success:</strong> No damage.</p></li></ul>",
 					"chat": ""
 				},
 				"source": {
@@ -810,7 +814,7 @@
 					"page": "",
 					"license": "",
 					"revision": 1,
-					"rules": "2024"
+					"rules": ""
 				},
 				"quantity": 1,
 				"weight": {
@@ -896,42 +900,6 @@
 				"equipped": true,
 				"proficient": null,
 				"activities": {
-					"dnd5eactivity100": {
-						"name": "",
-						"img": "",
-						"damage": {
-							"onSave": "none",
-							"parts": [
-								{
-									"custom": {
-										"enabled": false,
-										"formula": ""
-									},
-									"number": 1,
-									"denomination": 6,
-									"bonus": "+@mod",
-									"types": [],
-									"scaling": {
-										"number": 1
-									}
-								}
-							]
-						},
-						"appliedEffects": [
-							"derUyYkWvF5CSMcI"
-						],
-						"target": {
-							"affects": {
-								"type": "creature",
-								"count": "1"
-							}
-						},
-						"range": {
-							"override": true,
-							"units": "touch",
-							"value": "5"
-						}
-					},
 					"hp53s297TuccW1pr": {
 						"type": "save",
 						"_id": "hp53s297TuccW1pr",
@@ -1076,7 +1044,16 @@
 					"_id": "rMcHeZ7n9q5yEOhW",
 					"type": "base",
 					"system": {
-						"changes": []
+						"changes": [
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "drained",
+								"phase": "final",
+								"priority": 20
+							}
+						],
+						"magical": true
 					},
 					"disabled": false,
 					"duration": {
@@ -1088,9 +1065,7 @@
 					"description": "",
 					"tint": "#ffffff",
 					"transfer": false,
-					"statuses": [
-						"drained"
-					],
+					"statuses": [],
 					"flags": {
 						"dae": {
 							"disableCondition": "",
@@ -1105,26 +1080,9 @@
 							"selfTarget": false,
 							"selfTargetAlways": false,
 							"dontApply": false
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "All",
-							"nameOverride": "",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"customCheck": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"wallsBlock": "system",
-							"statuses": []
 						}
 					},
-					"showIcon": 2,
+					"showIcon": 0,
 					"start": null,
 					"folder": null,
 					"_key": "!actors.items.effects!cpIgcOpmk6YiimMw.L4qItZ7kCk7qMc4R.rMcHeZ7n9q5yEOhW"
@@ -1191,7 +1149,7 @@
 				},
 				"source": {
 					"custom": "elkan5e.com/wizard",
-					"rules": "2024",
+					"rules": "",
 					"revision": 1,
 					"book": "Elkan 5e"
 				},
@@ -1270,14 +1228,6 @@
 								},
 								{
 									"optional": false,
-									"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.w3jjiADMUEZNKvsO"
-								},
-								{
-									"optional": false,
-									"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.gR13n0dtX2w8sazy"
-								},
-								{
-									"optional": false,
 									"uuid": "Compendium.elkan5e.elkan5e-class-features.Item.IiUhj7YBTNPswktv"
 								}
 							],
@@ -1347,7 +1297,7 @@
 			"img": "icons/skills/trades/academics-investigation-puzzles.webp",
 			"system": {
 				"description": {
-					"value": "<p><strong>These actions are all available to all characters, but have no effects to automate in Foundry. You can use any of them at will.</strong></p><br><p>For a full explanation, see @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7]{Standard Actions}. @UUID[Compendium.elkan5e.elkan5e-class-features.Item.w3jjiADMUEZNKvsO]{Dodge} and @UUID[Compendium.elkan5e.elkan5e-class-features.Item.gR13n0dtX2w8sazy]{Help} are added directly to your character.</p><br><h2><strong>Actions</strong></h2><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#attack]{Attack}</strong></p><br><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#dash]{Dash}</strong></p><br><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#disengage]{Disengage}</strong></p><br><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#hide]{Hide}</strong></p><br><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#influence]{Influence}</strong></p><br><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#ready]{Ready}</strong></p><br><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#search]{Search}</strong></p><br><h2>Reactions</h2><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#attack-of-opportunity]{Attack of Opportunity}</strong></p>",
+					"value": "<p><strong>These actions are all available to all characters, but have no effects to automate in Foundry. You can use any of them at will.</strong></p><br><p>For a full explanation, see @UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7]{Standard Actions}. Dodge and Help are added directly to your character.</p><br><h2><strong>Actions</strong></h2><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#attack]{Attack}</strong></p><br><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#dash]{Dash}</strong></p><br><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#disengage]{Disengage}</strong></p><br><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#hide]{Hide}</strong></p><br><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#influence]{Influence}</strong></p><br><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#ready]{Ready}</strong></p><br><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#search]{Search}</strong></p><br><h2>Reactions</h2><p><strong>@UUID[Compendium.elkan5e.elkan5e-rules.JournalEntry.C3b7Ref9xEVn34Gf.JournalEntryPage.iKdgcGD8qwTF1yx7#attack-of-opportunity]{Attack of Opportunity}</strong></p>",
 					"chat": ""
 				},
 				"source": {
@@ -1367,7 +1317,9 @@
 					"value": "",
 					"subtype": ""
 				},
-				"properties": [],
+				"properties": [
+					"trait"
+				],
 				"requirements": "Standard Action",
 				"identifier": "standard-actions",
 				"activities": {},
@@ -1420,7 +1372,7 @@
 			"img": "icons/skills/melee/shield-block-gray-orange.webp",
 			"system": {
 				"description": {
-					"value": "<p><em>You focus entirely on avoiding attacks.</em></p><br><p><strong>Action</strong> - Self</p><br><p>Until the start of your next turn, any attack roll made against you has disadvantage if you can see the attacker, and you make dexterity saving throws with advantage. You lose this benefit if you are &amp;reference[incapacitated] or if your speed drops to 0.</p>",
+					"value": "<p><em>You focus entirely on avoiding attacks.</em></p><br><p><strong>Action</strong> - Self</p><br><p>Until the start of your next turn, any &amp;reference[attackrolls]{attack roll} made against you has disadvantage if you can see the attacker, and you make dexterity &amp;reference[savingthrow]{saving throws} with advantage. You lose this benefit if you are &amp;reference[incapacitated] or if your speed drops to 0.</p>",
 					"chat": ""
 				},
 				"source": {
@@ -1556,7 +1508,7 @@
 					"duration": {
 						"value": 7,
 						"units": "seconds",
-						"expiry": "turnStart",
+						"expiry": "sourceStart",
 						"expired": false
 					},
 					"description": "",
@@ -1571,27 +1523,9 @@
 							"stackable": "noneName",
 							"durationExpression": "",
 							"macroRepeat": "none",
-							"specialDuration": [
-								"turnStartSource"
-							],
+							"specialDuration": [],
 							"enableCondition": "",
 							"disableCondition": ""
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"nameOverride": "",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"customCheck": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"wallsBlock": "system"
 						}
 					},
 					"tint": "#ffffff",
@@ -1658,7 +1592,7 @@
 			"img": "icons/skills/social/diplomacy-handshake.webp",
 			"system": {
 				"description": {
-					"value": "<p><em>You can lend your aid to another creature in the completion of a task or help them land a devastating blow against an opponent.</em></p><br><p><strong>Action</strong> - 1 Creature</p><br><p>When you use the Help action, you choose one of two effects.</p><ul><li><p>The creature you aid gains advantage on the next skill check they make to perform the task you are helping with, provided that they make the check before the start of your next turn.</p></li><li><p>You aid a friendly creature in attacking a creature within 5 feet of you. If your ally attacks the target before your next turn, their first attack roll is made with advantage.</p></li></ul>",
+					"value": "<p><em>You can lend your aid to another creature in the completion of a task or help them land a devastating blow against an opponent.</em></p><br><p><strong>Action</strong> - 1 Creature</p><br><p>When you use the Help action, you choose one of two effects.</p><ul><li><p>The creature you aid gains advantage on the next skill check they make to perform the task you are helping with, provided that they make the check before the start of your next turn.</p></li><li><p>You aid a friendly creature in attacking a creature within 5 feet of you. If your ally attacks the target before your next turn, their first &amp;reference[attackrolls]{attack roll} is made with advantage.</p></li></ul>",
 					"chat": ""
 				},
 				"source": {
@@ -1797,7 +1731,7 @@
 					"duration": {
 						"value": 7,
 						"units": "seconds",
-						"expiry": "turnStart",
+						"expiry": "sourceStart",
 						"expired": false
 					},
 					"description": "",
@@ -1813,27 +1747,10 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": [
-								"turnStartSource",
 								"1Attack"
 							],
 							"enableCondition": "",
 							"disableCondition": ""
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"nameOverride": "",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"customCheck": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"wallsBlock": "system"
 						}
 					},
 					"tint": "#ffffff",
@@ -1862,7 +1779,7 @@
 					"duration": {
 						"value": 7,
 						"units": "seconds",
-						"expiry": "turnStart",
+						"expiry": "sourceStart",
 						"expired": false
 					},
 					"description": "",
@@ -1878,27 +1795,10 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": [
-								"turnStartSource",
 								"isCheck"
 							],
 							"enableCondition": "",
 							"disableCondition": ""
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"nameOverride": "",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"customCheck": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"wallsBlock": "system"
 						}
 					},
 					"tint": "#ffffff",
@@ -1907,8 +1807,8 @@
 					"system": {
 						"changes": [
 							{
-								"key": "flags.midi-qol.advantage.ability.check.all",
-								"value": 1,
+								"key": "system.rolls.ability.check.mode",
+								"value": "1",
 								"priority": 20,
 								"type": "add"
 							}

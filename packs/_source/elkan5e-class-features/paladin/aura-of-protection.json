@@ -7,27 +7,6 @@
 		{
 			"_id": "YA6d5MuIdX6Bkc8O",
 			"flags": {
-				"ActiveAuras": {
-					"aura": "Allies",
-					"radius": "@scale.paladin.paladin-aura",
-					"isAura": false,
-					"inactive": false,
-					"hidden": true,
-					"ignoreSelf": false,
-					"height": true,
-					"alignment": "",
-					"type": "",
-					"save": "",
-					"savedc": null,
-					"hostile": false,
-					"onlyOnce": false,
-					"time": "None",
-					"displayTemp": true,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system",
-					"statuses": []
-				},
 				"dae": {
 					"stackable": "noneName",
 					"specialDuration": [],
@@ -59,12 +38,13 @@
 			"system": {
 				"changes": [
 					{
-						"key": "system.bonuses.abilities.save",
+						"key": "system.rolls.ability.save.bonus",
 						"value": "+max(1,@abilities.cha.mod)",
 						"priority": 20,
 						"type": "add"
 					}
-				]
+				],
+				"conditions": "{\"o\":\"NOR\",\"v\":[{\"k\":\"statuses.petrified\",\"v\":1},{\"k\":\"statuses.unconscious\",\"v\":1}]}"
 			},
 			"start": null,
 			"showIcon": 1,
@@ -108,7 +88,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>Your presence helps shield allies from harm.</em></p><p><strong>Permanent</strong> - 10 ft. Emanation (Self) - Magical</p><ul><li><p>Whenever you or an ally make a saving throw, add your Charisma modifier (minimum +1).</p></li><li><p>This ability does not function when you are &amp;reference[Petrified apply=false] or &amp;reference[Unconscious apply=false].</p></li></ul><p>At 18th level, the range of this aura increases to 30 feet.</p>",
+			"value": "<p><em>Your presence helps shield allies from harm.</em></p><p><strong>Permanent</strong> - 10 ft. Emanation (Self) - Magical</p><ul><li><p>Whenever you or an ally make a &amp;reference[savingthrow]{saving throw}, add your Charisma modifier (minimum +1).</p></li><li><p>This ability does not function when you are &amp;reference[Petrified apply=false] or &amp;reference[Unconscious apply=false].</p></li></ul><p>At 18th level, the range of this aura increases to 30 feet.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -135,7 +115,9 @@
 		"prerequisites": {
 			"level": null
 		},
-		"properties": []
+		"properties": [
+			"trait"
+		]
 	},
 	"_key": "!items!R0b0W3Od9YZsqE3T"
 }

@@ -158,19 +158,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": 0,
-				"climb": 0,
-				"fly": 60,
-				"swim": 0,
-				"walk": 10,
+				"speeds": {
+					"walk": 10,
+					"burrow": 0,
+					"climb": 0,
+					"fly": 60,
+					"swim": 0
+				},
 				"units": "ft",
 				"hover": false,
 				"ignoredDifficultTerrain": []
@@ -179,10 +181,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 0,
-				"blindsight": 0,
-				"tremorsense": 0,
-				"truesight": 0,
+				"ranges": {
+					"darkvision": 0,
+					"blindsight": 0,
+					"tremorsense": 0,
+					"truesight": 0
+				},
 				"units": "ft",
 				"special": ""
 			},
@@ -633,7 +637,7 @@
 			"page": "",
 			"license": "",
 			"revision": 1,
-			"rules": "2014"
+			"rules": ""
 		},
 		"identifier": "hawk"
 	},
@@ -890,7 +894,7 @@
 				"identifier": "talons",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",
@@ -1002,7 +1006,9 @@
 					"items": [],
 					"repeatable": false
 				},
-				"properties": [],
+				"properties": [
+					"trait"
+				],
 				"advancement": [],
 				"crewed": false
 			},
@@ -1030,22 +1036,6 @@
 							"dontApply": false,
 							"macroRepeat": "none"
 						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"nameOverride": "",
-							"customCheck": "",
-							"wallsBlock": "system"
-						},
 						"times-up": {
 							"isPassive": true
 						}
@@ -1058,10 +1048,10 @@
 					"system": {
 						"changes": [
 							{
-								"key": "flags.midi-qol.advantage.skill.prc",
-								"value": 1,
+								"key": "system.skills.prc.roll.mode",
+								"value": "1",
 								"priority": 20,
-								"type": "override"
+								"type": "add"
 							}
 						]
 					},

@@ -18,7 +18,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -117,7 +117,7 @@
 					"chat": ""
 				},
 				"source": {
-					"rules": "2014",
+					"rules": "",
 					"revision": 1,
 					"book": "Elkan 5e"
 				},
@@ -208,13 +208,13 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p><em>Handaxes are balanced for slashing and for throwing. Designed to be wielded with one hand, they are designed for combat, rather than prolonged use as a tool.</em></p><p>Properties:</p><p>&amp;reference[light weapon], &amp;Reference[Thrown]</p>",
+					"value": "<p><em>Handaxes are balanced for slashing and for throwing. Designed to be wielded with one hand, they are designed for combat, rather than prolonged use as a tool.</em></p><p>Properties:</p><p>&amp;reference[light weapon], &amp;reference[Thrown]</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "elkan5e.com/weapons",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -421,13 +421,13 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p><em>Battleaxes are large, one or two handed axes meant for melee combat.</em></p><p>Properties:</p><p>&amp;Reference[Versatile] (1d10)</p>",
+					"value": "<p><em>Battleaxes are large, one or two handed axes meant for melee combat.</em></p><p>Properties:</p><p>&amp;reference[Versatile] (1d10)</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "elkan5e.com/weapons",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -703,19 +703,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": 0,
-				"climb": 0,
-				"fly": 0,
-				"swim": 0,
-				"walk": 30,
+				"speeds": {
+					"walk": 30,
+					"burrow": 0,
+					"climb": 0,
+					"fly": 0,
+					"swim": 0
+				},
 				"units": "ft",
 				"hover": false
 			},
@@ -723,10 +725,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 0,
-				"blindsight": 0,
-				"tremorsense": 0,
-				"truesight": 0,
+				"ranges": {
+					"darkvision": 0,
+					"blindsight": 0,
+					"tremorsense": 0,
+					"truesight": 0
+				},
 				"units": "ft",
 				"special": ""
 			},

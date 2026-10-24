@@ -12,7 +12,7 @@
 		"source": {
 			"book": "Elkan 5e",
 			"page": "",
-			"custom": "elkan5e.com/ancestrybackground",
+			"custom": "elkan5e.com/ancestry",
 			"license": "",
 			"revision": 1,
 			"rules": ""
@@ -122,7 +122,9 @@
 					]
 				},
 				"save": {
-					"ability": "dex",
+					"ability": [
+						"dex"
+					],
 					"dc": {
 						"calculation": "",
 						"formula": "8 + max(@abilities.cha.mod, @abilities.con.mod) + @prof"
@@ -144,9 +146,7 @@
 	},
 	"effects": [
 		{
-			"statuses": [
-				"slowed"
-			],
+			"statuses": [],
 			"description": "",
 			"duration": {
 				"value": 7,
@@ -155,22 +155,6 @@
 				"expired": false
 			},
 			"flags": {
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
-				},
 				"dae": {
 					"selfTarget": false,
 					"selfTargetAlways": false,
@@ -196,36 +180,16 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.disadvantage.attack.all",
-						"type": "override",
-						"value": 1,
-						"phase": "initial",
-						"priority": 50
-					},
-					{
-						"key": "system.attributes.ac.bonus",
-						"type": "add",
-						"value": -2,
-						"phase": "initial",
-						"priority": 20
-					},
-					{
-						"key": "system.abilities.dex.bonuses.save",
-						"type": "add",
-						"value": -2,
-						"phase": "initial",
-						"priority": 20
-					},
-					{
-						"key": "system.attributes.movement.all",
+						"key": "macro.StatusEffect",
 						"type": "custom",
-						"value": "/2",
+						"value": "slowed",
 						"phase": "final",
-						"priority": 0
+						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!2VBFIYOhfcnlyzEF.9ZsiuWmELiXXi8W5"

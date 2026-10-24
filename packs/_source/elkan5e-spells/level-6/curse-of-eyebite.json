@@ -8,7 +8,7 @@
 			"_id": "omqS8IbthU23gRo9",
 			"disabled": false,
 			"duration": {
-				"value": 60,
+				"value": null,
 				"units": "seconds",
 				"expiry": "turnStart",
 				"expired": false
@@ -22,43 +22,39 @@
 					"stackable": "none",
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"isDamaged"
-					],
+					"specialDuration": [],
 					"enableCondition": "",
 					"disableCondition": "",
 					"disableIncapacitated": false,
 					"dontApply": false,
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"name": "Curse of Eyebite",
 			"description": "",
-			"statuses": [
-				"cursed"
-			],
+			"statuses": [],
 			"img": "icons/magic/perception/eye-ringed-glow-angry-teal.webp",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "cursed",
+						"phase": "final",
+						"priority": 20
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "blinded",
+						"phase": "final",
+						"priority": 20
+					}
+				],
+				"magical": true
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!4MRjvM6DSMIgYqKG.omqS8IbthU23gRo9"
@@ -222,10 +218,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -257,7 +257,7 @@
 				],
 				"effectConditionText": "!target.traits.ci.value.has('cursed')",
 				"midiProperties": {
-					"chooseEffects": true
+					"chooseEffects": false
 				},
 				"visibility": {
 					"level": {

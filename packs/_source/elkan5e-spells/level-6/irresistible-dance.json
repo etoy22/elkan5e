@@ -19,22 +19,6 @@
 					"expiryMode": "default",
 					"disableIncapacitated": false,
 					"dontApply": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"ignoreSelf": false,
-					"hidden": false,
-					"height": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"hostile": false,
-					"onlyOnce": false,
-					"displayTemp": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"disabled": false,
@@ -49,24 +33,23 @@
 			"origin": null,
 			"name": "Irresistible Dance",
 			"description": "",
-			"statuses": [
-				"charmed"
-			],
+			"statuses": [],
 			"img": "icons/tools/instruments/rattle-gourd-glowing-teal.webp",
 			"type": "base",
 			"system": {
 				"changes": [
 					{
 						"key": "flags.midi-qol.OverTime",
-						"type": "add",
-						"value": "turn=start, label=Irresistible Dance, saveAbility=wis, actionSave=roll",
+						"type": "custom",
+						"value": "turn=start,\nlabel=Irresistible Dance,\nsaveAbility=wis,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nactionSave=roll",
 						"phase": "initial",
-						"priority": null
+						"priority": null,
+						"replacement": "origin"
 					},
 					{
-						"key": "flags.midi-qol.disadvantage.attack.all",
+						"key": "system.rolls.attack.mode",
 						"type": "add",
-						"value": 1,
+						"value": "-1",
 						"phase": "initial",
 						"priority": null
 					},
@@ -76,8 +59,22 @@
 						"value": -1,
 						"phase": "initial",
 						"priority": null
+					},
+					{
+						"key": "flags.midi-qol.grants.advantage.attack.all",
+						"value": "1",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "charmed",
+						"phase": "final",
+						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 2,
@@ -149,7 +146,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You command a creature to dance, and they begin a comic dance in place, shuffling, tapping its feet, and capering.</em></p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure: </strong>The target is &amp;reference[Charmed] by you. While charmed:</p><ul><li><p>The target must use all their movement to dance without leaving its space.</p></li><li><p>The target has &amp;reference[disadvantage] on &amp;reference[attack rolls]{Attack rolls} and Dexterity saving throws.</p></li><li><p>Other creatures have &amp;reference[advantage] on attack rolls against the target.</p></li><li><p>As an action, the target can make a Wisdom saving throw to regain control of itself. On a successful save, the spell ends.</p></li></ul></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"value": "<p><em>You command a creature to dance, and they begin a comic dance in place, shuffling, tapping its feet, and capering.</em></p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><ul><li><p><strong>Failure: </strong>The target is &amp;reference[Charmed] by you. While charmed:</p><ul><li><p>The target must use all their movement to dance without leaving its space.</p></li><li><p>The target has &amp;reference[disadvantage] on &amp;reference[attack rolls]{Attack rolls} and Dexterity &amp;reference[savingthrow]{saving throws}.</p></li><li><p>Other creatures have &amp;reference[advantage] on &amp;reference[attackrolls]{attack rolls} against the target.</p></li><li><p>As an action, the target can make a Wisdom &amp;reference[savingthrow]{saving throw} to regain control of itself. On a successful save, the spell ends.</p></li></ul></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -243,10 +240,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -255,7 +256,9 @@
 					"parts": []
 				},
 				"save": {
-					"ability": "wis",
+					"ability": [
+						"wis"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""

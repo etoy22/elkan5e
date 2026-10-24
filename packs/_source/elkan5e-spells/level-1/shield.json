@@ -14,11 +14,13 @@
 					{
 						"key": "system.attributes.ac.bonus",
 						"type": "add",
-						"value": 3,
+						"value": "min(@spellLevel + 2, 5)",
 						"phase": "initial",
-						"priority": null
+						"priority": null,
+						"replacement": "origin"
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"start": null,
@@ -55,10 +57,9 @@
 	"folder": "U0k4VGG6bziqf3oH",
 	"flags": {
 		"midi-qol": {
-			"onUseMacroName": "[preCheckHits]ItemMacro",
+			"onUseMacroName": "[postActiveEffects]ItemMacro",
 			"effectActivation": false,
 			"itemCondition": "",
-			"reactionCondition": "reaction === 'isHit'",
 			"otherCondition": "",
 			"effectCondition": "",
 			"rollAttackPerTarget": "default",
@@ -186,17 +187,34 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "9hRjjxOWJ7hyMdiH",
+						"level": {
+							"min": null,
+							"max": null
+						},
+						"riders": {
+							"activity": [],
+							"effect": [],
+							"item": []
+						}
+					}
+				],
 				"range": {
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
-					"prompt": true
+					"affects": {
+						"type": "self",
+						"count": null
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
+					"override": true,
+					"prompt": false
 				},
 				"uses": {
 					"spent": 0,

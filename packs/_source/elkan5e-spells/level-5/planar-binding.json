@@ -10,7 +10,16 @@
 			"_id": "Kxkt1vbpyVbCGNZr",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "charmed",
+						"phase": "final",
+						"priority": 20
+					}
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -24,9 +33,14 @@
 			"tint": "#ffffff",
 			"statuses": [],
 			"start": null,
-			"showIcon": 1,
+			"showIcon": 0,
 			"folder": null,
-			"_key": "!items.effects!qd6husWa910b2sn4.Kxkt1vbpyVbCGNZr"
+			"_key": "!items.effects!qd6husWa910b2sn4.Kxkt1vbpyVbCGNZr",
+			"flags": {
+				"dae": {
+					"stackable": "none"
+				}
+			}
 		}
 	],
 	"folder": "PnZJTE6T4UQY81Pm",
@@ -114,7 +128,7 @@
 		"materials": {
 			"value": "",
 			"consumed": true,
-			"cost": 500,
+			"cost": 1000,
 			"supply": 0
 		},
 		"preparation": {
@@ -158,15 +172,24 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "Kxkt1vbpyVbCGNZr",
+						"onSave": false
+					}
+				],
 				"range": {
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},

@@ -158,19 +158,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": 0,
-				"climb": 0,
-				"fly": 40,
-				"swim": 0,
-				"walk": 20,
+				"speeds": {
+					"walk": 20,
+					"burrow": 0,
+					"climb": 0,
+					"fly": 40,
+					"swim": 0
+				},
 				"units": "ft",
 				"hover": false,
 				"ignoredDifficultTerrain": []
@@ -179,10 +181,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 120,
-				"blindsight": 0,
-				"tremorsense": 0,
-				"truesight": 0,
+				"ranges": {
+					"darkvision": 120,
+					"blindsight": 0,
+					"tremorsense": 0,
+					"truesight": 0
+				},
 				"units": "ft",
 				"special": ""
 			},
@@ -742,7 +746,7 @@
 					"page": "",
 					"license": "",
 					"revision": 1,
-					"rules": "2014"
+					"rules": ""
 				},
 				"uses": {
 					"max": "",
@@ -890,7 +894,7 @@
 			"img": "icons/magic/perception/eye-slit-pink.webp",
 			"system": {
 				"description": {
-					"value": "<p>Magical darkness doesn't impede the imp's darkvision.</p>",
+					"value": "<p>Magical darkness doesn't impede the imp's &amp;reference[darkvision]{darkvision}.</p>",
 					"chat": ""
 				},
 				"source": {
@@ -898,7 +902,7 @@
 					"book": "Elkan 5e",
 					"page": "",
 					"license": "",
-					"rules": "2014",
+					"rules": "",
 					"revision": 1
 				},
 				"uses": {
@@ -911,7 +915,9 @@
 					"subtype": ""
 				},
 				"requirements": "",
-				"properties": [],
+				"properties": [
+					"trait"
+				],
 				"prerequisites": {
 					"level": null,
 					"items": [],
@@ -934,7 +940,7 @@
 			"img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
 			"system": {
 				"description": {
-					"value": "<p>The [[lookup @name lowercase]] has <strong>advantage</strong> on saving throws against spells and other magical effects.</p>",
+					"value": "<p>The [[lookup @name lowercase]] has <strong>advantage</strong> on &amp;reference[savingthrow]{saving throws} against spells and other magical effects.</p>",
 					"chat": ""
 				},
 				"source": {
@@ -942,7 +948,7 @@
 					"book": "Elkan 5e",
 					"page": "",
 					"license": "",
-					"rules": "2014",
+					"rules": "",
 					"revision": 1
 				},
 				"uses": {
@@ -955,7 +961,9 @@
 					"subtype": ""
 				},
 				"requirements": "",
-				"properties": [],
+				"properties": [
+					"trait"
+				],
 				"prerequisites": {
 					"level": null,
 					"items": [],
@@ -987,7 +995,7 @@
 					"page": "",
 					"license": "",
 					"revision": 1,
-					"rules": "2014"
+					"rules": ""
 				},
 				"quantity": 1,
 				"weight": {

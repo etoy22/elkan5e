@@ -6,7 +6,7 @@
 	"img": "icons/magic/holy/meditation-chi-focus-blue.webp",
 	"system": {
 		"description": {
-			"value": "<p>You have &amp;reference[advantage] on &amp;reference[strength] and &amp;reference[constitution] saving throws.</p>",
+			"value": "<p>You have &amp;reference[advantage] on &amp;reference[strength] and &amp;reference[constitution] &amp;reference[savingthrow]{saving throws}.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -26,7 +26,9 @@
 			"value": "subclass",
 			"subtype": ""
 		},
-		"properties": [],
+		"properties": [
+			"trait"
+		],
 		"requirements": "Paragon 14",
 		"identifier": "purity-of-body",
 		"activities": {},
@@ -59,23 +61,10 @@
 					"stackable": "noneName",
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
+					"specialDuration": [],
+					"disableCondition": "",
+					"expiryMode": "default",
+					"phaseStamped": true
 				}
 			},
 			"tint": "#ffffff",
@@ -84,16 +73,24 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.advantage.ability.save.str",
+						"key": "system.abilities.str.save.roll.mode",
+						"type": "add",
 						"value": 1,
+						"phase": "initial",
 						"priority": 20,
-						"type": "override"
+						"_id": "k9aAEGAyzic5SGlr",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
-						"key": "flags.midi-qol.advantage.ability.save.con",
+						"key": "system.abilities.con.save.roll.mode",
+						"type": "add",
 						"value": 1,
+						"phase": "initial",
 						"priority": 20,
-						"type": "override"
+						"_id": "bbaaa64h5YHbKgzg",
+						"conditions": "{}",
+						"replacement": ""
 					}
 				]
 			},

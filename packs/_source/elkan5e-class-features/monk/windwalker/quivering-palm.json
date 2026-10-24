@@ -24,22 +24,6 @@
 					"selfTargetAlways": false,
 					"dontApply": false,
 					"disableIncapacitated": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"nameOverride": "",
-					"customCheck": "",
-					"wallsBlock": "system"
 				}
 			},
 			"tint": "#ffffff",
@@ -50,7 +34,8 @@
 			"img": "icons/magic/symbols/rune-sigil-black-pink.webp",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
@@ -97,7 +82,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><span><strong>Once Per Turn</strong> </span>- 1 Creature - 24 Hours - @UUID[Compendium.elkan5e.elkan5e-class-features.Item.IXk7hfrAoVQU3dLJ]{3 Ki Points} - Magical</p><p>You gain the ability to set up lethal vibrations in someone's body. When you hit a creature with an @UUID[Compendium.elkan5e.elkan5e-class-features.Item.aaftAEUfyNoAbFS3]{unarmed strike}, you can spend 3 @UUID[Compendium.elkan5e.elkan5e-class-features.Item.IXk7hfrAoVQU3dLJ]{ki} points to start imperceptible vibrations, which last for 24 hours or until you use this ability again. The vibrations are harmless unless you use your action to amplify them.</p><p><span><strong>Action</strong> </span>- 1 Creature (1000 ft.) - Magical</p><p>The vibrations created by your Quivering Palm are harmless unless you use your action to amplify them. When you use this action, the vibrations end.</p><p><strong>[[/save con]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 10d10 thunder]] damage.</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul>",
+			"value": "<p><span><strong>Once Per Turn</strong> </span>- 1 Creature - 24 Hours - @UUID[Compendium.elkan5e.elkan5e-class-features.Item.IXk7hfrAoVQU3dLJ]{3 Ki Points} - Magical</p><p>You gain the ability to set up lethal vibrations in someone's body. When you hit a creature with an @UUID[Compendium.elkan5e.elkan5e-class-features.Item.pRDNsHpNLLk1Qq58]{unarmed strike}, you can spend 3 @UUID[Compendium.elkan5e.elkan5e-class-features.Item.IXk7hfrAoVQU3dLJ]{ki} points to start imperceptible vibrations, which last for 24 hours or until you use this ability again. The vibrations are harmless unless you use your action to amplify them.</p><p><span><strong>Action</strong> </span>- 1 Creature (1000 ft.) - Magical</p><p>The vibrations created by your Quivering Palm are harmless unless you use your action to amplify them. When you use this action, the vibrations end.</p><p><strong>[[/save con]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target takes [[/damage 10d10 thunder]] damage.</p></li><li><p><strong>Success:</strong> Half damage.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -201,7 +186,9 @@
 					]
 				},
 				"save": {
-					"ability": "con",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "wis",
 						"formula": ""

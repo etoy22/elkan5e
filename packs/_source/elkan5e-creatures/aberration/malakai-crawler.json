@@ -83,11 +83,13 @@
 				}
 			},
 			"movement": {
-				"burrow": 0,
-				"climb": 0,
-				"fly": 0,
-				"swim": 0,
-				"walk": 20,
+				"speeds": {
+					"walk": 20,
+					"burrow": 0,
+					"climb": 0,
+					"fly": 0,
+					"swim": 0
+				},
 				"units": "ft",
 				"hover": false
 			},
@@ -95,10 +97,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 60,
-				"blindsight": 0,
-				"tremorsense": 0,
-				"truesight": 0,
+				"ranges": {
+					"darkvision": 60,
+					"blindsight": 0,
+					"tremorsense": 0,
+					"truesight": 0
+				},
 				"units": "ft",
 				"special": ""
 			},
@@ -658,19 +662,6 @@
 							"stackable": "none",
 							"durationExpression": "",
 							"specialDuration": []
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"radius": null,
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false
 						}
 					},
 					"name": "Keen Sight and Hearing",
@@ -681,10 +672,10 @@
 					"system": {
 						"changes": [
 							{
-								"key": "flags.midi-qol.advantage.skill.prc",
-								"value": 1,
+								"key": "system.skills.prc.roll.mode",
+								"value": "1",
 								"priority": 20,
-								"type": "override"
+								"type": "add"
 							}
 						]
 					},
@@ -697,11 +688,11 @@
 			"folder": "l7f5m3qKNPTxwDpN",
 			"system": {
 				"description": {
-					"value": "<p>While this malakai have at least one other malakai drone nearby, they have advantage on perception checks. They can be blinded, but can effectively fight through the eyes of another malakai nearby, seeing everything they can see.<br></p><p>Note that when they have advantage on perception, their passive perception increases by 5. We have not marked them as immune to the blinded condition, but this isn't entirely true. A lone drone can be blinded, but if there are only two drones and one is blinded, they can both see what the unblinded one can see. They still suffer the normal effects of the blinded condition, but can use the perceptions of other malakai for perception checks.</p>",
+					"value": "<p>While this [[lookup @name lowercase]] has at least one other [[lookup @name lowercase]] drone nearby, it has Advantage on Perception checks. It can be &amp;reference[Blinded apply=false], but can effectively fight through the eyes of another [[lookup @name lowercase]] nearby, seeing everything they can see.</p><p><em>Note that when they have Advantage on Perception, their passive Perception increases by 5. We have not marked them as immune to the Blinded condition, but this isn't entirely true. A lone drone can be blinded, but if there are only two drones and one is blinded, they can both see what the unblinded one can see. They still suffer the normal effects of the Blinded condition, but can use the perceptions of other [[lookup @name lowercase]] for Perception checks.</em></p>",
 					"chat": ""
 				},
 				"source": {
-					"rules": "2014",
+					"rules": "",
 					"revision": 1,
 					"book": "Elkan 5e"
 				},
@@ -721,7 +712,9 @@
 				"prerequisites": {
 					"level": null
 				},
-				"properties": []
+				"properties": [
+					"trait"
+				]
 			},
 			"_key": "!actors.items!trzFb9QLrHcxqVTu.C8XbK9I4REwZF1Gk"
 		},
@@ -730,13 +723,13 @@
 			"type": "feat",
 			"system": {
 				"description": {
-					"value": "<p>Any effects targeting the mind of a Malakai is partially distributed among other Malakai drones, rendering them immune to the charmed and frightened conditions and giving them resistance to psychic damage. If a Malakai suffers an ongoing effect as a result of failing an intelligence, wisdom, or charisma saving throw, another malakai within 30 ft. or the local malakai commander can use their reaction to suffer the effect instead.</p>",
+					"value": "<p>Any effect targeting the mind of a [[lookup @name lowercase]] is partially distributed among other [[lookup @name lowercase]] drones, rendering them immune to the &amp;reference[Charmed apply=false] and &amp;reference[Frightened apply=false] conditions and giving them Resistance to Psychic damage.</p><p>If a [[lookup @name lowercase]] suffers an ongoing effect as a result of failing an Intelligence, Wisdom, or Charisma &amp;reference[savingthrow]{saving throw}, another [[lookup @name lowercase]] within 30 feet, or the local [[lookup @name lowercase]] commander, can take a Reaction to suffer the effect instead.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -754,7 +747,7 @@
 						"_id": "dnd5eactivity000",
 						"type": "utility",
 						"activation": {
-							"type": "reactionmanual",
+							"type": "reaction",
 							"value": 1,
 							"condition": "",
 							"override": false
@@ -812,7 +805,8 @@
 							"name": "",
 							"prompt": false,
 							"visible": false
-						}
+						},
+						"useConditionText": "false"
 					}
 				},
 				"identifier": "shared-mind",
@@ -834,7 +828,6 @@
 					"rollAttackPerTarget": "default",
 					"removeAttackDamageButtons": "default",
 					"itemCondition": "",
-					"reactionCondition": "",
 					"otherCondition": "",
 					"effectCondition": ""
 				},
@@ -868,7 +861,7 @@
 				"source": {
 					"custom": "Elkan 5e",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -1179,11 +1172,11 @@
 			"type": "feat",
 			"system": {
 				"description": {
-					"value": "<p><span>The [[lookup @name lowercase]] are vestiges of a greater entity. This entity can communicate through them if the [[lookup @name lowercase]] touches the person the entity wants to talk to. The [[lookup @name lowercase]] can communicate telepathically in any language listed on this drone. </span></p><br><p><span>The malakai are mentally connected by either this entity or a local commander, such as Emrys or Lorkul. They know the location of all other malakai controlled by the same commander, and share all their senses. </span></p>",
+					"value": "<p>The [[lookup @name lowercase]] are vestiges of a greater entity. This entity can communicate through them if the [[lookup @name lowercase]] touches the person the entity wants to talk to. The [[lookup @name lowercase]] can communicate telepathically in any language listed on this drone.</p><p>The [[lookup @name lowercase]] are mentally connected by either this entity or a local commander, such as Emrys or Lorkul. They know the location of all other [[lookup @name lowercase]] controlled by the same commander, and share all their senses.</p>",
 					"chat": ""
 				},
 				"source": {
-					"rules": "2014",
+					"rules": "",
 					"revision": 1,
 					"book": "Elkan 5e"
 				},
@@ -1203,7 +1196,9 @@
 				"prerequisites": {
 					"level": null
 				},
-				"properties": []
+				"properties": [
+					"trait"
+				]
 			},
 			"_id": "DXXDs6TQmW3VzzeA",
 			"img": "icons/commodities/biological/pustules-pink.webp",
@@ -1222,7 +1217,7 @@
 				"source": {
 					"custom": "Elkan 5e",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -1315,7 +1310,9 @@
 							]
 						},
 						"save": {
-							"ability": "con",
+							"ability": [
+								"con"
+							],
 							"dc": {
 								"calculation": "con",
 								"formula": ""
@@ -1390,7 +1387,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -1489,7 +1486,7 @@
 				"source": {
 					"custom": "Elkan 5e",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -1600,7 +1597,8 @@
 						},
 						"effects": [
 							{
-								"_id": "enPDOzVyGkAle0Tr"
+								"_id": "Uf37TKgoUKREMOTE",
+								"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkangrappled000"
 							}
 						],
 						"range": {
@@ -1662,70 +1660,7 @@
 			},
 			"_id": "nBbelgGzzgLmkAPa",
 			"img": "icons/commodities/biological/hand-clawed-tan.webp",
-			"effects": [
-				{
-					"origin": "Actor.vdgQuH6ZGXMLdm2S.Item.nBbelgGzzgLmkAPa",
-					"duration": {
-						"value": null,
-						"units": "seconds",
-						"expiry": null,
-						"expired": false
-					},
-					"disabled": false,
-					"name": "Grappled",
-					"_id": "enPDOzVyGkAle0Tr",
-					"description": "",
-					"transfer": false,
-					"statuses": [],
-					"flags": {
-						"dae": {
-							"selfTarget": false,
-							"selfTargetAlways": false,
-							"stackable": "noneName",
-							"durationExpression": "",
-							"macroRepeat": "none",
-							"specialDuration": [],
-							"enableCondition": "",
-							"disableCondition": "",
-							"disableIncapacitated": false,
-							"dontApply": false
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"nameOverride": "",
-							"customCheck": "",
-							"wallsBlock": "system"
-						}
-					},
-					"tint": "#ffffff",
-					"img": "modules/elkan5e/icons/conditions/grappled.svg",
-					"type": "base",
-					"system": {
-						"changes": [
-							{
-								"key": "macro.StatusEffect",
-								"value": "grappled",
-								"priority": 50,
-								"type": "custom"
-							}
-						]
-					},
-					"start": null,
-					"showIcon": 1,
-					"folder": null,
-					"_key": "!actors.items.effects!trzFb9QLrHcxqVTu.nBbelgGzzgLmkAPa.enPDOzVyGkAle0Tr"
-				}
-			],
+			"effects": [],
 			"folder": null,
 			"flags": {
 				"midi-qol": {
@@ -1782,7 +1717,7 @@
 				"source": {
 					"custom": "Elkan 5e",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -2033,19 +1968,6 @@
 					"specialDuration": [],
 					"transfer": true
 				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"radius": null,
-					"alignment": "",
-					"type": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false
-				},
 				"times-up": {
 					"isPassive": true
 				}
@@ -2058,10 +1980,10 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.advantage.skill.prc",
-						"value": 1,
+						"key": "system.skills.prc.roll.mode",
+						"value": "1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					}
 				]
 			},

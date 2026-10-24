@@ -149,7 +149,7 @@
 		"identifier": "barrier",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"page": "",
 			"custom": "https://www.elkan5e.com/spells/barrier",
@@ -189,7 +189,7 @@
 			},
 			"affects": {
 				"choice": false,
-				"type": ""
+				"type": "self"
 			}
 		}
 	},
@@ -206,11 +206,12 @@
 					{
 						"key": "system.traits.dr.value",
 						"type": "add",
-						"value": "ALL",
+						"value": "acid",
 						"phase": "final",
 						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -235,23 +236,6 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "All",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"start": null,
@@ -270,11 +254,12 @@
 					{
 						"key": "system.traits.dr.value",
 						"type": "add",
-						"value": "ALL",
+						"value": "cold",
 						"phase": "final",
 						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -299,23 +284,6 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "All",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"_id": "l2i9wELpo60rINnx",
@@ -335,11 +303,12 @@
 					{
 						"key": "system.traits.dr.value",
 						"type": "add",
-						"value": "ALL",
+						"value": "lightning",
 						"phase": "final",
 						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -364,23 +333,6 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "All",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"_id": "xNmIMvfz7tnOR7fM",
@@ -400,11 +352,12 @@
 					{
 						"key": "system.traits.dr.value",
 						"type": "add",
-						"value": "ALL",
+						"value": "fire",
 						"phase": "final",
 						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -429,23 +382,6 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "All",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"_id": "VCeilKbcJwMCJEZ1",
@@ -465,11 +401,12 @@
 					{
 						"key": "system.traits.dr.value",
 						"type": "add",
-						"value": "ALL",
+						"value": "thunder",
 						"phase": "final",
 						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -494,23 +431,6 @@
 					"macroRepeat": "none",
 					"specialDuration": [],
 					"expiryMode": "default"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "All",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"_id": "o5WI02jJuVFLAAPI",
@@ -530,11 +450,12 @@
 					{
 						"key": "system.traits.dr.custom",
 						"type": "custom",
-						"value": "spell",
+						"value": "nonMagicalPhysical",
 						"phase": "final",
 						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -557,28 +478,9 @@
 					"dontApply": false,
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": [
-						"None"
-					],
+					"specialDuration": [],
 					"expiryMode": "default",
 					"combatActorOverride": "source"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "All",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"_id": "lGsXYOo057qvTl3C",

@@ -465,11 +465,13 @@
 				"bonus": ""
 			},
 			"movement": {
-				"burrow": null,
-				"climb": null,
-				"fly": 60,
-				"swim": null,
-				"walk": 5,
+				"speeds": {
+					"walk": 5,
+					"burrow": null,
+					"climb": null,
+					"fly": 60,
+					"swim": null
+				},
 				"units": "ft",
 				"hover": false,
 				"ignoredDifficultTerrain": [],
@@ -479,10 +481,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 120,
-				"blindsight": null,
-				"tremorsense": null,
-				"truesight": null,
+				"ranges": {
+					"darkvision": 120,
+					"blindsight": null,
+					"tremorsense": null,
+					"truesight": null
+				},
 				"units": null,
 				"special": ""
 			},
@@ -582,7 +586,7 @@
 		},
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"license": "",
 			"page": "",
@@ -875,7 +879,7 @@
 				"identifier": "talons",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",
@@ -979,25 +983,9 @@
 							"disableIncapacitated": false,
 							"dontApply": false,
 							"macroRepeat": "none"
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"radius": "",
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false,
-							"nameOverride": "",
-							"customCheck": "",
-							"wallsBlock": "system"
 						}
 					},
-					"name": "Keen Hearing and Smell",
+					"name": "Keen Hearing and Sight",
 					"description": "",
 					"statuses": [],
 					"img": "icons/creatures/mammals/wolf-howl-moon-gray.webp",
@@ -1005,10 +993,10 @@
 					"system": {
 						"changes": [
 							{
-								"key": "flags.midi-qol.advantage.skill.prc",
-								"value": 1,
+								"key": "system.skills.prc.roll.mode",
+								"value": "1",
 								"priority": 20,
-								"type": "override"
+								"type": "add"
 							}
 						]
 					},
@@ -1069,7 +1057,9 @@
 					"subtype": ""
 				},
 				"requirements": "",
-				"properties": [],
+				"properties": [
+					"trait"
+				],
 				"identifier": "keen-hearing-and-sight",
 				"activities": {},
 				"enchant": {},

@@ -466,11 +466,13 @@
 				"bonus": ""
 			},
 			"movement": {
-				"burrow": null,
-				"climb": null,
-				"fly": null,
-				"swim": 90,
-				"walk": 30,
+				"speeds": {
+					"walk": 30,
+					"burrow": null,
+					"climb": null,
+					"fly": null,
+					"swim": 90
+				},
 				"units": null,
 				"hover": false,
 				"ignoredDifficultTerrain": []
@@ -479,10 +481,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 60,
-				"blindsight": null,
-				"tremorsense": null,
-				"truesight": null,
+				"ranges": {
+					"darkvision": 60,
+					"blindsight": null,
+					"tremorsense": null,
+					"truesight": null
+				},
 				"units": null,
 				"special": ""
 			},
@@ -586,7 +590,7 @@
 		},
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"license": ""
 		},
@@ -864,7 +868,7 @@
 				"identifier": "freeze",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -894,13 +898,13 @@
 					"system": {
 						"changes": [
 							{
-								"key": "system.attributes.movement.walk",
+								"key": "system.attributes.movement.speeds.walk",
 								"value": -20,
 								"priority": null,
 								"type": "add"
 							},
 							{
-								"key": "system.attributes.movement.swim",
+								"key": "system.attributes.movement.speeds.swim",
 								"value": -20,
 								"priority": null,
 								"type": "add"
@@ -916,7 +920,7 @@
 					},
 					"description": "<p>If the attacking creature takes Cold damage, its Speed decreases by 20 feet until the end of its next turn.</p>",
 					"tint": "#ffffff",
-					"transfer": true,
+					"transfer": false,
 					"statuses": [],
 					"start": {
 						"combat": null,
@@ -955,7 +959,7 @@
 				"identifier": "water-form",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -1097,7 +1101,7 @@
 				"identifier": "multiattack",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -1243,13 +1247,13 @@
 					"max": ""
 				},
 				"description": {
-					"value": "<p>[[/attack extended]]. [[/damage average extended]]. If the target is a Medium or smaller creature, it has the &amp;Reference[Prone] condition.</p>",
+					"value": "<p>[[/attack extended]]. [[/damage average extended]]. If the target is a Medium or smaller creature, it has the &amp;reference[Prone] condition.</p>",
 					"chat": ""
 				},
 				"identifier": "slam",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -1737,13 +1741,13 @@
 					"max": "1"
 				},
 				"description": {
-					"value": "<p><em>Strength Saving Throw:</em> DC [[lookup @save.dc.value activity=TQchFj2VXXJgU7Lq]], each [[lookup @target.affects.type activity=TQchFj2VXXJgU7Lq]] in the [[lookup @name lowercase]]'s space.</p><p><em>Failure:</em> [[/damage average activity=TQchFj2VXXJgU7Lq]] damage. If the target is a Large or smaller creature, it has the &amp;Reference[Grappled apply=false] condition (escape DC [[lookup @skills.ath.passive]]). Until the grapple ends, the target has the &amp;Reference[Restrained apply=false] condition, is &amp;Reference[suffocating]{suffocating} unless it can breathe water, and takes [[/damage average activity=khxVwH3AB0sx1qRG]] damage at the start of each of the [[lookup @name lowercase]]'s turns. The [[lookup @name lowercase]] can grapple one Large creature or up to two Medium or smaller creatures at a time with Whelm.</p><p>As an action, a creature within 5 feet of the [[lookup @name lowercase]] can pull a creature out of it by succeeding on a [[/check ath dc=@skills.ath.passive format=long]].</p><p><em>Success:</em> Half damage only.</p>",
+					"value": "<p><em>Strength &amp;reference[savingthrow]{Saving Throw}:</em> DC [[lookup @save.dc.value activity=TQchFj2VXXJgU7Lq]], each [[lookup @target.affects.type activity=TQchFj2VXXJgU7Lq]] in the [[lookup @name lowercase]]'s space.</p><p><em>Failure:</em> [[/damage average activity=TQchFj2VXXJgU7Lq]] damage. If the target is a Large or smaller creature, it has the &amp;reference[Grappled apply=false] condition (escape DC [[lookup @skills.ath.passive]]). Until the grapple ends, the target has the &amp;reference[Restrained apply=false] condition, is &amp;reference[suffocating]{suffocating} unless it can breathe water, and takes [[/damage average activity=khxVwH3AB0sx1qRG]] damage at the start of each of the [[lookup @name lowercase]]'s turns. The [[lookup @name lowercase]] can grapple one Large creature or up to two Medium or smaller creatures at a time with Whelm.</p><p>As an action, a creature within 5 feet of the [[lookup @name lowercase]] can pull a creature out of it by succeeding on a [[/check ath dc=@skills.ath.passive format=long]].</p><p><em>Success:</em> Half damage only.</p>",
 					"chat": ""
 				},
 				"identifier": "whelm",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -1769,7 +1773,22 @@
 					"_id": "rN76liiHkUoMRMJN",
 					"type": "base",
 					"system": {
-						"changes": []
+						"changes": [
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "grappled",
+								"phase": "final",
+								"priority": 20
+							},
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "restrained",
+								"phase": "final",
+								"priority": 20
+							}
+						]
 					},
 					"disabled": false,
 					"duration": {
@@ -1778,13 +1797,10 @@
 						"expiry": null,
 						"expired": false
 					},
-					"description": "<p>If the target is a Large or smaller creature, it has the &amp;Reference[Grappled apply=false] condition (see source item for the escape DC). Until the grapple ends, the target has the &amp;Reference[Restrained apply=false] condition, is &amp;Reference[Suffocating]{suffocating} unless it can breathe water, and takes damage (see source for damage) at the start of each of the attacking creature's turns.</p>",
+					"description": "<p>If the target is a Large or smaller creature, it has the &amp;reference[Grappled apply=false] condition (see source item for the escape DC). Until the grapple ends, the target has the &amp;reference[Restrained apply=false] condition, is &amp;reference[Suffocating]{suffocating} unless it can breathe water, and takes damage (see source for damage) at the start of each of the attacking creature's turns.</p>",
 					"tint": "#ffffff",
 					"transfer": false,
-					"statuses": [
-						"grappled",
-						"restrained"
-					],
+					"statuses": [],
 					"flags": {
 						"dae": {
 							"enableCondition": "",
@@ -1794,7 +1810,7 @@
 							"specialDuration": []
 						}
 					},
-					"showIcon": 2,
+					"showIcon": 0,
 					"start": null,
 					"folder": null,
 					"_key": "!actors.items.effects!LbbYdqIaHVe6ExsR.mmWhelm000000000.rN76liiHkUoMRMJN"

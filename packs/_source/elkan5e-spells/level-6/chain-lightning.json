@@ -131,11 +131,15 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
-					"override": false,
+					"affects": {
+						"type": "creature",
+						"count": "4"
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
+					"override": true,
 					"prompt": true
 				},
 				"damage": {
@@ -161,7 +165,9 @@
 					]
 				},
 				"save": {
-					"ability": "dex",
+					"ability": [
+						"dex"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""

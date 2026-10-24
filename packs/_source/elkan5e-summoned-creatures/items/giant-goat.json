@@ -465,11 +465,13 @@
 				"bonus": ""
 			},
 			"movement": {
-				"burrow": null,
-				"climb": 30,
-				"fly": null,
-				"swim": null,
-				"walk": 40,
+				"speeds": {
+					"walk": 40,
+					"burrow": null,
+					"climb": 30,
+					"fly": null,
+					"swim": null
+				},
 				"units": null,
 				"hover": false,
 				"ignoredDifficultTerrain": []
@@ -478,10 +480,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 60,
-				"blindsight": null,
-				"tremorsense": null,
-				"truesight": null,
+				"ranges": {
+					"darkvision": 60,
+					"blindsight": null,
+					"tremorsense": null,
+					"truesight": null
+				},
 				"units": null,
 				"special": ""
 			},
@@ -581,7 +585,7 @@
 		},
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"license": ""
 		},
@@ -871,7 +875,8 @@
 						},
 						"effects": [
 							{
-								"_id": "HUmtXTzr92ZaAvf3"
+								"_id": "n1Gk3nZ9ztREMOTE",
+								"uuid": "Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanprone000000"
 							}
 						],
 						"range": {
@@ -997,13 +1002,13 @@
 					"max": ""
 				},
 				"description": {
-					"value": "<p>[[/attack extended]]. [[/damage average extended]]. If the target is a [[lookup @target.affects.special activity=z58sUDUmqxECJgT3]] creature and the [[lookup @name lowercase]] moved 20+ feet straight toward it immediately before the hit, the target takes an extra [[/damage 2d4 bludgeoning average]] damage and has the &amp;Reference[Prone apply=false] condition.</p>",
+					"value": "<p>[[/attack extended]]. [[/damage average extended]]. If the target is a [[lookup @target.affects.special activity=z58sUDUmqxECJgT3]] creature and the [[lookup @name lowercase]] moved 20+ feet straight toward it immediately before the hit, the target takes an extra [[/damage 2d4 bludgeoning average]] damage and has the &amp;reference[Prone apply=false] condition.</p>",
 					"chat": ""
 				},
 				"identifier": "ram",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": ""
 				},
@@ -1077,35 +1082,7 @@
 			},
 			"folder": "pSCWWdqMX9eUATRJ",
 			"img": "icons/creatures/mammals/goat-horned-blue.webp",
-			"effects": [
-				{
-					"name": "Prone",
-					"img": "systems/dnd5e/icons/svg/statuses/prone.svg",
-					"origin": "Compendium.dnd-monster-manual.features.Item.mmRam00000000000",
-					"_id": "HUmtXTzr92ZaAvf3",
-					"type": "base",
-					"system": {
-						"changes": []
-					},
-					"disabled": false,
-					"duration": {
-						"value": null,
-						"units": "seconds",
-						"expiry": null,
-						"expired": false
-					},
-					"description": "<p>The target has the &amp;Reference[Prone apply=false] condition.</p>",
-					"tint": "#ffffff",
-					"transfer": false,
-					"statuses": [
-						"prone"
-					],
-					"showIcon": 2,
-					"start": null,
-					"folder": null,
-					"_key": "!actors.items.effects!ObKuBjpo43uNbOVy.mmRam00000000000.HUmtXTzr92ZaAvf3"
-				}
-			],
+			"effects": [],
 			"_key": "!actors.items!ObKuBjpo43uNbOVy.mmRam00000000000"
 		}
 	],

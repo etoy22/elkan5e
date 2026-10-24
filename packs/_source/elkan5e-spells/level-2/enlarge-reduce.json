@@ -29,23 +29,6 @@
 					"specialDuration": [],
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "Enemy",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"tint": "#ffffff",
@@ -54,37 +37,37 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.advantage.ability.save.str",
-						"value": 1,
+						"key": "system.abilities.str.save.roll.mode",
+						"value": "1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					},
 					{
-						"key": "flags.midi-qol.advantage.skill.ath",
-						"value": 1,
+						"key": "system.skills.ath.roll.mode",
+						"value": "1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					},
 					{
-						"key": "flags.midi-qol.disadvantage.skill.acr",
-						"value": 1,
+						"key": "system.skills.acr.roll.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					},
 					{
-						"key": "flags.midi-qol.disadvantage.skill.ste",
-						"value": 1,
+						"key": "system.skills.ste.roll.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					},
 					{
-						"key": "flags.midi-qol.disadvantage.skill.slt",
-						"value": 1,
+						"key": "system.skills.slt.roll.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					},
 					{
-						"key": "system.attributes.movement.walk",
+						"key": "system.attributes.movement.speeds.walk",
 						"value": 5,
 						"priority": 20,
 						"type": "add"
@@ -97,11 +80,18 @@
 					},
 					{
 						"key": "system.abilities.dex.save.roll.mode",
+						"value": -1,
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.traits.size",
 						"value": 1,
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
@@ -134,23 +124,6 @@
 					"specialDuration": [],
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "Enemy",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"tint": "#ffffff",
@@ -159,40 +132,40 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.disadvantage.ability.save.str",
-						"value": 1,
+						"key": "system.abilities.str.save.roll.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					},
 					{
-						"key": "flags.midi-qol.disadvantage.skill.ath",
-						"value": 1,
+						"key": "system.skills.ath.roll.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					},
 					{
-						"key": "flags.midi-qol.advantage.ability.save.dex",
-						"value": 1,
+						"key": "system.abilities.dex.save.roll.mode",
+						"value": "1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					},
 					{
-						"key": "flags.midi-qol.advantage.skill.acr",
-						"value": 1,
+						"key": "system.skills.acr.roll.mode",
+						"value": "1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					},
 					{
-						"key": "flags.midi-qol.advantage.skill.slt",
-						"value": 1,
+						"key": "system.skills.slt.roll.mode",
+						"value": "1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					},
 					{
-						"key": "flags.midi-qol.disadvantage.skill.ste",
-						"value": 1,
+						"key": "system.skills.ste.roll.mode",
+						"value": "-1",
 						"priority": 20,
-						"type": "override"
+						"type": "add"
 					},
 					{
 						"key": "system.attributes.capacity.creature",
@@ -201,12 +174,19 @@
 						"type": "multiply"
 					},
 					{
-						"key": "system.attributes.movement.walk",
+						"key": "system.attributes.movement.speeds.walk",
 						"value": -5,
 						"priority": 20,
 						"type": "add"
+					},
+					{
+						"key": "system.traits.size",
+						"value": -1,
+						"priority": 20,
+						"type": "add"
 					}
-				]
+				],
+				"magical": true
 			},
 			"start": null,
 			"showIcon": 1,
@@ -216,39 +196,8 @@
 	],
 	"folder": "6J3i75lfD1J0xYwA",
 	"flags": {
-		"dynamiceffects": {
-			"equipActive": true,
-			"alwaysActive": false,
-			"effects": [
-				{
-					"modSpecKey": "macro.execute",
-					"value": "EnlargeReduce @target",
-					"mode": "+",
-					"targetSpecific": false,
-					"id": 1,
-					"itemId": "l3i21wVEWMHVOXyj",
-					"active": true,
-					"_targets": [],
-					"label": "Macro Execute"
-				}
-			]
-		},
-		"dae": {
-			"activeEquipped": false,
-			"alwaysActive": false,
-			"macro": {
-				"name": "Enlarge/Reduce",
-				"img": "icons/magic/control/silhouette-grow-shrink-tan.webp",
-				"type": "script",
-				"scope": "global",
-				"command": "",
-				"author": "3Yi0HjF4PKCA4vX0",
-				"_id": null,
-				"folder": null
-			}
-		},
 		"midi-qol": {
-			"onUseMacroName": "[postActiveEffects]ActivityMacro-dnd5eactivity000,[postActiveEffects]ActivityMacro-bSof9ywHy23AsoJQ",
+			"onUseMacroName": "",
 			"effectActivation": false,
 			"itemCondition": "",
 			"reactionCondition": "",
@@ -281,7 +230,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>Holding a small amount of iron powder, you make either an expanding or compressing motion with your hands in the direction of your chosen creature. The creature and their apparel change size rapidly, their voice deepening or getting higher pitched as they do.</em></p><p>If the target is a creature, everything it is wearing and carrying changes size with it. Any item dropped by an affected creature returns to normal size at once.</p><p><strong>[[/save con]]{Constitution Save}</strong> </p><p>A willing creature automatically fails this saving throw as normal.</p><p><strong>Failure:</strong> The targets gain one of the following effects:</p><ul><li><p><strong>Enlarge:</strong> The target's size increases by one size category. If there isn't enough room for the target to double their size, the creature or object attains the maximum possible size in the space available. The target gains advantage on strength saves and strength skill checks but suffers disadvantage on dexterity saves and dexterity skill checks. If the target is a creature their speeds increase by 5 ft. and their carrying capacity is doubled.</p></li><li><p><strong>Reduce:</strong> The target's size decreases by one size category. The target gains advantage on dexterity saves and dexterity skill checks but suffers disadvantage on strength saves and strength skill checks. If the target is a creature their speeds decrease by 5 ft. and their carrying capacity is halved.</p></li></ul><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 2nd.</p>",
+			"value": "<p><em>Holding a small amount of iron powder, you make either an expanding or compressing motion with your hands in the direction of your chosen creature. The creature and their apparel change size rapidly, their voice deepening or getting higher pitched as they do.</em></p><p>If the target is a creature, everything it is wearing and carrying changes size with it. Any item dropped by an affected creature returns to normal size at once.</p><p><strong>[[/save con]]{Constitution Save}</strong> </p><p>A willing creature automatically fails this &amp;reference[savingthrow]{saving throw} as normal.</p><p><strong>Failure:</strong> The targets gain one of the following effects:</p><ul><li><p><strong>Enlarge:</strong> The target's size increases by one size category. If there isn't enough room for the target to double their size, the creature or object attains the maximum possible size in the space available. The target gains advantage on strength saves and strength skill checks but suffers disadvantage on dexterity saves and dexterity skill checks. If the target is a creature their speeds increase by 5 ft. and their carrying capacity is doubled.</p></li><li><p><strong>Reduce:</strong> The target's size decreases by one size category. The target gains advantage on dexterity saves and dexterity skill checks but suffers disadvantage on strength saves and strength skill checks. If the target is a creature their speeds decrease by 5 ft. and their carrying capacity is halved.</p></li></ul><p><strong>Upcasting:</strong> Target one additional creature for each spell level above 2nd.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -402,7 +351,9 @@
 					"parts": []
 				},
 				"save": {
-					"ability": "con",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -413,24 +364,6 @@
 				"appliedEffects": [
 					"1SHg1KCgSQvbyXVw"
 				],
-				"macroData": {
-					"name": "Save (Enlarge)",
-					"command": "return await elkan5e.macros.spells.enlarge(workflow);"
-				},
-				"flags": {
-					"dae": {
-						"macro": {
-							"name": "Save (Enlarge)",
-							"img": "systems/dnd5e/icons/svg/activity/save.svg",
-							"type": "script",
-							"scope": "global",
-							"command": "return await elkan5e.macros.spells.enlarge(workflow);",
-							"author": "vHqSHJMdmEO6Mk2C",
-							"_id": null,
-							"folder": null
-						}
-					}
-				},
 				"friendlySave": "friendlyFail",
 				"otherActivityId": "none",
 				"visibility": {
@@ -496,7 +429,9 @@
 					"parts": []
 				},
 				"save": {
-					"ability": "con",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -508,24 +443,6 @@
 				"appliedEffects": [
 					"hCTBIqpD4gHYtMiB"
 				],
-				"macroData": {
-					"name": "Save (Reduce)",
-					"command": "return await elkan5e.macros.spells.reduce(workflow);"
-				},
-				"flags": {
-					"dae": {
-						"macro": {
-							"name": "Save (Reduce)",
-							"img": "systems/dnd5e/icons/svg/activity/save.svg",
-							"type": "script",
-							"scope": "global",
-							"command": "return await elkan5e.macros.spells.reduce(workflow);",
-							"author": "vHqSHJMdmEO6Mk2C",
-							"_id": null,
-							"folder": null
-						}
-					}
-				},
 				"friendlySave": "friendlyFail",
 				"otherActivityId": "none"
 			}

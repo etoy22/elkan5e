@@ -5,11 +5,11 @@
 	"img": "icons/magic/control/buff-strength-muscle-damage.webp",
 	"system": {
 		"description": {
-			"value": "<ul><li><p>You gain proficiency in the &amp;reference[athletics] skills (or another skill if you already have it).</p></li><li><p>You also have advantage on saving throws against effects that could cause &amp;reference[Exhaustion apply=false].</p></li></ul>",
+			"value": "<ul><li><p>You gain proficiency in the &amp;reference[athletics] skills (or another skill if you already have it).</p></li><li><p>You also have advantage on &amp;reference[savingthrow]{saving throws} against effects that could cause &amp;reference[Exhaustion apply=false].</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
-			"custom": "elkan5e.com/ancestrybackground",
+			"custom": "elkan5e.com/background",
 			"rules": "",
 			"revision": 1,
 			"book": "Elkan 5e",
@@ -26,7 +26,9 @@
 			"subtype": ""
 		},
 		"requirements": "Laborer",
-		"properties": [],
+		"properties": [
+			"trait"
+		],
 		"identifier": "laborers-endurance",
 		"activities": {},
 		"enchant": {},
@@ -63,7 +65,7 @@
 				"changes": [
 					{
 						"key": "flags.midi-qol.advantage.ability.save.all",
-						"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"exhaustion\") || ef.flags?.dnd5e?.riders?.statuses?.includes(\"exhaustion\") || ef.name == 'Exhaustion')",
+						"value": "workflow?.item?.effects?.some(ef => ef.statuses?.has(\"exhaustion\") || ef.system?.rider?.statuses?.has(\"exhaustion\") || ef.name == 'Exhaustion')",
 						"priority": 20,
 						"type": "custom"
 					}
@@ -92,23 +94,6 @@
 					"durationExpression": "",
 					"macroRepeat": "none",
 					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
 			"start": null,

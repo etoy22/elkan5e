@@ -1,6 +1,8 @@
 import { chooseDefenderSkill, sizeIndex, isPushBlocked, hasPushResist } from "../../global.mjs";
 import { measureRangeDistance, t } from "../../shared/helpers.mjs";
+import { brutalFighting } from "../../classes/rogue.mjs";
 import { endAllGrapplesForActor } from "./grapple.mjs";
+import { contestedRoll, tokenForActor } from "../../shared/midi-compat.mjs";
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -163,56 +165,59 @@ const getPushDirections = (targetToken, sourcePoint, requireAway) => {
  * @param {Actor} actor
  * @param {string} title
  * @param {Array<{dx:number, dy:number, label:string}>} directions
- * @returns {Promise<{dx:number, dy:number, label:string}|null>}
+ * @returns {Promise<{dx:number, dy:number, label:string}|null>} Chosen direction, the first
+ * direction on close or without ownership, or null if no directions are available.
  */
 const chooseDirection = async (actor, title, directions) => {
 	const candidates = directions ?? [];
 	if (!candidates.length) return null;
 	if (!actor?.isOwner) return candidates[0];
-	return new Promise((resolve) => {
-		const options = candidates
-			.map(
-				(c, idx) => `
-					<label style="display:block; margin:0.25rem 0;">
-						<input type="radio" name="push-direction" value="${idx}" ${idx === 0 ? "checked" : ""}>
-						${c.label}
-					</label>
-				`,
-			)
-			.join("");
-		new DialogV2({
-			window: { title },
-			content: `
-				<form>
-					<div class="form-group">
-						<label style="display:block; margin-bottom:0.25rem;">${t("elkan5e.push.directionLabel")}</label>
-						<div id="push-direction">${options}</div>
-					</div>
-				</form>
+	const options = candidates
+		.map(
+			(c, idx) => `
+				<label style="display:block; margin:0.25rem 0;">
+					<input type="radio" name="push-direction" value="${idx}" ${idx === 0 ? "checked" : ""}>
+					${c.label}
+				</label>
 			`,
-			buttons: [
-				{
-					action: "ok",
-					label: t("elkan5e.push.dialogPush"),
-					callback: (_event, button) => {
-						const selected = button.form.querySelector(
-							'input[name="push-direction"]:checked',
-						);
-						const idx = Number(selected?.value ?? 0);
-						resolve(candidates[idx] ?? candidates[0]);
-					},
+		)
+		.join("");
+	// DialogV2.wait resolves null when closed via the X; fall back to the first direction
+	// so the push still resolves instead of hanging.
+	const result = await DialogV2.wait({
+		window: { title },
+		content: `
+			<form>
+				<div class="form-group">
+					<label style="display:block; margin-bottom:0.25rem;">${t("elkan5e.push.directionLabel")}</label>
+					<div id="push-direction">${options}</div>
+				</div>
+			</form>
+		`,
+		buttons: [
+			{
+				action: "ok",
+				label: t("elkan5e.push.dialogPush"),
+				default: true,
+				callback: (_event, button) => {
+					const selected = button.form.querySelector(
+						'input[name="push-direction"]:checked',
+					);
+					const idx = Number(selected?.value ?? 0);
+					return candidates[idx] ?? candidates[0];
 				},
-			],
-			default: "ok",
-		}).render(true);
+			},
+		],
+		rejectClose: false,
 	});
+	return result ?? candidates[0];
 };
 
 /**
  * Find the farthest unoccupied, in-bounds position along a direction.
  * @param {Token} targetToken
- * @param {Token} sourceToken
- * @param {number} distance
+ * @param {{x:number, y:number}} sourcePoint - Push origin in canvas pixels.
+ * @param {number} distance - Maximum push distance in scene units.
  * @param {{dx:number, dy:number}} dir
  * @param {boolean} requireAway
  * @returns {{x:number, y:number}|null}
@@ -220,7 +225,8 @@ const chooseDirection = async (actor, title, directions) => {
 const getFarthestValidPosition = (targetToken, sourcePoint, distance, dir, requireAway) => {
 	const stepCount = getStepCount(distance);
 	if (stepCount <= 0) return null;
-	const step = getGridStep(distance);
+	// One grid square per step; stepCount squares cover the full push distance.
+	const step = getGridStep(canvas.grid?.distance ?? 5);
 	const bounds = getSceneBounds();
 	const startDistance = measureRangeDistance(sourcePoint, targetToken.center);
 
@@ -313,7 +319,7 @@ export async function push(
 	skiped = false,
 ) {
 	if (!workflow?.actor) return;
-	const token = workflow.token ?? MidiQOL.tokenForActor(workflow.actor);
+	const token = workflow.token ?? tokenForActor(workflow.actor);
 	if (!token) {
 		ui.notifications.warn(
 			t("elkan5e.push.notifications.noToken", { name: workflow.actor.name }),
@@ -369,21 +375,7 @@ export async function push(
 		const pusherAdv = pusherSize > targetSize;
 		const targetAdv = targetSize > pusherSize || pushResist;
 
-		console.log("Elkan 5e | push contestedRoll", {
-			pusher: pusher.name,
-			target: targetActor.name,
-			pusherSize,
-			targetSize,
-			pusherAdv,
-			targetAdv,
-			pushResist,
-			sourceAbility: pusherSkillKey,
-			targetAbility: targetSkill,
-		});
-
-		const fastForward =
-			game.settings.get("midi-qol", "ConfigSettings")?.fastForwardAbility ?? false;
-		await MidiQOL.contestedRoll({
+		await contestedRoll({
 			source: {
 				token,
 				rollType: "skill",
@@ -397,10 +389,11 @@ export async function push(
 				rollOptions: { advantage: targetAdv },
 			},
 			flavor,
-			success: onSuccess.bind(null, token, targetToken),
+			success: async () => {
+				await onSuccess(token, targetToken);
+				await brutalFighting(workflow, targetToken, "shove");
+			},
 			displayResults: true,
-			itemCardId: workflow.itemCardId,
-			rollOptions: { fastForward, chatMessage: true, rollMode: "publicroll" },
 		});
 	}
 }

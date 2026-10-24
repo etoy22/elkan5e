@@ -3,12 +3,42 @@
  * Effects are stored in the elkan5e-effects compendium and can be created with custom options.
  */
 
+import { CONDITION_EFFECT_ID } from "../rules/condition/data.mjs";
+
+const CHANGE_TYPES = ["custom", "multiply", "add", "downgrade", "upgrade", "override"];
+
 /**
- * Create an active effect from the elkan5e-effects compendium and merge with custom options.
+ * Converts pre-v14 effect options (top-level `changes` with numeric `mode`, `icon`, `label`) to the
+ * current fields, so they replace the template's values instead of being dropped.
  *
- * @param {string} effectId - The ID or identifier of the effect template in the compendium
- * @param {Object} customOptions - Options to merge/override the template
- * @returns {Promise<Object>} The effect data ready to be created
+ * @param {Object} options - Effect options.
+ * @returns {Object} Options using `system.changes`, `img`, and `name`.
+ */
+function normalizeEffectOptions(options) {
+	const { changes, icon, label, ...rest } = options;
+	if (icon && !rest.img) rest.img = icon;
+	if (label && !rest.name) rest.name = label;
+	if (changes) {
+		rest.system = {
+			...(rest.system ?? {}),
+			changes: changes.map(({ mode, ...change }) => ({
+				...change,
+				type: change.type ?? CHANGE_TYPES[mode] ?? "add",
+			})),
+		};
+	}
+	return rest;
+}
+
+/**
+ * Builds effect data from a compendium template and merges normalized custom options.
+ * Uses a base effect when the template is missing or compendium loading fails; does not create
+ * a document.
+ *
+ * @param {string} effectId - Template ID, condition ID, identifier, or exact name.
+ * @param {Object} [customOptions={}] - Options to merge/override the template.
+ * @returns {Promise<Object>} Effect data without the template's `_id` or `_key`, unless overridden.
+ * @throws {Error} If option normalization or merging fails; compendium loading errors are caught.
  */
 export async function createEffect(effectId, customOptions = {}) {
 	// Get the base template from the test.json
@@ -48,11 +78,17 @@ export async function createEffect(effectId, customOptions = {}) {
 			// Get document by ID or identifier
 			let doc = await compendium.getDocument(effectId).catch(() => null);
 
-			// If not found by ID, try by name
+			// Condition ids (e.g. "incapacitated") resolve to the generated condition effects
+			doc ??= await compendium.getDocument(CONDITION_EFFECT_ID(effectId)).catch(() => null);
+
+			// If not found by ID, try by identifier or name
 			if (!doc) {
-				const index = await compendium.getIndex();
+				const index = await compendium.getIndex({ fields: ["system.identifier"] });
 				const foundEntry = index.find(
-					(entry) => entry.name === effectId || entry._id === effectId,
+					(entry) =>
+						entry.system?.identifier === effectId ||
+						entry.name === effectId ||
+						entry._id === effectId,
 				);
 				if (foundEntry) {
 					doc = await compendium.getDocument(foundEntry._id);
@@ -72,23 +108,11 @@ export async function createEffect(effectId, customOptions = {}) {
 	delete effectData._id;
 
 	// Merge custom options
-	effectData = foundry.utils.mergeObject(effectData, customOptions, { insertKeys: true });
+	effectData = foundry.utils.mergeObject(effectData, normalizeEffectOptions(customOptions), {
+		insertKeys: true,
+	});
 
 	return effectData;
-}
-
-/**
- * Create the Empty Body effect for monks.
- *
- * @param {Object} customOptions - Options to override the template
- * @returns {Promise<Object>} The effect data
- */
-export async function createEmptyBodyEffect(customOptions = {}) {
-	const defaultOptions = {
-		name: game.i18n.localize("elkan5e.monk.emptyBody"),
-		origin: "Item.xqRleciuHDZlYCl6",
-	};
-	return createEffect("empty-body", { ...defaultOptions, ...customOptions });
 }
 
 /**
@@ -111,7 +135,7 @@ export async function createGoodberryDurationEffect(
 		label: `${item.name} Duration (Level ${level})`,
 		icon: item.img,
 		origin: item.uuid,
-		duration: { value: 1, units: "hour" },
+		duration: { value: 1, units: "hours" },
 		changes: [],
 		flags: {
 			elkan5e: { goodberryItemId: linkedItemUuid },
@@ -128,7 +152,7 @@ export async function createGoodberryDurationEffect(
  */
 export async function createDelayedSurgeEffect(customOptions = {}) {
 	const defaultOptions = {
-		duration: { value: 1, units: "hour" },
+		duration: { value: 1, units: "hours" },
 		flags: {
 			dae: {
 				selfTarget: true,
@@ -137,101 +161,6 @@ export async function createDelayedSurgeEffect(customOptions = {}) {
 		},
 	};
 	return createEffect("delayed-surge", { ...defaultOptions, ...customOptions });
-}
-
-/**
- * Create the Barbarian Defense effect.
- *
- * @param {Object} actor - The actor to apply the effect to
- * @param {Array} changes - The effect changes
- * @param {Object} customOptions - Additional options
- * @returns {Promise<Object>} The effect data
- */
-export async function createBarbarianDefenseEffect(actor, changes = [], customOptions = {}) {
-	const defaultOptions = {
-		name: "Barbarian Defense Bonus",
-		icon: "icons/commodities/biological/shell-tan.webp",
-		origin: actor.uuid,
-		disabled: false,
-		changes,
-	};
-	return createEffect("barbarian-defense", { ...defaultOptions, ...customOptions });
-}
-
-/**
- * Create the Drained effect.
- *
- * @param {Object} actor - The actor to apply the effect to
- * @param {number} damage - The damage value
- * @param {string} name - The effect name
- * @param {string} img - The effect image
- * @param {string} uuid - The origin UUID
- * @returns {Promise<Object>} The effect data
- */
-export async function createDrainedEffect(
-	actor,
-	damage,
-	name = "Drained",
-	img = "modules/elkan5e/icons/drained.svg",
-	uuid = null,
-) {
-	const effectName = name;
-	const effectImg = img;
-	const effectOrigin = uuid || null;
-
-	const existingEffect = actor.effects.find(
-		(e) => e.name === effectName && e.img === effectImg && e.origin === effectOrigin,
-	);
-
-	const newValue = -Math.abs(damage); // Ensure negative number
-
-	if (existingEffect) {
-		const updatedChanges = existingEffect.changes.map((change) => {
-			if (change.key === "system.attributes.hp.tempmax") {
-				const oldVal = parseFloat(change.value) || 0;
-				const combinedValue = oldVal + newValue;
-
-				return {
-					...change,
-					value: combinedValue.toString(),
-				};
-			}
-			return change;
-		});
-
-		await existingEffect.update({ changes: updatedChanges });
-		return null; // Return null if we updated existing effect
-	}
-
-	const defaultOptions = {
-		name: effectName,
-		img: effectImg,
-		origin: effectOrigin,
-		changes: [
-			{
-				key: "system.attributes.hp.tempmax",
-				mode: 2,
-				value: newValue.toString(),
-				priority: 20,
-			},
-		],
-		disabled: false,
-		statuses: ["drained"],
-		flags: {
-			dae: {
-				enableCondition: "",
-				disableCondition: "",
-				disableIncapacitated: false,
-				selfTarget: false,
-				selfTargetAlways: false,
-				dontApply: false,
-				stackable: "multi",
-				showIcon: false,
-			},
-		},
-	};
-
-	return createEffect("drained", defaultOptions);
 }
 
 /**
@@ -293,11 +222,8 @@ export async function createGrappledEffect(
 
 export default {
 	createEffect,
-	createEmptyBodyEffect,
 	createGoodberryDurationEffect,
 	createDelayedSurgeEffect,
-	createBarbarianDefenseEffect,
-	createDrainedEffect,
 	createClimberEffect,
 	createGrappledEffect,
 };

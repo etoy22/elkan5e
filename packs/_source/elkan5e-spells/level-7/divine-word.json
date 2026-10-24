@@ -6,7 +6,7 @@
 	"folder": "H799nI2ov6BcHwd6",
 	"flags": {
 		"midi-qol": {
-			"onUseMacroName": "",
+			"onUseMacroName": "[postActiveEffects]ActivityMacro-bT6j5OqMNEpB9nbV",
 			"effectActivation": false,
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
@@ -37,7 +37,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><strong>[[/save CHA]]{Charisma Save}</strong></p><ul><li><p><strong>Failure:</strong> Affected creature suffers an effect based on its current hit points:</p><ul><li><p><strong>50 HP or fewer:</strong> &amp;reference[Deafened] for 1 minute.</p></li><li><p><strong>40 HP or fewer:</strong> &amp;reference[Deafened] and &amp;reference[Blinded] for 10 minutes.</p></li><li><p><strong>30 HP or fewer:</strong> &amp;reference[Blinded], &amp;reference[Deafened], and &amp;reference[Stunned] for 1 hour.</p></li><li><p><strong>20 HP or fewer:</strong> Killed instantly.</p></li><li><p>&amp;reference[Celestial], &amp;reference[Elemental], &amp;reference[Fey], or &amp;reference[Fiend] that fails its save is banished to its plane of origin (if not already there) and cannot return for 24 hours except by a <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.5e0swEflzMmSszQ0]{Wish}</em> spell.</p></li></ul></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"value": "<p><strong>[[/save CHA]]{Charisma Save}</strong></p><ul><li><p><strong>Failure:</strong> Affected creature suffers an effect based on its current hit points:</p><ul><li><p><strong>50 HP or fewer:</strong> &amp;reference[Deafened] for 1 minute.</p></li><li><p><strong>40 HP or fewer:</strong> Deafened and &amp;reference[Blinded] for 10 minutes.</p></li><li><p><strong>30 HP or fewer:</strong> Blinded, Deafened, and &amp;reference[Stunned] for 1 hour.</p></li><li><p><strong>20 HP or fewer:</strong> Killed instantly.</p></li><li><p>&amp;reference[Celestial], &amp;reference[Elemental], &amp;reference[Fey], or &amp;reference[Fiend] that fails its save is banished to its plane of origin (if not already there) and cannot return for 24 hours except by a <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.5e0swEflzMmSszQ0]{Wish}</em> spell.</p></li></ul></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -120,28 +120,19 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [
-					{
-						"_id": "ng33sfAG959luxm1",
-						"onSave": false
-					},
-					{
-						"_id": "WFygB4koHfaqBOiK",
-						"onSave": false
-					},
-					{
-						"_id": "QNru4BLkBqnn3uBB",
-						"onSave": false
-					}
-				],
+				"effects": [],
 				"range": {
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -150,7 +141,9 @@
 					"parts": []
 				},
 				"save": {
-					"ability": "cha",
+					"ability": [
+						"cha"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -160,7 +153,11 @@
 					"spent": 0,
 					"recovery": []
 				},
-				"_id": "bT6j5OqMNEpB9nbV"
+				"_id": "bT6j5OqMNEpB9nbV",
+				"macroData": {
+					"name": "Divine Word",
+					"command": "return await elkan5e.macros.spells.divineWord(workflow);"
+				}
 			}
 		},
 		"identifier": "divine-word"

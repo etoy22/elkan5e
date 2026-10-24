@@ -1,7 +1,7 @@
 {
 	"name": "Bullywug",
 	"type": "npc",
-	"img": null,
+	"img": "systems/dnd5e/icons/svg/actors/npc.svg",
 	"system": {
 		"currency": {
 			"pp": 0,
@@ -466,11 +466,13 @@
 				"bonus": ""
 			},
 			"movement": {
-				"burrow": null,
-				"climb": null,
-				"fly": null,
-				"swim": 30,
-				"walk": 25,
+				"speeds": {
+					"walk": 25,
+					"burrow": null,
+					"climb": null,
+					"fly": null,
+					"swim": 30
+				},
 				"units": "ft",
 				"hover": false,
 				"ignoredDifficultTerrain": [],
@@ -480,10 +482,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": null,
-				"blindsight": null,
-				"tremorsense": null,
-				"truesight": null,
+				"ranges": {
+					"darkvision": null,
+					"blindsight": null,
+					"tremorsense": null,
+					"truesight": null
+				},
 				"units": null,
 				"special": ""
 			},
@@ -581,7 +585,7 @@
 		},
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "Elkan 5e",
 			"license": "Unlicensed"
 		},
@@ -633,7 +637,7 @@
 		"width": 1,
 		"height": 1,
 		"texture": {
-			"src": null,
+			"src": "systems/dnd5e/icons/svg/actors/npc.svg",
 			"anchorX": 0.5,
 			"anchorY": 0.5,
 			"fit": "contain",
@@ -734,7 +738,7 @@
 							"type": "bonus",
 							"value": null,
 							"override": false,
-							"condition": "spending 10 feet of movement"
+							"condition": ""
 						},
 						"consumption": {
 							"scaling": {
@@ -756,7 +760,7 @@
 							"override": false,
 							"units": "ft",
 							"special": "",
-							"value": "30"
+							"value": "20"
 						},
 						"target": {
 							"template": {
@@ -847,7 +851,7 @@
 				"identifier": "leap",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "",
 					"page": "",
@@ -1162,7 +1166,7 @@
 				"identifier": "amphibious",
 				"source": {
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e",
 					"license": "Unlicensed"
 				},

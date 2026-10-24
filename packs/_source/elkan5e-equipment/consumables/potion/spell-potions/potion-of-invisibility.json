@@ -135,13 +135,13 @@
 			"max": "1"
 		},
 		"description": {
-			"value": "<p><strong>Action</strong> - 1 Creature (Touch) - 1 Hour - Consumed on Use</p><p><strong>Buff</strong></p><ul><li><p><span>The target becomes &amp;reference[Invisible] until the spell ends. Anything the target is wearing or carrying that is at least half their size or smaller is invisible as long as it is on the target's person. After the target makes an attack roll, deals damage, or casts a spell, the spell ends.</span></p></li></ul>",
+			"value": "<p><strong>Action</strong> - 1 Creature (Touch) - 1 Hour - Consumed on Use</p><p><strong>Buff</strong></p><ul><li><p><span>The target becomes &amp;reference[Invisible] until the spell ends. Anything the target is wearing or carrying that is at least half their size or smaller is invisible as long as it is on the target's person. After the target makes an &amp;reference[attackrolls]{attack roll}, deals damage, or casts a spell, the spell ends.</span></p></li></ul>",
 			"chat": ""
 		},
 		"identifier": "potion-of-invisibility",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "",
 			"license": "",
 			"page": "",
@@ -197,7 +197,16 @@
 			"_id": "tsRnLFf1HtqAPphv",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "invisible",
+						"phase": "final",
+						"priority": 20
+					}
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -208,9 +217,7 @@
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"statuses": [
-				"invisible"
-			],
+			"statuses": [],
 			"flags": {
 				"dae": {
 					"enableCondition": "",
@@ -226,26 +233,9 @@
 						"1Spell",
 						"1Attack"
 					]
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "All",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
 				}
 			},
-			"showIcon": 2,
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!tzoVup9uxxoNFPKR.tsRnLFf1HtqAPphv"

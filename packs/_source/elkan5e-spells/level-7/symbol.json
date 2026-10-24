@@ -2,7 +2,349 @@
 	"name": "Symbol",
 	"type": "spell",
 	"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
-	"effects": [],
+	"effects": [
+		{
+			"_id": "symbolEffDiscord",
+			"name": "Symbol [Discord]",
+			"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
+			"type": "base",
+			"transfer": false,
+			"disabled": false,
+			"duration": {
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "<p>Bickering: cannot communicate meaningfully.</p>",
+			"origin": null,
+			"statuses": [],
+			"tint": "#ffffff",
+			"showIcon": 1,
+			"start": null,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"stackable": "noneName",
+					"specialDuration": [],
+					"macroRepeat": "none",
+					"durationExpression": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"disableIncapacitated": false,
+					"enableCondition": "",
+					"disableCondition": ""
+				}
+			},
+			"system": {
+				"magical": true,
+				"changes": [
+					{
+						"key": "system.rolls.attack.mode",
+						"value": "-1",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.rolls.ability.check.mode",
+						"value": "-1",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.rolls.ability.skill.mode",
+						"value": "-1",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"_key": "!items.effects!BMJBThELhlLMiJ1e.symbolEffDiscord"
+		},
+		{
+			"_id": "symbolEffFear000",
+			"name": "Symbol [Fear]",
+			"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
+			"type": "base",
+			"transfer": false,
+			"disabled": false,
+			"duration": {
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "",
+			"origin": null,
+			"statuses": [],
+			"tint": "#ffffff",
+			"showIcon": 0,
+			"start": null,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"stackable": "noneName",
+					"specialDuration": [],
+					"macroRepeat": "none",
+					"durationExpression": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"disableIncapacitated": false,
+					"enableCondition": "",
+					"disableCondition": ""
+				}
+			},
+			"system": {
+				"magical": true,
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "frightened",
+						"phase": "final",
+						"priority": 20
+					}
+				]
+			},
+			"_key": "!items.effects!BMJBThELhlLMiJ1e.symbolEffFear000"
+		},
+		{
+			"_id": "symbolEffHopeles",
+			"name": "Symbol [Hopelessness]",
+			"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
+			"type": "base",
+			"transfer": false,
+			"disabled": false,
+			"duration": {
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "<p>Overwhelmed with despair: cannot attack or use harmful actions, spells, or effects.</p>",
+			"origin": null,
+			"statuses": [],
+			"tint": "#ffffff",
+			"showIcon": 1,
+			"start": null,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"stackable": "noneName",
+					"specialDuration": [],
+					"macroRepeat": "none",
+					"durationExpression": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"disableIncapacitated": false,
+					"enableCondition": "",
+					"disableCondition": ""
+				}
+			},
+			"system": {
+				"magical": true,
+				"changes": []
+			},
+			"_key": "!items.effects!BMJBThELhlLMiJ1e.symbolEffHopeles"
+		},
+		{
+			"_id": "symbolEffInsanit",
+			"name": "Symbol [Insanity]",
+			"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
+			"type": "base",
+			"transfer": false,
+			"disabled": false,
+			"duration": {
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "<p>Insane: cannot act or understand language, and speaks only gibberish. The GM controls its movement.</p>",
+			"origin": null,
+			"statuses": [],
+			"tint": "#ffffff",
+			"showIcon": 0,
+			"start": null,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"stackable": "noneName",
+					"specialDuration": [],
+					"macroRepeat": "none",
+					"durationExpression": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"disableIncapacitated": false,
+					"enableCondition": "",
+					"disableCondition": ""
+				}
+			},
+			"system": {
+				"magical": true,
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "incapacitated",
+						"phase": "final",
+						"priority": 20
+					}
+				]
+			},
+			"_key": "!items.effects!BMJBThELhlLMiJ1e.symbolEffInsanit"
+		},
+		{
+			"_id": "symbolEffPain000",
+			"name": "Symbol [Pain]",
+			"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
+			"type": "base",
+			"transfer": false,
+			"disabled": false,
+			"duration": {
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "",
+			"origin": null,
+			"statuses": [],
+			"tint": "#ffffff",
+			"showIcon": 0,
+			"start": null,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"stackable": "noneName",
+					"specialDuration": [],
+					"macroRepeat": "none",
+					"durationExpression": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"disableIncapacitated": false,
+					"enableCondition": "",
+					"disableCondition": ""
+				}
+			},
+			"system": {
+				"magical": true,
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "incapacitated",
+						"phase": "final",
+						"priority": 20
+					}
+				]
+			},
+			"_key": "!items.effects!BMJBThELhlLMiJ1e.symbolEffPain000"
+		},
+		{
+			"_id": "symbolEffSleep00",
+			"name": "Symbol [Sleep]",
+			"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
+			"type": "base",
+			"transfer": false,
+			"disabled": false,
+			"duration": {
+				"value": 600,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "",
+			"origin": null,
+			"statuses": [],
+			"tint": "#ffffff",
+			"showIcon": 0,
+			"start": null,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"stackable": "noneName",
+					"specialDuration": [
+						"isDamaged"
+					],
+					"macroRepeat": "none",
+					"durationExpression": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"disableIncapacitated": false,
+					"enableCondition": "",
+					"disableCondition": ""
+				}
+			},
+			"system": {
+				"magical": true,
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "unconscious",
+						"phase": "final",
+						"priority": 20
+					}
+				]
+			},
+			"_key": "!items.effects!BMJBThELhlLMiJ1e.symbolEffSleep00"
+		},
+		{
+			"_id": "symbolEffStunnin",
+			"name": "Symbol [Stunning]",
+			"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
+			"type": "base",
+			"transfer": false,
+			"disabled": false,
+			"duration": {
+				"value": 60,
+				"units": "seconds",
+				"expiry": "turnStart",
+				"expired": false
+			},
+			"description": "",
+			"origin": null,
+			"statuses": [],
+			"tint": "#ffffff",
+			"showIcon": 0,
+			"start": null,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"stackable": "noneName",
+					"specialDuration": [],
+					"macroRepeat": "none",
+					"durationExpression": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"disableIncapacitated": false,
+					"enableCondition": "",
+					"disableCondition": ""
+				}
+			},
+			"system": {
+				"magical": true,
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "stunned",
+						"phase": "final",
+						"priority": 20
+					}
+				]
+			},
+			"_key": "!items.effects!BMJBThELhlLMiJ1e.symbolEffStunnin"
+		}
+	],
 	"folder": "H799nI2ov6BcHwd6",
 	"flags": {
 		"midi-qol": {
@@ -40,7 +382,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><strong>Materials:</strong> You require mercury, phosphorus, and powdered diamond and opal worth at least 1,000 gp, which the spell consumes.</p><p><br /><strong>Utility</strong></p><ul><li><p>You inscribe a harmful glyph on a surface (up to 10 ft. in diameter) or inside an object that can be closed to conceal it. If the inscribed object is moved more than 10 ft. from where you cast the spell, the glyph breaks and the spell ends without triggering.</p></li><li><p>The glyph is nearly invisible. A creature must succeed on an &amp;reference[Investigation] check against your spell save DC to notice it.</p></li><li><p>You decide the trigger when casting the spell (touching, stepping on, opening, moving within range, seeing, reading, etc.). Triggers can be refined by physical traits (size, weight, type) or by conditions such as passwords. You may also exclude certain creatures from triggering it.</p></li><li><p>Once triggered, the glyph glows, filling a 60 ft. radius sphere with dim light for 10 minutes. Each creature in the area when it activates, or that enters it for the first time on a turn or ends its turn there (but not both), is affected by the chosen effect.</p></li><li><p>Choose one of the options below for its effect.</p></li></ul><p><strong>Effects</strong> - 60 ft Radius</p><p><em>Trigger: Set the trigger to occur.</em></p><ul><li><p><strong>Death:</strong> [[/save CON]] Failure, target takes [[/damage 10d10 necrotic]] damage; success Half damage.</p></li><li><p><strong>Discord:</strong> [[/save CON]] Failure, target bickers for 1 minute, cannot communicate meaningfully, and has Disadvantage on attack rolls and ability checks.</p></li><li><p><strong>Fear:</strong> [[/save WIS]] Failure, target is &amp;reference[Frightened] for 1 minute, drops held items, and must move at least 30 ft. away each turn if able.</p></li><li><p><strong>Hopelessness:</strong> [[/save CHA]] Failure, target is overwhelmed with despair for 1 minute and cannot attack or use harmful actions, spells, or effects.</p></li><li><p><strong>Insanity:</strong> [[/save INT]] Failure, target is insane for 1 minute, cannot act or understand language, and speaks only gibberish. The DM controls its erratic movement.</p></li><li><p><strong>Pain:</strong> [[/save CON]] Failure, target is &amp;reference[Incapacitated] with excruciating pain for 1 minute.</p></li><li><p><strong>Sleep:</strong> [[/save WIS]] Failure, target falls &amp;reference[Unconscious] for 10 minutes. The creature wakes if it takes damage or if shaken awake as an Action.</p></li><li><p><strong>Stunning:</strong> [[/save WIS]] Failure, target is &amp;reference[Stunned] for 1 minute.</p></li></ul>",
+			"value": "<p><strong>Materials:</strong> You require mercury, phosphorus, and powdered diamond and opal worth at least 1,000 gp, which the spell consumes.</p><p><br /><strong>Utility</strong></p><ul><li><p>You inscribe a harmful glyph on a surface (up to 10 ft. in diameter) or inside an object that can be closed to conceal it. If the inscribed object is moved more than 10 ft. from where you cast the spell, the glyph breaks and the spell ends without triggering.</p></li><li><p>The glyph is nearly &amp;reference[invisible apply=false]{invisible}. A creature must succeed on an &amp;reference[Investigation] check against your spell save DC to notice it.</p></li><li><p>You decide the trigger when casting the spell (touching, stepping on, opening, moving within range, seeing, reading, etc.). Triggers can be refined by physical traits (size, weight, type) or by conditions such as passwords. You may also exclude certain creatures from triggering it.</p></li><li><p>Once triggered, the glyph glows, filling a 60 ft. radius sphere with dim light for 10 minutes. Each creature in the area when it activates, or that enters it for the first time on a turn or ends its turn there (but not both), is affected by the chosen effect.</p></li><li><p>Choose one of the options below for its effect.</p></li></ul><p><strong>Effects</strong> - 60 ft Radius</p><p><em>Trigger: Set the trigger to occur.</em></p><ul><li><p><strong>Death:</strong> [[/save CON]] Failure, target takes [[/damage 10d10 necrotic]] damage; success Half damage.</p></li><li><p><strong>Discord:</strong> [[/save CON]] Failure, target bickers for 1 minute, cannot communicate meaningfully, and has Disadvantage on &amp;reference[attackrolls]{attack rolls} and &amp;reference[abilitycheck]{ability checks}.</p></li><li><p><strong>Fear:</strong> [[/save WIS]] Failure, target is &amp;reference[Frightened] for 1 minute, drops held items, and must move at least 30 ft. away each turn if able.</p></li><li><p><strong>Hopelessness:</strong> [[/save CHA]] Failure, target is overwhelmed with despair for 1 minute and cannot attack or use harmful actions, spells, or effects.</p></li><li><p><strong>Insanity:</strong> [[/save INT]] Failure, target is insane for 1 minute, cannot act or understand language, and speaks only gibberish. The DM controls its erratic movement.</p></li><li><p><strong>Pain:</strong> [[/save CON]] Failure, target is &amp;reference[Incapacitated] with excruciating pain for 1 minute.</p></li><li><p><strong>Sleep:</strong> [[/save WIS]] Failure, target falls &amp;reference[Unconscious] for 10 minutes. The creature wakes if it takes damage or if shaken awake as an Action.</p></li><li><p><strong>Stunning:</strong> [[/save WIS]] Failure, target is &amp;reference[Stunned] for 1 minute.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -100,12 +442,16 @@
 			"material"
 		],
 		"activities": {
-			"REQTK04snsXtNfu5": {
-				"type": "save",
+			"symbolInscribe01": {
+				"_id": "symbolInscribe01",
+				"type": "utility",
+				"name": "Inscribe Symbol",
+				"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
 				"activation": {
-					"type": "action",
-					"value": null,
-					"override": false
+					"type": "minute",
+					"value": 1,
+					"condition": "",
+					"override": true
 				},
 				"consumption": {
 					"targets": [],
@@ -119,38 +465,82 @@
 					"chatFlavor": ""
 				},
 				"duration": {
-					"units": "inst",
+					"units": "perm",
 					"concentration": false,
-					"override": false
+					"override": true
 				},
-				"effects": [
-					{
-						"_id": "ydHIFthrNnlBuOyx",
-						"onSave": false
-					},
-					{
-						"_id": "pSwauN9UZrF8WPMt",
-						"onSave": false
-					},
-					{
-						"_id": "yNP9RLi4ym3s5Hrl",
-						"onSave": false
-					},
-					{
-						"_id": "J8f0JYFInPaKpnMC",
-						"onSave": false
-					}
-				],
+				"effects": [],
 				"range": {
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "",
+						"count": ""
+					},
+					"template": {
+						"units": "ft",
+						"contiguous": false
+					},
 					"override": false,
-					"prompt": true
+					"prompt": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"roll": {
+					"prompt": false,
+					"visible": false,
+					"name": "",
+					"formula": ""
+				}
+			},
+			"symTrigDeath0000": {
+				"_id": "symTrigDeath0000",
+				"type": "save",
+				"name": "Trigger: Death",
+				"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
+				"activation": {
+					"type": "special",
+					"value": null,
+					"condition": "When the glyph is triggered",
+					"override": true
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"save": {
+					"ability": [
+						"con"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
 				},
 				"damage": {
 					"onSave": "half",
@@ -174,18 +564,1450 @@
 						}
 					]
 				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"target": {
+					"affects": {
+						"type": "creature",
+						"count": ""
+					},
+					"template": {
+						"type": "sphere",
+						"size": "60",
+						"units": "ft",
+						"count": "",
+						"contiguous": false
+					},
+					"override": true,
+					"prompt": true
+				},
+				"regionBehavior": {
+					"attachToken": "default",
+					"enabled": true,
+					"dispositionFilter": 0,
+					"excludeSource": false,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "symbolDeathEnter"
+						},
+						{
+							"trigger": "turnEnd",
+							"action": "useActivity",
+							"targetId": "symbolDeathEnter"
+						}
+					]
+				},
+				"midiProperties": {
+					"identifier": "symbolDeath"
+				}
+			},
+			"symEnterDeath000": {
+				"_id": "symEnterDeath000",
+				"type": "save",
+				"name": "Death (Entering)",
+				"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
+				"activation": {
+					"type": "",
+					"value": null,
+					"condition": "",
+					"override": true
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [],
+				"range": {
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
 				"save": {
-					"ability": "con",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
 					}
 				},
+				"damage": {
+					"onSave": "half",
+					"parts": [
+						{
+							"number": 10,
+							"denomination": 10,
+							"bonus": "",
+							"types": [
+								"necrotic"
+							],
+							"custom": {
+								"enabled": false,
+								"formula": ""
+							},
+							"scaling": {
+								"mode": "",
+								"number": null,
+								"formula": ""
+							}
+						}
+					]
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"type": "",
+						"units": "ft",
+						"stationary": false
+					},
+					"affects": {
+						"type": "self"
+					},
+					"override": true
+				},
+				"midiProperties": {
+					"identifier": "symbolDeathEnter",
+					"automationOnly": true,
+					"confirmTargets": "never"
+				},
+				"isOverTimeFlag": true,
+				"overTimeProperties": {
+					"turnChoice": "end",
+					"saveRemoves": false
+				}
+			},
+			"symTrigDiscord00": {
+				"_id": "symTrigDiscord00",
+				"type": "save",
+				"name": "Trigger: Discord",
+				"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
+				"activation": {
+					"type": "special",
+					"value": null,
+					"condition": "When the glyph is triggered",
+					"override": true
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [
+					{
+						"_id": "symbolEffDiscord",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
 				"uses": {
 					"spent": 0,
+					"max": "",
 					"recovery": []
 				},
-				"_id": "REQTK04snsXtNfu5"
+				"save": {
+					"ability": [
+						"con"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"damage": {
+					"onSave": "none",
+					"parts": []
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"target": {
+					"affects": {
+						"type": "creature",
+						"count": ""
+					},
+					"template": {
+						"type": "sphere",
+						"size": "60",
+						"units": "ft",
+						"count": "",
+						"contiguous": false
+					},
+					"override": true,
+					"prompt": true
+				},
+				"regionBehavior": {
+					"attachToken": "default",
+					"enabled": true,
+					"dispositionFilter": 0,
+					"excludeSource": false,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "symbolDiscordEnter"
+						},
+						{
+							"trigger": "turnEnd",
+							"action": "useActivity",
+							"targetId": "symbolDiscordEnter"
+						}
+					]
+				},
+				"midiProperties": {
+					"identifier": "symbolDiscord"
+				},
+				"effectConditionText": ""
+			},
+			"symEnterDiscord0": {
+				"_id": "symEnterDiscord0",
+				"type": "save",
+				"name": "Discord (Entering)",
+				"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
+				"activation": {
+					"type": "",
+					"value": null,
+					"condition": "",
+					"override": true
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [
+					{
+						"_id": "symbolEffDiscord",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"save": {
+					"ability": [
+						"con"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"damage": {
+					"onSave": "none",
+					"parts": []
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"type": "",
+						"units": "ft",
+						"stationary": false
+					},
+					"affects": {
+						"type": "self"
+					},
+					"override": true
+				},
+				"midiProperties": {
+					"identifier": "symbolDiscordEnter",
+					"automationOnly": true,
+					"confirmTargets": "never"
+				},
+				"isOverTimeFlag": true,
+				"overTimeProperties": {
+					"turnChoice": "end",
+					"saveRemoves": false
+				},
+				"effectConditionText": ""
+			},
+			"symTrigFear00000": {
+				"_id": "symTrigFear00000",
+				"type": "save",
+				"name": "Trigger: Fear",
+				"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
+				"activation": {
+					"type": "special",
+					"value": null,
+					"condition": "When the glyph is triggered",
+					"override": true
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [
+					{
+						"_id": "symbolEffFear000",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"save": {
+					"ability": [
+						"wis"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"damage": {
+					"onSave": "none",
+					"parts": []
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"target": {
+					"affects": {
+						"type": "creature",
+						"count": ""
+					},
+					"template": {
+						"type": "sphere",
+						"size": "60",
+						"units": "ft",
+						"count": "",
+						"contiguous": false
+					},
+					"override": true,
+					"prompt": true
+				},
+				"regionBehavior": {
+					"attachToken": "default",
+					"enabled": true,
+					"dispositionFilter": 0,
+					"excludeSource": false,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "symbolFearEnter"
+						},
+						{
+							"trigger": "turnEnd",
+							"action": "useActivity",
+							"targetId": "symbolFearEnter"
+						}
+					]
+				},
+				"midiProperties": {
+					"identifier": "symbolFear"
+				},
+				"effectConditionText": "!target.traits.ci.value.has('frightened')"
+			},
+			"symEnterFear0000": {
+				"_id": "symEnterFear0000",
+				"type": "save",
+				"name": "Fear (Entering)",
+				"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
+				"activation": {
+					"type": "",
+					"value": null,
+					"condition": "",
+					"override": true
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [
+					{
+						"_id": "symbolEffFear000",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"save": {
+					"ability": [
+						"wis"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"damage": {
+					"onSave": "none",
+					"parts": []
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"type": "",
+						"units": "ft",
+						"stationary": false
+					},
+					"affects": {
+						"type": "self"
+					},
+					"override": true
+				},
+				"midiProperties": {
+					"identifier": "symbolFearEnter",
+					"automationOnly": true,
+					"confirmTargets": "never"
+				},
+				"isOverTimeFlag": true,
+				"overTimeProperties": {
+					"turnChoice": "end",
+					"saveRemoves": false
+				},
+				"effectConditionText": "!target.traits.ci.value.has('frightened')"
+			},
+			"symTrigHopelessn": {
+				"_id": "symTrigHopelessn",
+				"type": "save",
+				"name": "Trigger: Hopelessness",
+				"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
+				"activation": {
+					"type": "special",
+					"value": null,
+					"condition": "When the glyph is triggered",
+					"override": true
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [
+					{
+						"_id": "symbolEffHopeles",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"save": {
+					"ability": [
+						"cha"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"damage": {
+					"onSave": "none",
+					"parts": []
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"target": {
+					"affects": {
+						"type": "creature",
+						"count": ""
+					},
+					"template": {
+						"type": "sphere",
+						"size": "60",
+						"units": "ft",
+						"count": "",
+						"contiguous": false
+					},
+					"override": true,
+					"prompt": true
+				},
+				"regionBehavior": {
+					"attachToken": "default",
+					"enabled": true,
+					"dispositionFilter": 0,
+					"excludeSource": false,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "symbolHopelessnessEnter"
+						},
+						{
+							"trigger": "turnEnd",
+							"action": "useActivity",
+							"targetId": "symbolHopelessnessEnter"
+						}
+					]
+				},
+				"midiProperties": {
+					"identifier": "symbolHopelessness"
+				},
+				"effectConditionText": ""
+			},
+			"symEnterHopeless": {
+				"_id": "symEnterHopeless",
+				"type": "save",
+				"name": "Hopelessness (Entering)",
+				"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
+				"activation": {
+					"type": "",
+					"value": null,
+					"condition": "",
+					"override": true
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [
+					{
+						"_id": "symbolEffHopeles",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"save": {
+					"ability": [
+						"cha"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"damage": {
+					"onSave": "none",
+					"parts": []
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"type": "",
+						"units": "ft",
+						"stationary": false
+					},
+					"affects": {
+						"type": "self"
+					},
+					"override": true
+				},
+				"midiProperties": {
+					"identifier": "symbolHopelessnessEnter",
+					"automationOnly": true,
+					"confirmTargets": "never"
+				},
+				"isOverTimeFlag": true,
+				"overTimeProperties": {
+					"turnChoice": "end",
+					"saveRemoves": false
+				},
+				"effectConditionText": ""
+			},
+			"symTrigInsanity0": {
+				"_id": "symTrigInsanity0",
+				"type": "save",
+				"name": "Trigger: Insanity",
+				"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
+				"activation": {
+					"type": "special",
+					"value": null,
+					"condition": "When the glyph is triggered",
+					"override": true
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [
+					{
+						"_id": "symbolEffInsanit",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"save": {
+					"ability": [
+						"int"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"damage": {
+					"onSave": "none",
+					"parts": []
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"target": {
+					"affects": {
+						"type": "creature",
+						"count": ""
+					},
+					"template": {
+						"type": "sphere",
+						"size": "60",
+						"units": "ft",
+						"count": "",
+						"contiguous": false
+					},
+					"override": true,
+					"prompt": true
+				},
+				"regionBehavior": {
+					"attachToken": "default",
+					"enabled": true,
+					"dispositionFilter": 0,
+					"excludeSource": false,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "symbolInsanityEnter"
+						},
+						{
+							"trigger": "turnEnd",
+							"action": "useActivity",
+							"targetId": "symbolInsanityEnter"
+						}
+					]
+				},
+				"midiProperties": {
+					"identifier": "symbolInsanity"
+				},
+				"effectConditionText": "!target.traits.ci.value.has('incapacitated')"
+			},
+			"symEnterInsanity": {
+				"_id": "symEnterInsanity",
+				"type": "save",
+				"name": "Insanity (Entering)",
+				"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
+				"activation": {
+					"type": "",
+					"value": null,
+					"condition": "",
+					"override": true
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [
+					{
+						"_id": "symbolEffInsanit",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"save": {
+					"ability": [
+						"int"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"damage": {
+					"onSave": "none",
+					"parts": []
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"type": "",
+						"units": "ft",
+						"stationary": false
+					},
+					"affects": {
+						"type": "self"
+					},
+					"override": true
+				},
+				"midiProperties": {
+					"identifier": "symbolInsanityEnter",
+					"automationOnly": true,
+					"confirmTargets": "never"
+				},
+				"isOverTimeFlag": true,
+				"overTimeProperties": {
+					"turnChoice": "end",
+					"saveRemoves": false
+				},
+				"effectConditionText": "!target.traits.ci.value.has('incapacitated')"
+			},
+			"symTrigPain00000": {
+				"_id": "symTrigPain00000",
+				"type": "save",
+				"name": "Trigger: Pain",
+				"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
+				"activation": {
+					"type": "special",
+					"value": null,
+					"condition": "When the glyph is triggered",
+					"override": true
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [
+					{
+						"_id": "symbolEffPain000",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"save": {
+					"ability": [
+						"con"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"damage": {
+					"onSave": "none",
+					"parts": []
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"target": {
+					"affects": {
+						"type": "creature",
+						"count": ""
+					},
+					"template": {
+						"type": "sphere",
+						"size": "60",
+						"units": "ft",
+						"count": "",
+						"contiguous": false
+					},
+					"override": true,
+					"prompt": true
+				},
+				"regionBehavior": {
+					"attachToken": "default",
+					"enabled": true,
+					"dispositionFilter": 0,
+					"excludeSource": false,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "symbolPainEnter"
+						},
+						{
+							"trigger": "turnEnd",
+							"action": "useActivity",
+							"targetId": "symbolPainEnter"
+						}
+					]
+				},
+				"midiProperties": {
+					"identifier": "symbolPain"
+				},
+				"effectConditionText": "!target.traits.ci.value.has('incapacitated')"
+			},
+			"symEnterPain0000": {
+				"_id": "symEnterPain0000",
+				"type": "save",
+				"name": "Pain (Entering)",
+				"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
+				"activation": {
+					"type": "",
+					"value": null,
+					"condition": "",
+					"override": true
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [
+					{
+						"_id": "symbolEffPain000",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"save": {
+					"ability": [
+						"con"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"damage": {
+					"onSave": "none",
+					"parts": []
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"type": "",
+						"units": "ft",
+						"stationary": false
+					},
+					"affects": {
+						"type": "self"
+					},
+					"override": true
+				},
+				"midiProperties": {
+					"identifier": "symbolPainEnter",
+					"automationOnly": true,
+					"confirmTargets": "never"
+				},
+				"isOverTimeFlag": true,
+				"overTimeProperties": {
+					"turnChoice": "end",
+					"saveRemoves": false
+				},
+				"effectConditionText": "!target.traits.ci.value.has('incapacitated')"
+			},
+			"symTrigSleep0000": {
+				"_id": "symTrigSleep0000",
+				"type": "save",
+				"name": "Trigger: Sleep",
+				"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
+				"activation": {
+					"type": "special",
+					"value": null,
+					"condition": "When the glyph is triggered",
+					"override": true
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [
+					{
+						"_id": "symbolEffSleep00",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"save": {
+					"ability": [
+						"wis"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"damage": {
+					"onSave": "none",
+					"parts": []
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"target": {
+					"affects": {
+						"type": "creature",
+						"count": ""
+					},
+					"template": {
+						"type": "sphere",
+						"size": "60",
+						"units": "ft",
+						"count": "",
+						"contiguous": false
+					},
+					"override": true,
+					"prompt": true
+				},
+				"regionBehavior": {
+					"attachToken": "default",
+					"enabled": true,
+					"dispositionFilter": 0,
+					"excludeSource": false,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "symbolSleepEnter"
+						},
+						{
+							"trigger": "turnEnd",
+							"action": "useActivity",
+							"targetId": "symbolSleepEnter"
+						}
+					]
+				},
+				"midiProperties": {
+					"identifier": "symbolSleep"
+				},
+				"effectConditionText": "!target.traits.ci.value.has('unconscious')"
+			},
+			"symEnterSleep000": {
+				"_id": "symEnterSleep000",
+				"type": "save",
+				"name": "Sleep (Entering)",
+				"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
+				"activation": {
+					"type": "",
+					"value": null,
+					"condition": "",
+					"override": true
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [
+					{
+						"_id": "symbolEffSleep00",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"save": {
+					"ability": [
+						"wis"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"damage": {
+					"onSave": "none",
+					"parts": []
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"type": "",
+						"units": "ft",
+						"stationary": false
+					},
+					"affects": {
+						"type": "self"
+					},
+					"override": true
+				},
+				"midiProperties": {
+					"identifier": "symbolSleepEnter",
+					"automationOnly": true,
+					"confirmTargets": "never"
+				},
+				"isOverTimeFlag": true,
+				"overTimeProperties": {
+					"turnChoice": "end",
+					"saveRemoves": false
+				},
+				"effectConditionText": "!target.traits.ci.value.has('unconscious')"
+			},
+			"symTrigStunning0": {
+				"_id": "symTrigStunning0",
+				"type": "save",
+				"name": "Trigger: Stunning",
+				"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
+				"activation": {
+					"type": "special",
+					"value": null,
+					"condition": "When the glyph is triggered",
+					"override": true
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [
+					{
+						"_id": "symbolEffStunnin",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"save": {
+					"ability": [
+						"wis"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"damage": {
+					"onSave": "none",
+					"parts": []
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"target": {
+					"affects": {
+						"type": "creature",
+						"count": ""
+					},
+					"template": {
+						"type": "sphere",
+						"size": "60",
+						"units": "ft",
+						"count": "",
+						"contiguous": false
+					},
+					"override": true,
+					"prompt": true
+				},
+				"regionBehavior": {
+					"attachToken": "default",
+					"enabled": true,
+					"dispositionFilter": 0,
+					"excludeSource": false,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": [
+						{
+							"trigger": "entry",
+							"action": "useActivity",
+							"targetId": "symbolStunningEnter"
+						},
+						{
+							"trigger": "turnEnd",
+							"action": "useActivity",
+							"targetId": "symbolStunningEnter"
+						}
+					]
+				},
+				"midiProperties": {
+					"identifier": "symbolStunning"
+				},
+				"effectConditionText": "!target.traits.ci.value.has('stunned')"
+			},
+			"symEnterStunning": {
+				"_id": "symEnterStunning",
+				"type": "save",
+				"name": "Stunning (Entering)",
+				"img": "icons/magic/symbols/rune-sigil-white-pink.webp",
+				"activation": {
+					"type": "",
+					"value": null,
+					"condition": "",
+					"override": true
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [
+					{
+						"_id": "symbolEffStunnin",
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"save": {
+					"ability": [
+						"wis"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"damage": {
+					"onSave": "none",
+					"parts": []
+				},
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"type": "",
+						"units": "ft",
+						"stationary": false
+					},
+					"affects": {
+						"type": "self"
+					},
+					"override": true
+				},
+				"midiProperties": {
+					"identifier": "symbolStunningEnter",
+					"automationOnly": true,
+					"confirmTargets": "never"
+				},
+				"isOverTimeFlag": true,
+				"overTimeProperties": {
+					"turnChoice": "end",
+					"saveRemoves": false
+				},
+				"effectConditionText": "!target.traits.ci.value.has('stunned')"
 			}
 		},
 		"identifier": "symbol"

@@ -74,19 +74,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": null,
-				"climb": null,
-				"fly": null,
-				"swim": 10,
-				"walk": 10,
+				"speeds": {
+					"walk": 10,
+					"burrow": null,
+					"climb": null,
+					"fly": null,
+					"swim": 10
+				},
 				"units": "ft",
 				"hover": false
 			},
@@ -94,10 +96,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": null,
-				"blindsight": 60,
-				"tremorsense": null,
-				"truesight": null,
+				"ranges": {
+					"darkvision": null,
+					"blindsight": 60,
+					"tremorsense": null,
+					"truesight": null
+				},
 				"units": "ft",
 				"special": "Blind beyond this radius"
 			},
@@ -639,13 +643,13 @@
 			"img": "icons/creatures/slimes/slime-movement-dripping-purple.webp",
 			"system": {
 				"description": {
-					"value": "<p>The &amp;reference[ooze] can move through a space as narrow as 1 inch wide without squeezing.</p>",
+					"value": "<p>The [[lookup @name lowercase]] can move through a space as narrow as 1 inch wide without squeezing.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -664,7 +668,9 @@
 				"prerequisites": {
 					"level": null
 				},
-				"properties": []
+				"properties": [
+					"trait"
+				]
 			},
 			"effects": [],
 			"folder": null,
@@ -681,7 +687,7 @@
 					"chat": ""
 				},
 				"source": {
-					"rules": "2014",
+					"rules": "",
 					"revision": 1,
 					"book": "Elkan 5e"
 				},
@@ -701,7 +707,9 @@
 				"prerequisites": {
 					"level": null
 				},
-				"properties": []
+				"properties": [
+					"trait"
+				]
 			},
 			"effects": [],
 			"folder": null,
@@ -714,13 +722,13 @@
 			"img": "icons/creatures/slimes/slime-movement-dripping-pseudopods-green.webp",
 			"system": {
 				"description": {
-					"value": "<p>The Green Slime attacks with its Pseudopod. The target is grappled, and must succeed on a constitution saving throw or take 3d6 acid damage (save for half).</p>",
+					"value": "<p>The Green Slime attacks with its Pseudopod. The target is &amp;reference[grappled apply=false]{grappled}, and must succeed on a constitution &amp;reference[savingthrow]{saving throw} or take 3d6 acid damage (save for half).</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -952,7 +960,9 @@
 							"parts": []
 						},
 						"save": {
-							"ability": "con",
+							"ability": [
+								"con"
+							],
 							"dc": {
 								"calculation": "con",
 								"formula": ""
@@ -987,28 +997,12 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": []
-						},
-						"core": {
-							"statusId": "combat-utility-belt.grappled"
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"radius": "undefined",
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false
 						}
 					},
 					"name": "Grappled",
 					"description": "",
 					"statuses": [],
-					"img": "modules/combat-utility-belt/icons/grappled.svg",
+					"img": "modules/elkan5e/icons/conditions/grappled.svg",
 					"type": "base",
 					"system": {
 						"changes": [
@@ -1017,6 +1011,13 @@
 								"value": 0,
 								"priority": 50,
 								"type": "custom"
+							},
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "grappled",
+								"phase": "final",
+								"priority": 20
 							}
 						]
 					},
@@ -1059,13 +1060,13 @@
 			"type": "feat",
 			"system": {
 				"description": {
-					"value": "<p>If this creature is left without water for at least 24 hours, or if it takes at least 10 fire damage from a single source, it becomes incapacitated until it comes into contact with water as it shrivels up.</p>",
+					"value": "<p>If this creature is left without water for at least 24 hours, or if it takes at least 10 fire damage from a single source, it becomes &amp;reference[incapacitated apply=false]{incapacitated} until it comes into contact with water as it shrivels up.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -1178,34 +1179,26 @@
 							"durationExpression": "",
 							"macroRepeat": "none",
 							"specialDuration": []
-						},
-						"core": {
-							"statusId": "combat-utility-belt.incapacitated"
-						},
-						"ActiveAuras": {
-							"isAura": false,
-							"aura": "None",
-							"radius": "undefined",
-							"alignment": "",
-							"type": "",
-							"ignoreSelf": false,
-							"height": false,
-							"hidden": false,
-							"displayTemp": false,
-							"hostile": false,
-							"onlyOnce": false
 						}
 					},
 					"name": "Incapacitated",
 					"description": "",
 					"statuses": [],
-					"img": "modules/combat-utility-belt/icons/incapacitated.svg",
+					"img": "modules/elkan5e/icons/conditions/incapacitated.svg",
 					"type": "base",
 					"system": {
-						"changes": []
+						"changes": [
+							{
+								"key": "macro.StatusEffect",
+								"type": "custom",
+								"value": "incapacitated",
+								"phase": "final",
+								"priority": 20
+							}
+						]
 					},
 					"start": null,
-					"showIcon": 1,
+					"showIcon": 0,
 					"folder": null,
 					"_key": "!actors.items.effects!3u2giLGrznREpjIV.HHGzjfWe0xkzww1h.eiGJiZW9Fl1LA2D1"
 				}
@@ -1224,7 +1217,7 @@
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {

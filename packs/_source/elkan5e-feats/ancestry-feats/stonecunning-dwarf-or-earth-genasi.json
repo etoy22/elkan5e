@@ -17,45 +17,27 @@
 		"identifier": "stonecunning",
 		"source": {
 			"revision": 1,
-			"rules": "2024",
+			"rules": "",
 			"book": "",
 			"page": "",
 			"custom": "elkan5e.com/feats/stonecunning",
 			"license": ""
 		},
-		"advancement": [
-			{
-				"_id": "E4Jt8gYtwZhptvNZ",
-				"type": "AbilityScoreImprovement",
-				"configuration": {
-					"cap": 2,
-					"fixed": {
-						"str": 0,
-						"dex": 0,
-						"con": 0,
-						"int": 0,
-						"wis": 0,
-						"cha": 0
-					},
-					"locked": [],
-					"points": 2
-				},
-				"value": {
-					"type": "asi"
-				},
-				"level": 0,
-				"title": "",
-				"hint": ""
-			}
-		],
+		"advancement": [],
 		"cover": null,
 		"crewed": false,
 		"enchant": {},
 		"prerequisites": {
 			"level": 8,
-			"repeatable": false
+			"repeatable": false,
+			"items": [
+				"dwarf",
+				"earth-genasi"
+			]
 		},
-		"properties": [],
+		"properties": [
+			"trait"
+		],
 		"requirements": "Feat (Level 8)",
 		"type": {
 			"value": "feat",
@@ -66,22 +48,30 @@
 		{
 			"name": "Stonecunning",
 			"img": "icons/environment/wilderness/terrain-rocky-ground.webp",
-			"origin": "Item.miKhM1LG0cKpbsLX",
+			"origin": "Compendium.elkan5e.elkan5e-feats.Item.z2ObcYCCX8aPJBnJ",
 			"_id": "x1jAjRJ0cgwkbGHY",
 			"type": "base",
 			"system": {
 				"changes": [
 					{
-						"key": "system.attributes.senses.tremorsense",
+						"key": "system.attributes.senses.ranges.tremorsense",
+						"type": "add",
 						"value": 60,
+						"phase": "initial",
 						"priority": 20,
-						"type": "add"
+						"_id": "KSvdfJ4DTd56qKyu",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "token.detectionModes.feelTremor.range",
+						"type": "add",
 						"value": 60,
+						"phase": "initial",
 						"priority": 20,
-						"type": "add"
+						"_id": "TMbsuE8TxxRSkBOZ",
+						"conditions": "{}",
+						"replacement": ""
 					}
 				]
 			},
@@ -103,24 +93,9 @@
 					"stackable": "multi",
 					"durationExpression": "",
 					"macroRepeat": "none",
-					"specialDuration": []
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system",
-					"statuses": []
+					"specialDuration": [],
+					"expiryMode": "default",
+					"phaseStamped": true
 				}
 			},
 			"start": null,

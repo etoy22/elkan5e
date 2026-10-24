@@ -1,0 +1,108 @@
+{
+	"name": "Resurrection Weakness",
+	"type": "feat",
+	"_id": "resurrectionWeak",
+	"img": "icons/magic/unholy/strike-body-life-soul-purple.webp",
+	"system": {
+		"description": {
+			"value": "<p>You were recently returned to life by <em>@UUID[Compendium.elkan5e.elkan5e-spells.Item.Qj9baV1UtPqdd4P8]{Resurrection}</em>. You take a penalty to &amp;reference[attackrolls]{attack rolls}, &amp;reference[savingthrow]{saving throws}, and &amp;reference[abilitycheck]{ability checks} equal to this feature&#39;s expended uses. The penalty decreases by 1 each time you finish a &amp;reference[Long Rest]. Once the penalty reaches 0, this feature can be removed.</p>",
+			"chat": ""
+		},
+		"source": {
+			"custom": "elkan5e.com/spells/resurrection",
+			"revision": 1,
+			"rules": "",
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"uses": {
+			"max": "4",
+			"spent": 4,
+			"recovery": [
+				{
+					"period": "lr",
+					"type": "formula",
+					"formula": "1"
+				}
+			]
+		},
+		"type": {
+			"value": "",
+			"subtype": ""
+		},
+		"requirements": "Resurrection",
+		"properties": [
+			"mgc"
+		],
+		"activities": {},
+		"identifier": "resurrection-weakness",
+		"enchant": {},
+		"prerequisites": {
+			"level": null
+		}
+	},
+	"effects": [
+		{
+			"_id": "resurrectWeakEff",
+			"name": "Resurrection Weakness",
+			"img": "icons/magic/unholy/strike-body-life-soul-purple.webp",
+			"type": "base",
+			"transfer": true,
+			"disabled": false,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "<p>Penalty to attack rolls, saving throws, and ability checks equal to the expended uses of Resurrection Weakness. Recovers 1 use each long rest.</p>",
+			"origin": null,
+			"statuses": [],
+			"tint": "#ffffff",
+			"showIcon": 1,
+			"start": null,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"stackable": "noneName",
+					"specialDuration": [],
+					"macroRepeat": "none",
+					"durationExpression": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"disableIncapacitated": false,
+					"enableCondition": "",
+					"disableCondition": ""
+				}
+			},
+			"system": {
+				"magical": true,
+				"changes": [
+					{
+						"key": "system.rolls.attack.bonus",
+						"value": "dae.eval(-@item.uses.spent)",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.rolls.ability.check.bonus",
+						"value": "dae.eval(-@item.uses.spent)",
+						"priority": 20,
+						"type": "add"
+					},
+					{
+						"key": "system.rolls.ability.save.bonus",
+						"value": "dae.eval(-@item.uses.spent)",
+						"priority": 20,
+						"type": "add"
+					}
+				]
+			},
+			"_key": "!items.effects!resurrectionWeak.resurrectWeakEff"
+		}
+	],
+	"folder": "H799nI2ov6BcHwd6",
+	"_key": "!items!resurrectionWeak"
+}

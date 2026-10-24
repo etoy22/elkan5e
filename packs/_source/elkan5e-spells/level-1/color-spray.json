@@ -25,29 +25,22 @@
 					"dontApply": false,
 					"expiryMode": "default",
 					"combatActorOverride": "source"
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"img": "icons/magic/light/hand-sparks-smoke-green.webp",
 			"_id": "tIWcLT9k1c4eycvc",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "blinded",
+						"phase": "final",
+						"priority": 20
+					}
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -58,10 +51,8 @@
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"statuses": [
-				"blinded"
-			],
-			"showIcon": 2,
+			"statuses": [],
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!ABHn2WLXhBoSTYRl.tIWcLT9k1c4eycvc"
@@ -105,7 +96,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You dip your hands into powder dyed yellow, red, and blue. A dazzling array of flashing, colored light springs from your hand, blinding nearby creatures.</em></p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;Reference[blinded] for 1 round.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"value": "<p><em>You dip your hands into powder dyed yellow, red, and blue. A dazzling array of flashing, colored light springs from your hand, blinding nearby creatures.</em></p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[blinded] for 1 round.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
 			"chat": ""
 		},
 		"source": {
@@ -201,10 +192,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -218,7 +213,9 @@
 					"onSave": "none"
 				},
 				"save": {
-					"ability": "con",
+					"ability": [
+						"con"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""

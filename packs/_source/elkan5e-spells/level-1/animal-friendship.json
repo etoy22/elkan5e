@@ -21,29 +21,22 @@
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"img": "icons/creatures/mammals/dog-husky-white-blue.webp",
 			"_id": "qUiNetqdtVBrHJtu",
 			"type": "base",
 			"system": {
-				"changes": []
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "charmed",
+						"phase": "final",
+						"priority": 20
+					}
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -54,10 +47,8 @@
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"statuses": [
-				"charmed"
-			],
-			"showIcon": 2,
+			"statuses": [],
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!tZZRoQfeoRQoGyYu.qUiNetqdtVBrHJtu"
@@ -118,7 +109,7 @@
 	},
 	"system": {
 		"description": {
-			"value": "<p><em>You hold out a morsel of food appropriate for an animal in front of you. As you whisper, your words sooth the creature to convince it you mean no harm.</em></p><p><strong>Wisdom</strong> <strong>Save</strong></p><p>The target &amp;reference[beast]{beast} must be able to see and hear you. If the beast's Intelligence is 4 or higher, the spell fails.</p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[charmed] by you and your allies, but is not compelled to do as you say.</p><p>If you or one of your allies harms the target, the spell ends.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p><strong>Upcasting:</strong> Target one additional &amp;reference[beast] for each spell level above 1st.</p>",
+			"value": "<p><em>You hold out a morsel of food appropriate for an animal in front of you. As you whisper, your words sooth the creature to convince it you mean no harm.</em></p><p><strong>[[/save wis]]{Wisdom Save}</strong></p><p>The target &amp;reference[beast] must be able to see and hear you. If the beast's Intelligence is 4 or higher, the spell fails.</p><ul><li><p><strong>Failure:</strong> Target is &amp;reference[charmed] by you and your allies, but is not compelled to do as you say.</p><p>If you or one of your allies harms the target, the spell ends.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul><p><strong>Upcasting:</strong> Target one additional &amp;reference[beast] for each spell level above 1st.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -203,15 +194,24 @@
 					"concentration": false,
 					"override": false
 				},
-				"effects": [],
+				"effects": [
+					{
+						"_id": "qUiNetqdtVBrHJtu",
+						"onSave": false
+					}
+				],
 				"range": {
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -225,7 +225,9 @@
 					"onSave": "half"
 				},
 				"save": {
-					"ability": "wis",
+					"ability": [
+						"wis"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -233,7 +235,7 @@
 				},
 				"name": "",
 				"img": "",
-				"effectConditionText": "!target.traits.ci.value.has('charmed') && target.abilities.int.value < 4 && raceOrType.includes(\"beast\"))",
+				"effectConditionText": "!target.traits.ci.value.has('charmed') && target.abilities.int.value < 4 && raceOrType.includes(\"beast\")",
 				"appliedEffects": []
 			}
 		},

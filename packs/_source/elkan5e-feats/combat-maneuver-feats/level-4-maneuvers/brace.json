@@ -32,7 +32,16 @@
 		},
 		"requirements": "Feat (Level 4)",
 		"prerequisites": {
-			"level": 4
+			"level": 4,
+			"items": [
+				"fighting-style",
+				"fighting-style-archery",
+				"fighting-style-defense",
+				"fighting-style-mounted-combat",
+				"fighting-style-protection",
+				"fighting-style-single-weapon-fighting",
+				"fighting-style-two-weapon-fighting"
+			]
 		},
 		"activities": {
 			"dnd5eactivity000": {
@@ -41,7 +50,7 @@
 				"activation": {
 					"type": "reaction",
 					"value": 1,
-					"condition": "['isHit','isMissed'].includes(reaction)",
+					"condition": "",
 					"override": false
 				},
 				"consumption": {
@@ -112,37 +121,14 @@
 				"img": "",
 				"appliedEffects": [
 					"UzfqSEvAugprw9Nk"
-				]
+				],
+				"useConditionText": "reaction === 'isAttacked'"
 			}
 		},
 		"identifier": "brace",
 		"enchant": {},
 		"properties": [],
-		"advancement": [
-			{
-				"_id": "aC5HuW1uXBe16dL0",
-				"type": "AbilityScoreImprovement",
-				"configuration": {
-					"cap": 2,
-					"fixed": {
-						"str": 0,
-						"dex": 0,
-						"con": 0,
-						"int": 0,
-						"wis": 0,
-						"cha": 0
-					},
-					"locked": [],
-					"points": 2
-				},
-				"value": {
-					"type": "asi"
-				},
-				"level": 0,
-				"title": "",
-				"hint": ""
-			}
-		]
+		"advancement": []
 	},
 	"effects": [
 		{
@@ -171,22 +157,6 @@
 					"specialDuration": [
 						"isAttacked"
 					]
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"tint": "#ffffff",
@@ -213,7 +183,6 @@
 			"effectActivation": false,
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
-			"reactionCondition": "['isHit','isMissed'].includes(reaction)",
 			"effectCondition": "",
 			"removeAttackDamageButtons": "default",
 			"otherCondition": ""

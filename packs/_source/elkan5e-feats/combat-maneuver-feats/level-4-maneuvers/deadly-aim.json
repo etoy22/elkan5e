@@ -6,7 +6,7 @@
 	"img": "icons/skills/targeting/crosshair-pointed-orange.webp",
 	"system": {
 		"description": {
-			"value": "<p><em> <strong>Prerequisite: @UUID[Compendium.elkan5e.elkan5e-class-features.Item.tSL6ilfth2TTRNTR]{Fighting Style}</strong></em></p><p><em>At the start of your turns, you can focus on a single creature you can see that is within range of a ranged or thrown weapon you are holding.</em></p><p><strong>Bonus Action</strong> - Ranged - Self - Uses Equal to Proficiency Bonus/Long Rest</p><p>You gain advantage on an attack roll with a ranged or thrown weapon.</p>",
+			"value": "<p><em> <strong>Prerequisite: @UUID[Compendium.elkan5e.elkan5e-class-features.Item.tSL6ilfth2TTRNTR]{Fighting Style}</strong></em></p><p><em>At the start of your turns, you can focus on a single creature you can see that is within range of a ranged or thrown weapon you are holding.</em></p><p><strong>Bonus Action</strong> - Ranged - Self - Uses Equal to Proficiency Bonus/Long Rest</p><p>You gain advantage on an &amp;reference[attackrolls]{attack roll} with a ranged or thrown weapon.</p>",
 			"chat": ""
 		},
 		"source": {
@@ -33,7 +33,16 @@
 		},
 		"requirements": "Feat (Level 4)",
 		"prerequisites": {
-			"level": 4
+			"level": 4,
+			"items": [
+				"fighting-style",
+				"fighting-style-archery",
+				"fighting-style-defense",
+				"fighting-style-mounted-combat",
+				"fighting-style-protection",
+				"fighting-style-single-weapon-fighting",
+				"fighting-style-two-weapon-fighting"
+			]
 		},
 		"activities": {
 			"dnd5eactivity000": {
@@ -119,31 +128,7 @@
 		"identifier": "deadly-aim",
 		"enchant": {},
 		"properties": [],
-		"advancement": [
-			{
-				"_id": "aC5HuW1uXBe16dL0",
-				"type": "AbilityScoreImprovement",
-				"configuration": {
-					"cap": 2,
-					"fixed": {
-						"str": 0,
-						"dex": 0,
-						"con": 0,
-						"int": 0,
-						"wis": 0,
-						"cha": 0
-					},
-					"locked": [],
-					"points": 2
-				},
-				"value": {
-					"type": "asi"
-				},
-				"level": 0,
-				"title": "",
-				"hint": ""
-			}
-		]
+		"advancement": []
 	},
 	"effects": [
 		{
@@ -172,22 +157,6 @@
 					"specialDuration": [
 						"1Attack"
 					]
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"tint": "#ffffff",
@@ -196,8 +165,8 @@
 			"system": {
 				"changes": [
 					{
-						"key": "flags.midi-qol.advantage.attack.rwak",
-						"value": 1,
+						"key": "system.rolls.attack.rwak.mode",
+						"value": "1",
 						"priority": 20,
 						"type": "add"
 					}

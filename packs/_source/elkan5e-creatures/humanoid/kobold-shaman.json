@@ -74,19 +74,21 @@
 			},
 			"init": {
 				"ability": "",
-				"bonus": "0",
 				"roll": {
+					"bonus": "0",
 					"min": null,
 					"max": null,
 					"mode": 0
 				}
 			},
 			"movement": {
-				"burrow": 10,
-				"climb": 0,
-				"fly": 0,
-				"swim": 0,
-				"walk": 30,
+				"speeds": {
+					"walk": 30,
+					"burrow": 10,
+					"climb": 0,
+					"fly": 0,
+					"swim": 0
+				},
 				"units": "ft",
 				"hover": false
 			},
@@ -94,10 +96,12 @@
 				"max": 3
 			},
 			"senses": {
-				"darkvision": 60,
-				"blindsight": 0,
-				"tremorsense": 0,
-				"truesight": 0,
+				"ranges": {
+					"darkvision": 60,
+					"blindsight": 0,
+					"tremorsense": 0,
+					"truesight": 0
+				},
 				"units": "ft",
 				"special": ""
 			},
@@ -631,13 +635,13 @@
 			"img": "icons/creatures/abilities/paw-print-orange.webp",
 			"system": {
 				"description": {
-					"value": "<p>The [[lookup @name lowercase]] has advantage on an attack roll against a target if at least one of the [[lookup @name lowercase]]'s allies is within 5 ft. of the target and the ally isn't incapacitated.</p>",
+					"value": "<p>The [[lookup @name lowercase]] has advantage on an &amp;reference[attackrolls]{attack roll} against a target if at least one of the [[lookup @name lowercase]]'s allies is within 5 ft. of the target and the ally isn't &amp;reference[incapacitated apply=false].</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "",
 					"revision": 1,
-					"rules": "2024",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"uses": {
@@ -656,7 +660,9 @@
 				"prerequisites": {
 					"level": null
 				},
-				"properties": []
+				"properties": [
+					"trait"
+				]
 			},
 			"effects": [],
 			"folder": null,
@@ -673,7 +679,7 @@
 					"chat": ""
 				},
 				"source": {
-					"rules": "2014",
+					"rules": "",
 					"revision": 1,
 					"book": "Elkan 5e"
 				},
@@ -750,7 +756,7 @@
 			"_id": "APXKmz8guBwZBVku",
 			"system": {
 				"description": {
-					"value": "<p><em>You exhale, pushing all the air in your lungs forward in the direction of your outstretched hand. Your breath becomes a strong gust that throws objects and creatures around.</em></p><p>Candles, torches, and similar unprotected flames in range of the wind are extinguished.</p><p><strong>[[/save str]]{Strength Save}</strong></p><ul><li><p><strong>Failure:</strong> Targets are pushed 15 feet away from you in a direction following the line.</p></li><li><p><strong>Success:</strong> Nothing</p></li><li><p><strong>Area Hazard:</strong> Any movement going towards you against the direction of the latest gust of wind counts as movement through &amp;reference[difficultterrain].</p></li><li><p><strong>Concentration:</strong> On each of your subsequent turns, you can use a bonus action to both change the direction of the wind and have the spell occur again.</p></li></ul>",
+					"value": "<p><em>You exhale, pushing all the air in your lungs forward in the direction of your outstretched hand. Your breath becomes a strong gust that throws objects and creatures around.</em></p><p>Candles, torches, and similar unprotected flames in range of the wind are extinguished.</p><p><strong>[[/save str]]{Strength Save}</strong></p><ul><li><p><strong>Failure:</strong> Targets are pushed 15 feet away from you in a direction following the line.</p></li><li><p><strong>Success:</strong> Nothing</p></li><li><p><strong>Area Hazard:</strong> Any movement going towards you against the direction of the latest gust of wind counts as movement through &amp;reference[difficultterrain].</p></li><li><p><strong>&amp;reference[concentration]{Concentration}:</strong> On each of your subsequent turns, you can use a bonus action to both change the direction of the wind and have the spell occur again.</p></li></ul>",
 					"chat": ""
 				},
 				"source": {
@@ -873,7 +879,9 @@
 							"parts": []
 						},
 						"save": {
-							"ability": "str",
+							"ability": [
+								"str"
+							],
 							"dc": {
 								"calculation": "spellcasting",
 								"formula": ""
@@ -896,21 +904,24 @@
 							"dispositionFilter": -1,
 							"excludeSource": false,
 							"oncePerTurn": false,
-							"rules": [
-								{
-									"trigger": "entry",
-									"action": "applyEffect",
-									"targetId": "XT5XRocS1PtMu7D1"
-								},
-								{
-									"trigger": "exit",
-									"action": "removeEffect",
-									"targetId": "XT5XRocS1PtMu7D1"
-								}
-							],
+							"rules": [],
 							"wallRestriction": "move",
 							"regionVisibility": 2
-						}
+						},
+						"behaviors": [
+							{
+								"name": "",
+								"_id": "bT76nl4snJ53Hfa5",
+								"type": "difficultTerrain",
+								"config": {
+									"types": []
+								},
+								"level": {
+									"min": null,
+									"max": null
+								}
+							}
+						]
 					},
 					"3tGFHZoP80cPEUOe": {
 						"type": "save",
@@ -968,7 +979,9 @@
 							"onSave": "half"
 						},
 						"save": {
-							"ability": "str",
+							"ability": [
+								"str"
+							],
 							"dc": {
 								"calculation": "spellcasting",
 								"formula": ""
@@ -993,19 +1006,22 @@
 							"oncePerTurn": false,
 							"wallRestriction": "move",
 							"regionVisibility": 2,
-							"rules": [
-								{
-									"trigger": "entry",
-									"action": "applyEffect",
-									"targetId": "XT5XRocS1PtMu7D1"
+							"rules": []
+						},
+						"behaviors": [
+							{
+								"name": "",
+								"_id": "FaTLQcKIMS7V3tE8",
+								"type": "difficultTerrain",
+								"config": {
+									"types": []
 								},
-								{
-									"trigger": "exit",
-									"action": "removeEffect",
-									"targetId": "XT5XRocS1PtMu7D1"
+								"level": {
+									"min": null,
+									"max": null
 								}
-							]
-						}
+							}
+						]
 					}
 				},
 				"identifier": "gust-of-wind"
@@ -1021,7 +1037,7 @@
 			"_id": "nLnQtlpd5s2pMt2p",
 			"system": {
 				"description": {
-					"value": "<p><em>Your magical power manifests in various dramatic, but ultimately harmless ways. Whether by invoking forgotten magic, or simply by saying a few emotional words, you can create supernatural effects.</em></p><p><strong>Utility Spell</strong></p><p>You create one of the following effects:</p><ul><li>Your voice booms up to three times as loud as normal for 1 minute.</li><li>You cause flames to flicker, brighten, dim, or change color for 1 minute.</li><li>You cause harmless tremors in the ground for 1 minute.</li><li>You create a sound that originates from a point of your choice within range. If you want, this sound can be a message of up to 6 seconds in length in your own voice, but not someone else's voice.</li><li>You alter the appearance of your eyes for 1 minute.</li></ul><p><em>With your GM's permission, you can do a similar, harmless illusory effect.</em></p>",
+					"value": "<p><em>Your magical power manifests in various dramatic, but ultimately harmless ways. Whether by invoking forgotten magic, or simply by saying a few emotional words, you can create supernatural effects.</em></p><p><strong>Utility</strong></p><p>You create one of the following effects:</p><ul><li><p>Your voice booms up to three times as loud as normal for 1 minute.</p></li><li><p>You cause flames to flicker, brighten, dim, or change color for 1 minute.</p></li><li><p>You cause harmless tremors in the ground for 1 minute.</p></li><li><p>You create a sound that originates from a point of your choice within range. If you want, this sound can be a message of up to 6 seconds in length in your own voice, but not someone else's voice.</p></li><li><p>You alter the appearance of your eyes for 1 minute.</p></li></ul><p><em>With your GM's permission, you can do a similar, harmless illusory effect.</em></p>",
 					"chat": ""
 				},
 				"source": {
@@ -1109,10 +1125,14 @@
 							"override": false
 						},
 						"target": {
-							"type": "creature",
-							"value": 1,
-							"units": "ft",
-							"width": null,
+							"affects": {
+								"type": "creature",
+								"count": 1
+							},
+							"template": {
+								"units": "ft",
+								"width": null
+							},
 							"override": false,
 							"prompt": true
 						},
@@ -1208,7 +1228,7 @@
 			"_id": "BszXOnyfaE8R4xex",
 			"system": {
 				"description": {
-					"value": "<p><em>You place two lodestones on either side of a broken object, then hold the broken object or its pieces together as you chant your spell, slowly joining the object back together.</em></p><p><strong>Utility Spell</strong></p><ul><li><p>This spell repairs a single break or tear in an object you touch, such as broken chain link, two halves of a broken key, a torn cloak, or a leaking wineskin. As long as the break or tear is no larger than 1 foot in any dimension, and you have all the pieces, you mend it, leaving no trace of the former damage.</p></li></ul><p><em>This spell cannot restore hit points to a &amp;reference[construct]{construct}, vehicle, or object, and can only repair physical damage (&amp;reference[bludgeoning], &amp;reference[piercing], or &amp;reference[slashing] damage). If used to reattach a body part, the body part is non-functional, as if the nervous system or circulatory system failed to connect properly.</em></p><p><em>You could put a shredded piece of paper back together, but you couldn't restore a burned note.</em></p>",
+					"value": "<p><em>You place two lodestones on either side of a broken object, then hold the broken object or its pieces together as you chant your spell, slowly joining the object back together.</em></p><p><strong>Utility</strong></p><ul><li><p>This spell repairs a single break or tear in an object you touch, such as broken chain link, two halves of a broken key, a torn cloak, or a leaking wineskin. As long as the break or tear is no larger than 1 foot in any dimension, and you have all the pieces, you mend it, leaving no trace of the former damage.</p></li></ul><p><em>This spell cannot restore hit points to a &amp;reference[construct]{construct}, vehicle, or object, and can only repair physical damage (&amp;reference[bludgeoning], &amp;reference[piercing], or &amp;reference[slashing] damage). If used to reattach a body part, the body part is non-functional, as if the nervous system or circulatory system failed to connect properly.</em></p><p><em>You could put a shredded piece of paper back together, but you couldn't restore a burned note.</em></p>",
 					"chat": ""
 				},
 				"source": {
@@ -1298,10 +1318,14 @@
 							"override": false
 						},
 						"target": {
-							"type": "creature",
-							"value": 1,
-							"units": "ft",
-							"width": null,
+							"affects": {
+								"type": "creature",
+								"count": 1
+							},
+							"template": {
+								"units": "ft",
+								"width": null
+							},
 							"override": false,
 							"prompt": true
 						},
@@ -1352,13 +1376,13 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p>You can blind or deafen a foe. Choose one creature that you can see within range to make a Constitution saving throw. If it fails, the target is either blinded or deafened (your choice) for the duration. At the end of each of its turns, the target can make a Constitution saving throw. On a success, the spell ends.</p><p><strong>At Higher Levels.</strong> When you cast this spell using a spell slot of 3rd level or higher, you can target one additional creature for each slot level above 2nd.</p>",
+					"value": "<p>You can blind or deafen a foe. Choose one creature that you can see within range to make a Constitution &amp;reference[savingthrow]{saving throw}. If it fails, the target is either &amp;reference[blinded apply=false]{blinded} or &amp;reference[deafened apply=false]{deafened} (your choice) for the duration. At the end of each of its turns, the target can make a Constitution saving throw. On a success, the spell ends.</p><p><strong>At Higher Levels.</strong> When you cast this spell using a spell slot of 3rd level or higher, you can target one additional creature for each slot level above 2nd.</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "PHB pg. 219",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"activation": {
@@ -1468,7 +1492,9 @@
 							"parts": []
 						},
 						"save": {
-							"ability": "con",
+							"ability": [
+								"con"
+							],
 							"dc": {
 								"calculation": "spellcasting",
 								"formula": ""
@@ -1595,10 +1621,14 @@
 							"override": false
 						},
 						"target": {
-							"type": "creature",
-							"value": 1,
-							"units": "ft",
-							"width": null,
+							"affects": {
+								"type": "creature",
+								"count": 1
+							},
+							"template": {
+								"units": "ft",
+								"width": null
+							},
 							"override": false,
 							"prompt": true
 						},
@@ -1785,19 +1815,27 @@
 							"oncePerTurn": true,
 							"wallRestriction": "none",
 							"regionVisibility": 2,
-							"rules": [
-								{
-									"trigger": "entry",
-									"action": "applyEffect",
-									"targetId": "6506NgHZlWKm6PWV"
+							"rules": []
+						},
+						"behaviors": [
+							{
+								"name": "",
+								"_id": "cFTQBeyYQPimZnyS",
+								"type": "applyActiveEffect",
+								"config": {
+									"effects": [
+										"Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanobscuredhea",
+										"Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanblinded0000"
+									],
+									"sizes": [],
+									"types": []
 								},
-								{
-									"trigger": "exit",
-									"action": "removeEffect",
-									"targetId": "6506NgHZlWKm6PWV"
+								"level": {
+									"min": null,
+									"max": null
 								}
-							]
-						}
+							}
+						]
 					}
 				},
 				"identifier": "fog-cloud"
@@ -1838,13 +1876,13 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p><em>A dagger is a short blade balanced both for thrusting and throwing. Daggers, as opposed to common knives, were made for combat. Many improvised weapons use the statistics of a dagger.</em></p><p>Properties:</p><p>&amp;Reference[Finesse], &amp;reference[light weapon], &amp;Reference[Thrown]</p>",
+					"value": "<p><em>A dagger is a short blade balanced both for thrusting and throwing. Daggers, as opposed to common knives, were made for combat. Many improvised weapons use the statistics of a dagger.</em></p><p>Properties:</p><p>&amp;reference[Finesse], &amp;reference[light weapon], &amp;reference[Thrown]</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "elkan5e.com/weapons",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,
@@ -2055,13 +2093,13 @@
 			},
 			"system": {
 				"description": {
-					"value": "<p><em>Wrapped around your hand, this sling can fling smooth stones called bullets at great speeds. It uses bullets as ammunition.</em></p><p>Properties:</p><p>&amp;Reference[Ammunition]</p>",
+					"value": "<p><em>Wrapped around your hand, this sling can fling smooth stones called bullets at great speeds. It uses bullets as ammunition.</em></p><p>Properties:</p><p>&amp;reference[Ammunition]</p>",
 					"chat": ""
 				},
 				"source": {
 					"custom": "elkan5e.com/weapons",
 					"revision": 1,
-					"rules": "2014",
+					"rules": "",
 					"book": "Elkan 5e"
 				},
 				"quantity": 1,

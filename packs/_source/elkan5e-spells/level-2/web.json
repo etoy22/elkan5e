@@ -20,22 +20,6 @@
 					"dontApply": false,
 					"enableCondition": "",
 					"disableCondition": ""
-				},
-				"ActiveAuras": {
-					"isAura": false,
-					"aura": "None",
-					"nameOverride": "",
-					"radius": "",
-					"alignment": "",
-					"type": "",
-					"customCheck": "",
-					"ignoreSelf": false,
-					"height": false,
-					"hidden": false,
-					"displayTemp": false,
-					"hostile": false,
-					"onlyOnce": false,
-					"wallsBlock": "system"
 				}
 			},
 			"img": "icons/commodities/materials/material-webbing.webp",
@@ -47,9 +31,18 @@
 						"key": "flags.midi-qol.OverTime",
 						"value": "turn=end,\nsaveAbility=str,\nsaveDC=@attributes.spell.dc,\nsaveMagic=true,\nlabel=Web",
 						"priority": 20,
-						"type": "add"
+						"type": "add",
+						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "restrained",
+						"phase": "final",
+						"priority": 20
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"duration": {
@@ -60,63 +53,11 @@
 			},
 			"description": "",
 			"tint": "#ffffff",
-			"statuses": [
-				"restrained"
-			],
-			"showIcon": 2,
+			"statuses": [],
+			"showIcon": 0,
 			"start": null,
 			"folder": null,
 			"_key": "!items.effects!QbacOEHBdmvlUYl8.mtqZzXvzGon8D751"
-		},
-		{
-			"name": "Web - Effects",
-			"img": "icons/commodities/materials/material-webbing.webp",
-			"origin": "Compendium.elkan5e.elkan5e-spells.Item.QbacOEHBdmvlUYl8",
-			"type": "base",
-			"_id": "KAUyanTSUHe8xL9Z",
-			"system": {
-				"changes": [
-					{
-						"key": "system.attributes.movement.all",
-						"type": "custom",
-						"value": "/2",
-						"phase": "final",
-						"priority": null
-					}
-				]
-			},
-			"disabled": false,
-			"start": null,
-			"duration": {
-				"value": null,
-				"units": "seconds",
-				"expiry": null,
-				"expired": false
-			},
-			"description": "",
-			"tint": "#ffffff",
-			"transfer": false,
-			"statuses": [
-				"obscuredlightly"
-			],
-			"showIcon": 2,
-			"folder": null,
-			"flags": {
-				"dae": {
-					"disableCondition": "",
-					"stackable": "noneName",
-					"expiryMode": "default",
-					"durationExpression": "",
-					"macroRepeat": "none",
-					"disableIncapacitated": false,
-					"specialDuration": [],
-					"enableCondition": "",
-					"selfTarget": false,
-					"selfTargetAlways": false,
-					"dontApply": false
-				}
-			},
-			"_key": "!items.effects!QbacOEHBdmvlUYl8.KAUyanTSUHe8xL9Z"
 		}
 	],
 	"folder": "6J3i75lfD1J0xYwA",
@@ -256,14 +197,6 @@
 							"min": null,
 							"max": null
 						}
-					},
-					{
-						"_id": "KAUyanTSUHe8xL9Z",
-						"onSave": false,
-						"level": {
-							"min": null,
-							"max": null
-						}
 					}
 				],
 				"range": {
@@ -295,7 +228,9 @@
 					"parts": []
 				},
 				"save": {
-					"ability": "dex",
+					"ability": [
+						"dex"
+					],
 					"dc": {
 						"calculation": "spellcasting",
 						"formula": ""
@@ -325,22 +260,147 @@
 						{
 							"trigger": "entry",
 							"action": "useActivity",
-							"targetId": "webSave"
-						},
-						{
-							"trigger": "entry",
-							"action": "applyEffect",
-							"targetId": "KAUyanTSUHe8xL9Z"
-						},
-						{
-							"trigger": "exit",
-							"action": "removeEffect",
-							"targetId": "KAUyanTSUHe8xL9Z"
+							"targetId": "webEnter"
 						}
 					]
 				},
 				"midiProperties": {
 					"identifier": "webSave"
+				},
+				"behaviors": [
+					{
+						"name": "",
+						"_id": "hQ8b71OKOg42r61m",
+						"type": "difficultTerrain",
+						"config": {
+							"types": [
+								"web"
+							]
+						},
+						"level": {
+							"min": null,
+							"max": null
+						}
+					},
+					{
+						"name": "",
+						"_id": "Fn1i2PVPvJrC8ytP",
+						"type": "applyActiveEffect",
+						"config": {
+							"effects": [
+								"Compendium.elkan5e.elkan5e-effects.ActiveEffect.elkanobscuredlig"
+							],
+							"sizes": [],
+							"types": []
+						},
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				]
+			},
+			"yQ4Z8fM8a8PJBWhF": {
+				"_id": "yQ4Z8fM8a8PJBWhF",
+				"type": "save",
+				"activation": {
+					"type": "",
+					"value": null,
+					"override": true,
+					"condition": ""
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": false
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": true
+				},
+				"effects": [
+					{
+						"_id": "mtqZzXvzGon8D751",
+						"onSave": false,
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
+				"range": {
+					"override": false
+				},
+				"target": {
+					"prompt": true,
+					"template": {
+						"contiguous": false,
+						"type": "",
+						"units": "ft",
+						"stationary": false
+					},
+					"affects": {
+						"type": "self"
+					},
+					"override": true
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"damage": {
+					"onSave": "none",
+					"parts": []
+				},
+				"save": {
+					"ability": [
+						"dex"
+					],
+					"dc": {
+						"calculation": "spellcasting",
+						"formula": ""
+					}
+				},
+				"name": "Web (Entering)",
+				"img": "",
+				"appliedEffects": [
+					"mtqZzXvzGon8D751"
+				],
+				"effectConditionText": "!target.traits.ci.value.has('restrained')",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					}
+				},
+				"regionBehavior": {
+					"attachToken": "default",
+					"enabled": false,
+					"dispositionFilter": -1,
+					"excludeSource": false,
+					"oncePerTurn": true,
+					"wallRestriction": "none",
+					"regionVisibility": 2,
+					"rules": []
+				},
+				"midiProperties": {
+					"identifier": "webEnter",
+					"automationOnly": true,
+					"confirmTargets": "never"
+				},
+				"behaviors": [],
+				"isOverTimeFlag": true,
+				"overTimeProperties": {
+					"turnChoice": "end",
+					"saveRemoves": false
 				}
 			}
 		},

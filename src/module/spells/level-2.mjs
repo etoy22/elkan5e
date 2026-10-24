@@ -1,14 +1,13 @@
-import { createLightRegion, drainedEffect } from "../shared/helpers.mjs";
-
-const SIZE_ORDER = ["tiny", "sm", "med", "lg", "huge", "grg"];
-const SIZE_TO_GRID = {
-	tiny: 0.5,
-	sm: 1,
-	med: 1,
-	lg: 2,
-	huge: 3,
-	grg: 4,
-};
+import {
+	addRegionBehaviorAsGM,
+	createLightRegion,
+	deleteEffects,
+	drainedEffect,
+	removeStatuses,
+	updateActorAsGM,
+	withoutTokens,
+} from "../shared/helpers.mjs";
+import { computeDistance, damageOnly } from "../shared/midi-compat.mjs";
 
 function tokenIdFromEntry(entry) {
 	if (!entry) return null;
@@ -37,15 +36,17 @@ function resolveCanvasToken(entry) {
 }
 
 /**
- * Runs Well Of Corruption spell automation.
+ * Drains each resolved target's maximum HP by a shared 4d8 roll, plus 2d8 per cast level
+ * above 2. Successful saves halve the amount, rounded down; draining is capped at missing HP.
+ * Targets with no recorded save outcome receive the full amount.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
- * @returns {Promise<unknown>} Promise resolution result.
+ * @returns {Promise<void>}
  */
 export async function wellOfCorruption(workflow) {
 	const caster = workflow.actor;
 	const casterToken = workflow.token;
-	const casterUuid = workflow.token.actor?.uuid;
+	const casterUuid = workflow.token?.actor?.uuid;
 	if (!caster || !casterToken || !casterUuid) {
 		console.warn("Well of Corruption aborted: missing caster or casterToken");
 		return;
@@ -99,190 +100,6 @@ export async function wellOfCorruption(workflow) {
 			casterUuid,
 			true,
 		);
-	}
-}
-
-/**
- * Runs Enlarge spell automation.
- *
- * @param {*} workflow - Workflow payload from the triggering item or activity.
- * @returns {Promise<void>} Promise resolution result.
- */
-export async function enlarge(workflow) {
-	const failedTargets = Array.from(workflow.failedSaves ?? workflow._failedSaves ?? []);
-	if (failedTargets.length === 0) {
-		ui.notifications.warn("No targets failed the roll — cannot apply enlarge.");
-		return;
-	}
-
-	for (const failedToken of failedTargets) {
-		const token = resolveCanvasToken(failedToken);
-		if (!token) continue;
-
-		const actor = token.actor;
-		if (!actor) continue;
-
-		const flag = token.document.getFlag("elkan5e", "sizeChange") || {};
-		if (flag.enlarged) {
-			ui.notifications.info(`${actor.name} is already enlarged.`);
-			continue;
-		}
-		if (flag.reduced) {
-			ui.notifications.info(
-				`${actor.name} is currently reduced — cannot enlarge until reduced effect removed.`,
-			);
-			continue;
-		}
-
-		const currentSize = actor.system.traits.size;
-		const currentIndex = SIZE_ORDER.indexOf(currentSize);
-		if (currentIndex === -1 || currentIndex >= SIZE_ORDER.length - 1) {
-			ui.notifications.warn(`${actor.name} is already at maximum size or unknown size.`);
-			continue;
-		}
-
-		const newSize = SIZE_ORDER[currentIndex + 1];
-		const newGrid = SIZE_TO_GRID[newSize];
-
-		if (!flag.originalSize) {
-			flag.originalSize = currentSize;
-			flag.originalWidth = token.document.width;
-			flag.originalHeight = token.document.height;
-		}
-		flag.enlarged = true;
-
-		await token.document.update({
-			width: newGrid,
-			height: newGrid,
-			"flags.elkan5e.sizeChange": flag,
-		});
-		await actor.update({ "system.traits.size": newSize });
-
-		ui.notifications.info(`${actor.name} has been enlarged to size ${newSize.toUpperCase()}.`);
-	}
-}
-
-/**
- * Runs reduce spell automation.
- *
- * @param {*} workflow - Workflow payload from the triggering item or activity.
- * @returns {Promise<void>} Promise resolution result.
- */
-export async function reduce(workflow) {
-	const failedTargets = Array.from(workflow.failedSaves ?? workflow._failedSaves ?? []);
-	if (failedTargets.length === 0) {
-		ui.notifications.warn("No targets failed the roll — cannot apply reduce.");
-		return;
-	}
-
-	for (const failedToken of failedTargets) {
-		const token = resolveCanvasToken(failedToken);
-		if (!token) continue;
-
-		const actor = token.actor;
-		if (!actor) continue;
-
-		const flag = token.document.getFlag("elkan5e", "sizeChange") || {};
-		if (flag.reduced) {
-			// Already reduced, skip
-			continue;
-		}
-		if (flag.enlarged) {
-			// Currently enlarged, cannot reduce until enlarged removed
-			continue;
-		}
-
-		const currentSize = actor.system.traits.size;
-		const currentIndex = SIZE_ORDER.indexOf(currentSize);
-		if (currentIndex <= 0) {
-			// Already at minimum or unknown size, skip
-			continue;
-		}
-
-		const newSize = SIZE_ORDER[currentIndex - 1];
-		const newGrid = SIZE_TO_GRID[newSize];
-
-		if (!flag.originalSize) {
-			flag.originalSize = currentSize;
-			flag.originalWidth = token.document.width;
-			flag.originalHeight = token.document.height;
-		}
-		flag.reduced = true;
-
-		await token.document.update({
-			width: newGrid,
-			height: newGrid,
-			"flags.elkan5e.sizeChange": flag,
-		});
-		await actor.update({ "system.traits.size": newSize });
-
-		// You can uncomment to notify
-		// ui.notifications.info(`${actor.name} has been reduced to size ${newSize.toUpperCase()}.`);
-	}
-}
-
-/**
- * Runs return To Normal Size spell automation.
- *
- * @param {*} effect - Active effect being handled.
- * @returns {Promise<void>} Promise resolution result.
- */
-export async function returnToNormalSize(effect) {
-	const actor = effect.parent;
-
-	if (!actor || !effect) {
-		console.warn("Missing actor or effect, aborting returnToNormalSize.");
-		return;
-	}
-
-	const name = effect.name?.toLowerCase();
-
-	if (!name?.includes("enlarge") && !name?.includes("reduce")) {
-		return;
-	}
-
-	const token = actor.getActiveTokens()[0];
-
-	if (!token) {
-		console.warn("No active token found for actor.");
-		return;
-	}
-
-	const flag = token.document.getFlag("elkan5e", "sizeChange");
-
-	if (!flag) {
-		console.warn("No sizeChange flag found on token. Nothing to revert.");
-		return;
-	}
-
-	let changed = false;
-
-	if (name.includes("enlarge") && flag.enlarged) {
-		flag.enlarged = false;
-		changed = true;
-	}
-	if (name.includes("reduce") && flag.reduced) {
-		flag.reduced = false;
-		changed = true;
-	}
-
-	if (!changed) {
-		console.warn("No matching size change flags to clear.");
-		return;
-	}
-
-	if (!flag.enlarged && !flag.reduced) {
-		await token.document.update({
-			width: flag.originalWidth,
-			height: flag.originalHeight,
-		});
-		await actor.update({ "system.traits.size": flag.originalSize });
-		await token.document.unsetFlag("elkan5e", "sizeChange");
-	} else {
-		// If one effect remains active, update the flags only
-		await token.document.update({
-			"flags.elkan5e.sizeChange": flag,
-		});
 	}
 }
 
@@ -394,13 +211,44 @@ export async function moonBeam(workflow) {
 	}
 }
 
+// Each Mirror Image duplicate is its own effect adding 1 to this flag (the same pattern as the
+// dnd5e Mirror Image items), so duplicates are counted and destroyed one effect at a time.
+const MIRROR_IMAGE_KEY = "flags.elkan5e.mirrorImages";
+
 /**
- * Runs Mirror Image spell automation.
- * Wire this up at postAttackRollComplete so workflow.attackTotal is available.
- * Returning false aborts the attack on the real target when an image is hit.
+ * Gets the active Mirror Image duplicate effects on an actor.
+ *
+ * @param {Actor} actor - Actor to check.
+ * @returns {ActiveEffect[]}
+ */
+const getMirrorImageDuplicates = (actor) =>
+	(actor?.effects ?? []).filter(
+		(e) =>
+			!e.disabled &&
+			(e.system?.changes ?? e.changes ?? []).some((c) => c.key === MIRROR_IMAGE_KEY),
+	);
+
+/**
+ * Finds the concentration effect maintaining an actor's Mirror Image.
+ *
+ * @param {Actor} actor - Actor that cast Mirror Image.
+ * @returns {ActiveEffect|undefined}
+ */
+const getMirrorImageConcentration = (actor) =>
+	[...(actor.concentration?.effects ?? [])].find((e) => {
+		const data = e.getFlag("dnd5e", "item") ?? {};
+		const identifier =
+			actor.items.get(data.id)?.system.identifier ?? data.data?.system?.identifier;
+		return identifier === "mirror-image";
+	});
+
+/**
+ * Runs Mirror Image spell automation on midi-qol.AttackRollComplete (after midi checks hits, so
+ * workflow.attackTotal and workflow.hitTargets are set). When the attack is redirected to a
+ * duplicate, the real target is removed from the workflow so it takes no damage.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
- * @returns {Promise<false|void>} false if the attack is absorbed by a duplicate, void otherwise.
+ * @returns {Promise<void>}
  */
 export async function mirrorImage(workflow) {
 	try {
@@ -408,20 +256,15 @@ export async function mirrorImage(workflow) {
 		if (workflow.template) return;
 		if (!["mwak", "rwak", "msak", "rsak"].includes(workflow.activity?.actionType)) return;
 
-		// Find the target carrying a Mirror Image effect.
-		const target = Array.from(workflow.targets ?? []).find((t) => {
-			const actor = t.actor ?? t.document?.actor;
-			return actor?.effects?.some(
-				(e) => /^Mirror Image \(\d+\)$/.test(e.name) && !e.disabled,
-			);
-		});
+		// Find the target with Mirror Image duplicates.
+		const target = Array.from(workflow.targets ?? []).find(
+			(t) => getMirrorImageDuplicates(t.actor ?? t.document?.actor).length,
+		);
 		if (!target) return;
 
 		const actor = target.actor ?? target.document?.actor;
-		const effect = actor.effects.find(
-			(e) => /^Mirror Image \(\d+\)$/.test(e.name) && !e.disabled,
-		);
-		const duplicates = parseInt(effect.name.match(/\((\d+)\)/)[1]);
+		const duplicateEffects = getMirrorImageDuplicates(actor);
+		const duplicates = duplicateEffects.length;
 
 		// Threshold based on remaining duplicates.
 		const threshold = duplicates >= 3 ? 4 : duplicates === 2 ? 5 : 7;
@@ -443,14 +286,17 @@ export async function mirrorImage(workflow) {
 
 		if (hitsDuplicate) {
 			const newCount = duplicates - 1;
+			// deleteEffects relays to the GM, since the attacker usually doesn't own the target.
 			if (newCount <= 0) {
-				await effect.delete();
+				// The last duplicate ends the spell, so end its concentration as well.
+				const concentration = getMirrorImageConcentration(actor);
+				await deleteEffects(actor, [duplicateEffects[0], concentration].filter(Boolean));
 				await ChatMessage.create({
 					content: `<p><strong>${actor.name}'s</strong> final Mirror Image duplicate was destroyed — the spell ends!</p>`,
 					speaker: ChatMessage.getSpeaker({ token: speakerToken }),
 				});
 			} else {
-				await effect.update({ name: `Mirror Image (${newCount})` });
+				await deleteEffects(actor, [duplicateEffects[0]]);
 				await ChatMessage.create({
 					content: `<p>A <strong>Mirror Image</strong> duplicate of ${actor.name} was destroyed! <em>${newCount} duplicate${newCount === 1 ? "" : "s"} remain.</em></p>`,
 					speaker: ChatMessage.getSpeaker({ token: speakerToken }),
@@ -465,7 +311,11 @@ export async function mirrorImage(workflow) {
 
 		// Remove the real target from the workflow so damage is never applied,
 		// without aborting the whole roll (which would delete the attack roll card).
-		workflow.targets.delete(target);
+		// Midi has already checked hits by AttackRollComplete, so the hit sets need it too.
+		// Midi-QOL rebuilds these sets from stored uuids on every read, so assign filtered sets.
+		for (const key of ["targets", "hitTargets", "hitTargetsEC"]) {
+			if (workflow[key]) workflow[key] = withoutTokens(workflow[key], [target]);
+		}
 	} catch (err) {
 		console.error("Mirror Image |", err);
 	}
@@ -530,11 +380,9 @@ export async function lesserRestoration(workflow) {
 
 		if (!chosen || chosen === "cancel") return;
 
-		// Remove every active effect that carries this status (handles stacked effects).
-		const toDelete = actor.effects
-			.filter((e) => e.statuses.has(chosen) && !e.disabled)
-			.map((e) => e.id);
-		if (toDelete.length) await actor.deleteEmbeddedDocuments("ActiveEffect", toDelete);
+		// Remove every active effect that carries this status (handles stacked effects), through the
+		// GM when the caster doesn't own the target.
+		await removeStatuses(actor, [chosen]);
 
 		const label = REMOVABLE.find((c) => c.id === chosen)?.label ?? chosen;
 		await ChatMessage.create({
@@ -554,10 +402,15 @@ export async function lesserRestoration(workflow) {
  * @returns {Promise<void>} Promise resolution result.
  */
 export async function spiritLinkPair(effect) {
+	// createActiveEffect fires on every client; only the active GM pairs (and can set both flags).
+	if (!game.users.activeGM?.isSelf) return;
 	if (effect?.name !== "Spirit Link") return;
 	if (effect.getFlag("dnd5e", "dependentOn")) return;
 
-	const partner = game.actors.contents
+	// Include unlinked token actors, which aren't in game.actors.
+	const actors = new Set(game.actors.contents);
+	for (const token of canvas?.tokens?.placeables ?? []) if (token.actor) actors.add(token.actor);
+	const partner = [...actors]
 		.flatMap((actor) => actor.appliedEffects)
 		.find(
 			(candidate) =>
@@ -573,10 +426,10 @@ export async function spiritLinkPair(effect) {
 }
 
 /**
- * Runs Spirit Link spell automation on actor HP changes: mirrors half the damage taken to
- * the linked partner (the caster's own effect grants resistance to all damage, so the HP
- * already lost here is exactly the other half). Ends the bond if either linked creature
- * drops to 0 HP or the two become separated by more than 60 feet.
+ * Shares an actor's pending HP loss with its Spirit Link partner, using the full HP difference
+ * after any prior resistance. Shared damage consumes the partner's temporary HP before HP and
+ * bypasses further resistance. Ignores updates marked as already shared. Ends the bond when
+ * either creature reaches 0 HP or their active tokens are more than 60 scene units apart.
  *
  * @param {Actor5e} actor - Actor about to be updated.
  * @param {object} updates - Pending update diff.
@@ -584,7 +437,8 @@ export async function spiritLinkPair(effect) {
  * @returns {Promise<void>} Promise resolution result.
  */
 export async function spiritLinkUpdate(actor, updates, options) {
-	if (options.onUpdateCalled) return;
+	// Shared damage is applied with this option so it isn't shared back.
+	if (options.onUpdateCalled || options.elkan5eSpiritLink) return;
 	const newHp = foundry.utils.getProperty(updates, "system.attributes.hp.value");
 	if (newHp === undefined) return;
 
@@ -600,7 +454,7 @@ export async function spiritLinkUpdate(actor, updates, options) {
 	const partnerToken = partnerActor.getActiveTokens()[0];
 
 	if (thisToken && partnerToken) {
-		const distance = MidiQOL.computeDistance(thisToken, partnerToken, { wallsBlock: false });
+		const distance = computeDistance(thisToken, partnerToken);
 		if (distance > 60) {
 			await ChatMessage.create({
 				content: `Spirit Link ends — ${actor.name} and ${partnerActor.name} are more than 60 feet apart (${distance} ft).`,
@@ -620,49 +474,70 @@ export async function spiritLinkUpdate(actor, updates, options) {
 		await ChatMessage.create({
 			content: `Spirit Link: ${damage} damage is shared from ${actor.name} to ${partnerActor.name}.`,
 		});
-		await MidiQOL.applyTokenDamage(
-			[{ damage, type: "none" }],
-			damage,
-			new Set([partnerToken]),
-			undefined,
-			new Set(),
+		// The partner's half can't be reduced, so it skips resistances and goes straight to hit points.
+		const hp = partnerActor.system.attributes.hp;
+		const fromTemp = Math.min(hp.temp ?? 0, damage);
+		const partnerHp = Math.max(hp.value - (damage - fromTemp), 0);
+		await updateActorAsGM(
+			partnerActor,
 			{
-				existingDamage: [],
-				superSavers: new Set(),
-				semiSuperSavers: new Set(),
-				workflow: undefined,
-				updateContext: { onUpdateCalled: true },
+				"system.attributes.hp.temp": (hp.temp ?? 0) - fromTemp,
+				"system.attributes.hp.value": partnerHp,
 			},
+			{ elkan5eSpiritLink: true },
 		);
+		if (partnerHp <= 0) await thisEffect.delete();
 	}
 }
 
 /**
- * Runs Shatter spell automation.
- * Constructs have disadvantage on the Constitution saving throw.
- * Wire this up at the preambleComplete phase so it runs before saves are rolled.
+ * Runs Shatter spell automation (midi-qol preTargetSave): constructs have disadvantage on the
+ * Constitution saving throw. Midi rolls each target's save from the saveDetails it passes here.
  *
- * @param {*} workflow - Workflow payload from the triggering item or activity.
- * @returns {Promise<void>} Promise resolution result.
+ * @param {Token} target - Target about to roll its save.
+ * @param {*} workflow - Midi-QOL workflow for the Shatter cast.
+ * @param {object} saveDetails - Midi-QOL save request for this target.
  */
-export async function shatter(workflow) {
-	try {
-		if (!workflow.targets?.size) return;
+export function shatter(target, workflow, saveDetails) {
+	if (workflow.item?.system.identifier !== "shatter") return;
+	if (target.actor?.system.details.type?.value === "construct") saveDetails.disadvantage = true;
+}
 
-		for (const target of workflow.targets) {
-			const actor = target.actor ?? target.document?.actor;
-			if (!actor) continue;
-
-			if (actor.system.details.type?.value === "construct") {
-				const tokenId = target.document?.id ?? target.id;
-				if (tokenId) {
-					// Safely initialize the set if midi-qol hasn't populated it yet,
-					// then mark this construct for disadvantage on the Con save.
-					(workflow.disadvantageSaves ??= new Set()).add(tokenId);
-				}
-			}
-		}
-	} catch (err) {
-		console.error("Shatter |", err);
+/**
+ * Runs Spike Growth automation after it's cast: gives its area a script behavior that deals
+ * 2d4 piercing damage for every 5 ft. a creature moves inside it. Players can't change scene
+ * regions, so the behavior is added through the GM.
+ *
+ * @param {*} workflow - Midi-QOL workflow of the cast.
+ * @returns {Promise<void>}
+ */
+export async function spikeGrowth(workflow) {
+	for (const ref of workflow.templateUuids ?? []) {
+		await addRegionBehaviorAsGM(ref, "spikeGrowth");
 	}
+}
+
+/**
+ * Deals Spike Growth's damage for one stretch of movement inside its area. Foundry splits a move
+ * where it crosses the area's edge, so this stretch is only the part inside. Teleporting doesn't
+ * count. Runs on the active GM.
+ *
+ * @param {RegionEvent} event - The region's tokenMoveWithin event.
+ * @returns {Promise<void>}
+ */
+export async function spikeGrowthMove(event) {
+	if (!game.users.activeGM?.isSelf) return;
+	const { token, movement } = event.data ?? {};
+	const actor = token?.actor;
+	const waypoints = movement?.passed?.waypoints ?? [];
+	if (!actor || !waypoints.length || waypoints.every((w) => w.action === "blink")) return;
+
+	const feet = canvas.grid.measurePath([movement.origin, ...waypoints]).distance;
+	const dice = Math.floor(feet / 5) * 2;
+	if (dice <= 0) return;
+	const roll = await new Roll(`${dice}d4`).evaluate();
+	const flavor = `Spike Growth — ${dice}d4 piercing (${Math.floor(feet / 5) * 5} ft. through spikes)`;
+	await damageOnly(actor, token.object, roll.total, "piercing", [token.object ?? token], roll, {
+		flavor,
+	});
 }

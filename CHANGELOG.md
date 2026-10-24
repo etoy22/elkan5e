@@ -1,6 +1,607 @@
 # Changelog
 
+# v1.14.4
+
+## Bug Fixes
+
+- Damage type labels everywhere (dropdowns, resistances, vulnerabilities, immunities, chat cards, and tooltips) now read Sonic and Electric instead of Thunder and Lightning.
+- Effects from spells, spell scrolls, and magic items are now marked as magical, so an [Antimagic Field](https://www.elkan5e.com/spells/antimagic-field) suppresses them.
+- Half-speed effects slow their target again: Hamstring, Hamstring Blow, Harrying Blow, Burdening Smite, Phantom Barrage, Howling Storm, Magic Shackles, Copper Breath Weapon, Touch of Corrosion, Torpor, and the Bullywug Hunter's Hamstring Strike. Into the Fray now gives 1.5× speed instead of doubling it.
+- Vicious Wound and [Geas](https://www.elkan5e.com/spells/geas) give their level of exhaustion again. Vicious Wound's level goes away when its effect ends.
+- Aasimar no longer gain immunity to the Frightened condition.
+- Halfling Nimbleness: fixed a broken difficult terrain link in the description.
+- Rage's melee damage bonus, [Bless](https://www.elkan5e.com/spells/bless)'s weapon damage bonus, and Jarl's Shield's bonus apply again. dnd5e 6.0 ignored them.
+- Goodberry and Delayed Surge create their duration effects again. Before, the effect failed to create with an error.
+- [Darkness](https://www.elkan5e.com/spells/darkness), [Moonbeam](https://www.elkan5e.com/spells/moonbeam), and other spells that place lights no longer show an "AmbientLight does not exist" error when they end.
+- Effects that give a condition now give the actual condition, the same one the token HUD toggles (Knockdown makes the target Prone, Symbol's Fear glyph makes it Frightened). A creature shows one Prone instead of two, the condition's rules apply once instead of twice (Slowed gave -4 AC instead of -2), turning it off from the token HUD removes it, and getting it again from the same source doesn't add a second copy. The condition still ends when the effect that gave it ends.
+- Slowed now halves the creature's speed, as written.
+- [Fire Shield](https://www.elkan5e.com/spells/fire-shield) deals its retaliation damage again. Before, it failed with an error on Foundry 14.
+- Fighting Style: Protection no longer refuses to activate with a "no uses remaining" warning.
+- Reckless Attack no longer refuses to activate with a "no uses remaining" warning.
+
+## Compatibility
+
+- Most of the module's automation now works without Midi-QOL. When Midi-QOL isn't active, features run from dnd5e's own rolls instead:
+    - Grapple and Shove roll the contest without Midi-QOL. The target's owner rolls their side.
+    - Damage and healing dealt by features (Healing Overflow, Infused Healer, Mark of Thorns, Vampiric Smite, [Blight](https://www.elkan5e.com/spells/blight), [Pain Reflection](https://www.elkan5e.com/spells/pain-reflection), [Wrath of the Reaper](https://www.elkan5e.com/spells/wrath-of-the-reaper), [Spike Growth](https://www.elkan5e.com/spells/spike-growth)) is rolled to chat and applied. [Divine Word](https://www.elkan5e.com/spells/divine-word) and [Curse of Doom](https://www.elkan5e.com/spells/curse-of-doom) apply their effects.
+    - Before targets roll: [Sanctuary](https://www.elkan5e.com/spells/sanctuary), Careful Spell, Power of Love and Fear, and [Blight](https://www.elkan5e.com/spells/blight) prompt when the spell or attack is used. Creatures they exclude are left off the save card.
+    - Attacks: attacking a creature you can't see has disadvantage, Precise Hunter gives advantage, and [Mirror Image](https://www.elkan5e.com/spells/mirror-image) checks for a duplicate.
+    - Saves: [Shatter](https://www.elkan5e.com/spells/shatter), [Spectral Lance](https://www.elkan5e.com/spells/spectral-lance), [Sunbeam](https://www.elkan5e.com/spells/sunbeam), [Disintegrate](https://www.elkan5e.com/spells/disintegrate), [Blight](https://www.elkan5e.com/spells/blight), and [Ensnaring Vine](https://www.elkan5e.com/spells/ensnaring-vine) give advantage or disadvantage on their saves. Power of Love and Fear and Strickening Gaze prompt when a creature fails one.
+    - Damage rolls: [Prismatic Bolt](https://www.elkan5e.com/spells/prismatic-bolt) picks its damage type and Elemental Infusion offers to change it.
+    - Damage taken: Mark of Affliction, Mark of Thorns, [Fire Shield](https://www.elkan5e.com/spells/fire-shield), Finishing Blow, [Pain Reflection](https://www.elkan5e.com/spells/pain-reflection), and the savant spell reminders run when the damage is applied. Their prompts appear for whoever applies the damage.
+    - Without Midi-QOL, features that react to failed saves prompt once per creature instead of once per spell, and creatures a spell's effects should skip after its saves are rolled are named in chat instead of removed.
+- Updated reactions for Midi-QOL 14.6, which only reads a reaction's trigger from the activity. Before, almost every reaction prompted whenever its owner was hit.
+    - Reactions now prompt on their own trigger: being missed (Riposte, Misdirect), being attacked, before the roll (Brace), taking damage (Searing Retribution, Deflect Elements, Disperse, Bonded Lifeforce, [Hellish Rebuke](https://www.elkan5e.com/spells/hellish-rebuke), Gauntlets of Retribution), failing a save (Indomitable Squad, Shield of Will, Strength in Numbers, Ring of Evasion, Scarab of Protection, Four-Leaf Clover), succeeding on a save (Last Laugh, Ring of Spell Turning, Staff of Charming), or a spell targeting you (the Abjurer's Counterspell, Rod of Absorption, Staff of the Magi, Ioun Stones of Absorption).
+    - Reactions Midi-QOL can't detect no longer prompt when you're hit: ones that help an ally, or that trigger on movement, skill checks, initiative, falling, or your own rolls. Use them from your sheet. These include Bardic Inspiration, Fighting Style: Protection, Improved Protection, Bodyblock, Calm the Herd, Lend Expertise, Quick Wit, Ambush Leader, Tactician, and Shroud of Darkness.
+    - Temptation of Blood, Shared Mind, and Deflect Missiles used Midi-QOL's old reaction types and are now regular reactions.
+- Updated for Midi-QOL 14.6 and DAE 14.6:
+    - Effects that need the caster's `@` values now say so, since DAE now fills them from the target by default: every OverTime effect (save DCs, spell modifier, spell level), Warchant's bonuses, Avenger's Vow, Aid, and Pale Tincture. Before, a creature affected by [Hold Creature](https://www.elkan5e.com/spells/hold-creature) or Web, for example, would have rolled against its own spell save DC.
+    - [Power Word Stun](https://www.elkan5e.com/spells/power-word-stun)'s 150 HP check reads the target's hit points, not the caster's.
+    - Careful Spell, Power of Love and Fear, Necromantic Surge, and [Blight](https://www.elkan5e.com/spells/blight) work again. Midi-QOL removed the hook they ran on.
+    - [Shatter](https://www.elkan5e.com/spells/shatter) gives constructs disadvantage on the save again.
+    - Effects that end at the start or end of a turn now use dnd5e's turn expiry instead of DAE's retired special durations (22 effects, such as [Vicious Mockery](https://www.elkan5e.com/spells/vicious-mockery), [Shadow Strike](https://www.elkan5e.com/spells/shadow-strike), and the graveguards' Dodge and Help).
+    - Effects applied by an activity are no longer also marked as passive, so their durations run once applied.
+    - Replaced effect keys DAE has deprecated.
+- Areas that give an effect while a creature is inside now use dnd5e's Activity Behaviors instead of Midi-QOL's area rules: [Smoke Field](https://www.elkan5e.com/spells/smoke-field), [Well of Corruption](https://www.elkan5e.com/spells/well-of-corruption), [Beacon of Hope](https://www.elkan5e.com/spells/beacon-of-hope) (including the Abbot's), [Antimagic Field](https://www.elkan5e.com/spells/antimagic-field), [Holy Aura](https://www.elkan5e.com/spells/holy-aura), and the Druid's Howling Storm and Shifting Sands.
+- Web and Antipathy/Sympathy no longer re-cast the spell (placing a new area and spending a spell slot) each time a creature enters the area. Entering now rolls a separate save.
+- [Zone of Truth](https://www.elkan5e.com/spells/zone-of-truth) no longer re-casts itself each time a creature enters. Creatures in the circle get its effect, which ends when they leave. The Charisma save isn't automated: roll it from the description and remove the effect from creatures that succeed.
+- Areas that affect a creature when it enters or ends its turn there "but not both" ([Cloudkill](https://www.elkan5e.com/spells/cloudkill), [Incendiary Cloud](https://www.elkan5e.com/spells/incendiary-cloud), [Stinking Cloud](https://www.elkan5e.com/spells/stinking-cloud), and others) no longer affect a creature twice on the turn it enters. Midi-QOL checked the turn after it had already ended.
+- [Grease](https://www.elkan5e.com/spells/grease), [Spike Growth](https://www.elkan5e.com/spells/spike-growth), [Cloudkill](https://www.elkan5e.com/spells/cloudkill), [Insect Plague](https://www.elkan5e.com/spells/insect-plague), and [Vortex](https://www.elkan5e.com/spells/vortex) no longer show a "Could not find macro AA ApplyEffectsToTemplate" error when cast. It came from the Automated Animations module, which isn't required.
+- Advantage and disadvantage on a creature's own rolls now use dnd5e 6.0's roll modes instead of Midi-QOL flags (about 200 effects across conditions, features, spells, items, and creatures). They work without Midi-QOL, and a source of advantage and a source of disadvantage now cancel out, as the rules say. Before, some effects forced the result and ignored every other source. Midi-QOL is still used where dnd5e has no equivalent, such as advantage on attacks against a creature, conditional effects, and auto-failing saves.
+- Advantage on saves against a condition works again when the condition comes from an enchantment's rider, such as a weapon enchantment that adds Poisoned. dnd5e 6.0 moved where those conditions are stored. Affects Fey Ancestry, Dwarven Resilience, Sturdy, Steadfast, Laborer's Endurance, Sure-Footed (including the Mountain Goat's), Countercharm (Bard), [Purify](https://www.elkan5e.com/spells/purify), [Protection from Poison](https://www.elkan5e.com/spells/protection-from-poison), Antitoxin, and the Belt of Dwarvenkind.
+
+## Ancestries
+
+- Kobold: Burrowing Crawler now grants a crawl speed equal to your walking speed. Before, it only granted the 5 ft. burrow speed.
+- Air, Earth, Fire, and Water Genasi can now be Small or Medium, as their descriptions say.
+- Merfolk Speed now has a description.
+- Gnome Cunning's advantage on Intelligence, Wisdom, and Charisma saves can now be cancelled by a source of disadvantage, as normal.
+- Dragonborn
+    - Blue and Bronze: passive features now read "Electric Resistance" and "Sonic Resistance".
+    - Breath Weapon (Blue) now has 1 use per long rest, like the other colors.
+    - Breath Weapon (Gold)'s repeat Constitution save now uses your breath weapon DC.
+    - Breath Weapon (Green)'s save DC now uses your Charisma or Constitution modifier, whichever is higher, like the other colors.
+    - Breath Weapon (Silver)'s Restrained condition now ends at the end of your next turn, as written.
+
+## Background
+
+- Sailor's Vigilance now offers to reroll your initiative after you roll it.
+- Quiet Focus now offers to reroll after you roll a skill check that isn't a Charisma skill.
+- Narrow Escape now prompts when you're missed, not only when you're hit.
+- Charade now lasts until the end of your next turn, instead of the start.
+- Dazzling Display is now limited to once per short rest, as its description says.
+
+## Classes
+
+- Every class now grants its Ability Score Improvement at levels 4, 8, 12, and 16 directly, instead of each feat granting one. You still choose a feat at those levels too. On Elkan 5e classes, the Ability Score Improvement can't be swapped for a second feat; classes from other sources still allow it. Existing characters keep the Ability Score Improvements they already got from feats.
+- Fixed starting equipment choices that offered a Light Crossbow or Darts that didn't exist, or Fighter, Paladin, and Ranger bundles (Handaxes, Javelins, Shortswords) from the wrong compendium.
+- Barbarian, Fighter, Monk, Paladin, Ranger, Rogue, Warchanter, and Pact Weapon now grant the Fighting Style feature, and you choose your style from it, instead of each having its own copy of the choice. Every class now gets the Fighting Style feature on its sheet, and its description now lists Mounted Combat. Existing characters keep the style they already chose.
+- Fighting Style: Mounted Combat can now be chosen wherever the other fighting styles are offered: every class's Fighting Style choice, Bulwark, Pact Weapon, and the level 4+ feat choices. Champion's Improved Fighting Style and the Fighter's feat choices also offer Improved Mounted Combat.
+- Several class features showed the wrong level in their requirements (for example, Shield of Will said Sorcerer 10 instead of 9). They now match the level you gain them.
+- Advancement choices again hide invocations for a pact boon you don't have, and feats you already have that can't be taken twice. Neither filter ran on Foundry v14.
+
+### [Barbarian](https://www.elkan5e.com/barbarian)
+
+- Rage now applies a Raging status, so features that only work while raging can reliably detect it.
+- Rage's damage bonus now applies to thrown weapons.
+- Mindless Rage now activates while raging, and adds its text to the Rage description when gained.
+- Relentless Rage now triggers. It was skipped whenever Undead Fortitude was checked first.
+- Relentless Rage now checks for the Raging status instead of an effect named Rage, and its rising DC resets on a long rest as well as a short rest.
+- Barbarian's Defense now switches automatically between Unarmored Defense (10 + Dex + Con) and the armored formula (armor + the higher of Dex or Con, capped by the armor's Dex limit), depending on whether armor is equipped.
+- Brutal Strike: Hamstring Blow now halves flying speed too, and no longer reduces swimming speed twice.
+- Slayer
+    - Death Haze now activates while raging: necrotic resistance and immunity to Drained and exhaustion. Entering rage also removes Drained and all your exhaustion.
+    - Death Curse now has its damage type (necrotic).
+- Swarmhost
+    - Swarm Form now activates while raging (condition immunities, and the flying speed at level 6).
+    - Disperse's reaction now triggers while raging.
+- Draconic
+    - Seething Blood's dragon-type dialog now lists "Electric (Blue Dragon)" instead of "Lightning (Blue Dragon)".
+- Bloodrager
+    - Adding the Bloodrager subclass without the level-up window (for example from a macro or the compendium) no longer fails after you choose a Sorcerous Origin.
+    - Wild Blood no longer offers a surge on [Blink](https://www.elkan5e.com/spells/blink)'s automatic end-of-turn rolls. Only casting a spell can surge.
+
+### [Bard](https://www.elkan5e.com/bard)
+
+- Cacophony
+    - Blasting Volume and Improved Blasting Volume now describe their damage as Sonic instead of Thunder.
+    - Improved Blasting Volume now adds a fourth bardic inspiration die to Blasting Volume's damage.
+- Jester
+    - Now grants the standard [Vicious Mockery](https://www.elkan5e.com/spells/vicious-mockery) and modifies it (damage equal to your bardic inspiration die) instead of granting a separate Vicious Mockery (Jester) spell.
+    - Jester's Aspersion now adds its psychic damage text to the Cutting Words description when gained.
+    - Harmless Act now adds its charm option to the Cutting Words and [Vicious Mockery](https://www.elkan5e.com/spells/vicious-mockery) descriptions when gained.
+- Lorekeeper
+    - Now grants [Detect Magic](https://www.elkan5e.com/spells/detect-magic) and [Identify](https://www.elkan5e.com/spells/identify).
+
+### [Cleric](https://www.elkan5e.com/cleric)
+
+- Holy Strike (Cleric) now adds its damage on your first weapon hit each turn. It never triggered.
+- Lifebinder
+    - Infused Healer now heals you when you cast a healing spell of 1st level or higher on someone else, using the level you cast it at. Before, it only ran when you used the feature itself.
+    - Healing Overflow now offers to move extra healing to another hurt creature within the spell's range (an adjacent one for touch spells). It never found the spell's details from Midi-QOL.
+    - Blessed Healing now adds 2 + the spell's level to healing spells of 1st level or higher. dnd5e 6.0 has no healing bonus its effect could use, so it never applied.
+- Reaper
+    - Death Touched now grants resistance to necrotic or poison damage. It granted neither.
+- Deceiver
+    - Shadow Refuge now shows a reminder when you spend a spell slot on an illusion spell of 1st level or higher, telling you how many temporary hit points it can grant (2d6 per slot level). Before, the reminder never appeared.
+    - Trickster's Misdirection now deals its damage (from the Deceiver's scale value) and recovers its uses on a long rest.
+
+### [Druid](https://www.elkan5e.com/druid)
+
+- Chthonic
+    - Now grants the [Invisibility](https://www.elkan5e.com/spells/invisibility) spell.
+    - Malignant Shroud no longer tries to give its target an item that no longer exists. Its retaliation damage is used from the feature's damage activity.
+- Earthshaker
+    - Quake's push option now triggers correctly.
+    - Ride the Mountain now grants Move Self (30 ft.) and Move Ally (15 ft.) teleport activities to Quake and Shield of the Crags, and its identifier no longer conflicts with Quake.
+    - Shield of the Crags now grants temporary hit points instead of healing, and half your druid level is now rounded down.
+    - Earth's Favored now adds its self-use benefits to the Shield of the Crags description when gained.
+    - Aspect of the Mountain now grants immunity to the Petrified condition, and grants [Meld into Stone](https://www.elkan5e.com/spells/meld-into-stone).
+- Wild Shape
+    - Shifting Sands is automated: at the end of your turn you're asked which ally in its area to move, and that ally's owner places it up to 30 ft. away through the ground.
+    - Twisted Terrain now uses the system's Difficult Terrain region behavior instead of an active effect that halved speed.
+    - Howling Storm affects every creature in the storm while they're inside. Before, it only affected enemies.
+    - Lurking Fog's heavily obscured area also blinds creatures inside, like [Fog Cloud](https://www.elkan5e.com/spells/fog-cloud). Creatures no longer stay heavily obscured after leaving it, and the fog no longer applies its effects twice.
+
+### [Fighter](https://www.elkan5e.com/fighter)
+
+- Extra Attack (3 Attacks) and Extra Attack (4 Attacks) now update the Extra Attack description when gained.
+- Single Weapon Fighting and [Improved Single Weapon Fighting](https://www.elkan5e.com/feats/improved-single-weapon-fighting) now only add their damage bonus to melee attacks (not thrown or spell attacks) while you're fighting with a single weapon: a manufactured weapon when it's the only weapon you have equipped, or an unarmed strike or natural weapon when you have no manufactured weapons equipped.
+- [Fighting Style: Mounted Combat](https://www.elkan5e.com/feats/fighting-style)'s incapacitated reference no longer applies the condition when clicked.
+- Combat Maneuvers
+    - [Parry](https://www.elkan5e.com/feats/parry) and [Powerful Attack](https://www.elkan5e.com/feats/powerful-attack) effects now last 1 turn instead of having no duration.
+- Battlemaster
+    - Now has an Enchant activity: use it on your chosen maneuver to remove its limited uses and its use consumption, and add a note to its description.
+- Commander
+    - Commander's Strike: fixed a missing space in its description.
+    - Persistent Leader now grants its activity to Second Wind and adds its text to the Second Wind description when gained.
+    - Rallying Surge now adds its text to the Action Surge description when gained, and no longer shows a notification when you use Second Wind.
+- Spellsword
+    - Spellsurge now adds its text to the Action Surge description when gained.
+    - Spellsword (Warlock) now gets Improved Spellstrike at level 10 and Rapid Warding at level 14. They were swapped.
+- Bulwark
+    - Solidify Defenses: the temporary hit points (half your fighter level) are now rounded down.
+    - Solidify Defenses now adds its text to the Iron Wall description when gained.
+- Champion
+    - Improved Fighting Styles now require their base Fighting Style in Foundry (for example, [Improved Archery](https://www.elkan5e.com/feats/improved-archery) requires [Fighting Style: Archery](https://www.elkan5e.com/feats/fighting-style)).
+    - Improved Critical now sets your critical hit range to 19–20 without stacking incorrectly with other critical range effects, and critical hits with attacks now roll three times the damage dice instead of two.
+    - Keen Strikes now rolls its extra d10s (1 at level 3, 2 at level 14).
+    - Fixed the Survivor link in the Champion progression table, which pointed to another module's compendium.
+
+### [Monk](https://www.elkan5e.com/monk)
+
+- Monks now get the standard Unarmed Strike instead of a separate Unarmed Strike (Monk) weapon. Martial Arts now upgrades Unarmed Strike with your Martial Arts die and the finesse and light properties.
+- Flurry of Blows, Deflect Attack, and Quivering Palm now link to the standard Unarmed Strike.
+- Ki-Empowered Strikes is now a feature that makes your Unarmed Strike magical, adamantine, cold iron, and silver, instead of a separate weapon.
+- Patient Defense now applies the Dodging status.
+- Purity of Body now grants immunity to the Diseased and Poisoned conditions and to poison damage.
+- Stillness of Mind is now automated: using it ends a charmed, confused, frightened, or goaded effect on you (you pick which one if there are several). At the start of your turn, you're asked whether to use it if you have one of those conditions.
+- Mentor
+    - Guiding Spirit now adds its ally option to the Flurry of Blows, Step of the Wind, and Patient Defense descriptions when gained.
+    - Inspire Greatness and Lend Expertise now link to the short rest, long rest, and expertise rules.
+- Shadowdancer
+    - Empty Body now grants its activity to Meld with Shadows and Hijack Shadow instead of using a script prompt.
+    - Shadow Form's invisible reference no longer applies the condition when clicked.
+    - Eyes of Shade now adds 60 ft. to your darkvision if you already have it, instead of only raising it to 60 ft. It also now lets you see through magical darkness, such as the [Darkness](https://www.elkan5e.com/spells/darkness) spell, within your darkvision range.
+    - Meld with Shadows and Hijack Shadow now only end at the end of your turn if you made an attack roll or cast a spell. They used to end at the end of every turn.
+- Windwalker
+    - Repulsion Wave now grants a multi-target version of Sweep to Sweep when gained.
+    - Twin Currents now grants its activity to Step of the Wind, its identifier is no longer a placeholder, its requirement now reads Windwalker 3 instead of Open Hand 3, and it now lists Elkan 5e as its source.
+    - Draw Energy is now a bonus action, as written.
+- Elementalist
+    - Fixed errors when switching elements.
+    - Elemental Attunement now works on unlinked tokens, and switching to another element keeps the new attunement. Before, switching removed both attunements and their items.
+    - Deflect Elements now spends 2 Ki as its description states, instead of 1, and its effect lasts 1 turn instead of 7 seconds.
+    - [Fireball (4 Ki)](https://www.elkan5e.com/spells/fireball), [Fly (4 Ki)](https://www.elkan5e.com/spells/fly), [Rock Blast (4 Ki)](https://www.elkan5e.com/spells/rock-blast), and [Sleet Storm (4 Ki)](https://www.elkan5e.com/spells/sleet-storm) no longer also try to consume a spell slot on top of their Ki cost.
+    - [Burning Hands](https://www.elkan5e.com/spells/burning-hands) (1/2/3 Ki) and [Thunderwave](https://www.elkan5e.com/spells/thunderwave) (1/2/3 Ki) are magical again, and Thunderwave now forces a Constitution save.
+    - [Gentle Current (2 Ki)](https://www.elkan5e.com/spells/gentle-current) and [Gentle Current (3 Ki)](https://www.elkan5e.com/spells/gentle-current) now target 2 and 3 allies respectively, instead of 1.
+    - [False Life (3 Ki)](https://www.elkan5e.com/spells/false-life) is instantaneous again, instead of lasting 1 hour.
+    - [Rock Blast (4 Ki)](https://www.elkan5e.com/spells/rock-blast)'s Dexterity save is clickable again.
+
+### [Paladin](https://www.elkan5e.com/paladin)
+
+- Divine Smite's extra damage against certain creature types now has its damage type (radiant).
+- Elemental Smite can now be chosen at levels 5, 9, and 13, like the other level 2 smite options. Before, it was only offered at level 2.
+- Aura of Courage's Frightened, Petrified, and Unconscious references no longer apply the condition when clicked.
+- Aura of Courage, Aura of Protection, Aura of Devotion, and Aura of Revelation now stop working while you're Petrified or Unconscious.
+- Cleansing Touch now grants its activities to Lay on Hands and adds its text to the Lay on Hands description when gained.
+- Cleansing Touch is now automated: cleansing removes the Poisoned condition from your target, and spending 10 or more Lay on Hands points at once (healing or cleansing) also ends Drained. Diseases still need to be removed by hand.
+- Avenger
+    - Commanding Challenge's incapacitated reference no longer applies the condition when clicked.
+    - Avenger's Vow now grants its activity (and its effect) to Commanding Challenge, Avenger's Leap, and Searing Retribution, and adds its text to their descriptions when gained.
+- Blackguard
+    - Aura of Corruption now has an effect that makes a creature unable to regain hit points or gain temporary hit points. Apply it to enemies within the aura.
+    - Strickening Gaze is now automated: when creatures within 120 ft. fail a saving throw against your spell or smite, you're asked whether to spend a use to give one of them 1 level of exhaustion. It now adds a real exhaustion level, which rests reduce as normal, instead of a permanent effect.
+- Inquisitor
+    - Master Seeker now grants psychic resistance through a Trait advancement, so it shows on the character sheet, and it's no longer marked as Magical.
+    - Aura of Revelation's identifier was a copy of Aura of Courage's; it's now `aura-of-revelation`.
+- Paragon
+    - Aura of Devotion now grants immunity to Charmed and Goaded, as described. It granted Blinded immunity instead.
+    - Purity of Body and Purity of Spirit now use dnd5e's own saving throw advantage instead of Midi-QOL flags, so they work without Midi-QOL, and a source of disadvantage now cancels it out as normal.
+    - Holy Nimbus now has its 30 ft. area size set, and deals half damage on a successful save instead of none.
+
+### [Ranger](https://www.elkan5e.com/ranger)
+
+- Rangers now get Natural Tracker at level 1. It now makes you ignore nonmagical difficult terrain, and its requirement reads "Ranger 1" instead of "Elkan Ranger 1".
+- Mark for Death's extra damage now works, and only applies to weapon attacks.
+- Mark for Death's Mark and Move Mark activities now place the mark on the target creature instead of on you. Marking a new creature removes your mark from the previous one, so you only have one marked target at a time.
+- Precise Hunter now adds its text to the Mark for Death description when gained, and its advantage only applies against creatures you marked, not creatures marked by another ranger.
+- Unrelenting Focus now works: while you aren't using Mark for Death or another ranger mark, your weapon attacks deal your Mark for Death damage, in the weapon's own damage type, doubling on a crit.
+- Mark for Death, [Mark of Affliction](https://www.elkan5e.com/feats/mark-of-affliction), and [Mark of Thorns](https://www.elkan5e.com/feats/mark-of-thorns) now give you a "rangerMark" status while you're using them, which is how Unrelenting Focus knows you're using a mark. Mark for Death adds a "Mark for Death (Hunting)" effect on you for this.
+- Tireless now removes one level of exhaustion when used, if you have any.
+- [Mark of Thorns](https://www.elkan5e.com/feats/mark-of-thorns) now deals its piercing damage to the creature that hit your marked ally. It failed with an error.
+- Beastmaster
+    - The companion's maximum hit points and Predator's Instinct now scale with its level.
+    - Flying companions now get Companion Attack at level 3, Predator's Instinct at level 6, and Companion's Extra Attack at level 11, like other companions.
+    - Predator's Instinct is no longer granted twice. It's granted at level 6, as written.
+- Hunter
+    - Horde Breaker no longer refuses to activate with a "no uses remaining" warning.
+- Spellbreaker
+    - Magic Shackles now halves all of the target's speeds (fly speed was never reduced), rolls its repeat save, and lasts 1 minute.
+
+### [Rogue](https://www.elkan5e.com/rogue)
+
+- Mystic Trickster Spellcasting no longer has an empty saving throw activity that failed with an error when used.
+- Elusive is now automated: creatures that would have advantage on attack rolls against you roll normally, unless you're incapacitated, paralyzed, petrified, stunned, or unconscious.
+- Sneak Attack works again. It adds its damage to the weapon's damage roll, in the weapon's damage type, and the dice double on a critical hit. If you have precision attacks, you choose between Sneak Attack, one of your precision attacks, or not using it. A precision attack rolls its own save and damage against the target. Heavy melee weapons can't Sneak Attack, and allies within 5 ft. of the target must not be incapacitated. Once you Sneak Attack, you can't again until your next turn starts.
+- Hamstring and Hamstring (Mystic) now force a Dexterity save, as their descriptions say, instead of a Constitution save.
+- Assassin
+    - Assassin's Reflexes now links to the Surprised condition instead of the Surprise rule, and clicking it doesn't apply the condition.
+    - Assassin's Reflexes is now automated: when combat starts, each assassin who isn't Surprised gets a second turn at their initiative minus 10. The extra turn is removed when round 2 begins.
+    - Finishing Blow now prompts you when your weapon attack leaves a creature with 10 hit points or fewer, and reduces it to 0 hit points if you accept. Once per turn.
+- Brute
+    - Brutal Fighting and Enforcer's Training's grappled references no longer apply the condition when clicked.
+    - Overpowering Opportunist now has working Push and Grapple activities (copied from Standard Actions) as bonus actions.
+    - Brutal Fighting now adds its text to Standard Actions and Overpowering Opportunist when gained, and prompts you to deal its damage after you win a shove or grapple contest.
+    - Swift and Brutal now adds its text to the Cunning Action description when gained.
+    - Enforcer's Training now adds its text to the Sneak Attack description when gained, and Sneak Attack works against creatures you're grappling.
+- Duelist
+    - Close the Gap now recovers its uses on a long rest.
+    - Lethal Opening now links to the Opportunity Attacks rule.
+    - Lethal Opening now adds its text to the Sneak Attack description when gained, and Sneak Attack works with your attacks of opportunity (any melee weapon attack you make outside your own turn).
+    - Light on the Feet's +1 AC and +10 ft. speed now only apply while you aren't wearing medium or heavy armor.
+- Mystic Trickster
+    - Devastating Spells now adds its text to the Devastating Cantrips description when gained.
+    - Master Trickster now adds its text to the Magic Trickery description when gained.
+    - Mystic Trickster (Cleric, Druid, and Wizard): the Magical Precision choice now offers the Mystic precision attacks. Before, it was empty.
+- Thief
+    - Multitasking now adds its text to the Cunning Action description when gained.
+
+### [Sorcerer](https://www.elkan5e.com/sorcerer)
+
+- Seeking Spell now spends sorcery points.
+- Fire, Water, Air, and Earth Savant
+    - Empowered Cantrips now grants the standard cantrips and modifies them to use the larger damage die (or the d6 bonus for Resistance), instead of granting separate "(Savant)" copies.
+    - Fire Savant's progression table now links [Fire Bolt](https://www.elkan5e.com/spells/fire-bolt) (it linked [Sacred Flame](https://www.elkan5e.com/spells/sacred-flame) twice).
+    - Water Savant now gets Ascendant Water at level 10. Before, it got Ascendant Fire.
+    - Elemental Infusion now asks, when you roll damage for a spell that doesn't deal necrotic, poison, or psychic damage, whether you want to infuse it. Pick one of your savant's two damage types to spend 1 sorcery point and change the spell's damage to that type. It doesn't ask for healing or for untyped rolls such as [Blink](https://www.elkan5e.com/spells/blink)'s d20.
+    - Volatile Current, Fault Line, Wreathing Flames, and Relentless Tides now show a message after one of your spells deals a damage type that triggers them, saying whether you can still use them this turn.
+    - Wreathing Flames' ongoing fire damage now rolls correctly.
+    - Relentless Tides' ongoing damage is now 1d6, matching its description, and ends after 1 minute instead of lasting until removed.
+- Wild Mage
+    - Avert Disaster now recovers its uses on a long rest.
+    - Wild Surge Table Lv. 10 can now be rolled. It had no formula.
+    - Wild surge results now show their text, and Delayed Surge stores the surge you rolled. Before, Delayed Surge stored an empty surge.
+    - The surge dialog no longer fails when you have Avert Disaster but not Delayed Surge.
+
+### [Warlock](https://www.elkan5e.com/warlock)
+
+- [Eldritch Spear](https://www.elkan5e.com/invocations/eldritch-spear) now sets Eldritch Blast's range to 300 ft. when gained.
+- [Lifedrinker (Warrior)](https://www.elkan5e.com/invocations/lifedrinker) now sets Thirsting Weapon to 3 uses per short rest when gained.
+- Thirsting Weapon now grants its healing activity to Pact Weapon and adds its text to the Pact Weapon description when gained.
+- [Eldritch Weapon (Warrior)](https://www.elkan5e.com/invocations/eldritch-weapon) now makes the weapon use Charisma. This works on weapons with a standard attack activity (all mundane weapons and most magic ones); a few special magic weapons with their own attack setup aren't affected.
+- [Repelling Blast](https://www.elkan5e.com/invocations/repelling-blast)'s attack now pushes the creature 10 ft. away from you when it hits, once per turn. It also grants the Repelling Blast attack to Eldritch Blast and adds its text to the Eldritch Blast description when gained, so you can choose it in place of a normal blast.
+- [Implant Suggestion](https://www.elkan5e.com/invocations/implant-suggestion) now adds its modifications to the [Suggestion](https://www.elkan5e.com/spells/suggestion) spell's description when gained, and no longer has a broken effect.
+- [Sculptor of Flesh](https://www.elkan5e.com/invocations/sculptor-of-flesh) now modifies [Alter Self](https://www.elkan5e.com/spells/alter-self) to affect up to 5 willing creatures within 10 ft., and adds its text to the description.
+- [Master of Myriad Forms](https://www.elkan5e.com/invocations/master-of-myriad-forms) now makes [Alter Self](https://www.elkan5e.com/spells/alter-self) castable without a spell slot and adds its text to the description, instead of having its own separate cast activity.
+- [Fiendish Sight](https://www.elkan5e.com/invocations/fiendish-sight) now lets you see through magical darkness, such as the [Darkness](https://www.elkan5e.com/spells/darkness) spell, within your darkvision range.
+- Pact of the Chain and Pact of the Tome no longer also create their item through an effect. They already grant it through their advancement, so you could end up with two.
+- Pact of the Chain: your chained familiar's bonus hit points now apply.
+- Dreamweaver
+    - Twisted Visions now forces a Wisdom save instead of none, grants its activity to Misty Misdirect, and adds its text to the Misty Misdirect description when gained.
+    - Blessing of the Dreamer now gives you advantage on saves against effects that charm, frighten, or curse you (Midi-QOL), the same way Dwarven Resilience handles poison.
+    - Power of Love and Fear now asks, before creatures roll their Wisdom save against one of your spells of 1st level or higher, whether to charm or frighten those who fail. Creatures that fail then get the condition automatically: for 1 round if the spell is instantaneous, otherwise 1 minute.
+- Hellcaller
+    - Dark One's Blessing now adds 1d4 fire damage to your existing Eldritch Blast while it's active, instead of giving you a separate Eldritch Blast [Dark One's Blessing]. That item stays in the compendium so existing links keep working.
+- Radiant Servant
+    - Imbue Light now modifies your Eldritch Blast so you can choose radiant damage instead of force, instead of granting a separate radiant Eldritch Blast attack. The feature is renamed "Imbue Light (Eldritch Blast)".
+    - Imbue Light (Enchant Weapon) now makes the weapon deal radiant damage. "Radiant" was misspelled.
+
+### [Wizard](https://www.elkan5e.com/wizard)
+
+- Abjurer
+    - Counterspell is now a reaction, matching its description.
+    - Reactive Barrier now gives its target +3 to AC for 1 round, +1 per slot level above 1st (max +5). Its effect called a macro that no longer exists.
+- Illusionist
+    - Now grants the standard [Silent Image](https://www.elkan5e.com/spells/silent-image) instead of an outdated Silent Image (Illusionist) copy.
+- Evoker
+    - Overchannel's activity now applies its Overchannel effect to you directly, instead of a script creating it.
+    - Overchannel now maximizes the spell's damage. Before, the damage was rolled normally and only the backlash applied.
+    - Overchannel keeps a critical hit's extra dice when it maximizes the damage.
+    - Overchannel's backlash and its 5th-level limit use the level you cast the spell at.
+- Necromancer
+    - Soul Conduit now shows a reminder when you cast a necromancy spell of 1st level or higher, telling you how many hit points it can restore to your graveguard. Before, the reminder never appeared.
+    - Necromantic Surge now triggers when you target yourself with a necromancy spell of 3rd level or higher.
+    - Necromantic Surge and Soul Conduit use the level you cast the spell at, so upcasting counts.
+
+## Creature Features
+
+- Undead Fortitude now tells attacks apart from saves on dnd5e 6.0.
+- Ice Walk now ignores difficult terrain made of ice or snow. Before, the benefit was only in the description.
+- Scent of Blood is now once per turn instead of a reaction.
+- Damage on a successful save now matches the description: Cloud of Insects, Noxious Miasma, Thunderclap, and Freezing Burst deal half damage, and Mark of Sacrifice, Toxic Regeneration, and Throw Target deal none. Throw Target's damage is now bludgeoning.
+- Effects now last as long as their descriptions say. Noxious Miasma, Freezing Burst, Slowing Breath, Scorching Sands, and Cloud of Insects last until the end of the target's next turn. Web Bolt and Venomous Spew last until the start of the creature's next turn. Mark of Sacrifice lasts until the end of the creature's next turn, not 1 minute. Thunderclap's Deafened and Stench's Poisoned no longer end after a single turn.
+- Fixed Noxious Miasma's −2 AC penalty not applying.
+- Slowing Breath now stops its target from taking reactions, as written.
+- Cloud of Insects now gives disadvantage on concentration saves, and Vampire Weakness now gives disadvantage on attack rolls and ability checks in sunlight. Before, both effects were empty.
+- Bloodied Fury now gives advantage while the creature itself is Bloodied. Before, it checked whether its target was Bloodied.
+- Sunlight Sensitivity now gives disadvantage on ability checks in sunlight, as well as attack rolls. Before, the ability check half used a key Midi-QOL didn't recognize.
+- Topple now uses a Dexterity save and knocks the target Prone.
+- Volatile Creation now gives the Poisoned condition and rolls its repeat save.
+- Paralyzing Breath now rolls its repeat save.
+- Petrifying Gaze's repeat save no longer logs an error every turn, and stops after one failure so the Second Save can petrify.
+- Flammable deals its fire damage at the end of the creature's turn, as written.
+- Frightful Presence applies the Frightened condition; it used a status from an old module.
+- Deflect Missiles reduces the damage by 10, as written. Before, it used a monk's Martial Arts die, which creatures don't have.
+- Leap's range is 20 ft., as written. Before, it was 30 ft.
+- Keen Hearing and Keen Hearing and Sight now show their own names on their effects.
+- Fey Ancestry now gives advantage on saves against being Charmed (Midi-QOL). Before, the benefit was only in the description.
+
+## Creatures
+
+- Lobber: Spit Acid no longer tries to trigger a saving throw activity it doesn't have.
+- Scorpion and Spider: the Sting's poison save now uses Constitution (DC 10), as written, and its repeat save has a DC.
+- Sprite: Heart Sight's Charisma save now has its DC of 10.
+- Crocolisk: Poison Gaze has its own description again, and its repeat save uses Constitution. It shared an identifier with Sandwalker and Water Retention, so syncing creature features kept replacing its description with theirs.
+- Efreeti: casts Elkan's [Wall of Fire](https://www.elkan5e.com/spells/wall-of-fire) instead of the dnd5e version.
+- Ogre Mage: Haste now hastes its target.
+- Mutant Wizard: Rend the Veil now rolls its repeat save and frightens creatures that fail the Wisdom save, and the Mutant Wizard now casts with Intelligence.
+- Raven: no longer starts with more hit points than its maximum.
+- Effects that only marked a condition through the old Combat Utility Belt module now apply the condition: grapples (Slam, the zombies, Green Slime), Prone (Sabercat, Zombie Brute), Poisoned (Zombie Plague Carrier), Charmed and Invisible (Deceiver), Incapacitated (Green Slime), and Stunned (Enlightened Monk).
+- Radiant Archer: Flash Bolt now blinds its target. Before, it used a status from the Condition Lab & Triggler module.
+- Bullywug, Bullywug Champion, and Bullywug Hunter can be placed on a scene again. They had no art, which stopped their tokens from being created.
+
+## Equipment
+
+- Renamed remaining Lightning and Thunder references to Electric and Sonic: Ring of Electric Resistance and Ring of Sonic Resistance, Dragon Scale Mail, Armor of Resistance, Javelin of Lightning, Ring of Shooting Stars (Lightning Spheres), and Thunderous Greatclub.
+- Re-added [Flail](https://www.elkan5e.com/items/flail), [Trident](https://www.elkan5e.com/items/trident), and [War Pick](https://www.elkan5e.com/items/war-pick). Each uses the proficiency and stats of the weapon it was originally merged into: Flail (Martial, matches [Warhammer](https://www.elkan5e.com/items/warhammer)), Trident (Simple, matches [Spear](https://www.elkan5e.com/items/spear)), and War Pick (Martial, matches [Morningstar](https://www.elkan5e.com/items/morningstar)).
+- Restored the Light Crossbow, which had been removed by mistake.
+- Gem of Seeing now gives truesight. A typo in its effect meant it did nothing.
+- Liquid Fire sets the target Burning (with the Burning condition's damage and put-out action), and a successful save takes no damage.
+- Scorpion Poison's repeat save to end the Poisoned condition now forces a DC 10 Constitution save instead of none.
+- Walking Boots now ignore difficult terrain while attuned. Before, the benefit was only in the description.
+- Potion of Climbing now gives advantage on Athletics checks, as written. Before, it gave advantage on death saves.
+- Fixed items that refused to activate because they spent uses they didn't have: Scorpion Poison, Potion of Detect Thoughts, Potion of True Seeing, Iron Flask, and Wind Fan. The Dragon Orb now has its 7 charges, regaining 1d4+3 at dawn.
+- Ball Bearings now knock creatures prone on a failed save.
+- Damage on a successful save now matches the description: Caltrops and Pale Tincture deal none, and a Bead of Force deals half.
+- Activation now matches the description: Basic Poison, Necklace of Prayer Beads, and Boots of Speed are bonus actions. Pipes of the Sewers, and drinking a Potion of Climbing, Diminution, or Mind Reading, are actions, like other potions.
+- The Handaxe and Staff of Thunder and Lightning no longer add an empty damage term to their damage rolls.
+- Necklace of Adaptation and Periapt of Health now give advantage on saves against being Poisoned (Midi-QOL). Before, the benefit was only in the description.
+
+## Feats
+
+- Feats no longer grant an Ability Score Improvement. Your class grants it instead (see Classes).
+- Removed the "Level 1 Feats (For 1st Level, no ASI)" folder. Those duplicate feats aren't needed now that no feat grants an Ability Score Improvement. The level 1 feat choice, ancestries, backgrounds, and links now use the regular versions of those feats.
+- [Brawler](https://www.elkan5e.com/feats/brawler) no longer requires level 4 in Foundry, matching its level 1 rework.
+- [Repressed Memory](https://www.elkan5e.com/feats/repressed-memory) can now be chosen as your level 1 feat. It was missing from every class's list.
+- Fixed [Enraged Presence](https://www.elkan5e.com/feats/enraged-presence) and [Enraged Prowess](https://www.elkan5e.com/feats/enraged-prowess) never adding your rage bonus while raging. Skills you have expertise in are still correctly excluded.
+- [Draconic Breath Control (Dragonborn)](https://www.elkan5e.com/feats/draconic-breath-control): your Breath Weapon now recharges on a short rest when you gain the feat.
+- [Fighting Style: Mounted Combat](https://www.elkan5e.com/feats/fighting-style) now has the correct identifier.
+- [Fighting Style: Protection](https://www.elkan5e.com/feats/fighting-style) no longer refuses to activate with a "no uses remaining" warning.
+- [Fighting Style: Single Weapon Fighting](https://www.elkan5e.com/feats/fighting-style) and [Improved Single Weapon Fighting (Fighter)](https://www.elkan5e.com/feats/improved-single-weapon-fighting) now work the same way as the class features: the damage bonus only applies to melee attacks (not thrown or spell attacks) with a single weapon, including an unarmed strike or natural weapon when you have no manufactured weapons equipped.
+- [Improved Protection (Fighter)](https://www.elkan5e.com/feats/improved-protection) now requires the Fighter class in Foundry, like the other Improved Fighting Style feats.
+- [Improved Archery](https://www.elkan5e.com/feats/improved-archery), Defense, Protection, and Single Weapon Fighting (Fighter) no longer say "Prerequisite:" twice in their descriptions.
+- More feats now check their prerequisites in Foundry:
+    - [Human Versatility](https://www.elkan5e.com/feats/human-versatility) requires a Human, Mixed Human/Elf, or Mixed Human/Orc ancestry.
+    - [Draconic Breath Control (Dragonborn)](https://www.elkan5e.com/feats/draconic-breath-control) requires level 4 and a Dragonborn ancestry or the Draconic Sorcerer subclass.
+    - [Stonecunning](https://www.elkan5e.com/feats/stonecunning) requires a Dwarf or Earth Genasi ancestry.
+    - [Extra Attack](https://www.elkan5e.com/feats/extra-attack) and the level 4 combat maneuvers ([Advance](https://www.elkan5e.com/feats/advance), [Bodyblock](https://www.elkan5e.com/feats/bodyblock), [Brace](https://www.elkan5e.com/feats/brace), [Deadly Aim](https://www.elkan5e.com/feats/deadly-aim), [Distracting Strike](https://www.elkan5e.com/feats/distracting-strike), [Harrying Blow](https://www.elkan5e.com/feats/harrying-blow), and [Tide of Iron](https://www.elkan5e.com/feats/tide-of-iron)) require a Fighting Style, from either a class feature or a Fighting Style feat.
+    - [Gymnast](https://www.elkan5e.com/feats/gymnast) requires level 4. Before, it could be taken at any level.
+    - Skill, tool, and size prerequisites still aren't checked in Foundry.
+- Countercharm (Bard) is now a reaction, matching its description.
+- [Fey Step](https://www.elkan5e.com/feats/fey-step) now uses dnd5e's native Teleport activity, adding a "Plan Teleport" button to place your token directly.
+- [Tactician](https://www.elkan5e.com/feats/tactician) no longer grants Danger Sense's initiative bonus and immunity to surprise. It had a copy of Danger Sense's effect.
+- [Marksman](https://www.elkan5e.com/feats/marksman) now works as written with ranged and thrown weapons you're proficient with: no disadvantage at long range, half cover gives the target no bonus, and three-quarters cover counts as half cover. Before, it ignored all cover on ranged weapons only, didn't work with thrown weapons, and wrongly included Close Shot's benefit. The feat sets a new `flags.elkan5e.marksman` flag, which other effects can use too.
+- [Close Shot](https://www.elkan5e.com/feats/close-shot) now works. Its effect was never applied to your character.
+- Turn the Unholy (Cleric) now frightens aberrations, celestials, fey, fiends, and undead, as written. Before, an error in its condition meant it frightened nothing.
+- [Challenger](https://www.elkan5e.com/feats/challenger) now applies the Goaded condition, and the repeat save uses your Charisma or Strength, whichever is higher.
+- [Scavenger](https://www.elkan5e.com/feats/scavenger) now recovers on a short rest, as written.
+- [Mark of Thorns (Ranger)](https://elkan5e.com/feats/mark-of-thorns/) is now a bonus action, as written.
+
+## Game Rules
+
+- Elkan conditions are now in the Active Effects compendium, under Conditions, like dnd5e 6.0's own conditions. Each one includes the Elkan rules automation for that condition.
+- Features, spells, items, and creatures whose effect only gave a condition now give the condition directly, with its name, icon, rules text, and Elkan automation (88 effects). Effects created by scripts, such as [Haste](https://www.elkan5e.com/spells/haste)'s lethargy (Incapacitated) and grapples, also use the compendium condition.
+- Added Crawl as a movement type (alongside Walk/Burrow/Climb/Fly/Swim), so it can be granted or set on actors and shows up in the Speed section. A creature with a crawl speed crawls at normal cost instead of double, and being Prone doesn't set its crawl speed to 0.
+- Ethereal is now a status in the token HUD, like Dodging, so it can be toggled on any creature, and it's in the Active Effects compendium under Conditions. Ethereal creatures can still be targeted.
+- Burning and Suffocation now damage or exhaust the creature that has the condition. Before, they used whichever token was selected.
+- Confused now rolls its behavior table at the start of the creature's turn.
+- Drained now lowers the creature's maximum hit points directly, using dnd5e 6.0's temporary maximum hit points, and a long rest restores them. Cleansing Touch, Greater Restoration, and Power Cure restore drained maximum hit points when they cure Drained.
+- Grapple movement penalties now apply: no movement when grappled by a same-or-larger creature, half speed when grappled by a smaller one. The grapple system also now reads climb speed correctly, which affects whether a much-smaller grappler gets advantage.
+- Grapples and pushes no longer get stuck when you close a dialog with the X. Closing the grapple release dialog keeps all grapples, closing the dead-creature dialog keeps the grapple, and closing the push direction dialog uses the first direction. Before, the grapple or push never finished.
+- The "release grapples involving this dead creature?" dialog now only opens once per death. Before, it could open several times as the creature's hit points and dead status updated.
+- Pushes now move the creature the right distance. Before, each step moved the full push distance, so a 10 ft. push moved it 20 ft. and a 15 ft. push moved it 45 ft.
+- Conditions that give disadvantage on ability checks (such as Frightened and Poisoned) now also apply to skill checks, tool checks, and initiative, since those are ability checks too.
+- Dehydration and Malnutrition now add one level of exhaustion each when several GMs are connected. Before, each connected GM added a level. With several GMs, Burning also no longer gives a creature two Quench Burning actions, and grapple movement and dialogs only run once.
+- Condition rules links: Cursed and Diseased link to their rules again, and Dodging, Hiding, Squeezing, and Concentrating now link to theirs. Other statuses without a rules page (such as Bleeding and Advantage) no longer link to a page that doesn't exist.
+- Death saves that are kept until a short or long rest (the Death Save Clearing setting) are now cleared correctly when the GM rests several actors at once. Before, one actor's rest could change whether another actor's death saves were cleared.
+- Hasted (double speed) and Squeezing (half speed) now change movement speed. Squeezing also makes the creature one size smaller, the same way [Reduce](https://www.elkan5e.com/spells/enlarge-reduce) does.
+- Siphoned now halves damage and healing from all of the creature's spells and magical abilities, as written. Before, it only affected spell attacks, so saving-throw spells like Fireball dealt full damage.
+- Siphoned and Weakened now reliably reduce the hit points lost. Before, Midi-QOL could apply the original, unhalved amount.
+- [Spell scrolls](https://www.elkan5e.com/spellcasting#spell-scrolls) now follow the Elkan rules when a character uses one. You can turn this off with the Elkan Spell Scroll Rules setting (on by default).
+    - Only characters with a class that gives spell slots can use them.
+    - If the spell is on your class's spell list, or you can already cast it, it uses your spell attack bonus and spell save DC with no check.
+    - Otherwise, you make an Arcana check (DC 10 + the spell's level) first, or Religion for cleric spells or Nature for druid spells. The spell is cast at +5 to hit and DC 13. On a failure, the scroll isn't used up.
+
+## Spells
+
+- [Barrier](https://www.elkan5e.com/spells/barrier) gives resistance to the type you choose. Before, the acid, cold, electric, fire, and sonic options gave resistance to all damage, and non-magical physical gave resistance to spell damage. Barrier and [Etherealness](https://www.elkan5e.com/spells/etherealness) now target you when cast.
+- [Shocking Grasp](https://www.elkan5e.com/spells/shocking-grasp) now stops its target from taking reactions. Midi-QOL no longer offers it reactions, and warns if it uses one from its sheet while reactions are enforced. Before, the effect had no changes.
+- [Static Charge](https://www.elkan5e.com/spells/static-charge) now gives disadvantage on the target's next saving throw as well as its next skill check, and ends after the first of them. Before, it ignored saves and stayed for the full round.
+- [Vicious Mockery](https://www.elkan5e.com/spells/vicious-mockery) now ends after the target's next attack roll, as written.
+- [Gaseous Form](https://www.elkan5e.com/spells/gaseous-form) now turns its targets' tokens into a cloud (with Active Token Effects installed) and ends when the target drops to 0 hit points.
+    - Gaseous Form now also makes the target immune to Prone, as written.
+- [Celestial Bolt](https://www.elkan5e.com/spells/celestial-bolt) no longer links an effect that doesn't exist.
+- Area spells that create difficult terrain now use the system's Difficult Terrain region behavior instead of an active effect that halved speed. Movement through the area is now measured as difficult terrain, stacks correctly, and respects features that ignore difficult terrain.
+    - Replaced the halved-speed effect: [Entangle](https://www.elkan5e.com/spells/entangle), [Plant Growth](https://www.elkan5e.com/spells/plant-growth), [Spike Growth](https://www.elkan5e.com/spells/spike-growth), [Arms of Earth](https://www.elkan5e.com/spells/arms-of-earth), [Grease](https://www.elkan5e.com/spells/grease), [Black Tentacles](https://www.elkan5e.com/spells/black-tentacles), [Gust of Wind](https://www.elkan5e.com/spells/gust-of-wind) (including the Kobold Shaman's copy), and [Spirit Guardians](https://www.elkan5e.com/spells/spirit-guardians) (hostile creatures only, as written).
+    - Kept the area effect for its other conditions, but removed the halved speed: [Sleet Storm](https://www.elkan5e.com/spells/sleet-storm), [Insect Plague](https://www.elkan5e.com/spells/insect-plague), and [Web](https://www.elkan5e.com/spells/web).
+    - Added difficult terrain to spells that described it but never applied it: [Snowball Swarm](https://www.elkan5e.com/spells/snowball-swarm), [Ice Storm](https://www.elkan5e.com/spells/ice-storm), [Earthquake](https://www.elkan5e.com/spells/earthquake), [Vortex](https://www.elkan5e.com/spells/vortex), [Storm of Vengeance](https://www.elkan5e.com/spells/storm-of-vengeance), and [Sleet Storm (4 Ki)](https://www.elkan5e.com/spells/sleet-storm).
+- Area spells now affect the right creatures:
+    - [Fog Cloud](https://www.elkan5e.com/spells/fog-cloud), [Smoke Field](https://www.elkan5e.com/spells/smoke-field), [Sleet Storm](https://www.elkan5e.com/spells/sleet-storm), [Insect Plague](https://www.elkan5e.com/spells/insect-plague), Web, [Cloudkill](https://www.elkan5e.com/spells/cloudkill), [Stinking Cloud](https://www.elkan5e.com/spells/stinking-cloud), and [Incendiary Cloud](https://www.elkan5e.com/spells/incendiary-cloud) obscure every creature inside the area using Elkan's Obscured (and, for heavy fog, Blinded) conditions. Before, only enemies were obscured, and creatures that failed the initial save kept a copy after leaving. Cloudkill is lightly obscured, as written.
+    - [Silence](https://www.elkan5e.com/spells/silence) makes every creature inside Silenced and Deafened, as well as immune to sonic damage.
+    - [Well of Corruption](https://www.elkan5e.com/spells/well-of-corruption) stops every creature inside from regaining hit points. Before, it made enemies immune to all damage.
+    - [Beacon of Hope](https://www.elkan5e.com/spells/beacon-of-hope) affects allies only, and its benefits last while they stay in the area instead of ending at the caster's next turn.
+    - [Antimagic Field](https://www.elkan5e.com/spells/antimagic-field) affects every creature inside, not just enemies.
+    - [Holy Aura](https://www.elkan5e.com/spells/holy-aura) no longer leaves a permanent copy on the creatures targeted when cast.
+    - [Spirit Guardians](https://www.elkan5e.com/spells/spirit-guardians) no longer damages every creature that enters or ends its turn nearby. Once per turn, use Guardian's Damage to damage every enemy within 15 ft. of the caster.
+    - [Wall of Thorns](https://www.elkan5e.com/spells/wall-of-thorns) makes creatures save when they enter or start their turn in the wall.
+    - [Black Tentacles](https://www.elkan5e.com/spells/black-tentacles) restrains on a failed save.
+    - Removed area rules that pointed at effects that no longer existed ([Sleet Storm](https://www.elkan5e.com/spells/sleet-storm), [Wall of Fire](https://www.elkan5e.com/spells/wall-of-fire), [Incendiary Cloud](https://www.elkan5e.com/spells/incendiary-cloud)).
+- [Freedom of Movement](https://www.elkan5e.com/spells/freedom-of-movement): the target now ignores difficult terrain.
+- [Misty Step](https://www.elkan5e.com/spells/misty-step), [Dimension Door](https://www.elkan5e.com/spells/dimension-door), [Teleportation Circle](https://www.elkan5e.com/spells/teleportation-circle), and [Teleport](https://www.elkan5e.com/spells/teleport) now use dnd5e's native Teleport activity, adding a "Plan Teleport" button to place your token directly. Teleport's automated mishap-table roll was removed to match the system's own 2024 version of the spell (the GM still consults the table manually).
+- [Enlarge/Reduce](https://www.elkan5e.com/spells/enlarge%2Freduce) (and Potion of Growth / Potion of Shrinking) now use dnd5e's native size Active Effect instead of a custom script, so the token's size updates and reverts more reliably.
+- [Touch of Corrosion](https://www.elkan5e.com/spells/touch-of-corrosion) is now fully automated:
+    - Corrode Metal Creature no longer adds upcast damage. The new Corrode Construct activity adds 2d10 acid damage per spell level above 3rd, as the spell describes.
+    - Corrode Metal Armor now applies its effect: the wearer has disadvantage on Dexterity saves and half speed.
+    - Corrode Weapon now only affects the corroded weapon. On a failed save, use Corroded Weapon and drop the weapon onto its chat card. Attacks with that weapon have disadvantage, and its name shows "(Corroded)". Before, the wielder had disadvantage on every weapon attack.
+- 1st level
+    - [Detect Magic](https://www.elkan5e.com/spells/detect-magic) and [Detect Poison and Disease](https://www.elkan5e.com/spells/detect-poison-and-disease): a creature's "detected" effect now ends when it leaves the area. Midi-QOL ignored the rule meant to remove it.
+    - [Feather Fall](https://www.elkan5e.com/spells/feather-fall) is a reaction again.
+    - [Thunderwave](https://www.elkan5e.com/spells/thunderwave) now forces a Constitution save instead of none.
+    - [Shadow Strike](https://www.elkan5e.com/spells/shadow-strike) (and the Shadowdancer's Shadow Casting version) now teleports you with dnd5e's Teleport activity and gives advantage on your first attack. A new Return activity snaps you back to the exact space you teleported from.
+    - [Animal Friendship](https://www.elkan5e.com/spells/animal-friendship) charms the beast on a failed save.
+    - [Sleep](https://www.elkan5e.com/spells/sleep): sleeping creatures now wake when they take damage.
+    - [Ball Lightning](https://www.elkan5e.com/spells/ball-lightning) targets two creatures, plus one per spell level above 1st.
+    - [Bane](https://www.elkan5e.com/spells/bane): targets now roll a Charisma save at the end of each turn to end it.
+    - [Charm](https://www.elkan5e.com/spells/charm) also ends when the target takes damage.
+    - [Ensnaring Vine](https://www.elkan5e.com/spells/ensnaring-vine): Large or larger creatures have advantage on the save.
+    - [Ray of Sickness](https://www.elkan5e.com/spells/ray-of-sickness) deals no damage on a successful save, as written.
+    - [Hideous Laughter](https://www.elkan5e.com/spells/hideous-laughter): creatures with Intelligence 4 or lower are unaffected. When a laughing creature takes damage, it automatically repeats the save with advantage.
+    - [Gentle Current](https://www.elkan5e.com/spells/gentle-current) removes Grappled and Prone, then lets the target's owner move it up to 10 ft. Restrained creatures aren't moved.
+    - Gentle Current (1 Ki), (2 Ki), and (3 Ki) now remove Grappled and Prone and let the target move, like the spell.
+    - [Shield](https://www.elkan5e.com/spells/shield) now gives its +3 bonus to AC, +1 per slot level above 1st (max +5).
+    - [Sanctuary](https://www.elkan5e.com/spells/sanctuary): a creature that fails the save can no longer still target the warded creature, and the save uses your spell save DC.
+    - Removed leftover duplicate activities from [Faerie Fire](https://www.elkan5e.com/spells/faerie-fire), [Grease](https://www.elkan5e.com/spells/grease), [Hideous Laughter](https://www.elkan5e.com/spells/hideous-laughter), [Identify](https://www.elkan5e.com/spells/identify), [Jump](https://www.elkan5e.com/spells/jump), [Magic Missile](https://www.elkan5e.com/spells/magic-missile), and [Rend Vigor](https://www.elkan5e.com/spells/rend-vigor).
+- 2nd level
+    - [Spike Growth](https://www.elkan5e.com/spells/spike-growth) deals its damage again: 2d4 piercing for every 5 ft. a creature moves through the spikes (teleporting doesn't count). Its movement script used events Foundry v14 no longer has, and only ran when the GM cast it.
+    - [Zone of Truth](https://www.elkan5e.com/spells/zone-of-truth)'s effect ends when the creature leaves the circle.
+    - [Silence](https://www.elkan5e.com/spells/silence) gives creatures inside one Silenced effect (which also carries its sonic immunity) and Deafened, instead of a separate Silence effect next to them.
+    - [Acid Arrow](https://www.elkan5e.com/spells/acid-arrow)'s follow-up damage is acid instead of untyped.
+    - [Enhance Ability](https://www.elkan5e.com/spells/enhance-ability): Bear's Endurance now adds proficiency to Constitution checks and concentration saves (if you aren't already proficient) instead of giving advantage on concentration. Cat's Grace grants Acrobatics instead of Athletics.
+    - [Enlarge/Reduce](https://www.elkan5e.com/spells/enlarge%2Freduce): Enlarge gives disadvantage on Dexterity saves. Before, it gave advantage.
+    - [Find Traps](https://www.elkan5e.com/spells/find-traps): you can't be surprised. Before, it made you immune to Blinded.
+    - [Darkvision](https://www.elkan5e.com/spells/darkvision) lasts 8 hours instead of 1 minute.
+    - [Curse of Frailty](https://www.elkan5e.com/spells/curse-of-frailty) also gives disadvantage on death saves.
+    - [Blindness/Deafness](https://www.elkan5e.com/spells/blindness%2Fdeafness): choose Blinded, Deafened, or both when casting.
+    - [Dragon Breath](https://www.elkan5e.com/spells/dragon-breath) gives the target an Exhale ability: a 15 ft. cone that uses the caster's spell save DC and scales with the spell slot. Before, only the caster could exhale, using their own DC and with no cone.
+    - [Flame Blade](https://www.elkan5e.com/spells/flame-blade) deals 3d6 fire damage, plus 1d8 for every two spell levels above 2nd, attacks with your spellcasting ability, and sheds its light.
+    - [Levitate](https://www.elkan5e.com/spells/levitate) has a Move Levitated Target activity for the concentration action, replacing a leftover activity that re-applied the spell.
+    - [Detect Thoughts](https://www.elkan5e.com/spells/detect-thoughts) and [Mirror Image](https://www.elkan5e.com/spells/mirror-image) no longer have broken effect links.
+    - [Mirror Image](https://www.elkan5e.com/spells/mirror-image) now protects you: when an attack is redirected to a duplicate, you take no damage. Before, you still took the hit. Destroying duplicates also works when the attacker doesn't own you, and destroying the last one ends the spell and your concentration. Each duplicate is now its own effect (Duplicate A, B, and C), so you can remove one by hand. Replace existing copies of the spell from the compendium.
+    - [Spirit Link](https://www.elkan5e.com/spells/spirit-link) now links to unlinked tokens, such as most NPCs.
+    - [Spirit Link](https://www.elkan5e.com/spells/spirit-link): the linked creature's half of the damage can't be reduced, as written, and is no longer shared back and forth between the two creatures.
+    - [Well of Corruption](https://www.elkan5e.com/spells/well-of-corruption) no longer causes an error when cast without a token.
+    - [Moonbeam](https://www.elkan5e.com/spells/moonbeam) no longer fails with an error when cast, and its beam uses the spell's own area.
+- 3rd level
+    - [Blink](https://www.elkan5e.com/spells/blink) is now fully automated with Midi-QOL. At the end of each of your turns it rolls a d20; on 11 or higher you become Ethereal (can't be targeted). At the start of your next turn you return and choose a space within 10 ft. Before, you couldn't be targeted for the whole minute.
+    - [Rock Blast](https://www.elkan5e.com/spells/rock-blast): a failed save now knocks the target prone, as the spell describes. Before, it gave the target advantage.
+    - [Slow](https://www.elkan5e.com/spells/slow) applies Slowed on a failed save.
+    - [Thundering Omen](https://www.elkan5e.com/spells/thundering-omen)'s disadvantage now applies.
+    - [Intercession](https://www.elkan5e.com/spells/intercession): the repeat save happens at the end of the target's turn instead of the start.
+    - [Gaseous Form](https://www.elkan5e.com/spells/gaseous-form): 10 ft. fly speed instead of 1 ft., and lightning resistance, which was missing.
+    - [Curse of Clumsiness](https://www.elkan5e.com/spells/curse-of-clumsiness) gives the target disadvantage on its own Strength and Dexterity saves. Before, it gave disadvantage to creatures rolling against it.
+    - [Curse of Mindfire](https://www.elkan5e.com/spells/curse-of-mindfire) now counts as a curse, and affects Performance instead of applying Persuasion twice.
+    - [Stinking Cloud](https://www.elkan5e.com/spells/stinking-cloud) doesn't poison constructs or poison-immune creatures.
+    - [Spectral Lance](https://www.elkan5e.com/spells/spectral-lance): incorporeal creatures have disadvantage on the save.
+    - [Life Drain](https://www.elkan5e.com/spells/life-drain) no longer has a broken effect link.
+    - [Haste](https://www.elkan5e.com/spells/haste)'s lethargy applies again when the spell ends: you're Incapacitated until the end of your next turn.
+- 4th level
+    - [Blight](https://www.elkan5e.com/spells/blight): plant creatures now roll with disadvantage, and constructs and undead (no water in their bodies) are unaffected.
+    - [Banishment](https://www.elkan5e.com/spells/banishment) only damages creatures that succeed on the save. Before, banished creatures took the damage too.
+    - [Ice Storm](https://www.elkan5e.com/spells/ice-storm): the 2d8 damage is bludgeoning. Before, it had no damage type.
+    - [Silent Cacophony](https://www.elkan5e.com/spells/silent-cacophony): the repeat damage is d6s instead of d4s. Its upcast note, and [Black Tentacles](https://www.elkan5e.com/spells/black-tentacles)', now say "above 4th".
+    - [Fire Shield](https://www.elkan5e.com/spells/fire-shield) gives resistance to both cold and fire, with no warm/chill choice, and sheds its light.
+    - [Discorporate](https://www.elkan5e.com/spells/discorporate) gives resistance to nonmagical bludgeoning, piercing, and slashing damage, and halves the target's weapon damage the same way the Weakened condition does. Before, neither worked.
+    - [Master's Touch](https://www.elkan5e.com/spells/masters-touch) grants proficiency with simple and martial weapons, crafting tools, and vehicles. Before, its effect wasn't applied.
+    - [Curse of Foolishness](https://www.elkan5e.com/spells/curse-of-foolishness) affects Perception instead of Persuasion. [Curse of the Troll](https://www.elkan5e.com/spells/curse-of-the-troll) now counts as a curse. Both, and [Curse of Fate](https://www.elkan5e.com/spells/curse-of-fate), no longer have broken effect links.
+    - [Guardian of Faith](https://www.elkan5e.com/spells/guardian-of-faith) no longer has a broken extra summon activity.
+- 5th level
+    - [Arcane Hand](https://www.elkan5e.com/spells/arcane-hand)'s Slam now deals force damage, as written. Before, it dealt bludgeoning damage.
+    - [Awaken](https://www.elkan5e.com/spells/awaken) and [Planar Binding](https://www.elkan5e.com/spells/planar-binding) now remove the material cost.
+    - [Contagion](https://www.elkan5e.com/spells/contagion) deals 8d10 poison damage and applies the disease, which gives disadvantage on the target's saves. Before, its damage had no die or type, and the disease only stuck to poison-immune creatures.
+    - [Dominate](https://www.elkan5e.com/spells/dominate) charms the target, and [Planar Binding](https://www.elkan5e.com/spells/planar-binding) charms and binds it on a failed save.
+    - [Mislead](https://www.elkan5e.com/spells/mislead)'s invisibility lasts 1 hour instead of 1 minute.
+    - [Otherworldly Veil](https://www.elkan5e.com/spells/otherworldly-veil): targets roll an Intelligence save at the end of each turn to end it.
+    - [Raise Dead](https://www.elkan5e.com/spells/raise-dead) gives the two levels of exhaustion.
+    - [Rend the Veil](https://www.elkan5e.com/spells/rend-the-veil) now rolls its repeat save.
+    - [Modify Memory](https://www.elkan5e.com/spells/modify-memory)'s charm ends when the target takes damage.
+    - [Break Enchantment](https://www.elkan5e.com/spells/break-enchantment) now removes Charmed, Confused, Frightened, Goaded, Petrified, Silenced, and Siphoned, or all curses (your choice).
+- 6th level
+    - [Curse of Eyebite](https://www.elkan5e.com/spells/eyebite) is a permanent curse that blinds. Before, it didn't blind and ended after a minute or on damage.
+    - [Flesh to Stone](https://www.elkan5e.com/spells/flesh-to-stone): the repeat save happens at the end of the turn. Three successes end it and three failures petrify; neither needs to be in a row.
+    - [Irresistible Dance](https://www.elkan5e.com/spells/irresistible-dance) now rolls its repeat save, and attacks against the dancer have advantage.
+    - [Flood](https://www.elkan5e.com/spells/flood) knocks creatures prone on a failed save. Before, it restrained them as if they were vehicles.
+    - [Heroes' Feast](https://www.elkan5e.com/spells/heroes-feast) raises maximum hit points by 2d10 instead of 2d6.
+    - [Wall of Ice](https://www.elkan5e.com/spells/wall-of-ice): damage from passing through is cold. Before, it had no damage type.
+    - [Wind Walk](https://www.elkan5e.com/spells/wind-walk) gives resistance to nonmagical bludgeoning, piercing, and slashing damage.
+    - [Chain Lightning](https://www.elkan5e.com/spells/chain-lightning) targets four creatures.
+    - [Heal](https://www.elkan5e.com/spells/heal) removes Blinded, Deafened, Paralyzed, Poisoned, Weakened, and diseases.
+    - [Sunbeam](https://www.elkan5e.com/spells/sunbeam): undead and oozes have disadvantage on the save.
+    - [Disintegrate](https://www.elkan5e.com/spells/disintegrate): incorporeal creatures automatically succeed on the save.
+- 7th level
+    - [Divine Word](https://www.elkan5e.com/spells/divine-word) applies its effects based on the target's current hit points: Deafened, Blinded, Stunned, or killed. Celestials, elementals, fey, and fiends are also banished. Before, it applied nothing.
+    - [Symbol](https://www.elkan5e.com/spells/symbol) has all eight glyphs (Death, Discord, Fear, Hopelessness, Insanity, Pain, Sleep, and Stunning), each with its own save and effect. Creatures save when the glyph triggers, and when they enter the area or end their turn there. Before, only Death was available.
+    - [Curse of Doom](https://www.elkan5e.com/spells/curse-of-doom) counts as a curse, and a cursed creature that drops to 0 hit points dies.
+    - [Pain Reflection](https://www.elkan5e.com/spells/pain-reflection) counts as a curse, and the cursed creature now takes psychic damage equal to half the damage it deals.
+    - [Plane Shift](https://www.elkan5e.com/spells/plane-shift): a hit now triggers the Charisma save.
+    - [Etherealness](https://www.elkan5e.com/spells/etherealness) makes you Ethereal and untargetable for the duration.
+    - [Sequester](https://www.elkan5e.com/spells/sequester) ends when the target takes damage.
+    - [Resurrection](https://www.elkan5e.com/spells/resurrection) applies a penalty to attack rolls, saves, and ability checks that starts at −4 and drops by 1 each long rest. The resurrected creature gets a Resurrection Weakness feature that tracks it; remove the Resurrection Penalty effect once it reaches 0.
+- 8th level
+    - [Antipathy/Sympathy](https://www.elkan5e.com/spells/antipathy%2Fsympathy): Antipathy frightens instead of applying Falling, and Sympathy goads instead of frightening.
+    - [Earthquake](https://www.elkan5e.com/spells/earthquake) knocks creatures prone on a failed save.
+    - [Befuddlement](https://www.elkan5e.com/spells/befuddlement) doesn't affect creatures immune to confusion.
+    - [Power Word Stun](https://www.elkan5e.com/spells/power-word-stun): the repeat save happens at the end of the target's turn instead of the start.
+    - [Sunburst](https://www.elkan5e.com/spells/sunburst): undead and oozes have disadvantage on the save.
+    - [Holy Aura](https://www.elkan5e.com/spells/holy-aura) makes affected creatures shed dim light, as written.
+- 9th level
+    - [Mass Heal](https://www.elkan5e.com/spells/mass-heal): fixed an error in its construct check that could stop it working. Healed creatures are cured of Blinded, Deafened, and diseases.
+    - [Power Cure](https://www.elkan5e.com/spells/power-cure) removes the listed conditions, curses, and all exhaustion.
+    - [Foresight](https://www.elkan5e.com/spells/foresight): the target can't be surprised.
+    - [Weird](https://www.elkan5e.com/spells/weird): targets roll a save at the end of each turn, taking 5d10 psychic damage on a failure and ending it on a success.
+    - [Prismatic Wall](https://www.elkan5e.com/spells/prismatic-wall): choose the layer's damage type. Before, it had none.
+- Spell components: Large Agate, Planar Focus, Rare Chalks and Inks, Wardstone, and Wizard's Sage Incense are now marked as spell components, like the others. Fixed the spelling of Miniature Platinum Sword.
+
+## UI
+
+- Passive features (class features, ancestry features, feats, and creature features with no activities) are now marked as Passive Traits, so they're listed under Passive Abilities on the character sheet and Traits on the NPC sheet.
+- The Cold Iron weapon property now has an icon (an iron ingot), like dnd5e's Magical property.
+
+## Settings
+
+- Update Elkan Items:
+    - The NPC "Remove Duplicate Features and Spells" option now works. Before, it used the Players checkbox.
+    - "Update All" now keeps quantity, equipped, and attunement on items that aren't from Elkan 5e. Before, they reset to the compendium's values, so a stack of 20 arrows came back as 1.
+    - Updating spells keeps whether each spell is prepared. Before, it read a field dnd5e 5.0 removed, so preparation reset.
+    - Items found by name keep their custom name, quantity, and links to the class or feature that granted them. Before, these were lost whenever the item's identifier didn't match the compendium's.
+    - Items that haven't changed are no longer deleted and recreated, and duplicate removal now finds duplicates that are only in a different order on the sheet.
+    - The item, spell, and feature updates now run one after another instead of all at once.
+- The welcome dialog no longer shows the old "Updating from Before V4" notice, and closing it with the X no longer counts as "don't show again".
+
+## Misc
+
+- Added `npm run audit:packs` (scripts/audit-packs.mjs), which checks the compendium source for problems that load without errors but break automation: missing effect, item and macro links, unsupported area rules, effects that can't apply, invalid keys and durations, and macros that call missing functions or removed Foundry APIs. It also flags creatures with no art.
+- Removed debug messages that were written to the console on every grapple and push.
+- Added `elkan5e.macros.features.markOfThorns` and `elkan5e.macros.features.markOfAffliction`, which the Mark of Thorns and Mark of Affliction item macros call.
+- Effects can use `flags.elkan5e.mirrorImages`, which counts a creature's remaining Mirror Image duplicates.
+- Effects the module creates in scripts (Goodberry, Delayed Surge, grapple Climber) now use their templates from the Active Effects compendium. Before, the lookup never found them and fell back to a blank effect.
+- Removed four unused effects from the Active Effects compendium's For Automation folder: Barbarian Defense Bonus, Concentration Proficiency, and the old Drained and Grappled templates (the conditions replace them).
+- Features that remove conditions or set hit points on a creature you don't own (Cleansing Touch, Finishing Blow, Mark for Death) now ask the GM's client to make the change through socketlib.
+- Removed `elkan5e.macros.features.shadowRefuge` and `elkan5e.macros.features.soulConduit`. Their reminders now run on their own when you cast a spell.
+- With DAE's Dependent Conditions setting on, the status effect DAE adds for a condition no longer applies the condition's rules a second time when the effect that gave the condition already carries them. Before, Elkan conditions from the compendium stacked with DAE's copy (for example, Hasted gave four times the speed).
+
 # v1.14.3
+
 ## Bug Fixes
 
 - Fixed minor content inaccuracies across zombie-family creatures and the spells-by-subclass spell list.
@@ -20,6 +621,7 @@
 - NEW: Blackguard subclass.
 
 ## Formatting
+
 - Updated Potions formatting to be clearer about their effects — potions now indicate Buff, Healing, or Utility depending on their effect instead of just saying "Potion", and "Consumed (1 Charge)" was changed to "Consumed on Use".
 
 ## Spells
@@ -27,88 +629,87 @@
 - [Prismatic Bolt](https://www.elkan5e.com/spells/prismatic-bolt): now automated — rolls the beam's damage type on 1d8 and applies the +10 bonus on a radiant result instead of prompting a manual damage type choice.
 - [Spirit Link](https://www.elkan5e.com/spells/spirit-link): now automated — links the two affected creatures so half of any damage taken by one is mirrored to the other, and ends the bond automatically on death, dismissal, or separation beyond 60 feet.
 - Added dynamic lighting/darkness effects to Fog Cloud, Smoke Field, Sleet Storm, Incendiary Cloud, and the Druid's Lurking Fog wild shape, so their obscuring clouds now visually darken the area on the canvas.
-- Changed [Wall of Fire](https://www.elkan5e.com/spells/wall-of-fire) — removed "Heavily Obscured" active effect and its description reference;  the wall no longer obscures vision.
-
+- Changed [Wall of Fire](https://www.elkan5e.com/spells/wall-of-fire) — removed "Heavily Obscured" active effect and its description reference; the wall no longer obscures vision.
 
 # v1.14.2
 
 ## Bug Fixes
 
-- Fixed [Black Tentacles](https://www.elkan5e.com/spells/black-tentacles) — now correctly says upcasting from 4th level instead of 2nd in Foundry. ([EE-981](https://ethanleider.atlassian.net/browse/EE-981))
-- Fixed [Stinking Cloud](https://www.elkan5e.com/spells/stinking-cloud). ([EE-990](https://ethanleider.atlassian.net/browse/EE-990))
-- Fixed Standard Actions Grapple and Push — contested rolls now respect the midi-qol "fast forward ability checks" setting instead of always forcing a prompt. ([EE-975](https://ethanleider.atlassian.net/browse/EE-975))
-- Fixed Rumination (Barbarian), Meditation (Monk), and Plan the Hunt (Ranger) formulas. ([EE-974](https://ethanleider.atlassian.net/browse/EE-974))
-- Fixed ancestry and background stat inaccuracies. ([EE-1002](https://ethanleider.atlassian.net/browse/EE-1002))
-- Fixed Abbot and Touch of Corrosion content errors. ([EE-1001](https://ethanleider.atlassian.net/browse/EE-1001))
-- Fixed Elemental Attunement effect lookup (effects are matched by name, not label) and guarded against a bad element key. ([EE-997](https://ethanleider.atlassian.net/browse/EE-997))
+- Fixed [Black Tentacles](https://www.elkan5e.com/spells/black-tentacles) — now correctly says upcasting from 4th level instead of 2nd in Foundry.
+- Fixed [Stinking Cloud](https://www.elkan5e.com/spells/stinking-cloud).
+- Fixed Standard Actions Grapple and Push — contested rolls now respect the midi-qol "fast forward ability checks" setting instead of always forcing a prompt.
+- Fixed Rumination (Barbarian), Meditation (Monk), and Plan the Hunt (Ranger) formulas.
+- Fixed ancestry and background stat inaccuracies.
+- Fixed Abbot and Touch of Corrosion content errors.
+- Fixed Elemental Attunement effect lookup (effects are matched by name, not label) and guarded against a bad element key.
 
 ## Classes
 
 ### Barbarian
 
-- Relentless Rage now tracks uses via effect names instead of flags, so players can manually edit the count. ([EE-987](https://ethanleider.atlassian.net/browse/EE-987))
-- Wild Blood: 
-    - Keyed off `postUseActivity` and the feature identifier instead of a workflow/scope lookup that broke when the activity id didn't round-trip; dropped the redundant on-use active effect. ([EE-991](https://ethanleider.atlassian.net/browse/EE-991))
+- Relentless Rage now tracks uses via effect names instead of flags, so players can manually edit the count.
+- Wild Blood:
+    - Keyed off `postUseActivity` and the feature identifier instead of a workflow/scope lookup that broke when the activity id didn't round-trip; dropped the redundant on-use active effect.
 
 ### Fighter
 
-- [Bodyblock](https://www.elkan5e.com/feats/bodyblock) can now be picked by level 2 fighters. ([EE-973](https://ethanleider.atlassian.net/browse/EE-973))
+- [Bodyblock](https://www.elkan5e.com/feats/bodyblock) can now be picked by level 2 fighters.
 
 ### Paladin
 
-- Holy Nimbus: now deals damage effect similar to spirit guardians  ([EE-1000](https://ethanleider.atlassian.net/browse/EE-1000))
+- Holy Nimbus: now deals damage effect similar to spirit guardians
 
 ### Cleric
 
-- Deceiver: 
-    - Shroud of Darkness updated to match the website — invisibility now ends on an attack or spell cast by the target. ([EE-977](https://ethanleider.atlassian.net/browse/EE-977))
+- Deceiver:
+    - Shroud of Darkness updated to match the website — invisibility now ends on an attack or spell cast by the target.
 
 ### Ranger
 
 - Unrelenting Focus: now automatically also deals Mark for Death damage when the ranger isn't maintaining any ranger mark, not just when the specific target lacks the effect.
-- Precise Hunter: now automatically grants advantage on attack rolls against any creature carrying Mark for Death. ([EE-994](https://ethanleider.atlassian.net/browse/EE-994))
+- Precise Hunter: now automatically grants advantage on attack rolls against any creature carrying Mark for Death.
 
 ### Sorcerer
 
-- Added Careful Spell Automation: Lets the sorcerer pick up to their Charisma modifier of targets to auto-succeed a save-forcing spell's save. ([EE-992](https://ethanleider.atlassian.net/browse/EE-992))
+- Added Careful Spell Automation: Lets the sorcerer pick up to their Charisma modifier of targets to auto-succeed a save-forcing spell's save.
 
 ### Wizard
 
 - Evoker
-    - Automatted Overchannel: an arm-only utility that forces max damage on the next qualifying spell-slot cast (up to 5th level), with escalating self-damage for repeat uses before a long rest. ([EE-993](https://ethanleider.atlassian.net/browse/EE-993))
-- Necromancer: 
+    - Automatted Overchannel: an arm-only utility that forces max damage on the next qualifying spell-slot cast (up to 5th level), with escalating self-damage for repeat uses before a long rest.
+- Necromancer:
     - Necromantic Surge: reworked into a condition picker that lists which removable conditions the caster actually has, gated on self-targeting.
 
 ## Ancestries
 
 ### Orc
 
-- Relentless Endurance automated — prompts to drop to 1 HP instead of 0 when reduced to 0 HP, tracking remaining uses automatically. ([EE-986](https://ethanleider.atlassian.net/browse/EE-986))
+- Relentless Endurance automated — prompts to drop to 1 HP instead of 0 when reduced to 0 HP, tracking remaining uses automatically.
 
 ## Creature Features
 
-- Added a new Undead creatures module. ([EE-986](https://ethanleider.atlassian.net/browse/EE-986))
-- Automatted Undead Fortitude: Can be added as a special property or by adding the feature to the creature ([EE-987](https://ethanleider.atlassian.net/browse/EE-987))
+- Added a new Undead creatures module.
+- Automatted Undead Fortitude: Can be added as a special property or by adding the feature to the creature
 - Creature stat blocks: upcast spell-like abilities (e.g. "Fireball (5th Level)") now correctly scale their healing/damage dice relative to the base spell instead of being skipped during sync.
 
 ## Spells
 
-- [Blight](https://www.elkan5e.com/spells/blight): added plant-damage automation — flags plant/magical-plant targets for disadvantage on their save and tops up their damage to the maximized shared-formula amount. ([EE-995](https://ethanleider.atlassian.net/browse/EE-995))
-- [Detect Evil and Good](https://www.elkan5e.com/spells/detect-evil-and-good), [Detect Magic](https://www.elkan5e.com/spells/detect-magic), and [Detect Poison and Disease](https://www.elkan5e.com/spells/detect-poison-and-disease) now use a moving emanation region — creatures/objects are detected as they enter or leave the spell's radius, instead of only what's in range at the moment of casting. ([EE-998](https://ethanleider.atlassian.net/browse/EE-998))
-- [Death Ward](https://www.elkan5e.com/spells/death-ward) automated — consumes the effect and sets HP to 1 instead of 0 when the warded creature would otherwise drop. ([EE-986](https://ethanleider.atlassian.net/browse/EE-986))
-- Changed [Sanctuary](https://www.elkan5e.com/spells/sanctuary)/[Mirror Image](https://www.elkan5e.com/spells/mirror-image) — removing a saved/failed target from the workflow no longer aborts the whole attack, so the roll chat card still shows for every other target. ([EE-996](https://ethanleider.atlassian.net/browse/EE-996))
+- [Blight](https://www.elkan5e.com/spells/blight): added plant-damage automation — flags plant/magical-plant targets for disadvantage on their save and tops up their damage to the maximized shared-formula amount.
+- [Detect Evil and Good](https://www.elkan5e.com/spells/detect-evil-and-good), [Detect Magic](https://www.elkan5e.com/spells/detect-magic), and [Detect Poison and Disease](https://www.elkan5e.com/spells/detect-poison-and-disease) now use a moving emanation region — creatures/objects are detected as they enter or leave the spell's radius, instead of only what's in range at the moment of casting.
+- [Death Ward](https://www.elkan5e.com/spells/death-ward) automated — consumes the effect and sets HP to 1 instead of 0 when the warded creature would otherwise drop.
+- Changed [Sanctuary](https://www.elkan5e.com/spells/sanctuary)/[Mirror Image](https://www.elkan5e.com/spells/mirror-image) — removing a saved/failed target from the workflow no longer aborts the whole attack, so the roll chat card still shows for every other target.
 - Reworked area-effect triggers to fire when a creature enters or moves through the area (instead of the old aura-check approach), with per-spell control over once-per-turn, wall-blocking, and friend/foe targeting: [Antimagic Field](https://www.elkan5e.com/spells/antimagic-field), [Antipathy/Sympathy](https://www.elkan5e.com/spells/antipathy-sympathy), [Arms of Earth](https://www.elkan5e.com/spells/arms-of-earth), [Beacon of Hope](https://www.elkan5e.com/spells/beacon-of-hope), [Blade Barrier](https://www.elkan5e.com/spells/blade-barrier), [Cloudkill](https://www.elkan5e.com/spells/cloudkill), [Continual Flame](https://www.elkan5e.com/spells/continual-flame), [Entangle](https://www.elkan5e.com/spells/entangle), [Grease](https://www.elkan5e.com/spells/grease), [Gust of Wind](https://www.elkan5e.com/spells/gust-of-wind), [Holy Aura](https://www.elkan5e.com/spells/holy-aura), [Incendiary Cloud](https://www.elkan5e.com/spells/incendiary-cloud), [Insect Plague](https://www.elkan5e.com/spells/insect-plague), [Plant Growth](https://www.elkan5e.com/spells/plant-growth), [Silence](https://www.elkan5e.com/spells/silence), [Sleet Storm](https://www.elkan5e.com/spells/sleet-storm), [Spike Growth](https://www.elkan5e.com/spells/spike-growth), [Spirit Guardians](https://www.elkan5e.com/spells/spirit-guardians), [Vortex](https://www.elkan5e.com/spells/vortex), [Wall of Fire](https://www.elkan5e.com/spells/wall-of-fire), [Web](https://www.elkan5e.com/spells/web), [Well of Corruption](https://www.elkan5e.com/spells/well-of-corruption), and [Zone of Truth](https://www.elkan5e.com/spells/zone-of-truth).
 
 ## Equipment
 
-- Added a Magic property to items. ([EE-985](https://ethanleider.atlassian.net/browse/EE-985))
+- Added a Magic property to items.
 
 ## Systems & Automation
 
-- Added darkness vision automation — attacking unseen targets, being blinded by darkness, and the Vision condition applying correctly — and routed the Darkness spell's light creation through socketlib so players can trigger it. ([EE-988](https://ethanleider.atlassian.net/browse/EE-988), [EE-989](https://ethanleider.atlassian.net/browse/EE-989))
-- Added a configurable Death Save Reset Timing setting — controls when accumulated death save successes/failures are cleared (on HP recovery, at a short rest, or at a long rest). ([EE-986](https://ethanleider.atlassian.net/browse/EE-986))
-- Added a Short Rest dialog prompt for short-rest-activation features, showing remaining uses and matching activation type case-insensitively. ([EE-988](https://ethanleider.atlassian.net/browse/EE-988))
-- Wired `reactionCondition` automation across reaction-granting items. ([EE-999](https://ethanleider.atlassian.net/browse/EE-999))
+- Added darkness vision automation — attacking unseen targets, being blinded by darkness, and the Vision condition applying correctly — and routed the Darkness spell's light creation through socketlib so players can trigger it.
+- Added a configurable Death Save Reset Timing setting — controls when accumulated death save successes/failures are cleared (on HP recovery, at a short rest, or at a long rest).
+- Added a Short Rest dialog prompt for short-rest-activation features, showing remaining uses and matching activation type case-insensitively.
+- Wired `reactionCondition` automation across reaction-granting items.
 - Wired up additional automation hooks across items.
 - Cleaned up leftover references to old subclass names (pre-rename) across several subclass features and Hold Creature.
 - Temporarily disabled custom movement type registration (crawl/long jump/high jump) pending further work.
@@ -2377,7 +2978,7 @@ Rename Module 'Elkan 5e Automated Content'
 
 ## Bug Fixes
 
-- [Arcanist](https://www.elkan5e.com/ancestrybackground) now receive the common language by default
+- [Arcanist](https://www.elkan5e.com/background) now receive the common language by default
 - Fixed [Static Charge \[Air Savant\]](https://www.elkan5e.com/sorcerer) to deal 1d8 instead of 1d6
 - [Ray of Enfeeblement](https://www.elkan5e.com/spells/ray-of-frost) is now just be a saving throw
 
@@ -3658,3 +4259,4 @@ Made subclass names consistent in formatting
 # v1.0.1
 
 - A local file
+

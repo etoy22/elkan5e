@@ -1,4 +1,5 @@
-import { measureRangeDistance } from "../shared/helpers.mjs";
+import { measureRangeDistance, t } from "../shared/helpers.mjs";
+import { damageOnly } from "../shared/midi-compat.mjs";
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -12,7 +13,8 @@ const getWorkflowTargets = (workflow) =>
 	Array.from(workflow?.targets ?? workflow?.hitTargets ?? []);
 
 /**
- * Runs infused Healer class feature automation.
+ * Heals the caster for 2 + cast level after a healing spell of base level 1 or higher,
+ * provided none of its targets is the caster. Requires a caster token.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
  * @returns {Promise<void>} Promise resolution result.
@@ -21,7 +23,7 @@ export async function infusedHealer(workflow) {
 	// Bail if not a healing spell of 1st level or higher
 	let item = workflow.item;
 	if (
-		item.type !== "spell" ||
+		item?.type !== "spell" ||
 		item.system.level < 1 ||
 		getWorkflowActionType(workflow) !== "heal"
 	)
@@ -38,25 +40,22 @@ export async function infusedHealer(workflow) {
 	const targets = getWorkflowTargets(workflow);
 	if (targets.some((t) => t.actor.id === caster.id)) return;
 
-	const healAmount = "" + (2 + item.system.level);
+	// Use the level the spell was cast at, not its base level.
+	const castLevel = Number(
+		workflow.castData?.castLevel ?? workflow.spellLevel ?? item.system.level,
+	);
+	const healAmount = "" + (2 + castLevel);
 
 	// Heal the caster
 	const itemData = {
 		type: "feat",
 		img: "icons/magic/light/orbs-hand-gray.webp",
 	};
-	const damageRoll = await new Roll(healAmount, {}, { type: "healing" }).evaluate({
-		async: true,
+	const damageRoll = await new Roll(healAmount, {}, { type: "healing" }).evaluate();
+	await damageOnly(caster, casterToken, damageRoll.total, "healing", [casterToken], damageRoll, {
+		itemData: itemData,
+		flavor: `Infused Healer`,
 	});
-	new MidiQOL.DamageOnlyWorkflow(
-		caster,
-		casterToken,
-		damageRoll.total,
-		"healing",
-		[casterToken],
-		damageRoll,
-		{ itemData: itemData, flavor: `Infused Healer` },
-	);
 }
 
 /**
@@ -103,29 +102,35 @@ export async function healOver(itemOrWorkflow, roll) {
 }
 
 /**
- * Runs healing Overflow class feature automation.
+ * Offers to redirect the greatest excess healing from a leveled healing spell to another
+ * injured creature within range whose token is not hidden. Touch or unspecified range uses
+ * one grid distance.
+ * Resolves after opening the dialog; healing is applied when its Apply button is chosen.
  *
- * @param {*} workflow - Workflow payload from the triggering item or activity.
- * @returns {Promise<unknown>} Promise resolution result.
+ * @param {*} workflow - MIDI-QOL workflow or macro scope containing it.
+ * @returns {Promise<void>}
  */
 export async function healingOverflow(workflow) {
-	const [workflowData] = workflow.args;
+	// Midi-QOL calls this as an actor on-use macro, passing its macro scope; the workflow is inside it.
+	const wf = workflow?.workflow ?? workflow;
+	const [workflowData] = workflow?.args ?? [];
+	const item = wf?.item ?? workflow?.item;
 	if (
-		!workflow.item ||
-		workflow.item.type !== "spell" ||
-		getWorkflowActionType(workflow) !== "heal" ||
-		workflow.item.system.level < 1
+		item?.type !== "spell" ||
+		getWorkflowActionType(wf) !== "heal" ||
+		Number(workflowData?.castData?.castLevel ?? wf?.castData?.castLevel ?? item.system.level) <
+			1
 	)
 		return;
 
-	const healing = workflowData.damageTotal;
-	if (!healing || healing === 0) return;
+	const healing = workflowData?.damageTotal ?? wf?.damageTotal;
+	if (!healing) return;
 
-	const caster = workflow.actor;
-	const casterToken = workflow.token;
+	const caster = wf.actor ?? workflow.actor;
+	const casterToken = wf.token ?? workflow.token;
 	if (!caster || !casterToken) return;
 
-	const targets = workflowData.targets ?? [];
+	const targets = [...(wf.targets ?? workflowData?.targets ?? [])];
 	if (targets.length === 0) return;
 
 	// Calculate max overflow healing from targets
@@ -141,13 +146,18 @@ export async function healingOverflow(workflow) {
 	}
 	if (maxOverflow <= 0) return;
 
-	// Determine range from the spell item
-	const range = workflow.item.system.range?.value ?? 0;
+	// The spell's range; touch spells reach an adjacent creature.
+	const rangeData = wf.activity?.range ?? item.system.range ?? {};
+	const range =
+		rangeData.units === "touch"
+			? (canvas.grid.distance ?? 5)
+			: Number(rangeData.value ?? 0) || (canvas.grid.distance ?? 5);
 
-	// Find tokens within range that are missing HP
+	// Find other tokens within range that are missing HP
+	const targetIds = new Set(targets.map((tk) => tk.document?.id ?? tk.id));
 	const candidates = canvas.tokens.placeables.filter((token) => {
 		const actor = token.actor;
-		if (!actor || token.document.hidden) return false;
+		if (!actor || token.document.hidden || targetIds.has(token.document.id)) return false;
 		const hp = actor.system.attributes.hp;
 		const inRange = measureRangeDistance(casterToken, token) <= range;
 		return hp.value < hp.max && inRange;
@@ -177,9 +187,7 @@ export async function healingOverflow(workflow) {
 		img: "icons/magic/light/explosion-star-glow-silhouette.webp",
 	};
 
-	const damageRoll = await new Roll(`${maxOverflow}`, {}, { type: "healing" }).evaluate({
-		async: true,
-	});
+	const damageRoll = await new Roll(`${maxOverflow}`, {}, { type: "healing" }).evaluate();
 
 	new DialogV2({
 		window: { title: "Healing Overflow" },
@@ -192,7 +200,7 @@ export async function healingOverflow(workflow) {
 					const targetId = button.form.querySelector("#overflow-target")?.value;
 					const recipient = canvas.tokens.get(targetId);
 					if (!recipient) return;
-					new MidiQOL.DamageOnlyWorkflow(
+					await damageOnly(
 						caster,
 						casterToken,
 						damageRoll.total,
@@ -217,9 +225,10 @@ export async function healingOverflow(workflow) {
  * Fires the Holy Strike activity once per turn, on the first hit only.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
+ * @param {Item} macroItem - The Holy Strike item.
  * @returns {Promise<void>} Promise resolution result.
  */
-export async function holyStrike(workflow) {
+export async function holyStrike(workflow, macroItem) {
 	try {
 		if (!workflow.actor || workflow.hitTargets.size === 0) return;
 		if (!["mwak", "rwak"].includes(workflow.activity?.actionType)) return;
@@ -233,7 +242,7 @@ export async function holyStrike(workflow) {
 			await actor.setFlag("elkan5e", "holyStrikeTime", combatTime);
 		}
 
-		const activity = macroItem.system.activities.contents[0];
+		const activity = macroItem?.system.activities.contents[0];
 		if (activity) await activity.use({ event: workflow.event });
 	} catch (err) {
 		console.error("Holy Strike |", err);
@@ -241,34 +250,49 @@ export async function holyStrike(workflow) {
 }
 
 /**
- * Runs shadow Refuge class feature automation.
+ * Runs Shadow Refuge class feature automation. When the caster spends a spell slot on an
+ * illusion spell of 1st level or higher, reminds them that Shadow Refuge can be used.
  *
- * @param {*} workflow - Workflow payload from the triggering item or activity.
- * @returns {Promise<void>} Promise resolution result.
+ * @param {object} activity - Activity that was used.
+ * @param {object} usageConfig - Usage configuration for the activation.
  */
-export async function shadowRefuge(workflow) {
-	try {
-		console.log("Elkan 5e | Shadow Refuge check");
-		const item = workflow.item ?? workflow;
-		if (!item || item.type !== "spell") return;
+export function shadowRefuge(activity, usageConfig) {
+	const item = activity?.item;
+	const actor = activity?.actor;
+	if (item?.type !== "spell" || item.system.school !== "ill" || !actor?.isOwner) return;
 
-		const school = (item.system?.school || "").toLowerCase();
-		const level = Number(item.system?.level ?? 0);
-		if (school !== "illusion" || level < 1) return;
+	const slot = usageConfig?.spell?.slot;
+	if (!slot || usageConfig?.consume?.spellSlot === false) return;
+	const level = Number(actor.system.spells?.[slot]?.level ?? 0);
+	if (level < 1) return;
 
-		const actor = workflow.actor ?? (workflow.token ? workflow.token.actor : null);
-		if (!actor) return;
-		const hasShadow = actor.items.find(
-			(i) => i.system?.identifier === "shadow-refuge" || i.name === "Shadow Refuge",
-		);
-		if (hasShadow && actor.isOwner) {
-			ui.notifications.notify(
-				game.i18n.format("elkan5e.notifications.ShadowRefugeReminder", {
-					name: actor.name,
-				}),
-			);
-		}
-	} catch (err) {
-		console.error("elkan5e | shadowRefuge error:", err);
-	}
+	if (!actor.items.some((i) => i.system?.identifier === "shadow-refuge")) return;
+
+	ui.notifications.info(
+		t("elkan5e.notifications.ShadowRefugeReminder", {
+			name: actor.name,
+			spell: item.name,
+			level,
+			dice: level * 2,
+		}),
+	);
+}
+
+/**
+ * Runs Blessed Healing at dnd5e.preRollDamageV2: healing spells of 1st level or higher restore
+ * an extra 2 + the cast level on the first healing roll. Mutates the roll configuration.
+ *
+ * @param {object} rollConfig - Damage roll configuration.
+ */
+export function blessedHealing(rollConfig) {
+	const activity = rollConfig?.subject;
+	if (activity?.type !== "heal") return;
+	const item = activity.item;
+	const roll = rollConfig.rolls?.[0];
+	if (!roll || item?.type !== "spell") return;
+	// The roll data has the level the spell was cast at.
+	const level = Number(roll.data?.item?.level ?? item.system?.level ?? 0);
+	if (level < 1) return;
+	if (!activity.actor?.items.some((i) => i.system?.identifier === "blessed-healing")) return;
+	roll.parts = [...(roll.parts ?? []), String(2 + level)];
 }

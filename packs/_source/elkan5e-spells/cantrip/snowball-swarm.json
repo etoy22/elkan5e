@@ -33,10 +33,14 @@
 					"override": false
 				},
 				"target": {
-					"type": "creature",
-					"value": 1,
-					"units": "ft",
-					"width": null,
+					"affects": {
+						"type": "creature",
+						"count": 1
+					},
+					"template": {
+						"units": "ft",
+						"width": null
+					},
 					"override": false,
 					"prompt": true
 				},
@@ -137,7 +141,23 @@
 						"min": null,
 						"max": null
 					}
-				}
+				},
+				"behaviors": [
+					{
+						"name": "",
+						"_id": "tmz14rRdG11Ur7Dm",
+						"type": "difficultTerrain",
+						"config": {
+							"types": [
+								"snow"
+							]
+						},
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				]
 			}
 		},
 		"uses": {

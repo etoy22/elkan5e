@@ -122,7 +122,7 @@
 					"formula": "",
 					"name": ""
 				},
-				"useConditionText": "",
+				"useConditionText": "reaction === 'isDamaged' && fromUuidSync(targetUuid)?.actor?.statuses?.has('raging') && !workflow?.activity?.target?.template?.type && ['acid','cold','fire','force','lightning','necrotic','radiant','thunder'].some(d => damageTypes?.[d])",
 				"useConditionReason": "",
 				"effectConditionText": "",
 				"macroData": {
@@ -218,65 +218,93 @@
 						"type": "add",
 						"value": "acid",
 						"phase": "final",
-						"priority": null
+						"priority": null,
+						"_id": "IWH3yokh6nPBW52Z",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "system.traits.dr.value",
 						"type": "add",
 						"value": "cold",
 						"phase": "final",
-						"priority": null
+						"priority": null,
+						"_id": "bQM2s6GeiVyW4BfR",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "system.traits.dr.value",
 						"type": "add",
 						"value": "fire",
 						"phase": "final",
-						"priority": null
+						"priority": null,
+						"_id": "LwLS5JtR1bDsNoDj",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "system.traits.dr.value",
 						"type": "add",
 						"value": "force",
 						"phase": "final",
-						"priority": null
+						"priority": null,
+						"_id": "VY8zQHn3rv6h7Vxx",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "system.traits.dr.value",
 						"type": "add",
 						"value": "lightning",
 						"phase": "final",
-						"priority": null
+						"priority": null,
+						"_id": "9zN5Y05r1WygeA7V",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "system.traits.dr.value",
 						"type": "add",
 						"value": "necrotic",
 						"phase": "final",
-						"priority": null
+						"priority": null,
+						"_id": "Zz1VFotK5lcFVgMY",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "system.traits.dr.value",
 						"type": "add",
 						"value": "radiant",
 						"phase": "final",
-						"priority": null
+						"priority": null,
+						"_id": "nykadGmMdX5N0OBw",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "system.traits.dr.value",
 						"type": "add",
 						"value": "poison",
 						"phase": "final",
-						"priority": null
+						"priority": null,
+						"_id": "2zXS4qZtuQao38pP",
+						"conditions": "{}",
+						"replacement": ""
 					},
 					{
 						"key": "system.traits.dr.value",
 						"type": "add",
 						"value": "thunder",
 						"phase": "final",
-						"priority": null
+						"priority": null,
+						"_id": "8W8tc7IM2S5LkNeq",
+						"conditions": "{}",
+						"replacement": ""
 					}
-				]
+				],
+				"magical": true
 			},
 			"disabled": false,
 			"start": null,
@@ -303,7 +331,8 @@
 					"selfTarget": false,
 					"selfTargetAlways": false,
 					"dontApply": false,
-					"specialDuration": []
+					"specialDuration": [],
+					"phaseStamped": true
 				}
 			},
 			"_key": "!items.effects!o2ZzN41a2ytdUgZ3.WKzBhdbXbhAyC47L"
@@ -330,7 +359,6 @@
 			"rollAttackPerTarget": "default",
 			"itemCondition": "",
 			"effectCondition": "",
-			"reactionCondition": "reaction === 'isDamaged' && actor.statuses?.has('raging') && workflow?.damageItem?.damageDetail?.some(d => ['acid','cold','fire','force','lightning','necrotic','radiant','thunder'].includes(d.type))",
 			"AoETargetType": "any",
 			"autoTarget": "default",
 			"removeAttackDamageButtons": "default",

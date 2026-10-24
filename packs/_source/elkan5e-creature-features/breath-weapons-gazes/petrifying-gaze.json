@@ -1,0 +1,319 @@
+{
+	"_id": "Y9uwzdyxLy6MsUb7",
+	"name": "Petrifying Gaze",
+	"type": "feat",
+	"system": {
+		"type": {
+			"value": "monster",
+			"subtype": ""
+		},
+		"activities": {
+			"mN9aF1WkHQWLIN4B": {
+				"type": "save",
+				"_id": "mN9aF1WkHQWLIN4B",
+				"activation": {
+					"type": "bonus",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": [
+						{
+							"type": "itemUses",
+							"value": "1",
+							"target": "",
+							"scaling": {}
+						}
+					]
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "Tt9lbKg24MuYwOLV",
+						"level": {},
+						"onSave": false
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": "cone",
+						"size": "30",
+						"count": ""
+					},
+					"affects": {
+						"choice": false,
+						"type": "creature",
+						"count": "",
+						"special": ""
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"parts": [],
+					"onSave": "none"
+				},
+				"save": {
+					"ability": [
+						"con"
+					],
+					"dc": {
+						"calculation": "con",
+						"formula": "12"
+					}
+				},
+				"name": "First Save",
+				"img": "",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false,
+					"identifier": ""
+				}
+			},
+			"f85JEmBaXr4A38dp": {
+				"type": "save",
+				"activation": {
+					"type": "turnEnd",
+					"value": null,
+					"override": false,
+					"condition": ""
+				},
+				"consumption": {
+					"scaling": {
+						"allowed": false
+					},
+					"spellSlot": true,
+					"targets": []
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"units": "inst",
+					"concentration": false,
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "YLFv2Ujss9c0vtMQ",
+						"onSave": false,
+						"level": {}
+					}
+				],
+				"range": {
+					"override": false,
+					"units": "self",
+					"special": ""
+				},
+				"target": {
+					"template": {
+						"contiguous": false,
+						"units": "ft",
+						"type": "",
+						"size": "",
+						"count": ""
+					},
+					"affects": {
+						"choice": false,
+						"type": "creature",
+						"count": "1",
+						"special": "Restrained creature"
+					},
+					"override": false,
+					"prompt": true
+				},
+				"uses": {
+					"spent": 0,
+					"recovery": [],
+					"max": ""
+				},
+				"damage": {
+					"parts": [],
+					"onSave": "none"
+				},
+				"save": {
+					"ability": [
+						"con"
+					],
+					"dc": {
+						"calculation": "con",
+						"formula": "12"
+					}
+				},
+				"name": "Second Save",
+				"_id": "f85JEmBaXr4A38dp",
+				"img": null,
+				"visibility": {
+					"level": {},
+					"requireAttunement": false,
+					"requireIdentification": false,
+					"requireMagic": false
+				}
+			}
+		},
+		"uses": {
+			"spent": 0,
+			"recovery": [
+				{
+					"period": "recharge",
+					"formula": "4",
+					"type": "recoverAll"
+				}
+			],
+			"max": "1"
+		},
+		"description": {
+			"value": "<p><strong>Bonus Action</strong> - 30 ft. Cone (Self) - Recharge 4-6</p><p>If the [[lookup @name lowercase]] sees its own reflection within the Cone, the [[lookup @name lowercase]] must make this save.</p><p><strong>[[/save constitution]]{Constitution Save}</strong></p><ul><li><p><strong>First Failure:</strong> The target has the &amp;reference[Restrained apply=false] condition and repeats the save at the end of its next turn if it is still Restrained, ending the effect on itself on a success.</p></li><li><p><strong>Second Failure:</strong> The target has the &amp;reference[Petrified apply=false] condition instead of the Restrained condition.</p></li><li><p><strong>Success:</strong> No effect.</p></li></ul>",
+			"chat": ""
+		},
+		"identifier": "petrifying-gaze",
+		"source": {
+			"custom": "Elkan 5e",
+			"rules": "",
+			"revision": 1,
+			"book": "Elkan 5e",
+			"page": "",
+			"license": ""
+		},
+		"enchant": {},
+		"prerequisites": {
+			"level": null,
+			"repeatable": false,
+			"items": []
+		},
+		"properties": [],
+		"requirements": "",
+		"advancement": {},
+		"cover": null,
+		"crewed": false
+	},
+	"folder": "IaT9UAmwgTBItOPT",
+	"img": "icons/magic/defensive/armor-stone-skin.webp",
+	"effects": [
+		{
+			"name": "Petrified",
+			"img": "systems/dnd5e/icons/svg/statuses/petrified.svg",
+			"origin": "Compendium.elkan5e.elkan5e-creature-features.Item.Y9uwzdyxLy6MsUb7",
+			"_id": "YLFv2Ujss9c0vtMQ",
+			"type": "base",
+			"system": {
+				"changes": [
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "petrified",
+						"phase": "final",
+						"priority": 20
+					}
+				]
+			},
+			"disabled": false,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "<p>The target has the &amp;reference[Petrified apply=false] condition instead of the &amp;reference[restrained apply=false]{Restrained} condition.</p>",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [],
+			"showIcon": 0,
+			"start": null,
+			"folder": null,
+			"_key": "!items.effects!Y9uwzdyxLy6MsUb7.YLFv2Ujss9c0vtMQ",
+			"flags": {
+				"dae": {
+					"stackable": "none"
+				}
+			}
+		},
+		{
+			"name": "Petrifying Gaze",
+			"img": "icons/magic/defensive/armor-stone-skin.webp",
+			"origin": "Compendium.elkan5e.elkan5e-creature-features.Item.Y9uwzdyxLy6MsUb7",
+			"type": "base",
+			"_id": "Tt9lbKg24MuYwOLV",
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.OverTime",
+						"type": "add",
+						"value": "turn=end, label=Petrifying Gaze, saveAbility=con, saveDC=@abilities.con.dc, failCount=1",
+						"phase": "initial",
+						"priority": null,
+						"replacement": "origin"
+					},
+					{
+						"key": "macro.StatusEffect",
+						"type": "custom",
+						"value": "restrained",
+						"phase": "final",
+						"priority": 20
+					}
+				]
+			},
+			"disabled": false,
+			"start": null,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"transfer": false,
+			"statuses": [],
+			"showIcon": 0,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"expiryMode": "default",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"disableIncapacitated": false,
+					"specialDuration": [],
+					"phaseStamped": true,
+					"enableCondition": "",
+					"selfTarget": false,
+					"selfTargetAlways": false,
+					"dontApply": false
+				}
+			},
+			"_key": "!items.effects!Y9uwzdyxLy6MsUb7.Tt9lbKg24MuYwOLV"
+		}
+	],
+	"_key": "!items!Y9uwzdyxLy6MsUb7"
+}

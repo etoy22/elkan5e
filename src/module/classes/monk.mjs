@@ -1,5 +1,10 @@
-import { deleteEffectRemoveEffect } from "../shared/helpers.mjs";
-import { createEmptyBodyEffect } from "../shared/effect-factories.mjs";
+import {
+	conditionSources,
+	deleteEffectRemoveEffect,
+	deleteEffects,
+	t,
+} from "../shared/helpers.mjs";
+
 const DialogV2 = foundry.applications.api.DialogV2;
 
 /**
@@ -33,83 +38,13 @@ export async function rmvhijackShadow(actor) {
 }
 
 /**
- * Runs hijack Shadow class feature automation.
- *
- * @param {*} workflow - Workflow payload from the triggering item or activity.
- * @returns {Promise<void>} Promise resolution result.
- */
-export async function hijackShadow(workflow) {
-	const actor = workflow.actor;
-	emptyBody(actor);
-}
-
-/**
- * Runs meld With Shadows class feature automation.
- *
- * @param {*} workflow - Workflow payload from the triggering item or activity.
- * @returns {Promise<void>} Promise resolution result.
- */
-export async function meldWithShadows(workflow) {
-	const actor = workflow.actor;
-	emptyBody(actor);
-}
-
-/**
- * Runs empty Body class feature automation.
- *
- * @param {*} actor - Actor document to process.
- * @returns {Promise<void>} Promise resolution result.
- */
-export async function emptyBody(actor) {
-	if (!actor.isOwner) return;
-	if (actor.items.find((i) => i.system.identifier === "empty-body")) {
-		let confirm = await DialogV2.confirm({
-			window: { title: game.i18n.localize("elkan5e.monk.emptyBodyTitle") },
-			content: `<p>${game.i18n.localize("elkan5e.monk.emptyBodyContent")}</p>`,
-			rejectClose: false,
-			modal: true,
-		});
-		if (confirm) {
-			const emptyBody = await createEmptyBodyEffect({
-				changes: [
-					{
-						key: "system.traits.dr.value",
-						mode: 0,
-						value: "bludgeoning",
-						priority: 20,
-					},
-					{
-						key: "system.traits.dr.value",
-						mode: 0,
-						value: "piercing",
-						priority: 20,
-					},
-					{
-						key: "system.traits.dr.value",
-						mode: 0,
-						value: "slashing",
-						priority: 20,
-					},
-					{
-						key: "system.traits.dv.value",
-						mode: 0,
-						value: "radiant",
-						priority: 20,
-					},
-				],
-			});
-			await actor.createEmbeddedDocuments("ActiveEffect", [emptyBody]);
-		}
-	}
-}
-
-/**
  * Clears shadow/hijack effects from the actor whose turn just ended.
  *
  * @param {*} combat - Current combat document.
  * @param {*} prior - Prior turn data.
  */
 export function onCombatTurnChange(combat, prior) {
+	if (!game.users.activeGM?.isSelf) return;
 	const priorCombatantId = prior?.combatantId;
 	if (!priorCombatantId) return;
 	const lastActor = combat?.combatants?.get(priorCombatantId)?.actor;
@@ -118,16 +53,105 @@ export function onCombatTurnChange(combat, prior) {
 	rmvhijackShadow(lastActor);
 }
 
+const STILLNESS_STATUSES = ["charmed", "confused", "frightened", "goaded"];
+
 /**
- * Runs elemental Attunement class feature automation.
+ * Effects on an actor that Stillness of Mind can end.
  *
- * @param {*} args - Arguments passed by the caller.
+ * @param {Actor} actor - Monk using the feature.
+ * @returns {ActiveEffect[]}
+ */
+// DAE's auto-created status copies (Dependent Conditions) are left out: they mirror another
+// effect and come back while that effect exists.
+const stillnessEffects = (actor) =>
+	conditionSources(actor, STILLNESS_STATUSES).filter(
+		(e) => e.active && !e.flags?.dae?.autoCreated,
+	);
+
+/**
+ * Runs Stillness of Mind class feature automation: ends one charmed, confused, frightened or
+ * goaded effect on the monk, asking which one when there's more than one.
+ *
+ * @param {object} activity - Activity that was used.
+ * @returns {Promise<void>}
+ */
+export async function stillnessOfMind(activity) {
+	if (activity?.item?.system?.identifier !== "stillness-of-mind") return;
+	const actor = activity.actor;
+	if (!actor?.isOwner) return;
+
+	const effects = stillnessEffects(actor);
+	if (!effects.length) {
+		ui.notifications.info(t("elkan5e.monk.stillnessOfMindNothing", { name: actor.name }));
+		return;
+	}
+
+	let effect = effects[0];
+	if (effects.length > 1) {
+		const chosen = await DialogV2.wait({
+			window: { title: activity.item.name },
+			content: `<p>${t("elkan5e.monk.stillnessOfMindChoose")}</p>`,
+			buttons: effects.map((e, i) => ({ label: e.name, action: e.id, default: i === 0 })),
+			rejectClose: false,
+		});
+		effect = effects.find((e) => e.id === chosen);
+		if (!effect) return;
+	}
+
+	await deleteEffects(actor, [effect]);
+	ui.notifications.info(
+		t("elkan5e.monk.stillnessOfMindEnded", { name: actor.name, effect: effect.name }),
+	);
+}
+
+/**
+ * At the start of a monk's turn, offers to use Stillness of Mind if they're charmed, confused,
+ * frightened or goaded. Prompts the actor's active player, or the active GM if none.
+ *
+ * @param {Combat} combat - Current combat document.
+ * @returns {Promise<void>}
+ */
+export async function stillnessOfMindTurnStart(combat) {
+	const actor = combat?.combatant?.actor;
+	if (!actor) return;
+	const responsible =
+		game.users.find((u) => u.active && !u.isGM && actor.testUserPermission(u, "OWNER")) ??
+		game.users.activeGM;
+	if (!responsible?.isSelf) return;
+
+	const item = actor.items.find((i) => i.system?.identifier === "stillness-of-mind");
+	const activity = item?.system.activities.contents[0];
+	const effects = stillnessEffects(actor);
+	if (!activity || !effects.length) return;
+
+	const confirmed = await DialogV2.confirm({
+		window: { title: item.name },
+		content: `<p>${t("elkan5e.monk.stillnessOfMindPrompt", {
+			name: actor.name,
+			effects: effects.map((e) => e.name).join(", "),
+		})}</p>`,
+		rejectClose: false,
+		modal: true,
+	});
+	if (confirmed) await activity.use();
+}
+
+/**
+ * Enables or disables an elemental attunement's granted items for a monk.
+ * Enabling removes the other attunement effects and all prior attunement items, then grants
+ * the selected element's feature and spells for the monk's level. Disabling removes only
+ * that element's items.
+ *
+ * @param {Array} args - DAE arguments: action ("on" or "off"), actor ID, element
+ * ("air", "earth", "fire", or "water"), and a final payload whose actorUuid takes precedence.
  * @returns {Promise<void>} Promise resolution result.
  */
 export async function elementalAttunement(args) {
 	const [action, actorId, element] = args;
-	const actor = await game.actors.get(actorId);
-	const monkItem = actor.items.find((i) => i.name === "Monk");
+	// DAE's last argument carries the actor's UUID, which also resolves unlinked tokens.
+	const actorUuid = args.at(-1)?.actorUuid;
+	const actor = (actorUuid ? await fromUuid(actorUuid) : null) ?? game.actors.get(actorId);
+	const monkItem = actor?.classes?.monk;
 
 	if (!monkItem) return;
 
@@ -257,12 +281,8 @@ export async function elementalAttunement(args) {
 			await actor.createEmbeddedDocuments("Item", [feature.toObject()]);
 		}
 	} else if (action === "off") {
-		// Remove attunement effects and items
-		for (const effectLabel of config.effectsToRemove) {
-			const effect = actor.effects.find((i) => i.name === effectLabel);
-			if (effect) await effect.delete();
-		}
-
+		// Remove only this element's items. Switching elements turns this attunement off while the
+		// new one is being applied, so the other attunement effects must be left alone.
 		for (const itemName of config.itemsToRemoveOnDisable) {
 			const item = actor.items.find((i) => i.name === itemName);
 			if (item) await item.delete();
