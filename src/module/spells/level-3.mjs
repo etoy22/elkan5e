@@ -122,7 +122,7 @@ export function spectralLance(target, workflow, saveDetails) {
 
 /**
  * Runs Blink automation at the start of a combatant's turn: if Blink made them Ethereal, they
- * return and choose a space within 10 ft. The Ethereal effect may already be expired by dnd5e.
+ * return and choose a space within 10 ft. Requires an existing Blink Ethereal effect on the actor.
  *
  * @param {Combat} combat - Combat whose turn changed.
  * @returns {Promise<void>}

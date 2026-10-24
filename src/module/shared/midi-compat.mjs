@@ -56,7 +56,7 @@ export function tokenForActor(actor) {
  *
  * @param {Token} a - First token.
  * @param {Token} b - Second token.
- * @returns {number}
+ * @returns {number} Distance in scene units.
  */
 export function computeDistance(a, b) {
 	if (isMidiActive()) return MidiQOL.computeDistance(a, b, { wallsBlock: false });
@@ -122,6 +122,7 @@ export async function completeActivityUse(activity, targetUuids, midiOptions = {
  * @param {string[]} tokenIds - Ids of the tokens to target.
  * @param {Function} callback - Work to do while they're targeted.
  * @returns {Promise<*>} The callback's result.
+ * @throws {Error} If the callback fails; restoration of previous targets is attempted first.
  */
 export async function withTargets(tokenIds, callback) {
 	const previous = Array.from(game.user.targets).map((token) => token.id);
@@ -156,8 +157,8 @@ async function rollContestSide(side, flavor) {
 
 /**
  * Runs a contested roll (Midi-QOL's contestedRoll). Without Midi, both sides roll, the target's
- * owner rolling theirs, and `success` runs when the source's total beats the target's. Ties go
- * to the target.
+ * owner rolling skill checks, and `success` runs when the source's total beats the target's.
+ * Ties go to the target. No outcome callback runs if either side returns no roll total.
  *
  * @param {object} config - Midi-QOL contestedRoll options.
  * @param {object} config.source - Contesting side.

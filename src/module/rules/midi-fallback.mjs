@@ -40,6 +40,13 @@ import { darknessAttackDisadvantage } from "./condition/vision.mjs";
 // Usage/roll config flag marking a use or roll this module already stopped and restarted.
 const RESOLVED_FLAG = "elkan5eMidiFallback";
 
+/**
+ * Checks whether an actor owns an item with the given system identifier.
+ *
+ * @param {Actor} actor - Actor to search.
+ * @param {string} identifier - Item identifier to match.
+ * @returns {boolean}
+ */
 const hasFeature = (actor, identifier) =>
 	Boolean(actor?.items.some((i) => i.system?.identifier === identifier));
 

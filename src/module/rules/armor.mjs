@@ -1,5 +1,6 @@
 /**
- * Applies armor rule behavior.
+ * Updates armor and shield configuration for the armor setting, registers armored Barbarian's
+ * Defense, and optionally changes Draconic Toughness to use Charisma.
  *
  */
 export function armor() {

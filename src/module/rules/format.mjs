@@ -121,7 +121,7 @@ export function subFeatures() {
  * so their ASI can't be swapped for a feat (which would give two feats).
  */
 /**
- * Applies ASI Without Feat rule behavior.
+ * Prevents Elkan class Ability Score Improvements from being exchanged for a feat.
  *
  */
 export function asiWithoutFeat() {
@@ -165,7 +165,7 @@ export function traits() {
 }
 
 /**
- * Registers register Custom Effect Fields configuration.
+ * Registers push resistance and fire damage modification fields with DAE when available.
  *
  */
 function registerCustomEffectFields() {

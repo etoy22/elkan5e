@@ -58,7 +58,9 @@ export async function markOfAffliction(workflow) {
 }
 
 /**
- * Runs Mark of Thorns class feature automation.
+ * Retaliates against a melee weapon attacker for each hit target bearing an enabled
+ * Mark of Thorns effect. Rolls the source ranger's Mark for Death die as piercing damage,
+ * defaulting to 1d4. Automation failures are caught.
  *
  * @param {object} workflow - MIDI-QOL workflow.
  * @returns {Promise<void>}
@@ -207,7 +209,7 @@ export async function markForDeath(workflow, item) {
 
 /**
  * Keeps Mark for Death on one creature: when the ranger marks a new target, their mark is
- * removed from every other creature.
+ * removed from other creatures on the current canvas that are not currently targeted.
  *
  * @param {object} activity - Activity that was used.
  * @returns {Promise<void>}

@@ -31,11 +31,14 @@ function normalizeEffectOptions(options) {
 }
 
 /**
- * Create an active effect from the elkan5e-effects compendium and merge with custom options.
+ * Builds effect data from a compendium template and merges normalized custom options.
+ * Uses a base effect when the template is missing or compendium loading fails; does not create
+ * a document.
  *
- * @param {string} effectId - The ID or identifier of the effect template in the compendium
- * @param {Object} customOptions - Options to merge/override the template
- * @returns {Promise<Object>} The effect data ready to be created
+ * @param {string} effectId - Template ID, condition ID, identifier, or exact name.
+ * @param {Object} [customOptions={}] - Options to merge/override the template.
+ * @returns {Promise<Object>} Effect data without the template's `_id` or `_key`, unless overridden.
+ * @throws {Error} If option normalization or merging fails; compendium loading errors are caught.
  */
 export async function createEffect(effectId, customOptions = {}) {
 	// Get the base template from the test.json

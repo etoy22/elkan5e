@@ -24,7 +24,8 @@ export function onPreRestCompleted(actor, result) {
 /* -------------------------------------------- */
 
 /**
- * Called from dnd5e.restCompleted.
+ * Clears the actor's recorded rest type and, when the death-save setting allows this rest,
+ * resets both death-save successes and failures. Called from dnd5e.restCompleted.
  *
  * @param {Actor5e} actor
  * @param {object} result - dnd5e rest result; result.longRest distinguishes type.
@@ -59,7 +60,9 @@ export async function onRestCompleted(actor, result) {
 /* -------------------------------------------- */
 
 /**
- * Called from preUpdateActor.
+ * Mutates pending actor updates to preserve death-save failures on HP recovery and both
+ * death-save counters on short rests when clearing requires a long rest. Explicit module
+ * rest-clearing updates and the "immediate" setting pass through unchanged.
  * @param {Actor5e} actor
  * @param {object} changes - Mutable update data passed to actor.update().
  * @param {object} options - Update options from actor.update().

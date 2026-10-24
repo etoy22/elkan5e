@@ -137,9 +137,13 @@ export async function stillnessOfMindTurnStart(combat) {
 }
 
 /**
- * Runs elemental Attunement class feature automation.
+ * Enables or disables an elemental attunement's granted items for a monk.
+ * Enabling removes the other attunement effects and all prior attunement items, then grants
+ * the selected element's feature and spells for the monk's level. Disabling removes only
+ * that element's items.
  *
- * @param {*} args - Arguments passed by the caller.
+ * @param {Array} args - DAE arguments: action ("on" or "off"), actor ID, element
+ * ("air", "earth", "fire", or "water"), and a final payload whose actorUuid takes precedence.
  * @returns {Promise<void>} Promise resolution result.
  */
 export async function elementalAttunement(args) {

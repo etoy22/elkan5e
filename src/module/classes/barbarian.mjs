@@ -756,13 +756,15 @@ export async function updateBloodragerOnLevelup(actor, changes) {
 }
 
 /**
- * Handles Relentless Rage.
+ * Rolls a Constitution save when an Elkan barbarian with Relentless Rage would reach 0 HP
+ * while raging. The DC starts at 10 and rises by 5 per recorded success; success records a use
+ * and sets HP to 1, while failure sets HP to 0.
  *
  * @param {Actor5e} actor
  * @param {number} amount - Net damage amount to be applied.
  * @param {object} _updates
  * @param {DamageApplicationOptions} _options
- * @returns {false|void}
+ * @returns {Promise<false|void>} False after setting HP to 1; otherwise no value.
  */
 export async function relentlessRage(actor, amount, _updates, _options) {
 	if (!actor) return;
@@ -842,10 +844,11 @@ export async function rage(workflow) {
 }
 
 /**
- * Runs wild Blood class feature automation.
+ * Offers a Wild Blood surge for an eligible spell, excluding synthetic and ongoing rolls.
+ * On confirmation, draws the spell's base-level surge table for non-utility activities or Blink.
  *
  * @param {*} activity - Activity.
- * @param {*} usageConfig - Usage configuration passed by the activity workflow.
+ * @param {*} _usageConfig - Usage configuration; unused.
  * @returns {Promise<void>} Promise resolution result.
  */
 export async function wildBlood(activity, _usageConfig) {

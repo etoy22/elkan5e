@@ -24,7 +24,7 @@ export async function deathWard(actor) {
 
 /**
  * Runs Fire Shield spell automation.
- * Triggered globally at midi-qol.RollComplete whenever a melee weapon attack
+ * Triggered globally at midi-qol.RollComplete whenever a melee weapon or spell attack
  * lands. Checks each hit target for an active Fire Shield effect and fires the
  * retaliatory damage activity on the attacker.
  *
@@ -75,7 +75,8 @@ export async function fireShield(workflow) {
 }
 
 /**
- * Runs vampiric Smite spell automation.
+ * Heals the caster for half the first necrotic damage entry, after its damage multiplier,
+ * rounded down. Requires exactly one hit target; skips missing or non-positive damage.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
  * @returns {Promise<void>} Promise resolution result.
