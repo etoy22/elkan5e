@@ -63,6 +63,8 @@ jobs:
       - uses: actions/checkout@v5
 
       - name: Extract release notes from CHANGELOG.md
+        env:
+          VERSION: ${{ needs.version-check.outputs.version }}
         run: node .github/workflows/scripts/extract-release-notes.js > release-notes.md
 
       - name: Show extracted release notes
@@ -288,14 +290,14 @@ jobs:
             else current = next;
           }
           if (current.trim()) chunks.push(current);
-          if (!chunks.length) chunks.push('See the release tag for notes.');
+          if (!chunks.length) chunks.push('');
 
           fs.mkdirSync('discord-payloads', { recursive: true });
           chunks.forEach((chunk, i) => {
             const embed = i === 0
               ? {
                   title: 'Elkan 5e Release',
-                  description: chunk,
+                  ...(chunk ? { description: chunk } : {}),
                   fields: [
                     { name: 'Version', value: env.VERSION || 'unknown', inline: true },
                     { name: 'Compatibility', value: `Core: ${(env.MINIMUM || 'unknown')} +`, inline: true },
