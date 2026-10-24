@@ -98,6 +98,7 @@ export async function spectralEmpowerment(workflow) {
  * 1st level or higher, reminds them that Soul Conduit can heal their graveguard.
  *
  * @param {object} activity - Activity that was used.
+ * @param {object} usageConfig - Usage configuration; the selected slot determines the healing level.
  */
 export function soulConduit(activity, usageConfig) {
 	const item = activity?.item;

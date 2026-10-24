@@ -2,16 +2,17 @@ import { processElkanUpdateForm } from "./replace-items.mjs";
 const DialogV2 = foundry.applications.api.DialogV2;
 
 /**
- * Handles get Module Version for module settings.
+ * Returns the loaded Elkan module version, or undefined if the module is absent.
  *
- * @returns {Promise<unknown>} Promise resolution result.
+ * @returns {Promise<string|undefined>}
  */
 export async function getModuleVersion() {
 	return game.modules.get("elkan5e")?.version;
 }
 
 /**
- * Handles show Update Dialog for module settings.
+ * Opens the item update dialog; choosing Update starts the selected migrations and duplicate
+ * removal. Resolves after rendering, without waiting for user input or migration completion.
  *
  * @returns {Promise<void>} Promise resolution result.
  */
@@ -81,7 +82,9 @@ export async function showUpdateDialog() {
 }
 
 /**
- * Handles start Dialog for module settings.
+ * Shows the welcome dialog when the module version changed or it has not been acknowledged.
+ * Stores the current version and whether the user chose to suppress future displays;
+ * closing the dialog stores false.
  *
  * @returns {Promise<void>} Promise resolution result.
  */

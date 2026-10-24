@@ -12,7 +12,8 @@ const OFF_LIST_VALUES = { bonus: 5, dc: 13 };
 const RESOLVED_FLAG = "elkan5eScrollResolved";
 
 /**
- * Applies scroll rule behavior.
+ * Registers Elkan scroll compendium IDs. When scroll rules are enabled, sets default scroll
+ * values to +5 attack / DC 13 and installs character scroll-use interception hooks.
  *
  */
 export function scroll() {
@@ -174,13 +175,14 @@ function findCastingClass(actor, classes, lists, spell) {
 }
 
 /**
- * Rolls the check to cast a scroll spell that isn't on the actor's list.
+ * Rolls a DC 10 + spell level check for an off-list scroll. Arcana is always available;
+ * cleric and druid spell lists also allow Religion and Nature, respectively.
  *
  * @param {*} actor - Actor using the scroll.
  * @param {Set<string>} lists - Typed spell lists the spell is on.
  * @param {number} level - Spell level.
  * @param {string} spellName - Name shown in messages.
- * @returns {Promise<boolean>} True if the spell is cast.
+ * @returns {Promise<boolean>} Whether the check passed; false on cancellation or a missing roll.
  */
 async function rollScrollCheck(actor, lists, level, spellName) {
 	const dc = 10 + (Number(level) || 0);

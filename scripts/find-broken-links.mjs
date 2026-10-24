@@ -6,6 +6,13 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 const PACK_SOURCE_ROOT = path.resolve(__dirname, "..", "packs", "_source");
 
+/**
+ * Recursively lists JSON file paths under a directory.
+ *
+ * @param {string} dir - Directory to search.
+ * @returns {string[]} Paths of files with a lowercase `.json` extension.
+ * @throws {Error} If a directory cannot be read.
+ */
 function walk(dir) {
 	const out = [];
 	for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
@@ -17,6 +24,13 @@ function walk(dir) {
 }
 
 // Recursively collect all string values in an object, paired with a JSON-pointer-ish path.
+/**
+ * Appends nested string values and their dot-separated field paths to `out`.
+ *
+ * @param {*} value - Value to traverse, including arrays and objects.
+ * @param {(string|number)[]} pathParts - Field names and array indices leading to this value.
+ * @param {{path: string, value: string}[]} out - Collection to populate in place.
+ */
 function collectStrings(value, pathParts, out) {
 	if (typeof value === "string") {
 		out.push({ path: pathParts.join("."), value });
@@ -51,6 +65,11 @@ for (const filePath of files) {
 	const idSet = idsByPack.get(packName);
 
 	// Collect every "_id" found anywhere in the document (top-level + nested items/effects/activities/etc.)
+	/**
+	 * Indexes nested `_id` strings in the current pack's ID set and the reverse pack lookup.
+	 *
+	 * @param {*} value - Parsed document or nested value to traverse.
+	 */
 	(function collectIds(value) {
 		if (Array.isArray(value)) {
 			value.forEach(collectIds);
@@ -75,6 +94,14 @@ const compendiumRe = /@Compendium\[([^\]]+)\]/g;
 
 const broken = [];
 
+/**
+ * Extracts a compendium reference's scope, pack, final ID, and optional anchor.
+ * Accepts typed and legacy references without validating their segments.
+ *
+ * @param {string} ref - UUID reference without the surrounding enrichment markup.
+ * @returns {{scope: string, packName: string, id: string, anchor: string|undefined, raw: string}|null}
+ * Compendium reference parts, or null for a world-document or other non-compendium reference.
+ */
 function parseUuidRef(ref) {
 	// ref examples:
 	// Compendium.elkan5e.elkan5e-spells.Item.AbCdEf123456

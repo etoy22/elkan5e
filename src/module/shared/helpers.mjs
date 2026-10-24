@@ -89,12 +89,13 @@ export async function deletedItemRemovesEffect(item, itemName, effectName) {
 }
 
 /**
- * Shared helper for delete Effect Remove Effect.
+ * Deletes the first named effect only when its marker effect is absent, then deletes all
+ * effects matching the additional names. Names are localized before comparison.
  *
  * @param {*} actor - Actor document to process.
- * @param {*} effectToRemove - Effect To Remove.
- * @param {*} effectToIgnore - Effect To Ignore.
- * @param {*} additionalEffectsToRemove - Additional Effects To Remove.
+ * @param {string} effectToRemove - Localization key or name of the primary effect.
+ * @param {string} effectToIgnore - Localization key or name of the marker that prevents removal.
+ * @param {string[]} additionalEffectsToRemove - Localization keys or names removed with the primary effect.
  * @returns {Promise<void>} Promise resolution result.
  */
 export async function deleteEffectRemoveEffect(
@@ -152,10 +153,11 @@ export async function drainedEffect(actor, damage, _name, _img, _uuid, missing =
 }
 
 /**
- * Ends drain on an actor by restoring the maximum hit points it lost.
+ * Requests a reset of an actor's negative temporary maximum-HP adjustment.
  *
  * @param {Actor} actor - Actor to restore.
- * @returns {Promise<boolean>} Whether any maximum hit points were restored.
+ * @returns {Promise<boolean>} Whether a negative temporary maximum-HP adjustment was found
+ * and a reset requested.
  */
 export async function restoreDrainedMaxHP(actor) {
 	const tempmax = actor?._source?.system?.attributes?.hp?.tempmax ?? 0;
@@ -420,6 +422,14 @@ export async function syncRegionLightExtras(behaviorRef, extras = {}) {
 	return true;
 }
 
+/**
+ * Deletes a region's remaining Midi-QOL lights after a brief delay for its own cleanup.
+ * Runs only for a GM; missing regions and already-deleted lights are ignored.
+ *
+ * @param {RegionDocument|string} regionRef - Region document or UUID.
+ * @returns {Promise<void>}
+ * @throws {Error} If deleting lights fails for a reason other than a missing document.
+ */
 export async function deleteRegionLights(regionRef) {
 	if (!game.user?.isGM) return;
 
@@ -448,6 +458,12 @@ export async function deleteRegionLights(regionRef) {
 	}
 }
 
+/**
+ * Adds Elkan push resistance, Marksman, and Undead Fortitude fields to DAE's effect editor.
+ *
+ * @param {string} _actorType - Actor type supplied by DAE; unused.
+ * @param {object} specials - Field definitions to extend in place.
+ */
 export function registerDaeSpecials(_actorType, specials) {
 	const BooleanField = foundry.data.fields.BooleanField;
 	const NumberField = foundry.data.fields.NumberField;
@@ -493,6 +509,14 @@ export async function handleUpdateMeasuredTemplate(template) {
 	}
 }
 
+/**
+ * Deletes lights on the current canvas linked to a deleted measured template.
+ * Already-deleted lights are ignored.
+ *
+ * @param {MeasuredTemplateDocument} template - Deleted template.
+ * @returns {Promise<void>}
+ * @throws {Error} If deleting lights fails for a reason other than a missing document.
+ */
 export async function handleDeleteMeasuredTemplate(template) {
 	const lights = canvas.lighting.placeables.filter(
 		(light) => light.document.getFlag("elkan5e", "linkedTemplate") === template.id,
@@ -512,8 +536,9 @@ export async function handleDeleteMeasuredTemplate(template) {
 let elkan5eSocket = null;
 
 /**
- * Registers the socketlib socket used to relay GM-only scene mutations
- * (e.g. RegionBehavior creation) from players who lack Scene ownership.
+ * Registers socketlib handlers for scene and actor mutations, item-use prompts, movement,
+ * and skill rolls on the responsible GM or owning player. Returns without registering handlers
+ * if socketlib is unavailable or module registration returns no socket.
  *
  */
 export function registerElkan5eSocket() {
@@ -619,7 +644,7 @@ async function applyPlanTeleport(tokenUuid, maxDistance, action = "blink") {
  * @param {TokenDocument} tokenDoc - Token to move.
  * @param {number} maxDistance - Maximum distance in scene units.
  * @param {string} [action] - Movement action: "blink" teleports, "displace" is a forced move.
- * @returns {Promise<void>}
+ * @returns {Promise<void>|null} Movement completion, or null when the token has no actor.
  */
 export function planTeleportForOwner(tokenDoc, maxDistance, action = "blink") {
 	const actor = tokenDoc?.actor;
@@ -649,7 +674,9 @@ async function applyDeleteEffects(actorUuid, effectIds) {
  *
  * @param {string} actorUuid - UUID of the actor.
  * @param {object} data - Update data.
+ * @param {object} [options={}] - Options forwarded to the actor update, including recursion guards.
  * @returns {Promise<void>}
+ * @throws {Error} If the resolved actor's update fails; UUID lookup failures are ignored.
  */
 async function applyActorUpdate(actorUuid, data, options = {}) {
 	const actor = await fromUuid(actorUuid).catch(() => null);
@@ -663,7 +690,8 @@ async function applyActorUpdate(actorUuid, data, options = {}) {
  * @param {Function} local - Local implementation.
  * @param {Actor} actor - Actor being mutated.
  * @param {...*} args - Extra handler arguments.
- * @returns {Promise<*>} Handler result.
+ * @returns {Promise<*>|null} Handler result, or null after a warning if a GM relay is needed
+ * but socketlib is unavailable.
  */
 function runForActor(handler, local, actor, ...args) {
 	if (actor.isOwner) return local(actor.uuid, ...args);
@@ -681,7 +709,9 @@ function runForActor(handler, local, actor, ...args) {
  *
  * @param {Actor} actor - Actor to clear.
  * @param {ActiveEffect[]} effects - Effects on that actor to delete.
- * @returns {Promise<void>}
+ * @returns {Promise<void>|null} Mutation completion, or null after a warning when the user
+ * lacks ownership and socketlib is unavailable.
+ * @throws {Error} If the local mutation or GM relay fails.
  */
 export function deleteEffects(actor, effects) {
 	return runForActor(
@@ -713,12 +743,13 @@ export function conditionSources(actor, statusIds) {
 }
 
 /**
- * Removes every effect carrying one of the given conditions from an actor, relaying to the GM
- * if the user doesn't own it.
+ * Requests removal of enabled condition-source effects from an actor, relaying to the GM
+ * if the user doesn't own it. Also resets negative temporary maximum HP when removing Drained.
  *
  * @param {Actor} actor - Actor to clear.
  * @param {string[]} statusIds - Status ids to remove.
- * @returns {Promise<string[]>} Names of the removed effects.
+ * @returns {Promise<string[]>} Names selected for removal, plus "Drained" if a maximum-HP reset
+ * was requested. A missing GM relay can prevent changes without rejecting the promise.
  */
 export async function removeStatuses(actor, statusIds) {
 	const effects = conditionSources(actor, statusIds);
@@ -740,7 +771,9 @@ export async function removeStatuses(actor, statusIds) {
  * @param {Actor} actor - Actor to update.
  * @param {object} data - Update data.
  * @param {object} [options] - Update options passed to the update.
- * @returns {Promise<void>}
+ * @returns {Promise<void>|null} Mutation completion, or null after a warning when the user
+ * lacks ownership and socketlib is unavailable.
+ * @throws {Error} If the local mutation or GM relay fails.
  */
 export function updateActorAsGM(actor, data, options = {}) {
 	return runForActor("updateActor", applyActorUpdate, actor, data, options);
@@ -763,7 +796,9 @@ async function applyActorDamage(actorUuid, damages) {
  *
  * @param {Actor} actor - Actor to damage or heal.
  * @param {object[]} damages - dnd5e damage descriptions ({ value, type }).
- * @returns {Promise<void>}
+ * @returns {Promise<void>|null} Mutation completion, or null after a warning when the user
+ * lacks ownership and socketlib is unavailable.
+ * @throws {Error} If the local mutation or GM relay fails.
  */
 export function applyDamageAsGM(actor, damages) {
 	return runForActor("applyDamage", applyActorDamage, actor, damages);
@@ -786,7 +821,9 @@ async function applyCreateEffects(actorUuid, effects) {
  *
  * @param {Actor} actor - Actor to receive the effects.
  * @param {object[]} effects - ActiveEffect create data.
- * @returns {Promise<void>}
+ * @returns {Promise<void>|null} Mutation completion, or null after a warning when the user
+ * lacks ownership and socketlib is unavailable.
+ * @throws {Error} If the local mutation or GM relay fails.
  */
 export function createEffectsAsGM(actor, effects) {
 	return runForActor("createEffects", applyCreateEffects, actor, effects);
@@ -829,6 +866,12 @@ export function rollSkillForOwner(actor, skill, { advantage = false, flavor } = 
 	return elkan5eSocket.executeAsUser("rollSkill", user.id, actor.uuid, skill, advantage, flavor);
 }
 
+/**
+ * Identifies the current combat, round, and turn for once-per-turn feature flags.
+ * Requires an active `game.combat` document.
+ *
+ * @returns {string} Current turn key.
+ */
 const combatTurnKey = () => `${game.combat.id}-${game.combat.round + game.combat.turn / 100}`;
 
 /**

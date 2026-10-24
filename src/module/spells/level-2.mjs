@@ -35,10 +35,12 @@ function resolveCanvasToken(entry) {
 }
 
 /**
- * Runs Well Of Corruption spell automation.
+ * Drains each resolved target's maximum HP by a shared 4d8 roll, plus 2d8 per cast level
+ * above 2. Successful saves halve the amount, rounded down; draining is capped at missing HP.
+ * Targets with no recorded save outcome receive the full amount.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
- * @returns {Promise<unknown>} Promise resolution result.
+ * @returns {Promise<void>}
  */
 export async function wellOfCorruption(workflow) {
 	const caster = workflow.actor;
@@ -423,10 +425,10 @@ export async function spiritLinkPair(effect) {
 }
 
 /**
- * Runs Spirit Link spell automation on actor HP changes: mirrors half the damage taken to
- * the linked partner (the caster's own effect grants resistance to all damage, so the HP
- * already lost here is exactly the other half). Ends the bond if either linked creature
- * drops to 0 HP or the two become separated by more than 60 feet.
+ * Shares an actor's pending HP loss with its Spirit Link partner, using the full HP difference
+ * after any prior resistance. Shared damage consumes the partner's temporary HP before HP and
+ * bypasses further resistance. Ignores updates marked as already shared. Ends the bond when
+ * either creature reaches 0 HP or their active tokens are more than 60 scene units apart.
  *
  * @param {Actor5e} actor - Actor about to be updated.
  * @param {object} updates - Pending update diff.

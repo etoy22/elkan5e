@@ -54,6 +54,13 @@ const isTruthy = (value) => {
 	);
 };
 
+/**
+ * Checks for a change with the given key and a truthy boolean, number, or supported string.
+ *
+ * @param {ActiveEffect} effect - Effect to inspect.
+ * @param {string} key - Exact change key to match.
+ * @returns {boolean} Strings "1", "true", "yes", and "on" are accepted, ignoring case and whitespace.
+ */
 const hasTruthyChange = (effect, key) =>
 	(effect?.system?.changes ?? effect?.changes ?? []).some(
 		(change) => change?.key === key && isTruthy(change?.value),
@@ -178,7 +185,7 @@ const getGrappleLinks = async (actor) => {
  * Prompt whether to clear grapples involving a dead creature.
  * @param {Actor} deadActor
  * @param {Array<{effect: ActiveEffect, grappler: Actor, grappled: Actor}>} links
- * @returns {Promise<boolean>}
+ * @returns {Promise<boolean>} True only when release is chosen; closing the dialog keeps grapples.
  */
 const promptDeadUngrapple = async (deadActor, links) => {
 	if (!deadActor || !links?.length) return false;
@@ -250,7 +257,7 @@ const getActiveGrapples = (grapplerActor) => {
  * Prompt the grappler to select which existing grapples to release.
  * @param {Actor} grapplerActor
  * @param {Array<{token: Token, actor: Actor, effects: ActiveEffect[]}>} active
- * @returns {Promise<number[]>}
+ * @returns {Promise<number[]>} Indices in `active`; empty on close, skip, or insufficient permission.
  */
 const chooseGrapplesToRelease = async (grapplerActor, active) => {
 	if (!active?.length) return [];
@@ -308,6 +315,13 @@ const getGrappleRange = (workflow) => {
 	return Number.isFinite(range) && range > 0 ? range : 5;
 };
 
+/**
+ * Merges changes by key, type, value, and priority, keeping the last matching entry.
+ *
+ * @param {object[]} [existing=[]] - Existing changes; the input array is left intact.
+ * @param {object[]} [incoming=[]] - Changes that replace matching entries or are appended.
+ * @returns {object[]} Merged array containing the original change objects.
+ */
 const mergeUniqueChanges = (existing = [], incoming = []) => {
 	const sig = (c) => `${c?.key}|${c?.type}|${c?.value}|${c?.priority ?? ""}`;
 	const map = new Map();
@@ -316,6 +330,12 @@ const mergeUniqueChanges = (existing = [], incoming = []) => {
 	return [...map.values()];
 };
 
+/**
+ * Builds the key used to compare grapple effect changes, treating missing priority as empty.
+ *
+ * @param {object} c - Change to identify.
+ * @returns {string} Signature of its key, type, value, and priority.
+ */
 const changeSignature = (c) => `${c?.key}|${c?.type}|${c?.value}|${c?.priority ?? ""}`;
 
 const getTokenRect = (tokenDoc, x = tokenDoc.x, y = tokenDoc.y) => {
@@ -371,8 +391,8 @@ const getFirstFullSpacePosition = (token, dx, dy) => {
  * @param {Actor} options.grappler
  * @param {Actor} options.targetActor
  * @param {Token} options.targetToken
- * @param {number} options.sizeDiff
- * @param {number} options.grappleRange
+ * @param {number} options.sizeDiff - Effective grappler size index minus target size index.
+ * @param {number} options.grappleRange - Grapple reach in scene distance units.
  * @param {string} options.icon
  * @param {ActiveEffect|null} [options.existingEffect=null]
  * @param {string|null} [options.originOverride=null]

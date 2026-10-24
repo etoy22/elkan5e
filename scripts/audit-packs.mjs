@@ -18,6 +18,14 @@ const PACKS = dirArg ? path.resolve(dirArg.slice(6)) : path.join(ROOT, "packs", 
 const SRC = path.join(ROOT, "src");
 const args = new Set(process.argv.slice(2));
 
+/**
+ * Recursively lists paths ending in the requested suffix.
+ *
+ * @param {string} dir - Directory to search.
+ * @param {string} ext - File suffix, including the leading dot for extensions.
+ * @returns {string[]} Matching file paths.
+ * @throws {Error} If a directory cannot be read.
+ */
 const walk = (dir, ext) =>
 	fs.readdirSync(dir, { withFileTypes: true }).flatMap((e) => {
 		const p = path.join(dir, e.name);
@@ -39,6 +47,12 @@ for (const file of walk(PACKS, ".json")) {
 
 // Every UUID the module's compendiums can resolve.
 const uuids = new Set();
+/**
+ * Infers the Foundry document type from a pack source's `_key`, defaulting to Item.
+ *
+ * @param {object} doc - Parsed pack source.
+ * @returns {string} Document type used in its compendium UUID.
+ */
 const typeOf = (doc) =>
 	doc._key?.startsWith("!actors!")
 		? "Actor"
@@ -92,6 +106,15 @@ const statusIds = new Set([
 
 // ---------- Rules ----------
 const findings = [];
+/**
+ * Appends an audit finding for the final report.
+ *
+ * @param {string} level - Finding severity, such as "error" or "warn".
+ * @param {string} code - Check identifier used to group findings.
+ * @param {string} where - Document or field location label.
+ * @param {string} message - Problem description.
+ * @returns {number} Number of findings after the append.
+ */
 const report = (level, code, where, message) => findings.push({ level, code, where, message });
 
 const VALID_UNITS = new Set([

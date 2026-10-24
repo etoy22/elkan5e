@@ -44,6 +44,13 @@ const HAZARD_RULES_REF = (id) =>
 	`Compendium.elkan5e.elkan5e-rules.JournalEntry.e7rUhwl4HkTVE0Qs.JournalEntryPage.${id}`;
 
 // Condition effects in the elkan5e-effects compendium.
+/**
+ * Builds a 16-character condition effect ID by prefixing `elkan`, padding with zeros,
+ * and truncating any excess characters.
+ *
+ * @param {string} id - Condition status ID.
+ * @returns {string} Compendium effect ID.
+ */
 const CONDITION_EFFECT_ID = (id) => `elkan${id}`.padEnd(16, "0").slice(0, 16);
 
 // You can add `changes` to any of these.

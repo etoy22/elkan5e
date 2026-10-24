@@ -215,6 +215,13 @@ export async function sneakAttack(args) {
 	}
 }
 
+/**
+ * Checks whether an actor owns an item with the given system identifier.
+ *
+ * @param {Actor} actor - Actor to search.
+ * @param {string} identifier - Item identifier to match.
+ * @returns {boolean}
+ */
 const hasFeature = (actor, identifier) =>
 	Boolean(actor?.items.some((i) => i.system?.identifier === identifier));
 

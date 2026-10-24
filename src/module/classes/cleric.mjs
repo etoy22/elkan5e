@@ -13,7 +13,8 @@ const getWorkflowTargets = (workflow) =>
 	Array.from(workflow?.targets ?? workflow?.hitTargets ?? []);
 
 /**
- * Runs infused Healer class feature automation.
+ * Heals the caster for 2 + cast level after a healing spell of base level 1 or higher,
+ * provided none of its targets is the caster. Requires a caster token.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
  * @returns {Promise<void>} Promise resolution result.
@@ -101,10 +102,13 @@ export async function healOver(itemOrWorkflow, roll) {
 }
 
 /**
- * Runs healing Overflow class feature automation.
+ * Offers to redirect the greatest excess healing from a leveled healing spell to another
+ * injured creature within range whose token is not hidden. Touch or unspecified range uses
+ * one grid distance.
+ * Resolves after opening the dialog; healing is applied when its Apply button is chosen.
  *
- * @param {*} workflow - Workflow payload from the triggering item or activity.
- * @returns {Promise<unknown>} Promise resolution result.
+ * @param {*} workflow - MIDI-QOL workflow or macro scope containing it.
+ * @returns {Promise<void>}
  */
 export async function healingOverflow(workflow) {
 	// Midi-QOL calls this as an actor on-use macro, passing its macro scope; the workflow is inside it.
@@ -276,7 +280,7 @@ export function shadowRefuge(activity, usageConfig) {
 
 /**
  * Runs Blessed Healing at dnd5e.preRollDamageV2: healing spells of 1st level or higher restore
- * an extra 2 + the spell's level. dnd5e 6.0 has no actor healing bonus for an effect to use.
+ * an extra 2 + the cast level on the first healing roll. Mutates the roll configuration.
  *
  * @param {object} rollConfig - Damage roll configuration.
  */

@@ -48,7 +48,8 @@ export async function fogCloudDarkness(workflow) {
 export const sanctuarySuccessCache = new Set();
 
 /**
- * Runs goodberry spell automation.
+ * Adds 5 × (spell item level + 1) berries, using a minimum level of 1, to the caster's
+ * Goodberry consumable and creates a linked duration effect lasting one hour for this batch.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
  * @returns {Promise<void>} Promise resolution result.
@@ -473,7 +474,9 @@ export async function prismaticBolt(workflow, activity, _config, dialog) {
 }
 
 /**
- * Runs shield spell automation.
+ * Adds Shield's upcast AC bonus for one round: min(cast level - 1, 2), reduced by the
+ * equipped shield's armor and magical bonus. Creates no effect at level 1 or if the net bonus
+ * is not positive.
  *
  * @param {*} workflow - Workflow payload from the triggering item or activity.
  * @returns {Promise<void>} Promise resolution result.
@@ -543,6 +546,12 @@ const SHADOW_STRIKE_IDENTIFIERS = new Set(["shadow-strike", "shadow-strike-shado
 const SHADOW_STRIKE_RETURN_ID = "shdwStrikeRetrn0";
 const SHADOW_STRIKE_FLAG = "shadowStrikeOrigin";
 
+/**
+ * Checks whether an activity belongs to either supported Shadow Strike spell variant.
+ *
+ * @param {Activity} activity - Activity to inspect.
+ * @returns {boolean}
+ */
 const isShadowStrike = (activity) =>
 	SHADOW_STRIKE_IDENTIFIERS.has(activity?.item?.system?.identifier);
 

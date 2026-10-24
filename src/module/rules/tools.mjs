@@ -247,6 +247,10 @@ function getToolType(key, toolSetting) {
 	}
 }
 
+/**
+ * Registers tool definitions and adjusts tool and proficiency categories for the tool setting.
+ * Existing default abilities are retained when the Elkan definition does not replace them.
+ */
 export function tools() {
 	const TOOL_SETTING = game.settings.get("elkan5e", "tool");
 

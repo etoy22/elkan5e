@@ -165,7 +165,8 @@ const getPushDirections = (targetToken, sourcePoint, requireAway) => {
  * @param {Actor} actor
  * @param {string} title
  * @param {Array<{dx:number, dy:number, label:string}>} directions
- * @returns {Promise<{dx:number, dy:number, label:string}|null>}
+ * @returns {Promise<{dx:number, dy:number, label:string}|null>} Chosen direction, the first
+ * direction on close or without ownership, or null if no directions are available.
  */
 const chooseDirection = async (actor, title, directions) => {
 	const candidates = directions ?? [];
@@ -215,8 +216,8 @@ const chooseDirection = async (actor, title, directions) => {
 /**
  * Find the farthest unoccupied, in-bounds position along a direction.
  * @param {Token} targetToken
- * @param {Token} sourceToken
- * @param {number} distance
+ * @param {{x:number, y:number}} sourcePoint - Push origin in canvas pixels.
+ * @param {number} distance - Maximum push distance in scene units.
  * @param {{dx:number, dy:number}} dir
  * @param {boolean} requireAway
  * @returns {{x:number, y:number}|null}
