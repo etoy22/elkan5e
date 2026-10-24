@@ -4,6 +4,7 @@
 
 ## Bug Fixes
 
+- The level-up spell picker no longer offers class features that are set up as spells, such as the Abjurer's Counterspell, Divine Smite, the alternative smites, Raise Companion, Primeval Awareness, Restore Familiar, Greater Mage Armor, and Reactive Barrier.
 - Damage type labels everywhere (dropdowns, resistances, vulnerabilities, immunities, chat cards, and tooltips) now read Sonic and Electric instead of Thunder and Lightning.
 - Effects from spells, spell scrolls, and magic items are now marked as magical, so an [Antimagic Field](https://www.elkan5e.com/spells/antimagic-field) suppresses them.
 - Half-speed effects slow their target again: Hamstring, Hamstring Blow, Harrying Blow, Burdening Smite, Phantom Barrage, Howling Storm, Magic Shackles, Copper Breath Weapon, Touch of Corrosion, Torpor, and the Bullywug Hunter's Hamstring Strike. Into the Fray now gives 1.5× speed instead of doubling it.
