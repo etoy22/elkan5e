@@ -65,7 +65,8 @@ export function sunbeam(target, workflow, saveDetails) {
 
 /**
  * Runs Disintegrate automation at midi-qol.preTargetSave: incorporeal creatures
- * automatically succeed on the save.
+ * automatically succeed on the save. When midi-qol gives no modifier tracker to mark the
+ * success on, they roll with advantage instead.
  *
  * @param {Token} target - Token making the save.
  * @param {*} workflow - midi-qol workflow.
@@ -74,8 +75,9 @@ export function sunbeam(target, workflow, saveDetails) {
 export function disintegrate(target, workflow, saveDetails) {
 	if (workflow.item?.system?.identifier !== "disintegrate") return;
 	if (!isIncorporeal(target.actor)) return;
-	if (saveDetails.modifierTracker) {
-		saveDetails.modifierTracker.addAttribution("SUCCESS", "disintegrate", "Incorporeal");
+	// succeed() sets the auto-success; addAttribution alone only labels it.
+	if (typeof saveDetails.modifierTracker?.succeed === "function") {
+		saveDetails.modifierTracker.succeed("disintegrate", "Incorporeal");
 	} else {
 		saveDetails.advantage = true;
 	}

@@ -404,7 +404,7 @@ const applyElkanGrapple = async ({
 		),
 	);
 	statuses.add("grappled");
-	// Older grapples copied Restrained's rules into the effect; drop them when it's updated.
+	// Drop Restrained's rules when the grapple is updated; they're added back below if it still restrains.
 	const restrainedSigs = new Set(getConditionChanges("restrained").map(changeSignature));
 	let changes = foundry.utils.duplicate(current?.system?.changes ?? []).filter((change) => {
 		if (change?.key === "system.attributes.movement.multiplier") return false;
@@ -442,9 +442,11 @@ const applyElkanGrapple = async ({
 		]);
 	}
 
-	// The restrained status brings the condition's rules with it.
+	// Listing the restrained status only brings dnd5e's built-in rules, not the condition's own
+	// changes (those only come with an effect made from the status), so add them too.
 	if (sizeDiff >= 2) {
 		statuses.add("restrained");
+		addChanges(getConditionChanges("restrained"));
 	} else if (sizeDiff <= -2) {
 		const climb = getClimbSpeed(grappler);
 		if (!Number.isFinite(climb) || climb <= 0) {

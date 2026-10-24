@@ -555,15 +555,25 @@ const isShadowStrike = (activity) =>
 async function returnToShadowStrikeOrigin(tokenDoc) {
 	const origin = tokenDoc?.getFlag("elkan5e", SHADOW_STRIKE_FLAG);
 	if (!origin) return false;
-	const { x, y, elevation } = origin;
-	if (typeof tokenDoc.move === "function") {
-		await tokenDoc.move({ x, y, elevation, action: "blink" });
-	} else {
-		await tokenDoc.update({ x, y, elevation });
+	// The Return activity's use and its teleport button can both trigger this; move only once.
+	if (returningTokens.has(tokenDoc.uuid)) return true;
+	returningTokens.add(tokenDoc.uuid);
+	try {
+		const { x, y, elevation } = origin;
+		if (typeof tokenDoc.move === "function") {
+			await tokenDoc.move({ x, y, elevation, action: "blink" });
+		} else {
+			await tokenDoc.update({ x, y, elevation });
+		}
+		await tokenDoc.unsetFlag("elkan5e", SHADOW_STRIKE_FLAG);
+	} finally {
+		returningTokens.delete(tokenDoc.uuid);
 	}
-	await tokenDoc.unsetFlag("elkan5e", SHADOW_STRIKE_FLAG);
 	return true;
 }
+
+// Tokens currently moving back to their Shadow Strike origin.
+const returningTokens = new Set();
 
 /**
  * Runs Shadow Strike automation at dnd5e.teleport: records each token's position
@@ -594,7 +604,11 @@ export function shadowStrikePreReturn(activity, config) {
 		tk.document.getFlag("elkan5e", SHADOW_STRIKE_FLAG),
 	);
 	if (!tokens.length) return;
-	for (const token of tokens) returnToShadowStrikeOrigin(token.document);
+	for (const token of tokens) {
+		returnToShadowStrikeOrigin(token.document).catch((error) => {
+			console.error("Elkan 5e | Error returning Shadow Strike token:", error);
+		});
+	}
 	return false;
 }
 

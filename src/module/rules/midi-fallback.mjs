@@ -407,6 +407,9 @@ function onRollDamage(rolls, { subject } = {}) {
 	if (!subject?.actor || !rolls?.length) return;
 	if (!subject.actor.items.some((i) => i.system?.identifier === "infused-healer")) return;
 	const workflow = fallbackWorkflow(subject, Array.from(game.user.targets));
+	// dnd5e adds upcast levels to the roll data's item.level.
+	const castLevel = rolls[0]?.data?.item?.level;
+	if (castLevel !== undefined) workflow.castData = { castLevel };
 	infusedHealer(workflow).catch((error) =>
 		console.error("Elkan 5e | Error in Infused Healer automation:", error),
 	);
@@ -425,7 +428,7 @@ const highestDamage = new Map();
  * @param {object} options - Damage application options.
  */
 function onApplyDamage(actor, amount, options) {
-	const roll = options?.origin;
+	const roll = options?.originatingMessage;
 	const activity = roll?.getAssociatedActivity?.();
 	const token = tokenForActor(actor);
 	if (!(amount > 0) || !activity?.actor || !token) return;
@@ -480,12 +483,27 @@ function onApplyDamage(actor, amount, options) {
 
 /* -------------------------------------------- */
 
+// Set on init when Midi-QOL isn't active.
+let fallbackActive = false;
+
+/**
+ * Registers the fallback's damage-roll hook ahead of the module's other preRollDamageV2 handlers,
+ * so the roll it stops doesn't run them and the replacement roll runs them once.
+ * Called at load, before those handlers are registered; does nothing until the fallback is active.
+ */
+export function registerMidiFallbackDamageHook() {
+	Hooks.on("dnd5e.preRollDamageV2", (config, dialog, message) =>
+		fallbackActive ? onPreRollDamage(config, dialog, message) : undefined,
+	);
+}
+
 /**
  * Registers the dnd5e hooks that run Midi-QOL workflow automation when Midi-QOL isn't active.
  * Called once on init; does nothing when Midi-QOL is active.
  */
 export function registerMidiFallback() {
 	if (game.modules.get("midi-qol")?.active) return;
+	fallbackActive = true;
 	console.log("Elkan 5e | Midi-QOL isn't active; running automation from dnd5e hooks.");
 	Hooks.on("dnd5e.preUseActivity", onPreUseActivity);
 	Hooks.on("dnd5e.postUseActivity", onPostUseActivity);
@@ -493,7 +511,6 @@ export function registerMidiFallback() {
 	Hooks.on("dnd5e.rollAttackV2", onRollAttack);
 	Hooks.on("dnd5e.preRollSavingThrowV2", onPreRollSavingThrow);
 	Hooks.on("createChatMessage", onSaveMessage);
-	Hooks.on("dnd5e.preRollDamageV2", onPreRollDamage);
 	Hooks.on("dnd5e.rollDamageV2", onRollDamage);
 	Hooks.on("dnd5e.applyDamage", onApplyDamage);
 }

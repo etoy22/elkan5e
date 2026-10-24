@@ -1,8 +1,9 @@
 import {
-	conditionSources,
+	addRegionBehaviorAsGM,
 	createLightRegion,
 	deleteEffects,
 	drainedEffect,
+	removeStatuses,
 	updateActorAsGM,
 	withoutTokens,
 } from "../shared/helpers.mjs";
@@ -377,9 +378,9 @@ export async function lesserRestoration(workflow) {
 
 		if (!chosen || chosen === "cancel") return;
 
-		// Remove every active effect that carries this status (handles stacked effects).
-		const toDelete = conditionSources(actor, [chosen]).map((e) => e.id);
-		if (toDelete.length) await actor.deleteEmbeddedDocuments("ActiveEffect", toDelete);
+		// Remove every active effect that carries this status (handles stacked effects), through the
+		// GM when the caster doesn't own the target.
+		await removeStatuses(actor, [chosen]);
 
 		const label = REMOVABLE.find((c) => c.id === chosen)?.label ?? chosen;
 		await ChatMessage.create({
@@ -500,29 +501,17 @@ export function shatter(target, workflow, saveDetails) {
 	if (target.actor?.system.details.type?.value === "construct") saveDetails.disadvantage = true;
 }
 
-const SPIKE_GROWTH_BEHAVIOR = "Spike Growth — Movement Damage";
-
 /**
  * Runs Spike Growth automation after it's cast: gives its area a script behavior that deals
- * 2d4 piercing damage for every 5 ft. a creature moves inside it.
+ * 2d4 piercing damage for every 5 ft. a creature moves inside it. Players can't change scene
+ * regions, so the behavior is added through the GM.
  *
  * @param {*} workflow - Midi-QOL workflow of the cast.
  * @returns {Promise<void>}
  */
 export async function spikeGrowth(workflow) {
 	for (const ref of workflow.templateUuids ?? []) {
-		const region = typeof ref === "string" ? await fromUuid(ref).catch(() => null) : ref;
-		if (!region || region.behaviors.some((b) => b.name === SPIKE_GROWTH_BEHAVIOR)) continue;
-		await region.createEmbeddedDocuments("RegionBehavior", [
-			{
-				name: SPIKE_GROWTH_BEHAVIOR,
-				type: "executeScript",
-				system: {
-					events: ["tokenMoveWithin"],
-					source: "await elkan5e.macros.spells.spikeGrowthMove(event, region);",
-				},
-			},
-		]);
+		await addRegionBehaviorAsGM(ref, "spikeGrowth");
 	}
 }
 

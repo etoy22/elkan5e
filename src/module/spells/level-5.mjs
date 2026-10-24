@@ -1,9 +1,11 @@
 import {
 	conditionSources,
+	deleteEffects,
 	drainedEffect,
 	forEachDamagedTarget,
 	removeStatuses,
 	restoreDrainedMaxHP,
+	updateActorAsGM,
 } from "../shared/helpers.mjs";
 
 /**
@@ -44,10 +46,10 @@ export async function greaterRestoration(workflow) {
 
 		const removed = [];
 
-		// Collect all active-effect IDs that carry any of the target statuses.
-		const effectIdsToDelete = conditionSources(actor, CONDITION_IDS).map((e) => e.id);
+		// Collect all active effects that carry any of the target statuses.
+		const effectsToDelete = conditionSources(actor, CONDITION_IDS);
 
-		if (effectIdsToDelete.length) {
+		if (effectsToDelete.length) {
 			// Track which condition labels were actually present for the chat message.
 			for (const condId of CONDITION_IDS) {
 				if (
@@ -61,7 +63,8 @@ export async function greaterRestoration(workflow) {
 					);
 				}
 			}
-			await actor.deleteEmbeddedDocuments("ActiveEffect", effectIdsToDelete);
+			// Relayed to the GM when the caster doesn't own the target.
+			await deleteEffects(actor, effectsToDelete);
 		}
 
 		// Drain lowers temporary max HP rather than coming from an effect.
@@ -71,7 +74,7 @@ export async function greaterRestoration(workflow) {
 		// Remove one level of exhaustion.
 		const currentExhaustion = actor.system.attributes?.exhaustion ?? 0;
 		if (currentExhaustion > 0) {
-			await actor.update({ "system.attributes.exhaustion": currentExhaustion - 1 });
+			await updateActorAsGM(actor, { "system.attributes.exhaustion": currentExhaustion - 1 });
 			removed.push("one level of Exhaustion");
 		}
 

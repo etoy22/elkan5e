@@ -112,7 +112,10 @@ import {
 } from "./module/shared/modify-item-riders.mjs";
 import { formating } from "./module/rules/format.mjs";
 import { language } from "./module/rules/language.mjs";
-import { registerMidiFallback } from "./module/rules/midi-fallback.mjs";
+import {
+	registerMidiFallback,
+	registerMidiFallbackDamageHook,
+} from "./module/rules/midi-fallback.mjs";
 import { refs } from "./module/rules/references.mjs";
 import { scroll } from "./module/rules/scroll.mjs";
 import { skills } from "./module/rules/skills.mjs";
@@ -167,6 +170,9 @@ const Spells = {
  *
  */
 function registerHooks() {
+	// Must come before the other preRollDamageV2 handlers below.
+	registerMidiFallbackDamageHook();
+
 	Hooks.once("socketlib.ready", () => {
 		try {
 			registerElkan5eSocket();

@@ -141,7 +141,9 @@ export async function drainedEffect(actor, damage, _name, _img, _uuid, missing =
 	const hp = actor?.system?.attributes?.hp;
 	if (!hp) return;
 	let amount = Math.abs(Number(damage) || 0);
-	if (missing) amount = Math.min(amount, Math.max(0, hp.max - hp.value));
+	// Missing HP is measured from the effective maximum, so an already-drained actor isn't overcounted.
+	const currentMax = hp.effectiveMax ?? hp.max + (hp.tempmax ?? 0);
+	if (missing) amount = Math.min(amount, Math.max(0, currentMax - hp.value));
 	if (!amount) return;
 	const tempmax = (actor._source.system.attributes.hp.tempmax ?? 0) - amount;
 	const effectiveMax = Math.max(0, hp.max + tempmax);
@@ -536,6 +538,7 @@ export function registerElkan5eSocket() {
 	elkan5eSocket.register("applyDamage", applyActorDamage);
 	elkan5eSocket.register("createEffects", applyCreateEffects);
 	elkan5eSocket.register("rollSkill", applyRollSkill);
+	elkan5eSocket.register("addRegionBehavior", applyRegionBehavior);
 }
 
 /**
@@ -639,21 +642,66 @@ export function planTeleportForOwner(tokenDoc, maxDistance, action = "blink") {
  * @returns {Promise<void>}
  */
 async function applyDeleteEffects(actorUuid, effectIds) {
-	const actor = await fromUuid(actorUuid).catch(() => null);
-	const ids = effectIds.filter((id) => actor?.effects.has(id));
+	const actor = await relayedActor(this?.socketdata, actorUuid);
+	if (!actor || !Array.isArray(effectIds)) return;
+	const ids = effectIds.filter((id) => actor.effects.has(id));
 	if (ids.length) await actor.deleteEmbeddedDocuments("ActiveEffect", ids);
 }
 
+// Actor fields, and update options, a player may change through the GM relay on an actor they
+// don't own. Anything else sent over the socket is refused.
+const RELAYED_ACTOR_FIELDS = new Set([
+	"system.attributes.hp.value",
+	"system.attributes.hp.temp",
+	"system.attributes.hp.tempmax",
+	"system.attributes.exhaustion",
+]);
+const RELAYED_UPDATE_OPTIONS = new Set(["elkan5eSpiritLink"]);
+
 /**
- * Applies an update to an actor.
+ * Resolves the actor a GM-side handler acts on. Requests relayed over the socket must come from
+ * an active user and name an Actor; any other document type is refused.
+ *
+ * @param {object|undefined} socketdata - socketlib caller data; undefined when run locally.
+ * @param {string} actorUuid - UUID of the actor.
+ * @returns {Promise<Actor|null>}
+ */
+async function relayedActor(socketdata, actorUuid) {
+	if (socketdata && !game.users.get(socketdata.userId)?.active) {
+		console.warn("Elkan 5e | Refused a relayed request from an unknown user.");
+		return null;
+	}
+	const doc = typeof actorUuid === "string" ? await fromUuid(actorUuid).catch(() => null) : null;
+	if (doc?.documentName === "Actor") return doc;
+	if (socketdata)
+		console.warn(`Elkan 5e | Refused a relayed request for non-actor ${actorUuid}.`);
+	return null;
+}
+
+/**
+ * Applies an update to an actor. Relayed updates may only change RELAYED_ACTOR_FIELDS.
  *
  * @param {string} actorUuid - UUID of the actor.
  * @param {object} data - Update data.
  * @returns {Promise<void>}
  */
 async function applyActorUpdate(actorUuid, data, options = {}) {
-	const actor = await fromUuid(actorUuid).catch(() => null);
-	await actor?.update(data, options);
+	const socketdata = this?.socketdata;
+	const actor = await relayedActor(socketdata, actorUuid);
+	if (!actor) return;
+	if (socketdata) {
+		const keys = Object.keys(foundry.utils.flattenObject(data ?? {}));
+		const optionKeys = Object.keys(options ?? {});
+		const refused = [
+			...keys.filter((k) => !RELAYED_ACTOR_FIELDS.has(k)),
+			...optionKeys.filter((k) => !RELAYED_UPDATE_OPTIONS.has(k)),
+		];
+		if (!keys.length || refused.length) {
+			console.warn(`Elkan 5e | Refused a relayed update to ${actor.name}:`, refused);
+			return;
+		}
+	}
+	await actor.update(data, options);
 }
 
 /**
@@ -754,8 +802,9 @@ export function updateActorAsGM(actor, data, options = {}) {
  * @returns {Promise<void>}
  */
 async function applyActorDamage(actorUuid, damages) {
-	const actor = await fromUuid(actorUuid).catch(() => null);
-	await actor?.applyDamage(damages);
+	const actor = await relayedActor(this?.socketdata, actorUuid);
+	if (!actor || !Array.isArray(damages)) return;
+	await actor.applyDamage(damages);
 }
 
 /**
@@ -777,8 +826,9 @@ export function applyDamageAsGM(actor, damages) {
  * @returns {Promise<void>}
  */
 async function applyCreateEffects(actorUuid, effects) {
-	const actor = await fromUuid(actorUuid).catch(() => null);
-	await actor?.createEmbeddedDocuments("ActiveEffect", effects);
+	const actor = await relayedActor(this?.socketdata, actorUuid);
+	if (!actor || !Array.isArray(effects)) return;
+	await actor.createEmbeddedDocuments("ActiveEffect", effects);
 }
 
 /**
@@ -957,6 +1007,58 @@ export async function createLightRegion(regionRef, config, name = "Midi Region L
 	}
 
 	return elkan5eSocket.executeAsGM("createLightRegion", regionUuid, config, name);
+}
+
+// Region behaviors a player may ask the GM to add, by key. The relay only takes the key, never
+// behavior data, so it can't be used to add arbitrary scripts.
+const RELAYED_REGION_BEHAVIORS = {
+	spikeGrowth: {
+		name: "Spike Growth — Movement Damage",
+		type: "executeScript",
+		system: {
+			events: ["tokenMoveWithin"],
+			source: "await elkan5e.macros.spells.spikeGrowthMove(event, region);",
+		},
+	},
+};
+
+/**
+ * Adds one of RELAYED_REGION_BEHAVIORS to a region, unless it already has it.
+ *
+ * @param {string} regionUuid - UUID of the region.
+ * @param {string} key - Key in RELAYED_REGION_BEHAVIORS.
+ * @returns {Promise<void>}
+ */
+async function applyRegionBehavior(regionUuid, key) {
+	const data = Object.hasOwn(RELAYED_REGION_BEHAVIORS, key)
+		? RELAYED_REGION_BEHAVIORS[key]
+		: null;
+	const region =
+		typeof regionUuid === "string" ? await fromUuid(regionUuid).catch(() => null) : null;
+	if (!data || region?.documentName !== "Region") return;
+	if (region.behaviors.some((b) => b.name === data.name)) return;
+	await region.createEmbeddedDocuments("RegionBehavior", [foundry.utils.deepClone(data)]);
+}
+
+/**
+ * Adds one of RELAYED_REGION_BEHAVIORS to a region, relaying to the GM when the user can't
+ * change the scene.
+ *
+ * @param {RegionDocument|string} regionRef - Region or its UUID.
+ * @param {string} key - Key in RELAYED_REGION_BEHAVIORS.
+ * @returns {Promise<void>}
+ */
+export async function addRegionBehaviorAsGM(regionRef, key) {
+	const regionUuid = typeof regionRef === "string" ? regionRef : regionRef?.uuid;
+	if (!regionUuid) return;
+	if (game.user?.isGM) return applyRegionBehavior(regionUuid, key);
+	if (!elkan5eSocket) {
+		ui.notifications.warn(
+			"Elkan 5e | A GM must be online to apply this region effect (socketlib unavailable).",
+		);
+		return;
+	}
+	return elkan5eSocket.executeAsGM("addRegionBehavior", regionUuid, key);
 }
 
 /**

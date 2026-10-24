@@ -94,30 +94,16 @@ const statusIds = new Set([
 const findings = [];
 const report = (level, code, where, message) => findings.push({ level, code, where, message });
 
+// ActiveEffect duration units Foundry v14 accepts (CONST.ACTIVE_EFFECT_DURATION_UNITS).
 const VALID_UNITS = new Set([
-	"",
-	"inst",
-	"turns",
-	"rounds",
-	"minutes",
-	"hours",
-	"days",
-	"months",
 	"years",
+	"months",
+	"days",
+	"hours",
+	"minutes",
 	"seconds",
-	"perm",
-	"spec",
-	"disp",
-	"dstr",
-	"minute",
-	"hour",
-	"day",
-	"round",
-	"turn",
-	"month",
-	"year",
-	"week",
-	"weeks",
+	"rounds",
+	"turns",
 ]);
 // Custom-type changes on these numeric bonus fields are never applied (Rage, Bless, Jarl's Shield).
 const CUSTOM_IGNORED =

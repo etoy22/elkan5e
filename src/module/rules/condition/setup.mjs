@@ -445,7 +445,7 @@ export function conditions() {
 			CONFIG.DND5E.conditionTypes.exhaustion.pseudo = false;
 			CONFIG.DND5E.conditionTypes.exhaustion.reduction = { rolls: 2, speed: 5 };
 			CONFIG.DND5E.conditionTypes.exhaustion.changes = [
-				{ key: "system.bonuses.spell.dc", type: "custom", value: "-2" },
+				{ key: "system.bonuses.spell.dc", type: "add", value: "-2" },
 			];
 		}
 
