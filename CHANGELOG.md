@@ -4,6 +4,9 @@
 
 ## Bug Fixes
 
+- Mark for Death can mark any creature you target, not only hostile ones. The ranger's passive damage effect is now named Mark for Death (Damage), so it's no longer mistaken for the mark itself.
+- Mark for Death's die now becomes a d8 at ranger level 9, as the Ranger Progression Table shows, instead of level 8.
+- Predator's Instinct adds the Mark for Death die to the companion's attack hits automatically while its beastmaster's Mark for Death is active.
 - The level-up spell picker no longer offers class features that are set up as spells, such as the Abjurer's Counterspell, Divine Smite, the alternative smites, Raise Companion, Primeval Awareness, Restore Familiar, Greater Mage Armor, and Reactive Barrier.
 - Damage type labels everywhere (dropdowns, resistances, vulnerabilities, immunities, chat cards, and tooltips) now read Sonic and Electric instead of Thunder and Lightning.
 - Effects from spells, spell scrolls, and magic items are now marked as magical, so an [Antimagic Field](https://www.elkan5e.com/spells/antimagic-field) suppresses them.
