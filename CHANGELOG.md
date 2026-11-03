@@ -19,6 +19,11 @@
 - [Fire Shield](https://www.elkan5e.com/spells/fire-shield) deals its retaliation damage again. Before, it failed with an error on Foundry 14.
 - Fighting Style: Protection no longer refuses to activate with a "no uses remaining" warning.
 - Reckless Attack no longer refuses to activate with a "no uses remaining" warning.
+- Pact Magic's spell table now shows the Warlock's actual spell slots and spells known. It listed the full-caster slots and old spells known numbers.
+- The Warlock's 13th-level spell choice now offers 7th-level warlock spells. It offered spells of any level from any class.
+- Warlock spell slots are now regular spell slots. A multiclass Warlock adds their Pact Magic slots to the slots from their other classes, as Pact Magic describes, instead of keeping a separate set of Warlock slots. Warlock spells cast with any of these slots. Existing characters' warlock spells are updated when a GM loads the world.
+- The Warlock's 11th-level spell choice now uses Charisma. It used Intelligence.
+- Misty Visions and Whispers of the Grave now grant [Silent Image](https://www.elkan5e.com/spells/silent-image) and [Speak with Dead](https://www.elkan5e.com/spells/speak-with-dead) as at-will spells, as written. Before, casting them spent a spell slot.
 
 ## Compatibility
 
