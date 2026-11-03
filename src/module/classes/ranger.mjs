@@ -207,6 +207,66 @@ export async function markForDeath(workflow, item) {
 	}
 }
 
+const MARK_FOR_DEATH_HUNTING = "Mark for Death (Hunting)";
+
+/**
+ * Finds the beastmaster whose Mark for Death is active for a companion: a beastmaster with the
+ * Mark for Death (Hunting) effect who shares a player owner with the companion. A companion
+ * with no player owner matches any hunting beastmaster.
+ *
+ * @param {Actor} companion - Animal companion.
+ * @returns {Actor|undefined}
+ */
+function huntingBeastmaster(companion) {
+	const owners = game.users.filter((u) => !u.isGM && companion.testUserPermission(u, "OWNER"));
+	return game.actors.find(
+		(a) =>
+			a.id !== companion.id &&
+			a.items.some((i) => i.type === "subclass" && i.system?.identifier === "beastmaster") &&
+			a.effects.some((ef) => ef.name === MARK_FOR_DEATH_HUNTING && !ef.disabled) &&
+			(!owners.length || owners.some((u) => a.testUserPermission(u, "OWNER"))),
+	);
+}
+
+/**
+ * Predator's Instinct damage bonus (DamageBonusMacro). While the companion's beastmaster has
+ * Mark for Death active, the companion's attack hits deal the Mark for Death die as extra damage.
+ *
+ * @param {object} workflow - MIDI-QOL workflow.
+ * @param {Item} [item] - The Predator's Instinct item.
+ * @returns {Promise<Roll|object>} Bonus damage roll, or an empty object for none.
+ */
+export async function predatorsInstinct(workflow, item) {
+	try {
+		if (workflow.activity?.type !== "attack" || !workflow.hitTargets?.size) return {};
+		const actor = workflow.actor;
+		if (!actor) return {};
+
+		const ranger = huntingBeastmaster(actor);
+		if (!ranger) return {};
+
+		const formula =
+			ranger.system?.scale?.ranger?.["mark-for-death"]?.formula ??
+			actor.system?.scale?.["animal-companion-class"]?.["mark-for-death"]?.formula;
+		if (!formula) return {};
+		const types = workflow.item?.system?.damage?.base?.types;
+		const damageType =
+			workflow.damageRolls?.[0]?.options?.type ?? (types?.size ? types.first() : "piercing");
+		return await new CONFIG.Dice.DamageRoll(
+			formula,
+			{},
+			{
+				type: damageType,
+				isCritical: workflow.isCritical,
+				flavor: item?.name ?? "Predator's Instinct",
+			},
+		).evaluate();
+	} catch (err) {
+		console.error("predatorsInstinct |", err);
+		return {};
+	}
+}
+
 /**
  * Keeps Mark for Death on one creature: when the ranger marks a new target, their mark is
  * removed from other creatures on the current canvas that are not currently targeted.
