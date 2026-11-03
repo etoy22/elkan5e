@@ -19,6 +19,8 @@
 - [Fire Shield](https://www.elkan5e.com/spells/fire-shield) deals its retaliation damage again. Before, it failed with an error on Foundry 14.
 - Fighting Style: Protection no longer refuses to activate with a "no uses remaining" warning.
 - Reckless Attack no longer refuses to activate with a "no uses remaining" warning.
+- Burning deals its 1d8 fire damage at the end of the creature's turn, as written, instead of the start. It no longer asks for a save, since burning has none. Use the Quench Burning action to put it out.
+- Suffocation: when a creature stops suffocating, it loses the levels of exhaustion it gained from suffocating, as written. Before, they stayed.
 
 ## Compatibility
 
