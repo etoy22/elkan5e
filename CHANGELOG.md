@@ -19,6 +19,11 @@
 - [Fire Shield](https://www.elkan5e.com/spells/fire-shield) deals its retaliation damage again. Before, it failed with an error on Foundry 14.
 - Fighting Style: Protection no longer refuses to activate with a "no uses remaining" warning.
 - Reckless Attack no longer refuses to activate with a "no uses remaining" warning.
+- Pact Magic's spell table now shows the Warlock's actual spell slots and spells known. It listed the full-caster slots and old spells known numbers.
+- The Warlock's 13th-level spell choice now offers 7th-level warlock spells. It offered spells of any level from any class.
+- Warlock spell slots are now regular spell slots. A multiclass Warlock adds their Pact Magic slots to the slots from their other classes, as Pact Magic describes, instead of keeping a separate set of Warlock slots. Warlock spells cast with any of these slots. Existing characters' warlock spells are updated when a GM loads the world.
+- The Warlock's 11th-level spell choice now uses Charisma. It used Intelligence.
+- Misty Visions and Whispers of the Grave now grant [Silent Image](https://www.elkan5e.com/spells/silent-image) and [Speak with Dead](https://www.elkan5e.com/spells/speak-with-dead) as at-will spells, as written. Before, casting them spent a spell slot.
 
 ## Compatibility
 
@@ -503,6 +508,7 @@
     - [Spirit Link](https://www.elkan5e.com/spells/spirit-link): the linked creature's half of the damage can't be reduced, as written, and is no longer shared back and forth between the two creatures.
     - [Well of Corruption](https://www.elkan5e.com/spells/well-of-corruption) no longer causes an error when cast without a token.
     - [Moonbeam](https://www.elkan5e.com/spells/moonbeam) no longer fails with an error when cast, and its beam uses the spell's own area.
+    - [Arms of Earth](https://www.elkan5e.com/spells/arms-of-earth) doesn't hold creatures immune to being grappled, so they only take the initial damage.
 - 3rd level
     - [Blink](https://www.elkan5e.com/spells/blink) is now fully automated with Midi-QOL. At the end of each of your turns it rolls a d20; on 11 or higher you become Ethereal (can't be targeted). At the start of your next turn you return and choose a space within 10 ft. Before, you couldn't be targeted for the whole minute.
     - [Rock Blast](https://www.elkan5e.com/spells/rock-blast): a failed save now knocks the target prone, as the spell describes. Before, it gave the target advantage.
@@ -520,7 +526,7 @@
     - [Blight](https://www.elkan5e.com/spells/blight): plant creatures now roll with disadvantage, and constructs and undead (no water in their bodies) are unaffected.
     - [Banishment](https://www.elkan5e.com/spells/banishment) only damages creatures that succeed on the save. Before, banished creatures took the damage too.
     - [Ice Storm](https://www.elkan5e.com/spells/ice-storm): the 2d8 damage is bludgeoning. Before, it had no damage type.
-    - [Silent Cacophony](https://www.elkan5e.com/spells/silent-cacophony): the repeat damage is d6s instead of d4s. Its upcast note, and [Black Tentacles](https://www.elkan5e.com/spells/black-tentacles)', now say "above 4th".
+    - [Silent Cacophony](https://www.elkan5e.com/spells/silent-cacophony): the repeat damage is d6s instead of d4s, and creatures immune to being deafened only take the initial damage. Its upcast note, and [Black Tentacles](https://www.elkan5e.com/spells/black-tentacles)', now say "above 4th".
     - [Fire Shield](https://www.elkan5e.com/spells/fire-shield) gives resistance to both cold and fire, with no warm/chill choice, and sheds its light.
     - [Discorporate](https://www.elkan5e.com/spells/discorporate) gives resistance to nonmagical bludgeoning, piercing, and slashing damage, and halves the target's weapon damage the same way the Weakened condition does. Before, neither worked.
     - [Master's Touch](https://www.elkan5e.com/spells/masters-touch) grants proficiency with simple and martial weapons, crafting tools, and vehicles. Before, its effect wasn't applied.
@@ -540,7 +546,7 @@
 - 6th level
     - [Curse of Eyebite](https://www.elkan5e.com/spells/eyebite) is a permanent curse that blinds. Before, it didn't blind and ended after a minute or on damage.
     - [Flesh to Stone](https://www.elkan5e.com/spells/flesh-to-stone): the repeat save happens at the end of the turn. Three successes end it and three failures petrify; neither needs to be in a row.
-    - [Irresistible Dance](https://www.elkan5e.com/spells/irresistible-dance) now rolls its repeat save, and attacks against the dancer have advantage.
+    - [Irresistible Dance](https://www.elkan5e.com/spells/irresistible-dance) now rolls its repeat save, attacks against the dancer have advantage, and the dancer can't leave its space. Creatures immune to being charmed are unaffected.
     - [Flood](https://www.elkan5e.com/spells/flood) knocks creatures prone on a failed save. Before, it restrained them as if they were vehicles.
     - [Heroes' Feast](https://www.elkan5e.com/spells/heroes-feast) raises maximum hit points by 2d10 instead of 2d6.
     - [Wall of Ice](https://www.elkan5e.com/spells/wall-of-ice): damage from passing through is cold. Before, it had no damage type.

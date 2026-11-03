@@ -64,7 +64,15 @@
 						"key": "flags.midi-qol.grants.advantage.attack.all",
 						"value": "1",
 						"priority": 20,
-						"type": "custom"
+						"type": "custom",
+						"phase": "initial"
+					},
+					{
+						"key": "system.attributes.movement.all",
+						"type": "custom",
+						"value": "0",
+						"phase": "initial",
+						"priority": 20
 					},
 					{
 						"key": "macro.StatusEffect",
@@ -274,7 +282,8 @@
 				"img": "",
 				"appliedEffects": [
 					"3mNPKbwjiaapU9XI"
-				]
+				],
+				"effectConditionText": "!target.traits.ci.value.has('charmed')"
 			}
 		},
 		"identifier": "irresistible-dance"
