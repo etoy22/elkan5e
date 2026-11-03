@@ -1,0 +1,11 @@
+{
+	"name": "Sucking Ground",
+	"type": "script",
+	"_id": "elkanSuckingGrnd",
+	"author": "71r7qVMKZkbQ86li",
+	"img": "icons/magic/earth/strike-body-stone-crumble.webp",
+	"scope": "global",
+	"command": "(async () => {\n  // OverTime macro for the Sucking Ground effect, run at the end of each of the creature's turns.\n  // Raises the escape DC by 5 and, after two turns, starts Suffocation (removed when the creature escapes).\n  const target = typeof workflow !== \"undefined\" ? workflow?.targets?.first?.() : undefined;\n  const subject = target?.actor ?? (typeof actor !== \"undefined\" ? actor : null);\n  if (!subject) return {};\n\n  const effect = subject.effects.find(\n    (e) => !e.disabled && e.getFlag(\"elkan5e\", \"suckingGround\") !== undefined,\n  );\n  if (!effect) return {};\n\n  const turns = Number(effect.getFlag(\"elkan5e\", \"suckingGround\") ?? 0) + 1;\n  await effect.update({\n    name: `Sucking Ground (Escape DC ${10 + 5 * turns})`,\n    \"flags.elkan5e.suckingGround\": turns,\n  });\n\n  if (turns < 2 || subject.statuses.has(\"suffocation\")) return {};\n  const suffocation = await subject.toggleStatusEffect(\"suffocation\", { active: true });\n  if (suffocation instanceof ActiveEffect) {\n    // dnd5e deletes dependents with their parent, so escaping also ends the suffocation.\n    const dependents = effect.getFlag(\"dnd5e\", \"dependents\") ?? [];\n    await effect.setFlag(\"dnd5e\", \"dependents\", [...dependents, { uuid: suffocation.uuid }]);\n  }\n  return {};\n})();",
+	"folder": "Z0WbSeZ2agJTALHX",
+	"_key": "!macros!elkanSuckingGrnd"
+}

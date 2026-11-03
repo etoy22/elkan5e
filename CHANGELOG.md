@@ -418,6 +418,15 @@
 - Added Crawl as a movement type (alongside Walk/Burrow/Climb/Fly/Swim), so it can be granted or set on actors and shows up in the Speed section. A creature with a crawl speed crawls at normal cost instead of double, and being Prone doesn't set its crawl speed to 0.
 - Ethereal is now a status in the token HUD, like Dodging, so it can be toggled on any creature, and it's in the Active Effects compendium under Conditions. Ethereal creatures can still be targeted.
 - Burning and Suffocation now damage or exhaust the creature that has the condition. Before, they used whichever token was selected.
+- Environmental effects can now be placed on the map. Draw a Region, add the Elkan Environment behavior, and pick an environment, such as Blizzard, Dense Forest, Heavy Fog, Lava, Sandstorm, Strong Wind, Sucking Ground, Thunderstorm, or Thorn Bush. Creatures inside get its effects and lose them when they leave, including creatures already inside when you add it. Terrain environments count as difficult terrain. The Strong Wind, Submerged in Lava, and Sucking Ground effects are also in the Effects compendium, under Environment, to drag onto a creature.
+    - Strong Wind (also in Blizzard, Sandstorm, and Thunderstorm): disadvantage on ranged weapon attacks.
+    - Fog, precipitation, Dense Forest, and storms make creatures inside Lightly or Heavily Obscured.
+    - Lava: a creature in it takes 10d10 fire damage at the start of each of its turns.
+    - Sucking Ground: a creature that enters makes a DC 10 Athletics or Acrobatics check. On a failure it is Restrained and stops moving. At the end of each of its turns the escape DC rises by 5 (shown in the effect's name), and after two turns it starts Suffocating. Escaping ends both.
+- Wild surges now apply some of their results instead of only posting them to chat. This works for both the Wild Mage and the Bloodrager's Wild Blood:
+    - A Bloodrager who rolls a result that needs a sorcerer (regaining sorcery points or free metamagic) regains one use of Rage instead, as Wild Blood says.
+    - "Roll once each on the 1st, 2nd, and 3rd level surge tables" rolls those three tables.
+    - Avert Disaster and Delayed Surge are offered in one dialog with an Accept Result button. A result is applied only once you accept it. Using a Delayed Wild Surge item applies the stored result.
 - Confused now rolls its behavior table at the start of the creature's turn.
 - Drained now lowers the creature's maximum hit points directly, using dnd5e 6.0's temporary maximum hit points, and a long rest restores them. Cleansing Touch, Greater Restoration, and Power Cure restore drained maximum hit points when they cure Drained.
 - Grapple movement penalties now apply: no movement when grappled by a same-or-larger creature, half speed when grappled by a smaller one. The grapple system also now reads climb speed correctly, which affects whether a much-smaller grappler gets advantage.

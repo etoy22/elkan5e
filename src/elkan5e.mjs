@@ -105,6 +105,10 @@ import { push } from "./module/rules/condition/push.mjs";
 import { fixRegionTurnEnd } from "./module/rules/region-turn-end.mjs";
 import { endEffectsOnRegionExit } from "./module/rules/region-exit.mjs";
 import {
+	clearEnvironmentRegion,
+	registerEnvironmentRegions,
+} from "./module/rules/environment-regions.mjs";
+import {
 	applyActorModifyItemRiders,
 	applyModifyItemRiders,
 	backfillModifyItemRiders,
@@ -189,6 +193,7 @@ function registerHooks() {
 			registerSeeThroughDarkness();
 
 			conditions();
+			registerEnvironmentRegions();
 			tools();
 			weapons();
 			armor();
@@ -883,6 +888,11 @@ function registerHooks() {
 			await deleteRegionLights(region);
 		} catch (error) {
 			console.error("Elkan 5e | Error in deleteRegion light cleanup hook:", error);
+		}
+		try {
+			await clearEnvironmentRegion(region);
+		} catch (error) {
+			console.error("Elkan 5e | Error in deleteRegion environment cleanup hook:", error);
 		}
 	});
 
