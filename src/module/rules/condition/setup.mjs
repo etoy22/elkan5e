@@ -296,6 +296,7 @@ function ensureMidiInvisibleVisionRule() {
 
 const HAZARD_EXHAUSTION_FLAG = "hazardExhaustionContribution";
 const HAZARD_STATUS_IDS = ["dehydration", "malnutrition"];
+const SUFFOCATION_STATES_FLAG = "suffocationStates";
 
 /**
  * Checks whether a status entry matches a requested status id.
@@ -386,6 +387,32 @@ async function syncHazardExhaustion(actor) {
 	if (nextContribution !== priorContribution) {
 		await actor.setFlag("elkan5e", HAZARD_EXHAUSTION_FLAG, nextContribution);
 	}
+
+	await clearSuffocationExhaustion(actor);
+}
+
+/**
+ * Once a creature stops suffocating, removes the exhaustion the Suffocation OverTime macro
+ * recorded in the suffocationStates flag.
+ *
+ * @param {*} actor - Actor.
+ * @returns {Promise<void>} Completion.
+ */
+async function clearSuffocationExhaustion(actor) {
+	const states = actor.getFlag("elkan5e", SUFFOCATION_STATES_FLAG);
+	if (!states) return;
+	const stillSuffocating = [...actor.effects].some(
+		(effect) => !effect.disabled && effectHasStatus(effect, "suffocation"),
+	);
+	if (stillSuffocating) return;
+
+	const gained = Math.max(0, Number(states.exhaustion ?? 0));
+	if (gained) {
+		const current = Number(actor.system?.attributes?.exhaustion ?? 0);
+		const target = Math.clamp(current - gained, 0, 6);
+		if (target !== current) await actor.update({ "system.attributes.exhaustion": target });
+	}
+	await actor.unsetFlag("elkan5e", SUFFOCATION_STATES_FLAG);
 }
 
 /**

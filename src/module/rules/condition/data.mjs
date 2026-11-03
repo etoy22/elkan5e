@@ -348,15 +348,11 @@ const STATUS_DEFS = [
 		reference: HAZARD_RULES_REF("znHHmhO6vGjmeugR"),
 		icon: "modules/elkan5e/icons/hazards/burning.svg",
 		changes: [
+			// 1d8 fire at the end of each turn. Hotter sources raise it with system.traits.dm.amount.fire.
 			{
 				key: "flags.midi-qol.OverTime",
 				type: "add",
-				value: "turn=start,\nlabel=burning,\nactionSave=dialog,\nmacro=Compendium.elkan5e.elkan5e-macros.Macro.g6P9Rkg63Rz74KNe",
-			},
-			{
-				key: "flags.elkan5e.burning",
-				type: "custom",
-				value: "1d8",
+				value: "turn=end, label=Burning, damageRoll=1d8, damageType=fire, allowIncapacitated=true",
 			},
 		],
 		flags: {
@@ -411,7 +407,8 @@ const STATUS_DEFS = [
 			{
 				key: "flags.midi-qol.OverTime",
 				type: "add",
-				value: "turn=end,label=Suffocating,macro=Compendium.elkan5e.elkan5e-macros.Macro.H5g2Kf9b8VqL4tYc",
+				// +1 exhaustion at the end of each turn; removed when suffocation ends (see setup.mjs).
+				value: "turn=end, label=Suffocating, allowIncapacitated=true, macro=Compendium.elkan5e.elkan5e-macros.Macro.H5g2Kf9b8VqL4tYc",
 			},
 		],
 		flags: {
