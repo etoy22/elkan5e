@@ -886,6 +886,7 @@ export async function wildBlood(activity, usageConfig) {
 		if (drawn) {
 			await resolveWildSurge(actor, drawn.result, {
 				source: SURGE_SOURCE.bloodrager,
+				budget: drawn.budget,
 				slot: usageConfig?.spell?.slot ?? null,
 			});
 		}

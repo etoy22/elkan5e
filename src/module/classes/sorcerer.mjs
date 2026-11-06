@@ -14,12 +14,13 @@ import { excludeTargets, markUsedThisTurn, t, usedThisTurn } from "../shared/hel
  *
  * @param {*} activity - Activity.
  * @param {*} usageConfig - Usage configuration passed by the activity workflow.
- * @returns {Promise<void>} Promise resolution result.
+ * @returns {Promise<void|false>} False if a redraw failed; the original surge is still applied.
  */
 export async function wildSurge(activity, usageConfig) {
 	const actor = activity?.actor;
 	const item = activity?.item;
 	if (!actor || !item) return;
+	if (item.flags?.["midi-qol"]?.syntheticItem || activity.isOverTimeFlag) return;
 
 	let rawSlot = usageConfig?.spell?.slot;
 	let level = null;
@@ -74,13 +75,14 @@ export async function wildSurge(activity, usageConfig) {
 	let drawn = await drawWildSurge(tableLevel);
 	if (!drawn) return;
 
-	const avert = actor.items.find((i) => i.system.identifier === "avert-disaster");
-	const delay = actor.items.find((i) => i.system.identifier === "delayed-surge");
+	let avert = actor.items.find((i) => i.system.identifier === "avert-disaster");
+	let delay = actor.items.find((i) => i.system.identifier === "delayed-surge");
 	const hasUses = (feature) => feature && feature.system.uses.spent < feature.system.uses.max;
 
 	// Avert Disaster rerolls once; Delayed Surge stores the result for later. Anything else
 	// (accepting, or closing the dialog) applies the result now.
 	let canAvert = true;
+	let redrawFailed = false;
 	while (true) {
 		const offerAvert = canAvert && hasUses(avert);
 		const offerDelay = hasUses(delay);
@@ -90,23 +92,34 @@ export async function wildSurge(activity, usageConfig) {
 			offerAvert ? avert : null,
 			offerDelay ? delay : null,
 		);
-		if (choice === "avert") {
+		avert = actor.items.find((i) => i.system.identifier === "avert-disaster");
+		delay = actor.items.find((i) => i.system.identifier === "delayed-surge");
+		if (choice === "avert" && offerAvert && hasUses(avert)) {
+			const redrawn = await drawWildSurge(tableLevel, drawn.budget);
+			if (!redrawn) {
+				redrawFailed = true;
+				break;
+			}
+			// A draw also yields control: check again immediately before spending.
+			avert = actor.items.find((i) => i.system.identifier === "avert-disaster");
+			if (!hasUses(avert)) break;
 			await avert.update({ "system.uses.spent": avert.system.uses.spent + 1 });
-			drawn = (await drawWildSurge(tableLevel)) ?? drawn;
+			drawn = redrawn;
 			canAvert = false;
 			continue;
 		}
-		if (choice === "delay") {
-			await delaySurge(actor, delay, drawn.result);
-			return;
+		if (choice === "delay" && offerDelay && hasUses(delay)) {
+			if (await delaySurge(actor, delay, drawn.result)) return;
 		}
 		break;
 	}
 
 	await resolveWildSurge(actor, drawn.result, {
 		source: SURGE_SOURCE.sorcerer,
+		budget: drawn.budget,
 		slot: typeof rawSlot === "string" ? rawSlot : null,
 	});
+	if (redrawFailed) return false;
 }
 
 /**
@@ -170,10 +183,11 @@ async function promptSurgeAbilities(avert, delay) {
  * @param {Actor} actor - Sorcerer who surged.
  * @param {Item} delay - Delayed Surge feature.
  * @param {TableResult} result - Surge result to store.
- * @returns {Promise<void>}
+ * @returns {Promise<boolean>} Whether the surge was stored successfully.
  */
 async function delaySurge(actor, delay, result) {
 	await delay.update({ "system.uses.spent": delay.system.uses.spent + 1 });
+	const pairId = foundry.utils.randomID();
 	const rollResult = surgeResultText(result);
 	const delayedSurge = {
 		name: game.i18n.localize("elkan5e.wildMage.delayedWildSurge"),
@@ -287,18 +301,29 @@ async function delaySurge(actor, delay, result) {
 			},
 			properties: ["mgc"],
 		},
-		flags: { elkan5e: { wildSurgeResult: result.uuid } },
+		flags: { elkan5e: { wildSurgeResult: result.uuid, delayedSurgePair: pairId } },
 	};
 
-	const delayedSurgeEffect = await createDelayedSurgeEffect({
-		name: game.i18n.localize("elkan5e.wildMage.delayedWildSurgeDuration"),
-		transfer: false,
-		img: "icons/magic/defensive/barrier-shield-dome-deflect-blue.webp",
-		origin: actor.uuid,
-	});
-
-	await actor.createEmbeddedDocuments("Item", [delayedSurge]);
-	await actor.createEmbeddedDocuments("ActiveEffect", [delayedSurgeEffect]);
+	let storedItem;
+	try {
+		const delayedSurgeEffect = await createDelayedSurgeEffect({
+			name: game.i18n.localize("elkan5e.wildMage.delayedWildSurgeDuration"),
+			transfer: false,
+			img: "icons/magic/defensive/barrier-shield-dome-deflect-blue.webp",
+			origin: actor.uuid,
+		});
+		foundry.utils.setProperty(delayedSurgeEffect, "flags.elkan5e.delayedSurgePair", pairId);
+		[storedItem] = await actor.createEmbeddedDocuments("Item", [delayedSurge]);
+		if (!storedItem) throw new Error("Delayed Wild Surge item was not created");
+		const effects = await actor.createEmbeddedDocuments("ActiveEffect", [delayedSurgeEffect]);
+		if (!effects?.length) throw new Error("Delayed Wild Surge effect was not created");
+		return true;
+	} catch (error) {
+		console.error("Elkan 5e | Error storing Delayed Wild Surge:", error);
+		await delay.update({ "system.uses.spent": Math.max(0, delay.system.uses.spent - 1) });
+		if (storedItem) await storedItem.delete();
+		return false;
+	}
 }
 
 /**
@@ -323,14 +348,12 @@ export async function delayedSurgeUse(activity) {
  * @returns {Promise<void>} Promise resolution result.
  */
 export async function delayedDuration(effect) {
-	if (effect.name === game.i18n.localize("elkan5e.wildMage.delayedWildSurgeDuration")) {
-		const actor = effect.parent;
-		if (!actor) return;
-		const item = actor.items.find(
-			(entry) => entry.name === game.i18n.localize("elkan5e.wildMage.delayedWildSurge"),
-		);
-		if (item) await item.delete();
-	}
+	const pairId = effect.flags?.elkan5e?.delayedSurgePair;
+	if (!pairId) return;
+	const item = effect.parent?.items?.find(
+		(entry) => entry.flags?.elkan5e?.delayedSurgePair === pairId,
+	);
+	if (item) await item.delete();
 }
 
 /**
@@ -340,15 +363,12 @@ export async function delayedDuration(effect) {
  * @returns {Promise<void>} Promise resolution result.
  */
 export async function delayedItem(item) {
-	if (item.name === game.i18n.localize("elkan5e.wildMage.delayedWildSurge")) {
-		const actor = item.parent;
-		if (!actor) return;
-		const effect = actor.effects.find(
-			(entry) =>
-				entry.name === game.i18n.localize("elkan5e.wildMage.delayedWildSurgeDuration"),
-		);
-		if (effect) await effect.delete();
-	}
+	const pairId = item.flags?.elkan5e?.delayedSurgePair;
+	if (!pairId) return;
+	const effect = item.parent?.effects?.find(
+		(entry) => entry.flags?.elkan5e?.delayedSurgePair === pairId,
+	);
+	if (effect) await effect.delete();
 }
 
 /**

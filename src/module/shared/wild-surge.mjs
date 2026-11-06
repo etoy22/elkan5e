@@ -1,4 +1,4 @@
-import { createEffectsAsGM, deleteEffects, removeStatuses, t } from "./helpers.mjs";
+import { createEffectsAsGM, removeStatuses, t } from "./helpers.mjs";
 
 /**
  * Wild Surge table IDs in the elkan5e-roll-tables compendium, indexed by surge table level.
@@ -55,21 +55,33 @@ export const surgeResultText = (result) => result?.description || result?.name |
  * {@link resolveWildSurge} once the result is final (after Avert Disaster / Delayed Surge).
  *
  * @param {number} tableLevel - Surge table level (1-10). Clamped to the highest table.
- * @returns {Promise<{table: RollTable, result: TableResult}|null>} Drawn result, or null if no table.
+ * @param {object} [budget] - Shared remaining draw budget for this resolution.
+ * @returns {Promise<{table: RollTable, result: TableResult, budget: object}|null>} Drawn result, or null if no table.
  */
-export async function drawWildSurge(tableLevel) {
+export async function drawWildSurge(tableLevel, budget = { remaining: 100 }) {
 	const id = WILD_SURGE_TABLE_IDS[Math.min(tableLevel, WILD_SURGE_MAX_TABLE_LEVEL)];
 	if (!id) return null;
 	try {
 		const table = await fromUuid(`Compendium.elkan5e.elkan5e-roll-tables.RollTable.${id}`);
 		if (!table) return null;
-		const draw = await table.draw({ displayChat: true });
-		const result = draw?.results?.[0];
-		return result ? { table, result } : null;
+		return await drawSurgeTable(table, budget);
 	} catch (error) {
 		console.error("Elkan 5e | Error drawing from Wild Surge table:", error);
 		return null;
 	}
+}
+
+/** Draws linked tables without allowing Foundry to recurse outside our shared budget. */
+async function drawSurgeTable(table, budget) {
+	if (budget.remaining <= 0) return null;
+	budget.remaining--;
+	const draw = await table.draw({ displayChat: true, recursive: false });
+	const result = draw?.results?.[0];
+	if (result?.documentUuid) {
+		const linked = await fromUuid(result.documentUuid);
+		if (linked?.documentName === "RollTable") return drawSurgeTable(linked, budget);
+	}
+	return result ? { table, result, budget } : null;
 }
 
 /**
@@ -80,12 +92,13 @@ export async function drawWildSurge(tableLevel) {
  * @param {object} [options]
  * @param {string} [options.source] - One of {@link SURGE_SOURCE}.
  * @param {string} [options.slot] - Spell slot key used for the triggering spell (e.g. "spell3").
+ * @param {object} [options.budget] - Shared remaining draw budget, including sibling subtables.
  * @returns {Promise<void>}
  */
 export async function resolveWildSurge(
 	actor,
 	resultOrUuid,
-	{ source = SURGE_SOURCE.sorcerer, slot = null } = {},
+	{ source = SURGE_SOURCE.sorcerer, slot = null, budget = { remaining: 100 } } = {},
 ) {
 	if (!actor || !resultOrUuid) return;
 	const result = typeof resultOrUuid === "string" ? await fromUuid(resultOrUuid) : resultOrUuid;
@@ -100,8 +113,9 @@ export async function resolveWildSurge(
 
 		if (Array.isArray(data.subTables)) {
 			for (const level of data.subTables) {
-				const drawn = await drawWildSurge(level);
-				if (drawn) await resolveWildSurge(actor, drawn.result, { source, slot });
+				if (budget.remaining <= 0) break;
+				const drawn = await drawWildSurge(level, budget);
+				if (drawn) await resolveWildSurge(actor, drawn.result, { source, slot, budget });
 			}
 		}
 
@@ -154,10 +168,10 @@ async function applySurgeEffects(actor, uuids) {
  */
 async function runSpecials(actor, special, { slot = null } = {}) {
 	if (special.dispelMagic) {
-		const magical = actor.effects.filter(
-			(e) => e.isTemporary && !e.transfer && e.system?.magical,
+		const magical = [...actor.allApplicableEffects()].filter(
+			(e) => e.isTemporary && e.system?.magical,
 		);
-		if (magical.length) await deleteEffects(actor, magical);
+		for (const effect of magical) await effect.delete();
 	}
 	if (special.endConcentration) await actor.endConcentration?.();
 	if (special.removeStatuses?.length) await removeStatuses(actor, special.removeStatuses);
