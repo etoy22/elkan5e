@@ -42,6 +42,7 @@ import {
 	carefulSpell,
 	delayedDuration,
 	delayedItem,
+	delayedSurgeUse,
 	elementalInfusion,
 	markSavantFeatureUsed,
 	savantSpellReminder,
@@ -289,6 +290,11 @@ function registerHooks() {
 			wildSurge(activity, usageConfig);
 		} catch (error) {
 			console.error("Elkan 5e | Error in postUseActivity hook:", error);
+		}
+		try {
+			delayedSurgeUse(activity);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Delayed Wild Surge postUseActivity hook:", error);
 		}
 		try {
 			wildBlood(activity, usageConfig);
