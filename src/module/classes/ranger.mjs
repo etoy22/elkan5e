@@ -212,20 +212,22 @@ const MARK_FOR_DEATH_HUNTING = "Mark for Death (Hunting)";
 /**
  * Finds the beastmaster whose Mark for Death is active for a companion: a beastmaster with the
  * Mark for Death (Hunting) effect who shares a player owner with the companion. A companion
- * with no player owner matches any hunting beastmaster.
+ * with no player owner matches a hunting beastmaster only when there is exactly one, so it never
+ * borrows the wrong ranger's mark.
  *
  * @param {Actor} companion - Animal companion.
  * @returns {Actor|undefined}
  */
 function huntingBeastmaster(companion) {
 	const owners = game.users.filter((u) => !u.isGM && companion.testUserPermission(u, "OWNER"));
-	return game.actors.find(
+	const hunting = game.actors.filter(
 		(a) =>
 			a.id !== companion.id &&
 			a.items.some((i) => i.type === "subclass" && i.system?.identifier === "beastmaster") &&
-			a.effects.some((ef) => ef.name === MARK_FOR_DEATH_HUNTING && !ef.disabled) &&
-			(!owners.length || owners.some((u) => a.testUserPermission(u, "OWNER"))),
+			a.effects.some((ef) => ef.name === MARK_FOR_DEATH_HUNTING && !ef.disabled),
 	);
+	if (!owners.length) return hunting.length === 1 ? hunting[0] : undefined;
+	return hunting.find((a) => owners.some((u) => a.testUserPermission(u, "OWNER")));
 }
 
 /**
