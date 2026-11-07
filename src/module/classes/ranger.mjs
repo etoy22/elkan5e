@@ -208,10 +208,15 @@ export async function markForDeath(workflow, item) {
 }
 
 const MARK_FOR_DEATH_HUNTING = "Mark for Death (Hunting)";
+// Fallback the beastmaster can apply to themselves (Animal Companion feature) to turn on
+// Predator's Instinct by hand, in case Mark for Death's own effect didn't apply.
+const PREDATORS_INSTINCT_ACTIVE = "Predator's Instinct (Active)";
+const HUNTING_EFFECTS = [MARK_FOR_DEATH_HUNTING, PREDATORS_INSTINCT_ACTIVE];
 
 /**
  * Finds the beastmaster whose Mark for Death is active for a companion: a beastmaster with the
- * Mark for Death (Hunting) effect who shares a player owner with the companion. A companion
+ * Mark for Death (Hunting) or Predator's Instinct (Active) effect who shares a player owner
+ * with the companion. A companion
  * with no player owner matches a hunting beastmaster only when there is exactly one, so it never
  * borrows the wrong ranger's mark.
  *
@@ -224,7 +229,7 @@ function huntingBeastmaster(companion) {
 		(a) =>
 			a.id !== companion.id &&
 			a.items.some((i) => i.type === "subclass" && i.system?.identifier === "beastmaster") &&
-			a.effects.some((ef) => ef.name === MARK_FOR_DEATH_HUNTING && !ef.disabled),
+			a.effects.some((ef) => HUNTING_EFFECTS.includes(ef.name) && !ef.disabled),
 	);
 	if (!owners.length) return hunting.length === 1 ? hunting[0] : undefined;
 	return hunting.find((a) => owners.some((u) => a.testUserPermission(u, "OWNER")));
