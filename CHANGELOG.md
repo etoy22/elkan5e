@@ -4,6 +4,10 @@
 
 ## Bug Fixes
 
+- Animal companions' armor class is at least 10 + proficiency bonus again (higher natural armor is kept). Familiars from Find Familiar and Pact of the Chain have an armor class of exactly 10 + proficiency bonus. Before, neither rule applied.
+- Raise Companion restores the companion's hit points (15 × your ranger level). It restored 1.
+- Pact of the Chain can summon a sprite, as its description says.
+- Familiars, beast companions, and summoned creatures (including Animate Dead's skeletons and zombies) now come from the Summoned Creatures compendium, which has new Beasts and Familiars folders. The Creatures compendium is now hidden from players.
 - The level-up spell picker no longer offers class features that are set up as spells, such as the Abjurer's Counterspell, Divine Smite, the alternative smites, Raise Companion, Primeval Awareness, Restore Familiar, Greater Mage Armor, and Reactive Barrier.
 - Damage type labels everywhere (dropdowns, resistances, vulnerabilities, immunities, chat cards, and tooltips) now read Sonic and Electric instead of Thunder and Lightning.
 - Effects from spells, spell scrolls, and magic items are now marked as magical, so an [Antimagic Field](https://www.elkan5e.com/spells/antimagic-field) suppresses them.
