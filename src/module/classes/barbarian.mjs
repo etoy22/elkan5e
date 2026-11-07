@@ -1,5 +1,5 @@
 import { removeStatuses, updateActorAsGM } from "../shared/helpers.mjs";
-import { drawWildSurge, resolveWildSurge, SURGE_SOURCE } from "../shared/wild-surge.mjs";
+import { drawWildSurge, resolveWildSurges, SURGE_SOURCE } from "../shared/wild-surge.mjs";
 
 const DialogV2 = foundry.applications.api.DialogV2;
 
@@ -884,7 +884,7 @@ export async function wildBlood(activity, usageConfig) {
 	if (type !== "utility" || identifier === "blink") {
 		const drawn = await drawWildSurge(level);
 		if (drawn) {
-			await resolveWildSurge(actor, drawn.result, {
+			await resolveWildSurges(actor, drawn.results ?? [drawn.result], {
 				source: SURGE_SOURCE.bloodrager,
 				budget: drawn.budget,
 				slot: usageConfig?.spell?.slot ?? null,

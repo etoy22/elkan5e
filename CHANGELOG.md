@@ -424,7 +424,8 @@
     - Results that only partly need a sorcerer keep the rest for a Bloodrager. For example, the Daydream still sends a Bloodrager to the Ethereal Plane and restores their hit points, and gives a use of Rage in place of the sorcery points.
     - The Daydream restores hit points (and sorcery points) when you return at the start of your next turn, as written, instead of as soon as you leave.
     - "Roll once each on the 1st, 2nd, and 3rd level surge tables" rolls those three tables.
-    - Avert Disaster and Delayed Surge are offered in one dialog with an Accept Result button. A result is applied only once you accept it. Using a Delayed Wild Surge item applies the stored result.
+    - Avert Disaster and Delayed Surge are offered in one dialog with an Accept Result button. A result is applied only once you accept it. Using a Delayed Wild Surge item applies the stored result, and a result that returns your spell slot returns the slot of the spell that caused the surge.
+    - If a surge table has overlapping ranges, every result drawn is applied.
 - Confused now rolls its behavior table at the start of the creature's turn.
 - Drained now lowers the creature's maximum hit points directly, using dnd5e 6.0's temporary maximum hit points, and a long rest restores them. Cleansing Touch, Greater Restoration, and Power Cure restore drained maximum hit points when they cure Drained.
 - Grapple movement penalties now apply: no movement when grappled by a same-or-larger creature, half speed when grappled by a smaller one. The grapple system also now reads climb speed correctly, which affects whether a much-smaller grappler gets advantage.

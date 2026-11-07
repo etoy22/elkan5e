@@ -21,11 +21,11 @@ globalThis.foundry = {
 globalThis.game = { packs: new Map(), i18n: { localize: (key) => key, format: (key) => key } };
 globalThis.ChatMessage = { getSpeaker: () => ({}), create: async () => {} };
 let wildSurge, delayedDuration, delayedItem, drawWildSurge, resolveWildSurge, SURGE_SOURCE;
-let wildSurgeEffectEnded;
+let wildSurgeEffectEnded, resolveWildSurges, delayedSurgeUse;
 before(async () => {
-	({ wildSurge, delayedDuration, delayedItem } =
+	({ wildSurge, delayedDuration, delayedItem, delayedSurgeUse } =
 		await import("../src/module/classes/sorcerer.mjs"));
-	({ drawWildSurge, resolveWildSurge, SURGE_SOURCE, wildSurgeEffectEnded } =
+	({ drawWildSurge, resolveWildSurge, resolveWildSurges, SURGE_SOURCE, wildSurgeEffectEnded } =
 		await import("../src/module/shared/wild-surge.mjs"));
 });
 const result = (special = {}, extra = {}) => ({
@@ -333,4 +333,46 @@ test("Daydream gives a Bloodrager a use of Rage on return in place of sorcery po
 	await wildSurgeEffectEnded(actor.created[0], "me");
 	assert.equal(rage.system.uses.spent, 1);
 	assert.deepEqual(actor.updates, [{ "system.attributes.hp.value": 40 }]);
+});
+
+test("every result of a draw with overlapping ranges is applied", async () => {
+	globalThis.fromUuid = async () => ({
+		draw: async () => ({
+			results: [result({ inspiration: true }), result({ healFull: true })],
+		}),
+	});
+	const drawn = await drawWildSurge(1);
+	assert.equal(drawn.results.length, 2);
+	const actor = {
+		updates: [],
+		system: { attributes: { hp: { value: 1, max: 9 } } },
+		async update(data) {
+			this.updates.push(data);
+		},
+	};
+	await resolveWildSurges(actor, drawn.results, { budget: drawn.budget });
+	assert.deepEqual(actor.updates, [
+		{ "system.attributes.inspiration": true },
+		{ "system.attributes.hp.value": 9 },
+	]);
+});
+
+test("a delayed surge refunds the slot of the spell that triggered it", async () => {
+	const stored = result({ refundSlot: true });
+	globalThis.fromUuid = async (uuid) => (uuid === "surge-result" ? stored : null);
+	const actor = {
+		updates: [],
+		system: { spells: { spell3: { value: 0, max: 2 } } },
+		async update(data) {
+			this.updates.push(data);
+		},
+	};
+	await delayedSurgeUse({
+		actor,
+		item: {
+			system: { identifier: "delayed-wild-surge" },
+			flags: { elkan5e: { wildSurgeResults: ["surge-result"], wildSurgeSlot: "spell3" } },
+		},
+	});
+	assert.deepEqual(actor.updates, [{ "system.spells.spell3.value": 1 }]);
 });

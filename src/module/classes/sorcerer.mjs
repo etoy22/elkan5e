@@ -2,7 +2,7 @@ const DialogV2 = foundry.applications.api.DialogV2;
 import { createDelayedSurgeEffect } from "../shared/effect-factories.mjs";
 import {
 	drawWildSurge,
-	resolveWildSurge,
+	resolveWildSurges,
 	surgeResultText,
 	SURGE_SOURCE,
 	WILD_SURGE_MAX_TABLE_LEVEL,
@@ -74,6 +74,8 @@ export async function wildSurge(activity, usageConfig) {
 	const tableLevel = Math.min(level - 1 + count, WILD_SURGE_MAX_TABLE_LEVEL);
 	let drawn = await drawWildSurge(tableLevel);
 	if (!drawn) return;
+	// Spell slot used for the triggering spell, kept for results that refund it (also when delayed).
+	const slot = typeof rawSlot === "string" ? rawSlot : null;
 
 	let avert = actor.items.find((i) => i.system.identifier === "avert-disaster");
 	let delay = actor.items.find((i) => i.system.identifier === "delayed-surge");
@@ -109,15 +111,15 @@ export async function wildSurge(activity, usageConfig) {
 			continue;
 		}
 		if (choice === "delay" && offerDelay && hasUses(delay)) {
-			if (await delaySurge(actor, delay, drawn.result)) return;
+			if (await delaySurge(actor, delay, drawn.results ?? [drawn.result], slot)) return;
 		}
 		break;
 	}
 
-	await resolveWildSurge(actor, drawn.result, {
+	await resolveWildSurges(actor, drawn.results ?? [drawn.result], {
 		source: SURGE_SOURCE.sorcerer,
 		budget: drawn.budget,
-		slot: typeof rawSlot === "string" ? rawSlot : null,
+		slot,
 	});
 	if (redrawFailed) return false;
 }
@@ -182,13 +184,14 @@ async function promptSurgeAbilities(avert, delay) {
  *
  * @param {Actor} actor - Sorcerer who surged.
  * @param {Item} delay - Delayed Surge feature.
- * @param {TableResult} result - Surge result to store.
+ * @param {TableResult[]} results - Surge results to store.
+ * @param {string|null} [slot] - Spell slot key used for the triggering spell.
  * @returns {Promise<boolean>} Whether the surge was stored successfully.
  */
-async function delaySurge(actor, delay, result) {
+async function delaySurge(actor, delay, results, slot = null) {
 	await delay.update({ "system.uses.spent": delay.system.uses.spent + 1 });
 	const pairId = foundry.utils.randomID();
-	const rollResult = surgeResultText(result);
+	const rollResult = results.map(surgeResultText).filter(Boolean).join(" ");
 	const delayedSurge = {
 		name: game.i18n.localize("elkan5e.wildMage.delayedWildSurge"),
 		type: "consumable",
@@ -301,7 +304,14 @@ async function delaySurge(actor, delay, result) {
 			},
 			properties: ["mgc"],
 		},
-		flags: { elkan5e: { wildSurgeResult: result.uuid, delayedSurgePair: pairId } },
+		flags: {
+			elkan5e: {
+				wildSurgeResult: results[0]?.uuid,
+				wildSurgeResults: results.map((r) => r.uuid),
+				wildSurgeSlot: slot,
+				delayedSurgePair: pairId,
+			},
+		},
 	};
 
 	let storedItem;
@@ -327,7 +337,7 @@ async function delaySurge(actor, delay, result) {
 }
 
 /**
- * Applies a stored surge result when its Delayed Wild Surge item is used.
+ * Applies the stored surge results (with the triggering spell's slot) when its Delayed Wild Surge item is used.
  *
  * @param {*} activity - Activity that was used.
  * @returns {Promise<void>}
@@ -336,9 +346,13 @@ export async function delayedSurgeUse(activity) {
 	const item = activity?.item;
 	const actor = activity?.actor;
 	if (!actor || item?.system?.identifier !== "delayed-wild-surge") return;
-	const resultUuid = item.flags?.elkan5e?.wildSurgeResult;
-	if (!resultUuid) return;
-	await resolveWildSurge(actor, resultUuid, { source: SURGE_SOURCE.sorcerer });
+	const flags = item.flags?.elkan5e ?? {};
+	const uuids = flags.wildSurgeResults ?? (flags.wildSurgeResult ? [flags.wildSurgeResult] : []);
+	if (!uuids.length) return;
+	await resolveWildSurges(actor, uuids, {
+		source: SURGE_SOURCE.sorcerer,
+		slot: flags.wildSurgeSlot ?? null,
+	});
 }
 
 /**

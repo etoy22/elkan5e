@@ -58,7 +58,8 @@ export const surgeResultText = (result) => result?.description || result?.name |
  *
  * @param {number} tableLevel - Surge table level (1-10). Clamped to the highest table.
  * @param {object} [budget] - Shared remaining draw budget for this resolution.
- * @returns {Promise<{table: RollTable, result: TableResult, budget: object}|null>} Drawn result, or null if no table.
+ * @returns {Promise<{table: RollTable, result: TableResult, results: TableResult[], budget: object}|null>}
+ *   Drawn results (`result` is the first), or null if no table.
  */
 export async function drawWildSurge(tableLevel, budget = { remaining: 100 }) {
 	const id = WILD_SURGE_TABLE_IDS[Math.min(tableLevel, WILD_SURGE_MAX_TABLE_LEVEL)];
@@ -73,17 +74,45 @@ export async function drawWildSurge(tableLevel, budget = { remaining: 100 }) {
 	}
 }
 
-/** Draws linked tables without allowing Foundry to recurse outside our shared budget. */
+/**
+ * Draws from a table, following results that link to another table, without letting Foundry
+ * recurse outside the shared budget. Every result of the draw is kept, so a table with
+ * overlapping ranges applies all of its outcomes.
+ *
+ * @param {RollTable} table - Table to draw from.
+ * @param {object} budget - Shared remaining draw budget.
+ * @returns {Promise<{table: RollTable, result: TableResult, results: TableResult[], budget: object}|null>}
+ */
 async function drawSurgeTable(table, budget) {
 	if (budget.remaining <= 0) return null;
 	budget.remaining--;
 	const draw = await table.draw({ displayChat: true, recursive: false });
-	const result = draw?.results?.[0];
-	if (result?.documentUuid) {
-		const linked = await fromUuid(result.documentUuid);
-		if (linked?.documentName === "RollTable") return drawSurgeTable(linked, budget);
+	const results = [];
+	for (const result of draw?.results ?? []) {
+		if (!result) continue;
+		if (result.documentUuid) {
+			const linked = await fromUuid(result.documentUuid);
+			if (linked?.documentName === "RollTable") {
+				const sub = await drawSurgeTable(linked, budget);
+				if (sub) results.push(...sub.results);
+				continue;
+			}
+		}
+		results.push(result);
 	}
-	return result ? { table, result, budget } : null;
+	return results.length ? { table, result: results[0], results, budget } : null;
+}
+
+/**
+ * Applies every final result of a draw, in order (see {@link resolveWildSurge}).
+ *
+ * @param {Actor} actor - Creature that triggered the surge.
+ * @param {(TableResult|string)[]} results - Drawn results, or their UUIDs.
+ * @param {object} [options] - Options for {@link resolveWildSurge}; the budget is shared.
+ * @returns {Promise<void>}
+ */
+export async function resolveWildSurges(actor, results, options = {}) {
+	for (const result of results ?? []) await resolveWildSurge(actor, result, options);
 }
 
 /**
