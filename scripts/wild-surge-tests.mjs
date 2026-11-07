@@ -21,10 +21,11 @@ globalThis.foundry = {
 globalThis.game = { packs: new Map(), i18n: { localize: (key) => key, format: (key) => key } };
 globalThis.ChatMessage = { getSpeaker: () => ({}), create: async () => {} };
 let wildSurge, delayedDuration, delayedItem, drawWildSurge, resolveWildSurge, SURGE_SOURCE;
+let wildSurgeEffectEnded;
 before(async () => {
 	({ wildSurge, delayedDuration, delayedItem } =
 		await import("../src/module/classes/sorcerer.mjs"));
-	({ drawWildSurge, resolveWildSurge, SURGE_SOURCE } =
+	({ drawWildSurge, resolveWildSurge, SURGE_SOURCE, wildSurgeEffectEnded } =
 		await import("../src/module/shared/wild-surge.mjs"));
 });
 const result = (special = {}, extra = {}) => ({
@@ -264,4 +265,72 @@ test("level 2 roll 10 restores Bloodrager Rage and leaves sorcerer result unchan
 	await resolveWildSurge({ items: [rage] }, entry, { source: SURGE_SOURCE.bloodrager });
 	assert.equal(rage.system.uses.spent, 0);
 	await resolveWildSurge({}, entry);
+});
+
+function daydream() {
+	const table = JSON.parse(
+		readFileSync(
+			new URL(
+				"../packs/_source/elkan5e-roll-tables/wild-surge/wild-surge-table-lv-10.json",
+				import.meta.url,
+			),
+		),
+	);
+	return table.results.find((row) => /daydream/i.test(row.description));
+}
+
+function surgingActor(...features) {
+	const actor = {
+		uuid: "actor",
+		documentName: "Actor",
+		isOwner: true,
+		items: features,
+		created: [],
+		updates: [],
+		system: { attributes: { hp: { value: 3, max: 40 } } },
+		async createEmbeddedDocuments(type, data) {
+			for (const effect of data) effect.parent = this;
+			this.created.push(...data);
+			return data;
+		},
+		async update(data) {
+			this.updates.push(data);
+		},
+	};
+	globalThis.fromUuid = async (uuid) =>
+		uuid === "actor" ? actor : { toObject: () => ({ _id: "x", name: "Daydream", flags: {} }) };
+	return actor;
+}
+
+test("Daydream restores hit points and sorcery points when the sorcerer returns", async () => {
+	globalThis.game.user = { id: "me" };
+	const points = feature("sorcery-points");
+	points.system.uses = { max: 10, spent: 6 };
+	const actor = surgingActor(points);
+	await resolveWildSurge(actor, daydream());
+	assert.equal(actor.created.length, 1);
+	assert.equal(actor.updates.length, 0, "nothing is restored while ethereal");
+	assert.equal(points.system.uses.spent, 6);
+
+	await wildSurgeEffectEnded(actor.created[0], "someone-else");
+	assert.equal(actor.updates.length, 0, "only the deleting client applies the return");
+
+	await wildSurgeEffectEnded(actor.created[0], "me");
+	assert.deepEqual(actor.updates, [{ "system.attributes.hp.value": 40 }]);
+	assert.equal(points.system.uses.spent, 0);
+});
+
+test("Daydream gives a Bloodrager a use of Rage on return in place of sorcery points", async () => {
+	globalThis.game.user = { id: "me" };
+	const rage = feature("rage");
+	rage.system.uses.spent = 2;
+	const actor = surgingActor(rage);
+	await resolveWildSurge(actor, daydream(), { source: SURGE_SOURCE.bloodrager });
+	const onEnd = actor.created[0].flags.elkan5e.wildSurgeOnEnd;
+	assert.deepEqual(onEnd, { healFull: true, refundRage: true });
+	assert.equal(rage.system.uses.spent, 2);
+
+	await wildSurgeEffectEnded(actor.created[0], "me");
+	assert.equal(rage.system.uses.spent, 1);
+	assert.deepEqual(actor.updates, [{ "system.attributes.hp.value": 40 }]);
 });

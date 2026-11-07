@@ -421,6 +421,8 @@
     - Results that need a roll show save, damage, and healing buttons in chat. Conditions they give to a target are linked in the text, so you can drag them onto the target. Results that let you cast a spell link to it.
     - Sorcery points, inspiration, regaining all hit points, ending conditions or concentration, dispelling your spell effects, learning (or losing) Faerie Fire, getting your spell slot back, and instant death are applied for you. Sorcery points above your maximum are noted in chat for you to track.
     - A Bloodrager who rolls a result that needs a sorcerer (regaining sorcery points or free metamagic) regains one use of Rage instead, as Wild Blood says.
+    - Results that only partly need a sorcerer keep the rest for a Bloodrager. For example, the Daydream still sends a Bloodrager to the Ethereal Plane and restores their hit points, and gives a use of Rage in place of the sorcery points.
+    - The Daydream restores hit points (and sorcery points) when you return at the start of your next turn, as written, instead of as soon as you leave.
     - "Roll once each on the 1st, 2nd, and 3rd level surge tables" rolls those three tables.
     - Avert Disaster and Delayed Surge are offered in one dialog with an Accept Result button. A result is applied only once you accept it. Using a Delayed Wild Surge item applies the stored result.
 - Confused now rolls its behavior table at the start of the creature's turn.

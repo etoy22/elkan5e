@@ -34,6 +34,8 @@ export const SURGE_SOURCE = Object.freeze({ sorcerer: "sorcerer", bloodrager: "b
  * - `effects` (string[]): UUIDs of effects (elkan5e-effects compendium) applied to the surging
  *   creature.
  * - `special` (object): handlers for results effects can't express (see runSpecials).
+ * - `onEffectEnd` (object): specials (same keys as `special`) applied when the first of `effects`
+ *   ends, for results like "you return with all hit points restored".
  * - `subTables` (number[]): surge table levels to also roll on (e.g. "roll on the 1st, 2nd, and
  *   3rd level tables").
  *
@@ -119,8 +121,14 @@ export async function resolveWildSurge(
 			}
 		}
 
-		if (data.special) await runSpecials(actor, data.special, { slot });
-		if (Array.isArray(data.effects)) await applySurgeEffects(actor, data.effects);
+		const special = specialsFor(data.special, source);
+		const onEffectEnd = specialsFor(data.onEffectEnd, source);
+		if (special) await runSpecials(actor, special, { slot });
+		const applied = Array.isArray(data.effects)
+			? await applySurgeEffects(actor, data.effects, onEffectEnd)
+			: false;
+		// Nothing to wait for: apply the "when it ends" part now.
+		if (onEffectEnd && !applied) await runSpecials(actor, onEffectEnd, { slot });
 	} catch (error) {
 		console.error("Elkan 5e | Error resolving Wild Surge result:", error);
 	}
@@ -133,7 +141,7 @@ export async function resolveWildSurge(
  * @param {string[]} uuids - Effect UUIDs.
  * @returns {Promise<void>}
  */
-async function applySurgeEffects(actor, uuids) {
+async function applySurgeEffects(actor, uuids, onEffectEnd = null) {
 	const effects = [];
 	for (const uuid of uuids) {
 		const effect = await fromUuid(uuid);
@@ -148,7 +156,61 @@ async function applySurgeEffects(actor, uuids) {
 		data.transfer = false;
 		effects.push(data);
 	}
-	if (effects.length) await createEffectsAsGM(actor, effects);
+	if (!effects.length) return false;
+	// The first effect carries the specials to run when it ends (e.g. "you return with...").
+	if (onEffectEnd)
+		foundry.utils.setProperty(effects[0], `flags.elkan5e.${ON_END_FLAG}`, onEffectEnd);
+	await createEffectsAsGM(actor, effects);
+	return true;
+}
+
+const ON_END_FLAG = "wildSurgeOnEnd";
+
+// Specials that need a sorcerer. A Bloodrager (Wild Blood) regains a use of Rage instead.
+const SORCERER_SPECIALS = ["sorceryPoints", "restoreSorceryPoints"];
+
+/**
+ * Adjusts a result's specials for the surge source: a Bloodrager gets `refundRage` in place of
+ * any sorcery point specials, and keeps the rest of the result.
+ *
+ * @param {object} [special] - Specials from the result.
+ * @param {string} source - One of {@link SURGE_SOURCE}.
+ * @returns {object|null} Specials to run, or null for none.
+ */
+function specialsFor(special, source) {
+	if (!special || typeof special !== "object") return null;
+	if (source !== SURGE_SOURCE.bloodrager) return special;
+	const adjusted = { ...special };
+	let needsSorcerer = false;
+	for (const key of SORCERER_SPECIALS) {
+		if (key in adjusted) {
+			needsSorcerer ||= Boolean(adjusted[key]);
+			delete adjusted[key];
+		}
+	}
+	if (needsSorcerer) adjusted.refundRage = true;
+	return Object.keys(adjusted).length ? adjusted : null;
+}
+
+/**
+ * deleteActiveEffect handler: when a Wild Surge effect with an end trigger ends (expires or is
+ * removed), applies the rest of its result, such as the Daydream's return with full hit points.
+ * Runs only on the client that deleted the effect.
+ *
+ * @param {ActiveEffect} effect - Deleted effect.
+ * @param {string} userId - User who deleted it.
+ * @returns {Promise<void>}
+ */
+export async function wildSurgeEffectEnded(effect, userId) {
+	const special = effect?.flags?.elkan5e?.[ON_END_FLAG];
+	if (!special || userId !== game.user.id) return;
+	const actor = effect.parent;
+	if (actor?.documentName !== "Actor") return;
+	try {
+		await runSpecials(actor, special);
+	} catch (error) {
+		console.error("Elkan 5e | Error applying Wild Surge end effect:", error);
+	}
 }
 
 /**
@@ -160,7 +222,8 @@ async function applySurgeEffects(actor, uuids) {
  *   `inspiration` gain inspiration; `healFull` regain all hit points; `removeStatuses` (string[])
  *   end those conditions; `endConcentration` end concentration; `dispelMagic` end every temporary
  *   magical effect; `learnSpell` (uuid) learn the spell, or lose it if a surge taught it before;
- *   `refundSlot` regain the spell slot used for the triggering spell; `die` drop to 0 hit points
+ *   `refundSlot` regain the spell slot used for the triggering spell; `refundRage` regain a use of
+ *   Rage (Wild Blood, in place of sorcery points); `die` drop to 0 hit points
  *   and die.
  * @param {object} [options]
  * @param {string} [options.slot] - Spell slot key used for the triggering spell.
@@ -189,6 +252,7 @@ async function runSpecials(actor, special, { slot = null } = {}) {
 			await actor.update({ [`system.spells.${slot}.value`]: spellSlot.value + 1 });
 		}
 	}
+	if (special.refundRage) await refundRage(actor);
 	if (special.die) {
 		await actor.update({ "system.attributes.hp.value": 0 });
 		await actor.toggleStatusEffect("dead", { active: true, overlay: true });
