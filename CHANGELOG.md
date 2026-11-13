@@ -8,6 +8,11 @@
 - Raise Companion restores the companion's hit points (15 × your ranger level). It restored 1.
 - Pact of the Chain can summon a sprite, as its description says.
 - Familiars, beast companions, and summoned creatures (including Animate Dead's skeletons and zombies) now come from the Summoned Creatures compendium, which has new Beasts and Familiars folders. The Creatures compendium is now hidden from players.
+- Mark for Death can mark any creature you target, not only hostile ones. The ranger's passive damage effect is now named Mark for Death (Damage), so it's no longer mistaken for the mark itself.
+- Mark for Death's die now becomes a d8 at ranger level 9, as the Ranger Progression Table shows, instead of level 8.
+- Predator's Instinct adds the Mark for Death die to the companion's attack hits automatically while its beastmaster's Mark for Death is active.
+- Beastmasters can turn on Predator's Instinct by hand with the new Activate Predator's Instinct option on their Animal Companion feature. It applies Predator's Instinct (Active) to the ranger for 1 minute, in case the companion's bonus didn't start with Mark for Death.
+- Ancestry and ancestry feature source links now point to the [Ancestries](https://www.elkan5e.com/ancestries) page, and the Brute and Duelist links point to the rogue page.
 - The level-up spell picker no longer offers class features that are set up as spells, such as the Abjurer's Counterspell, Divine Smite, the alternative smites, Raise Companion, Primeval Awareness, Restore Familiar, Greater Mage Armor, and Reactive Barrier.
 - Damage type labels everywhere (dropdowns, resistances, vulnerabilities, immunities, chat cards, and tooltips) now read Sonic and Electric instead of Thunder and Lightning.
 - Effects from spells, spell scrolls, and magic items are now marked as magical, so an [Antimagic Field](https://www.elkan5e.com/spells/antimagic-field) suppresses them.

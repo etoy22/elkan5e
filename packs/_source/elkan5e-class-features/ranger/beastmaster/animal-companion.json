@@ -2,7 +2,49 @@
 	"name": "Animal Companion",
 	"type": "feat",
 	"img": "icons/creatures/mammals/deer-movement-leap-green.webp",
-	"effects": [],
+	"effects": [
+		{
+			"_id": "predInstActive01",
+			"disabled": false,
+			"duration": {
+				"value": 60,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"transfer": false,
+			"flags": {
+				"dae": {
+					"stackable": "none",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"specialDuration": [],
+					"transfer": false,
+					"disableIncapacitated": false,
+					"selfTarget": true,
+					"selfTargetAlways": false,
+					"dontApply": false,
+					"enableCondition": "",
+					"disableCondition": "",
+					"expiryMode": "default"
+				}
+			},
+			"tint": "#ffffff",
+			"origin": null,
+			"name": "Predator's Instinct (Active)",
+			"description": "<p>Your animal companion deals extra damage equal to your Mark for Death die on its attacks, as if your Mark for Death were active. Delete this effect to end it.</p>",
+			"statuses": [],
+			"img": "icons/creatures/abilities/bear-roar-bite-brown-green.webp",
+			"type": "base",
+			"system": {
+				"changes": []
+			},
+			"start": null,
+			"showIcon": 2,
+			"folder": null,
+			"_key": "!items.effects!iLrx1qAC8d9ngoAe.predInstActive01"
+		}
+	],
 	"folder": "0V6TANqg19J1jTK3",
 	"flags": {
 		"midiProperties": {
@@ -56,7 +98,88 @@
 		},
 		"requirements": "Beastmaster 3",
 		"identifier": "animal-companion",
-		"activities": {},
+		"activities": {
+			"predInstActivate": {
+				"_id": "predInstActivate",
+				"type": "utility",
+				"activation": {
+					"type": "special",
+					"value": null,
+					"condition": "Use if Predator's Instinct didn't turn on with Mark for Death",
+					"override": false
+				},
+				"consumption": {
+					"targets": [],
+					"scaling": {
+						"allowed": false,
+						"max": ""
+					},
+					"spellSlot": true
+				},
+				"description": {
+					"chatFlavor": ""
+				},
+				"duration": {
+					"concentration": false,
+					"units": "inst",
+					"special": "",
+					"override": false
+				},
+				"effects": [
+					{
+						"_id": "predInstActive01",
+						"level": {
+							"min": null,
+							"max": null
+						}
+					}
+				],
+				"range": {
+					"units": "self",
+					"special": "",
+					"override": false
+				},
+				"target": {
+					"template": {
+						"count": "",
+						"contiguous": false,
+						"type": "",
+						"size": "",
+						"width": "",
+						"height": "",
+						"units": ""
+					},
+					"affects": {
+						"count": "",
+						"type": "self",
+						"choice": false,
+						"special": ""
+					},
+					"prompt": false,
+					"override": false
+				},
+				"uses": {
+					"spent": 0,
+					"max": "",
+					"recovery": []
+				},
+				"roll": {
+					"formula": "",
+					"name": "",
+					"prompt": false,
+					"visible": false
+				},
+				"name": "Activate Predator's Instinct",
+				"img": "",
+				"visibility": {
+					"level": {
+						"min": null,
+						"max": null
+					},
+					"identifier": ""
+				}
+			}
+		},
 		"enchant": {},
 		"prerequisites": {
 			"level": null

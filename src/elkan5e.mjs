@@ -60,6 +60,7 @@ import {
 	markOfThorns,
 	moveMarkForDeath,
 	preciseHunterAdvantage,
+	predatorsInstinct,
 } from "./module/classes/ranger.mjs";
 import {
 	lifeDrainGraveguard,
@@ -919,6 +920,7 @@ function registerHooks() {
 				markForDeath,
 				markOfAffliction,
 				markOfThorns,
+				predatorsInstinct,
 				repellingBlast,
 				sneakAttack,
 				quenchBurning,
