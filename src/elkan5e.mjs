@@ -42,6 +42,7 @@ import {
 	carefulSpell,
 	delayedDuration,
 	delayedItem,
+	delayedSurgeUse,
 	elementalInfusion,
 	markSavantFeatureUsed,
 	savantSpellReminder,
@@ -112,6 +113,7 @@ import {
 	backfillModifyItemRiders,
 	removeModifyItemRiders,
 } from "./module/shared/modify-item-riders.mjs";
+import { wildSurgeEffectEnded } from "./module/shared/wild-surge.mjs";
 import { formating } from "./module/rules/format.mjs";
 import { language } from "./module/rules/language.mjs";
 import {
@@ -292,6 +294,11 @@ function registerHooks() {
 			wildSurge(activity, usageConfig);
 		} catch (error) {
 			console.error("Elkan 5e | Error in postUseActivity hook:", error);
+		}
+		try {
+			delayedSurgeUse(activity);
+		} catch (error) {
+			console.error("Elkan 5e | Error in Delayed Wild Surge postUseActivity hook:", error);
 		}
 		try {
 			wildBlood(activity, usageConfig);
@@ -582,6 +589,12 @@ function registerHooks() {
 			await delayedDuration(effect);
 		} catch (error) {
 			console.error("Elkan 5e | Error in deleteActiveEffect hook:", error);
+		}
+
+		try {
+			await wildSurgeEffectEnded(effect, userId);
+		} catch (error) {
+			console.error("Elkan 5e | Error in deleteActiveEffect Wild Surge hook:", error);
 		}
 
 		try {

@@ -1,0 +1,51 @@
+{
+	"name": "Confused",
+	"type": "base",
+	"_id": "27tm75KdcLTHQUzL",
+	"img": "modules/elkan5e/icons/conditions/confused.svg",
+	"system": {
+		"changes": [
+			{
+				"key": "macro.StatusEffect",
+				"type": "custom",
+				"value": "confused",
+				"phase": "final",
+				"priority": 20
+			},
+			{
+				"key": "flags.midi-qol.OverTime",
+				"type": "add",
+				"value": "turn=end, saveAbility=wis, saveDC=@attributes.spell.dc, saveMagic=true, label=Confused (Wild Surge)",
+				"phase": "initial",
+				"priority": 20,
+				"replacement": "origin"
+			}
+		],
+		"magical": true,
+		"identifier": "wild-surge-confused-minute"
+	},
+	"disabled": false,
+	"start": null,
+	"duration": {
+		"value": 60,
+		"units": "seconds",
+		"expiry": null,
+		"expired": false
+	},
+	"description": "<p>Confused for 1 minute. Repeat the Wisdom saving throw at the end of each turn.</p>",
+	"origin": null,
+	"tint": "#ffffff",
+	"transfer": false,
+	"statuses": [],
+	"showIcon": 0,
+	"folder": "elkanWildSurge00",
+	"flags": {
+		"dae": {
+			"transfer": false,
+			"stackable": "noneName",
+			"specialDuration": [],
+			"showIcon": true
+		}
+	},
+	"_key": "!effects!27tm75KdcLTHQUzL"
+}
