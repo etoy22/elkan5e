@@ -49,6 +49,7 @@ import {
 } from "./module/classes/sorcerer.mjs";
 import {
 	initWarlockSpellSlot,
+	migrateWarlockSpellMethod,
 	onWarlockFilterInvocations,
 	powerOfLoveAndFearApply,
 	powerOfLoveAndFearPrompt,
@@ -262,6 +263,7 @@ function registerHooks() {
 				fixRegionTurnEnd();
 				await startDialog();
 				await backfillModifyItemRiders();
+				await migrateWarlockSpellMethod();
 
 				// Registers custom DAE auto-fields so they appear in the DAE field picker.
 				globalThis.DAE?.addAutoFields?.([

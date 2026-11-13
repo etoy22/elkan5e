@@ -78,47 +78,139 @@ export function onWarlockFilterInvocations(app, html) {
 }
 
 /**
- * Runs init Warlock Spell Slot class feature automation.
- *
+ * Pact Magic slots at each warlock level: WARLOCK_SLOTS[warlockLevel - 1][slotLevel - 1].
+ */
+const WARLOCK_SLOTS = [
+	[2],
+	[2],
+	[2, 1],
+	[2, 2],
+	[2, 2, 1],
+	[2, 2, 2],
+	[2, 2, 2, 1],
+	[2, 2, 2, 1],
+	[2, 2, 2, 2, 1],
+	[2, 2, 2, 2, 1],
+	[2, 2, 2, 2, 1, 1],
+	[2, 2, 2, 2, 1, 1],
+	[2, 2, 2, 2, 1, 1, 1],
+	[2, 2, 2, 2, 1, 1, 1],
+	[2, 2, 2, 2, 1, 1, 1, 1],
+	[2, 2, 2, 2, 1, 1, 1, 1],
+	[2, 2, 2, 2, 1, 1, 1, 1, 1],
+	[2, 2, 2, 2, 1, 1, 1, 1, 1],
+	[2, 2, 2, 2, 2, 1, 1, 1, 1],
+	[2, 2, 2, 2, 2, 1, 1, 1, 1],
+];
+
+// Warlock levels, kept on the progression object apart from the shared caster level.
+const WARLOCK_LEVELS = Symbol("elkan5e.warlockLevels");
+
+// Spellcasting method the warlock used before its slots joined the regular ones.
+const OLD_WARLOCK_METHOD = "elkanWarlock";
+
+const isElkanWarlock = (spellcasting) => spellcasting?.progression === "elkan";
+
+/**
+ * Sets up Pact Magic. The warlock is a regular spellcaster whose "elkan" progression doesn't count
+ * toward the shared caster level. Its own table's slots are added on top of the regular spell slots
+ * instead, so a multiclass character has one combined set of slots.
  */
 export function initWarlockSpellSlot() {
-	CONFIG.DND5E.spellcasting.elkanWarlock = {
-		label: "Spellcasting (Elkan Warlock)",
-		type: "multi",
-		cantrips: true,
-		prepares: true,
-		img: "systems/dnd5e/icons/spell-tiers/{id}.webp",
-
-		order: 20,
-		progression: {
-			elkan: { label: "Elkan Warlock", divisor: 1, roundUp: true },
-		},
-		table: {
-			0: { 0: 2 },
-			1: { 0: 2 },
-			2: { 0: 2, 1: 1 },
-			3: { 0: 2, 1: 2 },
-			4: { 0: 2, 1: 2, 2: 1 },
-			5: { 0: 2, 1: 2, 2: 2 },
-			6: { 0: 2, 1: 2, 2: 2, 3: 1 },
-			7: { 0: 2, 1: 2, 2: 2, 3: 1 },
-			8: { 0: 2, 1: 2, 2: 2, 3: 2, 4: 1 },
-			9: { 0: 2, 1: 2, 2: 2, 3: 2, 4: 1 },
-			10: { 0: 2, 1: 2, 2: 2, 3: 2, 4: 1, 5: 1 },
-			11: { 0: 2, 1: 2, 2: 2, 3: 2, 4: 1, 5: 1 },
-			12: { 0: 2, 1: 2, 2: 2, 3: 2, 4: 1, 5: 1, 6: 1 },
-			13: { 0: 2, 1: 2, 2: 2, 3: 2, 4: 1, 5: 1, 6: 1 },
-			14: { 0: 2, 1: 2, 2: 2, 3: 2, 4: 1, 5: 1, 6: 1, 7: 1 },
-			15: { 0: 2, 1: 2, 2: 2, 3: 2, 4: 1, 5: 1, 6: 1, 7: 1 },
-			16: { 0: 2, 1: 2, 2: 2, 3: 2, 4: 1, 5: 1, 6: 1, 7: 1, 8: 1 },
-			17: { 0: 2, 1: 2, 2: 2, 3: 2, 4: 1, 5: 1, 6: 1, 7: 1, 8: 1 },
-			18: { 0: 2, 1: 2, 2: 2, 3: 2, 4: 2, 5: 1, 6: 1, 7: 1, 8: 1 },
-			19: { 0: 2, 1: 2, 2: 2, 3: 2, 4: 2, 5: 1, 6: 1, 7: 1, 8: 1 },
-		},
-		key: "spell",
+	CONFIG.DND5E.spellcasting.spell.progression.elkan = {
+		label: "elkan5e.warlock.progression",
+		divisor: 1,
 	};
-	// Optionally add recovery behavior
-	CONFIG.DND5E.restTypes.long.recoverSpellSlotTypes.add("elkanWarlock");
+	Hooks.on("dnd5e.computeSpellProgression", computeWarlockProgression);
+	Hooks.on("dnd5e.prepareSpellSlots", prepareWarlockSlots);
+	Hooks.on("preCreateItem", (item) => {
+		if (item.type === "spell" && item._source.system?.method === OLD_WARLOCK_METHOD) {
+			item.updateSource({ "system.method": "spell" });
+		}
+	});
+}
+
+/**
+ * Hook callback for "dnd5e.computeSpellProgression". Sets warlock levels aside instead of adding
+ * them to the caster level. Other classes are counted as though the warlock weren't there, so a
+ * lone half or third caster still rounds its levels up.
+ *
+ * @param {object} progression - Spellcasting progression data. Will be mutated.
+ * @param {Actor5e|void} actor - Actor being prepared, if any.
+ * @param {Item5e} cls - Class being computed.
+ * @param {object} spellcasting - The class's spellcasting description.
+ * @param {number} count - Number of classes with regular spellcasting, warlock included.
+ * @returns {boolean|void} False when the default calculation was handled here.
+ */
+function computeWarlockProgression(progression, actor, cls, spellcasting, count) {
+	if (isElkanWarlock(spellcasting)) {
+		progression[WARLOCK_LEVELS] =
+			(progression[WARLOCK_LEVELS] ?? 0) + (spellcasting.levels ?? 0);
+		return false;
+	}
+	const warlocks =
+		actor?.itemTypes?.class.filter((c) => isElkanWarlock(c.spellcasting)).length ?? 0;
+	if (!warlocks) return;
+	CONFIG.DND5E.spellcasting.spell.computeProgression(
+		progression,
+		actor,
+		cls,
+		spellcasting,
+		Math.max(count - warlocks, 1),
+	);
+	return false;
+}
+
+/**
+ * Hook callback for "dnd5e.prepareSpellSlots". Prepares the regular spell slots, then adds the
+ * warlock's slots to each level. A level with a manual override keeps its override.
+ *
+ * @param {object} spells - The actor's system.spells data. Will be mutated.
+ * @param {Actor5e|void} actor - Actor being prepared, if any.
+ * @param {object} progression - Spellcasting progression data.
+ * @returns {boolean|void} False when the default preparation was handled here.
+ */
+function prepareWarlockSlots(spells, actor, progression) {
+	const levels = progression?.[WARLOCK_LEVELS];
+	if (!levels) return;
+	const model = CONFIG.DND5E.spellcasting.spell;
+	model.prepareSlots(spells, actor, progression);
+	const extra = WARLOCK_SLOTS[Math.min(levels, WARLOCK_SLOTS.length) - 1] ?? [];
+	extra.forEach((count, i) => {
+		const slot = spells[model.getSpellSlotKey(i + 1)];
+		if (slot && !Number.isNumeric(slot.override)) slot.max = (slot.max ?? 0) + count;
+	});
+	return false;
+}
+
+/**
+ * Moves spells that still use the old warlock spellcasting method onto regular spellcasting, so
+ * they cast with the combined spell slots. Runs on the active GM's client.
+ *
+ * @returns {Promise<void>}
+ */
+export async function migrateWarlockSpellMethod() {
+	if (!game.user?.isGM || game.users.activeGM?.id !== game.user.id) return;
+	const actors = [
+		...game.actors,
+		...[...game.scenes].flatMap((s) =>
+			s.tokens.filter((t) => !t.actorLink && t.actor).map((t) => t.actor),
+		),
+	];
+	const update = async (parent, items) => {
+		const updates = items
+			.filter((i) => i.type === "spell" && i._source.system?.method === OLD_WARLOCK_METHOD)
+			.map((i) => ({ _id: i.id, "system.method": "spell" }));
+		if (!updates.length) return;
+		try {
+			if (parent) await parent.updateEmbeddedDocuments("Item", updates);
+			else await CONFIG.Item.documentClass.updateDocuments(updates);
+		} catch (error) {
+			console.warn("Elkan 5e | Could not migrate warlock spells for", parent?.uuid, error);
+		}
+	};
+	for (const actor of actors) await update(actor, actor.items);
+	await update(null, game.items);
 }
 
 // Power of Love and Fear activities, by condition and whether the spell is instantaneous.
