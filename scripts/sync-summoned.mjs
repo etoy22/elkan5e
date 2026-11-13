@@ -11,7 +11,9 @@ const SUMMONED_ROOT = "packs/_source/elkan5e-summoned-creatures";
  * @returns Operation result.
  */
 function randomId() {
-	return crypto.randomBytes(9).toString("base64url").slice(0, 16);
+	// Foundry ids are 16 alphanumeric characters; base64url would add "-" and "_".
+	const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+	return Array.from(crypto.randomBytes(16), (byte) => chars[byte % chars.length]).join("");
 }
 
 /**

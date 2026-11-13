@@ -50,13 +50,19 @@
 						"key": "system.attributes.hp.max",
 						"value": "@scale.chained-familiar-class.hp",
 						"priority": 20,
-						"type": "add"
+						"type": "override"
 					},
 					{
-						"key": "system.attributes.ac.flat",
+						"key": "system.attributes.ac.calc",
+						"value": "custom",
+						"priority": 20,
+						"type": "override"
+					},
+					{
+						"key": "system.attributes.ac.formula",
 						"value": "10 + @attributes.prof",
 						"priority": 20,
-						"type": "add"
+						"type": "override"
 					}
 				]
 			},
