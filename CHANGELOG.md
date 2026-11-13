@@ -1,45 +1,32 @@
 # Changelog
 
-# v1.14.4
+# v14.6.0
+
+Elkan 5e has a new version numbering scheme, so you can tell at a glance which Foundry and dnd5e versions a release is built for. In v14.6.0:
+
+- **14** is the Foundry VTT version (v14).
+- **6** is the dnd5e system version (6.x.x).
+- **0** is the Elkan 5e release number for that combination.
+
+> [!WARNING]
+> This release changes a large amount of content and automation, and it may not be fully compatible with worlds and characters created on earlier versions. Back up your world before updating. After updating, use Update Elkan Items to refresh existing characters and NPCs, and re-import any items you copied from the compendiums.
 
 ## Bug Fixes
 
-- Animal companions' armor class is at least 10 + proficiency bonus again (higher natural armor is kept). Familiars from Find Familiar and Pact of the Chain have an armor class of exactly 10 + proficiency bonus. Before, neither rule applied.
-- Raise Companion restores the companion's hit points (15 × your ranger level). It restored 1.
-- Pact of the Chain can summon a sprite, as its description says.
-- Familiars, beast companions, and summoned creatures (including Animate Dead's skeletons and zombies) now come from the Summoned Creatures compendium, which has new Beasts and Familiars folders. The Creatures compendium is now hidden from players.
-- Mark for Death can mark any creature you target, not only hostile ones. The ranger's passive damage effect is now named Mark for Death (Damage), so it's no longer mistaken for the mark itself.
-- Mark for Death's die now becomes a d8 at ranger level 9, as the Ranger Progression Table shows, instead of level 8.
-- Predator's Instinct adds the Mark for Death die to the companion's attack hits automatically while its beastmaster's Mark for Death is active.
-- Beastmasters can turn on Predator's Instinct by hand with the new Activate Predator's Instinct option on their Animal Companion feature. It applies Predator's Instinct (Active) to the ranger for 1 minute, in case the companion's bonus didn't start with Mark for Death.
-- Ancestry and ancestry feature source links now point to the [Ancestries](https://www.elkan5e.com/ancestries) page, and the Brute and Duelist links point to the rogue page.
+- Ancestry and ancestry feature source links now point to the [Ancestries](https://www.elkan5e.com/ancestries) page, and the Brute and Duelist links point to the Rogue page.
 - The level-up spell picker no longer offers class features that are set up as spells, such as the Abjurer's Counterspell, Divine Smite, the alternative smites, Raise Companion, Primeval Awareness, Restore Familiar, Greater Mage Armor, and Reactive Barrier.
-- Damage type labels everywhere (dropdowns, resistances, vulnerabilities, immunities, chat cards, and tooltips) now read Sonic and Electric instead of Thunder and Lightning.
+- Aasimar no longer incorrectly gain immunity to the Frightened condition.
 - Effects from spells, spell scrolls, and magic items are now marked as magical, so an [Antimagic Field](https://www.elkan5e.com/spells/antimagic-field) suppresses them.
 - Half-speed effects slow their target again: Hamstring, Hamstring Blow, Harrying Blow, Burdening Smite, Phantom Barrage, Howling Storm, Magic Shackles, Copper Breath Weapon, Touch of Corrosion, Torpor, and the Bullywug Hunter's Hamstring Strike. Into the Fray now gives 1.5× speed instead of doubling it.
 - Vicious Wound and [Geas](https://www.elkan5e.com/spells/geas) give their level of exhaustion again. Vicious Wound's level goes away when its effect ends.
-- Aasimar no longer gain immunity to the Frightened condition.
-- Halfling Nimbleness: fixed a broken difficult terrain link in the description.
 - Rage's melee damage bonus, [Bless](https://www.elkan5e.com/spells/bless)'s weapon damage bonus, and Jarl's Shield's bonus apply again. dnd5e 6.0 ignored them.
-- Goodberry and Delayed Surge create their duration effects again. Before, the effect failed to create with an error.
-- [Darkness](https://www.elkan5e.com/spells/darkness), [Moonbeam](https://www.elkan5e.com/spells/moonbeam), and other spells that place lights no longer show an "AmbientLight does not exist" error when they end.
-- Effects that give a condition now give the actual condition, the same one the token HUD toggles (Knockdown makes the target Prone, Symbol's Fear glyph makes it Frightened). A creature shows one Prone instead of two, the condition's rules apply once instead of twice (Slowed gave -4 AC instead of -2), turning it off from the token HUD removes it, and getting it again from the same source doesn't add a second copy. The condition still ends when the effect that gave it ends.
-- Slowed now halves the creature's speed, as written.
-- [Fire Shield](https://www.elkan5e.com/spells/fire-shield) deals its retaliation damage again. Before, it failed with an error on Foundry 14.
-- Fighting Style: Protection no longer refuses to activate with a "no uses remaining" warning.
-- Reckless Attack no longer refuses to activate with a "no uses remaining" warning.
-- Pact Magic's spell table now shows the Warlock's actual spell slots and spells known. It listed the full-caster slots and old spells known numbers.
-- The Warlock's 13th-level spell choice now offers 7th-level warlock spells. It offered spells of any level from any class.
-- Warlock spell slots are now regular spell slots. A multiclass Warlock adds their Pact Magic slots to the slots from their other classes, as Pact Magic describes, instead of keeping a separate set of Warlock slots. Warlock spells cast with any of these slots. Existing characters' warlock spells are updated when a GM loads the world.
-- The Warlock's 11th-level spell choice now uses Charisma. It used Intelligence.
-- [Raise Dead](https://www.elkan5e.com/spells/raise-dead) adds its two levels of exhaustion to any the creature already has, up to 5. Before, it set exhaustion to 2.
-- Misty Visions and Whispers of the Grave now grant [Silent Image](https://www.elkan5e.com/spells/silent-image) and [Speak with Dead](https://www.elkan5e.com/spells/speak-with-dead) as at-will spells, as written. Before, casting them spent a spell slot.
+- Goodberry and Delayed Surge create their duration effects again. Before, creating the effect failed with an error.
 
 ## Compatibility
 
 - Most of the module's automation now works without Midi-QOL. When Midi-QOL isn't active, features run from dnd5e's own rolls instead:
     - Grapple and Shove roll the contest without Midi-QOL. The target's owner rolls their side.
-    - Damage and healing dealt by features (Healing Overflow, Infused Healer, Mark of Thorns, Vampiric Smite, [Blight](https://www.elkan5e.com/spells/blight), [Pain Reflection](https://www.elkan5e.com/spells/pain-reflection), [Wrath of the Reaper](https://www.elkan5e.com/spells/wrath-of-the-reaper), [Spike Growth](https://www.elkan5e.com/spells/spike-growth)) is rolled to chat and applied. [Divine Word](https://www.elkan5e.com/spells/divine-word) and [Curse of Doom](https://www.elkan5e.com/spells/curse-of-doom) apply their effects.
+    - Damage and healing dealt by features (Healing Overflow, Infused Healer, Mark of Thorns, Vampiric Smite, [Blight](https://www.elkan5e.com/spells/blight), [Pain Reflection](https://www.elkan5e.com/spells/pain-reflection), [Wrath of the Reaper](https://www.elkan5e.com/spells/wrath-of-the-reaper), and [Spike Growth](https://www.elkan5e.com/spells/spike-growth)) are rolled to chat and applied. [Divine Word](https://www.elkan5e.com/spells/divine-word) and [Curse of Doom](https://www.elkan5e.com/spells/curse-of-doom) apply their effects.
     - Before targets roll: [Sanctuary](https://www.elkan5e.com/spells/sanctuary), Careful Spell, Power of Love and Fear, and [Blight](https://www.elkan5e.com/spells/blight) prompt when the spell or attack is used. Creatures they exclude are left off the save card.
     - Attacks: attacking a creature you can't see has disadvantage, Precise Hunter gives advantage, and [Mirror Image](https://www.elkan5e.com/spells/mirror-image) checks for a duplicate.
     - Saves: [Shatter](https://www.elkan5e.com/spells/shatter), [Spectral Lance](https://www.elkan5e.com/spells/spectral-lance), [Sunbeam](https://www.elkan5e.com/spells/sunbeam), [Disintegrate](https://www.elkan5e.com/spells/disintegrate), [Blight](https://www.elkan5e.com/spells/blight), and [Ensnaring Vine](https://www.elkan5e.com/spells/ensnaring-vine) give advantage or disadvantage on their saves. Power of Love and Fear and Strickening Gaze prompt when a creature fails one.
@@ -71,6 +58,7 @@
 - Kobold: Burrowing Crawler now grants a crawl speed equal to your walking speed. Before, it only granted the 5 ft. burrow speed.
 - Air, Earth, Fire, and Water Genasi can now be Small or Medium, as their descriptions say.
 - Merfolk Speed now has a description.
+- Halfling Nimbleness: fixed a broken difficult terrain link in the description.
 - Gnome Cunning's advantage on Intelligence, Wisdom, and Charisma saves can now be cancelled by a source of disadvantage, as normal.
 - Dragonborn
     - Blue and Bronze: passive features now read "Electric Resistance" and "Sonic Resistance".
@@ -103,6 +91,7 @@
 - Mindless Rage now activates while raging, and adds its text to the Rage description when gained.
 - Relentless Rage now triggers. It was skipped whenever Undead Fortitude was checked first.
 - Relentless Rage now checks for the Raging status instead of an effect named Rage, and its rising DC resets on a long rest as well as a short rest.
+- Reckless Attack no longer refuses to activate with a "no uses remaining" warning.
 - Barbarian's Defense now switches automatically between Unarmored Defense (10 + Dex + Con) and the armored formula (armor + the higher of Dex or Con, capped by the armor's Dex limit), depending on whether armor is equipped.
 - Brutal Strike: Hamstring Blow now halves flying speed too, and no longer reduces swimming speed twice.
 - Slayer
@@ -240,14 +229,20 @@
 
 - Rangers now get Natural Tracker at level 1. It now makes you ignore nonmagical difficult terrain, and its requirement reads "Ranger 1" instead of "Elkan Ranger 1".
 - Mark for Death's extra damage now works, and only applies to weapon attacks.
+- Mark for Death's die now becomes a d8 at ranger level 9, as the Ranger Progression Table shows, instead of incorrecly at level 8.
 - Mark for Death's Mark and Move Mark activities now place the mark on the target creature instead of on you. Marking a new creature removes your mark from the previous one, so you only have one marked target at a time.
+- Mark for Death can mark any creature you target, not only hostile ones. The ranger's passive damage effect is now named Mark for Death (Damage), so it's no longer mistaken for the mark itself.
 - Precise Hunter now adds its text to the Mark for Death description when gained, and its advantage only applies against creatures you marked, not creatures marked by another ranger.
 - Unrelenting Focus now works: while you aren't using Mark for Death or another ranger mark, your weapon attacks deal your Mark for Death damage, in the weapon's own damage type, doubling on a crit.
 - Mark for Death, [Mark of Affliction](https://www.elkan5e.com/feats/mark-of-affliction), and [Mark of Thorns](https://www.elkan5e.com/feats/mark-of-thorns) now give you a "rangerMark" status while you're using them, which is how Unrelenting Focus knows you're using a mark. Mark for Death adds a "Mark for Death (Hunting)" effect on you for this.
 - Tireless now removes one level of exhaustion when used, if you have any.
 - [Mark of Thorns](https://www.elkan5e.com/feats/mark-of-thorns) now deals its piercing damage to the creature that hit your marked ally. It failed with an error.
 - Beastmaster
+    - Animal companions' armor class is at least 10 + proficiency bonus again (higher natural armor is kept).
+    - Raise Companion restores the companion's hit points (15 × your ranger level). Before, it restored 1.
     - The companion's maximum hit points and Predator's Instinct now scale with its level.
+    - Predator's Instinct adds the Mark for Death die to the companion's attack hits automatically while its beastmaster's Mark for Death is active.
+    - The new Activate Predator's Instinct option on the Animal Companion feature turns on Predator's Instinct by hand. It applies Predator's Instinct (Active) to the ranger for 1 minute, in case the companion's bonus didn't start with Mark for Death.
     - Flying companions now get Companion Attack at level 3, Predator's Instinct at level 6, and Companion's Extra Attack at level 11, like other companions.
     - Predator's Instinct is no longer granted twice. It's granted at level 6, as written.
 - Hunter
@@ -302,6 +297,11 @@
 
 ### [Warlock](https://www.elkan5e.com/warlock)
 
+- Warlock spell slots are now regular spell slots. A multiclass Warlock adds their Pact Magic slots to the slots from their other classes, as Pact Magic describes, instead of keeping a separate set of Warlock slots. Warlock spells can be cast with any of these slots. Existing characters' warlock spells are updated when a GM loads the world.
+- Pact Magic's spell table now shows the Warlock's actual spell slots and spells known. Before, it listed the full-caster slots and the old spells known numbers.
+- The Warlock's 11th-level spell choice now uses Charisma. Before, it used Intelligence.
+- The Warlock's 13th-level spell choice now offers 7th-level warlock spells. Before, it offered spells of any level from any class.
+- Misty Visions and Whispers of the Grave now grant [Silent Image](https://www.elkan5e.com/spells/silent-image) and [Speak with Dead](https://www.elkan5e.com/spells/speak-with-dead) as at-will spells, as written. Before, casting them spent a spell slot.
 - [Eldritch Spear](https://www.elkan5e.com/invocations/eldritch-spear) now sets Eldritch Blast's range to 300 ft. when gained.
 - [Lifedrinker (Warrior)](https://www.elkan5e.com/invocations/lifedrinker) now sets Thirsting Weapon to 3 uses per short rest when gained.
 - Thirsting Weapon now grants its healing activity to Pact Weapon and adds its text to the Pact Weapon description when gained.
@@ -312,7 +312,7 @@
 - [Master of Myriad Forms](https://www.elkan5e.com/invocations/master-of-myriad-forms) now makes [Alter Self](https://www.elkan5e.com/spells/alter-self) castable without a spell slot and adds its text to the description, instead of having its own separate cast activity.
 - [Fiendish Sight](https://www.elkan5e.com/invocations/fiendish-sight) now lets you see through magical darkness, such as the [Darkness](https://www.elkan5e.com/spells/darkness) spell, within your darkvision range.
 - Pact of the Chain and Pact of the Tome no longer also create their item through an effect. They already grant it through their advancement, so you could end up with two.
-- Pact of the Chain: your chained familiar's bonus hit points now apply.
+- Pact of the Chain: your chained familiar's bonus hit points now apply, and you can summon a sprite, as the description says.
 - Dreamweaver
     - Twisted Visions now forces a Wisdom save instead of none, grants its activity to Misty Misdirect, and adds its text to the Misty Misdirect description when gained.
     - Blessing of the Dreamer now gives you advantage on saves against effects that charm, frighten, or curse you (Midi-QOL), the same way Dwarven Resilience handles poison.
@@ -365,6 +365,8 @@
 
 ## Creatures
 
+- Familiars, beast companions, and summoned creatures (including Animate Dead's skeletons and zombies) now come from the Summoned Creatures compendium, which has new Beasts and Familiars folders. The Creatures compendium is now hidden from players.
+- Familiars from [Find Familiar](https://www.elkan5e.com/spells/find-familiar) and Pact of the Chain have an armor class of exactly 10 + proficiency bonus. Before, this wasn't applied.
 - Lobber: Spit Acid no longer tries to trigger a saving throw activity it doesn't have.
 - Scorpion and Spider: the Sting's poison save now uses Constitution (DC 10), as written, and its repeat save has a DC.
 - Sprite: Heart Sight's Charisma save now has its DC of 10.
@@ -422,12 +424,14 @@
 - Turn the Unholy (Cleric) now frightens aberrations, celestials, fey, fiends, and undead, as written. Before, an error in its condition meant it frightened nothing.
 - [Challenger](https://www.elkan5e.com/feats/challenger) now applies the Goaded condition, and the repeat save uses your Charisma or Strength, whichever is higher.
 - [Scavenger](https://www.elkan5e.com/feats/scavenger) now recovers on a short rest, as written.
-- [Mark of Thorns (Ranger)](https://elkan5e.com/feats/mark-of-thorns/) is now a bonus action, as written.
+- [Mark of Thorns (Ranger)](https://www.elkan5e.com/feats/mark-of-thorns) is now a bonus action, as written.
 
 ## Game Rules
 
 - Elkan conditions are now in the Active Effects compendium, under Conditions, like dnd5e 6.0's own conditions. Each one includes the Elkan rules automation for that condition.
 - Features, spells, items, and creatures whose effect only gave a condition now give the condition directly, with its name, icon, rules text, and Elkan automation (88 effects). Effects created by scripts, such as [Haste](https://www.elkan5e.com/spells/haste)'s lethargy (Incapacitated) and grapples, also use the compendium condition.
+- Effects that give a condition now give the actual condition, the same one the token HUD toggles (Knockdown makes the target Prone, Symbol's Fear glyph makes it Frightened). A creature shows one Prone instead of two, the condition's rules apply once instead of twice (Slowed gave −4 AC instead of −2), turning it off from the token HUD removes it, and getting it again from the same source doesn't add a second copy. The condition still ends when the effect that gave it ends.
+- Slowed now halves the creature's speed, as written.
 - Added Crawl as a movement type (alongside Walk/Burrow/Climb/Fly/Swim), so it can be granted or set on actors and shows up in the Speed section. A creature with a crawl speed crawls at normal cost instead of double, and being Prone doesn't set its crawl speed to 0.
 - Ethereal is now a status in the token HUD, like Dodging, so it can be toggled on any creature, and it's in the Active Effects compendium under Conditions. Ethereal creatures can still be targeted.
 - Burning and Suffocation now damage or exhaust the creature that has the condition. Before, they used whichever token was selected.
@@ -465,8 +469,7 @@
 - [Shocking Grasp](https://www.elkan5e.com/spells/shocking-grasp) now stops its target from taking reactions. Midi-QOL no longer offers it reactions, and warns if it uses one from its sheet while reactions are enforced. Before, the effect had no changes.
 - [Static Charge](https://www.elkan5e.com/spells/static-charge) now gives disadvantage on the target's next saving throw as well as its next skill check, and ends after the first of them. Before, it ignored saves and stayed for the full round.
 - [Vicious Mockery](https://www.elkan5e.com/spells/vicious-mockery) now ends after the target's next attack roll, as written.
-- [Gaseous Form](https://www.elkan5e.com/spells/gaseous-form) now turns its targets' tokens into a cloud (with Active Token Effects installed) and ends when the target drops to 0 hit points.
-    - Gaseous Form now also makes the target immune to Prone, as written.
+- [Darkness](https://www.elkan5e.com/spells/darkness), [Moonbeam](https://www.elkan5e.com/spells/moonbeam), and other spells that place lights no longer show an "AmbientLight does not exist" error when they end.
 - [Celestial Bolt](https://www.elkan5e.com/spells/celestial-bolt) no longer links an effect that doesn't exist.
 - Area spells that create difficult terrain now use the system's Difficult Terrain region behavior instead of an active effect that halved speed. Movement through the area is now measured as difficult terrain, stacks correctly, and respects features that ignore difficult terrain.
     - Replaced the halved-speed effect: [Entangle](https://www.elkan5e.com/spells/entangle), [Plant Growth](https://www.elkan5e.com/spells/plant-growth), [Spike Growth](https://www.elkan5e.com/spells/spike-growth), [Arms of Earth](https://www.elkan5e.com/spells/arms-of-earth), [Grease](https://www.elkan5e.com/spells/grease), [Black Tentacles](https://www.elkan5e.com/spells/black-tentacles), [Gust of Wind](https://www.elkan5e.com/spells/gust-of-wind) (including the Kobold Shaman's copy), and [Spirit Guardians](https://www.elkan5e.com/spells/spirit-guardians) (hostile creatures only, as written).
@@ -535,7 +538,7 @@
     - [Slow](https://www.elkan5e.com/spells/slow) applies Slowed on a failed save.
     - [Thundering Omen](https://www.elkan5e.com/spells/thundering-omen)'s disadvantage now applies.
     - [Intercession](https://www.elkan5e.com/spells/intercession): the repeat save happens at the end of the target's turn instead of the start.
-    - [Gaseous Form](https://www.elkan5e.com/spells/gaseous-form): 10 ft. fly speed instead of 1 ft., and lightning resistance, which was missing.
+    - [Gaseous Form](https://www.elkan5e.com/spells/gaseous-form) turns its targets' tokens into a cloud (with Active Token Effects installed), gives a 10 ft. fly speed instead of 1 ft., grants the missing electric resistance and immunity to Prone, as written, and ends when the target drops to 0 hit points.
     - [Curse of Clumsiness](https://www.elkan5e.com/spells/curse-of-clumsiness) gives the target disadvantage on its own Strength and Dexterity saves. Before, it gave disadvantage to creatures rolling against it.
     - [Curse of Mindfire](https://www.elkan5e.com/spells/curse-of-mindfire) now counts as a curse, and affects Performance instead of applying Persuasion twice.
     - [Stinking Cloud](https://www.elkan5e.com/spells/stinking-cloud) doesn't poison constructs or poison-immune creatures.
@@ -547,7 +550,7 @@
     - [Banishment](https://www.elkan5e.com/spells/banishment) only damages creatures that succeed on the save. Before, banished creatures took the damage too.
     - [Ice Storm](https://www.elkan5e.com/spells/ice-storm): the 2d8 damage is bludgeoning. Before, it had no damage type.
     - [Silent Cacophony](https://www.elkan5e.com/spells/silent-cacophony): the repeat damage is d6s instead of d4s, and creatures immune to being deafened only take the initial damage. Its upcast note, and [Black Tentacles](https://www.elkan5e.com/spells/black-tentacles)', now say "above 4th".
-    - [Fire Shield](https://www.elkan5e.com/spells/fire-shield) gives resistance to both cold and fire, with no warm/chill choice, and sheds its light.
+    - [Fire Shield](https://www.elkan5e.com/spells/fire-shield) gives resistance to both cold and fire, with no warm/chill choice, and sheds its light. Its retaliation damage works again. Before, it failed with an error on Foundry v14.
     - [Discorporate](https://www.elkan5e.com/spells/discorporate) gives resistance to nonmagical bludgeoning, piercing, and slashing damage, and halves the target's weapon damage the same way the Weakened condition does. Before, neither worked.
     - [Master's Touch](https://www.elkan5e.com/spells/masters-touch) grants proficiency with simple and martial weapons, crafting tools, and vehicles. Before, its effect wasn't applied.
     - [Curse of Foolishness](https://www.elkan5e.com/spells/curse-of-foolishness) affects Perception instead of Persuasion. [Curse of the Troll](https://www.elkan5e.com/spells/curse-of-the-troll) now counts as a curse. Both, and [Curse of Fate](https://www.elkan5e.com/spells/curse-of-fate), no longer have broken effect links.
@@ -559,7 +562,7 @@
     - [Dominate](https://www.elkan5e.com/spells/dominate) charms the target, and [Planar Binding](https://www.elkan5e.com/spells/planar-binding) charms and binds it on a failed save.
     - [Mislead](https://www.elkan5e.com/spells/mislead)'s invisibility lasts 1 hour instead of 1 minute.
     - [Otherworldly Veil](https://www.elkan5e.com/spells/otherworldly-veil): targets roll an Intelligence save at the end of each turn to end it.
-    - [Raise Dead](https://www.elkan5e.com/spells/raise-dead) gives the two levels of exhaustion.
+    - [Raise Dead](https://www.elkan5e.com/spells/raise-dead) adds its two levels of exhaustion to any the creature already has, up to 5. Before, it set exhaustion to 2.
     - [Rend the Veil](https://www.elkan5e.com/spells/rend-the-veil) now rolls its repeat save.
     - [Modify Memory](https://www.elkan5e.com/spells/modify-memory)'s charm ends when the target takes damage.
     - [Break Enchantment](https://www.elkan5e.com/spells/break-enchantment) now removes Charmed, Confused, Frightened, Goaded, Petrified, Silenced, and Siphoned, or all curses (your choice).
@@ -601,6 +604,7 @@
 
 ## UI
 
+- Damage type labels everywhere (dropdowns, resistances, vulnerabilities, immunities, chat cards, and tooltips) now read Sonic and Electric instead of Thunder and Lightning.
 - Passive features (class features, ancestry features, feats, and creature features with no activities) are now marked as Passive Traits, so they're listed under Passive Abilities on the character sheet and Traits on the NPC sheet.
 - The Cold Iron weapon property now has an icon (an iron ingot), like dnd5e's Magical property.
 
