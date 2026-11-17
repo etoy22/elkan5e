@@ -12,7 +12,7 @@
 - Brawler now upgrades the existing Unarmed Strike damage die to d6, while keeping Improvised Attack separate.
 - Fixed level-1 saving throws not applying for Bard, Cleric, and Fighter.
 - Make the spell components visible to compendium
-- Siphoned and Weakened now halve damage across all damage types before rounding, and preserve the correct healing and HP calculations.
+- Siphoned and Weakened now halve damage correctly across all damage types before rounding, and preserve the correct healing and HP calculations.
 
 ## Rules References
 
