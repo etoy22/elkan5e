@@ -1,4 +1,4 @@
-import { UpdateElkanRunner } from "./update-elkan-runner.mjs";
+import { UpdateBuildRunner, UpdateElkanRunner } from "./update-elkan-runner.mjs";
 const MODULE_ID = "elkan5e";
 
 /**
@@ -76,9 +76,11 @@ export async function registerGameSettings() {
 	game.settings.register(MODULE_ID, "toolsMigration", {
 		name: "Elkan 5e Tools Migration Flag",
 		scope: "world",
-		config: false,
+		config: true,
+		requiresReload: true,
+		default: true,
 		type: Boolean,
-		default: false,
+		restricted: true,
 	});
 
 	game.settings.register(MODULE_ID, "tool", {
@@ -119,58 +121,6 @@ export async function registerGameSettings() {
 		restricted: true,
 	});
 
-	game.settings.register(MODULE_ID, "scrollRules", {
-		name: "elkan5e.scrolls.name",
-		hint: "elkan5e.scrolls.hint",
-		scope: "world",
-		config: true,
-		requiresReload: true,
-		default: true,
-		type: Boolean,
-		restricted: true,
-	});
-
-	game.settings.register(MODULE_ID, "draconic-toughness", {
-		name: "elkan5e.draconic-toughness.name",
-		hint: "elkan5e.draconic-toughness.hint",
-		scope: "world",
-		config: true,
-		requiresReload: true,
-		default: true,
-		type: Boolean,
-		restricted: true,
-	});
-
-	game.settings.register(MODULE_ID, "moduleVersion", {
-		name: "elkan5e.moduleVersion.name",
-		hint: "elkan5e.moduleVersion.hint",
-		scope: "client",
-		config: false,
-		type: String,
-		default: "1.13.0",
-	});
-
-	game.settings.register(MODULE_ID, "languageSystem", {
-		name: "elkan5e.languageSystem.name",
-		hint: "elkan5e.languageSystem.hint",
-		scope: "world",
-		config: true,
-		requiresReload: true,
-		default: true,
-		type: Boolean,
-		restricted: true,
-	});
-
-	game.settings.register(MODULE_ID, "skillCriticalAdjustment", {
-		name: "elkan5e.skillCriticalAdjustment.name",
-		hint: "elkan5e.skillCriticalAdjustment.hint",
-		scope: "world",
-		config: true,
-		default: true,
-		type: Boolean,
-		restricted: true,
-	});
-
 	game.settings.registerMenu(MODULE_ID, "updateElkanMenu", {
 		name: "elkan5e.updateElkan.name",
 		label: "elkan5e.updateElkan.label", // Text on the button
@@ -179,6 +129,18 @@ export async function registerGameSettings() {
 		type: UpdateElkanRunner, // Class that runs your function
 		restricted: true,
 	});
+
+	// Not restricted: players use this one to update their own characters.
+	game.settings.registerMenu(MODULE_ID, "updateBuildMenu", {
+		name: "elkan5e.updateElkan.build.name",
+		label: "elkan5e.updateElkan.build.label",
+		hint: "elkan5e.updateElkan.build.menuHint",
+		icon: "fas fa-user-gear",
+		type: UpdateBuildRunner,
+		restricted: false,
+	});
+
+	Hooks.on("renderSettingsConfig", organizeSettingsTab);
 }
 
 /**
@@ -208,6 +170,47 @@ export async function migrateGameSettings() {
 		);
 		await game.settings.set(MODULE_ID, "tool", convertedValue);
 		await game.settings.set(MODULE_ID, "toolsMigration", true);
+	}
+}
+
+/** Settings panel sections, in display order. The menu button goes last under "Maintenance". */
+const SETTING_GROUPS = [
+	["gameplay", ["deathSaveClear", "conditionsSettings", "skillCriticalAdjustment", "draconic-toughness", "scrollRules"]],
+	["content", ["languageSystem", "tool"]],
+	["legacy", ["armor", "weapons"]],
+];
+
+/**
+ * Adds section headings to the Elkan 5e settings tab and moves the update button to the end.
+ *
+ * @param {object} _app - Settings window.
+ * @param {HTMLElement} html - Rendered window.
+ */
+export function organizeSettingsTab(_app, html) {
+	const root = html instanceof HTMLElement ? html : html?.[0];
+	const tab = root?.querySelector(`section[data-tab="${MODULE_ID}"]`);
+	if (!tab || tab.querySelector(".elkan-settings-heading")) return;
+
+	const heading = (key) => {
+		const el = document.createElement("h3");
+		el.className = "elkan-settings-heading";
+		el.textContent = game.i18n.localize(`elkan5e.settingsGroups.${key}`);
+		return el;
+	};
+	for (const [group, keys] of SETTING_GROUPS) {
+		let first = true;
+		for (const key of keys) {
+			const row = tab.querySelector(`[name="${MODULE_ID}.${key}"]`)?.closest(".form-group");
+			if (!row) continue;
+			if (first) tab.append(heading(group));
+			first = false;
+			tab.append(row);
+		}
+	}
+	const menuRows = [...tab.querySelectorAll(".form-group")].filter((g) => !g.querySelector("[name]"));
+	if (menuRows.length) {
+		tab.append(heading("maintenance"));
+		for (const row of menuRows) tab.append(row);
 	}
 }
 

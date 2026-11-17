@@ -75,8 +75,6 @@ import {
 import {
 	relentlessEndurance,
 	undeadNature,
-	initFeatIdentifierMap,
-	onFilterOwnedFeats,
 	marksmanCover,
 	marksmanLongRange,
 } from "./module/feats.mjs";
@@ -263,7 +261,9 @@ function registerHooks() {
 				conditionsReady();
 				updateToolTypes();
 				fixRegionTurnEnd();
-				await startDialog();
+				// Not awaited: the welcome dialog resolves only when the user closes it, and the
+				// remaining startup work shouldn't wait on that.
+				startDialog().catch((error) => console.error("Elkan 5e | Welcome dialog error:", error));
 				await backfillModifyItemRiders();
 				await migrateWarlockSpellMethod();
 

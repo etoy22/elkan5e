@@ -1,0 +1,191 @@
+/* Elkan 5e update tool windows */
+.elkan5e-migration {
+	--elkan-gap: 0.6rem;
+	--elkan-warn: #b8860b;
+	--elkan-error: #b22222;
+	--elkan-ok: #2e8b57;
+}
+
+.elkan5e-migration .window-content {
+	padding: 0.75rem 1rem 1rem;
+	overflow-y: auto;
+}
+
+.elkan5e-migration p {
+	margin: 0 0 var(--elkan-gap);
+}
+
+.elkan5e-migration footer {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	justify-content: flex-end;
+	margin-top: 0.75rem;
+}
+
+.elkan5e-migration footer button.elkan-primary {
+	font-weight: 700;
+}
+
+/* Banners */
+.elkan5e-migration .elkan-banner {
+	padding: 0.5rem 0.75rem;
+	border-left: 4px solid var(--elkan-warn);
+	border-radius: 3px;
+	background: color-mix(in srgb, var(--elkan-warn) 14%, transparent);
+	font-size: var(--font-size-13, 13px);
+}
+.elkan5e-migration .elkan-banner.is-info {
+	border-left-color: #3a7bd5;
+	background: color-mix(in srgb, #3a7bd5 14%, transparent);
+}
+.elkan5e-migration .elkan-banner.is-error {
+	border-left-color: var(--elkan-error);
+	background: color-mix(in srgb, var(--elkan-error) 14%, transparent);
+}
+
+/* Options window */
+.elkan-options .elkan-group {
+	margin: 0 0 var(--elkan-gap);
+	padding: 0.4rem 0.75rem 0.6rem;
+	border: 1px solid var(--color-cool-3, #8885);
+	border-radius: 4px;
+}
+.elkan-options .elkan-group legend {
+	padding: 0 0.4rem;
+	font-weight: 700;
+}
+.elkan-options .elkan-row {
+	display: grid;
+	grid-template-columns: 1fr 14rem;
+	align-items: center;
+	gap: 0.75rem;
+	padding: 0.15rem 0;
+}
+.elkan-options .elkan-check {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.15rem 0;
+}
+.elkan-options .elkan-hint {
+	margin: 0.25rem 0 0;
+	opacity: 0.75;
+	font-size: var(--font-size-12, 12px);
+}
+
+/* Progress window */
+.elkan-progress .elkan-progress-phase {
+	font-weight: 700;
+}
+.elkan-progress .elkan-bar {
+	height: 1.1rem;
+	overflow: hidden;
+	border: 1px solid var(--color-cool-3, #8885);
+	border-radius: 999px;
+	background: #0003;
+}
+.elkan-progress .elkan-bar-fill {
+	width: 0;
+	height: 100%;
+	background: var(--elkan-ok);
+	transition: width 0.15s linear;
+}
+.elkan-progress .elkan-bar-fill.is-cancelled {
+	background: var(--elkan-warn);
+}
+.elkan-progress .elkan-progress-detail {
+	margin-top: 0.4rem;
+	font-size: var(--font-size-12, 12px);
+}
+.elkan-progress .elkan-progress-done {
+	margin: 0 0 var(--elkan-gap);
+	padding: 0;
+	list-style: none;
+	font-size: var(--font-size-12, 12px);
+}
+.elkan-progress .elkan-progress-done i {
+	color: var(--elkan-ok);
+}
+.elkan-progress .elkan-progress-note {
+	opacity: 0.75;
+	font-size: var(--font-size-12, 12px);
+}
+
+/* Report window */
+.elkan-report .elkan-report-table {
+	width: 100%;
+	margin-bottom: 0.5rem;
+	border-collapse: collapse;
+	text-align: center;
+}
+.elkan-report .elkan-report-table th,
+.elkan-report .elkan-report-table td {
+	padding: 0.3rem 0.5rem;
+	border-bottom: 1px solid var(--color-cool-3, #8883);
+}
+.elkan-report .elkan-report-table th[scope="row"] {
+	text-align: left;
+}
+.elkan-report .is-warn {
+	color: var(--elkan-warn);
+	font-weight: 700;
+}
+.elkan-report .is-error {
+	color: var(--elkan-error);
+	font-weight: 700;
+}
+.elkan-report .elkan-report-time {
+	opacity: 0.7;
+	font-size: var(--font-size-12, 12px);
+}
+.elkan-report details {
+	margin: 0.4rem 0;
+}
+.elkan-report summary {
+	cursor: pointer;
+	font-weight: 700;
+}
+.elkan-report details ul {
+	max-height: 14rem;
+	margin: 0.3rem 0 0;
+	padding-left: 1.2rem;
+	overflow-y: auto;
+	font-size: var(--font-size-12, 12px);
+}
+.elkan-report .elkan-fields {
+	opacity: 0.7;
+}
+.elkan-report .elkan-tag {
+	padding: 0 0.35rem;
+	border-radius: 3px;
+	background: #8883;
+	font-size: 0.85em;
+}
+.elkan-report .elkan-tag.is-ambiguous,
+.elkan-report .elkan-tag.is-noMatch {
+	background: color-mix(in srgb, var(--elkan-warn) 30%, transparent);
+}
+.elkan-report .elkan-tag.is-error {
+	background: color-mix(in srgb, var(--elkan-error) 30%, transparent);
+}
+
+/* Game settings tab */
+.elkan-settings-heading {
+	margin: 1rem 0 0.25rem;
+	padding-bottom: 0.2rem;
+	border-bottom: 1px solid var(--color-cool-3, #8885);
+	font-size: var(--font-size-14, 14px);
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	opacity: 0.85;
+}
+.elkan-settings-heading:first-child {
+	margin-top: 0;
+}
+
+.elkan-options .is-hidden { display: none; }
+.elkan-options select:disabled, .elkan-options input:disabled { opacity: 0.5; }
+
+.elkan-report .elkan-changes { margin: 2px 0 6px 18px; font-size: 0.9em; }
+.elkan-report .elkan-unchanged { opacity: 0.7; font-style: italic; }

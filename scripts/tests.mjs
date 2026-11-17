@@ -1,3 +1,4 @@
+import "./match-items-tests.mjs";
 import "./wild-surge-tests.mjs";
 import { test } from "node:test";
 import assert from "node:assert/strict";
@@ -318,6 +319,59 @@ test("updateModuleJson synchronises manifest and download URLs with the version"
 		written.download,
 		"https://github.com/etoy22/elkan5e/releases/download/v1.2.3/module.zip",
 	);
+});
+
+test("Brawler upgrades the existing unarmed strike", () => {
+	const brawler = JSON.parse(
+		readFileSync(join(packsRoot, "elkan5e-feats", "level-1-feats", "brawler.json"), "utf8"),
+	);
+	const modification = Object.values(brawler.system.advancement).find(
+		(advancement) => advancement.type === "ModifyItem",
+	);
+	assert.ok(modification);
+
+	const unarmedStrike = modification.configuration.changes.find((change) =>
+		change.identifiers.includes("unarmed-strike"),
+	);
+	assert.ok(unarmedStrike);
+
+	const effect = brawler.effects.find((entry) => entry._id === unarmedStrike._id);
+	assert.ok(effect);
+	assert.deepEqual(
+		effect.system.changes
+			.filter((change) => change.key === "system.damage.base.denomination")
+			.map(({ type, value }) => ({ type, value })),
+		[{ type: "upgrade", value: 6 }],
+	);
+	assert.deepEqual(
+		Object.values(brawler.system.activities).map((activity) => activity.name),
+		["Improvised Attack"],
+	);
+});
+
+test("class saving-throw grants are not preselected", () => {
+	const classPackRoot = join(packsRoot, "elkan5e-class");
+	const classFiles = walkJsonFiles(classPackRoot).filter(
+		(filePath) => dirname(dirname(filePath)) === classPackRoot,
+	);
+	const classItems = classFiles
+		.map((filePath) => JSON.parse(readFileSync(filePath, "utf8")))
+		.filter((item) => item.type === "class");
+
+	for (const classItem of classItems) {
+		const savingThrows = Object.values(classItem.system.advancement).find(
+			(advancement) =>
+				advancement.type === "Trait" &&
+				advancement.level === 1 &&
+				advancement.configuration.grants.some((grant) => grant.startsWith("saves:")),
+		);
+		assert.ok(savingThrows, `${classItem.name} should grant saving throws`);
+		assert.deepEqual(
+			savingThrows.value.chosen,
+			[],
+			`${classItem.name} saves should apply initially`,
+		);
+	}
 });
 
 test("pack source JSON files parse cleanly", () => {

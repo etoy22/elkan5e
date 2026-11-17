@@ -145,7 +145,39 @@
         "npcs": "NPCs {current}/{total}"
       },
       "complete": "100% — Migration complete!",
-      "initial": "Starting migration..."
+      "initial": "Starting migration...",
+      "progressTitle": "Updating Elkan 5e",
+      "reportTitle": "Elkan 5e Update Report",
+      "progressNote": "Keep this window open. Closing it or pressing Stop ends the update after the current actor; changes already made stay.",
+      "cancel": "Stop",
+      "stopping": "Stopping after the current actor…",
+      "updating": "Updating",
+      "previewing": "Previewing",
+      "actorsProgress": "{current} of {total} actors",
+      "previewBanner": "Preview only. Nothing was changed.",
+      "cancelledBanner": "The update was stopped early. Items already updated stay updated.",
+      "fatalBanner": "The update stopped because of an error: {message}",
+      "colUpdated": "Updated",
+      "colRemoved": "Removed",
+      "colCurrent": "Already current",
+      "colAttention": "Needs attention",
+      "colErrors": "Errors",
+      "nothingRan": "Nothing was selected.",
+      "took": "Finished in {seconds} s.",
+      "needsAttention": "{count} need attention",
+      "changed": "{count} changed",
+      "wouldChange": "{count} would change",
+      "andMore": "…and {count} more (export the report for the full list)",
+      "kindUpdated": "updated",
+      "kindReplaced": "replaced",
+      "kindRemoved": "removed",
+      "kindAmbiguous": "unclear match",
+      "kindNoMatch": "no current version",
+      "kindError": "error",
+      "exportReport": "Export report",
+      "done": "Close",
+      "noFeatureChanges": "No change to the features it grants",
+      "featuresUnchanged": "{count} granted features stay the same"
     },
     "spells": {
       "Goodberry": "Goodberry",
@@ -184,8 +216,8 @@
       "no": "No"
     },
     "conditionsSettings": {
-      "name": "Use Custom Conditions",
-      "hint": "The Elkan 5e module automates the function of conditions. Our module is designed with the Elkan conditions in mind, but if you don't want any of the Elkan improvements to conditions, you can switch back to SRD conditions.",
+      "name": "Conditions",
+      "hint": "Elkan 5e automates its own versions of the conditions. Switch to SRD conditions if you don't want those changes. The extra icons add status icons for effects like concentration.",
       "choiceA": "Elkan Conditions",
       "choiceB": "Elkan Conditions + extra condition icons",
       "choiceC": "SRD Conditions + extra condition icons",
@@ -199,16 +231,16 @@
       "choiceC": "SRD Tools List"
     },
     "armor": {
-      "name": "Armor List",
-      "hint": "Add deprecated armor proficiencies. May not function properly with Elkan classes."
+      "name": "Legacy Armor Proficiencies",
+      "hint": "Adds the deprecated armor proficiencies. May not work properly with Elkan classes."
     },
     "weapons": {
-      "name": "Weapon List",
-      "hint": "Add deprecated weapon proficiencies. May not function properly with Elkan classes."
+      "name": "Legacy Weapon Proficiencies",
+      "hint": "Adds the deprecated weapon proficiencies. May not work properly with Elkan classes."
     },
     "draconic-toughness": {
-      "name": "Draconic Toughness Update",
-      "hint": "Uncheck to revert Draconic Toughness to 13 + Dex instead of 14 + Dex."
+      "name": "Draconic Toughness",
+      "hint": "Use the updated 14 + Dex. Uncheck to go back to 13 + Dex."
     },
     "moduleVersion": {
       "name": "Module Version",
@@ -292,27 +324,27 @@
       "prompt": "{name} was reduced to 0 hit points. Use Relentless Endurance to drop to 1 hit point instead?"
     },
     "languageSystem": {
-      "name": "Use Elkan language system",
-      "hint": "THis may conflict with other modules that modify or depend on language settings."
+      "name": "Elkan Language System",
+      "hint": "Use Elkan 5e's languages. May conflict with modules that change or depend on languages."
     },
     "skillCriticalAdjustment": {
-      "name": "Critical Skill Adjustment",
-      "hint": "When rolling a natural 1 on a skill check, subtract 5 from the total. When rolling a natural 20, add 5."
+      "name": "Skill Check Criticals",
+      "hint": "A natural 1 on a skill check subtracts 5 from the total. A natural 20 adds 5."
     },
     "deathSaveClear": {
-      "name": "Death Save Reset Timing",
-      "hint": "Controls when accumulated death save successes and failures are cleared. Immediate: cleared as soon as the character's HP rises above 0. Short Rest: cleared only when the character completes a short or long rest. Long Rest: cleared only when the character completes a long rest.",
-      "choiceImmediate": "Immediate (on HP recovery)",
-      "choiceShortRest": "Short Rest",
-      "choiceLongRest": "Long Rest"
+      "name": "Death Save Reset",
+      "hint": "When a character's death saves are cleared: as soon as they regain HP, after a short or long rest, or only after a long rest.",
+      "choiceImmediate": "When HP is regained",
+      "choiceShortRest": "After a short or long rest",
+      "choiceLongRest": "After a long rest"
     },
     "updateElkan": {
       "title": "Elkan 5e Automatic Update Abilities",
-      "name": "Elkan 5e Update Items",
-      "label": "Update Elkan Version of Items",
+      "name": "Update Items",
+      "label": "Update Items",
       "header": "Elkan 5e Update Options",
-      "hint": "Replaces features, items, or spells with the Elkan 5e specific versions only.",
-      "description": "This tool helps apply optional updates to features, spells and items for both player characters and NPCs in Elkan 5e.<br>These updates ensure compatibility with the latest system changes and reduce issues caused by legacy versions of abilities.",
+      "hint": "Updates Elkan 5e features, items and spells on characters and NPCs to the current versions. Each row can also update from other installed modules instead. Preview first.",
+      "description": "Brings characters and NPCs up to date with the Elkan 5e compendiums after a system or module update.",
       "form": {
         "playerTitle": "Player Updates",
         "featuresLabel": "Features",
@@ -326,10 +358,64 @@
         "spellsLabel": "Spells",
         "warningNote": "Note: This Migration Tool is in beta and may cause bugs or interact with custom content in unexpected ways. We strongly recommend making a backup of your world before running it. If you have NPCs with tokens on the board—especially unlinked tokens—you may see duplicates of some abilities. If you encounter an issue, please report it on our <a href='https://discord.gg/4Z2c7b6' target='_blank'>Discord </a>.",
         "npcTitle": "NPC Updates"
+      },
+      "build": {
+        "title": "Ancestry, background and class",
+        "hint": "If the new version asks for a choice that cannot be carried over, a list opens afterwards so you can make those choices yourself.",
+        "ancestry": "Ancestry",
+        "background": "Background",
+        "class": "Class",
+        "modeUpdate": "Update to newest version",
+        "name": "Update a Character's Ancestry, Background and Class",
+        "label": "Update Character Build",
+        "menuHint": "Pick one character and update its ancestry, background, class and subclass to the current Elkan 5e versions. Players can do this for their own characters. Anything that needs a new choice is offered to you afterwards.",
+        "windowTitle": "Update Character Build",
+        "intro": "Updates one character's ancestry, background, class and subclass to the current Elkan 5e versions. Class levels, spent hit dice and the choices already made are kept.",
+        "character": "Character",
+        "characters": "Characters",
+        "npcs": "Other actors",
+        "pickActor": "Choose a character first.",
+        "confirmBody": "This changes the selected character. Back up first if you are unsure. Choices that cannot be kept are offered to you afterwards.",
+        "makeChoices": "Open",
+        "choicesTitle": "Choices to make",
+        "choicesBody": "These parts of the character have a choice that could not be carried over. Open each one and go to its Advancement tab to choose.",
+        "warning": "Note: This tool is in beta. If you are unsure, ask your GM to back up the world first. Class levels, spent hit dice and the choices you already made are kept.",
+        "subclass": "Subclass"
+      },
+      "ui": {
+        "intro": "Updates keep each item where it is, so its sheet position, favorites, hotbar links and level-up tracking stay intact. Quantity, equipped, attunement, prepared state and spent uses are kept.",
+        "modeNone": "Skip",
+        "modeElkan": "Elkan items only",
+        "modeAll": "All matching items",
+        "duplicatesTitle": "Remove exact duplicates",
+        "duplicatesPlayers": "Characters: remove spells and features that are exact copies",
+        "duplicatesNpcs": "NPCs: remove spells and features that are exact copies",
+        "modulesTitle": "Modules to update from",
+        "modulesHint": "Tick the modules to use as sources. Where an item exists in both Elkan 5e and a module, Elkan 5e wins. Rows set to Elkan only join the same run.",
+        "modulePacks": "{count} compendiums",
+        "duplicatesHint": "Only items that match another item on the same actor in every field are removed.",
+        "preview": "Preview changes",
+        "run": "Update",
+        "close": "Close",
+        "back": "Go back",
+        "nothing": "Choose at least one thing to update.",
+        "confirmTitle": "Update your world?",
+        "confirmBody": "This changes items on your actors. Make sure you have a backup of your world. Use Preview changes first if you haven't."
+      },
+      "modules": {
+        "name": "Update Items From Other Modules",
+        "label": "Update From Other Modules",
+        "hint": "Updates items, spells and features that came from other installed modules, using those modules' compendiums. Preview first.",
+        "title": "Update From Other Modules",
+        "intro": "Updates items, spells and features that came from the ticked modules, in place, keeping quantity, equipped, attunement, prepared state and spent uses. Elkan 5e content is not touched here.",
+        "modeUpdate": "Other modules only",
+        "none": "No active module has Item compendiums, so there is nothing to update from.",
+        "pickOne": "Tick at least one module first.",
+        "modeBoth": "Elkan 5e + modules"
       }
     },
     "scrolls": {
-      "name": "Elkan Spell Scroll Rules",
+      "name": "Spell Scroll Rules",
       "hint": "Characters need a class with spell slots to use spell scrolls. Spells on their list use their own attack bonus and save DC. Other spells need a check (DC 10 + spell level) and use +5 to hit and DC 13.",
       "notSpellcaster": "{name} can't cast from a spell scroll. Only spellcasters with a class that gives spell slots can.",
       "checkTitle": "Spell Scroll Check",
@@ -348,6 +434,12 @@
       "shiftingSandsTitle": "Shifting Sands",
       "shiftingSandsContent": "{name}'s turn has ended. Choose an ally in the shifting sands to move up to 30 ft. through the ground.",
       "shiftingSandsSkip": "Don't Move Anyone"
+    },
+    "settingsGroups": {
+      "gameplay": "Gameplay Rules",
+      "content": "Content & Compatibility",
+      "legacy": "Legacy Proficiencies",
+      "maintenance": "Maintenance"
     }
   },
   "TYPES": {

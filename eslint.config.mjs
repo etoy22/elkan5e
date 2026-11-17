@@ -9,7 +9,7 @@ export default [
   {
     files: ["src/**/*.mjs", "scripts/**/*.mjs"],
     languageOptions: {
-      ecmaVersion: 2021,
+      ecmaVersion: 2022,
       sourceType: "module",
       globals: {
         foundry: "readonly",

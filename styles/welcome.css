@@ -1,0 +1,114 @@
+/* Elkan 5e welcome dialog */
+.elkan5e-welcome .window-content {
+	padding: 0;
+	overflow: hidden;
+}
+
+.elkan5e-welcome .elkan-welcome {
+	display: flex;
+	flex-direction: column;
+	gap: 0.75rem;
+	padding: 0 1rem 0.5rem;
+}
+
+.elkan5e-welcome .elkan-welcome-hero {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.35rem;
+	margin: 0 -1rem;
+	padding: 1.1rem 1rem 0.9rem;
+	text-align: center;
+	background: linear-gradient(180deg, rgb(0 0 0 / 0.18), transparent);
+	border-bottom: 1px solid var(--color-cool-3, rgb(128 128 128 / 0.35));
+}
+
+.elkan5e-welcome .elkan-welcome-logo {
+	max-width: 220px;
+	max-height: 110px;
+	object-fit: contain;
+	border: none;
+	filter: drop-shadow(0 2px 4px rgb(0 0 0 / 0.5));
+}
+
+.elkan5e-welcome .elkan-welcome-hero h2 {
+	margin: 0;
+	border: none;
+	font-size: var(--font-size-20, 1.25rem);
+}
+
+.elkan5e-welcome .elkan-welcome-version {
+	display: inline-block;
+	padding: 0.05rem 0.6rem;
+	border-radius: 999px;
+	font-size: var(--font-size-12, 0.75rem);
+	background: rgb(128 128 128 / 0.25);
+}
+
+.elkan5e-welcome .elkan-welcome-lead {
+	margin: 0;
+	text-align: center;
+}
+
+.elkan5e-welcome .elkan-welcome-notice {
+	padding: 0.5rem 0.75rem;
+	border-left: 3px solid var(--color-warm-2, #c9593f);
+	border-radius: 3px;
+	background: rgb(128 128 128 / 0.15);
+	font-size: var(--font-size-13, 0.8125rem);
+}
+
+.elkan5e-welcome .elkan-welcome-notice p {
+	margin: 0;
+}
+
+.elkan5e-welcome .elkan-welcome-links {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 0.4rem;
+}
+
+.elkan5e-welcome .elkan-welcome-link {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0.5rem;
+	min-height: 2.25rem;
+	padding: 0.3rem 0.6rem;
+	border: 1px solid var(--color-cool-3, rgb(128 128 128 / 0.5));
+	border-radius: 5px;
+	background: rgb(128 128 128 / 0.12);
+	color: inherit;
+	text-decoration: none;
+	transition: background 0.15s, border-color 0.15s, transform 0.15s;
+}
+
+.elkan5e-welcome .elkan-welcome-link:hover,
+.elkan5e-welcome .elkan-welcome-link:focus-visible {
+	background: rgb(128 128 128 / 0.3);
+	border-color: var(--color-warm-2, #c9593f);
+	transform: translateY(-1px);
+	text-shadow: none;
+}
+
+.elkan5e-welcome .elkan-welcome-link.is-primary {
+	grid-column: 1 / -1;
+	background: var(--color-warm-3, rgb(201 89 63 / 0.35));
+}
+
+.elkan5e-welcome .elkan-welcome-hint {
+	margin: 0;
+	text-align: center;
+	font-size: var(--font-size-12, 0.75rem);
+	opacity: 0.75;
+}
+
+.elkan5e-welcome .form-footer {
+	padding: 0.5rem 1rem 0.75rem;
+}
+
+@media (max-width: 480px) {
+	.elkan5e-welcome .elkan-welcome-links {
+		grid-template-columns: 1fr;
+	}
+}
