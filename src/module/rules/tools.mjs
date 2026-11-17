@@ -14,25 +14,6 @@ const TOOLS_TO_REMOVE_SRD = [
 	"vocal",
 	"fashion",
 ];
-const TOOLS_TO_REMOVE_LEGACY = [
-	"carpenter",
-	"card",
-	"cartographer",
-	"chess",
-	"cobbler",
-	"dice",
-	"glassblower",
-	"potter",
-	"weaver",
-	"brass",
-	"keyboard",
-	"percussion",
-	"string",
-	"wind",
-	"vocal",
-	"fashion",
-];
-
 const TOOLS_TO_REMOVE = [
 	"brewer",
 	"carpenter",
@@ -152,46 +133,6 @@ const SRD_TOOL_TYPES = {
 	thief: "art",
 };
 
-const LEGACY_TOOL_TYPES = {
-	painter: "art",
-	sculpt: "art",
-	bagpipes: "music",
-	brass: "music",
-	drum: "music",
-	dulcimer: "music",
-	flute: "music",
-	horn: "music",
-	keyboard: "music",
-	lute: "music",
-	lyre: "music",
-	panflute: "music",
-	percussion: "music",
-	shawm: "music",
-	string: "music",
-	viol: "music",
-	vocal: "music",
-	wind: "music",
-	alchemist: "craft",
-	brewer: "craft",
-	calligrapher: "craft",
-	cook: "craft",
-	fashion: "craft",
-	herb: "craft",
-	jeweler: "craft",
-	leatherworker: "craft",
-	mason: "craft",
-	pois: "craft",
-	smith: "craft",
-	tailor: "craft",
-	tinker: "craft",
-	woodcarver: "craft",
-	disg: "explore",
-	navg: "explore",
-	thief: "explore",
-	forg: "craft",
-	game: "craft",
-};
-
 const ELKAN_TOOL_TYPES = {
 	disg: "art",
 	painter: "art",
@@ -238,8 +179,6 @@ function getToolType(key, toolSetting) {
 	switch (toolSetting) {
 		case 2:
 			return SRD_TOOL_TYPES[key] ?? "";
-		case 1:
-			return LEGACY_TOOL_TYPES[key] ?? "";
 		case 0:
 			return ELKAN_TOOL_TYPES[key] ?? "";
 		default:
@@ -247,12 +186,17 @@ function getToolType(key, toolSetting) {
 	}
 }
 
+function getToolSetting() {
+	const setting = game.settings.get("elkan5e", "tool");
+	return setting === 1 ? 0 : setting;
+}
+
 /**
  * Registers tool definitions and adjusts tool and proficiency categories for the tool setting.
  * Existing default abilities are retained when the Elkan definition does not replace them.
  */
 export function tools() {
-	const TOOL_SETTING = game.settings.get("elkan5e", "tool");
+	const TOOL_SETTING = getToolSetting();
 
 	console.log("Elkan 5e  |  Initializing Tools");
 
@@ -276,17 +220,6 @@ export function tools() {
 		for (const tool of TOOLS_TO_REMOVE) delete CONFIG.DND5E.tools[tool];
 	}
 
-	if (TOOL_SETTING === 1) {
-		// Legacy Tools
-		CONFIG.DND5E.toolTypes.craft = "Crafting Tools";
-		CONFIG.DND5E.toolTypes.explore = "Exploration Tools";
-		CONFIG.DND5E.toolProficiencies.craft = "Crafting Tools";
-		CONFIG.DND5E.toolProficiencies.explore = "Exploration Tools";
-		delete CONFIG.DND5E.toolTypes.game;
-		delete CONFIG.DND5E.toolProficiencies.game;
-		for (const tool of TOOLS_TO_REMOVE_LEGACY) delete CONFIG.DND5E.tools[tool];
-	}
-
 	if (TOOL_SETTING === 2) {
 		// SRD Tools
 		for (const tool of TOOLS_TO_REMOVE_SRD) delete CONFIG.DND5E.tools[tool];
@@ -294,7 +227,7 @@ export function tools() {
 }
 
 export async function updateToolTypes() {
-	const TOOL_SETTING = game.settings.get("elkan5e", "tool");
+	const TOOL_SETTING = getToolSetting();
 
 	console.log("Elkan 5e | Starting updateToolTypes()");
 

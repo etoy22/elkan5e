@@ -51,7 +51,6 @@ import {
 import {
 	initWarlockSpellSlot,
 	migrateWarlockSpellMethod,
-	onWarlockFilterInvocations,
 	powerOfLoveAndFearApply,
 	powerOfLoveAndFearPrompt,
 	repellingBlast,
@@ -204,14 +203,6 @@ function registerHooks() {
 			speed();
 			registerMidiFallback();
 
-			// Hides pact-specific invocations from advancement dialogs for actors
-			// that don't have the corresponding pact boon. Advancement steps are
-			// ApplicationV2 flows, which don't fire renderApplication.
-			Hooks.on("renderAdvancementFlow", onWarlockFilterInvocations);
-
-			// Hides already-owned (non-repeatable) feats from advancement dialogs.
-			Hooks.on("renderAdvancementFlow", onFilterOwnedFeats);
-
 			Hooks.on("renderAdvancementManager", async (app, ..._rest) => {
 				try {
 					await onBloodragerRenderAdvancementManager(app);
@@ -259,7 +250,6 @@ function registerHooks() {
 		void (async () => {
 			try {
 				await gameSettingsMigrate();
-				await initFeatIdentifierMap();
 				conditionsReady();
 				updateToolTypes();
 				fixRegionTurnEnd();
