@@ -74,8 +74,6 @@ import {
 import {
 	relentlessEndurance,
 	undeadNature,
-	initFeatIdentifierMap,
-	onFilterOwnedFeats,
 	marksmanCover,
 	marksmanLongRange,
 } from "./module/feats.mjs";
@@ -87,6 +85,7 @@ import {
 	conditionsReady,
 	handleHazardExhaustion,
 } from "./module/rules/condition/setup.mjs";
+import { applyConditionDamage } from "./module/rules/condition/damage.mjs";
 import {
 	darknessAttackDisadvantage,
 	refreshSeeThroughDarkness,
@@ -370,6 +369,14 @@ function registerHooks() {
 			await Level4.blight(workflow);
 		} catch (error) {
 			console.error("Elkan 5e | Error in Blight targetingComplete hook:", error);
+		}
+	});
+
+	Hooks.on("midi-qol.preTargetDamageApplication", (token, { workflow, damageItem } = {}) => {
+		try {
+			applyConditionDamage(workflow, damageItem, token?.actor);
+		} catch (error) {
+			console.error("Elkan 5e | Error applying weakened/siphoned damage:", error);
 		}
 	});
 
