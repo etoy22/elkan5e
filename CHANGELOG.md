@@ -13,6 +13,11 @@
 - Fixed level-1 saving throws not applying for Bard, Cleric, and Fighter.
 - Make the spell components visible to compendium
 
+## Rules References
+
+- Grouped Hazards and Environmental Effects pages into separate alphabetical sections, and alphabetized the hazard links.
+- Moved Ooze into alphabetical order in the Creature Types reference.
+
 # Misc
 - Removed the Legacy Tools option as it only existed for the short period. Migrated existing setting to the current Elkan tools selection.
 
