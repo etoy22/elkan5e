@@ -28,6 +28,7 @@ export function weapons() {
 	} catch (e) {
 		console.warn("Elkan 5e | Failed to assign new weapon properties:", e);
 	}
+	installColdIronDamageBypassIcon();
 
 	// Weapon IDs
 	const WEAPON_IDS = [
@@ -154,6 +155,24 @@ const UNARMED_IDENTIFIERS = new Set([
 	"unarmed-strike-monk",
 	"ki-empowered-strikes",
 ]);
+
+function installColdIronDamageBypassIcon() {
+	const damagesConfig = globalThis.dnd5e?.applications?.actor?.DamagesConfig;
+	const prototype = damagesConfig?.prototype;
+	if (!prototype || typeof prototype._preparePartContext !== "function") {
+		console.warn("Elkan 5e | Could not install the cold iron damage bypass icon.");
+		return;
+	}
+
+	const preparePartContext = prototype._preparePartContext;
+	prototype._preparePartContext = async function (...args) {
+		const context = await preparePartContext.apply(this, args);
+		const choice = context.bypasses?.coldIron;
+		const icon = CONFIG.DND5E.itemProperties.coldIron?.icon;
+		if (choice && icon) choice.icon = { src: icon };
+		return context;
+	};
+}
 
 /**
  * Counts the equipped manufactured weapons an actor is wielding, ignoring unarmed strikes and natural weapons.

@@ -248,11 +248,6 @@ const CONDITION_DEFS = [
 				type: "override",
 				value: "1",
 			},
-			{
-				key: "flags.midi-qol.onUseMacroName",
-				type: "custom",
-				value: "Compendium.elkan5e.elkan5e-macros.Macro.4X80aHI9r8I9aSKG, preDamageApplication",
-			},
 		],
 	},
 	{
@@ -312,11 +307,6 @@ const CONDITION_DEFS = [
 			{ key: "system.abilities.dex.save.roll.mode", type: "add", value: "-1" },
 			{ key: "system.abilities.str.check.roll.mode", type: "add", value: "-1" },
 			{ key: "system.abilities.str.save.roll.mode", type: "add", value: "-1" },
-			{
-				key: "flags.midi-qol.onUseMacroName",
-				type: "custom",
-				value: "Compendium.elkan5e.elkan5e-macros.Macro.1NtnoPvTQj1IEHCa, preDamageApplication",
-			},
 		],
 	},
 ];
