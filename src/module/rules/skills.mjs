@@ -82,7 +82,7 @@ function applySkillCriticalAdjustment(roll) {
  */
 export function engineering() {
 	CONFIG.DND5E.skills.eng = {
-		label: "Engineering",
+		label: game.i18n.localize("elkan5e.SkillEng"),
 		ability: "int",
 		fullKey: "engineering",
 		reference:
