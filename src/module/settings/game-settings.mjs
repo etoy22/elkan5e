@@ -81,47 +81,6 @@ export async function registerGameSettings() {
 		restricted: true,
 	});
 
-	game.settings.register(MODULE_ID, "skillCriticalAdjustment", {
-		name: "elkan5e.skillCriticalAdjustment.name",
-		hint: "elkan5e.skillCriticalAdjustment.hint",
-		scope: "world",
-		config: true,
-		default: true,
-		type: Boolean,
-		restricted: true,
-	});
-
-	game.settings.register(MODULE_ID, "draconic-toughness", {
-		name: "elkan5e.draconic-toughness.name",
-		hint: "elkan5e.draconic-toughness.hint",
-		scope: "world",
-		config: true,
-		requiresReload: true,
-		default: true,
-		type: Boolean,
-		restricted: true,
-	});
-
-	game.settings.register(MODULE_ID, "scrollRules", {
-		name: "elkan5e.scrolls.name",
-		hint: "elkan5e.scrolls.hint",
-		scope: "world",
-		config: true,
-		requiresReload: true,
-		default: true,
-		type: Boolean,
-		restricted: true,
-	});
-
-	game.settings.register(MODULE_ID, "languageSystem", {
-		name: "elkan5e.languageSystem.name",
-		hint: "elkan5e.languageSystem.hint",
-		scope: "world",
-		config: false,
-		type: Boolean,
-		default: false,
-	});
-
 	game.settings.register(MODULE_ID, "tool", {
 		name: "elkan5e.tools.name",
 		hint: "elkan5e.tools.hint",
@@ -245,14 +204,22 @@ export async function migrateGameSettings() {
 		console.log(
 			`Elkan 5e | Migrating setting "tools" from boolean to number (${oldValue} -> ${convertedValue})`,
 		);
-		await game.settings.set(MODULE_ID, "tool", convertedValue);
-		await game.settings.set(MODULE_ID, "toolsMigration", true);
+		try {
+			await game.settings.set(MODULE_ID, "tool", convertedValue);
+			await game.settings.set(MODULE_ID, "toolsMigration", true);
+		} catch (error) {
+			console.error("Elkan 5e | Failed to migrate the legacy tools setting:", error);
+		}
 	}
 
 	if (game.user.isGM && game.settings.get(MODULE_ID, "tool") === 1) {
 		await waitForGameReady();
 		console.log(`Elkan 5e | Migrating legacy tools to the Elkan 5e tools list`);
-		await game.settings.set(MODULE_ID, "tool", 0);
+		try {
+			await game.settings.set(MODULE_ID, "tool", 0);
+		} catch (error) {
+			console.error("Elkan 5e | Failed to migrate legacy numeric tool setting:", error);
+		}
 	}
 }
 

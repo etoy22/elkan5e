@@ -186,8 +186,27 @@ function getToolType(key, toolSetting) {
 	}
 }
 
-function getToolSetting() {
+export function getEffectiveToolSetting() {
 	const setting = game.settings.get("elkan5e", "tool");
+	const migrationPending =
+		!game.settings.get("elkan5e", "toolsMigration") &&
+		(() => {
+			const oldValue = game.settings.storage
+				?.get("world")
+				?._source?.find((entry) => entry.key === "elkan5e.tools")?.value;
+			return (
+				oldValue === true ||
+				oldValue === "true" ||
+				oldValue === false ||
+				oldValue === "false"
+			);
+		})();
+	if (migrationPending) {
+		const oldValue = game.settings.storage
+			?.get("world")
+			?._source?.find((entry) => entry.key === "elkan5e.tools")?.value;
+		return oldValue === false || oldValue === "false" ? 2 : 0;
+	}
 	return setting === 1 ? 0 : setting;
 }
 
@@ -196,7 +215,7 @@ function getToolSetting() {
  * Existing default abilities are retained when the Elkan definition does not replace them.
  */
 export function tools() {
-	const TOOL_SETTING = getToolSetting();
+	const TOOL_SETTING = getEffectiveToolSetting();
 
 	console.log("Elkan 5e  |  Initializing Tools");
 
@@ -227,7 +246,7 @@ export function tools() {
 }
 
 export async function updateToolTypes() {
-	const TOOL_SETTING = getToolSetting();
+	const TOOL_SETTING = getEffectiveToolSetting();
 
 	console.log("Elkan 5e | Starting updateToolTypes()");
 

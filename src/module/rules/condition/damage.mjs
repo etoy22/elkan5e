@@ -6,10 +6,9 @@ function getActorEffects(actor) {
 }
 
 function hasStatus(actor, statusId) {
-	if (actor?.statuses?.has?.(statusId)) return true;
-
-	return getActorEffects(actor).some((effect) => {
-		if (effect.disabled) return false;
+	const effects = getActorEffects(actor);
+	const matchingEffects = effects.filter((effect) => {
+		if (effect.disabled || effect.isSuppressed) return false;
 
 		const statuses = effect.statuses;
 		return (
@@ -18,6 +17,9 @@ function hasStatus(actor, statusId) {
 			(Array.isArray(statuses) && statuses.includes(statusId))
 		);
 	});
+	if (matchingEffects.length) return true;
+
+	return !effects.length && actor?.statuses?.has?.(statusId);
 }
 
 function hasWeakenedWeaponDamage(actor) {
@@ -26,6 +28,7 @@ function hasWeakenedWeaponDamage(actor) {
 		getActorEffects(actor).some(
 			(effect) =>
 				!effect.disabled &&
+				!effect.isSuppressed &&
 				effect.changes?.some(
 					(change) =>
 						change.key === "flags.midi-qol.onUseMacroName" &&
@@ -106,12 +109,21 @@ export function applyConditionDamage(workflow, damageItem, actor) {
 	const details = damageItem?.damageDetail;
 	if (!Array.isArray(details) || !details.length) return;
 
+	damageItem.damageDetail = details.map((entry) => ({
+		...entry,
+		active: entry.active
+			? { ...entry.active, type: entry.active.type ? { ...entry.active.type } : undefined }
+			: entry.active,
+	}));
+	const damageDetails = damageItem.damageDetail;
+	const attacker = workflow?.actor ?? actor;
+
 	let updated = false;
 	if (
-		hasWeakenedWeaponDamage(actor) &&
+		hasWeakenedWeaponDamage(attacker) &&
 		["mwak", "rwak"].includes(workflow?.activity?.actionType)
 	) {
-		updated = halveDamage(damageItem, details, false) || updated;
+		updated = halveDamage(damageItem, damageDetails, false) || updated;
 	}
 
 	const item = workflow?.item;
@@ -121,9 +133,9 @@ export function applyConditionDamage(workflow, damageItem, actor) {
 		item?.system?.properties?.has?.("mgc") ||
 		props.magicdam ||
 		props.magiceffect;
-	if (hasStatus(actor, "siphoned") && magical) {
-		updated = halveDamage(damageItem, details, true) || updated;
+	if (hasStatus(attacker, "siphoned") && magical) {
+		updated = halveDamage(damageItem, damageDetails, true) || updated;
 	}
 
-	if (updated) recomputeDamage(damageItem, details, actor);
+	if (updated) recomputeDamage(damageItem, damageDetails, actor);
 }

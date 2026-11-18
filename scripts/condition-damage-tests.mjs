@@ -1,11 +1,14 @@
+/* global URL */
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
-import { resolve } from "node:path";
 import { applyConditionDamage } from "../src/module/rules/condition/damage.mjs";
 
 const discorporate = JSON.parse(
-	readFileSync(resolve("packs/_source/elkan5e-spells/level-4/discorporate.json"), "utf8"),
+	readFileSync(
+		new URL("../packs/_source/elkan5e-spells/level-4/discorporate.json", import.meta.url),
+		"utf8",
+	),
 );
 
 function actorWithHP({ value = 10, damage = 0, temp = 0, tempmax = 0, statuses = [] } = {}) {
@@ -171,4 +174,39 @@ test("Existing Discorporate effects keep working until replaced", () => {
 	applyConditionDamage(workflow, workflow.damageItem, actor);
 
 	assert.equal(workflow.damageItem.damageDetail[0].value, 2);
+});
+
+test("Linked damage items receive independent damage detail copies", () => {
+	const sharedDetails = [{ type: "slashing", value: 8, damage: 8 }];
+	const actor = actorWithHP({ statuses: ["weakened"] });
+	const firstWorkflow = damageWorkflow(sharedDetails, {
+		type: "weapon",
+		actionType: "mwak",
+	});
+	const secondWorkflow = damageWorkflow(sharedDetails, {
+		type: "weapon",
+		actionType: "mwak",
+	});
+
+	applyConditionDamage(firstWorkflow, firstWorkflow.damageItem, actor);
+	applyConditionDamage(secondWorkflow, secondWorkflow.damageItem, actor);
+
+	assert.equal(firstWorkflow.damageItem.damageDetail[0].value, 4);
+	assert.equal(secondWorkflow.damageItem.damageDetail[0].value, 4);
+	assert.equal(sharedDetails[0].value, 8);
+});
+
+test("Conditions come from the attacking actor rather than the recipient", () => {
+	const attacker = actorWithHP({ statuses: ["weakened"] });
+	const recipient = actorWithHP({ value: 20, statuses: [] });
+	const workflow = damageWorkflow([{ type: "slashing", value: 8, damage: 8 }], {
+		type: "weapon",
+		actionType: "mwak",
+	});
+	workflow.actor = attacker;
+
+	applyConditionDamage(workflow, workflow.damageItem, recipient);
+
+	assert.equal(workflow.damageItem.damageDetail[0].value, 4);
+	assert.equal(workflow.damageItem.newHP, 16);
 });
