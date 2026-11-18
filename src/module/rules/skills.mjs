@@ -85,6 +85,7 @@ export function engineering() {
 		label: game.i18n.localize("elkan5e.SkillEng"),
 		ability: "int",
 		fullKey: "engineering",
+		icon: "icons/commodities/tech/gear-wheels-double-steel.webp",
 		reference:
 			"Compendium.elkan5e.elkan5e-rules.JournalEntry.rv19GFzEa0nMTuAF.JournalEntryPage.AT8kvdogoKRgWLO9",
 	};
