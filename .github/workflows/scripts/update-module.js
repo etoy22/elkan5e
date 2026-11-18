@@ -34,6 +34,11 @@ export function updateModuleJson(
 	if (!moduleJson.compatibility) moduleJson.compatibility = {};
 	moduleJson.compatibility.minimum = compatibility.minimum;
 	moduleJson.compatibility.verified = compatibility.verified;
+	if (compatibility.maximum) {
+		moduleJson.compatibility.maximum = compatibility.maximum;
+	} else {
+		delete moduleJson.compatibility.maximum;
+	}
 
 	const repoUrl = moduleJson.url;
 	moduleJson.manifest = buildReleaseAssetUrl(
@@ -58,6 +63,7 @@ function main() {
 	const compatibility = {
 		minimum: process.argv[3],
 		verified: process.argv[4],
+		maximum: process.argv[5],
 	};
 
 	if (!version) {

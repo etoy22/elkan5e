@@ -1,0 +1,53 @@
+name: Bug report
+description: Report a problem with Elkan 5e
+title: "[Bug]: "
+labels:
+    - bug
+body:
+    - type: markdown
+      attributes:
+          value: |
+              Please include enough detail for maintainers to reproduce the problem.
+    - type: textarea
+      id: description
+      attributes:
+          label: What happened?
+          description: Describe the bug and the expected behavior.
+      validations:
+          required: true
+    - type: textarea
+      id: reproduction
+      attributes:
+          label: Steps to reproduce
+          placeholder: |
+              1. Open...
+              2. Enable...
+              3. Click...
+      validations:
+          required: true
+    - type: input
+      id: foundry
+      attributes:
+          label: Foundry VTT version
+          placeholder: v14.368
+      validations:
+          required: true
+    - type: input
+      id: dnd5e
+      attributes:
+          label: dnd5e system version
+          placeholder: 6.1.0
+      validations:
+          required: true
+    - type: input
+      id: elkan
+      attributes:
+          label: Elkan 5e version
+          placeholder: v14.6.1
+      validations:
+          required: true
+    - type: textarea
+      id: logs
+      attributes:
+          label: Console logs or screenshots
+          description: Paste relevant Foundry console output or attach screenshots.

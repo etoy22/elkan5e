@@ -36,6 +36,11 @@ try {
 	fs.writeFileSync(outputPath, `${formattedNotes}\n`, 'utf8');
 	console.error(`Release notes for ${version} written to ${outputPath}`);
 } catch (error) {
-	console.error(`::warning::No release notes passed along: ${error.message}`);
-	fs.writeFileSync(outputPath, '', 'utf8');
+	console.error(`::error::Release notes failed: ${error.message}`);
+	try {
+		fs.unlinkSync(outputPath);
+	} catch {
+		// The output may not exist yet.
+	}
+	process.exit(1);
 }

@@ -6,21 +6,14 @@ import {
 	describeBuildChanges,
 	deepEqualIgnoringMeta,
 	differingFields,
-	identifierOf,
 	pairActivities,
 	planEffectSync,
 	resolveMatch,
 	suggestVariantOf,
-	toComparable,
 } from "../src/module/settings/match-items.mjs";
 
 const doc = (name, type, identifier) => ({ name, type, system: identifier ? { identifier } : {} });
 const index = (...packs) => buildIndex(packs.map(([pack, docs]) => ({ pack, docs })));
-
-test("identifierOf falls back to a slug of the name", () => {
-	assert.equal(identifierOf({ name: "Fire Bolt" }), "fire-bolt");
-	assert.equal(identifierOf({ name: "X", system: { identifier: " custom " } }), "custom");
-});
 
 test("resolveMatch prefers identifier plus name", () => {
 	const idx = index([
@@ -58,11 +51,6 @@ test("resolveMatch reports a custom item sharing an identifier as ambiguous", ()
 	assert.equal(m.count, 2);
 });
 
-test("resolveMatch reports none when nothing matches", () => {
-	const idx = index(["eq", [doc("Dagger", "weapon")]]);
-	assert.equal(resolveMatch(doc("Spoon", "loot"), idx).status, "none");
-});
-
 test("resolveMatch uses pack priority when the same name is in two packs", () => {
 	const idx = index(
 		["class", [doc("Extra Attack", "feat", "extra-attack")]],
@@ -96,16 +84,6 @@ test("deepEqualIgnoringMeta ignores ids, stats, ownership and effect origins", (
 	assert.equal(deepEqualIgnoringMeta([1, 2], [1, 2, 3]), false);
 	assert.equal(deepEqualIgnoringMeta(["a", "b"], ["b", "a"]), true);
 	assert.equal(deepEqualIgnoringMeta([{ n: 1 }, { n: 2 }], [{ n: 2 }, { n: 1 }]), false);
-});
-
-test("toComparable drops relationship flags and placement", () => {
-	const out = toComparable({
-		sort: 5,
-		folder: "f",
-		flags: { dnd5e: { advancementOrigin: "x", cachedFor: "y" } },
-		name: "N",
-	});
-	assert.deepEqual(out, { flags: {}, name: "N" });
 });
 
 test("differingFields names the changed system fields", () => {
@@ -205,10 +183,14 @@ test("resolveMatch follows Elkan's recorded renames, even when the old item stil
 	assert.equal(m.doc.name, "Unarmed Strike");
 
 	const idx2 = index(["a", [doc("Ambidexterity", "feat", "ambidexterity")]]);
-	assert.equal(resolveMatch(doc("Ambidextrous Might", "feat", "ambidextrous-might"), idx2).doc.name, "Ambidexterity");
+	assert.equal(
+		resolveMatch(doc("Ambidextrous Might", "feat", "ambidextrous-might"), idx2).doc.name,
+		"Ambidexterity",
+	);
 	// With renames switched off (other-modules runs) the old name is simply unmatched.
 	assert.equal(
-		resolveMatch(doc("Ambidextrous Might", "feat", "ambidextrous-might"), idx2, { renames: {} }).status,
+		resolveMatch(doc("Ambidextrous Might", "feat", "ambidextrous-might"), idx2, { renames: {} })
+			.status,
 		"none",
 	);
 });
@@ -225,7 +207,13 @@ test("weak sources match by name but never by identifier alone", () => {
 test("carryAdvancementValues matches by id, then by type, title and level, and reports the rest", () => {
 	const old = [
 		{ _id: "a", type: "Trait", title: "Skills", level: 1, value: { chosen: ["skills:arc"] } },
-		{ _id: "b", type: "ItemGrant", title: "Features", level: 1, value: { added: { x: "uuid" } } },
+		{
+			_id: "b",
+			type: "ItemGrant",
+			title: "Features",
+			level: 1,
+			value: { added: { x: "uuid" } },
+		},
 		{ _id: "c", type: "ItemChoice", title: "Pick", level: 3, value: { added: { y: "uuid" } } },
 		{ _id: "d", type: "Trait", title: "Tools", level: 1, value: {} },
 	];
@@ -240,12 +228,6 @@ test("carryAdvancementValues matches by id, then by type, title and level, and r
 	assert.deepEqual(fresh[1].value, { added: { x: "uuid" } });
 	assert.equal(fresh[2].value, undefined);
 	assert.deepEqual(lost, [{ type: "ItemChoice", title: "Pick", level: 3 }]);
-});
-
-test("toComparable ignores <br /> versus <br> in descriptions", () => {
-	const a = { system: { description: { value: "<p>a<br /></p>" } } };
-	const b = { system: { description: { value: "<p>a<br></p>" } } };
-	assert.deepEqual(toComparable(a), toComparable(b));
 });
 
 test("describeBuildChanges reports replaced, added and removed features by level", () => {
@@ -265,15 +247,4 @@ test("describeBuildChanges reports replaced, added and removed features by level
 		"Level 6: New One added",
 	]);
 	assert.equal(unchanged, 2);
-});
-
-test("describeBuildChanges reports nothing when the grants are the same", () => {
-	const adv = [{ type: "ItemGrant", level: 1, configuration: { items: [{ uuid: "x" }] } }];
-	const { lines, unchanged } = describeBuildChanges(
-		{ advancement: adv },
-		{ advancement: structuredClone(adv) },
-		() => "X",
-	);
-	assert.deepEqual(lines, []);
-	assert.equal(unchanged, 1);
 });

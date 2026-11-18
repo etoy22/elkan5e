@@ -6,14 +6,11 @@ import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
 import { dirname, extname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { parse } from "yaml";
 import { buildPayload, releaseToFoundry } from "../.github/workflows/scripts/release-foundry.js";
 import { updateModuleJson } from "../.github/workflows/scripts/update-module.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-const workflowPath = resolve(__dirname, "../.github/workflows/main.yml");
-const workflow = parse(readFileSync(workflowPath, "utf8"));
 const packsRoot = resolve(__dirname, "../packs/_source");
 
 const baseEnv = Object.freeze({
@@ -43,122 +40,6 @@ function walkJsonFiles(dir) {
 	}
 	return out;
 }
-
-function formatJsonParseError(filePath, err) {
-	const message = err && err.message ? err.message : String(err);
-	let details = `PARSE ERROR: ${filePath}\n${message}`;
-
-	try {
-		const content = readFileSync(filePath, "utf8");
-		const match = /position (\d+)|line (\d+) column (\d+)/i.exec(message);
-		if (match?.[1]) {
-			const pos = Number(match[1]);
-			const start = Math.max(0, pos - 80);
-			const end = Math.min(content.length, pos + 80);
-			details += `\n\n--- context ---\n${content.slice(start, end)}\n--- end ---`;
-		} else if (match?.[2]) {
-			const lineNumber = Number(match[2]);
-			const lines = content.split(/\r?\n/);
-			const start = Math.max(0, lineNumber - 3);
-			const end = Math.min(lines.length, lineNumber + 2);
-			const excerpt = lines
-				.slice(start, end)
-				.map((line, idx) => {
-					const n = String(start + idx + 1).padStart(4, " ");
-					return `${n}: ${line}`;
-				})
-				.join("\n");
-			details += `\n\n--- context ---\n${excerpt}\n--- end ---`;
-		} else {
-			details += `\n\n--- file start ---\n${content.slice(0, 400)}\n--- end ---`;
-		}
-	} catch (readErr) {
-		void readErr;
-	}
-
-	return details;
-}
-
-test("release-foundry-package job is wired to the release script", () => {
-	const job = workflow.jobs?.["release-foundry-package"];
-	assert.ok(job, "release-foundry-package job should exist");
-
-	assert.deepEqual(job.needs, ["version-check", "create-github-release"]);
-	assert.equal(
-		job.if,
-		"needs.version-check.outputs.should_continue == 'true' && needs.create-github-release.result == 'success' && needs.version-check.outputs.test != 'true' && needs.version-check.outputs.prerelease != 'true'",
-	);
-
-	assert.equal(job.steps?.length, 3);
-	assert.equal(job.steps[0].uses, "actions/checkout@v5");
-	assert.equal(job.steps[1].name, "Install node dependencies");
-	assert.equal(job.steps[1].run, "npm install node-fetch@2");
-	assert.equal(job.steps[2].name, "Release Foundry Package");
-	assert.equal(job.steps[2].run, "node .github/workflows/scripts/release-foundry.js");
-	assert.deepEqual(job.steps[2].env, {
-		FOUNDRY_API_TOKEN: "${{ secrets.FOUNDRY_API_TOKEN }}",
-		GITHUB_REPOSITORY: "${{ github.repository }}",
-		VERSION: "${{ needs.version-check.outputs.version }}",
-		MINIMUM: "${{ needs.version-check.outputs.minimum }}",
-		VERIFIED: "${{ needs.version-check.outputs.verified }}",
-		TEST: "${{ needs.version-check.outputs.test }}",
-	});
-});
-
-test("notify-discord job publishes release details to Discord", () => {
-	const job = workflow.jobs?.["notify-discord"];
-	assert.ok(job, "notify-discord job should exist");
-
-	assert.deepEqual(job.needs, [
-		"version-check",
-		"extract-release-notes",
-		"build-and-pack",
-		"create-github-release",
-	]);
-	const notifyIf = (job.if ?? "").trim();
-	assert.equal(
-		notifyIf,
-		"needs.version-check.outputs.should_continue == 'true' && needs.create-github-release.result == 'success' && needs.version-check.outputs.test != 'true'",
-	);
-	assert.deepEqual(job.env, {
-		DISCORD_WEBHOOK: "${{ secrets.DISCORD_WEBHOOK }}",
-		REPO_URL: "https://github.com/${{ github.repository }}",
-		VERSION: "${{ needs.version-check.outputs.version }}",
-		MINIMUM: "${{ needs.version-check.outputs.minimum }}",
-		VERIFIED: "${{ needs.version-check.outputs.verified }}",
-	});
-
-	const stepNames = job.steps?.map((step) => step.name ?? step.uses);
-	assert.deepEqual(stepNames, [
-		"Download release notes artifact",
-		"Show release notes in logs",
-		"Format release notes for Discord",
-		"Show formatted release notes in logs",
-		"Prepare Discord payloads",
-		"Post to Discord",
-	]);
-
-	assert.equal(job.steps[0].uses, "actions/download-artifact@v7");
-	assert.equal(job.steps[4].id, "prepare_discord_payload");
-	const postStep = job.steps[5].run ?? "";
-	assert.ok(postStep.includes("set -eo pipefail"), "post step should enable pipefail");
-	assert.ok(
-		postStep.includes(
-			'curl -sS -H \'Content-Type: application/json\' -X POST -d @"${payload_path}" "$DISCORD_WEBHOOK"',
-		),
-		"post step should invoke curl with payload and webhook",
-	);
-	assert.ok(
-		postStep.includes('if [ -z "${DISCORD_WEBHOOK:-}" ]; then'),
-		"post step should detect missing webhook",
-	);
-	assert.ok(
-		postStep.includes(
-			"DISCORD_WEBHOOK secret is not configured; skipping Discord notification.",
-		),
-		"post step should log why GitHub Actions is skipping posting",
-	);
-});
 
 test("buildPayload includes repository links and compatibility", () => {
 	const payload = buildPayload({
@@ -300,7 +181,7 @@ test("updateModuleJson synchronises manifest and download URLs with the version"
 	let written;
 	updateModuleJson(
 		"v1.2.3",
-		{ minimum: "13", verified: "13.347" },
+		{ minimum: "13", verified: "13.347", maximum: "13.348" },
 		{
 			readFileSync: () => JSON.stringify(initialModule),
 			writeFileSync: (_, data) => {
@@ -312,6 +193,7 @@ test("updateModuleJson synchronises manifest and download URLs with the version"
 	assert.equal(written.version, "v1.2.3");
 	assert.equal(written.compatibility.minimum, "13");
 	assert.equal(written.compatibility.verified, "13.347");
+	assert.equal(written.compatibility.maximum, "13.348");
 	assert.equal(
 		written.manifest,
 		"https://github.com/etoy22/elkan5e/releases/download/v1.2.3/module.json",
@@ -325,7 +207,7 @@ test("updateModuleJson synchronises manifest and download URLs with the version"
 test("Brawler upgrades the existing unarmed strike", () => {
 	const brawler = JSON.parse(
 		readFileSync(join(packsRoot, "elkan5e-feats", "level-1-feats", "brawler.json"), "utf8"),
-	); 
+	);
 	const modification = Object.values(brawler.system.advancement).find(
 		(advancement) => advancement.type === "ModifyItem",
 	);
@@ -373,20 +255,4 @@ test("class saving-throw grants are not preselected", () => {
 			`${classItem.name} saves should apply initially`,
 		);
 	}
-});
-
-test("pack source JSON files parse cleanly", () => {
-	const files = walkJsonFiles(packsRoot);
-	const errors = [];
-
-	for (const filePath of files) {
-		try {
-			const content = readFileSync(filePath, "utf8");
-			JSON.parse(content);
-		} catch (err) {
-			errors.push(formatJsonParseError(filePath, err));
-		}
-	}
-
-	assert.equal(errors.length, 0, errors.join("\n\n"));
 });

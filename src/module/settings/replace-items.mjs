@@ -62,11 +62,19 @@ export function getModulesWithItemPacks() {
 		(p) => p.metadata.packageName === game.system.id && p.documentName === "Item",
 	);
 	const systemEntry = systemPacks.length
-		? [{ id: game.system.id, title: `${game.system.title} (core rules)`, packs: systemPacks.length }]
+		? [
+				{
+					id: game.system.id,
+					title: `${game.system.title} (core rules)`,
+					packs: systemPacks.length,
+				},
+			]
 		: [];
 	for (const mod of game.modules) {
 		if (!mod.active || mod.id === "elkan5e") continue;
-		const packs = game.packs.filter((p) => p.metadata.packageName === mod.id && p.documentName === "Item");
+		const packs = game.packs.filter(
+			(p) => p.metadata.packageName === mod.id && p.documentName === "Item",
+		);
 		if (packs.length) out.push({ id: mod.id, title: mod.title, packs: packs.length });
 	}
 	return [...systemEntry, ...out.sort((a, b) => a.title.localeCompare(b.title))];
@@ -279,7 +287,13 @@ export async function restorePropertiesToData(newData, savedProps, _mode, preser
  * @param {boolean} [crossType] - True when the new item is a different type; only keep paths it has.
  * @param {boolean} [renamed] - True when Elkan renamed the item, so the new name and identifier win.
  */
-function applyPreserved(newData, savedProps, preserveProperties, crossType = false, renamed = false) {
+function applyPreserved(
+	newData,
+	savedProps,
+	preserveProperties,
+	crossType = false,
+	renamed = false,
+) {
 	if (!savedProps) return;
 
 	newData.img = savedProps.img ?? newData.img;
@@ -365,9 +379,15 @@ function carryOverActorState(oldItem, newData) {
 		const kept = result.lost.filter((l) => l.type === "AbilityScoreImprovement");
 		for (const old of oldList) {
 			const isLost = kept.some(
-				(l) => l.title === (old.title ?? "") && l.level === (old.level ?? old.configuration?.level ?? null),
+				(l) =>
+					l.title === (old.title ?? "") &&
+					l.level === (old.level ?? old.configuration?.level ?? null),
 			);
-			if (old.type === "AbilityScoreImprovement" && isLost && Object.keys(old.value ?? {}).length) {
+			if (
+				old.type === "AbilityScoreImprovement" &&
+				isLost &&
+				Object.keys(old.value ?? {}).length
+			) {
 				const copy = structuredClone(old);
 				if (Array.isArray(newAdvancement)) newAdvancement.push(copy);
 				else newAdvancement[copy._id] = copy;
@@ -455,7 +475,8 @@ async function updateInPlace(item, newData) {
 	// Flags other modules or sheets keep on the item (a sheet's favorites, say) stay unless the
 	// compendium version defines that namespace itself.
 	for (const [namespace, value] of Object.entries(item.flags ?? {})) {
-		if (!(namespace in flags) && namespace !== "core") flags[namespace] = foundry.utils.deepClone(value);
+		if (!(namespace in flags) && namespace !== "core")
+			flags[namespace] = foundry.utils.deepClone(value);
 	}
 	if (item.flags?.core)
 		flags.core = foundry.utils.mergeObject(newData.flags?.core ?? {}, item.flags.core, {
@@ -579,11 +600,13 @@ async function preparePhase({
 			if (!packDocCache.has(classPack.collection))
 				packDocCache.set(classPack.collection, await classPack.getDocuments());
 			fallbackDocs.push(
-				...packDocCache.get(classPack.collection).filter(
-					(d) =>
-						(types.includes(d.type) && !primary.has(classPack.collection)) ||
-						(!types.includes(d.type) && KNOWN_TYPE_CHANGES.has(identifierOf(d))),
-				),
+				...packDocCache
+					.get(classPack.collection)
+					.filter(
+						(d) =>
+							(types.includes(d.type) && !primary.has(classPack.collection)) ||
+							(!types.includes(d.type) && KNOWN_TYPE_CHANGES.has(identifierOf(d))),
+					),
 			);
 		}
 		sources.push({ pack: "elkan5e.other-packs", docs: fallbackDocs, weak: true });
@@ -594,17 +617,16 @@ async function preparePhase({
 	let spells = null;
 	if (types.includes("consumable")) {
 		spells = new Map();
-		const spellPacks =
-			[
-				...(usesElkan()
-					? ["elkan5e.elkan5e-spells", "elkan5e.elkan5e-class-features"]
-							.map((id) => game.packs.get(id))
-							.filter(Boolean)
-					: []),
-				...game.packs.filter(
-					(p) => extraModuleIds.has(p.metadata.packageName) && p.documentName === "Item",
-				),
-			];
+		const spellPacks = [
+			...(usesElkan()
+				? ["elkan5e.elkan5e-spells", "elkan5e.elkan5e-class-features"]
+						.map((id) => game.packs.get(id))
+						.filter(Boolean)
+				: []),
+			...game.packs.filter(
+				(p) => extraModuleIds.has(p.metadata.packageName) && p.documentName === "Item",
+			),
+		];
 		for (const pack of spellPacks) {
 			if (!packDocCache.has(pack.collection))
 				packDocCache.set(pack.collection, await pack.getDocuments());
@@ -699,15 +721,26 @@ async function processActorForPhase(ctx, actor) {
 
 		try {
 			const renamed = match.by === "renamed";
-			const { newData, lost, keptAsi, pendingIds } = buildReplacementData(item, match.doc, mode, {
-				preserveProperties: ctx.preserveProperties,
-				preserveConsumption: ctx.preserveConsumption,
-				renamed,
-			});
+			const { newData, lost, keptAsi, pendingIds } = buildReplacementData(
+				item,
+				match.doc,
+				mode,
+				{
+					preserveProperties: ctx.preserveProperties,
+					preserveConsumption: ctx.preserveConsumption,
+					renamed,
+				},
+			);
 			const buildChanges = BUILD_PHASES.has(phase.key)
 				? describeBuildChanges(
-						{ advancement: advancementList(item._source.system.advancement), hitDie: item.system.hd?.denomination },
-						{ advancement: advancementList(newData.system.advancement), hitDie: newData.system.hd?.denomination },
+						{
+							advancement: advancementList(item._source.system.advancement),
+							hitDie: item.system.hd?.denomination,
+						},
+						{
+							advancement: advancementList(newData.system.advancement),
+							hitDie: newData.system.hd?.denomination,
+						},
 						(uuid) => {
 							const doc = fromUuidSync(uuid);
 							return doc?.type === "feat" ? doc.name : "";
@@ -774,7 +807,8 @@ async function processScroll(ctx, actor, item, entry, mode) {
 
 	try {
 		const level = item.flags?.dnd5e?.spellLevel?.value ?? spell.system.level;
-		const explanation = (item.system.description?.value ?? "").length > 600 ? "full" : "reference";
+		const explanation =
+			(item.system.description?.value ?? "").length > 600 ? "full" : "reference";
 		const scroll = await CONFIG.Item.documentClass.createScrollFromSpell(
 			spell,
 			{},
@@ -807,7 +841,21 @@ async function processScroll(ctx, actor, item, entry, mode) {
  * @param {{lost: object[], note: string}} extra - Advancement choices not carried, and a note.
  * @returns {Promise<void>} Resolves when handled.
  */
-async function commitUpdate(ctx, actor, item, newData, entry, { lost: lostIn = [], note = "", scroll = false, keptAsi = 0, pendingIds = [], buildChanges = null }) {
+async function commitUpdate(
+	ctx,
+	actor,
+	item,
+	newData,
+	entry,
+	{
+		lost: lostIn = [],
+		note = "",
+		scroll = false,
+		keptAsi = 0,
+		pendingIds = [],
+		buildChanges = null,
+	},
+) {
 	const { phase, dryRun } = ctx;
 	let lost = lostIn;
 	const oldData = item.toObject();
@@ -841,13 +889,19 @@ async function commitUpdate(ctx, actor, item, newData, entry, { lost: lostIn = [
 	if (gone.length)
 		parts.push(
 			`No longer in Elkan 5e (nothing to choose): ${gone
-				.map((l) => `${l.type}${l.title ? ` '${l.title}'` : ""}${l.level != null ? ` level ${l.level}` : ""}`)
+				.map(
+					(l) =>
+						`${l.type}${l.title ? ` '${l.title}'` : ""}${l.level != null ? ` level ${l.level}` : ""}`,
+				)
 				.join(", ")}`,
 		);
 	if (lost.length) {
 		parts.push(
 			`Choices to make again (the advancement changed): ${lost
-				.map((l) => `${l.type}${l.title ? ` '${l.title}'` : ""}${l.level != null ? ` level ${l.level}` : ""}`)
+				.map(
+					(l) =>
+						`${l.type}${l.title ? ` '${l.title}'` : ""}${l.level != null ? ` level ${l.level}` : ""}`,
+				)
 				.join(", ")}`,
 		);
 		phase.attention = (phase.attention ?? 0) + 1;
@@ -879,7 +933,8 @@ async function commitUpdate(ctx, actor, item, newData, entry, { lost: lostIn = [
 function keepActorFlags(oldData, newData) {
 	newData.flags = { ...(newData.flags ?? {}) };
 	for (const [namespace, value] of Object.entries(oldData.flags ?? {})) {
-		if (!(namespace in newData.flags)) newData.flags[namespace] = foundry.utils.deepClone(value);
+		if (!(namespace in newData.flags))
+			newData.flags[namespace] = foundry.utils.deepClone(value);
 	}
 	for (const key of ["advancementOrigin", "advancementRoot"]) {
 		const value = oldData.flags?.dnd5e?.[key];
@@ -935,8 +990,12 @@ function recordError(phase, item, actor, entry, err) {
  * @returns {Promise<object>} The phase record.
  */
 export async function migrateActorByType(options) {
-	const { progress = null, report = createReport(), updateMode, progressLabel = "Migration" } =
-		options;
+	const {
+		progress = null,
+		report = createReport(),
+		updateMode,
+		progressLabel = "Migration",
+	} = options;
 	const ctx = await preparePhase({ ...options, report });
 	const actors = await getActorsToProcess(updateMode);
 	ctx.phase.actors = actors.length;
@@ -1260,8 +1319,8 @@ export async function processElkanUpdateForm(updates, { dryRun = false } = {}) {
 	extraModuleIds = new Set(
 		scope !== "elkan"
 			? (updates.extraModules ?? []).filter(
-						(id) => id === game.system.id || game.modules.get(id)?.active,
-					)
+					(id) => id === game.system.id || game.modules.get(id)?.active,
+				)
 			: [],
 	);
 	packDocCache.clear();
@@ -1279,7 +1338,9 @@ export async function processElkanUpdateForm(updates, { dryRun = false } = {}) {
 			npcs: updates[`npc${name}`] ?? "none",
 		});
 		const hasBuildRows = ["Ancestry", "Background", "Class", "Subclass"].some(
-			(n) => (updates[`actor${n}`] ?? "none") !== "none" || (updates[`npc${n}`] ?? "none") !== "none",
+			(n) =>
+				(updates[`actor${n}`] ?? "none") !== "none" ||
+				(updates[`npc${n}`] ?? "none") !== "none",
 		);
 		if (hasBuildRows) {
 			scope = "elkan";

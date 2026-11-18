@@ -170,9 +170,15 @@ export function deepEqualIgnoringMeta(a, b, inEffect = false) {
 	}
 
 	if (typeof a === "object") {
-		const keep = (k) => !IGNORED_KEYS.has(k) && !(inEffect && IGNORED_EFFECT_KEYS.has(k));
-		const aKeys = Object.keys(a).filter(keep);
-		const bKeys = Object.keys(b).filter(keep);
+		// A key that is null or undefined counts as missing: Foundry does not store them, so a
+		// compendium copy with empty speeds matches an actor copy without them.
+		const keep = (o) => (k) =>
+			!IGNORED_KEYS.has(k) &&
+			!(inEffect && IGNORED_EFFECT_KEYS.has(k)) &&
+			o[k] !== null &&
+			o[k] !== undefined;
+		const aKeys = Object.keys(a).filter(keep(a));
+		const bKeys = Object.keys(b).filter(keep(b));
 		if (aKeys.length !== bKeys.length) return false;
 		return aKeys.every(
 			(key) =>
@@ -197,8 +203,16 @@ export function toComparable(data) {
 	delete obj.folder;
 	// Foundry saves "<br />" as "<br>", so the two must not count as a difference.
 	if (typeof obj.system?.description?.value === "string")
-		obj.system.description.value = obj.system.description.value.replace(/<br\s*\/>/g, "<br>");
+		// Foundry also escapes a bare "&" to "&amp;" when it saves a description.
+		obj.system.description.value = obj.system.description.value
+			.replace(/<br\s*\/>/g, "<br>")
+			.replace(/&amp;/g, "&");
+	// dnd5e derives an effect's duration from the item's activity, so an actor's copy keeps none.
+	for (const effect of obj.effects ?? []) if (effect?.duration) delete effect.duration.value;
+	if (obj.flags) delete obj.flags["tidy5e-sheet"];
 	if (obj.flags?.dnd5e) {
+		delete obj.flags.dnd5e.riders;
+		delete obj.flags.dnd5e.sourceId;
 		delete obj.flags.dnd5e.advancementOrigin;
 		delete obj.flags.dnd5e.advancementRoot;
 		delete obj.flags.dnd5e.cachedFor;
@@ -398,7 +412,10 @@ export function describeBuildChanges(oldSide, newSide, nameOf) {
 			continue;
 		}
 		// Several at once: do not guess which replaced which.
-		const short = (list) => (list.length > 5 ? `${list.slice(0, 5).join(", ")} and ${list.length - 5} more` : list.join(", "));
+		const short = (list) =>
+			list.length > 5
+				? `${list.slice(0, 5).join(", ")} and ${list.length - 5} more`
+				: list.join(", ");
 		if (gone.length) lines.push(`${label}: no longer granted: ${short(gone)}`);
 		if (added.length) lines.push(`${label}: now granted: ${short(added)}`);
 	}
@@ -407,7 +424,10 @@ export function describeBuildChanges(oldSide, newSide, nameOf) {
 		new Map(
 			list
 				.filter((a) => !["ItemGrant", "ItemChoice"].includes(a.type))
-				.map((a) => [`${a.type}|${a.title ?? ""}|${levelOf(a)}`, JSON.stringify(a.configuration ?? {})]),
+				.map((a) => [
+					`${a.type}|${a.title ?? ""}|${levelOf(a)}`,
+					JSON.stringify(a.configuration ?? {}),
+				]),
 		);
 	const oo = other(oldSide.advancement);
 	const nn = other(newSide.advancement);
@@ -419,15 +439,22 @@ export function describeBuildChanges(oldSide, newSide, nameOf) {
 		if (!oo.has(key)) lines.push(`${label} added`);
 		else if (oo.get(key) !== config) {
 			const group = `${type}${title ? ` '${title}'` : ""}`;
-			changedLevels.set(group, [...(changedLevels.get(group) ?? []), level > 0 ? level : "start"]);
+			changedLevels.set(group, [
+				...(changedLevels.get(group) ?? []),
+				level > 0 ? level : "start",
+			]);
 		}
 	}
 	for (const [group, levels] of changedLevels)
-		lines.push(`${group} settings changed (${levels.length > 1 ? "levels" : "level"} ${levels.join(", ")})`);
+		lines.push(
+			`${group} settings changed (${levels.length > 1 ? "levels" : "level"} ${levels.join(", ")})`,
+		);
 	for (const key of oo.keys()) {
 		if (nn.has(key)) continue;
 		const [type, title, level] = key.split("|");
-		lines.push(`${type}${title ? ` '${title}'` : ""} (${level > 0 ? `level ${level}` : "start"}) removed`);
+		lines.push(
+			`${type}${title ? ` '${title}'` : ""} (${level > 0 ? `level ${level}` : "start"}) removed`,
+		);
 	}
 	return { lines, unchanged };
 }

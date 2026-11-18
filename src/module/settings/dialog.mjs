@@ -175,7 +175,8 @@ class UpdateOptionsWindow extends ApplicationV2 {
 			root.querySelector(".elkan-modules-box")?.classList.toggle("is-hidden", !modulesOn);
 			for (const el of root.querySelectorAll(
 				"[name='remove-duplicates'],[name='remove-duplicates-npc']",
-``			))
+				``,
+			))
 				el.disabled = modulesOn;
 		};
 		for (const el of rows) el.addEventListener("change", refresh);

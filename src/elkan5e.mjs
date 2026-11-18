@@ -77,6 +77,8 @@ import {
 	undeadNature,
 	marksmanCover,
 	marksmanLongRange,
+	initFeatIdentifierMap,
+	onFilterOwnedFeats,
 } from "./module/feats.mjs";
 import { sailorVigilance } from "./module/origin/background.mjs";
 import { armor } from "./module/rules/armor.mjs";
@@ -263,7 +265,9 @@ function registerHooks() {
 				fixRegionTurnEnd();
 				// Not awaited: the welcome dialog resolves only when the user closes it, and the
 				// remaining startup work shouldn't wait on that.
-				startDialog().catch((error) => console.error("Elkan 5e | Welcome dialog error:", error));
+				startDialog().catch((error) =>
+					console.error("Elkan 5e | Welcome dialog error:", error),
+				);
 				await backfillModifyItemRiders();
 				await migrateWarlockSpellMethod();
 

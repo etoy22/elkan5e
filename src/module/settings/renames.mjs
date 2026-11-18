@@ -29,7 +29,7 @@ export const RENAMED_IDENTIFIERS = {
 	"open-hand": "windwalker",
 	"fey-patron": "dreamweaver",
 	"college-of-noise": "cacophony",
-	"noise": "cacophony",
+	noise: "cacophony",
 	"oath-of-devotion": "paragon",
 	// "Ensnaring Strike renamed to Ensnaring Vine"
 	"ensnaring-strike": "ensnaring-vine",
