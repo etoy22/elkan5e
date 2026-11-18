@@ -1,5 +1,30 @@
 # Changelog
 
+# v14.6.0.1
+
+## Bug Fixes
+
+- Devout now allows you to do Spellcasting Ability Wisdom
+- Crawl now displays its localized label instead of the untranslated `elkan5e.movement.crawl` key.
+- Level-up pickers no longer hide feats you already own or Warlock invocations based on pact filtering.
+- Engineering now displays as Engineering in advancement choices.
+- Fighter's starting equipment now grants one Torch (5) and one Rations (5) stack instead of repeated individual items.
+- Brawler now upgrades the existing Unarmed Strike damage die to d6, while keeping Improvised Attack separate.
+- Fixed level-1 saving throws not applying for Bard, Cleric, and Fighter.
+- Make the spell components visible to compendium
+- Siphoned and Weakened now halve damage correctly across all damage types before rounding, and preserve the correct healing and HP calculations.
+- Weakened and Siphoned damage automation now runs from world status effects instead of compendium macros; Discorporate now grants Weakened.
+- Removed old reference to herbalism kit in Wizard tool
+
+## Rules References
+
+- Grouped Hazards and Environmental Effects pages into separate alphabetical sections, and alphabetized the hazard links.
+- Moved Ooze into alphabetical order in the Creature Types reference.
+
+# Misc
+
+- Removed the Legacy Tools option as it only existed for the short period. Migrated existing setting to the current Elkan tools selection.
+
 # v14.6.0
 
 Elkan 5e has a new version numbering scheme, so you can tell at a glance which Foundry and dnd5e versions a release is built for. In v14.6.0:
@@ -4290,4 +4315,3 @@ Made subclass names consistent in formatting
 # v1.0.1
 
 - A local file
-

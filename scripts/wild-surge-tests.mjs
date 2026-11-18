@@ -140,34 +140,48 @@ test("Avert rechecks availability after redraw and spends only after success", a
 });
 
 test("delayed storage refunds rejected or cancelled creation and preserves successful pairs", async () => {
-	for (const failure of ["Item", "ActiveEffect", "cancel", null]) {
-		const delay = feature("delayed-surge");
-		const { actor, activity } = setup(delay);
-		const stored = [];
-		let deleted = false;
-		actor.createEmbeddedDocuments = async (type, data) => {
-			if (failure === type) throw new Error("synthetic creation failure");
-			if (failure === "cancel") return [];
-			const doc = {
-				...data[0],
-				delete: async () => {
-					deleted = true;
-				},
+	const loggedErrors = [];
+	const originalConsoleError = console.error;
+	console.error = (...args) => loggedErrors.push(args);
+	try {
+		for (const failure of ["Item", "ActiveEffect", "cancel", null]) {
+			const delay = feature("delayed-surge");
+			const { actor, activity } = setup(delay);
+			const stored = [];
+			let deleted = false;
+			actor.createEmbeddedDocuments = async (type, data) => {
+				if (failure === type) throw new Error("synthetic creation failure");
+				if (failure === "cancel") return [];
+				const doc = {
+					...data[0],
+					delete: async () => {
+						deleted = true;
+					},
+				};
+				stored.push(doc);
+				return [doc];
 			};
-			stored.push(doc);
-			return [doc];
-		};
-		choose = () => "delay";
-		await wildSurge(activity);
-		assert.equal(delay.system.uses.spent, failure ? 0 : 1);
-		assert.equal(actor.updates.length, failure ? 1 : 0);
-		if (failure === "ActiveEffect") assert.equal(deleted, true);
-		if (!failure)
-			assert.equal(
-				stored[0].flags.elkan5e.delayedSurgePair,
-				stored[1].flags.elkan5e.delayedSurgePair,
-			);
+			choose = () => "delay";
+			await wildSurge(activity);
+			assert.equal(delay.system.uses.spent, failure ? 0 : 1);
+			assert.equal(actor.updates.length, failure ? 1 : 0);
+			if (failure === "ActiveEffect") assert.equal(deleted, true);
+			if (!failure)
+				assert.equal(
+					stored[0].flags.elkan5e.delayedSurgePair,
+					stored[1].flags.elkan5e.delayedSurgePair,
+				);
+		}
+	} finally {
+		console.error = originalConsoleError;
 	}
+
+	assert.equal(loggedErrors.length, 3);
+	assert.ok(
+		loggedErrors.every(
+			([message]) => message === "Elkan 5e | Error storing Delayed Wild Surge:",
+		),
+	);
 });
 
 test("cleanup follows pair IDs despite renamed documents and repeated hook calls", async () => {
