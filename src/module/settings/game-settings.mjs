@@ -31,11 +31,19 @@ async function waitForGameReady() {
 export async function registerGameSettings() {
 	// Convert Game settings
 
-	//Set game settings
+	// Hidden settings (stored state, not shown in the panel)
 	game.settings.register(MODULE_ID, "dialogShown", {
 		name: "elkan5e.dialog.name",
 		hint: "elkan5e.dialog.hint",
 		scope: "client",
+		config: false,
+		type: Boolean,
+		default: false,
+	});
+
+	game.settings.register(MODULE_ID, "toolsMigration", {
+		name: "Elkan 5e Tools Migration Flag",
+		scope: "world",
 		config: false,
 		type: Boolean,
 		default: false,
@@ -73,14 +81,6 @@ export async function registerGameSettings() {
 		restricted: true,
 	});
 
-	game.settings.register(MODULE_ID, "toolsMigration", {
-		name: "Elkan 5e Tools Migration Flag",
-		scope: "world",
-		config: false,
-		type: Boolean,
-		default: false,
-	});
-
 	game.settings.register(MODULE_ID, "tool", {
 		name: "elkan5e.tools.name",
 		hint: "elkan5e.tools.hint",
@@ -91,7 +91,6 @@ export async function registerGameSettings() {
 		type: Number,
 		choices: {
 			0: "elkan5e.tools.choiceA",
-			1: "elkan5e.tools.choiceB",
 			2: "elkan5e.tools.choiceC",
 		},
 		restricted: true,
@@ -189,25 +188,38 @@ export async function registerGameSettings() {
 export async function migrateGameSettings() {
 	const worldSettings = game.settings.storage.get("world");
 	const oldValue = worldSettings?._source?.find((s) => s.key === `${MODULE_ID}.tools`)?.value;
-	if (oldValue === undefined) return;
 
 	if (
+		game.user.isGM &&
+		oldValue !== undefined &&
 		(oldValue === "false" || oldValue === false || oldValue === "true" || oldValue === true) &&
 		!game.settings.get(MODULE_ID, "toolsMigration")
 	) {
 		await waitForGameReady();
-		console.log(`Elkan 5e | Migrating setting "tools" from to new settings`);
+		console.log(`Elkan 5e | Migrating legacy boolean tools setting`);
 		let convertedValue = 0;
 		if (oldValue === "false" || oldValue === false) {
 			convertedValue = 2;
-		} else if (oldValue === "true" || oldValue === true) {
-			convertedValue = 1;
 		}
 		console.log(
 			`Elkan 5e | Migrating setting "tools" from boolean to number (${oldValue} -> ${convertedValue})`,
 		);
-		await game.settings.set(MODULE_ID, "tool", convertedValue);
-		await game.settings.set(MODULE_ID, "toolsMigration", true);
+		try {
+			await game.settings.set(MODULE_ID, "tool", convertedValue);
+			await game.settings.set(MODULE_ID, "toolsMigration", true);
+		} catch (error) {
+			console.error("Elkan 5e | Failed to migrate the legacy tools setting:", error);
+		}
+	}
+
+	if (game.user.isGM && game.settings.get(MODULE_ID, "tool") === 1) {
+		await waitForGameReady();
+		console.log(`Elkan 5e | Migrating legacy tools to the Elkan 5e tools list`);
+		try {
+			await game.settings.set(MODULE_ID, "tool", 0);
+		} catch (error) {
+			console.error("Elkan 5e | Failed to migrate legacy numeric tool setting:", error);
+		}
 	}
 }
 
