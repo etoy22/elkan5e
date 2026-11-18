@@ -35,7 +35,58 @@
 			"trait"
 		]
 	},
-	"effects": [],
+	"effects": [
+		{
+			"name": "Blood Frenzy",
+			"img": "icons/creatures/abilities/mouth-teeth-sharp.webp",
+			"origin": "Compendium.elkan5e.elkan5e-creature-features.Item.XZ5FryxKh6L8IfW7",
+			"_id": "BloodFrenzyAE01",
+			"type": "base",
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.advantage.attack.mwak",
+						"value": "workflow?.targets?.size === 1 && workflow.targets.first()?.actor?.system?.attributes?.hp?.value < workflow.targets.first()?.actor?.system?.attributes?.hp?.max",
+						"priority": 20,
+						"type": "custom"
+					},
+					{
+						"key": "flags.midi-qol.advantage.attack.msak",
+						"value": "workflow?.targets?.size === 1 && workflow.targets.first()?.actor?.system?.attributes?.hp?.value < workflow.targets.first()?.actor?.system?.attributes?.hp?.max",
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
+			"disabled": false,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"transfer": true,
+			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"expiryMode": "default",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"disableIncapacitated": false,
+					"specialDuration": [],
+					"phaseStamped": true
+				}
+			},
+			"_key": "!items.effects!XZ5FryxKh6L8IfW7.BloodFrenzyAE01"
+		}
+	],
 	"folder": "rpdJCLqEpMx3LLo8",
 	"_id": "XZ5FryxKh6L8IfW7",
 	"_key": "!items!XZ5FryxKh6L8IfW7"

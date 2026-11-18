@@ -2,7 +2,52 @@
 	"name": "Magic Resistance",
 	"type": "feat",
 	"img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
-	"effects": [],
+	"effects": [
+		{
+			"name": "Magic Resistance",
+			"img": "icons/magic/defensive/shield-barrier-glowing-blue.webp",
+			"origin": "Compendium.elkan5e.elkan5e-creature-features.Item.eikdZrKEQ4VXilH4",
+			"_id": "MagicResistAE001",
+			"type": "base",
+			"system": {
+				"changes": [
+					{
+						"key": "flags.midi-qol.advantage.ability.save.all",
+						"value": "workflow?.item?.type === 'spell' || workflow?.item?.system?.properties?.has?.('mgc')",
+						"priority": 20,
+						"type": "custom"
+					}
+				]
+			},
+			"disabled": false,
+			"duration": {
+				"value": null,
+				"units": "seconds",
+				"expiry": null,
+				"expired": false
+			},
+			"description": "",
+			"tint": "#ffffff",
+			"transfer": true,
+			"statuses": [],
+			"start": null,
+			"showIcon": 1,
+			"folder": null,
+			"flags": {
+				"dae": {
+					"disableCondition": "",
+					"stackable": "noneName",
+					"expiryMode": "default",
+					"durationExpression": "",
+					"macroRepeat": "none",
+					"disableIncapacitated": false,
+					"specialDuration": [],
+					"phaseStamped": true
+				}
+			},
+			"_key": "!items.effects!eikdZrKEQ4VXilH4.MagicResistAE001"
+		}
+	],
 	"folder": "xq0B89FLwBrW4twv",
 	"flags": {
 		"midiProperties": {
