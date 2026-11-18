@@ -45,8 +45,17 @@ function applySkillCriticalAdjustment(roll) {
 		else if (natural === 20) adjustment = 5;
 		if (adjustment === 0) return;
 
-		const flavor = adjustment > 0 ? "Natural 20 Bonus" : "Natural 1 Penalty";
+		const isNaturalTwenty = adjustment > 0;
+		const flavor = isNaturalTwenty ? "Natural 20 Bonus" : "Natural 1 Penalty";
+		const notice = game.i18n.localize(
+			isNaturalTwenty
+				? "elkan5e.skillCriticalAdjustment.naturalTwenty"
+				: "elkan5e.skillCriticalAdjustment.naturalOne",
+		);
 		const sign = adjustment > 0 ? "+" : "-";
+
+		roll.options ??= {};
+		roll.options.flavor = [roll.options.flavor, notice].filter(Boolean).join(" — ");
 
 		// Append the adjustment as visible terms so it appears in the roll breakdown.
 		const operator = new foundry.dice.terms.OperatorTerm({ operator: sign });

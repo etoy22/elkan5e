@@ -1,5 +1,6 @@
 import "./match-items-tests.mjs";
 import "./wild-surge-tests.mjs";
+import "./skill-critical-tests.mjs";
 import { test } from "node:test";
 import assert from "node:assert/strict";
 import { readFileSync, readdirSync } from "node:fs";
@@ -324,7 +325,7 @@ test("updateModuleJson synchronises manifest and download URLs with the version"
 test("Brawler upgrades the existing unarmed strike", () => {
 	const brawler = JSON.parse(
 		readFileSync(join(packsRoot, "elkan5e-feats", "level-1-feats", "brawler.json"), "utf8"),
-	);
+	); 
 	const modification = Object.values(brawler.system.advancement).find(
 		(advancement) => advancement.type === "ModifyItem",
 	);

@@ -1,6 +1,6 @@
 /**
  * Updates armor and shield configuration for the armor setting, registers armored Barbarian's
- * Defense, and optionally changes Draconic Toughness to use Charisma.
+ * Defense, and optionally updates Draconic Toughness to 13 + Charisma.
  *
  */
 export function armor() {

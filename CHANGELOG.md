@@ -1,5 +1,29 @@
 # Changelog
 
+# v14.6.1
+
+## Character and Item Updates
+
+- Added a player- and GM-accessible character build update tool for updating an actor's Elkan 5e ancestry, background, class, and subclass. It supports previewing changes and prompts for advancement choices that could not be carried over.
+- Reworked the GM item update tool with separate controls for character and NPC features, items, and spells. Updates can be previewed, stopped between actors, and reviewed in a detailed report that can be exported.
+- Added support for updating content from selected active modules and the D&D system's compendiums, as well as Elkan 5e content.
+- Improved item matching for renamed content and same-named features, and made ambiguous matches, missing versions, and errors visible in the report rather than silently selecting a questionable match.
+- Added optional duplicate removal and preserved actor-specific data such as spent uses, equipped state, quantities, spell preparation, class levels, and spent hit dice during updates.
+
+## Settings and Interface
+
+- Added a welcome dialog with the module version and links to the changelog, website, Discord, Patreon, and Ko-fi. It can be suppressed until the next module update.
+- Added progress, preview, and exportable report interfaces for item updates, with dedicated responsive styling.
+- Registered the existing skill check critical, spell scroll, language, and Draconic Toughness settings so they can be configured; hid internal migration state from the settings UI.
+- Draconic Toughness now uses 13 + Charisma when enabled; disabling it restores the standard 13 + Dexterity formula.
+- Made skill check critical adjustments easier to spot in chat by labeling natural 1 and natural 20 adjustments on the roll.
+
+## Content Fixes
+
+- Fixed Brawler's advancement so its damage upgrade applies to the standard unarmed strike, and renamed its attack activity to Improvised Attack.
+
+
+
 # v14.6.0
 
 Elkan 5e has a new version numbering scheme, so you can tell at a glance which Foundry and dnd5e versions a release is built for. In v14.6.0:

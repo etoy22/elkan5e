@@ -41,6 +41,15 @@ export async function registerGameSettings() {
 		default: false,
 	});
 
+	game.settings.register(MODULE_ID, "moduleVersion", {
+		name: "elkan5e.moduleVersion.name",
+		hint: "elkan5e.moduleVersion.hint",
+		scope: "client",
+		config: false,
+		type: String,
+		default: "",
+	});
+
 	game.settings.register(MODULE_ID, "deathSaveClear", {
 		name: "elkan5e.deathSaveClear.name",
 		hint: "elkan5e.deathSaveClear.hint",
@@ -75,6 +84,48 @@ export async function registerGameSettings() {
 
 	game.settings.register(MODULE_ID, "toolsMigration", {
 		name: "Elkan 5e Tools Migration Flag",
+		scope: "world",
+		config: false,
+		default: false,
+		type: Boolean,
+		restricted: true,
+	});
+
+	game.settings.register(MODULE_ID, "skillCriticalAdjustment", {
+		name: "elkan5e.skillCriticalAdjustment.name",
+		hint: "elkan5e.skillCriticalAdjustment.hint",
+		scope: "world",
+		config: true,
+		default: true,
+		type: Boolean,
+		restricted: true,
+	});
+
+	game.settings.register(MODULE_ID, "draconic-toughness", {
+		name: "elkan5e.draconic-toughness.name",
+		hint: "elkan5e.draconic-toughness.hint",
+		scope: "world",
+		config: true,
+		requiresReload: true,
+		default: true,
+		type: Boolean,
+		restricted: true,
+	});
+
+	game.settings.register(MODULE_ID, "scrollRules", {
+		name: "elkan5e.scrolls.name",
+		hint: "elkan5e.scrolls.hint",
+		scope: "world",
+		config: true,
+		requiresReload: true,
+		default: true,
+		type: Boolean,
+		restricted: true,
+	});
+
+	game.settings.register(MODULE_ID, "languageSystem", {
+		name: "elkan5e.languageSystem.name",
+		hint: "elkan5e.languageSystem.hint",
 		scope: "world",
 		config: true,
 		requiresReload: true,
@@ -175,7 +226,16 @@ export async function migrateGameSettings() {
 
 /** Settings panel sections, in display order. The menu button goes last under "Maintenance". */
 const SETTING_GROUPS = [
-	["gameplay", ["deathSaveClear", "conditionsSettings", "skillCriticalAdjustment", "draconic-toughness", "scrollRules"]],
+	[
+		"gameplay",
+		[
+			"deathSaveClear",
+			"conditionsSettings",
+			"skillCriticalAdjustment",
+			"draconic-toughness",
+			"scrollRules",
+		],
+	],
 	["content", ["languageSystem", "tool"]],
 	["legacy", ["armor", "weapons"]],
 ];
@@ -207,7 +267,9 @@ export function organizeSettingsTab(_app, html) {
 			tab.append(row);
 		}
 	}
-	const menuRows = [...tab.querySelectorAll(".form-group")].filter((g) => !g.querySelector("[name]"));
+	const menuRows = [...tab.querySelectorAll(".form-group")].filter(
+		(g) => !g.querySelector("[name]"),
+	);
 	if (menuRows.length) {
 		tab.append(heading("maintenance"));
 		for (const row of menuRows) tab.append(row);

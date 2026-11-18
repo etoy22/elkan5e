@@ -54,7 +54,6 @@ const MODE_LABEL = {
 	[MODULES_MODE]: "modules.modeUpdate",
 };
 
-
 /**
  * The window where the GM picks what to update, with a preview option.
  */
@@ -170,9 +169,13 @@ class UpdateOptionsWindow extends ApplicationV2 {
 		const root = this.element;
 		const rows = [...root.querySelectorAll("select[data-regular]")];
 		const refresh = () => {
-			const modulesOn = rows.some((el) => el.value === MODULES_MODE || el.value === BOTH_MODE);
+			const modulesOn = rows.some(
+				(el) => el.value === MODULES_MODE || el.value === BOTH_MODE,
+			);
 			root.querySelector(".elkan-modules-box")?.classList.toggle("is-hidden", !modulesOn);
-			for (const el of root.querySelectorAll("[name='remove-duplicates'],[name='remove-duplicates-npc']"))
+			for (const el of root.querySelectorAll(
+				"[name='remove-duplicates'],[name='remove-duplicates-npc']",
+``			))
 				el.disabled = modulesOn;
 		};
 		for (const el of rows) el.addEventListener("change", refresh);
@@ -211,31 +214,51 @@ export async function startDialog() {
 	const DIALOG_SHOWN = game.settings.get("elkan5e", "dialogShown");
 	const MODULE_VERSION = await getModuleVersion();
 	if (SAVED_VERSION !== MODULE_VERSION || !DIALOG_SHOWN) {
-		let content = `
-				<h2>${game.i18n.localize("elkan5e.dialog.content.header")}</h2>
-				<p>${game.i18n.localize("elkan5e.dialog.content.headerText")}</p>
-			`;
+		const links = [
+			[
+				"changelog",
+				"https://github.com/etoy22/elkan5e/blob/main/CHANGELOG.md",
+				"fa-solid fa-list",
+			],
+			["website", "https://www.elkan5e.com", "fa-solid fa-globe"],
+			["discord", "https://discord.gg/4Z2c7b6", "fa-brands fa-discord"],
+			["patreon", "https://www.patreon.com/elkan5e", "fa-brands fa-patreon"],
+			["kofi", "https://ko-fi.com/elkan5e", "fa-solid fa-mug-hot"],
+		];
+		const content = `<div class="elkan-welcome">
+			<header class="elkan-welcome-hero">
+				<img class="elkan-welcome-logo" src="modules/elkan5e/images/ElkanLogo.webp" alt="${esc(game.i18n.localize("elkan5e.dialog.content.logoAlt"))}">
+				<h2>${esc(game.i18n.localize("elkan5e.dialog.content.header"))}</h2>
+				<span class="elkan-welcome-version">${esc(MODULE_VERSION ?? "")}</span>
+			</header>
+			<p class="elkan-welcome-lead">${game.i18n.localize("elkan5e.dialog.content.headerText")}</p>
+			<nav class="elkan-welcome-links" aria-label="${esc(game.i18n.localize("elkan5e.dialog.content.linksLabel"))}">
+				${links
+					.map(
+						(
+							[key, href, icon],
+							index,
+						) => `<a class="elkan-welcome-link${index === 0 ? " is-primary" : ""}" href="${href}" target="_blank" rel="noopener noreferrer">
+							<i class="${icon}" aria-hidden="true"></i> ${esc(game.i18n.localize(`elkan5e.dialog.content.${key}`))}
+						</a>`,
+					)
+					.join("")}
+			</nav>
+			<p class="elkan-welcome-hint">${esc(game.i18n.localize("elkan5e.dialog.content.hint"))}</p>
+		</div>`;
 
-		content += `
-				<h4>${game.i18n.localize("elkan5e.dialog.content.joinUs")}</h4>
-				<p>${game.i18n.localize("elkan5e.dialog.content.joinUsText")}</p>
-				<a href='https://ko-fi.com/P5P710UQX0' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://storage.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
-			`;
-
-		content = `<div class="elkan-dialog-content">${content}</div>`;
-
-		let entryDialog = await DialogV2.confirm({
+		const entryDialog = await DialogV2.confirm({
+			classes: ["elkan5e-welcome"],
 			window: { title: game.i18n.localize("elkan5e.dialog.title") },
-			content: content, // this can just be text or HTML
+			content,
 			yes: {
 				label: game.i18n.localize("elkan5e.dialog.doNotShow"),
 			},
 			no: {
-				label: "Cancel",
+				label: game.i18n.localize("elkan5e.dialog.no"),
 			},
 		});
 
-		console.log("Elkan 5e dialog shown:", entryDialog);
 		// DialogV2.confirm resolves null when closed via the X; the setting is Boolean.
 		await game.settings.set("elkan5e", "dialogShown", entryDialog === true);
 		await game.settings.set("elkan5e", "moduleVersion", MODULE_VERSION);
@@ -452,7 +475,8 @@ async function offerPendingChoices(report) {
 	if (!pending.length) return;
 	const rows = pending
 		.map(
-			(p, i) => `<li>${esc(p.label)} <button type="button" data-pending="${i}">${esc(L("build.makeChoices"))}</button></li>`,
+			(p, i) =>
+				`<li>${esc(p.label)} <button type="button" data-pending="${i}">${esc(L("build.makeChoices"))}</button></li>`,
 		)
 		.join("");
 	await DialogV2.wait({
